@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "a1a09d2e_a3cd1881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T03:03:31Z",
+      "side": 1,
+      "message": "I think it\u0027d be nice to split them into two if you don\u0027t mind.  Then the beeping code can literally just be:\n\n  if (ui.beep) {\n    vb2ex_beep();\n    ui.beep \u003d 0;\n  }\n\nOr another thing we could do to simplify the dev screen beep code is have ui_loop() handle multiple beeps.  developer_mode_action() could simply set ui-\u003ebeep \u003d 2 (or keep it as beep_count).  ui_loop() can beep, ui.beep--, and set ui.last_beep \u003d cur_time.  After 500 ms has passed since ui.last_beep, take care of the next beep and ui.beep--.",
+      "parentUuid": "5be85045_33ade446",
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7459502f_0bbe51ef",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2

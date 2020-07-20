@@ -46,6 +46,30 @@
       "revId": "ed23c08440dae6657d026a30b504578e03e0426f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffddfe0_e90c147f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T03:03:31Z",
+      "side": 0,
+      "message": "Yeah, you\u0027re right that it is currently not used at all.  So should we add the dialog box call to vb2_ui_developer_mode_boot_internal_action instead of removing the enum value here?",
+      "parentUuid": "018444c5_19f5492f",
+      "range": {
+        "startLine": 1300,
+        "startChar": 0,
+        "endLine": 1303,
+        "endChar": 39
+      },
+      "revId": "ed23c08440dae6657d026a30b504578e03e0426f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
