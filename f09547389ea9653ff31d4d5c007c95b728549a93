@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "14b6aab1_79fb52a7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T09:00:18Z",
+      "side": 1,
+      "message": "Actually, I agree with Yu-Ping.  In the latest patchset, it looks even more confusing -- some of the functions return VB2_SUCCESS in a situation where other UI functions would return VB2_REQUEST_UI_CONTINUE, and others follow the UI convention.  Could we just follow the UI convention for all of these functions?  It means that we\u0027ll need a bit of extra wrapper code to check the return value, but ui_loop does this too.\n\nThere was some previous discussion about simplifying return values for UI functions.  The current proposed solution is to invert REQUEST_UI_CONTINUE --\u003e REQUEST_UI_BREAK, and change VB2_SUCCESS to have the meaning of REQUEST_UI_CONTINUE.  But no one has free cycles to work on it at the moment.",
+      "parentUuid": "9a8efd03_5934a389",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da05a163_27d598a1",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10

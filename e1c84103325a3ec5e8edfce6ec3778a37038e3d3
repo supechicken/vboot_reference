@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "4c39c4e5_5901bf13",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T09:00:18Z",
+      "side": 1,
+      "message": "Yup, I\u0027d say unless one of the arguments doesn\u0027t fit on a single line, go for (ii).\n\n[Note that back when I was doing tons of refactoring, I considered moving everything over to (iii), since it\u0027s such a pain to reflow (ii).  But that hasn\u0027t happened.]",
+      "parentUuid": "08abec55_eae522f4",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d3c4618_3de96816",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 9
@@ -657,6 +681,30 @@
       "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "004ffee5_9654b4bc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T09:00:18Z",
+      "side": 1,
+      "message": "Gentle ping?",
+      "parentUuid": "6e03d729_80b07fbf",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1240,
+        "endChar": 41
+      },
+      "revId": "e1c84103325a3ec5e8edfce6ec3778a37038e3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
