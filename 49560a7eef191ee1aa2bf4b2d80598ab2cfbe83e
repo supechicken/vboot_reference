@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3a798a2_0e52bcbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T06:55:51Z",
+      "side": 1,
+      "message": "Unless I\u0027m mistaken, this file gets run *on the DUT* as part of a few autotests.  So probably it should be both on DUT and in SDK, unless we modify the autotests to generate keys on the host to remove the dumpRSAPublicKey DUT dependency?\n\nhttps://source.chromium.org/search?q\u003ddumpRSAPublicKey%20file:autotest",
+      "revId": "49560a7eef191ee1aa2bf4b2d80598ab2cfbe83e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
