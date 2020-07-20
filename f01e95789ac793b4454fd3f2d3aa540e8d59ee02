@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d275cb2_0b0b2e81",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T07:54:16Z",
+      "side": 1,
+      "message": "So far we seem to be grouping these screens under the name \"log screens\".  So how about we change this to \"Functions used for log screens\"?  (Note no period here either.)\n\nAnd as for the function names themselves, how about prefixing with \"log_\"?  log_page_init, log_page_prev, log_page_down.",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "f01e95789ac793b4454fd3f2d3aa540e8d59ee02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "411c17ae_63fd3e22",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T07:54:16Z",
+      "side": 1,
+      "message": "In Peter\u0027s CL I suggested using \"alternate_item\".  How about we use that here too?",
+      "range": {
+        "startLine": 60,
+        "startChar": 17,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "f01e95789ac793b4454fd3f2d3aa540e8d59ee02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bd8775d_13ec52cc",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T07:54:16Z",
+      "side": 1,
+      "message": "Would these fit on one line if we used the full name?\n\n  ui-\u003estate-\u003edisabled_item_mask |\u003d 1 \u003c\u003c page_up_item;\n\nIf these long accessors are causing numerous line breaks, I\u0027d say using the temporary variables here is a good idea.  But otherwise, I might just leave them inline.  (Same applies for page_prev and page_next.)",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "f01e95789ac793b4454fd3f2d3aa540e8d59ee02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f66d0bc_7095875a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T07:54:16Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a need to clear the mask for page_up here.  If the user was able to run this function, then the menu item is already enabled",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "f01e95789ac793b4454fd3f2d3aa540e8d59ee02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452d1be8_587b613d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T07:54:16Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 33
+      },
+      "revId": "f01e95789ac793b4454fd3f2d3aa540e8d59ee02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

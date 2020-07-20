@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "19c8efc5_a879f4ba",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-20T07:54:16Z",
+      "side": 1,
+      "message": "Yu-Ping, you bring up a good point.  It\u0027s a hard call here as to whether the decision should be made by the vboot (\"Hey, I might enable this button while the screen is running\") or depthcharge (\"This button should appear differently when disabled, but I don\u0027t really care why\").  Often times the line between UI and business logic isn\u0027t so clear.  In this case, I think I\u0027m okay with either approach.\n\nSince this is the only planned use case for disabled_item_mask, I might slightly prefer the approach Yu-Ping has outlined.  If we go this route, I would prefer to directly put the field in ui_menu_item though, perhaps called \"show_when_disabled\" or \"always_visible\".",
+      "parentUuid": "06d9941d_68558f1d",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7f99a75_a6fccc79",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
