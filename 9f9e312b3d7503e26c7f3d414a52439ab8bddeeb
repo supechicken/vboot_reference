@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "571d7cbc_b5392d69",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-20T06:30:20Z",
+      "side": 1,
+      "message": "We will add menu item in next CL.",
+      "parentUuid": "514e9156_f6edb64a",
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf2b3742_2849344b",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 27
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5dc3ac66_ceb8704a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-20T06:30:20Z",
+      "side": 1,
+      "message": "I\u0027ll check it in depthcharge and reply here",
+      "parentUuid": "cf2b3742_2849344b",
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b16cbf1_0fdd3bdd",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
@@ -47,6 +83,30 @@
       "writtenOn": "2020-07-20T03:17:25Z",
       "side": 1,
       "message": "I can\u0027t see from here the difference between these 2 arguments.",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543bc888_b671042c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-20T06:30:20Z",
+      "side": 1,
+      "message": "My approach:\ndisabled \u003d can not interact (select, press), but still visible\n(Current we reserved an empty padding, we might change it to grey-out in the future)\ne.g. PgUp / PgDn buttons\n\nhidden \u003d not visible.\ne.g. all the other buttons.\n\nPlease tell me if you have better naming / comments of params / others.",
+      "parentUuid": "1b16cbf1_0fdd3bdd",
       "range": {
         "startLine": 1319,
         "startChar": 0,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "923bb033_b3f284e6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-20T06:30:20Z",
+      "side": 1,
+      "message": "I think the term \"ignored\" in this argument (as long as selected_items) means we ignore it inside vb2ex_display_ui, not outside the function.",
+      "parentUuid": "e7f99a75_a6fccc79",
+      "range": {
+        "startLine": 1328,
+        "startChar": 25,
+        "endLine": 1328,
+        "endChar": 32
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67c974c8_d4153027",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
@@ -102,6 +186,30 @@
       "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda1d971_ef771d84",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-20T06:30:20Z",
+      "side": 1,
+      "message": "Done\nWhat about if error only.",
+      "parentUuid": "67c974c8_d4153027",
+      "range": {
+        "startLine": 1384,
+        "startChar": 63,
+        "endLine": 1384,
+        "endChar": 67
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
