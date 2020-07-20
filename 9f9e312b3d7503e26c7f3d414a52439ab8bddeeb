@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "514e9156_f6edb64a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T03:17:25Z",
+      "side": 1,
+      "message": "Do we want to add the item of debug info here?",
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2b3742_2849344b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T03:17:25Z",
+      "side": 1,
+      "message": "Do we want to show error message in a box (or only want a beep sound)? If so, we need to add this error into error_map in depthcharge.",
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b16cbf1_0fdd3bdd",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T03:17:25Z",
+      "side": 1,
+      "message": "I can\u0027t see from here the difference between these 2 arguments.",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f99a75_a6fccc79",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T03:17:25Z",
+      "side": 1,
+      "message": "Note that we have\n\n prev_page !\u003d ui.state-\u003ecurrent_page\n\nin the conditional in ui_loop, so I think the value is not *entirely* ignored.",
+      "range": {
+        "startLine": 1328,
+        "startChar": 25,
+        "endLine": 1328,
+        "endChar": 32
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c974c8_d4153027",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-20T03:17:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean by \"none\" here.",
+      "range": {
+        "startLine": 1384,
+        "startChar": 63,
+        "endLine": 1384,
+        "endChar": 67
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
