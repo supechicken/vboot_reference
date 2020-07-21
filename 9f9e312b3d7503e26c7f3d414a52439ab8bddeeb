@@ -233,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "0f6d7e69_fc6c36f4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-21T10:14:30Z",
+      "side": 1,
+      "message": "(1)\nI\u0027m okay with either way, too.\n\n(2)\n\u003e I thought the plan was to remove the padding for all screens without an icon?\n\nMaybe we should ask for Gogo\u0027s opinion before doing that.",
+      "parentUuid": "81586149_2f73a0de",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7f99a75_a6fccc79",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
