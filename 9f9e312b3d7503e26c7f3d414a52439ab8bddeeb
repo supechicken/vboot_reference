@@ -185,6 +185,30 @@
     },
     {
       "key": {
+        "uuid": "61733c68_351a26f2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-21T04:31:23Z",
+      "side": 1,
+      "message": "I think implement it in ui_menu_item is a good choice.\n\n1.\nWhat about merging no_arrow with a flags:\n #define UI_MENU_ITEM_NO_ARROW (1\u003c\u003c0)\n #define UI_MENU_ITEM_ALWAYS_VISIBLE (1\u003c\u003c1)\n\n2.\nThere is another new problem - there are similar situations in both icon and button:\n\nicon:\nNONE -\u003e draw nothing, but leave some padding\nNO_ITEM -\u003e no padding.\n\nbutton:\nALWAYS_VISIBLE -\u003e draw padding while disabled\nno ALWAYS_VISIBLE -\u003e no padding while disabled\n\nShould we figure out some terms for them?\n\n3.\n(Moreover, I think ALWAYS_VISIBLE is a little bit confused while we did not actually draw anything visible on canvas.)",
+      "parentUuid": "19c8efc5_a879f4ba",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7f99a75_a6fccc79",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
