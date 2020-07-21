@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "442a42eb_ea44c644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-21T03:21:19Z",
+      "side": 1,
+      "message": "Done.\n\nSince the 2 beeps in dev mode are not errors. I\u0027d like to separate the implementation from other error beeps, and hence keep it unchanged.",
+      "parentUuid": "a1a09d2e_a3cd1881",
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7459502f_0bbe51ef",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
