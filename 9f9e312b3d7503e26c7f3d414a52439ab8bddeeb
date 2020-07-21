@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0d11722c_7c0d1ef9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-21T10:39:20Z",
+      "side": 1,
+      "message": "Done in PS25, depthcharge",
+      "parentUuid": "5dc3ac66_ceb8704a",
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b16cbf1_0fdd3bdd",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
@@ -257,6 +275,30 @@
     },
     {
       "key": {
+        "uuid": "8fa44452_b26e03a8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-21T10:39:20Z",
+      "side": 1,
+      "message": "Edit: yu-ping replies so fast, but I\u0027d like to keep my original comments.\n\n1.\nI\u0027d like to hear your comments for my newest PS in depthcharge.\n\n2.\nIt\u0027s mostly about terminology - I got stuck on these naming.\n\n\u003e I thought the plan was to remove the padding for all screens without an icon?\nDid I miss some discussion? I do not know we are going to remove all the paddings.\n\n3.\nI can have a try later -- the current patch is to hide it.",
+      "parentUuid": "81586149_2f73a0de",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7f99a75_a6fccc79",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
@@ -372,6 +414,30 @@
       "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df19a599_1b88530c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-21T10:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d931b91_347b0c84",
+      "range": {
+        "startLine": 1384,
+        "startChar": 63,
+        "endLine": 1384,
+        "endChar": 67
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
