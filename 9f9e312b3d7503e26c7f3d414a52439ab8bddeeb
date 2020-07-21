@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "81586149_2f73a0de",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-21T08:57:15Z",
+      "side": 1,
+      "message": "(1)\nI\u0027m okay with either solution: either converting \"no_arrow\" to a fields member, or adding another member called \"always_visible\".\n\n(2)\nI thought the plan was to remove the padding for all screens without an icon?\nYour description of ALWAYS_VISIBLE sounds correct; is there an issue here or are you asking about terminology?\n\n(3)\nI\u0027d still like to print a grayed out \"disabled\" button, but if you\u0027d prefer leaving it blank then ALWAYS_VISIBLE might not be the best name.",
+      "parentUuid": "61733c68_351a26f2",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7f99a75_a6fccc79",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
