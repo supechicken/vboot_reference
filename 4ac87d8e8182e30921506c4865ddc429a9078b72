@@ -16,6 +16,92 @@
       "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f44f2aef_782db19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-22T09:48:02Z",
+      "side": 1,
+      "message": "I think we\u0027re really close now.  Could you write some unit tests to exercise the new screen?",
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7bb942a_d03795b3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-22T09:48:02Z",
+      "side": 1,
+      "message": "How about prev_log_page?",
+      "range": {
+        "startLine": 293,
+        "startChar": 10,
+        "endLine": 293,
+        "endChar": 19
+      },
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db7dbda_45f60941",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-22T09:48:02Z",
+      "side": 1,
+      "message": "Needs updating.",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c37272_efd2de66",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-22T09:48:02Z",
+      "side": 1,
+      "message": "Needs updating.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
