@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "47f588c3_ab315100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-22T11:15:32Z",
+      "side": 1,
+      "message": "Which tests should be introduced in this CL?\n\n(1) vb2api_get_debug_info with mocked ctx\n(2) tab to the debug_info screen\n(3) mock vb2api_get_debug_info and vb2ex_prepare_log_screen to do some page up / page down tests\n\nI patched with (2)(3) only.\nFor (1), I think I need some extra time for understanding how to mock each items.\n\n\nBTW, I think we should re-open the \"catch-up tests\" since the parameters of vb2ex_display_ui has increased a lot.\nI will inspect current_page indirectly in this CL.",
+      "parentUuid": "f44f2aef_782db19b",
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7bb942a_d03795b3",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 29
@@ -56,6 +74,30 @@
       "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e789274d_f9eafe2a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-22T11:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7bb942a_d03795b3",
+      "range": {
+        "startLine": 293,
+        "startChar": 10,
+        "endLine": 293,
+        "endChar": 19
+      },
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "b946bdd1_7e1a7eac",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-22T11:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db7dbda_45f60941",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88c37272_efd2de66",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 29
@@ -102,6 +168,30 @@
       "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11bb9bdc_a2c0957e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-22T11:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c37272_efd2de66",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "4ac87d8e8182e30921506c4865ddc429a9078b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
