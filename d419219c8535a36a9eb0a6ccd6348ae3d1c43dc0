@@ -135,6 +135,30 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c0033d_7a7d26e1",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-23T07:01:50Z",
+      "side": 1,
+      "message": "My prior suggestion was to leave current_page without tests here, and start a new CL for adding back all the three params after this.\n\nI am fine to add current_page here first.\n\nWhat about re-open b/156448738 for a umbrella bug for groot tests, I think it should be fine for me to taken some time to catching up tests (after the debug_info CLs are about to finished)",
+      "parentUuid": "17a686a2_1cf17b77",
+      "range": {
+        "startLine": 1080,
+        "startChar": 26,
+        "endLine": 1080,
+        "endChar": 27
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
