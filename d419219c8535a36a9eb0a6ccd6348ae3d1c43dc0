@@ -87,6 +87,30 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "905b6cd9_6441b59f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-23T06:44:56Z",
+      "side": 1,
+      "message": "\u003e Not totally sure what you mean here?\nI mean if we add the current_page param in DISPLAYED_EQ, then the param of it will be\n screen,\n locale_id,\n selected_item,\n disabled_item_mask,\n (skip timer_disabled),\n current_page,\n (skip error_code)\n\nWhich seems a little confused since we skip storing param in the middle.\n\nHowever, I agree that we should check current_page here.",
+      "parentUuid": "9c18143b_1f3c61bd",
+      "range": {
+        "startLine": 1080,
+        "startChar": 26,
+        "endLine": 1080,
+        "endChar": 27
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
