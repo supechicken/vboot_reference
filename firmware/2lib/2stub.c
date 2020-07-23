@@ -104,3 +104,15 @@ uint32_t vb2ex_prepare_log_screen(const char *str)
 {
 	return 1;
 }
+
+__attribute__((weak))
+const char *vb2ex_get_diagnostic_disk(struct vb2_context *ctx)
+{
+	return NULL;
+}
+
+__attribute__((weak))
+const char *vb2ex_get_diagnostic_memory(struct vb2_context *ctx)
+{
+	return NULL;
+}

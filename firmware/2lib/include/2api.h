@@ -1294,6 +1294,10 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_INVALID_DISK	= 0x330,
 	/* Diagnostic tools */
 	VB2_SCREEN_DIAGNOSTIC			= 0x400,
+	/* Disk diagnostic screen */
+	VB2_SCREEN_DIAGNOSTIC_DISK	      	= 0x410,
+	/* Memory diagnostic screen */
+	VB2_SCREEN_DIAGNOSTIC_MEMORY	      	= 0x420,
 };
 
 enum vb2_ui_error {
@@ -1407,6 +1411,34 @@ char *vb2api_get_debug_info(struct vb2_context *ctx);
  * @return The number of pages after pagination.  0 if none or error.
  */
 uint32_t vb2ex_prepare_log_screen(const char *str);
+
+/**
+ * Get the full disk diagnostics log.
+ *
+ * Return a pointer to the full debug info string which is guaranteed to be
+ * null-terminated.  The function implementation should manage string memory
+ * internally.  Subsequent calls may update the string and return the same
+ * pointer, or return a new pointer if necessary.
+ *
+ * @param ctx		Vboot context
+ * @return The pointer to the full debug info string.  NULL on error.
+ */
+const char *vb2ex_get_diagnostic_disk(struct vb2_context *ctx);
+
+/**
+ * Get the memory diagnostic log of current state.
+ *
+ * TODO: incremental log
+ *
+ * Return a pointer to the full debug info string which is guaranteed to be
+ * null-terminated.  The function implementation should manage string memory
+ * internally.  Subsequent calls may update the string and return the same
+ * pointer, or return a new pointer if necessary.
+ *
+ * @param ctx		Vboot context
+ * @return The pointer to the full debug info string.  NULL on error.
+ */
+const char *vb2ex_get_diagnostic_memory(struct vb2_context *ctx);
 
 /*****************************************************************************/
 /* Timer. */

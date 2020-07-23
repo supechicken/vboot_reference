@@ -808,6 +808,114 @@ static const struct vb2_screen_info diagnostic_screen = {
 };
 
 /******************************************************************************/
+/* VB2_SCREEN_DIAGNOSTIC_DISK */
+
+#define DIAGNOSTIC_DISK_ITEM_PAGE_UP 1
+#define DIAGNOSTIC_DISK_ITEM_PAGE_DOWN 2
+#define DIAGNOSTIC_DISK_ITEM_BACK 3
+
+static vb2_error_t diagnostic_disk_init(struct vb2_ui_context *ui)
+{
+	const char *log_string = vb2ex_get_diagnostic_disk(ui->ctx);
+	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	if (ui->state->page_count == 0) {
+		ui->error_code = VB2_UI_ERROR_LOG_INIT_FAILED;
+		return vb2_ui_screen_back(ui);
+	}
+	return log_page_init(ui, DIAGNOSTIC_DISK_ITEM_PAGE_UP,
+			     DIAGNOSTIC_DISK_ITEM_PAGE_DOWN,
+			     DIAGNOSTIC_DISK_ITEM_BACK);
+}
+
+static vb2_error_t diagnostic_disk_page_prev_action(struct vb2_ui_context *ui)
+{
+	return log_page_prev(ui, DIAGNOSTIC_DISK_ITEM_PAGE_UP,
+			     DIAGNOSTIC_DISK_ITEM_PAGE_DOWN);
+}
+
+static vb2_error_t diagnostic_disk_page_next_action(struct vb2_ui_context *ui)
+{
+	return log_page_next(ui, DIAGNOSTIC_DISK_ITEM_PAGE_UP,
+			     DIAGNOSTIC_DISK_ITEM_PAGE_DOWN);
+}
+
+static const struct vb2_menu_item diagnostic_disk_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	[DIAGNOSTIC_DISK_ITEM_PAGE_UP] = {
+		.text = "Page up",
+		.action = diagnostic_disk_page_prev_action,
+	},
+	[DIAGNOSTIC_DISK_ITEM_PAGE_DOWN] = {
+		.text = "Page down",
+		.action = diagnostic_disk_page_next_action,
+	},
+	BACK_ITEM,
+	POWER_OFF_ITEM,
+};
+
+static const struct vb2_screen_info diagnostic_disk_screen = {
+	.id = VB2_SCREEN_DIAGNOSTIC_DISK,
+	.name = "Disk Diagnostic",
+	.init = diagnostic_disk_init,
+	.menu = MENU_ITEMS(diagnostic_disk_items),
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DIAGNOSTIC_MEMORY */
+
+#define DIAGNOSTIC_MEMORY_ITEM_PAGE_UP 1
+#define DIAGNOSTIC_MEMORY_ITEM_PAGE_DOWN 2
+#define DIAGNOSTIC_MEMORY_ITEM_BACK 3
+
+static vb2_error_t diagnostic_memory_init(struct vb2_ui_context *ui)
+{
+	const char *log_string = vb2ex_get_diagnostic_memory(ui->ctx);
+	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	if (ui->state->page_count <= 0) {
+		ui->error_code = VB2_UI_ERROR_LOG_INIT_FAILED;
+		return vb2_ui_screen_back(ui);
+	}
+	return log_page_init(ui, DIAGNOSTIC_MEMORY_ITEM_PAGE_UP,
+			     DIAGNOSTIC_MEMORY_ITEM_PAGE_DOWN,
+			     DIAGNOSTIC_MEMORY_ITEM_BACK);
+}
+
+static vb2_error_t
+diagnostic_memory_page_prev_action(struct vb2_ui_context *ui)
+{
+	return log_page_prev(ui, DIAGNOSTIC_MEMORY_ITEM_PAGE_UP,
+			     DIAGNOSTIC_MEMORY_ITEM_PAGE_DOWN);
+}
+
+static vb2_error_t
+diagnostic_memory_page_next_action(struct vb2_ui_context *ui)
+{
+	return log_page_next(ui, DIAGNOSTIC_MEMORY_ITEM_PAGE_UP,
+			     DIAGNOSTIC_MEMORY_ITEM_PAGE_DOWN);
+}
+
+static const struct vb2_menu_item diagnostic_memory_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	[DIAGNOSTIC_MEMORY_ITEM_PAGE_UP] = {
+		.text = "Page up",
+		.action = diagnostic_memory_page_prev_action,
+	},
+	[DIAGNOSTIC_MEMORY_ITEM_PAGE_DOWN] = {
+		.text = "Page down",
+		.action = diagnostic_memory_page_next_action,
+	},
+	BACK_ITEM,
+	POWER_OFF_ITEM,
+};
+
+static const struct vb2_screen_info diagnostic_memory_screen = {
+	.id = VB2_SCREEN_DIAGNOSTIC_MEMORY,
+	.name = "Memory Diagnostic",
+	.init = diagnostic_memory_init,
+	.menu = MENU_ITEMS(diagnostic_memory_items),
+};
+
+/******************************************************************************/
 /*
  * TODO(chromium:1035800): Refactor UI code across vboot and depthcharge.
  * Currently vboot and depthcharge maintain their own copies of menus/screens.
@@ -834,6 +942,8 @@ static const struct vb2_screen_info *screens[] = {
 	&developer_boot_external_screen,
 	&developer_invalid_disk_screen,
 	&diagnostic_screen,
+	&diagnostic_disk_screen,
+	&diagnostic_memory_screen,
 };
 
 const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen id)
