@@ -798,9 +798,11 @@ static const struct vb2_menu_item diagnostic_items[] = {
 	LANGUAGE_SELECT_ITEM,
 	{
 		.text = "Storage",
+		.target = VB2_SCREEN_DIAGNOSTIC_STORAGE,
 	},
 	{
 		.text = "Memory",
+		.target = VB2_SCREEN_DIAGNOSTIC_MEMORY,
 	},
 	POWER_OFF_ITEM,
 };
