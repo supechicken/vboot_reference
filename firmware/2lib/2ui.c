@@ -406,7 +406,7 @@ vb2_error_t developer_action(struct vb2_ui_context *ui)
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_LONG_PRESS))
 		return vb2_ui_developer_mode_boot_internal_action(ui);
 	if (ui->key == '\t')
-		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DIAGNOSTICS_STORAGE);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -423,7 +423,7 @@ vb2_error_t broken_recovery_action(struct vb2_ui_context *ui)
 {
 	/* Broken recovery keyboard shortcuts */
 	if (ui->key == '\t')
-		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DIAGNOSTICS_STORAGE);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -460,7 +460,7 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 		return vb2_ui_screen_change(ui, VB2_SCREEN_RECOVERY_TO_DEV);
 
 	if (ui->key == '\t')
-		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
+		return vb2_ui_screen_change(ui, VB2_SCREEN_DIAGNOSTICS_STORAGE);
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
