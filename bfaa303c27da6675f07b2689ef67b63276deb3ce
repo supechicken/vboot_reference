@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "1878d217_ab4a21e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-23T05:29:46Z",
+      "side": 1,
+      "message": "Although it\u0027s not an \"error beep\", developer_mode_action() faces the same concerns that we are dealing with by limiting vb2ex_beep() calls to run in ui_loop() -- another piece of code could potentially cause multiple beeps to be triggered in the same ui_loop() iteration.\n\nWould it be that much extra work to include developer_mode_action() in the refactor?\n\nOtherwise, it may make sense to keep binding beep functionality to error_code (if that\u0027s the only thing that can trigger a beep in ui_loop).",
+      "parentUuid": "442a42eb_ea44c644",
+      "revId": "bfaa303c27da6675f07b2689ef67b63276deb3ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7459502f_0bbe51ef",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
