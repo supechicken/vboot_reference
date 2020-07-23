@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "73375fae_73472dbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "in a",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e3e52b_e4bd43a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "has",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a30bb9_0ee1e0cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "puff",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fc2d380_515e4dd3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 31
@@ -16,6 +85,184 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a6bc2e7_fe88a780",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "Isn\u0027t this already included in memcmp(prev_state, state)?",
+      "range": {
+        "startLine": 321,
+        "startChar": 6,
+        "endLine": 321,
+        "endChar": 45
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3197af00_01db0262",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "Do we need this field? Is it used anywhere else except in this function?",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 22
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "779a93f9_a33fff05",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "\u003d\u003d",
+      "range": {
+        "startLine": 262,
+        "startChar": 27,
+        "endLine": 262,
+        "endChar": 29
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d0861ac_3b908283",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "[DEBUG_INFO_ITEM_BACK] \u003d",
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc6eb10_af2fe860",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "Maybe just \"page\", since we don\u0027t use \"current_screen\" as the first argument.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 10,
+        "endLine": 1323,
+        "endChar": 22
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ecf33c_8f97f926",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "Use tabs.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 22,
+        "endLine": 1323,
+        "endChar": 25
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1309ab_14116d08",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "Did you intentionally put this in a new line?",
+      "range": {
+        "startLine": 1325,
+        "startChar": 6,
+        "endLine": 1325,
+        "endChar": 33
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9589c733_22fcbb20",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-23T07:50:19Z",
+      "side": 1,
+      "message": "uint32_t",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
