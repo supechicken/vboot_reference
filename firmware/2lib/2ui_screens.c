@@ -238,7 +238,7 @@ static const struct vb2_menu_item advanced_options_items[] = {
 	},
 	[ADVANCED_OPTIONS_ITEM_DEBUG_INFO] = {
 		.text = "Debug info",
-		.target = VB2_SCREEN_DEBUG_INFO,
+		.target = VB2_SCREEN_DIAGNOSTIC_DISK,
 	},
 	BACK_ITEM,
 	POWER_OFF_ITEM,
