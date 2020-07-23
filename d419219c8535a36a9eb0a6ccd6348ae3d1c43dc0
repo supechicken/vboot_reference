@@ -63,6 +63,30 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c18143b_1f3c61bd",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-23T06:37:23Z",
+      "side": 1,
+      "message": "\u003e I think it is sufficient here if we inspect the current_page indirectly by disabled_item_mask.\n\nIf we can somehow guarantee that our log_page_next and log_page_free functions are working correctly (e.g. by unit testing), then I\u0027d be fine saying that \"a correct disabled_item_mask implies a correct current_page\".  But if we aren\u0027t going to test those functions, we should at least check current_page here.\n\n\u003e I want to postponed the time we store and verify some or all the arguments of vb2ex_display_ui since it might be confused if we skip some of the vb2ex_display_ui arguments in DISPLAYED_EQ macro.\n\nNot totally sure what you mean here?\n\n\u003e Will we re-pick the implementation that pass a union or structure of screen_data in the future?\n\nFor now let\u0027s focus on getting feature-complete and bug-free.  I suspect when the time comes, it\u0027ll make more sense to move vboot UI code directly into depthcharge rather than keep improving the API between the two.",
+      "parentUuid": "1f15a98d_283ffb3b",
+      "range": {
+        "startLine": 1080,
+        "startChar": 26,
+        "endLine": 1080,
+        "endChar": 27
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
