@@ -796,6 +796,14 @@ static const struct vb2_screen_info developer_invalid_disk_screen = {
 
 static const struct vb2_menu_item diagnostics_items[] = {
 	LANGUAGE_SELECT_ITEM,
+	{
+		.text = "Storage",
+		.target = VB2_SCREEN_DIAGNOSTICS_STORAGE,
+	},
+	{
+		.text = "Memory",
+		.target = VB2_SCREEN_DIAGNOSTICS_MEMORY,
+	},
 	POWER_OFF_ITEM,
 };
 
