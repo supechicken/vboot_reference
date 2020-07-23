@@ -16,6 +16,24 @@
       "revId": "7fee904924011c22445261023e020f6199184391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6271e61c_2a7448e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-23T06:47:57Z",
+      "side": 1,
+      "message": "\u003e Could we add one test which enters debug info screen via the menu and attempts some page up/down navigation?\n\nWhere to add these tests? to debug_info_test or some _screen test?\nWhat is the concern of adding these tests here?",
+      "parentUuid": "0bf7e5a6_6df4630a",
+      "revId": "7fee904924011c22445261023e020f6199184391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
