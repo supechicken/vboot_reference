@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "09de1210_d1bde26b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-24T09:39:36Z",
+      "side": 1,
+      "message": "It looks like merging developer_mode_action() beep code is not as elegant as I had hoped, since it still needs to keep track of whether or not it set vb2_ui_context.beeps.  So I\u0027m okay with either PS3 or PS5.\n\nI\u0027ll leave the final decision up to you.  Sorry for the thrashing.",
+      "parentUuid": "92ce778e_0b0d91b6",
+      "revId": "fb5a85421cb142068e9fc541bcc00eb46c810663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80c20e22_4fc7e3a8",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 5
