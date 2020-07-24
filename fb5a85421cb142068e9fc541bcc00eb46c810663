@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c74df2c_32e80fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-24T06:37:41Z",
+      "side": 1,
+      "message": "Hmm... really starting to wonder if it\u0027s worth it to create all this complexity just for the case of two errors occurring in succession.  It sounds like this is a very rare edge case and only occurs when something is going wrong, so I don\u0027t think the user hearing a slightly longer beep will change much.  But I\u0027m also okay going forward with the current patchset if you still prefer not calling vb2ex_beep directly.",
+      "revId": "fb5a85421cb142068e9fc541bcc00eb46c810663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80c20e22_4fc7e3a8",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-24T06:37:41Z",
+      "side": 1,
+      "message": "interval",
+      "range": {
+        "startLine": 337,
+        "startChar": 24,
+        "endLine": 337,
+        "endChar": 31
+      },
+      "revId": "fb5a85421cb142068e9fc541bcc00eb46c810663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff14b83_5d665ab6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-24T06:37:41Z",
+      "side": 1,
+      "message": "I think we need to be careful here with unsigned integers...\n\n\u0027now\u0027 may have already looped back to 0 when comparing against (ui.last_beep_time + 500), causing this clause to not get triggered.\n\nIf we use `elapsed \u003d vb2ex_mtime() - ui.last_beep_time`, then we should always the correct time elapsed, given that it hasn\u0027t exceeded UINT32_MAX.  This is what we were doing in developer_mode_screen().",
+      "range": {
+        "startLine": 340,
+        "startChar": 7,
+        "endLine": 340,
+        "endChar": 36
+      },
+      "revId": "fb5a85421cb142068e9fc541bcc00eb46c810663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b1e82a_b92e7c9f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-24T06:37:41Z",
+      "side": 1,
+      "message": "Why do we need to reset the last_beep_time here?",
+      "range": {
+        "startLine": 344,
+        "startChar": 5,
+        "endLine": 344,
+        "endChar": 27
+      },
+      "revId": "fb5a85421cb142068e9fc541bcc00eb46c810663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
