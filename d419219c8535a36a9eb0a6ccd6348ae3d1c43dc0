@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab4e7ef2_33d63e44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73375fae_73472dbd",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2e3e52b_e4bd43a6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 31
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "32ecd85f_3eebd85c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2e3e52b_e4bd43a6",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4a30bb9_0ee1e0cd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 31
@@ -68,6 +116,30 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8691cd85_72e07c67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4a30bb9_0ee1e0cd",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "ab52a08f_adbe3d16",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34b140d3_1648ac68",
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a6bc2e7_fe88a780",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 31
@@ -125,6 +215,30 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5714b5_19cf7099",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "You are right!",
+      "parentUuid": "5a6bc2e7_fe88a780",
+      "range": {
+        "startLine": 321,
+        "startChar": 6,
+        "endLine": 321,
+        "endChar": 45
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "5dc6c266_4c2ee58d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done\nSince we want to cache the debug info, I think we should not free() it and thus we can remove it.",
+      "parentUuid": "3197af00_01db0262",
+      "range": {
+        "startLine": 260,
+        "startChar": 12,
+        "endLine": 260,
+        "endChar": 22
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "779a93f9_a33fff05",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 31
@@ -174,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "5de0921d_29afad65",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779a93f9_a33fff05",
+      "range": {
+        "startLine": 262,
+        "startChar": 27,
+        "endLine": 262,
+        "endChar": 29
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d0861ac_3b908283",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 31
@@ -188,6 +350,24 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc01363_ce7b0008",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d0861ac_3b908283",
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +417,54 @@
     },
     {
       "key": {
+        "uuid": "8dabff64_737d862f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "IMHO use the term `page` only is quite confused here, we used `page` before but changed to `current_page` now.\n\nReference for some prior comments:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2251868/15/firmware/2lib/include/2api.h#1334",
+      "parentUuid": "7fc6eb10_af2fe860",
+      "range": {
+        "startLine": 1323,
+        "startChar": 10,
+        "endLine": 1323,
+        "endChar": 22
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e624c397_8888db80",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52ecf33c_8f97f926",
+      "range": {
+        "startLine": 1323,
+        "startChar": 22,
+        "endLine": 1323,
+        "endChar": 25
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b1309ab_14116d08",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 31
@@ -260,6 +488,30 @@
     },
     {
       "key": {
+        "uuid": "114c17e3_23039fbf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done\n\nDo we have further concern about a line contains one word only?\n(See the newer version which we have only one word `ignored.` in the last line.)",
+      "parentUuid": "1b1309ab_14116d08",
+      "range": {
+        "startLine": 1325,
+        "startChar": 6,
+        "endLine": 1325,
+        "endChar": 33
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9589c733_22fcbb20",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 31
@@ -280,6 +532,30 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5071db15_dd614abb",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9589c733_22fcbb20",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -447,6 +723,30 @@
       "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf9635f_b9c89bbc",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "Done\n\nI think we can skip adding current_page check in vb2_ui_action_tests since there are nothing to do with current_page for now.\n(We test log_* actions by debug info screen directly - do you think we should add log_* actions into 2ui_private.h and make some functional tests?)",
+      "parentUuid": "c4d9195b_55a2d827",
+      "range": {
+        "startLine": 1080,
+        "startChar": 26,
+        "endLine": 1080,
+        "endChar": 27
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

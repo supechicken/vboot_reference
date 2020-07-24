@@ -299,6 +299,30 @@
     },
     {
       "key": {
+        "uuid": "0b512000_f00293b3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T10:42:36Z",
+      "side": 1,
+      "message": "I think we should wait for Gogo\u0027s design.",
+      "parentUuid": "8fa44452_b26e03a8",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9f9e312b3d7503e26c7f3d414a52439ab8bddeeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7f99a75_a6fccc79",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 27
