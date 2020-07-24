@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5780a730_b538ff38",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "Thanks. This function undo in patchset #13.",
+      "parentUuid": "486dc4ff_ea2842a5",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ddb6e1b_eee938d1",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
@@ -80,6 +104,30 @@
       "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836f4e11_1912fbb4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "Not sure I get the question. This message is now undo to non-refactored version of physical presence check. Feel free to re-open or create another issue, thanks !",
+      "parentUuid": "0ddb6e1b_eee938d1",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "f947d112_465d1763",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "The current usage seems like with VB2_TRY and VB2_TRY will call vb2api_fail ? Although I don\u0027t know when will it fail. Maybe wrong pointer on *ui ..",
+      "parentUuid": "82f325e7_e6c273b9",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2535f3e4_ed9a5b59",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
@@ -126,6 +198,30 @@
       "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2b0b49_544f9355",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "Sure !",
+      "parentUuid": "2535f3e4_ed9a5b59",
+      "range": {
+        "startLine": 284,
+        "startChar": 8,
+        "endLine": 284,
+        "endChar": 40
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "9d5e5813_a5909755",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "The decision decide to remove physical presence check on diagnostics. Thanks.",
+      "parentUuid": "2e0a6472_0cc2cca2",
+      "range": {
+        "startLine": 1219,
+        "startChar": 1,
+        "endLine": 1219,
+        "endChar": 27
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c15d941_643252fc",
         "filename": "firmware/2lib/include/2ui_private.h",
         "patchSetId": 12
@@ -172,6 +292,30 @@
       "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ee52ee_84164d7c",
+        "filename": "firmware/2lib/include/2ui_private.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "All confirmation will be removed. Thanks.",
+      "parentUuid": "4c15d941_643252fc",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 73
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

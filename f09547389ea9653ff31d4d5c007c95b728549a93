@@ -297,6 +297,30 @@
     },
     {
       "key": {
+        "uuid": "901d3a33_55d3b0b9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "Ah. Now the refactoring of confirmation need to un-done. This probably not fit in the discussion.",
+      "parentUuid": "6bd4af58_6dc5280f",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da05a163_27d598a1",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -382,6 +406,24 @@
       "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8dc789_fb4fb0e9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "It turns out we reach a consensus to exclude the diagnostics option in developer screen [1] . Only one occurring, making it another function doesn\u0027t make sence.\nMarking resolved. Thanks everyone !\n \n\n\n[1]: https://docs.google.com/document/d/1kiYd7HsikVFeUEsLImLmg152wXa_v8N_-Zwe_yYdn1w/edit?disco\u003dAAAAKAB62ZQ",
+      "parentUuid": "a056ede1_eec7456d",
+      "revId": "f09547389ea9653ff31d4d5c007c95b728549a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

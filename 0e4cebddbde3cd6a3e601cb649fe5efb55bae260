@@ -433,6 +433,30 @@
     },
     {
       "key": {
+        "uuid": "b9d2dea2_58c1a22e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-24T11:22:49Z",
+      "side": 1,
+      "message": "I\u0027m rolling back this to non refactored version of physical presence check as there is only one place right now (normal -\u003e dev confirm). Let\u0027s do it in separate CL (with new issue tracker) if this is something team agreed later !",
+      "parentUuid": "6dc10387_6273c235",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "0e4cebddbde3cd6a3e601cb649fe5efb55bae260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ff4a9f7_f5954792",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 8
