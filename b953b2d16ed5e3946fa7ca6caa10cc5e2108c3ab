@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "a14da0e1_92d6dde4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T12:59:27Z",
+      "side": 1,
+      "message": "I am not sure if we should run all the confirmation tests both in to_dev and diagnostics or not. (The concern is about test coverage)\n\nSince you split out these confirm_screen_init, my suggestion about tests is:\n(1) Declare these function in 2ui_private.h\n(2) Start a new block of tests in vb2_ui_action_tests.c called confirm_action_tests() or something else.\n(3) Move most of the recovery_to_dev tests inside confirm_action_tests()",
+      "range": {
+        "startLine": 71,
+        "startChar": 19,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "486dc4ff_ea2842a5",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
@@ -166,6 +189,30 @@
       "side": 1,
       "message": "The current usage seems like with VB2_TRY and VB2_TRY will call vb2api_fail ? Although I don\u0027t know when will it fail. Maybe wrong pointer on *ui ..",
       "parentUuid": "82f325e7_e6c273b9",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "b953b2d16ed5e3946fa7ca6caa10cc5e2108c3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff612398_cfee6839",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-24T12:59:27Z",
+      "side": 1,
+      "message": "\u003e VB2_TRY will call vb2api_fail ?\nVB2_TRY(func()) with only one param is the same as the abbreviation of\n\n vb2_error_t rv \u003d func()\n if (rv)\n  return rv;\n\nThe vb2api_fail will not be called in the single-param case\n\n\u003e Will we discard the return value since it always success?\nIMHO we could change it to void mask_diagnostics_item() or even a macro since it will always return VB2_SUCCESS?\nThen we can leave out VB2_TRY here.\n\n\u003e Maybe wrong pointer on *ui ..\nI don\u0027t think we should take care of wrong-pointer issue here.",
+      "parentUuid": "f947d112_465d1763",
       "range": {
         "startLine": 134,
         "startChar": 7,
