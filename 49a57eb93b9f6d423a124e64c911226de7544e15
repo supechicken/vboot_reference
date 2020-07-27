@@ -16,6 +16,46 @@
       "revId": "49a57eb93b9f6d423a124e64c911226de7544e15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2dab6b8_dfd62c9f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-27T02:00:29Z",
+      "side": 1,
+      "message": "Since there is only one usage, could we put this in the VB2_SCREEN_RECOVERY_SELECT section?",
+      "revId": "49a57eb93b9f6d423a124e64c911226de7544e15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ea32fc_bafe2b20",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-27T02:00:29Z",
+      "side": 1,
+      "message": "launch",
+      "range": {
+        "startLine": 234,
+        "startChar": 12,
+        "endLine": 234,
+        "endChar": 21
+      },
+      "revId": "49a57eb93b9f6d423a124e64c911226de7544e15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
