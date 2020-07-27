@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "35a06bc6_c54ecd45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-27T10:28:17Z",
+      "side": 1,
+      "message": "Patchset 18 resolved all comments. ",
+      "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efedba70_02e055c2",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 17
@@ -42,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "81aca7ca_621e554f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-27T10:28:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efedba70_02e055c2",
+      "range": {
+        "startLine": 1264,
+        "startChar": 0,
+        "endLine": 1265,
+        "endChar": 52
+      },
+      "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dce02877_ee88ec1e",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 17
@@ -62,6 +103,30 @@
       "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36bdce26_837a064c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-27T10:28:17Z",
+      "side": 1,
+      "message": "Yes. It does. Let me add it.",
+      "parentUuid": "dce02877_ee88ec1e",
+      "range": {
+        "startLine": 1358,
+        "startChar": 0,
+        "endLine": 1358,
+        "endChar": 25
+      },
+      "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "72cb17f8_5eb8c535",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-27T10:28:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d329ae_7f33da9b",
+      "range": {
+        "startLine": 1365,
+        "startChar": 0,
+        "endLine": 1365,
+        "endChar": 25
+      },
+      "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d70d58de_b1a342ce",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 17
@@ -158,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "4198da7b_3acd94d2",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-27T10:28:17Z",
+      "side": 1,
+      "message": "I check it after TEST_EQ(vb2_manual ...) [Line 1378] in new patchest.\nIt will fail if `vb2_nv_set(ui-\u003ectx, VB2_NV_DIAG_REQUEST, 1);` removed. Thanks.",
+      "parentUuid": "d70d58de_b1a342ce",
+      "range": {
+        "startLine": 1373,
+        "startChar": 0,
+        "endLine": 1373,
+        "endChar": 51
+      },
+      "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9590f16_1aa17551",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 17
@@ -178,6 +291,30 @@
       "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b8c490_6f0dcbfc",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-27T10:28:17Z",
+      "side": 1,
+      "message": "Thanks for reminding.",
+      "parentUuid": "c9590f16_1aa17551",
+      "range": {
+        "startLine": 1368,
+        "startChar": 0,
+        "endLine": 1384,
+        "endChar": 0
+      },
+      "revId": "5861d250a79e7568cc7a48e4cc439afc05c2ddce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
