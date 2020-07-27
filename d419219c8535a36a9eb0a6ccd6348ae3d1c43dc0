@@ -465,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "26b3f1cf_39038856",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-27T01:08:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8dabff64_737d862f",
+      "range": {
+        "startLine": 1323,
+        "startChar": 10,
+        "endLine": 1323,
+        "endChar": 22
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b1309ab_14116d08",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 31
@@ -500,6 +524,30 @@
       "side": 1,
       "message": "Done\n\nDo we have further concern about a line contains one word only?\n(See the newer version which we have only one word `ignored.` in the last line.)",
       "parentUuid": "1b1309ab_14116d08",
+      "range": {
+        "startLine": 1325,
+        "startChar": 6,
+        "endLine": 1325,
+        "endChar": 33
+      },
+      "revId": "d419219c8535a36a9eb0a6ccd6348ae3d1c43dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4178787f_3303217c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-27T01:08:33Z",
+      "side": 1,
+      "message": "\u003e Do we have further concern about a line contains one word only?\n\nNo, I don\u0027t think so.",
+      "parentUuid": "114c17e3_23039fbf",
       "range": {
         "startLine": 1325,
         "startChar": 6,

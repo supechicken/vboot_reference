@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4a261ed_c60a4fbd",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-27T01:08:33Z",
+      "side": 1,
+      "message": "Why change this from \u0027const char *\u0027 to \u0027char *\u0027?",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 4
+      },
+      "revId": "c5dadae805bd601bf4386dba1837f13103b8f9ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
