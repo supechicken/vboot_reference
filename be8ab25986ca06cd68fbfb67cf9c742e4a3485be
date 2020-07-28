@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c773acd7_cbeaacdf",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-28T07:57:05Z",
+      "side": 1,
+      "message": "This is NOT one of flag in enum vb2_context_flags.",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781b0e36_76fb8b14",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-28T07:57:05Z",
+      "side": 1,
+      "message": "Can we write\n\n /* #3: Launch diagnostics */\n if (DIAGNOSTIC_UI) {\n     add_mock_keypress(VB_KEY_ESC);\n     add_mock_keypress(VB_KEY_DOWN);\n }\n\nso that the entire section is enclosed with the conditional?",
+      "range": {
+        "startLine": 1268,
+        "startChar": 1,
+        "endLine": 1270,
+        "endChar": 33
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258acb06_e0cf4f20",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-28T07:57:05Z",
+      "side": 1,
+      "message": "I think it suffices to check this only for the first time. Maybe we don\u0027t even need to check any disabled_item_mask at all, since we are already testing menu navigation by key presses. If the mask is wrong, the next DISPLAYED_EQ check will fail anyway.",
+      "range": {
+        "startLine": 1290,
+        "startChar": 23,
+        "endLine": 1290,
+        "endChar": 50
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4401cf1e_ce2513a3",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-28T07:57:05Z",
+      "side": 1,
+      "message": "Seeing this, I feel like it\u0027s getting more and more difficult to read the testing code. Since we already have diagnostics_tests(), what do you think if we skip the whole manual_recovery_screen_tests() when DIAGNOSTIC_UI?\n\nJoel, what\u0027s your thought about this?",
+      "range": {
+        "startLine": 1341,
+        "startChar": 1,
+        "endLine": 1342,
+        "endChar": 19
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df60c20b_a6f90cff",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-28T07:57:05Z",
+      "side": 1,
+      "message": "0x0",
+      "range": {
+        "startLine": 1390,
+        "startChar": 23,
+        "endLine": 1390,
+        "endChar": 24
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f6205a8_d61cfb08",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-28T07:57:05Z",
+      "side": 1,
+      "message": "0x0",
+      "range": {
+        "startLine": 1394,
+        "startChar": 23,
+        "endLine": 1394,
+        "endChar": 24
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
