@@ -159,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "4994c268_1dc52b3e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-28T11:54:03Z",
+      "side": 1,
+      "message": "IMHO we should not skip manual_recovery_screen_tests() while DIAGNOSTIC_UI\u003d1, which implies that we could pass all the test with DIAGNOSTIC_UI\u003d1 even if the whole displaying is broken.\n\nI think we can re-design it in some other CLs, like providing DISPLAYED_EQ_CUR to check if the latest vb2ex_display_ui() matches certain screen and ignore others.\n\n--\n\nBut for current implementation, I am for the current approach which contains many if-clauses in between mock keys/checks.\n\n--\n\n\u003e  I\u0027m not totally sure of the current split between xx_tests() and xx_screen_tests()\n\nIMHO we should avoid testing any screens in xx_tests() unless we need to inspect functionality through it (But we have had lots of these things now 😞)",
+      "parentUuid": "09d38146_2405c408",
+      "range": {
+        "startLine": 1341,
+        "startChar": 1,
+        "endLine": 1342,
+        "endChar": 19
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df60c20b_a6f90cff",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
