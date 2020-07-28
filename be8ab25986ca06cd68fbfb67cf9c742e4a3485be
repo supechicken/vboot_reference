@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "13ec1080_ccc99dd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-28T11:34:06Z",
+      "side": 1,
+      "message": "@Peter, I\u0027d like to standardize on our use of the word \"diagnostic\".  Could we consistently spell it as follows, both in strings, code, comments, and documentation?\n\nAs a standalone word: \"diagnostics\" with an \"s\"\nAs a compound phrase: \"diagnostic\" without an \"s\", e.g.\n  \"diagnostic tools\"\n  \"diagnostic menu\"\n  \"diagnostic function\"\n  \"diagnostic tests\"\n  \"diagnostic USE flag\"\n  \"diagnostic UI\"",
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c773acd7_cbeaacdf",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -13,6 +30,30 @@
       "writtenOn": "2020-07-28T07:57:05Z",
       "side": 1,
       "message": "This is NOT one of flag in enum vb2_context_flags.",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1faf5779_3a66d03c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-28T11:34:06Z",
+      "side": 1,
+      "message": "I don\u0027t think we even need to set this nvdata flag in here?  The place it is read and reset is in VbSelectAndLoadKernel, which is tested in vboot_api_kernel4_tests.c.  You probably want to modify THAT test to ensure that the correct function is called there (VbBootDiagnosticLegacyClamshell vs. vb2_diagnostics_menu).",
+      "parentUuid": "c773acd7_cbeaacdf",
       "range": {
         "startLine": 248,
         "startChar": 16,
@@ -82,6 +123,30 @@
       "writtenOn": "2020-07-28T07:57:05Z",
       "side": 1,
       "message": "Seeing this, I feel like it\u0027s getting more and more difficult to read the testing code. Since we already have diagnostics_tests(), what do you think if we skip the whole manual_recovery_screen_tests() when DIAGNOSTIC_UI?\n\nJoel, what\u0027s your thought about this?",
+      "range": {
+        "startLine": 1341,
+        "startChar": 1,
+        "endLine": 1342,
+        "endChar": 19
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d38146_2405c408",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-28T11:34:06Z",
+      "side": 1,
+      "message": "Hmm... I\u0027m not totally sure of the current split between xx_tests() and xx_screen_tests(), but IMHO the entry point into diagnostic UI should be checked here in manual_recovery_screen_tests(), and not diagnostics_tests().  Looking at the other xx_tests() functions, seems like diagnostics_tests() should be checking the diagnostics functionality itself, and not the entry functionality.",
+      "parentUuid": "4401cf1e_ce2513a3",
       "range": {
         "startLine": 1341,
         "startChar": 1,
