@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5f42ff4c_d3bb6e9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-29T10:31:24Z",
+      "side": 1,
+      "message": "Re. VB2_SCREEN_DIAGNOSTICS:\n\nThanks for bringing this up.  This is a tricky case.  I\u0027d say that the variable names here are an exception.  Our convention in the file is to follow \"screen_name_items\" and \"screen_name_screen\" -- so they should indeed match, regardless of what value \"screen_name\" takes on.\n\nSo, to keep to the standardization I mentioned above, I\u0027d prefer to stick with:\n\n  VB2_SCREEN_DIAGNOSTICS\n  diagnostics_items\n  diagnostics_screen\n\nIf you don\u0027t like that, we can also add _MODE or _MENU.  (I know you mentioned you don\u0027t like using _MODE since it\u0027s not a mode per se, but hey, look at \"recovery mode\".)\n\n  VB2_SCREEN_DIAGNOSTIC_MODE\n  diagnostic_mode_items\n  diagnostic_mode_screen",
+      "parentUuid": "b7459a80_7f5d7339",
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c773acd7_cbeaacdf",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -162,6 +180,30 @@
       "side": 1,
       "message": "I\u0027d prefer to add one even if we have nothing extra to do with it.",
       "parentUuid": "5188021b_90a4a50e",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0625cd13_e52044fe",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-29T10:31:24Z",
+      "side": 1,
+      "message": "Ping on adding a test to vboot_api_kernel4_tests.c.",
+      "parentUuid": "77fcc868_a7d95dcd",
       "range": {
         "startLine": 248,
         "startChar": 16,
