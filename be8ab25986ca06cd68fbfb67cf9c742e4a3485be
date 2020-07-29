@@ -150,6 +150,30 @@
     },
     {
       "key": {
+        "uuid": "77fcc868_a7d95dcd",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-29T10:16:14Z",
+      "side": 1,
+      "message": "I\u0027d prefer to add one even if we have nothing extra to do with it.",
+      "parentUuid": "5188021b_90a4a50e",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "781b0e36_76fb8b14",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -185,6 +209,30 @@
       "side": 1,
       "message": "I try to follow the convention here that \"add_mock_keypress(VB_KEY_ESC);\" at every section. \nIf we change it to \n\n /* #3: Launch diagnostics */\n if (DIAGNOSTIC_UI) {\n     add_mock_keypress(VB_KEY_ESC);\n     add_mock_keypress(VB_KEY_DOWN);\n }\n\nThen we also need to add another condition under \n /* #4: Advanced options */\n if (!DIAGNOSTIC_UI)\n     add_mock_keypress(VB_KEY_ESC);  /* To leave External disk recovery */\n\nMaybe the better approach is to move the \"add_mock_keypress(VB_KEY_ESC);\" one line up and check  the we are back to VB2_SCREEN_RECOVERY_SELECT under /* #2: External disk recovery */\n\nwdyt ?",
       "parentUuid": "781b0e36_76fb8b14",
+      "range": {
+        "startLine": 1268,
+        "startChar": 1,
+        "endLine": 1270,
+        "endChar": 33
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4c1ba3_40d23658",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-29T10:16:14Z",
+      "side": 1,
+      "message": "\u003e Maybe the better approach is to move the \"add_mock_keypress(VB_KEY_ESC);\"\n\nI think we should not move the place of ESC - for consistency, we will modify a lot.\nSince we are going to get rid of inspecting by vb2ex_display_ui() call eventually, I think we should avoid big changes now.\nEither the quote-a-line or quote-a-section is fine with me.",
+      "parentUuid": "de3702b7_a77f6353",
       "range": {
         "startLine": 1268,
         "startChar": 1,
@@ -327,6 +375,30 @@
       "side": 1,
       "message": "\u003e xx_tests() vs xx_screen_tests()\n\nI think the current design is:\n\n- xx_tests(): Test functionality. This usually doesn\u0027t contain menu navigation.\n- xx_screen_tests(): Test displayed screens. This is full of UP \u0026 DOWN mock key presses.\n\nIf this is the consensus, then\n\n1. The current state of this function looks fine.\n2. The content of diagnostics_tests() might fit better in manual_recovery_tests(), since it\u0027s testing the functionality of recovery UI.\n3. The current diagnostics_screen_tests() also looks fine, since it only checks displayed screens.",
       "parentUuid": "4994c268_1dc52b3e",
+      "range": {
+        "startLine": 1341,
+        "startChar": 1,
+        "endLine": 1342,
+        "endChar": 19
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3573d0de_c86119fa",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-29T10:16:14Z",
+      "side": 1,
+      "message": "\u003e 2. The content of diagnostics_tests() might fit better in manual_recovery_tests(), since it\u0027s testing the functionality of recovery UI.\n\nI agree.\nI\u0027d prefer to move these test items into manual_recovery_tests() since we are only allowed to enter the diagnostic UI from manual recovery UI.\nIt is more likely that the entry is a feature of manual recovery UI.",
+      "parentUuid": "1aa07672_501ff539",
       "range": {
         "startLine": 1341,
         "startChar": 1,
