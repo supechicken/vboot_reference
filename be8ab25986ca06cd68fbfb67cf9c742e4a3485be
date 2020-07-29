@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b7459a80_7f5d7339",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-29T10:01:21Z",
+      "side": 1,
+      "message": "Hmm... it\u0027s hard for me to tell if something is a compound word or not. For example, \"screen_diagnostics\" and \"diagnostic_screen\".",
+      "parentUuid": "4ba8830c_5c72cb43",
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c773acd7_cbeaacdf",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -96,6 +114,30 @@
       "side": 1,
       "message": "Will it be suggested to still have FOR_DIAGNOSTICS enum ? It looks like I still need that [Line 228] to properly reset things for my screen.",
       "parentUuid": "1faf5779_3a66d03c",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db004828_f82d5e8e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-29T10:01:21Z",
+      "side": 1,
+      "message": "I\u0027m fine if we add FOR_DIAGNOSTICS to the enum and not change anything in this function.",
+      "parentUuid": "5188021b_90a4a50e",
       "range": {
         "startLine": 248,
         "startChar": 16,
