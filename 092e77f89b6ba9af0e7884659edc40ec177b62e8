@@ -111,6 +111,30 @@
       "revId": "092e77f89b6ba9af0e7884659edc40ec177b62e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f294c01_e91b67a1",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-07-29T16:36:36Z",
+      "side": 1,
+      "message": "\u003e we\u0027re working on deleting these scripts with python\n\nGood to know!  We might be able to use Android\u0027s official signing script.\n\n\u003e so not sure it\u0027s worth cleaning them up.\n\nIf it\u0027s easy to add a presubmit hook, that might help.",
+      "parentUuid": "e4e8331c_5439f013",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 73
+      },
+      "revId": "092e77f89b6ba9af0e7884659edc40ec177b62e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
