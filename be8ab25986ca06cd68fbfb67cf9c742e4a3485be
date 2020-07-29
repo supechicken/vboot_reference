@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ba8830c_5c72cb43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-29T07:27:20Z",
+      "side": 1,
+      "message": "I\u0027m removing the \u0027s\u0027 for VB2_SCREEN_DIAGNOSTICS . Otherwise, it looks a bit strange to have `diagnostic_items` , `diagnostic_screen` (where write it backward will lead to SCREEN_DIAGNOSTICS ) . Let me know if you have a different thought. Thanks.",
+      "parentUuid": "13ec1080_ccc99dd3",
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c773acd7_cbeaacdf",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "5188021b_90a4a50e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-29T07:27:20Z",
+      "side": 1,
+      "message": "Will it be suggested to still have FOR_DIAGNOSTICS enum ? It looks like I still need that [Line 228] to properly reset things for my screen.",
+      "parentUuid": "1faf5779_3a66d03c",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "781b0e36_76fb8b14",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -77,6 +119,30 @@
       "writtenOn": "2020-07-28T07:57:05Z",
       "side": 1,
       "message": "Can we write\n\n /* #3: Launch diagnostics */\n if (DIAGNOSTIC_UI) {\n     add_mock_keypress(VB_KEY_ESC);\n     add_mock_keypress(VB_KEY_DOWN);\n }\n\nso that the entire section is enclosed with the conditional?",
+      "range": {
+        "startLine": 1268,
+        "startChar": 1,
+        "endLine": 1270,
+        "endChar": 33
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de3702b7_a77f6353",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-29T07:27:20Z",
+      "side": 1,
+      "message": "I try to follow the convention here that \"add_mock_keypress(VB_KEY_ESC);\" at every section. \nIf we change it to \n\n /* #3: Launch diagnostics */\n if (DIAGNOSTIC_UI) {\n     add_mock_keypress(VB_KEY_ESC);\n     add_mock_keypress(VB_KEY_DOWN);\n }\n\nThen we also need to add another condition under \n /* #4: Advanced options */\n if (!DIAGNOSTIC_UI)\n     add_mock_keypress(VB_KEY_ESC);  /* To leave External disk recovery */\n\nMaybe the better approach is to move the \"add_mock_keypress(VB_KEY_ESC);\" one line up and check  the we are back to VB2_SCREEN_RECOVERY_SELECT under /* #2: External disk recovery */\n\nwdyt ?",
+      "parentUuid": "781b0e36_76fb8b14",
       "range": {
         "startLine": 1268,
         "startChar": 1,
@@ -109,6 +175,30 @@
       "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18fa1ea_b9a715ac",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-29T07:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258acb06_e0cf4f20",
+      "range": {
+        "startLine": 1290,
+        "startChar": 23,
+        "endLine": 1290,
+        "endChar": 50
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -230,6 +320,30 @@
     },
     {
       "key": {
+        "uuid": "5f3c235b_20ea318d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-29T07:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df60c20b_a6f90cff",
+      "range": {
+        "startLine": 1390,
+        "startChar": 23,
+        "endLine": 1390,
+        "endChar": 24
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f6205a8_d61cfb08",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -250,6 +364,30 @@
       "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4c22c0_56503783",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-07-29T07:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6205a8_d61cfb08",
+      "range": {
+        "startLine": 1394,
+        "startChar": 23,
+        "endLine": 1394,
+        "endChar": 24
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
