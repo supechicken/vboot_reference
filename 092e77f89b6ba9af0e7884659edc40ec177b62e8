@@ -87,6 +87,30 @@
       "revId": "092e77f89b6ba9af0e7884659edc40ec177b62e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4e8331c_5439f013",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-07-29T05:36:23Z",
+      "side": 1,
+      "message": "shellcheck does catch this, but we don\u0027t have it enabled in the vboot repo.  we\u0027re working on deleting these scripts with python, so not sure it\u0027s worth cleaning them up.\n\n $ cros lint ...\n In sign_android_image.sh line 209:\n  local file_contexts\u003d \\\n        ^-----------^ SC2034: file_contexts appears unused. Verify use (or export if used externally).\n                     ^-- SC1007: Remove space after \u003d if trying to assign a value (for empty string, use var\u003d\u0027\u0027 ... ).\n\nit\u0027s prob a bit more nuanced than you expect though as this isn\u0027t a syntax error.  consider:\n\n f() {\n   echo $foo\n   local var\u003d\"foo\"\n   local \"${var}\u003d1\"\n   echo $foo\n }\n foo\u003d10\n f\n\nthis creates a local variable named \"foo\" and sets it to 1.  so the output is \"10\" then \"1\".\n\nif you ran the code, you\u0027d get an identifier error because \"/\" can\u0027t be in var names, but if you were setting it to a simple string, it would be valid.\n\n # Creates one local var |foo| and sets it to \"bar\".\n local foo\u003d\"bar\"\n # Creates two local vars |foo| and |bar| both initialized to nothing.\n local foo\u003d \"bar\"",
+      "parentUuid": "e9374dee_2bc7e4b8",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 73
+      },
+      "revId": "092e77f89b6ba9af0e7884659edc40ec177b62e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
