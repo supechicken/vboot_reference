@@ -183,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "1aa07672_501ff539",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-29T03:37:39Z",
+      "side": 1,
+      "message": "\u003e xx_tests() vs xx_screen_tests()\n\nI think the current design is:\n\n- xx_tests(): Test functionality. This usually doesn\u0027t contain menu navigation.\n- xx_screen_tests(): Test displayed screens. This is full of UP \u0026 DOWN mock key presses.\n\nIf this is the consensus, then\n\n1. The current state of this function looks fine.\n2. The content of diagnostics_tests() might fit better in manual_recovery_tests(), since it\u0027s testing the functionality of recovery UI.\n3. The current diagnostics_screen_tests() also looks fine, since it only checks displayed screens.",
+      "parentUuid": "4994c268_1dc52b3e",
+      "range": {
+        "startLine": 1341,
+        "startChar": 1,
+        "endLine": 1342,
+        "endChar": 19
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df60c20b_a6f90cff",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
