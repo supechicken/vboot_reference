@@ -54,6 +54,32 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 /******************************************************************************/
 /* Functions used for log screens */
 
+static vb2_error_t log_page_set_page(struct vb2_ui_context *ui,
+				     uint32_t current_page,
+				     uint32_t page_up_item,
+				     uint32_t page_down_item,
+				     uint32_t alternate_item)
+{
+	/* Clear bits of page up / down. */
+	ui->state->disabled_item_mask &= ~(1 << page_up_item);
+	ui->state->disabled_item_mask &= ~(1 << page_down_item);
+
+	/* We don't need to show page up/down button if we only have 1 page. */
+	if (ui->state->page_count == 1) {
+		ui->state->disabled_item_mask |= 1 << page_up_item;
+		ui->state->disabled_item_mask |= 1 << page_down_item;
+		ui->state->selected_item = alternate_item;
+	} else if (ui->state->current_page == 0) {
+		ui->state->disabled_item_mask |= 1 << page_up_item;
+		ui->state->selected_item = page_down_item;
+	} else if (ui->state->current_page == ui->state->page_count - 1) {
+		ui->state->disabled_item_mask |= 1 << page_down_item;
+		ui->state->selected_item = page_up_item;
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 static vb2_error_t log_page_init(struct vb2_ui_context *ui,
 				 uint32_t page_up_item,
 				 uint32_t page_down_item,
@@ -61,16 +87,8 @@ static vb2_error_t log_page_init(struct vb2_ui_context *ui,
 {
 	ui->state->current_page = 0;
 
-	if (ui->state->page_count == 1) {
-		ui->state->disabled_item_mask |= 1 << page_up_item;
-		ui->state->disabled_item_mask |= 1 << page_down_item;
-		ui->state->selected_item = alternate_item;
-	} else {
-		ui->state->disabled_item_mask |= 1 << page_up_item;
-		ui->state->selected_item = page_down_item;
-	}
-
-	return VB2_REQUEST_UI_CONTINUE;
+	return log_page_set_page(ui, 0, page_up_item, page_down_item,
+				 alternate_item);
 }
 
 static vb2_error_t log_page_prev(struct vb2_ui_context *ui,
@@ -81,15 +99,8 @@ static vb2_error_t log_page_prev(struct vb2_ui_context *ui,
 		return VB2_REQUEST_UI_CONTINUE;
 	ui->state->current_page--;
 
-	/* Clear bits of page down. */
-	ui->state->disabled_item_mask &= ~(1 << page_down_item);
-
-	if (ui->state->current_page == 0) {
-		ui->state->disabled_item_mask |= 1 << page_up_item;
-		ui->state->selected_item = page_down_item;
-	}
-
-	return VB2_REQUEST_UI_CONTINUE;
+	return log_page_set_page(ui, ui->state->current_page, page_up_item,
+				 page_down_item, -1 /* not used */);
 }
 
 static vb2_error_t log_page_next(struct vb2_ui_context *ui,
@@ -100,15 +111,8 @@ static vb2_error_t log_page_next(struct vb2_ui_context *ui,
 		return VB2_REQUEST_UI_CONTINUE;
 	ui->state->current_page++;
 
-	/* Clear bits of page up. */
-	ui->state->disabled_item_mask &= ~(1 << page_up_item);
-
-	if (ui->state->current_page == ui->state->page_count - 1) {
-		ui->state->disabled_item_mask |= 1 << page_down_item;
-		ui->state->selected_item = page_up_item;
-	}
-
-	return VB2_REQUEST_UI_CONTINUE;
+	return log_page_set_page(ui, ui->state->current_page, page_up_item,
+				 page_down_item, -1 /* not used */);
 }
 
 /******************************************************************************/
