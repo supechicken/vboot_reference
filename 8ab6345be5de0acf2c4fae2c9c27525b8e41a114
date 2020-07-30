@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf95e08_8d68d8bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-30T08:06:34Z",
+      "side": 1,
+      "message": "This looks pretty straightforward.  Should be fine to merge in the firmware branch.",
+      "revId": "8ab6345be5de0acf2c4fae2c9c27525b8e41a114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8862dd7_7a4b3698",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-07-30T08:06:34Z",
+      "side": 1,
+      "message": "150",
+      "range": {
+        "startLine": 1217,
+        "startChar": 29,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "8ab6345be5de0acf2c4fae2c9c27525b8e41a114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
