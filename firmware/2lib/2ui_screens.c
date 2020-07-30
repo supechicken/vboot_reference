@@ -177,7 +177,7 @@ static vb2_error_t language_select_init(struct vb2_ui_context *ui)
 	if (menu->num_items == 0) {
 		VB2_DEBUG("ERROR: No menu items found; "
 			  "rejecting entering language selection screen\n");
-		return vb2_ui_screen_back(ui);
+		return VB2_REQUEST_UI_BACK;
 	}
 	if (ui->locale_id < menu->num_items) {
 		ui->state->selected_item = ui->locale_id;
@@ -258,14 +258,22 @@ static const struct vb2_screen_info advanced_options_screen = {
 #define DEBUG_INFO_ITEM_PAGE_DOWN 2
 #define DEBUG_INFO_ITEM_BACK 3
 
-static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
+static vb2_error_t debug_info_reinit(struct vb2_ui_context *ui)
 {
 	const char *log_string = vb2ex_get_debug_info(ui->ctx);
 	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
 	if (ui->state->page_count == 0) {
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
+		return VB2_REQUEST_UI_BACK;
 	}
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
+{
+	vb2_error_t rv = debug_info_reinit(ui);
+	if (rv != VB2_REQUEST_UI_CONTINUE)
+		return rv;
 	return log_page_init(ui,
 			     DEBUG_INFO_ITEM_PAGE_UP,
 			     DEBUG_INFO_ITEM_PAGE_DOWN,
@@ -304,6 +312,7 @@ static const struct vb2_screen_info debug_info_screen = {
 	.id = VB2_SCREEN_DEBUG_INFO,
 	.name = "Debug info",
 	.init = debug_info_init,
+	.reinit = debug_info_reinit,
 	.menu = MENU_ITEMS(debug_info_items),
 };
 
@@ -389,12 +398,12 @@ vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) {
 		/* We're in dev mode, so let user know they can't transition */
 		ui->error_code = VB2_UI_ERROR_DEV_MODE_ALREADY_ENABLED;
-		return vb2_ui_screen_back(ui);
+		return VB2_REQUEST_UI_BACK;
 	}
 
 	if (!PHYSICAL_PRESENCE_KEYBOARD && vb2ex_physical_presence_pressed()) {
 		VB2_DEBUG("Presence button stuck?\n");
-		return vb2_ui_screen_back(ui);
+		return VB2_REQUEST_UI_BACK;
 	}
 
 	ui->state->selected_item = RECOVERY_TO_DEV_ITEM_CONFIRM;
