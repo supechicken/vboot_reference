@@ -41,6 +41,8 @@ struct vb2_screen_info {
 	const char *name;
 	/* Init function runs once when changing to the screen. */
 	vb2_error_t (*init)(struct vb2_ui_context *ui);
+	/* Re-init function runs once when back to the screen. */
+	vb2_error_t (*reinit)(struct vb2_ui_context *ui);
 	/* Action function runs repeatedly while on the screen. */
 	vb2_error_t (*action)(struct vb2_ui_context *ui);
 	/* Menu items. */
@@ -58,6 +60,7 @@ struct vb2_screen_state {
 	uint32_t disabled_item_mask;
 
 	/* For log screen. */
+	const char *log_string;
 	uint32_t page_count;
 	uint32_t current_page;
 

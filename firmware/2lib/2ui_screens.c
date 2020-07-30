@@ -73,6 +73,23 @@ static vb2_error_t log_page_init(struct vb2_ui_context *ui,
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
+static vb2_error_t log_page_reinit(struct vb2_ui_context *ui)
+{
+	const char *log_string;
+
+	/* Initialize log string again without changing current page */
+	log_string = ui->state->log_string;
+	if (log_string) {
+		ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+		if (ui->state->page_count == 0)
+			VB2_DEBUG("ERROR: Re-initialize log string failed; "
+				  "ignoring\n");
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+
 static vb2_error_t log_page_prev(struct vb2_ui_context *ui,
 				 uint32_t page_up_item,
 				 uint32_t page_down_item)
@@ -264,8 +281,8 @@ static const struct vb2_screen_info advanced_options_screen = {
 
 static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_debug_info(ui->ctx);
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->log_string = vb2ex_get_debug_info(ui->ctx);
+	ui->state->page_count = vb2ex_prepare_log_screen(ui->state->log_string);
 	if (ui->state->page_count == 0) {
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
@@ -308,6 +325,7 @@ static const struct vb2_screen_info debug_info_screen = {
 	.id = VB2_SCREEN_DEBUG_INFO,
 	.name = "Debug info",
 	.init = debug_info_init,
+	.reinit = log_page_reinit,
 	.menu = MENU_ITEMS(debug_info_items),
 };
 
@@ -320,8 +338,8 @@ static const struct vb2_screen_info debug_info_screen = {
 
 static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_firmware_log();
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->log_string = vb2ex_get_firmware_log();
+	ui->state->page_count = vb2ex_prepare_log_screen(ui->state->log_string);
 	if (ui->state->page_count == 0) {
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
@@ -364,6 +382,7 @@ static const struct vb2_screen_info firmware_log_screen = {
 	.id = VB2_SCREEN_FIRMWARE_LOG,
 	.name = "Firmware log",
 	.init = firmware_log_init,
+	.reinit = log_page_reinit,
 	.menu = MENU_ITEMS(firmware_log_items),
 };
 
