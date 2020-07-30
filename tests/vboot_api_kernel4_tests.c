@@ -43,6 +43,8 @@ static uint32_t expected_recovery_reason;
 static uint32_t mock_presence[8];
 static uint32_t mock_presence_count;
 
+static int mock_diagnostic_ui_enabled;
+
 static void reset_common_data(void)
 {
 	memset(&kparams, 0, sizeof(kparams));
@@ -73,6 +75,8 @@ static void reset_common_data(void)
 
 	memset(mock_presence, 0, sizeof(mock_presence));
 	mock_presence_count = 0;
+
+	mock_diagnostic_ui_enabled = 0;
 
 	sd->status |= VB2_SD_STATUS_SECDATA_KERNEL_INIT;
 	sd->status |= VB2_SD_STATUS_SECDATA_FWMP_INIT;
@@ -180,6 +184,11 @@ vb2_error_t VbBootDiagnosticLegacyClamshell(struct vb2_context *c)
 	return vbboot_retval;
 }
 
+int vb2api_diagnostic_ui_enabled(struct vb2_context *c)
+{
+	return mock_diagnostic_ui_enabled;
+}
+
 int vb2ex_physical_presence_pressed(void)
 {
 	if (mock_presence_count < ARRAY_SIZE(mock_presence))
@@ -251,12 +260,20 @@ static void select_and_load_kernel_tests(void)
 	if (DIAGNOSTIC_UI) {
 		reset_common_data();
 		mock_presence[1] = 1;
+		mock_diagnostic_ui_enabled = 1;
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 		vbboot_retval = -4;
 		test_slk(VB2_ERROR_MOCK, 0,
-			 "Normal boot with diag");
+			 "Normal boot with diag enabled");
 		TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST),
 			0, "  diag not requested");
+
+		reset_common_data();
+		mock_presence[1] = 1;
+		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+		vbboot_retval = -1;
+		test_slk(VB2_ERROR_MOCK, 0,
+			 "Normal boot with diag disabled");
 	}
 
 	/* Boot normal - phase1 failure */
