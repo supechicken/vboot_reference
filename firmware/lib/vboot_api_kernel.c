@@ -240,7 +240,13 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		} else {
 			VB2_TRY(VbBootRecoveryLegacyClamshell(ctx));
 		}
+<<<<<<< HEAD   (2cb872 vboot/ui: Fix the back button in log screen)
 	} else if (DIAGNOSTIC_UI && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+=======
+	} else if (DIAGNOSTIC_UI && !MENU_UI &&
+		   vb2api_diagnostic_ui_enabled(ctx) &&
+		   vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+>>>>>>> CHANGE (329564 vboot: create secdata_kernel flag to disable diagnostic UI)
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
 
 		/*
