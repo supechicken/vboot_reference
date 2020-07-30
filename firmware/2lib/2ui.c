@@ -206,6 +206,22 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Screen navigation functions */
 
+static vb2_error_t screen_reinit(struct vb2_ui_context *ui)
+{
+	const char *log_string;
+
+	/* Initialize log string again without changing current page */
+	log_string = ui->state->log_string;
+	if (log_string) {
+		ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+		if (ui->state->page_count == 0)
+			VB2_DEBUG("ERROR: Re-initialize log string fail; "
+				  "ignoring\n");
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 {
 	struct vb2_screen_state *tmp;
@@ -214,6 +230,7 @@ vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 		tmp = ui->state->prev;
 		free(ui->state);
 		ui->state = tmp;
+		return screen_reinit(ui);
 	} else {
 		VB2_DEBUG("ERROR: No previous screen; ignoring\n");
 	}
@@ -259,6 +276,7 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 			ui->state = cur_state->prev;
 			free(cur_state);
 		}
+		return screen_reinit(ui);
 	} else {
 		/* Allocate the requested screen on top of the stack. */
 		cur_state = malloc(sizeof(*ui->state));
