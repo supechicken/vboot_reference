@@ -209,13 +209,23 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 {
 	struct vb2_screen_state *tmp;
+	vb2_error_t rv = VB2_REQUEST_UI_CONTINUE;
 
 	if (ui->state && ui->state->prev) {
 		tmp = ui->state->prev;
 		free(ui->state);
 		ui->state = tmp;
+		if (ui->state->screen->reinit)
+			rv = ui->state->screen->reinit(ui);
 	} else {
 		VB2_DEBUG("ERROR: No previous screen; ignoring\n");
+	}
+
+	/* The previous screen rejected;  go back again. */
+	if (rv == VB2_REQUEST_UI_BACK) {
+		VB2_DEBUG("ERROR: Screen entry %#x rejected; go back\n",
+			  ui->state->screen->id);
+		return vb2_ui_screen_back(ui);
 	}
 
 	return VB2_REQUEST_UI_CONTINUE;
@@ -235,6 +245,7 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 	const struct vb2_screen_info *new_screen_info;
 	struct vb2_screen_state *cur_state;
 	int state_exists = 0;
+	vb2_error_t rv = VB2_REQUEST_UI_CONTINUE;
 
 	new_screen_info = vb2_get_screen_info(id);
 	if (new_screen_info == NULL) {
@@ -259,6 +270,8 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 			ui->state = cur_state->prev;
 			free(cur_state);
 		}
+		if (ui->state->screen->reinit)
+			rv = ui->state->screen->reinit(ui);
 	} else {
 		/* Allocate the requested screen on top of the stack. */
 		cur_state = malloc(sizeof(*ui->state));
@@ -271,9 +284,15 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 		cur_state->screen = new_screen_info;
 		ui->state = cur_state;
 		if (ui->state->screen->init)
-			return ui->state->screen->init(ui);
+			rv = ui->state->screen->init(ui);
 		else
-			return default_screen_init(ui);
+			rv = default_screen_init(ui);
+	}
+
+	/* The screen rejected;  go back. */
+	if (rv == VB2_REQUEST_UI_BACK) {
+		VB2_DEBUG("ERROR: Screen entry %#x rejected; go back\n", id);
+		return vb2_ui_screen_back(ui);
 	}
 
 	return VB2_REQUEST_UI_CONTINUE;
