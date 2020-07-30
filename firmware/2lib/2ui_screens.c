@@ -264,8 +264,8 @@ static const struct vb2_screen_info advanced_options_screen = {
 
 static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_debug_info(ui->ctx);
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->log_string = vb2ex_get_debug_info(ui->ctx);
+	ui->state->page_count = vb2ex_prepare_log_screen(ui->state->log_string);
 	if (ui->state->page_count == 0) {
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
@@ -320,8 +320,8 @@ static const struct vb2_screen_info debug_info_screen = {
 
 static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_firmware_log();
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->log_string = vb2ex_get_firmware_log();
+	ui->state->page_count = vb2ex_prepare_log_screen(ui->state->log_string);
 	if (ui->state->page_count == 0) {
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
