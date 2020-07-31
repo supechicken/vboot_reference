@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a387d57_3408a74d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-31T08:11:06Z",
+      "side": 1,
+      "message": "My preferred workaround is:\n* Add a param \u0027start_page\u0027 in log_page_init(ui, page_up, page_down, alt, start_page)\nto directly set the starting page we see.\n* Do not change anything about log_page_prev() and log_page_next()\n\nWhat do you think?\nWill we need to set page directly in certain scenarios other than init()?\n",
+      "revId": "d0bc9b3f1a5b1883e14b2833b7a4d51afcd4dca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ac6fcc9_aad1229a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-31T08:11:06Z",
+      "side": 1,
+      "message": "IMHO this name is too twist here. What about just log_set_page()",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "d0bc9b3f1a5b1883e14b2833b7a4d51afcd4dca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e48e63_78dc2a30",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-31T08:11:06Z",
+      "side": 1,
+      "message": "The spaces are inconsistent with the above one",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "d0bc9b3f1a5b1883e14b2833b7a4d51afcd4dca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7fb82d_6652dd46",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-31T08:11:06Z",
+      "side": 1,
+      "message": "The alternative_item is uint32_t, we should not use -1 here.",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 23
+      },
+      "revId": "d0bc9b3f1a5b1883e14b2833b7a4d51afcd4dca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e53f94e_ac84f30e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-31T08:11:06Z",
+      "side": 1,
+      "message": "One space or two spaces?",
+      "range": {
+        "startLine": 103,
+        "startChar": 23,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "d0bc9b3f1a5b1883e14b2833b7a4d51afcd4dca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f5f088_cb969d73",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-07-31T08:11:06Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "d0bc9b3f1a5b1883e14b2833b7a4d51afcd4dca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
