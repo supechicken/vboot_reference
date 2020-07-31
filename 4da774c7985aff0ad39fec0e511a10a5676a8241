@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a53092f_233688c2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T06:49:44Z",
+      "side": 1,
+      "message": "If page_count \u003d\u003d 0 and then vb2_ui_screen_back() was called in debug_info_reinit(), then we shouldn\u0027t call this.",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 287,
+        "endChar": 21
+      },
+      "revId": "4da774c7985aff0ad39fec0e511a10a5676a8241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
