@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22c4cab7_c510dbde",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T03:54:13Z",
+      "side": 1,
+      "message": "Just like init(), I think it\u0027s better have 2 separate reinit() functions for debug info and bios log screens. Then, we don\u0027t have to store log_string in ui-\u003estate.  What do you think?\n\nWe can call debug_info_reinit() from debug_info_init() to reduce duplicate code.",
+      "range": {
+        "startLine": 76,
+        "startChar": 19,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "2b4386ce33596eda2eb9b47a38a4e7aea6a9021c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45efb63_83ba3749",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T03:54:13Z",
+      "side": 1,
+      "message": "Should we call vb2_ui_screen_back() again on error?",
+      "revId": "2b4386ce33596eda2eb9b47a38a4e7aea6a9021c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "544d0a30_c9504a08",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T03:54:13Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "2b4386ce33596eda2eb9b47a38a4e7aea6a9021c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f425541_fc654207",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T03:54:13Z",
+      "side": 1,
+      "message": "This is incorrect now. How about\n\n changing to the screen which is not in the history stack.",
+      "range": {
+        "startLine": 42,
+        "startChar": 33,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "2b4386ce33596eda2eb9b47a38a4e7aea6a9021c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eaf50ff_99490c7e",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T03:54:13Z",
+      "side": 1,
+      "message": "How about\n\n changing to the screen which is already in the history stack, for example, when going back to the screen. Exactly one of init() and reinit() will be called.",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 54
+      },
+      "revId": "2b4386ce33596eda2eb9b47a38a4e7aea6a9021c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
