@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06d38a33_09175598",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T02:55:37Z",
+      "side": 1,
+      "message": "I think we should add this as a hook to vb2_screen_info, just like screen-\u003einit().",
+      "range": {
+        "startLine": 209,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "3e8e80ff73deef1dda6825dde7385a495d41e48b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e40466a_8663b181",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-07-31T02:55:37Z",
+      "side": 1,
+      "message": "failed",
+      "range": {
+        "startLine": 218,
+        "startChar": 46,
+        "endLine": 218,
+        "endChar": 50
+      },
+      "revId": "3e8e80ff73deef1dda6825dde7385a495d41e48b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
