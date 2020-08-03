@@ -552,6 +552,7 @@ static const struct vb2_screen_info recovery_disk_step3_screen = {
 #define DEVELOPER_MODE_ITEM_RETURN_TO_SECURE 1
 #define DEVELOPER_MODE_ITEM_BOOT_INTERNAL 2
 #define DEVELOPER_MODE_ITEM_BOOT_EXTERNAL 3
+#define DEVELOPER_MODE_ITEM_ALTERNATE_BOOTLOADER 4
 
 vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 {
@@ -572,10 +573,19 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 		ui->state->disabled_item_mask |=
 			1 << DEVELOPER_MODE_ITEM_BOOT_EXTERNAL;
 
+	/* Don't show "Alternate bootloader" button if not allowed. */
+	if (!vb2_dev_boot_legacy_allowed(ui->ctx))
+		ui->state->disabled_item_mask |=
+			1 << DEVELOPER_MODE_ITEM_ALTERNATE_BOOTLOADER;
+
 	/* Choose the default selection. */
 	switch (default_boot) {
 	case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
 		ui->state->selected_item = DEVELOPER_MODE_ITEM_BOOT_EXTERNAL;
+		break;
+	case VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY:
+		ui->state->selected_item =
+			DEVELOPER_MODE_ITEM_ALTERNATE_BOOTLOADER;
 		break;
 	default:
 		ui->state->selected_item = DEVELOPER_MODE_ITEM_BOOT_INTERNAL;
@@ -636,6 +646,22 @@ vb2_error_t vb2_ui_developer_mode_boot_external_action(
 	}
 }
 
+vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
+	struct vb2_ui_context *ui)
+{
+	if (!(ui->ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ||
+	    !vb2_dev_boot_allowed(ui->ctx) ||
+	    !vb2_dev_boot_legacy_allowed(ui->ctx)) {
+		VB2_DEBUG("ERROR: Dev mode alternate bootloader not allowed\n");
+	} else {
+		/* Will not return if successful */
+		VbExLegacy(0);
+		VB2_DEBUG("ERROR: Legacy boot failed\n");
+	}
+	ui->error_beep = 1;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 vb2_error_t developer_mode_action(struct vb2_ui_context *ui)
 {
 	const int use_short = vb2api_use_short_dev_screen_delay(ui->ctx);
@@ -690,6 +716,10 @@ static const struct vb2_menu_item developer_mode_items[] = {
 	[DEVELOPER_MODE_ITEM_BOOT_EXTERNAL] = {
 		.text = "Boot from external disk",
 		.action = vb2_ui_developer_mode_boot_external_action,
+	},
+	[DEVELOPER_MODE_ITEM_ALTERNATE_BOOTLOADER] = {
+		.text = "Alternate bootloader",
+		.action = vb2_ui_developer_mode_boot_alternate_action,
 	},
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,

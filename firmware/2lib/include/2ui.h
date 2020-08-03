@@ -105,6 +105,8 @@ vb2_error_t vb2_ui_developer_mode_boot_internal_action(
 	struct vb2_ui_context *ui);
 vb2_error_t vb2_ui_developer_mode_boot_external_action(
 	struct vb2_ui_context *ui);
+vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
+	struct vb2_ui_context *ui);
 
 /**
  * Get info struct of a screen.
