@@ -570,6 +570,7 @@ static const struct vb2_screen_info recovery_disk_step3_screen = {
 #define DEVELOPER_MODE_ITEM_RETURN_TO_SECURE 1
 #define DEVELOPER_MODE_ITEM_BOOT_INTERNAL 2
 #define DEVELOPER_MODE_ITEM_BOOT_EXTERNAL 3
+#define DEVELOPER_MODE_ITEM_SELECT_BOOTLOADER 4
 
 vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 {
@@ -590,10 +591,19 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 		ui->state->disabled_item_mask |=
 			1 << DEVELOPER_MODE_ITEM_BOOT_EXTERNAL;
 
+	/* Don't show "Select alternate bootloader" button if not allowed. */
+	if (!vb2_dev_boot_legacy_allowed(ui->ctx))
+		ui->state->disabled_item_mask |=
+			1 << DEVELOPER_MODE_ITEM_SELECT_BOOTLOADER;
+
 	/* Choose the default selection. */
 	switch (default_boot) {
 	case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
 		ui->state->selected_item = DEVELOPER_MODE_ITEM_BOOT_EXTERNAL;
+		break;
+	case VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY:
+		ui->state->selected_item =
+			DEVELOPER_MODE_ITEM_SELECT_BOOTLOADER;
 		break;
 	default:
 		ui->state->selected_item = DEVELOPER_MODE_ITEM_BOOT_INTERNAL;
@@ -709,6 +719,10 @@ static const struct vb2_menu_item developer_mode_items[] = {
 		.text = "Boot from external disk",
 		.action = vb2_ui_developer_mode_boot_external_action,
 	},
+	[DEVELOPER_MODE_ITEM_SELECT_BOOTLOADER] = {
+		.text = "Select alternate bootloader",
+		.target = VB2_SCREEN_DEVELOPER_SELECT_BOOTLOADER,
+	},
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -788,6 +802,79 @@ static const struct vb2_screen_info developer_invalid_disk_screen = {
 };
 
 /******************************************************************************/
+/* VB2_SCREEN_DEVELOPER_SELECT_BOOTLOADER */
+
+vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
+	struct vb2_ui_context *ui)
+{
+	if (!(ui->ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ||
+	    !vb2_dev_boot_allowed(ui->ctx) ||
+	    !vb2_dev_boot_legacy_allowed(ui->ctx)) {
+		VB2_DEBUG("ERROR: Dev mode alternate bootloader not allowed\n");
+	} else {
+		/* TODO: Retrieve the correct index for VbExLegacy (0 for
+		   Ctrl+L shortcut, and the appropriate button index when on
+		   VB2_SCREEN_DEVELOPER_SELECT_BOOTLOADER). */
+		/* Will not return if successful */
+		VbExLegacy(0);
+		VB2_DEBUG("ERROR: Alternate bootloader failed\n");
+	}
+	ui->error_beep = 1;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static const struct vb2_menu *get_bootloader_menu(struct vb2_ui_context *ui)
+{
+	int i;
+	uint32_t num_bootloaders, num_items;
+	struct vb2_menu_item *items;
+	static const struct vb2_menu_item menu_prefixes[] = {
+		LANGUAGE_SELECT_ITEM,
+	};
+	static const struct vb2_menu_item menu_postfixes[] = {
+		BACK_ITEM,
+		POWER_OFF_ITEM,
+	};
+
+	if (ui->bootloader_menu.num_items > 0)
+		return &ui->bootloader_menu;
+
+	num_bootloaders = vb2ex_get_bootloader_count();
+	VB2_DEBUG("num_bootloaders: %u\n", num_bootloaders);
+	num_items = num_bootloaders + ARRAY_SIZE(menu_prefixes) +
+		    ARRAY_SIZE(menu_postfixes);
+	items = malloc(num_items * sizeof(struct vb2_menu_item));
+	if (!items) {
+		VB2_DEBUG("ERROR: malloc failed for bootloader items\n");
+		return NULL;
+	}
+
+	/* Copy prefix items to the begin. */
+	memcpy(&items[0], menu_prefixes, sizeof(menu_prefixes));
+
+	/* Copy bootloaders. */
+	for (i = 0; i < num_bootloaders; i++) {
+		items[i + ARRAY_SIZE(menu_prefixes)].text = "Some bootloader";
+		items[i + ARRAY_SIZE(menu_prefixes)].action =
+			vb2_ui_developer_mode_boot_alternate_action;
+	}
+
+	/* Copy postfix items to the end. */
+	memcpy(&items[num_items - ARRAY_SIZE(menu_postfixes)],
+	       menu_postfixes, sizeof(menu_postfixes));
+
+	ui->bootloader_menu.num_items = num_items;
+	ui->bootloader_menu.items = items;
+	return &ui->bootloader_menu;
+}
+
+static const struct vb2_screen_info developer_select_bootloader_screen = {
+	.id = VB2_SCREEN_DEVELOPER_SELECT_BOOTLOADER,
+	.name = "Select alternate bootloader",
+	.get_menu = get_bootloader_menu,
+};
+
+/******************************************************************************/
 /*
  * TODO(chromium:1035800): Refactor UI code across vboot and depthcharge.
  * Currently vboot and depthcharge maintain their own copies of menus/screens.
@@ -813,6 +900,7 @@ static const struct vb2_screen_info *screens[] = {
 	&developer_to_norm_screen,
 	&developer_boot_external_screen,
 	&developer_invalid_disk_screen,
+	&developer_select_bootloader_screen,
 };
 
 const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen id)
