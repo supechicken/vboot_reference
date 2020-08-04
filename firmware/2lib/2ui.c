@@ -334,7 +334,9 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		    /* We want to redraw/beep on a transition. */
 		    prev_error_code != ui.error_code ||
 		    /* We want to beep. */
-		    ui.error_beep != 0) {
+		    ui.error_beep != 0 ||
+		    /* We want to redraw when a screen request to refresh. */
+		    ui.force_display) {
 
 			menu = get_menu(&ui);
 			VB2_DEBUG("<%s> menu item <%s>\n",
@@ -352,6 +354,9 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 				vb2ex_beep(250, 400);
 				ui.error_beep = 0;
 			}
+
+			/* Reset refresh flag. */
+			ui.force_display = 0;
 
 			/* Update prev variables. */
 			memcpy(&prev_state, ui.state, sizeof(*ui.state));
