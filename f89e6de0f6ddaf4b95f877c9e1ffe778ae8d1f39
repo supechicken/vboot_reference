@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "521aa083_0d4f72a9",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-04T06:52:26Z",
+      "side": 1,
+      "message": "For MENU_UI\u003d1, should we add checks about which entries we selected?\n(Since we move the logic about selecting the BROKEN/manual entries into VbSelectAndLoadKernel() in MENU_UI.)\n\nOr should we add that in separate CL?",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 48
+      },
+      "revId": "f89e6de0f6ddaf4b95f877c9e1ffe778ae8d1f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
