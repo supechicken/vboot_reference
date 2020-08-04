@@ -99,6 +99,9 @@ struct vb2_ui_context {
 
 	/* For displaying error messages. */
 	enum vb2_ui_error error_code;
+
+	/* Force refresh flag for screen, will be reset after done */
+	int refresh;
 };
 
 vb2_error_t vb2_ui_developer_mode_boot_internal_action(
