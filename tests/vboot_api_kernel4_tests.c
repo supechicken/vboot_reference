@@ -11,6 +11,7 @@
 #include "2nvstorage.h"
 #include "2secdata.h"
 #include "2sysincludes.h"
+#include "2ui.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
 #include "test_common.h"
@@ -140,6 +141,11 @@ static vb2_error_t boot_dev(struct vb2_context *c)
 	return vbboot_retval;
 }
 
+vb2_error_t vb2_developer_menu(struct vb2_context *c)
+{
+	return boot_dev(c);
+}
+
 vb2_error_t VbBootDeveloperLegacyClamshell(struct vb2_context *c)
 {
 	return boot_dev(c);
@@ -150,7 +156,7 @@ vb2_error_t VbBootDeveloperLegacyMenu(struct vb2_context *c)
 	return boot_dev(c);
 }
 
-static vb2_error_t boot_legacy(struct vb2_context *c)
+static vb2_error_t boot_rec(struct vb2_context *c)
 {
 	TEST_EQ(current_recovery_reason, expected_recovery_reason,
 		"  recovery reason");
@@ -162,14 +168,24 @@ static vb2_error_t boot_legacy(struct vb2_context *c)
 	return vbboot_retval;
 }
 
+vb2_error_t vb2_manual_recovery_menu(struct vb2_context *c)
+{
+	return boot_rec(c);
+}
+
+vb2_error_t vb2_broken_recovery_menu(struct vb2_context *c)
+{
+	return boot_rec(c);
+}
+
 vb2_error_t VbBootRecoveryLegacyClamshell(struct vb2_context *c)
 {
-	return boot_legacy(c);
+	return boot_rec(c);
 }
 
 vb2_error_t VbBootRecoveryLegacyMenu(struct vb2_context *c)
 {
-	return boot_legacy(c);
+	return boot_rec(c);
 }
 
 vb2_error_t VbBootDiagnosticLegacyClamshell(struct vb2_context *c)
