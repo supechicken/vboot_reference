@@ -33,6 +33,93 @@
       "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68e248d_7975eebd",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-04T06:41:11Z",
+      "side": 1,
+      "message": "Also when the VbExLegacy(0) below failed.  I\u0027m okay to do it in a follow-up CL.",
+      "parentUuid": "3fe0d412_ed8e83ce",
+      "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10d4c92_9c89053f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-04T06:41:11Z",
+      "side": 1,
+      "message": "This is called \"alternate boot\" in the other debug message. In the string review doc the button text is also \"Select alternate bootloader\".  Could we be consistent here?",
+      "range": {
+        "startLine": 659,
+        "startChar": 20,
+        "endLine": 659,
+        "endChar": 31
+      },
+      "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57196c2e_b798659c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-04T06:41:11Z",
+      "side": 1,
+      "message": "5",
+      "range": {
+        "startLine": 1246,
+        "startChar": 5,
+        "endLine": 1246,
+        "endChar": 6
+      },
+      "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8670c66_e3894c66",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-04T06:41:11Z",
+      "side": 1,
+      "message": "5",
+      "range": {
+        "startLine": 1256,
+        "startChar": 5,
+        "endLine": 1256,
+        "endChar": 6
+      },
+      "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
