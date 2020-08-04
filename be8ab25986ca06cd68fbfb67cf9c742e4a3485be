@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "62a202df_640e4ef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-08-04T08:02:01Z",
+      "side": 1,
+      "message": "Yea. It is a tricky one. _MENU seems more confusing than _MODE as that will be VB2_SCREEN_DIAGNOSTICS_MENU (then inconsistent  diagnostic_menu) . I\u0027m okay to moving back to VB2_SCREEN_DIAGNOSTICS.",
+      "parentUuid": "5f42ff4c_d3bb6e9e",
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c773acd7_cbeaacdf",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -216,6 +234,30 @@
     },
     {
       "key": {
+        "uuid": "bac33f08_7596536e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-08-04T08:02:01Z",
+      "side": 1,
+      "message": "Per off-line discussion, we can\u0027t add before b:162715842 is solved.",
+      "parentUuid": "0625cd13_e52044fe",
+      "range": {
+        "startLine": 248,
+        "startChar": 16,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "781b0e36_76fb8b14",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 18
@@ -284,6 +326,30 @@
       "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d540ec6f_b6e8e13b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-08-04T08:02:01Z",
+      "side": 1,
+      "message": "It seems either way are fine with reviewer. Will keep what it is for now.",
+      "parentUuid": "3c4c1ba3_40d23658",
+      "range": {
+        "startLine": 1268,
+        "startChar": 1,
+        "endLine": 1270,
+        "endChar": 33
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -450,6 +516,30 @@
       "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c30ca90_4208971f",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2020-08-04T08:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3573d0de_c86119fa",
+      "range": {
+        "startLine": 1341,
+        "startChar": 1,
+        "endLine": 1342,
+        "endChar": 19
+      },
+      "revId": "be8ab25986ca06cd68fbfb67cf9c742e4a3485be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
