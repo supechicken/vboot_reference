@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "0989bb1d_723afdfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-04T09:23:53Z",
+      "side": 1,
+      "message": "a word is not capitalized after semicolon.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "d58ec029e85441e3b9b5fdcfc97a68cafa809d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e1f5e40_5d8819f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-04T09:23:53Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "d58ec029e85441e3b9b5fdcfc97a68cafa809d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2065cff_cceabbca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-04T09:23:53Z",
+      "side": 1,
+      "message": "nit",
+      "revId": "d58ec029e85441e3b9b5fdcfc97a68cafa809d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e5f903d_fa2acb0a",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 21
@@ -18,6 +81,29 @@
         "startChar": 1,
         "endLine": 1533,
         "endChar": 33
+      },
+      "revId": "d58ec029e85441e3b9b5fdcfc97a68cafa809d2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890074e7_a545bce4",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-04T09:23:53Z",
+      "side": 1,
+      "message": "extra blank line",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
       },
       "revId": "d58ec029e85441e3b9b5fdcfc97a68cafa809d2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
