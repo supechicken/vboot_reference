@@ -140,6 +140,30 @@
       "revId": "db4f97c5103bb755db2fe99d3a1319d392f24cd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8ece85_3e896bc0",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-05T14:07:03Z",
+      "side": 1,
+      "message": "Yeah, I suppose we are testing vb2api_diagnostic_ui_enabled() \u003d 1 implicitly.  How about \u003d 0?\n\nYou\u0027re right about the timeline -- let\u0027s go ahead with this.  Do you have any bandwidth to fix up the tests in a follow-up CL?",
+      "parentUuid": "91c742bb_349103b8",
+      "range": {
+        "startLine": 975,
+        "startChar": 5,
+        "endLine": 975,
+        "endChar": 18
+      },
+      "revId": "db4f97c5103bb755db2fe99d3a1319d392f24cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
