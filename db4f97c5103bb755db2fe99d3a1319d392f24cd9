@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dac6a3a_03d7f893",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-05T10:30:35Z",
+      "side": 1,
+      "message": "Probably fine to just say:\n\n  Set VB2_NV_DIAG_REQUEST and reboot.",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 317,
+        "endChar": 56
+      },
+      "revId": "db4f97c5103bb755db2fe99d3a1319d392f24cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1c2c022_ccd54c87",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-05T10:30:35Z",
+      "side": 1,
+      "message": "\"Diagnostics\" for consistency?",
+      "range": {
+        "startLine": 321,
+        "startChar": 12,
+        "endLine": 321,
+        "endChar": 27
+      },
+      "revId": "db4f97c5103bb755db2fe99d3a1319d392f24cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f139fdf_2b3aa1cd",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-05T10:30:35Z",
+      "side": 1,
+      "message": "None of our tests are checking for the correct menu items when vb2api_diagnostic_ui_enabled() \u003d\u003d 1.  In fact, it might even make sense to move the DIAGNOSTIC_UI check inside of vb2api_diagnostic_ui_enabled(), so that it always returns false when DIAGNOSTIC_UI is not set, regardless of the secdata_kernel flag.  This would simplify the testing here, since we just need to mock the function and set its return value.  What do you think?\n\n  // function definition\n  vb2api_diagnostic_ui_enabled() {\n    if (!DIAGNOSTIC_UI)\n      return 0;\n   ...\n  }\n\n  // unit test\n  mock_diagnostic_ui_enabled \u003d 1;\n  add_mock_keypress(...)...",
+      "range": {
+        "startLine": 975,
+        "startChar": 5,
+        "endLine": 975,
+        "endChar": 18
+      },
+      "revId": "db4f97c5103bb755db2fe99d3a1319d392f24cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
