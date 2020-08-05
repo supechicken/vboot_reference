@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d0b8d5d_b05b5d8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-05T08:14:16Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "ce0989af_f45c26d6",
+      "revId": "5763a40373be139c83a2bc517666cc52bdcf1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56432cf4_adcf87df",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2020-08-03T04:11:49Z",
       "side": 1,
       "message": "A little bit awkward to repeat the code. However, we couldn\u0027t simply call debug_info_reinit() from debug_info_init() because of the vb2_ui_screen_back().\n\nIf we go with the reinit() approach, maybe it\u0027s time to reconsider allowing init() \u0026 reinit() to return errors (maybe introducing a new error SCREEN_REJECT), and then call vb2_ui_screen_back() from the *caller of screen-\u003einit()*.  What do you think?\n\nPrevious discussion b/157625765: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2196095/5/firmware/2lib/2ui_screens.c#84",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 2
+      },
+      "revId": "5763a40373be139c83a2bc517666cc52bdcf1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3b67f8_8263c85f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-05T08:14:16Z",
+      "side": 1,
+      "message": "\u003e If we go with the reinit() approach, maybe it\u0027s time to reconsider allowing init() \u0026 reinit() to return errors (maybe introducing a new error SCREEN_REJECT)\nSince it is a request, I\u0027d prefer to use the VB2_REQUEST_UI_* prefix.\nAny suggestion about the name of this term is welcome.\n\n\u003e Previous discussion b/157625765\nShould we introduce a variant of VB2_TRY() here, and change the return code of all the other actions (screen action, target action...) to VB2_REQUEST_UI_BACK on failure?",
+      "parentUuid": "56432cf4_adcf87df",
       "range": {
         "startLine": 282,
         "startChar": 1,
