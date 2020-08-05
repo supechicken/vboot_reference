@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c67cdc2b_c08e006f",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-05T10:54:28Z",
+      "side": 1,
+      "message": "Hmm... the code looks a bit overly complex now.  What do you think about unraveling it a bit, especially in light of the upcoming legacy UI deprecation?  Maybe something like:\n\n  rec_check()\n    TEST_EQ(current_recovery_reason...)\n    TEST_TRUE(commit_data_called...)\n\n  vb2_manual_recovery_menu()\n    rec_check()\n    if (vbboot_retval \u003d\u003d -3)\n      return VB2_ERROR_MOCK\n\n  vb2_broken_recovery_menu()\n    rec_check()\n    if (vbboot_retval \u003d\u003d -4)\n      return VB2_ERROR_MOCK\n\n  VbBootRecoveryLegacyClamshell()\n    rec_check()\n    if (vbboot_retval \u003d\u003d -3 || vbboot_retval \u003d\u003d -4)\n      return VB2_ERROR_MOCK\n\n  VbBootRecoveryLegacyMenu()\n    rec_check()\n    if (vbboot_retval \u003d\u003d -3 || vbboot_retval \u003d\u003d -4)\n      return VB2_ERROR_MOCK",
+      "parentUuid": "76333abc_bdb95900",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 20
+      },
+      "revId": "f89e6de0f6ddaf4b95f877c9e1ffe778ae8d1f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "521aa083_0d4f72a9",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 1
