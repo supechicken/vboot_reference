@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a3464c_fe979ef4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-05T09:51:18Z",
+      "side": 1,
+      "message": "Since we have\n if (DIAGNOSTIC_UI \u0026\u0026 !MENU_UI) {\nin this CL,\n\nI suggest to add\n TEST\u003dMENU_UI\u003d0 DIAGNOSTIC_UI\u003d1 make runtests\nhere.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d352d0e_64197f21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-05T09:51:18Z",
+      "side": 1,
+      "message": "Verified all the flag setting on my devices.",
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85f6a1d8_7cb6b647",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-05T09:51:18Z",
+      "side": 1,
+      "message": "I think we do not set vbboot_retval to -3 anywhere.\nHowever, I agree that we should not modify a lot in this CL.\n\nWhat do you think about this (unreachable) condition?",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3dd88b3_b70093b4",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-05T09:51:18Z",
+      "side": 1,
+      "message": "I wonder if we should not assign negative numbers to vb2_error_t(uint32_t)\nHowever, since the legacy tests have it, we could keep it as-is.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 20
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
