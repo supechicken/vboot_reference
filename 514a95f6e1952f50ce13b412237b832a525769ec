@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "265c2eea_3270e5a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-08T03:38:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a3464c_fe979ef4",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d352d0e_64197f21",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "26961703_891f4af2",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-08T03:38:53Z",
+      "side": 1,
+      "message": "I think we should add another test case for manual recovery, but maybe after the legacy UI is removed.",
+      "parentUuid": "85f6a1d8_7cb6b647",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3dd88b3_b70093b4",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 3
@@ -76,6 +124,30 @@
       "writtenOn": "2020-08-05T09:51:18Z",
       "side": 1,
       "message": "I wonder if we should not assign negative numbers to vb2_error_t(uint32_t)\nHowever, since the legacy tests have it, we could keep it as-is.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 20
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc0b2e7b_0967f8e8",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-08T03:38:53Z",
+      "side": 1,
+      "message": "-4 will become ((1 \u003c\u003c 32) - 4). I guess the purpose is to avoid collision with existing vboot errors.",
+      "parentUuid": "f3dd88b3_b70093b4",
       "range": {
         "startLine": 324,
         "startChar": 0,
