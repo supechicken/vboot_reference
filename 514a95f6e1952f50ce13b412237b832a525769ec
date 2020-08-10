@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "5f07bc30_aeb831f5",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-10T02:16:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26961703_891f4af2",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3dd88b3_b70093b4",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 3
@@ -157,6 +181,30 @@
       "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cddd87c6_f8dbd122",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-10T02:16:13Z",
+      "side": 1,
+      "message": "It\u0027s not an ideal unit test.  Just like anything, there\u0027s always room for improvement -- the challenge is prioritizing where to place our efforts.",
+      "parentUuid": "bc0b2e7b_0967f8e8",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 20
+      },
+      "revId": "514a95f6e1952f50ce13b412237b832a525769ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
