@@ -1245,8 +1245,13 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_DEV_MODE_ALREADY_ENABLED,
 	/* Debug info screen initialization failed */
 	VB2_UI_ERROR_DEBUG_LOG,
+<<<<<<< HEAD   (f2cd9e vboot: disallow DIAGNOSTIC_UI with MENU_UI)
 	/* Firmware log screen initialization failed */
 	VB2_UI_ERROR_FIRMWARE_LOG,
+=======
+	/* Untrusted confirmation */
+	VB2_UI_ERROR_UNTRUSTED_CONFIRMATION,
+>>>>>>> CHANGE (8abc8f vboot/ui: Display error for untrusted confirmation)
 };
 
 /**
