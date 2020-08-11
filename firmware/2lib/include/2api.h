@@ -1309,6 +1309,10 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_DEV_MODE_ALREADY_ENABLED,
 	/* Debug info screen initialization failed */
 	VB2_UI_ERROR_DEBUG_LOG,
+	/* Reject untrusted enter key */
+	VB2_UI_ERROR_UNTRUSTED_ENTER,
+	/* Reject untrusted power button */
+	VB2_UI_ERROR_UNTRUSTED_POWER,
 };
 
 /**
