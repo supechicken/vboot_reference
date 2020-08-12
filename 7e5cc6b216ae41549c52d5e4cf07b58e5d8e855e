@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1afe2b75_0413a6fd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-12T08:04:49Z",
+      "side": 1,
+      "message": "After pressing Ctrl-L, the device didn\u0027t beep until the cursor was moved. We should add the condition (ui.error_beep !\u003d 0) here.",
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1707f260_c4ec1dc5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-12T08:04:49Z",
+      "side": 1,
+      "message": "What if this is disabled? Same for DEVELOPER_MODE_ITEM_BOOT_EXTERNAL.\n\nWould you mind uploading a separate CL to fix this?",
+      "range": {
+        "startLine": 588,
+        "startChar": 3,
+        "endLine": 588,
+        "endChar": 40
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee07a40_fb390da6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-12T08:04:49Z",
+      "side": 1,
+      "message": "I remember bringing this up a few weeks ago. I though you prefer not adding this?\n\nAnyway, could we do it in a separate CL (together with the change in vb2_ui_developer_mode_boot_external_action())?",
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aacadb09_d37cbaef",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-12T08:04:49Z",
+      "side": 1,
+      "message": "Alternate?",
+      "range": {
+        "startLine": 661,
+        "startChar": 20,
+        "endLine": 661,
+        "endChar": 26
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142e5696_7fc02027",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-12T08:04:49Z",
+      "side": 1,
+      "message": "This looks almost identical to vb2_ui_developer_mode_boot_alternate_action(). Could we merge them?",
+      "range": {
+        "startLine": 807,
+        "startChar": 19,
+        "endLine": 807,
+        "endChar": 43
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d530b62c_a0a8af96",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-12T08:04:49Z",
+      "side": 1,
+      "message": "If this is 0, should we allow entering this screen?",
+      "range": {
+        "startLine": 837,
+        "startChar": 1,
+        "endLine": 837,
+        "endChar": 16
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa827dba_d5f2c4e9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-12T08:04:49Z",
+      "side": 1,
+      "message": "u",
+      "range": {
+        "startLine": 838,
+        "startChar": 30,
+        "endLine": 838,
+        "endChar": 31
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
