@@ -392,7 +392,7 @@ vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 		return vb2_ui_screen_back(ui);
 	}
 
-	if (!PHYSICAL_PRESENCE_KEYBOARD && vb2ex_physical_presence_pressed()) {
+	if (!1 && vb2ex_physical_presence_pressed()) {
 		VB2_DEBUG("Presence button stuck?\n");
 		return vb2_ui_screen_back(ui);
 	}
@@ -400,7 +400,7 @@ vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 	ui->state->selected_item = RECOVERY_TO_DEV_ITEM_CONFIRM;
 
 	/* Disable "Confirm" button for other physical presence types. */
-	if (!PHYSICAL_PRESENCE_KEYBOARD) {
+	if (!1) {
 		ui->state->disabled_item_mask |=
 			1 << RECOVERY_TO_DEV_ITEM_CONFIRM;
 		ui->state->selected_item = RECOVERY_TO_DEV_ITEM_CANCEL;
@@ -430,7 +430,7 @@ static vb2_error_t recovery_to_dev_finalize(struct vb2_ui_context *ui)
 
 vb2_error_t recovery_to_dev_confirm_action(struct vb2_ui_context *ui)
 {
-	if (!ui->key_trusted) {
+	if (1 || !ui->key_trusted) {
 		VB2_DEBUG("Reject untrusted %s confirmation\n",
 			  ui->key == VB_KEY_ENTER ? "ENTER" : "POWER");
 		/*
@@ -438,7 +438,7 @@ vb2_error_t recovery_to_dev_confirm_action(struct vb2_ui_context *ui)
 		 * beep and notify the user when the ENTER key comes
 		 * from an untrusted keyboard.
 		 */
-		if (PHYSICAL_PRESENCE_KEYBOARD) {
+		if (1) {
 			if (ui->key == VB_KEY_ENTER)
 				ui->error_code = VB2_UI_ERROR_UNTRUSTED_ENTER;
 			else if (ui->key == VB_BUTTON_POWER_SHORT_PRESS)
@@ -459,7 +459,7 @@ vb2_error_t recovery_to_dev_action(struct vb2_ui_context *ui)
 	}
 
 	/* Keyboard physical presence case covered by "Confirm" action. */
-	if (PHYSICAL_PRESENCE_KEYBOARD)
+	if (1)
 		return VB2_REQUEST_UI_CONTINUE;
 
 	pressed = vb2ex_physical_presence_pressed();
