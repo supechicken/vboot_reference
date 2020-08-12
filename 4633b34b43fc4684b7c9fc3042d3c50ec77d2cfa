@@ -77,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "950a4752_1fad13f1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "Changed to \"Alternate bootloader failed\".",
+      "parentUuid": "b10d4c92_9c89053f",
+      "range": {
+        "startLine": 659,
+        "startChar": 20,
+        "endLine": 659,
+        "endChar": 31
+      },
+      "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57196c2e_b798659c",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 1
@@ -100,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "bb1e825c_8baae526",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57196c2e_b798659c",
+      "range": {
+        "startLine": 1246,
+        "startChar": 5,
+        "endLine": 1246,
+        "endChar": 6
+      },
+      "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8670c66_e3894c66",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 1
@@ -120,6 +168,30 @@
       "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d211bb5_8dc799b7",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8670c66_e3894c66",
+      "range": {
+        "startLine": 1256,
+        "startChar": 5,
+        "endLine": 1256,
+        "endChar": 6
+      },
+      "revId": "4633b34b43fc4684b7c9fc3042d3c50ec77d2cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

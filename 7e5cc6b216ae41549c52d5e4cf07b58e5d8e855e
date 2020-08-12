@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c4013cd3_c5479a2e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "We are guaranteed that vb2api_get_dev_default_boot_target() and vb2_dev_boot_*_allowed() return consistent results.  I don\u0027t think we need to make the extra check here.",
+      "parentUuid": "1707f260_c4ec1dc5",
+      "range": {
+        "startLine": 588,
+        "startChar": 3,
+        "endLine": 588,
+        "endChar": 40
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aee07a40_fb390da6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 4
@@ -56,6 +80,24 @@
       "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69fd9374_5d8d8874",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "I was experimenting to see if it would help, since the pause before boot is so long.  It\u0027s not a huge priority so I\u0027ll leave it out of this CL for now.",
+      "parentUuid": "aee07a40_fb390da6",
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "efcc91ad_8b773067",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aacadb09_d37cbaef",
+      "range": {
+        "startLine": 661,
+        "startChar": 20,
+        "endLine": 661,
+        "endChar": 26
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "142e5696_7fc02027",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 4
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "e0634f21_b1526709",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142e5696_7fc02027",
+      "range": {
+        "startLine": 807,
+        "startChar": 19,
+        "endLine": 807,
+        "endChar": 43
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d530b62c_a0a8af96",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 4
@@ -116,6 +206,30 @@
       "writtenOn": "2020-08-12T08:04:49Z",
       "side": 1,
       "message": "If this is 0, should we allow entering this screen?",
+      "range": {
+        "startLine": 837,
+        "startChar": 1,
+        "endLine": 837,
+        "endChar": 16
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed438f8a_73149204",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "I guess the alternative is adding yet another error message to say \"No bootloaders are available.\"?",
+      "parentUuid": "d530b62c_a0a8af96",
       "range": {
         "startLine": 837,
         "startChar": 1,
@@ -148,6 +262,30 @@
       "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7938d6b8_f8ddcbee",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-12T09:17:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa827dba_d5f2c4e9",
+      "range": {
+        "startLine": 838,
+        "startChar": 30,
+        "endLine": 838,
+        "endChar": 31
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
