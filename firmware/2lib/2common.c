@@ -155,6 +155,7 @@ vb2_error_t vb2_verify_digest(const struct vb2_public_key *key,
 {
 	/* A signature is destroyed in the process of being verified. */
 	uint8_t *sig_data = vb2_signature_data_mutable(sig);
+	vb2_error_t result = VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED;
 
 	if (sig->sig_size != vb2_rsa_sig_size(key->sig_alg)) {
 		VB2_DEBUG("Wrong data signature size for algorithm, "
@@ -164,7 +165,17 @@ vb2_error_t vb2_verify_digest(const struct vb2_public_key *key,
 		return VB2_ERROR_VDATA_SIG_SIZE;
 	}
 
-	return vb2_rsa_verify_digest(key, sig_data, digest, wb);
+	if(1) { // TODO : check for kill switch
+		if (!key || !sig || !digest)
+			return VB2_ERROR_RSA_VERIFY_PARAM;
+
+		result = vb2ex_hwcrypto_rsa_verify(key, sig_data, digest);
+	}
+
+	if (result == VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED) {
+		result = vb2_rsa_verify_digest(key, sig_data, digest, wb);
+	}
+	return result;
 }
 
 vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,

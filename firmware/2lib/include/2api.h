@@ -24,6 +24,7 @@
 #include "2fw_hash_tags.h"
 #include "2gbb_flags.h"
 #include "2id.h"
+#include "2rsa.h"
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
 #include "2secdata_struct.h"
@@ -951,6 +952,18 @@ vb2_error_t vb2ex_hwcrypto_digest_extend(const uint8_t *buf, uint32_t size);
  */
 vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 					   uint32_t digest_size);
+
+/**
+ * Verify a RSA PKCS1.5 signature in hardware crypto engine
+ * against an expected hash digest.
+ *
+ * @param key		Key to use in signature verification
+ * @param sig		Signature to verify (destroyed in process)
+ * @param digest	Digest of signed data
+ * @return VB2_SUCCESS, or non-zero if error.
+ */
+vb2_error_t vb2ex_hwcrypto_rsa_verify(const struct vb2_public_key *key,
+			      const uint8_t *sig, const uint8_t *digest);
 
 /*
  * Abort vboot flow due to a failed assertion or broken assumption.
