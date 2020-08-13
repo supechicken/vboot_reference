@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b79341c_55c8a560",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-13T04:47:37Z",
+      "side": 1,
+      "message": "depthcharge",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "65e2e07129ce3c6f1916d8691f51ba0a62fb5bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f206f81b_25c9b586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-13T04:47:37Z",
+      "side": 1,
+      "message": "Workaround sounds fine for now.  Can move ahead with +2 after fixing nits.",
+      "revId": "65e2e07129ce3c6f1916d8691f51ba0a62fb5bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "144741dc_fb7e1e34",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-13T04:47:37Z",
+      "side": 1,
+      "message": "It doesn\u0027t make sense to keep adding more \"We want to\" here... can we get rid of all three of them?",
+      "range": {
+        "startLine": 317,
+        "startChar": 9,
+        "endLine": 317,
+        "endChar": 20
+      },
+      "revId": "65e2e07129ce3c6f1916d8691f51ba0a62fb5bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a0f604_9c3c69d0",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-13T04:47:37Z",
+      "side": 1,
+      "message": "Add a period here.",
+      "range": {
+        "startLine": 103,
+        "startChar": 59,
+        "endLine": 103,
+        "endChar": 60
+      },
+      "revId": "65e2e07129ce3c6f1916d8691f51ba0a62fb5bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ff5d84_27aa0e79",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-13T04:47:37Z",
+      "side": 1,
+      "message": "How about `force_display`, since the result is calling vb2ex_display_ui?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 12
+      },
+      "revId": "65e2e07129ce3c6f1916d8691f51ba0a62fb5bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
