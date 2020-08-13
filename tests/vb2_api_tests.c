@@ -81,6 +81,7 @@ static void reset_common_data(enum reset_type t)
 	vb2api_secdata_firmware_create(ctx);
 
 	vb2api_secdata_kernel_create(ctx);
+	vb2_secdata_kernel_init(ctx);
 
 	force_dev_mode = 0;
 	retval_vb2_fw_init_gbb = VB2_SUCCESS;
