@@ -1302,6 +1302,13 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_BOOT_EXTERNAL	= 0x320,
 	/* Invalid external disk inserted */
 	VB2_SCREEN_DEVELOPER_INVALID_DISK	= 0x330,
+	/* Diagnostic tools */
+	VB2_SCREEN_DIAGNOSTICS			= 0x400,
+	/* Storage diagnostic screen */
+	VB2_SCREEN_DIAGNOSTICS_STORAGE	      	= 0x410,
+	/* Memory diagnostic screen */
+	VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK    	= 0x420,
+	VB2_SCREEN_DIAGNOSTICS_MEMORY_FULL     	= 0x421,
 };
 
 enum vb2_ui_error {
@@ -1315,6 +1322,8 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_FIRMWARE_LOG,
 	/* Untrusted confirmation */
 	VB2_UI_ERROR_UNTRUSTED_CONFIRMATION,
+	/* Diagnostics internal failed */
+	VB2_UI_ERROR_DIAGNOSTICS,
 };
 
 /**
@@ -1425,6 +1434,38 @@ const char *vb2ex_get_firmware_log(void);
  * @return The number of pages after pagination.  0 if none or error.
  */
 uint32_t vb2ex_prepare_log_screen(const char *str);
+
+/**
+ * Get the full storage diagnostic log.
+ *
+ * Return a pointer of full log string which is guaranteed to be
+ * null-terminated.  The function implementation should manage string memory
+ * internally.  Subsequent calls may update the string and/or may return a new
+ * pointer.
+ *
+ * @param ctx		Vboot context
+ * @return The pointer to the full debug info string.  NULL on error.
+ */
+const char *vb2ex_get_diagnostic_storage(struct vb2_context *ctx);
+
+// TODO: define mode here
+/**
+ * Get the memory diagnostic status. When it is called, it will
+ * take over the control for a short period of time on running memory test and
+ * then return the result of current status. If the mode is not zero, it will
+ * reset the memory test state.
+ *
+ * Return a pointer of full log string which is guaranteed to be
+ * null-terminated.  The function implementation should manage string memory
+ * internally.  Subsequent calls may update the string and/or may return a new
+ * pointer.
+ *
+ * @param ctx		Vboot context
+ * @param mode		Reset to memory test mode. 0 = No OP.
+ *			1 = quick, 2 = full.
+ * @return The pointer to the full debug info string.  NULL on error.
+ */
+const char *vb2ex_get_diagnostic_memory(struct vb2_context *ctx, int mode);
 
 /*****************************************************************************/
 /* Timer. */
