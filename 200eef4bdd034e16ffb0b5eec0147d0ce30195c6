@@ -16,6 +16,24 @@
       "revId": "200eef4bdd034e16ffb0b5eec0147d0ce30195c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f7c8a6_3169f651",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-13T16:49:39Z",
+      "side": 1,
+      "message": "The macro is used in signing/signer-master, signer-production, and signer-staging. These repos use black/whitelist which depend on other repos. So, I just changed the affected files of signing/*. Dependencies are added.\n\nptal.",
+      "parentUuid": "bda1c056_e2806240",
+      "revId": "200eef4bdd034e16ffb0b5eec0147d0ce30195c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
