@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3c5a495e_443d2d60",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-13T03:19:52Z",
+      "side": 1,
+      "message": "I just mean the comment is not accurate. I don\u0027t think we need to have 2 errors for this. The following error message looks fine to me, even if it\u0027s a tablet.\n\n Please use internal keyboard to confirm.\n\nSo I\u0027d probably write\n\n if (PHYSICAL_PRESENCE_KEYBOARD)\n     ui-\u003eerror_code \u003d VB2_UI_ERROR_UNTRUSTED_CONFIRMATION;\n\nto also cover the \"untrusted power button\" case, although I\u0027m not sure if that\u0027s even possible.",
+      "parentUuid": "b0f3bcec_6fe5310a",
+      "range": {
+        "startLine": 438,
+        "startChar": 39,
+        "endLine": 438,
+        "endChar": 44
+      },
+      "revId": "2ed5dc24bedfd08a43765454e0a6e0775b53aef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d687dae3_af1c08d7",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
