@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c4608a4_6acf0a8f",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-13T16:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0712ea6c_1bbbf48c",
+      "revId": "e9e98ec7537be1603f8c6536c3365683e0175c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53554bec_1dbdab6d",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "e9e98ec7537be1603f8c6536c3365683e0175c04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a73a3e6d_b4c552ca",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-13T16:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53554bec_1dbdab6d",
+      "revId": "e9e98ec7537be1603f8c6536c3365683e0175c04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
