@@ -155,6 +155,7 @@ vb2_error_t vb2_verify_digest(const struct vb2_public_key *key,
 {
 	/* A signature is destroyed in the process of being verified. */
 	uint8_t *sig_data = vb2_signature_data_mutable(sig);
+	vb2_error_t rv = VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED;
 
 	if (sig->sig_size != vb2_rsa_sig_size(key->sig_alg)) {
 		VB2_DEBUG("Wrong data signature size for algorithm, "
@@ -164,7 +165,25 @@ vb2_error_t vb2_verify_digest(const struct vb2_public_key *key,
 		return VB2_ERROR_VDATA_SIG_SIZE;
 	}
 
-	return vb2_rsa_verify_digest(key, sig_data, digest, wb);
+	if(1) { // TODO : check for kill switch
+		rv = vb2ex_hwcrypto_rsa_verify_digest(key, sig_data, digest);
+		VB2_DEBUG("Using HW RSA engine for sig_alg %d\n",
+				key->sig_alg);
+
+		if (rv != VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED)
+			return rv;
+
+		VB2_DEBUG("HW RSA for sig_alg %d not supported, using SW\n",
+			  key->sig_alg);
+	} else {
+		VB2_DEBUG("HW RSA forbidden, using SW\n");
+	}
+
+	if (rv == VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED) {
+		rv = vb2_rsa_verify_digest(key, sig_data, digest, wb);
+	}
+
+	return rv;
 }
 
 vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,
