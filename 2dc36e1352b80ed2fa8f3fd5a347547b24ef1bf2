@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0bd0093_f1ec8871",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-14T23:52:32Z",
+      "side": 1,
+      "message": "Looks good in general for a draft.",
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fac67df9_0404bfe6",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-14T23:52:32Z",
+      "side": 1,
+      "message": "nit: vboot convention is to usually call this \u0027rv\u0027",
+      "range": {
+        "startLine": 158,
+        "startChar": 13,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9435c383_7e46ff13",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-14T23:52:32Z",
+      "side": 1,
+      "message": "Most of these are already dereferenced above anyway. I don\u0027t think this check is necessary, this function assumes good input.",
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ed330c_3abe9c59",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-14T23:52:32Z",
+      "side": 1,
+      "message": "Final version should print some logs somewhere so you can tell whether hwcrypto was used, not supported or not allowed.",
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330a22bd_896701f9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-14T23:52:32Z",
+      "side": 1,
+      "message": "Explicitly mention the UNSUPPORTED return code.",
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
