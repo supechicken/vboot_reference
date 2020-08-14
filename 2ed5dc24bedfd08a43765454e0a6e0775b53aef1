@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "c277350c_d5c7f6fd",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-14T08:49:26Z",
+      "side": 1,
+      "message": "I think I may have been mistaken about the power button press -- I believe it actually comes in as a keyboard button rather than from vb2ex_physical_presence_pressed.  Regardless, it still holds that POWER button should *always* be set as \"trusted\", so there\u0027s no need to create a separate error message for that case.",
+      "parentUuid": "d21563c4_aa2e2b4a",
+      "range": {
+        "startLine": 438,
+        "startChar": 39,
+        "endLine": 438,
+        "endChar": 44
+      },
+      "revId": "2ed5dc24bedfd08a43765454e0a6e0775b53aef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d687dae3_af1c08d7",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
