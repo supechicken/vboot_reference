@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ee89839_610b7d4a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-14T04:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1afe2b75_0413a6fd",
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1707f260_c4ec1dc5",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 4
@@ -230,6 +248,30 @@
       "side": 1,
       "message": "I guess the alternative is adding yet another error message to say \"No bootloaders are available.\"?",
       "parentUuid": "d530b62c_a0a8af96",
+      "range": {
+        "startLine": 837,
+        "startChar": 1,
+        "endLine": 837,
+        "endChar": 16
+      },
+      "revId": "7e5cc6b216ae41549c52d5e4cf07b58e5d8e855e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "747845f5_5bc49ada",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-14T04:49:08Z",
+      "side": 1,
+      "message": "I think we can add error message in the same CL with ERROR on altfw boot?",
+      "parentUuid": "ed438f8a_73149204",
       "range": {
         "startLine": 837,
         "startChar": 1,
