@@ -16,6 +16,24 @@
       "revId": "24d706d5ba6c917e00bd8449b69493184a70e4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "377afbbc_1952f8db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-14T07:35:25Z",
+      "side": 1,
+      "message": "This was part of a set of cherry-picks of CLs to fast-forward puff state to match that of ToT.  We can merge this since it\u0027s vboot-related.",
+      "parentUuid": "5a122db3_ddef092b",
+      "revId": "24d706d5ba6c917e00bd8449b69493184a70e4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
