@@ -52,6 +52,41 @@
       "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bf971b7_40f47413",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-08-17T23:14:32Z",
+      "side": 1,
+      "message": "\u003e I guess it\u0027s a bit odd that the \"which revision does this work on\" is hardcoded in futility rather than associated with the image itself somehow\n\nAgree. I considered having the rule implemented in the images but it\u0027s usually not easy to do that on time, also no where to put. In the end having that in updater is easier to implement and just works.",
+      "parentUuid": "ca65e8f1_2fe35074",
+      "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0455d516_6fb1e16b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-08-17T23:14:32Z",
+      "side": 1,
+      "message": "Agree this may be the feasible solution until we can move the quirk into firmware images itself.",
+      "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
