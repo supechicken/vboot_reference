@@ -16,6 +16,40 @@
       "revId": "840d6615052a33ae34ad2a3a53da2cfca91f83aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2fb1a3e_2989895b",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-17T22:54:22Z",
+      "side": 1,
+      "message": "I would move this into the the `rv !\u003d UNSUPPORTED` block so you have exactly one message in all cases.",
+      "revId": "840d6615052a33ae34ad2a3a53da2cfca91f83aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb09c87_ede1b5a4",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-17T22:54:22Z",
+      "side": 1,
+      "message": "No longer necessary with the `return` above?",
+      "revId": "840d6615052a33ae34ad2a3a53da2cfca91f83aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
