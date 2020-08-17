@@ -104,6 +104,29 @@
       "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07ecf4d_7e35f4c4",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-08-17T23:33:17Z",
+      "side": 1,
+      "message": "one nit: it\u0027s probably better to always check and tell developers that they can waive this, e.g.\n\n if (try_apply_quirk(QUIRK_MIN_PLATFORM_VERSION, cfg)) {\n    if (!cfg-\u003eforce_update) {\n      ERROR(\"Add --force to waive checking the version.\\n\");\n      return UPDATE_ERR_PLATFORM;\n    }\n }",
+      "range": {
+        "startLine": 1176,
+        "startChar": 1,
+        "endLine": 1177,
+        "endChar": 51
+      },
+      "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
