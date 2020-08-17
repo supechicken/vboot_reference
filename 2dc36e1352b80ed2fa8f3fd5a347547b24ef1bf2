@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bb68511e_b7342fd5",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-08-17T03:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac67df9_0404bfe6",
+      "range": {
+        "startLine": 158,
+        "startChar": 13,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9435c383_7e46ff13",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 1
@@ -56,6 +80,24 @@
       "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9230612_d0f0751c",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-08-17T03:40:24Z",
+      "side": 1,
+      "message": "I thought I\u0027ll need this since vb2_rsa_verify_digest checks it. But you\u0027re right, we\u0027re using it before anyway.",
+      "parentUuid": "9435c383_7e46ff13",
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "b534a6df_47346e51",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-08-17T03:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ed330c_3abe9c59",
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "330a22bd_896701f9",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -90,6 +150,24 @@
       "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dedc76a_41a9d03e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-08-17T03:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330a22bd_896701f9",
+      "revId": "2dc36e1352b80ed2fa8f3fd5a347547b24ef1bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
