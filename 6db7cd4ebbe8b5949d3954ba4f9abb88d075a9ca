@@ -16,6 +16,24 @@
       "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7093f079_23ff2f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-17T22:27:03Z",
+      "side": 1,
+      "message": "I guess generally it\u0027s fine if --force overrides everything, but why would you ever want to install a Trogdor rev1 image on a rev0? It will straight up not boot.",
+      "parentUuid": "48a6fe32_ed0b7f5d",
+      "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
