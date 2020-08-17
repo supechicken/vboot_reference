@@ -34,6 +34,24 @@
       "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca65e8f1_2fe35074",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-17T22:29:19Z",
+      "side": 1,
+      "message": "Read the bug. I guess it\u0027s a bit odd that the \"which revision does this work on\" is hardcoded in futility rather than associated with the image itself somehow, but as long as it works like that I guess this makes sense.",
+      "parentUuid": "7093f079_23ff2f9c",
+      "revId": "6db7cd4ebbe8b5949d3954ba4f9abb88d075a9ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
