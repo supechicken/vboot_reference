@@ -1332,6 +1332,8 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_DEV_MODE_ALREADY_ENABLED,
 	/* Debug info screen initialization failed */
 	VB2_UI_ERROR_DEBUG_LOG,
+	/* External boot not enabled */
+	VB2_UI_ERROR_EXTERNAL_BOOT_NOT_ENABLED,
 	/* Firmware log screen initialization failed */
 	VB2_UI_ERROR_FIRMWARE_LOG,
 	/* Untrusted confirmation */
