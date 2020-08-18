@@ -203,6 +203,13 @@ vb2_error_t VbBootDiagnosticLegacyClamshell(struct vb2_context *c)
 	return vbboot_retval;
 }
 
+vb2_error_t vb2_diagnostic_menu(struct vb2_context *c)
+{
+	// TODO(b/162715842): Exercise this mock once b/162715842 is resolved.
+	return vbboot_retval;
+}
+
+
 int vb2api_diagnostic_ui_enabled(struct vb2_context *c)
 {
 	return mock_diagnostic_ui_enabled;

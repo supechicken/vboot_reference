@@ -236,6 +236,7 @@ enum reset_type {
 	FOR_DEVELOPER,
 	FOR_BROKEN_RECOVERY,
 	FOR_MANUAL_RECOVERY,
+	FOR_DIAGNOSTICS,
 };
 
 /* Reset mock data (for use before each test) */
@@ -1513,6 +1514,36 @@ static void manual_recovery_screen_tests(void)
 	VB2_DEBUG("...done.\n");
 }
 
+static void diagnostics_screen_tests(void)
+{
+	if (!DIAGNOSTIC_UI)
+		return;
+	VB2_DEBUG("Testing diagnostic screens...\n");
+
+	/* Diagnostics screen */
+	reset_common_data(FOR_DIAGNOSTICS);
+
+        /* Language menu */
+	add_mock_keypress(VB_KEY_UP);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	mock_calls_until_shutdown = -1;
+	TEST_EQ(vb2_diagnostic_menu(ctx),
+		VB2_REQUEST_SHUTDOWN, "diagnostic screen");
+
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("diagnostic screen", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 0, 0x0, MOCK_IGNORE);
+	DISPLAYED_EQ("language selection", VB2_SCREEN_LANGUAGE_SELECT,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_EQ("diagnostic screen", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 0, MOCK_IGNORE, MOCK_IGNORE);
+
+	VB2_DEBUG("...done.\n");
+}
+
 int main(void)
 {
 	developer_tests();
@@ -1525,6 +1556,7 @@ int main(void)
 	developer_screen_tests();
 	broken_recovery_screen_tests();
 	manual_recovery_screen_tests();
+	diagnostics_screen_tests();
 
 	return gTestSuccess ? 0 : 255;
 }
