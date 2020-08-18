@@ -213,6 +213,11 @@ static void phase1_tests(void)
 		"  key data");
 	TEST_EQ(sd->kernel_version_secdata, 0x20002,
 		"  secdata_kernel version");
+
+	/* Test flags for experimental features in non-recovery path */
+	reset_common_data(FOR_PHASE1);
+	ctx->flags &= ~VB2_CONTEXT_RECOVERY_MODE;
+	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 non-rec good");
 	/* Make sure phone recovery functionality is enabled, but UI disabled */
 	TEST_EQ(vb2api_phone_recovery_enabled(ctx), 1,
 		"  phone recovery enabled");
@@ -221,6 +226,21 @@ static void phase1_tests(void)
 	/* Make sure diagnostic UI is disabled */
 	TEST_EQ(vb2api_diagnostic_ui_enabled(ctx), 0,
 		"  diagnostic ui disabled");
+
+	/*
+	 * Test flags are unchanged for experimental features in recovery path
+	 */
+	reset_common_data(FOR_PHASE1);
+	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
+	/* 0x76 is an arbitary number fits under 8 bits */
+	vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_FLAGS, 0x76);
+	/* No preamble needed in recovery mode */
+	sd->workbuf_used = sd->preamble_offset;
+	sd->preamble_offset = sd->preamble_size = 0;
+	wb_used_before = sd->workbuf_used;
+	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 rec good");
+	TEST_EQ(vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS), 0x76,
+		"VB2_SECDATA_KERNEL_FLAGS remains unchanged in recovery path");
 
 	/* Bad secdata_fwmp causes failure in normal mode only */
 	reset_common_data(FOR_PHASE1);
