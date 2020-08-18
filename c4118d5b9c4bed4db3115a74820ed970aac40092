@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c118a184_eb3acc74",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-18T16:36:23Z",
+      "side": 1,
+      "message": "Can we add another check to make sure that secdata_kernel.flags is not modified by vb2api_kernel_phase1 when in recovery mode?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 64
+      },
+      "revId": "c4118d5b9c4bed4db3115a74820ed970aac40092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
