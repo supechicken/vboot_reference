@@ -197,6 +197,7 @@ uint32_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 				  "secdata_kernel v0, return 0\n");
 			return 0;
 		}
+		VB2_DEBUG("VB2_SECDATA_KERNEL_FLAGS = %#x\n", v1->flags);
 		return v1->flags;
 	default:
 		msg = "invalid param";
