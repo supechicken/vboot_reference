@@ -55,58 +55,41 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 /* Functions used for log screens */
 
 static vb2_error_t log_page_init(struct vb2_ui_context *ui,
-				 uint32_t page_up_item,
 				 uint32_t page_down_item,
 				 uint32_t alternate_item)
 {
 	ui->state->current_page = 0;
 
-	if (ui->state->page_count == 1) {
-		ui->state->disabled_item_mask |= 1 << page_up_item;
-		ui->state->disabled_item_mask |= 1 << page_down_item;
+	/* TODO(b/163301076): Disable unavailable page navigation buttons */
+	if (ui->state->page_count == 1)
 		ui->state->selected_item = alternate_item;
-	} else {
-		ui->state->disabled_item_mask |= 1 << page_up_item;
+	else
 		ui->state->selected_item = page_down_item;
-	}
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
-static vb2_error_t log_page_prev(struct vb2_ui_context *ui,
-				 uint32_t page_up_item,
-				 uint32_t page_down_item)
+static vb2_error_t log_page_prev(struct vb2_ui_context *ui)
 {
-	if (ui->state->current_page == 0)
-		return VB2_REQUEST_UI_CONTINUE;
-	ui->state->current_page--;
-
-	/* Clear bits of page down. */
-	ui->state->disabled_item_mask &= ~(1 << page_down_item);
-
 	if (ui->state->current_page == 0) {
-		ui->state->disabled_item_mask |= 1 << page_up_item;
-		ui->state->selected_item = page_down_item;
+		VB2_DEBUG("WARNING: Select page up on the first page\n");
+		ui->error_beep = 1;
+		return VB2_REQUEST_UI_CONTINUE;
 	}
+	ui->state->current_page--;
+	/* TODO(b/163301076): Disable unavailable page navigation buttons */
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
-static vb2_error_t log_page_next(struct vb2_ui_context *ui,
-				 uint32_t page_up_item,
-				 uint32_t page_down_item)
+static vb2_error_t log_page_next(struct vb2_ui_context *ui)
 {
-	if (ui->state->current_page == ui->state->page_count - 1)
-		return VB2_REQUEST_UI_CONTINUE;
-	ui->state->current_page++;
-
-	/* Clear bits of page up. */
-	ui->state->disabled_item_mask &= ~(1 << page_up_item);
-
 	if (ui->state->current_page == ui->state->page_count - 1) {
-		ui->state->disabled_item_mask |= 1 << page_down_item;
-		ui->state->selected_item = page_up_item;
+		VB2_DEBUG("WARNING: Select page down on the last page\n");
+		return VB2_REQUEST_UI_CONTINUE;
 	}
+	ui->state->current_page++;
+	/* TODO(b/163301076): Disable unavailable page navigation buttons */
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -254,7 +237,6 @@ static const struct vb2_screen_info advanced_options_screen = {
 /******************************************************************************/
 /* VB2_SCREEN_DEBUG_INFO */
 
-#define DEBUG_INFO_ITEM_PAGE_UP 1
 #define DEBUG_INFO_ITEM_PAGE_DOWN 2
 #define DEBUG_INFO_ITEM_BACK 3
 
@@ -267,34 +249,19 @@ static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 		return vb2_ui_screen_back(ui);
 	}
 	return log_page_init(ui,
-			     DEBUG_INFO_ITEM_PAGE_UP,
 			     DEBUG_INFO_ITEM_PAGE_DOWN,
 			     DEBUG_INFO_ITEM_BACK);
-}
-
-static vb2_error_t debug_info_page_prev_action(struct vb2_ui_context *ui)
-{
-	return log_page_prev(ui,
-			     DEBUG_INFO_ITEM_PAGE_UP,
-			     DEBUG_INFO_ITEM_PAGE_DOWN);
-}
-
-static vb2_error_t debug_info_page_next_action(struct vb2_ui_context *ui)
-{
-	return log_page_next(ui,
-			     DEBUG_INFO_ITEM_PAGE_UP,
-			     DEBUG_INFO_ITEM_PAGE_DOWN);
 }
 
 static const struct vb2_menu_item debug_info_items[] = {
 	LANGUAGE_SELECT_ITEM,
 	[DEBUG_INFO_ITEM_PAGE_UP] = {
 		.text = "Page up",
-		.action = debug_info_page_prev_action,
+		.action = log_page_prev_action,
 	},
 	[DEBUG_INFO_ITEM_PAGE_DOWN] = {
 		.text = "Page down",
-		.action = debug_info_page_next_action,
+		.action = log_page_next_action,
 	},
 	[DEBUG_INFO_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
