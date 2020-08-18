@@ -213,6 +213,11 @@ static void phase1_tests(void)
 		"  key data");
 	TEST_EQ(sd->kernel_version_secdata, 0x20002,
 		"  secdata_kernel version");
+
+	/* Test flags for experimental features in non-recovery path */
+	reset_common_data(FOR_PHASE1);
+	ctx->flags &= ~VB2_CONTEXT_RECOVERY_MODE;
+	TEST_SUCC(vb2api_kernel_phase1(ctx), "phase1 rec good");
 	/* Make sure phone recovery functionality is enabled, but UI disabled */
 	TEST_EQ(vb2api_phone_recovery_enabled(ctx), 1,
 		"  phone recovery enabled");
