@@ -220,4 +220,14 @@ vb2_error_t vb2_broken_recovery_menu(struct vb2_context *ctx);
  */
 vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx);
 
+/**
+ * UI for diagnostic tools boot.
+ *
+ * Enter the diagnostic tools menu.
+ *
+ * @param ctx		Vboot context
+ * @returns VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2_diagnostic_menu(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_2UI_H_ */
