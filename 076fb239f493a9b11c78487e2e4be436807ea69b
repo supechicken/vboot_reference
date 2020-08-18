@@ -134,6 +134,30 @@
     },
     {
       "key": {
+        "uuid": "d7483be2_6d5a2f20",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-18T08:33:42Z",
+      "side": 1,
+      "message": "Maybe s/Set/Initialize, since some of the flags are unset more precisely.",
+      "parentUuid": "cda85d9e_9c0f3d72",
+      "range": {
+        "startLine": 146,
+        "startChar": 11,
+        "endLine": 146,
+        "endChar": 45
+      },
+      "revId": "076fb239f493a9b11c78487e2e4be436807ea69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "175a8c0b_a37d20e4",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 1
@@ -150,6 +174,29 @@
         "startChar": 0,
         "endLine": 148,
         "endChar": 74
+      },
+      "revId": "076fb239f493a9b11c78487e2e4be436807ea69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe489b7_afbef025",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-18T08:33:42Z",
+      "side": 1,
+      "message": "These lines are a little bit too long (exceeding 80 chars). Consider renaming secdata_flags to sec_flags?",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 70
       },
       "revId": "076fb239f493a9b11c78487e2e4be436807ea69b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
