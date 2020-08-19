@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e06f9aa_630fc634",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-19T02:35:24Z",
+      "side": 1,
+      "message": "the signer was switching to BLOCKLIST instead of DENYLIST",
+      "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56811f06_211a5af1",
+        "filename": "scripts/image_signing/ensure_sane_lsb-release.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-19T02:35:24Z",
+      "side": 1,
+      "message": "\"allowed\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 21,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3ed724_d3f2dc25",
+        "filename": "scripts/image_signing/sample-test-configs/ensure_no_nonrelease_files.config",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-19T02:35:24Z",
+      "side": 1,
+      "message": "RELEASE_FILE_BLOCKLIST",
+      "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
