@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a65c63f4_d04d70e0",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-19T04:24:20Z",
+      "side": 1,
+      "message": "How about we run this test twice?  Once with 0, and once with UINT32_MAX.  That way we can ascertain that no bits will ever be flipped (assuming bit independence).",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 61
+      },
+      "revId": "f479d98028f9cacf9e6e897b5d2708822a24e87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23465f49_706a76be",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-19T04:24:20Z",
+      "side": 1,
+      "message": "We\u0027ve already tested above that we can get through vb2api_kernel_phase1 without a preamble, so there\u0027s no need to repeat that here.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 35
+      },
+      "revId": "f479d98028f9cacf9e6e897b5d2708822a24e87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
