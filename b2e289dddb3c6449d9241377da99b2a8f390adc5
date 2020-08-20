@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65e8e4b3_259831dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "Looks good in general, just minor things left.",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eb124d1_bfc76bd0",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "Putting it here should be unnecessary if you already put it above.",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a967630_c736e4a4",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "Can just declare rv in here...",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c767e9_4be05498",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "Should probably also say something about success here, e.g. print \"...sig_alg %d: digest check %s\\n\" with rv ? \"failed\" : \"succeeded\" at the end. The software implementation also prints \"digest check failed\" on verification failure.",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d3b934_be561e0c",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "...and make this an immediate return.",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbefbdcc_02ef18c6",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "Note that this was updated recently, you need to rebase.",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d3f777_867eca7e",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "I don\u0027t suppose I could get you to change that as well? I think ultimately we don\u0027t need two mechanisms, it would make sense to deprecate that preamble flag and just change the hash hwcrypto to also check this TPM flag. That can be later work that doesn\u0027t need to hold up this patch, though.",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbfe2b1f_b71a5667",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 4
+      },
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9afac2_6e888138",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "The negation just seems a bit superfluous here, why not just put the return 1 above and the return 0 below the else? (Or just make it `return !!(vb2_secdata_kernel_get(...) \u0026 ...);` if you want to be super concise.)\n\nAlso, vboot style (like kernel style) is usually to not put braces for single line if/else blocks.",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 7
+      },
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9029a33c_120214d7",
+        "filename": "tests/vb20_misc_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-20T23:47:58Z",
+      "side": 1,
+      "message": "Can you please also add tests here and for the preamble (and for vb2api_check_hash() in vb2_api_tests.c) to confirm that hwcrypto gets chosen correctly based on secdata flags and recovery state?",
+      "revId": "b2e289dddb3c6449d9241377da99b2a8f390adc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
