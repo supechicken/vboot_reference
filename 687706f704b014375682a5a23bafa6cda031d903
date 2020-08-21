@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db5e9147_48ddab59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2020-08-21T23:17:34Z",
+      "side": 1,
+      "message": "LGTM, though we are removing lines from PRESUBMIT.cfg, not sure if that matters, also one word looks to be not in the codebase already, and there are a couple others that do exist in there that might show up in future commits.",
+      "revId": "687706f704b014375682a5a23bafa6cda031d903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4940820e_ad78edeb",
+        "filename": "unblocked_terms.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2020-08-21T23:17:34Z",
+      "side": 1,
+      "message": "This one is already at 0\n\nhttps://screenshot.googleplex.com/564cc889-3e58-403b-8416-b45c68dece94\n\nYou can look at other repo counts in https://docs.google.com/spreadsheets/d/1Pjmx2lA9usqWDKRIE6pQ28RtzhvQecyia-mlHTDWraM/edit#gid\u003d1917342764",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 6
+      },
+      "revId": "687706f704b014375682a5a23bafa6cda031d903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
