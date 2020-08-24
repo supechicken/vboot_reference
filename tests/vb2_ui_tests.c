@@ -236,6 +236,7 @@ enum reset_type {
 	FOR_DEVELOPER,
 	FOR_BROKEN_RECOVERY,
 	FOR_MANUAL_RECOVERY,
+	FOR_DIAGNOSTICS,
 };
 
 /* Reset mock data (for use before each test) */
