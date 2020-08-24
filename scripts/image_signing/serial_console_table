@@ -1,0 +1,4 @@
+elm earlycon=mtk8250,mmio32,0x11002000 earlyprintk=ttyS0,115200n8 console=ttyS0,115200n8
+kukui earlycon=mtk8250,mmio32,0x11002000 earlyprintk=ttyS0,115200n8 console=ttyS0,115200n8
+asurada earlycon=mtk8250,mmio32,0x11002000 earlyprintk=ttyS0,115200n8 console=ttyS0,115200n8
+
