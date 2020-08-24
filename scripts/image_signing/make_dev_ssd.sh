@@ -36,6 +36,10 @@ DEFINE_string image "$ROOTDEV_DISK" "Path to device or image file" "i"
 DEFINE_string keys "$DEFAULT_KEYS_FOLDER" "Path to folder of dev keys" "k"
 DEFINE_boolean remove_rootfs_verification \
   $FLAGS_FALSE "Modify kernel boot config to disable rootfs verification" ""
+DEFINE_string enable_serial_console "" \
+  "Enable board specified serial console bootargs" ""
+DEFINE_boolean disable_serial_console \
+  $FLAGS_FALSE "Disable serial console bootargs" ""
 DEFINE_string backup_dir \
   "$DEFAULT_BACKUP_FOLDER" "Path of directory to store kernel backups" ""
 DEFINE_string save_config "" \
@@ -104,6 +108,39 @@ remove_legacy_boot_rootfs_verification() {
   [ ! -f "$config_file" ] ||
     sudo sed -i 's/-vusb/-usb/g; s/-vhd/-hd/g' "$config_file"
   sudo umount "$mount_point"
+}
+
+# Enable/Disable serial console
+enable_serial_console() {
+  local image="$1"
+  local board="$2"
+
+  while read -r line; do
+    b=$(echo $line | cut -d ' ' -f 1)
+    if [ $board = $b ]; then
+      param=$(echo $line | cut -d ' ' -f 2-)
+      image=$(echo "$image" | sed '
+        s/console=[0-9A-Za-z,]*//g;
+        s/earlyprintk=[0-9A-Za-z,]*//g;
+        s/earlycon=[0-9A-Za-z,]*//g')
+      image=$(echo "$param $image")
+      break
+    fi
+  done < "./serial_console_table"
+
+  echo $image
+}
+
+disable_serial_console() {
+  local image="$1"
+
+  image=$(echo "$image" | sed '
+    s/console=[0-9A-Za-z,]*//g;
+    s/earlyprintk=[0-9A-Za-z,]*//g;
+    s/earlycon=[0-9A-Za-z,]*//g')
+  image=$(echo "console= $image")
+
+  echo $image
 }
 
 # Wrapped version of dd
@@ -242,6 +279,17 @@ resign_ssd_kernel() {
       debug_msg "New kernel config: $kernel_config"
       info "${name}: Disabled rootfs verification."
       remove_legacy_boot_rootfs_verification "$ssd_device"
+    fi
+
+    if [ -n "${FLAGS_enable_serial_console}" ]; then
+      local board="${FLAGS_enable_serial_console}"
+      debug_msg "Enabling serial console for $board"
+      kernel_config="$(enable_serial_console "$kernel_config" "$board")"
+      debug_msg "New kernel config: $kernel_config"
+    elif [ "${FLAGS_disable_serial_console}" = $FLAGS_TRUE ]; then
+      debug_msg "Disabling serial console"
+      kernel_config="$(disable_serial_console "$kernel_config")"
+      debug_msg "New kernel config: $kernel_config"
     fi
 
     local new_kernel_config_file="$(make_temp_file)"
