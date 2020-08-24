@@ -833,10 +833,9 @@ static vb2_error_t diagnostics_storage_init(struct vb2_ui_context *ui)
 	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
 	if (ui->state->page_count == 0) {
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
+		return VB2_REQUEST_UI_BACK;
 	}
-	return log_page_init(ui, DIAGNOSTICS_STORAGE_ITEM_PAGE_UP,
-			     DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN,
+	return log_page_init(ui, DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN,
 			     DIAGNOSTICS_STORAGE_ITEM_BACK);
 }
 
@@ -844,12 +843,12 @@ static const struct vb2_menu_item diagnostics_storage_items[] = {
 	[DIAGNOSTICS_STORAGE_ITEM_PAGE_UP] =
 		{
 			.text = "Page up",
-			.action = debug_info_page_prev_action,
+			.action = log_page_prev_action,
 		},
 	[DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN] =
 		{
 			.text = "Page down",
-			.action = debug_info_page_next_action,
+			.action = log_page_next_action,
 		},
 	[DIAGNOSTICS_STORAGE_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
@@ -930,12 +929,12 @@ static const struct vb2_menu_item diagnostics_memory_items[] = {
 	[DIAGNOSTICS_MEMORY_ITEM_PAGE_UP] =
 		{
 			.text = "Page up",
-			.action = debug_info_page_prev_action,
+			.action = log_page_prev_action,
 		},
 	[DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN] =
 		{
 			.text = "Page down",
-			.action = debug_info_page_next_action,
+			.action = log_page_next_action,
 		},
 	[DIAGNOSTICS_MEMORY_ITEM_CANCEL] = {
 		.text = "Cancel and go back",
