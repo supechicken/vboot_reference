@@ -84,3 +84,15 @@ uint32_t vb2ex_prepare_log_screen(const char *str)
 {
 	return 1;
 }
+
+__attribute__((weak))
+const char *vb2ex_get_diagnostic_storage()
+{
+	return NULL;
+}
+
+__attribute__((weak))
+int vb2ex_get_diagnostic_memory(int mode, const char **out)
+{
+	return 0;
+}
