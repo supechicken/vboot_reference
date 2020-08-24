@@ -1318,6 +1318,11 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_INVALID_DISK	= 0x330,
 	/* Diagnostic tools */
 	VB2_SCREEN_DIAGNOSTICS			= 0x400,
+	/* Storage diagnostic screen */
+	VB2_SCREEN_DIAGNOSTICS_STORAGE	      	= 0x410,
+	/* Memory diagnostic screen */
+	VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK    	= 0x420,
+	VB2_SCREEN_DIAGNOSTICS_MEMORY_FULL     	= 0x421,
 };
 
 enum vb2_ui_error {
@@ -1331,6 +1336,8 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_FIRMWARE_LOG,
 	/* Untrusted confirmation */
 	VB2_UI_ERROR_UNTRUSTED_CONFIRMATION,
+	/* Diagnostics internal failed */
+	VB2_UI_ERROR_DIAGNOSTICS,
 };
 
 /**
@@ -1441,6 +1448,48 @@ const char *vb2ex_get_firmware_log(void);
  * @return The number of pages after pagination.  0 if none or error.
  */
 uint32_t vb2ex_prepare_log_screen(const char *str);
+
+/**
+ * Get the full storage diagnostic log.
+ *
+ * Return a pointer of full log string which is guaranteed to be
+ * null-terminated.  The function implementation should manage string memory
+ * internally.  Subsequent calls may update the string and/or may return a new
+ * pointer.
+ *
+ * @return The pointer to the full debug info string.  NULL on error.
+ */
+const char *vb2ex_get_diagnostic_storage(void);
+
+typedef enum {
+	MemoryTest_NoReset = 0, // Keep running from previos setting.
+	MemoryTest_Reset_To_Quicktest,
+	MemoryTest_Reset_To_Fulltest
+} MemoryTestMode;
+typedef enum {
+	MemoryTestStopped = 0,
+	MemoryTestIsRunning,
+	MemoryTestError,
+} MemoryTestStatus;
+/**
+ * Get the memory diagnostic status. When it is called, it will
+ * take over the control for a short period of time on running memory test and
+ * then return the result of current status. If the mode is not zero, it will
+ * reset the memory test state.
+ *
+ * Return the running status of memory to know whether it is complete.
+ *
+ * @param mode		The mode of memory test for running. If set to
+ *			MemoryTestNoReset, it will use the previous setting
+ *			to run next batch.
+ * @param out		For returning a read-only pointer of full log string
+ *			which is guaranteed to be null-terminated.
+ *			The function will manage memory internally, so the
+ *			returned pointer will only valid until next call.
+ * @return The status of memory test.
+ */
+MemoryTestStatus vb2ex_get_diagnostic_memory(MemoryTestMode mode,
+					     const char **out);
 
 /*****************************************************************************/
 /* Timer. */
