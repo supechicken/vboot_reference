@@ -33,6 +33,24 @@
       "revId": "aaaeaed1e7bfd0e82c7c13450b320a171f80ad79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b085761_f019f50a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-25T00:06:17Z",
+      "side": 1,
+      "message": "I really don\u0027t have free bandwidth right now so I think I\u0027d rather just merge this for now. There shouldn\u0027t be many other cases where people build things in the chroot with GCC. I agree this would probably be best fixed in libzip itself, if anyone wants to take it up with them, go ahead.",
+      "parentUuid": "4e2bae86_6db9027d",
+      "revId": "aaaeaed1e7bfd0e82c7c13450b320a171f80ad79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
