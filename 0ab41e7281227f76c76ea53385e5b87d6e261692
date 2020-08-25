@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2bc9b30c_c7bb3d6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "also zork",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bead79c_7f0998d9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -16,6 +39,46 @@
       "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b918d66f_87737534",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "Might be disabled.",
+      "range": {
+        "startLine": 606,
+        "startChar": 3,
+        "endLine": 606,
+        "endChar": 40
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624d59a0_04ffcee4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "Show error box and beep?",
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -65,6 +128,29 @@
     },
     {
       "key": {
+        "uuid": "6d96d84d_fa58aa90",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "Is it possible for altfw_num to be 0 here? Do you mean altfw_num \u003e\u003d ARRAY_SIZE(menu_before)?",
+      "range": {
+        "startLine": 824,
+        "startChar": 7,
+        "endLine": 824,
+        "endChar": 20
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84dff2e3_ed0505b0",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -81,6 +167,167 @@
         "startChar": 4,
         "endLine": 825,
         "endChar": 14
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b305be_302d7d24",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "Could we do it in this CL?",
+      "range": {
+        "startLine": 829,
+        "startChar": 4,
+        "endLine": 829,
+        "endChar": 8
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e8beb5_276cfbbf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "Is every board supposed to have at least 1 bootloader?",
+      "range": {
+        "startLine": 850,
+        "startChar": 28,
+        "endLine": 850,
+        "endChar": 33
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2acf1e0e_a408debb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "the number of available alternate bootloaders",
+      "range": {
+        "startLine": 1356,
+        "startChar": 10,
+        "endLine": 1356,
+        "endChar": 54
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5048dee_8094b7a5",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "not in",
+      "range": {
+        "startLine": 676,
+        "startChar": 17,
+        "endLine": 676,
+        "endChar": 20
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8820c36a_bcd61010",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "Why don\u0027t we allow altfw_num to be 0? Is it because index 0 is the language selection?",
+      "range": {
+        "startLine": 710,
+        "startChar": 12,
+        "endLine": 710,
+        "endChar": 26
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67b302f_8e8bc72d",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "I can\u0027t see here why 4 is too big. Could you explicitly set\n\n mock_bootloader_count \u003d 2;\n\nhere?",
+      "range": {
+        "startLine": 725,
+        "startChar": 46,
+        "endLine": 725,
+        "endChar": 53
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1863a70_7e8234db",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-25T10:14:02Z",
+      "side": 1,
+      "message": "allowed: Ctrl-L",
+      "range": {
+        "startLine": 735,
+        "startChar": 28,
+        "endLine": 735,
+        "endChar": 35
       },
       "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
