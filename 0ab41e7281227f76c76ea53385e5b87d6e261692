@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bead79c_7f0998d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-25T03:58:15Z",
+      "side": 1,
+      "message": "A few nits.",
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39d2c848_0231acc9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-25T03:58:15Z",
+      "side": 1,
+      "message": "Since we already have altfw_num -- how about just set `altfw_num \u003d 0` here.",
+      "range": {
+        "startLine": 820,
+        "startChar": 14,
+        "endLine": 820,
+        "endChar": 15
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fafd4c5_75aabea5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-25T03:58:15Z",
+      "side": 1,
+      "message": "Move this check outside the if/else, and add a VB2_DEBUG if it falls outside the valid range.",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 824,
+        "endChar": 53
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84dff2e3_ed0505b0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-25T03:58:15Z",
+      "side": 1,
+      "message": "Move this call to be common for both cases outside of the if/else.",
+      "range": {
+        "startLine": 825,
+        "startChar": 4,
+        "endLine": 825,
+        "endChar": 14
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
