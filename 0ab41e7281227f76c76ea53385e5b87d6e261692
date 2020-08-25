@@ -105,6 +105,30 @@
     },
     {
       "key": {
+        "uuid": "461add07_7c8e6dde",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-25T10:49:20Z",
+      "side": 1,
+      "message": "I intend not to call vb2ex_get_bootloader_count() while ui-\u003ekey \u003d\u003d VB_KEY_CTRL(\u0027L\u0027).\n\nWhat is your opinion here? I am fine with calling vb2ex_get_bootloader_count() every condition.",
+      "parentUuid": "39d2c848_0231acc9",
+      "range": {
+        "startLine": 820,
+        "startChar": 14,
+        "endLine": 820,
+        "endChar": 15
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0fafd4c5_75aabea5",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -151,6 +175,30 @@
     },
     {
       "key": {
+        "uuid": "f82702ac_ee131fe0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-25T10:49:20Z",
+      "side": 1,
+      "message": "The altfw_num is 1-indexed,\nWhat about altfw_num \u003d ui-\u003estate-\u003eselected_item - ARRAY_SIZE(menu_before) + 1?",
+      "parentUuid": "6d96d84d_fa58aa90",
+      "range": {
+        "startLine": 824,
+        "startChar": 7,
+        "endLine": 824,
+        "endChar": 20
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84dff2e3_ed0505b0",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -174,6 +222,30 @@
     },
     {
       "key": {
+        "uuid": "3850caca_3f20ba6c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-25T10:49:20Z",
+      "side": 1,
+      "message": "Then we will miss a validity check with \"select from altfw screen, but get altfw_num \u003d\u003d 0\".\n\nI am fine with ignoring this since it should not happen.",
+      "parentUuid": "84dff2e3_ed0505b0",
+      "range": {
+        "startLine": 825,
+        "startChar": 4,
+        "endLine": 825,
+        "endChar": 14
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9b305be_302d7d24",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -185,6 +257,30 @@
       "writtenOn": "2020-08-25T10:14:02Z",
       "side": 1,
       "message": "Could we do it in this CL?",
+      "range": {
+        "startLine": 829,
+        "startChar": 4,
+        "endLine": 829,
+        "endChar": 8
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027b4efb_8a6f14da",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-25T10:49:20Z",
+      "side": 1,
+      "message": "I am not sure if there is any concern about puff -- if this change belongs to RW, separate CLs should be easier for cherry-picking.",
+      "parentUuid": "d9b305be_302d7d24",
       "range": {
         "startLine": 829,
         "startChar": 4,
@@ -277,6 +373,30 @@
       "writtenOn": "2020-08-25T10:14:02Z",
       "side": 1,
       "message": "Why don\u0027t we allow altfw_num to be 0? Is it because index 0 is the language selection?",
+      "range": {
+        "startLine": 710,
+        "startChar": 12,
+        "endLine": 710,
+        "endChar": 26
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f0c655_f00904e4",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-25T10:49:20Z",
+      "side": 1,
+      "message": "We should not able to select the \u0027default altfw\u0027 in this screen.\n\nTell me if you think this task is too overfit.",
+      "parentUuid": "8820c36a_bcd61010",
       "range": {
         "startLine": 710,
         "startChar": 12,
