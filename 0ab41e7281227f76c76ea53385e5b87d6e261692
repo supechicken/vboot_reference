@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aede4036_deafab37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc9b30c_c7bb3d6b",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bead79c_7f0998d9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "9cb7c349_c4c6990b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "No, we checked it in vb2api_get_dev_default_boot_target, see\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/vboot_reference/firmware/2lib/2misc.c;l\u003d526",
+      "parentUuid": "b918d66f_87737534",
+      "range": {
+        "startLine": 606,
+        "startChar": 3,
+        "endLine": 606,
+        "endChar": 40
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "624d59a0_04ffcee4",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -76,6 +124,24 @@
       "writtenOn": "2020-08-25T10:14:02Z",
       "side": 1,
       "message": "Show error box and beep?",
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8cb26cc_6a4fb5ba",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "I think we should have additional CL for this",
+      "parentUuid": "624d59a0_04ffcee4",
       "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -223,6 +289,54 @@
     },
     {
       "key": {
+        "uuid": "154c9686_00db9ff4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fafd4c5_75aabea5",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 824,
+        "endChar": 53
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068804c4_c5b32bca",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Done\n\nalso publicize \u0026 rename menu_before and menu_after for consistency",
+      "parentUuid": "4b39ec4e_10c38cde",
+      "range": {
+        "startLine": 824,
+        "startChar": 7,
+        "endLine": 824,
+        "endChar": 20
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84dff2e3_ed0505b0",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -364,6 +478,30 @@
     },
     {
       "key": {
+        "uuid": "ee2621a3_7359ff1b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "I do not know about the answer, but I think it is worth discussing about the behaviors while num_bootloader \u003d\u003d 0\n\nCurrent workaround:\n1. Show error in VB2_DEBUG, and show a screen with back button only.\n2, Beep if vb2_ui_developer_mode_boot_alternate_action is called but num_bootloader \u003d\u003d 0\n\nWhat\u0027s your suggestion here?",
+      "parentUuid": "19e8beb5_276cfbbf",
+      "range": {
+        "startLine": 850,
+        "startChar": 28,
+        "endLine": 850,
+        "endChar": 33
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2acf1e0e_a408debb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10
@@ -387,6 +525,30 @@
     },
     {
       "key": {
+        "uuid": "ad92d8e2_ba5097e0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2acf1e0e_a408debb",
+      "range": {
+        "startLine": 1356,
+        "startChar": 10,
+        "endLine": 1356,
+        "endChar": 54
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5048dee_8094b7a5",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 10
@@ -407,6 +569,30 @@
       "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d48db0_fc296901",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5048dee_8094b7a5",
+      "range": {
+        "startLine": 676,
+        "startChar": 17,
+        "endLine": 676,
+        "endChar": 20
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -457,6 +643,30 @@
     },
     {
       "key": {
+        "uuid": "e5ff4d3d_85293fed",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Since we changed the implementation, this should be remove.",
+      "parentUuid": "40f0c655_f00904e4",
+      "range": {
+        "startLine": 710,
+        "startChar": 12,
+        "endLine": 710,
+        "endChar": 26
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c67b302f_8e8bc72d",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 10
@@ -480,6 +690,30 @@
     },
     {
       "key": {
+        "uuid": "e81ecf36_b62920d2",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c67b302f_8e8bc72d",
+      "range": {
+        "startLine": 725,
+        "startChar": 46,
+        "endLine": 725,
+        "endChar": 53
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1863a70_7e8234db",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 10
@@ -500,6 +734,30 @@
       "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e96ce9_3b46981a",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-26T07:19:54Z",
+      "side": 1,
+      "message": "Done\n\nUsing ctrl+l for consistency here.",
+      "parentUuid": "e1863a70_7e8234db",
+      "range": {
+        "startLine": 735,
+        "startChar": 28,
+        "endLine": 735,
+        "endChar": 35
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
