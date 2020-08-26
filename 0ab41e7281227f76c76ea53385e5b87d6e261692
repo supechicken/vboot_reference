@@ -199,6 +199,30 @@
     },
     {
       "key": {
+        "uuid": "4b39ec4e_10c38cde",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-26T02:36:17Z",
+      "side": 1,
+      "message": "\u003e What about altfw_num \u003d ui-\u003estate-\u003eselected_item - ARRAY_SIZE(menu_before) + 1?\n\nLooks fine.",
+      "parentUuid": "f82702ac_ee131fe0",
+      "range": {
+        "startLine": 824,
+        "startChar": 7,
+        "endLine": 824,
+        "endChar": 20
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84dff2e3_ed0505b0",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -290,6 +314,30 @@
       "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba58a8e_9f6a5bdf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-26T02:36:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "027b4efb_8a6f14da",
+      "range": {
+        "startLine": 829,
+        "startChar": 4,
+        "endLine": 829,
+        "endChar": 8
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
