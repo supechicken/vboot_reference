@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d493e826_6bbdbb14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-27T08:15:46Z",
+      "side": 1,
+      "message": "Since the firmware log functionality hasn\u0027t been merged yet, I think there\u0027s nothing to be \"fixed\". How about\n\n Add reinit screen hook",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "05e72a9adc7bc6bbb0699480a758ed1d4165af3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8feeb41_65507bb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-27T08:15:46Z",
+      "side": 1,
+      "message": "needs",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "05e72a9adc7bc6bbb0699480a758ed1d4165af3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d9d3c15_51c29b72",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
