@@ -148,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "e2353ed5_02c68b7d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-27T10:09:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8cb26cc_6a4fb5ba",
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39d2c848_0231acc9",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 10
@@ -490,6 +508,30 @@
       "side": 1,
       "message": "I do not know about the answer, but I think it is worth discussing about the behaviors while num_bootloader \u003d\u003d 0\n\nCurrent workaround:\n1. Show error in VB2_DEBUG, and show a screen with back button only.\n2, Beep if vb2_ui_developer_mode_boot_alternate_action is called but num_bootloader \u003d\u003d 0\n\nWhat\u0027s your suggestion here?",
       "parentUuid": "19e8beb5_276cfbbf",
+      "range": {
+        "startLine": 850,
+        "startChar": 28,
+        "endLine": 850,
+        "endChar": 33
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88bb728_15614712",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-27T10:09:21Z",
+      "side": 1,
+      "message": "Wait, is the error dialog going to be shown on dev mode screen or bootloader menu screen?",
+      "parentUuid": "ee2621a3_7359ff1b",
       "range": {
         "startLine": 850,
         "startChar": 28,
