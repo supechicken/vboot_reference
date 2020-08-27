@@ -93,6 +93,30 @@
       "revId": "ca5ea98bdcb3f8f5bb88a24ad35477b7724d07c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d32817_5b97f5ed",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-27T08:26:52Z",
+      "side": 1,
+      "message": "Currently if log_string is null, it will be passed all the way down to ui_log_init() before realizing something is wrong. In my opinion, we should always avoid passing NULL to a function, so that the function can assume its arguments are all non-null.\n\nFor example, we don\u0027t check (log !\u003d NULL) in ui_log_init() since we assume the callers will not pass a null pointer.",
+      "parentUuid": "3af44813_bdaa4710",
+      "range": {
+        "startLine": 332,
+        "startChar": 13,
+        "endLine": 332,
+        "endChar": 23
+      },
+      "revId": "ca5ea98bdcb3f8f5bb88a24ad35477b7724d07c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
