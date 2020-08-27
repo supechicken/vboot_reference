@@ -56,6 +56,24 @@
       "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f456f59_d56fe980",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-27T11:46:42Z",
+      "side": 1,
+      "message": "As a side note, in diagnostics, we had a plan to keep appending the log string in memory tests. But I removed this feature and make the memory test screen fixed in one page to reduce UI change work. The OEM feedback may impact this constraint in future. (e.g. they want more detail show on screen when running)\n\nIn short, we won\u0027t have to worry about the length change right now, but it may be a feature request for the next milestone of diagnostics.",
+      "parentUuid": "d0fa173e_b3aca797",
+      "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
