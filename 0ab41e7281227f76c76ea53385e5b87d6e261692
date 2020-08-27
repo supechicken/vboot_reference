@@ -544,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "98a8d5eb_314a7505",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-27T12:57:55Z",
+      "side": 1,
+      "message": "We should be prepared for the case of 0 bootloaders, since this is a user-modifiable configuration by design.",
+      "parentUuid": "b88bb728_15614712",
+      "range": {
+        "startLine": 850,
+        "startChar": 28,
+        "endLine": 850,
+        "endChar": 33
+      },
+      "revId": "0ab41e7281227f76c76ea53385e5b87d6e261692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2acf1e0e_a408debb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 10

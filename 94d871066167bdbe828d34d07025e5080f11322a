@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cdd78ed5_4d5323e3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-27T12:57:55Z",
+      "side": 1,
+      "message": "Can we just take the hit of the extra 2 lines here (set error_beep and return UI_CONTINUE), so that we don\u0027t need to wrap this huge clause in an else{}?",
+      "range": {
+        "startLine": 823,
+        "startChar": 3,
+        "endLine": 823,
+        "endChar": 7
+      },
+      "revId": "94d871066167bdbe828d34d07025e5080f11322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2b3e204_9428d4d3",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 11
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "I can\u0027t see from the link how Joel was suggesting adding this check. Did you paste the wrong link?",
       "parentUuid": "3db98df4_86cc35d6",
+      "range": {
+        "startLine": 828,
+        "startChar": 6,
+        "endLine": 828,
+        "endChar": 46
+      },
+      "revId": "94d871066167bdbe828d34d07025e5080f11322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a00731ca_444d58ff",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-27T12:57:55Z",
+      "side": 1,
+      "message": "The previous code was checking for \"altfw_num \u003e 0 \u0026\u0026 altfw_num \u003c\u003d num_bootloaders\".\n\nI suggested moving the validity check outside of the original if/else clause.\n\nYou\u0027re probably right that we don\u0027t need to do this check... if it ever occurred from some other UI bug, VbExLegacy would presumably fail anyways.",
+      "parentUuid": "e8af6077_7106529d",
       "range": {
         "startLine": 828,
         "startChar": 6,
