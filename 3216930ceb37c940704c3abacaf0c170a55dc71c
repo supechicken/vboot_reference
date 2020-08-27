@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c6298436_fb691a4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:52:41Z",
+      "side": 1,
+      "message": "yes, scripts/keygeneration/ is the right place for all things like this currently.  we\u0027re slowly working on pulling it out, but for now, this is the only location we want to store such scripts.",
+      "parentUuid": "80b22e01_bc244e9f",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4906610_b50fcaec",
         "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
         "patchSetId": 1
