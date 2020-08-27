@@ -16,6 +16,69 @@
       "revId": "fd64d474abc83781c14daead62ff9c9385c90800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04a0e36e_985a1cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-27T07:54:41Z",
+      "side": 1,
+      "message": "LGTM after nits.",
+      "revId": "fd64d474abc83781c14daead62ff9c9385c90800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "201a5be8_22cf4bef",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-27T07:54:41Z",
+      "side": 1,
+      "message": "on",
+      "range": {
+        "startLine": 317,
+        "startChar": 16,
+        "endLine": 317,
+        "endChar": 20
+      },
+      "revId": "fd64d474abc83781c14daead62ff9c9385c90800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b42f129_840fa80d",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-27T07:54:41Z",
+      "side": 1,
+      "message": "For a short-form comment, no * here.\n\n  /* Short\n     comment */",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "fd64d474abc83781c14daead62ff9c9385c90800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
