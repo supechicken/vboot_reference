@@ -16,6 +16,199 @@
       "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe13d0c8_235464db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "looks fine to me ... mostly nits below\n\ngood to get Roy to chime in on the crypto/cert aspects",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4906610_b50fcaec",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "omit (c) with new files",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3439f2bb_dc7a5968",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "trim this line",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65865ca_45d5a252",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "omit braces with builtins like $0",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd252d37_01aabb7c",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "should omit indentation here (and below)",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898728ba_ea0c4ac4",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "should send to stderr\n\n echo \"$*\" \u003e\u00262",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8117ad4f_d80be586",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "you should check $# and never whether a specific arg is \"empty\"",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdccfc1f_5fe65d1d",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "needs `local hash` above",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b88b765_2f1fe7a3",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "please uninline the comment if possible",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23fe9693_ee761522",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "can omit the spaces here",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57fd9c49_522c2e37",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-27T21:49:25Z",
+      "side": 1,
+      "message": "you can merge this like:\n\n local cmd\u003d(\n   openssl req -new\n   -newkey \"rsa:${keysize}\"\n   -config \"${dir}/${KEYNAME}.cnf\"\n   -keyout \"${dir}/${KEYNAME}.key\"\n   -out \"${dir}/${KEYNAME}.csr\"\n )\n if [[ \"${PASSPHRASE+set}\" \u003d\u003d \"set\" ]]; then\n   cmd+\u003d( ... )\n fi\n \"${cmd[@]}\"",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
