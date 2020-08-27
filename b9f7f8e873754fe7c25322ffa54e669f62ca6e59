@@ -39,6 +39,23 @@
       "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fa173e_b3aca797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-27T10:49:19Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not so convinced that introducing a reinit() API to handle this case is the best approach.  The only reason we need to do this in the first place is because of the limitations caused by the divide between depthcharge and vboot_api.  If our only use of reinit() is to work around this limitation, then I\u0027d prefer using some simpler workaround for the time being.  Not to mention that we may find our requirements change if diagnostics team requires log screens whose length (and number of pages) increases over time.  What do you think of storing log_string as part of vb2_screen_state, and introducing something like this in ui_loop() to handle the case?\n\n  /* Restore the previous log string, and assume the\n     number of pages stays constant. */\n  if (ui.state-\u003escreen-\u003eid !\u003d prev_state.screen-\u003eid \u0026\u0026\n      ui.state-\u003elog_string)\n    vb2ex_prepare_log_screen(ui.state-\u003elog_string);",
+      "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
