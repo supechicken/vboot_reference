@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80b22e01_bc244e9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-27T21:37:11Z",
+      "side": 1,
+      "message": "Does this really belong in vboot? Where is this called from? Feels to me like you\u0027d probably want to put this in a chipset overlay or something instead.",
+      "revId": "3216930ceb37c940704c3abacaf0c170a55dc71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
