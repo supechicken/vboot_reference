@@ -74,6 +74,24 @@
       "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18214955_08a9ee30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T06:05:00Z",
+      "side": 1,
+      "message": "(1) Since we should always restore this before calling vb2ex_display_ui(), I think the best place for calling vb2ex_prepare_log_screen() should be somewhere around\n menu \u003d get_menu(\u0026ui);\n\n(2) We will prepare the whole log twice in a row: one is (previous iteration) in debug_info_init(), and the other is (current iteration) right before vb2ex_display_ui(). A solution is that we retrieve log_string and set current_page \u003d 0 in init() only; while prepare log and retrieve page_count right before vb2ex_display_ui()\n\n(3) What about errors during preparing? We can not distinguish this is a debug_info/firmware_log/diagnostics screen error unless switch(ui.state-\u003escreen-\u003eid)",
+      "parentUuid": "9f456f59_d56fe980",
+      "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
