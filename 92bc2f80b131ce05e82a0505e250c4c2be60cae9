@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "050b7ecf_351cc6fe",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-28T09:19:41Z",
+      "side": 1,
+      "message": "Not used anywhere?",
+      "range": {
+        "startLine": 1331,
+        "startChar": 1,
+        "endLine": 1331,
+        "endChar": 25
+      },
+      "revId": "92bc2f80b131ce05e82a0505e250c4c2be60cae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7dbd6ba_8a8cb9cb",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-28T09:19:41Z",
+      "side": 1,
+      "message": "Consider moving this part before\n\n if (MENU_UI)\n\nOtherwise it feels like vb2_diagnostic_menu() doesn\u0027t have a UI.",
+      "range": {
+        "startLine": 251,
+        "startChar": 6,
+        "endLine": 251,
+        "endChar": 36
+      },
+      "revId": "92bc2f80b131ce05e82a0505e250c4c2be60cae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
