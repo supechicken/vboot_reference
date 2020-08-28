@@ -54,6 +54,11 @@ enum {
 	EC_RECOVERY_DONE
 };
 
+/* GBB_FLAGS special values */
+enum {
+	GBB_FLAGS_NO_OVERRIDE = -1,
+};
+
 struct updater_config {
 	struct firmware_image image, image_current;
 	struct firmware_image ec_image, pd_image;
@@ -67,6 +72,7 @@ struct updater_config {
 	int factory_update;
 	int check_platform;
 	int fast_update;
+	int gbb_flags;
 	int verbosity;
 	const char *emulation;
 };
@@ -80,6 +86,7 @@ struct updater_config_arguments {
 	char *output_dir;
 	char *repack, *unpack;
 	int is_factory, try_update, force_update, do_manifest, host_only;
+	int gbb_flags;
 	int fast_update;
 	int verbosity;
 };
