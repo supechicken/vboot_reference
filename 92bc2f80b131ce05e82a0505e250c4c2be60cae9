@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c588628c_e6e7baf4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T09:24:11Z",
+      "side": 1,
+      "message": "This is used in depthcharge. CL:2322286",
+      "parentUuid": "050b7ecf_351cc6fe",
+      "range": {
+        "startLine": 1331,
+        "startChar": 1,
+        "endLine": 1331,
+        "endChar": 25
+      },
+      "revId": "92bc2f80b131ce05e82a0505e250c4c2be60cae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7dbd6ba_8a8cb9cb",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 16
@@ -45,6 +69,30 @@
       "revId": "92bc2f80b131ce05e82a0505e250c4c2be60cae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f80044_85972b16",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T09:24:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7dbd6ba_8a8cb9cb",
+      "range": {
+        "startLine": 251,
+        "startChar": 6,
+        "endLine": 251,
+        "endChar": 36
+      },
+      "revId": "92bc2f80b131ce05e82a0505e250c4c2be60cae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
