@@ -149,7 +149,11 @@ CFLAGS ?= ${FIRMWARE_FLAGS} ${COMMON_FLAGS} -fvisibility=hidden \
 	-fomit-frame-pointer
 else
 # FIRMWARE_ARCH not defined; assuming local compile.
+ifeq ($(shell uname -s), FreeBSD)
+CC = gcc
+else
 CC ?= gcc
+endif
 CFLAGS += -DCHROMEOS_ENVIRONMENT ${COMMON_FLAGS}
 endif
 
@@ -788,10 +792,13 @@ TEST_KEYS = ${SRC_RUN}/tests/testkeys
 # ----------------------------------------------------------------------------
 # Fuzzing binaries
 
-FUZZ_TEST_NAMES = \
+#ifneq ($(shell uname -s), FreeBSD)
+ifneq (${CC}, gcc)
+	FUZZ_TEST_NAMES = \
 	tests/cgpt_fuzzer \
 	tests/vb2_keyblock_fuzzer \
 	tests/vb2_preamble_fuzzer
+endif
 
 FUZZ_TEST_BINS = $(addprefix ${BUILD}/,${FUZZ_TEST_NAMES})
 
@@ -944,7 +951,9 @@ ${CGPT_WRAPPER}: ${CGPT_WRAPPER_OBJS} ${UTILLIB}
 .PHONY: cgpt
 cgpt: ${CGPT} ${CGPT_WRAPPER}
 
+ifneq ($(shell uname -s), FreeBSD)
 ${CGPT}: LDLIBS += -luuid
+endif
 
 ${CGPT}: ${CGPT_OBJS} ${UTILLIB}
 	@${PRINTF} "    LDcgpt        $(subst ${BUILD}/,,$@)\n"
@@ -1083,7 +1092,10 @@ fuzzers: ${FUZZ_TEST_BINS}
 
 ${FUZZ_TEST_BINS}: ${FWLIB}
 ${FUZZ_TEST_BINS}: LIBS = ${FWLIB}
+#ifneq ($(shell uname -s), FreeBSD)
+ifneq (${CC}, gcc)
 ${FUZZ_TEST_BINS}: LDFLAGS += -fsanitize=fuzzer
+endif
 
 # ----------------------------------------------------------------------------
 # Generic build rules. LIBS and OBJS can be overridden to tweak the generic
@@ -1116,6 +1128,9 @@ ${UTIL_DEFAULTS}:
 
 # Some utilities need external crypto functions
 CRYPTO_LIBS := $(shell ${PKG_CONFIG} --libs libcrypto)
+ifeq ($(shell uname -s), FreeBSD)
+CRYPTO_LIBS  += -lcrypto
+endif
 
 ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
@@ -1132,7 +1147,9 @@ ${TEST21_BINS}: LDLIBS += ${CRYPTO_LIBS}
 
 # Allow multiple definitions, so tests can mock functions from other libraries
 ${BUILD}/tests/%: LDFLAGS += -Xlinker --allow-multiple-definition
+ifneq ($(shell uname -s), FreeBSD)
 ${BUILD}/tests/%: LDLIBS += -lrt -luuid
+endif
 ${BUILD}/tests/%: LIBS += ${TESTLIB}
 
 ifeq (${TPM2_MODE},)

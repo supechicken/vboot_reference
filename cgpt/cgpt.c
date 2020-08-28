@@ -9,19 +9,23 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#if !defined(__FreeBSD__)
 #include <uuid/uuid.h>
+#endif
 
 #include "cgpt.h"
 #include "vboot_host.h"
 
 const char* progname;
 
+#if !defined(__FreeBSD__)
 int GenerateGuid(Guid *newguid)
 {
   /* From libuuid */
   uuid_generate(newguid->u.raw);
   return CGPT_OK;
 }
+#endif
 
 struct {
   const char *name;

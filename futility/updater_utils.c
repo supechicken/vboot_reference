@@ -10,7 +10,10 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-
+#if defined (__FreeBSD__)
+#include <sys/wait.h>
+#endif
+	
 #include "2common.h"
 #include "crossystem.h"
 #include "host_misc.h"
