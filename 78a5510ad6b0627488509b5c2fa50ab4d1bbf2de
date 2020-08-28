@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "764761cf_690cda26",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T23:19:47Z",
+      "side": 1,
+      "message": "nit: \"+ GBB flags/keys\" or \"+ GBB (except HWID)\"  to clarify it also updates keys?",
+      "range": {
+        "startLine": 110,
+        "startChar": 53,
+        "endLine": 110,
+        "endChar": 58
+      },
+      "revId": "78a5510ad6b0627488509b5c2fa50ab4d1bbf2de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49df195_eabfb7b1",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T23:19:47Z",
+      "side": 1,
+      "message": "Might be better to keep this as long in case we ever use GBB flag 0x80000000?",
+      "revId": "78a5510ad6b0627488509b5c2fa50ab4d1bbf2de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
