@@ -61,6 +61,8 @@ struct updater_config {
 	struct quirk_entry quirks[QUIRK_MAX];
 	struct archive *archive;
 	struct tempfile tempfiles;
+	uint64_t gbb_flags;
+	int override_gbb_flags;
 	int try_update;
 	int force_update;
 	int legacy_update;
@@ -79,6 +81,8 @@ struct updater_config_arguments {
 	char *emulation, *sys_props;
 	char *output_dir;
 	char *repack, *unpack;
+	uint64_t gbb_flags;
+	int override_gbb_flags;
 	int is_factory, try_update, force_update, do_manifest, host_only;
 	int fast_update;
 	int verbosity;
