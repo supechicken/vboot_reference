@@ -7,7 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if !defined(__FreeBSD__)
 #include <uuid/uuid.h>
+#endif
 
 #include "cgpt.h"
 #include "vboot_host.h"
