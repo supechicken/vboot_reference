@@ -7,8 +7,12 @@
 #define VBOOT_REFERENCE_CGPT_ENDIAN_H_
 
 // Newer distros already have this. For those that don't, we add it here.
-#ifndef HAVE_MACOS
+#if !defined(HAVE_MACOS) && !defined(__FreeBSD__)
 #include <endian.h>
+#endif
+
+#if defined(__FreeBSD__)
+#include <sys/endian.h>
 #endif
 
 #ifndef le16toh
