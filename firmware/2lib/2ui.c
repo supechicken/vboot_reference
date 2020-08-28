@@ -315,6 +315,12 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		    /* We want to redraw/beep on a transition. */
 		    prev_error_code != ui.error_code) {
 
+			if (ui.state->screen->id != prev_state.screen->id &&
+			    ui.state->log_string) {
+				vb2ex_prepare_log_screen(ui->state->log_string);
+				VB2_DEBUG("<%s> prepare log screen\n",
+					  ui.state->screen->name);
+			}
 			menu = get_menu(&ui);
 			VB2_DEBUG("<%s> menu item <%s>\n",
 				  ui.state->screen->name,
