@@ -110,6 +110,47 @@
       "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3280d44_e75fecdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-28T07:50:05Z",
+      "side": 1,
+      "message": "Hi Hsuan-Ting,\n\nThanks for putting that experimental CL together.  I see your point -- this solution comes with its own shortcomings.\n\nAnother possible option would be to not bother passing log_string through vboot -- change the argument of vb2ex_prepare_log_screen to vb2_screen enum, and have depthcharge take care internally of keeping track of the different strings and which screen they match up to.\n\nI think I\u0027m okay going with your reinit() solution for now, especially after having removed the extra complexity of VB2_REQUEST_UI_BACK.  Let\u0027s lump this together with the \"force_display\" flag as technical debt that we can reconsider at a later date.",
+      "parentUuid": "33f6230c_d3cfff45",
+      "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ce9fb1_dbd97d9b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-08-28T07:50:05Z",
+      "side": 1,
+      "message": "This can probably still live on one line.",
+      "range": {
+        "startLine": 263,
+        "startChar": 23,
+        "endLine": 265,
+        "endChar": 14
+      },
+      "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
