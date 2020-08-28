@@ -788,10 +788,12 @@ TEST_KEYS = ${SRC_RUN}/tests/testkeys
 # ----------------------------------------------------------------------------
 # Fuzzing binaries
 
+ifneq (${CC}, gcc)
 FUZZ_TEST_NAMES = \
 	tests/cgpt_fuzzer \
 	tests/vb2_keyblock_fuzzer \
 	tests/vb2_preamble_fuzzer
+endif
 
 FUZZ_TEST_BINS = $(addprefix ${BUILD}/,${FUZZ_TEST_NAMES})
 
@@ -944,6 +946,8 @@ ${CGPT_WRAPPER}: ${CGPT_WRAPPER_OBJS} ${UTILLIB}
 .PHONY: cgpt
 cgpt: ${CGPT} ${CGPT_WRAPPER}
 
+# on FreeBSD: install misc/e2fsprogs-libuuid from ports,
+# or e2fsprogs-libuuid from its binary package system.
 ${CGPT}: LDLIBS += -luuid
 
 ${CGPT}: ${CGPT_OBJS} ${UTILLIB}
@@ -1083,7 +1087,9 @@ fuzzers: ${FUZZ_TEST_BINS}
 
 ${FUZZ_TEST_BINS}: ${FWLIB}
 ${FUZZ_TEST_BINS}: LIBS = ${FWLIB}
+ifneq (${CC}, gcc)
 ${FUZZ_TEST_BINS}: LDFLAGS += -fsanitize=fuzzer
+endif
 
 # ----------------------------------------------------------------------------
 # Generic build rules. LIBS and OBJS can be overridden to tweak the generic
@@ -1116,6 +1122,9 @@ ${UTIL_DEFAULTS}:
 
 # Some utilities need external crypto functions
 CRYPTO_LIBS := $(shell ${PKG_CONFIG} --libs libcrypto)
+ifeq ($(shell uname -s), FreeBSD)
+CRYPTO_LIBS += -lcrypto
+endif
 
 ${BUILD}/utility/dumpRSAPublicKey: LDLIBS += ${CRYPTO_LIBS}
 ${BUILD}/utility/pad_digest_utility: LDLIBS += ${CRYPTO_LIBS}
