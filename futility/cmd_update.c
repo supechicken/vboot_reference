@@ -21,6 +21,7 @@ enum {
 	OPT_FACTORY,
 	OPT_FAST,
 	OPT_FORCE,
+	OPT_GBB_FLAGS,
 	OPT_HOST_ONLY,
 	OPT_MANIFEST,
 	OPT_MODEL,
@@ -58,6 +59,7 @@ static struct option const long_opts[] = {
 	{"factory", 0, NULL, OPT_FACTORY},
 	{"fast", 0, NULL, OPT_FAST},
 	{"force", 0, NULL, OPT_FORCE},
+	{"gbb_flags", 1, NULL, OPT_GBB_FLAGS},
 	{"host_only", 0, NULL, OPT_HOST_ONLY},
 	{"list-quirks", 0, NULL, OPT_QUIRKS_LIST},
 	{"manifest", 0, NULL, OPT_MANIFEST},
@@ -102,9 +104,14 @@ static void print_help(int argc, char *argv[])
 		"    --fast          \tReduce read cycles and do not verify\n"
 		"    --quirks=LIST   \tSpecify the quirks to apply\n"
 		"    --list-quirks   \tPrint all available quirks\n"
+		"-m, --mode=MODE     \tRun updater in the given mode:\n"
+		"       autoupdate:  \t Try RW A/B update (do recovery if needed).\n"
+		"       recovery:    \t Full RW update (+RO if changed).\n"
+		"       factory:     \t Recovery<RO+RW> + GBB flags\n"
+		"       (Sections with PRESERVE flags like VPD and HWID in GBB\n"
+		"        are always preserved.)\n"
 		"\n"
 		"Legacy and compatibility options:\n"
-		"-m, --mode=MODE     \tRun updater in given mode\n"
 		"    --factory       \tAlias for --mode=factory\n"
 		"    --force         \tForce update (skip checking contents)\n"
 		"    --output_dir=DIR\tSpecify the target for --mode=output\n"
@@ -114,6 +121,7 @@ static void print_help(int argc, char *argv[])
 		"    --host_only     \tUpdate only AP (host) firmware\n"
 		"    --emulate=FILE  \tEmulate system firmware using file\n"
 		"    --model=MODEL   \tOverride system model for images\n"
+		"    --gbb_flags=FLAG\tOverride new GBB flags\n"
 		"    --ccd           \tDo fast,force,wp=0,p=raiden_debug_spi\n"
 		"    --servo         \tFlash using Servo (v2, v4, micro, ...)\n"
 		"    --servo_port=PRT\tOverride servod port, implies --servo\n"
@@ -132,6 +140,7 @@ static int do_update(int argc, char *argv[])
 	int i, errorcnt = 0, do_update = 1;
 	int detect_servo = 0, do_servo_cpu_fw_spi = 0;
 	char *servo_programmer = NULL;
+	char *endptr;
 
 	cfg = updater_new_config();
 	assert(cfg);
@@ -217,6 +226,15 @@ static int do_update(int argc, char *argv[])
 			break;
 		case OPT_FAST:
 			args.fast_update = 1;
+			break;
+		case OPT_GBB_FLAGS:
+			args.gbb_flags = strtoul(optarg, &endptr, 0);
+			if (*endptr) {
+				ERROR("Invalid flags: %s\n", optarg);
+				errorcnt++;
+			} else {
+				args.override_gbb_flags = 1;
+			}
 			break;
 		case OPT_CCD:
 			args.fast_update = 1;
