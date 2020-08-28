@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa10ac91_f3d5231b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T10:18:16Z",
+      "side": 1,
+      "message": "We do not need to pass ctx here.",
+      "range": {
+        "startLine": 1447,
+        "startChar": 41,
+        "endLine": 1447,
+        "endChar": 64
+      },
+      "revId": "e217e136b10272c20449b0722cd295414a38bd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
