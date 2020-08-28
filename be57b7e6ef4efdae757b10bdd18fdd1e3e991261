@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f3d09a1_4055fe36",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T09:28:21Z",
+      "side": 1,
+      "message": "We still need this to beep when reaching the start/end.\nI will add another CL before this",
+      "parentUuid": "218f456f_8eb6bc34",
+      "range": {
+        "startLine": 321,
+        "startChar": 6,
+        "endLine": 322,
+        "endChar": 24
+      },
+      "revId": "be57b7e6ef4efdae757b10bdd18fdd1e3e991261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94508b5a_30f49522",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
@@ -68,6 +92,54 @@
       "revId": "be57b7e6ef4efdae757b10bdd18fdd1e3e991261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a8abf2_3ab1c882",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T09:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9a7bbd_6626e3ea",
+      "range": {
+        "startLine": 58,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "be57b7e6ef4efdae757b10bdd18fdd1e3e991261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4441b823_ec4f8f7e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T09:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94508b5a_30f49522",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 8
+      },
+      "revId": "be57b7e6ef4efdae757b10bdd18fdd1e3e991261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
