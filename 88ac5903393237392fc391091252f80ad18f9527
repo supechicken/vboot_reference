@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea35a35f_75182193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "Mostly about unit tests.",
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b903b138_437caebd",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "need \u0027a\u0027 here?",
+      "range": {
+        "startLine": 224,
+        "startChar": 9,
+        "endLine": 224,
+        "endChar": 10
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf425fc_a974d456",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1519,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "I think it is guaranteed that we are using MENU_UI here",
+      "range": {
+        "startLine": 1519,
+        "startChar": 6,
+        "endLine": 1519,
+        "endChar": 13
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2acee6d_ac11fd2c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "off\n\n---\n\nActually we do not check power off in other screen tests, but it is good to check here",
+      "range": {
+        "startLine": 1537,
+        "startChar": 14,
+        "endLine": 1537,
+        "endChar": 16
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10183f6d_e40b6048",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "off",
+      "range": {
+        "startLine": 1562,
+        "startChar": 21,
+        "endLine": 1562,
+        "endChar": 23
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddfdeab1_2f1c61b8",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "Can we move the vb2_diagnostic_menu() here, right below other MENU_UI entries?",
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f999a8_56a03633",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "extra blank line",
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f6ca4e_8b602c36",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T07:34:59Z",
+      "side": 1,
+      "message": "I am not quite sure if we should distinguish between legacy entry and menu_ui entry here...\n\nI\u0027d prefer to move the check inside mock function, i.e.\n\n vb2_error_t vb2_diagnostic_menu(struct vb2_context *c)\n {\n \tTEST_TRUE(MENU_UI, \"Using menu_ui\");\n \tif (vbboot_retval \u003d\u003d -5)\n \t\treturn VB2_ERROR_MOCK;\n \n \treturn vbboot_retval;\n }\n\nWhat do you think?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 55
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
