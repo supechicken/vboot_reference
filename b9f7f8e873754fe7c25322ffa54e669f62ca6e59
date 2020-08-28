@@ -92,6 +92,24 @@
       "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f6230c_d3cfff45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-28T06:57:03Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2379582\n\nHere\u0027s the CL for the ui_loop preparing workaround.\n\nNote that (1) we will init twice while entering a new log screen. (2) we assume that we will not fail to prepare log_string in ui_loop.\n\nWhat\u0027s your suggestion",
+      "parentUuid": "18214955_08a9ee30",
+      "revId": "b9f7f8e873754fe7c25322ffa54e669f62ca6e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
