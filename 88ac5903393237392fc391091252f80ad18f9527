@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "abc51682_543f82da",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T08:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b903b138_437caebd",
+      "range": {
+        "startLine": 224,
+        "startChar": 9,
+        "endLine": 224,
+        "endChar": 10
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daf425fc_a974d456",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 14
@@ -53,6 +77,30 @@
       "writtenOn": "2020-08-28T07:34:59Z",
       "side": 1,
       "message": "I think it is guaranteed that we are using MENU_UI here",
+      "range": {
+        "startLine": 1519,
+        "startChar": 6,
+        "endLine": 1519,
+        "endChar": 13
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e799e91_aaa56777",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1519,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T08:56:46Z",
+      "side": 1,
+      "message": "Really? diagnostics_screen_tests() is called no matter what MENU_UI and DIAGNOSTIC_UI flag are set or not. Or do you mean DIAGNOSTIC_UI implied MENU_UI?",
+      "parentUuid": "daf425fc_a974d456",
       "range": {
         "startLine": 1519,
         "startChar": 6,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "128319e3_5f30e866",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T08:56:46Z",
+      "side": 1,
+      "message": "I check power off because we need to make diag screen shutdown to send out VB2_REQUEST_SHUTDOWN.\nIt seems the other screen rely on timeout to do that, but diag doesn\u0027t have timeout to do that.\nDo you have suggest way to make vb2_diagnostic_menu() finished?",
+      "parentUuid": "d2acee6d_ac11fd2c",
+      "range": {
+        "startLine": 1537,
+        "startChar": 14,
+        "endLine": 1537,
+        "endChar": 16
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10183f6d_e40b6048",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 14
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "74175891_964ac9b7",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T08:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10183f6d_e40b6048",
+      "range": {
+        "startLine": 1562,
+        "startChar": 21,
+        "endLine": 1562,
+        "endChar": 23
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddfdeab1_2f1c61b8",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 14
@@ -128,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "5edbd943_cc381bf5",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T08:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddfdeab1_2f1c61b8",
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98f999a8_56a03633",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 14
@@ -142,6 +256,24 @@
       "revId": "88ac5903393237392fc391091252f80ad18f9527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0024e01e_a6eec4b0",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T08:56:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98f999a8_56a03633",
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +297,30 @@
       "revId": "88ac5903393237392fc391091252f80ad18f9527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3416d442_99ba070c",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-28T08:56:46Z",
+      "side": 1,
+      "message": "Idk which one is better. Let use your solution and see how it works.",
+      "parentUuid": "08f6ca4e_8b602c36",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 55
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
