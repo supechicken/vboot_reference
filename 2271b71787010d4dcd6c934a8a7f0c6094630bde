@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f25adb6_bd790d2e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T22:37:55Z",
+      "side": 1,
+      "message": "Why this? Why should FreeBSD systems not be able to override CC via environment variable?",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f196f381_4f0df534",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T22:37:55Z",
+      "side": 1,
+      "message": "Just wrap another $(if $(filter clang,${CC}),...) around here to stop building fuzzers with GCC, I think that\u0027s cleaner than the other fuzzer hacks you have below.",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf281cfe_6b77fa6a",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T22:37:55Z",
+      "side": 1,
+      "message": "Is this really a problem with FreeBSD or is it just that you test system doesn\u0027t have libuuid installed? Some googling suggests libuuid can exist on FreeBSD (e.g. https://www.freshports.org/misc/e2fsprogs-libuuid/), so then there\u0027s no real reason to exclude this based on OS here.\n\nIf you want to write this such that libuuid is optional for vboot and it will fall back to using hardcoded UUIDs when that\u0027s not available, I\u0027m okay with that too but then the check needs to be written differently... probably using pkgconfig or something to detect the library, not just basing it off the OS.",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f00d796_90f6fad4",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T22:37:55Z",
+      "side": 1,
+      "message": "Same here, you can definitely have OpenSSL installed on FreeBSD, and it\u0027s needing for so much core functionality that I don\u0027t think there\u0027s a point in trying to make it optional.",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216d8c01_28ef5b8e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T22:37:55Z",
+      "side": 1,
+      "message": "Do you care about running unit tests on FreeBSD? Otherwise I think it\u0027s easier to just leave these as is, they shouldn\u0027t stop you from just building vboot itself.",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5a5a827_cd037f38",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T22:37:55Z",
+      "side": 1,
+      "message": "Well now you\u0027ll basically always return `true` on FreeBSD here, which is not really correct. If FreeBSD doesn\u0027t have MTD support, this function should be made to always return false there.",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88fe6478_b8ed6ce4",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-28T22:37:55Z",
+      "side": 1,
+      "message": "Looks like there\u0027s an extra tab here?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
