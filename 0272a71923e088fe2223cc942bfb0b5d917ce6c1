@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91203ae2_02e0fbbd",
+        "filename": "futility/updater.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-08-29T00:06:33Z",
+      "side": 1,
+      "message": "I mean... you can either make it int64_t and then use -1 to signal no override, if you have a separate variable for that this just needs to be uint32_t. The GBB flags field is 32 bits.",
+      "revId": "0272a71923e088fe2223cc942bfb0b5d917ce6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
