@@ -834,6 +834,8 @@ const struct vb2_menu_item developer_select_bootloader_items_after[] = {
 	POWER_OFF_ITEM,
 };
 
+#define vb2ex_get_bootloader_count() 0
+
 static vb2_error_t developer_select_bootloader_init(struct vb2_ui_context *ui)
 {
 	const size_t menu_before_len =
@@ -939,6 +941,8 @@ static const struct vb2_screen_info developer_select_bootloader_screen = {
 	.init = developer_select_bootloader_init,
 	.get_menu = get_bootloader_menu,
 };
+
+#undef vb2ex_get_bootloader_count
 
 /******************************************************************************/
 /*
