@@ -1331,6 +1331,12 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_FIRMWARE_LOG,
 	/* Untrusted confirmation */
 	VB2_UI_ERROR_UNTRUSTED_CONFIRMATION,
+	/* Legacy boot is disabled */
+	VB2_UI_ERROR_LEGACY_BOOT_DISABLED,
+	/* No bootloader was found */
+	VB2_UI_ERROR_NO_BOOTLOADER,
+	/* Legacy boot failed */
+	VB2_UI_ERROR_LEGACY_BOOT_FAILED,
 };
 
 /**

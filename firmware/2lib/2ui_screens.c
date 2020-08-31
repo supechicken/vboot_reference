@@ -943,13 +943,13 @@ vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
 	    !vb2_dev_boot_allowed(ui->ctx) ||
 	    !vb2_dev_boot_legacy_allowed(ui->ctx)) {
 		VB2_DEBUG("ERROR: Dev mode alternate bootloader not allowed\n");
-		ui->error_beep = 1;
+		ui->error_code = VB2_UI_ERROR_LEGACY_BOOT_DISABLED;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (vb2ex_get_bootloader_count() == 0) {
 		VB2_DEBUG("ERROR: No bootloader was found\n");
-		ui->error_beep = 1;
+		ui->error_code = VB2_UI_ERROR_NO_BOOTLOADER;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
@@ -965,8 +965,7 @@ vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
 	VbExLegacy(altfw_num);
 
 	VB2_DEBUG("ERROR: Alternate bootloader failed\n");
-	/* TODO(b/161092974): Leverage the error dialog on error. */
-	ui->error_beep = 1;
+	ui->error_code = VB2_UI_ERROR_LEGACY_BOOT_FAILED;
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
@@ -983,8 +982,12 @@ static const struct vb2_menu *get_bootloader_menu(struct vb2_ui_context *ui)
 	if (ui->bootloader_menu.num_items > 0)
 		return &ui->bootloader_menu;
 
-	/* TODO(b/161092974): Show error dialog if no bootloader. */
 	num_bootloaders = vb2ex_get_bootloader_count();
+	if (num_bootloaders == 0) {
+		VB2_DEBUG("ERROR: No bootloader was found\n");
+		ui->error_code = VB2_UI_ERROR_NO_BOOTLOADER;
+		return NULL;
+	}
 	VB2_DEBUG("num_bootloaders: %u\n", num_bootloaders);
 	num_items = num_bootloaders + menu_before_len + menu_after_len;
 	items = malloc(num_items * sizeof(struct vb2_menu_item));
