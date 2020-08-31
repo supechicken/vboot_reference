@@ -117,6 +117,30 @@
       "revId": "94d871066167bdbe828d34d07025e5080f11322a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4785efb7_0c624304",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-31T04:54:39Z",
+      "side": 1,
+      "message": "\u003e I suggested moving the validity check outside of the original if/else clause.\nNo we cannot move these outside the if-clause since we will set altfw_num \u003d 0 in Ctrl+L case.\n\nTo sum up, the altfw:\n(1) Should be 0 with Ctrl+L\n(2) Should satisfy \"altfw_num \u003e 0 \u0026\u0026 altfw_num \u003c\u003d num_bootloaders\" with menu navigation.\n\n\n\u003e You\u0027re probably right that we don\u0027t need to do this check... \nI incline to keep this validity check, since we will call VbExLegacy with invalid altfw_num only if there are some UI bug occured",
+      "parentUuid": "a00731ca_444d58ff",
+      "range": {
+        "startLine": 828,
+        "startChar": 6,
+        "endLine": 828,
+        "endChar": 46
+      },
+      "revId": "94d871066167bdbe828d34d07025e5080f11322a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -22,6 +22,30 @@
       "revId": "4d515cf6e5c547e7e7a14939f65a53cf667562c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4a5a5c9_ed558668",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-08-31T04:54:39Z",
+      "side": 1,
+      "message": "There are some options...\n\n(1) Declare as global variables, and named \"menu_before\" and \"menu_after\"\nMy opinions: these are not general before/after items for screens\n(e.g. some of the screens do not have BACK_ITEM)\nI don\u0027t think we should use these such general naming here for some screen-specified items.\n\n(2) Declare as global variables, and named with appropriate prefix.\nMy opinions: the appropriate names should be \"developer_select_bootloader_items_before\" and\n\"developer_select_bootloader_items_after\", which are super long.\n\n(3) Declare as global variables, named with appropriate prefix, and create local alias(pointer?)\nMy opinions: I think there are no suitable type to point to an unknown-size array of static const struct. Either fix the array size or using pointer (but ARRAY_SIZE macro will fail) might be an option?\n\n(4) Declare as local variables, and synchronize their items locally.\n\n(5) Declare as local variables, and synchronize with macro.\nCurrent approach\n\n\nI think my workaround now is the best option among all above.\nWhat\u0027s your suggestion? Do you have better options?",
+      "parentUuid": "a36aaa0d_dbe14fe4",
+      "range": {
+        "startLine": 865,
+        "startChar": 1,
+        "endLine": 868,
+        "endChar": 42
+      },
+      "revId": "4d515cf6e5c547e7e7a14939f65a53cf667562c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
