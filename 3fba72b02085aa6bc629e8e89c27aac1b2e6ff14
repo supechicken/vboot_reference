@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "08aff2ae_2d0b290d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409138
+      },
+      "writtenOn": "2020-08-31T10:42:02Z",
+      "side": 1,
+      "message": "Just one clarification on Key Usage flag....",
+      "revId": "3fba72b02085aa6bc629e8e89c27aac1b2e6ff14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32460dff_35d5328f",
         "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
         "patchSetId": 2
@@ -98,6 +115,24 @@
       "writtenOn": "2020-08-28T15:28:55Z",
       "side": 1,
       "message": "Is this the actual Key Usage flag value value to be used for verstage? i.e 0x0007? Asking because that value is TBD in the doc and hasn\u0027t been specified yet in the CSR bug. If yes, can you please clarify that with a comment above?",
+      "revId": "3fba72b02085aa6bc629e8e89c27aac1b2e6ff14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60dda523_afc8c5bc",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1409138
+      },
+      "writtenOn": "2020-08-31T10:42:02Z",
+      "side": 1,
+      "message": "I think key usage flag should be 0x02.",
+      "parentUuid": "d2b6aa39_0f512cc5",
       "revId": "3fba72b02085aa6bc629e8e89c27aac1b2e6ff14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
