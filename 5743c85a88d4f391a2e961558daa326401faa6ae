@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72a34186_99c69963",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-31T10:48:40Z",
+      "side": 1,
+      "message": "Forgot to remove the \"s\" when splitting the CL. Fixed.",
+      "parentUuid": "47fb9b38_4a4a2c0a",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "5743c85a88d4f391a2e961558daa326401faa6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44276865_984db996",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "5743c85a88d4f391a2e961558daa326401faa6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e19f0b_f45566a7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-31T10:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44276865_984db996",
+      "range": {
+        "startLine": 248,
+        "startChar": 40,
+        "endLine": 249,
+        "endChar": 22
+      },
+      "revId": "5743c85a88d4f391a2e961558daa326401faa6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
