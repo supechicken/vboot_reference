@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47fb9b38_4a4a2c0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-31T08:52:12Z",
+      "side": 1,
+      "message": "It seems like only one screen is added in this CL?",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "5743c85a88d4f391a2e961558daa326401faa6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44276865_984db996",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-08-31T08:52:12Z",
+      "side": 1,
+      "message": "I think it\u0027s valid only for VbBootDiagnosticLegacyClamshell().",
+      "range": {
+        "startLine": 248,
+        "startChar": 40,
+        "endLine": 249,
+        "endChar": 22
+      },
+      "revId": "5743c85a88d4f391a2e961558daa326401faa6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
