@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "4bbfaa7b_38b2523c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-31T16:36:48Z",
+      "side": 1,
+      "message": "the chil engine handling will be done elsewhere.  this version should stay HSM independent as a reference script.",
+      "parentUuid": "657c5b89_a4c183c6",
+      "revId": "3fba72b02085aa6bc629e8e89c27aac1b2e6ff14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32460dff_35d5328f",
         "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
         "patchSetId": 2
