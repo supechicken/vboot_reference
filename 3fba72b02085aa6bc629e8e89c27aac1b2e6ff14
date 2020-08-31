@@ -139,6 +139,24 @@
     },
     {
       "key": {
+        "uuid": "521a861b_dde41a87",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1194614
+      },
+      "writtenOn": "2020-08-31T12:38:41Z",
+      "side": 1,
+      "message": "You can leave the keyusage as is. This keyusage will be used by openssl during csr generation. \n\nYou can read about it here -  https://www.openssl.org/docs/manmaster/man5/x509v3_config.html.\n\nKeyusage flag, as used by PSP bootloader, will be populated at the time of token generation by AMD. That is not required to be part of CSR.",
+      "parentUuid": "60dda523_afc8c5bc",
+      "revId": "3fba72b02085aa6bc629e8e89c27aac1b2e6ff14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "491b9433_1965fd40",
         "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
         "patchSetId": 2
