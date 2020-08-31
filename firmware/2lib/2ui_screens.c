@@ -901,8 +901,11 @@ static const struct vb2_menu_item developer_select_bootloader_items_after[] = {
 	POWER_OFF_ITEM,
 };
 
+#define vb2ex_get_bootloader_count() 0
+
 static vb2_error_t developer_select_bootloader_init(struct vb2_ui_context *ui)
 {
+	VB2_DEBUG("num_items = %d\n", get_menu(ui)->num_items);
 	if (get_menu(ui)->num_items == 0) {
 		ui->error_beep = 1;
 		ui->error_code = VB2_UI_ERROR_NO_BOOTLOADER;
@@ -1009,6 +1012,8 @@ static const struct vb2_screen_info developer_select_bootloader_screen = {
 	.init = developer_select_bootloader_init,
 	.get_menu = get_bootloader_menu,
 };
+
+#undef vb2ex_get_bootloader_count
 
 /******************************************************************************/
 /* VB2_SCREEN_DIAGNOSTICS */
