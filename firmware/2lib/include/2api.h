@@ -1327,6 +1327,12 @@ enum vb2_ui_error {
 	VB2_UI_ERROR_DEBUG_LOG,
 	/* Untrusted confirmation */
 	VB2_UI_ERROR_UNTRUSTED_CONFIRMATION,
+	/* Alternate bootloader is disabled */
+	VB2_UI_ERROR_ALTERNATE_BOOT_DISABLED,
+	/* No bootloader was found */
+	VB2_UI_ERROR_NO_BOOTLOADER,
+	/* Alternate bootloader failed */
+	VB2_UI_ERROR_ALTERNATE_BOOT_FAILED,
 };
 
 /**
