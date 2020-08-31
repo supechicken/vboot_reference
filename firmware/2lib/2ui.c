@@ -415,6 +415,14 @@ vb2_error_t developer_action(struct vb2_ui_context *ui)
 	if (ui->key == '\t')
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
+	/* XXX */
+	if (ui->key == '1')
+		ui->error_code = VB2_UI_ERROR_ALTERNATE_BOOT_DISABLED;
+	if (ui->key == '2')
+		ui->error_code = VB2_UI_ERROR_NO_BOOTLOADER;
+	if (ui->key == '3')
+		ui->error_code = VB2_UI_ERROR_ALTERNATE_BOOT_FAILED;
+
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
