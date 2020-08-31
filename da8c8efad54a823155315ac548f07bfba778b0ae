@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59154143_d656ec0b",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1176254
+      },
+      "writtenOn": "2020-08-31T16:25:38Z",
+      "side": 1,
+      "message": "This guard exists to avoid \"gcc: error: unrecognized argument to \u0027-fsanitize\u003d\u0027 option: \u0027fuzzer\u0027\",",
+      "revId": "da8c8efad54a823155315ac548f07bfba778b0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
