@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "8d755eed_f6f54872",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1519,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-31T07:32:21Z",
+      "side": 1,
+      "message": "Verified removing this condition will not break anything. Let\u0027s remove this.",
+      "parentUuid": "1e799e91_aaa56777",
+      "range": {
+        "startLine": 1519,
+        "startChar": 6,
+        "endLine": 1519,
+        "endChar": 13
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2acee6d_ac11fd2c",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 14
@@ -157,6 +181,30 @@
       "revId": "88ac5903393237392fc391091252f80ad18f9527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5bf804_caa6f202",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-08-31T07:32:21Z",
+      "side": 1,
+      "message": "As offline discussed, checking power off button is good, so let\u0027s keep this as it is.\n\nThe typo is fixed.",
+      "parentUuid": "128319e3_5f30e866",
+      "range": {
+        "startLine": 1537,
+        "startChar": 14,
+        "endLine": 1537,
+        "endChar": 16
+      },
+      "revId": "88ac5903393237392fc391091252f80ad18f9527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
