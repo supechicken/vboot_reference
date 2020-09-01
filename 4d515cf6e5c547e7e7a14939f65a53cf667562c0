@@ -46,6 +46,30 @@
       "revId": "4d515cf6e5c547e7e7a14939f65a53cf667562c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f186473_d33c841a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-01T06:26:55Z",
+      "side": 1,
+      "message": "My vote would be (2). Among the 5 references of menu_before below,\n\n- ARRAY_SIZE(menu_before): 3 occurrences\n- sizeof(menu_before): 1\n- menu_before: 1\n\nThe long name \"developer_select_bootloader_items_before\" could be avoided for 4 of them by defining\n\n size_t menu_before_len \u003d ARRAY_SIZE(developer_select_bootloader_items_before);\n\nand replacing sizeof(menu_before) with \"menu_before_len * sizeof(struct vb2_menu_item)\". This leads to only one usage of the long name.",
+      "parentUuid": "f4a5a5c9_ed558668",
+      "range": {
+        "startLine": 865,
+        "startChar": 1,
+        "endLine": 868,
+        "endChar": 42
+      },
+      "revId": "4d515cf6e5c547e7e7a14939f65a53cf667562c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

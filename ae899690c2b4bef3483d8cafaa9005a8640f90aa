@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5eec6e6c_964d5299",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-01T06:26:55Z",
+      "side": 1,
+      "message": "Could you add a comment here saying that \u00270\u0027 means the default bootloader? Or add a debug message \"Booting from default bootloader\".",
+      "revId": "ae899690c2b4bef3483d8cafaa9005a8640f90aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e3296d_6c19fcc3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-01T06:26:55Z",
+      "side": 1,
+      "message": "Only need to check this for the else clause above, while I still don\u0027t think we need to check this.",
+      "revId": "ae899690c2b4bef3483d8cafaa9005a8640f90aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec3e3d1c_f99fe2e8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-01T06:26:55Z",
+      "side": 1,
+      "message": "What will happen if altfw_num \u003d\u003d 0 and there\u0027s no bootloader?",
+      "revId": "ae899690c2b4bef3483d8cafaa9005a8640f90aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
