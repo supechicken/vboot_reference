@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ba8eea_75434100",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-09-01T16:19:57Z",
+      "side": 1,
+      "message": "What should be the keysize for Dali? Is it a \"later\" SOC?",
+      "revId": "7058a7a4f917a2418a47e287f00977b92ba706d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7d914d_8637e4ef",
+        "filename": "scripts/keygeneration/create_psp_verstagebl_key.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-09-01T16:19:57Z",
+      "side": 1,
+      "message": "When excluded from the cmdline, the script didn\u0027t request passphrase at runtime for me and had a 0\u0027d out keyfile. \n\nhttps://paste.googleplex.com/4956952213848064\n\nwhen I ran the script with the passphrase, it prompted me for it.",
+      "revId": "7058a7a4f917a2418a47e287f00977b92ba706d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
