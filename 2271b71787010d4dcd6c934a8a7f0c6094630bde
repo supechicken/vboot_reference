@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4fddf7d0_d954fb67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-01T22:14:43Z",
+      "side": 1,
+      "message": "I\u0027m fine with either.",
+      "parentUuid": "1ccc0905_cfaefa82",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f25adb6_bd790d2e",
         "filename": "Makefile",
         "patchSetId": 1
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Yes, I\u0027d like to have unittests run. The thing is that cc aliases to clang, and clang isn\u0027t called explicitly.\n\nThe (wrong) filter rule, which results in a LD error (see below) is:\n+       $(if $(filter cc,{CC}),fuzzzers) \\",
       "parentUuid": "f196f381_4f0df534",
+      "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751da229_1ea5f664",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-01T22:14:43Z",
+      "side": 1,
+      "message": "Well, fuzzers aren\u0027t normal unit tests, and the `fuzzers` build target is separate from `runtests`. They are very special kinds of tests that can only be built with clang and also need to be run in a specialized environment (you can\u0027t really just \"run\" them standalone, you need a lot of extra stuff installed and set up a magic chroot for them and everything, it\u0027s pretty complicated to do manually... they are here mostly for our automated test infrastructure to pick up).\n\nSo I think writing this here like I suggested should be good enough. For our Chrome OS use case all the clang binaries we use should always have `clang` in the name, so that should be fine, and I don\u0027t think anyone else should realistically want to build these fuzzer binaries. So I think it should be good enough to err on the side of not building them here for anything that isn\u0027t explicitly clang.",
+      "parentUuid": "623ec64f_5dc156a0",
       "revId": "2271b71787010d4dcd6c934a8a7f0c6094630bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e274ca_7d87f7d5",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-01T22:14:43Z",
+      "side": 1,
+      "message": "Well, this would have to be uname-guarded, if anything.\n\nDoes FreeBSD not support pkg-config? I found https://www.freebsd.org/cgi/man.cgi?query\u003dpkgconf\u0026sektion\u003d1\u0026manpath\u003dfreebsd-release-ports which looks like the right thing, except that the executable seems to be called pkgconf instead of pkg-config (probably because pkg-config clashes with the FreeBSD-specific \u0027pkg\u0027 tool). So maybe all you need to do is setting PKG_CONFIG to `pkgconf` in like 266 (based on uname)? The whole point of the pkg-config tool is that it abstracts all these sort of platform-specific details of library linking away, so it sounds like something we would want to use especially for this case.",
+      "revId": "ccb6a912956e8f6bebd1928cabf3f1bfe6f9c8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa8bdfb_cef811f6",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-01T22:14:43Z",
+      "side": 1,
+      "message": "nit: can be written a bit simpler as\n\n #if defined(__FreeBSD__)\n   return false;\n #else\n   if (major(...) !\u003d ...)\n     return false\n   return true\n #endif\n\nOr maybe\n\n #if !defined(__FreeBSD)\n   if (major(...) \u003d\u003d MTD_CHAR_MAJOR)\n     return true;\n #endif\n\n   return false;",
+      "revId": "ccb6a912956e8f6bebd1928cabf3f1bfe6f9c8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
