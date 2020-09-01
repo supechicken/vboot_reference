@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41bf4834_1a01491e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-09-01T10:52:34Z",
+      "side": 1,
+      "message": "Add Yu-ping and Joel for discussion.",
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c401ecba_a08074a0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-09-01T10:52:34Z",
+      "side": 1,
+      "message": "As offline discussed with rocco, I am not sure whether Groot team prefer to use \"define\" or \"enum\" here.\n\nThis values are shared in both vboot and depthcharge (in vb2 API and also in memory test impl).\n\n\nyupingso@ and kitching@, could you give some advice how to deal with this case?\nSince this values will impact a lot of code change in the following CLs, I think it would be great if we can reach the conclusion first.",
+      "range": {
+        "startLine": 1464,
+        "startChar": 0,
+        "endLine": 1473,
+        "endChar": 19
+      },
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
