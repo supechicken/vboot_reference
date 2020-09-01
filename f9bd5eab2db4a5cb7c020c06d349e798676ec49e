@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bade3579_2abb5562",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "void?",
+      "range": {
+        "startLine": 89,
+        "startChar": 40,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7cd697_469197ea",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "A notify that we may not need this after rebasing",
+      "range": {
+        "startLine": 826,
+        "startChar": 8,
+        "endLine": 826,
+        "endChar": 40
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2763c936_21f8e0c6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "check if (log_string) here.\n\n(FYR: crrev.com/c/2361823/17/firmware/2lib/2ui_screens.c#252)",
+      "range": {
+        "startLine": 832,
+        "startChar": 13,
+        "endLine": 832,
+        "endChar": 23
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2d39e3_044a5bb9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "A notify that we do not need to pass anything other than ui after crrev.com/c/2361823 is merged. So we should directly refer these in .action\n\n(FYR: crrev.com/c/2361823/17/firmware/2lib/2ui_screens.c#291)",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 1
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cdb42bf_7186a278",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "I suggest to list the name of all two screens here (VB2_SCREEN_DIAGNOSTICSS_MEMORY_QUICK...)",
+      "range": {
+        "startLine": 880,
+        "startChar": 3,
+        "endLine": 880,
+        "endChar": 33
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "172c5b3f_3b0f4d89",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "Is the \u0027running\u0027 meaningful when error occurs? If so, we can print it out (with VB2_DEBUG) on error.",
+      "range": {
+        "startLine": 892,
+        "startChar": 5,
+        "endLine": 892,
+        "endChar": 12
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e616e1a6_7caad06a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "page_count is unsigned. I think checking \u003d\u003d 0 here is better.",
+      "range": {
+        "startLine": 897,
+        "startChar": 27,
+        "endLine": 897,
+        "endChar": 30
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ff8362_9b409f00",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "If we have enum for modes, we can discard these macros",
+      "range": {
+        "startLine": 920,
+        "startChar": 0,
+        "endLine": 923,
+        "endChar": 38
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a82bb4_3d333d60",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "Should we create an enum for this?",
+      "range": {
+        "startLine": 1456,
+        "startChar": 43,
+        "endLine": 1457,
+        "endChar": 25
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e470150_b2074bee",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T09:57:20Z",
+      "side": 1,
+      "message": "Should we create an enum for this?",
+      "range": {
+        "startLine": 1462,
+        "startChar": 38,
+        "endLine": 1463,
+        "endChar": 13
+      },
+      "revId": "f9bd5eab2db4a5cb7c020c06d349e798676ec49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
