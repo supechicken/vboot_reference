@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5d2c0786_370e6bdf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T07:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eec6e6c_964d5299",
+      "revId": "ae899690c2b4bef3483d8cafaa9005a8640f90aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09e3296d_6c19fcc3",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 13
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e7e49c0d_46f95ef1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T07:37:05Z",
+      "side": 1,
+      "message": "Done\n\nOn second thought (after finishing the next CL), I think we can remove this, and add some debug log above.",
+      "parentUuid": "09e3296d_6c19fcc3",
+      "revId": "ae899690c2b4bef3483d8cafaa9005a8640f90aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec3e3d1c_f99fe2e8",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 13
@@ -50,6 +86,24 @@
       "revId": "ae899690c2b4bef3483d8cafaa9005a8640f90aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e91be8_3e8b13b6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-01T07:37:05Z",
+      "side": 1,
+      "message": "Done\n\nAdd checks before calculating altfw_num",
+      "parentUuid": "ec3e3d1c_f99fe2e8",
+      "revId": "ae899690c2b4bef3483d8cafaa9005a8640f90aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
