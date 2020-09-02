@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3c30d750_8e97e25e",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-02T21:19:50Z",
+      "side": 1,
+      "message": "So do built-in libraries not have pkg-config information installed? That seems odd... but okay, if this is required to make it work for you I\u0027m okay with it.",
+      "parentUuid": "60d342f0_15e41d48",
+      "revId": "ccb6a912956e8f6bebd1928cabf3f1bfe6f9c8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fa8bdfb_cef811f6",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 4
