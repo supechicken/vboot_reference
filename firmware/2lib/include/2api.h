@@ -1412,17 +1412,16 @@ const char *vb2ex_get_debug_info(struct vb2_context *ctx);
 char *vb2api_get_debug_info(struct vb2_context *ctx);
 
 /**
- * Specify the string to be used for an upcoming log screen display.
+ * Request an update of the log string for the specified screen.
  *
- * Before a vb2ex_display_ui() call is made for a screen which displays logs,
- * the log string should be provided via this function.  The total number of
- * pages in the log string is returned.  If the log string ever changes, this
- * function should be called again before the next vb2ex_display_ui() call.
+ * This function serves two purposes -- first, to retrieve the number of pages
+ * the specified screen's log screen spans.  Second, to give the log screen's
+ * backend a chance to update the string if necessary.
  *
  * @param str		The log string to display.
  * @return The number of pages after pagination.  0 if none or error.
  */
-uint32_t vb2ex_prepare_log_screen(const char *str);
+uint32_t vb2ex_update_log(enum vb2_screen screen);
 
 /*****************************************************************************/
 /* Timer. */

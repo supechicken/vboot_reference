@@ -317,7 +317,7 @@ static void reset_common_data(enum reset_type t)
 	/* For vb2_enable_developer_mode */
 	mock_enable_dev_mode = 0;
 
-	/* For vb2ex_prepare_log_screen */
+	/* For vb2ex_update_log */
 	mock_log_page_count = 1;
 
 	/* Avoid Iteration #0 */
@@ -518,7 +518,7 @@ const char *vb2ex_get_debug_info(struct vb2_context *c)
 	return NULL;
 }
 
-uint32_t vb2ex_prepare_log_screen(const char *str)
+uint32_t vb2ex_update_log(enum vb2_screen screen)
 {
 	return mock_log_page_count;
 }

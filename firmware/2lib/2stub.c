@@ -80,7 +80,7 @@ const char *vb2ex_get_debug_info(struct vb2_context *ctx)
 }
 
 __attribute__((weak))
-uint32_t vb2ex_prepare_log_screen(const char *str)
+uint32_t vb2ex_update_log(enum vb2_screen screen)
 {
 	return 1;
 }
