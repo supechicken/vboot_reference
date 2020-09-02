@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60d342f0_15e41d48",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1176254
+      },
+      "writtenOn": "2020-09-02T12:22:00Z",
+      "side": 1,
+      "message": "pkg-config, when installed, is a symlink to pkgconf; l(ib)crypto is built-in (note that I don\u0027t have a 12.x-RELEASE installation around):\n\n$ ls -l /usr/lib/*crypt*\n-r--r--r--  1 root  wheel    216856 Aug 24 17:07 /usr/lib/libcrypt.a\nlrwxr-xr-x  1 root  wheel        23 Aug 24 23:22 /usr/lib/libcrypt.so -\u003e ../../lib/libcrypt.so.5\n-r--r--r--  1 root  wheel    219914 Aug 24 17:07 /usr/lib/libcrypt_p.a\n-r--r--r--  1 root  wheel  17094280 Aug 24 23:22 /usr/lib/libcrypto.a\nlrwxr-xr-x  1 root  wheel        26 Aug 24 23:22 /usr/lib/libcrypto.so -\u003e ../../lib/libcrypto.so.111\n-r--r--r--  1 root  wheel  17515224 Aug 24 23:22 /usr/lib/libcrypto_p.a",
+      "parentUuid": "50e274ca_7d87f7d5",
+      "revId": "ccb6a912956e8f6bebd1928cabf3f1bfe6f9c8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fa8bdfb_cef811f6",
         "filename": "cgpt/cgpt_wrapper.c",
         "patchSetId": 4
