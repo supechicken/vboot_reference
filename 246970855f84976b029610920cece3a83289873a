@@ -16,6 +16,24 @@
       "revId": "246970855f84976b029610920cece3a83289873a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b59c1572_2f5eae71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-02T02:09:38Z",
+      "side": 1,
+      "message": "Well, my hope is that after I check this in we\u0027ll start to get a ton of real reports. That would prove that it\u0027s actually reporting on abort(). Then that should make it a little more likely we\u0027ll be notified of issues like this in the future. Although it would still be possible that we change the code in some way that it doesn\u0027t run into a vb2ex_abort() but still doesn\u0027t really exercise the right code paths anymore. Not sure what the right solution to that is, it would be good if ClusterFuzz could generate informational reports about a sharp decline in coverage, but I guess it can\u0027t.",
+      "parentUuid": "99d6ea68_5e86f38e",
+      "revId": "246970855f84976b029610920cece3a83289873a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
