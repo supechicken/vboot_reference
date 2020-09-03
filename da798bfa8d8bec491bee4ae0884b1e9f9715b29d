@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "2d32f0a1_47e12193",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T22:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ee051a1_d993f8ca",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1eef232c_1815f54c",
         "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea960378_1e92a50e",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T22:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eef232c_1815f54c",
+      "range": {
+        "startLine": 109,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "c41ac069_254061f4",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T22:13:30Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "62c3a5d9_1886eaec",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 41
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3e78b26_6d3478dc",
         "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
         "patchSetId": 1
@@ -161,6 +233,24 @@
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2729911_ec30c6df",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T22:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e78b26_6d3478dc",
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -193,6 +283,24 @@
       "side": 1,
       "message": "I don\u0027t think this should be hardcoded - that was actually somebody else\u0027s suggestion, not mine.  We want this script to be useful in the future as well, and hardcoding the token ID would restrict that.\nWe need to get the token ID from the token that we already need to build into coreboot, so there\u0027s no reason not to copy it.  \nI\u0027d hoped to get a sample token from AMD to verify this, but they didn\u0027t want to give it to us, so it\u0027s just waiting until we get a token.\nI suspect that AMD will have this working in the version that they give back to us.",
       "parentUuid": "7197c0a2_69893270",
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d667e1d_dd153b88",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T22:13:30Z",
+      "side": 1,
+      "message": "This still needs verification from AMD.",
+      "parentUuid": "e75ad3e7_7cad61c9",
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -267,6 +375,30 @@
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69cc1591_cca57f3e",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T22:13:30Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "2e8d648d_62b6188c",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
