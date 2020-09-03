@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a0f6f55d_bec487b5",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T19:54:04Z",
+      "side": 1,
+      "message": "It\u0027s just a TODO.  It doesn\u0027t need to be done right now, it\u0027s correct for picasso, and we don\u0027t have the other chips yet, so it\u0027s not critical.  I\u0027d planned to do it before I pushed the script, but didn\u0027t get to it before passing the script to AMD, so I\u0027m waiting for it to come back from them before doing any more updates.",
+      "parentUuid": "a14b88a6_3244f1bb",
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3e78b26_6d3478dc",
         "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
         "patchSetId": 1
@@ -64,6 +82,24 @@
       "writtenOn": "2020-09-03T19:48:14Z",
       "side": 1,
       "message": "take this as an argument to the script? Would that simplify things if it changes for some reason or does it have to be hardcoded? You said hardcoded before...",
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75ad3e7_7cad61c9",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T19:54:04Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be hardcoded - that was actually somebody else\u0027s suggestion, not mine.  We want this script to be useful in the future as well, and hardcoding the token ID would restrict that.\nWe need to get the token ID from the token that we already need to build into coreboot, so there\u0027s no reason not to copy it.  \nI\u0027d hoped to get a sample token from AMD to verify this, but they didn\u0027t want to give it to us, so it\u0027s just waiting until we get a token.\nI suspect that AMD will have this working in the version that they give back to us.",
+      "parentUuid": "7197c0a2_69893270",
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
