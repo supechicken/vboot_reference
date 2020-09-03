@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb8365d7_8f69a3b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-03T08:49:17Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "9d836ee9993ff65b5be238b26e279bb58d1bda09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6dd10e3_0b4c9633",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-03T08:49:17Z",
+      "side": 1,
+      "message": "Maybe add a little explanation here:\n\n  , which provides debug information and diagnostic tests of various hardware components.",
+      "range": {
+        "startLine": 235,
+        "startChar": 34,
+        "endLine": 235,
+        "endChar": 35
+      },
+      "revId": "9d836ee9993ff65b5be238b26e279bb58d1bda09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e140f9d7_3ac5a429",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-03T08:49:17Z",
+      "side": 1,
+      "message": "Two spaces to be consistent with the other \"This has a UI\" strings.",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 22
+      },
+      "revId": "9d836ee9993ff65b5be238b26e279bb58d1bda09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
