@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee538aec_c4de3cfa",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T01:38:54Z",
+      "side": 1,
+      "message": "Since the legacy boot is not implemented yet and Rocco already has a CL (CL:2384995) for the errors, how about we remove it here?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 1,
+        "endLine": 1329,
+        "endChar": 38
+      },
+      "revId": "459d68c5f53c6237b6e88dde92c7918429e5f382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
