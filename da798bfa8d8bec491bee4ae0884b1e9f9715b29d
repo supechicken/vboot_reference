@@ -123,6 +123,30 @@
     },
     {
       "key": {
+        "uuid": "62c3a5d9_1886eaec",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T20:55:04Z",
+      "side": 1,
+      "message": "It\u0027s input_firmware size - header size + signature size.\nIn the case of picasso, it HAPPENS that header size and signature size are the same (256 bytes each), but on Renoir, I believe that the signature size will be 512 bytes.",
+      "parentUuid": "72683dd8_0e0ef6ec",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 41
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3e78b26_6d3478dc",
         "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
         "patchSetId": 1
@@ -186,6 +210,30 @@
       "writtenOn": "2020-09-03T19:57:05Z",
       "side": 1,
       "message": "-n \"$PASSPHRASE\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b16ccb1_aff63e3d",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-03T20:55:04Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I used too, but Mike preferred this method.  See \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2380612/comment/57fd9c49_522c2e37/",
+      "parentUuid": "1ba3169e_e0ff0468",
       "range": {
         "startLine": 150,
         "startChar": 8,
