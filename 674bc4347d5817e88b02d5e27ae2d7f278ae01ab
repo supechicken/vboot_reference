@@ -39,6 +39,30 @@
       "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48880134_aba529a5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:14:37Z",
+      "side": 1,
+      "message": "Enum is preferred for this case in my opinion. Also note the style:\n\n enum vb2_lower_case_name {\n     CAPITAL_WITH_UNDERSCORE,\n };\n\nso I\u0027d write\n\n enum vb2_memory_test_mode {\n     /* Keep running from previos setting */\n     VB2_MEMORY_TEST_MODE_NO_RESET \u003d 0,\n     VB2_MEMORY_TEST_MODE_RESET_TO_QUICK_TEST,\n     VB2_MEMORY_TEST_MODE_RESET_TO_FULL_TEST,\n };\n\nWhile vboot doesn\u0027t have any instance of \u0027typedef enum\u0027, I\u0027m fine with that if it\u0027ll be used a lot.",
+      "parentUuid": "c401ecba_a08074a0",
+      "range": {
+        "startLine": 1464,
+        "startChar": 0,
+        "endLine": 1473,
+        "endChar": 19
+      },
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
