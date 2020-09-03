@@ -86,6 +86,30 @@
       "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab017434_4fbc6903",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-03T08:40:41Z",
+      "side": 1,
+      "message": "For enums, please follow Yu-Ping\u0027s suggestions for style, with a preference for not using typedef.\n\nConsider also restructuring the API such that we don\u0027t need extra enums at all.  For example:\n\n  vb2_error_t vb2ex_diag_memory_quick_test(const char **out, int reset);\n  vb2_error_t vb2ex_diag_memory_full_test(const char **out, int reset);\n\n`int reset` takes the role of RESET vs. NO_RESET.\nvb2_error_t can return:\n - VB2_ERROR_EX_DIAG_TEST_* error when there is some problem\n - VB2_ERROR_EX_DIAG_TEST_RUNNING when the test hasn\u0027t finished\n - VB2_SUCCESS when the test has finished and there are no more string updates\n\nThis is a bit similar to the secdata_fwmp case which uses VB2_ERROR_SECDATA_FWMP_INCOMPLETE to denote that there is still more data available to be read.",
+      "parentUuid": "48880134_aba529a5",
+      "range": {
+        "startLine": 1464,
+        "startChar": 0,
+        "endLine": 1473,
+        "endChar": 19
+      },
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
