@@ -62,6 +62,30 @@
       "revId": "9d836ee9993ff65b5be238b26e279bb58d1bda09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d09658_b296c2ec",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:53:59Z",
+      "side": 1,
+      "message": "Also, other strings are \"This has UI\" instead of \"This has a UI\".",
+      "parentUuid": "e140f9d7_3ac5a429",
+      "range": {
+        "startLine": 247,
+        "startChar": 21,
+        "endLine": 247,
+        "endChar": 22
+      },
+      "revId": "9d836ee9993ff65b5be238b26e279bb58d1bda09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
