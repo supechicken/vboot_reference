@@ -243,6 +243,30 @@
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e8d648d_62b6188c",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-03T21:56:01Z",
+      "side": 1,
+      "message": "i think all the passphrase stuff is moot after my crrev.com/c/2391219, so i would just delete it here",
+      "parentUuid": "9b16ccb1_aff63e3d",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
