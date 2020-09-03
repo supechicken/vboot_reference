@@ -63,6 +63,29 @@
       "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1921a64_39cd2499",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:30:33Z",
+      "side": 1,
+      "message": "Maybe it\u0027s simpler to add these to vb2_error_t. For example, when malloc() fails inside vb2ex_get_diagnostic_memory(), what do you want to return? MemoryTestError?\n\nActually it\u0027s kind of difficult to review this without seeing the full implementation of vb2ex_get_diagnostic_memory().",
+      "range": {
+        "startLine": 1473,
+        "startChar": 2,
+        "endLine": 1473,
+        "endChar": 18
+      },
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
