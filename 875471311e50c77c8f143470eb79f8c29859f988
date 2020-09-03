@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7b572b19_16ef2da9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:49:16Z",
+      "side": 1,
+      "message": "Cq-Depend: chromium:2384995",
+      "revId": "875471311e50c77c8f143470eb79f8c29859f988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "027a108b_63b5637a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -16,6 +33,92 @@
       "revId": "875471311e50c77c8f143470eb79f8c29859f988",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da532869_548f25b3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:49:16Z",
+      "side": 1,
+      "message": "also beep?",
+      "revId": "875471311e50c77c8f143470eb79f8c29859f988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada36f99_c04eb64f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:49:16Z",
+      "side": 1,
+      "message": "Just ARRAY_SIZE(developer_select_bootloader_items_before)?",
+      "range": {
+        "startLine": 846,
+        "startChar": 28,
+        "endLine": 846,
+        "endChar": 43
+      },
+      "revId": "875471311e50c77c8f143470eb79f8c29859f988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d458612c_43336bcb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:49:16Z",
+      "side": 1,
+      "message": "ALTERNATE?",
+      "range": {
+        "startLine": 1331,
+        "startChar": 14,
+        "endLine": 1331,
+        "endChar": 20
+      },
+      "revId": "875471311e50c77c8f143470eb79f8c29859f988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577efe00_528b519c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-03T08:49:16Z",
+      "side": 1,
+      "message": "ALTERNATE?",
+      "range": {
+        "startLine": 1335,
+        "startChar": 14,
+        "endLine": 1335,
+        "endChar": 20
+      },
+      "revId": "875471311e50c77c8f143470eb79f8c29859f988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
