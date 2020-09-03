@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "7ee051a1_d993f8ca",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-09-03T19:57:05Z",
+      "side": 1,
+      "message": "Maybe add `-u -o pipefail `",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eef232c_1815f54c",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-09-03T19:57:05Z",
+      "side": 1,
+      "message": "Quote the variables",
+      "range": {
+        "startLine": 109,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a14b88a6_3244f1bb",
         "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
         "patchSetId": 1
@@ -48,6 +94,29 @@
       "side": 1,
       "message": "It\u0027s just a TODO.  It doesn\u0027t need to be done right now, it\u0027s correct for picasso, and we don\u0027t have the other chips yet, so it\u0027s not critical.  I\u0027d planned to do it before I pushed the script, but didn\u0027t get to it before passing the script to AMD, so I\u0027m waiting for it to come back from them before doing any more updates.",
       "parentUuid": "a14b88a6_3244f1bb",
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72683dd8_0e0ef6ec",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-09-03T19:57:05Z",
+      "side": 1,
+      "message": "Isn\u0027t this just filezie $input_fiwmware? Maybe swap the lines to get the file size first and avoid the subtraction.",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 41
+      },
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -100,6 +169,29 @@
       "side": 1,
       "message": "I don\u0027t think this should be hardcoded - that was actually somebody else\u0027s suggestion, not mine.  We want this script to be useful in the future as well, and hardcoding the token ID would restrict that.\nWe need to get the token ID from the token that we already need to build into coreboot, so there\u0027s no reason not to copy it.  \nI\u0027d hoped to get a sample token from AMD to verify this, but they didn\u0027t want to give it to us, so it\u0027s just waiting until we get a token.\nI suspect that AMD will have this working in the version that they give back to us.",
       "parentUuid": "7197c0a2_69893270",
+      "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba3169e_e0ff0468",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-09-03T19:57:05Z",
+      "side": 1,
+      "message": "-n \"$PASSPHRASE\"",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 37
+      },
       "revId": "da798bfa8d8bec491bee4ae0884b1e9f9715b29d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
