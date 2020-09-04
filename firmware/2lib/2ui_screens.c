@@ -843,6 +843,18 @@ static const struct vb2_screen_info developer_mode_screen = {
 /******************************************************************************/
 /* VB2_SCREEN_DEVELOPER_TO_NORM */
 
+static vb2_error_t developer_to_norm_init(struct vb2_ui_context *ui)
+{
+	/* Don't allow to-norm if GBB forces dev mode */
+	if (vb2_get_gbb(ui->ctx)->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
+		VB2_DEBUG("ERROR: to-norm not allowed\n");
+		ui->error_beep = 1;
+		ui->error_code = VB2_UI_ERROR_TO_NORM_NOT_ALLOWED;
+		return vb2_ui_screen_back(ui);
+	}
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 vb2_error_t developer_to_norm_action(struct vb2_ui_context *ui)
 {
 	if (vb2_get_gbb(ui->ctx)->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
@@ -871,6 +883,7 @@ static const struct vb2_menu_item developer_to_norm_items[] = {
 static const struct vb2_screen_info developer_to_norm_screen = {
 	.id = VB2_SCREEN_DEVELOPER_TO_NORM,
 	.name = "Transition to normal mode",
+	.init = developer_to_norm_init,
 	.menu = MENU_ITEMS(developer_to_norm_items),
 };
 
