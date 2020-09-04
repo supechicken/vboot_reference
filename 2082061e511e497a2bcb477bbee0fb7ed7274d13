@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc79c153_793438b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T19:39:17Z",
+      "side": 1,
+      "message": "i renamed the key output to \".pem\" to better align with our other root key gen scripts that live in the hsm",
+      "revId": "2082061e511e497a2bcb477bbee0fb7ed7274d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
