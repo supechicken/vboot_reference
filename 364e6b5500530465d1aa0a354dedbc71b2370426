@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b377c7be_70711385",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "you can use common.sh.  the common_minimal.sh is meant for CrOS devices.",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de04c5a_82a5c1a3",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "use ${PROG} which common scripts setup",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5aa1d18_ba83887e",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "this is the file/content AMD is giving us back from the CSR right ?  we\u0027d store it in the key dir for long term storage, so you can just pick a name under $key_dir and assume it\u0027ll be there.",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6927e65b_538fae8e",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "period at the end of sentences\n\ncomes up with comments below too",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c73b39_1c0fa47f",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "xxd is part of vim, not standard system packages\n\nit\u0027s a bit more verbose, but you can use dd/hexdump for this:\n\n dd if\u003d\"${file}\" bs\u003d1 count\u003d1 skip\u003d$((16#${position})) status\u003dnone | \\\n   hexdump -e \u0027/1 \"%X\"\u0027",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abd485a_42203e57",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "similarly, you can use dd here to avoid xxd\n\n printf \"\\x${value}\" | \\\n   dd of\u003d\"${file}\" bs\u003d1 count\u003d1 seek\u003d${position} conv\u003dnotrunc status\u003dnone",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90b42c01_3ced1ab4",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "you\u0027ve been so good about argument escaping that i expected you to use -- here too before the filename",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5b1a3b_170b8e6d",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "if i\u0027m reading this func correctly, isn\u0027t this just a single call to dd ?\n\n dd if\u003d\"${input_file}\" skip\u003d${input_offset} \\\n   of\u003d\"${output_file}\" seek\u003d${output_offset} \\\n   bs\u003d1 count\u003d${id_size} conv\u003dnotrunc status\u003dnone",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cce65847_b748fba9",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "need `local i`",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5895911b_07df8914",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "missing braces on \"${output_file}\"",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7fdc7d_2872fb14",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "should-\u003emust",
+      "range": {
+        "startLine": 112,
+        "startChar": 41,
+        "endLine": 112,
+        "endChar": 47
+      },
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab499f3_6acc09a3",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "only one space before/after TODO",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2448956f_4e5a8809",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-04T08:06:14Z",
+      "side": 1,
+      "message": "this isn\u0027t really needed as the next step will truncate \u0026 overwrite.  doesn\u0027t hurt either though i guess.",
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
