@@ -403,14 +403,21 @@ vb2_error_t developer_action(struct vb2_ui_context *ui)
 {
 	/* Developer mode keyboard shortcuts */
 	if (ui->key == VB_KEY_CTRL('S'))
+		/* Don't allow to-norm if GBB forces dev mode */
+		if (vb2_get_gbb(ui->ctx)->flags &
+		    VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
+			ui->error_beep = 1;
+			ui->error_code = ;
+			return VB2_REQUEST_UI_CONTINUE;
+		}
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEVELOPER_TO_NORM);
-	if (ui->key == VB_KEY_CTRL('U') ||
+	else if (ui->key == VB_KEY_CTRL('U') ||
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_UP_LONG_PRESS))
 		return vb2_ui_developer_mode_boot_external_action(ui);
-	if (ui->key == VB_KEY_CTRL('D') ||
+	else if (ui->key == VB_KEY_CTRL('D') ||
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_LONG_PRESS))
 		return vb2_ui_developer_mode_boot_internal_action(ui);
-	if (ui->key == '\t')
+	else if (ui->key == '\t')
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
 	return VB2_REQUEST_UI_CONTINUE;
