@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72b45d29_5b7d9cc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T09:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6e28ae1_30737a07",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c874083d_3cd57c72",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2260b90_5cc632af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T09:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c874083d_3cd57c72",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "50e3519e_3319ff5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T09:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de2ad9ce_ea6f5f16",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339e54df_15f430a3",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2020-09-07T04:08:38Z",
       "side": 1,
       "message": "Seems like we\u0027re printing this message twice... should we remove one of them?",
+      "range": {
+        "startLine": 905,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 48
+      },
+      "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc0e150_8b418a4b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T09:42:39Z",
+      "side": 1,
+      "message": "Do you mean #867?\n(https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2382998/4/firmware/2lib/2ui_screens.c#867)\n\nI think they are different: the customized get_menu should only be called in:\n1-a init() or customized init()\n1-b menu move down\n\nI think they do not overlap with #867 -- which is in charge of:\n2-a Ctrl+L while no bootloader\n2-b select on certain bootloader in altfw screen -- this should be a validity check only since we are not allowed to visit that screen if num_bootloaders \u003d\u003d 0.\n\nWDYT?",
+      "parentUuid": "339e54df_15f430a3",
       "range": {
         "startLine": 905,
         "startChar": 0,
