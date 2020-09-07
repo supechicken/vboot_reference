@@ -110,6 +110,54 @@
       "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ae96d0_c415b304",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-09-07T02:42:30Z",
+      "side": 1,
+      "message": "As discussed offline, I use vb2_error_t instead of enum. PTAL.",
+      "parentUuid": "ab017434_4fbc6903",
+      "range": {
+        "startLine": 1464,
+        "startChar": 0,
+        "endLine": 1473,
+        "endChar": 19
+      },
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24370362_ff87881d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-09-07T02:42:30Z",
+      "side": 1,
+      "message": "There is VB2_ERROR_UI_MEMORY_ALLOC. Should I use this error code for memory allocation? \n\nMy malloc caller is in memory_test, it\u0027s a little deep to pass the error code back. Currently, I use VB2_ERROR_EX_DIAG_TEST_INIT_FAILED instead.",
+      "parentUuid": "e1921a64_39cd2499",
+      "range": {
+        "startLine": 1473,
+        "startChar": 2,
+        "endLine": 1473,
+        "endChar": 18
+      },
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
