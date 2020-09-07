@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb86fd1b_a153b98b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "The new API looks great.  A few more nits to fix up!",
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc674308_e380d3ac",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "Too many S\u0027s here.",
+      "range": {
+        "startLine": 981,
+        "startChar": 24,
+        "endLine": 981,
+        "endChar": 26
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2170491d_189f0de8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "Can we line this up with the ( on the line above?  Pad with spaces after the tabs to get there.",
+      "range": {
+        "startLine": 990,
+        "startChar": 5,
+        "endLine": 990,
+        "endChar": 6
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "496491b0_ca375367",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "In vboot code we usually put the space on the other side of the * pointer asterisk.",
+      "range": {
+        "startLine": 993,
+        "startChar": 11,
+        "endLine": 993,
+        "endChar": 13
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5dd3a66_612a1444",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "Just use \"status\" here.\n\n  if (status \u0026\u0026 status !\u003d ...)",
+      "range": {
+        "startLine": 995,
+        "startChar": 6,
+        "endLine": 995,
+        "endChar": 27
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b47641c5_ab7ef9d0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "/* */ preferred in vboot.",
+      "range": {
+        "startLine": 1015,
+        "startChar": 1,
+        "endLine": 1015,
+        "endChar": 3
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6697f2a1_8304b905",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "indicates.\n\nDoesn\u0027t it indicate the test is finished?",
+      "range": {
+        "startLine": 1015,
+        "startChar": 16,
+        "endLine": 1015,
+        "endChar": 24
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2338cf74_f62dd284",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "screens",
+      "range": {
+        "startLine": 1323,
+        "startChar": 27,
+        "endLine": 1323,
+        "endChar": 28
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f619ce54_3f5f6888",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 1466,
+        "startChar": 74,
+        "endLine": 1466,
+        "endChar": 75
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c161b35_08568258",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "s/ on//",
+      "range": {
+        "startLine": 1466,
+        "startChar": 51,
+        "endLine": 1466,
+        "endChar": 54
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "599e353f_230cda2c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "Update this?",
+      "range": {
+        "startLine": 1467,
+        "startChar": 52,
+        "endLine": 1467,
+        "endChar": 68
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ffcbf8_3c3d5930",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "I think we can get rid of one tab in param documentation here.",
+      "range": {
+        "startLine": 1472,
+        "startChar": 16,
+        "endLine": 1472,
+        "endChar": 17
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9a63e35_04534014",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1477,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 1477,
+        "startChar": 31,
+        "endLine": 1477,
+        "endChar": 32
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5aac35a_8ddac972",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:40:45Z",
+      "side": 1,
+      "message": "How about we explain the possible values here?",
+      "range": {
+        "startLine": 1478,
+        "startChar": 36,
+        "endLine": 1478,
+        "endChar": 37
+      },
+      "revId": "fcdd5803656b0eaa26575cd9412e82447c11b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
