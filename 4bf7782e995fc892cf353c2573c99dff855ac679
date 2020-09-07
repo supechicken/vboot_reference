@@ -45,6 +45,52 @@
       "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2ad9ce_ea6f5f16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:08:38Z",
+      "side": 1,
+      "message": "BOOTLOADER?",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "339e54df_15f430a3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-07T04:08:38Z",
+      "side": 1,
+      "message": "Seems like we\u0027re printing this message twice... should we remove one of them?",
+      "range": {
+        "startLine": 905,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 48
+      },
+      "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
