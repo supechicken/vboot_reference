@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98b28850_ec78be7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T11:06:23Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "37695000511aae9e9e1ddf615638eb48f17caa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9a6f195_887214cd",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T11:06:23Z",
+      "side": 1,
+      "message": "Just noticed that we do not set error_beep for all the log screens...\n@kitching, what do you think?",
+      "range": {
+        "startLine": 953,
+        "startChar": 43,
+        "endLine": 953,
+        "endChar": 44
+      },
+      "revId": "37695000511aae9e9e1ddf615638eb48f17caa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd8e54cb_c954375e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T11:06:23Z",
+      "side": 1,
+      "message": "What about using \u0027rv\u0027 here for consistency in vboot?",
+      "range": {
+        "startLine": 994,
+        "startChar": 13,
+        "endLine": 994,
+        "endChar": 19
+      },
+      "revId": "37695000511aae9e9e1ddf615638eb48f17caa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b2a1f3_c046ee6a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T11:06:23Z",
+      "side": 1,
+      "message": "Since we do not pass the error code here, what about showing it in VB2_DEBUG() with 0x%x?",
+      "range": {
+        "startLine": 997,
+        "startChar": 0,
+        "endLine": 997,
+        "endChar": 62
+      },
+      "revId": "37695000511aae9e9e1ddf615638eb48f17caa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493214ac_0d6e0302",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T11:06:23Z",
+      "side": 1,
+      "message": "What is the comment here for?\nI think it should be \n /* reset */ 1\n /* no reset */ 0\n\n, isn\u0027t it?",
+      "range": {
+        "startLine": 1052,
+        "startChar": 36,
+        "endLine": 1052,
+        "endChar": 47
+      },
+      "revId": "37695000511aae9e9e1ddf615638eb48f17caa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d3fb4b_bc9837a5",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-07T11:06:23Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 1066,
+        "startChar": 29,
+        "endLine": 1066,
+        "endChar": 30
+      },
+      "revId": "37695000511aae9e9e1ddf615638eb48f17caa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
