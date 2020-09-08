@@ -335,7 +335,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 					 ui.disable_timer,
 					 ui.state->current_page,
 					 ui.error_code);
-			if (ui.error_beep) {
+			if (ui.error_beep ||
+			    ui.error_code != VB2_UI_ERROR_NONE) {
 				vb2ex_beep(250, 400);
 				ui.error_beep = 0;
 			}
