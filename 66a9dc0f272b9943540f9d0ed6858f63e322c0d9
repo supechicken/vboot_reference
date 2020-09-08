@@ -46,6 +46,53 @@
       "revId": "66a9dc0f272b9943540f9d0ed6858f63e322c0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29093394_d682edac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-08T05:27:36Z",
+      "side": 1,
+      "message": "I agree that for consistency\u0027s sake, we can always beep when showing an error dialog.\n\nPreviously we had the case of \"beep without an error dialog\" (CL:2299968), for which we had two possible implementations.  (1) A VB2_UI_ERROR value which beeps but does not show a dialog.  (2) A toggle in ui_context called ui.error_beep.\n\nWe ended up going with (2).  However, if we have decided to show a dialog in these cases (like VB2_UI_ERROR_DEV_EXTERNAL_BOOT_FAILED), I think we can get rid of ui.error_beep.  Yu-Ping and Hsuan-Ting, what do you think?",
+      "parentUuid": "9b7a6a06_479c3c33",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "66a9dc0f272b9943540f9d0ed6858f63e322c0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c262b9_1c69ea6f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-08T05:27:36Z",
+      "side": 1,
+      "message": "I would prefer just \"ui.error_code\" here, similar to how we check \"rv\" instead of \"rv !\u003d VB2_SUCCESS\".  What do you think?",
+      "range": {
+        "startLine": 339,
+        "startChar": 7,
+        "endLine": 339,
+        "endChar": 41
+      },
+      "revId": "66a9dc0f272b9943540f9d0ed6858f63e322c0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
