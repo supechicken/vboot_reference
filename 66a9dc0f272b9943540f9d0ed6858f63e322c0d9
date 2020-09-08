@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f29f8f7e_87dad386",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-08T08:54:20Z",
+      "side": 1,
+      "message": "\u003e Previously we had the case of \"beep without an error dialog\" (CL:2299968)\nToday we have three cases with beep without dialog box, all of them are in external boot failed.\n\n\u003e Go back and try again.\nAs we are urgent now, what about we just add error_beep in this CL, and create a bug for further discussion?\n\n\u003e we always beep when showing an error dialog, and\nNo, there is no beep (and should not) when we reach the top/bottom of page up/down",
+      "parentUuid": "e2b8166d_b09acb69",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "66a9dc0f272b9943540f9d0ed6858f63e322c0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70c262b9_1c69ea6f",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
