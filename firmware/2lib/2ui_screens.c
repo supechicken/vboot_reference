@@ -897,7 +897,6 @@ static vb2_error_t diagnostics_storage_init(struct vb2_ui_context *ui)
 	if (!log_string) {
 		VB2_DEBUG("ERROR: Failed to retrieve storage log message\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		ui->error_beep = 1;
 		return vb2_ui_screen_back(ui);
 	}
 
@@ -905,7 +904,6 @@ static vb2_error_t diagnostics_storage_init(struct vb2_ui_context *ui)
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare storage log screen\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		ui->error_beep = 1;
 		return vb2_ui_screen_back(ui);
 	}
 	return log_page_init(ui, DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN,
@@ -950,7 +948,6 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 	if ((rv && rv != VB2_ERROR_EX_DIAG_TEST_RUNNING) || !log_string) {
 		VB2_DEBUG("ERROR: Failed to retrieve memory test status\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		ui->error_beep = 1;
 		return vb2_ui_screen_back(ui);
 	}
 
@@ -959,7 +956,6 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 		VB2_DEBUG("ERROR: Failed to prepare memory log screen, error: "
 			  "%#x\n", rv);
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		ui->error_beep = 1;
 		return vb2_ui_screen_back(ui);
 	}
 	if (ui->state->current_page >= ui->state->page_count)
