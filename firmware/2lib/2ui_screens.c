@@ -848,7 +848,6 @@ vb2_error_t developer_to_norm_init(struct vb2_ui_context *ui)
 	/* Don't allow to-norm if GBB forces dev mode */
 	if (vb2_get_gbb(ui->ctx)->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
 		VB2_DEBUG("ERROR: to-norm not allowed\n");
-		ui->error_beep = 1;
 		ui->error_code = VB2_UI_ERROR_TO_NORM_NOT_ALLOWED;
 		return vb2_ui_screen_back(ui);
 	}
