@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3c868831_e1a5519b",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-08T20:16:55Z",
+      "side": 1,
+      "message": "Removing unbound variable check due to failures in common.sh\n\n./common.sh: line 17: cleanup_actions: unbound variable\n./common.sh: line 34: cleanup_actions: unbound variable",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "364e6b5500530465d1aa0a354dedbc71b2370426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b377c7be_70711385",
         "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
         "patchSetId": 2
