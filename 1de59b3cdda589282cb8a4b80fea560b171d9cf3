@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "327d6cb9_17b273ab",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-09-08T09:37:42Z",
+      "side": 1,
+      "message": "It\u0027s in CL:2361823. It\u0027s trying CQ. I impl this CL base on that and set CQ-Depend, and wait for it got merged.\n\nLet me rebase to it to make reviewing easily.",
+      "parentUuid": "60269f5a_08cba905",
+      "range": {
+        "startLine": 965,
+        "startChar": 12,
+        "endLine": 965,
+        "endChar": 32
+      },
+      "revId": "1de59b3cdda589282cb8a4b80fea560b171d9cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3452ba9_90c729fd",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 24
@@ -45,6 +69,30 @@
       "revId": "1de59b3cdda589282cb8a4b80fea560b171d9cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c23f9d80_36061f7a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-09-08T09:37:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3452ba9_90c729fd",
+      "range": {
+        "startLine": 1339,
+        "startChar": 16,
+        "endLine": 1339,
+        "endChar": 31
+      },
+      "revId": "1de59b3cdda589282cb8a4b80fea560b171d9cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
