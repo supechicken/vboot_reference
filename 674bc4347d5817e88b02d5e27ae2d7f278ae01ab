@@ -158,6 +158,30 @@
       "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb572814_4a01c784",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "\u003e There is VB2_ERROR_UI_MEMORY_ALLOC. Should I use this error code for memory allocation?\n\nYes, please use it.\n\n\u003e My malloc caller is in memory_test, it\u0027s a little deep to pass the error code back.\n\nWould the VB2_TRY() macro help?",
+      "parentUuid": "24370362_ff87881d",
+      "range": {
+        "startLine": 1473,
+        "startChar": 2,
+        "endLine": 1473,
+        "endChar": 18
+      },
+      "revId": "674bc4347d5817e88b02d5e27ae2d7f278ae01ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

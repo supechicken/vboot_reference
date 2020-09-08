@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14aa4973_89f56451",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "Do you want a beep sound?",
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e20fcde_15194ef8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "Language selection?",
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a97dba69_42a730e0",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "Doesn\u0027t this fit into the previous line?",
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75094b62_3755e88c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "Move to previous line.",
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bebdaed0_84734354",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "I think this can be omitted. However, if you want to improve readability for this, I\u0027d suggest using an enum for the \"reset\" argument.",
+      "range": {
+        "startLine": 1038,
+        "startChar": 37,
+        "endLine": 1038,
+        "endChar": 49
+      },
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65c6eba_9d00dea1",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "Could we reflow the text?",
+      "range": {
+        "startLine": 1466,
+        "startChar": 3,
+        "endLine": 1466,
+        "endChar": 7
+      },
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6178e4_dc419342",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:56:35Z",
+      "side": 1,
+      "message": "How about\n\n Other non-zero codes for internal errors.\n\nin case there\u0027re more errors in the future?",
+      "range": {
+        "startLine": 1478,
+        "startChar": 30,
+        "endLine": 1479,
+        "endChar": 19
+      },
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
