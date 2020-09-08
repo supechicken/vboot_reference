@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d036439_727eda18",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-08T09:24:43Z",
+      "side": 1,
+      "message": "That sounds fine, and probably safer.  We can call vb2_ui_screen_back() if the check fails.",
+      "parentUuid": "9f2e8f8e_718ee56a",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 64
+      },
+      "revId": "fb3cabc6ddd1a0b278834ad9a7c1e3f1b297e19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0724cdde_6aa99f83",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 4
@@ -65,6 +89,29 @@
         "startChar": 0,
         "endLine": 851,
         "endChar": 2
+      },
+      "revId": "fb3cabc6ddd1a0b278834ad9a7c1e3f1b297e19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "605936c9_4e8e5b53",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-08T09:24:43Z",
+      "side": 1,
+      "message": "I might prefer NOT_ALLOWED here -- but either work.",
+      "range": {
+        "startLine": 1329,
+        "startChar": 22,
+        "endLine": 1329,
+        "endChar": 32
       },
       "revId": "fb3cabc6ddd1a0b278834ad9a7c1e3f1b297e19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
