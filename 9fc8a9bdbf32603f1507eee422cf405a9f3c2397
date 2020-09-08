@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a901fd92_5337907f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-08T04:15:32Z",
+      "side": 1,
+      "message": "I want to globally let setting error_code always result in beeping, WDYT?\ncrrev.com/c/2397017",
+      "parentUuid": "14aa4973_89f56451",
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e20fcde_15194ef8",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 22
@@ -81,6 +99,30 @@
       "writtenOn": "2020-09-08T03:56:35Z",
       "side": 1,
       "message": "I think this can be omitted. However, if you want to improve readability for this, I\u0027d suggest using an enum for the \"reset\" argument.",
+      "range": {
+        "startLine": 1038,
+        "startChar": 37,
+        "endLine": 1038,
+        "endChar": 49
+      },
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "974e8a8b_9ce0be6e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-08T04:15:32Z",
+      "side": 1,
+      "message": "+1 for removing this.\nIt is actually still confusing for me...",
+      "parentUuid": "bebdaed0_84734354",
       "range": {
         "startLine": 1038,
         "startChar": 37,
