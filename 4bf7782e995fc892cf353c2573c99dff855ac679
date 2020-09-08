@@ -187,6 +187,30 @@
       "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a35fe81_d4ae0437",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T03:04:14Z",
+      "side": 1,
+      "message": "\u003e Seems like we\u0027re printing this message twice\n\nI can\u0027t see where it gets printed twice from the code. Could you confirm?",
+      "parentUuid": "abc0e150_8b418a4b",
+      "range": {
+        "startLine": 905,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 48
+      },
+      "revId": "4bf7782e995fc892cf353c2573c99dff855ac679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
