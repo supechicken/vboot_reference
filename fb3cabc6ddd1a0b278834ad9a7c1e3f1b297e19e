@@ -45,6 +45,30 @@
       "revId": "fb3cabc6ddd1a0b278834ad9a7c1e3f1b297e19e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cccff385_55081893",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T07:36:24Z",
+      "side": 1,
+      "message": "This is a sanity check and shouldn\u0027t happen in any case, so I think there\u0027s no need to set the error code here.",
+      "parentUuid": "0724cdde_6aa99f83",
+      "range": {
+        "startLine": 848,
+        "startChar": 0,
+        "endLine": 851,
+        "endChar": 2
+      },
+      "revId": "fb3cabc6ddd1a0b278834ad9a7c1e3f1b297e19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
