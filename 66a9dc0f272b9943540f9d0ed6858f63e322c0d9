@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "ef69d950_bf286f26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-08T09:07:59Z",
+      "side": 1,
+      "message": "So it sounds like we still need to keep ui.error_beep for the dev mode external boot case.\n\nIf we\u0027re going to check ui.error_code in the conditional here, how about we stop setting ui.error_beep when we set ui.error_code?  Could we do that in this CL?",
+      "parentUuid": "f29f8f7e_87dad386",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "66a9dc0f272b9943540f9d0ed6858f63e322c0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70c262b9_1c69ea6f",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
