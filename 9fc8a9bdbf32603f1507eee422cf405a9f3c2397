@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "167450a5_fddd0e81",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T06:54:27Z",
+      "side": 1,
+      "message": "Then please set error_beep to 1 for consistency (to be not blocked by CL:2397017). Let\u0027s discuss the implementation details in CL:2397017.",
+      "parentUuid": "644cbb25_3b60258a",
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e20fcde_15194ef8",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 22
@@ -87,6 +105,24 @@
       "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f914492_446b1190",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T06:54:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "40b3431b_f5c5f6f9",
+      "revId": "9fc8a9bdbf32603f1507eee422cf405a9f3c2397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
