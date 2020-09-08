@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f2e8f8e_718ee56a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-08T07:09:41Z",
+      "side": 1,
+      "message": "What do you think about using init() function instead of checking here?\n\nThe only difference here should be that we do some extra validity check when we navigate via menu.",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 64
+      },
+      "revId": "fb3cabc6ddd1a0b278834ad9a7c1e3f1b297e19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0724cdde_6aa99f83",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-08T07:09:41Z",
+      "side": 1,
+      "message": "Should we add error codes here, too?\nIf we do, we could also change the title to a more general title like Show error when to-norm is not allowed in your depthcharge CL",
+      "range": {
+        "startLine": 848,
+        "startChar": 0,
+        "endLine": 851,
+        "endChar": 2
+      },
+      "revId": "fb3cabc6ddd1a0b278834ad9a7c1e3f1b297e19e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
