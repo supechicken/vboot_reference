@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e2b8166d_b09acb69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-08T06:06:16Z",
+      "side": 1,
+      "message": "If both\n- we always beep when showing an error dialog, and\n- we always show an error dialog when there\u0027s a beep (excluding the dev mode timeout beeps),\nthen definitely the error_beep field is unnecessary.",
+      "parentUuid": "29093394_d682edac",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "66a9dc0f272b9943540f9d0ed6858f63e322c0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70c262b9_1c69ea6f",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
