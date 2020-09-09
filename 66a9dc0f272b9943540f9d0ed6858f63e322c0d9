@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "3ee503ce_314d0fa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-09T06:07:56Z",
+      "side": 1,
+      "message": "\u003e If we\u0027re going to check ui.error_code in the conditional here, \nThat\u0027s what I intended to do in this CL.\n(Though after reading CL:2299968, I think we need to check prev_code now)\n\n\u003e how about we stop setting ui.error_beep when we set ui.error_code?\nSure",
+      "parentUuid": "ef69d950_bf286f26",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "66a9dc0f272b9943540f9d0ed6858f63e322c0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70c262b9_1c69ea6f",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 2
