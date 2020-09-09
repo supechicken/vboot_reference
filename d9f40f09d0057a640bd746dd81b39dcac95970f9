@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c9b6f04_01defd5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-09T23:18:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this CL is needed. If you already have FMAP_AREA_PRESERVE applied to SI_ME, then I think the updater will preserve it, no need to change the special ME preserve function.\n\nMeanwhile, I\u0027d assume you\u0027re going to use it like, turn on this flag most of the time, and only turn if off it when there\u0027s a critical update right?\n\nBut in practice, that implies the ME will be rarely updated, and developers/testers may find it pretty confusing that futility didn\u0027t update their ME. Be careful!",
+      "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

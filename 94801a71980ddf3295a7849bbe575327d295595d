@@ -22,6 +22,30 @@
       "revId": "94801a71980ddf3295a7849bbe575327d295595d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daef18ad_b22bdd86",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-09T23:18:39Z",
+      "side": 0,
+      "message": "I think thing can be identified by flashrom should keep there. The reason we add SI_DESC is for locked section, flashrom will handle SI_ME internally \n but it won\u0027t know how to deal with the attributes in SI_DESC. And in fact no matter if you \"preserve\" in futility updater or not, that does not make any difference given flashrom can\u0027t read SI_ME (for comparison).\n\nLike Furquan said, there\u0027s no promise SI_ALL means SI_ME + SI_DESC. In fact on deltaur SI_ALL \u003d SI_DESC, SI_EC, SI_ME and SI_PDR, and on sarien that even includes SI_GBE.",
+      "parentUuid": "7541ce57_1bcfeabe",
+      "range": {
+        "startLine": 515,
+        "startChar": 5,
+        "endLine": 515,
+        "endChar": 17
+      },
+      "revId": "94801a71980ddf3295a7849bbe575327d295595d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
