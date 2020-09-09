@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7d689103_dfb5e429",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-09-09T20:10:43Z",
+      "side": 1,
+      "message": "Yes, I can try that flag and skip applying QUIRK_UNLOCK_ME_FOR_UPDATE if ME is marked as preserved.",
+      "parentUuid": "15ac064a_26d64136",
+      "range": {
+        "startLine": 514,
+        "startChar": 4,
+        "endLine": 514,
+        "endChar": 26
+      },
+      "revId": "7a231eb62aae99f9f43318fb6f0b4b7f200be665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b28482a_e5a73821",
         "filename": "futility/updater.c",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2020-09-09T17:39:23Z",
       "side": 1,
       "message": "I think we will have to handle the new condition differently than this:\n\n1. Section is filled with 0xff\n2. Section is not filled with 0xff, but mainboard still wants to preserve ME region\n\nIn case #1, we want to preserve both descriptor and ME region. I believe that is what FMAP_SI_ALL would be doing (BTW, before this change, we were preserving only FMAP_SI_DESC. That looks wrong? Or am I misunderstanding what was done before with the call to preserve_firmware_section with FMAP_SI_DESC?)\n\nIn case #2, we want to update descriptor, but preserve ME region only. So, it will have to be a separate case.",
+      "range": {
+        "startLine": 518,
+        "startChar": 26,
+        "endLine": 518,
+        "endChar": 37
+      },
+      "revId": "7a231eb62aae99f9f43318fb6f0b4b7f200be665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d945e2_8085a00a",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-09-09T20:10:43Z",
+      "side": 1,
+      "message": "\u003e\u003e(BTW, before this change, we were preserving only FMAP_SI_DESC. That looks wrong? Or am I misunderstanding what was done before with the call to preserve_firmware_section with FMAP_SI_DESC?)\n\nAtleast protecting the SI_DESC was not sufficient because it was preserving only 4KB and I observed the same issue as earlier. I was not sure if ME was part of SI_DESC in the older boards. But that definitely did not help. We were just getting lucky I believe.\n\nRegarding your suggestion to split case#1 and case#2, I can split that way.",
+      "parentUuid": "7b28482a_e5a73821",
       "range": {
         "startLine": 518,
         "startChar": 26,
