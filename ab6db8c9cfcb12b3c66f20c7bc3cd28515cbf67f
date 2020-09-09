@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "75cc67d0_c104d799",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-09T22:49:51Z",
+      "side": 1,
+      "message": "Yes, I meant to take the ifneq out completely. If you make the thing above work right (so it actually doesn\u0027t build fuzzers unless the compiler is clang), you shouldn\u0027t need this down here.",
+      "parentUuid": "040f13d0_e8d1f2f7",
+      "revId": "ab6db8c9cfcb12b3c66f20c7bc3cd28515cbf67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa13dcd9_62e7c719",
         "filename": "Makefile",
         "patchSetId": 8

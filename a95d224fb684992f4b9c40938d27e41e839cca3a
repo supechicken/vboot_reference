@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2805a45b_1037c8b3",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-09T22:49:51Z",
+      "side": 1,
+      "message": "Sorry, this makes no sense, of course. Now we have two lines independently adding \u0027fuzzers\u0027 to the target list when the respective check is true. It\u0027s basically an OR but we want an AND here. So this should be\n\n $(if $(filter x86_64,${ARCH}),$(if $(filter clang,${CC}),fuzzers))\n\nand then it should really no longer try to build that target for you.",
+      "revId": "a95d224fb684992f4b9c40938d27e41e839cca3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
