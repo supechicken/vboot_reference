@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "56923c48_5dad710c",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-09-09T22:14:04Z",
+      "side": 1,
+      "message": "Updated the code to use FMAP_AREA_PRESERVE flag. With the area marked as PRESERVE in coreboot: https://review.coreboot.org/c/coreboot/+/45215, firmware updater skipped updating the CSME region.",
+      "parentUuid": "7d689103_dfb5e429",
+      "range": {
+        "startLine": 514,
+        "startChar": 4,
+        "endLine": 514,
+        "endChar": 26
+      },
+      "revId": "7a231eb62aae99f9f43318fb6f0b4b7f200be665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b28482a_e5a73821",
         "filename": "futility/updater.c",
         "patchSetId": 1
@@ -128,6 +152,30 @@
       "revId": "7a231eb62aae99f9f43318fb6f0b4b7f200be665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b24a54f_85943ff1",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-09-09T22:14:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d945e2_8085a00a",
+      "range": {
+        "startLine": 518,
+        "startChar": 26,
+        "endLine": 518,
+        "endChar": 37
+      },
+      "revId": "7a231eb62aae99f9f43318fb6f0b4b7f200be665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
