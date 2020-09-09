@@ -510,11 +510,12 @@ static int preserve_management_engine(struct updater_config *cfg,
 		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_ME);
 		return 0;
 	}
-	if (section_is_filled_with(&section, 0xFF)) {
+
+	if (PRESERVE_ME_REGION || section_is_filled_with(&section, 0xFF)) {
 		VB2_DEBUG("ME is probably locked - preserving %s.\n",
 			  FMAP_SI_DESC);
 		return preserve_firmware_section(
-				image_from, image_to, FMAP_SI_DESC);
+				image_from, image_to, FMAP_SI_ALL);
 	}
 
 	return try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);

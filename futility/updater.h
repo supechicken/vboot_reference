@@ -25,7 +25,8 @@ static const char * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_RW_SHARED = "RW_SHARED",
 		  * const FMAP_RW_LEGACY = "RW_LEGACY",
 		  * const FMAP_SI_DESC = "SI_DESC",
-		  * const FMAP_SI_ME = "SI_ME";
+		  * const FMAP_SI_ME = "SI_ME",
+		  * const FMAP_SI_ALL = "SI_ALL";
 
 struct updater_config;
 struct quirk_entry {
