@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c1caaa81_53ed0989",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-09T14:40:23Z",
+      "side": 1,
+      "message": "The signing token is what AMD gives us.",
+      "parentUuid": "cf9bcc5e_c7294731",
+      "revId": "b88c713e1476116ad42ea100a2e833708d611ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fbd6919_a126755d",
         "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "b88c713e1476116ad42ea100a2e833708d611ccf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42026fdc_0db35638",
+        "filename": "scripts/image_signing/sign_psp_verstagebl_fw.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-09-09T14:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbd6919_a126755d",
+      "revId": "b88c713e1476116ad42ea100a2e833708d611ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
