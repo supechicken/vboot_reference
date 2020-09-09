@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "165cbddd_f50365c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-09-09T15:06:14Z",
+      "side": 1,
+      "message": "Is there any value to having this be a command line flag rather than a compile time option? I guess not if the firmware always does the ME region sync. (Do GBB flags turn off the ME region sync?)",
+      "revId": "7a231eb62aae99f9f43318fb6f0b4b7f200be665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
