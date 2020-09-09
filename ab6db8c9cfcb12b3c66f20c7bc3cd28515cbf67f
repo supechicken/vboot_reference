@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a355515_c2953279",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-09T00:12:18Z",
+      "side": 1,
+      "message": "Uhh... is this valid Makefile syntax? I\u0027m pretty sure it isn\u0027t?\n\nIf you wanted to do this, you would have to do\n\n $(if $(filter gcc,${CC}),,fuzzers)\n\n(i.e. have an empty \u0027then\u0027-branch and put fuzzers in the \u0027else\u0027-branch). But I think since the fuzzing is a specific clang feature requiring flags only clang understands, it makes more sense to restrict to `clang` rather than anything that\u0027s not `gcc`:\n\n $(if $(filter clang,${CC}),fuzzers)",
+      "range": {
+        "startLine": 329,
+        "startChar": 3,
+        "endLine": 329,
+        "endChar": 9
+      },
+      "revId": "ab6db8c9cfcb12b3c66f20c7bc3cd28515cbf67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b405c998_c2927975",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-09T00:12:18Z",
+      "side": 1,
+      "message": "After doing the above please take this out...",
+      "revId": "ab6db8c9cfcb12b3c66f20c7bc3cd28515cbf67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa13dcd9_62e7c719",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-09-09T00:12:18Z",
+      "side": 1,
+      "message": "...and also take this out.",
+      "revId": "ab6db8c9cfcb12b3c66f20c7bc3cd28515cbf67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
