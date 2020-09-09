@@ -16,6 +16,24 @@
       "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bb0b681_440af445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-09T23:35:19Z",
+      "side": 1,
+      "message": "(preserve_fmap_sections should already preserved all sections with FMAP_AREA_PRESERVE)",
+      "parentUuid": "4c9b6f04_01defd5c",
+      "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
