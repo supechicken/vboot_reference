@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c2e2122_e180fe9f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-09T06:33:18Z",
+      "side": 1,
+      "message": "Remove the !\u003d VB2_UI_ERROR_NONE here as we are at it.",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "3f7cd6953539e3f4c8240f49a5d97224b24e4189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
