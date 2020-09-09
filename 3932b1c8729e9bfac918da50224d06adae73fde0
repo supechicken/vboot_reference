@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cdd0a2f3_fc9eaa65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-09T21:55:04Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2401968.",
+      "parentUuid": "cc4e50a6_344d0e2c",
+      "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e06f9aa_630fc634",
         "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18c98e4_5f44fcef",
+        "filename": "scripts/image_signing/ensure_no_nonrelease_files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-09T21:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e06f9aa_630fc634",
+      "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "64701bd5_9794aca9",
+        "filename": "scripts/image_signing/ensure_sane_lsb-release.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-09T21:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56811f06_211a5af1",
+      "range": {
+        "startLine": 37,
+        "startChar": 21,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df3ed724_d3f2dc25",
         "filename": "scripts/image_signing/sample-test-configs/ensure_no_nonrelease_files.config",
         "patchSetId": 5
@@ -73,6 +133,24 @@
       "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53039d16_1e665b8b",
+        "filename": "scripts/image_signing/sample-test-configs/ensure_no_nonrelease_files.config",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-09T21:55:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df3ed724_d3f2dc25",
+      "revId": "3932b1c8729e9bfac918da50224d06adae73fde0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
