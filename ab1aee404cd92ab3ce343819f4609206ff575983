@@ -46,6 +46,30 @@
       "revId": "ab1aee404cd92ab3ce343819f4609206ff575983",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4612f5bc_1f5db39c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-09T09:06:14Z",
+      "side": 1,
+      "message": "As the offline discussion, we should let your feature CLs in first.\n\nI will take care of removing error_beep.\nSorry for the extra work on it.",
+      "parentUuid": "54c637c3_9a75b1fb",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 851,
+        "endChar": 21
+      },
+      "revId": "ab1aee404cd92ab3ce343819f4609206ff575983",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
