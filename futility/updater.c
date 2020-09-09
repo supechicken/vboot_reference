@@ -504,17 +504,29 @@ static int preserve_management_engine(struct updater_config *cfg,
 				      struct firmware_image *image_to)
 {
 	struct firmware_section section;
+	FmapAreaHeader *ah;
 
-	find_firmware_section(&section, image_from, FMAP_SI_ME);
+	section.data = fmap_find_by_name(image_from->data, image_from->size,
+				image_from->fmap_header, FMAP_SI_ME, &ah);
 	if (!section.data) {
 		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_ME);
 		return 0;
 	}
+	section.size = ah->area_size;
+
 	if (section_is_filled_with(&section, 0xFF)) {
 		VB2_DEBUG("ME is probably locked - preserving %s.\n",
-			  FMAP_SI_DESC);
+			  FMAP_SI_ALL);
 		return preserve_firmware_section(
-				image_from, image_to, FMAP_SI_DESC);
+				image_from, image_to, FMAP_SI_ALL);
+	}
+
+	if (ah->area_flags & FMAP_AREA_PRESERVE) {
+		VB2_DEBUG("ME is flagged as PRESERVE - preserving %s.\n",
+			  FMAP_SI_ME);
+		return preserve_firmware_section(
+				image_from, image_to, FMAP_SI_ME);
+
 	}
 
 	return try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
