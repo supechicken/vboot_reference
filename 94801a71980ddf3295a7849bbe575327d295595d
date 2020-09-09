@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7541ce57_1bcfeabe",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-09-09T22:19:28Z",
+      "side": 0,
+      "message": "If this is being changed, I think we should do that as a separate CL. Also, digging up some history on this, it looks like it was done intentionally: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1197022\n\nFrom the commit description it looks like we are relying on flashrom behavior to skip SI_ME when the ME region is locked. However, I think there should not be any harm in ensuring that both descriptor and ME regions are preserved. Did you check if all boards (including older boards) have SI_ALL defined as SI_ME + SI_DESC?\n\nAlso, adding Hung-Te here to get inputs from him.",
+      "range": {
+        "startLine": 515,
+        "startChar": 5,
+        "endLine": 515,
+        "endChar": 17
+      },
+      "revId": "94801a71980ddf3295a7849bbe575327d295595d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
