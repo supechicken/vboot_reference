@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ee5ddaa_ed40de27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-09-09T20:15:22Z",
+      "side": 1,
+      "message": "Based on the existing use-cases, I am not finding any additional value to add a command line option.\n\nInstead of GBB flags, there is a flashmap flag that can be set in coreboot and can be used here. Furquan pointed out in his recent comment. It did not strike me to use that. I will try with that and simplify this code.",
+      "parentUuid": "165cbddd_f50365c1",
+      "revId": "7a231eb62aae99f9f43318fb6f0b4b7f200be665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15ac064a_26d64136",
         "filename": "futility/updater.c",
         "patchSetId": 1
