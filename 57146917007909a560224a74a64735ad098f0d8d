@@ -33,6 +33,24 @@
       "revId": "57146917007909a560224a74a64735ad098f0d8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "887eeed1_f3072e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-10T00:21:19Z",
+      "side": 1,
+      "message": "sorry this implementation is depthcharge. The coreboot version is\n\n        /* See if we can overwrite the current blob with the new one */\n        for (i \u003d 0; i \u003c BLOB_SIZE; i++) {\n                if (!can_overwrite(ctx-\u003ecache[i], vbnv_copy[i])) {\n                        /* unable to overwrite. need to use the next blob */\n                        new_offset +\u003d BLOB_SIZE;\n                        if (new_offset \u003e ctx-\u003etop_offset) {\n                                if (erase_nvram())\n                                        return;  /* error */\n                                new_offset \u003d 0;\n                        }\n                        break;\n                }\n        }",
+      "parentUuid": "1bc69199_1c3113d6",
+      "revId": "57146917007909a560224a74a64735ad098f0d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
