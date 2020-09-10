@@ -2,11 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include <assert.h>
-
 #include "2api.h"
 #include "2common.h"
 #include "2misc.h"
+#include "2nvstorage.h"
 #include "2rsa.h"
 #include "2secdata.h"
 #include "vboot_test.h"
@@ -22,13 +21,6 @@ static size_t mock_preamble_size;
 void vb2api_fail(struct vb2_context *c, uint8_t reason, uint8_t subcode)
 {
 	return;
-}
-
-void vb2_secdata_firmware_set(struct vb2_context *c,
-			      enum vb2_secdata_firmware_param param,
-			      uint32_t value)
-{
-	/* prevent abort from uninitialized secdata */
 }
 
 vb2_error_t vb2ex_read_resource(struct vb2_context *c,
@@ -67,6 +59,11 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 		return 0;
 
 	if (vb2api_init(workbuf, sizeof(workbuf), &ctx))
+		abort();
+	vb2_nv_init(ctx);
+	vb2api_secdata_firmware_create(ctx);
+	vb2api_secdata_kernel_create(ctx);
+	if (vb2_secdata_firmware_init(ctx) || vb2_secdata_kernel_init(ctx))
 		abort();
 
 	struct vb2_workbuf wb;
