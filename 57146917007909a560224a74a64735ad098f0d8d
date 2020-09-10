@@ -87,6 +87,23 @@
       "revId": "57146917007909a560224a74a64735ad098f0d8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "858965ba_55479e0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-10T00:33:03Z",
+      "side": 1,
+      "message": "so I think we can say\n\n- the NVDATA was designed to not fill the last entry.\n- however implementation in coreboot and mosys both did it wrong.\n  - coreboot will use the last entry (for reading and write)\n  - mosys will not write the last, but it accepts the last when reading.\n  - depthcharge will not write the last, but it accepts the last when reading.\n\nSo in the end we were lucky everything just works, and that was broken when mosys changed to crossystem, which correctly implemented \"do not use last entry\" logic.",
+      "revId": "57146917007909a560224a74a64735ad098f0d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
