@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae82d9e0_4c1b5546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-09-10T16:35:36Z",
+      "side": 1,
+      "message": "setting AS+1 with CQ+2 makes no sense.  AS+1 only triggers when someone sets CR+2.  maybe you\u0027re confusing this with how Android works.",
+      "revId": "03bf3264d5aebe129aadc2bd2977ad24b8234796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
