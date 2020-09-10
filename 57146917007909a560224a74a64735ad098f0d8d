@@ -69,6 +69,24 @@
       "revId": "57146917007909a560224a74a64735ad098f0d8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b20b4f4c_e866fb34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-10T00:25:07Z",
+      "side": 1,
+      "message": "(coreboot) ctx-\u003etop_offset \u003d region_device_sz(rdev) - BLOB_SIZE;\n\nSo in coreboot, last entry can be used.\n\n(depthcharge) will not use last entry.",
+      "parentUuid": "887eeed1_f3072e6c",
+      "revId": "57146917007909a560224a74a64735ad098f0d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
