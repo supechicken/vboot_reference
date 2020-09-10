@@ -104,6 +104,46 @@
       "revId": "57146917007909a560224a74a64735ad098f0d8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39ea4be3_9751e52f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-10T00:51:27Z",
+      "side": 1,
+      "message": "basically correct, although I have some concern on current crossystem implementation that it may be rolling over too fast.",
+      "revId": "57146917007909a560224a74a64735ad098f0d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0db20a63_260fb8bd",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-10T00:51:27Z",
+      "side": 1,
+      "message": "Both depthcharge and coreboot tried to prevent erasing flash by checking if the data can be programmed directly. I\u0027m not sure if flashrom supports that, but shouldn\u0027t we at least compare if we can skip writing if the data looks the same?",
+      "range": {
+        "startLine": 739,
+        "startChar": 1,
+        "endLine": 739,
+        "endChar": 32
+      },
+      "revId": "57146917007909a560224a74a64735ad098f0d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
