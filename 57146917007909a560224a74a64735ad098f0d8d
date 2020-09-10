@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bc69199_1c3113d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-10T00:16:59Z",
+      "side": 1,
+      "message": "I\u0027m seeing this implementation in coreboot:\n\n                /*\n                 * Won\u0027t be able to overwrite, need to use the next blob,\n                 * let\u0027s see if it is available.\n                 */\n                new_blob_offset \u003d nvdata_blob_offset + sizeof(nvdata_cache);\n                if (new_blob_offset \u003e\u003d nvdata_area_descriptor.size) {\n                        printf(\"nvdata block is used up. \"\n                               \"deleting it to start over\\n\");\n                        if (erase_nvdata() !\u003d VB2_SUCCESS)\n                                return VB2_ERROR_NV_WRITE;\n                        new_blob_offset \u003d 0;\n                }\n                nvdata_blob_offset \u003d new_blob_offset;\n\nAnd it does like last entry can\u0027t be filled?",
+      "revId": "57146917007909a560224a74a64735ad098f0d8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
