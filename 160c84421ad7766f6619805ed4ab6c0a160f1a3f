@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90ef8936_21fb5d01",
+        "filename": "firmware/lib/vboot_ui_legacy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-11T07:38:32Z",
+      "side": 1,
+      "message": "Also need to modify vb2api_get_debug_info() in 2misc.c for Groot UI.",
+      "revId": "160c84421ad7766f6619805ed4ab6c0a160f1a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
