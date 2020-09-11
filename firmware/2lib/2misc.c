@@ -709,6 +709,8 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 		snprint_sha1_sum(key, sha1sum, sizeof(sha1sum));
 		DEBUG_INFO_APPEND("\nkernel_subkey: %s", sha1sum);
 	}
+	DEBUG_INFO_APPEND("\nsigning_key: %s", vb2api_is_developer_signed(ctx) ?
+			  "DEV" : "Non-DEV");
 
 	buf[DEBUG_INFO_MAX_LENGTH] = '\0';
 	return buf;
