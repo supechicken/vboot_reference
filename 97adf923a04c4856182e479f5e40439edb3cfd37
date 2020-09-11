@@ -33,6 +33,24 @@
       "revId": "97adf923a04c4856182e479f5e40439edb3cfd37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7370adf_044cb7d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-11T14:42:33Z",
+      "side": 1,
+      "message": "\u003e (1) Can we show \" (dev)\" for kernel subkey as well?\n\nMuch harder (or less reliable). Checking root key is more reasonable.\n\n\u003e (2) I\u0027m a bit worried that we are introducing multiple ways of doing the same thing.  In 2kernel.c vb2api_is_developer_signed, we\u0027re looking at the starting bytes of the raw key rather than comparing hashes.  Perhaps we could use the same strategy? \n\nSure. We don\u0027t have such API for pre-vb2, but given legacy UI will be dropped I think that\u0027s fine.\n\n\u003e And would it make sense to expose this information via an API as well, or perhaps even pre-calculate the dev-ness of the keys and store in vb2_context flags or something like that?  +jwerner to comment as the author of vb2api_is_developer_signed.\n\nI think this info is rarely needed so it\u0027s totally fine to do that in debug function? see what jwerner@ think.\n\n\u003e (3) Unless we have a good reason to update legacy UI code, could we keep it frozen?  It\u0027s currently not built on ToT, and we are going to remove it soon.  Could we take that change out?\n\nSure, I\u0027ll remove it.",
+      "parentUuid": "c9bea868_ef5d5b03",
+      "revId": "97adf923a04c4856182e479f5e40439edb3cfd37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
