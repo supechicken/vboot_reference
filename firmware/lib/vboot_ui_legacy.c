@@ -119,22 +119,32 @@ vb2_error_t VbDisplayDebugInfo(struct vb2_context *ctx)
 
 	/* Add sha1sum for Root & Recovery keys */
 	{
+		const char * const dev_sha1 =
+				"b11d74edd286c144e1135b49e7f0bc20cf041f10";
+
 		struct vb2_packed_key *key;
 		struct vb2_workbuf wblocal = wb;
 		ret = vb2_gbb_read_root_key(ctx, &key, NULL, &wblocal);
 		if (!ret) {
 			FillInSha1Sum(sha1sum, key);
 			DEBUG_INFO_APPEND("\ngbb.rootkey: %s", sha1sum);
+			if (!strcmp(sha1sum, dev_sha1))
+				DEBUG_INFO_APPEND(" (dev)");
 		}
 	}
 
 	{
+		const char * const dev_sha1 =
+				"c14bd720b70d97394257e3e826bd8f43de48d4ed";
+
 		struct vb2_packed_key *key;
 		struct vb2_workbuf wblocal = wb;
 		ret = vb2_gbb_read_recovery_key(ctx, &key, NULL, &wblocal);
 		if (!ret) {
 			FillInSha1Sum(sha1sum, key);
 			DEBUG_INFO_APPEND("\ngbb.recovery_key: %s", sha1sum);
+			if (!strcmp(sha1sum, dev_sha1))
+				DEBUG_INFO_APPEND(" (dev)");
 		}
 	}
 

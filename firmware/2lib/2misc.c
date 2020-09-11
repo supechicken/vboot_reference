@@ -682,22 +682,30 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 
 	/* Add sha1sum for Root & Recovery keys */
 	{
+		const char * const dev_sha1 =
+				"b11d74edd286c144e1135b49e7f0bc20cf041f10";
 		struct vb2_packed_key *key;
 		struct vb2_workbuf wblocal = wb;
 		rv = vb2_gbb_read_root_key(ctx, &key, NULL, &wblocal);
 		if (rv == VB2_SUCCESS) {
 			snprint_sha1_sum(key, sha1sum, sizeof(sha1sum));
 			DEBUG_INFO_APPEND("\ngbb.rootkey: %s", sha1sum);
+			if (!strcmp(sha1sum, dev_sha1))
+				DEBUG_INFO_APPEND(" (dev)");
 		}
 	}
 
 	{
+		const char * const dev_sha1 =
+				"c14bd720b70d97394257e3e826bd8f43de48d4ed";
 		struct vb2_packed_key *key;
 		struct vb2_workbuf wblocal = wb;
 		rv = vb2_gbb_read_recovery_key(ctx, &key, NULL, &wblocal);
 		if (rv == VB2_SUCCESS) {
 			snprint_sha1_sum(key, sha1sum, sizeof(sha1sum));
 			DEBUG_INFO_APPEND("\ngbb.recovery_key: %s", sha1sum);
+			if (!strcmp(sha1sum, dev_sha1))
+				DEBUG_INFO_APPEND(" (dev)");
 		}
 	}
 
