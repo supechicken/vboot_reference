@@ -16,6 +16,24 @@
       "revId": "1d8af63abc982775dc4d1a846af314a2a68db545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d2e4325_d24dab5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-13T07:27:21Z",
+      "side": 1,
+      "message": "Hi Julius, are you talking about the one in vb2api_kernel_phase1?\nI think only only shows in developer screen (or when trying a kernel from USB)?\n\nWhat I\u0027m seeing is, many developers (or partners, or non-tech users including PMs) will find \"downloaded recovery image won\u0027t work\", and seek for help. Previously our approach of \"identifying if that is MP or DEV key\" is to ask then pressing Ctrl-D and look at GBB rootkey hash, but the hash is not very trivial to tell or check so I think a label would be easier.\n\nIs the new message very clear in the latest flow, especially for the scenario I\u0027ve just mentioned?",
+      "parentUuid": "d6b7f0b0_280097fb",
+      "revId": "1d8af63abc982775dc4d1a846af314a2a68db545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
