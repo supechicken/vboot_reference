@@ -327,9 +327,9 @@ static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
 		return vb2_ui_screen_back(ui);
 	}
 
-	return log_page_init(ui,
-			     FIRMWARE_LOG_ITEM_PAGE_DOWN,
-			     FIRMWARE_LOG_ITEM_BACK);
+	log_page_init(ui, FIRMWARE_LOG_ITEM_PAGE_DOWN, FIRMWARE_LOG_ITEM_BACK);
+	ui->state->current_page = ui->state->page_count - 1;
+	return VB2_REQUEST_UI_CONTINUE;
 }
 
 static vb2_error_t firmware_log_reinit(struct vb2_ui_context *ui)
