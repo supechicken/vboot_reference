@@ -1440,12 +1440,14 @@ char *vb2api_get_debug_info(struct vb2_context *ctx);
  *
  * Return a pointer to the full firmware log string which is guaranteed to be
  * null-terminated.  The function implementation should snapshot the full
- * firmware log when it is called the first time.  Subsequent calls should
- * return the same pointer.
+ * firmware log when it is called the first time or the force_reacquire is set.
+ * Otherwise subsequent calls should return the same pointer.
  *
+ * @param force_reacquire	The flag to reacquire a newer snapshot of
+ *				the firmware log string.
  * @return The pointer to the full firmware log string.  NULL on error.
  */
-const char *vb2ex_get_firmware_log(void);
+const char *vb2ex_get_firmware_log(int force_reacquire);
 
 /**
  * Specify the string to be used for an upcoming log screen display.
