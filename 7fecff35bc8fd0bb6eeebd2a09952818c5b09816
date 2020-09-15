@@ -22,6 +22,53 @@
       "revId": "7fecff35bc8fd0bb6eeebd2a09952818c5b09816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdbe7203_7db74c61",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-15T13:36:41Z",
+      "side": 1,
+      "message": "Can we align with minidiag and call it \u0027reset\u0027?",
+      "parentUuid": "3262c582_1169e235",
+      "range": {
+        "startLine": 1446,
+        "startChar": 10,
+        "endLine": 1446,
+        "endChar": 25
+      },
+      "revId": "7fecff35bc8fd0bb6eeebd2a09952818c5b09816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e865f7e_2d169f44",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-15T13:36:41Z",
+      "side": 1,
+      "message": "MOCK_PREPARE_LOG_SIZE?",
+      "range": {
+        "startLine": 538,
+        "startChar": 35,
+        "endLine": 538,
+        "endChar": 37
+      },
+      "revId": "7fecff35bc8fd0bb6eeebd2a09952818c5b09816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
