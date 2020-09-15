@@ -69,6 +69,24 @@
       "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c114c44c_bbd0a55d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-09-15T20:53:46Z",
+      "side": 1,
+      "message": "I added this CL for 2 reasons:\n1) ME is unlocked(try_apply_quirks(QUIRK_UNLOCK_ME_FOR_UPDATE). I was not sure about the side-effect because of that.\n2) preserve_fmap_section preserves the regions based on destination/to image. If ME is not preserved in the \"to\" image, then the ME is overwritten. This will most likely be the case for firmware downgrade.\n\n1) is most likely not a problem. Regarding 2), I am not sure if the preserve decision should be based on the source image or the destination image.\n\n\nRegarding the original motivation behind this CL:\nThere is a problem in recent Intel platforms(Dedede, Volteer) where updating the CSME region as part of firmware updates leads to functionality issues(eg. audio/camera are broken). Even though the exact reason is not identified, Intel is highlighting that updating the CSME region while AP is in S0 state can lead to functionality issues. We have asked Intel to update the entire CSME region through coreboot. There are 2 challenges with that approach:\n1) We need to identify the exact cause of the issue so that we develop the right solution\n2) On platforms with 16 MB SPI ROM, we might run out of space.\n\nSo this CL is part of an alternate solution where:\n1) Do not update CSME region as part of firmware update. Update only the BIOS region in SPI ROM\n2) In the next boot just at the start of UI, update the CSME region using an upstart script and trigger a cold reset.\n\nAlso update the CSME region only if there was a firmware update earlier and SPI ROM is not write protected and ME is unlocked. The above checks ensure that we update the CSME region only in development phases.",
+      "parentUuid": "6e96e84f_fbfcdce8",
+      "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
