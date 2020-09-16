@@ -123,6 +123,24 @@
       "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e5f66af_ef66478c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-09-16T00:51:33Z",
+      "side": 1,
+      "message": "I don\u0027t think there is any problem with downgrade of CSME. We should always keep the rest of the firmware components aligned with the CSME from a single build. What Karthik is probably referring to is the condition where a program did not initially have PRESERVE flag marked in fmap, but later sets PRESERVE on CSME region. I think that is a very corner case which might happen only in early development and it is okay to use \"to\" image flags.",
+      "parentUuid": "d767758a_b45ffeef",
+      "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
