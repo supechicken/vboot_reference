@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6494b5b9_f2e01c78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-16T07:58:19Z",
+      "side": 1,
+      "message": "Feel free to carry +2 after making fixes.",
+      "revId": "9e836edaff91c9bcce6667a60449b04a81ab50e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d7cf8c3_7ff5b220",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-16T07:58:19Z",
+      "side": 1,
+      "message": "Maybe: \"when the reset argument is specified.\"\n\nAlternatively, just copy the text from minidiag:\n\nIf `reset` is not zero, it will reset the firmware log snapshot.",
+      "range": {
+        "startLine": 1443,
+        "startChar": 52,
+        "endLine": 1443,
+        "endChar": 68
+      },
+      "revId": "9e836edaff91c9bcce6667a60449b04a81ab50e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e82356_dc8135cf",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-16T07:58:19Z",
+      "side": 1,
+      "message": "Might prefer TEST_EQ(..., 0) here.",
+      "range": {
+        "startLine": 1224,
+        "startChar": 6,
+        "endLine": 1224,
+        "endChar": 12
+      },
+      "revId": "9e836edaff91c9bcce6667a60449b04a81ab50e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
