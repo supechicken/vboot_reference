@@ -177,6 +177,24 @@
       "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befdb39e_fdaf3cc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-09-16T19:06:26Z",
+      "side": 1,
+      "message": "Thanks for the inputs. Then we can just flag the SI_ME region as preserved in coreboot and that should suffice. We can abandon this CL unless I missed something in the discussion.",
+      "parentUuid": "2faf5918_2e4dca78",
+      "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
