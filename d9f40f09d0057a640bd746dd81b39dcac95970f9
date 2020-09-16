@@ -105,6 +105,24 @@
       "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d767758a_b45ffeef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-16T00:39:48Z",
+      "side": 1,
+      "message": "\u003e preserve_fmap_section preserves the regions based on destination/to image. If ME is not preserved in the \"to\" image, then the ME is overwritten. This will most likely be the case for firmware downgrade.\n\nIf you really want to prevent \"downgrade\", you should add something like a version tag in CSME, and compare here, not rely on PRESERVE attributes.\n\nHowever it\u0027s also true if you can\u0027t \"downgrade\", you have to deal with the case that the rest of firmware (coreboot, ec, etc) all \"downgraded\" while CSME is still in latest version. That may create another layer of complexity in testing and failure in compatbility.",
+      "parentUuid": "5c6be767_869dfd4d",
+      "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
