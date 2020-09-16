@@ -141,6 +141,24 @@
       "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "818e09ce_b15f3505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-16T00:54:28Z",
+      "side": 1,
+      "message": "\u003e a program did not initially have PRESERVE flag marked in fmap, but later sets PRESERVE on CSME region\n\nThat\u0027s exactly the reason we should look at \"to\" instead of \"from\" right? Because \"to\" is ideally always newer than \"from\". Actually looking at \"to\" is the only way we can (1) enforce pushing an update, and (2) prevent changing stuff from previous version.",
+      "parentUuid": "7e5f66af_ef66478c",
+      "revId": "d9f40f09d0057a640bd746dd81b39dcac95970f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
