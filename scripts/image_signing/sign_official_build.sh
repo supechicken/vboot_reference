@@ -345,12 +345,12 @@ extract_firmware_bundle() {
     return 1
   elif grep -q '^##CUTHERE##' "${input}"; then
     # Bundle supports self-extraction.
-    "$input" --sb_extract "${output_dir}" ||
-      die "Extracting firmware autoupdate (--sb_extract) failed."
+    "$input" --unpack "${output_dir}" ||
+      die "Failed unpacking firmware updater (--unpack)."
   else
     # Legacy bundle - try uudecode.
     uudecode -o - ${input} | tar -C ${output_dir} -zxf - 2>/dev/null ||
-      die "Extracting firmware autoupdate failed."
+      die "Failed unpacking firmware updater."
   fi
 }
 
@@ -368,8 +368,8 @@ repack_firmware_bundle() {
     sed -i \
       's/shar -Q -q -x -m -w/shar -Q -q -x -m --no-character-count/' \
       "${target}"
-    "$target" --sb_repack "${input_dir}" ||
-      die "Updating firmware autoupdate (--sb_repack) failed."
+    "$target" --repack "${input_dir}" ||
+      die "Failed repacking firmware updater (--repack)."
   else
     # Legacy bundle using uuencode + tar.gz.
     # Replace MD5 checksum in the firmware update payload.
