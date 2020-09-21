@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df79d3e5_d67968fe",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-21T05:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f705d45_85df4a76",
+      "range": {
+        "startLine": 349,
+        "startChar": 11,
+        "endLine": 349,
+        "endChar": 21
+      },
+      "revId": "90741a1e596fd32575f8bcb81819fabe50704f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df9aa7a6_14e77102",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "90741a1e596fd32575f8bcb81819fabe50704f10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ab763c_21b01693",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-21T05:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9aa7a6_14e77102",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 19
+      },
+      "revId": "90741a1e596fd32575f8bcb81819fabe50704f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
