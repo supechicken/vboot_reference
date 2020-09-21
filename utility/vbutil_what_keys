@@ -145,7 +145,7 @@ dofile() {
           CLEAN_UM="$TMPMNT"
           [ -n "$verbose" ] && "$TMPMNT/usr/sbin/chromeos-firmwareupdate" -V
           "$TMPMNT/usr/sbin/chromeos-firmwareupdate" \
-            --sb_extract "$TMPDIR" > /dev/null
+            --unpack "$TMPDIR" > /dev/null
           sudo umount "$TMPMNT"
           CLEAN_UM=
 
