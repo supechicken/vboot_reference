@@ -69,6 +69,7 @@ struct vb2_screen_state {
 	/* For log screen. */
 	uint32_t page_count;
 	uint32_t current_page;
+	int log_content_done;  /* Do not update screen if the content is done */
 
 	struct vb2_screen_state *prev;
 };
