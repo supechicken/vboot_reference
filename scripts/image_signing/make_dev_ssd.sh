@@ -35,7 +35,11 @@ ROOTDEV_KERNEL="$((ROOTDEV_PARTITION - 1))"
 DEFINE_string image "$ROOTDEV_DISK" "Path to device or image file" "i"
 DEFINE_string keys "$DEFAULT_KEYS_FOLDER" "Path to folder of dev keys" "k"
 DEFINE_boolean remove_rootfs_verification \
-  $FLAGS_FALSE "Modify kernel boot config to disable rootfs verification" ""
+  "${FLAGS_FALSE}" "Modify kernel boot config to disable rootfs verification" ""
+DEFINE_boolean enable_earlycon "${FLAGS_FALSE}" \
+  "Enable earlycon from stdout-path (ARM/ARM64) or SPCR (x86)." ""
+DEFINE_boolean disable_earlycon "${FLAGS_FALSE}" \
+  "Disable earlycon." ""
 DEFINE_string backup_dir \
   "$DEFAULT_BACKUP_FOLDER" "Path of directory to store kernel backups" ""
 DEFINE_string save_config "" \
@@ -104,6 +108,29 @@ remove_legacy_boot_rootfs_verification() {
   [ ! -f "$config_file" ] ||
     sudo sed -i 's/-vusb/-usb/g; s/-vhd/-hd/g' "$config_file"
   sudo umount "$mount_point"
+}
+
+# Enable/Disable earlycon
+enable_earlycon() {
+  local cmdline="$1"
+
+  cmdline=$(echo "${cmdline}" | sed '
+    s/console[0-9A-Za-z,=]*//g;
+    s/earlycon[0-9A-Za-z,=]*//g')
+  cmdline="earlycon${cmdline}"
+
+  echo "${cmdline}"
+}
+
+disable_earlycon() {
+  local cmdline="$1"
+
+  cmdline=$(echo "${cmdline}" | sed '
+    s/console[0-9A-Za-z,=]*//g;
+    s/earlycon[0-9A-Za-z,=]*//g')
+  cmdline="console=${cmdline}"
+
+  echo "${cmdline}"
 }
 
 # Wrapped version of dd
@@ -242,6 +269,16 @@ resign_ssd_kernel() {
       debug_msg "New kernel config: $kernel_config"
       info "${name}: Disabled rootfs verification."
       remove_legacy_boot_rootfs_verification "$ssd_device"
+    fi
+
+    if [ "${FLAGS_enable_earlycon}" = "${FLAGS_TRUE}" ]; then
+      debug_msg "Enabling serial console"
+      kernel_config="$(enable_earlycon "${kernel_config}")"
+      debug_msg "New kernel config: ${kernel_config}"
+    elif [ "${FLAGS_disable_earlycon}" = "${FLAGS_TRUE}" ]; then
+      debug_msg "Disabling serial console"
+      kernel_config="$(disable_earlycon "${kernel_config}")"
+      debug_msg "New kernel config: ${kernel_config}"
     fi
 
     local new_kernel_config_file="$(make_temp_file)"
