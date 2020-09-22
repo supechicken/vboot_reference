@@ -1128,6 +1128,8 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 	if (ui->state->log_finalized)
 		return VB2_REQUEST_UI_CONTINUE;
 
+	uint32_t t1, t2;
+	t1 = vb2ex_mtime();
 	vb2_error_t rv = op(reset, &log_string);
 
 	/* The test is still running but there were no textual updates. */
@@ -1139,7 +1141,9 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
 		return vb2_ui_screen_back(ui);
 	}
-
+	t2 = vb2ex_mtime();
+	VB2_DEBUG("@@@@@ screen action: get test status %d ms\n", t2 - t1);
+	t1 = t2;
 	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare memory log screen, error: "
@@ -1147,6 +1151,9 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
 		return vb2_ui_screen_back(ui);
 	}
+	t2 = vb2ex_mtime();
+	VB2_DEBUG("@@@@@ screen action: prepare screen %d ms\n", t2 - t1);
+	t1 = t2;
 	if (ui->state->current_page >= ui->state->page_count)
 		ui->state->current_page = ui->state->page_count - 1;
 

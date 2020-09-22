@@ -305,6 +305,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	uint32_t start_time_ms, elapsed_ms;
 	vb2_error_t rv;
 
+	uint32_t t1, t2, ts;
+
 	memset(&ui, 0, sizeof(ui));
 	ui.ctx = ctx;
 	root_info = vb2_get_screen_info(root_screen_id);
@@ -320,6 +322,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 
 	while (1) {
 		start_time_ms = vb2ex_mtime();
+		t1 = vb2ex_mtime();
+		ts = t1;
 
 		/* Draw if there are state changes. */
 		if (memcmp(&prev_state, ui.state, sizeof(*ui.state)) ||
@@ -361,6 +365,10 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			prev_error_code = ui.error_code;
 		}
 
+		t2 = vb2ex_mtime();
+		VB2_DEBUG("$$$$$ draw screen for %d ms\n", t2 - t1);
+		t1 = t2;
+
 		/* Grab new keyboard input. */
 		ui.key = VbExKeyboardReadWithFlags(&key_flags);
 		ui.key_trusted = !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD);
@@ -377,6 +385,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		if (rv != VB2_REQUEST_UI_CONTINUE)
 			return rv;
 
+		t1 = vb2ex_mtime();
+
 		/* Run screen action. */
 		if (ui.state->screen->action) {
 			rv = ui.state->screen->action(&ui);
@@ -384,10 +394,18 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 				return rv;
 		}
 
+		t2 = vb2ex_mtime();
+		VB2_DEBUG("$$$$$ screen action for %d ms\n", t2 - t1);
+		t1 = t2;
+
 		/* Run menu navigation action. */
 		rv = menu_navigation_action(&ui);
 		if (rv != VB2_REQUEST_UI_CONTINUE)
 			return rv;
+
+		t2 = vb2ex_mtime();
+		VB2_DEBUG("$$$$$ menu navigation action for %d ms\n", t2 - t1);
+		t1 = t2;
 
 		/* Run global action function if available. */
 		if (global_action) {
@@ -400,6 +418,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		elapsed_ms = vb2ex_mtime() - start_time_ms;
 		if (elapsed_ms < KEY_DELAY_MS)
 			vb2ex_msleep(KEY_DELAY_MS - elapsed_ms);
+		VB2_DEBUG("***** whole iteration delay %d ms\n",
+			  vb2ex_mtime() - ts);
 	}
 
 	return VB2_SUCCESS;
