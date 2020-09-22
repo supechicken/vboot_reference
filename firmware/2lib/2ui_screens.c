@@ -1123,6 +1123,11 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 						    int reset)
 {
 	const char *log_string = NULL;
+
+	/* Early return if the memory test is done. */
+	if (ui->state->log_finalized)
+		return VB2_REQUEST_UI_CONTINUE;
+
 	vb2_error_t rv = op(reset, &log_string);
 
 	/* The test is still running but there were no textual updates. */
@@ -1163,6 +1168,7 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 			    DIAGNOSTICS_MEMORY_ITEM_CANCEL);
 		if (ui->state->selected_item == DIAGNOSTICS_MEMORY_ITEM_CANCEL)
 			ui->state->selected_item = DIAGNOSTICS_MEMORY_ITEM_BACK;
+		ui->state->log_finalized = 1;
 	}
 
 	return VB2_REQUEST_UI_CONTINUE;
