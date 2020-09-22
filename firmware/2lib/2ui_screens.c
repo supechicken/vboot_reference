@@ -1133,6 +1133,8 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 			1 << DIAGNOSTICS_MEMORY_ITEM_CANCEL;
 		if (ui->state->selected_item == DIAGNOSTICS_MEMORY_ITEM_CANCEL)
 			ui->state->selected_item = DIAGNOSTICS_MEMORY_ITEM_BACK;
+		/* Prevent calling this action again if the test is finished. */
+		ui->state->disable_screen_action = 1;
 	}
 
 	return VB2_REQUEST_UI_CONTINUE;

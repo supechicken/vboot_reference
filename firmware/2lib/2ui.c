@@ -366,7 +366,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			return rv;
 
 		/* Run screen action. */
-		if (ui.state->screen->action) {
+		if (!ui.state->disable_screen_action &&
+		    ui.state->screen->action) {
 			rv = ui.state->screen->action(&ui);
 			if (rv != VB2_REQUEST_UI_CONTINUE)
 				return rv;

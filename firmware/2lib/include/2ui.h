@@ -70,6 +70,9 @@ struct vb2_screen_state {
 	uint32_t page_count;
 	uint32_t current_page;
 
+	/* For disabling screen action. */
+	int disable_screen_action;
+
 	struct vb2_screen_state *prev;
 };
 
