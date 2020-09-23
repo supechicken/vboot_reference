@@ -11,6 +11,8 @@
 #define VBOOT_REFERENCE_2UI_PRIVATE_H_
 
 /* From 2ui.c */
+#define KEY_DELAY_MS 20  /* Delay between key scans in UI loops */
+
 vb2_error_t check_shutdown_request(struct vb2_ui_context *ui);
 const struct vb2_menu *get_menu(struct vb2_ui_context *ui);
 vb2_error_t error_exit_action(struct vb2_ui_context *ui);
