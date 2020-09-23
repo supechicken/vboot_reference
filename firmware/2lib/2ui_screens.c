@@ -1124,6 +1124,11 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 {
 	const char *log_string = NULL;
 	vb2_error_t rv = op(reset, &log_string);
+
+	/* The test is still running but there were no textual updates. */
+	if (rv == VB2_ERROR_EX_DIAG_TEST_RUNNING)
+		return VB2_REQUEST_UI_CONTINUE;
+
 	if ((rv && rv != VB2_ERROR_EX_DIAG_TEST_RUNNING) || !log_string) {
 		VB2_DEBUG("ERROR: Failed to retrieve memory test status\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
