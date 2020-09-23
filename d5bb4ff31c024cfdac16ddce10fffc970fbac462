@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8defc6cc_783f7d7b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-23T08:13:08Z",
+      "side": 1,
+      "message": "We\u0027re only using these variables in one location of ui_loop, so I am not sure it\u0027s that important to include \"iter_\".  I might add \"_ms\" at the end to be clear about the units though.  (I know we didn\u0027t do that in vb2_ui_context, but probably a good idea to add at some point.)",
+      "range": {
+        "startLine": 299,
+        "startChar": 10,
+        "endLine": 299,
+        "endChar": 39
+      },
+      "revId": "d5bb4ff31c024cfdac16ddce10fffc970fbac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a6cb8f_c2eae706",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-23T08:13:08Z",
+      "side": 1,
+      "message": "Would you mind writing a few tests for this?\n\nIt would be great to include one that sets the starting time to just below UINT32_MAX, and make sure that time loops around past 0 as expected.",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 45
+      },
+      "revId": "d5bb4ff31c024cfdac16ddce10fffc970fbac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
