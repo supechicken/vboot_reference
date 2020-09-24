@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea333385_55200038",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-24T09:49:27Z",
+      "side": 1,
+      "message": "There\u0027re others in\n\n- lib/vboot_ui_legacy_clamshell.c\n- 2lib/2kernel.c\n- 2lib/2stub.c\n\nfound by\n\n grep -r \u0027^    \u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "5ccebc4b176d28fb4351abce944df2675ebc0903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
