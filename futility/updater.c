@@ -534,6 +534,7 @@ static int preserve_fmap_sections(struct firmware_image *from,
 	for (i = 0; i < fmap->fmap_nareas; i++, ah++) {
 		if (!(ah->area_flags & FMAP_AREA_PRESERVE))
 			continue;
+
 		/* Warning: area_name 'may' not end with NUL. */
 		if (!firmware_section_exists(from, ah->area_name)) {
 			VB2_DEBUG("FMAP area does not exist in source: %.*s\n",
@@ -1279,8 +1280,13 @@ static int updater_setup_quirks(struct updater_config *cfg,
 	int errorcnt = 0;
 	const char *quirks = updater_get_default_quirks(cfg);
 
-	if (quirks)
+	if (quirks) {
 		errorcnt += !!setup_config_quirks(quirks, cfg);
+	} else {
+		quirks = updater_get_platform_quirks(cfg);
+		if (quirks)
+			errorcnt += !!setup_config_quirks(quirks, cfg);
+	}
 	if (arg->quirks)
 		errorcnt += !!setup_config_quirks(arg->quirks, cfg);
 	return errorcnt;

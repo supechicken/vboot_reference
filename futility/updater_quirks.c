@@ -62,6 +62,8 @@ static const struct quirks_record quirks_records[] = {
         { .match = "Google_Phaser.", .quirks = "override_signature_id" },
 };
 
+static const struct quirks_record platform_quirks_records[] = {};
+
 /* Preserves meta data and reload image contents from given file path. */
 static int reload_firmware_image(const char *file_path,
 				 struct firmware_image *image)
@@ -485,4 +487,38 @@ int quirk_override_signature_id(struct updater_config *cfg,
 	}
 
 	return 0;
+}
+
+/*
+ * Gets the quirk config string for target platform family.
+ * Returns a string (in same format as --quirks) to load or NULL if no quirks.
+ * Since default quirks are on a per-board basis, they take precedence over
+ * the platform quirks.
+ */
+const char * const updater_get_platform_quirks(struct updater_config *cfg)
+{
+	char *platform_name;
+	char *command;
+	int i;
+
+	ASPRINTF(&command, "cros_config /identity platform-name 2>/dev/null");
+	platform_name = host_shell(command);
+	free(command);
+
+	if (!platform_name) {
+		VB2_DEBUG("Cannot identify platform quirks.\n");
+		return NULL;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(platform_quirks_records); i++) {
+		const struct quirks_record *r = &platform_quirks_records[i];
+		if (!strncmp(r->match, platform_name, strlen(r->match)))
+		    continue;
+		VB2_DEBUG("Found platform quirks: %s\n", r->quirks);
+		free(platform_name);
+		return r->quirks;
+	}
+
+	free(platform_name);
+	return NULL;
 }

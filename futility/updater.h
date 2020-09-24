@@ -187,6 +187,14 @@ int quirk_override_signature_id(struct updater_config *cfg,
 				struct model_config *model,
 				const char **signature_id);
 
+/*
+ * Gets the quirk config string for target platform family.
+ * Returns a string (in same format as --quirks) to load or NULL if no quirks.
+ * Since default quirks are on a per-board basis, they take precedence over
+ * the platform quirks.
+ */
+const char * const updater_get_platform_quirks(struct updater_config *cfg);
+
 /* Functions from updater_archive.c */
 
 /*
