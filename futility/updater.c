@@ -521,7 +521,8 @@ static int preserve_management_engine(struct updater_config *cfg,
 }
 
 /* Preserve firmware sections by FMAP area flags. */
-static int preserve_fmap_sections(struct firmware_image *from,
+static int preserve_fmap_sections(struct updater_config *cfg,
+				  struct firmware_image *from,
 				  struct firmware_image *to,
 				  int *count)
 {
@@ -534,6 +535,17 @@ static int preserve_fmap_sections(struct firmware_image *from,
 	for (i = 0; i < fmap->fmap_nareas; i++, ah++) {
 		if (!(ah->area_flags & FMAP_AREA_PRESERVE))
 			continue;
+
+		/*
+		 * On boards where ME region is marked as preserved, it is
+		 * updated post-boot to fix b/169278757. But the post-boot
+		 * CSME update is not supported in factory update. So skip
+		 * preserving the CSME region in factory update. Remove this
+		 * quirk after b/169278757 is fixed.
+		 */
+		if (cfg->factory_update && !strcmp(ah->area_name, FMAP_SI_ME))
+			continue;
+
 		/* Warning: area_name 'may' not end with NUL. */
 		if (!firmware_section_exists(from, ah->area_name)) {
 			VB2_DEBUG("FMAP area does not exist in source: %.*s\n",
@@ -589,7 +601,7 @@ static int preserve_images(struct updater_config *cfg)
 	errcnt += preserve_gbb(from, to, !cfg->factory_update,
 			       cfg->override_gbb_flags, cfg->gbb_flags);
 	errcnt += preserve_management_engine(cfg, from, to);
-	errcnt += preserve_fmap_sections(from, to, &found);
+	errcnt += preserve_fmap_sections(cfg, from, to, &found);
 
 	if (!found)
 		errcnt += preserve_known_sections(from, to);
