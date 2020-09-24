@@ -1090,8 +1090,23 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 						    memory_test_op_t op,
 						    int reset)
 {
+	static char* log_string_cache_buf = NULL;
+	static size_t log_string_cache_size = 0;
+
 	const char *log_string = NULL;
 	vb2_error_t rv = op(reset, &log_string);
+
+	if (log_string_cache_buf &&
+	    strcmp(log_string_cache_buf, log_string) == 0) {
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+
+	size_t new_len = strlen(log_string) + 1;
+	if (new_len > log_string_cache_size) {
+		log_string_cache_buf = realloc(log_string_cache_buf, new_len);
+	}
+	strcpy(log_string_cache_buf, log_string);
+
 	if ((rv && rv != VB2_ERROR_EX_DIAG_TEST_RUNNING) || !log_string) {
 		VB2_DEBUG("ERROR: Failed to retrieve memory test status\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
