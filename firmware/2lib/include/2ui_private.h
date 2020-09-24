@@ -32,4 +32,9 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui);
 vb2_error_t developer_mode_action(struct vb2_ui_context *ui);
 vb2_error_t developer_to_norm_action(struct vb2_ui_context *ui);
 
+/* Macros for bitmask operations */
+#define SET_BIT(mask, index) ((mask) |= ((uint32_t)1 << (index)))
+#define CLR_BIT(mask, index) ((mask) &= ~((uint32_t)1 << (index)))
+#define GET_BIT(mask, index) ((mask) & ((uint32_t)1 << (index)))
+
 #endif  /* VBOOT_REFERENCE_2UI_PRIVATE_H_ */
