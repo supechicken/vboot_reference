@@ -53,10 +53,6 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 
 /******************************************************************************/
 /* Functions used for log screens */
-/*
- * TODO(b/163301076): Reconsider the functionalities of page up/down buttons
- * when reaching the start/end of the log.
- */
 
 static vb2_error_t log_page_init(struct vb2_ui_context *ui,
 				 uint32_t page_down_item,
@@ -76,7 +72,6 @@ static vb2_error_t log_page_prev_action(struct vb2_ui_context *ui)
 {
 	if (ui->state->current_page == 0) {
 		VB2_DEBUG("WARNING: Ignore page up on the first page\n");
-		ui->error_beep = 1;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 	ui->state->current_page--;
@@ -88,7 +83,6 @@ static vb2_error_t log_page_next_action(struct vb2_ui_context *ui)
 {
 	if (ui->state->current_page == ui->state->page_count - 1) {
 		VB2_DEBUG("WARNING: Ignore page down on the last page\n");
-		ui->error_beep = 1;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 	ui->state->current_page++;
