@@ -146,7 +146,7 @@ vb2_error_t vb2_ui_menu_prev(struct vb2_ui_context *ui)
 
 	item = ui->state->selected_item - 1;
 	while (item >= 0 &&
-	       ((1 << item) & ui->state->disabled_item_mask))
+	       (((uint32_t)1 << item) & ui->state->hidden_item_mask))
 		item--;
 	/* Only update if item is valid */
 	if (item >= 0)
@@ -166,7 +166,7 @@ vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui)
 	menu = get_menu(ui);
 	item = ui->state->selected_item + 1;
 	while (item < menu->num_items &&
-	       ((1 << item) & ui->state->disabled_item_mask))
+	       (((uint32_t)1 << item) & ui->state->hidden_item_mask))
 		item++;
 	/* Only update if item is valid */
 	if (item < menu->num_items)
@@ -188,6 +188,14 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 		return VB2_REQUEST_UI_CONTINUE;
 
 	menu_item = &menu->items[ui->state->selected_item];
+
+	/* Cannot select a disabled menu item */
+	if (((uint32_t)1 << ui->state->selected_item) &
+	    ui->state->disabled_item_mask) {
+		VB2_DEBUG("Menu item <%s> disabled; ignoring\n",
+			  menu_item->text);
+		return VB2_REQUEST_UI_CONTINUE;
+	}
 
 	if (menu_item->action) {
 		VB2_DEBUG("Menu item <%s> run action\n", menu_item->text);
@@ -332,6 +340,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			vb2ex_display_ui(ui.state->screen->id, ui.locale_id,
 					 ui.state->selected_item,
 					 ui.state->disabled_item_mask,
+					 ui.state->hidden_item_mask,
 					 ui.disable_timer,
 					 ui.state->current_page,
 					 ui.error_code);
