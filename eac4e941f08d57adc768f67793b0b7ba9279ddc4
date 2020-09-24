@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "348ccac5_cb105c31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-24T08:14:38Z",
+      "side": 1,
+      "message": "Since vboot decides functionality (whether the button can be pressed or not), maybe it\u0027d be more accurate to just talk about the style here... something like:\n\n  Disabled style, but still visible and selectable.",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541fe68c_39582731",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-24T08:14:38Z",
+      "side": 1,
+      "message": "Same here... maybe just:\n\n  Not visible.",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3e3f325_cd4ef39b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -16,6 +62,52 @@
       "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "798bcfdf_4e58c581",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-24T08:14:38Z",
+      "side": 1,
+      "message": "Keep bracket on previous line.",
+      "range": {
+        "startLine": 1129,
+        "startChar": 1,
+        "endLine": 1129,
+        "endChar": 2
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd42ee4_3e367cba",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-24T08:14:38Z",
+      "side": 1,
+      "message": "Keep bracket on previous line.",
+      "range": {
+        "startLine": 1244,
+        "startChar": 1,
+        "endLine": 1244,
+        "endChar": 2
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
