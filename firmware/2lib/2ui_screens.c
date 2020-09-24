@@ -53,21 +53,22 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 
 /******************************************************************************/
 /* Functions used for log screens */
-/*
- * TODO(b/163301076): Reconsider the functionalities of page up/down buttons
- * when reaching the start/end of the log.
- */
 
-static vb2_error_t log_page_init(struct vb2_ui_context *ui,
-				 uint32_t page_down_item,
-				 uint32_t alternate_item)
+static vb2_error_t log_page_init(struct vb2_ui_context *ui)
 {
 	ui->state->current_page = 0;
 
-	if (ui->state->page_count == 1)
-		ui->state->selected_item = alternate_item;
-	else
-		ui->state->selected_item = page_down_item;
+	if (ui->state->page_count == 1) {
+		ui->state->disabled_item_mask |=
+			1 << ui->state->screen->page_up_item;
+		ui->state->disabled_item_mask |=
+			1 << ui->state->screen->page_down_item;
+		ui->state->selected_item = ui->state->screen->alternate_item;
+	} else {
+		ui->state->disabled_item_mask |=
+			1 << ui->state->screen->page_down_item;
+		ui->state->selected_item = ui->state->screen->page_down_item;
+	}
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -76,10 +77,19 @@ static vb2_error_t log_page_prev_action(struct vb2_ui_context *ui)
 {
 	if (ui->state->current_page == 0) {
 		VB2_DEBUG("WARNING: Ignore page up on the first page\n");
-		ui->error_beep = 1;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 	ui->state->current_page--;
+
+	/* Clear bits of page down. */
+	if (ui->state->current_page != ui->state->page_count - 1)
+		ui->state->disabled_item_mask &=
+			~(1 << ui->state->screen->page_down_item);
+
+	/* Disable page up at the first page. */
+	if (ui->state->current_page == 0)
+		ui->state->disabled_item_mask |=
+			1 << ui->state->screen->page_up_item;
 
 	return VB2_REQUEST_UI_CONTINUE;
 }
@@ -88,13 +98,32 @@ static vb2_error_t log_page_next_action(struct vb2_ui_context *ui)
 {
 	if (ui->state->current_page == ui->state->page_count - 1) {
 		VB2_DEBUG("WARNING: Ignore page down on the last page\n");
-		ui->error_beep = 1;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 	ui->state->current_page++;
 
+	/* Clear bits of page up. */
+	if (ui->state->current_page != 0)
+		ui->state->disabled_item_mask &=
+			~(1 << ui->state->screen->page_up_item);
+
+	/* Disable page down at the last page. */
+	if (ui->state->current_page == ui->state->page_count - 1)
+		ui->state->disabled_item_mask |=
+			1 << ui->state->screen->page_down_item;
+
 	return VB2_REQUEST_UI_CONTINUE;
 }
+
+#define PAGE_UP_ITEM ((struct vb2_menu_item){ \
+	.text = "Page up", \
+	.action = log_page_prev_action, \
+})
+
+#define PAGE_DOWN_ITEM ((struct vb2_menu_item){ \
+	.text = "Page down", \
+	.action = log_page_next_action, \
+})
 
 /******************************************************************************/
 /* VB2_SCREEN_BLANK */
@@ -207,7 +236,7 @@ vb2_error_t advanced_options_init(struct vb2_ui_context *ui)
 	ui->state->selected_item = ADVANCED_OPTIONS_ITEM_DEVELOPER_MODE;
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED ||
 	    !vb2_allow_recovery(ui->ctx)) {
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << ADVANCED_OPTIONS_ITEM_DEVELOPER_MODE;
 		ui->state->selected_item = ADVANCED_OPTIONS_ITEM_DEBUG_INFO;
 	}
@@ -243,6 +272,7 @@ static const struct vb2_screen_info advanced_options_screen = {
 /******************************************************************************/
 /* VB2_SCREEN_DEBUG_INFO */
 
+#define DEBUG_INFO_ITEM_PAGE_UP 1
 #define DEBUG_INFO_ITEM_PAGE_DOWN 2
 #define DEBUG_INFO_ITEM_BACK 3
 
@@ -261,9 +291,7 @@ static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 		return vb2_ui_screen_back(ui);
 	}
 
-	return log_page_init(ui,
-			     DEBUG_INFO_ITEM_PAGE_DOWN,
-			     DEBUG_INFO_ITEM_BACK);
+	return log_page_init(ui);
 }
 
 static vb2_error_t debug_info_reinit(struct vb2_ui_context *ui)
@@ -286,14 +314,8 @@ static vb2_error_t debug_info_reinit(struct vb2_ui_context *ui)
 
 static const struct vb2_menu_item debug_info_items[] = {
 	LANGUAGE_SELECT_ITEM,
-	{
-		.text = "Page up",
-		.action = log_page_prev_action,
-	},
-	[DEBUG_INFO_ITEM_PAGE_DOWN] = {
-		.text = "Page down",
-		.action = log_page_next_action,
-	},
+	[DEBUG_INFO_ITEM_PAGE_UP] = PAGE_UP_ITEM,
+	[DEBUG_INFO_ITEM_PAGE_DOWN] = PAGE_DOWN_ITEM,
 	[DEBUG_INFO_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -304,11 +326,15 @@ static const struct vb2_screen_info debug_info_screen = {
 	.init = debug_info_init,
 	.reinit = debug_info_reinit,
 	.menu = MENU_ITEMS(debug_info_items),
+	.page_up_item = DEBUG_INFO_ITEM_PAGE_UP,
+	.page_down_item = DEBUG_INFO_ITEM_PAGE_DOWN,
+	.alternate_item = DEBUG_INFO_ITEM_BACK,
 };
 
 /******************************************************************************/
 /* VB2_SCREEN_FIRMWARE_LOG */
 
+#define FIRMWARE_LOG_ITEM_PAGE_UP 1
 #define FIRMWARE_LOG_ITEM_PAGE_DOWN 2
 #define FIRMWARE_LOG_ITEM_BACK 3
 
@@ -327,9 +353,7 @@ static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
 		return vb2_ui_screen_back(ui);
 	}
 
-	return log_page_init(ui,
-			     FIRMWARE_LOG_ITEM_PAGE_DOWN,
-			     FIRMWARE_LOG_ITEM_BACK);
+	return log_page_init(ui);
 }
 
 static vb2_error_t firmware_log_reinit(struct vb2_ui_context *ui)
@@ -352,14 +376,8 @@ static vb2_error_t firmware_log_reinit(struct vb2_ui_context *ui)
 
 static const struct vb2_menu_item firmware_log_items[] = {
 	LANGUAGE_SELECT_ITEM,
-	{
-		.text = "Page up",
-		.action = log_page_prev_action,
-	},
-	[FIRMWARE_LOG_ITEM_PAGE_DOWN] = {
-		.text = "Page down",
-		.action = log_page_next_action,
-	},
+	[FIRMWARE_LOG_ITEM_PAGE_UP] = PAGE_UP_ITEM,
+	[FIRMWARE_LOG_ITEM_PAGE_DOWN] = PAGE_DOWN_ITEM,
 	[FIRMWARE_LOG_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -370,6 +388,9 @@ static const struct vb2_screen_info firmware_log_screen = {
 	.init = firmware_log_init,
 	.reinit = firmware_log_reinit,
 	.menu = MENU_ITEMS(firmware_log_items),
+	.page_up_item = FIRMWARE_LOG_ITEM_PAGE_UP,
+	.page_down_item = FIRMWARE_LOG_ITEM_PAGE_DOWN,
+	.alternate_item = FIRMWARE_LOG_ITEM_BACK,
 };
 
 /******************************************************************************/
@@ -392,13 +413,13 @@ vb2_error_t recovery_select_init(struct vb2_ui_context *ui)
 	ui->state->selected_item = RECOVERY_SELECT_ITEM_PHONE;
 	if (!vb2api_phone_recovery_ui_enabled(ui->ctx)) {
 		VB2_DEBUG("WARNING: Phone recovery not available\n");
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << RECOVERY_SELECT_ITEM_PHONE;
 		ui->state->selected_item = RECOVERY_SELECT_ITEM_EXTERNAL_DISK;
 	}
 
         if (!DIAGNOSTIC_UI || !vb2api_diagnostic_ui_enabled(ui->ctx))
-                ui->state->disabled_item_mask |=
+                ui->state->hidden_item_mask |=
 			1 << RECOVERY_SELECT_ITEM_DIAGNOSTICS;
 
 	return VB2_REQUEST_UI_CONTINUE;
@@ -466,7 +487,7 @@ vb2_error_t recovery_to_dev_init(struct vb2_ui_context *ui)
 
 	/* Disable "Confirm" button for other physical presence types. */
 	if (!PHYSICAL_PRESENCE_KEYBOARD) {
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << RECOVERY_TO_DEV_ITEM_CONFIRM;
 		ui->state->selected_item = RECOVERY_TO_DEV_ITEM_CANCEL;
 	}
@@ -655,17 +676,17 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 
 	/* Don't show "Return to secure mode" button if GBB forces dev mode. */
 	if (vb2_get_gbb(ui->ctx)->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON)
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << DEVELOPER_MODE_ITEM_RETURN_TO_SECURE;
 
 	/* Don't show "Boot from external disk" button if not allowed. */
 	if (!vb2_dev_boot_external_allowed(ui->ctx))
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << DEVELOPER_MODE_ITEM_BOOT_EXTERNAL;
 
 	/* Don't show "Select alternate bootloader" button if not allowed. */
 	if (!vb2_dev_boot_legacy_allowed(ui->ctx))
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << DEVELOPER_MODE_ITEM_SELECT_BOOTLOADER;
 
 	/* Choose the default selection. */
@@ -1040,6 +1061,7 @@ static const struct vb2_screen_info diagnostics_screen = {
 /******************************************************************************/
 /* VB2_SCREEN_DIAGNOSTICS_STORAGE */
 
+#define DIAGNOSTICS_STORAGE_ITEM_PAGE_UP 0
 #define DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN 1
 #define DIAGNOSTICS_STORAGE_ITEM_BACK 2
 
@@ -1060,19 +1082,12 @@ static vb2_error_t diagnostics_storage_init(struct vb2_ui_context *ui)
 		ui->error_beep = 1;
 		return vb2_ui_screen_back(ui);
 	}
-	return log_page_init(ui, DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN,
-			     DIAGNOSTICS_STORAGE_ITEM_BACK);
+	return log_page_init(ui);
 }
 
 static const struct vb2_menu_item diagnostics_storage_items[] = {
-	{
-		.text = "Page up",
-		.action = log_page_prev_action,
-	},
-	[DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN] = {
-		.text = "Page down",
-		.action = log_page_next_action,
-	},
+	[DIAGNOSTICS_STORAGE_ITEM_PAGE_UP] = PAGE_UP_ITEM,
+	[DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN] = PAGE_DOWN_ITEM,
 	[DIAGNOSTICS_STORAGE_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -1082,12 +1097,16 @@ static const struct vb2_screen_info diagnostics_storage_screen = {
 	.name = "Storage",
 	.init = diagnostics_storage_init,
 	.menu = MENU_ITEMS(diagnostics_storage_items),
+	.page_up_item = DIAGNOSTICS_STORAGE_ITEM_PAGE_UP,
+	.page_down_item = DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN,
+	.alternate_item = DIAGNOSTICS_STORAGE_ITEM_BACK,
 };
 
 /******************************************************************************/
 /* VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK
    VB2_SCREEN_DIAGNOSTICS_MEMORY_FULL */
 
+#define DIAGNOSTICS_MEMORY_ITEM_PAGE_UP 0
 #define DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN 1
 #define DIAGNOSTICS_MEMORY_ITEM_CANCEL 2
 #define DIAGNOSTICS_MEMORY_ITEM_BACK 3
@@ -1121,16 +1140,16 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 
 	/* Show cancel button when the test is running, otherwise show the back
 	 * button. VB2_SUCCESS indicates the test is finished. */
-	ui->state->disabled_item_mask &= ~(1 << DIAGNOSTICS_MEMORY_ITEM_CANCEL);
-	ui->state->disabled_item_mask &= ~(1 << DIAGNOSTICS_MEMORY_ITEM_BACK);
+	ui->state->hidden_item_mask &= ~(1 << DIAGNOSTICS_MEMORY_ITEM_CANCEL);
+	ui->state->hidden_item_mask &= ~(1 << DIAGNOSTICS_MEMORY_ITEM_BACK);
 	if (rv == VB2_ERROR_EX_DIAG_TEST_RUNNING) {
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << DIAGNOSTICS_MEMORY_ITEM_BACK;
 		if (ui->state->selected_item == DIAGNOSTICS_MEMORY_ITEM_BACK)
 			ui->state->selected_item =
 				DIAGNOSTICS_MEMORY_ITEM_CANCEL;
 	} else {
-		ui->state->disabled_item_mask |=
+		ui->state->hidden_item_mask |=
 			1 << DIAGNOSTICS_MEMORY_ITEM_CANCEL;
 		if (ui->state->selected_item == DIAGNOSTICS_MEMORY_ITEM_CANCEL)
 			ui->state->selected_item = DIAGNOSTICS_MEMORY_ITEM_BACK;
@@ -1164,14 +1183,8 @@ static vb2_error_t diagnostics_memory_update_full(struct vb2_ui_context *ui)
 }
 
 static const struct vb2_menu_item diagnostics_memory_items[] = {
-	{
-		.text = "Page up",
-		.action = log_page_prev_action,
-	},
-	[DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN] = {
-		.text = "Page down",
-		.action = log_page_next_action,
-	},
+	[DIAGNOSTICS_MEMORY_ITEM_PAGE_UP] = PAGE_UP_ITEM,
+	[DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN] = PAGE_DOWN_ITEM,
 	[DIAGNOSTICS_MEMORY_ITEM_CANCEL] = {
 		.text = "Cancel and go back",
 		.action = vb2_ui_screen_back,
