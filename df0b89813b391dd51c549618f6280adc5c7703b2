@@ -16,6 +16,29 @@
       "revId": "df0b89813b391dd51c549618f6280adc5c7703b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c656374_af3fd69e",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T09:04:49Z",
+      "side": 1,
+      "message": "Seems like a magic number -- is the verbosity range defined somewhere?",
+      "range": {
+        "startLine": 646,
+        "startChar": 6,
+        "endLine": 646,
+        "endChar": 7
+      },
+      "revId": "df0b89813b391dd51c549618f6280adc5c7703b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
