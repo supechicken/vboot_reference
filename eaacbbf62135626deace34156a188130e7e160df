@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57d6feaa_5768bdd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T07:27:43Z",
+      "side": 1,
+      "message": "A notify that I can successfully run this with no extra overhead in my local build",
+      "revId": "eaacbbf62135626deace34156a188130e7e160df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "074f15cf_a19c0222",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T07:27:43Z",
+      "side": 1,
+      "message": "I think we do not support KiB in vboot",
+      "range": {
+        "startLine": 1107,
+        "startChar": 55,
+        "endLine": 1107,
+        "endChar": 58
+      },
+      "revId": "eaacbbf62135626deace34156a188130e7e160df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
