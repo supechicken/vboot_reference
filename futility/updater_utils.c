@@ -639,6 +639,12 @@ int load_system_firmware(struct firmware_image *image,
 
 	r = host_flashrom(FLASHROM_READ, tmp_path, image->programmer,
 			  verbosity, NULL, NULL);
+	if (r) {
+		/* Read again, with verbose messages. */
+		WARN("Failed reading system firmware, try again...\n");
+		r = host_flashrom(FLASHROM_READ, tmp_path, image->programmer,
+				  4, NULL, NULL);
+	}
 	if (!r)
 		r = load_firmware_image(image, tmp_path, NULL);
 	return r;
