@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f068a04c_db1f6e21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "348ccac5_cb105c31",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "541fe68c_39582731",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fc46edf9_1a670fc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541fe68c_39582731",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563bc52d_de97b47f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2020-09-24T09:44:48Z",
       "side": 1,
       "message": "Cq-Depend:",
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7769f3d_3ac51141",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Add back when depthcharge CL is ready.",
+      "parentUuid": "563bc52d_de97b47f",
       "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "39388c5f_82d2e12f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Currently we have one-page-log only in minidiag screens.\nI think they have no plan for changing the UI now.",
+      "parentUuid": "1c6cbab0_bb13d3b7",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 55
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ac311aa_17774556",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -116,6 +206,30 @@
       "writtenOn": "2020-09-24T09:44:48Z",
       "side": 1,
       "message": "Do we need to cast it to uint32_t?",
+      "range": {
+        "startLine": 88,
+        "startChar": 36,
+        "endLine": 88,
+        "endChar": 57
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ba4fa7_74453cdb",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "I think the returned type of (A \u003c\u003c B) should be the same as A.\nDo you means we should using ((uint32_t)1 \u003c\u003c x) for all the masks?",
+      "parentUuid": "2ac311aa_17774556",
       "range": {
         "startLine": 88,
         "startChar": 36,
@@ -145,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "e8a30157_97394ed2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0159dd3_bd09cb19",
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcf40793_4c444c46",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -156,6 +288,30 @@
       "writtenOn": "2020-09-24T09:44:48Z",
       "side": 1,
       "message": "Now we have multiple *_page_up_action that are almost the same. I wonder if we can add a new field \u0027page_up_item\u0027 to the vb2_screen_info struct, and then use it in a *common* log_page_up_action() function:\n\n log_page_up_action(ui)\n {\n     uint32_t page_up_item \u003d ui-\u003estate-\u003escreen-\u003epage_up_item;\n     if (page_up_item \u003e\u003d ui-\u003estate-\u003escreen-\u003emenu.num_items)\n         error...;\n }\n\n static const struct vb2_screen_info debug_info_screen \u003d {\n     ...\n     .menu \u003d MENU_ITEMS(debug_info_items),\n     .page_up_item \u003d DEBUG_INFO_ITEM_PAGE_UP,\n     .page_down_item \u003d DEBUG_INFO_ITEM_PAGE_DOWN,\n };",
+      "range": {
+        "startLine": 326,
+        "startChar": 12,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba062bdb_9b15fcf2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Done\nThis is also a good chance to introduce PAGE_UP_ITEM.\n\nShould we include .alternate_item too?",
+      "parentUuid": "fcf40793_4c444c46",
       "range": {
         "startLine": 326,
         "startChar": 12,
@@ -185,6 +341,24 @@
     },
     {
       "key": {
+        "uuid": "51546a0d_2f5816d3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e4da26_db35a3e2",
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "798bcfdf_4e58c581",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -208,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "5138fcd2_881377ce",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Outdated",
+      "parentUuid": "798bcfdf_4e58c581",
+      "range": {
+        "startLine": 1129,
+        "startChar": 1,
+        "endLine": 1129,
+        "endChar": 2
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "357b6ffc_ebad31ec",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -222,6 +420,24 @@
       "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e6e62e_18b47249",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "357b6ffc_ebad31ec",
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -248,6 +464,30 @@
     },
     {
       "key": {
+        "uuid": "5b1a442f_8bf57624",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Outdated",
+      "parentUuid": "bdd42ee4_3e367cba",
+      "range": {
+        "startLine": 1244,
+        "startChar": 1,
+        "endLine": 1244,
+        "endChar": 2
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d131349_f382d1b3",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -262,6 +502,24 @@
       "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6bbd78_2c4b4420",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-25T08:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d131349_f382d1b3",
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
