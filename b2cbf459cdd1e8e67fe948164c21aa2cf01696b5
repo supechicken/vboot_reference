@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ed312317_183a0132",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:22:24Z",
+      "side": 1,
+      "message": "How about adding a simple unit test to check disabled_item_mask functionality?",
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5cd28be_ac334db6",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -41,6 +58,122 @@
         "startChar": 48,
         "endLine": 70,
         "endChar": 62
+      },
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3761a595_9746803b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:22:24Z",
+      "side": 1,
+      "message": "I think if the screen is using log_page_* functions, it\u0027s fine to assume that they defined page_down_item and page_up_item.  We could also just write this assumption in a comment here.",
+      "parentUuid": "a8ef85f5_ba4e74ec",
+      "range": {
+        "startLine": 70,
+        "startChar": 48,
+        "endLine": 70,
+        "endChar": 62
+      },
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ace09b_ade55082",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:22:24Z",
+      "side": 1,
+      "message": "It\u0027s not really obvious what \"alternate_item\" is for when it\u0027s in this context.\n\nSince (currently) all of the \"alternate_item\" fields are BACK buttons, could we just call it that (back_item)?\n\nIf we ever end up generalizing the diagnostic test paging code, then we can reconsider the name.",
+      "range": {
+        "startLine": 393,
+        "startChar": 2,
+        "endLine": 393,
+        "endChar": 16
+      },
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ffd512_4622c078",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:22:24Z",
+      "side": 1,
+      "message": "No need to make \"guarantees\" here -- just explain how it works.\n\n  A disabled menu item is visible and selectable, with a different button style.\n\nI don\u0027t think we need to explain the \"no functionality\" part, since vboot_reference takes care of that.",
+      "range": {
+        "startLine": 1364,
+        "startChar": 6,
+        "endLine": 1366,
+        "endChar": 42
+      },
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8fe0d06_748db7dc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:22:24Z",
+      "side": 1,
+      "message": "A hidden menu item is neither visible nor selectable.",
+      "range": {
+        "startLine": 1369,
+        "startChar": 6,
+        "endLine": 1370,
+        "endChar": 42
+      },
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0ad91a_c70769a5",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:22:24Z",
+      "side": 1,
+      "message": "Indices of menu items; used by log_page_* functions in 2ui_screens.c.",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 26
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
