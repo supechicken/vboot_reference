@@ -639,6 +639,18 @@ int load_system_firmware(struct firmware_image *image,
 
 	r = host_flashrom(FLASHROM_READ, tmp_path, image->programmer,
 			  verbosity, NULL, NULL);
+	if (r) {
+		/* Read again, with verbose messages. */
+		WARN("Failed reading system firmware, try again...\n");
+		/*
+		 * The 'verbose' for host_flashrom will be translated to
+		 * (verbose-1) * '-V', and usually 3 * '-V' is enough for
+		 * debugging so we want some verbosity larger than (3+1).
+		 */
+		verbosity = VB2_MAX(4, verbosity);
+		r = host_flashrom(FLASHROM_READ, tmp_path, image->programmer,
+				  verbosity, NULL, NULL);
+	}
 	if (!r)
 		r = load_firmware_image(image, tmp_path, NULL);
 	return r;
