@@ -16,6 +16,47 @@
       "revId": "aab77ac120921038df195a5a20f3875127969d16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5b7fafd_626b69c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:29:30Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "12588457_9d6faed1",
+      "revId": "aab77ac120921038df195a5a20f3875127969d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68db502_dd8d07c1",
+        "filename": "host/lib21/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-09-25T10:29:30Z",
+      "side": 1,
+      "message": "Should be buf[size]?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "aab77ac120921038df195a5a20f3875127969d16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
