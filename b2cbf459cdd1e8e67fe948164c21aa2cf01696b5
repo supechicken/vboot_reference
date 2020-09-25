@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5cd28be_ac334db6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-25T09:19:04Z",
+      "side": 1,
+      "message": "Introduce a local variable for this?",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 25
+      },
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ef85f5_ba4e74ec",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-25T09:19:04Z",
+      "side": 1,
+      "message": "Should we find a way to check if these 3 fields are set when declaring the screen? Two options I can think of are:\n\n1. Check page_down_item !\u003d 0 (since these 3 fields shouldn\u0027t be 0 for log screens, I think?)\n2. Check these 3 fields are *all* different.",
+      "range": {
+        "startLine": 70,
+        "startChar": 48,
+        "endLine": 70,
+        "endChar": 62
+      },
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

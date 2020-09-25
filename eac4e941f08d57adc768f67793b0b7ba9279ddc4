@@ -195,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "3ebb4b49_e36bc429",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-25T09:19:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39388c5f_82d2e12f",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 55
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ac311aa_17774556",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 2
@@ -230,6 +254,30 @@
       "side": 1,
       "message": "I think the returned type of (A \u003c\u003c B) should be the same as A.\nDo you means we should using ((uint32_t)1 \u003c\u003c x) for all the masks?",
       "parentUuid": "2ac311aa_17774556",
+      "range": {
+        "startLine": 88,
+        "startChar": 36,
+        "endLine": 88,
+        "endChar": 57
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a93098df_1eaf3a31",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-25T09:19:04Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "a3ba4fa7_74453cdb",
       "range": {
         "startLine": 88,
         "startChar": 36,
@@ -321,6 +369,30 @@
       "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8fc79f_296f5737",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-25T09:19:04Z",
+      "side": 1,
+      "message": "Sure. The code looks much cleaner now.",
+      "parentUuid": "ba062bdb_9b15fcf2",
+      "range": {
+        "startLine": 326,
+        "startChar": 12,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "eac4e941f08d57adc768f67793b0b7ba9279ddc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
