@@ -16,6 +16,24 @@
       "revId": "bca34a9c5222aad78fb7e5b355bd572691aa1006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc838a3_f20fdf94",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2020-09-28T08:25:13Z",
+      "side": 1,
+      "message": "For arm, we can check stdout-path in /sys/firmware/devicetree/base/chosen/stdout-path. But it still requires manual checks to see if parameters are valid.\n\nFor x86, we can see if SPCR table is implemented: \n# acpidump \u003e acpidump.out\n# acpixtract -a acpidump.out \nI checked on volteer and zork. It seems that both of them are not implemented yet.\nmartinroth@ had worked on this on grunt: b/74392237",
+      "parentUuid": "09ecd9c6_d568a795",
+      "revId": "bca34a9c5222aad78fb7e5b355bd572691aa1006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
