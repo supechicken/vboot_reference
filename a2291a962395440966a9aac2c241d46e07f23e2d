@@ -22,6 +22,30 @@
       "revId": "a2291a962395440966a9aac2c241d46e07f23e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f05b2b3_3fe5e35b",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-28T07:36:11Z",
+      "side": 0,
+      "message": "That is the first time we suffer from flag-related masks.\nI think we\u0027d better plug the mask check out of screen check (like what this CL describe now.)",
+      "parentUuid": "df21a494_bf9650fb",
+      "range": {
+        "startLine": 1572,
+        "startChar": 23,
+        "endLine": 1572,
+        "endChar": 53
+      },
+      "revId": "a2291a962395440966a9aac2c241d46e07f23e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
