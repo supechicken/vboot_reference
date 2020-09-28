@@ -16,6 +16,86 @@
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "564c2f8c_5d89d996",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-28T06:01:35Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 511,
+        "startChar": 1,
+        "endLine": 511,
+        "endChar": 33
+      },
+      "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff533f8_7f8aac8b",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-28T06:01:35Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5575476_7bd33736",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-28T06:01:35Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a25db3a_aeaa0c42",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-28T06:01:35Z",
+      "side": 1,
+      "message": "Just to confirm, is this the *only* place in this file where the hidden_item_mask argument is actually used?\n\nIf so, there seems to be no need to add this argument to DISPLAYED_EQ(). For consistency\u0027s sake (with disabled_item_mask), I\u0027m not against adding this in this CL.  However, in the future I\u0027d expect to write this more explicitly:\n\n last_screen \u003d displayed_last_screen();\n TEST_EQ(last_screen-\u003escreen, VB2_SCREEN_ADVANCED_OPTIONS);\n TEST_EQ(last_screen-\u003ehidden_item_mask, 0x2);\n\nfor 2 reasons:\n\n1. When we care about only the last screen, the number of calls to DISPLAYED_PASS() shouldn\u0027t matter.\n2. Having such large number of MOCK_IGNORE\u0027s in this file, maybe we should reconsider the design of DISPLAYED_EQ macro().",
+      "range": {
+        "startLine": 1419,
+        "startChar": 38,
+        "endLine": 1419,
+        "endChar": 41
+      },
+      "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
