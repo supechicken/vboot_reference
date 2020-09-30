@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "491ec9eb_753cb639",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-09-30T05:46:49Z",
+      "side": 1,
+      "message": "Got 2 screens on some devices, can not reproduced on my local;\ntry rebase first.\n\ne.g. on betty-arc-r-cq,\n vboot_reference-1.0-r2031: \u001b[mtests/vb2_ui_tests.c:221:   (line #1146) no extra screens ... \u001b[0;31mFAILED\n vboot_reference-1.0-r2031: \u001b[m\tExpected: 0x1 (1), got: 0x2 (2)",
+      "range": {
+        "startLine": 1146,
+        "startChar": 0,
+        "endLine": 1146,
+        "endChar": 22
+      },
+      "revId": "1241438c0c85523f907c1bbe390a5d1f0b98a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
