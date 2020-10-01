@@ -34,6 +34,29 @@
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66cf23f9_574a30ed",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-01T18:09:12Z",
+      "side": 1,
+      "message": "What happens in these cases:\n1. Recovery mode - Is board-postinst run in this case? Even if it does, I believe it ends up creating the force_csme_update file on external disk. So, on reboot, will CSME not be updated?\n\n2. Manual update by developers - When developers run chromeos-firmwareupdate, how is CSME update handled in that case?\n\n3. Labs - How do labs perform firmware update? Do they use chromeos-firmwareupdate? How is CSME update handled in that case?\n\n4. Testing - What happens in case of FAFT/autotest/tast? Are there any paths for chromeos-firmwareupdate?",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 542,
+        "endChar": 52
+      },
+      "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
