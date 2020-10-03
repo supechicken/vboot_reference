@@ -149,15 +149,33 @@ update_sepolicy() {
 
   # Only platform is used at this time.
   local public_platform_key="${key_dir}/platform.x509.pem"
+  local public_media_key="${key_dir}/media.x509.pem"
+  local public_network_stack_key="${key_dir}/releasekey.x509.pem"
 
   info "Start updating sepolicy"
 
-  local new_cert=$(sed -E '/(BEGIN|END) CERTIFICATE/d' \
+  local new_platform_cert=$(sed -E '/(BEGIN|END) CERTIFICATE/d' \
     "${public_platform_key}" | tr -d '\n' \
     | base64 --decode | hexdump -v -e '/1 "%02x"')
 
-  if [[ -z "${new_cert}" ]]; then
+  if [[ -z "${new_platform_cert}" ]]; then
     die "Unable to get the public platform key"
+  fi
+
+  local new_media_cert=$(sed -E '/(BEGIN|END) CERTIFICATE/d' \
+    "${public_media_key}" | tr -d '\n' \
+    | base64 --decode | hexdump -v -e '/1 "%02x"')
+
+  if [[ -z "${new_media_cert}" ]]; then
+    die "Unable to get the public media key"
+  fi
+
+  local new_network_stack_cert=$(sed -E '/(BEGIN|END) CERTIFICATE/d' \
+    "${public_network_stack_key}" | tr -d '\n' \
+    | base64 --decode | hexdump -v -e '/1 "%02x"')
+
+  if [[ -z "${new_network_stack_cert}" ]]; then
+    die "Unable to get the public release key for network_stack"
   fi
 
   shopt -s nullglob
@@ -170,9 +188,19 @@ update_sepolicy() {
 
   local xml="${xml_list[0]}"
   local orig=$(make_temp_file)
-  local pattern='(<signer signature=")\w+("><seinfo value="platform)'
   cp "${xml}" "${orig}"
-  sudo sed -i -E "s/${pattern}/\1${new_cert}"'\2/g' "${xml}"
+
+  local platform_pattern='(<signer signature=")\w+("><seinfo value="platform)'
+  sudo sed -i -E "s/${platform_pattern}/\1${new_platform_cert}"'\2/g' "${xml}"
+
+  local media_pattern='(<signer signature=")\w+("><seinfo value="media)'
+  sudo sed -i -E "s/${media_pattern}/\1${new_media_cert}"'\2/g' "${xml}"
+
+  local network_stack_pattern=\
+      '(<signer signature=")\w+("><seinfo value="network_stack)'
+  sudo sed -i -E \
+      "s/${network_stack_pattern}/\1${new_network_stack_cert}"'\2/g' \
+      "${xml}"
 
   # Validity check.
   if cmp "${xml}" "${orig}"; then
