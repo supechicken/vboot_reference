@@ -16,6 +16,24 @@
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f96f978_85e688ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-05T22:47:29Z",
+      "side": 1,
+      "message": "Actually this change is safe to land first, and needs to land first, since it\u0027ll just deal with the old 4 keys if Android isn\u0027t ready.  We\u0027ll wait until the new keys are generated, then land the Android change.",
+      "parentUuid": "1b32ca89_903e6598",
+      "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
