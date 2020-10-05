@@ -33,6 +33,29 @@
       "revId": "c3ef11a20940da523bdaf1803a454f8aaca2b918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aea0d5e_cc9a6023",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-05T21:28:24Z",
+      "side": 1,
+      "message": "There are several apps that are signed with networkstack key (e.g. aosp/906896 changed 3 apps, and we don\u0027t know if there will be more).  Changing only this one is fragile.  I\u0027d suggest to add a debug key on Android side, add a new key type to lib/sign_android_lib.sh.  Then you don\u0027t need to remap manually.  Although we need to make a request to create new release key.",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 70
+      },
+      "revId": "c3ef11a20940da523bdaf1803a454f8aaca2b918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
