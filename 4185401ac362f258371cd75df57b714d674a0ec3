@@ -34,6 +34,24 @@
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3e34d3_8a069bee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-05T13:04:30Z",
+      "side": 1,
+      "message": "In that unit test, we have two consecutive vb2ex_display_ui() call.\nThe first one is at the recovery select screen; while the other is at the recovery select screen with error_code (debug info init failed)\n\nSo we would seem these as repeated calls since we did not check error_code while judging duplicate contents.\n\n---\n\nI used to use \n\n export CC\u003dx86_64-pc-linux-gnu-clang DEBUG\u003d1 DIAGNOSTIC_UI\u003d1 MINIMAL\u003d1 TPM2_MODE\u003d MOCK_TPM\u003d; make clean \u0026\u0026 make -j32 test_setup \u0026\u0026 make -j32 runtests; echo $?\n\nor\n\n FEATURES\u003dtest emerge-puff vboot_reference\n\nfor running unit tests. These commands seem the two calls as repeated calls, so I would pass all the tests.\n\nHowever, the build bot use\n\n sudo FEATURES\u003dtest PKGDIR\u003d/build/puff/test-packages /mnt/host/source/chromite/bin/parallel_emerge --sysroot\u003d/build/puff --jobs\u003d32 vboot_reference\n\nwhich will NOT seem them as repeated calls.\n\nIs there some race condition in parallel_emerge?\nI tried to add some debug messages (like printing out params of vb2ex_display_ui), its behavior will change after adding debug messages...",
+      "parentUuid": "c110d588_1b81dbbf",
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
