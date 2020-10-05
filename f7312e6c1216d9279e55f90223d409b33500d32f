@@ -57,6 +57,30 @@
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4bf1069_02805d8f",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-10-05T15:40:04Z",
+      "side": 1,
+      "message": "To address all the concerns mentioned above, it seems the better option is to set the preserve flag for SI_ME region in the SPI ROM during board-postinst. Also preserve the SI_ME region only for auto-update. This will ensure that the recovery and factory mode remain the same as today. Also the testlab and FAFT tests are not impacted if they use a non auto-update workflow.\n\nThoughts??",
+      "parentUuid": "66cf23f9_574a30ed",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 542,
+        "endChar": 52
+      },
+      "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
