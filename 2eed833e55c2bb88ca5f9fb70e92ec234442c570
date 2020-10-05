@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "414d490e_f94002a6",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-05T18:44:14Z",
+      "side": 1,
+      "message": "Let\u0027s switch to platform key for now (i.e. no change from P).",
+      "parentUuid": "6014dcbd_6e60075a",
+      "range": {
+        "startLine": 153,
+        "startChar": 45,
+        "endLine": 153,
+        "endChar": 55
+      },
+      "revId": "2eed833e55c2bb88ca5f9fb70e92ec234442c570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03406266_6b8d631e",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
