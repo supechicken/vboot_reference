@@ -33,6 +33,74 @@
       "revId": "e0ddc54ac6cd838692c70e31e85bbeb4738f9ca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d3aeedb_76daf0ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-10-05T23:52:02Z",
+      "side": 1,
+      "message": "How soon do we need this pinned to the signers \u0026 nmerged to production?",
+      "revId": "e0ddc54ac6cd838692c70e31e85bbeb4738f9ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "254f14fc_1ae3caa4",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-10-05T23:52:02Z",
+      "side": 1,
+      "message": "Can we document the argument please?",
+      "revId": "e0ddc54ac6cd838692c70e31e85bbeb4738f9ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ecee6f5_86dd82c2",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-10-05T23:52:02Z",
+      "side": 1,
+      "message": "It\u0027s this kind of non-reuse that makes the fact that these scripts are bash really painful. No action, just musing.",
+      "revId": "e0ddc54ac6cd838692c70e31e85bbeb4738f9ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f448295_3aa98c96",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-10-05T23:52:02Z",
+      "side": 1,
+      "message": "Ditto as above. I know we haven\u0027t been good about this in that past...",
+      "revId": "e0ddc54ac6cd838692c70e31e85bbeb4738f9ca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
