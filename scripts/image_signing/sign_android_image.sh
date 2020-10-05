@@ -58,6 +58,7 @@ sign_framework_apks() {
   local counter_media=0
   local counter_shared=0
   local counter_releasekey=0
+  local counter_networkstack=0
   local counter_total=0
 
   local apk
@@ -132,6 +133,7 @@ build flavor '${flavor_prop}'."
   info "Found ${counter_media} media APKs."
   info "Found ${counter_shared} shared APKs."
   info "Found ${counter_releasekey} release APKs."
+  info "Found ${counter_networkstack} networkstack APKs."
   info "Found ${counter_total} total APKs."
   # Validity check.
   if [[ ${counter_platform} -lt 2 || ${counter_media} -lt 2 ||
