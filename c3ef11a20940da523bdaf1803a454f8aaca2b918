@@ -56,6 +56,30 @@
       "revId": "c3ef11a20940da523bdaf1803a454f8aaca2b918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3e5045_dc22cb4a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-05T23:02:11Z",
+      "side": 1,
+      "message": "This code is removed in latest patch.\nAlso you do this in your CL crrev.com/c/2450551",
+      "parentUuid": "8aea0d5e_cc9a6023",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 70
+      },
+      "revId": "c3ef11a20940da523bdaf1803a454f8aaca2b918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
