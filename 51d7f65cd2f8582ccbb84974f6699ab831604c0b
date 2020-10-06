@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "1b32ca89_903e6598",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "PTAL\n\nThis depends on ag/12765048.",
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5f96f978_85e688ac",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,44 @@
       "message": "Actually this change is safe to land first, and needs to land first, since it\u0027ll just deal with the old 4 keys if Android isn\u0027t ready.  We\u0027ll wait until the new keys are generated, then land the Android change.",
       "parentUuid": "1b32ca89_903e6598",
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "255a42eb_88dc0d9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-10-06T17:43:31Z",
+      "side": 1,
+      "message": "To be clear, we _do_ need to backfill this to all existing boards, or just going forward?",
+      "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44aef69a_49a035be",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-10-06T17:43:31Z",
+      "side": 1,
+      "message": "Update 4 here?",
+      "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d24acd17_d4579014",
         "filename": "scripts/keygeneration/create_new_android_keys.sh",
@@ -49,10 +84,10 @@
       "side": 1,
       "message": "We\u0027ll need a process defined to update all of the existing keysets.\n\nThis may be a good time to walk through rotating them as well.",
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "03b34802_f4e786dc",
         "filename": "scripts/keygeneration/create_new_android_keys.sh",
@@ -67,10 +102,10 @@
       "message": "Or maybe this does that and I\u0027m just out of the loop enough.  I\u0027ll let George do the review.",
       "parentUuid": "d24acd17_d4579014",
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0df8f526_8e015f23",
         "filename": "scripts/keygeneration/create_new_android_keys.sh",
@@ -85,10 +120,10 @@
       "message": "We don\u0027t need to touch existing keys, just need to add the new key.\n\nWe can also start with the fishfood boards first.",
       "parentUuid": "03b34802_f4e786dc",
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "642d45a2_1f9b2530",
         "filename": "scripts/keygeneration/create_new_android_keys.sh",
@@ -103,8 +138,7 @@
       "message": "BTW, we\u0027re hoping to fix this signing mistake within this week.  I\u0027d like to get us aligned so that we could address this the earliest, which will include the key generation :)",
       "parentUuid": "0df8f526_8e015f23",
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
