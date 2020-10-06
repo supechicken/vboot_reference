@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "42087c60_7333c999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-10-06T04:22:46Z",
+      "side": 1,
+      "message": "I finally found the root cause: struct padding [1]. In vb2ex_display_ui() in vb2_ui_tests(), the padding bytes (at the end of struct display_call) might be different for mock_displayed[0] and mock_displayed[1]. This can be simply fixed by adding a memset() before the initialization of the \u0027displayed\u0027 variable, or avoid using memcmp() for comparing structs.\n\nIn addition, could you check if the rest of our UI code has similar issues?\n\n[1] https://stackoverflow.com/questions/47222888/why-value-stored-in-struct-and-union-object-correspond-to-any-padding-bytes-take",
+      "parentUuid": "93f50c47_266f39c9",
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3faca7f2_e5a41602",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 2
