@@ -153,6 +153,30 @@
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "121bc9bc_95b5915a",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-06T06:31:57Z",
+      "side": 1,
+      "message": "Karthik - can you please outline the complete flow for all the different paths in a doc? I think it would be helpful to look at this end-to-end to ensure we don\u0027t end up regressing existing cases.\n\nThe flow that you described with changing of FMAP area flags at runtime on the SPI ROM seems complicated and confusing.  When do the flags get cleared? Looks like they probably never get cleared once set by an autoupdate? There are still paths that potentially can result in problems - If a recovery is done after autoupdate, then it would again cause the same problem i.e. CSME region not updated when a recovery is triggered.\n\n\nWith respect to test labs - It looks like autoupdate is used there as well:\nFrom https://g3doc.corp.google.com/company/teams/chromeos/sites/for-team-members/infrastructure/firmware-updates.md#how-is-the-firmware-installed, it looks like the test lab use the same mechanism for updating firmware as AU?",
+      "parentUuid": "20e684d3_fc106665",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 542,
+        "endChar": 52
+      },
+      "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
