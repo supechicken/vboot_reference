@@ -52,6 +52,70 @@
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a817c0d_c0d452dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-10-06T01:23:17Z",
+      "side": 1,
+      "message": "1. Are you able to reproduce this with the same command?\n\n sudo FEATURES\u003dtest PKGDIR\u003d/build/puff/test-packages /mnt/host/source/chromite/bin/parallel_emerge --sysroot\u003d/build/puff --jobs\u003d32 vboot_reference\n\n2. If not, how do you know this CL will fix the error?",
+      "parentUuid": "ed3e34d3_8a069bee",
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3faca7f2_e5a41602",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-10-06T01:23:17Z",
+      "side": 1,
+      "message": "Missing space",
+      "range": {
+        "startLine": 31,
+        "startChar": 64,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ddca96b_65bb7e95",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-10-06T01:23:17Z",
+      "side": 1,
+      "message": "Any reason to format like this?",
+      "range": {
+        "startLine": 430,
+        "startChar": 4,
+        "endLine": 430,
+        "endChar": 30
+      },
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
