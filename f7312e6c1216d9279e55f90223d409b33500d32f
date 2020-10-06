@@ -81,6 +81,30 @@
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12af4c5e_d407522e",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-06T01:25:06Z",
+      "side": 1,
+      "message": "\u003e set the preserve flag for SI_ME region in the SPI ROM during board-postinst.\n\nI\u0027m not sure what does that mean?\n\n\u003e Also preserve the SI_ME region only for auto-update. \n\nThe auto-update by default will only do A/B update, not touching SI_ME. The RO (and other) sections are preserved only when WP not enabled and RO changes found (will fallback to recovery mode).\n\nBut if your goal is to help dogfooders, that should be sufficient and  you can check cfg-\u003etry_update for that. P.S: I\u0027m not sure if FAFT will be impacted or not. If your device can\u0027t run \u0027reboot\u0027 after CSME updated, some FAFT items may still fail - you have to test and run.",
+      "parentUuid": "f4bf1069_02805d8f",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 542,
+        "endChar": 52
+      },
+      "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
