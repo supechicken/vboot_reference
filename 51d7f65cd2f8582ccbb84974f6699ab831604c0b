@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9be4296_69afe99b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-06T18:32:03Z",
+      "side": 1,
+      "message": "We do need to backfill.",
+      "parentUuid": "255a42eb_88dc0d9d",
+      "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44aef69a_49a035be",
@@ -66,6 +84,24 @@
       "writtenOn": "2020-10-06T17:43:31Z",
       "side": 1,
       "message": "Update 4 here?",
+      "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d4ff0a_bd610522",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-06T18:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44aef69a_49a035be",
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
