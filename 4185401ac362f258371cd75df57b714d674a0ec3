@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "2338453d_d27381e8",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "The omitting of the two parameters causes the unit test error.\nWe need to patch this first.",
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c110d588_1b81dbbf",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "Why were you not able to reproduce that error?",
       "parentUuid": "2338453d_d27381e8",
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ed3e34d3_8a069bee",
         "filename": "/PATCHSET_LEVEL",
@@ -50,10 +51,10 @@
       "message": "In that unit test, we have two consecutive vb2ex_display_ui() call.\nThe first one is at the recovery select screen; while the other is at the recovery select screen with error_code (debug info init failed)\n\nSo we would seem these as repeated calls since we did not check error_code while judging duplicate contents.\n\n---\n\nI used to use \n\n export CC\u003dx86_64-pc-linux-gnu-clang DEBUG\u003d1 DIAGNOSTIC_UI\u003d1 MINIMAL\u003d1 TPM2_MODE\u003d MOCK_TPM\u003d; make clean \u0026\u0026 make -j32 test_setup \u0026\u0026 make -j32 runtests; echo $?\n\nor\n\n FEATURES\u003dtest emerge-puff vboot_reference\n\nfor running unit tests. These commands seem the two calls as repeated calls, so I would pass all the tests.\n\nHowever, the build bot use\n\n sudo FEATURES\u003dtest PKGDIR\u003d/build/puff/test-packages /mnt/host/source/chromite/bin/parallel_emerge --sysroot\u003d/build/puff --jobs\u003d32 vboot_reference\n\nwhich will NOT seem them as repeated calls.\n\nIs there some race condition in parallel_emerge?\nI tried to add some debug messages (like printing out params of vb2ex_display_ui), its behavior will change after adding debug messages...",
       "parentUuid": "c110d588_1b81dbbf",
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1a817c0d_c0d452dd",
         "filename": "/PATCHSET_LEVEL",
@@ -68,10 +69,10 @@
       "message": "1. Are you able to reproduce this with the same command?\n\n sudo FEATURES\u003dtest PKGDIR\u003d/build/puff/test-packages /mnt/host/source/chromite/bin/parallel_emerge --sysroot\u003d/build/puff --jobs\u003d32 vboot_reference\n\n2. If not, how do you know this CL will fix the error?",
       "parentUuid": "ed3e34d3_8a069bee",
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "93f50c47_266f39c9",
         "filename": "/PATCHSET_LEVEL",
@@ -86,10 +87,10 @@
       "message": "We will always pass `test parallel_emerge` and `make runtest` at PS9, split desabled item CL, while `test parallel_emerge` will always fail at PS7.\nI think it is sufficient to show that this fix the error.\n\nLet me know if you think it is worth to investigate further about this error.\n(Maybe create a low-priority bug of this?)",
       "parentUuid": "1a817c0d_c0d452dd",
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "42087c60_7333c999",
         "filename": "/PATCHSET_LEVEL",
@@ -104,10 +105,28 @@
       "message": "I finally found the root cause: struct padding [1]. In vb2ex_display_ui() in vb2_ui_tests(), the padding bytes (at the end of struct display_call) might be different for mock_displayed[0] and mock_displayed[1]. This can be simply fixed by adding a memset() before the initialization of the \u0027displayed\u0027 variable, or avoid using memcmp() for comparing structs.\n\nIn addition, could you check if the rest of our UI code has similar issues?\n\n[1] https://stackoverflow.com/questions/47222888/why-value-stored-in-struct-and-union-object-correspond-to-any-padding-bytes-take",
       "parentUuid": "93f50c47_266f39c9",
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b147c4_ea0c0188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-06T11:02:29Z",
+      "side": 1,
+      "message": "\u003e This can be simply fixed by adding a memset() before the initialization of the \u0027displayed\u0027 variable, or avoid using memcmp() for comparing structs.\n\nUse memset for the struct display_call.\n\n\u003e In addition, could you check if the rest of our UI code has similar issues?\n\nFile a bug for tracing it.\nb/170186754",
+      "parentUuid": "42087c60_7333c999",
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "3faca7f2_e5a41602",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -127,10 +146,10 @@
         "endChar": 65
       },
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4e0cacc2_bca605b0",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -151,10 +170,10 @@
         "endChar": 65
       },
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8ddca96b_65bb7e95",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -174,10 +193,10 @@
         "endChar": 30
       },
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "a871c8bf_ee993244",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -198,8 +217,7 @@
         "endChar": 30
       },
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
