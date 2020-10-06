@@ -87,6 +87,24 @@
       "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642d45a2_1f9b2530",
+        "filename": "scripts/keygeneration/create_new_android_keys.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-06T17:05:36Z",
+      "side": 1,
+      "message": "BTW, we\u0027re hoping to fix this signing mistake within this week.  I\u0027d like to get us aligned so that we could address this the earliest, which will include the key generation :)",
+      "parentUuid": "0df8f526_8e015f23",
+      "revId": "51d7f65cd2f8582ccbb84974f6699ab831604c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
