@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "93f50c47_266f39c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-06T03:47:47Z",
+      "side": 1,
+      "message": "We will always pass `test parallel_emerge` and `make runtest` at PS9, split desabled item CL, while `test parallel_emerge` will always fail at PS7.\nI think it is sufficient to show that this fix the error.\n\nLet me know if you think it is worth to investigate further about this error.\n(Maybe create a low-priority bug of this?)",
+      "parentUuid": "1a817c0d_c0d452dd",
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3faca7f2_e5a41602",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 2
@@ -96,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "4e0cacc2_bca605b0",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-06T03:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3faca7f2_e5a41602",
+      "range": {
+        "startLine": 31,
+        "startChar": 64,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ddca96b_65bb7e95",
         "filename": "tests/vb2_ui_action_tests.c",
         "patchSetId": 2
@@ -116,6 +158,30 @@
       "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a871c8bf_ee993244",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-06T03:47:47Z",
+      "side": 1,
+      "message": "Done\n\n1. For removing space before and after spaces: to align with the real log of vb2ex_display_ui in depthcharge.\n\n2. For indent: fixed",
+      "parentUuid": "8ddca96b_65bb7e95",
+      "range": {
+        "startLine": 430,
+        "startChar": 4,
+        "endLine": 430,
+        "endChar": 30
+      },
+      "revId": "4185401ac362f258371cd75df57b714d674a0ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
