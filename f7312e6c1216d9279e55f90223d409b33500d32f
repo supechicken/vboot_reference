@@ -105,6 +105,30 @@
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07119c44_b3bbbcb9",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-10-06T04:25:55Z",
+      "side": 1,
+      "message": "\u003e\u003e I\u0027m not sure what does that mean?\n\nHere are the details:\n\nIf WP is enabled, then board-postinst returns immediately\nIf factory mode, then board-postinst is not invoked\nIf recovery install, then board-postinst returns immediately (planning to check IS_RECOVERY_INSTALL environment variable for that)\n\nIf all the above conditions are not met, then\n1) Read the FMAP image region from the SPI ROM.\n2) Extract the FMAP Area flag for ME region from that FMAP image.\n3) Set the FMAP_AREA_PRESERVE flag and write the updated FMAP image back to the SPI ROM. Also install the force_csme_update file in stateful partition.\n4) In the futility, perform the following under the preserve_management_engine_section\n  a) If FMAP_AREA_PRESERVE is set, preserve the SI_ME region. FYI, FMAP_AREA_PRESERVE is set in the source/from image. This is done because we cannot update the to/destination image in the RO filesystem.\n5) When the user triggers a reset, CSME region is updated post boot during the start of UI.\n6) Post CSME update, trigger a cold reset. Since the to/destination image does not have FMAP_AREA_PRESERVE flag set for ME, nothing additional needs to be done.\n\nThis will ensure that this whole thing is done only for dogfooders.\n\nI was initially thinking about just checking config-\u003etry_update to handle the recovery mode scenario. But then it leaves open questions about FAFT and how testlab performs firmware update. Hence proposed this option to solve one problem at a time.",
+      "parentUuid": "12af4c5e_d407522e",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 542,
+        "endChar": 52
+      },
+      "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
