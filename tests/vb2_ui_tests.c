@@ -354,6 +354,7 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t current_page,
 			     enum vb2_ui_error error_code)
 {
+	static struct display_call *last_displayed;
 	struct display_call displayed = (struct display_call){
 		.screen = vb2_get_screen_info(screen),
 		.locale_id = locale_id,
@@ -364,8 +365,11 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 
 	/* Ignore repeated calls with same arguments */
 	if (mock_displayed_count > 0 &&
-	    !memcmp(&mock_displayed[mock_displayed_count - 1], &displayed,
-		    sizeof(struct display_call)))
+	    last_displayed->screen == vb2_get_screen_info(screen) &&
+	    last_displayed->locale_id == locale_id &&
+	    last_displayed->selected_item == selected_item &&
+	    last_displayed->disabled_item_mask == disabled_item_mask &&
+	    last_displayed->current_page == current_page)
 		return VB2_SUCCESS;
 
 	VB2_DEBUG("displayed %d: screen = %#x, locale_id = %u, "
@@ -379,7 +383,9 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 		return VB2_ERROR_MOCK;
 	}
 
-	mock_displayed[mock_displayed_count++] = displayed;
+	mock_displayed[mock_displayed_count] = displayed;
+	last_displayed = &mock_displayed[mock_displayed_count];
+	mock_displayed_count++;
 
 	return VB2_SUCCESS;
 }
