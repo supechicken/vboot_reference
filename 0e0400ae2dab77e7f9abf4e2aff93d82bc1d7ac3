@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "88c1e3ba_523e3675",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "PS6:\nAdd unit tests\nIgnore selecting on disabled menu item (in menu_select_action)",
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "564c2f8c_5d89d996",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -37,10 +38,10 @@
         "endChar": 33
       },
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "937cae3f_31ebaa3d",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -61,10 +62,10 @@
         "endChar": 33
       },
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5e66735f_6ad5916a",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -85,10 +86,34 @@
         "endChar": 33
       },
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca06000e_0bb75291",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-07T04:47:17Z",
+      "side": 1,
+      "message": "File b/170272342.\nI can take care of it.",
+      "parentUuid": "5e66735f_6ad5916a",
+      "range": {
+        "startLine": 511,
+        "startChar": 1,
+        "endLine": 511,
+        "endChar": 33
+      },
+      "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "dff533f8_7f8aac8b",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -102,10 +127,10 @@
       "side": 1,
       "message": "Same.",
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "8dc42aae_432a670b",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -120,10 +145,10 @@
       "message": "Ack",
       "parentUuid": "dff533f8_7f8aac8b",
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a5575476_7bd33736",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -137,10 +162,10 @@
       "side": 1,
       "message": "Same.",
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "672a3741_d4ecd692",
         "filename": "tests/vb2_ui_action_tests.c",
@@ -155,10 +180,10 @@
       "message": "Ack",
       "parentUuid": "a5575476_7bd33736",
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4a25db3a_aeaa0c42",
         "filename": "tests/vb2_ui_tests.c",
@@ -178,10 +203,10 @@
         "endChar": 41
       },
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "aef7c63a_ae129561",
         "filename": "tests/vb2_ui_tests.c",
@@ -202,8 +227,31 @@
         "endChar": 41
       },
       "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74063744_20bfcff5",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-07T04:47:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aef7c63a_ae129561",
+      "range": {
+        "startLine": 1419,
+        "startChar": 38,
+        "endLine": 1419,
+        "endChar": 41
+      },
+      "revId": "0e0400ae2dab77e7f9abf4e2aff93d82bc1d7ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

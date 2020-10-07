@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "ed312317_183a0132",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "How about adding a simple unit test to check disabled_item_mask functionality?",
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "53acc98b_82680cf9",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "I think we could only test if the mask successfully pass to vb2ex_display_ui unless we want to make unit tests for log_* functions.\n\n(since we disable their functionality separately in different action functions)\n\nWDYT?",
       "parentUuid": "ed312317_183a0132",
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "aa65076e_c2e7c7e3",
         "filename": "/PATCHSET_LEVEL",
@@ -50,10 +51,28 @@
       "message": "Or should we block the user taking action in menu_select_action()?",
       "parentUuid": "53acc98b_82680cf9",
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f38ced_1e7db9c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-07T04:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa65076e_c2e7c7e3",
+      "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "b5cd28be_ac334db6",
         "filename": "firmware/2lib/2ui_screens.c",
@@ -73,10 +92,10 @@
         "endChar": 25
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2d7bd94c_1231fd6e",
         "filename": "firmware/2lib/2ui_screens.c",
@@ -97,10 +116,10 @@
         "endChar": 25
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a8ef85f5_ba4e74ec",
         "filename": "firmware/2lib/2ui_screens.c",
@@ -120,10 +139,10 @@
         "endChar": 62
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3761a595_9746803b",
         "filename": "firmware/2lib/2ui_screens.c",
@@ -144,10 +163,10 @@
         "endChar": 62
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "b3cc0f30_302c28c2",
         "filename": "firmware/2lib/2ui_screens.c",
@@ -168,10 +187,10 @@
         "endChar": 62
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "47ace09b_ade55082",
         "filename": "firmware/2lib/2ui_screens.c",
@@ -191,10 +210,10 @@
         "endChar": 16
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "3489ccd0_c676f9fc",
         "filename": "firmware/2lib/2ui_screens.c",
@@ -215,10 +234,10 @@
         "endChar": 16
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "44ffd512_4622c078",
         "filename": "firmware/2lib/include/2api.h",
@@ -238,10 +257,10 @@
         "endChar": 42
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "045fb5cf_256b1a24",
         "filename": "firmware/2lib/include/2api.h",
@@ -262,10 +281,10 @@
         "endChar": 42
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f8fe0d06_748db7dc",
         "filename": "firmware/2lib/include/2api.h",
@@ -285,10 +304,10 @@
         "endChar": 42
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e48c017d_2bb4e986",
         "filename": "firmware/2lib/include/2api.h",
@@ -309,10 +328,10 @@
         "endChar": 42
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3f0ad91a_c70769a5",
         "filename": "firmware/2lib/include/2ui.h",
@@ -332,10 +351,10 @@
         "endChar": 26
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "501ca4c7_65219eca",
         "filename": "firmware/2lib/include/2ui.h",
@@ -356,8 +375,7 @@
         "endChar": 26
       },
       "revId": "b2cbf459cdd1e8e67fe948164c21aa2cf01696b5",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
