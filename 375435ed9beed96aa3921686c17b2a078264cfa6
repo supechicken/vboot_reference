@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d14d40e_562cc5ba",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-07T09:01:25Z",
+      "side": 1,
+      "message": "Maybe GET_BIT() in 2ui.h?",
+      "range": {
+        "startLine": 149,
+        "startChar": 10,
+        "endLine": 149,
+        "endChar": 61
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac29c3b1_5ee35e87",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-07T09:01:25Z",
+      "side": 1,
+      "message": "If these \"It is guaranteed\" comments are all identical, you might consider moving them directly to the top of this section.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79fca8c_f7b3432f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-07T09:01:25Z",
+      "side": 1,
+      "message": "Expects",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b285af_1a53057a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-07T09:01:25Z",
+      "side": 1,
+      "message": "indices",
+      "range": {
+        "startLine": 59,
+        "startChar": 71,
+        "endLine": 59,
+        "endChar": 78
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b27815_7ddf55ab",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-07T09:01:25Z",
+      "side": 1,
+      "message": "Might be worth turning these into some macros in 2ui.h.  Maybe:\n\n  SET_BIT(ui-\u003estate-\u003edisabled_item_mask, screen-\u003epage_up_item);\n  CLR_BIT(...);",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
