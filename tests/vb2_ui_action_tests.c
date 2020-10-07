@@ -406,12 +406,12 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 			     uint32_t current_page,
 			     enum vb2_ui_error error_code)
 {
-	struct display_call displayed = (struct display_call){
-		.screen = vb2_get_screen_info(screen),
-		.locale_id = locale_id,
-		.selected_item = selected_item,
-		.disabled_item_mask = disabled_item_mask,
-	};
+	struct display_call displayed;
+	memset(&displayed, 0, sizeof(struct display_call));
+	displayed.screen = vb2_get_screen_info(screen);
+	displayed.locale_id = locale_id;
+	displayed.selected_item = selected_item;
+	displayed.disabled_item_mask = disabled_item_mask;
 
 	/* Ignore repeated calls with same arguments */
 	if (mock_displayed_count > 0 &&
