@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07269121_566d7180",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-08T23:28:55Z",
+      "side": 1,
+      "message": "I added comment below, also adding it here. CL for board_specific_setup.sh is created (crrev.com/i/3324334)",
+      "parentUuid": "067d8681_009f3da0",
+      "range": {
+        "startLine": 251,
+        "startChar": 33,
+        "endLine": 251,
+        "endChar": 46
+      },
+      "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba1355ac_c537e33d",
@@ -94,6 +118,24 @@
       "writtenOn": "2020-10-08T23:15:11Z",
       "side": 1,
       "message": "unused? You could move this up to L240 and use the variable in compression_flags though.",
+      "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ea2261_5133e2ee",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-10-08T23:28:55Z",
+      "side": 1,
+      "message": "Good catch, it is now unused and it is bit useless. It does not return Xhc needed for proper compression method",
+      "parentUuid": "ba1355ac_c537e33d",
       "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
