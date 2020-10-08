@@ -166,6 +166,30 @@
       },
       "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9c65d55_a3ef7611",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-08T05:09:54Z",
+      "side": 1,
+      "message": "\u003e could be implemented as memcpy()\n\nDo you mean when using the assignment operator?  Do you have a reference for this?  I tried out some code at godbolt.org and didn\u0027t see any memcpy() call.\n\n\u003e How about we compare the fields one by one [...]\n\nIMHO it\u0027s not worth taking the hit of needing to update the conditional every time we add a new member to the display_call struct.  Since this is just for a unit test, how about we pack the structure?  There will be a small performance hit accessing the fields, but we won\u0027t have to worry about the padding anymore.\n\n  __attribute__((packed))",
+      "parentUuid": "3a4a3141_16eea8a0",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 51
+      },
+      "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
