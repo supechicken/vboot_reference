@@ -94,6 +94,30 @@
       },
       "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc047bae_dd9e1079",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T01:12:56Z",
+      "side": 1,
+      "message": "The struct assignment could be implemented as memcpy().\nIn this case, memcpy() will copy the undefined paddings from r-value.",
+      "parentUuid": "cc1d68cf_996b6bd3",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 51
+      },
+      "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
