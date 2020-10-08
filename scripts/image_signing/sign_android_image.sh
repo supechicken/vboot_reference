@@ -143,6 +143,14 @@ build flavor '${flavor_prop}'."
   fi
 }
 
+is_vm() {
+  if is_use_flag_on "chromeos-base/chromeos-cheets" "arcvm"; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 # Extracts certificate from the provided public key.
 get_cert() {
   # Full path to public key to read and extract certificate. It must exist.
@@ -228,26 +236,6 @@ replace_ota_cert() {
   popd > /dev/null
 }
 
-# Restore SELinux context.  This has to run after all file changes, before
-# creating the new squashfs image.
-reapply_file_security_context() {
-  local system_mnt=$1
-  local root_fs_dir=$2
-
-  info "Reapplying file security context"
-
-  local selinux_dir="${root_fs_dir}/etc/selinux"
-  local file_contexts="${selinux_dir}/arc/contexts/files/android_file_contexts"
-  if [[ ! -f "${file_contexts}" ]]; then
-    file_contexts="${file_contexts}_vm"
-    if [[ ! -f "${file_contexts}" ]]; then
-      die "Can't find Android's file contexts"
-    fi
-  fi
-
-  sudo /sbin/setfiles -v -r "${system_mnt}" "${file_contexts}" "${system_mnt}"
-}
-
 # Snapshot file properties in a directory recursively.
 snapshot_file_properties() {
   local dir=$1
@@ -257,6 +245,27 @@ snapshot_file_properties() {
 main() {
   local root_fs_dir=$1
   local key_dir=$2
+
+  # Detect vm/container type and set environment correspondingly
+  local system_image=""
+  local compression_flags=""
+  local selinux_dir="${root_fs_dir}/etc/selinux"
+  local file_contexts=""
+  local vm_candidate="${root_fs_dir}/opt/google/vms/android/system.raw.img"
+  local container_candidate=(
+      "${root_fs_dir}/opt/google/containers/android/system.raw.img")
+  if [[ -f "${vm_candidate}" ]]; then
+    system_image="${vm_candidate}"
+    compression_flags="-comp lz4 -Xhc -b 256K"
+    file_contexts="${selinux_dir}/arc/contexts/files/android_file_contexts_vm"
+  elif [[ -f "${container_candidate}" ]]; then
+    system_image="${container_candidate}"
+    compression_flags="-comp gzip"
+    file_contexts="${selinux_dir}/arc/contexts/files/android_file_contexts"
+  else
+    die "System image does not exist"
+  fi
+
   local android_system_image="$(echo \
     "${root_fs_dir}"/opt/google/*/android/system.raw.img)"
   local android_dir=$(dirname "${android_system_image}")
@@ -295,7 +304,6 @@ main() {
   sign_framework_apks "${system_mnt}" "${key_dir}"
   update_sepolicy "${system_mnt}" "${key_dir}"
   replace_ota_cert "${system_mnt}" "${key_dir}/releasekey.x509.pem"
-  reapply_file_security_context "${system_mnt}" "${root_fs_dir}"
 
   # Validity check.
   snapshot_file_properties "${system_mnt}" > "${working_dir}/properties.new"
@@ -348,9 +356,14 @@ main() {
 
   info "Repacking squashfs image"
   local old_size=$(stat -c '%s' "${system_img}")
-  # Overwrite the original image.
-  sudo "${mksquashfs}" "${system_mnt}" "${system_img}" \
-      -no-progress -comp "${compression_method}" -noappend
+  # Replace the original image. Keep this aligned with
+  # src/private-overlays/project-cheets-private/scripts/board_specific_setup.sh
+  # Remove old system image to prevent mksquashfs tries to merge both images.
+  sudo rm -rf "${system_img}"
+  # Note, compression_flags is a combination of flags
+  sudo mksquashfs "${system_mnt}" "${system_img}" \
+    ${compression_flags} -context-file "${file_contexts}" -mount-point "/" \
+    -no-progress
   local new_size=$(stat -c '%s' "${system_img}")
   info "Android system image size change: ${old_size} -> ${new_size}"
 }
