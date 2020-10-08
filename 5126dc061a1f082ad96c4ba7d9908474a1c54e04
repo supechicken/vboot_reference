@@ -190,6 +190,30 @@
       },
       "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69de2681_b8ebe770",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T08:33:40Z",
+      "side": 1,
+      "message": "\u003e Do you mean when using the assignment operator?  Do you have a reference for this?  I tried out some code at godbolt.org and didn\u0027t see any memcpy() call.\n\nhttps://stackoverflow.com/questions/10954393/when-are-pad-bytes-copied-struct-assignment-pass-by-value-other\n\nI might be unclear -- from the foot note in c standard\n\n\u003e Thus, for example, structure assignment need not copy any padding bits.\n\nThere is no constraint for the compiler about to copy the padding or not.\nAt least in my local build, the `make clean \u0026\u0026 make runtest` always fail because of it.\n\n\u003e   __attribute__((packed))\n\nSounds like a good solution here. \u003d",
+      "parentUuid": "b9c65d55_a3ef7611",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 51
+      },
+      "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
