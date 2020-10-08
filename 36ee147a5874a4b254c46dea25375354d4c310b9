@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b37810f3_97a09e65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-08T23:10:28Z",
+      "side": 1,
+      "message": "IIUC some files were removed/recreated (not sure if it\u0027s still the case though).  But if mksquashfs can do this, it\u0027s nice to delegate the job to it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3000480d_25ab9fdb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -14,6 +37,23 @@
       "writtenOn": "2020-10-08T21:46:59Z",
       "side": 1,
       "message": "PTAL,\nThanks",
+      "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcf360d_4f6a5305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-08T23:10:28Z",
+      "side": 1,
+      "message": "The file context change LGTM.",
       "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
