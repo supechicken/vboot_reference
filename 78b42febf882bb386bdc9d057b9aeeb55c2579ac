@@ -33,6 +33,24 @@
       "message": "As an idea to consider, I wonder if we could do bit smarter and detect actual key from netstack APK?\n",
       "revId": "78b42febf882bb386bdc9d057b9aeeb55c2579ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd0e0c2_4ff16f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001620
+      },
+      "writtenOn": "2020-10-08T16:11:51Z",
+      "side": 1,
+      "message": "We can, but I\u0027m not sure it\u0027d worth it since this problem is still in development.  Let me know if you feel strongly about this.  What I\u0027d do would be detecting the old key in sign_framework_apks, store in a global variable, the use the variable during update_sepolicy.",
+      "parentUuid": "dc401122_9fff351e",
+      "revId": "78b42febf882bb386bdc9d057b9aeeb55c2579ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
