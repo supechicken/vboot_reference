@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e98655_944e65ba",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076bf1cc_6f94ef8d",
+      "range": {
+        "startLine": 149,
+        "startChar": 10,
+        "endLine": 149,
+        "endChar": 61
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac29c3b1_5ee35e87",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Since the functions are intended to be used together as a \"set\", I wouldn\u0027t hesitate from mentioning all these expectations under a common comment at the top.",
       "parentUuid": "439ad4ae_1b12e0cf",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca2c6c4_5fa7a1da",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T09:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd20a708_8cc15cef",
       "range": {
         "startLine": 57,
         "startChar": 0,
