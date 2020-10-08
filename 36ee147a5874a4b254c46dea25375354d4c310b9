@@ -56,6 +56,46 @@
       "message": "The file context change LGTM.",
       "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067d8681_009f3da0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T23:15:11Z",
+      "side": 1,
+      "message": "Please mention where is the place where the same is done for the test image. Is that scripts/board_specific_setup.sh? I think you should add a comment to scripts/board_specific_setup.sh too (e.g. \"modify sign_android_image.sh too!\").",
+      "range": {
+        "startLine": 251,
+        "startChar": 33,
+        "endLine": 251,
+        "endChar": 46
+      },
+      "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1355ac_c537e33d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2020-10-08T23:15:11Z",
+      "side": 1,
+      "message": "unused? You could move this up to L240 and use the variable in compression_flags though.",
+      "revId": "36ee147a5874a4b254c46dea25375354d4c310b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
