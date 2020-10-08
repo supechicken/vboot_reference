@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "076bf1cc_6f94ef8d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-08T05:15:13Z",
+      "side": 1,
+      "message": "2ui_private.h is really meant for the case of \"this function should be static but is exposed here for unit testing purposes\".  I\u0027d put it in 2ui.h.\n\nAlternatively, feel free to move it over to vboot_reference 2api.h so that both repos can make use of it.",
+      "parentUuid": "8c72e64c_037d6fe8",
+      "range": {
+        "startLine": 149,
+        "startChar": 10,
+        "endLine": 149,
+        "endChar": 61
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac29c3b1_5ee35e87",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 13
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "There is small differences here...\n* log_page_init() does not require valid `current_page`\n* log_page_prev_action() and log_page_next_action() do not require valid `back_item`\n\nWDYT?",
       "parentUuid": "ac29c3b1_5ee35e87",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd20a708_8cc15cef",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-08T05:15:13Z",
+      "side": 1,
+      "message": "Since the functions are intended to be used together as a \"set\", I wouldn\u0027t hesitate from mentioning all these expectations under a common comment at the top.",
+      "parentUuid": "439ad4ae_1b12e0cf",
       "range": {
         "startLine": 57,
         "startChar": 0,
