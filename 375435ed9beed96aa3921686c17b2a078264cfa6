@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c72e64c_037d6fe8",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T05:06:50Z",
+      "side": 1,
+      "message": "Done\n\nAs long as these helper macros have generic names, and are used internally, I would suggest to put these in 2ui_private.h\n\nWDYT?",
+      "parentUuid": "0d14d40e_562cc5ba",
+      "range": {
+        "startLine": 149,
+        "startChar": 10,
+        "endLine": 149,
+        "endChar": 61
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac29c3b1_5ee35e87",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-07T09:01:25Z",
       "side": 1,
       "message": "If these \"It is guaranteed\" comments are all identical, you might consider moving them directly to the top of this section.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439ad4ae_1b12e0cf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T05:06:50Z",
+      "side": 1,
+      "message": "There is small differences here...\n* log_page_init() does not require valid `current_page`\n* log_page_prev_action() and log_page_next_action() do not require valid `back_item`\n\nWDYT?",
+      "parentUuid": "ac29c3b1_5ee35e87",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dedb0f_eccddd13",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T05:06:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79fca8c_f7b3432f",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b285af_1a53057a",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17417fe_ff1ffea4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T05:06:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b285af_1a53057a",
+      "range": {
+        "startLine": 59,
+        "startChar": 71,
+        "endLine": 59,
+        "endChar": 78
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7b27815_7ddf55ab",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-10-07T09:01:25Z",
       "side": 1,
       "message": "Might be worth turning these into some macros in 2ui.h.  Maybe:\n\n  SET_BIT(ui-\u003estate-\u003edisabled_item_mask, screen-\u003epage_up_item);\n  CLR_BIT(...);",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "375435ed9beed96aa3921686c17b2a078264cfa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f6747ac_a6d6d2ab",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-08T05:06:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b27815_7ddf55ab",
       "range": {
         "startLine": 68,
         "startChar": 0,
