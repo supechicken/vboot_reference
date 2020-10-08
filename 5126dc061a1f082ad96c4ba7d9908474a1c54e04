@@ -118,6 +118,30 @@
       },
       "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4a3141_16eea8a0",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-10-08T01:21:19Z",
+      "side": 1,
+      "message": "Okay. How about we compare the fields one by one without using memcmp()?\n\n struct display_call *last_displayed \u003d \u0026mock_displayed[mock_displayed_count - 1];\n int arg_changed \u003d\n     last_displayed-\u003escreen !\u003d displayed.screen ||\n     ...\n\nDo you think it\u0027s better?",
+      "parentUuid": "fc047bae_dd9e1079",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 51
+      },
+      "revId": "5126dc061a1f082ad96c4ba7d9908474a1c54e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
