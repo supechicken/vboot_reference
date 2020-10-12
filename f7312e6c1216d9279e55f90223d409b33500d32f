@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "68d9e31f_c2152324",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Does factory mode have a way know to do the cold reboot then?",
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4aa5654f_5536aab4",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,10 @@
       "message": "Yes, Based on my interaction with Hung-Te. We probably have to update the detail in the Care \u0026 Feeding Doc to be more clear.",
       "parentUuid": "68d9e31f_c2152324",
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "66cf23f9_574a30ed",
         "filename": "futility/updater.c",
@@ -55,10 +56,10 @@
         "endChar": 52
       },
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f4bf1069_02805d8f",
         "filename": "futility/updater.c",
@@ -79,10 +80,10 @@
         "endChar": 52
       },
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "12af4c5e_d407522e",
         "filename": "futility/updater.c",
@@ -103,10 +104,10 @@
         "endChar": 52
       },
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "07119c44_b3bbbcb9",
         "filename": "futility/updater.c",
@@ -127,10 +128,10 @@
         "endChar": 52
       },
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "20e684d3_fc106665",
         "filename": "futility/updater.c",
@@ -151,10 +152,10 @@
         "endChar": 52
       },
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "121bc9bc_95b5915a",
         "filename": "futility/updater.c",
@@ -175,8 +176,31 @@
         "endChar": 52
       },
       "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6d4d01_95be0ed0",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-10-12T06:23:50Z",
+      "side": 1,
+      "message": "I have captured the complete updated flow here: https://docs.google.com/document/d/1Y3FWgO1fxLzUS5R99wKrfCfjQS2LlQUvAC_KmBeIBfs/edit#heading\u003dh.lunsndhp6n41\n\nBased on the offline discussion, the flow has been simplified. A new quirk to preserve ME region for all update flows except factory or developer images has been added. This quirk is applied across all the boards in the Dedede platform. Futility updater honors the PRESERVE_ME quirk on the platforms where it is enabled.\n\nChromeos-csme-update script updates the ME region accordingly.",
+      "parentUuid": "121bc9bc_95b5915a",
+      "range": {
+        "startLine": 541,
+        "startChar": 43,
+        "endLine": 542,
+        "endChar": 52
+      },
+      "revId": "f7312e6c1216d9279e55f90223d409b33500d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
