@@ -62,7 +62,9 @@ static const struct quirks_record quirks_records[] = {
         { .match = "Google_Phaser.", .quirks = "override_signature_id" },
 };
 
-static const struct quirks_record platform_quirks_records[] = {};
+static const struct quirks_record platform_quirks_records[] = {
+	{ .match = "Dedede", .quirks = "preserve_me" },
+};
 
 /* Preserves meta data and reload image contents from given file path. */
 static int reload_firmware_image(const char *file_path,
