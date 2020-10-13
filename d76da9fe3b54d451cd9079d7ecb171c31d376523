@@ -46,6 +46,30 @@
       },
       "revId": "d76da9fe3b54d451cd9079d7ecb171c31d376523",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a1540e_3ecdb122",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-13T13:40:16Z",
+      "side": 1,
+      "message": "also I do think supporting multiline is a good idea if we really see devices that need multiple quirks in future.\n```\n quirks_a\u003d3\n quirks_b\u003d1\n```\n\nlooks much easier to read than\n```\n quirks_a\u003d3 quirks_b\u003d1\n```",
+      "parentUuid": "8af5263f_76980a09",
+      "range": {
+        "startLine": 191,
+        "startChar": 26,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "d76da9fe3b54d451cd9079d7ecb171c31d376523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
