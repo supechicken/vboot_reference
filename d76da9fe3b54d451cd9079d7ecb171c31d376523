@@ -22,6 +22,30 @@
       },
       "revId": "d76da9fe3b54d451cd9079d7ecb171c31d376523",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af5263f_76980a09",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-13T13:37:39Z",
+      "side": 1,
+      "message": "We allow quirks from command line and external file. So you can imagine developers will switch between them when debugging. I think it\u0027s better to support flexible format if the cost is only more delimiters in strtok.",
+      "parentUuid": "4aed7fdb_da8baec3",
+      "range": {
+        "startLine": 191,
+        "startChar": 26,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "d76da9fe3b54d451cd9079d7ecb171c31d376523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
