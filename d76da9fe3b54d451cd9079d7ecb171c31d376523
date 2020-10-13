@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aed7fdb_da8baec3",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-13T09:02:41Z",
+      "side": 1,
+      "message": "Rather than making our runtime parser more forgiving, maybe it\u0027d make more sense to check its validity (or even \"pack\" it / strip the whitespace) when copying into the CBFS region?",
+      "range": {
+        "startLine": 191,
+        "startChar": 26,
+        "endLine": 191,
+        "endChar": 36
+      },
+      "revId": "d76da9fe3b54d451cd9079d7ecb171c31d376523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
