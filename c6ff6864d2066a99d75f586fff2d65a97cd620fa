@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b01ae2_45e05ac2",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-13T07:14:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6542d5_f8c480b4",
+      "revId": "c6ff6864d2066a99d75f586fff2d65a97cd620fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "251c2e56_ee631e90",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd0ae165_a2543c9a",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-13T07:14:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "251c2e56_ee631e90",
+      "revId": "c6ff6864d2066a99d75f586fff2d65a97cd620fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b950b8da_498c3261",
@@ -48,6 +84,30 @@
       "writtenOn": "2020-10-13T06:50:03Z",
       "side": 1,
       "message": "EOF always has a new line feed even if the user did not insert it intentionally. Probably truncate the newline character at the end.",
+      "range": {
+        "startLine": 492,
+        "startChar": 5,
+        "endLine": 492,
+        "endChar": 42
+      },
+      "revId": "c6ff6864d2066a99d75f586fff2d65a97cd620fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7a325c_9ed13ec5",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-13T07:14:25Z",
+      "side": 1,
+      "message": "fixed by another patch (to add \\r\\n to strtok)",
+      "parentUuid": "b950b8da_498c3261",
       "range": {
         "startLine": 492,
         "startChar": 5,
