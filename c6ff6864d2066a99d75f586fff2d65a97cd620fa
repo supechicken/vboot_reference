@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6542d5_f8c480b4",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-10-13T06:50:03Z",
+      "side": 1,
+      "message": "Recommend adding a debug statement to indicate the failure. To clarify only debug so that interested folks can turn on all the debug statements.",
+      "revId": "c6ff6864d2066a99d75f586fff2d65a97cd620fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251c2e56_ee631e90",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-10-13T06:50:03Z",
+      "side": 1,
+      "message": "Same comment as above. A debug statement will help.",
+      "revId": "c6ff6864d2066a99d75f586fff2d65a97cd620fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b950b8da_498c3261",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-10-13T06:50:03Z",
+      "side": 1,
+      "message": "EOF always has a new line feed even if the user did not insert it intentionally. Probably truncate the newline character at the end.",
+      "range": {
+        "startLine": 492,
+        "startChar": 5,
+        "endLine": 492,
+        "endChar": 42
+      },
+      "revId": "c6ff6864d2066a99d75f586fff2d65a97cd620fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
