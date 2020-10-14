@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b31bd8_51fd29b3",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-14T20:41:46Z",
+      "side": 1,
+      "message": "This has been true for older platforms too. But, on recent platforms we are seeing more side-effects of it.",
+      "range": {
+        "startLine": 387,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 23
+      },
+      "revId": "86685955881ef136662a211baf354b7f18df13b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef0d0a4_4e1cee31",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-14T20:41:46Z",
+      "side": 1,
+      "message": "do not preserve?",
+      "range": {
+        "startLine": 398,
+        "startChar": 54,
+        "endLine": 398,
+        "endChar": 65
+      },
+      "revId": "86685955881ef136662a211baf354b7f18df13b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c4c9d5_951acd71",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-10-14T20:41:46Z",
+      "side": 1,
+      "message": "It would be good to add details why non-archive update is treated in a special way.",
+      "range": {
+        "startLine": 398,
+        "startChar": 34,
+        "endLine": 398,
+        "endChar": 52
+      },
+      "revId": "86685955881ef136662a211baf354b7f18df13b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
