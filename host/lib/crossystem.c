@@ -23,6 +23,9 @@
 /* Filename for kernel command line */
 #define KERNEL_CMDLINE_PATH "/proc/cmdline"
 
+/* Filename for the mount-encrypted key*/
+#define MOUNT_ENCRYPTED_KEY_PATH "/mnt/stateful_partition/encrypted.key"
+
 /* Fields that GetVdatString() can get */
 typedef enum VdatStringField {
 	VDAT_STRING_DEPRECATED_TIMERS = 0,  /* Timer values */
@@ -370,7 +373,23 @@ int VbGetSystemPropertyInt(const char *name)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		value = vb2_get_nv_storage(VB2_NV_DISABLE_DEV_REQUEST);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
-		value = vb2_get_nv_storage(VB2_NV_CLEAR_TPM_OWNER_REQUEST);
+		if (VbGetSystemPropertyInt("inside_vm")) {
+			/* Try to read from the NV storage first */
+			value = vb2_get_nv_storage(
+				VB2_NV_CLEAR_TPM_OWNER_REQUEST);
+			if (-1 == value) {
+				FILE *f = fopen(MOUNT_ENCRYPTED_KEY_PATH, "r");
+				if (f) {
+					fclose(f);
+					value = 0;
+				} else {
+					value = 1;
+				}
+			}
+		} else {
+			value = vb2_get_nv_storage(
+				VB2_NV_CLEAR_TPM_OWNER_REQUEST);
+		}
 	} else if (!strcasecmp(name,"clear_tpm_owner_done")) {
 		value = vb2_get_nv_storage(VB2_NV_CLEAR_TPM_OWNER_DONE);
 	} else if (!strcasecmp(name,"tpm_rebooted")) {
@@ -542,7 +561,31 @@ int VbSetSystemPropertyInt(const char *name, int value)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		return vb2_set_nv_storage(VB2_NV_DISABLE_DEV_REQUEST, value);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
-		return vb2_set_nv_storage(VB2_NV_CLEAR_TPM_OWNER_REQUEST, value);
+		if (VbGetSystemPropertyInt("inside_vm")) {
+			/* Try to write to the NV storage first */
+			int result = vb2_set_nv_storage(
+				VB2_NV_CLEAR_TPM_OWNER_REQUEST, value);
+			/* Using software fallback when we want to clear TPM*/
+			if (result == -1 && value) {
+				FILE *f = fopen(MOUNT_ENCRYPTED_KEY_PATH, "r");
+				if (f) {
+					fclose(f);
+					/* Remove the mount_encrypted key, and
+					 * it would also clear the TPM2.0
+					 * simulator NV space on it. */
+					result = remove(
+						MOUNT_ENCRYPTED_KEY_PATH);
+				} else {
+					/* Return success when the file is
+					 * already removed */
+					result = 0;
+				}
+			}
+			return result;
+		} else {
+			return vb2_set_nv_storage(
+				VB2_NV_CLEAR_TPM_OWNER_REQUEST, value);
+		}
 	} else if (!strcasecmp(name,"clear_tpm_owner_done")) {
 		/* Can only clear this flag; it's set by firmware. */
 		return vb2_set_nv_storage(VB2_NV_CLEAR_TPM_OWNER_DONE, 0);
