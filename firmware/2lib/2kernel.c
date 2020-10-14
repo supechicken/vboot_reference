@@ -5,6 +5,8 @@
  * Kernel selection, loading, verification, and booting.
  */
 
+#include <libpayload.h>
+
 #include "2common.h"
 #include "2kernel.h"
 #include "2misc.h"
@@ -125,6 +127,9 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
+	struct cb_mainboard *mainboard =
+		phys_to_virt(lib_sysinfo.cb_mainboard);
+	const char *mb_part_string = cb_mb_part_string(mainboard);
 	struct vb2_packed_key *packed_key;
 	uint32_t flags;
 	vb2_error_t rv;
@@ -147,8 +152,13 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 		flags = vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS);
 		flags &= ~VB2_SECDATA_KERNEL_FLAG_PHONE_RECOVERY_DISABLED;
-		flags |= VB2_SECDATA_KERNEL_FLAG_PHONE_RECOVERY_UI_DISABLED;
-		flags |= VB2_SECDATA_KERNEL_FLAG_DIAGNOSTIC_UI_DISABLED;
+		if (!strcmp(cb_mb_part_string, "Berknip") {
+			flags &= ~VB2_SECDATA_KERNEL_FLAG_PHONE_RECOVERY_UI_DISABLED;
+			flags &= ~VB2_SECDATA_KERNEL_FLAG_DIAGNOSTIC_UI_DISABLED;
+		} else {
+			flags |= VB2_SECDATA_KERNEL_FLAG_PHONE_RECOVERY_UI_DISABLED;
+			flags |= VB2_SECDATA_KERNEL_FLAG_DIAGNOSTIC_UI_DISABLED;
+		}
 		flags |= VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED;
 		vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_FLAGS, flags);
 	}
