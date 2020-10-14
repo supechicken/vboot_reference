@@ -191,6 +191,11 @@ ifneq (${MOCK_TPM},)
 CFLAGS += -DMOCK_TPM
 endif
 
+# Enable TPM2 simulator feature.
+ifneq (${TPM2_SIMULATOR},)
+CFLAGS += -DUSE_TPM2_SIMULATOR
+endif
+
 # DETACHABLE indicates whether the device is a detachable or not.
 ifneq ($(filter-out 0,${DETACHABLE}),)
 CFLAGS += -DDETACHABLE=1

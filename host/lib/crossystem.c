@@ -3,10 +3,11 @@
  * found in the LICENSE file.
  */
 
+#include <ctype.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#include <unistd.h>
 
 #include "2api.h"
 #include "2common.h"
@@ -22,6 +23,9 @@
 
 /* Filename for kernel command line */
 #define KERNEL_CMDLINE_PATH "/proc/cmdline"
+
+/* Filename for the mount-encrypted key */
+#define MOUNT_ENCRYPTED_KEY_PATH "/mnt/stateful_partition/encrypted.key"
 
 /* Fields that GetVdatString() can get */
 typedef enum VdatStringField {
@@ -370,7 +374,12 @@ int VbGetSystemPropertyInt(const char *name)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		value = vb2_get_nv_storage(VB2_NV_DISABLE_DEV_REQUEST);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
+#if defined(USE_TPM2_SIMULATOR)
+		/* Check software fallback status when using tpm simulator */
+		value = access(MOUNT_ENCRYPTED_KEY_PATH, F_OK) != 0;
+#else
 		value = vb2_get_nv_storage(VB2_NV_CLEAR_TPM_OWNER_REQUEST);
+#endif
 	} else if (!strcasecmp(name,"clear_tpm_owner_done")) {
 		value = vb2_get_nv_storage(VB2_NV_CLEAR_TPM_OWNER_DONE);
 	} else if (!strcasecmp(name,"tpm_rebooted")) {
@@ -542,7 +551,28 @@ int VbSetSystemPropertyInt(const char *name, int value)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		return vb2_set_nv_storage(VB2_NV_DISABLE_DEV_REQUEST, value);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
+#if defined(USE_TPM2_SIMULATOR)
+		if (value) {
+			/* Using software fallback when we want to clear on TPM
+			 * simulator */
+			if (!access(MOUNT_ENCRYPTED_KEY_PATH, F_OK)) {
+				/* Remove the mount_encrypted key, and it would
+				 * also clear the TPM2.0 simulator NV space on
+				 * it. */
+				return remove(MOUNT_ENCRYPTED_KEY_PATH);
+			} else {
+				/* Return success when the file is already
+				 * removed */
+				return 0;
+			}
+		} else {
+			/* We don't support to set clear_tpm_owner_request to 0
+			 * on simulator */
+			return -1;
+		}
+#else
 		return vb2_set_nv_storage(VB2_NV_CLEAR_TPM_OWNER_REQUEST, value);
+#endif
 	} else if (!strcasecmp(name,"clear_tpm_owner_done")) {
 		/* Can only clear this flag; it's set by firmware. */
 		return vb2_set_nv_storage(VB2_NV_CLEAR_TPM_OWNER_DONE, 0);
