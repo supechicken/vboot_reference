@@ -23,6 +23,9 @@
 /* Filename for kernel command line */
 #define KERNEL_CMDLINE_PATH "/proc/cmdline"
 
+/* Filename for TPM2.0 simulator NV space*/
+#define TPM_SIMULATOR_NV_PATH "/mnt/stateful_partition/encrypted.key"
+
 /* Fields that GetVdatString() can get */
 typedef enum VdatStringField {
 	VDAT_STRING_DEPRECATED_TIMERS = 0,  /* Timer values */
@@ -542,7 +545,19 @@ int VbSetSystemPropertyInt(const char *name, int value)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		return vb2_set_nv_storage(VB2_NV_DISABLE_DEV_REQUEST, value);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
-		return vb2_set_nv_storage(VB2_NV_CLEAR_TPM_OWNER_REQUEST, value);
+		if (VbGetSystemPropertyInt("inside_vm")) {
+			/* Try to set NV storage first */
+			int result = vb2_set_nv_storage(
+				VB2_NV_CLEAR_TPM_OWNER_REQUEST, value);
+			if (result) {
+				/* Reset the TPM2.0 simulator NV space. */
+				result = remove(TPM_SIMULATOR_NV_PATH);
+			}
+			return result;
+		} else {
+			return vb2_set_nv_storage(
+				VB2_NV_CLEAR_TPM_OWNER_REQUEST, value);
+		}
 	} else if (!strcasecmp(name,"clear_tpm_owner_done")) {
 		/* Can only clear this flag; it's set by firmware. */
 		return vb2_set_nv_storage(VB2_NV_CLEAR_TPM_OWNER_DONE, 0);
