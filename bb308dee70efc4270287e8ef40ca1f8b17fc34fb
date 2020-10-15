@@ -39,6 +39,30 @@
       },
       "revId": "bb308dee70efc4270287e8ef40ca1f8b17fc34fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95832b96_a0d1c301",
+        "filename": "futility/updater.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-10-15T03:57:04Z",
+      "side": 1,
+      "message": "In cases where PRESERVE_ME quirk is not enabled, we still want to try UNLOCK_ME_FOR_UPDATE quirk. For factory and archive based updates, we also want to try UNLOCK_ME_FOR_UPDATE quirk.\n\nReturn 0 during factory and archive aligns with quirk is not enabled scenario, so that the next quirk can be tried.\n\nBut when the ME region is preserved, preserve_firmware_section returns 0. Hence we need a different value(something \u003e 0) so that the next quirk is not tried.",
+      "parentUuid": "6cbd2089_48b3a3e4",
+      "range": {
+        "startLine": 520,
+        "startChar": 5,
+        "endLine": 520,
+        "endChar": 20
+      },
+      "revId": "bb308dee70efc4270287e8ef40ca1f8b17fc34fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
