@@ -177,6 +177,30 @@
       },
       "revId": "a2d6f41934d083915d93c41e3d9ecf45f96469b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddeaa16_3a649b85",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-15T08:40:40Z",
+      "side": 1,
+      "message": "there are usually different names... but I think this actually refers to Coreboot config \u0027BOARD\u0027, and it\u0027s usually from mainboard_part. So let\u0027s call it \u0027mainboard\u0027 may be good enough, especially if we won\u0027t be cherry-picking this back to ToT.",
+      "parentUuid": "44ab1e44_e2d50896",
+      "range": {
+        "startLine": 1009,
+        "startChar": 7,
+        "endLine": 1009,
+        "endChar": 18
+      },
+      "revId": "a2d6f41934d083915d93c41e3d9ecf45f96469b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
