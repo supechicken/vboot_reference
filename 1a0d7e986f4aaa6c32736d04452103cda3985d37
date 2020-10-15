@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28672b91_12a649d2",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-15T00:36:41Z",
+      "side": 1,
+      "message": "Let\u0027s try to minimize the impact. e.g.,\n\n #include \u003clibpayload.h\u003e\n\n ...\n static void board_modify_flags(uint32_t *flags) {\n   const char * main_board  \u003d\n\tcb_mb_part_string(phys_to_virt(lib_sysinfo.cb_mainboard));\n\n   if (!strcmp(mb_part_string, \"Berknip\")) {\n     *flags \u0026\u003d ~VB2_SECDATA_KERNEL_FLAG_DIAGNOSTIC_UI_DISABLED;\n   }\n }\n\n ...\n flags |\u003d VB2_SECDATA_KERNEL_FLAG_DIAGNOSTIC_UI_DISABLED;\n board_modify_flags(\u0026flags);",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "1a0d7e986f4aaa6c32736d04452103cda3985d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
