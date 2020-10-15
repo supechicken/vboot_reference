@@ -63,6 +63,53 @@
       },
       "revId": "bb308dee70efc4270287e8ef40ca1f8b17fc34fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6bc40fe_74889d64",
+        "filename": "futility/updater.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-15T04:58:23Z",
+      "side": 1,
+      "message": "Oh I see your point. I wonder if we should move entire preserve_management_engine to be a quirk....\n\nBut yes, then your current implementation looks reasonable.",
+      "parentUuid": "95832b96_a0d1c301",
+      "range": {
+        "startLine": 520,
+        "startChar": 5,
+        "endLine": 520,
+        "endChar": 20
+      },
+      "revId": "bb308dee70efc4270287e8ef40ca1f8b17fc34fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96bdb5b_4cfb37c5",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-15T04:58:23Z",
+      "side": 1,
+      "message": "Can you change the comment to messages, e.g.\n\n if (cfg-\u003efactory_update) {\n   WARN(...);\n   return 0;\n }\n if (cfg-\u003earchive) {\n   WARN(...);\n   return 0;\n }\n\nSo developers would know what happened (for debugging why ME was or was not updated) in runtime.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 11
+      },
+      "revId": "bb308dee70efc4270287e8ef40ca1f8b17fc34fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
