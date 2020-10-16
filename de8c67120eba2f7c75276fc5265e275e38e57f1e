@@ -16,6 +16,29 @@
       "message": "Change to Dirinboz. I\u0027ll cherry-pick to zork and test if we are all fine with current workaround.",
       "revId": "de8c67120eba2f7c75276fc5265e275e38e57f1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed91c60_c8b2412e",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-10-16T08:01:03Z",
+      "side": 1,
+      "message": "maybe replace with a list (so we can easily add / remove more in future),\n\n\n const char *list_enable_ui[] \u003d {\n   \"Dirinboz\",\n }\n\n for (int i \u003d 0; i \u003c ARRAY_SIZE(list_enable_ui); i++) {\n    const char *enable_ui \u003d list_enable_ui[i];\n    if (strncasecmp(board_name, enable_ui, strlen(enable_ui)))\n       continue;\n    VB2_DEBUG(\"Enable diagnostics for %s\\n\", board_name);\n    *flags \u0026\u003d ~VB2_SECDATA_KERNEL_FLAG_DIAGNOSTIC_UI_DISABLED;\n }",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "de8c67120eba2f7c75276fc5265e275e38e57f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
