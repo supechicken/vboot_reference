@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7d9fd3_cc90c965",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-19T08:07:51Z",
+      "side": 1,
+      "message": "vboot: [...]",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "ad2f3a1bdcbf39a5b08dd0ddabff3b12b58b2af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6163f29d_990cacd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-19T08:07:51Z",
+      "side": 1,
+      "message": "LGTM.  Let Hung-Te do last review.",
+      "revId": "ad2f3a1bdcbf39a5b08dd0ddabff3b12b58b2af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb09baf_d403ee74",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-19T08:07:51Z",
+      "side": 1,
+      "message": "Is this Gerrit being weird or do we need to remove this space to line up with the \"(\"?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 5
+      },
+      "revId": "ad2f3a1bdcbf39a5b08dd0ddabff3b12b58b2af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
