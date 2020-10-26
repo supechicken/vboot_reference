@@ -288,6 +288,50 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 }
 
 /*****************************************************************************/
+/* TEST-ONLY: Latency Test */
+
+#define LATENCY_LIST_MAX 100
+
+uint32_t draw_ms, action_ms, iter_ms;
+int list_i = -1;
+
+static vb2_error_t latency_test(void)
+{
+	static uint32_t list_draw_ms[LATENCY_LIST_MAX];
+	static uint32_t list_action_ms[LATENCY_LIST_MAX];
+	static uint32_t list_iter_ms[LATENCY_LIST_MAX];
+	int i = 0;
+
+	if (list_i < 0 || list_i >= LATENCY_LIST_MAX)
+		return VB2_REQUEST_UI_CONTINUE;
+
+	list_draw_ms[list_i] = draw_ms;
+	list_action_ms[list_i] = action_ms;
+	list_iter_ms[list_i] = iter_ms;
+
+	++list_i;
+
+	if (list_i == LATENCY_LIST_MAX) {
+		fprintf(stderr, "\n===== Print out draw_ms =====\n");
+		for (i = 0; i < LATENCY_LIST_MAX; i++)
+			fprintf(stderr, "%u ", list_draw_ms[i]);
+		fprintf(stderr, "\n===== Print out action_ms =====\n");
+		for (i = 0; i < LATENCY_LIST_MAX; i++)
+			fprintf(stderr, "%u ", list_action_ms[i]);
+		fprintf(stderr, "\n===== Print out iter_ms =====\n");
+		for (i = 0; i < LATENCY_LIST_MAX; i++)
+			fprintf(stderr, "%u ", list_iter_ms[i]);
+		fprintf(stderr, "\n===== =====\n");
+
+		list_i = -1;
+	}
+
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+
+
+/*****************************************************************************/
 /* Core UI loop */
 
 vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
@@ -316,7 +360,16 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	prev_disable_timer = 0;
 	prev_error_code = VB2_UI_ERROR_NONE;
 
+	uint32_t t0, t1;
+	list_i = -1;
+
 	while (1) {
+
+		/* Reset latency variables */
+		t0 = vb2ex_mtime();
+		draw_ms = 0;
+		action_ms = 0;
+		iter_ms = 0;
 		start_time_ms = vb2ex_mtime();
 
 		/* Draw if there are state changes. */
@@ -336,6 +389,9 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 				  menu->num_items ?
 				  menu->items[ui.state->selected_item].text :
 				  "null");
+
+			t1 = vb2ex_mtime();
+
 			vb2ex_display_ui(ui.state->screen->id, ui.locale_id,
 					 ui.state->selected_item,
 					 ui.state->disabled_item_mask,
@@ -343,6 +399,9 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 					 ui.disable_timer,
 					 ui.state->current_page,
 					 ui.error_code);
+
+			draw_ms = vb2ex_mtime() - t1;
+
 			if (ui.error_beep ||
 			    (ui.error_code &&
 			     prev_error_code != ui.error_code)) {
@@ -363,6 +422,11 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		ui.key = VbExKeyboardReadWithFlags(&key_flags);
 		ui.key_trusted = !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD);
 
+		if (ui.key == 'r' && list_i == -1) {
+			VB2_DEBUG("===== Trigger latency test =====\n");
+			list_i = 0;
+		}
+
 		/* Check for shutdown request. */
 		rv = check_shutdown_request(&ui);
 		if (rv != VB2_REQUEST_UI_CONTINUE) {
@@ -375,12 +439,16 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		if (rv != VB2_REQUEST_UI_CONTINUE)
 			return rv;
 
+		t1 = vb2ex_mtime();
+
 		/* Run screen action. */
 		if (ui.state->screen->action) {
 			rv = ui.state->screen->action(&ui);
 			if (rv != VB2_REQUEST_UI_CONTINUE)
 				return rv;
 		}
+
+		action_ms = vb2ex_mtime() - t1;
 
 		/* Run menu navigation action. */
 		rv = menu_navigation_action(&ui);
@@ -398,6 +466,8 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		elapsed_ms = vb2ex_mtime() - start_time_ms;
 		if (elapsed_ms < KEY_DELAY_MS)
 			vb2ex_msleep(KEY_DELAY_MS - elapsed_ms);
+		iter_ms = vb2ex_mtime() - t0;
+		latency_test();
 	}
 
 	return VB2_SUCCESS;
