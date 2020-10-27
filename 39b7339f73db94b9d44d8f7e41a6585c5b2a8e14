@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f33934_4010f568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Could use some explanation about \"why\" removing the mount encrypted key is \"equivalent to\" hard-resetting the TPM.  Same goes for documentation within the code.",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1d9c73_37eb8db6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Could use some more documentation references here.  The bug doesn\u0027t really describe anything.  The design doc seems like it doesn\u0027t mention anything about removing the encrypted key.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "287ea60e_f46491c8",
@@ -31,6 +77,161 @@
       "writtenOn": "2020-10-22T08:33:58Z",
       "side": 1,
       "message": "from hwsec point of view it\u0027s about right. LGTM.",
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3c6cbb_d4559d67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "What\u0027s the policy around tpm2_simulator USE flag?  Does the USE flag need to be enabled for any simulator-related code to be compiled?  If that\u0027s the case, should we be using that as as a compile-time conditional in crossystem.c, rather than checking \"inside_vm\"?  (This is an open question -- I\u0027m not sure what is the relationship between \"TPM2 simulator\" and \"being inside a VM\".)",
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71fff7a_7c90a378",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Missing space.",
+      "range": {
+        "startLine": 26,
+        "startChar": 39,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efd0800_87c4605c",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Move above if/else clause, and remove the else clause?",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 36
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd48973_c90af7f4",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Can we use:\n\n  value \u003d access(MOUNT_ENCRYPTED_KEY_PATH, F_OK) !\u003d 0;\n\n?",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 51
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616960a7_467cec8f",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Move above if/else clause, and remove the else clause?",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 43
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6ead29_fac6cc86",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Missing space.",
+      "range": {
+        "startLine": 568,
+        "startChar": 55,
+        "endLine": 568,
+        "endChar": 56
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d8ec45_a152889b",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-27T10:04:23Z",
+      "side": 1,
+      "message": "Same as above -- can we just use access() here?",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 51
+      },
       "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
