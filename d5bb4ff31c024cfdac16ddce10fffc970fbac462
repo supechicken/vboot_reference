@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "8defc6cc_783f7d7b",
         "filename": "firmware/2lib/2ui.c",
@@ -20,10 +21,34 @@
         "endChar": 39
       },
       "revId": "d5bb4ff31c024cfdac16ddce10fffc970fbac462",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "732a4594_d54f78f2",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-27T14:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8defc6cc_783f7d7b",
+      "range": {
+        "startLine": 299,
+        "startChar": 10,
+        "endLine": 299,
+        "endChar": 39
+      },
+      "revId": "d5bb4ff31c024cfdac16ddce10fffc970fbac462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "58a6cb8f_c2eae706",
         "filename": "firmware/2lib/2ui.c",
@@ -43,8 +68,7 @@
         "endChar": 45
       },
       "revId": "d5bb4ff31c024cfdac16ddce10fffc970fbac462",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
