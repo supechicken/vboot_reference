@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb3febd_7a377836",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f33934_4010f568",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd1d9c73_37eb8db6",
@@ -98,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4590b146_04e9a4d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Yeah, we should use tpm2_simulator USE flag to enable the simulator-related code.",
+      "parentUuid": "bc3c6cbb_d4559d67",
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d71fff7a_7c90a378",
@@ -111,6 +153,30 @@
       "writtenOn": "2020-10-27T10:04:23Z",
       "side": 1,
       "message": "Missing space.",
+      "range": {
+        "startLine": 26,
+        "startChar": 39,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5190c089_1e77e3b3",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d71fff7a_7c90a378",
       "range": {
         "startLine": 26,
         "startChar": 39,
@@ -144,6 +210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba529058_dfde2a0a",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3efd0800_87c4605c",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 36
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfd48973_c90af7f4",
@@ -157,6 +247,30 @@
       "writtenOn": "2020-10-27T10:04:23Z",
       "side": 1,
       "message": "Can we use:\n\n  value \u003d access(MOUNT_ENCRYPTED_KEY_PATH, F_OK) !\u003d 0;\n\n?",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 51
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0be8148_c041df07",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd48973_c90af7f4",
       "range": {
         "startLine": 381,
         "startChar": 4,
@@ -190,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8dbf83_8fcdd16c",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "616960a7_467cec8f",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 43
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee6ead29_fac6cc86",
@@ -213,6 +351,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87979fe_bd90a13d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee6ead29_fac6cc86",
+      "range": {
+        "startLine": 568,
+        "startChar": 55,
+        "endLine": 568,
+        "endChar": 56
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4d8ec45_a152889b",
@@ -226,6 +388,30 @@
       "writtenOn": "2020-10-27T10:04:23Z",
       "side": 1,
       "message": "Same as above -- can we just use access() here?",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 51
+      },
+      "revId": "39b7339f73db94b9d44d8f7e41a6585c5b2a8e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03a0c2b_b843871d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2020-10-27T11:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d8ec45_a152889b",
       "range": {
         "startLine": 570,
         "startChar": 0,
