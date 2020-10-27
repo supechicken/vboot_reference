@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "312fc271_002f7726",
         "filename": "firmware/2lib/include/2ui.h",
@@ -20,8 +21,31 @@
         "endChar": 21
       },
       "revId": "89a8501c49a643aab090e428b122ed5bec2f75b0",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb2ac7d_385c1f86",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-27T14:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312fc271_002f7726",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "89a8501c49a643aab090e428b122ed5bec2f75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
