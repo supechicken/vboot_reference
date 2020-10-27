@@ -740,10 +740,17 @@ resign_android_image_if_exists() {
   fi
 
   info "Found ARC image version '${arc_version}', re-signing APKs."
+  set -x
   "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android"
 
-  sudo umount "${rootfs_dir}"
+  if ! sudo umount "${rootfs_dir}"; then
+    error "umount ${rootfs_dir} failed"
+    sudo lsof -n
+    set +x
+    return 1
+  fi
   info "Re-signed Android image"
+  set +x
 }
 
 # Sign UEFI binaries, if possible.
