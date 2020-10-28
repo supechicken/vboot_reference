@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88111b07_d3aa33b4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2020-10-28T18:13:15Z",
+      "side": 1,
+      "message": "sudo lsof -n \"${rootfs_dir}\" would be better.  Throwing in a `ps auxf` might not hurt either.",
+      "revId": "b7f52ca31ba70266ff854be3f81b5e3d45f96280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
