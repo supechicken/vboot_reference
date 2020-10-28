@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42e7867e_36f942db",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T08:13:57Z",
+      "side": 1,
+      "message": "I mean like this:\n\n  ifneq ($(filter-out 0,${TPM2_SIMULATOR}),)",
+      "parentUuid": "b52b48c8_897d0e68",
+      "range": {
+        "startLine": 195,
+        "startChar": 7,
+        "endLine": 195,
+        "endChar": 9
+      },
+      "revId": "467949fede283be1fecd5fee2d17c6eef76d3745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a977655d_5449a296",
         "filename": "Makefile",
         "patchSetId": 11

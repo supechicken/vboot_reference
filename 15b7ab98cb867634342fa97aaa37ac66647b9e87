@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547bc599_7caa902e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T08:13:57Z",
+      "side": 1,
+      "message": "Feel free to carry +2 after fixing nits.",
+      "revId": "15b7ab98cb867634342fa97aaa37ac66647b9e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcbec952_f60b760f",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T08:13:57Z",
+      "side": 1,
+      "message": "Nit: not really a \"fallback\" when TPM2_SIMULATOR is enabled.  Maybe you could reword this comment.",
+      "range": {
+        "startLine": 378,
+        "startChar": 21,
+        "endLine": 378,
+        "endChar": 29
+      },
+      "revId": "15b7ab98cb867634342fa97aaa37ac66647b9e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e5f947_5a961a74",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T08:13:57Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 560,
+        "startChar": 21,
+        "endLine": 560,
+        "endChar": 29
+      },
+      "revId": "15b7ab98cb867634342fa97aaa37ac66647b9e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
