@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c747ae3c_92e9badd",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T04:13:31Z",
+      "side": 1,
+      "message": "You might also want to do the $(filter-out) thing here so that it works to set TPM2_SIMULATOR\u003d0.",
+      "range": {
+        "startLine": 195,
+        "startChar": 7,
+        "endLine": 195,
+        "endChar": 9
+      },
+      "revId": "467949fede283be1fecd5fee2d17c6eef76d3745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a977655d_5449a296",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T04:13:31Z",
+      "side": 1,
+      "message": "Perhaps we could leave out the \"USE_\"?  We don\u0027t do that for the other compile-time settings.",
+      "range": {
+        "startLine": 196,
+        "startChar": 12,
+        "endLine": 196,
+        "endChar": 16
+      },
+      "revId": "467949fede283be1fecd5fee2d17c6eef76d3745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18ba5c8_f8464e6a",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T04:13:31Z",
+      "side": 1,
+      "message": "It\u0027s better to avoid macro conditionals where possible.  Otherwise, we end up with \"dead code\" in which it\u0027s easy to miss syntax errors.\n\n  if (TPM2_SIMULATOR)\n    value \u003d ...",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 31
+      },
+      "revId": "467949fede283be1fecd5fee2d17c6eef76d3745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8785a876_582a3cbc",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T04:13:31Z",
+      "side": 1,
+      "message": "Same here -- please use a C conditional.",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 31
+      },
+      "revId": "467949fede283be1fecd5fee2d17c6eef76d3745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177e94ec_e164b17d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-28T04:13:31Z",
+      "side": 1,
+      "message": "To reduce the indentation here, consider reversing the if/else to:\n\n  if (value \u003d\u003d 0)\n    return -1;\n  ...rest of code...",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 3
+      },
+      "revId": "467949fede283be1fecd5fee2d17c6eef76d3745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
