@@ -16,6 +16,24 @@
       "message": "sudo lsof -n \"${rootfs_dir}\" would be better.  Throwing in a `ps auxf` might not hurt either.",
       "revId": "b7f52ca31ba70266ff854be3f81b5e3d45f96280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0237cca5_e71b5450",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2020-10-28T19:09:49Z",
+      "side": 1,
+      "message": "Done.\n\n\u003cshame cube\u003eI didn\u0027t even know lsof took a \u0027names\u0027 parameter like that.\u003c/shame cube\u003e",
+      "parentUuid": "88111b07_d3aa33b4",
+      "revId": "b7f52ca31ba70266ff854be3f81b5e3d45f96280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
