@@ -16,6 +16,52 @@
       "message": "Hi all:\nSince there will be a lot of new vb2ex_mtime() calls elsewhere, the original workaround of testing if delay aborted will fail on reduce latency CLs.\n\nThis CL is to remove these test items without reducing the test coverages. ",
       "revId": "3649097ff0dc5862c2d8bc68c658e69f1fe2d2d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8d1a0b_5f55f463",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-30T09:01:31Z",
+      "side": 1,
+      "message": "Just a style suggestion -- sometimes it\u0027s nice to keep the \"common\" words at the front (although I\u0027d still keep the units at the end).  Like: DELAY_SHORT_MS and DELAY_NORMAL_MS.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "3649097ff0dc5862c2d8bc68c658e69f1fe2d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4942254c_0c0e60fa",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-10-30T09:01:31Z",
+      "side": 1,
+      "message": "Can\u0027t quite remember how we ended up here... but how about checking that the elapsed time is equal to SHORT_DELAY_MS within a fuzz factor?  See vboot_ui_legacy_clamshell_beep_tests.c in vb2ex_beep() for an example.",
+      "range": {
+        "startLine": 594,
+        "startChar": 11,
+        "endLine": 594,
+        "endChar": 62
+      },
+      "revId": "3649097ff0dc5862c2d8bc68c658e69f1fe2d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
