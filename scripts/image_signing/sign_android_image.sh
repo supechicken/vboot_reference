@@ -228,12 +228,6 @@ replace_ota_cert() {
   popd > /dev/null
 }
 
-# Snapshot file properties in a directory recursively.
-snapshot_file_properties() {
-  local dir=$1
-  sudo find "${dir}" -exec stat -c '%n:%u:%g:%a:%C' {} + | sort
-}
-
 main() {
   local root_fs_dir=$1
   local key_dir=$2
@@ -289,20 +283,11 @@ main() {
   local system_mnt="${working_dir}/mnt"
 
   info "Unpacking squashfs system image to ${system_mnt}"
-  sudo "${unsquashfs}" -x -f -no-progress -d "${system_mnt}" "${system_img}"
-
-  snapshot_file_properties "${system_mnt}" > "${working_dir}/properties.orig"
+  sudo "${unsquashfs}" -f -no-progress -d "${system_mnt}" "${system_img}"
 
   sign_framework_apks "${system_mnt}" "${key_dir}"
   update_sepolicy "${system_mnt}" "${key_dir}"
   replace_ota_cert "${system_mnt}" "${key_dir}/releasekey.x509.pem"
-
-  # Validity check.
-  snapshot_file_properties "${system_mnt}" > "${working_dir}/properties.new"
-  local d
-  if ! d=$(diff "${working_dir}"/properties.{orig,new}); then
-    die "Unexpected change of file property, diff\n${d}"
-  fi
 
   # Packages cache needs to be regenerated when the key and timestamp are
   # changed for apks.
