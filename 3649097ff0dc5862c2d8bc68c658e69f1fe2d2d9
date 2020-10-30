@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c159e143_e8460a1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-10-30T08:37:56Z",
+      "side": 1,
+      "message": "Hi all:\nSince there will be a lot of new vb2ex_mtime() calls elsewhere, the original workaround of testing if delay aborted will fail on reduce latency CLs.\n\nThis CL is to remove these test items without reducing the test coverages. ",
+      "revId": "3649097ff0dc5862c2d8bc68c658e69f1fe2d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
