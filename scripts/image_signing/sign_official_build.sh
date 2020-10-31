@@ -79,6 +79,9 @@ check_argc() {
 # Abort on errors.
 set -e
 
+# TODO(crbug.com/1141907): remove set x below.
+set -x
+
 # Add to the path since some tools reside here and may not be in the non-root
 # system path.
 PATH=$PATH:/usr/sbin:/sbin
@@ -740,19 +743,14 @@ resign_android_image_if_exists() {
   fi
 
   info "Found ARC image version '${arc_version}', re-signing APKs."
-  # TODO(crbug.com/1141907): remove set -x and set +x below.
-  set -x
-  "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android"
 
-  if ! sudo umount "${rootfs_dir}"; then
-    error "umount ${rootfs_dir} failed"
-    sudo lsof -n "${rootfs_dir}"
-    ps auxf
-    set +x
-    return 1
-  fi
+  # TODO(crbug.com/1141907): remove set e below.
+  set +e
+  "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android"
+  sudo umount "${rootfs_dir}"
+  set -e
+
   info "Re-signed Android image"
-  set +x
 }
 
 # Sign UEFI binaries, if possible.
