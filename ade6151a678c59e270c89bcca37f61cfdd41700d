@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9344a6a3_9562899f",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-02T15:58:44Z",
+      "side": 1,
+      "message": "sys/wait.h appears to be available in Linux as well, so this probably shouldn\u0027t be guarded by an ifdef",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "ade6151a678c59e270c89bcca37f61cfdd41700d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc8cad4_9905b36e",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-11-02T15:58:44Z",
+      "side": 1,
+      "message": "these preprocessor definitons shouldn\u0027t go inline with code.\n\ncan this be shipped out to a header somewhere?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "ade6151a678c59e270c89bcca37f61cfdd41700d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
