@@ -16,6 +16,23 @@
       "message": "Chatted with Cindy regarding cherry-picking this CL.",
       "revId": "c346a7ce72c03a3af0ef5463916d5736f41de778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4f9cfc_cba34dfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-11-02T19:22:02Z",
+      "side": 1,
+      "message": "This likely fixes the garbage characters and failure I was seeing:\n```\nlocalhost ~ # /usr/sbin/chromeos-firmwareupdate --mode\u003dautoupdate --debug\n\n  Machine Model: drawlat\n  Write Protect: HW\u003d0 SW\u003d0\n  Last Boot Version: RO\u003dGoogle_Drawcia.13561.0.0 ACT/A\u003dGoogle_Drawcia.13561.0.0\n  Firmware Updater:  RO\u003dGoogle_Drawcia.13561.0.0    RW\u003dGoogle_Drawcia.13561.0.0\n...\nDEBUG: create_temp_file: Created new temporary file: /tmp/fwupdater.1sKyNQ.\nDEBUG: host_shell: cbfstool \"/tmp/fwupdater.H7QSyv\" extract -r FW_MAIN_A -n \"updater_quirks\" -f \"/tmp/fwupdater.1sKyNQ\" 2\u003e\u00261\nDEBUG: updater_get_cbfs_quirks: Got quirks (11 bytes): preserve_mee|\nDEBUG: setup_config_quirks: Looking for quirk \u003cpreserve_mee|\u003d1\u003e.\nERROR: setup_config_quirks: Unknown quirk: preserve_mee|\n```",
+      "revId": "c346a7ce72c03a3af0ef5463916d5736f41de778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
