@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8b402e_fdd8febc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:23:35Z",
+      "side": 1,
+      "message": "time-related",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "f1dac4abca8b718f3855d5c2d8b819a680d06545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79c15c30_96103603",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:23:35Z",
+      "side": 1,
+      "message": "I\u0027d prefer using a function, and name it like `expect_delay()` or `check_time()`. I\u0027m fine if we\u0027re not using this macro/function inside vb2ex_beep().",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "f1dac4abca8b718f3855d5c2d8b819a680d06545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b1ccdd_ec872316",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:23:35Z",
+      "side": 1,
+      "message": "Consider \"result\" to be consistent with test_eq()?",
+      "range": {
+        "startLine": 23,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "f1dac4abca8b718f3855d5c2d8b819a680d06545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc19675_5c4c3ad9",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:23:35Z",
+      "side": 1,
+      "message": "Maybe we can use only one argument \u0027desc\u0027 here?",
+      "range": {
+        "startLine": 23,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 56
+      },
+      "revId": "f1dac4abca8b718f3855d5c2d8b819a680d06545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
