@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c67823e_1bc127e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-11-02T12:26:39Z",
+      "side": 1,
+      "message": "Since all the time-related constants will be used in tests, I think we could move all them into 2ui_private.h.\n\nWDYT?",
+      "revId": "1a5371712ded74e25563829b5278710867ac9030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
