@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb26de1a_a19c737b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:38:40Z",
+      "side": 1,
+      "message": "for long iteration time",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b9b2422_4d8b63ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:38:40Z",
+      "side": 1,
+      "message": "Line too long (72 chars).",
+      "range": {
+        "startLine": 12,
+        "startChar": 58,
+        "endLine": 12,
+        "endChar": 80
+      },
+      "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6bea4758_e8579bfa",
@@ -14,6 +60,115 @@
       "writtenOn": "2020-11-02T05:36:44Z",
       "side": 1,
       "message": "PS7: Fix comments (in commit messages)",
+      "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e8bc5a_2edbed9a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:38:40Z",
+      "side": 1,
+      "message": "I\u0027d prefer a separate CL for the renaming. See my comment in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2508104/comment/cb0c8d84_8df26105/.",
+      "range": {
+        "startLine": 719,
+        "startChar": 5,
+        "endLine": 719,
+        "endChar": 18
+      },
+      "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebcfd227_59cdbdb8",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:38:40Z",
+      "side": 1,
+      "message": "in each",
+      "range": {
+        "startLine": 997,
+        "startChar": 43,
+        "endLine": 997,
+        "endChar": 47
+      },
+      "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804ba9a7_b68549a7",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:38:40Z",
+      "side": 1,
+      "message": "Add a comment saying this is less than KEY_DELAY_MS. Changing 15 to \n\"KEY_DELAY_MS / 2\" also works.",
+      "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe1d42c_3fab0027",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:38:40Z",
+      "side": 1,
+      "message": "just \"sleep\"",
+      "range": {
+        "startLine": 1010,
+        "startChar": 13,
+        "endLine": 1010,
+        "endChar": 23
+      },
+      "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "140e9fdb_22d1a323",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-02T06:38:40Z",
+      "side": 1,
+      "message": "action takes longer than KEY_DELAY_MS",
+      "range": {
+        "startLine": 1010,
+        "startChar": 31,
+        "endLine": 1010,
+        "endChar": 57
+      },
       "revId": "f145af59848ff35af31f89efbc64644e1baf5826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
