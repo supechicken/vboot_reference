@@ -16,6 +16,23 @@
       "message": "Hi all:\n\nI\u0027ve built with try-job and got a success.\nhttps://ci.chromium.org/p/chromeos/builders/general/Try/b8865030112598425872?\n\nPlease review again and submit these enable-diag-on-Dirinboz CLs if it is alright.\nThanks!",
       "revId": "25f3bf4d5e0baa811b49424b7a51fc8f25529f55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c19bf7c9_c958755c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-11-04T17:27:53Z",
+      "side": 1,
+      "message": "Hi all:\nAny concerns about re-landing these \"Enable minidiag on Dirinboz(b/171562746)\" CLs?\ncrrev.com/c/2508098\ncrrev.com/c/2508096\n\nThe build failure is fixed, and attempted with try-job bot successfully.\n(https://ci.chromium.org/p/chromeos/builders/general/Try/b8865030112598425872)",
+      "revId": "25f3bf4d5e0baa811b49424b7a51fc8f25529f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
