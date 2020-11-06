@@ -298,7 +298,8 @@ static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->page_count = vb2ex_prepare_log_screen(
+		ui->state->screen->id, ui->locale_id, log_string);
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare debug info screen\n");
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
@@ -316,7 +317,8 @@ static vb2_error_t debug_info_reinit(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->page_count = vb2ex_prepare_log_screen(
+		ui->state->screen->id, ui->locale_id, log_string);
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare debug info screen\n");
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
@@ -360,7 +362,8 @@ static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->page_count = vb2ex_prepare_log_screen(
+		ui->state->screen->id, ui->locale_id, log_string);
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare firmware log screen\n");
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
@@ -378,7 +381,8 @@ static vb2_error_t firmware_log_reinit(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->page_count = vb2ex_prepare_log_screen(
+		ui->state->screen->id, ui->locale_id, log_string);
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare firmware log screen\n");
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
@@ -1135,7 +1139,8 @@ static vb2_error_t diagnostics_storage_init(struct vb2_ui_context *ui)
 		return vb2_ui_screen_back(ui);
 	}
 
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->page_count = vb2ex_prepare_log_screen(
+		ui->state->screen->id, ui->locale_id, log_string);
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare storage log screen\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
@@ -1193,7 +1198,8 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 		return vb2_ui_screen_back(ui);
 	}
 
-	ui->state->page_count = vb2ex_prepare_log_screen(log_string);
+	ui->state->page_count = vb2ex_prepare_log_screen(
+		ui->state->screen->id, ui->locale_id, log_string);
 	if (ui->state->page_count == 0) {
 		VB2_DEBUG("ERROR: Failed to prepare memory log screen, error: "
 			  "%#x\n", rv);
