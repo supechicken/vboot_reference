@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c30b3c8_0a156e7e",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-06T06:32:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f599ebf0_566bda5e",
+      "range": {
+        "startLine": 90,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 33
+      },
+      "revId": "a5e439356a5e2f776094aeb80bfd772095e432d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b811be14_afdc1860",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-06T06:12:58Z",
       "side": 1,
       "message": "Add the arguments here.",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 50
+      },
+      "revId": "a5e439356a5e2f776094aeb80bfd772095e432d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada1f4c5_1398df7a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-11-06T06:32:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b811be14_afdc1860",
       "range": {
         "startLine": 561,
         "startChar": 0,
