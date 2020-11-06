@@ -830,6 +830,10 @@ static const struct vb2_menu_item developer_mode_items[] = {
 		.text = "Select alternate bootloader",
 		.target = VB2_SCREEN_DEVELOPER_SELECT_BOOTLOADER,
 	},
+	{
+		.text = "Tell a joke",
+		.target = VB2_SCREEN_JOKE,
+	},
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -840,6 +844,17 @@ static const struct vb2_screen_info developer_mode_screen = {
 	.init = developer_mode_init,
 	.action = developer_mode_action,
 	.menu = MENU_ITEMS(developer_mode_items),
+};
+
+static const struct vb2_menu_item joke_items[] = {
+	LANGUAGE_SELECT_ITEM,
+	POWER_OFF_ITEM,
+};
+
+static const struct vb2_screen_info joke_screen = {
+	.id = VB2_SCREEN_JOKE,
+	.name = "Joke",
+	.menu = MENU_ITEMS(joke_items),
 };
 
 /******************************************************************************/
@@ -1238,6 +1253,7 @@ static const struct vb2_screen_info *screens[] = {
 	&recovery_disk_step2_screen,
 	&recovery_disk_step3_screen,
 	&developer_mode_screen,
+	&joke_screen,
 	&developer_to_norm_screen,
 	&developer_boot_external_screen,
 	&developer_invalid_disk_screen,

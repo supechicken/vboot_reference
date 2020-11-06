@@ -1329,6 +1329,8 @@ enum vb2_screen {
 	VB2_SCREEN_RECOVERY_DISK_STEP3		= 0x222,
 	/* Developer mode screen */
 	VB2_SCREEN_DEVELOPER_MODE		= 0x300,
+	/* Joke screen */
+	VB2_SCREEN_JOKE				= 0x301,
 	/* Confirm transition to normal mode */
 	VB2_SCREEN_DEVELOPER_TO_NORM		= 0x310,
 	/* Developer boot from external disk */
