@@ -33,6 +33,24 @@
       "message": "Defer to George. I might be wrong but do we need this to branch? IIUC we have only one active signer script in production. Merging this to branch might be NOOP.",
       "revId": "dcf6995737f83addc69790ed3254ba1ef0a28505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d884b2_1ac86168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-11-09T19:19:07Z",
+      "side": 1,
+      "message": "We pin vboot to a commit on signing fleet. I\u0027m unsure if there\u0027s some reason we\u0027d want these changes on this branch, but it wouldn\u0027t affect production signing.",
+      "parentUuid": "f7b91384_e786b96f",
+      "revId": "dcf6995737f83addc69790ed3254ba1ef0a28505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
