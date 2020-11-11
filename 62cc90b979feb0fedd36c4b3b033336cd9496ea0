@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c4f9ce_d462eb1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-11-11T06:56:50Z",
+      "side": 1,
+      "message": "Nit: I prefer referring to the output buffer rather than generically talking about textual updates.",
+      "revId": "62cc90b979feb0fedd36c4b3b033336cd9496ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654b0f19_a01c578b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-11-11T06:56:50Z",
+      "side": 1,
+      "message": "the output buffer was unchanged",
+      "range": {
+        "startLine": 1133,
+        "startChar": 34,
+        "endLine": 1133,
+        "endChar": 63
+      },
+      "revId": "62cc90b979feb0fedd36c4b3b033336cd9496ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9c1f8df_6779ab5d",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-11-11T06:56:50Z",
+      "side": 1,
+      "message": "the output buffer was updated",
+      "range": {
+        "startLine": 737,
+        "startChar": 35,
+        "endLine": 737,
+        "endChar": 61
+      },
+      "revId": "62cc90b979feb0fedd36c4b3b033336cd9496ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
