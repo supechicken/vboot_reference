@@ -41,6 +41,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a970d08_3edb397e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-11-12T06:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "654b0f19_a01c578b",
+      "range": {
+        "startLine": 1133,
+        "startChar": 34,
+        "endLine": 1133,
+        "endChar": 63
+      },
+      "revId": "62cc90b979feb0fedd36c4b3b033336cd9496ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "826a3a2a_2f5fdc90",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-11-12T06:29:20Z",
+      "side": 1,
+      "message": "I think we could use \"the output buffer was unchanged\" for consistency?",
+      "range": {
+        "startLine": 734,
+        "startChar": 35,
+        "endLine": 734,
+        "endChar": 63
+      },
+      "revId": "62cc90b979feb0fedd36c4b3b033336cd9496ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9c1f8df_6779ab5d",
@@ -54,6 +101,30 @@
       "writtenOn": "2020-11-11T06:56:50Z",
       "side": 1,
       "message": "the output buffer was updated",
+      "range": {
+        "startLine": 737,
+        "startChar": 35,
+        "endLine": 737,
+        "endChar": 61
+      },
+      "revId": "62cc90b979feb0fedd36c4b3b033336cd9496ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74378f4b_8f6da268",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-11-12T06:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c1f8df_6779ab5d",
       "range": {
         "startLine": 737,
         "startChar": 35,
