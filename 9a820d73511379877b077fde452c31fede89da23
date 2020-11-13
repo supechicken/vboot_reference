@@ -52,6 +52,24 @@
       "parentUuid": "3cd5b8af_c4bc8c61",
       "revId": "9a820d73511379877b077fde452c31fede89da23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce9b08b_c22cb33a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T22:56:47Z",
+      "side": 0,
+      "message": "ah, now I see what you mean. In this case this patch should not go in. I\u0027ll hold it off until other parts are ready.",
+      "parentUuid": "edd41eea_120b1ed3",
+      "revId": "9a820d73511379877b077fde452c31fede89da23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
