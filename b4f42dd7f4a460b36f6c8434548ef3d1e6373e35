@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73eba57f_2c832ea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T06:20:31Z",
+      "side": 1,
+      "message": "This change is a first of a few patches in various git trees with the end goal to support signing various gsc images using the same flow.\n\nNote that the scripts modified by this patch are not used anywhere until they are picked up by the image signer tree.",
+      "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
