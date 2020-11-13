@@ -34,6 +34,24 @@
       "parentUuid": "5e4d8231_3e7edeab",
       "revId": "9a820d73511379877b077fde452c31fede89da23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd41eea_120b1ed3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-11-13T22:45:29Z",
+      "side": 0,
+      "message": "cr50 isn\u0027t the only reason we update vboot code in the signer.  we often have to roll in other changes, and sometimes in short notice.  see crbug.com/1141907 as a recent (and ongoing actually) example of just that.\n\nthese scripts must stay green/working at all times in case they have to be merged right away.",
+      "parentUuid": "3cd5b8af_c4bc8c61",
+      "revId": "9a820d73511379877b077fde452c31fede89da23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
