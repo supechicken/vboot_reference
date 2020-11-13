@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6161a8b7_7acc616b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T19:42:15Z",
+      "side": 1,
+      "message": "yes, GFC is the way to go.",
+      "parentUuid": "61a8986d_9ec1aaf3",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "73eba57f_2c832ea0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46cbb42d_fc33a16c",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T19:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "059b71b3_d13e0b23",
+      "range": {
+        "startLine": 39,
+        "startChar": 54,
+        "endLine": 39,
+        "endChar": 57
+      },
+      "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a80464f4_a936297a",
@@ -94,6 +142,24 @@
       "writtenOn": "2020-11-13T06:46:27Z",
       "side": 1,
       "message": "indent one more level please",
+      "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca8a31d_064dad6a",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T19:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a80464f4_a936297a",
       "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba92fb6_e1f0385f",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T19:42:15Z",
+      "side": 1,
+      "message": "of course, this is the first patch in a series, no harm uploading separately as this is not used until it is explicitly picked up by the signer by updating the git hash in the signer config.",
+      "parentUuid": "78e68f96_ffbf533c",
+      "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dcee8b7_c06105fa",
@@ -128,6 +212,24 @@
       "writtenOn": "2020-11-13T06:46:27Z",
       "side": 1,
       "message": "while not incorrect, we put ;; explicitly on the terminal case",
+      "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86cf57c7_73290279",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T19:42:15Z",
+      "side": 1,
+      "message": "ah, I just missed it.",
+      "parentUuid": "2dcee8b7_c06105fa",
       "revId": "b4f42dd7f4a460b36f6c8434548ef3d1e6373e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
