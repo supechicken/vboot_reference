@@ -16,6 +16,24 @@
       "message": "this \"interface\" is baked into a few places.  you can add new names, but existing names really need to stick around.  so allow $TYPE\u003d\u003dcr50_firmware still.  you can delete/rename all the other places in here.\n\nyou\u0027ll prob want to update those other places in the tree to rename too at some point ... after a vboot roll happens in the signer of course.",
       "revId": "9a820d73511379877b077fde452c31fede89da23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd5b8af_c4bc8c61",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-11-13T22:40:39Z",
+      "side": 0,
+      "message": "yes, I am fully aware, this is just one patch in a list of patches to extend the signer to cover multiple GSC chips.\n\nas I mentioned: I am not worried about submitting incomplete changes, as they don\u0027t go into play until explicitly picked up by signer-dev.",
+      "parentUuid": "5e4d8231_3e7edeab",
+      "revId": "9a820d73511379877b077fde452c31fede89da23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
