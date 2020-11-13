@@ -36,11 +36,11 @@ to_int32() {
            print (struct.unpack('i', d)[0])"
 }
 
-# This function accepts one argument, the name of the Cr50 manifest file which
+# This function accepts one argument, the name of the Gsc manifest file which
 # needs to be verified and in certain cases altered.
 #
 # The function verifies that the input manifest is a proper json file, and
-# that the manifest conforms to Cr50 version numbering and board ID flags
+# that the manifest conforms to Gsc version numbering and board ID flags
 # conventions for various build images:
 #
 # - only factory version binaries can be converted to node locked images,
@@ -52,9 +52,9 @@ to_int32() {
 #
 # - when signing mp images (major version number is odd), the 0x10000 flags
 #   bit must be set (this can be overridden by signing instructions).
-verify_and_prepare_cr50_manifest() {
+verify_and_prepare_gsc_manifest() {
   if [[ $# -ne 1 ]]; then
-    die "Usage: verify_and_prepare_cr50_manifest <manifest .json file>"
+    die "Usage: verify_and_prepare_gsc_manifest <manifest .json file>"
   fi
 
   local manifest_json="$1"
@@ -217,10 +217,10 @@ determine_rma_key_base() {
   echo "${base_name}.${curve}"
 }
 
-# Sign cr50 RW firmware ELF images into a combined cr50 firmware image
+# Sign Gsc RW firmware ELF images into a combined Gsc firmware image
 # using the provided production keys and manifests.
 sign_rw() {
-  if [[ $# -ne 7 ]]; then
+  if [[ $# -ne 8 ]]; then
     die "Usage: sign_rw <key_file> <manifest> <fuses>" \
         "<rma_key_dir> <rw_a> <rw_b> <output>"
   fi
@@ -231,32 +231,52 @@ sign_rw() {
   local rma_key_dir="$4"
   local elfs=( "$5" "$6" )
   local result_file="$7"
+  local generation="$8"
   local temp_dir="$(make_temp_dir)"
-  local rma_key_base
+  local rma_key_base=""
+  local rw_a_offset
+  local rw_b_offset
 
   if [[ ! -f "${result_file}" ]]; then
     die "${result_file} not found."
   fi
 
-  # If signing a chip factory image (version 0.0.22) do not try figuring out the
-  # RMA keys.
-  local cr50_version="$(jq '.epoch * 10000 + .major * 100 + .minor' \
-     "${manifest_file}")"
+  local signer_command_params=(-x "${fuses_file}" --key "${key_file}")
 
-  if [[ "${cr50_version}" != "22" ]]; then
-    rma_key_base="$(determine_rma_key_base "${rma_key_dir}" "${elfs[@]}")"
-  else
-    echo "Ignoring RMA keys for factory branch ${cr50_version}"
-  fi
+  case "${generation}"  in
+    (h|null)
+      # H1 image might require some tweaking.
+      # If signing a chip factory image (version 0.0.22) do not try figuring
+      # out the RMA keys.
+      local gsc_version="$(jq '.epoch * 10000 + .major * 100 + .minor' \
+      "${manifest_file}")"
 
-  local signer_command_params=(--b -x "${fuses_file}" --key "${key_file}")
+      if [[ "${gsc_version}" != "22" ]]; then
+        rma_key_base="$(determine_rma_key_base "${rma_key_dir}" "${elfs[@]}")"
+      else
+        echo "Ignoring RMA keys for factory branch ${gsc_version}"
+      fi
 
-  # Swap test public RMA server key with the prod version.
-  if [[ -n "${rma_key_base}" ]]; then
-    signer_command_params+=(
-      --swap "${rma_key_base}.test","${rma_key_base}.prod"
-    )
-  fi
+      # Swap test public RMA server key with the prod version.
+      if [[ -n "${rma_key_base}" ]]; then
+        signer_command_params+=(
+          --swap "${rma_key_base}.test","${rma_key_base}.prod"
+        )
+      fi
+
+      # Indicate H1 signing.
+      signer_command_params+=( '--b' )
+      # Fixed offsets into the binary blob where RW sections start.
+      rw_a_offset=16384
+      rw_b_offset=278528
+      ;;
+    (d)
+      # Indicate D1 signing.
+      signer_command_params+=( '--dauntless' )
+      die "Need to figure out D2 RW sections offsets"
+      ;;
+  esac
+
   signer_command_params+=(--json "${manifest_file}")
 
   signer_command_params+=(--format=bin)
@@ -275,9 +295,9 @@ sign_rw() {
 
     # Make sure output file is not owned by root.
     touch "${signed_file}"
-    if ! cr50-codesigner "${signer_command_params[@]}" \
+    if ! gsc-codesigner "${signer_command_params[@]}" \
         -i "${elf}" -o "${signed_file}"; then
-      die "cr50-codesigner ${signer_command_params[@]}" \
+      die "gsc-codesigner ${signer_command_params[@]}" \
         "-i ${elf} -o ${signed_file} failed"
     fi
 
@@ -296,9 +316,9 @@ sign_rw() {
   # Full binary image is required, paste the newly signed blobs into the
   # output image.
   dd if="${temp_dir}/0.${dst_suffix}" of="${result_file}" \
-    seek=16384 bs=1 conv=notrunc
+    seek="${rw_a_offset}" bs=1 conv=notrunc
   dd if="${temp_dir}/1.${dst_suffix}" of="${result_file}" \
-    seek=278528 bs=1 conv=notrunc
+    seek="${rw_b_offset}" bs=1 conv=notrunc
 }
 
 # A very crude RO verification function. The key signature found at a fixed
@@ -337,7 +357,7 @@ verify_ro() {
   die "RO key (${key_byte}) in ${ro_bin} does not match type prod"
 }
 
-# This function prepares a full CR50 image, consisting of two ROs and two RWs
+# This function prepares a full Gsc image, consisting of two ROs and two RWs
 # placed at their respective offsets into the resulting blob. It invokes the
 # bs (binary signer) script to actually convert ELF versions of RWs into
 # binaries and sign them.
@@ -346,9 +366,9 @@ verify_ro() {
 # RW version numbers and board ID fields, if set to non-default. The ebuild
 # downloading the tarball from the BCS expects the image to be in that
 # directory.
-sign_cr50_firmware() {
+sign_gsc_firmware() {
   if [[ $# -ne 9 ]]; then
-    die "Usage: sign_cr50_firmware <key_file> <manifest> <fuses>" \
+    die "Usage: sign_gsc_firmware <key_file> <manifest> <fuses>" \
         "<rma_key_dir> <ro_a> <ro_b> <rw_a> <rw_b> <output>"
   fi
 
@@ -361,19 +381,33 @@ sign_cr50_firmware() {
   local rw_a="$7"
   local rw_b="$8"
   local output_file="$9"
+  local generation
 
   local manifest_file="${manifest_source}.updated"
   local temp_dir="$(make_temp_dir)"
+  local ro_b_base
 
-  # The H1 chip where Cr50 firmware runs has 512K of flash, the generated
-  # image must match the flash size.
-  IMAGE_SIZE="$(( 512 * 1024 ))"
-
-    # Prepare file for inline editing.
+  # Prepare file for inline editing.
   jq . < "${manifest_source}" > "${manifest_file}" || \
     die "basic validation of ${manifest_json} failed"
 
-  verify_and_prepare_cr50_manifest "${manifest_file}"
+  # Retrieve chip type from the manifest, if preset, otherwise use h1.
+  generation="$(jq '.generation' "${manifest_file}")"
+  case "${generation}"  in
+    (h|null)
+      generation="h"  # Just in case this is a legacy manifest.
+
+      # H1 flash size, image size must match.
+      IMAGE_SIZE="$(( 512 * 1024 ))"
+      ;;
+    (d)
+      # D2 flash size, image size must match.
+      IMAGE_SIZE="$(( 512 * 1024 ))"
+      ;;
+    (*) die "Unknown generation value \"${generation}\" in signing manifest"
+  esac
+
+  verify_and_prepare_gsc_manifest "${manifest_file}"
 
   dd if=/dev/zero bs="${IMAGE_SIZE}" count=1 status=none |
     tr '\000' '\377' > "${output_file}"
@@ -392,20 +426,23 @@ sign_cr50_firmware() {
   done
 
   if ! sign_rw "${key_file}" "${manifest_file}" "${fuses_file}" \
-               "${rma_key_dir}" "${rw_a}" "${rw_b}" "${output_file}"; then
+       "${rma_key_dir}" "${rw_a}" "${rw_b}" \
+       "${output_file}" "${generation}"; then
     die "Failed invoking sign_rw for ELF files ${rw_a} ${rw_b}"
   fi
 
+  ro_b_base=$(( IMAGE_SIZE / 2 ))
   dd if="${temp_dir}/0.bin" of="${output_file}" conv=notrunc
-  dd if="${temp_dir}/1.bin" of="${output_file}" seek=262144 bs=1 conv=notrunc
+  dd if="${temp_dir}/1.bin" of="${output_file}" seek="${ro_b_base}" bs=1 \
+     conv=notrunc
 
   echo "Image successfully signed to ${output_file}"
 }
 
-# Sign the directory holding cr50 firmware.
-sign_cr50_firmware_dir() {
+# Sign the directory holding Gsc firmware.
+sign_gsc_firmware_dir() {
   if [[ $# -ne 3 ]]; then
-    die "Usage: sign_cr50_firmware_dir <input> <key> <output>"
+    die "Usage: sign_gsc_firmware_dir <input> <key> <output>"
   fi
 
   local input="${1%/}"
@@ -416,7 +453,7 @@ sign_cr50_firmware_dir() {
     output="${output}/cr50.bin.prod"
   fi
 
-  sign_cr50_firmware \
+  sign_gsc_firmware \
           "${key_file}" \
           "${input}/prod.json" \
           "${input}/fuses.xml" \
@@ -455,6 +492,6 @@ main() {
     die "Missing input directory: ${input}"
   fi
 
-  sign_cr50_firmware_dir "${input}" "${key_file}" "${output}"
+  sign_gsc_firmware_dir "${input}" "${key_file}" "${output}"
 }
 main "$@"
