@@ -1077,9 +1077,38 @@ static const struct vb2_screen_info diagnostics_screen = {
 #define DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN 1
 #define DIAGNOSTICS_STORAGE_ITEM_BACK 2
 
+int use_mock;  /* Workaround of mocking minidiag */
+
 static vb2_error_t diagnostics_storage_init(struct vb2_ui_context *ui)
 {
 	const char *log_string = vb2ex_get_diagnostic_storage();
+	if (use_mock)
+		log_string =
+		"Total 1 storage device.\n"
+		"\n"
+		"Health info of the block device 'NVMe Namespace 1' (1/1):\n"
+		"SMART/Health Information (NVMe Log 0x02)\n"
+		"Critical Warning:                   0x00\n"
+		"Temperature:                        45 Celsius\n"
+		"Available Spare:                    100%\n"
+		"Available Spare Threshold:          10%\n"
+		"Percentage Used:                    0%\n"
+		"Data Units Read:                    2931604 [1.364 TiB]\n"
+		"Data Units Written:                 3212004 [1.495 TiB]\n"
+		"Host Read Commands:                 6899705\n"
+		"Host Write Commands:                11240361\n"
+		"Controller Busy Time:               208\n"
+		"Power Cycles:                       144\n"
+		"Power On Hours:                     49\n"
+		"Unsafe Shutdowns:                   72\n"
+		"Media and Data Integrity Errors:    0\n"
+		"Error Information Log Entries:      0\n"
+		"Temperature Sensor 1:               45 Celsius\n"
+		"Temperature Sensor 2:               43 Celsius\n"
+		"Thermal Temp. 1 Transition Count:   0\n"
+		"Thermal Temp. 2 Transition Count:   0\n"
+		"Thermal Temp. 1 Total Time:         0\n"
+		"Thermal Temp. 2 Total Time:         0";
 	if (!log_string) {
 		VB2_DEBUG("ERROR: Failed to retrieve storage log message\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
@@ -1128,12 +1157,31 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 						    int reset)
 {
 	const char *log_string = NULL;
+	vb2_error_t rv;
 
 	/* Early return if the memory test is done. */
 	if (ui->state->test_finished)
 		return VB2_REQUEST_UI_CONTINUE;
 
-	vb2_error_t rv = op(reset, &log_string);
+	if (ui->key == 'e')
+		use_mock = !use_mock;
+	if (use_mock)
+		log_string =
+		"This test may take a few minutes.\n"
+		"\n"
+		"Free memory (will be tested): 15.880 GiB\n"
+		"Loaded test patterns: 'five_a_8'\n"
+		"\n"
+		"\n"
+		"Memory test failed:\n"
+		"    Pattern 'five_a_8' failed at 0x000000456789ab\n"
+		"    in memory segment [0x00000041059090, 0x00000051059090).";
+
+	/* Do not update if use mock */
+	if (!use_mock)
+		rv = op(reset, &log_string);
+	else
+		rv = VB2_ERROR_EX_DIAG_TEST_UPDATED;
 
 	/* The test is still running but the output buffer was unchanged. */
 	if (rv == VB2_ERROR_EX_DIAG_TEST_RUNNING)
@@ -1182,14 +1230,16 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 
 static vb2_error_t diagnostics_memory_init_quick(struct vb2_ui_context *ui)
 {
-	return diagnostics_memory_update_screen(
+	diagnostics_memory_update_screen(
 		ui, &vb2ex_diag_memory_quick_test, 1);
+	return log_page_init(ui);
 }
 
 static vb2_error_t diagnostics_memory_init_full(struct vb2_ui_context *ui)
 {
-	return diagnostics_memory_update_screen(
+	diagnostics_memory_update_screen(
 		ui, &vb2ex_diag_memory_full_test, 1);
+	return log_page_init(ui);
 }
 
 static vb2_error_t diagnostics_memory_update_quick(struct vb2_ui_context *ui)
@@ -1273,4 +1323,30 @@ const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen id)
 			return screens[i];
 	}
 	return NULL;
+}
+
+enum vb2_screen vb2_get_prev_screen_id(enum vb2_screen id)
+{
+	int i;
+	int num_screens = ARRAY_SIZE(screens);
+	if (screens[0]->id == id)
+		return screens[num_screens - 1]->id;
+	for (i = 1; i < num_screens; i++) {
+		if (screens[i]->id == id)
+			return screens[i - 1]->id;
+	}
+	return id;  /* fallback to itself */
+}
+
+enum vb2_screen vb2_get_next_screen_id(enum vb2_screen id)
+{
+	int i;
+	int num_screens = ARRAY_SIZE(screens);
+	if (screens[num_screens - 1]->id == id)
+		return screens[0]->id;
+	for (i = 1; i < num_screens; i++) {
+		if (screens[i]->id == id)
+			return screens[i + 1]->id;
+	}
+	return id;  /* fallback to itself */
 }
