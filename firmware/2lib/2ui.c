@@ -394,6 +394,14 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 				return rv;
 		}
 
+		enum vb2_screen id = ui.state->screen->id;
+		if (ui.key == VB_KEY_LEFT)
+			vb2_ui_screen_change(&ui, vb2_get_prev_screen_id(id));
+		if (ui.key == VB_KEY_RIGHT)
+			vb2_ui_screen_change(&ui, vb2_get_next_screen_id(id));
+		if (ui.key == '0')
+			vb2_ui_screen_change(&ui, root_screen_id);
+
 		/* Delay. */
 		elapsed_ms = vb2ex_mtime() - start_time_ms;
 		if (elapsed_ms < KEY_DELAY_MS)

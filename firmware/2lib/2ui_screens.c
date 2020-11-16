@@ -1268,3 +1268,29 @@ const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen id)
 	}
 	return NULL;
 }
+
+enum vb2_screen vb2_get_prev_screen_id(enum vb2_screen id)
+{
+	int i;
+	int num_screens = ARRAY_SIZE(screens);
+	if (screens[0]->id == id)
+		return screens[num_screens - 1]->id;
+	for (i = 1; i < num_screens; i++) {
+		if (screens[i]->id == id)
+			return screens[i - 1]->id;
+	}
+	return id;  /* fallback to itself */
+}
+
+enum vb2_screen vb2_get_next_screen_id(enum vb2_screen id)
+{
+	int i;
+	int num_screens = ARRAY_SIZE(screens);
+	if (screens[num_screens - 1]->id == id)
+		return screens[0]->id;
+	for (i = 1; i < num_screens; i++) {
+		if (screens[i]->id == id)
+			return screens[i + 1]->id;
+	}
+	return id;  /* fallback to itself */
+}
