@@ -290,6 +290,8 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 /*****************************************************************************/
 /* Core UI loop */
 
+#define FORCE_DRAW_FAIL 0xff
+
 vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		    vb2_error_t (*global_action)(struct vb2_ui_context *ui))
 {
@@ -302,6 +304,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	uint32_t key_flags;
 	uint32_t start_time_ms, elapsed_ms;
 	vb2_error_t rv;
+	int force_draw_fail = 0, prev_force_draw_fail = 0;;
 
 	memset(&ui, 0, sizeof(ui));
 	ui.ctx = ctx;
@@ -319,6 +322,11 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	while (1) {
 		start_time_ms = vb2ex_mtime();
 
+		if (force_draw_fail)
+			ui.error_code = FORCE_DRAW_FAIL;
+		else if (ui.error_code == FORCE_DRAW_FAIL)
+			ui.error_code = 0;
+
 		/* Draw if there are state changes. */
 		if (memcmp(&prev_state, ui.state, sizeof(*ui.state)) ||
 		    /* Redraw when timer is disabled. */
@@ -328,7 +336,9 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		    /* Beep. */
 		    ui.error_beep != 0 ||
 		    /* Redraw on a screen request to refresh. */
-		    ui.force_display) {
+		    ui.force_display ||
+		    /* Force draw fail. */
+		    prev_force_draw_fail != force_draw_fail) {
 
 			menu = get_menu(&ui);
 			VB2_DEBUG("<%s> menu item <%s>\n",
@@ -345,6 +355,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 					 ui.error_code);
 			if (ui.error_beep ||
 			    (ui.error_code &&
+			     ui.error_code != FORCE_DRAW_FAIL &&
 			     prev_error_code != ui.error_code)) {
 				vb2ex_beep(250, 400);
 				ui.error_beep = 0;
@@ -357,6 +368,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			memcpy(&prev_state, ui.state, sizeof(*ui.state));
 			prev_disable_timer = ui.disable_timer;
 			prev_error_code = ui.error_code;
+			prev_force_draw_fail = force_draw_fail;
 		}
 
 		/* Grab new keyboard input. */
@@ -393,6 +405,19 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 			if (rv != VB2_REQUEST_UI_CONTINUE)
 				return rv;
 		}
+
+		/* Force trigger draw fail. */
+		if (ui.key == 'f')
+			force_draw_fail = !force_draw_fail;
+
+		/* Force navigate screens. */
+		enum vb2_screen id = ui.state->screen->id;
+		if (ui.key == VB_KEY_LEFT)
+			vb2_ui_screen_change(&ui, vb2_get_prev_screen_id(id));
+		if (ui.key == VB_KEY_RIGHT)
+			vb2_ui_screen_change(&ui, vb2_get_next_screen_id(id));
+		if (ui.key == '0')
+			vb2_ui_screen_change(&ui, root_screen_id);
 
 		/* Delay. */
 		elapsed_ms = vb2ex_mtime() - start_time_ms;
