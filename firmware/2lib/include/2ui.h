@@ -144,6 +144,9 @@ vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
  */
 const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen id);
 
+enum vb2_screen vb2_get_prev_screen_id(enum vb2_screen id);
+enum vb2_screen vb2_get_next_screen_id(enum vb2_screen id);
+
 /*****************************************************************************/
 /* Menu navigation functions */
 
