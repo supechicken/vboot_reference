@@ -15,6 +15,14 @@
 #include "2struct.h"
 #include "2sysincludes.h"
 
+#if defined(__GNUC__) && __GNUC__ >= 7
+#define FALLTHROUGH __attribute__ ((fallthrough));
+#elif defined(__clang__) && __clang_major__ >= 12
+#define FALLTHROUGH __attribute__ ((fallthrough));
+#else
+#define FALLTHROUGH
+#endif
+
 struct vb2_public_key;
 
 /* Time conversion constants. */
