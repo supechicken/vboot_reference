@@ -128,9 +128,9 @@ WERROR := -Werror
 FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
 COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
-	-Wwrite-strings -Wstrict-aliasing -Wdate-time -Wno-unknown-warning \
-	-Wno-address-of-packed-member -ffunction-sections -fdata-sections \
-	-Wimplicit-fallthrough -Wformat -Wno-format-security ${DEBUG_FLAGS}
+	-Wwrite-strings -Wstrict-aliasing -Wdate-time \
+	-ffunction-sections -fdata-sections \
+	-Wformat -Wno-format-security ${DEBUG_FLAGS}
 
 # FIRMWARE_ARCH is defined if compiling for a firmware target
 # (coreboot or depthcharge).
@@ -152,6 +152,25 @@ else
 CC ?= gcc
 CFLAGS += -DCHROMEOS_ENVIRONMENT ${COMMON_FLAGS}
 endif
+
+# Enforce CFLAGS to be a simply expanded variable or the test_ccflag
+# call later will be evaluated for every use of the variable
+CFLAGS := $(CFLAGS)
+
+CFLAGS += -std=gnu11
+
+# test_ccflag
+# $(1): compiler flags to test
+# $(2): code to insert into test snippet
+# returns: $(1) if compiler was successful, empty string otherwise
+test_ccflag = $(shell \
+	printf "$(2)\nvoid _start(void) {}\n" | \
+	$(CC) -nostdlib -Werror $(1) -xc -c - -o /dev/null \
+	>/dev/null 2>&1 && echo "$(1)")
+
+COMMON_FLAGS += $(call test_ccflag,-Wimplicit-fallthrough)
+COMMON_FLAGS += $(call test_ccflag,-Wno-address-of-packed-member)
+COMMON_FLAGS += $(call test_ccflag,-Wno-unknown-warning)
 
 # Needs -Wl because LD is actually set to CC by default.
 LDFLAGS += -Wl,--gc-sections
@@ -247,8 +266,12 @@ ifeq (${FIRMWARE_ARCH},)
 CFLAGS += -fPIE
 endif
 
-# These are required to access large disks and files on 32-bit systems.
-CFLAGS += -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
+CFLAGS += -D_GNU_SOURCE
+
+# This is required to access large disks and files on 32-bit systems,
+# but if the environment doesn't support it, at least compile support
+# for what is possible.
+CFLAGS += $(call test_ccflag,-D_FILE_OFFSET_BITS=64,\#include <fts.h>)
 
 # Code coverage
 ifneq (${COV},)
