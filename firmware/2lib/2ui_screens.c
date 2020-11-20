@@ -1182,14 +1182,24 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 
 static vb2_error_t diagnostics_memory_init_quick(struct vb2_ui_context *ui)
 {
-	return diagnostics_memory_update_screen(
+	vb2_error_t rv;
+	rv = diagnostics_memory_update_screen(
 		ui, &vb2ex_diag_memory_quick_test, 1);
+
+	if (rv != VB2_REQUEST_UI_CONTINUE)
+		return rv;
+	return log_page_init(ui);
 }
 
 static vb2_error_t diagnostics_memory_init_full(struct vb2_ui_context *ui)
 {
-	return diagnostics_memory_update_screen(
+	vb2_error_t rv;
+	rv = diagnostics_memory_update_screen(
 		ui, &vb2ex_diag_memory_full_test, 1);
+
+	if (rv != VB2_REQUEST_UI_CONTINUE)
+		return rv;
+	return log_page_init(ui);
 }
 
 static vb2_error_t diagnostics_memory_update_quick(struct vb2_ui_context *ui)
@@ -1221,6 +1231,9 @@ static const struct vb2_screen_info diagnostics_memory_quick_screen = {
 	.init = diagnostics_memory_init_quick,
 	.action = diagnostics_memory_update_quick,
 	.menu = MENU_ITEMS(diagnostics_memory_items),
+	.page_up_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_UP,
+	.page_down_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN,
+	.back_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
 };
 
 static const struct vb2_screen_info diagnostics_memory_full_screen = {
@@ -1229,6 +1242,9 @@ static const struct vb2_screen_info diagnostics_memory_full_screen = {
 	.init = diagnostics_memory_init_full,
 	.action = diagnostics_memory_update_full,
 	.menu = MENU_ITEMS(diagnostics_memory_items),
+	.page_up_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_UP,
+	.page_down_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN,
+	.back_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
 };
 
 /******************************************************************************/
