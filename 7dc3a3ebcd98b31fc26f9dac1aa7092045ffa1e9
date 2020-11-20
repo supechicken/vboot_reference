@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc02fc7a_105beada",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-11-20T22:25:14Z",
+      "side": 1,
+      "message": "Problem here is that the way this Makefile is ordered (it\u0027s a mess, I know...), CC isn\u0027t necessarily set at this point yet. Also, you\u0027re not actually passing CC here so testcc.sh will read the environment variable, which may be empty.\n\nI think to properly integrate into the existing behavior you need to do rewrite this a little where you change all the CFLAGS ?\u003d below to COMMON_FLAGS +\u003d, then after line 155 you also append the result of testcc.sh (passing in ${CC}) to COMMON_FLAGS as well, and then you do the CFLAGS ?\u003d ${COMMON_FLAGS}.",
+      "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7237efcb_d0c027ae",
+        "filename": "testcc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-11-20T22:25:14Z",
+      "side": 1,
+      "message": "(FWIW you can also read from - (stdin) and write to /dev/null if you additionally pass -xc, you shouldn\u0027t really need tempfiles.)",
+      "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9d8ee1_42aeb9ba",
+        "filename": "testcc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-11-20T22:25:14Z",
+      "side": 1,
+      "message": "Could you rewrite this such that these flags are passed in on the command line? I\u0027d prefer if you can see all flags we\u0027re trying to use right in the Makefile.",
+      "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
