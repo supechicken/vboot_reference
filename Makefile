@@ -124,13 +124,14 @@ endif
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
 DEBUG_FLAGS := $(if ${DEBUG},-g -O0,-g -Os)
+DEBUG_FLAGS += $(shell ./testcc.sh)
 WERROR := -Werror
 FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
 COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
-	-Wwrite-strings -Wstrict-aliasing -Wdate-time -Wno-unknown-warning \
-	-Wno-address-of-packed-member -ffunction-sections -fdata-sections \
-	-Wimplicit-fallthrough -Wformat -Wno-format-security ${DEBUG_FLAGS}
+	-Wwrite-strings -Wstrict-aliasing -Wdate-time \
+	-ffunction-sections -fdata-sections \
+	-Wformat -Wno-format-security ${DEBUG_FLAGS}
 
 # FIRMWARE_ARCH is defined if compiling for a firmware target
 # (coreboot or depthcharge).
@@ -152,6 +153,8 @@ else
 CC ?= gcc
 CFLAGS += -DCHROMEOS_ENVIRONMENT ${COMMON_FLAGS}
 endif
+
+CFLAGS += -std=gnu11
 
 # Needs -Wl because LD is actually set to CC by default.
 LDFLAGS += -Wl,--gc-sections
