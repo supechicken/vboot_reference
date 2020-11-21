@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0089bbf7_f54d2f8c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2020-11-21T10:56:03Z",
+      "side": 1,
+      "message": "I got rid of testcc.sh now, doing multiple calls now. That way it\u0027s \"only\" a problem of keeping the right order, but I think I got it.",
+      "parentUuid": "cc02fc7a_105beada",
+      "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7237efcb_d0c027ae",
         "filename": "testcc.sh",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-20T22:25:14Z",
       "side": 1,
       "message": "(FWIW you can also read from - (stdin) and write to /dev/null if you additionally pass -xc, you shouldn\u0027t really need tempfiles.)",
+      "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "108327d7_dfd2f160",
+        "filename": "testcc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2020-11-21T10:56:03Z",
+      "side": 1,
+      "message": "Good call. I remembered that being a possibility but forgot about -xc.",
+      "parentUuid": "7237efcb_d0c027ae",
       "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2020-11-20T22:25:14Z",
       "side": 1,
       "message": "Could you rewrite this such that these flags are passed in on the command line? I\u0027d prefer if you can see all flags we\u0027re trying to use right in the Makefile.",
+      "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a252d7d_b80559d5",
+        "filename": "testcc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2020-11-21T10:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b9d8ee1_42aeb9ba",
       "revId": "7dc3a3ebcd98b31fc26f9dac1aa7092045ffa1e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
