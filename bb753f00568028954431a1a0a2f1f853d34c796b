@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand how this can work? Doesn\u0027t this fully expand CFLAGS (including the ${COMMON_FLAGS} in it) so that when you later append more to COMMON_FLAGS it cannot affect CFLAGS anymore?",
       "revId": "bb753f00568028954431a1a0a2f1f853d34c796b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80581f6d_f60591c9",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2020-11-22T11:04:31Z",
+      "side": 1,
+      "message": "Well, that\u0027s because I missed that the dynamic aspect was desired (and not just an artifact of ?\u003d defining variables that way). It built for me, but probably more by chance with lots of compiler flags and defines not set the way they should be.\n\nThe new version keeps CFLAGS recursively evaluated but passes the 64bits test through a simply evaluated variable to nail down the result (instead of running the test for every single gcc invocation)",
+      "parentUuid": "8802c281_16f45d98",
+      "revId": "bb753f00568028954431a1a0a2f1f853d34c796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
