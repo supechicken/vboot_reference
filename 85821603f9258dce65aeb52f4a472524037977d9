@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2d41749_922a06c7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-11-24T07:08:12Z",
+      "side": 1,
+      "message": "After rethink again, I think it is also good to fix this in this CL.\n\nSummarize my idea mentioned above:\n* create log_page_update to maintain prev_page/next_page buttons.\n* We only need to maintain the page count in action callback. Then, we can call log_page_update() at the end of log_page_init()/log_page_prev_action()/log_page_next_action()/diagnostics_memory_update_screen()\n\nlog_page_update:\n  log_page_update(struct vb2_ui_context *ui)\n  {\n\tif (ui-\u003estate-\u003epage_count \u003d\u003d 1) {\n             ...\n\t} else if (ui-\u003estate-\u003ecurrent_page \u003d\u003d 0) {\n             ...\n\t} else if (ui-\u003estate-\u003ecurrent_page \u003d\u003d ui-\u003estate-\u003epage_count - 1) {\n             ...\n\t} else {\n             ...\n\t}\n        return ...\n  }",
+      "parentUuid": "152b7bbb_97e92544",
+      "range": {
+        "startLine": 1157,
+        "startChar": 2,
+        "endLine": 1157,
+        "endChar": 54
+      },
+      "revId": "85821603f9258dce65aeb52f4a472524037977d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c25665b_fbffb3c9",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "We introduce these members at http://crrev/c/2426154,\nwhich is the CL introducing disabled button style.\n\nFor details, you could read: http://crrev/c/2426154/18/firmware/2lib/2ui_screens.c#55",
       "parentUuid": "1c25665b_fbffb3c9",
+      "revId": "85821603f9258dce65aeb52f4a472524037977d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef0fd24_e0c9919d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-11-24T07:08:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ead530c3_ec2c8962",
       "revId": "85821603f9258dce65aeb52f4a472524037977d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
