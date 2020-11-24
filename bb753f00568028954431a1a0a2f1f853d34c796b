@@ -34,6 +34,24 @@
       "parentUuid": "8802c281_16f45d98",
       "revId": "bb753f00568028954431a1a0a2f1f853d34c796b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81744183_3b4e40ae",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-11-24T04:03:15Z",
+      "side": 1,
+      "message": "Yeah, like I said it\u0027s a mess, but if we wanted to rewrite it we\u0027d have to be very careful to keep the behavior we rely on for all cases.\n\nI guess what you now did works although it makes me feel a bit uneasy to rely on the lazy evaluation feature so much, I think most people aren\u0027t that familiar with that difference and might be confused how this works.",
+      "parentUuid": "80581f6d_f60591c9",
+      "revId": "bb753f00568028954431a1a0a2f1f853d34c796b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
