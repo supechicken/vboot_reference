@@ -22,6 +22,47 @@
       },
       "revId": "85821603f9258dce65aeb52f4a472524037977d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "152b7bbb_97e92544",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-11-24T06:32:37Z",
+      "side": 1,
+      "message": "Good catch! Thanks, Joel.\n\nIt looks we missed this due to some API is changing during the development this function. We currently don\u0027t have \"shorten\" case in minidiag, but it is good to fix this in other CL.\n\nI am thinking whether it is a good idea to split out \"the logic of enabling/disabling page_up/down buttons\" from log_page_init() and other page_prev/page_next action functions to a single helper function, then we could re-use all the logic?\ni.e. create log_page_update_page_button(struct vb2_ui_context *ui) (or log_page_update) to handle all cases (single page, at the first page, at the last page...etc.), then we don\u0027t need to handle them separately in the screen action callback. Joel and Rocco, what do you think?",
+      "parentUuid": "97bd9087_9cebcd7c",
+      "range": {
+        "startLine": 1157,
+        "startChar": 2,
+        "endLine": 1157,
+        "endChar": 54
+      },
+      "revId": "85821603f9258dce65aeb52f4a472524037977d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c25665b_fbffb3c9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-11-24T06:32:37Z",
+      "side": 1,
+      "message": "Just wondering to know why do we need this? Is it a new design for pageup/pagedown API in recent groot?",
+      "revId": "85821603f9258dce65aeb52f4a472524037977d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
