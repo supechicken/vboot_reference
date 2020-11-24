@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12949424_5a0457d3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2020-11-24T10:57:28Z",
+      "side": 1,
+      "message": "I agree that we should introduce log_page_update() since we have to validate and update them frequently.\n\nI suggest that:\n\n1. Add log_page_update(ui):\n- validate page_count \u003e\u003d 1\n- adjust current_page to fit in [0, page_count)\n- clear and set bits for disabled_item_mask\n\n2. Add log_page_prepare(ui, log_string, error_code, error_str):\n- call vb2ex_prepare_log_screen(ui-\u003estate-\u003escreen-\u003eid, ui-\u003elocale_id, log_string)\n- VB2_DEBUG(error_star) and set error_code if fail\n- update ui-\u003estate-\u003epage_count\n- call log_page_update(ui)\n\n3. leverage log_page_update() on log_page_init()/log_page_prev()/log_page_next().\n\nThen we can ensure that we call log_page_update() everytime we prepare a new log content.\n\n\n\nAnother suggestion here is we could publicize these all 5 functions to 2ui_private.h and design unit tests for them.\n\nWDYT?",
+      "parentUuid": "a2d41749_922a06c7",
+      "range": {
+        "startLine": 1157,
+        "startChar": 2,
+        "endLine": 1157,
+        "endChar": 54
+      },
+      "revId": "85821603f9258dce65aeb52f4a472524037977d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c25665b_fbffb3c9",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
