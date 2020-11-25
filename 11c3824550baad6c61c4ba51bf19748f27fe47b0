@@ -16,6 +16,23 @@
       "message": "Add TODO comments",
       "revId": "11c3824550baad6c61c4ba51bf19748f27fe47b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61f8d93_375f1862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-11-25T05:09:57Z",
+      "side": 1,
+      "message": "It seems the framework change is much complex than I thought. I am ok to land to CL first because we had bug in ToT and it should not be blocked by this non-critical discussion.\n\n+2, but pls wait a day to let Joel be able to comment on this topics.",
+      "revId": "11c3824550baad6c61c4ba51bf19748f27fe47b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
