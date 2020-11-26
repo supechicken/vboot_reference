@@ -1043,6 +1043,23 @@ static void manual_recovery_tests(void)
 			"VB2_NV_DIAG_REQUEST is set");
 	}
 
+	/* Enter diagnostics by Ctrl+M */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress(VB_KEY_CTRL('M'));
+	if (DIAGNOSTIC_UI) {
+		TEST_EQ(vb2_manual_recovery_menu(ctx),
+			VB2_REQUEST_REBOOT,
+			"Reboot immediately after request diagnostics");
+		TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 1,
+			"VB2_NV_DIAG_REQUEST is set");
+	} else {
+		TEST_EQ(vb2_manual_recovery_menu(ctx),
+			VB2_REQUEST_SHUTDOWN,
+			"No reboot if diagnostic ui disabled");
+		TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
+			"VB2_NV_DIAG_REQUEST is not set");
+	}
+
 	VB2_DEBUG("...done.\n");
 }
 
