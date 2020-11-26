@@ -74,6 +74,8 @@ static uint32_t mock_bootloader_count;
 static uint32_t mock_time_ms;
 static const uint32_t mock_time_start_ms = 31ULL * VB2_MSEC_PER_SEC;
 
+static int mock_diagnostic_ui_enabled;
+
 /* Mock actions */
 static uint32_t mock_action_called;
 static uint32_t mock_action_countdown_limit;
@@ -369,6 +371,9 @@ static void reset_common_data(void)
 
 	/* For vb2ex_mtime and vb2ex_msleep  */
 	mock_time_ms = mock_time_start_ms;
+
+	/* For vb2api_diagnostic_ui_enabled */
+	mock_diagnostic_ui_enabled = 0;
 }
 
 /* Mock functions */
@@ -521,6 +526,11 @@ uint32_t vb2ex_mtime(void)
 void vb2ex_msleep(uint32_t msec)
 {
 	mock_time_ms += msec;
+}
+
+int vb2api_diagnostic_ui_enabled(struct vb2_context *c)
+{
+	return mock_diagnostic_ui_enabled;
 }
 
 /* Tests */
@@ -792,6 +802,35 @@ static void vb2_ui_developer_mode_boot_alternate_action_tests(void)
 	VB2_DEBUG("...done.\n");
 }
 
+static void vb2_ui_launch_diagnostics_action_tests(void)
+{
+	VB2_DEBUG("Testing launch diagnostics action...\n");
+
+	/* Diagnostic UI functionality is disabled */
+	reset_common_data();
+	TEST_EQ(vb2_ui_launch_diagnostics_action(&mock_ui_context),
+		VB2_REQUEST_UI_CONTINUE, "functionality is disabled");
+	TEST_EQ(vb2_nv_get(mock_ui_context.ctx, VB2_NV_DIAG_REQUEST),
+		0, "VB2_NV_DIAG_REQUEST is not set");
+
+	/* Launch diagnostics */
+	reset_common_data();
+	mock_diagnostic_ui_enabled = 1;
+	if (DIAGNOSTIC_UI) {
+		TEST_EQ(vb2_ui_launch_diagnostics_action(&mock_ui_context),
+			VB2_REQUEST_REBOOT, "launch diagnostics");
+		TEST_EQ(vb2_nv_get(mock_ui_context.ctx, VB2_NV_DIAG_REQUEST),
+			1, "VB2_NV_DIAG_REQUEST is set");
+	} else {
+		TEST_EQ(vb2_ui_launch_diagnostics_action(&mock_ui_context),
+			VB2_REQUEST_UI_CONTINUE, "no diagnostic ui");
+		TEST_EQ(vb2_nv_get(mock_ui_context.ctx, VB2_NV_DIAG_REQUEST),
+			0, "VB2_NV_DIAG_REQUEST is not set");
+	}
+
+	VB2_DEBUG("...done.\n");
+}
+
 static void manual_recovery_action_tests(void)
 {
 	VB2_DEBUG("Testing manual recovery action...\n");
@@ -1055,6 +1094,7 @@ int main(void)
 
 	/* Screen actions */
 	vb2_ui_developer_mode_boot_alternate_action_tests();
+	vb2_ui_launch_diagnostics_action_tests();
 
 	/* Global actions */
 	manual_recovery_action_tests();

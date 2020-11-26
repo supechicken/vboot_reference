@@ -417,9 +417,13 @@ static const struct vb2_screen_info firmware_log_screen = {
 #define RECOVERY_SELECT_ITEM_EXTERNAL_DISK 2
 #define RECOVERY_SELECT_ITEM_DIAGNOSTICS 3
 
-/* Set VB2_NV_DIAG_REQUEST and reboot. */
-static vb2_error_t launch_diagnostics_action(struct vb2_ui_context *ui)
+vb2_error_t vb2_ui_launch_diagnostics_action(struct vb2_ui_context *ui)
 {
+	/* Validity check. */
+        if (!DIAGNOSTIC_UI || !vb2api_diagnostic_ui_enabled(ui->ctx))
+		return VB2_REQUEST_UI_CONTINUE;
+
+	/* Set VB2_NV_DIAG_REQUEST and reboot. */
 	vb2_nv_set(ui->ctx, VB2_NV_DIAG_REQUEST, 1);
 	VB2_DEBUG("Diagnostics requested, rebooting\n");
 	return VB2_REQUEST_REBOOT;
@@ -454,7 +458,7 @@ static const struct vb2_menu_item recovery_select_items[] = {
 	},
 	[RECOVERY_SELECT_ITEM_DIAGNOSTICS] = {
 		.text = "Launch diagnostics",
-		.action = launch_diagnostics_action,
+		.action = vb2_ui_launch_diagnostics_action,
 	},
 	ADVANCED_OPTIONS_ITEM,
 	POWER_OFF_ITEM,

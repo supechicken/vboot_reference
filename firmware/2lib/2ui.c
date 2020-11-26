@@ -477,6 +477,9 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 	if (ui->key == VB_KEY_CTRL('D') ||
 	    (DETACHABLE && ui->key == VB_BUTTON_VOL_UP_DOWN_COMBO_PRESS))
 		return vb2_ui_screen_change(ui, VB2_SCREEN_RECOVERY_TO_DEV);
+	if (ui->key == VB_KEY_CTRL('T') &&
+	    DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ui->ctx))
+		return vb2_ui_launch_diagnostics_action(ui);
 
 	if (ui->key == '\t')
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
