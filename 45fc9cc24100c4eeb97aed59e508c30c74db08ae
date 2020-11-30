@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c4b7fc_e6ff8efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-11-30T22:53:08Z",
+      "side": 1,
+      "message": "On Wilco the combination we used for diagnostics was Ctrl+C. Shouldn\u0027t we stick to that for consistency?\n\n(In general, please be careful when allocating new combinations because it\u0027s not always as easy as it may seem. T seems to be an okay button to use as far as I can tell, but the M you had in the first patch set would have been problematic because on the French AZERTY layouts, that button is used for the comma instead.)",
+      "revId": "45fc9cc24100c4eeb97aed59e508c30c74db08ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
