@@ -260,7 +260,7 @@ CFLAGS += -MMD -MF $@.d
 
 ifeq (${FIRMWARE_ARCH},)
 # Creates position independent code for non firmware target.
-CFLAGS += -fPIE
+CFLAGS += -fPIC
 endif
 
 CFLAGS += -D_GNU_SOURCE
