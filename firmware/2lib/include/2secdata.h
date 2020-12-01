@@ -115,8 +115,12 @@ enum vb2_secdata_kernel_flags {
 	 * Verstage will use HW implementation for RSA only when
 	 * this flag is set.
 	 *
-	 * Note: this will only allow/disallow HWCRYPTO for RSA.
-	 * Using HW for hash digest is controlled by flag in the FW preamble.
+	 * Note: We used a flag in the FW preamble for this before.
+	 * FW preamble was checked by verstage so the effect was immediate.
+	 * However with TPM flag we have to modify this in RW stage which is
+	 * after verstage, so even if we clear this flag the first boot
+	 * WILL use hwcrypto, RW stage will run and clear this flag and then
+	 * hwcrypto will be disabled from next boot.
 	 */
 	VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED = (1 << 3),
 };
