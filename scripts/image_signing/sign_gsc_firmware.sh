@@ -36,6 +36,75 @@ to_int32() {
            print (struct.unpack('i', d)[0])"
 }
 
+# Functions allowing to determine the base address of a binary blob in ihex
+# format. Invoked in a subprocess through () to be able to use stdout as the
+# return values.
+
+# The first record in the ihex binary blob is usually the segment address.
+# Depending on the record type it is represented shifted right either 4 or 16
+# bits.
+parse_segment() {
+  local string="$1"
+
+  if [[ "${string}" =~ ^:020000 && "${#string}" -eq 15 ]]; then
+    local type="${string:7:2}"
+    local value="0x${string:9:4}"
+    local segment
+
+    case "${type}" in
+      (02)
+        segment=$(( ${value} << 4 ))
+        ;;
+      (04)
+        segment=$(( ${value} << 16 ))
+        ;;
+      (*)
+        error "unknown segment record type ${type}"
+        ;;
+    esac
+    printf "0x%x" "${segment}"
+  else
+    error "unexpected segment record: ${string}"
+  fi
+}
+
+# The second record in the ihex binary blob is mapped to the lowest 16 bit
+# address in the segment.
+parse_data() {
+  local string="$1"
+
+  if [[ "${string}" =~ ^:10 && "${#string}" -eq 43 ]]; then
+    echo "0x${string:3:4}"
+  else
+    error "unexpected data record: ${string}"
+  fi
+}
+
+# Given an ihex binary blob determine its base address as a sum of the segment
+# address and the offset of the first record into the segment.
+get_hex_base() {
+  local hexf="$1"
+  local strings
+  local segment
+  local base_offset
+
+  # Some ihex blobs include <cr><lf>, drop <cr> to allow for fixed size check.
+  strings=( $(head -2 "${hexf}" | sed 's/\x0d//') )
+
+  if [[ ${#strings[@]} != 2 ]]; then
+    error "input file ${hexf} too short"
+    return
+  fi
+  segment="$(parse_segment ${strings[0]})"
+  base_offset="$(parse_data ${strings[1]})"
+
+  if [[ -n "${segment}" && -n "${base_offset}" ]]; then
+    printf "%d\n" $(( ${segment} + ${base_offset} ))
+  else
+    error "${hexf} does not seem to be a valid ihex module."
+  fi
+}
+
 # This function accepts one argument, the name of the GSC manifest file which
 # needs to be verified and in certain cases altered.
 #
