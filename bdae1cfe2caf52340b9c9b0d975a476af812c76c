@@ -33,6 +33,24 @@
       "message": "Actually I\u0027m surprised that we\u0027re setting this manually at all. I would\u0027ve thought portage decides somewhere globally whether it builds stuff PIE/PIC and passes respective flags through CFLAGS. Does it not do that, or are we just not letting that option come through correctly in the vboot ebuild? I think +vapier would know...\n\nI\u0027m also not sure why we\u0027re only providing the hostlib as a static library anyway. If it was shared, we wouldn\u0027t have this problem (or rather we\u0027d probably already have had this problem for existing use cases), right? Shouldn\u0027t libraries always be dynamic unless there\u0027s a good reason not to?\n\nI guess this seems like a step in the right direction but vboot is still a huge mess that I just wish someone would untangle one day... ^^",
       "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4bdb984_e0e87dc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-03T01:06:14Z",
+      "side": 1,
+      "message": "\u003e  would\u0027ve thought portage decides somewhere globally whether it builds stuff PIE/PIC and passes respective flags through CFLAGS. \n\nYep, that\u0027s generally what is done, but the Makefile explicitly ignores flags from outside: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/d3dba5d427f72b49fdde71aca720a8fdae9e7377/chromeos-base/vboot_reference/vboot_reference-9999.ebuild#31\n\n\u003e I\u0027m also not sure why we\u0027re only providing the hostlib as a static library anyway. If it was shared, we wouldn\u0027t have this problem (or rather we\u0027d probably already have had this problem for existing use cases), right? Shouldn\u0027t libraries always be dynamic unless there\u0027s a good reason not to?\n\nYes, we should definitely be building a dynamic library.",
+      "parentUuid": "77ac2128_68402104",
+      "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
