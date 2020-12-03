@@ -16,6 +16,23 @@
       "message": "Hi Martin:\nThis is a necessary bug fix for minidiag\n(Display error on error message, see (b:173772273) for details)",
       "revId": "6f53da4de1d58a5810619c9033def919a20db81e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a13b4332_720e0faf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2020-12-03T06:57:23Z",
+      "side": 1,
+      "message": "I changed my mind since the bug break the minidiag on Dirinboz, I would prefer to pick the CL ASAP.\n\nMartin, feel free to revert this if you encounter any issue. Thanks.",
+      "revId": "6f53da4de1d58a5810619c9033def919a20db81e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
