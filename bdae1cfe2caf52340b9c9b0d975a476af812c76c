@@ -69,6 +69,24 @@
       "parentUuid": "c4bdb984_e0e87dc5",
       "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c72ea1_0dc4db8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-12-03T16:26:12Z",
+      "side": 1,
+      "message": "\u003e In general, I don\u0027t really see a reason why the userspace parts of vboot (which is all that ebuild does) shouldn\u0027t be using host CFLAGS. Maybe we should just try it and see if it works?\n\nAh, ok, it wasn\u0027t clear to me whether this ebuild was userspace only. If that\u0027s the case, then we probably should be using flags from the ebuild. It\u0027s easy enough to test.\n\nHow do the firmware builds use vboot_reference? I see references to FIRMWARE_ARCH determining if it\u0027s a firmware build. Looks like maybe the ebuild is pulling in the source here: https://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/d3dba5d427f72b49fdde71aca720a8fdae9e7377/sys-boot/coreboot/coreboot-9999.ebuild#12.",
+      "parentUuid": "dec169d7_f012a9ba",
+      "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
