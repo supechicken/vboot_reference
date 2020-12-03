@@ -51,6 +51,24 @@
       "parentUuid": "77ac2128_68402104",
       "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec169d7_f012a9ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-03T01:49:37Z",
+      "side": 1,
+      "message": "\u003e Yep, that\u0027s generally what is done, but the Makefile explicitly ignores flags from outside: \n\nWell, the Makefile actually doesn\u0027t, the Makefile would take those flags. It\u0027s the ebuild that calls `unset CFLAGS` before running make. That line seems to be one of the oldest lines in that file (2011) and the original justification seems to have been that it can\u0027t link with U-Boot when using different flags (https://code.google.com/archive/p/chromium-os/issues/16808). Nowadays all our firmware code builds their own version of vboot directly and doesn\u0027t use the vboot_reference ebuild anymore, so that justification is definitely gone.\n\nIn general, I don\u0027t really see a reason why the userspace parts of vboot (which is all that ebuild does) shouldn\u0027t be using host CFLAGS. Maybe we should just try it and see if it works?",
+      "parentUuid": "c4bdb984_e0e87dc5",
+      "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
