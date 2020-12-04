@@ -87,6 +87,24 @@
       "parentUuid": "dec169d7_f012a9ba",
       "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0470baa6_3438c11e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-04T22:34:33Z",
+      "side": 1,
+      "message": "Yes, they\u0027re using CROS_WORKON_PROJECT to pull the vboot sources directly into their work tree and build their own specific version in there. The respective Makefile rules doing that are here: https://review.coreboot.org/plugins/gitiles/coreboot/+/refs/heads/master/src/security/vboot/Makefile.inc (depthcharge has something similar)",
+      "parentUuid": "17c72ea1_0dc4db8b",
+      "revId": "bdae1cfe2caf52340b9c9b0d975a476af812c76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
