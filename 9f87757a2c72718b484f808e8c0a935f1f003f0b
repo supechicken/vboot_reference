@@ -16,6 +16,24 @@
       "message": "The documentation for VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED also needs updating.\n\nCorrect me if I\u0027m missing something, but:\n\n* Previously, we can push a RW update which sets the DISALLOW_HWCRYPTO flag in the preamble, which stops hardware acceleration starting from before RW validation *on the first run* of new RW.\n\n* Now, when we push a RW update, the first run of new RW will still use hardware acceleration.  The secdata_kernel hwcrypto_allowed flag is only updated when RW code is reached.  Subsequent RW validation will not use hardware acceleration.\n\nMaybe this is unimportant -- if we find a bug in hardware crypto, it won\u0027t make a difference to use it one more time before disabling?  Regardless, I think we should explicitly point out that there is a change in behaviour here.",
       "revId": "9f87757a2c72718b484f808e8c0a935f1f003f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9784c054_354082a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-12-04T03:36:01Z",
+      "side": 1,
+      "message": "Yes you\u0027re correct. Added note in VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED documentation. Looks like it should\u0027ve been updated anyway.",
+      "parentUuid": "c83c47e2_a980f650",
+      "revId": "9f87757a2c72718b484f808e8c0a935f1f003f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
