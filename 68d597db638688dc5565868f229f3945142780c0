@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f5fd66_3f02aab0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T18:44:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b31c82d_96fbe457",
+      "range": {
+        "startLine": 245,
+        "startChar": 40,
+        "endLine": 245,
+        "endChar": 50
+      },
+      "revId": "68d597db638688dc5565868f229f3945142780c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7cc0173_47acb9ad",
@@ -71,6 +95,24 @@
       "writtenOn": "2020-12-04T18:42:28Z",
       "side": 1,
       "message": "what\u0027s with scp ?  these are all local files.",
+      "revId": "68d597db638688dc5565868f229f3945142780c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d636eced_5f01fe94",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2020-12-04T18:44:49Z",
+      "side": 1,
+      "message": "Sorry, left-over from local debugging. Removed",
+      "parentUuid": "f7cc0173_47acb9ad",
       "revId": "68d597db638688dc5565868f229f3945142780c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
