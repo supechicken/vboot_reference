@@ -34,6 +34,24 @@
       "parentUuid": "c83c47e2_a980f650",
       "revId": "9f87757a2c72718b484f808e8c0a935f1f003f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a94175_5328a2f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-05T00:42:40Z",
+      "side": 1,
+      "message": "I think this is inconsequential in practice. In general, machines that are already compromised are already lost and there is little we can remotely do to address that (they can just silently refuse the updates). The important part is that we can inoculate vulnerable but not yet compromised machines and this solution is sufficient for that. We can also still recover an already compromised machine manually, because recovery mode always disallows hwcrypto and we could make the recovery installer manually unset the TPM flag if necessary.",
+      "parentUuid": "9784c054_354082a2",
+      "revId": "9f87757a2c72718b484f808e8c0a935f1f003f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
