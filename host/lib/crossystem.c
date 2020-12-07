@@ -27,6 +27,10 @@
 /* Filename for the mount-encrypted key */
 #define MOUNT_ENCRYPTED_KEY_PATH "/mnt/stateful_partition/encrypted.key"
 
+/* Filename for the TPM simulator NV data */
+#define TPM_SIMULATOR_NVCHIP_PATH                                              \
+	"/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip"
+
 /* Fields that GetVdatString() can get */
 typedef enum VdatStringField {
 	VDAT_STRING_DEPRECATED_TIMERS = 0,  /* Timer values */
@@ -374,6 +378,9 @@ int VbGetSystemPropertyInt(const char *name)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		value = vb2_get_nv_storage(VB2_NV_DISABLE_DEV_REQUEST);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
+		if (TPM2_SIMULATOR & VTPM_PROXY)
+			/* Check TPM simulator NVChip status */
+			value = access(TPM_SIMULATOR_NVCHIP_PATH, F_OK) != 0;
 		if (TPM2_SIMULATOR)
 			/* Check mount-encrypted key status */
 			value = access(MOUNT_ENCRYPTED_KEY_PATH, F_OK) != 0;
@@ -556,16 +563,28 @@ int VbSetSystemPropertyInt(const char *name, int value)
 			 * on simulator */
 			if (value == 0)
 				return -1;
-			/* Check mount-encrypted key status */
-			if (!access(MOUNT_ENCRYPTED_KEY_PATH, F_OK)) {
-				/* Remove the mount_encrypted key, and it would
-				 * also clear the TPM2.0 simulator NV space on
-				 * it. */
-				return remove(MOUNT_ENCRYPTED_KEY_PATH);
+			if(VTPM_PROXY) {
+				/* Check TPM simulator NVChip status */
+				if (!access(TPM_SIMULATOR_NVCHIP_PATH, F_OK)) {
+					/* Remove the TPM2.0 simulator NV space */
+					return remove(TPM_SIMULATOR_NVCHIP_PATH);
+				} else {
+					/* Return success when the file is already
+					* removed */
+					return 0;
+				}
 			} else {
-				/* Return success when the file is already
-				 * removed */
-				return 0;
+				/* Check mount-encrypted key status */
+				if (!access(MOUNT_ENCRYPTED_KEY_PATH, F_OK)) {
+					/* Remove the mount_encrypted key, and it would
+					* also clear the TPM2.0 simulator NV space on
+					* it. */
+					return remove(MOUNT_ENCRYPTED_KEY_PATH);
+				} else {
+					/* Return success when the file is already
+					* removed */
+					return 0;
+				}
 			}
 		} else {
 			return vb2_set_nv_storage(
