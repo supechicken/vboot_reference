@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2908daee_28aacfaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:35:06Z",
+      "side": 1,
+      "message": "LGTM with nits - Julius, would you mind looking at my comment in 2struct.h?",
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a4a9f0_4abe6a5b",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:35:06Z",
+      "side": 1,
+      "message": "Maybe \"crypto HW acceleration\" or \"HW acceleration for crypto\" would be clearer?",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 25
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaca3b39_0a6689dc",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:35:06Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 114,
+        "startChar": 50,
+        "endLine": 114,
+        "endChar": 65
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edba63c4_dc21a5c7",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:35:06Z",
+      "side": 1,
+      "message": "@jwerner: Do you think we should go ahead and mark this field as deprecated?  Or do we foresee any upcoming uses?",
+      "range": {
+        "startLine": 471,
+        "startChar": 13,
+        "endLine": 471,
+        "endChar": 34
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a234463_03d0046e",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:35:06Z",
+      "side": 1,
+      "message": "No {} for a one-line statement.",
+      "range": {
+        "startLine": 85,
+        "startChar": 42,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799d68a3_a46a133e",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:35:06Z",
+      "side": 1,
+      "message": "Reverse the order of these two and get rid of the \u0026\u003d line?\n\nMight want to also just add a reset_common_data call at the beginning of each individual test case, rather than before the if/else.",
+      "range": {
+        "startLine": 756,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 66
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
