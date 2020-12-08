@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7335cd17_3658afa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-08T03:03:43Z",
+      "side": 1,
+      "message": "will fix when addressing the rest of review comments (if any).",
+      "revId": "75ecacc232e13932ae92ab36f8d1f588399898a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d068865_6369813d",
@@ -19,6 +36,29 @@
         "startChar": 1,
         "endLine": 376,
         "endChar": 0
+      },
+      "revId": "75ecacc232e13932ae92ab36f8d1f588399898a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bef2e9b_093bd6f1",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-08T03:03:43Z",
+      "side": 1,
+      "message": "s/preset/present/",
+      "range": {
+        "startLine": 541,
+        "startChar": 45,
+        "endLine": 541,
+        "endChar": 51
       },
       "revId": "75ecacc232e13932ae92ab36f8d1f588399898a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
