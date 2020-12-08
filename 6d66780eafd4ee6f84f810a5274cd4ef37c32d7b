@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3bbe7a7_5c85d066",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-12-08T06:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27a4a9f0_4abe6a5b",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 25
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaca3b39_0a6689dc",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-08T04:35:06Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 114,
+        "startChar": 50,
+        "endLine": 114,
+        "endChar": 65
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "764f3c01_95856939",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-12-08T06:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaca3b39_0a6689dc",
       "range": {
         "startLine": 114,
         "startChar": 50,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91bcceb_970874d6",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-12-08T06:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a234463_03d0046e",
+      "range": {
+        "startLine": 85,
+        "startChar": 42,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "799d68a3_a46a133e",
@@ -123,6 +195,30 @@
       "writtenOn": "2020-12-08T04:35:06Z",
       "side": 1,
       "message": "Reverse the order of these two and get rid of the \u0026\u003d line?\n\nMight want to also just add a reset_common_data call at the beginning of each individual test case, rather than before the if/else.",
+      "range": {
+        "startLine": 756,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 66
+      },
+      "revId": "6d66780eafd4ee6f84f810a5274cd4ef37c32d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88882de9_16e25314",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2020-12-08T06:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799d68a3_a46a133e",
       "range": {
         "startLine": 756,
         "startChar": 0,
