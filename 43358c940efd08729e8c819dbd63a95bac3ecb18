@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3306f78_7f7644ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-12-08T03:17:04Z",
+      "side": 1,
+      "message": "Mostly nits, and a caveat that much of this particular logic I\u0027m not particularly knowledgeable about.",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36ad128f_7f790bdb",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-12-08T03:17:04Z",
+      "side": 1,
+      "message": "Do we need to update this for the generation parameter?",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c05d22_c5d5c44d",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-12-08T03:17:04Z",
+      "side": 1,
+      "message": "No default case?",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8adac4cf_db794567",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-12-08T03:17:04Z",
+      "side": 1,
+      "message": "TODO with a bug would be preferable.",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce56edb_ab115e24",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-12-08T03:17:04Z",
+      "side": 1,
+      "message": "Ah I see, we won\u0027t pass it a generation not in {h,d}. Still worth checking within sign_rw I think.",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
