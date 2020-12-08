@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b7b4e3_562cea25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:33:59Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "da40633ad7c4cb2cce5cf51a88025df5142c24da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1a4fac_75a76320",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:33:59Z",
+      "side": 1,
+      "message": "Add a period here while you\u0027re at it?",
+      "range": {
+        "startLine": 220,
+        "startChar": 49,
+        "endLine": 220,
+        "endChar": 50
+      },
+      "revId": "da40633ad7c4cb2cce5cf51a88025df5142c24da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be5b708_acec42d6",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-12-08T04:33:59Z",
+      "side": 1,
+      "message": "Would you mind adding a line-break here before the opening brace?",
+      "range": {
+        "startLine": 222,
+        "startChar": 63,
+        "endLine": 222,
+        "endChar": 65
+      },
+      "revId": "da40633ad7c4cb2cce5cf51a88025df5142c24da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
