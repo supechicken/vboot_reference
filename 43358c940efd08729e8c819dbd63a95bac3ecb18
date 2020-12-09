@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c553bae0_7df0fe5e",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T23:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36ad128f_7f790bdb",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83c05d22_c5d5c44d",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-08T03:17:04Z",
       "side": 1,
       "message": "No default case?",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7ee449_eae7c9e9",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T23:11:59Z",
+      "side": 1,
+      "message": "not really needed at this time, but I added one just in case there is more generations in the future.",
+      "parentUuid": "83c05d22_c5d5c44d",
       "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f30e291_67c1f6d3",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T23:11:59Z",
+      "side": 1,
+      "message": "this is removed in the following patch, and we really don\u0027t want to proceed here, so need to bail out.",
+      "parentUuid": "8adac4cf_db794567",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ce56edb_ab115e24",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-12-08T03:17:04Z",
       "side": 1,
       "message": "Ah I see, we won\u0027t pass it a generation not in {h,d}. Still worth checking within sign_rw I think.",
+      "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dba9a54_dd650c16",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T23:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ce56edb_ab115e24",
       "revId": "43358c940efd08729e8c819dbd63a95bac3ecb18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
