@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d8cf22_b4f141db",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-12-09T17:44:22Z",
+      "side": 1,
+      "message": "\u003e warning: Prefer mapfile or read -a to split command output (or quote to avoid splitting).\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2207\n\nHey look! Tricium!",
+      "parentUuid": "fd2d53ea_96a15d27",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 49
+      },
+      "revId": "4ab6d94f9b55049b157d8de1a8a82fc59e257b66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
