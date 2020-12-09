@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d597f43_7d0c6e30",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2020-12-09T17:44:46Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "0ae94aa9_bcf7e2b2",
+      "range": {
+        "startLine": 530,
+        "startChar": 30,
+        "endLine": 530,
+        "endChar": 32
+      },
+      "revId": "95331868f511f4952ac9404e095fa5127b0bc9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
