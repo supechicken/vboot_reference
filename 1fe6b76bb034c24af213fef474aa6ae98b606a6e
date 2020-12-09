@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "966de9a5_97d3918f",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T23:12:10Z",
+      "side": 1,
+      "message": "added some more explanations and a link to more details.",
+      "parentUuid": "d9ef53ec_2891146f",
+      "revId": "1fe6b76bb034c24af213fef474aa6ae98b606a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bee5318d_bb20b85b",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-08T03:11:39Z",
       "side": 1,
       "message": "Don\u0027t need ${} inside arithmetic.\n\nhttps://github.com/koalaman/shellcheck/wiki/SC2004",
+      "revId": "1fe6b76bb034c24af213fef474aa6ae98b606a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3486343_ccebac3e",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T23:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee5318d_bb20b85b",
       "revId": "1fe6b76bb034c24af213fef474aa6ae98b606a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,24 @@
       "writtenOn": "2020-12-08T03:11:39Z",
       "side": 1,
       "message": "Same as above regarding ${} within arith.",
+      "revId": "1fe6b76bb034c24af213fef474aa6ae98b606a6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de0a7d7_d42cc6bf",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-12-09T23:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb5d4d05_978afa80",
       "revId": "1fe6b76bb034c24af213fef474aa6ae98b606a6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
