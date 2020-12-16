@@ -337,6 +337,8 @@ static vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
 vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	
+	return VB2_SUCCESS;
 
 	/*
 	 * If the status indicates that the EC has already gone through
