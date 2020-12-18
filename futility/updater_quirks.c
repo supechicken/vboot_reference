@@ -6,6 +6,7 @@
  */
 
 #include <assert.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
@@ -15,6 +16,31 @@
 #include "futility.h"
 #include "host_misc.h"
 #include "updater.h"
+
+/*
+ * Flash Descriptor Signature, Map and Master structures defined below apply
+ * only to Intel platforms.
+ */
+#define FLVALSIG 0x0ff0a55a
+#define FLMSTR_ME_REG_WR_ACC_MASK (1 << 22)
+
+/* Flash Descriptor Signature and Map Section */
+struct flash_desc_map {
+	uint32_t flvalsig;
+	uint32_t flmap0;
+	uint32_t flmap1;
+	uint32_t flmap2;
+	uint32_t flmap3;
+} __attribute__((packed));
+
+/* Flash Descriptor Master Section */
+struct flash_desc_master {
+	uint32_t flmstr1;
+	uint32_t flmstr2;
+	uint32_t flmstr3;
+	uint32_t flmstr4;
+	uint32_t flmstr5;
+} __attribute__((packed));
 
 struct quirks_record {
 	const char * const match;
@@ -584,4 +610,108 @@ int quirk_override_signature_id(struct updater_config *cfg,
 	}
 
 	return 0;
+}
+
+/*
+ * obj_in_range - examine whether an object falls in [base, base + limit)
+ * @param obj:   void* pointer to a single arbitrary-sized object.
+ * @param size:  size of the object pointed to by the obj.
+ * @param base:  base address represented with uint8_t* type.
+ * @param limit: upper limit of the legal address.
+ */
+static bool obj_in_range(void *obj, size_t size,
+				void *base, size_t limit)
+{
+	return (obj >= base && (obj + size) <= (base + limit));
+}
+
+static struct flash_desc_map *find_fd_map(uint8_t *image, size_t size)
+{
+	int i, found = 0;
+	struct flash_desc_map *fdmap;
+
+	/* Scan for FD signature */
+	for (i = 0; i < (size - sizeof(uint32_t)); i += sizeof(uint32_t)) {
+		if (*(uint32_t *) (image + i) == FLVALSIG) {
+			found = 1;
+			break;
+		}
+	}
+
+	if (!found) {
+		printf("No Flash Descriptor found in this image\n");
+		return NULL;
+	}
+
+	fdmap = (struct flash_desc_map *)(image + i);
+	return obj_in_range(fdmap, sizeof(*fdmap), image, size) ? fdmap : NULL;
+}
+
+static struct flash_desc_master *find_fd_master(uint8_t *image, size_t size)
+{
+	struct flash_desc_master *fd_master;
+	struct flash_desc_map *fdmap = find_fd_map(image, size);
+
+	if (!fdmap)
+		return NULL;
+	fd_master = (struct flash_desc_master *)
+				(image + ((fdmap->flmap1 & 0xff) << 4));
+	return obj_in_range(fd_master, sizeof(*fd_master), image, size) ?
+							fd_master : NULL;
+}
+
+/*
+ * Checks if the section is filled with given character.
+ * If section size is 0, return 0. If section is not empty, return non-zero if
+ * the section is filled with same character c, otherwise 0.
+ */
+static int section_is_filled_with(const struct firmware_section *section,
+				  uint8_t c)
+{
+	uint32_t i;
+	if (!section->size)
+		return 0;
+	for (i = 0; i < section->size; i++)
+		if (section->data[i] != c)
+			return 0;
+	return 1;
+}
+
+int is_me_locked(const struct firmware_image *image_from)
+{
+	struct firmware_section section;
+	struct flash_desc_master *fd_master;
+
+	find_firmware_section(&section, image_from, FMAP_SI_ME);
+	if (!section.data) {
+		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_ME);
+		return -1;
+	}
+
+	/*
+	 * In older platforms, where ME Firmware is not updated, when ME is
+	 * locked all the bytes read as 0xff.
+	 */
+	if (section_is_filled_with(&section, 0xff))
+		return 1;
+
+	/*
+	 * In newer platforms, where ME firmware is updated, Host CPU has read
+	 * access to the SI_ME region. So read the SI_DESC region and check if
+	 * the Host CPU has write access to the SI_ME region.
+	 */
+	find_firmware_section(&section, image_from, FMAP_SI_DESC);
+	if (!section.data) {
+		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_DESC);
+		return -1;
+	}
+
+	fd_master = find_fd_master(section.data, section.size);
+	if (!fd_master) {
+		VB2_DEBUG("Cannot find master access record.\n");
+		return -1;
+	}
+
+	/* Check if Host CPU has write access to the ME region */
+	return !(fd_master->flmstr1 & FLMSTR_ME_REG_WR_ACC_MASK);
 }
