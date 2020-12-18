@@ -223,23 +223,6 @@ static int setup_config_quirks(const char *quirks, struct updater_config *cfg)
 }
 
 /*
- * Checks if the section is filled with given character.
- * If section size is 0, return 0. If section is not empty, return non-zero if
- * the section is filled with same character c, otherwise 0.
- */
-static int section_is_filled_with(const struct firmware_section *section,
-				  uint8_t c)
-{
-	uint32_t i;
-	if (!section->size)
-		return 0;
-	for (i = 0; i < section->size; i++)
-		if (section->data[i] != c)
-			return 0;
-	return 1;
-}
-
-/*
  * Decides which target in RW firmware to manipulate.
  * The `target` argument specifies if we want to know "the section to be
  * update" (TARGET_UPDATE), or "the (active) section * to check" (TARGET_SELF).
@@ -507,14 +490,14 @@ static int preserve_management_engine(struct updater_config *cfg,
 				      const struct firmware_image *image_from,
 				      struct firmware_image *image_to)
 {
-	struct firmware_section section;
+	int ret;
 
-	find_firmware_section(&section, image_from, FMAP_SI_ME);
-	if (!section.data) {
-		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_ME);
+	ret = is_me_locked(image_from);
+	if (ret < 0) {
+		VB2_DEBUG("One or more firmware section not found.\n");
 		return 0;
 	}
-	if (section_is_filled_with(&section, 0xFF)) {
+	if (ret) {
 		VB2_DEBUG("ME is probably locked - preserving %s.\n",
 			  FMAP_SI_DESC);
 		return preserve_firmware_section(

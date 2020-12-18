@@ -228,4 +228,12 @@ void init_system_properties(struct system_property *props, int num);
  */
 const char *get_firmware_rootkey_hash(const struct firmware_image *image);
 
+/*
+ * Return the lock status of management engine.
+ *
+ * returns -1 if either SI_ME or SI_DESC region is not found,
+ * returns 0 when ME is unlocked and 1 when ME is locked.
+ */
+int is_me_locked(const struct firmware_image *image_from);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_ */
