@@ -280,4 +280,12 @@ int model_apply_white_label(
 		const char *signature_id,
 		const char *image);
 
+/*
+ * Return the lock status of management engine.
+ *
+ * returns -1 if either SI_ME or SI_DESC region is not found,
+ * returns 0 when ME is unlocked and 1 when ME is locked.
+ */
+int is_me_locked(const struct firmware_image *image_from);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */
