@@ -33,6 +33,42 @@ enum rootkey_compat_result {
 	ROOTKEY_COMPAT_REKEY_TO_DEV,
 };
 
+/**
+ * PTR_IN_RANGE - examine whether a pointer falls in [base, base + limit)
+ * @param ptr:    the non-void* pointer to a single arbitrary-sized object.
+ * @param base:   base address represented with char* type.
+ * @param limit:  upper limit of the legal address.
+ *
+ */
+#define PTR_IN_RANGE(ptr, base, limit)			\
+	((const uint8_t *)(ptr) >= (base) &&		\
+	 (const uint8_t *)&(ptr)[1] <= (base) + (limit))
+
+/* Flash Descriptor Signature and Map Section */
+struct flash_desc_map {
+	uint32_t flvalsig;
+	uint32_t flmap0;
+	uint32_t flmap1;
+	uint32_t flmap2;
+	uint32_t flmap3;
+} __attribute__((packed));
+
+/*
+ * WR / RD bits start at different locations within the flmstr regs, but
+ * otherwise have identical meaning.
+ */
+#define FLMSTR_WR_SHIFT_V2 20
+#define FLMSTR_RD_SHIFT_V2 8
+
+/* Flash Descriptor Master Section */
+struct flash_desc_master {
+	uint32_t flmstr1;
+	uint32_t flmstr2;
+	uint32_t flmstr3;
+	uint32_t flmstr4;
+	uint32_t flmstr5;
+} __attribute__((packed));
+
 /*
  * Gets the system property by given type.
  * If the property was not loaded yet, invoke the property getter function
@@ -500,6 +536,82 @@ static int preserve_gbb(const struct firmware_image *image_from,
 			gbb_to, (const char *)gbb_from + gbb_from->hwid_offset);
 }
 
+static struct flash_desc_map *find_fd_map(uint8_t *image, size_t size)
+{
+	int i, found = 0;
+	struct flash_desc_map *fdmap;
+
+	/* Scan for FD signature */
+	for (i = 0; i < (size - 4); i += 4) {
+		if (*(uint32_t *) (image + i) == 0x0FF0A55A) {
+			found = 1;
+			break;	// signature found.
+		}
+	}
+
+	if (!found) {
+		printf("No Flash Descriptor found in this image\n");
+		return NULL;
+	}
+
+	fdmap = (struct flash_desc_map *)(image + i);
+	return PTR_IN_RANGE(fdmap, image, size) ? fdmap : NULL;
+}
+
+static struct flash_desc_master *find_fd_master(uint8_t *image, size_t size)
+{
+	struct flash_desc_master *fd_master;
+	struct flash_desc_map *fdmap = find_fd_map(image, size);
+
+	if (!fdmap)
+		return NULL;
+	fd_master = (struct flash_desc_master *)
+				(image + ((fdmap->flmap1 & 0xff) << 4));
+	return PTR_IN_RANGE(fd_master, image, size) ? fd_master : NULL;
+}
+
+/*
+ * Return the lock status of management engine.
+ *
+ * returns -1 if either SI_ME or SI_DESC region is not found,
+ * returns 0 when ME is unlocked and 1 when ME is locked.
+ */
+static int is_me_locked(const struct firmware_image *image_from)
+{
+	struct firmware_section section;
+	struct flash_desc_master *fd_master;
+
+	find_firmware_section(&section, image_from, FMAP_SI_ME);
+	if (!section.data) {
+		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_ME);
+		return -1;
+	}
+
+	/* In older platforms, when ME is locked all the bytes read as 0xff. */
+	if (section_is_filled_with(&section, 0xFF))
+		return 1;
+
+	/*
+	 * In newer platforms, Host CPU has read access to the SI_ME region. So
+	 * read the SI_DESC region and check if the host CPU has write access to
+	 * the SI_ME region.
+	 */
+	find_firmware_section(&section, image_from, FMAP_SI_DESC);
+	if (!section.data) {
+		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_DESC);
+		return -1;
+	}
+
+	fd_master = find_fd_master(section.data, section.size);
+	if (!fd_master) {
+		VB2_DEBUG("Cannot find master access record.\n");
+		return -1;
+	}
+
+	/* Check if Host CPU has write access to the ME region */
+	return (fd_master->flmstr1 & (1 << (FLMSTR_WR_SHIFT_V2 + 2)) ? 0 : 1);
+}
+
 /*
  * Preserves the regions locked by Intel management engine.
  */
@@ -507,14 +619,14 @@ static int preserve_management_engine(struct updater_config *cfg,
 				      const struct firmware_image *image_from,
 				      struct firmware_image *image_to)
 {
-	struct firmware_section section;
+	int ret;
 
-	find_firmware_section(&section, image_from, FMAP_SI_ME);
-	if (!section.data) {
-		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_ME);
+	ret = is_me_locked(image_from);
+	if (ret < 0) {
+		VB2_DEBUG("One or more firmware section not found.\n");
 		return 0;
 	}
-	if (section_is_filled_with(&section, 0xFF)) {
+	if (ret) {
 		VB2_DEBUG("ME is probably locked - preserving %s.\n",
 			  FMAP_SI_DESC);
 		return preserve_firmware_section(
