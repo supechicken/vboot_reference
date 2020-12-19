@@ -116,6 +116,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3a93dc_4ef3b162",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-12-19T03:47:49Z",
+      "side": 1,
+      "message": "nit: Host",
+      "range": {
+        "startLine": 596,
+        "startChar": 45,
+        "endLine": 596,
+        "endChar": 49
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "57cdf051_d4bccffd",
@@ -134,6 +157,29 @@
         "startChar": 9,
         "endLine": 612,
         "endChar": 61
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8653319_b004ca19",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2020-12-19T03:47:49Z",
+      "side": 1,
+      "message": "nit: Use macro for ME_REGION",
+      "range": {
+        "startLine": 612,
+        "startChar": 58,
+        "endLine": 612,
+        "endChar": 59
       },
       "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
