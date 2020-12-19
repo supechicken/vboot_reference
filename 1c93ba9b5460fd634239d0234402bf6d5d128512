@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529c5c77_711f7668",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-19T01:40:28Z",
+      "side": 1,
+      "message": "I think it would be good to have a comment here that the following structures apply only to Intel platforms.",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7647ef0_23ef6054",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-19T01:40:28Z",
+      "side": 1,
+      "message": "I think you are referring to the differences in the descriptor region (referred to as v1 v/s v2 in ifdtool). The V1, V2 doesn\u0027t really make sense outside of ifdtool since it is not really related to hardware revision or IFD revision. It is just something that the tool uses to differentiate older platforms from newer ones.\n\nI think we should drop the _V2 and say that this is used only for platforms using Intel CSE Lite (starting JSL, TGL, etc.) and hence the write and read shifts are used as per the IFD for these platforms.\n\nJust a note: It is unfortunate that this has to be duplicated in ifdtool and futility. However, since ifdtool is not part of the OS image, I think it is okay to add this here for now. If in the future we see varied IFD formats, it might make sense to just add ifdtool to OS image and make updater use ifdtool instead of duplicating the support.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 67
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a539393_d8d0ac6e",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-19T01:40:28Z",
+      "side": 1,
+      "message": "Do we really need to scan? I think SPI programming guide says that it will be at offset 0x10 from the start of descriptor region?",
+      "range": {
+        "startLine": 545,
+        "startChar": 1,
+        "endLine": 545,
+        "endChar": 38
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37462bfa_2ed9190d",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-19T01:40:28Z",
+      "side": 1,
+      "message": "Use macro: FLVALSIG",
+      "range": {
+        "startLine": 546,
+        "startChar": 35,
+        "endLine": 546,
+        "endChar": 45
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab4c2ff0_7a0a45a9",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-19T01:40:28Z",
+      "side": 1,
+      "message": "I think it would be helpful to add some context about what newer means.",
+      "range": {
+        "startLine": 595,
+        "startChar": 7,
+        "endLine": 595,
+        "endChar": 22
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57cdf051_d4bccffd",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-19T01:40:28Z",
+      "side": 1,
+      "message": "nit: !(fd_master-\u003eflmstr1 \u0026 (1 \u003c\u003c FLMSTR_WR_SHIFT_V2 + 2));",
+      "range": {
+        "startLine": 612,
+        "startChar": 9,
+        "endLine": 612,
+        "endChar": 61
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
