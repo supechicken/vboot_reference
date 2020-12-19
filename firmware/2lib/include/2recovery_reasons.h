@@ -175,6 +175,12 @@ enum vb2_nv_recovery {
 	 */
 	VB2_RECOVERY_INTEL_CSE_LITE_SKU = 0x31,
 
+	/*
+	 * Intel CPU UCODEupdate failure; see subcodes defined in coreboot for specific
+	 * reason.
+	 */
+	VB2_RECOVERY_INTEL_CPU_UCODE_UPDATE = 0x32,
+
 	/* Unspecified/unknown error in read-only firmware */
 	VB2_RECOVERY_RO_UNSPECIFIED = 0x3f,
 
