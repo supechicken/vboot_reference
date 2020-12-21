@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c991fb6_191da311",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-21T21:38:47Z",
+      "side": 1,
+      "message": "nit: should this maybe be uCODE or something? (I mean, it\u0027s fine like this if that is how Intel spells it everywhere, but generally \u0027U\u0027s standing in for \u0027μ\u0027 are lower case.)",
+      "range": {
+        "startLine": 102,
+        "startChar": 20,
+        "endLine": 102,
+        "endChar": 25
+      },
+      "revId": "4ec64b020f4b7030215edf81c7d690fe7a76b6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6491fc7a_13cb45a6",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-21T21:38:47Z",
+      "side": 1,
+      "message": "80 character line length (could fix 0x31 too while you\u0027re at it)",
+      "range": {
+        "startLine": 179,
+        "startChar": 72,
+        "endLine": 179,
+        "endChar": 80
+      },
+      "revId": "4ec64b020f4b7030215edf81c7d690fe7a76b6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7583307_d699558f",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2020-12-21T21:38:47Z",
+      "side": 1,
+      "message": "space?",
+      "range": {
+        "startLine": 179,
+        "startChar": 14,
+        "endLine": 179,
+        "endChar": 25
+      },
+      "revId": "4ec64b020f4b7030215edf81c7d690fe7a76b6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
