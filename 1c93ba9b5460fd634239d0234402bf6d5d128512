@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a680bbb3_7e9bb7fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-12-21T09:36:10Z",
+      "side": 1,
+      "message": "I wonder if we can move these to updater_quirks or updater_utils, given it\u0027s very x86 specific with special structure?",
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f825c8e1_e5e39f09",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-12-21T09:36:10Z",
+      "side": 1,
+      "message": "can we use function instead of macros?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 49
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "529c5c77_711f7668",
@@ -65,6 +105,29 @@
         "startChar": 1,
         "endLine": 545,
         "endChar": 38
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286a903a_c9a84c80",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-12-21T09:36:10Z",
+      "side": 1,
+      "message": "sizeof(uint32_t)",
+      "range": {
+        "startLine": 545,
+        "startChar": 25,
+        "endLine": 545,
+        "endChar": 26
       },
       "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
