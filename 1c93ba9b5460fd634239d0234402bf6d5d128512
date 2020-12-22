@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f99f5e_a07444e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done. Moved to updater_quirks.c",
+      "parentUuid": "a680bbb3_7e9bb7fc",
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f825c8e1_e5e39f09",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-21T09:36:10Z",
       "side": 1,
       "message": "can we use function instead of macros?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 49
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61b43d8_9f214e97",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f825c8e1_e5e39f09",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a324e4f_8deeab92",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529c5c77_711f7668",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7647ef0_23ef6054",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-12-19T01:40:28Z",
       "side": 1,
       "message": "I think you are referring to the differences in the descriptor region (referred to as v1 v/s v2 in ifdtool). The V1, V2 doesn\u0027t really make sense outside of ifdtool since it is not really related to hardware revision or IFD revision. It is just something that the tool uses to differentiate older platforms from newer ones.\n\nI think we should drop the _V2 and say that this is used only for platforms using Intel CSE Lite (starting JSL, TGL, etc.) and hence the write and read shifts are used as per the IFD for these platforms.\n\nJust a note: It is unfortunate that this has to be duplicated in ifdtool and futility. However, since ifdtool is not part of the OS image, I think it is okay to add this here for now. If in the future we see varied IFD formats, it might make sense to just add ifdtool to OS image and make updater use ifdtool instead of duplicating the support.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 67
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a95f898_d17e4070",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7647ef0_23ef6054",
       "range": {
         "startLine": 57,
         "startChar": 3,
@@ -133,6 +223,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c98eeb4_c2529159",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "286a903a_c9a84c80",
+      "range": {
+        "startLine": 545,
+        "startChar": 25,
+        "endLine": 545,
+        "endChar": 26
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e16c7b_353b0f09",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "I am ok with just jumping to offset 0x10. Is it the same for JSL, TGL and CML?",
+      "parentUuid": "8a539393_d8d0ac6e",
+      "range": {
+        "startLine": 545,
+        "startChar": 1,
+        "endLine": 545,
+        "endChar": 38
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37462bfa_2ed9190d",
@@ -146,6 +284,30 @@
       "writtenOn": "2020-12-19T01:40:28Z",
       "side": 1,
       "message": "Use macro: FLVALSIG",
+      "range": {
+        "startLine": 546,
+        "startChar": 35,
+        "endLine": 546,
+        "endChar": 45
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8ded67_c303a174",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37462bfa_2ed9190d",
       "range": {
         "startLine": 546,
         "startChar": 35,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3df913a_0fffe2c7",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4c2ff0_7a0a45a9",
+      "range": {
+        "startLine": 595,
+        "startChar": 7,
+        "endLine": 595,
+        "endChar": 22
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a3a93dc_4ef3b162",
@@ -192,6 +378,30 @@
       "writtenOn": "2020-12-19T03:47:49Z",
       "side": 1,
       "message": "nit: Host",
+      "range": {
+        "startLine": 596,
+        "startChar": 45,
+        "endLine": 596,
+        "endChar": 49
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7888953_d8216184",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3a93dc_4ef3b162",
       "range": {
         "startLine": 596,
         "startChar": 45,
@@ -238,6 +448,54 @@
       "writtenOn": "2020-12-19T03:47:49Z",
       "side": 1,
       "message": "nit: Use macro for ME_REGION",
+      "range": {
+        "startLine": 612,
+        "startChar": 58,
+        "endLine": 612,
+        "endChar": 59
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f27dfb_1224f703",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "57cdf051_d4bccffd",
+      "range": {
+        "startLine": 612,
+        "startChar": 9,
+        "endLine": 612,
+        "endChar": 61
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083f7095_15a8a8ca",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T07:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8653319_b004ca19",
       "range": {
         "startLine": 612,
         "startChar": 58,
