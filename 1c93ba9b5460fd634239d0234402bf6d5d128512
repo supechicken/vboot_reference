@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "846428ab_00f059e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-12-22T08:22:22Z",
+      "side": 1,
+      "message": "Thanks for that, but the quirks were supposed to contain \"special quirks that\u0027s only done if the config (from params or cbfs) has instructed to apply\".\n\nLooking at your current implementation I now think it should be in updater_utils.c instead of updater_quirks.c, since it\u0027ll be common to all x86 platforms.\n\nDo you mind to move again?",
+      "parentUuid": "a7f99f5e_a07444e6",
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f825c8e1_e5e39f09",
         "filename": "futility/updater.c",
         "patchSetId": 1
