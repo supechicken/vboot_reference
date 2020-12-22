@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c78b638_24823a73",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-22T19:49:57Z",
+      "side": 1,
+      "message": "I don\u0027t think this is accurate. The way the param is used, it seems be to range_size rather than limit (which would be range_base + range_size - 1).",
+      "range": {
+        "startLine": 822,
+        "startChar": 17,
+        "endLine": 822,
+        "endChar": 50
+      },
+      "revId": "c163cfd96a6ef93b804b63cedf11c10fc97cc6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca8452a_fed574fc",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-22T19:49:57Z",
+      "side": 1,
+      "message": "Probably name range_size since it is not really the limit.",
+      "range": {
+        "startLine": 825,
+        "startChar": 23,
+        "endLine": 825,
+        "endChar": 28
+      },
+      "revId": "c163cfd96a6ef93b804b63cedf11c10fc97cc6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8168e97a_14256167",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-22T19:49:57Z",
+      "side": 1,
+      "message": "I think this has to be \u003c and not \u003c\u003d. (base + size) is exclusive so \u003c is the right check.",
+      "range": {
+        "startLine": 827,
+        "startChar": 37,
+        "endLine": 827,
+        "endChar": 39
+      },
+      "revId": "c163cfd96a6ef93b804b63cedf11c10fc97cc6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e5eeb8_33e7766e",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-22T19:49:57Z",
+      "side": 1,
+      "message": "ERROR?\n\nIf we are here it means that the device has ME and DESC regions. So, the flash val signature should be valid. If not, it is an error and should be caught.",
+      "range": {
+        "startLine": 836,
+        "startChar": 2,
+        "endLine": 836,
+        "endChar": 11
+      },
+      "revId": "c163cfd96a6ef93b804b63cedf11c10fc97cc6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c51b49_95176db3",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-22T19:49:57Z",
+      "side": 1,
+      "message": "ERROR",
+      "range": {
+        "startLine": 904,
+        "startChar": 2,
+        "endLine": 904,
+        "endChar": 11
+      },
+      "revId": "c163cfd96a6ef93b804b63cedf11c10fc97cc6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
