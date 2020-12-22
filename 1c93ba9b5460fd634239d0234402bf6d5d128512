@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "489635e5_0eaec916",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T19:27:50Z",
+      "side": 1,
+      "message": "No Problem. Moved to updater_utils.c",
+      "parentUuid": "846428ab_00f059e0",
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f825c8e1_e5e39f09",
@@ -327,6 +345,30 @@
       "side": 1,
       "message": "Checked on JSL CSME Kit: 1001621, TGL CSME Kit: 1001147, CML CSME Kit: 136146. All the SPI Programming Guides mention that the FLVALSIG is at offset 0x10.\n\nI will hard-code that offset instead of scanning for the signature.",
       "parentUuid": "5280b89e_b71b66b7",
+      "range": {
+        "startLine": 545,
+        "startChar": 1,
+        "endLine": 545,
+        "endChar": 38
+      },
+      "revId": "1c93ba9b5460fd634239d0234402bf6d5d128512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628c19d6_5f792f61",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-22T19:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc0ef14a_80a77b8c",
       "range": {
         "startLine": 545,
         "startChar": 1,
