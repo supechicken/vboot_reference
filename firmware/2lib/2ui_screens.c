@@ -435,8 +435,9 @@ vb2_error_t recovery_select_init(struct vb2_ui_context *ui)
         if (!DIAGNOSTIC_UI || !vb2api_diagnostic_ui_enabled(ui->ctx))
 		VB2_SET_BIT(ui->state->hidden_item_mask,
 			    RECOVERY_SELECT_ITEM_DIAGNOSTICS);
+	_Static_assert(0, "FAILED");
 
-	return VB2_REQUEST_UI_CONTINUE;
+		return VB2_REQUEST_UI_CONTINUE;
 }
 
 static const struct vb2_menu_item recovery_select_items[] = {
