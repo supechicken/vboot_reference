@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afaf070b_8ad1f3dd",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1353785
+      },
+      "writtenOn": "2020-12-22T06:27:44Z",
+      "side": 1,
+      "message": "It should be \"MICROCODE\" as Intel docs use the same. I modify all references to \"microcode\". Thanks for ask.",
+      "parentUuid": "1c991fb6_191da311",
+      "range": {
+        "startLine": 102,
+        "startChar": 20,
+        "endLine": 102,
+        "endChar": 25
+      },
+      "revId": "4ec64b020f4b7030215edf81c7d690fe7a76b6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6491fc7a_13cb45a6",
         "filename": "firmware/2lib/include/2recovery_reasons.h",
         "patchSetId": 1
@@ -65,6 +89,30 @@
         "startChar": 14,
         "endLine": 179,
         "endChar": 25
+      },
+      "revId": "4ec64b020f4b7030215edf81c7d690fe7a76b6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995fe783_18bac5ee",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1353785
+      },
+      "writtenOn": "2020-12-22T06:27:44Z",
+      "side": 1,
+      "message": "Are we not following 96 character line length for vboot?",
+      "parentUuid": "6491fc7a_13cb45a6",
+      "range": {
+        "startLine": 179,
+        "startChar": 72,
+        "endLine": 179,
+        "endChar": 80
       },
       "revId": "4ec64b020f4b7030215edf81c7d690fe7a76b6ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
