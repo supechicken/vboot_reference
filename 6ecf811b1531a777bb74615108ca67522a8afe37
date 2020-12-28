@@ -69,6 +69,24 @@
       "parentUuid": "c9baaaf4_8e253bfa",
       "revId": "6ecf811b1531a777bb74615108ca67522a8afe37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4318ba23_8c03c8e6",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-28T23:58:45Z",
+      "side": 1,
+      "message": "Agreed. Yes, I think it would be good to understand the background on it and see what the tests really aim to test. That way we can decide if the test needs to be updated, futility or the binaries.",
+      "parentUuid": "a60d9600_6cfa194f",
+      "revId": "6ecf811b1531a777bb74615108ca67522a8afe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
