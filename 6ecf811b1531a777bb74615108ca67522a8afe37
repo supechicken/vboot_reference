@@ -51,6 +51,24 @@
       "message": "Should we add a check here:\n\nif (cfg-\u003eemulation)\n    return 0;\n\nto indicate that ME is not locked when running futility in emulation mode. Hung-Te might also have some thoughts on this.",
       "revId": "6ecf811b1531a777bb74615108ca67522a8afe37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60d9600_6cfa194f",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-28T23:56:53Z",
+      "side": 1,
+      "message": "It helps in the situation where firmware update is emulated. But there is one other scenario where the test fails when the dummy programmers are used:\nhttps://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/master/tests/futility/test_update.sh#471\n\nIn this case, the emulation mode is not set.\n\nThe better solution is to check the history behind the choice of the test images and handle those scenarios.",
+      "parentUuid": "c9baaaf4_8e253bfa",
+      "revId": "6ecf811b1531a777bb74615108ca67522a8afe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
