@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "831a001c_3a642b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-12-28T20:30:00Z",
+      "side": 1,
+      "message": "Posted a comment on updater_utils.c. Probably we can assume that the ME is not locked in emulation mode.\n\nI think the right solution might be to ensure that the bios images have the ME regions formatted correctly to reflect that ME region access is enabled for BIOS since the test is attempting to actually update the entire flash. But, I am not sure about the history of the test images. Hung-Te might be able to provide the background.",
+      "parentUuid": "f726f75f_8f122ea4",
+      "revId": "6ecf811b1531a777bb74615108ca67522a8afe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9baaaf4_8e253bfa",
         "filename": "futility/updater_utils.c",
         "patchSetId": 8
