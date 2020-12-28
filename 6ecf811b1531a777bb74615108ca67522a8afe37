@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f726f75f_8f122ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2020-12-28T19:17:16Z",
+      "side": 1,
+      "message": "I see that the CQ failure is in one of the futility tests. More specifically the test fails when it emulates a full update. Based on the failure, either the input image is invalid or the check for ME lock does not apply to older platforms.\n\nBased on the logs, the test is emulating a FW update from src/platform/vboot_reference/test/futility/data/bios_peppy_mp.bin to src/platform/vboot_reference/test/futility/data/bios_link_mp.bin\n\nIn both the FROM_IMAGE and TO_IMAGE ME is locked. Here is the hex dump of first few bytes as read from SI_DESC:\n\n00000000  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|\n00000010  5a a5 f0 0f 03 00 04 02  06 02 10 12 20 01 21 00  |Z........... .!.|\n00000020  25 00 00 00 ff ff ff ff  ff ff ff ff ff ff ff ff  |%...............|\n00000030  24 00 30 49 00 00 00 00  00 00 00 00 ff ff ff ff  |$.0I............|\n00000040  00 00 00 00 00 02 ff 07  01 00 ff 01 ff 1f 00 00  |................|\n00000050  ff 1f 00 00 ff ff ff ff  ff ff ff ff ff ff ff ff  |................|\n00000060  00 00 0b 0a 00 00 0d 0c  18 01 08 08 ff ff ff ff  |................|\n00000070  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|\n\n1) Offset 0x10 has FLVALSIG\n2) The LSB of flmap1 is 0x06 and hence flmstr1 is at 0x60\n3) BIT 22 at offset 0x60 is set to 0 and hence ME is treated as locked.\n\nThis caused the SI_DESC to be preserved and full update to fail. I am not sure what is the right fix to the test.",
+      "revId": "6ecf811b1531a777bb74615108ca67522a8afe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
