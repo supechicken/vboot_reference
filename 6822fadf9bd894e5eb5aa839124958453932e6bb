@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad905c6_56e67150",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98f3066_670c9d48",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d15a17_e4958453",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-30T18:01:25Z",
       "side": 1,
       "message": "use 2 space indent",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bce66f7_d7285e9c",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d15a17_e4958453",
       "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba888f79_1f635a5f",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3daf4dde_13a8482a",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09a30936_7f824ff5",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-12-30T18:01:25Z",
       "side": 1,
       "message": "the file only ever exists under /opt/google/chrome/.  if that dir doesn\u0027t exist, then it\u0027s OK to skip this check.\n\notherwise, you should only search that dir tree and not the whole rootfs.  it\u0027ll be unnecessarily slow.",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f84d672_8d2d42c7",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a30936_7f824ff5",
       "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08b4aac_0a6fac5a",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f52086_2e0d3693",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6fe2388_92e94bbd",
@@ -99,6 +189,24 @@
       "writtenOn": "2020-12-30T18:01:25Z",
       "side": 1,
       "message": "i don\u0027t think you need to extract the header.  just run grep on the whole file.",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4e1037_9c1e16bd",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6fe2388_92e94bbd",
       "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58eba95a_622b4c33",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a390109_bfd85e6a",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faff0a24_d4ee1321",
@@ -133,6 +259,24 @@
       "writtenOn": "2020-12-30T18:01:25Z",
       "side": 1,
       "message": "error messages need to be as clear \u0026 actionable as possible at a glance as they\u0027ll often get extracted in isolation and pasted to bugs.  to that end, this should include the filename it checked, and mention that the error is with the licensing being tainted (\"signing of images with LICENSE\u003dTAINTED is not allowed\").  would also help to link to some docs or otherwise mention how one fixes this.\n\nit\u0027d be nice if we could extract the package that caused it, but we can do that later if it\u0027s too difficult now.",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4743d6_8665a042",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faff0a24_d4ee1321",
       "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
