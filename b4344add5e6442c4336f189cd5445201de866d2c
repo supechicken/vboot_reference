@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "856ad2d4_20e878a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "needs update",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2182a663_76d06b95",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "you should be able to fix all of these easily enough by doing a single `local` block\n\n local license status pkgs\n ...\n license\u003d$(...)",
+      "parentUuid": "dc79f595_a217b3d8",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2951165c_d5aa817c",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "it\u0027s usually cleaner to not inline generated fields like filenames when they can be arbitrarily long.  to wit:\n\n# What you have now.\nLicense file /tmp/tmp.MED7nXPkxO/opt/google/chrome/resources/about_os_credits.html contains packages with LICENSE\u003dTAINTED.\n\n# Prefixing the message.\n/tmp/tmp.MED7nXPkxO/opt/google/chrome/resources/about_os_credits.html: License file contains packages with LICENSE\u003dTAINTED.\n\n# Or even giving the prefix its own line since it\u0027s so long.\n/tmp/tmp.MED7nXPkxO/opt/google/chrome/resources/about_os_credits.html:\nLicense file contains packages with LICENSE\u003dTAINTED.",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04fb753_7343cf24",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "\"to allow signing\" might be clearer",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c067c666_ea418138",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "comments are full sentences, and periods go at the end of them",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff19e9c_f1e3fb71",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "avoid inline comments",
+      "range": {
+        "startLine": 55,
+        "startChar": 53,
+        "endLine": 55,
+        "endChar": 71
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf4ac8f_1cb45594",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "you don\u0027t need to keep using `local`.  you only need to declare the var local once.",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9744c4d2_2dfbc505",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "this grep works, but i think \\ classes tend to be uncommon enough that people don\u0027t recognize them easily.  how about `grep -v \u0027^$\u0027` instead ?\n\nor if you wanted to get clever, your sed above could do all of this in one shot.\n\n sed -n \u0027/Image is TAINTED/,/\u003c\\/ul\u003e/{\n   # Strip out HTML tags.\n   s/\u003c[^\u003e]*\u003e//g\n   # Delete any empty lines.\n   /^[[:space:]]*$/d\n   p\n }\u0027 \"${license}\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 50,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08304925_89bf70b4",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T20:58:44Z",
+      "side": 1,
+      "message": "capturing the output just to echo it is unnecessary\n\n - local tainted_pkgs\u003d$(echo \"${tainted_pkgs}\" | grep \"\\S\") # Strip empty lines\n + # Strip empty lines.\n + echo \"${tainted_pkgs}\" | grep -v \u0027^$\u0027",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
