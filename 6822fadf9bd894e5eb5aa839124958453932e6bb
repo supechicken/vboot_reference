@@ -279,6 +279,24 @@
       "parentUuid": "faff0a24_d4ee1321",
       "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65988002_b8de5ea2",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T20:02:49Z",
+      "side": 1,
+      "message": "The output looks like this\n```\nLicense file /tmp/tmp.MED7nXPkxO/opt/google/chrome/resources/about_os_credits.html contains packages with LICENSE\u003dTAINTED.\nRemove those packages or modify their license.\n Image is TAINTED by following packages:\n  dev-libs/libutf-9999\n```",
+      "parentUuid": "cc4743d6_8665a042",
+      "revId": "6822fadf9bd894e5eb5aa839124958453932e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
