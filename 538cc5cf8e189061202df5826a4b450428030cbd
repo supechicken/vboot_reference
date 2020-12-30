@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de35a000_d704eaf8",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T22:31:39Z",
+      "side": 1,
+      "message": "\u003e warning: tainted_pkgs appears unused. Verify use (or export if used externally).\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2034\n\nPlease fix.",
+      "parentUuid": "d883d4c0_bccfbd99",
+      "range": {
+        "startLine": 36,
+        "startChar": 55,
+        "endLine": 36,
+        "endChar": 67
+      },
+      "revId": "538cc5cf8e189061202df5826a4b450428030cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc24c53_88c5833e",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-12-30T22:31:39Z",
+      "side": 1,
+      "message": "\u003e style: Useless echo? Instead of \u0027echo $(cmd)\u0027, just use \u0027cmd\u0027.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2005\n\nPlease fix.",
+      "parentUuid": "cb26c1c2_674b347a",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "538cc5cf8e189061202df5826a4b450428030cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
