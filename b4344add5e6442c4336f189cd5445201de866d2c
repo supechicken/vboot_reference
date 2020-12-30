@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d079781a_2e77f630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "856ad2d4_20e878a0",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2182a663_76d06b95",
@@ -32,6 +50,30 @@
       "side": 1,
       "message": "you should be able to fix all of these easily enough by doing a single `local` block\n\n local license status pkgs\n ...\n license\u003d$(...)",
       "parentUuid": "dc79f595_a217b3d8",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94902b4d_63daf430",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2182a663_76d06b95",
       "range": {
         "startLine": 42,
         "startChar": 8,
@@ -59,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d4259f_d969177e",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2951165c_d5aa817c",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f04fb753_7343cf24",
@@ -76,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f194cfe_48052b38",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04fb753_7343cf24",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c067c666_ea418138",
@@ -89,6 +167,24 @@
       "writtenOn": "2020-12-30T20:58:44Z",
       "side": 1,
       "message": "comments are full sentences, and periods go at the end of them",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37651ba_ba206a9f",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c067c666_ea418138",
       "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "798a6090_2e461404",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cf4ac8f_1cb45594",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6106e7e_27f08282",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cff19e9c_f1e3fb71",
+      "range": {
+        "startLine": 55,
+        "startChar": 53,
+        "endLine": 55,
+        "endChar": 71
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9744c4d2_2dfbc505",
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08048a0e_02c209ed",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9744c4d2_2dfbc505",
+      "range": {
+        "startLine": 56,
+        "startChar": 50,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08304925_89bf70b4",
@@ -175,6 +343,24 @@
       "writtenOn": "2020-12-30T20:58:44Z",
       "side": 1,
       "message": "capturing the output just to echo it is unnecessary\n\n - local tainted_pkgs\u003d$(echo \"${tainted_pkgs}\" | grep \"\\S\") # Strip empty lines\n + # Strip empty lines.\n + echo \"${tainted_pkgs}\" | grep -v \u0027^$\u0027",
+      "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0f8229_b58d0c66",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1474888
+      },
+      "writtenOn": "2020-12-30T22:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08304925_89bf70b4",
       "revId": "b4344add5e6442c4336f189cd5445201de866d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
