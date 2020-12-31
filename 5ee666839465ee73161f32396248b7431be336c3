@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf8a1ef_b96e1148",
+        "filename": "scripts/image_signing/ensure_not_tainted.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2020-12-31T02:09:14Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "17704be1_1935be1c",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "5ee666839465ee73161f32396248b7431be336c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
