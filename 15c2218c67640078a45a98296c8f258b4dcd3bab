@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e7d9e5_1b45d44d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-01-13T06:31:03Z",
+      "side": 1,
+      "message": "Maybe something like:\n\n\"to avoid booting back into diagnostic tool when a forced system reset occurs.\"",
+      "range": {
+        "startLine": 241,
+        "startChar": 17,
+        "endLine": 242,
+        "endChar": 9
+      },
+      "revId": "15c2218c67640078a45a98296c8f258b4dcd3bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
