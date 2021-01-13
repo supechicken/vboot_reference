@@ -16,6 +16,23 @@
       "message": "Fixed the unit test, and also add the TEST\u003d for the unit test.",
       "revId": "22a09815a752508a40e7c5f5ccf211f2099fc0e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af39e3b_05f03128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-01-13T10:31:47Z",
+      "side": 1,
+      "message": "All the test failures are related to crostini. From tast dashboard, it looks crostini now fail with high failing rate. I think it is not related to this CL. Keep retry CQ. ",
+      "revId": "22a09815a752508a40e7c5f5ccf211f2099fc0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
