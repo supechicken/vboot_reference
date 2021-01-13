@@ -35,6 +35,12 @@
 	.action = vb2_ui_screen_back, \
 })
 
+#define CANCEL_ITEM                                                            \
+	((struct vb2_menu_item){                                               \
+		.text = "Cancel and go back",                                  \
+		.action = vb2_ui_screen_back,                                  \
+	})
+
 #define ADVANCED_OPTIONS_ITEM ((struct vb2_menu_item){ \
 	.text = "Advanced options", \
 	.target = VB2_SCREEN_ADVANCED_OPTIONS, \
@@ -80,6 +86,40 @@ static vb2_error_t log_page_init(struct vb2_ui_context *ui)
 		ui->state->selected_item = screen->page_down_item;
 	}
 
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t log_page_update(struct vb2_ui_context *ui,
+				   const char *log_string)
+{
+	ui->state->page_count = vb2ex_prepare_log_screen(
+		ui->state->screen->id, ui->locale_id, log_string);
+	if (ui->state->page_count == 0) {
+		return VB2_ERROR_UI_LOG_INIT;
+	}
+	if (ui->state->current_page >= ui->state->page_count)
+		ui->state->current_page = ui->state->page_count - 1;
+
+	ui->force_display = 1;
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t log_page_show_back_or_cancel(struct vb2_ui_context *ui,
+						int is_show_cancel)
+{
+	int back_item = ui->state->screen->back_item;
+	int cancel_item = ui->state->screen->cancel_item;
+	VB2_CLR_BIT(ui->state->hidden_item_mask, back_item);
+	VB2_CLR_BIT(ui->state->hidden_item_mask, cancel_item);
+	if (is_show_cancel) {
+		VB2_SET_BIT(ui->state->hidden_item_mask, back_item);
+		if (ui->state->selected_item == back_item)
+			ui->state->selected_item = cancel_item;
+	} else {
+		VB2_SET_BIT(ui->state->hidden_item_mask, cancel_item);
+		if (ui->state->selected_item == cancel_item)
+			ui->state->selected_item = back_item;
+	}
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
@@ -1048,12 +1088,38 @@ static const struct vb2_screen_info developer_select_bootloader_screen = {
 /******************************************************************************/
 /* VB2_SCREEN_DIAGNOSTICS */
 
+#define DIAGNOSTICS_ITEM_STORAGE_TEST_SHORT 2
+#define DIAGNOSTICS_ITEM_STORAGE_TEST_EXTENDED 3
+
+static vb2_error_t diagnostics_init(struct vb2_ui_context *ui)
+{
+	char *unused_log_string;
+	vb2_error_t rv = vb2ex_diag_get_storage_test_log(&unused_log_string);
+	if (rv == VB2_ERROR_EX_UNIMPLEMENTED) {
+		VB2_SET_BIT(ui->state->disabled_item_mask,
+			    DIAGNOSTICS_ITEM_STORAGE_TEST_SHORT);
+		VB2_SET_BIT(ui->state->disabled_item_mask,
+			    DIAGNOSTICS_ITEM_STORAGE_TEST_EXTENDED);
+	}
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 static const struct vb2_menu_item diagnostics_items[] = {
 	LANGUAGE_SELECT_ITEM,
 	{
 		.text = "Storage",
 		.target = VB2_SCREEN_DIAGNOSTICS_STORAGE,
 	},
+	[DIAGNOSTICS_ITEM_STORAGE_TEST_SHORT] =
+		{
+			.text = "Storage Self Test - Short",
+			.target = VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_SHORT,
+		},
+	[DIAGNOSTICS_ITEM_STORAGE_TEST_EXTENDED] =
+		{
+			.text = "Storage Self Test - Extended",
+			.target = VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_EXTENDED,
+		},
 	{
 		.text = "Quick memory check",
 		.target = VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK,
@@ -1068,6 +1134,7 @@ static const struct vb2_menu_item diagnostics_items[] = {
 static const struct vb2_screen_info diagnostics_screen = {
 	.id = VB2_SCREEN_DIAGNOSTICS,
 	.name = "Diagnostic tools",
+	.init = diagnostics_init,
 	.menu = MENU_ITEMS(diagnostics_items),
 };
 
@@ -1112,6 +1179,92 @@ static const struct vb2_screen_info diagnostics_storage_screen = {
 	.page_up_item = DIAGNOSTICS_STORAGE_ITEM_PAGE_UP,
 	.page_down_item = DIAGNOSTICS_STORAGE_ITEM_PAGE_DOWN,
 	.back_item = DIAGNOSTICS_STORAGE_ITEM_BACK,
+};
+
+/******************************************************************************/
+/* VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST */
+
+#define DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_UP 0
+#define DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_DOWN 1
+#define DIAGNOSTICS_STORAGE_TEST_ITEM_BACK 2
+#define DIAGNOSTICS_STORAGE_TEST_ITEM_CANCEL 3
+
+static vb2_error_t
+diagnostics_storage_test_update_impl(struct vb2_ui_context *ui)
+{
+	char *log_string;
+	vb2_error_t rv = vb2ex_diag_get_storage_test_log(&log_string);
+	if (rv != VB2_ERROR_EX_DIAG_TEST_RUNNING && rv != VB2_SUCCESS)
+		return rv;
+	log_page_show_back_or_cancel(ui, rv == VB2_ERROR_EX_DIAG_TEST_RUNNING);
+	return log_page_update(ui, log_string);
+}
+
+static vb2_error_t diagnostics_storage_test_update(struct vb2_ui_context *ui)
+{
+	if (diagnostics_storage_test_update_impl(ui) !=
+	    VB2_REQUEST_UI_CONTINUE) {
+		VB2_DEBUG(
+			"ERROR: Failed to retrieve storage test log message\n");
+		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
+		return vb2_ui_screen_back(ui);
+	}
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
+static vb2_error_t diagnostics_storage_test_init(struct vb2_ui_context *ui)
+{
+	VB2_CATCH(log_page_init(ui) , VB2_REQUEST_UI_CONTINUE);
+	return diagnostics_storage_test_update(ui);
+}
+
+static vb2_error_t
+diagnostics_storage_test_short_init(struct vb2_ui_context *ui)
+{
+	VB2_TRY(vb2ex_diag_storage_test_control(VB2_DIAG_STORAGE_TEST_STOP));
+	VB2_TRY(vb2ex_diag_storage_test_control(VB2_DIAG_STORAGE_TEST_SHORT));
+	return diagnostics_storage_test_init(ui);
+}
+
+static vb2_error_t
+diagnostics_storage_test_extended_init(struct vb2_ui_context *ui)
+{
+	VB2_TRY(vb2ex_diag_storage_test_control(VB2_DIAG_STORAGE_TEST_STOP));
+	VB2_TRY(vb2ex_diag_storage_test_control(
+		VB2_DIAG_STORAGE_TEST_EXTENDED));
+	return diagnostics_storage_test_init(ui);
+}
+
+static const struct vb2_menu_item diagnostics_storage_test_items[] = {
+	[DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_UP] = PAGE_UP_ITEM,
+	[DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_DOWN] = PAGE_DOWN_ITEM,
+	[DIAGNOSTICS_STORAGE_TEST_ITEM_BACK] = BACK_ITEM,
+	[DIAGNOSTICS_STORAGE_TEST_ITEM_CANCEL] = CANCEL_ITEM,
+	POWER_OFF_ITEM,
+};
+
+static const struct vb2_screen_info diagnostics_storage_test_short_screen = {
+	.id = VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_SHORT,
+	.name = "Storage Self Test - Short",
+	.init = diagnostics_storage_test_short_init,
+	.action = diagnostics_storage_test_update,
+	.menu = MENU_ITEMS(diagnostics_storage_test_items),
+	.page_up_item = DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_UP,
+	.page_down_item = DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_DOWN,
+	.back_item = DIAGNOSTICS_STORAGE_TEST_ITEM_BACK,
+	.cancel_item = DIAGNOSTICS_STORAGE_TEST_ITEM_CANCEL,
+};
+
+static const struct vb2_screen_info diagnostics_storage_test_extended_screen = {
+	.id = VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_EXTENDED,
+	.name = "Storage Self Test - Extended",
+	.init = diagnostics_storage_test_extended_init,
+	.action = diagnostics_storage_test_update,
+	.menu = MENU_ITEMS(diagnostics_storage_test_items),
+	.page_up_item = DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_UP,
+	.page_down_item = DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_DOWN,
+	.back_item = DIAGNOSTICS_STORAGE_TEST_ITEM_BACK,
+	.cancel_item = DIAGNOSTICS_STORAGE_TEST_ITEM_CANCEL,
 };
 
 /******************************************************************************/
@@ -1219,10 +1372,7 @@ static vb2_error_t diagnostics_memory_update_full(struct vb2_ui_context *ui)
 static const struct vb2_menu_item diagnostics_memory_items[] = {
 	[DIAGNOSTICS_MEMORY_ITEM_PAGE_UP] = PAGE_UP_ITEM,
 	[DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN] = PAGE_DOWN_ITEM,
-	[DIAGNOSTICS_MEMORY_ITEM_CANCEL] = {
-		.text = "Cancel and go back",
-		.action = vb2_ui_screen_back,
-	},
+	[DIAGNOSTICS_MEMORY_ITEM_CANCEL] = CANCEL_ITEM,
 	[DIAGNOSTICS_MEMORY_ITEM_BACK] = BACK_ITEM,
 	POWER_OFF_ITEM,
 };
@@ -1279,6 +1429,8 @@ static const struct vb2_screen_info *screens[] = {
 	&developer_select_bootloader_screen,
 	&diagnostics_screen,
 	&diagnostics_storage_screen,
+	&diagnostics_storage_test_short_screen,
+	&diagnostics_storage_test_extended_screen,
 	&diagnostics_memory_quick_screen,
 	&diagnostics_memory_full_screen,
 };
