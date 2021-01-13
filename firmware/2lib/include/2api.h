@@ -1345,6 +1345,7 @@ enum vb2_screen {
 	VB2_SCREEN_DIAGNOSTICS			= 0x400,
 	/* Storage diagnostic screen */
 	VB2_SCREEN_DIAGNOSTICS_STORAGE	      	= 0x410,
+	VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST    	= 0x411,
 	/* Memory diagnostic screens */
 	VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK    	= 0x420,
 	VB2_SCREEN_DIAGNOSTICS_MEMORY_FULL     	= 0x421,
@@ -1514,6 +1515,18 @@ uint32_t vb2ex_prepare_log_screen(enum vb2_screen screen, uint32_t locale_id,
  * @return The pointer to the full debug info string.  NULL on error.
  */
 const char *vb2ex_get_diagnostic_storage(void);
+
+/**
+ * TODO
+ *
+ * TODO
+ *
+ * @return TODO
+ */
+const char *vb2ex_get_diag_storage_test(void);
+vb2_error_t vb2ex_diag_storage_test_start_short(void);
+vb2_error_t vb2ex_diag_storage_test_start_extended(void);
+vb2_error_t vb2ex_diag_storage_test_stop(void);
 
 /**
  * Get the memory diagnostic status. When it is called, it will take over the
