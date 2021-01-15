@@ -16,6 +16,29 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "80aa561c01b2d6a3a0d450b5961019da3da43bea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85901370_10743550",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-01-15T20:52:43Z",
+      "side": 1,
+      "message": "I suggest dropping everything but sha256 - we are not using it in practice (TlclExtend always does sha256, and we don\u0027t support other algos in cr50).\n\nnote that this code also goes to firmware, we don\u0027t want to bloat it.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 36
+      },
+      "revId": "80aa561c01b2d6a3a0d450b5961019da3da43bea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
