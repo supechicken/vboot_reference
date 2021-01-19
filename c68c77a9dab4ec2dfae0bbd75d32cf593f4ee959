@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f534810_cd839ab5",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-19T07:16:41Z",
+      "side": 0,
+      "message": "This, VbExIsShutdownRequested() and others, are also UI-related functions.",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "c68c77a9dab4ec2dfae0bbd75d32cf593f4ee959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ba5e71_4ebd243e",
+        "filename": "firmware/stub/vboot_api_stub_init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-19T07:16:41Z",
+      "side": 0,
+      "message": "Same.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "c68c77a9dab4ec2dfae0bbd75d32cf593f4ee959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
