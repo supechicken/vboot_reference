@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2586f965_bd34ccca",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-20T15:26:32Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "2d2bc0eb_72e42a8f",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "c68c77a9dab4ec2dfae0bbd75d32cf593f4ee959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ba5e71_4ebd243e",
@@ -85,6 +109,30 @@
       "side": 0,
       "message": "vb2ex_mtime is also used for benchmarking purposes in vboot_kernel.c, which is why I moved it in CL:2635676 instead.",
       "parentUuid": "30ba5e71_4ebd243e",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "c68c77a9dab4ec2dfae0bbd75d32cf593f4ee959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137b2b8b_6eba264d",
+        "filename": "firmware/stub/vboot_api_stub_init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-01-20T15:26:32Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "bb7707e0_034926b7",
       "range": {
         "startLine": 17,
         "startChar": 9,
