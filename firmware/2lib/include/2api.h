@@ -1360,6 +1360,8 @@ enum vb2_screen {
 	VB2_SCREEN_DIAGNOSTICS			= 0x400,
 	/* Storage diagnostic screen */
 	VB2_SCREEN_DIAGNOSTICS_STORAGE	      	= 0x410,
+	VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_SHORT	= 0x411,
+	VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_EXTENDED	= 0x412,
 	/* Memory diagnostic screens */
 	VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK    	= 0x420,
 	VB2_SCREEN_DIAGNOSTICS_MEMORY_FULL     	= 0x421,
@@ -1538,6 +1540,21 @@ int vb2ex_log_screen_need_redrawing(uint32_t page);
 const char *vb2ex_get_diagnostic_storage(void);
 
 /**
+ * Get the storage self-test log.
+ *
+ * @param out	For returning a read-only pointer of full log string which is
+ *		guaranteed to be null-terminated. The function will manage
+ *		memory internally, so the returned pointer will only be valid
+ *		until next call.
+ * @return The status of storage test. VB2_SUCCESS means the test is finished,
+ * regardless of passing or failing. VB2_ERROR_EX_DIAG_TEST_RUNNING means
+ * the test is still running. VB2_ERROR_EX_UNIMPLEMENTED means the storage
+ * self-test is not supported on this device. ther non-zero codes for internal
+ * errors.
+ */
+vb2_error_t vb2ex_diag_get_storage_test_log(char **out);
+
+/**
  * Get the memory diagnostic status. When it is called, it will take over the
  * control for a short period of time running memory test, and then return the
  * result of current status. If `reset` is not zero, it will reset the memory
@@ -1557,6 +1574,17 @@ const char *vb2ex_get_diagnostic_storage(void);
  */
 vb2_error_t vb2ex_diag_memory_quick_test(int reset, const char **out);
 vb2_error_t vb2ex_diag_memory_full_test(int reset, const char **out);
+
+/*****************************************************************************/
+/* Functions for diagnostics control. */
+
+enum vb2_diag_storage_test {
+	VB2_DIAG_STORAGE_TEST_STOP = 0,
+	VB2_DIAG_STORAGE_TEST_SHORT,
+	VB2_DIAG_STORAGE_TEST_EXTENDED,
+};
+
+vb2_error_t vb2ex_diag_storage_test_control(enum vb2_diag_storage_test ops);
 
 /*****************************************************************************/
 /* Timer. */
