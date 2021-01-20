@@ -16,6 +16,24 @@
       "message": "Can we move this to servod xml file, instead of hacking that in futility?\n\nThe more we add options to futility, the more we make care-and-feeding more complicated. I\u0027m concerned if one day we\u0027ll need to again write very complicated command for flashing, and then creating another wrapper again...\n",
       "revId": "e6275022c0e9dc75dbf42ae4528b12772418c10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9c12a6_fe338fcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-01-20T15:55:17Z",
+      "side": 1,
+      "message": "We can if we have to.  ...or we could simply just not land this.\n\nMy argument for keeping it like this is that this is working around a hardware bug in early revisions of a board.  Hopefully most of those early revisions will be thrown away eventually.  If we planned to ship something like this then putting it in the xml would make a lot of sense, but I\u0027m not convinced it\u0027s needed here.",
+      "parentUuid": "32ee3315_df0261ef",
+      "revId": "e6275022c0e9dc75dbf42ae4528b12772418c10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
