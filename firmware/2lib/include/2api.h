@@ -875,8 +875,8 @@ enum vb2_dev_default_boot_target {
 	/* Default to boot from external disk. */
 	VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL = 1,
 
-	/* Default to boot legacy OS. */
-	VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY = 2,
+	/* Default to boot altfw. */
+	VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW = 2,
 };
 
 /**
@@ -1339,7 +1339,7 @@ enum vb2_screen {
 	VB2_SCREEN_DEVELOPER_BOOT_EXTERNAL	= 0x320,
 	/* Invalid external disk inserted */
 	VB2_SCREEN_DEVELOPER_INVALID_DISK	= 0x330,
-	/* Select alternate bootloader ("legacy boot") */
+	/* Select alternate bootloader ("altfw") */
 	VB2_SCREEN_DEVELOPER_SELECT_BOOTLOADER	= 0x340,
 	/* Diagnostic tools */
 	VB2_SCREEN_DIAGNOSTICS			= 0x400,
@@ -1422,11 +1422,20 @@ int vb2ex_physical_presence_pressed(void);
 uint32_t vb2ex_get_locale_count(void);
 
 /**
- * Return the number of available alternate bootloaders.
+ * Return the number of available altfw bootloaders.
  *
- * @return Number of alternate bootloaders.  0 if none or on error.
+ * @return Number of altfw bootloaders.  0 if none or on error.
  */
-uint32_t vb2ex_get_bootloader_count(void);
+uint32_t vb2ex_get_altfw_count(void);
+
+/**
+ * Run altfw bootloader.
+ *
+ * @param altfw_id	ID of altfw bootloader to run; 0 for default.
+ *                      Should be <= vb2ex_get_altfw_count().
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2ex_run_altfw(uint32_t altfw_id);
 
 /**
  * Delay for at least the specified number of milliseconds.

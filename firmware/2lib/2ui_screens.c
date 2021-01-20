@@ -703,7 +703,7 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 			    DEVELOPER_MODE_ITEM_BOOT_EXTERNAL);
 
 	/* Don't show "Select alternate bootloader" button if not allowed. */
-	if (!vb2_dev_boot_legacy_allowed(ui->ctx))
+	if (!vb2_dev_boot_altfw_allowed(ui->ctx))
 		VB2_SET_BIT(ui->state->hidden_item_mask,
 			    DEVELOPER_MODE_ITEM_SELECT_BOOTLOADER);
 
@@ -712,7 +712,7 @@ vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 	case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
 		ui->state->selected_item = DEVELOPER_MODE_ITEM_BOOT_EXTERNAL;
 		break;
-	case VB2_DEV_DEFAULT_BOOT_TARGET_LEGACY:
+	case VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW:
 		ui->state->selected_item =
 			DEVELOPER_MODE_ITEM_SELECT_BOOTLOADER;
 		break;
@@ -955,34 +955,34 @@ static vb2_error_t developer_select_bootloader_init(struct vb2_ui_context *ui)
 vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
 	struct vb2_ui_context *ui)
 {
-	uint32_t altfw_num;
+	uint32_t altfw_id;
 	const size_t menu_before_len =
 		ARRAY_SIZE(developer_select_bootloader_items_before);
 
 	if (!(ui->ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ||
 	    !vb2_dev_boot_allowed(ui->ctx) ||
-	    !vb2_dev_boot_legacy_allowed(ui->ctx)) {
+	    !vb2_dev_boot_altfw_allowed(ui->ctx)) {
 		VB2_DEBUG("ERROR: Dev mode alternate bootloader not allowed\n");
 		ui->error_code = VB2_UI_ERROR_ALTERNATE_BOOT_DISABLED;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
-	if (vb2ex_get_bootloader_count() == 0) {
+	if (vb2ex_get_altfw_count() == 0) {
 		VB2_DEBUG("ERROR: No alternate bootloader was found\n");
 		ui->error_code = VB2_UI_ERROR_NO_BOOTLOADER;
 		return VB2_REQUEST_UI_CONTINUE;
 	}
 
 	if (ui->key == VB_KEY_CTRL('L')) {
-		altfw_num = 0;
+		altfw_id = 0;
 		VB2_DEBUG("Try booting from default bootloader\n");
 	} else {
-		altfw_num = ui->state->selected_item - menu_before_len + 1;
-		VB2_DEBUG("Try booting from bootloader #%u\n", altfw_num);
+		altfw_id = ui->state->selected_item - menu_before_len + 1;
+		VB2_DEBUG("Try booting from bootloader #%u\n", altfw_id);
 	}
 
-	/* VbExLegacy will not return if successful */
-	VbExLegacy(altfw_num);
+	/* vb2ex_run_altfw will not return if successful */
+	vb2ex_run_altfw(altfw_id);
 
 	VB2_DEBUG("ERROR: Alternate bootloader failed\n");
 	ui->error_code = VB2_UI_ERROR_ALTERNATE_BOOT_FAILED;
@@ -1002,7 +1002,7 @@ static const struct vb2_menu *get_bootloader_menu(struct vb2_ui_context *ui)
 	if (ui->bootloader_menu.num_items > 0)
 		return &ui->bootloader_menu;
 
-	num_bootloaders = vb2ex_get_bootloader_count();
+	num_bootloaders = vb2ex_get_altfw_count();
 	if (num_bootloaders == 0) {
 		VB2_DEBUG("ERROR: No bootloader was found\n");
 		return NULL;
