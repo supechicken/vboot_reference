@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7409f382_41e5be67",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2021-01-20T00:39:34Z",
+      "side": 1,
+      "message": "Staging is still hung up here: https://paste.googleplex.com/5616671793348608",
+      "revId": "0249329a6aadc70c15d2b70c2cc6efdb115d4e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abcac6b9_862d897a",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2021-01-20T00:39:34Z",
+      "side": 1,
+      "message": "Doesn\u0027t this want to exit 1?",
+      "revId": "0249329a6aadc70c15d2b70c2cc6efdb115d4e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
