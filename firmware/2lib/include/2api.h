@@ -1429,6 +1429,15 @@ uint32_t vb2ex_get_locale_count(void);
 uint32_t vb2ex_get_bootloader_count(void);
 
 /**
+ * Run alternate bootloader.
+ *
+ * @param bootloader_id	ID of alternate bootloader to run; 0 for default.
+ *                      Should be <= vb2ex_get_bootloader_count().
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2ex_run_bootloader(uint32_t bootloader_id);
+
+/**
  * Delay for at least the specified number of milliseconds.
  *
  * @param msec			Duration in milliseconds.
