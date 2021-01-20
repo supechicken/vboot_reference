@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055359ba_48e6edc4",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-01-20T04:50:06Z",
+      "side": 1,
+      "message": "the idiomatic way of writing this is not to use echo but either true or :\n\n tainted_status\u003d$(grep \"${tainted_tag}\" \"${license}\") || :\n\nor, move it into the if statement:\n\n if tainted_status\u003d$(grep \"${tainted_tag}\" \"${license}\"); then",
+      "revId": "12f767969fe8368821c03faad113bfcf51cc8c95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
