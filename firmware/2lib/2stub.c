@@ -93,10 +93,16 @@ uint32_t vb2ex_prepare_log_screen(enum vb2_screen screen, uint32_t locale_id,
 	return 1;
 }
 
-__attribute__((weak))
-const char *vb2ex_get_diagnostic_storage(void)
+__attribute__((weak)) const char *vb2ex_get_diagnostic_storage(void)
 {
 	return "mock";
+}
+
+__attribute__((weak))
+vb2_error_t vb2ex_diag_get_storage_test_log(const char **out)
+{
+	*out = "mock";
+	return VB2_SUCCESS;
 }
 
 __attribute__((weak))
@@ -110,5 +116,11 @@ __attribute__((weak))
 vb2_error_t vb2ex_diag_memory_full_test(int reset, const char **out)
 {
 	*out = "mock";
+	return VB2_SUCCESS;
+}
+
+__attribute__((weak))
+vb2_error_t vb2ex_diag_storage_test_control(enum vb2_diag_storage_test ops)
+{
 	return VB2_SUCCESS;
 }
