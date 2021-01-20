@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d2bc0eb_72e42a8f",
+        "filename": "firmware/stub/vboot_api_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-01-20T09:01:06Z",
+      "side": 0,
+      "message": "I\u0027m excluding \"vboot1-style\" functions here until we decide what to do with them (convert or rewrite or refactor).  Is that okay?",
+      "parentUuid": "8f534810_cd839ab5",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "c68c77a9dab4ec2dfae0bbd75d32cf593f4ee959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30ba5e71_4ebd243e",
         "filename": "firmware/stub/vboot_api_stub_init.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-19T07:16:41Z",
       "side": 0,
       "message": "Same.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "c68c77a9dab4ec2dfae0bbd75d32cf593f4ee959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7707e0_034926b7",
+        "filename": "firmware/stub/vboot_api_stub_init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-01-20T09:01:06Z",
+      "side": 0,
+      "message": "vb2ex_mtime is also used for benchmarking purposes in vboot_kernel.c, which is why I moved it in CL:2635676 instead.",
+      "parentUuid": "30ba5e71_4ebd243e",
       "range": {
         "startLine": 17,
         "startChar": 9,
