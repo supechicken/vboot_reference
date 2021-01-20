@@ -67,8 +67,8 @@ static uint32_t mock_vbtlk_expected_flag;
 static int mock_dev_boot_allowed;
 static int mock_dev_boot_legacy_allowed;
 
-static int mock_vbexlegacy_called;
-static enum VbAltFwIndex_t mock_altfw_num_last;
+static int mock_run_bootloader_called;
+static uint32_t mock_bootloader_last;
 static uint32_t mock_bootloader_count;
 
 static uint32_t mock_time_ms;
@@ -362,9 +362,9 @@ static void reset_common_data(void)
 	mock_dev_boot_allowed = 1;
 	mock_dev_boot_legacy_allowed = 0;
 
-	/* For VbExLegacy */
-	mock_vbexlegacy_called = 0;
-	mock_altfw_num_last = -100;
+	/* For vb2ex_run_bootloader */
+	mock_run_bootloader_called = 0;
+	mock_bootloader_last = -100;
 	mock_bootloader_count = 2;
 
 	/* For vb2ex_mtime and vb2ex_msleep  */
@@ -497,12 +497,12 @@ int vb2_dev_boot_legacy_allowed(struct vb2_context *c)
 	return mock_dev_boot_legacy_allowed;
 }
 
-vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)
+vb2_error_t vb2ex_run_bootloader(uint32_t bootloader_id)
 {
-	mock_vbexlegacy_called++;
-	mock_altfw_num_last = altfw_num;
+	mock_run_bootloader_called++;
+	mock_bootloader_last = bootloader_id;
 
-	if (altfw_num <= mock_bootloader_count)
+	if (bootloader_id <= mock_bootloader_count)
 		return VB2_SUCCESS;
 	else
 		return VB2_ERROR_UNKNOWN;
@@ -749,7 +749,8 @@ static void vb2_ui_developer_mode_boot_alternate_action_tests(void)
 	mock_dev_boot_legacy_allowed = 1;
 	TEST_EQ(vb2_ui_developer_mode_boot_alternate_action(&mock_ui_context),
 		VB2_REQUEST_UI_CONTINUE, "not allowed: not in dev mode");
-	TEST_EQ(mock_vbexlegacy_called, 0, "  VbExLegacy not called");
+	TEST_EQ(mock_run_bootloader_called, 0,
+		"  vb2ex_run_bootloader not called");
 
 	/* Not allowed: dev boot not allowed */
 	reset_common_data();
@@ -758,7 +759,8 @@ static void vb2_ui_developer_mode_boot_alternate_action_tests(void)
 	mock_dev_boot_legacy_allowed = 1;
 	TEST_EQ(vb2_ui_developer_mode_boot_alternate_action(&mock_ui_context),
 		VB2_REQUEST_UI_CONTINUE, "not allowed: dev boot not allowed");
-	TEST_EQ(mock_vbexlegacy_called, 0, "  VbExLegacy not called");
+	TEST_EQ(mock_run_bootloader_called, 0,
+		"  vb2ex_run_bootloader not called");
 
 	/* Not allowed: boot legacy not allowed */
 	reset_common_data();
@@ -766,7 +768,8 @@ static void vb2_ui_developer_mode_boot_alternate_action_tests(void)
 	TEST_EQ(vb2_ui_developer_mode_boot_alternate_action(&mock_ui_context),
 		VB2_REQUEST_UI_CONTINUE,
 		"not allowed: boot legacy not allowed");
-	TEST_EQ(mock_vbexlegacy_called, 0, "  VbExLegacy not called");
+	TEST_EQ(mock_run_bootloader_called, 0,
+		"  vb2ex_run_bootloader not called");
 
 	/* Allowed */
 	reset_common_data();
@@ -775,8 +778,9 @@ static void vb2_ui_developer_mode_boot_alternate_action_tests(void)
 	mock_ui_context.state->selected_item = 2;
 	TEST_EQ(vb2_ui_developer_mode_boot_alternate_action(&mock_ui_context),
 		VB2_REQUEST_UI_CONTINUE, "allowed");
-	TEST_EQ(mock_vbexlegacy_called, 1, "  VbExLegacy called once");
-	TEST_EQ(mock_altfw_num_last, 2, "  select bootloader #2");
+	TEST_EQ(mock_run_bootloader_called, 1,
+		"  vb2ex_run_bootloader called once");
+	TEST_EQ(mock_bootloader_last, 2, "  select bootloader #2");
 
 	/* CTRL+L = default bootloader */
 	reset_common_data();
@@ -786,8 +790,9 @@ static void vb2_ui_developer_mode_boot_alternate_action_tests(void)
 	mock_ui_context.state->selected_item = 4;  /* Ignored */
 	TEST_EQ(vb2_ui_developer_mode_boot_alternate_action(&mock_ui_context),
 		VB2_REQUEST_UI_CONTINUE, "allowed: ctrl+l");
-	TEST_EQ(mock_vbexlegacy_called, 1, "  VbExLegacy called once");
-	TEST_EQ(mock_altfw_num_last, 0, "  select bootloader #0");
+	TEST_EQ(mock_run_bootloader_called, 1,
+		"  vb2ex_run_bootloader called once");
+	TEST_EQ(mock_bootloader_last, 0, "  select bootloader #0");
 
 	VB2_DEBUG("...done.\n");
 }

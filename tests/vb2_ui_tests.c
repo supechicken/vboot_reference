@@ -77,8 +77,8 @@ static int mock_dev_boot_allowed;
 static int mock_dev_boot_legacy_allowed;
 static int mock_dev_boot_external_allowed;
 
-static int mock_vbexlegacy_called;
-static enum VbAltFwIndex_t mock_altfw_num_last;
+static int mock_run_bootloader_called;
+static uint32_t mock_bootloader_last;
 static uint32_t mock_bootloader_count;
 
 static vb2_error_t mock_vbtlk_retval[32];
@@ -320,9 +320,9 @@ static void reset_common_data(enum reset_type t)
 	mock_dev_boot_legacy_allowed = 0;
 	mock_dev_boot_external_allowed = 1;
 
-	/* For VbExLegacy */
-	mock_vbexlegacy_called = 0;
-	mock_altfw_num_last = -100;
+	/* For vb2ex_run_bootloader */
+	mock_run_bootloader_called = 0;
+	mock_bootloader_last = -100;
 	mock_bootloader_count = 2;
 
 	/* For VbTryLoadKernel */
@@ -500,10 +500,10 @@ int vb2_dev_boot_external_allowed(struct vb2_context *c)
 	return mock_dev_boot_external_allowed;
 }
 
-vb2_error_t VbExLegacy(enum VbAltFwIndex_t altfw_num)
+vb2_error_t vb2ex_run_bootloader(uint32_t bootloader_id)
 {
-	mock_vbexlegacy_called++;
-	mock_altfw_num_last = altfw_num;
+	mock_run_bootloader_called++;
+	mock_bootloader_last = bootloader_id;
 
 	return VB2_SUCCESS;
 }
@@ -708,14 +708,15 @@ static void developer_tests(void)
 	add_mock_keypress(VB_KEY_CTRL('L'));
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"ctrl+l = boot legacy");
-	TEST_EQ(mock_vbexlegacy_called, 1, "  VbExLegacy called");
+	TEST_EQ(mock_run_bootloader_called, 1, "  vb2ex_run_bootloader called");
 
 	/* Ctrl+L = boot legacy (disallowed) */
 	reset_common_data(FOR_DEVELOPER);
 	add_mock_keypress(VB_KEY_CTRL('L'));
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"ctrl+l = boot legacy");
-	TEST_EQ(mock_vbexlegacy_called, 0, "  VbExLegacy not called");
+	TEST_EQ(mock_run_bootloader_called, 0,
+		"  vb2ex_run_bootloader not called");
 
 	/* VB_BUTTON_VOL_UP_LONG_PRESS = boot external */
 	if (DETACHABLE) {
@@ -1372,7 +1373,7 @@ static void developer_screen_tests(void)
 	add_mock_keypress(VB_KEY_ENTER);
 	TEST_EQ(vb2_developer_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"dev mode screen");
-	TEST_EQ(mock_vbexlegacy_called, 1, "  VbExLegacy called");
+	TEST_EQ(mock_run_bootloader_called, 1, "  vb2ex_run_bootloader called");
 
 	reset_common_data(FOR_DEVELOPER);  /* Select #2 by default */
 	add_mock_vbtlk(VB2_SUCCESS, VB_DISK_FLAG_FIXED);

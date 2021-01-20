@@ -1410,23 +1410,32 @@ vb2_error_t vb2ex_display_ui(enum vb2_screen screen,
 /**
  * Check that physical presence button is currently pressed by the user.
  *
- * @returns 1 for pressed, 0 for not.
+ * @return 1 for pressed, 0 for not.
  */
 int vb2ex_physical_presence_pressed(void);
 
 /**
  * Get the number of supported locales.
  *
- * @returns Number of locales.  0 if none or on error.
+ * @return Number of locales.  0 if none or on error.
  */
 uint32_t vb2ex_get_locale_count(void);
 
 /**
  * Return the number of available alternate bootloaders.
  *
- * @returns Number of alternate bootloaders.  0 if none or on error.
+ * @return Number of alternate bootloaders.  0 if none or on error.
  */
 uint32_t vb2ex_get_bootloader_count(void);
+
+/**
+ * Run alternate bootloader.
+ *
+ * @param bootloader_id	ID of alternate bootloader to run; 0 for default.
+ *                      Should be <= vb2ex_get_bootloader_count().
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2ex_run_bootloader(uint32_t bootloader_id);
 
 /**
  * Delay for at least the specified number of milliseconds.
