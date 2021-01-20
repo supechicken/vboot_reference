@@ -955,7 +955,7 @@ static vb2_error_t developer_select_bootloader_init(struct vb2_ui_context *ui)
 vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
 	struct vb2_ui_context *ui)
 {
-	uint32_t altfw_num;
+	uint32_t bootloader_id;
 	const size_t menu_before_len =
 		ARRAY_SIZE(developer_select_bootloader_items_before);
 
@@ -974,15 +974,15 @@ vb2_error_t vb2_ui_developer_mode_boot_alternate_action(
 	}
 
 	if (ui->key == VB_KEY_CTRL('L')) {
-		altfw_num = 0;
+		bootloader_id = 0;
 		VB2_DEBUG("Try booting from default bootloader\n");
 	} else {
-		altfw_num = ui->state->selected_item - menu_before_len + 1;
-		VB2_DEBUG("Try booting from bootloader #%u\n", altfw_num);
+		bootloader_id = ui->state->selected_item - menu_before_len + 1;
+		VB2_DEBUG("Try booting from bootloader #%u\n", bootloader_id);
 	}
 
-	/* VbExLegacy will not return if successful */
-	VbExLegacy(altfw_num);
+	/* vb2ex_run_bootloader will not return if successful */
+	vb2ex_run_bootloader(bootloader_id);
 
 	VB2_DEBUG("ERROR: Alternate bootloader failed\n");
 	ui->error_code = VB2_UI_ERROR_ALTERNATE_BOOT_FAILED;
