@@ -35,6 +35,12 @@
 	.action = vb2_ui_screen_back, \
 })
 
+#define CANCEL_ITEM                                                            \
+	((struct vb2_menu_item){                                               \
+		.text = "Cancel and go back",                                  \
+		.action = vb2_ui_screen_back,                                  \
+	})
+
 #define ADVANCED_OPTIONS_ITEM ((struct vb2_menu_item){ \
 	.text = "Advanced options", \
 	.target = VB2_SCREEN_ADVANCED_OPTIONS, \
@@ -60,7 +66,6 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
  * current_page is valid in prev and next actions, and the back_item is assigned
  * to a correct menu item index.
  */
-/* TODO(b/174127808): Split out enabling/disabling buttons. */
 
 static vb2_error_t log_page_init(struct vb2_ui_context *ui)
 {
@@ -68,6 +73,7 @@ static vb2_error_t log_page_init(struct vb2_ui_context *ui)
 
 	ui->state->current_page = 0;
 
+	/* TODO(b/174127808): Split out enabling/disabling buttons. */
 	if (ui->state->page_count == 1) {
 		VB2_SET_BIT(ui->state->disabled_item_mask,
 			    screen->page_up_item);
@@ -83,22 +89,27 @@ static vb2_error_t log_page_init(struct vb2_ui_context *ui)
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
-static vb2_error_t log_page_prev_action(struct vb2_ui_context *ui)
+static vb2_error_t log_page_update(struct vb2_ui_context *ui,
+				   const char *new_log_string)
 {
 	const struct vb2_screen_info *screen = ui->state->screen;
 
-	/* Validity check. */
-	if (ui->state->current_page == 0)
-		return VB2_REQUEST_UI_CONTINUE;
-
-	ui->state->current_page--;
-
-	/* Clear bits of page down. */
-	if (ui->state->current_page != ui->state->page_count - 1)
-		VB2_CLR_BIT(ui->state->disabled_item_mask,
+	if (new_log_string) {
+		ui->state->page_count = vb2ex_prepare_log_screen(
+			ui->state->screen->id, ui->locale_id, new_log_string);
+		ui->force_display = 1;
+	}
+	if (ui->state->page_count == 0)
+		return VB2_ERROR_UI_LOG_INIT;
+	if (ui->state->current_page >= ui->state->page_count) {
+		ui->state->current_page = ui->state->page_count - 1;
+	}
+	VB2_CLR_BIT(ui->state->disabled_item_mask, screen->page_down_item);
+	VB2_CLR_BIT(ui->state->disabled_item_mask, screen->page_up_item);
+	if (ui->state->current_page == ui->state->page_count - 1) {
+		VB2_SET_BIT(ui->state->disabled_item_mask,
 			    screen->page_down_item);
-
-	/* Disable page up at the first page. */
+	}
 	if (ui->state->current_page == 0)
 		VB2_SET_BIT(ui->state->disabled_item_mask,
 			    screen->page_up_item);
@@ -106,27 +117,24 @@ static vb2_error_t log_page_prev_action(struct vb2_ui_context *ui)
 	return VB2_REQUEST_UI_CONTINUE;
 }
 
+static vb2_error_t log_page_prev_action(struct vb2_ui_context *ui)
+{
+	/* Validity check. */
+	if (ui->state->current_page == 0)
+		return VB2_REQUEST_UI_CONTINUE;
+
+	ui->state->current_page--;
+	return log_page_update(ui, NULL);
+}
+
 static vb2_error_t log_page_next_action(struct vb2_ui_context *ui)
 {
-	const struct vb2_screen_info *screen = ui->state->screen;
-
 	/* Validity check. */
 	if (ui->state->current_page == ui->state->page_count - 1)
 		return VB2_REQUEST_UI_CONTINUE;
 
 	ui->state->current_page++;
-
-	/* Clear bits of page up. */
-	if (ui->state->current_page != 0)
-		VB2_CLR_BIT(ui->state->disabled_item_mask,
-			    screen->page_up_item);
-
-	/* Disable page down at the last page. */
-	if (ui->state->current_page == ui->state->page_count - 1)
-		VB2_SET_BIT(ui->state->disabled_item_mask,
-			    screen->page_down_item);
-
-	return VB2_REQUEST_UI_CONTINUE;
+	return log_page_update(ui, NULL);
 }
 
 #define PAGE_UP_ITEM ((struct vb2_menu_item){ \
