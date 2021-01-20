@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ee3315_df0261ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-01-20T01:50:30Z",
+      "side": 1,
+      "message": "Can we move this to servod xml file, instead of hacking that in futility?\n\nThe more we add options to futility, the more we make care-and-feeding more complicated. I\u0027m concerned if one day we\u0027ll need to again write very complicated command for flashing, and then creating another wrapper again...\n",
+      "revId": "e6275022c0e9dc75dbf42ae4528b12772418c10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
