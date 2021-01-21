@@ -64,6 +64,21 @@
  */
 #define VB2_TRY(expr, ...) _VB2_TRY_IMPL(expr, ##__VA_ARGS__, NULL, 0)
 
+/*
+ * Evaluate an expression and return *from the caller* if the return value
+ * doesn't match.
+ *
+ * @param expr	An expression (such as a function call) of type vb2_error_t.
+ * @param error	Expected vb2_error_t value return by `expr`.
+ */
+#define VB2_CATCH(expr, error)                                                 \
+	do {                                                                   \
+		vb2_error_t _vb2_try_rv = (expr);                              \
+		if (_vb2_try_rv != (error)) {                                  \
+			return _vb2_try_rv;                                    \
+		}                                                              \
+	} while (0)
+
 /* Flags for vb2_context.
  *
  * Unless otherwise noted, flags are set by verified boot and may be read (but
