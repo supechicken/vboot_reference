@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8995c514_b11e01ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-01-21T09:31:38Z",
+      "side": 1,
+      "message": "Since the performance and rendering stack is a little bit complex because of many corner cases. I would suggest to have a doc if you would like to go ahead with this topic.",
+      "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e28a97_35904fc8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-01-21T09:31:38Z",
+      "side": 1,
+      "message": "If I remember correctly, vb2ex_prepare_log_screen() was slow for parsing the whole screen and split to multiple pages. It will still be slow if you keep pass the same string into it.\n\nSuggest to consult with rocco to have more detail for current implementation.",
+      "range": {
+        "startLine": 98,
+        "startChar": 26,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f62ce5e_8a3780ec",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-01-21T09:31:38Z",
+      "side": 1,
+      "message": "In CL:2640012, if depthcharge side already know whether it need re-drawing the log page, maybe we can remove force_display and make it always redraw. \n\nThe force_display is a workaround since only partial component of current Groot framework will ignore redrawing request if the state doesn\u0027t change. It will be slow if always redraw. I am not sure if log screen is the only bottleneck.",
+      "range": {
+        "startLine": 105,
+        "startChar": 6,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
