@@ -426,6 +426,12 @@ FWLIB_SRCS += \
 	firmware/lib/tpm_lite/mocked_tlcl.c
 endif
 
+ifneq ($(filter-out 0,${X86_SHA_EXT}),)
+CFLAGS += -mssse3 -mno-avx -msha -DX86_SHA_EXT
+FWLIB_SRCS += \
+	firmware/2lib/2sha256_x86.c
+endif
+
 ifeq (${FIRMWARE_ARCH},)
 # Include BIOS stubs in the firmware library when compiling for host
 # TODO: split out other stub funcs too
