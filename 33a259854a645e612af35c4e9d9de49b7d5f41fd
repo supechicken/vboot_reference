@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6a783e_3bdab8c7",
+        "filename": "firmware/2lib/2stub_hwcrypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-01-21T16:16:50Z",
+      "side": 1,
+      "message": "Is this required? Won\u0027t these functions get overwritten by 2sha256_x86.c?",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
