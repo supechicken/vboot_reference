@@ -213,9 +213,17 @@ vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,
 	if (!dc)
 		return VB2_ERROR_VDATA_WORKBUF_HASHING;
 
-	VB2_TRY(vb2_digest_init(dc, key->hash_alg));
-	VB2_TRY(vb2_digest_extend(dc, data, sig->data_size));
-	VB2_TRY(vb2_digest_finalize(dc, digest, digest_size));
+	if (key->allow_hwcrypto &&
+	    vb2ex_hwcrypto_digest_init(key->hash_alg, sig->data_size)
+	    == VB2_SUCCESS) {
+		VB2_DEBUG("Using HW for hashing (%d)\n", key->hash_alg);
+		vb2ex_hwcrypto_digest_extend(data, sig->data_size);
+		vb2ex_hwcrypto_digest_finalize(digest, digest_size);
+	} else {
+		VB2_TRY(vb2_digest_init(dc, key->hash_alg));
+		VB2_TRY(vb2_digest_extend(dc, data, sig->data_size));
+		VB2_TRY(vb2_digest_finalize(dc, digest, digest_size));
+	}
 
 	vb2_workbuf_free(&wblocal, sizeof(*dc));
 

@@ -26,8 +26,7 @@ static enum {
 	HWCRYPTO_ERROR,
 } hwcrypto_state;
 
-vb2_error_t vb2ex_hwcrypto_rsa_verify_digest(const struct vb2_public_key *key,
-					     const uint8_t *sig, const uint8_t *digest)
+static vb2_error_t hwcrypto_mock(vb2_error_t err)
 {
 	switch (hwcrypto_state) {
 		case HWCRYPTO_OK:
@@ -35,8 +34,31 @@ vb2_error_t vb2ex_hwcrypto_rsa_verify_digest(const struct vb2_public_key *key,
 		case HWCRYPTO_NOTSUPPORTED:
 			return VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED;
 		case HWCRYPTO_ERROR:
-			return VB2_ERROR_RSA_VERIFY_DIGEST;
+			return err;
 	}
+}
+
+vb2_error_t vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
+				       uint32_t data_size)
+{
+	return hwcrypto_mock(VB2_ERROR_SHA_INIT_ALGORITHM);
+}
+
+vb2_error_t vb2ex_hwcrypto_digest_extend(const uint8_t *buf, uint32_t size)
+{
+	return hwcrypto_mock(VB2_ERROR_SHA_EXTEND_ALGORITHM);
+}
+
+vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
+					   uint32_t digest_size)
+{
+	return hwcrypto_mock(VB2_ERROR_SHA_FINALIZE_ALGORITHM);
+}
+
+vb2_error_t vb2ex_hwcrypto_rsa_verify_digest(const struct vb2_public_key *key,
+					     const uint8_t *sig, const uint8_t *digest)
+{
+	return hwcrypto_mock(VB2_ERROR_RSA_VERIFY_DIGEST);
 }
 
 
