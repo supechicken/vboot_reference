@@ -97,12 +97,13 @@ static vb2_error_t log_page_update(struct vb2_ui_context *ui,
 	if (new_log_string) {
 		ui->state->page_count = vb2ex_prepare_log_screen(
 			ui->state->screen->id, ui->locale_id, new_log_string);
-		ui->force_display = 1;
-	}
-	if (ui->state->page_count == 0)
-		return VB2_ERROR_UI_LOG_INIT;
-	if (ui->state->current_page >= ui->state->page_count) {
-		ui->state->current_page = ui->state->page_count - 1;
+		if (ui->state->page_count == 0)
+			return VB2_ERROR_UI_LOG_INIT;
+		if (ui->state->current_page >= ui->state->page_count) {
+			ui->state->current_page = ui->state->page_count - 1;
+		}
+		ui->force_display |= vb2ex_log_screen_need_redrawing(
+			ui->state->current_page);
 	}
 	VB2_CLR_BIT(ui->state->disabled_item_mask, screen->page_down_item);
 	VB2_CLR_BIT(ui->state->disabled_item_mask, screen->page_up_item);
