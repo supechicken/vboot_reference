@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "796623c9_8c92d177",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-21T17:08:26Z",
+      "side": 1,
+      "message": "You should also run the FIPS 180-2 test vectors with the SHA256 extensions enabled. These are in tests/vb2_sha_tests.c.",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79c8f3a8_3bff1cda",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-21T17:08:26Z",
+      "side": 1,
+      "message": "these parameters are not used in the macro body, and should be removed.",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea05f38_34fd900c",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-21T17:08:26Z",
+      "side": 1,
+      "message": "Since SHA256_X86_PUT_STATE0 doesn\u0027t use j or i, you only need j in this macro.",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a6a783e_3bdab8c7",
         "filename": "firmware/2lib/2stub_hwcrypto.c",
         "patchSetId": 1
@@ -14,6 +77,24 @@
       "writtenOn": "2021-01-21T16:16:50Z",
       "side": 1,
       "message": "Is this required? Won\u0027t these functions get overwritten by 2sha256_x86.c?",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4804e7d4_e0824f81",
+        "filename": "firmware/2lib/2stub_hwcrypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-01-21T17:08:26Z",
+      "side": 1,
+      "message": "I this they will, because of the __attribute__((weak)). So the #ifndef should be unnecessary.",
+      "parentUuid": "9a6a783e_3bdab8c7",
       "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
