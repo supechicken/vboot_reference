@@ -62,6 +62,30 @@
       },
       "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6338fda3_14f60683",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-01-21T09:54:24Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/chromeos_public/src/platform/vboot_reference/firmware/2lib/2ui.c;l\u003d323?q\u003dforce_display\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2F\n\nA parts of logic of deciding whether to redrawing is in vboot. We still need to pass the status from depthcharge to vboot.\n\nMaybe we can create a new field in vb2_screen_state to replace force_display. But the whole structure of this logic doesn\u0027t change so much.",
+      "parentUuid": "5f62ce5e_8a3780ec",
+      "range": {
+        "startLine": 105,
+        "startChar": 6,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
