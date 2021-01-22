@@ -20,6 +20,120 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ab45675_086a2097",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-22T00:13:29Z",
+      "side": 1,
+      "message": "Hmm... is the -march really necessary? Does it not allow you to specify -msha alone? This switch is AMD-specific so I would not like to hardcode it in an option that\u0027s also supposed to be used on Intel CPUs, and I wouldn\u0027t want to take such a wide-reaching option away from coreboot\u0027s control either.\n\nIf GCC doesn\u0027t let you get around the -march in any way, I think I\u0027d rather have the code use inline assembly than use that flag. (Or we need to start dragging this into coreboot and depthcharge which would be the appropriate place to set such a far-reaching flag for firmware builds.)",
+      "range": {
+        "startLine": 431,
+        "startChar": 10,
+        "endLine": 431,
+        "endChar": 23
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2720b1_df29a6bb",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-22T00:13:29Z",
+      "side": 1,
+      "message": "Why the -m32? For firmware builds this should already be set anyway. For userland builds, we can\u0027t just compile the whole library in 32-bit because of this. Do the SHA instructions not work in 64-bit?",
+      "range": {
+        "startLine": 431,
+        "startChar": 24,
+        "endLine": 431,
+        "endChar": 28
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc07621_871af2a9",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-22T00:13:29Z",
+      "side": 1,
+      "message": "There needs to be some kind of test for this stuff. If you can\u0027t fit it into the normal test framework (might be tricky since it\u0027s a compile-time flag), you could add a compiled test like these that manually builds and links in the extra file. (You would also need to make it detect the host machine and skip that test if it doesn\u0027t have the right hardware support, of course. Does anyone know if our Chrome OS builders support these instructions? If not, maybe we can have the ebuild run it through QEMU... see https://chromium.googlesource.com/chromiumos/docs/+/master/testing/running_unit_tests.md#Non_native-architectures-e_g_QEMU )",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84eda496_b0b652f8",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-22T00:13:29Z",
+      "side": 1,
+      "message": "What is this and where does it come from?",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805738b7_29d004fe",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-22T00:13:29Z",
+      "side": 1,
+      "message": "Please find a way to factor these out from 2sha256.c rather than copy\u0026pasting the whole thing (e.g. put them in a common header or a separate C file or something).",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c05782d_597b126e",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-22T00:13:29Z",
+      "side": 1,
+      "message": "Where does all this code come from? Did you write it all from scratch? If you used any external sources, please add a comment about where it was taken from.",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79c8f3a8_3bff1cda",
         "filename": "firmware/2lib/2sha256_x86.c",
         "patchSetId": 1
