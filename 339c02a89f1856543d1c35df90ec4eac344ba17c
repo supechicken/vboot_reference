@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfd5854_e29001ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-01-22T21:27:39Z",
+      "side": 1,
+      "message": "+2 with nit",
+      "revId": "339c02a89f1856543d1c35df90ec4eac344ba17c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1532a379_b595145f",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-01-22T21:27:39Z",
+      "side": 1,
+      "message": "please check and error out (VB2_DEBUG + `*buffer_space \u003d -1;`) if hashAlg !\u003d TPM_ALG_SHA256",
+      "range": {
+        "startLine": 679,
+        "startChar": 31,
+        "endLine": 679,
+        "endChar": 44
+      },
+      "revId": "339c02a89f1856543d1c35df90ec4eac344ba17c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
