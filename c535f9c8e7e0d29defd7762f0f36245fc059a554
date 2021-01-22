@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e8073ee_72a66ebe",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-01-22T04:41:42Z",
+      "side": 1,
+      "message": "Sounds fast enough. Maybe it is slow for firmware log? If they are fast, how about just call vb2ex_prepare_log_screen() every time?\n\nRocco, I remembered that you\u0027ve mentioned there is some performance issue on vb2ex_prepare_log_screen(). Do you have any recall about that?",
+      "parentUuid": "2fa8e9a0_e2c62f54",
+      "range": {
+        "startLine": 98,
+        "startChar": 26,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f62ce5e_8a3780ec",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "https://source.corp.google.com/chromeos_public/src/platform/vboot_reference/firmware/2lib/2ui.c;l\u003d323?q\u003dforce_display\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2F\n\nA parts of logic of deciding whether to redrawing is in vboot. We still need to pass the status from depthcharge to vboot.\n\nMaybe we can create a new field in vb2_screen_state to replace force_display. But the whole structure of this logic doesn\u0027t change so much.",
       "parentUuid": "5f62ce5e_8a3780ec",
+      "range": {
+        "startLine": 105,
+        "startChar": 6,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61cd5d9c_3d486ce4",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-01-22T04:41:42Z",
+      "side": 1,
+      "message": "I remembered that there was a plan to remove this \"if condition\" in Groot. That is, make the main loop call depthcharge everytime. Not sure if it is feasible.",
+      "parentUuid": "6338fda3_14f60683",
       "range": {
         "startLine": 105,
         "startChar": 6,
