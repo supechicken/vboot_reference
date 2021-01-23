@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d0468ed_44b49007",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-23T02:20:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure I agree with this... \"altfw\" is the official internal/in-code name of the feature, and we\u0027ve hardcoded it in some places we can\u0027t change anymore like the CBFS filenames. I\u0027m okay with harmonizing any user-visible language (to \"alternate bootloader\"), but I think we should stick with altfw in the code (especially if you\u0027re just gonna call it \"bootloader\" instead, which I think is very confusing without an \"alt\" anywhere).",
+      "revId": "339601482acbb5bd5bdd04b4d14f4ae2b315d018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
