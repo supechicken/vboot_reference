@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ffd820_58ce6203",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-01-25T04:02:15Z",
+      "side": 1,
+      "message": "Could you run the vboot unit tests by \"CC\u003dx86_64-pc-linux-gnu-clang; make clean \u0026\u0026 make runtests\" (inside cros_sdk), pass all the tests and add:\n\n TEST\u003dCC\u003dx86_64-pc-linux-gnu-clang;\n      make clean \u0026\u0026 make runtests\n\nhere?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "d0e0a3ec517d9c2b47b5f1fd26f0a513624d6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ead39d_169c9a65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-01-25T04:02:15Z",
+      "side": 1,
+      "message": "Thanks for the work on clearing TODOs here!\nSome nits left.\n\n\n",
+      "revId": "d0e0a3ec517d9c2b47b5f1fd26f0a513624d6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0abb42c_566ef4d8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-01-25T04:02:15Z",
+      "side": 1,
+      "message": "nit: Can we follow the indent as the other ITEMs?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "d0e0a3ec517d9c2b47b5f1fd26f0a513624d6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a522e8cc_9eecdfd1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-01-25T04:02:15Z",
+      "side": 1,
+      "message": "No bracket for one-line if-clause",
+      "range": {
+        "startLine": 104,
+        "startChar": 55,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "d0e0a3ec517d9c2b47b5f1fd26f0a513624d6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "becca1f6_8b976d58",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-01-25T04:02:15Z",
+      "side": 1,
+      "message": "nit: I\u0027d prefer to put \"page_up_item\" above the other",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "d0e0a3ec517d9c2b47b5f1fd26f0a513624d6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60751fc4_11f2043c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-01-25T04:02:15Z",
+      "side": 1,
+      "message": "nit: same as above",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 29
+      },
+      "revId": "d0e0a3ec517d9c2b47b5f1fd26f0a513624d6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
