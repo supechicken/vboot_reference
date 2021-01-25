@@ -22,6 +22,30 @@
       },
       "revId": "2ce4d2ae1a8d15a7252836514395bdfb7b91591f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f529e3_283f115d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-01-25T05:53:18Z",
+      "side": 1,
+      "message": "Actually, TlclPCRRead haven\u0027t implemented in TPM2.0 case. And `tpmc pcrread \u003cindex\u003e` would just call that command and return an useless value...",
+      "parentUuid": "6dbabd22_eac421b7",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "2ce4d2ae1a8d15a7252836514395bdfb7b91591f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
