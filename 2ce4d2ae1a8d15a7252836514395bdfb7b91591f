@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbabd22_eac421b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-01-25T04:36:14Z",
+      "side": 1,
+      "message": "\"tpmc pcrread \u003cindex\u003e\" is a better way to verify the PCR -- make your TEST easier to reproduce and ensure no other TPM operations in-between.\n\nNot insisting, though. Can see how it works.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "2ce4d2ae1a8d15a7252836514395bdfb7b91591f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
