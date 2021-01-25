@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure I agree with this... \"altfw\" is the official internal/in-code name of the feature, and we\u0027ve hardcoded it in some places we can\u0027t change anymore like the CBFS filenames. I\u0027m okay with harmonizing any user-visible language (to \"alternate bootloader\"), but I think we should stick with altfw in the code (especially if you\u0027re just gonna call it \"bootloader\" instead, which I think is very confusing without an \"alt\" anywhere).",
       "revId": "339601482acbb5bd5bdd04b4d14f4ae2b315d018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd51ac4a_d4fe8e86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-01-25T09:17:22Z",
+      "side": 1,
+      "message": "Okay, definitely understandable feedback.  On the other hand, what should be done about the term \"legacy boot\"?  How can we standardize these in a reasonable way?\n\naltfw: used internally in code, filenames, and CBFS filenames\n\nlegacy boot: used internally in code and filenames (including vboot API); used in external-facing documentation, and also widely used in non-official Chrome OS resources\n\nAlternate Boot: used in vboot API, Groot code, and user-facing Groot UI",
+      "parentUuid": "4d0468ed_44b49007",
+      "revId": "339601482acbb5bd5bdd04b4d14f4ae2b315d018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
