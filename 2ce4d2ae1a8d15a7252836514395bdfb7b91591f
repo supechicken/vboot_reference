@@ -46,6 +46,30 @@
       },
       "revId": "2ce4d2ae1a8d15a7252836514395bdfb7b91591f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e488ba2_96e2bb3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-01-25T06:52:36Z",
+      "side": 1,
+      "message": "oh, it\u0027s garbage value....my bad\nwe should raise an error when running \"tpmc pcrread\" for TPM2.0 case, then.",
+      "parentUuid": "34f529e3_283f115d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "2ce4d2ae1a8d15a7252836514395bdfb7b91591f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
