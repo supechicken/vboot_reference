@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fcf15c9_7bac4507",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-01-26T14:19:58Z",
+      "side": 1,
+      "message": "well... when writing the tests, we were trying to test more coverage with less samples. Don\u0027t be surprised if the input or output blobs are not 100% executable, and feel free to change the test cases if you believe something should be more correct.",
+      "parentUuid": "831a001c_3a642b4a",
+      "revId": "6ecf811b1531a777bb74615108ca67522a8afe37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9baaaf4_8e253bfa",
         "filename": "futility/updater_utils.c",
         "patchSetId": 8
