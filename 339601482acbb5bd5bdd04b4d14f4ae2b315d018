@@ -34,6 +34,24 @@
       "parentUuid": "4d0468ed_44b49007",
       "revId": "339601482acbb5bd5bdd04b4d14f4ae2b315d018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd01ad2_7484ff42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-26T02:10:25Z",
+      "side": 1,
+      "message": "I\u0027m okay with getting rid of \"legacy boot\" where you can. For example, we could just have crossystem alias dev_boot_altfw to dev_boot_legacy (i.e. the old name should still work when explicitly trying to set it, but it should use the new name in the list). I think it\u0027s fine if the feature uses \"altfw\" as the short internal name for APIs and such but is written out fully as \"alternate bootloader\" in UI and documentation (and then let\u0027s please make that consistent, just saying \"bootloader\" or \"alternate boot\" or whatever is not the same thing and risks confusing people).",
+      "parentUuid": "fd51ac4a_d4fe8e86",
+      "revId": "339601482acbb5bd5bdd04b4d14f4ae2b315d018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
