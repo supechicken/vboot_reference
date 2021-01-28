@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5798e148_aa1e07cd",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-01-28T05:16:08Z",
+      "side": 1,
+      "message": "IMHO this change (Move the two if-cluases inside if(new_log_string)) belongs to the previous CL.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "0b212e89ffb5030f53a8b673ed5b77730d29fefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
