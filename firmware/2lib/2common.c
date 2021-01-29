@@ -16,6 +16,7 @@ vb2_error_t vb2_safe_memcmp(const void *s1, const void *s2, size_t size)
 	const unsigned char *us1 = s1;
 	const unsigned char *us2 = s2;
 	int result = 0;
+	int count = 0;
 
 	if (0 == size)
 		return 0;
@@ -24,9 +25,13 @@ vb2_error_t vb2_safe_memcmp(const void *s1, const void *s2, size_t size)
 	 * Code snippet without data-dependent branch due to Nate Lawson
 	 * (nate@root.org) of Root Labs.
 	 */
-	while (size--)
+	while (size--){
 		result |= *us1++ ^ *us2++;
-
+		if (result != 0) {
+		  count++;
+		}
+	}
+	VB2_DEBUG("memcmp mismatch count: %d\n", count);
 	return result != 0;
 }
 
@@ -201,24 +206,29 @@ vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,
 
 	/* Digest goes at start of work buffer */
 	digest_size = vb2_digest_size(key->hash_alg);
-	if (!digest_size)
+	if (!digest_size){
+		VB2_DEBUG("VDATA_DIGEST_SIZE error.\n");
 		return VB2_ERROR_VDATA_DIGEST_SIZE;
+	}
 
 	digest = vb2_workbuf_alloc(&wblocal, digest_size);
-	if (!digest)
+	if (!digest){
+		VB2_DEBUG("WORKBUF_DIGEST error.\n");
 		return VB2_ERROR_VDATA_WORKBUF_DIGEST;
+	}
 
 	/* Hashing requires temp space for the context */
 	dc = vb2_workbuf_alloc(&wblocal, sizeof(*dc));
-	if (!dc)
+	if (!dc){
+		VB2_DEBUG("WORKBUF_HASHING error.\n");
 		return VB2_ERROR_VDATA_WORKBUF_HASHING;
+	}
 
 	VB2_TRY(vb2_digest_init(dc, key->hash_alg));
 	VB2_TRY(vb2_digest_extend(dc, data, sig->data_size));
 	VB2_TRY(vb2_digest_finalize(dc, digest, digest_size));
 
 	vb2_workbuf_free(&wblocal, sizeof(*dc));
-
 	return vb2_verify_digest(key, sig, digest, &wblocal);
 }
 

@@ -392,8 +392,10 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 	 * timing based attacks.
 	 */
 	rv = vb2_check_padding(sig, key);
-	if (rv == VB2_ERROR_RSA_PADDING_SIZE)
+	if (rv == VB2_ERROR_RSA_PADDING_SIZE){
+	  VB2_DEBUG("RSA_PADDING_SIZE error.\n");
 		return rv;
+	}
 
 	/*
 	 * Check digest.  Even though there are probably no timing issues here,
@@ -401,10 +403,16 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 	 * we don't return before this check if the padding check failed.)
 	 */
 	pad_size = sig_size - vb2_digest_size(key->hash_alg);
+	VB2_DEBUG("sig size is %d\n", sig_size);
+	VB2_DEBUG("pad size is %d\n", pad_size);
+	VB2_DEBUG("sig is %d\n", *sig);
+	VB2_DEBUG("digest is %d\n", *digest);
 	if (vb2_safe_memcmp(sig + pad_size, digest, key_bytes - pad_size)) {
 		VB2_DEBUG("Digest check failed!\n");
-		if (!rv)
+		if (!rv){
+			VB2_DEBUG("RSA_VERIFY_DIGEST error.\n");
 			rv = VB2_ERROR_RSA_VERIFY_DIGEST;
+		}
 	}
 
 	return rv;

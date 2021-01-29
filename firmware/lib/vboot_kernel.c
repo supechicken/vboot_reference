@@ -372,7 +372,7 @@ static vb2_error_t vb2_load_partition(
 	} else if (preamble->body_signature.data_size > kernbuf_size) {
 		VB2_DEBUG("Kernel body doesn't fit in memory.\n");
 		shpart->check_result = VBSD_LKP_CHECK_BODY_EXCEEDS_MEM;
-		return 	VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
+		return	VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 	}
 
 	uint32_t body_toread = preamble->body_signature.data_size;
@@ -464,6 +464,8 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 	shcall.sector_size = (uint32_t)params->bytes_per_lba;
 	shcall.sector_count = params->streaming_lba_count;
 
+	VB2_DEBUG("shcall sector size is %d\n", shcall.sector_size);
+
 	/* Locate key to verify kernel.  This will either be a recovery key, or
 	   a kernel subkey passed from firmware verification. */
 	struct vb2_packed_key *kernel_subkey =
@@ -472,6 +474,7 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 	/* Read GPT data */
 	GptData gpt;
 	gpt.sector_bytes = (uint32_t)params->bytes_per_lba;
+	VB2_DEBUG("gpt sector bytes is %d\n", gpt.sector_bytes);
 	gpt.streaming_drive_sectors = params->streaming_lba_count;
 	gpt.gpt_drive_sectors = params->gpt_lba_count;
 	gpt.flags = params->boot_flags & BOOT_FLAG_EXTERNAL_GPT

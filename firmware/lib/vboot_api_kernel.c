@@ -91,6 +91,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 				  disk_info[i].flags);
 			continue;
 		}
+		VB2_DEBUG("Disk name is %s\n", disk_info[i].name);
 		lkp.disk_handle = disk_info[i].handle;
 		lkp.bytes_per_lba = disk_info[i].bytes_per_lba;
 		lkp.gpt_lba_count = disk_info[i].lba_count;

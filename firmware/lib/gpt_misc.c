@@ -54,6 +54,10 @@ int AllocAndReadGptData(VbExDiskHandle_t disk_handle, GptData *gptdata)
 
 	/* Only read primary GPT if the primary header is valid */
 	GptHeader* primary_header = (GptHeader*)gptdata->primary_header;
+	VB2_DEBUG("Primary signature is %s\n", primary_header->signature);
+	VB2_DEBUG("Primary header_crc32 is %d\n", primary_header->header_crc32);
+	VB2_DEBUG("Primary size is %d\n", primary_header->size);
+	VB2_DEBUG("Primary entries is %d\n", primary_header->number_of_entries);
 	if (0 == CheckHeader(primary_header, 0,
 			gptdata->streaming_drive_sectors,
 			gptdata->gpt_drive_sectors,
@@ -90,6 +94,10 @@ int AllocAndReadGptData(VbExDiskHandle_t disk_handle, GptData *gptdata)
 
 	/* Only read secondary GPT if the secondary header is valid */
 	GptHeader* secondary_header = (GptHeader*)gptdata->secondary_header;
+	VB2_DEBUG("Secondary signature is %s\n", secondary_header->signature);
+	VB2_DEBUG("Secondary header_crc32 is %d\n", secondary_header->header_crc32);
+	VB2_DEBUG("Secondary size is %d\n", secondary_header->size);
+	VB2_DEBUG("Secondary entries is %d\n", secondary_header->number_of_entries);
 	if (0 == CheckHeader(secondary_header, 1,
 			gptdata->streaming_drive_sectors,
 			gptdata->gpt_drive_sectors,
