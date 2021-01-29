@@ -16,6 +16,23 @@
       "message": "Why did the CQ not prevent this from going in in the first place? I thought we always build-tested the fuzzers?",
       "revId": "169b145d79cb9bdd078e2d23de168398b6c599db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0b0202_5e61cee7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2021-01-29T23:22:33Z",
+      "side": 1,
+      "message": "CQ does not currently test fuzzers :(.\n\nWaiting for bug https://bugs.chromium.org/p/chromium/issues/detail?id\u003d910420 to be resolved from CI.",
+      "revId": "169b145d79cb9bdd078e2d23de168398b6c599db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
