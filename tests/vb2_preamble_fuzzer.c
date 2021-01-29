@@ -41,6 +41,8 @@ vb2_error_t vb2ex_read_resource(struct vb2_context *c,
 
 /* Pretend that signature checks always succeed so the fuzzer can cover more. */
 vb2_error_t vb2_check_padding(const uint8_t *sig,
+			      const struct vb2_public_key *key);
+vb2_error_t vb2_check_padding(const uint8_t *sig,
 			      const struct vb2_public_key *key)
 {
 	return VB2_SUCCESS;
