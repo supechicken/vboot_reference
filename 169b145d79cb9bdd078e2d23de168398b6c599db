@@ -33,6 +33,24 @@
       "message": "CQ does not currently test fuzzers :(.\n\nWaiting for bug https://bugs.chromium.org/p/chromium/issues/detail?id\u003d910420 to be resolved from CI.",
       "revId": "169b145d79cb9bdd078e2d23de168398b6c599db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f72cc29_55255134",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-01-30T00:56:09Z",
+      "side": 1,
+      "message": "No, but the normal src_compile() of the vboot_reference ebuild does a `make all`, and for vboot_reference the `all` target includes fuzzers. So it will not *run* the fuzzers (that wouldn\u0027t really make sense either, I think), but it should build them. I\u0027m confused why it didn\u0027t (we recently added a $(filter clang,${CC}) in there to solve compatibility issues for upstream users in CL:2382790, maybe that doesn\u0027t work as intended?).",
+      "parentUuid": "0d0b0202_5e61cee7",
+      "revId": "169b145d79cb9bdd078e2d23de168398b6c599db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
