@@ -412,6 +412,9 @@ static vb2_error_t vb2_load_partition(
 		return VB2_ERROR_LOAD_PARTITION_DATA_KEY;
 	}
 
+	if (vb2_hwcrypto_allowed(ctx))
+		data_key.allow_hwcrypto = 1;
+
 	/* Verify kernel data */
 	if (VB2_SUCCESS != vb2_verify_data(kernbuf, kernbuf_size,
 					   &preamble->body_signature,
