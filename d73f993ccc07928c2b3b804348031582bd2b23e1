@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d71becc_4e3a1546",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "755a2b67_72808d30",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a9a277c_1505320e",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f63db1_0f6d54b7",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a9a277c_1505320e",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9998eec4_fb54a76b",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-01-21T23:28:01Z",
       "side": 1,
       "message": "While you\u0027re touching this, would you mind just replacing this with vb2_digest_buffer()? That shorthand was introduced after this code was written. (That also means we don\u0027t need to allocate and free the digest context on the work buffer anymore, vb2_digest_buffer() allocates it on the stack which is good enough.)",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c395b370_cc5e9070",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9998eec4_fb54a76b",
       "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d8829f5_4bb253ba",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:32:46Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any RSA acceleration on x86. Previous work on verstage was possible because it was running on PSP (AMD-specific arm core)",
+      "parentUuid": "29135db0_380d299e",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36e6ce94_0f6c3c7d",
         "filename": "tests/vb2_common2_tests.c",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2021-01-21T23:28:01Z",
       "side": 1,
       "message": "Please split this out into RSA state and SHA state so that you can test the full combinations of options for both. Then the test should be able to catch the current problem in your code that you don\u0027t differentiate between hard errors and the UNSUPPORTED case for SHA.",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e9c4358_950a9888",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36e6ce94_0f6c3c7d",
       "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +189,24 @@
       "writtenOn": "2021-01-21T23:28:01Z",
       "side": 1,
       "message": "Considering that this file mocks out everything else it might be more consistent to just mock out vb2_allow_hwcrypto() too instead.",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5657d92_b675b7e9",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:32:46Z",
+      "side": 1,
+      "message": "Since it\u0027s static function in header file I don\u0027t think it\u0027s possible to mock. I intended that function as some kind of macro. Separating that function into c source file and mocking it feels like overkill to me.",
+      "parentUuid": "5a9ddb29_315e18e6",
       "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
