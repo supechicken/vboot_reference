@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be8f978c_bb76ab9b",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-02-03T23:57:55Z",
+      "side": 1,
+      "message": "nit: I think this could also say \"alternative bootloader\" since it\u0027s somewhat user-visible.",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eefe0d0_c6ce3c03",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-02-03T23:57:55Z",
+      "side": 1,
+      "message": "Yeah I think it would be better to call these \"altfw\" too. (I think using \"bootloader\" without \"alternative\" in particular is a terribly confusing name for this. Depthcharge is the bootloader.)",
+      "range": {
+        "startLine": 1343,
+        "startChar": 29,
+        "endLine": 1343,
+        "endChar": 39
+      },
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8eb0cb_690a6071",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-02-03T23:57:55Z",
+      "side": 1,
+      "message": "I think this way it\u0027s going to show up twice if you just run `crossystem` without arguments, right? I would just take this like out. When listing all options, it shouldn\u0027t show the deprecated one... it should just accept that when explicitly setting or checking for that name.",
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
