@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5381d93c_5314824e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "Resolved most of comments, thanks a lot for thorough review!\n\nOne remaining concern is testing. Unfortunately SHA extension is pretty new so even my P920 doesn\u0027t have it. I haven\u0027t checked our CQ machines but I don\u0027t think they have it neither.\n\nIf we just want to validate this against FIPS test vectors I can modify depthcharge to run test vectors and print results, but I believe we need something better than that so will try QEMU options Julius mentioned.",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ab45675_086a2097",
@@ -64,6 +81,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0042f9b_cb2f51e8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "It turned out that what I need here is -msse3 instead of -march. gcc error message was very confusing with \"target specific option mismatch\" so I added march here..",
+      "parentUuid": "1ab45675_086a2097",
+      "range": {
+        "startLine": 431,
+        "startChar": 10,
+        "endLine": 431,
+        "endChar": 23
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0415907_4ac946e5",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "Done.\nSeems like it\u0027s added while I was trying to make it compile and never tested without it :(",
+      "parentUuid": "9c2720b1_df29a6bb",
+      "range": {
+        "startLine": 431,
+        "startChar": 24,
+        "endLine": 431,
+        "endChar": 28
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcc07621_871af2a9",
@@ -100,6 +165,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99f04248_f5af205f",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "It\u0027s a gcc header for intrinsics like _mm_sha256rnds2_epu32()",
+      "parentUuid": "84eda496_b0b652f8",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "805738b7_29d004fe",
         "filename": "firmware/2lib/2sha256_x86.c",
         "patchSetId": 1
@@ -111,6 +194,24 @@
       "writtenOn": "2021-01-22T00:13:29Z",
       "side": 1,
       "message": "Please find a way to factor these out from 2sha256.c rather than copy\u0026pasting the whole thing (e.g. put them in a common header or a separate C file or something).",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ac6aad_3d48d690",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "805738b7_29d004fe",
       "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +229,24 @@
       "writtenOn": "2021-01-22T00:13:29Z",
       "side": 1,
       "message": "Where does all this code come from? Did you write it all from scratch? If you used any external sources, please add a comment about where it was taken from.",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1b2f958_de142070",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c05782d_597b126e",
       "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +274,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a96efa_da50884f",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c8f3a8_3bff1cda",
+      "range": {
+        "startLine": 59,
+        "startChar": 29,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea05f38_34fd900c",
@@ -168,6 +311,30 @@
       "writtenOn": "2021-01-21T17:08:26Z",
       "side": 1,
       "message": "Since SHA256_X86_PUT_STATE0 doesn\u0027t use j or i, you only need j in this macro.",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e51e2c74_e2dad4ed",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea05f38_34fd900c",
       "range": {
         "startLine": 65,
         "startChar": 27,
@@ -209,6 +376,24 @@
       "side": 1,
       "message": "I this they will, because of the __attribute__((weak)). So the #ifndef should be unnecessary.",
       "parentUuid": "9a6a783e_3bdab8c7",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67906ce_5f2e0114",
+        "filename": "firmware/2lib/2stub_hwcrypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-03T09:38:09Z",
+      "side": 1,
+      "message": "It is, if I keep both weak and strong symbol weak version was selected. I guess ld chooses whatever they see first. (maybe https://stackoverflow.com/a/37191811)",
+      "parentUuid": "4804e7d4_e0824f81",
       "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
