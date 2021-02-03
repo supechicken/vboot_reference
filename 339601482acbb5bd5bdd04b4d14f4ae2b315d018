@@ -52,6 +52,24 @@
       "parentUuid": "fd51ac4a_d4fe8e86",
       "revId": "339601482acbb5bd5bdd04b4d14f4ae2b315d018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b815fd9_b2ea03cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-03T09:14:00Z",
+      "side": 1,
+      "message": "Okay -- take another look and let me know what you think.\n\nThere\u0027s some other \"legacy boot\" stuff in CGPT code, but that seems to be something different.  I also left a crossystem alias as you requested.\n\nAlso, I largely left the UI code untouched.  Should we leave the code to reflect the wording of the screens themselves, or should we also convert those to read \"altfw\" behind-the-scenes?",
+      "parentUuid": "ffd01ad2_7484ff42",
+      "revId": "339601482acbb5bd5bdd04b4d14f4ae2b315d018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
