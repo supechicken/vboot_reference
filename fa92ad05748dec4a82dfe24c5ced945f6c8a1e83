@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de5182f3_a8a16bb7",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-02-03T17:24:43Z",
+      "side": 1,
+      "message": "nit: No {} for single statements",
+      "range": {
+        "startLine": 211,
+        "startChar": 26,
+        "endLine": 211,
+        "endChar": 27
+      },
+      "revId": "fa92ad05748dec4a82dfe24c5ced945f6c8a1e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acf0084_bca98c6b",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-02-03T17:24:43Z",
+      "side": 1,
+      "message": "I feel like it takes a bit of brain power to grasp all this logic. Can we simplify it by duplicating the software crypto?\n\ni.e., \nif (key-\u003eallow_hwcrypto) {\n\trv \u003d vb2ex_hwcrypto_digest_init(key-\u003ehash_alg, sig-\u003edata_size);\n\n\tif (rv \u003d\u003d VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED) {\n\t\tVB2_DEBUG(\"HW crypto for hash_alg %d not supported, using SW\\n\",\n\t\t\t  key-\u003ehash_alg);\n\t\tVB2_TRY(vb2_digest_buffer(data, sig-\u003edata_size, key-\u003ehash_alg,\n\t\t\t\t\t  digest, digest_size));\n\t} else if (rv \u003d\u003d VB2_SUCCESS) {\n\t\tVB2_DEBUG(\"Using HW crypto engine for hash_alg %d\\n\", key-\u003ehash_alg);\n\t\tVB2_TRY(vb2ex_hwcrypto_digest_extend(data, sig-\u003edata_size));\n\t\tVB2_TRY(vb2ex_hwcrypto_digest_finalize(digest, digest_size));\n\t} else {\n\t\tVB2_DEBUG(\"HW crypto init error : %d\\n\", rv);\n\t\treturn rv;\n\t}\n} else {\n\tVB2_DEBUG(\"HW crypto forbidden by TPM flag, using SW\\n\");\n\tVB2_TRY(vb2_digest_buffer(data, sig-\u003edata_size, key-\u003ehash_alg,\n\t\t\t\t\t  digest, digest_size));\n}",
+      "range": {
+        "startLine": 216,
+        "startChar": 6,
+        "endLine": 216,
+        "endChar": 25
+      },
+      "revId": "fa92ad05748dec4a82dfe24c5ced945f6c8a1e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
