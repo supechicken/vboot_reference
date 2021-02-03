@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0fe3faf_a11852ef",
+        "filename": "firmware/2lib/2sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-02-03T17:30:37Z",
+      "side": 1,
+      "message": "How about an SPDX header instead.",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "342e6d0661d08b72b3c53b191fdb1868ff21fc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee5352a_1f2efc78",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-02-03T17:30:37Z",
+      "side": 1,
+      "message": "SPDX as well.",
+      "range": {
+        "startLine": 2,
+        "startChar": 3,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "342e6d0661d08b72b3c53b191fdb1868ff21fc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
