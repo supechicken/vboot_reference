@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23506f31_6cabf7a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T09:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb9a6f8_0893b79e",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c97ebeaf_63e97d26",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd6b757_8c6a51d6",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T09:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b71f4536_d71f4480",
+      "range": {
+        "startLine": 28,
+        "startChar": 36,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84bb6a7_50a448db",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T09:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c97ebeaf_63e97d26",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a07ba75_97bf7e6c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-03T07:46:56Z",
       "side": 1,
       "message": "One space is sufficient here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 33,
+        "endLine": 33,
+        "endChar": 79
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d746c9_3726be2f",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T09:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a07ba75_97bf7e6c",
       "range": {
         "startLine": 33,
         "startChar": 33,
@@ -141,6 +237,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9393911_d5a6add1",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T09:24:13Z",
+      "side": 1,
+      "message": "The long-term plan is removing VTPM_PROXY flag here and deprecate the old simulator.\nBut we may need to support both types of simulators in the meantime.",
+      "parentUuid": "9c1af040_0a14ad38",
+      "range": {
+        "startLine": 383,
+        "startChar": 6,
+        "endLine": 383,
+        "endChar": 33
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f248560f_af236e5a",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T09:24:13Z",
+      "side": 1,
+      "message": "The TPM2_SIMULATOR \u0026 VTPM_PROXY would be enabled in the same time when we are using the driver-level TPM simulator now.",
+      "parentUuid": "017cb030_400afeec",
+      "range": {
+        "startLine": 383,
+        "startChar": 21,
+        "endLine": 383,
+        "endChar": 22
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2191fc88_42328f5e",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 18
@@ -152,6 +296,30 @@
       "writtenOn": "2021-02-03T07:46:56Z",
       "side": 1,
       "message": "Do you still want this line to execute in the case of VTPM_PROXY being enabled?",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 55
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f451c7b_489e9c14",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-03T09:24:13Z",
+      "side": 1,
+      "message": "This line will be removed after we remove all usage of old simulator(these boards: arm-generic, arm64-generic, wristpin)",
+      "parentUuid": "2191fc88_42328f5e",
       "range": {
         "startLine": 388,
         "startChar": 0,
