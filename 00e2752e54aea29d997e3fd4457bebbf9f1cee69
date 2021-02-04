@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c5423aa_9d84b6ea",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-02-04T02:24:59Z",
+      "side": 1,
+      "message": "Also rename the constants in autotest?\n\nhttps://source.corp.google.com/aosp-oreo/external/autotest/server/cros/vboot_constants.py;l\u003d134?q\u003dGBB_FLAG_FORCE_DEV_BOOT_LEGACY\u0026sq\u003d",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d8eb0cb_690a6071",
         "filename": "utility/crossystem.c",
         "patchSetId": 6
