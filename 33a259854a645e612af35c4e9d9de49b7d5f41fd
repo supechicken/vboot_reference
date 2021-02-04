@@ -414,6 +414,24 @@
       "parentUuid": "b67906ce_5f2e0114",
       "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3033ed4_e499ed90",
+        "filename": "firmware/2lib/2stub_hwcrypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-04T04:32:26Z",
+      "side": 1,
+      "message": "In theory, yes. In practice, no.\n\n(in chroot) $ cat bar1.c\n#include \u003cstdio.h\u003e\n__attribute__((weak))\nvoid bar() {\n        printf(\"weak\\n\");\n}\n\n$ cat bar2.c\n#include \u003cstdio.h\u003e\nvoid bar() {\n        printf(\"strong\\n\");\n}\n\n$ cat foo.c\nvoid bar();\nvoid foo() {\n        bar();\n}\n\n$ cat main.c\nvoid foo();\n\nint main () {\n        foo();\n        return 0;\n}\n\n\n$ make\ngcc -c -o foo.o foo.c\ngcc -c -o bar1.o bar1.c\ngcc -c -o bar2.o bar2.c\nar qc some_lib.a foo.o bar1.o bar2.o\ngcc -c -o main.o main.c\ngcc -o test main.o some_lib.a\n\n$ ./test\nweak\n\nIf I change order of bar1 and bar2 in ar command strong version is selected. But I\u0027d like to add ifdef instead of depending on order of arguments in compilation.",
+      "parentUuid": "0b484793_cf90178a",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
