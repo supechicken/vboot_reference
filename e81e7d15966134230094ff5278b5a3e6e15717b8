@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d98fafb1_4e2b4c7b",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-04T09:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be13cc35_eb93c185",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "e81e7d15966134230094ff5278b5a3e6e15717b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32ef9153_474a4416",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "746c798e_26b27630",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-04T09:28:09Z",
+      "side": 1,
+      "message": "Done.\nAnd I added another test item in the commit message.",
+      "parentUuid": "32ef9153_474a4416",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 4
+      },
+      "revId": "e81e7d15966134230094ff5278b5a3e6e15717b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a473ba67_a6667d53",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-04T08:15:25Z",
       "side": 1,
       "message": "Since these two clauses are identical, I\u0027d recommend factoring out the path, to something like:\n\n  const *char tpm_path \u003d VTPM_PROXY ? TPM_SIMULATOR_NVCHIP_PATH\n                                     : MOUNT_ENCRYPTED_KEY_PATH;",
+      "range": {
+        "startLine": 568,
+        "startChar": 3,
+        "endLine": 568,
+        "endChar": 5
+      },
+      "revId": "e81e7d15966134230094ff5278b5a3e6e15717b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d594a655_de45f904",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-02-04T09:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a473ba67_a6667d53",
       "range": {
         "startLine": 568,
         "startChar": 3,
