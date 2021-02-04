@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52df1251_a7a1ef86",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-04T10:57:40Z",
+      "side": 1,
+      "message": "Okay, but I think we decided on \"alternate bootloader\" (which I also got wrong in the commit message...).",
+      "parentUuid": "be8f978c_bb76ab9b",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eefe0d0_c6ce3c03",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-03T23:57:55Z",
       "side": 1,
       "message": "Yeah I think it would be better to call these \"altfw\" too. (I think using \"bootloader\" without \"alternative\" in particular is a terribly confusing name for this. Depthcharge is the bootloader.)",
+      "range": {
+        "startLine": 1343,
+        "startChar": 29,
+        "endLine": 1343,
+        "endChar": 39
+      },
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0bd2812_bf732a7d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-04T10:57:40Z",
+      "side": 1,
+      "message": "Okay, I fixed all the UI stuff too.",
+      "parentUuid": "2eefe0d0_c6ce3c03",
       "range": {
         "startLine": 1343,
         "startChar": 29,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f99b716d_9764bc88",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-04T10:57:40Z",
+      "side": 1,
+      "message": "Thanks for the reminder.  Let\u0027s come to a consensus on this CL, and then start fixing up dependencies.  Leaving this comment thread open.",
+      "parentUuid": "1c5423aa_9d84b6ea",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d8eb0cb_690a6071",
         "filename": "utility/crossystem.c",
         "patchSetId": 6
@@ -83,6 +155,24 @@
       "writtenOn": "2021-02-03T23:57:55Z",
       "side": 1,
       "message": "I think this way it\u0027s going to show up twice if you just run `crossystem` without arguments, right? I would just take this like out. When listing all options, it shouldn\u0027t show the deprecated one... it should just accept that when explicitly setting or checking for that name.",
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96785069_827e337b",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-04T10:57:40Z",
+      "side": 1,
+      "message": "This is a bit tricky since the way crossystem.c currently works.  It calls FindParam first to get the parameter and its flags, check that the flag exists, and moves on to calling SetParam/CheckParam/PrintParam, passing flag information to the function.\n\nI can think of two options here:\n\n* Perform a substitution in FindParam before lookup (dev_boot_legacy -\u003e dev_boot_altfw)\n* Add a parameter flag to stop showing the argument when printing help information\n\nAny preference?",
+      "parentUuid": "8d8eb0cb_690a6071",
       "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
