@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e2c978_4969125d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-04T08:15:25Z",
+      "side": 1,
+      "message": "Alright -- in that case I\u0027m okay having VTPM_PROXY as a sub-option for TPM2_SIMULATOR.",
+      "parentUuid": "a9393911_d5a6add1",
+      "range": {
+        "startLine": 383,
+        "startChar": 6,
+        "endLine": 383,
+        "endChar": 33
+      },
+      "revId": "681829a6f61bda57fe70a9cfc6d3c5c825072ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2191fc88_42328f5e",
