@@ -16,6 +16,24 @@
       "message": "I haven\u0027t checked, does the volteer branch have all of the other patches req\u0027d (I\u0027m guessing they\u0027re basically all in vboot_reference) for this new diagnostic flow?",
       "revId": "d0d9f39de5a2bad263c0d181213740aa70f367a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009ba5cc_fa5c6de6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-02-05T17:47:05Z",
+      "side": 1,
+      "message": "The core of dialogistic tools is in depthcharge. The UI part and button logic is in vboot.\n\nWe\u0027ve checked volteer firmware branch. The only missing CL is CL:2677616.\n\nBesides that, we\u0027re going to have a small fix for improving the user experience by shortening the delay of memory test. CL for ToT is CL:2657899. I will follow up to pick it when it is land on ToT.",
+      "parentUuid": "35294ef4_dfaeb88b",
+      "revId": "d0d9f39de5a2bad263c0d181213740aa70f367a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
