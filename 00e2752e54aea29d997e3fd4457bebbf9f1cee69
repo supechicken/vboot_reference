@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7616fec4_79e2e0e1",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-02-05T00:35:02Z",
+      "side": 1,
+      "message": "Sorry, yes, that\u0027s what I meant.",
+      "parentUuid": "52df1251_a7a1ef86",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eefe0d0_c6ce3c03",
@@ -173,6 +197,24 @@
       "side": 1,
       "message": "This is a bit tricky since the way crossystem.c currently works.  It calls FindParam first to get the parameter and its flags, check that the flag exists, and moves on to calling SetParam/CheckParam/PrintParam, passing flag information to the function.\n\nI can think of two options here:\n\n* Perform a substitution in FindParam before lookup (dev_boot_legacy -\u003e dev_boot_altfw)\n* Add a parameter flag to stop showing the argument when printing help information\n\nAny preference?",
       "parentUuid": "8d8eb0cb_690a6071",
+      "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7812b416_472ed604",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-02-05T00:35:02Z",
+      "side": 1,
+      "message": "Yeah substituting in FindParam() sounds good, then you don\u0027t even need to touch the other two (right?).",
+      "parentUuid": "96785069_827e337b",
       "revId": "00e2752e54aea29d997e3fd4457bebbf9f1cee69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
