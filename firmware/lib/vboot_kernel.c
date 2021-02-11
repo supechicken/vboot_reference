@@ -25,29 +25,6 @@
 
 #define LOWEST_TPM_VERSION 0xffffffff
 
-enum vboot_mode {
-	kBootRecovery = 0,  /* Recovery firmware, any dev switch position */
-	kBootNormal = 1,    /* Normal boot - kernel must be verified */
-	kBootDev = 2        /* Developer boot - self-signed kernel ok */
-};
-
-/**
- * Return the boot mode based on the parameters.
- *
- * @param params	Load kernel parameters
- * @return The current boot mode.
- */
-static enum vboot_mode get_kernel_boot_mode(struct vb2_context *ctx)
-{
-	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE)
-		return kBootRecovery;
-
-	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
-		return kBootDev;
-
-	return kBootNormal;
-};
-
 /**
  * Check if the parameters require an officially signed OS.
  *
@@ -58,7 +35,7 @@ static int require_official_os(struct vb2_context *ctx,
 			       const LoadKernelParams *params)
 {
 	/* Normal and recovery modes always require official OS */
-	if (get_kernel_boot_mode(ctx) != kBootDev)
+	if (!(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE))
 		return 1;
 
 	/* FWMP can require developer mode to use official OS */
@@ -130,6 +107,10 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	const LoadKernelParams *params, uint32_t min_version,
 	VbSharedDataKernelPart *shpart, struct vb2_workbuf *wb)
 {
+	int rec_mode = (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) != 0;
+	int dev_mode = (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) != 0;
+	int keyblock_valid = 1;  /* Assume valid */
+
 	/* Unpack kernel subkey */
 	struct vb2_public_key kernel_subkey2;
 	if (VB2_SUCCESS != vb2_unpack_key(&kernel_subkey2, kernel_subkey)) {
@@ -138,7 +119,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	}
 
 	/* Verify the keyblock. */
-	int keyblock_valid = 1;  /* Assume valid */
 	struct vb2_keyblock *keyblock = get_keyblock(kbuf);
 	if (VB2_SUCCESS != vb2_verify_keyblock(keyblock, kbuf_size,
 					       &kernel_subkey2, wb)) {
@@ -164,16 +144,14 @@ static vb2_error_t vb2_verify_kernel_vblock(
 
 	/* Check the keyblock flags against boot flags. */
 	if (!(keyblock->keyblock_flags &
-	      ((ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ?
-	       VB2_KEYBLOCK_FLAG_DEVELOPER_1 :
+	      (dev_mode ? VB2_KEYBLOCK_FLAG_DEVELOPER_1 :
 	       VB2_KEYBLOCK_FLAG_DEVELOPER_0))) {
 		VB2_DEBUG("Keyblock developer flag mismatch.\n");
 		shpart->check_result = VBSD_LKP_CHECK_DEV_MISMATCH;
 		keyblock_valid = 0;
 	}
 	if (!(keyblock->keyblock_flags &
-	      ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE) ?
-	       VB2_KEYBLOCK_FLAG_RECOVERY_1 :
+	      (rec_mode ? VB2_KEYBLOCK_FLAG_RECOVERY_1 :
 	       VB2_KEYBLOCK_FLAG_RECOVERY_0))) {
 		VB2_DEBUG("Keyblock recovery flag mismatch.\n");
 		shpart->check_result = VBSD_LKP_CHECK_REC_MISMATCH;
@@ -181,9 +159,8 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	}
 
 	/* Check for rollback of key version except in recovery mode. */
-	enum vboot_mode boot_mode = get_kernel_boot_mode(ctx);
 	uint32_t key_version = keyblock->data_key.key_version;
-	if (kBootRecovery != boot_mode) {
+	if (!rec_mode) {
 		if (key_version < (min_version >> 16)) {
 			VB2_DEBUG("Key version too old.\n");
 			shpart->check_result = VBSD_LKP_CHECK_KEY_ROLLBACK;
@@ -201,14 +178,14 @@ static vb2_error_t vb2_verify_kernel_vblock(
 		}
 	}
 
-	/* If not in developer mode, keyblock required to be valid. */
-	if (kBootDev != boot_mode && !keyblock_valid) {
+	/* In recovery mode or normal mode, keyblock required to be valid. */
+	if ((rec_mode || !dev_mode) && !keyblock_valid) {
 		VB2_DEBUG("Keyblock is invalid.\n");
 		return VB2_ERROR_VBLOCK_KEYBLOCK;
 	}
 
 	/* If in developer mode and using key hash, check it */
-	if ((kBootDev == boot_mode) &&
+	if (!rec_mode && dev_mode &&
 	    vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_USE_KEY_HASH)) {
 		struct vb2_packed_key *key = &keyblock->data_key;
 		uint8_t *buf = ((uint8_t *)key) + key->key_offset;
@@ -270,7 +247,7 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	uint32_t combined_version = (key_version << 16) |
 			(preamble->kernel_version & 0xFFFF);
 	shpart->combined_version = combined_version;
-	if (keyblock_valid && kBootRecovery != boot_mode) {
+	if (keyblock_valid && !rec_mode) {
 		if (combined_version < min_version) {
 			VB2_DEBUG("Kernel version too low.\n");
 			shpart->check_result = VBSD_LKP_CHECK_KERNEL_ROLLBACK;
@@ -278,7 +255,7 @@ static vb2_error_t vb2_verify_kernel_vblock(
 			 * If not in developer mode, kernel version
 			 * must be valid.
 			 */
-			if (kBootDev != boot_mode)
+			if (!dev_mode)
 				return VB2_ERROR_UNKNOWN;
 		}
 	}
@@ -460,7 +437,6 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 	 */
 	memset(&shcall, 0, sizeof(shcall));
 	shcall.boot_flags = (uint32_t)params->boot_flags;
-	shcall.boot_mode = get_kernel_boot_mode(ctx);
 	shcall.sector_size = (uint32_t)params->bytes_per_lba;
 	shcall.sector_count = params->streaming_lba_count;
 
@@ -600,7 +576,8 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 		 * non-officially-signed kernel, there's no rollback
 		 * protection, so we can stop at the first valid kernel.
 		 */
-		if (kBootRecovery == shcall.boot_mode || !keyblock_valid) {
+		if ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE) ||
+		    !keyblock_valid) {
 			VB2_DEBUG("In recovery mode or dev-signed kernel\n");
 			break;
 		}
