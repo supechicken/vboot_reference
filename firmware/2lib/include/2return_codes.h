@@ -546,12 +546,14 @@ enum vb2_return_code {
 
 	/*
 	 * Got a self-signed kernel in vb2_verify_vblock(), but need an
-	 * officially signed one.
+	 * officially signed one; deprecated and replaced with
+	 * VB2_ERROR_KERNEL_KEYBLOCK_*.
 	 */
-	VB2_ERROR_VBLOCK_SELF_SIGNED,
+	VB2_ERROR_DEPRECATED_VBLOCK_SELF_SIGNED,
 
-	/* Invalid keyblock hash in vb2_verify_vblock() */
-	VB2_ERROR_VBLOCK_KEYBLOCK_HASH,
+	/* Invalid keyblock hash in vb2_verify_vblock();
+	 * deprecated and replaced with VB2_ERROR_KERNEL_KEYBLOCK_* */
+	VB2_ERROR_DEPRECATED_VBLOCK_KEYBLOCK_HASH,
 
 	/* Invalid keyblock in vb2_verify_vblock();
 	 * deprecated and replaced with VB2_ERROR_KERNEL_KEYBLOCK_* */
