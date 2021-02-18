@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "000ac94a_f1fd0a06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-18T08:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796623c9_8c92d177",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5381d93c_5314824e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -142,6 +160,24 @@
       "writtenOn": "2021-01-22T00:13:29Z",
       "side": 1,
       "message": "There needs to be some kind of test for this stuff. If you can\u0027t fit it into the normal test framework (might be tricky since it\u0027s a compile-time flag), you could add a compiled test like these that manually builds and links in the extra file. (You would also need to make it detect the host machine and skip that test if it doesn\u0027t have the right hardware support, of course. Does anyone know if our Chrome OS builders support these instructions? If not, maybe we can have the ebuild run it through QEMU... see https://chromium.googlesource.com/chromiumos/docs/+/master/testing/running_unit_tests.md#Non_native-architectures-e_g_QEMU )",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5cfa5d3_3a7798a2",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-02-18T08:40:14Z",
+      "side": 1,
+      "message": "I made a test, but it looks like even QEMU doesn\u0027t support it. (At least for the QEMU build in chrome os)\n\n$ qemu-x86_64 -cpu Snowridge build/tests/vb2_sha256_x86_tests\nqemu-x86_64: warning: TCG doesn\u0027t support requested feature: CPUID.07H:EBX.sha-ni [bit 29]\nqemu: uncaught target signal 4 (Illegal instruction) - core dumped\nIllegal instruction",
+      "parentUuid": "dcc07621_871af2a9",
       "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
