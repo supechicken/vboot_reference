@@ -109,6 +109,77 @@
       "parentUuid": "009ba5cc_fa5c6de6",
       "revId": "d0d9f39de5a2bad263c0d181213740aa70f367a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f0c299_466ae7d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-02-18T08:37:02Z",
+      "side": 1,
+      "message": "No. We are working on it. It is scheduled on 2021. In short, there is no way to interactively communicate between host and DUT, it is challenging to assert screen state from FAFT side.",
+      "parentUuid": "87fd986b_5fe1df23",
+      "revId": "d0d9f39de5a2bad263c0d181213740aa70f367a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6979da_7c743fdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-02-18T08:37:02Z",
+      "side": 1,
+      "message": "Sorry that I just came back from LNY long vacation. \n\nFor security reviewing, I am answering their concerns and wish to complete the reviewing ASAP.  Will update when I have more information.",
+      "revId": "d0d9f39de5a2bad263c0d181213740aa70f367a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ac78dc_be5e7799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-02-18T08:37:02Z",
+      "side": 1,
+      "message": "We are security reviewing. See https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1168466",
+      "parentUuid": "b604c892_c26bfbfb",
+      "revId": "d0d9f39de5a2bad263c0d181213740aa70f367a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d303c5fe_3cf437ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-02-18T08:37:02Z",
+      "side": 1,
+      "message": "We are security reviewing.",
+      "parentUuid": "762178c2_a8bd7594",
+      "revId": "d0d9f39de5a2bad263c0d181213740aa70f367a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
