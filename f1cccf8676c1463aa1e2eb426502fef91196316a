@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c747482_54483a79",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-19T09:53:46Z",
+      "side": 1,
+      "message": "SGTM, although it\u0027d be nice to get rid of that duplication altogether.  We can update the docstring again later if we decide to do that.",
+      "parentUuid": "088088ee_2eeca619",
+      "revId": "f1cccf8676c1463aa1e2eb426502fef91196316a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c618a445_5d9a0d69",
