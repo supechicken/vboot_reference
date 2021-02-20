@@ -193,6 +193,19 @@ const char *vb2ex_get_diagnostic_storage(void)
 }
 
 __attribute__((weak))
+vb2_error_t vb2ex_diag_get_storage_test_log(const char **out)
+{
+	*out = "mock";
+	return VB2_SUCCESS;
+}
+
+__attribute__((weak))
+vb2_error_t vb2ex_diag_storage_test_control(enum vb2_diag_storage_test ops)
+{
+	return VB2_SUCCESS;
+}
+
+__attribute__((weak))
 vb2_error_t vb2ex_diag_memory_quick_test(int reset, const char **out)
 {
 	*out = "mock";
@@ -240,5 +253,4 @@ vb2_error_t vb2ex_commit_data(struct vb2_context *ctx)
 	ctx->flags &= ~VB2_CONTEXT_SECDATA_FIRMWARE_CHANGED;
 	ctx->flags &= ~VB2_CONTEXT_SECDATA_KERNEL_CHANGED;
 	ctx->flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
-	return VB2_SUCCESS;
 }
