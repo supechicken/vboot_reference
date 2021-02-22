@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176f297f_55f99546",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-02-22T09:16:33Z",
+      "side": 1,
+      "message": "Please take a look at b/157625765. Perhaps a better solution is to change all REQUEST_UI_CONTINUE instances to VB2_SUCCESS.",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "3ba2fe4a8689da33fe4ccaa79eead1d389510714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
