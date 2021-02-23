@@ -35,6 +35,11 @@
 	.action = vb2_ui_screen_back, \
 })
 
+#define CANCEL_ITEM ((struct vb2_menu_item){ \
+	.text = "Cancel and go back", \
+	.action = vb2_ui_screen_back, \
+})
+
 #define ADVANCED_OPTIONS_ITEM ((struct vb2_menu_item){ \
 	.text = "Advanced options", \
 	.target = VB2_SCREEN_ADVANCED_OPTIONS, \
@@ -61,28 +66,6 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
  * to a correct menu item index.
  */
 
-static vb2_error_t log_page_init(struct vb2_ui_context *ui)
-{
-	const struct vb2_screen_info *screen = ui->state->screen;
-
-	ui->state->current_page = 0;
-
-	/* TODO(b/174127808): Split out enabling/disabling buttons. */
-	if (ui->state->page_count == 1) {
-		VB2_SET_BIT(ui->state->disabled_item_mask,
-			    screen->page_up_item);
-		VB2_SET_BIT(ui->state->disabled_item_mask,
-			    screen->page_down_item);
-		ui->state->selected_item = screen->back_item;
-	} else {
-		VB2_SET_BIT(ui->state->disabled_item_mask,
-			    screen->page_up_item);
-		ui->state->selected_item = screen->page_down_item;
-	}
-
-	return VB2_SUCCESS;
-}
-
 static vb2_error_t log_page_update(struct vb2_ui_context *ui,
 				   const char *new_log_string)
 {
@@ -106,6 +89,36 @@ static vb2_error_t log_page_update(struct vb2_ui_context *ui,
 		VB2_SET_BIT(ui->state->disabled_item_mask,
 			    screen->page_down_item);
 
+	return VB2_SUCCESS;
+}
+
+static vb2_error_t log_page_reset_to_top(struct vb2_ui_context *ui)
+{
+	const struct vb2_screen_info *screen = ui->state->screen;
+
+	ui->state->current_page = 0;
+	ui->state->selected_item = ui->state->page_count > 1
+					   ? screen->page_down_item
+					   : screen->back_item;
+	return log_page_update(ui, NULL);
+}
+
+static vb2_error_t log_page_show_back_or_cancel(struct vb2_ui_context *ui,
+						int is_show_cancel)
+{
+	int back_item = ui->state->screen->back_item;
+	int cancel_item = ui->state->screen->cancel_item;
+	VB2_CLR_BIT(ui->state->hidden_item_mask, back_item);
+	VB2_CLR_BIT(ui->state->hidden_item_mask, cancel_item);
+	if (is_show_cancel) {
+		VB2_SET_BIT(ui->state->hidden_item_mask, back_item);
+		if (ui->state->selected_item == back_item)
+			ui->state->selected_item = cancel_item;
+	} else {
+		VB2_SET_BIT(ui->state->hidden_item_mask, cancel_item);
+		if (ui->state->selected_item == cancel_item)
+			ui->state->selected_item = back_item;
+	}
 	return VB2_SUCCESS;
 }
 
@@ -298,15 +311,14 @@ static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(
-		ui->state->screen->id, ui->locale_id, log_string);
-	if (ui->state->page_count == 0) {
+	vb2_error_t rv = log_page_update(ui, log_string);
+	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("ERROR: Failed to prepare debug info screen\n");
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
 	}
 
-	return log_page_init(ui);
+	return log_page_reset_to_top(ui);
 }
 
 static vb2_error_t debug_info_reinit(struct vb2_ui_context *ui)
@@ -317,9 +329,8 @@ static vb2_error_t debug_info_reinit(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(
-		ui->state->screen->id, ui->locale_id, log_string);
-	if (ui->state->page_count == 0) {
+	vb2_error_t rv = log_page_update(ui, log_string);
+	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("ERROR: Failed to prepare debug info screen\n");
 		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
 		return vb2_ui_screen_back(ui);
@@ -362,15 +373,14 @@ static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(
-		ui->state->screen->id, ui->locale_id, log_string);
-	if (ui->state->page_count == 0) {
+	vb2_error_t rv = log_page_update(ui, log_string);
+	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("ERROR: Failed to prepare firmware log screen\n");
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
 	}
 
-	return log_page_init(ui);
+	return log_page_reset_to_top(ui);
 }
 
 static vb2_error_t firmware_log_reinit(struct vb2_ui_context *ui)
@@ -381,9 +391,8 @@ static vb2_error_t firmware_log_reinit(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
 	}
-	ui->state->page_count = vb2ex_prepare_log_screen(
-		ui->state->screen->id, ui->locale_id, log_string);
-	if (ui->state->page_count == 0) {
+	vb2_error_t rv = log_page_update(ui, log_string);
+	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("ERROR: Failed to prepare firmware log screen\n");
 		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
 		return vb2_ui_screen_back(ui);
@@ -1086,21 +1095,20 @@ static const struct vb2_screen_info diagnostics_screen = {
 static vb2_error_t diagnostics_storage_health_init(struct vb2_ui_context *ui)
 {
 	const char *log_string;
-	vb2_error_t rv = vb2ex_diag_get_storage_health(&log_string);
+	vb2_error_t rv;
+	rv = vb2ex_diag_get_storage_health(&log_string);
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("ERROR: Failed to retrieve storage log message\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
 		return vb2_ui_screen_back(ui);
 	}
-
-	ui->state->page_count = vb2ex_prepare_log_screen(
-		ui->state->screen->id, ui->locale_id, log_string);
-	if (ui->state->page_count == 0) {
+	rv = log_page_update(ui, log_string);
+	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("ERROR: Failed to prepare storage log screen\n");
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
 		return vb2_ui_screen_back(ui);
 	}
-	return log_page_init(ui);
+	return log_page_reset_to_top(ui);
 }
 
 static const struct vb2_menu_item diagnostics_storage_health_items[] = {
@@ -1126,8 +1134,8 @@ static const struct vb2_screen_info diagnostics_storage_health_screen = {
 
 #define DIAGNOSTICS_MEMORY_ITEM_PAGE_UP 0
 #define DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN 1
-#define DIAGNOSTICS_MEMORY_ITEM_CANCEL 2
-#define DIAGNOSTICS_MEMORY_ITEM_BACK 3
+#define DIAGNOSTICS_MEMORY_ITEM_BACK 2
+#define DIAGNOSTICS_MEMORY_ITEM_CANCEL 3
 
 typedef vb2_error_t (*memory_test_op_t)(int reset, const char **out);
 static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
@@ -1151,38 +1159,19 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
 		return vb2_ui_screen_back(ui);
 	}
+	int is_test_running = (rv == VB2_ERROR_EX_DIAG_TEST_UPDATED);
+	if (!is_test_running) {
+		ui->state->test_finished = 1;
+	}
+	VB2_TRY(log_page_show_back_or_cancel(ui, is_test_running));
 
-	ui->state->page_count = vb2ex_prepare_log_screen(
-		ui->state->screen->id, ui->locale_id, log_string);
-	if (ui->state->page_count == 0) {
+	vb2_error_t update_rv = log_page_update(ui, log_string);
+	if (update_rv != VB2_SUCCESS) {
 		VB2_DEBUG("ERROR: Failed to prepare memory log screen, error: "
-			  "%#x\n", rv);
+			  "%#x\n",
+			  update_rv);
 		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
 		return vb2_ui_screen_back(ui);
-	}
-	/* TODO(b/174127808): Integrate this into a new log_page_* function. */
-	if (ui->state->current_page >= ui->state->page_count)
-		ui->state->current_page = ui->state->page_count - 1;
-
-	ui->force_display = 1;
-
-	/* Show cancel button when the test is running, otherwise show the back
-	 * button. VB2_SUCCESS indicates the test is finished. */
-	VB2_CLR_BIT(ui->state->hidden_item_mask,
-		    DIAGNOSTICS_MEMORY_ITEM_CANCEL);
-	VB2_CLR_BIT(ui->state->hidden_item_mask, DIAGNOSTICS_MEMORY_ITEM_BACK);
-	if (rv == VB2_ERROR_EX_DIAG_TEST_UPDATED) {
-		VB2_SET_BIT(ui->state->hidden_item_mask,
-			    DIAGNOSTICS_MEMORY_ITEM_BACK);
-		if (ui->state->selected_item == DIAGNOSTICS_MEMORY_ITEM_BACK)
-			ui->state->selected_item =
-				DIAGNOSTICS_MEMORY_ITEM_CANCEL;
-	} else {
-		VB2_SET_BIT(ui->state->hidden_item_mask,
-			    DIAGNOSTICS_MEMORY_ITEM_CANCEL);
-		if (ui->state->selected_item == DIAGNOSTICS_MEMORY_ITEM_CANCEL)
-			ui->state->selected_item = DIAGNOSTICS_MEMORY_ITEM_BACK;
-		ui->state->test_finished = 1;
 	}
 
 	return VB2_SUCCESS;
@@ -1192,14 +1181,14 @@ static vb2_error_t diagnostics_memory_init_quick(struct vb2_ui_context *ui)
 {
 	VB2_TRY(diagnostics_memory_update_screen(
 		ui, &vb2ex_diag_memory_quick_test, 1));
-	return log_page_init(ui);
+	return log_page_reset_to_top(ui);
 }
 
 static vb2_error_t diagnostics_memory_init_full(struct vb2_ui_context *ui)
 {
 	VB2_TRY(diagnostics_memory_update_screen(
 		ui, &vb2ex_diag_memory_full_test, 1));
-	return log_page_init(ui);
+	return log_page_reset_to_top(ui);
 }
 
 static vb2_error_t diagnostics_memory_update_quick(struct vb2_ui_context *ui)
@@ -1217,11 +1206,8 @@ static vb2_error_t diagnostics_memory_update_full(struct vb2_ui_context *ui)
 static const struct vb2_menu_item diagnostics_memory_items[] = {
 	[DIAGNOSTICS_MEMORY_ITEM_PAGE_UP] = PAGE_UP_ITEM,
 	[DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN] = PAGE_DOWN_ITEM,
-	[DIAGNOSTICS_MEMORY_ITEM_CANCEL] = {
-		.text = "Cancel and go back",
-		.action = vb2_ui_screen_back,
-	},
 	[DIAGNOSTICS_MEMORY_ITEM_BACK] = BACK_ITEM,
+	[DIAGNOSTICS_MEMORY_ITEM_CANCEL] = CANCEL_ITEM,
 	POWER_OFF_ITEM,
 };
 
@@ -1233,7 +1219,8 @@ static const struct vb2_screen_info diagnostics_memory_quick_screen = {
 	.menu = MENU_ITEMS(diagnostics_memory_items),
 	.page_up_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_UP,
 	.page_down_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN,
-	.back_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
+	.back_item = DIAGNOSTICS_MEMORY_ITEM_BACK,
+	.cancel_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
 };
 
 static const struct vb2_screen_info diagnostics_memory_full_screen = {
@@ -1244,7 +1231,8 @@ static const struct vb2_screen_info diagnostics_memory_full_screen = {
 	.menu = MENU_ITEMS(diagnostics_memory_items),
 	.page_up_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_UP,
 	.page_down_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN,
-	.back_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
+	.back_item = DIAGNOSTICS_MEMORY_ITEM_BACK,
+	.cancel_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
 };
 
 /******************************************************************************/
