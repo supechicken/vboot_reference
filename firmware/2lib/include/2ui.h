@@ -155,7 +155,7 @@ const struct vb2_screen_info *vb2_get_screen_info(enum vb2_screen id);
  * on 0 when we hit the start of the menu.
  *
  * @param ui		UI context pointer
- * @return VB2_REQUEST_UI_CONTINUE, or error code on error.
+ * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2_ui_menu_prev(struct vb2_ui_context *ui);
 
@@ -167,7 +167,7 @@ vb2_error_t vb2_ui_menu_prev(struct vb2_ui_context *ui);
  * on the max index when we hit the end of the menu.
  *
  * @param ui		UI context pointer
- * @return VB2_REQUEST_UI_CONTINUE, or error code on error.
+ * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui);
 
@@ -179,7 +179,7 @@ vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui);
  * selecting the menu item is a no-op.
  *
  * @param ui		UI context pointer
- * @return VB2_REQUEST_UI_CONTINUE, or error code on error.
+ * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui);
 
@@ -192,7 +192,7 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui);
  * If the current screen is already the root scren, the request is ignored.
  *
  * @param ui		UI context pointer
- * @return VB2_REQUEST_UI_CONTINUE, or error code on error.
+ * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui);
 
@@ -202,7 +202,7 @@ vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui);
  * If the screen is not found, the request is ignored.
  *
  * @param ui		UI context pointer
- * @return VB2_REQUEST_UI_CONTINUE, or error code on error.
+ * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id);
 
