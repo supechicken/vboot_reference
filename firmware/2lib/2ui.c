@@ -24,7 +24,7 @@
  * shutdown is required.
  *
  * @param ui		UI context pointer
- * @return VB2_REQUEST_SHUTDOWN if shutdown needed, or VB2_REQUEST_UI_CONTINUE
+ * @return VB2_REQUEST_SHUTDOWN if shutdown needed, or VB2_SUCCESS
  */
 vb2_error_t check_shutdown_request(struct vb2_ui_context *ui)
 {
@@ -64,7 +64,7 @@ vb2_error_t check_shutdown_request(struct vb2_ui_context *ui)
 	if (shutdown_request)
 		return VB2_REQUEST_SHUTDOWN;
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 /*****************************************************************************/
@@ -81,7 +81,7 @@ vb2_error_t error_exit_action(struct vb2_ui_context *ui)
 		ui->error_code = VB2_UI_ERROR_NONE;
 		ui->key = 0;
 	}
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 /*****************************************************************************/
@@ -131,7 +131,7 @@ vb2_error_t menu_navigation_action(struct vb2_ui_context *ui)
 				  ui->key, ui->key_trusted);
 	}
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 vb2_error_t vb2_ui_menu_prev(struct vb2_ui_context *ui)
@@ -139,7 +139,7 @@ vb2_error_t vb2_ui_menu_prev(struct vb2_ui_context *ui)
 	int item;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_VOL_UP_SHORT_PRESS)
-		return VB2_REQUEST_UI_CONTINUE;
+		return VB2_SUCCESS;
 
 	item = ui->state->selected_item - 1;
 	while (item >= 0 && VB2_GET_BIT(ui->state->hidden_item_mask, item))
@@ -148,7 +148,7 @@ vb2_error_t vb2_ui_menu_prev(struct vb2_ui_context *ui)
 	if (item >= 0)
 		ui->state->selected_item = item;
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui)
@@ -157,7 +157,7 @@ vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui)
 	const struct vb2_menu *menu;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_SHORT_PRESS)
-		return VB2_REQUEST_UI_CONTINUE;
+		return VB2_SUCCESS;
 
 	menu = get_menu(ui);
 	item = ui->state->selected_item + 1;
@@ -168,7 +168,7 @@ vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui)
 	if (item < menu->num_items)
 		ui->state->selected_item = item;
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
@@ -177,11 +177,11 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 	const struct vb2_menu_item *menu_item;
 
 	if (!DETACHABLE && ui->key == VB_BUTTON_POWER_SHORT_PRESS)
-		return VB2_REQUEST_UI_CONTINUE;
+		return VB2_SUCCESS;
 
 	menu = get_menu(ui);
 	if (menu->num_items == 0)
-		return VB2_REQUEST_UI_CONTINUE;
+		return VB2_SUCCESS;
 
 	menu_item = &menu->items[ui->state->selected_item];
 
@@ -190,7 +190,7 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 			ui->state->selected_item)) {
 		VB2_DEBUG("Menu item <%s> disabled; ignoring\n",
 			  menu_item->text);
-		return VB2_REQUEST_UI_CONTINUE;
+		return VB2_SUCCESS;
 	}
 
 	if (menu_item->action) {
@@ -204,7 +204,7 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 
 	VB2_DEBUG("Menu item <%s> no action or target screen\n",
 		  menu_item->text);
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 /*****************************************************************************/
@@ -224,7 +224,7 @@ vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 		VB2_DEBUG("ERROR: No previous screen; ignoring\n");
 	}
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
@@ -233,7 +233,7 @@ static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
 	ui->state->selected_item = 0;
 	if (menu->num_items > 1 && menu->items[0].is_language_select)
 		ui->state->selected_item = 1;
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
@@ -245,7 +245,7 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 	new_screen_info = vb2_get_screen_info(id);
 	if (new_screen_info == NULL) {
 		VB2_DEBUG("ERROR: Screen entry %#x not found; ignoring\n", id);
-		return VB2_REQUEST_UI_CONTINUE;
+		return VB2_SUCCESS;
 	}
 
 	/* Check to see if the screen state already exists in our stack. */
@@ -273,7 +273,7 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 		memset(cur_state, 0, sizeof(*ui->state));
 		if (cur_state == NULL) {
 			VB2_DEBUG("WARNING: malloc failed; ignoring\n");
-			return VB2_REQUEST_UI_CONTINUE;
+			return VB2_SUCCESS;
 		}
 		cur_state->prev = ui->state;
 		cur_state->screen = new_screen_info;
@@ -284,14 +284,25 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 			return default_screen_init(ui);
 	}
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 /*****************************************************************************/
 /* Core UI loop */
 
-vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
-		    vb2_error_t (*global_action)(struct vb2_ui_context *ui))
+static vb2_error_t
+ui_loop_action(vb2_error_t (*action)(struct vb2_ui_context *ui),
+	       struct vb2_ui_context *ui)
+{
+	vb2_error_t rv = action(ui);
+	if (rv == VB2_REQUEST_UI_CONTINUE)
+		return VB2_SUCCESS;
+	return rv;
+}
+
+static vb2_error_t
+ui_loop_impl(struct vb2_context *ctx, enum vb2_screen root_screen_id,
+	     vb2_error_t (*global_action)(struct vb2_ui_context *ui))
 {
 	struct vb2_ui_context ui;
 	struct vb2_screen_state prev_state;
@@ -309,9 +320,7 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	if (root_info == NULL)
 		VB2_DIE("Root screen not found.\n");
 	ui.locale_id = vb2_nv_get(ctx, VB2_NV_LOCALIZATION_INDEX);
-	rv = vb2_ui_screen_change(&ui, root_screen_id);
-	if (rv != VB2_REQUEST_UI_CONTINUE)
-		return rv;
+	VB2_TRY(vb2_ui_screen_change(&ui, root_screen_id));
 	memset(&prev_state, 0, sizeof(prev_state));
 	prev_disable_timer = 0;
 	prev_error_code = VB2_UI_ERROR_NONE;
@@ -364,35 +373,25 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 		ui.key_trusted = !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD);
 
 		/* Check for shutdown request. */
-		rv = check_shutdown_request(&ui);
-		if (rv != VB2_REQUEST_UI_CONTINUE) {
+		rv = ui_loop_action(check_shutdown_request, &ui);
+		if (rv != VB2_SUCCESS) {
 			VB2_DEBUG("Shutdown requested!\n");
 			return rv;
 		}
 
 		/* Check if we need to exit an error box. */
-		rv = error_exit_action(&ui);
-		if (rv != VB2_REQUEST_UI_CONTINUE)
-			return rv;
+		VB2_TRY(ui_loop_action(error_exit_action, &ui));
 
 		/* Run screen action. */
-		if (ui.state->screen->action) {
-			rv = ui.state->screen->action(&ui);
-			if (rv != VB2_REQUEST_UI_CONTINUE)
-				return rv;
-		}
+		if (ui.state->screen->action)
+			VB2_TRY(ui_loop_action(ui.state->screen->action, &ui));
 
 		/* Run menu navigation action. */
-		rv = menu_navigation_action(&ui);
-		if (rv != VB2_REQUEST_UI_CONTINUE)
-			return rv;
+		VB2_TRY(ui_loop_action(menu_navigation_action, &ui));
 
 		/* Run global action function if available. */
-		if (global_action) {
-			rv = global_action(&ui);
-			if (rv != VB2_REQUEST_UI_CONTINUE)
-				return rv;
-		}
+		if (global_action)
+			VB2_TRY(ui_loop_action(global_action, &ui));
 
 		/* Delay. */
 		elapsed_ms = vb2ex_mtime() - start_time_ms;
@@ -401,6 +400,15 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	}
 
 	return VB2_SUCCESS;
+}
+
+vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
+		    vb2_error_t (*global_action)(struct vb2_ui_context *ui))
+{
+	vb2_error_t rv = ui_loop_impl(ctx, root_screen_id, global_action);
+	if (rv == VB2_REQUEST_UI_EXIT)
+		return VB2_SUCCESS;
+	return rv;
 }
 
 /*****************************************************************************/
@@ -427,7 +435,7 @@ vb2_error_t developer_action(struct vb2_ui_context *ui)
 	if (ui->key == '\t')
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 /*****************************************************************************/
@@ -444,7 +452,7 @@ vb2_error_t broken_recovery_action(struct vb2_ui_context *ui)
 	if (ui->key == '\t')
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 /*****************************************************************************/
@@ -460,7 +468,7 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 	/* See if we have a recovery kernel available yet. */
 	vb2_error_t rv = VbTryLoadKernel(ui->ctx, VB_DISK_FLAG_REMOVABLE);
 	if (rv == VB2_SUCCESS)
-		return rv;
+		return VB2_REQUEST_UI_EXIT;
 
 	/* If disk validity state changed, switch to appropriate screen. */
 	if (ui->recovery_rv != rv) {
@@ -481,7 +489,7 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 	if (ui->key == '\t')
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
 
-	return VB2_REQUEST_UI_CONTINUE;
+	return VB2_SUCCESS;
 }
 
 /*****************************************************************************/
