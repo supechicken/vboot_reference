@@ -44,6 +44,9 @@ enum vb2_return_code {
 	/* Continue in the UI loop.  This is used in UI internal functions. */
 	VB2_REQUEST_UI_CONTINUE = 0x1005,
 
+	/* Break from the UI loop.  This is used in UI internal functions. */
+	VB2_REQUEST_UI_EXIT = 0x1006,
+
 	/* End of VB2_REQUEST_* */
 	VB2_REQUEST_END = 0x5000,
 
@@ -254,7 +257,7 @@ enum vb2_return_code {
 	VB2_ERROR_INSIDE_DATA_OUTSIDE,
 
 	/* Unsupported signature algorithm in vb2_unpack_key_buffer() */
-	VB2_ERROR_UNPACK_KEY_SIG_ALGORITHM,                      /* 0x150008 */
+	VB2_ERROR_UNPACK_KEY_SIG_ALGORITHM, /* 0x150008 */
 
 	/* Bad key size in vb2_unpack_key_buffer() */
 	VB2_ERROR_UNPACK_KEY_SIZE,
@@ -278,7 +281,7 @@ enum vb2_return_code {
 	VB2_ERROR_VDATA_WORKBUF_DIGEST,
 
 	/* Not enough work buffer for hash temp data in vb2_verify_data() */
-	VB2_ERROR_VDATA_WORKBUF_HASHING,                         /* 0x150010 */
+	VB2_ERROR_VDATA_WORKBUF_HASHING, /* 0x150010 */
 
 	/*
 	 * Bad digest size in vb2_verify_data() - probably because algorithm
@@ -303,7 +306,7 @@ enum vb2_return_code {
 	VB2_ERROR_COMMON_TOTAL_SIZE,
 	VB2_ERROR_COMMON_FIXED_SIZE,
 	VB2_ERROR_COMMON_DESC_SIZE,
-	VB2_ERROR_COMMON_MEMBER_SIZE,                            /* 0x150018 */
+	VB2_ERROR_COMMON_MEMBER_SIZE, /* 0x150018 */
 
 	/*
 	 * Total, fixed, description, or member offset/size not a multiple of
@@ -322,7 +325,7 @@ enum vb2_return_code {
 	VB2_ERROR_COMMON_DESC_TERMINATOR,
 
 	/* Member data overlaps previous data */
-	VB2_ERROR_COMMON_MEMBER_OVERLAP,                         /* 0x150020 */
+	VB2_ERROR_COMMON_MEMBER_OVERLAP, /* 0x150020 */
 
 	/* Signature bad magic number */
 	VB2_ERROR_SIG_MAGIC,
