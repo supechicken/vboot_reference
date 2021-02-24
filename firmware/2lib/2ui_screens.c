@@ -56,6 +56,32 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 	.action = power_off_action, \
 })
 
+/*
+ * Check the result of some ui function and show error message to user.
+ *
+ * If the `rv` is not VB2_SUCCESS, sets the error code, goes back to previous
+ * screen, and returns VB2_REQUEST_UI_CONTINUE.
+ *
+ * VB2_REQUEST_UI_CONTINUE is not caught by VB2_TRY. This could be helpful when
+ * returning from recurtion.
+ *
+ * @param rv			The vb2_error_t to be checked.
+ * @param ui			vb2_ui_context.
+ * @param error	                vb2_ui_error.
+ */
+static vb2_error_t check_ui_error(vb2_error_t rv, struct vb2_ui_context *ui,
+				  enum vb2_ui_error err)
+{
+	if (rv >= VB2_REQUEST && rv <= VB2_REQUEST_END)
+		return rv;
+	if (rv) {
+		ui->error_code = err;
+		VB2_TRY(vb2_ui_screen_back(ui));
+		return VB2_REQUEST_UI_CONTINUE;
+	}
+	return VB2_SUCCESS;
+}
+
 /******************************************************************************/
 /*
  * Functions used for log screens
@@ -74,8 +100,10 @@ static vb2_error_t log_page_update(struct vb2_ui_context *ui,
 	if (new_log_string) {
 		ui->state->page_count = vb2ex_prepare_log_screen(
 			screen->id, ui->locale_id, new_log_string);
-		if (ui->state->page_count == 0)
+		if (ui->state->page_count == 0) {
+			VB2_DEBUG("vb2ex_prepare_log_screen failed.");
 			return VB2_ERROR_UI_LOG_INIT;
+		}
 		if (ui->state->current_page >= ui->state->page_count)
 			ui->state->current_page = ui->state->page_count - 1;
 		ui->force_display = 1;
@@ -303,40 +331,29 @@ static const struct vb2_screen_info advanced_options_screen = {
 #define DEBUG_INFO_ITEM_PAGE_DOWN 2
 #define DEBUG_INFO_ITEM_BACK 3
 
+static vb2_error_t debug_info_set_content(struct vb2_ui_context *ui)
+{
+	// TODO(chungsheng): make this return vb2_error_t.
+	const char *log_string = vb2ex_get_debug_info(ui->ctx);
+	vb2_error_t rv = log_string ? VB2_SUCCESS : VB2_ERROR_UNKNOWN;
+	if (rv)
+		VB2_DEBUG("ERROR: Failed to retrieve debug info\n");
+	VB2_TRY(check_ui_error(rv, ui, VB2_UI_ERROR_DEBUG_LOG));
+	VB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,
+			       VB2_UI_ERROR_DEBUG_LOG));
+
+	return VB2_SUCCESS;
+}
+
 static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_debug_info(ui->ctx);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve debug info\n");
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv != VB2_SUCCESS) {
-		VB2_DEBUG("ERROR: Failed to prepare debug info screen\n");
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-
+	VB2_TRY(debug_info_set_content(ui));
 	return log_page_reset_to_top(ui);
 }
 
 static vb2_error_t debug_info_reinit(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_debug_info(ui->ctx);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve debug info\n");
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv != VB2_SUCCESS) {
-		VB2_DEBUG("ERROR: Failed to prepare debug info screen\n");
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-
-	return VB2_SUCCESS;
+	return debug_info_set_content(ui);
 }
 
 static const struct vb2_menu_item debug_info_items[] = {
@@ -365,40 +382,30 @@ static const struct vb2_screen_info debug_info_screen = {
 #define FIRMWARE_LOG_ITEM_PAGE_DOWN 2
 #define FIRMWARE_LOG_ITEM_BACK 3
 
+static vb2_error_t firmware_log_set_content(struct vb2_ui_context *ui,
+					    int reset)
+{
+	// TODO(chungsheng): make this return vb2_error_t.
+	const char *log_string = vb2ex_get_firmware_log(reset);
+	vb2_error_t rv = log_string ? VB2_SUCCESS : VB2_ERROR_UNKNOWN;
+	if (rv)
+		VB2_DEBUG("ERROR: Failed to retrieve firmware log\n");
+	VB2_TRY(check_ui_error(rv, ui, VB2_UI_ERROR_FIRMWARE_LOG));
+	VB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,
+			       VB2_UI_ERROR_FIRMWARE_LOG));
+
+	return VB2_SUCCESS;
+}
+
 static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_firmware_log(1);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve firmware log\n");
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv != VB2_SUCCESS) {
-		VB2_DEBUG("ERROR: Failed to prepare firmware log screen\n");
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-
+	VB2_TRY(firmware_log_set_content(ui, 1));
 	return log_page_reset_to_top(ui);
 }
 
 static vb2_error_t firmware_log_reinit(struct vb2_ui_context *ui)
 {
-	const char *log_string = vb2ex_get_firmware_log(0);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve firmware log\n");
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv != VB2_SUCCESS) {
-		VB2_DEBUG("ERROR: Failed to prepare firmware log screen\n");
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-
-	return VB2_SUCCESS;
+	return firmware_log_set_content(ui, 0);
 }
 
 static const struct vb2_menu_item firmware_log_items[] = {
@@ -1089,18 +1096,14 @@ static const struct vb2_screen_info diagnostics_screen = {
 
 static vb2_error_t diagnostics_storage_init(struct vb2_ui_context *ui)
 {
+	// TODO(chungsheng): make this return vb2_error_t.
 	const char *log_string = vb2ex_get_diagnostic_storage();
-	if (!log_string) {
+	vb2_error_t rv = log_string ? VB2_SUCCESS : VB2_ERROR_UNKNOWN;
+	if (rv)
 		VB2_DEBUG("ERROR: Failed to retrieve storage log message\n");
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv != VB2_SUCCESS) {
-		VB2_DEBUG("ERROR: Failed to prepare storage log screen\n");
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
+	VB2_TRY(check_ui_error(rv, ui, VB2_UI_ERROR_DIAGNOSTICS));
+	VB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,
+			       VB2_UI_ERROR_DIAGNOSTICS));
 	return log_page_reset_to_top(ui);
 }
 
@@ -1136,39 +1139,33 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 						    int reset)
 {
 	const char *log_string = NULL;
+	vb2_error_t rv;
+	int is_test_running = 0;
 
 	/* Early return if the memory test is done. */
 	if (ui->state->test_finished)
 		return VB2_SUCCESS;
 
-	vb2_error_t rv = op(reset, &log_string);
-
+	rv = op(reset, &log_string);
+	switch (rv) {
 	/* The test is still running but the output buffer was unchanged. */
-	if (rv == VB2_ERROR_EX_DIAG_TEST_RUNNING)
+	case VB2_ERROR_EX_DIAG_TEST_RUNNING:
 		return VB2_SUCCESS;
-
-	if ((rv && rv != VB2_ERROR_EX_DIAG_TEST_UPDATED) || !log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve memory test status\n");
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		VB2_TRY(vb2_ui_screen_back(ui));
-		return VB2_REQUEST_UI_CONTINUE;
-	}
-	int is_test_running = (rv == VB2_ERROR_EX_DIAG_TEST_UPDATED);
-	if (!is_test_running) {
+	case VB2_ERROR_EX_DIAG_TEST_UPDATED:
+		is_test_running = 1;
+		rv = VB2_SUCCESS;
+		break;
+	case VB2_SUCCESS:
 		ui->state->test_finished = 1;
+		break;
+	default:
+		VB2_DEBUG("ERROR: Failed to retrieve memory test "
+			  "status\n");
 	}
+	VB2_TRY(check_ui_error(rv, ui, VB2_UI_ERROR_DIAGNOSTICS));
 	VB2_TRY(log_page_show_back_or_cancel(ui, is_test_running));
-
-	vb2_error_t update_rv = log_page_update(ui, log_string);
-	if (update_rv != VB2_SUCCESS) {
-		VB2_DEBUG("ERROR: Failed to prepare memory log screen, error: "
-			  "%#x\n",
-			  update_rv);
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		VB2_TRY(vb2_ui_screen_back(ui));
-		return VB2_REQUEST_UI_CONTINUE;
-	}
-
+	VB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,
+			       VB2_UI_ERROR_DIAGNOSTICS));
 	return VB2_SUCCESS;
 }
 
