@@ -34,6 +34,24 @@
       "parentUuid": "7d40af69_8c1920bc",
       "revId": "0a115d9344c673ddd2b07dab9596d143a86351ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f557c6_61e61d93",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-02-24T02:59:47Z",
+      "side": 1,
+      "message": "I added some wrapper functions and removed the macro.",
+      "parentUuid": "b2ef763b_31f2e076",
+      "revId": "0a115d9344c673ddd2b07dab9596d143a86351ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
