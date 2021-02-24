@@ -408,7 +408,14 @@ vb2_error_t ui_loop(struct vb2_context *ctx, enum vb2_screen root_screen_id,
 
 vb2_error_t vb2_developer_menu(struct vb2_context *ctx)
 {
-	return ui_loop(ctx, VB2_SCREEN_DEVELOPER_MODE, developer_action);
+	enum vb2_screen root_screen_id = VB2_SCREEN_DEVELOPER_MODE;
+	vb2_error_t (*action)(struct vb2_ui_context *ui) = developer_action;
+	if (!vb2_dev_boot_allowed(ctx)) {
+		VB2_DEBUG("WARNING: Dev boot not allowed; forcing to-norm\n");
+		root_screen_id = VB2_SCREEN_DEVELOPER_TO_NORM;
+		action = NULL;
+	}
+	return ui_loop(ctx, root_screen_id, action);
 }
 
 vb2_error_t developer_action(struct vb2_ui_context *ui)
