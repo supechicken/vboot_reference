@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d40af69_8c1920bc",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-02-24T00:38:16Z",
+      "side": 1,
+      "message": "I think these kinds of wrappers can be useful if they can be really widely used to make code cleaner, but they\u0027re also dangerous because each of them adds more arcane magic that the reader needs to understand first before they can understand the code. We should be very careful about adding more of them (and always document the behavior very thoroughly when we do).\n\nIn this case, can\u0027t you just use VB2_TRY() and instead put a wrapper function around ui_loop() that does the error code translation?",
+      "revId": "0a115d9344c673ddd2b07dab9596d143a86351ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
