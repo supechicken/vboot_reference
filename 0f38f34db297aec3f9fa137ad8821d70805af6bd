@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb52d84b_ac8a2e96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-25T04:12:52Z",
+      "side": 1,
+      "message": "Yes, good point, Daisuke.\n\nLooking at the docstring in 2ui.h reminds me of another behaviour:\n\n  If the screen is not found, the request is ignored.\n\nThis would probably be just as dangerous as not returning after a call to one of these functions.  I\u0027m thinking we should just reboot into recovery mode if this occurs?  Any thoughts?",
+      "parentUuid": "2e5e8d69_b2cdf5a9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "0f38f34db297aec3f9fa137ad8821d70805af6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "403b88ef_6a793291",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
