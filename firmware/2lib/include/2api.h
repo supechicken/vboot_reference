@@ -1517,7 +1517,18 @@ uint32_t vb2ex_prepare_log_screen(enum vb2_screen screen, uint32_t locale_id,
 				  const char *str);
 
 /**
+<<<<<<< HEAD
  * Get the health info of the storage.
+=======
+ * Check if the current log screen needs to be redrawn.
+ *
+ * @return 1 if redrawing is needed, otherwise 0.
+ */
+int vb2ex_log_screen_need_redrawing(uint32_t page);
+
+/**
+ * Get the full storage diagnostic log.
+>>>>>>> 49286355 (vboot/ui: Check if the log screen needs redrawing)
  *
  * Return a pointer of full log string which is guaranteed to be
  * null-terminated.  The function implementation should manage string memory
