@@ -1783,19 +1783,27 @@ static void diagnostics_screen_tests(void)
 	/* #0: Language menu */
 	add_mock_keypress(VB_KEY_UP);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #1: Storage screen */
+	/* #1: Storage health screen */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #2: Quick memory test screen */
+	/* #2: Short storage self-test screen */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #3: Full memory test screen */
+	/* #3: Extended storage self-test screen */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #4: Power off (End of menu) */
+	/* #4: Quick memory test screen */
+	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	/* #5: Full memory test screen */
+	add_mock_keypress(VB_KEY_ESC);
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	/* #6: Power off (End of menu) */
 	add_mock_keypress(VB_KEY_ESC);
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
@@ -1813,35 +1821,47 @@ static void diagnostics_screen_tests(void)
 	DISPLAYED_EQ("#0: language menu", VB2_SCREEN_LANGUAGE_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE,
 		     MOCK_IGNORE);
-	/* #1: Storage screen */
+	/* #1: Storage health screen */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("storage button",
+	DISPLAYED_EQ("storage health button",
 		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 1, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE);
 	DISPLAYED_EQ("#1: storage screen",
 		     VB2_SCREEN_DIAGNOSTICS_STORAGE_HEALTH, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
-	/* #2: Quick memory test screen */
+	/* #2: Short storage self-test screen */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("quick memory test button",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 2, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
-	DISPLAYED_EQ("#1: quick memory test screen",
-		     VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK, MOCK_IGNORE,
+	DISPLAYED_EQ("short storage self-test button", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 2, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_EQ("#2: short storage self-test screen",
+		     VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_SHORT, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
-	/* #3: Full memory test screen */
+	/* #3: Extended storage self-test screen */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("full memory test button",
+	DISPLAYED_EQ("extended storage self-test button",
 		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 3, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE);
-	DISPLAYED_EQ("#3: full memory test screen",
+	DISPLAYED_EQ("#3: extended storage self-test screen",
+		     VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_EXTENDED, MOCK_IGNORE,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	/* #4: Quick memory test screen */
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("quick memory test button", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 4, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_EQ("#4: quick memory test screen",
+		     VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK, MOCK_IGNORE,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	/* #5: Full memory test screen */
+	DISPLAYED_PASS();
+	DISPLAYED_EQ("full memory test button", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 5, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_EQ("#5: full memory test screen",
 		     VB2_SCREEN_DIAGNOSTICS_MEMORY_FULL, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
-	/* #4: Power of (End of menu) */
+	/* #6: Power of (End of menu) */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("power off",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 4, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_EQ("power off", VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 6,
+		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
 
 	VB2_DEBUG("...done.\n");
