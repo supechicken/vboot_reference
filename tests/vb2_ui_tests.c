@@ -100,6 +100,8 @@ static char mock_prepare_log[64][MOCK_PREPARE_LOG_SIZE];
 static int mock_prepare_log_count;
 static uint32_t mock_log_page_count;
 
+static vb2_error_t mock_ex_diag_storage_test_rv;
+
 static void add_mock_key(uint32_t press, int trusted)
 {
 	if (mock_key_total >= ARRAY_SIZE(mock_key) ||
@@ -259,6 +261,7 @@ enum reset_type {
 	FOR_BROKEN_RECOVERY,
 	FOR_MANUAL_RECOVERY,
 	FOR_DIAGNOSTICS,
+	FOR_DIAGNOSTICS_NO_NVME,
 };
 
 /* Reset mock data (for use before each test) */
@@ -353,6 +356,10 @@ static void reset_common_data(enum reset_type t)
 	else
 		add_mock_vbtlk(VB2_ERROR_MOCK, 0);
 	add_mock_pp_pressed(0);
+
+	mock_ex_diag_storage_test_rv = VB2_SUCCESS;
+	if (t == FOR_DIAGNOSTICS_NO_NVME)
+		mock_ex_diag_storage_test_rv = VB2_ERROR_EX_UNIMPLEMENTED;
 }
 
 /* Mock functions */
@@ -569,6 +576,11 @@ uint32_t vb2ex_prepare_log_screen(enum vb2_screen screen, uint32_t locale_id,
 	mock_prepare_log_count++;
 
 	return mock_log_page_count;
+}
+
+vb2_error_t vb2ex_diag_get_storage_test_log(const char **log)
+{
+	return mock_ex_diag_storage_test_rv;
 }
 
 /* Tests */
@@ -1786,82 +1798,127 @@ static void manual_recovery_screen_tests(void)
 	VB2_DEBUG("...done.\n");
 }
 
-static void diagnostics_screen_tests(void)
+static void diagnostics_screen_tests(enum reset_type t)
 {
-	VB2_DEBUG("Testing diagnostic screens...\n");
+	uint32_t disabled_item_mask;
+
+	switch (t) {
+		case FOR_DIAGNOSTICS_NO_NVME:
+			VB2_DEBUG("Testing diagnostic screens without nvme "
+				  "...\n");
+			disabled_item_mask = 0xc;
+			break;
+		case FOR_DIAGNOSTICS:
+			VB2_DEBUG("Testing diagnostic screens...\n");
+			disabled_item_mask = 0x0;
+			break;
+		default:
+			TEST_TRUE(0, "Should no reach.");
+			return;
+	};
 
 	/* Diagnostics screen: disabled and hidden item mask */
-	reset_common_data(FOR_DIAGNOSTICS);
+	reset_common_data(t);
 	TEST_EQ(vb2_diagnostic_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"diagnostic screen: no disabled or hidden item");
-	DISPLAYED_EQ("diagnostic menu", VB2_SCREEN_DIAGNOSTICS,
-		     MOCK_IGNORE, MOCK_IGNORE, 0x0, 0x0, MOCK_IGNORE);
+	DISPLAYED_EQ("diagnostic menu", VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE,
+		     MOCK_IGNORE, disabled_item_mask, 0x0, MOCK_IGNORE);
 
 	/* Diagnostics screen */
-	reset_common_data(FOR_DIAGNOSTICS);
+	reset_common_data(t);
 
 	/* #0: Language menu */
 	add_mock_keypress(VB_KEY_UP);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #1: Storage screen */
 	add_mock_keypress(VB_KEY_ESC);
+	/* #1: Storage health screen */
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #2: Quick memory test screen */
 	add_mock_keypress(VB_KEY_ESC);
+	/* #2: Short storage self-test screen */
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #3: Full memory test screen */
-	add_mock_keypress(VB_KEY_ESC);
+	if (t != FOR_DIAGNOSTICS_NO_NVME)
+		add_mock_keypress(VB_KEY_ESC);
+	/* #3: Extended storage self-test screen */
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
-	/* #4: Power off (End of menu) */
+	if (t != FOR_DIAGNOSTICS_NO_NVME)
+		add_mock_keypress(VB_KEY_ESC);
+	/* #4: Quick memory test screen */
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
 	add_mock_keypress(VB_KEY_ESC);
+	/* #5: Full memory test screen */
+	add_mock_keypress(VB_KEY_DOWN);
+	add_mock_keypress(VB_KEY_ENTER);
+	add_mock_keypress(VB_KEY_ESC);
+	/* #6: Power off (End of menu) */
 	add_mock_keypress(VB_KEY_DOWN);
 	add_mock_keypress(VB_KEY_ENTER);
 	mock_calls_until_shutdown = -1;
 	TEST_EQ(vb2_diagnostic_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"diagnostic screen");
 
-	DISPLAYED_EQ("default on first button of menu",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 1, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_EQ("default on first button of menu", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 1, disabled_item_mask, MOCK_IGNORE,
+		     MOCK_IGNORE);
 	/* #0: Language menu */
-	DISPLAYED_EQ("language selection",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 0, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
+	DISPLAYED_EQ("language selection", VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE,
+		     0, disabled_item_mask, MOCK_IGNORE, MOCK_IGNORE);
 	DISPLAYED_EQ("#0: language menu", VB2_SCREEN_LANGUAGE_SELECT,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE,
 		     MOCK_IGNORE);
-	/* #1: Storage screen */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("storage button",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 1, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
+	/* #1: Storage health screen */
+	DISPLAYED_EQ("storage health button", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 1, disabled_item_mask, MOCK_IGNORE,
+		     MOCK_IGNORE);
 	DISPLAYED_EQ("#1: storage screen",
 		     VB2_SCREEN_DIAGNOSTICS_STORAGE_HEALTH, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
-	/* #2: Quick memory test screen */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("quick memory test button",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 2, MOCK_IGNORE,
+	/* #2: Short storage self-test screen */
+	DISPLAYED_EQ("short storage self-test button", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 2, disabled_item_mask, MOCK_IGNORE,
+		     MOCK_IGNORE);
+	if (t != FOR_DIAGNOSTICS_NO_NVME) {
+		DISPLAYED_EQ("#2: short storage self-test screen",
+			     VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_SHORT,
+			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE,
+			     MOCK_IGNORE);
+		DISPLAYED_PASS();
+	}
+	/* #3: Extended storage self-test screen */
+	DISPLAYED_EQ("extended storage self-test button",
+		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 3, disabled_item_mask,
 		     MOCK_IGNORE, MOCK_IGNORE);
-	DISPLAYED_EQ("#1: quick memory test screen",
+	if (t != FOR_DIAGNOSTICS_NO_NVME) {
+		DISPLAYED_EQ("#3: extended storage self-test screen",
+			     VB2_SCREEN_DIAGNOSTICS_STORAGE_TEST_EXTENDED,
+			     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE,
+			     MOCK_IGNORE);
+		DISPLAYED_PASS();
+	}
+	/* #4: Quick memory test screen */
+	DISPLAYED_EQ("quick memory test button", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 4, disabled_item_mask, MOCK_IGNORE,
+		     MOCK_IGNORE);
+	DISPLAYED_EQ("#4: quick memory test screen",
 		     VB2_SCREEN_DIAGNOSTICS_MEMORY_QUICK, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
-	/* #3: Full memory test screen */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("full memory test button",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 3, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
-	DISPLAYED_EQ("#3: full memory test screen",
+	/* #5: Full memory test screen */
+	DISPLAYED_EQ("full memory test button", VB2_SCREEN_DIAGNOSTICS,
+		     MOCK_IGNORE, 5, disabled_item_mask, MOCK_IGNORE,
+		     MOCK_IGNORE);
+	DISPLAYED_EQ("#5: full memory test screen",
 		     VB2_SCREEN_DIAGNOSTICS_MEMORY_FULL, MOCK_IGNORE,
 		     MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE, MOCK_IGNORE);
-	/* #4: Power of (End of menu) */
 	DISPLAYED_PASS();
-	DISPLAYED_EQ("power off",
-		     VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 4, MOCK_IGNORE,
-		     MOCK_IGNORE, MOCK_IGNORE);
+	/* #6: Power of (End of menu) */
+	DISPLAYED_EQ("power off", VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE, 6,
+		     disabled_item_mask, MOCK_IGNORE, MOCK_IGNORE);
 	DISPLAYED_NO_EXTRA();
 
 	VB2_DEBUG("...done.\n");
@@ -1880,7 +1937,8 @@ int main(void)
 	developer_screen_tests();
 	broken_recovery_screen_tests();
 	manual_recovery_screen_tests();
-	diagnostics_screen_tests();
+	diagnostics_screen_tests(FOR_DIAGNOSTICS);
+	diagnostics_screen_tests(FOR_DIAGNOSTICS_NO_NVME);
 
 	return gTestSuccess ? 0 : 255;
 }
