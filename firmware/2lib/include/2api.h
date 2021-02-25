@@ -1517,6 +1517,13 @@ uint32_t vb2ex_prepare_log_screen(enum vb2_screen screen, uint32_t locale_id,
 				  const char *str);
 
 /**
+ * Check if the current log screen needs to be redrawn.
+ *
+ * @return 1 if redrawing is needed, otherwise 0.
+ */
+int vb2ex_log_screen_need_redrawing(uint32_t page);
+
+/**
  * Get the health info of the storage.
  *
  * @param out	For returning a read-only pointer of full log string which is
