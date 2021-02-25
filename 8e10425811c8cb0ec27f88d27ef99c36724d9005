@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e622a7_ab649308",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-25T07:21:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what this is accomplishing, and why only some of the vb2_ui_screen_back calls are changed.  Could you explain?",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 33
+      },
+      "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
