@@ -16,6 +16,24 @@
       "message": "I hope nobody is doing things like `if [[ $(crossystem dev_default_boot) \u003d \"legacy\" ]]`, because we can\u0027t really fix that. But sounds unlikely enough for me.",
       "revId": "9d5f2916c9dd40829bab99cbe68aed372450eb98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb5c09d_8fe81f77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-25T02:31:48Z",
+      "side": 1,
+      "message": "Looks like autotest\u0027s cros_repair.py calls this, but only checks against \"disk\".",
+      "parentUuid": "c939b86f_0345c0dd",
+      "revId": "9d5f2916c9dd40829bab99cbe68aed372450eb98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
