@@ -22,6 +22,30 @@
       },
       "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918f1f07_475705a9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-02-25T08:04:00Z",
+      "side": 1,
+      "message": "For those functions which are called directly from ui loop, there is no different between returning SUCCESS and REQUEST_UI_CONTINUE.\n\nBut this function is like this: \nUI_Loop -\u003e diagnostics_memory_init_quick -\u003e diagnostics_memory_update_screen\n\nIf we return VB2_SUCCESS, then we cannot just use VB2_TRY in `diagnostics_memory_init_quick` because it will catch it, and then perform `log_page_reset_to_top`, which is now calling `log_page_update`, and cause error.\n\nThis issue actually has happened before this CL. log_page_init will perform on the screen which is changed by `vb2_ui_screen_back`.",
+      "parentUuid": "b8e622a7_ab649308",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 33
+      },
+      "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
