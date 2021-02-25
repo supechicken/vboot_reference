@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4748b491_16c84ef9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-02-25T06:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "872257ba_2b570649",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b9361af30b561c4f83120ce351c19b4c6bbb646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e0de80b_0b819fdb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-25T03:55:02Z",
       "side": 1,
       "message": "Looks to me like this CL replaces *all* instances of VB2_REQUEST_UI_CONTINUE.",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "b9361af30b561c4f83120ce351c19b4c6bbb646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96dbe2ae_27b2aaab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-02-25T06:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0de80b_0b819fdb",
       "range": {
         "startLine": 12,
         "startChar": 8,
@@ -107,6 +155,30 @@
       "writtenOn": "2021-02-25T03:55:02Z",
       "side": 1,
       "message": "Preference for matching other \"long\" function headers in vboot_reference:\n\n  static vb2_error_t ui_loop_impl(\n      struct vb2_context *ctx, enum vb2_screen root_screen_id,\n      vb2_error_t (*global_action)(struct vb2_ui_context *ui))",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 62
+      },
+      "revId": "b9361af30b561c4f83120ce351c19b4c6bbb646d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a4e9eb_25d51ec6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-02-25T06:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe7c781e_4c7f8f7d",
       "range": {
         "startLine": 303,
         "startChar": 0,
