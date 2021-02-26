@@ -46,6 +46,30 @@
       },
       "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0463d359_55e4abd7",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-26T07:22:52Z",
+      "side": 1,
+      "message": "A few points here:\n\n(1) The bug you are describing is introduced by CL:2714502.  It should be fixed there, rather than patching it in another CL stacked on top.  I\u0027ve uploaded a CL which adds unit test coverage around this issue at CL:2721377.  Please stack CL:2714502 on top of this one -- it fails the unit test.\n\n(2) This applies not only to this particular call to vb2_ui_screen_back, but to vb2_ui_screen_change and vb2_ui_menu_select as well.  So the solution here should apply to all calls to these three functions.\n\n(3) Rather than requiring the caller of these three functions to always use the sequence here (VB2_TRY + return UI_CONTINUE), I\u0027d recommend just returning the VB2_REQUEST value from these three functions directly.  That way, the caller doesn\u0027t need the extra return statement after VB2_TRY.",
+      "parentUuid": "918f1f07_475705a9",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 33
+      },
+      "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
