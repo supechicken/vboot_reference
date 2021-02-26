@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad8ab4a_8d8e63a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-26T08:09:25Z",
+      "side": 1,
+      "message": "Added some documentation for vb2_ui_screen_back and vb2_ui_menu_select, and also a TODO around rebooting into the BROKEN screen.  Let\u0027s just get this CL in with the return statements first.",
+      "parentUuid": "6cd4de34_0020b63d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "0f38f34db297aec3f9fa137ad8821d70805af6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "403b88ef_6a793291",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-02-24T09:18:02Z",
       "side": 1,
       "message": "I think we can cherry-pick this CL to various firmware branches?",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "0f38f34db297aec3f9fa137ad8821d70805af6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3332ef00_03f0fad2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-02-26T08:09:25Z",
+      "side": 1,
+      "message": "Given that our unit tests didn\u0027t catch this issue, and given that some of our boards are dealing with other issues at the moment, I\u0027d prefer to just keep this in main branch.  Not applying the patch just results in some slightly weird UI, which we can live with.",
+      "parentUuid": "403b88ef_6a793291",
       "range": {
         "startLine": 16,
         "startChar": 7,
