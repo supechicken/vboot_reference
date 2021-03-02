@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a4d5d1_bc8fa8aa",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-02T04:49:55Z",
+      "side": 1,
+      "message": "Based on the current implementation of vb2_ui_screen_back, I don\u0027t see how the previous screen would be non-existing. Do you mean the case where the current screen is already the root screen?",
+      "range": {
+        "startLine": 201,
+        "startChar": 7,
+        "endLine": 201,
+        "endChar": 20
+      },
+      "revId": "810421336ced10a782e206ca718f01915c3fcd84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
