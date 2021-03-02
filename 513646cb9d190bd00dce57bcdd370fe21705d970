@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05af81e4_daff182c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-02T07:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7695e253_8b7a0e3a",
+      "revId": "513646cb9d190bd00dce57bcdd370fe21705d970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ed12c32_d8c35dad",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "869ce193_9f9a5344",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-02T07:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed12c32_d8c35dad",
+      "range": {
+        "startLine": 418,
+        "startChar": 37,
+        "endLine": 418,
+        "endChar": 43
+      },
+      "revId": "513646cb9d190bd00dce57bcdd370fe21705d970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ff0c92_aa2e6f19",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-24T16:06:17Z",
       "side": 1,
       "message": "Do we want to show \"Advanced options\" here in the case of this being the root screen?  Unfortunately, if we check vb2_dev_boot_allowed to show/hide that menu item, we\u0027re starting to make a lot of assumptions about how this screen is used.  I\u0027d say either leave as-is (without \"Advanced options\") or create a new screen entirely (like DEVELOPER_FORCE_TO_NORM).",
+      "range": {
+        "startLine": 893,
+        "startChar": 2,
+        "endLine": 893,
+        "endChar": 3
+      },
+      "revId": "513646cb9d190bd00dce57bcdd370fe21705d970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd5a5fa_677ed88c",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-02T07:47:36Z",
+      "side": 1,
+      "message": "Since !vb2_dev_boot_allowed (by fwmp) should be a rare case, I\u0027d prefer leaving this as is.",
+      "parentUuid": "a6ff0c92_aa2e6f19",
       "range": {
         "startLine": 893,
         "startChar": 2,
