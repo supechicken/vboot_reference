@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6f17b9_68298c05",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-02T07:20:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e20099e_153668dc",
+      "range": {
+        "startLine": 1514,
+        "startChar": 14,
+        "endLine": 1516,
+        "endChar": 23
+      },
+      "revId": "18ec929d6437d3119599c9861a65da59634c3f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b01dbbc3_30af8100",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-26T09:52:23Z",
       "side": 1,
       "message": "Could you help fix the index here together?",
+      "range": {
+        "startLine": 1832,
+        "startChar": 16,
+        "endLine": 1832,
+        "endChar": 17
+      },
+      "revId": "18ec929d6437d3119599c9861a65da59634c3f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e115ceb_e4acfa90",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-02T07:20:12Z",
+      "side": 1,
+      "message": "This will be fixed in CL:2626566",
+      "parentUuid": "b01dbbc3_30af8100",
       "range": {
         "startLine": 1832,
         "startChar": 16,
