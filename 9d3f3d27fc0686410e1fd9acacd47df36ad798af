@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2af5c405_8bc7ca9b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-02T07:53:02Z",
+      "side": 1,
+      "message": "Currently, we only have this exception which cannot use VB2_TRY for `vb2_ui_screen_change`.\n\nI think it is ok for `vb2_ui_screen_change` and `vb2_ui_screen_back` to use VB2_REQUEST_UI_CONTINUE. In most cases, the VB2_TRY should be applicable.\n\nHowever, we may need to set a clearer definition about which function should use VB2_REQUEST_UI_CONTINUE and which should not.",
+      "revId": "9d3f3d27fc0686410e1fd9acacd47df36ad798af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70f78c2b_0f7dd11c",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 10
