@@ -94,6 +94,30 @@
       },
       "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93460e13_362ec5be",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-02T08:49:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure if (3) is a good idea. It looks like we\u0027re mixing VB2_UI_CONTINUE and VB2_SUCCESS together. If we want to call some other function followed by vb2_ui_screen_back(), then the following won\u0027t work:\n\n vb2_error_t func() {\n     VB2_TRY(vb2_ui_screen_back());\n     VB2_TRY(some_other_func());\n }\n\nGiven that most calls to vb2_ui_screen_back() (that are treated like errors) are in init() hooks, I wonder if we can return VB2_UI_REQUEST_BACK in these cases. Then, in ui_loop_impl(), when receiving VB2_UI_REQUEST_BACK, we call vb2_ui_screen_back().",
+      "parentUuid": "0b925046_74897710",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 33
+      },
+      "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
