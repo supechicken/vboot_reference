@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdf57a50_3dc271dc",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-03T08:38:41Z",
+      "side": 1,
+      "message": "I forgot to remove these 2 TODO comments in CL:2716747 (already merged). Could you remove them in this CL for me? Thanks.",
+      "range": {
+        "startLine": 691,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 8
+      },
+      "revId": "2522eacaaf8eef8c4308de38e12d4e3f84fc0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b502d56d_984da74e",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 3
