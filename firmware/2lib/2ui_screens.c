@@ -685,8 +685,8 @@ static const struct vb2_screen_info recovery_disk_step3_screen = {
 
 vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 {
-	enum vb2_dev_default_boot_target default_boot =
-		vb2api_get_dev_default_boot_target(ui->ctx);
+	enum vb2_dev_default_boot_target default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
+	//	vb2api_get_dev_default_boot_target(ui->ctx);
 
 	/* Don't show "Return to secure mode" button if GBB forces dev mode. */
 	if (vb2_get_gbb(ui->ctx)->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON)

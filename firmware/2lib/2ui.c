@@ -296,11 +296,11 @@ static vb2_error_t ui_loop_impl(
 {
 	struct vb2_ui_context ui;
 	struct vb2_screen_state prev_state;
-	int prev_disable_timer;
-	enum vb2_ui_error prev_error_code;
-	const struct vb2_menu *menu;
+	//int prev_disable_timer;
+	//enum vb2_ui_error prev_error_code;
+	//const struct vb2_menu *menu;
 	const struct vb2_screen_info *root_info;
-	uint32_t key_flags;
+	//uint32_t key_flags;
 	uint32_t start_time_ms, elapsed_ms;
 	vb2_error_t rv;
 
@@ -316,12 +316,13 @@ static vb2_error_t ui_loop_impl(
 		return rv;
 
 	memset(&prev_state, 0, sizeof(prev_state));
-	prev_disable_timer = 0;
-	prev_error_code = VB2_UI_ERROR_NONE;
+	//prev_disable_timer = 0;
+	//prev_error_code = VB2_UI_ERROR_NONE;
 
 	while (1) {
 		start_time_ms = vb2ex_mtime();
 
+#if 0
 		/* Draw if there are state changes. */
 		if (memcmp(&prev_state, ui.state, sizeof(*ui.state)) ||
 		    /* Redraw when timer is disabled. */
@@ -389,7 +390,7 @@ static vb2_error_t ui_loop_impl(
 		rv = menu_navigation_action(&ui);
 		if (rv && rv != VB2_REQUEST_UI_CONTINUE)
 			return rv;
-
+#endif
 		/* Run global action function if available. */
 		if (global_action) {
 			rv = global_action(&ui);
