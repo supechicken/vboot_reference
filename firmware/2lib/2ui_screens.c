@@ -685,8 +685,8 @@ static const struct vb2_screen_info recovery_disk_step3_screen = {
 
 vb2_error_t developer_mode_init(struct vb2_ui_context *ui)
 {
-	enum vb2_dev_default_boot_target default_boot =
-		vb2api_get_dev_default_boot_target(ui->ctx);
+	enum vb2_dev_default_boot_target default_boot = VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
+	//	vb2api_get_dev_default_boot_target(ui->ctx);
 
 	/* TODO(b/159579189): Split this case into a separate root screen */
 	if (!vb2_dev_boot_allowed(ui->ctx))

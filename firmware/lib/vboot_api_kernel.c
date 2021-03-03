@@ -174,7 +174,7 @@ static void vb2_kernel_fill_kparams(struct vb2_context *ctx,
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSelectAndLoadKernelParams *kparams)
 {
-	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	//struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	vb2_gbb_flags_t gbb_flags = vb2api_gbb_get_flags(ctx);
 
 	/* Init nvstorage space. TODO(kitching): Remove once we add assertions
@@ -204,6 +204,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	vb2_clear_recovery(ctx);
 
 	/* Select boot path */
+#if 0
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* If we're in recovery mode just to do memory retraining, all
 		   we need to do is reboot. */
@@ -230,7 +231,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 		/* Recovery boot.  This has UI. */
 		if (vb2_allow_recovery(ctx))
+#endif
 			VB2_TRY(vb2_manual_recovery_menu(ctx));
+#if 0
 		else
 			VB2_TRY(vb2_broken_recovery_menu(ctx));
 	} else if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
@@ -257,7 +260,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		/* Normal boot */
 		VB2_TRY(vb2_normal_boot(ctx));
 	}
-
+#endif
 	/*
 	 * Stop all cases returning SUCCESS against NO_BOOT flag except when
 	 * GBB flag disables software sync.
