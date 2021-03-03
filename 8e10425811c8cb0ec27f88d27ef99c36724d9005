@@ -142,6 +142,30 @@
       },
       "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9d1ccf_8ecfb6d6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-03T08:13:32Z",
+      "side": 1,
+      "message": "\u003e But it doesn\u0027t cover the cases of vb2_ui_screen_change and vb2_ui_menu_select, and I\u0027d like to keep these using one solution if possible.\n\nThat\u0027s true. I didn\u0027t consider that.\n\nIf we want to go with the solution Joel suggested, we\u0027ll need to make sure vb2_ui_screen_back() never returns VB2_SUCCESS. (Otherwise the bug Chung-Sheng mentioned would still exist.) Since vb2_ui_screen_back() calls reinit(), we\u0027ll have to either\n\n(1) Convert return value of reinit() from VB2_SUCCESS to VB2_UI_CONTINUE, or\n(2) Make sure all reinit functions don\u0027t return VB2_SUCCESS either. Note that this almost means changing all VB2_SUCCESS back to VB2_UI_CONTINUE, so this shouldn\u0027t be a feasible option.",
+      "parentUuid": "1046c4d0_a1c515e4",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 33
+      },
+      "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
