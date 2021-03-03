@@ -61,6 +61,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8630b45_5b527dc6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-03T08:58:21Z",
+      "side": 1,
+      "message": "To be honest, I\u0027m not sure there\u0027s much value in introducing a helper function here.\n\nIf the purpose is to trigger recovery mode, we can do that at the end of ui_loop_impl, or by calling VB2_TRY in ui_loop.\n\nMaking the comparison to VB2_REQUEST_UI_CONTINUE at each call feels more explicit and safer.",
+      "range": {
+        "startLine": 387,
+        "startChar": 10,
+        "endLine": 387,
+        "endChar": 24
+      },
+      "revId": "9d3f3d27fc0686410e1fd9acacd47df36ad798af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70f78c2b_0f7dd11c",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 10
