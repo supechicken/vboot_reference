@@ -166,6 +166,30 @@
       },
       "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "355f0994_fdeb2313",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-03T08:52:47Z",
+      "side": 1,
+      "message": "(1) sounds fine.  So basically, we will change the definition of these three functions to return VB2_REQUEST_UI_CONTINUE or VB2_ERROR_*, but never VB2_SUCCESS.  Any internal calls should map to one of those return values appropriately.\n\nChung-Sheng, what do you think?",
+      "parentUuid": "cd9d1ccf_8ecfb6d6",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 33
+      },
+      "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
