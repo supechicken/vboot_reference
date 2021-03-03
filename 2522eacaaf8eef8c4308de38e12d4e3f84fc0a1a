@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "221a8267_48f9190b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-03T09:41:43Z",
+      "side": 1,
+      "message": "Actually, I think we can remove the vb2_ui_screen_change call entirely now.  If we get in this unexpected state, the validity checks in the boot_action() functions should suffice.  CL:2730669",
+      "parentUuid": "fdf57a50_3dc271dc",
+      "range": {
+        "startLine": 691,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 8
+      },
+      "revId": "2522eacaaf8eef8c4308de38e12d4e3f84fc0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b502d56d_984da74e",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-03T08:35:51Z",
       "side": 1,
       "message": "Not related to this change, but it looks like we missed the `id` parameter here.",
+      "revId": "2522eacaaf8eef8c4308de38e12d4e3f84fc0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10767314_9afbcf09",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-03T09:41:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b502d56d_984da74e",
       "revId": "2522eacaaf8eef8c4308de38e12d4e3f84fc0a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
