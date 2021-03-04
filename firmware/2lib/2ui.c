@@ -333,6 +333,17 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 /*****************************************************************************/
 /* Core UI loop */
 
+
+
+#include <libpayload.h>
+
+static uint64_t max(uint64_t a, uint64_t b) {
+	return a > b ? a : b;
+}
+
+
+
+
 static vb2_error_t ui_loop_impl(
 	struct vb2_context *ctx, enum vb2_screen root_screen_id,
 	vb2_error_t (*global_action)(struct vb2_ui_context *ui))
@@ -341,7 +352,7 @@ static vb2_error_t ui_loop_impl(
 	struct vb2_screen_state prev_state;
 	int prev_disable_timer;
 	enum vb2_ui_error prev_error_code;
-	const struct vb2_menu *menu;
+	// const struct vb2_menu *menu;
 	const struct vb2_screen_info *root_info;
 	uint32_t key_flags;
 	uint32_t start_time_ms, elapsed_ms;
@@ -362,8 +373,39 @@ static vb2_error_t ui_loop_impl(
 	prev_disable_timer = 0;
 	prev_error_code = VB2_UI_ERROR_NONE;
 
+	uint64_t fps = 0, mx = 0, fps_start = timer_us(0), ss, tt, sstt, sssttt;
+	uint64_t mxA = 0;
+	uint64_t mxB = 0;
+	uint64_t mxC = 0;
+	uint64_t mxD = 0;
+
+	ss = timer_us(0);
+	printf("==================================\nHiHi\n====================="
+	       "=============\n");
+	tt = timer_us(0);
+	printf("Printf cost: %llu us\n", tt - ss);
+
 	while (1) {
+		if (timer_us(0) - fps_start > 1000000) {
+			printf("=============================================="
+			       "\nFPS: %llu, MX: %llu\nA: %llu, B: %llu, C: "
+			       "%llu, D: "
+			       "%llu\n========================================="
+			       "===="
+			       "=\n",
+			       fps, mx, mxA, mxB, mxC, mxD);
+			fps = 0;
+			fps_start = timer_us(0);
+			mx = 0;
+			mxA = mxB = mxC = mxD = 0;
+		}
+		fps ++;
+
+
 		start_time_ms = vb2ex_mtime();
+
+		ss = timer_us(0);
+		sssttt = 0;
 
 		/* Draw if there are state changes. */
 		if (memcmp(&prev_state, ui.state, sizeof(*ui.state)) ||
@@ -376,12 +418,12 @@ static vb2_error_t ui_loop_impl(
 		    /* Redraw on a screen request to refresh. */
 		    ui.force_display) {
 
-			menu = get_menu(&ui);
-			VB2_DEBUG("<%s> menu item <%s>\n",
-				  ui.state->screen->name,
-				  menu->num_items ?
-				  menu->items[ui.state->selected_item].text :
-				  "null");
+			// menu = get_menu(&ui);
+			// VB2_DEBUG("<%s> menu item <%s>\n",
+			// 	  ui.state->screen->name,
+			// 	  menu->num_items ?
+			// 	  menu->items[ui.state->selected_item].text :
+			// 	  "null");
 			vb2ex_display_ui(ui.state->screen->id, ui.locale_id,
 					 ui.state->selected_item,
 					 ui.state->disabled_item_mask,
@@ -405,6 +447,12 @@ static vb2_error_t ui_loop_impl(
 			prev_error_code = ui.error_code;
 		}
 
+		tt = timer_us(0);
+		sstt = tt - ss;
+		sssttt += sstt;
+		ss = tt;
+		mxA = max(mxA, sstt / 1000);
+
 		/* Grab new keyboard input. */
 		ui.key = VbExKeyboardReadWithFlags(&key_flags);
 		ui.key_trusted = !!(key_flags & VB_KEY_FLAG_TRUSTED_KEYBOARD);
@@ -421,10 +469,22 @@ static vb2_error_t ui_loop_impl(
 		if (rv && rv != VB2_REQUEST_UI_CONTINUE)
 			return rv;
 
+		tt = timer_us(0);
+		sstt = tt - ss;
+		sssttt += sstt;
+		ss = tt;
+		mxB = max(mxB, sstt / 1000);
+
 		/* Run screen action. */
 		rv = try_ui_action(ui.state->screen->action, &ui, 1);
 		if (rv && rv != VB2_REQUEST_UI_CONTINUE)
 			return rv;
+
+		tt = timer_us(0);
+		sstt = tt - ss;
+		sssttt += sstt;
+		ss = tt;
+		mxC = max(mxC, sstt / 1000);
 
 		/* Run menu navigation action. */
 		rv = menu_navigation_action(&ui);
@@ -437,6 +497,14 @@ static vb2_error_t ui_loop_impl(
 			if (rv && rv != VB2_REQUEST_UI_CONTINUE)
 				return rv;
 		}
+
+		tt = timer_us(0);
+		sstt = tt - ss;
+		sssttt += sstt;
+		ss = tt;
+		mxD = max(mxD, sstt / 1000);
+
+		mx = max(mx, sssttt / 1000);
 
 		/* Delay. */
 		elapsed_ms = vb2ex_mtime() - start_time_ms;
