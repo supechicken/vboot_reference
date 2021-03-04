@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "920b5b1c_8d2a3b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-04T08:51:38Z",
+      "side": 1,
+      "message": "Looks great!  Thanks for your patience here.",
+      "revId": "3af2639502dc1560d3f0d07ae389b194bb99e3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2fb1e9e_50395625",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-03-04T08:34:34Z",
       "side": 1,
       "message": "For some return value like here, the screen doesn\u0027t change, should we still return VB2_REQUEST_UI_CONTINUE?",
+      "revId": "3af2639502dc1560d3f0d07ae389b194bb99e3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755c5c0b_87c6a1d1",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-04T08:51:38Z",
+      "side": 1,
+      "message": "It should still be beneficial to return UI_CONTINUE here.\n\nConsider the case where for whatever reason, the target screen doesn\u0027t exist.  If this call returns VB2_SUCCESS, then code from some calling function (not the caller of screen_change directly, since we ask the caller to use `return`) continues running under the assumption that we have switched to the new screen.  Something weird could happen here, such as incorrectly accessing screen data structures.\n\nOn the other hand, if we return UI_CONTINUE, we are guaranteed that the call stack will pop back down to ui_loop_impl, where execution will continue under the assumption that the user is still on the prior screen.",
+      "parentUuid": "e2fb1e9e_50395625",
       "revId": "3af2639502dc1560d3f0d07ae389b194bb99e3c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
