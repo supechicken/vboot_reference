@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2fb1e9e_50395625",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-04T08:34:34Z",
+      "side": 1,
+      "message": "For some return value like here, the screen doesn\u0027t change, should we still return VB2_REQUEST_UI_CONTINUE?",
+      "revId": "3af2639502dc1560d3f0d07ae389b194bb99e3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
