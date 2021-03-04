@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c468d092_dd5222c8",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-04T08:58:12Z",
+      "side": 1,
+      "message": "If you want to create a CANCEL_ITEM, that\u0027d be great.  But I would suggest that you write the text \"Cancel\" and use it for RECOVERY_TO_DEV_ITEM_CANCEL and DEVELOPER_TO_NORM_ITEM_CANCEL.  Let\u0027s leave creating a constant for CANCEL_AND_BACK_ITEM until we have multiple screens needing it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "464d9076dd26c722596afe62497747a121334bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea26c0ef_856de88e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-04T08:58:12Z",
+      "side": 1,
+      "message": "As per my email about Groot strings (https://groups.google.com/a/google.com/g/chromeos-groot/c/WbxD74rKvhw), I would recommend *not* making this change, unless you are absolutely certain that this CL can still make it into Dirinboz (or whatever was your target launch device).",
+      "range": {
+        "startLine": 1209,
+        "startChar": 0,
+        "endLine": 1210,
+        "endChar": 48
+      },
+      "revId": "464d9076dd26c722596afe62497747a121334bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
