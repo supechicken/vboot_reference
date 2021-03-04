@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2dd549_a8e94a30",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-04T00:55:50Z",
+      "side": 1,
+      "message": "This should also check (rec_mode || !dev_mode), since recovery mode overrides developer mode for signing questions. I don\u0027t think it\u0027s critical here because the keyblock_valid check would still catch that case, but it\u0027s cleaner to catch it right here.",
+      "revId": "bcf0999c1a2d9f128c095fa5d11da2f5f62f9741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
