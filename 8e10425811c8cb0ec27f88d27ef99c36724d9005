@@ -190,6 +190,30 @@
       },
       "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236f803b_9aea8b31",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-04T08:32:24Z",
+      "side": 1,
+      "message": "I think each way both have some exceptions. And what we want is to maximum the utilization of VB2_TRY, and avoid too much return value checking.\n\nSo I think (1) is reasonable.",
+      "parentUuid": "355f0994_fdeb2313",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 33
+      },
+      "revId": "8e10425811c8cb0ec27f88d27ef99c36724d9005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
