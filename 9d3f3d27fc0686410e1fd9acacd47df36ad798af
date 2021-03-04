@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59df07f4_ef7341be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-04T08:22:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b3e5a32_92129572",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "9d3f3d27fc0686410e1fd9acacd47df36ad798af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2af5c405_8bc7ca9b",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57f5147_540aa354",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-04T08:22:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4923a2fc_03fd99cf",
+      "revId": "9d3f3d27fc0686410e1fd9acacd47df36ad798af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8630b45_5b527dc6",
@@ -72,6 +114,30 @@
       "writtenOn": "2021-03-03T08:58:21Z",
       "side": 1,
       "message": "To be honest, I\u0027m not sure there\u0027s much value in introducing a helper function here.\n\nIf the purpose is to trigger recovery mode, we can do that at the end of ui_loop_impl, or by calling VB2_TRY in ui_loop.\n\nMaking the comparison to VB2_REQUEST_UI_CONTINUE at each call feels more explicit and safer.",
+      "range": {
+        "startLine": 387,
+        "startChar": 10,
+        "endLine": 387,
+        "endChar": 24
+      },
+      "revId": "9d3f3d27fc0686410e1fd9acacd47df36ad798af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62748d97_c1645b6f",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-04T08:22:15Z",
+      "side": 1,
+      "message": "I think the benefit is if we add more complicated return value (maybe like VB2_REQUEST_UI_BACK), this can make things simpler.\n\nBut since we don\u0027t have them now, I agree that we should just extend this helper.",
+      "parentUuid": "c8630b45_5b527dc6",
       "range": {
         "startLine": 387,
         "startChar": 10,
