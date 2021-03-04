@@ -184,6 +184,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb93a6a1_3943d4a1",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-04T02:48:26Z",
+      "side": 1,
+      "message": "Hmm... that\u0027s unfortunate. So is QEMU just generally unable to emulate these things when the host CPU doesn\u0027t support them? I find it hard to understand their code...\n\nThere are other CPU VMs/emulators that may support this... for example there\u0027s a project called Bochs which is a real instruction-by-instruction emulator for x86 that always tends to have support for all the shiny new things very quickly. But it\u0027s a bare-metal emulator for a whole PC, you\u0027d have to write a unit tests that can operate in that environment and figure out some form of I/O to communicate results.\n\nMaybe Raul\u0027s suggest of writing a Tast test is the best approach instead... just run the unit test on a real Chromebook where we know the hardware supports it. Is it still possible to make a HWtest build-blocking these days?",
+      "parentUuid": "c5cfa5d3_3a7798a2",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84eda496_b0b652f8",
         "filename": "firmware/2lib/2sha256_x86.c",
         "patchSetId": 1

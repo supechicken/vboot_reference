@@ -468,6 +468,23 @@
       },
       "revId": "011d225410b4a3c7d41362d962afac8c9c5ee620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a69af28f_2506e341",
+        "filename": "firmware/2lib/include/2sha256.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-04T02:48:26Z",
+      "side": 1,
+      "message": "Maybe name this 2sha_private.h to clarify that it\u0027s not supposed to be included by external code trying to use the vboot SHA API?",
+      "revId": "011d225410b4a3c7d41362d962afac8c9c5ee620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
