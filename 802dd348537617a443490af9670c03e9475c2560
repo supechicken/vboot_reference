@@ -46,6 +46,30 @@
       },
       "revId": "802dd348537617a443490af9670c03e9475c2560",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfde13b9_fbaf447b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-05T07:10:35Z",
+      "side": 0,
+      "message": "Except for in special circumstances, CLs should be a self-contained set of logical changes, which don\u0027t need to be considered in tandem with other CLs in order to make sense.\n\nIn this case, pulling \"Cancel and go back\" out as a constant should be grouped in the same CL which adds more than one instance of the button.",
+      "parentUuid": "39141e20_eb147113",
+      "range": {
+        "startLine": 1220,
+        "startChar": 33,
+        "endLine": 1223,
+        "endChar": 3
+      },
+      "revId": "802dd348537617a443490af9670c03e9475c2560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

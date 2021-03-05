@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "becf0a55_ac3b6758",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-05T07:10:35Z",
+      "side": 1,
+      "message": "I don\u0027t really care either way about the final string decision (except on delaying changes until the next Groot release, as I mentioned).  All I\u0027m saying here is that the constant name should match the string.  CANCEL_ITEM \u003d\u003e \"Cancel\", and CANCEL_AND_BACK \u003d\u003e \"Cancel and go back\".",
+      "parentUuid": "a4b060d2_dc5d08d2",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "464d9076dd26c722596afe62497747a121334bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea26c0ef_856de88e",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 20
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "At the same time, only one of these two buttons will be shown to the users. Another will be hidden. So this won\u0027t change the UI. Thus, I think it should be ok if this cannot be made into RO.\nOr maybe there is any other consideration?",
       "parentUuid": "ea26c0ef_856de88e",
+      "range": {
+        "startLine": 1209,
+        "startChar": 0,
+        "endLine": 1210,
+        "endChar": 48
+      },
+      "revId": "464d9076dd26c722596afe62497747a121334bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2627bc7a_f2cd5ba1",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-05T07:10:35Z",
+      "side": 1,
+      "message": "Got it, that\u0027s fine then.",
+      "parentUuid": "10aa0021_1f6788ec",
       "range": {
         "startLine": 1209,
         "startChar": 0,
