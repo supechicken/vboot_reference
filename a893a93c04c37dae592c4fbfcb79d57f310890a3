@@ -52,6 +52,24 @@
       "parentUuid": "1514e71e_39ef15b2",
       "revId": "a893a93c04c37dae592c4fbfcb79d57f310890a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c70ecb_bf3abd92",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-05T07:51:48Z",
+      "side": 0,
+      "message": "Created a bug to track this as a potential future change: b/181931817\n\nIn the meantime, keeping the enum in this file, and cleaning up to better match vboot2 style.",
+      "parentUuid": "e935c0aa_aea4573d",
+      "revId": "a893a93c04c37dae592c4fbfcb79d57f310890a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
