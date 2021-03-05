@@ -34,6 +34,24 @@
       "parentUuid": "a2a633c7_3f5bc737",
       "revId": "a893a93c04c37dae592c4fbfcb79d57f310890a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e935c0aa_aea4573d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-05T00:16:43Z",
+      "side": 0,
+      "message": "Hmmm... yeah, maybe we should export this boot mode concept instead. I\u0027m not sure it\u0027s a good idea to eliminate the old context flags right away but at least we can offer the alternative and switch all callers to use that. Looking through the existing uses of vboot_developer_mode_enabled() in coreboot and vboot_in_developer() in depthcharge, making them return false for rec+dev mode shouldn\u0027t be making anything worse.\n\nI guess you can make it an API, or you can just put a new 8-bit enum value in the context. I think the latter would be a bit better to avoid forcing function call overhead for every little detail, although IIRC making changes to the context format can be a bit of a pain.\n\nIf you want to split the recovery and broken concepts you need to be careful though, because many callers use \"recovery\" as a synonym that applies to both. The existing vboot_in_recovery() should then be rewritten to check for (ctx-\u003eboot_mode \u003d\u003d vb2_boot_recovery_manual || ctx-\u003eboot_mode \u003d\u003d vb2_boot_recovery_broken). Also, that decision actually depends on an external callout (vb2ex_ec_trusted()) which we wouldn\u0027t want to build into all stages. Could maybe change the flow to eliminate that callback and instead have this information passed in with the initial context to fw_phase1().",
+      "parentUuid": "1514e71e_39ef15b2",
+      "revId": "a893a93c04c37dae592c4fbfcb79d57f310890a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
