@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10497d8_c31a3c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-05T01:10:36Z",
+      "side": 1,
+      "message": "Sorry for the long review cycle, busy month... :/",
+      "revId": "b1334cdb1b973351da0278cce1d68e7e5e82677d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57203eaa_a3011719",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-05T01:10:36Z",
+      "side": 1,
+      "message": "Sorry for always adding more stuff, but I\u0027d kinda like to be able to test a guarantee that the hwcrypto stuff is never called when allow_hwcrypto is not set. Can you add a fourth state HWCRYPTO_ABORT and make it vb2ex_abort() in that case? Then set it to that state for the range of tests where allow_hwcrypto is supposed to be off. (Would kinda like to have something like that for the RSA modexp stuff too now that I think of it...)",
+      "revId": "b1334cdb1b973351da0278cce1d68e7e5e82677d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d01aa7ba_e18a67df",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-05T01:10:36Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to be mocking the exact error, you can just return VB2_ERROR_MOCK for the HWCRYPTO_ERROR case and get rid of the extra complexity of passing an error code in here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 33,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "b1334cdb1b973351da0278cce1d68e7e5e82677d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

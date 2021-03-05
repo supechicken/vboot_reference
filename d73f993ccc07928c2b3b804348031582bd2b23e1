@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bbc87cb_5c3e2f7e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-05T01:10:36Z",
+      "side": 1,
+      "message": "Oh, so the RSA accelerators are unavailable at this point? Okay. But just from a general, platform-independent perspective, I see no reason not to allow hwcrypto at this point. Maybe some future platform will have acceleration support for this one day.",
+      "parentUuid": "1d8829f5_4bb253ba",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36e6ce94_0f6c3c7d",
         "filename": "tests/vb2_common2_tests.c",
         "patchSetId": 1
@@ -207,6 +225,24 @@
       "side": 1,
       "message": "Since it\u0027s static function in header file I don\u0027t think it\u0027s possible to mock. I intended that function as some kind of macro. Separating that function into c source file and mocking it feels like overkill to me.",
       "parentUuid": "5a9ddb29_315e18e6",
+      "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69ce333_da3baaee",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-05T01:10:36Z",
+      "side": 1,
+      "message": "Okay, fair enough.",
+      "parentUuid": "a5657d92_b675b7e9",
       "revId": "d73f993ccc07928c2b3b804348031582bd2b23e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
