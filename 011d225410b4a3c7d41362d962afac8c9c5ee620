@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8bb5dd6_efb23e39",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-03-08T18:15:29Z",
+      "side": 1,
+      "message": "Can we make it `block_nb * VB2_SHA256_BLOCK_SIZE`? It will compile to the same thing and be clearer.",
+      "parentUuid": "70764e7b_57635477",
+      "range": {
+        "startLine": 161,
+        "startChar": 48,
+        "endLine": 161,
+        "endChar": 50
+      },
+      "revId": "011d225410b4a3c7d41362d962afac8c9c5ee620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0bb047bd_40f7bba9",
         "filename": "firmware/2lib/2sha256_x86.c",
         "patchSetId": 3
@@ -309,6 +333,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65da24af_d131566f",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-03-08T18:15:29Z",
+      "side": 1,
+      "message": "\u003e 2) block_nb is number of blocks for *remaining message* here.\n\nHow about a `remaining_blocks` variable?",
+      "parentUuid": "6e9b661c_94b852ba",
+      "range": {
+        "startLine": 165,
+        "startChar": 33,
+        "endLine": 165,
+        "endChar": 36
+      },
+      "revId": "011d225410b4a3c7d41362d962afac8c9c5ee620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8634a47_811193ab",
         "filename": "firmware/2lib/2sha256_x86.c",
         "patchSetId": 3
@@ -344,6 +392,30 @@
       "side": 1,
       "message": "sha256 padding is consisted of 0x80 + zeros + length of message (8 byte). So we need at least 9 bytes here.",
       "parentUuid": "f8634a47_811193ab",
+      "range": {
+        "startLine": 180,
+        "startChar": 43,
+        "endLine": 180,
+        "endChar": 44
+      },
+      "revId": "011d225410b4a3c7d41362d962afac8c9c5ee620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa462aa5_cb75e35f",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-03-08T18:15:29Z",
+      "side": 1,
+      "message": "Can you #define a constant with the explanation?",
+      "parentUuid": "cddf3bd3_1b2f4c41",
       "range": {
         "startLine": 180,
         "startChar": 43,
@@ -532,6 +604,30 @@
       "side": 1,
       "message": "It\u0027s a beginning of the sha256 padding.",
       "parentUuid": "b1c54ffb_93d29924",
+      "range": {
+        "startLine": 187,
+        "startChar": 31,
+        "endLine": 187,
+        "endChar": 36
+      },
+      "revId": "011d225410b4a3c7d41362d962afac8c9c5ee620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc26907_c1aac177",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-03-08T18:15:29Z",
+      "side": 1,
+      "message": "Can you #define a constant for it?",
+      "parentUuid": "4ab3e359_6c5cab0a",
       "range": {
         "startLine": 187,
         "startChar": 31,
