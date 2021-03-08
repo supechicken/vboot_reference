@@ -202,6 +202,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c337c59_e59058e7",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-03-08T07:06:44Z",
+      "side": 1,
+      "message": "Yes I think it\u0027s possible to make tast test to block CQ if it fails - https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/master/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra.",
+      "parentUuid": "fb93a6a1_3943d4a1",
+      "revId": "33a259854a645e612af35c4e9d9de49b7d5f41fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84eda496_b0b652f8",
         "filename": "firmware/2lib/2sha256_x86.c",
         "patchSetId": 1
