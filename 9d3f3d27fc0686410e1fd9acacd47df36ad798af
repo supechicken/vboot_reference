@@ -163,6 +163,24 @@
       "message": "kitching@, after some considerations, I think we should still make vb2_ui_menu_select return VB2_SUCCESS by default. If it call vb2_ui_screen_change, it may return VB2_REQUEST_UI_CONTINUE.",
       "revId": "9d3f3d27fc0686410e1fd9acacd47df36ad798af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "614d554a_622b4085",
+        "filename": "firmware/2lib/include/2ui.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-08T05:03:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70f78c2b_0f7dd11c",
+      "revId": "9d3f3d27fc0686410e1fd9acacd47df36ad798af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
