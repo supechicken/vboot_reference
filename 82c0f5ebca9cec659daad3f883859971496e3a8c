@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af4771c_a8b050b5",
+        "filename": "tests/vb2_sha256_x86_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-03-08T18:37:48Z",
+      "side": 1,
+      "message": "I would prefer that you use the actual test examples from https://csrc.nist.gov/csrc/media/publications/fips/180/2/archive/2002-08-01/documents/fips180-2.pdf appendix B.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "82c0f5ebca9cec659daad3f883859971496e3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
