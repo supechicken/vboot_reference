@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c0b20e_4559a1a5",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-03-08T07:09:37Z",
+      "side": 1,
+      "message": "Done, I\u0027ll add modexp stuff to my to-do list.",
+      "parentUuid": "57203eaa_a3011719",
+      "revId": "b1334cdb1b973351da0278cce1d68e7e5e82677d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d01aa7ba_e18a67df",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-03-05T01:10:36Z",
       "side": 1,
       "message": "I don\u0027t think this needs to be mocking the exact error, you can just return VB2_ERROR_MOCK for the HWCRYPTO_ERROR case and get rid of the extra complexity of passing an error code in here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 33,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "b1334cdb1b973351da0278cce1d68e7e5e82677d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09fc6cfe_752d0c0a",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-03-08T07:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01aa7ba_e18a67df",
       "range": {
         "startLine": 29,
         "startChar": 33,
