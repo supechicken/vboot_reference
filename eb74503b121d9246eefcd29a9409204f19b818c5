@@ -16,6 +16,92 @@
       "message": "Thanks for addressing the \"Cancel and go back\" button.  Leaving the rest of the review for minidiag team.",
       "revId": "eb74503b121d9246eefcd29a9409204f19b818c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee169f64_74d41345",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-09T10:14:50Z",
+      "side": 1,
+      "message": "A few nits only and I will give it +2\nIf we are going to merge it after finishing reviewing,\ncould you re-base it to solve the red \"Merge Conflict\"?\n\nTo Joel:\nCould you share your suggestion about the \"rv !\u003d VB2_SUCCESS\" I addressed here?\nI am not sure about it.",
+      "revId": "eb74503b121d9246eefcd29a9409204f19b818c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e176bd_71800039",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-09T10:14:50Z",
+      "side": 1,
+      "message": "I remembered that we always used\n - if (rv)\n - if (rv \u003d\u003d VB2_SUCCESS)\n\nand did not use\n - if (rv !\u003d VB2_SUCCESS)\n - if (!rv)\n\namong Groot codebases,\n\nJoel, could you share your suggestion here?\n\n(Same for all if-clause below)",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 23
+      },
+      "revId": "eb74503b121d9246eefcd29a9409204f19b818c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83c9dbc_9e6a63f3",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-09T10:14:50Z",
+      "side": 1,
+      "message": "nit: since the before/after looks exactly the same, could we not to split it into two lines?",
+      "range": {
+        "startLine": 1093,
+        "startChar": 0,
+        "endLine": 1094,
+        "endChar": 49
+      },
+      "revId": "eb74503b121d9246eefcd29a9409204f19b818c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55d9339_43dfe58e",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-09T10:14:50Z",
+      "side": 1,
+      "message": "nit: one-line CL could omit the brackets",
+      "range": {
+        "startLine": 1158,
+        "startChar": 0,
+        "endLine": 1158,
+        "endChar": 24
+      },
+      "revId": "eb74503b121d9246eefcd29a9409204f19b818c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
