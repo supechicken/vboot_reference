@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123b98ac_18a328cf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-09T10:43:01Z",
+      "side": 1,
+      "message": "Actually I could not realize this TODO here...\nIsn\u0027t we return the proper error code since we apply the VB2_TRY?",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 51
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec998bd_ac627d98",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-09T10:43:01Z",
+      "side": 1,
+      "message": "IMO we could remove these \"Failed to retrieve...\" debug info since the ui-\u003eerror_code is handled now",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 54
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
