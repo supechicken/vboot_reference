@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e85b60f_263f111f",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-09T10:53:52Z",
+      "side": 1,
+      "message": "Like chung-sheng mentioned, it spends only few ms for all the mini-diag related strings, and spends ~17 ms for firmware log which has hundred of pages.\n\nIMO calling vb2ex_prepare_log_screen() is fast enough for current scenarios.\nHowever, it is not a efficiency issue -- passing a NULL is not valid for vb2ex_prepare_log_screen(). This is a validity check here.",
+      "parentUuid": "4e8073ee_72a66ebe",
+      "range": {
+        "startLine": 98,
+        "startChar": 26,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "c535f9c8e7e0d29defd7762f0f36245fc059a554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f62ce5e_8a3780ec",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 1
