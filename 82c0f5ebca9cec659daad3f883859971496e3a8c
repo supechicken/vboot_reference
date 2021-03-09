@@ -22,6 +22,30 @@
       },
       "revId": "82c0f5ebca9cec659daad3f883859971496e3a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090d9d41_f86c0746",
+        "filename": "tests/vb2_sha256_x86_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-03-09T11:51:52Z",
+      "side": 1,
+      "message": "I believe that it is covered in sha256_tests(), isn\u0027t it?",
+      "parentUuid": "5af4771c_a8b050b5",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "82c0f5ebca9cec659daad3f883859971496e3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
