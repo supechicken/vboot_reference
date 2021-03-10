@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "231cfe77_0585329a",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-10T07:43:48Z",
+      "side": 1,
+      "message": "Return vb2_errot_t so we can use:\n\nVB2_TRY(\n  check_ui_error(\n    vb2ex_get_debug_info(...)));",
+      "parentUuid": "123b98ac_18a328cf",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 51
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ec998bd_ac627d98",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
