@@ -51,6 +51,29 @@ static vb2_error_t power_off_action(struct vb2_ui_context *ui)
 	.action = power_off_action, \
 })
 
+/*
+ * Check the results of ui functions and show error messages to users.
+ *
+ * @param rv			The vb2_error_t to be checked. If error, the
+ *				error code is set and the previous screen is
+ *				returned.
+ * @param ui			vb2_ui_context.
+ * @param error	                vb2_ui_error.
+ *
+ * @return VB2_SUCCESS, or error code on error.
+ */
+static vb2_error_t check_ui_error(vb2_error_t rv, struct vb2_ui_context *ui,
+				  enum vb2_ui_error err)
+{
+	if (rv >= VB2_REQUEST && rv <= VB2_REQUEST_END)
+		return rv;
+	if (rv) {
+		ui->error_code = err;
+		return vb2_ui_screen_back(ui);
+	}
+	return VB2_SUCCESS;
+}
+
 /******************************************************************************/
 /*
  * Functions used for log screens
@@ -302,17 +325,12 @@ static const struct vb2_screen_info advanced_options_screen = {
 
 static vb2_error_t debug_info_set_content(struct vb2_ui_context *ui)
 {
+	// TODO(chungsheng): make this return vb2_error_t.
 	const char *log_string = vb2ex_get_debug_info(ui->ctx);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve debug info\n");
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
+	vb2_error_t rv = log_string ? VB2_SUCCESS : VB2_ERROR_UNKNOWN;
+	VB2_TRY(check_ui_error(rv, ui, VB2_UI_ERROR_DEBUG_LOG));
+	VB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,
+			       VB2_UI_ERROR_DEBUG_LOG));
 	return VB2_SUCCESS;
 }
 
@@ -356,17 +374,13 @@ static const struct vb2_screen_info debug_info_screen = {
 static vb2_error_t firmware_log_set_content(struct vb2_ui_context *ui,
 					    int reset)
 {
+	// TODO(chungsheng): make this return vb2_error_t.
 	const char *log_string = vb2ex_get_firmware_log(reset);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve firmware log\n");
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
+	vb2_error_t rv = log_string ? VB2_SUCCESS : VB2_ERROR_UNKNOWN;
+	VB2_TRY(check_ui_error(rv, ui, VB2_UI_ERROR_FIRMWARE_LOG));
+	VB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,
+			       VB2_UI_ERROR_FIRMWARE_LOG));
+
 	return VB2_SUCCESS;
 }
 
@@ -1067,16 +1081,10 @@ static const struct vb2_screen_info diagnostics_screen = {
 static vb2_error_t diagnostics_storage_health_init(struct vb2_ui_context *ui)
 {
 	const char *log_string;
-	vb2_error_t rv = vb2ex_diag_get_storage_health(&log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
-	rv = log_page_update(ui, log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
+	VB2_TRY(check_ui_error(vb2ex_diag_get_storage_health(&log_string), ui,
+			       VB2_UI_ERROR_DIAGNOSTICS));
+	VB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,
+			       VB2_UI_ERROR_DIAGNOSTICS));
 	return log_page_reset_to_top(ui);
 }
 
@@ -1142,12 +1150,9 @@ static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
 						    memory_test_op_t op,
 						    int reset)
 {
-	vb2_error_t rv = diagnostics_memory_update_screen_impl(ui, op, reset);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
-	return VB2_SUCCESS;
+	return check_ui_error(
+		diagnostics_memory_update_screen_impl(ui, op, reset), ui,
+		VB2_UI_ERROR_DIAGNOSTICS);
 }
 
 static vb2_error_t diagnostics_memory_init_quick(struct vb2_ui_context *ui)
