@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "913df076_45ba069d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-11T03:52:30Z",
+      "side": 1,
+      "message": "s",
+      "range": {
+        "startLine": 7,
+        "startChar": 43,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83cfb51_810d3a0d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-11T03:52:30Z",
+      "side": 1,
+      "message": "UI",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 26
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83809beb_7fda8239",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-11T03:52:30Z",
+      "side": 1,
+      "message": "Looks like we can remove one level of indentation.",
+      "range": {
+        "startLine": 57,
+        "startChar": 14,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d16a762_3ea6f9e2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-11T03:52:30Z",
+      "side": 1,
+      "message": "err",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "123b98ac_18a328cf",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
@@ -90,6 +182,70 @@
         "startChar": 0,
         "endLine": 332,
         "endChar": 54
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37114f2c_b98d0715",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-11T03:52:30Z",
+      "side": 1,
+      "message": "If you want, you can also add another argument \"mesg\" for check_ui_error(), for the error message which will be printed when error_code is set.",
+      "parentUuid": "8ec998bd_ac627d98",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 54
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6686306_cc640a04",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-11T03:52:30Z",
+      "side": 1,
+      "message": "Now we\u0027re using check_ui_error for log functions, but not using it for others such as in recovery_to_dev_init(). It\u0027d be better if we could set error_code in a consistent way.",
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51cfcb8_21e439cf",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-11T03:52:30Z",
+      "side": 1,
+      "message": "Can fit in one line.",
+      "range": {
+        "startLine": 1158,
+        "startChar": 2,
+        "endLine": 1159,
+        "endChar": 17
       },
       "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
