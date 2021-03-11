@@ -213,6 +213,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35b54020_9e9d4bc9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-11T04:41:08Z",
+      "side": 1,
+      "message": "Are there any cases where the error message printed to AP console log by depthcharge is not sufficient?",
+      "parentUuid": "37114f2c_b98d0715",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 54
+      },
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6686306_cc640a04",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
@@ -224,6 +248,24 @@
       "writtenOn": "2021-03-11T03:52:30Z",
       "side": 1,
       "message": "Now we\u0027re using check_ui_error for log functions, but not using it for others such as in recovery_to_dev_init(). It\u0027d be better if we could set error_code in a consistent way.",
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69d52ef_0a8d49c2",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-11T04:41:08Z",
+      "side": 1,
+      "message": "To be honest, I\u0027m also a bit concerned about check_ui_error.  I totally agree that refactoring the log functions helps us reduce code (like pulling init/reinit out into set_content).  On the other hand, the construct:\n\n  VB2_TRY(check_ui_error(rv, VB_UI_ERROR, ui))\n\n... is doing tons of things that are very hard to understand for someone not familiar with Groot, including a `screen_back` call (which, as Yu-Ping mentioned, is sometimes desired when setting an error, sometimes not), as well as the implicit return from the VB2_TRY macro.\n\nTo show by example, it\u0027s pretty obvious what this is doing:\n\tconst char *log_string \u003d vb2ex_get_firmware_log(reset);\n\tif (!log_string) {\n\t\tui-\u003eerror_code \u003d VB2_UI_ERROR_FIRMWARE_LOG;\n\t\treturn vb2_ui_screen_back(ui);\n\t}\n\tvb2_error_t rv \u003d log_page_update(ui, log_string);\n\tif (rv !\u003d VB2_SUCCESS) {\n\t\tui-\u003eerror_code \u003d VB2_UI_ERROR_FIRMWARE_LOG;\n\t\treturn vb2_ui_screen_back(ui);\n\t}\n\nWhereas I\u0027m going to have to jump around to a few places to understand this piece of code:\n\tconst char *log_string \u003d vb2ex_get_firmware_log(reset);\n\tvb2_error_t rv \u003d log_string ? VB2_SUCCESS : VB2_ERROR_UNKNOWN;\n\tVB2_TRY(check_ui_error(rv, ui, VB2_UI_ERROR_FIRMWARE_LOG));\n\tVB2_TRY(check_ui_error(log_page_update(ui, log_string), ui,\n\t\t\t       VB2_UI_ERROR_FIRMWARE_LOG));\n\nIf you\u0027d like to further reduce the amount of boilerplate code required for log screens, perhaps it would make sense to store some of this information (i.e. the appropriate log strings, the callbacks to retrieve / update logs) in vb2_screen_info alongside .page_up_item and friends, and further generalize these functions to share across screens.",
+      "parentUuid": "f6686306_cc640a04",
       "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
