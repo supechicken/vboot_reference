@@ -290,6 +290,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e087aa4_de0677ef",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-11T07:51:40Z",
+      "side": 1,
+      "message": "Also, I noticed that `debug_info_init()` doesn\u0027t check the return value of `log_page_reset_to_top()`. If the error comes from here, the error_code won\u0027t be set.\n\nI\u0027m considering if we can add a `default_error_code` to vb2_screen_info, and handle the error_code from the `ui_loop`?",
+      "parentUuid": "9f990695_6e038a93",
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51cfcb8_21e439cf",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
