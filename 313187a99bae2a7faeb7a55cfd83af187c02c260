@@ -272,6 +272,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f990695_6e038a93",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-11T07:13:07Z",
+      "side": 1,
+      "message": "I totally agree.\n\nI\u0027m considering another issue.\nAssume that some function return VB2_REQUEST (i.e. REQUEST_UI_EXIT, REQUEST_SHUTDOWN), they will be caught and transform into REQUEST_UI_CONTINUE if we just check `if (rv)`.\nI\u0027m not sure if this would be an issue.\n\nIf we handle all these return value checking in a single place, I think it is more easier to maintian and avoid misusing.\nBut if currently the `if (rv)` can handle all the situaction, than I think we can keep the current form.\n\nBTW, I will move those set_content into previous refactor CL.",
+      "parentUuid": "e69d52ef_0a8d49c2",
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51cfcb8_21e439cf",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
