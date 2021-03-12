@@ -326,6 +326,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ab9350f_ac8d5160",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-12T08:51:37Z",
+      "side": 1,
+      "message": "My proposal is, If catches any error (not request) use the default error code. Otherwise, do what the error (request or success) intend to do.\nUI function can still set the error code for specific error. But for some error like \"Error in OOO screen\", we can do it from the UI loop, and also prevent any unexpected error to be throgh to the ui loop and break it.",
+      "parentUuid": "a867867c_7c43e9ab",
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51cfcb8_21e439cf",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
