@@ -308,6 +308,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a867867c_7c43e9ab",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-12T08:02:56Z",
+      "side": 1,
+      "message": "\u003e I\u0027m considering if we can add a `default_error_code` to vb2_screen_info, and handle the error_code from the `ui_loop`?\n\nActually I also thought about that, but there might multiple errors from one vb2_screen (for example, in vb2_ui_developer_mode_boot_altfw_action()). How would you deal with these cases?",
+      "parentUuid": "4e087aa4_de0677ef",
+      "revId": "313187a99bae2a7faeb7a55cfd83af187c02c260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e51cfcb8_21e439cf",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 12
