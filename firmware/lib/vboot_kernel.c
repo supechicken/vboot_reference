@@ -156,13 +156,11 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	rv = vb2_verify_keyblock(keyblock, kbuf_size, &kernel_subkey2, wb);
 	if (rv) {
 		VB2_DEBUG("Verifying keyblock signature failed.\n");
-		shpart->check_result = VBSD_LKP_CHECK_KEYBLOCK_SIG;
 		keyblock_valid = 0;
 
 		/* Check if we must have an officially signed kernel */
 		if (need_keyblock_valid) {
 			VB2_DEBUG("Self-signed kernels not enabled.\n");
-			shpart->check_result = VBSD_LKP_CHECK_SELF_SIGNED;
 			return rv;
 		}
 
@@ -170,7 +168,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 		rv = vb2_verify_keyblock_hash(keyblock, kbuf_size, wb);
 		if (rv) {
 			VB2_DEBUG("Verifying keyblock hash failed.\n");
-			shpart->check_result = VBSD_LKP_CHECK_KEYBLOCK_HASH;
 			return rv;
 		}
 	}
@@ -181,7 +178,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	       VB2_KEYBLOCK_FLAG_DEVELOPER_1 :
 	       VB2_KEYBLOCK_FLAG_DEVELOPER_0))) {
 		VB2_DEBUG("Keyblock developer flag mismatch.\n");
-		shpart->check_result = VBSD_LKP_CHECK_DEV_MISMATCH;
 		keyblock_valid = 0;
 		if (need_keyblock_valid)
 			return VB2_ERROR_KERNEL_KEYBLOCK_DEV_FLAG;
@@ -191,7 +187,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	       VB2_KEYBLOCK_FLAG_RECOVERY_1 :
 	       VB2_KEYBLOCK_FLAG_RECOVERY_0))) {
 		VB2_DEBUG("Keyblock recovery flag mismatch.\n");
-		shpart->check_result = VBSD_LKP_CHECK_REC_MISMATCH;
 		keyblock_valid = 0;
 		if (need_keyblock_valid)
 			return VB2_ERROR_KERNEL_KEYBLOCK_REC_FLAG;
@@ -203,7 +198,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	if (boot_mode != VB2_BOOT_MODE_RECOVERY) {
 		if (key_version < (min_version >> 16)) {
 			VB2_DEBUG("Key version too old.\n");
-			shpart->check_result = VBSD_LKP_CHECK_KEY_ROLLBACK;
 			keyblock_valid = 0;
 			if (need_keyblock_valid)
 				return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_ROLLBACK;
@@ -215,7 +209,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 			 * properly.
 			 */
 			VB2_DEBUG("Key version > 0xFFFF.\n");
-			shpart->check_result = VBSD_LKP_CHECK_KEY_ROLLBACK;
 			keyblock_valid = 0;
 			if (need_keyblock_valid)
 				return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_RANGE;
@@ -263,7 +256,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	rv = vb2_unpack_key(&data_key, &keyblock->data_key);
 	if (rv) {
 		VB2_DEBUG("Unable to unpack kernel data key\n");
-		shpart->check_result = VBSD_LKP_CHECK_DATA_KEY_PARSE;
 		return rv;
 	}
 
@@ -275,7 +267,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 					wb);
 	if (rv) {
 		VB2_DEBUG("Preamble verification failed.\n");
-		shpart->check_result = VBSD_LKP_CHECK_VERIFY_PREAMBLE;
 		return rv;
 	}
 
@@ -289,7 +280,6 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	if (keyblock_valid && boot_mode != VB2_BOOT_MODE_RECOVERY) {
 		if (combined_version < min_version) {
 			VB2_DEBUG("Kernel version too low.\n");
-			shpart->check_result = VBSD_LKP_CHECK_KERNEL_ROLLBACK;
 			/*
 			 * If not in developer mode, kernel version
 			 * must be valid.
@@ -300,9 +290,8 @@ static vb2_error_t vb2_verify_kernel_vblock(
 	}
 
 	VB2_DEBUG("Kernel preamble is good.\n");
-	shpart->check_result = VBSD_LKP_CHECK_PREAMBLE_VALID;
 	if (keyblock_valid)
-		shpart->flags |= VBSD_LKP_FLAG_KEYBLOCK_VALID;
+		shpart->keyblock_valid = 1;
 
 	return VB2_SUCCESS;
 }
@@ -348,7 +337,6 @@ static vb2_error_t vb2_load_partition(
 	start_ts = vb2ex_mtime();
 	if (VbExStreamRead(stream, KBUF_SIZE, kbuf)) {
 		VB2_DEBUG("Unable to read start of partition.\n");
-		shpart->check_result = VBSD_LKP_CHECK_READ_START;
 		return VB2_ERROR_LOAD_PARTITION_READ_VBLOCK;
 	}
 	read_ms += vb2ex_mtime() - start_ts;
@@ -374,7 +362,6 @@ static vb2_error_t vb2_load_partition(
 	 */
 	uint32_t body_offset = get_body_offset(kbuf);
 	if (body_offset > KBUF_SIZE) {
-		shpart->check_result = VBSD_LKP_CHECK_BODY_OFFSET;
 		VB2_DEBUG("Kernel body offset is %u > 64KB.\n", body_offset);
 		return VB2_ERROR_LOAD_PARTITION_BODY_OFFSET;
 	}
@@ -387,7 +374,6 @@ static vb2_error_t vb2_load_partition(
 		kernbuf_size = preamble->body_signature.data_size;
 	} else if (preamble->body_signature.data_size > kernbuf_size) {
 		VB2_DEBUG("Kernel body doesn't fit in memory.\n");
-		shpart->check_result = VBSD_LKP_CHECK_BODY_EXCEEDS_MEM;
 		return 	VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 	}
 
@@ -409,7 +395,6 @@ static vb2_error_t vb2_load_partition(
 	start_ts = vb2ex_mtime();
 	if (body_toread && VbExStreamRead(stream, body_toread, body_readptr)) {
 		VB2_DEBUG("Unable to read kernel data.\n");
-		shpart->check_result = VBSD_LKP_CHECK_READ_DATA;
 		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
 	}
 	read_ms += vb2ex_mtime() - start_ts;
@@ -424,7 +409,6 @@ static vb2_error_t vb2_load_partition(
 	struct vb2_public_key data_key;
 	if (VB2_SUCCESS != vb2_unpack_key(&data_key, &keyblock->data_key)) {
 		VB2_DEBUG("Unable to unpack kernel data key\n");
-		shpart->check_result = VBSD_LKP_CHECK_DATA_KEY_PARSE;
 		return VB2_ERROR_LOAD_PARTITION_DATA_KEY;
 	}
 
@@ -436,13 +420,11 @@ static vb2_error_t vb2_load_partition(
 					   &preamble->body_signature,
 					   &data_key, &wblocal)) {
 		VB2_DEBUG("Kernel data verification failed.\n");
-		shpart->check_result = VBSD_LKP_CHECK_VERIFY_DATA;
 		return VB2_ERROR_LOAD_PARTITION_VERIFY_BODY;
 	}
 
 	/* If we're still here, the kernel is valid */
 	VB2_DEBUG("Partition is good.\n");
-	shpart->check_result = VBSD_LKP_CHECK_KERNEL_GOOD;
 
 	/* Save kernel data back to parameters */
 	params->bootloader_address = preamble->bootloader_address;
@@ -480,7 +462,6 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 	memset(&shcall, 0, sizeof(shcall));
 	shcall.boot_flags = (uint32_t)params->boot_flags;
 	shcall.sector_size = (uint32_t)params->bytes_per_lba;
-	shcall.sector_count = params->streaming_lba_count;
 
 	/* Locate key to verify kernel.  This will either be a recovery key, or
 	   a kernel subkey passed from firmware verification. */
@@ -496,14 +477,12 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 			? GPT_FLAG_EXTERNAL : 0;
 	if (0 != AllocAndReadGptData(params->disk_handle, &gpt)) {
 		VB2_DEBUG("Unable to read GPT data\n");
-		shcall.check_result = VBSD_LKC_CHECK_GPT_READ_ERROR;
 		goto gpt_done;
 	}
 
 	/* Initialize GPT library */
 	if (GPT_SUCCESS != GptInit(&gpt)) {
 		VB2_DEBUG("Error parsing GPT\n");
-		shcall.check_result = VBSD_LKC_CHECK_GPT_PARSE_ERROR;
 		goto gpt_done;
 	}
 
@@ -525,13 +504,6 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 				shcall.parts + (shcall.kernel_parts_found
 				& (VBSD_MAX_KERNEL_PARTS - 1));
 		memset(shpart, 0, sizeof(VbSharedDataKernelPart));
-		shpart->sector_start = part_start;
-		shpart->sector_count = part_size;
-		/*
-		 * TODO: GPT partitions start at 1, but cgptlib starts them at
-		 * 0.  Adjust here, until cgptlib is fixed.
-		 */
-		shpart->gpt_index = (uint8_t)(gpt.current_kernel + 1);
 		shcall.kernel_parts_found++;
 
 		/* Found at least one kernel partition. */
@@ -542,7 +514,6 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 		if (VbExStreamOpen(params->disk_handle,
 				   part_start, part_size, &stream)) {
 			VB2_DEBUG("Partition error getting stream.\n");
-			shpart->check_result = VBSD_LKP_CHECK_TOO_SMALL;
 			VB2_DEBUG("Marking kernel as invalid.\n");
 			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
 			continue;
@@ -573,8 +544,7 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 			continue;
 		}
 
-		int keyblock_valid = (shpart->flags &
-				      VBSD_LKP_FLAG_KEYBLOCK_VALID);
+		int keyblock_valid = shpart->keyblock_valid;
 		if (keyblock_valid) {
 			sd->flags |= VB2_SD_FLAG_KERNEL_SIGNED;
 			/* Track lowest version from a valid header. */
@@ -644,7 +614,6 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 	/* Handle finding a good partition */
 	if (params->partition_number > 0) {
 		VB2_DEBUG("Good partition %d\n", params->partition_number);
-		shcall.check_result = VBSD_LKC_CHECK_GOOD_PARTITION;
 		/*
 		 * Validity check - only store a new TPM version if we found
 		 * one. If lowest_version is still at its initial value, we
@@ -658,10 +627,8 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 		/* Success! */
 		rv = VB2_SUCCESS;
 	} else if (found_partitions > 0) {
-		shcall.check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
 		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 	} else {
-		shcall.check_result = VBSD_LKC_CHECK_NO_PARTITIONS;
 		rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
 	}
 
