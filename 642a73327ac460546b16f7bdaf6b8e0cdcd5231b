@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ec8db8_730665d0",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-15T07:04:11Z",
+      "side": 1,
+      "message": "Fair enough -- let\u0027s call it need_valid_keyblock().  Also updated the doc string.",
+      "parentUuid": "65ff9f38_152dd24d",
+      "revId": "642a73327ac460546b16f7bdaf6b8e0cdcd5231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdd87560_7990add8",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-08T22:53:45Z",
       "side": 1,
       "message": "nit: This looks terrible... maybe rather violate the line length instead? Or maybe just assign all these to a variable that was initialized to VB2_ERROR_VBLOCK_KEYBLOCK and then return that in like 226?",
+      "revId": "642a73327ac460546b16f7bdaf6b8e0cdcd5231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffdfa37c_a5741a54",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-15T07:04:11Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer to return right away -- otherwise, we will be making unnecessary checks when the keyblock has already been determined to be invalid.  (Or we need to add more logic to skip the checks when one has already failed.)\n\nI\u0027m not super concerned about the appearance here, but I\u0027m also happy to go two characters over the limit if you prefer (\u003d",
+      "parentUuid": "bdd87560_7990add8",
       "revId": "642a73327ac460546b16f7bdaf6b8e0cdcd5231b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "28000108_e1055ecc",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-15T07:04:11Z",
+      "side": 1,
+      "message": "I think we still need to keep keyblock_valid to update shpart-\u003eflags at the end of the function.  But looks like we can still get rid of this block.",
+      "parentUuid": "fe27ba23_f133e8a0",
+      "revId": "642a73327ac460546b16f7bdaf6b8e0cdcd5231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b1bd3d55_6451a5b8",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -65,6 +119,30 @@
       "writtenOn": "2021-03-08T22:53:45Z",
       "side": 1,
       "message": "So, fun fact: before this patch, if dev_boot_signed_only was set, we\u0027d check the signature but ignore things like rollback flags, because this just checks BOOT_MODE_DEVELOPER directly rather than need_keyblock_valid. Probably not a terrible vulnerability we need to backport given it\u0027s not a widely used feature, but still good to fix.",
+      "range": {
+        "startLine": 224,
+        "startChar": 5,
+        "endLine": 224,
+        "endChar": 41
+      },
+      "revId": "642a73327ac460546b16f7bdaf6b8e0cdcd5231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5464600e_b739086d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-15T07:04:11Z",
+      "side": 1,
+      "message": "Uhh... yeah, I thought something here didn\u0027t look quite right.  Same with fwmp_dev_enable_official_only, but presumably also not a widely used feature.  I guess it also depends on the interpretation of these settings -- if they are really meant to only check the signature, or if they are actually intended to also check keyblock flags and rollback flags.  Since I vote for the latter, let me add some tests to cover these cases.",
+      "parentUuid": "b1bd3d55_6451a5b8",
       "range": {
         "startLine": 224,
         "startChar": 5,
