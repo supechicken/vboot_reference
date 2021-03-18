@@ -16,6 +16,75 @@
       "message": "Try to catch error from the callers of ui actions of screens.",
       "revId": "3bd09656ba84ec6c230307218e04fdf1c7786f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85abd1d_501401cd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-18T09:35:36Z",
+      "side": 1,
+      "message": "I\u0027d prefer explicit checking it before calling try_ui_action().",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 62
+      },
+      "revId": "3bd09656ba84ec6c230307218e04fdf1c7786f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883cf8cd_0b114723",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-18T09:35:36Z",
+      "side": 1,
+      "message": "In general I think this makes everything even more complicated. Looking at this PS, several questions are in my mind:\n\n1. When should we use try_ui_action()? I can\u0027t see why some actions are wrapped with try_ui_action() and others are not. For example, why isn\u0027t screen-\u003eget_menu() wrapped?\n\n2. Calling vb2_ui_screen_back() in this function also adds extra complexity. Now for some errors vb2_ui_screen_back() is called in init() function, while others rely on this function to call vb2_ui_screen_back() for them.\n\n3. After this CL, when we encounter an error in screen-\u003einit() (or friends), it looks like we only have 2 options:\n(a) Set error_code, call vb2_ui_screen_back(), and return VB2_REQUEST_UI_CONTINUE\n(b) Return any error and let try_ui_action() do the rest\nIs my understanding correct?",
+      "range": {
+        "startLine": 85,
+        "startChar": 19,
+        "endLine": 85,
+        "endChar": 32
+      },
+      "revId": "3bd09656ba84ec6c230307218e04fdf1c7786f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485907c4_0babde6b",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-18T09:35:36Z",
+      "side": 1,
+      "message": "Do you want to overwrite it if this has already been set? IMO it makes more sense to report the very first error.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "3bd09656ba84ec6c230307218e04fdf1c7786f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
