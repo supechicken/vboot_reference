@@ -16,6 +16,23 @@
       "message": "Hi Nick and Tim,\n\nThis cherry-pick is to make Minidiag up to date with ToT.",
       "revId": "c69d58ae1aeb5883eda9cbb51d505377987313b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58429c1f_20762225",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2021-03-18T19:15:15Z",
+      "side": 1,
+      "message": "I see a hang selecting \"Power off\" button on diagnostic tools screen, but I don\u0027t believe it is due to this change (see https://buganizer.corp.google.com/issues/183122463), so I\u0027m ok merging this.",
+      "revId": "c69d58ae1aeb5883eda9cbb51d505377987313b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
