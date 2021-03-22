@@ -61,6 +61,12 @@ struct vb2_screen_info {
 	vb2_error_t (*get_menu)(struct vb2_ui_context *ui,
 				const struct vb2_menu **menu);
 	/*
+	 * The default ui error code to be set for any unexpected error from
+	 * this screen. If set to VB2_UI_ERROR_NONE, the error won't be caught
+	 * and will be returned to the ui loop.
+	 */
+	enum vb2_ui_error default_error_code;
+	/*
 	 * Indices of menu items;
 	 * used by log_page_* functions in 2ui_screens.c.
 	 */

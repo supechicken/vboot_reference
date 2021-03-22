@@ -67,6 +67,48 @@ vb2_error_t check_shutdown_request(struct vb2_ui_context *ui)
 	return VB2_SUCCESS;
 }
 
+/**
+ * Check the return value from a ui action function. If it is error catch the
+ * error and set the ui error_code to the defaut_ui_error of the current screen.
+ *
+ * If default_error_code is VB2_UI_ERROR_NONE, the error won't be caught and
+ * will be returned.
+ *
+ * @param rv		The return value of ui action.
+ * @param ui		UI context pointer.
+ * @param back_on_error	If true, vb2_ui_screen_back() is called on error.
+ * @return If default_error_code is set, only VB2_SUCCESS and VB2_REQUEST_* will
+ * be returned. Otherwise, return the value from the ui action.
+ */
+static vb2_error_t try_ui_action(vb2_error_t rv, struct vb2_ui_context *ui,
+				 int back_on_error)
+{
+	enum vb2_ui_error default_error_code =
+		ui->state->screen->default_error_code;
+	/*
+	 * Don't catch VB2_REQUEST. The VB2_REQUEST should only be caught by the
+	 * handler of each request.
+	 */
+	if (!default_error_code || rv == VB2_SUCCESS ||
+	    (rv >= VB2_REQUEST && rv <= VB2_REQUEST_END))
+		return rv;
+
+	/* Keep the first occurred error. */
+	if (ui->error_code)
+		VB2_DEBUG("When handling ui error %#x, another ui error "
+			  "occurred: %#x", ui->error_code, default_error_code);
+	else
+		ui->error_code = default_error_code;
+
+	/*
+	 * VB2_REQUEST_UI_CONTINUE is returned to request returning to the ui
+	 * loop immediately.
+	 */
+	if (back_on_error)
+		return vb2_ui_screen_back(ui);
+	return VB2_REQUEST_UI_CONTINUE;
+}
+
 /*****************************************************************************/
 /* Error action functions */
 
@@ -97,7 +139,8 @@ vb2_error_t get_menu(struct vb2_ui_context *ui,
 	};
 	if (ui->state->screen->get_menu) {
 		*menu_out = &empty_menu;
-		VB2_TRY(ui->state->screen->get_menu(ui, &menu));
+		VB2_TRY(try_ui_action(ui->state->screen->get_menu(ui, &menu),
+				      ui, 1));
 		*menu_out = menu;
 	} else {
 		*menu_out = &ui->state->screen->menu;
@@ -198,7 +241,7 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 
 	if (menu_item->action) {
 		VB2_DEBUG("Menu item <%s> run action\n", menu_item->text);
-		return menu_item->action(ui);
+		VB2_TRY(try_ui_action(menu_item->action(ui), ui, 0));
 	} else if (menu_item->target) {
 		VB2_DEBUG("Menu item <%s> to target screen %#x\n",
 			  menu_item->text, menu_item->target);
@@ -222,7 +265,8 @@ vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 		free(ui->state);
 		ui->state = tmp;
 		if (ui->state->screen->reinit)
-			VB2_TRY(ui->state->screen->reinit(ui));
+			VB2_TRY(try_ui_action(ui->state->screen->reinit(ui), ui,
+					      1));
 	} else {
 		VB2_DEBUG("ERROR: No previous screen; ignoring\n");
 	}
@@ -270,7 +314,8 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 			free(cur_state);
 		}
 		if (ui->state->screen->reinit)
-			VB2_TRY(ui->state->screen->reinit(ui));
+			VB2_TRY(try_ui_action(ui->state->screen->reinit(ui), ui,
+					      1));
 	} else {
 		/* Allocate the requested screen on top of the stack. */
 		cur_state = malloc(sizeof(*ui->state));
@@ -283,9 +328,10 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id)
 		cur_state->screen = new_screen_info;
 		ui->state = cur_state;
 		if (ui->state->screen->init)
-			VB2_TRY(ui->state->screen->init(ui));
+			VB2_TRY(try_ui_action(ui->state->screen->init(ui), ui,
+					      1));
 		else
-			VB2_TRY(default_screen_init(ui));
+			VB2_TRY(try_ui_action(default_screen_init(ui), ui, 1));
 	}
 
 	return VB2_REQUEST_UI_CONTINUE;
@@ -386,7 +432,8 @@ static vb2_error_t ui_loop_impl(
 
 		/* Run screen action. */
 		if (ui.state->screen->action) {
-			rv = ui.state->screen->action(&ui);
+			rv = try_ui_action(ui.state->screen->action(&ui), &ui,
+					   1);
 			if (rv && rv != VB2_REQUEST_UI_CONTINUE)
 				return rv;
 		}
