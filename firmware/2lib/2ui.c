@@ -87,7 +87,8 @@ vb2_error_t error_exit_action(struct vb2_ui_context *ui)
 /*****************************************************************************/
 /* Menu navigation functions */
 
-const struct vb2_menu *get_menu(struct vb2_ui_context *ui)
+vb2_error_t get_menu(struct vb2_ui_context *ui,
+		     const struct vb2_menu **menu_out)
 {
 	const struct vb2_menu *menu;
 	static const struct vb2_menu empty_menu = {
@@ -95,11 +96,13 @@ const struct vb2_menu *get_menu(struct vb2_ui_context *ui)
 		.items = NULL,
 	};
 	if (ui->state->screen->get_menu) {
-		menu = ui->state->screen->get_menu(ui);
-		return menu ? menu : &empty_menu;
+		*menu_out = &empty_menu;
+		VB2_TRY(ui->state->screen->get_menu(ui, &menu));
+		*menu_out = menu;
 	} else {
-		return &ui->state->screen->menu;
+		*menu_out = &ui->state->screen->menu;
 	}
+	return VB2_SUCCESS;
 }
 
 vb2_error_t menu_navigation_action(struct vb2_ui_context *ui)
@@ -159,7 +162,7 @@ vb2_error_t vb2_ui_menu_next(struct vb2_ui_context *ui)
 	if (!DETACHABLE && ui->key == VB_BUTTON_VOL_DOWN_SHORT_PRESS)
 		return VB2_SUCCESS;
 
-	menu = get_menu(ui);
+	VB2_TRY(get_menu(ui, &menu));
 	item = ui->state->selected_item + 1;
 	while (item < menu->num_items &&
 	       VB2_GET_BIT(ui->state->hidden_item_mask, item))
@@ -179,7 +182,7 @@ vb2_error_t vb2_ui_menu_select(struct vb2_ui_context *ui)
 	if (!DETACHABLE && ui->key == VB_BUTTON_POWER_SHORT_PRESS)
 		return VB2_SUCCESS;
 
-	menu = get_menu(ui);
+	VB2_TRY(get_menu(ui, &menu));
 	if (menu->num_items == 0)
 		return VB2_SUCCESS;
 
@@ -229,7 +232,8 @@ vb2_error_t vb2_ui_screen_back(struct vb2_ui_context *ui)
 
 static vb2_error_t default_screen_init(struct vb2_ui_context *ui)
 {
-	const struct vb2_menu *menu = get_menu(ui);
+	const struct vb2_menu *menu;
+	VB2_TRY(get_menu(ui, &menu));
 	ui->state->selected_item = 0;
 	if (menu->num_items > 1 && menu->items[0].is_language_select)
 		ui->state->selected_item = 1;
@@ -333,7 +337,9 @@ static vb2_error_t ui_loop_impl(
 		    /* Redraw on a screen request to refresh. */
 		    ui.force_display) {
 
-			menu = get_menu(&ui);
+			rv = get_menu(&ui, &menu);
+			if (rv && rv != VB2_REQUEST_UI_CONTINUE)
+				return rv;
 			VB2_DEBUG("<%s> menu item <%s>\n",
 				  ui.state->screen->name,
 				  menu->num_items ?
