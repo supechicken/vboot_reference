@@ -352,13 +352,15 @@ static void get_language_menu_tests(void)
 	/* Only allocate menu items once */
 	reset_common_data();
 	mock_locale_count = 7;
-	menu = get_language_menu(&mock_ui_context);
+	TEST_EQ(get_language_menu(&mock_ui_context, &menu), VB2_SUCCESS,
+		"get_language_menu");
 	TEST_PTR_NEQ(menu, NULL, "get language menu");
 	TEST_EQ(menu->num_items, 7, "  correct locale count");
 	TEST_PTR_NEQ(menu->items, NULL, "  items not null");
 	items = menu->items;
 
-	menu = get_language_menu(&mock_ui_context);
+	TEST_EQ(get_language_menu(&mock_ui_context, &menu), VB2_SUCCESS,
+		"get_language_menu");
 	TEST_PTR_NEQ(menu, NULL, "get language menu again");
 	TEST_EQ(menu->num_items, 7, "  correct locale count again");
 	TEST_PTR_EQ(menu->items, items, "  same pointer of items");
@@ -366,7 +368,8 @@ static void get_language_menu_tests(void)
 	/* Locale count = 0 */
 	reset_common_data();
 	mock_locale_count = 0;
-	menu = get_language_menu(&mock_ui_context);
+	TEST_EQ(get_language_menu(&mock_ui_context, &menu), VB2_SUCCESS,
+		"get_language_menu");
 	TEST_PTR_NEQ(menu, NULL, "menu not null");
 	TEST_EQ(menu->num_items, 1, "  locale count 1");
 

@@ -58,7 +58,8 @@ struct vb2_screen_info {
 	 * Custom function for getting menu items. If non-null, field 'menu'
 	 * will be ignored.
 	 */
-	const struct vb2_menu *(*get_menu)(struct vb2_ui_context *ui);
+	vb2_error_t (*get_menu)(struct vb2_ui_context *ui,
+				const struct vb2_menu **menu);
 	/*
 	 * Indices of menu items;
 	 * used by log_page_* functions in 2ui_screens.c.
