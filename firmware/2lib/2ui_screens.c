@@ -178,14 +178,17 @@ static vb2_error_t language_select_action(struct vb2_ui_context *ui)
 	return vb2_ui_screen_back(ui);
 }
 
-const struct vb2_menu *get_language_menu(struct vb2_ui_context *ui)
+vb2_error_t get_language_menu(struct vb2_ui_context *ui,
+			      const struct vb2_menu **menu)
 {
 	int i;
 	uint32_t num_locales;
 	struct vb2_menu_item *items;
 
+	*menu = &ui->language_menu;
+
 	if (ui->language_menu.num_items > 0)
-		return &ui->language_menu;
+		return VB2_SUCCESS;
 
 	num_locales = vb2ex_get_locale_count();
 	if (num_locales == 0) {
@@ -196,7 +199,8 @@ const struct vb2_menu *get_language_menu(struct vb2_ui_context *ui)
 	items = malloc(num_locales * sizeof(struct vb2_menu_item));
 	if (!items) {
 		VB2_DEBUG("ERROR: malloc failed for language items\n");
-		return NULL;
+		*menu = NULL;
+		return VB2_ERROR_UI_MEMORY_ALLOC;
 	}
 
 	for (i = 0; i < num_locales; i++) {
@@ -206,13 +210,15 @@ const struct vb2_menu *get_language_menu(struct vb2_ui_context *ui)
 
 	ui->language_menu.num_items = num_locales;
 	ui->language_menu.items = items;
-	return &ui->language_menu;
+	return VB2_SUCCESS;
 }
 
 static vb2_error_t language_select_init(struct vb2_ui_context *ui)
 {
-	const struct vb2_menu *menu = get_menu(ui);
-	if (menu->num_items == 0) {
+	const struct vb2_menu *menu;
+	vb2_error_t rv;
+	rv = get_menu(ui, &menu);
+	if (rv || menu->num_items == 0) {
 		VB2_DEBUG("ERROR: No menu items found; "
 			  "rejecting entering language selection screen\n");
 		return vb2_ui_screen_back(ui);
@@ -928,7 +934,10 @@ static const struct vb2_menu_item developer_select_bootloader_items_after[] = {
 
 static vb2_error_t developer_select_bootloader_init(struct vb2_ui_context *ui)
 {
-	if (get_menu(ui)->num_items == 0) {
+	const struct vb2_menu *menu;
+	vb2_error_t rv;
+	rv = get_menu(ui, &menu);
+	if (rv || menu->num_items == 0) {
 		ui->error_code = VB2_UI_ERROR_ALTFW_EMPTY;
 		return vb2_ui_screen_back(ui);
 	}
@@ -975,7 +984,8 @@ vb2_error_t vb2_ui_developer_mode_boot_altfw_action(
 	return VB2_SUCCESS;
 }
 
-static const struct vb2_menu *get_bootloader_menu(struct vb2_ui_context *ui)
+static vb2_error_t get_bootloader_menu(struct vb2_ui_context *ui,
+				       const struct vb2_menu **menu)
 {
 	int i;
 	uint32_t num_bootloaders, num_items;
@@ -985,20 +995,24 @@ static const struct vb2_menu *get_bootloader_menu(struct vb2_ui_context *ui)
 	const size_t menu_after_len =
 		ARRAY_SIZE(developer_select_bootloader_items_after);
 
+	*menu = &ui->bootloader_menu;
+
 	if (ui->bootloader_menu.num_items > 0)
-		return &ui->bootloader_menu;
+		return VB2_SUCCESS;
 
 	num_bootloaders = vb2ex_get_altfw_count();
 	if (num_bootloaders == 0) {
 		VB2_DEBUG("ERROR: No bootloader was found\n");
-		return NULL;
+		*menu = NULL;
+		return VB2_ERROR_UI;
 	}
 	VB2_DEBUG("num_bootloaders: %u\n", num_bootloaders);
 	num_items = num_bootloaders + menu_before_len + menu_after_len;
 	items = malloc(num_items * sizeof(struct vb2_menu_item));
 	if (!items) {
 		VB2_DEBUG("ERROR: malloc failed for bootloader items\n");
-		return NULL;
+		*menu = NULL;
+		return VB2_ERROR_UI_MEMORY_ALLOC;
 	}
 
 	/* Copy prefix items to the begin. */
@@ -1021,7 +1035,7 @@ static const struct vb2_menu *get_bootloader_menu(struct vb2_ui_context *ui)
 	ui->bootloader_menu.num_items = num_items;
 	ui->bootloader_menu.items = items;
 
-	return &ui->bootloader_menu;
+	return VB2_SUCCESS;
 }
 
 static const struct vb2_screen_info developer_select_bootloader_screen = {
