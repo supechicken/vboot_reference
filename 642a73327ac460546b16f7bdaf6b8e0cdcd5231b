@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6647a3_5b86a7ef",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-22T22:28:40Z",
+      "side": 1,
+      "message": "I\u0027m fine with going either way here, but just in general, I don\u0027t think you need to worry about wasting a few cycles in fatal error / recovery paths.",
+      "parentUuid": "ffdfa37c_a5741a54",
+      "revId": "642a73327ac460546b16f7bdaf6b8e0cdcd5231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe27ba23_f133e8a0",
@@ -143,6 +161,30 @@
       "side": 1,
       "message": "Uhh... yeah, I thought something here didn\u0027t look quite right.  Same with fwmp_dev_enable_official_only, but presumably also not a widely used feature.  I guess it also depends on the interpretation of these settings -- if they are really meant to only check the signature, or if they are actually intended to also check keyblock flags and rollback flags.  Since I vote for the latter, let me add some tests to cover these cases.",
       "parentUuid": "b1bd3d55_6451a5b8",
+      "range": {
+        "startLine": 224,
+        "startChar": 5,
+        "endLine": 224,
+        "endChar": 41
+      },
+      "revId": "642a73327ac460546b16f7bdaf6b8e0cdcd5231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18d1982_ed3788e0",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-22T22:28:40Z",
+      "side": 1,
+      "message": "Yeah, I think the only thing that makes sense is to check everything. Thanks for adding the tests!",
+      "parentUuid": "5464600e_b739086d",
       "range": {
         "startLine": 224,
         "startChar": 5,
