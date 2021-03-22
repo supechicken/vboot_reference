@@ -309,17 +309,9 @@ static const struct vb2_screen_info advanced_options_screen = {
 static vb2_error_t debug_info_set_content(struct vb2_ui_context *ui)
 {
 	const char *log_string = vb2ex_get_debug_info(ui->ctx);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve debug info\n");
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DEBUG_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	return VB2_SUCCESS;
+	if (!log_string)
+		return VB2_ERROR_UI_LOG_INIT;
+	return log_page_update(ui, log_string);
 }
 
 static vb2_error_t debug_info_init(struct vb2_ui_context *ui)
@@ -350,6 +342,7 @@ static const struct vb2_screen_info debug_info_screen = {
 	.page_up_item = DEBUG_INFO_ITEM_PAGE_UP,
 	.page_down_item = DEBUG_INFO_ITEM_PAGE_DOWN,
 	.back_item = DEBUG_INFO_ITEM_BACK,
+	.default_error_code = VB2_UI_ERROR_DEBUG_LOG,
 };
 
 /******************************************************************************/
@@ -363,17 +356,9 @@ static vb2_error_t firmware_log_set_content(struct vb2_ui_context *ui,
 					    int reset)
 {
 	const char *log_string = vb2ex_get_firmware_log(reset);
-	if (!log_string) {
-		VB2_DEBUG("ERROR: Failed to retrieve firmware log\n");
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	vb2_error_t rv = log_page_update(ui, log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_FIRMWARE_LOG;
-		return vb2_ui_screen_back(ui);
-	}
-	return VB2_SUCCESS;
+	if (!log_string)
+		return VB2_ERROR_UI_LOG_INIT;
+	return log_page_update(ui, log_string);
 }
 
 static vb2_error_t firmware_log_init(struct vb2_ui_context *ui)
@@ -404,6 +389,7 @@ static const struct vb2_screen_info firmware_log_screen = {
 	.page_up_item = FIRMWARE_LOG_ITEM_PAGE_UP,
 	.page_down_item = FIRMWARE_LOG_ITEM_PAGE_DOWN,
 	.back_item = FIRMWARE_LOG_ITEM_BACK,
+	.default_error_code = VB2_UI_ERROR_FIRMWARE_LOG,
 };
 
 /******************************************************************************/
@@ -1109,16 +1095,8 @@ static const struct vb2_screen_info diagnostics_screen = {
 static vb2_error_t diagnostics_storage_health_init(struct vb2_ui_context *ui)
 {
 	const char *log_string;
-	vb2_error_t rv = vb2ex_diag_get_storage_health(&log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
-	rv = log_page_update(ui, log_string);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
+	VB2_TRY(vb2ex_diag_get_storage_health(&log_string));
+	VB2_TRY(log_page_update(ui, log_string));
 	return log_page_reset_to_top(ui);
 }
 
@@ -1137,6 +1115,7 @@ static const struct vb2_screen_info diagnostics_storage_health_screen = {
 	.page_up_item = DIAGNOSTICS_STORAGE_HEALTH_ITEM_PAGE_UP,
 	.page_down_item = DIAGNOSTICS_STORAGE_HEALTH_ITEM_PAGE_DOWN,
 	.back_item = DIAGNOSTICS_STORAGE_HEALTH_ITEM_BACK,
+	.default_error_code = VB2_UI_ERROR_DIAGNOSTICS,
 };
 
 /******************************************************************************/
@@ -1222,6 +1201,7 @@ static const struct vb2_screen_info diagnostics_storage_test_short_screen = {
 	.page_down_item = DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_DOWN,
 	.back_item = DIAGNOSTICS_STORAGE_TEST_ITEM_BACK,
 	.cancel_item = DIAGNOSTICS_STORAGE_TEST_ITEM_CANCEL,
+	.default_error_code = VB2_UI_ERROR_DIAGNOSTICS,
 };
 
 static const struct vb2_screen_info diagnostics_storage_test_extended_screen = {
@@ -1234,6 +1214,7 @@ static const struct vb2_screen_info diagnostics_storage_test_extended_screen = {
 	.page_down_item = DIAGNOSTICS_STORAGE_TEST_ITEM_PAGE_DOWN,
 	.back_item = DIAGNOSTICS_STORAGE_TEST_ITEM_BACK,
 	.cancel_item = DIAGNOSTICS_STORAGE_TEST_ITEM_CANCEL,
+	.default_error_code = VB2_UI_ERROR_DIAGNOSTICS,
 };
 
 /******************************************************************************/
@@ -1246,7 +1227,7 @@ static const struct vb2_screen_info diagnostics_storage_test_extended_screen = {
 #define DIAGNOSTICS_MEMORY_ITEM_CANCEL 3
 
 typedef vb2_error_t (*memory_test_op_t)(int reset, const char **out);
-static vb2_error_t diagnostics_memory_update_screen_impl(
+static vb2_error_t diagnostics_memory_update_screen(
 	struct vb2_ui_context *ui, memory_test_op_t op, int reset)
 {
 	const char *log_string = NULL;
@@ -1274,18 +1255,6 @@ static vb2_error_t diagnostics_memory_update_screen_impl(
 	}
 	VB2_TRY(log_page_show_back_or_cancel(ui, is_test_running));
 	return log_page_update(ui, log_string);
-}
-
-static vb2_error_t diagnostics_memory_update_screen(struct vb2_ui_context *ui,
-						    memory_test_op_t op,
-						    int reset)
-{
-	vb2_error_t rv = diagnostics_memory_update_screen_impl(ui, op, reset);
-	if (rv) {
-		ui->error_code = VB2_UI_ERROR_DIAGNOSTICS;
-		return vb2_ui_screen_back(ui);
-	}
-	return VB2_SUCCESS;
 }
 
 static vb2_error_t diagnostics_memory_init_quick(struct vb2_ui_context *ui)
@@ -1335,6 +1304,7 @@ static const struct vb2_screen_info diagnostics_memory_quick_screen = {
 	.page_down_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN,
 	.back_item = DIAGNOSTICS_MEMORY_ITEM_BACK,
 	.cancel_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
+	.default_error_code = VB2_UI_ERROR_DIAGNOSTICS,
 };
 
 static const struct vb2_screen_info diagnostics_memory_full_screen = {
@@ -1347,6 +1317,7 @@ static const struct vb2_screen_info diagnostics_memory_full_screen = {
 	.page_down_item = DIAGNOSTICS_MEMORY_ITEM_PAGE_DOWN,
 	.back_item = DIAGNOSTICS_MEMORY_ITEM_BACK,
 	.cancel_item = DIAGNOSTICS_MEMORY_ITEM_CANCEL,
+	.default_error_code = VB2_UI_ERROR_DIAGNOSTICS,
 };
 
 /******************************************************************************/
