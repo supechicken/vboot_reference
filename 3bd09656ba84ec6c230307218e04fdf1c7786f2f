@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d877a083_12c447ab",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-23T10:24:20Z",
+      "side": 1,
+      "message": "Created crrev/c/2780821 for only refactoring the error handling in 2ui_screens.c.\n\nI agree that cl is to complexity for the current situation. I think we can wait until we have more ui error to be handled. Created b/183477583 to track this issue.",
+      "parentUuid": "474dfccc_f6e2b725",
+      "range": {
+        "startLine": 85,
+        "startChar": 19,
+        "endLine": 85,
+        "endChar": 32
+      },
+      "revId": "3bd09656ba84ec6c230307218e04fdf1c7786f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "485907c4_0babde6b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 14
