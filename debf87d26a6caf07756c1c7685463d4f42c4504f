@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e15b16_b2fabc82",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-23T04:16:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f3b9383_cf23399e",
+      "revId": "debf87d26a6caf07756c1c7685463d4f42c4504f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "199ae29e_fbbcf70d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-22T22:36:59Z",
       "side": 1,
       "message": "The more interesting question is whether we want to make this function return something different, because it technically doesn\u0027t check the whole signature. VB2_ERROR_KEYBLOCK_HASH_INVALID_IN_DEV_MODE?",
+      "revId": "debf87d26a6caf07756c1c7685463d4f42c4504f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f043dae5_3c837cc3",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-23T04:16:29Z",
+      "side": 1,
+      "message": "Would VB2_ERROR_KEYBLOCK_HASH work, or do you want to specifically point out that this is developer mode?",
+      "parentUuid": "199ae29e_fbbcf70d",
       "revId": "debf87d26a6caf07756c1c7685463d4f42c4504f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
