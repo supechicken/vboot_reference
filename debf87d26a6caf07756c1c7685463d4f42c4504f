@@ -69,6 +69,24 @@
       "parentUuid": "199ae29e_fbbcf70d",
       "revId": "debf87d26a6caf07756c1c7685463d4f42c4504f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45fbab51_c71b28ed",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-03-23T22:25:51Z",
+      "side": 1,
+      "message": "I think it would be useful to mention that in some way, because that\u0027s the only case where this error can occur (and that\u0027s the real thing that distinguishes this from KEYBLOCK_SIG_INVALID), so if someone searches for this error code it\u0027s nice to put that info front and center for them rather than treating it like a secret that\u0027s only obvious to those who have studied the details of how vboot developer mode works. But up to you how many yaks you want to shave here right now.",
+      "parentUuid": "f043dae5_3c837cc3",
+      "revId": "debf87d26a6caf07756c1c7685463d4f42c4504f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
