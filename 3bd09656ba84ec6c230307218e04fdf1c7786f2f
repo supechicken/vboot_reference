@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "474dfccc_f6e2b725",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-23T04:51:28Z",
+      "side": 1,
+      "message": "I have to agree that we are adding a lot of complexity just to trim down a few lines in 2ui_screens.c.  I also appreciate that you\u0027re trying to make UI code more foolproof, but I think we need to be very careful about error handling in firmware, and blanketing them all to a screen-wide error code seems dangerous.  Explicitly handling errors may be more verbose, but much more straightforward and clear.\n\nIf you\u0027re looking to reduce lines in 2ui_screens.c, I\u0027d recommend looking at more refactoring specific to log screens, like I mentioned before.\n\nIf you\u0027d like to improve error handling in general, a worthy cause would be to start thinking about how to handle errors differently in dev mode vs. recovery mode.  In dev mode, we want to be pretty picky about what we do with errors (giving us a higher chance of catching issues during firmware validation), whereas in recovery mode we want to be more forgiving (giving the user a higher chance at recovering their machine).",
+      "parentUuid": "7d15275c_16dd9193",
+      "range": {
+        "startLine": 85,
+        "startChar": 19,
+        "endLine": 85,
+        "endChar": 32
+      },
+      "revId": "3bd09656ba84ec6c230307218e04fdf1c7786f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "485907c4_0babde6b",
         "filename": "firmware/2lib/2ui.c",
         "patchSetId": 14
