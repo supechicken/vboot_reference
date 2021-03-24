@@ -69,6 +69,24 @@
       "parentUuid": "8b6c0cf1_0f29bc1f",
       "revId": "c9a256a2e0dbd869e52c3dfcaac2ac5634c202ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21df6bf0_9b96afac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-03-24T13:20:41Z",
+      "side": 1,
+      "message": "Thanks for your information. \n\nDirinboz is already enabled by CL:2508098, it will not be affected by this CL. \n\nThis is for global enabling for all zork follower. The test plan will ensure the healthy of this feature in FW qual. (Already pinned devices could get this feature via RW update after this CL land.) We don\u0027t want to block the firmware qual process which is already started. Feel free to let us know when recent firmware qual process are all finished.\n\nFor shuboz/jelboz/gumboz, what\u0027s the qual schedule? I think if the schedule is comfortable for you to enable this feature, I think it is good to have this. We could help for testing if you would like to perform some test before land this (e.g. combination of firmware pairing, FAFT...etc)",
+      "parentUuid": "548535c8_61f72eb8",
+      "revId": "c9a256a2e0dbd869e52c3dfcaac2ac5634c202ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
