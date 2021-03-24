@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bde72802_c58ce723",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-24T07:44:43Z",
+      "side": 1,
+      "message": "Added `vb2_is_request` and `vb2_is_error` to 2api.h.",
+      "parentUuid": "c764b122_0b0532f3",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "2609f7f1d397334c7c492080eceff6e301fafdc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71b19a2d_e76789de",
         "filename": "firmware/2lib/2ui_screens.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T04:28:49Z",
       "side": 1,
       "message": "occurring?",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "2609f7f1d397334c7c492080eceff6e301fafdc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "434b2708_c29da2c6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-24T07:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b19a2d_e76789de",
       "range": {
         "startLine": 67,
         "startChar": 19,
