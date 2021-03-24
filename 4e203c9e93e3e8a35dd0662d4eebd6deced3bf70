@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a43061_1d7f1f63",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-24T07:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70fa28b_db794117",
+      "range": {
+        "startLine": 1050,
+        "startChar": 28,
+        "endLine": 1050,
+        "endChar": 29
+      },
+      "revId": "4e203c9e93e3e8a35dd0662d4eebd6deced3bf70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa62d34d_730bbf53",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T04:19:12Z",
       "side": 1,
       "message": "As this file gets larger, maybe it\u0027s time to split it into multiple files, so that we can have shorter names for static functions (for example, just \"storage_test_control\" in 2ui_diag_screens.c). What do you think? I\u0027m okay if you\u0027d like to do it in a follow-up CL.",
+      "range": {
+        "startLine": 1201,
+        "startChar": 9,
+        "endLine": 1201,
+        "endChar": 41
+      },
+      "revId": "4e203c9e93e3e8a35dd0662d4eebd6deced3bf70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0244fd00_04b37617",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-24T07:43:29Z",
+      "side": 1,
+      "message": "Created b/183578533 for this",
+      "parentUuid": "fa62d34d_730bbf53",
       "range": {
         "startLine": 1201,
         "startChar": 9,
