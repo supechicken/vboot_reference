@@ -22,6 +22,162 @@
       },
       "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d754a3e0_d35341a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-24T04:44:38Z",
+      "side": 1,
+      "message": "Is \"sp\" an abbreviation of something? I assume you mean \"vb2_error_t\".",
+      "parentUuid": "7a23cf22_f00286de",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909c3616_a0998895",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-24T04:44:38Z",
+      "side": 1,
+      "message": "errors?",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ae4a2a_713aa75d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-24T04:44:38Z",
+      "side": 1,
+      "message": "Can we check if num_items is 0 and return an error? Then we don\u0027t need empty_menu.",
+      "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b00f977_354cc41d",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-24T04:44:38Z",
+      "side": 1,
+      "message": "What if this is VB2_UI_CONTINUE?",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 7
+      },
+      "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034c1da7_0bc27019",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-24T04:44:38Z",
+      "side": 1,
+      "message": "Indent by 2 space. You may also want to change the description.",
+      "range": {
+        "startLine": 357,
+        "startChar": 27,
+        "endLine": 357,
+        "endChar": 44
+      },
+      "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af17228e_0b8f4189",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-24T04:44:38Z",
+      "side": 1,
+      "message": "get_language_menu again",
+      "range": {
+        "startLine": 363,
+        "startChar": 3,
+        "endLine": 363,
+        "endChar": 20
+      },
+      "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1dee14f_df0b5dca",
+        "filename": "tests/vb2_ui_utility_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-24T04:44:38Z",
+      "side": 1,
+      "message": "get_language_menu with no locale\n\nThe idea is to have different descriptions so it\u0027ll be easier to find the test code of failed items. I know line number will be shown, but still prefer distinct description strings.",
+      "range": {
+        "startLine": 372,
+        "startChar": 3,
+        "endLine": 372,
+        "endChar": 20
+      },
+      "revId": "c9104d363d8a92087fb3587f6357ddb45817db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
