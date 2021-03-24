@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "373c91ce_44c3c072",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-24T10:36:13Z",
+      "side": 1,
+      "message": "IIRC, it\u0027s because the user can know that the functions is there but not supported by this devices.\nThis behavier is also in the UX strings review doc.",
+      "parentUuid": "b0029a18_3526dde4",
+      "range": {
+        "startLine": 1046,
+        "startChar": 25,
+        "endLine": 1046,
+        "endChar": 43
+      },
+      "revId": "a18495767ff3eb7414cbb99724ab0ad52dffef0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3062bef_092bb152",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-24T09:03:15Z",
       "side": 1,
       "message": "Would you like to have a test for checking if we correctly disabled the two items by:\n\n1. mocking vb2ex_diag_get_storage_test_log and allowing it to set return value.\n2. in the next test, manually set it to NOT_IMPLMENTED\n3. check if the first DISPLAYED_EQ after vb2_diagnostic_menu() got the corrected disabled mask (should be 0xb?)",
+      "revId": "a18495767ff3eb7414cbb99724ab0ad52dffef0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63f33b8_8154c1af",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 1884,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-03-24T10:36:13Z",
+      "side": 1,
+      "message": "Done\n\nyupingso@, can you check if the implementation meet the groot testing style?",
+      "parentUuid": "b3062bef_092bb152",
       "revId": "a18495767ff3eb7414cbb99724ab0ad52dffef0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
