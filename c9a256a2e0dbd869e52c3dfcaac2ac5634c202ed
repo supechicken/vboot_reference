@@ -87,6 +87,24 @@
       "parentUuid": "548535c8_61f72eb8",
       "revId": "c9a256a2e0dbd869e52c3dfcaac2ac5634c202ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b445d9c_f3ce7416",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2021-03-25T10:13:24Z",
+      "side": 1,
+      "message": "Kangheui. I think we want to enable it for \"all\" devices on zork. As Meng-Huan pointed out, we have Dirinboz enabled, dogfood and addressed feedback for a while (Jan 2021). Together with the FW Qual test, we now feel more confident to enable it by default for all (so it is now enabled by default on ToT)\n\nIf it is comfortable to you, this CL expands it from a model (Dirinboz) to a reference (zork). \n\nLater, CL in b/170789297 will be reverted.",
+      "parentUuid": "21df6bf0_9b96afac",
+      "revId": "c9a256a2e0dbd869e52c3dfcaac2ac5634c202ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
