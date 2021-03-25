@@ -16,6 +16,29 @@
       "message": "Joel, the ball\u0027s in your court!",
       "revId": "9cf78a65f6803417e7f7f5e2c0f557dd25182c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48be986b_92ad6bd9",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-25T09:09:26Z",
+      "side": 1,
+      "message": "On one hand, I think it\u0027s perfectly fine to assume the log_* functions never return a VB2_REQUEST (like most of the other functions in vboot).  On the other hand, I can appreciate if you\u0027re trying to handle VB2_REQUEST across all UI code, regardless of what function is being called.  Please continue to be thoughtful when considering the trade-offs of adding extra complexity in code (\u003d",
+      "range": {
+        "startLine": 334,
+        "startChar": 18,
+        "endLine": 334,
+        "endChar": 33
+      },
+      "revId": "9cf78a65f6803417e7f7f5e2c0f557dd25182c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
