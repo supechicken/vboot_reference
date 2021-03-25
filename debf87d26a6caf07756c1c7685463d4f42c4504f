@@ -87,6 +87,24 @@
       "parentUuid": "f043dae5_3c837cc3",
       "revId": "debf87d26a6caf07756c1c7685463d4f42c4504f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e779d7_a10e6d13",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-25T09:50:59Z",
+      "side": 1,
+      "message": "If adding _IN_DEV_MODE is sufficient, let\u0027s just shave that yak right now.",
+      "parentUuid": "45fbab51_c71b28ed",
+      "revId": "debf87d26a6caf07756c1c7685463d4f42c4504f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
