@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7a2e9d_3f9bfd80",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-03-25T04:14:51Z",
+      "side": 1,
+      "message": "I\u0027d prefer manually setting mock_ex_diag_storage_test_rv before some of the tests. Now the logic in diagnostics_screen_tests() has become pretty complicated (lots of if branches).\n\nYou can keep the original diagnostics_screen_tests() (in PS34), and add another section/function for the FOR_DIAGNOSTICS_NO_NVME part. For that you don\u0027t need to exercise everything.",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 362,
+        "endChar": 60
+      },
+      "revId": "3c289dd01560766c2dbe888367067ff335a21cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
