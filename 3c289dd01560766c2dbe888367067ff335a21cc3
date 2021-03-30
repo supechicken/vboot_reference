@@ -22,6 +22,30 @@
       },
       "revId": "3c289dd01560766c2dbe888367067ff335a21cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950a4154_75778ea2",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-03-30T13:14:11Z",
+      "side": 1,
+      "message": "I\u0027m with yu-ping on that this \u0027t\u0027 makes the diagnostics_screen_tests() too complicated.\n\nIMO it should looks like:\n\n /* Diagnostics screen */\n reset_common_data(FOR_DIAGNOSTICS);\n /* ...original screen tests... */\n\n /* Diagnostics screen: no NVMe */\n reset_common_data(FOR_DIAGNOSTICS);\n mock_ex_diag_storage_test_rv \u003d VB2_ERROR_EX_UNIMPLEMENTED;\n TEST_EQ(vb2_diagnostic_menu(ctx), VB2_REQUEST_SHUTDOWN,\n         \"diagnostic screen: no NVMe\");\n DISPLAYED_EQ(\"diagnostic menu: no NVMe\", VB2_SCREEN_DIAGNOSTICS, MOCK_IGNORE,\n               MOCK_IGNORE, 0xc, 0x0, MOCK_IGNORE);\n DISPLAYED_NO_EXTRA();\n\n VB2_DEBUG(\"...done.\\n\");\n\nSorry for the unclear comments I\u0027ve made.",
+      "parentUuid": "bf7a2e9d_3f9bfd80",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 362,
+        "endChar": 60
+      },
+      "revId": "3c289dd01560766c2dbe888367067ff335a21cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
