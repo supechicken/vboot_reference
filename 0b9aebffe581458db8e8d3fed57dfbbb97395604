@@ -16,6 +16,24 @@
       "message": "off-topic: This whole mechanism with lowest_version doesn\u0027t seem like the best idea. In practice it means that kernel rollback protection only ever kicks in on the first update *after* the one with the version bump. Depending on the channel and release situation that could be a whole month the user is running without actual rollback protection.\n\nIt would probably be better to make this more similar to firmware rollback protection, that we roll forward as soon as we see the GPT success flag set on the partition with the higher version.",
       "revId": "0b9aebffe581458db8e8d3fed57dfbbb97395604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45bb48df_e3c9e395",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-03-31T05:06:53Z",
+      "side": 1,
+      "message": "Created b/184112126 to keep this patch train moving.",
+      "parentUuid": "697acc4d_19c9e86f",
+      "revId": "0b9aebffe581458db8e8d3fed57dfbbb97395604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
