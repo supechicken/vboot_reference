@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e608c1_57f123e8",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-04-01T04:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c4b1aa_1021f8a6",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "4a49e84cf7a64e6a398aece3e9f111f7b3a0916d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ec7a76_a8e0aba8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-01T03:33:31Z",
       "side": 1,
       "message": "Why remove \"void\"?",
+      "range": {
+        "startLine": 1798,
+        "startChar": 37,
+        "endLine": 1798,
+        "endChar": 38
+      },
+      "revId": "4a49e84cf7a64e6a398aece3e9f111f7b3a0916d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3f455f_9e963a9d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1798,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-04-01T04:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ec7a76_a8e0aba8",
       "range": {
         "startLine": 1798,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a474273_64bc533e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-04-01T04:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9c897ae_7012cb60",
+      "range": {
+        "startLine": 1808,
+        "startChar": 20,
+        "endLine": 1808,
+        "endChar": 38
+      },
+      "revId": "4a49e84cf7a64e6a398aece3e9f111f7b3a0916d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0279a737_bc836006",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-01T03:33:31Z",
       "side": 1,
       "message": "Which part of the code below sets this up? Is it\n\n mock_ex_diag_storage_test_rv \u003d VB2_ERROR_EX_UNIMPLEMENTED;",
+      "range": {
+        "startLine": 1902,
+        "startChar": 24,
+        "endLine": 1902,
+        "endChar": 31
+      },
+      "revId": "4a49e84cf7a64e6a398aece3e9f111f7b3a0916d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96715a25_4c77469e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-04-01T04:20:24Z",
+      "side": 1,
+      "message": "Yes. The buttons are disabled based on the return value of the storage test funciton.",
+      "parentUuid": "0279a737_bc836006",
       "range": {
         "startLine": 1902,
         "startChar": 24,
