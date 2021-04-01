@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8072c02e_ab3a0c59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-04-01T04:52:40Z",
+      "side": 1,
+      "message": "Thank for your quick patch for this!\nNow the whole architecture seems to be more clean and easiler to understand\n\nThere is still some suggestions here which IMHO could be simpler without losing coverage",
+      "revId": "0c1f7ba8e8ee8cb83f314950e92eaa4330f69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63995e38_74e5e7e2",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-04-01T04:52:40Z",
+      "side": 1,
+      "message": "Is it intended to move the position of comments?",
+      "range": {
+        "startLine": 1816,
+        "startChar": 0,
+        "endLine": 1816,
+        "endChar": 32
+      },
+      "revId": "0c1f7ba8e8ee8cb83f314950e92eaa4330f69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00aa266b_688f4551",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-04-01T04:52:40Z",
+      "side": 1,
+      "message": "IMO check this param here is less important here -- we already check it in the previous section.",
+      "range": {
+        "startLine": 1844,
+        "startChar": 23,
+        "endLine": 1844,
+        "endChar": 26
+      },
+      "revId": "0c1f7ba8e8ee8cb83f314950e92eaa4330f69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d2546b_6bbc9789",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-04-01T04:52:40Z",
+      "side": 1,
+      "message": "Actually I think we do not need to navigate the whole menu twice.\nIMHO the \"no nvme\" part could be as simple as the \"/* Diagnostics screen: disabled and hidden item mask */\" section:\n* set mock_diag_storage_test_rv\n* call vb2_diagnostic_menu()\n* check the disabled item mask only\nand not to perform any keypress in this section.\n\nIt is not necessary to navigate the whole menu twice as long as and this could also reduce the complexity of adding new items at this menu.\n\nBut I am fine if you want to navigate these again",
+      "range": {
+        "startLine": 1897,
+        "startChar": 0,
+        "endLine": 1925,
+        "endChar": 32
+      },
+      "revId": "0c1f7ba8e8ee8cb83f314950e92eaa4330f69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
