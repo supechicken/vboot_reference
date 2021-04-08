@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "10d7189b_6adaaaca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-08T05:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18446d3_a3087527",
+      "revId": "ffd0cdf3655814600afdf3a8cd3ae9748afdd7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cc0802f1_1df2ce9c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5754db_e6e1a084",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-08T05:21:50Z",
+      "side": 1,
+      "message": "(took the alternative -- this will go away eventually)",
+      "parentUuid": "16ef4547_a26b0c5c",
+      "revId": "ffd0cdf3655814600afdf3a8cd3ae9748afdd7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b3d29ef_03cae814",
@@ -82,6 +118,24 @@
       "writtenOn": "2021-04-08T04:05:35Z",
       "side": 1,
       "message": "if you want a quick fix to unbreak \u0026 cherry pick, don\u0027t give getcwd a buffer.  use getcwd(NULL, 0) and glibc will malloc the exact size needed.  then free it when you\u0027re done.",
+      "revId": "ffd0cdf3655814600afdf3a8cd3ae9748afdd7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b10ced8_9be28f92",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-08T05:21:50Z",
+      "side": 1,
+      "message": "I went this route, thanks.",
+      "parentUuid": "6b3d29ef_03cae814",
       "revId": "ffd0cdf3655814600afdf3a8cd3ae9748afdd7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
