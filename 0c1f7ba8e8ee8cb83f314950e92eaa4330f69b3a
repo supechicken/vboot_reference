@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef4ca03_0a9e57fe",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-04-08T05:35:23Z",
+      "side": 1,
+      "message": "Yes, to make the KEY_ESC go with the same block of screens.",
+      "parentUuid": "63995e38_74e5e7e2",
+      "range": {
+        "startLine": 1816,
+        "startChar": 0,
+        "endLine": 1816,
+        "endChar": 32
+      },
+      "revId": "0c1f7ba8e8ee8cb83f314950e92eaa4330f69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00aa266b_688f4551",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e61c1e8_87b325e3",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-04-08T05:35:23Z",
+      "side": 1,
+      "message": "I think you are right since we don\u0027t have reinit for menu screen.",
+      "parentUuid": "00aa266b_688f4551",
+      "range": {
+        "startLine": 1844,
+        "startChar": 23,
+        "endLine": 1844,
+        "endChar": 26
+      },
+      "revId": "0c1f7ba8e8ee8cb83f314950e92eaa4330f69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1d2546b_6bbc9789",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-01T04:52:40Z",
       "side": 1,
       "message": "Actually I think we do not need to navigate the whole menu twice.\nIMHO the \"no nvme\" part could be as simple as the \"/* Diagnostics screen: disabled and hidden item mask */\" section:\n* set mock_diag_storage_test_rv\n* call vb2_diagnostic_menu()\n* check the disabled item mask only\nand not to perform any keypress in this section.\n\nIt is not necessary to navigate the whole menu twice as long as and this could also reduce the complexity of adding new items at this menu.\n\nBut I am fine if you want to navigate these again",
+      "range": {
+        "startLine": 1897,
+        "startChar": 0,
+        "endLine": 1925,
+        "endChar": 32
+      },
+      "revId": "0c1f7ba8e8ee8cb83f314950e92eaa4330f69b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d367c5e7_b16215ea",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-04-08T05:35:23Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "b1d2546b_6bbc9789",
       "range": {
         "startLine": 1897,
         "startChar": 0,
