@@ -16,6 +16,24 @@
       "message": "the ToT signer supports signing old branch images.  is this change going to break that flow ?  or does the fallback still work ?",
       "revId": "3e68547aa0a29142efa5c57ad702878e60d59e36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb234036_d5df2749",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-04-08T05:14:50Z",
+      "side": 1,
+      "message": "I changed this to fallback to sb_extract/repack and that should support old images.",
+      "parentUuid": "62acf9ff_256cf4ed",
+      "revId": "3e68547aa0a29142efa5c57ad702878e60d59e36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
