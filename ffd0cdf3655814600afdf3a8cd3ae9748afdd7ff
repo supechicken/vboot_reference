@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ef4547_a26b0c5c",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-04-08T04:05:35Z",
+      "side": 1,
+      "message": "i don\u0027t think we need the path.  use fd\u0027s instead.\n\n int cwd \u003d open(\".\", O_RDONLY | O_CLOEXEC);\n int tmpdir \u003d open(temp_dir_template, O_RDONLY | O_CLOEXEC);\n fchdir(tmpdir);\n close(tmpdir);\n subprocess_run\n fchdir(cwd);\n close(cwd);\n\nalternatively, see below.",
+      "revId": "ffd0cdf3655814600afdf3a8cd3ae9748afdd7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3d29ef_03cae814",
+        "filename": "cgpt/cgpt_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-04-08T04:05:35Z",
+      "side": 1,
+      "message": "if you want a quick fix to unbreak \u0026 cherry pick, don\u0027t give getcwd a buffer.  use getcwd(NULL, 0) and glibc will malloc the exact size needed.  then free it when you\u0027re done.",
+      "revId": "ffd0cdf3655814600afdf3a8cd3ae9748afdd7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
