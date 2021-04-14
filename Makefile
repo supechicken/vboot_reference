@@ -407,6 +407,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2sha256.c \
 	firmware/2lib/2sha512.c \
 	firmware/2lib/2sha_utility.c \
+	firmware/2lib/2struct.c \
 	firmware/2lib/2stub_hwcrypto.c \
 	firmware/2lib/2tpm_bootmode.c \
 	firmware/lib/cgptlib/cgptlib.c \
@@ -519,6 +520,7 @@ HOSTLIB_SRCS = \
 	firmware/2lib/2sha256.c \
 	firmware/2lib/2sha512.c \
 	firmware/2lib/2sha_utility.c \
+	firmware/2lib/2struct.c \
 	firmware/2lib/2stub.c \
 	firmware/2lib/2stub_hwcrypto.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
