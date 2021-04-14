@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8aeb00_e42f04b9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-04-14T23:27:16Z",
+      "side": 1,
+      "message": "I feel like things would read better if you kept this check in the caller tbh. Unconditionally calling a function that really only does something in a special case always looks a bit weird.",
+      "revId": "928548bfd2d1c85778b386923e69271bad202652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e9486c_5be4b75b",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-04-14T23:27:16Z",
+      "side": 1,
+      "message": "Why not just pass the keyblock right away?",
+      "revId": "928548bfd2d1c85778b386923e69271bad202652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da045cfe_68b5f525",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-04-14T23:27:16Z",
+      "side": 1,
+      "message": "nit: technically this can fail, so should probably VB2_TRY()",
+      "revId": "928548bfd2d1c85778b386923e69271bad202652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74012165_01e34a3d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-04-14T23:27:16Z",
+      "side": 1,
+      "message": "nit: Some of these should\u0027ve always been VB2_DEBUG_RAW()",
+      "revId": "928548bfd2d1c85778b386923e69271bad202652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
