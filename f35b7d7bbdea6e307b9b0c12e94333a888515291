@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5df5c6b_1ce7962b",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-04-15T11:04:27Z",
+      "side": 1,
+      "message": "If this is only used for kernel verification, should we separate it out from 2common.c?  And if so, my plan was to put everything in vboot_kernel.c for now, and merge into 2kernel.c once the file has been all cleaned up.  Do you think we should just put it directly in 2kernel.c, if that\u0027s where it will end up eventually?",
+      "parentUuid": "c2374943_57cb0e85",
+      "revId": "f35b7d7bbdea6e307b9b0c12e94333a888515291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d23b1dd_60fa1423",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-14T23:53:33Z",
       "side": 1,
       "message": "Same here... vb2_verify_fw_preamble() is in 2common.c. Or if you want kernel-specific stuff elsewhere maybe put it in 2kernel.c? I agree that our what-goes-where file layout isn\u0027t great, but I\u0027m not sure dumping everything in here really makes it better either.",
+      "revId": "f35b7d7bbdea6e307b9b0c12e94333a888515291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050b347a_08e047b9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-04-15T11:04:27Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m always struggling to comprehend exactly what should go where... Probably vb2_verify_fw_preamble() should move to 2firmware.c?  And same for this function -- should we put it in vboot_kernel.c for now, or move directly to 2kernel.c?",
+      "parentUuid": "1d23b1dd_60fa1423",
       "revId": "f35b7d7bbdea6e307b9b0c12e94333a888515291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
