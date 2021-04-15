@@ -16,6 +16,24 @@
       "message": "You\u0027re now printing this every time when someone boots a self-signed kernel in developer mode on a rolled-forward system, which we probably don\u0027t want. I think it makes sense to just skip this check entirely when !need_keyblock_valid. There seems little reason why we\u0027d care to check this in developer mode if we\u0027re not gonna do anything about it anyway.",
       "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1df637b_fe3538dc",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-04-15T11:03:19Z",
+      "side": 1,
+      "message": "Yeah, that makes sense.  I was just trying to match the constructs above (e.g. checking keyblock version), and figured printing some extra information wouldn\u0027t hurt.  Should we change those too?",
+      "parentUuid": "fafcc204_88194944",
+      "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
