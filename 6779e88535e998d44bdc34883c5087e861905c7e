@@ -52,6 +52,24 @@
       "parentUuid": "c1df637b_fe3538dc",
       "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e325cfa9_2b3f0549",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-04-16T07:48:12Z",
+      "side": 1,
+      "message": "Re. skipping messages in keyblocks: Let\u0027s start merging this CL train, and figure out the correct logic (below), and update this in a later CL?\n\nRe. keyblock flags mismatch.  Maybe I\u0027m missing something here, but my understanding is:\n\n(1) If developer mode is enabled, but FWMP_ENABLE_OFFICIAL_ONLY and DEV_BOOT_SIGNED_ONLY are both disabled, need_keyblock_valid \u003d\u003d 0.  That means we\u0027ll be able to boot any kernel, regardless of keyblock flags.  This seems logical, since we want to give the user full control over their machine in developer mode.\n\n(2) If developer mode is enabled, and at least one of FWMP_ENABLE_OFFICIAL_ONLY or DEV_BOOT_SIGNED_ONLY are enabled, need_keyblock_valid \u003d\u003d 1.  That means keyblock flag mismatches will not boot.\n\nOr would you disagree about (1), under the assumption that the developer could enable/disable the flags at will anyways?",
+      "parentUuid": "e65fdc4c_0c1f8458",
+      "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
