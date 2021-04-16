@@ -34,6 +34,24 @@
       "parentUuid": "fafcc204_88194944",
       "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65fdc4c_0c1f8458",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-04-16T00:51:33Z",
+      "side": 1,
+      "message": "Yeah, actually, I think the same counts for the keyblock version check. Would probably make sense to skip the message there as well (only for the actual comparison with the TPM version, the check for 0xffff still makes sense).\n\nAlso, while we\u0027re mucking around in here, I\u0027m actually confused why we still allow booting with !need_keyblock_valid when the keyblock flags mismatch. Kinda defeats the purpose of an \"allow booting in developer mode\" flag if that doesn\u0027t actually control anything. This is not a security issue and I guess we\u0027ve lived with it so far, but for consistency maybe we should consider making that check mandatory even without need_keyblock_valid.",
+      "parentUuid": "c1df637b_fe3538dc",
+      "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
