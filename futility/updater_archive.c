@@ -47,7 +47,7 @@
  *  - rootkey.$WLTAG
  *  - vblock_A.$WLTAG
  *  - vblock_B.$WLTAG
- * The $WLTAG should come from VPD value 'whitelabel_tag', or the
+ * The $WLTAG should come from VPD value 'whitelabel_tag', 'rebrand' or the
  * 'customization_id'. Note 'customization_id' is in format LOEM[-VARIANT] and
  * we can only take LOEM as $WLTAG, for example A-B => $WLTAG=A.
  *
@@ -62,7 +62,7 @@
  *  - vblock_A.$SIGID
  *  - vblock_B.$SIGID
  * If $SIGID starts with 'sig-id-in-*' then we have to replace it by VPD value
- * 'whitelabel_tag' as '$MODEL-$WLTAG'.
+ * 'whitelabel_tag' or 'rebrand' as '$MODEL-$WLTAG'.
  */
 
 static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
@@ -74,6 +74,7 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const DIR_MODELS = "models",
 		  * const DEFAULT_MODEL_NAME = "default",
 		  * const VPD_WHITELABEL_TAG = "whitelabel_tag",
+		  * const VPD_REBRAND = "rebrand",
 		  * const VPD_CUSTOMIZATION_ID = "customization_id",
 		  * const ENV_VAR_MODEL_DIR = "${MODEL_DIR}",
 		  * const PATH_STARTSWITH_KEYSET = "keyset/",
