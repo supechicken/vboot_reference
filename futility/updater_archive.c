@@ -50,7 +50,7 @@
  *  - rootkey.$WLTAG
  *  - vblock_A.$WLTAG
  *  - vblock_B.$WLTAG
- * The $WLTAG should come from VPD value 'whitelabel_tag', or the
+ * The $WLTAG should come from VPD value 'whitelabel_tag', 'rebrand' or the
  * 'customization_id'. Note 'customization_id' is in format LOEM[-VARIANT] and
  * we can only take LOEM as $WLTAG, for example A-B => $WLTAG=A.
  *
@@ -65,7 +65,7 @@
  *  - vblock_A.$SIGID
  *  - vblock_B.$SIGID
  * If $SIGID starts with 'sig-id-in-*' then we have to replace it by VPD value
- * 'whitelabel_tag' as '$MODEL-$WLTAG'.
+ * 'whitelabel_tag' or 'rebrand' as '$MODEL-$WLTAG'.
  */
 
 static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
@@ -77,6 +77,7 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const DIR_MODELS = "models",
 		  * const DEFAULT_MODEL_NAME = "default",
 		  * const VPD_WHITELABEL_TAG = "whitelabel_tag",
+		  * const VPD_REBRAND = "rebrand",
 		  * const VPD_CUSTOMIZATION_ID = "customization_id",
 		  * const ENV_VAR_MODEL_DIR = "${MODEL_DIR}",
 		  * const PATH_STARTSWITH_KEYSET = "keyset/",
@@ -872,7 +873,7 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 }
 
 /*
- * Determines the signature ID to use for white label.
+ * Determines the signature ID to use for white label or rebrand.
  * Returns the signature ID for looking up rootkey and vblock files.
  * Caller must free the returned string.
  */
@@ -880,24 +881,29 @@ static char *resolve_signature_id(struct model_config *model, const char *image)
 {
 	int is_unibuild = model->signature_id ? 1 : 0;
 	char *wl_tag = vpd_get_value(image, VPD_WHITELABEL_TAG);
+	char *rebrand = vpd_get_value(image, VPD_REBRAND_TAG);
 	char *sig_id = NULL;
 
 	/* Unified build: $model.$wl_tag, or $model (b/126800200). */
 	if (is_unibuild) {
-		if (!wl_tag) {
-			WARN("No VPD '%s' set for white label - use model name "
-			     "'%s' as default.\n", VPD_WHITELABEL_TAG,
-			     model->name);
+		if (!wl_tag && !rebrand) {
+			WARN("No VPD '%s' set for white label or '%s' set "
+			     "for rebrand - use model name '%s' as default.\n",
+			     VPD_WHITELABEL_TAG, VPD_REBRAND_TAG, model->name);
 			return strdup(model->name);
 		}
 
-		ASPRINTF(&sig_id, "%s-%s", model->name, wl_tag);
+		if (wl_tag)
+			ASPRINTF(&sig_id, "%s-%s", model->name, wl_tag);
+		else if (rebrand)
+			ASPRINTF(&sig_id, "%s-%s", model->name, rebrand);
 		free(wl_tag);
+		free(rebrand);
 		return sig_id;
 	}
 
 	/* Non-Unibuild: Upper($wl_tag), or Upper(${cid%%-*}). */
-	if (!wl_tag) {
+	if (!wl_tag && !rebrand) {
 		char *cid = vpd_get_value(image, VPD_CUSTOMIZATION_ID);
 		if (cid) {
 			/* customization_id in format LOEM[-VARIANT]. */
@@ -907,6 +913,12 @@ static char *resolve_signature_id(struct model_config *model, const char *image)
 			wl_tag = cid;
 		}
 	}
+
+	if (rebrand) {
+		str_convert(rebrand, toupper);
+		return rebrand;
+	}
+
 	if (wl_tag)
 		str_convert(wl_tag, toupper);
 	return wl_tag;
