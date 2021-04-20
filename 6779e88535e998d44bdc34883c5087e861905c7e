@@ -70,6 +70,24 @@
       "parentUuid": "e65fdc4c_0c1f8458",
       "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caac9845_ee296428",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-04-20T00:09:33Z",
+      "side": 1,
+      "message": "\u003e Or would you disagree about (1), under the assumption that the developer could enable/disable the flags at will anyways?\n\nYes. For self-signed keyblocks that\u0027s not a security feature (because the self-signer can just set that flag however they want), it\u0027s more of a \"make sure I don\u0027t do anything I didn\u0027t intend by accident\" feature. I think we should keep honoring that even in dev mode.",
+      "parentUuid": "e325cfa9_2b3f0549",
+      "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
