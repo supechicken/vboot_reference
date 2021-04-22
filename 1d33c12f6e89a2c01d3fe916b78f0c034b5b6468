@@ -16,6 +16,24 @@
       "message": "I see you left GPT_SUCCESS below, so leave it here as well? Probably a good idea to highlight that those don\u0027t return VB2_ERROR stuff.",
       "revId": "1d33c12f6e89a2c01d3fe916b78f0c034b5b6468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a630b66_b9b1f4a4",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-04-22T11:06:12Z",
+      "side": 1,
+      "message": "My intention was to only explicitly compare return values on success, which I\u0027d also do for functions like memcmp().  But if you prefer to always explicitly specify values for non-vboot functions, we could do that?",
+      "parentUuid": "5924904f_ba5c6561",
+      "revId": "1d33c12f6e89a2c01d3fe916b78f0c034b5b6468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
