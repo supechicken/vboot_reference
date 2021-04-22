@@ -88,6 +88,24 @@
       "parentUuid": "e325cfa9_2b3f0549",
       "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e659351e_dfff31bd",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-04-22T11:01:05Z",
+      "side": 1,
+      "message": "Fixes in CL:2846251 and CL:2846252.",
+      "parentUuid": "caac9845_ee296428",
+      "revId": "6779e88535e998d44bdc34883c5087e861905c7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
