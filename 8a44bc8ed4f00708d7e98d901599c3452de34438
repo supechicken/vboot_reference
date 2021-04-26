@@ -16,6 +16,24 @@
       "message": "Why do we need this CL for minidiag?",
       "revId": "8a44bc8ed4f00708d7e98d901599c3452de34438",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23b029a_8a42d686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-04-26T05:47:29Z",
+      "side": 1,
+      "message": "it\u0027s part of the vboot migration that we cut the branch between a series of refactoring. I\u0027d agree to have this so it\u0027s more completed. see 181739551.",
+      "parentUuid": "0a1ed40e_d3de5b9d",
+      "revId": "8a44bc8ed4f00708d7e98d901599c3452de34438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
