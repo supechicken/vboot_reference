@@ -134,6 +134,13 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
  */
 #define VB_DISK_FLAG_EXTERNAL_GPT (1 << 16)
 
+/*
+ * Search for kernels by sector, rather than by partition.  Only sectors near
+ * the start and end of disks are considered, and the kernel must start exactly
+ * at the first byte of the sector.
+ */
+#define VB_DISK_FLAG_SECTOR_SEARCH (1 << 17)
+
 /* Information on a single disk */
 typedef struct VbDiskInfo {
 	/* Disk handle */

@@ -71,6 +71,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	VbDiskInfo* disk_info = NULL;
 	uint32_t disk_count = 0;
 	uint32_t i;
+	vb2_error_t new_rv;
 
 	lkp.disk_handle = NULL;
 
@@ -81,7 +82,9 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 
 	/* Loop over disks */
 	for (i = 0; i < disk_count; i++) {
-		VB2_DEBUG("trying disk %d\n", (int)i);
+		VB2_DEBUG("trying disk %d (%s search)\n", (int)i,
+			  (get_info_flags & VB_DISK_FLAG_SECTOR_SEARCH) ?
+			  "sector" : "partition");
 
 		if (!is_valid_disk(&disk_info[i], get_info_flags)) {
 			VB2_DEBUG("  skipping: bytes_per_lba=%" PRIu64
@@ -91,9 +94,13 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 				  disk_info[i].flags);
 			continue;
 		}
-
 		lkp.disk_handle = disk_info[i].handle;
-		vb2_error_t new_rv = LoadKernel(ctx, &lkp, &disk_info[i]);
+
+		if (get_info_flags & VB_DISK_FLAG_SECTOR_SEARCH) {
+			new_rv = LoadKernelSector(ctx, &lkp, &disk_info[i]);
+		} else {
+			new_rv = LoadKernel(ctx, &lkp, &disk_info[i]);
+		}
 		VB2_DEBUG("LoadKernel() = %#x\n", new_rv);
 
 		/* Stop now if we found a kernel. */
@@ -108,7 +115,8 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	}
 
 	/* If we drop out of the loop, we didn't find any usable kernel. */
-	if (get_info_flags & VB_DISK_FLAG_FIXED) {
+	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
+	    !(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)) {
 		switch (rv) {
 		case VB2_ERROR_LK_INVALID_KERNEL_FOUND:
 			vb2api_fail(ctx, VB2_RECOVERY_RW_INVALID_OS, rv);
@@ -223,10 +231,11 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			VB2_DEBUG("NO_BOOT in RECOVERY mode\n");
 
 		/* Recovery boot.  This has UI. */
-		if (vb2_allow_recovery(ctx))
+		if (vb2_allow_recovery(ctx)) {
 			VB2_TRY(vb2_manual_recovery_menu(ctx));
-		else
+		} else {
 			VB2_TRY(vb2_broken_recovery_menu(ctx));
+		}
 	} else if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
 		   vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
 		/*
