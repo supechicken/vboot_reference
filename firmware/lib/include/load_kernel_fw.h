@@ -62,4 +62,6 @@ typedef struct LoadKernelParams {
  */
 vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params);
 
+vb2_error_t LoadKernelSector(struct vb2_context *ctx, LoadKernelParams *params);
+
 #endif  /* VBOOT_REFERENCE_LOAD_KERNEL_FW_H_ */

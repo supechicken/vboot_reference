@@ -72,6 +72,7 @@ const Param sys_param_list[] = {
   {"loc_idx", CAN_WRITE, "Localization index for firmware screens"},
   {"mainfw_act", IS_STRING, "Active main firmware"},
   {"mainfw_type", IS_STRING, "Active main firmware type"},
+  {"minios_priority", CAN_WRITE, "miniOS priority (0=MINIOS-A, 1=MINIOS-B)"},
   {"nvram_cleared", CAN_WRITE, "Have NV settings been lost?  Write 0 to clear"},
   {"display_request", CAN_WRITE, "Should we initialize the display at boot?"},
   {"phase_enforcement", 0,

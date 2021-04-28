@@ -237,6 +237,8 @@ static vb2_error_t vb2_verify_kernel_vblock(
 		return VB2_ERROR_KERNEL_KEYBLOCK_REC_FLAG;
 	}
 
+	/* TODO: Check VB2_KEYBLOCK_FLAG_EXTERNAL here. */
+
 	/* Check for rollback of key version except in recovery mode. */
 	enum vb2_boot_mode boot_mode = get_boot_mode(ctx);
 	uint32_t key_version = keyblock->data_key.key_version;
@@ -450,6 +452,108 @@ static vb2_error_t vb2_load_partition(
 	}
 
 	return VB2_SUCCESS;
+}
+
+static vb2_error_t try_kernel(struct vb2_context *ctx, LoadKernelParams *params,
+			      uint64_t sector) {
+	VbExStream_t stream;
+	uint64_t bytes_left =
+		(params->streaming_lba_count - sector) * params->bytes_per_lba;
+	const uint32_t lpflags = 0;
+	vb2_error_t rv = VB2_ERROR_LK_NO_DISK_FOUND;
+
+	if (VbExStreamOpen(params->disk_handle, sector, bytes_left, &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		return rv;
+	}
+
+	rv = vb2_load_partition(ctx, stream, lpflags, params);
+	VB2_DEBUG("try_kernel: vb2_load_partition returned: %d\n", rv);
+
+	VbExStreamClose(stream);
+	return rv;
+}
+
+static vb2_error_t try_sectors(struct vb2_context *ctx,
+			       LoadKernelParams *params, uint64_t start,
+			       uint64_t count)
+{
+	const uint32_t buf_size = count * params->bytes_per_lba;
+	char *buf;
+	VbExStream_t stream;
+	uint64_t isector;
+	vb2_error_t rv = VB2_ERROR_LK_NO_DISK_FOUND;
+
+	buf = malloc(buf_size);
+	if (buf == NULL) {
+		VB2_DEBUG("Unable to allocate disk read buffer.\n");
+		return rv;
+	}
+
+	if (VbExStreamOpen(params->disk_handle, start, count, &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		free(buf);
+		return rv;
+	}
+	if (VbExStreamRead(stream, buf_size, buf)) {
+		VB2_DEBUG("Unable to read disk.\n");
+		free(buf);
+		VbExStreamClose(stream);
+		return rv;
+	}
+	VbExStreamClose(stream);
+
+	for (isector = 0; isector < count; isector++) {
+		if (memcmp(buf + isector * params->bytes_per_lba,
+			   VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE))
+			continue;
+		VB2_DEBUG("Match on sector %" PRIu64 " / %" PRIu64 "\n",
+			  start + isector,
+			  params->streaming_lba_count);
+		rv = try_kernel(ctx, params, start + isector);
+		if (rv == VB2_SUCCESS)
+			break;
+	}
+
+	free(buf);
+	return rv;
+}
+
+static vb2_error_t try_sector_region(struct vb2_context *ctx,
+				     LoadKernelParams *params,
+				     int bottom_region)
+{
+	const uint64_t sectors_per_kb = 1024 / params->bytes_per_lba;
+	const uint64_t check_count = 256 * 1024 * sectors_per_kb;  // 256 MB
+	const uint64_t batch_count = 16 * sectors_per_kb;  // 16 KB
+	uint64_t start;
+	vb2_error_t rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
+
+	if (!bottom_region) {
+		VB2_DEBUG("Checking start of disk for kernels...\n");
+		for (start = 0; start < check_count; start += batch_count)
+			rv = try_sectors(ctx, params, start, batch_count);
+	} else {
+		VB2_DEBUG("Checking end of disk for kernels...\n");
+		for (start = params->streaming_lba_count - check_count;
+		     start < params->streaming_lba_count; start += batch_count)
+			rv = try_sectors(ctx, params, start, batch_count);
+	}
+
+	return rv;
+}
+
+vb2_error_t LoadKernelSector(struct vb2_context *ctx, LoadKernelParams *params)
+{
+	vb2_error_t rv;
+	int bottom_region_first = vb2_nv_get(ctx, VB2_NV_MINIOS_PRIORITY);
+
+	rv = try_sector_region(ctx, params, bottom_region_first);
+	if (rv == VB2_SUCCESS)
+		return rv;
+
+	rv = try_sector_region(ctx, params, !bottom_region_first);
+	return rv;
 }
 
 vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
