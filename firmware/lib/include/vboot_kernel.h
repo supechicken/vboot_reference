@@ -14,8 +14,6 @@
 #include "load_kernel_fw.h"
 #include "vboot_api.h"
 
-struct vb2_context;
-
 /**
  * Attempt loading a kernel from the specified type(s) of disks.
  *
@@ -27,5 +25,6 @@ struct vb2_context;
  * @return VB2_SUCCESS or the most specific VB2_ERROR_LK error.
  */
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags);
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx);
 
 #endif  /* VBOOT_REFERENCE_VBOOT_KERNEL_H_ */
