@@ -97,7 +97,14 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 		lkp.boot_flags |= disk_info[i].flags & VB_DISK_FLAG_EXTERNAL_GPT
 				? BOOT_FLAG_EXTERNAL_GPT : 0;
 
-		vb2_error_t new_rv = LoadKernel(ctx, &lkp);
+		vb2_error_t new_rv;
+		if (get_info_flags & VB_DISK_FLAG_SECTOR_SEARCH) {
+			VB2_DEBUG("Calling LoadKernelSector...\n");
+			new_rv = LoadKernelSector(ctx, &lkp);
+		} else {
+			VB2_DEBUG("Calling LoadKernel...\n");
+			new_rv = LoadKernel(ctx, &lkp);
+		}
 		VB2_DEBUG("LoadKernel() = %#x\n", new_rv);
 
 		/* Stop now if we found a kernel. */
@@ -228,7 +235,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 		/* Recovery boot.  This has UI. */
 		if (vb2_allow_recovery(ctx))
-			VB2_TRY(vb2_manual_recovery_menu(ctx));
+			VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED | VB_DISK_FLAG_SECTOR_SEARCH);
+			/*VB2_TRY(vb2_manual_recovery_menu(ctx));*/
 		else
 			VB2_TRY(vb2_broken_recovery_menu(ctx));
 	} else if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
