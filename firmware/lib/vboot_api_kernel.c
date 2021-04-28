@@ -131,38 +131,41 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	return rv;
 }
 
-static vb2_error_t vb2_kernel_init_kparams(struct vb2_context *ctx,
-					   VbSelectAndLoadKernelParams *kparams)
+static vb2_error_t vb2_kernel_init_kparams(struct vb2_context *ctx)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
 	/* Fill in params for calls to LoadKernel() */
 	memset(&lkp, 0, sizeof(lkp));
-	lkp.kernel_buffer = kparams->kernel_buffer;
-	lkp.kernel_buffer_size = kparams->kernel_buffer_size;
+	lkp.kernel_buffer = sd->kparams->kernel_buffer;
+	lkp.kernel_buffer_size = sd->kparams->kernel_buffer_size;
 
 	/* Clear output params in case we fail */
-	kparams->disk_handle = NULL;
-	kparams->partition_number = 0;
-	kparams->bootloader_address = 0;
-	kparams->bootloader_size = 0;
-	kparams->flags = 0;
-	memset(kparams->partition_guid, 0, sizeof(kparams->partition_guid));
+	sd->kparams->disk_handle = NULL;
+	sd->kparams->partition_number = 0;
+	sd->kparams->bootloader_address = 0;
+	sd->kparams->bootloader_size = 0;
+	sd->kparams->flags = 0;
+	memset(sd->kparams->partition_guid, 0,
+	       sizeof(sd->kparams->partition_guid));
 
 	return VB2_SUCCESS;
 }
 
-static void vb2_kernel_fill_kparams(struct vb2_context *ctx,
-				    VbSelectAndLoadKernelParams *kparams)
+static void vb2_kernel_fill_kparams(struct vb2_context *ctx)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
 	/* Save disk parameters */
-	kparams->disk_handle = lkp.disk_handle;
-	kparams->partition_number = lkp.partition_number;
-	kparams->bootloader_address = lkp.bootloader_address;
-	kparams->bootloader_size = lkp.bootloader_size;
-	kparams->flags = lkp.flags;
-	kparams->kernel_buffer = lkp.kernel_buffer;
-	kparams->kernel_buffer_size = lkp.kernel_buffer_size;
-	memcpy(kparams->partition_guid, lkp.partition_guid,
-	       sizeof(kparams->partition_guid));
+	sd->kparams->disk_handle = lkp.disk_handle;
+	sd->kparams->partition_number = lkp.partition_number;
+	sd->kparams->bootloader_address = lkp.bootloader_address;
+	sd->kparams->bootloader_size = lkp.bootloader_size;
+	sd->kparams->flags = lkp.flags;
+	sd->kparams->kernel_buffer = lkp.kernel_buffer;
+	sd->kparams->kernel_buffer_size = lkp.kernel_buffer_size;
+	memcpy(sd->kparams->partition_guid, lkp.partition_guid,
+	       sizeof(sd->kparams->partition_guid));
 }
 
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
@@ -175,7 +178,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	   to vb2_nv_get and vb2_nv_set. */
 	vb2_nv_init(ctx);
 
-	VB2_TRY(vb2_kernel_init_kparams(ctx, kparams));
+	sd->kparams = kparams;
+
+	VB2_TRY(vb2_kernel_init_kparams(ctx));
 
 	VB2_TRY(vb2api_kernel_phase1(ctx));
 
@@ -263,6 +268,6 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		return VB2_ERROR_ESCAPE_NO_BOOT;
 	}
 
-	vb2_kernel_fill_kparams(ctx, kparams);
+	vb2_kernel_fill_kparams(ctx);
 	return VB2_SUCCESS;
 }
