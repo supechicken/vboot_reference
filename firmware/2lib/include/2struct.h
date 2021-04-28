@@ -20,6 +20,7 @@
 #include "2constants.h"
 #include "2crypto.h"
 #include "2sysincludes.h"
+#include "vboot_api.h"
 
 /* Flags for vb2_shared_data.flags */
 enum vb2_shared_data_flags {
@@ -235,12 +236,7 @@ struct vb2_shared_data {
 	 * stage memory requirements.
 	 */
 
-	/*
-	 * Formerly a pointer to vboot1 shared data header ("VBSD").  Caller
-	 * may now export a copy of VBSD via vb2api_export_vbsd().
-	 * TODO: Remove this field and bump struct_version_major.
-	 */
-	uintptr_t reserved0;
+	VbSelectAndLoadKernelParams *kparams;
 
 	/*
 	 * Offset and size of packed kernel key in work buffer.  Size is 0 if
