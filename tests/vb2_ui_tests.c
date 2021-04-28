@@ -533,6 +533,13 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
 	return mock_vbtlk_retval[i];
 }
 
+vb2_error_t VbTryLoadNbrKernel(struct vb2_context *c)
+{
+	/* TODO: Figure out why this gets called when CTRL+M is used as the
+	   keyboard shortcut for triggering NBR boot flow. */
+	return VB2_ERROR_MOCK;
+}
+
 int vb2_allow_recovery(struct vb2_context *c)
 {
 	return mock_allow_recovery;
