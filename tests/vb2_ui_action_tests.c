@@ -64,6 +64,8 @@ static int mock_get_screen_info_called;
 
 static vb2_error_t mock_vbtlk_retval;
 static uint32_t mock_vbtlk_expected_flag;
+static vb2_error_t mock_vbtlk_minios_retval;
+static uint32_t mock_vbtlk_minios_called;
 
 static int mock_run_altfw_called;
 static uint32_t mock_altfw_last;
@@ -357,6 +359,8 @@ static void reset_common_data(void)
 	/* For VbTryLoadKernel */
 	mock_vbtlk_retval = VB2_ERROR_MOCK;
 	mock_vbtlk_expected_flag = MOCK_IGNORE;
+	mock_vbtlk_minios_retval = VB2_ERROR_MOCK;
+	mock_vbtlk_minios_called = 0;
 
 	/* For vb2ex_run_altfw */
 	mock_run_altfw_called = 0;
@@ -481,6 +485,12 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
 	TEST_EQ(mock_vbtlk_expected_flag, disk_flags,
 		"  unexpected disk_flags");
 	return mock_vbtlk_retval;
+}
+
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *c)
+{
+	mock_vbtlk_minios_called++;
+	return mock_vbtlk_minios_retval;
 }
 
 vb2_error_t vb2ex_run_altfw(uint32_t altfw_id)
@@ -805,6 +815,8 @@ static void manual_recovery_action_tests(void)
 	TEST_EQ(manual_recovery_action(&mock_ui_context), VB2_REQUEST_UI_EXIT,
 		"EXIT");
 	TEST_EQ(mock_get_screen_info_called, 0, "  no change_screen");
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
 
 	/* NO_DISK_FOUND */
 	reset_common_data();
@@ -813,6 +825,8 @@ static void manual_recovery_action_tests(void)
 		VB2_REQUEST_UI_CONTINUE, "NO_DISK_FOUND");
 	screen_state_eq(mock_ui_context.state, VB2_SCREEN_RECOVERY_SELECT,
 			MOCK_IGNORE, MOCK_IGNORE);
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
 
 	/* NO_DISK_FOUND -> INVALID_KERNEL -> SUCCESS */
 	reset_common_data();
@@ -828,6 +842,8 @@ static void manual_recovery_action_tests(void)
 		"EXIT");
 	screen_state_eq(mock_ui_context.state, VB2_SCREEN_RECOVERY_INVALID,
 			MOCK_IGNORE, MOCK_IGNORE);
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
 
 	/* INVALID_KERNEL */
 	reset_common_data();
@@ -837,6 +853,8 @@ static void manual_recovery_action_tests(void)
 		VB2_REQUEST_UI_CONTINUE, "INVALID_KERNEL");
 	screen_state_eq(mock_ui_context.state, VB2_SCREEN_RECOVERY_INVALID,
 			MOCK_IGNORE, MOCK_IGNORE);
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
 
 	/* INVALID_KERNEL -> NO_DISK_FOUND -> SUCCESS */
 	reset_common_data();
@@ -852,6 +870,20 @@ static void manual_recovery_action_tests(void)
 		"EXIT");
 	screen_state_eq(mock_ui_context.state, VB2_SCREEN_RECOVERY_SELECT,
 			MOCK_IGNORE, MOCK_IGNORE);
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
+
+	/* NO_DISK_FOUND -> CTRL+R = load miniOS kernel */
+	reset_common_data();
+	mock_ui_context.key = VB_KEY_CTRL('R');
+	mock_vbtlk_minios_retval = VB2_SUCCESS;
+	set_mock_vbtlk(VB2_ERROR_LK_NO_DISK_FOUND, VB_DISK_FLAG_REMOVABLE);
+	TEST_EQ(manual_recovery_action(&mock_ui_context),
+		VB2_REQUEST_UI_CONTINUE, "NO_DISK_FOUND");
+	TEST_EQ(manual_recovery_action(&mock_ui_context),
+		VB2_REQUEST_UI_EXIT, "miniOS: ctrl+r");
+	TEST_EQ(mock_vbtlk_minios_called, 1,
+		"  VbTryLoadMiniOsKernel called once");
 
 	VB2_DEBUG("...done.\n");
 }

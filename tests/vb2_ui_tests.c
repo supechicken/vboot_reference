@@ -81,6 +81,8 @@ static uint32_t mock_altfw_count;
 static vb2_error_t mock_vbtlk_retval[32];
 static uint32_t mock_vbtlk_expected_flag[32];
 static int mock_vbtlk_total;
+static vb2_error_t mock_vbtlk_minios_retval;
+static uint32_t mock_vbtlk_minios_called;
 
 static int mock_allow_recovery;
 
@@ -328,6 +330,8 @@ static void reset_common_data(enum reset_type t)
 	memset(mock_vbtlk_retval, 0, sizeof(mock_vbtlk_retval));
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_total = 0;
+	mock_vbtlk_minios_retval = VB2_ERROR_MOCK;
+	mock_vbtlk_minios_called = 0;
 
 	/* For vb2_allow_recovery */
 	mock_allow_recovery = t == FOR_MANUAL_RECOVERY;
@@ -511,6 +515,12 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
 		"  unexpected disk_flags");
 
 	return mock_vbtlk_retval[i];
+}
+
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *c)
+{
+	mock_vbtlk_minios_called++;
+	return mock_vbtlk_minios_retval;
 }
 
 int vb2api_allow_recovery(struct vb2_context *c)
@@ -843,6 +853,8 @@ static void manual_recovery_tests(void)
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_REQUEST_SHUTDOWN,
 		"timeout, shutdown");
 	TEST_EQ(mock_displayed_count, 1, "  root screen only");
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
 
 	/* Power button short pressed = shutdown request */
 	if (!DETACHABLE) {
@@ -852,6 +864,8 @@ static void manual_recovery_tests(void)
 			VB2_REQUEST_SHUTDOWN,
 			"power button short pressed = shutdown");
 	}
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
 
 	/* Boots if we have a valid image on first try */
 	reset_common_data(FOR_MANUAL_RECOVERY);
@@ -859,6 +873,8 @@ static void manual_recovery_tests(void)
 	add_mock_vbtlk(VB2_ERROR_MOCK, VB_DISK_FLAG_REMOVABLE);
 	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_SUCCESS,
 		"boots if valid on first try");
+	TEST_EQ(mock_vbtlk_minios_called, 0,
+		"  VbTryLoadMiniOsKernel not called");
 
 	/* Boots eventually if we get a valid image later */
 	reset_common_data(FOR_MANUAL_RECOVERY);
@@ -1050,6 +1066,16 @@ static void manual_recovery_tests(void)
 		"Reboot immediately after request diagnostics");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 1,
 		"VB2_NV_DIAG_REQUEST is set");
+
+	/* Ctrl+R = load miniOS kernel */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress(0);
+	add_mock_key(VB_KEY_CTRL('R'), 1);
+	mock_vbtlk_minios_retval = VB2_SUCCESS;
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_SUCCESS,
+		"Ctrl+R = load miniOS kernel");
+	TEST_EQ(mock_vbtlk_minios_called, 1,
+		"  VbTryLoadMiniOsKernel called once");
 
 	VB2_DEBUG("...done.\n");
 }
