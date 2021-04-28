@@ -54,13 +54,14 @@ static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-test_mockable
-vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
+static vb2_error_t VbTryLoadKernelImpl(struct vb2_context *ctx,
+				       uint32_t get_info_flags, int minios)
 {
 	vb2_error_t rv = VB2_ERROR_LK_NO_DISK_FOUND;
 	VbDiskInfo* disk_info = NULL;
 	uint32_t disk_count = 0;
 	uint32_t i;
+	vb2_error_t new_rv;
 
 	lkp.disk_handle = NULL;
 
@@ -100,8 +101,14 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 		lkp.boot_flags |= disk_info[i].flags & VB_DISK_FLAG_EXTERNAL_GPT
 				? BOOT_FLAG_EXTERNAL_GPT : 0;
 
-		vb2_error_t new_rv = LoadKernel(ctx, &lkp);
-		VB2_DEBUG("LoadKernel() = %#x\n", new_rv);
+		if (minios) {
+			new_rv = LoadMiniOsKernel(ctx, &lkp,
+						  &disk_info[i]);
+			VB2_DEBUG("LoadMiniOsKernel() = %#x\n", new_rv);
+		} else {
+			new_rv = LoadKernel(ctx, &lkp);
+			VB2_DEBUG("LoadKernel() = %#x\n", new_rv);
+		}
 
 		/* Stop now if we found a kernel. */
 		if (VB2_SUCCESS == new_rv) {
@@ -170,6 +177,18 @@ static void vb2_kernel_fill_kparams(struct vb2_context *ctx,
 	kparams->kernel_buffer_size = lkp.kernel_buffer_size;
 	memcpy(kparams->partition_guid, lkp.partition_guid,
 	       sizeof(kparams->partition_guid));
+}
+
+test_mockable
+vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
+{
+	return VbTryLoadKernelImpl(ctx, get_info_flags, 0);
+}
+
+test_mockable
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx)
+{
+	return VbTryLoadKernelImpl(ctx, VB_DISK_FLAG_FIXED, 1);
 }
 
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,

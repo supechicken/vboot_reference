@@ -106,4 +106,19 @@ vb2_error_t VbBootDeveloperLegacyMenu(struct vb2_context *ctx);
  */
 vb2_error_t VbBootRecoveryLegacyMenu(struct vb2_context *ctx);
 
+/**
+ * Attempt loading a miniOS kernel from internal disk.
+ *
+ * Scans sectors at the start and end of the disk, and looks for miniOS kernels
+ * starting at the beginning of the sector.  Attempts loading any miniOS
+ * kernels found.
+ *
+ * If successful, sets lkp.disk_handle to the disk for the kernel and returns
+ * VB2_SUCCESS.
+ *
+ * @param ctx			Vboot context
+ * @return VB2_SUCCESS or the most specific VB2_ERROR_LK error.
+ */
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_VBOOT_KERNEL_H_ */

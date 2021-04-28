@@ -699,6 +699,7 @@ TEST_NAMES = \
 	tests/vboot_ui_legacy_clamshell_tests \
 	tests/vboot_ui_legacy_menu_tests \
 	tests/vboot_ui_legacy_tests \
+	tests/vboot_kernel2_tests \
 	tests/verify_kernel
 
 ifeq (${MOCK_TPM}${TPM2_MODE},)
@@ -1243,6 +1244,7 @@ endif
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel4_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel2_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_ui_legacy_clamshell_beep_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_ui_legacy_clamshell_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_ui_legacy_menu_tests
