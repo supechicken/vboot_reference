@@ -23,4 +23,8 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 		       VbSelectAndLoadKernelParams *params,
 		       VbDiskInfo *disk_info);
 
+vb2_error_t LoadKernelNbr(struct vb2_context *ctx,
+			  VbSelectAndLoadKernelParams *params,
+			  VbDiskInfo *disk_info);
+
 #endif  /* VBOOT_REFERENCE_LOAD_KERNEL_FW_H_ */
