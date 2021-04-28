@@ -84,6 +84,8 @@ static uint32_t mock_altfw_count;
 static vb2_error_t mock_vbtlk_retval[32];
 static uint32_t mock_vbtlk_expected_flag[32];
 static int mock_vbtlk_total;
+static vb2_error_t mock_vbtlk_minios_retval;
+static uint32_t mock_vbtlk_minios_called;
 
 static int mock_allow_recovery;
 
@@ -331,6 +333,8 @@ static void reset_common_data(enum reset_type t)
 	memset(mock_vbtlk_retval, 0, sizeof(mock_vbtlk_retval));
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_total = 0;
+	mock_vbtlk_minios_retval = VB2_ERROR_MOCK;
+	mock_vbtlk_minios_called = 0;
 
 	/* For vb2_allow_recovery */
 	mock_allow_recovery = t == FOR_MANUAL_RECOVERY;
@@ -529,6 +533,12 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
 		"  unexpected disk_flags");
 
 	return mock_vbtlk_retval[i];
+}
+
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *c)
+{
+	mock_vbtlk_minios_called++;
+	return mock_vbtlk_minios_retval;
 }
 
 int vb2_allow_recovery(struct vb2_context *c)
@@ -1069,6 +1079,14 @@ static void manual_recovery_tests(void)
 		TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 1,
 			"VB2_NV_DIAG_REQUEST is set");
 	}
+
+	/* Ctrl+R = load miniOS kernel */
+	reset_common_data(FOR_MANUAL_RECOVERY);
+	add_mock_keypress(0);
+	add_mock_key(VB_KEY_CTRL('R'), 1);
+	mock_vbtlk_minios_retval = VB2_SUCCESS;
+	TEST_EQ(vb2_manual_recovery_menu(ctx), VB2_SUCCESS,
+		"Ctrl+R = load miniOS kernel");
 
 	VB2_DEBUG("...done.\n");
 }
