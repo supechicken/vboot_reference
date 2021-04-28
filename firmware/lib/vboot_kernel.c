@@ -449,6 +449,88 @@ static vb2_error_t vb2_load_partition(
 	return VB2_SUCCESS;
 }
 
+static void try_kernel(struct vb2_context *ctx, LoadKernelParams *params,
+		       uint64_t sector, struct vb2_workbuf *wb) {
+	VbExStream_t stream;
+	uint64_t bytes_left =
+		(params->streaming_lba_count - sector) * params->bytes_per_lba;
+	const uint32_t lpflags = 0;
+	vb2_error_t rv;
+
+	if (VbExStreamOpen(params->disk_handle, sector, bytes_left, &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		return;
+	}
+
+	rv = vb2_load_partition(ctx, stream, lpflags, params, wb);
+	VB2_DEBUG("try_kernel: vb2_load_partition returned: %d\n", rv);
+
+	VbExStreamClose(stream);
+}
+
+static void try_sectors(struct vb2_context *ctx, LoadKernelParams *params,
+			uint64_t start, uint64_t count, struct vb2_workbuf *wb)
+{
+	const uint32_t buf_size = count * params->bytes_per_lba;
+	char *buf;
+	VbExStream_t stream;
+	int match;
+	uint64_t isector;
+
+	buf = malloc(buf_size);
+	if (buf == NULL) {
+		VB2_DEBUG("Unable to allocate disk read buffer.\n");
+	}
+
+	if (VbExStreamOpen(params->disk_handle, start, count, &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		free(buf);
+		return;
+	}
+	if (VbExStreamRead(stream, buf_size, buf)) {
+		VB2_DEBUG("Unable to read disk.\n");
+		free(buf);
+		VbExStreamClose(stream);
+		return;
+	}
+
+	for (isector = 0; isector < count; isector++) {
+		match = memcmp(buf + isector * params->bytes_per_lba,
+			       VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE);
+		if (match)
+			continue;
+		VB2_DEBUG("Match on sector %" PRIu64 " / %" PRIu64 "\n",
+			  start + isector,
+			  params->streaming_lba_count);
+		try_kernel(ctx, params, start + isector, wb);
+	}
+
+	free(buf);
+	VbExStreamClose(stream);
+}
+
+vb2_error_t LoadKernelSector(struct vb2_context *ctx, LoadKernelParams *params)
+{
+	const uint64_t check_count =
+		256 * 1024 * 1024 / params->bytes_per_lba;  // 256 MB
+	const uint64_t batch_count = 32;  // 16 KB (assuming 512 byte sectors)
+	uint64_t start;
+	struct vb2_workbuf wb;
+
+	vb2_workbuf_from_ctx(ctx, &wb);
+
+	VB2_DEBUG("Checking start of disk for kernels...\n");
+	for (start = 0; start < check_count; start += batch_count)
+		try_sectors(ctx, params, start, batch_count, &wb);
+
+	VB2_DEBUG("Checking end of disk for kernels...\n");
+	for (start = params->streaming_lba_count - check_count;
+	     start < params->streaming_lba_count; start += batch_count)
+		try_sectors(ctx, params, start, batch_count, &wb);
+
+	return VB2_ERROR_UNKNOWN;
+}
+
 vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);

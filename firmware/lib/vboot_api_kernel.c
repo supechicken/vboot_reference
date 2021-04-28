@@ -64,6 +64,12 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	lkp.disk_handle = NULL;
 
 	/* Find disks */
+	/*
+	 * HACK: Avoid updating depthcharge code to check for both flags right
+	 * now.  Alternatively, require the caller to use both flags together.
+	 */
+	if (get_info_flags & VB_DISK_FLAG_FIXED_SECTOR)
+		get_info_flags |= VB_DISK_FLAG_FIXED;
 	if (VB2_SUCCESS != VbExDiskGetInfo(&disk_info, &disk_count,
 					   get_info_flags))
 		disk_count = 0;
@@ -81,9 +87,14 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 		if (disk_info[i].bytes_per_lba < 512 ||
 			(disk_info[i].bytes_per_lba &
 				(disk_info[i].bytes_per_lba  - 1)) != 0 ||
-					16 > disk_info[i].lba_count ||
-					get_info_flags != (disk_info[i].flags &
-					~VB_DISK_FLAG_EXTERNAL_GPT)) {
+					16 > disk_info[i].lba_count) {
+			/*
+			 * Removed the check on get_info_flags vs. flags here,
+			 * since the two are veering off into different use
+			 * cases.  Perhaps we need two sets of flags?  Or
+			 * perhaps using a flag to trigger sector-search is not
+			 * the best solution?
+			 */
 			VB2_DEBUG("  skipping: bytes_per_lba=%" PRIu64
 				  " lba_count=%" PRIu64 " flags=%#x\n",
 				  disk_info[i].bytes_per_lba,
@@ -99,7 +110,14 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 		lkp.boot_flags |= disk_info[i].flags & VB_DISK_FLAG_EXTERNAL_GPT
 				? BOOT_FLAG_EXTERNAL_GPT : 0;
 
-		vb2_error_t new_rv = LoadKernel(ctx, &lkp);
+		vb2_error_t new_rv;
+		if (get_info_flags & VB_DISK_FLAG_FIXED_SECTOR) {
+			VB2_DEBUG("Calling LoadKernelSector...\n");
+			new_rv = LoadKernelSector(ctx, &lkp);
+		} else {
+			VB2_DEBUG("Calling LoadKernel...\n");
+			new_rv = LoadKernel(ctx, &lkp);
+		}
 		VB2_DEBUG("LoadKernel() = %#x\n", new_rv);
 
 		/* Stop now if we found a kernel. */
@@ -114,7 +132,8 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	}
 
 	/* If we drop out of the loop, we didn't find any usable kernel. */
-	if (get_info_flags & VB_DISK_FLAG_FIXED) {
+	if (get_info_flags & VB_DISK_FLAG_FIXED ||
+	    get_info_flags & VB_DISK_FLAG_FIXED_SECTOR) {
 		switch (rv) {
 		case VB2_ERROR_LK_INVALID_KERNEL_FOUND:
 			vb2api_fail(ctx, VB2_RECOVERY_RW_INVALID_OS, rv);
@@ -230,7 +249,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 		/* Recovery boot.  This has UI. */
 		if (vb2_allow_recovery(ctx))
-			VB2_TRY(vb2_manual_recovery_menu(ctx));
+			VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED_SECTOR);
+			/*VB2_TRY(vb2_manual_recovery_menu(ctx));*/
 		else
 			VB2_TRY(vb2_broken_recovery_menu(ctx));
 	} else if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&

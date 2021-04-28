@@ -94,7 +94,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
  * Disk is fixed.  If this flag is present, disk is internal to the system and
  * not removable.  Example fixed disks: internal SATA SSD, eMMC.
  */
-#define VB_DISK_FLAG_FIXED     0x00000002
+#define VB_DISK_FLAG_FIXED 0x00000002
+#define VB_DISK_FLAG_FIXED_SECTOR 0x00000008
 /*
  * Note that VB_DISK_FLAG_REMOVABLE and VB_DISK_FLAG_FIXED are
  * mutually-exclusive for a single disk.  VbExDiskGetInfo() may specify both
@@ -130,7 +131,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
  * streaming aspects of the disk. If a disk is random-access (i.e.
  * not raw NAND) then these fields are equal.
  */
-#define VB_DISK_FLAG_EXTERNAL_GPT	0x00000004
+#define VB_DISK_FLAG_EXTERNAL_GPT 0x00000004
 
 /* Information on a single disk */
 typedef struct VbDiskInfo {
