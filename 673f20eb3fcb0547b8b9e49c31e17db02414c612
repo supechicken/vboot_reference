@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e14bbd_5623d6ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-04-28T08:38:38Z",
+      "side": 1,
+      "message": "@jwerner and @yupingso: What do you think we should do with kparams?  I can think of three options:\n\n(1) Store a pointer in vb2_context.  Caller fills in the pointer before calling VbSelectAndLoadKernel.  Not sure this fits with our current model, since we don\u0027t really expose anything in vb2_context except for a \"flags\" field.\n\n(2) Store a pointer in vb2_shared_data.  Caller includes kparams as an argument to VbSelectAndLoadKernel, which stores the pointer in vb2_shared_data right away.  That\u0027s what this CL does.  We can use an existing unused field, which is nice.\n\n(3) Merge into vb2_context.  Seems awkward to take up so many fields, when vb2_context is used in so many other contexts. (\u003d\n\n(4) Include as an argument for all functions which require it.  Doesn\u0027t seem ideal, since we would need to add it to a slew of UI functions.\n\nIf our final goal is to move UI to depthcharge, and expose VbTryLoadKernel (or functions just a level above that, like vb2_normal_boot) in the API, then perhaps (4) would work well?  But in the meantime, (2) seems like a nice way of getting rid of the awkward copying between vboot_api_kernel.c\u0027s lkp global and the caller-provided kparams?",
+      "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
