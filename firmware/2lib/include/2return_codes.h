@@ -617,6 +617,12 @@ enum vb2_return_code {
 	/* Escape from NO_BOOT mode is detected. */
 	VB2_ERROR_ESCAPE_NO_BOOT,
 
+	/*
+	 * Keyblock flags don't match current mode in
+	 * vb2_load_kernel_keyblock().
+	 */
+	VB2_ERROR_KERNEL_KEYBLOCK_EXT_FLAG,
+
 	/**********************************************************************
 	 * API-level errors
 	 */

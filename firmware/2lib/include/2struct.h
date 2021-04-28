@@ -364,6 +364,9 @@ struct vb2_signature {
 #define VB2_KEYBLOCK_FLAG_DEVELOPER_1 0x2  /* Developer switch on */
 #define VB2_KEYBLOCK_FLAG_RECOVERY_0 0x4  /* Not recovery mode */
 #define VB2_KEYBLOCK_FLAG_RECOVERY_1 0x8  /* Recovery mode */
+#define VB2_KEYBLOCK_FLAG_EXTERNAL_0 0x10  /* Internal disk */
+#define VB2_KEYBLOCK_FLAG_EXTERNAL_1 0x20  /* External disk */
+#define VB2_KEYBLOCK_FLAG_NBR 0x40  /* NBR recovery image */
 
 /*
  * Keyblock, containing the public key used to sign some other chunk of data.

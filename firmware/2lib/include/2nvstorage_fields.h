@@ -108,5 +108,6 @@ enum vb2_nv_offset {
 #define VB2_NV_MISC_TRY_RO_SYNC		       0x04
 #define VB2_NV_MISC_BATTERY_CUTOFF             0x08
 #define VB2_NV_MISC_POST_EC_SYNC_DELAY         0x40
+#define VB2_NV_MISC_MINIOS_PRIORITY            0x80
 
 #endif  /* VBOOT_REFERENCE_2NVSTORAGE_FIELDS_H_ */

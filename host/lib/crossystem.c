@@ -435,6 +435,8 @@ int VbGetSystemPropertyInt(const char *name)
 		value = vb2_get_nv_storage(VB2_NV_REQ_WIPEOUT);
 	} else if (!strcasecmp(name,"kernel_max_rollforward")) {
 		value = vb2_get_nv_storage(VB2_NV_KERNEL_MAX_ROLLFORWARD);
+	} else if (!strcasecmp(name,"minios_priority")) {
+		value = vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY);
 	}
 	/* Other parameters */
 	else if (!strcasecmp(name,"cros_debug")) {
@@ -653,6 +655,8 @@ int VbSetSystemPropertyInt(const char *name, int value)
 		return vb2_set_nv_storage(VB2_NV_KERNEL_MAX_ROLLFORWARD, value);
 	} else if (!strcasecmp(name, "post_ec_sync_delay")) {
 		return vb2_set_nv_storage(VB2_NV_POST_EC_SYNC_DELAY, value);
+	} else if (!strcasecmp(name, "minios_priority")) {
+		return vb2_set_nv_storage(VB2_NV_MINIOS_PRIORITY, value);
 	}
 
 	return -1;
