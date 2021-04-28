@@ -364,6 +364,8 @@ struct vb2_signature {
 #define VB2_KEYBLOCK_FLAG_DEVELOPER_1 0x2  /* Developer switch on */
 #define VB2_KEYBLOCK_FLAG_RECOVERY_0 0x4  /* Not recovery mode */
 #define VB2_KEYBLOCK_FLAG_RECOVERY_1 0x8  /* Recovery mode */
+#define VB2_KEYBLOCK_FLAG_NBR_0 0x10  /* NBR boot */
+#define VB2_KEYBLOCK_FLAG_NBR_1 0x20  /* NBR boot */
 
 /*
  * Keyblock, containing the public key used to sign some other chunk of data.
@@ -506,6 +508,7 @@ _Static_assert(EXPECTED_VB2_FW_PREAMBLE_SIZE == sizeof(struct vb2_fw_preamble),
 #define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_BOOTIMG   1
 #define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_MULTIBOOT 2
 /* Kernel type 3 is reserved for future use */
+#define VB2_KERNEL_PREAMBLE_KERNEL_NBR (1 << 2)
 
 /*
  * Preamble block for kernel, version 2.2
@@ -584,7 +587,8 @@ struct vb2_kernel_preamble {
 	/*
 	 * Flags; see VB2_KERNEL_PREAMBLE_*.  Readers should return 0 for
 	 * header version < 2.2.  Flags field is currently defined as:
-	 * [31:2] - Reserved (for future use)
+	 * [31:3] - Reserved (for future use)
+	 * [2:2]  - Kernel is for Network Based Boot (NBR)
 	 * [1:0]  - Kernel image type (0b00 - CrOS,
 	 *                             0b01 - bootimg,
 	 *                             0b10 - multiboot)

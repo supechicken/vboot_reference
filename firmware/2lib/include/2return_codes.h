@@ -617,6 +617,12 @@ enum vb2_return_code {
 	/* Escape from NO_BOOT mode is detected. */
 	VB2_ERROR_ESCAPE_NO_BOOT,
 
+	/*
+	 * Keyblock flags don't match current mode in
+	 * vb2_load_kernel_keyblock().
+	 */
+	VB2_ERROR_KERNEL_KEYBLOCK_NBR_FLAG,
+
 	/**********************************************************************
 	 * API-level errors
 	 */
@@ -763,6 +769,15 @@ enum vb2_return_code {
 
 	/* No kernel partitions were found in LoadKernel() */
 	VB2_ERROR_LK_NO_KERNEL_FOUND = 0x100b2000,
+
+	/* Unable to read from disk handle in LoadKernel() */
+	VB2_ERROR_LK_DISK_READ = 0x100b2200,
+
+	/* Unable to open disk handle in LoadKernel() */
+	VB2_ERROR_LK_DISK_OPEN = 0x100b2400,
+
+	/* Could not allocate memory to store disk contents in LoadKernel() */
+	VB2_ERROR_LK_MEMORY_ALLOC = 0x100b2600,
 
 	/* No working block devices were found in VbTryLoadKernel() */
 	VB2_ERROR_LK_NO_DISK_FOUND = 0x100b3000,
