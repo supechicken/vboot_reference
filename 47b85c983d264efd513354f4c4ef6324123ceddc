@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6107588e_e2918384",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-04-29T22:36:58Z",
+      "side": 1,
+      "message": "Careful, keyblock_valid is still used for this, you still need to set it correctly even if !need_keyblock_valid.",
+      "revId": "47b85c983d264efd513354f4c4ef6324123ceddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
