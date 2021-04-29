@@ -233,13 +233,13 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			VB2_TRY(vb2_manual_recovery_menu(ctx));
 		else
 			VB2_TRY(vb2_broken_recovery_menu(ctx));
-	} else if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
-		   vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+	} else if (DIAGNOSTIC_UI && vb2api_diagnostic_boot_requested(ctx)) {
 		/*
 		 * Need to clear the request flag and commit nvdata changes
 		 * immediately to avoid booting back into diagnostic tool when a
 		 * forced system reset occurs.
 		 */
+		VB2_DEBUG("clear NV request\n");
 		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
 		vb2ex_commit_data(ctx);
 
