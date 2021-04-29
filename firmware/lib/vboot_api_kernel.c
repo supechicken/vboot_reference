@@ -53,6 +53,15 @@ static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+static int is_valid_disk(VbDiskInfo *info, uint32_t get_info_flags)
+{
+	const uint32_t disk_mask = VB_DISK_FLAG_FIXED | VB_DISK_FLAG_REMOVABLE;
+	return info->bytes_per_lba >= 512 &&
+		(info->bytes_per_lba & (info->bytes_per_lba - 1)) == 0 &&
+		info->lba_count >= 16 &&
+		(info->flags & disk_mask) == (get_info_flags & disk_mask);
+}
+
 test_mockable
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 {
@@ -71,19 +80,8 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 	/* Loop over disks */
 	for (i = 0; i < disk_count; i++) {
 		VB2_DEBUG("trying disk %d\n", (int)i);
-		/*
-		 * Validity-check what we can. FWIW, VbTryLoadKernel() is always
-		 * called with only a single bit set in get_info_flags.
-		 *
-		 * Ensure that we got a partition with only the flags we asked
-		 * for.
-		 */
-		if (disk_info[i].bytes_per_lba < 512 ||
-			(disk_info[i].bytes_per_lba &
-				(disk_info[i].bytes_per_lba  - 1)) != 0 ||
-					16 > disk_info[i].lba_count ||
-					get_info_flags != (disk_info[i].flags &
-					~VB_DISK_FLAG_EXTERNAL_GPT)) {
+
+		if (!is_valid_disk(&disk_info[i], get_info_flags)) {
 			VB2_DEBUG("  skipping: bytes_per_lba=%" PRIu64
 				  " lba_count=%" PRIu64 " flags=%#x\n",
 				  disk_info[i].bytes_per_lba,
