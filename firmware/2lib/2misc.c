@@ -545,6 +545,12 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
 	return VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL;
 }
 
+int vb2api_diagnostic_boot_requested(struct vb2_context *ctx)
+{
+	return DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
+	       vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST);
+}
+
 int vb2_dev_boot_allowed(struct vb2_context *ctx)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);

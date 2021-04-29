@@ -896,6 +896,14 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
  */
 int vb2api_use_short_dev_screen_delay(struct vb2_context *ctx);
 
+/**
+ * Whether the diagnostic boot is requested.
+ *
+ * @param ctx		Vboot context
+ * @return 1 if diagnostic boot is requested and 0 otherwise.
+ */
+int vb2api_diagnostic_boot_requested(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 
