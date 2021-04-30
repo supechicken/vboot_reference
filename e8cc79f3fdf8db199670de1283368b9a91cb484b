@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bff668_9a64a1d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-30T04:25:01Z",
+      "side": 1,
+      "message": "As Julius mentioned, even though it was an Android device, it used Chrome OS firmware and hence this roothash functionality was used for it. But, we are not pushing firmware updates to Smaug or building Smaug from ToT, so it should be safe to drop this.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "e8cc79f3fdf8db199670de1283368b9a91cb484b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef54ac17_4ad057f8",
