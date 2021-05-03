@@ -16,6 +16,69 @@
       "message": "@jwerner: Can you take a look at this and give me your initial thoughts?  We may need to course-correct based on your comments, so I want to check with you before continuing implementation.",
       "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4125e8f_46c3d60e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-05-03T18:01:01Z",
+      "side": 1,
+      "message": "Would you be able to share a doc for us to try this CL out?",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ac7844_b450e067",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-05-03T18:01:01Z",
+      "side": 1,
+      "message": "Potentially missing a return?",
+      "range": {
+        "startLine": 481,
+        "startChar": 5,
+        "endLine": 481,
+        "endChar": 16
+      },
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b001c00_10e8e39a",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-05-03T18:01:01Z",
+      "side": 1,
+      "message": "Would this be \u003d\u003d `16 * 1024 / params-\u003ebytes_per_lba` ?",
+      "range": {
+        "startLine": 516,
+        "startChar": 30,
+        "endLine": 516,
+        "endChar": 32
+      },
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
