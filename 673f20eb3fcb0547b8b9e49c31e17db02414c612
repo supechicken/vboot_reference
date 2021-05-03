@@ -52,6 +52,24 @@
       "parentUuid": "549aeadb_d9cb3991",
       "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb13b0c6_8b313e41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-03T21:15:37Z",
+      "side": 1,
+      "message": "\u003e Sounds good to me. Just to confirm the steps in the final state:\n\nI think the question discussed here is just what Joel should do right now, within this patch. For larger-scale rearchitecting in the future, I think we all have a vague idea where it should go, but for me there are still a lot of details left open (e.g. whether the entry point into vboot will be VbTryLoadKernel() or LoadKernel() or something in-between). If you want to flesh that out I\u0027d suggest maybe sketching the flows in a small design doc so it\u0027s easier to discuss than ad hoc in a review comment.",
+      "parentUuid": "fff26f36_9195214f",
+      "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
