@@ -34,6 +34,24 @@
       "parentUuid": "42e14bbd_5623d6ef",
       "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff26f36_9195214f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-05-03T09:20:18Z",
+      "side": 1,
+      "message": "\u003e Once the UI stack is moved to the side, we can get rid of the global completely.\n\nSounds good to me. Just to confirm the steps in the final state:\n\n- VbSelectAndLoadKernelParams kparams is declared in depthcharge and passed to VbSelectAndLoadKernel() as an argument.\n- VbSelectAndLoadKernel() returns control to depthcharge to enter UI code.\n- The UI code in depthcharge gets disk info (VbExDiskGetInfo) and fills in fields of kparams. This is equivalent to VbTryLoadKernel().\n- Then, depthcharge calls vboot\u0027s LoadKernel(*kparams) for verification.\n\nIs my understanding correct?\n\nNote that this is different from:\n\n\u003e expose VbTryLoadKernel (or functions just a level above that, like vb2_normal_boot) in the API",
+      "parentUuid": "549aeadb_d9cb3991",
+      "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
