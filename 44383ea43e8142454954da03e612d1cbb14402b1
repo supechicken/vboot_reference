@@ -35,6 +35,58 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b49ba3_885e5119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-04T01:13:38Z",
+      "side": 1,
+      "message": "Yeah, basic direction seems fine to me.",
+      "parentUuid": "8b5fb083_f004daa6",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4e40b4_52cc3943",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-04T01:13:38Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be a different flag, I think it\u0027s rather a different argument to VbTryLoadKernel(). Physically the disks are still just differentiated by whether they\u0027re fixed or removable. Depthcharge doesn\u0027t need to know whether a disk is suitable for miniOS booting vs GPT booting -- depthcharge just gives vboot all its fixed disks, and when vboot wants to boot a miniOS it searches all of those for a payload.",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba75646_fdd92a4d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-04T01:13:38Z",
+      "side": 1,
+      "message": "Is there really a point in setting a recovery reason when this fails? I think that may make things more confusing than useful.",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ac7844_b450e067",
@@ -60,6 +112,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51bbc8ee_2b39751f",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-04T01:13:38Z",
+      "side": 1,
+      "message": "There needs to be some form of return on success here, obviously.",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b001c00_10e8e39a",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 1
@@ -77,6 +146,40 @@
         "endLine": 516,
         "endChar": 32
       },
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11dc27b3_198cfd97",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-04T01:13:38Z",
+      "side": 1,
+      "message": "Does it make sense to move this into vb2_load_partition() so we only need it once?",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb825f5_cdcc5b8e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-04T01:13:38Z",
+      "side": 1,
+      "message": "Remember in the final design we wanted to have an NVRAM flag decide the order here (right?). I assume you\u0027re just prototyping this for now.",
       "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
