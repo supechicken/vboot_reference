@@ -88,6 +88,24 @@
       "parentUuid": "fb13b0c6_8b313e41",
       "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db898faf_da6a49c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-04T23:33:50Z",
+      "side": 1,
+      "message": "Yeah, of course, I\u0027m just kinda guessing here that we\u0027re probably going to end up with something where we can get rid of that global and kparams can always be passed in as an argument. But it\u0027s something we\u0027ll still need to figure out the details of and only then we\u0027ll know how exactly we\u0027ll want to do it. I didn\u0027t mean to dismiss what you said, just that I think that will take some more time to sort out and could use a design doc.\n\nFor now I\u0027m suggesting storing kparams in a global because it should be the simplest and least invasive way to move forward here without having to know the answers to all those other questions. I think we\u0027ll probably be able to have it be just a parameter eventually and it can stay a global until then. If we figure out that doesn\u0027t work after all, we can still decide to do something else at that point. But putting something into vb2_context or shared data is a bigger, less easily reversible change (because those structures are versioned) so I wouldn\u0027t do that until we are certain that that\u0027s really the solution we want to end up with long term.",
+      "parentUuid": "4ba40f48_f35487c8",
+      "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
