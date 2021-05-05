@@ -60,6 +60,23 @@ vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint8_t *size)
 	return VB2_SUCCESS;
 }
 
+vb2_error_t vb2api_secdata_fwmp_create(struct vb2_context *ctx)
+{
+	struct vb2_secdata_fwmp *sec =
+		(struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
+
+	/* Clear the entire struct */
+	memset(sec, 0, sizeof(*sec));
+
+	/* Set to current version */
+	sec->struct_version = VB2_SECDATA_FWMP_VERSION;
+
+	/* Calculate initial CRC */
+	sec->crc8 = vb2_secdata_fwmp_crc(sec);
+
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2_secdata_fwmp_init(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
