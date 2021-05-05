@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7e2f83_e384b73b",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-05T21:49:29Z",
+      "side": 1,
+      "message": "nit: up to you but making this just a (void *) cast would make it fit on one line.",
+      "revId": "41d9185add51ac131bf54281dcaa65f87dbc5866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2d09861d_75483840",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-05-05T21:36:04Z",
       "side": 1,
       "message": "Set this to sizeof(ctx-\u003esecdata_fwmp) to save the usage of the macro here? I know it\u0027s one in the same, but it feels more automagic. Other call sites are using \nstruct_size \u003d sizeof(*pointer) as well as the macros directly. Your call on what you think is more consistent.",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "41d9185add51ac131bf54281dcaa65f87dbc5866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c74e76b_755ac17d",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-05T21:49:29Z",
+      "side": 1,
+      "message": "No, actually, this should be sizeof(*sec) (which is not the same as the other two). There is a difference between the size of the structure (which is the amount of currently valid bytes that are covered by the CRC) and the MAX_SIZE (which is the maximum buffer size reserved in vb2_context that can be read from the TPM). This allows us to later make backwards-compatible additions that rev the minor version and are still compatible with older readers.",
+      "parentUuid": "2d09861d_75483840",
       "range": {
         "startLine": 75,
         "startChar": 20,
