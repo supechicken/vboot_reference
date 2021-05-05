@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d09861d_75483840",
+        "filename": "firmware/2lib/2secdata_fwmp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2021-05-05T21:36:04Z",
+      "side": 1,
+      "message": "Set this to sizeof(ctx-\u003esecdata_fwmp) to save the usage of the macro here? I know it\u0027s one in the same, but it feels more automagic. Other call sites are using \nstruct_size \u003d sizeof(*pointer) as well as the macros directly. Your call on what you think is more consistent.",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 45
+      },
+      "revId": "41d9185add51ac131bf54281dcaa65f87dbc5866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
