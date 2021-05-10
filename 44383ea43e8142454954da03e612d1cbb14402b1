@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0405ccb_ee8d433a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "Please check the email thread about this, and let me know if you need additional support.",
+      "parentUuid": "f4125e8f_46c3d60e",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd4e40b4_52cc3943",
@@ -72,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dbfa94e_9259e1ab",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "What option would you prefer?\n\n(1)\n  vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags)\n    VB_DISK_FLAG_REMOVABLE\n    VB_DISK_FLAG_FIXED\n    VB_DISK_FLAG_EXTERNAL_GPT\n    VB_DISK_FLAG_SECTOR_SEARCH\n\n(this is PS2, and is slightly different from PS1, which has FIXED and FIXED_SECTOR)\n\n(2)\n  vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags,\n                              int do_sector_search)\n    VB_DISK_FLAG_REMOVABLE\n    VB_DISK_FLAG_FIXED\n    VB_DISK_FLAG_EXTERNAL_GPT",
+      "parentUuid": "fd4e40b4_52cc3943",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ba75646_fdd92a4d",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 1
@@ -83,6 +119,24 @@
       "writtenOn": "2021-05-04T01:13:38Z",
       "side": 1,
       "message": "Is there really a point in setting a recovery reason when this fails? I think that may make things more confusing than useful.",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5934b1c7_d9adaf21",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "Good point.  Just to double-check my understanding of the current state:\n\n(1) vb2api_fail is only called for a disk-based boot, including both normal mode or developer mode.\n\n(2) vb2api_fail is NOT called for recovery boot (USB-based) or dev mode external boot (also USB-based).\n\nAre we still happy with this split?  We could potentially also change disk-based boot in developer mode to just show a UI error instead.\n\nIn any case, it doesn\u0027t feel very natural to pivot off of VB_DISK_FLAG_FIXED in deciding whether to call vb2api_fail.  Would it make more sense to break this out into a separate boolean argument (or another flags argument)?",
+      "parentUuid": "8ba75646_fdd92a4d",
       "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3951b2af_b7453217",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7ac7844_b450e067",
+      "range": {
+        "startLine": 481,
+        "startChar": 5,
+        "endLine": 481,
+        "endChar": 16
+      },
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51bbc8ee_2b39751f",
@@ -123,6 +201,24 @@
       "writtenOn": "2021-05-04T01:13:38Z",
       "side": 1,
       "message": "There needs to be some form of return on success here, obviously.",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c34b2a5_06193774",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "Added some plumbing.  Still need to figure out some better error values to use.",
+      "parentUuid": "51bbc8ee_2b39751f",
       "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b53c717_fbf7fec3",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "Yeah, that works better.  Thanks!",
+      "parentUuid": "8b001c00_10e8e39a",
+      "range": {
+        "startLine": 516,
+        "startChar": 30,
+        "endLine": 516,
+        "endChar": 32
+      },
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11dc27b3_198cfd97",
@@ -167,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f13f7b_088bb610",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "I think so.  Done in CL:2882527.",
+      "parentUuid": "11dc27b3_198cfd97",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abb825f5_cdcc5b8e",
@@ -180,6 +318,24 @@
       "writtenOn": "2021-05-04T01:13:38Z",
       "side": 1,
       "message": "Remember in the final design we wanted to have an NVRAM flag decide the order here (right?). I assume you\u0027re just prototyping this for now.",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7803dc5_ccdae6b0",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:58:43Z",
+      "side": 1,
+      "message": "Correct.  Although I guess the nvdata flag only fuzzily specifies using kernels from \"start of disk\" vs. \"end of disk\"?",
+      "parentUuid": "abb825f5_cdcc5b8e",
       "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
