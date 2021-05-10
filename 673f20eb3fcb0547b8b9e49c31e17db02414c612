@@ -106,6 +106,24 @@
       "parentUuid": "4ba40f48_f35487c8",
       "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ba12e6_772d16ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-10T04:17:47Z",
+      "side": 1,
+      "message": "\u003e I would suggest replacing the lkp global with a global kparams pointer\n\nAny thoughts on checking the pointer validity?  Should vboot code just assume the kparams pointer has been set properly?\n\nRe. Yu-Ping\u0027s comments: I\u0027m happy to chat about what the API should look like as we prepare to move UI code to depthcharge, either in-person or in a bug discussion.",
+      "parentUuid": "db898faf_da6a49c4",
+      "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
