@@ -16,6 +16,24 @@
       "message": "something seems broken in this design when we\u0027re hardcoding a version directly in the single common script used to sign stuff",
       "revId": "9f3825bcf4e1e0ae975fa65530d6b4c1d09957e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3c279e_b08f3519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-05-11T21:02:15Z",
+      "side": 1,
+      "message": "the intention is to severely restrict the version which can be signed in this fashion.",
+      "parentUuid": "587286bf_fbff86d0",
+      "revId": "9f3825bcf4e1e0ae975fa65530d6b4c1d09957e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
