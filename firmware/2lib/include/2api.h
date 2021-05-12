@@ -233,6 +233,13 @@ enum vb2_context_flags {
 	 * NO_BOOT means the OS is not allowed to boot. Only relevant for EFS2.
 	 */
 	VB2_CONTEXT_NO_BOOT = (1 << 23),
+
+	/*
+	 * EC_IN_RO means EC is running an RO copy. At least that was last
+	 * known to GSC. If EC RO is correctly behaving, it doesn't jump to RW
+	 * when taking this code path and AP doesn't request EC to jump.
+	 */
+	VB2_CONTEXT_EC_IN_RO = (1 << 24),
 };
 
 /* Helper for aligning fields in vb2_context. */
