@@ -408,10 +408,9 @@ int vb2_allow_recovery(struct vb2_context *ctx)
 	 * return false (=RW). That's ok because if recovery is manual, we will
 	 * get the right signal and that's the case we care about.
 	 */
-	if (!(ctx->flags & VB2_CONTEXT_EC_TRUSTED) && !vb2ex_ec_trusted())
+	if (!(ctx->flags & VB2_CONTEXT_EC_TRUSTED) || !vb2ex_ec_trusted())
 		return 0;
 
-	/* Now we confidently check the recovery switch state at boot */
 	return !!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_MANUAL_RECOVERY);
 }
 
