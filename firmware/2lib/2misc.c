@@ -407,8 +407,12 @@ int vb2_allow_recovery(struct vb2_context *ctx)
 	 * On some platforms, EC_IN_RW can't be reset by the EC, thus, this may
 	 * return false (=RW). That's ok because if recovery is manual, we will
 	 * get the right signal and that's the case we care about.
+	 *
+	 * In recovery boot, new GSC (EFS2.1) will report TRUSTED_RO(0) and
+	 * EC_IN_RW=1. Old/current GSC reports NORMAL(0) and EC_IN_RW=1. So,
+	 * the AP can perform a proper check without knowing the GSC version.
 	 */
-	if (!(ctx->flags & VB2_CONTEXT_EC_TRUSTED) && !vb2ex_ec_trusted())
+	if (!(ctx->flags & VB2_CONTEXT_EC_TRUSTED) || !vb2ex_ec_trusted())
 		return 0;
 
 	/* Now we confidently check the recovery switch state at boot */
