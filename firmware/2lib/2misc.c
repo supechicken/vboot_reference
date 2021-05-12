@@ -407,8 +407,10 @@ int vb2_allow_recovery(struct vb2_context *ctx)
 	 * On some platforms, EC_IN_RW can't be reset by the EC, thus, this may
 	 * return false (=RW). That's ok because if recovery is manual, we will
 	 * get the right signal and that's the case we care about.
+	 *
+	 * TODO: Deprecate vb2ex_ec_trusted.
 	 */
-	if (!vb2ex_ec_trusted())
+	if (!(ctx->flags & VB2_CONTEXT_TRUSTED) && !vb2ex_ec_trusted())
 		return 0;
 
 	/* Now we confidently check the recovery switch state at boot */
