@@ -16,6 +16,24 @@
       "message": "Yikes! Why would they do this anyway? I know this code is ancient, but probably not older than the invention of strtoul()...?",
       "revId": "15e27597d1ad90d7dcaae5d96a9ac07a68a9ba68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29b34f8_7b893415",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-05-13T22:51:45Z",
+      "side": 1,
+      "message": "The code has a comment about not liking strtoul \"because it overflows silently\". I can\u0027t quite say for sure what that means, maybe if sizeof(long) \u003d\u003d 8 it accepts larger integers, and the author found that upsetting? (But why not just check for that? I don\u0027t know!)",
+      "parentUuid": "64744019_f6b18ad3",
+      "revId": "15e27597d1ad90d7dcaae5d96a9ac07a68a9ba68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
