@@ -16,6 +16,57 @@
       "message": "coreboot change: https://review.coreboot.org/c/coreboot/+/54099",
       "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e612bd_6cc44df9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-13T23:22:23Z",
+      "side": 1,
+      "message": "Not sure we really want to say this, we generally want to continue supporting non-Google TPMs in vboot, and this sort of belongs to that.",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d1dfa6_2bed7305",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-13T23:22:23Z",
+      "side": 1,
+      "message": "Does this mean that if the AP does ask the EC to jump, it would still do that? Not sure if that\u0027s a good idea... (Is there a use case for that? Maybe as part of doing EC-RO firmware updates from the recovery installer on dogfood devices?)\n\nIn general, I would feel better if the EC could guarantee that once this flag is set, it will never go into RW or enable PD until the next reboot.",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ef825a_9d8b4d87",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-13T23:22:23Z",
+      "side": 1,
+      "message": "Do we maybe want to call this VB2_CONTEXT_EC_TRUSTED so it\u0027s more in line with the older flow (and because that is the part vboot really cares about)?",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
