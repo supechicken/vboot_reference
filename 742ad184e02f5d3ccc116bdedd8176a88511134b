@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a2ffa5b_984263ec",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-14T22:49:13Z",
+      "side": 1,
+      "message": "\u003e (2) We can make the AP clear VB2_CONTEXT_EC_IN_RO after sending a sysjump request.\n\nNo, I don\u0027t think that works. If there\u0027s actually a risk of this happening, then you could also have the AP do a war reboot after that point, and then the EC would remain in RW, Cr50 would still be sending the wrong boot state, and the AP will have lost all flag knowledge from the previous boot.\n\nBut the check_boot_mode() code in coreboot doesn\u0027t ignore communication errors, it forces the system into recovery mode. So I think there should be no way for this to actually happen?\n\n\u003e (1) We can make the EC lock down sysjump once it registers MANUAL_RECOVERY with the AP. It\u0027s probably a good idea to enforce it by code instead of by documentation.\n\nYes, I think this would be the safest and most robust option, *if* we can safely do that. But again, are you sure there are no firmware update scenarios where this might be a problem? I\u0027m thinking that we boot into manual recovery mode, EC will stay in RO and lock down sysjumps, then we boot our recovery installer from USB and at the end of the install it does a chromeos-firmwareupdate. If this is a dogfood system with write-protect disabled, that will update both EC-RO and EC-RW firmware, right? And doesn\u0027t EC-RO firmware update require us to force the EC to jump to RW (so the RO is unused and free to be overwritten)? Or does it not work that way anymore?",
+      "parentUuid": "06bbc91e_6760117b",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92ef825a_9d8b4d87",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "I would rather not embed an interpretation of the signal in the name. EC_IN_RO is what really it means. It\u0027s nice if the code can interpret the signal differently \u0026 properly (without contradicting with the name).\n\nFor example, verified RW is also \u0027trusted\u0027 to some extent. If PD is enabled for some reason (unlocked FW, WP disabled, etc.) EC_IN_RO can\u0027t be trusted.",
       "parentUuid": "92ef825a_9d8b4d87",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829ac373_e92ecd85",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-14T22:49:13Z",
+      "side": 1,
+      "message": "\u003e If PD is enabled for some reason (unlocked FW, WP disabled, etc.) EC_IN_RO can\u0027t be trusted.\n\nYes, exactly. But if PD is enabled for some reason, Cr50 must not set this boot mode either (because that\u0027s the only thing that the security decision to trust the EC here relies on). That\u0027s why I think \"trusted\" is really what the signal means, not just that it\u0027s in RO (because for NO_BOOT it can also be in RO if the RW was corrupt, right?).",
+      "parentUuid": "8c166da1_4c6e7865",
       "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
