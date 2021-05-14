@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5db74bdf_a0c23b37",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-14T03:03:54Z",
+      "side": 1,
+      "message": "I\u0027ll remove it.",
+      "parentUuid": "e2e612bd_6cc44df9",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5d1dfa6_2bed7305",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06bbc91e_6760117b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-14T03:03:54Z",
+      "side": 1,
+      "message": "\u003e Does this mean that if the AP does ask the EC to jump...\n\nyes. So, this whole idea works under the assumption that AP-RO and EC-RO behave as expected in recovery mode. AP-RO can ask EC to jump in non-recovery context and that\u0027s not a problem.\n\n\u003e I would feel better if the EC could guarantee ...\n\nAgree. (1) We can make the EC lock down sysjump once it registers MANUAL_RECOVERY with the AP. It\u0027s probably a good idea to enforce it by code instead of by documentation.\n\nIn non-recovery context, it\u0027s tricky. If EC fails to talk to GSC for some reason, it may jump to RW upon AP\u0027s request (legacy path). (2) We can make the AP clear VB2_CONTEXT_EC_IN_RO after sending a sysjump request. \n\n1 and 2 should make the signal more robust. WDYT?",
+      "parentUuid": "c5d1dfa6_2bed7305",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92ef825a_9d8b4d87",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 3
@@ -65,6 +101,24 @@
       "writtenOn": "2021-05-13T23:22:23Z",
       "side": 1,
       "message": "Do we maybe want to call this VB2_CONTEXT_EC_TRUSTED so it\u0027s more in line with the older flow (and because that is the part vboot really cares about)?",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c166da1_4c6e7865",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-14T03:03:54Z",
+      "side": 1,
+      "message": "I would rather not embed an interpretation of the signal in the name. EC_IN_RO is what really it means. It\u0027s nice if the code can interpret the signal differently \u0026 properly (without contradicting with the name).\n\nFor example, verified RW is also \u0027trusted\u0027 to some extent. If PD is enabled for some reason (unlocked FW, WP disabled, etc.) EC_IN_RO can\u0027t be trusted.",
+      "parentUuid": "92ef825a_9d8b4d87",
       "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
