@@ -91,6 +91,9 @@ enum vb2_gbb_flag {
 
 	/* Enable USB Device Controller */
 	VB2_GBB_FLAG_ENABLE_UDC = 1 << 16,
+
+	/* Enable firmware to log to serial */
+	VB2_GBB_FLAG_ENABLE_SERIAL_LOG = 1 << 17,
 };
 
 #endif  /* VBOOT_REFERENCE_2GBB_FLAGS_H_ */
