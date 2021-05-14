@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "311c0947_482610ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-14T22:01:40Z",
+      "side": 1,
+      "message": "This has been tried and abandoned due to practical problems multiple times in the past already (e.g. b/172341184). I still think it\u0027s a bad idea in general. If you really want to do this let\u0027s have a design doc so we can discuss how to deal with the practical issues in detail before we start submitting code.\n\n(Also, your commit message sounds like you want this for debug, but the linked bug seems to want this for FAFT... which one is the plan here? FAFT would probably want the serial initialized but with no output by default, which is a different thing (and could be a compile-time setting anyway).)",
+      "revId": "00856c2b296bf751404aeb6e88958bde68d7325c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
