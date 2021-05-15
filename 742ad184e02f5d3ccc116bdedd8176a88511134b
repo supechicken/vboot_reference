@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "debd99aa_217c67c2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-15T01:34:02Z",
+      "side": 1,
+      "message": "\u003e this is a dogfood system with write-protect disabled, that will update both EC-RO and EC-RW firmware, right\n\nYes. So, we shouldn\u0027t lock sysjump on devices with WP disabled. Filed b:188242794.",
+      "parentUuid": "2a2ffa5b_984263ec",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92ef825a_9d8b4d87",
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "\u003e If PD is enabled for some reason (unlocked FW, WP disabled, etc.) EC_IN_RO can\u0027t be trusted.\n\nYes, exactly. But if PD is enabled for some reason, Cr50 must not set this boot mode either (because that\u0027s the only thing that the security decision to trust the EC here relies on). That\u0027s why I think \"trusted\" is really what the signal means, not just that it\u0027s in RO (because for NO_BOOT it can also be in RO if the RW was corrupt, right?).",
       "parentUuid": "8c166da1_4c6e7865",
+      "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24691b70_71c0c7cf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-15T01:34:02Z",
+      "side": 1,
+      "message": "Ok, the name is changed. I feel I\u0027m forgetting one more reason that I named it IN_RO but I\u0027ll go with TRUSTED until I remember that reason...",
+      "parentUuid": "829ac373_e92ecd85",
       "revId": "742ad184e02f5d3ccc116bdedd8176a88511134b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
