@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea608f5_7486cea5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-15T01:50:46Z",
+      "side": 1,
+      "message": "if supported by EC and GSC.",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "169511814a3bd982a84641ee4bb0649a9c7d820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b25c2b_20c1acaf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-15T01:50:46Z",
+      "side": 1,
+      "message": "Can we name this `VB2_CONTEXT_EC_RO_TRUSTED` so that it is clear in vboot_reference as well as coreboot that trusted refers to EC-RO state.",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 20
+      },
+      "revId": "169511814a3bd982a84641ee4bb0649a9c7d820b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
