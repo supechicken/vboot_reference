@@ -16,6 +16,24 @@
       "message": "I\u0027m very confused about what\u0027s going on with this patch. I want to give a Code-Review+2 but the buttons for it are just not there somehow? And what the hell is a Rubber Stamper bot?",
       "revId": "884c740629fde3185258e6c5ae81171e9d6a4b4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1cdab84_751196e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2021-05-16T16:45:43Z",
+      "side": 1,
+      "message": "Yeah, I was really surprised when the rubber stamper bot added a review.  I certainly didn\u0027t intend for that to happen, but since Joel had said in the bug that it was probably best to revert it, i didn\u0027t complain.\n\nhttps://chromium.googlesource.com/infra/infra/+/refs/heads/main/go/src/infra/appengine/rubber-stamper/README.md\n\nI\u0027m not entirely certain how the rubber stamper got added as a reviewer, because I didn\u0027t do anything that I thought would add it.  I didn\u0027t even know it existed until it gave the review.",
+      "parentUuid": "8d0af6b1_db628ebc",
+      "revId": "884c740629fde3185258e6c5ae81171e9d6a4b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
