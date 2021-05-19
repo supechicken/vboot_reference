@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35857e77_5a0d8f43",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:15:52Z",
+      "side": 1,
+      "message": "Maybe this should be a constant defined in the header where the flags themselves get defined? (Maybe it would be nice to separate these a bit more explicitly anyway, e.g. the actual disk selection flags that are used by the payload to find disks in the lower 16 bits and the additional annotation flags in the higher 16 bits.)",
+      "revId": "6b4964bd3bb8912ad8b1fe4f9f948485ac441280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
