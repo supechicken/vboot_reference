@@ -46,6 +46,30 @@
       },
       "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d9e2d0_62ece86e",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "Isn\u0027t your EXTERNAL_0/EXTERNAL_1 just the exact opposite of NBR_0/NBR_1? In my mind, NBR_1 means whether the user selected the \"built-in recovery\" menu option in the recovery mode UI... so images booted in that mode need to have the NBR_1 and RECOVERY_1 flags set (and DEV_x according to their current dev mode state). Images booted from USB in recovery mode would need to have NBR_0 and RECOVERY_1 set. If you want to sign an NBR kernel such that it can both be booted in actual NBR mode (from internal disk using the sector search) and as a normal GPT partition kernel from a recovery USB stick, you can just sign it NBR_0 | NBR_1 | RECOVERY_1 | DEV_0 | DEV_1. (Note that the matrix here isn\u0027t perfect and some things cannot be expressed -- but that has always been the case. You can already not sign an image today so that it can either be booted in recovery mode (without dev mode) or in dev mode with Ctrl+U but *not* in normal/secure mode from disk. In practice, we usually just want to sign each image for one specific mode and this tends to not really be a problem. If we want to ship NBR kernels on USB images, we can always just sign those differently than the ones we install on the internal disks, too.)\n\nI think the rollback protection should be completely independent from all these bootability-in-mode flags. Rollback doesn\u0027t really belong in the keyblock anyway, I think, because we just generally have no rollback protection for the recovery subkey anyway. I originally though that we would just always rollback-check the NBR (sector search) boot flow and never the USB boot flow, regardless of image... but maybe it\u0027s not such a bad idea to tie it to the image after all? Maybe add a preamble flag to enable this?\n\n(And yes, I\u0027m really sure what the point is in trying to boot NBR kernels from USB anyway. But if they want it I think we can support it.)",
+      "parentUuid": "7ff2e949_368cffc3",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

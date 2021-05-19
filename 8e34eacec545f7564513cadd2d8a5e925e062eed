@@ -3,6 +3,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "929b6ebd_666eb843",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "not anymore",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 45
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2349adde_adf7606b",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "nit: keep original whitespace?",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0046faea_080a7a22",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "nit: needs documentation comment",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8545598_83c15d1a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "nit: is it worth adding these? (if we want more debug output I\u0027d at least print some extra relevant information, like info flags, disk size, etc.)",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48651859_6d29a263",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -49,6 +123,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49035db6_9a2b5f50",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "I\u0027m not really sure whether this should be a key version or preamble version check tbh. Preamble would be more in line with the way it works on USB recovery images (where the version is baked into the body image). But I guess then again, if we *can* cover the key why not do it? But that means we need to be careful, if we want to bump this version to lock out old images we\u0027ll always have to actually change the recovery subkey (even if the key is fine and there\u0027s just a problem with the image). If we just naively update the NBR code and bump the version number in our signer configs, the old subkey will just get resigned with a newer version number, and an attacker can combine that new keyblock with an old NBR image which will verify just fine. The recovery subkey is already not rollback protected for USB images anyway, so if that key leaks we\u0027re pretty much already maximally screwed. So maybe there\u0027s no point in covering the key part for NBR and it would be better to put this in the preamble to avoid someone making the signing mistake mentioned above?\n\n...honestly, all of this is a consequence of trying to jam a shitty poor man\u0027s rollback protection that doesn\u0027t really cover all the bases properly into our existing TPM spaces. Really, we should just have keyblock *and* preamble/body rollback checks for both NBR and USB recovery and store that version separately in the TPM (with some clever mechanism of how to update it -- maybe commandeer one of the reserved fields in the kernel preamble?). I know that\u0027s again a big request that nobody has time for (and updating TPM space layouts is annoying), but the technical debt of all these versions getting abused for what they weren\u0027t really designed for is starting to cost us, too.\n\n(Also, did we answer the question what should happen if there\u0027s a problem with TPM communication? Because I think then sd-\u003ekernel_version_secdata will have been initialized to 0 -- which, I guess is what we want?.)",
+      "range": {
+        "startLine": 274,
+        "startChar": 6,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01a290e7_9ba11f6e",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -72,6 +169,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0808559_376f7096",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "Not really sure why you\u0027d add this? Isn\u0027t boot_mode still VB2_BOOT_MODE_RECOVERY for NBR? (I wouldn\u0027t see NBR as a separate boot_mode for those purposes, it\u0027s just a different menu option in the manual recovery boot mode menu. Same as Ctrl+D and Ctrl+U both are BOOT_MODE_DEVELOPER.)",
+      "parentUuid": "01a290e7_9ba11f6e",
+      "range": {
+        "startLine": 340,
+        "startChar": 5,
+        "endLine": 341,
+        "endChar": 57
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78342100_963e586a",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "Took me a while to figure out why you need to reopen a new stream here (so you don\u0027t skip sectors when unsuccessful), so maybe add a comment to clarify that?",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8070b39_4413fe3f",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -89,6 +227,144 @@
         "endLine": 502,
         "endChar": 63
       },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272d44db_051af3d5",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "How about making a new lpflag for this? (And then either pass lpflags into vb2_verify_kernel_vblock() or turn it into a boolean at that point.)",
+      "parentUuid": "f8070b39_4413fe3f",
+      "range": {
+        "startLine": 502,
+        "startChar": 47,
+        "endLine": 502,
+        "endChar": 63
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97f9be7_29d87aef",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "nit: a lot of these should probably be different codes than NO_DISK_FOUND?",
+      "range": {
+        "startLine": 523,
+        "startChar": 9,
+        "endLine": 523,
+        "endChar": 11
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac96b730_65592830",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "This will blow up on UFS with 4K sectors.",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d305a2da_22b1a6ca",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "Don\u0027t you want to... like... break the loop on success or something?",
+      "range": {
+        "startLine": 568,
+        "startChar": 18,
+        "endLine": 568,
+        "endChar": 37
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c31dfb_f1833736",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "nit: I think this might read cleaner with an\n\n if (!bottom_region) {\n   start \u003d ...;\n   end \u003d ...;\n } else {\n   start \u003d ...;\n   end \u003d ...;\n }\n\n VB2_DEBUG(\"Checking %s of disk...\n for (sector \u003d start; sector \u003c end; sector +\u003d batch_count) ...\n\napproach.",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a58309_d943c23a",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "I think we may have different concepts of where the \"bottom\" of a disk is? In my head disks start at the bottom and grow upwards, but your code seems to have it the other way around. Probably better to say front/back or something like that instead?",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9525fe_70097de1",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-19T23:16:05Z",
+      "side": 1,
+      "message": "Should probably translate this from/to \"A\"/\"B\" like we do for fw_try_next?",
       "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
