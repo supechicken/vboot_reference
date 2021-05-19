@@ -22,6 +22,30 @@
       },
       "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff2e949_368cffc3",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-19T06:55:18Z",
+      "side": 1,
+      "message": "So, it seems like if we use the NBR_0 and NBR_1 as suggested in the design doc, firmware must know whether it is booting NBR kernel or regular recovery kernel.  This would break the use case of being able to boot NBR from USB disk, unless we had some special UI in Groot to choose between \"regular recovery image\" and \"NBR image\".  That seems kind of counter-intuitive (and counter-productive).\n\nThat\u0027s why I\u0027m suggesting EXTERNAL_0 and EXTERNAL_1 here, as a way of at least differentiating which recovery kernels can be booted from USB, and which cannot.  If we go down this route, then firmware still needs to know what kind of image this is, in order to decide what type of rollback protection to employ (see https://docs.google.com/document/d/1JYLwUlHjFwARhFBSFTw4PeGzqTAeyeHSVxCH2M3CdMI/edit?pli\u003d1\u0026disco\u003dAAAAIEpn8fo).  Thus I also added a NBR flag here.\n\nAny thoughts?  Is it still worth all of this extra work just to support NBR on USB?",
+      "parentUuid": "01702b73_b6a76316",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
