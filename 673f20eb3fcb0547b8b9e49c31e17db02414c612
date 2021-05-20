@@ -124,6 +124,24 @@
       "parentUuid": "db898faf_da6a49c4",
       "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d25f436_249cd075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-20T00:52:38Z",
+      "side": 1,
+      "message": "\u003e Any thoughts on checking the pointer validity?  Should vboot code just assume the kparams pointer has been set properly?\n\nWell... I mean it\u0027s vboot code setting up that pointer and vboot code using it later, so... yeah? You can add a VB2_ASSERT() for it if you want, of course. I think we all agree this isn\u0027t an amazing solution, just an interim to get from what we have to something slightly cleaner.",
+      "parentUuid": "30ba12e6_772d16ec",
+      "revId": "673f20eb3fcb0547b8b9e49c31e17db02414c612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
