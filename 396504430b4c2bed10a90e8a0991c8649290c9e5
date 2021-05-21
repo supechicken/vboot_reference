@@ -70,6 +70,30 @@
       },
       "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2418ea8b_98d23dea",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "I had intended EXTERNAL_0/EXTERNAL_1 to be checked against the disk in question (external vs. internal), without caring about how the kernel was found.\n\nIn the NBR_0/NBR_1 model, I\u0027m still a bit confused at what this is being checked against?  Does NBR_1 correspond to a sector-based kernel search, and NBR_0 to a partition-based kernel search?  If so, should we name it as such?  Or, should we just rename the sector-based kernel search to be \"NBR kernel search\"?",
+      "parentUuid": "99d9e2d0_62ece86e",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

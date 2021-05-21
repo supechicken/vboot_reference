@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffee72a_74a9f198",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Moved to 0x10 and updated to \"unused \u003d 0x20\".  Also removed the \"unused\" text from VB2_NV_OFFS_BOOT2.",
+      "parentUuid": "929b6ebd_666eb843",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 45
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2349adde_adf7606b",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-19T23:16:05Z",
       "side": 1,
       "message": "nit: keep original whitespace?",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0ef5ad_f1b6aba1",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s super useful when the flags are so far apart from one another (in between the comments)?  Anyways, I moved the whitespace change to CL:2872251 -- let me know there if you\u0027d prefer to keep them aligned.",
+      "parentUuid": "2349adde_adf7606b",
       "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9da8a8e_3c31ce03",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0046faea_080a7a22",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8545598_83c15d1a",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-05-19T23:16:05Z",
       "side": 1,
       "message": "nit: is it worth adding these? (if we want more debug output I\u0027d at least print some extra relevant information, like info flags, disk size, etc.)",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff95a7ac_15f03657",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Thought it might be useful to tell whether we are in partition-search-mode or sector-search-mode.  Moved that information to a VB2_DEBUG line at the top of the function.",
+      "parentUuid": "f8545598_83c15d1a",
       "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -146,6 +224,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef4c46e3_afe5e516",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Okay, assuming we go with the preamble option, are we still checking it against the top 4 bits of kernel_version_secdata (even though the top 8 bits are normally used for keyblock checking)?",
+      "parentUuid": "49035db6_9a2b5f50",
+      "range": {
+        "startLine": 274,
+        "startChar": 6,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01a290e7_9ba11f6e",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -191,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "335e84a4_57b220a9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0808559_376f7096",
+      "range": {
+        "startLine": 340,
+        "startChar": 5,
+        "endLine": 341,
+        "endChar": 57
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78342100_963e586a",
@@ -204,6 +330,24 @@
       "writtenOn": "2021-05-19T23:16:05Z",
       "side": 1,
       "message": "Took me a while to figure out why you need to reopen a new stream here (so you don\u0027t skip sectors when unsuccessful), so maybe add a comment to clarify that?",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cb0656_bcc43885",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78342100_963e586a",
       "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -257,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b2db4a5_af1d5377",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "So if we decide to hinge this decision off of \"the user is accessing the NBR boot feature of the UI\" rather than \"this is an external USB disk\" (see discussion above about EXTERNAL_0 vs. NBR_0), then this needs to be either (1) set as a context flag before calling VbTryLoadKernel, or (2) sent as a flag into this function, plumbed all the way down into vb2_verify_kernel_vblock, or even (3) sent as a flag into this function, and set (temporarily) in vb2_shared_data while calling LoadKernel*.\n\nAny preference?",
+      "parentUuid": "272d44db_051af3d5",
+      "range": {
+        "startLine": 502,
+        "startChar": 47,
+        "endLine": 502,
+        "endChar": 63
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c97f9be7_29d87aef",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -268,6 +436,30 @@
       "writtenOn": "2021-05-19T23:16:05Z",
       "side": 1,
       "message": "nit: a lot of these should probably be different codes than NO_DISK_FOUND?",
+      "range": {
+        "startLine": 523,
+        "startChar": 9,
+        "endLine": 523,
+        "endChar": 11
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05d861e_3cb49598",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Sure, we can do that.\n\nI\u0027m also trying to figure out: When we attempt loading kernels across a bunch of different sectors, and none of them succeed, which failure do we return?  I would say \"the one with the lowest value\" (since we decided to order LoadKernel errors from most specific to least specific) -- but that means we need to throw away any value returned by vb2_load_partition (and map it to INVALID_KERNEL_FOUND).  Is that okay?  (I guess that\u0027s what we\u0027re doing in LoadKernel()...)  Should I also try to make use of these new return values in LoadKernel() as well?",
+      "parentUuid": "c97f9be7_29d87aef",
       "range": {
         "startLine": 523,
         "startChar": 9,
@@ -295,6 +487,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a73c67_0e669d45",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Good point... I can\u0027t really think of a better solution other than just repeating the expression twice.",
+      "parentUuid": "ac96b730_65592830",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d305a2da_22b1a6ca",
@@ -308,6 +518,30 @@
       "writtenOn": "2021-05-19T23:16:05Z",
       "side": 1,
       "message": "Don\u0027t you want to... like... break the loop on success or something?",
+      "range": {
+        "startLine": 568,
+        "startChar": 18,
+        "endLine": 568,
+        "endChar": 37
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f862bea7_6b344443",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d305a2da_22b1a6ca",
       "range": {
         "startLine": 568,
         "startChar": 18,
@@ -335,6 +569,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d54166_c0705c0f",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7c31dfb_f1833736",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21a58309_d943c23a",
@@ -352,6 +604,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e95be2_e5cb414e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "How about \"start\" and \"end\"?",
+      "parentUuid": "21a58309_d943c23a",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c9525fe_70097de1",
@@ -365,6 +635,24 @@
       "writtenOn": "2021-05-19T23:16:05Z",
       "side": 1,
       "message": "Should probably translate this from/to \"A\"/\"B\" like we do for fw_try_next?",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57128c7_03799a4a",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c9525fe_70097de1",
       "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

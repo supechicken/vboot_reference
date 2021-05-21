@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca429be_9fb08158",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539113b2_b4cc515d",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ba75646_fdd92a4d",
@@ -191,6 +209,24 @@
       "side": 1,
       "message": "Yes, I think that\u0027s how it has always worked. I think it would be fine to change it to exclude fixed-disk developer boot too if you want.\n\nI think it\u0027s fine to just decide this inside the function, it should have all the info it needs available. But you can change it to a boolean argument too if you want (although I think that might increase the risk of being inconsistent if there\u0027s, say, more than one path this could be called through in recovery mode for some reason).",
       "parentUuid": "5934b1c7_d9adaf21",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "384cc3da_26c4db90",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:29:32Z",
+      "side": 1,
+      "message": "Okay, then I think the right thing to do here is to only call vb2api_fail in the case of normal mode, which means !REC \u0026\u0026 !DEV.  Is that right?",
+      "parentUuid": "301566d4_654c6106",
       "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
