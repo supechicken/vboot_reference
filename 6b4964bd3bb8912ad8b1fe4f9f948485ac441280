@@ -16,6 +16,47 @@
       "message": "Maybe this should be a constant defined in the header where the flags themselves get defined? (Maybe it would be nice to separate these a bit more explicitly anyway, e.g. the actual disk selection flags that are used by the payload to find disks in the lower 16 bits and the additional annotation flags in the higher 16 bits.)",
       "revId": "6b4964bd3bb8912ad8b1fe4f9f948485ac441280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cacdc06_c63bc511",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:28:51Z",
+      "side": 1,
+      "message": "Seems like a pretty nice idea.  Separated into lower and higher 16 bits, with two mask constants.  I used the names \"SELECT_MASK\" and \"PROPERTY_MASK\", but I\u0027m open to any other suggestions.",
+      "parentUuid": "35857e77_5a0d8f43",
+      "revId": "6b4964bd3bb8912ad8b1fe4f9f948485ac441280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8946b261_48657a2e",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-21T12:28:51Z",
+      "side": 1,
+      "message": "I ended up changing this line, which doesn\u0027t quite work when selecting for multiple disk types at the same time.  Could you take another look?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 60
+      },
+      "revId": "6b4964bd3bb8912ad8b1fe4f9f948485ac441280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
