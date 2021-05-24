@@ -94,6 +94,30 @@
       },
       "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9615f9b0_d3a244a5",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:18:36Z",
+      "side": 1,
+      "message": "\u003e I had intended EXTERNAL_0/EXTERNAL_1 to be checked against the disk in question (external vs. internal), without caring about how the kernel was found.\n\nBut an NBR boot is always from internal disk anyway? (In the way I use the terminology, I wouldn\u0027t consider booting an NBR kernel from USB an \"NBR boot\" -- that\u0027s a normal USB recovery boot of a GPT partition and vboot has no idea what\u0027s inside the signed kernel image.) I don\u0027t think an internal/external distinction would be that important, and it also cannot be mapped to our existing flags: both a USB recovery boot and a Ctrl+U developer boot are \"external\", but they\u0027re checking different flags... meanwhile, Ctrl+D and Ctrl+U check the same flags while one is internal and one is external. I think the \"boot mode\" is more important because that decides under what circumstances this boot is possible and what special permissions (e.g. TPM unlocked) come with it. That\u0027s why I would just expand our current flags with \"NBR\" as a new category (on top of RECOVERY).\n\n\u003e Does NBR_1 correspond to a sector-based kernel search, and NBR_0 to a partition-based kernel search?\n\nYes.\n\n\u003e If so, should we name it as such?  Or, should we just rename the sector-based kernel search to be \"NBR kernel search\"?\n\nProbably less confusing to just stick with one name (e.g. NBR) everywhere.",
+      "parentUuid": "2418ea8b_98d23dea",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

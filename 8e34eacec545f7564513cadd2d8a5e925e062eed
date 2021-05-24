@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "921fd379_f2a3ecfd",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:18:36Z",
+      "side": 1,
+      "message": "Well, now it should be `unused \u003d 0xa0` though, right?",
+      "parentUuid": "6ffee72a_74a9f198",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 45
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2349adde_adf7606b",
@@ -248,6 +272,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f50f156a_0900ad46",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:18:36Z",
+      "side": 1,
+      "message": "\u003e Okay, assuming we go with the preamble option, are we still checking it against the top 4 bits of kernel_version_secdata (even though the top 8 bits are normally used for keyblock checking)?\n\nI mean... I guess? Like I said they\u0027re both not really the right place to put it, it would really be better to just revamp the whole thing to give it its own proper version field.\n\nI think Randall put it in the key version because we need that less often for its actual intended purpose than the other version, so it\u0027s more likely we can spare the bits. (We should also consider whether for something more complicated like NBR, 4 bits is really enough... I\u0027m worried that might get a bit tight for the initial shaking-out-the-bugs period.)",
+      "parentUuid": "ef4c46e3_afe5e516",
+      "range": {
+        "startLine": 274,
+        "startChar": 6,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01a290e7_9ba11f6e",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -425,6 +473,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8930d57a_bac73ad9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:18:36Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m confused: this function is part of the sector search (aka NBR boot) code. You can only possibly get here if someone selected the NBR option from the menu. So you know 100% you are booting NBR here. All you need to do is pass that info down from here into vb2_load_partition() (and then on to vb2_verify_kernel_vblock()). I\u0027d suggest adding a new type of lpflag for that. (It should still stay in the disk flags as well, of course, because TryLoadKernel() needs that. I\u0027m just saying use the other flags here so you don\u0027t need to have two different kinds of flags in vb2_load_partition().)",
+      "parentUuid": "7b2db4a5_af1d5377",
+      "range": {
+        "startLine": 502,
+        "startChar": 47,
+        "endLine": 502,
+        "endChar": 63
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c97f9be7_29d87aef",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -460,6 +532,30 @@
       "side": 1,
       "message": "Sure, we can do that.\n\nI\u0027m also trying to figure out: When we attempt loading kernels across a bunch of different sectors, and none of them succeed, which failure do we return?  I would say \"the one with the lowest value\" (since we decided to order LoadKernel errors from most specific to least specific) -- but that means we need to throw away any value returned by vb2_load_partition (and map it to INVALID_KERNEL_FOUND).  Is that okay?  (I guess that\u0027s what we\u0027re doing in LoadKernel()...)  Should I also try to make use of these new return values in LoadKernel() as well?",
       "parentUuid": "c97f9be7_29d87aef",
+      "range": {
+        "startLine": 523,
+        "startChar": 9,
+        "endLine": 523,
+        "endChar": 11
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cfffa1_2730768f",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:18:36Z",
+      "side": 1,
+      "message": "I mean, the point of the whole LoadKernel() ordering is to make sure we get the right recovery reason. Since this cannot trigger recovery, it\u0027s not as important.\n\nI guess for LoadKernel(), when you get read errors you\u0027ll currently end up with 0x5b (No bootable kernel found). If you want, I guess we could introduce a new \"Disk read error\" reason to differentiate that... in practice, I think that\u0027s not very important because most disk communication errors already hit during the disk initialization in depthcharge and then depthcharge doesn\u0027t even present it as a disk (so you get 0x5a (No bootable storage device)).\n\nSo I think you can either translate all of these to NO_KERNEL_FOUND to match the other LoadKernel() or you can just leave them at whatever codes they are, since they aren\u0027t gonna get translated into recovery reasons it doesn\u0027t matter. I think you shouldn\u0027t add new VB2_ERROR_LK_ errors for this, though... that class of errors should be restricted to only those that TryLoadKernel() actually translates into recovery reasons according to a certain priority. For the other stuff here I\u0027d just reuse or create other normal VB2_ERROR_ codes.",
+      "parentUuid": "b05d861e_3cb49598",
       "range": {
         "startLine": 523,
         "startChar": 9,
@@ -618,6 +714,24 @@
       "side": 1,
       "message": "How about \"start\" and \"end\"?",
       "parentUuid": "21a58309_d943c23a",
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1b8d28_58aa85a1",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:18:36Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "50e95be2_e5cb414e",
       "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

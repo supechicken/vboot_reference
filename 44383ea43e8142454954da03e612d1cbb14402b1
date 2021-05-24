@@ -231,6 +231,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da5aa43_06b7bf3b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:18:36Z",
+      "side": 1,
+      "message": "Yeah that should be okay. Please do it in a separate CL, though.",
+      "parentUuid": "384cc3da_26c4db90",
+      "revId": "44383ea43e8142454954da03e612d1cbb14402b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ac7844_b450e067",
