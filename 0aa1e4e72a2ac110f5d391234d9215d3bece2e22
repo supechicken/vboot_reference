@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc78b3f6_e422f56b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T22:35:37Z",
+      "side": 1,
+      "message": "I would prefix an extra tag here (e.g. VOLTEER-ONLY: or BRANCH-ONLY: or something) to clarify that this is not just a cherry-pick from ToT like all the other patches in this branch.",
+      "revId": "0aa1e4e72a2ac110f5d391234d9215d3bece2e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c382b92f_1211213e",
