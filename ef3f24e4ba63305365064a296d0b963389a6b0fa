@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e66332_cba3e33c",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-24T21:08:41Z",
+      "side": 1,
+      "message": "nit: kinda odd to have the \u003e 0 after an AND? I\u0027d just use the result directly as the truth value.",
+      "range": {
+        "startLine": 62,
+        "startChar": 44,
+        "endLine": 62,
+        "endChar": 48
+      },
+      "revId": "ef3f24e4ba63305365064a296d0b963389a6b0fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
