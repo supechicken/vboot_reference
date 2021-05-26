@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e02f2df_1b568bd0",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-05-26T10:46:50Z",
+      "side": 1,
+      "message": "Rename this to something like global_kparams or cached_kparams? \"lkp\" is the abbreviation of the \"LoadKernelParams\" struct which is removed in CL:2846282.",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "35646fd27f3bd44205aef53a3d859acfe99ff35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
