@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ffccef3_56e95f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-26T23:46:34Z",
+      "side": 1,
+      "message": "We keep running into this problem of needing a more comprehensive way of tracking \"boot mode\" from different angles, and I really don\u0027t like just adding piecemeal APIs here and there to make a separate request for each individual case. See the existing discussions in b/181931817 and b/179334129... can\u0027t we use this opportunity to fix this issue for real?\n\nHaving this as a permanent field in vb2_context (or even just stealing 4 bits from the flags field for it) would make things a lot cleaner.",
+      "revId": "7bde95130af55fb3b4a62b9a118a0382d3c114b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
