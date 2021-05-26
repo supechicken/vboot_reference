@@ -118,6 +118,30 @@
       },
       "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9acb9ac2_7a889335",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-26T08:40:42Z",
+      "side": 1,
+      "message": "Ack, renaming everywhere to \"NBR\" instead of more generic terms like \"sector search\".\n\nJust as a note here -- looks like a lot of our discussions on this CL stem from having different design perspectives.  I had originally envisioned \"NBR mode\" being triggered from loading an NBR image, regardless of coming from a USB disk or from an internal disk.  However, I\u0027m seeing that implementation is a lot simpler under the assumption you have been stating all along -- that NBR mode is limited exclusively to booting from a sector search on an internal disk (and conversely, that any other recovery modes *do not* allow sector search).  So let\u0027s move forward with that assumption.",
+      "parentUuid": "9615f9b0_d3a244a5",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "396504430b4c2bed10a90e8a0991c8649290c9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
