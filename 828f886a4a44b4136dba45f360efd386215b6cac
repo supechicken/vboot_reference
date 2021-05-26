@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a53dfd75_82f5a0da",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-26T23:58:13Z",
+      "side": 0,
+      "message": "So we\u0027re just assuming that the caller has zeroed this for us now? Probably a good idea to do that explicitly at the start of SelectAndLoadKernel(), at least?",
+      "revId": "828f886a4a44b4136dba45f360efd386215b6cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
