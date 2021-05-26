@@ -101,6 +101,7 @@ static int mock_prepare_log_count;
 static uint32_t mock_log_page_count;
 
 static vb2_error_t mock_diag_storage_test_rv;
+static vb2_error_t mock_diag_storage_health_rv;
 
 static void add_mock_key(uint32_t press, int trusted)
 {
@@ -357,6 +358,7 @@ static void reset_common_data(enum reset_type t)
 	add_mock_pp_pressed(0);
 
 	mock_diag_storage_test_rv = VB2_SUCCESS;
+	mock_diag_storage_health_rv = VB2_SUCCESS;
 }
 
 /* Mock functions */
@@ -578,6 +580,11 @@ uint32_t vb2ex_prepare_log_screen(enum vb2_screen screen, uint32_t locale_id,
 vb2_error_t vb2ex_diag_get_storage_test_log(const char **log)
 {
 	return mock_diag_storage_test_rv;
+}
+
+vb2_error_t vb2ex_diag_get_storage_health(const char **log)
+{
+	return mock_diag_storage_health_rv;
 }
 
 /* Tests */
