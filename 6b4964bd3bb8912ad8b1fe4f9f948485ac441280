@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f371da73_2372c0c2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-26T08:38:33Z",
+      "side": 1,
+      "message": "Renamed PROPERTY to ATTRIBUTE, and took away the stuff about \"how to access the kernel\".  See CL:2856364 for the latest plan.",
+      "parentUuid": "9cacdc06_c63bc511",
+      "revId": "6b4964bd3bb8912ad8b1fe4f9f948485ac441280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8946b261_48657a2e",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "FWIW I don\u0027t think the interface was ever designed to select more than one at the same time (e.g. depthcharge won\u0027t return the right thing in that case).",
       "parentUuid": "8946b261_48657a2e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 60
+      },
+      "revId": "6b4964bd3bb8912ad8b1fe4f9f948485ac441280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f90aec_78966261",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-05-26T08:38:33Z",
+      "side": 1,
+      "message": "True... but it doesn\u0027t hurt to make our API slightly more foolproof?\n\nI\u0027m also okay reverting to the original version if you\u0027re strongly opposed to adding the extra complexity.",
+      "parentUuid": "f593cfc4_bf6dccf2",
       "range": {
         "startLine": 62,
         "startChar": 0,
