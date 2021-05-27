@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2836e1f0_451c627d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-27T00:28:44Z",
+      "side": 1,
+      "message": "Was this shortcut key already discussed somewhere? \u0027M\u0027 is in a different position on the French AZERTY keyboard, so I don\u0027t think it\u0027s a good choice (also I don\u0027t quite see the relation to NBR?). I believe(?) \u0027R\u0027 (for Recovery) would still be available and doesn\u0027t move between keyboard layouts.",
+      "revId": "2d6b45db292eed51ca94d8bc6a1dffc3fd669755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d43a417_01092d42",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-27T00:28:44Z",
+      "side": 1,
+      "message": "I don\u0027t think(?) that kind of naming scheme is used anywhere else in vboot, I\u0027d at least call it VbTryLoadKernelImpl or something (but honestly, I think the flag was the easiest solution).",
+      "range": {
+        "startLine": 66,
+        "startChar": 19,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "2d6b45db292eed51ca94d8bc6a1dffc3fd669755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

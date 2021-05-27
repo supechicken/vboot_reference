@@ -344,6 +344,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2687357_081e6de2",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-27T00:28:44Z",
+      "side": 1,
+      "message": "\u003e Given that we are not going to revamp all of the version fields at the moment\n\nBut, but... tech debt...   :°-(\n\n\u003e Would assigning 5 bits allay your concerns, or would that be very awkward?\n\nLet\u0027s make it 8, at least, so it\u0027s not quite as awkward.",
+      "parentUuid": "9d43061b_ce6f59b0",
+      "range": {
+        "startLine": 274,
+        "startChar": 6,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01a290e7_9ba11f6e",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -569,6 +593,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "973c66bb_59f7b6b8",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-27T00:28:44Z",
+      "side": 1,
+      "message": "Well, I thought the idea was mainly to be able to reuse the existing code in VbTryLoadKernel() as far as it applies to NBR (e.g. fetching and looping through disks). If you think there\u0027s not enough code left in that function that NBR actually needs to make this worth it, I guess we can also make a new function (but I don\u0027t really see a big problem with the disk flag tbh).",
+      "parentUuid": "419082b2_f71b1bbf",
+      "range": {
+        "startLine": 502,
+        "startChar": 47,
+        "endLine": 502,
+        "endChar": 63
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c97f9be7_29d87aef",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -652,6 +700,30 @@
       "side": 1,
       "message": "Seems like overkill to have two LoadKernel sections (one for errors that have recovery code equivalents, and one for errors that don\u0027t).  Are we okay just returning NO_KERNEL_FOUND?",
       "parentUuid": "28cfffa1_2730768f",
+      "range": {
+        "startLine": 523,
+        "startChar": 9,
+        "endLine": 523,
+        "endChar": 11
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6001cd_fccee805",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-05-27T00:28:44Z",
+      "side": 1,
+      "message": "I mean, you don\u0027t need to create another new section, you can just throw it into one of the existing generic ones. But yes, I\u0027m also okay with only returning NO_KERNEL_FOUND.",
+      "parentUuid": "201f5b86_7ccd91a8",
       "range": {
         "startLine": 523,
         "startChar": 9,
