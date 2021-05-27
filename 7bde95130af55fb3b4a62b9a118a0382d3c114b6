@@ -16,6 +16,24 @@
       "message": "We keep running into this problem of needing a more comprehensive way of tracking \"boot mode\" from different angles, and I really don\u0027t like just adding piecemeal APIs here and there to make a separate request for each individual case. See the existing discussions in b/181931817 and b/179334129... can\u0027t we use this opportunity to fix this issue for real?\n\nHaving this as a permanent field in vb2_context (or even just stealing 4 bits from the flags field for it) would make things a lot cleaner.",
       "revId": "7bde95130af55fb3b4a62b9a118a0382d3c114b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda54a90_bf3bb818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-05-27T11:17:49Z",
+      "side": 1,
+      "message": "Thanks for the input.\nAfter offline discuss with Joel, we have an approach which could also fix the bootmode issue:\n\n* Publicize the get_boot_mode from vboot_kernel.c\n(https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/firmware/lib/vboot_kernel.c;l\u003d45)\n(Put into 2misc)\n\n* The logic of get_boot_mode will be:\n1. Judge if it is diagnostic boot (DIAGNOSTIC_UI \u0026\u0026 vb2api_diagnostic_ui_enabled(ctx) \u0026\u0026 vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)\nif so, return `BOOT_MODE_DIAGNOSTICS`\n2. Judge if it is recovery boot (vb2_shared_data.recovery_reason)\nif so, return `BOOT_MODE_RECOVERY`\n3. Judge if it is develop boot (vb2_shared_data.flags | VB2_SD_FLAG_DEV_MODE_ENABLED)\nif so, return `BOOT_MODE_DEVELOP`\n4. return `BOOT_MODE_NORMAL`\n\n* Move Kconfig DIAGNOSTIC_UI from depthcharge to coreboot\n\n* Deprecate the two config on ctx flags\n\nWhat do you think?\nWe could also move the discussion to b/181931817",
+      "parentUuid": "6ffccef3_56e95f20",
+      "revId": "7bde95130af55fb3b4a62b9a118a0382d3c114b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
