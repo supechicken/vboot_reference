@@ -1058,16 +1058,15 @@ static void print_json_image(
 		return;
 	if (load_firmware_image(&image, fpath, archive))
 		return;
-	if (is_host)
-		gbb = find_gbb(&image);
-	else
+	if (!is_host)
 		printf(",\n");
 	printf("%*s\"%s\": { \"versions\": { \"ro\": \"%s\", \"rw\": \"%s\" },",
 	       indent, "", name, image.ro_version, image.rw_version_a);
 	indent += 2;
 	if (is_host && patch_image_by_model(&image, m, archive) != 0) {
 		ERROR("Failed to patch images by model: %s\n", m->name);
-	} else if (gbb) {
+	} else if (is_host) {
+		gbb = find_gbb(&image);
 		printf("\n%*s\"keys\": { \"root\": \"%s\", ",
 		       indent, "",
 		       get_gbb_key_hash(gbb, gbb->rootkey_offset,
