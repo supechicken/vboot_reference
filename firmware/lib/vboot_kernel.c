@@ -6,6 +6,7 @@
  * (Firmware portion)
  */
 
+#include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
@@ -20,17 +21,6 @@
 
 #define LOWEST_TPM_VERSION 0xffffffff
 
-enum vb2_boot_mode {
-	/* Normal boot: kernel must be verified. */
-	VB2_BOOT_MODE_NORMAL = 0,
-
-	/* Recovery boot, regardless of dev mode state. */
-	VB2_BOOT_MODE_RECOVERY = 1,
-
-	/* Developer boot: self-signed kernel okay. */
-	VB2_BOOT_MODE_DEVELOPER = 2,
-};
-
 /**
  * Return the current boot mode (normal, recovery, or dev).
  *
@@ -39,13 +29,7 @@ enum vb2_boot_mode {
  */
 static enum vb2_boot_mode get_boot_mode(struct vb2_context *ctx)
 {
-	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE)
-		return VB2_BOOT_MODE_RECOVERY;
-
-	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
-		return VB2_BOOT_MODE_DEVELOPER;
-
-	return VB2_BOOT_MODE_NORMAL;
+	return ctx->boot_mode;
 }
 
 /**

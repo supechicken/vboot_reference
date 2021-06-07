@@ -20,6 +20,8 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	enum vb2_boot_mode boot_mode;
+	enum vb2_boot_mode *ctx_boot_mode;
 
 	/* Initialize NV context */
 	vb2_nv_init(ctx);
@@ -104,6 +106,23 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 		ctx->flags |= VB2_CONTEXT_CLEAR_RAM;
 		return VB2_ERROR_API_PHASE1_RECOVERY;
 	}
+
+	/* Decide the boot mode */
+	boot_mode = VB2_BOOT_MODE_NORMAL;
+
+	if (!vb2_allow_recovery(ctx))
+		boot_mode = VB2_BOOT_MODE_BROKEN_RECOVERY;
+	else if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE)
+		boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
+	else if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
+		 vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST))
+		boot_mode = VB2_BOOT_MODE_DIAGNOSTICS;
+	else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
+		boot_mode = VB2_BOOT_MODE_DEVELOPER;
+
+	/* Cast boot mode to non-constant and assign */
+	ctx_boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*ctx_boot_mode = boot_mode;
 
 	return VB2_SUCCESS;
 }
