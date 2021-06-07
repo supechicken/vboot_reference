@@ -78,7 +78,6 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 		 * code in that case.
 		 */
 		vb2api_fail(ctx, VB2_RECOVERY_DEV_SWITCH, rv);
-		return rv;
 	}
 
 	/*
@@ -98,6 +97,9 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 	if (ctx->flags & VB2_CONTEXT_DISPLAY_INIT)
 		sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
 
+	/* Decide the boot mode */
+	vb2_set_boot_mode(ctx);
+
 	/* Return error if recovery is needed */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* Always clear RAM when entering recovery mode */
@@ -105,7 +107,7 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 		return VB2_ERROR_API_PHASE1_RECOVERY;
 	}
 
-	return VB2_SUCCESS;
+	return rv;
 }
 
 vb2_error_t vb2api_fw_phase2(struct vb2_context *ctx)
