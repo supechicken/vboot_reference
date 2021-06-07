@@ -169,6 +169,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	vb2_clear_recovery(ctx);
 
 	/* Select boot path */
+	/* WIP: use boot mode instead */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* If we're in recovery mode just to do memory retraining, all
 		   we need to do is reboot. */
