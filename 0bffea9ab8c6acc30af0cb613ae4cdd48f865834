@@ -16,6 +16,23 @@
       "message": "Hi Isaac, although this is merged, does this really solve your issue?\n\nThe key location for find_gbb should not change after applying patches because those patches should not change file locations. ",
       "revId": "0bffea9ab8c6acc30af0cb613ae4cdd48f865834",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57cce7e_35b1d500",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-06-07T02:05:24Z",
+      "side": 1,
+      "message": "I just saw from the issue that you plan to run this after merged; next time please create a local build to verify before uploading the changes.",
+      "revId": "0bffea9ab8c6acc30af0cb613ae4cdd48f865834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
