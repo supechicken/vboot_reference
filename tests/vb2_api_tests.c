@@ -390,7 +390,8 @@ static void phase1_tests(void)
 	/* Dev switch error in normal mode reboots to recovery */
 	reset_common_data(FOR_MISC);
 	retval_vb2_check_dev_switch = VB2_ERROR_MOCK;
-	TEST_EQ(vb2api_fw_phase1(ctx), VB2_ERROR_MOCK, "phase1 dev switch");
+	TEST_EQ(vb2api_fw_phase1(ctx), VB2_ERROR_API_PHASE1_RECOVERY,
+		"phase1 dev switch");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_DEV_SWITCH, "  recovery request");
 

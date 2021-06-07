@@ -78,7 +78,6 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 		 * code in that case.
 		 */
 		vb2api_fail(ctx, VB2_RECOVERY_DEV_SWITCH, rv);
-		return rv;
 	}
 
 	/*
@@ -97,6 +96,9 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 	/* Mark display as available for downstream vboot and vboot callers. */
 	if (ctx->flags & VB2_CONTEXT_DISPLAY_INIT)
 		sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
+
+	/* Decide the boot mode */
+	vb2_set_boot_mode(ctx);
 
 	/* Return error if recovery is needed */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
