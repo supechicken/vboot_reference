@@ -16,7 +16,7 @@
 #include "2sysincludes.h"
 #include "2tpm_bootmode.h"
 
-vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
+static vb2_error_t vb2api_fw_phase1_impl(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -106,6 +106,16 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 	}
 
 	return VB2_SUCCESS;
+}
+
+vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
+{
+	vb2_error_t rv = vb2api_fw_phase1_impl(ctx);
+
+	/* Decide the boot mode */
+	vb2_set_boot_mode(ctx);
+
+	return rv;
 }
 
 vb2_error_t vb2api_fw_phase2(struct vb2_context *ctx)
