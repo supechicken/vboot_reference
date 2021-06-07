@@ -176,6 +176,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	vb2_gbb_flags_t gbb_flags = vb2api_gbb_get_flags(ctx);
+	enum vb2_boot_mode boot_mode = vb2api_get_boot_mode(ctx);
 
 	/* Init nvstorage space. TODO(kitching): Remove once we add assertions
 	   to vb2_nv_get and vb2_nv_set. */
@@ -191,7 +192,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	 * Do EC and auxfw software sync unless we're in recovery mode. This
 	 * has UI but it's just a single non-interactive WAIT screen.
 	 */
-	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
+	if (boot_mode != VB2_BOOT_MODE_RECOVERY) {
 		VB2_TRY(vb2api_ec_sync(ctx));
 		VB2_TRY(vb2api_auxfw_sync(ctx));
 		VB2_TRY(handle_battery_cutoff(ctx));
@@ -204,7 +205,8 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	vb2_clear_recovery(ctx);
 
 	/* Select boot path */
-	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+	switch (boot_mode) {
+	case VB2_BOOT_MODE_RECOVERY:
 		/* If we're in recovery mode just to do memory retraining, all
 		   we need to do is reboot. */
 		if (sd->recovery_reason == VB2_RECOVERY_TRAIN_AND_REBOOT) {
@@ -233,8 +235,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 			VB2_TRY(vb2_manual_recovery_menu(ctx));
 		else
 			VB2_TRY(vb2_broken_recovery_menu(ctx));
-	} else if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
-		   vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+		break;
+
+	case VB2_BOOT_MODE_DIAGNOSTICS:
 		/*
 		 * Need to clear the request flag and commit nvdata changes
 		 * immediately to avoid booting back into diagnostic tool when a
@@ -250,10 +253,14 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		 * return either of reboot or shutdown.
 		 */
 		return VB2_REQUEST_REBOOT;
-	} else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		break;
+
+	case VB2_BOOT_MODE_DEVELOPER:
 		/* Developer boot.  This has UI. */
 		VB2_TRY(vb2_developer_menu(ctx));
-	} else {
+		break;
+
+	case VB2_BOOT_MODE_NORMAL:
 		/* Normal boot */
 		VB2_TRY(vb2_normal_boot(ctx));
 	}

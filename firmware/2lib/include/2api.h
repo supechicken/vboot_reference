@@ -923,6 +923,29 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
  */
 int vb2api_use_short_dev_screen_delay(struct vb2_context *ctx);
 
+enum vb2_boot_mode {
+	/* Normal boot: kernel must be verified. */
+	VB2_BOOT_MODE_NORMAL = 0,
+
+	/* Recovery boot, regardless of dev mode state. */
+	VB2_BOOT_MODE_RECOVERY = 1,
+
+	/* Diagnostic boot: launch diagnostic tools, regardless of dev mode
+	   state */
+	VB2_BOOT_MODE_DIAGNOSTICS = 2,
+
+	/* Developer boot: self-signed kernel okay. */
+	VB2_BOOT_MODE_DEVELOPER = 3,
+};
+
+/**
+ * Return the current boot mode (normal, recovery, diagnostics, or dev).
+ *
+ * @param ctx          Vboot context
+ * @return Current boot mode (see vb2_boot_mode enum).
+ */
+enum vb2_boot_mode vb2api_get_boot_mode(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
 

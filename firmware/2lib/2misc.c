@@ -712,3 +712,18 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 	buf[DEBUG_INFO_MAX_LENGTH] = '\0';
 	return buf;
 }
+
+enum vb2_boot_mode vb2api_get_boot_mode(struct vb2_context *ctx)
+{
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE)
+		return VB2_BOOT_MODE_RECOVERY;
+
+	if (DIAGNOSTIC_UI && vb2api_diagnostic_ui_enabled(ctx) &&
+	    vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST))
+		return VB2_BOOT_MODE_DIAGNOSTICS;
+
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
+		return VB2_BOOT_MODE_DEVELOPER;
+
+	return VB2_BOOT_MODE_NORMAL;
+}
