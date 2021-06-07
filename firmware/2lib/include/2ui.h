@@ -246,7 +246,7 @@ vb2_error_t vb2_ui_screen_change(struct vb2_ui_context *ui, enum vb2_screen id);
 vb2_error_t vb2_developer_menu(struct vb2_context *ctx);
 
 /**
- * UI for a non-manual recovery ("BROKEN").
+ * UI for a broken screen.
  *
  * Enter the recovery menu, which shows that an unrecoverable error was
  * encountered last boot. Wait for the user to physically reset or shut down.
