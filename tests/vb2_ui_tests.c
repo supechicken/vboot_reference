@@ -329,7 +329,7 @@ static void reset_common_data(enum reset_type t)
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_total = 0;
 
-	/* For vb2_allow_recovery */
+	/* For vb2api_allow_recovery */
 	mock_allow_recovery = t == FOR_MANUAL_RECOVERY;
 
 	/* For vb2ex_physical_presence_pressed */

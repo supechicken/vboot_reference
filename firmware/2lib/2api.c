@@ -16,6 +16,27 @@
 #include "2sysincludes.h"
 #include "2tpm_bootmode.h"
 
+static void set_boot_mode(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	/* Cast boot mode to non-constant and assign */
+	enum vb2_boot_mode *boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_NORMAL;
+
+	if (sd->recovery_reason) {
+		if (vb2api_allow_recovery(ctx))
+			*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
+		else
+			*boot_mode = VB2_BOOT_MODE_BROKEN_SCREEN;
+	} else if (vb2api_diagnostic_ui_enabled(ctx) &&
+		   vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+		*boot_mode = VB2_BOOT_MODE_DIAGNOSTICS;
+	} else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		*boot_mode = VB2_BOOT_MODE_DEVELOPER;
+	}
+}
+
 vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
@@ -97,6 +118,9 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 	/* Mark display as available for downstream vboot and vboot callers. */
 	if (ctx->flags & VB2_CONTEXT_DISPLAY_INIT)
 		sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
+
+	/* Decide the boot mode */
+	set_boot_mode(ctx);
 
 	/* Return error if recovery is needed */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
