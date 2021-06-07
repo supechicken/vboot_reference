@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96f8991_04703064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-06-07T01:58:01Z",
+      "side": 1,
+      "message": "Hi Isaac, although this is merged, does this really solve your issue?\n\nThe key location for find_gbb should not change after applying patches because those patches should not change file locations. ",
+      "revId": "0bffea9ab8c6acc30af0cb613ae4cdd48f865834",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
