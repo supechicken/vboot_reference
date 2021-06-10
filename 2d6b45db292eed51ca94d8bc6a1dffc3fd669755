@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f325076b_3f5902ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163331
+      },
+      "writtenOn": "2021-06-10T19:10:47Z",
+      "side": 1,
+      "message": "nit: Joel, this might be too much to ask, but would it be possible to rename \"nbr\" to \"minios\"? because in all our codebase, I don\u0027t think we used \"nbr\" anywhere. It were all \"minios\". Also \"nbr\" could refer to many other things: https://source.corp.google.com/search?q\u003dnbr\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public\nUsing minios would be easier when someone wants to do codesearch on it.",
+      "revId": "2d6b45db292eed51ca94d8bc6a1dffc3fd669755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2836e1f0_451c627d",
