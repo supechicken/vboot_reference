@@ -67,9 +67,10 @@ KERNEL_DATAKEY_ALGOID=${RSA2048_SHA256_ALGOID}
 EC_KEYBLOCK_MODE=7  # Only allow RW EC firmware in non-recovery.
 FIRMWARE_KEYBLOCK_MODE=7  # Only allow RW firmware in non-recovery.
 DEV_FIRMWARE_KEYBLOCK_MODE=6  # Only allow in dev mode.
-RECOVERY_KERNEL_KEYBLOCK_MODE=11 # Only in recovery mode.
-KERNEL_KEYBLOCK_MODE=7  # Only allow in non-recovery.
-INSTALLER_KERNEL_KEYBLOCK_MODE=10  # Only allow in Dev + Recovery.
+RECOVERY_KERNEL_KEYBLOCK_MODE=27 # Only in recovery mode + non-miniOS.
+MINIOS_KERNEL_KEYBLOCK_MODE=43  # Only allow in recovery mode + miniOS.
+KERNEL_KEYBLOCK_MODE=23  # Only allow in non-recovery + non-miniOS.
+INSTALLER_KERNEL_KEYBLOCK_MODE=26  # Only allow in Dev + Recovery + non-miniOS.
 
 # Emit .vbpubk and .vbprivk using given basename and algorithm
 # NOTE: This function also appears in ../../utility/dev_make_keypair. Making
@@ -125,6 +126,8 @@ make_au_payload_key() {
 #   0x02  Developer switch on
 #   0x04  Not recovery mode
 #   0x08  Recovery mode
+#   0x10  Not miniOS mode
+#   0x20  miniOS mode
 make_keyblock() {
   local base=$1
   local flags=$2

@@ -182,6 +182,9 @@ main() {
   # Create the recovery kernel keyblock for use only in Recovery mode.
   make_keyblock recovery_kernel ${RECOVERY_KERNEL_KEYBLOCK_MODE} recovery_kernel_data_key recovery_key
 
+  # Create the miniOS kernel keyblock for use only in miniOS mode.
+  make_keyblock minios_kernel ${MINIOS_KERNEL_KEYBLOCK_MODE} recovery_kernel_data_key recovery_key
+
   # Create the normal kernel keyblock for use only in Normal mode.
   make_keyblock kernel ${KERNEL_KEYBLOCK_MODE} kernel_data_key kernel_subkey
 
