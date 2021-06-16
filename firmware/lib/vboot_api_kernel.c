@@ -54,13 +54,24 @@ static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-test_mockable
-vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
+static int is_valid_disk(VbDiskInfo *info, uint32_t disk_flags)
+{
+	return info->bytes_per_lba >= 512 &&
+		(info->bytes_per_lba & (info->bytes_per_lba - 1)) == 0 &&
+		info->lba_count >= 16 &&
+		(info->flags & disk_flags & VB_DISK_FLAG_SELECT_MASK) &&
+		((info->flags & VB_DISK_FLAG_SELECT_MASK) &
+		 ((info->flags & VB_DISK_FLAG_SELECT_MASK) - 1)) == 0;
+}
+
+static vb2_error_t VbTryLoadKernelImpl(struct vb2_context *ctx,
+				       uint32_t disk_flags, int minios)
 {
 	vb2_error_t rv = VB2_ERROR_LK_NO_DISK_FOUND;
 	VbDiskInfo* disk_info = NULL;
 	uint32_t disk_count = 0;
 	uint32_t i;
+	vb2_error_t new_rv;
 
 	lkp.disk_handle = NULL;
 
@@ -100,8 +111,16 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags)
 		lkp.boot_flags |= disk_info[i].flags & VB_DISK_FLAG_EXTERNAL_GPT
 				? BOOT_FLAG_EXTERNAL_GPT : 0;
 
-		vb2_error_t new_rv = LoadKernel(ctx, &lkp);
-		VB2_DEBUG("LoadKernel() = %#x\n", new_rv);
+		kparams_ptr->disk_handle = disk_info[i].handle;
+
+		if (minios) {
+			new_rv = LoadKernelMiniOs(ctx, kparams_ptr,
+						  &disk_info[i]);
+			VB2_DEBUG("LoadKernelMiniOs() = %#x\n", new_rv);
+		} else {
+			new_rv = LoadKernel(ctx, kparams_ptr, &disk_info[i]);
+			VB2_DEBUG("LoadKernel() = %#x\n", new_rv);
+		}
 
 		/* Stop now if we found a kernel. */
 		if (VB2_SUCCESS == new_rv) {
@@ -170,6 +189,17 @@ static void vb2_kernel_fill_kparams(struct vb2_context *ctx,
 	kparams->kernel_buffer_size = lkp.kernel_buffer_size;
 	memcpy(kparams->partition_guid, lkp.partition_guid,
 	       sizeof(kparams->partition_guid));
+}
+
+vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags)
+{
+	return VbTryLoadKernelImpl(ctx, disk_flags, 0);
+}
+
+test_mockable
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx)
+{
+	return VbTryLoadKernelImpl(ctx, VB_DISK_FLAG_FIXED, 1);
 }
 
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,

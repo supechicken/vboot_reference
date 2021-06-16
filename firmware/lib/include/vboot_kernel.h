@@ -105,6 +105,7 @@ typedef struct VbSharedDataKernelCall {
  * @return VB2_SUCCESS or the most specific VB2_ERROR_LK error.
  */
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t get_info_flags);
+vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx);
 
 /* Flags for VbUserConfirms() */
 #define VB_CONFIRM_MUST_TRUST_KEYBOARD (1 << 0)

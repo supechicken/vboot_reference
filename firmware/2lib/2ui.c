@@ -457,8 +457,10 @@ vb2_error_t vb2_manual_recovery_menu(struct vb2_context *ctx)
 
 vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 {
+	vb2_error_t rv;
+
 	/* See if we have a recovery kernel available yet. */
-	vb2_error_t rv = VbTryLoadKernel(ui->ctx, VB_DISK_FLAG_REMOVABLE);
+	rv = VbTryLoadKernel(ui->ctx, VB_DISK_FLAG_REMOVABLE);
 	if (rv == VB2_SUCCESS)
 		return rv;
 
@@ -480,6 +482,12 @@ vb2_error_t manual_recovery_action(struct vb2_ui_context *ui)
 
 	if (ui->key == '\t')
 		return vb2_ui_screen_change(ui, VB2_SCREEN_DEBUG_INFO);
+
+	if (ui->key == VB_KEY_CTRL('R')) {
+		rv = VbTryLoadMiniOsKernel(ui->ctx);
+		if (rv == VB2_SUCCESS)
+			return VB2_REQUEST_UI_EXIT;
+	}
 
 	return VB2_REQUEST_UI_CONTINUE;
 }

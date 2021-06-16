@@ -62,4 +62,8 @@ typedef struct LoadKernelParams {
  */
 vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params);
 
+vb2_error_t LoadKernelMiniOs(struct vb2_context *ctx,
+			     VbSelectAndLoadKernelParams *params,
+			     VbDiskInfo *disk_info);
+
 #endif  /* VBOOT_REFERENCE_LOAD_KERNEL_FW_H_ */
