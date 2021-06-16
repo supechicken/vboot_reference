@@ -16,6 +16,24 @@
       "message": "So we\u0027re just assuming that the caller has zeroed this for us now? Probably a good idea to do that explicitly at the start of SelectAndLoadKernel(), at least?",
       "revId": "828f886a4a44b4136dba45f360efd386215b6cac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2011ab_0bbb9195",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T00:48:31Z",
+      "side": 0,
+      "message": "I think it\u0027s okay to assume that if VbSelectAndloadKernel returns failure, any data returned via LKP should not be considered valid.  If it *is* valid, then we are guaranteed to have written to the output fields in LKP.  If I added this to the documentation of VbSelectAndLoadKernel, would that be sufficient?  Or do you still strongly prefer zero-ing the output params at the start of the API call?",
+      "parentUuid": "a53dfd75_82f5a0da",
+      "revId": "828f886a4a44b4136dba45f360efd386215b6cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
