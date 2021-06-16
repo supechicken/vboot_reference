@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6db75e7_17171e14",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-16T04:09:02Z",
+      "side": 1,
+      "message": "i thought minios was backed into an existing image as a dedicated partition.  why would we sign the kernel as a standalone file ?",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
