@@ -34,6 +34,24 @@
       "parentUuid": "681930c0_08848a71",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126ff53b_d84015a1",
+        "filename": "tests/devkeys/kernel.keyblock",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-16T14:21:11Z",
+      "side": 0,
+      "message": "i\u0027ll leave it to Julius et al, but this sounds wrong.  backwards compat would suggest that if the flag doesn\u0027t exist, the feature would be assumed to be 0.  we aren\u0027t going to go back to old devices and regenerating their keyblocks.  if we need to refresh keyblocks on existing devices (zork?), that\u0027s possible, but it\u0027s not trivial.",
+      "parentUuid": "9cec4b55_04d948aa",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
