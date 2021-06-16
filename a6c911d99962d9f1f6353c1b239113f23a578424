@@ -16,6 +16,24 @@
       "message": "i thought minios was backed into an existing image as a dedicated partition.  why would we sign the kernel as a standalone file ?",
       "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bdfdecb_b089624c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T13:55:36Z",
+      "side": 1,
+      "message": "Hey vapier, based on your email which tells me to update vboot_reference/scripts/keygeneration and vboot_reference/scripts/image_signing, I\u0027m working under the assumption that this script (sign_official_build.sh) is used as part of the signer logic to get miniOS signed and copied to its two dedicated partitions.  If that\u0027s not the case, please let me know what script needs to be updated.",
+      "parentUuid": "f6db75e7_17171e14",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "do we really need to modify these existing files ?",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cec4b55_04d948aa",
+        "filename": "tests/devkeys/kernel.keyblock",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T13:55:36Z",
+      "side": 0,
+      "message": "Yes.  All keyblock flags come in 0/1 pairs.  We need to set MINIOS_0 on all non-miniOS images to *disallow* them from booting in miniOS mode.  See the check here: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2856364/12/firmware/lib/vboot_kernel.c#254",
+      "parentUuid": "681930c0_08848a71",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
