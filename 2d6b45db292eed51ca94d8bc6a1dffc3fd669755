@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73b43f1_060375cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T00:33:42Z",
+      "side": 1,
+      "message": "Okay, done.",
+      "parentUuid": "370f053a_b7f2c922",
+      "revId": "2d6b45db292eed51ca94d8bc6a1dffc3fd669755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2836e1f0_451c627d",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c8438a_1e321a41",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T00:33:42Z",
+      "side": 1,
+      "message": "Okay, sure.  I wasn\u0027t really sure if we wanted to keep a keyboard shortcut at all, but I suppose it\u0027ll make writing FAFT tests easier.  So let\u0027s go with Ctrl+R.",
+      "parentUuid": "2836e1f0_451c627d",
+      "revId": "2d6b45db292eed51ca94d8bc6a1dffc3fd669755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d43a417_01092d42",
@@ -66,6 +102,30 @@
       "writtenOn": "2021-05-27T00:28:44Z",
       "side": 1,
       "message": "I don\u0027t think(?) that kind of naming scheme is used anywhere else in vboot, I\u0027d at least call it VbTryLoadKernelImpl or something (but honestly, I think the flag was the easiest solution).",
+      "range": {
+        "startLine": 66,
+        "startChar": 19,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "2d6b45db292eed51ca94d8bc6a1dffc3fd669755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a4ddba_d0f5fdf5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T00:33:42Z",
+      "side": 1,
+      "message": "Sure, let\u0027s go with VbTryLoadKernelImpl.",
+      "parentUuid": "0d43a417_01092d42",
       "range": {
         "startLine": 66,
         "startChar": 19,

@@ -366,6 +366,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b327a2a_8c5709d5",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T00:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2687357_081e6de2",
+      "range": {
+        "startLine": 274,
+        "startChar": 6,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01a290e7_9ba11f6e",
@@ -617,6 +641,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70ad05d9_4b4587d0",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T00:33:42Z",
+      "side": 1,
+      "message": "We\u0027re still making use of the same disk looping code under-the-hood.  But (1) it seemed really weird to be grouping \"NBR_BOOT\" as a flag alongside the type of disk being booted, and (2) the API would only be valid when the appropriate flags are set at the same time (i.e. BOOT_NBR|DISK_FIXED).  If NBR is *only* valid under this kind of situation, it seemed like we were better off not tainting the VB_DISK_FLAG mask (whose functionality should really be limited to disk-related things used with  VbEx disk functions), and creating a separate call to hide disk selection for the NBR case.",
+      "parentUuid": "973c66bb_59f7b6b8",
+      "range": {
+        "startLine": 502,
+        "startChar": 47,
+        "endLine": 502,
+        "endChar": 63
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c97f9be7_29d87aef",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
@@ -724,6 +772,30 @@
       "side": 1,
       "message": "I mean, you don\u0027t need to create another new section, you can just throw it into one of the existing generic ones. But yes, I\u0027m also okay with only returning NO_KERNEL_FOUND.",
       "parentUuid": "201f5b86_7ccd91a8",
+      "range": {
+        "startLine": 523,
+        "startChar": 9,
+        "endLine": 523,
+        "endChar": 11
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81bfcd3_4e0f3880",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-16T00:33:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d6001cd_fccee805",
       "range": {
         "startLine": 523,
         "startChar": 9,
