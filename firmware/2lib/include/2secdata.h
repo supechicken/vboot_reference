@@ -231,12 +231,15 @@ static inline int vb2_hwcrypto_allowed(struct vb2_context *ctx)
 		return 0;
 
 	/* enable hwcrypto only if RW firmware set the flag */
+#if 0
 	if (vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS)
 				& VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED)
 		return 1;
 
 	return 0;
+#endif
 
+	return 1;// W/A to ovecome VB2_SECDATA_KERNEL_FLAGS doesn't supported on secdata_kernel v0
 }
 
 
