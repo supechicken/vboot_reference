@@ -52,6 +52,70 @@
       "parentUuid": "0bdfdecb_b089624c",
       "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5991f23b_86502df4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T02:13:51Z",
+      "side": 1,
+      "message": "Is there an overview of which types are actually used how somewhere, Mike? As far as I can tell from the signer code, it just takes this as a string from the instruction file and passes it straight through to this script. I don\u0027t really know how the instruction files get made.\n\nAre we actually using all of these types, or can we maybe deprecate some of them (or at least clearly mark them as unused)? The list is a bit confusing at the moment, e.g. I\u0027m not actually sure what the difference between `recovery` and `recovery_kernel` is, or why `usb` is available as a separate type and what exactly that does. My understanding was always that `recovery` signing basically does most of these things in one go, but documenting the details better would be very helpful.\n\n(@Joel: I think if I understand this right, we bascially want this functionality to go into sign_image_file() and then the modes we care about (notably `recovery`) should do it. Not exactly clear how `factory` works and what we need to do in the whole factory install flow to support this anyway. We don\u0027t need a minios on the actual factory image that contains all the factory tests and stuff, but we need to make sure it is there and correctly signed in the part that\u0027s copied to the disk as part of the factory install flow. I don\u0027t know exactly how that works, I\u0027d suggest asking Hung-Te.)",
+      "parentUuid": "375468bb_dcc86397",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b38ea3c4_04bb42e7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T02:13:51Z",
+      "side": 1,
+      "message": "We need a separate minios_kernel_data_key pair as well. Otherwise, you have two keyblocks with different flags signing the same data key and then you could just paste a USB recovery keyblock onto the minios image and since it uses the same key it would verify just fine (which is exactly what we want to prevent).",
+      "range": {
+        "startLine": 467,
+        "startChar": 30,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf6feab_3d82ad41",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T02:13:51Z",
+      "side": 1,
+      "message": "Can we write these in hex somehow (does `RECOVERY_KERNEL_KEYBLOCK_MODE\u003d$((0x1b))` work?) so it\u0027s easier to follow?",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

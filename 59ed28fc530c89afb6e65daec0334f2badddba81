@@ -52,6 +52,24 @@
       "parentUuid": "9cec4b55_04d948aa",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d59bdcb_307faa98",
+        "filename": "tests/devkeys/kernel.keyblock",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T02:13:51Z",
+      "side": 0,
+      "message": "Yes, this is necessary to expand our keyblock flags in a consistent manner (there\u0027s always a \"valid when X is active\" and a \"valid when X is not active\" flag). We don\u0027t need to regenerate any old keyblocks. This is not supposed to be backported into any shipped firmware branches, and old firmware would simply ignore these extra flags if they\u0027re set somewhere. Newer firmware will require the MINIOS_0 flag to be set in order to allow booting in non-minios mode.\n\nI think Zork is shipped already(?), so I assume the assumption has always been that NBR doesn\u0027t launch on Zork anyway, and it\u0027s just being used as a development vehicle by the NBR guys (who don\u0027t need the MP keyset for that). (Like I mentioned in that email, it\u0027s actually important that we *don\u0027t* sign a minios image with MP keys on any device where RO firmware has already shipped, because older firmware would just ignore those extra flags that restrict which modes the image is allowed to boot in.)\n\nMy understanding is that NBR will only launch on devices whose MP keysets aren\u0027t generated yet. We should get this (and the corresponding HSM code patches) in soon so any keysets we generate from that point onward are ready to support this. We\u0027ll need to hold off submitting the code changes that actually check for these flags until we\u0027re sure it won\u0027t go into any branches for devices that don\u0027t have a supporting keyset yet. (The other way round is fine... if we add those flags to a keyset but the firmware code doesn\u0027t support them yet, they\u0027ll just get ignored.)\n\nSo just to write this down for myself to keep track off once more, the important dependencies are:\n\n1) USE\u003dminios flag must not be enabled (on an overlay meant for shipping) before firmware code changes land\n2) firmware code changes must not land before all devices whose keysets don\u0027t support the minios flag yet have branched\n\n(If necessary we could regenerate MP keysets to work around dependency 2, but someone would need to go make an extra HSM trip for that.)",
+      "parentUuid": "126ff53b_d84015a1",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
