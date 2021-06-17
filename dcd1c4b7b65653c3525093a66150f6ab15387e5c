@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8bd086_65e61816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T23:59:24Z",
+      "side": 1,
+      "message": "I think I\u0027m basically okay with this now, just a few more nits. Not sure if other reviewers still had open questions..?",
+      "revId": "dcd1c4b7b65653c3525093a66150f6ab15387e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3a7b7f_f73f92d9",
+        "filename": "firmware/2lib/include/2sha_x86_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T23:59:24Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure why this really needs to be a header, I\u0027d just add these to the top of 2sha_x86.c.",
+      "revId": "dcd1c4b7b65653c3525093a66150f6ab15387e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

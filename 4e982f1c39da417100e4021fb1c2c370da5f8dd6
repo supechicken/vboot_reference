@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae054c85_f9cdc3a4",
+        "filename": "firmware/2lib/2sha256.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T23:59:24Z",
+      "side": 0,
+      "message": "nit: would probably be better to leave these definitions here and just remove the `static` so they can be referenced from the other file (otherwise you\u0027ll link them in twice and be at the mercy of good constant deduplication).",
+      "revId": "4e982f1c39da417100e4021fb1c2c370da5f8dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
