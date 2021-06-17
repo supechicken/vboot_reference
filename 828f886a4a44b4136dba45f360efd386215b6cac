@@ -34,6 +34,24 @@
       "parentUuid": "a53dfd75_82f5a0da",
       "revId": "828f886a4a44b4136dba45f360efd386215b6cac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15f7338_f5faff37",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-17T00:54:09Z",
+      "side": 0,
+      "message": "Okay, looking at it again, it seems fine.",
+      "parentUuid": "3d2011ab_0bbb9195",
+      "revId": "828f886a4a44b4136dba45f360efd386215b6cac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
