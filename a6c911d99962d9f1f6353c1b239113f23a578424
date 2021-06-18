@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53a6c3d2_e5eec2c7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-18T22:29:13Z",
+      "side": 1,
+      "message": "Thanks for the list! (There\u0027s also chromite/lib/paygen/signer_payloads_client.py which calls this with `update_payload` directly, so gotta count that towards the in-use ones as well.)\n\nSo looking at this more closely, it seems that \"SSD\", \"USB\" and \"base\" are fully indistinguishable in what they actually do. @Joel, I\u0027d suggest we just remove \"SSD\" and \"USB\" then to avoid confusion. That leaves \"kernel\", \"recovery_kernel\" and \"minios_kernel\" (if we want to add it) -- we can decide whether we want to keep those and explicitly label them as \"for manual use only, not needed by infrastructure\" or just get rid of them as well. (I don\u0027t think we ever really have a practical need for someone to manually sign a kernel or something, so I\u0027m leaning towards getting rid of them. They\u0027re just super thin wrappers around vbutil_kernel anyway.)",
+      "parentUuid": "967705cb_2eee547d",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b38ea3c4_04bb42e7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
