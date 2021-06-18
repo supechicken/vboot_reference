@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "967705cb_2eee547d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-18T02:22:20Z",
+      "side": 1,
+      "message": "i\u0027m sure some of these aren\u0027t useful anymore.  chromite/scripts/pushimage.py:_SUPPORTED_IMAGE_TYPES is prob the best list of what\u0027s still active.\n\nrecovery is a disk image with the kernel inside it.  recovery_kernel is just the kernel.\n\nthe signer itself treats inputs \u0026 outputs as opaque by design.  this way the platform/firmware side can maintain everything without having to worry about the infrastructure behavior, and the infra team doesn\u0027t have to understand what it means to \"sign a file\".",
+      "parentUuid": "5991f23b_86502df4",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b38ea3c4_04bb42e7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
