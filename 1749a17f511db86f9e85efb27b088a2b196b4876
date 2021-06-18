@@ -16,6 +16,24 @@
       "message": "Not clear what this is supposed to be. I don\u0027t think we\u0027re planning to backport any of this to boards too old to have secdata v1.",
       "revId": "1749a17f511db86f9e85efb27b088a2b196b4876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ebd1d8_dd0d435c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128309
+      },
+      "writtenOn": "2021-06-18T05:05:07Z",
+      "side": 1,
+      "message": "I hope you could able to understand the problem why we had to skip this check to allow hw_acc to take proper path else its always falling back to SW SHA. Any idea to fix this in proper?",
+      "parentUuid": "dddf567f_24d50393",
+      "revId": "1749a17f511db86f9e85efb27b088a2b196b4876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
