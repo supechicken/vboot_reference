@@ -498,7 +498,7 @@ enum vb2_return_code {
 	/* Work buffer too small for preamble in vb2_load_fw_preamble() */
 	VB2_ERROR_FW_PREAMBLE2_WORKBUF,
 
-	/* Firmware version out of range in vb2_load_fw_preamble() */
+	/* +0x10: Firmware version out of range in vb2_load_fw_preamble() */
 	VB2_ERROR_FW_PREAMBLE_VERSION_RANGE,
 
 	/* Firmware version rollback in vb2_load_fw_preamble() */
@@ -549,7 +549,7 @@ enum vb2_return_code {
 	VB2_ERROR_DEPRECATED_VBLOCK_KERNEL_SUBKEY,
 
 	/*
-	 * Got a self-signed kernel in vb2_verify_vblock(), but need an
+	 * +0x20: Got a self-signed kernel in vb2_verify_vblock(), but need an
 	 * officially signed one; deprecated and replaced with
 	 * VB2_ERROR_KERNEL_KEYBLOCK_*.
 	 */
@@ -602,7 +602,7 @@ enum vb2_return_code {
 	/* Incompatible version for vb2_shared_data structure being loaded */
 	VB2_ERROR_SHARED_DATA_VERSION,
 
-	/* Bad magic number in vb2_shared_data structure */
+	/* +0x30: Bad magic number in vb2_shared_data structure */
 	VB2_ERROR_SHARED_DATA_MAGIC,
 
 	/* Some part of GBB data is invalid */
