@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "601cbad4_74ea69c6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Usually I try to move the definition to the top of the function if it\u0027s being used in multiple locations.  What do you think?",
+      "parentUuid": "8b59106b_89450354",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "922d270c_58cf0dca",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 12
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-18T00:57:54Z",
       "side": 1,
       "message": "...done? I don\u0027t see any comments anymore.",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dadef9c0_05028d0a",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Sorry, I meant \"Comment this out\".",
+      "parentUuid": "922d270c_58cf0dca",
       "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7041d77_16028a03",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Seems like sign_official_board just uses KERNEL_VERSION\u003d1 to set this, regardless of the type of kernel -- I think that should be sufficient?",
+      "parentUuid": "e2489a57_4240886f",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a480cae_19a81aeb",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 12
@@ -65,6 +119,30 @@
       "writtenOn": "2021-06-18T00:57:54Z",
       "side": 1,
       "message": "\"MiniOS kernel version\"",
+      "range": {
+        "startLine": 332,
+        "startChar": 15,
+        "endLine": 332,
+        "endChar": 18
+      },
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10479c4a_ef9de4fb",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a480cae_19a81aeb",
       "range": {
         "startLine": 332,
         "startChar": 15,
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbab0366_f919b9b3",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6befa2d_91a84399",
+      "range": {
+        "startLine": 336,
+        "startChar": 33,
+        "endLine": 336,
+        "endChar": 36
+      },
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4de0508_a29d03ab",
@@ -111,6 +213,24 @@
       "writtenOn": "2021-06-18T00:57:54Z",
       "side": 1,
       "message": "This stuff also needs to be updated to match what you\u0027re implementing now.",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e25aa2_0ada1fa2",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4de0508_a29d03ab",
       "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ea5284_bbccb686",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Sure -- changed to the \"try_minios_\" prefix for the whole family of functions.",
+      "parentUuid": "35e625fe_ee9d7656",
+      "range": {
+        "startLine": 495,
+        "startChar": 19,
+        "endLine": 495,
+        "endChar": 29
+      },
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dc2ae23_bf18866c",
@@ -151,6 +295,24 @@
       "writtenOn": "2021-06-18T00:57:54Z",
       "side": 1,
       "message": "nit: wonder if 16KB is actually enough (that\u0027s only 32 sectors at most)? Have you tried playing around with it to see if higher values can make this faster? (How long does it take for a whole scan, anyway? Depends on the board too, of course...)\n\nmalloc() is cheap so maybe it\u0027s better to just do this a megabyte at a time right away?",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2055283_e64f3601",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to make a huge difference, once over a certain threshold.  16 KB and 1 MB both take around 1 second with AP console enabled (using puff), and 1 MB seemed 50ms+ faster.  I\u0027ll just leave it at 1 MB for now, and we can look at optimizations later on if necessary.",
+      "parentUuid": "4dc2ae23_bf18866c",
       "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +334,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b114b3a4_2641c9ee",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Yeah -- I definitely wrote \"uncomment\" meaning \"comment out\".  And yes, this doesn\u0027t belong in the final version of this patch, but since NBR folks are cherry-picking this patch and testing it out, I thought it\u0027d be nice to have some helpful comments.  When the patch is ready to commit, I will remove the comments.",
+      "parentUuid": "cd5e4149_5333df18",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d17a7d0_62e0b1f6",
@@ -185,6 +365,24 @@
       "writtenOn": "2021-06-18T00:57:54Z",
       "side": 1,
       "message": "Is there a point setting a recovery reason here? We are already in recovery mode. If we don\u0027t set a recovery reason for other LoadKernel failures when already in recovery mode, it seems weird to do this here.",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87df37b0_229db10c",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T20:03:24Z",
+      "side": 1,
+      "message": "Ah... good point.  Removed.",
+      "parentUuid": "6d17a7d0_62e0b1f6",
       "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
