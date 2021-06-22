@@ -16,6 +16,24 @@
       "message": "Hey Simon,\nAdding explicit error code values to this file has actually been something on the TODO list for quite some time now.  You can see what the preferred format looks like under the \"LoadKernel errors\" and \"UI errors\" sections.  Would you mind updating your changes to match -- and perhaps even update the whole section, if you have the time?\nThanks!",
       "revId": "718b6fa72b01d13032358bb3aee3bef3be1599fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39b1620_ea9dc385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-22T18:30:16Z",
+      "side": 1,
+      "message": "OK done, although I\u0027m not a huge fan, since it includes the full value. Still, it is better than what is there.\n\nI didn\u0027t do the whole section, but I can do that in a separate CL if I have it right. This is the most confusing one, anyway",
+      "parentUuid": "dd2ad50b_40909e51",
+      "revId": "718b6fa72b01d13032358bb3aee3bef3be1599fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
