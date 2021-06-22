@@ -70,6 +70,24 @@
       "parentUuid": "126ff53b_d84015a1",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4105be4_a6548985",
+        "filename": "tests/devkeys/kernel.keyblock",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T19:23:49Z",
+      "side": 0,
+      "message": "We don\u0027t need to regenerate keyblocks for old devices.  Old devices use old firmware, which doesn\u0027t care about MINIOS_0 or MINIOS_1.\n\nSince miniOS requires re-partitioning, it will only take effect for new devices (not even zork, or other existing devices).  These devices will need updated keyblocks that include MINIOS_0 and MINIOS_1.",
+      "parentUuid": "126ff53b_d84015a1",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

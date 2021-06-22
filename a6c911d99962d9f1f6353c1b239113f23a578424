@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d6a6a6f_be247399",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T19:23:49Z",
+      "side": 1,
+      "message": "\u003e it seems that \"SSD\", \"USB\" and \"base\" are fully indistinguishable in what they actually do.\n\nLooks like \"base\" isn\u0027t even a valid argument.  For SSD and USB -- seems like they are doing different things?  And are you saying that we should remove all of them, or merge them into one option / keep them?\n\n\u003e That leaves \"kernel\", \"recovery_kernel\" and \"minios_kernel\" [...] or just get rid of them as well\n\nSure, we can just get rid of these.\n\n\u003e @Joel: I think if I understand this right, we bascially want this functionality to go into sign_image_file() and then the modes we care about (notably `recovery`) should do it.\n\nNot sure I totally grok what\u0027s going on here.  Do we need to add some functionality within sign_image_file to do the minios signing?  And you\u0027re suggesting we do this under the \"recovery\" mode -- but aren\u0027t we dealing with a full Chrome OS image which has two new MINIOS-A and MINIOS-B partitions?  Isn\u0027t \"recovery\" mode for signing a USB recovery image?",
+      "parentUuid": "53a6c3d2_e5eec2c7",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b38ea3c4_04bb42e7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -133,6 +151,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dd92de4_9685d405",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T19:23:49Z",
+      "side": 1,
+      "message": "From https://crrev.com/c/2964479/comment/798711dd_e43f355a/ (jwerner):\n\n\u003e I assume you meant minios_kernel_data_key.vbpubk / minios_kernel_data_key.vbprivk, and the answer is yes. Then you\u0027ll create a minios_kernel.keyblock that\u0027s signed by recovery_key.vbprivk and wraps minios_kernel_data_key.vbpubk with RECOVERY_1 | MINIOS_1 | DEV_0 | DEV_1 flags.\n\u003e Key strength should presumably be the same as recovery_kernel_data_key, so RSA4096.\n\nLooks like recovery_kernel_data_key is marked down in scripts/keygeneration/common.sh as RSA8192, but the actual dev key is RSA4096.  Which should the new minios_kernel_data_key match?",
+      "parentUuid": "b38ea3c4_04bb42e7",
+      "range": {
+        "startLine": 467,
+        "startChar": 30,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bf6feab_3d82ad41",
         "filename": "scripts/keygeneration/common.sh",
         "patchSetId": 3
@@ -144,6 +186,30 @@
       "writtenOn": "2021-06-17T02:13:51Z",
       "side": 1,
       "message": "Can we write these in hex somehow (does `RECOVERY_KERNEL_KEYBLOCK_MODE\u003d$((0x1b))` work?) so it\u0027s easier to follow?",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a735af55_2c2c2369",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T19:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf6feab_3d82ad41",
       "range": {
         "startLine": 70,
         "startChar": 30,
