@@ -16,6 +16,24 @@
       "message": "Off-topic, but I seem to recall we talked about moving this out of the workbuffer and just using malloc() instead at some point, to avoid requiring that big permanent allocation in CBMEM. Is that still plan of record?",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e563cc47_b35c1d4d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-22T19:22:06Z",
+      "side": 1,
+      "message": "Yes, one of the many items on the TODO list.  That would be changing vboot_get_context() in depthcharge to move the workbuf into the heap, rather than just directly using CBMEM, right?",
+      "parentUuid": "45ec7edf_bec4baba",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
