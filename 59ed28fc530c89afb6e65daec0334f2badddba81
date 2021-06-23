@@ -34,6 +34,24 @@
       "parentUuid": "45ec7edf_bec4baba",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1a945e_81940a67",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-23T21:46:15Z",
+      "side": 1,
+      "message": "That is one way to solve it. I think it would also be good enough (and a lot simpler) to just change the kbuf allocation to use malloc() directly, though. Then the remaining small workbuf needs we have here should probably fit in 12KB.",
+      "parentUuid": "e563cc47_b35c1d4d",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
