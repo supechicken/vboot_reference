@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31efb224_989d0ca5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-06-23T09:08:38Z",
+      "side": 1,
+      "message": "Could you elaborate? I don\u0027t understand what the problem is.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b84d5a1a_16cbbbc7",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-06-23T09:08:38Z",
+      "side": 1,
+      "message": "Without setting *log \u003d \"something\", this causes unit test to be flaky [1].\n\n vboot_reference-1.0-r2112: UndefinedBehaviorSanitizer:DEADLYSIGNAL\n\nIn diagnostics_storage_health_init_impl(), the local variable \"log_string\" is never initialized.\n\n[1] https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8843664249950972592/+/u/run_ebuild_tests/call_chromite.api.TestService_BuildTargetUnitTest/call_build_API_script/stdout",
+      "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
