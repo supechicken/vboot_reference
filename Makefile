@@ -121,16 +121,13 @@ else ifeq (${FIRMWARE_ARCH},armv7)
   override FIRMWARE_ARCH := arm
 endif
 
-# Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
-# please add them after this point (e.g., -DVBOOT_DEBUG).
-DEBUG_FLAGS := $(if ${DEBUG},-g -O0,-g -Os)
 WERROR := -Werror
 FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
-COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
+COMMON_FLAGS := -pipe -g -Os ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
 	-Wwrite-strings -Wstrict-aliasing -Wdate-time \
 	-ffunction-sections -fdata-sections \
-	-Wformat -Wno-format-security ${DEBUG_FLAGS}
+	-Wformat -Wno-format-security
 
 # FIRMWARE_ARCH is defined if compiling for a firmware target
 # (coreboot or depthcharge).
