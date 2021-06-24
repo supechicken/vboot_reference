@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a484e78_252445b5",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-24T01:40:42Z",
+      "side": 1,
+      "message": "I prefer to define things at the point of use but it\u0027s a personal preference thing. It just looks odd that you\u0027re changing this here since it has no relation to this patch.",
+      "parentUuid": "601cbad4_74ea69c6",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "922d270c_58cf0dca",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 12
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Seems like sign_official_board just uses KERNEL_VERSION\u003d1 to set this, regardless of the type of kernel -- I think that should be sufficient?",
       "parentUuid": "e2489a57_4240886f",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fae379_8db8b2bc",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-24T01:40:42Z",
+      "side": 1,
+      "message": "No, sign_official_build.sh can take a VERSION_FILE, which I believe is what the signer does (we definitely sign versions other than 1 sometimes). But either way, KERNEL_VERSION ends up being the correct variable, but my point is that you need to extract the top bit from that and make sure it\u0027s passed to vbutil_kernel when you resign the minios kernel partition (so you\u0027ll actually put that thing into the preamble that the code here is trying to get out of it).",
+      "parentUuid": "e7041d77_16028a03",
       "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -313,6 +349,24 @@
       "side": 1,
       "message": "It doesn\u0027t seem to make a huge difference, once over a certain threshold.  16 KB and 1 MB both take around 1 second with AP console enabled (using puff), and 1 MB seemed 50ms+ faster.  I\u0027ll just leave it at 1 MB for now, and we can look at optimizations later on if necessary.",
       "parentUuid": "4dc2ae23_bf18866c",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7acdf3d3_a8e6f3c0",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-24T01:40:42Z",
+      "side": 1,
+      "message": "Wait, it takes 1 second to boot or one second for only the sector scanning pass? That sounds really long (I guess for UX purposes 1 second here is not a big deal... but still). AP console totally skews results though, so please try it without (either disabling the whole thing or just making sure no prints are happening between the two points you measure... the latter is probably easier).",
+      "parentUuid": "b2055283_e64f3601",
       "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
