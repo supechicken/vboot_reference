@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "894d8ea3_7f8dbd90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-24T18:06:44Z",
+      "side": 1,
+      "message": "Hmm, good question.  Now that I look at it again, diag_get_storage_health should never be called with a NULL pointer as its argument.",
+      "parentUuid": "31efb224_989d0ca5",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b84d5a1a_16cbbbc7",
         "filename": "tests/vb2_ui_tests.c",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-23T09:08:38Z",
       "side": 1,
       "message": "Without setting *log \u003d \"something\", this causes unit test to be flaky [1].\n\n vboot_reference-1.0-r2112: UndefinedBehaviorSanitizer:DEADLYSIGNAL\n\nIn diagnostics_storage_health_init_impl(), the local variable \"log_string\" is never initialized.\n\n[1] https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket.appspot.com/8843664249950972592/+/u/run_ebuild_tests/call_chromite.api.TestService_BuildTargetUnitTest/call_build_API_script/stdout",
+      "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0667cb4_1ca36afc",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-24T18:06:44Z",
+      "side": 1,
+      "message": "Thanks for digging this out of the stdout!  This looks like the opposite to my own original hypothesis in this CL.  In that case, we should add an assignment to *log in vb2ex_diag_get_storage_test_log, and we should rely on 2stub.c for its implementation of vb2ex_diag_get_storage_health.  Let\u0027s try that.",
+      "parentUuid": "b84d5a1a_16cbbbc7",
       "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
