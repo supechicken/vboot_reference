@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d22bb4fa_fbff9aa5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-24T00:25:48Z",
+      "side": 1,
+      "message": "\u003e Looks like \"base\" isn\u0027t even a valid argument.\n\nIt\u0027s checked on the same line line as SSD (1080), maybe you missed it?\n\n\u003e For SSD and USB -- seems like they are doing different things?\n\nOh, right, the USB is using a different set of keys I guess... but still, I don\u0027t think we really have a need for that. The chromite scripts only know \"base\", so I\u0027d consider getting rid of the other two.\n\n\u003e Do we need to add some functionality within sign_image_file to do the minios signing?\n\nYes, you\u0027ll basically need to check if minios partitions are present, and if so sign them.\n\n\u003e And you\u0027re suggesting we do this under the \"recovery\" mode.\n\nI think we should do this in sign_image_file() which is used both for recovery and to sign a normal disk image. Although I\u0027m not sure if/when the latter actually ever happens in practice. I don\u0027t think Chrome OS disk images are ever really created in full outside of developer-only flows (Mike may correct me here if I\u0027m wrong). I think the Chrome OS disk image on a customer\u0027s device always gets there because it was created in place by a recovery or factory installer. So in order to get the minios images in there, we\u0027ll need to change the installer to take care of that. For the recovery flow I think the most simple option would be to just have the signed minios partition on the recovery USB stick so that the installer can simply copy it to the disk that is being installed upon (that is basically how the normal kernel and rootfs partitions work as well -- they already exist fully formed and signed in the recovery USB image and just get copied over). You should talk to Amin to confirm that matches their plans, though (I assume they\u0027ll be taking care of the installer patches). For the factory installer I\u0027m not that sure how it works, it would be better if you talked to Hung-Te about that... but I think it should be pretty similar to the recovery flow.\n\nThis is all just for getting the minios onto the disk in the first place when a device is newly installed from scratch. Updates are a different process that I don\u0027t know anything about. I assume that when we release a new version we first create and sign a recovery image, and then whatever makes the differential update payloads extracts the already signed kernel partitions from that (and then minios could work analogously). But that\u0027s just my guess, hopefully Mike or Amin can give more definitive answers.",
+      "parentUuid": "7d6a6a6f_be247399",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b38ea3c4_04bb42e7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -163,6 +181,30 @@
       "side": 1,
       "message": "From https://crrev.com/c/2964479/comment/798711dd_e43f355a/ (jwerner):\n\n\u003e I assume you meant minios_kernel_data_key.vbpubk / minios_kernel_data_key.vbprivk, and the answer is yes. Then you\u0027ll create a minios_kernel.keyblock that\u0027s signed by recovery_key.vbprivk and wraps minios_kernel_data_key.vbpubk with RECOVERY_1 | MINIOS_1 | DEV_0 | DEV_1 flags.\n\u003e Key strength should presumably be the same as recovery_kernel_data_key, so RSA4096.\n\nLooks like recovery_kernel_data_key is marked down in scripts/keygeneration/common.sh as RSA8192, but the actual dev key is RSA4096.  Which should the new minios_kernel_data_key match?",
       "parentUuid": "b38ea3c4_04bb42e7",
+      "range": {
+        "startLine": 467,
+        "startChar": 30,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a614d5a7_f9a76203",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-24T00:25:48Z",
+      "side": 1,
+      "message": "Are you looking at an old version? Seems like we got rid of the last 8K keys a while ago in CL:1680641. So I guess that means the minios keys should also be 4K.",
+      "parentUuid": "3dd92de4_9685d405",
       "range": {
         "startLine": 467,
         "startChar": 30,
