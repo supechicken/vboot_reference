@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb7e3b4_a49dd268",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-06-25T02:11:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "894d8ea3_7f8dbd90",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b84d5a1a_16cbbbc7",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Thanks for digging this out of the stdout!  This looks like the opposite to my own original hypothesis in this CL.  In that case, we should add an assignment to *log in vb2ex_diag_get_storage_test_log, and we should rely on 2stub.c for its implementation of vb2ex_diag_get_storage_health.  Let\u0027s try that.",
       "parentUuid": "b84d5a1a_16cbbbc7",
+      "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb84ffb_ef058c2e",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-06-25T02:11:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0667cb4_1ca36afc",
       "revId": "4dfc2ce43c66b3f238bb744048359c56a9641afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
