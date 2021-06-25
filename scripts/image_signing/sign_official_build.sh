@@ -885,6 +885,42 @@ update_recovery_kernel_hash() {
     --config ${new_kerna_config}
 }
 
+# Re-sign miniOS kernels with new keys.
+# Args: LOOPDEV KEYBLOCK PRIVKEY
+resign_minios_kernels() {
+  local loopdev="$1"
+  local keyblock="$2"
+  local priv_key="$3"
+
+  for kernelpart in 9 10; do
+    local loop_kern="${loopdev}p${kernelpart}"
+
+    # Partitions 9 and 10 from non-miniOS partition layouts are empty
+    # (512 bytes).
+    # Recovery/installer images only keep one copy of miniOS kernel,
+    # so partition 10 is empty (2 MB).
+    local part_size_mb=$(($(lsblk -rnb -o SIZE ${loop_kern}) / 1024 / 1024))
+    info "Found miniOS partition ${loop_kern} with size ${part_size_mb} MB..."
+    if [ "$part_size_mb" -lt "64" ]; then
+      info "Resign miniOS ${loop_kern}: skipping (need >= 64 MB)"
+      continue
+    fi
+
+    # Assume this is a miniOS kernel.  Failure to resign will cause
+    # this script to fail.
+    local temp_config=$(make_temp_file)
+    sudo dump_kernel_config "${loopdev}p${kernelpart}" > "${temp_config}"
+    sudo ${FUTILITY} vbutil_kernel --repack "${loop_kern}" \
+      --keyblock ${keyblock} \
+      --signprivate ${priv_key} \
+      --version "${KERNEL_VERSION}" \
+      --oldblob "${loop_kern}" \
+      --config ${temp_config} \
+      && info "Resign miniOS ${loop_kern}: done" \
+      || error "Resign miniOS ${loop_kern}: failed"
+  done;
+}
+
 # Update the legacy bootloader templates in EFI partition if available.
 # Args: LOOPDEV KERNEL
 update_legacy_bootloader() {
@@ -932,7 +968,7 @@ update_legacy_bootloader() {
 
 # Sign an image file with proper keys.
 # Args: IMAGE_TYPE INPUT OUTPUT DM_PARTNO KERN_A_KEYBLOCK KERN_A_PRIVKEY \
-#       KERN_B_KEYBLOCK KERN_B_PRIVKEY
+#       KERN_B_KEYBLOCK KERN_B_PRIVKEY MINIOS_KEYBLOCK MINIOS_PRIVKEY
 #
 # A ChromiumOS image file (INPUT) always contains 2 partitions (kernel A & B).
 # This function will rebuild hash data by DM_PARTNO, resign kernel partitions by
@@ -949,6 +985,8 @@ sign_image_file() {
   local kernA_privkey="$6"
   local kernB_keyblock="$7"
   local kernB_privkey="$8"
+  local minios_keyblock="$7"
+  local minios_privkey="$8"
 
   info "Preparing ${image_type} image..."
   cp --sparse=always "${input}" "${output}"
@@ -982,6 +1020,7 @@ sign_image_file() {
   if [[ "${image_type}" == "recovery" ]]; then
     update_recovery_kernel_hash "${loopdev}"
   fi
+  resign_minios_kernels "${loopdev}" "${minios_keyblock}" "${minios_privkey}"
   if ! update_legacy_bootloader "${loopdev}" "${loop_kern}"; then
     # Error is already logged.
     return 1
@@ -1028,20 +1067,28 @@ info "Using kernel version: ${KERNEL_VERSION}"
 # Make all modifications on output copy.
 if [[ "${TYPE}" == "base" ]]; then
   sign_image_file "base" "${INPUT_IMAGE}" "${OUTPUT_IMAGE}" 2 \
-    "${KEY_DIR}/kernel.keyblock" "${KEY_DIR}/kernel_data_key.vbprivk" \
-    "${KEY_DIR}/kernel.keyblock" "${KEY_DIR}/kernel_data_key.vbprivk"
+    "${KEY_DIR}/kernel.keyblock" \
+    "${KEY_DIR}/kernel_data_key.vbprivk" \
+    "${KEY_DIR}/kernel.keyblock" \
+    "${KEY_DIR}/kernel_data_key.vbprivk" \
+    "${KEY_DIR}/minios_kernel.keyblock" \
+    "${KEY_DIR}/minios_kernel_data_key.vbprivk"
 elif [[ "${TYPE}" == "recovery" ]]; then
   sign_image_file "recovery" "${INPUT_IMAGE}" "${OUTPUT_IMAGE}" 4 \
     "${KEY_DIR}/recovery_kernel.keyblock" \
     "${KEY_DIR}/recovery_kernel_data_key.vbprivk" \
     "${KEY_DIR}/kernel.keyblock" \
     "${KEY_DIR}/kernel_data_key.vbprivk"
+    "${KEY_DIR}/minios_kernel.keyblock" \
+    "${KEY_DIR}/minios_kernel_data_key.vbprivk"
 elif [[ "${TYPE}" == "factory" ]]; then
   sign_image_file "factory_install" "${INPUT_IMAGE}" "${OUTPUT_IMAGE}" 2 \
     "${KEY_DIR}/installer_kernel.keyblock" \
     "${KEY_DIR}/installer_kernel_data_key.vbprivk" \
     "${KEY_DIR}/kernel.keyblock" \
     "${KEY_DIR}/kernel_data_key.vbprivk"
+    "${KEY_DIR}/minios_kernel.keyblock" \
+    "${KEY_DIR}/minios_kernel_data_key.vbprivk"
 elif [[ "${TYPE}" == "firmware" ]]; then
   if [[ -e "${KEY_DIR}/loem.ini" ]]; then
     die "LOEM signing not implemented yet for firmware images"
