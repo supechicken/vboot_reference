@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bd98896_e07626fb",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-25T23:38:49Z",
+      "side": 1,
+      "message": "Check the new CLs in this stack for the work on sign_official_build.sh.  I think I\u0027d prefer to keep that separate from this CL, but if you prefer I can also squash them together.\n\nSounds like the takeaway here is (1) we still need to check that all the different installation paths will install two miniOS kernels to disk if necessary, and (2) we need to follow up on the miniOS update story.",
+      "parentUuid": "d22bb4fa_fbff9aa5",
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b38ea3c4_04bb42e7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -205,6 +223,30 @@
       "side": 1,
       "message": "Are you looking at an old version? Seems like we got rid of the last 8K keys a while ago in CL:1680641. So I guess that means the minios keys should also be 4K.",
       "parentUuid": "3dd92de4_9685d405",
+      "range": {
+        "startLine": 467,
+        "startChar": 30,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df583c2_0aa12f5e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-25T23:38:49Z",
+      "side": 1,
+      "message": "It\u0027s marked as such in keygeneration/common.sh, but the actual dev key is still 8K:\n\n  vboot_reference:remotes/cros/main $ futility show tests/devkeys/recovery_kernel_data_key.vbpubk\n  Public Key file:       tests/devkeys/recovery_kernel_data_key.vbpubk\n    Vboot API:           1.0\n    Algorithm:           11 RSA8192 SHA512\n    Key Version:         1\n    Key sha1sum:         e78ce746a037837155388a1096212ded04fb86eb\n\nCurrently keygeneration/common.sh has miniOS data key as 4K as you requested, but I\u0027m wondering if we should keep the dev key as 8K to match recovery_kernel_data_key.",
+      "parentUuid": "a614d5a7_f9a76203",
       "range": {
         "startLine": 467,
         "startChar": 30,
