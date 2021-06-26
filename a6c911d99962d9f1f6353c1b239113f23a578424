@@ -259,6 +259,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "398250d8_6753f5bd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-26T02:01:47Z",
+      "side": 1,
+      "message": "Okay, I think you just mixed things up in your earlier comment. You said\n\n\u003e Looks like recovery_kernel_data_key is marked down in scripts/keygeneration/common.sh as RSA8192, but the actual dev key is RSA4096.\n\nbut I guess you meant it the other way around. That\u0027s expected. The dev keys were created ages ago and we don\u0027t really want to update them (that would cause a lot of people pain), so they no longer match current defaults for newly created keys. I don\u0027t see a reason why the new minios dev key shouldn\u0027t match what we\u0027d want to use in production going forward.",
+      "parentUuid": "3df583c2_0aa12f5e",
+      "range": {
+        "startLine": 467,
+        "startChar": 30,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bf6feab_3d82ad41",
         "filename": "scripts/keygeneration/common.sh",
         "patchSetId": 3
