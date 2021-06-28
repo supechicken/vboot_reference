@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffe8f46_0755160b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-28T22:21:04Z",
+      "side": 1,
+      "message": "nit: I think this is unnecessary when you\u0027re not actually modifying the config. Doesn\u0027t it just take it from --oldblob if you leave --config out?",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08066ccf_4fa352bd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-28T22:21:04Z",
+      "side": 1,
+      "message": "That\u0027s not how you\u0027re checking it in firmware. This should be $((KERNEL_VERSION  \u003e\u003e 24)).",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1522638a_86ff48e5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-28T22:21:04Z",
+      "side": 1,
+      "message": "Unnecessary semicolon",
+      "range": {
+        "startLine": 922,
+        "startChar": 6,
+        "endLine": 922,
+        "endChar": 7
+      },
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
