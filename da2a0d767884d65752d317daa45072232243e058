@@ -16,6 +16,24 @@
       "message": "Not really sure why you rewrote the definitions for the three below but not for these three above?",
       "revId": "da2a0d767884d65752d317daa45072232243e058",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d486a07_a38594bd",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-28T20:09:35Z",
+      "side": 1,
+      "message": "I can certainly update those too.  But I didn\u0027t think we even checked keyblock flags for firmware?  Or does that happen in some EC / Cr50 code somewhere?\n\nAlso, we don\u0027t have any dev firmware keys in tests/devkeys.  Do we still use that?",
+      "parentUuid": "f66f05b6_691ae815",
+      "revId": "da2a0d767884d65752d317daa45072232243e058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

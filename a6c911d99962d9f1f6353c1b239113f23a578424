@@ -281,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ca68cb_480e0add",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-28T20:09:35Z",
+      "side": 1,
+      "message": "Yes, I did mix that up -- thanks for clarifying.  Okay, then I\u0027ll leave recovery_kernel_data_key as-is (8K) and create minios_kernel_data_key as 4K.",
+      "parentUuid": "398250d8_6753f5bd",
+      "range": {
+        "startLine": 467,
+        "startChar": 30,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "a6c911d99962d9f1f6353c1b239113f23a578424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bf6feab_3d82ad41",
