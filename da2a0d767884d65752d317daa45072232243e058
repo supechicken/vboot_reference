@@ -34,6 +34,24 @@
       "parentUuid": "f66f05b6_691ae815",
       "revId": "da2a0d767884d65752d317daa45072232243e058",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aba3113_7d666295",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-28T22:29:04Z",
+      "side": 1,
+      "message": "They aren\u0027t? Hmmm... yeah... I guess they aren\u0027t. Probably wouldn\u0027t really make sense to have firmware exclusive to a certain mode.\n\nAnyway, feel free to propose getting rid of these somehow in a follow-up CL if you want. But as long as they\u0027re still listed here, they should be written in a manner consistent with the others. (Maybe add a \"these seem to be unused\" comment for now?)",
+      "parentUuid": "0d486a07_a38594bd",
+      "revId": "da2a0d767884d65752d317daa45072232243e058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
