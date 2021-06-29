@@ -88,6 +88,24 @@
       "parentUuid": "126ff53b_d84015a1",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4afbe24_ef3782ef",
+        "filename": "tests/devkeys/kernel.keyblock",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-29T19:40:17Z",
+      "side": 0,
+      "message": "we don\u0027t branch vboot tools.  we have a single set of binaries that are used to generate all keysets, \"new\" \u0026 \"old\".",
+      "parentUuid": "b4105be4_a6548985",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

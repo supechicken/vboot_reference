@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dc9abd2_009f0b14",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-29T19:40:17Z",
+      "side": 1,
+      "message": "bash has | operators in this context, so you prob want to use that to make it clearer that these are bits in a field",
+      "revId": "f3b63c54e80ddc057c475cff5ae030cbacfb823a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0043d0a_3b456526",
         "filename": "scripts/keygeneration/create_new_keys.sh",
         "patchSetId": 8
