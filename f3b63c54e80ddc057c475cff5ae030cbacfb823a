@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3405c202_98663072",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T23:13:27Z",
+      "side": 1,
+      "message": "Good idea.  Done.",
+      "parentUuid": "8dc9abd2_009f0b14",
+      "revId": "f3b63c54e80ddc057c475cff5ae030cbacfb823a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0043d0a_3b456526",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-28T22:35:07Z",
       "side": 1,
       "message": "minios",
+      "range": {
+        "startLine": 188,
+        "startChar": 61,
+        "endLine": 188,
+        "endChar": 98
+      },
+      "revId": "f3b63c54e80ddc057c475cff5ae030cbacfb823a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d540350f_551c753d",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T23:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0043d0a_3b456526",
       "range": {
         "startLine": 188,
         "startChar": 61,
