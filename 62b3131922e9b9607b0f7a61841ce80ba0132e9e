@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55ae45b_214e1a41",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "I believe this would still evaluate to false for dev mode and normal mode?",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50198fb1_ea5dec40",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "I think I would check sd-\u003erecovery_reason here, which is considered the \"source of truth\" for recovery mode.  Julius mentioned in the bug that we might consider deprecating this flag after introducing this enum.",
+      "range": {
+        "startLine": 115,
+        "startChar": 10,
+        "endLine": 115,
+        "endChar": 48
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42149db8_8ac923de",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "Any progress on deprecating this?  It would probably be easier than plumbing it into coreboot.",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 27
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd25ce64_5ec16fcb",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "I would prefer checking the internal data structure here, which is sd-\u003eflags \u0026 VB2_SD_FLAG_DEV_MODE_ENABLED.  Sounds like Julius is less convinced about deprecating VB2_CONTEXT_DEVELOPER_MODE though.",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 49
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d620a40_21e2bf75",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "Perhaps move this to right before setting VB2_BOOT_MODE_NORMAL, and just set *boot_mode directly?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d2a63b_766df630",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "\"should not be\" might be more accurate, since the caller *could* do this if they wanted to.",
+      "range": {
+        "startLine": 247,
+        "startChar": 69,
+        "endLine": 247,
+        "endChar": 72
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62492844_d42d8d65",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "The boot modes are",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 19
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c8e195_a334270a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "Julius, what do you think about the naming here?  \"Non-manual recovery\" is quite a mouthful.  Would \"broken recovery\" or even just \"broken\" work?  Any other ideas?  Failure mode?",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 30
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e02299_108e47b3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "I\u0027d use \"nvstorage\" for consistency.",
+      "range": {
+        "startLine": 280,
+        "startChar": 38,
+        "endLine": 280,
+        "endChar": 59
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8df1b31_b55e29bb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-29T22:54:41Z",
+      "side": 1,
+      "message": "Nit: extra space added.",
+      "range": {
+        "startLine": 332,
+        "startChar": 2,
+        "endLine": 332,
+        "endChar": 3
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
