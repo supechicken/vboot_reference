@@ -3,6 +3,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e02f1add_aa0e873c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-29T05:51:04Z",
+      "side": 1,
+      "message": "missing `local kernelpart`",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63109cd6_df1cde83",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-29T05:51:04Z",
+      "side": 1,
+      "message": "hardcoding a size check like this is fragile.  why not check the type instead ?  it should be the reserved ChromeOS kernel type (by guid).",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f66b28_c16c8f53",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-29T05:51:04Z",
+      "side": 1,
+      "message": "missing quotes on path to kern",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd19602b_8532c1ca",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-29T05:51:04Z",
+      "side": 1,
+      "message": "this is bash, so always use `[[` and never `[`\n\nalso missing braces with vars",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ffe8f46_0755160b",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
@@ -31,6 +99,23 @@
       "writtenOn": "2021-06-28T22:21:04Z",
       "side": 1,
       "message": "That\u0027s not how you\u0027re checking it in firmware. This should be $((KERNEL_VERSION  \u003e\u003e 24)).",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc295b4_ca6c3687",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-06-29T05:51:04Z",
+      "side": 1,
+      "message": "never do \u0026\u0026+|| in bash -- it\u0027s an anti-pattern.  if the \u0026\u0026 command fails, then the || command executes which is bad.\n\nwrite a proper if statement statement instead.",
       "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
