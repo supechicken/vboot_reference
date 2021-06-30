@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d13774f_a333be43",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02f1add_aa0e873c",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63109cd6_df1cde83",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-29T05:51:04Z",
       "side": 1,
       "message": "hardcoding a size check like this is fragile.  why not check the type instead ?  it should be the reserved ChromeOS kernel type (by guid).",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e31bc8e5_1fa7d2b4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Seems like our recovery/installer images leave GUID the same (as Chrome OS kernel) but change the size to 2 MB -- even pre-miniOS disk_layout_v2.\n\nhttps://source.corp.google.com/chromeos_public/src/scripts/build_library/disk_layout_v2.json\n\nI\u0027ve changed it to check *both* the size and GUID.  Does that work?",
+      "parentUuid": "63109cd6_df1cde83",
       "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f594b6f8_79e6764d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4f66b28_c16c8f53",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd19602b_8532c1ca",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-06-29T05:51:04Z",
       "side": 1,
       "message": "this is bash, so always use `[[` and never `[`\n\nalso missing braces with vars",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3758c7e9_27dcfa1e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd19602b_8532c1ca",
       "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fdea2a2_db2bf791",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ffe8f46_0755160b",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08066ccf_4fa352bd",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-06-28T22:21:04Z",
       "side": 1,
       "message": "That\u0027s not how you\u0027re checking it in firmware. This should be $((KERNEL_VERSION  \u003e\u003e 24)).",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3577ec17_42783f49",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08066ccf_4fa352bd",
       "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c694e2_5ef1718e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc295b4_ca6c3687",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1522638a_86ff48e5",
@@ -133,6 +259,30 @@
       "writtenOn": "2021-06-28T22:21:04Z",
       "side": 1,
       "message": "Unnecessary semicolon",
+      "range": {
+        "startLine": 922,
+        "startChar": 6,
+        "endLine": 922,
+        "endChar": 7
+      },
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "529048dd_c9fa3649",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-06-30T00:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1522638a_86ff48e5",
       "range": {
         "startLine": 922,
         "startChar": 6,
