@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2573dee8_297b8adb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "Please try to keep the subject in one line",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af66018_5a623a1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "This is the wrong way around, manual comes before broken.",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46d61469_d8824f13",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "nit: I think it would be nice to factor this whole thing out into a separate function (e.g. vb2_set_boot_mode(ctx) or something).",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f55ae45b_214e1a41",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 2
@@ -14,6 +65,30 @@
       "writtenOn": "2021-06-29T22:54:41Z",
       "side": 1,
       "message": "I believe this would still evaluate to false for dev mode and normal mode?",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3de848_3bbb5bef",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "I would prefer to just get rid of allow_recovery() and integrate the respective checks right in here, and then have the code that used to call allow_recovery check the boot_mode field instead.\n\nAlso, allow_recovery calls vb2ex_ec_trusted(), which is currently not provided by coreboot. My preference would be to get rid of that call and have the respective functionality be merged into VB2_CONTEXT_EC_TRUSTED instead (so coreboot should be reading the EC_IN_RW GPIO on relevant platforms and set EC_TRUSTED when that is not asserted.",
+      "parentUuid": "f55ae45b_214e1a41",
       "range": {
         "startLine": 113,
         "startChar": 5,
@@ -187,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10d9b4ad_7f1b00b8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "Yeah I\u0027ve been struggling with finding a good name ever since we introduced this too. Maybe BOOT_MODE_BROKEN_SCREEN or BOOT_MODE_ERROR_SCREEN or BOOT_MODE_RECOVERY_INSTRUCTIONS or anything like that?",
+      "parentUuid": "07c8e195_a334270a",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 30
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04e02299_108e47b3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
@@ -198,6 +297,30 @@
       "writtenOn": "2021-06-29T22:54:41Z",
       "side": 1,
       "message": "I\u0027d use \"nvstorage\" for consistency.",
+      "range": {
+        "startLine": 280,
+        "startChar": 38,
+        "endLine": 280,
+        "endChar": 59
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3444a1e0_33f4bf7e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "Didn\u0027t we one have this discussion and agree on \"nvdata\" in the end? ;)",
+      "parentUuid": "04e02299_108e47b3",
       "range": {
         "startLine": 280,
         "startChar": 38,
@@ -227,6 +350,74 @@
         "endLine": 332,
         "endChar": 3
       },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ecc00b_5cc59da8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "nit: off-topic but this is wrong, we changed this to also be required before fw_phase1() already (like secdata_firmware).",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604ac359_59e5d1b4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "We should bump vb2sd minor version so we can tell if this field is valid (if that ever comes up).",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2920ac1a_6db9fcd9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "nit: just change the code below to use ctx-\u003eboot_mode directly",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a961a2_2f9d211c",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-01T02:01:26Z",
+      "side": 1,
+      "message": "This shouldn\u0027t compile anymore now (needs to be MANUAL_RECOVERY).",
       "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
