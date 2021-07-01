@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "527d192a_49c6e47a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done\n\n(but after adding the temporary [wip], it exceed the line width again)",
+      "parentUuid": "2573dee8_297b8adb",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8af66018_5a623a1f",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ecf5ab4_7f2ef0db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8af66018_5a623a1f",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46d61469_d8824f13",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-07-01T02:01:26Z",
       "side": 1,
       "message": "nit: I think it would be nice to factor this whole thing out into a separate function (e.g. vb2_set_boot_mode(ctx) or something).",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef4b855_d97fae2a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Add a static function set_boot_mode() in 2api\n\nOr should I add a \u0027vb2_set_boot_mode\u0027 in 2misc?",
+      "parentUuid": "46d61469_d8824f13",
       "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -112,6 +166,30 @@
       "writtenOn": "2021-06-29T22:54:41Z",
       "side": 1,
       "message": "I think I would check sd-\u003erecovery_reason here, which is considered the \"source of truth\" for recovery mode.  Julius mentioned in the bug that we might consider deprecating this flag after introducing this enum.",
+      "range": {
+        "startLine": 115,
+        "startChar": 10,
+        "endLine": 115,
+        "endChar": 48
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "499701e7_25397590",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50198fb1_ea5dec40",
       "range": {
         "startLine": 115,
         "startChar": 10,
@@ -191,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bbb4c2a_01f348ae",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d620a40_21e2bf75",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d2a63b_766df630",
@@ -214,6 +316,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a95d7a_e3b80da7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d2a63b_766df630",
+      "range": {
+        "startLine": 247,
+        "startChar": 69,
+        "endLine": 247,
+        "endChar": 72
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62492844_d42d8d65",
@@ -227,6 +353,30 @@
       "writtenOn": "2021-06-29T22:54:41Z",
       "side": 1,
       "message": "The boot modes are",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 19
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3280f764_bbaa6c98",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62492844_d42d8d65",
       "range": {
         "startLine": 249,
         "startChar": 3,
@@ -284,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3a6f86_a03d47d5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done\n\nI pick BOOT_MODE_BROKEN_SCREEN",
+      "parentUuid": "10d9b4ad_7f1b00b8",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 30
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04e02299_108e47b3",
@@ -331,6 +505,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "510f1b7d_055a477f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done\n\nnvdata",
+      "parentUuid": "3444a1e0_33f4bf7e",
+      "range": {
+        "startLine": 280,
+        "startChar": 38,
+        "endLine": 280,
+        "endChar": 59
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8df1b31_b55e29bb",
@@ -344,6 +542,30 @@
       "writtenOn": "2021-06-29T22:54:41Z",
       "side": 1,
       "message": "Nit: extra space added.",
+      "range": {
+        "startLine": 332,
+        "startChar": 2,
+        "endLine": 332,
+        "endChar": 3
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab841be6_a6fab267",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done\n\noops",
+      "parentUuid": "b8df1b31_b55e29bb",
       "range": {
         "startLine": 332,
         "startChar": 2,
@@ -390,6 +612,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7f0093a_fa75de8b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Should it be VB2_BOOT_MODE_MANUAL_RECOVERY?\nOr keep it intact for now?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 49
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2920ac1a_6db9fcd9",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 2
@@ -401,6 +646,24 @@
       "writtenOn": "2021-07-01T02:01:26Z",
       "side": 1,
       "message": "nit: just change the code below to use ctx-\u003eboot_mode directly",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2807561_c227fbff",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-01T11:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2920ac1a_6db9fcd9",
       "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
