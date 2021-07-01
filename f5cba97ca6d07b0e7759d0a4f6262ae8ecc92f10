@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3326f796_75f1b2d5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2021-07-01T13:44:28Z",
+      "side": 1,
+      "message": "The intent of the change looks good, but to be honest I\u0027m not familiar with the signer script setup.\n\nIs this (equery-board) guarateed to work on the production signer environment?\n\nI wonder if it might be more reliable to query the compression type by `unsquashfs -s` first and then dedece the flags for re-squashing. That is, relying only on the image content, not the build-time use flags etc.",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 19
+      },
+      "revId": "f5cba97ca6d07b0e7759d0a4f6262ae8ecc92f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
