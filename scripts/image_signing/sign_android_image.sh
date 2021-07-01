@@ -254,6 +254,13 @@ image_content_integrity_check() {
   fi
 }
 
+is_arcvm_minify_enabled() {
+  local root_fs_dir=$1
+  local board=$(get_board_from_lsb_release "${root_fs_dir}")
+  equery-"${board}" -q uses "chromeos-base/chromeos-cheets" \
+    | grep -q -e "+arcvm_minify_image"
+}
+
 main() {
   local root_fs_dir=$1
   local key_dir=$2
@@ -270,14 +277,19 @@ main() {
       "${root_fs_dir}/opt/google/containers/android/system.raw.img")
   if [[ -f "${vm_candidate}" ]]; then
     system_image="${vm_candidate}"
-    compression_flags="-comp lz4 -Xhc -b 256K"
     file_contexts="${selinux_dir}/arc/contexts/files/android_file_contexts_vm"
   elif [[ -f "${container_candidate}" ]]; then
     system_image="${container_candidate}"
-    compression_flags="-comp gzip"
     file_contexts="${selinux_dir}/arc/contexts/files/android_file_contexts"
   else
     die "System image does not exist"
+  fi
+
+  if [[ -f "${vm_candidate}" ]] \
+    && ! is_arcvm_minify_enabled "${root_fs_dir}" ; then
+    compression_flags="-comp lz4 -Xhc -b 256K"
+  else
+    compression_flags="-comp gzip"
   fi
 
   local android_system_image="$(echo \
