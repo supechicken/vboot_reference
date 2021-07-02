@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9faf284b_7076ebac",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-02T01:16:28Z",
+      "side": 1,
+      "message": "Actually, hold on a second... those shouldn\u0027t use the Chrome OS kernel GUID. If they do, then vboot will always consider them when normally booting from disk in secure mode (and eventually fail due to key mismatch, but still waste the time), which we do not want. If they\u0027re currently generated with the kernel GUID, let\u0027s please change that before any of those images ship. The best option would probably be to introduce a new GUID specifically for minios, and then you can check that here too.",
+      "parentUuid": "e31bc8e5_1fa7d2b4",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4f66b28_c16c8f53",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
