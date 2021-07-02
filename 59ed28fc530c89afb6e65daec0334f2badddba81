@@ -106,6 +106,24 @@
       "parentUuid": "b4105be4_a6548985",
       "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d527536f_dccee6c3",
+        "filename": "tests/devkeys/kernel.keyblock",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-02T01:10:38Z",
+      "side": 0,
+      "message": "Right, that was my understanding too... I\u0027m just saying the keysets that have already been generated (with the old code) don\u0027t have to be updated, provided they are for boards that aren\u0027t going to support minios. Updating the tools globally is fine even if they are later used to generate new keysets for one of those old devices, the additional keyblock flags will simply be ignored by older firmware.",
+      "parentUuid": "d4afbe24_ef3782ef",
+      "revId": "59ed28fc530c89afb6e65daec0334f2badddba81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
