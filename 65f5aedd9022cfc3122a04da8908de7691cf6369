@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eee0775c_4c2631a4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-03T22:43:35Z",
+      "side": 1,
+      "message": "I\u0027ve generated a new GUID.  NBR folk, would you mind updating the appropriate scripts to use GUID 09845860-705f-4bb5-b16c-8a8a099caf52?",
+      "parentUuid": "9faf284b_7076ebac",
+      "revId": "65f5aedd9022cfc3122a04da8908de7691cf6369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4f66b28_c16c8f53",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 2
