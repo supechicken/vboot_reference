@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9233a6d7_02cc90f0",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-03T23:18:05Z",
+      "side": 1,
+      "message": "Ack, reverted back.",
+      "parentUuid": "5a484e78_252445b5",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "922d270c_58cf0dca",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "No, sign_official_build.sh can take a VERSION_FILE, which I believe is what the signer does (we definitely sign versions other than 1 sometimes). But either way, KERNEL_VERSION ends up being the correct variable, but my point is that you need to extract the top bit from that and make sure it\u0027s passed to vbutil_kernel when you resign the minios kernel partition (so you\u0027ll actually put that thing into the preamble that the code here is trying to get out of it).",
       "parentUuid": "e7041d77_16028a03",
+      "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ff04ce_8d1f655c",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-03T23:18:05Z",
+      "side": 1,
+      "message": "Right... I think we took care of this after the comment you left in the sign_official_build.sh CL here: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2989640/2..7/scripts/image_signing/sign_official_build.sh#917\n\nLet me know if there\u0027s anything else I\u0027m missing?",
+      "parentUuid": "e4fae379_8db8b2bc",
       "revId": "7989ad2681166e5197a23f0860640476ec3f03ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
