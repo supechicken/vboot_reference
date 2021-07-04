@@ -22,6 +22,30 @@
       },
       "revId": "fb8c7ac8a9ce3b416bbedc82ef752b4e69d114a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f42ccd8_40907d5f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-07-04T12:08:13Z",
+      "side": 1,
+      "message": "Instead of verifying, we ensure this code is aligned with board_specific_setup.sh\n\nBoth this file and board_specific_setup.sh have a comment \"Keep this aligned with \u003cthe_other_file\u003e\"\n(I moved the comment from L374 to L297)\n\nhttp://cs/chromeos_internal/src/private-overlays/project-cheets-private/scripts/board_specific_setup.sh?l\u003d28\u0026rcl\u003d89cd66b63d818c485cb668cb643df6bd0252174fa",
+      "parentUuid": "ca3f0d5f_c0a5a067",
+      "range": {
+        "startLine": 303,
+        "startChar": 33,
+        "endLine": 303,
+        "endChar": 46
+      },
+      "revId": "fb8c7ac8a9ce3b416bbedc82ef752b4e69d114a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
