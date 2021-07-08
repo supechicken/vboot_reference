@@ -223,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe59c468_cd91afb6",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-08T03:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42149db8_8ac923de",
+      "range": {
+        "startLine": 117,
+        "startChar": 10,
+        "endLine": 117,
+        "endChar": 27
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd25ce64_5ec16fcb",
@@ -236,6 +260,30 @@
       "writtenOn": "2021-06-29T22:54:41Z",
       "side": 1,
       "message": "I would prefer checking the internal data structure here, which is sd-\u003eflags \u0026 VB2_SD_FLAG_DEV_MODE_ENABLED.  Sounds like Julius is less convinced about deprecating VB2_CONTEXT_DEVELOPER_MODE though.",
+      "range": {
+        "startLine": 120,
+        "startChar": 10,
+        "endLine": 120,
+        "endChar": 49
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c33079_18564dec",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-08T03:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd25ce64_5ec16fcb",
       "range": {
         "startLine": 120,
         "startChar": 10,
@@ -705,6 +753,24 @@
       "writtenOn": "2021-07-01T02:01:26Z",
       "side": 1,
       "message": "This shouldn\u0027t compile anymore now (needs to be MANUAL_RECOVERY).",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29880763_d1dba767",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-08T03:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a961a2_2f9d211c",
       "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
