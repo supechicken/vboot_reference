@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c82097_a60971f2",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-08T00:02:18Z",
+      "side": 1,
+      "message": "nit: unrelated but it\u0027s probably time to take out all these (vboot2) notes here one of these days.",
+      "range": {
+        "startLine": 57,
+        "startChar": 37,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "61b1509fd38a068c94460bababa33889d59a5205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4475a90e_47b7d439",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-08T00:02:18Z",
+      "side": 1,
+      "message": "nit: \"to try first\"? The other one says \"try next\" because we will try it on the next reboot, but I feel minios is a bit different, it\u0027s only booted when explicitly requested and all this setting does is decide which of the two to try first in that case.",
+      "range": {
+        "startLine": 77,
+        "startChar": 64,
+        "endLine": 77,
+        "endChar": 68
+      },
+      "revId": "61b1509fd38a068c94460bababa33889d59a5205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
