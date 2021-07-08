@@ -77,6 +77,19 @@ typedef struct VbSelectAndLoadKernelParams {
 vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 				  VbSelectAndLoadKernelParams *kparams);
 
+enum vb2_boot_mode {
+	/* Normal boot: kernel must be verified. */
+	VB2_BOOT_MODE_NORMAL = 0,
+
+	/* Recovery boot, regardless of dev mode state. */
+	VB2_BOOT_MODE_RECOVERY = 1,
+
+	/* Developer boot: self-signed kernel okay. */
+	VB2_BOOT_MODE_DEVELOPER = 2,
+};
+
+enum vb2_boot_mode VbGetBootMode(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* Disk access (previously in boot_device.h) */
 
