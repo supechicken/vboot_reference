@@ -1,6 +1,114 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef327b03_23c1ac6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-09T03:34:11Z",
+      "side": 1,
+      "message": "For test-only CLs, prefix \"[TEST-ONLY]\" or \"[DO-NOT-SUBMIT]\" to subject line to avoid confusing people.",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7fd46e_7f6afe16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-09T03:34:11Z",
+      "side": 1,
+      "message": "Add prefix \"vboot/vboot_kernel: \"",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2a632f_62f8f65e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-09T03:34:11Z",
+      "side": 1,
+      "message": "Take a look at other CLs to see where to put this.",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ef5ba7_010d136d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-09T03:34:11Z",
+      "side": 1,
+      "message": "1. Did you manually add this? Use \u0027git commit --amend -s\u0027 to append the signoff line at the end.\n2. Do you have a chromium account? Make sure you git configuration is correct.",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df592246_1ca472a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-09T03:34:11Z",
+      "side": 1,
+      "message": "Use complete sentences.",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a94c9d_3abea875",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-09T03:34:11Z",
+      "side": 1,
+      "message": "Exact command such as \"make runtests\" is preferred.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a8df3c07_a24c07b2",
@@ -14,6 +122,24 @@
       "writtenOn": "2021-07-08T12:22:08Z",
       "side": 1,
       "message": "Hello!\n\nI tried to make my first CL, and I expect this to be meaningful instead of a random changes. It will be good if you can take a look of it and give me some feedback or anything extra I should know about.\n\nThank you!",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0d647f_a2089d0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-09T03:34:11Z",
+      "side": 1,
+      "message": "I assume you already know that the get_boot_mode thing will be formally implemented by roccochen@ in b/181931817. This CL is supposed to be for testing only.",
+      "parentUuid": "a8df3c07_a24c07b2",
       "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
