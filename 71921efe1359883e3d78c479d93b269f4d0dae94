@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1439c6fc_47fbdeea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-09T05:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef327b03_23c1ac6c",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f7fd46e_7f6afe16",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-09T03:34:11Z",
       "side": 1,
       "message": "Add prefix \"vboot/vboot_kernel: \"",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6952a3b9_25d22de3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-09T05:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7fd46e_7f6afe16",
       "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66486ab1_43efc00e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-09T05:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df592246_1ca472a1",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30a94c9d_3abea875",
@@ -99,6 +153,30 @@
       "writtenOn": "2021-07-09T03:34:11Z",
       "side": 1,
       "message": "Exact command such as \"make runtests\" is preferred.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eddfb03_4f29a4b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-09T05:17:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a94c9d_3abea875",
       "range": {
         "startLine": 17,
         "startChar": 5,
@@ -140,6 +218,24 @@
       "side": 1,
       "message": "I assume you already know that the get_boot_mode thing will be formally implemented by roccochen@ in b/181931817. This CL is supposed to be for testing only.",
       "parentUuid": "a8df3c07_a24c07b2",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd87674a_817e7c24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-09T05:17:37Z",
+      "side": 1,
+      "message": "Sorry. I didn\u0027t notice that he will create a API function for this. I will make this testing only.",
+      "parentUuid": "1f0d647f_a2089d0f",
       "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
