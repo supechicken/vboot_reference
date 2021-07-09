@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5f0e0f9_df218186",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-09T05:22:01Z",
+      "side": 1,
+      "message": "Not sure if `BRANCH\u003dmain` is a good option. I can\u0027t find examples in other CLs, and I can not upload patch if I delete this line.",
+      "parentUuid": "9f2a632f_62f8f65e",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89ef5ba7_010d136d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "writtenOn": "2021-07-09T03:34:11Z",
       "side": 1,
       "message": "1. Did you manually add this? Use \u0027git commit --amend -s\u0027 to append the signoff line at the end.\n2. Do you have a chromium account? Make sure you git configuration is correct.",
+      "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca849fb_cfc13304",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-09T05:22:01Z",
+      "side": 1,
+      "message": "This time I use the command to generate this line. If @google.com account is good, this issue should be resolved.",
+      "parentUuid": "89ef5ba7_010d136d",
       "revId": "71921efe1359883e3d78c479d93b269f4d0dae94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
