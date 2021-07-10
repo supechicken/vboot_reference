@@ -707,6 +707,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aeb2d96e_bd063503",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-10T00:16:02Z",
+      "side": 1,
+      "message": "This needs to count for recovery boot modes, so probably better to just check recovery_reason.",
+      "parentUuid": "e7f0093a_fa75de8b",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 49
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2920ac1a_6db9fcd9",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 2

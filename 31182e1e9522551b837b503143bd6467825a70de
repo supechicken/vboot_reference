@@ -45,6 +45,30 @@
       },
       "revId": "31182e1e9522551b837b503143bd6467825a70de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410c0fc1_4bf3e6b0",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-10T00:16:02Z",
+      "side": 1,
+      "message": "Yeah, I think almost everything is using the context flags so for dev mode I\u0027d prefer to standardize on that and get rid of the SD flag eventually.",
+      "parentUuid": "fbb8eab7_3149e679",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "31182e1e9522551b837b503143bd6467825a70de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
