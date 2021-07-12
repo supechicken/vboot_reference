@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9029606_addf383c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-12T03:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b07d4b8_381d7ffd",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "d133361619ef70ff510001b8bb84259a4ddb1b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b4e98d_d77a5bfa",
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3b54214a_eccc2b63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-12T03:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b4e98d_d77a5bfa",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "d133361619ef70ff510001b8bb84259a4ddb1b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "04eaeab8_de969f57",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -60,6 +108,41 @@
       "writtenOn": "2021-07-10T00:10:12Z",
       "side": 1,
       "message": "Sorry, not sure what this patch is or what you\u0027re planning to do here (seeing as it is TEST-ONLY), just wanted to make sure you\u0027re aware of what Rocco is doing in CL:2944250.",
+      "revId": "d133361619ef70ff510001b8bb84259a4ddb1b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e3783c_1a481a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-12T03:18:54Z",
+      "side": 1,
+      "message": "Thank you for telling me this. I know Rocco\u0027s work. This CL is only for me to get familiar with this platform and know how a CL actually work.",
+      "parentUuid": "04eaeab8_de969f57",
+      "revId": "d133361619ef70ff510001b8bb84259a4ddb1b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9cf1d37_ac2b07cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-12T03:18:54Z",
+      "side": 1,
+      "message": "Resolved yupingso\u0027s change requests.",
       "revId": "d133361619ef70ff510001b8bb84259a4ddb1b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
