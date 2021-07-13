@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "641ba301_af8748f3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-13T13:35:15Z",
+      "side": 1,
+      "message": "if the partition doesn\u0027t exist, the function should return too.  otherwise it spits a bunch of errors as it tries to run on a missing dev node.",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d3d149_440243e8",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-13T13:35:15Z",
+      "side": 1,
+      "message": "should hoist this up a bit.  at least to the top of this func if not the file.  and use MINIOS_KERNEL_GUID to indicate it\u0027s a constant.",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbb6a000_de5b0350",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
@@ -14,6 +48,40 @@
       "writtenOn": "2021-07-07T22:49:13Z",
       "side": 1,
       "message": "Can we take the size check out now that it\u0027s a separate GUID?",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7962d9a_fa7ab1f7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-13T13:35:15Z",
+      "side": 1,
+      "message": "since this is a new thing, should add an explicit check for the key existing, and if it\u0027s missing, log that as an error \u0026 return quickly.\n\nexperience has shown that people triaging error logs get confused quickly unless it\u0027s spelled out explicitly.",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "402c78af_14476691",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-13T13:35:15Z",
+      "side": 1,
+      "message": "will it ?  `error` only echos a message, it doesn\u0027t abort anything.  you need to `return 1`, and the caller needs to check it too.",
       "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
