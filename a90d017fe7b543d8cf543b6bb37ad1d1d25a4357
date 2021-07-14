@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8937989e_ff37e534",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-14T21:04:00Z",
+      "side": 1,
+      "message": "Hmmm... can\u0027t we change that? If the disk_layout.json overrides \"size\" of a partition for special images, it could also override \"type\". I feel like using the GPT tag as source of truth for what\u0027s supposed to be in there would be a lot cleaner than just size heuristics.",
+      "parentUuid": "5c46da24_8ecf8bf3",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7962d9a_fa7ab1f7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
