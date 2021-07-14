@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "834dc829_cd21b761",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-14T23:49:04Z",
+      "side": 1,
+      "message": "i\u0027m on the fence about clearing the type.  but i agree a size check is just leaving a landmine for us in the future.\n\nwon\u0027t there be a magic string in the start of the partition to indicate it\u0027s valid ?  we could read the first 8 bytes and if they\u0027re all NUL, then issue a warning, and skip it.",
+      "parentUuid": "8937989e_ff37e534",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7962d9a_fa7ab1f7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
