@@ -300,6 +300,24 @@
       "parentUuid": "8e3a23fd_1ce7be39",
       "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45f5ef2_c017de80",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-15T22:04:29Z",
+      "side": 1,
+      "message": "Okay, fair enough, but most of this script doesn\u0027t do error propagation beyond `set -e`, it would be a lot more work to fix it all. For now we can have the explicit check here and in sign_image_file(), I guess, but everything else seems beyond the scope of this patch.",
+      "parentUuid": "64d7cbf9_63f162bc",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
