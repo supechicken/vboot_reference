@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3eb221ca_ee8e0975",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-15T20:48:15Z",
+      "side": 1,
+      "message": "I think the point is that we *want* to check the magic, and error our if the partition wasn\u0027t intialized correctly by whatever built the image. So yeah, I think using the type to signal intent here is the right approach, and then vbutil_kernel can throw a proper error if that intent doesn\u0027t match reality.",
+      "parentUuid": "37b48eb1_ae67c7a5",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7962d9a_fa7ab1f7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
@@ -244,6 +262,24 @@
       "side": 1,
       "message": "Added the \"return 1\".  The script seems to already end with failure without the caller checking though?",
       "parentUuid": "402c78af_14476691",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e3a23fd_1ce7be39",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-15T20:48:15Z",
+      "side": 1,
+      "message": "Doesn\u0027t `set -e` count here? So I don\u0027t think you need to return (and the caller doesn\u0027t check any return code anyway, other than again implicitly through `set -e`), but Mike would know better.",
+      "parentUuid": "b1bb0618_abbd4abc",
       "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
