@@ -282,6 +282,24 @@
       "parentUuid": "b1bb0618_abbd4abc",
       "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d7cbf9_63f162bc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-15T21:19:49Z",
+      "side": 1,
+      "message": "we don\u0027t want to rely on `set -e` behavior.  it often behaves in ways you don\u0027t expect.\nhttps://mywiki.wooledge.org/BashFAQ/105",
+      "parentUuid": "8e3a23fd_1ce7be39",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
