@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37b48eb1_ae67c7a5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-15T17:19:31Z",
+      "side": 1,
+      "message": "\u003e But that only seems slightly better than just running `futility vbutil_kernel` and silently ignoring failures\n\nimo checking for zeros is significantly better than ignoring vbutil_kernel failures as that will ignore failures on partitions populated with real data\n\nbut if you just want to go the type route, i\u0027m fine with that",
+      "parentUuid": "a34957d2_87fd02aa",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7962d9a_fa7ab1f7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
