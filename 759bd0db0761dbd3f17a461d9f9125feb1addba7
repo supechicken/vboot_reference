@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbd3693_9ce896a0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-15T05:33:58Z",
+      "side": 1,
+      "message": "Good point.  Moved to right before calling vbutil_kernel.",
+      "parentUuid": "30deef3a_e5a3db6e",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 906,
+        "endChar": 0
+      },
+      "revId": "759bd0db0761dbd3f17a461d9f9125feb1addba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fc1ff13_fa4ae3e4",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-14T23:49:04Z",
       "side": 1,
       "message": "we\u0027ve been trying to get away from hardcoding partition numbers.  i know this script has a bunch, but it\u0027s something we want to get away from.\n\ncouldn\u0027t you scan all partitions that exist and then use the GUID to see whether it needs to be signed.",
+      "revId": "759bd0db0761dbd3f17a461d9f9125feb1addba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "238a775e_c30c7600",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-15T05:33:58Z",
+      "side": 1,
+      "message": "Good idea -- let\u0027s do that.",
+      "parentUuid": "9fc1ff13_fa4ae3e4",
       "revId": "759bd0db0761dbd3f17a461d9f9125feb1addba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a34957d2_87fd02aa",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-15T05:33:58Z",
+      "side": 1,
+      "message": "\u003e won\u0027t there be a magic string in the start of the partition to indicate it\u0027s valid ?\n\nYes, there will be a VB2_KEYBLOCK_MAGIC.  But that only seems slightly better than just running `futility vbutil_kernel` and silently ignoring failures?\n\nPerhaps I\u0027ll just go with Julius\u0027 approach of overriding the \"type\", using the \"reserved\" value for unused MINIOS-B partitions.  (Although that begs the question, why do we even need them at all?)  See CL:3027786.  Does that work?\n\n(I\u0027d change the other unused partitions to \"reserved\" as well, but that would probably require double-checking that it won\u0027t adversely affect any other code, and that\u0027s not a rabbit hole I particularly want to go down at the moment.)",
+      "parentUuid": "834dc829_cd21b761",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7962d9a_fa7ab1f7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 7
