@@ -336,6 +336,24 @@
       "parentUuid": "a45f5ef2_c017de80",
       "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50357c5d_b9b560f5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-16T16:56:14Z",
+      "side": 1,
+      "message": "Okay -- I added a check in sign_image_file when calling resign_minios_kernels.",
+      "parentUuid": "791da6ec_879d51e0",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

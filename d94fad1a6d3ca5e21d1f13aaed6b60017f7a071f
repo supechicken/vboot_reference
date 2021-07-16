@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa4af48_569f20a1",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-16T16:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1be3681_4491cf8f",
+      "revId": "d94fad1a6d3ca5e21d1f13aaed6b60017f7a071f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44e440c2_19f85270",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c782ce70_ad15745b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-16T16:56:14Z",
+      "side": 1,
+      "message": "Sure -- I thought it might still be useful for debugging purposes, but I\u0027ll take it out.",
+      "parentUuid": "44e440c2_19f85270",
+      "revId": "d94fad1a6d3ca5e21d1f13aaed6b60017f7a071f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37c92e4c_3bd9b9d7",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-07-15T20:48:15Z",
       "side": 1,
       "message": "nit: not sure if this is even necessary, vbutil_kernel would probably fail with an appropriate error message if the file doesn\u0027t exist?",
+      "revId": "d94fad1a6d3ca5e21d1f13aaed6b60017f7a071f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "653216cc_6990354b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-16T16:56:14Z",
+      "side": 1,
+      "message": "I agree, but vapier requested to add an explicit check: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2989640/comments/e7962d9a_fa7ab1f7",
+      "parentUuid": "37c92e4c_3bd9b9d7",
       "revId": "d94fad1a6d3ca5e21d1f13aaed6b60017f7a071f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
