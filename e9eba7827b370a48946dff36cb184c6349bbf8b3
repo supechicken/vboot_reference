@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cac36e_31de152d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-16T00:34:51Z",
+      "side": 1,
+      "message": "Can you explain why this is needed? The goal here was to go straight to the compiler so we don\u0027t need anything special from the calling environment and keep the size of that interface as small as possible. Even if U-Boot has a definition like this as well, what would we gain from using it? (`fallthrough` isn\u0027t really a great name for a global macro anyway, I could easily see someone using that as a variable name somewhere. Although I guess if U-Boot defines it we can\u0027t do much against that from here anyway.)",
+      "revId": "e9eba7827b370a48946dff36cb184c6349bbf8b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
