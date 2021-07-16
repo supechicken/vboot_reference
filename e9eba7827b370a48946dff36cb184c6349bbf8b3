@@ -16,6 +16,24 @@
       "message": "Can you explain why this is needed? The goal here was to go straight to the compiler so we don\u0027t need anything special from the calling environment and keep the size of that interface as small as possible. Even if U-Boot has a definition like this as well, what would we gain from using it? (`fallthrough` isn\u0027t really a great name for a global macro anyway, I could easily see someone using that as a variable name somewhere. Although I guess if U-Boot defines it we can\u0027t do much against that from here anyway.)",
       "revId": "e9eba7827b370a48946dff36cb184c6349bbf8b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee9634db_ecbdf2d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-16T13:31:26Z",
+      "side": 1,
+      "message": "This is how the kernel works as of a few years back - see https://lwn.net/Articles/794944/\nU-Boot tends to follow linux\n\nAnyway, since vboot is a library I think we should be careful about imposing a particular environment. I would prefer that we adopt linux\u0027s \u0027fallthrough\u0027 approach since it is easily implemented in users of this library, but for now this CL at least makes vboot\u0027s approach optional.\n\nThe error is that \u0027fallthrough\u0027 is defined to \u0027__attribute__((__fallthrough__))\u0027 so we can\u0027t support defining VBOOT_FALLTHROUGH to \u0027__attribute__((fallthrough))\u0027...it ends up being __attribute__((\u0027__attribute__((__fallthrough__))))\n\ninclude/linux/compiler_attributes.h:200:41: error: expected ‘)’ before ‘__attribute__’\n  200 | # define fallthrough                    __attribute__((__fallthrough__))\n      |                                         ^~~~~~~~~~~~~\nfirmware/2lib/include/2common.h:89:42: note: in expansion of macro ‘fallthrough’\n   89 | #define VBOOT_FALLTHROUGH __attribute__((fallthrough))\n      |                                          ^~~~~~~~~~~\nfirmware/lib/cgptlib/cgptlib.c:145:3: note: in expansion of macro ‘VBOOT_FALLTHROUGH’\n  145 |   VBOOT_FALLTHROUGH;\n      |   ^~~~~~~~~~~~~~~~~\nIn file included from firmware/lib/cgptlib/cgptlib.c:6:\nfirmware/2lib/include/2common.h:89:54: error: expected identifier or ‘(’ before ‘)’ token\n   89 | #define VBOOT_FALLTHROUGH __attribute__((fallthrough))\n      |                                                      ^\nfirmware/lib/cgptlib/cgptlib.c:145:3: note: in expansion of macro ‘VBOOT_FALLTHROUGH’\n  145 |   VBOOT_FALLTHROUGH;\n      |   ^~~~~~~~~~~~~~~~~",
+      "parentUuid": "30cac36e_31de152d",
+      "revId": "e9eba7827b370a48946dff36cb184c6349bbf8b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
