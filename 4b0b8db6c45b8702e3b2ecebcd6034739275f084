@@ -16,6 +16,24 @@
       "message": "Yeah, with vboot2 we have started using more C standard library functions directly again, when they are really common and their behavior is really universal. I\u0027m not sure if I want to go back on that trend, because if you go all the way to the other extreme you have things like vb2ex_memset() and vb2_uint32_t everywhere, and I don\u0027t think we want that sort of clutter either.\n\nCan you not just solve this on the caller side instead? You can make a special include directory specifically for vboot system headers, that you put in the include path in front of everything else in the CFLAGS specific to vboot. And there you can have a stub \u003cstdlib.h\u003e that both includes the real stblib.h (e.g. through \"../../real/path/stdlib.h\") and defines a macro for malloc that does whatever special thing you want it to do. If you already have a conforming malloc() prototype in stdlib and you just don\u0027t want to use that function for vboot, you can also pass a --wrap LDFLAG to vboot, or objcopy the output library with --redefine-sym.",
       "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61349a91_09553206",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-16T13:45:48Z",
+      "side": 1,
+      "message": "I\u0027m not suggesting changing string.h or types and I agree that would just be clutter. Note however that we do have vb2_safe_memcmp(), perhaps for the opposite reason.\n\nmalloc() is special in some ways, because it is an extremely dangerous function to use in a library. It can cause run-time failure if memory is exhausted, so it seems right to me for it to be part of the interface,\n\nRe the last idea, I certainly don\u0027t like the idea of requiring linker magic to link vboot. That is the tail wagging the dog.\n\nAs to solving it on the caller side, there are several issues. One is that malloc() does get hacked around by things like valgrind. We want to check some allocations but when you are testing you want to fence off the system libraries (which can call malloc())) from the things you actually care about. Otherwise debugging or allocation logging becomes unmanageable - lots of irrelevant activity. Another is that malloc() may be defined to something else, meaning that you have to have a stub stdlib.h as you suggest. But stdlib.h is a standard library so it seems weird to require it to be perverted to do what you are suggesting.\n\nOverall I think vboot should be a library and should be easy to integrate. Things like this make it harder.",
+      "parentUuid": "4f2620e6_0c717307",
+      "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
