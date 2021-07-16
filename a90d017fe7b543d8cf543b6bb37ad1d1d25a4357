@@ -318,6 +318,24 @@
       "parentUuid": "64d7cbf9_63f162bc",
       "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791da6ec_879d51e0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-16T00:08:26Z",
+      "side": 1,
+      "message": "i\u0027m not suggesting we change the rest of the script here.  the new code Joel has written should not assume `set -e` behavior.",
+      "parentUuid": "a45f5ef2_c017de80",
+      "revId": "a90d017fe7b543d8cf543b6bb37ad1d1d25a4357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
