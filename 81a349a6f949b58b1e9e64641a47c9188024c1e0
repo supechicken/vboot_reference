@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e48d40_c4ecb058",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-16T00:38:18Z",
+      "side": 1,
+      "message": "FWIW we had been thinking about implementing vb2_xmalloc()/vb2_xzalloc() wrappers (calling vb2ex_abort() on allocation failure) so we can get rid of all this allocation checking boilerplate everywhere anyway. It\u0027s part of that long list of vboot backlog that we don\u0027t have enough time to deal with, unfortunately.",
+      "revId": "81a349a6f949b58b1e9e64641a47c9188024c1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
