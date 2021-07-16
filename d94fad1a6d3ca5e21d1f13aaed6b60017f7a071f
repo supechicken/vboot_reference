@@ -104,6 +104,24 @@
       "parentUuid": "37c92e4c_3bd9b9d7",
       "revId": "d94fad1a6d3ca5e21d1f13aaed6b60017f7a071f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f02d2c1f_4cbfed64",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-16T17:58:32Z",
+      "side": 1,
+      "message": "if you\u0027re volunteering to be the frontline triage for all signing failures, then feel free to write the error handling code however you want ;)",
+      "parentUuid": "653216cc_6990354b",
+      "revId": "d94fad1a6d3ca5e21d1f13aaed6b60017f7a071f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
