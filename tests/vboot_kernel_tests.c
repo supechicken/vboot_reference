@@ -18,6 +18,21 @@
 #include "test_common.h"
 #include "vboot_api.h"
 
+/* The stub implementation assumes 512-byte disk sectors */
+#define LBA_BYTES 512
+
+/* Internal struct to simulate a stream for sector-based disks */
+struct disk_stream {
+	/* Disk handle */
+	VbExDiskHandle_t handle;
+
+	/* Next sector to read */
+	uint64_t sector;
+
+	/* Number of sectors left in partition */
+	uint64_t sectors_left;
+};
+
 /* Mock kernel partition */
 struct mock_part {
 	uint32_t start;
@@ -152,13 +167,61 @@ vb2_error_t vb2_gbb_read_recovery_key(struct vb2_context *c,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbExDiskRead(VbExDiskHandle_t h, uint64_t lba_start,
-			 uint64_t lba_count, void *buffer)
+vb2_error_t VbExStreamOpen(VbExDiskHandle_t handle, uint64_t lba_start,
+			   uint64_t lba_count, VbExStream_t *stream)
 {
-	if ((int)lba_start == disk_read_to_fail)
-		return VB2_ERROR_MOCK;
+	struct disk_stream *s;
+
+	if (!handle) {
+		*stream = NULL;
+		return VB2_ERROR_UNKNOWN;
+	}
+
+	s = malloc(sizeof(*s));
+	s->handle = handle;
+	s->sector = lba_start;
+	s->sectors_left = lba_count;
+
+	*stream = (void *)s;
 
 	return VB2_SUCCESS;
+}
+
+vb2_error_t VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer)
+{
+	struct disk_stream *s = (struct disk_stream *)stream;
+	uint64_t sectors;
+
+	if (!s)
+		return VB2_ERROR_UNKNOWN;
+
+	/* For now, require reads to be a multiple of the LBA size */
+	if (bytes % LBA_BYTES)
+		return VB2_ERROR_UNKNOWN;
+
+	/* Fail on overflow */
+	sectors = bytes / LBA_BYTES;
+	if (sectors > s->sectors_left)
+		return VB2_ERROR_UNKNOWN;
+
+	if ((int)s->sector == disk_read_to_fail)
+		return VB2_ERROR_MOCK;
+
+	s->sector += sectors;
+	s->sectors_left -= sectors;
+
+	return VB2_SUCCESS;
+}
+
+void VbExStreamClose(VbExStream_t stream)
+{
+	struct disk_stream *s = (struct disk_stream *)stream;
+
+	/* Allow freeing a null pointer */
+	if (!s)
+		return;
+
+	free(s);
 }
 
 int AllocAndReadGptData(VbExDiskHandle_t disk_handle, GptData *gptdata)

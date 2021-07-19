@@ -26,6 +26,78 @@ static uint8_t *diskbuf;
 static VbSelectAndLoadKernelParams params;
 static VbDiskInfo disk_info;
 
+/* Internal struct to simulate a stream for sector-based disks */
+struct disk_stream {
+	/* Disk handle */
+	VbExDiskHandle_t handle;
+
+	/* Next sector to read */
+	uint64_t sector;
+
+	/* Number of sectors left in partition */
+	uint64_t sectors_left;
+};
+
+vb2_error_t VbExStreamOpen(VbExDiskHandle_t handle, uint64_t lba_start,
+			   uint64_t lba_count, VbExStream_t *stream)
+{
+	struct disk_stream *s;
+
+	if (!handle) {
+		*stream = NULL;
+		return VB2_ERROR_UNKNOWN;
+	}
+
+	s = malloc(sizeof(*s));
+	s->handle = handle;
+	s->sector = lba_start;
+	s->sectors_left = lba_count;
+
+	*stream = (void *)s;
+
+	return VB2_SUCCESS;
+}
+
+vb2_error_t VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer)
+{
+	struct disk_stream *s = (struct disk_stream *)stream;
+	uint64_t sectors;
+	vb2_error_t rv;
+
+	if (!s)
+		return VB2_ERROR_UNKNOWN;
+
+	/* For now, require reads to be a multiple of the LBA size */
+	if (bytes % disk_info.bytes_per_lba)
+		return VB2_ERROR_UNKNOWN;
+
+	/* Fail on overflow */
+	sectors = bytes / disk_info.bytes_per_lba;
+	if (sectors > s->sectors_left)
+		return VB2_ERROR_UNKNOWN;
+
+	rv = VbExDiskRead(s->handle, s->sector, sectors, buffer);
+	if (rv != VB2_SUCCESS)
+		return rv;
+
+	s->sector += sectors;
+	s->sectors_left -= sectors;
+
+	return VB2_SUCCESS;
+}
+
+void VbExStreamClose(VbExStream_t stream)
+{
+	struct disk_stream *s = (struct disk_stream *)stream;
+
+	/* Allow freeing a null pointer */
+	if (!s)
+		return;
+
+	free(s);
+	return;
+}
+
 vb2_error_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
 			 uint64_t lba_count, void *buffer)
 {
@@ -36,21 +108,8 @@ vb2_error_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
 	if (lba_start + lba_count > disk_info.streaming_lba_count)
 		return VB2_ERROR_UNKNOWN;
 
-	memcpy(buffer, diskbuf + lba_start * 512, lba_count * 512);
-	return VB2_SUCCESS;
-}
-
-vb2_error_t VbExDiskWrite(VbExDiskHandle_t handle, uint64_t lba_start,
-			  uint64_t lba_count, const void *buffer)
-{
-	if (handle != (VbExDiskHandle_t)1)
-		return VB2_ERROR_UNKNOWN;
-	if (lba_start >= disk_info.streaming_lba_count)
-		return VB2_ERROR_UNKNOWN;
-	if (lba_start + lba_count > disk_info.streaming_lba_count)
-		return VB2_ERROR_UNKNOWN;
-
-	memcpy(diskbuf + lba_start * 512, buffer, lba_count * 512);
+	memcpy(buffer, diskbuf + lba_start * disk_info.bytes_per_lba,
+	       lba_count * disk_info.bytes_per_lba);
 	return VB2_SUCCESS;
 }
 
@@ -90,7 +149,7 @@ int main(int argc, char *argv[])
 	params.disk_handle = (VbExDiskHandle_t)1;
 	disk_info.handle = (VbExDiskHandle_t)1;
 	disk_info.bytes_per_lba = 512;
-	disk_info.streaming_lba_count = disk_bytes / 512;
+	disk_info.streaming_lba_count = disk_bytes / disk_info.bytes_per_lba;
 	disk_info.lba_count = disk_info.streaming_lba_count;
 
 	params.kernel_buffer_size = 16 * 1024 * 1024;
