@@ -291,6 +291,9 @@ static void phase1_tests(void)
 	sd->preamble_size = 0;
 	TEST_EQ(vb2api_kernel_phase1(ctx), VB2_ERROR_API_KPHASE1_PREAMBLE,
 		"phase1 fw preamble");
+
+	/* dev boot flags tests */
+	// reset_common_data(FOR_PHASE1);
 }
 
 static void normal_boot_tests(void)
