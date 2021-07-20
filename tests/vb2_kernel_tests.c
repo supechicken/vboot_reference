@@ -22,6 +22,8 @@ static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static struct vb2_fw_preamble *fwpre;
+static struct vb2_secdata_fwmp *fwmp;
+static struct vb2_gbb_header *gbb;
 static const char fw_kernel_key_data[36] = "Test kernel key data";
 
 /* Mocked function data */
@@ -42,6 +44,7 @@ static vb2_error_t mock_vbtlk_retval;
 enum reset_type {
 	FOR_PHASE1,
 	FOR_NORMAL_BOOT,
+	FOR_FILL_DEV_BOOT_FLAGS,
 };
 
 static void reset_common_data(enum reset_type t)
@@ -59,6 +62,8 @@ static void reset_common_data(enum reset_type t)
 	vb2api_secdata_kernel_create(ctx);
 	vb2_secdata_kernel_init(ctx);
 	vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_VERSIONS, 0x20002);
+
+	fwmp = (struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
 
 	mock_read_res_fail_on_call = 0;
 	mock_secdata_fwmp_check_retval = VB2_SUCCESS;
@@ -98,6 +103,9 @@ static void reset_common_data(enum reset_type t)
 		sd->preamble_size = sizeof(*fwpre) + k->key_size;
 		vb2_set_workbuf_used(ctx,
 				     sd->preamble_offset + sd->preamble_size);
+	} else if (t == FOR_FILL_DEV_BOOT_FLAGS) {
+		sd->status = VB2_SD_STATUS_SECDATA_FWMP_INIT;
+		gbb = vb2_get_gbb(ctx);
 	}
 };
 
@@ -318,12 +326,110 @@ static void normal_boot_tests(void)
 	TEST_EQ(vb2_normal_boot(ctx), VB2_REQUEST_REBOOT,
 		"vb2_normal_boot() reboot to reset NVRAM diag request");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
-		"  diag request reset");}
+		"  diag request reset");
+}
+
+static void fill_dev_boot_flags_tests(void)
+{
+	/* Dev boot - allowed by default */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALLOWED), 1,
+		"dev boot - allowed by default");
+
+	/* Dev boot - disabled by FWMP */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALLOWED), 0,
+		"dev boot - FWMP disabled");
+
+	/* Dev boot - force enabled by GBB */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
+	gbb->flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALLOWED), 1,
+		"dev boot - GBB force dev on");
+
+	/* Legacy boot - not allowed by default */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED), 0,
+		"dev boot altfw - not allowed by default");
+
+	/* Legacy boot - enabled by nvdata */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_ALTFW, 1);
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED), 1,
+		"dev boot altfw - nvdata enabled");
+
+	/* Legacy boot - enabled by FWMP */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_ALTFW;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED), 1,
+		"dev boot altfw - secdata enabled");
+
+	/* Legacy boot - force enabled by GBB */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	gbb->flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_ALTFW;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED), 1,
+		"dev boot altfw - GBB force enabled");
+
+	/* Legacy boot - set all flags */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_ALTFW, 1);
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_ALTFW;
+	gbb->flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_ALTFW;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED), 1,
+		"dev boot altfw - all flags set");
+
+	/* External boot - not allowed by default */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED), 0,
+		"dev boot external - not allowed by default");
+
+	/* External boot - enabled by nvdata */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_EXTERNAL, 1);
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED), 1,
+		"dev boot external - nvdata enabled");
+
+	/* External boot - enabled by FWMP */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_EXTERNAL;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED), 1,
+		"dev boot external - secdata enabled");
+
+	/* External boot - force enabled by GBB */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	gbb->flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED), 1,
+		"dev boot external - GBB force enabled");
+
+	/* External boot - set all flags */
+	reset_common_data(FOR_FILL_DEV_BOOT_FLAGS);
+	vb2_nv_set(ctx, VB2_NV_DEV_BOOT_EXTERNAL, 1);
+	fwmp->flags |= VB2_SECDATA_FWMP_DEV_ENABLE_EXTERNAL;
+	gbb->flags |= VB2_GBB_FLAG_FORCE_DEV_BOOT_USB;
+	vb2_fill_dev_boot_flags(ctx);
+	TEST_EQ(!!(ctx->flags & VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED), 1,
+		"dev boot external - all flags set");
+}
 
 int main(int argc, char* argv[])
 {
 	phase1_tests();
 	normal_boot_tests();
+	fill_dev_boot_flags_tests();
 
 	return gTestSuccess ? 0 : 255;
 }
