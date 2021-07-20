@@ -34,6 +34,24 @@
       "parentUuid": "4f2620e6_0c717307",
       "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c953d3f9_41850d93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-20T23:44:43Z",
+      "side": 1,
+      "message": "\u003e Overall I think vboot should be a library and should be easy to integrate. Things like this make it harder.\n\nWell, I would say requiring all of these to be separate APIs actually makes it harder. Basically, when you require a vb2ex_ wrapper for all the libc stuff, you require the caller to provide an extra stub header that defines all of them (and usually just with a single macro or static inline each that redirect them to the function you actually meant). That\u0027s about the same extra effort as it is to provide the stub header I described to redirect a normal libc call. But the difference is that most callers already have a malloc() and are fine with just using that directly, so using this scheme we can save them the effort of adding extra wrapper headers, and only projects like U-Boot that actually have an interest in keeping vboot malloc()s apart from other ones need to invest the extra effort.\n\nI\u0027d prefer to avoid the inconsistency of treating malloc() different from other standard library functions, and I don\u0027t think we want to start having wrappers for all of them. So I would prefer to continue with what we have and have callers use the techniques I described if they want to fine-tune their vboot bindings. (vb2_safe_memcmp() is a separate thing, that\u0027s just about the `safe` aspect, not about wrapping memcmp(). And it\u0027s probably unnecessary for the things we do with it, but it hasn\u0027t bothered anyone enough to get rid of it yet.)",
+      "parentUuid": "61349a91_09553206",
+      "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
