@@ -240,6 +240,23 @@ enum vb2_context_flags {
 	 * it doesn't jump to RW when this flag is set.
 	 */
 	VB2_CONTEXT_EC_TRUSTED = (1 << 24),
+
+	/*
+	 * Boot into developer mode is allowed by FWMP and GBB flags.
+	 */
+	VB2_CONTEXT_DEV_BOOT_ALLOWED = (1 << 25),
+
+	/*
+	 * Boot into developer mode from external disk is allowed by nvdata,
+	 * FWMP and GBB flags.
+	 */
+	VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED = (1 << 26),
+
+	/*
+	 * Boot into developer mode from alternative bootloader is allowed by
+	 * nvdata, FWMP and GBB flags.
+	 */
+	VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED = (1 << 27),
 };
 
 /* Helper for aligning fields in vb2_context. */
@@ -1328,6 +1345,13 @@ vb2_error_t vb2ex_ec_battery_cutoff(void);
 #define VB2_SET_BIT(mask, index) ((mask) |= ((uint32_t)1 << (index)))
 #define VB2_CLR_BIT(mask, index) ((mask) &= ~((uint32_t)1 << (index)))
 #define VB2_GET_BIT(mask, index) ((mask) & ((uint32_t)1 << (index)))
+
+#define VB2_SET_FLAG(mask, flag, value) do { \
+  if (value) \
+    mask |= flag; \
+  else \
+    mask &= ~flag; \
+} while (0)
 
 /* Screens. */
 enum vb2_screen {
