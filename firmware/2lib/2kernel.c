@@ -94,6 +94,32 @@ vb2_error_t vb2_normal_boot(struct vb2_context *ctx)
 	return rv;
 }
 
+void vb2_fill_dev_boot_flags(struct vb2_context *ctx)
+{
+	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
+
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT) &&
+	    !(gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON))
+		ctx->flags &= ~(uint64_t)VB2_CONTEXT_DEV_BOOT_ALLOWED;
+	else
+		ctx->flags |= VB2_CONTEXT_DEV_BOOT_ALLOWED;
+
+	if (vb2_nv_get(ctx, VB2_NV_DEV_BOOT_ALTFW) ||
+	    (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_ALTFW) ||
+	    vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_ALTFW))
+		ctx->flags |= VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED;
+	else
+		ctx->flags &= ~(uint64_t)VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED;
+
+	if (vb2_nv_get(ctx, VB2_NV_DEV_BOOT_EXTERNAL) ||
+	    (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB) ||
+	    vb2_secdata_fwmp_get_flag(ctx,
+				      VB2_SECDATA_FWMP_DEV_ENABLE_EXTERNAL))
+		ctx->flags |= VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED;
+	else
+		ctx->flags &= ~(uint64_t)VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED;
+}
+
 int vb2api_is_developer_signed(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
@@ -156,6 +182,8 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 	sd->kernel_version_secdata =
 		vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_VERSIONS);
 	sd->kernel_version = sd->kernel_version_secdata;
+
+	vb2_fill_dev_boot_flags(ctx);
 
 	/* Find the key to use to verify the kernel keyblock */
 	if ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
