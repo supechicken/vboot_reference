@@ -169,6 +169,14 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	 */
 	vb2_clear_recovery(ctx);
 
+	VB2_SET_FLAG(ctx->flags, (uint64_t)VB2_CONTEXT_DEV_BOOT_ALLOWED,
+		     vb2_dev_boot_allowed(ctx));
+	VB2_SET_FLAG(ctx->flags, (uint64_t)VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED,
+		     vb2_dev_boot_altfw_allowed(ctx));
+	VB2_SET_FLAG(ctx->flags,
+		     (uint64_t)VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED,
+		     vb2_dev_boot_external_allowed(ctx));
+
 	/* Select boot path */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
 		/* If we're in recovery mode just to do memory retraining, all
