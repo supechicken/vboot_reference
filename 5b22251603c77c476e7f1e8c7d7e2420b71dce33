@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb35ce7_ecec9bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-20T22:54:11Z",
+      "side": 1,
+      "message": "Not really sure I understand the reason for this? Even if we don\u0027t need these stubs anywhere else right now, I could theoretically see other (non-test) applications for them so I think it fundamentally makes sense to keep them separate. Is there any specific reason you need these directly in the test files? (The other thing is that the whole \"stream\" API was only needed for raw NAND, and as you know we have been slowly sidelining raw NAND for a while. I think keeping the stream-to-disk translation separate and writing as much code as possible from the disk perspective may make it easier to deprecate streams later if we ever get to that point.)",
+      "revId": "5b22251603c77c476e7f1e8c7d7e2420b71dce33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
