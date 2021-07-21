@@ -16,6 +16,24 @@
       "message": "Not really sure I understand the reason for this? Even if we don\u0027t need these stubs anywhere else right now, I could theoretically see other (non-test) applications for them so I think it fundamentally makes sense to keep them separate. Is there any specific reason you need these directly in the test files? (The other thing is that the whole \"stream\" API was only needed for raw NAND, and as you know we have been slowly sidelining raw NAND for a while. I think keeping the stream-to-disk translation separate and writing as much code as possible from the disk perspective may make it easier to deprecate streams later if we ever get to that point.)",
       "revId": "5b22251603c77c476e7f1e8c7d7e2420b71dce33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d09809_cc1559b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-21T01:58:51Z",
+      "side": 1,
+      "message": "To me it seems more like a specific implementation rather than some generic stubs, only being used in one location (vboot_kernel_tests), with one hard-coded sector size (512 bytes).  I was also considering that the upcoming vboot_kernel2_tests needed a slightly different implementation anyways.\n\nBut I didn\u0027t know the exact history behind the streams vs. disk stuff.  If you\u0027re saying that we might want to deprecate streams, and by keeping this default implementation around (perhaps fixed up to support different sector sizes?), depthcharge would only need to implement VbExDiskRead and VbExDiskWrite, then I guess that seems like a good enough reason to keep it around.",
+      "parentUuid": "ecb35ce7_ecec9bcb",
+      "revId": "5b22251603c77c476e7f1e8c7d7e2420b71dce33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
