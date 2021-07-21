@@ -16,8 +16,12 @@ vb2_error_t vb2_check_keyblock(const struct vb2_keyblock *block, uint32_t size,
 		return VB2_ERROR_KEYBLOCK_TOO_SMALL_FOR_HEADER;
 	}
 
+	VB2_DEBUG("[SC] 1Print block->magic=%s\n", block->magic);
+	VB2_DEBUG("[SC] 1Print VB2_KEYBLOCK_MAGIC=%s\n", VB2_KEYBLOCK_MAGIC);
 	if (memcmp(block->magic, VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE)) {
 		VB2_DEBUG("Not a valid verified boot keyblock.\n");
+		VB2_DEBUG("[SC] 2Print block->magic=%s\n", block->magic);
+		VB2_DEBUG("[SC] 2Print VB2_KEYBLOCK_MAGIC=%s\n", VB2_KEYBLOCK_MAGIC);
 		return VB2_ERROR_KEYBLOCK_MAGIC;
 	}
 
