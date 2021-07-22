@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99258a0b_f1b4e459",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-22T04:08:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb6f16da_9006fc7d",
+      "range": {
+        "startLine": 250,
+        "startChar": 29,
+        "endLine": 250,
+        "endChar": 33
+      },
+      "revId": "4806123d2beea1efa7cd697728cbf1119facbf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d211c095_1e68ca79",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-22T04:08:31Z",
+      "side": 1,
+      "message": "Done. Is the \"FW\" naming being a little comfusing?",
+      "parentUuid": "92ebfa07_c0661b10",
+      "range": {
+        "startLine": 250,
+        "startChar": 34,
+        "endLine": 250,
+        "endChar": 54
+      },
+      "revId": "4806123d2beea1efa7cd697728cbf1119facbf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54b5e44e_0ad35858",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-22T02:39:44Z",
       "side": 1,
       "message": "nvdata",
+      "range": {
+        "startLine": 251,
+        "startChar": 4,
+        "endLine": 251,
+        "endChar": 22
+      },
+      "revId": "4806123d2beea1efa7cd697728cbf1119facbf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a35531_b63f31b8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-22T04:08:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54b5e44e_0ad35858",
       "range": {
         "startLine": 251,
         "startChar": 4,
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16af979_7276ddbf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-22T04:08:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54aa3ac3_ec28301e",
+      "range": {
+        "startLine": 256,
+        "startChar": 29,
+        "endLine": 256,
+        "endChar": 42
+      },
+      "revId": "4806123d2beea1efa7cd697728cbf1119facbf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2228b51a_191f3b12",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-07-22T02:39:44Z",
       "side": 1,
       "message": "Could we move this before ALTFW to be consistent with dev screen menu\u0027s order?",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 38
+      },
+      "revId": "4806123d2beea1efa7cd697728cbf1119facbf40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb3f137_b1dc9c2d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-22T04:08:31Z",
+      "side": 1,
+      "message": "Sure. I was following the order of functions in 2misc.c.",
+      "parentUuid": "2228b51a_191f3b12",
       "range": {
         "startLine": 259,
         "startChar": 1,
