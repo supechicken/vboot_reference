@@ -34,6 +34,24 @@
       "parentUuid": "ecb35ce7_ecec9bcb",
       "revId": "5b22251603c77c476e7f1e8c7d7e2420b71dce33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b5ecd5_b487bbdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-22T23:40:33Z",
+      "side": 1,
+      "message": "Yeah, I guess the sector size problem isn\u0027t easy to fix... okay. I\u0027m fine with removing it for now, easy enough to rewrite if it\u0027s ever needed.",
+      "parentUuid": "f5d09809_cc1559b2",
+      "revId": "5b22251603c77c476e7f1e8c7d7e2420b71dce33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
