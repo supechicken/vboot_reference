@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d136958_fdd019be",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T22:33:59Z",
+      "side": 1,
+      "message": "Okay, no, that\u0027s fine, I just didn\u0027t realize why this was necessary.",
+      "parentUuid": "c86ab510_740fc845",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df8e013c_31cc6a9a",
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Ugh... it\u0027s needed to get past the first transition in manual_recovery_action(), in which the new value for VbTryLoadKernel is stored, and `return vb2_ui_screen_change` is called.  A few of the other tests have it too.  It\u0027s not ideal.",
       "parentUuid": "df8e013c_31cc6a9a",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa03ab6b_d35bb58d",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T22:33:59Z",
+      "side": 1,
+      "message": "Hmm... okay... not sure I really follow to be honest. But sounds like that\u0027s more of a framework problem with this whole test. A comment to explain that it\u0027s not accidental would be good, though.",
+      "parentUuid": "a8f8d6d3_caef8e17",
       "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -247,6 +283,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cab64cd6_6d489a9f",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T22:33:59Z",
+      "side": 1,
+      "message": "\u003e Should we initialize to that?\n\nYes, it should do that. Setting flag bits that are still reserved isn\u0027t so great, even in a test.",
+      "parentUuid": "cc9a153f_91908076",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cc50430_da9b6dfa",
         "filename": "tests/vboot_kernel2_tests.c",
         "patchSetId": 35
@@ -276,6 +330,24 @@
       "side": 1,
       "message": "There\u0027s a memset call just above the for loop, is that what you mean?",
       "parentUuid": "5cc50430_da9b6dfa",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "177b298e_6561be77",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T22:33:59Z",
+      "side": 1,
+      "message": "Yes, nevermind, I\u0027m blind. Carry on.",
+      "parentUuid": "305e5b8d_2a46cbec",
       "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -311,6 +383,24 @@
       "side": 1,
       "message": "Nah, we don\u0027t do that in vboot_kernel.c either.  That would probably be the right place to do it, with miniOS-specific stuff all in this file.  So I agree with you, but... not sure about the resources to get that done at the moment?",
       "parentUuid": "21bc7f72_3cd49c0d",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484657c0_67007a0d",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T22:33:59Z",
+      "side": 1,
+      "message": "Understood. Onto the neverending backlog with it, then!",
+      "parentUuid": "782e9e96_552b9902",
       "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
