@@ -16,6 +16,182 @@
       "message": "Unit tests are finished.  Ready for final review.",
       "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3c33a8_50fd30ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "Thanks, I think this is mostly good! But as we discussed, it can\u0027t actually land until all of the signing dependencies have been put in place.",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aad09d6_ac700d90",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "nit: add explicit value like above?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead63338_1f6142e7",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "Unnecessary?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8e013c_31cc6a9a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0400c1_0acc8929",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "Still need to check called-counter?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a75c8e_c172a69d",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "Maybe set some random larger values in the lower 24 bits to check that they are ignored?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756423f4_8e9cb2b0",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "Probably would be better to specify the flags you intend to be set here explicitly.",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc50430_da9b6dfa",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "What\u0027s in `buffer` when we don\u0027t hit this? Shouldn\u0027t you zero it out or something?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bc7f72_3cd49c0d",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "Hmm... I mean we can take this for now I guess, but it seems a bit thin. I think it would be better to really test whether the code is looking at the right offsets in the kernel buffer for each component. Or are you intentionally trying to ignore that here because it\u0027s already tested elsewhere and minios shares those same code paths?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4c547a_ed7abdef",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-23T01:39:01Z",
+      "side": 1,
+      "message": "Can we check for the exact error code instead?",
+      "range": {
+        "startLine": 392,
+        "startChar": 1,
+        "endLine": 392,
+        "endChar": 9
+      },
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
