@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7645dc_6b433a91",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "Done, this CL preceded sjg\u0027s change.",
+      "parentUuid": "3aad09d6_ac700d90",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ead63338_1f6142e7",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-07-23T01:39:01Z",
       "side": 1,
       "message": "Unnecessary?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86ab510_740fc845",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "Not exactly... as I mentioned in the thread on vb2_ui_tests, manual_recovery_action() checks the return value of VbTryLoadKernel before looking for Ctrl+R.  (I guess we could change the order there too, but then that\u0027d mean re-jigging a bunch of the unit tests to account for the opposite behaviour.)  If that\u0027s VB2_SUCCESS, the UI exits.  So we need *some* error value here, so that there is a second call to manual_recovery_action() resulting in calling miniOS boot code.  I\u0027m open to any suggestions for improving this or the test framewrok.",
+      "parentUuid": "ead63338_1f6142e7",
       "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f8d6d3_caef8e17",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "Ugh... it\u0027s needed to get past the first transition in manual_recovery_action(), in which the new value for VbTryLoadKernel is stored, and `return vb2_ui_screen_change` is called.  A few of the other tests have it too.  It\u0027s not ideal.",
+      "parentUuid": "df8e013c_31cc6a9a",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0400c1_0acc8929",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e10b078_e0499f6a",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "Thanks for reminding me.  Added a few 0-checks to unit tests above.",
+      "parentUuid": "df0400c1_0acc8929",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a75c8e_c172a69d",
@@ -116,6 +188,24 @@
       "writtenOn": "2021-07-23T01:39:01Z",
       "side": 1,
       "message": "Maybe set some random larger values in the lower 24 bits to check that they are ignored?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8aab86a_f05704bf",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a75c8e_c172a69d",
       "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +229,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc9a153f_91908076",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "vboot_kernel_tests.c does it this way.  IMHO it kinda makes sense -- set everything up for the most generic successful environment in reset_common_data, and then customize everything in each specific unit test.\n\nThe only reason I could see why it makes sense to change here is because miniOS kernel keyblocks will only ever be set to dev+!dev+rec+minios in practice.  Should we initialize to that?",
+      "parentUuid": "756423f4_8e9cb2b0",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cc50430_da9b6dfa",
         "filename": "tests/vboot_kernel2_tests.c",
         "patchSetId": 35
@@ -150,6 +258,24 @@
       "writtenOn": "2021-07-23T01:39:01Z",
       "side": 1,
       "message": "What\u0027s in `buffer` when we don\u0027t hit this? Shouldn\u0027t you zero it out or something?",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305e5b8d_2a46cbec",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "There\u0027s a memset call just above the for loop, is that what you mean?",
+      "parentUuid": "5cc50430_da9b6dfa",
       "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +299,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "782e9e96_552b9902",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "Nah, we don\u0027t do that in vboot_kernel.c either.  That would probably be the right place to do it, with miniOS-specific stuff all in this file.  So I agree with you, but... not sure about the resources to get that done at the moment?",
+      "parentUuid": "21bc7f72_3cd49c0d",
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a4c547a_ed7abdef",
         "filename": "tests/vboot_kernel2_tests.c",
         "patchSetId": 35
@@ -184,6 +328,30 @@
       "writtenOn": "2021-07-23T01:39:01Z",
       "side": 1,
       "message": "Can we check for the exact error code instead?",
+      "range": {
+        "startLine": 392,
+        "startChar": 1,
+        "endLine": 392,
+        "endChar": 9
+      },
+      "revId": "4200392d19888a6f28df3c4b5891f0c63b532b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168fd63e_5ba68222",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2021-07-23T06:39:03Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "2a4c547a_ed7abdef",
       "range": {
         "startLine": 392,
         "startChar": 1,
