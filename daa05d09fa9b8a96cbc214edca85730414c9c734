@@ -448,6 +448,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f856195_853d9413",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-23T09:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38608277_d97a426d",
+      "range": {
+        "startLine": 1350,
+        "startChar": 8,
+        "endLine": 1350,
+        "endChar": 20
+      },
+      "revId": "daa05d09fa9b8a96cbc214edca85730414c9c734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f442051d_5960158f",
@@ -509,6 +533,30 @@
       "side": 1,
       "message": "\u003e Do you mean remove 3 vb2_dev_boot_*allowed functions and put the logics inside vb2_check_dev_boot_flags?\n\nYes. vb2_fill_dev_boot_flags sounds good.",
       "parentUuid": "66c0461c_32068620",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 43
+      },
+      "revId": "daa05d09fa9b8a96cbc214edca85730414c9c734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b5dbf6_e1a9bfc1",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-23T09:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e80101b_f0802cea",
       "range": {
         "startLine": 172,
         "startChar": 1,
