@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f11517_347e141a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "State in 2api.h that this function has to be called after vb2api_kernel_phase1().",
+      "range": {
+        "startLine": 525,
+        "startChar": 33,
+        "endLine": 525,
+        "endChar": 67
+      },
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a480b4_abe0de88",
+        "filename": "firmware/2lib/include/2kernel.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "I\u0027d prefer putting it in 2misc.h. What do you think?",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a9a89d_cc5341fc",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "There\u0027s already mock_gbb.",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297b1c3c_1a13c908",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "This is also a reason why I wouldn\u0027t put fill_dev_boot_flags() in 2kernel.c. Many things in reset_common_data() look irrelevant to fill_dev_boot_flags().",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 40
+      },
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bdcb63f_5fc4a042",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "There are TEST_TRUE and TEST_FALSE.",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 8
+      },
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38228abd_75f9b399",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "Could we initialize the 3 flags in reset_common_data() to be consistent with current behavior? Looks like you are already doing that in vb2_ui_action_tests.c.",
+      "range": {
+        "startLine": 917,
+        "startChar": 1,
+        "endLine": 917,
+        "endChar": 53
+      },
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e2ade1_caadf2ce",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "Isn\u0027t this enabled by default in reset_common_data()?",
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb186375_1f4cee30",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-23T12:03:27Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "dc4dd80e4aff3d5a8280b43e7a3d5c45f2e72bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
