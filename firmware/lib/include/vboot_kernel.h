@@ -16,16 +16,4 @@
 
 struct vb2_context;
 
-/**
- * Attempt loading a kernel from the specified type(s) of disks.
- *
- * If successful, sets lkp.disk_handle to the disk for the kernel and returns
- * VB2_SUCCESS.
- *
- * @param ctx			Vboot context
- * @param disk_flags		Flags to pass to VbExDiskGetInfo()
- * @return VB2_SUCCESS or the most specific VB2_ERROR_LK error.
- */
-vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags);
-
 #endif  /* VBOOT_REFERENCE_VBOOT_KERNEL_H_ */
