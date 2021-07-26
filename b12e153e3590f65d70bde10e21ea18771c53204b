@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09d40939_1f37f8f9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-26T11:44:14Z",
+      "side": 1,
+      "message": "Done. I remember that every part I saw about these three things, the order is always DEV_BOOT -\u003e DEV_BOOT_ALTFW -\u003e DEV_BOOT_EXTERNAL. Should I swap them if I saw more this order appears? Or I just only swap them when I\u0027m modifying them?",
+      "parentUuid": "3ec1fbdd_c989c6d5",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 576,
+        "endChar": 65
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04647637_6f46dd15",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-26T07:35:48Z",
       "side": 1,
       "message": "We should modify ctx-\u003eflags here instead.",
+      "range": {
+        "startLine": 929,
+        "startChar": 17,
+        "endLine": 929,
+        "endChar": 38
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1075ee79_7311bcf3",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-26T11:44:14Z",
+      "side": 1,
+      "message": "Done. It\u0027s interesting that this line is not causing problem. Should we remove this line or just change it to ctx-\u003eflags style?",
+      "parentUuid": "04647637_6f46dd15",
       "range": {
         "startLine": 929,
         "startChar": 17,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9a1de39_3ebd0683",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-26T11:44:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure why removing this line. You mean change it to ctx-\u003eflags?",
+      "parentUuid": "fd18f233_533dbc86",
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97bc751a_f36a733c",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 13
@@ -94,6 +160,30 @@
       "writtenOn": "2021-07-26T07:35:48Z",
       "side": 1,
       "message": "Align with ctx-\u003eflags.",
+      "range": {
+        "startLine": 967,
+        "startChar": 2,
+        "endLine": 967,
+        "endChar": 11
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0405ccc_7f9d9eb5",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-26T11:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97bc751a_f36a733c",
       "range": {
         "startLine": 967,
         "startChar": 2,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b061388a_38480434",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-26T11:44:14Z",
+      "side": 1,
+      "message": "Done. I replaced all of them.",
+      "parentUuid": "9b58a87d_d7d4cc1b",
+      "range": {
+        "startLine": 984,
+        "startChar": 4,
+        "endLine": 984,
+        "endChar": 10
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "904e8e29_05a16491",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-07-26T07:35:48Z",
       "side": 1,
       "message": "Can we move external boot sections above altfw sections?",
+      "range": {
+        "startLine": 1020,
+        "startChar": 1,
+        "endLine": 1020,
+        "endChar": 45
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c24bef9_331d545e",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-26T11:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "904e8e29_05a16491",
       "range": {
         "startLine": 1020,
         "startChar": 1,
