@@ -162,19 +162,6 @@ vb2_error_t vb2_load_kernel_keyblock(struct vb2_context *ctx);
 vb2_error_t vb2_load_kernel_preamble(struct vb2_context *ctx);
 
 /**
- * Utility function to enable developer mode.
- *
- * Enables the developer flag in vb2_context firmware secdata.  Note that
- * modified secdata must be saved for change to apply on reboot.
- *
- * NOTE: Doesn't update the LAST_BOOT_DEVELOPER secdata flag.  That should be
- * done on the next boot.
- *
- * @param ctx		Vboot context
- */
-void vb2_enable_developer_mode(struct vb2_context *ctx);
-
-/**
  * Check whether recovery is allowed or not.
  *
  * The only way to pass this check and proceed to the recovery process is to

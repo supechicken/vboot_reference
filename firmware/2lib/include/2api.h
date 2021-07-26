@@ -1347,6 +1347,19 @@ vb2_error_t vb2ex_ec_vboot_done(struct vb2_context *ctx);
  */
 vb2_error_t vb2ex_ec_battery_cutoff(void);
 
+/**
+ * Utility function to enable developer mode.
+ *
+ * Enables the developer flag in vb2_context firmware secdata.  Note that
+ * modified secdata must be saved for change to apply on reboot.
+ *
+ * NOTE: Doesn't update the LAST_BOOT_DEVELOPER secdata flag.  That should be
+ * done on the next boot.
+ *
+ * @param ctx		Vboot context
+ */
+void vb2api_enable_developer_mode(struct vb2_context *ctx);
+
 /*****************************************************************************/
 /* Functions for UI display. */
 

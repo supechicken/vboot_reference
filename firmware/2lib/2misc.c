@@ -375,7 +375,7 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-void vb2_enable_developer_mode(struct vb2_context *ctx)
+void vb2api_enable_developer_mode(struct vb2_context *ctx)
 {
 	uint32_t flags;
 
