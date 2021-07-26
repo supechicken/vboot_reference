@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8c3223a_b4207dc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-26T07:35:48Z",
+      "side": 1,
+      "message": "Almost done!",
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec1fbdd_c989c6d5",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-26T07:35:48Z",
+      "side": 1,
+      "message": "Swap these 2 sections.",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 576,
+        "endChar": 65
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04647637_6f46dd15",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-26T07:35:48Z",
+      "side": 1,
+      "message": "We should modify ctx-\u003eflags here instead.",
+      "range": {
+        "startLine": 929,
+        "startChar": 17,
+        "endLine": 929,
+        "endChar": 38
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd18f233_533dbc86",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-26T07:35:48Z",
+      "side": 1,
+      "message": "Remove this as well?",
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97bc751a_f36a733c",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-26T07:35:48Z",
+      "side": 1,
+      "message": "Align with ctx-\u003eflags.",
+      "range": {
+        "startLine": 967,
+        "startChar": 2,
+        "endLine": 967,
+        "endChar": 11
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b58a87d_d7d4cc1b",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-26T07:35:48Z",
+      "side": 1,
+      "message": "Alternate",
+      "range": {
+        "startLine": 984,
+        "startChar": 4,
+        "endLine": 984,
+        "endChar": 10
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904e8e29_05a16491",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-26T07:35:48Z",
+      "side": 1,
+      "message": "Can we move external boot sections above altfw sections?",
+      "range": {
+        "startLine": 1020,
+        "startChar": 1,
+        "endLine": 1020,
+        "endChar": 45
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
