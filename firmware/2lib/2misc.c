@@ -15,6 +15,8 @@
 #include "2sha.h"
 #include "2struct.h"
 #include "2sysincludes.h"
+#include "include/2api.h"
+#include "include/2return_codes.h"
 #include "vboot_api.h"
 #include "vboot_struct.h"
 
@@ -375,7 +377,7 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-void vb2_enable_developer_mode(struct vb2_context *ctx)
+void vb2api_enable_developer_mode(struct vb2_context *ctx)
 {
 	uint32_t flags;
 
@@ -391,8 +393,24 @@ void vb2_enable_developer_mode(struct vb2_context *ctx)
 	VB2_DEBUG("Mode change will take effect on next reboot\n");
 }
 
+vb2_error_t vb2api_disable_dev_request(struct vb2_context *ctx) {
+	if (vb2api_gbb_get_flags(ctx) & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) {
+		VB2_DEBUG("ERROR: dev mode forced by GBB flag\n");
+    return VB2_ERROR_API;
+	}
+
+	VB2_DEBUG("Leaving dev mode\n");
+	vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
+	return VB2_SUCCESS;
+}
+
+void vb2api_request_diagnostics(struct vb2_context *ctx) {
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	VB2_DEBUG("Diagnostics requested, rebooting\n");
+}
+
 test_mockable
-int vb2_allow_recovery(struct vb2_context *ctx)
+int vb2api_allow_recovery(struct vb2_context *ctx)
 {
 	if (ctx->flags & VB2_CONTEXT_NO_BOOT)
 		return 0;
@@ -432,7 +450,7 @@ void vb2_clear_recovery(struct vb2_context *ctx)
 
 	/* But stow recovery reason as subcode for non-manual recovery. */
 	if ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
-	    !vb2_allow_recovery(ctx)) {
+	    !vb2api_allow_recovery(ctx)) {
 		VB2_DEBUG("Stow recovery reason as subcode (%#x)\n",
 			  sd->recovery_reason);
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, sd->recovery_reason);
