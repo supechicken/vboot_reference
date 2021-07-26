@@ -419,8 +419,10 @@ static const struct vb2_screen_info firmware_log_screen = {
 /* Set VB2_NV_DIAG_REQUEST and reboot. */
 static vb2_error_t launch_diagnostics_action(struct vb2_ui_context *ui)
 {
-	vb2api_request_diagnostics(ui->ctx);
-	return VB2_REQUEST_REBOOT;
+	if (vb2api_request_diagnostics(ui->ctx) == VB2_SUCCESS)
+		return VB2_REQUEST_REBOOT;
+	else
+		return VB2_SUCCESS;
 }
 
 vb2_error_t recovery_select_init(struct vb2_ui_context *ui)
