@@ -403,9 +403,15 @@ vb2_error_t vb2api_disable_dev_request(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-void vb2api_request_diagnostics(struct vb2_context *ctx) {
+vb2_error_t vb2api_request_diagnostics(struct vb2_context *ctx)
+{
+	if (!vb2api_allow_recovery(ctx)) {
+		return VB2_ERROR_API;
+	}
+
 	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 	VB2_DEBUG("Diagnostics requested, rebooting\n");
+	return VB2_SUCCESS;
 }
 
 test_mockable
