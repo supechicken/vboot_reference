@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-#include "vboot_kernel.h"
+#include "2common.h"
 
 #ifdef __cplusplus
 extern "C" {
