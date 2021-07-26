@@ -411,9 +411,17 @@ vb2_error_t vb2api_disable_developer_mode(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-void vb2api_request_diagnostics(struct vb2_context *ctx) {
+vb2_error_t vb2api_request_diagnostics(struct vb2_context *ctx)
+{
+	if (!vb2api_allow_recovery(ctx)) {
+		VB2_DEBUG("ERROR: diagnostics request only allowed in manual "
+			  "recovery\n");
+		return VB2_ERROR_API_REQUEST_DIAG_NOT_ALLOWED;
+	}
+
 	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 	VB2_DEBUG("Diagnostics requested\n");
+	return VB2_SUCCESS;
 }
 
 test_mockable
