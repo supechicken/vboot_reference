@@ -980,7 +980,7 @@ void vb2api_enable_developer_mode(struct vb2_context *ctx);
  *
  * @param ctx		Vboot context
  * @return VB2_SUCCESS if success; other errors if the check of
- * VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON check failed.
+ * VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON failed.
  */
 vb2_error_t vb2api_disable_dev_request(struct vb2_context *ctx);
 
@@ -988,9 +988,10 @@ vb2_error_t vb2api_disable_dev_request(struct vb2_context *ctx);
  * Request diagnostics by setting VB2_NV_DIAG_REQUEST.
  *
  * @param ctx		Vboot context
+ * @return VB2_SUCCESS if success; other errors if vb2api_allow_recovery check
+ * failed.
  */
-void vb2api_request_diagnostics(struct vb2_context *ctx);
-
+vb2_error_t vb2api_request_diagnostics(struct vb2_context *ctx);
 
 /*****************************************************************************/
 /* APIs provided by the caller to verified boot */
