@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c2c12e_250ed452",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:53:02Z",
+      "side": 1,
+      "message": "Please add a new error for this.\n\nIn fact, I wonder if we can move the GBB check to developer_to_norm_action(). Then we don\u0027t need a return value. Do you have a good reason why the GBB check is put here, but the vb2_allow_recovery() check for vb2_enable_developer_mode() is in 2ui_screens.c?",
+      "range": {
+        "startLine": 398,
+        "startChar": 9,
+        "endLine": 398,
+        "endChar": 22
+      },
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e78957_ede6ee46",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:53:02Z",
+      "side": 1,
+      "message": "This message doesn\u0027t belong here, because we\u0027re not returning VB2_REQUEST_REBOOT. How about moving the message to launch_diagnostics_action(), or removing the \"rebooting\" part here?",
+      "range": {
+        "startLine": 408,
+        "startChar": 35,
+        "endLine": 408,
+        "endChar": 44
+      },
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db143b8a_db2422d7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:53:02Z",
+      "side": 1,
+      "message": "Just \"Enable\"",
+      "range": {
+        "startLine": 966,
+        "startChar": 3,
+        "endLine": 966,
+        "endChar": 29
+      },
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18eb833c_7312d297",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:53:02Z",
+      "side": 1,
+      "message": "Can we call it disalbe_developer_mode to be consistent?",
+      "range": {
+        "startLine": 985,
+        "startChar": 19,
+        "endLine": 985,
+        "endChar": 38
+      },
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893f8a06_547467e4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:53:02Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3694a3c5_aad9a2ed",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:53:02Z",
+      "side": 1,
+      "message": "kparams",
+      "range": {
+        "startLine": 83,
+        "startChar": 23,
+        "endLine": 83,
+        "endChar": 26
+      },
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e830736e_8f56978a",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:53:02Z",
+      "side": 1,
+      "message": "Why do we still need this file?",
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
