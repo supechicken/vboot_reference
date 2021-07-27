@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c45946_841d9855",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:02:39Z",
+      "side": 1,
+      "message": "Please swap them only when you\u0027re already modifying them.",
+      "parentUuid": "09d40939_1f37f8f9",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 576,
+        "endChar": 65
+      },
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04647637_6f46dd15",
@@ -143,6 +167,24 @@
       "side": 1,
       "message": "I\u0027m not sure why removing this line. You mean change it to ctx-\u003eflags?",
       "parentUuid": "fd18f233_533dbc86",
+      "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e69172a_bfa287b9",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-27T06:02:39Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "d9a1de39_3ebd0683",
       "revId": "b12e153e3590f65d70bde10e21ea18771c53204b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
