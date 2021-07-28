@@ -400,6 +400,24 @@
       "parentUuid": "e830736e_8f56978a",
       "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e560e8c3_ad45bba4",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-28T07:31:01Z",
+      "side": 1,
+      "message": "Since there\u0027s no function/struct/enum definition here, we should remove it.\n\n\u003e Also, seems like that header is needed by \"futility/dump_kernel_config_lib.o\".\n\nWhat\u0027s the error message?",
+      "parentUuid": "b04a4da3_8a056bea",
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
