@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced41843_3c37a3e9",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T17:51:51Z",
+      "side": 1,
+      "message": "sorry, you\u0027re right.  when `[[` is used with arithmetic operators (i.e. -le), then bash treats both sides as arithmetic expressions.  so max_attempts is automatically turned into $((max_attempts)) which expands into the numeric value.\n\nthis is different from `[` which treats both sides as strings and throws errors.\n\nat any rate, i would avoid this behavior as it\u0027s not common and can be confusing.",
+      "parentUuid": "1bb61b16_2e651580",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc2c55b9_a53bfe38",
@@ -219,6 +237,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a8cafef3_51d26cfd",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103b62b1_7ece9838",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T17:51:51Z",
+      "side": 1,
+      "message": "there\u0027s still a space in the new PS\n\n warn \"......\" \\\n      \"attempt #......\"",
+      "parentUuid": "173fd819_3d57597f",
       "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
