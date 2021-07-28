@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b55a4a2d_99fdc3a0",
+        "filename": "firmware/lib/include/vboot_struct.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-28T13:01:25Z",
+      "side": 1,
+      "message": "When running tests, I got \n```\nfirmware/lib/include/vboot_struct.h:152:12: error: implicit declaration of function \u0027offsetof\u0027 is invalid in C99 [-Werror,-Wimplicit-function-declaration]\n               \u003d\u003d offsetof(VbSharedDataHeader, recovery_reason), \n```\n, and I found the definition of offsetof in 2common.h.",
+      "parentUuid": "7ed0ea92_0b1dd895",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "439070d9d03c30be342fd7fc26bc5698ab3d7819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1e0b50d_633763f7",
         "filename": "utility/load_kernel_test.c",
         "patchSetId": 11
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-28T09:25:13Z",
       "side": 1,
       "message": "Did you run this test to make sure there\u0027s no missing header?",
+      "revId": "439070d9d03c30be342fd7fc26bc5698ab3d7819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f0f3a5_0a0a461f",
+        "filename": "utility/load_kernel_test.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-28T13:01:25Z",
+      "side": 1,
+      "message": "Yes. I\u0027ve ran all the test mentioned in the commit message.",
+      "parentUuid": "e1e0b50d_633763f7",
       "revId": "439070d9d03c30be342fd7fc26bc5698ab3d7819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
