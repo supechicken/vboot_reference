@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0633fb1_e8e6628d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9476c3ad_7d773b02",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46445ed0_aea20b03",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c2893d_01520e99",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46445ed0_aea20b03",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a37dccf9_0592ab48",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-07-28T06:14:48Z",
       "side": 1,
       "message": "this is comparing a number to a string so it\u0027ll always fail.  this is bash, so just write a for loop.\n\n local attempts\n for (( attempts \u003d 1; attempts \u003c\u003d 3; ++attempts )); do",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb61b16_2e651580",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "Could you please double check?\nFollowing works as standalone script:\n\n  attempt\u003d1\n  max_attempts\u003d3\n  while [[ ${attempt} -le max_attempts ]]; do\n    echo \"# ${attempt}\"\n    attempt\u003d$((attempt + 1))\n  done\n\n\n\nI also verified this logic locally multiple times. It worked.\nIn either case, I changed to for once you prefer it",
+      "parentUuid": "a37dccf9_0592ab48",
       "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3284b4d_0ef929da",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc2c55b9_a53bfe38",
+      "range": {
+        "startLine": 416,
+        "startChar": 29,
+        "endLine": 416,
+        "endChar": 38
+      },
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c494a066_a2e690bd",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0098c252_f34ad7ba",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "I think this set of commands is good for this iteration",
+      "parentUuid": "c494a066_a2e690bd",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8cafef3_51d26cfd",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-07-28T06:14:48Z",
       "side": 1,
       "message": "drop the space before \"attempt\".  passing multiple strings like this will automatically insert a space between them, so you end up with 2 spaces here.",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "173fd819_3d57597f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8cafef3_51d26cfd",
       "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +259,54 @@
       "writtenOn": "2021-07-28T06:14:48Z",
       "side": 1,
       "message": "\"sign\"",
+      "range": {
+        "startLine": 423,
+        "startChar": 17,
+        "endLine": 423,
+        "endChar": 21
+      },
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938e9508_cd2d03d5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bb26c44_853d8fb3",
+      "range": {
+        "startLine": 423,
+        "startChar": 36,
+        "endLine": 423,
+        "endChar": 63
+      },
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2b8c22_f612c0aa",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2021-07-28T17:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6bc9312_e4e954b4",
       "range": {
         "startLine": 423,
         "startChar": 17,
