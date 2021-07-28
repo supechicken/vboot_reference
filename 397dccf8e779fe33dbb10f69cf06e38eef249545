@@ -16,6 +16,24 @@
       "message": "So... it turns out that verify_kernel.c also makes use of these default stubs.  I\u0027m not entirely convinced that verify_kernel.c does this in a great way... but I\u0027m also less convinced that we should get rid of the code in vboot_api_stub_stream.c now.  Do you want to go through with it, or just abandon?",
       "revId": "397dccf8e779fe33dbb10f69cf06e38eef249545",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a485558_05f0b04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-28T22:27:39Z",
+      "side": 1,
+      "message": "If nobody has time to look into it let\u0027s abandon for now, it doesn\u0027t seem that important either way.",
+      "parentUuid": "dd4aaef0_1e9ffcd4",
+      "revId": "397dccf8e779fe33dbb10f69cf06e38eef249545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
