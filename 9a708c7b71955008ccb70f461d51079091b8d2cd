@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9476c3ad_7d773b02",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "no trailing semi-colons",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46445ed0_aea20b03",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "should add a TODO(b/175081695) comment to delete these retries",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37dccf9_0592ab48",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "this is comparing a number to a string so it\u0027ll always fail.  this is bash, so just write a for loop.\n\n local attempts\n for (( attempts \u003d 1; attempts \u003c\u003d 3; ++attempts )); do",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2c55b9_a53bfe38",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "just pass down \"$@\" here",
+      "range": {
+        "startLine": 416,
+        "startChar": 29,
+        "endLine": 416,
+        "endChar": 38
+      },
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c494a066_a2e690bd",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "this script isn\u0027t gathering any system info to try and help diagnose what\u0027s wrong.  we also need to signal to the signer that it should send an alert for us to research.\n\nso i would do something like:\n\n warn \"Could not sign ........\"\n warn \"@@@ALERT@@@\"\n lsof -n\n dmesg\n mount\n\nnot sure if there\u0027s any other commands you want to throw in here that would help understand what\u0027s going wrong.",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cafef3_51d26cfd",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "drop the space before \"attempt\".  passing multiple strings like this will automatically insert a space between them, so you end up with 2 spaces here.",
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb26c44_853d8fb3",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "i would generalize this and just say like \"Unable to sign Android image; giving up\"",
+      "range": {
+        "startLine": 423,
+        "startChar": 36,
+        "endLine": 423,
+        "endChar": 63
+      },
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6bc9312_e4e954b4",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-07-28T06:14:48Z",
+      "side": 1,
+      "message": "\"sign\"",
+      "range": {
+        "startLine": 423,
+        "startChar": 17,
+        "endLine": 423,
+        "endChar": 21
+      },
+      "revId": "9a708c7b71955008ccb70f461d51079091b8d2cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
