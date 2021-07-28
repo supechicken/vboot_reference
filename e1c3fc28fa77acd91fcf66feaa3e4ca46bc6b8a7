@@ -418,6 +418,24 @@
       "parentUuid": "b04a4da3_8a056bea",
       "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259a274f_9a21cdcf",
+        "filename": "firmware/lib/include/vboot_kernel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-28T07:43:38Z",
+      "side": 1,
+      "message": "After removing it, \n\n```\n$ export CC\u003dx86_64-pc-linux-gnu-clang DEBUG\u003d1 DETACHABLE\u003d1; make -j32 test_setup \u0026\u0026 make -j32 runtests\nvboot SHA256 built with tight loops (slower, smaller code size)\nmake: *** No rule to make target \u0027firmware/lib/include/vboot_kernel.h\u0027, needed by \u0027/mnt/host/source/src/platform/vboot_reference/build/futility/dump_kernel_config_lib.o\u0027.  Stop.\n```\n\n`emerge-asurada depthcharge chromeos-bootimage` works good.",
+      "parentUuid": "e560e8c3_ad45bba4",
+      "revId": "e1c3fc28fa77acd91fcf66feaa3e4ca46bc6b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
