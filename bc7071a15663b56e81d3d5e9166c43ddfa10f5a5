@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d987907_ef75000c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:57:21Z",
+      "side": 1,
+      "message": "only allowed in manual recovery",
+      "range": {
+        "startLine": 416,
+        "startChar": 40,
+        "endLine": 417,
+        "endChar": 14
+      },
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9646723_c0802996",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:57:21Z",
+      "side": 1,
+      "message": "Please remove irrelevant changes.",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2be186_3d3f26c1",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:57:21Z",
+      "side": 1,
+      "message": "Please remove irrelevant changes.",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62736e82_79cf52b8",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:57:21Z",
+      "side": 1,
+      "message": "Please remove irrelevant changes.",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cfbb41c_515464c2",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:57:21Z",
+      "side": 1,
+      "message": "Please remove irrelevant changes.",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba32889_0dcc7c6c",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:57:21Z",
+      "side": 1,
+      "message": "Request for diagnostics is not allowed in non-recovery mode",
+      "range": {
+        "startLine": 710,
+        "startChar": 4,
+        "endLine": 710,
+        "endChar": 27
+      },
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
