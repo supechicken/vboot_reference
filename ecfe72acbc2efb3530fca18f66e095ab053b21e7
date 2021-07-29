@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396785a6_d8ad88c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479707
+      },
+      "writtenOn": "2021-07-29T19:31:28Z",
+      "side": 1,
+      "message": "A couple of nitpicks. Thanks for putting this together!",
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426a6e5b_f54d93f4",
+        "filename": "host/class/reven/lib/crossystem_class.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1479707
+      },
+      "writtenOn": "2021-07-29T19:31:28Z",
+      "side": 1,
+      "message": "This was recently updated in the doc[1] to `REVEN-ANAE A6A-A7I`. Sorry about the churn.\n\n[1]: https://docs.google.com/document/d/1Kf_dXHFZRGKY-iQIssTgD4XwkMzUr_jGhozTeRmuh5E/edit?resourcekey\u003d0-_gPGRH1D1q5hAS_c2SN71A#heading\u003dh.l65lkniiph67",
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4417c371_2ee5714c",
+        "filename": "host/class/stub/lib/crossystem_class.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1479707
+      },
+      "writtenOn": "2021-07-29T19:31:28Z",
+      "side": 1,
+      "message": "board-specific?",
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
