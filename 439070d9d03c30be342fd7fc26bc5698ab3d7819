@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b05937_5f65be09",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T06:15:44Z",
+      "side": 1,
+      "message": "I see. Done.",
+      "parentUuid": "9dd925dd_0c713431",
+      "range": {
+        "startLine": 705,
+        "startChar": 1,
+        "endLine": 705,
+        "endChar": 33
+      },
+      "revId": "439070d9d03c30be342fd7fc26bc5698ab3d7819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ed0ea92_0b1dd895",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "It\u0027s actually defined in 2sysincludes.h (through system stddef.h).",
       "parentUuid": "b55a4a2d_99fdc3a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "439070d9d03c30be342fd7fc26bc5698ab3d7819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457a628d_cefeb8b1",
+        "filename": "firmware/lib/include/vboot_struct.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T06:15:44Z",
+      "side": 1,
+      "message": "Oh, that\u0027s vb2_offset_of. I screwed up, sorry.",
+      "parentUuid": "82aa31c1_daba5213",
       "range": {
         "startLine": 13,
         "startChar": 10,
