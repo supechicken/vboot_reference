@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f77d1c_66561abf",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d987907_ef75000c",
+      "range": {
+        "startLine": 416,
+        "startChar": 40,
+        "endLine": 417,
+        "endChar": 14
+      },
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9646723_c0802996",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-29T07:57:21Z",
       "side": 1,
       "message": "Please remove irrelevant changes.",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93658dcc_ea370b54",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:15:50Z",
+      "side": 1,
+      "message": "These are done by clang-format. I thought I\u0027ve removed them, sorry.",
+      "parentUuid": "e9646723_c0802996",
       "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf1c7ab_af42cf2a",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b2be186_3d3f26c1",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62736e82_79cf52b8",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-07-29T07:57:21Z",
       "side": 1,
       "message": "Please remove irrelevant changes.",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27055a57_bd7043d1",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62736e82_79cf52b8",
       "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1fd88d2_e24d501b",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cfbb41c_515464c2",
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba32889_0dcc7c6c",
@@ -105,6 +201,30 @@
       "writtenOn": "2021-07-29T07:57:21Z",
       "side": 1,
       "message": "Request for diagnostics is not allowed in non-recovery mode",
+      "range": {
+        "startLine": 710,
+        "startChar": 4,
+        "endLine": 710,
+        "endChar": 27
+      },
+      "revId": "bc7071a15663b56e81d3d5e9166c43ddfa10f5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8be1af_1b8c29a1",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba32889_0dcc7c6c",
       "range": {
         "startLine": 710,
         "startChar": 4,
