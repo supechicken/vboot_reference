@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536355a2_352be14c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:50:27Z",
+      "side": 1,
+      "message": "validity check",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "a76d6e9ae0b60fa573f0fafb45d10fef191ebd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf56c52_e675f7c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:50:27Z",
+      "side": 1,
+      "message": "Include the name here.",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "a76d6e9ae0b60fa573f0fafb45d10fef191ebd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56cb845_13c2c716",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:50:27Z",
+      "side": 1,
+      "message": "I think this is part of the UI project. For a vboot internal function, the validity check may be unnecessary. However, since it has been publicized, it\u0027s better to be on the safe side.",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "a76d6e9ae0b60fa573f0fafb45d10fef191ebd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c23661_a0c0e89c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:50:27Z",
+      "side": 1,
+      "message": "Maybe \"ENABLE_DEV_NOT_ALLOWED\"?",
+      "range": {
+        "startLine": 382,
+        "startChar": 23,
+        "endLine": 382,
+        "endChar": 43
+      },
+      "revId": "a76d6e9ae0b60fa573f0fafb45d10fef191ebd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d932589_d7e9e940",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:50:27Z",
+      "side": 1,
+      "message": "is not allowed",
+      "range": {
+        "startLine": 975,
+        "startChar": 68,
+        "endLine": 975,
+        "endChar": 74
+      },
+      "revId": "a76d6e9ae0b60fa573f0fafb45d10fef191ebd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24850b5e_dc8124d2",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:50:27Z",
+      "side": 1,
+      "message": "Could you add a case where recovery is not allowed?",
+      "revId": "a76d6e9ae0b60fa573f0fafb45d10fef191ebd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
