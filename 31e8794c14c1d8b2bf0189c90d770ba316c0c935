@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bd63465_4dfa3ba2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-07-29T05:42:03Z",
+      "side": 1,
+      "message": "I don\u0027t think it is allowed to launch diagnostics outside recovery boot\n(e.g. not suite for normal boot nor broken boot)\n\nBut I am not sure the reason of the decision.",
+      "parentUuid": "56b86949_102b7936",
+      "revId": "31e8794c14c1d8b2bf0189c90d770ba316c0c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8161f20_b3cc8651",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 8
