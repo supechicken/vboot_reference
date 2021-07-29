@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2715ce0b_1306b19f",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea735fd9_e1041712",
+      "range": {
+        "startLine": 704,
+        "startChar": 4,
+        "endLine": 704,
+        "endChar": 38
+      },
+      "revId": "d15facd798079b4c41d368b59b92a85129fe066f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27ff320e_ac8b7917",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-29T07:48:14Z",
       "side": 1,
       "message": "Why do we need this?",
+      "revId": "d15facd798079b4c41d368b59b92a85129fe066f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9deebce_dfb8ebe6",
+        "filename": "host/lib/include/host_misc.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:23:00Z",
+      "side": 1,
+      "message": "When running tests, \n```\nhost/lib/include/host_misc.h:44:1: error: unknown type name \u0027vb2_error_t\u0027; did you mean \u0027zip_error_t\u0027?\nvb2_error_t WriteFile(const char* filename, const void *data, uint64_t size);\n```\n. I\u0027ve run `make clean`.\n\nOriginal include path is `vboot_struct.h` -\u003e `vboot_kernel.h` -\u003e `vboot_api.h`. After removing `vboot_kernel.h`, I manually added `vboot_api.h` back. Is there other better solution for this?",
+      "parentUuid": "27ff320e_ac8b7917",
       "revId": "d15facd798079b4c41d368b59b92a85129fe066f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
