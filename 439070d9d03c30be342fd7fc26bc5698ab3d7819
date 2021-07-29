@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dd925dd_0c713431",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:41:03Z",
+      "side": 1,
+      "message": "Other VB2_ERROR_API_* are named based on the function that returns the error. For example, VB2_ERROR_API_VERIFY_KDATA_* are for vb2api_verify_kernel_data(). Therefore, a better name might be something like \"DISABLE_DEV_NOT_ALLOWED\".",
+      "range": {
+        "startLine": 705,
+        "startChar": 1,
+        "endLine": 705,
+        "endChar": 33
+      },
+      "revId": "439070d9d03c30be342fd7fc26bc5698ab3d7819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed0ea92_0b1dd895",
         "filename": "firmware/lib/include/vboot_struct.h",
         "patchSetId": 11
