@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42b1d2ce_56211fb4",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T06:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8161f20_b3cc8651",
+      "revId": "31e8794c14c1d8b2bf0189c90d770ba316c0c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb012fdc_998ae228",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-07-29T01:58:10Z",
       "side": 1,
       "message": "REQUEST_DIAG_NOT_ALLOWED",
+      "range": {
+        "startLine": 416,
+        "startChar": 23,
+        "endLine": 416,
+        "endChar": 43
+      },
+      "revId": "31e8794c14c1d8b2bf0189c90d770ba316c0c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14bdb509_bc6dc7d5",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T06:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb012fdc_998ae228",
       "range": {
         "startLine": 416,
         "startChar": 23,
