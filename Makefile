@@ -121,6 +121,20 @@ else ifeq (${FIRMWARE_ARCH},armv7)
   override FIRMWARE_ARCH := arm
 endif
 
+# BOARD is provided by the Chromium OS ebuild.  Map the value to the
+# corresponding class of customization.
+ifneq (,$(findstring ${BOARD},reven reven-vmtest))
+	CROS_CLASS := reven
+else
+	CROS_CLASS := stub
+endif
+
+ifneq ($(wildcard host/class/${CROS_CLASS}/lib/crossystem_arch.c),)
+	CROSSYSTEM_CLASS_C := host/class/${CROS_CLASS}/lib/crossystem_class.c
+else
+	CROSSYSTEM_CLASS_C := host/class/stub/lib/crossystem_class.c
+endif
+
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
 DEBUG_FLAGS := $(if ${DEBUG},-g -Og,-g -Os)
@@ -475,6 +489,7 @@ UTILLIB_SRCS = \
 	cgpt/cgpt_show.c \
 	futility/dump_kernel_config_lib.c \
 	$(CROSSYSTEM_ARCH_C) \
+	$(CROSSYSTEM_CLASS_C) \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
@@ -535,6 +550,8 @@ HOSTLIB_SRCS = \
 	firmware/stub/vboot_api_stub_disk.c \
 	futility/dump_kernel_config_lib.c \
 	$(CROSSYSTEM_ARCH_C) \
+	$(CROSSYSTEM_CLASS_C) \
+	host/class/regular/lib/crossystem_class.c \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
