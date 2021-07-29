@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1dc7edc_d657c01a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-29T22:49:56Z",
+      "side": 1,
+      "message": ":\u0027(",
+      "revId": "3c9f2151aa121888ea983bdc1bb8b8498f210f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "201d55a5_353dca08",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-07-29T16:28:36Z",
       "side": 1,
       "message": "no need to add me...",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 19
+      },
+      "revId": "3c9f2151aa121888ea983bdc1bb8b8498f210f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8bf97d_1becf1aa",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-29T22:49:56Z",
+      "side": 1,
+      "message": "With the strict enforcement I\u0027d rather have one too many than one too few, just in case everyone is on vacation at the same time one day or something. Doesn\u0027t mean you have to be first in line to review CLs or anything. (Also, you\u0027re still maintaining `futility update`, right?)\n\nBut we can drop you if you really don\u0027t want to be in here.",
+      "parentUuid": "201d55a5_353dca08",
       "range": {
         "startLine": 4,
         "startChar": 0,
