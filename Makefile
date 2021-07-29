@@ -121,6 +121,14 @@ else ifeq (${FIRMWARE_ARCH},armv7)
   override FIRMWARE_ARCH := arm
 endif
 
+# VBOOT_CROSSYSTEM_CLASS is provided by the Chromium OS ebuild.  Map the value
+# to the corresponding class of customization.
+ifeq ($(VBOOT_CROSSYSTEM_CLASS),reven)
+	CROSSYSTEM_CLASS_C := host/class/reven/lib/crossystem_class.c
+else
+	CROSSYSTEM_CLASS_C := host/class/stub/lib/crossystem_class.c
+endif
+
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
 DEBUG_FLAGS := $(if ${DEBUG},-g -Og,-g -Os)
@@ -240,6 +248,11 @@ ifneq ($(filter-out 0,${PHYSICAL_PRESENCE_KEYBOARD}),)
 CFLAGS += -DPHYSICAL_PRESENCE_KEYBOARD=1
 else
 CFLAGS += -DPHYSICAL_PRESENCE_KEYBOARD=0
+endif
+
+# Configure crossystem class-specific macros.
+ifeq ($(VBOOT_CROSSYSTEM_CLASS),reven)
+CFLAGS += '-DVBOOT_REVEN_STATIC_HWID="$(VBOOT_REVEN_STATIC_HWID)"'
 endif
 
 # NOTE: We don't use these files but they are useful for other packages to
@@ -475,6 +488,7 @@ UTILLIB_SRCS = \
 	cgpt/cgpt_show.c \
 	futility/dump_kernel_config_lib.c \
 	$(CROSSYSTEM_ARCH_C) \
+	$(CROSSYSTEM_CLASS_C) \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
@@ -535,6 +549,7 @@ HOSTLIB_SRCS = \
 	firmware/stub/vboot_api_stub_disk.c \
 	futility/dump_kernel_config_lib.c \
 	$(CROSSYSTEM_ARCH_C) \
+	$(CROSSYSTEM_CLASS_C) \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
