@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9dc8d2b_a475466d",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T12:27:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ec31551_873fd1c6",
+      "range": {
+        "startLine": 647,
+        "startChar": 10,
+        "endLine": 647,
+        "endChar": 44
+      },
+      "revId": "222ed6d014e794e6ed2089b62ca13c539fcb47d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "116a34f0_9f25775d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-29T10:47:19Z",
       "side": 1,
       "message": "I\u0027m not sure if the extra space is on purpose. But the idea is to add a few spaces indentation starting from the 2nd message of each section (where a section starts from reset_common_data()). See phone_recovery_enabled_tests() for an example.\n\n reset_common_data();\n TEST_SUCC(..., \"no indentation for 1st message\");\n TEST_SUCC(..., \"  indentation for 2nd message\");\n TEST_SUCC(..., \"  indentation for 3rd message\");\n\nSince the function now has a return value. The call to vb2api_enable_developer_mode() is always the first message.",
+      "range": {
+        "startLine": 653,
+        "startChar": 5,
+        "endLine": 653,
+        "endChar": 6
+      },
+      "revId": "222ed6d014e794e6ed2089b62ca13c539fcb47d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3951c391_6ecbb946",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T12:27:23Z",
+      "side": 1,
+      "message": "I see.",
+      "parentUuid": "116a34f0_9f25775d",
       "range": {
         "startLine": 653,
         "startChar": 5,
