@@ -1396,6 +1396,17 @@ vb2_error_t vb2ex_ec_battery_cutoff(void);
 /*****************************************************************************/
 /* Functions for UI display. */
 
+/**
+ * UI for a non-manual recovery ("BROKEN").
+ *
+ * Enter the recovery menu, which shows that an unrecoverable error was
+ * encountered last boot. Wait for the user to physically reset or shut down.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_broken_recovery_menu(struct vb2_context *ctx);
+
 /* Helpers for bitmask operations */
 #define VB2_SET_BIT(mask, index) ((mask) |= ((uint32_t)1 << (index)))
 #define VB2_CLR_BIT(mask, index) ((mask) &= ~((uint32_t)1 << (index)))
@@ -1405,8 +1416,6 @@ vb2_error_t vb2ex_ec_battery_cutoff(void);
 enum vb2_screen {
 	/* Wait screen for EC sync and AUXFW sync */
 	VB2_SCREEN_FIRMWARE_SYNC		= 0x100,
-	/* Broken screen */
-	VB2_SCREEN_RECOVERY_BROKEN		= 0x110,
 	/* Advanced options */
 	VB2_SCREEN_ADVANCED_OPTIONS		= 0x120,
 	/* Language selection screen */
