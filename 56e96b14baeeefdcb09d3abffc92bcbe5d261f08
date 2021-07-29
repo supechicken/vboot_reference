@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "315fb1e9_ae11dbc9",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:33:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa557fac_bc8679c7",
+      "range": {
+        "startLine": 707,
+        "startChar": 4,
+        "endLine": 707,
+        "endChar": 27
+      },
+      "revId": "56e96b14baeeefdcb09d3abffc92bcbe5d261f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22d1ef95_2adcadf7",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5d0ce8b_75cc9677",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:33:19Z",
+      "side": 1,
+      "message": "However, this is a failed call. Maybe we should wrap this by something like TEST_FAILED, but I can\u0027t find one to use. I use TEST_NEQ with VB2_SUCCESS now.",
+      "parentUuid": "22d1ef95_2adcadf7",
+      "range": {
+        "startLine": 644,
+        "startChar": 1,
+        "endLine": 644,
+        "endChar": 29
+      },
+      "revId": "56e96b14baeeefdcb09d3abffc92bcbe5d261f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c9a0ae5_40a45a45",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-29T07:52:26Z",
       "side": 1,
       "message": "Same.",
+      "range": {
+        "startLine": 651,
+        "startChar": 1,
+        "endLine": 651,
+        "endChar": 29
+      },
+      "revId": "56e96b14baeeefdcb09d3abffc92bcbe5d261f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ce4051_4845f90f",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-07-29T10:33:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c9a0ae5_40a45a45",
       "range": {
         "startLine": 651,
         "startChar": 1,
