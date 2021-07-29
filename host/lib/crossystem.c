@@ -14,6 +14,7 @@
 #include "2nvstorage.h"
 #include "2sysincludes.h"
 #include "crossystem_arch.h"
+#include "crossystem_class.h"
 #include "crossystem.h"
 #include "crossystem_vbnv.h"
 #include "host_common.h"
@@ -361,7 +362,12 @@ int VbGetSystemPropertyInt(const char *name)
 {
 	int value = -1;
 
-	/* Check architecture-dependent properties first */
+	/* Check class-overridden properties first */
+	value = VbGetClassPropertyInt(name);
+	if (-1 != value)
+		return value;
+
+	/* Chain to architecture-dependent properties */
 	value = VbGetArchPropertyInt(name);
 	if (-1 != value)
 		return value;
@@ -490,7 +496,11 @@ int VbGetSystemPropertyInt(const char *name)
 const char *VbGetSystemPropertyString(const char *name, char *dest,
 				      size_t size)
 {
-	/* Check architecture-dependent properties first */
+	/* Check class-overridden properties first */
+	if (VbGetClassPropertyString(name, dest, size))
+		return dest;
+
+	/* Chain to architecture-dependent properties */
 	if (VbGetArchPropertyString(name, dest, size))
 		return dest;
 
@@ -542,8 +552,11 @@ const char *VbGetSystemPropertyString(const char *name, char *dest,
 
 int VbSetSystemPropertyInt(const char *name, int value)
 {
-	/* Check architecture-dependent properties first */
+	/* Check class-overridden properties first */
+	if (0 == VbSetClassPropertyInt(name, value))
+		return 0;
 
+	/* Chain to architecture-dependent properties */
 	if (0 == VbSetArchPropertyInt(name, value))
 		return 0;
 
@@ -662,6 +675,10 @@ int VbSetSystemPropertyInt(const char *name, int value)
 
 int VbSetSystemPropertyString(const char* name, const char* value)
 {
+	/* Check class-overridden properties first */
+	if (0 == VbSetClassPropertyString(name, value))
+		return 0;
+
 	/* Chain to architecture-dependent properties */
 	if (0 == VbSetArchPropertyString(name, value))
 		return 0;
