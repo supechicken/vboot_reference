@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea735fd9_e1041712",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:48:14Z",
+      "side": 1,
+      "message": "Disabling developer mode is not allowed by GBB flags",
+      "range": {
+        "startLine": 704,
+        "startChar": 4,
+        "endLine": 704,
+        "endChar": 38
+      },
+      "revId": "d15facd798079b4c41d368b59b92a85129fe066f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ff320e_ac8b7917",
+        "filename": "host/lib/include/host_misc.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T07:48:14Z",
+      "side": 1,
+      "message": "Why do we need this?",
+      "revId": "d15facd798079b4c41d368b59b92a85129fe066f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
