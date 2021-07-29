@@ -195,7 +195,7 @@ static vb2_error_t language_select_action(struct vb2_ui_context *ui)
 	return vb2_ui_screen_back(ui);
 }
 
-const struct vb2_menu *get_language_menu(struct vb2_ui_context *ui)
+const struct vb2_menu *vb2_get_language_menu(struct vb2_ui_context *ui)
 {
 	int i;
 	uint32_t num_locales;
@@ -228,7 +228,7 @@ const struct vb2_menu *get_language_menu(struct vb2_ui_context *ui)
 
 static vb2_error_t language_select_init(struct vb2_ui_context *ui)
 {
-	const struct vb2_menu *menu = get_menu(ui);
+	const struct vb2_menu *menu = vb2_get_menu(ui);
 	if (menu->num_items == 0) {
 		VB2_DEBUG("ERROR: No menu items found; "
 			  "rejecting entering language selection screen\n");
@@ -248,7 +248,7 @@ static const struct vb2_screen_info language_select_screen = {
 	.id = VB2_SCREEN_LANGUAGE_SELECT,
 	.name = "Language selection screen",
 	.init = language_select_init,
-	.get_menu = get_language_menu,
+	.get_menu = vb2_get_language_menu,
 };
 
 /******************************************************************************/
@@ -938,7 +938,7 @@ static const struct vb2_menu_item developer_select_bootloader_items_after[] = {
 
 static vb2_error_t developer_select_bootloader_init(struct vb2_ui_context *ui)
 {
-	if (get_menu(ui)->num_items == 0)
+	if (vb2_get_menu(ui)->num_items == 0)
 		return set_ui_error_and_go_back(ui, VB2_UI_ERROR_ALTFW_EMPTY);
 	/* Select the first bootloader. */
 	ui->state->selected_item =
