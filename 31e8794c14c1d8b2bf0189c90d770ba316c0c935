@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b86949_102b7936",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:58:10Z",
+      "side": 1,
+      "message": "Actually, I\u0027m not sure if launching diagnostics could be allowed in broken screen. If that was by UI decision (instead of security concern), then we shouldn\u0027t add this check in vboot.\n\n+roccochen@, itspeter@",
+      "revId": "31e8794c14c1d8b2bf0189c90d770ba316c0c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8161f20_b3cc8651",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:58:10Z",
+      "side": 1,
+      "message": "Print an error message.",
+      "revId": "31e8794c14c1d8b2bf0189c90d770ba316c0c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb012fdc_998ae228",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-29T01:58:10Z",
+      "side": 1,
+      "message": "REQUEST_DIAG_NOT_ALLOWED",
+      "range": {
+        "startLine": 416,
+        "startChar": 23,
+        "endLine": 416,
+        "endChar": 43
+      },
+      "revId": "31e8794c14c1d8b2bf0189c90d770ba316c0c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
