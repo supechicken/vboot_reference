@@ -157,14 +157,6 @@ vb2_error_t vb2_manual_recovery_menu(struct vb2_context *c)
 	return vbboot_retval;
 }
 
-vb2_error_t vb2_broken_recovery_menu(struct vb2_context *c)
-{
-	rec_check(c);
-	if (vbboot_retval == -4)
-		return VB2_ERROR_MOCK;
-	return vbboot_retval;
-}
-
 vb2_error_t vb2_diagnostic_menu(struct vb2_context *c)
 {
 	if (vbboot_retval == -5)
