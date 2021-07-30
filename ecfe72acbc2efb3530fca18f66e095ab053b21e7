@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6726d88e_e80d80bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49e605bf_3ab3034e",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "396785a6_d8ad88c7",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "367e064d_da94c016",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "23d965a5_7fc9b873",
+      "range": {
+        "startLine": 126,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf6787a_a95a222f",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1620c6c_748609e7",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 8
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7be5658d_0b839695",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-30T03:22:20Z",
       "side": 1,
       "message": "When will the file not exist? Can we simply write\n\n CROSSYSTEM_CLASS_C :\u003d host/class/${CROS_CLASS}/lib/crossystem_class.c\n\nand hence no need for the CROS_CLASS variable.",
+      "range": {
+        "startLine": 132,
+        "startChar": 9,
+        "endLine": 132,
+        "endChar": 17
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4f3ea3_05e69c24",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "I was following the conditional statement at line 107, but yes we can simplify the two layer of convertion.",
+      "parentUuid": "7be5658d_0b839695",
       "range": {
         "startLine": 132,
         "startChar": 9,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e10b3c_acb4a8a9",
+        "filename": "host/class/reven/lib/crossystem_class.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "Done.  Truncated the check.",
+      "parentUuid": "57363712_caa1d94f",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "426a6e5b_f54d93f4",
@@ -146,6 +266,24 @@
       "writtenOn": "2021-07-29T19:31:28Z",
       "side": 1,
       "message": "This was recently updated in the doc[1] to `REVEN-ANAE A6A-A7I`. Sorry about the churn.\n\n[1]: https://docs.google.com/document/d/1Kf_dXHFZRGKY-iQIssTgD4XwkMzUr_jGhozTeRmuh5E/edit?resourcekey\u003d0-_gPGRH1D1q5hAS_c2SN71A#heading\u003dh.l65lkniiph67",
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f11d240_b6d61ff8",
+        "filename": "host/class/reven/lib/crossystem_class.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "426a6e5b_f54d93f4",
       "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66bca5a4_3372a2e0",
+        "filename": "host/class/stub/lib/crossystem_class.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4417c371_2ee5714c",
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "007a24e6_e8ba596f",
@@ -180,6 +336,30 @@
       "writtenOn": "2021-07-30T03:22:20Z",
       "side": 1,
       "message": "a\n\nSame below.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3602a8d9_51250224",
+        "filename": "host/lib/include/crossystem_class.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2021-07-30T04:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "007a24e6_e8ba596f",
       "range": {
         "startLine": 16,
         "startChar": 8,
