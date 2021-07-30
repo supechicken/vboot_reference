@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49e605bf_3ab3034e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-30T03:22:20Z",
+      "side": 1,
+      "message": "of returning",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "396785a6_d8ad88c7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -14,6 +37,98 @@
       "writtenOn": "2021-07-29T19:31:28Z",
       "side": 1,
       "message": "A couple of nitpicks. Thanks for putting this together!",
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1620c6c_748609e7",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-30T03:22:20Z",
+      "side": 1,
+      "message": "Can we write\n\n ifneq ($(...),)",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 8
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d965a5_7fc9b873",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-30T03:22:20Z",
+      "side": 1,
+      "message": "I believe the right function to use is `filter`:\n\n ifneq ($(filter reven reven-vmtest,${BOARD}),)\n\nOtherwise BOARD\u003deve will cause a match (because \"eve\" is a substring of \"reven\").",
+      "range": {
+        "startLine": 126,
+        "startChar": 10,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be5658d_0b839695",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-30T03:22:20Z",
+      "side": 1,
+      "message": "When will the file not exist? Can we simply write\n\n CROSSYSTEM_CLASS_C :\u003d host/class/${CROS_CLASS}/lib/crossystem_class.c\n\nand hence no need for the CROS_CLASS variable.",
+      "range": {
+        "startLine": 132,
+        "startChar": 9,
+        "endLine": 132,
+        "endChar": 17
+      },
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57363712_caa1d94f",
+        "filename": "host/class/reven/lib/crossystem_class.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-30T03:22:20Z",
+      "side": 1,
+      "message": "I don\u0027t see other crossystem_arch.c files checking this. I think we can simply assume size is always positive here.\n\nIf you still want the check, the preferred location would be at the beginning of VbGetSystemPropertyString().",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 42
+      },
       "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +163,29 @@
       "writtenOn": "2021-07-29T19:31:28Z",
       "side": 1,
       "message": "board-specific?",
+      "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007a24e6_e8ba596f",
+        "filename": "host/lib/include/crossystem_class.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-07-30T03:22:20Z",
+      "side": 1,
+      "message": "a\n\nSame below.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 10
+      },
       "revId": "ecfe72acbc2efb3530fca18f66e095ab053b21e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
