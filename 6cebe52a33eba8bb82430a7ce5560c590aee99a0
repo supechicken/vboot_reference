@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d26e78_08cd9586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-31T00:43:04Z",
+      "side": 1,
+      "message": "Apologies for taking too long to look into this (I have a bad habit of putting off larger reviews for too long when I\u0027m swamped :/ ). LGTM in general, I just have some very minor nits that can be resolved in a follow-up when you find the time.",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a81cce73_ec839e8b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-31T00:43:04Z",
+      "side": 1,
+      "message": "Let\u0027s not put these casts here. They are unnecessary for now, because we haven\u0027t allocated bit 32 or higher yet, so they\u0027ll always be 0 anyway, and once we do we\u0027ll have to stop using an enum anyway because enums can\u0027t be larger than 32-bit (I think?). So at that point we\u0027ll have to represent them as macros or something and then we should just define them ULL to begin with.\n\nWe definitely don\u0027t want to be in a situation where you *have* to put this cast here or otherwise something is gonna silently break (because sooner or later someone would make that mistake), so we wouldn\u0027t build a system that requires that. Then there\u0027s no point in having the casts here either. (If you want to be extra proactive, feel free to already rewrite the field definitions now.)",
+      "range": {
+        "startLine": 559,
+        "startChar": 17,
+        "endLine": 559,
+        "endChar": 27
+      },
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279d952e_4c0ef8f9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-31T00:43:04Z",
+      "side": 1,
+      "message": "BTW, is there a particular reason you\u0027re masking the flags out in that case anyway? Context flags always start out as 0 until something sets them, and nothing else other than this function should be touching them (right?). So I think you only need to have code for the setting case here, and can assume they\u0027ll stay 0 otherwise.",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b37d3f_524eb3da",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-31T00:43:04Z",
+      "side": 1,
+      "message": "nit: \"or\" (applies to all 3 comments)",
+      "range": {
+        "startLine": 245,
+        "startChar": 48,
+        "endLine": 245,
+        "endChar": 51
+      },
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15326a13_ce67a88b",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-31T00:43:04Z",
+      "side": 1,
+      "message": "It\u0027s kinda odd that you zero this but not the EXTERNAL flag? vb2api_init() above will zero the whole context anyway, so you should just assume that any flag is zero that wasn\u0027t explicitly set here.",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52124c1e_5ea675a2",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-07-31T00:43:04Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
