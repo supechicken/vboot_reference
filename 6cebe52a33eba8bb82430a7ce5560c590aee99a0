@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbedd413_e7d6cef7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-02T06:28:25Z",
+      "side": 1,
+      "message": "Thank you for taking your time to review this CL! I\u0027ll make some modifications in next few days.",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a81cce73_ec839e8b",
@@ -58,6 +75,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffa6192_a76238b2",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-02T06:28:25Z",
+      "side": 1,
+      "message": "Yes, this is the first time that these flags may be modified. \nI\u0027m not sure about if it will be all 0 or not before.",
+      "parentUuid": "279d952e_4c0ef8f9",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff2118e_0de598c9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-02T06:28:25Z",
+      "side": 1,
+      "message": "Seems like C only allow the size of enum up to the same size of int. \n\nI agree what you said. However, I think keeping the casting here might be unnecessary, but it\u0027s more logical and reasonable to do this, since the casting is really happening.\n\nI\u0027ll add replacing this enum with macros (or 1ULL \u003c\u003c FLAG style) into my todo list and maybe resolve this when I have some time, but I think I\u0027ll keep the casting for now (this part will still be removed since the flag is 0 initialized. I mean the part in the tests.).",
+      "parentUuid": "a81cce73_ec839e8b",
+      "range": {
+        "startLine": 559,
+        "startChar": 17,
+        "endLine": 559,
+        "endChar": 27
+      },
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33b37d3f_524eb3da",
@@ -71,6 +130,30 @@
       "writtenOn": "2021-07-31T00:43:04Z",
       "side": 1,
       "message": "nit: \"or\" (applies to all 3 comments)",
+      "range": {
+        "startLine": 245,
+        "startChar": 48,
+        "endLine": 245,
+        "endChar": 51
+      },
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1511ebc6_13917ab0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-02T06:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b37d3f_524eb3da",
       "range": {
         "startLine": 245,
         "startChar": 48,
@@ -98,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10dd40b6_3559051d",
+        "filename": "tests/vb2_ui_action_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-02T06:28:25Z",
+      "side": 1,
+      "message": "I didn\u0027t notice that ctx is inside shared_data until today. I\u0027ll remove them.",
+      "parentUuid": "15326a13_ce67a88b",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52124c1e_5ea675a2",
@@ -111,6 +212,24 @@
       "writtenOn": "2021-07-31T00:43:04Z",
       "side": 1,
       "message": "Same",
+      "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "670f563c_fc40fffe",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-02T06:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52124c1e_5ea675a2",
       "revId": "6cebe52a33eba8bb82430a7ce5560c590aee99a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
