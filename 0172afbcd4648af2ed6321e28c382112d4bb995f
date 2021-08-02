@@ -22,6 +22,30 @@
       },
       "revId": "0172afbcd4648af2ed6321e28c382112d4bb995f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc42546b_25572f4f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-02T09:36:43Z",
+      "side": 1,
+      "message": "According to https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2944250/6/firmware/2lib/include/2api.h, I rename this to \"broken_screen_menu\", and did a little update in comment message. I\u0027m not sure if it can be better, since roccochen said that this mode is not even doing anything about recovering.",
+      "parentUuid": "e936071a_802c24e8",
+      "range": {
+        "startLine": 1408,
+        "startChar": 18,
+        "endLine": 1408,
+        "endChar": 24
+      },
+      "revId": "0172afbcd4648af2ed6321e28c382112d4bb995f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
