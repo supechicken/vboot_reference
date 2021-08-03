@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8ebe17_d0fed579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-03T23:46:12Z",
+      "side": 1,
+      "message": "Not really sure what the point here is? Are you saying that there are functions with the same name defined in depthcharge that would lead to symbol clashes if you moved them over? Because a) I don\u0027t see them and b) if that was the case I believe(?) it would already be a problem right now because this whole library gets statically linked into depthcharge.\n\nKinda weird that you would prefix all these functions with vb2_ if you\u0027re about to move them *out* of vboot...",
+      "revId": "e1d38e56a71f32bea2506331b9151036064b8de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
