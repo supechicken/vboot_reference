@@ -51,6 +51,24 @@
       "parentUuid": "57bbd56a_98356e17",
       "revId": "1c9894974c4bfadfefb7f87b74e8df79563163f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "474626c8_08c6ba87",
+        "filename": "firmware/2lib/include/2sysincludes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-03T20:12:28Z",
+      "side": 1,
+      "message": "Yeah, the point was to have it all in one place so bootloaders linking vboot can more easily see which headers they\u0027re expected to provide.",
+      "parentUuid": "e0297d08_9068ac74",
+      "revId": "1c9894974c4bfadfefb7f87b74e8df79563163f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
