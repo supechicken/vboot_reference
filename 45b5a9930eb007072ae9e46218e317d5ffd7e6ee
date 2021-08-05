@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2eec503_5a53d93e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-05T13:59:13Z",
+      "side": 1,
+      "message": "jwerner@: yupingso@ helped me to do the experiment about not publicizing all the symbols to outside vboot in this CL: https://crrev.com/c/3073780. I think this method can make avoiding linking time error much easier by just adding function names into the list instead of changing all the occurrence of the functions. How do you think about this?",
+      "revId": "45b5a9930eb007072ae9e46218e317d5ffd7e6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
