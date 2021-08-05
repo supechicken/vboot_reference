@@ -16,6 +16,24 @@
       "message": "jwerner@: yupingso@ helped me to do the experiment about not publicizing all the symbols to outside vboot in this CL: https://crrev.com/c/3073780. I think this method can make avoiding linking time error much easier by just adding function names into the list instead of changing all the occurrence of the functions. How do you think about this?",
       "revId": "45b5a9930eb007072ae9e46218e317d5ffd7e6ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a7c177_35d39585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-05T22:59:27Z",
+      "side": 1,
+      "message": "Hmmm... that seems too much effort to solve a temporary problem, I think.\n\nWe definitely shouldn\u0027t do that from the depthcharge Makefile, at least. If anything, maybe you\u0027d want to do this in the vboot build process (either the Makefile or via __attribute__((visibility)) right in the code) to hide *all* symbols except for those we want to specifically be accessible (maybe by string-matching on vb2api_?). But that gets very complicated and I\u0027m not actually sure how it all works in the details. Does symbol visibility even affect static libraries like this? It\u0027s somewhat confusing to me (never really used it) and seems to be mostly meant for shared libraries, so I\u0027m not really sure how it would interact with what we\u0027re doing.\n\nBasically: all you want to do is prevent these clashes in the temporary state between the CL where you start copying stuff to depthcharge and the one where you are done moving everything over and remove them from vboot. And the plan is to submit those all in one go anyway. So let\u0027s not make it too complicated.",
+      "parentUuid": "d2eec503_5a53d93e",
+      "revId": "45b5a9930eb007072ae9e46218e317d5ffd7e6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
