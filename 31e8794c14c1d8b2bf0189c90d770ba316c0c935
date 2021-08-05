@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ef35fb_c78d121e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-05T23:11:55Z",
+      "side": 1,
+      "message": "Sorry, I just didn\u0027t pay attention to the previous discussion, I wasn\u0027t trying to make a decision here. ^^ As long as we\u0027re only offering diagnostics from the manual recovery screen I don\u0027t think this check hurts, but I agree with Yu-Ping that it\u0027s not really security-relevant (the way I think enabling dev mode is) and thus not really necessary here. Feel free to leave it out if you think that makes more sense, too.",
+      "parentUuid": "88cbc0f0_ff51ae35",
+      "revId": "31e8794c14c1d8b2bf0189c90d770ba316c0c935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8161f20_b3cc8651",
