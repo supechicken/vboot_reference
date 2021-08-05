@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c45e555e_35b8cb7c",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-05T23:06:09Z",
+      "side": 0,
+      "message": "Looks good on this side of the CL, but please remember to migrate the tests (or something with roughly equivalent coverage) into depthcharge as well. Doesn\u0027t seem like you have anything in CL:3060295 yet.",
+      "revId": "2ce19a2f30c5cf8c3d7c89ad7624fdb496b33056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
