@@ -34,6 +34,24 @@
       "parentUuid": "6c8ebe17_d0fed579",
       "revId": "e1d38e56a71f32bea2506331b9151036064b8de1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23681b87_acbd982d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-05T01:02:57Z",
+      "side": 1,
+      "message": "Oh I see... because you\u0027re moving stuff over so piecemeal you need to have the functions in both places for a while. Okay. Guess you can do this then. (It\u0027s kind of a weird state to have where some menus are implemented in depthcharge while some are still in vboot and all the main UI functions are linked twice into the binary though... I guess it should work but would probably be better we don\u0027t ship anything while it\u0027s so half-way in between. I guess you can still split the CLs out like this for organizational purposes but maybe wait with submitting them until they\u0027re all finished, and then submit them all in one go?)",
+      "parentUuid": "992c8ffb_f146a043",
+      "revId": "e1d38e56a71f32bea2506331b9151036064b8de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
