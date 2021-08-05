@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfe7ca1c_d37e83a9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-05T04:21:46Z",
+      "side": 1,
+      "message": "Should we really do this? Since all the examples I found breaks the message even if it is a warning or error. For example: http://cs/chromeos_public/src/platform/vboot_reference/firmware/2lib/2ui_screens.c?l\u003d233",
+      "parentUuid": "ba31f4c4_c3cc7de1",
+      "revId": "b8937edd72dea3f20db24968457edfccf952284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51aa7caf_22d62a9a",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 17
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-05T00:53:03Z",
       "side": 1,
       "message": "Forgot the \\n",
+      "range": {
+        "startLine": 382,
+        "startChar": 20,
+        "endLine": 382,
+        "endChar": 21
+      },
+      "revId": "b8937edd72dea3f20db24968457edfccf952284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91161d1c_74b73f0f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-05T04:21:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51aa7caf_22d62a9a",
       "range": {
         "startLine": 382,
         "startChar": 20,
