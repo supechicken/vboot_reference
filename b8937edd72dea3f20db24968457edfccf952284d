@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba31f4c4_c3cc7de1",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-05T00:53:03Z",
+      "side": 1,
+      "message": "Prefer to exceed the line length limit rather than breaking a string (so it can still be grepped). (There\u0027s no coding style guide specific to vboot, but see for example here: https://review.coreboot.org/plugins/gitiles/coreboot/+/refs/heads/master/Documentation/contributing/coding_style.md#breaking-long-lines-and-strings )",
+      "revId": "b8937edd72dea3f20db24968457edfccf952284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51aa7caf_22d62a9a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-05T00:53:03Z",
+      "side": 1,
+      "message": "Forgot the \\n",
+      "range": {
+        "startLine": 382,
+        "startChar": 20,
+        "endLine": 382,
+        "endChar": 21
+      },
+      "revId": "b8937edd72dea3f20db24968457edfccf952284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
