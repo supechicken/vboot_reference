@@ -52,6 +52,24 @@
       "parentUuid": "18a7c177_35d39585",
       "revId": "45b5a9930eb007072ae9e46218e317d5ffd7e6ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84122828_bc2cc8be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-06T04:55:37Z",
+      "side": 1,
+      "message": "If we have consensus about submitting the CLs at the same time, I think maybe it\u0027s not that important about how we achieve this (?) since these function will eventually disappear when these CLs get submitted. \n\nAlso we can still have small CLs for the reviewing. (Still need a large one that removes UI functions though.)",
+      "parentUuid": "3ef886d4_5b66ea4a",
+      "revId": "45b5a9930eb007072ae9e46218e317d5ffd7e6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
