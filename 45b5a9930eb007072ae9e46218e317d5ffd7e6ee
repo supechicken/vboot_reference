@@ -34,6 +34,24 @@
       "parentUuid": "d2eec503_5a53d93e",
       "revId": "45b5a9930eb007072ae9e46218e317d5ffd7e6ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef886d4_5b66ea4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-08-06T02:12:44Z",
+      "side": 1,
+      "message": "If the plan is to submit all CLs at the same time, the simplest way (to solve the redefinition problem) is to create a single huge vboot CL that removes everything (and hence no need to rename functions).\n\n(I still prefer small depthcharge CLs for easier review, though.)",
+      "parentUuid": "18a7c177_35d39585",
+      "revId": "45b5a9930eb007072ae9e46218e317d5ffd7e6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
