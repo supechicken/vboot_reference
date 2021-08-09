@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8c9dc4_4ac7c724",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-09T04:16:56Z",
+      "side": 1,
+      "message": "If this is important and a rule to follow, maybe we can create a CL that merge the output string into a single line.\n\nHowever, before that, pre-upload script doesn\u0027t allow lines length over 80 charactors either.",
+      "parentUuid": "a514632d_50a03015",
+      "revId": "b8937edd72dea3f20db24968457edfccf952284d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51aa7caf_22d62a9a",
