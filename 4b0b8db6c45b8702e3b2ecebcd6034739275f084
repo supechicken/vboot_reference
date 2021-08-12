@@ -52,6 +52,24 @@
       "parentUuid": "61349a91_09553206",
       "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45647039_b9eaa5d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-08-12T16:53:30Z",
+      "side": 1,
+      "message": "As I said, linker magic is really not a good solution. I have fiddled with it but it really doesn\u0027t work. If your library requires that, it is not really a library IMO. I feel that vboot should be more free-standing. It also means that malloc() is inconsistent (e.g. with sandbox there is a system malloc() and an free-standing malloc()).\n\nThe change to DC is pretty small:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/3033329\n\nCoreboot doesn\u0027t need anything so far as I can tell.\n\nmalloc() is special IMO. It allocates memory and can fail. So treating it in a special way (as vboot used to do) seems like a good idea to me.\n\nIf you are really dead set against this, we could perhaps handle this with a weak function provided by vboot, or a CONFIG option to enable the malloc() naming. Would either of those work?",
+      "parentUuid": "c953d3f9_41850d93",
+      "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
