@@ -1082,6 +1082,11 @@ static const struct vb2_menu *get_bootloader_menu(struct vb2_ui_context *ui)
 
 	ui->bootloader_menu.num_items = num_items;
 	ui->bootloader_menu.items = items;
+	/* If there's only one choice, just attempt to boot it. */
+	if (num_bootloaders == 1) {
+		ui->state->selected_item = menu_before_len;
+		vb2_ui_developer_mode_boot_altfw_action(ui);
+	}
 
 	return &ui->bootloader_menu;
 }
