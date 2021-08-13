@@ -240,6 +240,9 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 	/* Disable further sysjumps */
 	VB2_TRY(vb2ex_ec_disable_jump(), ctx, VB2_RECOVERY_EC_SOFTWARE_SYNC);
 
+	/* Clear the ctx flag EC trusted */
+	ctx->flags &= ~VB2_CONTEXT_EC_TRUSTED;
+
 	return VB2_SUCCESS;
 }
 
