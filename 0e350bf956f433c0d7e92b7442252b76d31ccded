@@ -16,6 +16,23 @@
       "message": "I haven\u0027t actually tested this yet, will verify it mark V+1.",
       "revId": "0e350bf956f433c0d7e92b7442252b76d31ccded",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31562f6f_141e4f75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-16T23:10:59Z",
+      "side": 1,
+      "message": "This is a Groot regression. Old UI would always boot 0 (the default altfw entry that should always exist) when running out the timer with dev_default_boot \u003d legacy (see https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/firmware-kukui-12573.B/firmware/lib/vboot_ui.c#753 and https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/firmware-kukui-12573.B/firmware/lib/vboot_ui_menu.c#819).\n\nI\u0027m not generally opposed to shortcutting through the bootloader selection menu if there\u0027s only one entry and the user selects altfw boot manually in the menu, if that\u0027s something we decide we want to have. But that seems orthogonal to the bug that running out the timer doesn\u0027t boot the default entry. That still needs to work, even for users who have more than one entry in the menu.",
+      "revId": "0e350bf956f433c0d7e92b7442252b76d31ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
