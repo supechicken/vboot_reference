@@ -70,6 +70,24 @@
       "parentUuid": "c953d3f9_41850d93",
       "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3cd00b_5043d64d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-17T23:27:09Z",
+      "side": 1,
+      "message": "Well you don\u0027t need to use linker magic, you just need to create an extra stub header in a separate directory? (I said you can use --wrap or --redefine-sym as a shortcut if that works for you, but you don\u0027t have to... providing custom headers is the most flexible approach.) Sorry, I fail to see what\u0027s so problematic about that. If you can\u0027t get it to work I\u0027m happy to help look at the patch.",
+      "parentUuid": "45647039_b9eaa5d4",
+      "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
