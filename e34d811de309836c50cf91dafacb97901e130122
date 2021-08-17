@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9385684e_8d184e40",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-17T23:09:02Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure if this is macro-expanded too, but might be a good idea to add the underscores here as well just in case?",
+      "range": {
+        "startLine": 91,
+        "startChar": 20,
+        "endLine": 91,
+        "endChar": 31
+      },
+      "revId": "e34d811de309836c50cf91dafacb97901e130122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
