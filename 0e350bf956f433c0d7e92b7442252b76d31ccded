@@ -51,6 +51,24 @@
       "parentUuid": "31562f6f_141e4f75",
       "revId": "0e350bf956f433c0d7e92b7442252b76d31ccded",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12791543_ce296299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-08-17T18:53:19Z",
+      "side": 1,
+      "message": "Ack. I wasn\u0027t aware of the old behavior (thanks for the links, Julius), so this fix was my fresh take on the annoyance that my system wasn\u0027t booting by itself. It sounds like the better fix is to the default behavior on timeout. Let me change this to be what Yu-Ping described above.",
+      "parentUuid": "90213fba_f3e6b922",
+      "revId": "0e350bf956f433c0d7e92b7442252b76d31ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
