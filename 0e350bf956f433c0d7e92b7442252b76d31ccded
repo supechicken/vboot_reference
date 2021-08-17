@@ -33,6 +33,24 @@
       "message": "This is a Groot regression. Old UI would always boot 0 (the default altfw entry that should always exist) when running out the timer with dev_default_boot \u003d legacy (see https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/firmware-kukui-12573.B/firmware/lib/vboot_ui.c#753 and https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/firmware-kukui-12573.B/firmware/lib/vboot_ui_menu.c#819).\n\nI\u0027m not generally opposed to shortcutting through the bootloader selection menu if there\u0027s only one entry and the user selects altfw boot manually in the menu, if that\u0027s something we decide we want to have. But that seems orthogonal to the bug that running out the timer doesn\u0027t boot the default entry. That still needs to work, even for users who have more than one entry in the menu.",
       "revId": "0e350bf956f433c0d7e92b7442252b76d31ccded",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90213fba_f3e6b922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-08-17T02:00:35Z",
+      "side": 1,
+      "message": "In my opinion we should fix it by booting altfw 0 after timeout, even if there are multiple altfw. This could be done by calling vb2_ui_developer_mode_boot_altfw_action() in developer_mode_action(), when vb2api_get_dev_default_boot_target() \u003d\u003d VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW.\n\nLooking at the old code, Groot UI\u0027s behavior after timeout is also different from old UI. In old UI, when it fails to boot from the default target (either USB or altfw), it will fall back to booting internal disk as a last resort (see the links jwerner@ pasted). We should fix this as well (not in this CL).",
+      "parentUuid": "31562f6f_141e4f75",
+      "revId": "0e350bf956f433c0d7e92b7442252b76d31ccded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
