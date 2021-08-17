@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb841d6_fbc8082a",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-08-17T09:39:26Z",
+      "side": 1,
+      "message": "If this returns VB2_REQUEST_UI_CONTINUE, do we want to return VB2_REQUEST_UI_CONTINUE or VB2_SUCCESS here? I almost forgot the difference of them after this change. chungsheng@  maybe you know this better.\n\nNow edisonhello@ is writing unit tests for ui_menu_select() [CL:3081223]. It\u0027s kind of weird that the return value is sometimes VB2_SUCCESS and sometimes VB2_REQUEST_UI_CONTINUE.",
+      "range": {
+        "startLine": 202,
+        "startChar": 9,
+        "endLine": 202,
+        "endChar": 29
+      },
+      "revId": "7e0f6948ddf74d6822242d0b1d4bb6b98e6264e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
