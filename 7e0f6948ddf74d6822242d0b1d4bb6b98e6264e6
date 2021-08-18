@@ -22,6 +22,30 @@
       },
       "revId": "7e0f6948ddf74d6822242d0b1d4bb6b98e6264e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776df20c_b01d14fd",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-08-18T05:02:06Z",
+      "side": 1,
+      "message": "IIRC, the design is, if the control flow needs to go back to the main UI loop, the function should return REQUEST_UI_CONTINUE. This happens when the screen is changed (and it may be the only case currently). Because all the logic of the callee of this function are bound to a specific screen, if the screen is changed the control flow should break and return to the main loop. For the other cases, since the screen doesn\u0027t change, the control flow should be able to continue, so return VB2_SUCCESS.",
+      "parentUuid": "dfb841d6_fbc8082a",
+      "range": {
+        "startLine": 202,
+        "startChar": 9,
+        "endLine": 202,
+        "endChar": 29
+      },
+      "revId": "7e0f6948ddf74d6822242d0b1d4bb6b98e6264e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
