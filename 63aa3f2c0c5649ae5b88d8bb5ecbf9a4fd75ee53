@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c17919f_b4d69d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-24T00:37:05Z",
+      "side": 1,
+      "message": "I would suggest to reorder these CLs, so that this lands first and boot_mode is introduced afterwards. That way you can reliably distinguish between BROKEN and RECOVERY in fw_phase1().",
+      "revId": "63aa3f2c0c5649ae5b88d8bb5ecbf9a4fd75ee53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af5d1312_a61dd00d",
