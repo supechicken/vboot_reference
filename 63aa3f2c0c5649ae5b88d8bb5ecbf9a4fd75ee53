@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5d1312_a61dd00d",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-24T00:32:19Z",
+      "side": 1,
+      "message": "Let\u0027s put this here so we first clear the flag, then try to jump. That way, there\u0027s no chance that the jump might succeed but some later error in here makes us return before clearing the flag.",
+      "revId": "63aa3f2c0c5649ae5b88d8bb5ecbf9a4fd75ee53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea1ba5d_abe0025e",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-24T00:32:19Z",
+      "side": 1,
+      "message": "Comments should explain reasons and context, not low-level mechanical things that are already obvious from the code itself. For example, you could write something like /* We no longer trust the EC once it is in RW */ here.",
+      "revId": "63aa3f2c0c5649ae5b88d8bb5ecbf9a4fd75ee53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
