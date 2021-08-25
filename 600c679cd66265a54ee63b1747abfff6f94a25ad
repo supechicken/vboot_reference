@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22d8d53_b3a8d730",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-08-25T00:07:37Z",
+      "side": 1,
+      "message": "I am confused by this change. Does this mean that if there is failure to load kernel in developer mode, then we don\u0027t ever go to recovery? Why is that? WOuldn\u0027t the user just experience an infinite boot loop if that happens?\n\nI think this is also causing FAFT failure here: b/197216832",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "600c679cd66265a54ee63b1747abfff6f94a25ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
