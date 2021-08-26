@@ -45,6 +45,7 @@ static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static struct vb2_gbb_header gbb;
+static enum vb2_boot_mode *boot_mode;
 
 static struct vb2_ui_context mock_ui_context;
 static struct vb2_screen_state mock_state;
@@ -81,8 +82,6 @@ static uint32_t mock_altfw_count;
 static vb2_error_t mock_vbtlk_retval[32];
 static uint32_t mock_vbtlk_expected_flag[32];
 static int mock_vbtlk_total;
-
-static int mock_allow_recovery;
 
 /* mock_pp_* = mock data for physical presence button */
 static int mock_pp_pressed[64];
@@ -281,6 +280,19 @@ static void reset_common_data(enum reset_type t)
 	ctx->flags |= VB2_CONTEXT_DEV_BOOT_ALLOWED;
 	ctx->flags |= VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED;
 
+	/* For boot_mode */
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	if (t == FOR_DEVELOPER)
+		*boot_mode = VB2_BOOT_MODE_DEVELOPER;
+	else if (t == FOR_BROKEN_RECOVERY)
+		*boot_mode = VB2_BOOT_MODE_BROKEN_SCREEN;
+	else if (t == FOR_MANUAL_RECOVERY)
+		*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
+	else if (t == FOR_DIAGNOSTICS)
+		*boot_mode = VB2_BOOT_MODE_DIAGNOSTICS;
+	else
+		*boot_mode = VB2_BOOT_MODE_UNDEFINED;
+
 	/* Mock ui_context based on real screens */
 	memset(&mock_ui_context, 0, sizeof(mock_ui_context));
 	mock_ui_context.ctx = ctx;
@@ -328,9 +340,6 @@ static void reset_common_data(enum reset_type t)
 	memset(mock_vbtlk_retval, 0, sizeof(mock_vbtlk_retval));
 	memset(mock_vbtlk_expected_flag, 0, sizeof(mock_vbtlk_expected_flag));
 	mock_vbtlk_total = 0;
-
-	/* For vb2_allow_recovery */
-	mock_allow_recovery = t == FOR_MANUAL_RECOVERY;
 
 	/* For vb2ex_physical_presence_pressed */
 	memset(mock_pp_pressed, 0, sizeof(mock_pp_pressed));
@@ -511,11 +520,6 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
 		"  unexpected disk_flags");
 
 	return mock_vbtlk_retval[i];
-}
-
-int vb2api_allow_recovery(struct vb2_context *c)
-{
-	return mock_allow_recovery;
 }
 
 int vb2ex_physical_presence_pressed(void)
