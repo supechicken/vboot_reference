@@ -16,6 +16,24 @@
       "message": "Should we only enable this section in build time if \"hwid-override\" is set?",
       "revId": "3c7c30f7ac167f86ce39ee5571e28144719f98bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a562c45b_f262d627",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-26T15:41:15Z",
+      "side": 1,
+      "message": "No, keep it just as a runtime check for simplicity (this is how almost all cros_config usages get plumbed ... we rarely disable a config check using extra info at build time)",
+      "parentUuid": "b8b0f1ca_0c77fff4",
+      "revId": "3c7c30f7ac167f86ce39ee5571e28144719f98bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
