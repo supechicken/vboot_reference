@@ -22,6 +22,7 @@ static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static struct vb2_gbb_header gbb;
 static struct vb2_secdata_fwmp *fwmp;
+static enum vb2_boot_mode *boot_mode;
 
 /* Mocked function data */
 static enum vb2_resource_index mock_resource_index;
@@ -29,7 +30,6 @@ static void *mock_resource_ptr;
 static uint32_t mock_resource_size;
 static int mock_tpm_clear_called;
 static int mock_tpm_clear_retval;
-static int allow_recovery_retval;
 
 static void reset_common_data(void)
 {
@@ -53,15 +53,12 @@ static void reset_common_data(void)
 
 	mock_tpm_clear_called = 0;
 	mock_tpm_clear_retval = VB2_SUCCESS;
-	allow_recovery_retval = 0;
+
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_NORMAL;
 };
 
 /* Mocked functions */
-
-int vb2api_allow_recovery(struct vb2_context *c)
-{
-	return allow_recovery_retval;
-}
 
 struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
 {
@@ -423,8 +420,6 @@ static void recovery_tests(void)
 	reset_common_data();
 	vb2_check_recovery(ctx);
 	TEST_EQ(sd->recovery_reason, 0, "No recovery reason");
-	TEST_EQ(sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY,
-		0, "Not manual recovery");
 	TEST_EQ(ctx->flags & VB2_CONTEXT_RECOVERY_MODE,
 		0, "Not recovery mode");
 
@@ -434,8 +429,6 @@ static void recovery_tests(void)
 	vb2_check_recovery(ctx);
 	TEST_EQ(sd->recovery_reason, 3, "Recovery reason from request");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST), 3, "NV not cleared");
-	TEST_EQ(sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY,
-		0, "Not manual recovery");
 	TEST_NEQ(ctx->flags & VB2_CONTEXT_RECOVERY_MODE,
 		 0, "Recovery mode");
 
@@ -455,8 +448,6 @@ static void recovery_tests(void)
 	vb2_check_recovery(ctx);
 	TEST_EQ(sd->recovery_reason, VB2_RECOVERY_RO_MANUAL,
 		"Recovery reason forced");
-	TEST_NEQ(sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY,
-		 0, "SD flag set");
 
 	/* Override subcode TRAIN_AND_REBOOT */
 	reset_common_data();
@@ -465,8 +456,6 @@ static void recovery_tests(void)
 	vb2_check_recovery(ctx);
 	TEST_EQ(sd->recovery_reason, VB2_RECOVERY_RO_MANUAL,
 		"Recovery reason forced");
-	TEST_NEQ(sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY,
-		 0, "SD flag set");
 
 	/* Promote subcode from BROKEN screen*/
 	reset_common_data();
@@ -475,8 +464,6 @@ static void recovery_tests(void)
 	vb2_check_recovery(ctx);
 	TEST_EQ(sd->recovery_reason, VB2_RECOVERY_US_TEST,
 		"Recovery reason forced from BROKEN");
-	TEST_NEQ(sd->flags & VB2_SD_FLAG_MANUAL_RECOVERY,
-		 0, "SD flag set");
 }
 
 static void dev_switch_tests(void)
@@ -640,7 +627,6 @@ static void dev_switch_tests(void)
 static void enable_dev_tests(void)
 {
 	reset_common_data();
-	allow_recovery_retval = 0;
 	TEST_FAIL(vb2api_enable_developer_mode(ctx),
 		 "vb2api_enable_developer_mode - failed");
 	TEST_EQ(vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS) &
@@ -648,7 +634,7 @@ static void enable_dev_tests(void)
 		"  dev mode flag not set");
 
 	reset_common_data();
-	allow_recovery_retval = 1;
+	*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 	TEST_SUCC(vb2api_enable_developer_mode(ctx),
 		  "vb2api_enable_developer_mode - success");
 	TEST_NEQ(vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS) &
@@ -659,7 +645,7 @@ static void enable_dev_tests(void)
 
 	/* secdata_firmware not initialized, aborts */
 	reset_common_data();
-	allow_recovery_retval = 1;
+	*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 	sd->status &= ~VB2_SD_STATUS_SECDATA_FIRMWARE_INIT;
 	TEST_ABORT(vb2api_enable_developer_mode(ctx),
 		   "secdata_firmware no init, enable dev mode aborted");
@@ -810,7 +796,7 @@ static void clear_recovery_tests(void)
 
 	/* Manual recovery */
 	reset_common_data();
-	allow_recovery_retval = 1;
+	*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 	sd->recovery_reason = 4;
 	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, 5);
@@ -821,9 +807,9 @@ static void clear_recovery_tests(void)
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE),
 		0, "  subcode cleared");
 
-	/* BROKEN recovery */
+	/* Broken screen */
 	reset_common_data();
-	allow_recovery_retval = 0;
+	*boot_mode = VB2_BOOT_MODE_BROKEN_SCREEN;
 	sd->recovery_reason = 4;
 	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, 5);
