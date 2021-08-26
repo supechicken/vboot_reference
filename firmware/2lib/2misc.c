@@ -377,7 +377,7 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 
 vb2_error_t vb2api_enable_developer_mode(struct vb2_context *ctx)
 {
-	if (!vb2api_allow_recovery(ctx)) {
+	if (ctx->boot_mode != VB2_BOOT_MODE_MANUAL_RECOVERY) {
 		VB2_DEBUG("ERROR: Can only enable developer mode from manual "
 			  "recovery mode\n");
 		return VB2_ERROR_API_ENABLE_DEV_NOT_ALLOWED;
@@ -451,13 +451,13 @@ void vb2_clear_recovery(struct vb2_context *ctx)
 			  reason, subcode,
 			  vb2_get_recovery_reason_string(reason));
 
-	/* Clear recovery request for both manual and non-manual. */
+	/* Clear recovery request for both the manual recovery and the broken
+	   screen. */
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, VB2_RECOVERY_NOT_REQUESTED);
 	vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, 0);
 
-	/* But stow recovery reason as subcode for non-manual recovery. */
-	if ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
-	    !vb2api_allow_recovery(ctx)) {
+	/* But stow recovery reason as subcode for the broken screen. */
+	if (ctx->boot_mode == VB2_BOOT_MODE_BROKEN_SCREEN) {
 		VB2_DEBUG("Stow recovery reason as subcode (%#x)\n",
 			  sd->recovery_reason);
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, sd->recovery_reason);
