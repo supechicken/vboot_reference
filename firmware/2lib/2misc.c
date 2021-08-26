@@ -377,7 +377,7 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 
 vb2_error_t vb2api_enable_developer_mode(struct vb2_context *ctx)
 {
-	if (!vb2api_allow_recovery(ctx)) {
+	if (ctx->boot_mode != VB2_BOOT_MODE_MANUAL_RECOVERY) {
 		VB2_DEBUG("ERROR: Can only enable developer mode from manual "
 			  "recovery mode\n");
 		return VB2_ERROR_API_ENABLE_DEV_NOT_ALLOWED;
