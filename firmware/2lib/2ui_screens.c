@@ -276,7 +276,7 @@ vb2_error_t advanced_options_init(struct vb2_ui_context *ui)
 {
 	ui->state->selected_item = ADVANCED_OPTIONS_ITEM_DEVELOPER_MODE;
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED ||
-	    !vb2api_allow_recovery(ui->ctx)) {
+	    ui->ctx->boot_mode != VB2_BOOT_MODE_MANUAL_RECOVERY) {
 		VB2_SET_BIT(ui->state->hidden_item_mask,
 			    ADVANCED_OPTIONS_ITEM_DEVELOPER_MODE);
 		ui->state->selected_item = ADVANCED_OPTIONS_ITEM_DEBUG_INFO;
@@ -518,7 +518,7 @@ static vb2_error_t recovery_to_dev_finalize(struct vb2_ui_context *ui)
 	/* Validity check, should never happen. */
 	if (ui->state->screen->id != VB2_SCREEN_RECOVERY_TO_DEV ||
 	    (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED) ||
-	    !vb2api_allow_recovery(ui->ctx)) {
+	    ui->ctx->boot_mode == VB2_BOOT_MODE_BROKEN_SCREEN) {
 		VB2_DEBUG("ERROR: Dev transition validity check failed\n");
 		return VB2_SUCCESS;
 	}
