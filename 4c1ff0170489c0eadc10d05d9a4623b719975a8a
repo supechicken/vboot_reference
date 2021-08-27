@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a5e40b_5765c091",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-27T01:29:29Z",
+      "side": 1,
+      "message": "Need to be careful with early returns from this function. In fact, I think this one may have always been a bad idea anyway, maybe just take that out and say early returns are not allowed in general (other than the SECDATA_REBOOT one which causes an immediate reboot). The vb2api_fail() here will make sure we return the right result anyway.",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4589ed_fe4ffd1a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-27T01:29:29Z",
+      "side": 1,
+      "message": "Need to set the boot mode here, before potentially returning PHASE1_RECOVERY.",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f560039_25ad2044",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-27T01:29:29Z",
+      "side": 1,
+      "message": "I don\u0027t think we should change it in cases like this where the new code looks more complicated than the old one. If we want to deprecate the context flag (not sure, did we decide that we\u0027d want to do that?), we could still check sd-\u003erecovery_reason here.",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
