@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acca7962_8cc8a087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-27T01:34:41Z",
+      "side": 1,
+      "message": "Please actually remove the vb2api_allow_recovery() function as well then.",
+      "revId": "9e7a36b4fb120a55086fa8ff93c8955f73ddfa83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc17da52_0e045474",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-27T01:34:41Z",
+      "side": 1,
+      "message": "This is the other way round (i.e. should only return success for the BROKEN screen).",
+      "revId": "9e7a36b4fb120a55086fa8ff93c8955f73ddfa83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5a7a16_8cf7c8c6",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-27T01:34:41Z",
+      "side": 1,
+      "message": "I think this should also check for !MANUAL_RECOVERY",
+      "revId": "9e7a36b4fb120a55086fa8ff93c8955f73ddfa83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
