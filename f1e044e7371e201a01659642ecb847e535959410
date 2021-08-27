@@ -16,6 +16,24 @@
       "message": "LGTM but we can\u0027t land this until the coreboot patch is in.",
       "revId": "f1e044e7371e201a01659642ecb847e535959410",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed9a62d_adefe818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-08-27T01:05:25Z",
+      "side": 1,
+      "message": "In fact, it\u0027s kinda hard to land these two in the right order because we shouldn\u0027t land the coreboot patch before this one is there to remove the TRUSTED flag on RW jump either.\n\nI would recommend you pull this patch apart, and move the part that removes the call to vb2ex_ec_trusted() to a later patch. Then you can land what remains of this patch, then the coreboot patch, and then that other one.",
+      "parentUuid": "2f7f540f_c9947e61",
+      "revId": "f1e044e7371e201a01659642ecb847e535959410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
