@@ -419,13 +419,20 @@ void vb2api_request_diagnostics(struct vb2_context *ctx) {
 test_mockable
 int vb2api_allow_recovery(struct vb2_context *ctx)
 {
-	if (ctx->flags & VB2_CONTEXT_NO_BOOT)
-		return 0;
+	if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
+		VB2_DEBUG("%s (1): ctx->flags 0x%016llX \n",
+			  __func__, ctx->flags);
+                return 0;
+        }
+		
 
 	/* VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY forces this to always return
 	   true. */
-	if (vb2_get_gbb(ctx)->flags & VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY)
+	if (vb2_get_gbb(ctx)->flags & VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY) {
+		VB2_DEBUG("%s (2): vb2_get_gbb(ctx)->flags 0x%X \n",
+			  __func__, vb2_get_gbb(ctx)->flags);
 		return 1;
+	}
 
 	/*
 	 * If EC is in RW, it implies recovery wasn't manually requested.
@@ -433,10 +440,16 @@ int vb2api_allow_recovery(struct vb2_context *ctx)
 	 * return false (=RW). That's ok because if recovery is manual, we will
 	 * get the right signal and that's the case we care about.
 	 */
-	if (!(ctx->flags & VB2_CONTEXT_EC_TRUSTED) && !vb2ex_ec_trusted())
+	if (!(ctx->flags & VB2_CONTEXT_EC_TRUSTED) && !vb2ex_ec_trusted()) {
+		VB2_DEBUG("%s (3): ctx->flags 0x%016llX \n",
+			  __func__, ctx->flags);
+
 		return 0;
+	}
 
 	/* Now we confidently check the recovery switch state at boot */
+        VB2_DEBUG("%s (4): vb2_get_sd(ctx)->flags 0x%X \n",
+			  __func__, vb2_get_sd(ctx)->flags);
 	return !!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_MANUAL_RECOVERY);
 }
 
