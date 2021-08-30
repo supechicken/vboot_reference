@@ -16,6 +16,24 @@
       "message": "Looks good on this side of the CL, but please remember to migrate the tests (or something with roughly equivalent coverage) into depthcharge as well. Doesn\u0027t seem like you have anything in CL:3060295 yet.",
       "revId": "2ce19a2f30c5cf8c3d7c89ad7624fdb496b33056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "740e9cf6_5f2b2deb",
+        "filename": "tests/vb2_ui_tests.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-08-30T09:46:35Z",
+      "side": 0,
+      "message": "The dependent CL now is CL:3116129, and the tests are also added there (and some following CLs).",
+      "parentUuid": "c45e555e_35b8cb7c",
+      "revId": "2ce19a2f30c5cf8c3d7c89ad7624fdb496b33056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
