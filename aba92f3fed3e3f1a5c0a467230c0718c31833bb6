@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42b7fea_e967fa98",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-31T19:43:11Z",
+      "side": 1,
+      "message": "Can\u0027t we fix this differently (by changing only vb2_common_tests.c)? I think we should keep the compiler\u0027s capability of catching out-of-bound access. Wouldn\u0027t this change inhibit that?",
+      "range": {
+        "startLine": 301,
+        "startChar": 27,
+        "endLine": 301,
+        "endChar": 36
+      },
+      "revId": "aba92f3fed3e3f1a5c0a467230c0718c31833bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
