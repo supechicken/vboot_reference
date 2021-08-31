@@ -123,10 +123,10 @@ endif
 
 # Provide default CC and CFLAGS for firmware builds; if you have any -D flags,
 # please add them after this point (e.g., -DVBOOT_DEBUG).
-DEBUG_FLAGS := $(if ${DEBUG},-g -Og,-g -Os)
+DEBUG_FLAGS = $(if ${DEBUG},-g -Og,-g -Os)
 WERROR := -Werror
 FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
-COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
+COMMON_FLAGS = -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
 	-Wwrite-strings -Wstrict-aliasing -Wdate-time \
 	-ffunction-sections -fdata-sections \
@@ -1216,6 +1216,7 @@ ${FUTIL_CMD_LIST}: ${FUTIL_SRCS}
 # Targets that exist just to run tests
 
 .PHONY: test_setup
+test_setup: override DEBUG := 1
 test_setup:: cgpt utils_sdk utils_board futil tests
 
 # Qemu setup for cross-compiled tests.  Need to copy qemu binary into the
