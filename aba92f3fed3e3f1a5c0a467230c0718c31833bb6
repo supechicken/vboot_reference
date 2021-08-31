@@ -22,6 +22,30 @@
       },
       "revId": "aba92f3fed3e3f1a5c0a467230c0718c31833bb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c07492d0_72bbf811",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T21:01:29Z",
+      "side": 1,
+      "message": "but that\u0027s the thing: the idea of the vb2_packed_key structure is such that key data could be anywhere in memory. Key data location is relative to the base of the structure, but any access to key data is out of bounds of the vb2_packed_key structure.",
+      "parentUuid": "e42b7fea_e967fa98",
+      "range": {
+        "startLine": 301,
+        "startChar": 27,
+        "endLine": 301,
+        "endChar": 36
+      },
+      "revId": "aba92f3fed3e3f1a5c0a467230c0718c31833bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
