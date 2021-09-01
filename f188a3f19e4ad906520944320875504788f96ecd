@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42dfb4d2_f56a94f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-01T00:13:14Z",
+      "side": 1,
+      "message": "I now think the motivation is to make the code compile, I uploaded another fix to address the compilation problem \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3133544\n\nmissed it originally because I tested the previous fix outside chroot and missed a few warnings",
+      "parentUuid": "dac8abd2_9241a07c",
+      "revId": "f188a3f19e4ad906520944320875504788f96ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da41ed39_d80f1925",
         "filename": "Makefile",
         "patchSetId": 1
