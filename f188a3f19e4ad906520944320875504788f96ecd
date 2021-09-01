@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dac8abd2_9241a07c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-01T00:04:43Z",
+      "side": 1,
+      "message": "I don\u0027t understand this, what\u0027s the justification? DEBUG is only useful for using GDB, which I don\u0027t think anyone ever does (in fact we had been talking about getting rid of it completely before). Why would you need to enable it by default in the tests? In general I\u0027d try to avoid changing optimization levels as much as possible, it can lead to the weirdest kinds of issues...",
+      "revId": "f188a3f19e4ad906520944320875504788f96ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da41ed39_d80f1925",
         "filename": "Makefile",
         "patchSetId": 1
