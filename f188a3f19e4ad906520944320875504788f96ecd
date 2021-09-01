@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a048a67f_2ae8006e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-01T01:16:30Z",
+      "side": 1,
+      "message": "The first time when I asked Joel how to run vboot tests, the answer I got was\n\n CC\u003dx86_64-pc-linux-gnu-clang DEBUG\u003d1 make runtests\n\nSince then, I\u0027ve been blindly assuming passing DEBUG\u003d1 is the best practice for running unit tests. Now I realize the real reason might be compilation error.\n\nAnyway, Vadim, thanks for fixing that.",
+      "parentUuid": "42dfb4d2_f56a94f9",
+      "revId": "f188a3f19e4ad906520944320875504788f96ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da41ed39_d80f1925",
