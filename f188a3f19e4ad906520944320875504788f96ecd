@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08efe03f_63fdb05c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-01T23:53:47Z",
+      "side": 1,
+      "message": "I mean... I don\u0027t think I\u0027ve ever felt console output to be super necessary for running unit tests. Is that really something we want to enable by default? I fear it might just make it harder to see the real PASS/FAIL messages in the output.\n\nFor cases where you explicitly want to enable it, like you said, DEBUG\u003d1 already works, why do we need something else? (I guess if you want to standardize with coreboot and depthcharge I\u0027m also okay with adding an extra TEST_CONSOLE_ENABLE.)",
+      "parentUuid": "187805ef_bef06d66",
+      "revId": "f188a3f19e4ad906520944320875504788f96ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da41ed39_d80f1925",
         "filename": "Makefile",
         "patchSetId": 1
