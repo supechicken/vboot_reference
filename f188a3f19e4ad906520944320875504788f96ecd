@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "187805ef_bef06d66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-01T01:38:25Z",
+      "side": 1,
+      "message": "Passing DEBUG\u003d1 implies -DVBOOT_DEBUG, which will cause the stub vb2ex_printf() to print to stderr (for easier debugging). If \"-Og\" can cause issues, we\u0027ll need another way to enable VBOOT_DEBUG for unit tests.\n\nI have a similar CL for depthcharge unit tests [CL:3124074], which introduces TEST_CONSOLE_ENABLE. Maybe we can use the same name in vboot (so both DEBUG and TEST_CONSOLE_ENABLE will imply -DVBOOT_DEBUG).",
+      "parentUuid": "a048a67f_2ae8006e",
+      "revId": "f188a3f19e4ad906520944320875504788f96ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da41ed39_d80f1925",
         "filename": "Makefile",
         "patchSetId": 1
