@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdf0abb9_3e27938f",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-01T01:42:39Z",
+      "side": 1,
+      "message": "I wonder why we don\u0027t have problems with this. Is that because of \u0027const\u0027? If more tests are added in the future, will there be more compilation errors in the code under test that we need to address?",
+      "revId": "aba92f3fed3e3f1a5c0a467230c0718c31833bb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e42b7fea_e967fa98",
         "filename": "firmware/2lib/include/2common.h",
         "patchSetId": 1
