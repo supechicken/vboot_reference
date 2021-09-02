@@ -11,7 +11,6 @@
 #include "2nvstorage.h"
 #include "2secdata.h"
 #include "2sysincludes.h"
-#include "2ui.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
 #include "test_common.h"
