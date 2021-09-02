@@ -209,7 +209,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		vb2ex_commit_data(ctx);
 
 		/* Diagnostic boot.  This has UI. */
-		VB2_TRY(vb2_diagnostic_menu(ctx));
+		VB2_TRY(vb2ex_diagnostic_ui(ctx));
 		/*
 		 * The diagnostic menu should either boot a rom, or
 		 * return either of reboot or shutdown.
