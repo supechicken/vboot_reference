@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8063b98e_be63d43c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-02T00:55:29Z",
+      "side": 1,
+      "message": "\u003e Is that really something we want to enable by default? I fear it might just make it harder to see the real PASS/FAIL messages in the output.\n\nI agree on this part. However when we need to figure out the reason of test failure, console output is extremely useful.\n\n\u003e DEBUG\u003d1 already works, why do we need something else?\n\nOriginally in depthcharge I proposed to use TEST_DEBUG. However, Jacub thought\n\n \"I think, that this is a bit misleading name for this feature. I\u0027d expect TEST_DEBUG to compile code with `-g -Og` or something like that.\"\n\nTBH I don\u0027t care what name it is called, but I really want vboot and depthcharge to be consistent as much as possible.",
+      "parentUuid": "08efe03f_63fdb05c",
+      "revId": "f188a3f19e4ad906520944320875504788f96ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da41ed39_d80f1925",
         "filename": "Makefile",
         "patchSetId": 1
