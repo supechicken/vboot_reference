@@ -56,6 +56,7 @@ DEV_DEBUG_FORCE=
 #  US_DIR = shared data directory (for static content like devkeys)
 #  DF_DIR = utility defaults directory
 #  VB_DIR = vboot binary directory for dev-mode-only scripts
+#  VBT_DIR = vboot dut tests binary directory
 UB_DIR=${DESTDIR}/usr/bin
 UL_DIR=${DESTDIR}/usr/${LIBDIR}
 ULP_DIR=${UL_DIR}/pkgconfig
@@ -63,6 +64,7 @@ UI_DIR=${DESTDIR}/usr/include/vboot
 US_DIR=${DESTDIR}/usr/share/vboot
 DF_DIR=${DESTDIR}/etc/default
 VB_DIR=${US_DIR}/bin
+VBT_DIR=${US_DIR}/tests
 
 # Where to install the (exportable) executables for testing?
 TEST_INSTALL_DIR = ${BUILD}/install_for_test
@@ -779,7 +781,9 @@ TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES}
 # This is build-only test since we can't run this without
 # sha-ni extension on x86. To run this test, you have to
 # manually copy executable into compatible machine and run it.
+ifeq (${ARCH}, x86_64)
 TEST_NAMES += tests/vb2_sha256_x86_tests
+endif
 
 # And a few more...
 ifeq (${TPM2_MODE},)
@@ -1112,6 +1116,12 @@ ${TESTLIB}: ${TESTLIB_OBJS}
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
+
+.PHONY: install_dut_test
+install_dut_test: $(if $(filter x86_64,${ARCH}),${X86_SHA256_TEST})
+	@${PRINTF} "    INSTALL       DUT TESTS\n"
+	${Q}mkdir -p ${VBT_DIR}
+	${Q}${INSTALL} -t ${VBT_DIR} $^
 
 # ----------------------------------------------------------------------------
 # Fuzzers
