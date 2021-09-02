@@ -511,4 +511,3 @@ vb2_error_t vb2_diagnostic_menu(struct vb2_context *ctx)
 {
 	return ui_loop(ctx, VB2_SCREEN_DIAGNOSTICS, NULL);
 }
-
