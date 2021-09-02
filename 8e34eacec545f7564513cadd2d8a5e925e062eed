@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed26c26_107cbd98",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-02T02:01:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c46559d_b1cbcb79",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 63
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49035db6_9a2b5f50",
@@ -677,6 +701,30 @@
       "side": 1,
       "message": "We\u0027re still making use of the same disk looping code under-the-hood.  But (1) it seemed really weird to be grouping \"NBR_BOOT\" as a flag alongside the type of disk being booted, and (2) the API would only be valid when the appropriate flags are set at the same time (i.e. BOOT_NBR|DISK_FIXED).  If NBR is *only* valid under this kind of situation, it seemed like we were better off not tainting the VB_DISK_FLAG mask (whose functionality should really be limited to disk-related things used with  VbEx disk functions), and creating a separate call to hide disk selection for the NBR case.",
       "parentUuid": "973c66bb_59f7b6b8",
+      "range": {
+        "startLine": 502,
+        "startChar": 47,
+        "endLine": 502,
+        "endChar": 63
+      },
+      "revId": "8e34eacec545f7564513cadd2d8a5e925e062eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d119d3_282f302f",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-02T02:01:36Z",
+      "side": 1,
+      "message": "Julius, are you okay with latest implementation (PS39)?",
+      "parentUuid": "70ad05d9_4b4587d0",
       "range": {
         "startLine": 502,
         "startChar": 47,
