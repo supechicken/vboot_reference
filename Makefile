@@ -56,6 +56,7 @@ DEV_DEBUG_FORCE=
 #  US_DIR = shared data directory (for static content like devkeys)
 #  DF_DIR = utility defaults directory
 #  VB_DIR = vboot binary directory for dev-mode-only scripts
+#  VBT_DIR = vboot dut tests binary directory
 UB_DIR=${DESTDIR}/usr/bin
 UL_DIR=${DESTDIR}/usr/${LIBDIR}
 ULP_DIR=${UL_DIR}/pkgconfig
@@ -63,6 +64,7 @@ UI_DIR=${DESTDIR}/usr/include/vboot
 US_DIR=${DESTDIR}/usr/share/vboot
 DF_DIR=${DESTDIR}/etc/default
 VB_DIR=${US_DIR}/bin
+VBT_DIR=${US_DIR}/tests
 
 # Where to install the (exportable) executables for testing?
 TEST_INSTALL_DIR = ${BUILD}/install_for_test
@@ -767,10 +769,18 @@ TEST21_NAMES = \
 
 TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES}
 
-# This is build-only test since we can't run this without
-# sha-ni extension on x86. To run this test, you have to
-# manually copy executable into compatible machine and run it.
-TEST_NAMES += tests/vb2_sha256_x86_tests
+# Tests which should be run on dut
+ifeq (${ARCH}, x86_64)
+
+# Special build for sha256_x86 test
+X86_SHA256_TEST = tests/vb2_sha256_x86_tests
+${BUILD}/${X86_SHA256_TEST}: ${BUILD}/firmware/2lib/2sha256_x86.o
+${BUILD}/${X86_SHA256_TEST}: LIBS += ${BUILD}/firmware/2lib/2sha256_x86.o
+
+DUT_TEST_NAMES += ${X86_SHA256_TEST}
+endif
+
+TEST_NAMES += ${DUT_TEST_NAMES}
 
 # And a few more...
 ifeq (${TPM2_MODE},)
@@ -1093,16 +1103,21 @@ ${TEST20_BINS}: ${FWLIB}
 ${TEST20_BINS}: LIBS += ${FWLIB}
 ${TEST20_BINS}: LDLIBS += ${CRYPTO_LIBS}
 
-# Special build for sha256_x86 test
-X86_SHA256_TEST = ${BUILD_RUN}/tests/vb2_sha256_x86_tests
-${X86_SHA256_TEST}: ${BUILD}/firmware/2lib/2sha256_x86.o
-${X86_SHA256_TEST}: LIBS += ${BUILD}/firmware/2lib/2sha256_x86.o
-
 ${TESTLIB}: ${TESTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
+
+DUT_TEST_BINS = $(addprefix ${BUILD}/,${DUT_TEST_NAMES})
+
+.PHONY: install_dut_test
+install_dut_test: ${DUT_TEST_BINS}
+ifneq ($(strip ${DUT_TEST_BINS}),)
+	@${PRINTF} "    INSTALL       DUT TESTS\n"
+	${Q}mkdir -p ${VBT_DIR}
+	${Q}${INSTALL} -t ${VBT_DIR} $^
+endif
 
 # ----------------------------------------------------------------------------
 # Fuzzers
