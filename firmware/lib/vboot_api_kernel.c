@@ -11,7 +11,6 @@
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2rsa.h"
-#include "2secdata.h"
 #include "2sysincludes.h"
 #include "2ui.h"
 #include "load_kernel_fw.h"
@@ -209,7 +208,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		vb2ex_commit_data(ctx);
 
 		/* Diagnostic boot.  This has UI. */
-		VB2_TRY(vb2_diagnostic_menu(ctx));
+		VB2_TRY(vb2ex_diagnostic_ui(ctx));
 		/*
 		 * The diagnostic menu should either boot a rom, or
 		 * return either of reboot or shutdown.
