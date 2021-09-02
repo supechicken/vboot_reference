@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "989710e8_af229f63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c6beebc_b190bb89",
+      "range": {
+        "startLine": 29,
+        "startChar": 39,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "31182e1e9522551b837b503143bd6467825a70de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbb8eab7_3149e679",
@@ -85,6 +109,54 @@
       "side": 1,
       "message": "Still open.",
       "parentUuid": "410c0fc1_4bf3e6b0",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "31182e1e9522551b837b503143bd6467825a70de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b1e04c_a7141608",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfbbfd31_bb614f08",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "31182e1e9522551b837b503143bd6467825a70de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09b177f_0416f319",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Use ctx-\u003eflags \u0026 VB2_CONTEXT_DEVELOPER_MODE instead.",
+      "parentUuid": "bfbbfd31_bb614f08",
       "range": {
         "startLine": 38,
         "startChar": 12,

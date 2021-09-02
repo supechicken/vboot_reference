@@ -153,6 +153,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6daeeb76_5c4bb186",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done\n(1) deprecate allow_recovery\n(2) deprecate vb2ex_ec_trusted\n\nare both implemented on seperate CLs.",
+      "parentUuid": "ff3de848_3bbb5bef",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c24725d_cc3f7f33",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff3de848_3bbb5bef",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50198fb1_ea5dec40",
@@ -665,6 +713,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7358e58a_bc7d1db7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4ecc00b_5cc59da8",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604ac359_59e5d1b4",
@@ -696,6 +762,24 @@
       "side": 1,
       "message": "Still open.",
       "parentUuid": "604ac359_59e5d1b4",
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf260abc_f41e9389",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd1b844_ee3976ad",
       "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -737,6 +821,30 @@
       "side": 1,
       "message": "This needs to count for recovery boot modes, so probably better to just check recovery_reason.",
       "parentUuid": "e7f0093a_fa75de8b",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 49
+      },
+      "revId": "62b3131922e9b9607b0f7a61841ce80ba0132e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce30800d_f46a0faa",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aeb2d96e_bd063503",
       "range": {
         "startLine": 186,
         "startChar": 0,

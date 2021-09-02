@@ -18,6 +18,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37218191_06f754a3",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37a5e40b_5765c091",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "089f141f_b21aea64",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37a5e40b_5765c091",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a4589ed_fe4ffd1a",
@@ -35,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa18d0bd_c2c9a2eb",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4589ed_fe4ffd1a",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f560039_25ad2044",
@@ -48,6 +102,42 @@
       "writtenOn": "2021-08-27T01:29:29Z",
       "side": 1,
       "message": "I don\u0027t think we should change it in cases like this where the new code looks more complicated than the old one. If we want to deprecate the context flag (not sure, did we decide that we\u0027d want to do that?), we could still check sd-\u003erecovery_reason here.",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c50214c_35f4fb15",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done\n\nYes, the previous decision here should be keep VB2_CONTEXT_RECOVERY_MODE or checking sd-\u003erecovery_reason.\n\nI will not change this condition here.\n\n\n---\n\nWhat about the later /* Select boot path */? Is it fine to use switch-clause there?",
+      "parentUuid": "7f560039_25ad2044",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2722c7d0_fa903bb2",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-02T08:27:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f560039_25ad2044",
       "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
