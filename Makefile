@@ -56,6 +56,7 @@ DEV_DEBUG_FORCE=
 #  US_DIR = shared data directory (for static content like devkeys)
 #  DF_DIR = utility defaults directory
 #  VB_DIR = vboot binary directory for dev-mode-only scripts
+#  VBT_DIR = vboot dut tests binary directory
 UB_DIR=${DESTDIR}/usr/bin
 UL_DIR=${DESTDIR}/usr/${LIBDIR}
 ULP_DIR=${UL_DIR}/pkgconfig
@@ -63,6 +64,7 @@ UI_DIR=${DESTDIR}/usr/include/vboot
 US_DIR=${DESTDIR}/usr/share/vboot
 DF_DIR=${DESTDIR}/etc/default
 VB_DIR=${US_DIR}/bin
+VBT_DIR=${US_DIR}/tests
 
 # Where to install the (exportable) executables for testing?
 TEST_INSTALL_DIR = ${BUILD}/install_for_test
@@ -1112,6 +1114,12 @@ ${TESTLIB}: ${TESTLIB_OBJS}
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
+
+.PHONY: install_dut_test
+install_dut_test: $(if $(filter x86_64,${ARCH}),${X86_SHA256_TEST})
+	@${PRINTF} "    INSTALL       DUT TESTS\n"
+	${Q}mkdir -p ${VBT_DIR}
+	${Q}${INSTALL} -t ${VBT_DIR} $^
 
 # ----------------------------------------------------------------------------
 # Fuzzers
