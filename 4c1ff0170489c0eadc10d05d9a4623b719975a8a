@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "328dedfa_1f5d3316",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-02T23:29:41Z",
+      "side": 1,
+      "message": "Sorry, I meant this actually needs to be fixed somewhere (in this CL or an earlier one) before this one can go in. Otherwise you might run around with an undefined boot mode field.",
+      "parentUuid": "37218191_06f754a3",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a4589ed_fe4ffd1a",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 8
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7f560039_25ad2044",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede0c1c0_85a8b1f7",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-02T23:29:41Z",
+      "side": 1,
+      "message": "Yes, since that switches over all the boot modes, the way you wrote it seems fine.",
+      "parentUuid": "7c50214c_35f4fb15",
       "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
