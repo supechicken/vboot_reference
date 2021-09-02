@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45652182_bddfa3e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-02T01:03:25Z",
+      "side": 1,
+      "message": "\u003e TBH I don\u0027t care what name it is called\n\nSame. Adding another TEST_CONSOLE_ENABLE that just turns -DVBOOT_DEBUG on sounds fine to me. (One caveat is that unless you do something very complicated in the Makefile, it only builds one instance of 2stub.c which will be used both for test targets and for any other targets that might be built at the same time. So if someone runs something like `make TEST_CONSOLE_ENABLE\u003d1 runtests futility` they might be confused why the futility binary built from that has debug console output even though they only turned on *TEST*_CONSOLE_ENABLE. But in practice that scenario sounds unlikely enough to me that I don\u0027t think you need to care.)",
+      "parentUuid": "8063b98e_be63d43c",
+      "revId": "f188a3f19e4ad906520944320875504788f96ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da41ed39_d80f1925",
         "filename": "Makefile",
         "patchSetId": 1
