@@ -22,6 +22,30 @@
       },
       "revId": "24786b5debe21c18dfca9a11d9bc751fe1938509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f705151d_2d3ad910",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-09-03T03:31:36Z",
+      "side": 1,
+      "message": "Because I forgot to add it. Added vb2ex_developer_ui in previous CL.\n\nActually I think these stub functions are not used in my use cases, but I\u0027m not sure when it will be used.",
+      "parentUuid": "5f78f13e_57ad00a4",
+      "range": {
+        "startLine": 273,
+        "startChar": 12,
+        "endLine": 273,
+        "endChar": 31
+      },
+      "revId": "24786b5debe21c18dfca9a11d9bc751fe1938509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
