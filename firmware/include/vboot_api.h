@@ -311,37 +311,6 @@ enum VbKeyFlags_t {
 	VB_KEY_FLAG_TRUSTED_KEYBOARD = 1 << 0,
 };
 
-/**
- * Read the next keypress from the keyboard buffer.
- *
- * Returns the keypress, or zero if no keypress is pending or error.
- *
- * The following keys must be returned as ASCII character codes:
- *    0x08          Backspace
- *    0x09          Tab
- *    0x0D          Enter (carriage return)
- *    0x01 - 0x1A   Ctrl+A - Ctrl+Z (yes, those alias with backspace/tab/enter)
- *    0x1B          Esc (VB_KEY_ESC)
- *    0x20          Space
- *    0x30 - 0x39   '0' - '9'
- *    0x60 - 0x7A   'a' - 'z'
- *
- * Some extended keys must also be supported; see the VB_KEY_* defines above.
- *
- * Keys ('/') or key-chords (Fn+Q) not defined above may be handled in any of
- * the following ways:
- *    1. Filter (don't report anything if one of these keys is pressed).
- *    2. Report as ASCII (if a well-defined ASCII value exists for the key).
- *    3. Report as any other value in the range 0x200 - 0x2FF.
- * It is not permitted to report a key as a multi-byte code (for example,
- * sending an arrow key as the sequence of keys '\x1b', '[', '1', 'A'). */
-uint32_t VbExKeyboardRead(void);
-
-/**
- * Same as VbExKeyboardRead(), but return extra information.
- */
-uint32_t VbExKeyboardReadWithFlags(uint32_t *flags_ptr);
-
 /*****************************************************************************/
 /* Misc */
 
