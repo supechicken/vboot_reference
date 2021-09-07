@@ -16,6 +16,23 @@
       "message": "This should fix the failures on newer disk_layout boards.",
       "revId": "bdbe6e0e197c2df1e8aada9ffb2f7370466d09fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca34ef1_cf11fb7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2021-09-07T20:16:10Z",
+      "side": 1,
+      "message": "Can we address the shellcheck suggestions that are relevant to this code review?\n\ne.g.\n```\nIn scripts/image_signing/sign_official_build.sh line 902:\n    local part_type_guid\u003d$(sudo lsblk -rnb -o PARTTYPE \"${loop_minios}\")\n          ^------------^ SC2155: Declare and assign separately to avoid masking return values.\n\n\nIn scripts/image_signing/sign_official_build.sh line 910:\n    if ! \"$(\n          ^-- SC2091: Remove surrounding $() to avoid executing output.\n```\n\nFull output: https://paste.googleplex.com/5795825637654528?raw",
+      "revId": "bdbe6e0e197c2df1e8aada9ffb2f7370466d09fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
