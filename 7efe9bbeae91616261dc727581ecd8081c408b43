@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7630d2f4_9ab08577",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-07T09:55:26Z",
+      "side": 1,
+      "message": "* Move the set_boot_mode from 2api to 2misc (vb2_set_boot_mode) since we want to verify it as well in vboot_api_kernel4_tests \n* We only change the implementation of VbSElectAndLoadKernel and vboot_kernel.c here, and leave the other parts in \"deprecate vb2api_allow_recovery\" CL\n* Pass unit test",
+      "revId": "7efe9bbeae91616261dc727581ecd8081c408b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

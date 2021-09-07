@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c488c9d4_1c3c1d3b",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-07T09:55:26Z",
+      "side": 1,
+      "message": "Add another pack for vb2api_fw_phase1 to prevent any early returns",
+      "parentUuid": "328dedfa_1f5d3316",
+      "revId": "4c1ff0170489c0eadc10d05d9a4623b719975a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a4589ed_fe4ffd1a",

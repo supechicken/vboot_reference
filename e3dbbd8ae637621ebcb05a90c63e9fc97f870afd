@@ -16,6 +16,24 @@
       "message": "I think you mean vb2api_fw_phase1(), not kernel.\n\nAlso, maybe it would be good to add a \n\n /********************************************\n  * Fields below added in struct version 3.1\n  */\n\nhere, to make it easier to keep track of the versioning.",
       "revId": "e3dbbd8ae637621ebcb05a90c63e9fc97f870afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62aaa2b0_5e6127fd",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-07T09:55:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df60d9ad_0c1c8291",
+      "revId": "e3dbbd8ae637621ebcb05a90c63e9fc97f870afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
