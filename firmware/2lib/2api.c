@@ -78,34 +78,35 @@ vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 		 * code in that case.
 		 */
 		vb2api_fail(ctx, VB2_RECOVERY_DEV_SWITCH, rv);
-		return rv;
+	} else {
+		/*
+		 * Check for possible reasons to ask the firmware to make
+		 * display available.  VB2_CONTEXT_RECOVERY_MODE may have been
+		 * set above by vb2_check_recovery.
+		 * VB2_SD_FLAG_DEV_MODE_ENABLED may have been set above by
+		 * vb2_check_dev_switch.  VB2_NV_DIAG_REQUEST may have been
+		 * set during the last boot in recovery mode.
+		 */
+		if (!(ctx->flags & VB2_CONTEXT_DISPLAY_INIT) &&
+		    (vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST) ||
+		     sd->flags & VB2_SD_FLAG_DEV_MODE_ENABLED ||
+		     ctx->flags & VB2_CONTEXT_RECOVERY_MODE ||
+		     vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)))
+			ctx->flags |= VB2_CONTEXT_DISPLAY_INIT;
+		/* Mark display as available for downstream vboot and vboot
+		   callers. */
+		if (ctx->flags & VB2_CONTEXT_DISPLAY_INIT)
+			sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
+
+		/* Return error if recovery is needed */
+		if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+			/* Always clear RAM when entering recovery mode */
+			ctx->flags |= VB2_CONTEXT_CLEAR_RAM;
+			rv = VB2_ERROR_API_PHASE1_RECOVERY;
+		}
 	}
 
-	/*
-	 * Check for possible reasons to ask the firmware to make display
-	 * available.  VB2_CONTEXT_RECOVERY_MODE may have been set above by
-	 * vb2_check_recovery.  VB2_SD_FLAG_DEV_MODE_ENABLED may have been set
-	 * above by vb2_check_dev_switch.  VB2_NV_DIAG_REQUEST may have been
-	 * set during the last boot in recovery mode.
-	 */
-	if (!(ctx->flags & VB2_CONTEXT_DISPLAY_INIT) &&
-	    (vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST) ||
-	     sd->flags & VB2_SD_FLAG_DEV_MODE_ENABLED ||
-	     ctx->flags & VB2_CONTEXT_RECOVERY_MODE ||
-	     vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)))
-		ctx->flags |= VB2_CONTEXT_DISPLAY_INIT;
-	/* Mark display as available for downstream vboot and vboot callers. */
-	if (ctx->flags & VB2_CONTEXT_DISPLAY_INIT)
-		sd->flags |= VB2_SD_FLAG_DISPLAY_AVAILABLE;
-
-	/* Return error if recovery is needed */
-	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
-		/* Always clear RAM when entering recovery mode */
-		ctx->flags |= VB2_CONTEXT_CLEAR_RAM;
-		return VB2_ERROR_API_PHASE1_RECOVERY;
-	}
-
-	return VB2_SUCCESS;
+	return rv;
 }
 
 vb2_error_t vb2api_fw_phase2(struct vb2_context *ctx)
