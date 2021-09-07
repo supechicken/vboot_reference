@@ -33,6 +33,24 @@
       "message": "Can we do this in two lines and use exit status \u0026 grep instead of *?",
       "revId": "bb2c6ce8b9c4da663e0c8509dd8fcff8898c7bff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89107d47_2e46bf60",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2021-09-07T20:56:12Z",
+      "side": 1,
+      "message": "Ah, I see this is a pattern in this file. Consistency wins.",
+      "parentUuid": "ccbe15d8_9af0abc9",
+      "revId": "bb2c6ce8b9c4da663e0c8509dd8fcff8898c7bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
