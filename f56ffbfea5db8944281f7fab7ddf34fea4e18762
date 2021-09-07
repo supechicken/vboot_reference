@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97655bcb_79de01c3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2021-09-07T20:51:29Z",
+      "side": 1,
+      "message": "Sorry, I should have been more clear, I meant pulling the execution of futility out of the if() entirely and setting a local to the output, then testing the local.",
+      "revId": "f56ffbfea5db8944281f7fab7ddf34fea4e18762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
