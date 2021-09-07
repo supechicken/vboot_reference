@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "641399eb_5589c766",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-07T09:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc17da52_0e045474",
+      "revId": "9e7a36b4fb120a55086fa8ff93c8955f73ddfa83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac5a7a16_8cf7c8c6",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-27T01:34:41Z",
       "side": 1,
       "message": "I think this should also check for !MANUAL_RECOVERY",
+      "revId": "9e7a36b4fb120a55086fa8ff93c8955f73ddfa83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38be2e6_9d29c57b",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-07T09:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac5a7a16_8cf7c8c6",
       "revId": "9e7a36b4fb120a55086fa8ff93c8955f73ddfa83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
