@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "118cc029_337d8f7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-09-08T07:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5964c774_1adbc3d4",
+      "revId": "971d3ff221d7cc160151e27b96d05be5cecf3f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e19368a_a420389d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20895b4_f44aafcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-09-08T07:19:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e19368a_a420389d",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "971d3ff221d7cc160151e27b96d05be5cecf3f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11475749_38dede81",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-09-08T05:56:30Z",
       "side": 1,
       "message": "Can we move the whole section to depthcharge?",
+      "revId": "971d3ff221d7cc160151e27b96d05be5cecf3f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0eef79_f7559750",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-09-08T07:19:07Z",
+      "side": 1,
+      "message": "I remember that there will be conflicts if we only removed the VB_ prefix. libpayload have a KEY_F macro.\n\nOr, replace VB_ with UI_? But I\u0027m not sure whether this part belongs to UI.",
+      "parentUuid": "11475749_38dede81",
       "revId": "971d3ff221d7cc160151e27b96d05be5cecf3f9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
