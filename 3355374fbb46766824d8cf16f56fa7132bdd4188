@@ -68,6 +68,42 @@
       "message": "BTW we still need the menu entries for this feature, right? Ctrl+R was not intended to be the only (or primary) way to trigger NBR. In particular, I believe(?) we also wanted a (less prominent) menu entry that explicitly allows booting the non-prioritized miniOS partition. Just want to make sure that didn\u0027t get forgotten among all the other stuff.",
       "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bb690a_e0c0d223",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-08T02:28:24Z",
+      "side": 1,
+      "message": "Yes, I think eventually we want a menu item in recovery UI. @kimjae could you confirm?\n\nJulius, can we do it in a follow-up patch? Alternatively, we could get rid of the 2ui.c change in this CL, and add all UI changes (including Ctrl-R shortcut and menu item) in the next CL (that might be even in depthcharge if UI code has been removed from vboot at that time).",
+      "parentUuid": "1703a74d_fc0732ca",
+      "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "215f6e65_24fc1dd3",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-08T02:28:24Z",
+      "side": 1,
+      "message": "Duplicate comment.",
+      "parentUuid": "ad8b3374_156b3410",
+      "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
