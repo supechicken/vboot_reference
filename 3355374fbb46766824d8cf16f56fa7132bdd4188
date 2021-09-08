@@ -104,6 +104,24 @@
       "parentUuid": "ad8b3374_156b3410",
       "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dacd2abe_32e58c1d",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-08T02:33:19Z",
+      "side": 1,
+      "message": "\u003eYes, I think eventually we want a menu item in recovery UI. @kimjae could you confirm?\n\nI haven\u0027t seen any discussion or docs in regards to this recovery UI change.\nLink here for reference?\n\n\u003eJulius, can we do it in a follow-up patch?\n\n+1 to followup. As ctrl+R is an option.",
+      "parentUuid": "45bb690a_e0c0d223",
+      "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
