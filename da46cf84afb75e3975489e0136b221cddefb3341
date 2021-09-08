@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d957dc_8117c0d4",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-09-08T05:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f074b0c8_b59e44bc",
+      "revId": "da46cf84afb75e3975489e0136b221cddefb3341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cfb4f90_617b378f",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-08T04:36:27Z",
       "side": 1,
       "message": "We don\u0027t need 2ui.h anymore.",
+      "revId": "da46cf84afb75e3975489e0136b221cddefb3341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6414f051_6b62a0a4",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1516107
+      },
+      "writtenOn": "2021-09-08T05:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cfb4f90_617b378f",
       "revId": "da46cf84afb75e3975489e0136b221cddefb3341",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
