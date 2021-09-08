@@ -122,6 +122,24 @@
       "parentUuid": "45bb690a_e0c0d223",
       "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de919ebf_9200d7f6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-08T02:51:28Z",
+      "side": 1,
+      "message": "\u003e I haven\u0027t seen any discussion or docs in regards to this recovery UI change.\n\nSo, basically every functionality needs to be supported \"officially\" by the menu-based navigation (that is, by pressing only Up, Down and Enter). Keyboard shortcuts such as TAB, Ctrl-D, Ctrl-R are only secondary ways to achieve the same thing, and are often not documented in user-facing documents.",
+      "parentUuid": "dacd2abe_32e58c1d",
+      "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
