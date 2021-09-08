@@ -397,6 +397,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed7fb3c8_37b095a4",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-08T12:45:26Z",
+      "side": 1,
+      "message": "no \"either\"",
+      "parentUuid": "7c1dbfb0_1199a6a1",
+      "range": {
+        "startLine": 200,
+        "startChar": 62,
+        "endLine": 200,
+        "endChar": 76
+      },
+      "revId": "7efe9bbeae91616261dc727581ecd8081c408b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dabb5ae5_bc56b343",
         "filename": "firmware/2lib/include/2ui.h",
         "patchSetId": 14
