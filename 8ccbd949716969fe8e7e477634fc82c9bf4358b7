@@ -22,6 +22,30 @@
       },
       "revId": "8ccbd949716969fe8e7e477634fc82c9bf4358b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbcf7d8_eb70e582",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-08T02:05:02Z",
+      "side": 1,
+      "message": "Good catch, but this won\u0027t cause blocker.\nSimply log nothing: simple fix for this https://crrev.com/c/3146295",
+      "parentUuid": "cb7c5598_6aecf32e",
+      "range": {
+        "startLine": 911,
+        "startChar": 46,
+        "endLine": 911,
+        "endChar": 53
+      },
+      "revId": "8ccbd949716969fe8e7e477634fc82c9bf4358b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
