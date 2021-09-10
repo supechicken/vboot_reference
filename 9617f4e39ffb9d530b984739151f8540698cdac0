@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99eed50a_a7fe28a9",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-10T00:48:17Z",
+      "side": 1,
+      "message": "No this isn\u0027t correct either. In the VB2_ERROR_API_PHASE1_SECDATA_REBOOT case, none of the fields checked by set_boot_mode() are initialized yet.\n\nPlease just fix it the way I suggested (by removing the early return from the vb2_check_dev_switch() failure, and then calling set_boot_mode() right before the final check for returning with VB2_ERROR_API_PHASE1_RECOVERY.",
+      "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
