@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c49857_519b5357",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-10T01:33:02Z",
+      "side": 1,
+      "message": "This isn\u0027t really necessary anymore since you only call this from somewhere where you already know you\u0027re in recovery mode now.\n\nIn fact, I think you can just inline this whole check as\n\n if (vb2_get_gbb(ctx)-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY ||\n     (!(ctx-\u003eflags \u0026 VB2_CONTEXT_NO_BOOT) \u0026\u0026 (ctx-\u003eflags \u0026 VB2_CONTEXT_EC_TRUSTED)))",
+      "revId": "6339ef08369d242fbec146ac085dac56daaa987e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290fda00_6b70e091",
+        "filename": "firmware/2lib/2ui_screens.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-10T01:33:02Z",
+      "side": 1,
+      "message": "This would also be better as !MANUAL_RECOVERY",
+      "revId": "6339ef08369d242fbec146ac085dac56daaa987e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
