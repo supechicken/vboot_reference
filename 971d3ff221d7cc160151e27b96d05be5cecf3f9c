@@ -116,6 +116,24 @@
       "parentUuid": "11475749_38dede81",
       "revId": "971d3ff221d7cc160151e27b96d05be5cecf3f9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16e561e_374cdd4d",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-14T03:28:43Z",
+      "side": 1,
+      "message": "\u003e libpayload have a KEY_F macro.\n\nIt\u0027s define in keycodes.h, which isn\u0027t included in libpayload.h.",
+      "parentUuid": "3c0eef79_f7559750",
+      "revId": "971d3ff221d7cc160151e27b96d05be5cecf3f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
