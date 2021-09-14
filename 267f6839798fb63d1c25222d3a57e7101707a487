@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be3ed7e_0435faa2",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-14T23:24:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to change (it makes no difference, but rv can only be VB2_SUCCESS here, so putting that there directly is clearer).",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 10
+      },
+      "revId": "267f6839798fb63d1c25222d3a57e7101707a487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

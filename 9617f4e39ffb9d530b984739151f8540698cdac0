@@ -34,6 +34,24 @@
       "parentUuid": "99eed50a_a7fe28a9",
       "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42dfae13_199465a7",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-14T23:24:52Z",
+      "side": 1,
+      "message": "No, because it also calls vb2api_fail() in that path, and that will cause it to later exit with VB2_ERROR_API_PHASE1_RECOVERY.",
+      "parentUuid": "7e5e2767_6a526a63",
+      "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
