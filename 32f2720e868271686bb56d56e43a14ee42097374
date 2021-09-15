@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa36b565_a7229877",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-15T06:55:25Z",
+      "side": 1,
+      "message": "This should always evaluate to false when VB2_CONTEXT_NO_BOOT.\n\n !VB2_CONTEXT_NO_BOOT \u0026\u0026\n (VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY || VB2_CONTEXT_EC_TRUSTED)",
+      "range": {
+        "startLine": 735,
+        "startChar": 7,
+        "endLine": 738,
+        "endChar": 45
+      },
+      "revId": "32f2720e868271686bb56d56e43a14ee42097374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
