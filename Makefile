@@ -172,6 +172,10 @@ COMMON_FLAGS += $(call test_ccflag,-Wno-unknown-warning)
 LDFLAGS += -Wl,--gc-sections
 
 ifneq (${DEBUG},)
+TEST_PRINT := 1
+endif
+
+ifneq ($(filter-out 0,${TEST_PRINT}),)
 CFLAGS += -DVBOOT_DEBUG
 endif
 
