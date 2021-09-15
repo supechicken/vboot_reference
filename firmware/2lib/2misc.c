@@ -124,6 +124,8 @@ void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, reason);
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, subcode);
 	}
+
+	ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
 }
 
 void vb2_check_recovery(struct vb2_context *ctx)

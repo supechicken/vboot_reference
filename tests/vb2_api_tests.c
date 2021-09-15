@@ -301,11 +301,14 @@ static void misc_tests(void)
 
 	/* Test fail passthru */
 	reset_common_data(FOR_MISC);
+	ctx->flags &= ~VB2_CONTEXT_RECOVERY_MODE;
 	vb2api_fail(ctx, 12, 34);
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		12, "vb2api_fail request");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE),
 		34, "vb2api_fail subcode");
+	TEST_TRUE(ctx->flags & VB2_CONTEXT_RECOVERY_MODE,
+		  "vb2api_fail request recovery");
 
 	/* Test get_firmware_size() */
 	reset_common_data(FOR_MISC);
