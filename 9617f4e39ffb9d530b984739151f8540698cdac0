@@ -52,6 +52,24 @@
       "parentUuid": "7e5e2767_6a526a63",
       "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5575c676_4ab6e4d5",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-15T02:26:44Z",
+      "side": 1,
+      "message": "Wait, vb2api_fail() only sets recovery request in nvdata. It doesn\u0027t change the VB2_CONTEXT_RECOVERY_MODE flag, does it?",
+      "parentUuid": "42dfae13_199465a7",
+      "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
