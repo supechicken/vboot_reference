@@ -70,6 +70,24 @@
       "parentUuid": "42dfae13_199465a7",
       "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f8d712_767b3b79",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-15T09:18:51Z",
+      "side": 1,
+      "message": "It does not set recovery request, and will result in unit test failed at:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/tests/vb2_api_tests.c;l\u003d390\n\nSo apparently it does not change the VB2_CONTEXT_RECOVERY_MODE flag.\n\nWhat is the suggested fix?\n1. set the flag in vb2api_fail\n2. use the nv data only to determine if we should return VB2_ERROR_API_PHASE1_RECOVERY\n3. use nv data or flag to determine if we should return VB2_ERROR_API_PHASE1_RECOVERY\n\nSince we are seperating the \u0027source of truth of recovery\u0027 (VB2_CONTEXT_RECOVERY_MODE) and \u0027boot mode\u0027, I think we should use 1.?\n\nWDYT?",
+      "parentUuid": "5575c676_4ab6e4d5",
+      "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
