@@ -158,6 +158,24 @@
       "parentUuid": "de919ebf_9200d7f6",
       "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db07a286_f08c27d6",
+        "filename": "firmware/2lib/2ui.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-15T05:57:39Z",
+      "side": 1,
+      "message": "As the UI code has been moved to depthcharge [CL:3139540], I\u0027ll create 2 extra CLs in depthcharge for Ctrl-R [CL:3161529] and the menu item, respectively.",
+      "parentUuid": "0e56fd74_e3e0ac46",
+      "revId": "3355374fbb46766824d8cf16f56fa7132bdd4188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
