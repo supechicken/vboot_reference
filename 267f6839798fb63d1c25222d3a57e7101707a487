@@ -22,6 +22,30 @@
       },
       "revId": "267f6839798fb63d1c25222d3a57e7101707a487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "922100d2_352288b6",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-15T09:21:39Z",
+      "side": 1,
+      "message": "The unit test will fail at:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/tests/vb2_api_tests.c;l\u003d390\n\nWhich means it will return VB2_SUCCESS.\n\nLet\u0027s discuss further in another thread https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2944250/comment/99eed50a_a7fe28a9/",
+      "parentUuid": "5be3ed7e_0435faa2",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 10
+      },
+      "revId": "267f6839798fb63d1c25222d3a57e7101707a487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
