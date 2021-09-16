@@ -718,6 +718,8 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 	enum vb2_boot_mode *boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
 	*boot_mode = VB2_BOOT_MODE_NORMAL;
 
+	VB2_DEBUG("EC TRUSTED: %d\n", !!(ctx->flags & VB2_CONTEXT_EC_TRUSTED));
+
 	/*
 	 * The only way to pass this check and proceed to the recovery process
 	 * is to physically request a recovery (a.k.a. manual recovery).  All
@@ -742,4 +744,6 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 		*boot_mode = VB2_BOOT_MODE_DIAGNOSTICS;
 	else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
 		*boot_mode = VB2_BOOT_MODE_DEVELOPER;
+
+	VB2_DEBUG("boot_mode: %d\n", *boot_mode);
 }
