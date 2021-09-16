@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b9ff06_05665d80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-16T01:02:52Z",
+      "side": 1,
+      "message": "Oh, okay, I missed that issue. This is not the correct fix though, vb2api_fail() can also be called in many other contexts (e.g. after vb2api_fw_phase1()) where it wouldn\u0027t be correct to set that flag. I think the correct fix is to move vb2_check_recovery() further down in vb2api_fw_phase1().",
+      "revId": "2a1331042d7682de557312012c44233a60f69ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
