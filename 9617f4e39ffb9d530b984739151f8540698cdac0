@@ -124,6 +124,24 @@
       "parentUuid": "cb6e6aba_1775b4e7",
       "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e86fc3b_7bbd91c2",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-16T07:05:07Z",
+      "side": 1,
+      "message": "Your link to CL seems pointing more then one CL for unknown reason.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/300621\n\nYes, based on that CL, we can not reverse the orther either.\nBut since any return code from vb2api_fw_phase1 will trigger vboot_logic/verstage_main to call vboot_reboot() anyway, why it is not acceptable for a early return here?",
+      "parentUuid": "8e31a6ae_b8596e61",
+      "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
