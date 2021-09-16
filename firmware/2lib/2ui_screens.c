@@ -274,6 +274,11 @@ static const struct vb2_screen_info recovery_broken_screen = {
 
 vb2_error_t advanced_options_init(struct vb2_ui_context *ui)
 {
+	//XXX
+	VB2_DEBUG("boot_mode: %d\n", ui->ctx->boot_mode);
+	VB2_DEBUG("EC TRUSTED: %d\n", !!(ui->ctx->flags |=
+					 VB2_CONTEXT_EC_TRUSTED));
+
 	ui->state->selected_item = ADVANCED_OPTIONS_ITEM_DEVELOPER_MODE;
 	if (vb2_get_sd(ui->ctx)->flags & VB2_SD_FLAG_DEV_MODE_ENABLED ||
 	    ui->ctx->boot_mode != VB2_BOOT_MODE_MANUAL_RECOVERY) {
