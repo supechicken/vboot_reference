@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0c7e92_fb91a7da",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-16T01:05:39Z",
+      "side": 1,
+      "message": "nit: I think this would look a little better as just\n\n ifneq (${DEBUG}$(filter-out 0,${TEST_PRINT}),)\n\n(because DEBUG doesn\u0027t really have anything to do with tests and setting TEST_PRINT for it seems weird).",
+      "revId": "8fcae47052b0d6521fa4b6863f5375538a99d4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
