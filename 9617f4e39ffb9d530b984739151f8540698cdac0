@@ -142,6 +142,24 @@
       "parentUuid": "8e31a6ae_b8596e61",
       "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9becd8_32227542",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-16T23:41:32Z",
+      "side": 1,
+      "message": "Okay, yeah, I should have looked more closely. So there was never actually a need to run set_boot_mode() before that return, because it\u0027s a return to reboot anyway and that should be fine.\n\nHowever, looking through this I also think that the original problem from CL:300621 doesn\u0027t really exist anymore, because we have since changed the secdata accessor functions so that they cannot fail (and thus vb2_check_dev_switch() as a whole cannot fail and return that early). So while this isn\u0027t directly related to boot_mode, I believe we could now basically revert CL:300621 and return to the simpler code it had earlier.",
+      "parentUuid": "4e86fc3b_7bbd91c2",
+      "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
