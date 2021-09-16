@@ -106,6 +106,24 @@
       "parentUuid": "59f8d712_767b3b79",
       "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e31a6ae_b8596e61",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-16T02:03:43Z",
+      "side": 1,
+      "message": "From Julius:\n\n\u003e I think the correct fix is to move vb2_check_recovery() further down in vb2api_fw_phase1().\n\nvb2_check_dev_switch() seems to be intentionally put after vb2_check_recovery(), in order to allow GBB-forced dev mode even when TPM is bad. See CL:300621.",
+      "parentUuid": "cb6e6aba_1775b4e7",
+      "revId": "9617f4e39ffb9d530b984739151f8540698cdac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
