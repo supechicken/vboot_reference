@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc334652_6cd4711f",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-17T05:37:11Z",
+      "side": 1,
+      "message": "Why do we need this for fwlib? Shouldn\u0027t coreboot and depthcharge implement their own vb2ex_* functions by themselves? Other stub functions are only included when FIRMWARE_ARCH is empty.",
+      "revId": "e24a6f60c11ce3d616cb1932da6395a72c5b8bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
