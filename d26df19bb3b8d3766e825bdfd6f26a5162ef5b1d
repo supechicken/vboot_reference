@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1926f8_1531039c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-09-20T03:09:43Z",
+      "side": 1,
+      "message": "The change for vbutil_what_keys is ok because it is on DUT.\nThe image_signing may have problem because it is the signing kit, and if we try to sign old images (especially old factory branches) then it may fail.",
+      "revId": "d26df19bb3b8d3766e825bdfd6f26a5162ef5b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
