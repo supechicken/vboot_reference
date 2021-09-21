@@ -34,6 +34,24 @@
       "parentUuid": "dc334652_6cd4711f",
       "revId": "e24a6f60c11ce3d616cb1932da6395a72c5b8bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50244703_74a613ba",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-21T23:06:23Z",
+      "side": 1,
+      "message": "I think having these weak stubs in vboot is fine to be honest, makes things less complicated for the firmware linking the library. I guess we can remove the weak hwcrypto_digest stubs from coreboot\u0027s vboot_logic.c, then.",
+      "parentUuid": "6c47d8ac_a422a20a",
+      "revId": "e24a6f60c11ce3d616cb1932da6395a72c5b8bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
