@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2f0aa3e0_c6f87214",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T18:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "709ad1b5_7972cc90",
+      "range": {
+        "startLine": 49,
+        "startChar": 52,
+        "endLine": 49,
+        "endChar": 57
+      },
+      "revId": "9d760800ce14ab3aa9375dd0b517d61e2b5bb334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d7ac8fe4_bf03a26c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "\u003e and how we should invoke this function in practice (e.g., signer)?\n\nThe commit message \u0026 comments already provided some samples, but what I want to know is how we can decide the -R.\n\nCurrently we have RO_SECTION, WP_RO, RO_VPD, .... will there be a new section to define \u0027section for computing RO hash\u0027? That may be easier",
       "parentUuid": "d7ac8fe4_bf03a26c",
+      "revId": "9d760800ce14ab3aa9375dd0b517d61e2b5bb334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a719c9be_916cc015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T18:51:51Z",
+      "side": 1,
+      "message": "What ranges are covered by the check remains open - the smaller the range the better, it should be some bootblock/verstage code which is able to verify the rest of WP_RO. Maybe a linker section could be dedicated to this code and then this section offset/size would be passed in the -R list.\n\nI uploaded an FMAP modification patch example: https://crrev.com/c/3176263",
+      "parentUuid": "be63d47f_a24bd9cd",
       "revId": "9d760800ce14ab3aa9375dd0b517d61e2b5bb334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
