@@ -656,6 +656,7 @@ FUTIL_SRCS = \
 	futility/cmd_gbb_utility.c \
 	futility/cmd_load_fmap.c \
 	futility/cmd_pcr.c \
+	futility/cmd_ro_sign.c \
 	futility/cmd_show.c \
 	futility/cmd_sign.c \
 	futility/cmd_update.c \
@@ -663,9 +664,8 @@ FUTIL_SRCS = \
 	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_kernel.c \
+	futility/cmd_vbutil_key.c \
 	futility/cmd_vbutil_keyblock.c \
-	futility/cmd_vbutil_key.c \
-	futility/cmd_vbutil_key.c \
 	futility/file_type_bios.c \
 	futility/file_type.c \
 	futility/file_type_rwsig.c \
