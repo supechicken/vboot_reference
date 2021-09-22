@@ -39,6 +39,41 @@
       "message": "any reference for examples of how FMAP should be modified, and how we should invoke this function in practice (e.g., signer)?",
       "revId": "9d760800ce14ab3aa9375dd0b517d61e2b5bb334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c56bbd4c_f1ebc356",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-09-22T06:45:43Z",
+      "side": 1,
+      "message": "how do we",
+      "revId": "9d760800ce14ab3aa9375dd0b517d61e2b5bb334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be63d47f_a24bd9cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-09-22T06:45:43Z",
+      "side": 1,
+      "message": "\u003e and how we should invoke this function in practice (e.g., signer)?\n\nThe commit message \u0026 comments already provided some samples, but what I want to know is how we can decide the -R.\n\nCurrently we have RO_SECTION, WP_RO, RO_VPD, .... will there be a new section to define \u0027section for computing RO hash\u0027? That may be easier",
+      "parentUuid": "d7ac8fe4_bf03a26c",
+      "revId": "9d760800ce14ab3aa9375dd0b517d61e2b5bb334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
