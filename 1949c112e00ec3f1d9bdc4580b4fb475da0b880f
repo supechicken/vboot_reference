@@ -16,6 +16,24 @@
       "message": "Are we sure this won\u0027t lead to build errors on non-x86 hosts? Right now, it seems like compilation of this file is not guarded in any way. It would be nice if you could modify the Makefile so this will only be built on an x86 host.",
       "revId": "1949c112e00ec3f1d9bdc4580b4fb475da0b880f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c355716_64ebd67e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-09-22T05:21:35Z",
+      "side": 1,
+      "message": "Yep, I\u0027ll check that in CL:3141250.",
+      "parentUuid": "e57c539c_a4e0f3dd",
+      "revId": "1949c112e00ec3f1d9bdc4580b4fb475da0b880f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
