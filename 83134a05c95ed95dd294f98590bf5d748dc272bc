@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "897fe3c6_a9ff4863",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-09-23T01:55:15Z",
+      "side": 1,
+      "message": "I just saw your comment \u0027 the smaller the range the better, it should be some bootblock/verstage code which is able to verify the rest of WP_RO\u0027\n\nIn that case I\u0027d prefer another explicit section for example RO_VERIFIED, containing all the area we should take care of.\n\nAlthough, it creates another problem of how we find and identify the FMAP area correctly without being tampered... Maybe having the ranges in the signed data as well.",
+      "parentUuid": "67673d32_a9011f24",
+      "range": {
+        "startLine": 80,
+        "startChar": 39,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06394ed1_c049b9ee",
         "filename": "futility/cmd_ro_sign.c",
         "patchSetId": 3
