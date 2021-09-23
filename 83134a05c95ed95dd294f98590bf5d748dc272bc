@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "001f72dd_37c53ac8",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17a4e98_8561fa34",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32f5b1ee_8e629e27",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-23T01:41:38Z",
       "side": 1,
       "message": "I know we had lots of code calling BIOS, but is it possible to replace this with \u0027AP firmware\u0027 or just \u0027firmware (image)\u0027?",
+      "range": {
+        "startLine": 37,
+        "startChar": 38,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b77e3e1_23531959",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32f5b1ee_8e629e27",
       "range": {
         "startLine": 37,
         "startChar": 38,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e3335e_ae2d6fa0",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28cbb68b_59576a26",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4539808e_9af67a6e",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-23T00:46:47Z",
       "side": 1,
       "message": "Since it can both sign and validate, how about just calling the command `futility gscvd`? (I think we should also integrate this functionality into `futility sign` anyway, but that can come in a later CL.)",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 16
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7b1a29_e9a172bd",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4539808e_9af67a6e",
       "range": {
         "startLine": 76,
         "startChar": 9,
@@ -158,6 +248,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa181fb0_0a8dab92",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "the idea is that this utility will be used by a script which will be able to figure out what exactly needs to be covered by the signature, from various soruces like fmap, linker map, etc.",
+      "parentUuid": "b3dcfa96_c4f2b949",
+      "range": {
+        "startLine": 80,
+        "startChar": 39,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06394ed1_c049b9ee",
@@ -175,6 +289,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4774a08f_65d32b7b",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "The purpose of this value is to be able to create a structure containing an array of ranges and pass it around, as opposed to passing around a pointer to the base of the array, which always makes me nervous, as it is not clear in this case how much room there is in the array.",
+      "parentUuid": "06394ed1_c049b9ee",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6c596e9_766e30ea",
@@ -188,6 +320,30 @@
       "writtenOn": "2021-09-23T01:41:38Z",
       "side": 1,
       "message": "It may be confusing if we call the function \u0027read\u0027 and actually returning a handle with RW...\n\nI\u0027m also concerned if the program terminates before we complete some of the works, the file will be in a corrupted state.\n\nCan we only read, and modify in memory, and eventually just write_firmware_image to output in more atomic way?",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 28
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506b367a_09bada59",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "changed the name to load_ap_firmware(). I am following the pattern of `futility sign` here, it also maps the input file into memory and processes it, just want to be consistent.",
+      "parentUuid": "a6c596e9_766e30ea",
       "range": {
         "startLine": 143,
         "startChar": 22,
@@ -221,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddaaead3_561d4fde",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "the caller invokes futil_unmap_file() in the end.",
+      "parentUuid": "5cc25096_0f7baeef",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 10
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "305d5fc4_3fd739b2",
@@ -234,6 +414,30 @@
       "writtenOn": "2021-09-23T01:41:38Z",
       "side": 1,
       "message": "will %#x be even better?",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 186,
+        "endChar": 26
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c8e934_609bedcc",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305d5fc4_3fd739b2",
       "range": {
         "startLine": 186,
         "startChar": 25,
@@ -263,6 +467,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c64d993_79009fb4",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "this is not how the size field is defined, it covers the gsc_verifcation_data header and the ranges array, the rest is not part of this structure, I\u0027ll add a comment in the .h file.",
+      "parentUuid": "d7e12cff_b5a563ae",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9be21ae2_ac31c559",
         "filename": "futility/cmd_ro_sign.c",
         "patchSetId": 3
@@ -274,6 +496,24 @@
       "writtenOn": "2021-09-23T00:46:47Z",
       "side": 1,
       "message": "As mentioned in the doc, the struct vb2_signature should be part of struct gsc_verification_data (and then you can do this with vb2_init_signature and vb2_copy_signature, like in vb2_create_fw_preamble()).",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc70f33b_5ed2bfc9",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "this does not buy us much here and complicates the embedded side which does not have those helper funtions.",
+      "parentUuid": "9be21ae2_ac31c559",
       "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -295,6 +535,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d726fe_d9ff00a6",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "let\u0027s discuss this more outside of this review, I hope to be able to convince you :)",
+      "parentUuid": "3af1221c_f7fab007",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24bfdc85_2975293d",
@@ -312,6 +570,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e69887_a7ffd512",
+        "filename": "host/lib/include/gsc_ro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24bfdc85_2975293d",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3b91929_b527d5b7",
@@ -325,6 +601,24 @@
       "writtenOn": "2021-09-23T00:46:47Z",
       "side": 1,
       "message": "What exactly is this -- size of the struct, or size of the whole verification data (including variable-length parts)? My assumption was that it would be the latter but comment reads like it\u0027s the former. (For example, the comment on struct vb2_keyblock says \"Length of this entire keyblock, including keys, signatures, and padding, in bytes\" for clarification.)",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e9e110_e3775cbd",
+        "filename": "host/lib/include/gsc_ro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:19:31Z",
+      "side": 1,
+      "message": "added a comment.",
+      "parentUuid": "f3b91929_b527d5b7",
       "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
