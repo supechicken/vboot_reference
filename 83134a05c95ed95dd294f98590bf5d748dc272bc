@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17a4e98_8561fa34",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "I don\u0027t know why this used to be here twice to begin with, but if you\u0027re already moving it you might as well fix that.",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cbb68b_59576a26",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "\"in the Chrome OS BIOS image, or allows to validate\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4539808e_9af67a6e",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "Since it can both sign and validate, how about just calling the command `futility gscvd`? (I think we should also integrate this functionality into `futility sign` anyway, but that can come in a later CL.)",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 16
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06394ed1_c049b9ee",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "I don\u0027t really get why this needs to have a hardcoded limit. Can\u0027t the GSC just read and verify each range one by one as it goes through the list? Why would it ever need a limited buffer to store the total?",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e12cff_b5a563ae",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "This should include everything up to and including the signature (and possible padding) so it can be used to find the keyblock that is placed after this structure.",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be21ae2_ac31c559",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "As mentioned in the doc, the struct vb2_signature should be part of struct gsc_verification_data (and then you can do this with vb2_init_signature and vb2_copy_signature, like in vb2_create_fw_preamble()).",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af1221c_f7fab007",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "As mentioned in the doc, this should be anchored in struct gsc_verification_data, not just floating around (and then you can do this with vb2_init_packed_key and vb2_copy_packed_key, similar to the kernel_subkey in vb2_create_fw_preamble()). It should be counted in (struct gsc_verification_data).size, but should not be covered by the signature.",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24bfdc85_2975293d",
+        "filename": "host/lib/include/gsc_ro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "For namespacing I think we should call this gscvd_ro_range.",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b91929_b527d5b7",
+        "filename": "host/lib/include/gsc_ro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "What exactly is this -- size of the struct, or size of the whole verification data (including variable-length parts)? My assumption was that it would be the latter but comment reads like it\u0027s the former. (For example, the comment on struct vb2_keyblock says \"Length of this entire keyblock, including keys, signatures, and padding, in bytes\" for clarification.)",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e08245_93aeed32",
+        "filename": "host/lib/include/gsc_ro.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T00:46:47Z",
+      "side": 1,
+      "message": "As mentioned on doc I don\u0027t think we should hardcode anything here, I think the hash should become a variable-length field after this struct.",
+      "range": {
+        "startLine": 47,
+        "startChar": 23,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
