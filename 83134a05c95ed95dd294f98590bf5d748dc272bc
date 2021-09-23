@@ -136,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3dcfa96_c4f2b949",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:19:35Z",
+      "side": 1,
+      "message": "The long term plan for this is to tie into coreboot CBFS verification, in which case this just needs to verify the coreboot bootblock. In order to get the right offsets for that it will have to chain-call cbfstool (x86 bootblocks do not have their own FMAP section). I would suggest landing this like this for now and then adding that functionality later (maybe as the default -R without arguments like you say, or maybe with a special argument like -R cbfs).",
+      "parentUuid": "897fe3c6_a9ff4863",
+      "range": {
+        "startLine": 80,
+        "startChar": 39,
+        "endLine": 80,
+        "endChar": 65
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06394ed1_c049b9ee",
         "filename": "futility/cmd_ro_sign.c",
         "patchSetId": 3
