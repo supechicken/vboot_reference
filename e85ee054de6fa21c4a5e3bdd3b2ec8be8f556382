@@ -22,6 +22,30 @@
       },
       "revId": "e85ee054de6fa21c4a5e3bdd3b2ec8be8f556382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd239245_a6b9717e",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-09-23T23:55:52Z",
+      "side": 1,
+      "message": "2sha256_x86.c has the sha256 implementation using sha-ni, so we need to link it to the test.",
+      "parentUuid": "8579ee1a_900f9d2b",
+      "range": {
+        "startLine": 778,
+        "startChar": 29,
+        "endLine": 778,
+        "endChar": 73
+      },
+      "revId": "e85ee054de6fa21c4a5e3bdd3b2ec8be8f556382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
