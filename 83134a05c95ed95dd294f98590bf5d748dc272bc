@@ -354,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49cf7b5_7418df5d",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-09-24T01:46:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "506b367a_09bada59",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 28
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cc25096_0f7baeef",
@@ -391,6 +415,30 @@
       "side": 1,
       "message": "the caller invokes futil_unmap_file() in the end.",
       "parentUuid": "5cc25096_0f7baeef",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 10
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3abd459c_bc60b9c3",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-09-24T01:46:40Z",
+      "side": 1,
+      "message": "but given we don\u0027t return the fd, if futil_map_file failed, then futil_unmap_file still can\u0027t close the handle.",
+      "parentUuid": "ddaaead3_561d4fde",
       "range": {
         "startLine": 165,
         "startChar": 8,
