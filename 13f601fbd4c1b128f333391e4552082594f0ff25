@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c63e26_c2fef699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T21:36:25Z",
+      "side": 1,
+      "message": "Might be worth sending a PSA to chromeos-kernel@ that this landed, Yu-Ping. Developers who update their firmware without having updated their kernel (or repo-synced vboot_reference) recently will get issues from this.",
+      "revId": "13f601fbd4c1b128f333391e4552082594f0ff25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
