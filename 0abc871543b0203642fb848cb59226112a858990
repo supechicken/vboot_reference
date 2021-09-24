@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3906066_e2fdecbf",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T22:43:43Z",
+      "side": 1,
+      "message": "Sorry, my fault again. ^^ But this would make the system always boot in recovery mode all the time (no way to get back to normal mode) when that GBB flag is set, that\u0027s not the point of it either. That flag is basically supposed to disable the BROKEN screen so that it always becomes manual recovery.\n\nAlso, you still have sd-\u003erecovery_reason below now, that is too broad -- you actually need to check VB2_CONTEXT_FORCE_RECOVERY_MODE like I wrote. (Oh, I just noticed I accidentally wrote VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY as well there, those two sound so similar, that was probably the issue.)\n\nOkay, anyway, new try (maybe this will make it read a bit more intuitive). How about this:\n\n if ((ctx-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY) \u0026\u0026\n     !(ctx-\u003eflags \u0026 VB2_CONTEXT_NO_BOOT) \u0026\u0026\n     (ctx-\u003eflags \u0026 VB2_CONTEXT_EC_TRUSTED))) {\n         *boot_mode \u003d VB2_BOOT_MODE_MANUAL_RECOVERY;\n } else if (sd-\u003erecovery_reason) {\n         if ((vb2_get_gbb(ctx)-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY)\n                 *boot_mode \u003d VB2_BOOT_MODE_MANUAL_RECOVERY;\n         else\n                 *boot_mode \u003d VB2_BOOT_MODE_BROKEN_SCREEN;\n }\n\n\n(Basically saying: if we have a manual recovery, *and* H1 thinks the EC is trusted, then boot manual recovery. Otherwise, if we have a recovery reason, boot the broken screen -- *unless* that GBB flag is set, then the broken screen is always treated like it was manual recovery.)",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
