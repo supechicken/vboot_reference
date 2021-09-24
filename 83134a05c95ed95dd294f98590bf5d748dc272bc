@@ -449,6 +449,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e0dc8b_f5936c1d",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-24T20:30:45Z",
+      "side": 1,
+      "message": "I was following the cmd_sign pattern, which does not call close() futil_unmap_file(). fd is passed to futil_unmap_file(), but is not used by it, I assumed that when mmap() is called the fd is saved and used when munmap() is called to close the file. This is not the case, actually.\n\nI added explicit closing the file in the end.",
+      "parentUuid": "3abd459c_bc60b9c3",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 10
+      },
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "305d5fc4_3fd739b2",
@@ -545,6 +569,24 @@
       "side": 1,
       "message": "That is inconsistent with how other vboot structures (like keyblocks or preambles) work though. They should have a size field for the whole size of everything referenced by the header data structure so a reader can know how many bytes to load right away, and so that one can figure out easily where the next top-level structure (in this case the platform key keyblock) starts. This is part of that general feedback that you shouldn\u0027t have all these other structures flying loosely around that need to be parsed one by one, they should all be tied to one versioned top level structure that contains a size field covering all of them.",
       "parentUuid": "1c64d993_79009fb4",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01282b97_6067d8c3",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-24T20:30:45Z",
+      "side": 1,
+      "message": "let\u0027s finish discussing the design doc first.",
+      "parentUuid": "f131eb89_fa027d7e",
       "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
