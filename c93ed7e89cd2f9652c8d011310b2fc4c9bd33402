@@ -16,6 +16,24 @@
       "message": "I think I made a mistake when suggesting this, because this still needs to check VB2_SD_FLAG_MANUAL_RECOVERY (or, better, we should deprecate that flag and just check VB2_CONTEXT_FORCE_RECOVERY_MODE directly). Otherwise, on the odd chance that the EC already happened to be in RO anyway, we may get here from an automatically-triggered recovery.\n\nMaybe best way you can make this look would be at the top level\n\n if ((vb2_get_gbb(ctx)-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY) ||\n     ((ctx-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY) \u0026\u0026\n      !(ctx-\u003eflags \u0026 VB2_CONTEXT_NO_BOOT) \u0026\u0026\n      (ctx-\u003eflags \u0026 VB2_CONTEXT_EC_TRUSTED))) {\n     *boot_mode \u003d VB2_BOOT_MODE_MANUAL_RECOVERY;\n } else if (sd-\u003erecovery_reason) {\n     *boot_mode \u003d VB2_BOOT_MODE_BROKEN_SCREEN;\n } else if ...\n\n(Please make sure you also run FAFT and confirm it still passes after this change.)",
       "revId": "c93ed7e89cd2f9652c8d011310b2fc4c9bd33402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91269ef4_2630126f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-24T10:04:14Z",
+      "side": 1,
+      "message": "Deprecated the VB2_SD_FLAG_MANUAL_RECOVERY in the same CL.\n\nWill update if the FAFT passed",
+      "parentUuid": "bfa3822b_7502d2ac",
+      "revId": "c93ed7e89cd2f9652c8d011310b2fc4c9bd33402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
