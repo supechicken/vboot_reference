@@ -533,6 +533,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f131eb89_fa027d7e",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T02:10:04Z",
+      "side": 1,
+      "message": "That is inconsistent with how other vboot structures (like keyblocks or preambles) work though. They should have a size field for the whole size of everything referenced by the header data structure so a reader can know how many bytes to load right away, and so that one can figure out easily where the next top-level structure (in this case the platform key keyblock) starts. This is part of that general feedback that you shouldn\u0027t have all these other structures flying loosely around that need to be parsed one by one, they should all be tied to one versioned top level structure that contains a size field covering all of them.",
+      "parentUuid": "1c64d993_79009fb4",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9be21ae2_ac31c559",
         "filename": "futility/cmd_ro_sign.c",
         "patchSetId": 3
@@ -562,6 +580,24 @@
       "side": 1,
       "message": "this does not buy us much here and complicates the embedded side which does not have those helper funtions.",
       "parentUuid": "9be21ae2_ac31c559",
+      "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec95dc2_1527f362",
+        "filename": "futility/cmd_ro_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T02:10:04Z",
+      "side": 1,
+      "message": "These helpers are just for creating these structures, not for reading them (although there are other helpers for reading/validating like vb2_check_keyblock()/vb2_verify_member_inside() which I think might be worth copying into GSC code, since they encapsulate the tricky aspects of range checking all these components).",
+      "parentUuid": "fc70f33b_5ed2bfc9",
       "revId": "83134a05c95ed95dd294f98590bf5d748dc272bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
