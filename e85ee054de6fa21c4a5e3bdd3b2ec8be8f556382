@@ -46,6 +46,30 @@
       },
       "revId": "e85ee054de6fa21c4a5e3bdd3b2ec8be8f556382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8158b656_8eea0ff3",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T21:51:18Z",
+      "side": 1,
+      "message": "I\u0027m just kinda confused why we need to both make it a prerequisite and add it to LIBS. I guess the prerequisite alone doesn\u0027t pull it into the build? But ${LIBS} also gets added to prerequisites in the rule on line 1136 (is that the relevant one?), so I\u0027m not sure why we need both?",
+      "parentUuid": "dd239245_a6b9717e",
+      "range": {
+        "startLine": 778,
+        "startChar": 29,
+        "endLine": 778,
+        "endChar": 73
+      },
+      "revId": "e85ee054de6fa21c4a5e3bdd3b2ec8be8f556382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
