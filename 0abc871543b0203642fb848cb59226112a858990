@@ -34,6 +34,24 @@
       "parentUuid": "b3906066_e2fdecbf",
       "revId": "0abc871543b0203642fb848cb59226112a858990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2eb817a_451f7952",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-27T22:02:48Z",
+      "side": 1,
+      "message": "Well I\u0027m not sure the allow_recovery() function was necessarily any clearer (especially in a model where RECOVERY and BROKEN are considered completely different modes and calling it \"allow\" doesn\u0027t really much sense anymore). If you look at the earlier CLs of how allow_recovery() was written you will also see plenty of back and forth until it arrived at the version that was committed, that\u0027s not necessarily unusual or a sign that the final code was bad.",
+      "parentUuid": "8f78c08e_6e238fe6",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
