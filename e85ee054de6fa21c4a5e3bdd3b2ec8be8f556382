@@ -70,6 +70,30 @@
       },
       "revId": "e85ee054de6fa21c4a5e3bdd3b2ec8be8f556382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78298615_dfcc17c7",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-09-27T05:28:41Z",
+      "side": 1,
+      "message": "tl;dr: If you remove any of \"LIBS +\u003d ${BUILD}/firmware/2lib/2sha256_x86.o\" or \"${BUILD}/firmware/2lib/2sha256_x86.o\" it won\u0027t be compiled.\n\nI\u0027m not the expert in make, but it looks like prerequisites are in parallel. In the end the rule is something like this;\n\n${BUILD}/tests/vb2_sha256_x86_tests: \\\n\t${LIBS} \\\n\tLIBS +\u003d ${BUILD}/firmware/2lib/2sha256_x86.o \\\n\tany other dependencies\n\t\nSo I think \"LIBS +\u003d ...\" only affects action, not the prerequisites itself. If we put \"LIBS +\u003d ...\" globally instead of in prerequisites it may work but I don\u0027t want to link sha256_x86.o to every tests.",
+      "parentUuid": "8158b656_8eea0ff3",
+      "range": {
+        "startLine": 778,
+        "startChar": 29,
+        "endLine": 778,
+        "endChar": 73
+      },
+      "revId": "e85ee054de6fa21c4a5e3bdd3b2ec8be8f556382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
