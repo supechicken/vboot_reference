@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b228a6d1_e2e141c3",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "-1 here? Actually, isn\u0027t the condition simply\n\n range-\u003eoffset \u003e\u003d ah-\u003earea_offset \u0026\u0026\n range-\u003eoffset + range-\u003esize \u003c\u003d ah-\u003earea_offset + ah-\u003earea_size",
+      "range": {
+        "startLine": 187,
+        "startChar": 40,
+        "endLine": 187,
+        "endChar": 41
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251d5ab2_8940cf3d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Looks like the number of errors is not used for the callers. Returning -1 on error may be simpler.\n\nOn the other hand, I wonder if it makes more sense to return \"the number of invalid ranges\", instead of the total number of errors.",
+      "range": {
+        "startLine": 229,
+        "startChar": 28,
+        "endLine": 229,
+        "endChar": 67
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5420b2_5f027e1c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "True, but we don\u0027t need to explicitly break here.",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 9
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb37226_bacac67f",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 686,
+        "startChar": 56,
+        "endLine": 686,
+        "endChar": 57
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1444ffb7_e95c6078",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Use vb2_unpack_key()?",
+      "range": {
+        "startLine": 747,
+        "startChar": 5,
+        "endLine": 747,
+        "endChar": 26
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b301c91_93d5688c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "packedk-\u003ekey_offset",
+      "range": {
+        "startLine": 748,
+        "startChar": 6,
+        "endLine": 748,
+        "endChar": 22
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a237faa_46e1bc29",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Is this valid C code? I thought we need to write {0}.",
+      "range": {
+        "startLine": 778,
+        "startChar": 17,
+        "endLine": 778,
+        "endChar": 19
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

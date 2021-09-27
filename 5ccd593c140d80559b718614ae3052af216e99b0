@@ -20,6 +20,195 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ce3eea2_a39a984b",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "MYNAME",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3ad770_84c72864",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "To be consistent with other futility commands:\n\n -r|--root_pub_key  \u003cfile\u003e   The main public key in .vbpubk format, used to...",
+      "range": {
+        "startLine": 83,
+        "startChar": 23,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f3db79_a2bc7e9d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "GSC verification data including the ranges array.",
+      "range": {
+        "startLine": 88,
+        "startChar": 47,
+        "endLine": 88,
+        "endChar": 67
+      },
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9272d61c_8a25ae99",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Missing \".\" at the end.",
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a7ecd4_4137c21a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Can we use vb2_unpack_key()?",
+      "range": {
+        "startLine": 574,
+        "startChar": 5,
+        "endLine": 574,
+        "endChar": 26
+      },
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03a4323_74dbaa5d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Simply use\n\n (static) uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]\n     __attribute__((aligned(VB2_WORKBUF_ALIGN)));;\n struct vb2_workbuf wb;\n vb2_workbuf_init(\u0026wb, workbuf, sizeof(workbuf));",
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fb5865_7f62dcf2",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Use vb2_unpack_key()?",
+      "range": {
+        "startLine": 639,
+        "startChar": 5,
+        "endLine": 639,
+        "endChar": 26
+      },
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12dc188_25bd173b",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 750,
+        "startChar": 7,
+        "endLine": 750,
+        "endChar": 14
+      },
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1b2751_1b7cf1c5",
+        "filename": "host/lib/include/gsc_ro.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-27T07:18:50Z",
+      "side": 1,
+      "message": "Is there any chance we can include vboot headers from cr50 code (or even link some vboot functions), so that we don\u0027t have to repeat the structure definitions here and there?",
+      "revId": "5ccd593c140d80559b718614ae3052af216e99b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "688dfbfa_13bb7e40",
         "filename": "host/lib/include/gsc_ro.h",
         "patchSetId": 5
