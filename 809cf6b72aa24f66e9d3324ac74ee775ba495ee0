@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acb7e0f5_f71df3ea",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-28T02:13:09Z",
+      "side": 1,
+      "message": "ah, you right, I was thrown off by comparing array index with array size in the early versions of this function.\n\nFixed the comparison function to accept the full range and tested.",
+      "parentUuid": "f8f77c37_4f785ae4",
+      "range": {
+        "startLine": 187,
+        "startChar": 40,
+        "endLine": 187,
+        "endChar": 41
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "251d5ab2_8940cf3d",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 9

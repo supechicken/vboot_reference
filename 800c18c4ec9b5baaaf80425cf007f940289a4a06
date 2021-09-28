@@ -22,6 +22,30 @@
       },
       "revId": "800c18c4ec9b5baaaf80425cf007f940289a4a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a3b3ea_7130b58a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-28T02:13:09Z",
+      "side": 1,
+      "message": "It is better to be able to see and report all range errors than to bail out on the first encountered error.",
+      "parentUuid": "c79e7300_1e30f24d",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 16
+      },
+      "revId": "800c18c4ec9b5baaaf80425cf007f940289a4a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
