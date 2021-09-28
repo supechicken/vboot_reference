@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8f77c37_4f785ae4",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-28T01:36:34Z",
+      "side": 1,
+      "message": "But the offset \"range-\u003eoffset + range-\u003esize\" is not within \u0027range\u0027. If \u0027range\u0027 is at the end of \u0027ah\u0027, then\n\n range-\u003eoffset + range-\u003esize \u003d\u003d ah-\u003earea_offset + ah-\u003earea_size\n\nDo I misunderstand something?",
+      "parentUuid": "fb8f9e1f_ddc96275",
+      "range": {
+        "startLine": 187,
+        "startChar": 40,
+        "endLine": 187,
+        "endChar": 41
+      },
+      "revId": "809cf6b72aa24f66e9d3324ac74ee775ba495ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "251d5ab2_8940cf3d",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 9
