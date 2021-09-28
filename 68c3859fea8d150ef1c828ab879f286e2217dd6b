@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c46f6e8_1629add0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-28T10:17:19Z",
+      "side": 1,
+      "message": "PS22:\nrebase onto minios merged version,\n\nin vboot_kernel_tests.c:\nstill need ctx-\u003eflags VB2_CONTEXT_DEVELOPER_MODE since we check this source of truth while checking each keybock",
+      "revId": "68c3859fea8d150ef1c828ab879f286e2217dd6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
