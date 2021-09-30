@@ -15,6 +15,12 @@
 
 #include "tss_constants.h"
 
+#ifdef TPM2_MODE
+#include "tlcl_tpm2_static.h"
+#else
+#include "tlcl_tpm1_static.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
