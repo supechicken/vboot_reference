@@ -51,12 +51,31 @@
 #define TPM_E_NEEDS_SELFTEST ((uint32_t) (TPM_E_NON_FATAL + 1))
 #define TPM_E_DOING_SELFTEST ((uint32_t) (TPM_E_NON_FATAL + 2))
 
-#if defined(TPM1_MODE)
-#include "tpm1_tss_constants.h"
-#endif
+#if TPM_DYNAMIC
 
-#if defined(TPM2_MODE)
 #include "tpm2_tss_constants.h"
+#include "tpm1_tss_constants.h"
+#define TPM_MAX_COMMAND_SIZE 4096
+#define TPM_PCR_DIGEST 32
+
+#elif defined(TPM1_MODE)
+
+#include "tpm1_tss_constants.h"
+#define TPM_PERMANENT_FLAGS TPM1_PERMANENT_FLAGS
+#define TPM_STCLEAR_FLAGS TPM1_STCLEAR_FLAGS
+#define TPM_IFX_FIELDUPGRADEINFO TPM1_IFX_FIELDUPGRADEINFO
+#define TPM_MAX_COMMAND_SIZE TPM1_MAX_COMMAND_SIZE
+#define TPM_PCR_DIGEST TPM1_PCR_DIGEST
+
+#elif defined(TPM2_MODE)
+
+#include "tpm2_tss_constants.h"
+#define TPM_PERMANENT_FLAGS TPM2_PERMANENT_FLAGS
+#define TPM_STCLEAR_FLAGS TPM2_STCLEAR_FLAGS
+#define TPM_IFX_FIELDUPGRADEINFO TPM2_IFX_FIELDUPGRADEINFO
+#define TPM_MAX_COMMAND_SIZE TPM2_MAX_COMMAND_SIZE
+#define TPM_PCR_DIGEST TPM2_PCR_DIGEST
+
 #endif
 
 #endif  /* VBOOT_REFERENCE_TSS_CONSTANTS_H_ */

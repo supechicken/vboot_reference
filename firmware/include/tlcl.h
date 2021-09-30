@@ -15,11 +15,11 @@
 
 #include "tss_constants.h"
 
-#if defined(TPM1_MODE) && !defined(TPM2_MODE)
+#if TPM_DYNAMIC
+#include "tlcl_tpm_dynamic.h"
+#elif defined(TPM1_MODE)
 #include "tlcl_tpm1_static.h"
-#endif
-
-#if !defined(TPM1_MODE) && defined(TPM2_MODE)
+#elif defined(TPM2_MODE)
 #include "tlcl_tpm2_static.h"
 #endif
 
@@ -105,6 +105,8 @@ uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 			   uint32_t index, uint32_t perm, uint32_t size,
 			   const void* auth_policy, uint32_t auth_policy_size);
 
+#if !TPM_DYNAMIC
+
 /**
  * Initializes [auth_policy] to require PCR binding of the given
  * [pcr_selection_bitmap]. The PCR values are passed in the [pcr_values]
@@ -117,6 +119,8 @@ uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 uint32_t TlclInitNvAuthPolicy(uint32_t pcr_selection_bitmap,
 			      const uint8_t pcr_values[][TPM_PCR_DIGEST],
 			      void* auth_policy, uint32_t* auth_policy_size);
+
+#endif /* !TPM_DYNAMIC */
 
 /**
  * Write [length] bytes of [data] to space at [index].  The TPM error code is
@@ -234,6 +238,8 @@ uint32_t TlclGetPermissions(uint32_t index, uint32_t *permissions);
 uint32_t TlclGetSpaceInfo(uint32_t index, uint32_t *attributes, uint32_t *size,
 			  void* auth_policy, uint32_t* auth_policy_size);
 
+#if !TPM_DYNAMIC
+
 /**
  * Get the entire set of permanent flags.
  */
@@ -243,6 +249,8 @@ uint32_t TlclGetPermanentFlags(TPM_PERMANENT_FLAGS *pflags);
  * Get the entire set of volatile (ST_CLEAR) flags.
  */
 uint32_t TlclGetSTClearFlags(TPM_STCLEAR_FLAGS *pflags);
+
+#endif /* !TPM_DYNAMIC */
 
 /**
  * Get the ownership flag. The TPM error code is returned.
@@ -269,11 +277,15 @@ uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version,
 			uint8_t* vendor_specific_buf,
 			size_t* vendor_specific_buf_size);
 
+#if !TPM_DYNAMIC
+
 /**
  * Issues the IFX specific FieldUpgradeInfoRequest2 TPM_FieldUpgrade subcommand
  * and fills in [info] with results.
  */
 uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO *info);
+
+#endif /* !TPM_DYNAMIC */
 
 #ifdef CHROMEOS_ENVIRONMENT
 
@@ -318,6 +330,8 @@ uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
  */
 uint32_t TlclCreateDelegationFamily(uint8_t family_label);
 
+#if !TPM_DYNAMIC
+
 /**
  * Read the delegation family table. Entries are stored in [table]. The size of
  * the family table array must be specified in [table_size]. [table_size] gets
@@ -325,6 +339,8 @@ uint32_t TlclCreateDelegationFamily(uint8_t family_label);
  */
 uint32_t TlclReadDelegationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
 				       uint32_t* table_size);
+
+#endif /* !TPM_DYNAMIC */
 
 #endif  /* TPM2_MODE */
 #endif  /* CHROMEOS_ENVIRONMENT */
