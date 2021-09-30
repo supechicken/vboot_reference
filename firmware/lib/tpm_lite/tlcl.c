@@ -514,7 +514,7 @@ uint32_t TlclTpm1DefineSpaceEx(const uint8_t *owner_auth,
 }
 
 uint32_t TlclTpm1InitNvAuthPolicy(uint32_t pcr_selection_bitmap,
-				  const uint8_t pcr_values[][TPM_PCR_DIGEST],
+				  const uint8_t pcr_values[][TPM1_PCR_DIGEST],
 				  void *auth_policy, uint32_t *auth_policy_size)
 {
 	uint32_t buffer_size = *auth_policy_size;
@@ -588,11 +588,11 @@ uint32_t TlclTpm1InitNvAuthPolicy(uint32_t pcr_selection_bitmap,
 	}
 
 	uint8_t pcrs_size[sizeof(uint32_t)];
-	ToTpmUint32(pcrs_size, num_pcrs * TPM_PCR_DIGEST);
+	ToTpmUint32(pcrs_size, num_pcrs * TPM1_PCR_DIGEST);
 	vb2_sha1_update(&sha1_ctx, pcrs_size, sizeof(pcrs_size));
 
 	for (i = 0; i < num_pcrs; ++i) {
-		vb2_sha1_update(&sha1_ctx, pcr_values[i], TPM_PCR_DIGEST);
+		vb2_sha1_update(&sha1_ctx, pcr_values[i], TPM1_PCR_DIGEST);
 	}
 
 	vb2_sha1_finalize(&sha1_ctx,
@@ -756,7 +756,7 @@ uint32_t TlclTpm1SetDeactivated(uint8_t flag)
 	return Send(cmd.buffer);
 }
 
-uint32_t TlclTpm1GetPermanentFlags(TPM_PERMANENT_FLAGS *pflags)
+uint32_t TlclTpm1GetPermanentFlags(TPM1_PERMANENT_FLAGS *pflags)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t size;
@@ -766,15 +766,14 @@ uint32_t TlclTpm1GetPermanentFlags(TPM_PERMANENT_FLAGS *pflags)
 		return result;
 	FromTpmUint32(response + kTpmResponseHeaderLength, &size);
 	/* TODO(crbug.com/379255): This fails. Find out why.
-	 * VB2_ASSERT(size == sizeof(TPM_PERMANENT_FLAGS));
+	 * VB2_ASSERT(size == sizeof(TPM1_PERMANENT_FLAGS));
 	 */
-	memcpy(pflags,
-	       response + kTpmResponseHeaderLength + sizeof(size),
-	       sizeof(TPM_PERMANENT_FLAGS));
+	memcpy(pflags, response + kTpmResponseHeaderLength + sizeof(size),
+	       sizeof(TPM1_PERMANENT_FLAGS));
 	return result;
 }
 
-uint32_t TlclTpm1GetSTClearFlags(TPM_STCLEAR_FLAGS *vflags)
+uint32_t TlclTpm1GetSTClearFlags(TPM1_STCLEAR_FLAGS *vflags)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t size;
@@ -785,18 +784,17 @@ uint32_t TlclTpm1GetSTClearFlags(TPM_STCLEAR_FLAGS *vflags)
 	FromTpmUint32(response + kTpmResponseHeaderLength, &size);
 	/* Ugly assertion, but the struct is padded up by one byte. */
 	/* TODO(crbug.com/379255): This fails. Find out why.
-	 * VB2_ASSERT(size == 7 && sizeof(TPM_STCLEAR_FLAGS) - 1 == 7);
+	 * VB2_ASSERT(size == 7 && sizeof(TPM1_STCLEAR_FLAGS) - 1 == 7);
 	 */
-	memcpy(vflags,
-	       response + kTpmResponseHeaderLength + sizeof(size),
-	       sizeof(TPM_STCLEAR_FLAGS));
+	memcpy(vflags, response + kTpmResponseHeaderLength + sizeof(size),
+	       sizeof(TPM1_STCLEAR_FLAGS));
 	return result;
 }
 
 uint32_t TlclTpm1GetFlags(uint8_t *disable, uint8_t *deactivated,
 			  uint8_t *nvlocked)
 {
-	TPM_PERMANENT_FLAGS pflags;
+	TPM1_PERMANENT_FLAGS pflags;
 	uint32_t result = TlclTpm1GetPermanentFlags(&pflags);
 	if (result == TPM_SUCCESS) {
 		if (disable)
@@ -1057,7 +1055,7 @@ static void ParseIFXFirmwarePackage(const uint8_t** cursor,
 	firmware_package->StaleVersion = ReadTpmUint32(cursor);
 }
 
-uint32_t TlclTpm1IFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO *info)
+uint32_t TlclTpm1IFXFieldUpgradeInfo(TPM1_IFX_FIELDUPGRADEINFO *info)
 {
 	uint32_t vendor;
 	uint64_t firmware_version;
