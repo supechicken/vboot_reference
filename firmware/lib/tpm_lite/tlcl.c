@@ -18,7 +18,7 @@
 #include "2hmac.h"
 #include "2sha.h"
 #include "2sysincludes.h"
-#include "tlcl.h"
+#include "tlcl_tpm1.h"
 #include "tlcl_internal.h"
 #include "tlcl_structures.h"
 
@@ -38,7 +38,7 @@ static inline int TpmCommandSize(const uint8_t* buffer)
 }
 
 /* Gets the size field of a TPM request or response. */
-int TlclPacketSize(const uint8_t* packet)
+int TlclTpm1PacketSize(const uint8_t* packet)
 {
 	return TpmCommandSize(packet);
 }
@@ -57,10 +57,10 @@ static inline int TpmReturnCode(const uint8_t* buffer)
 	return TpmCommandCode(buffer);
 }
 
-/* Like TlclSendReceive below, but do not retry if NEEDS_SELFTEST or
+/* Like TlclTpm1SendReceive below, but do not retry if NEEDS_SELFTEST or
  * DOING_SELFTEST errors are returned.
  */
-static uint32_t TlclSendReceiveNoRetry(const uint8_t* request,
+static uint32_t TlclTpm1SendReceiveNoRetry(const uint8_t* request,
 				       uint8_t* response, int max_length)
 {
 
@@ -105,23 +105,23 @@ static uint32_t TlclSendReceiveNoRetry(const uint8_t* request,
 /* Sends a TPM command and gets a response.  Returns 0 if success or the TPM
  * error code if error. In the firmware, waits for the self test to complete
  * if needed. In the host, reports the first error without retries. */
-uint32_t TlclSendReceive(const uint8_t* request, uint8_t* response,
+uint32_t TlclTpm1SendReceive(const uint8_t* request, uint8_t* response,
 			 int max_length)
 {
-	uint32_t result = TlclSendReceiveNoRetry(request, response, max_length);
+	uint32_t result = TlclTpm1SendReceiveNoRetry(request, response, max_length);
 	/* When compiling for the firmware, hide command failures due to the
 	 * self test not having run or completed. */
 #ifndef CHROMEOS_ENVIRONMENT
 	/* If the command fails because the self test has not completed, try it
 	 * again after attempting to ensure that the self test has completed. */
 	if (result == TPM_E_NEEDS_SELFTEST || result == TPM_E_DOING_SELFTEST) {
-		result = TlclContinueSelfTest();
+		result = TlclTpm1ContinueSelfTest();
 		if (result != TPM_SUCCESS) {
 			return result;
 		}
 #if defined(TPM_BLOCKING_CONTINUESELFTEST) || defined(VB_RECOVERY_MODE)
 		/* Retry only once */
-		result = TlclSendReceiveNoRetry(request, response, max_length);
+		result = TlclTpm1SendReceiveNoRetry(request, response, max_length);
 #else
 		/* This needs serious testing.  The TPM specification says:
 		 * "iii. The caller MUST wait for the actions of
@@ -130,7 +130,7 @@ uint32_t TlclSendReceive(const uint8_t* request, uint8_t* response,
 		 * do we know that the actions have completed other than trying
 		 * again? */
 		do {
-			result = TlclSendReceiveNoRetry(request, response,
+			result = TlclTpm1SendReceiveNoRetry(request, response,
 							max_length);
 		} while (result == TPM_E_DOING_SELFTEST);
 #endif
@@ -143,7 +143,7 @@ uint32_t TlclSendReceive(const uint8_t* request, uint8_t* response,
 static uint32_t Send(const uint8_t* command)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	return TlclSendReceive(command, response, sizeof(response));
+	return TlclTpm1SendReceive(command, response, sizeof(response));
 }
 
 #ifdef CHROMEOS_ENVIRONMENT
@@ -163,7 +163,7 @@ static uint32_t StartOIAPSession(struct auth_session* session,
 	session->valid = 0;
 
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	uint32_t result = TlclSendReceive(tpm_oiap_cmd.buffer, response,
+	uint32_t result = TlclTpm1SendReceive(tpm_oiap_cmd.buffer, response,
 					  sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
@@ -208,7 +208,7 @@ static uint32_t StartOSAPSession(
 
 	/* Send OSAP command. */
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	uint32_t result = TlclSendReceive(cmd.buffer, response,
+	uint32_t result = TlclTpm1SendReceive(cmd.buffer, response,
 					  sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
@@ -386,75 +386,75 @@ static uint32_t CheckResponseAuthBlock(struct auth_session* auth_session,
 
 /* Exported functions. */
 
-uint32_t TlclLibInit(void)
+uint32_t TlclTpm1LibInit(void)
 {
 	return vb2ex_tpm_init();
 }
 
-uint32_t TlclLibClose(void)
+uint32_t TlclTpm1LibClose(void)
 {
 	return vb2ex_tpm_close();
 }
 
-uint32_t TlclStartup(void)
+uint32_t TlclTpm1Startup(void)
 {
 	VB2_DEBUG("TPM: Startup\n");
 	return Send(tpm_startup_cmd.buffer);
 }
 
-uint32_t TlclSaveState(void)
+uint32_t TlclTpm1SaveState(void)
 {
 	VB2_DEBUG("TPM: SaveState\n");
 	return Send(tpm_savestate_cmd.buffer);
 }
 
-uint32_t TlclResume(void)
+uint32_t TlclTpm1Resume(void)
 {
 	VB2_DEBUG("TPM: Resume\n");
 	return Send(tpm_resume_cmd.buffer);
 }
 
-uint32_t TlclSelfTestFull(void)
+uint32_t TlclTpm1SelfTestFull(void)
 {
 	VB2_DEBUG("TPM: Self test full\n");
 	return Send(tpm_selftestfull_cmd.buffer);
 }
 
-uint32_t TlclContinueSelfTest(void)
+uint32_t TlclTpm1ContinueSelfTest(void)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	VB2_DEBUG("TPM: Continue self test\n");
 	/* Call the No Retry version of SendReceive to avoid recursion. */
-	return TlclSendReceiveNoRetry(tpm_continueselftest_cmd.buffer,
+	return TlclTpm1SendReceiveNoRetry(tpm_continueselftest_cmd.buffer,
 				      response, sizeof(response));
 }
 
-uint32_t TlclDefineSpace(uint32_t index, uint32_t perm, uint32_t size)
+uint32_t TlclTpm1DefineSpace(uint32_t index, uint32_t perm, uint32_t size)
 {
-	VB2_DEBUG("TPM: TlclDefineSpace(%#x, %#x, %d)\n", index, perm, size);
-	return TlclDefineSpaceEx(NULL, 0, index, perm, size, NULL, 0);
+	VB2_DEBUG("TPM: TlclTpm1DefineSpace(%#x, %#x, %d)\n", index, perm, size);
+	return TlclTpm1DefineSpaceEx(NULL, 0, index, perm, size, NULL, 0);
 }
 
 #ifdef CHROMEOS_ENVIRONMENT
 
-uint32_t TlclUndefineSpace(uint32_t index)
+uint32_t TlclTpm1UndefineSpace(uint32_t index)
 {
-	VB2_DEBUG("TPM: TlclUndefineSpace(%#x)\n", index);
-	return TlclUndefineSpaceEx(NULL, 0, index);
+	VB2_DEBUG("TPM: TlclTpm1UndefineSpace(%#x)\n", index);
+	return TlclTpm1UndefineSpaceEx(NULL, 0, index);
 }
 
-uint32_t TlclUndefineSpaceEx(const uint8_t* owner_auth,
+uint32_t TlclTpm1UndefineSpaceEx(const uint8_t* owner_auth,
 			     uint32_t owner_auth_size,
 			     uint32_t index)
 {
-	return TlclDefineSpaceEx(owner_auth, owner_auth_size,
+	return TlclTpm1DefineSpaceEx(owner_auth, owner_auth_size,
 				 index, 0, 0,
 				 NULL, 0);
 }
 
 #endif  /* CHROMEOS_ENVIRONMENT */
 
-uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
+uint32_t TlclTpm1DefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 			   uint32_t index, uint32_t perm, uint32_t size,
 			   const void* auth_policy, uint32_t auth_policy_size)
 {
@@ -504,7 +504,7 @@ uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 
 	/* Send the command. */
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	result = TlclSendReceive(cmd, response, sizeof(response));
+	result = TlclTpm1SendReceive(cmd, response, sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
 	}
@@ -520,7 +520,7 @@ uint32_t TlclDefineSpaceEx(const uint8_t* owner_auth, uint32_t owner_auth_size,
 	return result;
 }
 
-uint32_t TlclInitNvAuthPolicy(uint32_t pcr_selection_bitmap,
+uint32_t TlclTpm1InitNvAuthPolicy(uint32_t pcr_selection_bitmap,
 			      const uint8_t pcr_values[][TPM_PCR_DIGEST],
 			      void* auth_policy, uint32_t* auth_policy_size)
 {
@@ -612,14 +612,14 @@ uint32_t TlclInitNvAuthPolicy(uint32_t pcr_selection_bitmap,
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclWrite(uint32_t index, const void* data, uint32_t length)
+uint32_t TlclTpm1Write(uint32_t index, const void* data, uint32_t length)
 {
 	struct s_tpm_nv_write_cmd cmd;
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	const int total_length =
 			kTpmRequestHeaderLength + kWriteInfoLength + length;
 
-	VB2_DEBUG("TPM: TlclWrite(%#x, %d)\n", index, length);
+	VB2_DEBUG("TPM: TlclTpm1Write(%#x, %d)\n", index, length);
 	memcpy(&cmd, &tpm_nv_write_cmd, sizeof(cmd));
 	VB2_ASSERT(total_length <= TPM_LARGE_ENOUGH_COMMAND_SIZE);
 	SetTpmCommandSize(cmd.buffer, total_length);
@@ -628,21 +628,21 @@ uint32_t TlclWrite(uint32_t index, const void* data, uint32_t length)
 	ToTpmUint32(cmd.buffer + tpm_nv_write_cmd.length, length);
 	memcpy(cmd.buffer + tpm_nv_write_cmd.data, data, length);
 
-	return TlclSendReceive(cmd.buffer, response, sizeof(response));
+	return TlclTpm1SendReceive(cmd.buffer, response, sizeof(response));
 }
 
-uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
+uint32_t TlclTpm1Read(uint32_t index, void* data, uint32_t length)
 {
 	struct s_tpm_nv_read_cmd cmd;
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t result;
 
-	VB2_DEBUG("TPM: TlclRead(%#x, %d)\n", index, length);
+	VB2_DEBUG("TPM: TlclTpm1Read(%#x, %d)\n", index, length);
 	memcpy(&cmd, &tpm_nv_read_cmd, sizeof(cmd));
 	ToTpmUint32(cmd.buffer + tpm_nv_read_cmd.index, index);
 	ToTpmUint32(cmd.buffer + tpm_nv_read_cmd.length, length);
 
-	result = TlclSendReceive(cmd.buffer, response, sizeof(response));
+	result = TlclTpm1SendReceive(cmd.buffer, response, sizeof(response));
 	if (result == TPM_SUCCESS && length > 0) {
 		const uint8_t* nv_read_cursor =
 				response + kTpmResponseHeaderLength;
@@ -655,20 +655,20 @@ uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
 	return result;
 }
 
-uint32_t TlclPCRRead(uint32_t index, void* data, uint32_t length)
+uint32_t TlclTpm1PCRRead(uint32_t index, void* data, uint32_t length)
 {
 	struct s_tpm_pcr_read_cmd cmd;
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t result;
 
-	VB2_DEBUG("TPM: TlclPCRRead(%#x, %d)\n", index, length);
+	VB2_DEBUG("TPM: TlclTpm1PCRRead(%#x, %d)\n", index, length);
 	if (length < kPcrDigestLength) {
 		return TPM_E_IOERROR;
 	}
 	memcpy(&cmd, &tpm_pcr_read_cmd, sizeof(cmd));
 	ToTpmUint32(cmd.buffer + tpm_pcr_read_cmd.pcrNum, index);
 
-	result = TlclSendReceive(cmd.buffer, response, sizeof(response));
+	result = TlclTpm1SendReceive(cmd.buffer, response, sizeof(response));
 	if (result == TPM_SUCCESS) {
 		const uint8_t* pcr_read_cursor =
 				response + kTpmResponseHeaderLength;
@@ -678,83 +678,83 @@ uint32_t TlclPCRRead(uint32_t index, void* data, uint32_t length)
 	return result;
 }
 
-uint32_t TlclWriteLock(uint32_t index)
+uint32_t TlclTpm1WriteLock(uint32_t index)
 {
 	VB2_DEBUG("TPM: Write lock %#x\n", index);
-	return TlclWrite(index, NULL, 0);
+	return TlclTpm1Write(index, NULL, 0);
 }
 
-uint32_t TlclReadLock(uint32_t index)
+uint32_t TlclTpm1ReadLock(uint32_t index)
 {
 	VB2_DEBUG("TPM: Read lock %#x\n", index);
-	return TlclRead(index, NULL, 0);
+	return TlclTpm1Read(index, NULL, 0);
 }
 
-uint32_t TlclAssertPhysicalPresence(void)
+uint32_t TlclTpm1AssertPhysicalPresence(void)
 {
 	VB2_DEBUG("TPM: Asserting physical presence\n");
 	return Send(tpm_ppassert_cmd.buffer);
 }
 
-uint32_t TlclPhysicalPresenceCMDEnable(void)
+uint32_t TlclTpm1PhysicalPresenceCMDEnable(void)
 {
 	VB2_DEBUG("TPM: Enable the physical presence command\n");
 	return Send(tpm_ppenable_cmd.buffer);
 }
 
-uint32_t TlclFinalizePhysicalPresence(void)
+uint32_t TlclTpm1FinalizePhysicalPresence(void)
 {
 	VB2_DEBUG("TPM: Enable PP cmd, disable HW pp, and set lifetime lock\n");
 	return Send(tpm_finalizepp_cmd.buffer);
 }
 
-uint32_t TlclAssertPhysicalPresenceResult(void)
+uint32_t TlclTpm1AssertPhysicalPresenceResult(void)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	return TlclSendReceive(tpm_ppassert_cmd.buffer, response,
+	return TlclTpm1SendReceive(tpm_ppassert_cmd.buffer, response,
 			       sizeof(response));
 }
 
-uint32_t TlclLockPhysicalPresence(void)
+uint32_t TlclTpm1LockPhysicalPresence(void)
 {
 	VB2_DEBUG("TPM: Lock physical presence\n");
 	return Send(tpm_pplock_cmd.buffer);
 }
 
-uint32_t TlclSetNvLocked(void)
+uint32_t TlclTpm1SetNvLocked(void)
 {
 	VB2_DEBUG("TPM: Set NV locked\n");
-	return TlclDefineSpace(TPM_NV_INDEX_LOCK, 0, 0);
+	return TlclTpm1DefineSpace(TPM_NV_INDEX_LOCK, 0, 0);
 }
 
-int TlclIsOwned(void)
+int TlclTpm1IsOwned(void)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE + TPM_PUBEK_SIZE];
 	uint32_t result;
-	result = TlclSendReceive(tpm_readpubek_cmd.buffer,
+	result = TlclTpm1SendReceive(tpm_readpubek_cmd.buffer,
 				 response, sizeof(response));
 	return (result != TPM_SUCCESS);
 }
 
-uint32_t TlclForceClear(void)
+uint32_t TlclTpm1ForceClear(void)
 {
 	VB2_DEBUG("TPM: Force clear\n");
 	return Send(tpm_forceclear_cmd.buffer);
 }
 
-uint32_t TlclSetEnable(void)
+uint32_t TlclTpm1SetEnable(void)
 {
 	VB2_DEBUG("TPM: Enabling TPM\n");
 	return Send(tpm_physicalenable_cmd.buffer);
 }
 
-uint32_t TlclClearEnable(void)
+uint32_t TlclTpm1ClearEnable(void)
 {
 	VB2_DEBUG("TPM: Disabling TPM\n");
 	return Send(tpm_physicaldisable_cmd.buffer);
 }
 
-uint32_t TlclSetDeactivated(uint8_t flag)
+uint32_t TlclTpm1SetDeactivated(uint8_t flag)
 {
 	struct s_tpm_physicalsetdeactivated_cmd cmd;
 	VB2_DEBUG("TPM: SetDeactivated(%d)\n", flag);
@@ -763,11 +763,11 @@ uint32_t TlclSetDeactivated(uint8_t flag)
 	return Send(cmd.buffer);
 }
 
-uint32_t TlclGetPermanentFlags(TPM_PERMANENT_FLAGS* pflags)
+uint32_t TlclTpm1GetPermanentFlags(TPM_PERMANENT_FLAGS* pflags)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t size;
-	uint32_t result = TlclSendReceive(tpm_getflags_cmd.buffer, response,
+	uint32_t result = TlclTpm1SendReceive(tpm_getflags_cmd.buffer, response,
 					  sizeof(response));
 	if (result != TPM_SUCCESS)
 		return result;
@@ -781,11 +781,11 @@ uint32_t TlclGetPermanentFlags(TPM_PERMANENT_FLAGS* pflags)
 	return result;
 }
 
-uint32_t TlclGetSTClearFlags(TPM_STCLEAR_FLAGS* vflags)
+uint32_t TlclTpm1GetSTClearFlags(TPM_STCLEAR_FLAGS* vflags)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t size;
-	uint32_t result = TlclSendReceive(tpm_getstclearflags_cmd.buffer,
+	uint32_t result = TlclTpm1SendReceive(tpm_getstclearflags_cmd.buffer,
 					  response, sizeof(response));
 	if (result != TPM_SUCCESS)
 		return result;
@@ -800,12 +800,12 @@ uint32_t TlclGetSTClearFlags(TPM_STCLEAR_FLAGS* vflags)
 	return result;
 }
 
-uint32_t TlclGetFlags(uint8_t* disable,
+uint32_t TlclTpm1GetFlags(uint8_t* disable,
 		      uint8_t* deactivated,
 		      uint8_t *nvlocked)
 {
 	TPM_PERMANENT_FLAGS pflags;
-	uint32_t result = TlclGetPermanentFlags(&pflags);
+	uint32_t result = TlclTpm1GetPermanentFlags(&pflags);
 	if (result == TPM_SUCCESS) {
 		if (disable)
 			*disable = pflags.disable;
@@ -820,14 +820,14 @@ uint32_t TlclGetFlags(uint8_t* disable,
 	return result;
 }
 
-uint32_t TlclSetGlobalLock(void)
+uint32_t TlclTpm1SetGlobalLock(void)
 {
 	uint32_t x;
 	VB2_DEBUG("TPM: Set global lock\n");
-	return TlclWrite(TPM_NV_INDEX0, (uint8_t*) &x, 0);
+	return TlclTpm1Write(TPM_NV_INDEX0, (uint8_t*) &x, 0);
 }
 
-uint32_t TlclExtend(int pcr_num, const uint8_t* in_digest,
+uint32_t TlclTpm1Extend(int pcr_num, const uint8_t* in_digest,
 		    uint8_t* out_digest)
 {
 	struct s_tpm_extend_cmd cmd;
@@ -838,7 +838,7 @@ uint32_t TlclExtend(int pcr_num, const uint8_t* in_digest,
 	ToTpmUint32(cmd.buffer + tpm_extend_cmd.pcrNum, pcr_num);
 	memcpy(cmd.buffer + cmd.inDigest, in_digest, kPcrDigestLength);
 
-	result = TlclSendReceive(cmd.buffer, response, sizeof(response));
+	result = TlclTpm1SendReceive(cmd.buffer, response, sizeof(response));
 	if (result != TPM_SUCCESS)
 		return result;
 
@@ -847,13 +847,13 @@ uint32_t TlclExtend(int pcr_num, const uint8_t* in_digest,
 	return result;
 }
 
-uint32_t TlclGetPermissions(uint32_t index, uint32_t* permissions)
+uint32_t TlclTpm1GetPermissions(uint32_t index, uint32_t* permissions)
 {
 	uint32_t dummy_attributes;
 	TPM_NV_AUTH_POLICY dummy_policy;
 	uint32_t dummy_policy_size = sizeof(dummy_policy);
 
-	return TlclGetSpaceInfo(index, permissions, &dummy_attributes,
+	return TlclTpm1GetSpaceInfo(index, permissions, &dummy_attributes,
 				&dummy_policy, &dummy_policy_size);
 }
 
@@ -893,7 +893,7 @@ static int DecodePCRInfo(const uint8_t** cursor,
 	return 1;
 }
 
-uint32_t TlclGetSpaceInfo(uint32_t index, uint32_t *attributes, uint32_t *size,
+uint32_t TlclTpm1GetSpaceInfo(uint32_t index, uint32_t *attributes, uint32_t *size,
 			  void* auth_policy, uint32_t* auth_policy_size)
 {
 	TPM_NV_AUTH_POLICY* policy;
@@ -908,7 +908,7 @@ uint32_t TlclGetSpaceInfo(uint32_t index, uint32_t *attributes, uint32_t *size,
 	memcpy(&cmd, &tpm_getspaceinfo_cmd, sizeof(cmd));
 	ToTpmUint32(cmd.buffer + tpm_getspaceinfo_cmd.index, index);
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	uint32_t result = TlclSendReceive(cmd.buffer, response,
+	uint32_t result = TlclTpm1SendReceive(cmd.buffer, response,
 					  sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
@@ -955,11 +955,11 @@ uint32_t TlclGetSpaceInfo(uint32_t index, uint32_t *attributes, uint32_t *size,
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclGetOwnership(uint8_t* owned)
+uint32_t TlclTpm1GetOwnership(uint8_t* owned)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t size;
-	uint32_t result = TlclSendReceive(tpm_getownership_cmd.buffer,
+	uint32_t result = TlclTpm1SendReceive(tpm_getownership_cmd.buffer,
 					  response, sizeof(response));
 	if (result != TPM_SUCCESS)
 		return result;
@@ -973,13 +973,13 @@ uint32_t TlclGetOwnership(uint8_t* owned)
 	return result;
 }
 
-uint32_t TlclGetRandom(uint8_t* data, uint32_t length, uint32_t *size)
+uint32_t TlclTpm1GetRandom(uint8_t* data, uint32_t length, uint32_t *size)
 {
 	struct s_tpm_get_random_cmd cmd;
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
 	uint32_t result;
 
-	VB2_DEBUG("TPM: TlclGetRandom(%d)\n", length);
+	VB2_DEBUG("TPM: TlclTpm1GetRandom(%d)\n", length);
 	memcpy(&cmd, &tpm_get_random_cmd, sizeof(cmd));
 	ToTpmUint32(cmd.buffer + tpm_get_random_cmd.bytesRequested, length);
 	/* There must be room in the response buffer for the bytes. */
@@ -988,7 +988,7 @@ uint32_t TlclGetRandom(uint8_t* data, uint32_t length, uint32_t *size)
 		return TPM_E_IOERROR;
 	}
 
-	result = TlclSendReceive(cmd.buffer, response, sizeof(response));
+	result = TlclTpm1SendReceive(cmd.buffer, response, sizeof(response));
 	if (result == TPM_SUCCESS) {
 		const uint8_t* get_random_cursor =
 				response + kTpmResponseHeaderLength;
@@ -1004,12 +1004,12 @@ uint32_t TlclGetRandom(uint8_t* data, uint32_t length, uint32_t *size)
 	return result;
 }
 
-uint32_t TlclGetVersion(uint32_t* vendor, uint64_t* firmware_version,
+uint32_t TlclTpm1GetVersion(uint32_t* vendor, uint64_t* firmware_version,
 			uint8_t* vendor_specific_buf,
 			size_t* vendor_specific_buf_size)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	uint32_t result = TlclSendReceive(tpm_getversionval_cmd.buffer,
+	uint32_t result = TlclTpm1SendReceive(tpm_getversionval_cmd.buffer,
 					  response, sizeof(response));
 	if (result != TPM_SUCCESS)
 		return result;
@@ -1064,7 +1064,7 @@ static void ParseIFXFirmwarePackage(const uint8_t** cursor,
 	firmware_package->StaleVersion = ReadTpmUint32(cursor);
 }
 
-uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info)
+uint32_t TlclTpm1IFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info)
 {
 	uint32_t vendor;
 	uint64_t firmware_version;
@@ -1078,7 +1078,7 @@ uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO* info)
 	}
 
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	result = TlclSendReceive(tpm_ifx_fieldupgradeinforequest2_cmd.buffer,
+	result = TlclTpm1SendReceive(tpm_ifx_fieldupgradeinforequest2_cmd.buffer,
 				 response, sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
@@ -1209,7 +1209,7 @@ static uint32_t ParseTpmPubKey(const uint8_t** buffer,
 	return result;
 }
 
-uint32_t TlclReadPubek(uint32_t* public_exponent,
+uint32_t TlclTpm1ReadPubek(uint32_t* public_exponent,
 		       uint8_t* modulus,
 		       uint32_t* modulus_size)
 {
@@ -1223,7 +1223,7 @@ uint32_t TlclReadPubek(uint32_t* public_exponent,
 	/* The response contains the public endorsement key, so use a large
 	 * response buffer. */
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE + TPM_RSA_2048_LEN];
-	uint32_t result = TlclSendReceive(cmd.buffer, response,
+	uint32_t result = TlclTpm1SendReceive(cmd.buffer, response,
 					  sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
@@ -1277,7 +1277,7 @@ uint32_t TlclReadPubek(uint32_t* public_exponent,
 	return result;
 }
 
-uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
+uint32_t TlclTpm1TakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
 			   uint8_t enc_srk_auth[TPM_RSA_2048_LEN],
 			   uint8_t owner_auth[TPM_AUTH_DATA_LEN])
 {
@@ -1304,7 +1304,7 @@ uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
 	/* The response buffer needs to be large to hold the public half of the
 	 * generated SRK. */
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE + TPM_RSA_2048_LEN];
-	result = TlclSendReceive(cmd.buffer, response, sizeof(response));
+	result = TlclTpm1SendReceive(cmd.buffer, response, sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
 	}
@@ -1319,7 +1319,7 @@ uint32_t TlclTakeOwnership(uint8_t enc_owner_auth[TPM_RSA_2048_LEN],
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclCreateDelegationFamily(uint8_t family_label)
+uint32_t TlclTpm1CreateDelegationFamily(uint8_t family_label)
 {
 	struct s_tpm_create_delegation_family_cmd cmd;
 	memcpy(&cmd, &tpm_create_delegation_family_cmd, sizeof(cmd));
@@ -1327,11 +1327,11 @@ uint32_t TlclCreateDelegationFamily(uint8_t family_label)
 	return Send(cmd.buffer);
 }
 
-uint32_t TlclReadDelegationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
+uint32_t TlclTpm1ReadDelegationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
 				       uint32_t* table_size)
 {
 	uint8_t response[TPM_LARGE_ENOUGH_COMMAND_SIZE];
-	uint32_t result = TlclSendReceive(tpm_delegate_read_table_cmd.buffer,
+	uint32_t result = TlclTpm1SendReceive(tpm_delegate_read_table_cmd.buffer,
 					  response, sizeof(response));
 	if (result != TPM_SUCCESS) {
 		return result;
