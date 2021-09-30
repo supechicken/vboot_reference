@@ -6,7 +6,7 @@
 #ifndef VBOOT_REFERENCE_TPM2_MARSHALING_H_
 #define VBOOT_REFERENCE_TPM2_MARSHALING_H_
 
-#include "tss_constants.h"
+#include "tpm2_tss_constants.h"
 
 #ifdef __cplusplus
 extern "C" {

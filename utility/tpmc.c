@@ -270,26 +270,25 @@ static uint32_t HandlerWrite(void) {
 }
 
 static uint32_t HandlerPCRRead(void) {
-  uint32_t index;
-  uint8_t value[TPM_PCR_DIGEST];
-  uint32_t result;
-  int i;
-  if (nargs != 3) {
-    fprintf(stderr, "usage: tpmc pcrread <index>\n");
-    exit(OTHER_ERROR);
-  }
-  if (HexStringToUint32(args[2], &index) != 0) {
-    fprintf(stderr, "<index> must be 32-bit hex (0x[0-9a-f]+)\n");
-    exit(OTHER_ERROR);
-  }
-  result = TlclPCRRead(index, value, sizeof(value));
-  if (result == 0) {
-    for (i = 0; i < TPM_PCR_DIGEST; i++) {
-      printf("%02x", value[i]);
-    }
-    printf("\n");
-  }
-  return result;
+	uint32_t index;
+	uint8_t value[TPM_PCR_DIGEST];
+	uint32_t result;
+	int i;
+	if (nargs != 3) {
+		fprintf(stderr, "usage: tpmc pcrread <index>\n");
+		exit(OTHER_ERROR);
+	}
+	if (HexStringToUint32(args[2], &index) != 0) {
+		fprintf(stderr, "<index> must be 32-bit hex (0x[0-9a-f]+)\n");
+		exit(OTHER_ERROR);
+	}
+	result = TlclPCRRead(index, value, sizeof(value));
+	if (result == 0) {
+		for (i = 0; i < TPM_PCR_DIGEST; i++)
+			printf("%02x", value[i]);
+		printf("\n");
+	}
+	return result;
 }
 
 static uint32_t HandlerPCRExtend(void) {
@@ -400,6 +399,10 @@ static uint32_t HandlerGetRandom(void) {
 }
 
 static uint32_t HandlerGetPermanentFlags(void) {
+#if TPM_DYNAMIC
+  // TODO(yich): Handle the TPM_DYNAMIC case correctly.
+  return TPM_SUCCESS;
+#else
   TPM_PERMANENT_FLAGS pflags;
   uint32_t result = TlclGetPermanentFlags(&pflags);
   if (result == 0) {
@@ -436,9 +439,14 @@ static uint32_t HandlerGetPermanentFlags(void) {
 #undef P
   }
   return result;
+#endif
 }
 
 static uint32_t HandlerGetSTClearFlags(void) {
+#if TPM_DYNAMIC
+  // TODO(yich): Handle the TPM_DYNAMIC case correctly.
+  return TPM_SUCCESS;
+#else
   TPM_STCLEAR_FLAGS vflags;
   uint32_t result = TlclGetSTClearFlags(&vflags);
   if (result == 0) {
@@ -459,6 +467,7 @@ static uint32_t HandlerGetSTClearFlags(void) {
 #undef P
   }
   return result;
+#endif
 }
 
 static uint32_t HandlerSendRaw(void) {

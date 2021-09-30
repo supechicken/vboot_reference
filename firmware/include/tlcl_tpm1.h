@@ -13,7 +13,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "tss_constants.h"
+#include "tpm1_tss_constants.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -47,7 +47,7 @@ uint32_t TlclTpm1DefineSpaceEx(const uint8_t *owner_auth,
 			       uint32_t auth_policy_size);
 
 uint32_t TlclTpm1InitNvAuthPolicy(uint32_t pcr_selection_bitmap,
-				  const uint8_t pcr_values[][TPM_PCR_DIGEST],
+				  const uint8_t pcr_values[][TPM1_PCR_DIGEST],
 				  void *auth_policy,
 				  uint32_t *auth_policy_size);
 
@@ -97,9 +97,9 @@ uint32_t TlclTpm1GetSpaceInfo(uint32_t index, uint32_t *attributes,
 			      uint32_t *size, void *auth_policy,
 			      uint32_t *auth_policy_size);
 
-uint32_t TlclTpm1GetPermanentFlags(TPM_PERMANENT_FLAGS *pflags);
+uint32_t TlclTpm1GetPermanentFlags(TPM1_PERMANENT_FLAGS *pflags);
 
-uint32_t TlclTpm1GetSTClearFlags(TPM_STCLEAR_FLAGS *pflags);
+uint32_t TlclTpm1GetSTClearFlags(TPM1_STCLEAR_FLAGS *pflags);
 
 uint32_t TlclTpm1GetOwnership(uint8_t *owned);
 
@@ -109,7 +109,7 @@ uint32_t TlclTpm1GetVersion(uint32_t *vendor, uint64_t *firmware_version,
 			    uint8_t *vendor_specific_buf,
 			    size_t *vendor_specific_buf_size);
 
-uint32_t TlclTpm1IFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO *info);
+uint32_t TlclTpm1IFXFieldUpgradeInfo(TPM1_IFX_FIELDUPGRADEINFO *info);
 
 #ifdef CHROMEOS_ENVIRONMENT
 
