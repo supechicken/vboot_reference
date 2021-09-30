@@ -52,6 +52,24 @@
       "parentUuid": "8f78c08e_6e238fe6",
       "revId": "0abc871543b0203642fb848cb59226112a858990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfce291c_853547f9",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-09-30T06:55:55Z",
+      "side": 1,
+      "message": "\u003e  if ((ctx-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY) \u0026\u0026\n\nI think this should be gbb-\u003eflags?",
+      "parentUuid": "a2eb817a_451f7952",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
