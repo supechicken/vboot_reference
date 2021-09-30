@@ -228,6 +228,13 @@ else
 CFLAGS += -DVTPM_PROXY=0
 endif
 
+# TPM_DYNAMIC indicates whether the runtime TPM selection is enable or not.
+ifneq ($(filter-out 0,${TPM_DYNAMIC}),)
+CFLAGS += -DTPM_DYNAMIC=1
+else
+CFLAGS += -DTPM_DYNAMIC=0
+endif
+
 # DETACHABLE indicates whether the device is a detachable or not.
 ifneq ($(filter-out 0,${DETACHABLE}),)
 CFLAGS += -DDETACHABLE=1
@@ -415,8 +422,14 @@ FWLIB_SRCS = \
 	firmware/lib20/api_kernel.c \
 	firmware/lib20/kernel.c
 
+# Runtime TPM selection
+ifneq (${TPM_DYNAMIC},)
+TLCL_SRCS = \
+	firmware/lib/tpm_lite/tlcl.c \
+	firmware/lib/tpm2_lite/tlcl.c \
+	firmware/lib/tpm2_lite/marshaling.c
 # TPM lightweight command library
-ifeq (${TPM2_MODE},)
+else ifeq (${TPM2_MODE},)
 TLCL_SRCS = \
 	firmware/lib/tpm_lite/tlcl.c
 else
