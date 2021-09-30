@@ -15,9 +15,20 @@
 
 #include "tss_constants.h"
 
+#if defined(TPM1_MODE) && !defined(TPM2_MODE)
+#include "tlcl_tpm1_static.h"
+#endif
+
+#if !defined(TPM1_MODE) && defined(TPM2_MODE)
+#include "tlcl_tpm2_static.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/* Don't expose any function if the TPM mode isn't enabled. */
+#if defined(TPM1_MODE) && defined(TPM2_MODE)
 
 /*****************************************************************************/
 /* Functions implemented in tlcl.c */
@@ -317,6 +328,8 @@ uint32_t TlclReadDelegationFamilyTable(TPM_FAMILY_TABLE_ENTRY *table,
 
 #endif  /* TPM2_MODE */
 #endif  /* CHROMEOS_ENVIRONMENT */
+
+#endif /* defined(TPM1_MODE) || defined(TPM2_MODE) */
 
 #ifdef __cplusplus
 }

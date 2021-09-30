@@ -183,6 +183,10 @@ ifneq (${FORCE_LOGGING_ON},)
 CFLAGS += -DFORCE_LOGGING_ON=${FORCE_LOGGING_ON}
 endif
 
+ifneq (${TPM1_MODE},)
+CFLAGS += -DTPM1_MODE
+endif
+
 ifneq (${TPM2_MODE},)
 CFLAGS += -DTPM2_MODE
 endif
@@ -416,10 +420,11 @@ FWLIB_SRCS = \
 	firmware/lib20/kernel.c
 
 # TPM lightweight command library
-ifeq (${TPM2_MODE},)
+ifneq (${TPM1_MODE},)
 TLCL_SRCS = \
 	firmware/lib/tpm_lite/tlcl.c
-else
+endif
+ifneq (${TPM2_MODE},)
 # TODO(apronin): tests for TPM2 case?
 TLCL_SRCS = \
 	firmware/lib/tpm2_lite/tlcl.c \
@@ -444,11 +449,17 @@ ifeq (${FIRMWARE_ARCH},)
 # Include BIOS stubs in the firmware library when compiling for host
 # TODO: split out other stub funcs too
 FWLIB_SRCS += \
-	firmware/stub/tpm_lite_stub.c \
 	firmware/stub/vboot_api_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	firmware/stub/vboot_api_stub_stream.c \
 	firmware/2lib/2stub.c
+
+# Only build the stub TLCL when the TPM mode had been enabled.
+ifneq (${TPM1_MODE}${TPM2_MODE},)
+FWLIB_SRCS += \
+	firmware/stub/tpm_lite_stub.c
+endif
+
 endif
 
 FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
@@ -524,7 +535,6 @@ HOSTLIB_SRCS = \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
 	firmware/lib/gpt_misc.c \
-	firmware/stub/tpm_lite_stub.c \
 	firmware/stub/vboot_api_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	futility/dump_kernel_config_lib.c \
@@ -539,6 +549,13 @@ HOSTLIB_SRCS = \
 	host/lib/subprocess.c \
 	host/lib21/host_misc.c \
 	${TLCL_SRCS}
+
+# Only build the stub TLCL when the TPM mode had been enabled.
+ifneq (${TPM1_MODE}${TPM2_MODE},)
+HOSTLIB_SRCS += \
+	firmware/stub/tpm_lite_stub.c
+endif
+
 
 ifneq (${GPT_SPI_NOR},)
 HOSTLIB_SRCS += cgpt/cgpt_nor.c
@@ -713,11 +730,13 @@ TEST_NAMES = \
 	tests/vboot_kernel2_tests \
 	tests/verify_kernel
 
-ifeq (${MOCK_TPM}${TPM2_MODE},)
+ifeq (${MOCK_TPM},)
 # tlcl_tests only works when MOCK_TPM is disabled
-# TODO(apronin): tests for TPM2 case?
+ifneq (${TPM1_MODE},)
 TEST_NAMES += \
 	tests/tlcl_tests
+endif
+# TODO(apronin): tests for TPM2 case?
 endif
 
 TEST_FUTIL_NAMES = \
@@ -774,7 +793,7 @@ TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES}
 TEST_NAMES += tests/vb2_sha256_x86_tests
 
 # And a few more...
-ifeq (${TPM2_MODE},)
+ifneq (${TPM1_MODE},)
 TLCL_TEST_NAMES = \
 	tests/tpm_lite/tpmtest_earlyextend \
 	tests/tpm_lite/tpmtest_earlynvram \
@@ -935,6 +954,10 @@ headers_install:
 		firmware/2lib/include/2sysincludes.h \
 		firmware/include/gpt.h \
 		firmware/include/tlcl.h \
+		firmware/include/tlcl_tpm1.h \
+		firmware/include/tlcl_tpm1_static.h \
+		firmware/include/tlcl_tpm2.h \
+		firmware/include/tlcl_tpm2_static.h \
 		firmware/include/tss_constants.h \
 		firmware/include/tpm1_tss_constants.h \
 		firmware/include/tpm2_tss_constants.h
@@ -1171,7 +1194,7 @@ ${BUILD}/tests/%: LDFLAGS += -Xlinker --allow-multiple-definition
 ${BUILD}/tests/%: LDLIBS += -lrt -luuid
 ${BUILD}/tests/%: LIBS += ${TESTLIB}
 
-ifeq (${TPM2_MODE},)
+ifneq (${TPM1_MODE},)
 # TODO(apronin): tests for TPM2 case?
 TLCL_TEST_BINS = $(addprefix ${BUILD}/,${TLCL_TEST_NAMES})
 ${TLCL_TEST_BINS}: OBJS += ${BUILD}/tests/tpm_lite/tlcl_tests.o
@@ -1261,9 +1284,11 @@ runtestscripts: install_for_test genfuzztestcases
 runmisctests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/gpt_misc_tests
 	${RUNTEST} ${BUILD_RUN}/tests/subprocess_tests
-ifeq (${MOCK_TPM}${TPM2_MODE},)
+ifeq (${MOCK_TPM},)
 # tlcl_tests only works when MOCK_TPM is disabled
+ifneq (${TPM1_MODE},)
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
+endif
 endif
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel4_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
