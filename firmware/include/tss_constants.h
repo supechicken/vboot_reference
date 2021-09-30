@@ -51,10 +51,12 @@
 #define TPM_E_NEEDS_SELFTEST ((uint32_t) (TPM_E_NON_FATAL + 1))
 #define TPM_E_DOING_SELFTEST ((uint32_t) (TPM_E_NON_FATAL + 2))
 
-#ifdef TPM2_MODE
-#include "tpm2_tss_constants.h"
-#else
+#if defined(TPM1_MODE)
 #include "tpm1_tss_constants.h"
+#endif
+
+#if defined(TPM2_MODE)
+#include "tpm2_tss_constants.h"
 #endif
 
 #endif  /* VBOOT_REFERENCE_TSS_CONSTANTS_H_ */
