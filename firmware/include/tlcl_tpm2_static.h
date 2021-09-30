@@ -13,7 +13,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "tss_constants.h"
 #include "tlcl_tpm2.h"
 
 #ifdef __cplusplus

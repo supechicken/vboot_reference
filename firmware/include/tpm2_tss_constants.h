@@ -9,6 +9,8 @@
 #ifndef VBOOT_REFERENCE_TPM2_TSS_CONSTANTS_H_
 #define VBOOT_REFERENCE_TPM2_TSS_CONSTANTS_H_
 
+#include "tss_common_constants.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif  /* __cplusplus */
@@ -320,7 +322,7 @@ typedef struct {
 	uint32_t inLockout : 1;
 	uint32_t tpmGeneratedEPS : 1;
 	uint32_t reserved11_31 : 21;
-} TPM_PERMANENT_FLAGS;
+} TPM2_PERMANENT_FLAGS;
 
 typedef struct {
 	uint32_t phEnable : 1;
@@ -329,19 +331,18 @@ typedef struct {
 	uint32_t phEnableNV : 1;
 	uint32_t reserved4_30 : 27;
 	uint32_t orderly : 1;
-} TPM_STCLEAR_FLAGS;
+} TPM2_STCLEAR_FLAGS;
 
-typedef struct tdTPM_IFX_FIELDUPGRADEINFO
-{
-} TPM_IFX_FIELDUPGRADEINFO;
+typedef struct tdTPM2_IFX_FIELDUPGRADEINFO {
+} TPM2_IFX_FIELDUPGRADEINFO;
 
 /* TODO(apronin): For TPM2 certain properties must be received using
  * TPM2_GetCapability instead of being hardcoded as they are now:
  * TPM_MAX_COMMAND_SIZE -> use TPM_PT_MAX_COMMAND_SIZE for TPM2.
  * TPM_PCR_DIGEST -> use TPM_PT_MAX_DIGEST for TPM2.
  */
-#define TPM_MAX_COMMAND_SIZE	4096
-#define TPM_PCR_DIGEST		32
+#define TPM2_MAX_COMMAND_SIZE 4096
+#define TPM2_PCR_DIGEST 32
 
 #ifdef __cplusplus
 }

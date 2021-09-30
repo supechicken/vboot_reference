@@ -11,14 +11,16 @@
 
 #include <stdint.h>
 
+#include "tss_common_constants.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif  /* __cplusplus */
 
-#define TPM_MAX_COMMAND_SIZE 4096
+#define TPM1_MAX_COMMAND_SIZE 4096
 #define TPM_LARGE_ENOUGH_COMMAND_SIZE 256  /* saves space in the firmware */
 #define TPM_PUBEK_SIZE 256
-#define TPM_PCR_DIGEST 20
+#define TPM1_PCR_DIGEST 20
 
 #define TPM_NV_INDEX0            ((uint32_t) 0x00000000)
 #define TPM_NV_INDEX_LOCK        ((uint32_t) 0xffffffff)
@@ -144,8 +146,7 @@ typedef struct tdTPM_PCR_INFO_SHORT
 	TPM_COMPOSITE_HASH     digestAtRelease;
 } __attribute__((packed)) TPM_PCR_INFO_SHORT;
 
-typedef struct tdTPM_PERMANENT_FLAGS
-{
+typedef struct tdTPM1_PERMANENT_FLAGS {
 	TPM_STRUCTURE_TAG tag;
 	TSS_BOOL disable;
 	TSS_BOOL ownership;
@@ -167,16 +168,16 @@ typedef struct tdTPM_PERMANENT_FLAGS
 	TSS_BOOL tpmEstablished;
 	TSS_BOOL maintenanceDone;
 	TSS_BOOL disableFullDALogicInfo;
-} TPM_PERMANENT_FLAGS;
+} TPM1_PERMANENT_FLAGS;
 
-typedef struct tdTPM_STCLEAR_FLAGS{
+typedef struct tdTPM1_STCLEAR_FLAGS {
 	TPM_STRUCTURE_TAG tag;
 	TSS_BOOL deactivated;
 	TSS_BOOL disableForceClear;
 	TSS_BOOL physicalPresence;
 	TSS_BOOL physicalPresenceLock;
 	TSS_BOOL bGlobalLock;
-} TPM_STCLEAR_FLAGS;
+} TPM1_STCLEAR_FLAGS;
 
 typedef struct tdTPM_NV_DATA_PUBLIC
 {
@@ -211,15 +212,14 @@ typedef struct tdTPM_IFX_FIRMWAREPACKAGE {
 	uint32_t StaleVersion;
 } TPM_IFX_FIRMWAREPACKAGE;
 
-typedef struct tdTPM_IFX_FIELDUPGRADEINFO
-{
+typedef struct tdTPM1_IFX_FIELDUPGRADEINFO {
 	uint16_t wMaxDataSize;
 	TPM_IFX_FIRMWAREPACKAGE sBootloaderFirmwarePackage;
 	TPM_IFX_FIRMWAREPACKAGE sFirmwarePackages[2];
 	uint16_t wSecurityModuleStatus;
 	TPM_IFX_FIRMWAREPACKAGE sProcessFirmwarePackage;
 	uint16_t wFieldUpgradeCounter;
-} TPM_IFX_FIELDUPGRADEINFO;
+} TPM1_IFX_FIELDUPGRADEINFO;
 
 typedef struct tdTPM_NV_AUTH_POLICY
 {
