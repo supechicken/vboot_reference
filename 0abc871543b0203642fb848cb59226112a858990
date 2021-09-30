@@ -70,6 +70,24 @@
       "parentUuid": "a2eb817a_451f7952",
       "revId": "0abc871543b0203642fb848cb59226112a858990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250e102e_ff91591d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-30T08:26:11Z",
+      "side": 1,
+      "message": "\u003e Well I\u0027m not sure the allow_recovery() function was necessarily any clearer\n\nOkay, as long as the comment is clear enough, I\u0027m fine with that.",
+      "parentUuid": "bfce291c_853547f9",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
