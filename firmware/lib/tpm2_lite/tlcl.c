@@ -104,7 +104,7 @@ static uint32_t tpm_get_response_code(TPM_CC command, void *command_body)
 static uint32_t tlcl_read_ph_disabled(void)
 {
 	uint32_t rv;
-	TPM_STCLEAR_FLAGS flags;
+	TPM2_STCLEAR_FLAGS flags;
 
 	rv = TlclTpm2GetSTClearFlags(&flags);
 	if (rv == TPM_SUCCESS)
@@ -261,7 +261,7 @@ uint32_t TlclTpm2DefineSpaceEx(const uint8_t *owner_auth,
 }
 
 uint32_t TlclTpm2InitNvAuthPolicy(uint32_t pcr_selection_bitmap,
-				  const uint8_t pcr_values[][TPM_PCR_DIGEST],
+				  const uint8_t pcr_values[][TPM2_PCR_DIGEST],
 				  void *auth_policy, uint32_t *auth_policy_size)
 {
 	/* Actual PCR selection isn't implemented. */
@@ -421,13 +421,13 @@ static uint32_t tlcl_get_tpm_property(TPM_PT property, uint32_t *pvalue)
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclTpm2GetPermanentFlags(TPM_PERMANENT_FLAGS *pflags)
+uint32_t TlclTpm2GetPermanentFlags(TPM2_PERMANENT_FLAGS *pflags)
 {
 	return tlcl_get_tpm_property(TPM_PT_PERMANENT,
 				     (uint32_t *)pflags);
 }
 
-uint32_t TlclTpm2GetSTClearFlags(TPM_STCLEAR_FLAGS *pflags)
+uint32_t TlclTpm2GetSTClearFlags(TPM2_STCLEAR_FLAGS *pflags)
 {
 	return tlcl_get_tpm_property(TPM_PT_STARTUP_CLEAR,
 				     (uint32_t *)pflags);
@@ -436,7 +436,7 @@ uint32_t TlclTpm2GetSTClearFlags(TPM_STCLEAR_FLAGS *pflags)
 uint32_t TlclTpm2GetOwnership(uint8_t *owned)
 {
 	uint32_t rv;
-	TPM_PERMANENT_FLAGS flags;
+	TPM2_PERMANENT_FLAGS flags;
 	*owned = 0;
 
 	rv = TlclTpm2GetPermanentFlags(&flags);
@@ -677,7 +677,7 @@ uint32_t TlclTpm2GetVersion(uint32_t *vendor, uint64_t *firmware_version,
 	return TPM_SUCCESS;
 }
 
-uint32_t TlclTpm2IFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO *info)
+uint32_t TlclTpm2IFXFieldUpgradeInfo(TPM2_IFX_FIELDUPGRADEINFO *info)
 {
 	VB2_DEBUG("NOT YET IMPLEMENTED\n");
 	return TPM_E_IOERROR;
