@@ -400,6 +400,10 @@ static uint32_t HandlerGetRandom(void) {
 }
 
 static uint32_t HandlerGetPermanentFlags(void) {
+#if TPM_DYNAMIC
+  // TODO(yich): Handle the TPM_DYNAMIC case correctly.
+  return TPM_SUCCESS;
+#else
   TPM_PERMANENT_FLAGS pflags;
   uint32_t result = TlclGetPermanentFlags(&pflags);
   if (result == 0) {
@@ -436,9 +440,14 @@ static uint32_t HandlerGetPermanentFlags(void) {
 #undef P
   }
   return result;
+#endif
 }
 
 static uint32_t HandlerGetSTClearFlags(void) {
+#if TPM_DYNAMIC
+  // TODO(yich): Handle the TPM_DYNAMIC case correctly.
+  return TPM_SUCCESS;
+#else
   TPM_STCLEAR_FLAGS vflags;
   uint32_t result = TlclGetSTClearFlags(&vflags);
   if (result == 0) {
@@ -459,6 +468,7 @@ static uint32_t HandlerGetSTClearFlags(void) {
 #undef P
   }
   return result;
+#endif
 }
 
 static uint32_t HandlerSendRaw(void) {
