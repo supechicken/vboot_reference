@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79977af0_99e99fa5",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2021-10-01T08:18:24Z",
+      "side": 1,
+      "message": "I think it should be in 2lib/include/2common.h instead.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 73
+      },
+      "revId": "99dd0c7de2ff2c8f2e6c10931f70499a49b281ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22679758_4cdbe3ee",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2021-10-01T08:18:24Z",
+      "side": 1,
+      "message": "Return in the macro? This is not a good idea. I\u0027d leave it as an static/inline function. Moreover, it should not have name like common macros/functions it it is not in the 2common.h.\n\nBut if you really have to use macro with return, then add \"_OR_RETURN\" suffix to the macro name.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "99dd0c7de2ff2c8f2e6c10931f70499a49b281ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
