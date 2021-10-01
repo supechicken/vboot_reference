@@ -15,6 +15,10 @@
 
 #include "tss_constants.h"
 
+#ifndef TPM2_MODE
+_Static_assert(0, "QAQ");
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
