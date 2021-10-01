@@ -16,6 +16,29 @@
       "message": "Might be worth sending a PSA to chromeos-kernel@ that this landed, Yu-Ping. Developers who update their firmware without having updated their kernel (or repo-synced vboot_reference) recently will get issues from this.",
       "revId": "13f601fbd4c1b128f333391e4552082594f0ff25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21702967_0bce27d6",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 41
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-01T09:18:47Z",
+      "side": 1,
+      "message": "Assuming this always fails, it takes overall 0.738s to read all sectors (including both beginning and end regions of the disk) on brya (without serial console).",
+      "range": {
+        "startLine": 594,
+        "startChar": 7,
+        "endLine": 594,
+        "endChar": 25
+      },
+      "revId": "13f601fbd4c1b128f333391e4552082594f0ff25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
