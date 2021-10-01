@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "619c19cc_98137a86",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-01T09:59:46Z",
+      "side": 1,
+      "message": "Changed to use VB2_DEBUG instead. Printing an additional function name should be fine.",
+      "parentUuid": "79977af0_99e99fa5",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 73
+      },
+      "revId": "99dd0c7de2ff2c8f2e6c10931f70499a49b281ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22679758_4cdbe3ee",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-01T08:18:24Z",
       "side": 1,
       "message": "Return in the macro? This is not a good idea. I\u0027d leave it as an static/inline function. Moreover, it should not have name like common macros/functions it it is not in the 2common.h.\n\nBut if you really have to use macro with return, then add \"_OR_RETURN\" suffix to the macro name.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "99dd0c7de2ff2c8f2e6c10931f70499a49b281ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9887e7_dd8786ca",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-01T09:59:46Z",
+      "side": 1,
+      "message": "\u003e Return in the macro? This is not a good idea.\n\nThe VB2_TRY() macro in api.h is already doing that, and we use it a lot in vboot code.",
+      "parentUuid": "22679758_4cdbe3ee",
       "range": {
         "startLine": 50,
         "startChar": 1,
