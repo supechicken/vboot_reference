@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df672e2a_88e2f41f",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-04T22:54:56Z",
+      "side": 1,
+      "message": "Is there any point in this exit_on_failure? It\u0027s a static global and nothing in this code can write to it as far as I can see...",
+      "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81558bfb_9a9dcaad",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-04T22:54:56Z",
+      "side": 1,
+      "message": "Not really sure why you rewrote all these rather than just using VB2_DEBUG() in DoError()?",
+      "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
