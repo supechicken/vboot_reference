@@ -93,6 +93,30 @@
       },
       "revId": "99dd0c7de2ff2c8f2e6c10931f70499a49b281ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf226b6_29091cb6",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-04T03:37:11Z",
+      "side": 1,
+      "message": "Now changed to an inline function.",
+      "parentUuid": "db9887e7_dd8786ca",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "99dd0c7de2ff2c8f2e6c10931f70499a49b281ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
