@@ -88,6 +88,24 @@
       "parentUuid": "bfce291c_853547f9",
       "revId": "0abc871543b0203642fb848cb59226112a858990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39dacc38_a9cb1cbd",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-04T23:00:11Z",
+      "side": 1,
+      "message": "\u003e  if ((ctx-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY) \u0026\u0026\n\u003e I think this should be gbb-\u003eflags?\n\n*sigh*... no, sorry, that was supposed to be (ctx-\u003eflags \u0026 VB2_CONTEXT_FORCE_RECOVERY_MODE). I guess part of the problem is that these flags are named so similarly (maybe we should rename the GBB flag to ALWAYS_MANUAL_RECOVERY or something).",
+      "parentUuid": "250e102e_ff91591d",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
