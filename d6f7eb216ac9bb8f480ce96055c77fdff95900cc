@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda4a96f_90619de6",
+        "filename": "firmware/include/tlcl_tpm_dynamic.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-10-05T08:47:48Z",
+      "side": 1,
+      "message": "um, just put `TPM_DYMANIC` here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "d6f7eb216ac9bb8f480ce96055c77fdff95900cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238d3275_d99f4900",
+        "filename": "firmware/include/tlcl_tpm_dynamic.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-10-05T08:47:48Z",
+      "side": 1,
+      "message": "s_* is more conventional?",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "d6f7eb216ac9bb8f480ce96055c77fdff95900cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
