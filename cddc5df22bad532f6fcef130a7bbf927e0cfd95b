@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6c451a_f58f061c",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-05T01:56:23Z",
+      "side": 1,
+      "message": "It can be set in vb2ex_tpm_init() below.",
+      "parentUuid": "df672e2a_88e2f41f",
+      "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81558bfb_9a9dcaad",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-04T22:54:56Z",
       "side": 1,
       "message": "Not really sure why you rewrote all these rather than just using VB2_DEBUG() in DoError()?",
+      "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76697f7c_06573f38",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-05T01:56:23Z",
+      "side": 1,
+      "message": "1. From the comment of DoError() it is written similar to VbExError(), which is already removed in CL:1710340, so I think removing it makes vboot code more consistent.\n2. Is it possible to call VB2_DEBUG() from a variadic function like DoError(), without converting it to a macro?",
+      "parentUuid": "81558bfb_9a9dcaad",
       "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
