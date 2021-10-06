@@ -124,6 +124,24 @@
       "parentUuid": "39dacc38_a9cb1cbd",
       "revId": "0abc871543b0203642fb848cb59226112a858990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c75439_54e0776d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-06T00:34:11Z",
+      "side": 1,
+      "message": "...are you sure? This should have broken many basic tests like firmware_RecoveryButton. If you didn\u0027t see any errors with patch set 17 that would suggest you\u0027re not running all tests correctly (because that GBB flag isn\u0027t set in FAFT, and the way patch set 17 is written, without that flag it could never enter manual recovery mode.",
+      "parentUuid": "18a5f210_aa5475d4",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
