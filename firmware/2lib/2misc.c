@@ -557,6 +557,8 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 
+	return VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
+
 	if (gbb->flags & VB2_GBB_FLAG_DEFAULT_DEV_BOOT_ALTFW)
 		return VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW;
 
