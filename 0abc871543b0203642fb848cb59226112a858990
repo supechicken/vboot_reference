@@ -142,6 +142,24 @@
       "parentUuid": "18a5f210_aa5475d4",
       "revId": "0abc871543b0203642fb848cb59226112a858990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb355e2_90a278ea",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-06T01:47:29Z",
+      "side": 1,
+      "message": "FAFT should always set GBB flag to 0x140. Rocco, which FAFT test did you run (on PS16)?",
+      "parentUuid": "91c75439_54e0776d",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
