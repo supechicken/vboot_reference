@@ -160,6 +160,24 @@
       "parentUuid": "91c75439_54e0776d",
       "revId": "0abc871543b0203642fb848cb59226112a858990",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26048261_986fc1fb",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-10-06T06:11:29Z",
+      "side": 1,
+      "message": "It ran suite:faft_bios which contains firmware_RecoveryButton.\nLet me try to figure out what\u0027s going on here...",
+      "parentUuid": "8fb355e2_90a278ea",
+      "revId": "0abc871543b0203642fb848cb59226112a858990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
