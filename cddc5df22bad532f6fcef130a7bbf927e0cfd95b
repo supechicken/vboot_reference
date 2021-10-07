@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d88b0c6_6acce364",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-07T01:21:06Z",
+      "side": 1,
+      "message": "Oh... don\u0027t know how I missed that, thanks.",
+      "parentUuid": "bf6c451a_f58f061c",
+      "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81558bfb_9a9dcaad",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "1. From the comment of DoError() it is written similar to VbExError(), which is already removed in CL:1710340, so I think removing it makes vboot code more consistent.\n2. Is it possible to call VB2_DEBUG() from a variadic function like DoError(), without converting it to a macro?",
       "parentUuid": "81558bfb_9a9dcaad",
+      "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5922e1_8c029383",
+        "filename": "firmware/stub/tpm_lite_stub.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-07T01:21:06Z",
+      "side": 1,
+      "message": "Fair enough, didn\u0027t think that through.",
+      "parentUuid": "76697f7c_06573f38",
       "revId": "cddc5df22bad532f6fcef130a7bbf927e0cfd95b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
