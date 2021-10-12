@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac876b43_f996e811",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "ptal",
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0430ab_2f804b47",
+        "filename": "futility/misc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "this should also check that for *s \u003d\u003d \u0027\\0\u0027, otherwise ASCII hex strings longer than expected are silently accepted.",
+      "range": {
+        "startLine": 401,
+        "startChar": 5,
+        "endLine": 401,
+        "endChar": 13
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

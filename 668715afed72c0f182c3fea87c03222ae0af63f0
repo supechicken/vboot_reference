@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c17730fb_0645fe1c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "this will have to be further refined: what board ID do we use when signing, how is the board ID delivered to the signer, what is the benefit of having board_id in the sturcture, etc.\n\nmay I suggest we discuss this further and add it once it has been discussed - it would be a small incremental change.",
+      "parentUuid": "af1a0b00_2e6b57b5",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bd66d66_fd81decc",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 13
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-12T02:41:14Z",
       "side": 1,
       "message": "Can use vb2_init_signature()",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f88a77e_c9cc93db",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd66d66_fd81decc",
       "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3324414d_aa25b53a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df5a91a_055fc62f",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8d87d35_baaae894",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "303c593a_368802da",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8d87d35_baaae894",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fb58ac1_e5580e07",
@@ -99,6 +171,24 @@
       "writtenOn": "2021-10-12T02:41:14Z",
       "side": 1,
       "message": "Let\u0027s use vboot APIs instead of OpenSSL here. You can declare the root key as\n\n struct vb2_hash root_key_digest_input \u003d { .algo \u003d VB2_HASH_SHA256 };\n \n(then later write the bytes into root_key_digest_input.sha256[]), and then this just becomes\n\n vb2_hash_verify(...key_offset, ...key_size, \u0026root_key_digest_input)",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fe98da_a592ab5d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb58ac1_e5580e07",
       "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "569d28bb_60992930",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f25eab0_6cf9e490",
+      "range": {
+        "startLine": 934,
+        "startChar": 3,
+        "endLine": 934,
+        "endChar": 7
+      },
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fef19214_1bda3e88",
@@ -143,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a928e6_07c4dabd",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fef19214_1bda3e88",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fddce39b_17715ac2",
@@ -156,6 +288,24 @@
       "writtenOn": "2021-10-12T02:41:14Z",
       "side": 1,
       "message": "BTW I think you forgot to check this in the Cr50 implementation, that still needs to be added.",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7d297d_8c48eb3d",
+        "filename": "host/lib/include/gsc_ro.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T04:49:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fddce39b_17715ac2",
       "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
