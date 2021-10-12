@@ -20,6 +20,132 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae08f512_3f9cd26e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "nit: or just sig_size?",
+      "range": {
+        "startLine": 465,
+        "startChar": 7,
+        "endLine": 465,
+        "endChar": 31
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafd099c_3f5aae6c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "nit: should use either sizeof(struct gsc_verification_header) or sizeof(*gvd) consistently throughout this function (I think the former is better since the `gvd` pointer points to more data than just the struct and that could be a source of confusion).",
+      "range": {
+        "startLine": 474,
+        "startChar": 10,
+        "endLine": 474,
+        "endChar": 22
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b978822f_251defa8",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "It would be good to check vb2_verify_packed_key_inside(gvd, gvd-\u003esize, \u0026gvd-\u003eroot_key_header) and vb2_verify_signature_inside(gvd, gvd-\u003esize, \u0026gvd-\u003esig_header) here for some additional validation.",
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25178142_9a9af650",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "Why not just make this the struct vb2_hash right away?",
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee276ecb_dc9eec6e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "vb2_packed_key_data(\u0026gvd-\u003eroot_key_header)",
+      "range": {
+        "startLine": 840,
+        "startChar": 9,
+        "endLine": 841,
+        "endChar": 41
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d63a04_37bc68d8",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "vb2_packed_key_data()",
+      "range": {
+        "startLine": 876,
+        "startChar": 20,
+        "endLine": 876,
+        "endChar": 54
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd0430ab_2f804b47",
         "filename": "futility/misc.c",
         "patchSetId": 14
@@ -31,6 +157,30 @@
       "writtenOn": "2021-10-12T04:49:43Z",
       "side": 1,
       "message": "this should also check that for *s \u003d\u003d \u0027\\0\u0027, otherwise ASCII hex strings longer than expected are silently accepted.",
+      "range": {
+        "startLine": 401,
+        "startChar": 5,
+        "endLine": 401,
+        "endChar": 13
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab1111fc_4635d363",
+        "filename": "futility/misc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "Sure... I\u0027d be fine with changing the behavior to that.",
+      "parentUuid": "cd0430ab_2f804b47",
       "range": {
         "startLine": 401,
         "startChar": 5,

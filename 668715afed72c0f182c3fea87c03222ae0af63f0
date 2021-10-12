@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3a939b5_0f01fb02",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-12T23:42:57Z",
+      "side": 1,
+      "message": "The benefit is to prevent attackers from potentially installing firmware for a different Chromebook and exploiting some vulnerability that way. This may seem unlikely but sometimes different variants of the same model have very similar firmware, so installing one on the other board may still boot but maybe just misconfigure a few GPIOs or something, which may have a security impact. For further defense-in-depth we want to make sure those kinds of scenarios are impossible to begin with.\n\nHow the signer figures it out will need to be determined as part of your overall signing design for this. Maybe the board ID could be stored in the keyset file together with the keys themselves... but I\u0027m not sure if keysets and firmware builds actually map 1-to-1 these days (or at least many-to-1 in the case of LOEM keysets, but not 1-to-many).\n\nWe could also get it straight from the source -- because the board ID is supposed to exactly match the AP firmware build target, maybe the best way would be to analyze the AP firmware and figure out the board ID from there. coreboot stores its whole config in CBFS so one way would be to get the `config` file out of the image with cbfstool, find the CONFIG_MAINBOARD_PART_NUMBER line, and then look that up in some table that matches coreboot build targets to GSC board IDs. Or we could also just add a new coreboot Kconfig that\u0027s called CONFIG_CR50_BOARD_ID and hardcode this info directly in coreboot.\n\nWhichever way we do it I think it will end up being something that the signer has to look up out of band somehow and then pass in here on the command line, so we\u0027ll still need that command line parameter either way.",
+      "parentUuid": "c17730fb_0645fe1c",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bd66d66_fd81decc",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 13
