@@ -14,6 +14,8 @@
 #include <sys/wait.h>
 #endif
 
+#include <libflashrom.h>
+
 #include "2common.h"
 #include "crossystem.h"
 #include "host_misc.h"
@@ -554,8 +556,7 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 
 	switch (op) {
 	case FLASHROM_READ:
-		op_cmd = "-r";
-		assert(image_path);
+		assert(0); // XXX remove.
 		break;
 
 	case FLASHROM_WRITE:
@@ -580,7 +581,7 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	if (!extra)
 		extra = "";
 
-	/* TODO(hungte) In future we should link with flashrom directly. */
+	/* TODO(quasisec) In future we should link with flashrom directly. */
 	ASPRINTF(&command, "flashrom %s %s -p %s %s %s %s %s", op_cmd,
 		 image_path, programmer, dash_i, section_name, extra,
 		 postfix);
@@ -611,6 +612,63 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	return r;
 }
 
+static int flashrom_print_cb(
+	enum flashrom_log_level level, const char *fmt, va_list ap)
+{
+	int ret = 0;
+	FILE *output_type = stdout;
+	enum flashrom_log_level verbose_screen = FLASHROM_MSG_INFO;
+
+	if (level < FLASHROM_MSG_INFO)
+		output_type = stderr;
+
+#define COLOUR_RESET "\033[0;m"
+#define MAGENTA_TEXT "\033[35;1m"
+
+	if (level != FLASHROM_MSG_SPEW)
+		fprintf(output_type, MAGENTA_TEXT);
+	if (level <= verbose_screen) {
+		ret = vfprintf(output_type, fmt, ap);
+		/* msg_*spew often happens inside chip accessors
+		 * in possibly time-critical operations.
+		 * Don't slow them down by flushing.
+		 */
+		if (level != FLASHROM_MSG_SPEW)
+			fflush(output_type);
+	}
+	if (level != FLASHROM_MSG_SPEW)
+		fprintf(output_type, COLOUR_RESET);
+	return ret;
+}
+
+static int host_flashrom_read(const char *image_path, const char *programmer)
+{
+	int rc = -1;
+	size_t len = 0;
+
+	struct flashrom_programmer *prog = NULL;
+	struct flashrom_flashctx *flashctx = NULL;
+
+	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
+
+	rc |= flashrom_init(1);
+	rc |= flashrom_programmer_init(&prog, programmer, NULL);
+	rc |= flashrom_flash_probe(&flashctx, prog, NULL);
+
+	len = flashrom_flash_getsize(flashctx);
+	uint8_t *buf = calloc(1, len);
+
+	rc |= flashrom_image_read(flashctx, buf, len);
+	FILE *fptr = fopen(image_path,"wb");
+	fwrite(buf, len, 1, fptr);
+	fclose(fptr);
+
+	rc |= flashrom_programmer_shutdown(prog);
+	flashrom_flash_release(flashctx);
+
+	return rc;
+}
+
 /* Helper function to return write protection status via given programmer. */
 enum wp_state host_get_wp(const char *programmer)
 {
@@ -637,8 +695,12 @@ int load_system_firmware(struct firmware_image *image,
 	if (!tmp_path)
 		return -1;
 
-	r = host_flashrom(FLASHROM_READ, tmp_path, image->programmer,
-			  verbosity, NULL, NULL);
+//static int host_flashrom(enum flashrom_ops op, const char *image_path,
+//			 const char *programmer, int verbose,
+//			 const char *section_name, const char *extra)
+//	r = host_flashrom(FLASHROM_READ, tmp_path, image->programmer,
+//			  verbosity, NULL, NULL);
+	r = host_flashrom_read(tmp_path, image->programmer);
 	/*
 	 * The verbosity for host_flashrom will be translated to
 	 * (verbosity-1)*'-V', and usually 3*'-V' is enough for debugging.
