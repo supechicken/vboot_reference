@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "277c0418_89f473ab",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae08f512_3f9cd26e",
+      "range": {
+        "startLine": 465,
+        "startChar": 7,
+        "endLine": 465,
+        "endChar": 31
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eafd099c_3f5aae6c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-12T23:42:57Z",
       "side": 1,
       "message": "nit: should use either sizeof(struct gsc_verification_header) or sizeof(*gvd) consistently throughout this function (I think the former is better since the `gvd` pointer points to more data than just the struct and that could be a source of confusion).",
+      "range": {
+        "startLine": 474,
+        "startChar": 10,
+        "endLine": 474,
+        "endChar": 22
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc28c62_6dd8d50e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eafd099c_3f5aae6c",
       "range": {
         "startLine": 474,
         "startChar": 10,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebc18f3d_e1d0a176",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "isn\u0027t it a bit late to verify this here, if key and signature spill off the allotted space they could be corrupting other data. And we initialize the structures and verify that data fits before copying.\n\nI added these checks in the code which verifies previously created GVD.",
+      "parentUuid": "b978822f_251defa8",
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25178142_9a9af650",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 14
@@ -94,6 +160,24 @@
       "writtenOn": "2021-10-12T23:42:57Z",
       "side": 1,
       "message": "Why not just make this the struct vb2_hash right away?",
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ad4079_a210292e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25178142_9a9af650",
       "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14588d2b_4bdd957b",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee276ecb_dc9eec6e",
+      "range": {
+        "startLine": 840,
+        "startChar": 9,
+        "endLine": 841,
+        "endChar": 41
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d63a04_37bc68d8",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-10-12T23:42:57Z",
       "side": 1,
       "message": "vb2_packed_key_data()",
+      "range": {
+        "startLine": 876,
+        "startChar": 20,
+        "endLine": 876,
+        "endChar": 54
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea564178_eef3aa5f",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d63a04_37bc68d8",
       "range": {
         "startLine": 876,
         "startChar": 20,
@@ -181,6 +313,30 @@
       "side": 1,
       "message": "Sure... I\u0027d be fine with changing the behavior to that.",
       "parentUuid": "cd0430ab_2f804b47",
+      "range": {
+        "startLine": 401,
+        "startChar": 5,
+        "endLine": 401,
+        "endChar": 13
+      },
+      "revId": "6216c950c64bad3c174cd96296b8409df4da2b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e0083b_0f1f4626",
+        "filename": "futility/misc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab1111fc_4635d363",
       "range": {
         "startLine": 401,
         "startChar": 5,

@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c2f9967_455c4392",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T00:29:45Z",
+      "side": 1,
+      "message": "I like the idea of retrieving it from the AP firmware image, and not setting the GVD field if board id is not in found in the image.\n\nAlso, maybe GVD structure should be modified to include the board_id_mask field the same way GSC does it.\n\nBasically, I would like this feature to be available in development environment, and when people work on their AP firmware Board ID might be not known yet, or the same AP firmware image could be run on different devices. \n\nAs I said, let\u0027s leave adding this command line argument as a future enhancement in case we can\u0027t avoid it, it would be a small incremental change.\n\nFor now I could add the board_id_mask field.",
+      "parentUuid": "d3a939b5_0f01fb02",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bd66d66_fd81decc",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 13
