@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fdd34f_abe66660",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T23:26:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aecbbaf2_319cccb3",
+      "range": {
+        "startLine": 928,
+        "startChar": 4,
+        "endLine": 928,
+        "endChar": 11
+      },
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2a003cd_1149ea3a",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "I know it does, but don\u0027t we want to know if the input value is longer than 32 bits?",
       "parentUuid": "b2a003cd_1149ea3a",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c13138d_f5a54ef7",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T23:26:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8ef045d_2d207adf",
       "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +174,24 @@
       "side": 1,
       "message": "Yeah, I thought strtoul() is limited to 32 bits anyway but I guess technically that depends on the size of unsigned long on the current architecture...\n\nWhy don\u0027t you just do\n\n char *e;\n \n unsigned long board_id \u003d strtoul(bid_str, \u0026e, 16);\n if (*e || board_id \u003e UINT32_MAX) {\n   ...\n }\n\nThat should catch all error cases with way less boilerplate than all this.",
       "parentUuid": "dbb1135b_a4b849d5",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04bc54bb_46ecf4ad",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T23:26:55Z",
+      "side": 1,
+      "message": "ok, this will not detect inputs like 0x10000000012345678, but this is too outlandish to cover I guess, done.",
+      "parentUuid": "72a65a98_0f832622",
       "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
