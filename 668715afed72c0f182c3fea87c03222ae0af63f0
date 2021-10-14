@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab9ede12_9633b007",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-14T01:33:20Z",
+      "side": 1,
+      "message": "Well, wherever the signer ultimately chooses to get this from, it still needs to be put into the GSCVD by this utility, right? So we definitely need that command line option? I don\u0027t really understand what you want to wait for there, this needs to be written into the GSCVD before signing it, so this utility seems to be the only place to do that.\n\nFor the developer use case, that\u0027s supposed to be handled by just disabling RO verification on the GSC via CCD anyway (for the Dauntless story, for the Cr50 story just don\u0027t press the key combination when you have a custom image on there). There\u0027s no plan to have any sort of \"developer signing\" for this. That would be dangerous, because we don\u0027t have separate developer keys for this on the GSC, so any image you sign that has fewer restrictions that normal production images becomes a potential security risk if it leaks somewhere. I\u0027d prefer to not design any mechanism that allows that in the first place if we are not planning to use it in production.",
+      "parentUuid": "1c2f9967_455c4392",
+      "revId": "668715afed72c0f182c3fea87c03222ae0af63f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bd66d66_fd81decc",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 13
