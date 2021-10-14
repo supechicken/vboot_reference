@@ -116,6 +116,24 @@
       "parentUuid": "cbc079d4_8b517db2",
       "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72a65a98_0f832622",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-14T22:52:14Z",
+      "side": 1,
+      "message": "Yeah, I thought strtoul() is limited to 32 bits anyway but I guess technically that depends on the size of unsigned long on the current architecture...\n\nWhy don\u0027t you just do\n\n char *e;\n \n unsigned long board_id \u003d strtoul(bid_str, \u0026e, 16);\n if (*e || board_id \u003e UINT32_MAX) {\n   ...\n }\n\nThat should catch all error cases with way less boilerplate than all this.",
+      "parentUuid": "dbb1135b_a4b849d5",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
