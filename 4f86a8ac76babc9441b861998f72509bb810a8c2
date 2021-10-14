@@ -194,6 +194,24 @@
       "parentUuid": "72a65a98_0f832622",
       "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f640449_68c1f390",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-14T23:46:33Z",
+      "side": 1,
+      "message": "From the man page of strtoul:\n\n\u003e unless the original (nonnegated) value would overflow; in the latter case, strtoul() returns  ULONG_MAX  and  sets  errno  to ERANGE.\n\nSo that would trip the \u003e\u003d UINT32_MAX check.",
+      "parentUuid": "04bc54bb_46ecf4ad",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
