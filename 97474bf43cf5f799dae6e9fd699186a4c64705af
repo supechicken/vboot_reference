@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911ced80_c63ed2a0",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-14T00:52:21Z",
+      "side": 1,
+      "message": "To keep behaviors consistent, in the case that inactive partition doesn\u0027t exist.\n\nSeems like it won\u0027t hurt to boot the active one on failure?\n\nLogic right now:\n [1] Internet recovery\n   - Try active miniOS\n   - Try inactive minios\n [2] Internet recovery (old)\n   - Try inactive minios\n   \nFor [2], seems to make sense to try booting the active one as well.",
+      "range": {
+        "startLine": 615,
+        "startChar": 1,
+        "endLine": 623,
+        "endChar": 30
+      },
+      "revId": "97474bf43cf5f799dae6e9fd699186a4c64705af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
