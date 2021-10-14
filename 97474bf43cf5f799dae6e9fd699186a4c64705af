@@ -22,6 +22,30 @@
       },
       "revId": "97474bf43cf5f799dae6e9fd699186a4c64705af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3adce06b_92173870",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-14T01:10:30Z",
+      "side": 1,
+      "message": "FWIW I don\u0027t have a strong opinion either way. But one consideration could be that you\u0027re generally only supposed to select the \"old\" option when you already tried the primary option and it failed, and then you might reasonably expect that you actually get the old partition. I can\u0027t really think of a scenario where falling back to the active partition again at that point would be useful, but I could imagine situations where it adds more confusion (e.g. when the active partition boots but doesn\u0027t work right, and the non-active is corrupted... you\u0027d get the impression that they both boot but don\u0027t work right, not realizing that you have actually been booting the same thing twice).",
+      "parentUuid": "911ced80_c63ed2a0",
+      "range": {
+        "startLine": 615,
+        "startChar": 1,
+        "endLine": 623,
+        "endChar": 30
+      },
+      "revId": "97474bf43cf5f799dae6e9fd699186a4c64705af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
