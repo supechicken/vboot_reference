@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aecbbaf2_319cccb3",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T22:17:32Z",
+      "side": 1,
+      "message": "anything else? Can you please doublecheck so that this could be wrapped up sooner than in 24 hours?",
+      "parentUuid": "66297087_6f831b6d",
+      "range": {
+        "startLine": 928,
+        "startChar": 4,
+        "endLine": 928,
+        "endChar": 11
+      },
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2a003cd_1149ea3a",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 18
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8ef045d_2d207adf",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T22:17:32Z",
+      "side": 1,
+      "message": "I know it does, but don\u0027t we want to know if the input value is longer than 32 bits?",
+      "parentUuid": "b2a003cd_1149ea3a",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbc079d4_8b517db2",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 18
@@ -54,6 +96,24 @@
       "writtenOn": "2021-10-14T21:49:30Z",
       "side": 1,
       "message": "The *e test already checks for this, you don\u0027t need to do it again.",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb1135b_a4b849d5",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T22:17:32Z",
+      "side": 1,
+      "message": "wouldn\u0027t the *e test fail to detect that the input value is longer than 32 bits?",
+      "parentUuid": "cbc079d4_8b517db2",
       "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
