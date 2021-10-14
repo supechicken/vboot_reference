@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66297087_6f831b6d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-14T21:49:30Z",
+      "side": 1,
+      "message": "Sorry, should have noticed this earlier... all the stderr logging should be using futility\u0027s ERROR() (or WARN()/INFO()/STATUS() where appropriate) instead of direct fprintf().",
+      "range": {
+        "startLine": 928,
+        "startChar": 4,
+        "endLine": 928,
+        "endChar": 11
+      },
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a003cd_1149ea3a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-14T21:49:30Z",
+      "side": 1,
+      "message": "strtoul() knows how to parse 0x on its own, you don\u0027t have to do it.",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc079d4_8b517db2",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-14T21:49:30Z",
+      "side": 1,
+      "message": "The *e test already checks for this, you don\u0027t need to do it again.",
+      "revId": "4f86a8ac76babc9441b861998f72509bb810a8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
