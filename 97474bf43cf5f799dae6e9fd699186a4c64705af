@@ -46,6 +46,30 @@
       },
       "revId": "97474bf43cf5f799dae6e9fd699186a4c64705af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabb89f6_bc9d53b2",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-10-14T01:51:47Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion either. @kimjae I\u0027ll let you make the final decision.",
+      "parentUuid": "3adce06b_92173870",
+      "range": {
+        "startLine": 615,
+        "startChar": 1,
+        "endLine": 623,
+        "endChar": 30
+      },
+      "revId": "97474bf43cf5f799dae6e9fd699186a4c64705af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
