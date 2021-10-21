@@ -16,6 +16,24 @@
       "message": "I didn\u0027t test this on a real zork device. Please decide if b/203580383 is worth fixing.",
       "revId": "2d99b1429ed197eff79f8ccf6bdfc3332cd32c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971925cd_429bc58e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-10-21T13:24:15Z",
+      "side": 1,
+      "message": "This does not block the user from booting a valid USB drive correct? If that\u0027s the case, I think this is low priority.",
+      "parentUuid": "7bcc9e65_e067886b",
+      "revId": "2d99b1429ed197eff79f8ccf6bdfc3332cd32c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
