@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b1e7bb_151913fe",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "b/203715651",
+      "range": {
+        "startLine": 573,
+        "startChar": 9,
+        "endLine": 573,
+        "endChar": 17
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e532e85c_2216bba2",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "This does not appear consistent with the current logging behaviour. Is it too late to sneak a void* into the logging callback?",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee2db7d_721bb338",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "Why not read the layout from the image to be flashed instead or as a fallback?",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fe3080_5dd60a0b",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "ERROR(",
+      "range": {
+        "startLine": 700,
+        "startChar": 2,
+        "endLine": 700,
+        "endChar": 9
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279e38b6_6a94b3ef",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "ERROR(",
+      "range": {
+        "startLine": 706,
+        "startChar": 2,
+        "endLine": 706,
+        "endChar": 9
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fd8df6_236991f4",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "I think it\u0027d be worthwhile checking that the buffer lengths match, and probably len as well, though flashrom_image_write() seems to check that part at least.",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a86c798_1625d4dd",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "Ignoring verbosity seems incorrect.",
+      "range": {
+        "startLine": 749,
+        "startChar": 36,
+        "endLine": 749,
+        "endChar": 45
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb24310c_e2714bcf",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "Is there a plan to remove writing and reading a tempfile? I suspect pulling out post-processing after file read in load_firmware_image() would still be reasonably-contained compared to adding the image file writing boilerplate.",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07669716_6bb62000",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-21T05:07:15Z",
+      "side": 1,
+      "message": "I think everything ends up simpler if host_flashrom_write() is inlined and the tempfiles are skipped.",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
