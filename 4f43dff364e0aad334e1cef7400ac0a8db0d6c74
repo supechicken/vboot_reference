@@ -16,6 +16,23 @@
       "message": "I didn\u0027t test this on a real puff device. Please decide if b/203580383 is worth fixing.",
       "revId": "4f43dff364e0aad334e1cef7400ac0a8db0d6c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d845a6_95ceeca3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-10-21T04:05:37Z",
+      "side": 1,
+      "message": "It is likely worth cherry-picking in case Dooly is updated before final shipping.\nFor other puff devices, if we decide to update the factory firmware, we will likely move the branch to close to ToT to catch up with all the TCPCMv2 changes.\n",
+      "revId": "4f43dff364e0aad334e1cef7400ac0a8db0d6c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
