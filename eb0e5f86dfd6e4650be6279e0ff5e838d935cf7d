@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcfbd1d_2e226ba1",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b1e7bb_151913fe",
+      "range": {
+        "startLine": 573,
+        "startChar": 9,
+        "endLine": 573,
+        "endChar": 17
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e532e85c_2216bba2",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-21T05:07:15Z",
       "side": 1,
       "message": "This does not appear consistent with the current logging behaviour. Is it too late to sneak a void* into the logging callback?",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eaaed00_73e82e15",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Lobby for this change upstream. I agree it would be ideal for the callback to have a state tracker.",
+      "parentUuid": "e532e85c_2216bba2",
       "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb5519df_fe7a54ef",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Do you mean a call like?\n\nrc |\u003d flashrom_layout_read_fmap_from_buffer(\u0026layout, flashctx, refbuf, refbuf_len);",
+      "parentUuid": "2ee2db7d_721bb338",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92fe3080_5dd60a0b",
         "filename": "futility/updater_utils.c",
         "patchSetId": 2
@@ -71,6 +131,30 @@
       "writtenOn": "2021-10-21T05:07:15Z",
       "side": 1,
       "message": "ERROR(",
+      "range": {
+        "startLine": 700,
+        "startChar": 2,
+        "endLine": 700,
+        "endChar": 9
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3662b286_924b7973",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92fe3080_5dd60a0b",
       "range": {
         "startLine": 700,
         "startChar": 2,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "700a40ea_5091c1ca",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279e38b6_6a94b3ef",
+      "range": {
+        "startLine": 706,
+        "startChar": 2,
+        "endLine": 706,
+        "endChar": 9
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4fd8df6_236991f4",
@@ -117,6 +225,24 @@
       "writtenOn": "2021-10-21T05:07:15Z",
       "side": 1,
       "message": "I think it\u0027d be worthwhile checking that the buffer lengths match, and probably len as well, though flashrom_image_write() seems to check that part at least.",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c055b01_e403e720",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4fd8df6_236991f4",
       "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9652725f_a5893fbe",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "This was added before to deal with subprocess logs lacking. This needs to be revised to modify the log level of the callback however I thought to leave that as a follow up.",
+      "parentUuid": "9a86c798_1625d4dd",
+      "range": {
+        "startLine": 749,
+        "startChar": 36,
+        "endLine": 749,
+        "endChar": 45
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb24310c_e2714bcf",
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5bc668_eef2618b",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Preferred as a follow up, leaving the signature as-is for the moment and then flatten it out after.\n\nAlthough for this one spot I believe it is quite useful for debug when a update goes wrong you have the artifacts.",
+      "parentUuid": "cb24310c_e2714bcf",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07669716_6bb62000",
@@ -174,6 +342,24 @@
       "writtenOn": "2021-10-21T05:07:15Z",
       "side": 1,
       "message": "I think everything ends up simpler if host_flashrom_write() is inlined and the tempfiles are skipped.",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8189644_807f1ae2",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-25T01:14:27Z",
+      "side": 1,
+      "message": "Preferred as a follow up, leaving the signature as-is for the moment and then flatten it out after.",
+      "parentUuid": "07669716_6bb62000",
       "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
