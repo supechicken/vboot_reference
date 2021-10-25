@@ -695,36 +695,42 @@ static int host_flashrom_write(const char *image_path, const char *programmer,
 
 	len = flashrom_flash_getsize(flashctx);
 
-	rc |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
-	if (rc > 0) {
-		ERROR("could not read fmap from rom, rc=%d\n", rc);
-		return -1;
-	}
-	if (region) // empty region causes seg fault in API.
-		rc |= flashrom_layout_include_region(layout, region);
-	if (rc > 0) {
-		ERROR("could not include region = '%s'\n", region);
-		return -1;
-	}
-
 	char *buf = NULL;
 	size_t buf_len;
 	(void) read_file_into_buf(image_path, &buf, &buf_len);
 
 	char *refbuf = NULL;
-	size_t refbuf_len;
+	size_t refbuf_len = 0;
 	if (ref_file) {
 		(void) read_file_into_buf(ref_file, &refbuf, &refbuf_len);
 		if (refbuf_len != buf_len) {
 			ERROR("refbuf_len != buf_len");
-			free(buf);
-			free(refbuf);
-			return -1;
+			rc = -1;
+			goto err_cleanup;
 		}
+	}
+
+	rc |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
+	if (rc > 0) {
+		WARN("could not read fmap from rom, rc=%d, falling back to read from image\n", rc);
+		rc = flashrom_layout_read_fmap_from_buffer(&layout, flashctx, (const uint8_t *)buf, buf_len);
+		if (rc > 0) {
+			ERROR("could not read fmap from image, rc=%d\n", rc);
+			rc = -1;
+			goto err_cleanup;
+		}
+	}
+	if (region) // empty region causes seg fault in API.
+		rc |= flashrom_layout_include_region(layout, region);
+	if (rc > 0) {
+		ERROR("could not include region = '%s'\n", region);
+		rc = -1;
+		goto err_cleanup;
 	}
 
 	rc |= flashrom_image_write(flashctx, buf, buf_len, refbuf);
 
+err_cleanup:
 	rc |= flashrom_programmer_shutdown(prog);
 	flashrom_layout_release(layout);
 	flashrom_flash_release(flashctx);
