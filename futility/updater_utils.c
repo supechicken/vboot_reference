@@ -626,12 +626,14 @@ static size_t read_file_into_buf(const char *path, char **buf, size_t *buf_len)
 	return size;
 }
 
+// global to allow verbosity level to be injected into callback.
+static enum flashrom_log_level g_verbose_screen = FLASHROM_MSG_INFO;
+
 static int flashrom_print_cb(
 	enum flashrom_log_level level, const char *fmt, va_list ap)
 {
 	int ret = 0;
 	FILE *output_type = stdout;
-	enum flashrom_log_level verbose_screen = FLASHROM_MSG_INFO;
 
 	if (level < FLASHROM_MSG_INFO)
 		output_type = stderr;
@@ -641,7 +643,7 @@ static int flashrom_print_cb(
 
 	if (level != FLASHROM_MSG_SPEW)
 		fprintf(output_type, MAGENTA_TEXT);
-	if (level <= verbose_screen) {
+	if (level <= (g_verbose_screen + 2)) {
 		ret = vfprintf(output_type, fmt, ap);
 		/* msg_*spew often happens inside chip accessors
 		 * in possibly time-critical operations.
@@ -767,6 +769,7 @@ int load_system_firmware(struct firmware_image *image,
 {
 	int r;
 
+	g_verbose_screen = verbosity;
 	r = host_flashrom_read(image->programmer, image);
 	if (!r)
 		r = parse_firmware_image(image);
@@ -799,6 +802,7 @@ int write_system_firmware(const struct firmware_image *image,
 			return -1;
 	}
 
+	g_verbose_screen = verbosity;
 	r = host_flashrom_write(tmp_path, image->programmer, section_name,
 		tmp_diff);
 	return r;
