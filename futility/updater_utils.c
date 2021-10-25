@@ -609,14 +609,16 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	return r;
 }
 
+// global to allow verbosity level to be injected into callback.
+static enum flashrom_log_level g_verbose_screen = FLASHROM_MSG_INFO;
+
 static int flashrom_print_cb(enum flashrom_log_level level, const char *fmt,
 			     va_list ap)
 {
 	int ret = 0;
-	enum flashrom_log_level verbose_screen = FLASHROM_MSG_INFO;
-	FILE *output_type = (level < verbose_screen) ? stderr : stdout;
+	FILE *output_type = (level < g_verbose_screen) ? stderr : stdout;
 
-	if (level > verbose_screen)
+	if (level > g_verbose_screen)
 		return ret;
 
 #define COLOUR_RESET "\033[0;m"
@@ -772,6 +774,7 @@ int load_system_firmware(struct firmware_image *image,
 {
 	int r;
 
+	g_verbose_screen = verbosity + 1;
 	r = host_flashrom_read(image);
 	if (!r)
 		r = parse_firmware_image(image);
@@ -789,6 +792,7 @@ int write_system_firmware(const struct firmware_image *image,
 			  struct tempfile *tempfiles,
 			  int verbosity)
 {
+	g_verbose_screen = verbosity + 1;
 	return host_flashrom_write(image, section_name, diff_image);
 }
 
