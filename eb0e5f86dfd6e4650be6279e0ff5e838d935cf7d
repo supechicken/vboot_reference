@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c405b145_550ccc9f",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-25T03:00:14Z",
+      "side": 1,
+      "message": "Something like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/flashrom/cli_classic.c;l\u003d885-887;drc\u003d94ed91682f82f4cdf3432b127b50a3b1e1e8e6aa, so `buf` rather than `refbuf` and only from the rom if searching `buf` doesn\u0027t work, and only at all if `region` is set.",
+      "parentUuid": "fb5519df_fe7a54ef",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92fe3080_5dd60a0b",
         "filename": "futility/updater_utils.c",
         "patchSetId": 2
@@ -296,6 +314,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "015549b3_3785f3f7",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-25T03:00:14Z",
+      "side": 1,
+      "message": "As a refactor, the behaviour should remain the same, so the use of verbosity should be maintained.",
+      "parentUuid": "9652725f_a5893fbe",
+      "range": {
+        "startLine": 749,
+        "startChar": 36,
+        "endLine": 749,
+        "endChar": 45
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb24310c_e2714bcf",
         "filename": "futility/updater_utils.c",
         "patchSetId": 2
@@ -325,6 +367,24 @@
       "side": 1,
       "message": "Preferred as a follow up, leaving the signature as-is for the moment and then flatten it out after.\n\nAlthough for this one spot I believe it is quite useful for debug when a update goes wrong you have the artifacts.",
       "parentUuid": "cb24310c_e2714bcf",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddcbc10a_f18e4852",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-25T03:00:14Z",
+      "side": 1,
+      "message": "As far as I can tell, the tempfiles all get cleaned up before exit so that isn\u0027t really true in practice. Temp files in case something goes wrong seems like a bad justification for unnecessarily-messy code.",
+      "parentUuid": "0d5bc668_eef2618b",
       "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

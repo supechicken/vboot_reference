@@ -22,6 +22,30 @@
       },
       "revId": "6977acac6773cc6f3c2c24fc564e7b2a2b8a5d95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df21aaf_b82868b1",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-25T03:00:14Z",
+      "side": 1,
+      "message": "Remove the tempfile dance and the extra buffers just melt away.",
+      "parentUuid": "dac1e10a_9a45152c",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 16
+      },
+      "revId": "6977acac6773cc6f3c2c24fc564e7b2a2b8a5d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
