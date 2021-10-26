@@ -16,6 +16,24 @@
       "message": "I didn\u0027t test this on a real trogdor device. Please decide if b/203580383 is worth fixing.",
       "revId": "f9530b79acee09d33cb8b66aa9dce607b03d1384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb99faf_f6089a06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-10-26T01:20:48Z",
+      "side": 1,
+      "message": "Hmmm... this is a pretty extensive backport for what seems to be a pretty rare and harmless issue. I think it\u0027s maybe better not to risk it.",
+      "parentUuid": "017ad3df_e182aa4d",
+      "revId": "f9530b79acee09d33cb8b66aa9dce607b03d1384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
