@@ -354,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94e97edd_319459d4",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-27T23:25:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "015549b3_3785f3f7",
+      "range": {
+        "startLine": 749,
+        "startChar": 36,
+        "endLine": 749,
+        "endChar": 45
+      },
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb24310c_e2714bcf",
@@ -403,6 +427,24 @@
       "side": 1,
       "message": "As far as I can tell, the tempfiles all get cleaned up before exit so that isn\u0027t really true in practice. Temp files in case something goes wrong seems like a bad justification for unnecessarily-messy code.",
       "parentUuid": "0d5bc668_eef2618b",
+      "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc88023_bbc1b1ee",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-27T23:25:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddcbc10a_f18e4852",
       "revId": "eb0e5f86dfd6e4650be6279e0ff5e838d935cf7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
