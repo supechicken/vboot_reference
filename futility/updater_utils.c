@@ -172,39 +172,11 @@ static int load_firmware_version(struct firmware_image *image,
 	return 0;
 }
 
-/*
- * Loads a firmware image from file.
- * If archive is provided and file_name is a relative path, read the file from
- * archive.
- * Returns IMAGE_LOAD_SUCCESS on success, IMAGE_READ_FAILURE on file I/O
- * failure, or IMAGE_PARSE_FAILURE for non-vboot images.
- */
-int load_firmware_image(struct firmware_image *image, const char *file_name,
-			struct archive *archive)
+static int load_firmware_image_int(struct firmware_image *image, const char *file_name)
 {
 	int ret = IMAGE_LOAD_SUCCESS;
 	const char *section_a = NULL, *section_b = NULL;
 
-	if (!file_name) {
-		ERROR("No file name given\n");
-		return IMAGE_READ_FAILURE;
-	}
-
-	VB2_DEBUG("Load image file from %s...\n", file_name);
-
-	if (!archive_has_entry(archive, file_name)) {
-		ERROR("Does not exist: %s\n", file_name);
-		return IMAGE_READ_FAILURE;
-	}
-	if (archive_read_file(archive, file_name, &image->data, &image->size,
-			      NULL) != VB2_SUCCESS) {
-		ERROR("Failed to load %s\n", file_name);
-		return IMAGE_READ_FAILURE;
-	}
-
-	VB2_DEBUG("Image size: %d\n", image->size);
-	assert(image->data);
-	image->file_name = strdup(file_name);
 	image->fmap_header = fmap_find(image->data, image->size);
 
 	if (!image->fmap_header) {
@@ -234,6 +206,40 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 	load_firmware_version(image, section_b, &image->rw_version_b);
 
 	return ret;
+}
+
+/*
+ * Loads a firmware image from file.
+ * If archive is provided and file_name is a relative path, read the file from
+ * archive.
+ * Returns IMAGE_LOAD_SUCCESS on success, IMAGE_READ_FAILURE on file I/O
+ * failure, or IMAGE_PARSE_FAILURE for non-vboot images.
+ */
+int load_firmware_image(struct firmware_image *image, const char *file_name,
+			struct archive *archive)
+{
+	if (!file_name) {
+		ERROR("No file name given\n");
+		return IMAGE_READ_FAILURE;
+	}
+
+	VB2_DEBUG("Load image file from %s...\n", file_name);
+
+	if (!archive_has_entry(archive, file_name)) {
+		ERROR("Does not exist: %s\n", file_name);
+		return IMAGE_READ_FAILURE;
+	}
+	if (archive_read_file(archive, file_name, &image->data, &image->size,
+			      NULL) != VB2_SUCCESS) {
+		ERROR("Failed to load %s\n", file_name);
+		return IMAGE_READ_FAILURE;
+	}
+
+	VB2_DEBUG("Image size: %d\n", image->size);
+	assert(image->data);
+	image->file_name = strdup(file_name);
+
+	return load_firmware_image_int(image, file_name);
 }
 
 /*
