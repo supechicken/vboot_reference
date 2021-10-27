@@ -16,6 +16,24 @@
       "message": "Could we use image-\u003efile_name for the error logging to avoid needing coordination with the caller on error?",
       "revId": "ea981aa5662e41c7c648d0fc49232935c2ccf1af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e564b1_915160c2",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-27T02:52:44Z",
+      "side": 1,
+      "message": "We could but what happens when we call this function without a file name?",
+      "parentUuid": "771faaa6_a8811b58",
+      "revId": "ea981aa5662e41c7c648d0fc49232935c2ccf1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
