@@ -655,7 +655,7 @@ static int flashrom_print_cb(
 	return ret;
 }
 
-static int host_flashrom_read(const char *image_path, const char *programmer)
+static int host_flashrom_read(const char *programmer, struct firmware_image *image)
 {
 	int rc = 0;
 	size_t len = 0;
@@ -670,13 +670,10 @@ static int host_flashrom_read(const char *image_path, const char *programmer)
 	rc |= flashrom_flash_probe(&flashctx, prog, NULL);
 
 	len = flashrom_flash_getsize(flashctx);
-	uint8_t *buf = calloc(1, len);
+	image->data = calloc(1, len);
+	image->size = len;
 
-	rc |= flashrom_image_read(flashctx, buf, len);
-	FILE *fp = fopen(image_path, "wb");
-	fwrite(buf, len, 1, fp);
-	fclose(fp);
-	free(buf);
+	rc |= flashrom_image_read(flashctx, image->data, len);
 
 	rc |= flashrom_programmer_shutdown(prog);
 	flashrom_flash_release(flashctx);
@@ -763,14 +760,10 @@ int load_system_firmware(struct firmware_image *image,
 			 struct tempfile *tempfiles, int verbosity)
 {
 	int r;
-	const char *tmp_path = create_temp_file(tempfiles);
 
-	if (!tmp_path)
-		return -1;
-
-	r = host_flashrom_read(tmp_path, image->programmer);
+	r = host_flashrom_read(image->programmer, image);
 	if (!r)
-		r = load_firmware_image(image, tmp_path, NULL);
+		r = parse_firmware_image(image);
 	return r;
 }
 
