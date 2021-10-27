@@ -14,6 +14,8 @@
 #include <sys/wait.h>
 #endif
 
+#include <libflashrom.h>
+
 #include "2common.h"
 #include "crossystem.h"
 #include "host_misc.h"
@@ -25,7 +27,6 @@
 
 enum flashrom_ops {
 	FLASHROM_READ,
-	FLASHROM_WRITE,
 	FLASHROM_WP_STATUS,
 };
 
@@ -565,11 +566,6 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 		assert(image_path);
 		break;
 
-	case FLASHROM_WRITE:
-		op_cmd = "-w";
-		assert(image_path);
-		break;
-
 	case FLASHROM_WP_STATUS:
 		op_cmd = "--wp-status";
 		assert(image_path == NULL);
@@ -587,7 +583,7 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 	if (!extra)
 		extra = "";
 
-	/* TODO(hungte) In future we should link with flashrom directly. */
+	/* TODO(b/203715651): link with flashrom directly. */
 	ASPRINTF(&command, "flashrom %s %s -p %s %s %s %s %s", op_cmd,
 		 image_path, programmer, dash_i, section_name, extra,
 		 postfix);
@@ -616,6 +612,91 @@ static int host_flashrom(enum flashrom_ops op, const char *image_path,
 		r = WP_ERROR;
 	free(result);
 	return r;
+}
+
+static int flashrom_print_cb(
+	enum flashrom_log_level level, const char *fmt, va_list ap)
+{
+	int ret = 0;
+	FILE *output_type = stdout;
+	enum flashrom_log_level verbose_screen = FLASHROM_MSG_INFO;
+
+	if (level < FLASHROM_MSG_INFO)
+		output_type = stderr;
+
+#define COLOUR_RESET "\033[0;m"
+#define MAGENTA_TEXT "\033[35;1m"
+
+	if (level != FLASHROM_MSG_SPEW)
+		fprintf(output_type, MAGENTA_TEXT);
+	if (level <= verbose_screen) {
+		ret = vfprintf(output_type, fmt, ap);
+		/* msg_*spew often happens inside chip accessors
+		 * in possibly time-critical operations.
+		 * Don't slow them down by flushing.
+		 */
+		if (level != FLASHROM_MSG_SPEW)
+			fflush(output_type);
+	}
+	if (level != FLASHROM_MSG_SPEW)
+		fprintf(output_type, COLOUR_RESET);
+	return ret;
+}
+
+static int host_flashrom_write(const struct firmware_image *image,
+	const char *region, const struct firmware_image *diff_image)
+{
+	int rc = 0;
+	size_t len = 0;
+
+	const char *programmer = image->programmer;
+
+	struct flashrom_programmer *prog = NULL;
+	struct flashrom_flashctx *flashctx = NULL;
+	struct flashrom_layout *layout = NULL;
+
+	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
+
+	rc |= flashrom_init(1);
+	rc |= flashrom_programmer_init(&prog, programmer, NULL);
+	rc |= flashrom_flash_probe(&flashctx, prog, NULL);
+
+	len = flashrom_flash_getsize(flashctx);
+
+	if (diff_image) {
+		if (diff_image->size != image->size) {
+			ERROR("diff_image->size != image->size");
+			rc = -1;
+			goto err_cleanup;
+		}
+	}
+
+	rc |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
+	if (rc > 0) {
+		WARN("could not read fmap from rom, rc=%d, falling back to read from image\n", rc);
+		rc = flashrom_layout_read_fmap_from_buffer(&layout, flashctx, (const uint8_t *)image->data, image->size);
+		if (rc > 0) {
+			ERROR("could not read fmap from image, rc=%d\n", rc);
+			rc = -1;
+			goto err_cleanup;
+		}
+	}
+	if (region) // empty region causes seg fault in API.
+		rc |= flashrom_layout_include_region(layout, region);
+	if (rc > 0) {
+		ERROR("could not include region = '%s'\n", region);
+		rc = -1;
+		goto err_cleanup;
+	}
+
+	rc |= flashrom_image_write(flashctx, image->data, image->size, diff_image->data);
+
+err_cleanup:
+	rc |= flashrom_programmer_shutdown(prog);
+	flashrom_layout_release(layout);
+	flashrom_flash_release(flashctx);
+
+	return rc;
 }
 
 /* Helper function to return write protection status via given programmer. */
@@ -673,28 +754,7 @@ int write_system_firmware(const struct firmware_image *image,
 			  struct tempfile *tempfiles,
 			  int verbosity)
 {
-	const char *tmp_path = get_firmware_image_temp_file(image, tempfiles);
-	const char *tmp_diff = NULL;
-
-	const char *programmer = image->programmer;
-	char *extra = NULL;
-	int r;
-
-	if (!tmp_path)
-		return -1;
-
-	if (diff_image) {
-		tmp_diff = get_firmware_image_temp_file(
-				diff_image, tempfiles);
-		if (!tmp_diff)
-			return -1;
-		ASPRINTF(&extra, "--noverify --flash-contents=%s", tmp_diff);
-	}
-
-	r = host_flashrom(FLASHROM_WRITE, tmp_path, programmer, verbosity,
-			  section_name, extra);
-	free(extra);
-	return r;
+	return host_flashrom_write(image, section_name, diff_image);
 }
 
 /* Helper function to configure all properties. */
