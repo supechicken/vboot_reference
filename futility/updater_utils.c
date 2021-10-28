@@ -521,24 +521,6 @@ char *host_detect_servo(int *need_prepare_ptr)
 	return ret;
 }
 
-static size_t read_file_into_buf(const char *path, char **buf, size_t *buf_len)
-{
-	FILE *fp = fopen(path, "rb");
-	if (!fp) {
-		*buf = NULL;
-		*buf_len = 0;
-		return 0;
-	}
-	fseek(fp, 0L, SEEK_END);
-	size_t len = ftell(fp);
-	fseek(fp, 0L, SEEK_SET);
-	*buf = calloc(1, len); // caller must free.
-	*buf_len = len;
-	size_t size = fread(*buf, len, 1, fp);
-	fclose(fp);
-	return size;
-}
-
 // global to allow verbosity level to be injected into callback.
 static enum flashrom_log_level g_verbose_screen = FLASHROM_MSG_INFO;
 
@@ -596,11 +578,13 @@ static int host_flashrom_read(const char *programmer, struct firmware_image *ima
 	return rc;
 }
 
-static int host_flashrom_write(const char *image_path, const char *programmer,
-	const char *region, const char *ref_file)
+static int host_flashrom_write(const struct firmware_image *image,
+	const char *region, const struct firmware_image *diff_image)
 {
 	int rc = 0;
 	size_t len = 0;
+
+	const char *programmer = image->programmer;
 
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
@@ -614,16 +598,9 @@ static int host_flashrom_write(const char *image_path, const char *programmer,
 
 	len = flashrom_flash_getsize(flashctx);
 
-	char *buf = NULL;
-	size_t buf_len;
-	(void) read_file_into_buf(image_path, &buf, &buf_len);
-
-	char *refbuf = NULL;
-	size_t refbuf_len = 0;
-	if (ref_file) {
-		(void) read_file_into_buf(ref_file, &refbuf, &refbuf_len);
-		if (refbuf_len != buf_len) {
-			ERROR("refbuf_len != buf_len");
+	if (diff_image) {
+		if (diff_image->size != image->size) {
+			ERROR("diff_image->size != image->size");
 			rc = -1;
 			goto err_cleanup;
 		}
@@ -632,7 +609,7 @@ static int host_flashrom_write(const char *image_path, const char *programmer,
 	rc |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
 	if (rc > 0) {
 		WARN("could not read fmap from rom, rc=%d, falling back to read from image\n", rc);
-		rc = flashrom_layout_read_fmap_from_buffer(&layout, flashctx, (const uint8_t *)buf, buf_len);
+		rc = flashrom_layout_read_fmap_from_buffer(&layout, flashctx, (const uint8_t *)image->data, image->size);
 		if (rc > 0) {
 			ERROR("could not read fmap from image, rc=%d\n", rc);
 			rc = -1;
@@ -647,15 +624,12 @@ static int host_flashrom_write(const char *image_path, const char *programmer,
 		goto err_cleanup;
 	}
 
-	rc |= flashrom_image_write(flashctx, buf, buf_len, refbuf);
+	rc |= flashrom_image_write(flashctx, image->data, image->size, diff_image->data);
 
 err_cleanup:
 	rc |= flashrom_programmer_shutdown(prog);
 	flashrom_layout_release(layout);
 	flashrom_flash_release(flashctx);
-
-	free(buf);
-	free(refbuf);
 
 	return rc;
 }
@@ -728,25 +702,9 @@ int write_system_firmware(const struct firmware_image *image,
 			  struct tempfile *tempfiles,
 			  int verbosity)
 {
-	const char *tmp_path = get_firmware_image_temp_file(image, tempfiles);
-	const char *tmp_diff = NULL;
-
-	int r;
-
-	if (!tmp_path)
-		return -1;
-
-	if (diff_image) {
-		tmp_diff = get_firmware_image_temp_file(
-				diff_image, tempfiles);
-		if (!tmp_diff)
-			return -1;
-	}
 
 	g_verbose_screen = verbosity;
-	r = host_flashrom_write(tmp_path, image->programmer, section_name,
-		tmp_diff);
-	return r;
+	return host_flashrom_write(image, section_name, diff_image);
 }
 
 /* Helper function to configure all properties. */
