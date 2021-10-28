@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f196c1_17b5dc13",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:54:36Z",
+      "side": 1,
+      "message": "I\u0027d much prefer to do the conversion from futility verbosity to flashrom verbosity on assignment instead to avoid type confusion - especially given the default initialisation\n\n  g_verbose_screen \u003d FLASHROM_MSG_INFO\n\ndoesn\u0027t mean what it says.",
+      "range": {
+        "startLine": 628,
+        "startChar": 15,
+        "endLine": 628,
+        "endChar": 35
+      },
+      "revId": "1546fa6e05ebce2624df08d4c18cc7015154cb06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
