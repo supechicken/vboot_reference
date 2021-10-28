@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3675370f_0752a6b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:43:17Z",
+      "side": 1,
+      "message": "Can you test with --wp\u003d1 to ensure the process where it updates each RW region individually is tested.\n\nIs there a performance impact with these changes?",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907e49f0_f4693e56",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:43:17Z",
+      "side": 1,
+      "message": "Wrapping immediately after ( doesn\u0027t seem to be common in this file. Please clang-format it.",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584a70e6_8bf49c83",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:43:17Z",
+      "side": 1,
+      "message": "What does the return value mean?",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841b4418_fd7c50d2",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:43:17Z",
+      "side": 1,
+      "message": "We should check this first and early return if not satisfied.",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a5246c_b5092324",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:43:17Z",
+      "side": 1,
+      "message": "r is more common in this file. I guess the golang people got to it.",
+      "range": {
+        "startLine": 649,
+        "startChar": 5,
+        "endLine": 649,
+        "endChar": 7
+      },
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9b1576_f01fe89a",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:43:17Z",
+      "side": 1,
+      "message": "len is only used for flashrom_layout_read_fmap_from_rom(). Can we inline this call there?",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2885c08_ad35acd3",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-28T03:43:17Z",
+      "side": 1,
+      "message": "I guess this got lost in the squashing, but to match cli_classic, we should try reading from the image first, then from the rom - optionally, we could use diff_image in between if set to avoid unnecessary flash reads.\n\nWe should also skip this whole part if !region.",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
