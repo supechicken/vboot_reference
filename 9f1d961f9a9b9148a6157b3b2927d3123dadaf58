@@ -22,6 +22,30 @@
       },
       "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c277499_60b96b6e",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-10-29T03:07:35Z",
+      "side": 0,
+      "message": "My understanding is that this is how the flags are set inside the ctx already in the expected way. I looked though cli_classic to inspect it.",
+      "parentUuid": "f6c5739f_901f659c",
+      "range": {
+        "startLine": 691,
+        "startChar": 20,
+        "endLine": 691,
+        "endChar": 30
+      },
+      "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
