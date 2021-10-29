@@ -175,6 +175,24 @@
       "parentUuid": "a0f26719_f54e05ec",
       "revId": "d31a09880d5b3bb19aa6371a6194835add196989",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534115b1_2715012c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-10-29T04:32:26Z",
+      "side": 1,
+      "message": "Non-null so anything that expects it to be set won\u0027t run into undefined behaviour - something like\n\n  image-\u003efile_name \u003d strdup(\"\u003cnone\u003e\");",
+      "parentUuid": "9adbb8b1_073aa814",
+      "revId": "d31a09880d5b3bb19aa6371a6194835add196989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
