@@ -228,13 +228,15 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 
 	VB2_DEBUG("Load image file from %s...\n", file_name);
 
-	if (!archive_has_entry(archive, file_name)) {
+	if (archive_has_entry(archive, file_name)) {
+		if (archive_read_file(archive, file_name,
+				      &image->data, &image->size,
+				      NULL) != VB2_SUCCESS) {
+			ERROR("Failed to load %s\n", file_name);
+			return IMAGE_READ_FAILURE;
+		}
+	} else {
 		ERROR("Does not exist: %s\n", file_name);
-		return IMAGE_READ_FAILURE;
-	}
-	if (archive_read_file(archive, file_name, &image->data, &image->size,
-			      NULL) != VB2_SUCCESS) {
-		ERROR("Failed to load %s\n", file_name);
 		return IMAGE_READ_FAILURE;
 	}
 
