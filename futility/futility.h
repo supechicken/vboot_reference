@@ -146,6 +146,14 @@ enum futil_file_err futil_unmap_file(int fd, int writeable,
  */
 void parse_digest_or_die(uint8_t *buf, int len, const char *str);
 
+
+/*
+ * Simple extraction of the filename in a longer path.
+ * String processing only, not checking for existence, resolving symlinks or
+ * anything complicated like that.
+ */
+char *simple_basename(char *str);
+
 /* The CPU architecture is occasionally important */
 enum arch_t {
 	ARCH_UNSPECIFIED,

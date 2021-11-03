@@ -282,16 +282,6 @@ static int do_version(int argc, char *argv[])
 DECLARE_FUTIL_COMMAND(version, do_version, VBOOT_VERSION_ALL,
 		      ver_help);
 
-static char *simple_basename(char *str)
-{
-	char *s = strrchr(str, '/');
-	if (s)
-		s++;
-	else
-		s = str;
-	return s;
-}
-
 /* Here we go */
 #define OPT_HELP 1000
 int main(int argc, char *argv[], char *envp[])

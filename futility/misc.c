@@ -403,3 +403,13 @@ void parse_digest_or_die(uint8_t *buf, int len, const char *str)
 		exit(1);
 	}
 }
+
+char *simple_basename(char *str)
+{
+	char *s = strrchr(str, '/');
+	if (s)
+		s++;
+	else
+		s = str;
+	return s;
+}
