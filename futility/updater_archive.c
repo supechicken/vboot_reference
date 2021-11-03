@@ -430,7 +430,7 @@ int archive_has_entry(struct archive *ar, const char *name)
  * The arg argument will also be passed to callback.
  * Returns 0 on success otherwise non-zero as failure.
  */
-static int archive_walk(struct archive *ar, void *arg,
+int archive_walk(struct archive *ar, void *arg,
 			int (*callback)(const char *path, void *arg))
 {
 	if (!ar)
