@@ -290,4 +290,20 @@ int model_apply_white_label(
 		const char *signature_id,
 		const char *image);
 
+#ifdef HAVE_BSPATCH
+/*
+ * Checks if an entry in delta format exists in archive.
+ * Returns 1 if exists, otherwise 0
+ */
+int archive_has_delta_entry(struct archive *ar, const char *name);
+
+/*
+ * Reads a file in delta format from archive.
+ * Returns 0 on success (data and size reflects the file content),
+ * otherwise non-zero as failure.
+ */
+int archive_read_delta_file(struct archive *ar, const char *fname,
+			    uint8_t **data, uint32_t *size, int64_t *mtime);
+#endif
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_H_ */
