@@ -305,6 +305,13 @@ ifneq (${HAVE_LIBZIP},)
   LIBZIP_LIBS := $(shell ${PKG_CONFIG} --libs libzip)
 endif
 
+BSPATCH_VERSION := $(shell ${PKG_CONFIG} --modversion libbspatch 2>/dev/null)
+HAVE_BSPATCH := $(if ${BSPATCH_VERSION},1)
+ifneq (${HAVE_BSPATCH},)
+  CFLAGS += -DHAVE_BSPATCH $(shell ${PKG_CONFIG} --cflags libbspatch)
+  BSPATCH_LIBS := $(shell ${PKG_CONFIG} --libs libbspatch) -lbspatch-c
+endif
+
 # Determine QEMU architecture needed, if any
 ifeq (${ARCH},${HOST_ARCH})
   # Same architecture; no need for QEMU
@@ -680,6 +687,11 @@ FUTIL_SRCS = \
 	futility/vb1_helper.c \
 	futility/vb2_helper.c
 
+ifneq (${HAVE_BSPATCH},)
+FUTIL_SRCS += \
+	futility/updater_archive_bsdiff.c
+endif
+
 # List of commands built in futility.
 FUTIL_CMD_LIST = ${BUILD}/gen/futility_cmds.c
 
@@ -1046,10 +1058,14 @@ futil: ${FUTIL_BIN}
 # FUTIL_LIBS is shared by FUTIL_BIN and TEST_FUTIL_BINS.
 FUTIL_LIBS = ${CRYPTO_LIBS} ${LIBZIP_LIBS}
 
+ifneq (${HAVE_BSPATCH},)
+FUTIL_LIBS += ${BSPATCH_LIBS}
+endif
+
 ${FUTIL_BIN}: LDLIBS += ${FUTIL_LIBS}
 ${FUTIL_BIN}: ${FUTIL_OBJS} ${UTILLIB} ${FWLIB}
 	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
-	${Q}${LD} -o $@ ${LDFLAGS} $^ ${LDLIBS}
+	${Q}${CXX} -o $@ ${LDFLAGS} $^ ${LDLIBS}
 
 .PHONY: futil_install
 futil_install: ${FUTIL_BIN}
