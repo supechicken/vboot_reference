@@ -235,6 +235,15 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 			ERROR("Failed to load %s\n", file_name);
 			return IMAGE_READ_FAILURE;
 		}
+#ifdef HAVE_BSPATCH
+	} else if (archive_has_delta_entry(archive, file_name)) {
+		if (archive_read_delta_file(archive, file_name,
+				      &image->data, &image->size,
+				      NULL) != VB2_SUCCESS) {
+			ERROR("Failed to load %s\n", file_name);
+			return IMAGE_READ_FAILURE;
+		}
+#endif
 	} else {
 		ERROR("Does not exist: %s\n", file_name);
 		return IMAGE_READ_FAILURE;
