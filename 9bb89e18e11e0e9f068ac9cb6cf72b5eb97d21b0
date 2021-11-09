@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff9789c5_ee5eeb0c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-09T01:59:07Z",
+      "side": 1,
+      "message": "yes although the file isn\u0027t completely formatted correctly so have to `git add -p` hunks relevant here.",
+      "parentUuid": "d17a41d6_5ccf2ddc",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "584a70e6_8bf49c83",
@@ -119,6 +137,24 @@
       "writtenOn": "2021-10-28T03:43:17Z",
       "side": 1,
       "message": "We should check this first and early return if not satisfied.",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb313a0_4f36bc71",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-09T01:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "841b4418_fd7c50d2",
       "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -254,6 +290,42 @@
       "side": 1,
       "message": "Image first.",
       "parentUuid": "9a52bfad_9be08d92",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "080915b8_8e5c319c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-09T01:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc32ee14_fc050179",
+      "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dfa115e_2cb23bb8",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-09T01:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc32ee14_fc050179",
       "revId": "9bb89e18e11e0e9f068ac9cb6cf72b5eb97d21b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
