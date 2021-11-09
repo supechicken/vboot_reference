@@ -118,6 +118,30 @@
       },
       "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfda4c0e_d726f103",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-09T03:46:15Z",
+      "side": 0,
+      "message": "To confirm, the desire is to explicitly set:\n\n```\n+       flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_AFTER_WRITE, false);\n+       flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_WHOLE_CHIP, true);\n        r |\u003d flashrom_image_write(flashctx, image-\u003edata, image-\u003esize,\n                                  diff_image ? diff_image-\u003edata : NULL);\n```\n\n?",
+      "parentUuid": "2a6c70b7_dfcbc712",
+      "range": {
+        "startLine": 691,
+        "startChar": 20,
+        "endLine": 691,
+        "endChar": 30
+      },
+      "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
