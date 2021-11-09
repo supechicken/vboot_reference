@@ -70,6 +70,30 @@
       },
       "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cda6dc7_c1ee9a11",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-09T03:12:07Z",
+      "side": 0,
+      "message": "afaik:\n\n-n [--noverify] sets `dont_verify_it \u003d 1` \u003d\u003e `FLASHROM_FLAG_VERIFY_AFTER_WRITE :\u003d 0`.\n\nis the suggestion here for `FLASHROM_FLAG_VERIFY_WHOLE_CHIP :\u003d 1`?",
+      "parentUuid": "edfab55c_7b1d2d23",
+      "range": {
+        "startLine": 691,
+        "startChar": 20,
+        "endLine": 691,
+        "endChar": 30
+      },
+      "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
