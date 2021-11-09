@@ -142,6 +142,30 @@
       },
       "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bded84c_6fc253e4",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-11-09T03:49:12Z",
+      "side": 0,
+      "message": "The desire is to match the current behaviour, whatever that behaviour is. If no diff_image is present, then whatever cli_classic does by default is what we want; otherwise, if diff_image is used, then presumably we should disable verify after write.\n\nPlease confirm the current behaviour.",
+      "parentUuid": "dfda4c0e_d726f103",
+      "range": {
+        "startLine": 691,
+        "startChar": 20,
+        "endLine": 691,
+        "endChar": 30
+      },
+      "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
