@@ -94,6 +94,30 @@
       },
       "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6c70b7_dfcbc712",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-11-09T03:14:59Z",
+      "side": 0,
+      "message": "The codepath where --noverify is set is probably fine; the case where it isn\u0027t set may not be.",
+      "parentUuid": "7cda6dc7_c1ee9a11",
+      "range": {
+        "startLine": 691,
+        "startChar": 20,
+        "endLine": 691,
+        "endChar": 30
+      },
+      "revId": "9f1d961f9a9b9148a6157b3b2927d3123dadaf58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
