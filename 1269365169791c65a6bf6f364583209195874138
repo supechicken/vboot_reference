@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322f9e99_10038877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2021-11-10T18:16:32Z",
+      "side": 1,
+      "message": "Before relanding this change, we have to land https://review.coreboot.org/c/coreboot/+/58253 and then land a signed verstage for Guybrush which is still in ToT. Otherwise it will break Guybrush.\n\nUnfortunately the signing infra is not ready/integrated into the build process.",
+      "revId": "1269365169791c65a6bf6f364583209195874138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
