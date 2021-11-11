@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4981bd2a_4d1ec3ba",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-11T10:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "088517bb_c3705ed3",
+      "revId": "50ef312d7451ea4b40c31be26cf2b3b33df2b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0716bf86_00fd35e4",
@@ -78,6 +96,24 @@
       "writtenOn": "2021-10-21T05:12:06Z",
       "side": 1,
       "message": "Could we inline the string literals?",
+      "revId": "50ef312d7451ea4b40c31be26cf2b3b33df2b1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aaa4fea_baea9126",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-11T10:35:38Z",
+      "side": 1,
+      "message": "Done. Although I rather leave the postfix for the moment.",
+      "parentUuid": "a5c06de9_2f208b7b",
       "revId": "50ef312d7451ea4b40c31be26cf2b3b33df2b1c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
