@@ -16,6 +16,24 @@
       "message": "Before relanding this change, we have to land https://review.coreboot.org/c/coreboot/+/58253 and then land a signed verstage for Guybrush which is still in ToT. Otherwise it will break Guybrush.\n\nUnfortunately the signing infra is not ready/integrated into the build process.",
       "revId": "1269365169791c65a6bf6f364583209195874138",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed574b0f_1989620d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-11-11T05:56:53Z",
+      "side": 1,
+      "message": "I found http://go/mi-psp-verstage-signing-howto. So, what\u0027s the plan for automating the process? Is there a bug for that?",
+      "parentUuid": "322f9e99_10038877",
+      "revId": "1269365169791c65a6bf6f364583209195874138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
