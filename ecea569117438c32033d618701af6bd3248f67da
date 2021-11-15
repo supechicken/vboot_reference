@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9aeb74e_65e4af4c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-11-15T06:25:54Z",
+      "side": 1,
+      "message": "Given multiple calls to host_flashrom_write() over a single futility invocation, I don\u0027t think mutating image-\u003eprogrammer is going to work very well.\n\nCasting away the const does draw the eye to the problem though, so that\u0027s nice.",
+      "revId": "ecea569117438c32033d618701af6bd3248f67da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
