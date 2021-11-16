@@ -913,20 +913,28 @@ ${TLCL}: ${TLCL_OBJS}
 .PHONY: utillib
 utillib: ${UTILLIB}
 
+#${UTILLIB}: LDLIBS += ${FLASHROM_LIBS}
 # TODO: better way to make .a than duplicating this recipe each time?
 ${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${TLCL_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
+	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
+	${Q}${LD} -shared -o $@ $^ ${FLASHROM_LIBS}
+#	${Q}${LD} -o $@ ${LDFLAGS} $^ ${LDLIBS}
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
 
 .PHONY: hostlib
 hostlib: ${HOSTLIB}
 
+#${HOSTLIB}: LDLIBS += ${FLASHROM_LIBS}
 # TODO: better way to make .a than duplicating this recipe each time?
 ${HOSTLIB}: ${HOSTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
+	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
+	${Q}${LD} -shared -o $@ $^ ${FLASHROM_LIBS}
+#	${Q}${LD} -o $@ ${LDFLAGS} $^ ${LDLIBS}
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
 	${Q}ar qc $@ $^
 
