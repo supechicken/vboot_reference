@@ -17,6 +17,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <libflashrom.h>
+
 #include "2api.h"
 #include "2return_codes.h"
 #include "host_misc.h"
@@ -103,38 +105,73 @@ static vb2_error_t run_flashrom(const char *const argv[])
 	return VB2_SUCCESS;
 }
 
+// global to allow verbosity level to be injected into callback.
+static enum flashrom_log_level g_verbose_screen = FLASHROM_MSG_INFO;
+
+static int flashrom_print_cb(enum flashrom_log_level level, const char *fmt,
+			     va_list ap)
+{
+	int ret = 0;
+	FILE *output_type = (level < FLASHROM_MSG_INFO) ? stderr : stdout;
+
+	if (level > g_verbose_screen)
+		return ret;
+
+	ret = vfprintf(output_type, fmt, ap);
+	/* msg_*spew often happens inside chip accessors
+	 * in possibly time-critical operations.
+	 * Don't slow them down by flushing.
+	 */
+	if (level != FLASHROM_MSG_SPEW)
+		fflush(output_type);
+
+	return ret;
+}
+
 vb2_error_t flashrom_read(const char *programmer, const char *region,
 			  uint8_t **data_out, uint32_t *size_out)
 {
-	char *tmpfile;
-	char region_param[PATH_MAX];
-	vb2_error_t rv;
+	struct flashrom_programmer *prog = NULL;
+	struct flashrom_flashctx *flashctx = NULL;
+	struct flashrom_layout *layout = NULL;
+	vb2_error_t rv = 0;
 
 	*data_out = NULL;
 	*size_out = 0;
 
-	VB2_TRY(write_temp_file(NULL, 0, &tmpfile));
+	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
 
-	if (region)
-		snprintf(region_param, sizeof(region_param), "%s:%s", region,
-			 tmpfile);
+	rv |= flashrom_init(1);
+	rv |= flashrom_programmer_init(&prog, programmer, NULL);
+	rv |= flashrom_flash_probe(&flashctx, prog, NULL);
 
-	const char *const argv[] = {
-		FLASHROM_EXEC_NAME,
-		"-p",
-		programmer,
-		"-r",
-		region ? "-i" : tmpfile,
-		region ? region_param : NULL,
-		NULL,
-	};
+	size_t len = flashrom_flash_getsize(flashctx);
 
-	rv = run_flashrom(argv);
-	if (rv == VB2_SUCCESS)
-		rv = vb2_read_file(tmpfile, data_out, size_out);
+	if (region) {
+		rv = flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
+			if (rv > 0) {
+				printf("could not read fmap from rom, r=%d, ", rv);
+				rv = -1;
+				goto err_cleanup;
+			}
+		// empty region causes seg fault in API.
+		rv |= flashrom_layout_include_region(layout, region);
+		if (rv > 0) {
+			printf("could not include region = '%s'\n", region);
+			rv = -1;
+			goto err_cleanup;
+		}
+	}
 
-	unlink(tmpfile);
-	free(tmpfile);
+	*size_out = len;
+	*data_out = calloc(1, len);
+
+	rv |= flashrom_image_read(flashctx, *data_out, len);
+
+err_cleanup:
+	rv |= flashrom_programmer_shutdown(prog);
+	flashrom_flash_release(flashctx);
+
 	return rv;
 }
 
