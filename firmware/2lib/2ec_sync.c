@@ -185,8 +185,7 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
-	const enum vb2_firmware_selection select_rw = EC_EFS ?
-		VB_SELECT_FIRMWARE_EC_UPDATE :
+	const enum vb2_firmware_selection select_rw =
 		VB_SELECT_FIRMWARE_EC_ACTIVE;
 	VB2_DEBUG("select_rw=%s\n", image_name_to_string(select_rw));
 
@@ -197,9 +196,6 @@ static vb2_error_t sync_ec(struct vb2_context *ctx)
 		if (ctx->flags & VB2_CONTEXT_NO_BOOT) {
 			VB2_DEBUG("Rebooting to jump to new EC-RW\n");
 			return VB2_REQUEST_REBOOT_EC_TO_RO;
-		} else if (EC_EFS) {
-			VB2_DEBUG("Rebooting to switch to new EC-RW\n");
-			return VB2_REQUEST_REBOOT_EC_SWITCH_RW;
 		}
 	}
 
@@ -290,7 +286,7 @@ static vb2_error_t ec_sync_phase1(struct vb2_context *ctx)
 	 * to jump to the new RW version later.
 	 */
 	if ((sd->flags & SYNC_FLAG(VB_SELECT_FIRMWARE_EC_ACTIVE)) &&
-	    (sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW) && !EC_EFS) {
+	    (sd->flags & VB2_SD_FLAG_ECSYNC_EC_IN_RW)) {
 		return VB2_REQUEST_REBOOT_EC_TO_RO;
 	}
 
