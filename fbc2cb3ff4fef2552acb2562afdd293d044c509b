@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8bb6098_50c4f39b",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-11-17T20:29:26Z",
+      "side": 0,
+      "message": "I believe the VB_SELECT_FIRMWARE_EC_UPDATE enum value itself also becomes obsolete with this and can be removed. But there are some remaining uses in depthcharge that have to be removed first.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 30
+      },
+      "revId": "fbc2cb3ff4fef2552acb2562afdd293d044c509b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc7906f7_4eeb47df",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-11-17T20:29:26Z",
+      "side": 0,
+      "message": "I believe this error code is now also unused and can be removed.",
+      "range": {
+        "startLine": 202,
+        "startChar": 10,
+        "endLine": 202,
+        "endChar": 41
+      },
+      "revId": "fbc2cb3ff4fef2552acb2562afdd293d044c509b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

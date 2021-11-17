@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c24123_fa675feb",
+        "filename": "firmware/2lib/2ec_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-11-17T20:29:26Z",
+      "side": 1,
+      "message": "Since we\u0027re back to only two cases we could simplify this again... or just leave it as is, not sure (see CL:616346).",
+      "revId": "51665868b7b72fd4f5a4fbc23078087e618f1ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
