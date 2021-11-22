@@ -297,27 +297,6 @@ resign_ssd_kernel() {
       conv=notrunc
     resigned_kernels=$(($resigned_kernels + 1))
 
-    debug_msg "Make the root file system writable if needed."
-    # TODO(hungte) for safety concern, a more robust way would be to:
-    # (1) change kernel config to ro
-    # (2) check if we can enable rw mount
-    # (3) change kernel config to rw
-    if [ ${FLAGS_remove_rootfs_verification} = $FLAGS_TRUE ]; then
-      local root_offset_sector=$(partoffset "$ssd_device" $rootfs_index)
-      local root_offset_bytes=$((root_offset_sector * bs))
-      if ! is_ext2 "$ssd_device" "$root_offset_bytes"; then
-        debug_msg "Non-ext2 partition: $ssd_device$rootfs_index, skip."
-      elif ! rw_mount_disabled "$ssd_device" "$root_offset_bytes"; then
-        debug_msg "Root file system is writable. No need to modify."
-      else
-        # disable the RO ext2 hack
-        debug_msg "Disabling rootfs ext2 RO bit hack"
-        enable_rw_mount "$ssd_device" "$root_offset_bytes" >"$EXEC_LOG" 2>&1 ||
-          die "Failed turning off rootfs RO bit. OS may be corrupted. " \
-              "Message: $(cat "${EXEC_LOG}")"
-      fi
-    fi
-
     # Sometimes doing "dump_kernel_config" or other I/O now (or after return to
     # shell) will get the data before modification. Not a problem now, but for
     # safety, let's try to sync more.
