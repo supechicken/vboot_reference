@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a3462b4_043b9acc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-23T03:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc7b6f6_db838817",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "9990b3b8be7accf91cac015c6ee3f90856dc660b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7acb6c1_43fe25f1",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-11-23T02:03:08Z",
       "side": 1,
       "message": "This is duplicating line 1380 above. Please extract the load_system_firmware() to before setting up tmp_image.",
+      "revId": "9990b3b8be7accf91cac015c6ee3f90856dc660b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6773bbf3_7e91db4e",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-23T03:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7acb6c1_43fe25f1",
       "revId": "9990b3b8be7accf91cac015c6ee3f90856dc660b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
