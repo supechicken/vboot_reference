@@ -16,6 +16,24 @@
       "message": "This error message should be triggered by the load_system_firmware() return value. Failing to create a tempfile had no logging previously.",
       "revId": "e87cc1a7ec3d7bb78065466360b59b842d1f9174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6993beb7_3dbda381",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-23T07:31:15Z",
+      "side": 1,
+      "message": "but it probably should have so then you end up writing two log lines. this way in either case at least we get a log which equate to the same situation in the end.",
+      "parentUuid": "70b20c5c_400be920",
+      "revId": "e87cc1a7ec3d7bb78065466360b59b842d1f9174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
