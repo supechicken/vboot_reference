@@ -52,6 +52,24 @@
       "parentUuid": "6993beb7_3dbda381",
       "revId": "e87cc1a7ec3d7bb78065466360b59b842d1f9174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743c682d_204b5627",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-11-23T08:00:41Z",
+      "side": 1,
+      "message": "Ack. There is a few things I want to resolve here in a follow up as to not micro-optimise here and get this over the line.\n\nSpecifically, the plan is for model_apply_white_label() to consume cfg and do the get_firmware_image_temp_file() internally as it dispatches out to vpd. In this way all its call sites need no longer assume valid file_name and works towards reducing the reliance on that, preferring instead to pass buffers.",
+      "parentUuid": "40023dd0_cc34249e",
+      "revId": "e87cc1a7ec3d7bb78065466360b59b842d1f9174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
