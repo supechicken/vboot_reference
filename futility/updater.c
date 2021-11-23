@@ -1626,8 +1626,12 @@ int updater_setup_config(struct updater_config *cfg,
 
 	/* Additional checks. */
 	if (check_single_image && (cfg->ec_image.data || cfg->pd_image.data)) {
-		errorcnt++;
-		ERROR("EC/PD images are not supported in current mode.\n");
+		if (!strcmp(arg->programmer, "dummy")) {
+			WARN("EC/PD images are not supported with dummy programmer.\n");
+		} else {
+			errorcnt++;
+			ERROR("EC/PD images are not supported in current mode.\n");
+		}
 	}
 	if (check_wp_disabled && is_write_protection_enabled(cfg)) {
 		errorcnt++;
