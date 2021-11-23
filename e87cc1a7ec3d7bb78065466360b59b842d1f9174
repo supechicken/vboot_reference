@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b20c5c_400be920",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-11-23T06:09:13Z",
+      "side": 1,
+      "message": "This error message should be triggered by the load_system_firmware() return value. Failing to create a tempfile had no logging previously.",
+      "revId": "e87cc1a7ec3d7bb78065466360b59b842d1f9174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
