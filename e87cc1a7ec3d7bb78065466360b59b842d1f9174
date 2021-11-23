@@ -34,6 +34,24 @@
       "parentUuid": "70b20c5c_400be920",
       "revId": "e87cc1a7ec3d7bb78065466360b59b842d1f9174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40023dd0_cc34249e",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-11-23T07:32:39Z",
+      "side": 1,
+      "message": "But if the current data was already loaded, this message is incorrect.",
+      "parentUuid": "6993beb7_3dbda381",
+      "revId": "e87cc1a7ec3d7bb78065466360b59b842d1f9174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
