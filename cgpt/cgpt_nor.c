@@ -202,9 +202,12 @@ int RemoveDir(const char *dir) {
 // Read RW_GPT from NOR flash to "rw_gpt" in a temp dir |temp_dir_template|.
 // |temp_dir_template| is passed to mkdtemp() so it must satisfy all
 // requirements by mkdtemp.
-// TODO(b:184812319): Replace this function with flashrom_read.
 int ReadNorFlash(char *temp_dir_template) {
   int ret = 0;
+  const char *region = "RW_GPT";
+  uint8_t *data_out = NULL;
+  uint32_t size_out = 0;
+  FILE *fp = NULL;
 
   // Create a temp dir to work in.
   ret++;
@@ -225,15 +228,24 @@ int ReadNorFlash(char *temp_dir_template) {
     Error("Cannot change directory.\n");
     goto out_free;
   }
-  const char *const argv[] = {FLASHROM_PATH, "-i", "RW_GPT:rw_gpt", "-r"};
+
+  fp = fopen("rw_gpt", "rb");
+  if (!fp) {
+     fprintf(stderr, "ERROR: Unable to open %s for reading: %s\n", filename, strerror(errno));
+     return out_free;
+  }
+
   // Redirect stdout to /dev/null so that flashrom does not muck up cgpt's
   // output.
-  if (subprocess_run(argv, &subprocess_null, &subprocess_null, NULL) != 0) {
+  if (flashrom_read(FLASHROM_PROGRAMMER_INTERNAL_AP, region, &data_out, &size_out) != 0) {
     Error("Cannot exec flashrom to read from RW_GPT section.\n");
     RemoveDir(temp_dir_template);
   } else {
     ret = 0;
   }
+  write(fp, data_out, size_out);
+  fclose(fp);
+
   if (chdir(cwd) < 0) {
     Error("Cannot change directory back to original.\n");
     goto out_free;
