@@ -22,6 +22,8 @@
 #include "subprocess.h"
 #include "vboot_struct.h"
 
+#include "../../futility/updater_utils.h"
+
 /* Filename for kernel command line */
 #define KERNEL_CMDLINE_PATH "/proc/cmdline"
 
@@ -813,8 +815,15 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	}
 
 	memcpy(&flash_buf[next_index * vbnv_size], ctx->nvdata, vbnv_size);
-	if (flashrom_write(FLASHROM_PROGRAMMER_INTERNAL_AP, VBNV_FMAP_REGION,
-			   flash_buf, flash_size)) {
+	struct firmware_image image = {
+		.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP,
+		.size = flash_size,
+		.data = flash_buf,
+//	char *file_name;
+//	char *ro_version, *rw_version_a, *rw_version_b;
+//	FmapHeader *fmap_header;
+	};
+	if (flashrom_write(&image, VBNV_FMAP_REGION)) {
 		rv = -1;
 		goto exit;
 	}

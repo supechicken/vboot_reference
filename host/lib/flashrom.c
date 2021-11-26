@@ -25,6 +25,8 @@
 #include "flashrom.h"
 #include "subprocess.h"
 
+#include "../../futility/updater_utils.h"
+
 #define FLASHROM_EXEC_NAME "flashrom"
 
 /**
@@ -175,12 +177,16 @@ err_cleanup:
 	return rv;
 }
 
-vb2_error_t flashrom_write(const char *programmer, const char *region,
-			   uint8_t *data, uint32_t size)
+vb2_error_t flashrom_write(struct firmware_image *image, const char *region)
 {
 	char *tmpfile;
 	char region_param[PATH_MAX];
 	vb2_error_t rv;
+
+	// XXX
+	const char *programmer = image->programmer;
+	uint8_t *data = image->data;
+	uint32_t size = image->size;
 
 	VB2_TRY(write_temp_file(data, size, &tmpfile));
 
