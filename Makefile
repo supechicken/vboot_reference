@@ -1000,10 +1000,10 @@ cgpt_wrapper_install: cgpt_install ${CGPT_WRAPPER}
 # These have their own headers too.
 ${BUILD}/utility/%: INCLUDES += -Iutility/include
 
-${UTIL_BINS_SDK}: ${UTILLIB}
-${UTIL_BINS_SDK}: LIBS = ${UTILLIB}
-${UTIL_BINS_BOARD}: ${UTILLIB}
-${UTIL_BINS_BOARD}: LIBS = ${UTILLIB}
+${UTIL_BINS_SDK}: ${UTILLIB} ${FLASHROM_LIBS}
+${UTIL_BINS_SDK}: LIBS = ${UTILLIB} ${FLASHROM_LIBS}
+${UTIL_BINS_BOARD}: ${UTILLIB} ${FLASHROM_LIBS}
+${UTIL_BINS_BOARD}: LIBS = ${UTILLIB} ${FLASHROM_LIBS}
 
 ${UTIL_SCRIPTS_SDK} ${UTIL_SCRIPTS_BOARD}: ${BUILD}/%: %
 	${Q}cp -f $< $@
@@ -1077,14 +1077,14 @@ update_tlcl_structures: ${BUILD}/utility/tlcl_generator
 .PHONY: tests
 tests: ${TEST_BINS}
 
-${TEST_BINS}: ${UTILLIB} ${TESTLIB}
+${TEST_BINS}: ${UTILLIB} ${TESTLIB} ${FLASHROM_LIBS}
 ${TEST_BINS}: INCLUDES += -Itests
-${TEST_BINS}: LIBS = ${TESTLIB} ${UTILLIB}
+${TEST_BINS}: LIBS = ${TESTLIB} ${UTILLIB} ${FLASHROM_LIBS}
 
 # Futility tests need almost everything that futility needs.
-${TEST_FUTIL_BINS}: ${FUTIL_OBJS} ${UTILLIB}
+${TEST_FUTIL_BINS}: ${FUTIL_OBJS} ${UTILLIB} ${FLASHROM_LIBS}
 ${TEST_FUTIL_BINS}: INCLUDES += -Ifutility
-${TEST_FUTIL_BINS}: OBJS += ${FUTIL_OBJS} ${UTILLIB}
+${TEST_FUTIL_BINS}: OBJS += ${FUTIL_OBJS} ${UTILLIB} ${FLASHROM_LIBS}
 ${TEST_FUTIL_BINS}: LDLIBS += ${FUTIL_LIBS}
 
 ${TEST2X_BINS}: ${FWLIB}
