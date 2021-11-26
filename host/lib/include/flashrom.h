@@ -8,6 +8,7 @@
 #include <stdint.h>
 
 #include "2return_codes.h"
+#include "../../futility/updater_utils.h"
 
 #define FLASHROM_PROGRAMMER_INTERNAL_AP "host"
 #define FLASHROM_PROGRAMMER_INTERNAL_EC "ec"
@@ -28,8 +29,7 @@
  *
  * @return VB2_SUCCESS on success, or a relevant error.
  */
-vb2_error_t flashrom_read(const char *programmer, const char *region,
-			  uint8_t **data_out, uint32_t *size_out);
+vb2_error_t flashrom_read(struct firmware_image *image, const char *region);
 
 /**
  * Write using flashrom from a buffer.
@@ -46,5 +46,4 @@ vb2_error_t flashrom_read(const char *programmer, const char *region,
  *
  * @return VB2_SUCCESS on success, or a relevant error.
  */
-vb2_error_t flashrom_write(const char *programmer, const char *region,
-			   uint8_t *data, uint32_t size);
+vb2_error_t flashrom_write(struct firmware_image *image, const char *region);
