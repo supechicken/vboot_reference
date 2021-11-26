@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4685220f_b91db81f",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-11-26T04:05:44Z",
+      "side": 1,
+      "message": "Should we add some validatity code of checking VB2_SD_STATUS_RECOVERY_DECIDED here or in the unit test?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "90724e52a7347c580fb3572e265330c117bfa0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417c79fa_8b2d9b54",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-11-26T04:05:44Z",
+      "side": 1,
+      "message": "As long as this flag means that we have decided the recovery (and set the proper ctx-\u003eflags / sd-\u003eflags of RECOVERY), \nwill it be necessary if either\n(1) check this sd flag first before accessing VB2_CONTEXT_RECOVERY_MODE\n(2) since most of the usage of VB2_CONTEXT_RECOVERY_MODE are after vb2api_fw_phase1(), it will be too overkill to check this flag elsewhere.",
+      "range": {
+        "startLine": 168,
+        "startChar": 15,
+        "endLine": 168,
+        "endChar": 45
+      },
+      "revId": "90724e52a7347c580fb3572e265330c117bfa0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
