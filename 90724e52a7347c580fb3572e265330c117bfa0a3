@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b229ff5a_b20f009c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-11-26T07:35:37Z",
+      "side": 1,
+      "message": "Leave +2 to roccochen@",
+      "revId": "90724e52a7347c580fb3572e265330c117bfa0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4685220f_b91db81f",
@@ -42,6 +59,29 @@
         "startChar": 15,
         "endLine": 168,
         "endChar": 45
+      },
+      "revId": "90724e52a7347c580fb3572e265330c117bfa0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85568356_0a55bd24",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-11-26T07:35:37Z",
+      "side": 1,
+      "message": "Or \"CHECKED\" to be consistent with vb2_check_recovery().\n\nIf we want to call it \"DECIDED\", then it makes more sense to check for VB2_SD_STATUS_RECOVERY_DECIDED at the beginning of vb2_check_recovery() and return immediately if it\u0027s already set.",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 31
       },
       "revId": "90724e52a7347c580fb3572e265330c117bfa0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
