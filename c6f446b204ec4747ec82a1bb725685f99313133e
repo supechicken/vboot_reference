@@ -16,6 +16,24 @@
       "message": "This change should be added first to main branch and then cherry-picked over to any firmware branch that needs it.",
       "revId": "c6f446b204ec4747ec82a1bb725685f99313133e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b33377_668a8739",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-11-30T03:07:34Z",
+      "side": 1,
+      "message": "This is cherry-picked from CL:3298933 (main branch, but in depthcharge, because the code has been moved to depthcharge now). I\u0027ve updated the commit message.",
+      "parentUuid": "ca586cdd_4be391b7",
+      "revId": "c6f446b204ec4747ec82a1bb725685f99313133e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
