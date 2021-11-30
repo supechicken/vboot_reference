@@ -157,6 +157,30 @@
       },
       "revId": "90724e52a7347c580fb3572e265330c117bfa0a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6fe3dd_d4da8c09",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-11-30T03:53:28Z",
+      "side": 1,
+      "message": "\u003e We have a bunch of these VB2_SD_STATUS_HAVE_PASSED_POINT_X flags and we don\u0027t check whether they\u0027re already set in any of the other cases either -- because that should be impossible.\n\nAck.",
+      "parentUuid": "8b854a01_2c9649e7",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "90724e52a7347c580fb3572e265330c117bfa0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
