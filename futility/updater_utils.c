@@ -6,6 +6,7 @@
  */
 
 #include <assert.h>
+#include <errno.h>
 #include <limits.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -25,6 +26,10 @@
 
 #define COMMAND_BUFFER_SIZE 256
 #define FLASHROM_OUTPUT_WP_PATTERN "write protect is "
+
+/* Name of lock file to create to stop powerd from suspending/shutting down
+ * while writing firmware. */
+#define POWER_MANAGER_LOCK_FILE "/run/lock/power_override/futility.lock"
 
 /* System environment values. */
 static const char * const STR_REV = "rev",
@@ -824,4 +829,26 @@ const char *get_firmware_rootkey_hash(const struct firmware_image *image)
 	}
 
 	return packed_key_sha1_string(rootkey);
+}
+
+int create_power_manager_lock_file(void)
+{
+	int mask = umask(0022);
+	FILE *file = fopen(POWER_MANAGER_LOCK_FILE, "w");
+	umask(mask);
+
+	if (!file)
+		return 1;
+
+	int ret = fprintf(file, "%d", getpid()) < 0;
+
+	if (fclose(file))
+		ret = 1;
+
+	return ret;
+}
+
+int remove_power_manager_lock_file(void)
+{
+	return unlink(POWER_MANAGER_LOCK_FILE) == 0 || errno == ENOENT;
 }
