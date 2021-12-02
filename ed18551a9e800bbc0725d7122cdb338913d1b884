@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bfe9c6_1b152f69",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2021-12-02T03:40:45Z",
+      "side": 1,
+      "message": "For consistency, this should only occur immediately before trying to write. The flashrom implementation only disabled power management for write and erase.",
+      "revId": "ed18551a9e800bbc0725d7122cdb338913d1b884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
