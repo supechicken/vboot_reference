@@ -225,4 +225,8 @@ void init_system_properties(struct system_property *props, int num);
  */
 const char *get_firmware_rootkey_hash(const struct firmware_image *image);
 
+/* Helper functions to enable and disable power management. */
+int create_power_manager_lock_file(void);
+int remove_power_manager_lock_file(void);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_ */
