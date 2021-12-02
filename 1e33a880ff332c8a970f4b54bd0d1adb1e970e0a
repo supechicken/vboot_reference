@@ -45,6 +45,29 @@
       },
       "revId": "1e33a880ff332c8a970f4b54bd0d1adb1e970e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0170f3_ece5c8ca",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-02T23:13:55Z",
+      "side": 1,
+      "message": "to avoid error logs of the form:\n\n```\nRW/A:Google.Link.2695.1.133, RW/B:Google.Link.2695.1.133).\nINFO: update_firmware: Disabling power management...\nINFO: update_firmware: Enabling power management...\nERROR: do_update: Failed to configure power management.\n```\n\nprint errno before the return. Probably this comes up when filesystem access is a issue.",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 841,
+        "endChar": 11
+      },
+      "revId": "1e33a880ff332c8a970f4b54bd0d1adb1e970e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
