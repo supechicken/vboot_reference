@@ -6,6 +6,11 @@
 me=${0##*/}
 TMP="$me.tmp"
 
+# Use a temp file for the power manager lock to avoid access permission
+# problems when futility tries to write to the real lock file
+export POWER_MANAGER_LOCK_FILE="${TMP}.lock"
+
+
 # Test --sys_props (primitive test needed for future updating tests).
 test_sys_props() {
 	! "${FUTILITY}" --debug update --sys_props "$*" 2>&1 |
