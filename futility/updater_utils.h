@@ -238,4 +238,8 @@ int flashrom_write_image(const struct firmware_image *image,
 			const struct firmware_image *diff_image,
 			int verbosity);
 
+/* Helper functions to enable and disable power management. */
+int create_power_manager_lock_file(void);
+int remove_power_manager_lock_file(void);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_ */

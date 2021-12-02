@@ -39,6 +39,10 @@ RO_VPD_BLOB="${SCRIPT_DIR}/futility/data/ro_vpd.bin"
 cd "$OUTDIR"
 set -o pipefail
 
+# The power manager normally creates the lock file directory for us, but it
+# doesn't run during unit tests so we need to create it ourselves
+mkdir -p /run/lock/power_override
+
 # In all the test scenario, we want to test "updating from PEPPY to LINK".
 TO_IMAGE=${TMP}.src.link
 FROM_IMAGE=${TMP}.src.peppy
