@@ -152,6 +152,10 @@ cp -f "${TMP}.expected.full" "${TMP}.expected.full.empty_rw_vpd"
 	RW_VPD:"${TMP}.to/RW_VPD"
 patch_file "${TMP}.expected.full.empty_rw_vpd" FMAP 0x3fc "$(printf '\010')"
 
+# Use a temp file for the power manager lock to avoid access permission
+# problems when futility tries to write to the real lock file
+export POWER_MANAGER_LOCK_FILE="${TMP}.lock"
+
 test_update() {
 	local test_name="$1"
 	local emu_src="$2"
