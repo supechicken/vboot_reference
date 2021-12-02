@@ -6,6 +6,7 @@
  */
 
 #include <assert.h>
+#include <errno.h>
 #include <limits.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -22,6 +23,12 @@
 #include "updater.h"
 
 #define COMMAND_BUFFER_SIZE 256
+
+/* Name of the env var that specifies the lock file name to create to stop
+ * powerd from suspending/shutting down while writing firmware. */
+#define POWER_MANAGER_LOCK_FILE_ENV "POWER_MANAGER_LOCK_FILE"
+/* Default lock file name to use if env var is not specified */
+#define DEFAULT_POWER_MANAGER_LOCK_FILE "/run/lock/power_override/futility.lock"
 
 /* System environment values. */
 static const char * const STR_REV = "rev";
@@ -648,4 +655,41 @@ const char *get_firmware_rootkey_hash(const struct firmware_image *image)
 	}
 
 	return packed_key_sha1_string(rootkey);
+}
+
+static const char *get_power_manager_lock_file(void)
+{
+	char *lock_file = getenv(POWER_MANAGER_LOCK_FILE_ENV);
+	if (lock_file)
+		return lock_file;
+	return DEFAULT_POWER_MANAGER_LOCK_FILE;
+}
+
+int create_power_manager_lock_file(void)
+{
+	mode_t mask = umask(0022);
+	FILE *file = fopen(get_power_manager_lock_file(), "w");
+	umask(mask);
+	if (!file) {
+		ERROR("Failed to create power manager lock file: %s\n",
+		      strerror(errno));
+		return 1;
+	}
+
+	int ret = fprintf(file, "%d", getpid()) <= 0;
+
+	if (fclose(file))
+		ret = 1;
+
+	return ret;
+}
+
+int remove_power_manager_lock_file(void)
+{
+	if ((unlink(get_power_manager_lock_file()) != 0) && (errno != ENOENT)) {
+		ERROR("Failed to unlink power manager lock file: %s\n",
+		      strerror(errno));
+		return 1;
+	}
+	return 0;
 }

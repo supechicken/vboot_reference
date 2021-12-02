@@ -993,6 +993,7 @@ const char * const updater_error_messages[] = {
 	[UPDATE_ERR_ROOT_KEY] = "RW signed by incompatible root key "
 			        "(different from RO).",
 	[UPDATE_ERR_TPM_ROLLBACK] = "RW not usable due to TPM anti-rollback.",
+	[UPDATE_ERR_POWER_MANAGEMENT] = "Failed to configure power management.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -1187,10 +1188,22 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	     image_to->file_name, image_to->ro_version,
 	     image_to->rw_version_a, image_to->rw_version_b);
 
+<<<<<<< HEAD   (283db2 Add vboot_reference-sys)
+=======
+	INFO("Disabling power management...\n");
+	if (create_power_manager_lock_file()) {
+		r = UPDATE_ERR_POWER_MANAGEMENT;
+		goto out;
+	}
+
+	try_apply_quirk(QUIRK_NO_VERIFY, cfg);
+
+>>>>>>> CHANGE (542866 futility: create powerd lock file when updating firmware)
 	if (try_apply_quirk(QUIRK_MIN_PLATFORM_VERSION, cfg)) {
 		if (!cfg->force_update) {
 			ERROR("Add --force to waive checking the version.\n");
-			return UPDATE_ERR_PLATFORM;
+			r = UPDATE_ERR_PLATFORM;
+			goto out;
 		}
 	}
 	if (!image_from->data) {
@@ -1201,8 +1214,10 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
 			cfg->check_platform = 0;
-		} else if (ret)
-			return UPDATE_ERR_SYSTEM_IMAGE;
+		} else if (ret) {
+			r = UPDATE_ERR_SYSTEM_IMAGE;
+			goto out;
+		}
 	}
 	STATUS("Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
 	       image_from->file_name, image_from->ro_version,
@@ -1213,7 +1228,8 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		ERROR("The firmware image is not compatible with your system. "
 		      "If you really want to proceed, please run again with: "
 		      "--quirks=no_check_platform\n");
-		return UPDATE_ERR_PLATFORM;
+		r = UPDATE_ERR_PLATFORM;
+		goto out;
 	}
 
 	wp_enabled = is_write_protection_enabled(cfg);
@@ -1222,17 +1238,23 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	       get_system_property(SYS_PROP_WP_HW, cfg),
 	       get_system_property(SYS_PROP_WP_SW, cfg));
 
-	if (try_apply_quirk(QUIRK_ENLARGE_IMAGE, cfg))
-		return UPDATE_ERR_SYSTEM_IMAGE;
+	if (try_apply_quirk(QUIRK_ENLARGE_IMAGE, cfg)) {
+		r = UPDATE_ERR_SYSTEM_IMAGE;
+		goto out;
+	}
 
-	if (try_apply_quirk(QUIRK_EVE_SMM_STORE, cfg))
-		return UPDATE_ERR_INVALID_IMAGE;
+	if (try_apply_quirk(QUIRK_EVE_SMM_STORE, cfg)) {
+		r = UPDATE_ERR_INVALID_IMAGE;
+		goto out;
+	}
 
 	if (debugging_enabled)
 		print_system_properties(cfg);
 
-	if (cfg->legacy_update)
-		return update_legacy_firmware(cfg, image_to);
+	if (cfg->legacy_update) {
+		r = update_legacy_firmware(cfg, image_to);
+		goto out;
+	}
 
 	if (cfg->try_update) {
 		r = update_try_rw_firmware(cfg, image_from, image_to,
@@ -1252,6 +1274,11 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	if (r == UPDATE_ERR_ROOT_KEY && wp_enabled)
 		ERROR("To change keys in RO area, you must first remove "
 		      "write protection ( " REMOVE_WP_URL " ).\n");
+
+out:
+	INFO("Enabling power management...\n");
+	if (remove_power_manager_lock_file() && r == UPDATE_ERR_DONE)
+		return UPDATE_ERR_POWER_MANAGEMENT;
 
 	return r;
 }
