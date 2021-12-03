@@ -70,6 +70,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b171f1_cc712145",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T09:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a84631c_0a9a6c1a",
+      "range": {
+        "startLine": 9,
+        "startChar": 61,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32052a6_e5a43157",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T09:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c67a01a_4853a84e",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfde86a_ee2ae51d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T09:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ba12a6_cd4f32ec",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f284f1_28ff4840",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-03T09:16:42Z",
       "side": 1,
       "message": "ARM",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a4e7cd5_c7da07ed",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T09:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f284f1_28ff4840",
       "range": {
         "startLine": 40,
         "startChar": 37,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25c7647_54523cf6",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T09:23:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "152bff2e_54d828f8",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06d2c704_fb9ddf3f",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2077c09c_f951ba55",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T09:23:10Z",
+      "side": 1,
+      "message": "The format is like:\nconsole\u003d loglevel\u003d....\nAnd we remove console[0-9A-Za-z,\u003d]*, so the space will be there.",
+      "parentUuid": "06d2c704_fb9ddf3f",
+      "range": {
+        "startLine": 120,
+        "startChar": 16,
+        "endLine": 120,
+        "endChar": 18
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8a6453f_8cd199e9",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-12-03T09:16:42Z",
       "side": 1,
       "message": "same here, this implies image should start with a space?",
+      "range": {
+        "startLine": 131,
+        "startChar": 16,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53d32b6_7b10982d",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T09:23:10Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "c8a6453f_8cd199e9",
       "range": {
         "startLine": 131,
         "startChar": 16,
