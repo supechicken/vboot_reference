@@ -22,6 +22,30 @@
       },
       "revId": "42c3ca7a26315024b99cd06e148f820adcca50a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baee5bb4_f20ff96e",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-03T19:38:24Z",
+      "side": 1,
+      "message": "But what value should we fill into console\u003d for serial console? Each board might be different. If we just want console\u003d then disable_earlycon will do that. The debug_msg needs to be updated to Enabling earlycon.",
+      "parentUuid": "ec865a45_351c0662",
+      "range": {
+        "startLine": 274,
+        "startChar": 12,
+        "endLine": 274,
+        "endChar": 33
+      },
+      "revId": "42c3ca7a26315024b99cd06e148f820adcca50a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
