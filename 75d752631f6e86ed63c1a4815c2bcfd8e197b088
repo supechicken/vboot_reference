@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16515b9_f3052de0",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-03T09:42:16Z",
+      "side": 1,
+      "message": "but what if someone modified the cmd line so there was no console\u003d in the beginning? I\u0027d rather remove the leading space and then add earlycon explicitly, e.g.:\n\n image\u003d\"earlycon ${image# }\"",
+      "parentUuid": "2077c09c_f951ba55",
+      "range": {
+        "startLine": 120,
+        "startChar": 16,
+        "endLine": 120,
+        "endChar": 18
+      },
+      "revId": "75d752631f6e86ed63c1a4815c2bcfd8e197b088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8a6453f_8cd199e9",
