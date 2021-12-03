@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "709e1caa_d399eadc",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-03T02:54:46Z",
+      "side": 1,
+      "message": "stat() this and if it doesn\u0027t exist attempt to create it before the fopen() call.",
+      "range": {
+        "startLine": 32,
+        "startChar": 43,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "1e33a880ff332c8a970f4b54bd0d1adb1e970e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e7e9134_bfb0f679",
         "filename": "futility/updater_utils.c",
         "patchSetId": 5
