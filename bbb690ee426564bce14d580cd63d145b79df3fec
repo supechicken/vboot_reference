@@ -39,6 +39,24 @@
       "message": "Failure seen cherry-picking this patch into current volteer firmware branch and running \"make run2tests\" : \n\nfirmware/2lib/2ui_screens.c:17:32: error: (near initialization for ‘diagnostics_memory_full_screen.menu’)\n #define MENU_ITEMS(a) ((struct vb2_menu){ \\\n                                ^\nfirmware/2lib/2ui_screens.c:1405:10: note: in expansion of macro ‘MENU_ITEMS’\n  .menu \u003d MENU_ITEMS(diagnostics_memory_items),\n          ^\ncc1: error: unrecognized command line option \"-Wno-unknown-warning\" [-Werror]\ncc1: error: unrecognized command line option \"-Wno-address-of-packed-member\" [-Werror]\ncc1: all warnings being treated as errors\nmake: *** [Makefile:1098: /mnt/host/source/src/platform/vboot_reference/build/firmware/2lib/2ui_screens.o] Error 1\n",
       "revId": "bbb690ee426564bce14d580cd63d145b79df3fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f72359_dc956f03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2021-12-06T20:22:23Z",
+      "side": 1,
+      "message": "Here\u0027s the first 5 errors from making run2tests (too many total to list them all) : \nfirmware/2lib/2ui_screens.c:22:39: error: initializer element is not constant\n #define LANGUAGE_SELECT_ITEM ((struct vb2_menu_item){ \\\n--\nfirmware/2lib/2ui_screens.c:22:39: error: (near initialization for ‘recovery_broken_items[0]’)\n #define LANGUAGE_SELECT_ITEM ((struct vb2_menu_item){ \\\n--\nfirmware/2lib/2ui_screens.c:17:32: error: initializer element is not constant\n #define MENU_ITEMS(a) ((struct vb2_menu){ \\\n--\nfirmware/2lib/2ui_screens.c:17:32: error: (near initialization for ‘recovery_broken_screen.menu’)\n #define MENU_ITEMS(a) ((struct vb2_menu){ \\\n--\nfirmware/2lib/2ui_screens.c:22:39: error: initializer element is not constant\n #define LANGUAGE_SELECT_ITEM ((struct vb2_menu_item){ \\",
+      "parentUuid": "9e63e8f0_d7d134e7",
+      "revId": "bbb690ee426564bce14d580cd63d145b79df3fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
