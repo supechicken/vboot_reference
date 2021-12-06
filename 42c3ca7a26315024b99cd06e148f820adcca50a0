@@ -46,6 +46,30 @@
       },
       "revId": "42c3ca7a26315024b99cd06e148f820adcca50a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae740c07_0ba0f1c1",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-12-06T20:46:32Z",
+      "side": 1,
+      "message": "Nothing needs to be filled in.\n\n```\nconsole\u003d \u003crest of args\u003e\n```\n\nThis is no console and no earlycon\n\n```\nconsole\u003d earlycon \u003crest of args\u003e\n```\n\nThis is no console and earlycon\n\n```\nearlycon \u003crest of args\u003e\n```\n\nThis is console and earlycon\n\n```\n\u003crest of args\u003e\n```\n\nThis is console and no earlycon",
+      "parentUuid": "baee5bb4_f20ff96e",
+      "range": {
+        "startLine": 274,
+        "startChar": 12,
+        "endLine": 274,
+        "endChar": 33
+      },
+      "revId": "42c3ca7a26315024b99cd06e148f820adcca50a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
