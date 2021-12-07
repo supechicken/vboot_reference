@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "09ecd9c6_d568a795",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "If running on device, is there a way you can detect if earlycon is going to work? (check that the property is there, etc...)",
       "revId": "bca34a9c5222aad78fb7e5b355bd572691aa1006",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "dbc838a3_f20fdf94",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
@@ -32,10 +33,10 @@
       "message": "For arm, we can check stdout-path in /sys/firmware/devicetree/base/chosen/stdout-path. But it still requires manual checks to see if parameters are valid.\n\nFor x86, we can see if SPCR table is implemented: \n# acpidump \u003e acpidump.out\n# acpixtract -a acpidump.out \nI checked on volteer and zork. It seems that both of them are not implemented yet.\nmartinroth@ had worked on this on grunt: b/74392237",
       "parentUuid": "09ecd9c6_d568a795",
       "revId": "bca34a9c5222aad78fb7e5b355bd572691aa1006",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "eb2d46f3_e6138127",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
@@ -50,8 +51,25 @@
       "message": "I created a bug to implement this on Zork.  b/169845007",
       "parentUuid": "dbc838a3_f20fdf94",
       "revId": "bca34a9c5222aad78fb7e5b355bd572691aa1006",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "062108f1_67c9aac3",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-07T05:44:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb2d46f3_e6138127",
+      "revId": "bca34a9c5222aad78fb7e5b355bd572691aa1006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
