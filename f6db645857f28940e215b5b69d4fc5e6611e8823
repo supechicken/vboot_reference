@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba2ffc1_54cc407e",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-12-07T18:19:13Z",
+      "side": 1,
+      "message": "This should be remove_parameter? We want to have no console\u003d in that case.",
+      "range": {
+        "startLine": 289,
+        "startChar": 23,
+        "endLine": 289,
+        "endChar": 39
+      },
+      "revId": "f6db645857f28940e215b5b69d4fc5e6611e8823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
