@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "93b2134b_799bdf3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-12-07T01:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "745dbad2_5c003ee6",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "bbb690ee426564bce14d580cd63d145b79df3fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9e63e8f0_d7d134e7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "Here\u0027s the first 5 errors from making run2tests (too many total to list them all) : \nfirmware/2lib/2ui_screens.c:22:39: error: initializer element is not constant\n #define LANGUAGE_SELECT_ITEM ((struct vb2_menu_item){ \\\n--\nfirmware/2lib/2ui_screens.c:22:39: error: (near initialization for ‘recovery_broken_items[0]’)\n #define LANGUAGE_SELECT_ITEM ((struct vb2_menu_item){ \\\n--\nfirmware/2lib/2ui_screens.c:17:32: error: initializer element is not constant\n #define MENU_ITEMS(a) ((struct vb2_menu){ \\\n--\nfirmware/2lib/2ui_screens.c:17:32: error: (near initialization for ‘recovery_broken_screen.menu’)\n #define MENU_ITEMS(a) ((struct vb2_menu){ \\\n--\nfirmware/2lib/2ui_screens.c:22:39: error: initializer element is not constant\n #define LANGUAGE_SELECT_ITEM ((struct vb2_menu_item){ \\",
       "parentUuid": "9e63e8f0_d7d134e7",
+      "revId": "bbb690ee426564bce14d580cd63d145b79df3fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298072d2_2b9c430c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-12-07T01:23:34Z",
+      "side": 1,
+      "message": "Updated the test command in the commit message. We should use\n\n make clean \u0026\u0026 CC\u003dx86_64-pc-linux-gnu-clang make run2tests\n\n\"make run2tests\" works only on tot.",
+      "parentUuid": "27f72359_dc956f03",
       "revId": "bbb690ee426564bce14d580cd63d145b79df3fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
