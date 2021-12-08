@@ -46,6 +46,30 @@
       },
       "revId": "f6db645857f28940e215b5b69d4fc5e6611e8823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e735dd_5a7a8e87",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-12-08T07:15:48Z",
+      "side": 1,
+      "message": "I read it as \u0027disable console\u0027 meaning to add \u0027console\u003d\u0027 on the command line and to \u0027enable console\u0027 meaning to remove \u0027console\u003d\u0027 on the command line. This looks like the opposite.",
+      "parentUuid": "b5478e88_8eb3e238",
+      "range": {
+        "startLine": 289,
+        "startChar": 23,
+        "endLine": 289,
+        "endChar": 39
+      },
+      "revId": "f6db645857f28940e215b5b69d4fc5e6611e8823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
