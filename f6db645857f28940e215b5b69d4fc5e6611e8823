@@ -22,6 +22,30 @@
       },
       "revId": "f6db645857f28940e215b5b69d4fc5e6611e8823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5478e88_8eb3e238",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1141149
+      },
+      "writtenOn": "2021-12-08T05:31:11Z",
+      "side": 1,
+      "message": "To remove console\u003d, should use disable_console.\nenable_console adds console\u003d\ndisable_console removes console\u003d",
+      "parentUuid": "9ba2ffc1_54cc407e",
+      "range": {
+        "startLine": 289,
+        "startChar": 23,
+        "endLine": 289,
+        "endChar": 39
+      },
+      "revId": "f6db645857f28940e215b5b69d4fc5e6611e8823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
