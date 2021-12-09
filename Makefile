@@ -438,6 +438,10 @@ FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
 TLCL_OBJS = ${TLCL_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
 
+COMMONLIB_SRCS = \
+	host/lib/flashrom.c \
+	host/lib/subprocess.c
+
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
 
@@ -456,7 +460,7 @@ UTILLIB_SRCS = \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
 	host/lib/file_keys.c \
-	host/lib/flashrom.c \
+	$(COMMONLIB_SRCS) \
 	host/lib/fmap.c \
 	host/lib/host_common.c \
 	host/lib/host_key2.c \
@@ -465,7 +469,6 @@ UTILLIB_SRCS = \
 	host/lib/host_signature.c \
 	host/lib/host_signature2.c \
 	host/lib/signature_digest.c \
-	host/lib/subprocess.c \
 	host/lib/util_misc.c \
 	host/lib21/host_common.c \
 	host/lib21/host_key.c \
@@ -516,10 +519,9 @@ HOSTLIB_SRCS = \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
 	host/lib/extract_vmlinuz.c \
-	host/lib/flashrom.c \
+	$(COMMONLIB_SRCS) \
 	host/lib/fmap.c \
 	host/lib/host_misc.c \
-	host/lib/subprocess.c \
 	host/lib21/host_misc.c \
 	${TLCL_SRCS}
 
