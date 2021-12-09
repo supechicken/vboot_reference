@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729850d0_9bd422b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-12-09T07:33:25Z",
+      "side": 1,
+      "message": "was there something specific you wanted from me ?  i\u0027m not a vboot maintainer, so i\u0027d expect most reviews to go to OWNERS instead.",
+      "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05909eae_9e6a55b8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-12-09T07:33:25Z",
+      "side": 1,
+      "message": "this doesn\u0027t look right.  there\u0027s already conditional $FWLIB usage here, so why isn\u0027t that working ?",
+      "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
