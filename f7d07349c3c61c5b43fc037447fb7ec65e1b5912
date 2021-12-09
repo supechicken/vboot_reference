@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d037048_8033cd06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-09T12:04:33Z",
+      "side": 1,
+      "message": "Only that you had context from b/203715651 Mike but feel free to drop back to CC or drop yourself.\n\nI probably should have put you on CC I know you usually provide a decent review [which I like] so I leaned towards putting you on the review line.\n\nThanks for making the time.",
+      "parentUuid": "729850d0_9bd422b2",
+      "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05909eae_9e6a55b8",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-09T07:33:25Z",
       "side": 1,
       "message": "this doesn\u0027t look right.  there\u0027s already conditional $FWLIB usage here, so why isn\u0027t that working ?",
+      "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430ad5b4_8eab9e6e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-09T12:04:33Z",
+      "side": 1,
+      "message": "Well `$ FIRMWARE_ARCH\u003d\u0027whatever\u0027 make fwlib` does work however I have the feeling there is some rot between the Makefile coupling of coreboot and this? I guess this was just a \u0027maybe\u0027 fix for Simon.\n\nCoreboot does make the variable in the env or at least seems to https://github.com/coreboot/coreboot/blob/b2287718ef2ab8051d917702185f91c33cb61aa3/src/security/vboot/Makefile.inc#L27 and so I wasn\u0027t sure what this build failure precisely looks like that was highlighted in the bug?\n\nI guess Simon can perhaps point out the precise problem exhibited in the out-of-tree build work flow he highlighted. I am sort of reading in between the lines here of the problem.\n\nIn any case, I am hopeful either here or coreboot is the right place to be looking to fix the general problem so we can move the discussion away from needing CLI or extra dependencies.",
+      "parentUuid": "05909eae_9e6a55b8",
       "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
