@@ -326,7 +326,7 @@ export BUILD_RUN
 
 # Default target.
 .PHONY: all
-all: fwlib futil utillib hostlib cgpt tlcl \
+all: $(if ${FIRMWARE_ARCH},fwlib,) futil utillib hostlib cgpt tlcl \
 	$(if ${SDK_BUILD},${UTIL_FILES_SDK},${UTIL_FILES_BOARD}) \
 	$(if $(filter x86_64,${ARCH}),$(if $(filter clang,${CC}),fuzzers)) \
 	$(if ${COV},coverage)
@@ -877,7 +877,7 @@ $(info vboot SHA256 built with tight loops (slower, smaller code size))
 endif
 
 .PHONY: fwlib
-fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},)
+fwlib: ${FWLIB}
 
 ${FWLIB}: ${FWLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
