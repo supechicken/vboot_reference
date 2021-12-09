@@ -877,7 +877,7 @@ $(info vboot SHA256 built with tight loops (slower, smaller code size))
 endif
 
 .PHONY: fwlib
-fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},)
+fwlib: ${FWLIB} $(if ${FIRMWARE_ARCH},${FWLIB},)
 
 ${FWLIB}: ${FWLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
