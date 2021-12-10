@@ -69,6 +69,24 @@
       "parentUuid": "05909eae_9e6a55b8",
       "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15fb39dc_18ddfb86",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-12-10T21:59:22Z",
+      "side": 1,
+      "message": "sorry, but i\u0027m not familiar with how coreboot integrates vboot_reference to provide guidance.  but focusing on the vboot side, this specific line change doesn\u0027t make sense.\n\ni don\u0027t know whether vboot_reference makes guarantees as to the modules going into fwlib being usable regardless of the FIRMWARE_ARCH setting, or if eliding the dep was to cater to specific build modes.  i\u0027ll note that the \"all\" target depends on \"fwlib\", so if we were just building utilities and not FIRMWARE_ARCH, this would cause extra stuff to be built.\n\nif you\u0027re trying to make the fwlib alias always be available, then maybe you want to do:\n\n -all: fwlib futil utillib hostlib cgpt tlcl \\\n +all: futil utillib hostlib cgpt tlcl \\\n ...\n -fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},)\n +fwlib: ${FWLIB}\n +all: $(if ${FIRMWARE_ARCH},fwlib)\n\nbut this would be for the vboot maintainers to comment.",
+      "parentUuid": "430ad5b4_8eab9e6e",
+      "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
