@@ -99,6 +99,24 @@
       "parentUuid": "27f72359_dc956f03",
       "revId": "bbb690ee426564bce14d580cd63d145b79df3fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8910f0_33685f1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456082
+      },
+      "writtenOn": "2021-12-13T01:47:23Z",
+      "side": 1,
+      "message": "Hi Nick, I tried \"make run2tests\" and got the same errors as yours. And then I tried \"make clean \u0026\u0026 CC\u003dx86_64-pc-linux-gnu-clang make run2tests\", the build passed.\n\nDo you think this change is able to  be merged? Or there should be something else to test?\n\nThanks.",
+      "parentUuid": "298072d2_2b9c430c",
+      "revId": "bbb690ee426564bce14d580cd63d145b79df3fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
