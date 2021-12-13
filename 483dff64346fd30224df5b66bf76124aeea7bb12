@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07da335_5964c125",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-12-13T14:41:39Z",
+      "side": 1,
+      "message": "Hi all,\nI was trying to uprev the vboot submodule in coreboot.\n(https://review.coreboot.org/c/coreboot/+/60078)\n\nAnd noticed that this caused a build failure:\nhttps://qa.coreboot.org/job/coreboot-gerrit/189767/testReport/junit/(root)/util/all/\n\n futility/updater_utils.c:18:10: fatal error: libflashrom.h: No such file or directory\n    18 | #include \u003clibflashrom.h\u003e\n       |          ^~~~~~~~~~~~~~~\n       \nI would like to ask is there anything I need to uprev as well to prevent this failure?\nThanks!",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "483dff64346fd30224df5b66bf76124aeea7bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
