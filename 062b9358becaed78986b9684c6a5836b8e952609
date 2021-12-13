@@ -33,6 +33,24 @@
       "message": "I remember some old images don\u0027t have the \u0027COREBOOT\u0027 section; instead they only have \u0027RO_SECTION\u0027. Maybe not those devices have been all EOL\u0027ed but I can\u0027t be sure.\n\nIt\u0027s probably fine to merge this, but please keep watching AU issues - I hope no devices will fail to update due to this.",
       "revId": "062b9358becaed78986b9684c6a5836b8e952609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a38ec5f8_81ea40b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-13T18:47:21Z",
+      "side": 1,
+      "message": "Oh, right... IIRC that change happened around 2015 or so, so it\u0027s quite likely they\u0027re all EOL now. It definitely seems more correct to support only post-2015 devices than only pre-2015 devices, at least.\n\nFWIW as far as I can tell this code is only about RO software sync, which is a developer-only feature nobody uses (which is probably why this went unnoticed for so long).",
+      "parentUuid": "714a7a23_4128f31c",
+      "revId": "062b9358becaed78986b9684c6a5836b8e952609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
