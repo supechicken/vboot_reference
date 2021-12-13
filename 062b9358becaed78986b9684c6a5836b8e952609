@@ -16,6 +16,23 @@
       "message": "Since the code was added by hungte@ in CL:1864534, I\u0027ll let him give CR+2.",
       "revId": "062b9358becaed78986b9684c6a5836b8e952609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "714a7a23_4128f31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-13T15:01:56Z",
+      "side": 1,
+      "message": "I remember some old images don\u0027t have the \u0027COREBOOT\u0027 section; instead they only have \u0027RO_SECTION\u0027. Maybe not those devices have been all EOL\u0027ed but I can\u0027t be sure.\n\nIt\u0027s probably fine to merge this, but please keep watching AU issues - I hope no devices will fail to update due to this.",
+      "revId": "062b9358becaed78986b9684c6a5836b8e952609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
