@@ -22,6 +22,30 @@
       },
       "revId": "483dff64346fd30224df5b66bf76124aeea7bb12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7edae11_1592817f",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-12-14T09:27:46Z",
+      "side": 1,
+      "message": "I found that there is already an issue for tracking this (b/209702505)\nMark this comment as done.",
+      "parentUuid": "a07da335_5964c125",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "483dff64346fd30224df5b66bf76124aeea7bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
