@@ -87,6 +87,24 @@
       "parentUuid": "430ad5b4_8eab9e6e",
       "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281c6485_8cfcde86",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-12-14T23:23:25Z",
+      "side": 1,
+      "message": "I\u0027ll have a crack at setting up something in gitlab so we can see any failures. It doesn\u0027t seem possible to do that in our CI.\n\nb/209799513\n\nBut for this line I agree it looks odd. If we have FWLIB always, we don\u0027t need it conditionally as well.\n\nTo test the failure, try this out of the chroot:\n\ncd /tmp/somewhere\nmake -C /path/to/cosarm/src/platform/vboot_reference fwlib",
+      "parentUuid": "430ad5b4_8eab9e6e",
+      "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
