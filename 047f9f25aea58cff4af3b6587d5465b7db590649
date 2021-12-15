@@ -110,6 +110,23 @@
       "message": "i don\u0027t know if the underlying reasons make sense, but the CL as-is seems fine.  defer to the vboot maintainers though.",
       "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e72b84_c3b31c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-15T20:30:53Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand the point of this patch and I don\u0027t think it\u0027s actually doing anything. The coreboot firmware build always builds only the fwlib target and always sets the FIRMWARE_ARCH variable, so this patch should change absolutely nothing about it.\n\nI think this seems to be a misunderstanding about the failure in b/209702505. That\u0027s not caused by the coreboot firmware build (i.e. what\u0027s chained from coreboot/src/security/vboot/Makefile.inc) -- it\u0027s caused by the coreboot build system also building futility (see coreboot/util/futility/Makefile.inc). vboot is now considered a core coreboot feature (no longer specific to just Chrome OS), and futility is the userspace utility you need to manage vboot keys in a coreboot image -- that\u0027s why it\u0027s considered part of the supporting userspace toolset for coreboot.",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
