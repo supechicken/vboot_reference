@@ -145,6 +145,24 @@
       "parentUuid": "d5e72b84_c3b31c1f",
       "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2f1aac_447c9ffe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-15T21:10:15Z",
+      "side": 1,
+      "message": "What am I supposed to see there? I get\n\n\u003e make: Entering directory \u0027/usr/local/google/home/jwerner/chromiumos/src/platform/vboot_reference\u0027\n\u003e Package flashrom was not found in the pkg-config search path.\n\u003e Perhaps you should add the directory containing `flashrom.pc\u0027\n\u003e to the PKG_CONFIG_PATH environment variable\n\u003e No package \u0027flashrom\u0027 found\n\u003e vboot SHA256 built with tight loops (slower, smaller code size)\n\u003e make: Nothing to be done for \u0027fwlib\u0027.\n\u003e make: Leaving directory \u0027/usr/local/google/home/jwerner/chromiumos/src/platform/vboot_reference\u0027\n\nand that\u0027s basically WAI. This is not a flashrom problem... the flashrom part is a red herring because of the `FLASHROM_LIBS :\u003d $(shell ${PKG_CONFIG} --libs flashrom)` line, it just says that it can\u0027t find that, but that\u0027s okay because the target I\u0027m trying to build doesn\u0027t depend on FLASHROM_LIBS anyway. The actual output here is `make: Nothing to be done for \u0027fwlib\u0027.`, which is not surprising because you\u0027re not supposed to call the `fwlib` without passing FIRMWARE_ARCH. If you call it as `make -C /path/to/cosarm/src/platform/vboot_reference fwlib FIRMWARE_ARCH\u003dx86` it will actually start to build (and then fail because you also need to make sure you have the right cross-compiler and correct flags and whatever... but nothing related to flashrom).\n\nIf you want to remove the red herring message, it\u0027s probably enough to just change FLASHROM_LIBS from eager to lazy evaluation (i.e. assign with \u003d, not :\u003d ).",
+      "parentUuid": "68db7a3f_0343db0a",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
