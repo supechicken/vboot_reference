@@ -105,6 +105,24 @@
       "parentUuid": "430ad5b4_8eab9e6e",
       "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca39a59_a9cff6fc",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-15T03:19:17Z",
+      "side": 1,
+      "message": "I updated the commit to include Mike\u0027s suggestion so this isn\u0027t a complete hack. I left the conditional in the all top-level target so behavior there isn\u0027t changed.\n\nre Simon,\n```\n(cr) (fix_coreboot_outoftree_build) quasisec@quasisec2 ~/trunk/src/platform/vboot_reference $ cd /tmp/\n(cr) quasisec@quasisec2 /tmp $ mkdir foo\n(cr) quasisec@quasisec2 /tmp $ cd foo/\n(cr) quasisec@quasisec2 /tmp/foo $ make -C ~/trunk/src/platform/vboot_reference fwlib\nmake: Entering directory \u0027/mnt/host/source/src/platform/vboot_reference\u0027\nvboot SHA256 built with tight loops (slower, smaller code size)\n    CC            firmware/2lib/2api.o\n\u003csnip\u003e\n    RM            vboot_fw.a\n    AR            vboot_fw.a\nmake: Leaving directory \u0027/mnt/host/source/src/platform/vboot_reference\u0027\n```\nalthough /tmp/foo would be empty unless you set `BUILD\u003d/tmp/foo` which does seem to happen on https://github.com/coreboot/coreboot/blob/b2287718ef2ab8051d917702185f91c33cb61aa3/src/security/vboot/Makefile.inc#L33",
+      "parentUuid": "281c6485_8cfcde86",
+      "revId": "f7d07349c3c61c5b43fc037447fb7ec65e1b5912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
