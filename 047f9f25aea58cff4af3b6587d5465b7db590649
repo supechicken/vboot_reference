@@ -181,6 +181,41 @@
       "parentUuid": "ad2f1aac_447c9ffe",
       "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96a12d2_01f125ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-12-16T18:21:46Z",
+      "side": 1,
+      "message": "Without this CL:\n\nPackage flashrom was not found in the pkg-config search path.\nPerhaps you should add the directory containing `flashrom.pc\u0027\nto the PKG_CONFIG_PATH environment variable\nNo package \u0027flashrom\u0027 found\nvboot SHA256 built with tight loops (slower, smaller code size)\n    CC            futility/updater_utils.o\nfutility/updater_utils.c:18:10: fatal error: libflashrom.h: No such file or directory\n   18 | #include \u003clibflashrom.h\u003e\n      |          ^~~~~~~~~~~~~~~\ncompilation terminated.",
+      "parentUuid": "ad2f1aac_447c9ffe",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5beec9dc_d8eacb48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-12-16T18:21:46Z",
+      "side": 1,
+      "message": "sorry, didn\u0027t send this. I blame gerrit",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
