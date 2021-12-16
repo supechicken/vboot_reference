@@ -54,7 +54,8 @@ static vb2_error_t update_auxfw(struct vb2_context *ctx)
 		 *
 		 * If we fail for any other reason, trigger recovery mode.
 		 */
-		if (rv != VB2_REQUEST_REBOOT_EC_TO_RO)
+		if (rv != VB2_REQUEST_REBOOT_EC_TO_RO &&
+				rv != VB2_REQUEST_REBOOT)
 			vb2api_fail(ctx, VB2_RECOVERY_AUXFW_UPDATE, rv);
 	}
 
