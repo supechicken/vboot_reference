@@ -216,6 +216,24 @@
       "message": "sorry, didn\u0027t send this. I blame gerrit",
       "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41409334_b5beb322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-16T18:34:06Z",
+      "side": 1,
+      "message": "\u003e usually the answer is to protect the call entirely with whatever dynamic logic the system has (e.g. something like a USE_FLASHROM knob).\n\nWell, at the moment it\u0027s just target-dependent for us, not controlled by a variable, so I don\u0027t think that\u0027s possible. But again, the error output doesn\u0027t actually harm anything so I don\u0027t think it\u0027s a big deal to just leave it.\n\n@Simon, I still don\u0027t understand, are you saying you get that output from explicitly building only the fwlib target? You really shouldn\u0027t -- I don\u0027t. Are you using a different version of the Makefile?",
+      "parentUuid": "d96a12d2_01f125ad",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
