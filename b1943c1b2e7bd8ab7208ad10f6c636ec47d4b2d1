@@ -33,6 +33,24 @@
       "message": "We could simply use VB2_TRY(vb2ex_auxfw_update()) here, and further get rid of the static function update_auxfw(). I guess I forgot to modify the code here in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/2084062/24/firmware/2lib/2auxfw_sync.c.",
       "revId": "b1943c1b2e7bd8ab7208ad10f6c636ec47d4b2d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d708e901_f52074f2",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-12-16T06:42:50Z",
+      "side": 1,
+      "message": "Sorry it should be\n\n VB2_TRY(vb2ex_auxfw_update(), ctx, VB2_RECOVERY_AUXFW_UPDATE);",
+      "parentUuid": "88b054b6_de4e3420",
+      "revId": "b1943c1b2e7bd8ab7208ad10f6c636ec47d4b2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
