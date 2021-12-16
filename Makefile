@@ -284,7 +284,9 @@ ifneq ($(filter-out 0,${HAVE_LIBZIP}),)
   LIBZIP_LIBS := $(shell ${PKG_CONFIG} --libs libzip)
 endif
 
+ifeq (${FIRMWARE_ARCH},)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
+endif
 
 # Determine QEMU architecture needed, if any
 ifeq (${ARCH},${HOST_ARCH})
