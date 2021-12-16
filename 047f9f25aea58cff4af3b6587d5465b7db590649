@@ -163,6 +163,24 @@
       "parentUuid": "68db7a3f_0343db0a",
       "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63c619b_56be8218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2021-12-16T04:36:22Z",
+      "side": 1,
+      "message": "\u003e If you want to remove the red herring message, it\u0027s probably enough to just change FLASHROM_LIBS from eager to lazy evaluation (i.e. assign with \u003d, not :\u003d ).\n\nuse of :\u003d with $(shell ...) is deliberate.  otherwise every place that gets expanded turns into a shell fork+exec.  in LIBS is not super noticeable (as long as you don\u0027t link a lot of things), but it\u0027s noticeable when it\u0027s CFLAGS and you compile a lot of files.\n\nusually the answer is to protect the call entirely with whatever dynamic logic the system has (e.g. something like a USE_FLASHROM knob).",
+      "parentUuid": "ad2f1aac_447c9ffe",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
