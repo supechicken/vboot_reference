@@ -51,6 +51,24 @@
       "parentUuid": "88b054b6_de4e3420",
       "revId": "b1943c1b2e7bd8ab7208ad10f6c636ec47d4b2d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb4f9bf9_377bd0cd",
+        "filename": "firmware/2lib/2auxfw_sync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-12-16T16:19:59Z",
+      "side": 1,
+      "message": "That seems more robust, as it will propagate back up any VB2_REQUEST return code.",
+      "parentUuid": "d708e901_f52074f2",
+      "revId": "b1943c1b2e7bd8ab7208ad10f6c636ec47d4b2d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
