@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20daf50f_b2275666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-17T00:00:39Z",
+      "side": 1,
+      "message": "By the way it would be good if you could (maybe in a follow-up so we can get this in asap) fix the tests to check for this case. I believe vb2_auxfw_sync_tests.c already tries to do this, but unfortunately it mocks the display switch in vb2ex_auxfw_check() whereas depthcharge does it in vb2ex_auxfw_update(). This seems to have moved during review in CL:2117776 and then I guess we forgot to update the test to test the new behavior. :( (Maybe for future robustness it would be best to check both versions in the test.)",
+      "revId": "2d51f50453814ad71c16119f5f4392f71d327161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
