@@ -16,6 +16,24 @@
       "message": "Thanks! Have you checked by reverting CL:3344277 that this would have actually caught the issue?",
       "revId": "54bbeb2d4b4c432f05de5ba6efed2f1d71c80f9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ed84cf_6b21a344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2021-12-17T01:06:41Z",
+      "side": 1,
+      "message": "Yes, without CL:3344277 the test experienced a failure.\n\n```\ntests/vb2_auxfw_sync_tests.c:92: Slow auxfw update needed - reboot for display ... PASSED\ntests/vb2_auxfw_sync_tests.c:94:   recovery reason ... FAILED\n\tExpected: 0 (0), got: 0x30 (48)\n```\n\nThe test got the expected \"VB2_REBOOT_REQUESTED\", but did not expect the recovery reason \"VB2_RECOVERY_AUXFW_UPDATE\"",
+      "parentUuid": "839ee475_f87d8e84",
+      "revId": "54bbeb2d4b4c432f05de5ba6efed2f1d71c80f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
