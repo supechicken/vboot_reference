@@ -16,6 +16,24 @@
       "message": "While we are at it, I am not sure if https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3004111/ is cherry-picked to Trogdor branch. Recommend cherry-picking it as well if not done already. This has been cherry-picked to Dedede, Keeby and Volteer branches.",
       "revId": "e8781dd26c57e252a99162dfb94ccc79848581ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ffe039_1d8bc5a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-20T22:37:42Z",
+      "side": 1,
+      "message": "Thanks for the pointer... looks like it wasn\u0027t. :(\n\nIt would be nice to include it right in the next release but I\u0027m also wary of cherry-picking something this potentially breaking without Tom (or anyone familiar with debugging TCPC update issues on Trogdor) being here. I think we\u0027ll have to wait with that until he comes back, unfortunately.",
+      "parentUuid": "977fd648_ca07a752",
+      "revId": "e8781dd26c57e252a99162dfb94ccc79848581ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
