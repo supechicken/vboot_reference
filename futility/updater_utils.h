@@ -174,8 +174,16 @@ enum wp_state {
 	WP_ENABLED,
 };
 
+extern enum wp_state flashrom_get_wp(const char *programmer);
 /* Helper function to return write protection status via given programmer. */
-enum wp_state host_get_wp(const char *programmer);
+static inline enum wp_state host_get_wp(const char *programmer)
+{
+#ifdef USE_FLASHROM
+	return flashrom_get_wp(programmer);
+#else
+	return -1;
+#endif
+}
 
 /* The environment variable name for setting servod port. */
 #define ENV_SERVOD_PORT	"SERVOD_PORT"

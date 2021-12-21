@@ -284,8 +284,6 @@ ifneq ($(filter-out 0,${HAVE_LIBZIP}),)
   LIBZIP_LIBS := $(shell ${PKG_CONFIG} --libs libzip)
 endif
 
-FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
-
 # Determine QEMU architecture needed, if any
 ifeq (${ARCH},${HOST_ARCH})
   # Same architecture; no need for QEMU
@@ -665,8 +663,13 @@ FUTIL_SRCS = \
 	futility/updater_quirks.c \
 	futility/updater_utils.c \
 	futility/vb1_helper.c \
-	futility/vb2_helper.c \
-	futility/flashrom_drv.c
+	futility/vb2_helper.c
+
+ifdef USE_FLASHROM
+$(info building with libflashrom support)
+FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
+FUTIL_SRCS += futility/flashrom_drv.c
+endif
 
 # List of commands built in futility.
 FUTIL_CMD_LIST = ${BUILD}/gen/futility_cmds.c

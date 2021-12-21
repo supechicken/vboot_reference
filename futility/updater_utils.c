@@ -522,11 +522,13 @@ char *host_detect_servo(int *need_prepare_ptr)
 int load_system_firmware(struct firmware_image *image,
 			 struct tempfile *tempfiles, int verbosity)
 {
-	int r;
+	int r = -1;
 
+#ifdef USE_FLASHROM
 	r = host_flashrom_read(image, (verbosity + 1));
 	if (!r)
 		r = parse_firmware_image(image);
+#endif
 	return r;
 }
 
@@ -541,13 +543,21 @@ int write_system_firmware(const struct firmware_image *image,
 			  struct tempfile *tempfiles,
 			  int verbosity)
 {
+#ifdef USE_FLASHROM
 	return host_flashrom_write(image, section_name, diff_image, (verbosity + 1));
+#else
+	return -1;
+#endif
 }
 
 /* Helper function to return host software write protection status. */
 static int host_get_wp_sw(void)
 {
+#ifdef USE_FLASHROM
 	return host_get_wp(PROG_HOST);
+#else
+	return -1;
+#endif
 }
 
 /* Helper function to configure all properties. */
