@@ -166,7 +166,7 @@ err_cleanup:
 }
 
 /* Helper function to return write protection status via given programmer. */
-enum wp_state host_get_wp(const char *programmer)
+enum wp_state flashrom_get_wp(const char *programmer)
 {
 	char *command, *result;
 	const char *postfix;
