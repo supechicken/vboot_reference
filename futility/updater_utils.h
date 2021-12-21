@@ -228,4 +228,10 @@ void init_system_properties(struct system_property *props, int num);
  */
 const char *get_firmware_rootkey_hash(const struct firmware_image *image);
 
+int host_flashrom_read(struct firmware_image *image, int verbosity);
+int host_flashrom_write(const struct firmware_image *image,
+			const char *region,
+			const struct firmware_image *diff_image,
+			int verbosity);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_ */
