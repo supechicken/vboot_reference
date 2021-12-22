@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b1e7a0_1f74057c",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T22:22:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8149778_4f412047",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "19eae9dc612296eb2dd818e6f52626c9b16a89c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed61216a_844a8edf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-22T05:38:37Z",
       "side": 1,
       "message": "will this be changed to libflashrom in future?",
+      "range": {
+        "startLine": 169,
+        "startChar": 14,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "19eae9dc612296eb2dd818e6f52626c9b16a89c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d61cfa_105ec633",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T22:22:38Z",
+      "side": 1,
+      "message": "That is absolutely the plan. We are just waiting for nartemiev@ to move is his wp support work though upstream review.",
+      "parentUuid": "ed61216a_844a8edf",
       "range": {
         "startLine": 169,
         "startChar": 14,
