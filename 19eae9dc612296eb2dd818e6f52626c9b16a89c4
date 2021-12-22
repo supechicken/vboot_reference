@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8149778_4f412047",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-22T05:38:37Z",
+      "side": 1,
+      "message": "do you want to call this flashrom_read_image ?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "19eae9dc612296eb2dd818e6f52626c9b16a89c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed61216a_844a8edf",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-22T05:38:37Z",
+      "side": 1,
+      "message": "will this be changed to libflashrom in future?",
+      "range": {
+        "startLine": 169,
+        "startChar": 14,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "19eae9dc612296eb2dd818e6f52626c9b16a89c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
