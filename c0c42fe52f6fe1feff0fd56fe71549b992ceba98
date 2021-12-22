@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f720cd3_ea8ba08d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T01:55:02Z",
+      "side": 1,
+      "message": "Do you mean `ifeq ($(filter-out 1,${USE_FLASHROM}),)` otherwise it would be inverted?\n\nDone",
+      "parentUuid": "527d3c6b_db44875c",
+      "revId": "c0c42fe52f6fe1feff0fd56fe71549b992ceba98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56562ae0_144fe32c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-21T18:56:54Z",
       "side": 1,
       "message": "I would rather not attach this at such a low level so that `futility update` will return weird errors that don\u0027t immediately explain what\u0027s going on. The whole command is used only for flashing and cannot work without flashrom support. So I think you should just attach this directly in cmd_update.c... something like:\n\n #ifdef USE_FLASHROM\n\n ...rest of the file...\n\n #else /* USE_FLASHROM */\n\n static int do_update(int argc, char *argv[])\n {\n   FATAL(MYNAME \" was built without flashrom support, `update` command unavailable!\\n\");\n }\n\n DECLARE_FUTIL_COMMAND(update, do_update, VBOOT_VERSION_ALL, \"(unavailable in this build)\");\n \n #endif /* !USE_FLASHROM */\n\n(You should be able to drop updater.c, updater_archive.c, updater_quirks.c and updater_utils.c from compilation then.)",
+      "revId": "c0c42fe52f6fe1feff0fd56fe71549b992ceba98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25db853f_375359f0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T01:55:02Z",
+      "side": 1,
+      "message": "Thanks, Done.",
+      "parentUuid": "56562ae0_144fe32c",
       "revId": "c0c42fe52f6fe1feff0fd56fe71549b992ceba98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
