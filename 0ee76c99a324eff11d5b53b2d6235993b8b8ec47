@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8992cb_0a3cbca0",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-22T03:04:35Z",
+      "side": 1,
+      "message": "can we call this USE_LIBFLASHROM?\n\nIt\u0027s confusing because we do use flashrom, no matter via lib or external programs.\n\nIn fact, I wonder if you can support both - when libflashrom is linked, do that internally; and if not, call the external flashrom. That would be even better (and yes, that implies moving lots of code back... but I think that would be a good idea?)",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "0ee76c99a324eff11d5b53b2d6235993b8b8ec47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab65aac_54447835",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-22T03:04:35Z",
+      "side": 1,
+      "message": "can you clarify why renaming this is required? is it related to futility without flashrom? maybe we should move this to another change?",
+      "range": {
+        "startLine": 169,
+        "startChar": 14,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "0ee76c99a324eff11d5b53b2d6235993b8b8ec47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
