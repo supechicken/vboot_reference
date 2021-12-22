@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ceab5d2_90c45773",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-22T05:31:08Z",
+      "side": 1,
+      "message": "\u003e Suppose for a second we were to have a fallback to cli, what would that gain us?\n\nActually that\u0027s not my primary goal. Instead I want \u0027update\u0027 command to be always available - that people can do testing and emulation.\n\n\u003e My reasoning is, because if libflashrom doesn\u0027t exist on the system it means flashrom doesn\u0027t exist. \n\nConsidering Linux packaging systems, the distro may by default disable USE_FLASHROM so the vboot can be easily installed (less dependency); and if we support executing external flashrom, developers can still use futility updater after they install manually flashrom (that\u0027s what I did outside chroot), without re-compiling futility.\n\n\u003e In fact the flashrom cli is largely just another user of libflashrom.\n\nI was hoping we can make a simple wrapper so the updater doesn\u0027t need to worry if the underlying is libflashrom or real flashrom. But if that\u0027s a huge effort then I\u0027d agree with your current implementation until we see some critical scenarios that need \u0027update\u0027 to run with external flashrom.",
+      "parentUuid": "54359c53_e54ab1c1",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "0ee76c99a324eff11d5b53b2d6235993b8b8ec47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab65aac_54447835",
