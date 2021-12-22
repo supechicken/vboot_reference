@@ -529,10 +529,6 @@ HOSTLIB_SRCS = \
 	host/lib21/host_misc.c \
 	${TLCL_SRCS}
 
-ifneq ($(filter-out 0,${GPT_SPI_NOR}),)
-HOSTLIB_SRCS += cgpt/cgpt_nor.c
-endif
-
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${HOSTLIB_OBJS}
 
@@ -564,6 +560,7 @@ CGPT_SRCS = \
 	cgpt/cmd_show.c
 
 ifneq ($(filter-out 0,${GPT_SPI_NOR}),)
+HOSTLIB_SRCS += cgpt/cgpt_nor.c
 CGPT_SRCS += cgpt/cgpt_nor.c
 endif
 
