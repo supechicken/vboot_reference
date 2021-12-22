@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ac81fc_a2302466",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T23:48:17Z",
+      "side": 1,
+      "message": "I think everything you are asking for here can be achieved and nothing is in conflict so far. I will of course touch base with you perhaps after Christmas so we can discuss more and ensure we are absolutely aligned. Thank you for your thoughts.\n\nThe quick version here is that; cutting down the multiple flashrom subprocess logic down to one canonical path that calls into libflashrom will allow us to do the following:\n\n * Single knowable interface boundary to target testing for coverage,\n * Be able to mock with a libflashrom implementation with much better coupling of cyclomatic complexity of the test coverage,\n * Be possible to have a libflashrom that _could_ conceivably call the cli (if demanded),\n * Mild modification needed to have the libflashrom DSO as runtime loadable so the functionality turns on if flashrom was installed after the fact as you alluded to above.\n \nOf course there is a plethora of other benefits that the modularity brings along however i\u0027ll leave it to the above short list just to note that I went though a fair amount of reasonable thought already on what lies ahead however we will surely discuss more.",
+      "parentUuid": "7ceab5d2_90c45773",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "0ee76c99a324eff11d5b53b2d6235993b8b8ec47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab65aac_54447835",
