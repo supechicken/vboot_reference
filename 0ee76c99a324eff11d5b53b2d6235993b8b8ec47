@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d143fc9f_bee99ac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T04:11:01Z",
+      "side": 1,
+      "message": "Thanks for the review Hung-Te.",
+      "revId": "0ee76c99a324eff11d5b53b2d6235993b8b8ec47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa8992cb_0a3cbca0",
@@ -26,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54359c53_e54ab1c1",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T04:11:01Z",
+      "side": 1,
+      "message": "Happy to rename to USE_LIBFLASHROM. I called it this because there is existing subprocess still remaining due to the various code duplications in vboot_ref I am working though to consolidate.\n\nI definitely think this is a very bad idea. I am happy to GVC to explain why in depth but the short version is two fold:\n\n1) maintaining two paths is problematic to say the least (in fact vboot_ref has three paths to flashrom implemented), I would like to see this reduced down to one that is comprehensible and thus well tested with good coverage.\n\n2) the loose coupling of cli subprocess has been exceedingly fragile, linking libflashrom has already exposed bugs because of the tighter coupling inherent in linking over spawning.\n\nSuppose for a second we were to have a fallback to cli, what would that gain us? My reasoning is, because if libflashrom doesn\u0027t exist on the system it means flashrom doesn\u0027t exist. So in truth you are simply falling back to a decoupled path that fails at runtime in odd ways than failing at build time in obvious ways. In fact the flashrom cli is largely just another user of libflashrom.",
+      "parentUuid": "fa8992cb_0a3cbca0",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "0ee76c99a324eff11d5b53b2d6235993b8b8ec47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ab65aac_54447835",
         "filename": "futility/flashrom_drv.c",
         "patchSetId": 2
@@ -37,6 +78,30 @@
       "writtenOn": "2021-12-22T03:04:35Z",
       "side": 1,
       "message": "can you clarify why renaming this is required? is it related to futility without flashrom? maybe we should move this to another change?",
+      "range": {
+        "startLine": 169,
+        "startChar": 14,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "0ee76c99a324eff11d5b53b2d6235993b8b8ec47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be5543ae_d8eb32f0",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-22T04:11:01Z",
+      "side": 1,
+      "message": "I can move that down to the previous change. The reason being this method requires flashrom to perform the task and is scoped to the flashrom drv namespace.",
+      "parentUuid": "5ab65aac_54447835",
       "range": {
         "startLine": 169,
         "startChar": 14,
