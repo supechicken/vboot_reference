@@ -34,6 +34,24 @@
       "parentUuid": "1f825dc9_0b52d945",
       "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e795a34d_063367da",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-23T07:30:23Z",
+      "side": 1,
+      "message": "No, what you want is for USE_FLASHROM\u003d0 on the coreboot side. This side is correct or we are changing in tree behavior. Thanks for testing and the review, can you please valid as above?",
+      "parentUuid": "49d56105_8b16c39f",
+      "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
