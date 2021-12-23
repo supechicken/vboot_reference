@@ -70,6 +70,24 @@
       "parentUuid": "e795a34d_063367da",
       "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1414110_6f694f56",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-23T13:03:01Z",
+      "side": 1,
+      "message": "I don\u0027t know I follow. The change of behavior that is actually required here *is* on coreboot\u0027s side and therefore a explicit `USE_FLASHROM\u003d0` is required there.\n\nHere is my reasoning,\n\nWe certainly can add an explicit `USE_FLASHROM\u003d1` in the ebuild. However that would be the default state. The string name is irreverent to the fact there is three possible states, true, false or undefined. I rather a pure boolean state of defined as default to true, which is the current behavior, and let coreboot special case since it *is* the special case after all.",
+      "parentUuid": "5024143a_1826ab24",
+      "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
