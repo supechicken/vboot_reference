@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e52f59_2178a7a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-23T03:19:54Z",
+      "side": 1,
+      "message": "Hi Edward, some partners reported that now they can\u0027t use \u0027futility update --ccd -i image \u0027 anymore. That is probably due to your Port R / W path patches. \n\nLogs including\n\n \u003e\u003e Current system: \u003cnone\u003e (RO:Google_Corsola.14291.0.2021_12_07_1807,\n Found Winbond flash chip \"W25Q64JW...M\" (8192 kB, SPI) on raiden_debug_spi.\n Assuming old flash chip contents as ref-file... \n \nHave you ever tried updating via servo or ccd after using libflashrom?",
+      "revId": "483dff64346fd30224df5b66bf76124aeea7bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a07da335_5964c125",
