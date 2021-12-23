@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d9e7ab5_8850ce9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2021-12-23T03:26:44Z",
+      "side": 1,
+      "message": "got another feedback: flashing seems succeed, but the last message\n\n Erasing and writing flash chip... \u003e\u003e DONE: Firmware updater exits successfully.\n\nseems confusing. Can you add a trailing \\n for flashrom messages after it finished erasing, so we can always have \"\u003e\u003e DONE\" appear in the line beginning?",
+      "parentUuid": "31e52f59_2178a7a8",
+      "revId": "483dff64346fd30224df5b66bf76124aeea7bb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a07da335_5964c125",
