@@ -16,6 +16,24 @@
       "message": "This should be\n\n ifneq ($(filter-out 0,${USE_FLASHROM}),)",
       "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d56105_8b16c39f",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2021-12-23T07:00:53Z",
+      "side": 1,
+      "message": "Verified both with coreboot-sdk docker.\n\nYu-ping\u0027s fix is the correct one. With this CL + Yu-ping\u0027s fix, coreboot-sdk could build futility without libflashrom.",
+      "parentUuid": "1f825dc9_0b52d945",
+      "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
