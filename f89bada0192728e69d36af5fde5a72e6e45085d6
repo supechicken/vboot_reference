@@ -52,6 +52,24 @@
       "parentUuid": "49d56105_8b16c39f",
       "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5024143a_1826ab24",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-12-23T07:56:37Z",
+      "side": 1,
+      "message": "For all the other options in this file, passing an empty string means disabling it. Yes, my suggestion above would change the behavior, but that could be solved by adding USE_FLASHROM\u003d1 in vboot ebuild. Alternatively, we could revert the option as NO_FLASHROM (so that flashrom would be enabled by default, if that\u0027s what you want).",
+      "parentUuid": "e795a34d_063367da",
+      "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
