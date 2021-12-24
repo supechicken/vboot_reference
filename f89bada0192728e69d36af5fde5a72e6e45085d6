@@ -106,6 +106,24 @@
       "parentUuid": "e1414110_6f694f56",
       "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67db1a36_44df68e1",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-12-24T04:02:04Z",
+      "side": 1,
+      "message": "Thanks for creating the coreboot patch.\n\nI\u0027m still not quite convinced of the usage of \u0027filter-out 1\u0027 here. Let me make myself a little bit clearer. My point is all about consistency for all vboot options (such as TPM2_MODE, EC_EFS). All of them are currently parsed with \u0027filter-out 0\u0027. I wouldn\u0027t interpret that as a tri-state variable. Instead, anything other than 0 will be treated like 1 (enable). For example, depthcharge is passing \u0027y\u0027 to enable an option. I think we\u0027d like to keep it that way for all make variables in this file for consistency.\n\nIf you want the default to be true, we could simply add\n\n USE_FLASHROM ?\u003d 1\n\nthen follow my suggestion of using \u0027filter-out 0\u0027. What do you think?",
+      "parentUuid": "ad6e2e4e_5f39eb04",
+      "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
