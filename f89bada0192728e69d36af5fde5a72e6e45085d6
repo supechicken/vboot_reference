@@ -124,6 +124,24 @@
       "parentUuid": "ad6e2e4e_5f39eb04",
       "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5e5350_45530ccb",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-24T09:58:29Z",
+      "side": 1,
+      "message": "`USE_FLASHROM ?\u003d 1` seems like a reasonable suggestion to align your take on it. Fixed.",
+      "parentUuid": "67db1a36_44df68e1",
+      "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
