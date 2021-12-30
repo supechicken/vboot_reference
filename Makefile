@@ -672,6 +672,10 @@ FUTIL_SRCS += futility/flashrom_drv.c \
 	futility/updater_quirks.c \
 	futility/updater_utils.c \
 	futility/updater.c
+#
+UTILLIB_SRCS += futility/flashrom_drv.c
+HOSTLIB_SRCS += futility/flashrom_drv.c
+#
 CFLAGS += -DUSE_FLASHROM
 endif
 
