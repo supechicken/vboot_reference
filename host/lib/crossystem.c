@@ -30,11 +30,6 @@
 /* Filename for kernel command line */
 #define KERNEL_CMDLINE_PATH "/proc/cmdline"
 
-/* Filename for the mount-encrypted key */
-/* TODO(b/174807059): Remove this after we land driver-level TPM simulator on
- * all VM boards */
-#define MOUNT_ENCRYPTED_KEY_PATH "/mnt/stateful_partition/encrypted.key"
-
 /* Filename for the TPM simulator NV data */
 #define TPM_SIMULATOR_NVCHIP_PATH \
 	"/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip"
@@ -389,9 +384,6 @@ static int VbGetSystemPropertyIntInternal(const char *name)
 		if (TPM2_SIMULATOR && VTPM_PROXY)
 			/* Check TPM simulator NVChip status */
 			value = access(TPM_SIMULATOR_NVCHIP_PATH, F_OK) != 0;
-		else if (TPM2_SIMULATOR)
-			/* Check mount-encrypted key status */
-			value = access(MOUNT_ENCRYPTED_KEY_PATH, F_OK) != 0;
 		else
 			value = vb2_get_nv_storage(
 				VB2_NV_CLEAR_TPM_OWNER_REQUEST);
@@ -632,13 +624,10 @@ static int VbSetSystemPropertyIntInternal(const char *name, int value)
 			 * on simulator */
 			if (value == 0)
 				return -1;
-			const char *tpm_path =
-				VTPM_PROXY ? TPM_SIMULATOR_NVCHIP_PATH
-					   : MOUNT_ENCRYPTED_KEY_PATH;
 			/* Check TPM simulator data status */
-			if (!access(tpm_path, F_OK)) {
+			if (!access(TPM_SIMULATOR_NVCHIP_PATH, F_OK)) {
 				/* Remove the TPM2.0 simulator data */
-				return remove(tpm_path);
+				return remove(TPM_SIMULATOR_NVCHIP_PATH);
 			} else {
 				/* Return success when the file is already
 				 * removed */
