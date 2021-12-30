@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8cb1d2_a4fccc88",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T23:20:29Z",
+      "side": 1,
+      "message": "I would suggest /run/lock/crossystem (that\u0027s where other tools like flashrom put their locks, too).",
+      "range": {
+        "startLine": 28,
+        "startChar": 31,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "0fc21a4c787c67690cc52463c3934f74a94ef6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fecbbd5_378e55b1",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T23:20:29Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need to worry about double-locking if you only guard the SetSystemProperty calls, because those never recurse into themselves.",
+      "revId": "0fc21a4c787c67690cc52463c3934f74a94ef6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6d9c98_92c5544a",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T23:20:29Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to lock reading. All of our backends update atomically (in flashrom\u0027s case by flashrom itself providing the lock) so it should always be safe to read concurrently.",
+      "revId": "0fc21a4c787c67690cc52463c3934f74a94ef6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dab288c_151bebef",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T23:20:29Z",
+      "side": 1,
+      "message": "Does this need to be 0666? Flashrom is using 0600...",
+      "range": {
+        "startLine": 506,
+        "startChar": 56,
+        "endLine": 506,
+        "endChar": 60
+      },
+      "revId": "0fc21a4c787c67690cc52463c3934f74a94ef6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c3c0e9_30d951a5",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T23:20:29Z",
+      "side": 1,
+      "message": "...shared? Doesn\u0027t that defeat the point?",
+      "range": {
+        "startLine": 511,
+        "startChar": 20,
+        "endLine": 511,
+        "endChar": 27
+      },
+      "revId": "0fc21a4c787c67690cc52463c3934f74a94ef6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194a8293_f88e893e",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T23:20:29Z",
+      "side": 1,
+      "message": "Please encapsulate all of the logic for acquiring and releasing the lock in functions, so you don\u0027t have to copy\u0026paste it everywhere.",
+      "revId": "0fc21a4c787c67690cc52463c3934f74a94ef6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
