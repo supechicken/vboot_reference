@@ -142,6 +142,24 @@
       "parentUuid": "67db1a36_44df68e1",
       "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ac4110_1e4bcb22",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T18:12:56Z",
+      "side": 1,
+      "message": "Sorry for being late to the party here, but I don\u0027t think this was the right decision. Like Yu-Ping said we\u0027re trying to standardize how make command line options passed to vboot behave, and the standard for all the others is that not passing them at all means no. It doesn\u0027t matter whether you implement it via USE_FLASHROM ?\u003d 1 or `filter-out 1` or whatever, those are all just different ways to implement the same behavior, but the problem is that the behavior is inconsistent with other options and not what we want.\n\nWe should add USE_FLASHROM\u003d1 to the ebuild and then update this to match the other options.",
+      "parentUuid": "1f5e5350_45530ccb",
+      "revId": "f89bada0192728e69d36af5fde5a72e6e45085d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

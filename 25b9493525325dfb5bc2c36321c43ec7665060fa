@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed99ea3_f9976370",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T18:12:56Z",
+      "side": 1,
+      "message": "btw have we considered following this example of trying to auto-detect availability? that would also be an option that\u0027s consistent with existing use.",
+      "revId": "25b9493525325dfb5bc2c36321c43ec7665060fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d24c124_3f227df9",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-12-30T18:12:56Z",
+      "side": 1,
+      "message": "(btw I\u0027m not sure it\u0027s worth printing this here... we don\u0027t print something for any other option either, except for UNROLL_LOOPS which is particularly interesting because different firmware stages may use different settings for it. USE_FLASHROM in particular is only meaningful for futility builds, but the way you print this here will show up once for each stage during coreboot firmware builds which it has nothing to do with, and I think that\u0027s only going to serve to confuse people.)",
+      "revId": "25b9493525325dfb5bc2c36321c43ec7665060fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
