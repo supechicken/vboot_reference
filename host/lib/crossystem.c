@@ -772,7 +772,7 @@ int vb2_read_nv_storage_flashrom(struct vb2_context *ctx)
 	struct firmware_image image = {
 		.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP,
 	};
-	if (flashrom_read(&image, VBNV_FMAP_REGION))
+	if (flashrom_read(&image, VBNV_FMAP_REGION, 0))
 		return -1;
 
 	index = vb2_nv_index(image.data, image.size, vbnv_size);
@@ -796,7 +796,7 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	struct firmware_image image = {
 		.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP,
 	};
-	if (flashrom_read(&image, VBNV_FMAP_REGION))
+	if (flashrom_read(&image, VBNV_FMAP_REGION, 0))
 		return -1;
 
 	current_index = vb2_nv_index(image.data, image.size, vbnv_size);
@@ -813,7 +813,7 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	}
 
 	memcpy(&image.data[next_index * vbnv_size], ctx->nvdata, vbnv_size);
-	if (flashrom_write(&image, VBNV_FMAP_REGION)) {
+	if (flashrom_write(&image, VBNV_FMAP_REGION, 0)) {
 		rv = -1;
 		goto exit;
 	}

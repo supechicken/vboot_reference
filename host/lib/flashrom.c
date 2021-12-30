@@ -103,7 +103,7 @@ static vb2_error_t run_flashrom(const char *const argv[])
 	return VB2_SUCCESS;
 }
 
-vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
+vb2_error_t flashrom_read(struct firmware_image *image, const char *region, int _verbosity)
 {
 	char *tmpfile;
 	char region_param[PATH_MAX];
@@ -137,7 +137,7 @@ vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
 	return rv;
 }
 
-vb2_error_t flashrom_write(struct firmware_image *image, const char *region)
+vb2_error_t flashrom_write(struct firmware_image *image, const char *region, int _verbosity)
 {
 	char *tmpfile;
 	char region_param[PATH_MAX];
