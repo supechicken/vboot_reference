@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f1a201_19890dc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-01-03T04:17:28Z",
+      "side": 1,
+      "message": "Test with this command:\n```\ncrossystem clear_tpm_owner_request\u003d0 \u0026\u0026 crossystem clear_tpm_owner_request \u0026\u0026 (crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem fw_result\u003dsuccess fw_try_count\u003d$(($RANDOM % 10)) \u0026 crossystem clear_tpm_owner_request\u003d1 \u0026 wait \u0026\u0026 crossystem clear_tpm_owner_request)\n```",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 58
+      },
+      "revId": "d9a56656d26b030eff837042e62895d68cc2fda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
