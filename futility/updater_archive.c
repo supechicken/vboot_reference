@@ -30,6 +30,10 @@
 #include <zip.h>
 #endif
 
+#ifdef HAVE_CROSID
+#include <crosid.h>
+#endif
+
 #include "host_misc.h"
 #include "updater.h"
 #include "util_misc.h"
@@ -815,6 +819,25 @@ static int manifest_scan_entries(const char *name, void *arg)
 	return !manifest_add_model(manifest, &model);
 }
 
+/**
+ * get_manifest_key() - Wrapper to get the firmware manifest key from crosid
+ *
+ * @manifest_key_out - Output parameter of the firmware manifest key.
+ *
+ * Returns:
+ * - <0 if libcrosid is unavailable or there was an error reading
+ *   device data
+ * - >=0 (the matched device index) success
+ */
+static int get_manifest_key(char **manifest_key_out)
+{
+#ifdef HAVE_CROSID
+	return crosid_get_firmware_manifest_key(manifest_key_out);
+#else
+	return -1;
+#endif
+}
+
 /*
  * Finds the existing model_config from manifest that best matches current
  * system (as defined by model_name).
@@ -823,22 +846,30 @@ static int manifest_scan_entries(const char *name, void *arg)
 const struct model_config *manifest_find_model(const struct manifest *manifest,
 					       const char *model_name)
 {
-	char *sys_model_name = NULL;
+	char *manifest_key = NULL;
 	const struct model_config *model = NULL;
 	int i;
+	int matched_index;
 
 	/*
 	 * For manifest with single model defined, we should just return because
 	 * there are other mechanisms like platform name check to double confirm
-	 * if the firmware is valid.
+	* if the firmware is valid.
 	 */
 	if (manifest->num == 1)
 		return &manifest->models[0];
 
 	if (!model_name) {
-		sys_model_name = host_shell("mosys platform model");
-		VB2_DEBUG("System model name: '%s'\n", sys_model_name);
-		model_name = sys_model_name;
+		matched_index = get_manifest_key(&manifest_key);
+		if (matched_index < 0) {
+			ERROR("Failed to get device identity.  "
+			      "Run \"crosid -v\" for explanation.");
+			return NULL;
+		}
+
+		VB2_DEBUG("Config index: %d\n", matched_index);
+		VB2_DEBUG("Manifest key: '%s'\n", manifest_key);
+		model_name = manifest_key;
 	}
 
 	for (i = 0; !model && i < manifest->num; i++) {
@@ -846,19 +877,10 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 			model = &manifest->models[i];
 	}
 	if (!model) {
-		if (!*model_name)
-			ERROR("Cannot get model name.\n");
-		else
-			ERROR("Unsupported model: '%s'.\n", model_name);
-
 		fprintf(stderr,
-			"You are probably running an image for wrong board, or "
-			"a device in early stage that 'mosys' command is not "
-			"ready, or image from old (or factory) branches that "
-			"Unified Build config is not updated yet for 'mosys'.\n"
-			"Please check command 'mosys platform model', "
-			"which should output one of the supported models below:"
-			"\n");
+			"The firmware manifest key '%s' is not present in this "
+			"updater archive. The known keys to this updater "
+			"archive are:\n", manifest_key);
 
 		for (i = 0; i < manifest->num; i++)
 			fprintf(stderr, " %s", manifest->models[i].name);
@@ -866,7 +888,7 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 	}
 
 
-	free(sys_model_name);
+	free(manifest_key);
 	return model;
 }
 
