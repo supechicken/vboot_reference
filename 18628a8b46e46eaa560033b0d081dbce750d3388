@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57bc75b4_3f3a4a3e",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-06T16:08:56Z",
+      "side": 1,
+      "message": "What\u0027s the use case?\n\nHAVE_CROSID will always be set for futility built for Chrome OS, so this is only here to keep futility compiling from the coreboot tree.",
+      "parentUuid": "86ddc79a_0a0663f7",
+      "range": {
+        "startLine": 837,
+        "startChar": 1,
+        "endLine": 837,
+        "endChar": 11
+      },
+      "revId": "18628a8b46e46eaa560033b0d081dbce750d3388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ce95982_7d974d8b",
         "filename": "futility/updater_archive.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T02:01:41Z",
       "side": 1,
       "message": "This may be too hard to figure out next steps for non-tech people (and yes, I\u0027ve seen bug reports asking what to do very often in the past untile I added the messages in 855+).\n\nMaybe not returning NULL, and move the error messages to the if(!model) block.",
+      "range": {
+        "startLine": 867,
+        "startChar": 3,
+        "endLine": 867,
+        "endChar": 15
+      },
+      "revId": "18628a8b46e46eaa560033b0d081dbce750d3388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7fd9847_3f5bbc7a",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-06T16:08:56Z",
+      "side": 1,
+      "message": "Well returning NULL is the existing behavior already in this case...\n\nAs for the messages, crosid already writes an extremely similar message to stderr already in this case:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config/crosid/match.c#33",
+      "parentUuid": "2ce95982_7d974d8b",
       "range": {
         "startLine": 867,
         "startChar": 3,
