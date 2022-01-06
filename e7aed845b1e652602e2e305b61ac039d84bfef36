@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "971c47e8_95502ff2",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-06T18:57:06Z",
+      "side": 1,
+      "message": "No, I don\u0027t think that users compiling futility from the coreboot tree and then transporting that binary into Chrome OS is a legitimate use case. Futility with full update support should be compiled only from the Chrome OS build system.\n\nfutility is in the coreboot tree only for the fmap utilities and such. The update command was never intended to actually be supported there.",
+      "parentUuid": "0e1a044a_6ea4861a",
+      "range": {
+        "startLine": 842,
+        "startChar": 9,
+        "endLine": 842,
+        "endChar": 10
+      },
+      "revId": "e7aed845b1e652602e2e305b61ac039d84bfef36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82afdc27_fb55f334",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T18:25:52Z",
       "side": 1,
       "message": "nit: spacing",
+      "range": {
+        "startLine": 862,
+        "startChar": 0,
+        "endLine": 862,
+        "endChar": 1
+      },
+      "revId": "e7aed845b1e652602e2e305b61ac039d84bfef36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4567f046_25b34f52",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-06T18:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82afdc27_fb55f334",
       "range": {
         "startLine": 862,
         "startChar": 0,
