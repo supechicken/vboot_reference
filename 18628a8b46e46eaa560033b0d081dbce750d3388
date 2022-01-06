@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ddc79a_0a0663f7",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-06T02:01:41Z",
+      "side": 1,
+      "message": "Can we route back to mosys, or shell out to invoke crosid in this case?",
+      "range": {
+        "startLine": 837,
+        "startChar": 1,
+        "endLine": 837,
+        "endChar": 11
+      },
+      "revId": "18628a8b46e46eaa560033b0d081dbce750d3388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce95982_7d974d8b",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-06T02:01:41Z",
+      "side": 1,
+      "message": "This may be too hard to figure out next steps for non-tech people (and yes, I\u0027ve seen bug reports asking what to do very often in the past untile I added the messages in 855+).\n\nMaybe not returning NULL, and move the error messages to the if(!model) block.",
+      "range": {
+        "startLine": 867,
+        "startChar": 3,
+        "endLine": 867,
+        "endChar": 15
+      },
+      "revId": "18628a8b46e46eaa560033b0d081dbce750d3388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0210af7f_dfc98d67",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-06T02:01:41Z",
+      "side": 1,
+      "message": "`cros_id` config",
+      "range": {
+        "startLine": 870,
+        "startChar": 13,
+        "endLine": 870,
+        "endChar": 19
+      },
+      "revId": "18628a8b46e46eaa560033b0d081dbce750d3388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4c2827_dc79f50c",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-06T02:01:41Z",
+      "side": 1,
+      "message": "key (model)",
+      "range": {
+        "startLine": 871,
+        "startChar": 22,
+        "endLine": 871,
+        "endChar": 25
+      },
+      "revId": "18628a8b46e46eaa560033b0d081dbce750d3388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed1623c_9a3975dc",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-06T02:01:41Z",
+      "side": 1,
+      "message": "I still want to keep the \"You are probably ...\" stuff, so people would know what to do.\n\nAnd in this case, they should check \u0027crosid\u0027 right? You also need to tell them what to look at.",
+      "range": {
+        "startLine": 881,
+        "startChar": 4,
+        "endLine": 881,
+        "endChar": 6
+      },
+      "revId": "18628a8b46e46eaa560033b0d081dbce750d3388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
