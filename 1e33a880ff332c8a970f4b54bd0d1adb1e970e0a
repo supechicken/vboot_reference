@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "464e96d1_6022dca9",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-01-06T06:20:18Z",
+      "side": 1,
+      "message": "I\u0027ve updated the test script to create the lock file dir.",
+      "parentUuid": "9eeeab4f_136b3fc3",
+      "range": {
+        "startLine": 32,
+        "startChar": 43,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "1e33a880ff332c8a970f4b54bd0d1adb1e970e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e7e9134_bfb0f679",
@@ -202,6 +226,30 @@
       "writtenOn": "2021-12-02T23:13:55Z",
       "side": 1,
       "message": "to avoid error logs of the form:\n\n```\nRW/A:Google.Link.2695.1.133, RW/B:Google.Link.2695.1.133).\nINFO: update_firmware: Disabling power management...\nINFO: update_firmware: Enabling power management...\nERROR: do_update: Failed to configure power management.\n```\n\nprint errno before the return. Probably this comes up when filesystem access is a issue.",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 841,
+        "endChar": 11
+      },
+      "revId": "1e33a880ff332c8a970f4b54bd0d1adb1e970e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d68f38d_063ec552",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-01-06T06:20:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0170f3_ece5c8ca",
       "range": {
         "startLine": 840,
         "startChar": 0,
