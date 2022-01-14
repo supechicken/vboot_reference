@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "681dc39f_55ae5541",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-14T22:43:32Z",
+      "side": 1,
+      "message": "R path doesn\u0027t need to be reverted, it\u0027s really only the write path without locking imho",
+      "revId": "765cf67042cb8819a911fb2ec859ac3a6ffaabe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
