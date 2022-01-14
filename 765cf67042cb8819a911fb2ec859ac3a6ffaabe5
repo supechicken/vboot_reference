@@ -16,6 +16,24 @@
       "message": "R path doesn\u0027t need to be reverted, it\u0027s really only the write path without locking imho",
       "revId": "765cf67042cb8819a911fb2ec859ac3a6ffaabe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d76e07_cba209d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-14T22:47:17Z",
+      "side": 1,
+      "message": "Ah I see the dep that causes the revert to be not so clean. Fair enough.",
+      "parentUuid": "681dc39f_55ae5541",
+      "revId": "765cf67042cb8819a911fb2ec859ac3a6ffaabe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
