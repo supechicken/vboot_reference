@@ -1308,7 +1308,12 @@ run2tests: install_for_test
 
 .PHONY: runfutiltests
 runfutiltests: install_for_test
-	tests/futility/run_test_scripts.sh
+	/mnt/host/source/src/platform2/common-mk/platform2_test.py \
+		--sysroot=${SYSROOT} \
+		--env BUILD_RUN=$(subst ${SYSROOT},,${BUILD_RUN}) \
+		--env BUILD=$(subst ${SYSROOT},,${BUILD}) \
+		--env SRCDIR=$(subst ${SYSROOT},,${SRCDIR}) \
+		tests/futility/run_test_scripts.sh
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 
