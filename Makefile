@@ -315,6 +315,18 @@ endif
 
 export BUILD_RUN
 
+# Use platform2_test.py wrapper if requested (i.e. when running in
+# the Chromium OS chroot)
+ifdef USE_PLATFORM2_TEST_WRAPPER
+	PLATFORM2_TEST := /mnt/host/source/src/platform2/common-mk/platform2_test.py \
+		--sysroot=${SYSROOT} \
+		--env BUILD_RUN=$(subst ${SYSROOT},,${BUILD_RUN}) \
+		--env BUILD=$(subst ${SYSROOT},,${BUILD}) \
+		--env SRCDIR=$(subst ${SYSROOT},,${SRCDIR})
+else
+	PLATFORM2_TEST :=
+endif
+
 ##############################################################################
 # The default target is here, to allow dependencies to be expressed below
 # without accidentally changing the default target.
@@ -1308,7 +1320,7 @@ run2tests: install_for_test
 
 .PHONY: runfutiltests
 runfutiltests: install_for_test
-	tests/futility/run_test_scripts.sh
+	${PLATFORM2_TEST} tests/futility/run_test_scripts.sh
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 
