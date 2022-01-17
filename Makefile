@@ -281,6 +281,17 @@ ifeq ($(HAVE_CROSID),1)
   CROSID_LIBS := $(shell ${PKG_CONFIG} --libs crosid)
 endif
 
+
+ifdef USE_PLATFORM2_TEST_WRAPPER
+	PLATFORM2_TEST := /mnt/host/source/src/platform2/common-mk/platform2_test.py \
+		--sysroot=${SYSROOT} \
+		--env BUILD_RUN=$(subst ${SYSROOT},,${BUILD_RUN}) \
+		--env BUILD=$(subst ${SYSROOT},,${BUILD}) \
+		--env SRCDIR=$(subst ${SYSROOT},,${SRCDIR})
+else
+	PLATFORM2_TEST :=
+endif
+
 # Determine QEMU architecture needed, if any
 ifeq (${ARCH},${HOST_ARCH})
   # Same architecture; no need for QEMU
@@ -1216,6 +1227,7 @@ ${FUTIL_CMD_LIST}: ${FUTIL_SRCS}
 .PHONY: test_setup
 test_setup:: cgpt ${UTIL_FILES_SDK} ${UTIL_FILES_BOARD} futil tests
 
+
 # Qemu setup for cross-compiled tests.  Need to copy qemu binary into the
 # sysroot.
 ifneq (${QEMU_ARCH},)
@@ -1308,7 +1320,7 @@ run2tests: install_for_test
 
 .PHONY: runfutiltests
 runfutiltests: install_for_test
-	tests/futility/run_test_scripts.sh
+	${PLATFORM2_TEST} tests/futility/run_test_scripts.sh
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 
