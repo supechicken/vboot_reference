@@ -16,6 +16,23 @@
       "message": "If someone can test this on zork firmware branch I\u0027ll +2.",
       "revId": "ac3576223a7ad94b83c8a8930569779117759ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce089c56_e75d2e50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1456082
+      },
+      "writtenOn": "2022-01-17T03:00:09Z",
+      "side": 1,
+      "message": "According to https://b.corp.google.com/issues/210127173#comment35 and #comment34, Zork doesn\u0027t need the patch since it doesn\u0027t use TCPC. So I would abandon this change.",
+      "revId": "ac3576223a7ad94b83c8a8930569779117759ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
