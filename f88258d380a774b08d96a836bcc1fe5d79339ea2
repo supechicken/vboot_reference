@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9ec452_601bc7f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-01-18T19:52:31Z",
+      "side": 1,
+      "message": "can you enable some of the same defaults we have in platform2 like PRESUBMIT.cfg:cargo_clippy_check\u003dtrue ?  not sure if there\u0027s any others i\u0027m forgetting.\n\nwould be helpful to put a rust/README.md \u0026 rust/vboot_reference-sys/README.md providing a bit of overview \u0026 explanation for rust-newbies.",
+      "revId": "f88258d380a774b08d96a836bcc1fe5d79339ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f67cf439_dbac93bd",
