@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67cf439_dbac93bd",
+        "filename": "rust/vboot_reference-sys/crossystem.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-01-18T19:49:17Z",
+      "side": 1,
+      "message": "This is needed so the header can be packaged with the crate for the bindings generation to work when building packages that depend on this one.",
+      "revId": "f88258d380a774b08d96a836bcc1fe5d79339ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
