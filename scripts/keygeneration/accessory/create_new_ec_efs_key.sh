@@ -7,6 +7,21 @@
 # Load common constants and functions.
 . "$(dirname "$0")/common_leverage_hammer.sh"
 
+usage() {
+  cat <<EOF
+Usage: ${PROG} [options]
+
+Options:
+  -o, --output_dir <dir>:    Where to write the keys (default is cwd)
+EOF
+
+  if [[ $# -ne 0 ]]; then
+    die "$*"
+  else
+    exit 0
+  fi
+}
+
 main() {
   set -e
 

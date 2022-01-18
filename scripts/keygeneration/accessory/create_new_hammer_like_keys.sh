@@ -7,10 +7,28 @@
 # Load common constants and functions.
 . "$(dirname "$0")/common_leverage_hammer.sh"
 
+usage() {
+  cat <<EOF
+Usage: ${PROG} <keyname> [options]
+
+Arguments:
+  keyname:                   Name of the hammer device (e.g. Staff, Wand).
+
+Options:
+  -o, --output_dir <dir>:    Where to write the keys (default is cwd)
+EOF
+
+  if [[ $# -ne 0 ]]; then
+    die "$*"
+  else
+    exit 0
+  fi
+}
+
 main() {
   set -e
 
-  leverage_hammer_to_create_key "hammerlike" "$@"
+  leverage_hammer_to_create_key "$@"
 }
 
 main "$@"
