@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8216e227_3b896a6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-01-18T20:10:00Z",
+      "side": 1,
+      "message": "I added rust/README.md. I am not sure it makes sense to have a separate one for vboot_reference-sys unless we add an additional crate without the -sys for an safe idomatic Rust API.",
+      "parentUuid": "0d9ec452_601bc7f7",
+      "revId": "f88258d380a774b08d96a836bcc1fe5d79339ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f67cf439_dbac93bd",
