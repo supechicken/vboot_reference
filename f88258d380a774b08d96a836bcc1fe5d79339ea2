@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "70ae6989_f5b70b67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-01-18T20:27:45Z",
+      "side": 1,
+      "message": "Yeah, if we were to do that it would probably make sense to move rust/README.md to the crate and have a separate README.md for the crate publish process.",
+      "parentUuid": "638bb7c7_79692f52",
+      "revId": "f88258d380a774b08d96a836bcc1fe5d79339ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f67cf439_dbac93bd",
         "filename": "rust/vboot_reference-sys/crossystem.h",
         "patchSetId": 2

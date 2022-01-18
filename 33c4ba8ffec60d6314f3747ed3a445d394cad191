@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df50ae0e_deaacb6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-01-18T20:27:45Z",
+      "side": 1,
+      "message": "I am running into issues getting the ebuild uploaded, and it would help to have the rust/OWNERS landed so I can point the OWNERS for the ebuild at it. The server-side upload checks won\u0027t allow referencing an OWNERS file that hasn\u0027t landed yet.",
+      "revId": "33c4ba8ffec60d6314f3747ed3a445d394cad191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c94aa3c4_5d5ff075",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-01-18T20:23:39Z",
       "side": 1,
       "message": "does it have to list every project ?  would be nice if we could just say \"everything under rust/\".",
+      "revId": "33c4ba8ffec60d6314f3747ed3a445d394cad191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de8ba20_53e508ae",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-01-18T20:27:45Z",
+      "side": 1,
+      "message": "We might be able to work around that with a Cargo.toml that defines a workspace, but it needs to be listed for every place cargo clippy needs to be called. I can add a workspace and update it if we add a non-sys crate.",
+      "parentUuid": "c94aa3c4_5d5ff075",
       "revId": "33c4ba8ffec60d6314f3747ed3a445d394cad191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
