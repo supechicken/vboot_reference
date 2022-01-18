@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6e649b_7b27fa76",
+        "filename": "scripts/keygeneration/accessory/common_leverage_hammer.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-18T11:06:06Z",
+      "side": 0,
+      "message": "It seems a little weird to me if the usage() and parser (leverage_hammer_to_create_key) lives in different places.\n\nWhat about putting usage back here, where a variable indicating if we should have keyname or not, for example\n\n : ${HAS_ARG_KEYNAME:\u003d}\n \n usage() {\n   if [ -n \"${HAS_ARG_KEYNAME}\" ]; then\n      cat \u003c\u003cEOF\n      ...\n EOF\n   else\n      cat \u003c\u003cEOF\n      ...\n EOF\n   fi\n   cat \u003c\u003cEOF\n\n Options:\n    ...\n EOF\n    if ...\n }",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "fe799942dccb8554873bc70474373001f74289b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
