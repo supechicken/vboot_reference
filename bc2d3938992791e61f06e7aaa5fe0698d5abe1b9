@@ -16,6 +16,24 @@
       "message": "Does this need to be a separate lock file? Flashrom already has a lock, wouldn\u0027t it be cleaner if we just had powerd check that directly?",
       "revId": "bc2d3938992791e61f06e7aaa5fe0698d5abe1b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a1acd3_0cfaec59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-01-19T02:56:40Z",
+      "side": 1,
+      "message": "Flashrom lock creation was removed in crrev.com/c/3312440 but has effectively been disabled since crrev.com/c/3247852, so there will only be one lock file.\n\nWe want to move locking to futility since managing the state of a Chrome OS system to ensure updates go smoothly is beyond the scope of flashrom and has to be maintained as a local diff since it\u0027s not useful in upstream.",
+      "parentUuid": "89147820_eb3d680f",
+      "revId": "bc2d3938992791e61f06e7aaa5fe0698d5abe1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
