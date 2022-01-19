@@ -34,6 +34,24 @@
       "parentUuid": "89147820_eb3d680f",
       "revId": "bc2d3938992791e61f06e7aaa5fe0698d5abe1b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab07e86c_6706acf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-01-19T23:40:13Z",
+      "side": 1,
+      "message": "No, I don\u0027t mean that lock. I mean the normal, generic flashrom lock (the one that makes sure that when you run any two flashrom processes in parallel they don\u0027t talk over each other to the flash. I believe it\u0027s /run/lock/firmware_utility_lock? See flashrom\u0027s big_lock.c.\n\nRather than having powerd look specifically for the updater, wouldn\u0027t it make sense anyway that it waits whenever there\u0027s anything on the system (e.g. even crossystem) in the process of writing to flash?",
+      "parentUuid": "47a1acd3_0cfaec59",
+      "revId": "bc2d3938992791e61f06e7aaa5fe0698d5abe1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
