@@ -33,6 +33,24 @@
       "message": "Is it possible to only enable this on next generation platforms (such as brya, herobrine)?\n\nFor projects that are already launched, it will break factory flow if we don\u0027t cherry pick libcrosid to factory branches.\n\n(+marcochen for vis, SIEs would probably start getting reports from partners, that the firmware updater doesn\u0027t work with their factory branch test image)",
       "revId": "2407b678bd2e41422aef6bb79246dbeaf6dfed7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f75843_5e75e094",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-19T04:57:33Z",
+      "side": 1,
+      "message": "For old factory branches, if they don\u0027t cherry-pick the cros-id related patches to vboot (futility), then the underlying futility will keep using mosys, not crosid.\n\nThe SFX change here does not impact how futility internally decides model - it\u0027s simply for verbose messages.\n\nWe should keep an eye on potential impacts, but at the moment I think it\u0027s probably fine.",
+      "parentUuid": "0464137b_f33132f4",
+      "revId": "2407b678bd2e41422aef6bb79246dbeaf6dfed7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
