@@ -34,6 +34,24 @@
       "parentUuid": "ce00eb8c_bc40e627",
       "revId": "7069fe8f32d6e72638e47111c4b05d7444a5f754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464ea892_8ae27e48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-01-19T07:56:17Z",
+      "side": 1,
+      "message": "sorry, `make check` is the standard naming in the wider world.  i think vboot uses `make tests` or something.  either way, the point is, vboot tests need to be usable outside of a CrOS SDK.  that\u0027s why i suggested having the ebuild pass the setting down.",
+      "parentUuid": "9986c509_ad966cb3",
+      "revId": "7069fe8f32d6e72638e47111c4b05d7444a5f754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
