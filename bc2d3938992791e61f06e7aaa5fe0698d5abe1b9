@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89147820_eb3d680f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-01-19T01:30:43Z",
+      "side": 1,
+      "message": "Does this need to be a separate lock file? Flashrom already has a lock, wouldn\u0027t it be cleaner if we just had powerd check that directly?",
+      "revId": "bc2d3938992791e61f06e7aaa5fe0698d5abe1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
