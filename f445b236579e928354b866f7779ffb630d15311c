@@ -22,6 +22,30 @@
       },
       "revId": "f445b236579e928354b866f7779ffb630d15311c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c41d73b7_a94e952b",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-01-20T04:32:35Z",
+      "side": 0,
+      "message": "It\u0027s necessary for this change, sudo isn\u0027t available in the sysroot.",
+      "parentUuid": "e1215e26_4d4f11aa",
+      "range": {
+        "startLine": 474,
+        "startChar": 1,
+        "endLine": 474,
+        "endChar": 6
+      },
+      "revId": "f445b236579e928354b866f7779ffb630d15311c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
