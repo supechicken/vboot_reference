@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39a361f_c6239215",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2022-01-24T22:56:59Z",
+      "side": 1,
+      "message": "As CSE may modify itself, even if use_diff_image is set to 1, will verification still work (i.e. do_verify set to 1) as we may compare against the data being modified by CSE?\n",
+      "revId": "cee4379a950539d0ae17b68c69f0025bb7498bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0554a09_e0a7a3ac",
