@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "447e50c3_71876361",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-25T03:33:51Z",
+      "side": 1,
+      "message": "I thought this wasn\u0027t allowed for ME\u0027s in ChromeOS for exactly these reasons?\n\nThis new requirement would need an adjustment of how AP firmware updates actually work. Probably in the way suggested in my other comment below.\n\nThe diff image change here is a bit of a short-cut workaround.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "cee4379a950539d0ae17b68c69f0025bb7498bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a39a361f_c6239215",
@@ -86,6 +109,24 @@
       "side": 1,
       "message": "+Edward - Hi Edward, can you suggest if there are some better approach so libflashrom won\u0027t complain when we have to deal with a self-modifying region, especially in verifying?",
       "parentUuid": "fef29d28_baf81908",
+      "revId": "cee4379a950539d0ae17b68c69f0025bb7498bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bc5e5a_c043d031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-25T03:33:51Z",
+      "side": 1,
+      "message": "Hey Hung-Te, thanks for the loop-in!\n\nYes, https://review.coreboot.org/c/flashrom/+/60881 recently got merged upstream. Could we perhaps skip including the region that is sensitive entirely from the write op? We could modify flashrom_write_image() to take a struct of two arrays of regions, ones to include in the write and ones not to include and that should be skipped.",
+      "parentUuid": "226dc172_5365255a",
       "revId": "cee4379a950539d0ae17b68c69f0025bb7498bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
