@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e861555a_852ba97a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-01-25T07:47:57Z",
+      "side": 1,
+      "message": "FYI for Roy for key gen options",
+      "revId": "cbee31e4b4d50b7a1aa3f5e0d3f1d7f7cd8ffbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "290eddbd_17e1b6b5",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-01-20T02:05:08Z",
       "side": 1,
       "message": "I was not sure about the naming of the files here, I assume they just need to match the subsequent usage in the sign_official_build.sh patch?",
+      "revId": "cbee31e4b4d50b7a1aa3f5e0d3f1d7f7cd8ffbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6532ccc3_28deadca",
+        "filename": "scripts/keygeneration/accessory/create_new_hps_key.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-01-25T07:47:57Z",
+      "side": 1,
+      "message": "correct",
+      "parentUuid": "290eddbd_17e1b6b5",
       "revId": "cbee31e4b4d50b7a1aa3f5e0d3f1d7f7cd8ffbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
