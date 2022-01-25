@@ -123,6 +123,15 @@ enum vb2_secdata_kernel_flags {
 	 * hwcrypto will be disabled from next boot.
 	 */
 	VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED = (1 << 3),
+
+	/*
+	 * Internet recovery functionality is disabled.
+	 *
+	 * RW firmware currently sets this flag to disable the feature on the
+	 * first boot (see function vb2api_kernel_phase1()). A future RW update
+	 * will flip this flag back to 0 when the feature is ready.
+	 */
+	VB2_SECDATA_KERNEL_FLAG_INTERNET_RECOVERY_DISABLED = (1 << 4),
 };
 
 /**

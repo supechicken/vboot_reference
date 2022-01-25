@@ -520,6 +520,12 @@ int vb2api_phone_recovery_ui_enabled(struct vb2_context *ctx)
 		 VB2_SECDATA_KERNEL_FLAG_PHONE_RECOVERY_UI_DISABLED);
 }
 
+int vb2api_internet_recovery_enabled(struct vb2_context *ctx)
+{
+	return !(vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS) &
+		 VB2_SECDATA_KERNEL_FLAG_INTERNET_RECOVERY_DISABLED);
+}
+
 int vb2api_diagnostic_ui_enabled(struct vb2_context *ctx)
 {
 	return !(vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS) &

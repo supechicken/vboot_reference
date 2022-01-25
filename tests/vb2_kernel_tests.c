@@ -232,6 +232,9 @@ static void phase1_tests(void)
 		"  phone recovery enabled");
 	TEST_EQ(vb2api_phone_recovery_ui_enabled(ctx), 0,
 		"  phone recovery ui disabled");
+	/* Make sure internet recovery is disabled */
+	TEST_EQ(vb2api_internet_recovery_enabled(ctx), 0,
+		"  diagnostic ui enabled");
 	/* Make sure diagnostic UI is enabled */
 	TEST_EQ(vb2api_diagnostic_ui_enabled(ctx), 1,
 		"  diagnostic ui enabled");

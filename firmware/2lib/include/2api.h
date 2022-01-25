@@ -974,6 +974,14 @@ int vb2api_phone_recovery_enabled(struct vb2_context *ctx);
 int vb2api_phone_recovery_ui_enabled(struct vb2_context *ctx);
 
 /**
+ * Whether internet recovery functionality is enabled or not.
+ *
+ * @param ctx		Vboot context
+ * @return 1 if enabled, 0 if disabled.
+ */
+int vb2api_internet_recovery_enabled(struct vb2_context *ctx);
+
+/**
  * Whether diagnostic UI functionality is enabled or not.
  *
  * @param ctx		Vboot context
