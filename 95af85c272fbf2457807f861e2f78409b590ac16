@@ -64,6 +64,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5cbb65_0817f12f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-26T02:42:45Z",
+      "side": 1,
+      "message": "Please cc NBR folks so they know they have to do this separately on firmware branches.\n\nMeanwhile is it possible to make the flag 1 only if the target platform is ARM?",
+      "revId": "95af85c272fbf2457807f861e2f78409b590ac16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4acf26ae_6dd648de",
