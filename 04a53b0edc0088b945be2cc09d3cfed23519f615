@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad97d25d_939a69b3",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-27T03:49:29Z",
+      "side": 1,
+      "message": "I still think it\u0027s a better idea to not include regions into firmware_image, so const won\u0027t need to be changed. If you prefer flashrom_write_image to always take a single param, we can create another structure for it - e.g., a \u0027flashrom_command\u0027 or \u0027flashrom_image\u0027 struct that contains a `const struct firmware_image *`, `struct regions *.` and even params for future - with that we can easily add include/exclude/skip/... etc.\n\nLet\u0027s keep the change outside flashrom_drv to be minimal.",
+      "parentUuid": "90dc6ef7_1910fd4c",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 39
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b651f8aa_eaa57dd5",
         "filename": "futility/updater.c",
         "patchSetId": 1
