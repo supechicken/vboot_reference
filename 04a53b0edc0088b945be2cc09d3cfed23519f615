@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12bd4c08_12eb1c94",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-27T03:31:06Z",
+      "side": 1,
+      "message": "We are yes. We would need to add a function to the libflashrom API to remove a region as well though. The patch was to just refactor things to bring the issue into focus with the correct function signatures.",
+      "parentUuid": "a5184f3f_c83208ec",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "094f8241_fe84a4b8",
         "filename": "futility/updater.c",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90dc6ef7_1910fd4c",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-27T03:31:06Z",
+      "side": 1,
+      "message": "The struct is const, that\u0027s why I did the refactor in this way to maintain the const correctness of heap.",
+      "parentUuid": "094f8241_fe84a4b8",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 39
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b651f8aa_eaa57dd5",
         "filename": "futility/updater.c",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-27T02:29:31Z",
       "side": 1,
       "message": "I think the we should not put the regions into image_to, because the regions usually will be changed for each read/write.\n\nIn current implementation, we have to either carefully re-create the regions data every time when writing, or remove it after writing - otherwise the next read/write may incorrectly reused regions from previous I/O.\n\nAlso the strdup() must be free()\u0027ed, which makes it being more complicated.\n\nIn future we may be doing something like\n\n struct regions * create_regions_list() {}\n append_regions_list() {}\n free_region_list() {}\n  \nAnd a helper for single region:\n\n struct regions * single_region_list(const char *name) {}",
+      "range": {
+        "startLine": 1061,
+        "startChar": 2,
+        "endLine": 1062,
+        "endChar": 45
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72dae784_e8931632",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-27T03:31:06Z",
+      "side": 1,
+      "message": "Yea the refactor got bigger than anticipated due to significant change in signatures. The strdup() was really just a intermediate step before spending too much effort to entirely redesign things and over commit on the idea being purposed here.\n\nI think to resolve your concern about regions being inside of firmware_image (which seems like a logical encapsulation of meaning by coupling those concepts at the type level) is to ensure we don\u0027t share instances of \u0027image\u0027 between I/O transactions. A \u0027image\u0027 instance per I/O transaction seems more logically consistent as not only mixing regions could be a problem but also other data fields of image such as the programmer type.\n\nI agree with that region construction API you are suggesting here around the firmware_region struct to ensure that value is built in a consistent manner.",
+      "parentUuid": "b651f8aa_eaa57dd5",
       "range": {
         "startLine": 1061,
         "startChar": 2,
