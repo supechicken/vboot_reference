@@ -54,11 +54,23 @@ const char *create_temp_file(struct tempfile *head);
  */
 void remove_all_temp_files(struct tempfile *head);
 
+struct firmware_region {
+	size_t num; /* TODO(quasisec): Allow more than one section. */
+	const char *section;
+};
+
+/* TODO(quasisec): Merge into firmware_region struct */
+struct firmware_section {
+	uint8_t *data;
+	size_t size;
+};
+
 /* Utilities for firmware images and (FMAP) sections */
 struct firmware_image {
 	const char *programmer;
 	uint32_t size;
 	uint8_t *data;
+	struct firmware_region regions;
 	char *file_name;
 	char *ro_version, *rw_version_a, *rw_version_b;
 	FmapHeader *fmap_header;
@@ -105,14 +117,8 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
  */
 int write_system_firmware(const struct firmware_image *image,
 			  const struct firmware_image *diff_image,
-			  const char *section_name,
 			  struct tempfile *tempfiles,
 			  int do_verify, int verbosity);
-
-struct firmware_section {
-	uint8_t *data;
-	size_t size;
-};
 
 /*
  * Returns true if the given FMAP section exists in the firmware image.
@@ -231,10 +237,8 @@ void init_system_properties(struct system_property *props, int num);
  */
 const char *get_firmware_rootkey_hash(const struct firmware_image *image);
 
-int flashrom_read_image(struct firmware_image *image, const char *region,
-			 int verbosity);
+int flashrom_read_image(struct firmware_image *image, int verbosity);
 int flashrom_write_image(const struct firmware_image *image,
-			const char *region,
 			const struct firmware_image *diff_image,
 			int do_verify, int verbosity);
 

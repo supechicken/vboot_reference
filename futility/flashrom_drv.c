@@ -52,8 +52,7 @@ static char *flashrom_extract_params(const char *str, char **prog, char **params
 	return tmp;
 }
 
-int flashrom_read_image(struct firmware_image *image, const char *region,
-			int verbosity)
+int flashrom_read_image(struct firmware_image *image, int verbosity)
 {
 	int r = 0;
 	size_t len = 0;
@@ -75,7 +74,8 @@ int flashrom_read_image(struct firmware_image *image, const char *region,
 
 	len = flashrom_flash_getsize(flashctx);
 
-	if (region) {
+	const char *section = image->regions.section;
+	if (section) {
 		r = flashrom_layout_read_fmap_from_buffer(
 			&layout, flashctx, (const uint8_t *)image->data,
 			image->size);
@@ -91,9 +91,9 @@ int flashrom_read_image(struct firmware_image *image, const char *region,
 			}
 		}
 		// empty region causes seg fault in API.
-		r |= flashrom_layout_include_region(layout, region);
+		r |= flashrom_layout_include_region(layout, section);
 		if (r > 0) {
-			ERROR("could not include region = '%s'\n", region);
+			ERROR("could not include region = '%s'\n", section);
 			r = -1;
 			goto err_cleanup;
 		}
@@ -116,7 +116,6 @@ err_cleanup:
 }
 
 int flashrom_write_image(const struct firmware_image *image,
-			const char *region,
 			const struct firmware_image *diff_image,
 			int do_verify, int verbosity)
 {
@@ -153,7 +152,8 @@ int flashrom_write_image(const struct firmware_image *image,
 		}
 	}
 
-	if (region) {
+	const char *section = image->regions.section;
+	if (section) {
 		r = flashrom_layout_read_fmap_from_buffer(
 			&layout, flashctx, (const uint8_t *)image->data,
 			image->size);
@@ -169,9 +169,9 @@ int flashrom_write_image(const struct firmware_image *image,
 			}
 		}
 		// empty region causes seg fault in API.
-		r |= flashrom_layout_include_region(layout, region);
+		r |= flashrom_layout_include_region(layout, section);
 		if (r > 0) {
-			ERROR("could not include region = '%s'\n", region);
+			ERROR("could not include region = '%s'\n", section);
 			r = -1;
 			goto err_cleanup;
 		}

@@ -527,7 +527,7 @@ int load_system_firmware(struct firmware_image *image,
 {
 	int r;
 
-	r = flashrom_read_image(image, NULL, (verbosity + 1));
+	r = flashrom_read_image(image, (verbosity + 1));
 	if (!r)
 		r = parse_firmware_image(image);
 	return r;
@@ -540,11 +540,10 @@ int load_system_firmware(struct firmware_image *image,
  */
 int write_system_firmware(const struct firmware_image *image,
 			  const struct firmware_image *diff_image,
-			  const char *section_name,
 			  struct tempfile *tempfiles,
 			  int do_verify, int verbosity)
 {
-	return flashrom_write_image(image, section_name, diff_image,
+	return flashrom_write_image(image, diff_image,
 				    do_verify, (verbosity + 1));
 }
 

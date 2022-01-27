@@ -389,12 +389,13 @@ static int emulate_write_firmware(const char *filename,
  * Returns 0 if success, non-zero if error.
  */
 static int write_firmware(struct updater_config *cfg,
-			  const struct firmware_image *image,
-			  const char *section_name)
+			  const struct firmware_image *image)
 {
 	struct firmware_image *diff_image = NULL;
 
 	if (cfg->emulation) {
+		// TODO(quasisec): Allow more than one section.
+		const char *section_name = image->regions.section;
 		INFO("(emulation) Writing %s from %s to %s (emu=%s).\n",
 		     section_name ? section_name : "whole image",
 		     image->file_name, image->programmer, cfg->emulation);
@@ -408,7 +409,7 @@ static int write_firmware(struct updater_config *cfg,
 		diff_image = &cfg->image_current;
 	}
 
-	return write_system_firmware(image, diff_image, section_name,
+	return write_system_firmware(image, diff_image,
 				     &cfg->tempfiles, cfg->do_verify,
 				     cfg->verbosity + 1);
 }
@@ -418,13 +419,13 @@ static int write_firmware(struct updater_config *cfg,
  */
 static int has_valid_update(struct updater_config *cfg,
 			const struct firmware_image *image,
-			const char *section_name,
 			int is_host)
 {
 	if (!image->data) {
 		VB2_DEBUG("No data in <%s> image.\n", image->programmer);
 		return 0;
 	}
+	const char *section_name = image->regions.section;
 	if (section_name && !firmware_section_exists(image, section_name)) {
 		VB2_DEBUG("Image %s<%s> does not have section %s.\n",
 			  image->file_name, image->programmer, section_name);
@@ -449,11 +450,10 @@ static int has_valid_update(struct updater_config *cfg,
  */
 static int write_optional_firmware(struct updater_config *cfg,
 				   const struct firmware_image *image,
-				   const char *section_name,
 				   int check_programmer_wp,
 				   int is_host)
 {
-	if (!has_valid_update(cfg, image, section_name, is_host))
+	if (!has_valid_update(cfg, image, is_host))
 		return 0;
 	/*
 	 * EC & PD may have different WP settings and we want to write
@@ -467,7 +467,7 @@ static int write_optional_firmware(struct updater_config *cfg,
 		return 0;
 	}
 
-	return write_firmware(cfg, image, section_name);
+	return write_firmware(cfg, image);
 }
 
 /*
@@ -973,16 +973,19 @@ static int check_compatible_tpm_keys(struct updater_config *cfg,
 static int update_ec_firmware(struct updater_config *cfg)
 {
 	struct firmware_image *ec_image = &cfg->ec_image;
-	if (!has_valid_update(cfg, ec_image, NULL, 0))
+	if (!has_valid_update(cfg, ec_image, 0))
 		return 0;
 
 	int r = try_apply_quirk(QUIRK_EC_PARTIAL_RECOVERY, cfg);
 	switch (r) {
 	case EC_RECOVERY_FULL:
-		return write_optional_firmware(cfg, ec_image, NULL, 1, 0);
+		return write_optional_firmware(cfg, ec_image, 1, 0);
 
-	case EC_RECOVERY_RO:
-		return write_optional_firmware(cfg, ec_image, "WP_RO", 1, 0);
+	case EC_RECOVERY_RO: {
+		ec_image->regions.num = 1;
+		ec_image->regions.section = strdup("WP_RO");
+		return write_optional_firmware(cfg, ec_image, 1, 0);
+	}
 
 	case EC_RECOVERY_DONE:
 		/* Done by some quirks, for example EC RO software sync. */
@@ -1055,7 +1058,9 @@ static enum updater_error_codes update_try_rw_firmware(
 		STATUS("TRY-RW UPDATE: Updating %s to try on reboot.\n",
 		       target);
 
-		if (write_firmware(cfg, image_to, target))
+		image_to->regions.num = 1;
+		image_to->regions.section = strdup(target);
+		if (write_firmware(cfg, image_to))
 			return UPDATE_ERR_WRITE_FIRMWARE;
 	}
 
@@ -1067,7 +1072,9 @@ static enum updater_error_codes update_try_rw_firmware(
 	if (legacy_needs_update(cfg)) {
 		has_update = 1;
 		STATUS("LEGACY UPDATE: Updating %s.\n", FMAP_RW_LEGACY);
-		write_firmware(cfg, image_to, FMAP_RW_LEGACY);
+		image_to->regions.num = 1;
+		image_to->regions.section = strdup(FMAP_RW_LEGACY);
+		write_firmware(cfg, image_to);
 	}
 
 	if (!has_update)
@@ -1086,23 +1093,41 @@ static enum updater_error_codes update_rw_firmware(
 		struct firmware_image *image_from,
 		struct firmware_image *image_to)
 {
+	const char *regions[4] = {
+		FMAP_RW_SECTION_A, FMAP_RW_SECTION_B,
+		FMAP_RW_SHARED, FMAP_RW_LEGACY
+	};
+
 	STATUS("RW UPDATE: Updating RW sections (%s, %s, %s, and %s).\n",
-	       FMAP_RW_SECTION_A, FMAP_RW_SECTION_B, FMAP_RW_SHARED,
-	       FMAP_RW_LEGACY);
+	       regions[0], regions[1], regions[2], regions[3]);
 
 	INFO("Checking compatibility...\n");
 	if (check_compatible_root_key(image_from, image_to))
 		return UPDATE_ERR_ROOT_KEY;
 	if (check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
+
 	/*
-	 * TODO(hungte) Speed up by flashing multiple sections in one
+	 * TODO(quasisec): Allow more than one section.
+	 * Speed up by flashing multiple sections in one
 	 * command, or provide diff file.
 	 */
-	if (write_firmware(cfg, image_to, FMAP_RW_SECTION_A) ||
-	    write_firmware(cfg, image_to, FMAP_RW_SECTION_B) ||
-	    write_firmware(cfg, image_to, FMAP_RW_SHARED) ||
-	    write_optional_firmware(cfg, image_to, FMAP_RW_LEGACY, 0, 1))
+	//image_to->regions.num = 4;
+	int ret = 0;
+
+	image_to->regions.section = regions[0];
+	ret |= write_firmware(cfg, image_to);
+
+	image_to->regions.section = regions[1];
+	ret |= write_firmware(cfg, image_to);
+
+	image_to->regions.section = regions[2];
+	ret |= write_firmware(cfg, image_to);
+
+	image_to->regions.section = regions[3];
+	ret |= write_optional_firmware(cfg, image_to, 0, 1);
+
+	if (ret)
 		return UPDATE_ERR_WRITE_FIRMWARE;
 
 	return UPDATE_ERR_DONE;
@@ -1119,7 +1144,9 @@ static enum updater_error_codes update_legacy_firmware(
 {
 	STATUS("LEGACY UPDATE: Updating firmware %s.\n", FMAP_RW_LEGACY);
 
-	if (write_firmware(cfg, image_to, FMAP_RW_LEGACY))
+	image_to->regions.num = 1;
+	image_to->regions.section = strdup(FMAP_RW_LEGACY);
+	if (write_firmware(cfg, image_to))
 		return UPDATE_ERR_WRITE_FIRMWARE;
 
 	return UPDATE_ERR_DONE;
@@ -1172,9 +1199,9 @@ static enum updater_error_codes update_whole_firmware(
 		return UPDATE_ERR_TPM_ROLLBACK;
 
 	/* FMAP may be different so we should just update all. */
-	if (write_firmware(cfg, image_to, NULL) ||
+	if (write_firmware(cfg, image_to) ||
 	    update_ec_firmware(cfg) ||
-	    write_optional_firmware(cfg, &cfg->pd_image, NULL, 1, 0))
+	    write_optional_firmware(cfg, &cfg->pd_image, 1, 0))
 		return UPDATE_ERR_WRITE_FIRMWARE;
 
 	return UPDATE_ERR_DONE;
