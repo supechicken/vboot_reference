@@ -169,6 +169,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11dbf835_aed5e76e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-27T02:15:28Z",
+      "side": 1,
+      "message": "\u003e  - The FMAP can come from two places, image and rom. The flashrom_drv code first attempts to obtain it from the image and falls back to rom. If both cannot be found it will error.\n\nDo you mean image \u003d -w \u003cfile\u003e and ROM \u003d the \"system current flash contents\"?\n\nThere may be many issues - for example if the target region is on different location, size changed, ... etc. The updater has implemented many rules and logic for how to handle them properly (different sections may have different rules, or in different flow).\n\nSo maybe we should do it like\n - when reading: fmap only from rom\n - when writing: fmap only from image\n \nor, let the updater pass raw layout offsets directly.\n \nWDYT?",
+      "parentUuid": "0529b5aa_bb1b5785",
+      "revId": "cee4379a950539d0ae17b68c69f0025bb7498bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0554a09_e0a7a3ac",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 1
