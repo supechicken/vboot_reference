@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21df4113_ade9e1ab",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-27T07:00:16Z",
+      "side": 1,
+      "message": "I think I thought ahead quite a number of steps here, and that is not clear from this patch. It perhaps maybe more clear if I write you up a short one pager design doc rather than wrangling the detail on patch review. That way we can reach consensus faster and move forwards with this.\n\nThe overlap here is that I want to also canonical other flashrom paths across vboot_ref and bifurcate EC/PD/AP paths better as we want to get rid of cros_ec driver within flashrom itself in favor of libec linking directly here. So, tl;dr I think I am looking at things in a much bigger picture than the initial issue of \u0027more than one region\u0027 write support that this was spawned from.",
+      "parentUuid": "ad97d25d_939a69b3",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 39
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b651f8aa_eaa57dd5",
         "filename": "futility/updater.c",
         "patchSetId": 1
