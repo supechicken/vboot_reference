@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5184f3f_c83208ec",
+        "filename": "futility/flashrom_drv.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-27T02:29:31Z",
+      "side": 1,
+      "message": "just to make sure we\u0027re on the same page: the CSE issue needs \u0027exclude\u0027, or \u0027skip verify\u0027, not just include, right?",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094f8241_fe84a4b8",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-27T02:29:31Z",
+      "side": 1,
+      "message": "I\u0027d rather not do such refactoring so fast - let\u0027s only change flashrom_write_image, and let write_system_firmware handle the conversion from const char names to flashrom structures at the moment.",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 39
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b651f8aa_eaa57dd5",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-01-27T02:29:31Z",
+      "side": 1,
+      "message": "I think the we should not put the regions into image_to, because the regions usually will be changed for each read/write.\n\nIn current implementation, we have to either carefully re-create the regions data every time when writing, or remove it after writing - otherwise the next read/write may incorrectly reused regions from previous I/O.\n\nAlso the strdup() must be free()\u0027ed, which makes it being more complicated.\n\nIn future we may be doing something like\n\n struct regions * create_regions_list() {}\n append_regions_list() {}\n free_region_list() {}\n  \nAnd a helper for single region:\n\n struct regions * single_region_list(const char *name) {}",
+      "range": {
+        "startLine": 1061,
+        "startChar": 2,
+        "endLine": 1062,
+        "endChar": 45
+      },
+      "revId": "04a53b0edc0088b945be2cc09d3cfed23519f615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
