@@ -107,7 +107,8 @@ remove_legacy_boot_rootfs_verification() {
   mount_image_partition "$image" 12 "$mount_point" || return $FLAGS_FALSE
   config_file="$mount_point/efi/boot/grub.cfg"
   [ ! -f "$config_file" ] ||
-    sudo sed -i 's/^ *set default=2 *$/set default=0/g' "$config_file"
+    sudo sed -i 's/^ *defaultA=2 *$/defaultA=0/g;
+                 s/^ *defaultB=3 *$/defaultB=1/g' "$config_file"
   config_file="$mount_point/syslinux/default.cfg"
   [ ! -f "$config_file" ] ||
     sudo sed -i 's/-vusb/-usb/g; s/-vhd/-hd/g' "$config_file"
