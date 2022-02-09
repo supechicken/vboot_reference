@@ -16,6 +16,29 @@
       "message": "Please review these changes. There is no explicit owner of this file.",
       "revId": "5535d7d017bde78080c7235a104b6f5050fa1cab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c818933_da4d7ffc",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-02-09T01:59:35Z",
+      "side": 1,
+      "message": "Should we support both? Will devices with old EFI/grub partition get updated to the new config after AU?",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 69
+      },
+      "revId": "5535d7d017bde78080c7235a104b6f5050fa1cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
