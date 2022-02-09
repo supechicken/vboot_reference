@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "296a3830_c22ecd8f",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-02-09T01:08:52Z",
+      "side": 1,
+      "message": "Please leave them out until they\u0027re needed. If anything, the API for dealing with flashrom shouldn\u0027t have those extra fields; the client code needing them should embed a struct firmware_image and add extra fields themselves.\n\nWhen you do try to merge with the futility update codepaths, you\u0027re going to run into the nasty impedance mismatch when dealing with region handling - whether region refers to the whole buffer or whether it refers to a subsection of a whole-image-sized buffer. Not to mention, the update codepath would really benefit from an option to read/write multiple regions in a single call.",
+      "parentUuid": "9b1e6e76_e68fd657",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "0ba2e48328b6760cb58a9ccff8b0ce58310de91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff52e114_81b35e7f",
         "filename": "host/lib/include/flashrom.h",
         "patchSetId": 5
