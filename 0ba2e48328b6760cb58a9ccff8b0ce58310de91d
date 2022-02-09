@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d939fc5f_6dad4848",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-02-09T01:01:48Z",
+      "side": 1,
+      "message": "It was.",
+      "parentUuid": "96b20986_25f7a842",
+      "revId": "0ba2e48328b6760cb58a9ccff8b0ce58310de91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e26b429_1f705bfd",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-08T04:42:20Z",
       "side": 1,
       "message": "Please document the fields.",
+      "revId": "0ba2e48328b6760cb58a9ccff8b0ce58310de91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c1b656b_e72bb776",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-02-09T01:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e26b429_1f705bfd",
       "revId": "0ba2e48328b6760cb58a9ccff8b0ce58310de91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1e6e76_e68fd657",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-02-09T01:01:48Z",
+      "side": 1,
+      "message": "Actually needed. But resolved with a TODO to make it clear why.",
+      "parentUuid": "f820f337_752ab78c",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "0ba2e48328b6760cb58a9ccff8b0ce58310de91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff52e114_81b35e7f",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-02-08T04:42:20Z",
       "side": 1,
       "message": "Update the parameter documentation.",
+      "revId": "0ba2e48328b6760cb58a9ccff8b0ce58310de91d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5addbe2_957d7a03",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-02-09T01:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff52e114_81b35e7f",
       "revId": "0ba2e48328b6760cb58a9ccff8b0ce58310de91d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
