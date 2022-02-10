@@ -440,7 +440,6 @@ ifneq ($(filter-out 0,${USE_FLASHROM}),)
 $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
 COMMONLIB_SRCS = \
-	host/lib/flashrom.c \
 	host/lib/flashrom_drv.c \
 	host/lib/subprocess.c
 CFLAGS += -DUSE_FLASHROM
