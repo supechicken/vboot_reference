@@ -444,6 +444,7 @@ endif
 COMMONLIB_SRCS = \
 	host/lib/fmap.c \
 	host/lib/flashrom.c \
+	host/lib/flashrom_drv.c \
 	host/lib/subprocess.c
 
 # Intermediate library for the vboot_reference utilities to link against.
@@ -672,7 +673,8 @@ USE_FLASHROM ?= 1
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
 $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
-FUTIL_SRCS += futility/flashrom_drv.c \
+FUTIL_SRCS += host/lib/flashrom_drv.c \
+	futility/flashrom_wp_drv.c \
 	futility/updater_archive.c \
 	futility/updater_quirks.c \
 	futility/updater_utils.c \
