@@ -52,7 +52,8 @@ int flashrom_read_image(struct firmware_image *image, const char *region,
 	int r = 0;
 	size_t len = 0;
 
-	g_verbose_screen = verbosity;
+	if (verbosity != -1)
+		g_verbose_screen = verbosity;
 
 	char *programmer, *params;
 	char *tmp = flashrom_extract_params(image->programmer, &programmer, &params);
@@ -117,7 +118,8 @@ int flashrom_write_image(const struct firmware_image *image,
 	int r = 0;
 	size_t len = 0;
 
-	g_verbose_screen = verbosity;
+	if (verbosity != -1)
+		g_verbose_screen = verbosity;
 
 	char *programmer, *params;
 	char *tmp = flashrom_extract_params(image->programmer, &programmer, &params);
