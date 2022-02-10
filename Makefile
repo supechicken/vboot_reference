@@ -435,7 +435,6 @@ ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
 
 COMMONLIB_SRCS = \
 	host/lib/fmap.c \
-	host/lib/flashrom.c \
 	host/lib/flashrom_drv.c \
 	host/lib/subprocess.c
 

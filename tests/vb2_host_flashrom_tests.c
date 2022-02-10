@@ -149,7 +149,7 @@ static void test_read_whole_chip(void)
 		.programmer = "someprog",
 	};
 
-	TEST_SUCC(flashrom_read(&image, NULL),
+	TEST_SUCC(flashrom_read_image(&image, NULL, -1),
 		  "Flashrom read succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -172,7 +172,7 @@ static void test_read_region(void)
 		.programmer = "someprog",
 	};
 
-	TEST_SUCC(flashrom_read(&image, "SOME_REGION"),
+	TEST_SUCC(flashrom_read_image(&image, "SOME_REGION", -1),
 		  "Flashrom read succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -197,7 +197,7 @@ static void test_read_failure(void)
 	};
 
 	flashrom_mock_success = false;
-	TEST_NEQ(flashrom_read(&image, "SOME_REGION"),
+	TEST_NEQ(flashrom_read_image(&image, "SOME_REGION", -1),
 		 VB2_SUCCESS, "Flashrom read fails");
 	flashrom_mock_success = true;
 }
