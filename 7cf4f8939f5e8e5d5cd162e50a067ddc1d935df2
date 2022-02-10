@@ -16,6 +16,24 @@
       "message": "I don\u0027t really like how vboot has to manually make the connection that NO_BOOT is only related to EC software sync everywhere... the name sounds so generic. Maybe we should rename it to VB2_CONTEXT_EC_NO_BOOT or something like that for clarity?",
       "revId": "7cf4f8939f5e8e5d5cd162e50a067ddc1d935df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4bf66a_82cabb57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2022-02-10T20:09:00Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "e603d3fb_f8305649",
+      "revId": "7cf4f8939f5e8e5d5cd162e50a067ddc1d935df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
