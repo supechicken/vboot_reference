@@ -136,32 +136,3 @@ vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
 	free(tmpfile);
 	return rv;
 }
-
-vb2_error_t flashrom_write(struct firmware_image *image, const char *region)
-{
-	char *tmpfile;
-	char region_param[PATH_MAX];
-	vb2_error_t rv;
-
-	VB2_TRY(write_temp_file(image->data, image->size, &tmpfile));
-
-	if (region)
-		snprintf(region_param, sizeof(region_param), "%s:%s", region,
-			 tmpfile);
-
-	const char *const argv[] = {
-		FLASHROM_EXEC_NAME,
-		"-p",
-		image->programmer,
-		"--noverify-all",
-		"-w",
-		region ? "-i" : tmpfile,
-		region ? region_param : NULL,
-		NULL,
-	};
-
-	rv = run_flashrom(argv);
-	unlink(tmpfile);
-	free(tmpfile);
-	return rv;
-}

@@ -866,7 +866,7 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	}
 
 	memcpy(&image.data[next_index * vbnv_size], ctx->nvdata, vbnv_size);
-	if (flashrom_write(&image, VBNV_FMAP_REGION)) {
+	if (flashrom_write_image(&image, VBNV_FMAP_REGION, NULL, 0, -1)) {
 		rv = -1;
 		goto exit;
 	}
