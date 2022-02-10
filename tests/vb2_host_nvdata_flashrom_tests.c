@@ -97,8 +97,10 @@ vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
 	return VB2_SUCCESS;
 }
 
-/* Mocked flashrom_write for tests. */
-vb2_error_t flashrom_write(struct firmware_image *image, const char *region)
+/* Mocked flashrom_write_image for tests. */
+vb2_error_t flashrom_write_image(struct firmware_image *image, const char *region,
+			const struct firmware_image *diff_image,
+			int do_verify, int verbosity);
 {
 	if (mock_flashrom_fail)
 		return VB2_ERROR_FLASHROM;
