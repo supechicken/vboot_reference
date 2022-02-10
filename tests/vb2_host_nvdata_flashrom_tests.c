@@ -80,8 +80,9 @@ static void reset_test_data(struct vb2_context *ctx, int nvdata_size)
 	mock_flashrom_fail = false;
 }
 
-/* Mocked flashrom_read for tests. */
-vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
+/* Mocked flashrom_read_image for tests. */
+vb2_error_t flashrom_read_image(struct firmware_image *image, const char *region
+			int verbosity);
 {
 	if (mock_flashrom_fail) {
 		image->data = NULL;
