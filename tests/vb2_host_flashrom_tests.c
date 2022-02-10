@@ -213,7 +213,7 @@ static void test_write_whole_chip(void)
 
 	memcpy(buf, MOCK_ROM_CONTENTS, sizeof(buf));
 
-	TEST_SUCC(flashrom_write(&image, NULL),
+	TEST_SUCC(flashrom_write_image(&image, NULL, NULL, 0, -1),
 		  "Flashrom write succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -240,7 +240,7 @@ static void test_write_region(void)
 
 	memcpy(buf, MOCK_ROM_CONTENTS, sizeof(buf));
 
-	TEST_SUCC(flashrom_write(&image, "SOME_REGION"),
+	TEST_SUCC(flashrom_write_image(&image, "SOME_REGION", NULL, 0, -1),
 		  "Flashrom write succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -267,7 +267,7 @@ static void test_write_failure(void)
 	};
 
 	flashrom_mock_success = false;
-	TEST_NEQ(flashrom_write(&image, "SOME_REGION"),
+	TEST_NEQ(flashrom_write_image(&image, "SOME_REGION", NULL, 0, -1),
 		 VB2_SUCCESS, "Flashrom write fails");
 	flashrom_mock_success = true;
 }
