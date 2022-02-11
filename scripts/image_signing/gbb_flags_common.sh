@@ -51,9 +51,44 @@ FLAGS_HELP="Manages Chrome OS Firmware GBB Flags value.
   ${GBBFLAGS_DESCRIPTION}"
 
 flashrom_read() {
-  flashrom -p host -i GBB -r "$@"
+  local file="$1"
+  local programmer="$2"
+  flashrom -p "${programmer}" -i GBB -i FMAP -r "${file}"
 }
 
 flashrom_write() {
-  flashrom -p host -i GBB --noverify-all -w "$@"
+  local file="$1"
+  local programmer="$2"
+  flashrom -p "${programmer}"  -i GBB --noverify-all -w "${file}"
+}
+
+get_programmer_for_servo() {
+  local servo_type
+  local serial
+  local programmer
+  servo_type=$(dut-control -o servo_type 2>/dev/null) || \
+    die "Failed to get servo information. Is servod running?"
+  case "${servo_type}" in
+    *with_servo_micro*)
+      serial=$(dut-control -o servo_micro_serialname 2>/dev/null)
+      ;;
+    *with_ccd*)
+      serial=$(dut-control -o ccd_serialname  2>/dev/null)
+      ;;
+    *)
+      serial=$(dut-control -o serialname 2>/dev/null)
+      ;;
+  esac
+  case "${servo_type}" in
+    *servo_micro*)
+      programmer="raiden_debug_spi:serial=${serial}"
+      ;;
+    *with_ccd*)
+      programmer="raiden_debug_spi:target=AP,serial=${serial}"
+      ;;
+    *)
+      die "Unsupported servo type ${servo_type}"
+      ;;
+  esac
+  echo "${programmer}"
 }
