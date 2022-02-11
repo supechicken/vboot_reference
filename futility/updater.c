@@ -393,6 +393,7 @@ static int write_firmware(struct updater_config *cfg,
 			  const char *section_name)
 {
 	struct firmware_image *diff_image = NULL;
+	int tries, result = -1;
 
 	if (cfg->emulation) {
 		INFO("(emulation) Writing %s from %s to %s (emu=%s).\n",
@@ -408,9 +409,13 @@ static int write_firmware(struct updater_config *cfg,
 		diff_image = &cfg->image_current;
 	}
 
-	return write_system_firmware(image, diff_image, section_name,
-				     &cfg->tempfiles, cfg->do_verify,
-				     cfg->verbosity + 1);
+	tries = 1 + get_config_quirk(QUIRK_EXTRA_RETRIES, cfg);
+	for (; tries > 0 && result != 0; tries--) {
+		result = write_system_firmware(image, diff_image, section_name,
+					       &cfg->tempfiles, cfg->do_verify,
+					       cfg->verbosity + 1);
+	}
+	return result;
 }
 
 /*
