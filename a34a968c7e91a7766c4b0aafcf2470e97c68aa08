@@ -16,6 +16,24 @@
       "message": "As the contention may happen on read operation, should we retry on read error as well?\n\nThanks.",
       "revId": "a34a968c7e91a7766c4b0aafcf2470e97c68aa08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce3914a_9616720c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-02-11T07:36:06Z",
+      "side": 1,
+      "message": "Did you see timeout errors on read? I thought we only see issues on writing right?\n\nWe already have one retry (in the past, need to check if that still exists after the libflashrom thing) for read so I\u0027d like to prevent making unnecessary retries everywhere...",
+      "parentUuid": "646bb32d_96f24595",
+      "revId": "a34a968c7e91a7766c4b0aafcf2470e97c68aa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
