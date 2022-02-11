@@ -410,7 +410,7 @@ static int write_firmware(struct updater_config *cfg,
 
 	return write_system_firmware(image, diff_image, section_name,
 				     &cfg->tempfiles, cfg->do_verify,
-				     cfg->verbosity + 1);
+				     cfg->verbosity + 1, cfg->retries);
 }
 
 /*
@@ -1201,6 +1201,7 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	     image_to->rw_version_a, image_to->rw_version_b);
 
 	try_apply_quirk(QUIRK_NO_VERIFY, cfg);
+	try_apply_quirk(QUIRK_RETRIES, cfg);
 	if (try_apply_quirk(QUIRK_MIN_PLATFORM_VERSION, cfg)) {
 		if (!cfg->force_update) {
 			ERROR("Add --force to waive checking the version.\n");
@@ -1211,7 +1212,7 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		int ret;
 		INFO("Loading current system firmware...\n");
 		ret = load_system_firmware(image_from, &cfg->tempfiles,
-					   cfg->verbosity);
+					   cfg->verbosity, cfg->retries);
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
 			cfg->check_platform = 0;
@@ -1394,7 +1395,8 @@ static int updater_apply_white_label(struct updater_config *cfg,
 		if (!cfg->image_current.data) {
 			INFO("Loading system firmware for white label...\n");
 			load_system_firmware(&cfg->image_current,
-					     &cfg->tempfiles, cfg->verbosity);
+					     &cfg->tempfiles, cfg->verbosity,
+					     cfg->retries);
 		}
 		tmp_image = get_firmware_image_temp_file(
 				&cfg->image_current, &cfg->tempfiles);
@@ -1540,6 +1542,7 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 	cfg->gbb_flags = arg->gbb_flags;
 	cfg->override_gbb_flags = arg->override_gbb_flags;
+	cfg->retries = arg->retries;
 
 	/* Setup properties and fields that do not have external dependency. */
 	if (arg->programmer) {

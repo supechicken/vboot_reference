@@ -32,6 +32,7 @@ enum {
 	OPT_QUIRKS,
 	OPT_QUIRKS_LIST,
 	OPT_REPACK,
+	OPT_RETRIES,
 	OPT_SERVO,
 	OPT_SERVO_NORESET,
 	OPT_SERVO_PORT,
@@ -72,6 +73,7 @@ static struct option const long_opts[] = {
 	{"pd_image", 1, NULL, OPT_PD_IMAGE},
 	{"quirks", 1, NULL, OPT_QUIRKS},
 	{"repack", 1, NULL, OPT_REPACK},
+	{"retries", 1, NULL, OPT_RETRIES},
 	{"signature_id", 1, NULL, OPT_SIGNATURE},
 	{"sys_props", 1, NULL, OPT_SYS_PROPS},
 	{"unpack", 1, NULL, OPT_UNPACK},
@@ -133,6 +135,7 @@ static void print_help(int argc, char *argv[])
 		"    --model=MODEL   \tOverride system model for images\n"
 		"    --gbb_flags=FLAG\tOverride new GBB flags\n"
 		"    --ccd           \tDo fast,force,wp=0,p=raiden_debug_spi\n"
+		"    --retries=num   \tRetry on error, for up to num times\n"
 		"    --servo         \tFlash using Servo (v2, v4, micro, ...)\n"
 		"    --servo_noreset \tLike servo but with 'custom_rst=true'\n"
 		"    --servo_port=PRT\tOverride servod port, implies --servo\n"
@@ -211,6 +214,9 @@ static int do_update(int argc, char *argv[])
 			break;
 		case OPT_REPACK:
 			args.repack = optarg;
+			break;
+		case OPT_RETRIES:
+			args.retries = strtol(optarg, NULL, 0);
 			break;
 		case OPT_UNPACK:
 			args.unpack = optarg;

@@ -444,6 +444,17 @@ static int quirk_no_verify(struct updater_config *cfg)
 }
 
 /*
+ * Set the maximum retries
+ */
+static int quirk_retries(struct updater_config *cfg)
+{
+	int retries = get_config_quirk(QUIRK_RETRIES, cfg);
+	WARN("Enable retries for %d times.\n", retries);
+	cfg->retries = retries;
+	return 0;
+}
+
+/*
  * Registers known quirks to a updater_config object.
  */
 void updater_register_quirks(struct updater_config *cfg)
@@ -512,6 +523,11 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "no_verify";
 	quirks->help = "Do not verify when flashing.";
 	quirks->apply = quirk_no_verify;
+
+	quirks = &cfg->quirks[QUIRK_RETRIES];
+	quirks->name = "retries";
+	quirks->help = "Retry with error up to specific times";
+	quirks->apply = quirk_retries;
 }
 
 /*

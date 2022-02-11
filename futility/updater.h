@@ -48,6 +48,7 @@ enum quirk_types {
 	QUIRK_PRESERVE_ME,
 	QUIRK_NO_CHECK_PLATFORM,
 	QUIRK_NO_VERIFY,
+	QUIRK_RETRIES,
 	QUIRK_MAX,
 };
 
@@ -73,6 +74,7 @@ struct updater_config {
 	int use_diff_image;
 	int do_verify;
 	int verbosity;
+	int retries;
 	const char *emulation;
 	int override_gbb_flags;
 	uint32_t gbb_flags;
@@ -89,6 +91,7 @@ struct updater_config_arguments {
 	int is_factory, try_update, force_update, do_manifest, host_only;
 	int fast_update;
 	int verbosity;
+	int retries;
 	int override_gbb_flags;
 	uint32_t gbb_flags;
 };

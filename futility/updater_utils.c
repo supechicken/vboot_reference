@@ -523,13 +523,26 @@ char *host_detect_servo(int *need_prepare_ptr)
  * Returns 0 if success, non-zero if error.
  */
 int load_system_firmware(struct firmware_image *image,
-			 struct tempfile *tempfiles, int verbosity)
+			 struct tempfile *tempfiles, int verbosity,
+			 int max_retries)
 {
 	int r;
+	int retries = 0;
 
-	r = flashrom_read_image(image, NULL, (verbosity + 1));
-	if (!r)
-		r = parse_firmware_image(image);
+	if (max_retries)
+		INFO("Loading system firmware, retry up to %d time.\n",
+		     max_retries);
+	do {
+		r = flashrom_read_image(image, NULL, (verbosity + 1));
+		if (!r) {
+			r = parse_firmware_image(image);
+			break;
+		}
+	} while (++retries < max_retries);
+
+	if (max_retries)
+		INFO("Retried %d time with system firmware loading.\n",
+		     retries + 1);
 	return r;
 }
 
@@ -542,10 +555,25 @@ int write_system_firmware(const struct firmware_image *image,
 			  const struct firmware_image *diff_image,
 			  const char *section_name,
 			  struct tempfile *tempfiles,
-			  int do_verify, int verbosity)
+			  int do_verify, int verbosity, int max_retries)
 {
-	return flashrom_write_image(image, section_name, diff_image,
-				    do_verify, (verbosity + 1));
+	int r;
+	int retries = 0;
+
+	if (max_retries)
+		INFO("Writing system firmware, retry up to %d time.\n",
+		     max_retries);
+	do {
+		r = flashrom_write_image(image, section_name, diff_image,
+					 do_verify, (verbosity + 1));
+		if (!r)
+			break;
+	} while (++retries < max_retries);
+
+	if (max_retries)
+		INFO("Retried %d time with writing system firmware.\n",
+		     retries + 1);
+	return r;
 }
 
 /* Helper function to return host software write protection status. */
