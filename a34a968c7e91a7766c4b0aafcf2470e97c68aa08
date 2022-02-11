@@ -69,6 +69,24 @@
       "parentUuid": "cce3914a_9616720c",
       "revId": "a34a968c7e91a7766c4b0aafcf2470e97c68aa08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb949e13_e286c54a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-02-11T08:37:20Z",
+      "side": 1,
+      "message": "ok... we did have one retry but seems like it was removed when moving to libflashrom.\n\nI will add it but seriously, if the system has such huge problems (read and write) then I think we should make it stabilized before adding more workarounds in the updater.",
+      "parentUuid": "0789b534_dd8199b8",
+      "revId": "a34a968c7e91a7766c4b0aafcf2470e97c68aa08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
