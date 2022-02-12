@@ -331,6 +331,11 @@ static int quirk_eve_smm_store(struct updater_config *cfg)
  * only RO and expect EC software sync to update RW later, or perform EC RO
  * software sync.
  *
+ * Note: EC RO software sync was not fully tested and may cause problems
+ *       (b/218612817, b/187789991).
+ *       Partial update (prevent extra sysjump) needs support from flashrom and
+ *       is currently disabled.
+ *
  * Returns:
  *  EC_RECOVERY_FULL to indicate a full recovery is needed.
  *  EC_RECOVERY_RO to indicate partial update (WP_RO) is needed.
@@ -489,7 +494,6 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "ec_partial_recovery";
 	quirks->help = "chromium/1024401; recover EC by partial RO update.";
 	quirks->apply = quirk_ec_partial_recovery;
-	quirks->value = -1;  /* Decide at runtime. */
 
 	quirks = &cfg->quirks[QUIRK_OVERRIDE_SIGNATURE_ID];
 	quirks->name = "override_signature_id";
