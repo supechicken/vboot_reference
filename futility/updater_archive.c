@@ -822,25 +822,38 @@ static int manifest_scan_entries(const char *name, void *arg)
 /**
  * get_manifest_key() - Wrapper to get the firmware manifest key from crosid
  *
- * @manifest_key_out - Output parameter of the firmware manifest key.
- *
  * Returns:
- * - <0 if libcrosid is unavailable or there was an error reading
+ * - NULL if libcrosid is unavailable or there was an error reading
  *   device data
- * - >=0 (the matched device index) success
+ * - Otherwise the manifest key for the current device
  */
-static int get_manifest_key(char **manifest_key_out)
+static char *get_manifest_key(void)
 {
+	char *key = NULL;
+
 #ifdef HAVE_CROSID
-	return crosid_get_firmware_manifest_key(manifest_key_out);
+	int index = crosid_get_firmware_manifest_key(&key);
+	if (index < 0) {
+		/*
+		 * TODO can we just call crosid here again to the debug logs
+		 * are included in the bug report?
+		 */
+		ERROR("Failed to get device identity.  "
+		      "Run \"crosid -v\" for explanation.\n");
+	} else {
+		/* On success, the key must be released by the caller. */
+		INFO("Identified the device using libcrosid, "
+		     "matched chromeos-config index: %d, "
+		     "manifest key (model): %s\n", index, key);
+	}
 #else
 	ERROR("This version of futility was compiled without libcrosid "
 	      "(perhaps compiled outside of the Chrome OS build system?) and "
 	      "the update command is not fully supported.  Either compile "
 	      "from the Chrome OS build, or pass --model to manually specify "
 	      "the machine model.\n");
-	return -1;
 #endif
+	return key;
 }
 
 /*
@@ -854,7 +867,6 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 	char *manifest_key = NULL;
 	const struct model_config *model = NULL;
 	int i;
-	int matched_index;
 
 	/*
 	 * For manifest with single model defined, we should just return because
@@ -865,15 +877,9 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 		return &manifest->models[0];
 
 	if (!model_name) {
-		matched_index = get_manifest_key(&manifest_key);
-		if (matched_index < 0) {
-			ERROR("Failed to get device identity.  "
-			      "Run \"crosid -v\" for explanation.\n");
+		manifest_key = get_manifest_key();
+		if (!manifest_key)
 			return NULL;
-		}
-
-		VB2_DEBUG("Matched chromeos-config index: %d\n", matched_index);
-		VB2_DEBUG("Manifest key (model): '%s'\n", manifest_key);
 		model_name = manifest_key;
 	}
 
@@ -900,7 +906,6 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 			"Hint: Read the FIRMWARE_MANIFEST_KEY from the output "
 			"of the crosid command.\n");
 	}
-
 
 	free(manifest_key);
 	return model;
