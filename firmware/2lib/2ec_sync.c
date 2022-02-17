@@ -131,8 +131,10 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 			     enum vb2_firmware_selection select)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	uint32_t start_ts;
 
 	VB2_DEBUG("Updating %s...\n", image_name_to_string(select));
+	start_ts = vb2ex_mtime();
 	VB2_TRY(vb2ex_ec_update_image(select), ctx, VB2_RECOVERY_EC_UPDATE);
 
 	/* Verify the EC was updated properly */
@@ -144,7 +146,8 @@ static vb2_error_t update_ec(struct vb2_context *ctx,
 		return VB2_REQUEST_REBOOT_EC_TO_RO;
 	}
 
-	VB2_DEBUG("Updated %s successfully\n", image_name_to_string(select));
+	VB2_DEBUG("Updated %s successfully in %u ms\n",
+		  image_name_to_string(select), vb2ex_mtime() - start_ts);
 
 	return VB2_SUCCESS;
 }
