@@ -203,13 +203,11 @@ int RemoveDir(const char *dir) {
 #define FLASHROM_RW_GPT_SEC "RW_GPT_SECONDARY:rw_gpt_2"
 #define FLASHROM_RW_GPT "RW_GPT:rw_gpt"
 
-// Read RW_GPT from NOR flash to "rw_gpt" in a dir.
-// TODO(b:184812319): Replace this function with flashrom_read.
-int ReadNorFlash(const char *dir) {
-  int ret = 0;
+typedef int (*flashrom_op)(const char *region) flashrom_op_t;
 
-  // Read RW_GPT section from NOR flash to "rw_gpt".
-  ret++;
+static void UseTempPath(const char *dir, flashrom_op_t flashrom_op, const char *region)
+{
+  int ret = 0;
 
   char *cwd = getcwd(NULL, 0);
   if (!cwd) {
@@ -220,14 +218,9 @@ int ReadNorFlash(const char *dir) {
     Error("Cannot change directory.\n");
     goto out_free;
   }
-  const char *const argv[] = {FLASHROM_PATH, "-i", FLASHROM_RW_GPT, "-r"};
-  // Redirect stdout to /dev/null so that flashrom does not muck up cgpt's
-  // output.
-  if (subprocess_run(argv, &subprocess_null, &subprocess_null, NULL) != 0) {
-    Error("Cannot exec flashrom to read from RW_GPT section.\n");
-  } else {
-    ret = 0;
-  }
+
+  ret = flashrom_op(region);
+
   if (chdir(cwd) < 0) {
     Error("Cannot change directory back to original.\n");
     goto out_free;
@@ -240,54 +233,43 @@ out_free:
 
 static int FlashromWriteRegion(const char *region)
 {
-  const char *const argv[] = {FLASHROM_PATH, "-i", region, "-w", "--noverify-all"};
+  const char *const argv[] = {FLASHROM_PATH, "-i", region, "-r"};
   // Redirect stdout to /dev/null so that flashrom does not muck up cgpt's
   // output.
   if (subprocess_run(argv, &subprocess_null, &subprocess_null, NULL) != 0) {
-    Warning("Cannot write '%s' back with flashrom.\n", region);
+    Error("Cannot exec flashrom to read from '%s'.\n", region);
     return 1;
   }
   return 0;
 }
 
+// Read RW_GPT from NOR flash to "rw_gpt" in a dir.
+// TODO(b:184812319): Replace this function with flashrom_read.
+int ReadNorFlash(const char *dir) {
+  // Read RW_GPT section from NOR flash to "rw_gpt".
+  return UseTempPath(dir, flashrom_read_region, FLASHROM_RW_GPT);
+}
+
 // Write "rw_gpt" back to NOR flash. We write the file in two parts for safety.
 // TODO(b:184812319): Replace this function with flashrom_write.
 int WriteNorFlash(const char *dir) {
-  int ret = 0;
+  int ret = 1;
 
-  ret++;
   if (split_gpt(dir, "rw_gpt") != 0) {
     Error("Cannot split rw_gpt in two.\n");
     return ret;
   }
+
   ret++;
   int nr_fails = 0;
 
-  char *cwd = getcwd(NULL, 0);
-  if (!cwd) {
-    Error("Cannot get current directory.\n");
-    return ret;
-  }
-  if (chdir(dir) < 0) {
-    Error("Cannot change directory.\n");
-    goto out_free;
-  }
-  if (FlashromWriteRegion(FLASHROM_RW_GPT_PRI))
-    nr_fails++;
-  if (FlashromWriteRegion(FLASHROM_RW_GPT_SEC))
-    nr_fails++;
-
-  if (chdir(cwd) < 0) {
-    Error("Cannot change directory back to original.\n");
-    goto out_free;
-  }
+  nr_fails += UseTempPath(dir, FlashromWriteRegion, FLASHROM_RW_GPT_PRI);
+  nr_fails += UseTempPath(dir, FlashromWriteRegion, FLASHROM_RW_GPT_SEC);
   switch (nr_fails) {
     case 0: ret = 0; break;
     case 1: Warning("It might still be okay.\n"); break;
     case 2: Error("Cannot write both parts back with flashrom.\n"); break;
   }
 
-out_free:
-  free(cwd);
   return ret;
 }
