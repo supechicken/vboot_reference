@@ -243,13 +243,6 @@ static int flashrom_read_region(const char *region)
   return 0;
 }
 
-// Read RW_GPT from NOR flash to "rw_gpt" in a dir.
-// TODO(b:184812319): Replace this function with flashrom_read.
-int ReadNorFlash(const char *dir) {
-  // Read RW_GPT section from NOR flash to "rw_gpt".
-  return use_tmp_path(dir, flashrom_read_region, FLASHROM_RW_GPT);
-}
-
 static int flashrom_write_region(const char *region)
 {
   const char *const argv1[] = {FLASHROM_PATH, "-i", region, "-w", "--noverify-all"};
@@ -260,6 +253,13 @@ static int flashrom_write_region(const char *region)
     return 1;
   }
   return 0;
+}
+
+// Read RW_GPT from NOR flash to "rw_gpt" in a dir.
+// TODO(b:184812319): Replace this function with flashrom_read.
+int ReadNorFlash(const char *dir) {
+  // Read RW_GPT section from NOR flash to "rw_gpt".
+  return use_tmp_path(dir, flashrom_read_region, FLASHROM_RW_GPT);
 }
 
 // Write "rw_gpt" back to NOR flash. We write the file in two parts for safety.
