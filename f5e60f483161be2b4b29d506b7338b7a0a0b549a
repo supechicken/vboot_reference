@@ -16,6 +16,24 @@
       "message": "I still don\u0027t think these should be part of the API for interacting with flashrom for reading or writing. These fields are specific to futility\u0027s updater, and should stay there. Could this struct be renamed to, say, `flashrom_firmware_image`, given the flashrom-specific positioning and the updater struct contain one?\n\n```\nstruct firmware_image {\n\tstruct flashrom_firmware_image flashrom_image;\n\tchar *ro_version, *rw_version_a, *rw_version_b;\n\tFmapHeader *fmap_header;\n};\n```",
       "revId": "f5e60f483161be2b4b29d506b7338b7a0a0b549a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf7e02b_ef571a6e",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-02-17T23:52:52Z",
+      "side": 1,
+      "message": "We will get there, it is my intent. However starting with the rename makes all the refactors annoyingly difficult to turn into incremental traceable changes.",
+      "parentUuid": "86e38878_d008ce93",
+      "revId": "f5e60f483161be2b4b29d506b7338b7a0a0b549a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
