@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c292a915_9a331c11",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-02-17T09:14:40Z",
+      "side": 1,
+      "message": "libflashrom implementation may be changed in the future, so I\u0027d prefer just saying something like \"Flush stdout for flashrom_write_image\".",
+      "range": {
+        "startLine": 572,
+        "startChar": 5,
+        "endLine": 573,
+        "endChar": 53
+      },
+      "revId": "6cfd76e4d4689479f6afd05025ff836ac0b13cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
