@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bcafd53_2fc20d0c",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-02-17T09:15:13Z",
+      "side": 1,
+      "message": "This appears (given the subprocess implementation being removed) to want to provide a buffer containing just the contents for `VBNV_FMAP_REGION`. How does this coexist with futility\u0027s expectations of providing a flash-sized buffer and just writing the requested region?",
+      "revId": "790b3f18755bb382a79d98cb461f693c5eb902cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
