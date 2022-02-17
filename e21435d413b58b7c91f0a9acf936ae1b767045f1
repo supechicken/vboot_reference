@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "872e9faf_3853a9f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-02-17T13:18:18Z",
+      "side": 1,
+      "message": "FYI I plan to fix libflashrom output (https://chromium-review.googlesource.com/c/chromiumos/third_party/flashrom/+/3469575), but we still need the newline, because flashrom would print only to stderr (not stdout) on failure, so if we run futility and output stdout/stderr to different files, the output will be corrupted so \\n is still needed.",
+      "revId": "e21435d413b58b7c91f0a9acf936ae1b767045f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
