@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a32176_8d33cf7a",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-02-17T09:01:05Z",
+      "side": 1,
+      "message": "I assume this if block is kept, because we may want to change the default back to -1 in the future?",
+      "revId": "7a959cc0eeea3b4ae143df9f44b1c361b2c18562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
