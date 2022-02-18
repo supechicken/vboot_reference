@@ -52,6 +52,24 @@
       "parentUuid": "c7d2e652_c7131c6c",
       "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51756dbe_7eb7277b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-02-18T23:53:10Z",
+      "side": 1,
+      "message": "I agree with Hung-Te\u0027s assessment, more than 5 seconds probably warrants the screen. I\u0027m more surprised that it takes that long -- on all the platforms I have worked on it\u0027s usually much faster. Do the MTK platforms use a different kind of EC that\u0027s not used anywhere else? Or are you maybe severely underclocking your SPI bus to the EC (on the platforms I know it\u0027s usually about 1MHz)? If software sync takes 5 seconds I would say you have a bug, unless you\u0027re using different EC hardware that does _really_ slow erasing/writing for some reason.\n\nFor the timestamps, yes, please add explicit START and END timestamps if you need that level of granularity. Timestamps are cheap.",
+      "parentUuid": "79d13d12_3e1317a8",
+      "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
