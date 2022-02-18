@@ -34,6 +34,24 @@
       "parentUuid": "2ed9ae0f_f1673cde",
       "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d13d12_3e1317a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-02-18T04:27:42Z",
+      "side": 1,
+      "message": "my two cents: if user can\u0027t see all texts and understand meaning of the screen before it\u0027s cleared, then it\u0027s fast enough. for example, our DEV screen (when GBB flags are set) only flashed for 2 seconds and most people won\u0027t have time to see it, even not noticed it.\n\n- \u003c\u003d 2s: fast.\n- 3~4: between fast and slow? maybe 3 as fast and 4 as slow.\n- \u003e\u003d 5: slow",
+      "parentUuid": "c7d2e652_c7131c6c",
+      "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
