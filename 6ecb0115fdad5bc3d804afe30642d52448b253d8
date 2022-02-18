@@ -16,6 +16,24 @@
       "message": "Is there a bug or any further information on this? Is Cherry at risk of requiring a slow update screen (why?).\n\nGenerally, I think these kinds of things should be done with CBMEM timestamps rather than printing numbers to console everywhere. In fact, we pretty much already capture this with TS_VB_EC_VBOOT_DONE. If you think that\u0027s not granular enough, feel free to add more timestamps as needed (e.g. in vb2ex_ec_update_image()).",
       "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d2e652_c7131c6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-02-18T04:15:54Z",
+      "side": 1,
+      "message": "EC_SLOW_UPDATE is enabled on all MTK platforms since mt8173, because the EC sync is considered \"slow\" (say, more than 5 seconds for vb2ex_ec_update_image()). So I think the real question is, how long is it considered \"slow\"?\n\nEvery time when I \"felt\" the EC sync is slow and wanted to enable EC_SLOW_UPDATE for a platform, I was asked by reviewers to provide numbers. Therefore I hope this patch would simplify the process of measuring the exact time.\n\nFor that, TS_VB_EC_VBOOT_DONE isn\u0027t enough. We\u0027ll have to add both TS_VB_EC_SYNC_START and TS_VB_EC_SYNC_END. One may argue that only TS_VB_EC_SYNC_START is necessary because the time of vb2ex_ec_protect() and vb2ex_ec_vboot_done() is negligible. However, this argument makes extra assumptions about how these 3 vb2ex_*() functions will be called from vboot.\n\nPlease let me know if adding *both* TS_VB_EC_SYNC_START and TS_VB_EC_SYNC_END is okay with you.",
+      "parentUuid": "2ed9ae0f_f1673cde",
+      "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
