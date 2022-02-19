@@ -70,6 +70,24 @@
       "parentUuid": "79d13d12_3e1317a8",
       "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c37e60b_569e23dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-02-19T03:15:23Z",
+      "side": 1,
+      "message": "For MTK 8173/8183 platforms we used to do STM32 with embedded flash, and it\u0027s indeed that slow (we know) - maybe even \u003e 5s? I forgot.\n\nFor 8192/8195 we introduced ITE solutions, still embedded flash but the chipset size is much larger (1M) so we thought that\u0027s reasonable.\n\n@jwerner you are probably talking about Nuvoton? I also remember in the past many x86 systems can sync very fast - within 1 or 2 seconds - but recently I saw more devices taking a long time in software sync. Maybe you can also double check other platforms?",
+      "parentUuid": "51756dbe_7eb7277b",
+      "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
