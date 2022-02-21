@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d6131d4_54cf70d6",
+        "filename": "cgpt/cgpt_find.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-02-21T09:48:08Z",
+      "side": 1,
+      "message": "temp_dir",
+      "range": {
+        "startLine": 247,
+        "startChar": 18,
+        "endLine": 247,
+        "endChar": 35
+      },
+      "revId": "479c22ee333539ed3d7864d2a112c4d18170fa9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c084f3_3e77a903",
+        "filename": "cgpt/cgpt_wrapper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-02-21T09:48:08Z",
+      "side": 1,
+      "message": "goto cleanup;",
+      "revId": "479c22ee333539ed3d7864d2a112c4d18170fa9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
