@@ -1033,6 +1033,7 @@ const char * const updater_error_messages[] = {
 			        "(different from RO).",
 	[UPDATE_ERR_TPM_ROLLBACK] = "RW not usable due to TPM anti-rollback.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
+	[UPDATE_ERR_TEMP_FILES] = "Failed writing files (check disk space).",
 };
 
 /*
@@ -1114,6 +1115,12 @@ static enum updater_error_codes update_rw_firmware(
 		struct firmware_image *image_from,
 		struct firmware_image *image_to)
 {
+	int r = UPDATE_ERR_DONE;
+	const char *tmp_name;
+	struct firmware_image image_write = {0};
+
+	assert(image_from && image_to && image_from->data && image_to->data);
+
 	STATUS("RW UPDATE: Updating RW sections (%s, %s, %s, and %s).\n",
 	       FMAP_RW_SECTION_A, FMAP_RW_SECTION_B, FMAP_RW_SHARED,
 	       FMAP_RW_LEGACY);
@@ -1123,17 +1130,43 @@ static enum updater_error_codes update_rw_firmware(
 		return UPDATE_ERR_ROOT_KEY;
 	if (check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
-	/*
-	 * TODO(hungte) Speed up by flashing multiple sections in one
-	 * command, or provide diff file.
-	 */
-	if (write_firmware(cfg, image_to, FMAP_RW_SECTION_A) ||
-	    write_firmware(cfg, image_to, FMAP_RW_SECTION_B) ||
-	    write_firmware(cfg, image_to, FMAP_RW_SHARED) ||
-	    write_optional_firmware(cfg, image_to, FMAP_RW_LEGACY, 0, 1))
-		return UPDATE_ERR_WRITE_FIRMWARE;
 
-	return UPDATE_ERR_DONE;
+	if (cfg->direct_partial_write) {
+		if (write_firmware(cfg, image_to, FMAP_RW_SECTION_A) ||
+		    write_firmware(cfg, image_to, FMAP_RW_SECTION_B) ||
+		    write_firmware(cfg, image_to, FMAP_RW_SHARED) ||
+		    write_optional_firmware(cfg, image_to, FMAP_RW_LEGACY,
+					    0,1))
+			return UPDATE_ERR_WRITE_FIRMWARE;
+
+		return UPDATE_ERR_DONE;
+	}
+
+	tmp_name = create_temp_file(&cfg->tempfiles);
+	if (!tmp_name)
+		return UPDATE_ERR_TEMP_FILES;
+
+	if (vb2_write_file(tmp_name, image_from->data, image_from->size))
+		return UPDATE_ERR_TEMP_FILES;
+
+	if (emulate_write_firmware(tmp_name, image_to, FMAP_RW_SECTION_A) ||
+	    emulate_write_firmware(tmp_name, image_to, FMAP_RW_SECTION_B) ||
+	    emulate_write_firmware(tmp_name, image_to, FMAP_RW_SHARED))
+		return UPDATE_ERR_INVALID_IMAGE;
+
+	/* Failure in updating legacy can be ignored. */
+	/* TODO(hungte) Decide writing FMAP_RW_LEGACY by legacy_needs_update. */
+	if (firmware_section_exists(image_from, FMAP_RW_LEGACY) &&
+	    firmware_section_exists(image_to, FMAP_RW_LEGACY))
+		emulate_write_firmware(tmp_name, image_to, FMAP_RW_LEGACY);
+
+	image_write.programmer = image_to->programmer;
+	if (load_firmware_image(&image_write, tmp_name, NULL) ||
+	    write_firmware(cfg, &image_write, NULL))
+		r = UPDATE_ERR_WRITE_FIRMWARE;
+
+	free_firmware_image(&image_write);
+	return r;
 }
 
 /*

@@ -72,6 +72,7 @@ struct updater_config {
 	int factory_update;
 	int check_platform;
 	int use_diff_image;
+	int direct_partial_write;
 	int do_verify;
 	int verbosity;
 	const char *emulation;
@@ -128,6 +129,7 @@ enum updater_error_codes {
 	UPDATE_ERR_TARGET,
 	UPDATE_ERR_ROOT_KEY,
 	UPDATE_ERR_TPM_ROLLBACK,
+	UPDATE_ERR_TEMP_FILES,
 	UPDATE_ERR_UNKNOWN,
 };
 
