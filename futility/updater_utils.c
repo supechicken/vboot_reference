@@ -550,7 +550,7 @@ int load_system_firmware(struct firmware_image *image,
  */
 int write_system_firmware(const struct firmware_image *image,
 			  const struct firmware_image *diff_image,
-			  const char *sections[],
+			  const char * const sections[],
 			  struct tempfile *tempfiles,
 			  int do_verify, int retries, int verbosity)
 {
