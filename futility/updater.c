@@ -392,6 +392,20 @@ static int get_io_retries(struct updater_config *cfg)
 }
 
 /*
+ * Returns 1 if the 'from' image has the same programmer from the 'to' image.
+ */
+static int is_the_same_programmer(const struct firmware_image *from,
+				  const struct firmware_image *to)
+{
+	assert(from && to);
+	/* Including if both are NULL. */
+	if (from->programmer == to->programmer)
+		return 1;
+
+	return strcmp(from->programmer, to->programmer) == 0;
+}
+
+/*
  * Writes a section from given firmware image to system firmware.
  * If section_name is NULL, write whole image.
  * Returns 0 if success, non-zero if error.
@@ -411,10 +425,9 @@ static int write_firmware(struct updater_config *cfg,
 				cfg->emulation, image, section_name);
 	}
 
-	if (cfg->use_diff_image && image == &cfg->image &&
-	    cfg->image_current.data) {
+	if (cfg->use_diff_image && cfg->image_current.data &&
+	    is_the_same_programmer(image, &cfg->image_current))
 		diff_image = &cfg->image_current;
-	}
 
 	return write_system_firmware(image, diff_image, section_name,
 				     &cfg->tempfiles, cfg->do_verify,
