@@ -83,6 +83,7 @@ static vb2_error_t VbTryLoadKernelImpl(struct vb2_context *ctx,
 
 	/* Loop over disks */
 	for (i = 0; i < disk_count; i++) {
+		VB2_DEBUG("timer9: %d \n",(int)vb2ex_mtime());
 		VB2_DEBUG("trying disk %d\n", (int)i);
 
 		if (!is_valid_disk(&disk_info[i], disk_flags)) {
@@ -165,9 +166,12 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 
 	/* Init nvstorage space. TODO(kitching): Remove once we add assertions
 	   to vb2_nv_get and vb2_nv_set. */
+	VB2_DEBUG("timer1: %d \n",(int)vb2ex_mtime());
 	vb2_nv_init(ctx);
+	VB2_DEBUG("timer2: %d \n",(int)vb2ex_mtime());
 
 	VB2_TRY(vb2api_kernel_phase1(ctx));
+	VB2_DEBUG("timer3: %d \n",(int)vb2ex_mtime());
 
 	VB2_DEBUG("GBB flags are %#x\n", gbb_flags);
 
@@ -180,7 +184,7 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		VB2_TRY(vb2api_auxfw_sync(ctx));
 		VB2_TRY(handle_battery_cutoff(ctx));
 	}
-
+	VB2_DEBUG("timer4: %d \n",(int)vb2ex_mtime());
 	/*
 	 * If in the broken screen, save the recovery reason as subcode.
 	 * Otherwise, clear any leftover recovery requests or subcodes.
@@ -242,7 +246,9 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 		break;
 	case VB2_BOOT_MODE_NORMAL:
 		/* Normal boot */
+		VB2_DEBUG("timer5: %d \n",(int)vb2ex_mtime());
 		VB2_TRY(vb2_normal_boot(ctx));
+		VB2_DEBUG("timer6: %d \n",(int)vb2ex_mtime());
 		break;
 	default:
 		return VB2_ERROR_ESCAPE_NO_BOOT;
