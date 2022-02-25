@@ -51,9 +51,9 @@ vb2_error_t vb2_normal_boot(struct vb2_context *ctx)
 		VB2_DEBUG("Normal mode: reboot to reset NVRAM requests\n");
 		return VB2_REQUEST_REBOOT;
 	}
-
+	VB2_DEBUG("timer7: %d \n",(int)VbExGetTimer());
 	vb2_error_t rv = VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED);
-
+	VB2_DEBUG("timer8: %d \n",(int)VbExGetTimer());
 	VB2_DEBUG("Checking if TPM kernel version needs advancing\n");
 
 	/*
