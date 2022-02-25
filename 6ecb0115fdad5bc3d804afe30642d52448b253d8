@@ -106,6 +106,24 @@
       "parentUuid": "6c37e60b_569e23dd",
       "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d3229d_a862b7bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-02-25T02:20:26Z",
+      "side": 1,
+      "message": "Yeah okay, that\u0027s a fair point. I guess printing it is the only real way to get these out after all. But every line of serial output takes a significant time and will distort this measurement... can you put the measurement somewhere such that no other lines will be printed in between (maybe by moving it into depthcharge instead)?",
+      "parentUuid": "c98ba7ab_50420dc0",
+      "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
