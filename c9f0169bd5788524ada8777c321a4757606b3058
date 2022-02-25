@@ -22,6 +22,30 @@
       },
       "revId": "c9f0169bd5788524ada8777c321a4757606b3058",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e54106f_a57d6db0",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-02-25T06:11:23Z",
+      "side": 1,
+      "message": "The updater was using DEBUG() in the very beginning. I think it was Julius that changed it to VB2_DEBUG. See CL:1504140 for the background.",
+      "parentUuid": "788c9279_666e569f",
+      "range": {
+        "startLine": 875,
+        "startChar": 2,
+        "endLine": 875,
+        "endChar": 6
+      },
+      "revId": "c9f0169bd5788524ada8777c321a4757606b3058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
