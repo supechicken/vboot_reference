@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "788c9279_666e569f",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-02-25T05:52:37Z",
+      "side": 1,
+      "message": "It took me a while to understand the difference between VB2_DEBUG and INFO (and other fprintf() calls).\n\nMaybe we should create futility\u0027s own DEBUG() macro instead of using VB2_DEBUG. Then futility doesn\u0027t need to define vb2ex_printf().",
+      "range": {
+        "startLine": 875,
+        "startChar": 2,
+        "endLine": 875,
+        "endChar": 6
+      },
+      "revId": "c9f0169bd5788524ada8777c321a4757606b3058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
