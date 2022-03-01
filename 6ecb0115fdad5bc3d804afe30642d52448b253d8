@@ -124,6 +124,24 @@
       "parentUuid": "c98ba7ab_50420dc0",
       "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d154a83_4a6e4552",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-01T02:59:58Z",
+      "side": 1,
+      "message": "I slightly adjusted the order in PS2. However, for devices with \"slow\" EC sync (say \u003e4 seconds), the serial output time shouldn\u0027t be significant.",
+      "parentUuid": "02d3229d_a862b7bb",
+      "revId": "6ecb0115fdad5bc3d804afe30642d52448b253d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
