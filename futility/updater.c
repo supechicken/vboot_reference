@@ -396,6 +396,14 @@ static int get_io_retries(struct updater_config *cfg)
 }
 
 /*
+ * Returns if we should use external flashrom for I/O.
+ */
+static int get_ext_flashrom(struct updater_config *cfg)
+{
+	return get_config_quirk(QUIRK_EXTERNAL_FLASHROM, cfg);
+}
+
+/*
  * Returns 1 if the programmers in image1 and image2 are the same.
  */
 static int is_the_same_programmer(const struct firmware_image *image1,
@@ -445,7 +453,8 @@ static int write_firmware_sections(struct updater_config *cfg,
 
 	return write_system_firmware(image, diff_image, sections,
 				     &cfg->tempfiles, cfg->do_verify,
-				     get_io_retries(cfg), cfg->verbosity + 1);
+				     get_io_retries(cfg), get_ext_flashrom(cfg),
+				     cfg->verbosity + 1);
 }
 
 /*
@@ -1281,7 +1290,9 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 
 		INFO("Loading current system firmware...\n");
 		ret = load_system_firmware(image_from, &cfg->tempfiles,
-					   get_io_retries(cfg), cfg->verbosity);
+					   get_io_retries(cfg),
+					   get_ext_flashrom(cfg),
+					   cfg->verbosity);
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
 			cfg->check_platform = 0;
@@ -1466,6 +1477,7 @@ static int updater_apply_white_label(struct updater_config *cfg,
 			load_system_firmware(&cfg->image_current,
 					     &cfg->tempfiles,
 					     get_io_retries(cfg),
+					     get_ext_flashrom(cfg),
 					     cfg->verbosity);
 		}
 		tmp_image = get_firmware_image_temp_file(

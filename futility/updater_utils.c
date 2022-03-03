@@ -525,13 +525,69 @@ char *host_detect_servo(int *need_prepare_ptr)
 	return ret;
 }
 
+static int external_flashrom_read(struct firmware_image *image,
+				  struct tempfile *tempfiles,
+				  int verbosity)
+{
+	int r;
+	const char *tmp_path = create_temp_file(tempfiles);
+	char *command;
+
+	if (!tmp_path)
+		return -1;
+	ASPRINTF(&command, "flashrom -r %s -p %s %s",
+		 tmp_path, image->programmer, verbosity ? "-V" : "");
+	r = system(command);
+	free(command);
+	if (r)
+		ERROR("flashrom error code: %d\n", r);
+	else
+		r = load_firmware_image(image, tmp_path, NULL);
+	return r;
+}
+
+static int external_flashrom_write(const struct firmware_image *image,
+				   const char *partial,
+				   const struct firmware_image *diff_image,
+				   struct tempfile *tempfiles,
+				   int do_verify, int verosity)
+{
+	int r;
+	const char *tmp_path = get_firmware_image_temp_file(image, tempfiles);
+	const char *tmp_diff = NULL;
+	char *command;
+
+	if (!tmp_path)
+		return -1;
+
+	if (diff_image) {
+		tmp_diff = get_firmware_image_temp_file(diff_image, tempfiles);
+		if (!tmp_diff)
+			return -1;
+	}
+
+	ASPRINTF(&command, "flashrom -w %s -p %s%s%s%s%s%s",
+		 tmp_path, image->programmer,
+		 partial ? partial : "",
+		 diff_image ? " --flash-contents=" : "",
+		 diff_image ? tmp_diff : "",
+		 do_verify ? "" : " --noverify",
+		 verosity ? " -V" : "");
+	r = system(command);
+	free(command);
+
+	if (r)
+		ERROR("flashrom error code: %d\n", r);
+	return r;
+}
+
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
  * Returns 0 if success, non-zero if error.
  */
 int load_system_firmware(struct firmware_image *image,
 			 struct tempfile *tempfiles,
-			 int retries, int verbosity)
+			 int retries, int external_flashrom, int verbosity)
 {
 	int r, i;
 
@@ -542,7 +598,11 @@ int load_system_firmware(struct firmware_image *image,
 	for (i = 1, r = -1; i <= retries && r != 0; i++) {
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, retries);
-		r = flashrom_read_image(image, NULL, verbosity + i);
+
+		if (external_flashrom)
+			r = external_flashrom_read(image, tempfiles, verbosity);
+		else
+			r = flashrom_read_image(image, NULL, verbosity + i);
 	}
 	if (!r)
 		r = parse_firmware_image(image);
@@ -559,7 +619,8 @@ int write_system_firmware(const struct firmware_image *image,
 			  const struct firmware_image *diff_image,
 			  const char * const sections[],
 			  struct tempfile *tempfiles,
-			  int do_verify, int retries, int verbosity)
+			  int do_verify, int retries,
+			  int external_flashrom, int verbosity)
 {
 	int r, i, len = 0;
 	char *partial = NULL;
@@ -586,19 +647,25 @@ int write_system_firmware(const struct firmware_image *image,
 	     do_verify ? "" : " --noverify",
 	     verbosity > 1 ? " -V" : "",
 	     partial ? partial : "");
-	free(partial);
 
 	for (i = 1, r = -1; i <= retries && r != 0; i++) {
 		if (i > 1)
 			WARN("Retry writing firmware (%d/%d)...\n", i, retries);
-		r = flashrom_write_image(image, sections, diff_image, do_verify,
-					 verbosity + i);
+		if (external_flashrom)
+			r = external_flashrom_write(
+					image, partial, diff_image, tempfiles,
+					do_verify, verbosity + i);
+		else
+			r = flashrom_write_image(
+					image, sections, diff_image,
+					do_verify, verbosity + i);
 		/*
 		 * Force a newline to flush stdout in case if
 		 * flashrom_write_image left some messages in the buffer.
 		 */
 		fprintf(stdout, "\n");
 	}
+	free(partial);
 	return r;
 }
 
