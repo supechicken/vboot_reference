@@ -46,166 +46,164 @@ static char *flashrom_extract_params(const char *str, char **prog, char **params
 	return tmp;
 }
 
-int flashrom_read_image(struct firmware_image *image, const char *region,
-			int verbosity)
+struct flashrom_session {
+	struct flashrom_programmer *prog;
+	struct flashrom_flashctx *flashctx;
+	struct flashrom_layout *layout;
+	size_t len;
+	char *prog_tokens;
+	bool programmer_need_shutdown;
+};
+
+static int flashrom_end_session(struct flashrom_session *session)
 {
-	int r = 0;
-	size_t len = 0;
+	int r;
 
-	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
-
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(image->programmer, &programmer, &params);
-
-	struct flashrom_programmer *prog = NULL;
-	struct flashrom_flashctx *flashctx = NULL;
-	struct flashrom_layout *layout = NULL;
-
-	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
-
-	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params)) {
-		r = -1;
-		goto err_init;
-	}
-	if (flashrom_flash_probe(&flashctx, prog, NULL)) {
-		r = -1;
-		goto err_probe;
-	}
-
-	len = flashrom_flash_getsize(flashctx);
-
-	if (region) {
-		r = flashrom_layout_read_fmap_from_buffer(
-			&layout, flashctx, (const uint8_t *)image->data,
-			image->size);
-		if (r > 0) {
-			WARN("could not read fmap from image, r=%d, "
-				"falling back to read from rom\n", r);
-			r = flashrom_layout_read_fmap_from_rom(
-				&layout, flashctx, 0, len);
-			if (r > 0) {
-				ERROR("could not read fmap from rom, r=%d\n", r);
-				r = -1;
-				goto err_cleanup;
-			}
-		}
-		// empty region causes seg fault in API.
-		r |= flashrom_layout_include_region(layout, region);
-		if (r > 0) {
-			ERROR("could not include region = '%s'\n", region);
-			r = -1;
-			goto err_cleanup;
-		}
-		flashrom_layout_set(flashctx, layout);
-	}
-
-	image->data = calloc(1, len);
-	image->size = len;
-	image->file_name = strdup("<sys-flash>");
-
-	r |= flashrom_image_read(flashctx, image->data, len);
-
-err_cleanup:
-	flashrom_layout_release(layout);
-	flashrom_flash_release(flashctx);
-
-err_probe:
-	r |= flashrom_programmer_shutdown(prog);
-
-err_init:
-	free(tmp);
+	if (session->layout)
+		flashrom_layout_release(session->layout);
+	if (session->flashctx)
+		flashrom_flash_release(session->flashctx);
+	if (session->programmer_need_shutdown)
+		r = flashrom_programmer_shutdown(session->prog);
+	free(session->prog_tokens);
 	return r;
 }
 
-int flashrom_write_image(const struct firmware_image *image,
-			const char * const regions[],
-			const struct firmware_image *diff_image,
-			int do_verify, int verbosity)
+static int flashrom_include_regions(const struct flashrom_params * const params,
+				    struct flashrom_session *session)
 {
-	int r = 0;
-	size_t len = 0;
+	int i, r;
 
-	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
+	r = flashrom_layout_read_fmap_from_buffer(
+			&session->layout, session->flashctx,
+			params->image->data, params->image->size);
+	if (r > 0) {
+		WARN("Could not read FMAP from image, r=%d, "
+		     "falling back to read from ROM\n", r);
+		r = flashrom_layout_read_fmap_from_rom(
+			&session->layout, session->flashctx, 0, session->len);
 
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(image->programmer, &programmer, &params);
+		if (r > 0) {
+			ERROR("could not read FMAP from ROM, r=%d\n", r);
+			return -1;
+		}
+	}
 
-	struct flashrom_programmer *prog = NULL;
-	struct flashrom_flashctx *flashctx = NULL;
-	struct flashrom_layout *layout = NULL;
+	for (i = 0; params->regions[i]; i++) {
+		// Empty region causes seg fault in API.
+		r |= flashrom_layout_include_region(
+				session->layout, params->regions[i]);
+		if (r > 0) {
+			ERROR("Could not include region = '%s', r=%d\n",
+			      params->regions[i], r);
+			return -1;
+		}
+		VB2_DEBUG("Include new region: %s\n", params->regions[i]);
+	}
+	flashrom_layout_set(session->flashctx, session->layout);
+	return 0;
+}
 
+static int flashrom_start_session(struct flashrom_session *session,
+				  const struct flashrom_params * const params)
+{
+	char *prog_name, *prog_params;
+
+	if (params->verbose == -1)
+		g_verbose_screen = FLASHROM_MSG_INFO;
+	else
+		g_verbose_screen = params->verbose;
 	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
 
-	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params)) {
-		r = -1;
-		goto err_init;
+	/* The prog_params is actually stored (no duplication) and used by
+	 * libflashrom, so we have to keep it until the programmer is released
+	 * (e.g., flashrom_programmer_shutdown). The prog_tokens is a reference
+	 * for holding prog_name and prog_params for that purpose.
+	 */
+	session->prog_tokens = flashrom_extract_params(
+			params->image->programmer, &prog_name, &prog_params);
+
+	if (flashrom_init(1) ||
+	    flashrom_programmer_init(&session->prog, prog_name, prog_params)) {
+		ERROR("Failed initializing programmer: %s\n", prog_name);
+		return -1;
 	}
-	if (flashrom_flash_probe(&flashctx, prog, NULL)) {
-		r = -1;
-		goto err_probe;
+	/* In current implementation, session->prog is always NULL even if the
+	 * programmer has been initialized, so we need an explicit flag. */
+	session->programmer_need_shutdown = true;
+
+
+	if (flashrom_flash_probe(&session->flashctx, session->prog, NULL)) {
+		ERROR("Failed probing flash chip.\n");
+		return -1;
 	}
 
-	len = flashrom_flash_getsize(flashctx);
-	if (len == 0) {
+	session->len = flashrom_flash_getsize(session->flashctx);
+
+	if (params->flash_contents &&
+	    params->flash_contents->size != params->image->size) {
+		ERROR("flash_contents->size != image->size");
+		return -1;
+	}
+
+	if (params->regions && flashrom_include_regions(params, session)) {
+		ERROR("Failed setting regions to include.\n");
+		return -1;
+	}
+
+	/* Set flags */
+	flashrom_flag_set(session->flashctx, FLASHROM_FLAG_FORCE,
+			  params->force);
+	flashrom_flag_set(session->flashctx, FLASHROM_FLAG_VERIFY_AFTER_WRITE,
+			  !params->noverify);
+	flashrom_flag_set(session->flashctx, FLASHROM_FLAG_VERIFY_WHOLE_CHIP,
+			  !params->noverify_all);
+
+	return 0;
+}
+
+int flashrom_read_image(const struct flashrom_params * const params)
+{
+	int r = 0;
+	struct flashrom_session session = {0};
+
+	if (flashrom_start_session(&session, params)) {
+		r = -1;
+		goto err_cleanup;
+	}
+
+	params->image->data = calloc(1, session.len);
+	params->image->size = session.len;
+	params->image->file_name = strdup("<sys-flash>");
+
+	r |= flashrom_image_read(session.flashctx, params->image->data,
+				 session.len);
+
+err_cleanup:
+	r |= flashrom_end_session(&session);
+	return r;
+}
+
+int flashrom_write_image(const struct flashrom_params * const params)
+{
+	int r = 0;
+	struct flashrom_session session = {0};
+
+	if (flashrom_start_session(&session, params)) {
+		r = -1;
+		goto err_cleanup;
+	}
+
+	if (session.len == 0) {
 		ERROR("zero sized flash detected\n");
 		r = -1;
 		goto err_cleanup;
 	}
 
-	if (diff_image) {
-		if (diff_image->size != image->size) {
-			ERROR("diff_image->size != image->size");
-			r = -1;
-			goto err_cleanup;
-		}
-	}
-
-	if (regions) {
-		int i;
-		r = flashrom_layout_read_fmap_from_buffer(
-			&layout, flashctx, (const uint8_t *)image->data,
-			image->size);
-		if (r > 0) {
-			WARN("could not read fmap from image, r=%d, "
-				"falling back to read from rom\n", r);
-			r = flashrom_layout_read_fmap_from_rom(
-				&layout, flashctx, 0, len);
-			if (r > 0) {
-				ERROR("could not read fmap from rom, r=%d\n", r);
-				r = -1;
-				goto err_cleanup;
-			}
-		}
-		for (i = 0; regions[i]; i++) {
-			// empty region causes seg fault in API.
-			r |= flashrom_layout_include_region(layout, regions[i]);
-			if (r > 0) {
-				ERROR("could not include region = '%s'\n",
-				      regions[i]);
-				r = -1;
-				goto err_cleanup;
-			}
-		}
-		flashrom_layout_set(flashctx, layout);
-	}
-
-	flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_WHOLE_CHIP, false);
-	flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_AFTER_WRITE,
-			  do_verify);
-
-	r |= flashrom_image_write(flashctx, image->data, image->size,
-				  diff_image ? diff_image->data : NULL);
-
+	r |= flashrom_image_write(session.flashctx, params->image->data,
+				  params->image->size, params->flash_contents ?
+				  params->flash_contents->data : NULL);
 err_cleanup:
-	flashrom_layout_release(layout);
-	flashrom_flash_release(flashctx);
-
-err_probe:
-	r |= flashrom_programmer_shutdown(prog);
-
-err_init:
-	free(tmp);
+	r |= flashrom_end_session(&session);
 	return r;
 }
