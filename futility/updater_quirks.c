@@ -56,7 +56,7 @@ static const struct quirks_record quirks_records[] = {
 	{ .match = "Google_Scarlet.", .quirks = "min_platform_version=1" },
 	{ .match = "Google_Trogdor.", .quirks = "min_platform_version=2" },
 
-        /* Legacy white label units. */
+        /* Legacy custom label units. */
         { .match = "Google_Enguarde.", .quirks = "allow_empty_wltag" },
         { .match = "Google_Expresso.", .quirks = "allow_empty_wltag" },
         { .match = "Google_Hana.", .quirks = "allow_empty_wltag" },
@@ -481,7 +481,7 @@ void updater_register_quirks(struct updater_config *cfg)
 
 	quirks = &cfg->quirks[QUIRK_ALLOW_EMPTY_WLTAG];
 	quirks->name = "allow_empty_wltag";
-	quirks->help = "chromium/906962; allow devices without white label "
+	quirks->help = "chromium/906962; allow devices without custom label "
 		       "tags set to use default keys.";
 	quirks->apply = NULL;  /* Simple config. */
 
