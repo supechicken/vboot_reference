@@ -534,15 +534,19 @@ int load_system_firmware(struct firmware_image *image,
 			 int retries, int verbosity)
 {
 	int r, i;
+	struct flashrom_params params = {0};
 
-	INFO("flasrhom -r <IMAGE> -p %s%s\n",
+	INFO("flashrom -r <IMAGE> -p %s%s\n",
 	     image->programmer,
 	     verbosity ? " -V" : "");
 
-	for (i = 1, r = -1; i <= retries && r != 0; i++) {
+	params.image = image;
+	params.verbose = verbosity + 1; /* libflashrom verbose 1 = WARN. */
+
+	for (i = 1, r = -1; i <= retries && r != 0; i++, params.verbose++) {
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, retries);
-		r = flashrom_read_image(image, NULL, verbosity + i);
+		r = flashrom_read_image(&params);
 	}
 	if (!r)
 		r = parse_firmware_image(image);
@@ -563,6 +567,7 @@ int write_system_firmware(const struct firmware_image *image,
 {
 	int r, i, len = 0;
 	char *partial = NULL;
+	struct flashrom_params params = {0};
 
 	for (i = 0; sections && sections[i]; i++)
 		len += strlen(sections[i]) + strlen(" -i ");
@@ -588,11 +593,17 @@ int write_system_firmware(const struct firmware_image *image,
 	     partial ? partial : "");
 	free(partial);
 
-	for (i = 1, r = -1; i <= retries && r != 0; i++) {
+	params.image = (struct firmware_image *)image;
+	params.flash_contents = diff_image;
+	params.regions = sections;
+	params.noverify = !do_verify;
+	params.noverify_all = true;
+	params.verbose = verbosity + 1; /* libflashrom verbose 1 = WARN. */
+
+	for (i = 1, r = -1; i <= retries && r != 0; i++, params.verbose++) {
 		if (i > 1)
 			WARN("Retry writing firmware (%d/%d)...\n", i, retries);
-		r = flashrom_write_image(image, sections, diff_image, do_verify,
-					 verbosity + i);
+		r = flashrom_write_image(&params);
 		/*
 		 * Force a newline to flush stdout in case if
 		 * flashrom_write_image left some messages in the buffer.
