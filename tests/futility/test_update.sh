@@ -407,24 +407,24 @@ ${FUTILITY} gbb -s --rootkey="${TMP}.from/rootkey" "${A}/image.bin"
 ${FUTILITY} load_fmap "${A}/image.bin" VBLOCK_A:"${TMP}.from/VBLOCK_A"
 ${FUTILITY} load_fmap "${A}/image.bin" VBLOCK_B:"${TMP}.from/VBLOCK_B"
 
-test_update "Full update (--archive, whitelabel, no VPD)" \
-	"${A}/image.bin" "!Need VPD set for white" \
+test_update "Full update (--archive, customlabel, no VPD)" \
+	"${A}/image.bin" "!Need VPD set for custom" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
 
-test_update "Full update (--archive, whitelabel, no VPD - factory mode)" \
+test_update "Full update (--archive, customlabel, no VPD - factory mode)" \
 	"${LINK_BIOS}" "${A}/image.bin" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --mode=factory
 
-test_update "Full update (--archive, whitelabel, no VPD - quirk mode)" \
+test_update "Full update (--archive, customlabel, no VPD - quirk mode)" \
 	"${LINK_BIOS}" "${A}/image.bin" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --quirks=allow_empty_wltag
 
-test_update "Full update (--archive, WL, single package)" \
+test_update "Full update (--archive, CustomLabel, single package)" \
 	"${A}/image.bin" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --signature_id=WL
 
 WL_TAG="WL" PATH="${A}/bin:${PATH}" \
-	test_update "Full update (--archive, WL, fake vpd)" \
+	test_update "Full update (--archive, CustomLabel, fake vpd)" \
 	"${A}/image.bin" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
 
@@ -464,20 +464,20 @@ test_update "Full update (--archive, model=whitetip, signature_id=WL)" \
 	--signature_id=whitetip-wl
 
 WL_TAG="wl" PATH="${A}/bin:${PATH}" \
-	test_update "Full update (-a, model=WL, fake VPD)" \
+	test_update "Full update (-a, model=CustomLabel, fake VPD)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=whitetip
 
-# WL-Unibuild without default keys
-test_update "Full update (--a, model=WL, no VPD, no default keys)" \
-	"${FROM_IMAGE}.al" "!Need VPD set for white" \
+# CustomLabel-Unibuild without default keys
+test_update "Full update (--a, model=CustomLabel, no VPD, no default keys)" \
+	"${FROM_IMAGE}.al" "!Need VPD set for custom" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=whitetip
 
-# WL-Unibuild with default keys as model name
+# CustomLabel-Unibuild with default keys as model name
 cp -f "${TMP}.to/rootkey" "${A}/keyset/rootkey.whitetip"
 cp -f "${TMP}.to/VBLOCK_A" "${A}/keyset/vblock_A.whitetip"
 cp -f "${TMP}.to/VBLOCK_B" "${A}/keyset/vblock_B.whitetip"
-test_update "Full update (-a, model=WL, no VPD, default keys)" \
+test_update "Full update (-a, model=CustomLabel, no VPD, default keys)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=whitetip
 
