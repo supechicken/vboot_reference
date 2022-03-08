@@ -557,15 +557,16 @@ int load_system_firmware(struct firmware_image *image,
  */
 int write_system_firmware(const struct firmware_image *image,
 			  const struct firmware_image *diff_image,
-			  const char * const sections[],
+			  const char * const regions[],
+			  size_t no_regions,
 			  struct tempfile *tempfiles,
 			  int do_verify, int retries, int verbosity)
 {
 	int r, i, len = 0;
 	char *partial = NULL;
 
-	for (i = 0; sections && sections[i]; i++)
-		len += strlen(sections[i]) + strlen(" -i ");
+	for (i = 0; regions && i < no_regions; i++)
+		len += strlen(regions[i]) + strlen(" -i ");
 	if (len) {
 		partial = (char *)malloc(len + 1);
 		if (!partial) {
@@ -573,9 +574,9 @@ int write_system_firmware(const struct firmware_image *image,
 			return -1;
 		}
 		partial[0] = '\0';
-		for (i = 0; sections[i]; i++) {
+		for (i = 0; i < no_regions; i++) {
 			strcat(partial, " -i ");
-			strcat(partial, sections[i]);
+			strcat(partial, regions[i]);
 		}
 		assert(strlen(partial) == len);
 	}
@@ -591,7 +592,7 @@ int write_system_firmware(const struct firmware_image *image,
 	for (i = 1, r = -1; i <= retries && r != 0; i++) {
 		if (i > 1)
 			WARN("Retry writing firmware (%d/%d)...\n", i, retries);
-		r = flashrom_write_image(image, sections, diff_image, do_verify,
+		r = flashrom_write_image(image, regions, no_regions, diff_image, do_verify,
 					 verbosity + i);
 		/*
 		 * Force a newline to flush stdout in case if

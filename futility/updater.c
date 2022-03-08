@@ -422,7 +422,8 @@ static int is_the_same_programmer(const struct firmware_image *image1,
  */
 static int write_firmware_sections(struct updater_config *cfg,
 				   const struct firmware_image *image,
-				   const char * const sections[])
+				   const char * const sections[],
+				   size_t no_sections)
 {
 	int r = 0;
 	struct firmware_image *diff_image = NULL;
@@ -443,7 +444,7 @@ static int write_firmware_sections(struct updater_config *cfg,
 	    is_the_same_programmer(&cfg->image_current, image))
 		diff_image = &cfg->image_current;
 
-	return write_system_firmware(image, diff_image, sections,
+	return write_system_firmware(image, diff_image, sections, no_sections,
 				     &cfg->tempfiles, cfg->do_verify,
 				     get_io_retries(cfg), cfg->verbosity + 1);
 }
@@ -461,7 +462,7 @@ static int write_firmware(struct updater_config *cfg,
 
 	sections[0] = section_name;
 	return write_firmware_sections(cfg, image,
-				       section_name ? sections : NULL);
+				       section_name ? sections : NULL, 1);
 }
 
 /*
@@ -1152,6 +1153,7 @@ static enum updater_error_codes update_rw_firmware(
 		FMAP_RW_SHARED,
 		NULL,
 	};
+	size_t no_sections = ARRAY_SIZE(sections);
 
 	STATUS("RW UPDATE: Updating RW sections (%s, %s, %s, and %s).\n",
 	       FMAP_RW_SECTION_A, FMAP_RW_SECTION_B, FMAP_RW_SHARED,
@@ -1173,7 +1175,8 @@ static enum updater_error_codes update_rw_firmware(
 	    !firmware_section_exists(image_to, sections[sections_start]))
 		sections_start++;
 
-	if (write_firmware_sections(cfg, image_to, &sections[sections_start]))
+	no_sections -= sections_start;
+	if (write_firmware_sections(cfg, image_to, &sections[sections_start], no_sections))
 		return UPDATE_ERR_WRITE_FIRMWARE;
 
 	return UPDATE_ERR_DONE;

@@ -100,7 +100,8 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
  */
 int write_system_firmware(const struct firmware_image *image,
 			  const struct firmware_image *diff_image,
-			  const char * const sections[],
+			  const char * const regions[],
+			  size_t no_regions,
 			  struct tempfile *tempfiles,
 			  int do_verify, int retries, int verbosity);
 

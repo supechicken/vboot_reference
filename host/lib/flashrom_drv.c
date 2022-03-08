@@ -120,6 +120,7 @@ err_init:
 
 int flashrom_write_image(const struct firmware_image *image,
 			const char * const regions[],
+			size_t no_regions,
 			const struct firmware_image *diff_image,
 			int do_verify, int verbosity)
 {
@@ -178,8 +179,10 @@ int flashrom_write_image(const struct firmware_image *image,
 				goto err_cleanup;
 			}
 		}
-		for (i = 0; regions[i]; i++) {
+		for (i = 0; i < no_regions; i++) {
 			// empty region causes seg fault in API.
+			if (strlen(regions[i]) == 0)
+				continue;
 			r |= flashrom_layout_include_region(layout, regions[i]);
 			if (r > 0) {
 				ERROR("could not include region = '%s'\n",
