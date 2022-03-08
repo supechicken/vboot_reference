@@ -725,7 +725,6 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 	 * (compromised) host will end up with 'broken' screen.
 	 */
 	if ((ctx->flags & VB2_CONTEXT_FORCE_RECOVERY_MODE) &&
-	    !(ctx->flags & VB2_CONTEXT_NO_BOOT) &&
 	    (ctx->flags & VB2_CONTEXT_EC_TRUSTED)) {
 		*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 	} else if (sd->recovery_reason) {
