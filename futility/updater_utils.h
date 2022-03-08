@@ -16,6 +16,7 @@
 
 /* Structure(s) declared in updater_archive */
 struct archive;
+struct updater_config;
 
 /* flashrom programmers. */
 static const char * const PROG_HOST = "host",
@@ -77,9 +78,8 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
  * Loads the active system firmware image (usually from SPI flash chip).
  * Returns 0 if success, non-zero if error.
  */
-int load_system_firmware(struct firmware_image *image,
-			 struct tempfile *tempfiles,
-			 int retries, int verbosity);
+int load_system_firmware(struct updater_config *cfg,
+			 struct firmware_image *image);
 
 /* Frees the allocated resource from a firmware image object. */
 void free_firmware_image(struct firmware_image *image);
@@ -98,11 +98,9 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
  * FMAP section names (and ended with a NULL).
  * Returns 0 if success, non-zero if error.
  */
-int write_system_firmware(const struct firmware_image *image,
-			  const struct firmware_image *diff_image,
-			  const char * const sections[],
-			  struct tempfile *tempfiles,
-			  int do_verify, int retries, int verbosity);
+int write_system_firmware(struct updater_config *cfg,
+			  const struct firmware_image *image,
+			  const char * const sections[]);
 
 struct firmware_section {
 	uint8_t *data;
