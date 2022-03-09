@@ -34,6 +34,24 @@
       "parentUuid": "5260b9b9_c3c39cd8",
       "revId": "f48654dcb6071287f00bb48e34fcbb11a87667a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389e381d_ef49bc29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-09T12:24:35Z",
+      "side": 1,
+      "message": "I still think a powerful / cmdline equivalent flashrom would be a good idea, but I also understand that you want to lock down the interface in flashrom_drv so all futility / vboot users will call it in the same way.\n\nLet me abandon this change - I will still do some refactoring inside updater itself, but not touching flashrom.",
+      "parentUuid": "029839d3_55a8f67d",
+      "revId": "f48654dcb6071287f00bb48e34fcbb11a87667a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
