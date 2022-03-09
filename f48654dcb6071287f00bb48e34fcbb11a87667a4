@@ -16,6 +16,24 @@
       "message": "This is premature!\n\nThis goes in a opposite direction to my work that is moving all the flashrom call sites in vboot_ref towards a common signature.",
       "revId": "f48654dcb6071287f00bb48e34fcbb11a87667a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "029839d3_55a8f67d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-09T09:48:31Z",
+      "side": 1,
+      "message": "I think we can still share the common signature. In fact, I think we need a powerful backend, with some helper utility functions as wrappers.\n\nTo be more specific, the updater needs more dedicated controls, and we are seeing more and more special cases and there may be more parameters coming. So an interface that can fully provide what flashrom does is needed. Let\u0027s call them\n\n flashrom_write_image(params) and\n flashrom_read_image(params).\n\nUpdater can have its own wrappers, and crossystem can have its own - for example I think the crossystem prefers accessing always only one section, so we can have\n\n flashrom_write_section(blob, section)\n flashrom_read_section(blob, section)\n\n(background: unlike updater, the crossytem does not need to read the whole image back, so it can actually do partial read/write without having the \u0027image\u0027)\n\nI agree we should route to single function handling all flashrom operations in the end, but the flashrom functions are now having too much params and will be really hard to understand or use. A \u0027param\u0027 structure should help, also it will be easier if we want to allow falling back to external flashrom if needed.",
+      "parentUuid": "5260b9b9_c3c39cd8",
+      "revId": "f48654dcb6071287f00bb48e34fcbb11a87667a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
