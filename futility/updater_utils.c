@@ -524,25 +524,177 @@ char *host_detect_servo(int *need_prepare_ptr)
 
 	return ret;
 }
+/*
+ * Returns 1 if the programmers in image1 and image2 are the same.
+ */
+static int is_the_same_programmer(const struct firmware_image *image1,
+				  const struct firmware_image *image2)
+{
+	assert(image1 && image2);
+
+	/* Including if both are NULL. */
+	if (image1->programmer == image2->programmer)
+		return 1;
+
+	/* Not the same if either one is NULL. */
+	if (!image1->programmer || !image2->programmer)
+		return 0;
+
+	return strcmp(image1->programmer, image2->programmer) == 0;
+}
+
+enum flash_command {
+	FLASH_READ = 0,
+	FLASH_WRITE,
+};
+
+/* Converts the flashrom_params to an equivalent flashrom command. */
+static char *get_flashrom_command(enum flash_command flash_cmd,
+				  struct flashrom_params *params)
+{
+	int i, len = 0;
+	char *partial = NULL;
+	char *cmd = NULL;
+
+	for (i = 0; params->regions && params->regions[i]; i++)
+		len += strlen(params->regions[i]) + strlen(" -i ");
+
+	if (len) {
+		partial = (char *)malloc(len + 1);
+		if (!partial) {
+			ERROR("Failed to allocate a string buffer.\n");
+			return NULL;
+		}
+
+		partial[0] = '\0';
+		for (i = 0; params->regions[i]; i++) {
+			strcat(partial, " -i ");
+			strcat(partial, params->regions[i]);
+		}
+		assert(strlen(partial) == len);
+	}
+
+	switch (flash_cmd) {
+	case FLASH_READ:
+		ASPRINTF(&cmd, "flashrom -r <IMAGE> -p %s%s%s",
+			 params->image->programmer,
+			 params->verbose > 1 ? " -V" : "",
+			 partial ? partial : "");
+		break;
+
+	case FLASH_WRITE:
+		ASPRINTF(&cmd, "flashrom -w <IMAGE> -p %s%s%s%s%s",
+			 params->image->programmer,
+			 params->flash_contents ?
+				" --flash-contents <OLDIMG>" : "",
+			 params->noverify ? " --noverify" : "",
+			 params->verbose > 1 ? " -V" : "",
+			 partial ? partial : "");
+		break;
+
+	default:
+		ERROR("Unknown command: %d.\n", flash_cmd);
+		break;
+	}
+	free(partial);
+	return cmd;
+}
+
+/*
+ * Emulates writing a firmware image to the system.
+ * Returns 0 if success, non-zero if error.
+ */
+static int emulate_write_firmware(const char *filename,
+				  const struct firmware_image *image,
+				  const char * const sections[])
+{
+	int i, errorcnt = 0;
+	struct firmware_image to_image = {0};
+
+	INFO("Writing from %s to %s (emu=%s).\n",
+	     image->file_name, image->programmer, filename);
+
+	if (load_firmware_image(&to_image, filename, NULL)) {
+		ERROR("Cannot load image from %s.\n", filename);
+		return -1;
+	}
+
+	if (image->size != to_image.size) {
+		ERROR("Image size is different (%s:%d != %s:%d)\n",
+		      image->file_name, image->size, to_image.file_name,
+		      to_image.size);
+		errorcnt++;
+	}
+
+	if (!errorcnt && !sections) {
+		VB2_DEBUG(" - write the whole image.\n");
+		memmove(to_image.data, image->data, image->size);
+	}
+	for (i = 0; !errorcnt && sections && sections[i]; i++) {
+		VB2_DEBUG(" - write the section: %s.\n", sections[i]);
+		preserve_firmware_section(image, &to_image, sections[i]);
+	}
+
+	if (!errorcnt &&
+	    vb2_write_file(filename, to_image.data, to_image.size)) {
+		ERROR("Failed writing to file: %s\n", filename);
+		errorcnt++;
+	}
+
+	free_firmware_image(&to_image);
+	return errorcnt;
+}
+
+static int read_flash(struct flashrom_params *params)
+{
+	int r;
+
+	/* TODO(hungte) Also support external flashrom. */
+	r = flashrom_read_image(params->image, NULL, params->verbose);
+	return r;
+}
+
+static int write_flash(struct flashrom_params *params)
+{
+	int r;
+
+	/* TODO(hungte) Also support external flashrom. */
+	r = flashrom_write_image(params->image,
+				 params->regions,
+				 params->flash_contents,
+				 !params->noverify,
+				 params->verbose);
+	/*
+	 * Force a newline to flush stdout in case if
+	 * flashrom_write_image left some messages in the buffer.
+	 */
+	fprintf(stdout, "\n");
+	return r;
+}
 
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
  * Returns 0 if success, non-zero if error.
  */
-int load_system_firmware(struct firmware_image *image,
-			 struct tempfile *tempfiles,
-			 int retries, int verbosity)
+int load_system_firmware(struct updater_config *cfg,
+			 struct firmware_image *image)
 {
 	int r, i;
+	char *cmd;
+	const int retries = 1 + get_config_quirk(QUIRK_EXTRA_RETRIES, cfg);
+	struct flashrom_params params = {0};
 
-	INFO("flasrhom -r <IMAGE> -p %s%s\n",
-	     image->programmer,
-	     verbosity ? " -V" : "");
+	params.image = image;
+	params.verbose = cfg->verbosity + 1; /* libflashrom verbose 1 = WARN. */
 
-	for (i = 1, r = -1; i <= retries && r != 0; i++) {
+	cmd = get_flashrom_command(FLASH_READ, &params);
+	INFO("%s\n", cmd);
+	free(cmd);
+
+	for (i = 1, r = -1; i <= retries && r != 0; i++, params.verbose++) {
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, retries);
-		r = flashrom_read_image(image, NULL, verbosity + i);
+		r = read_flash(&params);
 	}
 	if (!r)
 		r = parse_firmware_image(image);
@@ -555,49 +707,38 @@ int load_system_firmware(struct firmware_image *image,
  * FMAP section names (and ended with a NULL).
  * Returns 0 if success, non-zero if error.
  */
-int write_system_firmware(const struct firmware_image *image,
-			  const struct firmware_image *diff_image,
-			  const char * const sections[],
-			  struct tempfile *tempfiles,
-			  int do_verify, int retries, int verbosity)
+int write_system_firmware(struct updater_config *cfg,
+			  const struct firmware_image *image,
+			  const char * const sections[])
 {
-	int r, i, len = 0;
-	char *partial = NULL;
+	int r = 0, i;
+	char *cmd;
+	const int retries = 1 + get_config_quirk(QUIRK_EXTRA_RETRIES, cfg);
+	struct flashrom_params params = {0};
+	struct firmware_image *flash_contents = NULL;
 
-	for (i = 0; sections && sections[i]; i++)
-		len += strlen(sections[i]) + strlen(" -i ");
-	if (len) {
-		partial = (char *)malloc(len + 1);
-		if (!partial) {
-			ERROR("Failed to allocate a string buffer.\n");
-			return -1;
-		}
-		partial[0] = '\0';
-		for (i = 0; sections[i]; i++) {
-			strcat(partial, " -i ");
-			strcat(partial, sections[i]);
-		}
-		assert(strlen(partial) == len);
-	}
+	if (cfg->emulation)
+		return emulate_write_firmware(cfg->emulation, image, sections);
 
-	INFO("flashrom -w <IMAGE> -p %s%s%s%s%s\n",
-	     image->programmer,
-	     diff_image ? " --flash-contents <DIFF_IMAGE>" : "",
-	     do_verify ? "" : " --noverify",
-	     verbosity > 1 ? " -V" : "",
-	     partial ? partial : "");
-	free(partial);
+	if (cfg->use_diff_image && cfg->image_current.data &&
+	    is_the_same_programmer(&cfg->image_current, image))
+		flash_contents = &cfg->image_current;
 
-	for (i = 1, r = -1; i <= retries && r != 0; i++) {
+	params.image = (struct firmware_image *)image;
+	params.flash_contents = flash_contents;
+	params.regions = sections;
+	params.noverify = !cfg->do_verify;
+	params.noverify_all = true;
+	params.verbose = cfg->verbosity + 1; /* libflashrom verbose 1 = WARN. */
+
+	cmd = get_flashrom_command(FLASH_WRITE, &params);
+	INFO("%s\n", cmd);
+	free(cmd);
+
+	for (i = 1, r = -1; i <= retries && r != 0; i++, params.verbose++) {
 		if (i > 1)
 			WARN("Retry writing firmware (%d/%d)...\n", i, retries);
-		r = flashrom_write_image(image, sections, diff_image, do_verify,
-					 verbosity + i);
-		/*
-		 * Force a newline to flush stdout in case if
-		 * flashrom_write_image left some messages in the buffer.
-		 */
-		fprintf(stdout, "\n");
+		r = write_flash(&params);
 	}
 	return r;
 }
