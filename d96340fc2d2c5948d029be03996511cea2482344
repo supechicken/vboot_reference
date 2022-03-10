@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee7b235_17384963",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T07:51:18Z",
+      "side": 1,
+      "message": "Can we move changes related to external flashrom to a separate commit (or merge into CL:3500339)?\n\n- enum flash_command\n- get_flashrom_command()\n- read_flash()\n- write_flash()\n\nIn addition, as this file is getting more and more complicated, we may want to consider adding these external-flashrom functions to another file parallel to flashrom_drv.\n\nWhen libflashrom is stable enough, we\u0027ll want to remove the external_flashrom quirk and all related code. I think having a separate file will make that easier.",
+      "range": {
+        "startLine": 552,
+        "startChar": 13,
+        "endLine": 552,
+        "endChar": 33
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369662e6_77372e89",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T07:51:18Z",
+      "side": 1,
+      "message": "Only need to check this if sections \u003d\u003d NULL (whole image update).",
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4db99f_6642987e",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T07:51:18Z",
+      "side": 1,
+      "message": "If we\u0027re checking errorcnt everywhere, adding an \u0027exit\u0027 label right before free_firmware_image() might be easier.",
+      "range": {
+        "startLine": 633,
+        "startChar": 14,
+        "endLine": 633,
+        "endChar": 22
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6199e0a2_fca9a5f0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T07:51:18Z",
+      "side": 1,
+      "message": "Check return value and increment errorcnt on failure.",
+      "range": {
+        "startLine": 635,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 27
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4b1f2f_aa82e174",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T07:51:18Z",
+      "side": 1,
+      "message": "\"tries\" (because it\u0027s an initial try plus QUIRK_EXTRA_RETRIES extra retries)",
+      "range": {
+        "startLine": 716,
+        "startChar": 11,
+        "endLine": 716,
+        "endChar": 18
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75efb18a_2efddcf9",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T07:51:18Z",
+      "side": 1,
+      "message": "Can we make this field a const pointer?",
+      "range": {
+        "startLine": 727,
+        "startChar": 8,
+        "endLine": 727,
+        "endChar": 13
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce706dd_86f28092",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T07:51:18Z",
+      "side": 1,
+      "message": "Do we not want to increase verbosity anymore?",
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
