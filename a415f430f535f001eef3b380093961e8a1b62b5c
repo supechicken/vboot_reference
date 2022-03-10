@@ -34,6 +34,24 @@
       "parentUuid": "439de803_90c0f6cc",
       "revId": "a415f430f535f001eef3b380093961e8a1b62b5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a14eb056_91c01e69",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T09:53:04Z",
+      "side": 1,
+      "message": "preserve_firmware_section() fails when the section is not found. In that case, will flashrom still attempt to write data to flash?",
+      "parentUuid": "8192640d_333b6039",
+      "revId": "a415f430f535f001eef3b380093961e8a1b62b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
