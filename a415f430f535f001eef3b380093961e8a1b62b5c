@@ -16,6 +16,24 @@
       "message": "But we shouldn\u0027t call vb2_write_file() below, right?",
       "revId": "a415f430f535f001eef3b380093961e8a1b62b5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8192640d_333b6039",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T09:09:14Z",
+      "side": 1,
+      "message": "actually we should. consider a real flash, this would be a case \"you flashed some sections, then failed in the next section\" - so the change was already made.",
+      "parentUuid": "439de803_90c0f6cc",
+      "revId": "a415f430f535f001eef3b380093961e8a1b62b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
