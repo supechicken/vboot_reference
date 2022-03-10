@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e27525a2_17f119d2",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T06:53:33Z",
+      "side": 1,
+      "message": "The Linux coding style recommends \"When declaring pointer data or a function that returns a pointer type, the preferred use of * is adjacent to the data name or function name and not adjacent to the type name\".\n\nAlthough not explicitly mentioned, I interpret that as \"char * const\" insted of \"char *const\". If I search that using cs/, I found 4409 \"char *const\" and 4542 \"char * const\" - I think that both are common.\n\nAs a result, and given the \"type * const\" has been already used in this file, I\u0027d prefer to keep \"type * const\".",
+      "parentUuid": "23c7e439_d0211e61",
+      "range": {
+        "startLine": 1148,
+        "startChar": 20,
+        "endLine": 1148,
+        "endChar": 21
+      },
+      "revId": "0c4b15c4ec54dfdcb57b589cfdb5c0acb97b044e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "053f9e6b_849f09b2",
         "filename": "futility/updater.c",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2022-03-10T06:02:06Z",
       "side": 1,
       "message": "Do we need to assert that the section exists in both image_from and image_to? Or will write_firmware_sections() fail for non-existing sections?",
+      "revId": "0c4b15c4ec54dfdcb57b589cfdb5c0acb97b044e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bc75ef_d46ebeb8",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T06:53:33Z",
+      "side": 1,
+      "message": "white_firmware_sections should fail if these sections do not exist.",
+      "parentUuid": "053f9e6b_849f09b2",
       "revId": "0c4b15c4ec54dfdcb57b589cfdb5c0acb97b044e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc7494f7_72c6b3eb",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T06:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846d34eb_3d58aee1",
+      "revId": "0c4b15c4ec54dfdcb57b589cfdb5c0acb97b044e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1b4838b_a7e7b44c",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-03-10T06:02:06Z",
       "side": 1,
       "message": "I\u0027d prefer setting\n\n sections[num] \u003d NULL;\n\nhere after assertion. Then we don\u0027t need to initialize \u0027sections\u0027 above.",
+      "range": {
+        "startLine": 1186,
+        "startChar": 38,
+        "endLine": 1186,
+        "endChar": 59
+      },
+      "revId": "0c4b15c4ec54dfdcb57b589cfdb5c0acb97b044e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2bc3a2_3d8aadd0",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T06:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1b4838b_a7e7b44c",
       "range": {
         "startLine": 1186,
         "startChar": 38,
