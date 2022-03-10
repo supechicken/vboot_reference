@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "211e7f33_97716d40",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T08:29:33Z",
+      "side": 1,
+      "message": "Moved. Probably creating another file when we have more stuff...\n\nMeanwhile, I suspect that maybe we won\u0027t remove the quirk, since it\u0027s still useful for developers flashing inside chroot - it\u0027s easier to \"emerge flashrom\" instead of \"emerge flashrom + vboot\"",
+      "parentUuid": "8ee7b235_17384963",
+      "range": {
+        "startLine": 552,
+        "startChar": 13,
+        "endLine": 552,
+        "endChar": 33
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "369662e6_77372e89",
         "filename": "futility/updater_utils.c",
         "patchSetId": 10
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5082ca46_cd49e6b4",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T08:29:33Z",
+      "side": 1,
+      "message": "actually we have to check this even if the section is not NULL. The flashrom would reject if the input file is not the same size as the flash.",
+      "parentUuid": "369662e6_77372e89",
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e4db99f_6642987e",
         "filename": "futility/updater_utils.c",
         "patchSetId": 10
@@ -54,6 +96,30 @@
       "writtenOn": "2022-03-10T07:51:18Z",
       "side": 1,
       "message": "If we\u0027re checking errorcnt everywhere, adding an \u0027exit\u0027 label right before free_firmware_image() might be easier.",
+      "range": {
+        "startLine": 633,
+        "startChar": 14,
+        "endLine": 633,
+        "endChar": 22
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa7cfc6_ec7953d4",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T08:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e4db99f_6642987e",
       "range": {
         "startLine": 633,
         "startChar": 14,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d7d732_6db3393d",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T08:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6199e0a2_fca9a5f0",
+      "range": {
+        "startLine": 635,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 27
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d4b1f2f_aa82e174",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-03-10T07:51:18Z",
       "side": 1,
       "message": "\"tries\" (because it\u0027s an initial try plus QUIRK_EXTRA_RETRIES extra retries)",
+      "range": {
+        "startLine": 716,
+        "startChar": 11,
+        "endLine": 716,
+        "endChar": 18
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701b170f_5d489385",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T08:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d4b1f2f_aa82e174",
       "range": {
         "startLine": 716,
         "startChar": 11,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be59a5c4_31170318",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T08:29:33Z",
+      "side": 1,
+      "message": "well, the param is shared by read and write, and we have to change it when reading... so I have to keep it writable.",
+      "parentUuid": "75efb18a_2efddcf9",
+      "range": {
+        "startLine": 727,
+        "startChar": 8,
+        "endLine": 727,
+        "endChar": 13
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dce706dd_86f28092",
         "filename": "futility/updater_utils.c",
         "patchSetId": 10
@@ -146,6 +284,24 @@
       "writtenOn": "2022-03-10T07:51:18Z",
       "side": 1,
       "message": "Do we not want to increase verbosity anymore?",
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a24f6c_e21780a7",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-10T08:29:33Z",
+      "side": 1,
+      "message": "that\u0027s done in the \"params.verbose++\", isn\u0027t it?",
+      "parentUuid": "dce706dd_86f28092",
       "revId": "d96340fc2d2c5948d029be03996511cea2482344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
