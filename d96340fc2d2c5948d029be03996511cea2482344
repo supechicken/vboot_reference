@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79b6458_9f842e34",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T08:57:16Z",
+      "side": 1,
+      "message": "Well, I didn\u0027t think of running futility from chroot.",
+      "parentUuid": "211e7f33_97716d40",
+      "range": {
+        "startLine": 552,
+        "startChar": 13,
+        "endLine": 552,
+        "endChar": 33
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "369662e6_77372e89",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "actually we have to check this even if the section is not NULL. The flashrom would reject if the input file is not the same size as the flash.",
       "parentUuid": "369662e6_77372e89",
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4187aa_40676eb8",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T08:57:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5082ca46_cd49e6b4",
       "revId": "d96340fc2d2c5948d029be03996511cea2482344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -271,6 +313,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8abb46bf_7bcdd230",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T08:57:16Z",
+      "side": 1,
+      "message": "Okay. I also noticed that flashrom_image_write() is declared as:\n\n int flashrom_image_write(..., void *buffer, ...);\n\nin libflashrom.h.",
+      "parentUuid": "be59a5c4_31170318",
+      "range": {
+        "startLine": 727,
+        "startChar": 8,
+        "endLine": 727,
+        "endChar": 13
+      },
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dce706dd_86f28092",
@@ -302,6 +368,24 @@
       "side": 1,
       "message": "that\u0027s done in the \"params.verbose++\", isn\u0027t it?",
       "parentUuid": "dce706dd_86f28092",
+      "revId": "d96340fc2d2c5948d029be03996511cea2482344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db1305d1_ae68a908",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-03-10T08:57:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08a24f6c_e21780a7",
       "revId": "d96340fc2d2c5948d029be03996511cea2482344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
