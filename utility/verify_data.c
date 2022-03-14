@@ -78,7 +78,8 @@ int main(int argc, char* argv[])
 	}
 
 	uint32_t expect_sig_size =
-			vb2_rsa_sig_size(vb2_crypto_to_signature(algorithm));
+			vb2_sig_size(vb2_crypto_to_signature(algorithm),
+				     vb2_crypto_to_hash(algorithm));
 	if (sig_len != expect_sig_size) {
 		fprintf(stderr, "Expected signature size %u, got %u\n",
 			expect_sig_size, sig_len);

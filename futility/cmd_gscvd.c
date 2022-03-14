@@ -480,7 +480,7 @@ struct gsc_verification_data *create_gvd(struct file_buf *ap_firmware_file,
 	struct vb2_signature *sig;
 	const FmapHeader *fmh;
 
-	sig_size = vb2_rsa_sig_size(privk->sig_alg);
+	sig_size = vb2_sig_size(privk->sig_alg, privk->hash_alg);
 	ranges_size = ranges->range_count * sizeof(struct gscvd_ro_range);
 	total_size = sizeof(struct gsc_verification_data) +
 		root_pubk->key_size + sig_size + ranges_size;
@@ -706,7 +706,7 @@ static int validate_privk(struct vb2_keyblock *kblock,
 	}
 
 	pubn = BN_new();
-	pubn = BN_lebin2bn((uint8_t *)pubk.n, vb2_rsa_sig_size(pubk.sig_alg),
+	pubn = BN_lebin2bn((uint8_t *)pubk.n, vb2_sig_size(pubk.sig_alg, pubk.hash_alg),
 			   pubn);
 	rv = BN_cmp(pubn, privn);
 	if (rv)

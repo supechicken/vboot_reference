@@ -153,11 +153,12 @@ vb2_error_t vb2_verify_digest(const struct vb2_public_key *key,
 {
 	/* A signature is destroyed in the process of being verified. */
 	uint8_t *sig_data = vb2_signature_data_mutable(sig);
+	const uint32_t expected_sig_size = vb2_sig_size(key->sig_alg, key->hash_alg);
 
-	if (sig->sig_size != vb2_rsa_sig_size(key->sig_alg)) {
+	if (sig->sig_size != expected_sig_size) {
 		VB2_DEBUG("Wrong data signature size for algorithm, "
 			  "sig_size=%d, expected %d for algorithm %d.\n",
-			  sig->sig_size, vb2_rsa_sig_size(key->sig_alg),
+			  sig->sig_size, expected_sig_size,
 			  key->sig_alg);
 		return VB2_ERROR_VDATA_SIG_SIZE;
 	}
@@ -229,3 +230,17 @@ vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,
 
 	return vb2_verify_digest(key, sig, digest, &wblocal);
 }
+
+uint32_t vb2_sig_size(enum vb2_signature_algorithm sig_alg,
+		      enum vb2_hash_algorithm hash_alg)
+{
+	uint32_t digest_size = vb2_digest_size(hash_alg);
+	uint32_t sig_size = vb2_rsa_sig_size(sig_alg);
+
+	/* Handle unsigned hashes */
+	if (sig_alg == VB2_SIG_NONE)
+		return digest_size;
+
+	return sig_size;
+}
+

@@ -24,7 +24,7 @@ struct vb2_fw_preamble *vb2_create_fw_preamble(
 				kernel_subkey->key_size +
 				body_signature->sig_size);
 	uint32_t block_size = signed_size +
-		vb2_rsa_sig_size(signing_key->sig_alg);
+		vb2_sig_size(signing_key->sig_alg, signing_key->hash_alg);
 
 	/* Allocate keyblock */
 	struct vb2_fw_preamble *h =
@@ -62,7 +62,8 @@ struct vb2_fw_preamble *vb2_create_fw_preamble(
 
 	/* Set up signature struct so we can calculate the signature */
 	vb2_init_signature(&h->preamble_signature, block_sig_dest,
-			   vb2_rsa_sig_size(signing_key->sig_alg), signed_size);
+			   vb2_sig_size(signing_key->sig_alg, signing_key->hash_alg),
+			   signed_size);
 
 	/* Calculate signature */
 	struct vb2_signature *sig =
@@ -88,7 +89,7 @@ struct vb2_kernel_preamble *vb2_create_kernel_preamble(
 {
 	uint64_t signed_size = (sizeof(struct vb2_kernel_preamble) +
 				body_signature->sig_size);
-	uint32_t sig_size = vb2_rsa_sig_size(signing_key->sig_alg);
+	uint32_t sig_size = vb2_sig_size(signing_key->sig_alg, signing_key->hash_alg);
 	uint32_t block_size = signed_size + sig_size;
 
 	/* If the block size is smaller than the desired size, pad it */

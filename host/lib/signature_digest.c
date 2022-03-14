@@ -92,7 +92,7 @@ uint8_t* SignatureBuf(const uint8_t* buf, uint64_t len, const char* key_file,
 	}
 	if ((key = PEM_read_RSAPrivateKey(key_fp, NULL, NULL, NULL)))
 		signature = (uint8_t *)malloc(
-		    vb2_rsa_sig_size(vb2_crypto_to_signature(algorithm)));
+		    vb2_sig_size(vb2_crypto_to_signature(algorithm), hash_alg));
 	else
 		fprintf(stderr, "SignatureBuf(): "
 			"Couldn't read private key from: %s\n", key_file);

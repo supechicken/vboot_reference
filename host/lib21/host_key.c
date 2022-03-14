@@ -585,7 +585,7 @@ vb2_error_t vb21_unpack_key(struct vb2_public_key *key, const uint8_t *buf,
 
 	key->sig_alg = pkey->sig_alg;
 	if (key->sig_alg != VB2_SIG_NONE) {
-		sig_size = vb2_rsa_sig_size(key->sig_alg);
+		sig_size = vb2_sig_size(key->sig_alg, key->hash_alg);
 		if (!sig_size)
 			return VB2_ERROR_UNPACK_KEY_SIG_ALGORITHM;
 		rv = vb2_unpack_key_data(

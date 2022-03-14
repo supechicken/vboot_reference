@@ -144,7 +144,7 @@ struct vb2_signature *vb2_external_signature(const uint8_t *data, uint32_t size,
 
 	/* Allocate output signature */
 	uint32_t sig_size =
-		vb2_rsa_sig_size(vb2_crypto_to_signature(key_algorithm));
+		vb2_sig_size(vb2_crypto_to_signature(key_algorithm), vb2_alg);
 	struct vb2_signature *sig = vb2_alloc_signature(sig_size, size);
 	if (!sig) {
 		free(signature_digest);

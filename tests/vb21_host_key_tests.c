@@ -282,7 +282,7 @@ static void public_key_tests(const struct alg_combo *combo,
 static int test_algorithm(const struct alg_combo *combo, const char *keys_dir,
 			  const char *temp_dir)
 {
-	int rsa_bits = vb2_rsa_sig_size(combo->sig_alg) * 8;
+	int rsa_bits = vb2_sig_size(combo->sig_alg, combo->hash_alg) * 8;
 	char *pemfile;
 	char *keybfile;
 

@@ -108,7 +108,7 @@ struct vb2_signature *vb2_calculate_signature(
 
 	/* Allocate output signature */
 	struct vb2_signature *sig = (struct vb2_signature *)
-		vb2_alloc_signature(vb2_rsa_sig_size(key->sig_alg), size);
+		vb2_alloc_signature(vb2_sig_size(key->sig_alg, key->hash_alg), size);
 	if (!sig) {
 		free(signature_digest);
 		return NULL;

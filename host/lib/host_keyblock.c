@@ -26,7 +26,7 @@ struct vb2_keyblock *vb2_create_keyblock(
 	/* Allocate keyblock */
 	uint32_t signed_size = sizeof(struct vb2_keyblock) + data_key->key_size;
 	uint32_t sig_data_size =
-		(signing_key ? vb2_rsa_sig_size(signing_key->sig_alg) : 0);
+		(signing_key ? vb2_sig_size(signing_key->sig_alg, signing_key->hash_alg) : 0);
 	uint32_t block_size =
 		signed_size + VB2_SHA512_DIGEST_SIZE + sig_data_size;
 	struct vb2_keyblock *h = (struct vb2_keyblock *)calloc(block_size, 1);
@@ -92,7 +92,8 @@ struct vb2_keyblock *vb2_create_keyblock_external(
 		return NULL;
 
 	uint32_t signed_size = sizeof(struct vb2_keyblock) + data_key->key_size;
-	uint32_t sig_data_size = vb2_rsa_sig_size(vb2_crypto_to_signature(algorithm));
+	uint32_t sig_data_size = vb2_sig_size(vb2_crypto_to_signature(algorithm),
+					      vb2_crypto_to_hash(algorithm));
 	uint32_t block_size =
 		signed_size + VB2_SHA512_DIGEST_SIZE + sig_data_size;
 

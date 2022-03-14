@@ -125,22 +125,6 @@ vb2_error_t vb21_verify_common_subobject(const void *parent,
 	return VB2_SUCCESS;
 }
 
-uint32_t vb2_sig_size(enum vb2_signature_algorithm sig_alg,
-		      enum vb2_hash_algorithm hash_alg)
-{
-	uint32_t digest_size = vb2_digest_size(hash_alg);
-
-	/* Fail if we don't support the hash algorithm */
-	if (!digest_size)
-		return 0;
-
-	/* Handle unsigned hashes */
-	if (sig_alg == VB2_SIG_NONE)
-		return digest_size;
-
-	return vb2_rsa_sig_size(sig_alg);
-}
-
 const struct vb2_id *vb2_hash_id(enum vb2_hash_algorithm hash_alg)
 {
 	switch(hash_alg) {

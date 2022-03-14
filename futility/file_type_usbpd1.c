@@ -124,7 +124,7 @@ int ft_sign_usbpd1(const char *name, void *data)
 	}
 
 	/* Figure out what needs signing */
-	sig_size = vb2_rsa_sig_size(key_ptr->sig_alg);
+	sig_size = vb2_sig_size(key_ptr->sig_alg, key_ptr->hash_alg);
 	if (rw_size < sig_size) {
 		fprintf(stderr,
 			"The RW image is too small to hold the signature"
@@ -298,7 +298,7 @@ static void vb2_pubkey_from_usbpd1(struct vb2_public_key *key,
 				   const uint8_t *o_pubkey,
 				   uint32_t o_pubkey_size)
 {
-	key->arrsize = vb2_rsa_sig_size(sig_alg) / sizeof(uint32_t);
+	key->arrsize = vb2_sig_size(sig_alg, hash_alg) / sizeof(uint32_t);
 	key->n0inv = *((uint32_t *)o_pubkey + 2 * key->arrsize);
 	key->n = (uint32_t *)o_pubkey;
 	key->rr = (uint32_t *)o_pubkey + key->arrsize;
@@ -323,7 +323,7 @@ static vb2_error_t vb21_sig_from_usbpd1(struct vb21_signature **sig,
 		.sig_alg = sig_alg,
 		.hash_alg = hash_alg,
 		.data_size = data_size,
-		.sig_size = vb2_rsa_sig_size(sig_alg),
+		.sig_size = vb2_sig_size(sig_alg, hash_alg),
 		.sig_offset = sizeof(s),
 	};
 	uint32_t total_size = sizeof(s) + o_sig_size;
@@ -410,7 +410,7 @@ static vb2_error_t check_self_consistency(const uint8_t *buf, const char *name,
 					  enum vb2_hash_algorithm hash_alg)
 {
 	/* Where are the important bits? */
-	uint32_t sig_size = vb2_rsa_sig_size(sig_alg);
+	uint32_t sig_size = vb2_sig_size(sig_alg, hash_alg);
 	uint32_t sig_offset = rw_offset + rw_size - sig_size;
 	uint32_t pubkey_size = usbpd1_packed_key_size(sig_alg);
 	uint32_t pubkey_offset = ro_offset + ro_size - pubkey_size;

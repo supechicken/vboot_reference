@@ -48,7 +48,7 @@ vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 
 	/* Validity check key array size */
 	key->arrsize = buf32[0];
-	if (key->arrsize * sizeof(uint32_t) != vb2_rsa_sig_size(key->sig_alg))
+	if (key->arrsize * sizeof(uint32_t) != vb2_sig_size(key->sig_alg, key->hash_alg))
 		return VB2_ERROR_UNPACK_KEY_ARRAY_SIZE;
 
 	key->n0inv = buf32[1];

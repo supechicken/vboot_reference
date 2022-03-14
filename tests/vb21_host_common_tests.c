@@ -183,9 +183,6 @@ static void test_sig_size(void)
 	TEST_EQ(vb2_sig_size(VB2_SIG_INVALID, VB2_HASH_SHA256), 0,
 		"vb2_sig_size() sig invalid");
 
-	TEST_EQ(vb2_sig_size(VB2_SIG_RSA2048, VB2_HASH_INVALID), 0,
-		"vb2_sig_size() hash invalid");
-
 	TEST_EQ(vb2_sig_size(VB2_SIG_RSA2048, VB2_HASH_SHA256), 2048 / 8,
 		"vb2_sig_size() RSA2048");
 	TEST_EQ(vb2_sig_size(VB2_SIG_RSA4096, VB2_HASH_SHA256), 4096 / 8,
