@@ -67,7 +67,6 @@ VBSF_SRCS += \
 	firmware/stub/vboot_api_stub_sf.c
 
 VBSLK_SRCS += \
-	firmware/stub/vboot_api_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	firmware/stub/vboot_api_stub_stream.c
 
