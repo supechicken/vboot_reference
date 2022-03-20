@@ -21,6 +21,7 @@
 #include "2sysincludes.h"
 #include "file_keys.h"
 #include "host_common.h"
+#include "host_signature.h"
 
 /* ANSI Color coding sequences. */
 #define COL_GREEN "\e[1;32m"
@@ -37,8 +38,9 @@ int main(int argc, char* argv[])
 	int return_code = 1;  /* Default to error. */
 	uint8_t digest[VB2_MAX_DIGEST_SIZE];
 	struct vb2_packed_key *pk = NULL;
-	uint8_t *signature = NULL;
+	uint8_t *sig_data = NULL;
 	uint32_t sig_len = 0;
+	struct vb2_signature *sig = NULL;
 
 	if (argc != 5) {
 		int i;
@@ -72,10 +74,18 @@ int main(int argc, char* argv[])
 		goto error;
 	}
 
-	if (VB2_SUCCESS != vb2_read_file(argv[3], &signature, &sig_len)) {
+	if (VB2_SUCCESS != vb2_read_file(argv[3], &sig_data, &sig_len)) {
 		fprintf(stderr, "Can't read signature.\n");
 		goto error;
 	}
+
+	/* Data size doesn't matter. */
+	sig = vb2_alloc_signature(sig_len, 0);
+	if (!sig) {
+		fprintf(stderr, "Can't allocate vb2_signature object.\n");
+		goto error;
+	}
+	memcpy(vb2_signature_data_mutable(sig), sig_data, sig_len);
 
 	uint32_t expect_sig_size =
 			vb2_sig_size(vb2_crypto_to_signature(algorithm),
@@ -92,7 +102,7 @@ int main(int argc, char* argv[])
 		goto error;
 	}
 
-	if (VB2_SUCCESS == vb2_rsa_verify_digest(&k2, signature, digest, &wb)) {
+	if (VB2_SUCCESS == vb2_verify_digest(&k2, sig, digest, &wb)) {
 		return_code = 0;
 		fprintf(stderr, "Signature Verification "
 			COL_GREEN "SUCCEEDED" COL_STOP "\n");
@@ -104,8 +114,10 @@ int main(int argc, char* argv[])
 error:
 	if (pk)
 		free(pk);
-	if (signature)
-		free(signature);
+	if (sig_data)
+		free(sig_data);
+	if (sig)
+		free(sig);
 
 	return return_code;
 }
