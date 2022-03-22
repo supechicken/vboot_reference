@@ -605,7 +605,7 @@ int write_system_firmware(const struct firmware_image *image,
 /* Helper function to return host software write protection status. */
 static int host_get_wp_sw(void)
 {
-	return flashrom_get_wp(PROG_HOST);
+	return flashrom_get_wp(PROG_HOST, -1);
 }
 
 /* Helper function to configure all properties. */
