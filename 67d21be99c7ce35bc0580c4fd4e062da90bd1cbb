@@ -34,6 +34,24 @@
       "parentUuid": "7fe24d8e_5e592d99",
       "revId": "67d21be99c7ce35bc0580c4fd4e062da90bd1cbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6114ffb0_9f0a9254",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-03-24T01:32:08Z",
+      "side": 1,
+      "message": "You can consider this as another \"emulation\" path. No need to let it block your flashrom integration work - it\u0027s just for futility to debug when needed. For normal path we\u0027ll be still using flashrom_drv and libflashrom.",
+      "parentUuid": "bc921565_65e4edde",
+      "revId": "67d21be99c7ce35bc0580c4fd4e062da90bd1cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
