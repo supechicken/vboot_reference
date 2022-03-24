@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe24d8e_5e592d99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-03-24T00:52:51Z",
+      "side": 1,
+      "message": "Hold\u0027up! Why was this done? I only just noticed this sneak past.\n\nThere is also no bug or any other context as well nor much review or design here on how we are going to actually maintain this.\n\nFurthermore it unwinds a lot of work to get the flashrom coupling code in one place under flashrom_drv and out of futility itself. If we want to have multiple backends we need to have that implemented within flashrom_drv.c",
+      "revId": "67d21be99c7ce35bc0580c4fd4e062da90bd1cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
