@@ -144,34 +144,27 @@ static int load_ap_firmware(const char *file_name, struct file_buf *file,
 			int mode)
 {
 	int fd;
-	int rv;
+	uint8_t *buf;
+	uint32_t len;
 
-	fd = open(file_name, mode);
-	if (fd < 0) {
-		ERROR("Can't open %s: %s\n", file_name,
-		      strerror(errno));
+	if (futil_open_and_map_file(file_name, &fd, FILE_RW, &buf, &len))
+		return 1;
+
+	file->fd = fd;
+	file->data = buf;
+	file->len = len;
+
+	if (!fmap_find_by_name(file->data, file->len, NULL, "RO_GSCVD",
+			       &file->ro_gscvd)) {
+		ERROR("Could not find RO_GSCVD in the FMAP\n");
+		futil_unmap_and_close_file(fd, FILE_RW, buf, len);
+		file->fd = -1;
+		file->data = NULL;
+		file->len = 0;
 		return 1;
 	}
 
-	file->fd = fd;
-	do {
-		rv = 1;
-
-		if (futil_map_file(fd, mode == O_RDWR ? MAP_RW : MAP_RO,
-				   &file->data, &file->len)) {
-			file->data = NULL;
-			break;
-		}
-
-		if (!fmap_find_by_name(file->data, file->len, NULL, "RO_GSCVD",
-				       &file->ro_gscvd)) {
-			ERROR("Could not find RO_GSCVD in the FMAP\n");
-			break;
-		}
-		rv = 0;
-	} while (false);
-
-	return rv;
+	return 0;
 }
 
 /**
@@ -857,6 +850,11 @@ static int validate_gscvd(int argc, char *argv[])
 		rv = 0;
 	} while (false);
 
+	if (ap_firmware_file.fd != -1)
+		futil_unmap_and_close_file(ap_firmware_file.fd, FILE_RW,
+					   ap_firmware_file.data,
+					   ap_firmware_file.len);
+
 	return rv;
 }
 
@@ -1038,15 +1036,10 @@ static int do_gscvd(int argc, char *argv[])
 	free(kblock);
 	vb2_private_key_free(plat_privk);
 
-	/* Now flush the file. */
-	if (ap_firmware_file.data) {
-		rv |= futil_unmap_file(ap_firmware_file.fd, true,
-				       ap_firmware_file.data,
-				       ap_firmware_file.len);
-	}
-
 	if (ap_firmware_file.fd != -1)
-		close(ap_firmware_file.fd);
+		futil_unmap_and_close_file(ap_firmware_file.fd, FILE_RW,
+					   ap_firmware_file.data,
+					   ap_firmware_file.len);
 
 	return rv;
 }
