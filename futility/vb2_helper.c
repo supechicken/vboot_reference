@@ -60,7 +60,7 @@ static int vb2_public_key_sha1sum(struct vb2_public_key *key, uint8_t *digest)
 	return 1;
 }
 
-int ft_show_vb21_pubkey(const char *name, uint8_t *buf, uint32_t len,
+int show_vb21_pubkey_buf(const char *name, uint8_t *buf, uint32_t len,
 			void *data)
 {
 	struct vb2_public_key key;
@@ -91,6 +91,23 @@ int ft_show_vb21_pubkey(const char *name, uint8_t *buf, uint32_t len,
 	return 0;
 }
 
+int ft_show_vb21_pubkey(const char *name, void *data)
+{
+	int fd = -1;
+	uint8_t *buf;
+	uint32_t len;
+	int rv;
+
+	rv = futil_open_and_map_file(name, &fd, 0, &buf, &len);
+	if (rv)
+		goto done;
+
+	rv = show_vb21_pubkey_buf(name, buf, len, data);
+done:
+	futil_unmap_and_close_file(fd, 0, buf, len);
+	return rv;
+}
+
 static int vb2_private_key_sha1sum(struct vb2_private_key *key, uint8_t *digest)
 {
 	uint8_t *buf;
@@ -106,7 +123,7 @@ static int vb2_private_key_sha1sum(struct vb2_private_key *key, uint8_t *digest)
 	return 1;
 }
 
-int ft_show_vb21_privkey(const char *name, uint8_t *buf, uint32_t len,
+int show_vb21_privkey_buf(const char *name, uint8_t *buf, uint32_t len,
 			 void *data)
 {
 	struct vb2_private_key *key = 0;
@@ -133,6 +150,23 @@ int ft_show_vb21_privkey(const char *name, uint8_t *buf, uint32_t len,
 	}
 	vb2_private_key_free(key);
 	return 0;
+}
+
+int ft_show_vb21_privkey(const char *name, void *data)
+{
+	int fd = -1;
+	uint8_t *buf;
+	uint32_t len;
+	int rv;
+
+	rv = futil_open_and_map_file(name, &fd, 0, &buf, &len);
+	if (rv)
+		goto done;
+
+	rv = show_vb21_privkey_buf(name, buf, len, data);
+done:
+	futil_unmap_and_close_file(fd, 0, buf, len);
+	return rv;
 }
 
 static RSA *rsa_from_buffer(uint8_t *buf, uint32_t len)
@@ -172,7 +206,7 @@ enum futil_file_type ft_recognize_pem(uint8_t *buf, uint32_t len)
 	return FILE_TYPE_UNKNOWN;
 }
 
-int ft_show_pem(const char *name, uint8_t *buf, uint32_t len, void *data)
+int show_pem_buf(const char *name, uint8_t *buf, uint32_t len, void *data)
 {
 	RSA *rsa_key;
 	uint8_t *keyb;
@@ -210,4 +244,21 @@ int ft_show_pem(const char *name, uint8_t *buf, uint32_t len, void *data)
 	free(keyb);
 	RSA_free(rsa_key);
 	return 0;
+}
+
+int ft_show_pem(const char *name, void *data)
+{
+	int fd = -1;
+	uint8_t *buf;
+	uint32_t len;
+	int rv;
+
+	rv = futil_open_and_map_file(name, &fd, 0, &buf, &len);
+	if (rv)
+		goto done;
+
+	rv = show_pem_buf(name, buf, len, data);
+done:
+	futil_unmap_and_close_file(fd, 0, buf, len);
+	return rv;
 }

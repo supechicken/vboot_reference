@@ -5,6 +5,7 @@
 
 #include <assert.h>
 #include <errno.h>
+#include <fcntl.h>
 #if !defined(HAVE_MACOS) && !defined(__FreeBSD__) && !defined(__OpenBSD__)
 #include <linux/fs.h>		/* For BLKGETSIZE64 */
 #endif
@@ -258,6 +259,37 @@ void futil_copy_file_or_die(const char *infile, const char *outfile)
 	exit(1);
 }
 
+enum futil_file_err futil_open_file(const char *infile, int *fd, int writeable)
+{
+	if (writeable) {
+		VB2_DEBUG("open RW %s\n", infile);
+		*fd = open(infile, O_RDWR);
+		if (*fd < 0) {
+			fprintf(stderr, "Can't open %s for writing: %s\n",
+				infile, strerror(errno));
+			return FILE_ERR_OPEN;
+		}
+	} else {
+		VB2_DEBUG("open RO %s\n", infile);
+		*fd = open(infile, O_RDONLY);
+		if (*fd < 0) {
+			fprintf(stderr, "Can't open %s for reading: %s\n",
+				infile, strerror(errno));
+			return FILE_ERR_OPEN;
+		}
+	}
+	return FILE_ERR_NONE;
+}
+
+enum futil_file_err futil_close_file(int fd)
+{
+	if (fd >= 0 && close(fd)) {
+		fprintf(stderr, "Error when closing ifd: %s\n",
+			strerror(errno));
+		return FILE_ERR_CLOSE;
+	}
+	return FILE_ERR_NONE;
+}
 
 enum futil_file_err futil_map_file(int fd, int writeable,
 				   uint8_t **buf, uint32_t *len)
@@ -325,6 +357,31 @@ enum futil_file_err futil_unmap_file(int fd, int writeable,
 	return err;
 }
 
+enum futil_file_err futil_open_and_map_file(const char *infile, int *fd,
+					    int writeable, uint8_t **buf,
+					    uint32_t *len)
+{
+	enum futil_file_err rv = futil_open_file(infile, fd, writeable);
+	if (rv != FILE_ERR_NONE)
+		return rv;
+	return futil_map_file(*fd, writeable,  buf, len);
+}
+
+enum futil_file_err futil_unmap_and_close_file(int fd, int writeable,
+					       uint8_t *buf, uint32_t len)
+{
+	enum futil_file_err rv = FILE_ERR_NONE;
+
+	if (buf)
+		rv = futil_unmap_file(fd, writeable, buf, len);
+	if (rv != FILE_ERR_NONE)
+		return rv;
+
+	if (fd != -1)
+		return futil_close_file(fd);
+	else
+		return FILE_ERR_NONE;
+}
 
 #define DISK_SECTOR_SIZE 512
 enum futil_file_type ft_recognize_gpt(uint8_t *buf, uint32_t len)
