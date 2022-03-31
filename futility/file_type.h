@@ -53,9 +53,7 @@ int futil_file_type_show(enum futil_file_type type,
  * Returns zero on success. It's up to the caller to ensure that only valid
  * file types are invoked.
  */
-int futil_file_type_sign(enum futil_file_type type,
-			 const char *filename,
-			 uint8_t *buf, uint32_t len);
+int futil_file_type_sign(enum futil_file_type type, const char *filename);
 
 /*
  * Declare the file_type functions. Certain functions are reused for more than
@@ -67,11 +65,14 @@ int futil_file_type_sign(enum futil_file_type type,
 	enum futil_file_type FOO(uint8_t *buf, uint32_t len);
 #define S_(FOO) \
 	int FOO(const char *name, uint8_t *buf, uint32_t len, void *data);
+#define SG_(FOO) \
+	int FOO(const char *name, void *data);
 #define NONE
 #define FILE_TYPE(A, B, C, D, E, F) D E F
 #include "file_type.inc"
 #undef FILE_TYPE
 #undef NONE
+#undef SG_
 #undef S_
 #undef R_
 #pragma GCC diagnostic pop

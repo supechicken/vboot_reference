@@ -201,25 +201,39 @@ int ft_show_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
 	return 0;
 }
 
-int ft_sign_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
+int ft_sign_rwsig(const char *name, void *nuthin)
 {
 	struct vb21_signature *tmp_sig = 0;
 	struct vb2_public_key *pubkey = 0;
 	struct vb21_packed_key *packedkey = 0;
 	uint8_t *keyb_data = 0;
 	uint32_t keyb_size;
-	uint8_t* data = buf; /* data to be signed */
-	uint32_t r, data_size = len, sig_size = SIGNATURE_RSVD_SIZE;
+	uint8_t *data; /* data to be signed */
+	uint32_t r, data_size, sig_size = SIGNATURE_RSVD_SIZE;
 	int retval = 1;
 	FmapHeader *fmap = NULL;
 	FmapAreaHeader *fmaparea;
 	struct vb21_signature *old_sig = 0;
+	uint8_t *buf = NULL;
+	uint32_t len;
+	int fd = -1;
+
+	retval = futil_open_file(name, &fd, sign_option.mapping);
+	if (retval)
+		return retval;
+
+	retval = futil_map_file(fd, sign_option.mapping, &buf, &len);
+	if (retval)
+		goto done;
+
+	data = buf;
+	data_size = len;
 
 	VB2_DEBUG("name %s len  0x%08x (%d)\n", name, len, len);
 
 	/* If we don't have a distinct OUTFILE, look for an existing sig */
 	if (sign_option.inout_file_count < 2) {
-		fmap = fmap_find(buf, len);
+		fmap = fmap_find(data, len);
 
 		if (fmap) {
 			/* This looks like a full image. */
@@ -395,14 +409,14 @@ int ft_sign_rwsig(const char *name, uint8_t *buf, uint32_t len, void *nuthin)
 	/* Finally */
 	retval = 0;
 done:
-	if (tmp_sig)
-		free(tmp_sig);
+	if (buf)
+		futil_unmap_file(fd, sign_option.mapping, buf, len);
+	futil_close_file(fd);
+	free(tmp_sig);
 	if (pubkey)
 		vb2_public_key_free(pubkey);
-	if (packedkey)
-		free(packedkey);
-	if (keyb_data)
-		free(keyb_data);
+	free(packedkey);
+	free(keyb_data);
 
 	return retval;
 }

@@ -78,7 +78,7 @@ static int parse_size_opts(uint32_t len,
 	return 1;
 }
 
-int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
+int ft_sign_usbpd1(const char *name, void *data)
 {
 	struct vb2_private_key *key_ptr = 0;
 	struct vb21_signature *sig_ptr = 0;
@@ -94,6 +94,17 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	uint32_t ro_offset;
 	uint32_t rw_offset;
 	uint32_t r;
+	uint8_t *buf = NULL;
+	uint32_t len;
+	int fd = -1;
+
+	retval = futil_open_file(name, &fd, sign_option.mapping);
+	if (retval)
+		return retval;
+
+	retval = futil_map_file(fd, sign_option.mapping, &buf, &len);
+	if (retval)
+		goto done;
 
 	VB2_DEBUG("name %s len  %#.8x (%d)\n", name, len, len);
 
@@ -237,6 +248,9 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	/* Finally */
 	retval = 0;
 done:
+	if (buf)
+		futil_unmap_file(fd, sign_option.mapping, buf, len);
+	futil_close_file(fd);
 	if (key_ptr)
 		vb2_private_key_free(key_ptr);
 	if (keyb_data)

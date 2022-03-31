@@ -428,7 +428,7 @@ static int (*fmap_sign_fn[])(const char *name, uint8_t *buf, uint32_t len,
 _Static_assert(ARRAY_SIZE(fmap_sign_fn) == NUM_BIOS_COMPONENTS,
 	       "Size of fmap_sign_fn[] should match NUM_BIOS_COMPONENTS");
 
-int ft_sign_bios(const char *name, uint8_t *buf, uint32_t len, void *data)
+int ft_sign_bios(const char *name, void *data)
 {
 	FmapHeader *fmap;
 	FmapAreaHeader *ah = 0;
@@ -436,6 +436,17 @@ int ft_sign_bios(const char *name, uint8_t *buf, uint32_t len, void *data)
 	enum bios_component c;
 	int retval = 0;
 	struct bios_state_s state;
+	int fd = -1;
+	uint8_t *buf = NULL;
+	uint32_t len = 0;
+
+	retval = futil_open_file(name, &fd, sign_option.mapping);
+	if (retval)
+		return retval;
+
+	retval = futil_map_file(fd, sign_option.mapping, &buf, &len);
+	if (retval)
+		goto done;
 
 	memset(&state, 0, sizeof(state));
 
@@ -468,6 +479,10 @@ int ft_sign_bios(const char *name, uint8_t *buf, uint32_t len, void *data)
 	}
 
 	retval += sign_bios_at_end(&state);
+done:
+	if (buf)
+		futil_unmap_file(fd, sign_option.mapping, buf, len);
+	futil_close_file(fd);
 
 	return retval;
 }

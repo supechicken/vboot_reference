@@ -25,7 +25,7 @@ struct futil_file_type_s {
 	/* Functions to identify, display, and sign this type of file. */
 	enum futil_file_type (*recognize)(uint8_t *buf, uint32_t len);
 	int (*show)(const char *name, uint8_t *buf, uint32_t len, void *data);
-	int (*sign)(const char *name, uint8_t *buf, uint32_t len, void *data);
+	int (*sign)(const char *name, void *data);
 };
 
 /* Populate a list of file types and operator functions. */
@@ -33,11 +33,13 @@ static const struct futil_file_type_s futil_file_types[] = {
 	{"unknown",       "not something we know about", 0, 0, 0},
 #define R_(x) x
 #define S_(x) x
+#define SG_(x) x
 #define NONE 0
 #define FILE_TYPE(A, B, C, D, E, F) {B, C, D, E, F},
 #include "file_type.inc"
 #undef FILE_TYPE
 #undef NONE
+#undef SG_
 #undef S_
 #undef R_
 };
@@ -166,12 +168,10 @@ int futil_file_type_show(enum futil_file_type type,
 	return 1;
 }
 
-int futil_file_type_sign(enum futil_file_type type,
-			 const char *filename,
-			 uint8_t *buf, uint32_t len)
+int futil_file_type_sign(enum futil_file_type type, const char *filename)
 {
 	if (futil_file_types[type].sign)
-		return futil_file_types[type].sign(filename, buf, len, 0);
+		return futil_file_types[type].sign(filename, 0);
 
 	fprintf(stderr, "Don't know how to sign %s (type %s)\n",
 		filename, futil_file_type_name(type));
