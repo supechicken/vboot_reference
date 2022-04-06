@@ -396,12 +396,14 @@ FWLIB_SRCS = \
 # TPM lightweight command library
 ifeq ($(filter-out 0,${TPM2_MODE}),)
 TLCL_SRCS = \
-	firmware/lib/tpm_lite/tlcl.c
+	firmware/lib/tpm_lite/mocked_tlcl.c
+#	firmware/lib/tpm_lite/tlcl.c
 else
 # TODO(apronin): tests for TPM2 case?
 TLCL_SRCS = \
-	firmware/lib/tpm2_lite/tlcl.c \
-	firmware/lib/tpm2_lite/marshaling.c
+	firmware/lib/tpm_lite/mocked_tlcl.c
+#	firmware/lib/tpm2_lite/tlcl.c \
+#	firmware/lib/tpm2_lite/marshaling.c
 endif
 
 # Support real TPM unless MOCK_TPM is set
