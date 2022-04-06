@@ -531,6 +531,8 @@ enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 
+	return VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
+
 	if (gbb->flags & VB2_GBB_FLAG_DEFAULT_DEV_BOOT_ALTFW)
 		return VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW;
 
@@ -713,9 +715,14 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
-
+	
 	/* Cast boot mode to non-constant and assign */
 	enum vb2_boot_mode *boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+
+	*boot_mode = VB2_BOOT_MODE_DEVELOPER;
+	return;
+
+
 	*boot_mode = VB2_BOOT_MODE_NORMAL;
 
 	/*
