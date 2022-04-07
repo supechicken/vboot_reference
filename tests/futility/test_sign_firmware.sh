@@ -134,8 +134,8 @@ ${FUTILITY} verify --publickey ${KEYDIR}/root_key.vbpubk ${GOOD_OUT} \
   | awk '/Firmware body size:/ {print $4}' > ${TMP}.good.body
 ${FUTILITY} dump_fmap -p ${GOOD_OUT} \
   | awk '/FW_MAIN_/ {print $3}' > ${TMP}.good.fw_main
-# This should fail because they're different
-if cmp ${TMP}.good.body ${TMP}.good.fw_main; then false; fi
+# This should match
+cmp ${TMP}.good.body ${TMP}.good.fw_main
 
 # Make sure that the BIOS with the bad vblocks signed the whole fw body
 ${FUTILITY} verify --publickey ${KEYDIR}/root_key.vbpubk ${MORE_OUT} \
@@ -148,7 +148,7 @@ cmp ${TMP}.onemore.body ${TMP}.good.fw_main
 
 
 # Sign the last one again but don't specify the version or the preamble flags.
-# The version should default to 1, but the preamble flags should be preserved.
+# The preamble flags and firmware version should be preserved.
 : $(( count++ ))
 echo -n "$count " 1>&3
 
@@ -160,7 +160,7 @@ ${FUTILITY} sign \
   ${MORE_OUT} ${MORE_OUT}.2
 
 m=$(${FUTILITY} verify --publickey ${KEYDIR}/root_key.vbpubk ${MORE_OUT}.2 \
-  | egrep 'Firmware version: +1$|Preamble flags: +8$' | wc -l)
+  | egrep 'Firmware version: +14$|Preamble flags: +8$' | wc -l)
 [ "$m" = "4" ]
 
 

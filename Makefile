@@ -436,13 +436,16 @@ ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
 # Maintain behaviour of default on.
 USE_FLASHROM ?= 1
 
+COMMONLIB_SRCS = \
+	host/lib/cbfstool.c \
+	host/lib/subprocess.c
+
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
 $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
-COMMONLIB_SRCS = \
+COMMONLIB_SRCS += \
 	host/lib/flashrom.c \
-	host/lib/flashrom_drv.c \
-	host/lib/subprocess.c
+	host/lib/flashrom_drv.c
 CFLAGS += -DUSE_FLASHROM
 endif
 
