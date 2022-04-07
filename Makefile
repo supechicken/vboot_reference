@@ -441,8 +441,7 @@ $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
 COMMONLIB_SRCS = \
 	host/lib/flashrom.c \
-	host/lib/flashrom_drv.c \
-	host/lib/subprocess.c
+	host/lib/flashrom_drv.c
 CFLAGS += -DUSE_FLASHROM
 endif
 
@@ -460,6 +459,7 @@ UTILLIB_SRCS = \
 	cgpt/cgpt_show.c \
 	futility/dump_kernel_config_lib.c \
 	$(CROSSYSTEM_ARCH_C) \
+	host/lib/cbfstool.c \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \
 	host/lib/crypto.c \
@@ -473,6 +473,7 @@ UTILLIB_SRCS = \
 	host/lib/host_signature.c \
 	host/lib/host_signature2.c \
 	host/lib/signature_digest.c \
+	host/lib/subprocess.c \
 	host/lib/util_misc.c \
 	host/lib21/host_common.c \
 	host/lib21/host_key.c \
