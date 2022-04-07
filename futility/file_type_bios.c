@@ -31,7 +31,7 @@ static void fmap_limit_area(FmapAreaHeader *ah, uint32_t len)
 {
 	uint32_t sum = ah->area_offset + ah->area_size;
 	if (sum < ah->area_size || sum > len) {
-		VB2_DEBUG("%s %#x + %#x > %#x\n",
+		VB2_DEBUG("%.*s %#x + %#x > %#x\n", FMAP_NAMELEN,
 			  ah->area_name, ah->area_offset, ah->area_size, len);
 		ah->area_offset = 0;
 		ah->area_size = 0;
@@ -401,44 +401,134 @@ static int sign_bios_at_end(struct bios_state_s *state)
 	}
 
 	/* FW B is always normal keys */
-	retval |= write_new_preamble(vblock_b, fw_b,
-				     sign_option.signprivate,
-				     sign_option.keyblock);
-
-
-
+	if (vblock_b->len)
+		retval |= write_new_preamble(vblock_b, fw_b,
+					     sign_option.signprivate,
+					     sign_option.keyblock);
 
 	if (sign_option.loemid) {
 		retval |= write_loem("A", vblock_a);
-		retval |= write_loem("B", vblock_b);
+		if (vblock_b->len)
+			retval |= write_loem("B", vblock_b);
 	}
 
 	return retval;
 }
 
-/* Functions to call while preparing to sign the bios */
-static int (*fmap_sign_fn[])(const char *name, uint8_t *buf, uint32_t len,
-			     void *data) = {
-	0,
-	fmap_sign_fw_main,
-	fmap_sign_fw_main,
-	fmap_sign_fw_preamble,
-	fmap_sign_fw_preamble,
-};
-_Static_assert(ARRAY_SIZE(fmap_sign_fn) == NUM_BIOS_COMPONENTS,
-	       "Size of fmap_sign_fn[] should match NUM_BIOS_COMPONENTS");
+/* On success returns new size of truncated CBFS area.  Otherwise it returns
+ * zero, because CBFS should not be empty. */
+static size_t truncate_bios_area(const char *file_name, const char *area_name)
+{
+	char buf[256];
+	int result;
+	int ret = 0;
+	char *command;
+
+	if (!asprintf(&command, "cbfstool '%s' truncate -r '%s'", file_name,
+		      area_name)) {
+		ERROR("Failed to compose command, abort.\n");
+		exit(1);
+	}
+
+	FILE *fp = popen(command, "r");
+
+	VB2_DEBUG("%s\n", command);
+	buf[0] = 0;
+
+	if (!fp) {
+		VB2_DEBUG("Execution error of command: %s\n", command);
+		goto done;
+	}
+
+	if (!fgets(buf, sizeof(buf), fp)) {
+		VB2_DEBUG("Failed to read output of command: %s\n", command);
+		goto done;
+	}
+
+	result = pclose(fp);
+	if (!WIFEXITED(result)) {
+		VB2_DEBUG("Command did not exit correctly: %s\n", command);
+		goto done;
+	}
+
+	if (WEXITSTATUS(result) != 0) {
+		VB2_DEBUG("Failed to truncate area '%s' in file '%s'. Assuming "
+			  "it does not exist\n",
+			  area_name, file_name);
+		goto done;
+	}
+
+	if (sscanf(buf, "%i", &ret) != 1) {
+		VB2_DEBUG("Failed to parse command output. Decimal or hex "
+			  "value expected.\n");
+		ret = 0;
+	}
+done:
+	free(command);
+	return ret;
+}
+
+static int prepare_slot(uint8_t *buf, uint32_t len, FmapHeader *fmap,
+			size_t fw_size, enum bios_component fw_c,
+			enum bios_component vblock_c,
+			struct bios_state_s *state)
+{
+	FmapAreaHeader *ah;
+	const char *fw_main_name = fmap_name[fw_c];
+	const char *vblock_name = fmap_name[vblock_c];
+
+	VB2_DEBUG("Preparing areas: %s and %s\n", fw_main_name, vblock_name);
+
+	/* FW_MAIN */
+	if (!fmap_find_by_name(buf, len, fmap, fw_main_name, &ah)) {
+		ERROR("%s area not found in FMAP\n", fw_main_name);
+		return 1;
+	}
+	fmap_limit_area(ah, len);
+	state->c = fw_c;
+	state->area[fw_c].buf = buf + ah->area_offset;
+	state->area[fw_c].len = fw_size;
+	fmap_sign_fw_main(fw_main_name, state->area[fw_c].buf,
+			  state->area[fw_c].len, state);
+
+	/* Corresponding VBLOCK */
+	if (!fmap_find_by_name(buf, len, fmap, vblock_name, &ah)) {
+		ERROR("%s area not found in FMAP\n", vblock_name);
+		return 1;
+	}
+	fmap_limit_area(ah, len);
+	state->c = vblock_c;
+	state->area[vblock_c].buf = buf + ah->area_offset;
+	state->area[vblock_c].len = ah->area_size;
+	if (fmap_sign_fw_preamble(vblock_name, state->area[vblock_c].buf,
+				  state->area[vblock_c].len, state)) {
+		ERROR("Failed to process area %s\n", vblock_name);
+		return 1;
+	}
+
+	return 0;
+}
 
 int ft_sign_bios(const char *name, void *data)
 {
 	FmapHeader *fmap;
-	FmapAreaHeader *ah = 0;
-	char ah_name[FMAP_NAMELEN + 1];
-	enum bios_component c;
 	int retval = 0;
 	struct bios_state_s state;
 	int fd = -1;
 	uint8_t *buf = NULL;
 	uint32_t len = 0;
+	size_t fw_main_a_size;
+	size_t fw_main_b_size;
+
+	fw_main_a_size =
+		truncate_bios_area(name, fmap_name[BIOS_FMAP_FW_MAIN_A]);
+	fw_main_b_size =
+		truncate_bios_area(name, fmap_name[BIOS_FMAP_FW_MAIN_B]);
+
+	if (!fw_main_a_size && !fw_main_b_size) {
+		VB2_DEBUG("There are no areas to sign. Aborting.");
+		return 1;
+	}
 
 	retval = futil_open_file(name, &fd, sign_option.mapping);
 	if (retval)
@@ -452,33 +542,24 @@ int ft_sign_bios(const char *name, void *data)
 
 	/* We've already checked, so we know this will work. */
 	fmap = fmap_find(buf, len);
-	for (c = 0; c < NUM_BIOS_COMPONENTS; c++) {
-		/* We know one of these will work, too */
-		if (fmap_find_by_name(buf, len, fmap, fmap_name[c], &ah)) {
-			/* But the file might be truncated */
-			fmap_limit_area(ah, len);
-			/* The name is not necessarily null-terminated */
-			snprintf(ah_name, sizeof(ah_name), "%s", ah->area_name);
 
-			/* Update the state we're passing around */
-			state.c = c;
-			state.area[c].buf = buf + ah->area_offset;
-			state.area[c].len = ah->area_size;
-
-			VB2_DEBUG("examining FMAP area %d (%s),"
-				  " offset=0x%08x len=0x%08x\n",
-				  c, ah_name, ah->area_offset, ah->area_size);
-
-			/* Go look at it, but abort on error */
-			if (fmap_sign_fn[c])
-				retval += fmap_sign_fn[c](ah_name,
-							  state.area[c].buf,
-							  state.area[c].len,
-							  &state);
-		}
+	if (fw_main_a_size) {
+		retval = prepare_slot(buf, len, fmap, fw_main_a_size,
+				      BIOS_FMAP_FW_MAIN_A, BIOS_FMAP_VBLOCK_A,
+				      &state);
+		if (retval)
+			goto done;
 	}
 
-	retval += sign_bios_at_end(&state);
+	if (fw_main_b_size) {
+		retval = prepare_slot(buf, len, fmap, fw_main_b_size,
+				      BIOS_FMAP_FW_MAIN_B, BIOS_FMAP_VBLOCK_B,
+				      &state);
+		if (retval)
+			goto done;
+	}
+
+	retval = sign_bios_at_end(&state);
 done:
 	if (buf)
 		futil_unmap_file(fd, sign_option.mapping, buf, len);
