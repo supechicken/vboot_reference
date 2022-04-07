@@ -19,12 +19,20 @@ ${SCRIPT_DIR}/futility/data/bios_link_mp.bin
 ${SCRIPT_DIR}/futility/data/bios_peppy_mp.bin
 "
 
+# BIOS image containing CBFS RW/A and RW/B, and signed with developer keys.
+INFILES="${INFILES}
+${SCRIPT_DIR}/futility/data/bios_voxel_dev.bin
+"
+
 # We also want to test that we can sign an image without any valid firmware
 # preambles. That one won't be able to tell how much of the FW_MAIN region is
 # the valid firmware, so it'll have to sign the entire region.
 GOOD_VBLOCKS=${SCRIPT_DIR}/futility/data/bios_peppy_mp.bin
 ONEMORE=bios_peppy_mp_no_vblock.bin
+CLEAN_B=bios_peppy_mp_clean_b_slot.bin
 cp ${GOOD_VBLOCKS} ${ONEMORE}
+cp ${GOOD_VBLOCKS} ${CLEAN_B}
+
 ${FUTILITY} load_fmap ${ONEMORE} VBLOCK_A:/dev/urandom VBLOCK_B:/dev/zero
 INFILES="${INFILES} ${ONEMORE}"
 
@@ -166,6 +174,53 @@ m=$(${FUTILITY} verify --publickey ${KEYDIR}/root_key.vbpubk ${MORE_OUT}.3 \
   | egrep 'Firmware version: +1$|Preamble flags: +0$' | wc -l)
 [ "$m" = "4" ]
 
+
+# Check signing when B slot is zero
+: $(( count++ ))
+echo -n "$count " 1>&3
+
+${FUTILITY} load_fmap ${CLEAN_B} VBLOCK_B:/dev/zero FW_MAIN_B:/dev/zero
+${FUTILITY} sign \
+  -s ${KEYDIR}/firmware_data_key.vbprivk \
+  -b ${KEYDIR}/firmware.keyblock \
+  -k ${KEYDIR}/kernel_subkey.vbpubk \
+  ${CLEAN_B} ${CLEAN_B}.1
+
+${FUTILITY} verify --publickey ${KEYDIR}/root_key.vbpubk ${CLEAN_B}.1 \
+  | awk '/Firmware body size:/ {print $4}' > ${TMP}.clean_b.body
+${FUTILITY} dump_fmap -p ${CLEAN_B}.1 \
+  | awk '/FW_MAIN_/ {print $3}' > ${TMP}.clean_b.fw_main
+
+# These should not be equal, as FW_MAIN_A size should be kept intact, when size
+# of FW_MAIN_B should be taken from FlashMap
+if cmp ${TMP}.clean_b.body ${TMP}.clean_b.fw_main ; then false; fi
+if cmp ${TMP}.clean_b.body ${TMP}.good.body ; then false; fi
+
+
+# Check signing when there is no B slot
+GOOD_IMG=${TMP}.${GOOD_VBLOCKS##*/}
+${FUTILITY} remove_fmap ${GOOD_VBLOCKS} \
+  -o ${GOOD_IMG}.no_b_slot.bin FW_MAIN_B VBLOCK_B
+${FUTILITY} --debug sign \
+  -s ${KEYDIR}/firmware_data_key.vbprivk \
+  -b ${KEYDIR}/firmware.keyblock \
+  -k ${KEYDIR}/kernel_subkey.vbpubk \
+  -v 1 \
+  ${GOOD_IMG}.no_b_slot.bin ${GOOD_IMG}.no_b_slot.signed
+
+${FUTILITY} verify --publickey ${KEYDIR}/root_key.vbpubk \
+    ${GOOD_IMG}.no_b_slot.signed \
+  | awk '/Firmware body size:/ {print $4}' > ${TMP}.no_b_slot.body
+${FUTILITY} dump_fmap -p ${GOOD_IMG}.no_b_slot.signed \
+  | awk '/FW_MAIN_/ {print $3}' > ${TMP}.no_b_slot.fw_main
+
+if cmp ${TMP}.no_b_slot.body ${TMP}.no_b_slot.fw_main ; then false; fi
+if cmp ${TMP}.clean_b.body ${TMP}.good.body ; then false; fi
+
+m=$(${FUTILITY} verify --publickey ${KEYDIR}/root_key.vbpubk \
+    ${GOOD_IMG}.no_b_slot.signed \
+  | egrep 'Firmware version: +1$|Preamble flags: +0$' | wc -l)
+[ "$m" = "2" ]
 
 # cleanup
 rm -rf ${TMP}* ${ONEMORE}
