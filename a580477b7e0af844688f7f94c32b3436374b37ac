@@ -34,6 +34,23 @@
       "parentUuid": "be3b48fb_c22bd890",
       "revId": "a580477b7e0af844688f7f94c32b3436374b37ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd30ea5_829b3ce2",
+        "filename": "scripts/image_signing/sample-test-configs/ensure_sane_lsb-release.config",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-08T18:56:17Z",
+      "side": 0,
+      "message": "Does this stuff really _need_ to go? Both of these ensure_... files are about kernel configs, they shouldn\u0027t really be directly affected by the firmware image format.",
+      "revId": "a580477b7e0af844688f7f94c32b3436374b37ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
