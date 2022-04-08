@@ -86,6 +86,24 @@
       "message": "I think it makes sense to change show() in the same way as well right away, rather than split up prototypes between sign and show. We\u0027ll want show to keep working and displaying all relevant information across both old and new style images, so it\u0027ll need to do all of this as well.",
       "revId": "de0649fdd3776d9039260ba64b273c40eee5b964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c427ada_6f35f674",
+        "filename": "futility/file_type.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-08T14:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8566712_a61614fd",
+      "revId": "de0649fdd3776d9039260ba64b273c40eee5b964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
