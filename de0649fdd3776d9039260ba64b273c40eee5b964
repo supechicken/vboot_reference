@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641c316e_bccde2fd",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-08T00:58:04Z",
+      "side": 1,
+      "message": "Since we\u0027ll need both of these so often, do we want to introduce a helper that combines them (e.g. futil_open_and_map_file(name, \u0026fd, mapping, \u0026buf, \u0026len))? That should help make the teardown on error less complicated, too.",
+      "revId": "de0649fdd3776d9039260ba64b273c40eee5b964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395e6343_fb5f5333",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-08T00:58:04Z",
+      "side": 1,
+      "message": "Rather than add a separate option, why not just use sign_option.create_new_outfile?",
+      "revId": "de0649fdd3776d9039260ba64b273c40eee5b964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8566712_a61614fd",
+        "filename": "futility/file_type.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-08T00:58:04Z",
+      "side": 1,
+      "message": "I think it makes sense to change show() in the same way as well right away, rather than split up prototypes between sign and show. We\u0027ll want show to keep working and displaying all relevant information across both old and new style images, so it\u0027ll need to do all of this as well.",
+      "revId": "de0649fdd3776d9039260ba64b273c40eee5b964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
