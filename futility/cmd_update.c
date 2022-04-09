@@ -161,12 +161,24 @@ static char *add_servo_noreset(char *programmer)
 	return ret;
 }
 
+static void prepare_servo_control(const char *control_name, int on)
+{
+	char *cmd;
+	if (!control_name)
+		return;
+
+	ASPRINTF(&cmd, "dut-control %s:%s", control_name, on ? "on" : "off");
+	free(host_shell(cmd));
+	free(cmd);
+}
+
 static int do_update(int argc, char *argv[])
 {
 	struct updater_config *cfg;
 	struct updater_config_arguments args = {0};
 	int i, errorcnt = 0, do_update = 1;
-	int detect_servo = 0, do_servo_cpu_fw_spi = 0, servo_noreset = 0;
+	int detect_servo = 0, servo_noreset = 0;
+	const char *prepare_ctrl_name = NULL;
 	char *servo_programmer = NULL;
 	char *endptr;
 
@@ -318,7 +330,7 @@ static int do_update(int argc, char *argv[])
 	}
 
 	if (!errorcnt && detect_servo) {
-		servo_programmer = host_detect_servo(&do_servo_cpu_fw_spi);
+		servo_programmer = host_detect_servo(&prepare_ctrl_name);
 
 		if (servo_programmer && servo_noreset)
 			servo_programmer = add_servo_noreset(servo_programmer);
@@ -333,8 +345,7 @@ static int do_update(int argc, char *argv[])
 	 * update (i.e., in updater_setup_config) so we want to turn on
 	 * cpu_fw_spi mode now.
 	 */
-	if (do_servo_cpu_fw_spi)
-		free(host_shell("dut-control cpu_fw_spi:on"));
+	prepare_servo_control(prepare_ctrl_name, 1);
 
 	if (!errorcnt)
 		errorcnt += updater_setup_config(cfg, &args, &do_update);
@@ -353,8 +364,7 @@ static int do_update(int argc, char *argv[])
 			errorcnt ? "aborted" : "exits successfully");
 	}
 
-	if (do_servo_cpu_fw_spi)
-		free(host_shell("dut-control cpu_fw_spi:off"));
+	prepare_servo_control(prepare_ctrl_name, 0);
 	free(servo_programmer);
 
 	updater_delete_config(cfg);
