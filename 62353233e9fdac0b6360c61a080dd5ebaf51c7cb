@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d505988_462b4587",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-11T17:24:46Z",
+      "side": 1,
+      "message": "This check needs to be removed, as this CL does so but implicitly.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 14
+      },
+      "revId": "62353233e9fdac0b6360c61a080dd5ebaf51c7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77d6dec_d18ffbb0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-11T17:24:46Z",
+      "side": 1,
+      "message": "Append the \",custom_rst\u003dtrue\" here, per http://b/216832684#comment25 , since the reset sequence is moved to the servo overlay.",
+      "range": {
+        "startLine": 508,
+        "startChar": 42,
+        "endLine": 508,
+        "endChar": 43
+      },
+      "revId": "62353233e9fdac0b6360c61a080dd5ebaf51c7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
