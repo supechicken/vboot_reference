@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b7aadc4_80131c8a",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-12T02:38:23Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "5db9c6ef_7a8f4bc5",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 14
+      },
+      "revId": "62353233e9fdac0b6360c61a080dd5ebaf51c7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d77d6dec_d18ffbb0",
         "filename": "futility/updater_utils.c",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "What about devices using empty ccd_cpu_fw_spi? Do they also need custom_rst\u003dtrue?\n\nAnd if we always do this, should we remove the --servo_noreset option?",
       "parentUuid": "d77d6dec_d18ffbb0",
+      "range": {
+        "startLine": 508,
+        "startChar": 42,
+        "endLine": 508,
+        "endChar": 43
+      },
+      "revId": "62353233e9fdac0b6360c61a080dd5ebaf51c7cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1baf736_deff99a7",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2022-04-12T02:38:23Z",
+      "side": 1,
+      "message": "Assume that the empty `ccd_cpu_fw_spi` is intended, I think we should respect the `ccd_cpu_fw_spi` and apply `custom_rst\u003dtrue` (noreset in cr50).\n\nAgree that we can remove --servo_noreset. Looks like the --servo_noreset is used for debug purpose (crrev.com/c/2638108). It can be done by creating an empty `ccd_cpu_fw_spi`, just with more extra steps.",
+      "parentUuid": "39e45e4b_b76f3460",
       "range": {
         "startLine": 508,
         "startChar": 42,
