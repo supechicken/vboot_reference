@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44832c93_f1b1c906",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b95fd6_ff656bbb",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8917ff2f_d9acceaf",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-08T02:44:43Z",
       "side": 1,
       "message": "So the point of this design, as far as I can tell, is to preserve the firmware body length of the existing preamble if that was already valid, presumably so that `futility sign` won\u0027t regrow the signed section when it was already manually truncated to CBFS size.\n\nBut we don\u0027t actually want that right now. We want that if I run `futility sign` on any existing firmware image, it will always sign a new valid image up to the full size of the CBFS, even if I added or removed files since the last time this was signed. So when in CBFS mode (see comment on line 419), we always want to trust the cbfstool-provided size rather than anything else (in non-CBFS mode we should continue to preserve the existing size if keyblock and preamble were valid).\n\nThe other thing this function does and that we still want to keep somehow is to preserve some preamble metadata when the existing preamble is valid. This function preserves the preamble flags, but only for VBLOCK_A which makes no sense to me. We should preserve them for both VBLOCKs, and I think we should preserve the firmware_version as well (same as with the flags only if it has not been explicitly overridden on the command line).",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bce73307_8def3531",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "Done.\nFlags and firmware version are stored in (struct bios_area_s) to decouple it from sign_option struct.\nIt defaults to zero if these options were not provided and key(v)block is invalid.",
+      "parentUuid": "8917ff2f_d9acceaf",
       "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ada5a8e_115ad446",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "Oh, I missed this line. Thanks.\nI didn\u0027t test it before. I will do it tomorrow. For now I assume it works, but it needs testing indeed.",
+      "parentUuid": "c625b96d_0d811d5d",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06dff692_98cfd7c4",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 1
@@ -71,6 +131,24 @@
       "writtenOn": "2022-04-08T02:44:43Z",
       "side": 1,
       "message": "BTW I don\u0027t want to send you too far off into the weeds, but all this `--devsign` `--devkeyblock` differentiation between A and B is super obsolete and could really also just go away. If it makes this work easier, feel free to rip those options out first.\n\n(While we are on the pie-in-the-sky wishlist parts of this review, I also think it would be super useful if rather than passing `--signprivate`, `--keyblock` and `--kernelkey`, I could just pass `--keyset \u003cpath to directory\u003e` to point at a keyset directory and then futility would automatically find the respective files in there, with the same common filenames that the keys under tests/devkeys use. And if none of these options are passed, it should assume `--keyset /usr/share/vboot/devkeys` as the default. But I guess that\u0027ll have to wait for a different patch at another time.)",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bddd4eb8_c04abf7f",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "I removed `--devsign` and `--devkeyblock` in parent patch.\n\nAd. `--keyset`: Won\u0027t it overcomplicate `futility sign` implementation?",
+      "parentUuid": "06dff692_98cfd7c4",
       "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13bc415d_1eec31e8",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5138167d_4bad4093",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2018bb8_394973cf",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-04-08T02:44:43Z",
       "side": 1,
       "message": "Once upon a time vboot was used on non-coreboot firmware. I don\u0027t know if anyone actually still does that (there have been a few non-Chrome OS parties interested in it over the years, but never very seriously), but it might be nice to preserve the ability. So maybe we should make this optional -- if cbfstool can detect a CBFS we\u0027ll act aware of it, if it doesn\u0027t we print a warning and treat this as a dumb FMAP-only image.",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993456bd_b7acab10",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "Done. Now code will try to call `cbfstool truncate` on each area first and parse output. It it will fail, it will return zero as the region size, which should be treated as zero (CBFS should not have zero bytes anyway). This result is consumed by `prepare_slot()`, which will use any positive value as new size of FW_MAIN_x region and for zero it will just use size from FMAP.",
+      "parentUuid": "b2018bb8_394973cf",
       "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d7a23a_6f6e105d",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "Done. I looked at flashrom and others, so implemented it in host/lib/cbfstool.c. It will contain functions calling cbfstool, parsing its output etc. \n\n\u003e And please use the subprocess_run() API instead of raw popen() to make the actual call to cbfstool.\nIt would be nice to change all other popen() and system() calls as well. But maybe in the future :)",
+      "parentUuid": "c8e6c92e_ef27b822",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3094a470_90abbcf7",
@@ -139,6 +271,24 @@
       "writtenOn": "2022-04-08T02:44:43Z",
       "side": 1,
       "message": "I would say just inline these functions here, or things in a different way where you don\u0027t need to pass `state` anymore. The original design here was pretty confusing to begin with and now you\u0027ve taken most of it apart anyway, there\u0027s no reason to preserve the remains anymore. fmap_sign_fw_main() is trivial anyway, and in fmap_sign_fw_preamble() I think we need to reorganize a couple of things to make it work.",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6252e83b_6d00dba1",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:54Z",
+      "side": 1,
+      "message": "Done (If I understood you correctly)",
+      "parentUuid": "3094a470_90abbcf7",
       "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
