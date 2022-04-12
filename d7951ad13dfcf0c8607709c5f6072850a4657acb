@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3302a5e8_d2b0129f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82cbad6_6ee31578",
+      "range": {
+        "startLine": 96,
+        "startChar": 41,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ce5a7a9_ed3f9076",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-09T00:32:06Z",
       "side": 1,
       "message": "This should return immediately? If open_and_map fails, it should leave the caller with no need to call unmap_and_close.",
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41eeb20a_58ac74e0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ce5a7a9_ed3f9076",
       "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db2750a_887bba8f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce944e7_2c9986e7",
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebb9f15e_6223fdb4",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-04-09T00:32:06Z",
       "side": 1,
       "message": "nit: easier to flip it the other way round and not use a goto in this case",
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae22deca_ba74727d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebb9f15e_6223fdb4",
       "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "179c4552_c25de261",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d577dc0_407c70b5",
+      "range": {
+        "startLine": 66,
+        "startChar": 41,
+        "endLine": 66,
+        "endChar": 72
+      },
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f864180d_7824e11b",
@@ -111,6 +213,24 @@
       "writtenOn": "2022-04-09T00:32:06Z",
       "side": 1,
       "message": "No more need for this to be separate?",
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f599aa3b_747a2e3a",
+        "filename": "futility/file_type.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f864180d_7824e11b",
       "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbfb78d_e6514dff",
+        "filename": "futility/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7480561e_ab2a8674",
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c156aa0_fe4d8a8e",
@@ -145,6 +283,24 @@
       "writtenOn": "2022-04-09T00:32:06Z",
       "side": 1,
       "message": "If you\u0027re not exporting these they should be `static` now. (Any particular reason you\u0027re pulling these functions apart instead of just inserting the open_and_map? Are they reused elsewhere? Doesn\u0027t seem like it?)",
+      "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4a0e60_7864faaf",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-12T16:00:08Z",
+      "side": 1,
+      "message": "ft_show_vb21_pubkey{_buf}() is used inside ft_show_rwsig(), so I did it for easier use.\nIt\u0027s the same with ft_show_fw_preamble{_buf}() in ft_show_bios() and in ft_show_fw_preamble().\n\nWhen it comes to two other functions (pem and privkey), they are not used anywhere. I did it \"automatically\". Now it\u0027s reverted and uses futil_open_and_map_file().",
+      "parentUuid": "8c156aa0_fe4d8a8e",
       "revId": "d7951ad13dfcf0c8607709c5f6072850a4657acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
