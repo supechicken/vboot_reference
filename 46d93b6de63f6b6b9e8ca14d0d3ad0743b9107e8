@@ -33,6 +33,23 @@
       "message": "I verified the `ccd_cpu_fw_spi` control was toggled during AP fw flashing over CCD.",
       "revId": "46d93b6de63f6b6b9e8ca14d0d3ad0743b9107e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5965a18_9bba4796",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-13T01:14:28Z",
+      "side": 1,
+      "message": "Can you double verify on one device that is not herobrine (e.g., used to not doing custom_rst\u003dtrue)?",
+      "revId": "46d93b6de63f6b6b9e8ca14d0d3ad0743b9107e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
