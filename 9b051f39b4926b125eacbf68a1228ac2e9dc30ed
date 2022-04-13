@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b643939_a17788f7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-13T09:49:12Z",
+      "side": 1,
+      "message": "I tested it, and coreboot builds correctly, when only \u0027A\u0027 slot is enabled.",
+      "parentUuid": "1ada5a8e_115ad446",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06dff692_98cfd7c4",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 1
