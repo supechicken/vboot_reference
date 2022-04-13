@@ -33,6 +33,24 @@
       "message": "I just confirmed this flaw, unbelivable! Another serendipitious find? :)",
       "revId": "57cb3472548209d5cd6680fcb44d1fcdd5397a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba0b55c5_ea535b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-04-13T00:50:31Z",
+      "side": 1,
+      "message": "Yup! I ran `sha256sum` in horror to find my image had unexpectedly changed - good thing I had copied it first just in case!",
+      "parentUuid": "6e8e4f04_d183c3ce",
+      "revId": "57cb3472548209d5cd6680fcb44d1fcdd5397a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
