@@ -34,7 +34,7 @@ test_mockable
 struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	return (struct vb2_gbb_header *)((void *)sd + sd->gbb_offset);
+	return (struct vb2_gbb_header *)((uint8_t *)sd + sd->gbb_offset);
 }
 
 uint32_t vb2api_get_firmware_size(struct vb2_context *ctx)

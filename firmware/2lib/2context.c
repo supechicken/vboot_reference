@@ -13,7 +13,7 @@
 void vb2_workbuf_from_ctx(struct vb2_context *ctx, struct vb2_workbuf *wb)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	vb2_workbuf_init(wb, (void *)sd + sd->workbuf_used,
+	vb2_workbuf_init(wb, (uint8_t *)sd + sd->workbuf_used,
 			 sd->workbuf_size - sd->workbuf_used);
 }
 

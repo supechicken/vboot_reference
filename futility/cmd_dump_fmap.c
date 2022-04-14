@@ -133,8 +133,9 @@ static int normal_fmap(const FmapHeader *fmh, int argc, char *argv[])
 				fprintf(stderr, "%s: section %s is larger"
 					" than the image\n", argv[0], buf);
 				retval = 1;
-			} else if (1 != fwrite(base_of_rom + ah->area_offset,
-					       ah->area_size, 1, fp)) {
+			} else if (fwrite((uint8_t *)base_of_rom +
+					  ah->area_offset,
+					  ah->area_size, 1, fp) != 1) {
 				fprintf(stderr, "%s: can't write %s: %s\n",
 					argv[0], buf, strerror(errno));
 				retval = 1;

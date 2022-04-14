@@ -29,12 +29,12 @@ int ExtractVmlinuz(void *kpart_data, size_t kpart_size,
 	if (now > kpart_size)
 		return 1;
 
-	preamble = (struct vb2_kernel_preamble *)(kpart_data + now);
+	preamble = (struct vb2_kernel_preamble *)((uint8_t *)kpart_data + now);
 	now += preamble->preamble_size;
 	if (now > kpart_size)
 		return 1;
 
-	kblob_data = kpart_data + now;
+	kblob_data = (uint8_t *)kpart_data + now;
 	kblob_size = preamble->body_signature.data_size;
 
 	if (!kblob_data || (now + kblob_size) > kpart_size)
@@ -46,8 +46,8 @@ int ExtractVmlinuz(void *kpart_data, size_t kpart_size,
 	}
 
 	if (!vmlinuz_header_size ||
-	    kpart_data + vmlinuz_header_offset + vmlinuz_header_size >
-	    kpart_data) {
+	    (uint8_t *)kpart_data + vmlinuz_header_offset +
+			vmlinuz_header_size > (uint8_t *)kpart_data) {
 		return 1;
 	}
 
@@ -64,10 +64,11 @@ int ExtractVmlinuz(void *kpart_data, size_t kpart_size,
 	if (vmlinuz == NULL)
 		return 1;
 
-	memcpy(vmlinuz, kpart_data + vmlinuz_header_offset,
+	memcpy(vmlinuz, (uint8_t *)kpart_data + vmlinuz_header_offset,
 	       vmlinuz_header_size);
 
-	memcpy(vmlinuz + vmlinuz_header_size, kblob_data, kblob_size);
+	memcpy((uint8_t *)vmlinuz + vmlinuz_header_size, kblob_data,
+	       kblob_size);
 
 	*vmlinuz_out = vmlinuz;
 	*vmlinuz_size = vmlinuz_header_size + kblob_size;

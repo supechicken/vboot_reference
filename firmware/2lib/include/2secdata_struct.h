@@ -143,7 +143,7 @@ struct vb2_secdata_fwmp {
 static inline uint32_t vb2_secdata_fwmp_crc(struct vb2_secdata_fwmp *sec)
 {
 	int version_offset = offsetof(struct vb2_secdata_fwmp, struct_version);
-	return vb2_crc8((void *)sec + version_offset,
+	return vb2_crc8((uint8_t *)sec + version_offset,
 			sec->struct_size - version_offset);
 }
 

@@ -178,8 +178,8 @@ vb2_error_t VbExStreamRead(VbExStream_t stream, uint32_t bytes, void *buffer)
 			VB2_DEBUG("Simulating kernel %" PRIu64 " match\n", i);
 			uint64_t buf_offset = (kernels[i].sector - s->sector)
 				* disk_info.bytes_per_lba;
-			memcpy(buffer + buf_offset, VB2_KEYBLOCK_MAGIC,
-			       VB2_KEYBLOCK_MAGIC_SIZE);
+			memcpy((uint8_t *)buffer + buf_offset,
+			       VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE);
 			kernels[i].read_count++;
 			TEST_TRUE(kernels[i].read_count <= 2,
 				  "  Max read count exceeded");

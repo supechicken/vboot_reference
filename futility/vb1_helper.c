@@ -446,7 +446,7 @@ uint8_t *SignKernelBlob(uint8_t *kernel_blob,
 	uint32_t outsize = keyblock->keyblock_size + preamble->preamble_size;
 	void *outbuf = calloc(outsize, 1);
 	memcpy(outbuf, keyblock, keyblock->keyblock_size);
-	memcpy(outbuf + keyblock->keyblock_size,
+	memcpy((uint8_t *)outbuf + keyblock->keyblock_size,
 	       preamble, preamble->preamble_size);
 
 	if (vblock_size_ptr)

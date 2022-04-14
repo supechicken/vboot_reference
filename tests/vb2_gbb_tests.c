@@ -42,7 +42,7 @@ static void reset_common_data(void)
 	gbb->rootkey_size = sizeof(struct vb2_packed_key);
 	gbb_used += gbb->rootkey_size;
 
-	rootkey = ((void *)gbb + gbb->rootkey_offset);
+	rootkey = (void *)((uintptr_t )gbb + gbb->rootkey_offset);
 	rootkey->key_offset = sizeof(*rootkey);
 
 	gbb->hwid_offset = gbb_used;
@@ -190,7 +190,7 @@ static void key_tests(void)
 	reset_common_data();
 	wborig = wb;
 	rootkey->key_size = sizeof(key_data);
-	memcpy((void *)rootkey + rootkey->key_offset,
+	memcpy((uint8_t *)rootkey + rootkey->key_offset,
 	       key_data, sizeof(key_data));
 	gbb->rootkey_size = rootkey->key_offset + rootkey->key_size;
 	TEST_SUCC(vb2_gbb_read_root_key(ctx, &keyp, &size, &wb),

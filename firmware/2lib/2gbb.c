@@ -43,7 +43,7 @@ static vb2_error_t vb2_gbb_read_key(struct vb2_context *ctx, uint32_t offset,
 
 	VB2_TRY(vb2ex_read_resource(ctx, VB2_RES_GBB,
 				    offset + sizeof(**keyp),
-				    (void *)*keyp + sizeof(**keyp),
+				    (uint8_t *)*keyp + sizeof(**keyp),
 				    *size - sizeof(**keyp)));
 	*wb = wblocal;
 	return VB2_SUCCESS;
