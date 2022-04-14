@@ -30,7 +30,7 @@ static ssize_t ReadFullyWithRead(void *ctx, void *buf, size_t count)
 	int fd = *((int*)ctx);
 	while (nr_read < count) {
 		ssize_t to_read = count - nr_read;
-		ssize_t chunk = read(fd, buf + nr_read, to_read);
+		ssize_t chunk = read(fd, (uint8_t *)buf + nr_read, to_read);
 		if (chunk < 0) {
 			return -1;
 		} else if (chunk == 0) {

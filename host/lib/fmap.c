@@ -55,7 +55,7 @@ uint8_t *fmap_find_by_name(uint8_t *ptr, size_t size, FmapHeader *fmap,
 	if (!fmap)
 		return NULL;
 
-	ah = (FmapAreaHeader*)((void *)fmap + sizeof(FmapHeader));
+	ah = (FmapAreaHeader *)((uint8_t *)fmap + sizeof(FmapHeader));
 	for (i = 0; i < fmap->fmap_nareas; i++)
 		if (!strncmp(ah[i].area_name, name, FMAP_NAMELEN)) {
 			if (ah_ptr)
