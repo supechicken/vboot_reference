@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0c975aa_1e2690e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-15T04:19:17Z",
+      "side": 1,
+      "message": "Yeah, different people have different opinions, of course... and some people upstream particularly love to constantly demand certain things in reviews that are obviously not required by the official coreboot coding style and not common practice in the code base (e.g. Paul asking everyone who uses CB:xxxx in a commit message to paste in the whole SHA instead). Whenever I see that I argue the same points with them. I didn\u0027t see this particular case.\n\nI am 100% with Linus in the post Hung-Te linked, I think he makes exactly the right points. `void *` arithmetic makes things easier to read and avoids clutter and unnecessary (potentially confusing) casts in some cases, I see no reason not to use it where it works. Of course there are other cases (e.g. bit masking) where you have to convert to an integer type. At the same type, we should convert every simple address addition to uintptr_t when it\u0027s already a `void *` and the addition works on that just as well.\n\nI can try to kick off a discussion about clarifying this to the coreboot coding style, maybe that will make these discussions easier in the future.\n\n\u003e So, does coreboot already (heavily?) rely on GCC extensions?\n\nYes, of course! Statement expressions (e.g. `MAX()`) are a GCC extension. Zero-length arrays (which you can `sizeof()`, unlike variable-length C99 arrays) are a GCC extension. Everything `__attribute__(())` is a GCC extension. Vararg-macros (at least the nicer, more flexible version we use) are a GCC extension. Compound literals (i.e. the GPIO() macro for most Arm SoCs) are a GCC extension. Inline assembly is a GCC extension. Compiler intrinsics (e.g. __builtin_clz()) are GCC extensions. Trying to build any large scale project with pure `-ansi -pendantic` is madness.",
+      "parentUuid": "7e7e9eba_63900265",
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8baae20f_383fe409",
         "filename": "Makefile",
         "patchSetId": 2
@@ -113,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8162c0e2_0f6e5573",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-15T04:19:17Z",
+      "side": 1,
+      "message": "Well, if I understand the GCC manual correctly, this warning does nothing else than warn about `sizeof(void)`. So if we say `void *` arithmetic is fine in certain places, we don\u0027t want it?",
+      "parentUuid": "8baae20f_383fe409",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16d7dc56_90af6c04",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
@@ -124,6 +166,30 @@
       "writtenOn": "2022-04-15T02:50:29Z",
       "side": 1,
       "message": "Given the member is not uint8_t, I\u0027d rather use uintptr_t to help people understand that we\u0027re simply doing calculation.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d639c52c_2b21b715",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-15T04:19:17Z",
+      "side": 1,
+      "message": "I think this is a clear case where there\u0027s nothing wrong with `void *` arithmetic. You\u0027re adding a byte offset to a void pointer, nothing more complicated than that. No reason to cast to integer and back.\n\n(Note that this function mostly exists for when `parent` is _not_ a `void *` in the caller and gets implicitly converted, so that you can add a byte offset to a struct vb2_keyblock or something like that in order to find the keyblock data behind the struct. Using this function on something that\u0027s already a `void *` in the caller is kinda pointless.)",
+      "parentUuid": "16d7dc56_90af6c04",
       "range": {
         "startLine": 108,
         "startChar": 8,
