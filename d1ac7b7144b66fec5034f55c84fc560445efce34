@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f03a4bff_1f0bd701",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-15T05:27:08Z",
+      "side": 1,
+      "message": "The \u0027-Wpointer-arith\u0027 would warn any pointer arithmetic, not just sizeof(void).\n\n```\n int main() {\n   void *p \u003d NULL;\n   p +\u003d 1;\n   return 0;\n }\n```\n \n```\n# gcc -Wpointer-arith test.c\n# test.c:7:5: warning: pointer of type ‘void *’ used in arithmetic [-Wpointer-arith]\n```",
+      "parentUuid": "8162c0e2_0f6e5573",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16d7dc56_90af6c04",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
