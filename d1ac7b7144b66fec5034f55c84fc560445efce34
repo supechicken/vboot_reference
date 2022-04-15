@@ -33,6 +33,24 @@
       "message": "I disagree with this. All of our firmware repos (including vboot) rely on GCC extensions in many areas (e.g. statement expressions for things like VB2_MAX()), and those extensions provide valuable features that cannot be expressed with ISO standard C at the same level of flexibility. Every platform we target or would reasonably expect to target in the future is built with GCC/clang anyway. I see no reason to blindly purge GCC extensions from the code just for some theoretical goal of being standards compliant -- that doesn\u0027t actually do anything useful for us, it would be an enormous amount of effort to fully finish (in vboot and especially in coreboot), and our code would just be a lot less readable and maintainable for it (e.g. always having to manually confirm that the arguments have no side effects every time you call MAX(), or risk subtle bugs when they aren\u0027t).\n\nIf we\u0027re not going to outlaw all GCC extensions I see no reason to outlaw any one of them. sizeof(void) is a minor extension but still a useful one -- as you can see in this patch, it avoids having to clutter code with unnecessary casts all over where the `uint8_t *` doesn\u0027t actually have anything semantically to do with the data being pointed to and is just cast to make the compiler happy. Personally, I think sizeof(void) being 1 makes perfect sense and is absolutely always the size you\u0027d want and intuitively expect for `void *` arithmetic -- I\u0027m surprised the standards committee doesn\u0027t just adopt it, but then again the standards committee makes many surprising decisions that are detrimental to the majority of practical use cases of the C language today. Thankfully, GCC/clang are there to shield us against at least some of them and I don\u0027t see why we shouldn\u0027t make full use of that wherever we can.",
       "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394f751c_9846180e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-15T01:59:56Z",
+      "side": 1,
+      "message": "I think Yuping started  the change because we just got some feedback on coreboot.org to use macros instead of (void*).\n\nThe Linux kernel just had similar discussion few months ago. https://lkml.org/lkml/2022/2/24/978\n\nMy 2 cents:\n\n1. We shouldn\u0027t turn off the GCC extension.\n2. It is better to prevent using void* arithmetic if there\u0027re better meaningful ways - for example using structure, or if the target is exactly bytes.\n3. If the target variable (after arithmetic) is not a byte, casting to uintptr_t is better than (char *). \n4. It is also true sometimes (void*) is easier to write/read.\n\nSo maybe consider it like goto - use it when that makes sense?",
+      "parentUuid": "688a43ce_1ad14f7e",
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
