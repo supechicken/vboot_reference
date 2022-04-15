@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0522b894_66a27364",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-04-15T05:43:09Z",
+      "side": 1,
+      "message": "\u003e I can try to kick off a discussion about clarifying this to the coreboot coding style, maybe that will make these discussions easier in the future.\n\nThat will be helpful. Thanks.\n\n\u003e 2. It is better to prevent using void* arithmetic if there\u0027re better meaningful ways - for example using structure, or if the target is exactly bytes.\n\u003e 3. If the target variable (after arithmetic) is not a byte, casting to uintptr_t is better than (char *).\n\nYes, but since this is different from my intention of creating this patch, I\u0027m going to abandon this. Thanks for all your inputs.",
+      "parentUuid": "e0c975aa_1e2690e3",
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8baae20f_383fe409",
         "filename": "Makefile",
         "patchSetId": 2
