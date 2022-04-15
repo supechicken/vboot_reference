@@ -51,6 +51,24 @@
       "parentUuid": "688a43ce_1ad14f7e",
       "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7e9eba_63900265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-04-15T02:39:06Z",
+      "side": 1,
+      "message": "\u003e I think Yuping started the change because we just got some feedback on coreboot.org to use macros instead of (void*).\n\nKind of. In https://review.coreboot.org/c/coreboot/+/56791/9/src/soc/mediatek/common/pcie.c#109, coreboot reviewers seem to be opposed to void pointer arithmetic, even in MTK\u0027s platform code. Since vboot_reference is considered as a standalone project that might be used beyond chromium, fixing that sounds like the right thing to do. For chromium-only repos such as depthcharge, I agree that they can rely on GCC extensions.\n\n\u003e If we\u0027re not going to outlaw all GCC extensions I see no reason to outlaw any one of them.\n\nFair enough. I didn\u0027t know vboot code is already dependent on GCC extensions by that much (like VB2_MAX).\n\n\u003e I see no reason to blindly purge GCC extensions from the code just for some theoretical goal of being standards compliant -- that doesn\u0027t actually do anything useful for us, it would be an enormous amount of effort to fully finish (in vboot and especially in coreboot)\n\nSo, does coreboot already (heavily?) rely on GCC extensions? If so, we could have argued that with those upstream coreboot reviewers against pointer arithmetic.",
+      "parentUuid": "394f751c_9846180e",
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
