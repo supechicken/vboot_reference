@@ -69,6 +69,121 @@
       "parentUuid": "394f751c_9846180e",
       "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d7dc56_90af6c04",
+        "filename": "firmware/2lib/2common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-15T02:50:29Z",
+      "side": 1,
+      "message": "Given the member is not uint8_t, I\u0027d rather use uintptr_t to help people understand that we\u0027re simply doing calculation.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774ad6ae_ca9f8ee3",
+        "filename": "firmware/2lib/2context.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-15T02:50:29Z",
+      "side": 1,
+      "message": "vb2_member_of(sd, sd-\u003eworkbuf_used) ?",
+      "range": {
+        "startLine": 16,
+        "startChar": 22,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252f98cd_ae27ee83",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-15T02:50:29Z",
+      "side": 1,
+      "message": "can we replace by\n\n vb2_member_of(sd, sd-\u003egbb_offset) ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4efe2b_a688b508",
+        "filename": "host/lib/extract_vmlinuz.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-15T02:50:29Z",
+      "side": 1,
+      "message": "particular for this (\u003e) I think uintptr_t or intptr_t (depends on what we were trying to check here) is better than (uint8_t*) and (void *).",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8114bda_2f95e605",
+        "filename": "host/lib/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-04-15T02:50:29Z",
+      "side": 1,
+      "message": "isn\u0027t this ah \u003d (FmapAreaHeader*)(fmap + 1) given fmap is already FmapHeader?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 63
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
