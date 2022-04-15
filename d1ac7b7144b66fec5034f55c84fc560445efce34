@@ -197,6 +197,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ff8c21e_2fdd0e40",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-15T20:29:55Z",
+      "side": 1,
+      "message": "It warns about any `void *` pointer arithmetic, not any pointer arithmetic in general (i.e. with `uint8_t *`... and I mean why would we want that, pointer arithmetic is a core part of C programming). And my point is that if we agree that that can be valid, then we can\u0027t enable this option. When I say \"warn about `sizeof(void)`\" I mean warning about doing pointer arithmetic on a `void *` (because this whole question is fundamentally tied to the size of the pointed to type and the fact that according to the C standard, the size of void is not defined)... of course there\u0027s usually no reason to ever literally use the expression `sizeof(void)` in code.",
+      "parentUuid": "f03a4bff_1f0bd701",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "d1ac7b7144b66fec5034f55c84fc560445efce34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16d7dc56_90af6c04",
         "filename": "firmware/2lib/2common.c",
         "patchSetId": 2
