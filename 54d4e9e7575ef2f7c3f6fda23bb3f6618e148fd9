@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857f521d_ee1576ee",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-18T14:37:56Z",
+      "side": 1,
+      "message": "Perhaps there should be a mapping from board to REQUIRED_BITS/FORBIDDEN_BITS so this script can extend to other boards.",
+      "revId": "54d4e9e7575ef2f7c3f6fda23bb3f6618e148fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac82339a_560b253a",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2022-04-18T14:37:56Z",
+      "side": 1,
+      "message": "You are relying on an external tool API here. Probably should add some error checking here in case the output changes unexpectedly. As is, I think this will silently accept any output.",
+      "revId": "54d4e9e7575ef2f7c3f6fda23bb3f6618e148fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
