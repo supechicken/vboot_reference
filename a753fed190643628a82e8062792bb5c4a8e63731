@@ -51,6 +51,24 @@
       "message": "No, I think you should still remove this file, because the firmware image format from this is now unsupported. Just leave the Mario references in the other test files in -- they don\u0027t depend on this file, right?",
       "revId": "a753fed190643628a82e8062792bb5c4a8e63731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bdd3a8_b3e9e45b",
+        "filename": "tests/futility/data/bios_mario_mp.bin",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-19T05:05:33Z",
+      "side": 1,
+      "message": "\u003e they don\u0027t depend on this file, right?\nTests pass without this binary, so everything should be ok :)",
+      "parentUuid": "440e9a6e_3f2229cb",
+      "revId": "a753fed190643628a82e8062792bb5c4a8e63731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
