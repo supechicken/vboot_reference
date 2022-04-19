@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae65de58_a6a1d83e",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T01:36:09Z",
+      "side": 1,
+      "message": "can we use a `case` instead ?  that\u0027d make it easier to extend in the future.",
+      "revId": "6033ccd72554eacffe2981bfc5c4ad3daa50c833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f3cef5_2a6f0019",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T01:36:09Z",
+      "side": 1,
+      "message": "with `$((...))` you can omit the `${}`\n\n echo $(( 1 \u003c\u003c (10 + (alg / 3)) ))",
+      "revId": "6033ccd72554eacffe2981bfc5c4ad3daa50c833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d2b8e7_6e15dc56",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T01:36:09Z",
+      "side": 1,
+      "message": "this logic, and the diff openssl calls, makes it seem like extending `make_pair` isn\u0027t the right approach.  why not add a dedicated `make_gsc` instead ?",
+      "revId": "6033ccd72554eacffe2981bfc5c4ad3daa50c833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b82313_a2655e51",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T01:36:09Z",
+      "side": 1,
+      "message": "shell style guide uses 2 space hanging indent\n\ncomes up below too",
+      "revId": "6033ccd72554eacffe2981bfc5c4ad3daa50c833",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
