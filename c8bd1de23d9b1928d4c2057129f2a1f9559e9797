@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e1880b_d4b0e49d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:26:55Z",
+      "side": 1,
+      "message": "\"This feature has not been needed since pre-2012 devices which have long since reached their end of life. We can safely remove it to simplify the code.\"",
+      "revId": "c8bd1de23d9b1928d4c2057129f2a1f9559e9797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be86062_1f46f72d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:26:55Z",
+      "side": 1,
+      "message": "Thanks! However, I\u0027m afraid it\u0027s not going to be quite this easy... there are still a bunch of scripts scattered throughout Chrome OS that unnecessarily pass these flags (usually just with the same key as the other one). We\u0027ll have to remove those references before we can remove the option. Here are the instances I found on CodeSearch (not sure if you have access to that, actually?):\n\nchromite/signing/lib/firmware_unittest.py\nsrc/platform/vboot_reference/scripts/keygeneration/create_new_keys.sh\nchromite/signing/lib/firmware.py\nsrc/platform/vboot_reference/scripts/image_signing/sign_official_build.sh\nsrc/platform/vboot_reference/scripts/image_signing/resign_firmwarefd.sh\n\n...okay, actually not as many as I was afraid of. Can you please fix these up?",
+      "revId": "c8bd1de23d9b1928d4c2057129f2a1f9559e9797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
