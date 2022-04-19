@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5290d4_d7a76633",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:14:18Z",
+      "side": 1,
+      "message": "Why not just\n\n futil_open_and_map_file(file_name, \u0026file-\u003efd, FILE_RW, \u0026file-\u003edata, \u0026file-\u003elen)\n \n?",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e0a3d6_2c34078a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:14:18Z",
+      "side": 1,
+      "message": "nit: in a case like this you can also just do\n\n if (futil_open_and_map_file(...))\n   return 1;\n   \nAs a bonus, that leaves the retval variable unchanged, so you could just initialize retval to 1 at the top and then you don\u0027t have to set it before each `goto done` (just once at the end, in case of success).",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea60469_e9d7754e",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:14:18Z",
+      "side": 1,
+      "message": "retval?",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27d3638_34aa5507",
+        "filename": "futility/file_type.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:14:18Z",
+      "side": 1,
+      "message": "file?",
+      "range": {
+        "startLine": 50,
+        "startChar": 31,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69208e22_bbe699c8",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:14:18Z",
+      "side": 1,
+      "message": "Here too... just do a direct\n\n if (futil_open_and_map_file(...))\n \nabove and then you don\u0027t need to clobber retval, so this won\u0027t look so complicated.",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618c053c_63b20fdc",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T20:14:18Z",
+      "side": 1,
+      "message": "Why not just pass \u0026data and \u0026data_size directly above?",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
