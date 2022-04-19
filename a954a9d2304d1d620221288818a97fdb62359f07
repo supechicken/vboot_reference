@@ -1,0 +1,189 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673caf45_b59296f4",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "bcb01f18_21aab3d1",
+      "range": {
+        "startLine": 148,
+        "startChar": 28,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c1427b2_a3ca887a",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "5be0e440_ca641b8f",
+      "range": {
+        "startLine": 148,
+        "startChar": 28,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21bff54_79ac6a7d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "cea11fa2_1b2b4955",
+      "range": {
+        "startLine": 151,
+        "startChar": 42,
+        "endLine": 151,
+        "endChar": 54
+      },
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc5bfcc_45da406e",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "951e6738_8fe1e9de",
+      "range": {
+        "startLine": 151,
+        "startChar": 17,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637ea8bd_502683b2",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\"Make\" and period at the end",
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3011af1_422210ce",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\u003e \"keypair\" is a possible misspelling of \"key pair\".\n\nPlease fix.",
+      "parentUuid": "91f9bc20_c13b98ac",
+      "range": {
+        "startLine": 153,
+        "startChar": 17,
+        "endLine": 153,
+        "endChar": 24
+      },
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350a5a64_a81a0993",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "2d6d50ec_7dd96a76",
+      "range": {
+        "startLine": 154,
+        "startChar": 45,
+        "endLine": 154,
+        "endChar": 49
+      },
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ccfdec_40281a7b",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-19T04:08:05Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "6a01c4ff_c4f9e7c5",
+      "range": {
+        "startLine": 154,
+        "startChar": 45,
+        "endLine": 154,
+        "endChar": 49
+      },
+      "revId": "a954a9d2304d1d620221288818a97fdb62359f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
