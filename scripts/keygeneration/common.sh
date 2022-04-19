@@ -43,8 +43,16 @@ RSA4096_SHA512_ALGOID=8
 RSA8192_SHA1_ALGOID=9
 RSA8192_SHA256_ALGOID=10
 RSA8192_SHA512_ALGOID=11
+RSA3070_NOSIG_ALGOID=12
 alg_to_keylen() {
-  echo $(( 1 << (10 + ($1 / 3)) ))
+  local alg="$1"
+
+  # GSC RW signing key does not fit the pattern, return its size explicitly.
+  if [[ ${alg} == ${RSA3070_NOSIG_ALGOID} ]]; then
+    echo 3070
+  else
+    echo $(( 1 << (10 + (${alg} / 3)) ))
+  fi
 }
 
 # Default algorithms.
@@ -66,6 +74,9 @@ KERNEL_DATAKEY_ALGOID=${RSA2048_SHA256_ALGOID}
 # AP RO Verification.
 ARV_ROOT_ALGOID=${RSA4096_SHA256_ALGOID}
 ARV_PLATFORM_ALGOID=${RSA4096_SHA256_ALGOID}
+
+# GSC signing.
+GSC_RW_KEY_ALGOID=${RSA3070_NOSIG_ALGOID}
 
 # Keyblock modes determine which boot modes a signing key is valid for use
 # in verification.
@@ -99,33 +110,44 @@ make_pair() {
   local base=$1
   local alg=$2
   local key_version=${3:-1}
+  local do_packing=${4:-yes}
   local len=$(alg_to_keylen $alg)
+  local base_name="${base}_${len}"
 
   echo "creating $base keypair (version = $key_version)..."
 
   # make the RSA keypair
-  openssl genrsa -F4 -out "${base}_${len}.pem" $len
+  openssl genrsa -F4 -out "${base_name}.pem" $len
+
+  if [[ ${do_packing} != yes ]]; then
+    echo "skippling wrapping of ${base_name} keys"
+    echo "Preserving ${base_name}.pem and generating ${base_name}.pem.pub"
+    openssl rsa -in "${base_name}.pem" -outform PEM \
+            -pubout -out "${base_name}.pem.pub"
+    return $?
+  fi
   # create a self-signed certificate
-  openssl req -batch -new -x509 -key "${base}_${len}.pem" \
-    -out "${base}_${len}.crt"
+  openssl req -batch -new -x509 -key "${base_name}.pem" \
+          -out "${base_name}.crt"
+
   # generate pre-processed RSA public key
-  dumpRSAPublicKey -cert "${base}_${len}.crt" > "${base}_${len}.keyb"
+  dumpRSAPublicKey -cert "${base_name}.crt" > "${base_name}.keyb"
 
   # wrap the public key
   vbutil_key \
     --pack "${base}.vbpubk" \
-    --key "${base}_${len}.keyb" \
+    --key "${base_name}.keyb" \
     --version  "${key_version}" \
     --algorithm $alg
 
   # wrap the private key
   vbutil_key \
     --pack "${base}.vbprivk" \
-    --key "${base}_${len}.pem" \
+    --key "${base_name}.pem" \
     --algorithm $alg
 
   # remove intermediate files
-  rm -f "${base}_${len}.pem" "${base}_${len}.crt" "${base}_${len}.keyb"
+  rm -f "${base_name}.pem" "${base_name}.crt" "${base_name}.keyb"
 }
 
 # Used to generate keys for signing update payloads.
