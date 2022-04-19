@@ -1,0 +1,283 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524c4427_1b9da45a",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Let\u0027s also print an INFO() somewhere when we\u0027re in FW_A-only mode.",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4972581d_37984e58",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Should also check that fw_size doesn\u0027t exceed ah-\u003earea_size here, just to be sure.",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a69b006_4fa7f88c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "While we\u0027re cleaning this up, there should be a check that offset + key_size fits within area_size here.",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc63041c_a8d29bac",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Let\u0027s keep saying \"public key is invalid\" here so the two are distinguishable.",
+      "range": {
+        "startLine": 401,
+        "startChar": 11,
+        "endLine": 401,
+        "endChar": 19
+      },
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad1e063b_1d9a6e60",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "...and keyblock_size + sizeof(struct vb2_fw_preamble) also needs to fit into area_size.",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2006dd49_695063f1",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this also be written like flags (with three cases)?",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fafbc677_1f63a920",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Can we keep the thing here that if we\u0027re not in CBFS mode and the existing preamble is valid, we preserve the existing firmware size?",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3875c3c_5422d050",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Should check return value.",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e870f13_aa80149c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "So this still doesn\u0027t work for FW_A-only, right? prepare_slot(B) is not going to find the FMAP entry, return an error, and then you drop out here?",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740f31c5_47b53818",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Curious, is the second check actually necessary? I\u0027m having a hard time finding clear info on how exactly `getenv()` behaves there (e.g. is `CBFSTOOL\u003d\u0027\u0027` different from not setting it at all?).\n\nAnyway, if it is necessary, I think you should write it as `cbfstool[0] \u003d\u003d \u0027\\0\u0027` just to make it a little easier to read.",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0899b2_e75695ef",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Strings returned by `getenv()` are not guaranteed to remain valid through subsequent calls to `getenv()`. It\u0027s unlikely in this case, but just to be on the safe side (e.g. if someone adds more environment-dependent stuff to the subprocess library in the future) I would write this as:\n\n static const char *cbfstool \u003d NULL;\n if (cbfstool)\n   return cbfstool;\n const chat *env_cbfstool \u003d getenv(...);\n if (...env_cbfstool valid...) {\n   cbfstool \u003d strdup(env_cbfstool);\n   return cbfstool;\n }\n cbfstool \u003d DEFAULT_CBFSTOOL;\n return cbfstool;",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dff7ab0_c6f65390",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "`sscanf()` needs null termination (right?), so this should be TARGET_BUFFER_NULL_TERMINATED.",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4468308f_ed4d7c9c",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "So, does this... work? Did you test it? I\u0027m kinda missing the `truncate` command in this invocation...",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec0a284_518345ce",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "This should probably be %zu (unsigned)?",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b39ae86b_a9532930",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "I don\u0027t understand what the changes in this file are for or what they have to do with the rest of the patch?",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

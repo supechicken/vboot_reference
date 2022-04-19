@@ -156,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb68ff2a_9c56f4c7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "If we want to establish this as properly supported behavior now, you should be adding tests for it too to make sure it doesn\u0027t regress. tests/futility/test_sign_firmware.sh or tests/futility/test_sign_fw_main.sh are probably the right places to put that.",
+      "parentUuid": "cd56af07_1f98ef3d",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06dff692_98cfd7c4",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 1
@@ -185,6 +203,24 @@
       "side": 1,
       "message": "I removed `--devsign` and `--devkeyblock` in parent patch.\n\nAd. `--keyset`: Won\u0027t it overcomplicate `futility sign` implementation?",
       "parentUuid": "06dff692_98cfd7c4",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d9889e_6649152e",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "I\u0027m not really sure what you mean by \"overcomplicate\"? I mean... this is a command line utility, my goal is to make it as simple and convenient to use as possible for the common cases that people will frequently run by hand. In my experience, 95% of the time someone runs `futility sign` manually they want to use the dev keys, and in the other 5% they have a ready-made keyset directory with those standard filenames set up somewhere (because that\u0027s the format in which create_new_keys.sh spits them out). So I think the functionality I suggested would help a lot. Of course that requires more logic within cmd_sign.c, but at the benefit of making things simpler for everyone who calls the command later, isn\u0027t that worth it?",
+      "parentUuid": "bddd4eb8_c04abf7f",
       "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -290,6 +326,24 @@
       "side": 1,
       "message": "Done. I looked at flashrom and others, so implemented it in host/lib/cbfstool.c. It will contain functions calling cbfstool, parsing its output etc. \n\n\u003e And please use the subprocess_run() API instead of raw popen() to make the actual call to cbfstool.\nIt would be nice to change all other popen() and system() calls as well. But maybe in the future :)",
       "parentUuid": "c8e6c92e_ef27b822",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9fda3f_4095d398",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-19T22:09:44Z",
+      "side": 1,
+      "message": "Yeah, the subprocess library was a relatively recent addition to vboot, but we should use it for all new code now (especially for anything that needs to do output parsing). You\u0027re welcome to clean up other old code as well if you want, of course, ;) but it\u0027s not a priority right now.",
+      "parentUuid": "68d7a23a_6f6e105d",
       "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
