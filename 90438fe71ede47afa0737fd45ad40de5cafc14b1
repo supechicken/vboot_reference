@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "232816f4_5aea0d8d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-21T10:09:57Z",
+      "side": 1,
+      "message": "Because in previous version of this code it was returning 1 when it failed to open file. I wanted to keep this behavior.",
+      "parentUuid": "fc5290d4_d7a76633",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82e0a3d6_2c34078a",
         "filename": "futility/cmd_show.c",
         "patchSetId": 5
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ba0c008_4c84e106",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-21T10:09:57Z",
+      "side": 1,
+      "message": "There will be a problem with setting retval \u003d 1 at the beginning. IT does not work with:\n  if (show_option.strict \u0026\u0026 (!sign_key || !good_sig))\n      retval \u003d 1;\n\nWhole function relies on that retval \u003d 0, and is set to 1 only in this piece of code.",
+      "parentUuid": "82e0a3d6_2c34078a",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ea60469_e9d7754e",
         "filename": "futility/cmd_show.c",
         "patchSetId": 5
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-19T20:14:18Z",
       "side": 1,
       "message": "retval?",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5ded75_403e0c47",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-21T10:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea60469_e9d7754e",
       "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f18461_9806bb1a",
+        "filename": "futility/file_type.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-21T10:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27d3638_34aa5507",
+      "range": {
+        "startLine": 50,
+        "startChar": 31,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69208e22_bbe699c8",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95645c70_fbf4790e",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-21T10:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69208e22_bbe699c8",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "618c053c_63b20fdc",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-04-19T20:14:18Z",
       "side": 1,
       "message": "Why not just pass \u0026data and \u0026data_size directly above?",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fed3a1_0bf8b6ef",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-04-21T10:09:57Z",
+      "side": 1,
+      "message": "Because buf and len are used below. data is used to store fmap_find_by_name() result, but requires but and len to correctly find areas.",
+      "parentUuid": "618c053c_63b20fdc",
       "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
