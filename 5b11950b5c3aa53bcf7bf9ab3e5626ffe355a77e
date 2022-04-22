@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa66fb2_2e343fc0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-22T23:46:21Z",
+      "side": 1,
+      "message": "There are plenty of other cases like here too where you really don\u0027t need the `rv` and could just rewrite it to\n\n if (...function call...)\n   return 1.",
+      "revId": "5b11950b5c3aa53bcf7bf9ab3e5626ffe355a77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

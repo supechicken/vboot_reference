@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3d96700_97b54c30",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-22T23:46:21Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t mean remove the `if ()`, I was just too lazy to write the whole line. My point was passing pointers to the members of the `file` struct rather than having all those extra locals.",
+      "parentUuid": "232816f4_5aea0d8d",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82e0a3d6_2c34078a",
         "filename": "futility/cmd_show.c",
         "patchSetId": 5
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "There will be a problem with setting retval \u003d 1 at the beginning. IT does not work with:\n  if (show_option.strict \u0026\u0026 (!sign_key || !good_sig))\n      retval \u003d 1;\n\nWhole function relies on that retval \u003d 0, and is set to 1 only in this piece of code.",
       "parentUuid": "82e0a3d6_2c34078a",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6564643e_cdd6a282",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-22T23:46:21Z",
+      "side": 1,
+      "message": "Could just move that line to the end?",
+      "parentUuid": "8ba0c008_4c84e106",
       "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -219,6 +255,42 @@
       "side": 1,
       "message": "Because buf and len are used below. data is used to store fmap_find_by_name() result, but requires but and len to correctly find areas.",
       "parentUuid": "618c053c_63b20fdc",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f9e931_ab4d3cc6",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-22T23:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84fed3a1_0bf8b6ef",
+      "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974460a0_d8066509",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-22T23:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84fed3a1_0bf8b6ef",
       "revId": "90438fe71ede47afa0737fd45ad40de5cafc14b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
