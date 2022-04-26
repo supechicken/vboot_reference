@@ -16,6 +16,40 @@
       "message": "PTAL, thanks!\n",
       "revId": "1cdd8c745a0249022fa722ddf9dd7e1e90ed0f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb41be6_cbf6cf68",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-04-26T09:28:54Z",
+      "side": 1,
+      "message": "I wonder what happens here if ${system_mnt} already has content.\nShould we add rm -rf ${system_mnt} before the unsquash to be extra safe?",
+      "revId": "1cdd8c745a0249022fa722ddf9dd7e1e90ed0f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8937e354_240025ce",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-04-26T09:28:54Z",
+      "side": 1,
+      "message": "Are there any corner cases that snapshot_file_properties/image_content_integrity_check didn\u0027t cover?\nI thought they already achieve the same, except it\u0027s before re-packing the image.",
+      "revId": "1cdd8c745a0249022fa722ddf9dd7e1e90ed0f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
