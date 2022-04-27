@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6189045c_c2263c3f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2022-04-27T02:15:30Z",
+      "side": 1,
+      "message": "system_mnt is `${working_dir}/mnt` and working_dir is just created at #336 and system_mnt should not exist here. I guess we can assume safely there is no left over from the previous retry.",
+      "parentUuid": "1eb41be6_cbf6cf68",
+      "revId": "1cdd8c745a0249022fa722ddf9dd7e1e90ed0f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8937e354_240025ce",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-26T09:28:54Z",
       "side": 1,
       "message": "Are there any corner cases that snapshot_file_properties/image_content_integrity_check didn\u0027t cover?\nI thought they already achieve the same, except it\u0027s before re-packing the image.",
+      "revId": "1cdd8c745a0249022fa722ddf9dd7e1e90ed0f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcceb10_141c52b0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2022-04-27T02:15:30Z",
+      "side": 1,
+      "message": "Good point. We are still not sure why the image_content_integrity_check does not prevent from publishing the zork image with missing /dev (b/229844647)\n\nAccording to b/175081695#comment9 it seems the directories are removed at random timing so my two cents is that the directory is removed after the last image_content_integrity_check call.\n\nAt least the check should prevent b/229844647 from happening again. The next step to find out the root cause are\n\n1. Disabling the retry logic to make it more reproducible.\n2. Use strace for sign_android_image.sh to check which process deletes the empty directories.",
+      "parentUuid": "8937e354_240025ce",
       "revId": "1cdd8c745a0249022fa722ddf9dd7e1e90ed0f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
