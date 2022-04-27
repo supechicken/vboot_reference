@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce45365a_7e5db288",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-04-27T17:12:35Z",
+      "side": 1,
+      "message": "shouldn\u0027t all of these strchr calls include checks/asserts too ?  wouldn\u0027t want a bad name leading to a segfault here.",
+      "revId": "4f16dcffbdb3202600ad49ef59cbb8d10510a871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
