@@ -821,6 +821,44 @@ static int manifest_scan_entries(const char *name, void *arg)
 	return !manifest_add_model(manifest, &model);
 }
 
+/*
+ * A callback function for manifest to scan files in raw /firmware archive.
+ * Returns 0 to keep scanning, or non-zero to stop.
+ */
+static int manifest_scan_raw_entries(const char *name, void *arg)
+{
+	struct manifest *manifest = (struct manifest *)arg;
+	struct archive *archive = manifest->archive;
+	struct model_config model = {0};
+	char *slash, *ec_name = NULL;
+
+	/* /firmware layout:
+	 * - image-${MODEL}{,.serial,.dev...}.bin
+	 * - ${MODEL}/ec.bin
+	 */
+
+	if (!str_startswith(name, "image-"))
+		return 0;
+	slash = strchr(name, '.');
+	if (!slash || strcmp(slash, ".bin"))
+		return 0;
+
+	model.name = strdup(strchr(name, '-') + 1);
+	slash = strchr(model.name, '.');
+	if (slash)
+		*slash = '\0';
+
+	VB2_DEBUG("Found model <%s>: %s\n", model.name, name);
+	model.image = strdup(name);
+	ASPRINTF(&ec_name, "%s/ec.bin", model.name);
+	if (archive_has_entry(archive, ec_name))
+		model.ec_image = ec_name;
+	else
+		free(ec_name);
+
+	return !manifest_add_model(manifest, &model);
+}
+
 /**
  * get_manifest_key() - Wrapper to get the firmware manifest key from crosid
  *
@@ -1009,6 +1047,9 @@ struct manifest *new_manifest_from_archive(struct archive *archive)
 	manifest.archive = archive;
 	manifest.default_model = -1;
 	archive_walk(archive, &manifest, manifest_scan_entries);
+	if (manifest.num == 0)
+		archive_walk(archive, &manifest, manifest_scan_raw_entries);
+
 	if (manifest.num == 0) {
 		const char *image_name = NULL;
 		struct firmware_image image = {0};
