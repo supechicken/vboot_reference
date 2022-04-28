@@ -694,7 +694,17 @@ resign_android_image_if_exists() {
   info "Found ARC image version '${arc_version}', re-signing APKs."
   # TODO(crbug.com/1141907): remove set -x and set +x below.
   set -x
-  "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android"
+  local strace_log
+  strace_log=$(make_temp_file)
+  # Record limited set of syscall to avoid recording bytes of release keys.
+  # TODO(b/230688519): Remove the log once the root cause is found.
+  if ! strace -f -o "${strace_log}" \
+     -e unlink,unlinkat,clone,vfork,fork,clone,execve,execveat --signal=!all \
+     "${SCRIPT_DIR}/sign_android_image.sh" \
+     "${rootfs_dir}" "${KEY_DIR}/android"; then
+    error "strace logs\n$("${SCRIPT_DIR}/diagnose_strace.py" "${strace_log}")"
+    return 1
+  fi
 
   if ! sudo umount "${rootfs_dir}"; then
     error "umount ${rootfs_dir} failed"
