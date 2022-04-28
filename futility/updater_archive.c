@@ -864,6 +864,102 @@ static int manifest_scan_raw_entries(const char *name, void *arg)
 	return !manifest_add_model(manifest, &model);
 }
 
+/* Returns the matched model config from the manifest, or NULL if not found. */
+static struct model_config *manifest_get_model_config(
+		struct manifest *manifest, const char *name)
+{
+	int i = 0;
+
+	for (i = 0; i < manifest->num; i++) {
+		if (!strcmp(name, manifest->models[i].name))
+			return &manifest->models[i];
+	}
+	return NULL;
+}
+
+/*
+ * Creates the manifest from the 'signer_config.csv' file.
+ * Returns 0 on success (loaded), otherwise failure.
+ */
+static int manifest_from_signer_config(struct manifest *manifest)
+{
+	struct archive *archive = manifest->archive;
+	const char * const signer_config = "signer_config.csv";
+	uint32_t size;
+	uint8_t *data;
+	char *s, *tok_ptr;
+
+	if (!archive_has_entry(archive, signer_config))
+		return -1;
+
+	/*
+	 * CSV format: model_name,firmware_image,key_id,ec_image
+	 *
+	 * Note the key_id is not signature_id and won't be used.
+	 */
+
+	if (archive_read_file(archive, signer_config, &data, &size, NULL)) {
+		ERROR("Failed reading: %s\n", signer_config);
+		return -1;
+	}
+
+	/* Skip headers. */
+	s = strtok_r((char *)data, "\n", &tok_ptr);
+	if (!s || !strchr(s, ',')) {
+		ERROR("Invalid %s: missing header.\n", signer_config);
+		free(data);
+		return -1;
+	}
+
+	for (s = strtok_r(NULL, "\n", &tok_ptr); s != NULL;
+	     s = strtok_r(NULL, "\n", &tok_ptr)) {
+
+		struct model_config model = {0};
+		int discard_model = 0;
+
+		if (sscanf(s, "%m[^,],%m[^,],%*[^,],%m[^,]",
+		    &model.name, &model.image, &model.ec_image) != 3) {
+			ERROR("Invalid entry in %s: %s\n", signer_config, s);
+			discard_model = 1;
+		} else if (strchr(model.name, '-')) {
+			/* format: realmodel-customlabel */
+			char *tok_dash;
+			char *real_model;
+			struct model_config *real_model_config;
+
+			VB2_DEBUG("Found custom-label: %s\n", model.name);
+
+			real_model = strtok_r(model.name, "-", &tok_dash);
+			assert(real_model);
+
+			real_model_config = manifest_get_model_config(
+					manifest, real_model);
+
+			if (!real_model_config) {
+				ERROR("Invalid custom label model: %s\n",
+				      real_model);
+			} else {
+				real_model_config->is_custom_label = 1;
+			}
+
+			discard_model = 1;
+		}
+
+		if (discard_model) {
+			free(model.name);
+			free(model.image);
+			free(model.ec_image);
+			continue;
+		}
+
+		model.signature_id = strdup(model.name);
+		if (!manifest_add_model(manifest, &model))
+			break;
+	}
+	free(data);
+	return 0;
+}
+
 /**
  * get_manifest_key() - Wrapper to get the firmware manifest key from crosid
  *
@@ -1051,14 +1147,24 @@ struct manifest *new_manifest_from_archive(struct archive *archive)
 
 	manifest.archive = archive;
 	manifest.default_model = -1;
+
+	VB2_DEBUG("Try to build the manifest from setvars.sh\n");
 	archive_walk(archive, &manifest, manifest_scan_entries);
-	if (manifest.num == 0)
+
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build the manifest from signer_config\n");
+		manifest_from_signer_config(&manifest);
+	}
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build the manifest as /firmware\n");
 		archive_walk(archive, &manifest, manifest_scan_raw_entries);
+	}
 
 	if (manifest.num == 0) {
 		const char *image_name = NULL;
 		struct firmware_image image = {0};
 
+		VB2_DEBUG("Try to build the manifest as single folder\n");
 		/* Try to load from current folder. */
 		if (archive_has_entry(archive, old_host_image_name))
 			image_name = old_host_image_name;
