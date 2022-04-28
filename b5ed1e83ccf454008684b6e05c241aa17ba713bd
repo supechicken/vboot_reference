@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1401fc_30d870c0",
+        "filename": "scripts/image_signing/diagnose_strace.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-04-28T08:10:24Z",
+      "side": 1,
+      "message": "Would you mind adding comments about what this does? It\u0027s not quite intuitive.\n\nI suppose it\u0027s about marking processes that touched \u0027dalvik-cache\u0027, and the exec hierarchy of such processes, and only print execve/execveat logs from those.\nIs this sufficient to debug the issue (say, when /dev disappears)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "b5ed1e83ccf454008684b6e05c241aa17ba713bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
