@@ -864,6 +864,54 @@ static int manifest_scan_raw_entries(const char *name, void *arg)
 	return !manifest_add_model(manifest, &model);
 }
 
+/*
+ * Creates the manifest from the 'signer_config.csv' file.
+ * Returns 0 on success (loaded), otherwise failure.
+ */
+static int manifest_from_signer_config(struct manifest *manifest)
+{
+	struct archive *archive = manifest->archive;
+	const char * const signer_config = "signer_config.csv";
+	uint32_t size;
+	uint8_t *data;
+	char *s;
+	int chars_read = 0;
+
+	if (!archive_has_entry(archive, signer_config))
+		return -1;
+
+	/* CSV format: model_name,firmware_image,key_id,ec_image */
+	if (archive_read_file(archive, signer_config, &data, &size, NULL)) {
+		ERROR("Failed reading: %s\n", signer_config);
+		return -1;
+	}
+	s = (char *)data;
+	/* Skip headers. */
+	if (sscanf(s, "%*s\n%n", &chars_read) != 0)
+		return -1;
+	s += chars_read;
+
+	do {
+		struct model_config model = {0};
+		chars_read = 0;
+
+		if (sscanf(s, "%m[^,],%m[^,],%m[^,],%ms\n%n",
+		    &model.name, &model.image, &model.signature_id,
+		    &model.ec_image, &chars_read) != 4 || !chars_read)
+			break;
+
+		s += chars_read;
+
+		if (str_startswith(model.signature_id, SIG_ID_IN_VPD_PREFIX))
+			model.is_custom_label = 1;
+
+		if (!manifest_add_model(manifest, &model))
+			break;
+	} while (*s);
+	free(data);
+	return 0;
+}
+
 /**
  * get_manifest_key() - Wrapper to get the firmware manifest key from crosid
  *
@@ -1051,14 +1099,24 @@ struct manifest *new_manifest_from_archive(struct archive *archive)
 
 	manifest.archive = archive;
 	manifest.default_model = -1;
+
+	VB2_DEBUG("Try to build the manifest from setvars.sh\n");
 	archive_walk(archive, &manifest, manifest_scan_entries);
-	if (manifest.num == 0)
+
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build the manifest from signer_config\n");
+		manifest_from_signer_config(&manifest);
+	}
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build the manifest as /firmware\n");
 		archive_walk(archive, &manifest, manifest_scan_raw_entries);
+	}
 
 	if (manifest.num == 0) {
 		const char *image_name = NULL;
 		struct firmware_image image = {0};
 
+		VB2_DEBUG("Try to build the manifest as single folder\n");
 		/* Try to load from current folder. */
 		if (archive_has_entry(archive, old_host_image_name))
 			image_name = old_host_image_name;
