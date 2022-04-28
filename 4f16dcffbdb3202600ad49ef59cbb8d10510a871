@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3783430a_e4ce6100",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-28T01:53:09Z",
+      "side": 1,
+      "message": "This is not a slash. Wouldn\u0027t it make more sense to call this `dot` or something?",
+      "revId": "4f16dcffbdb3202600ad49ef59cbb8d10510a871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce45365a_7e5db288",
         "filename": "futility/updater_archive.c",
         "patchSetId": 1
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "although i guess the string parsing above has made sure that `name` starts with `image-`, contains at least `.bin` after it.  string parsing in C is so fragile.  would be nice to convert futility to C++ :P.",
       "parentUuid": "ce45365a_7e5db288",
+      "revId": "4f16dcffbdb3202600ad49ef59cbb8d10510a871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5909dfa8_cc391c2e",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-28T01:53:09Z",
+      "side": 1,
+      "message": "Can\u0027t you `sscanf()` this somehow? E.g.\n\n int chars_read;\n if (sscanf(name, \"image-%m[^.].bin%n\", \u0026model.name, \u0026chars_read) !\u003d 2 ||\n     name[chars_read] !\u003d \u0027\\0\u0027)\n   return 0;",
+      "parentUuid": "1019de8c_6382b7df",
       "revId": "4f16dcffbdb3202600ad49ef59cbb8d10510a871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
