@@ -305,12 +305,13 @@ static int archive_zip_read_file(void *handle, const char *fname,
 		ERROR("Failed to open entry in ZIP: %s\n", fname);
 		return 1;
 	}
-	*data = (uint8_t *)malloc(stat.size);
+	*data = (uint8_t *)malloc(stat.size + 1);
 	if (*data) {
 		if (zip_fread(fp, *data, stat.size) == stat.size) {
 			if (mtime)
 				*mtime = stat.mtime;
 			*size = stat.size;
+			(*data)[stat.size] = '\0';
 		} else {
 			ERROR("Failed to read entry in zip: %s\n", fname);
 			free(*data);
