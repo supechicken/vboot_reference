@@ -929,11 +929,9 @@ static int manifest_from_signer_config(struct manifest *manifest)
 
 			/*
 			 * Currently we assume the base model (e.g., base_model)
-			 * is always listed before CL models in the CSV file.
-			 * This has been validated on a few existing devices for
-			 * example 'octopus'. If the signerbot or the
-			 * chromeos-config changed the behavior then we have to
-			 * revisit this implementation.
+			 * is always listed before CL models in the CSV file -
+			 * this is based on how the signerbot and the
+			 * chromeos-config works today (validated on octopus).
 			 */
 			base_model_config = manifest_get_model_config(
 					manifest, base_model);
@@ -966,6 +964,56 @@ static int manifest_from_signer_config(struct manifest *manifest)
 			break;
 	}
 	free(data);
+	return 0;
+}
+
+/*
+ * Creates the manifest from a simple (legacy) folder with only 1 set of
+ * firmware images.
+ * Returns 0 on success (loaded), otherwise failure.
+ */
+static int manifest_from_simple_folder(struct manifest *manifest)
+{
+	const char * const host_image_name = "image.bin",
+		   * const old_host_image_name = "bios.bin",
+		   * const ec_name = "ec.bin",
+		   * const pd_name = "pd.bin";
+	struct archive *archive = manifest->archive;
+	const char *image_name = NULL;
+	struct firmware_image image = {0};
+	struct model_config model = {0};
+
+	/* Try to load from current folder. */
+	if (archive_has_entry(archive, old_host_image_name))
+		image_name = old_host_image_name;
+	else if (archive_has_entry(archive, host_image_name))
+		image_name = host_image_name;
+	else
+		return 1;
+
+	model.image = strdup(image_name);
+	if (archive_has_entry(archive, ec_name))
+		model.ec_image = strdup(ec_name);
+	if (archive_has_entry(archive, pd_name))
+		model.pd_image = strdup(pd_name);
+	/* Extract model name from FWID: $Vendor_$Platform.$Version */
+	if (!load_firmware_image(&image, image_name, archive)) {
+		char *token = NULL;
+		if (strtok(image.ro_version, "_"))
+			token = strtok(NULL, ".");
+		if (token && *token) {
+			str_convert(token, tolower);
+			model.name = strdup(token);
+		}
+		free_firmware_image(&image);
+	}
+	if (!model.name)
+		model.name = strdup(DEFAULT_MODEL_NAME);
+	if (manifest->has_keyset)
+		model.is_custom_label = 1;
+	manifest_add_model(manifest, &model);
+	manifest->default_model = manifest->num - 1;
+
 	return 0;
 }
 
@@ -1159,11 +1207,6 @@ int model_apply_custom_label(
 struct manifest *new_manifest_from_archive(struct archive *archive)
 {
 	struct manifest manifest = {0}, *new_manifest;
-	struct model_config model = {0};
-	const char * const host_image_name = "image.bin",
-		   * const old_host_image_name = "bios.bin",
-	           * const ec_name = "ec.bin",
-		   * const pd_name = "pd.bin";
 
 	manifest.archive = archive;
 	manifest.default_model = -1;
@@ -1180,43 +1223,11 @@ struct manifest *new_manifest_from_archive(struct archive *archive)
 		VB2_DEBUG("Try to build a manifest from a */firmware folder\n");
 		archive_walk(archive, &manifest, manifest_scan_raw_entries);
 	}
-
 	if (manifest.num == 0) {
-		const char *image_name = NULL;
-		struct firmware_image image = {0};
-
 		VB2_DEBUG("Try to build a manifest from a simple folder\n");
-		/* Try to load from current folder. */
-		if (archive_has_entry(archive, old_host_image_name))
-			image_name = old_host_image_name;
-		else if (archive_has_entry(archive, host_image_name))
-			image_name = host_image_name;
-		else
-			return 0;
-
-		model.image = strdup(image_name);
-		if (archive_has_entry(archive, ec_name))
-			model.ec_image = strdup(ec_name);
-		if (archive_has_entry(archive, pd_name))
-			model.pd_image = strdup(pd_name);
-		/* Extract model name from FWID: $Vendor_$Platform.$Version */
-		if (!load_firmware_image(&image, image_name, archive)) {
-			char *token = NULL;
-			if (strtok(image.ro_version, "_"))
-				token = strtok(NULL, ".");
-			if (token && *token) {
-				str_convert(token, tolower);
-				model.name = strdup(token);
-			}
-			free_firmware_image(&image);
-		}
-		if (!model.name)
-			model.name = strdup(DEFAULT_MODEL_NAME);
-		if (manifest.has_keyset)
-			model.is_custom_label = 1;
-		manifest_add_model(&manifest, &model);
-		manifest.default_model = manifest.num - 1;
+		manifest_from_simple_folder(&manifest);
 	}
+
 	VB2_DEBUG("%d model(s) loaded.\n", manifest.num);
 	if (!manifest.num) {
 		ERROR("No valid configurations found from archive.\n");
