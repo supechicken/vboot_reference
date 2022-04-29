@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead2ab0f_55b36672",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-29T00:08:07Z",
+      "side": 1,
+      "message": "nit: sscanf() is neat and all but I feel something like this would be easier done with just strchr()?",
+      "revId": "3a4d6dd677937e8dedddd3d6329474241457cfdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1f2cad_faffb9cf",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-04-29T00:08:07Z",
+      "side": 1,
+      "message": "Note that this doesn\u0027t allow you to tell whether there was actually a newline at the end or the string just ended early. It also doesn\u0027t do what you want if the EC image name contains whitespace. Maybe both of those are not a problem here. If you wanted to work around that, you should use `%m[^\\n]` at the end and then check `s[chars_read] !\u003d \u0027\\n\u0027`.",
+      "range": {
+        "startLine": 900,
+        "startChar": 44,
+        "endLine": 900,
+        "endChar": 55
+      },
+      "revId": "3a4d6dd677937e8dedddd3d6329474241457cfdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
