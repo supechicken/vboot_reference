@@ -22,6 +22,30 @@
       },
       "revId": "b5ed1e83ccf454008684b6e05c241aa17ba713bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe9821e_ef6b159c",
+        "filename": "scripts/image_signing/diagnose_strace.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2022-05-02T02:56:02Z",
+      "side": 1,
+      "message": "Done. According to the logs pasted to b/175081695, accidental removal seems to be happened for the consistent set of directories. I\u0027d like to keep the debug logs short to avoid the important part of logs from being truncated",
+      "parentUuid": "7e1401fc_30d870c0",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "b5ed1e83ccf454008684b6e05c241aa17ba713bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
