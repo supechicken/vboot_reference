@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d751ee3_dcb18f57",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-03T01:20:38Z",
+      "side": 1,
+      "message": "I don\u0027t think this compiles because you\u0027re using a function before it is declared now. Otherwise looks fine.",
+      "revId": "f9855a46c5fee51604957570e6f3ecf1beaeffc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
