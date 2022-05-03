@@ -16,6 +16,24 @@
       "message": "If you want to make use of this guarantee for all archive_read_file() calls, shouldn\u0027t you also add it to archive_fallback_read_file()?",
       "revId": "d0e03b349bda07c6a6a6bd74c8410a09092bafef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "059d41c3_ad310f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-03T00:35:31Z",
+      "side": 1,
+      "message": "archive_fallback_read_file calls s vb2_read_file, which already did that. Let me add a few more comments.",
+      "parentUuid": "b9993ae5_7fbcf564",
+      "revId": "d0e03b349bda07c6a6a6bd74c8410a09092bafef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
