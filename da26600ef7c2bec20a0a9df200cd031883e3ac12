@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "343a32ca_ddbce564",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-03T00:42:04Z",
+      "side": 1,
+      "message": "Doesn\u0027t `manifest_find_model()` already do this?",
+      "revId": "da26600ef7c2bec20a0a9df200cd031883e3ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b019ca0_b1c73941",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-03T00:42:04Z",
+      "side": 1,
+      "message": "nit: man page says\n\n\u003e On some implementations, *saveptr is required to be NULL on the first call to strtok_r() that is being used to parse str.",
+      "range": {
+        "startLine": 890,
+        "startChar": 10,
+        "endLine": 890,
+        "endChar": 18
+      },
+      "revId": "da26600ef7c2bec20a0a9df200cd031883e3ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a13f61_2cdf9d7e",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-03T00:42:04Z",
+      "side": 1,
+      "message": "I\u0027m confused by the `\u003c 2`. Shouldn\u0027t this be `!\u003d 3`? Or can ec_image be left out? (Maybe add a comment to clarify that, then?)",
+      "range": {
+        "startLine": 922,
+        "startChar": 50,
+        "endLine": 922,
+        "endChar": 53
+      },
+      "revId": "da26600ef7c2bec20a0a9df200cd031883e3ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04ab7ea_d208d4f9",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-03T00:42:04Z",
+      "side": 1,
+      "message": "nit: this seems to bake in the assumption that the base model is always listed before the customlabels in the file. Can we rely on that? (If so, maybe add a comment to clarify that the code intentionally makes this assumption?)",
+      "revId": "da26600ef7c2bec20a0a9df200cd031883e3ac12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
