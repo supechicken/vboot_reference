@@ -68,6 +68,24 @@
       "message": "This looks likely to cause an outage. strace is extremely expensive and the code change here doesn\u0027t look safe.",
       "revId": "0a71bbdc4ce575dd960d52bf0a5ad35319792d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f6cab4_b083d52c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2022-05-06T01:58:35Z",
+      "side": 1,
+      "message": "Can we enable strace stochastically to minimize the impact on the performance (say 10%?) If it works I\u0027ll gather numbers to find the best ratio.",
+      "parentUuid": "db9c6cc4_d53db8f4",
+      "revId": "0a71bbdc4ce575dd960d52bf0a5ad35319792d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
