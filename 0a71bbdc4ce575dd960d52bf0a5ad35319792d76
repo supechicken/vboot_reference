@@ -103,6 +103,24 @@
       "message": "AFAIK, we don\u0027t have a way to roll out this change to just the Staging bots. I\u0027m not will to take the risk on Prod bots. Maybe George or Mike know. I am curious what you\u0027re trying to accomplish, though, that can\u0027t be solved by adding logging. Logging would have long-term benefits and would not have any outage risk.",
       "revId": "0a71bbdc4ce575dd960d52bf0a5ad35319792d76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd43d30_5700ae6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2022-05-06T02:52:58Z",
+      "side": 1,
+      "message": "I\u0027ll look for a different way. Thank you for the explanation. For your question, we added logs to see if the corruption happens after each important step. What we learnt that the corruption happens at random timing. It\u0027s likely that some process removes our directories asynchronously but we don\u0027t know which process is doing it.",
+      "parentUuid": "7ba6922a_c33d0da5",
+      "revId": "0a71bbdc4ce575dd960d52bf0a5ad35319792d76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
