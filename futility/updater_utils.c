@@ -364,21 +364,42 @@ const struct vb2_gbb_header *find_gbb(const struct firmware_image *image)
  */
 char *host_shell(const char *command)
 {
-	/* Currently all commands we use do not have large output. */
-	char buf[COMMAND_BUFFER_SIZE];
-
+	size_t len = 0, allocated = COMMAND_BUFFER_SIZE;
+	char *buf = (char *)malloc(COMMAND_BUFFER_SIZE);
 	int result;
-	FILE *fp = popen(command, "r");
+	FILE *fp = NULL;
 
 	VB2_DEBUG("%s\n", command);
-	buf[0] = '\0';
-	if (!fp) {
-		VB2_DEBUG("Execution error for %s.\n", command);
-		return strdup(buf);
+	if (!buf) {
+		ERROR("Internal error - cannot allocate memory.\n");
+		abort();
 	}
 
-	if (fgets(buf, sizeof(buf), fp))
-		strip_string(buf, NULL);
+	buf[0] = '\0';
+	fp = popen(command, "r");
+	if (!fp) {
+		ERROR("Internal error - failed to popen: %s\n", command);
+		return buf;
+	}
+
+	while (fgets(buf + len, allocated - len, fp)) {
+		len += strlen(buf + len);
+		if (allocated - len < COMMAND_BUFFER_SIZE) {
+			char *new_buf;
+
+			allocated += COMMAND_BUFFER_SIZE;
+			new_buf = (char *)realloc(buf, allocated);
+			if (!new_buf) {
+				ERROR("Failed to allocate memory: %ld bytes\n",
+				      allocated);
+				break;
+			}
+			buf = new_buf;
+		}
+
+	}
+
+	strip_string(buf, NULL);
 	result = pclose(fp);
 	if (!WIFEXITED(result) || WEXITSTATUS(result) != 0) {
 		VB2_DEBUG("Execution failure with exit code %d: %s\n",
@@ -389,7 +410,7 @@ char *host_shell(const char *command)
 		 */
 		buf[0] = '\0';
 	}
-	return strdup(buf);
+	return buf;
 }
 
 
