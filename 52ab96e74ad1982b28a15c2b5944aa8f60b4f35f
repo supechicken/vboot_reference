@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cf42b5_90d1cab2",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-12T02:42:41Z",
+      "side": 1,
+      "message": "Does this test actually still work now? Because I believe the ZGB image uses the dev keyblock, so if you take that out I\u0027d expect the old binary to no longer match what the new futility would product. I think in this case it actually makes sense to remove this ZGB image completely now (unless there is anything else still using it? But I think the only reason this is here in addition to the Link and Peppy ones is to test dev keyblock).",
+      "revId": "52ab96e74ad1982b28a15c2b5944aa8f60b4f35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
