@@ -81,6 +81,24 @@
       "parentUuid": "1602d4c6_0b8c7069",
       "revId": "5561c4d04ac5290ba2d6437154535e20e4b85543",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5d62a9_ffe609e7",
+        "filename": "futility/file_type_usbpd1.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-12T02:30:09Z",
+      "side": 1,
+      "message": "Uhh... no, you just removed this line. Now retval gets set to 0 in line 101 and then incorrectly signals success in the error cases below. You have to actually change it to\n\n if (futil_open_and_map_file(...))\n   return 1;\n   \nlike the others.",
+      "parentUuid": "3c62409b_f1fe0f71",
+      "revId": "5561c4d04ac5290ba2d6437154535e20e4b85543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
