@@ -352,6 +352,144 @@ static int archive_zip_write_file(void *handle, const char *fname,
 }
 #endif
 
+struct tar_info {
+	char *fpath;
+	char *index;
+};
+
+/* Callback for archive_open on a (compressed) tar file. */
+static void *archive_tar_open(const char *name)
+{
+	char *cmd;
+	struct tar_info *tar = (struct tar_info *)malloc(sizeof(*tar));
+
+	if (!tar)
+		return NULL;
+
+	ASPRINTF(&cmd, "tar -I lbzip2 -tvf %s", name);
+	VB2_DEBUG("Tar command: %s\n", cmd);
+	tar->index = host_shell(cmd);
+	free(cmd);
+	if (tar->index && *tar->index) {
+		tar->fpath = strdup(name);
+	} else {
+		free(tar->index);
+		free(tar);
+		tar = NULL;
+	}
+
+	return tar;
+}
+
+/* Callback for archive_close on a TAR file. */
+static int archive_tar_close(void *handle)
+{
+	struct tar_info *tar = (struct tar_info *)handle;
+	if (tar) {
+		free(tar->fpath);
+		free(tar->index);
+	}
+	free(tar);
+	return 0;
+}
+
+/* Callback for archive_has_entry on a TAR file. */
+static int archive_tar_has_entry(void *handle, const char *fname)
+{
+	struct tar_info *tar = (struct tar_info *)handle;
+	char *pattern = strstr(tar->index, fname);
+	VB2_DEBUG("Searching: %s\n", fname);
+
+	if (!pattern)
+		return 0;
+
+	/* If found, the pattern should be the last element in a row. */
+	if (pattern == tar->index || pattern[-1] != ' ')
+		return 0;
+
+	pattern += strlen(fname);
+	if (*pattern != '\0' && *pattern != '\n')
+		return 0;
+
+	VB2_DEBUG("Found %s\n", fname);
+	return 1;
+}
+
+/* Callback for archive_walk on a TAR file. */
+static int archive_tar_walk(
+		void *handle, void *arg,
+		int (*callback)(const char *name, void *arg))
+{
+	struct tar_info *tar = (struct tar_info *)handle;
+	char tmp_name[512];
+
+	char *nl, *s = tar->index;
+
+	/* TODO(hungte): Make sure the last entry is also walked. */
+	for (nl = strchr(s, '\n'); nl; s = nl + 1, nl = strchr(s, '\n')) {
+		/* New entry in [s, nl], and fname in last element */
+		char *fname = memrchr(s, ' ', nl - s);
+		if (!fname) {
+			ERROR("Invalid entry in tar file\n");
+			return 1;
+		}
+		fname++;
+		memset(tmp_name, 0, sizeof(tmp_name));
+		strncpy(tmp_name, fname, nl - fname);
+		if (callback(tmp_name, arg))
+			break;
+	}
+	return 0;
+}
+
+/* Callback for archive_tar_read_file on a TAR file. */
+static int archive_tar_read_file(void *handle, const char *fname,
+			     uint8_t **data, uint32_t *size, int64_t *mtime)
+{
+	struct tar_info *tar = (struct tar_info *)handle;
+	const char *tmp = "/tmp";
+	char *fpath;
+	char *cmd;
+	int r;
+
+	ASPRINTF(&cmd, "tar -I lbzip2 -xvf %s -C %s %s\n", tar->fpath, tmp,
+		 fname);
+	VB2_DEBUG("Tar command: %s\n", cmd);
+	free(host_shell(cmd));
+	free(cmd);
+
+	/* TODO(hungte) Remove the directories... */
+
+	ASPRINTF(&fpath, "%s/%s", tmp, fname);
+	r = archive_fallback_read_file(NULL, fpath, data, size, mtime);
+	remove(fpath);
+	free(fpath);
+	return r;
+}
+
+/* Callback for archive_tar_write_file on a TAR file. */
+static int archive_tar_write_file(void *handle, const char *fname,
+				  uint8_t *data, uint32_t size, int64_t mtime)
+{
+	ERROR("Not implemented\n");
+	return 1;
+}
+
+/* Returns 1 if name ends by given pattern, otherwise 0. */
+static int str_endswith(const char *name, const char *pattern)
+{
+	size_t name_len = strlen(name), pattern_len = strlen(pattern);
+	if (name_len < pattern_len)
+		return 0;
+	return strcmp(name + name_len - pattern_len, pattern) == 0;
+}
+
+/* Returns 1 if name starts by given pattern, otherwise 0. */
+static int str_startswith(const char *name, const char *pattern)
+{
+	return strncmp(name, pattern, strlen(pattern)) == 0;
+}
+
 /*
  * Opens an archive from given path.
  * The type of archive will be determined automatically.
@@ -384,6 +522,13 @@ struct archive *archive_open(const char *path)
 		ar->has_entry = archive_fallback_has_entry;
 		ar->read_file = archive_fallback_read_file;
 		ar->write_file = archive_fallback_write_file;
+	} else if (str_endswith(path, ".tar.bz2")) {
+		ar->open = archive_tar_open;
+		ar->close = archive_tar_close;
+		ar->walk = archive_tar_walk;
+		ar->has_entry = archive_tar_has_entry;
+		ar->read_file = archive_tar_read_file;
+		ar->write_file = archive_tar_write_file;
 	} else {
 #ifdef HAVE_LIBZIP
 		VB2_DEBUG("Found file, use ZIP driver: %s\n", path);
@@ -527,21 +672,6 @@ static void str_convert(char *s, int (*convert)(int c))
 			continue;
 		*s = convert(c);
 	}
-}
-
-/* Returns 1 if name ends by given pattern, otherwise 0. */
-static int str_endswith(const char *name, const char *pattern)
-{
-	size_t name_len = strlen(name), pattern_len = strlen(pattern);
-	if (name_len < pattern_len)
-		return 0;
-	return strcmp(name + name_len - pattern_len, pattern) == 0;
-}
-
-/* Returns 1 if name starts by given pattern, otherwise 0. */
-static int str_startswith(const char *name, const char *pattern)
-{
-	return strncmp(name, pattern, strlen(pattern)) == 0;
 }
 
 /* Returns the VPD value by given key name, or NULL on error (or no value). */
