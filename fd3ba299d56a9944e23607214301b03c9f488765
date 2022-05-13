@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6993f8_a70c0537",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-05-13T08:41:47Z",
+      "side": 1,
+      "message": "Out of curiosity, where does the 2-tab indentation come from? vim? clang-format? Or is it written this way manually to be consistent with other futility code?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 2
+      },
+      "revId": "fd3ba299d56a9944e23607214301b03c9f488765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621aef37_57c219a2",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-05-13T08:41:47Z",
+      "side": 1,
+      "message": "Do we want to skip the entry if strdup() returns NULL? If we don\u0027t have the name, the data would be useless, right? Skipping this, we don\u0027t need to check \"c-\u003ename\" in archive_cache_find() and archive_cache_walk().",
+      "range": {
+        "startLine": 363,
+        "startChar": 2,
+        "endLine": 363,
+        "endChar": 9
+      },
+      "revId": "fd3ba299d56a9944e23607214301b03c9f488765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bc4702_29826289",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-05-13T08:41:47Z",
+      "side": 1,
+      "message": "Align with \"void *handle\", or change the format to be like archive_libarchive_walk().",
+      "range": {
+        "startLine": 422,
+        "startChar": 8,
+        "endLine": 422,
+        "endChar": 15
+      },
+      "revId": "fd3ba299d56a9944e23607214301b03c9f488765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
