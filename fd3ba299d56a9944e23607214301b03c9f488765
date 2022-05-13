@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ddb124_51bca8ad",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-13T12:16:13Z",
+      "side": 1,
+      "message": "The VIM auto will do that, also https://google.github.io/styleguide/cppguide.html#Function_Declarations_and_Definitions (although there they used 2 space / 4 space instead of 1 tab / 2 tabs).",
+      "parentUuid": "fc6993f8_a70c0537",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 2
+      },
+      "revId": "fd3ba299d56a9944e23607214301b03c9f488765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "621aef37_57c219a2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58424e5_dcbc2b73",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-13T12:16:13Z",
+      "side": 1,
+      "message": "But then we have to do strdup before archive_cache_new... or move name to be an arg for archive_cache_new. Anyway done.",
+      "parentUuid": "621aef37_57c219a2",
+      "range": {
+        "startLine": 363,
+        "startChar": 2,
+        "endLine": 363,
+        "endChar": 9
+      },
+      "revId": "fd3ba299d56a9944e23607214301b03c9f488765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6bc4702_29826289",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-13T08:41:47Z",
       "side": 1,
       "message": "Align with \"void *handle\", or change the format to be like archive_libarchive_walk().",
+      "range": {
+        "startLine": 422,
+        "startChar": 8,
+        "endLine": 422,
+        "endChar": 15
+      },
+      "revId": "fd3ba299d56a9944e23607214301b03c9f488765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87b925b_b6dbfb2e",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-13T12:16:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6bc4702_29826289",
       "range": {
         "startLine": 422,
         "startChar": 8,
