@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a642dfdd_9e95f6ed",
+        "filename": "scripts/image_signing/resign_firmwarefd.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-14T01:42:46Z",
+      "side": 1,
+      "message": "I think it would be better to change the positional arguments here too and update all the callers, otherwise we\u0027ll forever be passing two dummy arguments here. As far as I can tell, these are all the cases calling this script that would have to be updated:\n\nsrc/platform/vboot_reference/scripts/image_signing/make_dev_firmware.sh\nsrc/platform/vboot_reference/scripts/image_signing/sign_firmware.sh\nsrc/third_party/autotest/files/client/cros/faft/utils/firmware_updater.py\nsrc/platform/dev/fm_and_key_version_test_prep.sh\n\n(You can use a circular Cq-Depend to make sure this change goes in at the same time across three repositories.)",
+      "revId": "ba50733785afd50a0997b0ebd26cebf0b744ed99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
