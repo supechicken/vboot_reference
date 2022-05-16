@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f7a4354_09530cac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-05-16T18:06:15Z",
+      "side": 1,
+      "message": "Actually, what kind of Tast test would we create for this? Testing that futility still works after the libflashrom change on a few DUTs seems sufficient to me.\n\nBut making sure that the new WP implementation reports the correct status will require a Tast test.",
+      "parentUuid": "26bebc21_c899e668",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "dfb88e6a330898e56a3416513c98b25103ce5367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f5e2f3e_6fc1875d",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 1
