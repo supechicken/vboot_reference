@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6f3db30_d2f65fa3",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-18T01:06:50Z",
+      "side": 1,
+      "message": "See the comment above. The reason I put an exact check here is that if there ever is a future version, this will force someone to notice and look at this code and read that comment, so we don\u0027t risk silently doing the wrong thing for a new format. (In practice, I\u0027m quite certain there won\u0027t be future versions... I\u0027m rather hoping I can deprecate the GBB entirely some time soon.)",
+      "parentUuid": "0d2c8883_b6d26a60",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 28
+      },
+      "revId": "482416317c92930b9b9e5361eebe1f96a7368991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6e73c4d_68e610fe",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-18T00:54:26Z",
       "side": 1,
       "message": "you can calculate \u0027start\u0027 before line 380 and compare gbb-\u003ehwid_offset with  it.\n\nalso, maybe check that `(gbb-\u003ehwid_offset  +  gbb-\u003ehwid_size) \u003c\u003d start`",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 72
+      },
+      "revId": "482416317c92930b9b9e5361eebe1f96a7368991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d216dec_7e0229d8",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-18T01:06:50Z",
+      "side": 1,
+      "message": "Done, for the first part. Not sure there\u0027s a point in checking the second, that would be an overlap and means the entire GBB is broken (if anything, that would be something for futil_valid_gbb_header() to check, although it looks like it currently doesn\u0027t).",
+      "parentUuid": "c6e73c4d_68e610fe",
       "range": {
         "startLine": 396,
         "startChar": 1,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-18T00:54:26Z",
       "side": 1,
       "message": "here and below: it is not necessarily missing, the problem could be with the contents of the file.",
+      "range": {
+        "startLine": 1059,
+        "startChar": 9,
+        "endLine": 1059,
+        "endChar": 40
+      },
+      "revId": "482416317c92930b9b9e5361eebe1f96a7368991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a09700e_f6b14af3",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-18T01:06:50Z",
+      "side": 1,
+      "message": "No, that would have increased errorcount and already dropped out above. You can only reach this point when they weren\u0027t passed at all.",
+      "parentUuid": "df7568eb_67be9025",
       "range": {
         "startLine": 1059,
         "startChar": 9,
