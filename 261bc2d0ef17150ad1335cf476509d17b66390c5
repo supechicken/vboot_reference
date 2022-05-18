@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b1a9d3_e6ff1058",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-18T20:40:54Z",
+      "side": 1,
+      "message": "nit: Would be good to make it a bit clearer that this is an OUT-flag which instructs the caller to do something (as opposed to the caller requesting vboot to do something), e.g. \"If this is set after kernel verification, caller should disable the TPM before jumping to kernel.\"\n\n(One of these days it would be nice if we could make the difference between IN- and OUT-flags here more explicit, e.g. by renaming them all to VB2_CONTEXT_IN_... and VB2_CONTEXT_OUT_... or the like. And clean up cases where the documentation here doesn\u0027t match reality anymore, like with CLEAR_RAM.)",
+      "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00bd0c9c_6c61c794",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-18T20:40:54Z",
+      "side": 1,
+      "message": "Flags should be zero by default so I don\u0027t think this is needed?",
+      "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
