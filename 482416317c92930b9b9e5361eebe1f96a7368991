@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2c8883_b6d26a60",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-18T00:54:26Z",
+      "side": 1,
+      "message": "shouldn\u0027t this allow for future versions just in case.\n\nOr maybe change the error message to \u0027unsupported GBB version\u0027 to make it easier to catch future changes",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 28
+      },
+      "revId": "482416317c92930b9b9e5361eebe1f96a7368991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e73c4d_68e610fe",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-18T00:54:26Z",
+      "side": 1,
+      "message": "you can calculate \u0027start\u0027 before line 380 and compare gbb-\u003ehwid_offset with  it.\n\nalso, maybe check that `(gbb-\u003ehwid_offset  +  gbb-\u003ehwid_size) \u003c\u003d start`",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 72
+      },
+      "revId": "482416317c92930b9b9e5361eebe1f96a7368991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7568eb_67be9025",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-18T00:54:26Z",
+      "side": 1,
+      "message": "here and below: it is not necessarily missing, the problem could be with the contents of the file.",
+      "range": {
+        "startLine": 1059,
+        "startChar": 9,
+        "endLine": 1059,
+        "endChar": 40
+      },
+      "revId": "482416317c92930b9b9e5361eebe1f96a7368991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
