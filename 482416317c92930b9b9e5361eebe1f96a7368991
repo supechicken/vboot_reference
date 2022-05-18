@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3152a850_8f4b3c6f",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-18T01:16:54Z",
+      "side": 1,
+      "message": "I saw the comment, my point is that \u0027deprectated GBB\u0027 in the error message below could be misleading, as the message would be printed in both cases of either deprected or newer GBB",
+      "parentUuid": "a6f3db30_d2f65fa3",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 28
+      },
+      "revId": "482416317c92930b9b9e5361eebe1f96a7368991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6e73c4d_68e610fe",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 1
