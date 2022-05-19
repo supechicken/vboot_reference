@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d11e2a_d78debed",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-19T22:35:04Z",
+      "side": 1,
+      "message": "I doubt that happens often enough to be a serious concern? I can\u0027t really think of examples like that in the past that changed after the initial development churn was over. (And even if that happens once in a few years, it\u0027s not that big of a problem... it\u0027s easy to add multiple names for the same number so it doesn\u0027t need to be a circular dependency to other repos -- you just add the new name, wait a few uprevs, then remove the old one.)\n\nFor flags that are both I\u0027d just use VB2_CONTEXT_INOUT_... or something like that.",
+      "parentUuid": "e7521218_9ef83e9a",
+      "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00bd0c9c_6c61c794",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "With the current depthcharge code, no we don\u0027t. However, because both `VbTryLoadKernel` and `VbTryLoadMiniOsKernel` might be called multiple times, it\u0027d be nice to clear the flag just in case depthcharge calls `VbTryLoadKernel` after a successful `VbTryLoadMiniOsKernel` call (for example if we decided to check miniOS availability without actually booting into it).",
       "parentUuid": "00bd0c9c_6c61c794",
+      "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d03b97a_96e57826",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-19T22:35:04Z",
+      "side": 1,
+      "message": "I don\u0027t think calling that function just to determine availability should be considered a correct use case (if we wanted that we should make a separate function that only finds the headers and doesn\u0027t also load the whole kernel body). So I don\u0027t think there should ever be a case where one of these returning success doesn\u0027t immediately cause the caller to boot it. But okay, no harm in being defensive I guess.",
+      "parentUuid": "6c6ce149_76897ac5",
       "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
