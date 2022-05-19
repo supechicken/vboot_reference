@@ -24,6 +24,7 @@ ${SCRIPT_DIR}/futility/test_dump_fmap.sh
 ${SCRIPT_DIR}/futility/test_gbb_utility.sh
 ${SCRIPT_DIR}/futility/test_load_fmap.sh
 ${SCRIPT_DIR}/futility/test_main.sh
+${SCRIPT_DIR}/futility/test_remove_fmap.sh
 ${SCRIPT_DIR}/futility/test_rwsig.sh
 ${SCRIPT_DIR}/futility/test_show_contents.sh
 ${SCRIPT_DIR}/futility/test_show_kernel.sh
