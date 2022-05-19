@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7521218_9ef83e9a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-05-19T02:30:17Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e IN- and OUT-flags\n\nActually I had the same thought when I first looked at this code. However, the in/out type might change over time (for example with vboot refactoring), and we\u0027d need to rename the flag, which is bothersome. Also note that some flags might be both IN- and OUT- (for example `VB2_CONTEXT_DISPLAY_INIT`).",
+      "parentUuid": "67b1a9d3_e6ff1058",
+      "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00bd0c9c_6c61c794",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-18T20:40:54Z",
       "side": 1,
       "message": "Flags should be zero by default so I don\u0027t think this is needed?",
+      "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6ce149_76897ac5",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-05-19T02:30:17Z",
+      "side": 1,
+      "message": "With the current depthcharge code, no we don\u0027t. However, because both `VbTryLoadKernel` and `VbTryLoadMiniOsKernel` might be called multiple times, it\u0027d be nice to clear the flag just in case depthcharge calls `VbTryLoadKernel` after a successful `VbTryLoadMiniOsKernel` call (for example if we decided to check miniOS availability without actually booting into it).",
+      "parentUuid": "00bd0c9c_6c61c794",
       "revId": "261bc2d0ef17150ad1335cf476509d17b66390c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
