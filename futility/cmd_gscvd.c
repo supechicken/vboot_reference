@@ -940,12 +940,12 @@ static void dump_pubk_hash(const struct vb2_packed_key *pubk)
 	vb2_hash_calculate(vb2_packed_key_data(pubk), pubk->key_size,
 			   VB2_HASH_SHA256, &hash);
 
-	printf("Root key body sha256 hash:\n");
+	fputs("Root key body sha256 hash:\n", stderr);
 
 	for (i = 0; i < sizeof(hash.sha256); i++)
-		printf("%02x", hash.sha256[i]);
+		fprintf(stderr, "%02x", hash.sha256[i]);
 
-	printf("\n");
+	fputs("\n", stderr);
 }
 
 /**
@@ -1128,7 +1128,8 @@ static int do_gscvd(int argc, char *argv[])
 		if (fill_gvd_area(&ap_firmware_file, gvd, kblock))
 			break;
 
-		dump_pubk_hash(root_pubk);
+		if (debugging_enabled)
+			dump_pubk_hash(root_pubk);
 
 		rv = 0;
 	} while (false);
