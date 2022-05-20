@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43d1d173_a7f2c5df",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T03:12:10Z",
+      "side": 1,
+      "message": "text exceeding 80 cols",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "690ae94cf347f5423824980f68fb51876960adb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42ec4bd3_7aa6fbcb",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 1
@@ -14,6 +37,24 @@
       "writtenOn": "2022-05-19T21:35:44Z",
       "side": 1,
       "message": "Vadim, can you please confirm that the endianness here is correct?\n\nFor example, go/cros-dlm shows that the board ID for CoachZ should be \"GVLR\". When I run `gsctool -i -a` on my CoachZ, it shows `Board ID space: 47564c52:b8a9b3ad:00007f7f`.\n\nWhen I run this code with `futility gscvd -b GVLR`, that would now be the equivalent of running `futility gscvd -b 47564c52`. However, since this is stored in the GSCVD descriptor in host byte order (little-endian), in a hexdump of the resulting GSCVD it actually shows up as 52 4c 56 47 (i.e. RLVG). Is that the order that cr50/ti50 expect it in?",
+      "revId": "690ae94cf347f5423824980f68fb51876960adb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30aad51d_1a3fbb17",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T03:12:10Z",
+      "side": 1,
+      "message": "Cr50/Ti50 expect it in big endian format. As an example this is setting Board ID on Ti50 (which accepts symbolic bid as opposed to Cr50):\n\n```\n\u003e bid\nBoard ID: ffffffff:ffffffff, flags: ffffffff\n\u003e bid ZZCR 10  \nWrote type: 5A5A4352, flags: 10\n\u003e bid\nBoard ID: 5a5a4352:a5a5bcad, flags: 00000010\n```",
+      "parentUuid": "42ec4bd3_7aa6fbcb",
       "revId": "690ae94cf347f5423824980f68fb51876960adb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
