@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ba8591_cc5a0a20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-05-20T08:37:55Z",
+      "side": 1,
+      "message": "I am adding this option, because it is required for tests in CL:3575325 (mostly), but might be useful in other cases.\nIf one wants to remove section, then futility load_fmap \u003carea\u003e:/dev/zero and futility remove_fmap can be used. It won\u0027t remove references to these areas, but they won\u0027t be present in binary anymore.",
+      "revId": "3c40356c0c526b7002475a0b7ea67f2d9581cbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
