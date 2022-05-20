@@ -227,6 +227,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4c3c797_75dc57b9",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-05-20T08:37:34Z",
+      "side": 1,
+      "message": "Hmm. It seems to be worth it. The futility code is complicated, but yes, it should be easy for the user. I will take care of it in another patch.",
+      "parentUuid": "c5d9889e_6649152e",
+      "revId": "9b051f39b4926b125eacbf68a1228ac2e9dc30ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5138167d_4bad4093",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 1
