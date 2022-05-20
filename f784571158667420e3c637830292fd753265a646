@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d3b72e_f16b067b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T02:53:37Z",
+      "side": 1,
+      "message": "I don\u0027t understand this reasoning to be nonest - why informateion requested by the operator is going to stderr.\n\nA bigger question is how does one get the hash of the key, which needs to be included in the GSC RO?\n\nDo you just re-run the command to create the GSCVD space?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533e9e9b_48ca5183",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-20T02:53:37Z",
+      "side": 1,
+      "message": "why does it have to go to stderr? This is not an error, and now even is printed on the user request only.",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 948,
+        "endChar": 21
+      },
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
