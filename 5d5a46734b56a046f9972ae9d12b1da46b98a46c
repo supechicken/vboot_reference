@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3472e81b_339ab456",
+        "filename": "futility/cmd_remove_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-05-23T08:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71e11c2b_e7ce4f5a",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "5d5a46734b56a046f9972ae9d12b1da46b98a46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd7cc66_df9d90d2",
+        "filename": "futility/cmd_remove_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-05-23T08:48:28Z",
+      "side": 1,
+      "message": "Oh, right. I forgot to change it after copying it from cmd_load_fmap.c. Thanks :)",
+      "parentUuid": "7153cef5_1862bf6c",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "5d5a46734b56a046f9972ae9d12b1da46b98a46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "903b0964_b06d4692",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-20T21:36:59Z",
       "side": 1,
       "message": "nit: I would just use\n`sizeof(*fmap)`",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 54
+      },
+      "revId": "5d5a46734b56a046f9972ae9d12b1da46b98a46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a102cd_fafb1fa5",
+        "filename": "futility/cmd_remove_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-05-23T08:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "903b0964_b06d4692",
       "range": {
         "startLine": 61,
         "startChar": 36,
