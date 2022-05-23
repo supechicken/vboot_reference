@@ -45,6 +45,47 @@
       },
       "revId": "f784571158667420e3c637830292fd753265a646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833e523b_96a1fd58",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-05-23T19:30:29Z",
+      "side": 1,
+      "message": "+1, I don\u0027t understand the reasoning for this CL - not outputting anything on success is, quite frankly, a bad default, regardless of whether it\u0027s common in UNIX tools.",
+      "parentUuid": "533e9e9b_48ca5183",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 948,
+        "endChar": 21
+      },
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297260ce_237de1e3",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-05-23T19:30:29Z",
+      "side": 1,
+      "message": "Help/usage does not go in `stderr`, not even UNIX tools do this.",
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
