@@ -20,6 +20,14 @@
 static const char ROOTKEY_HASH_DEV[] =
 		"b11d74edd286c144e1135b49e7f0bc20cf041f10";
 
+static const char DEFER_UPDATE_UUID[] =
+		"2eeebcd8-27ea-46b9-b50f-0b9f40426202";
+
+enum update_type {
+	AUTO_UPDATE = 0x1,
+	DEFER_UPDATE = 0x2,
+};
+
 enum target_type {
 	TARGET_SELF,
 	TARGET_UPDATE,
@@ -951,7 +959,7 @@ static enum updater_error_codes update_try_rw_firmware(
 		struct firmware_image *image_to,
 		int wp_enabled)
 {
-	const char *target;
+	const char *target, *self_target;
 	int has_update = 1;
 	int is_vboot2 = get_system_property(SYS_PROP_FW_VBOOT2, cfg);
 
@@ -967,7 +975,7 @@ static enum updater_error_codes update_try_rw_firmware(
 		return UPDATE_ERR_TPM_ROLLBACK;
 
 	VB2_DEBUG("Firmware %s vboot2.\n", is_vboot2 ?  "is" : "is NOT");
-	target = decide_rw_target(cfg, TARGET_SELF, is_vboot2);
+	self_target = target = decide_rw_target(cfg, TARGET_SELF, is_vboot2);
 	if (target == NULL) {
 		ERROR("TRY-RW update needs system to boot in RW firmware.\n");
 		return UPDATE_ERR_TARGET;
@@ -991,9 +999,23 @@ static enum updater_error_codes update_try_rw_firmware(
 			return UPDATE_ERR_WRITE_FIRMWARE;
 	}
 
-	/* Always set right cookies for next boot. */
-	if (set_try_cookies(cfg, target, has_update, is_vboot2))
-		return UPDATE_ERR_SET_COOKIES;
+	/* If the firmware update requested is part of a deferred update,
+	* the autoupdater will later to set the correct cookies to the
+	* updated slot, so keep the self slot as the active firmware even
+	* though the target slot is updated. The UUID printed to stdout is what
+	* the autoupdate will parse to determine if a firmware slot switch is
+	* necessary. */
+	if (has_update && cfg->try_update & DEFER_UPDATE) {
+		STATUS("DEFER UPDATE: (%s) Defer setting cookies for %s\n",
+		       DEFER_UPDATE_UUID, target);
+		if (set_try_cookies(
+			cfg, self_target, /*has_update=*/0, is_vboot2))
+			return UPDATE_ERR_SET_COOKIES;
+	} else {
+		/* Always set right cookies for next boot. */
+		if (set_try_cookies(cfg, target, has_update, is_vboot2))
+			return UPDATE_ERR_SET_COOKIES;
+	}
 
 	/* Do not fail on updating legacy. */
 	if (legacy_needs_update(cfg)) {
@@ -1476,7 +1498,9 @@ int updater_setup_config(struct updater_config *cfg,
 		cfg->try_update = 1;
 	if (arg->mode) {
 		if (strcmp(arg->mode, "autoupdate") == 0) {
-			cfg->try_update = 1;
+			cfg->try_update = AUTO_UPDATE;
+		} else if (strcmp(arg->mode, "deferupdate") == 0) {
+			cfg->try_update = DEFER_UPDATE;
 		} else if (strcmp(arg->mode, "recovery") == 0) {
 			cfg->try_update = 0;
 		} else if (strcmp(arg->mode, "legacy") == 0) {
