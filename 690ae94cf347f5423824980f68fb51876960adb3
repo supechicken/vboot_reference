@@ -99,6 +99,24 @@
       "parentUuid": "30aad51d_1a3fbb17",
       "revId": "690ae94cf347f5423824980f68fb51876960adb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3ad741_b4100675",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-24T01:38:39Z",
+      "side": 1,
+      "message": "I misunderstood your question, but in any case ZZCR in the hex byte dump will show up as 52 43 5a 5a. The gsc console snippet above shows: ZZCR is stored as 0x5a5a4352 in little endian.",
+      "parentUuid": "d95214a0_836e495b",
+      "revId": "690ae94cf347f5423824980f68fb51876960adb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
