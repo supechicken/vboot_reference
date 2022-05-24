@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0eeccc4_01f90965",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-24T06:16:34Z",
+      "side": 1,
+      "message": "\u003e \u003e increases in writes\n\u003e \n\u003e We\u0027re only increasing one time for the initial update (from different version). Once A/B are both the right firmware, even futility requested to write, flashrom will figure out there\u0027s no difference and skip the erase-write cycles.\n\nSurprised to hear that flashrom can figure these out..\nTo step through an example:\n IF FW/A is 1.0 and FW/B is 2.0 (active)\n Update FW/A to 2.0, but keep FW/B as (active)\n Set active to FW/A + boot into it.\n On another OS update, writes using flashrom to copy FW/A into FW/B will be \"no-op\"\n IIUC, correct?\n\n\u003e \n\u003e \u003e will flipflop\n\u003e \n\u003e Yes it is, but I\u0027d assume that is fine.\n\nAck.\n\n\u003e \n\u003e \u003e the autoupdater will keep track of which is the \"next\" target slot \n\u003e \n\u003e Then we\u0027ll spread the logic of fw update cookies to more difference code base, which sounds even worse IMHO. Probably easier to keep autoupdate handle OS payloads, and leave the firmware stuff all in the futility, with some simple rules.\n\nUpdating fw cookies seems more straight forward + easier to manage this way rather than piping it from top level all the way down to bottom. We can keep logic all in futility as desired.\n\nNow with logic all handled in futility, autoupdater/postinstall will pipe it down by different calls into futility w/ deferred update HOLD + APPLY.\n\nHOLD in futility will: *always* update RW FW but keep cookies on self target.\nAPPLY in futility will: *always* set cookies to the update target.\n\nHOLD in postinstall will: *always* hold partition update -\u003e call futility HOLD\nAPPLY in postinstall will: *always* update partition -\u003e call futility APPLY\n\nThe deferred updates interface in both futility + postinstall will revolve around HOLD/APPLY actions.\n\nDoes that SGTY?\n\nThanks Hung-Te",
+      "parentUuid": "39308c41_0a3ea8fa",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 16
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "459fc092_be24de0d",
         "filename": "futility/updater.c",
         "patchSetId": 1
