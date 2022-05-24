@@ -16,6 +16,24 @@
       "message": "Sorry, what\u0027s the justification here? Where are you trying to go with this? FMAPs are usually intended to be immutable after creation.",
       "revId": "b71b003f6f92e4d6b316e6eaa5939e62ad1a8054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9655072d_636f0b35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-05-24T08:12:00Z",
+      "side": 1,
+      "message": "I found this feature useful to test CL:3575325.\nIn mentioned CL we re making `futility sign` able to sign images with only RW/A region (so `FW_MAIN_A `and `VBLOCK_A`). To test new cases I had to provide an image without `FW_MAIN_B` and `VBLOCK_B`. I found it easier to add command like this and then use it in `futility  sign` tests, than to modify coreboot (and friends) to compile image with RW/A only.",
+      "parentUuid": "9cbcc594_e5b85c73",
+      "revId": "b71b003f6f92e4d6b316e6eaa5939e62ad1a8054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
