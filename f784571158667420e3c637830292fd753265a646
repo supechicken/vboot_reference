@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b53a2a1_1084f910",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-24T01:43:58Z",
+      "side": 1,
+      "message": "I am OK with removing it from here, if you prefer, but I don\u0027t want to remain without a means of generating the root pub key hash, especially since this is not a hash of the file containing the key, but the hash of the key payload.\n\nRunnnig again with --debug seems odd - this would require writing the firmware image again for no good reason.\n\nMaybe you can add another option to dump the key hash given the keyblock file, or just leave it as is and consume the output in the script using this utility?",
+      "parentUuid": "3ca41fae_640bea8e",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 948,
+        "endChar": 21
+      },
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "297260ce_237de1e3",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 1
@@ -150,6 +174,24 @@
       "side": 1,
       "message": "Okay, I can flip on this one if you want... I just found it weird that we print the same usage text to one stream in one case and the other in others.",
       "parentUuid": "297260ce_237de1e3",
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa96f87f_1197dbd4",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-05-24T01:43:58Z",
+      "side": 1,
+      "message": "well, this is easy to explain - if there is an error we send the text to stderr, if not - to stdout.",
+      "parentUuid": "b09c608f_c2ccc01c",
       "revId": "f784571158667420e3c637830292fd753265a646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
