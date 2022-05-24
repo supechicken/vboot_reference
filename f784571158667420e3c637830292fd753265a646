@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b101e017_f772382b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-24T01:09:30Z",
+      "side": 1,
+      "message": "Well, it isn\u0027t requested by the operator, it is incidental diagnostic information, that\u0027s why I would say it belongs to stderr (and shouldn\u0027t be printed at low verbosity levels). The operator is requesting to create a GSCVD in the image. They didn\u0027t ask to see the root key. (This doesn\u0027t make a lot of difference for utilities that don\u0027t print parseable output to stdout, like this one, but I think it\u0027s a good convention to stick to in general.)\n\nFor seeing the root key, well... for now you can still use --debug, eventually it would be good if we added some way to print all the contents of a GSCVD anyway (maybe expand the \"validate\" mode to do that, or integrate with `futility show`). But printing it on GSCVD creation seems weird to me. You only need the root key once, and then you will keep creating GSCVDs over and over again for different platforms with that key, isn\u0027t it odd to show it again every time?",
+      "parentUuid": "e9d3b72e_f16b067b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "533e9e9b_48ca5183",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 1
@@ -73,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ca41fae_640bea8e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-24T01:09:30Z",
+      "side": 1,
+      "message": "I don\u0027t agree with the \"bad default\" in general (how would script output look if `cp` and `rm` always printed on success?), and the other vboot signing utilities also all have no output on success, so this makes gscvd more consistent. I think this makes sense because these are usually called as one small step of a long Makefile, and it would feel disproportionate to take up a lot of output space there... better to leave the output generation to the caller. (GCC and ld don\u0027t print on success either, after all, even though they do a lot more work than this tool.)\n\nBut more importantly, right now this line is the _only_ output generated on success by this tool, and that\u0027s really weird when you see it in the middle of the output from a big Makefile. It doesn\u0027t say anything about being the GSCVD utility or what it actually did (creating a GSCVD), it just tells you the SHA of some unspecified root key hash like you\u0027re supposed to know what that means (and to people that create GSCVDs that hash is usually not useful anyway, they\u0027re mostly meant to be created after the root key is already established and known to the GSC).",
+      "parentUuid": "833e523b_96a1fd58",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 948,
+        "endChar": 21
+      },
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "297260ce_237de1e3",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 1
@@ -84,6 +132,24 @@
       "writtenOn": "2022-05-23T19:30:29Z",
       "side": 1,
       "message": "Help/usage does not go in `stderr`, not even UNIX tools do this.",
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09c608f_c2ccc01c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-24T01:09:30Z",
+      "side": 1,
+      "message": "Okay, I can flip on this one if you want... I just found it weird that we print the same usage text to one stream in one case and the other in others.",
+      "parentUuid": "297260ce_237de1e3",
       "revId": "f784571158667420e3c637830292fd753265a646",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
