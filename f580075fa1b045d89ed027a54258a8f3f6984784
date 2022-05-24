@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f5bdafe_5f576641",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-24T02:45:54Z",
+      "side": 1,
+      "message": "\u003e If the autoupdate knows what it is doing (since it gave the update mode as \u0027deferupdate\u0027), why don\u0027t we just leave the logic there, and skip the UUID thing?\n\nThe autoupdater will know when to initiate a deferred update, but it doesn\u0027t know if there will be a FW update or not since the FW slot switch happens or doesn\u0027t.\n\nWe definitely want to hold back the FW slot switch to not introduce reboot races / recovery screens popping up due to FW/kernel mismatch.\nI tried to split in futility the deferred update into HOLD/APPLY, but loading the image takes too long (noticeable amount of delay), so decided it\u0027s best to simply do APPLY (switch FW slot) during postinstall/autoupdater.\n\nSo, the autoupdater/postinstall will be incharge of updating FW try+try_count once the update should actually be applied, but the fw updater is still responsible for informing the autoupdater the FW slot switch needs to happen.\n\n\u003e I really don\u0027t want to rely on \"parse stdout\" - that usually leads to bugs and issues.\n\nAgree, but parsing for uuid should be fairly resilient.\n\nSome ways to communicate this back I could think of were:\n 1. Set the try count of the inactive FW slot\n 2. Print status w/ uuid + parse\n 3. Return code, but currently is always 0 or 1",
+      "parentUuid": "c72ad83c_f549802e",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 16
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "459fc092_be24de0d",
         "filename": "futility/updater.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-24T02:01:19Z",
       "side": 1,
       "message": "why can\u0027t we just skip setting cookies?",
+      "range": {
+        "startLine": 1011,
+        "startChar": 0,
+        "endLine": 1012,
+        "endChar": 50
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e414a1_d28a117b",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-24T02:45:54Z",
+      "side": 1,
+      "message": "I saw one of your comments about always setting the right cookie.\nGoing along the smae idea, the thought was to do the same for deferred update as we want to make sure the user will keep booting into the current FW+OS pair.",
+      "parentUuid": "459fc092_be24de0d",
       "range": {
         "startLine": 1011,
         "startChar": 0,
