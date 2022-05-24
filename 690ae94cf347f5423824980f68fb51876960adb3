@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ff04c1_c91ed685",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-24T01:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43d1d173_a7f2c5df",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "690ae94cf347f5423824980f68fb51876960adb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42ec4bd3_7aa6fbcb",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "Cr50/Ti50 expect it in big endian format. As an example this is setting Board ID on Ti50 (which accepts symbolic bid as opposed to Cr50):\n\n```\n\u003e bid\nBoard ID: ffffffff:ffffffff, flags: ffffffff\n\u003e bid ZZCR 10  \nWrote type: 5A5A4352, flags: 10\n\u003e bid\nBoard ID: 5a5a4352:a5a5bcad, flags: 00000010\n```",
       "parentUuid": "42ec4bd3_7aa6fbcb",
+      "revId": "690ae94cf347f5423824980f68fb51876960adb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95214a0_836e495b",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-05-24T01:07:14Z",
+      "side": 1,
+      "message": "To clarify, I am asking whether storing it in the GSCVD as little-endian is correct. I agree that the tool should take big-endian notation on the command line (e.g. `futility gscvd -b ZZCR` or `-b 5a5a4352`, not `-b RCZZ` or `-b 52435a5a`). However, with the way the existing code here was already written, that would end up as `RCZZ`/`52 43 5a 5a` in the hex dump of the resulting GSCVD structure. I just want to confirm that that\u0027s working as intended.",
+      "parentUuid": "30aad51d_1a3fbb17",
       "revId": "690ae94cf347f5423824980f68fb51876960adb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
