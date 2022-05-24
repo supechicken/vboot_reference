@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "830fe145_f3f042ed",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-24T07:24:22Z",
+      "side": 1,
+      "message": "We shouldn\u0027t want delays to kick in during APPLY, so implemented as discussed above.\n\nHOLD + APPLY method in futility exposed.\n\nWill test this more out tomorrow. Thanks for the indepth reviews + discussion Hung-Te!",
+      "parentUuid": "fc2c0533_4909163b",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 16
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "459fc092_be24de0d",
         "filename": "futility/updater.c",
         "patchSetId": 1
