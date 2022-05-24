@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d783a2c3_bbdf5061",
+        "filename": "scripts/image_signing/common.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-05-24T22:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9be5615_6b1e4089",
+      "revId": "6b87887751f0889f8557905e1ca5578d8e566657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04c1bfd8_f84fb082",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-18T19:44:10Z",
       "side": 1,
       "message": "This is a mask right? Maybe call it required_bit_mask_guybrush",
+      "revId": "6b87887751f0889f8557905e1ca5578d8e566657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76ad484_b5b90180",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-05-24T22:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04c1bfd8_f84fb082",
       "revId": "6b87887751f0889f8557905e1ca5578d8e566657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a194204d_40b28e77",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-05-24T22:29:30Z",
+      "side": 1,
+      "message": "Created a dedicated ignore list which contains grunt and skyrim currently. Grunt appears to use a different AP FW image format that `amdfwread` can\u0027t read and skyrim images don\u0027t currently contain a firmware archive to check. I\u0027ve opened b/233787191 to remove skyrim from the list in the future.",
+      "parentUuid": "cbd1f136_247af19a",
+      "revId": "6b87887751f0889f8557905e1ca5578d8e566657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23162cad_536c408f",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-05-18T19:44:10Z",
       "side": 1,
       "message": "Could move this to `missing_required_set\u003d$((~soft_fuse \u0026 required_bits))` and reuse here and in conditional.",
+      "revId": "6b87887751f0889f8557905e1ca5578d8e566657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "062c8bc2_5e21550c",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-05-24T22:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23162cad_536c408f",
       "revId": "6b87887751f0889f8557905e1ca5578d8e566657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
