@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b259aa55_856fd498",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-24T03:45:59Z",
+      "side": 1,
+      "message": "Understood. Setting the cookies without checking the content sounds wrong to me. Consider the case:\n\n- You applied deferred updates. A is active and B is new.\n- After several reboots, for some reason A is corrupted, so the firmware moved to B.\n- User decides to activate deferred update, and autoupdate sets the engine.\n- User moved from B (new) to A (corrupted, or old).\n\nSo it seems more correct to always only do the firmware update one time when you really want to enable a deferred update. What do you think?\n\nIf autoupdate can\u0027t afford a few minutes for updating firmware, there\u0027s another proposal:\n\n- when doing deferred update, always update the new rw to the inactive slot, even if it looks the same with the active firmware.\n- when enabling the deferred update, autoupdate always sets the cookie to try the other slot.",
+      "parentUuid": "1f5bdafe_5f576641",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 16
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "459fc092_be24de0d",
         "filename": "futility/updater.c",
         "patchSetId": 1
