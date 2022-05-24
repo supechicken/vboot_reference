@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc2c0533_4909163b",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-24T07:16:17Z",
+      "side": 1,
+      "message": "\u003e Surprised to hear that flashrom can figure these out..\n\nflashrom always does read + compare + (if different) erase + write. That\u0027s required for performing partial updates.\n\n\u003e To step through an example:\n\u003e On another OS update, writes using flashrom to copy FW/A into FW/B will be \"no-op\"\n IIUC, correct?\n \nSome devices have firmware with position dependent code so FW/A and FW/B in the same version are actually different.\n\nIn your example we can say:\n\nOn another OS update, writes using flashrom to update either FW/A or FW/B to 2.0 will both be \"no-op\" (only read, no write).\n\n\u003e Does that SGTY?\n\nBasically sounds good; but then are you going to introduce new modes for for futility to \"only apply, no touch RW\"? or you\u0027ll rely on the flashrom trick to perform a mode\u003dautoupdate call?\n\n(note: flashrom won\u0027t write, but it\u0027ll still read - and that may take a few seconds)",
+      "parentUuid": "a0eeccc4_01f90965",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 16
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "459fc092_be24de0d",
         "filename": "futility/updater.c",
         "patchSetId": 1
