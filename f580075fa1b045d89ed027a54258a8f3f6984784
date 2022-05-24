@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72ad83c_f549802e",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-24T02:01:19Z",
+      "side": 1,
+      "message": "If the autoupdate knows what it is doing (since it gave the update mode as \u0027deferupdate\u0027), why don\u0027t we just leave the logic there, and skip the UUID thing?\n\nI really don\u0027t want to rely on \"parse stdout\" - that usually leads to bugs and issues.",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 16
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459fc092_be24de0d",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-24T02:01:19Z",
+      "side": 1,
+      "message": "why can\u0027t we just skip setting cookies?",
+      "range": {
+        "startLine": 1011,
+        "startChar": 0,
+        "endLine": 1012,
+        "endChar": 50
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
