@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39308c41_0a3ea8fa",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-24T05:56:58Z",
+      "side": 1,
+      "message": "\u003e increases in writes\n\nWe\u0027re only increasing one time for the initial update (from different version). Once A/B are both the right firmware, even futility requested to write, flashrom will figure out there\u0027s no difference and skip the erase-write cycles.\n\n\u003e will flipflop\n\nYes it is, but I\u0027d assume that is fine.\n\n\u003e the autoupdater will keep track of which is the \"next\" target slot \n\nThen we\u0027ll spread the logic of fw update cookies to more difference code base, which sounds even worse IMHO. Probably easier to keep autoupdate handle OS payloads, and leave the firmware stuff all in the futility, with some simple rules.",
+      "parentUuid": "3654cc1a_e4580b58",
+      "range": {
+        "startLine": 1002,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 16
+      },
+      "revId": "f580075fa1b045d89ed027a54258a8f3f6984784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "459fc092_be24de0d",
         "filename": "futility/updater.c",
         "patchSetId": 1
