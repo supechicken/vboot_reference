@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84715f1c_f2bb17e6",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "`set -eu -o pipefail`\n\nJust to be extra strict.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 6
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee0daba_98cd2b15",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "bash array: `boards_ignore_list\u003d(grunt skyrim)`",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c3ecc2_438763fd",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "declare a local?",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08d6a0c_880876d1",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "\"${board_ignore_list[@]}\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90b1138_4d1964a0",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "\"\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c78a6ac_aabd7b0d",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "\"\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e81998_04f40458",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "\"\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5931f669_8153a6ad",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "\"\" for all this and below",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d9a367_54d0acf6",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "Maybe\n```\ndeclare -a images\nreadarray images \u003c \u003c(find \"${shellball_dir}\" -iname \u0027bios-*\u0027)",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b637d5_10b1e8ce",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "images[@]",
+      "range": {
+        "startLine": 81,
+        "startChar": 17,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac4b05f_2fecfb79",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-05-24T22:39:00Z",
+      "side": 1,
+      "message": "How about reading this into a variable, then pipe the variable into `sed`. This keeps the `-e` error checking working as expected.",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 50
+      },
+      "revId": "32cce82c14aa8c6485e3b25dbd66b2e2114eada0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
