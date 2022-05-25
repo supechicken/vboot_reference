@@ -16,6 +16,121 @@
       "message": "Friendly ping as targeting this for M104",
       "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd4ee97_dcfa9c0d",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-25T04:27:01Z",
+      "side": 1,
+      "message": "try_update_type",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9114b3_ac1c1c87",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-25T04:27:01Z",
+      "side": 1,
+      "message": "Will we ever do auto_update / defer_hold / defer_apply at the same time?\n\nIf not then I\u0027d rather leave these in continuous numbers (1, 2, 3) and then do compare (try_update \u003d\u003d) instead of bitwise test (\u0026).",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851b74bb_42c8b29c",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-25T04:27:01Z",
+      "side": 1,
+      "message": "this should be \u0026\u0026 ?\n\nor\n\n if (!(cfg-\u003eforce_update || cfg-\u003etry_update \u003d\u003d DEFER_UPDATE_HOLD))",
+      "range": {
+        "startLine": 988,
+        "startChar": 24,
+        "endLine": 988,
+        "endChar": 26
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3f8ca1_88946c2d",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-25T04:27:01Z",
+      "side": 1,
+      "message": "I wonder if it it\u0027s more clear to move the hold logic here:\n\n if (cfg-\u003etry_update \u003d\u003d DEFER_UPDATE_HOLD) {\n    /*\n     * If the firmware ....\n     */\n    target \u003d self_target;\n    has_update \u003d 0;\n }\n \nAnd move the if(!has_update) to earlier, e.g.\n\n if (has_update) {\n    ...\n } else {\n    STATUS(\"NO RW UPDATE: No need to update the RW firmware.\\n\");\n }",
+      "range": {
+        "startLine": 998,
+        "startChar": 1,
+        "endLine": 998,
+        "endChar": 2
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8209702c_7f713b8e",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-25T04:27:01Z",
+      "side": 1,
+      "message": "Follow the multi-line comment style:\n\n /*\n  * For the...\n  */\n\nIn fact, I think we can change this into a quick message so in the logs we can also make sure the actions are correct:\n\n INFO(\"Apply the deferred updates, only setting cookies for the next boot slot\\n\");",
+      "range": {
+        "startLine": 1177,
+        "startChar": 1,
+        "endLine": 1177,
+        "endChar": 3
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
