@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d975158f_274ef786",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-05-25T17:29:14Z",
+      "side": 1,
+      "message": "Personally I\u0027d love if `cp` and `rm` told me how many files they copied/removed, especially if I passed in a glob - if I cared about clean script output I would redirect to `/dev/null`.\n\nI think the root key hash does need to be printed by default, and you\u0027re right that the output doesn\u0027t contain valuable context for what it means. So, how about we provide that context? `GSCVD section created in \u003cfilename\u003e.\\nRoot key hash: \u003chash\u003e`",
+      "parentUuid": "4b53a2a1_1084f910",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 948,
+        "endChar": 21
+      },
+      "revId": "f784571158667420e3c637830292fd753265a646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "297260ce_237de1e3",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 1
