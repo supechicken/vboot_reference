@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c01e92_74fbbb21",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T07:13:27Z",
+      "side": 1,
+      "message": "Good styling, Done",
+      "parentUuid": "bb53fd4a_8aa3fd2d",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "3f6dcdf006efa7e66feff085047074cfffdb6e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5960bae1_ee41da6a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-25T06:33:05Z",
       "side": 1,
       "message": "Indentation.",
+      "range": {
+        "startLine": 1000,
+        "startChar": 2,
+        "endLine": 1000,
+        "endChar": 3
+      },
+      "revId": "3f6dcdf006efa7e66feff085047074cfffdb6e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c47eef_89fabe5a",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T07:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5960bae1_ee41da6a",
       "range": {
         "startLine": 1000,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b32d7be_61e6b7f8",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T07:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34e49757_9e9164ef",
+      "range": {
+        "startLine": 1008,
+        "startChar": 11,
+        "endLine": 1008,
+        "endChar": 16
+      },
+      "revId": "3f6dcdf006efa7e66feff085047074cfffdb6e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20df7bdc_3c86d4e0",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-25T06:33:05Z",
       "side": 1,
       "message": "As we don\u0027t even need `image_to`, maybe move the `DEFER_UPDATE_APPLY` block before this?",
+      "range": {
+        "startLine": 1174,
+        "startChar": 6,
+        "endLine": 1174,
+        "endChar": 14
+      },
+      "revId": "3f6dcdf006efa7e66feff085047074cfffdb6e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52fa0cb_5680e2bf",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T07:13:27Z",
+      "side": 1,
+      "message": "Could be even before this function, but don\u0027t want to muck around with cmd_update.c\nDone",
+      "parentUuid": "20df7bdc_3c86d4e0",
       "range": {
         "startLine": 1174,
         "startChar": 6,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1eabb62_47332cf7",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T07:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248f2687_52c45422",
+      "range": {
+        "startLine": 1178,
+        "startChar": 8,
+        "endLine": 1178,
+        "endChar": 13
+      },
+      "revId": "3f6dcdf006efa7e66feff085047074cfffdb6e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f6cd584_dba6620b",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-25T06:33:05Z",
       "side": 1,
       "message": "deferred",
+      "range": {
+        "startLine": 1182,
+        "startChar": 14,
+        "endLine": 1182,
+        "endChar": 19
+      },
+      "revId": "3f6dcdf006efa7e66feff085047074cfffdb6e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac9e849_0977aa40",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T07:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f6cd584_dba6620b",
       "range": {
         "startLine": 1182,
         "startChar": 14,
