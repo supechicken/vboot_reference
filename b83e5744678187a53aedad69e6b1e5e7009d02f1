@@ -73,6 +73,30 @@
       },
       "revId": "b83e5744678187a53aedad69e6b1e5e7009d02f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c91b9d1_fa7c5608",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2022-05-25T02:59:05Z",
+      "side": 1,
+      "message": "Good point. Confirmed that sign_official_build.sh and the unit test works without `sudo`. Removed",
+      "parentUuid": "0c14335f_c9c10a08",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 6
+      },
+      "revId": "b83e5744678187a53aedad69e6b1e5e7009d02f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
