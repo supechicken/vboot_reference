@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "544e9fe7_52d82700",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd4ee97_dcfa9c0d",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b9114b3_ac1c1c87",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-25T04:27:01Z",
       "side": 1,
       "message": "Will we ever do auto_update / defer_hold / defer_apply at the same time?\n\nIf not then I\u0027d rather leave these in continuous numbers (1, 2, 3) and then do compare (try_update \u003d\u003d) instead of bitwise test (\u0026).",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea93d13_eeab57ed",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T05:20:10Z",
+      "side": 1,
+      "message": "We wont, but since we can always update it later.\n\nupdated to 1,2,3 instead of bitwise\n\nDone",
+      "parentUuid": "4b9114b3_ac1c1c87",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2a052c_65aaa2c0",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T05:20:10Z",
+      "side": 1,
+      "message": "Good catch, Done",
+      "parentUuid": "851b74bb_42c8b29c",
+      "range": {
+        "startLine": 988,
+        "startChar": 24,
+        "endLine": 988,
+        "endChar": 26
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d3f8ca1_88946c2d",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de31469f_fe938577",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T05:20:10Z",
+      "side": 1,
+      "message": "Seems a bit cleaner to me, Done",
+      "parentUuid": "3d3f8ca1_88946c2d",
+      "range": {
+        "startLine": 998,
+        "startChar": 1,
+        "endLine": 998,
+        "endChar": 2
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8209702c_7f713b8e",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-05-25T04:27:01Z",
       "side": 1,
       "message": "Follow the multi-line comment style:\n\n /*\n  * For the...\n  */\n\nIn fact, I think we can change this into a quick message so in the logs we can also make sure the actions are correct:\n\n INFO(\"Apply the deferred updates, only setting cookies for the next boot slot\\n\");",
+      "range": {
+        "startLine": 1177,
+        "startChar": 1,
+        "endLine": 1177,
+        "endChar": 3
+      },
+      "revId": "c747dee7ca7eb2cbf443062cf782f0c823cd4c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e76a25_e2f66157",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-25T05:20:10Z",
+      "side": 1,
+      "message": "Done, but also kept comment.",
+      "parentUuid": "8209702c_7f713b8e",
       "range": {
         "startLine": 1177,
         "startChar": 1,
