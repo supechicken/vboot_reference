@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdbc7d42_6adc770d",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-05-25T19:06:29Z",
+      "side": 1,
+      "message": "I looked it up. Bash integers are 64 bits wide since version 3.00 which has been out long enough that it shouldn\u0027t be an issue.",
+      "parentUuid": "895d0361_0a9881a8",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "6b87887751f0889f8557905e1ca5578d8e566657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbd1f136_247af19a",
