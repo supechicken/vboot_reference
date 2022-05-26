@@ -56,6 +56,30 @@
       },
       "revId": "6b3db9456eaaabc274decf59a78803c1e9cd2f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "260233de_f00ea99c",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-05-26T05:50:20Z",
+      "side": 1,
+      "message": "Done, I believe the default is 0 starting, but adding as per comment to be explicit.",
+      "parentUuid": "eab412c6_15e75105",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "6b3db9456eaaabc274decf59a78803c1e9cd2f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
