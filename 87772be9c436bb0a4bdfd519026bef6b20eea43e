@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89700ebb_8b8ba5db",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-05-26T03:06:45Z",
+      "side": 1,
+      "message": "Consider this case:\n\n  \u003d\u003d\u003d image_file_list.orig \u003d\u003d\u003d\n  /a/b\n  \n  \u003d\u003d image_file_list.new \u003d\u003d\u003d\n  /a\n\nThe `grep` would match /a/b with /a. We need to match entire lines.",
+      "revId": "87772be9c436bb0a4bdfd519026bef6b20eea43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
