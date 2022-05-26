@@ -16,6 +16,46 @@
       "message": "LGTM now. Leaving +2 to hungte@.",
       "revId": "6b3db9456eaaabc274decf59a78803c1e9cd2f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055b29cc_63cbb6c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-26T05:43:34Z",
+      "side": 1,
+      "message": "just one more nit",
+      "revId": "6b3db9456eaaabc274decf59a78803c1e9cd2f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab412c6_15e75105",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-26T05:43:34Z",
+      "side": 1,
+      "message": "add \u003d 0 to make it explicit off \u003d 0",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "6b3db9456eaaabc274decf59a78803c1e9cd2f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
