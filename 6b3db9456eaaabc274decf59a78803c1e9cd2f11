@@ -80,6 +80,30 @@
       },
       "revId": "6b3db9456eaaabc274decf59a78803c1e9cd2f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3031ada_eca55693",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-05-26T05:53:45Z",
+      "side": 1,
+      "message": "yes the default starts with zero, but when people refactoring the auto enums are usually considered as \"the values can be moved / changed arbitrary\", so I\u0027d like one OFF\u003d0 to make it explicit \"we do want the OFF to be 0\" because there may be code doing `if (try_update)` or `if (!try_update)`.",
+      "parentUuid": "260233de_f00ea99c",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "6b3db9456eaaabc274decf59a78803c1e9cd2f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
