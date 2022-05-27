@@ -16,6 +16,24 @@
       "message": "Consider this case:\n\n  \u003d\u003d\u003d image_file_list.orig \u003d\u003d\u003d\n  /a/b\n  \n  \u003d\u003d image_file_list.new \u003d\u003d\u003d\n  /a\n\nThe `grep` would match /a/b with /a. We need to match entire lines.",
       "revId": "87772be9c436bb0a4bdfd519026bef6b20eea43e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d7beac0_e345ddbc",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2022-05-27T08:42:31Z",
+      "side": 1,
+      "message": "Good catch. Added `-x` option to grep.",
+      "parentUuid": "89700ebb_8b8ba5db",
+      "revId": "87772be9c436bb0a4bdfd519026bef6b20eea43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
