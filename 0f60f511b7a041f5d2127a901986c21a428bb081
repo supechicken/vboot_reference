@@ -22,6 +22,29 @@
       },
       "revId": "0f60f511b7a041f5d2127a901986c21a428bb081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6762a5c4_16180a4d",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2022-06-01T10:16:18Z",
+      "side": 1,
+      "message": "Maybe use the following multiline comment style ?\n\n/* line 1\n * line 2 */",
+      "range": {
+        "startLine": 756,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 35
+      },
+      "revId": "0f60f511b7a041f5d2127a901986c21a428bb081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
