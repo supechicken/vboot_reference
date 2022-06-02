@@ -225,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb64c705_69bb47f7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "Hmm... I can see arguments being made for both sides, but I think ultimately it makes more sense to preserve the version. Resetting the version makes sense when you want to resign an image with a different keyblock, because the preamble version is always strictly tied to the keyblock version (if the keyblock (version) changes, it makes no sense to keep the preamble version the same). But I don\u0027t think that\u0027s the only use case for resigning we have... we also have the case where you\u0027re resigning with exactly the same keys and want to preserve exactly the same settings, just update the signature to cover any modifications you made to the image (e.g. with cbfstool). In that case, preserving the version makes sense.\n\nI think ultimately, if you\u0027re signing with a different keyblock and you actually care about versions then you\u0027ll always pass in the intended version explicitly anyway. So for cases where no argument is passed, I think preserving makes sense. Let\u0027s change the behavior and the tests to that effect.",
+      "parentUuid": "521a5ff9_83d229c0",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fafbc677_1f63a920",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 5
@@ -324,6 +342,24 @@
       "side": 1,
       "message": "I solved it by checking whether FW_MAIN_B is valid. It should suffice.",
       "parentUuid": "1e870f13_aa80149c",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf3a082_5aaa3a3e",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac0d2d45_d9e43758",
       "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -529,6 +565,30 @@
       "side": 1,
       "message": "cbfstool returns size as hex. %u won\u0027t accept it. AFAIK %zi is correct for (size_t*) (https://www.cplusplus.com/reference/cstdio/scanf/)",
       "parentUuid": "8ec0a284_518345ce",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c88312_ce5339ae",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "Oh interesting. I\u0027m still not quite convinced %zi will really give you the unsigned part, but I guess we don\u0027t really need to worry about flash images greater than 2GB.",
+      "parentUuid": "fb0a1341_83066771",
       "range": {
         "startLine": 53,
         "startChar": 29,

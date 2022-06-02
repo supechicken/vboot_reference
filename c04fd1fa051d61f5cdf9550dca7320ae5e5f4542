@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868e6d89_439fd926",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "nit: `cbfstool` (don\u0027t capitalize)",
+      "range": {
+        "startLine": 846,
+        "startChar": 4,
+        "endLine": 846,
+        "endChar": 12
+      },
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97bc69e0_b5ddf692",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "I don\u0027t think it really makes sense to set state-\u003ec in this function; you set it here, then change it below, and never use it.",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2ef779_bbc5b4fb",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "Maybe this should be a hard error (i.e. return 1), because I don\u0027t think it should be possible to hit this in practice (cbfstool truncate should never return a size larger than the FMAP section containing that CBFS, since it is also FMAP-aware).",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7684395_8680479d",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "Wait, sorry, on a closer look this was unnecessary. This check is wrong, too, because key_offset is relative to data_key, not to the whole keyblock. But we don\u0027t need this anyway since vb2_verify_keyblock_hash() above will already call vb2_check_keyblock(), which will call vb2_verify_packed_key_inside() (which checks all this). So you can take this out again.",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab1b831c_1d48f8fb",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "This needs to be capped to the original area[fw_c].len. (It would be great if for all these missing validity checks, you could also add new unit tests to ensure they\u0027d be caught in a future refactoring. And also functional unit tests for new features like preserving existing lengths, of course.)",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d50c19_b712fd57",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "You\u0027re assigning the result of a comparison above, so this is technically not a vb2_error_t anymore. (Maybe consider using \u003cstdbool.h\u003e here, even though it hasn\u0027t been used much in vboot in the past, but I don\u0027t see a problem with starting here if it makes things cleaner to read.)",
+      "range": {
+        "startLine": 475,
+        "startChar": 31,
+        "endLine": 475,
+        "endChar": 42
+      },
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1a6edd_048cf6d7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "What does cbfstool_truncate() return when it\u0027s an RW_A-only image? I think this doesn\u0027t quite work out to be valid in all cases. (FWIW, do we really need to check if these mismatch? Why not just treat them as fully independent?)",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f099de85_b19fcd1c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "nit: is the `# ` here intentional?",
+      "range": {
+        "startLine": 532,
+        "startChar": 29,
+        "endLine": 532,
+        "endChar": 31
+      },
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dba6532_5eacc3de",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "Would you mind uploading the style fixes here as a separate patch? That would make it easier to review your actual changes.",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c331abf2_f3ed040b",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "nit: could additionally check that the intended parts of each match, e.g.\n\n cmp \u003c(head -n1 \"${TMP}.clean_b.body\") \u003c(head -n1 \"${TMP}.good.body\")\n cmp \u003c(tail -n1 \"${TMP}.clean_b.body\") \u003c(tail -n1 \"${TMP}.clean_b.fw_main\")",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7def2848_268ddefa",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-02T21:08:08Z",
+      "side": 1,
+      "message": "This line doesn\u0027t check no_b_slot at all?\n\nI think what would be more useful to check here is\n\n cmp \"${TMP}.no_b_slot.body\" \u003c(tail -n1 \"${TMP}.good.body\")",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
