@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d12ed79_7ad25a6e",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-07T19:25:14Z",
+      "side": 1,
+      "message": "Instead of using indirect references can we use an associative array to make this clearer?\n\n```\ndeclare -A REQUIRED_BIT_MASKS\u003d(\n    [guybrush]\u003d\"$((1 \u003c\u003c 58))\",\n    [zork]\u003d\"0x0\"\n)\nif [[ -v \"${REQUIRED_BIT_MASKS[$board]}\" ]; then\n   ...\nfi\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "11c0e124b323b8481698107a1c715ff88e46c204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc520985_45ae4c1a",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-07T19:25:14Z",
+      "side": 1,
+      "message": "Are your args flipped?",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "11c0e124b323b8481698107a1c715ff88e46c204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fdf808d_f47398b4",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-07T19:25:14Z",
+      "side": 1,
+      "message": "Where do you unmount?\n\nI think we should add a `trap` that performs the unmount if it\u0027s mounted:\n\n```\nfinish() {\n    if [[ -n \"$MOUNTDIR\" ]]; then\n      umount \"$MOUNTDIR\";\n    fi\n}\ntrap finish EXIT\n```",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "11c0e124b323b8481698107a1c715ff88e46c204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
