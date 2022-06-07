@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cc42ff_8e4c98c2",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-06-07T22:18:49Z",
+      "side": 1,
+      "message": "Done, though I had to use `-z` to avoid an unbound variable error.",
+      "parentUuid": "0d12ed79_7ad25a6e",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "11c0e124b323b8481698107a1c715ff88e46c204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc520985_45ae4c1a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec1404a_40119994",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-06-07T22:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc520985_45ae4c1a",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "11c0e124b323b8481698107a1c715ff88e46c204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fdf808d_f47398b4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-07T19:25:14Z",
       "side": 1,
       "message": "Where do you unmount?\n\nI think we should add a `trap` that performs the unmount if it\u0027s mounted:\n\n```\nfinish() {\n    if [[ -n \"$MOUNTDIR\" ]]; then\n      umount \"$MOUNTDIR\";\n    fi\n}\ntrap finish EXIT\n```",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "11c0e124b323b8481698107a1c715ff88e46c204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db796f51_bd117824",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-06-07T22:18:49Z",
+      "side": 1,
+      "message": "This is actually unneeded as `common.sh` already contains a function to un-mount everything on exit.",
+      "parentUuid": "2fdf808d_f47398b4",
       "range": {
         "startLine": 108,
         "startChar": 2,
