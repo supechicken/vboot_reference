@@ -447,10 +447,13 @@ $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
 COMMONLIB_SRCS = \
 	host/lib/flashrom.c \
-	host/lib/flashrom_drv.c \
-	host/lib/subprocess.c
+	host/lib/flashrom_drv.c
 CFLAGS += -DUSE_FLASHROM
 endif
+# FIXME(b/231152447): subproccess is only used by flashrom.c however
+# we temporarily need the symbols to bridge the gap with cbfstools/elogtool
+# in upstream coreboot.
+COMMONLIB_SRCS += host/lib/subprocess.c
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
