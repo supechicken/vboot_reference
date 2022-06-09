@@ -241,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b4b48b_f2885808",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "TBH I thought that it was strange only preamble flags were preserved. However I assumed that if it is covered by tests, then it is intended. Thank you for you extensive explanation :)",
+      "parentUuid": "fb64c705_69bb47f7",
+      "revId": "0dd903e7d16a0fa1daf819a7c5a6a8d05c1244dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fafbc677_1f63a920",

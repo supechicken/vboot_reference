@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "601f4e95_2481f51e",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "868e6d89_439fd926",
+      "range": {
+        "startLine": 846,
+        "startChar": 4,
+        "endLine": 846,
+        "endChar": 12
+      },
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97bc69e0_b5ddf692",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-02T21:08:08Z",
       "side": 1,
       "message": "I don\u0027t think it really makes sense to set state-\u003ec in this function; you set it here, then change it below, and never use it.",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadc43d8_660e91d0",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97bc69e0_b5ddf692",
       "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e13b91e_c39fa5ef",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b2ef779_bbc5b4fb",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7684395_8680479d",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc472288_cca1c9f8",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7684395_8680479d",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab1b831c_1d48f8fb",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-06-02T21:08:08Z",
       "side": 1,
       "message": "This needs to be capped to the original area[fw_c].len. (It would be great if for all these missing validity checks, you could also add new unit tests to ensure they\u0027d be caught in a future refactoring. And also functional unit tests for new features like preserving existing lengths, of course.)",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52fd8c44_8d6c3937",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done (I think?)",
+      "parentUuid": "ab1b831c_1d48f8fb",
       "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "604d5265_448d171f",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d50c19_b712fd57",
+      "range": {
+        "startLine": 475,
+        "startChar": 31,
+        "endLine": 475,
+        "endChar": 42
+      },
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1a6edd_048cf6d7",
@@ -128,6 +248,24 @@
       "writtenOn": "2022-06-02T21:08:08Z",
       "side": 1,
       "message": "What does cbfstool_truncate() return when it\u0027s an RW_A-only image? I think this doesn\u0027t quite work out to be valid in all cases. (FWIW, do we really need to check if these mismatch? Why not just treat them as fully independent?)",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d469cfa6_6f3fa3b5",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Oh, right. cbfs_truncate() will fail for RW/A-only image so it would not work  as intended.",
+      "parentUuid": "2d1a6edd_048cf6d7",
       "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "999c1cc3_2e7586d1",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "No, it\u0027s not",
+      "parentUuid": "f099de85_b19fcd1c",
+      "range": {
+        "startLine": 532,
+        "startChar": 29,
+        "endLine": 532,
+        "endChar": 31
+      },
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dba6532_5eacc3de",
@@ -168,6 +330,24 @@
       "writtenOn": "2022-06-02T21:08:08Z",
       "side": 1,
       "message": "Would you mind uploading the style fixes here as a separate patch? That would make it easier to review your actual changes.",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfe2fa4_ed57d898",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done in CL:3695417 (for most of bash files in tests directory)",
+      "parentUuid": "0dba6532_5eacc3de",
       "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -189,6 +369,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd8149a_a83231e5",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c331abf2_f3ed040b",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7def2848_268ddefa",
@@ -202,6 +400,24 @@
       "writtenOn": "2022-06-02T21:08:08Z",
       "side": 1,
       "message": "This line doesn\u0027t check no_b_slot at all?\n\nI think what would be more useful to check here is\n\n cmp \"${TMP}.no_b_slot.body\" \u003c(tail -n1 \"${TMP}.good.body\")",
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9eb18a5_f0e92cf0",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-09T14:52:40Z",
+      "side": 1,
+      "message": "Oh, that\u0027s better. Thanks :)",
+      "parentUuid": "7def2848_268ddefa",
       "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
