@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4c7754_48c66341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-09T22:22:41Z",
+      "side": 1,
+      "message": "I mean, we can do it this way if you want to... but with this you\u0027re achieving your goal of decoupling elogtool from vboot\u0027s flashrom-shell-out library, but still keeping a dependency to vboot\u0027s subprocess library. Are you really gaining anything here for your code duplication in elogtool? Seems like a dependency is still a dependency to me so I think you could just as well remove flashrom.c from USE_FLASHROM too and keep using that.\n\n(USE_FLASHROM should really be renamed into USE_LIBFLASHROM because the only reason for its existence is to avoid the libflashrom dependency, it doesn\u0027t need to cover any more code than what\u0027s strictly needed to achieve that.)",
+      "revId": "361b4c4bb59eac38ffc9e9f0691f4f744c0b0cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80343eb_471d19e2",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-09T22:22:41Z",
+      "side": 1,
+      "message": "Don\u0027t call this a FIXME, we want to keep it that way long-term anyway. See CL:3575325.",
+      "revId": "361b4c4bb59eac38ffc9e9f0691f4f744c0b0cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
