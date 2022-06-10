@@ -319,6 +319,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c230667_aefcde96",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-10T00:23:48Z",
+      "side": 1,
+      "message": "still kept the extra space, though?",
+      "parentUuid": "999c1cc3_2e7586d1",
+      "range": {
+        "startLine": 532,
+        "startChar": 29,
+        "endLine": 532,
+        "endChar": 31
+      },
+      "revId": "c04fd1fa051d61f5cdf9550dca7320ae5e5f4542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0dba6532_5eacc3de",
         "filename": "tests/futility/test_sign_firmware.sh",
         "patchSetId": 10
