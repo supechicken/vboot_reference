@@ -141,6 +141,24 @@
       "parentUuid": "50e10dd3_d8a33870",
       "revId": "361b4c4bb59eac38ffc9e9f0691f4f744c0b0cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee703f9_d52009be",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-10T05:00:16Z",
+      "side": 1,
+      "message": "In a perfect world, yes, but in practice we are a long way away from a \"libcbfstool\". cbfstool has grown pretty complicated and a lot of functionality is all over the place, all the high-level operations are directly implemented in the entry point source file and make direct references to the structure that CLI parameters got parsed into, etc. I totally understand your sentiment, but it would definitely be a larger project and somebody would have to staff it. In the meantime, other things with important deadlines need to get done, and so we end up calling commandlines and parsing the output again for now. (Maybe we could try to turn it into an intern project or something... but it might be too complex for that, will have to think about it.)",
+      "parentUuid": "ccc71c23_84b98346",
+      "revId": "361b4c4bb59eac38ffc9e9f0691f4f744c0b0cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
