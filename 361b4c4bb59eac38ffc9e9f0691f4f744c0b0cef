@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f4d9a5_4d664f0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-06-10T01:00:27Z",
+      "side": 1,
+      "message": "Rather than duplicate the discussion in too many places I mostly replied in CB:65055\n\nActually that was the original name however a choice was made to call it just flashrom as it covers two cases of library and exec. The rename to `USE_LIBFLASHROM` would be slightly premature as it covers both the case of subprocess logic as well as libflashrom logic. Furthermore it is orthogonal to the direct issue at hand here that requires changes in a number of places simultaneously [ebuild, vboot_ref Makefile, coreboot Makefile, coreboot buildbot config]. I rather we handle that as its own problem when flashrom shell out logic is finally EOL\u0027ed.",
+      "parentUuid": "bd4c7754_48c66341",
+      "revId": "361b4c4bb59eac38ffc9e9f0691f4f744c0b0cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d80343eb_471d19e2",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-09T22:22:41Z",
       "side": 1,
       "message": "Don\u0027t call this a FIXME, we want to keep it that way long-term anyway. See CL:3575325.",
+      "revId": "361b4c4bb59eac38ffc9e9f0691f4f744c0b0cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d912e888_f4b6d69f",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-06-10T01:00:27Z",
+      "side": 1,
+      "message": "Oh :| .. Well I can delete this comment then and update the commit message accordingly. Looks like CL:3575325 should perhaps be calling a few functions instead of doing this imho though.",
+      "parentUuid": "d80343eb_471d19e2",
       "revId": "361b4c4bb59eac38ffc9e9f0691f4f744c0b0cef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
