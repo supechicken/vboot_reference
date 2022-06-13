@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6d39471_5226bb2a",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-13T17:14:56Z",
+      "side": 1,
+      "message": "ah, sorry I had a typo:\n\n```\nif [[ ! -v \"REQUIRED_BIT_MASKS[$board]\" ]];\n\n```",
+      "parentUuid": "23cc42ff_8e4c98c2",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "11c0e124b323b8481698107a1c715ff88e46c204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc520985_45ae4c1a",
         "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
         "patchSetId": 12
