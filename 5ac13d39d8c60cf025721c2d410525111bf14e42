@@ -16,6 +16,24 @@
       "message": "is this the samething Vadim \u0026 i discussed in https://crrev.com/c/2954906 ?",
       "revId": "5ac13d39d8c60cf025721c2d410525111bf14e42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e8801f_22cb685e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-06-14T17:43:03Z",
+      "side": 1,
+      "message": "This is similar in that it\u0027s a script to verify firmware images before they are signed though this is to specifically check AMD AP firmware images. This script is primarily to check the presence of the `PSP_S0I3_RESUME_VERSTAGE` flag. This is purely a security concern as a device will function properly without it. See https://b.corp.google.com/issues/202397678#comment36 and the following comment.",
+      "parentUuid": "46a1bb91_c5eb2f6d",
+      "revId": "5ac13d39d8c60cf025721c2d410525111bf14e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
