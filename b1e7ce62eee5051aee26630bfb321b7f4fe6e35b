@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e942afaa_2d9bf756",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d55f865_f468e65e",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7ed8c7d_7860b3ec",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4e513a_5a468cf7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ed8c7d_7860b3ec",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9c3ff21_be308f37",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-10T00:23:48Z",
       "side": 1,
       "message": "Okay, so this, on the other hand, should not error hard (it should goto end). We want this to be able to resign any kind of image, even ones where the existing data in vblocks is randomly corrupted in just the right way to trigger paths like this. The difference to the case above is that (I believe?) there should be no way for cbfstool truncate to return a size larger than the FMAP size, no matter what the actual contents of the section (if there is then that seems like a bug in cbfstool we should fix).",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1dde2e6_458699e5",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9c3ff21_be308f37",
       "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2e0bbd3_e76f1ca5",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "I added tests for mentioned (and few more) cases. Most of them should not fail while signing, but fail while verifying, so I added checks for it.\n\nAll changes are related to VBLOCK_A. We might add same changes for VBLOCK_B, but I do not think it is necessary, because the same code would be triggered.",
+      "parentUuid": "7847c49e_d4494ea7",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd857ae9_86747205",
         "filename": "tests/futility/test_sign_firmware.sh",
         "patchSetId": 12
@@ -82,6 +154,24 @@
       "writtenOn": "2022-06-10T00:23:48Z",
       "side": 1,
       "message": "Do we ever check that GOOD_CBFS comes out to a reasonable size (when signed with both slots)? Should probably do that together with these two checks.\n\nAlso, this only checks the CBFS case where the vblock is valid. Would be good to also test the case where the vblock is invalid because the image was further modified, i.e. cbfstool add-int another file to the GOOD_CBFS, sign that, and then ensure that the resulting firmware body size is larger than the normal GOOD_CBFS body but still smaller than the total FMAP section.",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38560103_05ff2740",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "Integer file is too small for this image. cbfstool inserts it into empty space in the middle of CBFS. I used 512-byte file instead and then compares sizes.",
+      "parentUuid": "dd857ae9_86747205",
       "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +189,30 @@
       "writtenOn": "2022-06-10T00:23:48Z",
       "side": 1,
       "message": "FIXHIR?",
+      "range": {
+        "startLine": 204,
+        "startChar": 65,
+        "endLine": 204,
+        "endChar": 71
+      },
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a910d896_b3190459",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "whoops",
+      "parentUuid": "86144e73_9def6628",
       "range": {
         "startLine": 204,
         "startChar": 65,
@@ -134,6 +248,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8f2f619_1f1c2252",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "\u003e This reminds me... it would be great for unit tests to be hermetic, and now we\u0027re depending on an outside binary (cbfstool). But I guess there\u0027s not much more we can do about that, building cbfstool from inside this test framework seems like a bit of overkill.\nI think that it\u0027s \"necessary evil\".\n\n\u003e Anyway, at least you\u0027ll need to add sys-apps/coreboot-utils to the dependencies of the vboot_reference ebuild to ensure that the utility will be available at this point.\ncbfstool has been used by tests/futility/test_update.sh for about 4 years now. How did it not fail? Luck, maybe. Thanks for tip about adding coreboot-utils to ebuild :)",
+      "parentUuid": "1841c7c6_de44a9ee",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 30
+      },
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfd01aa_99de9ea5",
         "filename": "tests/futility/test_sign_firmware.sh",
         "patchSetId": 12
@@ -145,6 +283,24 @@
       "writtenOn": "2022-06-10T00:23:48Z",
       "side": 1,
       "message": "Does this test guarantee that `${TMP}` will always be clean (e.g. when you run `make runtests` multiple times in a row without cleaning the directory)? Might be better to `rm -f` this just to be sure.",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d76cd1b_ab017ef4",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfd01aa_99de9ea5",
       "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -168,6 +324,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83e0932f_cec883c7",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "After moving [fw.c].is_valid\u003d1 above size check, futility fails in this test. I\u0027d keep this test, because it might potentially help with finding bugs in both futility and cbfstool.",
+      "parentUuid": "bead375e_e81d5035",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fdede9d_4697486c",
         "filename": "tests/futility/test_sign_firmware.sh",
         "patchSetId": 12
@@ -179,6 +353,24 @@
       "writtenOn": "2022-06-10T00:23:48Z",
       "side": 1,
       "message": "Better to enforce a clean slate before we start than to cleanup after we finish. You always have to assume that someone might press Ctrl+C at the worst possible moment.",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97bfd1d0_013a9003",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fdede9d_4697486c",
       "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -196,6 +388,30 @@
       "writtenOn": "2022-06-10T00:23:48Z",
       "side": 1,
       "message": "${CBFSTOOL_STUB} already starts with ${TMP}.\" so shouldn\u0027t need to be listed separately.",
+      "range": {
+        "startLine": 259,
+        "startChar": 30,
+        "endLine": 259,
+        "endChar": 48
+      },
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "150152c6_a6f025ec",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-15T13:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f752be_64127123",
       "range": {
         "startLine": 259,
         "startChar": 30,
