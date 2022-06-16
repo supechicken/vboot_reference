@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3acab772_29b35c45",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-16T01:22:41Z",
+      "side": 1,
+      "message": "Nice! I really like your patching mechanism, that makes it easy to add a lot of these. (I agree that testing one vblock should be enough.)",
+      "parentUuid": "d2e0bbd3_e76f1ca5",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd857ae9_86747205",
         "filename": "tests/futility/test_sign_firmware.sh",
         "patchSetId": 12
@@ -260,6 +278,30 @@
       "side": 1,
       "message": "\u003e This reminds me... it would be great for unit tests to be hermetic, and now we\u0027re depending on an outside binary (cbfstool). But I guess there\u0027s not much more we can do about that, building cbfstool from inside this test framework seems like a bit of overkill.\nI think that it\u0027s \"necessary evil\".\n\n\u003e Anyway, at least you\u0027ll need to add sys-apps/coreboot-utils to the dependencies of the vboot_reference ebuild to ensure that the utility will be available at this point.\ncbfstool has been used by tests/futility/test_update.sh for about 4 years now. How did it not fail? Luck, maybe. Thanks for tip about adding coreboot-utils to ebuild :)",
       "parentUuid": "1841c7c6_de44a9ee",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 30
+      },
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd47b54_86f68025",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-16T01:22:41Z",
+      "side": 1,
+      "message": "Actually, our builders have code that retries building packages when they fail until everything else that built in parallel has finished, because people constantly miss dependencies like this (and the build would be super flaky otherwise). But it\u0027s still important to fix that up because it wastes build time. Thanks for taking care of it.",
+      "parentUuid": "d8f2f619_1f1c2252",
       "range": {
         "startLine": 221,
         "startChar": 3,
