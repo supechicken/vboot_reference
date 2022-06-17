@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0e079c_9c529168",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3acab772_29b35c45",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd857ae9_86747205",
@@ -312,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84436264_2962a570",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffd47b54_86f68025",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 30
+      },
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adfd01aa_99de9ea5",
@@ -378,6 +420,24 @@
       "side": 1,
       "message": "After moving [fw.c].is_valid\u003d1 above size check, futility fails in this test. I\u0027d keep this test, because it might potentially help with finding bugs in both futility and cbfstool.",
       "parentUuid": "bead375e_e81d5035",
+      "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310c3e9e_11c6d78e",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e0932f_cec883c7",
       "revId": "b1e7ce62eee5051aee26630bfb321b7f4fe6e35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

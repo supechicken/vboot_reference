@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9587f6c9_373980a0",
+        "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_body_sig_offset_big.xxd.patch",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "As I mentioned in other comment: These patches are actually applied to bios_peppy_mp.bin(.new) after re-signing with dev-keys and dev kernel_subkey. That\u0027s why it differs.\nI should have indicated that. Maybe adding a hard copy of this image will make it clearer and will eliminate chain of dependencies in the test.",
+      "parentUuid": "16f45090_98ff9d0f",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7aebc5ee_164d8f5a",
         "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_size_big.xxd.patch",
         "patchSetId": 14
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T01:22:41Z",
       "side": 1,
       "message": "nit: this part (which would probably be the tail of the keyblock signature?) is different in my bios_peppy_mp.bin. Maybe just start the patch at 002008b8?",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 29
+      },
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e82752_c8d3d72b",
+        "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_size_big.xxd.patch",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "These patches are actually based on `${TMP}.bios_peppy_mp.bin.new`, which is `bios_peppy_mp.bin` re-signed with dev keys. That\u0027s why it differs.",
+      "parentUuid": "7aebc5ee_164d8f5a",
       "range": {
         "startLine": 1,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cc2d1c_c83bde31",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a4775b1_f70c7005",
+      "range": {
+        "startLine": 164,
+        "startChar": 66,
+        "endLine": 164,
+        "endChar": 67
+      },
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c06c8f64_12b8761b",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2243366d_9426e378",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c06c8f64_12b8761b",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab06dd5_39ad891a",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-06-16T01:22:41Z",
       "side": 1,
       "message": "nit: this is pretty confusing, since you want to count 3 things (version \u003d 1, flags \u003d 0 and version \u003d 2) but you\u0027re using two different mechanism to combine those (grep regex OR for the first two, and bash arithmetic to combine the result of that with the last). Why not just do it all in grep (with `grep -c -E \u0027Firmware version: +1$|Preamble flags: +0$|Firmware version: +2$\u0027`) so that you don\u0027t have to introduce the extra arithmetic here?",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7735456d_731636de",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab06dd5_39ad891a",
       "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31df563c_0ee8e825",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e081d04_5e3c6881",
+      "range": {
+        "startLine": 316,
+        "startChar": 44,
+        "endLine": 316,
+        "endChar": 48
+      },
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32e0bcb6_d9642ecd",
@@ -140,6 +272,24 @@
       "writtenOn": "2022-06-16T01:22:41Z",
       "side": 1,
       "message": "Don\u0027t you want this grep to be true (then why the `if ... then false`)?",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b30c78_e389d955",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "I want futility to fail, bug grep to succeed. I applied your example from Your comment at line #423.",
+      "parentUuid": "32e0bcb6_d9642ecd",
       "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f502c4b7_fb2f6aab",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc7c0e2a_0eb82693",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9367eae1_689b379c",
@@ -174,6 +342,24 @@
       "writtenOn": "2022-06-16T01:22:41Z",
       "side": 1,
       "message": "same",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41f080e_44e458ea",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9367eae1_689b379c",
       "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -197,6 +383,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52b4d597_efcbc3ee",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "No, unfortunately. There is no preamble verification except it fitting in vblock. preamble and body signatures are also omitted. And I think it does not require any checks while signing, because everything except version and flags is going to be overwritten by new preamble.",
+      "parentUuid": "988de06a_106338ad",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edfeb034_5eda4760",
         "filename": "tests/futility/test_sign_firmware.sh",
         "patchSetId": 14
@@ -208,6 +412,24 @@
       "writtenOn": "2022-06-16T01:22:41Z",
       "side": 1,
       "message": "...and here. If you want to test both that futility fails but the grep succeeds, maybe you need to split them apart:\n\n FUTIL_OUTPUT\u003d$(if \"${FUTILITY}\" sign ... then false; fi)\n grep -q \u0027...\u0027 \u003c\u003c\u003c \"${FUTIL_OUTPUT}\"",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ef9f6d_e0a84462",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "That\u0027s what I needed. Thank you :)",
+      "parentUuid": "edfeb034_5eda4760",
       "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +451,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a754e1d_66bee75b",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2530ff_1e62e6b2",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c740e5b9_af62712e",
@@ -242,6 +482,24 @@
       "writtenOn": "2022-06-16T01:22:41Z",
       "side": 1,
       "message": "Shouldn\u0027t there be a grep here? Otherwise, what is being tested?",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5e6faa_a18c7bc0",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-17T11:38:32Z",
+      "side": 1,
+      "message": "After applying fixes I noticed, that it should be grouped in the second loop above.\nUnfortunately, there is no error message, as descried in another comment.",
+      "parentUuid": "c740e5b9_af62712e",
       "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
