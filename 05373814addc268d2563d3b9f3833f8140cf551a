@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e6dbc0_a5239520",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "delete this blank line",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ba7f96_35e0eed2",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "\"Abort on error and uninitialized variables.\"",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd25d3a6_60b44f76",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "normally we load this first and then run `set -eu`",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a4dd57_ee1c05d7",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "constants should be uppercase and declared readonly by adding `-r`",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b8cadb_3a967151",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "is there a doc or something we can link to for these ?  or add more details to the usage text to help people out.",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4326ff9b_11843b61",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "comments are complete sentences, and periods are at the end of them\n\nthis comes up multiple times in here ... please fix them all",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41ff1d3_36b29926",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "bad indentation",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3a6d08_adf3ecf8",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "move this to a usage() func near the top of the file and put in explanatory text as to what this script is for.  other people in the future will have to read this thing and get a sense of why it\u0027s here and why it\u0027s important.",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b987335_edcad850",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "seems like this loop could be one if check\n\n if [[ \" ${board_ignore_list[*]} \" \u003d\u003d *\" ${board} \"* ]]; then\n   echo \"Ignoring board ${board} due to xxx.\"\n   exit 0\n fi",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8562b0fd_85161c3e",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "cuddle this up to the previous line",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea59fbe_516d7d81",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "only ever use `[[` in bash\n\n`[` is POSIX shell and does not support `\u003d\u003d`",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212c3b64_aac10e8f",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "the way this logic is written is not conducive to debugging on failure\n\n if ! soft_fuse_output\u003d\"$(amdfwread --soft-fuse \"${image}\")\"; then\n   die \"\u0027amdfwread --soft-fuse ${image}\u0027 failed\"\n fi\n\n soft_fuse\u003d\"$(echo \"${soft_fuse_output}\" | sed ...)\"\n if [[ -z \"${soft_fuse}\" ]]; then\n   die \"Could not parse Soft-fuse header from output:\n ${soft_fuse_output}\"\n fi",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b67d42b_6e63415f",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "while not wrong, prob easier to read if separated out\n\n local hex\u003d\"$(printf %x \"${forbidden_set}\")\"\n die \"${image}: Forbidden AMD PSP soft fuse bits set: 0x${hex}\"",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32004897_0b1b4adf",
+        "filename": "scripts/image_signing/ensure_amd_psp_flags.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-06-17T05:05:34Z",
+      "side": 1,
+      "message": "same here wrt splitting formatting \u0026 output",
+      "revId": "05373814addc268d2563d3b9f3833f8140cf551a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
