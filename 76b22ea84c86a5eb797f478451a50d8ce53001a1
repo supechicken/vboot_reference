@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cdf4a1e_6b46d3c3",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-17T23:51:16Z",
+      "side": 1,
+      "message": "As mentioned in the test comments it seems like we still need some kind of preamble validation here, to at least make sure that the header fits? Otherwise the `preamble-\u003ebody_signature.data_size` and `preamble-\u003eflags` below could be doing accesses beyond the end of the buffer, right?\n\nMaybe just call `vb2_verify_fw_preamble()`, that\u0027s a bit overkill but it should cover everything we need and avoids having to think about the right set of manual checks (and then `goto end` if that fails).\n\n(It would be good to also have test cases for the FMAP section being to small to hold the structure like this? Maybe you could do that by just binary patching the FMAP like you do in your no_b_slot.patch... just one case where the keyblock doesn\u0027t quite fit, and one case where the keyblock fits but the preamble overflows.)",
+      "revId": "76b22ea84c86a5eb797f478451a50d8ce53001a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9159b15_19df160d",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-17T23:51:16Z",
+      "side": 1,
+      "message": "Why are you flipping back and forth on this one? I\u0027d assume that if there are errors on stderr, we\u0027d want to pass them through?",
+      "revId": "76b22ea84c86a5eb797f478451a50d8ce53001a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

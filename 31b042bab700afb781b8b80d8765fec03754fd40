@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "891f5e67_2c12b4ec",
+        "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_body_sig_offset_big.xxd.patch",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-17T23:51:16Z",
+      "side": 1,
+      "message": "Ah okay... but why? Why do you have to do it on the re-signed ones? Why not just binary-patch a copy of the original bios_peppy_mp.bin and then directly run the resigning tests on those?",
+      "parentUuid": "9587f6c9_373980a0",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7aebc5ee_164d8f5a",
         "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_size_big.xxd.patch",
         "patchSetId": 14
@@ -395,6 +419,24 @@
       "side": 1,
       "message": "No, unfortunately. There is no preamble verification except it fitting in vblock. preamble and body signatures are also omitted. And I think it does not require any checks while signing, because everything except version and flags is going to be overwritten by new preamble.",
       "parentUuid": "988de06a_106338ad",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11df01ed_808ccfdf",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-17T23:51:16Z",
+      "side": 1,
+      "message": "Hmm... that\u0027s probably a sign that we should add some verification there.",
+      "parentUuid": "52b4d597_efcbc3ee",
       "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
