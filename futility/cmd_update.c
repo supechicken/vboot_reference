@@ -39,6 +39,7 @@ enum {
 	OPT_SYS_PROPS,
 	OPT_UNPACK,
 	OPT_WRITE_PROTECTION,
+	OPT_IMAGE_CUSTOMIZATION,
 };
 
 /* Command line options */
@@ -50,6 +51,7 @@ static struct option const long_opts[] = {
 
 	{"image", 1, NULL, 'i'},
 	{"ec_image", 1, NULL, 'e'},
+	{"image_customization", 1, NULL, OPT_IMAGE_CUSTOMIZATION},
 	{"try", 0, NULL, 't'},
 	{"archive", 1, NULL, 'a'},
 	{"programmer", 1, NULL, 'p'},
@@ -200,6 +202,9 @@ static int do_update(int argc, char *argv[])
 
 		case OPT_PD_IMAGE:
 			args.pd_image = optarg;
+			break;
+		case OPT_IMAGE_CUSTOMIZATION:
+			args.image_customization = optarg;
 			break;
 		case OPT_REPACK:
 			args.repack = optarg;
