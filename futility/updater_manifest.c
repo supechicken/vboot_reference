@@ -55,6 +55,8 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const SETVARS_IMAGE_EC = "IMAGE_EC",
 		  * const SETVARS_IMAGE_PD = "IMAGE_PD",
 		  * const SETVARS_SIGNATURE_ID = "SIGNATURE_ID",
+		  * const SETVARS_IMAGE_MAIN_CUSTOMIZATION =
+			"IMAGE_MAIN_CUSTOMIZATION",
 		  * const SIG_ID_IN_VPD_PREFIX = "sig-id-in",
 		  * const DIR_KEYSET = "keyset",
 		  * const DIR_MODELS = "models",
@@ -165,7 +167,9 @@ static int model_config_parse_setvars_file(
 			cfg->signature_id = strdup(v);
 			if (str_startswith(v, SIG_ID_IN_VPD_PREFIX))
 				cfg->is_custom_label = 1;
-		} else
+		} else if (strcmp(k, SETVARS_IMAGE_MAIN_CUSTOMIZATION) == 0)
+			cfg->image_customization = strdup(v);
+		else
 			found_valid = 0;
 		free(expand_path);
 		valid += found_valid;
@@ -830,7 +834,8 @@ static const char *get_gbb_key_hash(const struct vb2_gbb_header *gbb,
 /* Prints the information of given image file in JSON format. */
 static void print_json_image(
 		const char *name, const char *fpath, struct model_config *m,
-		struct u_archive *archive, int indent, int is_host)
+		struct u_archive *archive, int indent, int is_host,
+		const char *image_customization)
 {
 	struct firmware_image image = {0};
 	const struct vb2_gbb_header *gbb = NULL;
@@ -844,6 +849,9 @@ static void print_json_image(
 	       indent, "", name, image.ro_version, image.rw_version_a);
 	indent += 2;
 	if (is_host) {
+		if (image_customization)
+			printf("\n%*s\"customization\": \"%s\",", indent, "",
+			       image_customization);
 		if (patch_image_by_model(&image, m, archive))
 			ERROR("Failed to patch images by model: %s\n", m->name);
 		else
@@ -873,9 +881,10 @@ void print_json_manifest(const struct manifest *manifest)
 		struct model_config *m = &manifest->models[i];
 		printf("%s%*s\"%s\": {\n", i ? ",\n" : "", indent, "", m->name);
 		indent += 2;
-		print_json_image("host", m->image, m, ar, indent, 1);
-		print_json_image("ec", m->ec_image, m, ar, indent, 0);
-		print_json_image("pd", m->pd_image, m, ar, indent, 0);
+		print_json_image("host", m->image, m, ar, indent, 1,
+				 m->image_customization);
+		print_json_image("ec", m->ec_image, m, ar, indent, 0, NULL);
+		print_json_image("pd", m->pd_image, m, ar, indent, 0, NULL);
 		if (m->patches.rootkey) {
 			struct patch_config *p = &m->patches;
 			printf(",\n%*s\"patches\": { \"rootkey\": \"%s\", "

@@ -33,6 +33,7 @@ test "$(test_quirks " enlarge_image, enlarge_image=2")" = \
 # Test data files
 LINK_BIOS="${SCRIPT_DIR}/futility/data/bios_link_mp.bin"
 PEPPY_BIOS="${SCRIPT_DIR}/futility/data/bios_peppy_mp.bin"
+KAISA_BIOS="${SCRIPT_DIR}/futility/data/bios_kaisa_mp.bin"
 RO_VPD_BLOB="${SCRIPT_DIR}/futility/data/ro_vpd.bin"
 
 # Work in scratch directory
@@ -449,11 +450,26 @@ mkdir -p "${A}/images"
 mv "${A}/image.bin" "${A}/images/bios_coral.bin"
 cp -f "${PEPPY_BIOS}" "${A}/images/bios_peppy.bin"
 cp -f "${LINK_BIOS}" "${A}/images/bios_link.bin"
+cp -f "${KAISA_BIOS}" "${A}/images/bios_kaisa.bin"
+if type cbfstool >/dev/null 2>&1; then
+	KAISA_BIOS="${A}/images/bios_kaisa.bin"
+	echo "1: ab" > kaisa_custom
+	cbfstool "${KAISA_BIOS}" add -r COREBOOT,FW_MAIN_A,FW_MAIN_B \
+		-f "kaisa_custom" -n "custom" -t raw
+	KAISA_BIOS_CUSTOM="${A}/images/bios_kaisa_custom.bin"
+	cp -f "${KAISA_BIOS}" "${KAISA_BIOS_CUSTOM}"
+	xxd -r "${SCRIPT_DIR}/futility/data/kaisa_custom" "${KAISA_BIOS_CUSTOM}"
+	rm kaisa_custom
+else
+	KAISA_BIOS_CUSTOM=""
+fi
+
 cp -f "${TMP}.to/rootkey" "${A}/keyset/rootkey.customtip-cl"
 cp -f "${TMP}.to/VBLOCK_A" "${A}/keyset/vblock_A.customtip-cl"
 cp -f "${TMP}.to/VBLOCK_B" "${A}/keyset/vblock_B.customtip-cl"
 cp -f "${PEPPY_BIOS}" "${FROM_IMAGE}.ap"
 cp -f "${LINK_BIOS}" "${FROM_IMAGE}.al"
+cp -f "${KAISA_BIOS}" "${FROM_IMAGE}.kaisa"
 patch_file "${FROM_IMAGE}.ap" FW_MAIN_A 0 "corrupted"
 patch_file "${FROM_IMAGE}.al" FW_MAIN_A 0 "corrupted"
 test_update "Full update (--archive, model=link)" \
@@ -469,6 +485,19 @@ test_update "Full update (--archive, model=customtip, signature_id=CL)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=customtip \
 	--signature_id=customtip-cl
+
+test_update "Full update (--archive, model=kaisa)" \
+	"${FROM_IMAGE}.kaisa" "${KAISA_BIOS}" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=kaisa
+test_update "Full update (--archive, model=kaisa_custom_not_found)" \
+	"${FROM_IMAGE}.kaisa" "!Cannot find entry: custom_not_found" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 \
+	--model=kaisa_custom_not_found
+if [[ -n "${KAISA_BIOS_CUSTOM}" ]]; then
+	test_update "Full update (--archive, model=kaisa_custom)" \
+		"${FROM_IMAGE}.kaisa" "${KAISA_BIOS_CUSTOM}" \
+		-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=kaisa_custom
+fi
 
 CL_TAG="cl" PATH="${A}/bin:${PATH}" \
 	test_update "Full update (-a, model=customtip, fake VPD)" \
