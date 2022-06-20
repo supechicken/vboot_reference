@@ -81,7 +81,7 @@ struct updater_config {
 };
 
 struct updater_config_arguments {
-	char *image, *ec_image, *pd_image;
+	char *image, *ec_image, *pd_image, *image_customization;
 	char *archive, *quirks, *mode;
 	const char *programmer, *write_protection;
 	char *model, *signature_id;
@@ -103,7 +103,7 @@ struct patch_config {
 
 struct model_config {
 	char *name;
-	char *image, *ec_image, *pd_image;
+	char *image, *ec_image, *pd_image, *image_customization;
 	struct patch_config patches;
 	char *signature_id;
 	int is_custom_label;

@@ -1318,6 +1318,74 @@ static int updater_setup_quirks(struct updater_config *cfg,
 	return errorcnt;
 }
 
+static int updater_load_image_customization(struct updater_config *cfg,
+				const struct updater_config_arguments *arg,
+				const char *image_customization)
+{
+	const char *cbfs_region = "FW_MAIN_A";
+	struct firmware_section cbfs_section;
+
+	int errorcnt = 0;
+
+	if (!image_customization)
+		return errorcnt;
+
+	/* Before invoking cbfstool, try to search for CBFS file name. */
+	find_firmware_section(&cbfs_section, &cfg->image, cbfs_region);
+	if (!cbfs_section.size ||
+	    !memmem(cbfs_section.data, cbfs_section.size, image_customization,
+		    strlen(image_customization))) {
+		if (!cbfs_section.size)
+			VB2_DEBUG("Missing region: %s\n", cbfs_region);
+		else
+			ERROR("Cannot find entry: %s\n", image_customization);
+		return 1;
+	}
+
+	const char *tmp_path = get_firmware_image_temp_file(
+			&cfg->image, &cfg->tempfiles);
+	uint8_t *data = NULL;
+	uint32_t size = 0;
+
+	/* Although the name exists, it may not be a real file. */
+	if (!cbfs_file_exists(tmp_path, cbfs_region, image_customization)) {
+		VB2_DEBUG("Found string '%s' but not a file.\n",
+			  image_customization);
+		return 1;
+	}
+
+	VB2_DEBUG("Found %s from CBFS %s\n", image_customization, cbfs_region);
+	tmp_path = cbfs_extract_file(tmp_path, cbfs_region, image_customization,
+				     &cfg->tempfiles);
+	if (!tmp_path ||
+	    vb2_read_file(tmp_path, &data, &size) != VB2_SUCCESS) {
+		ERROR("Failed to read [%s] from CBFS [%s].\n",
+		      image_customization, cbfs_region);
+		return 1;
+	}
+	VB2_DEBUG("Got image customization patch (%u bytes): %s\n", size, data);
+
+	char *offset = (char *)data, *current;
+	int target, value;
+	while ((current = strsep(&offset, "\n"))) {
+		if (current && *current == '\0')
+			break;
+
+		if (sscanf(current, "%x: %x", &target, &value) != 2) {
+			ERROR("Failed to parse patch: \"%s\"\n", current);
+			return 1;
+		}
+		VB2_DEBUG("image[0x%x] = 0x%x\n", target, value);
+		if (target < 0 || target >= cfg->image.size) {
+			ERROR("Target 0x%x is out of bounds [0, 0x%x)\n",
+			      target, cfg->image.size);
+			return 1;
+		}
+		cfg->image.data[target] = value;
+	}
+	return 0;
+}
+
 /*
  * Loads images into updater configuration.
  * Returns 0 on success, otherwise number of failures.
@@ -1326,7 +1394,8 @@ static int updater_load_images(struct updater_config *cfg,
 			       const struct updater_config_arguments *arg,
 			       const char *image,
 			       const char *ec_image,
-			       const char *pd_image)
+			       const char *pd_image,
+			       const char *image_customization)
 {
 	int errorcnt = 0;
 	struct u_archive *ar = cfg->archive;
@@ -1341,6 +1410,10 @@ static int updater_load_images(struct updater_config *cfg,
 		errorcnt += !!load_firmware_image(&cfg->image, image, ar);
 		if (!errorcnt)
 			errorcnt += updater_setup_quirks(cfg, arg);
+		if (!errorcnt) {
+			errorcnt += updater_load_image_customization(
+				cfg, arg, image_customization);
+		}
 	}
 	if (arg->host_only)
 		return errorcnt;
@@ -1435,7 +1508,7 @@ static int updater_setup_archive(
 	/* Load images now so we can get quirks in custom label checks. */
 	errorcnt += updater_load_images(
 			cfg, arg, model->image, model->ec_image,
-			model->pd_image);
+			model->pd_image, model->image_customization);
 
 	if (model->is_custom_label && !manifest->has_keyset) {
 		/*
@@ -1569,8 +1642,9 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 
 	/* Always load images specified from command line directly. */
-	errorcnt += updater_load_images(
-			cfg, arg, arg->image, arg->ec_image, arg->pd_image);
+	errorcnt += updater_load_images(cfg, arg, arg->image, arg->ec_image,
+					arg->pd_image,
+					arg->image_customization);
 
 	if (!archive_path)
 		archive_path = ".";
@@ -1621,6 +1695,7 @@ int updater_setup_config(struct updater_config *cfg,
 			.image = arg->image,
 			.ec_image = arg->ec_image,
 			.pd_image = arg->pd_image,
+			.image_customization = arg->image_customization,
 		};
 		struct manifest manifest = {
 			.num = 1,
