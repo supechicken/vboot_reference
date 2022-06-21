@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ff3569b_f3ec1eaf",
+        "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_body_sig_offset_big.xxd.patch",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-21T10:40:41Z",
+      "side": 1,
+      "message": "I wanted to verify images before signing them to make sure, they were correctly patched. That would be impossible with original bios_peppy_mp.bin, because we do not seem to have public root MP key, which is required for verification.\nIt also ensures, that `futility verify` does not accept images with defects.",
+      "parentUuid": "891f5e67_2c12b4ec",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7aebc5ee_164d8f5a",
         "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_size_big.xxd.patch",
         "patchSetId": 14
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "These patches are actually based on `${TMP}.bios_peppy_mp.bin.new`, which is `bios_peppy_mp.bin` re-signed with dev keys. That\u0027s why it differs.",
       "parentUuid": "7aebc5ee_164d8f5a",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 29
+      },
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11870ae7_3dbbf868",
+        "filename": "tests/futility/data/bios_peppy_mp.bad_preamble_size_big.xxd.patch",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-21T10:40:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9e82752_c8d3d72b",
       "range": {
         "startLine": 1,
         "startChar": 10,
@@ -437,6 +485,24 @@
       "side": 1,
       "message": "Hmm... that\u0027s probably a sign that we should add some verification there.",
       "parentUuid": "52b4d597_efcbc3ee",
+      "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c6b315_cd1d4e81",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-21T10:40:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11df01ed_808ccfdf",
       "revId": "31b042bab700afb781b8b80d8765fec03754fd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

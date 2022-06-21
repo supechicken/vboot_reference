@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fc0f8f8_5d6ec059",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-21T10:40:41Z",
+      "side": 1,
+      "message": "Done. I also re-generated and re-worked these test cases to cover more code. I think, that current amount of tests will suffice. Rest of cases should be already covered by unit-tests. What do you think?",
+      "parentUuid": "3cdf4a1e_6b46d3c3",
+      "revId": "76b22ea84c86a5eb797f478451a50d8ce53001a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9159b15_19df160d",
         "filename": "host/lib/cbfstool.c",
         "patchSetId": 15
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-17T23:51:16Z",
       "side": 1,
       "message": "Why are you flipping back and forth on this one? I\u0027d assume that if there are errors on stderr, we\u0027d want to pass them through?",
+      "revId": "76b22ea84c86a5eb797f478451a50d8ce53001a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd36068_ecd3eb99",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-06-21T10:40:41Z",
+      "side": 1,
+      "message": "I was wondering, if we rally want to forward stderr, because it will print errors for valid images which do not have CBFS.\n```\nWARNING: prepare_slot: FW_MAIN_A does not contain CBFS. Trying to sign entire area.                                                                                                                                                         \nWARNING: prepare_slot: VBLOCK_A preamble is invalid.                                                                  \nWARNING: prepare_slot: FW_MAIN_B does not contain CBFS. Trying to sign entire area.                                                                                                                                                         \nE: The -H switch is only valid on legacy images having CBFS master headers.                                                                                                                                                           \nE: reading CBFS failed!                                                                                                                \nE: Failed while operating on \u0027FW_MAIN_A\u0027 region!                                                                                       \nE: The image will be left unmodified.                                                                                                  \nE: The -H switch is only valid on legacy images having CBFS master headers.                                                                                                                                                                 \nE: reading CBFS failed!                                                                                                                \nE: Failed while operating on \u0027FW_MAIN_B\u0027 region!                                                                                       \nE: The image will be left unmodified.\n```\n\nI was thinking about setting it to `\u0026subprocess_stderr` for `futility --debug`, but `host/lib/cbfstool.c` is not guaranteed to be used only by futility, as it is not in it\u0027s directory.\nSo, why not to just ignore this output, like in `host/lib/flashrom.c`? If `cbfstool` fails for reason other than non-CBFS file, then it probably wont even get executed here or will fail earlier e.g. in our case during coreboot build.",
+      "parentUuid": "f9159b15_19df160d",
       "revId": "76b22ea84c86a5eb797f478451a50d8ce53001a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
