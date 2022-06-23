@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdf376f_d9304f09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "Extract",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dacc6cb6_94bbebf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "as",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43475091_3b3471d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "call it from VbSelectAndLoadKernel",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f8030e_79b9e433",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 133,
+        "startChar": 19,
+        "endLine": 133,
+        "endChar": 25
+      },
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aac679e_a07b0ceb",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "in case it hasn\u0027t been initialized.",
+      "range": {
+        "startLine": 133,
+        "startChar": 26,
+        "endLine": 133,
+        "endChar": 66
+      },
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779cbd57_5d9c4fae",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "One blank line below.",
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8cc2ad_792a587c",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "These UI function calls should remain in `VbSelectAndLoadKernel()`, after the `vb2api_kernel_phase2()` call.",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 40
+      },
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46b691d_c8000098",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "Must",
+      "range": {
+        "startLine": 823,
+        "startChar": 3,
+        "endLine": 823,
+        "endChar": 7
+      },
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30089c94_ae459742",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T14:18:03Z",
+      "side": 1,
+      "message": "Please move this to the beginning of `vb2api_kernel_phase2()`.",
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
