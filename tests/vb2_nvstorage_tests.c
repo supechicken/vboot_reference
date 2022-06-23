@@ -123,6 +123,7 @@ static void nv_storage_test(uint32_t ctxflags)
 
 	/* Perturbing signature bits in the header should force defaults */
 	ctx->nvdata[VB2_NV_OFFS_HEADER] ^= 0x40;
+	sd->status &= ~VB2_SD_STATUS_NV_INIT;
 	TEST_EQ(vb2_nv_check_crc(ctx),
 		VB2_ERROR_NV_HEADER, "vb2_nv_check_crc() bad header");
 	vb2_nv_init(ctx);
@@ -135,6 +136,7 @@ static void nv_storage_test(uint32_t ctxflags)
 	/* So should perturbing some other byte */
 	TEST_EQ(ctx->nvdata[VB2_NV_OFFS_KERNEL1], 0, "Kernel byte starts at 0");
 	ctx->nvdata[VB2_NV_OFFS_KERNEL1] = 12;
+	sd->status &= ~VB2_SD_STATUS_NV_INIT;
 	TEST_EQ(vb2_nv_check_crc(ctx),
 		VB2_ERROR_NV_CRC, "vb2_nv_check_crc() bad CRC");
 	vb2_nv_init(ctx);
