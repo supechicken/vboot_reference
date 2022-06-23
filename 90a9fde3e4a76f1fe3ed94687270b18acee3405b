@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffb85de_61b7bf26",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-06-23T07:54:13Z",
+      "side": 1,
+      "message": "Shall we always clear the SD flag before any vb2_nv_init() in unit tests?\n\nWe could introduce a test_force_nv_init() which clear SD flag + call vb2_nv_init()",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 12
+      },
+      "revId": "90a9fde3e4a76f1fe3ed94687270b18acee3405b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
