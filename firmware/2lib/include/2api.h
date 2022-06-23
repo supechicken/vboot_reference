@@ -818,6 +818,16 @@ vb2_error_t vb2api_get_pcr_digest(struct vb2_context *ctx,
 vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx);
 
 /**
+ * Do kernel verification.
+ *
+ * Must be called after vb2api_kernel_phase1.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx);
+
+/**
  * Finalize for kernel verification stage.
  *
  * Handle NO_BOOT flag.
