@@ -166,10 +166,6 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
 	   than relying on a global to pass it to VbTryLoadKernel. */
 	kparams_ptr = kparams;
 
-	/* Init nvstorage space. TODO(kitching): Remove once we add assertions
-	   to vb2_nv_get and vb2_nv_set. */
-	vb2_nv_init(ctx);
-
 	VB2_TRY(vb2api_kernel_phase1(ctx));
 
 	VB2_DEBUG("GBB flags are %#x\n", gbb_flags);

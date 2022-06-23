@@ -130,6 +130,9 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 
 	vb2_workbuf_from_ctx(ctx, &wb);
 
+	/* Init nvstorage to prevent caller not initializing first */
+	vb2_nv_init(ctx);
+
 	/*
 	 * Init secdata_fwmp spaces. No need to init secdata_firmware or
 	 * secdata_kernel, since they were already read during firmware
