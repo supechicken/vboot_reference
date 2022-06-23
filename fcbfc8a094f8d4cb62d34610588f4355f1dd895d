@@ -16,6 +16,70 @@
       "message": "Could we consider add more stories in the title?\n\ne.g. speed up vb2_nv_init by checking SD befor init",
       "revId": "fcbfc8a094f8d4cb62d34610588f4355f1dd895d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21f5a3d_b0d9b078",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T08:17:06Z",
+      "side": 1,
+      "message": "As this contains functional changes, I wouldn\u0027t consider this as a speed-up. How about\n\n 2nvstorage.c: Skip re-initialization in vb2_nv_init()",
+      "parentUuid": "ca82827e_8f098b6e",
+      "revId": "fcbfc8a094f8d4cb62d34610588f4355f1dd895d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce34d79_f60cfc28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T08:17:06Z",
+      "side": 1,
+      "message": "in unit tests",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "fcbfc8a094f8d4cb62d34610588f4355f1dd895d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5012bd2_2d502624",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-23T08:17:06Z",
+      "side": 1,
+      "message": "The `vb2_nv_init()` calls starting here are somewhat meaningless, because it would be a no-op. If we\u0027d like to test a series of operations on the same nvdata in this test function, I think we should remove these `vb2_nv_init()` calls, and replace with a `vb2_nv_check_crc()` check at the end of each test case.",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 12
+      },
+      "revId": "fcbfc8a094f8d4cb62d34610588f4355f1dd895d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
