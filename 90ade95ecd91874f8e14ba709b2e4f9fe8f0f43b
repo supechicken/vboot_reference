@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22269424_16b3adae",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-23T06:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56d809a_3c1b9c6a",
+      "revId": "90ade95ecd91874f8e14ba709b2e4f9fe8f0f43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47e85e3e_b01e67e8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-23T05:58:54Z",
       "side": 1,
       "message": "Disallow booting to kernel when NO_BOOT is set, except when ...",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 57
+      },
+      "revId": "90ade95ecd91874f8e14ba709b2e4f9fe8f0f43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a34fc8d_af65fc6a",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-23T06:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47e85e3e_b01e67e8",
       "range": {
         "startLine": 205,
         "startChar": 4,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8ee561_57edcf60",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-23T06:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb7d687_641c3b9a",
+      "revId": "90ade95ecd91874f8e14ba709b2e4f9fe8f0f43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da28437d_02006cb6",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-06-23T05:58:54Z",
       "side": 1,
       "message": "Remove these comments.",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 4
+      },
+      "revId": "90ade95ecd91874f8e14ba709b2e4f9fe8f0f43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9355fac3_a4429512",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-23T06:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da28437d_02006cb6",
       "range": {
         "startLine": 254,
         "startChar": 1,
