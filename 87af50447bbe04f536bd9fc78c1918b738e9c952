@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a26ab7_b8d22b0e",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "This can be moved outside the switch statement, because `recovery_reason !\u003d 0` is equivalent to `VB2_BOOT_MODE_MANUAL_RECOVERY || VB2_BOOT_MODE_BROKEN_SCREEN`.",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 3
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a96683_d0d55815",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "Since this debug message is to explain why we end up in broken screen instead of manual recovery screen, it looks more reasonable to move it to depthcharge (i.e., `VbSelectAndLoadKernel` in this CL).",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 43
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cf9bb0_d645681c",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "This can also be cleared regardless of the boot mode. For the `vb2ex_commit_data()` call below, however, I think we can do it only in:\n\n- VB2_BOOT_MODE_MANUAL_RECOVERY\n- VB2_BOOT_MODE_BROKEN_SCREEN\n- VB2_BOOT_MODE_DIAGNOSTICS\n\n```\nvb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);\n\nif (ctx-\u003eflags \u0026 VB2_CONTEXT_RECOVERY_MODE ||\n    ctx-\u003eboot_mode \u003d\u003d VB2_BOOT_MODE_DIAGNOSTICS) {\n    // Combine to 2 comment block here\n    vb2ex_commit_data(ctx);\n}\n```\n\nIf `VB2_NV_DIAG_REQUEST` is changed from 1 to 0 in developer or normal mode, not calling `vb2ex_commit_data()` should be fine, because it will be called from `commit_and_lock_cleanup_func()` in depthcharge.",
+      "range": {
+        "startLine": 282,
+        "startChar": 18,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0126b5_5cb8e9ac",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "Move this as well. Eventually we will want call it from depthcharge.",
+      "range": {
+        "startLine": 289,
+        "startChar": 10,
+        "endLine": 289,
+        "endChar": 25
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927ca508_9d9a5790",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "IMO this also belongs to `VbSelectAndLoadKernel`.",
+      "range": {
+        "startLine": 292,
+        "startChar": 9,
+        "endLine": 292,
+        "endChar": 33
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8633c4ec_f0e93b6a",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "One blank line below, and no need for above.",
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b6ad13_cc2b780f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "We don\u0027t need the `if` anymore. Just move `vb2ex_manual_recovery_ui` to the `VB2_BOOT_MODE_MANUAL_RECOVERY` switch case.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0d5f14_49850e42",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-24T07:01:07Z",
+      "side": 1,
+      "message": "One blank line above.",
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
