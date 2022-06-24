@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f463abc4_e7b75566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-24T00:05:55Z",
+      "side": 1,
+      "message": "Do we ever intentionally call vb2_nv_init() twice? I think we shouldn\u0027t. I can see that there is currently still a \"second\" vb2_nv_init() call in VbSelectAndLoadKernel(), I\u0027m honestly not quite sure what that\u0027s doing there, we should probably take that out. And then, if we are sure that this should really just be called once, I think we should instead just add an assertion to prove that instead of silently ignoring it when it happens.",
+      "revId": "bc4248c8d0fe783dd4a5cb4c2e27bdfe368a3ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
