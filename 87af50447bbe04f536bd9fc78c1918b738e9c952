@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e08f09a1_d7b801ed",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-24T23:24:09Z",
+      "side": 1,
+      "message": "I would suggest to stick to the boot_mode field as the source of truth, as it\u0027s written here. Just to keep things simple.",
+      "parentUuid": "d0f4b075_c3b69d38",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 3
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21a96683_d0d55815",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2022-06-24T07:01:07Z",
       "side": 1,
       "message": "This can also be cleared regardless of the boot mode. For the `vb2ex_commit_data()` call below, however, I think we can do it only in:\n\n- VB2_BOOT_MODE_MANUAL_RECOVERY\n- VB2_BOOT_MODE_BROKEN_SCREEN\n- VB2_BOOT_MODE_DIAGNOSTICS\n\n```\nvb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);\n\nif (ctx-\u003eflags \u0026 VB2_CONTEXT_RECOVERY_MODE ||\n    ctx-\u003eboot_mode \u003d\u003d VB2_BOOT_MODE_DIAGNOSTICS) {\n    // Combine to 2 comment block here\n    vb2ex_commit_data(ctx);\n}\n```\n\nIf `VB2_NV_DIAG_REQUEST` is changed from 1 to 0 in developer or normal mode, not calling `vb2ex_commit_data()` should be fine, because it will be called from `commit_and_lock_cleanup_func()` in depthcharge.",
+      "range": {
+        "startLine": 282,
+        "startChar": 18,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded43fb8_c82b4f65",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-24T23:24:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we still need to have this anyway, since minidiag is in depthcharge now and even if we did third-party diag again, the current depthcharge code will commit nvdata for CleanupOnLegacy (which I don\u0027t think we had yet when this was added here). So there should be no path where it exits the diagnostics without writing back nvdata.\n\nI think it should be enough to clear this flag unconditionally (like you said) and get rid of the commit_data() here.",
+      "parentUuid": "b3cf9bb0_d645681c",
       "range": {
         "startLine": 282,
         "startChar": 18,

@@ -255,6 +255,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68758e70_6b691828",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-24T23:24:09Z",
+      "side": 1,
+      "message": "nv_init() has nothing to do with the workbuf, it just CRC-checks the nvdata. The idea is that it should always have been done by coreboot already so it should not be needed here.",
+      "parentUuid": "6d2f0cdc_a04583d9",
+      "revId": "346dcc00edf1c93f9a6a517e6ad5aff926a5b3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "779cbd57_5d9c4fae",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 1
