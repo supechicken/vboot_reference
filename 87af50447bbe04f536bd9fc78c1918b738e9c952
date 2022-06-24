@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0f4b075_c3b69d38",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-06-24T08:06:13Z",
+      "side": 1,
+      "message": "nit: actually there was still \"force recovery mode\" (*) so it would be more precise that\n\"recovery_reason !\u003d 0\" implies \"VB2_BOOT_MODE_MANUAL_RECOVERY || VB2_BOOT_MODE_BROKEN_SCREEN\"\n\n(*): https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/firmware/2lib/2misc.c;l\u003d727",
+      "parentUuid": "58a26ab7_b8d22b0e",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 3
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21a96683_d0d55815",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 2

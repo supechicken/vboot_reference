@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3461fb74_0ab447c5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-06-24T08:06:13Z",
+      "side": 1,
+      "message": "We might want to cleanup this eventually since we re-define the kernel_phase2 now.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 73
+      },
+      "revId": "28551239b251fdd5caa3d4cb171bde15cbc7346a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f66577_e4b7bb92",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-06-24T08:06:13Z",
+      "side": 1,
+      "message": "Comment style incorrect",
+      "range": {
+        "startLine": 831,
+        "startChar": 0,
+        "endLine": 835,
+        "endChar": 10
+      },
+      "revId": "28551239b251fdd5caa3d4cb171bde15cbc7346a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62af53a1_56848f8a",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-06-24T08:06:13Z",
+      "side": 1,
+      "message": "Remove this",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "28551239b251fdd5caa3d4cb171bde15cbc7346a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
