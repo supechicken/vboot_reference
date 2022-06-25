@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60e82069_f477b822",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-25T11:24:57Z",
+      "side": 1,
+      "message": "+menghuan@\n\nI\u0027m not sure what \"forced system reset\" means here (like HW reset?), but this seems to be added intentionally in CL:2624110. menghuan@, do you remember what this is about?",
+      "parentUuid": "ded43fb8_c82b4f65",
+      "range": {
+        "startLine": 282,
+        "startChar": 18,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce0126b5_5cb8e9ac",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 2
