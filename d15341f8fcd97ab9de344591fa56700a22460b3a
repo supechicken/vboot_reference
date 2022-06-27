@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8484f795_b3805309",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-06-27T08:38:59Z",
+      "side": 1,
+      "message": "We could split this out now. e.g.\n\n```\ncase VB2_BOOT_MODE_MANUAL_RECOVERY:\n\tVB2_TRY(vb2ex_manual_recovery_ui(ctx));\n\tbreak;\ncase VB2_BOOT_MODE_BROKEN_SCREEN:\n\t/*\n\t * In EFS2, recovery mode can be entered even when battery is\n\t * drained or damaged. EC-RO sets NO_BOOT flag in such case and\n\t * uses PD power to boot AP.\n\t *\n\t * TODO: Inform user why recovery failed to start.\n\t */\n\tif (ctx-\u003eflags \u0026 VB2_CONTEXT_NO_BOOT)\n\t\tVB2_DEBUG(\"NO_BOOT in RECOVERY mode\\n\");\n\n\tVB2_TRY(vb2ex_broken_screen_ui(ctx));\n\tbreak;\n```\n\nAlso, please add some notes in comments about the debug msg change e.g.\n\n```\nNot printing \"NO_BOOT in RECOVERY mode\\n\" in manual recovery mode since the only case we could reach \"NO_BOOT\" at \"manual recovery mode\" should be forced by GBB flag FORCE_MANUAL_RECOVERY.\n```",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 8
+      },
+      "revId": "d15341f8fcd97ab9de344591fa56700a22460b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9e37cf5_fdd39d2c",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 6
