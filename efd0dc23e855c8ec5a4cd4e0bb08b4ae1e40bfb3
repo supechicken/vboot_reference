@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15408736_1f489b4b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-27T06:47:29Z",
+      "side": 1,
+      "message": "Julius, what\u0027s the reason to reboot here (and below for `VB2_NV_DIAG_REQUEST`)? Why can\u0027t we just unset these flags and commit nvdata?\n\nIf `VB2_NV_DIAG_REQUEST` has been cleared in `VbSelectAndLoadKernel()`, then we\u0027d always get `VB2_NV_DIAG_REQUEST\u003d0` here.",
+      "revId": "efd0dc23e855c8ec5a4cd4e0bb08b4ae1e40bfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
