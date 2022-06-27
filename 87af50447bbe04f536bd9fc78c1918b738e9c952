@@ -334,6 +334,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d2fc83d_1de2c8a6",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T08:16:28Z",
+      "side": 1,
+      "message": "This will handle undefined mode. I keep this since I want to let phase2 do verification and leave the `switch` part of VbSelectAndLoadKernel only for UI, but I finally add `return VB2_ERROR_ESCAPE_NO_BOOT` to VbSelectAndLoadKernel to make it clear that this shouldn\u0027t happened.",
+      "parentUuid": "927ca508_9d9a5790",
+      "range": {
+        "startLine": 292,
+        "startChar": 9,
+        "endLine": 292,
+        "endChar": 33
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8633c4ec_f0e93b6a",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
