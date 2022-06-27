@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "947262b1_817bb673",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-27T08:10:05Z",
+      "side": 1,
+      "message": "Okay let\u0027s leave this unchanged for now. We can have a follow-up discussion about this.",
+      "parentUuid": "e8ec136d_cf5c51dd",
+      "range": {
+        "startLine": 282,
+        "startChar": 18,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce0126b5_5cb8e9ac",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 2
@@ -380,6 +404,30 @@
       "side": 1,
       "message": "Since we move\n```\nif (tcx-\u003eflags \u0026 VB2_CONTEXT_NO_BOOT)\n        VB2_DEBUG(\"NO_BOOT in RECOVERY mode\\n\");\n```\nis moved to here, we still need the `if` here.",
       "parentUuid": "71b6ad13_cc2b780f",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739bc6e7_14cdd768",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-27T08:10:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62838ce2_b10681bd",
       "range": {
         "startLine": 151,
         "startChar": 2,
