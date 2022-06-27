@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9186583b_39562f0c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1f66577_e4b7bb92",
+      "range": {
+        "startLine": 831,
+        "startChar": 0,
+        "endLine": 835,
+        "endChar": 10
+      },
+      "revId": "28551239b251fdd5caa3d4cb171bde15cbc7346a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62af53a1_56848f8a",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-06-24T08:06:13Z",
       "side": 1,
       "message": "Remove this",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "28551239b251fdd5caa3d4cb171bde15cbc7346a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5f1c8e3_f9bd993b",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62af53a1_56848f8a",
       "range": {
         "startLine": 10,
         "startChar": 0,

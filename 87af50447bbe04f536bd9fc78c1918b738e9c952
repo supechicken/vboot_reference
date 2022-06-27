@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da5749b0_fd642adb",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08f09a1_d7b801ed",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 3
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21a96683_d0d55815",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-06-24T07:01:07Z",
       "side": 1,
       "message": "Since this debug message is to explain why we end up in broken screen instead of manual recovery screen, it looks more reasonable to move it to depthcharge (i.e., `VbSelectAndLoadKernel` in this CL).",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 43
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8092c5_2d387ebf",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a96683_d0d55815",
       "range": {
         "startLine": 273,
         "startChar": 2,
@@ -168,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8ec136d_cf5c51dd",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "If we clear the `VB2_NV_DIAG_REQUEST` unconditionally, this test (https://source.corp.google.com/chromeos_public/src/platform/vboot_reference/tests/vboot_api_kernel4_tests.c;l\u003d254) will fail. The reason is when vb2api_diagnostic_ui_enabled return 0, the original code will enter normal boot and reboot (see https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1634451 for detail), but it will not reboot if we clear this flag beforehand.",
+      "parentUuid": "60e82069_f477b822",
+      "range": {
+        "startLine": 282,
+        "startChar": 18,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce0126b5_5cb8e9ac",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 2
@@ -179,6 +251,30 @@
       "writtenOn": "2022-06-24T07:01:07Z",
       "side": 1,
       "message": "Move this as well. Eventually we will want call it from depthcharge.",
+      "range": {
+        "startLine": 289,
+        "startChar": 10,
+        "endLine": 289,
+        "endChar": 25
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28ad59b_59ed583d",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce0126b5_5cb8e9ac",
       "range": {
         "startLine": 289,
         "startChar": 10,
@@ -229,6 +325,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee781f8f_8d5f014b",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8633c4ec_f0e93b6a",
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71b6ad13_cc2b780f",
@@ -254,6 +368,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62838ce2_b10681bd",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Since we move\n```\nif (tcx-\u003eflags \u0026 VB2_CONTEXT_NO_BOOT)\n        VB2_DEBUG(\"NO_BOOT in RECOVERY mode\\n\");\n```\nis moved to here, we still need the `if` here.",
+      "parentUuid": "71b6ad13_cc2b780f",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd0d5f14_49850e42",
         "filename": "firmware/lib/vboot_api_kernel.c",
         "patchSetId": 2
@@ -265,6 +403,24 @@
       "writtenOn": "2022-06-24T07:01:07Z",
       "side": 1,
       "message": "One blank line above.",
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b488ea_4faf3090",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-27T07:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd0d5f14_49850e42",
       "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
