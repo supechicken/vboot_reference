@@ -28,6 +28,7 @@
 #include "2return_codes.h"
 #include "2rsa.h"
 #include "2secdata_struct.h"
+#include "vboot_api.h"
 
 #define _VB2_TRY_IMPL(expr, ctx, recovery_reason, ...) do { \
 	vb2_error_t _vb2_try_rv = (expr); \
@@ -834,7 +835,8 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx);
  * @param ctx		Vboot context.
  * @return VB2_SUCCESS, or error code on error.
  */
-vb2_error_t vb2api_normal_boot(struct vb2_context *ctx);
+vb2_error_t vb2api_normal_boot(struct vb2_context *ctx,
+			       VbSelectAndLoadKernelParams *kparams);
 
 /**
  * Finalize for kernel verification stage.

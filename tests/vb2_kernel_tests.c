@@ -24,6 +24,7 @@ static struct vb2_shared_data *sd;
 static struct vb2_fw_preamble *fwpre;
 static const char fw_kernel_key_data[36] = "Test kernel key data";
 static enum vb2_boot_mode *boot_mode;
+static VbSelectAndLoadKernelParams kparams;
 
 /* Mocked function data */
 
@@ -50,6 +51,8 @@ static void reset_common_data(enum reset_type t)
 	struct vb2_packed_key *k;
 
 	memset(workbuf, 0xaa, sizeof(workbuf));
+
+	memset(&kparams, 0, sizeof(kparams));
 
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
@@ -148,7 +151,8 @@ vb2_error_t vb2ex_read_resource(struct vb2_context *c,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
+vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags,
+			    VbSelectAndLoadKernelParams *kpa)
 {
 	/*
 	 * TODO: Currently we don't have a good way of testing for an ordered
@@ -308,28 +312,29 @@ static void normal_boot_tests(void)
 {
 	reset_common_data(FOR_NORMAL_BOOT);
 	mock_vbtlk_expect_fixed = 1;
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_SUCCESS,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_SUCCESS,
 		"vb2api_normal_boot() returns VB2_SUCCESS");
 
 	reset_common_data(FOR_NORMAL_BOOT);
 	mock_vbtlk_expect_fixed = 1;
 	mock_vbtlk_retval = VB2_ERROR_MOCK;
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_ERROR_MOCK,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_ERROR_MOCK,
 		"vb2api_normal_boot() returns VB2_ERROR_MOCK");
 
 	reset_common_data(FOR_NORMAL_BOOT);
 	vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_REQUEST_REBOOT,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_REQUEST_REBOOT,
 		"vb2api_normal_boot() reboot to reset NVRAM display request");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  display request reset");
 
 	reset_common_data(FOR_NORMAL_BOOT);
 	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_REQUEST_REBOOT,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_REQUEST_REBOOT,
 		"vb2api_normal_boot() reboot to reset NVRAM diag request");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
-		"  diag request reset");}
+		"  diag request reset");
+}
 
 int main(int argc, char* argv[])
 {
