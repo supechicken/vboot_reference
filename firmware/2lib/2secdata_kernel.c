@@ -11,7 +11,6 @@
 #include "2secdata.h"
 #include "2secdata_struct.h"
 #include "2sysincludes.h"
-#include "vboot_test.h"
 
 #define MAJOR_VER(x) (((x) & 0xf0) >> 4)
 #define MINOR_VER(x) ((x) & 0x0f)

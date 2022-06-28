@@ -714,7 +714,6 @@ TEST_NAMES = \
 	tests/gpt_misc_tests \
 	tests/sha_benchmark \
 	tests/subprocess_tests \
-	tests/vboot_api_kernel4_tests \
 	tests/vboot_api_kernel_tests \
 	tests/vboot_kernel_tests \
 	tests/vboot_kernel2_tests \
@@ -749,6 +748,7 @@ TEST2X_NAMES = \
 	tests/vb2_host_nvdata_flashrom_tests \
 	tests/vb2_kernel_tests \
 	tests/vb2_misc_tests \
+	tests/vb2_misc2_tests \
 	tests/vb2_nvstorage_tests \
 	tests/vb2_rsa_utility_tests \
 	tests/vb2_recovery_reasons_tests \
@@ -1285,7 +1285,6 @@ ifeq ($(filter-out 0,${MOCK_TPM})$(filter-out 0,${TPM2_MODE}),)
 # tlcl_tests only works when MOCK_TPM is disabled
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 endif
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel4_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel2_tests
@@ -1304,6 +1303,7 @@ run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_host_key_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc2_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_rsa_utility_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_firmware_tests
