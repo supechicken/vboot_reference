@@ -225,9 +225,14 @@ uint8_t *vb2_secdata_fwmp_get_dev_key_hash(struct vb2_context *ctx);
  */
 static inline int vb2_hwcrypto_allowed(struct vb2_context *ctx)
 {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	/* disable hwcrypto in recovery mode */
 	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE)
+		return 0;
+
+	/* disable hwcrypto if secdata isn't initialized */
+	if (!(sd->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT))
 		return 0;
 
 	/* enable hwcrypto only if RW firmware set the flag */
