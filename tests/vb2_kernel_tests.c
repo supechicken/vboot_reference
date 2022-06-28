@@ -24,6 +24,7 @@ static struct vb2_shared_data *sd;
 static struct vb2_fw_preamble *fwpre;
 static const char fw_kernel_key_data[36] = "Test kernel key data";
 static enum vb2_boot_mode *boot_mode;
+static VbSelectAndLoadKernelParams kparams;
 
 /* Mocked function data */
 
@@ -38,10 +39,13 @@ static int mock_secdata_fwmp_check_retval;
 static int mock_vbtlk_expect_fixed;
 static int mock_vbtlk_expect_removable;
 static vb2_error_t mock_vbtlk_retval;
+static int mock_commit_data_called;
 
 /* Type of test to reset for */
 enum reset_type {
 	FOR_PHASE1,
+	FOR_PHASE2,
+	FOR_FINALIZE,
 	FOR_NORMAL_BOOT,
 };
 
@@ -51,6 +55,8 @@ static void reset_common_data(enum reset_type t)
 
 	memset(workbuf, 0xaa, sizeof(workbuf));
 
+	memset(&kparams, 0, sizeof(kparams));
+
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
 
@@ -59,7 +65,8 @@ static void reset_common_data(enum reset_type t)
 
 	vb2api_secdata_kernel_create(ctx);
 	vb2_secdata_kernel_init(ctx);
-	vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_VERSIONS, 0x20002);
+	vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_VERSIONS,
+			       0x20002);
 
 	mock_read_res_fail_on_call = 0;
 	mock_secdata_fwmp_check_retval = VB2_SUCCESS;
@@ -107,6 +114,8 @@ static void reset_common_data(enum reset_type t)
 		sd->preamble_size = sizeof(*fwpre) + k->key_size;
 		vb2_set_workbuf_used(ctx,
 				     sd->preamble_offset + sd->preamble_size);
+	} else if (t == FOR_PHASE2) {
+		mock_commit_data_called = 0;
 	}
 };
 
@@ -115,6 +124,11 @@ static void reset_common_data(enum reset_type t)
 vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *c, uint8_t *size)
 {
 	return mock_secdata_fwmp_check_retval;
+}
+
+const uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *c)
+{
+	return NULL;
 }
 
 struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *c)
@@ -148,7 +162,14 @@ vb2_error_t vb2ex_read_resource(struct vb2_context *c,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
+vb2_error_t vb2ex_commit_data(struct vb2_context *c)
+{
+	mock_commit_data_called = 1;
+	return VB2_SUCCESS;
+}
+
+vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags,
+			    VbSelectAndLoadKernelParams *kpa)
 {
 	/*
 	 * TODO: Currently we don't have a good way of testing for an ordered
@@ -304,36 +325,174 @@ static void phase1_tests(void)
 		"phase1 fw preamble");
 }
 
+static void phase2_tests(void)
+{
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_NORMAL;
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Normal boot");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_DEVELOPER;
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Developer mode");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_DIAGNOSTICS;
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Diagnostics mode");
+
+	/* Commit data for recovery mode */
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Manual recovery mode");
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Commit data");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_BROKEN_SCREEN;
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Broken screen mode");
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Commit data");
+
+	/* Check EC sync toggling */
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_NORMAL;
+	ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
+	mock_gbb.h.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "EC sync disabled by GBB");
+	TEST_NEQ(sd->status & VB2_SD_STATUS_EC_SYNC_COMPLETE, 0,
+		 "  EC sync complete");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_NORMAL;
+	ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
+	TEST_EQ(vb2api_kernel_phase2(ctx), 0, "Normal with EC sync");
+	TEST_NEQ(sd->status & VB2_SD_STATUS_EC_SYNC_COMPLETE, 0,
+		 "  EC sync complete");
+
+	/* Boot recovery - memory retraining */
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
+	sd->recovery_reason = VB2_RECOVERY_TRAIN_AND_REBOOT;
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_REQUEST_REBOOT, "Recovery train"
+		" and reboot");
+
+	/* Clear VB2_NV_DIAG_REQUEST */
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_NORMAL;
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_SUCCESS, "Normal boot");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
+		"CLear VB2_NV_DIAG_REQUEST");
+	TEST_EQ(mock_commit_data_called, 1, "Commit data");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_DEVELOPER;
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_SUCCESS, "Developer mode");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
+		"CLear VB2_NV_DIAG_REQUEST");
+	TEST_EQ(mock_commit_data_called, 1, "Commit data");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_DIAGNOSTICS;
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_SUCCESS, "Diagnostics mode");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
+		"CLear VB2_NV_DIAG_REQUEST");
+	TEST_EQ(mock_commit_data_called, 1, "Commit data");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_SUCCESS, "Manual recovery mode");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
+		"CLear VB2_NV_DIAG_REQUEST");
+	TEST_EQ(mock_commit_data_called, 1, "Commit data");
+
+	reset_common_data(FOR_PHASE2);
+	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
+	*boot_mode = VB2_BOOT_MODE_BROKEN_SCREEN;
+	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_SUCCESS, "Broken screen mode");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
+		"CLear VB2_NV_DIAG_REQUEST");
+	TEST_EQ(mock_commit_data_called, 1, "Commit data");
+}
+
+static void finalize_tests(void)
+{
+	/* Recovery - VB2_ERROR_ESCAPE_NO_BOOT */
+	reset_common_data(FOR_FINALIZE);
+	ctx->flags |= VB2_CONTEXT_NO_BOOT;
+	ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
+	TEST_EQ(vb2api_kernel_finalize(ctx), VB2_ERROR_ESCAPE_NO_BOOT,
+		"Recovery for NO_BOOT escape");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
+		VB2_RECOVERY_ESCAPE_NO_BOOT, "Incorrect recovery_reason");
+
+	/* Boot normal with DISABLE_EC_SOFTWARE_SYNC */
+	reset_common_data(FOR_FINALIZE);
+	ctx->flags |= VB2_CONTEXT_NO_BOOT;
+	ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
+	mock_gbb.h.flags |= VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC;
+	TEST_EQ(vb2api_kernel_finalize(ctx), VB2_SUCCESS,
+		"DISABLE_EC_SOFTWARE_SYNC ignores NO_BOOT");
+
+	/* Boot normal without VB2_CONTEXT_NO_BOOT */
+	reset_common_data(FOR_FINALIZE);
+	ctx->flags |= VB2_CONTEXT_EC_SYNC_SUPPORTED;
+	TEST_EQ(vb2api_kernel_finalize(ctx), VB2_SUCCESS,
+		"Disable VB2_CONTEXT_NO_BOOT");
+
+	/* Boot normal without VB2_CONTEXT_EC_SYNC_SUPPORTED */
+	reset_common_data(FOR_FINALIZE);
+	ctx->flags |= VB2_CONTEXT_NO_BOOT;
+	TEST_EQ(vb2api_kernel_finalize(ctx), VB2_SUCCESS,
+		"Disable VB2_CONTEXT_EC_SYNC_SUPPORTED");
+}
+
 static void normal_boot_tests(void)
 {
 	reset_common_data(FOR_NORMAL_BOOT);
 	mock_vbtlk_expect_fixed = 1;
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_SUCCESS,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_SUCCESS,
 		"vb2api_normal_boot() returns VB2_SUCCESS");
 
 	reset_common_data(FOR_NORMAL_BOOT);
 	mock_vbtlk_expect_fixed = 1;
 	mock_vbtlk_retval = VB2_ERROR_MOCK;
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_ERROR_MOCK,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_ERROR_MOCK,
 		"vb2api_normal_boot() returns VB2_ERROR_MOCK");
 
 	reset_common_data(FOR_NORMAL_BOOT);
 	vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_REQUEST_REBOOT,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_REQUEST_REBOOT,
 		"vb2api_normal_boot() reboot to reset NVRAM display request");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
 		"  display request reset");
 
 	reset_common_data(FOR_NORMAL_BOOT);
 	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
-	TEST_EQ(vb2api_normal_boot(ctx), VB2_REQUEST_REBOOT,
+	TEST_EQ(vb2api_normal_boot(ctx, &kparams), VB2_REQUEST_REBOOT,
 		"vb2api_normal_boot() reboot to reset NVRAM diag request");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
-		"  diag request reset");}
+		"  diag request reset");
+}
 
 int main(int argc, char* argv[])
 {
 	phase1_tests();
+	phase2_tests();
+	finalize_tests();
 	normal_boot_tests();
 
 	return gTestSuccess ? 0 : 255;
