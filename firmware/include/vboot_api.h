@@ -85,9 +85,11 @@ vb2_error_t VbSelectAndLoadKernel(struct vb2_context *ctx,
  *
  * @param ctx			Vboot context
  * @param disk_flags		Flags to pass to VbExDiskGetInfo()
+ * @param kparams               Params specific to loading the kernel
  * @return VB2_SUCCESS or the most specific VB2_ERROR_LK error.
  */
-vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags);
+vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags,
+			    VbSelectAndLoadKernelParams *kparams);
 
 /* miniOS flags */
 
@@ -106,10 +108,12 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags);
  *
  * @param ctx			Vboot context
  * @param minios_flags		Flags for miniOS
+ * @param kparams               Params specific to loading the kernel
  * @return VB2_SUCCESS or the most specific VB2_ERROR_LK error.
  */
 vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx,
-				  uint32_t minios_flags);
+				  uint32_t minios_flags,
+				  VbSelectAndLoadKernelParams *kparams);
 
 /*****************************************************************************/
 /* Disk access (previously in boot_device.h) */
