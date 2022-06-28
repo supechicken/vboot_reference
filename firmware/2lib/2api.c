@@ -16,6 +16,51 @@
 #include "2sysincludes.h"
 #include "2tpm_bootmode.h"
 
+vb2_error_t vb2api_inject_kernel_subkey(
+			   struct vb2_context *ctx,
+			   const uint8_t *kernel_packed_key_data,
+			   uint32_t kernel_packed_key_data_size) {
+	struct vb2_shared_data *sd;
+	struct vb2_workbuf wb;
+	struct vb2_packed_key *kernel_packed_key;
+	uint32_t kernel_packed_key_size;
+	void *dst_packed_key;
+
+	sd = vb2_get_sd(ctx);
+	vb2_workbuf_from_ctx(ctx, &wb);
+
+	/* Make sure passed buffer is big enough for the packed key. */
+	kernel_packed_key = (struct vb2_packed_key *)kernel_packed_key_data;
+	VB2_TRY(vb2_verify_packed_key_inside(kernel_packed_key_data,
+				      kernel_packed_key_data_size,
+				      kernel_packed_key));
+
+	/* Allocate space in the workbuf in which to copy the key. */
+	kernel_packed_key_size =
+		kernel_packed_key->key_offset + kernel_packed_key->key_size;
+	dst_packed_key = vb2_workbuf_alloc(&wb, kernel_packed_key_size);
+	if (!dst_packed_key)
+		return VB2_ERROR_WORKBUF_SMALL;
+
+	/* Copy the packed key data into the workbuf. */
+	memcpy(dst_packed_key, kernel_packed_key_data, kernel_packed_key_size);
+
+	/* Set the location of the kernel key data in the context. */
+	sd->kernel_key_offset = vb2_offset_of(sd, dst_packed_key);
+	sd->kernel_key_size = kernel_packed_key_size;
+
+	vb2_set_workbuf_used(ctx, sd->kernel_key_offset +
+				      kernel_packed_key_size);
+
+	/* Initialize other parts of the context. */
+	vb2_nv_init(ctx);
+	vb2api_secdata_kernel_create(ctx);
+	VB2_TRY(vb2_secdata_kernel_init(ctx));
+	vb2_set_boot_mode(ctx);
+
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2api_fw_phase1(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
