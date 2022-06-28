@@ -12,6 +12,5 @@
  * vboot_api_kernel.c */
 
 struct VbSelectAndLoadKernelParams;
-struct VbSelectAndLoadKernelParams **VbApiKernelGetParamsPtr(void);
 
 #endif  /* VBOOT_REFERENCE_TEST_API_H_ */
