@@ -187,7 +187,7 @@ void vb2_clear_recovery(struct vb2_context *ctx);
  * Fill VB2_CONTEXT_DEV_BOOT_ALLOWED, VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED and
  * VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED flags in ctx->flags.
  *
- * @param ctx		Vboot context.
+ * @param ctx		Vboot context
  */
 void vb2_fill_dev_boot_flags(struct vb2_context *ctx);
 
@@ -202,8 +202,7 @@ void vb2_fill_dev_boot_flags(struct vb2_context *ctx);
  * the following steps should directly access ctx->boot_mode to retrieve the
  * most relevant boot mode.
  *
- * @param ctx		Vboot context.
+ * @param ctx		Vboot context
  */
 void vb2_set_boot_mode(struct vb2_context *ctx);
-
 #endif  /* VBOOT_REFERENCE_2MISC_H_ */
