@@ -11,7 +11,6 @@
 #include "2secdata.h"
 #include "2secdata_struct.h"
 #include "2sysincludes.h"
-#include "vboot_test.h"
 
 #define MAJOR_VER(x) (((x) & 0xf0) >> 4)
 #define MINOR_VER(x) ((x) & 0x0f)
@@ -273,6 +272,7 @@ void vb2_secdata_kernel_set(struct vb2_context *ctx,
 	VB2_REC_OR_DIE(ctx, "%s\n", msg);
 }
 
+test_mockable
 const uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
