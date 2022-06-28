@@ -28,6 +28,7 @@
 #include "2return_codes.h"
 #include "2rsa.h"
 #include "2secdata_struct.h"
+#include "vboot_api.h"
 
 #define _VB2_TRY_IMPL(expr, ctx, recovery_reason, ...) do { \
 	vb2_error_t _vb2_try_rv = (expr); \
@@ -165,14 +166,14 @@ enum vb2_context_flags {
 
 	/*
 	 * System supports EC software sync.  Caller may set this flag at any
-	 * time before calling VbSelectAndLoadKernel().
+	 * time before calling vb2api_kernel_phase2().
 	 */
 	VB2_CONTEXT_EC_SYNC_SUPPORTED = (1 << 15),
 
 	/*
 	 * EC software sync is slow to update; warning screen should be
 	 * displayed.  Caller may set this flag at any time before calling
-	 * VbSelectAndLoadKernel().  Deprecated as part of chromium:1038259.
+	 * vb2api_kernel_phase2().  Deprecated as part of chromium:1038259.
 	 */
 	VB2_CONTEXT_DEPRECATED_EC_SYNC_SLOW = (1 << 16),
 
@@ -834,7 +835,8 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx);
  * @param ctx		Vboot context.
  * @return VB2_SUCCESS, or error code on error.
  */
-vb2_error_t vb2api_normal_boot(struct vb2_context *ctx);
+vb2_error_t vb2api_normal_boot(struct vb2_context *ctx,
+			       VbSelectAndLoadKernelParams *kparams);
 
 /**
  * Finalize for kernel verification stage.
