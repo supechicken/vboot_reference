@@ -264,6 +264,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6a2e916_e6ab4eaa",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-28T22:17:49Z",
+      "side": 1,
+      "message": "I don\u0027t really understand... when you just clear it unconditionally in vb2api_kernel_phase2(), VbSelectAndLoadKernel() should still return REBOOT when the boot_mode is DIAGNOSTIC? The boot mode is fixed at this point, clearing the nvdata flag won\u0027t change it anymore (for this boot).",
+      "parentUuid": "947262b1_817bb673",
+      "range": {
+        "startLine": 282,
+        "startChar": 18,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce0126b5_5cb8e9ac",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 2
