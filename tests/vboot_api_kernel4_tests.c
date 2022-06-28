@@ -17,7 +17,6 @@
 #include "tlcl.h"
 #include "tss_constants.h"
 #include "vboot_struct.h"
-#include "vboot_test.h"
 
 /* Mock data */
 
@@ -25,7 +24,7 @@ static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
-static VbSelectAndLoadKernelParams kparams;
+static VbSelectAndLoadKernelParams test_kparams;
 static struct vb2_gbb_header gbb;
 
 static uint32_t kernel_version;
@@ -42,7 +41,7 @@ static int mock_diagnostic_ui_enabled;
 
 static void reset_common_data(void)
 {
-	memset(&kparams, 0, sizeof(kparams));
+	memset(&test_kparams, 0, sizeof(test_kparams));
 
 	memset(&gbb, 0, sizeof(gbb));
 	gbb.major_version = VB2_GBB_MAJOR_VER;
@@ -83,7 +82,7 @@ static void test_slk(vb2_error_t retval, int recovery_reason, const char *desc)
 	/* The VbSelectAndLoadKernel directly leverages the value at
 	   ctx->boot_mode, so we have to call vb2_set_boot_mode first. */
 	vb2_set_boot_mode(ctx);
-	TEST_EQ(VbSelectAndLoadKernel(ctx, &kparams), retval, desc);
+	TEST_EQ(VbSelectAndLoadKernel(ctx, &test_kparams), retval, desc);
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		recovery_reason, "  recovery reason");
 }
@@ -121,7 +120,8 @@ void vb2_secdata_kernel_set(struct vb2_context *c,
 	kernel_version = value;
 }
 
-vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags)
+vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags,
+			    VbSelectAndLoadKernelParams *kparams)
 {
 	sd->kernel_version = new_version;
 
