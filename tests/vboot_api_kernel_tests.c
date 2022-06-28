@@ -453,7 +453,6 @@ static void ResetMocks(test_case_t *test_case)
 		  "vb2api_init failed");
 
 	memset(&kparams, 0, sizeof(VbSelectAndLoadKernelParams));
-	*VbApiKernelGetParamsPtr() = &kparams;
 
 
 	memset(&mock_disks, 0, sizeof(mock_disks));
@@ -591,7 +590,7 @@ static void VbTryLoadKernelTest(void)
 		printf("Test case: %s ...\n", normal_tests[i].name);
 		ResetMocks(&normal_tests[i]);
 		ctx->flags = t->ctx_flags;
-		TEST_EQ(VbTryLoadKernel(ctx, t->want_flags),
+		TEST_EQ(VbTryLoadKernel(ctx, t->want_flags, &kparams),
 			t->expected_return_val, "  return value");
 		TEST_EQ(got_recovery_request_val,
 			t->expected_recovery_request_val, "  recovery_request");
@@ -618,7 +617,7 @@ static void VbTryLoadMiniOsKernelTest(void)
 		printf("Test case: %s ...\n", minios_tests[i].name);
 		ResetMocks(&minios_tests[i]);
 		ctx->flags = t->ctx_flags;
-		TEST_EQ(VbTryLoadMiniOsKernel(ctx, 0),
+		TEST_EQ(VbTryLoadMiniOsKernel(ctx, 0, &kparams),
 			t->expected_return_val, "  return value");
 		TEST_EQ(got_recovery_request_val,
 			t->expected_recovery_request_val, "  recovery_request");
