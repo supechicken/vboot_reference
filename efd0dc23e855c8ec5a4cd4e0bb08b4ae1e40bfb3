@@ -16,6 +16,24 @@
       "message": "Julius, what\u0027s the reason to reboot here (and below for `VB2_NV_DIAG_REQUEST`)? Why can\u0027t we just unset these flags and commit nvdata?\n\nIf `VB2_NV_DIAG_REQUEST` has been cleared in `VbSelectAndLoadKernel()`, then we\u0027d always get `VB2_NV_DIAG_REQUEST\u003d0` here.",
       "revId": "efd0dc23e855c8ec5a4cd4e0bb08b4ae1e40bfb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8fe8a0_8841f806",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-06-29T02:19:22Z",
+      "side": 1,
+      "message": "The goal is to not boot in normal mode when the firmware initialized the display. This mostly used to be important back in the day when x86 devices still ran a vendor OPROM for firmware display initialization (a blob we didn\u0027t want to trust that much). Nowadays I\u0027m not sure if any recent platform actually does that anymore. I honestly can\u0027t quite remember if we already decided to deprecate this rule or not, but seeing as this code is still here I guess we didn\u0027t, so this still applies -- booting in secure mode and intentionally turning on the display should be mutually exclusive (in practice, I think the only way this can matter anyway is when a platform that selects MUST_REQUEST_DISPLAY in coreboot goes through TCPC software sync in normal mode). See crbug.com/948529 and https://docs.google.com/document/d/1E2qSock8s2FkyXTuEDqcc54qD-PQqT9BPFStdlo1Sxs for some background.\n\nFor the DIAG part, this was written before ctx-\u003eboot_mode and the DIAGNOSTIC_UI_DISABLED secdata flag were introduced. So I think we could resolve the concern here if we just rearranged that stuff a little to make more sense with what we have now. Basically, the problem is that the test that sets VB2_CONTEXT_DISPLAY_INIT in vb2api_fw_phase1() just checks the DIAG_REQUEST flag without checking DIAGNOSTIC_UI_DISABLED, while vb2_set_boot_mode() does. The solution would be to rearrange the two so that one depends on the other rather than them both trying to decide the same thing independently in a way that can get out of sync: we should move set_boot_mode() up to happen first, and then the display init check can just change to\n\n    if (vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST) ||\n        ctx-\u003eboot_mode !\u003d VB2_BOOT_MODE_NORMAL)\n      ctx-\u003eflags |\u003d VB2_CONTEXT_DISPLAY_INIT;\n\nand then, I believe, we can stop worrying about the DIAG_REQUEST flag here.",
+      "parentUuid": "15408736_1f489b4b",
+      "revId": "efd0dc23e855c8ec5a4cd4e0bb08b4ae1e40bfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
