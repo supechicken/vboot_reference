@@ -52,6 +52,24 @@
       "parentUuid": "6b8fe8a0_8841f806",
       "revId": "efd0dc23e855c8ec5a4cd4e0bb08b4ae1e40bfb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2c48ff_a4e89403",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-06-29T03:29:52Z",
+      "side": 1,
+      "message": "I\u0027ll take care of this in the next CL.",
+      "parentUuid": "2cf10695_baef3d23",
+      "revId": "efd0dc23e855c8ec5a4cd4e0bb08b4ae1e40bfb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
