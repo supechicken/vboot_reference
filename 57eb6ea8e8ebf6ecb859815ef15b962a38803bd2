@@ -22,6 +22,30 @@
       },
       "revId": "57eb6ea8e8ebf6ecb859815ef15b962a38803bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0babbc_57acde0a",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-29T01:59:07Z",
+      "side": 1,
+      "message": "Actually, this function already calls depthcharge `vb2ex_ec_battery_cutoff`. If the point is to let depthcharge decide whether to do it, we can change the return value of `vb2ex_ec_battery_cutoff` to `VB2_REQUEST_SHUTDOWN`, and write `VB2_TRY(vb2ex_ec_battery_cutoff())` here. Then depthcharge can decide whether to make `vb2ex_ec_battery_cutoff` a no-op.",
+      "parentUuid": "cf523dba_ad376bc5",
+      "range": {
+        "startLine": 200,
+        "startChar": 19,
+        "endLine": 200,
+        "endChar": 40
+      },
+      "revId": "57eb6ea8e8ebf6ecb859815ef15b962a38803bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

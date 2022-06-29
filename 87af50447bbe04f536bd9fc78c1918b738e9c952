@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7ecfa9d_41a0128d",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-06-29T01:59:07Z",
+      "side": 1,
+      "message": "We\u0027re talking about the normal mode situation (where `VB2_NV_DIAG_REQUEST` is set but `vb2api_diagnostic_ui_enabled()` is 0). The question is, since this results in a normal boot (with `VB2_NV_DIAG_REQUEST` set), do we want to reboot?\n\nThe previous behavior is to reboot (from `vb2_reset_nv_requests()`). However, if `VB2_NV_DIAG_REQUEST` is cleared in here, then `vb2_reset_nv_requests()` won\u0027t get `VB2_NV_DIAG_REQUEST \u003d\u003d 1` and hence the reboot won\u0027t occur.\n\nBTW, I\u0027m not sure about the purpose of `vb2_reset_nv_requests()`. Maybe you can explain to me.",
+      "parentUuid": "e6a2e916_e6ab4eaa",
+      "range": {
+        "startLine": 282,
+        "startChar": 18,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "87af50447bbe04f536bd9fc78c1918b738e9c952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce0126b5_5cb8e9ac",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 2
