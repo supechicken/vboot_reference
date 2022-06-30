@@ -365,3 +365,24 @@ int vb2api_check_hash(struct vb2_context *ctx)
 {
 	return vb2api_check_hash_get_digest(ctx, NULL, 0);
 }
+
+uint16_t vb2api_get_fw_boot_info(struct vb2_context *ctx)
+{
+	union vb2_fw_boot_info info;
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	info.tries = vb2_nv_get(ctx, VB2_NV_TRY_COUNT);
+	info.slot = sd->fw_slot;
+	info.prev_slot = sd->last_fw_slot;
+	info.prev_result = sd->last_fw_result;
+	info.boot_mode = ctx->boot_mode;
+
+	VB2_DEBUG("boot_mode=%s fw_tried=%s fw_try_count=%d "
+		  "fw_prev_tried=%s fw_prev_result=%s.\n",
+		  vb2api_boot_mode_string(info.boot_mode),
+		  vb2api_slot_string(info.slot), info.tries,
+		  vb2api_slot_string(info.prev_slot),
+		  vb2api_result_string(info.prev_result));
+
+	return info.data;
+}
