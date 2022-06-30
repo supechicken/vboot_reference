@@ -317,6 +317,15 @@ enum vb2_boot_mode {
 	VB2_BOOT_MODE_NORMAL = 5,
 };
 
+/* Firmware slot codes */
+enum vb2_fw_slot {
+	/* Slot A */
+	VB2_FW_SLOT_A = 0,
+
+	/* Slot B */
+	VB2_FW_SLOT_B = 1,
+};
+
 /* Firmware result codes for VB2_NV_FW_RESULT and VB2_NV_FW_PREV_RESULT */
 enum vb2_fw_result {
 	/* Unknown */
@@ -1564,5 +1573,24 @@ uint32_t vb2ex_mtime(void);
  * @param msec			Duration in milliseconds.
  */
 void vb2ex_msleep(uint32_t msec);
+
+union vb2_slot_info {
+	uint8_t data;
+	struct {
+		uint8_t tries       : 4;
+		uint8_t slot        : 1;
+		uint8_t prev_slot   : 1;
+		uint8_t prev_result : 2;
+	};
+};
+
+/**
+ * Return a byte that represents `slot_info` that can be used to log information
+ * about the current boot in a compact format.
+ *
+ * @param ctx          Vboot context
+ * @return filled out slot info byte.
+ */
+uint8_t vb2api_get_slot_info(struct vb2_context *ctx);
 
 #endif  /* VBOOT_REFERENCE_2API_H_ */
