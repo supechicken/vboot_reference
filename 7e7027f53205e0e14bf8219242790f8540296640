@@ -33,6 +33,24 @@
       "message": "+Yu-Ping to help review and brainstorm design\n\nGenerally I think the code looks good for what you\u0027re trying to do. (The function name is a bit of a mouthful... maybe vb2api_inject_kernel_subkey() or something like that?)\n\nI\u0027m a bit worried about what other kinds of state our code might expect that you haven\u0027t set up here, and how that could affect things. For example, LoadKernel() does check ctx-\u003eboot_mode in various places, and you\u0027d be running around with BOOT_MODE_UNDEFINED here (which happens to not match any of the things it tests for but is probably still not a good idea). It also accesses nvdata and secdata which you wouldn\u0027t have had initialized here... shouldn\u0027t that be generating an abort for you? Or are you calling vb2_nv_init() and vb2_secdata_..._init() manually before calling this (those are not vb2api_ functions so they\u0027re not really meant for outside callers)?\n\nI think this probably needs to become a little bigger and initialize all those parts of the context and shared data to valid values for your use case. And then we\u0027ll need to come up with a good way to not accidentally break it in the future (lots of unit tests, probably).",
       "revId": "7e7027f53205e0e14bf8219242790f8540296640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7cadf4_593c4c86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-06-30T14:34:30Z",
+      "side": 1,
+      "message": "Thanks for the review, and agreed the current name is a bit long.\n\nRegarding initialization of other state, I\u0027m not currently calling vb2_nv_init or vb2_secdata*init. I\u0027m only calling vb2api_init, this new function, and LoadKernel, and it succeeds. (The changes I made in tests/verify_kernel.c validate this; the tests still pass.) I\u0027m not sure why it works, maybe some of the other initialization is getting called implicitly by LoadKernel? At any rate, I\u0027ll update the CL to add more explicit initialization.",
+      "parentUuid": "17f81f8b_c4746383",
+      "revId": "7e7027f53205e0e14bf8219242790f8540296640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
