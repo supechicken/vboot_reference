@@ -370,3 +370,21 @@ int vb2api_check_hash(struct vb2_context *ctx)
 {
 	return vb2api_check_hash_get_digest(ctx, NULL, 0);
 }
+
+uint8_t vb2api_get_slot_info(struct vb2_context *ctx)
+{
+	union vb2_slot_info sinfo;
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	sinfo.tries = vb2_nv_get(ctx, VB2_NV_TRY_COUNT);
+	sinfo.slot = sd->fw_slot;
+	sinfo.prev_slot = sd->last_fw_slot;
+	sinfo.prev_result = sd->last_fw_result;
+
+	VB2_DEBUG("Get slot info: fw_tried=%s fw_try_count=%d fw_prev_tried=%s"
+		  " fw_prev_result=%s.\n", vb2_slot_string(sinfo.slot), sinfo.tries,
+		  vb2_slot_string(sinfo.prev_slot),
+		  vb2_result_string(sinfo.prev_result));
+
+	return sinfo.data;
+}
