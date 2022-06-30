@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f26cccc_6c504f22",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-06-30T10:27:27Z",
+      "side": 1,
+      "message": "Should we set vbboot_retval \u003d -1; and test if booting to normal mode now?",
+      "revId": "5c57fca98f8ab1d44437d1e032ebe7a37c41b80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
