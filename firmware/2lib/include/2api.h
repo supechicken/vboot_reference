@@ -317,6 +317,15 @@ enum vb2_boot_mode {
 	VB2_BOOT_MODE_NORMAL = 5,
 };
 
+/* Firmware slot codes */
+enum vb2_fw_slot {
+	/* Slot A */
+	VB2_FW_SLOT_A = 0,
+
+	/* Slot B */
+	VB2_FW_SLOT_B = 1,
+};
+
 /* Firmware result codes for VB2_NV_FW_RESULT and VB2_NV_FW_PREV_RESULT */
 enum vb2_fw_result {
 	/* Unknown */
@@ -1564,5 +1573,92 @@ uint32_t vb2ex_mtime(void);
  * @param msec			Duration in milliseconds.
  */
 void vb2ex_msleep(uint32_t msec);
+
+union vb2_fw_boot_info {
+	uint16_t data;
+	struct {
+		uint16_t tries       : 4;
+		uint16_t slot        : 1;
+		uint16_t prev_slot   : 1;
+		uint16_t prev_result : 2;
+		uint16_t boot_mode   : 3;
+		uint16_t reserved    : 5;
+	};
+};
+
+/**
+ * Return a byte that represents `vb2_fw_boot_info` and can be used
+ * to log information about the current boot in a compact format.
+ *
+ * Note: Only call this API at minimum after `vb2api_fw_phase2` function
+ * returns.
+ *
+ * @param ctx          Vboot context
+ * @return filled out vb2 info word (as per `union vb2_info`).
+ */
+uint16_t vb2api_get_vboot_info(struct vb2_context *ctx);
+
+/**
+ * Convert Firmware Boot Mode into supported string
+ *
+ * @return char*   firmware boot mode string
+ */
+static inline const char *vb2api_boot_mode_string(uint8_t boot_mode)
+{
+	switch ((enum vb2_boot_mode)boot_mode) {
+	/* 0x00 */ case VB2_BOOT_MODE_UNDEFINED:
+		return "Undefined";
+	/* 0x01 */ case VB2_BOOT_MODE_MANUAL_RECOVERY:
+		return "Manual recovery boot";
+	/* 0x02 */ case VB2_BOOT_MODE_BROKEN_SCREEN:
+		return "Broken screen";
+	/* 0x03 */ case VB2_BOOT_MODE_DIAGNOSTICS:
+		return "Diagnostic boot";
+	/* 0x04 */ case VB2_BOOT_MODE_DEVELOPER:
+		return "Developer boot";
+	/* 0x05 */ case VB2_BOOT_MODE_NORMAL:
+		return "Normal boot";
+	}
+
+	return "Unknown boot mode";
+}
+
+/**
+ * Convert Firmware Slot result into supported string
+ *
+ * @return char*   firmware slot result string
+ */
+static inline const char *vb2api_result_string(uint8_t result)
+{
+	switch ((enum vb2_fw_result)result) {
+	/* 0x00 */ case VB2_FW_RESULT_UNKNOWN:
+		return "Unknown";
+	/* 0x01 */ case VB2_FW_RESULT_TRYING:
+		return "Trying";
+	/* 0x02 */ case VB2_FW_RESULT_SUCCESS:
+		return "Success";
+	/* 0x03 */ case VB2_FW_RESULT_FAILURE:
+		return "Failure";
+	}
+
+	return "Unknown result type";
+}
+
+/**
+ * Convert Firmware Slot into supported string
+ *
+ * @return char*   firmware slot name string
+ */
+static inline const char *vb2api_slot_string(uint8_t slot)
+{
+	switch ((enum vb2_fw_slot)slot) {
+	/* 0x00 */ case VB2_FW_SLOT_A:
+		return "A";
+	/* 0x01 */ case VB2_FW_SLOT_B:
+		return "B";
+	}
+
+	return "Unknown slot type";
+}
 
 #endif  /* VBOOT_REFERENCE_2API_H_ */
