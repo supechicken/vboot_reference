@@ -242,6 +242,22 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx)
 	 */
 	vb2_clear_recovery(ctx);
 
+	/*
+	 * Clear the diagnostic request flag and commit nvdata to prevent
+	 * booting back into diagnostic mode when a forced system reset occurs.
+	 */
+	if (vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
+		/*
+		 * According to current FAFT desig, we need an AP reset after
+		 * MiniDiag test items to preserve the CBMEM console logs. So
+		 * we need to commit nvdata immediately to prevent the reboot
+		 * loop of VB2_BOOT_MODE_DIAGNOSTICS in FAFT:
+		 * firmware_MiniDiag.
+		 */
+		vb2ex_commit_data(ctx);
+	}
+
 	/* Select boot path */
 	switch (ctx->boot_mode) {
 	case VB2_BOOT_MODE_MANUAL_RECOVERY:
@@ -260,14 +276,6 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx)
 		vb2ex_commit_data(ctx);
 		break;
 	case VB2_BOOT_MODE_DIAGNOSTICS:
-		/*
-		 * Need to clear the request flag and commit nvdata changes
-		 * immediately to avoid booting back into diagnostic tool when a
-		 * forced system reset occurs.
-		 */
-		vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 0);
-		vb2ex_commit_data(ctx);
-		break;
 	case VB2_BOOT_MODE_DEVELOPER:
 	case VB2_BOOT_MODE_NORMAL:
 		break;
