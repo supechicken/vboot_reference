@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb905668_af663a10",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1601,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-01T22:12:00Z",
+      "side": 1,
+      "message": "Let\u0027s call these vb2_result_string() and vb2_slot_string(). Exported functions should have some namespacing.",
+      "revId": "e1bf31e8deb7d23eb847ee52eb3c1681ba1b6616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac29899a_3439cb8a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-01T22:12:00Z",
+      "side": 1,
+      "message": "Same here, there are only two bits per result so this shouldn\u0027t really be needed.",
+      "revId": "e1bf31e8deb7d23eb847ee52eb3c1681ba1b6616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e947c247_c264fbf6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1625,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-01T22:12:00Z",
+      "side": 1,
+      "message": "I would just return \"A\" or \"B\" from this decoder function, you can add the \"slot\" in elogtool if you want to (this makes it more flexible, e.g. for reuse in crossystem).",
+      "revId": "e1bf31e8deb7d23eb847ee52eb3c1681ba1b6616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd682332_abf1c4be",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-01T22:12:00Z",
+      "side": 1,
+      "message": "Since the slot field is already restricted to 1 bit I don\u0027t think this is necessary?",
+      "revId": "e1bf31e8deb7d23eb847ee52eb3c1681ba1b6616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
