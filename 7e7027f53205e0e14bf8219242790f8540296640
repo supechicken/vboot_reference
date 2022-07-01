@@ -51,6 +51,24 @@
       "parentUuid": "17f81f8b_c4746383",
       "revId": "7e7027f53205e0e14bf8219242790f8540296640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "484a6dfc_ab943dcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-01T01:12:32Z",
+      "side": 1,
+      "message": "Yeah, upon closer inspection it looks like all the nvdata and secdata accesses just happen to be guarded by checks you wouldn\u0027t pass (e.g. boot_mode \u003d\u003d DEVELOPER). Maybe then it\u0027s better to not initialize this after all (rather than \"initializing\" it with fake data)? That way we would at least notice quickly if the code is trying to depend on something that\u0027s not available in your case. Should have really good unit test coverage for your case then, though.\n\nWhat\u0027s your requirement for rollback protection and things like developer mode... do you need that at all? You should definitely be initializing the rollback version fields in vb2_shared_data, even if just to zero... because the code is using those. For boot_mode I\u0027m still not sure if it would make more sense to create a completely separate boot mode value for your case or reuse the most appropriate existing one.",
+      "parentUuid": "8c7cadf4_593c4c86",
+      "revId": "7e7027f53205e0e14bf8219242790f8540296640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
