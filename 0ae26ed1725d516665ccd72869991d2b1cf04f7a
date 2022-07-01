@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da18fc33_a7f3682c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-01T02:19:48Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "0ae26ed1725d516665ccd72869991d2b1cf04f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95907b70_76a0d307",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 1
@@ -14,6 +37,23 @@
       "writtenOn": "2022-06-30T22:06:30Z",
       "side": 1,
       "message": "I think you should export these (similar to vb2_get_recovery_reason_string()) and use them from elogtool, rather than duplicating the information there. (Also crossystem\u0027s VbGetSystemPropertyString() is doing the same translation, would be good to just unify all of these to the same source of truth for the strings.)",
+      "revId": "0ae26ed1725d516665ccd72869991d2b1cf04f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a8869c_6125fce8",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-01T02:19:48Z",
+      "side": 1,
+      "message": "Align with `\"Get slot ...`. Same for the 3 lines below.",
       "revId": "0ae26ed1725d516665ccd72869991d2b1cf04f7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
