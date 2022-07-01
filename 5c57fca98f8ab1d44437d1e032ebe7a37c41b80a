@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2a4aa10_5899770e",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-01T03:26:08Z",
+      "side": 1,
+      "message": "IIUC, the commit will happen only if we leave depthcharge normally.\n\nCurrently, we did not leave normally during FAFT (*1) because we want to preserve cbmem console log (*2) so changing this to one-line will result in failures of FAFT and we cannot change it now.\n\n(*1): https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/cros/faft/utils/menu_mode_switcher.py;l\u003d389\n(*2): b/190026346, but TBH I am not actively working on refining MiniDiag FAFT now...\n\n\n\nWhat about (a) adding an TODO(roccochen) to me now and let\u0027s see how to change the FAFT or (b) move the commit back to case DIAGNOSTICS",
+      "parentUuid": "ec4cf9f6_35b94888",
+      "revId": "5c57fca98f8ab1d44437d1e032ebe7a37c41b80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f26cccc_6c504f22",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 3
