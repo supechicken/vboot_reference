@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec4cf9f6_35b94888",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-01T00:59:16Z",
+      "side": 1,
+      "message": "I still don\u0027t think the commit needs to be here anymore? This can really just be a one liner, just set it to 0, no need to even read it first.",
+      "revId": "5c57fca98f8ab1d44437d1e032ebe7a37c41b80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f26cccc_6c504f22",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 3
