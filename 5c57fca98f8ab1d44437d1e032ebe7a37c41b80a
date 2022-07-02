@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c12ee5f_7adcc586",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-02T02:02:56Z",
+      "side": 1,
+      "message": "Ah, okay, that may be the reason then. IIRC the reason why FAFT doesn\u0027t properly shut down there is because you wanted to do the CBMEM console parsing when it comes back up, right? Did you actually end up doing that now?\n\nIf we leave this here for FAFT please put a comment explaining that, or I\u0027ll be asking again in a few years. ^^",
+      "parentUuid": "c2a4aa10_5899770e",
+      "revId": "5c57fca98f8ab1d44437d1e032ebe7a37c41b80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f26cccc_6c504f22",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 3
