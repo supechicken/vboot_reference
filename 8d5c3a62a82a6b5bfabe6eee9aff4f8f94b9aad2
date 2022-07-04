@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b233ab3c_68ef9bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-04T11:37:38Z",
+      "side": 1,
+      "message": "nits only\n\nNot start to review tests/vb2_misc2_tests.c yet",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce788b47_7ea77ad0",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-04T11:37:38Z",
+      "side": 1,
+      "message": "Put vb2_misc2_tests below vb2_misc_tests",
+      "range": {
+        "startLine": 750,
+        "startChar": 7,
+        "endLine": 750,
+        "endChar": 22
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ccf4040_ec19b8fd",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-04T11:37:38Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 1305,
+        "startChar": 31,
+        "endLine": 1305,
+        "endChar": 46
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe6a249_6d57e596",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-04T11:37:38Z",
+      "side": 1,
+      "message": "Add\n```\n@param kparams\t\tParams specific to loading the kernel\n```",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8aa035_0670cde7",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-04T11:37:38Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d265dfd_93f08d62",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-04T11:37:38Z",
+      "side": 1,
+      "message": "No strong opinion: do we want to stick to the vb2 test naming style, e.g. `mock_kparams`?",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
