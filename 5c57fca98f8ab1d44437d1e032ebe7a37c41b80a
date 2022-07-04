@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8076c21_84426d9b",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-04T03:20:52Z",
+      "side": 1,
+      "message": "\u003e IRC the reason why FAFT doesn\u0027t properly shut down there is because you wanted to do the CBMEM console parsing when it comes back up\n\nYes\n\n\u003e Did you actually end up doing that now?\n\nNo, and actually it is not a high priority task now.\n\n\u003e If we leave this here for FAFT please put a comment explaining that, or I\u0027ll be asking again in a few years. ^^\n\nSure, @yuanhsinte, please add some comments here (before commit data?)\n\n```\nAccording to current FAFT desig, we need an AP reset after MiniDiag test items to preserve the CBMEM console logs. So we need to commit nvdata immediately to prevent the reboot loop of VB2_BOOT_MODE_DIAGNOSTICS in FAFT: firmware_MiniDiag. \n```",
+      "parentUuid": "6c12ee5f_7adcc586",
+      "revId": "5c57fca98f8ab1d44437d1e032ebe7a37c41b80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f26cccc_6c504f22",
         "filename": "tests/vboot_api_kernel4_tests.c",
         "patchSetId": 3
