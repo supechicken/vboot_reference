@@ -84,8 +84,7 @@ try_arch () {
 
   # repack it the new way
   "${FUTILITY}" --debug sign \
-    --signprivate "${DEVKEYS}/kernel_data_key.vbprivk" \
-    --keyblock "${DEVKEYS}/kernel.keyblock" \
+    --keyset "${DEVKEYS}" \
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
@@ -106,8 +105,7 @@ try_arch () {
   # repack it the new way, in-place
   cp "${TMP}.blob2.${arch}" "${TMP}.blob5.${arch}"
   "${FUTILITY}" --debug sign \
-    --signprivate "${DEVKEYS}/kernel_data_key.vbprivk" \
-    --keyblock "${DEVKEYS}/kernel.keyblock" \
+    --keyset "${DEVKEYS}" \
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
@@ -194,8 +192,7 @@ try_arch () {
 
   # repack the new way
   "${FUTILITY}" --debug sign \
-    --signprivate "${DEVKEYS}/kernel_data_key.vbprivk" \
-    --keyblock "${DEVKEYS}/kernel.keyblock" \
+    --keyset "${DEVKEYS}" \
     --version 2 \
     --config "${TMP}.config2.txt" \
     --bootloader "${TMP}.bootloader2.bin" \
@@ -256,8 +253,7 @@ try_arch () {
   # repack it the new way, in-place
   cp "${TMP}.part1.${arch}" "${TMP}.part6.${arch}.new1"
   "${FUTILITY}" --debug sign \
-    --signprivate "${DEVKEYS}/kernel_data_key.vbprivk" \
-    --keyblock "${DEVKEYS}/kernel.keyblock" \
+    --keyset "${DEVKEYS}" \
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
@@ -280,8 +276,7 @@ try_arch () {
   # repack it the new way, from input to output
   cp "${TMP}.part1.${arch}" "${TMP}.part1.${arch}.in"
   "${FUTILITY}" --debug sign \
-    --signprivate "${DEVKEYS}/kernel_data_key.vbprivk" \
-    --keyblock "${DEVKEYS}/kernel.keyblock" \
+    --keyset "${DEVKEYS}" \
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
