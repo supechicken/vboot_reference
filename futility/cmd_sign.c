@@ -31,6 +31,7 @@
 
 /* Options */
 struct sign_option_s sign_option = {
+	.keysetdir = "/usr/share/vboot/devkeys",
 	.version = 1,
 	.arch = ARCH_UNSPECIFIED,
 	.kloadaddr = CROS_32BIT_ENTRY_ADDR,
@@ -306,6 +307,90 @@ done:
 	return rv;
 }
 
+static int load_keyset(void)
+{
+	char *buf = NULL;
+	int errorcnt = 0;
+
+	if (!sign_option.keysetdir)
+		FATAL("Keyset should never be NULL. Aborting\n");
+
+	switch (sign_option.type) {
+	case FILE_TYPE_BIOS_IMAGE:
+	case FILE_TYPE_RAW_FIRMWARE:
+		if (!sign_option.signprivate) {
+			if (asprintf(&buf, "%s/firmware_data_key.vbprivk",
+				     sign_option.keysetdir) <= 0)
+				FATAL("Failed to allocate string\n");
+			VB2_DEBUG("Loading private key from %s\n", buf);
+			sign_option.signprivate = vb2_read_private_key(buf);
+			if (!sign_option.signprivate) {
+				fprintf(stderr, "Error reading %s\n", buf);
+				errorcnt++;
+			}
+			free(buf);
+		}
+		if (!sign_option.keyblock) {
+			if (asprintf(&buf, "%s/firmware.keyblock",
+				     sign_option.keysetdir) <= 0)
+				FATAL("Failed to allocate string\n");
+			VB2_DEBUG("Loading keyblock from %s\n", buf);
+			sign_option.keyblock = vb2_read_keyblock(buf);
+			if (!sign_option.keyblock) {
+				fprintf(stderr, "Error reading %s\n", buf);
+				errorcnt++;
+			}
+			free(buf);
+		}
+		if (!sign_option.kernel_subkey) {
+			if (asprintf(&buf, "%s/kernel_subkey.vbpubk",
+				     sign_option.keysetdir) <= 0)
+				FATAL("Failed to allocate string\n");
+			VB2_DEBUG("Loading kernel subkey from %s\n", buf);
+			sign_option.kernel_subkey = vb2_read_packed_key(buf);
+			if (!sign_option.kernel_subkey) {
+				fprintf(stderr, "Error reading %s\n", buf);
+				errorcnt++;
+			}
+			free(buf);
+		}
+		break;
+	case FILE_TYPE_RAW_KERNEL:
+		if (!sign_option.keyblock) {
+			if (asprintf(&buf, "%s/kernel.keyblock",
+				     sign_option.keysetdir) <= 0)
+				FATAL("Failed to allocate string\n");
+			VB2_DEBUG("Loading keyblock from %s\n", buf);
+			sign_option.keyblock = vb2_read_keyblock(buf);
+			if (!sign_option.keyblock) {
+				fprintf(stderr, "Error reading %s\n", buf);
+				errorcnt++;
+			}
+			free(buf);
+		}
+		VBOOT_FALLTHROUGH;
+	/* Keyblock is optional for KERN_PREAMBLE */
+	case FILE_TYPE_KERN_PREAMBLE:
+		if (!sign_option.signprivate) {
+			if (asprintf(&buf, "%s/kernel_data_key.vbprivk",
+				     sign_option.keysetdir) <= 0)
+				FATAL("Failed to allocate string\n");
+			VB2_DEBUG("Loading private key from %s\n", buf);
+			sign_option.signprivate = vb2_read_private_key(buf);
+			if (!sign_option.signprivate) {
+				fprintf(stderr, "Error reading %s\n", buf);
+				errorcnt++;
+			}
+			free(buf);
+		}
+		break;
+	default:
+		break;
+	}
+
+	return errorcnt;
+}
+
 static const char usage_pubkey[] = "\n"
 	"To sign a public key / create a new keyblock:\n"
 	"\n"
@@ -349,11 +434,16 @@ static const char usage_fw_main[] = "\n"
 	"\n"
 	"Optional PARAMS:\n"
 	"  -f|--flags       NUM             The preamble flags value"
+	"  -K|--keyset      DIR             Path to directory containing"
+	" private\n"
+	"                                   firmware data key, keyblock and\n"
+	"                                   public kernel subkey\n"
+	"                                   (default is '%s')\n"
 	" (default is 0)\n"
 	"\n";
 static void print_help_raw_firmware(int argc, char *argv[])
 {
-	puts(usage_fw_main);
+	printf(usage_fw_main, sign_option.keysetdir);
 }
 
 static const char usage_bios[] = "\n"
@@ -375,11 +465,16 @@ static const char usage_bios[] = "\n"
 	"                                     unchanged, or 0 if unknown)\n"
 	"  -d|--loemdir     DIR             Local OEM output vblock directory\n"
 	"  -l|--loemid      STRING          Local OEM vblock suffix\n"
+	"  -K|--keyset      DIR             Path to directory containing"
+	" private\n"
+	"                                   firmware data key, keyblock and\n"
+	"                                   public kernel subkey\n"
+	"                                   (default is '%s')\n"
 	"  [--outfile]      OUTFILE         Output firmware image\n"
 	"\n";
 static void print_help_bios_image(int argc, char *argv[])
 {
-	printf(usage_bios, sign_option.version);
+	printf(usage_bios, sign_option.version, sign_option.keysetdir);
 }
 
 static const char usage_new_kpart[] = "\n"
@@ -407,10 +502,15 @@ static const char usage_new_kpart[] = "\n"
 	" --vblockonly                      Emit just the vblock (requires a\n"
 	"                                     distinct outfile)\n"
 	"  -f|--flags       NUM             The preamble flags value\n"
+	"  -K|--keyset      DIR             Path to directory containing"
+	" private\n"
+	"                                   kernel data key, and keyblock\n"
+	"                                   (default is '%s')\n"
 	"\n";
 static void print_help_raw_kernel(int argc, char *argv[])
 {
-	printf(usage_new_kpart, sign_option.kloadaddr, sign_option.padding);
+	printf(usage_new_kpart, sign_option.kloadaddr, sign_option.padding,
+	       sign_option.keysetdir);
 }
 
 static const char usage_old_kpart[] = "\n"
@@ -433,10 +533,14 @@ static const char usage_old_kpart[] = "\n"
 	"  --vblockonly                     Emit just the vblock (requires a\n"
 	"                                     distinct OUTFILE)\n"
 	"  -f|--flags       NUM             The preamble flags value\n"
+	"  -K|--keyset      DIR             Path to directory containing"
+	" private\n"
+	"                                   kernel data key, and keyblock\n"
+	"                                   (default is '%s')\n"
 	"\n";
 static void print_help_kern_preamble(int argc, char *argv[])
 {
-	printf(usage_old_kpart, sign_option.padding);
+	printf(usage_old_kpart, sign_option.padding, sign_option.keysetdir);
 }
 
 static void print_help_usbpd1(int argc, char *argv[])
@@ -619,6 +723,7 @@ static const struct option long_opts[] = {
 	{"flags",        1, NULL, 'f'},
 	{"loemdir",      1, NULL, 'd'},
 	{"loemid",       1, NULL, 'l'},
+	{"keyset",       1, NULL, 'K'},
 	{"fv",           1, NULL, OPT_FV},
 	{"infile",       1, NULL, OPT_INFILE},
 	{"datapubkey",   1, NULL, OPT_INFILE},	/* alias */
@@ -647,7 +752,7 @@ static const struct option long_opts[] = {
 	{"help",         0, NULL, OPT_HELP},
 	{NULL,           0, NULL, 0},
 };
-static const char *short_opts = ":s:b:k:S:B:v:f:d:l:";
+static const char *short_opts = ":s:b:k:v:f:d:l:K:";
 
 /* Return zero on success */
 static int parse_number_opt(const char *arg, const char *name, uint32_t *dest)
@@ -716,6 +821,9 @@ static int do_sign(int argc, char *argv[])
 			break;
 		case 'l':
 			sign_option.loemid = optarg;
+			break;
+		case 'K':
+			sign_option.keysetdir = optarg;
 			break;
 		case OPT_FV:
 			sign_option.fv_specified = 1;
@@ -907,6 +1015,10 @@ static int do_sign(int argc, char *argv[])
 		else if (sign_option.kernel_subkey || sign_option.fv_specified)
 			sign_option.type = FILE_TYPE_RAW_FIRMWARE;
 	}
+
+	/* Load keys and keyblocks from keyset path, if they were not provided
+	   earlier. */
+	errorcnt += load_keyset();
 
 	VB2_DEBUG("type=%s\n", futil_file_type_name(sign_option.type));
 
