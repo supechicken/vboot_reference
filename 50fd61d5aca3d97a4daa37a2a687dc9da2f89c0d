@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc72c8e_2cad4c72",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-04T07:15:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34bfedca_9a095e14",
+      "range": {
+        "startLine": 1577,
+        "startChar": 6,
+        "endLine": 1577,
+        "endChar": 20
+      },
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "959b10d7_b75b3f40",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-04T03:10:09Z",
       "side": 1,
       "message": "How about making it `uint32_t` to have more reserved bits?",
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35309e3_df8025cf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-04T07:15:51Z",
+      "side": 1,
+      "message": "\u003e How about making it `uint32_t` to have more reserved bits?\n\nI thought vb2 non-volatile space is costly hence, so far added only a word and we can expand if we need anything later?\n\nWDYT?",
+      "parentUuid": "959b10d7_b75b3f40",
       "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd399469_449498ca",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-04T07:15:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "122cb757_c5dd9189",
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ac00295_4f718d03",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-07-04T03:10:09Z",
       "side": 1,
       "message": "`vb2api` if we want to expose it to coreboot. Same for the other 2 functions.",
+      "range": {
+        "startLine": 1603,
+        "startChar": 26,
+        "endLine": 1603,
+        "endChar": 29
+      },
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aafd08e0_18810fd4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-04T07:15:51Z",
+      "side": 1,
+      "message": "\u003e `vb2api` if we want to expose it to coreboot. Same for the other 2 functions.\n\ndone",
+      "parentUuid": "6ac00295_4f718d03",
       "range": {
         "startLine": 1603,
         "startChar": 26,
