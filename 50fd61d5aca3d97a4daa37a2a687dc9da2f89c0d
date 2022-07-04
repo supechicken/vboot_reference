@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0343a40_b954326c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-04T07:54:44Z",
+      "side": 1,
+      "message": "I don\u0027t see this changed yet. Did you forget to upload the new PS?",
+      "parentUuid": "bdc72c8e_2cad4c72",
+      "range": {
+        "startLine": 1577,
+        "startChar": 6,
+        "endLine": 1577,
+        "endChar": 20
+      },
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "959b10d7_b75b3f40",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 9
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "\u003e How about making it `uint32_t` to have more reserved bits?\n\nI thought vb2 non-volatile space is costly hence, so far added only a word and we can expand if we need anything later?\n\nWDYT?",
       "parentUuid": "959b10d7_b75b3f40",
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1aebcd6_18e51f0f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-04T07:54:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c35309e3_df8025cf",
       "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
