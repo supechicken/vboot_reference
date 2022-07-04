@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bfedca_9a095e14",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-04T03:10:09Z",
+      "side": 1,
+      "message": "This sounds too general (`vboot` is equivalent to `vb`, and `info` gives no extra information). I\u0027d prefer `vb2_slot_info` or `vb2_boot_info`. Although `boot_mode` is not directly related to \"slot\", it should be fine.",
+      "range": {
+        "startLine": 1577,
+        "startChar": 6,
+        "endLine": 1577,
+        "endChar": 20
+      },
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959b10d7_b75b3f40",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-04T03:10:09Z",
+      "side": 1,
+      "message": "How about making it `uint32_t` to have more reserved bits?",
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122cb757_c5dd9189",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-04T03:10:09Z",
+      "side": 1,
+      "message": "We may want to make it clear that this function should be called after `vb2api_fw_phase2`.",
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac00295_4f718d03",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-04T03:10:09Z",
+      "side": 1,
+      "message": "`vb2api` if we want to expose it to coreboot. Same for the other 2 functions.",
+      "range": {
+        "startLine": 1603,
+        "startChar": 26,
+        "endLine": 1603,
+        "endChar": 29
+      },
+      "revId": "50fd61d5aca3d97a4daa37a2a687dc9da2f89c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
