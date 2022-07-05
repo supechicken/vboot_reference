@@ -662,7 +662,6 @@ FUTIL_SRCS = \
 	futility/cmd_update.c \
 	futility/cmd_validate_rec_mrc.c \
 	futility/cmd_vbutil_firmware.c \
-	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_kernel.c \
 	futility/cmd_vbutil_key.c \
 	futility/cmd_vbutil_keyblock.c \
@@ -1184,8 +1183,6 @@ ${BUILD}/tests/hmac_test: LDLIBS += ${CRYPTO_LIBS}
 
 ${TEST21_BINS}: LDLIBS += ${CRYPTO_LIBS}
 
-# Allow multiple definitions, so tests can mock functions from other libraries
-${BUILD}/tests/%: LDFLAGS += -Xlinker --allow-multiple-definition
 ${BUILD}/tests/%: LDLIBS += -lrt -luuid
 ${BUILD}/tests/%: LIBS += ${TESTLIB}
 
