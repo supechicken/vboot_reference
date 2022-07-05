@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b57d957_7d3a2beb",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-05T09:02:09Z",
+      "side": 1,
+      "message": "In `futility.h` there are definitions of `ERROR()`, `WARN()`, `INFO()`, and `STATUS()`. Should we use them instead of just printing error to `stderr`? Maybe it would be nice to /sed/ everything?",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 47
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27427bc_a516784c",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-05T09:02:09Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we should require caller to provide path with directory slash (/) character. Then it would be easier to use `--keyset` for more cases, e.g.:\n- `--keyset \"${DEVKEYS}/recovery_\"`\n- `--keyset \"${DEVKEYS}/installer_\"`\n- `--keyset \"${DEVKEYS}/minios_\"`\nOr path deduction could be more complicated(?). We could first load `%skernel.keyblock`, and if it fails, then try to load `%s/kernel.keyblock`.\nWhat do you think?",
+      "range": {
+        "startLine": 360,
+        "startChar": 23,
+        "endLine": 360,
+        "endChar": 41
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfe7c5f_5254933c",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-05T09:02:09Z",
+      "side": 1,
+      "message": "`FILE_TYPE_KERN_PREAMBLE` signing implementation requires only private key, when `FILE_TYPE_RAW_KERNEL` requires both: private key and keyblock. Does anyone know about any occurences, where `FILE_TYPE_KERN_PREAMBLE` is used without keyblock? In tests always both are used. Should be make keyblock param mandatory?",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 30
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
