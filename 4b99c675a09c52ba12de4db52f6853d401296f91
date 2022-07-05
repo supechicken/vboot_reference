@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42898a60_b1b74786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-05T02:53:28Z",
+      "side": 1,
+      "message": "respective",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "4b99c675a09c52ba12de4db52f6853d401296f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff6716e_65d74853",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-05T02:53:28Z",
+      "side": 1,
+      "message": "Since there\u0027s a default value, how\u0027s this possible (`keysetdir \u003d\u003d NULL`)? Should we call `FATAL` here?",
+      "revId": "4b99c675a09c52ba12de4db52f6853d401296f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2263c164_b431385e",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-05T02:53:28Z",
+      "side": 1,
+      "message": "Remove the extra blank line?",
+      "revId": "4b99c675a09c52ba12de4db52f6853d401296f91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
