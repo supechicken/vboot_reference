@@ -16,6 +16,24 @@
       "message": "From [brask-cq](https://ci.chromium.org/ui/p/chromeos/builders/cq/brask-cq/b8809579721466207633/overview):\n\n```\ntests/vboot_api_kernel4_tests.c:86: Normal boot with diag disabled (reboot to unset) ... \u001bFAILED\n\tExpected: 0 (0), got: 0x1002 (4098)\n```",
       "revId": "b5706cf431bb501e0068fb8cfa7ae34bc3b2a4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76289658_c8843262",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T04:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dfb6eb3_4e787d3b",
+      "revId": "b5706cf431bb501e0068fb8cfa7ae34bc3b2a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
