@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3380056_8958762e",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce788b47_7ea77ad0",
+      "range": {
+        "startLine": 750,
+        "startChar": 7,
+        "endLine": 750,
+        "endChar": 22
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ccf4040_ec19b8fd",
@@ -72,6 +96,30 @@
       "writtenOn": "2022-07-04T11:37:38Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 1305,
+        "startChar": 31,
+        "endLine": 1305,
+        "endChar": 46
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63d2de6_ebd05474",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ccf4040_ec19b8fd",
       "range": {
         "startLine": 1305,
         "startChar": 31,
@@ -99,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e21a54_06f6b43e",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe6a249_6d57e596",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec8aa035_0670cde7",
@@ -116,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2002cce3_2022aed4",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8aa035_0670cde7",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7640381d_0bde93d3",
@@ -129,6 +213,24 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "Looks like we don\u0027t need this file anymore.",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81895027_af72a8ec",
+        "filename": "firmware/lib/include/vboot_test.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7640381d_0bde93d3",
       "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -180,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11c85cf_aa053981",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e96aff_1bcc7c10",
+      "range": {
+        "startLine": 41,
+        "startChar": 35,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b31c7f04_b00fe0e9",
@@ -193,6 +319,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "test_kparams",
+      "range": {
+        "startLine": 55,
+        "startChar": 33,
+        "endLine": 55,
+        "endChar": 60
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0632bea_37ea4efe",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b31c7f04_b00fe0e9",
       "range": {
         "startLine": 55,
         "startChar": 33,
@@ -222,6 +372,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da259855_6f44a112",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Since we mock `vb2api_diagnostic_ui_enabled` now, which is tested in vb2_misc_test.c, I didn\u0027t add these tests in original test file.\n\n\u003e Also, since a bunch of test cases are added here, can we move them to a separate, so that CL:3731412 could be minimized?\nDue to integrity of test, I want to keep them in this CL.",
+      "parentUuid": "b7969019_85fc0a2a",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6698c3de_410df67d",
         "filename": "tests/vb2_misc2_tests.c",
         "patchSetId": 14
@@ -233,6 +401,24 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "Missing `.`",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7aa15b_3bc557ad",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6698c3de_410df67d",
       "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -254,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "968b997f_6fd52626",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3376b8e_7dd46121",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c2ed23c_51d88c0d",
@@ -267,6 +471,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "Why do we need this?",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19f8564_337ff33b",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "I copy it from vboot_api_kernel4_tests,c. I\u0027m not sure where it used for.",
+      "parentUuid": "6c2ed23c_51d88c0d",
       "range": {
         "startLine": 45,
         "startChar": 5,
@@ -317,6 +545,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3478ed5d_8b91e303",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a4d4fc5_f982a0c0",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 39
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db1943a3_955e55c4",
@@ -330,6 +582,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "diag UI",
+      "range": {
+        "startLine": 75,
+        "startChar": 50,
+        "endLine": 75,
+        "endChar": 54
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a4d1eac_a6d87f75",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db1943a3_955e55c4",
       "range": {
         "startLine": 75,
         "startChar": 50,
@@ -363,6 +639,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6428fe_29f1f658",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dc911c9_970e1114",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aad2eeb_1de9d8ee",
@@ -376,6 +676,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "`\"Dev boot\"` to be consistent",
+      "range": {
+        "startLine": 80,
+        "startChar": 36,
+        "endLine": 80,
+        "endChar": 48
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e8debd_6dbc32af",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aad2eeb_1de9d8ee",
       "range": {
         "startLine": 80,
         "startChar": 36,
@@ -403,6 +727,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5a1378_a47e7fd8",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6795e02_a4785899",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "796e7b28_55aa7179",
@@ -416,6 +758,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "Duplicate of lines 87-90.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42eedf70_63533924",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796e7b28_55aa7179",
       "range": {
         "startLine": 92,
         "startChar": 1,
@@ -443,6 +809,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bd7788_0866aec6",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6c242d8_ad3f6e11",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1da8a08_c3298463",
@@ -456,6 +840,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "Duplicate of the case above",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 58
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07db86c6_2b9c753e",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1da8a08_c3298463",
       "range": {
         "startLine": 104,
         "startChar": 1,
@@ -489,6 +897,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7898b27a_22311e61",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8225fb51_7d9d0072",
+      "range": {
+        "startLine": 113,
+        "startChar": 16,
+        "endLine": 113,
+        "endChar": 35
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e684b623_d6eabaec",
@@ -502,6 +934,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "Duplicate",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 38
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31036e8_bf8d2633",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e684b623_d6eabaec",
       "range": {
         "startLine": 125,
         "startChar": 1,
@@ -535,6 +991,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50cfc9f4_cbfc36e8",
+        "filename": "tests/vboot_api_kernel4_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d67ce7_071b33ff",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df797c3_c7b1c1d3",
@@ -548,6 +1028,30 @@
       "writtenOn": "2022-07-04T15:24:52Z",
       "side": 1,
       "message": "kparams",
+      "range": {
+        "startLine": 455,
+        "startChar": 28,
+        "endLine": 455,
+        "endChar": 55
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d1f362_506d4746",
+        "filename": "tests/vboot_api_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-05T03:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df797c3_c7b1c1d3",
       "range": {
         "startLine": 455,
         "startChar": 28,
