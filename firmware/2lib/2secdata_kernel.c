@@ -181,6 +181,7 @@ vb2_error_t vb2_secdata_kernel_init(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+test_mockable
 uint32_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 				enum vb2_secdata_kernel_param param)
 {
@@ -213,6 +214,7 @@ uint32_t vb2_secdata_kernel_get(struct vb2_context *ctx,
 	return 0;
 }
 
+test_mockable
 void vb2_secdata_kernel_set(struct vb2_context *ctx,
 			    enum vb2_secdata_kernel_param param,
 			    uint32_t value)
@@ -290,6 +292,7 @@ const uint8_t *vb2_secdata_kernel_get_ec_hash(struct vb2_context *ctx)
 	return sec->ec_hash;
 }
 
+test_mockable
 void vb2_secdata_kernel_set_ec_hash(struct vb2_context *ctx,
 				    const uint8_t *sha256)
 {
