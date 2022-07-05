@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334d02ae_53a93f6a",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-05T14:05:17Z",
+      "side": 1,
+      "message": "I do not know if this option should actually be places in the \"optional\" section. It can be optional, but it can also be used to override required params. Any thoughts about this?",
+      "range": {
+        "startLine": 468,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 57
+      },
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
