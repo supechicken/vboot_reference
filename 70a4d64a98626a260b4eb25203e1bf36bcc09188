@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c7d53f_dca080db",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T03:05:54Z",
+      "side": 1,
+      "message": "```\n#ifdef CHROMEOS_ENVIRONMENT                                                      \n#define test_mockable __attribute__((weak))                                      \n#else                                                                            \n#define test_mockable                                                            \n#endif\n```\n\nFor host lib `CHROMEOS_ENVIRONMENT` will be defined, so this will be `__attribute__((weak))`. I guess that should be fine?\n\nOtherwise, we\u0027ll need a way for Makefile to tell whether it\u0027s for unit tests or not, and define `test_mockable` only in test environment. Two approaches that I can think of:\n\n1. Check the make target name (similar how unit tests are handled in depthcharge). This may require some refactoring work for Makefile.\n2. Pass `UNIT_TEST\u003d1` to make, from the ebuild. This would make running tests locally (by `make runtests`) more inconvenient.",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
