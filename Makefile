@@ -1344,13 +1344,19 @@ runtests: rununittests runtestscripts runfutiltests
 	${Q}echo -e "\nruntests: \E[32;1mALL TESTS PASSED SUCCESSFULLY!\E[0;m\n"
 
 # Code coverage
+.PHONY: coverage_check_env
+coverage_check_env:
+ifeq ($(filter-out 0,${COV}),)
+	$(error Build coverage like this: make clean && COV=1 make coverage)
+endif
+
 .PHONY: coverage_init
-coverage_init: install_for_test
+coverage_init: coverage_check_env install_for_test
 	rm -f ${COV_INFO}*
 	lcov -c -i -d . -b . -o ${COV_INFO}.initial
 
 .PHONY: coverage_html
-coverage_html:
+coverage_html: coverage_check_env
 	lcov -c -d . -b . -o ${COV_INFO}.tests
 	lcov -a ${COV_INFO}.initial -a ${COV_INFO}.tests -o ${COV_INFO}.total
 	lcov -r ${COV_INFO}.total '/usr/*' -o ${COV_INFO}.local
@@ -1363,12 +1369,7 @@ coverage_html:
 		-o ${COV_INFO}.firmware
 
 .PHONY: coverage
-ifeq ($(filter-out 0,${COV}),)
-coverage:
-	$(error Build coverage like this: make clean && COV=1 make coverage)
-else
-coverage: coverage_init runtests coverage_html
-endif
+coverage: coverage_check_env coverage_init runtests coverage_html
 
 # Include generated dependencies
 ALL_DEPS += ${ALL_OBJS:%.o=%.o.d}
