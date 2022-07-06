@@ -3,6 +3,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ee3281c_0e936959",
+        "filename": "tests/vb2_kernel2_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "mock_gbb?",
+      "range": {
+        "startLine": 28,
+        "startChar": 29,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a5118ff_3bb884b7",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Can be merge into the previous line.",
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bbbe5e_04c6c36c",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Add `/* Return NULL to prevent EC reboot due to VB2_SD_FLAG_ECSYNC_HMIR_UPDATED. */`",
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa22ce81_f4ff7bf6",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Although not in the original tests/vboot_api_kernel4_tests.c, a few things are missing (please adjust the order by yourself):\n\n1. `vb2api_ec_sync` is not called in recovery mode.\n2. When `VB2_NV_BATTERY_CUTOFF_REQUEST` is set, `vb2ex_ec_battery_cutoff` is called after EC sync.\n3. If `vb2api_ec_sync` returns EC_REBOOT, phase2 should also return that.\n4. `VB2_ERROR_ESCAPE_NO_BOOT` is returned if the boot mode is not set.",
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be919213_9aed2d95",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 21
@@ -26,6 +100,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11b95a68_16f47279",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Instead of hard-setting the boot mode, it\u0027d be nice to call `vb2_set_boot_mode`. For that to work, we\u0027ll also need to set up the corresponding ctx flags. To avoid `vb2_set_boot_mode` setting the unexpected boot mode, we could introduce some helper functions (if that helps):\n\n```\nstatic void set_boot_mode(ctx, boot_mode, uint32_t recovery_reason)\n{\n    ctx-\u003eflags |\u003d ...;  // Based on boot_mode, set recovery_reason, VB2_CONTEXT_DEVELOPER_MODE, ...\n    vb2_set_boot_mode(ctx);\n    TEST_EQ(ctx-\u003eboot_mode, boot_mode, ...);\n}\n```\n\nThe reason is that setting boot mode without calling `vb2_set_boot_mode` may leave the ctx in an inconsistent state. For example, boot mode is MANUAL_RECOVERY, but VB2_CONTEXT_RECOVERY_MODE is not set.",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 35
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2cfda6_665f5198",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "This test case is already covered in tests/vb2_ec_sync_tests.c. What we need to do here for phase2 tests is to make sure `vb2api_ec_sync` is called.",
+      "range": {
+        "startLine": 326,
+        "startChar": 21,
+        "endLine": 326,
+        "endChar": 58
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505439b9_40d89194",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Please don\u0027t break strings if possible. Move it to the next line.",
+      "range": {
+        "startLine": 344,
+        "startChar": 56,
+        "endLine": 345,
+        "endChar": 15
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b19dc9_fcdf7763",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "For this section, I think 2 test cases are enough: normal mode and diagnostic mode. Otherwise I\u0027d suggest using a for loop to iterate through all boot modes.",
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf00c87d_62664e8b",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "mode",
+      "range": {
+        "startLine": 352,
+        "startChar": 57,
+        "endLine": 352,
+        "endChar": 61
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a217838f_9fd25b1d",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 21
@@ -37,6 +220,29 @@
       "writtenOn": "2022-07-06T07:53:39Z",
       "side": 1,
       "message": "\"  clear VB2_NV_DIAG_REQUEST\"\n(two leading spaces; wrong capitalization)\nSame for all below",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2407f633_dfc394af",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Clear\n\n- As a side note, the comments for existing tests are all in lowercase.\n- Starting from the 2nd message in each test case, add a 2-space indent.",
       "range": {
         "startLine": 354,
         "startChar": 3,
@@ -118,6 +324,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b466b9e3_9388a7e5",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "By \"normal\" do you mean normal mode, or success? How about `NO_BOOT with EC sync disabled`? And for the others:\n\n- NO_BOOT with EC sync support\n- NO_BOOT without EC sync support\n- Normal case with EC sync support",
+      "range": {
+        "startLine": 400,
+        "startChar": 9,
+        "endLine": 400,
+        "endChar": 15
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b556ccde_c0bb2021",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "TEST_SUCC",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 8
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb39bb7d_5d5027c1",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 21
@@ -157,6 +409,69 @@
         "startChar": 4,
         "endLine": 414,
         "endChar": 53
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6844f77c_6d240a3b",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Break the line here. Same for other instances below.",
+      "range": {
+        "startLine": 63,
+        "startChar": 52,
+        "endLine": 63,
+        "endChar": 53
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fd8918_3853d216",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Manual recovery: forced by GBB flags",
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69585f35_e15a8470",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Duplicate of the first case.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 51
       },
       "revId": "4c737dea437f6c1c76ad239795480661463caa16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

@@ -388,6 +388,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b565ee_c7ee0adb",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da259855_6f44a112",
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6698c3de_410df67d",
@@ -495,6 +513,30 @@
       "side": 1,
       "message": "I copy it from vboot_api_kernel4_tests,c. I\u0027m not sure where it used for.",
       "parentUuid": "6c2ed23c_51d88c0d",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "8d5c3a62a82a6b5bfabe6eee9aff4f8f94b9aad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c6df537_818de2d8",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T07:54:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e19f8564_337ff33b",
       "range": {
         "startLine": 45,
         "startChar": 5,
