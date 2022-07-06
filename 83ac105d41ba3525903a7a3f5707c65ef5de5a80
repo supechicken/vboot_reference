@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8d7c37b_0f17d0a6",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-06T08:22:55Z",
+      "side": 1,
+      "message": "Hmm. I think, that it would be more consistent, and would make debugging faster.\nIf we do not want tag and function name in the output, then I think we should at least provide `ERROR/WARN/INFO/STATUS_RAW()` macros to get rid of writing `fprintf(stderr,......)` each time. From my point of view, it\u0027s even better, when all messages are printed using macros, because it\u0027s easier to spot them in the code.",
+      "parentUuid": "1007a662_3696dfd5",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 47
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a27427bc_a516784c",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 2
