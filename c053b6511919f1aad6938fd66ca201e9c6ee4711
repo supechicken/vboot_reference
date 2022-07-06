@@ -39,6 +39,30 @@
       },
       "revId": "c053b6511919f1aad6938fd66ca201e9c6ee4711",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4596f241_718f9a90",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-06T08:34:09Z",
+      "side": 1,
+      "message": "\u003e We might still need this VB2_ASSERT\n\nAgreed.",
+      "parentUuid": "47ba6254_c4250f14",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "c053b6511919f1aad6938fd66ca201e9c6ee4711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
