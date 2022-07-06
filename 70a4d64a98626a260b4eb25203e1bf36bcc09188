@@ -46,6 +46,30 @@
       },
       "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d8d5a4_ce54a569",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-06T23:43:28Z",
+      "side": 1,
+      "message": "The problem with using different compilation flags is that object files cannot be  shared between test builds and normal host library builds. For coreboot/depthcharge there\u0027s no host library and test object files are completely separate from firmware object files, so that\u0027s no issue. For vboot, the current system still assumes it can just link them together (e.g. TEST_BINS: LIBS \u003d ${UTILLIB}), so you can\u0027t just set -DUNIT_TESTS\u003d1 for tests but not for host utilities.\n\nI think the best option would be to refactor the Makefile to completely separate test builds from host utility builds. so that this becomes possible. (Maybe it would be nice to import some other tricks from the coreboot/depthcharge test frameworks while doing that... it\u0027s pretty annoying to have to put a test_mockable in front of almost every function declaration in vboot, it\u0027s nicer to have a system like coreboot/depthcharge where tests can declare what functions they mock and the #pragma weak directives get generated automatically based on that. A lower effort but probably also effective option would be to just build all test object files with `-Og` instead of `-Os`.)",
+      "parentUuid": "9326d3a0_cb13d674",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
