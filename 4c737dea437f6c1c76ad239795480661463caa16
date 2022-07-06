@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be919213_9aed2d95",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "We should not need to assign this every time. This should be done at reset_common_data()",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 51
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a217838f_9fd25b1d",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "\"  clear VB2_NV_DIAG_REQUEST\"\n(two leading spaces; wrong capitalization)\nSame for all below",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b81c523_0c9ab4ce",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "I am not sure if we need to check all boot mode to ensure we clear it unconditionally...\n\nSince we still only care about we clear it in DIAGNOSTIC boot",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 31
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4dc7b64_10cdf192",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "No strong opinion -- we could move these to reset_common_data -- that\u0027s why we havethe reset_type_t",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 45
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0eef69c_68b18ef4",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "nit: Two leading spaces\n\nAnd I don\u0027t know why using \"incorrect recovery reason\"?",
+      "range": {
+        "startLine": 398,
+        "startChar": 32,
+        "endLine": 398,
+        "endChar": 41
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb39bb7d_5d5027c1",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "What about:\n/* Boot normal if VB2_CONTEXT_NO_BOOT is not set */",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 43
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c7d3bc_c661dca9",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "What about:\n/* Boot normal if system does not support EC software sync */",
+      "range": {
+        "startLine": 414,
+        "startChar": 4,
+        "endLine": 414,
+        "endChar": 53
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

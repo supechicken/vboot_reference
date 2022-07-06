@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954c8c38_a6f7153f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "nit: missing @param kparams",
+      "revId": "c053b6511919f1aad6938fd66ca201e9c6ee4711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ba6254_c4250f14",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-06T07:53:39Z",
+      "side": 1,
+      "message": "We might still need this VB2_ASSERT (abort when kparams is NULL)\nbut this comment is not correct anymore.\n\nPlease change it to match current flow or just remove this TODO",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "c053b6511919f1aad6938fd66ca201e9c6ee4711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
