@@ -22,6 +22,30 @@
       },
       "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9326d3a0_cb13d674",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-06T08:13:22Z",
+      "side": 1,
+      "message": "What do you think about approach shown below? I tested it with your patch, and it seems to work. However, some targets might be missing form Makefile filters, so please, checks it.\n\n```\n// Can `if defined(CHROMEOS_ENVIRONMENT)` be dropped at this point?\n#ifndef test_mockable\n#if defined(CHROMEOS_ENVIRONMENT) \u0026\u0026 (defined(UNIT_TESTS) \u0026\u0026 UNIT_TESTS \u003d\u003d 1)\n#define test_mockable __attribute__((weak))\n#else\n#define test_mockable\n#endif\n#endif\n```\n\n```\n# ----------------------------------------------------------------------------\n# Tests\n\nifneq ($(filter %test test% %tests tests%, $(MAKECMDGOALS)),)\nifneq ($(filter-out %test test% %tests tests%, $(MAKECMDGOALS)),)\n$(error Cannot mix unit-tests targets with other targets)\nendif\nCFLAGS +\u003d -DUNIT_TESTS\u003d1\nendif\n\n.PHONY: tests\ntests: ${TEST_BINS}\n```",
+      "parentUuid": "35c7d53f_dca080db",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
