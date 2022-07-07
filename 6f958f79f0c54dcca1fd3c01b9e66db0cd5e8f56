@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf719008_14536111",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "787d778c_51a737a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "I\u0027ll take another overall look later today.",
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9b0982_9a9152f2",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "Also mock vb2api_auxfw_sync (may have it always return VB2_SUCCESS).",
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a17c0e7_8d5372d1",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f5dba5_39269fa1",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "NO_BOOT ignored with gbb DISABLE_EC_SOFTWARE_SYNC",
+      "range": {
+        "startLine": 449,
+        "startChar": 5,
+        "endLine": 449,
+        "endChar": 45
+      },
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1733662_ef442864",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b8f5ec_e3868d78",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63be9c85_eb1cd6fa",
+        "filename": "tests/vb2_misc2_tests.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "6f958f79f0c54dcca1fd3c01b9e66db0cd5e8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

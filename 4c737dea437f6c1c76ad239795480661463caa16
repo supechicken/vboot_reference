@@ -249,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7303eed_bb4dbf09",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "I meant to fix existing tests as well. Rocco, what\u0027s your opinion?\n\n1. No need to call `vb2_set_boot_mode`. Setting `*boot_mode \u003d ...` is fine.\n2. Fix existing tests first in a separate CL.\n3. Set `*boot_mode \u003d ...` in this CL, and have a follow-up patch to fix all the tests in the file.",
+      "parentUuid": "0ba5392c_c165cae6",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 35
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b2cfda6_665f5198",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 21
@@ -601,6 +625,30 @@
       "side": 1,
       "message": "IMO it\u0027s more clear to set the flag right before we call vb2api_kernel_finalize.",
       "parentUuid": "e4dc7b64_10cdf192",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 45
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9202bd07_5818e8f6",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T04:11:47Z",
+      "side": 1,
+      "message": "Yeah, I think `VB2_CONTEXT_NO_BOOT` is not common. `VB2_CONTEXT_EC_SYNC_SUPPORTED`, however, can be set in `VB2_CONTEXT_EC_SYNC_SUPPORTED` since all modern ChromeOS devices should have that enabled.",
+      "parentUuid": "82773482_17ae6fb8",
       "range": {
         "startLine": 393,
         "startChar": 0,
