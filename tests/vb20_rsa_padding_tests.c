@@ -12,7 +12,7 @@
 #include "file_keys.h"
 #include "host_key.h"
 #include "rsa_padding_test.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 vb2_error_t hwcrypto_modexp_return_value = VB2_SUCCESS;
 vb2_error_t vb2ex_hwcrypto_modexp(const struct vb2_public_key *key,

@@ -21,7 +21,7 @@
 #include "host_misc.h"
 #include "flashrom.h"
 #include "subprocess.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 #define MOCK_TMPFILE_NAME "/tmp/vb2_unittest"
 #define MOCK_ROM_CONTENTS "bloop123"

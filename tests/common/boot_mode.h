@@ -1,0 +1,21 @@
+/* Copyright 2022 The ChromiumOS Authors.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Some helper function for tests.
+ */
+
+#include "2api.h"
+
+void set_boot_mode(struct vb2_context *ctx, enum vb2_boot_mode boot_mode,
+		   uint32_t recovery_reason, ...);
+
+/*
+ * Set the boot mode of ctx to expect boot mode with recovery reason if given.
+ *
+ * @param ctx			Vboot context.
+ * @param boot_mode		boot mode wanted.
+ * @param recovery_reason	Recovery reason set to sd->recovery_reason.
+ */
+#define SET_BOOT_MODE(ctx, boot_mode, ...) \
+	set_boot_mode(ctx, boot_mode, ##__VA_ARGS__, 0)
