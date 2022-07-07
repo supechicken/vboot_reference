@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54936418_a26a5c6c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-07T23:30:16Z",
+      "side": 1,
+      "message": "Well, you could just add the default: label to \"Unknown\"?",
+      "parentUuid": "a4f13490_83a924fe",
+      "revId": "e1bf31e8deb7d23eb847ee52eb3c1681ba1b6616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e947c247_c264fbf6",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 6
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "We need this to avoid compilation error as below:\n\nfirmware/2lib/include/2api.h: In function \u0027vb2_slot_string\u0027:\nfirmware/2lib/include/2api.h:1628:1: error: control reaches end of non-void function [-Werror\u003dreturn-type]\n 1628 | }",
       "parentUuid": "bd682332_abf1c4be",
+      "revId": "e1bf31e8deb7d23eb847ee52eb3c1681ba1b6616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77047aa7_f88817c2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-07T23:30:16Z",
+      "side": 1,
+      "message": "Same here, just do `if (a) return \"A\" else return \"B\"`?",
+      "parentUuid": "cc081ee9_21362df1",
       "revId": "e1bf31e8deb7d23eb847ee52eb3c1681ba1b6616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

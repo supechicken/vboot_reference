@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0711ec4_36d95884",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-07T23:30:16Z",
+      "side": 1,
+      "message": "I would say let\u0027s assign the whole 8 bits to boot_mode for now, so we won\u0027t accidentally forget this if we later add more boot modes. If we find out that we need the high bits for something else later, we can still repurpose them at that time.",
+      "revId": "d0e4cd0d2d121268d50fbaefec564e5526a4b028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe97cd85_5ac183c6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-07T23:30:16Z",
+      "side": 1,
+      "message": "vb2api_get_fw_boot_info()?",
+      "revId": "d0e4cd0d2d121268d50fbaefec564e5526a4b028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
