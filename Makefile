@@ -700,6 +700,7 @@ TESTLIB = ${BUILD}/tests/test.a
 
 TESTLIB_SRCS += \
 	tests/test_common.c \
+	tests/test_util.c \
 	tests/timer_utils.c \
 	tests/crc32_test.c
 
