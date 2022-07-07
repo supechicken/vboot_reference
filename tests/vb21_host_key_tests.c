@@ -14,7 +14,7 @@
 #include "host_common.h"
 #include "host_common21.h"
 #include "host_key21.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 /* Test only the algorithms we use */
 struct alg_combo {

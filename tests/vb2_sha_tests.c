@@ -12,7 +12,7 @@
 #include "2sha.h"
 #include "2sysincludes.h"
 #include "sha_test_vectors.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 static void sha1_tests(void)
 {
