@@ -69,6 +69,24 @@
       "parentUuid": "8c7cadf4_593c4c86",
       "revId": "7e7027f53205e0e14bf8219242790f8540296640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7df886_f7422b92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-07-07T15:30:23Z",
+      "side": 1,
+      "message": "\u003e What\u0027s your requirement for rollback protection and things like developer mode... do you need that at all?\n\nEventually I think yes, but perhaps not needed for an initial MVP. Developer mode would just be setting `ctx-\u003eflags \u003d VB2_CONTEXT_DEVELOPER_MODE` when appropriate?\n\n\u003e You should definitely be initializing the rollback version fields in vb2_shared_data, even if just to zero... because the code is using those.\n\nLooks like `vb2api_init` memsets the whole vb2_shared_data to zero, so maybe not necessary to do anything else there?\n\nI\u0027d be interested also to hear more about how you think tests for all this should look. The verify_kernel test run by load_kernel_tests.sh is a nice test of the happy path, but would be good to cover error cases as well. I\u0027m not too clear on the best way to do that though; load_kernel_tests.sh is kind of heavy weight in that it\u0027s generating a real disk to test against. Do you think that\u0027s the right approach to follow for adding more tests, or should I be looking to mock out internals of LoadKernel so that smaller unit tests can avoid needing a real disk? Or some other approach I\u0027m not thinking of?",
+      "parentUuid": "484a6dfc_ab943dcc",
+      "revId": "7e7027f53205e0e14bf8219242790f8540296640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
