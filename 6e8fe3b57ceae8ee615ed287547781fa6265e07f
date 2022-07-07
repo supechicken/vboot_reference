@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "744d75d1_2e659473",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-07T09:16:35Z",
+      "side": 1,
+      "message": "Because there\u0027s a global variable called kparams.",
+      "parentUuid": "03fce314_c1fddc09",
+      "range": {
+        "startLine": 198,
+        "startChar": 36,
+        "endLine": 198,
+        "endChar": 39
+      },
+      "revId": "6e8fe3b57ceae8ee615ed287547781fa6265e07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fbeb045_20dc3ede",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 27
