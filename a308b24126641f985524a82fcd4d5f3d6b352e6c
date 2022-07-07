@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80980ed2_a88de4f6",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-07T03:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "655af561_cd6e08dc",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "a308b24126641f985524a82fcd4d5f3d6b352e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "addaad77_5b6b728c",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-06T08:14:19Z",
       "side": 1,
       "message": "Remove the blank line?",
+      "revId": "a308b24126641f985524a82fcd4d5f3d6b352e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2effdce3_4d0cf0dc",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-07T03:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "addaad77_5b6b728c",
       "revId": "a308b24126641f985524a82fcd4d5f3d6b352e6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

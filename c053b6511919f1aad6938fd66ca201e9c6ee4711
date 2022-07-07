@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dea410d_8399d479",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-07T03:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954c8c38_a6f7153f",
+      "revId": "c053b6511919f1aad6938fd66ca201e9c6ee4711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47ba6254_c4250f14",
@@ -54,6 +72,30 @@
       "writtenOn": "2022-07-06T08:34:09Z",
       "side": 1,
       "message": "\u003e We might still need this VB2_ASSERT\n\nAgreed.",
+      "parentUuid": "47ba6254_c4250f14",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "c053b6511919f1aad6938fd66ca201e9c6ee4711",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c357537_d1b3aa4f",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-07T03:55:33Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "47ba6254_c4250f14",
       "range": {
         "startLine": 40,
