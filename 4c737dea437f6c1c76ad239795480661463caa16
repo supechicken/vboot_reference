@@ -273,6 +273,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "903c5024_22b52ccd",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-07T06:52:04Z",
+      "side": 1,
+      "message": "Introducing another helper sounds good.\n\nWe might add that in test_common.c (but not in this CL)",
+      "parentUuid": "a7303eed_bb4dbf09",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 35
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b2cfda6_665f5198",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 21
@@ -649,6 +673,30 @@
       "side": 1,
       "message": "Yeah, I think `VB2_CONTEXT_NO_BOOT` is not common. `VB2_CONTEXT_EC_SYNC_SUPPORTED`, however, can be set in `VB2_CONTEXT_EC_SYNC_SUPPORTED` since all modern ChromeOS devices should have that enabled.",
       "parentUuid": "82773482_17ae6fb8",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 45
+      },
+      "revId": "4c737dea437f6c1c76ad239795480661463caa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6b54d0_f69239b0",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-07T06:52:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9202bd07_5818e8f6",
       "range": {
         "startLine": 393,
         "startChar": 0,
