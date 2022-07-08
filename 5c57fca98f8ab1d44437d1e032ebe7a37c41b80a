@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7325b6_e12a67a2",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-08T00:38:18Z",
+      "side": 1,
+      "message": "\u003e No, and actually it is not a high priority task now.\n\nDoes that mean we\u0027re still going to get around to it eventually, or it is most likely going to be forgotten about? Because we don\u0027t need to keep carrying code around here to enable a use case that we\u0027ll never actually have.",
+      "parentUuid": "e3b8adee_16d84644",
+      "revId": "5c57fca98f8ab1d44437d1e032ebe7a37c41b80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f26cccc_6c504f22",
