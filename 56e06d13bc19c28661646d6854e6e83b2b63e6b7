@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ec831bb_8b018081",
+        "filename": "tests/test_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-08T10:07:57Z",
+      "side": 1,
+      "message": "but if this flag isn\u0027t set, vb2_set_boot_mode won\u0027t set boot mode to manual recovery mode unless I set VB2_CONTEXT_FORCE_RECOVERY_MODE and VB2_CONTEXT_EC_TRUSTED.",
+      "parentUuid": "e0325211_464c474a",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67212d0d_a7f6b972",
         "filename": "tests/test_util.c",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-08T08:54:53Z",
       "side": 1,
       "message": "TEST_TRUE(0) here\n\nThen we can rename expect_boot_mode to boot_mode.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c876eecd_9278f87b",
+        "filename": "tests/test_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-08T10:07:57Z",
+      "side": 1,
+      "message": "When we test phase2, we want to set boot mode to VB2_BOOT_MODE_UNDEFINED, but vb2_set_boot_mode never set ctx-\u003eboot_mode to VB2_BOOT_MODE_UNDEFINED. I haven\u0027t had any better solution for this.",
+      "parentUuid": "67212d0d_a7f6b972",
       "range": {
         "startLine": 40,
         "startChar": 2,
@@ -112,6 +160,30 @@
       "writtenOn": "2022-07-08T08:54:53Z",
       "side": 1,
       "message": "No need for this, since the whole `workbuf` (which contains `ctx`, which contains `boot_mode`) has been reset above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f1144e_673140b8",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-08T10:07:57Z",
+      "side": 1,
+      "message": "Does we ensure VB2_BOOT_MODE_UNDEFINED \u003d 0? If not, we might set boot mode to a random mode unexpectedly.",
+      "parentUuid": "e8b9f597_3c3c109f",
       "range": {
         "startLine": 90,
         "startChar": 1,
