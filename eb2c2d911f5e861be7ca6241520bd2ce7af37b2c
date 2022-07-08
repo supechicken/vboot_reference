@@ -22,6 +22,30 @@
       },
       "revId": "eb2c2d911f5e861be7ca6241520bd2ce7af37b2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5f4941_fd72c964",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-08T23:54:07Z",
+      "side": 1,
+      "message": "Oh right, I meant to point this out in a comment on that CL but forgot. Anyway, it\u0027s not directly related, I just noticed this when re-reading how this looks for that CL.\n\nvb2_context is \"serialized\" in the sense that it stays resident in memory between firmware stages, which may be built with different architectures or compiler settings.",
+      "parentUuid": "b8fb5468_de7cba36",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "eb2c2d911f5e861be7ca6241520bd2ce7af37b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
