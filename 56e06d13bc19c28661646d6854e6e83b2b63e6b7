@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0325211_464c474a",
+        "filename": "tests/test_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-08T08:54:53Z",
+      "side": 1,
+      "message": "Should not set this by default.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67212d0d_a7f6b972",
+        "filename": "tests/test_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-08T08:54:53Z",
+      "side": 1,
+      "message": "TEST_TRUE(0) here\n\nThen we can rename expect_boot_mode to boot_mode.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790ba374_24179188",
+        "filename": "tests/test_util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-08T08:54:53Z",
+      "side": 1,
+      "message": "How about tests/common/boot_mode.h? And move test_common.h to tests/common/tests.h?",
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329534f8_a5519d9e",
+        "filename": "tests/test_util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-08T08:54:53Z",
+      "side": 1,
+      "message": "Add comments to explain how this function is expected to be called.",
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b9f597_3c3c109f",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-08T08:54:53Z",
+      "side": 1,
+      "message": "No need for this, since the whole `workbuf` (which contains `ctx`, which contains `boot_mode`) has been reset above.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e1551c_814fe763",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-08T08:54:53Z",
+      "side": 1,
+      "message": "We can add a variadic macro `SET_BOOT_MODE()` in the header file, which could take either 2 or 3 arguments, where `SET_BOOT_MODE(x, y)` is equivalent to `SET_BOOT_MODE(x, y, 0)`. Take a look at the `VB2_TRY` macro as an example.",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 14
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7a7ca9_60eab3f9",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-08T08:54:53Z",
+      "side": 1,
+      "message": "ignored",
+      "range": {
+        "startLine": 672,
+        "startChar": 47,
+        "endLine": 672,
+        "endChar": 54
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
