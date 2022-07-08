@@ -328,6 +328,14 @@ static void phase2_tests(void)
 	TEST_EQ(mock_ec_sync_called, 1, "  EC sync");
 
 	reset_common_data(FOR_PHASE2);
+	set_boot_mode(ctx, VB2_BOOT_MODE_NORMAL, 0);
+	vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 1);
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_REQUEST_REBOOT,
+		"vb2api_kernel_phase2() reboot to reset NVRAM display request");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST), 0,
+		"  display request reset");
+
+	reset_common_data(FOR_PHASE2);
 	set_boot_mode(ctx, VB2_BOOT_MODE_DEVELOPER, 0);
 	TEST_SUCC(vb2api_kernel_phase2(ctx), "Developer mode");
 	TEST_EQ(mock_ec_sync_called, 1, "  EC sync");
