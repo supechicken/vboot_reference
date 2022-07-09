@@ -268,6 +268,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af8d34e7_56ba83a8",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-09T10:55:01Z",
+      "side": 1,
+      "message": "I mean when we add another mode in future, will we still ensure VB2_BOOT_MODE_UNDEFINED \u003d 0?",
+      "parentUuid": "cad31978_cfb25f8e",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9e1551c_814fe763",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 4
