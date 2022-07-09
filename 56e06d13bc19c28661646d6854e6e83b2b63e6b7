@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceb3a9e5_f669ea1a",
+        "filename": "tests/test_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-09T06:18:39Z",
+      "side": 1,
+      "message": "Yes, setting `VB2_CONTEXT_FORCE_RECOVERY_MODE` and `VB2_CONTEXT_EC_TRUSTED` is the normal path when the user requests recovery manually, by pressing the 3-key combo.",
+      "parentUuid": "6ec831bb_8b018081",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67212d0d_a7f6b972",
         "filename": "tests/test_util.c",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "When we test phase2, we want to set boot mode to VB2_BOOT_MODE_UNDEFINED, but vb2_set_boot_mode never set ctx-\u003eboot_mode to VB2_BOOT_MODE_UNDEFINED. I haven\u0027t had any better solution for this.",
       "parentUuid": "67212d0d_a7f6b972",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a345a5_33cbd6ee",
+        "filename": "tests/test_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-09T06:18:39Z",
+      "side": 1,
+      "message": "If `vb2_set_boot_mode` is never called, then the boot mode will be UNDEFINED.",
+      "parentUuid": "c876eecd_9278f87b",
       "range": {
         "startLine": 40,
         "startChar": 2,
@@ -184,6 +232,30 @@
       "side": 1,
       "message": "Does we ensure VB2_BOOT_MODE_UNDEFINED \u003d 0? If not, we might set boot mode to a random mode unexpectedly.",
       "parentUuid": "e8b9f597_3c3c109f",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "56e06d13bc19c28661646d6854e6e83b2b63e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad31978_cfb25f8e",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-09T06:18:39Z",
+      "side": 1,
+      "message": "Yes, `vb2api_init` sets `sd` to zeros, which contains `ctx`, which contains `boot_mode`. For the same reason, `ctx-\u003eflags` should all be zeros after `vb2api_init`.",
+      "parentUuid": "33f1144e_673140b8",
       "range": {
         "startLine": 90,
         "startChar": 1,
