@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d254e07_8c4277f5",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:37:02Z",
+      "side": 1,
+      "message": "Do we want to unconditionally add all under common/?\n\ne.g.\n\nTESTCOMMON_DIRS \u003d tests/common\n\nTESTLIB_SRCS +\u003d $(wildcard $(TESTCOMMON_DIRS)/*.cpp)\n\n(Not very familiar with Makefile... If the syntax is wrong, please let me know)",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 23
+      },
+      "revId": "5155e5918f000604660980f3d31757316dbad11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69f957e_078dc28b",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:37:02Z",
+      "side": 1,
+      "message": "This might also be a common ... but currently only one test uses this for now.\n\nNot sure if we want to put it into common as well",
+      "range": {
+        "startLine": 703,
+        "startChar": 7,
+        "endLine": 703,
+        "endChar": 18
+      },
+      "revId": "5155e5918f000604660980f3d31757316dbad11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
