@@ -12,7 +12,7 @@
 #include "2return_codes.h"
 #include "chromeos_config.h"
 #include "host_misc.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 static struct {
 	const char *path;

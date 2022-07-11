@@ -15,7 +15,7 @@
 #include "host_keyblock.h"
 #include "host_key.h"
 #include "host_signature.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 static void resign_keyblock(struct vb2_keyblock *h,
 			    const struct vb2_private_key *key)

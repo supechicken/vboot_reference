@@ -15,7 +15,7 @@
 #include "file_keys.h"
 #include "host_common.h"
 #include "host_key21.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 static const uint8_t test_data[] = "This is some test data to sign.";
 static const uint32_t test_size = sizeof(test_data);

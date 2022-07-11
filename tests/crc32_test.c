@@ -6,7 +6,7 @@
 #include "cgptlib_test.h"
 #include "crc32.h"
 #include "crc32_test.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 #define MAX_VECTOR_LEN 256
 

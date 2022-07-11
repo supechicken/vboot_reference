@@ -10,7 +10,7 @@
 #include "2nvstorage.h"
 #include "2sysincludes.h"
 #include "load_kernel_fw.h"
-#include "test_common.h"
+#include "common/tests.h"
 #include "vboot_api.h"
 
 #define MAX_TEST_DISKS 10

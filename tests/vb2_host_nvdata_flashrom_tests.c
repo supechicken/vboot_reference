@@ -19,7 +19,7 @@
 #include "2return_codes.h"
 #include "crossystem_vbnv.h"
 #include "flashrom.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 /* Mocked flashrom only supports host programmer, and RW_NVRAM
    region. */

@@ -11,7 +11,7 @@
 #include "2nvstorage.h"
 #include "2secdata.h"
 #include "load_kernel_fw.h"
-#include "test_common.h"
+#include "common/tests.h"
 #include "vboot_api.h"
 
 #define MAX_MOCK_KERNELS 10

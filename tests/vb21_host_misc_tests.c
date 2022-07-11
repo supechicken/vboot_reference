@@ -13,7 +13,7 @@
 #include "host_common.h"
 #include "host_common21.h"
 #include "host_misc.h"
-#include "test_common.h"
+#include "common/tests.h"
 
 static void misc_tests(void)
 {

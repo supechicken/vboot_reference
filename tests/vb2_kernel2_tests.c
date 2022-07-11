@@ -13,7 +13,7 @@
 #include "2sysincludes.h"
 #include "host_common.h"
 #include "load_kernel_fw.h"
-#include "test_common.h"
+#include "common/tests.h"
 #include "tlcl.h"
 #include "tss_constants.h"
 #include "vboot_struct.h"

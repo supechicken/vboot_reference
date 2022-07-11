@@ -699,7 +699,7 @@ ALL_OBJS += ${FUTIL_OBJS}
 TESTLIB = ${BUILD}/tests/test.a
 
 TESTLIB_SRCS += \
-	tests/test_common.c \
+	tests/common/tests.c \
 	tests/timer_utils.c \
 	tests/crc32_test.c
 

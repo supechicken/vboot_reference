@@ -12,7 +12,7 @@
 #include "2sysincludes.h"
 #include "file_keys.h"
 #include "rsa_padding_test.h"
-#include "test_common.h"
+#include "common/tests.h"
 #include "vboot_api.h"
 
 /**
