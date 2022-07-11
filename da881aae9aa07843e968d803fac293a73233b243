@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5961a3c8_90b1bdff",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "Could consider add TEST_EQ(recovery_reason, VB2_RECOVERY_RO_MANUAL, \"  recovery_reason should be 0x02 for manual recovery\"\n\nOr what about we just ignore the \"recovery reason\" for manual recovery since it should always be 0x02",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc27b6d_1d6e5b76",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "This is not always true since we are in manual recovery mode if either:\n(1) VB2_CONTEXT_FORCE_RECOVERY_MODE\n(2) recovery reason \u003d\u003d 2\n\nsee: vb2_check_recovery\n\nWDYT? @yupingso",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d9437e4_be6be5b1",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "\"  undefined...\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46982a1f_e725828e",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "We still have some sd flags related to these, e.g.\n\nVB2_SD_STATUS_RECOVERY_DECIDED\nVBSD_BOOT_REC_SWITCH_ON \u003d\u003d\u003e We might not care about this anymore\n\n@yupingso for comments",
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbca777_098b7f41",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "What about \"  validity check for set boot mode\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 37,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021ceb24_c75f676e",
+        "filename": "tests/common/boot_mode.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "What is the reason to put this comments above SET_BOOT_MODE but not set_boot_mode?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad18521_47e6f518",
+        "filename": "tests/vb2_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5697f999_d292320c",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "Wrong order: put this above test.h",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9ffc2c_7b57e19e",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50db4473_0a5922cb",
+        "filename": "tests/vboot_kernel2_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6a16ce_710367b9",
+        "filename": "tests/vboot_kernel_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-11T09:55:45Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
