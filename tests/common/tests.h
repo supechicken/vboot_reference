@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
-#ifndef VBOOT_REFERENCE_TEST_COMMON_H_
-#define VBOOT_REFERENCE_TEST_COMMON_H_
+#ifndef VBOOT_REFERENCE_COMMON_TESTS_H_
+#define VBOOT_REFERENCE_COMMON_TESTS_H_
 
 #include <setjmp.h>
 #include <stdio.h>
