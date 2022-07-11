@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed16b520_d5ab4b2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-11T07:47:35Z",
+      "side": 1,
+      "message": "No such function anymore.",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "41350f9972741fb163e6065c48c616bb385a04bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186476cf_879354cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-11T07:47:35Z",
+      "side": 1,
+      "message": "I think we can still write b:172339016, since this is for that issue.",
+      "revId": "41350f9972741fb163e6065c48c616bb385a04bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f21902_18c93e62",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-11T07:47:35Z",
+      "side": 1,
+      "message": "We don\u0027t need 2 debug messages. How about `\"Normal mode: reboot to unset display request\"`?",
+      "range": {
+        "startLine": 256,
+        "startChar": 3,
+        "endLine": 257,
+        "endChar": 42
+      },
+      "revId": "41350f9972741fb163e6065c48c616bb385a04bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
