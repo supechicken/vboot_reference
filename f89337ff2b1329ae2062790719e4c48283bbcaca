@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae00f5c_bbc1666d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-11T03:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2b564de_dcbd09d3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "f89337ff2b1329ae2062790719e4c48283bbcaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23369247_23862860",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db280daa_09370803",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-11T03:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23369247_23862860",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "f89337ff2b1329ae2062790719e4c48283bbcaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de1bc5de_bc574fc7",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-08T09:26:05Z",
       "side": 1,
       "message": "How about `Normal mode with display request: rebooting`",
+      "range": {
+        "startLine": 334,
+        "startChar": 3,
+        "endLine": 334,
+        "endChar": 63
+      },
+      "revId": "f89337ff2b1329ae2062790719e4c48283bbcaca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d27946d_d1b29b20",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-11T03:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de1bc5de_bc574fc7",
       "range": {
         "startLine": 334,
         "startChar": 3,
