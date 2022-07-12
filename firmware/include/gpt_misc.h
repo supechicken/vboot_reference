@@ -76,7 +76,7 @@ enum {
  * depthcharge does not have logic to properly setup stored_on_device and
  * gpt_drive_sectors, but it does do a memset(gpt, 0, sizeof(GptData)). And so,
  * GPT_STORED_ON_DEVICE should be 0 to make stored_on_device compatible with
- * present behavior. At the same time, in vboot_kernel:LoadKernel(), and
+ * present behavior. At the same time, in vboot_kernel:vb2api_load_kernel(), and
  * cgpt_common:GptLoad(), we need to have simple shims to set gpt_drive_sectors
  * to drive_sectors.
  *

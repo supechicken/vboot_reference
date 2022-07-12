@@ -16,7 +16,6 @@
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
-#include "load_kernel_fw.h"
 #include "vboot_api.h"
 
 enum vb2_load_partition_flags {
@@ -348,7 +347,7 @@ static vb2_error_t vb2_verify_kernel_vblock(
  * @return VB2_SUCCESS, or non-zero error code.
  */
 static vb2_error_t vb2_load_partition(
-	struct vb2_context *ctx, VbSelectAndLoadKernelParams *params,
+	struct vb2_context *ctx, vb2_kernel_params *params,
 	VbExStream_t stream, uint32_t lpflags)
 {
 	uint32_t read_ms = 0, start_ts;
@@ -462,7 +461,7 @@ static vb2_error_t vb2_load_partition(
 }
 
 static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
-				     VbSelectAndLoadKernelParams *params,
+				     vb2_kernel_params *params,
 				     VbDiskInfo *disk_info,
 				     uint64_t sector) {
 	VbExStream_t stream;
@@ -488,7 +487,7 @@ static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 }
 
 static vb2_error_t try_minios_sectors(struct vb2_context *ctx,
-				      VbSelectAndLoadKernelParams *params,
+				      vb2_kernel_params *params,
 				      VbDiskInfo *disk_info,
 				      uint64_t start, uint64_t count)
 {
@@ -534,7 +533,7 @@ static vb2_error_t try_minios_sectors(struct vb2_context *ctx,
 }
 
 static vb2_error_t try_minios_sector_region(struct vb2_context *ctx,
-					    VbSelectAndLoadKernelParams *params,
+					    vb2_kernel_params *params,
 					    VbDiskInfo *disk_info,
 					    int end_region)
 {
@@ -577,9 +576,10 @@ static vb2_error_t try_minios_sector_region(struct vb2_context *ctx,
  * the start and end of disks are considered, and the kernel must start exactly
  * at the first byte of the sector.
  */
-vb2_error_t LoadMiniOsKernel(struct vb2_context *ctx,
-			     VbSelectAndLoadKernelParams *params,
-			     VbDiskInfo *disk_info, uint32_t minios_flags)
+vb2_error_t vb2api_load_minios_kernel(struct vb2_context *ctx,
+				      vb2_kernel_params *params,
+				      VbDiskInfo *disk_info,
+				      uint32_t minios_flags)
 {
 	vb2_error_t rv;
 	int end_region_first = vb2_nv_get(ctx, VB2_NV_MINIOS_PRIORITY);
@@ -597,9 +597,9 @@ vb2_error_t LoadMiniOsKernel(struct vb2_context *ctx,
 	return rv;
 }
 
-vb2_error_t LoadKernel(struct vb2_context *ctx,
-		       VbSelectAndLoadKernelParams *params,
-		       VbDiskInfo *disk_info)
+vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
+			       vb2_kernel_params *params,
+			       VbDiskInfo *disk_info)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int found_partitions = 0;

@@ -207,7 +207,7 @@ static void ReadWriteGptTest(void)
 	 * Invalidate primary GPT header and check that it is
 	 * repaired by GptRepair().
 	 *
-	 * This would normally be called by LoadKernel()->GptInit()
+	 * This would normally be called by vb2api_load_kernel()->GptInit()
 	 * but this callback is mocked in these tests.
 	 */
 	ResetMocks();
@@ -232,7 +232,7 @@ static void ReadWriteGptTest(void)
 	 * Invalidate secondary GPT header and check that it can be
 	 * repaired by GptRepair().
 	 *
-	 * This would normally be called by LoadKernel()->GptInit()
+	 * This would normally be called by vb2api_load_kernel()->GptInit()
 	 * but this callback is mocked in these tests.
 	 */
 	ResetMocks();
