@@ -44,7 +44,7 @@ typedef struct VbSharedDataHeader VbSharedDataHeader;
  */
 typedef void *VbExDiskHandle_t;
 
-typedef struct VbSelectAndLoadKernelParams {
+typedef struct VbKernelParams {
 	/* Inputs to VbTryLoadKernel() */
 	/* Destination buffer for kernel (normally at 0x100000 on x86) */
 	void *kernel_buffer;
@@ -66,7 +66,7 @@ typedef struct VbSelectAndLoadKernelParams {
 	uint8_t partition_guid[16];
 	/* Flags set by signer */
 	uint32_t flags;
-} VbSelectAndLoadKernelParams;
+} VbKernelParams;
 
 /**
  * Attempt loading a kernel from the specified type(s) of disks.
@@ -80,7 +80,7 @@ typedef struct VbSelectAndLoadKernelParams {
  * @return VB2_SUCCESS or the most specific VB2_ERROR_LK error.
  */
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags,
-			    VbSelectAndLoadKernelParams *kparams);
+			    VbKernelParams *kparams);
 
 /* miniOS flags */
 
@@ -104,7 +104,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags,
  */
 vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx,
 				  uint32_t minios_flags,
-				  VbSelectAndLoadKernelParams *kparams);
+				  VbKernelParams *kparams);
 
 /*****************************************************************************/
 /* Disk access (previously in boot_device.h) */

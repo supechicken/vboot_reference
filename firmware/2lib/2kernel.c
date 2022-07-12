@@ -13,7 +13,7 @@
 #include "vboot_api.h"
 
 vb2_error_t vb2api_normal_boot(struct vb2_context *ctx,
-			       VbSelectAndLoadKernelParams *kparams)
+			       VbKernelParams *kparams)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t max_rollforward = vb2_nv_get(ctx,
