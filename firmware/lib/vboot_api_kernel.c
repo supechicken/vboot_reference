@@ -29,7 +29,7 @@ static int is_valid_disk(VbDiskInfo *info, uint32_t disk_flags)
 static vb2_error_t VbTryLoadKernelImpl(struct vb2_context *ctx,
 				       uint32_t disk_flags, int minios,
 				       uint32_t minios_flags,
-				       VbSelectAndLoadKernelParams *kparams)
+				       VbKernelParams *kparams)
 {
 	vb2_error_t rv = VB2_ERROR_LK_NO_DISK_FOUND;
 	VbDiskInfo* disk_info = NULL;
@@ -105,7 +105,7 @@ static vb2_error_t VbTryLoadKernelImpl(struct vb2_context *ctx,
 
 test_mockable
 vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags,
-			    VbSelectAndLoadKernelParams *kparams)
+			    VbKernelParams *kparams)
 {
 	ctx->flags &= ~VB2_CONTEXT_DISABLE_TPM;
 	return VbTryLoadKernelImpl(ctx, disk_flags, 0, 0, kparams);
@@ -114,7 +114,7 @@ vb2_error_t VbTryLoadKernel(struct vb2_context *ctx, uint32_t disk_flags,
 test_mockable
 vb2_error_t VbTryLoadMiniOsKernel(struct vb2_context *ctx,
 				  uint32_t minios_flags,
-				  VbSelectAndLoadKernelParams *kparams)
+				  VbKernelParams *kparams)
 {
 	VB2_TRY(VbTryLoadKernelImpl(ctx, VB_DISK_FLAG_FIXED, 1, minios_flags,
 				    kparams));

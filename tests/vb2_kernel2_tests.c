@@ -26,7 +26,7 @@ static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static uint32_t kernel_version;
 static uint32_t new_version;
-static VbSelectAndLoadKernelParams kparams;
+static VbKernelParams kparams;
 
 /* Mocked function data */
 static struct vb2_gbb_header mock_gbb;
@@ -78,7 +78,7 @@ void vb2_secdata_kernel_set(struct vb2_context *c,
 }
 
 vb2_error_t VbTryLoadKernel(struct vb2_context *c, uint32_t disk_flags,
-			    VbSelectAndLoadKernelParams *kpa)
+			    VbKernelParams *kpa)
 {
 	/*
 	 * TODO: Currently we don't have a good way of testing for an ordered

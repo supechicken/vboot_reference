@@ -49,7 +49,7 @@ static struct vb2_workbuf wb;
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 
-static VbSelectAndLoadKernelParams lkp;
+static VbKernelParams lkp;
 static VbDiskInfo disk_info;
 static struct vb2_keyblock kbh;
 static struct vb2_kernel_preamble kph;

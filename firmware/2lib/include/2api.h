@@ -852,7 +852,7 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx);
  * @return VB2_SUCCESS, or error code on error.
  */
 vb2_error_t vb2api_normal_boot(struct vb2_context *ctx,
-			       VbSelectAndLoadKernelParams *kparams);
+			       VbKernelParams *kparams);
 
 /**
  * Finalize for kernel verification stage.
