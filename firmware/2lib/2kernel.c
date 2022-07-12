@@ -5,24 +5,18 @@
  * Kernel selection, loading, verification, and booting.
  */
 
+#include "2api.h"
 #include "2common.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2rsa.h"
 #include "2secdata.h"
-#include "vboot_api.h"
 
-vb2_error_t vb2api_normal_boot(struct vb2_context *ctx,
-			       VbSelectAndLoadKernelParams *kparams)
+vb2_error_t vb2api_check_kernel_version(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t max_rollforward = vb2_nv_get(ctx,
 					      VB2_NV_KERNEL_MAX_ROLLFORWARD);
-
-	/* Boot from fixed disk only */
-	VB2_DEBUG("Entering\n");
-
-	vb2_error_t rv = VbTryLoadKernel(ctx, VB_DISK_FLAG_FIXED, kparams);
 
 	VB2_DEBUG("Checking if TPM kernel version needs advancing\n");
 
@@ -37,7 +31,7 @@ vb2_error_t vb2api_normal_boot(struct vb2_context *ctx,
 	 */
 	if (vb2_nv_get(ctx, VB2_NV_FW_RESULT) == VB2_FW_RESULT_TRYING) {
 		VB2_DEBUG("Trying new FW; skip kernel version roll-forward.\n");
-		return rv;
+		return VB2_SUCCESS;
 	}
 
 	/*
@@ -61,7 +55,7 @@ vb2_error_t vb2api_normal_boot(struct vb2_context *ctx,
 				       sd->kernel_version);
 	}
 
-	return rv;
+	return VB2_SUCCESS;
 }
 
 int vb2api_is_developer_signed(struct vb2_context *ctx)
