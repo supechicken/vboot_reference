@@ -80,6 +80,7 @@
 #ifndef __ASSEMBLER__
 #include <stdint.h>
 typedef uint32_t vb2_gbb_flags_t;
+typedef void *vb2_disk_handle_t;
 #endif
 
 /* Size of legacy VbSharedDataHeader struct.  Defined here to avoid including
