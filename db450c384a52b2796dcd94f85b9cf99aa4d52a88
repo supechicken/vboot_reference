@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6af04a91_98c1715d",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "I feel like you could reduce a bit of code duplication in here (and maybe get rid of the hard-to-read fallthrough case) with something like\n```\nchar *s \u003d NULL;\nchar *b \u003d NULL;\nchar *k \u003d NULL;\n\nswitch (sign_option.type) {\n  case FILE_TYPE_BIOS_IMAGE:\n  case FILE_TYPE_RAW_FIRMWARE:\n    s \u003d \"firmware_data_key\";\n    b \u003d \"firmware\";\n    k \u003d \"kernel_subkey\";\n    break;\n  case ...\n}\n\nif (s \u0026\u0026 !sign_option.signprivate) {\n  if (asprintf(\u0026buf, \"%s/%s.vbprivk\", sign_option.keysetdir, s) \u003c\u003d 0)\n    ...\n  VB2_DEBUG(\"Loading %s from %s\\n\", s, buf);\n  ...\n}\n```",
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d61e08_54dad7ac",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "I\u0027d suggest making these INFO() and clarifying that this is being read from the default key directory (e.g. \"Loading xxx from default keyset: %s\").",
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfa4d4f_0b941457",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "Something (either here or in the description for the -s, -b and -k options) should clarify that this directory is used for those keys that aren\u0027t passed explicitly.",
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "334d02ae_53a93f6a",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 3
@@ -61,6 +112,70 @@
         "endLine": 472,
         "endChar": 57
       },
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2515f946_e3463aab",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "None of these are required anymore since -K has a usable default now, so -s, -b and -k should be moved to the optional section.",
+      "parentUuid": "776b3516_8996a7c7",
+      "range": {
+        "startLine": 468,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 57
+      },
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95244e86_4c2161a7",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "This actually prints the wrong thing for `futility sign -K xxx --help`. Just use a preprocessor constant and put it straight in the help string instead?",
+      "range": {
+        "startLine": 543,
+        "startChar": 46,
+        "endLine": 543,
+        "endChar": 67
+      },
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fd2ed3_a6226fb6",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "Using this in tests that test something different is fine, but there should also be tests to confirm that this and the other options work as intended (e.g. overriding some but not others and making sure it still uses the right combination, that sort of thing).",
       "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

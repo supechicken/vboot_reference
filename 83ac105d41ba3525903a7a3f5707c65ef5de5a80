@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "893ab540_2c5a8195",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "Yes, generally those macros should be used instead of raw fprintf, unless you actually need to suppress the prefix (e.g. when using multiple calls to print on the same line, not here). You don\u0027t need to go fix all the existing code, though (unless you want to).",
+      "parentUuid": "c077a97c_b0ba9e4e",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 47
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a27427bc_a516784c",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 2
@@ -193,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c9cd804_df8b3ab4",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "No, definitely don\u0027t require the slash please. If you want to enable using it like that, I like the stat() idea.",
+      "parentUuid": "7c598769_a2e41e2d",
+      "range": {
+        "startLine": 360,
+        "startChar": 23,
+        "endLine": 360,
+        "endChar": 41
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0dfe7c5f_5254933c",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 2
@@ -204,6 +252,30 @@
       "writtenOn": "2022-07-05T09:02:09Z",
       "side": 1,
       "message": "`FILE_TYPE_KERN_PREAMBLE` signing implementation requires only private key, when `FILE_TYPE_RAW_KERNEL` requires both: private key and keyblock. Does anyone know about any occurences, where `FILE_TYPE_KERN_PREAMBLE` is used without keyblock? In tests always both are used. Should be make keyblock param mandatory?",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 30
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0dbad06_6ed9ebe1",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-12T23:38:23Z",
+      "side": 1,
+      "message": "Does it actually work when you call it like that? I don\u0027t think you can sign a kernel without a keyblock. Someone probably just forgot to check for that correctly in the option parsing but I assume it would still fail at some later point anyway.",
+      "parentUuid": "0dfe7c5f_5254933c",
       "range": {
         "startLine": 373,
         "startChar": 1,
