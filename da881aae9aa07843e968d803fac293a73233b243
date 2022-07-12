@@ -136,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e236cef_10d67a9d",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-12T03:44:54Z",
+      "side": 1,
+      "message": "I were wrong. Thanks for the correction\n\nWhat about\nTEST_NEQ recovery_reason, 0",
+      "parentUuid": "5120f1ec_86533fd4",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afc27b6d_1d6e5b76",
         "filename": "tests/common/boot_mode.c",
         "patchSetId": 7
@@ -171,6 +195,30 @@
       "side": 1,
       "message": "When the recovery switch is pressed, `VB2_CONTEXT_FORCE_RECOVERY_MODE` should always be set. Also, in manual recovery, `recovery_reason` should always be non-zero (regardless of whether it\u0027s `VB2_RECOVERY_RO_MANUAL` or others).",
       "parentUuid": "afc27b6d_1d6e5b76",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30cb2c87_0387f715",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-12T03:44:54Z",
+      "side": 1,
+      "message": "Yes, I misunderstood the part -- I should say,\nwhen GBB is forcded the board to manual recovery, this flag might not be true.\n(e.g. VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY)\n\nBut since that might be a rare case in unit test, we might just adjust it manually when we really need it.",
+      "parentUuid": "791cf3ad_d27dc8f5",
       "range": {
         "startLine": 23,
         "startChar": 16,
@@ -230,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7adc43c3_8a051e7e",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-12T03:44:54Z",
+      "side": 1,
+      "message": "The what about adding __func__ e.g.\n\n\"SET_BOOT_MODE: Undefined boot mode\"",
+      "parentUuid": "2df91a78_3ffa50f8",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46982a1f_e725828e",
         "filename": "tests/common/boot_mode.c",
         "patchSetId": 7
@@ -259,6 +331,24 @@
       "side": 1,
       "message": "Hmmm... `VB2_SD_STATUS_RECOVERY_DECIDED` is not directly related to the boot mode. I guess this is just the limitation of vboot unit tests, where we can\u0027t really make sure `sd` in tests is exactly the same as the one running on Chromebooks, which is modified in every vboot stage (vb2api_fw_phase*, vb2api_kernel_phase*).\n\nOne benefit of setting `VB2_SD_STATUS_RECOVERY_DECIDED` is to check whether `VB2_REC_OR_DIE` is called (by checking if `vb2ex_abort` is called), but still, unrelated to boot_mode.",
       "parentUuid": "46982a1f_e725828e",
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b039cf01_d6711688",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-12T03:44:54Z",
+      "side": 1,
+      "message": "In that case, we should note the scope of what set_boot_mode will do (or even will not do) to prevent further confusion. \n\ne.g. \n\n\"Set the boot mode to the expected boot mode and set the corresponding ctx flag.\"\n\nNot sure if we want to mention the SD flag is not guaranteed to be correct, only recovery_reason will be set (IMO not necessary)",
+      "parentUuid": "3f1afc0a_55bddb55",
       "revId": "da881aae9aa07843e968d803fac293a73233b243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
