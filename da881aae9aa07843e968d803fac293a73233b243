@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09937724_ac0cb8c1",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:52:56Z",
+      "side": 1,
+      "message": "Sort",
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5961a3c8_90b1bdff",
         "filename": "tests/common/boot_mode.c",
         "patchSetId": 7
@@ -14,6 +31,30 @@
       "writtenOn": "2022-07-11T09:55:45Z",
       "side": 1,
       "message": "Could consider add TEST_EQ(recovery_reason, VB2_RECOVERY_RO_MANUAL, \"  recovery_reason should be 0x02 for manual recovery\"\n\nOr what about we just ignore the \"recovery reason\" for manual recovery since it should always be 0x02",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5120f1ec_86533fd4",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:52:56Z",
+      "side": 1,
+      "message": "No, if the 3-key combo is pressed from the broken screen, the recovery_reason will be the same as in the broken screen. See `vb2_check_recovery`.",
+      "parentUuid": "5961a3c8_90b1bdff",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -49,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "791cf3ad_d27dc8f5",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:52:56Z",
+      "side": 1,
+      "message": "When the recovery switch is pressed, `VB2_CONTEXT_FORCE_RECOVERY_MODE` should always be set. Also, in manual recovery, `recovery_reason` should always be non-zero (regardless of whether it\u0027s `VB2_RECOVERY_RO_MANUAL` or others).",
+      "parentUuid": "afc27b6d_1d6e5b76",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d9437e4_be6be5b1",
         "filename": "tests/common/boot_mode.c",
         "patchSetId": 7
@@ -72,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2df91a78_3ffa50f8",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:52:56Z",
+      "side": 1,
+      "message": "We usually have the 2-space indent for non-first messages in each test case. As we\u0027re not sure how `set_boot_mode` will be used (in fact most existing tests call it even before calling the function under test), the indent doesn\u0027t make much sense to me.",
+      "parentUuid": "5d9437e4_be6be5b1",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46982a1f_e725828e",
         "filename": "tests/common/boot_mode.c",
         "patchSetId": 7
@@ -83,6 +172,24 @@
       "writtenOn": "2022-07-11T09:55:45Z",
       "side": 1,
       "message": "We still have some sd flags related to these, e.g.\n\nVB2_SD_STATUS_RECOVERY_DECIDED\nVBSD_BOOT_REC_SWITCH_ON \u003d\u003d\u003e We might not care about this anymore\n\n@yupingso for comments",
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1afc0a_55bddb55",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:52:56Z",
+      "side": 1,
+      "message": "Hmmm... `VB2_SD_STATUS_RECOVERY_DECIDED` is not directly related to the boot mode. I guess this is just the limitation of vboot unit tests, where we can\u0027t really make sure `sd` in tests is exactly the same as the one running on Chromebooks, which is modified in every vboot stage (vb2api_fw_phase*, vb2api_kernel_phase*).\n\nOne benefit of setting `VB2_SD_STATUS_RECOVERY_DECIDED` is to check whether `VB2_REC_OR_DIE` is called (by checking if `vb2ex_abort` is called), but still, unrelated to boot_mode.",
+      "parentUuid": "46982a1f_e725828e",
       "revId": "da881aae9aa07843e968d803fac293a73233b243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +230,30 @@
       "writtenOn": "2022-07-11T09:55:45Z",
       "side": 1,
       "message": "What is the reason to put this comments above SET_BOOT_MODE but not set_boot_mode?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c416d8d_bfc9813c",
+        "filename": "tests/common/boot_mode.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:52:56Z",
+      "side": 1,
+      "message": "Here\u0027s my thought. With the macro, test code shouldn\u0027t (and doesn\u0027t need to) call `set_boot_mode` directly. Therefore we may rename `set_boot_mode` to something like `_set_boot_mode` or `set_boot_mode_impl`.",
+      "parentUuid": "021ceb24_c75f676e",
       "range": {
         "startLine": 11,
         "startChar": 0,
