@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d48e3ddb_1fe2d78f",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:26:40Z",
+      "side": 1,
+      "message": "Sounds like a good idea to me.",
+      "parentUuid": "7d254e07_8c4277f5",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 23
+      },
+      "revId": "5155e5918f000604660980f3d31757316dbad11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b69f957e_078dc28b",
         "filename": "Makefile",
         "patchSetId": 1
@@ -43,6 +67,47 @@
         "endLine": 703,
         "endChar": 18
       },
+      "revId": "5155e5918f000604660980f3d31757316dbad11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5180dc3_e83b6d0f",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:26:40Z",
+      "side": 1,
+      "message": "Yeah I think this can be moved to common/ as well.",
+      "parentUuid": "b69f957e_078dc28b",
+      "range": {
+        "startLine": 703,
+        "startChar": 7,
+        "endLine": 703,
+        "endChar": 18
+      },
+      "revId": "5155e5918f000604660980f3d31757316dbad11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ced6a6_ee0dfc56",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:26:40Z",
+      "side": 1,
+      "message": "Sort the headers. Same for all files. Tools such as clang-format or https://github.com/segoon/sort-cpp-includes might be helpful.",
       "revId": "5155e5918f000604660980f3d31757316dbad11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
