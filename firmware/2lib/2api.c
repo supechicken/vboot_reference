@@ -366,20 +366,39 @@ int vb2api_check_hash(struct vb2_context *ctx)
 	return vb2api_check_hash_get_digest(ctx, NULL, 0);
 }
 
-uint16_t vb2api_get_fw_boot_info(struct vb2_context *ctx)
+static uint16_t vb2api_fill_boot_config(struct vb2_context *ctx)
+{
+	union vb2_boot_config config;
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	config.mode = ctx->boot_mode;
+	VB2_DEBUG("boot_mode=`%s` ", vb2api_boot_mode_string(config.mode));
+	if (ctx->boot_mode == VB2_BOOT_MODE_DIAGNOSTICS) {
+		config.misc = LAUNCH_DIAGNOSTICS;
+		VB2_DEBUG("diag_type=`%s` ", vb2api_diag_type_string(config.misc));
+	}
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+		config.reason = sd->recovery_reason;
+		VB2_DEBUG("recovery_reason=`%s` ", vb2api_recovery_reason_string(config.reason));
+	}
+
+	return config.data;
+}
+
+uint32_t vb2api_get_fw_boot_info(struct vb2_context *ctx)
 {
 	union vb2_fw_boot_info info;
+
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
 	info.tries = vb2_nv_get(ctx, VB2_NV_TRY_COUNT);
 	info.slot = sd->fw_slot;
 	info.prev_slot = sd->last_fw_slot;
 	info.prev_result = sd->last_fw_result;
-	info.boot_mode = ctx->boot_mode;
+	info.boot_data = vb2api_fill_boot_config(ctx);
 
-	VB2_DEBUG("boot_mode=`%s` fw_tried=`%s` fw_try_count=%d "
+	VB2_DEBUG("fw_tried=`%s` fw_try_count=%d "
 		  "fw_prev_tried=`%s` fw_prev_result=`%s`.\n",
-		  vb2api_boot_mode_string(info.boot_mode),
 		  vb2api_slot_string(info.slot), info.tries,
 		  vb2api_slot_string(info.prev_slot),
 		  vb2api_result_string(info.prev_result));

@@ -1574,14 +1574,26 @@ uint32_t vb2ex_mtime(void);
  */
 void vb2ex_msleep(uint32_t msec);
 
-union vb2_fw_boot_info {
+#define LAUNCH_DIAGNOSTICS 0x01
+
+union vb2_boot_config {
 	uint16_t data;
 	struct {
-		uint16_t tries       : 4;
-		uint16_t slot        : 1;
-		uint16_t prev_slot   : 1;
-		uint16_t prev_result : 2;
-		uint16_t boot_mode   : 8;
+		uint16_t mode   : 7; /* to capture `boot_mode` */
+		uint16_t misc   : 1; /* for fields like `diag type` */
+		uint16_t reason : 8; /* to capture `recovery reason` */
+	};
+};
+
+union vb2_fw_boot_info {
+	uint32_t data;
+	struct {
+		uint32_t tries       : 4;
+		uint32_t slot        : 1;
+		uint32_t prev_slot   : 1;
+		uint32_t prev_result : 2;
+		uint32_t boot_data   : 16; /* Refer to union vb2_boot_config for details */
+		uint32_t reserve     : 8;
 	};
 };
 
@@ -1595,7 +1607,195 @@ union vb2_fw_boot_info {
  * @param ctx          Vboot context
  * @return filled out vb2 info word (as per `union vb2_info`).
  */
-uint16_t vb2api_get_fw_boot_info(struct vb2_context *ctx);
+uint32_t vb2api_get_fw_boot_info(struct vb2_context *ctx);
+
+/**
+ * Convert Firmware Recovery Reason into supported string
+ *
+ * @return char*   firmware recovery reason string
+ */
+static inline const char *vb2api_recovery_reason_string(uint8_t reason)
+{
+	switch ((enum vb2_nv_recovery)reason) {
+	/* 0x00 */ case VB2_RECOVERY_NOT_REQUESTED:
+		return "Undefined";
+	/* 0x01 */ case VB2_RECOVERY_LEGACY:
+		return "Legacy Utility";
+	/* 0x02 */ case VB2_RECOVERY_RO_MANUAL:
+		return "Recovery Button Pressed";
+	/* 0x03 */ case VB2_RECOVERY_RO_INVALID_RW:
+		return "RW Failed Signature Check";
+	/* 0x04 */ case VB2_RECOVERY_DEPRECATED_RO_S3_RESUME:
+		return "S3 Resume Failed";
+	/* 0x05 */ case VB2_RECOVERY_DEPRECATED_RO_TPM_ERROR:
+		return "TPM Error in RO Firmware";
+	/* 0x06 */ case VB2_RECOVERY_RO_SHARED_DATA:
+		return "Shared Data Error in RO Firmware";
+	/* 0x07 */ case VB2_RECOVERY_DEPRECATED_RO_TEST_S3:
+		return "Test Error from S3 Resume()";
+	/* 0x08 */ case VB2_RECOVERY_DEPRECATED_RO_TEST_LFS:
+		return "Test Error from LoadFirmwareSetup()";
+	/* 0x09 */ case VB2_RECOVERY_DEPRECATED_RO_TEST_LF:
+		return "Test Error from LoadFirmware()";
+	/* 0x10 */ case VB2_RECOVERY_DEPRECATED_RW_NOT_DONE:
+		return "RW firmware check not done";
+	/* 0x11 */ case VB2_RECOVERY_DEPRECATED_RW_DEV_FLAG_MISMATCH:
+		return "RW firmware developer flag mismatch";
+	/* 0x12 */ case VB2_RECOVERY_DEPRECATED_RW_REC_FLAG_MISMATCH:
+		return "RW firmware recovery flash mismatch";
+	/* 0x13 */ case VB2_RECOVERY_FW_KEYBLOCK:
+		return "RW firmware unable to verify keyblock";
+	/* 0x14 */ case VB2_RECOVERY_FW_KEY_ROLLBACK:
+		return "RW firmware key version rollback detected";
+	/* 0x15 */ case VB2_RECOVERY_DEPRECATED_RW_DATA_KEY_PARSE:
+		return "RW firmware unable to parse data key";
+	/* 0x16 */ case VB2_RECOVERY_FW_PREAMBLE:
+		return "RW firmware unable to verify preamble";
+	/* 0x17 */ case VB2_RECOVERY_FW_ROLLBACK:
+		return "RW firmware version rollback detected";
+	/* 0x18 */ case VB2_RECOVERY_DEPRECATED_FW_HEADER_VALID:
+		return "RW firmware header is valid";
+	/* 0x19 */ case VB2_RECOVERY_DEPRECATED_FW_GET_FW_BODY:
+		return "RW firmware unable to get firmware body";
+	/* 0x1a */ case VB2_RECOVERY_DEPRECATED_FW_HASH_WRONG_SIZE:
+		return "RW firmware hash is wrong size";
+	/* 0x1b */ case VB2_RECOVERY_FW_BODY:
+		return "RW firmware unable to verify firmware body";
+	/* 0x1c */ case VB2_RECOVERY_DEPRECATED_FW_VALID:
+		return "RW firmware is valid";
+	/* 0x1d */ case VB2_RECOVERY_DEPRECATED_FW_NO_RO_NORMAL:
+		return "RW firmware read-only normal path is not supported";
+	/* 0x20 */ case VB2_RECOVERY_RO_FIRMWARE:
+		return "Firmware Boot Failure";
+	/* 0x21 */ case VB2_RECOVERY_RO_TPM_REBOOT:
+		return "Recovery Mode TPM Reboot";
+	/* 0x22 */ case VB2_RECOVERY_EC_SOFTWARE_SYNC:
+		return "EC Software Sync Error";
+	/* 0x23 */ case VB2_RECOVERY_EC_UNKNOWN_IMAGE:
+		return "Unable to determine active EC image";
+	/* 0x24 */ case VB2_RECOVERY_DEPRECATED_EC_HASH:
+		return "EC software sync error obtaining EC image hash";
+	/* 0x25 */ case VB2_RECOVERY_DEPRECATED_EC_EXPECTED_IMAGE:
+		return "EC software sync error obtaining expected EC image from BIOS";
+	/* 0x26 */ case VB2_RECOVERY_EC_UPDATE:
+		return "EC software sync error updating EC";
+	/* 0x27 */ case VB2_RECOVERY_EC_JUMP_RW:
+		return "EC software sync unable to jump to EC-RW";
+	/* 0x28 */ case VB2_RECOVERY_EC_PROTECT:
+		return "EC software sync protection error";
+	/* 0x29 */ case VB2_RECOVERY_EC_EXPECTED_HASH:
+		return "EC software sync error obtaining expected EC hash from BIOS";
+	/* 0x2a */ case VB2_RECOVERY_DEPRECATED_EC_HASH_MISMATCH:
+		return "EC software sync error comparing expected EC hash and image";
+	/* 0x2b */ case VB2_RECOVERY_SECDATA_FIRMWARE_INIT:
+		return "Secure NVRAM (TPM) initialization error";
+	/* 0x2c */ case VB2_RECOVERY_GBB_HEADER:
+		return "Error parsing GBB header";
+	/* 0x2d */ case VB2_RECOVERY_TPM_CLEAR_OWNER:
+		return "Error trying to clear TPM owner";
+	/* 0x2e */ case VB2_RECOVERY_DEV_SWITCH:
+		return "Error reading or updating developer switch";
+	/* 0x2f */ case VB2_RECOVERY_FW_SLOT:
+		return "Error selecting RW firmware slot";
+	/* 0x30 */ case VB2_RECOVERY_AUXFW_UPDATE:
+		return "Error updating AUX firmware";
+	/* 0x31 */ case VB2_RECOVERY_INTEL_CSE_LITE_SKU:
+		return "Intel CSE Lite SKU fimrware failure";
+	/* 0x3f */ case VB2_RECOVERY_RO_UNSPECIFIED:
+		return "Unknown Error in RO Firmware";
+	/* 0x41 */ case VB2_RECOVERY_DEPRECATED_RW_DEV_SCREEN:
+		return "User Requested from Developer Screen";
+	/* 0x42 */ case VB2_RECOVERY_DEPRECATED_RW_NO_OS:
+		return "No OS Kernel Detected";
+	/* 0x43 */ case VB2_RECOVERY_RW_INVALID_OS:
+		return "OS kernel or rootfs failed signature check";
+	/* 0x44 */ case VB2_RECOVERY_DEPRECATED_RW_TPM_ERROR:
+		return "TPM Error in RW Firmware";
+	/* 0x45 */ case VB2_RECOVERY_DEPRECATED_RW_DEV_MISMATCH:
+		return "RW Dev Firmware but not Dev Mode";
+	/* 0x46 */ case VB2_RECOVERY_RW_SHARED_DATA:
+		return "Shared Data Error in RW Firmware";
+	/* 0x47 */ case VB2_RECOVERY_DEPRECATED_RW_TEST_LK:
+		return "Test Error from LoadKernel()";
+	/* 0x48 */ case VB2_RECOVERY_DEPRECATED_RW_NO_DISK:
+		return "No Bootable Disk Found";
+	/* 0x49 */ case VB2_RECOVERY_TPM_E_FAIL:
+		return "TPM_E_FAIL or TPM_E_FAILEDSELFTEST";
+	/* 0x50 */ case VB2_RECOVERY_RO_TPM_S_ERROR:
+		return "TPM setup error in read-only firmware";
+	/* 0x51 */ case VB2_RECOVERY_RO_TPM_W_ERROR:
+		return "TPM write error in read-only firmware";
+	/* 0x52 */ case VB2_RECOVERY_RO_TPM_L_ERROR:
+		return "TPM lock error in read-only firmware";
+	/* 0x53 */ case VB2_RECOVERY_RO_TPM_U_ERROR:
+		return "TPM update error in read-only firmware";
+	/* 0x54 */ case VB2_RECOVERY_RW_TPM_R_ERROR:
+		return "TPM read error in rewritable firmware";
+	/* 0x55 */ case VB2_RECOVERY_RW_TPM_W_ERROR:
+		return "TPM write error in rewritable firmware";
+	/* 0x56 */ case VB2_RECOVERY_RW_TPM_L_ERROR:
+		return "TPM lock error in rewritable firmware";
+	/* 0x57 */ case VB2_RECOVERY_EC_HASH_FAILED:
+		return "EC software sync unable to get EC image hash";
+	/* 0x58 */ case VB2_RECOVERY_EC_HASH_SIZE:
+		return "EC software sync invalid image hash size";
+	/* 0x59 */case VB2_RECOVERY_LK_UNSPECIFIED:
+		return "Unspecified error while trying to load kernel";
+	/* 0x5a */case VB2_RECOVERY_RW_NO_DISK:
+		return "No bootable storage device in system";
+	/* 0x5b */ case VB2_RECOVERY_RW_NO_KERNEL:
+		return "No bootable kernel found on disk";
+	/* 0x5c */ case VB2_RECOVERY_DEPRECATED_RW_BCB_ERROR:
+		return "BCB partition error on disk";
+	/* 0x5d */ case VB2_RECOVERY_SECDATA_KERNEL_INIT:
+		return "Kernel secure NVRAM (TPM) initialization error";
+	/* 0x5e */ case VB2_RECOVERY_DEPRECATED_FW_FASTBOOT:
+		return "Fastboot-mode requested in firmware";
+	/* 0x5f */ case VB2_RECOVERY_RO_TPM_REC_HASH_L_ERROR:
+		return "Recovery hash space lock error in RO firmware";
+	/* 0x60 */ case VB2_RECOVERY_TPM_DISABLE_FAILED:
+		return "Failed to disable TPM before running untrusted code";
+	/* 0x61 */ case VB2_RECOVERY_ALTFW_HASH_MISMATCH:
+		return "Verification of alternative firmware payload failed";
+	/* 0x62 */ case VB2_RECOVERY_SECDATA_FWMP_INIT:
+		return "FWMP secure data initialization failed";
+	/* 0x63 */ case VB2_RECOVERY_CR50_BOOT_MODE:
+		return "Failed to get boot mode from TPM/Cr50";
+	/* 0x64 */ case VB2_RECOVERY_ESCAPE_NO_BOOT:
+		return "Attempt to escape from NO_BOOT mode was detected";
+	/* 0x7f */ case VB2_RECOVERY_RW_UNSPECIFIED:
+		return "Unspecified/unknown error in RW firmware";
+	/* 0x81 */ case VB2_RECOVERY_DEPRECATED_KE_DM_VERITY:
+		return "DM-verity error";
+	/* 0xbf */ case VB2_RECOVERY_DEPRECATED_KE_UNSPECIFIED:
+		return "Unspecified/unknown error in kernel";
+	/* 0xc1 */ case VB2_RECOVERY_US_TEST:
+		return "Recovery mode test from user-mode";
+	/* 0xc2 */ case VB2_RECOVERY_DEPRECATED_BCB_USER_MODE:
+		return "User-mode requested recovery via BCB";
+	/* 0xc3 */ case VB2_RECOVERY_DEPRECATED_US_FASTBOOT:
+		return "User-mode requested fastboot mode";
+	/* 0xc4 */ case VB2_RECOVERY_TRAIN_AND_REBOOT:
+		return "User requested recovery for training memory and rebooting";
+	/* 0xff */ case VB2_RECOVERY_US_UNSPECIFIED:
+		return "Unknown Error in User Mode";
+	}
+
+	return "Unknown";
+}
+
+/**
+ * Convert Firmware Diagnostic Type into supported string
+ *
+ * @return char*   firmware diagnostic type string
+ */
+static inline const char *vb2api_diag_type_string(uint8_t type)
+{
+	if (type == LAUNCH_DIAGNOSTICS)
+		return "Launch Diagnostics";
+
+	return "Unknown";
+}
 
 /**
  * Convert Firmware Boot Mode into supported string
