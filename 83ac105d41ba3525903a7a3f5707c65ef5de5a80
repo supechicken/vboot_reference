@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c077a97c_b0ba9e4e",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-07-12T13:57:34Z",
+      "side": 1,
+      "message": "We already changed all debug functions to VB2_DEBUG, so it\u0027s probably fine to use ERROR() WARN() etc.\n\nSee if Julius has other concerns?",
+      "parentUuid": "ea401240_5ba3d951",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 47
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a27427bc_a516784c",
         "filename": "futility/cmd_sign.c",
         "patchSetId": 2
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Hmmm... good question. I\u0027m fine with either approach, but slightly prefer the simpler one.",
       "parentUuid": "a27427bc_a516784c",
+      "range": {
+        "startLine": 360,
+        "startChar": 23,
+        "endLine": 360,
+        "endChar": 41
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c598769_a2e41e2d",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-07-12T13:57:34Z",
+      "side": 1,
+      "message": "I think most people would not want to add \u0027/\u0027 for directories.\n\nIf you really want to support keyset with prefixes, try stat(), and add / if that is a folder.",
+      "parentUuid": "9a474615_c177bc8e",
       "range": {
         "startLine": 360,
         "startChar": 23,
