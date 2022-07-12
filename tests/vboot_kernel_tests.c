@@ -16,7 +16,6 @@
 #include "common/boot_mode.h"
 #include "common/tests.h"
 #include "gpt.h"
-#include "load_kernel_fw.h"
 #include "vboot_api.h"
 
 /* Mock kernel partition */
@@ -41,7 +40,7 @@ static int unpack_key_fail;
 static int gpt_flag_external;
 
 static struct vb2_gbb_header gbb;
-static VbSelectAndLoadKernelParams lkp;
+static vb2_kernel_params lkp;
 static VbDiskInfo disk_info;
 static struct vb2_keyblock kbh;
 static struct vb2_kernel_preamble kph;
@@ -280,11 +279,12 @@ void vb2api_fail(struct vb2_context *c, uint8_t reason, uint8_t subcode)
 
 static void TestLoadKernel(int expect_retval, const char *test_name)
 {
-	TEST_EQ(LoadKernel(ctx, &lkp, &disk_info), expect_retval, test_name);
+	TEST_EQ(vb2api_load_kernel(ctx, &lkp, &disk_info), expect_retval,
+		test_name);
 }
 
 /**
- * Trivial invalid calls to LoadKernel()
+ * Trivial invalid calls to vb2api_load_kernel()
  */
 static void InvalidParamsTest(void)
 {

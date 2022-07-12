@@ -376,6 +376,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2gbb.c \
 	firmware/2lib/2hmac.c \
 	firmware/2lib/2kernel.c \
+	firmware/2lib/2load_kernel.c \
 	firmware/2lib/2misc.c \
 	firmware/2lib/2nvstorage.c \
 	firmware/2lib/2packed_key.c \
@@ -395,8 +396,6 @@ FWLIB_SRCS = \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
 	firmware/lib/gpt_misc.c \
-	firmware/lib/vboot_api_kernel.c \
-	firmware/lib/vboot_kernel.c \
 	firmware/lib20/api_kernel.c \
 	firmware/lib20/kernel.c
 
@@ -715,7 +714,6 @@ TEST_NAMES = \
 	tests/gpt_misc_tests \
 	tests/sha_benchmark \
 	tests/subprocess_tests \
-	tests/vboot_api_kernel_tests \
 	tests/vboot_kernel_tests \
 	tests/vboot_kernel2_tests \
 	tests/verify_kernel
@@ -1287,7 +1285,6 @@ ifeq ($(filter-out 0,${MOCK_TPM})$(filter-out 0,${TPM2_MODE}),)
 # tlcl_tests only works when MOCK_TPM is disabled
 	${RUNTEST} ${BUILD_RUN}/tests/tlcl_tests
 endif
-	${RUNTEST} ${BUILD_RUN}/tests/vboot_api_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vboot_kernel2_tests
 
