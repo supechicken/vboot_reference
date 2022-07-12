@@ -22,6 +22,29 @@
       },
       "revId": "984f4449b288897e68ff8ba719671bd1de5b4ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770aec20_1adc1a5d",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T02:54:05Z",
+      "side": 1,
+      "message": "Do you want to rebase this before the CL adding `SET_BOOT_MODE`?",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 14
+      },
+      "revId": "984f4449b288897e68ff8ba719671bd1de5b4ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
