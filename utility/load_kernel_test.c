@@ -15,7 +15,6 @@
 #include "2misc.h"
 #include "2sysincludes.h"
 #include "host_common.h"
-#include "load_kernel_fw.h"
 
 #define LBA_BYTES 512
 #define KERNEL_BUFFER_SIZE 0xA00000
@@ -25,7 +24,7 @@ static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 
 /* Global variables for stub functions */
-static VbSelectAndLoadKernelParams lkp;
+static vb2_kernel_params lkp;
 static VbDiskInfo disk_info;
 static FILE *image_file = NULL;
 
@@ -99,7 +98,7 @@ int main(int argc, char* argv[])
 	int errorcnt = 0;
 	char *e = 0;
 
-	memset(&lkp, 0, sizeof(VbSelectAndLoadKernelParams));
+	memset(&lkp, 0, sizeof(vb2_kernel_params));
 	disk_info.bytes_per_lba = LBA_BYTES;
 	int boot_flags = BOOT_FLAG_RECOVERY;
 
@@ -243,9 +242,9 @@ int main(int argc, char* argv[])
 	if (boot_flags & BOOT_FLAG_DEVELOPER)
 		ctx->flags |= VB2_CONTEXT_DEVELOPER_MODE;
 
-	/* Call LoadKernel() */
-	rv = LoadKernel(ctx, &lkp, &disk_info);
-	printf("LoadKernel() returned %d\n", rv);
+	/* Call vb2api_load_kernel() */
+	rv = vb2api_load_kernel(ctx, &lkp, &disk_info);
+	printf("vb2api_load_kernel() returned %d\n", rv);
 
 	if (VB2_SUCCESS == rv) {
 		printf("Partition number:   %u\n", lkp.partition_number);

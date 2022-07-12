@@ -14,7 +14,6 @@
 #include "host_common.h"
 #include "util_misc.h"
 #include "vboot_api.h"
-#include "load_kernel_fw.h"
 
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
@@ -23,7 +22,7 @@ static struct vb2_shared_data *sd;
 
 static uint8_t *diskbuf;
 
-static VbSelectAndLoadKernelParams params;
+static vb2_kernel_params params;
 static VbDiskInfo disk_info;
 
 vb2_error_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,
@@ -123,8 +122,8 @@ int main(int argc, char *argv[])
 	}
 
 	/*
-	 * LoadKernel() cares only about VBNV_DEV_BOOT_SIGNED_ONLY, and only in
-	 * dev mode.  So just use defaults for nv storage.
+	 * vb2api_load_kernel() cares only about VBNV_DEV_BOOT_SIGNED_ONLY, and
+	 * only in dev mode.  So just use defaults for nv storage.
 	 */
 	vb2_nv_init(ctx);
 	/* We need to init kernel secdata for
@@ -134,9 +133,10 @@ int main(int argc, char *argv[])
 	vb2_secdata_kernel_init(ctx);
 
 	/* Try loading kernel */
-	rv = LoadKernel(ctx, &params, &disk_info);
+	rv = vb2api_load_kernel(ctx, &params, &disk_info);
 	if (rv != VB2_SUCCESS) {
-		fprintf(stderr, "LoadKernel() failed with code %d\n", rv);
+		fprintf(stderr, "vb2api_load_kernel() failed with code %d\n",
+			rv);
 		return 1;
 	}
 
