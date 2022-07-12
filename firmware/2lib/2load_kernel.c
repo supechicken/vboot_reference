@@ -16,7 +16,6 @@
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
-#include "load_kernel_fw.h"
 #include "vboot_api.h"
 
 enum vb2_load_partition_flags {
@@ -348,7 +347,7 @@ static vb2_error_t vb2_verify_kernel_vblock(
  * @return VB2_SUCCESS, or non-zero error code.
  */
 static vb2_error_t vb2_load_partition(
-	struct vb2_context *ctx, VbSelectAndLoadKernelParams *params,
+	struct vb2_context *ctx, struct vb2_kernel_params *params,
 	VbExStream_t stream, uint32_t lpflags)
 {
 	uint32_t read_ms = 0, start_ts;
@@ -462,8 +461,8 @@ static vb2_error_t vb2_load_partition(
 }
 
 static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
-				     VbSelectAndLoadKernelParams *params,
-				     VbDiskInfo *disk_info,
+				     struct vb2_kernel_params *params,
+				     struct vb2_disk_info *disk_info,
 				     uint64_t sector) {
 	VbExStream_t stream;
 	uint64_t sectors_left = disk_info->lba_count - sector;
@@ -488,8 +487,8 @@ static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 }
 
 static vb2_error_t try_minios_sectors(struct vb2_context *ctx,
-				      VbSelectAndLoadKernelParams *params,
-				      VbDiskInfo *disk_info,
+				      struct vb2_kernel_params *params,
+				      struct vb2_disk_info *disk_info,
 				      uint64_t start, uint64_t count)
 {
 	const uint32_t buf_size = count * disk_info->bytes_per_lba;
@@ -534,8 +533,8 @@ static vb2_error_t try_minios_sectors(struct vb2_context *ctx,
 }
 
 static vb2_error_t try_minios_sector_region(struct vb2_context *ctx,
-					    VbSelectAndLoadKernelParams *params,
-					    VbDiskInfo *disk_info,
+					    struct vb2_kernel_params *params,
+					    struct vb2_disk_info *disk_info,
 					    int end_region)
 {
 	const uint64_t disk_count_half = (disk_info->lba_count + 1) / 2;
@@ -577,14 +576,15 @@ static vb2_error_t try_minios_sector_region(struct vb2_context *ctx,
  * the start and end of disks are considered, and the kernel must start exactly
  * at the first byte of the sector.
  */
-vb2_error_t LoadMiniOsKernel(struct vb2_context *ctx,
-			     VbSelectAndLoadKernelParams *params,
-			     VbDiskInfo *disk_info, uint32_t minios_flags)
+vb2_error_t vb2api_load_minios_kernel(struct vb2_context *ctx,
+				      struct vb2_kernel_params *params,
+				      struct vb2_disk_info *disk_info,
+				      uint32_t minios_flags)
 {
 	vb2_error_t rv;
 	int end_region_first = vb2_nv_get(ctx, VB2_NV_MINIOS_PRIORITY);
 
-	if (minios_flags & VB_MINIOS_FLAG_NON_ACTIVE)
+	if (minios_flags & VB2_MINIOS_FLAG_NON_ACTIVE)
 		rv = VB2_ERROR_UNKNOWN;  /* Ignore active partition */
 	else
 		rv = try_minios_sector_region(ctx, params, disk_info,
@@ -597,9 +597,9 @@ vb2_error_t LoadMiniOsKernel(struct vb2_context *ctx,
 	return rv;
 }
 
-vb2_error_t LoadKernel(struct vb2_context *ctx,
-		       VbSelectAndLoadKernelParams *params,
-		       VbDiskInfo *disk_info)
+vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
+			       struct vb2_kernel_params *params,
+			       struct vb2_disk_info *disk_info)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int found_partitions = 0;
@@ -615,7 +615,7 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 	gpt.streaming_drive_sectors = disk_info->streaming_lba_count
 		?: disk_info->lba_count;
 	gpt.gpt_drive_sectors = disk_info->lba_count;
-	gpt.flags = disk_info->flags & VB_DISK_FLAG_EXTERNAL_GPT
+	gpt.flags = disk_info->flags & VB2_DISK_FLAG_EXTERNAL_GPT
 			? GPT_FLAG_EXTERNAL : 0;
 	if (AllocAndReadGptData(disk_info->handle, &gpt)) {
 		VB2_DEBUG("Unable to read GPT data\n");

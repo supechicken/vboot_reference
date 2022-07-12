@@ -80,6 +80,8 @@
 #ifndef __ASSEMBLER__
 #include <stdint.h>
 typedef uint32_t vb2_gbb_flags_t;
+/* TODO: move this to 2api.h when vboot_api.h don't need this type anymore. */
+typedef void *vb2ex_disk_handle_t;
 #endif
 
 /* Size of legacy VbSharedDataHeader struct.  Defined here to avoid including
