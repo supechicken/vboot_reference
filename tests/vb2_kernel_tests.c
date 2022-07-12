@@ -15,7 +15,6 @@
 #include "common/boot_mode.h"
 #include "common/tests.h"
 #include "vboot_struct.h"
-#include "vboot_api.h"
 
 /* Common context for tests */
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
@@ -24,7 +23,7 @@ static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static struct vb2_fw_preamble *fwpre;
 static const char fw_kernel_key_data[36] = "Test kernel key data";
-static VbSelectAndLoadKernelParams kparams;
+static struct vb2_kernel_params kparams;
 
 /* Mocked function data */
 
