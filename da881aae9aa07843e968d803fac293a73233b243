@@ -427,6 +427,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a85217a6_355fb762",
+        "filename": "tests/common/boot_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-12T06:06:59Z",
+      "side": 1,
+      "message": "BTW `VB2_SD_STATUS_RECOVERY_DECIDED` is for `sd-\u003estatus`, not `sd-\u003eflags`.\n\n\u003e Not sure if we want to mention the SD flag is not guaranteed to be correct, only recovery_reason will be set\n\nNo I don\u0027t think that\u0027s necessary.",
+      "parentUuid": "b039cf01_d6711688",
+      "revId": "da881aae9aa07843e968d803fac293a73233b243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccbca777_098b7f41",
         "filename": "tests/common/boot_mode.c",
         "patchSetId": 7
