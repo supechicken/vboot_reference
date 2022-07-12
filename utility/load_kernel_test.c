@@ -25,7 +25,7 @@ static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 
 /* Global variables for stub functions */
-static VbSelectAndLoadKernelParams lkp;
+static VbKernelParams lkp;
 static VbDiskInfo disk_info;
 static FILE *image_file = NULL;
 
@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
 	int errorcnt = 0;
 	char *e = 0;
 
-	memset(&lkp, 0, sizeof(VbSelectAndLoadKernelParams));
+	memset(&lkp, 0, sizeof(VbKernelParams));
 	disk_info.bytes_per_lba = LBA_BYTES;
 	int boot_flags = BOOT_FLAG_RECOVERY;
 

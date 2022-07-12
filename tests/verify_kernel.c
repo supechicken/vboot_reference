@@ -23,7 +23,7 @@ static struct vb2_shared_data *sd;
 
 static uint8_t *diskbuf;
 
-static VbSelectAndLoadKernelParams params;
+static VbKernelParams params;
 static VbDiskInfo disk_info;
 
 vb2_error_t VbExDiskRead(VbExDiskHandle_t handle, uint64_t lba_start,

@@ -21,7 +21,7 @@
  * Returns VB2_SUCCESS if successful.  If unsuccessful, returns an error code.
  */
 vb2_error_t LoadKernel(struct vb2_context *ctx,
-		       VbSelectAndLoadKernelParams *params,
+		       VbKernelParams *params,
 		       VbDiskInfo *disk_info);
 
 /**
@@ -35,7 +35,7 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
  * Returns VB2_SUCCESS if successful.  If unsuccessful, returns an error code.
  */
 vb2_error_t LoadMiniOsKernel(struct vb2_context *ctx,
-			     VbSelectAndLoadKernelParams *params,
+			     VbKernelParams *params,
 			     VbDiskInfo *disk_info, uint32_t minios_flags);
 
 #endif  /* VBOOT_REFERENCE_LOAD_KERNEL_FW_H_ */

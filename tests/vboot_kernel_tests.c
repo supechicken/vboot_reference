@@ -41,7 +41,7 @@ static int unpack_key_fail;
 static int gpt_flag_external;
 
 static struct vb2_gbb_header gbb;
-static VbSelectAndLoadKernelParams lkp;
+static VbKernelParams lkp;
 static VbDiskInfo disk_info;
 static struct vb2_keyblock kbh;
 static struct vb2_kernel_preamble kph;

@@ -441,7 +441,7 @@ static uint32_t got_external_mismatch;
 static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
 	__attribute__((aligned(VB2_WORKBUF_ALIGN)));
 static struct vb2_context *ctx;
-static struct VbSelectAndLoadKernelParams kparams;
+static struct VbKernelParams kparams;
 
 /**
  * Reset mock data (for use before each test)
@@ -537,8 +537,7 @@ vb2_error_t VbExDiskFreeInfo(VbDiskInfo *infos,
 	return VB2_SUCCESS;
 }
 
-static vb2_error_t LoadKernelImpl(struct vb2_context *c,
-				  VbSelectAndLoadKernelParams *params,
+static vb2_error_t LoadKernelImpl(struct vb2_context *c, VbKernelParams *params,
 				  VbDiskInfo *disk_info)
 {
 	got_find_disk = (const char *)params->disk_handle;
@@ -551,16 +550,14 @@ static vb2_error_t LoadKernelImpl(struct vb2_context *c,
 	return t->loadkernel_return_val[load_kernel_calls++];
 }
 
-vb2_error_t LoadKernel(struct vb2_context *c,
-		       VbSelectAndLoadKernelParams *params,
+vb2_error_t LoadKernel(struct vb2_context *c, VbKernelParams *params,
 		       VbDiskInfo *disk_info)
 {
 	lk_normal_calls++;
 	return LoadKernelImpl(c, params, disk_info);
 }
 
-vb2_error_t LoadMiniOsKernel(struct vb2_context *c,
-			     VbSelectAndLoadKernelParams *params,
+vb2_error_t LoadMiniOsKernel(struct vb2_context *c, VbKernelParams *params,
 			     VbDiskInfo *disk_info, uint32_t minios_flags)
 {
 	lk_minios_calls++;
