@@ -24,7 +24,7 @@ static struct vb2_context *ctx;
 static struct vb2_shared_data *sd;
 static struct vb2_fw_preamble *fwpre;
 static const char fw_kernel_key_data[36] = "Test kernel key data";
-static VbSelectAndLoadKernelParams kparams;
+static vb2_kernel_params kparams;
 
 /* Mocked function data */
 
