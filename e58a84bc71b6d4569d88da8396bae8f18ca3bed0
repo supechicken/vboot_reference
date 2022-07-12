@@ -16,6 +16,24 @@
       "message": "Can we put the whole section in the `ifeq ($(filter-out 0,${COV}),)` block? Isn\u0027t that more straitforward?",
       "revId": "e58a84bc71b6d4569d88da8396bae8f18ca3bed0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3998339_e61bb850",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-12T07:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc89ffe4_73ca5138",
+      "revId": "e58a84bc71b6d4569d88da8396bae8f18ca3bed0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
