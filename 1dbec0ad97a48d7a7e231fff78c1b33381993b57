@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5de9a64_abf6443a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-13T00:25:37Z",
+      "side": 1,
+      "message": "I don\u0027t think this does anything. I believe the intention here was to use the VB2_BOOT_MODE_DIAGNOSTICS event to also log other diagnostic-related information (e.g. \"diagnostics finished\" or some such) and use that extra byte to differentiate those, which (at least until now) hasn\u0027t happened. If that does ever happen that would use its own event rather than piggy-backing onto this one. So this event doesn\u0027t really need to log anything about diagnostics mode other than the boot mode itself.",
+      "revId": "1dbec0ad97a48d7a7e231fff78c1b33381993b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a060dfe_ed8e3eb6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-13T00:25:37Z",
+      "side": 1,
+      "message": "I don\u0027t really understand the indirection into a second structure here, why not do it all in one?\n\nGenerally, we should not be wasting more bytes than we need to for events that don\u0027t save any additional data, so I think this struct should be variable-length depending on which boot mode is getting logged, so that normal boots only need to log 2 bytes. And while we\u0027re redesigning everything anyway, it would probably be good to also log the recovery subcode for recovery boots which can sometimes contain useful additional information. So I think this struct should be\n```\nunion vb2_fw_boot_info {\n  uint8_t raw[4];\n  struct {\n    uint8_t tries : 4;\n    uint8_t slot : 1;\n    uint8_t prev_slot : 1;\n    uint8_t prev_result : 2;\n    uint8_t boot_mode;\n    /* The following 2 bytes only exist for VB2_BOOT_MODE_BROKEN_SCREEN */\n    uint8_t recovery_reason;\n    uint8_t recovery_subcode;\n  };\n};\n```\nand then the code that\u0027s logging and parsing this should use a variable amount of bytes depending on the boot mode.",
+      "revId": "1dbec0ad97a48d7a7e231fff78c1b33381993b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b5f0dc_0ab62cf4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-13T00:25:37Z",
+      "side": 1,
+      "message": "This already exists in 2recovery_reasons.c and is used that way by external utilities.",
+      "revId": "1dbec0ad97a48d7a7e231fff78c1b33381993b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
