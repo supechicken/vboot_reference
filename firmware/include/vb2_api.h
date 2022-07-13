@@ -14,7 +14,7 @@
 #ifndef VBOOT_REFERENCE_VB2_API_H_
 #define VBOOT_REFERENCE_VB2_API_H_
 
-/* Standard APIs */
-#include "../2lib/include/2api.h"
+/* Header that contains helper functions and standard APIs */
+#include "../2lib/include/2info.h"
 
 #endif  /* VBOOT_REFERENCE_VB2_API_H_ */
