@@ -423,7 +423,7 @@ void vb2_clear_recovery(struct vb2_context *ctx)
 	if (reason || subcode)
 		VB2_DEBUG("Clearing recovery request: %#x / %#x  %s\n",
 			  reason, subcode,
-			  vb2_get_recovery_reason_string(reason));
+			  vb2api_get_recovery_reason_string(reason));
 
 	/* Clear recovery request for both the manual recovery and the broken
 	   screen. */
@@ -634,7 +634,7 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 	i = vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE);
 	DEBUG_INFO_APPEND("\nrecovery_reason: %#.2x / %#.2x  %s",
 			  sd->recovery_reason, i,
-			  vb2_get_recovery_reason_string(sd->recovery_reason));
+			  vb2api_get_recovery_reason_string(sd->recovery_reason));
 
 	/* Add vb2_context and vb2_shared_data flags */
 	DEBUG_INFO_APPEND("\ncontext.flags: %#.16" PRIx64, ctx->flags);

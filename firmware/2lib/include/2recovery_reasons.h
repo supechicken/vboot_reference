@@ -10,14 +10,6 @@
 
 #include "2sysincludes.h"
 
-/**
- * Return a description of the recovery reason code.
- *
- * @param		recovery reason code
- * @return A string literal with English description of the recovery reason
- */
-const char *vb2_get_recovery_reason_string(uint8_t code);
-
 /* Recovery reason codes */
 enum vb2_nv_recovery {
 

@@ -5,7 +5,7 @@
  * Tests for recovery reasons.
  */
 
-#include "2recovery_reasons.h"
+#include "2api.h"
 #include "test_common.h"
 
 static void get_recovery_reason_string_tests(void)
@@ -14,11 +14,11 @@ static void get_recovery_reason_string_tests(void)
 
 	/* Recovery string should be non-null for any code */
 	for (i = 0; i < 0x100; i++)
-		TEST_PTR_NEQ(vb2_get_recovery_reason_string(i), NULL,
+		TEST_PTR_NEQ(vb2api_get_recovery_reason_string(i), NULL,
 			     "Non-null reason");
 
 	/* Validity check on one of the strings */
-	TEST_EQ(strcmp(vb2_get_recovery_reason_string(VB2_RECOVERY_GBB_HEADER),
+	TEST_EQ(strcmp(vb2api_get_recovery_reason_string(VB2_RECOVERY_GBB_HEADER),
 		       "Error parsing GBB header"), 0,
 		"Recovery reason validity check");
 }
