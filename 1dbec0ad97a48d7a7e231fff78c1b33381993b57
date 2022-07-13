@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "456cabee_e95ef994",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-13T19:32:40Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t really understand the indirection into a second structure here, why not do it all in one?\n\nI have added new structure to capture the boot mode related info from the name structure.\n\n\u003e \n\u003e Generally, we should not be wasting more bytes than we need to for events that don\u0027t save any additional data, so I think this struct should be variable-length depending on which boot mode is getting logged, so that normal boots only need to log 2 bytes. And while we\u0027re redesigning everything anyway, it would probably be good to also log the recovery subcode for recovery boots which can sometimes contain useful additional information. So I think this struct should be\n\u003e ```\n\u003e union vb2_fw_boot_info {\n\u003e   uint8_t raw[4];\n\u003e   struct {\n\u003e     uint8_t tries : 4;\n\u003e     uint8_t slot : 1;\n\u003e     uint8_t prev_slot : 1;\n\u003e     uint8_t prev_result : 2;\n\u003e     uint8_t boot_mode;\n\u003e     /* The following 2 bytes only exist for VB2_BOOT_MODE_BROKEN_SCREEN */\n\u003e     uint8_t recovery_reason;\n\u003e     uint8_t recovery_subcode;\n\u003e   };\n\u003e };\n\u003e ```\n\u003e and then the code that\u0027s logging and parsing this should use a variable amount of bytes depending on the boot mode.\n\nI like the variable length mode of logging idea.\n\nI have introduced new CL crrev/c/3759355/and squash this CL into the previous CL",
+      "parentUuid": "5a060dfe_ed8e3eb6",
+      "revId": "1dbec0ad97a48d7a7e231fff78c1b33381993b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7b5f0dc_0ab62cf4",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-13T00:25:37Z",
       "side": 1,
       "message": "This already exists in 2recovery_reasons.c and is used that way by external utilities.",
+      "revId": "1dbec0ad97a48d7a7e231fff78c1b33381993b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da32ca6e_b546661d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-13T19:32:40Z",
+      "side": 1,
+      "message": "\u003e This already exists in 2recovery_reasons.c and is used that way by external utilities.\n\noops, my bad, i should have searched",
+      "parentUuid": "a7b5f0dc_0ab62cf4",
       "revId": "1dbec0ad97a48d7a7e231fff78c1b33381993b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
