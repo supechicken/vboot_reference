@@ -900,7 +900,7 @@ struct vb2_kernel_params {
 #define VB2_DISK_FLAG_FIXED (1 << 1)
 /*
  * Note that VB2_DISK_FLAG_REMOVABLE and VB2_DISK_FLAG_FIXED are
- * mutually-exclusive for a single disk.  VbExDiskGetInfo() may specify both
+ * mutually-exclusive for a single disk.  vboot_disk_get_info() may specify both
  * flags to request disks of both types in a single call.
  *
  * At some point we could specify additional flags, but we don't currently
