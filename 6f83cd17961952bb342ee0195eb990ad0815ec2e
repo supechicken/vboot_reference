@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "041b36df_be8985ac",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-14T11:12:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1a8aae9_ee981653",
+      "revId": "6f83cd17961952bb342ee0195eb990ad0815ec2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d894df5_e76d77d7",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "\u003e This will lead to us linking the whole string table for recovery reasons into the stage we\u0027ll call this from, presumably ramstage, where it currently isn\u0027t. I think it would be better to avoid that. If you want to print something here you can just print the number, or just don\u0027t print anything at all (for such a simple info returning function it might be better if it just doesn\u0027t have side effects -- we print all of this stuff in other places during boot already anyway).\n\nare you suggesting to use the recovery_reason hex value itself without any need to convert to a string ? I do believe that is also good as we just need to know the recovery reason and subcode.",
       "parentUuid": "1d894df5_e76d77d7",
+      "revId": "6f83cd17961952bb342ee0195eb990ad0815ec2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "768b1fee_f1ae5705",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-14T11:12:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1718b33_ace302c7",
       "revId": "6f83cd17961952bb342ee0195eb990ad0815ec2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -108,6 +144,30 @@
       "side": 1,
       "message": "\u003e BTW we have started renaming this to \"secure mode\" in various places, e.g. the new user-facing firmware screens (go/groot-strings). A lot of the identifiers in the code haven\u0027t been updated yet, but maybe it would be good for at least this somewhat user-visible string to use the new term.\n\u003e \n\u003e (Also, does it really make sense for almost all of these to say \"boot\" at the end? I think if it ends up printing just \"boot_mode\u003ddeveloper\" that would probably be enough?)\n\nI guess valid feedback",
       "parentUuid": "3e0e2b9a_c74d03d5",
+      "range": {
+        "startLine": 1801,
+        "startChar": 10,
+        "endLine": 1801,
+        "endChar": 16
+      },
+      "revId": "6f83cd17961952bb342ee0195eb990ad0815ec2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7e84da_b58f373c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-14T11:12:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ee134d7_ba835733",
       "range": {
         "startLine": 1801,
         "startChar": 10,
