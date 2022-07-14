@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this should be moved into the header. For the very small functions with 2-4 cases inlining the lookup table is no big deal, and maybe outweighs the cost of a separate function call. But the table with many dozens of recovery reasons definitely seems too large for inlining. It should stay in a .c file.\n\nI\u0027m also not sure about the naming, tbh. I don\u0027t think it\u0027s a hard rule that every exported function in vboot must start with vb2api_ -- we have all the vb2_hash stuff and vb2_digest_size() and that sort of thing, after all. I think the idea about these was vaguely that the big core functions that actually interact with vboot\u0027s state are \"APIs\", and the small helper utility stuff like calculating a SHA is something else. But the water is definitely a bit muddled there and I\u0027m not sure if we have a clear rule (I feel like we discussed this before already, maybe while Joel was still here(?), but as usual I\u0027ve forgotten the details). Maybe the rule was \"if it operates on a vb2_context, it\u0027s a vb2api, otherwise it isn\u0027t\"? That would seem consistent with the current usage, I think (and would support my gut feeling that it sounds odd to call functions like these \"APIs\").\n\n(Also, the \u003c2api.h\u003e header is getting awfully cluttered enough as it is, it might be nice to find a different spot for all these small translation functions, especially the inline ones. Maybe make a new \u003c2info.h\u003e or something?)",
       "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c34f9307_5c6db68f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-14T07:45:06Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think this should be moved into the header. For the very small functions with 2-4 cases inlining the lookup table is no big deal, and maybe outweighs the cost of a separate function call. But the table with many dozens of recovery reasons definitely seems too large for inlining. It should stay in a .c file.\n\u003e \n\u003e I\u0027m also not sure about the naming, tbh. I don\u0027t think it\u0027s a hard rule that every exported function in vboot must start with vb2api_ -- we have all the vb2_hash stuff and vb2_digest_size() and that sort of thing, after all. I think the idea about these was vaguely that the big core functions that actually interact with vboot\u0027s state are \"APIs\", and the small helper utility stuff like calculating a SHA is something else. But the water is definitely a bit muddled there and I\u0027m not sure if we have a clear rule (I feel like we discussed this before already, maybe while Joel was still here(?), but as usual I\u0027ve forgotten the details). Maybe the rule was \"if it operates on a vb2_context, it\u0027s a vb2api, otherwise it isn\u0027t\"? That would seem consistent with the current usage, I think (and would support my gut feeling that it sounds odd to call functions like these \"APIs\").\n\u003e \n\u003e (Also, the \u003c2api.h\u003e header is getting awfully cluttered enough as it is, it might be nice to find a different spot for all these small translation functions, especially the inline ones. Maybe make a new \u003c2info.h\u003e or something?)\n\nif you think we don\u0027t need to convert the recovery_reason to a string in context of  elogtool (util/cbfstool/eventlog.c) then we can get rid of this CL completely.",
+      "parentUuid": "06680b76_fe645a40",
+      "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
