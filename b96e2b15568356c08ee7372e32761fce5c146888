@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9995b13_5e2bc025",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T02:29:47Z",
+      "side": 1,
+      "message": "Sorry, I think this should just be `boot` here, because there\u0027s already `vb2_` prefix. `ELOG_TYPE_FW_VBOOT_INFO` is different though, because it\u0027s defined in coreboot.",
+      "range": {
+        "startLine": 1578,
+        "startChar": 13,
+        "endLine": 1578,
+        "endChar": 18
+      },
+      "revId": "b96e2b15568356c08ee7372e32761fce5c146888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a448bda1_6732f90e",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 16
