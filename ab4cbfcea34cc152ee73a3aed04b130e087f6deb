@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a265c92_6923e261",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T04:49:45Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll make it always return `VB2_SUCCESS` now. Do I need to add `VB2_TRY` where it\u0027s called?",
+      "parentUuid": "8a289906_007ba1ff",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "945300fa_8bbf3558",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 7
@@ -71,6 +95,24 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": "Add a todo comment saying this needs to be renamed. Or, can we rename it now?",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d96ce0_4714f433",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T04:49:45Z",
+      "side": 1,
+      "message": "This is passed into `VbExDiskRead`, `VbExDiskWrite`, and `VbExStreamOpen`, so maybe we should rename it later?",
+      "parentUuid": "d0275058_05649dfc",
       "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -255,6 +297,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a1b3bad_bc35297b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T04:49:45Z",
+      "side": 1,
+      "message": "It\u0027s still used in VbEXDIskGetInfo and VbExDiskFreeInfo, Is it fine to rename it now?",
+      "parentUuid": "f7d204b8_8ffb54b8",
+      "range": {
+        "startLine": 947,
+        "startChar": 15,
+        "endLine": 947,
+        "endChar": 25
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c44912f_1c1d272c",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 7
@@ -347,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0341dab_d99349e8",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T04:49:45Z",
+      "side": 1,
+      "message": "Since there is `cgpt_common:GptLoad()`, how about `2load_kernel:vb2api_load_kernel()`?",
+      "parentUuid": "bce6b898_5d7f6486",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebeaa49c_ae3b9eec",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 7
@@ -358,6 +448,30 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": "No I don\u0027t think we should include that. Just declare `VbDiskInfo` (similar to `vb2_context`)?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b4e257_6379bd05",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T04:49:45Z",
+      "side": 1,
+      "message": "Not only VbDiskInfo, but we also define `VbExDiskHandle_t` in 2api.h now. If we don\u0027t want to include 2api.h, we may need to define `VbExDiskHandle_t` here and include this file in 2api.h.",
+      "parentUuid": "ebeaa49c_ae3b9eec",
       "range": {
         "startLine": 27,
         "startChar": 0,
