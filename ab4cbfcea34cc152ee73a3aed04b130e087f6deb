@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a4a2aaf_44f60bbf",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08bb57a6_360f910c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "945300fa_8bbf3558",
@@ -159,6 +183,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ae60c53_0d258bbf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "912cce69_bf99d5d5",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1258e9df_8c046d31",
@@ -172,6 +214,30 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": "We don\u0027t do typedef for structs in vboot2.",
+      "range": {
+        "startLine": 860,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 7
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78cadb5_50d1eecb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1258e9df_8c046d31",
       "range": {
         "startLine": 860,
         "startChar": 0,
@@ -228,6 +294,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b97e5b_c8104681",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3024abf3_5b6c8093",
+      "range": {
+        "startLine": 861,
+        "startChar": 14,
+        "endLine": 861,
+        "endChar": 31
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23b93ff8_554851ae",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aecf706_3dd75649",
+      "range": {
+        "startLine": 861,
+        "startChar": 33,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3ddfa0c_c3bd3d7d",
@@ -241,6 +355,30 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": "vb2api_load_kernel",
+      "range": {
+        "startLine": 868,
+        "startChar": 17,
+        "endLine": 868,
+        "endChar": 34
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6563c659_58db058a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ddfa0c_c3bd3d7d",
       "range": {
         "startLine": 868,
         "startChar": 17,
@@ -274,6 +412,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67318cc0_bad41eca",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9210285_7a427b29",
+      "range": {
+        "startLine": 887,
+        "startChar": 8,
+        "endLine": 887,
+        "endChar": 33
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e401bfc_88af6b23",
@@ -291,6 +453,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b1027b_7a4fa7ae",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e401bfc_88af6b23",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c359700_870fc641",
@@ -304,6 +484,30 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": ".",
+      "range": {
+        "startLine": 946,
+        "startChar": 31,
+        "endLine": 946,
+        "endChar": 32
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef476878_2fa37a12",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c359700_870fc641",
       "range": {
         "startLine": 946,
         "startChar": 31,
@@ -385,6 +589,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e339bc39_b4ef9306",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e776fec_c0505928",
+      "range": {
+        "startLine": 947,
+        "startChar": 15,
+        "endLine": 947,
+        "endChar": 25
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c44912f_1c1d272c",
@@ -398,6 +626,30 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": "@return VB2_SUCCESS, or non-zero error code.",
+      "range": {
+        "startLine": 976,
+        "startChar": 3,
+        "endLine": 976,
+        "endChar": 78
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746ac81d_976ed48f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c44912f_1c1d272c",
       "range": {
         "startLine": 976,
         "startChar": 3,
@@ -431,6 +683,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db15e40a_253d7aa1",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddcf6716_da5a3fac",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 22
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd4527dc_d1aec146",
@@ -444,6 +720,30 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 782,
+        "startChar": 39,
+        "endLine": 783,
+        "endChar": 20
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa31ad4_fa5acf5f",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd4527dc_d1aec146",
       "range": {
         "startLine": 782,
         "startChar": 39,
@@ -525,6 +825,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2a1a92_aab25571",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fedb2ec_33e81ab0",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebeaa49c_ae3b9eec",
@@ -596,6 +920,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c01734_0cd38272",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32533d64_4a6b3ab2",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bc90dbf_5290d794",
@@ -609,6 +957,30 @@
       "writtenOn": "2022-07-15T03:32:06Z",
       "side": 1,
       "message": "Reflow the text.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0144a3_f78b7b05",
+        "filename": "firmware/lib/include/vboot_struct.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-15T10:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bc90dbf_5290d794",
       "range": {
         "startLine": 40,
         "startChar": 4,
