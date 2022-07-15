@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08bb57a6_360f910c",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T08:14:39Z",
+      "side": 1,
+      "message": "Yes, `VB2_TRY`.",
+      "parentUuid": "8a265c92_6923e261",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "945300fa_8bbf3558",
         "filename": "firmware/2lib/2recovery_reasons.c",
         "patchSetId": 7
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "This is passed into `VbExDiskRead`, `VbExDiskWrite`, and `VbExStreamOpen`, so maybe we should rename it later?",
       "parentUuid": "d0275058_05649dfc",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912cce69_bf99d5d5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T08:14:39Z",
+      "side": 1,
+      "message": "Per offline discussion, this will be renamed and move it to 2lib/include/2constants.h, so that both 2api.h and vboot_api.h can see it.",
+      "parentUuid": "17d96ce0_4714f433",
       "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -321,6 +363,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e776fec_c0505928",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T08:14:39Z",
+      "side": 1,
+      "message": "Yes, previously `VbSelectAndLoadKernel` also takes a `struct vb2_context` argument.",
+      "parentUuid": "2a1b3bad_bc35297b",
+      "range": {
+        "startLine": 947,
+        "startChar": 15,
+        "endLine": 947,
+        "endChar": 25
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c44912f_1c1d272c",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 7
@@ -437,6 +503,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fedb2ec_33e81ab0",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T08:14:39Z",
+      "side": 1,
+      "message": "The file name is hard to maintain. If the file is renamed someday, I\u0027m afraid no one will remember to modify the file name here. In addition, using grep it should be pretty simple to find `vb2api_load_kernel`.",
+      "parentUuid": "f0341dab_d99349e8",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebeaa49c_ae3b9eec",
         "filename": "firmware/include/vboot_api.h",
         "patchSetId": 7
@@ -472,6 +562,30 @@
       "side": 1,
       "message": "Not only VbDiskInfo, but we also define `VbExDiskHandle_t` in 2api.h now. If we don\u0027t want to include 2api.h, we may need to define `VbExDiskHandle_t` here and include this file in 2api.h.",
       "parentUuid": "ebeaa49c_ae3b9eec",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32533d64_4a6b3ab2",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T08:14:39Z",
+      "side": 1,
+      "message": "Per offline discussion, this will be renamed and move it to 2lib/include/2constants.h, so that both 2api.h and vboot_api.h can see it.",
+      "parentUuid": "32b4e257_6379bd05",
       "range": {
         "startLine": 27,
         "startChar": 0,
