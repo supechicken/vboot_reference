@@ -1,0 +1,394 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cfa75ac_b12d1460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Haven\u0027t reviewed the unit tests yet.",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a289906_007ba1ff",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "How about keep it as `vb2_error_t`, so that if in the future a return value is needed, we won\u0027t have to change it?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945300fa_8bbf3558",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Please also update the string in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/cros/vboot_constants.py;l\u003d83?q\u003d%22Test%20error%20from%20LoadKernel%22\u0026ss\u003dchromiumos.",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0275058_05649dfc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Add a todo comment saying this needs to be renamed. Or, can we rename it now?",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1258e9df_8c046d31",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "We don\u0027t do typedef for structs in vboot2.",
+      "range": {
+        "startLine": 860,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 7
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3024abf3_5b6c8093",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "`vboot_load_kernel` is in depthcharge. We should say `vb2api_load_kernel` here.",
+      "range": {
+        "startLine": 861,
+        "startChar": 14,
+        "endLine": 861,
+        "endChar": 31
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aecf706_3dd75649",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Append `.` to all the comments.",
+      "range": {
+        "startLine": 861,
+        "startChar": 33,
+        "endLine": 861,
+        "endChar": 34
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ddfa0c_c3bd3d7d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "vb2api_load_kernel",
+      "range": {
+        "startLine": 868,
+        "startChar": 17,
+        "endLine": 868,
+        "endChar": 34
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9210285_7a427b29",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Rename\n\nMove to right above `vb2api_load_minios_kernel`.",
+      "range": {
+        "startLine": 887,
+        "startChar": 8,
+        "endLine": 887,
+        "endChar": 33
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e401bfc_88af6b23",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Rename all the flags to `VB2_*`.",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c359700_870fc641",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 946,
+        "startChar": 31,
+        "endLine": 946,
+        "endChar": 32
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d204b8_8ffb54b8",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Rename.",
+      "range": {
+        "startLine": 947,
+        "startChar": 15,
+        "endLine": 947,
+        "endChar": 25
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c44912f_1c1d272c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "@return VB2_SUCCESS, or non-zero error code.",
+      "range": {
+        "startLine": 976,
+        "startChar": 3,
+        "endLine": 976,
+        "endChar": 78
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddcf6716_da5a3fac",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Kernel loading",
+      "range": {
+        "startLine": 770,
+        "startChar": 4,
+        "endLine": 770,
+        "endChar": 22
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4527dc_d1aec146",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 782,
+        "startChar": 39,
+        "endLine": 783,
+        "endChar": 20
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce6b898_5d7f6486",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "This looks like the file name. How about removing it?",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebeaa49c_ae3b9eec",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "No I don\u0027t think we should include that. Just declare `VbDiskInfo` (similar to `vb2_context`)?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc90dbf_5290d794",
+        "filename": "firmware/lib/include/vboot_struct.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-15T03:32:06Z",
+      "side": 1,
+      "message": "Reflow the text.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
