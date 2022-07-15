@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a448bda1_6732f90e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-15T01:24:13Z",
+      "side": 1,
+      "message": "As mentioned in CL:3759355, I think it\u0027s probably better for these functions to just use the vb2_ (not vb2api_) prefix, and to be moved into a separate header to avoid cluttering the already too full main API header with all these inlines. (That concerns everything except vb2api_get_fw_boot_info(), which takes a context argument and thus could be considered a \"real\" API function.)",
+      "range": {
+        "startLine": 1609,
+        "startChar": 26,
+        "endLine": 1609,
+        "endChar": 32
+      },
+      "revId": "b96e2b15568356c08ee7372e32761fce5c146888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

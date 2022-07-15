@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5465aa63_6b8c6d2d",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-15T01:24:13Z",
+      "side": 1,
+      "message": "No, there\u0027s no technical reason why I\u0027m afraid this would break for our use case, I just think it\u0027s generally not a good design pattern (e.g. reentrancy issues) and should be avoided where there\u0027s no good reason to use it.",
+      "parentUuid": "041b36df_be8985ac",
+      "revId": "6f83cd17961952bb342ee0195eb990ad0815ec2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d894df5_e76d77d7",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "e1718b33_ace302c7",
+      "revId": "6f83cd17961952bb342ee0195eb990ad0815ec2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71dda13d_014487e0",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-15T01:24:13Z",
+      "side": 1,
+      "message": "Yes. Or, like I said, don\u0027t print in this function at all. Depthcharge already prints the recovery reason (with string, because depthcharge needs to be linking the string table anyway for the TAB screen), and verstage prints all the slot/tries information at some point, so there\u0027s no real reason to print any of it again in this function.",
+      "parentUuid": "768b1fee_f1ae5705",
       "revId": "6f83cd17961952bb342ee0195eb990ad0815ec2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
