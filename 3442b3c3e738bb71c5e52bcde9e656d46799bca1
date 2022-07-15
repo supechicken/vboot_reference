@@ -34,6 +34,24 @@
       "parentUuid": "06680b76_fe645a40",
       "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0e9543_d3930876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-15T01:16:52Z",
+      "side": 1,
+      "message": "\u003e if you think we don\u0027t need to convert the recovery_reason to a string in context of  elogtool (util/cbfstool/eventlog.c) then we can get rid of this CL completely.\n\nUhh... no, we do? Sorry, not sure how you got that impression from my comments (here or elsewhere). elogtool absolutely should be displaying the recovery reason as a string, like it always has (maybe you confused that with my other comment saying that _coreboot ramstage_ shouldn\u0027t do that, for space reasons?). And we should absolutely deduplicate the separate recovery reason string table in elogtool by making it call vb2_get_recovery_reason_string() in vboot instead. I\u0027m just saying that that function shouldn\u0027t be inlined.",
+      "parentUuid": "c34f9307_5c6db68f",
+      "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
