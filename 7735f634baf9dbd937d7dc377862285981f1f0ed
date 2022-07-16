@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71747722_250cc3b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "LoadMiniOsKernel()",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 43
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac56df1_24e78b12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "We also renamed vb2_disk_info\n\nSince they are both \u0027structure\u0027 name change, we could also start a new section describing these",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bacc27_3c71f6ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "Since this is a big refactor, please also \n FW_NAME\u003dtomato emerge-cherry depthcharge",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f2f1ed_8003b666",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "Too many newlines?",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9435722b_40f1a2f7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "Do we still want this in comments?",
+      "range": {
+        "startLine": 885,
+        "startChar": 14,
+        "endLine": 885,
+        "endChar": 44
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d537c66c_b84e8ba0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "extra newline?",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2feefd74_963b5277",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "indent",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 9
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce631b08_91ee5569",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "also here and all below",
+      "range": {
+        "startLine": 338,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 9
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d923cbd1_7ca7aee1",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-16T16:38:43Z",
+      "side": 1,
+      "message": "Actually I am confused by the case of \"minios\" now...\nI think they are \"miniOS\" in vboot?\n\n(I know there is already inconsistency in FAFT and here, but...)",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
