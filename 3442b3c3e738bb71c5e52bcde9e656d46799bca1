@@ -70,6 +70,24 @@
       "parentUuid": "ee0e9543_d3930876",
       "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c2a5fd_2a5d0067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T08:49:18Z",
+      "side": 1,
+      "message": "You\u0027ll need to link `$(objutil)/cbfstool/elogtool` with `$(VBOOT_HOSTLIB)` in coreboot/util/cbfstool/Makefile.inc:239.",
+      "parentUuid": "f63f415d_51ddf39e",
+      "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
