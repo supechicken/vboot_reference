@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf7edc6_34d257f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cfa75ac_b12d1460",
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a289906_007ba1ff",
@@ -109,6 +127,23 @@
         "endLine": 16,
         "endChar": 4
       },
+      "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6303b5_7151155c",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Need it for VbExStream_t.",
       "revId": "ab4cbfcea34cc152ee73a3aed04b130e087f6deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

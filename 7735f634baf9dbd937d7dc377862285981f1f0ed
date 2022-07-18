@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9b2d944_ef49b326",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Do you mean `In addition`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ac56df1_24e78b12",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
@@ -100,6 +123,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2581adc0_6107fe4b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "rename",
+      "range": {
+        "startLine": 905,
+        "startChar": 13,
+        "endLine": 905,
+        "endChar": 35
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d537c66c_b84e8ba0",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 8
@@ -111,6 +157,126 @@
       "writtenOn": "2022-07-16T16:38:43Z",
       "side": 1,
       "message": "extra newline?",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a2ea36_b6dc3946",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Add a TODO comment.",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be679172_af71d9ef",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 782,
+        "startChar": 38,
+        "endLine": 782,
+        "endChar": 40
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e47bb9_45e4fb7b",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Can be removed.",
+      "range": {
+        "startLine": 79,
+        "startChar": 62,
+        "endLine": 79,
+        "endChar": 63
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d33a36_bb215b9b",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Should this be vb2ex?",
+      "range": {
+        "startLine": 81,
+        "startChar": 25,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4700204_ac312e93",
+        "filename": "tests/vb2_load_kernel2_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d038c70a_285e1069",
+        "filename": "tests/vb2_load_kernel2_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-18T06:53:42Z",
+      "side": 1,
+      "message": "Indent.",
       "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
