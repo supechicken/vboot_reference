@@ -142,6 +142,24 @@
       "parentUuid": "dcbea701_2cb91a13",
       "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "764e7030_881d5020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-18T09:30:23Z",
+      "side": 1,
+      "message": "\u003e I think the line should be\n\u003e \n\u003e `$(objutil)/cbfstool/elogtool: $(VBOOT_HOSTLIB) | check-flashrom-presence $(addprefix $(objutil)/cbfstool/,$(elogobj))`\n\u003e \n\u003e See https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html.\n\nLooks like there is a difference between upstream coreboot vs chromium related to the elogtool static library inclusion.\nhttps://github.com/coreboot/coreboot/blob/master/util/cbfstool/Makefile.inc#L231\n\nWe might need to land this upstream coreboot change into chromium as is ?",
+      "parentUuid": "7936b5a6_832bc349",
+      "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
