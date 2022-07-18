@@ -106,6 +106,24 @@
       "parentUuid": "35c2a5fd_2a5d0067",
       "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcbea701_2cb91a13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-18T09:05:42Z",
+      "side": 1,
+      "message": "\u003e \u003e You\u0027ll need to link `$(objutil)/cbfstool/elogtool` with `$(VBOOT_HOSTLIB)` in coreboot/util/cbfstool/Makefile.inc:239.\n\u003e \n\u003e I have tired that and it results into https://paste.googleplex.com/4782943894503424\n\u003e \n\u003e clang-14: error: no such file or directory: \u0027/build/brya/tmp/portage/sys-apps/coreboot-utils-9999/work/coreboot-utils-9999/util/vboot_lib/libvboot_host.a\u0027\n\u003e make: *** [Makefile.inc:241: ../cbfstool/elogtool] Error 1\n\nBelow changes is helping me to pass the compilation error. Will submit a CL for this.\n\ndiff --git a/util/cbfstool/Makefile.inc b/util/cbfstool/Makefile.inc\nindex 3dbae5f121..52abf15b72 100644\n--- a/util/cbfstool/Makefile.inc\n+++ b/util/cbfstool/Makefile.inc\n@@ -236,9 +236,9 @@ $(objutil)/cbfstool/amdcompress: $(addprefix $(objutil)/cbfstool/,$(amdcompobj))\n        printf \"    HOSTCC     $(subst $(objutil)/,,$(@)) (link)\\n\"\n        $(HOSTCC) $(TOOLLDFLAGS) -o $@ $(addprefix $(objutil)/cbfstool/,$(amdcompobj)) -lz\n \n-$(objutil)/cbfstool/elogtool: | check-flashrom-presence $(addprefix $(objutil)/cbfstool/,$(elogobj))\n+$(objutil)/cbfstool/elogtool: | check-flashrom-presence $(addprefix $(objutil)/cbfstool/,$(elogobj)) $(VBOOT_HOSTLIB)\n        printf \"    HOSTCC     $(subst $(objutil)/,,$(@)) (link)\\n\"\n-       $(HOSTCC) $(TOOLLDFLAGS) -o $@ $(addprefix $(objutil)/cbfstool/,$(elogobj)) $(FLASHROM)\n+       $(HOSTCC) $(TOOLLDFLAGS) -o $@ $(addprefix $(objutil)/cbfstool/,$(elogobj)) $(FLASHROM) $(VBOOT_HOSTLIB)\n \n $(objutil)/cbfstool/cse_fpt: $(addprefix $(objutil)/cbfstool/,$(cse_fpt_obj))\n        printf \"    HOSTCC     $(subst $(objutil)/,,$(@)) (link)\\n\"",
+      "parentUuid": "93b781fe_302a375d",
+      "revId": "3442b3c3e738bb71c5e52bcde9e656d46799bca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
