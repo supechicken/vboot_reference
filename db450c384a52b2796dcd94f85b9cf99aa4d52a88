@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc77625b_1fc31ab3",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-19T12:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6af04a91_98c1715d",
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97d61e08_54dad7ac",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b322ba_3d387180",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-19T12:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d61e08_54dad7ac",
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dfa4d4f_0b941457",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-12T23:38:23Z",
       "side": 1,
       "message": "Something (either here or in the description for the -s, -b and -k options) should clarify that this directory is used for those keys that aren\u0027t passed explicitly.",
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd71575_77dce808",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-19T12:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dfa4d4f_0b941457",
       "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d2b1fc_5abc9350",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-19T12:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2515f946_e3463aab",
+      "range": {
+        "startLine": 468,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 57
+      },
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95244e86_4c2161a7",
@@ -163,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb31bc5_843f1dcf",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-19T12:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95244e86_4c2161a7",
+      "range": {
+        "startLine": 543,
+        "startChar": 46,
+        "endLine": 543,
+        "endChar": 67
+      },
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92fd2ed3_a6226fb6",
@@ -176,6 +278,24 @@
       "writtenOn": "2022-07-12T23:38:23Z",
       "side": 1,
       "message": "Using this in tests that test something different is fine, but there should also be tests to confirm that this and the other options work as intended (e.g. overriding some but not others and making sure it still uses the right combination, that sort of thing).",
+      "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcef4e24_7c76c3d4",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-19T12:27:50Z",
+      "side": 1,
+      "message": "How about adding these cases to `test_sign_kernel.sh` and `test_sign_firmware.sh`? It would allow for combining keyset deduction with actual signing tests without requiring to add a new separate test case, which would still have to do similar things as mentioned tests, to verify if it really works as intended.\nWhat do you think about it?",
+      "parentUuid": "92fd2ed3_a6226fb6",
       "revId": "db450c384a52b2796dcd94f85b9cf99aa4d52a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
