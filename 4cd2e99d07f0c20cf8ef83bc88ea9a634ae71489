@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4a6ebb_8fc37a54",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-20T07:57:00Z",
+      "side": 1,
+      "message": "Yes, typo. It was supposed to be \"Failure\", regarding `stat(sign_option.keysetdir, \u0026sb) \u003d\u003d -1`",
+      "parentUuid": "aac05868_36cb88fc",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 325,
+        "endChar": 10
+      },
+      "revId": "4cd2e99d07f0c20cf8ef83bc88ea9a634ae71489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93fc5ba1_3cf746a9",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-20T00:57:18Z",
       "side": 1,
       "message": "You changed it here but not in any of the other cases.",
+      "range": {
+        "startLine": 560,
+        "startChar": 46,
+        "endLine": 560,
+        "endChar": 63
+      },
+      "revId": "4cd2e99d07f0c20cf8ef83bc88ea9a634ae71489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7618d13_4000511d",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-20T07:57:00Z",
+      "side": 1,
+      "message": "Yes, sorry. I changed it in other places now.",
+      "parentUuid": "93fc5ba1_3cf746a9",
       "range": {
         "startLine": 560,
         "startChar": 46,
