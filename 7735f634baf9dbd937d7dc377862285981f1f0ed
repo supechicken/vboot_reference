@@ -132,6 +132,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a58e0f8_a97f1914",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-20T08:08:16Z",
+      "side": 1,
+      "message": "Consider add: remove vb2api_normal_boot",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1bacc27_3c71f6ff",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
@@ -360,6 +377,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "23a2ea36_b6dc3946",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce05b6d_a78cc08b",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-20T08:08:16Z",
+      "side": 1,
+      "message": "random question: do we have a proper bug id or assignee for this TODO?",
+      "parentUuid": "e942afa2_3ef54ca9",
       "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -682,6 +717,24 @@
       "writtenOn": "2022-07-16T16:38:43Z",
       "side": 1,
       "message": "Actually I am confused by the case of \"minios\" now...\nI think they are \"miniOS\" in vboot?\n\n(I know there is already inconsistency in FAFT and here, but...)",
+      "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "978ca436_61ec4400",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-20T08:08:16Z",
+      "side": 1,
+      "message": "Ack\n\nRemain as-is",
+      "parentUuid": "d923cbd1_7ca7aee1",
       "revId": "7735f634baf9dbd937d7dc377862285981f1f0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
