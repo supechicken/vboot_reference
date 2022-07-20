@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45244bc8_2216f23b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-20T00:57:18Z",
+      "side": 1,
+      "message": "LGTM besides a few trivial issues.",
+      "revId": "4cd2e99d07f0c20cf8ef83bc88ea9a634ae71489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac05868_36cb88fc",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-20T00:57:18Z",
+      "side": 1,
+      "message": "typo? not sure what this word is supposed to mean",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 325,
+        "endChar": 10
+      },
+      "revId": "4cd2e99d07f0c20cf8ef83bc88ea9a634ae71489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93fc5ba1_3cf746a9",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-20T00:57:18Z",
+      "side": 1,
+      "message": "You changed it here but not in any of the other cases.",
+      "range": {
+        "startLine": 560,
+        "startChar": 46,
+        "endLine": 560,
+        "endChar": 63
+      },
+      "revId": "4cd2e99d07f0c20cf8ef83bc88ea9a634ae71489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -356,6 +356,30 @@
       },
       "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d145d03_de05f3f5",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-20T00:57:18Z",
+      "side": 1,
+      "message": "Oh okay, so it\u0027s just keeping the existing one. I guess that can work. I don\u0027t think anybody is using it like this, though.",
+      "parentUuid": "4ff28d46_df274dcc",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 30
+      },
+      "revId": "83ac105d41ba3525903a7a3f5707c65ef5de5a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
