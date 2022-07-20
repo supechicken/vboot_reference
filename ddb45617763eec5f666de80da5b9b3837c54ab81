@@ -50,6 +50,52 @@
       "message": "V+1 with\ndepthcharge: PS8\nvboot: PS9\nfor miniOS ",
       "revId": "ddb45617763eec5f666de80da5b9b3837c54ab81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9bb5fe_c883dcdf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-20T13:10:12Z",
+      "side": 1,
+      "message": "These comments should be moved too.",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 856,
+        "endChar": 3
+      },
+      "revId": "ddb45617763eec5f666de80da5b9b3837c54ab81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8830405_eab64f9e",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-20T13:10:12Z",
+      "side": 1,
+      "message": "the VbExDisk* functions are removed from vboot_api.h.",
+      "range": {
+        "startLine": 83,
+        "startChar": 34,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "ddb45617763eec5f666de80da5b9b3837c54ab81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
