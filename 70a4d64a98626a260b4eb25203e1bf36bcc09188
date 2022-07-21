@@ -70,6 +70,30 @@
       },
       "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e55416_75b4a124",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-07-21T09:54:47Z",
+      "side": 1,
+      "message": "How about partially re-writing vboot build system to make it similar to coreboot/depthcharge? coreboots\u0027 build system is nice when it comes to building both target and host binaries at the same time, so I think it might work here as well. Of course, it would slightly increase build time, but it would introduce builds isolation.\nWith that, it would be easier to port coreboot/depthcharge test framework here and create non-invasive tests (no test_mockable etc.)\n\nRewrite like will be time-consuming, but I think it\u0027s worth the effort if this project has to be maintained for years from now on. I think, that current Makefile is too complicated, yet too primitive, and thus causes many problems.",
+      "parentUuid": "c9d8d5a4_ce54a569",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
