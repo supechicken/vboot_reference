@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0be5d3fd_5b913089",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-21T06:15:05Z",
+      "side": 1,
+      "message": "\u003e You\u0027ll have to include 2info.h here so that coreboot can find it when just including vb2_api.h.\n\nso, this is kind of a egg-chicken problem. Let me explain the reason why I was unable to do that.\n\n1. eventlog is using `vb2_boot_mode_string` function hence, need to have 2info.h. Adding 2info.h into the 2api.h would have been perfect.\n2. 2info.h uses`enum vb2_boot_mode)boot_mode` (like VB2_BOOT_MODE_UNDEFINED, VB2_FW_RESULT_UNKNOWN, VB2_FW_SLOT_A etc.), those are declared inside 2api.h\n\nTo solve such cyclic dependencies, we could have two approach\n\nA. What i did here by adding 2info.h which internally adding 2api.h\nB. Include 2info.h into the vb2_api.h as well, so, coreboot can get #1 from above",
+      "parentUuid": "a3bb9cba_340afc0e",
+      "revId": "85056d097d0f3535fe60de43461cd53159d80675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1af25c95_2e13e116",
         "filename": "firmware/include/vb2_api.h",
         "patchSetId": 20
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-21T00:14:25Z",
       "side": 1,
       "message": "Oh... no, sorry, 2api.h is supposed to remain the top-level header included from here.",
+      "revId": "85056d097d0f3535fe60de43461cd53159d80675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591b984a_d21d0401",
+        "filename": "firmware/include/vb2_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-21T06:15:05Z",
+      "side": 1,
+      "message": "\u003e Oh... no, sorry, 2api.h is supposed to remain the top-level header included from here.\n\nI have explained the problem above, please suggest.",
+      "parentUuid": "1af25c95_2e13e116",
       "revId": "85056d097d0f3535fe60de43461cd53159d80675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
