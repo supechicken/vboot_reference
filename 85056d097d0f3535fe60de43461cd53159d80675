@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bb9cba_340afc0e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-21T00:14:25Z",
+      "side": 1,
+      "message": "You\u0027ll have to include 2info.h here so that coreboot can find it when just including vb2_api.h.",
+      "revId": "85056d097d0f3535fe60de43461cd53159d80675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af25c95_2e13e116",
+        "filename": "firmware/include/vb2_api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-21T00:14:25Z",
+      "side": 1,
+      "message": "Oh... no, sorry, 2api.h is supposed to remain the top-level header included from here.",
+      "revId": "85056d097d0f3535fe60de43461cd53159d80675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
