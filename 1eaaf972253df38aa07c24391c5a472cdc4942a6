@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38133042_6701faf9",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-22T00:49:40Z",
+      "side": 1,
+      "message": "Should this be part of vb2api_kernel_finalize() (checking boot_mode, of course), rather than a separate call? I think the fewer separate APIs that the caller needs to remember to call in the right sequence, the better.",
+      "revId": "1eaaf972253df38aa07c24391c5a472cdc4942a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
