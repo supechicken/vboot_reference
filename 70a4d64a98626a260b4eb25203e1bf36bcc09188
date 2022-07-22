@@ -94,6 +94,30 @@
       },
       "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3840619_d92f2073",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-22T00:15:48Z",
+      "side": 1,
+      "message": "I\u0027m not really sure what exactly you mean \"partial rewrite to make it similar to coreboot/depthcharge\"... generally, yes, I think we need a rewrite that at least separates files built for tests completely from files built for host utilities. How exactly you want to design that is up to you -- I would suggest to try not to make it too complicated/extensive, though. We have a lot of important priorities right now (e.g. finishing RW CBFS verification) and vboot build system flexibility, while nice, is pretty far back on the list. So I\u0027d say do what needs to be done to fix the problem without trying to grow it too far in scope.\n\nAlso, remember that vboot is BSD licensed while coreboot and depthcharge are GPL, so if you want to directly copy something, try to copy it from libpayload to stay on the safe side there.",
+      "parentUuid": "27e55416_75b4a124",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
