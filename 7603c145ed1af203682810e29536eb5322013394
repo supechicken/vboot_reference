@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03271c51_6dfb40bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T02:45:13Z",
+      "side": 1,
+      "message": "Please correct this.",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d234f925_328c85ea",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T02:45:13Z",
+      "side": 1,
+      "message": "Maybe move the section below the NO_BOOT check (although theoretically no difference), to be even sure we don\u0027t accidentally modify the version. In fact, this could just be a static function. What do you think?",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a743fb2_039ef0c2",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T02:45:13Z",
+      "side": 1,
+      "message": "A blank line below.",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27648863_5f2d4bc9",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T02:45:13Z",
+      "side": 1,
+      "message": "If the order is changed, please correct the comment.",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba20b2d5_ccaf528c",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T02:45:13Z",
+      "side": 1,
+      "message": "Do we still need these?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863d2316_bb025fc3",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T02:45:13Z",
+      "side": 1,
+      "message": "mock_kernel_flag_set",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 22
+      },
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e94ac6_ef0097bf",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T02:45:13Z",
+      "side": 1,
+      "message": "/* Kernel version roll forward */",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
