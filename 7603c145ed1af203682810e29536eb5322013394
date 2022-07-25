@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38835b3_50cb0b3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-25T10:33:16Z",
+      "side": 1,
+      "message": "Agree with that mock vb2_secdata_kernel_* seems more clear.",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d234f925_328c85ea",
@@ -72,6 +89,24 @@
       "writtenOn": "2022-07-25T08:48:59Z",
       "side": 1,
       "message": "\u003e In vb2_set_boot_mode, it don\u0027t guarantee VB2_BOOT_MODE_NORMAL and VB2_CONTEXT_NO_BOOT are mutually exclusive. It might change the behavior if we change the order.\n\nI think that should be fine. Julius?",
+      "parentUuid": "f1d1f75d_7d9517fa",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74dea16_0a70fd6b",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-25T10:33:16Z",
+      "side": 1,
+      "message": "Yes, the original flow will check_kernel_version before NO_BOOT check\n\n\u003e In fact, this could just be a static function\n+1 for this",
       "parentUuid": "f1d1f75d_7d9517fa",
       "revId": "7603c145ed1af203682810e29536eb5322013394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -183,6 +218,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecf46519_c248ac0d",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-25T10:33:16Z",
+      "side": 1,
+      "message": "Should we align with the mock, which is,\n* Use switch(param)\n* Die if the param is invalid",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 1
+      },
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5e94ac6_ef0097bf",
         "filename": "tests/vb2_kernel_tests.c",
         "patchSetId": 12
@@ -194,6 +252,52 @@
       "writtenOn": "2022-07-25T02:45:13Z",
       "side": 1,
       "message": "/* Kernel version roll forward */",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3550448a_99e8d733",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-25T10:33:16Z",
+      "side": 1,
+      "message": "Since now we combine all to a more integrated test, I would for more specific comments, e.g. \"Kernel version roll forward\"",
+      "range": {
+        "startLine": 428,
+        "startChar": 52,
+        "endLine": 428,
+        "endChar": 56
+      },
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556650ff_4c0e6129",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-25T10:33:16Z",
+      "side": 1,
+      "message": "Same her, \"  kerenl verison\"",
+      "range": {
+        "startLine": 429,
+        "startChar": 42,
+        "endLine": 429,
+        "endChar": 49
+      },
       "revId": "7603c145ed1af203682810e29536eb5322013394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
