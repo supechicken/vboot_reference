@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff893dbd_970e439f",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-25T08:48:59Z",
+      "side": 1,
+      "message": "\u003e In vb2_set_boot_mode, it don\u0027t guarantee VB2_BOOT_MODE_NORMAL and VB2_CONTEXT_NO_BOOT are mutually exclusive. It might change the behavior if we change the order.\n\nI think that should be fine. Julius?",
+      "parentUuid": "f1d1f75d_7d9517fa",
+      "revId": "7603c145ed1af203682810e29536eb5322013394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a743fb2_039ef0c2",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 12
