@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83bc02f1_3ad1e492",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-26T19:47:56Z",
+      "side": 1,
+      "message": "\u003e Let\u0027s just move the definition of vb2_boot_mode into 2info.h?\n\nif you look into 3 new APIs that belongs to the 2info.h then we actually need all below data structures inside 2info.h (if we wish to make 2info.h being independent of 2api.h).\n\n* vb2_slot_string \u003c-- uses `enum vb2_fw_slot`\n* vb2_result_string \u003c---- uses `enum vb2_fw_result`\n* vb2_boot_mode_string \u003c---- uses `enum vb2_boot_mode`",
+      "parentUuid": "5a6aeaa1_5b6639e7",
+      "revId": "85056d097d0f3535fe60de43461cd53159d80675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1af25c95_2e13e116",
         "filename": "firmware/include/vb2_api.h",
         "patchSetId": 20
