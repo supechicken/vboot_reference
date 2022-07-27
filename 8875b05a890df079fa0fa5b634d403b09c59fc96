@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c44afca_d8dff15f",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c709ae83_cd755d6a",
+      "range": {
+        "startLine": 214,
+        "startChar": 7,
+        "endLine": 214,
+        "endChar": 18
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0999c5_dd9b542f",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19bf54f5_1a631dd7",
+      "range": {
+        "startLine": 214,
+        "startChar": 19,
+        "endLine": 214,
+        "endChar": 39
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b8114c9_b49d8fba",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-27T08:29:44Z",
       "side": 1,
       "message": "Should we mention vb2api_load_minios_kernel() as well?",
+      "range": {
+        "startLine": 857,
+        "startChar": 14,
+        "endLine": 857,
+        "endChar": 32
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7524f09_51496da4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "IMO Inputs to vb2api_load_kernel implies this.",
+      "parentUuid": "1b8114c9_b49d8fba",
       "range": {
         "startLine": 857,
         "startChar": 14,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2231b1_fc6895cc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Same reason",
+      "parentUuid": "b1d5227a_1422d8f2",
+      "range": {
+        "startLine": 864,
+        "startChar": 17,
+        "endLine": 864,
+        "endChar": 35
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30cb491f_fda0e674",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-07-27T08:29:44Z",
       "side": 1,
       "message": "Should we mention that the caller should set the appropriate \"input fields\" of kparams?",
+      "range": {
+        "startLine": 963,
+        "startChar": 10,
+        "endLine": 963,
+        "endChar": 16
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fafb48_aa54de29",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Same reason as above",
+      "parentUuid": "30cb491f_fda0e674",
       "range": {
         "startLine": 963,
         "startChar": 10,
@@ -202,6 +322,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eca822a_4ce13841",
+        "filename": "tests/vb2_load_kernel2_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33029f43_5d6d0d3a",
+      "range": {
+        "startLine": 262,
+        "startChar": 7,
+        "endLine": 262,
+        "endChar": 11
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afeb860b_5e180d0c",
@@ -215,6 +359,24 @@
       "writtenOn": "2022-07-27T08:29:44Z",
       "side": 1,
       "message": "vb2_error_t",
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538db6f8_6aa7c675",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afeb860b_5e180d0c",
       "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -265,6 +427,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e22a4b_6b3f2b83",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "I think keeping this here is better for unification.",
+      "parentUuid": "4c2b1bc3_95f4531c",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 40
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49380826_ecfb908b",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8af1f3d9_5b967056",
+      "range": {
+        "startLine": 285,
+        "startChar": 8,
+        "endLine": 285,
+        "endChar": 12
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3439ec9_120af89d",
@@ -278,6 +488,30 @@
       "writtenOn": "2022-07-27T08:29:44Z",
       "side": 1,
       "message": "VB2_SUCCESS\n\nSame for all below",
+      "range": {
+        "startLine": 352,
+        "startChar": 18,
+        "endLine": 352,
+        "endChar": 19
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d762e53_d6fc13f6",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1547233
+      },
+      "writtenOn": "2022-07-27T11:05:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3439ec9_120af89d",
       "range": {
         "startLine": 352,
         "startChar": 18,
