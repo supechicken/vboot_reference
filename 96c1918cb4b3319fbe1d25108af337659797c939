@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6befec_334819be",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-28T06:35:09Z",
+      "side": 1,
+      "message": "Can we make it clearer that this is the \"output\" argument? For example\n\n```\nKernel parameters to be filled\n```\n\nAlso, I\u0027d suggest putting input arguments before output ones (`ctx`, `disk_info`, and then `params`).",
+      "range": {
+        "startLine": 963,
+        "startChar": 17,
+        "endLine": 963,
+        "endChar": 54
+      },
+      "revId": "96c1918cb4b3319fbe1d25108af337659797c939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
