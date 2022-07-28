@@ -255,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e34a91fb_21782d5f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-28T06:50:50Z",
+      "side": 1,
+      "message": "IMO \"The caller should set the input fields\" is a different topic from \"mentioning vb2api_load_minios_kernel()\"",
+      "parentUuid": "41fafb48_aa54de29",
+      "range": {
+        "startLine": 963,
+        "startChar": 10,
+        "endLine": 963,
+        "endChar": 16
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "528bc556_fda882f9",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 14
@@ -324,6 +348,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a6d0cb1_0a97678e",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-28T06:50:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0923dc5_98bcd958",
+      "range": {
+        "startLine": 970,
+        "startChar": 10,
+        "endLine": 970,
+        "endChar": 16
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f3abce9_43db9f76",
@@ -337,6 +385,30 @@
       "writtenOn": "2022-07-27T08:29:44Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 989,
+        "startChar": 10,
+        "endLine": 989,
+        "endChar": 16
+      },
+      "revId": "8875b05a890df079fa0fa5b634d403b09c59fc96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74d58654_19282e45",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-28T06:50:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f3abce9_43db9f76",
       "range": {
         "startLine": 989,
         "startChar": 10,

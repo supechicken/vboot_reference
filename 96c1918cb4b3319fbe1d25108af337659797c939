@@ -22,6 +22,30 @@
       },
       "revId": "96c1918cb4b3319fbe1d25108af337659797c939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c83c04_c9d7865b",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-07-28T06:50:50Z",
+      "side": 1,
+      "message": "vb2_kernel_params is not a pure output argument -- it contains some inputs and some outputs.\n\nBut actually I have no strong opinion on the order",
+      "parentUuid": "9a6befec_334819be",
+      "range": {
+        "startLine": 963,
+        "startChar": 17,
+        "endLine": 963,
+        "endChar": 54
+      },
+      "revId": "96c1918cb4b3319fbe1d25108af337659797c939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
