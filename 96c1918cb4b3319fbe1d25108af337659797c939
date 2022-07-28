@@ -46,6 +46,30 @@
       },
       "revId": "96c1918cb4b3319fbe1d25108af337659797c939",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce2de43_86201a9a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-28T07:17:12Z",
+      "side": 1,
+      "message": "\u003e vb2_kernel_params is not a pure output argument -- it contains some inputs and some outputs.\n\nHow about (for line #960)\n\n```\nAttempt to load kernel from the specified device. On success, the output fields of params will be filled. The caller should set the input fields of params.\n```\n\n\u003e But actually I have no strong opinion on the order\n\nFine. Let\u0027s keep them unchanged.",
+      "parentUuid": "a5c83c04_c9d7865b",
+      "range": {
+        "startLine": 963,
+        "startChar": 17,
+        "endLine": 963,
+        "endChar": 54
+      },
+      "revId": "96c1918cb4b3319fbe1d25108af337659797c939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
