@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba645f11_84d70f19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2022-07-28T20:37:56Z",
+      "side": 1,
+      "message": "signer test failures related to this are in crrev.com/i/4897193 - AFAICT we\u0027re in a situation where we cannot roll ToT vboot_reference updates into signer without at least breaking the tests (or possibly much worse) right now, I believe due to a part of crrev.com/c/3665477.\n\nFWIW, I\u0027m definitely not *completely* familiar between the relationship between vboot_reference, chromeos-firmware-update, signer, and the tests / test artifacts used by signer tests.\n\nOverall this seems to be an unfortunate situation, maybe we should be taking a different course of action here like updating the test bundles used by signer to use firmware update scripts that handle `--unpack`, and/or maybe we should make this script first try `--unpack` then fall back to `--sb_extract` so at least image signing won\u0027t prevent us from removing `--sb_extract` option from the relevant scripts. But again, I suspect others would have a much more informed opinion on this than I :)",
+      "revId": "b9bd64714f0d4353e60752c31f3276805e162b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
