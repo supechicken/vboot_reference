@@ -87,6 +87,24 @@
       "parentUuid": "484a6dfc_ab943dcc",
       "revId": "7e7027f53205e0e14bf8219242790f8540296640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adcbdaf5_59818688",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-29T01:57:25Z",
+      "side": 1,
+      "message": "\u003e Eventually I think yes, but perhaps not needed for an initial MVP. Developer mode would just be setting  ctx-\u003eflags \u003d VB2_CONTEXT_DEVELOPER_MODE  when appropriate?\n\nNo, it\u0027s more complicated than that. There\u0027s some redundancy between the `ctx-\u003eboot_mode` value and context flags here (some of it necessary -- e.g. it\u0027s possible for a Chromebook to generally be in developer mode but currently doing a recovery or diagnostics boot -- and some of it old technical debt because boot_mode was introduced somewhat recently). We need to be careful not to get these redundant bits out of sync in a way that the code wasn\u0027t designed for. It\u0027s probably best if you just set `ctx-\u003eboot_mode` to `VB2_BOOT_MODE_NORMAL` for now.\n\nI\u0027m admittedly a bit worried that this will be hard to get right and even harder to keep right across future changes (this sounded a bit easier when I first suggested it on that doc and didn\u0027t quite think all the details through... sorry). vboot expects the whole context and shared data structures to be valid with invariants that aren\u0027t obviously documented and the only \"official\" way we currently have of getting them into that state is to run through the firmware part first. For example, we have a thing called \"GBB flags\" that can be set in flash to modify behavior all over the place and we regularly add more of them. If we need to check one of them we call vb2api_get_gbb_flags(), which reads them from a workbuffer location pointed to by `sd-\u003egbb_offset` that is initialized very early in the firmware flow. There are no further checks, so if this was called on your stub workbuffer where `sd-\u003egbb_offset` is 0, it would just return some random value. I don\u0027t think anything in LoadKernel() is currently reading GBB flags but that\u0027s no guarantee that this wouldn\u0027t be added in the future.\n\nSo I think we carefully need to go through all vb2_context and vb2_shared_data fields, and either explicitly initialize them to something that would be valid for a normal firmware boot, or make sure that everything using it checks and fails fast for the stub value. For nvdata and secdata we already have those checks (based off VB2_SD_STATUS_NV_INIT and VB2_SD_STATUS_SECDATA_xxx_INIT) so those should be fine. For GBB we could add something similar (just check if `sd-\u003egbb_offset` is 0 in vb2_get_gbb() and vb2ex_abort() in that case).\n\n\u003e Looks like  vb2api_init  memsets the whole vb2_shared_data to zero, so maybe not necessary to do anything else there?\n\nI would suggest to initialize all values explicitly even if there was a memset(), just to make it clear that the initialization was intentional and someone thought it through for that particular field (since like with the example above, zero-initialization isn\u0027t necessarily always a safe state).\n\nFor tests, I think verify_kernel is fine as an integration test and the rest should be covered by unit tests -- i.e. just something that calls your function and then calls LoadKernel() and makes sure it doesn\u0027t abort (and succeeds/fails based on what would be correct for the stubbed out disks). You can follow a similar pattern to tests/vb2_load_kernel_tests.c (but without mocking out the GBB part, probably).",
+      "parentUuid": "1a7df886_f7422b92",
+      "revId": "7e7027f53205e0e14bf8219242790f8540296640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a042875_9afbaa39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-07-29T01:57:25Z",
+      "side": 1,
+      "message": "Sorry for the review delay, am a bit swamped at the moment.\n\nBTW, there\u0027s currently some refactoring for LoadKernel() going on that you\u0027ll probably want to wait out before you proceed here, in CL:3755923. It shouldn\u0027t make much of a difference for you but some identifiers are renamed to match the vb2 convention.",
+      "revId": "4599d82a801d8816decc1440a5534113ea632c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
