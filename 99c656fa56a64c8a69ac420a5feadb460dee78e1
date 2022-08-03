@@ -16,6 +16,41 @@
       "message": "I see the point and I think this makes sense (silently misinterpreting the image because the tool is missing would be bad), but we need to be careful because the signers are running in a special environment with only limited tools available. I think we can land this now but this needs to be looked at before the next time someone uprevs the vboot version on the signers.\n\n+Mike, can you help figure out if the signers have access to cbfstool (from sys-apps/coreboot-utils), and if not how we can get it to them?",
       "revId": "99c656fa56a64c8a69ac420a5feadb460dee78e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4eb0b90_9ee611c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-03T05:21:07Z",
+      "side": 1,
+      "message": "\u003e +Mike, can you help figure out if the signers have access to cbfstool (from sys-apps/coreboot-utils), and if not how we can get it to them?\n\nit does.  you can check:\n```\n$ ls ~/chromiumos/src/platform/signing/signer-dev/signer/signingtools-bin/\n```\n\nwhether you need it to be recent is a diff question of course.  looks like it was last updated in Nov 2017.",
+      "parentUuid": "ad4326f8_99ea4ec6",
+      "revId": "99c656fa56a64c8a69ac420a5feadb460dee78e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b20263_1049e3c7",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-03T05:21:07Z",
+      "side": 1,
+      "message": "should it include %m in the output ?  or should this be using `VB2_DIE(...)` ?  i don\u0027t know the vboot API standards.",
+      "revId": "99c656fa56a64c8a69ac420a5feadb460dee78e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
