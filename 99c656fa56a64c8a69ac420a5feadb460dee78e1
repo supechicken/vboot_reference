@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4326f8_99ea4ec6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-03T01:41:24Z",
+      "side": 1,
+      "message": "I see the point and I think this makes sense (silently misinterpreting the image because the tool is missing would be bad), but we need to be careful because the signers are running in a special environment with only limited tools available. I think we can land this now but this needs to be looked at before the next time someone uprevs the vboot version on the signers.\n\n+Mike, can you help figure out if the signers have access to cbfstool (from sys-apps/coreboot-utils), and if not how we can get it to them?",
+      "revId": "99c656fa56a64c8a69ac420a5feadb460dee78e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
