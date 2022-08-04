@@ -32,6 +32,11 @@ struct bios_area_s {
 	/* VBLOCK only */
 	uint32_t flags;
 	uint32_t version;
+
+	/* FW_MAIN only */
+	size_t fw_size; /* effective size from cbfstool (if available) */
+	int has_cbfs_metadata_hash;
+	struct vb2_hash metadata_hash;
 };
 
 /* State to track as we visit all components */

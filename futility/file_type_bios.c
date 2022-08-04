@@ -356,8 +356,8 @@ static int sign_bios_at_end(struct bios_state_s *state)
 /* Prepare firmware slot for signing.
    If fw_size is not zero, then it will be used as new length of signed area,
    for zero the length will be taken form FlashMap or preamble. */
-static int prepare_slot(uint8_t *buf, uint32_t len, size_t fw_size,
-			enum bios_component fw_c, enum bios_component vblock_c,
+static int prepare_slot(uint8_t *buf, uint32_t len, enum bios_component fw_c,
+			enum bios_component vblock_c,
 			struct bios_state_s *state)
 {
 	FmapHeader *fmap;
@@ -381,11 +381,11 @@ static int prepare_slot(uint8_t *buf, uint32_t len, size_t fw_size,
 	fmap_limit_area(ah, len);
 	state->area[fw_c].buf = buf + ah->area_offset;
 	state->area[fw_c].is_valid = 1;
-	if (fw_size > ah->area_size) {
+	if (state->area[fw_c].fw_size > ah->area_size) {
 		ERROR("%s size is incorrect.\n", fmap_name[fw_c]);
 		return 1;
-	} else if (fw_size) {
-		state->area[fw_c].len = fw_size;
+	} else if (state->area[fw_c].fw_size) {
+		state->area[fw_c].len = state->area[fw_c].fw_size;
 	} else {
 		WARN("%s does not contain CBFS. Trying to sign entire area.\n",
 		     fmap_name[fw_c]);
@@ -442,7 +442,7 @@ static int prepare_slot(uint8_t *buf, uint32_t len, size_t fw_size,
 		goto end;
 	}
 
-	if (fw_size == 0) {
+	if (state->area[fw_c].fw_size == 0) {
 		if (preamble->body_signature.data_size >
 		    state->area[fw_c].len) {
 			ERROR("%s says the firmware is larger than we have.\n",
@@ -476,6 +476,24 @@ end:
 	return 0;
 }
 
+static void image_check_cbfs(const char *file, enum bios_component fw_c,
+			     struct bios_state_s *state)
+{
+	if (cbfstool_truncate(file, fmap_name[fw_c],
+			      &state->area[fw_c].fw_size) == VB2_SUCCESS) {
+		VB2_DEBUG("CBFS found in area %s\n", fmap_name[fw_c]);
+		if (sign_option.cbfs_verification &&
+		    cbfstool_get_metadata_hash(
+			    file, fmap_name[fw_c],
+			    &state->area[fw_c].has_cbfs_metadata_hash,
+			    &state->area[fw_c].metadata_hash) == VB2_SUCCESS)
+			VB2_DEBUG("CBFS metadata hash found in area %s\n",
+				  fmap_name[fw_c]);
+	} else {
+		VB2_DEBUG("CBFS not found in area %s\n", fmap_name[fw_c]);
+	}
+}
+
 int ft_sign_bios(const char *name, void *data)
 {
 	int retval = 0;
@@ -483,44 +501,23 @@ int ft_sign_bios(const char *name, void *data)
 	int fd = -1;
 	uint8_t *buf = NULL;
 	uint32_t len = 0;
-	size_t fw_main_a_size = 0;
-	size_t fw_main_b_size = 0;
 
-	bool fw_main_a_in_cbfs_mode =
-		cbfstool_truncate(name, fmap_name[BIOS_FMAP_FW_MAIN_A],
-				  &fw_main_a_size) == VB2_SUCCESS;
+	memset(&state, 0, sizeof(state));
 
-	bool fw_main_b_in_cbfs_mode =
-		cbfstool_truncate(name, fmap_name[BIOS_FMAP_FW_MAIN_B],
-				  &fw_main_b_size) == VB2_SUCCESS;
-
-	if (fw_main_a_in_cbfs_mode)
-		VB2_DEBUG("CBFS found in area %s\n",
-			  fmap_name[BIOS_FMAP_FW_MAIN_A]);
-	else
-		VB2_DEBUG("CBFS not found in area %s\n",
-			  fmap_name[BIOS_FMAP_FW_MAIN_A]);
-
-	if (fw_main_b_in_cbfs_mode)
-		VB2_DEBUG("CBFS found in area %s\n",
-			  fmap_name[BIOS_FMAP_FW_MAIN_B]);
-	else
-		VB2_DEBUG("CBFS not found in area %s\n",
-			  fmap_name[BIOS_FMAP_FW_MAIN_B]);
+	image_check_cbfs(name, BIOS_FMAP_FW_MAIN_A, &state);
+	image_check_cbfs(name, BIOS_FMAP_FW_MAIN_B, &state);
 
 	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
 				    &buf, &len))
 		return 1;
 
-	memset(&state, 0, sizeof(state));
-
-	retval = prepare_slot(buf, len, fw_main_a_size, BIOS_FMAP_FW_MAIN_A,
-			      BIOS_FMAP_VBLOCK_A, &state);
+	retval = prepare_slot(buf, len, BIOS_FMAP_FW_MAIN_A, BIOS_FMAP_VBLOCK_A,
+			      &state);
 	if (retval)
 		goto done;
 
-	retval = prepare_slot(buf, len, fw_main_b_size, BIOS_FMAP_FW_MAIN_B,
-			      BIOS_FMAP_VBLOCK_B, &state);
+	retval = prepare_slot(buf, len, BIOS_FMAP_FW_MAIN_B, BIOS_FMAP_VBLOCK_B,
+			      &state);
 	if (retval && state.area[BIOS_FMAP_FW_MAIN_B].is_valid)
 		goto done;
 

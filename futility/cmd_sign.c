@@ -478,6 +478,9 @@ static const char usage_bios[] = "\n"
 	" -k,\n"
 	"                                   if not passed expliticly\n"
 	"                                   (default is '%s')\n"
+	"  -C|--cbfs_verification           Use metadata hash instead of\n"
+	"                                     calculating body hash, if"
+	" possible\n"
 	"  [--outfile]      OUTFILE         Output firmware image\n"
 	"\n";
 static void print_help_bios_image(int argc, char *argv[])
@@ -741,6 +744,7 @@ static const struct option long_opts[] = {
 	{"loemdir",      1, NULL, 'd'},
 	{"loemid",       1, NULL, 'l'},
 	{"keyset",       1, NULL, 'K'},
+	{"cbfs_verification", 0, &sign_option.cbfs_verification, 'C'},
 	{"fv",           1, NULL, OPT_FV},
 	{"infile",       1, NULL, OPT_INFILE},
 	{"datapubkey",   1, NULL, OPT_INFILE},	/* alias */
@@ -769,7 +773,7 @@ static const struct option long_opts[] = {
 	{"help",         0, NULL, OPT_HELP},
 	{NULL,           0, NULL, 0},
 };
-static const char *short_opts = ":s:b:k:v:f:d:l:K:";
+static const char *short_opts = ":s:b:k:v:f:d:l:K:C:";
 
 /* Return zero on success */
 static int parse_number_opt(const char *arg, const char *name, uint32_t *dest)

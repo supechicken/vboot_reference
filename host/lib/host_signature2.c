@@ -131,3 +131,56 @@ struct vb2_signature *vb2_calculate_signature(
 	/* Return the signature */
 	return sig;
 }
+
+struct vb2_signature *
+vb2_create_signature_from_hash(const struct vb2_hash *hash,
+			       const struct vb2_private_key *key)
+{
+	/* Passed hash has to be compatible with key */
+	if (hash->algo != key->hash_alg) {
+		VB2_DEBUG("Hash algorithm does not match private key "
+			  "algorithm\n");
+		return NULL;
+	}
+
+	uint32_t digest_info_size = 0;
+	const uint8_t *digest_info = NULL;
+	if (VB2_SUCCESS !=
+	    vb2_digest_info(hash->algo, &digest_info, &digest_info_size)) {
+		VB2_DEBUG("Failed to get digest info. Unsupported algorithm: "
+			  "%d\n",
+			  hash->algo);
+		return NULL;
+	}
+
+	const uint32_t digest_size = vb2_digest_size(key->hash_alg);
+	const uint32_t signature_digest_len = digest_info_size + digest_size;
+	uint8_t *signature_digest = malloc(signature_digest_len);
+	if (!signature_digest)
+		return NULL;
+
+	memcpy(signature_digest, digest_info, digest_info_size);
+	memcpy(signature_digest + digest_info_size, hash->raw, digest_size);
+
+	struct vb2_signature *sig = (struct vb2_signature *)vb2_alloc_signature(
+		vb2_rsa_sig_size(key->sig_alg), digest_size);
+	if (!sig) {
+		free(signature_digest);
+		return NULL;
+	}
+
+	int rv = RSA_private_encrypt(signature_digest_len,
+				     signature_digest,
+				     vb2_signature_data_mutable(sig),
+				     key->rsa_private_key,
+				     RSA_PKCS1_PADDING);
+	free(signature_digest);
+
+	if (-1 == rv) {
+		fprintf(stderr, "%s: RSA_private_encrypt() failed\n", __func__);
+		free(sig);
+		return NULL;
+	}
+
+	return sig;
+}
