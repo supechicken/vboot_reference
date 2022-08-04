@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c78d936_78144c9b",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-04T15:30:32Z",
+      "side": 1,
+      "message": "Should it be implicit?",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 14
+      },
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd28887b_549a6dca",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-04T15:30:32Z",
+      "side": 1,
+      "message": "What body data size should be? Metadata hash covers all CBFS files metadata, and their size is not available in the output of `cbfstool`. Should it be zero then? We will use it differently in the verification process after all.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
