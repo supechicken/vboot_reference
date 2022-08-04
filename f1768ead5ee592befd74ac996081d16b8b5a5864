@@ -26,6 +26,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0c16296_621373aa",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-04T22:56:04Z",
+      "side": 1,
+      "message": "Yes, I think it needs to be implicit or it\u0027s going to be too confusing (because coreboot can only be compiled to use one or the other kind of verification, we should make sure there\u0027s no way to get that out of sync with how it gets signed). Unfortunately that\u0027s a bit tricky -- we can\u0027t just do this for all images that report a metadata hash from cbfstool, because we still need to support the case for the current generation boards (e.g. Nissa) that want to use CBFS verification for the RO CBFS but keep doing the old-style verification for RW. So we need an extra coreboot Kconfig to say that we also want to use CBFS verification for RW, and we somehow need to communicate the outcome of that to futility.\n\nI don\u0027t really see a clever way to do this in the image itself (because the RW CBFS sections don\u0027t really have a marker inside themselves to tell that difference). So I think the best option left, if a bit clumsy, is probably to have futility extract the `config` file from the RO CBFS and just look for that new Kconfig in there.",
+      "parentUuid": "7c78d936_78144c9b",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 14
+      },
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc238baf_3f5514bb",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-04T22:56:04Z",
+      "side": 1,
+      "message": "Should make sure that this is a fatal error for the cbfs_verification case.",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63efabfa_58b5b76f",
+        "filename": "futility/file_type_bios.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-04T22:56:04Z",
+      "side": 1,
+      "message": "Probably don\u0027t need this if you just use metadata_hash.algo \u003d\u003d INVALID to signal that there\u0027s no hash.",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650de2c4_b3253a7c",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-04T22:56:04Z",
+      "side": 1,
+      "message": "this looks garbled",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f6a86c_b4748c5d",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-04T22:56:04Z",
+      "side": 1,
+      "message": "Should be factored out of futility/misc.c instead of copied for the final version.",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba061357_c0445cf1",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-04T22:56:04Z",
+      "side": 1,
+      "message": "I guess this works, but wouldn\u0027t TARGET_BUFFER make things easier? TARGET_CALLBACK is really just meant for subprocesses that produce a lot of output where you can\u0027t reasonably allocate a buffer that\u0027s going to be big enough for all cases. In this case just malloc()ing a megabyte or so should work fine?",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd28887b_549a6dca",
         "filename": "host/lib/host_signature2.c",
         "patchSetId": 1
@@ -37,6 +146,30 @@
       "writtenOn": "2022-08-04T15:30:32Z",
       "side": 1,
       "message": "What body data size should be? Metadata hash covers all CBFS files metadata, and their size is not available in the output of `cbfstool`. Should it be zero then? We will use it differently in the verification process after all.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce662f6_1937d554",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-04T22:56:04Z",
+      "side": 1,
+      "message": "Yes, I think we should just set it to zero.",
+      "parentUuid": "fd28887b_549a6dca",
       "range": {
         "startLine": 165,
         "startChar": 1,
