@@ -234,6 +234,24 @@
       "parentUuid": "d96a12d2_01f125ad",
       "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f7ee3d_73f631db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-08-04T13:56:02Z",
+      "side": 1,
+      "message": "It has been a while and I have forgotten about this.\n\nYes it is the fwlib target, as above:\n\ncd /tmp/somewhere\nmake -C /path/to/cosarm/src/platform/vboot_reference fwlib\n\nWhy can we not use the fwlib target?\n\nBut how do people build the library from another project, if we get errors?",
+      "parentUuid": "41409334_b5beb322",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
