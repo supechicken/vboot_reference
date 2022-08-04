@@ -131,3 +131,28 @@ struct vb2_signature *vb2_calculate_signature(
 	/* Return the signature */
 	return sig;
 }
+
+struct vb2_signature *
+vb2_create_signature_from_hash(const struct vb2_hash *hash)
+{
+	uint32_t digest_info_size = 0;
+	const uint8_t *digest_info = NULL;
+	if (VB2_SUCCESS !=
+	    vb2_digest_info(hash->algo, &digest_info, &digest_info_size)) {
+		VB2_DEBUG("Failed to get digest info. Unsupported algorithm:"
+			  " %d\n",
+			  hash->algo);
+		return NULL;
+	}
+
+	/* The body size is unknown, so set it to zero */
+	struct vb2_signature *sig =
+		(struct vb2_signature *)vb2_alloc_signature(sizeof(*hash), 0);
+	if (!sig) {
+		return NULL;
+	}
+
+	memcpy((uint8_t *)sig + sig->sig_offset, hash, sizeof(*hash));
+
+	return sig;
+}

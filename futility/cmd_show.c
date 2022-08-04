@@ -22,6 +22,7 @@
 #include "2common.h"
 #include "2sha.h"
 #include "2sysincludes.h"
+#include "cbfstool.h"
 #include "file_type_bios.h"
 #include "file_type.h"
 #include "fmap.h"
@@ -288,10 +289,44 @@ int show_fw_preamble_buf(const char *name, uint8_t *buf, uint32_t len,
 		return 0;
 	}
 
-	if (VB2_SUCCESS !=
-	    vb2_verify_data(fv_data, fv_size, &pre2->body_signature,
-			    &data_key, &wb)) {
-		fprintf(stderr, "Error verifying firmware body.\n");
+	if (pre2->body_signature.data_size) {
+		if (VB2_SUCCESS != vb2_verify_data(fv_data, fv_size,
+						   &pre2->body_signature,
+						   &data_key, &wb)) {
+			fprintf(stderr, "Error verifying firmware body.\n");
+			return 1;
+		}
+	} else if (state) { /* Only works for images with at least FW_MAIN_A */
+		enum bios_component body_c = state->c == BIOS_FMAP_VBLOCK_A
+						     ? BIOS_FMAP_FW_MAIN_A
+						     : BIOS_FMAP_FW_MAIN_B;
+		struct vb2_hash real_hash;
+		struct vb2_hash *body_hash =
+			(struct vb2_hash *)((uint8_t *)&pre2->body_signature +
+					    pre2->body_signature.sig_offset);
+
+		memset(&real_hash, 0, sizeof(real_hash));
+
+		if (VB2_SUCCESS != cbfstool_get_metadata_hash(name,
+							      fmap_name[body_c],
+							      &real_hash) ||
+		    real_hash.algo == VB2_HASH_INVALID) {
+			fprintf(stderr,
+				"Failed to get metadata hash from image.\n");
+			return 1;
+		}
+
+		if (body_hash->algo != real_hash.algo ||
+		    !vb2_digest_size(body_hash->algo) ||
+		    memcmp(body_hash->raw, real_hash.raw,
+			   vb2_digest_size(body_hash->algo))) {
+			fprintf(stderr, "Signature hash does not match with"
+					" real metadata hash.\n");
+			return 1;
+		}
+	} else {
+		fprintf(stderr, "Image without correct regions and with zero "
+				"body data size.\n");
 		return 1;
 	}
 
