@@ -25,6 +25,7 @@
 #include "2sha.h"
 #include "2sysincludes.h"
 #include "cgptlib_internal.h"
+#include "host_misc.h"
 #include "file_type.h"
 #include "futility.h"
 
@@ -414,32 +415,6 @@ enum futil_file_type ft_recognize_gpt(uint8_t *buf, uint32_t len)
 		return FILE_TYPE_UNKNOWN;
 
 	return FILE_TYPE_CHROMIUMOS_DISK;
-}
-
-static int parse_hex(uint8_t *val, const char *str)
-{
-	uint8_t v = 0;
-	char c;
-	int digit;
-
-	for (digit = 0; digit < 2; digit++) {
-		c = *str;
-		if (!c)
-			return 0;
-		if (!isxdigit(c))
-			return 0;
-		c = tolower(c);
-		if (c >= '0' && c <= '9')
-			v += c - '0';
-		else
-			v += 10 + c - 'a';
-		if (!digit)
-			v <<= 4;
-		str++;
-	}
-
-	*val = v;
-	return 1;
 }
 
 void parse_digest_or_die(uint8_t *buf, int len, const char *str)

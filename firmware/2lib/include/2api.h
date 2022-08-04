@@ -468,6 +468,18 @@ vb2_error_t vb2api_check_hash_get_digest(struct vb2_context *ctx,
 					 uint32_t digest_out_size);
 
 /**
+ * Check provided hash value and store it in provided context data.
+ *
+ * @param ctx			Vboot context
+ * @param digest		pointer to hash value
+ * @param digest_size		size of provided digest
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2api_check_digest(struct vb2_context *ctx,
+				void *digest,
+				uint32_t digest_size);
+
+/**
  * Get a PCR digest
  *
  * @param ctx		Vboot context
