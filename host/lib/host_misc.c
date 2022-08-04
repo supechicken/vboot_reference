@@ -116,3 +116,29 @@ vb2_error_t WriteFile(const char* filename, const void *data, uint64_t size)
 	fclose(f);
 	return 0;
 }
+
+bool parse_hex(uint8_t *val, const char *str)
+{
+	uint8_t v = 0;
+	char c;
+	int digit;
+
+	for (digit = 0; digit < 2; digit++) {
+		c = *str;
+		if (!c)
+			return false;
+		if (!isxdigit(c))
+			return false;
+		c = tolower(c);
+		if (c >= '0' && c <= '9')
+			v += c - '0';
+		else
+			v += 10 + c - 'a';
+		if (!digit)
+			v <<= 4;
+		str++;
+	}
+
+	*val = v;
+	return true;
+}

@@ -285,6 +285,76 @@ vb2_error_t vb2api_init_hash(struct vb2_context *ctx, uint32_t tag)
 	return vb2_digest_init(dc, key.hash_alg);
 }
 
+vb2_error_t vb2api_check_digest(struct vb2_context *ctx,
+				void *digest,
+				uint32_t digest_size)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	struct vb2_digest_context *dc;
+	struct vb2_workbuf wb;
+	struct vb2_fw_preamble *pre;
+	struct vb2_public_key key;
+
+	vb2_workbuf_from_ctx(ctx, &wb);
+
+	/* Get preamble pointer */
+	if (!sd->preamble_size)
+		return VB2_ERROR_API_CHECK_HASH_PREAMBLE;
+	pre = vb2_member_of(sd, sd->preamble_offset);
+
+	/*
+	 * The body signature is currently a *signature* of the body data, not
+	 * just its hash.  So we need to verify the signature.
+	 */
+
+	/* Unpack the data key */
+	if (!sd->data_key_size)
+		return VB2_ERROR_API_CHECK_HASH_DATA_KEY;
+
+	VB2_TRY(vb2_unpack_key_buffer(&key,
+				      vb2_member_of(sd, sd->data_key_offset),
+				      sd->data_key_size));
+
+	key.allow_hwcrypto = vb2_hwcrypto_allowed(ctx);
+
+	if (digest_size != vb2_digest_size(key.hash_alg))
+		return VB2_ERROR_API_CHECK_HASH_SIZE;
+
+	if (sd->hash_size) {
+		dc = (struct vb2_digest_context *)
+			vb2_member_of(sd, sd->hash_offset);
+	} else {
+		uint32_t dig_size = sizeof(*dc);
+
+		dc = vb2_workbuf_alloc(&wb, dig_size);
+		if (!dc)
+			return VB2_ERROR_API_INIT_HASH_WORKBUF;
+
+		sd->hash_offset = vb2_offset_of(sd, dc);
+		sd->hash_size = dig_size;
+		vb2_set_workbuf_used(ctx, sd->hash_offset + dig_size);
+
+		memset(dc, 0, sizeof(*dc));
+	}
+
+	dc->hash_alg = key.hash_alg;
+
+	uint8_t *wb_digest = vb2_workbuf_alloc(&wb, digest_size);
+	if (!wb_digest)
+		return VB2_ERROR_API_CHECK_HASH_WORKBUF_DIGEST;
+
+	/*
+	 * Check digest vs. signature.  Note that this destroys the signature.
+	 * That's ok, because we only check each signature once per boot.
+	 */
+	VB2_TRY(vb2_verify_digest(&key, &pre->body_signature, digest, &wb),
+		ctx, VB2_RECOVERY_FW_BODY);
+
+	memcpy(wb_digest, digest, digest_size);
+
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2api_check_hash_get_digest(struct vb2_context *ctx,
 					 void *digest_out,
 					 uint32_t digest_out_size)
