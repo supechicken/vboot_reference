@@ -484,6 +484,19 @@ vb2_error_t vb2api_check_hash_get_digest(struct vb2_context *ctx,
 					 uint32_t digest_out_size);
 
 /**
+ * Get pointer to metadata hash from body signature in preamble.
+ * Body signature data size has to be zero to indicate that it contains
+ * metadata hash. This is only legal to call after vb2api_fw_phase3() has
+ * returned successfully, and will return with error otherwise.
+ *
+ * @param ctx			Vboot context
+ * @param hash_ptr_out		pointer to output hash to
+ * @return VB2_SUCCESS, or error code on error.
+ */
+vb2_error_t vb2api_get_metadata_hash(struct vb2_context *ctx,
+				     struct vb2_hash **hash_ptr_out);
+
+/**
  * Get a PCR digest
  *
  * @param ctx		Vboot context
@@ -726,6 +739,8 @@ vb2_gbb_flags_t vb2api_gbb_get_flags(struct vb2_context *ctx);
 /**
  * Get the size of the signed firmware body. This is only legal to call after
  * vb2api_fw_phase3() has returned successfully, and will return 0 otherwise.
+ * It will also return 0 when body signature contains metadata hash instead
+ * of body hash.
  *
  * @param ctx		Vboot context
  *
