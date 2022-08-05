@@ -252,6 +252,24 @@
       "parentUuid": "41409334_b5beb322",
       "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb538559_b189e1e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-05T00:27:40Z",
+      "side": 1,
+      "message": "\u003e cd /tmp/somewhere\n\u003e make -C /path/to/cosarm/src/platform/vboot_reference fwlib\n\nIf I run that I get\n\n\u003e building with libflashrom support\n\u003e vboot SHA256 built with tight loops (slower, smaller code size)\n\u003e make: Nothing to be done for \u0027fwlib\u0027.\n\nand that\u0027s WAI because you\u0027re not supposed to make fwlib without setting the FIRMWARE_ARCH variable. If you see something other than \"Nothing to be done\" there, then something is wrong with your environment. Are you sure that you haven\u0027t accidentally set FIRMWARE_ARCH as an environment variable?",
+      "parentUuid": "b3f7ee3d_73f631db",
+      "revId": "047f9f25aea58cff4af3b6587d5465b7db590649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
