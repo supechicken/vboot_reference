@@ -6,6 +6,7 @@
 """Run security tests on a ChromeOS image"""
 
 import argparse
+import os
 import path
 import os
 import subprocess
@@ -31,11 +32,26 @@ def main():
   """Main function, parses arguments and invokes the relevant scripts"""
   parser = argparse.ArgumentParser(description=sys.modules[__name__].__doc__)
   parser.add_argument(
+    '--board',
+    '-b',
+    default='',
+    help='Board name',
+    type=str,
+  )
+
+  parser.add_argument(
     '--config',
     '-c',
     help='Security test baseline config directory',
     required=True,
     type=path.Path
+  )
+
+  parser.add_argument(
+    '--ensure-amd-psp-flags',
+    action='store_true',
+    default=False,
+    help='Runs the ensure_amd_psp_flags script',
   )
 
   parser.add_argument(
@@ -81,6 +97,15 @@ def main():
 
   for test in tests:
     execTest(test, args.image, [])
+
+  # Run custom tests.
+  if args.ensure_amd_psp_flags and args.keyset_is_mp:
+    if args.board == '':
+      print('Cannot run "ensure_amd_psp_flags" without a board', file=sys.stderr)
+      return 1
+
+    execTest('ensure_amd_psp_flags', args.image, [args.board])
+
 
 if __name__ == '__main__':
   main()
