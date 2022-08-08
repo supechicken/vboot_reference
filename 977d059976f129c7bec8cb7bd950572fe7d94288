@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a12105_771ff5cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-08T16:12:22Z",
+      "side": 1,
+      "message": "This is the GBB check suggested in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3732807/comments/17f81f8b_c4746383. Seems like a good check to have even without vb2api_inject_kernel_subkey, so I put it in a separate CL.",
+      "revId": "977d059976f129c7bec8cb7bd950572fe7d94288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
