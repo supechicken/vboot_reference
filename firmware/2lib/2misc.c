@@ -34,6 +34,8 @@ test_mockable
 struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	if (sd->gbb_offset == 0)
+		VB2_DIE("gbb_offset is not initialized");
 	return (struct vb2_gbb_header *)((void *)sd + sd->gbb_offset);
 }
 
@@ -713,7 +715,6 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 void vb2_set_boot_mode(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
-	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 
 	/* Cast boot mode to non-constant and assign */
 	enum vb2_boot_mode *boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
@@ -730,7 +731,8 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 	    (ctx->flags & VB2_CONTEXT_EC_TRUSTED)) {
 		*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 	} else if (sd->recovery_reason) {
-		if (gbb->flags & VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY)
+		vb2_gbb_flags_t gbb_flags = vb2api_gbb_get_flags(ctx);
+		if (gbb_flags & VB2_GBB_FLAG_FORCE_MANUAL_RECOVERY)
 			*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 		else
 			*boot_mode = VB2_BOOT_MODE_BROKEN_SCREEN;
