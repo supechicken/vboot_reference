@@ -105,6 +105,24 @@
       "parentUuid": "1a7df886_f7422b92",
       "revId": "7e7027f53205e0e14bf8219242790f8540296640",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aafee58_4b3486fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-09T17:20:04Z",
+      "side": 1,
+      "message": "Thanks for the detailed suggestions, much appreciated!\n\nI\u0027ve updated vb2api_inject_kernel_subkey to explicitly initialize fields in the context and shared data. (The gbb_offset check is in a new CL.)\n\nI added a new set of tests in vb2_inject_kernel_subkey_tests.c. I copied over almost all the tests from vb2_load_kernel_tests.c, excepting the ones relying on the fwmp field.",
+      "parentUuid": "adcbdaf5_59818688",
+      "revId": "7e7027f53205e0e14bf8219242790f8540296640",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
