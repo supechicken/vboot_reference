@@ -491,6 +491,18 @@ validity_check_live_firmware() {
   return $FLAGS_FALSE
 }
 
+validity_check() {
+  validity_check_live_partitions || return $FLAGS_FALSE
+
+  # Remaining checks depends on firmware; skip if device is running in a VM.
+  if [ "$(crossystem inside_vm)" = "1" ]; then
+    debug_msg "Device is a VM, skipping firmware checks"
+    return $FLAGS_TRUE
+  fi
+
+  validity_check_live_firmware && validity_check_crossystem_flags
+}
+
 # Main
 # ----------------------------------------------------------------------------
 main() {
@@ -536,9 +548,7 @@ main() {
         sleep 1
       done
       echo ""
-    elif ! validity_check_live_firmware ||
-         ! validity_check_live_partitions ||
-         ! validity_check_crossystem_flags; then
+    elif ! validity_check; then
       die "IMAGE ${FLAGS_image} IS NOT MODIFIED."
     fi
   fi
