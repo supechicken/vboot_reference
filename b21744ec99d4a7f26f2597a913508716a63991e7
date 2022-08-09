@@ -39,6 +39,30 @@
       },
       "revId": "b21744ec99d4a7f26f2597a913508716a63991e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e194a2e_a16ce05a",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-08-09T13:03:10Z",
+      "side": 1,
+      "message": "\u003e if crossystem \u0027inside_vm?1\u0027; then\n\nDone.\n\n\u003e Why not just move this into the validity_check_crossystem_flags\n\nvalidity_check_live_firmware reads firmware data (GBB) and fails on betty as well.\nI thought it\u0027s cleaner to perform the check once here, rather than having both validity_check_live_firmware and validity_check_crossystem_flags check `crossystem inside_vm` separately.",
+      "parentUuid": "c4a1b6ed_aef40982",
+      "range": {
+        "startLine": 498,
+        "startChar": 5,
+        "endLine": 498,
+        "endChar": 40
+      },
+      "revId": "b21744ec99d4a7f26f2597a913508716a63991e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
