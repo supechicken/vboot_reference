@@ -34,6 +34,273 @@
       "parentUuid": "19ee9c25_5a2ed891",
       "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "420801ac_37da5b37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "largely style nits.  it\u0027s a good baseline to start.",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f05fd03_a00ecd84",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "i think a more general name would be `security_test_artifact.py` so we can use it as a general entry point for CrOS disk images, firmware artifacts, etc...",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abed0a40_a2fe659f",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "please use `black --line-length\u003d80` on this file",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4279482_3c82ac8f",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "use `from pathlib import Path`",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3211c15_2bf7bda9",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "use `snake_case` instead of `camelCase`",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c9e853_04430cf8",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "add a module global:\n\n```\nDIR \u003d Path(__file__).resolve().parent\n```\n\nthen here you can do:\n\n```\ncmd_path \u003d DIR / f\u0027{name}.sh\u0027\n```",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3a002c_2b686a86",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "use `check\u003dFalse`",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8f614a_ece02cb8",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "Python style is `if not ret.returncode:`",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fa6b27_1f86c924",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "just use `__doc__` directly",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 76
+      },
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0217da55_c9ee0ec8",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "move parser creation into a `get_parser()` helper",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c9b29b_ac9bd82d",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "i would use `--input` rather than `--image` since we plan on supporting more things than \"images\"",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c902abc6_8d575f29",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "i would generalize these help texts like \"artifact to test\"",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457db83c_391f64b8",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "please use `opts` instead",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7081e3e_61eaf5d0",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "add dangling commas to unwrapped lists like this\n\ncomes up below too",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee73496_59ae90d1",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "please use the boilerplate:\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "revId": "c637c75d1ee538936d8426b9d51d9376d7bde645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
