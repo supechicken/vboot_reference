@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa3cfc7_a69ad0ab",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-08-10T01:30:57Z",
+      "side": 1,
+      "message": "Split into multiple lines so we can add/remove/disable checks easier in future:\n\n  validity_check_live_firmware || return $FLAGS_FALSE\n  validity_check_crossystem_flags || return $FLAGS_FALSE\n  return $FLAGS_TRUE",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 503,
+        "endChar": 65
+      },
+      "revId": "1d3174516d289f38167e66489eed817d19d153b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
