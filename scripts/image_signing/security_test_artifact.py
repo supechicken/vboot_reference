@@ -13,6 +13,13 @@ import sys
 
 DIR = Path(__file__).resolve().parent
 
+ENSURE_AMD_PSP_FLAGS_BOARDS = set(
+    [
+        "guybrush",
+        "skyrim",
+    ]
+)
+
 
 def exec_test(name, input, args):
     """Runs a given script
@@ -34,6 +41,14 @@ def exec_test(name, input, args):
 def get_parser():
     """Creates an argument parser"""
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--board",
+        "-b",
+        default="",
+        help="Board name",
+        type=str,
+    )
+
     parser.add_argument(
         "--config",
         "-c",
@@ -93,6 +108,10 @@ def main(argv):
 
     for test in tests:
         exec_test(test, opts.input, [])
+
+    # Run custom tests.
+    if opts.board in ENSURE_AMD_PSP_FLAGS_BOARDS and opts.keyset_is_mp:
+        exec_test("ensure_amd_psp_flags", opts.input, [opts.board])
 
 
 if __name__ == "__main__":
