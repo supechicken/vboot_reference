@@ -114,12 +114,18 @@ struct vb2_signature *vb2_external_signature(const uint8_t *data, uint32_t size,
 					     const char *external_signer)
 {
 	int vb2_alg = vb2_crypto_to_hash(key_algorithm);
-	uint8_t digest[VB2_MAX_DIGEST_SIZE];
+	struct vb2_hash hash;
 	int digest_size = vb2_digest_size(vb2_alg);
+
+	/* Calculate the digest */
+	if (VB2_SUCCESS != vb2_hash_calculate(false, data, size,
+					      vb2_crypto_to_hash(key_algorithm),
+					      &hash))
+		return NULL;
 
 	uint32_t digest_info_size = 0;
 	const uint8_t *digest_info = NULL;
-	if (VB2_SUCCESS != vb2_digest_info(vb2_alg,
+	if (VB2_SUCCESS != vb2_digest_info(hash.algo,
 					   &digest_info, &digest_info_size))
 		return NULL;
 
@@ -129,18 +135,13 @@ struct vb2_signature *vb2_external_signature(const uint8_t *data, uint32_t size,
 
 	int rv;
 
-	/* Calculate the digest */
-	if (VB2_SUCCESS != vb2_digest_buffer(data, size, vb2_alg,
-					     digest, sizeof(digest)))
-		return NULL;
-
 	/* Prepend the digest info to the digest */
 	signature_digest = calloc(signature_digest_len, 1);
 	if (!signature_digest)
 		return NULL;
 
 	memcpy(signature_digest, digest_info, digest_info_size);
-	memcpy(signature_digest + digest_info_size, digest, digest_size);
+	memcpy(signature_digest + digest_info_size, hash.raw, digest_size);
 
 	/* Allocate output signature */
 	uint32_t sig_size =
