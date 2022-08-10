@@ -237,8 +237,9 @@ vb2_error_t vb2_digest_init(struct vb2_digest_context *dc,
 vb2_error_t vb2_digest_extend(struct vb2_digest_context *dc, const uint8_t *buf,
 			      uint32_t size)
 {
-	if (hwcrypto_state == HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+	if (dc->using_hwcrypto)
+		return vb2ex_hwcrypto_digest_extend(buf, size);
+
 	if (dc->hash_alg != mock_hash_alg)
 		return VB2_ERROR_SHA_EXTEND_ALGORITHM;
 
@@ -248,8 +249,8 @@ vb2_error_t vb2_digest_extend(struct vb2_digest_context *dc, const uint8_t *buf,
 vb2_error_t vb2_digest_finalize(struct vb2_digest_context *dc, uint8_t *digest,
 				uint32_t digest_size)
 {
-	if (hwcrypto_state == HWCRYPTO_ENABLED)
-		return VB2_ERROR_UNKNOWN;
+	if (dc->using_hwcrypto)
+		return vb2ex_hwcrypto_digest_finalize(digest, digest_size);
 
 	if (retval_vb2_digest_finalize == VB2_SUCCESS)
 		fill_digest(digest, digest_size);

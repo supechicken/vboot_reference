@@ -239,6 +239,24 @@ vb2_error_t vb2_digest_extend(struct vb2_digest_context *dc, const uint8_t *buf,
 vb2_error_t vb2_digest_finalize(struct vb2_digest_context *dc,
 				uint8_t *digest, uint32_t digest_size);
 
+
+/**
+ * Initialize a digest context for doing block-style digesting, potentially
+ * making use of the vb2ex_hwcrypto APIs. Whether HW crypto is allowed by policy
+ * in the current context depends on the caller and can be passed in. If HW
+ * crypto is not allowed or not supported, will automatically fall back to SW.
+ *
+ * @param dc		Digest context
+ * @param tryhw		0 to forbid HW crypto by policy; 1 to allow.
+ * @param algo		Hash algorithm
+ * @param size		Expected total size of data to be hashed. May be 0 if
+ *			unknown, which may cause hwcrypto implementations to
+ *			signal "unsupported". Must be accurate if non-zero.
+ * @return VB2_SUCCESS, or non-zero on error.
+ */
+vb2_error_t vb2_digest_init_tryhw(struct vb2_digest_context *dc, int tryhw,
+			enum vb2_hash_algorithm algo, uint32_t data_size);
+
 /**
  * Calculate the digest of a buffer and store the result.
  *
@@ -272,6 +290,20 @@ static inline vb2_error_t vb2_hash_calculate(const void *buf, uint32_t size,
 }
 
 /**
+ * Fill a vb2_hash structure with the hash of a buffer,
+ * using semantics of vb2_digest_init_tryhw().
+ *
+ * @param tryhw		0 to forbid HW crypto by policy; 1 to allow.
+ * @param buf		Buffer to hash
+ * @param size		Size of |buf| in bytes
+ * @param algo		The hash algorithm to use (and store in |hash|)
+ * @param hash		vb2_hash structure to fill with the hash of |buf|
+ * @return VB2_SUCCESS, or non-zero on error.
+ */
+vb2_error_t vb2_hash_calculate_tryhw(int tryhw, const void *buf, uint32_t size,
+			enum vb2_hash_algorithm algo, struct vb2_hash *hash);
+
+/**
  * Verify that a vb2_hash matches a buffer.
  *
  * @param buf		Buffer to hash and match to |hash|
@@ -282,5 +314,19 @@ static inline vb2_error_t vb2_hash_calculate(const void *buf, uint32_t size,
  */
 vb2_error_t vb2_hash_verify(const void *buf, uint32_t size,
 			    const struct vb2_hash *hash);
+
+/**
+ * Verify that a vb2_hash matches a buffer,
+ * using semantics of vb2_digest_init_tryhw().
+ *
+ * @param tryhw		0 to forbid HW crypto by policy; 1 to allow.
+ * @param buf		Buffer to hash and match to |hash|
+ * @param size		Size of |buf| in bytes
+ * @param hash		Hash to compare to the buffer
+ * @return VB2_SUCCESS if hash matches, VB2_ERROR_SHA_MISMATCH if hash doesn't
+ *  match, or non-zero on other error.
+ */
+vb2_error_t vb2_hash_verify_tryhw(int tryhw, const void *buf, uint32_t size,
+				  const struct vb2_hash *hash);
 
 #endif  /* VBOOT_REFERENCE_2SHA_H_ */

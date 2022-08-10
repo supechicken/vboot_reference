@@ -29,7 +29,7 @@
 #include "2recovery_reasons.h"
 #include "2return_codes.h"
 #include "2rsa.h"
-#include "2secdata_struct.h"
+#include "2secdata.h"
 
 #define _VB2_TRY_IMPL(expr, ctx, recovery_reason, ...) do { \
 	vb2_error_t _vb2_try_rv = (expr); \
@@ -895,7 +895,11 @@ void vb2ex_printf(const char *func, const char *fmt, ...);
  * Initialize the hardware crypto engine to calculate a block-style digest.
  *
  * @param hash_alg	Hash algorithm to use
- * @param data_size	Expected total size of data to hash
+ * @param data_size	Expected total size of data to hash, or 0. If 0, the
+ *			total size is not known in advance. Implementations that
+ *			cannot handle unknown sizes should return UNSUPPORTED
+ *			in that case. If the value is non-zero, implementations
+ *			can trust it to be accurate.
  * @return VB2_SUCCESS, or non-zero error code (HWCRYPTO_UNSUPPORTED not fatal).
  */
 vb2_error_t vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
@@ -946,6 +950,29 @@ vb2_error_t vb2ex_hwcrypto_rsa_verify_digest(const struct vb2_public_key *key,
 vb2_error_t vb2ex_hwcrypto_modexp(const struct vb2_public_key *key,
 				  uint8_t *inout,
 				  uint32_t *workbuf32, int exp);
+
+/*
+ * Report if hardware crypto is allowed in the current context. It may be
+ * disabled by TPM flag and is categorically disallowed in recovery mode.
+ *
+ * @param ctx		Vboot context
+ * @returns 1 if hardware crypto is allowed, 0 if it is forbidden.
+ */
+static inline int vb2api_hwcrypto_allowed(struct vb2_context *ctx)
+{
+
+	/* disable hwcrypto in recovery mode */
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE)
+		return 0;
+
+	/* enable hwcrypto only if RW firmware set the flag */
+	if (vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS)
+				& VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED)
+		return 1;
+
+	return 0;
+
+}
 
 /*
  * Abort vboot flow due to a failed assertion or broken assumption.
