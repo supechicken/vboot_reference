@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e7af68_f53a3187",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-11T04:00:51Z",
+      "side": 1,
+      "message": "```\nvb2_digest_init_tryhw(dc, vb2api_hwcrypto_allowed(ctx),\n                      key.hash_alg,\n                      pre-\u003ebody_signature.data_size);\n```",
+      "range": {
+        "startLine": 264,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 49
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "726f735b_c4c50d16",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-11T04:00:51Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c08cfb_4879e274",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-11T04:00:51Z",
+      "side": 1,
+      "message": "Do we want the trailing newline in `msg`? Removing it, we can still write\n\n```\nVB2_DEBUG(msg, data_size, algo, \"XXX\\n\");\n```",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 16
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a732037_cda77bd3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-11T04:00:51Z",
+      "side": 1,
+      "message": "Align with `vb2_secdata_kernel_get`?",
+      "range": {
+        "startLine": 970,
+        "startChar": 4,
+        "endLine": 970,
+        "endChar": 5
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75650159_c9855f32",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-11T04:00:51Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c522cd_11a96724",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-11T04:00:51Z",
+      "side": 1,
+      "message": "Is it possible to replace this with `vb2_digest_init` (and remove the old `vb2_digest_init` from API)? The same could be done for the other two *_tryhw functions. The original callers of the non-tryhw functions could just pass tryhw\u003d0.\n\nI\u0027m not sure how much work is needed to achieve that though.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
