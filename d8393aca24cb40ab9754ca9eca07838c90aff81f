@@ -106,6 +106,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8d39391_a0c558fc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-11T10:25:25Z",
+      "side": 1,
+      "message": "nit: Why not just return value of this statement?",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 47
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75650159_c9855f32",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -134,6 +157,52 @@
       "writtenOn": "2022-08-11T04:00:51Z",
       "side": 1,
       "message": "Is it possible to replace this with `vb2_digest_init` (and remove the old `vb2_digest_init` from API)? The same could be done for the other two *_tryhw functions. The original callers of the non-tryhw functions could just pass tryhw\u003d0.\n\nI\u0027m not sure how much work is needed to achieve that though.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2425ac16_ccc7e4bd",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-11T10:25:25Z",
+      "side": 1,
+      "message": "align",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 53
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8c8a1a_a70f74c3",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-11T10:25:25Z",
+      "side": 1,
+      "message": "align",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 56
+      },
       "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
