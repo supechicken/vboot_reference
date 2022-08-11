@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "261a8abe_0f014cf5",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2022-08-11T04:24:52Z",
+      "side": 1,
+      "message": "Maybe double check with vb2api_hwcrypto_allowed and print warning if it doesn\u0027t match with tryhw? Right now coreboot CL looks good but in case anyone makes mistake with calling this warning would be helpful.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0c08cfb_4879e274",
         "filename": "firmware/2lib/2sha_utility.c",
         "patchSetId": 1
