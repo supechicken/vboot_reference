@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5427dd_36657f17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-08-11T03:48:17Z",
+      "side": 1,
+      "message": "From issue 242010682 I saw that flashrom WP related functions may behave differently between ARM/X86. Please double confirm the libflashrom implementation is correctly on both x86 and ARM. Thanks!",
+      "revId": "f25b3d813a5846779d2579e58c6710cf2b04515d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bf03fa_ed29dd28",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-08-11T03:48:17Z",
+      "side": 1,
+      "message": "please add explain param verbosity",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "f25b3d813a5846779d2579e58c6710cf2b04515d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
