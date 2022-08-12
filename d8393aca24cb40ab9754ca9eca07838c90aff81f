@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "133b4394_90d4a618",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-08-12T02:28:08Z",
+      "side": 1,
+      "message": "Is total data size not known in advance for an upcoming use-case or an existing use-case.\n\nJust for my knowledge: Which SoCs have hwcrypto engines that dont need to know the data size?",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1e7af68_f53a3187",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 1
@@ -19,6 +42,52 @@
         "startChar": 8,
         "endLine": 265,
         "endChar": 49
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7da9401_fda286f2",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-08-12T02:28:08Z",
+      "side": 1,
+      "message": "kernel_key.allow_hwcrypto \u003d vb2api_hwcrypto_allowed(ctx);",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf91b5c_cf9d1424",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-08-12T02:28:08Z",
+      "side": 1,
+      "message": "data_key.allow_hwcrypto \u003d vb2api_hwcrypto_allowed(ctx);",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 30
       },
       "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -76,6 +145,29 @@
         "startChar": 13,
         "endLine": 164,
         "endChar": 16
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7431c7_784d43ba",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-08-12T02:28:08Z",
+      "side": 1,
+      "message": "Since this is pretty similar to vb2_digest_buffer(except for try_hw) can you please rename it as vb2_digest_buffer_tryhw and then invoke it in vb2_digest_buffer.",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 36
       },
       "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
