@@ -175,6 +175,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fa4570f_30f6a1a7",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-12T08:28:31Z",
+      "side": 1,
+      "message": "Sorry, but I disagree. The output arguments are different: `digest` vs `hash`. The same argument applies to `vb2_digest_buffer` and `vb2_hash_verify`.",
+      "parentUuid": "de7431c7_784d43ba",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 36
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d628027c_ca6d75bb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-12T08:28:31Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a732037_cda77bd3",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
@@ -209,6 +250,30 @@
       "writtenOn": "2022-08-11T10:25:25Z",
       "side": 1,
       "message": "nit: Why not just return value of this statement?",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 47
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab934b2d_8d7828ad",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-12T08:28:31Z",
+      "side": 1,
+      "message": "Need to write `!!(...)`. We could also write a single return statement, but I don\u0027t think that\u0027d be good for readability.",
+      "parentUuid": "d8d39391_a0c558fc",
       "range": {
         "startLine": 969,
         "startChar": 0,
