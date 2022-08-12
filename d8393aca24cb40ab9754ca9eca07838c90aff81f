@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fff0597_9c56989e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-12T09:02:23Z",
+      "side": 1,
+      "message": "\u003e Is total data size not known in advance for an upcoming use-case or an existing use-case.\nTotal data size is not known in advance in case of calculating CBFS metadata hash.",
+      "parentUuid": "133b4394_90d4a618",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1e7af68_f53a3187",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 1
@@ -129,6 +153,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d56f36d_eb8524c0",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-12T09:02:23Z",
+      "side": 1,
+      "message": "`vb2api_hwcrypto_allowed()` requires `vb2_context`, which is not available here.",
+      "parentUuid": "261a8abe_0f014cf5",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0c08cfb_4879e274",
         "filename": "firmware/2lib/2sha_utility.c",
         "patchSetId": 1
@@ -145,6 +187,29 @@
         "startChar": 13,
         "endLine": 164,
         "endChar": 16
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89dbab0a_bbbaf315",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-12T09:02:23Z",
+      "side": 1,
+      "message": "Is it `forbidden` or just `don\u0027t even try`, so `disabled`?",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 47
       },
       "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -186,6 +251,30 @@
       "writtenOn": "2022-08-12T08:28:31Z",
       "side": 1,
       "message": "Sorry, but I disagree. The output arguments are different: `digest` vs `hash`. The same argument applies to `vb2_digest_buffer` and `vb2_hash_verify`.",
+      "parentUuid": "de7431c7_784d43ba",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 36
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954aa958_b7a75fbd",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-12T09:02:23Z",
+      "side": 1,
+      "message": "+1 for consolidating the code to remove redundancy, but I\u0027d also leave `vb2_hash_calculate_tryhw()` to provide way for user to just pass `vb2_hash` instead of dealing with raw digest value. `vb2_hash_calculate_tryhw()` could just call `vb2_digest_buffer_tryhw(tryhw, buf, size, algo, hash-\u003eraw, vb2_digest_size(algo))`.",
       "parentUuid": "de7431c7_784d43ba",
       "range": {
         "startLine": 201,
@@ -274,6 +363,30 @@
       "side": 1,
       "message": "Need to write `!!(...)`. We could also write a single return statement, but I don\u0027t think that\u0027d be good for readability.",
       "parentUuid": "d8d39391_a0c558fc",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 47
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf45614_b5460340",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-12T09:02:23Z",
+      "side": 1,
+      "message": "Oh, right. This statement won\u0027t simply return 1 or 0.",
+      "parentUuid": "ab934b2d_8d7828ad",
       "range": {
         "startLine": 969,
         "startChar": 0,
