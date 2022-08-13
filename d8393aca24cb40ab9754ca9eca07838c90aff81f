@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24931c24_62b37268",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Yeah, metadata hash is the one I know of atm. The Intel SHA256-NI extensions are the one HW crypto implementation right now that doesn\u0027t need to know the size (although you might want to look into whether AMD can be modified to support this too, see my comment on CB:66621).",
+      "parentUuid": "8fff0597_9c56989e",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e7af68_f53a3187",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-08-11T04:00:51Z",
       "side": 1,
       "message": "```\nvb2_digest_init_tryhw(dc, vb2api_hwcrypto_allowed(ctx),\n                      key.hash_alg,\n                      pre-\u003ebody_signature.data_size);\n```",
+      "range": {
+        "startLine": 264,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 49
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc964829_ad48ac6e",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e7af68_f53a3187",
       "range": {
         "startLine": 264,
         "startChar": 8,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4628279_55eb3dfa",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7da9401_fda286f2",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddf91b5c_cf9d1424",
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d17815d_cbb8c30d",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf91b5c_cf9d1424",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 30
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "726f735b_c4c50d16",
@@ -130,6 +226,24 @@
       "writtenOn": "2022-08-11T04:00:51Z",
       "side": 1,
       "message": "Indent.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1f01c2_9e6ae7de",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "726f735b_c4c50d16",
       "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -169,6 +283,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf2e3d9_b4064108",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t have a vb2_context here. That\u0027s the whole problem, that\u0027s why calling vb2api_hwcrypto_allowed() needs to be outsourced to the caller. I hope all the stuff in the coreboot CL (e.g. cbfstool) helps outline the range of cases that we need to be able to handle here.",
+      "parentUuid": "261a8abe_0f014cf5",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0c08cfb_4879e274",
@@ -192,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a40c983_d2d4397b",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Oops, thanks, that didn\u0027t quite work as intended here. Fixed.",
+      "parentUuid": "a0c08cfb_4879e274",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 16
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89dbab0a_bbbaf315",
@@ -205,6 +361,30 @@
       "writtenOn": "2022-08-12T09:02:23Z",
       "side": 1,
       "message": "Is it `forbidden` or just `don\u0027t even try`, so `disabled`?",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 47
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c8ff12_7ffc7795",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "I think it\u0027s more important for the message to make sense in the context the user thinks in when reading this, rather than only looking at the perspective the API knows at this point. In firmware contexts, this usually means forbidden by policy. In userspace context, VB2_DEBUG messages are generally not printed unless you run with --debug so I don\u0027t think it\u0027s super important how accurate it is there.",
+      "parentUuid": "89dbab0a_bbbaf315",
       "range": {
         "startLine": 170,
         "startChar": 2,
@@ -286,6 +466,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40375382_f6852d31",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "I\u0027ve decided to get rid of digest_buffer() now, I think in most cases the vb2_hash functions can do the same thing better and it\u0027s easier if we don\u0027t have so many different ways to do the same thing.",
+      "parentUuid": "954aa958_b7a75fbd",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 36
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d628027c_ca6d75bb",
@@ -299,6 +503,24 @@
       "writtenOn": "2022-08-12T08:28:31Z",
       "side": 1,
       "message": "Extra blank line.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6568b212_f36b5fdf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d628027c_ca6d75bb",
       "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -397,6 +619,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "688239ea_d66c6dcf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a732037_cda77bd3",
+      "range": {
+        "startLine": 970,
+        "startChar": 4,
+        "endLine": 970,
+        "endChar": 5
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3ce527_7e6dcf5c",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "I just moved the code between files, I didn\u0027t really think about it. Done. (Changed the type to bool so we don\u0027t have to worry about bits.)",
+      "parentUuid": "d8d39391_a0c558fc",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 47
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75650159_c9855f32",
@@ -414,6 +684,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d49515c_21b46d00",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75650159_c9855f32",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9c522cd_11a96724",
@@ -427,6 +715,24 @@
       "writtenOn": "2022-08-11T04:00:51Z",
       "side": 1,
       "message": "Is it possible to replace this with `vb2_digest_init` (and remove the old `vb2_digest_init` from API)? The same could be done for the other two *_tryhw functions. The original callers of the non-tryhw functions could just pass tryhw\u003d0.\n\nI\u0027m not sure how much work is needed to achieve that though.",
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf716624_24c5e9b7",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Hmmm... yeah, okay, you convinced me. Since I\u0027m touching so many things anyway, this would probably be the best opportunity to ever do that, and I guess it\u0027s better in the long run that trying to maintain so many separate APIs side by side.\n\nHere\u0027s the first pass, still need to write patches for the coreboot and depthcharge dependencies, though...",
+      "parentUuid": "a9c522cd_11a96724",
       "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -454,6 +760,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7116089_fab43830",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2425ac16_ccc7e4bd",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 53
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8c8a1a_a70f74c3",
@@ -467,6 +797,30 @@
       "writtenOn": "2022-08-11T10:25:25Z",
       "side": 1,
       "message": "align",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 56
+      },
+      "revId": "d8393aca24cb40ab9754ca9eca07838c90aff81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd3e7ba6_4a7cfa24",
+        "filename": "firmware/2lib/include/2sha.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-13T01:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8c8a1a_a70f74c3",
       "range": {
         "startLine": 303,
         "startChar": 0,
