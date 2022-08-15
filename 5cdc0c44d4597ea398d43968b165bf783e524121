@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c46818b6_82b4858d",
+        "filename": "scripts/image_signing/security_test_chromeos_image.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-08-15T09:17:59Z",
+      "side": 1,
+      "message": "that doesn\u0027t really scale\n\ncan\u0027t we detect whether the image is using amd psp and only enforce things when it is ?",
+      "parentUuid": "632257c1_57eec69e",
+      "revId": "5cdc0c44d4597ea398d43968b165bf783e524121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8491f33_d0001fc9",
         "filename": "scripts/image_signing/security_test_chromeos_image.py",
         "patchSetId": 1
