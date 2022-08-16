@@ -1,16 +1,15 @@
 #!/bin/bash -eu
-# Copyright 2013 The Chromium OS Authors. All rights reserved.
+# Copyright 2013 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 # Load common constants and variables.
 . "$(dirname "$0")/../common.sh"
 
-OUTDIR="${BUILD}/tests/futility_test_results"
+OUTDIR="${BUILD_RUN}/tests/futility_test_results"
 [ -d "$OUTDIR" ] || mkdir -p "$OUTDIR"
 
 # Let each test know where to find things...
-export BUILD
 export BUILD_RUN
 export SRCDIR
 export FUTILITY
