@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
+# Copyright 2010 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -13,7 +13,7 @@ set -e
 
 # Use a different directory for fuzzing test cases.
 TESTKEY_DIR=${TESTKEY_DIR:-$(realpath  "${SCRIPT_DIR}"/../tests/testkeys)}
-TESTCASE_DIR=${BUILD_DIR}/fuzz_testcases
+TESTCASE_DIR=${BUILD_RUN}/fuzz_testcases
 TEST_IMAGE_FILE=${TESTCASE_DIR}/testimage
 TEST_IMAGE_SIZE=500000
 TEST_BOOTLOADER_FILE=${TESTCASE_DIR}/testbootloader

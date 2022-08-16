@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
+# Copyright 2010 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 # Determine script directory.
 SCRIPT_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 ROOT_DIR="$(dirname "${SCRIPT_DIR}")"
-SRCDIR="${SRCDIR:-${ROOT_DIR}}"
-BUILD="${BUILD:-${ROOT_DIR}/build}"
-BUILD_RUN="${BUILD_RUN:-${BUILD}}"
-SRC_RUN="${SRC_RUN:-${SRCDIR}}"
-BUILD_DIR="${BUILD}"
-BIN_DIR="${BUILD_DIR}/install_for_test/usr/bin"
+SRCDIR="${ROOT_DIR}"
+# BUILD and BUILD_RUN should be supplied from the Makefile.
+# Some test scripts use cd so convert to an absolute path.
+BUILD_RUN="${BUILD_RUN:-"${BUILD:?"BUILD_RUN or BUILD must be set"}"}"
+BUILD_RUN="$(realpath "${BUILD_RUN}")"
+BIN_DIR="${BUILD_RUN}/install_for_test/usr/bin"
 FUTILITY="${BIN_DIR}/futility"
-TEST_DIR="${BUILD_DIR}/tests"
+TEST_DIR="${BUILD_RUN}/tests"
 TESTKEY_DIR="${SCRIPT_DIR}/testkeys"
 TESTCASE_DIR="${SCRIPT_DIR}/testcases"
 TESTKEY_SCRATCH_DIR="${TEST_DIR}/testkeys"
