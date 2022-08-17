@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ad85fa_431ff1ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-08-17T04:12:44Z",
+      "side": 1,
+      "message": "libflashrom will behave correctly across ARM and x86, in fact the current CLI code calls the same libflashrom function to get the WP status.",
+      "parentUuid": "7b5427dd_36657f17",
+      "revId": "f25b3d813a5846779d2579e58c6710cf2b04515d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95bf03fa_ed29dd28",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-11T03:48:17Z",
       "side": 1,
       "message": "please add explain param verbosity",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "f25b3d813a5846779d2579e58c6710cf2b04515d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0f369f_f575d8b2",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-08-17T04:12:44Z",
+      "side": 1,
+      "message": "I\u0027ve updated the comment since it just takes a programmer name now.",
+      "parentUuid": "95bf03fa_ed29dd28",
       "range": {
         "startLine": 72,
         "startChar": 4,
