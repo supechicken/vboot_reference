@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cb23d5_56391356",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0f0b10_127a1997",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2285fb09_86d7347c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-17T02:00:30Z",
       "side": 1,
       "message": "VB_FW_RESULT_UNKNOWN",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd7ec35_cd6007f8",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2285fb09_86d7347c",
       "range": {
         "startLine": 38,
         "startChar": 22,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20f7e13_311fa3fc",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d315990_da31488d",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3738a0fe_1861ad62",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95a6aba_2489664c",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3738a0fe_1861ad62",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a88a881_b814cf52",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-08-17T02:00:30Z",
       "side": 1,
       "message": "Don\u0027t need to put these here if we\u0027re going to rewrite them below anyway.",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63e16f9_15fb3182",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a88a881_b814cf52",
       "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8aa5f30_e7636c26",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "There turned out to be one place that does try to access kernel secdata: `vb2_hwcrypto_allowed`. I\u0027ve modified that function to return false if kernel secdata isn\u0027t initialized, does that seem like the right fix?",
+      "parentUuid": "05fab674_ba061735",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24d1aa5f_94d6464e",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 7
@@ -134,6 +260,24 @@
       "writtenOn": "2022-08-17T02:00:30Z",
       "side": 1,
       "message": "I don\u0027t think calling this function makes sense in this context. I would just set `ctx-\u003eboot_mode \u003d VB2_BOOT_MODE_NORMAL` directly.",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54de71f_fad5c3ef",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "It can\u0027t be set directly due to being marked const: https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/main/firmware/2lib/2misc.c#725\n\nI\u0027ve updated the code to copy what `vb2_set_boot_mode` does, although modifying a const field by casting away the constness smells like potential undefined behavior to me.",
+      "parentUuid": "24d1aa5f_94d6464e",
       "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced82849_b62cd787",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37db0f5c_40edf893",
+      "range": {
+        "startLine": 669,
+        "startChar": 13,
+        "endLine": 669,
+        "endChar": 40
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bf7b189_e073bd60",
@@ -174,6 +342,24 @@
       "writtenOn": "2022-08-17T02:00:30Z",
       "side": 1,
       "message": "This should be on the previous line (and ideally all continuation lines should be aligned with the opening parenthesis, see e.g. vb2api_load_kernel() below).",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d453de5d_45169c8f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-17T21:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bf7b189_e073bd60",
       "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
