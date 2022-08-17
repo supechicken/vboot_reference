@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0f0b10_127a1997",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "VB_FW_SLOT_A",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2285fb09_86d7347c",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "VB_FW_RESULT_UNKNOWN",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d315990_da31488d",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "VB_FW_SLOT_A",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3738a0fe_1861ad62",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "Let\u0027s try to differentiate between the variables that we intentionally set to 0 because we know the code will be fine with that, and the ones that just aren\u0027t initialized because we think they aren\u0027t used. I think everything above this belongs to the former category, but everything (in `sd`) below this in the latter. So those I would not list here explicitly.",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a88a881_b814cf52",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "Don\u0027t need to put these here if we\u0027re going to rewrite them below anyway.",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05fab674_ba061735",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "I think we may actually want to leave secdata and nvdata uninitialized here, that would make our tests fail fast if the code is unintentionally trying to access one of these.",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d1aa5f_94d6464e",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "I don\u0027t think calling this function makes sense in this context. I would just set `ctx-\u003eboot_mode \u003d VB2_BOOT_MODE_NORMAL` directly.",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37db0f5c_40edf893",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "Prefer tabs for aligning these.",
+      "range": {
+        "startLine": 669,
+        "startChar": 13,
+        "endLine": 669,
+        "endChar": 40
+      },
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf7b189_e073bd60",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-17T02:00:30Z",
+      "side": 1,
+      "message": "This should be on the previous line (and ideally all continuation lines should be aligned with the opening parenthesis, see e.g. vb2api_load_kernel() below).",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
