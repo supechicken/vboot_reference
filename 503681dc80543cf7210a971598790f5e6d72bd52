@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9900cc2_41f65b71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "\u003e \"avaialble\" is a possible misspelling of \"available\".\n\nPlease fix.",
+      "parentUuid": "57e9d8f5_3a2e8ac4",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52f5af0_28b0ea7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "Partial review. Some test files are not reviewed yet.",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c35deb0_76c5484b",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "sizeof(hash.sha256)",
+      "range": {
+        "startLine": 127,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f1e592_1c912247",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "Is `bool` always defined? Looks like we don\u0027t have `bool` before.",
+      "range": {
+        "startLine": 59,
+        "startChar": 59,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f88c05_65b998d2",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "#x",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023e3f85_e6d9d751",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "The alignment seems misleading.",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b766151c_f89ba783",
+        "filename": "futility/file_type_usbpd1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "`sizeof(hash.sha1)`",
+      "range": {
+        "startLine": 365,
+        "startChar": 17,
+        "endLine": 365,
+        "endChar": 37
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e43f251_f8400011",
+        "filename": "futility/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa6df189_ef6f1899",
+        "filename": "futility/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "sizeof",
+      "range": {
+        "startLine": 157,
+        "startChar": 18,
+        "endLine": 157,
+        "endChar": 40
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91bc93e9_1d664874",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "Just curious why you changed the order?",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287ce7d0_16016946",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "vb2_alg\n\nOtherwise you may want to move `digest_size` initialization to below (as `vb2_digest_size(hash.algo)`).",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f610891f_c56f1388",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "Can still be `vb2_alg`.",
+      "range": {
+        "startLine": 128,
+        "startChar": 36,
+        "endLine": 128,
+        "endChar": 45
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0526b29_fcf3c28a",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "sizeof",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68976c5_d580ba74",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef68291d_81e77481",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "[VB2_SHA1_DIGEST_SIZE]\n\nOr `_Static_assert(sizeof(test_data_sha1) \u003d\u003d VB2_SHA1_DIGEST_SIZE, \"...\")`.",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c778924f_d29ed00b",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "Extra tab.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b345a6_245876b8",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-18T09:03:05Z",
+      "side": 1,
+      "message": "else if. I\u0027d use a switch statement.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
