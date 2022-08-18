@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a0b3379a_5692a3f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9900cc2_41f65b71",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c52f5af0_28b0ea7c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -65,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87ae7ab_96077303",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c35deb0_76c5484b",
+      "range": {
+        "startLine": 127,
+        "startChar": 7,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5f1e592_1c912247",
@@ -78,6 +126,30 @@
       "writtenOn": "2022-08-18T09:03:05Z",
       "side": 1,
       "message": "Is `bool` always defined? Looks like we don\u0027t have `bool` before.",
+      "range": {
+        "startLine": 59,
+        "startChar": 59,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2840227c_b63265cc",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "That\u0027s why I\u0027m adding \u003cstdbool.h\u003e to 2sysincludes.",
+      "parentUuid": "d5f1e592_1c912247",
       "range": {
         "startLine": 59,
         "startChar": 59,
@@ -111,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd43dc37_27ee0019",
+        "filename": "firmware/2lib/2sha_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62f88c05_65b998d2",
+      "range": {
+        "startLine": 76,
+        "startChar": 21,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "023e3f85_e6d9d751",
@@ -124,6 +220,24 @@
       "writtenOn": "2022-08-18T09:03:05Z",
       "side": 1,
       "message": "The alignment seems misleading.",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f810ecf_4faa44a0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023e3f85_e6d9d751",
       "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +265,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "927c2a82_bfb80804",
+        "filename": "futility/file_type_usbpd1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b766151c_f89ba783",
+      "range": {
+        "startLine": 365,
+        "startChar": 17,
+        "endLine": 365,
+        "endChar": 37
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e43f251_f8400011",
@@ -164,6 +302,24 @@
       "writtenOn": "2022-08-18T09:03:05Z",
       "side": 1,
       "message": "Indent.",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "017f28d5_0ce5932a",
+        "filename": "futility/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e43f251_f8400011",
       "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -191,6 +347,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa25b80f_7207e9ca",
+        "filename": "futility/misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6df189_ef6f1899",
+      "range": {
+        "startLine": 157,
+        "startChar": 18,
+        "endLine": 157,
+        "endChar": 40
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91bc93e9_1d664874",
@@ -208,6 +388,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e9a9f1_a34d976e",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "See below.",
+      "parentUuid": "91bc93e9_1d664874",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287ce7d0_16016946",
@@ -221,6 +419,30 @@
       "writtenOn": "2022-08-18T09:03:05Z",
       "side": 1,
       "message": "vb2_alg\n\nOtherwise you may want to move `digest_size` initialization to below (as `vb2_digest_size(hash.algo)`).",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00b33d1_63286209",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I meant to do, but then I seem to have stopped halfway through. Done.",
+      "parentUuid": "287ce7d0_16016946",
       "range": {
         "startLine": 122,
         "startChar": 11,
@@ -254,6 +476,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b186d9b_2707fbd8",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "f610891f_c56f1388",
+      "range": {
+        "startLine": 128,
+        "startChar": 36,
+        "endLine": 128,
+        "endChar": 45
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0526b29_fcf3c28a",
@@ -267,6 +513,30 @@
       "writtenOn": "2022-08-18T09:03:05Z",
       "side": 1,
       "message": "sizeof",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 30
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adcca30f_981f0912",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0526b29_fcf3c28a",
       "range": {
         "startLine": 79,
         "startChar": 8,
@@ -294,6 +564,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "409f5bb8_61bd150f",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d68976c5_d580ba74",
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef68291d_81e77481",
@@ -307,6 +595,30 @@
       "writtenOn": "2022-08-18T09:03:05Z",
       "side": 1,
       "message": "[VB2_SHA1_DIGEST_SIZE]\n\nOr `_Static_assert(sizeof(test_data_sha1) \u003d\u003d VB2_SHA1_DIGEST_SIZE, \"...\")`.",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a379b8_c1f87d85",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef68291d_81e77481",
       "range": {
         "startLine": 22,
         "startChar": 35,
@@ -340,6 +652,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9d1da5_79164835",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c778924f_d29ed00b",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37b345a6_245876b8",
@@ -353,6 +689,30 @@
       "writtenOn": "2022-08-18T09:03:05Z",
       "side": 1,
       "message": "else if. I\u0027d use a switch statement.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "503681dc80543cf7210a971598790f5e6d72bd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cdc184e_2b1fff82",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-18T22:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37b345a6_245876b8",
       "range": {
         "startLine": 74,
         "startChar": 1,
