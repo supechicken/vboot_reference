@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae69e46_bc3db65d",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "782b93a8_0a90def7",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Fit in one line.",
+      "range": {
+        "startLine": 690,
+        "startChar": 1,
+        "endLine": 691,
+        "endChar": 37
+      },
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910b23d5_0433aabb",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fb75c7_4893f6a2",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820f7181_ce7ffed6",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Could you explain why we didn\u0027t need this before? I assume here we\u0027re imitating HW crypto by hard-coding the correct digest in `test_data_sha*`.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee9087c_7784dd03",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "and vb2_digest_*",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4eab6dc_e050725f",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Too long.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c79f5c8_2f503b85",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "I\u0027d move this test case into `vb2_hash_calculate_tests`. Similar for all the test cases added here (which implies adding a new function `vb2_digest_tests`). I think this is how most vboot tests are organized (by file, by function, then by case).",
+      "range": {
+        "startLine": 172,
+        "startChar": 11,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc44d1b_8b9b9e1c",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Line too long.\n\n```\nTEST_EQ(vb2_hash_calculate(true, mock_buffer, sizeof(mock_buffer),\n                           VB2_HASH_SHA1, \u0026mock_hash),\n        VB2_ERROR_MOCK, \"hash_calculate, HW error\");\n```",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4035d2a_977d32b8",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-19T05:44:26Z",
+      "side": 1,
+      "message": "Too long.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
