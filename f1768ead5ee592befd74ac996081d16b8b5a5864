@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "228f7b6e_a9d45054",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-19T10:36:39Z",
+      "side": 1,
+      "message": "I added support for extraction and parsing of `config` file values. Now CBFS metadata hash will be required for images with `CONFIG_CBFS_VERIFICATION_RW\u003dy`, so images with configuration like Nissa should be signed the old way. Is that, what you were thinking about?",
+      "parentUuid": "b0c16296_621373aa",
+      "range": {
+        "startLine": 481,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 14
+      },
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc238baf_3f5514bb",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 1
@@ -61,6 +85,24 @@
       "writtenOn": "2022-08-04T22:56:04Z",
       "side": 1,
       "message": "Should make sure that this is a fatal error for the cbfs_verification case.",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9844e18e_646201db",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-19T10:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc238baf_3f5514bb",
       "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "933d2cac_555fe332",
+        "filename": "futility/file_type_bios.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-19T10:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63efabfa_58b5b76f",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650de2c4_b3253a7c",
@@ -95,6 +155,24 @@
       "writtenOn": "2022-08-04T22:56:04Z",
       "side": 1,
       "message": "this looks garbled",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad09e58_a051cf1a",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-19T10:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650de2c4_b3253a7c",
       "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79ae393_a00f7c50",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-19T10:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f6a86c_b4748c5d",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba061357_c0445cf1",
@@ -129,6 +225,24 @@
       "writtenOn": "2022-08-04T22:56:04Z",
       "side": 1,
       "message": "I guess this works, but wouldn\u0027t TARGET_BUFFER make things easier? TARGET_CALLBACK is really just meant for subprocesses that produce a lot of output where you can\u0027t reasonably allocate a buffer that\u0027s going to be big enough for all cases. In this case just malloc()ing a megabyte or so should work fine?",
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb742c9_16ecee94",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-19T10:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba061357_c0445cf1",
       "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -170,6 +284,30 @@
       "side": 1,
       "message": "Yes, I think we should just set it to zero.",
       "parentUuid": "fd28887b_549a6dca",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "f1768ead5ee592befd74ac996081d16b8b5a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bba7728_83b62740",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-19T10:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce662f6_1937d554",
       "range": {
         "startLine": 165,
         "startChar": 1,
