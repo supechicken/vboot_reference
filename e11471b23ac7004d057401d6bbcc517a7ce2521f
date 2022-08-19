@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8add34e6_a8e6227b",
+        "filename": "host/lib/host_signature.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae69e46_bc3db65d",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "782b93a8_0a90def7",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-19T05:44:26Z",
       "side": 1,
       "message": "Fit in one line.",
+      "range": {
+        "startLine": 690,
+        "startChar": 1,
+        "endLine": 691,
+        "endChar": 37
+      },
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70de9c65_17a67ee9",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "782b93a8_0a90def7",
       "range": {
         "startLine": 690,
         "startChar": 1,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9875025_3daed700",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910b23d5_0433aabb",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70fb75c7_4893f6a2",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba3cd3f_b57b1e7f",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70fb75c7_4893f6a2",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "820f7181_ce7ffed6",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-08-19T05:44:26Z",
       "side": 1,
       "message": "Could you explain why we didn\u0027t need this before? I assume here we\u0027re imitating HW crypto by hard-coding the correct digest in `test_data_sha*`.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b4500a_3f6f55da",
+        "filename": "tests/vb2_common2_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "This was just a nasty existing bug in the test code. Previously, vb2_verify_data() would allocate the digest on the local workbuffer. This meant that for every invocation of it in the test, that digest would always happen to end up in the same spot in memory (because the workbuffer always started at the same point), and nothing else would touch that memory between invocations (because the other code in-between didn\u0027t use the workbuffer). So even though that digest would never correctly get initialized for the hwcrypto_digest \u003d OK, hwcrypto_rsa \u003d NOTSUPPORTED case, the bytes that already happened to be in that same memory location from the previous invocation (with allow_hwcrypto \u003d 0) just happened to be the correct hash for the test data.\n\nMy patch moves that digest from the workbuffer to the stack, where other code in between the two vb2_verify_data() invocations can mess up the memory, and suddenly the uninitialized buffer does not contain the correct hash anymore.",
+      "parentUuid": "820f7181_ce7ffed6",
       "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ffb325e_3b755f7e",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ee9087c_7784dd03",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4eab6dc_e050725f",
@@ -128,6 +248,24 @@
       "writtenOn": "2022-08-19T05:44:26Z",
       "side": 1,
       "message": "Too long.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea21d12_73d12d67",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4eab6dc_e050725f",
       "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade5baca_59a899fc",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Well, I think the hwcrypto functionality is a separate aspect of it that makes sense to group separately. It\u0027s three different functions, but I\u0027m really testing the same \"part\" for each of them, so I think putting all those in the same function makes it easier to compare.\n\nvb2_digest itself isn\u0027t really tested here (that\u0027s vb2_sha_tests.c), just the hwcrypto aspect of it.",
+      "parentUuid": "0c79f5c8_2f503b85",
+      "range": {
+        "startLine": 172,
+        "startChar": 11,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dc44d1b_8b9b9e1c",
@@ -172,6 +334,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda6242c_e0143bab",
+        "filename": "tests/vb2_sha_api_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc44d1b_8b9b9e1c",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4035d2a_977d32b8",
@@ -185,6 +365,24 @@
       "writtenOn": "2022-08-19T05:44:26Z",
       "side": 1,
       "message": "Too long.",
+      "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d05d4ad_69712fda",
+        "filename": "tests/vb2_sha_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-19T22:57:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4035d2a_977d32b8",
       "revId": "e11471b23ac7004d057401d6bbcc517a7ce2521f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
