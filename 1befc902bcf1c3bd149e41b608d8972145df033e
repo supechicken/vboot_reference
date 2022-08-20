@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26c446cc_47598027",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "So is this supposed to be the new API for CBFS verification? No, this is the wrong way around. This is supposed to return a hash to coreboot, not test a hash that coreboot already has. The returned hash would be used in vboot_loader.c:after_verstage() to pass to cbfs_init_boot_device() and in cbfs.c:_cbfs_boot_lookup() to pass to cbfs_lookup() (for the TOCTOU case only).\n\nI think we want something like a\n\n vb2_error_t vb2api_get_metadata_hash(struct vb2_context *ctx, struct vb2_hash **hash_ptr_out);\n\nwhich simply returns a pointer to the vb2_hash structure embedded in the preamble (see below) that\u0027s already persistent on the workbuffer.",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5414d19e_2dec9b17",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 3
@@ -20,6 +37,263 @@
         "endLine": 308,
         "endChar": 4
       },
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7bc6eda_1c398373",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Hmm... yeah, actually, you\u0027re right, maybe this is a good opportunity to finally do this. Because we\u0027re already changing everything about how the body_signature field works anyway.\n\nSo I guess we would say that if body_signature.data_size is 0, then the data pointed to by sig_offset/sig_size would just be a struct vb2_hash that can be exported to coreboot via some new API that we still need to define. And for the non-CBFS-verification images, body_signature remains a real signature. Just need to be careful that we really update every place that touches this to be able to handle both cases.",
+      "parentUuid": "5414d19e_2dec9b17",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 4
+      },
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721d76fb_caa529a9",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Let\u0027s call this CONFIG_VBOOT_CBFS_INTEGRATION or something like that, it belongs under the CONFIG_VBOOT_ prefix umbrella.",
+      "range": {
+        "startLine": 490,
+        "startChar": 44,
+        "endLine": 490,
+        "endChar": 71
+      },
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40e5fa55_15c03463",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Better also name this cbfs_verification_rw to avoid potential confusion with images that have RO CBFS verification enabled but don\u0027t use this.",
+      "range": {
+        "startLine": 526,
+        "startChar": 13,
+        "endLine": 526,
+        "endChar": 38
+      },
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d186891e_a4805f81",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "I think you should check cbfs_verification_rw first, right? Otherwise you can still extract a metadata hash from images that have RO CBFS verification but not RW, and then write_new_preamble() will treat them wrong.",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ca3b68_d7faae44",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Having to add this function just to check one error case seems a bit weird. How about moving this check to the end of `ft_sign_bios()` (i.e. checking `is_valid` and then comparing `cbfs_verification_rw` with `metadata_hash.algo` after `prepare_slot()` has been called)?",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2387a6ce_4099130c",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Please factor out the relevant parts of parse_digest_or_die() into a separate helper, rather than duplicating (almost) the whole thing.",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a597a90_a2672687",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "See below for strtok() issues, and here too I think a simpler parsing approach with just strstr() may be better for this case (at least for finding the line, and then maybe sscanf() could be a good way to parse it).",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b392fa_b8754456",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Same as below",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58dd7302_f4dcac35",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "This is pretty complicated (and strtok can be tricky as explained below). Why not just something like\n```\nchar *to_find \u003d asprintf(\"\\n%s\u003d\", config_field);\nchar *start \u003d strstr(buf, to_find);\nif (start)\n  start +\u003d strlen(to_find);\nfree(to_find);\nif (start) {\n  char *end \u003d strchr(start, \"\\n\");\n  if (end)\n    return strndup(start, end - start);\n}\nreturn NULL;\n```",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb3cf24_6786c1ff",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Why initialize to buf? This is just another saveptr (like rest_line), so shouldn\u0027t you initialize to NULL? (I would suggest to maybe call these saveptr1 and saveptr2 or something like that to clarify that they\u0027re just internal strtok bookkeeping pointers, because \"rest\" suggests that they contain some real part of the string that can be used independently which is not how strtok works (see below).",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be21f8ea_eb6e3157",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "nit: writing this in a for loop would allow you to use `continue` in the middle which might look a bit nicer:\n```\nfor (; line; line \u003d strtok_r(NULL, \"\\r\\n\", \u0026rest_line))\n```",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036bf192_3ca2613e",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "This isn\u0027t how strtok() works. The saveptr should only ever be used for the saveptr argument and not for anything else. What I think you\u0027re trying to do here should be `token \u003d strtok_r(NULL, \"\\r\\n\", \u0026rest)` (meaning \"get the next token in the string that was previously tokenized with the saveptr `rest`, and that token ends at the next \\n or \\r character\").\n\nHowever, you don\u0027t really need to do that because the line is already tokenized, so the next \u0027\\n\u0027 was already replaced with \u0027\\0\u0027. So just returning `token` here should be enough.",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45730a89_0a353af6",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "Here too, this needs to be `line \u003d strtok_r(NULL, \"\\n\", \u0026rest_line)` (or `\"\\r\\n\"` if you want to stick with the same that you had up top... there should be no \\r in these files, I think, but the code should be consistent on one or the other).",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4cf6de7_729cc24a",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-20T02:00:53Z",
+      "side": 1,
+      "message": "I think writing these as `...stdout\", region ? \"-r\" : NULL, region ? region : NULL, NULL` is a bit easier to follow (then you don\u0027t have to manually align the indices).",
       "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
