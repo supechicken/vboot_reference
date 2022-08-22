@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c650dea_b850e82b",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 1,
+      "message": "```\nvb2_error_t vb2api_inject_kernel_subkey(\n\tstruct vb2_context *ctx,                     // One tab indent\n\tconst uint8_t *kernel_packed_key_data,\n\tuint32_t kernel_packed_key_data_size)\n{                                                    // On its own line\n```",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce57671_a10a9ff1",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 1,
+      "message": "Align with `kernel_packed_key_data`.",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d6e35c_23441280",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 1,
+      "message": "I\u0027d write\n\n```\nvb2_set_workbuf_used(ctx,\n                     sd-\u003ekernel_key_offset + kernel_packed_key_size);",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff33fd3_a3d52599",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 1,
+      "message": "I think this should be moved inside `test_load_kernel()`.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "126575b9_6d707383",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 1,
+      "message": "Alignment.",
+      "range": {
+        "startLine": 201,
+        "startChar": 10,
+        "endLine": 201,
+        "endChar": 18
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6dad77_3fbc73b9",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 1,
+      "message": "Note that this will be removed in CL:3825558.",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 29
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c053a411_347957e0",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 1,
+      "message": "If the boot mode is always set to `VB2_BOOT_MODE_NORMAL` in `vb2api_inject_kernel_subkey`, all the test cases here for other boot modes (`SET_BOOT_MODE`) should be unnecessary.",
+      "range": {
+        "startLine": 288,
+        "startChar": 20,
+        "endLine": 288,
+        "endChar": 43
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60a46aa_041c699a",
+        "filename": "tests/verify_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-22T08:34:54Z",
+      "side": 0,
+      "message": "Unless there\u0027s a valid reason, I don\u0027t think we should remove existing tests like this. Instead, adding a new test case looks more reasonable to me. However, I\u0027m not sure if that\u0027s necessary, because most cases should be covered in vb2_inject_kernel_subkey_tests.c.\n\nJulius, how\u0027s this test different from the ones in vb2_load_kernel_tests.c, except that this loads the key from a file?",
+      "revId": "73bc2a9a0af97915b351a1ced0d6d16a0c369559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
