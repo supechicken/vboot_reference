@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a047c75_eac66285",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-22T17:58:00Z",
+      "side": 1,
+      "message": "Done. \n\nI also filed b/243397848 to ask if we could format this repo with clang-format so we can avoid back and forth on formatting in CLs in the future.",
+      "parentUuid": "5c650dea_b850e82b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce57671_a10a9ff1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-22T08:34:54Z",
       "side": 1,
       "message": "Align with `kernel_packed_key_data`.",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b5b936_09add9ae",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-22T17:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce57671_a10a9ff1",
       "range": {
         "startLine": 56,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70553e18_4e5811af",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-22T17:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d6e35c_23441280",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 34
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ff33fd3_a3d52599",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92273d68_70cd8647",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-22T17:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff33fd3_a3d52599",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "126575b9_6d707383",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-22T08:34:54Z",
       "side": 1,
       "message": "Alignment.",
+      "range": {
+        "startLine": 201,
+        "startChar": 10,
+        "endLine": 201,
+        "endChar": 18
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8759160_aa3315d6",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-22T17:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "126575b9_6d707383",
       "range": {
         "startLine": 201,
         "startChar": 10,
@@ -152,6 +272,30 @@
       "writtenOn": "2022-08-22T08:34:54Z",
       "side": 1,
       "message": "If the boot mode is always set to `VB2_BOOT_MODE_NORMAL` in `vb2api_inject_kernel_subkey`, all the test cases here for other boot modes (`SET_BOOT_MODE`) should be unnecessary.",
+      "range": {
+        "startLine": 288,
+        "startChar": 20,
+        "endLine": 288,
+        "endChar": 43
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20fe9f22_62ab6c79",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-22T17:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c053a411_347957e0",
       "range": {
         "startLine": 288,
         "startChar": 20,
