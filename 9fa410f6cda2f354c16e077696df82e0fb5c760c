@@ -22,6 +22,30 @@
       },
       "revId": "9fa410f6cda2f354c16e077696df82e0fb5c760c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a25635f_07460282",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-23T21:53:10Z",
+      "side": 1,
+      "message": "The particular value of `kernel_version_secdata` being set here is related to some of the rollback tests. As discussed in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3732807/comments/17f81f8b_c4746383 though, we\u0027re not trying to prevent rollback here yet. So I\u0027ve dropped this line, and updated the unit tests.",
+      "parentUuid": "1e03125d_87debd9c",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 27
+      },
+      "revId": "9fa410f6cda2f354c16e077696df82e0fb5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
