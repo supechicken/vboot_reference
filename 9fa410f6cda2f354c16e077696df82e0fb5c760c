@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e03125d_87debd9c",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-23T03:51:48Z",
+      "side": 1,
+      "message": "What will happen if this is not set? If the only expected usage of `vb2api_inject_kernel_subkey` is `vb2api_init -\u003e vb2api_inject_kernel_subkey -\u003e vb2api_load_kernel`, then we shouldn\u0027t modify any other data in between, right? Maybe we should set `kernel_version_secdata` to a value other than 0 in `vb2api_inject_kernel_subkey`.",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 27
+      },
+      "revId": "9fa410f6cda2f354c16e077696df82e0fb5c760c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
