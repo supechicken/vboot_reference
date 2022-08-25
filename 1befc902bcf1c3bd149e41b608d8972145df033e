@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc53e773_aa156c99",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Thanks for explaination. I will also upload new version of CB:66909 with changes you proposed.\n\n\u003e which simply returns a pointer to the vb2_hash structure embedded in the preamble (see below) that\u0027s already persistent on the workbuffer.\n`vb2api_check_hash_get_digest(...)` destroys the signature, but it should never be called in case of VBOOT_CBFS_INTEGRATION, right?",
+      "parentUuid": "26c446cc_47598027",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5414d19e_2dec9b17",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 3
@@ -88,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2989d6_a4212035",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "721d76fb_caa529a9",
+      "range": {
+        "startLine": 490,
+        "startChar": 44,
+        "endLine": 490,
+        "endChar": 71
+      },
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40e5fa55_15c03463",
@@ -101,6 +143,30 @@
       "writtenOn": "2022-08-20T02:00:53Z",
       "side": 1,
       "message": "Better also name this cbfs_verification_rw to avoid potential confusion with images that have RO CBFS verification enabled but don\u0027t use this.",
+      "range": {
+        "startLine": 526,
+        "startChar": 13,
+        "endLine": 526,
+        "endChar": 38
+      },
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6faafa36_0346cfb7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e5fa55_15c03463",
       "range": {
         "startLine": 526,
         "startChar": 13,
@@ -128,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67de9045_11ee09e7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d186891e_a4805f81",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5ca3b68_d7faae44",
@@ -141,6 +225,24 @@
       "writtenOn": "2022-08-20T02:00:53Z",
       "side": 1,
       "message": "Having to add this function just to check one error case seems a bit weird. How about moving this check to the end of `ft_sign_bios()` (i.e. checking `is_valid` and then comparing `cbfs_verification_rw` with `metadata_hash.algo` after `prepare_slot()` has been called)?",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1914f7ec_3eea8398",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "That seems reasonable. `prepare_slot()` already checks if area exists.",
+      "parentUuid": "c5ca3b68_d7faae44",
       "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -162,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7906c435_bb3683b4",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2387a6ce_4099130c",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a597a90_a2672687",
@@ -175,6 +295,24 @@
       "writtenOn": "2022-08-20T02:00:53Z",
       "side": 1,
       "message": "See below for strtok() issues, and here too I think a simpler parsing approach with just strstr() may be better for this case (at least for finding the line, and then maybe sscanf() could be a good way to parse it).",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d117051e_35a255ec",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Yes, it looks cleaner the way you described. I decided to use the `%m` format modifier to eliminate possible overflows and manual length in formats.",
+      "parentUuid": "2a597a90_a2672687",
       "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -196,6 +334,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cf6523_0664e7ff",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b392fa_b8754456",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58dd7302_f4dcac35",
@@ -209,6 +365,24 @@
       "writtenOn": "2022-08-20T02:00:53Z",
       "side": 1,
       "message": "This is pretty complicated (and strtok can be tricky as explained below). Why not just something like\n```\nchar *to_find \u003d asprintf(\"\\n%s\u003d\", config_field);\nchar *start \u003d strstr(buf, to_find);\nif (start)\n  start +\u003d strlen(to_find);\nfree(to_find);\nif (start) {\n  char *end \u003d strchr(start, \"\\n\");\n  if (end)\n    return strndup(start, end - start);\n}\nreturn NULL;\n```",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c355c12_ba64fe26",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "strtok is tricky indeed. Your solution seems to be better and more straightforward. \nThanks!",
+      "parentUuid": "58dd7302_f4dcac35",
       "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -230,6 +404,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bd7ef6_8b0bb5e4",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb3cf24_6786c1ff",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be21f8ea_eb6e3157",
@@ -243,6 +435,24 @@
       "writtenOn": "2022-08-20T02:00:53Z",
       "side": 1,
       "message": "nit: writing this in a for loop would allow you to use `continue` in the middle which might look a bit nicer:\n```\nfor (; line; line \u003d strtok_r(NULL, \"\\r\\n\", \u0026rest_line))\n```",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b5ac469_8957bf15",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be21f8ea_eb6e3157",
       "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +474,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "588df51c_96344183",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "036bf192_3ca2613e",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45730a89_0a353af6",
@@ -281,6 +509,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd1e187_5cbc1555",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45730a89_0a353af6",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4cf6de7_729cc24a",
@@ -294,6 +540,24 @@
       "writtenOn": "2022-08-20T02:00:53Z",
       "side": 1,
       "message": "I think writing these as `...stdout\", region ? \"-r\" : NULL, region ? region : NULL, NULL` is a bit easier to follow (then you don\u0027t have to manually align the indices).",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "791d5a13_fa427a19",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-08-25T14:31:28Z",
+      "side": 1,
+      "message": "I wanted to avoid ternary operator, but it looks nice. Thank you.",
+      "parentUuid": "d4cf6de7_729cc24a",
       "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
