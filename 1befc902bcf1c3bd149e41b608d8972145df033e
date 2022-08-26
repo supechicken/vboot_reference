@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de033743_9c53e640",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-26T01:48:28Z",
+      "side": 1,
+      "message": "Yes, you would only use one or the other. Also, the old functions which expect a real RSA signature wouldn\u0027t work on the new type of signature anyway (and we should probably add an extra check in vb2_verify_digest() to ensure we don\u0027t use it on this type of \"signature\").",
+      "parentUuid": "cc53e773_aa156c99",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5414d19e_2dec9b17",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 3
