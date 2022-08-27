@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cece1245_ef12b28d",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-27T01:46:29Z",
+      "side": 1,
+      "message": "Probably time to change this from a static inline to a real function now, it\u0027s getting a little too big. (Note that this is also moving in CL:3825558 which will hopefully land any day.)",
+      "revId": "e23cf2bb30fe1797a0c71cd11201f88fdb47298e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

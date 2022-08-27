@@ -16,6 +16,24 @@
       "message": "Unless there\u0027s a valid reason, I don\u0027t think we should remove existing tests like this. Instead, adding a new test case looks more reasonable to me. However, I\u0027m not sure if that\u0027s necessary, because most cases should be covered in vb2_inject_kernel_subkey_tests.c.\n\nJulius, how\u0027s this test different from the ones in vb2_load_kernel_tests.c, except that this loads the key from a file?",
       "revId": "73bc2a9a0af97915b351a1ced0d6d16a0c369559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b223fa_0feddfb8",
+        "filename": "tests/verify_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-27T01:46:29Z",
+      "side": 0,
+      "message": "Well, it\u0027s not removing the test, it\u0027s just reusing the new API function that now does the same thing which this test previously did manually, right? As such I think this is a good change.\n\nThis is a higher level integration test, while vb2_load_kernel_tests.c is a lower level unit test just for the load_kernel code. This one will actually load and parse a real GPT image, while the other one mocks those parts out. I think they both have their place.",
+      "parentUuid": "c60a46aa_041c699a",
+      "revId": "73bc2a9a0af97915b351a1ced0d6d16a0c369559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

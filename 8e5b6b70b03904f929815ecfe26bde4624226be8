@@ -282,6 +282,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6a8bbe_2ff6260e",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-27T01:46:29Z",
+      "side": 1,
+      "message": "The const declaration is for the benefit of outside firmware linking into vboot and interacting with vb2_context, to clarify that they\u0027re not supposed to modify it. Casting it away in the specific parts of vboot intended to set it up is fine.",
+      "parentUuid": "b54de71f_fad5c3ef",
+      "revId": "8e5b6b70b03904f929815ecfe26bde4624226be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37db0f5c_40edf893",

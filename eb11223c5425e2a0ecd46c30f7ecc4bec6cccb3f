@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd9694d_827a93b5",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-08-27T01:46:29Z",
+      "side": 1,
+      "message": "Clang format does many things badly (e.g. aligning to open parenthesis on continuation lines), at least last we looked at it. It makes the code much less readable.",
+      "parentUuid": "1a047c75_eac66285",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "eb11223c5425e2a0ecd46c30f7ecc4bec6cccb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce57671_a10a9ff1",
