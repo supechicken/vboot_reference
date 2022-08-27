@@ -34,6 +34,24 @@
       "parentUuid": "c60a46aa_041c699a",
       "revId": "73bc2a9a0af97915b351a1ced0d6d16a0c369559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "900ecc07_f752d201",
+        "filename": "tests/verify_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-08-27T02:38:52Z",
+      "side": 0,
+      "message": "\u003e Well, it\u0027s not removing the test, it\u0027s just reusing the new API function that now does the same thing which this test previously did manually, right?\n\nRight... looks like I didn\u0027t read the code in enough detail. Now I agree it\u0027s a good change.",
+      "parentUuid": "36b223fa_0feddfb8",
+      "revId": "73bc2a9a0af97915b351a1ced0d6d16a0c369559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
