@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ebcd45b_5bf1a78e",
+        "filename": "firmware/2lib/include/2secdata.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-08-29T14:12:45Z",
+      "side": 1,
+      "message": "Changed to a real function. Leaving this unresolved for now as a reminder to rebase once CL:3825558 lands.",
+      "parentUuid": "cece1245_ef12b28d",
+      "revId": "e23cf2bb30fe1797a0c71cd11201f88fdb47298e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "174cecca_e8fb8d45",
         "filename": "tests/verify_kernel.c",
         "patchSetId": 13
