@@ -37,6 +37,7 @@ static int mock_secdata_fwmp_check_retval;
 static int mock_commit_data_called;
 static int mock_ec_sync_called;
 static int mock_ec_sync_retval;
+static int mock_auxfw_sync_called;
 static int mock_battery_cutoff_called;
 static int mock_kernel_flag;
 static int mock_kernel_flag_set;
@@ -68,6 +69,7 @@ static void reset_common_data(enum reset_type t)
 	mock_commit_data_called = 0;
 	mock_ec_sync_called = 0;
 	mock_ec_sync_retval = VB2_SUCCESS;
+	mock_auxfw_sync_called = 0;
 	mock_battery_cutoff_called = 0;
 	mock_kernel_flag = 0;
 	mock_kernel_flag_set = 0;
@@ -128,6 +130,7 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *c)
 
 vb2_error_t vb2api_auxfw_sync(struct vb2_context *c)
 {
+	mock_auxfw_sync_called = 1;
 	return VB2_SUCCESS;
 }
 
@@ -405,6 +408,14 @@ static void phase2_tests(void)
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST), 0,
 		"  clear VB2_NV_DIAG_REQUEST");
 	TEST_EQ(mock_commit_data_called, 1, "  commit data");
+
+	/* Auxfw sync runs after EC sync */
+	reset_common_data(FOR_PHASE2);
+	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_NORMAL);
+	mock_ec_sync_retval = VB2_ERROR_MOCK;
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_ERROR_MOCK,
+		"Auxfw sync runs after EC sync");
+	TEST_EQ(mock_auxfw_sync_called, 0, "  auxfw_sync not called");
 
 	/* Battery cutoff called after EC sync */
 	reset_common_data(FOR_PHASE2);
