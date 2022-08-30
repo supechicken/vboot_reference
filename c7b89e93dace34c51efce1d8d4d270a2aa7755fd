@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a21eb0_1713f95f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2022-08-30T03:46:20Z",
+      "side": 1,
+      "message": "We also want the vb2ex_ec_battery_cutoff runs after ec sync, but we leverage different approach (auxfw sync \u003d\u003d\u003e by force ec sync fail; vb2ex_ec_battery_cutoff \u003d\u003d\u003e by check ec sync called inside mock vb2ex_ec_battery_cutoff)\n\nDo we want to generalize them?",
+      "revId": "c7b89e93dace34c51efce1d8d4d270a2aa7755fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
