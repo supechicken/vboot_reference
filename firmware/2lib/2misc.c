@@ -450,6 +450,20 @@ int vb2api_need_reboot_for_display(struct vb2_context *ctx)
 	return 0;
 }
 
+int vb2api_need_to_disable_display(struct vb2_context *ctx)
+{
+	if (ctx->boot_mode == VB2_BOOT_MODE_NORMAL) {
+		if (vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST)) {
+			vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);
+			VB2_DEBUG("Normal mode: "
+				  "reboot to unset display request\n");
+			return 1;
+		}
+	}
+	return 0;
+}
+
+
 uint32_t vb2api_get_recovery_reason(struct vb2_context *ctx)
 {
 	return vb2_get_sd(ctx)->recovery_reason;

@@ -749,6 +749,18 @@ uint32_t vb2api_get_kernel_rollback_version(struct vb2_context *ctx);
 int vb2api_need_reboot_for_display(struct vb2_context *ctx);
 
 /**
+ * If display is initialized in normal mode, clear DISPLAY_REQUEST in nvdata.
+ * Ideally coreboot should not initialize the display in normal mode, but in
+ * case of firmware update display might have been initialized to show firmware
+ * update message to the user.
+ * This function will handle such cases and request to disable display in next reboot.
+ *
+ * @param ctx           Vboot2 context
+ * @return 1 if DISPLAY_REQUEST is clear and a reboot is required, or 0 otherwise.
+ */
+int vb2api_need_to_disable_display(struct vb2_context *ctx);
+
+/**
  * Get the current recovery reason.
  *
  * See enum vb2_nv_recovery in 2recovery_reasons.h.
