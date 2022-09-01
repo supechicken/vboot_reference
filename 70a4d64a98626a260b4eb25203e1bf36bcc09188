@@ -118,6 +118,30 @@
       },
       "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819ff655_3378bdcb",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-01T08:24:39Z",
+      "side": 1,
+      "message": "Currently no extra cycles to do this, so I filed b/244528268. With that in our plan, is this patch good to go (with weak attributes in the host lib)?\n\n\u003e The problem with using different compilation flags is that object files cannot be shared between test builds and normal host library builds.\n\nJust to confirm my understanding, there won\u0027t be issues on the builder if we set `-DUNIT_TESTS\u003d1` only in `src_test` in the ebuild, because the normal builds and test builds are in separate builder steps, right? However, there might be problems when we run `make` locally.",
+      "parentUuid": "b3840619_d92f2073",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
