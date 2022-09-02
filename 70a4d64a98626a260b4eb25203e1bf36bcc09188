@@ -142,6 +142,30 @@
       },
       "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f354fe4_da9822e0",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-02T22:26:09Z",
+      "side": 1,
+      "message": "Yeah, I guess this is good enough in the meantime. I don\u0027t think we should do the `-DUNIT_TESTS\u003d1` without fully separating the two cases, because then unit tests may just randomly not work right for people building them locally and that would be confusing.",
+      "parentUuid": "819ff655_3378bdcb",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "70a4d64a98626a260b4eb25203e1bf36bcc09188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
