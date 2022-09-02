@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5eef637_d0bb1f7b",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c994ada3_12eb80c4",
+      "range": {
+        "startLine": 251,
+        "startChar": 22,
+        "endLine": 251,
+        "endChar": 46
+      },
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9a1141f_3d72252c",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "No, for serialization struct vb2_hash does not have a fixed size. It should always only be as long as needed for the type of hash it\u0027s encoding.\n\nI would suggest to make this\n```\nstruct vb2_hash *hash \u003d (void *)vb2_signature_data(\u0026pre-\u003ebody_signature);\nuint32_t hsize \u003d vb2_digest_size(hash-\u003ealgo);\nif (!hsize || pre-\u003ebody_signature.sig_size \u003c offsetof(struct vb2_hash, raw) + hsize)\n  return VB2_ERROR_...\n```",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92d61fa_4fe41819",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "I was wondering, how to solve this. `vb2_hash` can be extended in the future, so its max size can change, so I didn\u0027t want to use `VB2_MAX_DIGEST_SIZE` in here. Requiring minimum size seems to be the correct way. Thank you.",
+      "parentUuid": "c9a1141f_3d72252c",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc92a75f_80300512",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e88cd8_099c70c0",
+      "range": {
+        "startLine": 472,
+        "startChar": 54,
+        "endLine": 472,
+        "endChar": 55
+      },
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a83074b_0e9fcdd0",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "Just declare this variable up top rather than duplicating it again below.",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354f7658_fbd18798",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a83074b_0e9fcdd0",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e79b4927_35ce219f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ddced34_41defa73",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b6b167d_1f814aaf",
@@ -115,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57fc40b4_ababb17b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "There is `vb2_verify_fw_preamble()` before, so it checks, if preamble and body signature is correct (if it fits), but you are right, that the contents of body signature is not being checked here.",
+      "parentUuid": "0b6b167d_1f814aaf",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab36c26_08d7fc14",
@@ -128,6 +248,24 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "This should be unnecessary?",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2959a0d2_aab9648c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab36c26_08d7fc14",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +289,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cbe80ae_e5fdd266",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done. Is the new message informative enough?",
+      "parentUuid": "bdfdef37_9b3db66f",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "385becd5_5dc7903a",
         "filename": "futility/cmd_show.c",
         "patchSetId": 4
@@ -162,6 +318,24 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "I think it would be good to print the preamble hash here, and if there\u0027s a mismatch also print the real body hash to compare. E.g. the good output could be:\n```\n  Body metadata hash:    SHA256:abcdefg...\n```\nand the bad output could be\n```\n  Body metadata hash:    SHA256:abcdefg...\n  MISMATCH! Real hash:   SHA1:0123456...\n```",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee7d748_d610a38b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Oh, I forgot to print body hash, right.\nI left the error message printed to stderr to make it easier to parse. Now information about mismatch is present on both stderr and stdout.",
+      "parentUuid": "385becd5_5dc7903a",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +357,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6237f87_2ddcb342",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "234402d7_0453f359",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f95c3a7e_9af76d7a",
@@ -196,6 +388,30 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "That name is quite a mouthful... why not just image_uses_cbfs_integration() or something like that?",
+      "range": {
+        "startLine": 476,
+        "startChar": 12,
+        "endLine": 476,
+        "endChar": 64
+      },
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed5c457_5a53582c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "TBH I do not know, why I named it like that. the name doesn\u0027t even make sense, because nothing is being prepared here.",
+      "parentUuid": "f95c3a7e_9af76d7a",
       "range": {
         "startLine": 476,
         "startChar": 12,
@@ -229,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0cf7ebd_ef5b843b",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4065bbd6_164dc99a",
+      "range": {
+        "startLine": 478,
+        "startChar": 12,
+        "endLine": 478,
+        "endChar": 19
+      },
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2740b42_c03cbc91",
@@ -242,6 +482,30 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "Is this ever 0 when cbfstool_truncate() returned success?",
+      "range": {
+        "startLine": 500,
+        "startChar": 5,
+        "endLine": 500,
+        "endChar": 30
+      },
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06acf13_a28a4b91",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Hmm, this check seems to be unnecessary. It should never be 0 when `cbfstool_truncate()` returns `VB2_SUCCESS`, so it can be removed.",
+      "parentUuid": "e2740b42_c03cbc91",
       "range": {
         "startLine": 500,
         "startChar": 5,
@@ -269,6 +533,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a999976_ef4221a9",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "On the contrary there are functions like `vb2_get_*_algorithm_name()` which do not follow this patter.\nBut I understand your point. Sticking to one style makes code more readable and coherent.",
+      "parentUuid": "2a49d666_0d73778f",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df8f1bf_0c46bba2",
@@ -282,6 +564,24 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "This looks like an oddly complicated way to write `\"\\n[METADATA HASH]\"`?",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b877c45_ed41a702",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df8f1bf_0c46bba2",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -305,6 +605,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fffe5db_c40508bf",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "AFAIK `:(in)valid` part is optional. It will be printed only for `COREBOOT` region. `extract_metadata_hash()` is used by `cbfstool_get_metadata_hash()`, which allows for passing optional region name, which will cause cbfstool to print something like this:\n```\n$ cbfstool /build/volteer/firmware/image-voxel.serial.bin print -kv -r \u0027FW_MAIN_A\u0027\n\n....\n\n[METADATA HASH] SHA256:f2448cf31fa956184b1fe4eabaf445a66487d299afe8a61cc0430415ac95c1b1\n[CBFS VERIFICATION (FW_MAIN_A)] fully valid\n```\n\nAs you can see, there is no information about the metadata hash being valid.",
+      "parentUuid": "ff129517_15f92c95",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "165ca1e7_fc25a9d6",
         "filename": "host/lib/cbfstool.c",
         "patchSetId": 4
@@ -316,6 +634,24 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "`FATAL(\"OOM\");`?",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0811b70c_0f74403c",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165ca1e7_fc25a9d6",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -339,6 +675,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbb0495c_95a606b2",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Ok. I will prepare patch after this weekend :)",
+      "parentUuid": "8300908c_297ad84d",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba05a4a2_76f7d329",
         "filename": "host/lib/host_signature2.c",
         "patchSetId": 4
@@ -350,6 +704,24 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "This should be no longer needed now, right? (If you want to check if the algorithm is supported again, I\u0027d just use `vb2_digest_size(hash-\u003ealgo) \u003d\u003d 0`.)",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a24d9a_e699ab34",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba05a4a2_76f7d329",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -367,6 +739,30 @@
       "writtenOn": "2022-08-26T01:48:28Z",
       "side": 1,
       "message": "As mentioned earlier, size should be shrunk to fit the specific hash type.",
+      "range": {
+        "startLine": 150,
+        "startChar": 46,
+        "endLine": 150,
+        "endChar": 59
+      },
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90589633_759bb655",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-02T16:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea61d59_64e64b78",
       "range": {
         "startLine": 150,
         "startChar": 46,
