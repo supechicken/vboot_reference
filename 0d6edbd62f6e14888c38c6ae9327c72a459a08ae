@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ecb5e2_96e5eb92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-02T00:01:05Z",
+      "side": 1,
+      "message": "This patch alone does nothing, is there a depthcharge patch somewhere that\u0027s supposed to go with it?\n\nGenerally, I don\u0027t think we need to make this so complicated and have another API function for this. We know that AUXFW sync tends to request display, I don\u0027t think it\u0027s that bad to just make use of that knowledge directly in vboot. So I think this should just be solved directly in vb2api_auxfw_sync(), by adding one line:\n```\n   VB2_TRY(vb2ex_auxfw_update(), ctx, VB2_RECOVERY_AUXFW_UPDATE);\n+  vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);\n   /* ... */\n   return VB2_REQUEST_REBOOT_EC_TO_RO;\n```\nIf depthcharge did request the display, the request would be cleared before the reboot there. If it didn\u0027t, no harm done.",
+      "revId": "0d6edbd62f6e14888c38c6ae9327c72a459a08ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
