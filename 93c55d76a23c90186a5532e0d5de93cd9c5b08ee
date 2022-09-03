@@ -305,6 +305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f287c492_328c322a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-03T00:41:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7cbe80ae_e5fdd266",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "385becd5_5dc7903a",
@@ -551,6 +569,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b40eac8_ed5b9b19",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-03T00:41:17Z",
+      "side": 1,
+      "message": "Well... like I said, it breaks down for things that return pointers to a result, because then NULL is the only feasible way to indicate an error. (In fact, the coding style I linked also mentions this as an explicit exception, in the last paragraph.) For those it might help to try to make the function name explicitly indicate that a real value (instead of just success status) is returned, e.g. by calling it ..._get_... or something like that, but the rules are not as clear cut for that case.",
+      "parentUuid": "7a999976_ef4221a9",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df8f1bf_0c46bba2",
@@ -617,6 +653,24 @@
       "side": 1,
       "message": "AFAIK `:(in)valid` part is optional. It will be printed only for `COREBOOT` region. `extract_metadata_hash()` is used by `cbfstool_get_metadata_hash()`, which allows for passing optional region name, which will cause cbfstool to print something like this:\n```\n$ cbfstool /build/volteer/firmware/image-voxel.serial.bin print -kv -r \u0027FW_MAIN_A\u0027\n\n....\n\n[METADATA HASH] SHA256:f2448cf31fa956184b1fe4eabaf445a66487d299afe8a61cc0430415ac95c1b1\n[CBFS VERIFICATION (FW_MAIN_A)] fully valid\n```\n\nAs you can see, there is no information about the metadata hash being valid.",
       "parentUuid": "ff129517_15f92c95",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067a2b5d_f16cc912",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-03T00:41:17Z",
+      "side": 1,
+      "message": "Okay. Yeah that makes sense, because for the RW CBFS cbfstool can\u0027t tell whether it\u0027s valid. And since we\u0027re only ever looking at RW CBFSes here, we\u0027ll never actually have that \"valid\" part. So I\u0027d maybe just remove the code for that entirely.\n\nIt would actually maybe be good if we just strstr() for that \"] fully valid\" part, just to check that that\u0027s there. Because that should always be there and that will also tell us if the file hashes inside the image are consistent (if they\u0027re not, it\u0027s probably good to find that out at signing time rather than later).",
+      "parentUuid": "3fffe5db_c40508bf",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

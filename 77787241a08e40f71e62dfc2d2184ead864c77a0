@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b68b28_6edfd672",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-03T00:41:17Z",
+      "side": 1,
+      "message": "I would say use either cbfs_verification_rw or uses_cbfs_integration consistently throughout this file.",
+      "range": {
+        "startLine": 539,
+        "startChar": 6,
+        "endLine": 539,
+        "endChar": 26
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
