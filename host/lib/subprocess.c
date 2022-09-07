@@ -5,6 +5,7 @@
 
 #include <errno.h>
 #include <fcntl.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/wait.h>
@@ -248,6 +249,29 @@ static int process_target_output(struct subprocess_target *target)
 	return rv;
 }
 
+static bool contains_spaces(const char *s)
+{
+	while (*s)
+		if (isspace(*s++))
+			return true;
+
+	return false;
+}
+
+static void subprocess_log_call(const char *const argv[])
+{
+	VB2_DEBUG("Calling:");
+
+	while (*argv) {
+		if (contains_spaces(*argv))
+			VB2_DEBUG_RAW(" '%s'", *argv);
+		else
+			VB2_DEBUG_RAW(" %s", *argv);
+		argv++;
+	}
+	VB2_DEBUG_RAW("\n");
+}
+
 struct subprocess_target subprocess_null = {
 	.type = TARGET_NULL,
 };
@@ -274,6 +298,8 @@ int subprocess_run(const char *const argv[],
 {
 	int status;
 	pid_t pid = -1;
+
+	subprocess_log_call(argv);
 
 	if (!input)
 		input = &subprocess_stdin;
