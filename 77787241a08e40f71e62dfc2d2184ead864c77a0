@@ -3,6 +3,97 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc1e31c1_90175b1a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "When would `sig_size` be greater than `offset(...) + hsize`?",
+      "range": {
+        "startLine": 394,
+        "startChar": 44,
+        "endLine": 394,
+        "endChar": 45
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d26956_1dc654e5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Similar to `vb2api_get_firmware_size`, this function also should be called after `vb2api_fw_phase3`, right?",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46070a0_45f2e177",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "I think this function becomes too long. Consider extracting some part to a static function.",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f0be2d_41a54e4c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "```\nif (cbfstool_truncate(...)) {\n    VB2_DEBUG(\"CBFS not found in area %s\\n\", fmap_name[fw_c]);\n    return;\n}\n\nVB2_DEBUG(\"CBFS found in area %s\\n\", fmap_name[fw_c]);\n...\n```",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc0efd0_359f98f2",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Same. I\u0027d prefer early return if `!cbfs_verification_rw`. This together with the above suggestion would save us 2 levels of indentation.",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82b68b28_6edfd672",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 5
@@ -19,6 +110,449 @@
         "startChar": 6,
         "endLine": 539,
         "endChar": 26
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2525ea7_c4f3e032",
+        "filename": "futility/file_type_bios.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "I\u0027d move this right after `enum bios_component`.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 64
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a3960e_8d8a4b1a",
+        "filename": "futility/futility.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "\u003e \"stirng\" is a possible misspelling of \"string\".\n\nPlease fix.",
+      "parentUuid": "73585ebf_602210bf",
+      "range": {
+        "startLine": 163,
+        "startChar": 32,
+        "endLine": 163,
+        "endChar": 38
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13597e95_51584dde",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Sort.",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af66a1d_3e4d5a2b",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 431,
+        "startChar": 34,
+        "endLine": 431,
+        "endChar": 42
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52984bd7_93cfc9da",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02bda72c_e8d8b734",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Make it `const`?",
+      "range": {
+        "startLine": 78,
+        "startChar": 45,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630f9853_1ddf8aa1",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 99,
+        "startChar": 19,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6dc626e_a7e3d9d0",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Wrong polarity. In fact these 3 lines can be simplified to `rv \u003d extract_metadata_hash();`.",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 6
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f46915_51a99d37",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 181,
+        "startChar": 38,
+        "endLine": 181,
+        "endChar": 39
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a2985b_8e401d2a",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Isn\u0027t this just `region`?",
+      "range": {
+        "startLine": 228,
+        "startChar": 24,
+        "endLine": 228,
+        "endChar": 46
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4992d3_97d507f4",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Should this be size_t?",
+      "range": {
+        "startLine": 146,
+        "startChar": 30,
+        "endLine": 146,
+        "endChar": 33
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7566c764_790dfedf",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f155726_dee92e20",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Wrong format.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e324f907_0d8628a4",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "I assume you mean `VB2_HASH_NONE`.",
+      "range": {
+        "startLine": 17,
+        "startChar": 44,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d69295_0a261fa8",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "will be",
+      "range": {
+        "startLine": 17,
+        "startChar": 29,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dacd8f6_be2fe59b",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "`passed to cbfstool` to make things clearer.",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551ab22f_bf9086cf",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 27,
+        "startChar": 60,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4efd74_9838d6bb",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "`passed to cbfstool` to make things clearer.",
+      "range": {
+        "startLine": 31,
+        "startChar": 55,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77be45e3_49bcd0d8",
+        "filename": "host/lib/include/host_misc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "Mention that whitespaces are ignored.",
+      "range": {
+        "startLine": 119,
+        "startChar": 43,
+        "endLine": 119,
+        "endChar": 51
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0b40e7_8fa5b119",
+        "filename": "host/lib/include/host_signature.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-07T09:15:58Z",
+      "side": 1,
+      "message": "No private key now.",
+      "range": {
+        "startLine": 89,
+        "startChar": 43,
+        "endLine": 89,
+        "endChar": 59
       },
       "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
