@@ -675,6 +675,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e415588b_ae1f1bf1",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "\u003e It would actually maybe be good if we just strstr() for that \"] fully valid\" part, just to check that that\u0027s there. Because that should always be there and that will also tell us if the file hashes inside the image are consistent (if they\u0027re not, it\u0027s probably good to find that out at signing time rather than later).\n\nThat makes sense. Only valid images should be signed.",
+      "parentUuid": "067a2b5d_f16cc912",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "165ca1e7_fc25a9d6",
@@ -741,6 +759,24 @@
       "side": 1,
       "message": "Ok. I will prepare patch after this weekend :)",
       "parentUuid": "8300908c_297ad84d",
+      "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "368898ac_43a30316",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb0495c_95a606b2",
       "revId": "93c55d76a23c90186a5532e0d5de93cd9c5b08ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

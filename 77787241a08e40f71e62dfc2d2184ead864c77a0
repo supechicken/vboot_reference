@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e72c64b_94a8f773",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Consider case where hash placed in signature has `offsetof(struct vb2_hash, raw) + VB2_SHA512_DIGEST_SIZE (128)`, but its algo is SHA256 (so offset + 64 bytes). in this case:\n```\nhsize \u003d 64;\nsig_size \u003d offset + 128;\n--\u003e offset + 128 \u003e offset + 64;\n```\n\nThis should never happen as `vb2_create_signature_from_hash()` puts only `offset + hsize` in signature, but I think it\u0027s better to allow for signature size to be only bottom-capped. (Also this fragment of code was suggested by Julius in his [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3811754/comments/c9a1141f_3d72252c))",
+      "parentUuid": "dc1e31c1_90175b1a",
+      "range": {
+        "startLine": 394,
+        "startChar": 44,
+        "endLine": 394,
+        "endChar": 45
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69d26956_1dc654e5",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "Similar to `vb2api_get_firmware_size`, this function also should be called after `vb2api_fw_phase3`, right?",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87964209_f45335b0",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Right. It will return with error otherwise. Thanks :)",
+      "parentUuid": "69d26956_1dc654e5",
       "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fa64988_9e1b7d6e",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "I extracted only the metadata hash showing function. This function can be refactored in the future. I do not want to cram everything into one CL.",
+      "parentUuid": "a46070a0_45f2e177",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8f0be2d_41a54e4c",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84771c49_3b0cf930",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f0be2d_41a54e4c",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bc0efd0_359f98f2",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "Same. I\u0027d prefer early return if `!cbfs_verification_rw`. This together with the above suggestion would save us 2 levels of indentation.",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da46b00_d6875548",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc0efd0_359f98f2",
       "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d87468_3cb53478",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b68b28_6edfd672",
+      "range": {
+        "startLine": 539,
+        "startChar": 6,
+        "endLine": 539,
+        "endChar": 26
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2525ea7_c4f3e032",
@@ -128,6 +248,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "I\u0027d move this right after `enum bios_component`.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 64
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e94222_4e092fd7",
+        "filename": "futility/file_type_bios.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2525ea7_c4f3e032",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40998237_429c4612",
+        "filename": "futility/futility.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a3960e_8d8a4b1a",
+      "range": {
+        "startLine": 163,
+        "startChar": 32,
+        "endLine": 163,
+        "endChar": 38
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13597e95_51584dde",
@@ -175,6 +343,24 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "Sort.",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c22ea37_8fbe14e7",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13597e95_51584dde",
       "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9261675b_efc7326e",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af66a1d_3e4d5a2b",
+      "range": {
+        "startLine": 431,
+        "startChar": 34,
+        "endLine": 431,
+        "endChar": 42
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52984bd7_93cfc9da",
@@ -219,6 +429,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e536f7a2_0c830512",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52984bd7_93cfc9da",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02bda72c_e8d8b734",
@@ -232,6 +460,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "Make it `const`?",
+      "range": {
+        "startLine": 78,
+        "startChar": 45,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f165d6d_8df725b1",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02bda72c_e8d8b734",
       "range": {
         "startLine": 78,
         "startChar": 45,
@@ -265,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f761c670_26f678c1",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "630f9853_1ddf8aa1",
+      "range": {
+        "startLine": 99,
+        "startChar": 19,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6dc626e_a7e3d9d0",
@@ -278,6 +554,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "Wrong polarity. In fact these 3 lines can be simplified to `rv \u003d extract_metadata_hash();`.",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 6
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b390f7b_958f1cc5",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6dc626e_a7e3d9d0",
       "range": {
         "startLine": 171,
         "startChar": 5,
@@ -311,6 +611,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3efe0f2c_6765429d",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0f46915_51a99d37",
+      "range": {
+        "startLine": 181,
+        "startChar": 38,
+        "endLine": 181,
+        "endChar": 39
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a2985b_8e401d2a",
@@ -324,6 +648,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "Isn\u0027t this just `region`?",
+      "range": {
+        "startLine": 228,
+        "startChar": 24,
+        "endLine": 228,
+        "endChar": 46
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8cc21a8_14b1f1c9",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Oh.... Right.",
+      "parentUuid": "88a2985b_8e401d2a",
       "range": {
         "startLine": 228,
         "startChar": 24,
@@ -357,6 +705,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a079fdf_49b92a00",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c4992d3_97d507f4",
+      "range": {
+        "startLine": 146,
+        "startChar": 30,
+        "endLine": 146,
+        "endChar": 33
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7566c764_790dfedf",
@@ -374,6 +746,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "574b6e89_0fba3105",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7566c764_790dfedf",
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f155726_dee92e20",
@@ -387,6 +777,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "Wrong format.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf145e9_a8eb4af4",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f155726_dee92e20",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -443,6 +857,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae624e9e_03b6f607",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "I meant `VB2_HASH_INVALID`, but they are the same :)",
+      "parentUuid": "e324f907_0d8628a4",
+      "range": {
+        "startLine": 17,
+        "startChar": 44,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34dc4ec8_90522f45",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d69295_0a261fa8",
+      "range": {
+        "startLine": 17,
+        "startChar": 29,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dacd8f6_be2fe59b",
@@ -456,6 +918,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "`passed to cbfstool` to make things clearer.",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb53c119_a830c0d2",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dacd8f6_be2fe59b",
       "range": {
         "startLine": 19,
         "startChar": 55,
@@ -489,6 +975,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bef857b_9260f509",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "551ab22f_bf9086cf",
+      "range": {
+        "startLine": 27,
+        "startChar": 60,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc4efd74_9838d6bb",
@@ -502,6 +1012,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "`passed to cbfstool` to make things clearer.",
+      "range": {
+        "startLine": 31,
+        "startChar": 55,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b2d5233_8a4b5c97",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc4efd74_9838d6bb",
       "range": {
         "startLine": 31,
         "startChar": 55,
@@ -535,6 +1069,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d58121_b0cf0ed1",
+        "filename": "host/lib/include/host_misc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77be45e3_49bcd0d8",
+      "range": {
+        "startLine": 119,
+        "startChar": 43,
+        "endLine": 119,
+        "endChar": 51
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c0b40e7_8fa5b119",
@@ -548,6 +1106,30 @@
       "writtenOn": "2022-09-07T09:15:58Z",
       "side": 1,
       "message": "No private key now.",
+      "range": {
+        "startLine": 89,
+        "startChar": 43,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "77787241a08e40f71e62dfc2d2184ead864c77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ae9663_23e83f12",
+        "filename": "host/lib/include/host_signature.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-07T14:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c0b40e7_8fa5b119",
       "range": {
         "startLine": 89,
         "startChar": 43,
