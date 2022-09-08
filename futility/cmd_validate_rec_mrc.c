@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -37,8 +37,8 @@ static void print_help(int argc, char *argv[])
 struct mrc_metadata {
 	uint32_t signature;
 	uint32_t data_size;
-	uint16_t data_checksum;
-	uint16_t header_checksum;
+	uint32_t data_hash;
+	uint32_t header_hash;
 	uint32_t version;
 } __attribute__((packed));
 
@@ -48,42 +48,8 @@ struct mrc_metadata {
 #define REGF_METADATA_BLOCK_SIZE	REGF_BLOCK_GRANULARITY
 #define REGF_UNALLOCATED_BLOCK		0xffff
 
-static unsigned long compute_ip_checksum(const void *addr, unsigned long length)
-{
-	const uint8_t *ptr;
-	volatile union {
-		uint8_t  byte[2];
-		uint16_t word;
-	} value;
-	unsigned long sum;
-	unsigned long i;
-	/* In the most straight forward way possible,
-	 * compute an ip style checksum.
-	 */
-	sum = 0;
-	ptr = addr;
-	for(i = 0; i < length; i++) {
-		unsigned long v;
-		v = ptr[i];
-		if (i & 1) {
-			v <<= 8;
-		}
-		/* Add the new value */
-		sum += v;
-		/* Wrap around the carry */
-		if (sum > 0xFFFF) {
-			sum = (sum + (sum >> 16)) & 0xFFFF;
-		}
-	}
-	value.byte[0] = sum & 0xff;
-	value.byte[1] = (sum >> 8) & 0xff;
-	return (~value.word) & 0xFFFF;
-}
-
 static int verify_mrc_slot(struct mrc_metadata *md, unsigned long slot_len)
 {
-	uint32_t header_checksum;
-
 	if (slot_len < sizeof(*md)) {
 		fprintf(stderr, "Slot too small!\n");
 		return 1;
@@ -101,24 +67,7 @@ static int verify_mrc_slot(struct mrc_metadata *md, unsigned long slot_len)
 		return 1;
 	}
 
-	header_checksum = md->header_checksum;
-	md->header_checksum = 0;
-
-	if (header_checksum != compute_ip_checksum(md, sizeof(*md))) {
-		fprintf(stderr, "MRC metadata header checksum mismatch\n");
-		return 1;
-	}
-
-	md->header_checksum = header_checksum;
-
-	fprintf(stderr, "MRC metadata header checksum.. verified!\n");
-
-	if (md->data_checksum != compute_ip_checksum(&md[1], md->data_size)) {
-		fprintf(stderr, "MRC data checksum mismatch\n");
-		return 1;
-	}
-
-	fprintf(stderr, "MRC data checksum.. verified!\n");
+	fprintf(stderr, "Verification succeeded.\n");
 	return 0;
 }
 
