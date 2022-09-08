@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ee69e81_8760af33",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-08T16:44:54Z",
+      "side": 1,
+      "message": "I fixed all functions I found using old RSA signature. Please tell me if I missed any.",
+      "parentUuid": "de033743_9c53e640",
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5414d19e_2dec9b17",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 3
@@ -91,6 +109,30 @@
       "side": 1,
       "message": "Hmm... yeah, actually, you\u0027re right, maybe this is a good opportunity to finally do this. Because we\u0027re already changing everything about how the body_signature field works anyway.\n\nSo I guess we would say that if body_signature.data_size is 0, then the data pointed to by sig_offset/sig_size would just be a struct vb2_hash that can be exported to coreboot via some new API that we still need to define. And for the non-CBFS-verification images, body_signature remains a real signature. Just need to be careful that we really update every place that touches this to be able to handle both cases.",
       "parentUuid": "5414d19e_2dec9b17",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 4
+      },
+      "revId": "1befc902bcf1c3bd149e41b608d8972145df033e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6fcb64_7bdcb8a7",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-08T16:44:54Z",
+      "side": 1,
+      "message": "I think that everything is ok now. Please tell me if I missed anything.\n\nRegarding tests for new features: I will work on them after there are no concerns regarding new API.",
+      "parentUuid": "f7bc6eda_1c398373",
       "range": {
         "startLine": 305,
         "startChar": 1,

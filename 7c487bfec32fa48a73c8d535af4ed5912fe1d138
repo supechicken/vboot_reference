@@ -22,6 +22,30 @@
       },
       "revId": "7c487bfec32fa48a73c8d535af4ed5912fe1d138",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff98679_52509d62",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-09-08T16:44:54Z",
+      "side": 1,
+      "message": "`:w` \u003c-- Ah.... Again? Sorry\nFixed.\n\nRegarding inconsistencies: vboot is full of them. We should take care of them defining coding guidelines.",
+      "parentUuid": "7422dae8_8191bf30",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "7c487bfec32fa48a73c8d535af4ed5912fe1d138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
