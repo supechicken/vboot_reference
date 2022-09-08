@@ -113,12 +113,6 @@ static int verify_mrc_slot(struct mrc_metadata *md, unsigned long slot_len)
 
 	fprintf(stderr, "MRC metadata header checksum.. verified!\n");
 
-	if (md->data_checksum != compute_ip_checksum(&md[1], md->data_size)) {
-		fprintf(stderr, "MRC data checksum mismatch\n");
-		return 1;
-	}
-
-	fprintf(stderr, "MRC data checksum.. verified!\n");
 	return 0;
 }
 
