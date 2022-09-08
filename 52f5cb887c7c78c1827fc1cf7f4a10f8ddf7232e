@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ea5c47_55fd2053",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-08T16:12:39Z",
+      "side": 1,
+      "message": "Please write a brief paragraph describing the change and the motivation.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "revId": "52f5cb887c7c78c1827fc1cf7f4a10f8ddf7232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d282f1_ab3a5957",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-08T16:12:39Z",
+      "side": 1,
+      "message": "A for loop could make this easier to read. The mixed postfix increment as an expression took my brain a second to parse.\n\n```\nfor (size_t i \u003d 0; s[i]; i++) {\n  if (isspace(s[i]))\n    return true;\n}\nreturn false;\n```",
+      "range": {
+        "startLine": 255,
+        "startChar": 14,
+        "endLine": 255,
+        "endChar": 18
+      },
+      "revId": "52f5cb887c7c78c1827fc1cf7f4a10f8ddf7232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad886e15_65c7e53c",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-08T16:12:39Z",
+      "side": 1,
+      "message": "Perhaps \"Run\" might be better verbiage than \"Calling\".",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 20
+      },
+      "revId": "52f5cb887c7c78c1827fc1cf7f4a10f8ddf7232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d670c259_5ea77244",
+        "filename": "host/lib/subprocess.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-08T16:12:39Z",
+      "side": 1,
+      "message": "Would recommend similar here:\n\n```\nfor (size_t i \u003d 0; argv[i]; i++) {\n  ...\n}\n```",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 16
+      },
+      "revId": "52f5cb887c7c78c1827fc1cf7f4a10f8ddf7232e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
