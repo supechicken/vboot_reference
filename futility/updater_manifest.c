@@ -65,7 +65,8 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const ENV_VAR_MODEL_DIR = "${MODEL_DIR}",
 		  * const PATH_STARTSWITH_KEYSET = "keyset/",
 		  * const PATH_SIGNER_CONFIG = "signer_config.csv",
-		  * const PATH_ENDSWITH_SETVARS = "/setvars.sh";
+		  * const PATH_ENDSWITH_SETVARS = "/setvars.sh",
+		  * const PATH_SKU_ID_CONFIG = "image_name_overrides.csv";
 
 /* Utility function to convert a string. */
 static void str_convert(char *s, int (*convert)(int c))
@@ -577,6 +578,87 @@ static int manifest_from_simple_folder(struct manifest *manifest)
 	return 0;
 }
 
+/*
+ * Returns the image name to use for the manifest key based on user-provided
+ * model_name, applying any per-SKU image name overrides to a specified model
+ * parameters. Returns NULL if an error occurs. The caller takes ownership of
+ * the returned string.
+ */
+static char *get_overridden_image_name(struct u_archive *archive,
+				       const char *model_name, int sku_id)
+{
+	uint32_t size;
+	uint8_t *data;
+	char *s, *tok_ptr = NULL;
+	char *path;
+	char *image_name = NULL;
+
+	ASPRINTF(&path, "models/%s/%s", model_name, PATH_SKU_ID_CONFIG);
+	if (!archive_has_entry(archive, path)) {
+		VB2_DEBUG("No per-SKU ID config found: %s\n", path);
+		goto cleanup;
+	}
+	if (sku_id == -1) {
+		WARN("Model %s has per-SKU overrides, but no sku ID was "
+		     "provided\n",
+		     model_name);
+		goto cleanup;
+	}
+
+	if (archive_read_file(archive, path, &data, &size, NULL)) {
+		ERROR("Failed reading: %s\n", path);
+		model_name = NULL;
+		goto cleanup;
+	}
+
+	/*
+	 * CSV format: sku_id,image_name
+	 */
+
+	/* Skip headers. */
+	s = strtok_r((char *)data, "\n", &tok_ptr);
+	if (!s || !strchr(s, ',')) {
+		ERROR("Invalid %s: missing header.\n", PATH_SKU_ID_CONFIG);
+		goto cleanup_data;
+	}
+
+	for (s = strtok_r(NULL, "\n", &tok_ptr); s != NULL;
+	     s = strtok_r(NULL, "\n", &tok_ptr)) {
+		int entry_sku_id;
+		char *entry_image_name = NULL;
+
+		if (sscanf(s, "%d, %m[^,]", &entry_sku_id, &entry_image_name) <
+		    2) {
+			ERROR("Invalid entry(%s): %s\n", path, s);
+			model_name = NULL;
+			goto cleanup_data;
+		}
+		if (entry_sku_id == sku_id) {
+			INFO("Applying per-SKU override (%s, 0x%x) => %s\n",
+			     model_name, sku_id, entry_image_name);
+			image_name = entry_image_name;
+			goto cleanup_data;
+		}
+
+		free(entry_image_name);
+	}
+
+cleanup_data:
+	free(data);
+
+cleanup:
+	free(path);
+
+	/*
+	 * If image_name hasn't been set (an override hasn't been found) and
+	 * model_name hasn't been cleared (no errors have been encountered), use
+	 * the input |model_name| as the result.
+	 */
+	if (!image_name && model_name)
+		image_name = strdup(model_name);
+	return image_name;
+}
+
 /**
  * get_manifest_key() - Wrapper to get the firmware manifest key from crosid
  *
@@ -607,9 +689,12 @@ static int get_manifest_key(char **manifest_key_out)
  * Returns a model_config from manifest, or NULL if not found.
  */
 const struct model_config *manifest_find_model(const struct manifest *manifest,
-					       const char *model_name)
+					       const char *image_name,
+					       const char *model_name,
+					       int sku_id)
 {
 	char *manifest_key = NULL;
+	char *possibly_overridden_model_name = NULL;
 	const struct model_config *model = NULL;
 	int i;
 	int matched_index;
@@ -622,7 +707,14 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 	if (manifest->num == 1)
 		return &manifest->models[0];
 
-	if (!model_name) {
+	if (model_name) {
+		possibly_overridden_model_name = get_overridden_image_name(
+			manifest->archive, model_name, sku_id);
+		if (!possibly_overridden_model_name)
+			return NULL;
+
+		image_name = possibly_overridden_model_name;
+	} else if (!image_name) {
 		matched_index = get_manifest_key(&manifest_key);
 		if (matched_index < 0) {
 			ERROR("Failed to get device identity.  "
@@ -634,18 +726,18 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 		     "matched chromeos-config index: %d, "
 		     "manifest key (model): %s\n",
 		     matched_index, manifest_key);
-		model_name = manifest_key;
+		image_name = manifest_key;
 	}
 
-	model = manifest_get_model_config(manifest, model_name);
+	model = manifest_get_model_config(manifest, image_name);
 
 	if (!model) {
-		ERROR("Unsupported model: '%s'.\n", model_name);
+		ERROR("Unsupported model: '%s'.\n", image_name);
 
 		fprintf(stderr,
 			"The firmware manifest key '%s' is not present in this "
 			"updater archive. The known keys to this updater "
-			"archive are:\n", model_name);
+			"archive are:\n", image_name);
 
 		for (i = 0; i < manifest->num; i++)
 			fprintf(stderr, " %s", manifest->models[i].name);
@@ -661,6 +753,7 @@ const struct model_config *manifest_find_model(const struct manifest *manifest,
 
 
 	free(manifest_key);
+	free(possibly_overridden_model_name);
 	return model;
 }
 

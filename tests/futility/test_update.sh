@@ -387,6 +387,28 @@ A="${TMP}.archive"
 mkdir -p "${A}/bin"
 echo "echo \"\${CL_TAG}\"" >"${A}/bin/vpd"
 chmod +x "${A}/bin/vpd"
+mkdir -p "${A}/models/not_link"
+cat > "${A}/models/not_link/image_name_overrides.csv" <<EOF
+sku_id,image_name
+2,link
+EOF
+
+mkdir -p "${A}/models/link"
+cat > "${A}/models/link/image_name_overrides.csv" <<EOF
+sku_id,image_name
+3,not_link
+EOF
+
+mkdir -p "${A}/models/invalid_entry"
+cat > "${A}/models/invalid_entry/image_name_overrides.csv" <<EOF
+sku_id,image_name
+invalid contents
+EOF
+
+mkdir -p "${A}/models/invalid_header"
+cat > "${A}/models/invalid_header/image_name_overrides.csv" <<EOF
+bad header
+EOF
 
 cp -f "${LINK_BIOS}" "${A}/bios.bin"
 echo "TEST: Manifest (--manifest, bios.bin)"
@@ -475,6 +497,36 @@ test_update "Full update (--archive, model=customtip, signature_id=CL)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=customtip \
 	--signature_id=customtip-cl
+
+test_update "Full update (--archive, model=not_link, sku_id=2)" \
+	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=not_link --sku_id=2
+test_update "Full update (--archive, model=link, sku_id=4)" \
+	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=link --sku_id=4
+test_update "Full update (--archive, model=link, sku_id=3)" \
+	"${FROM_IMAGE}.al" "!not_link" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=link --sku_id=3
+test_update "Full update (--archive, sku_id=3)" \
+	"${FROM_IMAGE}.al" "!--model must be supplied" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --sku_id=3
+test_update "Full update (--archive, image_name=not_link, sku_id=2)" \
+	"${FROM_IMAGE}.al" "!--model must be supplied" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --image_name=not_link \
+	--sku_id=2
+test_update "Full update (--archive, image_name=not_link, model=link)" \
+	"${FROM_IMAGE}.al" "!--model must be supplied" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --image_name=not_link \
+	--model=link
+test_update "Full update (--archive, image_name=invalid_entry, sku_id=2)" \
+	"${FROM_IMAGE}.al" \
+	"!Invalid entry(models/invalid_entry/image_name_overrides.csv)" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=invalid_entry \
+	--sku_id=2
+test_update "Full update (--archive, image_name=invalid_header, sku_id=2)" \
+	"${FROM_IMAGE}.al" "!Invalid image_name_overrides.csv: missing header" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=invalid_header \
+	--sku_id=2
 
 CL_TAG="cl" PATH="${A}/bin:${PATH}" \
 	test_update "Full update (-a, model=customtip, fake VPD)" \
