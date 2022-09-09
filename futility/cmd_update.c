@@ -25,6 +25,7 @@ enum {
 	OPT_FORCE,
 	OPT_GBB_FLAGS,
 	OPT_HOST_ONLY,
+	OPT_IMAGE_NAME,
 	OPT_MANIFEST,
 	OPT_MODEL,
 	OPT_OUTPUT_DIR,
@@ -36,6 +37,7 @@ enum {
 	OPT_SERVO_NORESET,
 	OPT_SERVO_PORT,
 	OPT_SIGNATURE,
+	OPT_SKU_ID,
 	OPT_SYS_PROPS,
 	OPT_UNPACK,
 	OPT_WRITE_PROTECTION,
@@ -64,6 +66,7 @@ static struct option const long_opts[] = {
 	{"force", 0, NULL, OPT_FORCE},
 	{"gbb_flags", 1, NULL, OPT_GBB_FLAGS},
 	{"host_only", 0, NULL, OPT_HOST_ONLY},
+	{"image_name", 1, NULL, OPT_IMAGE_NAME},
 	{"list-quirks", 0, NULL, OPT_QUIRKS_LIST},
 	{"manifest", 0, NULL, OPT_MANIFEST},
 	{"model", 1, NULL, OPT_MODEL},
@@ -72,6 +75,7 @@ static struct option const long_opts[] = {
 	{"quirks", 1, NULL, OPT_QUIRKS},
 	{"repack", 1, NULL, OPT_REPACK},
 	{"signature_id", 1, NULL, OPT_SIGNATURE},
+	{"sku_id", 1, NULL, OPT_SKU_ID},
 	{"sys_props", 1, NULL, OPT_SYS_PROPS},
 	{"unpack", 1, NULL, OPT_UNPACK},
 	{"wp", 1, NULL, OPT_WRITE_PROTECTION},
@@ -129,18 +133,20 @@ static void print_help(int argc, char *argv[])
 		"    --output_dir=DIR\tSpecify the target for --mode=output\n"
 		"\n"
 		"Debugging and testing options:\n"
-		"    --wp=1|0        \tSpecify write protection status\n"
-		"    --host_only     \tUpdate only AP (host) firmware\n"
-		"    --emulate=FILE  \tEmulate system firmware using file\n"
-		"    --model=MODEL   \tOverride system model for images\n"
-		"    --gbb_flags=FLAG\tOverride new GBB flags\n"
-		"    --ccd           \tDo fast,force,wp=0,p=raiden_debug_spi\n"
-		"    --servo         \tFlash using Servo (v2, v4, micro, ...)\n"
-		"    --servo_port=PRT\tOverride servod port, implies --servo\n"
-		"    --signature_id=S\tOverride signature ID for key files\n"
-		"    --sys_props=LIST\tList of system properties to override\n"
-		"-d, --debug         \tPrint debugging messages\n"
-		"-v, --verbose       \tPrint verbose messages\n"
+		"    --wp=1|0          \tSpecify write protection status\n"
+		"    --host_only       \tUpdate only AP (host) firmware\n"
+		"    --emulate=FILE    \tEmulate system firmware using file\n"
+		"    --image_name=IMAGE\tOverride system image name for images\n"
+		"    --model=MODEL     \tOverride system model for images\n"
+		"    --sku_id=SKU_ID   \tSet the SKU ID when using --model\n"
+		"    --gbb_flags=FLAG  \tOverride new GBB flags\n"
+		"    --ccd             \tDo fast,force,wp=0,p=raiden_debug_spi\n"
+		"    --servo           \tFlash using Servo (v2, v4, micro, ...)\n"
+		"    --servo_port=PRT  \tOverride servod port, implies --servo\n"
+		"    --signature_id=S  \tOverride signature ID for key files\n"
+		"    --sys_props=LIST  \tList of system properties to override\n"
+		"-d, --debug           \tPrint debugging messages\n"
+		"-v, --verbose         \tPrint verbose messages\n"
 		"",
 		argv[0]);
 }
@@ -165,6 +171,7 @@ static int do_update(int argc, char *argv[])
 	const char *prepare_ctrl_name = NULL;
 	char *servo_programmer = NULL;
 	char *endptr;
+	args.sku_id = -1;
 
 	cfg = updater_new_config();
 	assert(cfg);
@@ -223,8 +230,18 @@ static int do_update(int argc, char *argv[])
 		case OPT_OUTPUT_DIR:
 			args.output_dir = optarg;
 			break;
+		case OPT_IMAGE_NAME:
+			args.image_name = optarg;
+			break;
 		case OPT_MODEL:
 			args.model = optarg;
+			break;
+		case OPT_SKU_ID:
+			args.sku_id = strtoul(optarg, &endptr, 0);
+			if (*endptr) {
+				ERROR("Invalid SKU ID: %s\n", optarg);
+				errorcnt++;
+			}
 			break;
 		case OPT_SIGNATURE:
 			args.signature_id = optarg;
@@ -301,6 +318,12 @@ static int do_update(int argc, char *argv[])
 			errorcnt++;
 			ERROR("Failed parsing options.\n");
 		}
+	}
+	if ((args.sku_id != -1 && (!args.model || args.image_name)) ||
+	    (args.image_name && args.model)) {
+		errorcnt++;
+		ERROR("--model must be supplied if --sku_id is and "
+		      "--image-name may not be supplied with either");
 	}
 	if (optind < argc) {
 		errorcnt++;

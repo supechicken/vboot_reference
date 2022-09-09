@@ -387,6 +387,11 @@ A="${TMP}.archive"
 mkdir -p "${A}/bin"
 echo "echo \"\${CL_TAG}\"" >"${A}/bin/vpd"
 chmod +x "${A}/bin/vpd"
+mkdir -p "${A}/models/not_link"
+cat > "${A}/models/not_link/image_name_overrides.csv" <<EOF
+sku_id,image_name
+2,link
+EOF
 
 cp -f "${LINK_BIOS}" "${A}/bios.bin"
 echo "TEST: Manifest (--manifest, bios.bin)"
@@ -475,6 +480,21 @@ test_update "Full update (--archive, model=customtip, signature_id=CL)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=customtip \
 	--signature_id=customtip-cl
+
+test_update "Full update (--archive, model=not_link, sku_id=2)" \
+	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=not_link --sku_id=2
+test_update "Full update (--archive, sku_id=2)" \
+	"${FROM_IMAGE}.al" "!--model must be supplied" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --sku_id=3
+test_update "Full update (--archive, image_name=not_link, sku_id=2)" \
+	"${FROM_IMAGE}.al" "!--model must be supplied" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --image_name=not_link \
+	--sku_id=2
+test_update "Full update (--archive, image_name=not_link, model=link)" \
+	"${FROM_IMAGE}.al" "!--model must be supplied" \
+	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --image_name=not_link \
+	--model=link
 
 CL_TAG="cl" PATH="${A}/bin:${PATH}" \
 	test_update "Full update (-a, model=customtip, fake VPD)" \

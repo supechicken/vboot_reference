@@ -1428,7 +1428,8 @@ static int updater_setup_archive(
 		return errorcnt;
 	}
 
-	model = manifest_find_model(manifest, arg->model);
+	model = manifest_find_model(manifest, arg->image_name, arg->model,
+				    arg->sku_id);
 	if (!model)
 		return ++errorcnt;
 

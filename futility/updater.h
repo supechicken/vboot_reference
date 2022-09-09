@@ -84,7 +84,7 @@ struct updater_config_arguments {
 	char *image, *ec_image, *pd_image;
 	char *archive, *quirks, *mode;
 	const char *programmer, *write_protection;
-	char *model, *signature_id;
+	char *model, *signature_id, *image_name;
 	char *emulation, *sys_props;
 	char *output_dir;
 	char *repack, *unpack;
@@ -93,6 +93,7 @@ struct updater_config_arguments {
 	int verbosity;
 	int override_gbb_flags;
 	uint32_t gbb_flags;
+	int sku_id;
 };
 
 struct patch_config {
@@ -281,7 +282,9 @@ int patch_image_by_model(
  * Returns a model_config from manifest, or NULL if not found.
  */
 const struct model_config *manifest_find_model(const struct manifest *manifest,
-					       const char *model_name);
+					       const char *image_name,
+					       const char *model_name,
+					       int sku_id);
 
 /*
  * Applies custom label information to an existing model configuration.
