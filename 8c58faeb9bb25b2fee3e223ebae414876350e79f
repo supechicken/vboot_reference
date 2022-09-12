@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf68bfb_3eb3cc1c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-12T01:33:58Z",
+      "side": 1,
+      "message": "Can we check the openssl version and add this flag only if openssl\u003e\u003d3? Maybe we should create a bug for migrating to openssl 3.0.",
+      "revId": "8c58faeb9bb25b2fee3e223ebae414876350e79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759acd68_3b70d2d7",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-12T01:33:58Z",
+      "side": 1,
+      "message": "Can we add this flag only for `FUTIL_OBJS`, where futility/cmd_create.c is built?",
+      "revId": "8c58faeb9bb25b2fee3e223ebae414876350e79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
