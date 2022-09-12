@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7dba66_387bf975",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-09-12T16:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cf68bfb_3eb3cc1c",
+      "revId": "8c58faeb9bb25b2fee3e223ebae414876350e79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "759acd68_3b70d2d7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-12T01:33:58Z",
       "side": 1,
       "message": "Can we add this flag only for `FUTIL_OBJS`, where futility/cmd_create.c is built?",
+      "revId": "8c58faeb9bb25b2fee3e223ebae414876350e79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac06a47_6192b34a",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2022-09-12T16:26:34Z",
+      "side": 1,
+      "message": "Done, although it is needed for some libraries too",
+      "parentUuid": "759acd68_3b70d2d7",
       "revId": "8c58faeb9bb25b2fee3e223ebae414876350e79f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
