@@ -16,6 +16,24 @@
       "message": "Hi Phoebe, can you help verify this on nissa with the factory toolkit?  The factory toolkit invokes futility directly.  So I think it should just work and we don\u0027t need to change anything on our side.",
       "revId": "3b78ef8620b2a3248a54d2bb66b678c496cbab5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "195c6d68_f9a4f6e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-09-13T22:53:54Z",
+      "side": 1,
+      "message": "The coreboot CL has been reverted for now because Julius pointed out an issue. We might end up keeping the checksum, so I\u0027ll mark this WIP for now. Sorry for the noise.\n\n(But yes, it should just work with the factory toolkit, the only question is whether we\u0027re alright to remove this check from a verification point of view.)",
+      "parentUuid": "a1d10e3d_b661fbc5",
+      "revId": "3b78ef8620b2a3248a54d2bb66b678c496cbab5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
