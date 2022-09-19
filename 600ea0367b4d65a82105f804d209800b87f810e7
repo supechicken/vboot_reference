@@ -16,6 +16,24 @@
       "message": "Considering this is changing the behavior of any UEFI kernels, you probably need to get +2 for someone working on x86 kernels, or the signing stuff.",
       "revId": "600ea0367b4d65a82105f804d209800b87f810e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018eff6a_f76302af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-09-19T14:24:49Z",
+      "side": 1,
+      "message": "OK, I will add an owner from the `scripts` directory where the signing code lives.\n\nTo my knowledge, there are no current UEFI boards that use the kernel partitions. They use the vmlinuz file on the ESP partition instead, signed here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/scripts/image_signing/sign_uefi.sh;l\u003d106?q\u003dscripts%2Fimage_signing%2Fsign_uefi.sh",
+      "parentUuid": "bc60648b_7c27a86b",
+      "revId": "600ea0367b4d65a82105f804d209800b87f810e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
