@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Copyright 2021 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -79,15 +79,6 @@ static const char usage[] =
 	"Usage: " MYNAME " gscvd PARAMS <AP FIRMWARE FILE> [<root key hash>]\n"
 	"\n\nCreation of RO Verification space:\n\n"
 	"Required PARAMS:\n"
-	"  -R|--ranges        STRING        Comma separated colon delimited\n"
-	"                                     hex tuples <offset>:<size>, the\n"
-	"                                     areas of the RO covered by the\n"
-	"                                     signature\n"
-	"  -G|--add_gbb                     Add the `GBB` FMAP section to the\n"
-	"                                     ranges covered by the signature.\n"
-	"                                     This option takes special care\n"
-	"                                     to exclude the HWID (and its\n"
-	"                                     digest) from this range.\n"
 	"  -b|--board_id  <string|hex>      The Board ID of the board for\n"
 	"                                     which the image is signed.\n"
 	"                                     Can be passed as a 4-letter\n"
@@ -102,6 +93,18 @@ static const char usage[] =
 	"                                     format, used for signing RO\n"
 	"                                     verification data\n"
 	"Optional PARAMS:\n"
+	"  -G|--add_gbb                     Add the `GBB` FMAP section to the\n"
+	"                                     ranges covered by the signature.\n"
+	"                                     This option takes special care\n"
+	"                                     to exclude the HWID (and its\n"
+	"                                     digest) from this range.\n"
+	"  -R|--ranges        STRING        Comma separated colon delimited\n"
+	"                                     hex tuples <offset>:<size>, the\n"
+	"                                     areas of the RO covered by the\n"
+	"                                     signature, if omitted the\n"
+	"                                     ranges are expected to be\n"
+	"                                     present in the GSCVD section\n"
+	"                                     of the input file\n"
 	"  [--outfile]        OUTFILE       Output firmware image containing\n"
 	"                                     RO verification information\n"
 	"\n\n"
@@ -845,6 +848,54 @@ static int validate_gvd_signature(struct gsc_verification_data *gvd,
 }
 
 /*
+ * Try retrieving GVD ranges from the passed in AP firmware file.
+ *
+ * No return value, number of ranges->range_count set to zero is the only
+ * meaningful result in case of error.
+ */
+static void try_retrieving_ranges_from_the_image(const char *file_name,
+						 struct gscvd_ro_ranges *ranges)
+{
+	struct gsc_verification_data *gvd;
+	struct file_buf ap_firmware_file;
+	size_t i;
+
+	if (load_ap_firmware(file_name, &ap_firmware_file, FILE_RO))
+		return;
+
+	ranges->range_count = 0;
+
+	/* Look for ranges in GVD and copy them if found. */
+	gvd = (struct gsc_verification_data
+	       *)(ap_firmware_file.data +
+		  ap_firmware_file.ro_gscvd->area_offset);
+
+	do {
+		if (validate_gvd(gvd, &ap_firmware_file))
+			break;
+
+		if (copy_ranges(&ap_firmware_file, gvd, ranges))
+			break;
+
+		if (!ranges->range_count) {
+			printf("No ranges found in the input file\n");
+		} else {
+			printf("Will sign the following %zd ranges:\n",
+			       ranges->range_count);
+			for (i = 0; i < ranges->range_count; i++) {
+				printf("%08x:%08x\n",
+				       ranges->ranges[i].offset,
+				       ranges->ranges[i].size);
+			}
+		}
+	} while (false);
+
+	futil_unmap_and_close_file(ap_firmware_file.fd, FILE_RO,
+				   ap_firmware_file.data,
+				   ap_firmware_file.len);
+}
+
+/*
  * Validate GVD of the passed in AP firmware file and possibly the root key hash
  *
  * The input parameters are the subset of the command line, the first argv
@@ -1074,6 +1125,8 @@ static int do_gscvd(int argc, char *argv[])
 		goto usage_out;
 	}
 
+	infile = argv[optind];
+
 	if (errorcount) /* Error message(s) should have been printed by now. */
 		goto usage_out;
 
@@ -1097,12 +1150,14 @@ static int do_gscvd(int argc, char *argv[])
 		goto usage_out;
 	}
 
+	if (!ranges.range_count)
+		try_retrieving_ranges_from_the_image(infile, &ranges);
+
 	if (!ranges.range_count && !do_gbb) {
-		ERROR("Missing --ranges argument\n");
+		ERROR
+		("Missing --ranges argument and no ranges in the input file\n");
 		goto usage_out;
 	}
-
-	infile = argv[optind];
 
 	if (outfile) {
 		futil_copy_file_or_die(infile, outfile);
