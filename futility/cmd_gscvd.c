@@ -66,10 +66,11 @@ static const struct option long_opts[] = {
 	{"keyblock",      1, NULL, 'k'},
 	{"platform_priv", 1, NULL, 'p'},
 	{"help",          0, NULL, 'h'},
+	{"hash",          0, NULL, 'H'},
 	{}
 };
 
-static const char *short_opts = "R:Gb:hk:p:r:";
+static const char *short_opts = "R:Gb:Hhk:p:r:";
 
 static const char usage[] =
 	"\n"
@@ -91,6 +92,7 @@ static const char usage[] =
 	"  -r|--root_pub_key  <file>        The main public key, in .vbpubk\n"
 	"                                     format, used to verify platform\n"
 	"                                     key\n"
+	"  -H|--hash                        Report root public key hash\n"
 	"  -k|--keyblock      <file>        Signed platform public key in\n"
 	"                                     .keyblock format, used for run\n"
 	"                                     time RO verifcation\n"
@@ -112,6 +114,9 @@ static const char usage[] =
 	"   The only required parameter is <AP FIRMWARE FILE>, if optional\n"
 	"   <root key hash> is given, it is compared to the hash\n"
 	"   of the root key found in <AP_FIRMWARE_FILE>.\n"
+	"\n\n"
+	"Report the hash of the root public key:\n\n"
+	"   The two required parameters are -H and -r\n"
 	"\n\n"
 	"  -h|--help                        Print this message\n\n";
 
@@ -1019,6 +1024,7 @@ static int do_gscvd(int argc, char *argv[])
 	struct gsc_verification_data *gvd = NULL;
 	struct file_buf ap_firmware_file = { .fd = -1 };
 	uint32_t board_id = UINT32_MAX;
+	bool report_hash = false;
 	int rv = 0;
 
 	ranges.range_count = 0;
@@ -1061,6 +1067,10 @@ static int do_gscvd(int argc, char *argv[])
 			}
 			break;
 		}
+		case 'H':
+			report_hash = true;
+			break;
+
 		case 'r':
 			root_pubk = vb2_read_packed_key(optarg);
 			if (!root_pubk) {
@@ -1107,13 +1117,6 @@ static int do_gscvd(int argc, char *argv[])
 	if ((optind == 1) && (argc > 1))
 		return validate_gscvd_or_read_ranges(argv[1], argv[2], NULL);
 
-	if (optind != (argc - 1)) {
-		ERROR("Misformatted command line\n");
-		goto usage_out;
-	}
-
-	infile = argv[optind];
-
 	if (errorcount) /* Error message(s) should have been printed by now. */
 		goto usage_out;
 
@@ -1121,6 +1124,18 @@ static int do_gscvd(int argc, char *argv[])
 		ERROR("Missing --root_pub_key argument\n");
 		goto usage_out;
 	}
+
+	if (report_hash) {
+		dump_pubk_hash(root_pubk);
+		return 0;
+	}
+
+	if (optind != (argc - 1)) {
+		ERROR("Misformatted command line\n");
+		goto usage_out;
+	}
+
+	infile = argv[optind];
 
 	if (!kblock) {
 		ERROR("Missing --keyblock argument\n");
