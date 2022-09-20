@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Copyright 2021 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -79,10 +79,6 @@ static const char usage[] =
 	"Usage: " MYNAME " gscvd PARAMS <AP FIRMWARE FILE> [<root key hash>]\n"
 	"\n\nCreation of RO Verification space:\n\n"
 	"Required PARAMS:\n"
-	"  -R|--ranges        STRING        Comma separated colon delimited\n"
-	"                                     hex tuples <offset>:<size>, the\n"
-	"                                     areas of the RO covered by the\n"
-	"                                     signature\n"
 	"  -G|--add_gbb                     Add the `GBB` FMAP section to the\n"
 	"                                     ranges covered by the signature.\n"
 	"                                     This option takes special care\n"
@@ -102,6 +98,13 @@ static const char usage[] =
 	"                                     format, used for signing RO\n"
 	"                                     verification data\n"
 	"Optional PARAMS:\n"
+	"  -R|--ranges        STRING        Comma separated colon delimited\n"
+	"                                     hex tuples <offset>:<size>, the\n"
+	"                                     areas of the RO covered by the\n"
+	"                                     signature, if omitted the\n"
+	"                                     ranges are expected to be\n"
+	"                                     present in the GSCVD section\n"
+	"                                     of the input file\n"
 	"  [--outfile]        OUTFILE       Output firmware image containing\n"
 	"                                     RO verification information\n"
 	"\n\n"
@@ -845,37 +848,53 @@ static int validate_gvd_signature(struct gsc_verification_data *gvd,
 }
 
 /*
- * Validate GVD of the passed in AP firmware file and possibly the root key hash
+ * Validate GVD and root hash if given, or read ranges from an AP firmware file
  *
- * The input parameters are the subset of the command line, the first argv
- * string is the AP firmware file name, the second string, if present, is the
- * hash of the root public key included in the RO_GSCVD area of the AP
- * firmware file.
+ * This function serves two purposes:
+ *
+ * - validating an AP firmware image: retrieve the GVD structure from the
+ *   image and validate the image the same way GSC would do it. If the root
+ *   public key hash is given as a parameter validate the hash as well.
+ * - retrieving AP RO address ranges from the GVD of the passed in image: this
+ *   is used when the ranges to sign are not passed in the command line, the
+ *   GVD of the image in this case is expected to have the ranges values set
+ *   even though the rest of the structure is left uniitialized
+ *
+ * @param file_name the name of the AP firmware file
+ * @param digest_str if not NULL - pointer to the ASCII string digest of the
+ *        root public key
+ * @param out_ranges if not NULL - a pointer to the ranges structure to copy
+ *        the ranges to
+ *
+ * The value of out_ranges takes precedence: if it is not NULL the function
+ * copies the ranges, if it is NULL the function tries validating the AP
+ * firmware image.
  *
  * @return zero on success, -1 on failure.
  */
-static int validate_gscvd(int argc, char *argv[])
+static int validate_gscvd_or_read_ranges(const char *file_name,
+					 const char *digest_str,
+					 struct gscvd_ro_ranges *out_ranges)
 {
 	struct file_buf ap_firmware_file;
 	int rv;
 	struct gscvd_ro_ranges ranges;
 	struct gsc_verification_data *gvd;
-	const char *file_name;
 	uint8_t digest[sizeof(gvd->ranges_digest)];
 	struct vb2_hash root_key_digest = { .algo = VB2_HASH_SHA256 };
 
-	/* Guaranteed to be available. */
-	file_name = argv[0];
-
-	if (argc > 1)
+	if (digest_str)
 		parse_digest_or_die(root_key_digest.sha256,
 				    sizeof(root_key_digest.sha256),
-				    argv[1]);
+				    digest_str);
 
 	do {
 		struct vb2_keyblock *kblock;
 
 		rv = -1; /* Speculative, will be cleared on success. */
+
+		if (out_ranges)
+			out_ranges->range_count = 0;
 
 		if (load_ap_firmware(file_name, &ap_firmware_file, FILE_RO))
 			break;
@@ -888,8 +907,28 @@ static int validate_gscvd(int argc, char *argv[])
 		if (validate_gvd(gvd, &ap_firmware_file))
 			break;
 
-		if (copy_ranges(&ap_firmware_file, gvd, &ranges))
+		if (copy_ranges(&ap_firmware_file, gvd, &ranges)) {
 			break;
+		} else if (out_ranges) {
+			size_t i;
+			size_t count;
+
+			rv = 0;
+			memcpy(out_ranges, &ranges, sizeof(*out_ranges));
+			count = out_ranges->range_count;
+			if (!count) {
+				printf("No ranges found in the input file\n");
+				break;
+			}
+			printf("Will sign the following %zd ranges:\n", count);
+			for (i = 0; i < count; i++) {
+				printf("%08x:%08x\n",
+				       out_ranges->ranges[i].offset,
+				       out_ranges->ranges[i].offset +
+				       out_ranges->ranges[i].size - 1);
+			}
+			break;
+		}
 
 		if (calculate_ranges_digest(&ap_firmware_file, &ranges,
 					    gvd->hash_alg, digest,
@@ -904,7 +943,7 @@ static int validate_gscvd(int argc, char *argv[])
 		/* Find the keyblock. */
 		kblock = (struct vb2_keyblock *)((uintptr_t)gvd + gvd->size);
 
-		if ((argc > 1) && (vb2_hash_verify(false,
+		if (digest_str && (vb2_hash_verify(false,
 				vb2_packed_key_data(&gvd->root_key_header),
 				gvd->root_key_header.key_size,
 				&root_key_digest) != VB2_SUCCESS)) {
@@ -1066,13 +1105,14 @@ static int do_gscvd(int argc, char *argv[])
 	}
 
 	if ((optind == 1) && (argc > 1))
-		/* This must be a validation request. */
-		return validate_gscvd(argc - 1, argv + 1);
+		return validate_gscvd_or_read_ranges(argv[1], argv[2], NULL);
 
 	if (optind != (argc - 1)) {
 		ERROR("Misformatted command line\n");
 		goto usage_out;
 	}
+
+	infile = argv[optind];
 
 	if (errorcount) /* Error message(s) should have been printed by now. */
 		goto usage_out;
@@ -1097,12 +1137,18 @@ static int do_gscvd(int argc, char *argv[])
 		goto usage_out;
 	}
 
+	/*
+	 * If not given in the command line try to retrieve ranges from the
+	 * input file.
+	 */
+	if (!ranges.range_count)
+		validate_gscvd_or_read_ranges(infile, NULL, &ranges);
+
 	if (!ranges.range_count && !do_gbb) {
-		ERROR("Missing --ranges argument\n");
+		ERROR("Missing "
+		      "--ranges argument and no ranges in the input file\n");
 		goto usage_out;
 	}
-
-	infile = argv[optind];
 
 	if (outfile) {
 		futil_copy_file_or_die(infile, outfile);
