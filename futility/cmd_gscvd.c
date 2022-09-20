@@ -113,6 +113,9 @@ static const char usage[] =
 	"   <root key hash> is given, it is compared to the hash\n"
 	"   of the root key found in <AP_FIRMWARE_FILE>.\n"
 	"\n\n"
+	"Report the hash of the root public key:\n\n"
+	"   The only required parameter is -r\n"
+	"\n\n"
 	"  -h|--help                        Print this message\n\n";
 
 /* Structure helping to keep track of the file mapped into memory. */
@@ -1112,20 +1115,27 @@ static int do_gscvd(int argc, char *argv[])
 		/* This must be a validation request. */
 		return validate_gscvd(argc - 1, argv + 1);
 
-	if (optind != (argc - 1)) {
-		ERROR("Misformatted command line\n");
-		goto usage_out;
-	}
-
-	infile = argv[optind];
-
 	if (errorcount) /* Error message(s) should have been printed by now. */
 		goto usage_out;
 
 	if (!root_pubk) {
 		ERROR("Missing --root_pub_key argument\n");
 		goto usage_out;
+	} else if (argc == 3) {
+		/*
+		 * This is a request to print out the hash of the root pub key
+		 * payload.
+		 */
+		dump_pubk_hash(root_pubk);
+		return 0;
 	}
+
+	if (optind != (argc - 1)) {
+		ERROR("Misformatted command line\n");
+		goto usage_out;
+	}
+
+	infile = argv[optind];
 
 	if (!kblock) {
 		ERROR("Missing --keyblock argument\n");
@@ -1184,8 +1194,6 @@ static int do_gscvd(int argc, char *argv[])
 
 		if (fill_gvd_area(&ap_firmware_file, gvd, kblock))
 			break;
-
-		dump_pubk_hash(root_pubk);
 
 		rv = 0;
 	} while (false);
