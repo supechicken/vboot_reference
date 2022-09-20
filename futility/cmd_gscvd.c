@@ -79,10 +79,6 @@ static const char usage[] =
 	"Usage: " MYNAME " gscvd PARAMS <AP FIRMWARE FILE> [<root key hash>]\n"
 	"\n\nCreation of RO Verification space:\n\n"
 	"Required PARAMS:\n"
-	"  -R|--ranges        STRING        Comma separated colon delimited\n"
-	"                                     hex tuples <offset>:<size>, the\n"
-	"                                     areas of the RO covered by the\n"
-	"                                     signature\n"
 	"  -G|--add_gbb                     Add the `GBB` FMAP section to the\n"
 	"                                     ranges covered by the signature.\n"
 	"                                     This option takes special care\n"
@@ -102,6 +98,13 @@ static const char usage[] =
 	"                                     format, used for signing RO\n"
 	"                                     verification data\n"
 	"Optional PARAMS:\n"
+	"  -R|--ranges        STRING        Comma separated colon delimited\n"
+	"                                     hex tuples <offset>:<size>, the\n"
+	"                                     areas of the RO covered by the\n"
+	"                                     signature, if omitted the\n"
+	"                                     ranges are expected to be\n"
+	"                                     present in the GSCVD section\n"
+	"                                     of the input file\n"
 	"  [--outfile]        OUTFILE       Output firmware image containing\n"
 	"                                     RO verification information\n"
 	"\n\n"
@@ -854,7 +857,9 @@ static int validate_gvd_signature(struct gsc_verification_data *gvd,
  *
  * @return zero on success, -1 on failure.
  */
-static int validate_gscvd(int argc, char *argv[])
+static int validate_gscvd_or_read_ranges(int argc,
+					 char *argv[],
+					 struct gscvd_ro_ranges *out_ranges)
 {
 	struct file_buf ap_firmware_file;
 	int rv;
@@ -888,8 +893,13 @@ static int validate_gscvd(int argc, char *argv[])
 		if (validate_gvd(gvd, &ap_firmware_file))
 			break;
 
-		if (copy_ranges(&ap_firmware_file, gvd, &ranges))
+		if (copy_ranges(&ap_firmware_file, gvd, &ranges)) {
 			break;
+		} else if (out_ranges) {
+			memcpy(out_ranges, &ranges, sizeof(*out_ranges));
+			rv = 0;
+			break;
+		}
 
 		if (calculate_ranges_digest(&ap_firmware_file, &ranges,
 					    gvd->hash_alg, digest,
@@ -1066,13 +1076,14 @@ static int do_gscvd(int argc, char *argv[])
 	}
 
 	if ((optind == 1) && (argc > 1))
-		/* This must be a validation request. */
-		return validate_gscvd(argc - 1, argv + 1);
+		return validate_gscvd_or_read_ranges(argc - 1, argv + 1, NULL);
 
 	if (optind != (argc - 1)) {
 		ERROR("Misformatted command line\n");
 		goto usage_out;
 	}
+
+	infile = argv[optind];
 
 	if (errorcount) /* Error message(s) should have been printed by now. */
 		goto usage_out;
@@ -1097,12 +1108,17 @@ static int do_gscvd(int argc, char *argv[])
 		goto usage_out;
 	}
 
-	if (!ranges.range_count && !do_gbb) {
-		ERROR("Missing --ranges argument\n");
-		goto usage_out;
+	if (!ranges.range_count) {
+		validate_gscvd_or_read_ranges(1, &infile, &ranges);
+		if (ranges.range_count)
+			printf("Found %ld ranges in the input file\n",
+			       ranges.range_count);
 	}
 
-	infile = argv[optind];
+	if (!ranges.range_count && !do_gbb) {
+		ERROR("Missing --ranges argument and no ranges in the input file\n");
+		goto usage_out;
+	}
 
 	if (outfile) {
 		futil_copy_file_or_die(infile, outfile);
