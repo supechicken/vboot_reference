@@ -16,6 +16,29 @@
       "message": "there is not a particularly excellent way to do this in bash. \n`trap -p` parsing is an option: https://stackoverflow.com/a/7287873/3936601. Or we could make a trap wrapper array arg in common-minimal or something. \n\nI know traps are not reliably fired in all the myriad ways there are to abort bash but we probably dont care about that.",
       "revId": "f06c10efeb490306ea32515b176302c72dfec4d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94947ad0_75a2bee3",
+        "filename": "scripts/image_signing/gbb_flags_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-09-21T08:52:25Z",
+      "side": 1,
+      "message": "nit: `This`",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "f06c10efeb490306ea32515b176302c72dfec4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
