@@ -33,6 +33,47 @@
       "message": "Reading the description I now understood you are solving the case for servo. But again, I still don\u0027t prefer having such info exposed and implemented in multiple locations. Adding --image-name and --sku_id is really too much. Sounds like we\u0027re implementing the mapping rules in multiple places - crosid and futility, and that should really be avoided.\n\nMy thoughts:\n\n1. Can they just override --model for the firmware they want to use?\n\n2. If not, who will use this function - a developer or lab? Can we ask them to always get the right blob on their own?\n\n3. Or, can we in future define a rule - in a single FW updater archive, each firmware name will have only one version of fw image? Then we can readback current firmware and decide which image to update into.",
       "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2e6a68_ff1b7dbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-21T16:49:39Z",
+      "side": 1,
+      "message": "\u003e I\u0027d prefer a strong \u0027no\u0027 here. Detaching model from firmware image names will be a huge change - especially to all provisioning process. Have you got agreement from the factory team, SIEs and TAMs (also ODMs)? Do the partners know how to get the right images? What about the test/lab/CTS thing? They used to rely on \u0027model\u0027 to make sure the test coverage.\n\nHung-Te, can you help communicate this to the relevant teams?\n\n\u003e Also, even if you are determined to do that, we should not change the updater. Instead you should change the mapping of crosid (+jrosenth) - no need to touch the futility side.\n\nBy this, do you mean we just update `FIRMWARE_MANIFEST_KEY`? That SGTM.",
+      "parentUuid": "bdfc3d72_2ea16455",
+      "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4813225e_b048396b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-21T16:49:39Z",
+      "side": 1,
+      "message": "Underscores in the flags violates the CrOS CLI guidelines: https://chromium.googlesource.com/chromiumos/chromite/+/HEAD/docs/cli-guidelines.md#long-option-separators\n\nHowever, I notice that other flags in this file are also in violation of those guidelines, so they should be fixed in a follow-on CL.",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
