@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd360c3e_92247811",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T18:01:36Z",
+      "side": 1,
+      "message": "not being able to retrieve the GVD ranges from the file is not an error per se, the code running after this function will continue no matter what the result, so there is no point in returning the error.",
+      "parentUuid": "1e3f6f66_535055b3",
+      "range": {
+        "startLine": 853,
+        "startChar": 3,
+        "endLine": 854,
+        "endChar": 38
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd0d4085_c44a4057",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-22T17:28:26Z",
       "side": 1,
       "message": "This could invoke undefined behavior, since `gsc_verification_data` requires an alignment of 4 bytes and the `data` field has no alignment requirement. The correct way to do this is to perform a copy:\n\n```\nuint16_t size;\n\nmemcpy(\n    \u0026size,\n    ap_firmware_file.data + ap_firmware_file.ro_gscvd-\u003earea_offset\n      + offsetof(struct gsc_verification_data, size),\n    sizeof(size));\ngvd \u003d malloc(size);\nmemcpy(\n    \u0026gvd,\n    ap_firmware_file.data + ap_firmware_file.ro_gscvd-\u003earea_offset,\n    size);\nassert(gvd !\u003d NULL);\n```\n\nThe copy of this line that was already there is incorrect for the same reason. Another, maybe simpler, option is to instead add `__attribute__((packed))` to `struct gsc_verification_data`, which removes its alignment requirement.",
+      "range": {
+        "startLine": 869,
+        "startChar": 6,
+        "endLine": 870,
+        "endChar": 10
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dfa2681_494dc395",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T18:01:36Z",
+      "side": 1,
+      "message": "GVC verification data layout guarantees alignment, and its location in the image also guarantees alignement. Nowhere in the code does futility care about this, let\u0027s not start it here.",
+      "parentUuid": "dd0d4085_c44a4057",
       "range": {
         "startLine": 869,
         "startChar": 6,
