@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59d16bb4_0be463af",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T01:49:36Z",
+      "side": 1,
+      "message": "yes, I don\u0027t like this either, but wanted to avoid having copying/pasting too much and hopemd maybe reveiwers will have any ideas...\n\nBut I can add copy/paste.",
+      "parentUuid": "2f5e8df7_0d158f4b",
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23dfbab0_16dd18fa",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 2
@@ -204,6 +222,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbcf5a87_a9ba337a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T01:49:36Z",
+      "side": 1,
+      "message": "where do we use [start-end]? \n\nI like \u0027:\u0027 better because it is flashrom  layout syntax.",
+      "parentUuid": "9d84d861_725bf5c1",
+      "range": {
+        "startLine": 925,
+        "startChar": 16,
+        "endLine": 925,
+        "endChar": 18
+      },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b3cb7e6_26569eb4",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 2
@@ -215,6 +257,24 @@
       "writtenOn": "2022-09-22T01:33:38Z",
       "side": 1,
       "message": "Try not to break strings (especially in the middle of a sentence), it\u0027s better to exceed the line length instead.",
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddce526b_1fba0675",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T01:49:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b3cb7e6_26569eb4",
       "revId": "741148afd19f000907cc00ab533976dfd8d29862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -232,6 +292,24 @@
       "writtenOn": "2022-09-22T01:33:38Z",
       "side": 1,
       "message": "I think it makes more sense to get the ranges here, where you\u0027ve already loaded ap_firmware_file.",
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61693ae4_955e5a1c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T01:49:36Z",
+      "side": 1,
+      "message": "I considered it but did not like it, because this woudl break the logical flow of the program - check inputs for errors first, then start processing, prefer to leave it as is unless you insist.",
+      "parentUuid": "5c03c17b_4473ed04",
       "revId": "741148afd19f000907cc00ab533976dfd8d29862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
