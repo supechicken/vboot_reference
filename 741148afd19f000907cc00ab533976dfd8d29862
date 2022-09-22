@@ -22,6 +22,30 @@
       },
       "revId": "741148afd19f000907cc00ab533976dfd8d29862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae20f1e_e2256cf8",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T00:25:15Z",
+      "side": 1,
+      "message": "This is not a Rust program, on top of that this is not about Rusr or C, this is about representing the range for the end user. IIRC in other parts of CrhomeOS ranges are shown in inclusive form,",
+      "parentUuid": "23dfbab0_16dd18fa",
+      "range": {
+        "startLine": 925,
+        "startChar": 16,
+        "endLine": 925,
+        "endChar": 18
+      },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
