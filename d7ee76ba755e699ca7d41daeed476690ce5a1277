@@ -116,6 +116,30 @@
       },
       "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed419cc_23b1dfc3",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-22T15:36:41Z",
+      "side": 1,
+      "message": "Right, we need to keep the existing underscore flags as deprecated aliases until we delete all references to them...",
+      "parentUuid": "c42d5158_faa8a251",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
