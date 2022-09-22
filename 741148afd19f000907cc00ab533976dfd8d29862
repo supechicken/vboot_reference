@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23dfbab0_16dd18fa",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-09-22T00:05:20Z",
+      "side": 1,
+      "message": "The `start..end` syntax in Rust is a half-exclusive range: [start, end), while the output here is inclusive: [start, end]. Can you change this to either print the size, be a half-exclusive range, or specify `..\u003d` or some other syntax to disambiguate?",
+      "range": {
+        "startLine": 925,
+        "startChar": 16,
+        "endLine": 925,
+        "endChar": 18
+      },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
