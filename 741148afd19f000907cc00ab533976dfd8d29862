@@ -264,6 +264,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81f2b7da_6c7c3451",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-22T16:06:51Z",
+      "side": 1,
+      "message": "ok, having thought about this a bit more; this output should be compatible with the -R command line paramter syntax, so I changed this to be \u003cbase offs\u003e:\u003csize\u003e",
+      "parentUuid": "dbcf5a87_a9ba337a",
+      "range": {
+        "startLine": 925,
+        "startChar": 16,
+        "endLine": 925,
+        "endChar": 18
+      },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b3cb7e6_26569eb4",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 2
