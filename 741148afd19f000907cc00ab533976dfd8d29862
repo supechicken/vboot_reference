@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18e8485_dae2089e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-22T01:33:38Z",
+      "side": 1,
+      "message": "(off-topic, but I just realized that I screwed this up when I added this. This parameter is actually optional.)",
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5e8df7_0d158f4b",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-22T01:33:38Z",
+      "side": 1,
+      "message": "I really don\u0027t see the point of reusing this function to do two very different things. You\u0027re not actually sharing a lot of code here (since your new path is skipping over most of the do-while loop) and the resulting function is very confusing. I would rather you copy\u0026paste the few lines of shared setup code if there\u0027s no better way to factor them out.",
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23dfbab0_16dd18fa",
@@ -140,6 +174,64 @@
         "endLine": 925,
         "endChar": 18
       },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d84d861_725bf5c1",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-22T01:33:38Z",
+      "side": 1,
+      "message": "I don\u0027t really care about either Rust or flashrom, but using the same colon syntax in two different ways within the same program sounds like a bad idea. Why not just write this `[start-end]` or something (standard square bracket math notation to show inclusivity, and a dash makes it pretty clear that it\u0027s a from-to rather than start:size).",
+      "parentUuid": "67168b4f_564f608a",
+      "range": {
+        "startLine": 925,
+        "startChar": 16,
+        "endLine": 925,
+        "endChar": 18
+      },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3cb7e6_26569eb4",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-22T01:33:38Z",
+      "side": 1,
+      "message": "Try not to break strings (especially in the middle of a sentence), it\u0027s better to exceed the line length instead.",
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c03c17b_4473ed04",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-22T01:33:38Z",
+      "side": 1,
+      "message": "I think it makes more sense to get the ranges here, where you\u0027ve already loaded ap_firmware_file.",
       "revId": "741148afd19f000907cc00ab533976dfd8d29862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
