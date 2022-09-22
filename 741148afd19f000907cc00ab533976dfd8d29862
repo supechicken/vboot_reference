@@ -94,6 +94,30 @@
       },
       "revId": "741148afd19f000907cc00ab533976dfd8d29862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67168b4f_564f608a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-09-22T01:04:56Z",
+      "side": 1,
+      "message": "The syntax that flashrom uses for the `-l` flag is `startaddr:endaddr` inclusive  - can you use that? I still don\u0027t like that the output would be inconsistent with the input though.",
+      "parentUuid": "4c27e546_44a6f83e",
+      "range": {
+        "startLine": 925,
+        "startChar": 16,
+        "endLine": 925,
+        "endChar": 18
+      },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
