@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91dad991_74569c0e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-22T01:39:01Z",
+      "side": 1,
+      "message": "Creating a special new option is one way to do it, but I think it would be easier to just have `futility gscvd -r \u003ckey\u003e` (without the `infile` argument) do this?",
+      "revId": "8ec9b8c8af5a8726f747cfda7f82c864fdc254a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc3d1ca_c2e91633",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-22T01:39:01Z",
+      "side": 1,
+      "message": "Can we take this out now that there\u0027s a separate mechanism to do it?",
+      "revId": "8ec9b8c8af5a8726f747cfda7f82c864fdc254a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
