@@ -46,6 +46,30 @@
       },
       "revId": "741148afd19f000907cc00ab533976dfd8d29862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26acec21_f7052d17",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-09-22T00:37:22Z",
+      "side": 1,
+      "message": "You\u0027re on a Rust team, so Rust syntax is pretty relevant for ambiguity. Do other parts of ChromeOS display in the exact same way with `start..end`?\n\nMy strongest preference is that this be changed to match the input format: `pos:size`",
+      "parentUuid": "dae20f1e_e2256cf8",
+      "range": {
+        "startLine": 925,
+        "startChar": 16,
+        "endLine": 925,
+        "endChar": 18
+      },
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
