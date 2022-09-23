@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f4ec09d_1a6f4f93",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-09-23T17:58:04Z",
+      "side": 1,
+      "message": "In that case, I think specifying any meaningful error result in a comment ends up being confusing and puts unnecessary requirements on its behavior in the future. As Julius mentions below, you have to ensure you do it in the right order if it\u0027s an actual error signal. If you\u0027re going to explicitly signal an error at _all_, it should be through a return value.",
+      "parentUuid": "fd360c3e_92247811",
+      "range": {
+        "startLine": 853,
+        "startChar": 3,
+        "endLine": 854,
+        "endChar": 38
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c8f8b58_2cc940fe",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 5
@@ -138,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9048aa5_36aadc29",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-09-23T17:58:04Z",
+      "side": 1,
+      "message": "Yeah, the bad codegen is why I avoid `packed` by default. However, I don\u0027t believe that the `gsc_verification_data` is always aligned: I see no guarantee that `ap_firmware_file.data.area_offset` is divisible by 4, so even though the `data` is aligned, there\u0027s nothing inherently ensuring that the `gsc_verification_data` is other than \"the images usually have it aligned\".\n\nCan you add a check that the `area_offset` is divisible by 4 considering you say that this is required by its location in the image and its layout? It\u0027s not *actually* required if it\u0027s not checked. Or is there some other thing that checks that FMAP area offsets are always aligned by 4?\n\nI really don\u0027t love that we depend on unaligned memory access, but I\u0027ll accept it\u0027s standard practice here. I will still strictly forbid it in Rust 🤓. As long as the compiler isn\u0027t positive it\u0027s unaligned, there shouldn\u0027t be a serious problem on most architectures - if it were positive it\u0027s unaligned through inlining, that is quite dangerous since the cast to create unaligned pointer is UB on its own and the optimizer would have the freedom to completely remove an \"unreachable\" branch, especially with more aggressive optimizations. Give compiler devs an aneurysm with this One Cool Trick!",
+      "parentUuid": "2a3559e9_41b8d49d",
+      "range": {
+        "startLine": 869,
+        "startChar": 6,
+        "endLine": 870,
+        "endChar": 10
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3f8856b_683cc25b",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 5
@@ -149,6 +197,30 @@
       "writtenOn": "2022-09-23T01:17:59Z",
       "side": 1,
       "message": "nit: I\u0027d maybe call it \"re-sign\" to clarify that this is the re-signing (as opposed to initial first signing) mode of the tool?",
+      "range": {
+        "startLine": 883,
+        "startChar": 16,
+        "endLine": 883,
+        "endChar": 20
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4fb431_c43e1636",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1541362
+      },
+      "writtenOn": "2022-09-23T17:58:04Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "a3f8856b_683cc25b",
       "range": {
         "startLine": 883,
         "startChar": 16,
