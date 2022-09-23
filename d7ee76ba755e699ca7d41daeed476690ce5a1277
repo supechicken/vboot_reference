@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aab24e4_9074993d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-09-23T13:25:13Z",
+      "side": 1,
+      "message": "\u003e The problem is that crosid maps from smbios name and SKU ID to FIRMWARE_MANIFEST_KEY, but smbios name isn\u0027t readily available if the AP isn\u0027t booted to OS. Beyond that, the crosid data isn\u0027t included in firmware_from_source either.\n\nSo actually the SMBIOS name match is deprecated in favor of FRID matching, and we\u0027re working to migrate all the configs over to that.  FRID *is* available from joust a servo, so that would likely meet your needs?",
+      "parentUuid": "289c364a_5abd4f10",
+      "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4813225e_b048396b",
