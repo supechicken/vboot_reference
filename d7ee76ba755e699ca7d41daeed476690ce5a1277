@@ -73,6 +73,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2a99f4d_9733d30b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-09-23T04:01:55Z",
+      "side": 1,
+      "message": "The larger design was covered in http://go/fw-customisation. The `FIRMWARE_MANIFEST_KEY` changes are already done and firmware updates from the OS work fine.\n\nRe: CTS/test coverage: one of the goals of this is to align with go/cros-cts-model-policy, avoiding test duplication not mandated, but required due to the practical impact of one firmware payload per model.",
+      "parentUuid": "f5423b8f_d003c42c",
+      "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289c364a_5abd4f10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-09-23T04:01:55Z",
+      "side": 1,
+      "message": "\u003e Reading the description I now understood you are solving the case for servo. But again, I still don\u0027t prefer having such info exposed and implemented in multiple locations. Adding --image-name and --sku_id is really too much. Sounds like we\u0027re implementing the mapping rules in multiple places - crosid and futility, and that should really be avoided.\n\nThe problem is that crosid maps from smbios name and SKU ID to FIRMWARE_MANIFEST_KEY, but smbios name isn\u0027t readily available if the AP isn\u0027t booted to OS. Beyond that, the crosid data isn\u0027t included in firmware_from_source either.\n\n\u003e My thoughts:\n\u003e \n\u003e 1. Can they just override --model for the firmware they want to use?\n\nFor the lab, they could, but this would need to be recorded ahead of time in a new field and plumbed around. The lab is converging on using http://go/cft-fw-provision-v2#heading\u003dh.puavdttwd1sq with the implementation delegating to futility to choose an appropriate firmware, both for provisioning from the OS and over servo, so there is a need for this to be contained within futility update.\n\n\u003e 2. If not, who will use this function - a developer or lab? Can we ask them to always get the right blob on their own?\n\nSomething is needed for the lab, but ideally developers could use it too when recovering a DUT over servo. Currently, choosing the right firmware is essentially guesswork when multiple models use the same firmware target. We\u0027d likely want to apply anything to the firmware updater bundle as well so both pinned and unpinned FW versions could be used.\n\n\u003e 3. Or, can we in future define a rule - in a single FW updater archive, each firmware name will have only one version of fw image? Then we can readback current firmware and decide which image to update into.\n\nThe intent is for the differences between firmware configs within a model to be fairly limited - in our case just some bundled blobs, so all would report the same smbios name. This would also run into issues with a firmware updater archive where multiple versions of the same firmware build are included.",
+      "parentUuid": "dcec6166_b0e21cc2",
+      "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4813225e_b048396b",
         "filename": "futility/cmd_update.c",
         "patchSetId": 2
