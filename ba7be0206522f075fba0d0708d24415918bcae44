@@ -33,6 +33,24 @@
       "message": "preupload check complaints about this line, I wonder if it is using checkpatch.pl and either its version needs to be bumpled up or a config needs to be tweaked.",
       "revId": "ba7be0206522f075fba0d0708d24415918bcae44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a72834_07c3c5bf",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-23T23:15:12Z",
+      "side": 1,
+      "message": "checkpatch doesn\u0027t have programmatic detection for the \"avoid breaking a string\" exception, you\u0027re just supposed to ignore it in that case.",
+      "parentUuid": "f671c996_c9fc525d",
+      "revId": "ba7be0206522f075fba0d0708d24415918bcae44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
