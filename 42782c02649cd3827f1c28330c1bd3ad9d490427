@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98e082e3_4adbb213",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-23T22:45:08Z",
+      "side": 1,
+      "message": "Also, with the code reworked such that there is no need to read the firmware image here there is even less reasons to worry about errors here, I changed the comment.",
+      "parentUuid": "96bf5089_d83d1b86",
+      "range": {
+        "startLine": 853,
+        "startChar": 3,
+        "endLine": 854,
+        "endChar": 38
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c8f8b58_2cc940fe",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 5

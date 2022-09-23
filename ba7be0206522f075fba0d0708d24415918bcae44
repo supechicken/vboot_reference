@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2351822_85e349f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-23T22:45:08Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "ba7be0206522f075fba0d0708d24415918bcae44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f671c996_c9fc525d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-23T22:45:08Z",
+      "side": 1,
+      "message": "preupload check complaints about this line, I wonder if it is using checkpatch.pl and either its version needs to be bumpled up or a config needs to be tweaked.",
+      "revId": "ba7be0206522f075fba0d0708d24415918bcae44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
