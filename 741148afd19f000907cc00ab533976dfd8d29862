@@ -396,6 +396,24 @@
       "parentUuid": "5c03c17b_4473ed04",
       "revId": "741148afd19f000907cc00ab533976dfd8d29862",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1242ef57_0db4c740",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-23T01:17:59Z",
+      "side": 1,
+      "message": "Well if you don\u0027t do it here you just end up loading the AP firmware twice which I think is the much more awkward solution. You need to reach the \"loaded AP firmware\" part of the processing to be able to check that particular input, I don\u0027t think that\u0027s unreasonable.",
+      "parentUuid": "61693ae4_955e5a1c",
+      "revId": "741148afd19f000907cc00ab533976dfd8d29862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

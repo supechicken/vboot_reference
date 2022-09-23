@@ -50,6 +50,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c8f8b58_2cc940fe",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-23T01:17:59Z",
+      "side": 1,
+      "message": "This needs to be initialized before the `load_ap_firmware()` above, if it\u0027s supposed to be the error signal.",
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd0d4085_c44a4057",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 5
@@ -90,6 +107,53 @@
         "startChar": 6,
         "endLine": 870,
         "endChar": 10
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3559e9_41b8d49d",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-23T01:17:59Z",
+      "side": 1,
+      "message": "We do unaligned accesses all the time and it\u0027s fine with the architectures we support. Adding `packed` leads to horrible code generation on some architectures so I\u0027d generally avoid it where possible. (Besides, like Vadim said, this is not actually unaligned. The `data` comes from an `mmap()` which is guaranteed to be page-boundary aligned.)",
+      "parentUuid": "0dfa2681_494dc395",
+      "range": {
+        "startLine": 869,
+        "startChar": 6,
+        "endLine": 870,
+        "endChar": 10
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f8856b_683cc25b",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-23T01:17:59Z",
+      "side": 1,
+      "message": "nit: I\u0027d maybe call it \"re-sign\" to clarify that this is the re-signing (as opposed to initial first signing) mode of the tool?",
+      "range": {
+        "startLine": 883,
+        "startChar": 16,
+        "endLine": 883,
+        "endChar": 20
       },
       "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
