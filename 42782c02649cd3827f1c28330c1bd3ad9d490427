@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96bf5089_d83d1b86",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-23T18:27:50Z",
+      "side": 1,
+      "message": "I am not sure what do you want me to do here?\n\nThe code invoking this function would continue even if an error happened during invocation, the return value does not matter.",
+      "parentUuid": "9f4ec09d_1a6f4f93",
+      "range": {
+        "startLine": 853,
+        "startChar": 3,
+        "endLine": 854,
+        "endChar": 38
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c8f8b58_2cc940fe",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 5
@@ -85,6 +109,24 @@
       "writtenOn": "2022-09-23T01:17:59Z",
       "side": 1,
       "message": "This needs to be initialized before the `load_ap_firmware()` above, if it\u0027s supposed to be the error signal.",
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61768a54_2ec05524",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-23T18:27:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c8f8b58_2cc940fe",
       "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +226,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "113e2dc0_44d594da",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-23T18:27:50Z",
+      "side": 1,
+      "message": "Let\u0027s not waste cycle on this.\n\nThis is aligned by design, and as I forgot to mention but Julius did, the X86 architecture happyly handles unaligned accesses. On top of that the rest of the code and undeligned OS assure that  GVD fields are all aligned.",
+      "parentUuid": "b9048aa5_36aadc29",
+      "range": {
+        "startLine": 869,
+        "startChar": 6,
+        "endLine": 870,
+        "endChar": 10
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3f8856b_683cc25b",
@@ -221,6 +287,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "a3f8856b_683cc25b",
+      "range": {
+        "startLine": 883,
+        "startChar": 16,
+        "endLine": 883,
+        "endChar": 20
+      },
+      "revId": "42782c02649cd3827f1c28330c1bd3ad9d490427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f6539e_089d13a3",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-09-23T18:27:50Z",
+      "side": 1,
+      "message": "I did not realize that this is not just ranges, that there is a full blown GVD structure. Is it signed with test keys?\n\nI\u0027ll change the text.",
+      "parentUuid": "fd4fb431_c43e1636",
       "range": {
         "startLine": 883,
         "startChar": 16,
