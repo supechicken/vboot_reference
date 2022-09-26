@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1575e253_3e7951c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-09-26T04:45:52Z",
+      "side": 1,
+      "message": "The outcome of the coreboot discussion was to replace the checksum with a hash: CB:67670. So we still need this. Also, the header checksum was replaced with a hash too, so we need to do something about the header checksum verification too.\n\nI still think it\u0027s best to just remove the checksum verification. My impression from b:35582652, especially comment #2 \"Check that the signature \"MRCD\" is present at the start of RECOVERY_MRC_CACHE. If required, checksum calculation can also be performed\", is that this was meant to be a simple sanity check that the MRC cache is repopulated after clearing it, and the checksum verification was added because why not, not because it\u0027s strictly necessary. We already have FAFT tests which test the checkusm/hash properly, e.g. corrupt the MRC cache and check memory is retrained. But let me know if I\u0027m missing something, because I\u0027m not that familiar with the factory process.\n\nIf we do want to verify the hash, we\u0027ll have to add xxhash to vboot. That\u0027s definitely possible, I just think we might as well avoid it if it\u0027s not necessary. Another option is to move this whole thing to one of the coreboot utils to reduce code duplication.\n\nLet me know what you think.",
+      "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
