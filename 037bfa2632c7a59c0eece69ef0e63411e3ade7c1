@@ -52,6 +52,24 @@
       "parentUuid": "451ac44b_0f4db3e9",
       "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c504b5_16b5346f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-09-26T05:33:32Z",
+      "side": 1,
+      "message": "Another thing - on most devices with a TPM we don\u0027t actually use the hash in the header to check if the cache is valid, rather we compute a SHA and compare it to a SHA stored in the TPM. So to do it properly, the factory test would need to verify against the SHA in the TPM too. This is another reason I think it makes more sense to test the coreboot logic directly, rather than trying to duplicate it here.",
+      "parentUuid": "94990c1a_79518c73",
+      "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
