@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "556cf256_fc1b829c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-09-26T12:07:42Z",
+      "side": 1,
+      "message": "That is helpful. I think we can use FRID + SKU ID with a crosid lookup for developer use cases.\n\nGiven a longer-term solution for developers, I\u0027m more comfortable with the solution for lab provisioning relying on the lab infra saving FIRMWARE_MANIFEST_KEY during deployment and using that for FW provisioning over servo. As long as the infra team are ok with that, we\u0027ll be ok to drop these CLs.\n\nThanks both for all the feedback.",
+      "parentUuid": "4aab24e4_9074993d",
+      "revId": "d7ee76ba755e699ca7d41daeed476690ce5a1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4813225e_b048396b",
