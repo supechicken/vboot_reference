@@ -88,6 +88,41 @@
       "parentUuid": "a7c504b5_16b5346f",
       "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2d33a6_74c53906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-09-27T11:55:49Z",
+      "side": 1,
+      "message": "Marking V-1 so we don\u0027t submit this until we figure out a new factory test.",
+      "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fb54ea_194e31fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-09-27T11:55:49Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I was thinking. This will work for RW_MRC_CACHE, I\u0027m just not sure about RECOVERY_MRC_CACHE, since we\u0027ll lose the logs from the first boot.\n\nPhoebe filed a bug for this, so let\u0027s discuss it there: b:249174725.",
+      "parentUuid": "a3bda2f7_a881066a",
+      "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
