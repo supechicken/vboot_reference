@@ -16,6 +16,23 @@
       "message": "sorry for the spam, fixed a description typo",
       "revId": "76cc9fdc2cc453222ba13e2f1b28aabcd9b36c5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99f1182_b819a72a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-27T23:12:33Z",
+      "side": 1,
+      "message": "nit: I think the descriptions of the different modes below is getting a little too confusing, I think it might be easier to differentiate that up here, e.g.:\n```\nUSAGE\nCreate a new GSCVD from scratch:\n  MYNAME gscvd -R \u003cranges\u003e PARAMS \u003cfirmware image\u003e\nRe-sign an existing GSCVD with new keys, preserving ranges:\n  MYNAME gscvd PARAMS \u003cfirmware image\u003e\nValidate an existing GSCVD with given root key hash:\n  MYNAME gscvd \u003cfirmware image\u003e \u003croot key hash in hex\u003e\nPrint the hash of a raw public root key:\n  MYNAME gscvd -r \u003croot key .vpubk file\u003e\n```",
+      "revId": "76cc9fdc2cc453222ba13e2f1b28aabcd9b36c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
