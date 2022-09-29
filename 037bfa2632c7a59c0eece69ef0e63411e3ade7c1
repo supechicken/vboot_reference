@@ -123,6 +123,23 @@
       "parentUuid": "a3bda2f7_a881066a",
       "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46321bf0_338ad5ea",
+        "filename": "futility/cmd_validate_rec_mrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-09-29T01:35:53Z",
+      "side": 1,
+      "message": "Can we just update these? Is that going to cause any issues if a newer version of futility is used on a board where the firmware branched before the coreboot change?\n\nShould be maybe have updated the signature in coreboot to be able to tell both headers apart?",
+      "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
