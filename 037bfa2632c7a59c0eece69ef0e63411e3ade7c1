@@ -140,6 +140,24 @@
       "message": "Can we just update these? Is that going to cause any issues if a newer version of futility is used on a board where the firmware branched before the coreboot change?\n\nShould be maybe have updated the signature in coreboot to be able to tell both headers apart?",
       "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "517e9844_7672d4bf",
+        "filename": "futility/cmd_validate_rec_mrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2022-09-29T01:43:14Z",
+      "side": 1,
+      "message": "That\u0027s a very good point.\n\nBut after thinking about this some more and discussing with factory folks, I\u0027m actually hoping we can get rid of this command altogether and have the factory test check the coreboot logs / elog instead. We\u0027re discussing this in b:249174725 if you have any thoughts.",
+      "parentUuid": "46321bf0_338ad5ea",
+      "revId": "037bfa2632c7a59c0eece69ef0e63411e3ade7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
