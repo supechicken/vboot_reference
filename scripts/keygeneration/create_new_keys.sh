@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+# Copyright 2011 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -158,7 +158,7 @@ main() {
   make_pair recovery_kernel_data_key ${recovery_kernel_algoid}
   make_pair minios_kernel_data_key   ${minios_kernel_algoid}
   make_pair installer_kernel_data_key ${installer_kernel_algoid}
-  make_pair arv_root ${ARV_ROOT_ALGOID}
+  make_pair root_key_arv_root ${ARV_ROOT_ALGOID}
   make_pair arv_platform ${ARV_PLATFORM_ALGOID}
 
   # Create the firmware keyblock for use only in Normal mode. This is redundant,
