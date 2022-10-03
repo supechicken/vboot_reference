@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4dd3d0_0f26be78",
+        "filename": "firmware/lib/tpm_lite/include/tpm_error_messages.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-10-03T16:30:37Z",
+      "side": 1,
+      "message": "This file as DOS line endings, and it\u0027s the only one from all `*.[ch]` files I was editing. I do not think it\u0027s misconfiguration of my GIT, but it may be.\nWhat should I do with this one? Convert line endings and fix license or leave it for now?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 67
+      },
+      "revId": "07ef8ca7f96ccaebfe21ff535a3aa31e551013ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
