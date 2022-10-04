@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f60331_1e591bd4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-10-04T15:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ff4072_4cf33a95",
+      "revId": "fc6da45057c1ef593ebcc561047a42a88e5101a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d00bec_2abafe2d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-24T02:16:37Z",
       "side": 1,
       "message": "I just realized that we don\u0027t actually want the truncate anymore on the cbfs_integration images. The truncate is an ugly hack that was only necessary because there was no better way to avoid verifying unused flash space in the old system. But with per-file verification that\u0027s not an issue anymore anyway, so we can really get rid of this and that avoids the annoying need of always having to run `cbfstool expand` first if you want to add new files to an existing image.\n\nSo for the cbfs_integration case we should not do the truncate and just keep operating with the entire FMAP area size.",
+      "revId": "fc6da45057c1ef593ebcc561047a42a88e5101a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f470864_a1030a38",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-10-04T15:01:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04d00bec_2abafe2d",
       "revId": "fc6da45057c1ef593ebcc561047a42a88e5101a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c632850b_ab612b60",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-10-04T15:01:39Z",
+      "side": 1,
+      "message": "Oh, right. Now it should be fine.",
+      "parentUuid": "cfb5c9cb_b0d7a30b",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "fc6da45057c1ef593ebcc561047a42a88e5101a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f40bcf4f_0b2cbb76",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-09-24T02:16:37Z",
       "side": 1,
       "message": "So you\u0027re pointing the data_key fields at the metadata hash? Why? If mean if you don\u0027t need a data key set up for these tests then you don\u0027t need to set it up, but that still doesn\u0027t make data key and metadata hash the same thing?",
+      "revId": "fc6da45057c1ef593ebcc561047a42a88e5101a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d492dc65_0f6cfae7",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-10-04T15:01:39Z",
+      "side": 1,
+      "message": "Yes, data key is no longer required for metadata hash in this case.",
+      "parentUuid": "f40bcf4f_0b2cbb76",
       "revId": "fc6da45057c1ef593ebcc561047a42a88e5101a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
