@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d95a03_0a8d973e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-04T02:36:25Z",
+      "side": 1,
+      "message": "I see... I wish I had seen that CL when it went in because I don\u0027t think that\u0027s working quite right. If you look at make_pair_hsm, it first creates a key called `root_key_${board}_${loemsuffix}` (that\u0027s the `${embedname}`, but then in the end it copies that key into `root_key${loemsuffix}`. That latter name is equivalent to the one we normally use in the dev keys (because the developer RW root key is just called `root_key`, not `root_key_${board}`).\n\nSo in your ApRoV1 keyset you now have the same key stored twice, once as `root_key_arv_root` and once as `root_key` -- neither of those names is really great, we should have stuck with `arv_root` to be consistent with the platform keys. I think the copy probably should be factored out of make_key_hsm because it hardcodes behavior specific to the RW key naming that no longer applies if we want to use it to generate this different kind of key.\n\nIs there any harm in waiting with this until Mike returns so we can discuss how to sort it out? Even if the key is already created, the file that we\u0027d need to rename is just the one that the HSM doesn\u0027t directly know about, so I think that should be doable.",
+      "parentUuid": "e91634d0_1811cfda",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "baf960991b1974772be39a8c5f4dfa2c1e451baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1a7b752c_4c90849c",
