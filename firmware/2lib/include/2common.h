@@ -470,4 +470,6 @@ vb2_error_t vb2_verify_kernel_preamble(struct vb2_kernel_preamble *preamble,
 				       const struct vb2_public_key *key,
 				       const struct vb2_workbuf *wb);
 
+void print_debug_info(struct vb2_context *ctx);
+
 #endif  /* VBOOT_REFERENCE_2COMMON_H_ */

@@ -202,3 +202,88 @@ vb2_error_t vb2_verify_data(const uint8_t *data, uint32_t size,
 
 	return vb2_verify_digest(key, sig, hash.raw, wb);
 }
+
+void print_debug_info(struct vb2_context *ctx)
+{
+
+	struct vb2_secdata_firmware *sec =
+		(struct vb2_secdata_firmware *)ctx->secdata_firmware;
+	struct vb2_secdata_fwmp *sec_fwmp =
+		(struct vb2_secdata_fwmp *)ctx->secdata_fwmp;
+
+	VB2_DEBUG("\n**************************************BEGIN DEBUG**********************************************\n");
+	// CTX
+	VB2_DEBUG("VB2_Context{\n\tFlags=0x%" PRIx64 "\n\tboot_mode=0x%02x\n}\n\n",ctx->flags,ctx->boot_mode);
+
+	// Firmware
+	VB2_DEBUG("\nvb2_secdata_firmware{\n\tstruct_version=0x%02x\n\tflags=0x%02x\n\tfw_version=0x%08x\n\treserved[0]=0x%02x", sec->struct_version,sec->flags,sec->fw_versions,sec->reserved[0]);
+	VB2_DEBUG("\n\treserved[1]=0x%02x\n\treserved[2]=0x%02x\n\tcrc8=0x%02x\n}\n",sec->reserved[1],sec->reserved[2],sec->crc8 );
+	unsigned int firmware_struct_size = sizeof(struct vb2_secdata_firmware);
+	VB2_DEBUG("Size of struct = 0x%08x\nSize of Reserved Space = 0x%08x\n\n", firmware_struct_size, VB2_SECDATA_FIRMWARE_SIZE);
+	for(int i = firmware_struct_size;i<VB2_SECDATA_FIRMWARE_SIZE;i++)
+	{
+		VB2_DEBUG("Padding[%d]=0x%02x\n", i, ctx->secdata_firmware[i]);
+	}
+	bool unknown_version = false;
+	// Kernel
+	VB2_DEBUG("\n\nKernel Struct Version 0x%02x\n", ctx->secdata_kernel[0]);
+	unsigned int kernel_struct_size = 0;
+	if(ctx->secdata_kernel[0] == 0x2)
+	{
+		// V0
+		struct vb2_secdata_kernel_v0 *sec_kernel =
+			(struct vb2_secdata_kernel_v0 *)ctx->secdata_kernel;
+		VB2_DEBUG("\nvb2_secdata_kernel_v0{\n\tstruct_version=0x%02x\n\tuid=0x%08x\n\tkernel_versions=0x%08x\n", sec_kernel->struct_version, sec_kernel->uid, sec_kernel->kernel_versions);
+		VB2_DEBUG("\n\treserved[0]=0x%02x\n\treserved[1]=0x%02x\n\treserved[2]=0x%02x\n\tcrc8=0x%02x\n}\n\n",sec_kernel->reserved[0],sec_kernel->reserved[1],sec_kernel->reserved[2],sec_kernel->crc8 );
+		kernel_struct_size = sizeof(struct vb2_secdata_kernel_v0);
+	}
+	else if(ctx->secdata_kernel[0] == 0x10)
+	{
+		// V1
+		struct vb2_secdata_kernel_v1 *sec_kernel =
+			(struct vb2_secdata_kernel_v1 *)ctx->secdata_kernel;
+		VB2_DEBUG("\nvb2_secdata_kernel_v1{\n\tstruct_version=0x%02x\n\tstruct_size=0x%02x\n\tcrc8=0x%02x\n\tflags=0x%02x\n\tkernel_versions=0x%08x\n", sec_kernel->struct_version, sec_kernel->struct_size, sec_kernel->crc8, sec_kernel->flags,sec_kernel->kernel_versions);
+		for(int i =0; i < VB2_SHA256_DIGEST_SIZE;i++)
+		{
+			VB2_DEBUG("\n\tec_hash[%d]=0x%02x", i, sec_kernel->ec_hash[i]);
+		}
+		VB2_DEBUG("\n}\n\n");
+		kernel_struct_size = sizeof(struct vb2_secdata_kernel_v1);
+	}
+	else
+	{
+		// Unknown
+		unknown_version = true;
+		VB2_DEBUG("\nvb2_secdata_kernel_unknown{\n");
+		for(int i =0;i<VB2_SECDATA_KERNEL_MAX_SIZE;i++)
+		{
+			VB2_DEBUG("\n\tData[%d]=0x%02x\n", i, ctx->secdata_kernel[i]);
+		}
+		VB2_DEBUG("\n}\n\n");
+	}
+	if(!unknown_version)
+	{
+		VB2_DEBUG("Size of struct = 0x%08x\nSize of Reserved Space = 0x%08x\n\n", kernel_struct_size, VB2_SECDATA_KERNEL_MAX_SIZE);
+		for(int i =kernel_struct_size;i<VB2_SECDATA_KERNEL_MAX_SIZE;i++)
+		{
+			VB2_DEBUG("Padding[%d]=0x%02x\n", i, ctx->secdata_kernel[i]);
+		}
+	}
+
+	// FWMP
+
+	VB2_DEBUG("\nvb2_secdata_fwmp{\n\tcrc8=0x%02x\n\tstruct_size=0x%02x\n\tstruct_version=0x%02x\n\treserved=0x%02x\n\tflags=0x%08x", sec_fwmp->crc8, sec_fwmp->struct_size, sec_fwmp->struct_version, sec_fwmp->reserved0, sec_fwmp->flags);
+	for(int i =0; i < VB2_SECDATA_FWMP_HASH_SIZE;i++)
+	{
+		VB2_DEBUG("\n\tdev_key_hash[%d]=0x%02x", i, sec_fwmp->dev_key_hash[i]);
+	}
+	VB2_DEBUG("\n}\n\n");
+	unsigned int fwmp_struct_size = sizeof(struct vb2_secdata_fwmp);
+	VB2_DEBUG("Size of struct = 0x%08x\nSize of Reserved Space = 0x%08x\n\n", fwmp_struct_size, VB2_SECDATA_FWMP_MAX_SIZE);
+	for(int i = fwmp_struct_size;i<VB2_SECDATA_FWMP_MAX_SIZE;i++)
+	{
+		VB2_DEBUG("Padding[%d]=0x%02x\n", i, ctx->secdata_fwmp[i]);
+	}
+
+	VB2_DEBUG("\n**************************************END DEBUG**********************************************\n");
+}

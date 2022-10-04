@@ -17,10 +17,13 @@ vb2_error_t vb2api_secdata_firmware_check(struct vb2_context *ctx)
 	struct vb2_secdata_firmware *sec =
 		(struct vb2_secdata_firmware *)ctx->secdata_firmware;
 
+	print_debug_info(ctx);
+
 	/* Verify CRC */
 	if (sec->crc8 != vb2_crc8(sec, offsetof(struct vb2_secdata_firmware,
 						crc8))) {
 		VB2_DEBUG("secdata_firmware: bad CRC\n");
+		VB2_DEBUG("Expected: 0x%02x - Got: 0x%02x\n", sec->crc8, vb2_crc8(sec, offsetof(struct vb2_secdata_firmware,crc8)));
 		return VB2_ERROR_SECDATA_FIRMWARE_CRC;
 	}
 
