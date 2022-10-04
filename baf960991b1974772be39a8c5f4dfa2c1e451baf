@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91634d0_1811cfda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-04T01:28:44Z",
+      "side": 1,
+      "message": "this is about consistency between test and prod key names.\n\nthis patch https://crrev.com/i/4983258  added code for generating prod keys for AP RO verification. The root key is created by the HSM and as such its file name has a prefix of `root_key_`. \n\nI think we should keep the names consistent across dev and prod key sets, this was one of the original patch reviewer\u0027s requests, he is on a long break now, so can\u0027t pitch in into this discussion at this time.",
+      "parentUuid": "2773c7cd_1c94dde6",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "baf960991b1974772be39a8c5f4dfa2c1e451baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1a7b752c_4c90849c",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "You cannot CQ-Depend on upstream coreboot patches. In order to land a circular dependency with coreboot, you\u0027d have to first land this in the downstream ChromiumOS mirror of the coreboot repository (where you can use Cq-Depend), and then after than and the vboot patch have landed submit an upstream coreboot patch that also updates the vboot submodule at the same time (like I did in CL:3854282 / CL:3831332 / CB:66561).\n\nIt\u0027s a pretty complicated process, unfortunately. Do we really have to change the name of this file? I don\u0027t understand what\u0027s better about the new name, it just seems inconsistent that the root key is now called \"root_key_arv_root\" and the corresponding platform key is still just called \"arv_platform\".",
       "parentUuid": "1a7b752c_4c90849c",
+      "revId": "baf960991b1974772be39a8c5f4dfa2c1e451baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3297d4ad_f5382c2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-04T01:28:44Z",
+      "side": 1,
+      "message": "this is the part I was not clear about - is vboot_reference a thing with the upstream coreboot, it looks like it is. I have no problem with pushing this internally first, as long as we agree that this name change is needed.",
+      "parentUuid": "755414d5_bc50c274",
       "revId": "baf960991b1974772be39a8c5f4dfa2c1e451baf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
