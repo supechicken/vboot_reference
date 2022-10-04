@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2773c7cd_1c94dde6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-04T01:16:34Z",
+      "side": 1,
+      "message": "I don\u0027t get this, why can\u0027t we just rename the existing files if this is just about naming?",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "baf960991b1974772be39a8c5f4dfa2c1e451baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1a7b752c_4c90849c",
@@ -14,6 +37,24 @@
       "writtenOn": "2022-10-03T22:09:06Z",
       "side": 1,
       "message": "this will be marked cq-depend with a change in corebboot currently being reviewed upstream under https://review.coreboot.org/c/coreboot/+/68057",
+      "revId": "baf960991b1974772be39a8c5f4dfa2c1e451baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "755414d5_bc50c274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-04T01:16:34Z",
+      "side": 1,
+      "message": "You cannot CQ-Depend on upstream coreboot patches. In order to land a circular dependency with coreboot, you\u0027d have to first land this in the downstream ChromiumOS mirror of the coreboot repository (where you can use Cq-Depend), and then after than and the vboot patch have landed submit an upstream coreboot patch that also updates the vboot submodule at the same time (like I did in CL:3854282 / CL:3831332 / CB:66561).\n\nIt\u0027s a pretty complicated process, unfortunately. Do we really have to change the name of this file? I don\u0027t understand what\u0027s better about the new name, it just seems inconsistent that the root key is now called \"root_key_arv_root\" and the corresponding platform key is still just called \"arv_platform\".",
+      "parentUuid": "1a7b752c_4c90849c",
       "revId": "baf960991b1974772be39a8c5f4dfa2c1e451baf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
