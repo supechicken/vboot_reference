@@ -751,15 +751,22 @@ int model_apply_custom_label(
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
-struct manifest *new_manifest_from_archive(struct u_archive *archive)
+struct manifest *new_manifest_from_archive(struct u_archive *archive,
+					   struct updater_config *cfg)
 {
 	struct manifest manifest = {0}, *new_manifest;
 
 	manifest.archive = archive;
 	manifest.default_model = -1;
 
-	VB2_DEBUG("Try to build a manifest from *%s\n", PATH_ENDSWITH_SETVARS);
-	archive_walk(archive, &manifest, manifest_scan_entries);
+	if (get_config_quirk(QUIRK_NO_SETVARS, cfg)) {
+		VB2_DEBUG("Skip using manifest from *%s\n",
+			  PATH_ENDSWITH_SETVARS);
+	} else {
+		VB2_DEBUG("Try to build a manifest from *%s\n",
+			  PATH_ENDSWITH_SETVARS);
+		archive_walk(archive, &manifest, manifest_scan_entries);
+	}
 
 	if (manifest.num == 0) {
 		VB2_DEBUG("Try to build a manifest from %s\n",

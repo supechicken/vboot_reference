@@ -526,6 +526,11 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "external_flashrom";
 	quirks->help = "Use external flashrom to access the system firmware.";
 	quirks->apply = NULL;  /* Simple config. */
+
+	quirks = &cfg->quirks[QUIRK_NO_SETVARS];
+	quirks->name = "no_setvars";
+	quirks->help = "Ignore legacy MODEL/setvars.sh when building manifest.";
+	quirks->apply = NULL;  /* Simple config. */
 }
 
 /*

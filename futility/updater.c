@@ -1559,6 +1559,14 @@ int updater_setup_config(struct updater_config *cfg,
 		override_system_property(SYS_PROP_WP_SW, cfg, r);
 	}
 
+	/*
+	 * Early load quirks from command line (for quirks related to manifests
+	 * to work. The same quirks will be re-applied once we loaded the target
+	 * firmware image and applied model/CBFS specific quirks.
+	 */
+	if (arg->quirks)
+		errorcnt += !!setup_config_quirks(arg->quirks, cfg);
+
 	/* Set up archive and load images. */
 	if (arg->emulation) {
 		/* Process emulation file first. */
@@ -1622,7 +1630,8 @@ int updater_setup_config(struct updater_config *cfg,
 			errorcnt++;
 		}
 	} else if (arg->archive) {
-		struct manifest *m = new_manifest_from_archive(cfg->archive);
+		struct manifest *m = new_manifest_from_archive(
+				cfg->archive, cfg);
 		if (m) {
 			errorcnt += updater_setup_archive(
 					cfg, arg, m, cfg->factory_update);
