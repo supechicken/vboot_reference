@@ -16,6 +16,24 @@
       "message": "looks like ubsan found a real error! I will investigate that.\n\ntatl error: \n\n`\u001b[mtests/subprocess_tests.c:270: Return value is zero when using buffer. ... [0;31mFAILED`\n\nI\u0027m not sure why we even have vboot on tatl, but will investigate of course.",
       "revId": "345e01573fb43506264b1deee6fb711dba29e0c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c18b4f_a6562ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-10-05T02:53:41Z",
+      "side": 1,
+      "message": "ub fix, I think ub is not blocking so i can continue without waiting for downstreaming: https://review.coreboot.org/c/flashrom/+/68127\n\nFor tatl, the tests subprocess some utils that are not in the ebuild DEPENDS. this is breaking now that we are running in the DUT chroot instead of the host chroot. Probably working by fluke/race on the other boards. So I added the depends. I will ask tatl team if they want vboot though.",
+      "parentUuid": "acb215e6_8c5303d0",
+      "revId": "345e01573fb43506264b1deee6fb711dba29e0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
