@@ -499,7 +499,21 @@ static int manifest_from_signer_config(struct manifest *manifest)
 			if (!base_model_config) {
 				ERROR("Invalid CL-model: %s\n", base_model);
 			} else if (!base_model_config->is_custom_label) {
+				struct patch_config *p;
 				base_model_config->is_custom_label = 1;
+
+				/*
+				 * Patches will be re-discovered later - this is
+				 * from setvars.sh behavior.
+				 */
+				p = &base_model_config->patches;
+				free(p->rootkey);
+				free(p->vblock_a);
+				free(p->vblock_b);
+				p->rootkey = NULL;
+				p->vblock_a = NULL;
+				p->vblock_b = NULL;
+
 				/*
 				 * Rewriting signature_id is not necessary,
 				 * but in order to generate the same manifest
@@ -518,6 +532,9 @@ static int manifest_from_signer_config(struct manifest *manifest)
 			free(model.ec_image);
 			continue;
 		}
+
+		/* Find patch files. */
+		find_patches_for_model(&model, archive, model.name);
 
 		model.signature_id = strdup(model.name);
 		if (!manifest_add_model(manifest, &model))
