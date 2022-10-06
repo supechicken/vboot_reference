@@ -16,6 +16,141 @@
       "message": "for the reference, this is how I thought the mp signing script should be modified to properly sign AP RO sections.",
       "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb48d593_62e066f7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-06T08:19:41Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "095e2fcf_234e411e",
+      "range": {
+        "startLine": 578,
+        "startChar": 40,
+        "endLine": 578,
+        "endChar": 51
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c56b2be_b89bd2e7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-06T08:19:41Z",
+      "side": 1,
+      "message": "Indentation inconsistent with above.",
+      "range": {
+        "startLine": 579,
+        "startChar": 10,
+        "endLine": 579,
+        "endChar": 15
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472ca92f_ac745406",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-06T08:19:41Z",
+      "side": 1,
+      "message": "Are `--ranges` and `--add_gbb` also needed? Those are listed as required params by `futility gscvd --help`. Maybe we should change them to optional params. That is, when the ranges are not specified, futility would use the same ranges found from the original `RO_GSCVD` section.",
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b95945_048c3bd0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-06T08:19:41Z",
+      "side": 1,
+      "message": "\u003e warning: Quote this to prevent word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2046\n\nPlease fix.",
+      "parentUuid": "31fdc891_4a3831cc",
+      "range": {
+        "startLine": 592,
+        "startChar": 15,
+        "endLine": 592,
+        "endChar": 56
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0b91bf_47dbed86",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-06T08:19:41Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "ad6ee460_b78aefe7",
+      "range": {
+        "startLine": 592,
+        "startChar": 24,
+        "endLine": 592,
+        "endChar": 36
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef05dab_bbc39acd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-06T08:19:41Z",
+      "side": 1,
+      "message": "signer_config",
+      "range": {
+        "startLine": 594,
+        "startChar": 50,
+        "endLine": 594,
+        "endChar": 69
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
