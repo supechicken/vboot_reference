@@ -37,10 +37,17 @@
  * The 'customization_id' has a different format: LOEM[-VARIANT] and we can only
  * take LOEM as $CLTAG, for example A-B => $CLTAG=A.
  *
- * A package for Unified Build is more complicated. There will be a models/
+ * A package for Unified Build is more complicated.
+ *
+ * We can look at the signer_config.csv file to find image files and their
+ * model, then search for patch files in the keyset/ folder. Meanwhile,
+ * historically (the original design in Unified Build) there should be a models/
  * folder, and each model (by $(mosys platform model) ) should appear as a sub
  * folder, with a 'setvars.sh' file inside. The 'setvars.sh' is a shell script
  * describing what files should be used and the signature ID ($SIGID) to use.
+ *
+ * Today the updater will try signer_config approach first, and then fallback to
+ * setvars if no signer_config.
  *
  * Similar to custom label in non-Unified-Build, the keys and vblock files will
  * be in 'keyset/' folder:
@@ -774,6 +781,28 @@ int model_apply_custom_label(
 }
 
 /*
+ * b/251040363: Checks if the archive must be parsed using setvars.sh.
+ */
+static int archive_is_setvars_only(struct u_archive *archive)
+{
+	int i;
+	const char * const setvars[] = {
+		"models/cave/setvars.sh",
+		"models/lars/setvars.sh",
+		"models/sentry/setvars.sh",
+	};
+
+	for (i = 0; i < ARRAY_SIZE(setvars); i++) {
+		if (archive_has_entry(archive, setvars[i])) {
+			WARN("The archive must be loaded using setvars: %s\n",
+			     setvars[i]);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+/*
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
@@ -784,13 +813,15 @@ struct manifest *new_manifest_from_archive(struct u_archive *archive)
 	manifest.archive = archive;
 	manifest.default_model = -1;
 
-	VB2_DEBUG("Try to build a manifest from *%s\n", PATH_ENDSWITH_SETVARS);
-	archive_walk(archive, &manifest, manifest_scan_entries);
-
-	if (manifest.num == 0) {
+	if (!archive_is_setvars_only(archive)) {
 		VB2_DEBUG("Try to build a manifest from %s\n",
 			  PATH_SIGNER_CONFIG);
 		manifest_from_signer_config(&manifest);
+	}
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build a manifest from *%s\n",
+			  PATH_ENDSWITH_SETVARS);
+		archive_walk(archive, &manifest, manifest_scan_entries);
 	}
 	if (manifest.num == 0) {
 		VB2_DEBUG("Try to build a manifest from a */firmware folder\n");
