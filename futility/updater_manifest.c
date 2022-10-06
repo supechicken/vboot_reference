@@ -58,8 +58,9 @@
  * use as firmware manifest key. If $SIGID starts with 'sig-id-in-*' then we
  * have to replace it by VPD value 'custom_label_tag' as '$MODEL-$CLTAG'.
  *
- * The current implementation is to first look at `setvars.sh` first, and then
- * fallback to `signer_config.csv` if needed.
+ * The current implementation is to `signer_config.csv` approach first, and then
+ * fallback to `setvars.sh` if there is no `signer_config.csv` (or always
+ * `setvars.sh` for legacy boards that needs setvars-specific info like PD).
  */
 
 static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
@@ -790,6 +791,32 @@ int model_apply_custom_label(
 }
 
 /*
+ * b/251040363: Checks if the archive must be parsed using setvars.sh.
+ * Can be removed after all 3 boards have reached AUE.
+ */
+static int archive_is_setvars_only(struct u_archive *archive)
+{
+	int i;
+	const char * const setvars[] = {
+		"models/wlref/setvars.sh",
+		"models/cave/setvars.sh",
+		"models/lars/setvars.sh",
+		"models/sentry/setvars.sh",
+	};
+
+	for (i = 0; i < ARRAY_SIZE(setvars); i++) {
+		if (archive_has_entry(archive, setvars[i])) {
+			/* Warns only non-functest (wlref) models. */
+			if (i)
+				WARN("Detected setvars-only archive: %s\n",
+				     setvars[i]);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+/*
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
@@ -800,13 +827,15 @@ struct manifest *new_manifest_from_archive(struct u_archive *archive)
 	manifest.archive = archive;
 	manifest.default_model = -1;
 
-	VB2_DEBUG("Try to build a manifest from *%s\n", PATH_ENDSWITH_SETVARS);
-	archive_walk(archive, &manifest, manifest_scan_entries);
-
-	if (manifest.num == 0) {
+	if (!archive_is_setvars_only(archive)) {
 		VB2_DEBUG("Try to build a manifest from %s\n",
 			  PATH_SIGNER_CONFIG);
 		manifest_from_signer_config(&manifest);
+	}
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build a manifest from *%s\n",
+			  PATH_ENDSWITH_SETVARS);
+		archive_walk(archive, &manifest, manifest_scan_entries);
 	}
 	if (manifest.num == 0) {
 		VB2_DEBUG("Try to build a manifest from a */firmware folder\n");
