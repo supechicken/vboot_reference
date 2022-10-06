@@ -22,33 +22,45 @@
  * archive (see updater_archive.c) with image files and configuration files, and
  * the meta data is maintained by a "manifest" that described below.
  *
- * A package for single board (i.e., not Unified Build) will have all the image
- * files in top folder:
+ * A package for a single board (i.e., not Unified Build) will have all the
+ * image files in the top folder:
  *  - host: 'image.bin' (or 'bios.bin' as legacy name before CL:1318712)
  *  - ec: 'ec.bin'
  *  - pd: 'pd.bin'
+ *
  * If custom label is supported, a 'keyset/' folder will be available, with key
  * files in it:
  *  - rootkey.$CLTAG
  *  - vblock_A.$CLTAG
  *  - vblock_B.$CLTAG
+ *
  * The $CLTAG should come from VPD value 'custom_label_tag'. For legacy devices,
  * the VPD name may be 'whitelabel_tag', or 'customization_id'.
  * The 'customization_id' has a different format: LOEM[-VARIANT] and we can only
  * take LOEM as $CLTAG, for example A-B => $CLTAG=A.
  *
- * A package for Unified Build is more complicated. There will be a models/
- * folder, and each model (by $(mosys platform model) ) should appear as a sub
- * folder, with a 'setvars.sh' file inside. The 'setvars.sh' is a shell script
- * describing what files should be used and the signature ID ($SIGID) to use.
+ * A package for Unified Build is more complicated.
+ *
+ * You need to look at the signer_config.csv file to find image files and their
+ * firmware manifest key (usually the same as the model name), then search for
+ * patch files in the keyset/ folder.
  *
  * Similar to custom label in non-Unified-Build, the keys and vblock files will
- * be in 'keyset/' folder:
- *  - rootkey.$SIGID
- *  - vblock_A.$SIGID
- *  - vblock_B.$SIGID
- * If $SIGID starts with 'sig-id-in-*' then we have to replace it by VPD value
- * 'custom_label_tag' as '$MODEL-$CLTAG'.
+ * be available in the 'keyset/' folder:
+ *  - rootkey.$MANIFEST_KEY
+ *  - vblock_A.$MANIFEST_KEY
+ *  - vblock_B.$MANIFEST_KEY
+ *
+ * Historically (the original design in Unified Build) there should also be a
+ * models/ folder, and each model (by $(mosys platform model) ) should appear as
+ * a sub folder, with a 'setvars.sh' file inside. The 'setvars.sh' is a shell
+ * script describing what files should be used and the signature ID ($SIGID) to
+ * use as firmware manifest key. If $SIGID starts with 'sig-id-in-*' then we
+ * have to replace it by VPD value 'custom_label_tag' as '$MODEL-$CLTAG'.
+ *
+ * As today, the updater will try `signer_config.csv` approach first, and then
+ * fallback to `setvars.sh` if there is no `signer_config.csv` (or for legacy
+ * boards that needs setvars-specific info like PD).
  */
 
 static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
@@ -779,6 +791,29 @@ int model_apply_custom_label(
 }
 
 /*
+ * b/251040363: Checks if the archive must be parsed using setvars.sh.
+ * Can be removed after all 3 boards have reached AUE.
+ */
+static int archive_is_setvars_only(struct u_archive *archive)
+{
+	int i;
+	const char * const setvars[] = {
+		"models/cave/setvars.sh",
+		"models/lars/setvars.sh",
+		"models/sentry/setvars.sh",
+	};
+
+	for (i = 0; i < ARRAY_SIZE(setvars); i++) {
+		if (archive_has_entry(archive, setvars[i])) {
+			WARN("The archive must be loaded using setvars: %s\n",
+			     setvars[i]);
+			return 1;
+		}
+	}
+	return 0;
+}
+
+/*
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
@@ -789,13 +824,15 @@ struct manifest *new_manifest_from_archive(struct u_archive *archive)
 	manifest.archive = archive;
 	manifest.default_model = -1;
 
-	VB2_DEBUG("Try to build a manifest from *%s\n", PATH_ENDSWITH_SETVARS);
-	archive_walk(archive, &manifest, manifest_scan_entries);
-
-	if (manifest.num == 0) {
+	if (!archive_is_setvars_only(archive)) {
 		VB2_DEBUG("Try to build a manifest from %s\n",
 			  PATH_SIGNER_CONFIG);
 		manifest_from_signer_config(&manifest);
+	}
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build a manifest from *%s\n",
+			  PATH_ENDSWITH_SETVARS);
+		archive_walk(archive, &manifest, manifest_scan_entries);
 	}
 	if (manifest.num == 0) {
 		VB2_DEBUG("Try to build a manifest from a */firmware folder\n");
