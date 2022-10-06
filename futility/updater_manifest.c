@@ -54,8 +54,8 @@
  * use as firmware manifest key. If $SIGID starts with 'sig-id-in-*' then we
  * have to replace it by VPD value 'custom_label_tag' as '$MODEL-$CLTAG'.
  *
- * The current implementation is to first look at `setvars.sh` first, and then
- * fallback to `signer_config.csv` if needed.
+ * The current implementation is to try `signer_config.csv` approach first, and
+ * then fallback to `setvars.sh` on failure.
  */
 
 static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
@@ -812,6 +812,22 @@ int model_apply_custom_label(
 }
 
 /*
+ * b/251040363: Checks if the archive must be parsed using setvars.sh.
+ * Currently only wlref and whitelabel-test (both fake models for testing) must
+ * use setvars, and we may deprecate this function or replace with a quirk in
+ * the future.
+ */
+static int archive_is_setvars_only(struct u_archive *archive)
+{
+	if (archive_has_entry(archive, "models/wlref/setvars.sh") ||
+	    archive_has_entry(archive, "models/whitelabel-test/setvars.sh")) {
+		INFO("Detected setvars-only archive.\n");
+		return 1;
+	}
+	return 0;
+}
+
+/*
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
@@ -822,13 +838,15 @@ struct manifest *new_manifest_from_archive(struct u_archive *archive)
 	manifest.archive = archive;
 	manifest.default_model = -1;
 
-	VB2_DEBUG("Try to build a manifest from *%s\n", PATH_ENDSWITH_SETVARS);
-	archive_walk(archive, &manifest, manifest_scan_entries);
-
-	if (manifest.num == 0) {
+	if (!archive_is_setvars_only(archive)) {
 		VB2_DEBUG("Try to build a manifest from %s\n",
 			  PATH_SIGNER_CONFIG);
 		manifest_from_signer_config(&manifest);
+	}
+	if (manifest.num == 0) {
+		VB2_DEBUG("Try to build a manifest from *%s\n",
+			  PATH_ENDSWITH_SETVARS);
+		archive_walk(archive, &manifest, manifest_scan_entries);
 	}
 	if (manifest.num == 0) {
 		VB2_DEBUG("Try to build a manifest from a */firmware folder\n");
