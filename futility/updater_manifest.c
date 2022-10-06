@@ -519,6 +519,9 @@ static int manifest_from_signer_config(struct manifest *manifest)
 			continue;
 		}
 
+		/* Find patch files. */
+		find_patches_for_model(&model, archive, model.name);
+
 		model.signature_id = strdup(model.name);
 		if (!manifest_add_model(manifest, &model))
 			break;
