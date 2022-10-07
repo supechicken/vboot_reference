@@ -44,6 +44,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c82b9b1_233b458c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-07T00:29:47Z",
+      "side": 1,
+      "message": "I\u0027d suggest we ignore the linter and stick with the existing style in the script, unless someone wants to fully clean up the whole thing.",
+      "parentUuid": "fb48d593_62e066f7",
+      "range": {
+        "startLine": 578,
+        "startChar": 40,
+        "endLine": 578,
+        "endChar": 51
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c56b2be_b89bd2e7",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1

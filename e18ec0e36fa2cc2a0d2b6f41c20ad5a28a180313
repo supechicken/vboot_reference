@@ -16,6 +16,63 @@
       "message": "just modified the dependency chanin, this patch still needs work.",
       "revId": "e18ec0e36fa2cc2a0d2b6f41c20ad5a28a180313",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fa4287_36ffd9e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-07T00:29:47Z",
+      "side": 1,
+      "message": "Look good in general, except for the stuff that is still missing.",
+      "revId": "e18ec0e36fa2cc2a0d2b6f41c20ad5a28a180313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7c1c5e_2d398b06",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-07T00:29:47Z",
+      "side": 1,
+      "message": "Need to take care of the GBB flag issue somewhere.",
+      "revId": "e18ec0e36fa2cc2a0d2b6f41c20ad5a28a180313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415e5055_3f7a11fc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-07T00:29:47Z",
+      "side": 1,
+      "message": "This would now just be arv_root.vbpubk again, right?",
+      "range": {
+        "startLine": 582,
+        "startChar": 42,
+        "endLine": 582,
+        "endChar": 59
+      },
+      "revId": "e18ec0e36fa2cc2a0d2b6f41c20ad5a28a180313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
