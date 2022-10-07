@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8724d595_d9e57d0a",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-07T08:23:32Z",
+      "side": 1,
+      "message": "sorry, I meant memset(section.data, 0xff, section.size) - e.g., the whole FMAP section instead of GSCVD file length.",
+      "parentUuid": "baff5859_ff57bb58",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 1
+      },
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88543e41_b62491e2",
         "filename": "futility/updater_manifest.c",
         "patchSetId": 4
