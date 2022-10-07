@@ -66,6 +66,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d702ea1_d207c3ba",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-07T08:59:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3c82b9b1_233b458c",
+      "range": {
+        "startLine": 578,
+        "startChar": 40,
+        "endLine": 578,
+        "endChar": 51
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c56b2be_b89bd2e7",
@@ -162,6 +186,54 @@
       "side": 1,
       "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
       "parentUuid": "ad6ee460_b78aefe7",
+      "range": {
+        "startLine": 592,
+        "startChar": 24,
+        "endLine": 592,
+        "endChar": 36
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f8e323_a6ecc1c2",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-07T08:59:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29b95945_048c3bd0",
+      "range": {
+        "startLine": 592,
+        "startChar": 15,
+        "endLine": 592,
+        "endChar": 56
+      },
+      "revId": "ea4e69e67499fd7e29f3d20e03b18036d6f8b77e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3808a4e_23358c30",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-07T08:59:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a0b91bf_47dbed86",
       "range": {
         "startLine": 592,
         "startChar": 24,
