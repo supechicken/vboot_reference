@@ -39,6 +39,30 @@
       },
       "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9745f5a_a189bb95",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-07T00:02:38Z",
+      "side": 1,
+      "message": "You have to generate it during signing, just like how the patches.vblocks_[AB], patches.rootkey were generated.\n\nThe names were vblocks_A.{model}, rootkey.{model}, so you will have to name it in the same way - gsvcd.{model}.",
+      "parentUuid": "88543e41_b62491e2",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
