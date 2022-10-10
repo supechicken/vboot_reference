@@ -33,6 +33,24 @@
       "message": "Uhh... is it? Not that I can see.\n\nWhat I meant was more something like \"This function is only legal to call from coreboot with CONFIG_VBOOT_CBFS_INTEGRATION\u003dy. \\`futility sign\\` will automatically detect the presence of that option in an image and prepare the correct kind of signature.\"\n\nAnd then for vb2api_init_hash() maybe add \"This function is not legal when running from a coreboot image that has CONFIG_VBOOT_CBFS_INTEGRATION\u003dy set. In that case, vb2api_get_metadata_hash() must be used instead.\"",
       "revId": "d9dbcfa863035aacd008d650197b908474c19fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2bf026_44442567",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-10-10T15:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a61bd14_a7f04a94",
+      "revId": "d9dbcfa863035aacd008d650197b908474c19fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
