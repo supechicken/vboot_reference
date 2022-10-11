@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c3af02_44774708",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T03:34:12Z",
+      "side": 1,
+      "message": "No need for `if`.",
+      "range": {
+        "startLine": 225,
+        "startChar": 43,
+        "endLine": 225,
+        "endChar": 45
+      },
+      "revId": "7d748ff999a6d21d023d2fb1703dd96fecbfc8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
