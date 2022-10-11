@@ -34,6 +34,24 @@
       "parentUuid": "4c5cfbf2_19902005",
       "revId": "6a33a0fca3e4f5cd9c3b3fd4ac0b5b8c7ffc018e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba12d998_9c6225e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-10-11T09:13:26Z",
+      "side": 1,
+      "message": "Yes, I missed shell scripts and probably many more files. I was focusing on all C source and header files for now, because they are most edited most often.\n\nUnfortunately pre-upload.py does not support tree-wide checks, only per-patch checking. It would be nice if it did support per-file or tree-wide checks. It should not be hard to implement.\n\nYou can try to find non-matching files using regular expression from pre-upload.py `_check_cros_license() : LICENSE_HEADER` using `grep -rLE \u003cpattern\u003e . | grep -vE \u003cexclude temp/swap/bin/build files pattern\u003e`\nNotice that `LICENSE_HEADER` has capture-groups, which should be taken care of properly (new lines, comments, periods, etc.) to find files that really do not match.",
+      "parentUuid": "0a76fb06_348e61a7",
+      "revId": "6a33a0fca3e4f5cd9c3b3fd4ac0b5b8c7ffc018e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
