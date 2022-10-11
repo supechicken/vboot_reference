@@ -22,6 +22,30 @@
       },
       "revId": "dd6c2cde8ad61b0ff92e80c982e64b08cf54f114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd087cc_c92dcab3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-11T04:35:59Z",
+      "side": 1,
+      "message": "We stopped using crosec for PD after ApolloLake, and the firmware is updated by PD-software sync inside the CBFS, and the futility updater doesn\u0027t include that info.\n\nAnd yes it would be nice if we can deprecate the pd-ro-image, but that can\u0027t be removed until the legacy boards reaching their AUEs.",
+      "parentUuid": "30878495_0912fe2d",
+      "range": {
+        "startLine": 10,
+        "startChar": 63,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "dd6c2cde8ad61b0ff92e80c982e64b08cf54f114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
