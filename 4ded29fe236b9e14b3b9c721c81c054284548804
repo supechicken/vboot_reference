@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14ba5b35_40d629b9",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T03:06:59Z",
+      "side": 1,
+      "message": "I mean, we don\u0027t have to limit ourselves to these 2 sections only, right?",
+      "range": {
+        "startLine": 205,
+        "startChar": 32,
+        "endLine": 205,
+        "endChar": 49
+      },
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "baff5859_ff57bb58",
         "filename": "futility/updater_manifest.c",
         "patchSetId": 4
@@ -72,6 +95,30 @@
       "side": 1,
       "message": "sorry, I meant memset(section.data, 0xff, section.size) - e.g., the whole FMAP section instead of GSCVD file length.",
       "parentUuid": "baff5859_ff57bb58",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 1
+      },
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8037e31a_b1893f45",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T03:06:59Z",
+      "side": 1,
+      "message": "I think that would be safer, and easier for debugging.",
+      "parentUuid": "8724d595_d9e57d0a",
       "range": {
         "startLine": 225,
         "startChar": 0,
