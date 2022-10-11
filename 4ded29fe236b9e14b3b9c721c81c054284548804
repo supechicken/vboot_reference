@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e7bd08_9c0114ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-11T01:39:04Z",
+      "side": 1,
+      "message": "Hi Vadim, I think it\u0027ll take a little longer for the GSCVD files to be available; so will you agree to merge this first (we may make follow up patches if needed)?\n\nI\u0027m planning to merge the two follow up changes ASAP (otherwise I\u0027ll need to review all boards again to make sure no one is broken), so if this can\u0027t be merged I\u0027ll have to detach the patches and remove the dependency.",
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baff5859_ff57bb58",
