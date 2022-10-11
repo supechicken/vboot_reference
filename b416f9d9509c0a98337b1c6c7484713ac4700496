@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "867f78e7_d2f221bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T09:19:10Z",
+      "side": 1,
+      "message": "Just to confirm, the idea is to remove references of `BUILD` and `BUILD_DIR` from test scripts, and replace with `BUILD_RUN` and `SRC_RUN`, right?",
+      "revId": "b416f9d9509c0a98337b1c6c7484713ac4700496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91534c85_832c8f94",
@@ -54,6 +71,109 @@
       "writtenOn": "2022-10-10T03:18:15Z",
       "side": 1,
       "message": "just waiting for the flashrom ubsan change to land, PTAL",
+      "revId": "b416f9d9509c0a98337b1c6c7484713ac4700496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1e0e7f_04150912",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T09:19:10Z",
+      "side": 1,
+      "message": "Do we want to remove this file as well? The `QEMU_RUN` variable is no longer defined.",
+      "range": {
+        "startLine": 291,
+        "startChar": 21,
+        "endLine": 291,
+        "endChar": 39
+      },
+      "revId": "b416f9d9509c0a98337b1c6c7484713ac4700496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954599f4_63d79ce2",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T09:19:10Z",
+      "side": 1,
+      "message": "`SYSROOT` is empty in some cases (for example, `sudo emerge vboot_reference` or `make runtests`), so that `BUILD_RUN` will happen to be the same as `BUILD`. Is that intentional? I wonder if we want to make that explicit (also see `FIRMWARE_ARCH`, which can be used to differentiate firmware build from local build).",
+      "range": {
+        "startLine": 294,
+        "startChar": 29,
+        "endLine": 294,
+        "endChar": 36
+      },
+      "revId": "b416f9d9509c0a98337b1c6c7484713ac4700496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1851282_d6bf7bf3",
+        "filename": "tests/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T09:19:10Z",
+      "side": 1,
+      "message": "or",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "b416f9d9509c0a98337b1c6c7484713ac4700496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935d2b94_840123fa",
+        "filename": "tests/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T09:19:10Z",
+      "side": 1,
+      "message": "This needs to match the\n\n`TEST_INSTALL_DIR \u003d ${BUILD}/install_for_test`\n\nline in Makefile.",
+      "revId": "b416f9d9509c0a98337b1c6c7484713ac4700496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3665344f_738d3870",
+        "filename": "tests/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-11T09:19:10Z",
+      "side": 1,
+      "message": "Not related to the CL, but this could be moved to tests/run_vbutil_tests.sh.",
       "revId": "b416f9d9509c0a98337b1c6c7484713ac4700496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
