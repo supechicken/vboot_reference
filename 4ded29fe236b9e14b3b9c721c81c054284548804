@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "025a36f1_cbaf1690",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-11T03:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14ba5b35_40d629b9",
+      "range": {
+        "startLine": 205,
+        "startChar": 32,
+        "endLine": 205,
+        "endChar": 49
+      },
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baff5859_ff57bb58",
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "I think that would be safer, and easier for debugging.",
       "parentUuid": "8724d595_d9e57d0a",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 1
+      },
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70afed3_07d88f74",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-11T03:22:33Z",
+      "side": 1,
+      "message": "concerned if there are some data in end of section that can\u0027t be removed. but checking the existing updaters, all vblock_[AB] files are fully occupying the section so I think we\u0027re fine.",
+      "parentUuid": "8037e31a_b1893f45",
       "range": {
         "startLine": 225,
         "startChar": 0,
