@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a76b91_7a8f5df6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-13T23:57:40Z",
+      "side": 1,
+      "message": "hold this one because it\u0027ll break firmware/pack_firmware_functest  in CQ (but the other two won\u0027t). we have to modify the test case there as well.",
+      "revId": "6c6a11cb20ab310377153ee306d4f641dc9d3398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
