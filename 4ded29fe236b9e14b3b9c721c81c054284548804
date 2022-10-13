@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd76581f_db9934d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-13T21:43:46Z",
+      "side": 1,
+      "message": "Hi Hung-Te, I\u0027m totally fine with merging this patches after addressing Yu-Ping\u0027s comments as long as they don\u0027t break existing functionality (which you presumably verified).\n\nI will make sure they work with the images which inlude GSCVD signed blocks.\n\nThank you very much for pickin this up and making these changes!",
+      "parentUuid": "48e7bd08_9c0114ba",
+      "revId": "4ded29fe236b9e14b3b9c721c81c054284548804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14ba5b35_40d629b9",
