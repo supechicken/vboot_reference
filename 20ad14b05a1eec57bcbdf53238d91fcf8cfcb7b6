@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0a2118_a43c6818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-14T23:02:08Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to be integrated into this command, we have several dedicated utilities that can do this already. You can either use `futility dump_fmap -x \u003cimage\u003e RO_GSCVD:\u003cfilename\u003e` or `cbfstool \u003cimage\u003e read -r RO_GSCVD -f \u003cfilename\u003e`.",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
