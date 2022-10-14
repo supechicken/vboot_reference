@@ -33,6 +33,81 @@
       "message": "Dumping this at the time when the section is created would be faster than invoking dump_fmap on the produced file, also the resulting blob would be smaller than the full RO_GSCVD section. If you think this is not enough to justify this extension I will abandon this patch.",
       "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb6f1d9c_858313aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-14T23:58:44Z",
+      "side": 1,
+      "message": "Hmm... okay, fair enough, having smaller files sounds worth it.",
+      "parentUuid": "326f11af_efa4a611",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687fdba6_e8020896",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-14T23:58:44Z",
+      "side": 1,
+      "message": "I find the name of the option very confusing compared to what it does. How about `--outfile_gscvd` or `--gscvd_out` or something like that?\n\nI also feel like if you supplied this option, that should mean that the new GSCVD is only written to that other file and the original image should not be modified.",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2123c142_cdef45dc",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-14T23:58:44Z",
+      "side": 1,
+      "message": "We have vb2_write_file() for all this.",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f1ef7c_1131d48e",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-14T23:58:44Z",
+      "side": 1,
+      "message": "This should be FILE_RO for the new flag, then.",
+      "range": {
+        "startLine": 1205,
+        "startChar": 53,
+        "endLine": 1205,
+        "endChar": 60
+      },
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
