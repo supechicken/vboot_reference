@@ -1,5 +1,5 @@
 #!/bin/sh -ue
-# Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+# Copyright 2011 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -383,5 +383,24 @@ for kname in ${kernparts}; do
 
   kc=$(expr $kc + 1)
 done
+
+# Check for mismatched OS/firmware and send UMA metrics
+set +e
+cros_fwid="$(crossystem fwid 2>/dev/null)"
+
+model="$(cros_config / name || echo unknown)"
+manifest="$(chromeos-firmwareupdate --manifest 2>/dev/null)"
+expect_fwid=$(echo "${manifest}" |
+  jq -c -r ".${model}.host.versions.rw" 2>/dev/null)
+
+if [ -z "${expect_fwid}" ] || [ "${expect_fwid}" = "null" ]; then
+  debug "Failed to get the expected fwid."
+elif [ "${cros_fwid}" = "${expect_fwid}" ]; then
+  info "Report UMA metrics: OS/firmware mismatch not detected."
+  metrics_client -e "Platform.Firmware.Mismatch" 0 2
+else
+  info "Report UMA metrics: OS/firmware mismatch detected."
+  metrics_client -e "Platform.Firmware.Mismatch" 1 2
+fi
 
 exit 0
