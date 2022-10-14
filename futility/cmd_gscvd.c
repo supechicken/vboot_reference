@@ -445,6 +445,46 @@ static int add_gbb(struct gscvd_ro_ranges *ranges, const struct file_buf *file)
 	return 0;
 }
 
+static int extend_digest(const struct file_buf *ap_firmware_file,
+			 struct vb2_digest_context *dc,
+			 uint32_t offset,
+			 uint32_t size,
+			 uint32_t flags_offset)
+{
+	const uint8_t flags[sizeof(vb2_gbb_flags_t)] = {0};
+
+	if (flags_offset &&
+	    (flags_offset >= offset) &&
+	    (flags_offset < (offset + size))) {
+		uint32_t flags_size;
+
+		/*
+		 * This range includes GBB flags, which need to be zeroized.
+		 *
+		 * First get the hash of up to the flags.
+		 */
+		if (vb2_digest_extend(dc, ap_firmware_file->data + offset,
+				      flags_offset - offset) != VB2_SUCCESS)
+			return -1;
+
+		size -= flags_offset - offset;
+		offset = flags_offset;
+
+		/* Now hash the flag space, maybe partially. */
+		flags_size = VB2_MIN(size, sizeof(flags));
+		if (vb2_digest_extend(dc, flags, flags_size) != VB2_SUCCESS)
+			return -1;
+
+		/* Update size and offset to cover the rest of the range. */
+		size -= flags_size;
+		if (size == 0)
+			return VB2_SUCCESS;
+		offset += flags_size;
+	}
+
+	return vb2_digest_extend(dc,ap_firmware_file->data + offset, size);
+}
+
 /**
  * Calculate hash of the RO ranges.
  *
@@ -455,16 +495,23 @@ static int add_gbb(struct gscvd_ro_ranges *ranges, const struct file_buf *file)
  * @param digest  memory to copy the calculated hash to
  * @param digest_ size requested size of the digest, padded with zeros if the
  *	          SHA digest size is smaller than digest_size
+ * @param override_gbb_flags  if true, replace GBB flags value with zero
  *
  * @return zero on success, -1 on failure.
  */
 static int calculate_ranges_digest(const struct file_buf *ap_firmware_file,
 				   const struct gscvd_ro_ranges *ranges,
 				   enum vb2_hash_algorithm hash_alg,
-				   void *digest, size_t digest_size)
+				   void *digest, size_t digest_size,
+				   bool override_gbb_flags)
 {
 	struct vb2_digest_context dc;
 	size_t i;
+	uint32_t flags_offset = 0;
+
+	if (override_gbb_flags && ap_firmware_file->gbb_area)
+		flags_offset = offsetof(struct vb2_gbb_header, flags) +
+			ap_firmware_file->gbb_area->area_offset;
 
 	/* Calculate the ranges digest. */
 	if (vb2_digest_init(&dc, false, hash_alg, 0) != VB2_SUCCESS) {
@@ -473,10 +520,10 @@ static int calculate_ranges_digest(const struct file_buf *ap_firmware_file,
 	}
 
 	for (i = 0; i < ranges->range_count; i++) {
-		if (vb2_digest_extend(&dc,
-				      ap_firmware_file->data +
-					      ranges->ranges[i].offset,
-				      ranges->ranges[i].size) != VB2_SUCCESS) {
+		if (extend_digest(ap_firmware_file, &dc,
+				  ranges->ranges[i].offset,
+				  ranges->ranges[i].size,
+				  flags_offset) != VB2_SUCCESS) {
 			ERROR("Failed to extend digest!\n");
 			return -1;
 		}
@@ -547,7 +594,8 @@ struct gsc_verification_data *create_gvd(struct file_buf *ap_firmware_file,
 
 	if (calculate_ranges_digest(ap_firmware_file, ranges, gvd->hash_alg,
 				    gvd->ranges_digest,
-				    sizeof(gvd->ranges_digest))) {
+				    sizeof(gvd->ranges_digest),
+				    true)) {
 		free(gvd);
 		return NULL;
 	}
@@ -970,7 +1018,8 @@ static int validate_gscvd(int argc, char *argv[])
 
 		if (calculate_ranges_digest(&ap_firmware_file, &ranges,
 					    gvd->hash_alg, digest,
-					    sizeof(digest)))
+					    sizeof(digest),
+					    false))
 			break;
 
 		if (memcmp(digest, gvd->ranges_digest, sizeof(digest))) {
