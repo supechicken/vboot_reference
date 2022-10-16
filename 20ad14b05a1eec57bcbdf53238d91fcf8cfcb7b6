@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc30dd88_0afcd4d4",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-16T19:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "687fdba6_e8020896",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2123c142_cdef45dc",
@@ -87,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bfb5cc_2595d15f",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-16T19:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2123c142_cdef45dc",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0f1ef7c_1131d48e",
@@ -100,6 +136,30 @@
       "writtenOn": "2022-10-14T23:58:44Z",
       "side": 1,
       "message": "This should be FILE_RO for the new flag, then.",
+      "range": {
+        "startLine": 1205,
+        "startChar": 53,
+        "endLine": 1205,
+        "endChar": 60
+      },
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b769e012_9cb9f7e1",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-16T19:50:00Z",
+      "side": 1,
+      "message": "the new flag is not supposed to be used on its own, it only can be added when actual AP RO signing is happening.",
+      "parentUuid": "b0f1ef7c_1131d48e",
       "range": {
         "startLine": 1205,
         "startChar": 53,
