@@ -46,8 +46,30 @@ static char *flashrom_extract_params(const char *str, char **prog, char **params
 	return tmp;
 }
 
+static int flashrom_trim_to_region(struct firmware_image *image,
+				   const char *region,
+				   struct flashrom_layout *layout)
+{
+	unsigned int start, len;
+	uint8_t *trimmed_data;
+	int r = flashrom_layout_get_region_range(layout, region, &start, &len);
+	if (r > 0) {
+		ERROR("could get region range = '%s'\n", region);
+		return -1;
+	}
+	trimmed_data = calloc(1, len);
+	if (!trimmed_data)
+		return -1;
+
+	memcpy(trimmed_data, image->data + start, len);
+	free(image->data);
+	image->data = trimmed_data;
+	image->size = len;
+	return 0;
+}
+
 int flashrom_read_image(struct firmware_image *image, const char *region,
-			int verbosity)
+			int verbosity, bool trim_to_region)
 {
 	int r = 0;
 	size_t len = 0;
@@ -105,6 +127,9 @@ int flashrom_read_image(struct firmware_image *image, const char *region,
 	image->file_name = strdup("<sys-flash>");
 
 	r |= flashrom_image_read(flashctx, image->data, len);
+
+	if (r == 0 && region && trim_to_region)
+		r |= flashrom_trim_to_region(image, region, layout);
 
 err_cleanup:
 	flashrom_layout_release(layout);
