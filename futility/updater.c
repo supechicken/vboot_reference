@@ -302,8 +302,10 @@ static int set_try_cookies(struct updater_config *cfg, const char *target,
 		return -1;
 	}
 
-	if (cfg->emulation) {
-		INFO("(emulation) %s slot %s on next boot, try_count=%d.\n",
+	if (cfg->emulation ||
+	    strcmp(cfg->image_current.programmer, PROG_HOST)) {
+		INFO("(%s) %s slot %s on next boot, try_count=%d.\n",
+		     cfg->emulation ? "emulation" : "non-host programmer",
 		     has_update ? "Try" : "Keep", slot, tries);
 		return 0;
 	}
@@ -463,14 +465,14 @@ static int preserve_management_engine(struct updater_config *cfg,
 				image_from, image_to, FMAP_SI_DESC);
 	}
 
-	if (!strcmp(image_from->programmer, PROG_HOST)) {
-		if (try_apply_quirk(QUIRK_PRESERVE_ME, cfg) > 0) {
-			VB2_DEBUG("ME needs to be preserved - preserving %s.\n",
-				  FMAP_SI_ME);
-			return preserve_firmware_section(image_from, image_to,
-							 FMAP_SI_ME);
-		}
-	} else {
+	if ((!strcmp(image_from->programmer, PROG_HOST) &&
+	     try_apply_quirk(QUIRK_PRESERVE_ME, cfg) > 0) ||
+	    try_apply_quirk(QUIRK_PRESERVE_ME_NON_HOST, cfg) > 0) {
+		VB2_DEBUG("ME needs to be preserved - preserving %s.\n",
+			  FMAP_SI_ME);
+		return preserve_firmware_section(image_from, image_to,
+						 FMAP_SI_ME);
+	} else if (strcmp(image_from->programmer, PROG_HOST)) {
 		VB2_DEBUG("Flashing via non-host programmer %s - no need to "
 			  "preserve ME.\n", image_from->programmer);
 	}
