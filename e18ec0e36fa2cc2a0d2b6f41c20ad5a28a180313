@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e7258f_82852b25",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-18T01:05:36Z",
+      "side": 1,
+      "message": "done in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3958581",
+      "parentUuid": "6f7c1c5e_2d398b06",
+      "revId": "e18ec0e36fa2cc2a0d2b6f41c20ad5a28a180313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415e5055_3f7a11fc",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-10-07T00:29:47Z",
       "side": 1,
       "message": "This would now just be arv_root.vbpubk again, right?",
+      "range": {
+        "startLine": 582,
+        "startChar": 42,
+        "endLine": 582,
+        "endChar": 59
+      },
+      "revId": "e18ec0e36fa2cc2a0d2b6f41c20ad5a28a180313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb30c5a_55e715f4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-18T01:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415e5055_3f7a11fc",
       "range": {
         "startLine": 582,
         "startChar": 42,
