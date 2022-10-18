@@ -793,6 +793,12 @@ int write_system_firmware(struct updater_config *cfg,
 	struct flashrom_params params = {0};
 	struct firmware_image *flash_contents = NULL;
 
+	if (cfg->image_current.size != image->size) {
+		ERROR("Image size is different (%d != %d (%s))\n",
+		      cfg->image_current.size, image->size,
+		      image->file_name);
+		return 1;
+	}
 	if (cfg->emulation)
 		return emulate_write_firmware(cfg->emulation, image, sections);
 
