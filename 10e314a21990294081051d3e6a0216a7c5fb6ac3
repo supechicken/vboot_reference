@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f8c33e_caa0ba03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-10-18T22:24:02Z",
+      "side": 1,
+      "message": "The deprecated sysfs ABI doesn\u0027t have this problem, right? It looks like we need a \u0027gpiod\u0027 daemon that we send dbus messages to to ask for the state of a gpio, so that only one userspace process owns the pin.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b7e02c7_f5a6d958",
