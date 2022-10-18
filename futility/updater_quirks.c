@@ -507,6 +507,13 @@ void updater_register_quirks(struct updater_config *cfg)
 		       "for factory update or developer images.";
 	quirks->apply = quirk_preserve_me;
 
+	quirks = &cfg->quirks[QUIRK_PRESERVE_ME_NON_HOST];
+	quirks->name = "preserve_me_non_host";
+	quirks->help = "b/165590952; Preserve ME during firmware update except "
+		       "for factory update or developer images. Applies to "
+		       "non-host programmers for testing.";
+	quirks->apply = quirk_preserve_me;
+
 	quirks = &cfg->quirks[QUIRK_NO_CHECK_PLATFORM];
 	quirks->name = "no_check_platform";
 	quirks->help = "Do not check platform name.";
