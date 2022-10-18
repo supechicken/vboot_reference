@@ -41,7 +41,7 @@ struct firmware_image {
  */
 vb2_error_t flashrom_read(struct firmware_image *image, const char *region);
 int flashrom_read_image(struct firmware_image *image, const char *region,
-			 int verbosity);
+			 int verbosity, bool trim_to_region);
 
 /**
  * Write using flashrom from a buffer.
