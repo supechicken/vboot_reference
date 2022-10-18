@@ -1430,9 +1430,20 @@ static int updater_setup_archive(
 		return errorcnt;
 	}
 
-	model = manifest_find_model(manifest, arg->model);
+	if (arg->detect_model) {
+		model = manifest_detect_model_from_frid(
+			cfg->image_current.programmer, manifest);
+	} else {
+		model = manifest_find_model(manifest, arg->model);
+	}
 	if (!model)
 		return ++errorcnt;
+
+	if (arg->detect_model_only) {
+		puts(model->name);
+		/* No additional error. */
+		return errorcnt;
+	}
 
 	/* Load images now so we can get quirks in custom label checks. */
 	errorcnt += updater_load_images(
@@ -1510,6 +1521,17 @@ int updater_setup_config(struct updater_config *cfg,
 			return ++errorcnt;
 		}
 		*do_update = 0;
+	}
+	if (arg->detect_model) {
+		if (!arg->archive) {
+			if (arg->detect_model_only)
+				ERROR("--detect-model-only needs --archive.\n");
+			else
+				ERROR("--detect-model needs --archive.\n");
+			return ++errorcnt;
+		}
+		if (arg->detect_model_only)
+			*do_update = 0;
 	}
 
 	/* Setup update mode. */
