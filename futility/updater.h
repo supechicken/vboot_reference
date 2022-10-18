@@ -76,7 +76,8 @@ struct updater_config {
 	int use_diff_image;
 	int do_verify;
 	int verbosity;
-	const char *emulation;
+	char *emulation;
+	const char *original_programmer;
 	int override_gbb_flags;
 	uint32_t gbb_flags;
 };

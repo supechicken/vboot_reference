@@ -7,6 +7,7 @@
 
 #include <assert.h>
 #include <ctype.h>
+#include <sys/stat.h>
 
 #include "2rsa.h"
 #include "crossystem.h"
@@ -463,7 +464,9 @@ static int preserve_management_engine(struct updater_config *cfg,
 				image_from, image_to, FMAP_SI_DESC);
 	}
 
-	if (!strcmp(image_from->programmer, PROG_HOST)) {
+	if (!strcmp(cfg->original_programmer ? cfg->original_programmer
+					     : image_from->programmer,
+		    PROG_HOST)) {
 		if (try_apply_quirk(QUIRK_PRESERVE_ME, cfg) > 0) {
 			VB2_DEBUG("ME needs to be preserved - preserving %s.\n",
 				  FMAP_SI_ME);
@@ -1550,6 +1553,27 @@ int updater_setup_config(struct updater_config *cfg,
 		VB2_DEBUG("AP (host) programmer changed to %s.\n",
 			  arg->programmer);
 	}
+	if (arg->emulation) {
+		VB2_DEBUG("Using file %s for emulation.\n", arg->emulation);
+		check_single_image = 1;
+		struct stat statbuf;
+		if (stat(arg->emulation, &statbuf)) {
+			ERROR("Failed to stat emulation file %s\n",
+			      arg->emulation);
+			return ++errorcnt;
+		}
+
+		/* Store the dummy programmer and its ownership in
+		 * cfg->emulation. */
+		ASPRINTF(&cfg->emulation ,
+			 "dummy:emulate=VARIABLE_SIZE,size=%lu,image=%s",
+			 statbuf.st_size, arg->emulation);
+
+		cfg->original_programmer = cfg->image_current.programmer;
+		cfg->image.programmer = cfg->emulation;
+		cfg->image_current.programmer = cfg->emulation;
+	}
+
 	if (arg->sys_props)
 		override_properties_from_list(arg->sys_props, cfg);
 	if (arg->write_protection) {
@@ -1560,14 +1584,6 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 
 	/* Set up archive and load images. */
-	if (arg->emulation) {
-		/* Process emulation file first. */
-		cfg->emulation = arg->emulation;
-		VB2_DEBUG("Using file %s for emulation.\n", arg->emulation);
-		errorcnt += !!load_firmware_image(
-				&cfg->image_current, arg->emulation, NULL);
-	}
-
 	/* Always load images specified from command line directly. */
 	errorcnt += updater_load_images(
 			cfg, arg, arg->image, arg->ec_image, arg->pd_image);
@@ -1689,6 +1705,7 @@ void updater_delete_config(struct updater_config *cfg)
 	free_firmware_image(&cfg->image_current);
 	free_firmware_image(&cfg->ec_image);
 	free_firmware_image(&cfg->pd_image);
+	free(cfg->emulation);
 	remove_all_temp_files(&cfg->tempfiles);
 	if (cfg->archive)
 		archive_close(cfg->archive);
