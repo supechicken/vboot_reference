@@ -1,5 +1,5 @@
 #!/bin/bash -eux
-# Copyright 2018 The Chromium OS Authors. All rights reserved.
+# Copyright 2018 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
@@ -160,6 +160,15 @@ cp -f "${TMP}.expected.full" "${TMP}.expected.full.empty_rw_vpd"
 	RW_VPD:"${TMP}.to/RW_VPD"
 patch_file "${TMP}.expected.full.empty_rw_vpd" FMAP 0x3fc "$(printf '\010')"
 
+format_dummy_programmer() {
+	local file="$1"
+	local size
+	local programmer
+	size="$(stat -c '%s' "${file}")"
+	programmer="dummy:emulate=VARIABLE_SIZE,size=${size},image=${file}"
+	echo "--programmer=${programmer}"
+}
+
 # Has 3 modes:
 # 1. $3 = "!something", run command, expect failure,
 #    grep for something in log, fail if it is not present
@@ -172,15 +181,17 @@ test_update() {
 	local expected="$3"
 	local error_msg="${expected#!}"
 	local msg
+	local programmer
 
 	shift 3
 	cp -f "${emu_src}" "${TMP}.emu"
 	echo "*** Test Item: ${test_name}"
+	programmer="$(format_dummy_programmer "${TMP}.emu")"
 	if [ "${error_msg}" != "${expected}" ] && [ -n "${error_msg}" ]; then
-		msg="$(! "${FUTILITY}" update --emulate "${TMP}.emu" "$@" 2>&1)"
+		msg="$(! "${FUTILITY}" update "${programmer}" "$@" 2>&1)"
 		grep -qF -- "${error_msg}" <<<"${msg}"
 	else
-		"${FUTILITY}" update --emulate "${TMP}.emu" "$@"
+		"${FUTILITY}" update "${programmer}" "$@"
 		cmp "${TMP}.emu" "${expected}"
 	fi
 }
@@ -374,12 +385,11 @@ test_update "Full update (--quirks no_check_platform)" \
 test_update "Full update (--quirks preserve_me with non-host programmer)" \
 	"${FROM_IMAGE}" "${TMP}.expected.full" \
 	--quirks preserve_me \
-	-i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001,1 \
-	-p raiden_debug_spi:target=AP
+	-i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001,1
 
-test_update "Full update (--quirks preserve_me)" \
+test_update "Full update (--quirks preserve_me_non_host)" \
 	"${FROM_IMAGE}" "${TMP}.expected.me_preserved" \
-	--quirks preserve_me \
+	--quirks preserve_me_non_host \
 	-i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001,1
 
 # Test archive and manifest. CL_TAG is for custom_label_tag.
@@ -493,16 +503,6 @@ cp -f "${TMP}.to/VBLOCK_B" "${A}/keyset/vblock_B.customtip"
 test_update "Full update (-a, model=customtip, no VPD, default keys)" \
 	"${FROM_IMAGE}.al" "${LINK_BIOS}" \
 	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --model=customtip
-
-# Test special programmer
-if type flashrom >/dev/null 2>&1; then
-	echo "TEST: Full update (dummy programmer)"
-	cp -f "${FROM_IMAGE}" "${TMP}.emu"
-	"${FUTILITY}" update --programmer \
-		dummy:emulate=VARIABLE_SIZE,image="${TMP}".emu,size=8388608 \
-		-i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001,1,3 >&2
-	cmp "${TMP}.emu" "${TMP}.expected.full"
-fi
 
 if type cbfstool >/dev/null 2>&1; then
 	echo "SMM STORE" >"${TMP}.smm"
