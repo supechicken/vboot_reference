@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e7ce5f_996079bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-19T21:14:01Z",
+      "side": 1,
+      "message": "what do you mean Hung-Te - what signed artifacts?",
+      "parentUuid": "6d1177c5_d84eb50b",
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e603472b_c2e55a7a",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-10-19T02:55:58Z",
       "side": 1,
       "message": "Not for now, but I think in future we should prevent writing the params twice; instead use bash arrays like\n\n local cmds\u003d(${FUTILITY} sign ... \"${extra_args[@]}\" ...)\n \n echo \"Signing Bios with:\" \"${cmds[@]}\"\n \"${cmds[@]}\"",
+      "range": {
+        "startLine": 538,
+        "startChar": 8,
+        "endLine": 545,
+        "endChar": 20
+      },
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c9a6f6_71bd1aa6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-19T21:14:01Z",
+      "side": 1,
+      "message": "yes, I was curious why this was duplicated, let me add a patch to fix this.",
+      "parentUuid": "e603472b_c2e55a7a",
       "range": {
         "startLine": 538,
         "startChar": 8,
