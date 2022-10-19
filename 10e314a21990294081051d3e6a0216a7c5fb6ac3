@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2adbbfa8_91488d37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-10-19T00:03:09Z",
+      "side": 1,
+      "message": "D-Bus was only half a joke. I recall there was some discussion about removing the deprecated sysfs ABI completely and there being concerns that not using the file based API would lead to ownership/permission issues. Basically folks liked having unix file permissions and being able to limit what gpios could be used by what processes. To get around that, we would need to make some broker process that \"owned\" the file descriptor and handed the fd to the requesting process if it knew there wasn\u0027t a security risk for that particular gpio.",
+      "parentUuid": "310641c6_2d7f9903",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b7e02c7_f5a6d958",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
