@@ -146,6 +146,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "283e816b_d7aa4a51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-19T21:56:05Z",
+      "side": 1,
+      "message": "Please consider that crossystem needs to work in special environments, like the recovery installer. Depending on an extra daemon (and a huge library dependency like dbus on top!) would create a lot of headache there. If the retry approach here isn\u0027t sufficient (but sounds like it is?) I would suggest using lock files instead,",
+      "parentUuid": "29066fc0_676cd6a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b7e02c7_f5a6d958",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
