@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "29066fc0_676cd6a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-10-19T00:36:08Z",
+      "side": 1,
+      "message": "We\u0027ve got our share of gpio exporters and chown\u0027ers:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/overlay-drallion/chromeos-base/modemfwd-helpers/files/modemfwd-helpers.conf;l\u003d15;drc\u003d74a826157823281c2c1d7e39bb93f0e99cc8c86a\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/overlays/overlay-coral/chromeos-base/modemfwd-helpers/files/94-l850gl-gpio.rules;drc\u003d74a826157823281c2c1d7e39bb93f0e99cc8c86a\n\nSo either we let them pry our perfectly functional sysfs ABI from our cold dead hands, or maybe we have to do this privilege delegation thing in at least some cases. Maybe debugd will grow a GPIO API, as it already owns a bunch of other privileged operations...\n\nBut even with a D-Bus service for some things, would we actually want that for crossystem/vboot_reference? (Or maybe the answer is that crossystem should be ripped out of vboot_reference...)\n\nI also didn\u0027t answer Doug\u0027s question: I don\u0027t recall considering gpio-keys. \"The\" chardev GPIO API seemed perfectly fine at the time, and I didn\u0027t field any objections or mentions of gpio-keys. Why would it be better, except that the input subsystem has sane maintainers? I guess it supports multiple listeners/readers, for one. I guess maybe it supports ACLs (with a proper file node) too? But this GPIO API seems to have a watch/event API, if that\u0027s what you\u0027re looking for.",
+      "parentUuid": "2adbbfa8_91488d37",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b7e02c7_f5a6d958",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
