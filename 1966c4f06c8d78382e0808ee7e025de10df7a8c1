@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4315ecc0_470dad34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-19T21:45:57Z",
+      "side": 1,
+      "message": "Yes, we opted out of sticky +2 originally so we could do OWNERS\u003d`*`. Now  that we\u0027ve been forced to natrrow owners down more anyway, I guess we could enable sticky +2 if people care.",
+      "parentUuid": "b97f5fcf_a609d018",
+      "revId": "1966c4f06c8d78382e0808ee7e025de10df7a8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0ef73073_f3a2bd76",
         "filename": "host/arch/arm/lib/crossystem_arch.c",
         "patchSetId": 2
