@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90230d4e_afe92069",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1362282
+      },
+      "writtenOn": "2022-10-19T22:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0583ce4_5ef0af68",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "968bf04c5bff19025319686c58cda87c4015dd17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ced108ff_da5ca3d0",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Ok, I know, why you want to set this variable (I tried upgrading vboot in coreboot).\nI think you can set `body_c \u003d BIOS_FMAP_FW_MAIN_A`.",
       "parentUuid": "ced108ff_da5ca3d0",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 44
+      },
+      "revId": "968bf04c5bff19025319686c58cda87c4015dd17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f28fc1_1bcedba6",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1362282
+      },
+      "writtenOn": "2022-10-19T22:18:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04958d6c_f2ee4a26",
       "range": {
         "startLine": 241,
         "startChar": 1,
