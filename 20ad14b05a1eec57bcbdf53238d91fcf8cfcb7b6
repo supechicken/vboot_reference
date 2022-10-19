@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9984a72f_2ebc2f26",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-19T22:26:25Z",
+      "side": 1,
+      "message": "What about the \"original image should not be modified\" part? I think writing the GSCVD to both the original image and a separate file is odd, you would normally only want one or the other.",
+      "parentUuid": "bc30dd88_0afcd4d4",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2123c142_cdef45dc",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 2
@@ -160,6 +178,30 @@
       "side": 1,
       "message": "the new flag is not supposed to be used on its own, it only can be added when actual AP RO signing is happening.",
       "parentUuid": "b0f1ef7c_1131d48e",
+      "range": {
+        "startLine": 1205,
+        "startChar": 53,
+        "endLine": 1205,
+        "endChar": 60
+      },
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa160d6_1bd6fc4c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-19T22:26:25Z",
+      "side": 1,
+      "message": "This comment is related to the one above about not modifying the original image.",
+      "parentUuid": "b769e012_9cb9f7e1",
       "range": {
         "startLine": 1205,
         "startChar": 53,
