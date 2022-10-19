@@ -33,6 +33,46 @@
       "message": "any thoguths on this patch stack guys?",
       "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1177c5_d84eb50b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-19T02:55:58Z",
+      "side": 1,
+      "message": "can you put the signed artifacts (just the firmware updater would be enough) somewhere so we can double check?",
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e603472b_c2e55a7a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-19T02:55:58Z",
+      "side": 1,
+      "message": "Not for now, but I think in future we should prevent writing the params twice; instead use bash arrays like\n\n local cmds\u003d(${FUTILITY} sign ... \"${extra_args[@]}\" ...)\n \n echo \"Signing Bios with:\" \"${cmds[@]}\"\n \"${cmds[@]}\"",
+      "range": {
+        "startLine": 538,
+        "startChar": 8,
+        "endLine": 545,
+        "endChar": 20
+      },
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
