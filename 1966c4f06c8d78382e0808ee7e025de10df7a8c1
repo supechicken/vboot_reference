@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef73073_f3a2bd76",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-10-19T00:00:10Z",
+      "side": 1,
+      "message": "cute. it also solves the annoying problem in most open-coded polling loops, in which you do an extra useless sleep in the end (in v1).",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 5
+      },
+      "revId": "1966c4f06c8d78382e0808ee7e025de10df7a8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

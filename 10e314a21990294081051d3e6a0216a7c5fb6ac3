@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8383e03f_a4cb13bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-10-19T00:00:10Z",
+      "side": 1,
+      "message": "I did not consider using a daemon. Reimplementing libgpiod was enough yak shaving for me. I also didn\u0027t consider EBUSY or know that it was a problem. (Of course there\u0027s no actual API documentation for ioctls. Who would want that?)\n\nI hope D-Bus was a joke. I assume vboot developers would laugh you out of the room for that one, given that Julius didn\u0027t even want to take a libgpiod dependency.",
+      "parentUuid": "310641c6_2d7f9903",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b7e02c7_f5a6d958",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
