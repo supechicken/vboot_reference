@@ -16,6 +16,103 @@
       "message": "fixed linter issues",
       "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d371fc7f_528451b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-20T00:03:52Z",
+      "side": 1,
+      "message": "I still feel like this is a lot more complicated than just calling gbb_utility before calling gscvd, but up to you.",
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5cad72_84190726",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-20T00:03:52Z",
+      "side": 1,
+      "message": "Why not just `const vb2_gbb_flags_t flags \u003d 0`?",
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb8e8ca_dfa29f2b",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-20T00:03:52Z",
+      "side": 1,
+      "message": "Some of this is a bit inconsistent... e.g. here you\u0027re explicitly checking if size is 0, but above you didn\u0027t check whether `flags_offset - offset` was zero, so if you\u0027re just relying on vb2_digest_extend() being able to handle zero length (which for our current algorithms it does) up there it\u0027s odd that you wouldn\u0027t down here.\n\nSimilarly, you allow for the end of the range to fall in the middle of the flags field, but not the start of the range. (In practice, I don\u0027t think we need to worry about that case and can assume that the field is always either wholly included or wholly excluded.)",
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c5b974_ca858daf",
+        "filename": "tests/futility/test_gscvd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-20T00:03:52Z",
+      "side": 1,
+      "message": "What does the `+x` do? (Also, should be in quotes.)",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae5e082_ed2f6ef5",
+        "filename": "tests/futility/test_gscvd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-20T00:03:52Z",
+      "side": 1,
+      "message": "quotes",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
