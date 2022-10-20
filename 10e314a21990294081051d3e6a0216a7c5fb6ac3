@@ -218,6 +218,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3d5e7456_49e5e6d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-10-20T18:39:38Z",
+      "side": 1,
+      "message": "\u003e \n\u003e Is there a bug tracking system, or you just mean an email? Also: an alternative to allowing \"two readers\" would be to just add a flag that makes the API block until the GPIO was released. That would work fine for us, too.\n\nI mean email.",
+      "parentUuid": "c02952ae_a32a3a08",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b7e02c7_f5a6d958",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
