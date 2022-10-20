@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95fa43c4_0c8cb223",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-20T01:27:57Z",
+      "side": 1,
+      "message": "\u003e which singns multiple images in a loop creating key blobs, but for each model the last signed image is placed in /firmware/image-*.bin.\n\nThat\u0027s... a weird design on the part of sign_official_build.sh then. Just keeping the last image seems very arbitrary, I would have assumed it first builds a full image and then builds the individual LOEM keyblocks.\n\nBut fine, it doesn\u0027t really matter, if that script is the only thing that will ever call this I guess we might as well do it that way.",
+      "parentUuid": "18b5c620_41991d28",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2123c142_cdef45dc",
         "filename": "futility/cmd_gscvd.c",
         "patchSetId": 2
