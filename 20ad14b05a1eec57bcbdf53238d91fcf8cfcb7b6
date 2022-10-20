@@ -178,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b6423a_56b51e84",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-20T03:30:09Z",
+      "side": 1,
+      "message": "\u003e That\u0027s... a weird design on the part of sign_official_build.sh then. Just keeping the last image seems very arbitrary, I would have assumed it first builds a full image and then builds the individual LOEM keyblocks.\n\nI\u0027d agree it\u0027s weird, but that\u0027s all history 😊 We used to support only one image in the firmware archives, so the sign_official_build signed directly in-place. Then the LOEM model is introduced (with keyset), and even worse the \"converting an existing model to LOEM\" - that needs last-signed image kept (for the model without LOEM VPD tags), and ultimately the unibuild multi-model + custom label. Yes, super complicated...",
+      "parentUuid": "bc19c99a_848a7feb",
+      "revId": "20ad14b05a1eec57bcbdf53238d91fcf8cfcb7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2123c142_cdef45dc",
