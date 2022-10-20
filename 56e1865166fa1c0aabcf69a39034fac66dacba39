@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42d0007_db5c02c1",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-20T02:09:38Z",
+      "side": 1,
+      "message": "vb2_error_t\n\nOtherwise we\u0027ll need to convert the return value of `vb2_digest_extend` in line #505 to `int`.",
+      "range": {
+        "startLine": 468,
+        "startChar": 7,
+        "endLine": 468,
+        "endChar": 10
+      },
+      "revId": "56e1865166fa1c0aabcf69a39034fac66dacba39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f87a66e1_f67fd259",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-20T02:09:38Z",
+      "side": 1,
+      "message": "Also here.",
+      "range": {
+        "startLine": 546,
+        "startChar": 23,
+        "endLine": 546,
+        "endChar": 34
+      },
+      "revId": "56e1865166fa1c0aabcf69a39034fac66dacba39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
