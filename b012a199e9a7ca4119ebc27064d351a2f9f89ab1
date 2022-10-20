@@ -33,6 +33,24 @@
       "message": "Why is this diff so \"large\".",
       "revId": "b012a199e9a7ca4119ebc27064d351a2f9f89ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be33397_afbbb728",
+        "filename": "firmware/lib/tpm_lite/include/tpm_error_messages.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-20T01:00:58Z",
+      "side": 1,
+      "message": "It\u0027s DOS format (CRLF) so after converted to UNIX format (LF) every line is different - set diff view to ignore ending space and it\u0027ll look smaller.\n\nBut I\u0027d agree this may move to its own commit since it has much more changes than all the other one-line changes.",
+      "parentUuid": "4f1975c7_05a815a4",
+      "revId": "b012a199e9a7ca4119ebc27064d351a2f9f89ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
