@@ -194,6 +194,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c02952ae_a32a3a08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2022-10-20T17:07:04Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t recall considering gpio-keys. \"The\" chardev GPIO API seemed perfectly fine at the time, and I didn\u0027t field any objections or mentions of gpio-keys. Why would it be better, except that the input subsystem has sane maintainers? I guess it supports multiple listeners/readers, for one. I guess maybe it supports ACLs (with a proper file node) too? But this GPIO API seems to have a watch/event API, if that\u0027s what you\u0027re looking for.\n\nI dunno. I guess I like GPIO keys in this case because:\n* I have a bias against userspace drivers in Linux. I know this is just a GPIO and so calling it a \"userspace driver\" is a stretch, but it sorta is. If nothing else, we\u0027re needing to specify things like \"set the GPIO to input\" and \"it\u0027s active low\" in userspace.\n* It would be nice not to have to have `AP_FLASH_WP_L is crossystem ABI. Schematic call it AP_FLASH_WP_ODL.` in all of our device tree files.\n* It would be nice not to have to configure the pin\u0027s pullups in the generic pinctrl \"hog\" in the device tree because there was no owner.\n* Our mental model of this is really that it\u0027s a \"switch\" despite the fact that it hasn\u0027t been a physical switch since the days of Cr50. It\u0027s the write protect \"switch\". The input APIs model switches. ...so this fits nicely, though there is currently no \"write protect\" switch defined in `input-event-codes.h`.\n\n\u003e Maybe we should file this bug report up to libgpiod folks so they\u0027re aware of the issue? In this case we would probably be OK if there could be multiple readers of the pin state. Maybe that can be expressed somehow through the ioctl on the gpiochip passing a flag that the intent is to only read the gpio state, and not write it? Then if something wants to write a gpio from the gpiochip it requests the line without that flag like is done now and it checks for exclusivity.\n\nIs there a bug tracking system, or you just mean an email? Also: an alternative to allowing \"two readers\" would be to just add a flag that makes the API block until the GPIO was released. That would work fine for us, too.\n\nIt still feels to me like if we\u0027re going to do a lot of work we should just move this to the input subsystem. ;-)",
+      "parentUuid": "0dede272_bab140e6",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b7e02c7_f5a6d958",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
