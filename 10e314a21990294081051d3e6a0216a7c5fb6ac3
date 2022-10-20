@@ -170,6 +170,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0dede272_bab140e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2022-10-20T01:29:04Z",
+      "side": 1,
+      "message": "Maybe we should file this bug report up to libgpiod folks so they\u0027re aware of the issue? In this case we would probably be OK if there could be multiple readers of the pin state. Maybe that can be expressed somehow through the ioctl on the gpiochip passing a flag that the intent is to only read the gpio state, and not write it? Then if something wants to write a gpio from the gpiochip it requests the line without that flag like is done now and it checks for exclusivity.",
+      "parentUuid": "283e816b_d7aa4a51",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "10e314a21990294081051d3e6a0216a7c5fb6ac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b7e02c7_f5a6d958",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
