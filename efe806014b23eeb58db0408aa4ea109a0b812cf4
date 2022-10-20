@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "529b63e6_a7a23822",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-20T00:45:11Z",
+      "side": 1,
+      "message": "vb2_digest_extend() expects a (uint8_t *) as the data pointer, this way I avoid the need for a typecast, added a comment.",
+      "parentUuid": "6b5cad72_84190726",
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cb8e8ca_dfa29f2b",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-10-20T00:03:52Z",
       "side": 1,
       "message": "Some of this is a bit inconsistent... e.g. here you\u0027re explicitly checking if size is 0, but above you didn\u0027t check whether `flags_offset - offset` was zero, so if you\u0027re just relying on vb2_digest_extend() being able to handle zero length (which for our current algorithms it does) up there it\u0027s odd that you wouldn\u0027t down here.\n\nSimilarly, you allow for the end of the range to fall in the middle of the flags field, but not the start of the range. (In practice, I don\u0027t think we need to worry about that case and can assume that the field is always either wholly included or wholly excluded.)",
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a91158_b7dd1f4c",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-20T00:45:11Z",
+      "side": 1,
+      "message": "the check for size \u003d\u003d 0 in this case would be an indication that the flags are splilling over the range. But you are right that I forgot to account for the case where the range starts \u0027inside\u0027 the flags, and assuming that flags would be always fully or not at all included makes sense, removed the check and added comment in the header.",
+      "parentUuid": "6cb8e8ca_dfa29f2b",
       "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4a026a_3e634e20",
+        "filename": "tests/futility/test_gscvd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-20T00:45:11Z",
+      "side": 1,
+      "message": "it allows to prevent the bash unboung variable error in case SCRIPT_DIR is not set.",
+      "parentUuid": "29c5b974_ca858daf",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae5e082_ed2f6ef5",
@@ -105,6 +165,30 @@
       "writtenOn": "2022-10-20T00:03:52Z",
       "side": 1,
       "message": "quotes",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "efe806014b23eeb58db0408aa4ea109a0b812cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7181215f_8f90803f",
+        "filename": "tests/futility/test_gscvd.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-20T00:45:11Z",
+      "side": 1,
+      "message": "actually in double square brackets qoutes are not required.",
+      "parentUuid": "cae5e082_ed2f6ef5",
       "range": {
         "startLine": 12,
         "startChar": 11,
