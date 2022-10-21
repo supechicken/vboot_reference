@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d14f4919_c3425e8a",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-21T08:26:33Z",
+      "side": 1,
+      "message": "it\u0027s probably better to be fixed in the other CL https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/3964274",
+      "parentUuid": "a2ab733c_9b90f28d",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 39
+      },
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d623eaae_d95c40a7",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 3
