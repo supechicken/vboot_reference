@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a11e88c3_92108aec",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-21T03:39:50Z",
+      "side": 1,
+      "message": "actually,\n\n- chromeos-firmwareupdate may be missing on early protos, public source builds, and generic boards like generic-amd64.\n- `--manifest` was supported on all platforms since ~M75, so all active boards should have it.\n\nSo, you should ignore it, or only run it if /usr/sbin/chromeos-firmwareupdate is missing.",
+      "parentUuid": "1dbe332e_30676a55",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 2
+      },
+      "revId": "43a419d69544712e50a45c34cefd5b67740480a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e80070d5_121c26f3",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1

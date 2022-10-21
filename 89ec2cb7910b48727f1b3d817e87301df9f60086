@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02d6e526_ece3e6f4",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-21T03:39:50Z",
+      "side": 1,
+      "message": "I think there are other changes going to",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 39
+      },
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d623eaae_d95c40a7",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 3
@@ -31,6 +54,93 @@
       "writtenOn": "2022-10-21T02:35:18Z",
       "side": 1,
       "message": "Why this? If you want to allow a single command to fail, you can use `|| true` or `if \u003ccommand\u003e; then ...; fi`.",
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9d9f68_b313edba",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-21T03:39:50Z",
+      "side": 1,
+      "message": "in fact I\u0027d rather put this in a function, then correctly change the variables to local variables, and simply\n\n  report_firmware_mismatch() {\n  }\n \n  ... \n  report_firmware_mismatch || true",
+      "parentUuid": "d623eaae_d95c40a7",
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3124ae13_2fdbdd7a",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-21T03:39:50Z",
+      "side": 1,
+      "message": "include thee model so people would know why it failed, e.g.\n\n debug \"Failed to get the expected fwid for model \u0027${model}\u0027.\"",
+      "range": {
+        "startLine": 397,
+        "startChar": 36,
+        "endLine": 397,
+        "endChar": 40
+      },
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc7a2f52_8fcb4e3f",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-21T03:39:50Z",
+      "side": 1,
+      "message": "System firmware matched OS bundled firmware.",
+      "range": {
+        "startLine": 399,
+        "startChar": 28,
+        "endLine": 399,
+        "endChar": 61
+      },
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d58a62d_dd9e5ba9",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-21T03:39:50Z",
+      "side": 1,
+      "message": "System firmware mismatched OS bundled firmware.",
+      "range": {
+        "startLine": 402,
+        "startChar": 28,
+        "endLine": 402,
+        "endChar": 58
+      },
       "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
