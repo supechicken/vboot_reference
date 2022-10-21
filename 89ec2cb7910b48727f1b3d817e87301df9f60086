@@ -76,6 +76,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b95df4_a9a1a8fd",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1531437
+      },
+      "writtenOn": "2022-10-21T06:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be9d9f68_b313edba",
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3124ae13_2fdbdd7a",
@@ -89,6 +107,30 @@
       "writtenOn": "2022-10-21T03:39:50Z",
       "side": 1,
       "message": "include thee model so people would know why it failed, e.g.\n\n debug \"Failed to get the expected fwid for model \u0027${model}\u0027.\"",
+      "range": {
+        "startLine": 397,
+        "startChar": 36,
+        "endLine": 397,
+        "endChar": 40
+      },
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4da6b1_15498449",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1531437
+      },
+      "writtenOn": "2022-10-21T06:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3124ae13_2fdbdd7a",
       "range": {
         "startLine": 397,
         "startChar": 36,
@@ -122,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf5e9b9_425066f8",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1531437
+      },
+      "writtenOn": "2022-10-21T06:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc7a2f52_8fcb4e3f",
+      "range": {
+        "startLine": 399,
+        "startChar": 28,
+        "endLine": 399,
+        "endChar": 61
+      },
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d58a62d_dd9e5ba9",
@@ -135,6 +201,30 @@
       "writtenOn": "2022-10-21T03:39:50Z",
       "side": 1,
       "message": "System firmware mismatched OS bundled firmware.",
+      "range": {
+        "startLine": 402,
+        "startChar": 28,
+        "endLine": 402,
+        "endChar": 58
+      },
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8398a92_7a2368f1",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1531437
+      },
+      "writtenOn": "2022-10-21T06:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d58a62d_dd9e5ba9",
       "range": {
         "startLine": 402,
         "startChar": 28,
