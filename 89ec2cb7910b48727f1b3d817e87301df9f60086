@@ -16,6 +16,23 @@
       "message": "per question to FW folks",
       "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d623eaae_d95c40a7",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-21T02:35:18Z",
+      "side": 1,
+      "message": "Why this? If you want to allow a single command to fail, you can use `|| true` or `if \u003ccommand\u003e; then ...; fi`.",
+      "revId": "89ec2cb7910b48727f1b3d817e87301df9f60086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

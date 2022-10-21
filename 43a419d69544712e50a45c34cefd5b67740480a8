@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dbe332e_30676a55",
+        "filename": "utility/dev_debug_vboot",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-10-21T02:35:18Z",
+      "side": 1,
+      "message": "I don\u0027t think `chromeos-firmwareupdate` can ever be missing, but I think it might not always support the --manifest switch. I think it\u0027s okay if we just ignore this feature for the old boards that don\u0027t. +Hung-Te should know all those special cases much better.",
+      "parentUuid": "1a7f3d92_2bdcb6af",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 2
+      },
+      "revId": "43a419d69544712e50a45c34cefd5b67740480a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e80070d5_121c26f3",
         "filename": "utility/dev_debug_vboot",
         "patchSetId": 1
