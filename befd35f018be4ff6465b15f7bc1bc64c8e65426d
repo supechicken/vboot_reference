@@ -161,6 +161,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4baeef79_59dd3afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-25T06:21:05Z",
+      "side": 1,
+      "message": "\u003e The thing is that in Nissa case there are no LOEM boards, so there are no saved keyblocks and ro_gscvd section\n\nNot just LOEM boards - all models under Unibuild should also have rootkey.* and vblock_*. In fact, if you look at the keyset/ folder you\u0027ll see the vblock files.\n\nFrom the resigned file, (you can rename it to *.zip and then open it), I don\u0027t see any gsvcd.* files. So I\u0027m slightly concerned things may go wrong if two projects (with different brand code) shares one firmware image file?",
+      "parentUuid": "54d77969_d866c84a",
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e603472b_c2e55a7a",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
