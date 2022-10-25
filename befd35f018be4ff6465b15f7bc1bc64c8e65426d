@@ -143,6 +143,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "54d77969_d866c84a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-25T03:34:54Z",
+      "side": 1,
+      "message": "I added a ling to Nissa tarballs before and after signing to https://b.corp.google.com/issues/247645824#comment3\n\nThe thing is that in Nissa case there are no LOEM boards, so there are no saved keyblocks and ro_gscvd sections.\n\nAt some point I modified the dedede tree to produced images with RO_GSCVD sections and signer_config.csv with brand codes, and verified its signing too.",
+      "parentUuid": "63e12ad4_0e75ab6f",
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e603472b_c2e55a7a",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
