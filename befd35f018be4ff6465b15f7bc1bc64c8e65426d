@@ -90,6 +90,41 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14b23467_e25dec04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-25T02:07:24Z",
+      "side": 1,
+      "message": "sorry just realized I didn\u0027t send out the draft.",
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63e12ad4_0e75ab6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-25T02:07:24Z",
+      "side": 1,
+      "message": "Some examples of the output files. Can you find an image (with firmware updaters), run the sign_official_build on it, mount/extract the firmware updater from it, and upload it to the bug or just send to me?",
+      "parentUuid": "b8e7ce5f_996079bd",
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e603472b_c2e55a7a",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
