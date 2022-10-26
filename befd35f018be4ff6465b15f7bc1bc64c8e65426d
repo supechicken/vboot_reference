@@ -179,6 +179,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "63291a0a_41ec1ee8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-10-26T00:30:37Z",
+      "side": 1,
+      "message": "The problem was that the test key directory contents does not match the key directory on the signer. Once I added the `loem.ini` file and renamed the keys appropriately it all worked. Check out antoher pair of archives before and after in the same folder: https://drive.google.com/drive/folders/17Qv40TnPOvoXkEYmwCNzySffTGzFXBpl?usp\u003dsharing",
+      "parentUuid": "4baeef79_59dd3afc",
+      "revId": "befd35f018be4ff6465b15f7bc1bc64c8e65426d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e603472b_c2e55a7a",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 4
