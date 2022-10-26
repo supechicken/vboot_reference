@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a8e3d4_4aca400e",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-26T09:03:43Z",
+      "side": 1,
+      "message": "I\u0027d prefer to not add a parameter that would overwhelming change the meaning of return values. The firmware_image-\u003edata should always point to a complete firmware image, not a region of data. That would lead to confusion.\n\nInstead, I think you can add a wrapper function, for example\n\n int flashrom_read_region(struct firmware_image *image, const char *region,\n                          unsigned char *start, int *len);\n\nThat the the caller can always read first, then figure out the region to use.",
+      "range": {
+        "startLine": 72,
+        "startChar": 23,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "01197e4136a78b3ae636f3848d8b41b6d4151c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
