@@ -1,6 +1,63 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd8f10b_284443ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-26T07:41:40Z",
+      "side": 1,
+      "message": "No period at the end.",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58530d19_0f443ccf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-26T07:41:40Z",
+      "side": 1,
+      "message": "Could you explain more about the purpose of the change (and maybe how this relates to b/253966060)? If `--emulate` and the dummy programmer are equivalent, why do we prefer one over the other?",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb5d152_31c36b83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-26T07:41:40Z",
+      "side": 1,
+      "message": "How\u0027s this related to the `--emulate` change? Would any test fail without the extra size mismatch check?",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ad447e1c_21933e97",
@@ -14,6 +71,23 @@
       "writtenOn": "2022-10-25T08:51:17Z",
       "side": 1,
       "message": "Hungte could you take a look at the chain? I don\u0027t quite understand the modified code here.",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d44914_0f22ff0d",
+        "filename": "futility/updater.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-10-26T07:41:40Z",
+      "side": 1,
+      "message": "I think it should be fine to move this to right below `QUIRK_PRESERVE_ME`?",
       "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
