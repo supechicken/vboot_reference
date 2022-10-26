@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b75dad4_85191418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-26T09:11:40Z",
+      "side": 1,
+      "message": "I\u0027d prefer to not add more flags. We should trust crosid when it\u0027s available, then (for example when using servo/ccd) look at firmware ID to decide if there\u0027s a single match, otherwise ask user to provide the explicit model (--model). There\u0027s no need to make the user/developer confused by the --detect-model*.",
+      "revId": "63bca6084b1884cb6ef670d9d1346e9f17fd1098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
