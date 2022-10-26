@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8fb358_555ac99a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-10-26T10:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd8f10b_284443ca",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58530d19_0f443ccf",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4b1ee3_d1a1ecc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-10-26T10:17:55Z",
+      "side": 1,
+      "message": "It avoids duplication and the dummy programmer covers the full API surface rather than requiring special-casing for every interaction with flashrom so adding new interactions with flashrom are implicitly covered by a fake implementation in testing rather than needing special handling.\n\nI think go/tott/528 covers good reasons for dummy programmer being a better choice of fake implementation.",
+      "parentUuid": "58530d19_0f443ccf",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eb5d152_31c36b83",
@@ -72,6 +114,24 @@
       "writtenOn": "2022-10-26T07:41:40Z",
       "side": 1,
       "message": "How\u0027s this related to the `--emulate` change? Would any test fail without the extra size mismatch check?",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5a6b77_117ad4e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-10-26T10:17:55Z",
+      "side": 1,
+      "message": "Yes. There was a test that checks for the error message emitted by the emulate codepath, but I guess the specifics of the error message don\u0027t matter too much so removed.",
+      "parentUuid": "9eb5d152_31c36b83",
       "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dc51ea5_2e51d741",
+        "filename": "futility/updater.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-10-26T10:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87d44914_0f22ff0d",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d6deea8_fd39e79c",
@@ -158,6 +236,30 @@
       "writtenOn": "2022-10-26T08:53:32Z",
       "side": 1,
       "message": "this used to be handled by the underlying engine (libflashrom). Why we need to fail here?",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 2
+      },
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec810cd_07731efe",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-10-26T10:17:55Z",
+      "side": 1,
+      "message": "In tests `emulate_write_firmware()` performed this check, and the test expects the output to contain \"Image size is different\". libflashrom will handle this, but error message output is just the generic \"Failed writing firmware.\"",
+      "parentUuid": "4d6deea8_fd39e79c",
       "range": {
         "startLine": 796,
         "startChar": 0,
