@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68c2655e_040ae7c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-26T08:53:32Z",
+      "side": 1,
+      "message": "I\u0027d ask the same questions. All the special cases and quirks were made for using special programmers, but these are all not needed if we do --emulate. So why change to the dummy programmer that has more special cases? Why can\u0027t we stay with --emulate?\n\nOr, if you really prefer to call the dummy programmer, I think another approach is to modify the emulation layer so it\u0027ll choose the dummy programmer when needed. Isn\u0027t that better than handling the special cases everywhere?",
+      "parentUuid": "58530d19_0f443ccf",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9eb5d152_31c36b83",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -123,6 +141,29 @@
       "writtenOn": "2022-10-26T07:41:40Z",
       "side": 1,
       "message": "I think it should be fine to move this to right below `QUIRK_PRESERVE_ME`?",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6deea8_fd39e79c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-26T08:53:32Z",
+      "side": 1,
+      "message": "this used to be handled by the underlying engine (libflashrom). Why we need to fail here?",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 2
+      },
       "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

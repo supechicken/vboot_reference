@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc785805_fafa43e0",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-10-26T08:53:32Z",
+      "side": 0,
+      "message": "I think then we\u0027ll want to change this to \"verify --emulate behavior\" - e.g., do a real --emulate call and compare with the output from dummy programmer.",
+      "range": {
+        "startLine": 497,
+        "startChar": 2,
+        "endLine": 497,
+        "endChar": 6
+      },
+      "revId": "e18a6cda6b74df772f98daeefe1273807c3710d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
