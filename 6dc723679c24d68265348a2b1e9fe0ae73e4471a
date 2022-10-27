@@ -206,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ca94bb_b4b1f9be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-10-27T01:39:07Z",
+      "side": 1,
+      "message": "I think the usual problem running flashrom as not root is it\u0027s installed to /usr/sbin so it isn\u0027t found by $PATH-based lookups.",
+      "parentUuid": "a7f8d65c_e170a720",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87d44914_0f22ff0d",
@@ -302,6 +320,30 @@
       "side": 1,
       "message": "Can you add a comment Sam and do you believe this is actually something that should be fixed in the API to give back better telemetry to the call site?",
       "parentUuid": "8ec810cd_07731efe",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 2
+      },
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb37b28_82181aae",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-10-27T01:39:07Z",
+      "side": 1,
+      "message": "`flashrom_image_write()` in libflashrom.h does document returning \"4 if buffer_len doesn\u0027t match the size of the flash chip\" so we can check for that to detect this case. It isn\u0027t currently specifically checked for outside one test though so it\u0027s probably fine as is.",
+      "parentUuid": "471b0b78_99407753",
       "range": {
         "startLine": 796,
         "startChar": 0,
