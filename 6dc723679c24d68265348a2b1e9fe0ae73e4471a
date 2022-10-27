@@ -188,6 +188,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f8d65c_e170a720",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-10-27T00:06:15Z",
+      "side": 1,
+      "message": "dummy should not need root for the cli or lib entry-points. the cli now is simply a caller of the lib API apart from the case of parallel programmers which we don\u0027t use.",
+      "parentUuid": "205b3e82_2c9afe88",
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87d44914_0f22ff0d",
@@ -260,6 +278,30 @@
       "side": 1,
       "message": "In tests `emulate_write_firmware()` performed this check, and the test expects the output to contain \"Image size is different\". libflashrom will handle this, but error message output is just the generic \"Failed writing firmware.\"",
       "parentUuid": "4d6deea8_fd39e79c",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 801,
+        "endChar": 2
+      },
+      "revId": "6dc723679c24d68265348a2b1e9fe0ae73e4471a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "471b0b78_99407753",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-10-27T00:06:15Z",
+      "side": 1,
+      "message": "Can you add a comment Sam and do you believe this is actually something that should be fixed in the API to give back better telemetry to the call site?",
+      "parentUuid": "8ec810cd_07731efe",
       "range": {
         "startLine": 796,
         "startChar": 0,
