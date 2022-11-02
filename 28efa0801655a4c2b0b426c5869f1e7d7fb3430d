@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c323bb_e8fc355f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-11-02T02:19:59Z",
+      "side": 1,
+      "message": "Is this really required by the other patches? I\u0027m still not convinced since this makes the flow \u0026 logic more complicated, especially the test-only quirk. I\u0027d somehow agree we should revise how the updater decides \"this is a host-like update that should run all the host-specific logic\", also \"how the host retries correct system information\" (one recent example is we are seeing wrong information when the lab is running the updater on labstation to flash another DUT - where labstation itself is also cros). However it should not be fixed by more hacks.\n\nMoreover, it\u0027s probably even better if we still use --emulate to specify that we want to do emulation, but internally the updater will decide it if should use the dummy programmer or internal emulation when needed (for example when compiled without libflashrom).\n\nMaybe detach this one and we can decide later how to solve those issues.",
+      "revId": "28efa0801655a4c2b0b426c5869f1e7d7fb3430d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
