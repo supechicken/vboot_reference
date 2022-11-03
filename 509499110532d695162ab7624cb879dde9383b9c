@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "347a7a84_f41d7444",
+        "filename": "futility/updater.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-03T05:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a7a72b_b3d479ae",
+      "range": {
+        "startLine": 1566,
+        "startChar": 2,
+        "endLine": 1567,
+        "endChar": 23
+      },
+      "revId": "509499110532d695162ab7624cb879dde9383b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e2fbed_c3f2086a",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-02T06:55:13Z",
       "side": 1,
       "message": "Why do we need to store the dummy programmer in `cfg-\u003eemulation`? I think we could keep it the same value as `arg-\u003eemulation`.",
+      "revId": "509499110532d695162ab7624cb879dde9383b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06dbe6e1_4b40cf38",
+        "filename": "futility/updater.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-03T05:45:16Z",
+      "side": 1,
+      "message": "Sure. We\u0027ll just need another field to track lifetime of the dummy programmer string.",
+      "parentUuid": "d4e2fbed_c3f2086a",
       "revId": "509499110532d695162ab7624cb879dde9383b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
