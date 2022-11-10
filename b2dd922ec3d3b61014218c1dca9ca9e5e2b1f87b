@@ -39,6 +39,30 @@
       },
       "revId": "b2dd922ec3d3b61014218c1dca9ca9e5e2b1f87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416c0134_6aed7eb8",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-11-10T15:01:33Z",
+      "side": 1,
+      "message": "\"MRC\" is Intel-specific term so I\u0027d rather use a more generic term like \"memory training data\". I thought about \"clear\" or \"wipe\" but then it will be \"clear_memory_training_data\". Even \"clear_memory_data\" is probably too long.\n\nIt is true the futility doesn\u0027t retrain, but I also don\u0027t want to make the quirk name too long...\n\nBut anyway, given all the section names are \"MRCXXX\", I think it\u0027s fine to call this \"clear_mrc_data\" or even just \"clear_mrc\".",
+      "parentUuid": "60918222_e6056a27",
+      "range": {
+        "startLine": 578,
+        "startChar": 17,
+        "endLine": 578,
+        "endChar": 31
+      },
+      "revId": "b2dd922ec3d3b61014218c1dca9ca9e5e2b1f87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
