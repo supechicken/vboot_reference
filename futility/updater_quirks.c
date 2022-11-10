@@ -428,6 +428,53 @@ static int quirk_preserve_me(struct updater_config *cfg)
 	return 1;
 }
 
+static int quirk_retrain_memory(struct updater_config *cfg)
+{
+	struct firmware_section section;
+	struct firmware_image *image = &cfg->image_current;
+	int i, count = 0;
+	int flash_now = 0;
+
+	/*
+	 * Newer Intel devices may have multiple MRC caches (RECOVERY, RW,
+	 * RW_VAR and ARM devices may have only RW caches, so we want to
+	 * invalidate all known critical names.
+	 */
+	const char * const mrc_names[] = {
+		"RECOVERY_MRC_CACHE",
+		"RW_MRC_CACHE",
+		"UNIFIED_MRC_CACHE",
+	};
+
+	if (is_write_protection_enabled(cfg) || cfg->try_update)
+		flash_now = 1;
+
+	for (i = 0; i < ARRAY_SIZE(mrc_names); i++) {
+		const char *name = mrc_names[i];
+		const char *write_names[2] = {0};
+
+		if (!firmware_section_exists(image, name))
+			continue;
+		find_firmware_section(&section, image, name);
+		if (!section.size)
+			continue;
+
+		WARN("Wiping memory training data: %s\n", name);
+		memset(section.data, 0xff, section.size);
+		if (flash_now) {
+			write_names[0] = name;
+			write_system_firmware(cfg, image, write_names);
+		}
+		count++;
+	}
+	if (count)
+		WARN("Next boot will take a few mins for memory training.\n");
+	else
+		WARN("No memory training data found in the firmware image.\n");
+
+	return 0;
+}
+
 /*
  * Disable checking platform compatibility.
  */
@@ -526,6 +573,11 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "external_flashrom";
 	quirks->help = "Use external flashrom to access the system firmware.";
 	quirks->apply = NULL;  /* Simple config. */
+
+	quirks = &cfg->quirks[QUIRK_RETRAIN_MEMORY];
+	quirks->name = "retrain_memory";
+	quirks->help = "b/255617349: Wipe memory training data to retrain.";
+	quirks->apply = quirk_retrain_memory;
 }
 
 /*
