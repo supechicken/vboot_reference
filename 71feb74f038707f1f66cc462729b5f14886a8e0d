@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f235cf8_c2ea6b21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-11-11T00:32:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand all the details on this issue, but generally such a quirk shouldn\u0027t be necessary. All the training data cache implementations we use should have some sort of way to track versions which forces invalidation on a mismatch (e.g. the `version` parameter to the generic mrc_cache APIs). If a new firmware is not compatible with old training data formats, the correct fix should usually be to bump that version number and have the invalidation taken care of automatically by coreboot.",
+      "revId": "71feb74f038707f1f66cc462729b5f14886a8e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
