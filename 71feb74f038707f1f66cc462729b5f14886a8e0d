@@ -34,6 +34,23 @@
       "parentUuid": "7f235cf8_c2ea6b21",
       "revId": "71feb74f038707f1f66cc462729b5f14886a8e0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2a1ce1_24cac104",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-11T02:01:52Z",
+      "side": 1,
+      "message": "Also `RW_VAR_MRC_CACHE`?\n\nActually, in coreboot FMAP files all `RW_VAR_MRC_CACHE` and `RECOVERY_MRC_CACHE` are contained in `UNIFIED_MRC_CACHE`. Some other boards have only `RW_MRC_CACHE` without `UNIFIED_MRC_CACHE`. Therefore, I wonder if really need `UNIFIED_MRC_CACHE` here.",
+      "revId": "71feb74f038707f1f66cc462729b5f14886a8e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
