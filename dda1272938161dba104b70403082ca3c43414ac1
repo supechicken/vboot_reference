@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5e55d6_0bfb0f69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2022-11-11T07:47:25Z",
+      "side": 1,
+      "message": "after second thought, maybe we should:\n\n1. only call `logger` when `\"${FLAGS_image}\" \u003d\u003d \"${ROOTDEV_DISK\"`  (the device is changing itself).  So we are not logging these operations on workstations nor builders.\n2. We just log all parameters passed to the script before line 66.  Or, we log the operations / parameters in `resign_ssd_kernel` function.  So the logs are not limited to disable_rootfs_verification.",
+      "revId": "dda1272938161dba104b70403082ca3c43414ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
