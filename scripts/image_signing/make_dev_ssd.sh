@@ -86,6 +86,7 @@ remove_rootfs_verification() {
   local new_root="PARTUUID=%U/PARTNROFF=1"
   # the first line in sed is to strip out bootcache details
   local rw_root_opt="s| ro | rw |"
+  logger -t make_dev_ssd.sh -p 4 "removing rootfs verification"
   if [ "${FLAGS_default_rw_root}" = "${FLAGS_FALSE}" ]; then
     rw_root_opt="s| rw | ro |"
   fi
