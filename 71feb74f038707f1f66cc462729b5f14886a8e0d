@@ -51,6 +51,24 @@
       "message": "Also `RW_VAR_MRC_CACHE`?\n\nActually, in coreboot FMAP files all `RW_VAR_MRC_CACHE` and `RECOVERY_MRC_CACHE` are contained in `UNIFIED_MRC_CACHE`. Some other boards have only `RW_MRC_CACHE` without `UNIFIED_MRC_CACHE`. Therefore, I wonder if really need `UNIFIED_MRC_CACHE` here.",
       "revId": "71feb74f038707f1f66cc462729b5f14886a8e0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81edffbe_8f1e41ca",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-11-11T02:23:15Z",
+      "side": 1,
+      "message": "RW_VAR_MRC_CACHE is more like a recently thing and for devices with RW_VAR_MRC_CACHE, they always have UNIFIED_MRC_CACHE.\n\nRW_MRC_CACHE and RECOVERY_MRC_CACHE were listed explicitly because I thought there were devices (e.g., trogdor) only having the two without  UNIFIED_MRC_CACHE; but after checking the firmware branches I think you are right. Let me change this to only wipe one of them.",
+      "parentUuid": "0a2a1ce1_24cac104",
+      "revId": "71feb74f038707f1f66cc462729b5f14886a8e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
