@@ -70,6 +70,9 @@ eval set -- "$FLAGS_ARGV"
 ORIGINAL_PARTITIONS="$FLAGS_partitions"
 : ${FLAGS_partitions:=$DEFAULT_PARTITIONS}
 
+# Log the operartions and the parameters passed to the script
+logger -p 4 "executing ${ORIGINAL_CMD} with the following parameters: ${ORIGINAL_PARAMS}"
+
 # Globals
 # ----------------------------------------------------------------------------
 set -e
