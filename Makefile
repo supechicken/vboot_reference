@@ -714,13 +714,6 @@ TEST_NAMES += \
 	tests/tlcl_tests
 endif
 
-TEST_FUTIL_NAMES = \
-	tests/futility/binary_editor \
-	tests/futility/test_file_types \
-	tests/futility/test_not_really
-
-TEST_NAMES += ${TEST_FUTIL_NAMES}
-
 TEST2X_NAMES = \
 	tests/vb2_api_tests \
 	tests/vb2_auxfw_sync_tests \
@@ -1295,12 +1288,6 @@ run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_sig_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/hmac_test
 
-.PHONY: runfutiltests
-runfutiltests: install_for_test
-	${RUNTEST} ${SRC_RUN}/tests/futility/run_test_scripts.sh
-	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
-	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
-
 # Test all permutations of encryption keys, instead of just the ones we use.
 # Not run by automated build.
 .PHONY: runlongtests
@@ -1317,7 +1304,7 @@ rununittests: runcgpttests runmisctests run2tests
 # Print a big green success message at the end of all tests. If you don't see
 # that, you know there was an error somewhere further up.
 .PHONY: runtests
-runtests: rununittests runtestscripts runfutiltests
+runtests: rununittests runtestscripts
 	${Q}echo -e "\nruntests: \E[32;1mALL TESTS PASSED SUCCESSFULLY!\E[0;m\n"
 
 # Code coverage
