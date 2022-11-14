@@ -22,6 +22,30 @@
       },
       "revId": "5075b7e35c39ecf7b1c349f0ea14d0b18245e6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e99fd595_fb035830",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1555847
+      },
+      "writtenOn": "2022-11-14T07:02:36Z",
+      "side": 1,
+      "message": "I think `-p NOTICE` would be more clearly and properly, thanks!",
+      "parentUuid": "cf055b4e_4e1afbb4",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "5075b7e35c39ecf7b1c349f0ea14d0b18245e6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
