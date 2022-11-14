@@ -45,28 +45,25 @@ static struct vb2_id opt_id;
 static int force_id;
 
 static const struct option long_opts[] = {
-	{"version",  1, 0, OPT_VERSION},
-	{"desc",     1, 0, OPT_DESC},
-	{"id",       1, 0, OPT_ID},
-	{"hash_alg", 1, 0, OPT_HASH_ALG},
-	{"help",     0, 0, OPT_HELP},
-	{NULL, 0, 0, 0}
-};
+	{"version", 1, 0, OPT_VERSION}, {"desc", 1, 0, OPT_DESC},
+	{"id", 1, 0, OPT_ID},		{"hash_alg", 1, 0, OPT_HASH_ALG},
+	{"help", 0, 0, OPT_HELP},	{NULL, 0, 0, 0}};
 
 static void print_help(int argc, char *argv[])
 {
 	enum vb2_hash_algorithm alg;
 
 	printf("\n"
-"Usage:  " MYNAME " %s [options] <INFILE> [<BASENAME>]\n", argv[0]);
+	       "Usage:  " MYNAME " %s [options] <INFILE> [<BASENAME>]\n",
+	       argv[0]);
 	printf("\n"
-"Create a keypair from an RSA key (.pem file).\n"
-"\n"
-"Options:\n"
-"\n"
-"  --version <number>          Key version (default %d)\n"
-"  --hash_alg <number>         Hashing algorithm to use:\n",
-		DEFAULT_VERSION);
+	       "Create a keypair from an RSA key (.pem file).\n"
+	       "\n"
+	       "Options:\n"
+	       "\n"
+	       "  --version <number>          Key version (default %d)\n"
+	       "  --hash_alg <number>         Hashing algorithm to use:\n",
+	       DEFAULT_VERSION);
 	for (alg = 0; alg < VB2_HASH_ALG_COUNT; alg++) {
 		const char *name = vb2_get_hash_algorithm_name(alg);
 		if (strcmp(name, VB2_INVALID_ALG_NAME) != 0)
@@ -74,11 +71,11 @@ static void print_help(int argc, char *argv[])
 			       alg, name,
 			       alg == VB2_HASH_SHA256 ? " (default)" : "");
 	}
-	printf(
-"  --id <id>                   Identifier for this keypair (vb21 only)\n"
-"  --desc <text>               Human-readable description (vb21 only)\n"
-"\n");
-
+	printf("  --id <id>                   Identifier for this keypair "
+	       "(vb21 only)\n"
+	       "  --desc <text>               Human-readable description (vb21 "
+	       "only)\n"
+	       "\n");
 }
 
 static int vb1_make_keypair(void)
@@ -292,7 +289,7 @@ static int vb2_make_keypair(void)
 
 done:
 	RSA_free(rsa_key);
-	if (privkey)				/* prevent double-free */
+	if (privkey) /* prevent double-free */
 		privkey->rsa_private_key = 0;
 	vb2_private_key_free(privkey);
 	vb2_public_key_free(pubkey);
@@ -305,6 +302,7 @@ static int do_create(int argc, char *argv[])
 	int errorcnt = 0;
 	char *e, *s;
 	int i, r, len, remove_ext = 0;
+	fprintf(stderr, "cool message\n");
 
 	while ((i = getopt_long(argc, argv, "", long_opts, NULL)) != -1) {
 		switch (i) {
@@ -312,8 +310,8 @@ static int do_create(int argc, char *argv[])
 		case OPT_VERSION:
 			opt_version = strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
-				fprintf(stderr,
-					"invalid version \"%s\"\n", optarg);
+				fprintf(stderr, "invalid version \"%s\"\n",
+					optarg);
 				errorcnt = 1;
 			}
 			break;
@@ -324,8 +322,7 @@ static int do_create(int argc, char *argv[])
 
 		case OPT_ID:
 			if (VB2_SUCCESS != vb2_str_to_id(optarg, &opt_id)) {
-				fprintf(stderr, "invalid id \"%s\"\n",
-					optarg);
+				fprintf(stderr, "invalid id \"%s\"\n", optarg);
 				errorcnt = 1;
 			}
 			force_id = 1;
@@ -333,8 +330,8 @@ static int do_create(int argc, char *argv[])
 
 		case OPT_HASH_ALG:
 			if (!vb2_lookup_hash_alg(optarg, &opt_hash_alg)) {
-				fprintf(stderr,
-					"invalid hash_alg \"%s\"\n", optarg);
+				fprintf(stderr, "invalid hash_alg \"%s\"\n",
+					optarg);
 				errorcnt++;
 			}
 			break;
@@ -355,7 +352,7 @@ static int do_create(int argc, char *argv[])
 			fprintf(stderr, "Missing argument to -%c\n", optopt);
 			errorcnt++;
 			break;
-		case 0:				/* handled option */
+		case 0: /* handled option */
 			break;
 		default:
 			FATAL("Unrecognized getopt output: %d\n", i);
@@ -379,9 +376,9 @@ static int do_create(int argc, char *argv[])
 
 	/* Decide how to determine the output filenames. */
 	if (argc > optind) {
-		s = argv[optind++];		/* just use this */
+		s = argv[optind++]; /* just use this */
 	} else {
-		s = infile;			/* based on pem file name */
+		s = infile; /* based on pem file name */
 		remove_ext = 1;
 	}
 
