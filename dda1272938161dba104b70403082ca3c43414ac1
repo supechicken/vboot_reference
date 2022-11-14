@@ -34,6 +34,24 @@
       "parentUuid": "de5e55d6_0bfb0f69",
       "revId": "dda1272938161dba104b70403082ca3c43414ac1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0b3bb3_a2824b55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1555847
+      },
+      "writtenOn": "2022-11-14T04:39:17Z",
+      "side": 1,
+      "message": "\u003e I think logging all parameters passed to the script is good for checking what we did when executing make_dev_ssd.sh.\n\u003e I will start to work on it, thanks for suggestion!",
+      "parentUuid": "ada08898_dc02adfe",
+      "revId": "dda1272938161dba104b70403082ca3c43414ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
