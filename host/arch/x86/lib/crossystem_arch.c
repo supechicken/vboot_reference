@@ -83,6 +83,10 @@
 #define GPIO_BASE_PATH "/sys/class/gpio"
 #define GPIO_EXPORT_PATH GPIO_BASE_PATH "/export"
 
+/* Base for SMBIOS information files */
+#define SMBIOS_BASE_PATH "/sys/class/dmi/id"
+#define SMBIOS_PRODUCT_VERSION_PATH SMBIOS_BASE_PATH "/product_version"
+
 /* Filename for NVRAM file */
 #define NVRAM_PATH "/dev/nvram"
 
@@ -834,6 +838,21 @@ static int ReadGpio(unsigned signal_type)
 	return (value == active_high ? 1 : 0);
 }
 
+static int GetBoardId(void)
+{
+	uint8_t *file_contents;
+	int board_id = -1;
+
+	if (vb2_read_file(SMBIOS_PRODUCT_VERSION_PATH, &file_contents, NULL) !=
+	    VB2_SUCCESS)
+		return -1;
+
+	if (sscanf((char *)file_contents, "rev%d\n", &board_id) != 1)
+		board_id = -1;
+
+	free(file_contents);
+	return board_id;
+}
 
 int VbGetArchPropertyInt(const char* name)
 {
@@ -896,6 +915,9 @@ int VbGetArchPropertyInt(const char* name)
 		else
 			value = (int)fwupdate_value;
 	}
+
+	if (!strcasecmp(name, "board_id"))
+		return GetBoardId();
 
 	return value;
 }
