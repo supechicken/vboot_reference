@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361aff85_7d1113e9",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-11-16T05:06:44Z",
+      "side": 1,
+      "message": "Had to modify this to use `fopen` instead of `vb2_read_file`, as `vb2_read_file` was being tripped up by the DMI sysfs implementation allowing seek past the end of the file (to offset 4096) in the kernel.\n\nPTAL \u003d)",
+      "range": {
+        "startLine": 844,
+        "startChar": 11,
+        "endLine": 844,
+        "endChar": 16
+      },
+      "revId": "8a3619a0bcd0572dae3ca5593d480a9a7979c068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
