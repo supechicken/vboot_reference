@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8e82b7_52b1ad76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-17T05:10:40Z",
+      "side": 1,
+      "message": "So this bug together with the missing `CONFIG_VBOOT_CBFS_INTEGRATION\u003dy` in `config` made us believe `VBOOT_CBFS_INTEGRATION` was working, while it\u0027s actually not?",
+      "revId": "2f4dcd52a27d66293719940156c590b0b3920fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
