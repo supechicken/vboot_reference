@@ -16,6 +16,24 @@
       "message": "So this bug together with the missing `CONFIG_VBOOT_CBFS_INTEGRATION\u003dy` in `config` made us believe `VBOOT_CBFS_INTEGRATION` was working, while it\u0027s actually not?",
       "revId": "2f4dcd52a27d66293719940156c590b0b3920fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f24dd1_bd7f3f4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2022-11-17T09:03:46Z",
+      "side": 1,
+      "message": "Unfortunately yes. VBOOT_CBFS_INTEGRATION is a big feature, so many errors could have slipped. That\u0027s why we have to verify it before enabling it :)\nTBH I\u0027m not sure, how error of this size slipped through. Moreover, I found out that there are a lot more errors and VBOOT_CBFS_INTEGRATION actually does not work yet. Right now I\u0027m working on making everything work.",
+      "parentUuid": "3c8e82b7_52b1ad76",
+      "revId": "2f4dcd52a27d66293719940156c590b0b3920fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
