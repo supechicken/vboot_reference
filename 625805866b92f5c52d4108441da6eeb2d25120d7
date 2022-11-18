@@ -16,6 +16,24 @@
       "message": "can\u0027t tell if I also need to revert https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/4033839\n\nIt looks like that would handle failures gracefully, so maybe not?",
       "revId": "625805866b92f5c52d4108441da6eeb2d25120d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7352bef6_4248b2d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-11-18T19:13:54Z",
+      "side": 1,
+      "message": "Yeah the autotest change should handle this being present/not gracefully. Thanks!",
+      "parentUuid": "aca3d872_9179c31b",
+      "revId": "625805866b92f5c52d4108441da6eeb2d25120d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
