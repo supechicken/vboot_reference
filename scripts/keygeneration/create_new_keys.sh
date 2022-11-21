@@ -180,6 +180,9 @@ main() {
   # For use in Factory Install and Developer Mode install shims.
   make_keyblock installer_kernel ${INSTALLER_KERNEL_KEYBLOCK_MODE} installer_kernel_data_key recovery_key
 
+  # Create AP RO verification platform keyblock.
+  make_keyblock arv_platform "${AP_RO_KEYBLOCK_MODE}" arv_platform arv_root
+
   if [[ "${android_keys}" == "true" ]]; then
     mkdir android
     "${SCRIPT_DIR}"/create_new_android_keys.sh android
