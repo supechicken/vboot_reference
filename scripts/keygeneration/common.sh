@@ -88,6 +88,8 @@ MINIOS_KERNEL_KEYBLOCK_MODE=$((0x1 | 0x2 | 0x8 | 0x20))
 KERNEL_KEYBLOCK_MODE=$((0x1 | 0x2 | 0x4 | 0x10))
 # Only allow in dev + recovery + non-miniOS.
 INSTALLER_KERNEL_KEYBLOCK_MODE=$((0x2 | 0x8 | 0x10))
+# Only allow in non-recovery + non-miniOS, does not mean much for AP RO keys.
+AP_RO_KEYBLOCK_MODE=$((0x1 | 0x2 | 0x4 | 0x10))
 
 # Emit .vbpubk and .vbprivk using given basename and algorithm
 # NOTE: This function also appears in ../../utility/dev_make_keypair. Making
