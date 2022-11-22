@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "164ba272_c5cf835f",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-22T06:53:40Z",
+      "side": 1,
+      "message": "Ahh... the value is not assigned yet here. Fixed in CL:4045570.",
+      "range": {
+        "startLine": 344,
+        "startChar": 21,
+        "endLine": 344,
+        "endChar": 35
+      },
+      "revId": "bd34307782b83ab2391908abfc64df967c545a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f63a8a8_ce34b84a",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-22T06:53:40Z",
+      "side": 1,
+      "message": "Should be `util_install_defaults` instead. Otherwise we\u0027d re-build the utilities with `make install` in `src_install()` from the ebuild. Also fixed in CL:4045570.",
+      "range": {
+        "startLine": 1016,
+        "startChar": 19,
+        "endLine": 1016,
+        "endChar": 48
+      },
+      "revId": "bd34307782b83ab2391908abfc64df967c545a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
