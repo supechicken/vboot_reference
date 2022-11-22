@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3efd71a8_9e18e0a4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-22T02:31:01Z",
+      "side": 1,
+      "message": "not a new issue, but this is a lot of duplication \u0026 easy to fall out of sync.  use an array to avoid that.\n\n```\nlocal cmd\u003d( .... )\necho \"Setting ...\" \"${cmd[@]}\"\n\"${cmd[@]}\"\n```",
+      "revId": "37194d0cc3e57a4c068b7560486b63ad3288d908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54b31e6f_f08ff85a",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
@@ -20,6 +37,23 @@
         "endLine": 607,
         "endChar": 64
       },
+      "revId": "37194d0cc3e57a4c068b7560486b63ad3288d908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa91121d_5a0725a4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-22T02:31:01Z",
+      "side": 1,
+      "message": "the way this logic is written leads to excessive indentation:\n\n```\nif ...; then\n  ... large indents ...\nelse\n  die ...\nfi\n```\n\nsince `die` aborts, invert the logic.\n\n```\nif ! ...; then\n  die ...\nfi\n\n... large command ...\n```",
       "revId": "37194d0cc3e57a4c068b7560486b63ad3288d908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
