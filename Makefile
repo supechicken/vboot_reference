@@ -307,8 +307,7 @@ SRC_RUN = $(subst ${SYSROOT},,${SRCDIR})
 
 # Default target.
 .PHONY: all
-all: fwlib futil utillib hostlib cgpt tlcl \
-	$(if ${SDK_BUILD},${UTIL_FILES_SDK},${UTIL_FILES_BOARD}) \
+all: fwlib futil utillib hostlib cgpt tlcl util_files \
 	$(if $(filter x86_64,${ARCH}),$(if $(filter clang,${CC}),fuzzers)) \
 	$(if $(filter-out 0,${COV}),coverage)
 
@@ -606,7 +605,6 @@ UTIL_FILES_SDK = ${UTIL_BINS_SDK} ${UTIL_SCRIPTS_SDK}
 UTIL_FILES_BOARD = ${UTIL_BINS_BOARD} ${UTIL_SCRIPTS_BOARD}
 ALL_OBJS += $(addsuffix .o,${UTIL_BINS_SDK})
 ALL_OBJS += $(addsuffix .o,${UTIL_BINS_BOARD})
-
 
 # Signing scripts that are also useful on DUTs.
 SIGNING_SCRIPTS_BOARD = \
@@ -996,6 +994,9 @@ cgpt_wrapper_install: cgpt_install ${CGPT_WRAPPER}
 
 # ----------------------------------------------------------------------------
 # Utilities
+
+.PHONY: util_files
+util_files: $(if ${SDK_BUILD},${UTIL_FILES_SDK},${UTIL_FILES_BOARD})
 
 # These have their own headers too.
 ${BUILD}/utility/%: INCLUDES += -Iutility/include
