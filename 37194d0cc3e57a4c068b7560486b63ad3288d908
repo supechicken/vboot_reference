@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2767b3_947902db",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-22T04:08:23Z",
+      "side": 1,
+      "message": "added a clean up patch.",
+      "parentUuid": "3efd71a8_9e18e0a4",
+      "revId": "37194d0cc3e57a4c068b7560486b63ad3288d908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54b31e6f_f08ff85a",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e6b369_8aab4b51",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-22T04:08:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54b31e6f_f08ff85a",
+      "range": {
+        "startLine": 580,
+        "startChar": 2,
+        "endLine": 607,
+        "endChar": 64
+      },
+      "revId": "37194d0cc3e57a4c068b7560486b63ad3288d908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa91121d_5a0725a4",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-11-22T02:31:01Z",
       "side": 1,
       "message": "the way this logic is written leads to excessive indentation:\n\n```\nif ...; then\n  ... large indents ...\nelse\n  die ...\nfi\n```\n\nsince `die` aborts, invert the logic.\n\n```\nif ! ...; then\n  die ...\nfi\n\n... large command ...\n```",
+      "revId": "37194d0cc3e57a4c068b7560486b63ad3288d908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba884263_36ca3bad",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-22T04:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa91121d_5a0725a4",
       "revId": "37194d0cc3e57a4c068b7560486b63ad3288d908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
