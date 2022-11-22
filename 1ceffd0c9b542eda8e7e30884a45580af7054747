@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ce7d51_698b01c8",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-11-22T22:59:27Z",
+      "side": 1,
+      "message": "nit: maybe better to factor this out into a separate constant, so you can write e.g. `FDT_CHROMEOS \"nonvolatile-context-storage\"` and don\u0027t have to repeat the raw string so often.",
+      "range": {
+        "startLine": 48,
+        "startChar": 33,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "1ceffd0c9b542eda8e7e30884a45580af7054747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
