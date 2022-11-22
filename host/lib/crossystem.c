@@ -779,6 +779,8 @@ int VbSetSystemPropertyString(const char *name, const char *value)
 	return result;
 }
 
+#ifdef USE_FLASHROM
+
 /**
  * Get index of the last valid VBNV entry in an EEPROM.
  *
@@ -876,3 +878,4 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	free(image.data);
 	return rv;
 }
+#endif
