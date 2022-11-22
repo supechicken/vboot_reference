@@ -29,7 +29,7 @@
 #include "host_common.h"
 
 /* Base name for firmware FDT files */
-#define FDT_BASE_PATH "/proc/device-tree/firmware/chromeos"
+#define FDT_BASE_PATH "/proc/device-tree"
 /* Path to compatible FDT entry */
 #define FDT_COMPATIBLE_PATH "/proc/device-tree/compatible"
 /* Path to the chromeos_arm platform device (deprecated) */
@@ -45,7 +45,7 @@
 #define GPIO_BASE_PATH "/sys/class/gpio"
 #define GPIO_EXPORT_PATH GPIO_BASE_PATH "/export"
 /* Name of NvStorage type property */
-#define FDT_NVSTORAGE_TYPE_PROP "nonvolatile-context-storage"
+#define FDT_NVSTORAGE_TYPE_PROP "firmware/chromeos/nonvolatile-context-storage"
 /* Errors */
 #define E_FAIL      -1
 #define E_FILEOP    -2
@@ -348,9 +348,9 @@ static int vb2_read_nv_storage_disk(struct vb2_context *ctx)
 	int rv = -1;
 	char nvctx_path[FNAME_SIZE];
 	int emmc_dev;
-	int lba = ReadFdtInt("nonvolatile-context-lba");
-	int offset = ReadFdtInt("nonvolatile-context-offset");
-	int size = ReadFdtInt("nonvolatile-context-size");
+	int lba = ReadFdtInt("firmware/chromeos/nonvolatile-context-lba");
+	int offset = ReadFdtInt("firmware/chromeos/nonvolatile-context-offset");
+	int size = ReadFdtInt("firmware/chromeos/nonvolatile-context-size");
 
 	emmc_dev = FindEmmcDev();
 	if (emmc_dev < 0)
@@ -391,9 +391,9 @@ static int vb2_write_nv_storage_disk(struct vb2_context *ctx)
 	int rv = -1;
 	char nvctx_path[FNAME_SIZE];
 	int emmc_dev;
-	int lba = ReadFdtInt("nonvolatile-context-lba");
-	int offset = ReadFdtInt("nonvolatile-context-offset");
-	int size = ReadFdtInt("nonvolatile-context-size");
+	int lba = ReadFdtInt("firmware/chromeos/nonvolatile-context-lba");
+	int offset = ReadFdtInt("firmware/chromeos/nonvolatile-context-offset");
+	int size = ReadFdtInt("firmware/chromeos/nonvolatile-context-size");
 
 	emmc_dev = FindEmmcDev();
 	if (emmc_dev < 0)
@@ -480,7 +480,7 @@ VbSharedDataHeader *VbSharedDataRead(void)
 {
 	void *block = NULL;
 	size_t size = 0;
-	if (ReadFdtBlock("vboot-shared-data", &block, &size))
+	if (ReadFdtBlock("firmware/chromeos/vboot-shared-data", &block, &size))
 		return NULL;
 	VbSharedDataHeader *p = (VbSharedDataHeader *)block;
 	if (p->magic != VB_SHARED_DATA_MAGIC) {
@@ -540,15 +540,15 @@ const char* VbGetArchPropertyString(const char* name, char* dest,
 
 	/* Properties from fdt */
 	if (!strcasecmp(name, "ro_fwid"))
-		prop = "readonly-firmware-version";
+		prop = "firmware/chromeos/readonly-firmware-version";
 	else if (!strcasecmp(name, "hwid"))
-		prop = "hardware-id";
+		prop = "firmware/chromeos/hardware-id";
 	else if (!strcasecmp(name, "fwid"))
-		prop = "firmware-version";
+		prop = "firmware/chromeos/firmware-version";
 	else if (!strcasecmp(name, "mainfw_type"))
-		prop = "firmware-type";
+		prop = "firmware/chromeos/firmware-type";
 	else if (!strcasecmp(name, "ecfw_act"))
-		prop = "active-ec-firmware";
+		prop = "firmware/chromeos/active-ec-firmware";
 
 	if (prop)
 		str = ReadFdtString(prop);
