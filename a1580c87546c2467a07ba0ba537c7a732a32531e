@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00e70a42_12ac3cc8",
+        "filename": "futility/updater.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-24T02:00:30Z",
+      "side": 1,
+      "message": "I would, but I don\u0027t know if I can accurately document these. I can point out where they correspond to in the [installer](https://source.chromium.org/chromium/chromiumos/platform2/+/main:installer/chromeos_install_config.h;l\u003d25;drc\u003d8f29d7772ae8751cda7a1b7549ce5bd76b242c70), where they are also undocumented.",
+      "parentUuid": "7fe964fb_5bf830ce",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "a1580c87546c2467a07ba0ba537c7a732a32531e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "873fd774_4cfa7c48",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-23T10:59:42Z",
       "side": 1,
       "message": "nit: how about \"No auto-update requested.\", too many \"not\"\u0027s here.",
+      "range": {
+        "startLine": 410,
+        "startChar": 8,
+        "endLine": 410,
+        "endChar": 33
+      },
+      "revId": "a1580c87546c2467a07ba0ba537c7a732a32531e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3648870_505e085d",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-24T02:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "873fd774_4cfa7c48",
       "range": {
         "startLine": 410,
         "startChar": 8,
