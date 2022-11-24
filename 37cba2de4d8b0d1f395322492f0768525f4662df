@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f75ee3_c6d93a52",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-24T01:38:05Z",
+      "side": 1,
+      "message": "this actually will have to be pointing to the AP RO verification root key in  ApRoV1Signing-MP/arv_root.vbprivk  \n\nwhich will have to be unwrapped and available by the time this script runs for generating pre-mp keys.",
+      "range": {
+        "startLine": 184,
+        "startChar": 66,
+        "endLine": 184,
+        "endChar": 75
+      },
+      "revId": "37cba2de4d8b0d1f395322492f0768525f4662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
