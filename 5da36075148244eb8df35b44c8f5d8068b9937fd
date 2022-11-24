@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0f3b69_ce8ec909",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-24T07:04:34Z",
+      "side": 1,
+      "message": "just style nits",
+      "revId": "5da36075148244eb8df35b44c8f5d8068b9937fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08326f8_ad2da620",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-24T07:04:34Z",
+      "side": 1,
+      "message": "fix all the indents on `full_command` so args are on lines by themselves\n\n```\nfull_comand\u003d(\n  ....\n)\nfull_command+\u003d(\n  --....\n)\n```",
+      "revId": "5da36075148244eb8df35b44c8f5d8068b9937fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
