@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c5cf09b_8c30a028",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-24T07:03:21Z",
+      "side": 1,
+      "message": "i missed the parent CL ... i thought existing `full_command` usage was already merged, but that seems to be new to https://crrev.com/c/4043440\n\nso in that case, use the unwrapped style",
+      "parentUuid": "ab317839_0a814f3f",
+      "revId": "e38e66e75a049e0691549e8626eff9d54ccca6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c2fde4c_b1b9a7e5",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 5

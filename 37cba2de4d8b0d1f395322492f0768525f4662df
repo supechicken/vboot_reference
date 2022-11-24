@@ -3,6 +3,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "243efcab_7ed31c80",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-24T07:03:21Z",
+      "side": 1,
+      "message": "\u003e warning: Quote to prevent word splitting/globbing, or split robustly with mapfile or read -a.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2206\n\nPlease fix.",
+      "parentUuid": "819440b6_b51c6299",
+      "range": {
+        "startLine": 579,
+        "startChar": 25,
+        "endLine": 579,
+        "endChar": 36
+      },
+      "revId": "37cba2de4d8b0d1f395322492f0768525f4662df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63f75ee3_c6d93a52",
         "filename": "scripts/keygeneration/create_new_keys.sh",
         "patchSetId": 6
