@@ -23,6 +23,8 @@ Options:
   --8k-installer-kernel  Use 8k key size for the installer kernel data
   --key-name <name>      Name of the keyset (for key.versions)
   --output <dir>         Where to write the keys (default is cwd)
+  --arv=root-path        Path to AP RO verificaton root key directory,
+                         defaults to ./ApRoV1Signing-MP
 EOF
 
   if [[ $# -ne 0 ]]; then
@@ -42,6 +44,7 @@ main() {
   local recovery_kernel_algoid=${RECOVERY_KERNEL_ALGOID}
   local minios_kernel_algoid=${MINIOS_KERNEL_ALGOID}
   local installer_kernel_algoid=${INSTALLER_KERNEL_ALGOID}
+  local arv_root_path="${ARV_ROOT_PATH}"
   local keyname
   local output_dir="${PWD}" setperms="false"
 
@@ -95,6 +98,11 @@ main() {
       installer_kernel_algoid=${RSA4096_SHA512_ALGOID}
       ;;
 
+    --arv-root-path)
+      arv_root_path="$2"
+      shift
+      ;;
+
     --key-name)
       keyname="$2"
       shift
@@ -135,6 +143,11 @@ main() {
     ) > "${VERSION_FILE}"
   fi
 
+  if [[ ! -d ${arv_root_path} ]]; then
+    echo "Error: AP RO root key directory \"${arv_root_path}\" not found" >&2
+    exit 1
+  fi
+
   local eckey_version fkey_version ksubkey_version kdatakey_version
 
   # Get the key versions for normal keypairs
@@ -158,7 +171,6 @@ main() {
   make_pair recovery_kernel_data_key ${recovery_kernel_algoid}
   make_pair minios_kernel_data_key   ${minios_kernel_algoid}
   make_pair installer_kernel_data_key ${installer_kernel_algoid}
-  make_pair arv_root ${ARV_ROOT_ALGOID}
   make_pair arv_platform ${ARV_PLATFORM_ALGOID}
 
   # Create the firmware keyblock for use only in Normal mode. This is redundant,
@@ -179,6 +191,11 @@ main() {
   # Create the installer keyblock for use in Developer + Recovery mode
   # For use in Factory Install and Developer Mode install shims.
   make_keyblock installer_kernel ${INSTALLER_KERNEL_KEYBLOCK_MODE} installer_kernel_data_key recovery_key
+
+  # Create AP RO verification platform keyblock.
+  make_keyblock arv_platform "${AP_RO_KEYBLOCK_MODE}" arv_platform \
+                "${arv_root_path}/root_key_arv_root" \
+                "${AP_RO_VERIFICATION_KEY_ALGOID}"
 
   if [[ "${android_keys}" == "true" ]]; then
     mkdir android

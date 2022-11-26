@@ -66,6 +66,8 @@ KERNEL_DATAKEY_ALGOID=${RSA2048_SHA256_ALGOID}
 # AP RO Verification.
 ARV_ROOT_ALGOID=${RSA4096_SHA256_ALGOID}
 ARV_PLATFORM_ALGOID=${RSA4096_SHA256_ALGOID}
+AP_RO_VERIFICATION_KEY_ALGOID="${RSA4096_SHA256_ALGOID}"
+ARV_ROOT_PATH="./ApRoV1Signing-MP" # Created on the HSM
 
 # Keyblock modes determine which boot modes a signing key is valid for use
 # in verification.
@@ -88,6 +90,8 @@ MINIOS_KERNEL_KEYBLOCK_MODE=$((0x1 | 0x2 | 0x8 | 0x20))
 KERNEL_KEYBLOCK_MODE=$((0x1 | 0x2 | 0x4 | 0x10))
 # Only allow in dev + recovery + non-miniOS.
 INSTALLER_KERNEL_KEYBLOCK_MODE=$((0x2 | 0x8 | 0x10))
+# Only allow in non-recovery + non-miniOS, does not mean much for AP RO keys.
+AP_RO_KEYBLOCK_MODE=$((0x1 | 0x2 | 0x4 | 0x10))
 
 # Emit .vbpubk and .vbprivk using given basename and algorithm
 # NOTE: This function also appears in ../../utility/dev_make_keypair. Making
@@ -145,20 +149,37 @@ make_au_payload_key() {
 #   0x08  Recovery mode
 #   0x10  Not miniOS mode
 #   0x20  miniOS mode
+#
+# The fifth argument is optional, and if passed indicates that pem signing is
+# required, and the fifth argument is the pem algorithm.
 make_keyblock() {
   local base=$1
   local flags=$2
   local pubkey=$3
   local signkey=$4
+  local create_command
+  local pem_algorithm="${5-}"
 
   echo "creating $base keyblock..."
+  create_command=(
+    vbutil_keyblock
+    --pack "${base}.keyblock"
+    --flags ${flags}
+    --datapubkey "${pubkey}.vbpubk"
+  )
 
+  if [[ -z ${pem_algorithm} ]]; then
+    create_command+=(
+      --signprivate "${signkey}.vbprivk"
+    )
+  else
+    create_command+=(
+      --signprivate_pem "${signkey}.pem"
+      --pem_algorithm "${pem_algorithm}"
+    )
+  fi
   # create it
-  vbutil_keyblock \
-    --pack "${base}.keyblock" \
-    --flags $flags \
-    --datapubkey "${pubkey}.vbpubk" \
-    --signprivate "${signkey}.vbprivk"
+  "${create_command[@]}"
 
   # verify it
   vbutil_keyblock \
