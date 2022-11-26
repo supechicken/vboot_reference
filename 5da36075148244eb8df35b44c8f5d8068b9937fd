@@ -50,6 +50,24 @@
       "message": "fix all the indents on `full_command` so args are on lines by themselves\n\n```\nfull_comand\u003d(\n  ....\n)\nfull_command+\u003d(\n  --....\n)\n```",
       "revId": "5da36075148244eb8df35b44c8f5d8068b9937fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d78fd46_8ed78dca",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-26T01:20:51Z",
+      "side": 1,
+      "message": "I thought you said it was up to me.\n\nDo you want them to be each on a separate line like\n```\nsign\n--type\nrwsig\n...\n```\n\nor command line options arguments requiring arguments to be in a single line?\n\n```\nsign\n--type rwsig\n...\n```",
+      "parentUuid": "e08326f8_ad2da620",
+      "revId": "5da36075148244eb8df35b44c8f5d8068b9937fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
