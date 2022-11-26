@@ -16,6 +16,23 @@
       "message": "took the premp key generation stuff out of this patch",
       "revId": "1b339c4d351d1485ed258b9b7bc3b945803161d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ee945f_71297acd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-26T01:22:12Z",
+      "side": 1,
+      "message": "this needs unwrapping too",
+      "revId": "1b339c4d351d1485ed258b9b7bc3b945803161d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
