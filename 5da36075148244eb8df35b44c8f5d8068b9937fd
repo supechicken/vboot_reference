@@ -68,6 +68,24 @@
       "parentUuid": "e08326f8_ad2da620",
       "revId": "5da36075148244eb8df35b44c8f5d8068b9937fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d3c156_fdcf7bd2",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-28T02:10:15Z",
+      "side": 1,
+      "message": "that was in a different CL, and i clarified in that one that my feedback was contingent upon it being existing code that you were updating.  i missed this CL where you introduced that style.\n\nmy primary point is about starting a new indent block at the `\u003d(` line.  i\u0027m not super strict on splitting of args inside that block.  do whatever looks logically reasonable.  for flags that take an argument, putting them on the same line is fine.",
+      "parentUuid": "3d78fd46_8ed78dca",
+      "revId": "5da36075148244eb8df35b44c8f5d8068b9937fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
