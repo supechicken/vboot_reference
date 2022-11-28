@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7b9de8_af4d49f3",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-28T03:05:10Z",
+      "side": 1,
+      "message": "+kramasub\n\nWould b/165590952 still be a problem if updating ME in recovery mode?",
+      "range": {
+        "startLine": 405,
+        "startChar": 12,
+        "endLine": 405,
+        "endChar": 20
+      },
+      "revId": "d54d24fb9e166d923661412134d41d9f722d871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043a9a27_768ff7d3",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-28T03:05:10Z",
+      "side": 1,
+      "message": "How about `!\u003d TRY_UPDATE_AUTO` to be even clearer?",
+      "range": {
+        "startLine": 409,
+        "startChar": 21,
+        "endLine": 409,
+        "endChar": 38
+      },
+      "revId": "d54d24fb9e166d923661412134d41d9f722d871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
