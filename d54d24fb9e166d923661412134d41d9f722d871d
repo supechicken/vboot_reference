@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0120ac9_c787425a",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-28T11:32:44Z",
+      "side": 1,
+      "message": "If recovery doesn\u0027t update the ME region, dogfood devices won\u0027t be recoverable without being returned if there\u0027s an incompatibility between ME RO and RW versions.",
+      "parentUuid": "5d7b9de8_af4d49f3",
+      "range": {
+        "startLine": 405,
+        "startChar": 12,
+        "endLine": 405,
+        "endChar": 20
+      },
+      "revId": "d54d24fb9e166d923661412134d41d9f722d871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "043a9a27_768ff7d3",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-28T03:05:10Z",
       "side": 1,
       "message": "How about `!\u003d TRY_UPDATE_AUTO` to be even clearer?",
+      "range": {
+        "startLine": 409,
+        "startChar": 21,
+        "endLine": 409,
+        "endChar": 38
+      },
+      "revId": "d54d24fb9e166d923661412134d41d9f722d871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f616e057_80599cba",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-28T11:32:44Z",
+      "side": 1,
+      "message": "`TRY_UPDATE_DEFERRED_HOLD` probably should trigger the quirk too since it\u0027s used for autoupdate; `TRY_UPDATE_DEFERRED_APPLY` only switches which RW to try next, so either way is fine for it. Excluding `TRY_UPDATE_OFF` seemed like the simplest option to achieve that coverage.",
+      "parentUuid": "043a9a27_768ff7d3",
       "range": {
         "startLine": 409,
         "startChar": 21,
