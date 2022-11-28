@@ -67,6 +67,24 @@
       "message": "nit: I would make this a warning, e.g. `WARN(\"GBB flags are non-zero\\n\")`",
       "revId": "bbc294889615dc010ba1f616d4aa8c14f1886ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67960159_7bb8048a",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-28T23:52:11Z",
+      "side": 1,
+      "message": "Frankly I don\u0027t think this should be warning - this would be happening on every image received from the signer and is normal. Leaving as is.",
+      "parentUuid": "64902fbe_c76356d4",
+      "revId": "bbc294889615dc010ba1f616d4aa8c14f1886ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
