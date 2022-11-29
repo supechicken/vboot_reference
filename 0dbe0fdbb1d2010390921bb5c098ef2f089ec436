@@ -16,6 +16,24 @@
       "message": "also not a new issue, but shouldn\u0027t this have `|| die` ?  same with the calls below.\n\nif you actually want to omit error checking, would be good to leave a comment explaining why ...",
       "revId": "0dbe0fdbb1d2010390921bb5c098ef2f089ec436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1acdda2f_e0da1955",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-29T01:00:13Z",
+      "side": 1,
+      "message": "it will not proceed if there has been an error due to `set -e` above, right?\n\n`die \"text\"` would make it a bit easier to troubleshoot I guess, let\u0027s leave it as an enhancement",
+      "parentUuid": "33a446f2_866ad5b8",
+      "revId": "0dbe0fdbb1d2010390921bb5c098ef2f089ec436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
