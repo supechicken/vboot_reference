@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71fe254b_2f73e6a8",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-11-29T16:34:45Z",
+      "side": 1,
+      "message": "Two things need to be aware of/addressed before taking this tradeoff:\n1) For the devices deployed in the lab WP is disabled. So any lab repair scripts using recovery has to be updated to use the EC reboot. This will impact all the previous generations of Intel devices(Dedede, Volteer, probably Puff) deployed in the lab.\n2) For the dogfood devices, concerned C\u0026F doc should be updated for the benefit of the dogfooders when they are recovering the device.",
+      "parentUuid": "8bc8f895_c9b119d4",
+      "range": {
+        "startLine": 405,
+        "startChar": 12,
+        "endLine": 405,
+        "endChar": 20
+      },
+      "revId": "d54d24fb9e166d923661412134d41d9f722d871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "043a9a27_768ff7d3",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 2
