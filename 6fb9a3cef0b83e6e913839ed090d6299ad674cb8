@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82754e95_e6ff5edb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1561252
+      },
+      "writtenOn": "2022-11-29T19:27:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6eaa2357_71da428b",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "6fb9a3cef0b83e6e913839ed090d6299ad674cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d4bcb816_ad38b93c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -76,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43639941_0d91136d",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1561252
+      },
+      "writtenOn": "2022-11-29T19:27:35Z",
+      "side": 1,
+      "message": "Looks like conditionally compiling utility/crossystem passes unit tests. I\u0027ve made the change in the latest patch set.",
+      "parentUuid": "d9df3b2b_b26708e0",
+      "revId": "6fb9a3cef0b83e6e913839ed090d6299ad674cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63134607_818e818d",
@@ -113,6 +155,30 @@
       "side": 1,
       "message": "Right, yeah that\u0027s a better plan. Having this be handled by the build system will be easier to comprehend too since all you\u0027d have to do is skim the makefile and not have to grep for ifdefs everywhere.",
       "parentUuid": "63134607_818e818d",
+      "range": {
+        "startLine": 782,
+        "startChar": 0,
+        "endLine": 782,
+        "endChar": 19
+      },
+      "revId": "6fb9a3cef0b83e6e913839ed090d6299ad674cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c8bba7_0c4876dc",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1561252
+      },
+      "writtenOn": "2022-11-29T19:27:35Z",
+      "side": 1,
+      "message": "So instead of moving these symbols to another file, utility/crossystem is now conditionally compiled if USE_FLASHROM is set to true.",
+      "parentUuid": "3ad438ba_9ac10b60",
       "range": {
         "startLine": 782,
         "startChar": 0,
