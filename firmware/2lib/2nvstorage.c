@@ -64,7 +64,6 @@ void vb2_nv_init(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint8_t *p = ctx->nvdata;
 
-
 	/* Check data for consistency */
 	if (vb2_nv_check_crc(ctx) != VB2_SUCCESS) {
 		/* Data is inconsistent (bad CRC or header); reset defaults */
@@ -82,6 +81,9 @@ void vb2_nv_init(struct vb2_context *ctx)
 		/* TODO: unit test for status flag being set */
 	} else {
 #ifndef CHROMEOS_ENVIRONMENT
+		if (sd->status & VB2_SD_STATUS_NV_INIT)
+			return;
+
 		/* Always clear this on first reboot that didn't need reinit. */
 		vb2_nv_set(ctx, VB2_NV_FIRMWARE_SETTINGS_RESET, 0);
 #endif
