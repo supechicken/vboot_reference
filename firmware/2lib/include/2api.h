@@ -404,6 +404,21 @@ vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint8_t *size);
 void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode);
 
 /**
+ * Report firmware failure from previous boot to vboot.
+ *
+ * If the failure is reported after choosing a firmware slot, then abort vboot
+ * flow.
+ *
+ * If the other slot is not known bad then try the other firmware slot.
+ * If both the slots are known bad, then request recovery.
+ *
+ * @param reason	Recovery reason
+ * @param subcode	Recovery subcode
+ */
+void vb2api_previous_boot_fail(struct vb2_context *ctx,
+					uint8_t reason, uint8_t subcode);
+
+/**
  * Entry point for setting up a context that can only load and verify a kernel.
  *
  * The only allowed usage is to call vb2api_init, then this entry point,
