@@ -16,6 +16,24 @@
       "message": "should this `die` ?",
       "revId": "1eb2782b7fee718ee44ba0e7be2a8fef4d492ee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716f6451_57fb56ce",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-11-29T01:04:08Z",
+      "side": 1,
+      "message": "as discussed on the previous patch, let\u0027s keep this consistend and add the `die` everywhere if decided to do so.",
+      "parentUuid": "bd867cdf_dac0e356",
+      "revId": "1eb2782b7fee718ee44ba0e7be2a8fef4d492ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
