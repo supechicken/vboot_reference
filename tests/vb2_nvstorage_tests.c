@@ -125,6 +125,7 @@ static void nv_storage_test(uint32_t ctxflags)
 	ctx->nvdata[VB2_NV_OFFS_HEADER] ^= 0x40;
 	TEST_EQ(vb2_nv_check_crc(ctx),
 		VB2_ERROR_NV_HEADER, "vb2_nv_check_crc() bad header");
+	sd->status &= ~VB2_SD_STATUS_NV_INIT;
 	vb2_nv_init(ctx);
 	TEST_EQ(ctx->nvdata[VB2_NV_OFFS_HEADER], expect_header,
 		"vb2_nv_init() reset header byte again");
@@ -137,6 +138,7 @@ static void nv_storage_test(uint32_t ctxflags)
 	ctx->nvdata[VB2_NV_OFFS_KERNEL1] = 12;
 	TEST_EQ(vb2_nv_check_crc(ctx),
 		VB2_ERROR_NV_CRC, "vb2_nv_check_crc() bad CRC");
+	sd->status &= ~VB2_SD_STATUS_NV_INIT;
 	vb2_nv_init(ctx);
 	TEST_EQ(ctx->nvdata[VB2_NV_OFFS_KERNEL1], 0,
 		"vb2_nv_init() reset kernel byte");
