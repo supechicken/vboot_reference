@@ -85,6 +85,24 @@
       "parentUuid": "64902fbe_c76356d4",
       "revId": "bbc294889615dc010ba1f616d4aa8c14f1886ac8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186d2c7e_a078c380",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2022-11-29T02:06:52Z",
+      "side": 1,
+      "message": "But it may be helpful when debugging - for example when people verified the hash with this tool, forgot to clear GBB flags, and ran the real verification, surprised to find out that the verification failed. If there\u0027s a big WARNING then they may be aware there\u0027s something that could be wrong.",
+      "parentUuid": "67960159_7bb8048a",
+      "revId": "bbc294889615dc010ba1f616d4aa8c14f1886ac8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
