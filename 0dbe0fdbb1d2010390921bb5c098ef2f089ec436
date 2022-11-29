@@ -34,6 +34,24 @@
       "parentUuid": "33a446f2_866ad5b8",
       "revId": "0dbe0fdbb1d2010390921bb5c098ef2f089ec436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cede5e81_435eeb34",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-11-29T01:07:05Z",
+      "side": 1,
+      "message": "`set -e` can be implicitly disabled in situations like writing `if resign_firmware_payload; then`.  that isn\u0027t happening here, so more of a reminder that \"i\u0027m just relying on `set -e`\" isn\u0027t something you should rely on for error handling.",
+      "parentUuid": "1acdda2f_e0da1955",
+      "revId": "0dbe0fdbb1d2010390921bb5c098ef2f089ec436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
