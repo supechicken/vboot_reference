@@ -132,6 +132,64 @@ void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 	}
 }
 
+test_mockable
+void vb2api_early_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	uint32_t last_fw_slot, last_fw_result, fw_slot;
+
+	/* If NV data hasn't been initialized, initialize it now */
+	if (!(sd->status & VB2_SD_STATUS_NV_INIT))
+		vb2_nv_init(ctx);
+
+	/* If we already had chosen a slot invoke vb2api_fail. */
+	if (sd->status & VB2_SD_STATUS_CHOSE_SLOT) {
+		vb2api_fail(ctx, reason, subcode);
+		return;
+	}
+
+	last_fw_slot = vb2_nv_get(ctx, VB2_NV_FW_PREV_TRIED);
+	last_fw_result = vb2_nv_get(ctx, VB2_NV_FW_PREV_RESULT);
+	fw_slot = vb2_nv_get(ctx, VB2_NV_FW_TRIED);
+
+	/* If there is another failure, do not overwrite it. */
+	if (vb2_nv_get(ctx, VB2_NV_FW_RESULT) == VB2_FW_RESULT_UNKNOWN) {
+		vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_FAILURE);
+
+		/* Use up remaining tries */
+		vb2_nv_set(ctx, VB2_NV_TRY_COUNT, 0);
+
+		/*
+		 * Try the other slot next time.  We'll alternate
+		 * between slots, which may help if one or both slots is
+		 * flaky.
+		 */
+		vb2_nv_set(ctx, VB2_NV_TRY_NEXT, 1 - fw_slot);
+	}
+
+	/*
+	 * If we didn't try the other slot last boot, or we tried it
+	 * and it didn't fail, try it next boot.
+	 */
+	if (last_fw_slot != 1 - fw_slot ||
+			last_fw_result != VB2_FW_RESULT_FAILURE)
+		return;
+
+	/*
+	 * If we're still here, both this slot and the other slot failed in
+	 * successive boots. So we need to go to recovery.
+	 *
+	 * Set a recovery reason and subcode only if they're not already set.
+	 * If recovery is already requested, it's a more specific error code
+	 * than later code is providing and we shouldn't overwrite it.
+	 */
+	VB2_DEBUG("Need recovery, reason: %#x / %#x\n", reason, subcode);
+	if (!vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST)) {
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST, reason);
+		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, subcode);
+	}
+}
+
 void vb2_check_recovery(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
