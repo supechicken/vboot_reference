@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "980cb49b_332b7c0a",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-11-30T05:29:00Z",
+      "side": 1,
+      "message": "\u003e They fall back to updating over CCD if necessary. In practice,failing to reboot seems fairly rare in my experience on puff and nissa on recent FW. Further, puff doesn\u0027t even set the quirk in its pinned FW and has seemingly been fine.\n\nThat might probably be because ME region is locked and GPR protection is enabled. Once that happens x86 has read-only access to SI_ME region in these platforms. What this implies is SI_ME region does not get updated and hence reboot is working fine. Also if the repair job is done through CCD, then it is fine.\n\n\u003e I would argue that this is quite high risk for testing with an incorrect and/or inconsistent FW. \n\nEven in a practical scenario, ME should work with a different RO/RW combination and there should not be any incompatibilities. As mentioned earlier, once ME is locked and GPR protection is enabled ME RO FW never gets updated. It is only the ME RW FW that gets updated through CSE FW Sync. This means ME should work with different RO/RW FW combination.\n\nI am not hell bent on this trade-off. I am just saying that ME should work with different RO/RW combination. If not, there is a much bigger problem.",
+      "parentUuid": "3afc19b9_53cbb39c",
+      "range": {
+        "startLine": 405,
+        "startChar": 12,
+        "endLine": 405,
+        "endChar": 20
+      },
+      "revId": "d54d24fb9e166d923661412134d41d9f722d871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "043a9a27_768ff7d3",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 2
