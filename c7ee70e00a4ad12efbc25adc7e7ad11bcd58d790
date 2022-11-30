@@ -22,6 +22,46 @@
       },
       "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4819f0_245e6457",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-30T03:30:25Z",
+      "side": 1,
+      "message": "Instead of adding a new API, how about introducing a ctx flag `VB2_CONTEXT_BACKTRACE_FAILURE`? Julius, what do you think?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6add84c2_6ce05fbe",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-11-30T03:30:25Z",
+      "side": 1,
+      "message": "Most code in this function is duplicate in `vb2api_fail`. Can we refactor them?\n\n```\nstatic void vb2_fail(ctx, reason, subcode, bool early)\n{\n    ...\n    if (sd-\u003estatus \u0026 VB2_SD_STATUS_CHOSE_SLOT) {\n        last_fw_slot \u003d sd-\u003elast_fw_slot;\n        ...\n    } else if (early) {\n        last_fw_slot \u003d vb2_nv_get(ctx, VB2_NV_FW_PREV_TRIED);\n        ...\n    } else {\n        goto recovery;\n    }\n    \n    // Continue the flow with local variables last_fw_slot, last_fw_result, fw_slot\n    \nrecovery:\n    ...\n}\n```",
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
