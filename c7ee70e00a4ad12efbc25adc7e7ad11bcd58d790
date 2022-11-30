@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75bd2fc6_8942f3a8",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-11-30T04:54:27Z",
+      "side": 1,
+      "message": "I am open to ideas. I just want to point out that if the failure is reported before the slot is chosen then the current behavior is to request for recovery. That behavioral assumption will not hold true if we have to combine both the APIs together.",
+      "parentUuid": "c9d08f29_8659f626",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 57
+      },
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca4819f0_245e6457",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
