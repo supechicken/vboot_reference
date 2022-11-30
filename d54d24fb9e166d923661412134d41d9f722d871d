@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3afc19b9_53cbb39c",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2022-11-30T00:41:43Z",
+      "side": 1,
+      "message": "\u003e Two things need to be aware of/addressed before taking this tradeoff:\n\u003e 1) For the devices deployed in the lab WP is disabled. So any lab repair scripts using recovery has to be updated to use the EC reboot. This will impact all the previous generations of Intel devices(Dedede, Volteer, probably Puff) deployed in the lab.\n\nThey fall back to updating over CCD if necessary. In practice,failing to reboot seems fairly rare in my experience on puff and nissa on recent FW. Further, puff doesn\u0027t even set the quirk in its pinned FW and has seemingly been fine.\n\n\u003e 2) For the dogfood devices, concerned C\u0026F doc should be updated for the benefit of the dogfooders when they are recovering the device.\n\nDogfooders don\u0027t read care and feeding docs. I would expect them to be able to turn things off and on again.\n\nThe trade-off is that since the current archive check is a no-op, any FW updates on from the AP using futility (which is the recommendation) will trigger this quirk, resulting in the ME RO never being updated on DUTs without special care to account for this. I would argue that this is quite high risk for testing with an incorrect and/or inconsistent FW. If you want to try making this quirk better targeted, please do, but it is too broken in its current form.",
+      "parentUuid": "71fe254b_2f73e6a8",
+      "range": {
+        "startLine": 405,
+        "startChar": 12,
+        "endLine": 405,
+        "endChar": 20
+      },
+      "revId": "d54d24fb9e166d923661412134d41d9f722d871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "043a9a27_768ff7d3",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 2
