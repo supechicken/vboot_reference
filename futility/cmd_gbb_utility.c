@@ -19,6 +19,21 @@
 #include "updater.h"
 #include "updater_utils.h"
 
+#ifdef USE_FLASHROM
+#define FLASH_ARG_HELP                                                         \
+	"     --flash         \tRead from and write to flash"                  \
+	", ignore file arguments.\n"
+#define FLASH_MORE_HELP                                                        \
+	"In GET and SET mode, the following options modify the "               \
+	"behaviour of flashing. Presence of any of these implies "             \
+	"--flash.\n"                                                           \
+	SHARED_FLASH_ARGS_HELP                                                 \
+	"\n"
+#else
+#define FLASH_ARG_HELP
+#define FLASH_MORE_HELP
+#endif /* USE_FLASHROM */
+
 static void print_help(int argc, char *argv[])
 {
 	printf("\n"
@@ -28,8 +43,7 @@ static void print_help(int argc, char *argv[])
 		"GET MODE:\n"
 		"-g, --get   (default)\tGet (read) from bios_file or flash, "
 		"with following options:\n"
-		"     --flash         \tRead from and write to flash"
-		", ignore file arguments.\n"
+		FLASH_ARG_HELP
 		"     --hwid          \tReport hardware id (default).\n"
 		"     --flags         \tReport header flags.\n"
 		"     --digest        \tReport digest of hwid (>= v1.2)\n"
@@ -40,8 +54,7 @@ static void print_help(int argc, char *argv[])
 		"SET MODE:\n"
 		"-s, --set            \tSet (write) to flash or file, "
 		"with following options:\n"
-		"     --flash         \tRead from and write to flash"
-		", ignore file arguments.\n"
+		FLASH_ARG_HELP
 		" -o, --output=FILE   \tNew file name for ouptput.\n"
 		"     --hwid=HWID     \tThe new hardware id to be changed.\n"
 		"     --flags=FLAGS   \tThe new (numeric) flags value.\n"
@@ -52,11 +65,8 @@ static void print_help(int argc, char *argv[])
 		"CREATE MODE:\n"
 		"-c, --create=hwid_size,rootkey_size,bmpfv_size,"
 		"recoverykey_size\n"
-		"                     \tCreate a GBB blob by given size list.\n"
-		"In GET and SET mode, the following options modify the "
-		"behaviour of flashing. Presence of any of these implies "
-		"--flash.\n"
-		SHARED_FLASH_ARGS_HELP
+		"                     \tCreate a GBB blob by given size list.\n\n"
+		FLASH_MORE_HELP
 		"SAMPLE:\n"
 		"  %s -g bios.bin\n"
 		"  %s --set --hwid='New Model' -k key.bin"
