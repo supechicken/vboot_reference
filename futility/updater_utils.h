@@ -175,6 +175,14 @@ void strip_string(char *s, const char *pattern);
 int save_file_from_stdin(const char *output);
 
 /*
+ * Write size bytes from start into filename. Print "%msg %filename" to stdout
+ * on success, if msg is non-NULL. Writes messages to stderr on failure.
+ * Returns 0 on success.
+ */
+int write_to_file(const char *msg, const char *filename,
+			 uint8_t *start, size_t size);
+
+/*
  * Executes a command on current host and returns stripped command output.
  * If the command has failed (exit code is not zero), returns an empty string.
  * The caller is responsible for releasing the returned string.

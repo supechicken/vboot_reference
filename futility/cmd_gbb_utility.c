@@ -16,6 +16,7 @@
 #include <unistd.h>
 
 #include "futility.h"
+#include "updater_utils.h"
 
 static void print_help(int argc, char *argv[])
 {
@@ -253,44 +254,6 @@ fail:
 	return NULL;
 }
 
-static int write_to_file(const char *msg, const char *filename,
-			 uint8_t *start, size_t size)
-{
-	FILE *fp;
-	int r = 0;
-
-	fp = fopen(filename, "wb");
-	if (!fp) {
-		r = errno;
-		fprintf(stderr, "ERROR: Unable to open %s for writing: %s\n",
-			filename, strerror(r));
-		errorcnt++;
-		return r;
-	}
-
-	/* Don't write zero bytes */
-	if (size && 1 != fwrite(start, size, 1, fp)) {
-		r = errno;
-		fprintf(stderr, "ERROR: Unable to write to %s: %s\n",
-			filename, strerror(r));
-		errorcnt++;
-	}
-
-	if (0 != fclose(fp)) {
-		int e = errno;
-		fprintf(stderr, "ERROR: Unable to close %s: %s\n",
-			filename, strerror(e));
-		if (!r)
-			r = e;
-		errorcnt++;
-	}
-
-	if (!r && msg)
-		printf("%s %s\n", msg, filename);
-
-	return r;
-}
-
 static int read_from_file(const char *msg, const char *filename,
 			  uint8_t *start, uint32_t size)
 {
@@ -498,19 +461,23 @@ static int do_gbb(int argc, char *argv[])
 		if (sel_flags)
 			printf("flags: 0x%08x\n", gbb->flags);
 		if (opt_rootkey)
-			write_to_file(" - exported root_key to file:",
+			if (write_to_file(" - exported root_key to file:",
 				      opt_rootkey,
 				      gbb_base + gbb->rootkey_offset,
-				      gbb->rootkey_size);
+				      gbb->rootkey_size))
+				errorcnt++;
 		if (opt_bmpfv)
-			write_to_file(" - exported bmp_fv to file:", opt_bmpfv,
-				      gbb_base + gbb->bmpfv_offset,
-				      gbb->bmpfv_size);
+			if (write_to_file(
+				    " - exported bmp_fv to file:", opt_bmpfv,
+				    gbb_base + gbb->bmpfv_offset,
+				    gbb->bmpfv_size))
+				errorcnt++;
 		if (opt_recoverykey)
-			write_to_file(" - exported recovery_key to file:",
+			if (write_to_file(" - exported recovery_key to file:",
 				      opt_recoverykey,
 				      gbb_base + gbb->recovery_key_offset,
-				      gbb->recovery_key_size);
+				      gbb->recovery_key_size))
+				errorcnt++;
 		break;
 
 	case DO_SET:
@@ -612,8 +579,9 @@ static int do_gbb(int argc, char *argv[])
 
 		/* Write it out if there are no problems. */
 		if (!errorcnt)
-			write_to_file("successfully saved new image to:",
-				      outfile, outbuf, filesize);
+			if (write_to_file("successfully saved new image to:",
+				      outfile, outbuf, filesize))
+				errorcnt++;
 
 		break;
 
@@ -637,8 +605,9 @@ static int do_gbb(int argc, char *argv[])
 			return 1;
 		}
 		if (!errorcnt)
-			write_to_file("successfully created new GBB to:",
-				      outfile, outbuf, filesize);
+			if (write_to_file("successfully created new GBB to:",
+				      outfile, outbuf, filesize))
+				errorcnt++;
 		break;
 	}
 
