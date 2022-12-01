@@ -1700,21 +1700,25 @@ int handle_flash_argument(struct updater_config_arguments *args, int i,
 {
 	switch (i) {
 	case 'p':
+		args->use_flash = 1;
 		args->programmer = optarg;
 		break;
 	case OPT_CCD:
+		args->use_flash = 1;
 		args->fast_update = 1;
 		args->force_update = 1;
 		args->write_protection = "0";
 		args->programmer = "raiden_debug_spi:target=AP";
 		break;
 	case OPT_EMULATE:
+		args->use_flash = 1;
 		args->emulation = optarg;
 		break;
 	case OPT_QUIRKS:
 		args->quirks = optarg;
 		break;
 	case OPT_SERVO:
+		args->use_flash = 1;
 		args->detect_servo = 1;
 		args->fast_update = 1;
 		args->force_update = 1;
@@ -1723,6 +1727,7 @@ int handle_flash_argument(struct updater_config_arguments *args, int i,
 		break;
 	case OPT_SERVO_PORT:
 		setenv(ENV_SERVOD_PORT, optarg, 1);
+		args->use_flash = 1;
 		args->detect_servo = 1;
 		args->fast_update = 1;
 		args->force_update = 1;
