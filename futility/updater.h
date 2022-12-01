@@ -104,6 +104,7 @@ struct updater_config_arguments {
 	int verbosity;
 	int override_gbb_flags;
 	int detect_servo;
+	int use_flash;
 	uint32_t gbb_flags;
 	bool detect_model_only;
 };
