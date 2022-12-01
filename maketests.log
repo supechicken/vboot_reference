@@ -1,0 +1,115 @@
+building with libflashrom support
+vboot SHA256 built with tight loops (slower, smaller code size)
+printf "    INSTALL       CGPT\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/cgpt/cgpt
+printf "    INSTALL       SIGNING\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/share/vboot/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/share/vboot/bin scripts/image_signing/resign_firmwarefd.sh scripts/image_signing/make_dev_firmware.sh scripts/image_signing/make_dev_ssd.sh scripts/image_signing/gbb_flags_common.sh scripts/image_signing/set_gbb_flags.sh scripts/image_signing/get_gbb_flags.sh scripts/image_signing/common_minimal.sh
+printf "    INSTALL       futility\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/futility/futility
+for prog in dump_fmap dump_kernel_config gbb_utility vbutil_firmware vbutil_kernel vbutil_key vbutil_keyblock; do \
+	ln -sf futility "/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin/$prog"; done
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/lib/pkgconfig
+install -D -m 0644 /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/vboot_host.pc /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/lib/pkgconfig/vboot_host.pc
+printf "    INSTALL       HOSTLIB\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/lib
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/lib -m644 /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/libvboot_host.a
+printf "    CREATE        default/vboot_reference\n"
+rm -f /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/default/vboot_reference
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/default/
+echo '# Generated file. Do not edit.' > /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/default/vboot_reference.tmp
+echo "DEV_DEBUG_FORCE=" >> /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/default/vboot_reference.tmp
+mv -f /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/default/vboot_reference.tmp /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/default/vboot_reference
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/etc/default
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/etc/default -m 'u=rw,go=r,a-s' /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/default/vboot_reference
+printf "    INSTALL       utility/crossystem\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/crossystem
+printf "    INSTALL       utility/dumpRSAPublicKey\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/dumpRSAPublicKey
+printf "    INSTALL       utility/tpmc\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/tpmc
+printf "    INSTALL       utility/chromeos-tpm-recovery\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/chromeos-tpm-recovery
+printf "    INSTALL       utility/dev_debug_vboot\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/dev_debug_vboot
+printf "    INSTALL       utility/enable_dev_usb_boot\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/enable_dev_usb_boot
+printf "    INSTALL       utility/tpm-nvsize\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/tpm-nvsize
+printf "    INSTALL       utility/load_kernel_test\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/load_kernel_test
+printf "    INSTALL       utility/pad_digest_utility\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/pad_digest_utility
+printf "    INSTALL       utility/signature_digest_utility\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/signature_digest_utility
+printf "    INSTALL       utility/verify_data\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/verify_data
+printf "    INSTALL       utility/dev_make_keypair\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/dev_make_keypair
+printf "    INSTALL       utility/vbutil_what_keys\n"
+mkdir -p /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin
+install -t /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/install_for_test/usr/bin /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/utility/vbutil_what_keys
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/cgptlib_test
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/gpt_misc_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/subprocess_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/tlcl_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_api_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_auxfw_sync_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_common_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_common2_tests /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/testkeys
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_common3_tests /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/testkeys
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_crypto_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_ec_sync_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_firmware_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_gbb_init_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_gbb_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_host_key_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_inject_kernel_subkey_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_load_kernel_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_load_kernel2_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_kernel_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_misc_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_misc2_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_nvstorage_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_rsa_utility_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_secdata_firmware_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_secdata_fwmp_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_secdata_kernel_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_sha_api_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb2_sha_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb20_api_kernel_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb20_kernel_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb21_host_common_tests
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb21_host_common2_tests /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/testkeys
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb21_host_key_tests /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/testkeys /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb21_host_misc_tests /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/vb21_host_sig_tests /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/testkeys
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/hmac_test
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/gen_fuzz_test_cases.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/scripts/image_signing/sign_android_unittests.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/load_kernel_tests.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/run_cgpt_tests.sh /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/cgpt/cgpt
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/run_cgpt_tests.sh /usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/cgpt/cgpt -D 358400
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/run_preamble_tests.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/run_vbutil_kernel_arg_tests.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/run_vbutil_tests.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/vb2_rsa_tests.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/vb2_firmware_tests.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/tests/futility/run_test_scripts.sh
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/futility/test_file_types
+/usr/local/google/home/evanbenn/chromiumos/src/platform/vboot_reference/build/tests/futility/test_not_really
+echo -e "\nruntests: \E[32;1mALL TESTS PASSED SUCCESSFULLY!\E[0;m\n"
