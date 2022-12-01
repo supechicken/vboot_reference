@@ -57,6 +57,24 @@
       "parentUuid": "c3aa78ae_61a67a61",
       "revId": "c450f8f5fbd1e7f6c8ed4f9eb07b57d31b047c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6a9851_0937db92",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-01T01:59:10Z",
+      "side": 1,
+      "message": "Then the unit tests should be modified as well, because we\u0027re changing the expected behavior of this function.",
+      "parentUuid": "05448914_849889e8",
+      "revId": "c450f8f5fbd1e7f6c8ed4f9eb07b57d31b047c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
