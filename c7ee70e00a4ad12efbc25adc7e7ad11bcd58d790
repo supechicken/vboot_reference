@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "996d33cc_d3d54e8a",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-01T02:05:53Z",
+      "side": 1,
+      "message": "Yes, the caller has to set the flag before calling `vb2api_early_fail`, and clear the flag anywhere before the `vb2api_fw_phase1` call in `verstage_main` (for example right after `ctx \u003d vboot_get_context();`). I\u0027m really not sure if that\u0027s a good idea though. Let\u0027s wait for Julius\u0027 opinion.",
+      "parentUuid": "42ef4851_19f8e52b",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6add84c2_6ce05fbe",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
