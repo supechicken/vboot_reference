@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include <assert.h>
 #include <errno.h>
 #include <getopt.h>
 #include <inttypes.h>
@@ -16,17 +17,19 @@
 #include <unistd.h>
 
 #include "futility.h"
+#include "updater.h"
 #include "updater_utils.h"
 
 static void print_help(int argc, char *argv[])
 {
 	printf("\n"
 		"Usage:  " MYNAME " %s [-g|-s|-c] [OPTIONS] "
-	       "bios_file [output_file]\n"
+		"[bios_file] [output_file]\n"
 		"\n"
 		"GET MODE:\n"
-		"-g, --get   (default)\tGet (read) from bios_file, "
+		"-g, --get   (default)\tGet (read) from bios_file or flash, "
 		"with following options:\n"
+		"     --flash         \tRead/Write flash, not file.\n"
 		"     --hwid          \tReport hardware id (default).\n"
 		"     --flags         \tReport header flags.\n"
 		"     --digest        \tReport digest of hwid (>= v1.2)\n"
@@ -35,8 +38,9 @@ static void print_help(int argc, char *argv[])
 		" -r  --recoverykey=FILE\tFile name to export Recovery Key.\n"
 		"\n"
 		"SET MODE:\n"
-		"-s, --set            \tSet (write) to bios_file, "
+		"-s, --set            \tSet (write) to flash or file, "
 		"with following options:\n"
+		"     --flash         \tRead/Write flash, not file.\n"
 		" -o, --output=FILE   \tNew file name for ouptput.\n"
 		"     --hwid=HWID     \tThe new hardware id to be changed.\n"
 		"     --flags=FLAGS   \tThe new (numeric) flags value.\n"
@@ -48,6 +52,9 @@ static void print_help(int argc, char *argv[])
 		"-c, --create=hwid_size,rootkey_size,bmpfv_size,"
 		"recoverykey_size\n"
 		"                     \tCreate a GBB blob by given size list.\n"
+		"In GET and SET mode, the following args modify the behaviour of "
+		"flashing. Presence of any of these are imply --flash."
+		SHARED_FLASH_ARGS_HELP
 		"SAMPLE:\n"
 		"  %s -g bios.bin\n"
 		"  %s --set --hwid='New Model' -k key.bin"
@@ -57,14 +64,16 @@ static void print_help(int argc, char *argv[])
 }
 
 enum {
-	OPT_HWID = 1000,
+	OPT_HWID = 0x1000,
 	OPT_FLAGS,
 	OPT_DIGEST,
+	OPT_FLASH,
 	OPT_HELP,
 };
 
 /* Command line options */
 static struct option long_opts[] = {
+	SHARED_FLASH_ARGS_LONGOPTS
 	/* name  has_arg *flag val */
 	{"get", 0, NULL, 'g'},
 	{"set", 0, NULL, 's'},
@@ -76,11 +85,12 @@ static struct option long_opts[] = {
 	{"hwid", 0, NULL, OPT_HWID},
 	{"flags", 0, NULL, OPT_FLAGS},
 	{"digest", 0, NULL, OPT_DIGEST},
+	{"flash", 0, NULL, OPT_FLASH},
 	{"help", 0, NULL, OPT_HELP},
 	{NULL, 0, NULL, 0},
 };
 
-static const char *short_opts = ":gsc:o:k:b:r:";
+static const char *short_opts = ":gsc:o:k:b:r:" SHARED_FLASH_ARGS_SHORTOPTS;
 
 /* Change the has_arg field of a long_opts entry */
 static void opt_has_arg(const char *name, int val)
@@ -317,6 +327,102 @@ done_close:
 	return r;
 }
 
+/* Prepare for flashrom interaction. Setup cfg from args and put servo into
+ * flash mode if servo is in use. If this succeeds teardown flash must be
+ * called.
+ */
+static int setup_flash(struct updater_config **cfg,
+		       struct updater_config_arguments *args,
+		       char **prepare_ctrl_name)
+{
+#ifdef USE_FLASHROM
+	if (args->detect_servo) {
+		char *servo_programmer =
+			host_detect_servo((const char **)prepare_ctrl_name);
+
+		if (!servo_programmer) {
+			fprintf(stderr,
+				"\nERROR: Problem communicating with servo\n");
+			return 1;
+		}
+
+		if (!args->programmer)
+			args->programmer = servo_programmer;
+		else
+			free(servo_programmer);
+	}
+	*cfg = updater_new_config();
+	if (!cfg) {
+		fprintf(stderr, "\nERROR: Out of memory\n");
+		goto errfree;
+	}
+	int ignored;
+	if (updater_setup_config(*cfg, args, &ignored)) {
+		fprintf(stderr, "\nERROR: Bad servo options\n");
+		goto errdelete;
+	}
+	prepare_servo_control(*prepare_ctrl_name, 1);
+	return 0;
+errdelete:
+	updater_delete_config(*cfg);
+errfree:
+	free(*prepare_ctrl_name);
+	return 1;
+#else
+	return 1;
+#endif /* USE_FLASHROM */
+}
+
+/* Cleanup objects created in setup_flash and release servo from flash mode. */
+static void teardown_flash(struct updater_config *cfg, char *prepare_ctrl_name,
+			   char *servo_programmer)
+{
+#ifdef USE_FLASHROM
+	prepare_servo_control(prepare_ctrl_name, 0);
+	free(prepare_ctrl_name);
+	free(servo_programmer);
+	updater_delete_config(cfg);
+#else
+	return;
+#endif /* USE_FLASHROM */
+}
+
+/* Read firmware from flash. */
+static uint8_t *read_from_flash(struct updater_config *cfg, off_t *filesize)
+{
+#ifdef USE_FLASHROM
+	if (load_system_firmware(cfg, &cfg->image_current))
+		return NULL;
+	uint8_t *ret = cfg->image_current.data;
+	cfg->image_current.data = NULL;
+	*filesize = cfg->image_current.size;
+	cfg->image_current.size = 0;
+	return ret;
+#else
+	return NULL;
+#endif /* USE_FLASHROM */
+}
+
+/* Write firmware to flash. Takes ownership of inbuf and outbuf data. */
+static int write_to_flash(struct updater_config *cfg, uint8_t *inbuf,
+			  uint8_t *outbuf, off_t filesize)
+{
+#ifdef USE_FLASHROM
+	cfg->image_current.data = inbuf;
+	cfg->image_current.size = filesize;
+	cfg->image.data = outbuf;
+	cfg->image.size = filesize;
+	int ret = write_system_firmware(cfg, &cfg->image, NULL);
+	cfg->image_current.data = NULL;
+	cfg->image_current.size = 0;
+	cfg->image.data = NULL;
+	cfg->image.size = 0;
+	return ret;
+#else
+	return 1;
+#endif /* USE_FLASHROM */
+}
+
 static int do_gbb(int argc, char *argv[])
 {
 	enum do_what_now { DO_GET, DO_SET, DO_CREATE } mode = DO_GET;
@@ -337,9 +443,17 @@ static int do_gbb(int argc, char *argv[])
 	struct vb2_gbb_header *gbb;
 	uint8_t *gbb_base;
 	int i;
+	struct updater_config *cfg = NULL;
+	struct updater_config_arguments args = {0};
+	char *prepare_ctrl_name = NULL;
+	char *servo_programmer = NULL;
 
 	opterr = 0;		/* quiet, you */
 	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
+#ifdef USE_FLASHROM
+		if (handle_flash_argument(&args, i, optarg))
+			continue;
+#endif
 		switch (i) {
 		case 'g':
 			mode = DO_GET;
@@ -379,6 +493,14 @@ static int do_gbb(int argc, char *argv[])
 			break;
 		case OPT_DIGEST:
 			sel_digest = 1;
+			break;
+		case OPT_FLASH:
+#ifndef USE_FLASHROM
+			fprintf(stderr,
+				"ERROR: futility was build without flash support\n");
+			return 1;
+#endif
+			args.use_flash = 1;
 			break;
 		case OPT_HELP:
 			print_help(argc, argv);
@@ -422,28 +544,40 @@ static int do_gbb(int argc, char *argv[])
 		return 1;
 	}
 
+	if (args.use_flash) {
+		if (setup_flash(&cfg, &args, &prepare_ctrl_name)) {
+			fprintf(stderr,
+				"ERROR: error while preparing flash\n");
+			return 1;
+		}
+	}
+
 	/* Now try to do something */
 	switch (mode) {
 	case DO_GET:
-		if (argc - optind < 1) {
-			fprintf(stderr, "\nERROR: missing input filename\n");
-			print_help(argc, argv);
+		if (args.use_flash) {
+			inbuf = read_from_flash(cfg, &filesize);
+		} else {
+			if (argc - optind < 1) {
+				fprintf(stderr,
+					"\nERROR: missing input filename\n");
+				print_help(argc, argv);
+				errorcnt++;
+				break;
+			} else {
+				infile = argv[optind++];
+				inbuf = read_entire_file(infile, &filesize);
+			}
+		}
+		if (!inbuf) {
 			errorcnt++;
 			break;
-		} else {
-			infile = argv[optind++];
 		}
 
 		/* With no args, show the HWID */
 		if (!opt_rootkey && !opt_bmpfv && !opt_recoverykey
 		    && !sel_flags && !sel_digest)
 			sel_hwid = 1;
-
-		inbuf = read_entire_file(infile, &filesize);
-		if (!inbuf) {
-			errorcnt++;
-			break;
-		}
 
 		gbb = FindGbbHeader(inbuf, filesize);
 		if (!gbb) {
@@ -491,15 +625,27 @@ static int do_gbb(int argc, char *argv[])
 		break;
 
 	case DO_SET:
-		if (argc - optind < 1) {
-			fprintf(stderr, "\nERROR: missing input filename\n");
-			print_help(argc, argv);
+		if (args.use_flash) {
+			inbuf = read_from_flash(cfg, &filesize);
+		} else {
+			if (argc - optind < 1) {
+				fprintf(stderr,
+					"\nERROR: missing input filename\n");
+				print_help(argc, argv);
+				errorcnt++;
+				break;
+			} else {
+				infile = argv[optind++];
+				inbuf = read_entire_file(infile, &filesize);
+			}
+			if (!outfile)
+				outfile = (argc - optind < 1) ? infile
+							      : argv[optind++];
+		}
+		if (!inbuf) {
 			errorcnt++;
 			break;
 		}
-		infile = argv[optind++];
-		if (!outfile)
-			outfile = (argc - optind < 1) ? infile : argv[optind++];
 
 		if (sel_hwid && !opt_hwid) {
 			fprintf(stderr, "\nERROR: missing new HWID value\n");
@@ -510,13 +656,6 @@ static int do_gbb(int argc, char *argv[])
 		if (sel_flags && (!opt_flags || !*opt_flags)) {
 			fprintf(stderr, "\nERROR: missing new flags value\n");
 			print_help(argc, argv);
-			errorcnt++;
-			break;
-		}
-
-		/* With no args, we'll either copy it unchanged or do nothing */
-		inbuf = read_entire_file(infile, &filesize);
-		if (!inbuf) {
 			errorcnt++;
 			break;
 		}
@@ -606,13 +745,22 @@ static int do_gbb(int argc, char *argv[])
 			}
 
 		/* Write it out if there are no problems. */
-		if (!errorcnt)
-			if (write_to_file("successfully saved new image to:",
-					  outfile, outbuf, filesize)) {
-				errorcnt++;
-				break;
+		if (!errorcnt) {
+			if (args.use_flash) {
+				if (write_to_flash(cfg, inbuf, outbuf,
+						   filesize)) {
+					errorcnt++;
+					break;
+				}
+			} else {
+				if (write_to_file(
+					    "successfully saved new image to:",
+					    outfile, outbuf, filesize)) {
+					errorcnt++;
+					break;
+				}
 			}
-
+		}
 		break;
 
 	case DO_CREATE:
@@ -645,6 +793,8 @@ static int do_gbb(int argc, char *argv[])
 		break;
 	}
 
+	if (args.use_flash)
+		teardown_flash(cfg, prepare_ctrl_name, servo_programmer);
 	if (inbuf)
 		free(inbuf);
 	if (outbuf)
