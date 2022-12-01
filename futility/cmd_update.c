@@ -16,10 +16,7 @@
 #ifdef USE_FLASHROM
 
 enum {
-	OPT_DUMMY = 0x100,
-
-	OPT_CCD,
-	OPT_EMULATE,
+	OPT_DUMMY = 0x1000,
 	OPT_FACTORY,
 	OPT_FAST,
 	OPT_FORCE,
@@ -29,12 +26,9 @@ enum {
 	OPT_MODEL,
 	OPT_OUTPUT_DIR,
 	OPT_PD_IMAGE,
-	OPT_QUIRKS,
 	OPT_QUIRKS_LIST,
 	OPT_REPACK,
-	OPT_SERVO,
 	OPT_SERVO_NORESET,
-	OPT_SERVO_PORT,
 	OPT_SIGNATURE,
 	OPT_SYS_PROPS,
 	OPT_UNPACK,
@@ -43,6 +37,7 @@ enum {
 
 /* Command line options */
 static struct option const long_opts[] = {
+	SHARED_ARGS_LONGOPTS,
 	/* name  has_arg *flag val */
 	{"help", 0, NULL, 'h'},
 	{"debug", 0, NULL, 'd'},
@@ -52,13 +47,8 @@ static struct option const long_opts[] = {
 	{"ec_image", 1, NULL, 'e'},
 	{"try", 0, NULL, 't'},
 	{"archive", 1, NULL, 'a'},
-	{"programmer", 1, NULL, 'p'},
 	{"mode", 1, NULL, 'm'},
 
-	{"ccd", 0, NULL, OPT_CCD},
-	{"servo", 0, NULL, OPT_SERVO},
-	{"servo_port", 1, NULL, OPT_SERVO_PORT},
-	{"emulate", 1, NULL, OPT_EMULATE},
 	{"factory", 0, NULL, OPT_FACTORY},
 	{"fast", 0, NULL, OPT_FAST},
 	{"force", 0, NULL, OPT_FORCE},
@@ -69,7 +59,6 @@ static struct option const long_opts[] = {
 	{"model", 1, NULL, OPT_MODEL},
 	{"output_dir", 1, NULL, OPT_OUTPUT_DIR},
 	{"pd_image", 1, NULL, OPT_PD_IMAGE},
-	{"quirks", 1, NULL, OPT_QUIRKS},
 	{"repack", 1, NULL, OPT_REPACK},
 	{"signature_id", 1, NULL, OPT_SIGNATURE},
 	{"sys_props", 1, NULL, OPT_SYS_PROPS},
@@ -88,61 +77,59 @@ static struct option const long_opts[] = {
 	{NULL, 0, NULL, 0},
 };
 
-static const char * const short_opts = "hdvi:e:ta:m:p:";
+static const char *const short_opts = "hdvi:e:ta:m:" SHARED_ARGS_SHORTOPTS;
 
 static void print_help(int argc, char *argv[])
 {
 	printf("\n"
-		"Usage:  " MYNAME " %s [OPTIONS]\n"
-		"\n"
-		"Updates firmware in one of the following modes (default to recovery):\n"
-		"  autoupdate:\tUpdate RW[A|B], or recovery if RO changed.\n"
-		"  recovery:  \tUpdate RW[A&B], (RO, RO:GBB[keys] - if RO changed)\n"
-		"  factory:   \tUpdate RW[A&B],  RO, RO:GBB[keys,flags]\n"
-		"\n"
-		"Note: firmware sections with PRESERVE flags like VPD and\n"
-		"      HWID in GBB are always preserved.\n"
-		"      GBB flags are preserved in autoupdate and recovery modes.\n"
-		"\n"
-		"OPTIONS:\n"
-		"\n"
-		"-i, --image=FILE    \tAP (host) firmware image (image.bin)\n"
-		"-e, --ec_image=FILE \tEC firmware image (i.e, ec.bin)\n"
-		"    --pd_image=FILE \tPD firmware image (i.e, pd.bin)\n"
-		"-t, --try           \tTry A/B update on reboot if possible\n"
-		"-a, --archive=PATH  \tRead resources from archive\n"
-		"    --unpack=DIR    \tExtracts archive to DIR\n"
-		"-p, --programmer=PRG\tChange AP (host) flashrom programmer\n"
-		"    --fast          \tReduce read cycles and do not verify\n"
-		"    --quirks=LIST   \tSpecify the quirks to apply\n"
-		"    --list-quirks   \tPrint all available quirks\n"
-		"-m, --mode=MODE     \tRun updater in the specified mode\n"
-		"    --manifest      \tScan the archive to print a manifest in JSON\n"
-		"\n"
-		" * If both --manifest and --fast are specified, the updater\n"
-		"   will not scan the archive and simply dump the previously\n"
-		"   cached manifest (may be out-dated) from the archive.\n"
-		"\n"
-		"Legacy and compatibility options:\n"
-		"    --factory       \tAlias for --mode=factory\n"
-		"    --force         \tForce update (skip checking contents)\n"
-		"    --output_dir=DIR\tSpecify the target for --mode=output\n"
-		"\n"
-		"Debugging and testing options:\n"
-		"    --wp=1|0        \tSpecify write protection status\n"
-		"    --host_only     \tUpdate only AP (host) firmware\n"
-		"    --emulate=FILE  \tEmulate system firmware using file\n"
-		"    --model=MODEL   \tOverride system model for images\n"
-		"    --gbb_flags=FLAG\tOverride new GBB flags\n"
-		"    --ccd           \tDo fast,force,wp=0,p=raiden_debug_spi\n"
-		"    --servo         \tFlash using Servo (v2, v4, micro, ...)\n"
-		"    --servo_port=PRT\tOverride servod port, implies --servo\n"
-		"    --signature_id=S\tOverride signature ID for key files\n"
-		"    --sys_props=LIST\tList of system properties to override\n"
-		"-d, --debug         \tPrint debugging messages\n"
-		"-v, --verbose       \tPrint verbose messages\n"
-		"",
-		argv[0]);
+	       "Usage:  " MYNAME " %s [OPTIONS]\n"
+	       "\n"
+	       "Updates firmware in one of the following modes (default to "
+	       "recovery):\n"
+	       "  autoupdate:\tUpdate RW[A|B], or recovery if RO changed.\n"
+	       "  recovery:  \tUpdate RW[A&B], (RO, RO:GBB[keys] - if RO "
+	       "changed)\n"
+	       "  factory:   \tUpdate RW[A&B],  RO, RO:GBB[keys,flags]\n"
+	       "\n"
+	       "Note: firmware sections with PRESERVE flags like VPD and\n"
+	       "      HWID in GBB are always preserved.\n"
+	       "      GBB flags are preserved in autoupdate and recovery "
+	       "modes.\n"
+	       "\n"
+	       "OPTIONS:\n"
+	       "\n"
+	       "-i, --image=FILE    \tAP (host) firmware image (image.bin)\n"
+	       "-e, --ec_image=FILE \tEC firmware image (i.e, ec.bin)\n"
+	       "    --pd_image=FILE \tPD firmware image (i.e, pd.bin)\n"
+	       "-t, --try           \tTry A/B update on reboot if possible\n"
+	       "-a, --archive=PATH  \tRead resources from archive\n"
+	       "    --unpack=DIR    \tExtracts archive to DIR\n"
+	       "    --fast          \tReduce read cycles and do not verify\n"
+	       "    --list-quirks   \tPrint all available quirks\n"
+	       "-m, --mode=MODE     \tRun updater in the specified mode\n"
+	       "    --manifest      \tScan the archive to print a manifest in "
+	       "JSON\n"
+	       "\n"
+	       " * If both --manifest and --fast are specified, the updater\n"
+	       "   will not scan the archive and simply dump the previously\n"
+	       "   cached manifest (may be out-dated) from the archive.\n"
+	       "\n"
+	       "Legacy and compatibility options:\n"
+	       "    --factory       \tAlias for --mode=factory\n"
+	       "    --force         \tForce update (skip checking contents)\n"
+	       "    --output_dir=DIR\tSpecify the target for --mode=output\n"
+	       "\n"
+	       "Debugging and testing options:\n"
+	       "    --wp=1|0        \tSpecify write protection status\n"
+	       "    --host_only     \tUpdate only AP (host) firmware\n"
+	       "    --model=MODEL   \tOverride system model for images\n"
+	       "    --gbb_flags=FLAG\tOverride new GBB flags\n"
+	       "    --signature_id=S\tOverride signature ID for key files\n"
+	       "    --sys_props=LIST\tList of system properties to override\n"
+	       "-d, --debug         \tPrint debugging messages\n"
+	       "-v, --verbose       \tPrint verbose messages\n" SHARED_ARGS_HELP
+	       "",
+	       argv[0]);
 }
 
 static int do_update(int argc, char *argv[])
@@ -150,7 +137,6 @@ static int do_update(int argc, char *argv[])
 	struct updater_config *cfg;
 	struct updater_config_arguments args = {0};
 	int i, errorcnt = 0, update_needed = 1;
-	int detect_servo = 0;
 	const char *prepare_ctrl_name = NULL;
 	char *servo_programmer = NULL;
 	char *endptr;
@@ -160,6 +146,8 @@ static int do_update(int argc, char *argv[])
 
 	opterr = 0;
 	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
+		if (handle_flash_argument(&args, i, optarg))
+			continue;
 		switch (i) {
 		case 'h':
 			print_help(argc, argv);
@@ -187,9 +175,6 @@ static int do_update(int argc, char *argv[])
 		case 'm':
 			args.mode = optarg;
 			break;
-		case 'p':
-			args.programmer = optarg;
-			break;
 
 		case OPT_PD_IMAGE:
 			args.pd_image = optarg;
@@ -201,9 +186,6 @@ static int do_update(int argc, char *argv[])
 			break;
 		case OPT_UNPACK:
 			args.unpack = optarg;
-			break;
-		case OPT_QUIRKS:
-			args.quirks = optarg;
 			break;
 		case OPT_QUIRKS_LIST:
 			updater_list_config_quirks(cfg);
@@ -220,9 +202,6 @@ static int do_update(int argc, char *argv[])
 			break;
 		case OPT_WRITE_PROTECTION:
 			args.write_protection = optarg;
-			break;
-		case OPT_EMULATE:
-			args.emulation = optarg;
 			break;
 		case OPT_SYS_PROPS:
 			args.sys_props = optarg;
@@ -251,28 +230,6 @@ static int do_update(int argc, char *argv[])
 				args.override_gbb_flags = 1;
 			}
 			break;
-		case OPT_CCD:
-			args.fast_update = 1;
-			args.force_update = 1;
-			args.write_protection = "0";
-			args.programmer = "raiden_debug_spi:target=AP";
-			break;
-		case OPT_SERVO:
-			args.fast_update = 1;
-			args.force_update = 1;
-			args.write_protection = "0";
-			args.host_only = 1;
-			detect_servo = 1;
-			break;
-		case OPT_SERVO_PORT:
-			setenv(ENV_SERVOD_PORT, optarg, 1);
-			args.fast_update = 1;
-			args.force_update = 1;
-			args.write_protection = "0";
-			args.host_only = 1;
-			detect_servo = 1;
-			break;
-
 		case OPT_DUMMY:
 			break;
 
@@ -296,7 +253,7 @@ static int do_update(int argc, char *argv[])
 		ERROR("Unexpected arguments.\n");
 	}
 
-	if (!errorcnt && detect_servo) {
+	if (!errorcnt && args.detect_servo) {
 		servo_programmer = host_detect_servo(&prepare_ctrl_name);
 
 		if (!servo_programmer)
