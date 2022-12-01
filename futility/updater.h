@@ -104,6 +104,7 @@ struct updater_config_arguments {
 	int verbosity;
 	int override_gbb_flags;
 	int detect_servo;
+	int use_flash;
 	uint32_t gbb_flags;
 	bool detect_model_only;
 };
@@ -209,8 +210,8 @@ void updater_delete_config(struct updater_config *cfg);
  * Handle an argument if it is a shared updater option.
  * Returns 1 if argument was used.
  */
-int handle_flash_argument(struct updater_config_arguments *args, int i,
-			  char *opt);
+int handle_flash_argument(struct updater_config_arguments *args, int opt,
+			  char *optarg);
 
 /*
  * Helper function to setup an allocated updater_config object.
@@ -253,6 +254,15 @@ char * updater_get_cbfs_quirks(struct updater_config *cfg);
 int quirk_override_signature_id(struct updater_config *cfg,
 				struct model_config *model,
 				const char **signature_id);
+
+/*
+ * Writes a single section from the given firmware image to the system.
+ * Writes the whole firmware image if the section_name is NULL.
+ * Returns 0 if success, non-zero if error.
+ */
+int write_firmware(struct updater_config *cfg,
+		   const struct firmware_image *image,
+		   const char *section_name);
 
 /* Functions from updater_archive.c */
 
