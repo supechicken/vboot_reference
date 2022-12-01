@@ -323,12 +323,7 @@ static int set_try_cookies(struct updater_config *cfg, const char *target,
 	return 0;
 }
 
-/*
- * Writes a single section from the given firmware image to the system.
- * Writes the whole firmware image if the section_name is NULL.
- * Returns 0 if success, non-zero if error.
- */
-static int write_firmware(struct updater_config *cfg,
+int write_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
 			  const char *section_name)
 {
@@ -1709,23 +1704,27 @@ int updater_setup_config(struct updater_config *cfg,
 	return errorcnt;
 }
 
-int handle_flash_argument(struct updater_config_arguments *args, int i,
-			  char *opt)
+int handle_flash_argument(struct updater_config_arguments *args, int opt,
+			  char *optarg)
 {
-	switch (i) {
+	switch (opt) {
 	case 'p':
-		args->programmer = opt;
+		args->use_flash = 1;
+		args->programmer = optarg;
 		break;
 	case OPT_CCD:
+		args->use_flash = 1;
 		args->fast_update = 1;
 		args->force_update = 1;
 		args->write_protection = "0";
 		args->programmer = "raiden_debug_spi:target=AP";
 		break;
 	case OPT_EMULATE:
-		args->emulation = opt;
+		args->use_flash = 1;
+		args->emulation = optarg;
 		break;
 	case OPT_SERVO:
+		args->use_flash = 1;
 		args->detect_servo = 1;
 		args->fast_update = 1;
 		args->force_update = 1;
@@ -1733,7 +1732,8 @@ int handle_flash_argument(struct updater_config_arguments *args, int i,
 		args->host_only = 1;
 		break;
 	case OPT_SERVO_PORT:
-		setenv(ENV_SERVOD_PORT, opt, 1);
+		setenv(ENV_SERVOD_PORT, optarg, 1);
+		args->use_flash = 1;
 		args->detect_servo = 1;
 		args->fast_update = 1;
 		args->force_update = 1;
