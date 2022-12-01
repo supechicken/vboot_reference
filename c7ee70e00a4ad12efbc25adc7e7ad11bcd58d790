@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bdbf9c3_d9d7d132",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-01T02:22:05Z",
+      "side": 1,
+      "message": "I agree with Karthik, I\u0027m not quite sure how you expect this flag to be used. It sounds like you really just want to have an extra boolean parameter to vb2api_fail()? In that case, we should just do that, maybe as an inner function that is called by two stub functions that represent the two cases... something like this:\n```\nstatic void fail_impl(struct vb2_context *ctx, uint8_t reason, uint8_t subcode, bool previous_boot)\n{\n  ...nv init...\n  \n  if (previous_boot \u0026\u0026 vb2_nv_get(ctx, VB2_NV_FW_RESULT) \u003d\u003d VB2_FW_RESULT_FAILURE)\n    return;\n  \n  if (previous_boot || (sd-\u003estatus \u0026 VB2_SD_STATUS_CHOSE_SLOT)) {\n    ...do everything with nvdata, rather than sd-\u003elast_fw_slot and friends...\n  }\n  \n  ...\n}\n\nvoid vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)\n{\n  fail_impl(ctx, reason, subcode, false);\n}\n\nvoid vb2api_previous_boot_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)\n{\n  fail_impl(ctx, reason, subcode, true);\n}\n```",
+      "parentUuid": "42ef4851_19f8e52b",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6add84c2_6ce05fbe",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 1
@@ -132,6 +156,57 @@
       "writtenOn": "2022-11-30T03:30:25Z",
       "side": 1,
       "message": "Most code in this function is duplicate in `vb2api_fail`. Can we refactor them?\n\n```\nstatic void vb2_fail(ctx, reason, subcode, bool early)\n{\n    ...\n    if (sd-\u003estatus \u0026 VB2_SD_STATUS_CHOSE_SLOT) {\n        last_fw_slot \u003d sd-\u003elast_fw_slot;\n        ...\n    } else if (early) {\n        last_fw_slot \u003d vb2_nv_get(ctx, VB2_NV_FW_PREV_TRIED);\n        ...\n    } else {\n        goto recovery;\n    }\n    \n    // Continue the flow with local variables last_fw_slot, last_fw_result, fw_slot\n    \nrecovery:\n    ...\n}\n```",
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a09914_67380e02",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-01T02:22:05Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this is here, the API is intended to only ever be called before fw_phase1() (otherwise it doesn\u0027t work the way it should). If anything it should do `VB2_ASSERT(!(sd-\u003estatus \u0026 VB2_SD_STATUS_CHOSE_SLOT))`.",
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7f1342_0a7f50a2",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-01T02:22:05Z",
+      "side": 1,
+      "message": "I think we should design this so the case that there\u0027s another failure can\u0027t happen (i.e. there\u0027s a special CMOS flag that tells your PSP verstage to call this function, and that flag would only get set by code that doesn\u0027t also call vb2api_fail() directly somewhere; I don\u0027t see the scenario where it would make sense to do both).\n\nBut I guess it doesn\u0027t hurt to check for it. However, I think if there is another failure you should just let it stand, i.e. immediately exit here. And you should explicitly check for the failure, rather than for !UNKNOWN, because there\u0027s also the possibility that FW_RESULT is set to TRYING.\n\nSo I think you just want\n```\nif (vb2_nv_get(ctx, VB2_NV_FW_RESULT) \u003d\u003d VB2_FW_RESULT_FAILURE)\n  return;\n```",
+      "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77ef4c0_4cabfb37",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-01T02:22:05Z",
+      "side": 1,
+      "message": "I think \"early\" is the wrong name here. The existing vb2api_fail() was designed to handle \"early\" failures (i.e. failures before slot selection) in the current boot, that\u0027s why it\u0027s written the way it is. What you\u0027re doing is logging failures from a *previous* boot, and that\u0027s why you need a special case.\n\nMaybe something like vb2api_previous_boot_fail() would be the right name?",
       "revId": "c7ee70e00a4ad12efbc25adc7e7ad11bcd58d790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
