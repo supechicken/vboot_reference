@@ -195,11 +195,19 @@ char *host_shell(const char *command);
 /* The environment variable name for setting servod name. */
 #define ENV_SERVOD_NAME	"SERVOD_NAME"
 
+
 /*
  * Helper function to detect type of Servo board attached to host.
  * Returns a string as programmer parameter on success, otherwise NULL.
  */
 char *host_detect_servo(const char **prepare_ctrl_name);
+
+/*
+ * Makes a dut-control request for control_name.
+ * Sets control_name to "on" if on is non zero, else "off".
+ * Does not check for failure.
+ */
+void prepare_servo_control(const char *control_name, int on);
 
 /*
  * Returns 1 if a given file (cbfs_entry_name) exists inside a particular CBFS
