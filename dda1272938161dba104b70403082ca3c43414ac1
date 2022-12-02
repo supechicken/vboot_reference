@@ -52,6 +52,24 @@
       "parentUuid": "ada08898_dc02adfe",
       "revId": "dda1272938161dba104b70403082ca3c43414ac1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5efd44ca_c4ad5941",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-02T00:22:55Z",
+      "side": 1,
+      "message": "\u003e  only call logger when \"${FLAGS_image}\" \u003d\u003d \"${ROOTDEV_DISK\" (the device is changing itself). So we are not logging these operations on workstations nor builders.\n\nWhat happened to this concern? I think it is valid, we don\u0027t really want to spam the syslog on people\u0027s workstations (is the logger utility even available there?).",
+      "parentUuid": "5d0b3bb3_a2824b55",
+      "revId": "dda1272938161dba104b70403082ca3c43414ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
