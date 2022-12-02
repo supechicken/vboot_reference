@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96424303_8a0ae470",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-02T06:37:08Z",
+      "side": 1,
+      "message": "correct",
+      "parentUuid": "4e89fd19_e178e83a",
+      "revId": "6e80c2eefde6459dcaa9301f25142f24dfdc003e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35fa103_580d1f60",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "it\u0027s a single line message split in two lines. Is there a way to force `die` to print out its argument two lines? `\\n` is printed literally.",
       "parentUuid": "ec5b1d84_28a9a23b",
+      "revId": "6e80c2eefde6459dcaa9301f25142f24dfdc003e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "813cffb5_6c2f1a7b",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-02T06:37:08Z",
+      "side": 1,
+      "message": "`echo \"foo\" \"bar\"` produces `foo bar`.  `echo \"foo \" \"bar\"` produces `foo  bar`.  your `die` call here is doing the latter when it should be the former.",
+      "parentUuid": "56c3ce7b_bf8656cb",
       "revId": "6e80c2eefde6459dcaa9301f25142f24dfdc003e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

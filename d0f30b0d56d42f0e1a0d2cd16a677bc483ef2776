@@ -16,6 +16,46 @@
       "message": "ping...",
       "revId": "d0f30b0d56d42f0e1a0d2cd16a677bc483ef2776",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5960c7e9_04552f50",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-02T06:37:08Z",
+      "side": 1,
+      "message": "use the constant instead of hardcoding (since it\u0027s now out of date)",
+      "revId": "d0f30b0d56d42f0e1a0d2cd16a677bc483ef2776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ce85ea_26f0f40b",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-02T06:37:08Z",
+      "side": 1,
+      "message": "you can just say \"specify\"",
+      "range": {
+        "startLine": 145,
+        "startChar": 46,
+        "endLine": 145,
+        "endChar": 61
+      },
+      "revId": "d0f30b0d56d42f0e1a0d2cd16a677bc483ef2776",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
