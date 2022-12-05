@@ -70,6 +70,24 @@
       "parentUuid": "5d0b3bb3_a2824b55",
       "revId": "dda1272938161dba104b70403082ca3c43414ac1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ed11bc_98b7bb55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2022-12-05T04:45:55Z",
+      "side": 1,
+      "message": "Sorry we forgot record the discussion.\nInitially, the main purpose was to log the action of \"disable rootfs verification\".\n\nBut later I think it is could be helpful to generate some logs on the builders as well. The `logger` tool should be available when syslog is used.\n\nBut..., I\u0027m not sure if the builder logs include syslog or not.  If not, we can add some `if` statements to only log it when `ROOTDEV_DISK` is used.",
+      "parentUuid": "5efd44ca_c4ad5941",
+      "revId": "dda1272938161dba104b70403082ca3c43414ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
