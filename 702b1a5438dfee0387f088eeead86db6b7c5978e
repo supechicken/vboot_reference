@@ -93,6 +93,30 @@
       },
       "revId": "702b1a5438dfee0387f088eeead86db6b7c5978e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddaf24f0_bad3f794",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-12-05T20:13:26Z",
+      "side": 1,
+      "message": "Hrmm, maybe reword it:\n\u003e This method can only be called before a firmware slot has been selected, otherwise an assert is raised.",
+      "parentUuid": "20501078_02398a2e",
+      "range": {
+        "startLine": 409,
+        "startChar": 36,
+        "endLine": 409,
+        "endChar": 60
+      },
+      "revId": "702b1a5438dfee0387f088eeead86db6b7c5978e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
