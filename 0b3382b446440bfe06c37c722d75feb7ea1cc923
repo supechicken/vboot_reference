@@ -22,6 +22,64 @@
       },
       "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00874cc2_22e9c214",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-06T19:02:22Z",
+      "side": 1,
+      "message": "I think in general it would be fine to introduce a TEST_ENVIRONMENT if we need to differentiate between tests and host utilities. Do we have such a case here?",
+      "parentUuid": "ade6c754_2bc935a0",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e64c072_9c54a049",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-06T19:02:22Z",
+      "side": 1,
+      "message": "Let\u0027s just use sd-\u003estatus \u003d 0, like above.",
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ab614b_58a1e69f",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-06T19:02:22Z",
+      "side": 1,
+      "message": "What about here and the other ones below? Either we also clear the status so they actually do something, or we decide reinitialization isn\u0027t necessary and take them out. Calling a setup function that does nothing is confusing.",
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
