@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b2f58b_f6ab27fc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-06T21:12:30Z",
+      "side": 1,
+      "message": "This function should only be called before fw_phase1(). We can\u0027t directly assert that, but that\u0027s the contract. Otherwise, it wouldn\u0027t work right (e.g. it would be too late to enter recovery mode if it decided to do that).\n\nIn fact, rather than (or maybe in addition to) CHOSE_SLOT, maybe we should make it assert that NV_INIT is clear?\n\nLet\u0027s very clearly document the environment that this needs to be called in, because it\u0027s a bit of an odd special case: context needs to be initialized (i.e. after vb2api_init()), nvdata needs to be read into ctx-\u003envdata, secdata may or may not have been read already, and fw_phase1() must not have been called yet.",
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f75826_1682cbda",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-06T21:12:30Z",
+      "side": 1,
+      "message": "nit: should use VB2_FW_SLOT_A constant for these",
+      "range": {
+        "startLine": 425,
+        "startChar": 34,
+        "endLine": 425,
+        "endChar": 35
+      },
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484107e8_2b49fd1b",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-06T21:12:30Z",
+      "side": 1,
+      "message": "nit: can\u0027t this be merged into the top test case? I don\u0027t see a difference.",
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
