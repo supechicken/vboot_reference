@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade6c754_2bc935a0",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-06T09:00:58Z",
+      "side": 1,
+      "message": "Julius, how should we handle this in unit tests? Currently it is defined. However, in this particular case I think we do want to test the `VB2_NV_FIRMWARE_SETTINGS_RESET` clearance.\n\nShould we define another `TEST_ENVIRONMENT`? It should always be used together with `CHROMEOS_ENVIRONMENT`.",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
