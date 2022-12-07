@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29329497_b5216903",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-07T00:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e64c072_9c54a049",
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74ab614b_58a1e69f",
@@ -78,6 +96,24 @@
       "writtenOn": "2022-12-06T19:02:22Z",
       "side": 1,
       "message": "What about here and the other ones below? Either we also clear the status so they actually do something, or we decide reinitialization isn\u0027t necessary and take them out. Calling a setup function that does nothing is confusing.",
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536db679_05da1fa9",
+        "filename": "tests/vb2_nvstorage_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-07T00:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74ab614b_58a1e69f",
       "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
