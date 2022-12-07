@@ -16,6 +16,24 @@
       "message": "Why do these keys need to change? If this patch is just about changing the output paths for the scripts, can\u0027t we keep the old devkeys?",
       "revId": "06cbffbe5bbc289ccd41d70f9e6a013f4d23a634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e74f5de_81821a35",
+        "filename": "tests/devkeys/arv_root.vbpubk",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-07T02:40:21Z",
+      "side": 0,
+      "message": "I guess we could, I just wanted to create the keys following the process expected after the script update.\n\nBut I see now that what\u0027s missing in this patch is removing `./tests/devkeys/arv_root.*` because they are in the new location now. I would prefer to do this in a follow up patch in order to not delay merging of this one.",
+      "parentUuid": "59a99a41_c52131e8",
+      "revId": "06cbffbe5bbc289ccd41d70f9e6a013f4d23a634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
