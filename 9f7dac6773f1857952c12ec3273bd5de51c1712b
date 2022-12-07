@@ -22,6 +22,30 @@
       },
       "revId": "9f7dac6773f1857952c12ec3273bd5de51c1712b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "603528e4_d46c77fd",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-07T23:05:00Z",
+      "side": 1,
+      "message": "I like to follow this kernel convention:\n\nIf the name of a function is an action or an imperative command,\nthe function should return an error-code integer.  If the name\nis a predicate, the function should return a \"succeeded\" boolean.\n\nSo I could change the name to flash_argument_handled and use a bool `true \u003d consumed`. It\u0027s not quite right as its a mutating function and a bit at odds with the rest of futility though. There are only 3 bool functions and they are very predicatey eg: `range_fits`.",
+      "parentUuid": "ba8b9dc7_0249400d",
+      "range": {
+        "startLine": 1691,
+        "startChar": 0,
+        "endLine": 1691,
+        "endChar": 3
+      },
+      "revId": "9f7dac6773f1857952c12ec3273bd5de51c1712b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
