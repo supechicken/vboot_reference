@@ -2,6 +2,7 @@
 # Copyright 2022 The ChromiumOS Authors
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
+
 """Sign the UEFI binaries in the target directory.
 
 The target directory can be either the root of ESP or /boot of root filesystem.
@@ -133,6 +134,26 @@ def sign_target_dir(target_dir, key_dir, efi_glob):
             signer.sign_efi_file(kernel_file)
 
 
+def get_parser() -> argparse.ArgumentParser:
+    """Get CLI parser."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "target_dir",
+        type=Path,
+        help="Path of a boot directory, either the root of the ESP or "
+        "/boot of the root filesystem",
+    )
+    parser.add_argument(
+        "key_dir",
+        type=Path,
+        help="Path of a directory containing the key and cert files",
+    )
+    parser.add_argument(
+        "efi_glob", help="Glob pattern of EFI files to sign, e.g. '*.efi'"
+    )
+    return parser
+
+
 def main(argv: Optional[List[str]] = None) -> Optional[int]:
     """Sign UEFI binaries.
 
@@ -141,15 +162,11 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     """
     logging.basicConfig(level=logging.INFO)
 
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("target_dir", type=Path)
-    parser.add_argument("key_dir", type=Path)
-    parser.add_argument("efi_glob")
+    parser = get_parser()
     opts = parser.parse_args(argv)
 
-    ensure_executable_available("sbattach")
-    ensure_executable_available("sbsign")
-    ensure_executable_available("sbverify")
+    for tool in ("sbattach", "sbsign", "sbverify"):
+        ensure_executable_available(tool)
 
     sign_target_dir(opts.target_dir, opts.key_dir, opts.efi_glob)
 
