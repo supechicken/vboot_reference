@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71f30b98_c4acc307",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-07T02:53:54Z",
+      "side": 1,
+      "message": "Yes I think we should allow `vb2_nv_set(ctx, VB2_NV_FIRMWARE_SETTINGS_RESET, 0);` in our nvdata unit tests, so that we can check that *a second vb2_nv_init call following a first call with CRC error doesn\u0027t clear VB2_NV_FIRMWARE_SETTINGS_RESET*.",
+      "parentUuid": "00874cc2_22e9c214",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e64c072_9c54a049",
         "filename": "tests/vb2_nvstorage_tests.c",
         "patchSetId": 7
