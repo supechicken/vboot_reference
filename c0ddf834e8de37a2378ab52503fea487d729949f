@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ffa4bd6b_b2f23466",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-07T00:02:25Z",
+      "side": 1,
+      "message": "I have updated the function doc as you mentioned.",
+      "parentUuid": "51b2f58b_f6ab27fc",
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7f75826_1682cbda",
         "filename": "tests/vb2_misc_tests.c",
         "patchSetId": 7
@@ -31,6 +49,30 @@
       "writtenOn": "2022-12-06T21:12:30Z",
       "side": 1,
       "message": "nit: should use VB2_FW_SLOT_A constant for these",
+      "range": {
+        "startLine": 425,
+        "startChar": 34,
+        "endLine": 425,
+        "endChar": 35
+      },
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f94a67_9fcea2c5",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-07T00:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f75826_1682cbda",
       "range": {
         "startLine": 425,
         "startChar": 34,
@@ -54,6 +96,24 @@
       "writtenOn": "2022-12-06T21:12:30Z",
       "side": 1,
       "message": "nit: can\u0027t this be merged into the top test case? I don\u0027t see a difference.",
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515dc622_249b876b",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-07T00:02:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "484107e8_2b49fd1b",
       "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
