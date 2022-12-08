@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ca624e9_04b4aa3f",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-08T01:36:24Z",
+      "side": 1,
+      "message": "Removed this check since vb2api_previous_boot_fail already asserts when VB2_SD_STATUS_NV_INIT is set. That flag is set as part of vb2_nv_init when the vb2api_previous_boot_fail gets called for the first time.",
+      "parentUuid": "8a7e2cf2_c3f0be90",
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17afcc08_887bc3ce",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 9
@@ -49,6 +67,30 @@
       "writtenOn": "2022-12-08T01:01:14Z",
       "side": 1,
       "message": "vb2api",
+      "range": {
+        "startLine": 409,
+        "startChar": 43,
+        "endLine": 409,
+        "endChar": 46
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5d7882_fb66e6e5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-08T01:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17afcc08_887bc3ce",
       "range": {
         "startLine": 409,
         "startChar": 43,
@@ -84,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67766c42_850729b1",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-08T01:36:24Z",
+      "side": 1,
+      "message": "Reworded to include only VB2_SD_STATUS_NV_INIT which is done during vb2api_fw_phase1.",
+      "parentUuid": "2311f02b_aac304a3",
+      "range": {
+        "startLine": 410,
+        "startChar": 15,
+        "endLine": 410,
+        "endChar": 40
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "256eaecb_492c6ede",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 9
@@ -95,6 +161,30 @@
       "writtenOn": "2022-12-08T01:01:14Z",
       "side": 1,
       "message": "nit: this is not a vboot function so I don\u0027t think it should be mentioned by name here",
+      "range": {
+        "startLine": 413,
+        "startChar": 47,
+        "endLine": 413,
+        "endChar": 56
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef5608f_959bc5aa",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-08T01:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "256eaecb_492c6ede",
       "range": {
         "startLine": 413,
         "startChar": 47,
@@ -118,6 +208,30 @@
       "writtenOn": "2022-12-08T01:01:14Z",
       "side": 1,
       "message": "vb2api",
+      "range": {
+        "startLine": 415,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 8
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7a898b_40f7ed40",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-08T01:36:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cefe9e4a_6c495778",
       "range": {
         "startLine": 415,
         "startChar": 5,
