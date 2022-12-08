@@ -16,6 +16,210 @@
       "message": "b",
       "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4641fed6_e1628458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "this is why we started the chromite/signing/ tree ...",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab0ae42_25022f1f",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "general advice from here applies:\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#Describing-arguments-in-docstrings",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed630873_8cf42ce5",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "import modules",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3a368c_75120d3c",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "don\u0027t replicate the shell code.  use standard python logging module instead.",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ede2a6b_a741c785",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "lines are too long.  please use `cros format` to fix problems.",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8294fb_2f28d472",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "we use `|foo|` to refer to func params",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8573e5_5b36f44f",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "return value should be `opts` to avoid confusion with `*args` and `argv`",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbdeeab7_d2c15756",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ce1d2b_4623a695",
+        "filename": "scripts/image_signing/sign_uefi_unittests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "`from unittest import mock` is allowed, but not below that",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df002a9_9c0c5ac6",
+        "filename": "scripts/image_signing/sign_uefi_unittests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "import modules",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b55ecf6_8361cb79",
+        "filename": "scripts/image_signing/sign_uefi_unittests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "keep sorted.  cros lint/format should have caught these.",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3399b403_b5f2d759",
+        "filename": "scripts/image_signing/sign_uefi_unittests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-08T07:40:28Z",
+      "side": 1,
+      "message": "no one is going to do this.  if we want to add unittests here, we need a `run_tests` script that does the right thing.\n\nin this case, we could have it chdir to this dir and then run `pytest`.",
+      "revId": "ad6b474d9b9801aa9aff68d33b3aa96651eac7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
