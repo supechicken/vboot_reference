@@ -170,6 +170,24 @@
       "parentUuid": "515dc622_249b876b",
       "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a318a4c_fa8b0842",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-08T01:15:14Z",
+      "side": 1,
+      "message": "Since we wanted to restrict calling vb2_previous_boot_fail only once, repeated failure will actually trigger a assert due to VB2_SD_STATUS_NV_INIT flag set in the first failure.\n\nHence removed the repeated failure test case.",
+      "parentUuid": "8ae60a82_bd099706",
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
