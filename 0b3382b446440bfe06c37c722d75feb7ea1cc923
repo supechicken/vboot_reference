@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b00c3216_ba76c10b",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-08T01:39:48Z",
+      "side": 1,
+      "message": "Sorry, I should have made myself clearer. I was not asking for adding new test cases. The test case in line 114 already covers what I said above, so there\u0027s nothing wrong with the test itself. PS9 is fine.\n\nThe problem is that the `vb2_nv_set(ctx, VB2_NV_FIRMWARE_SETTINGS_RESET, 0);` line here doesn\u0027t get compiled because `CHROMEOS_ENVIRONMENT` is defined in testing build. And this problem is unrelated to your change. I just happened to discover the problem when reviewing the code.",
+      "parentUuid": "77f4645c_180e14ae",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "0b3382b446440bfe06c37c722d75feb7ea1cc923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e64c072_9c54a049",
         "filename": "tests/vb2_nvstorage_tests.c",
         "patchSetId": 7
