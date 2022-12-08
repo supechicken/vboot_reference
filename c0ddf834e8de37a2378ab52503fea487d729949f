@@ -152,6 +152,24 @@
       "parentUuid": "484107e8_2b49fd1b",
       "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae60a82_bd099706",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-08T01:01:14Z",
+      "side": 1,
+      "message": "Well, you just deleted this case, you didn\u0027t merge them. You should check the recovery request in the first case, then.\n\nAlso not sure why you removed the \"repeated fail\" test case, I think that was useful (another way to test that would be to just set fw_result to failure manually before calling it once, so you don\u0027t run into the double init assertion).",
+      "parentUuid": "515dc622_249b876b",
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

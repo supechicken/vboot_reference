@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d55b93_df584766",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-08T01:01:14Z",
+      "side": 1,
+      "message": "nit: comment to explain what this is here for?",
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17afcc08_887bc3ce",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-08T01:01:14Z",
+      "side": 1,
+      "message": "vb2api",
+      "range": {
+        "startLine": 409,
+        "startChar": 43,
+        "endLine": 409,
+        "endChar": 46
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2311f02b_aac304a3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-08T01:01:14Z",
+      "side": 1,
+      "message": "The way this is written now suggests that fw_phase1() selects the slot, which is not true.",
+      "range": {
+        "startLine": 410,
+        "startChar": 15,
+        "endLine": 410,
+        "endChar": 40
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256eaecb_492c6ede",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-08T01:01:14Z",
+      "side": 1,
+      "message": "nit: this is not a vboot function so I don\u0027t think it should be mentioned by name here",
+      "range": {
+        "startLine": 413,
+        "startChar": 47,
+        "endLine": 413,
+        "endChar": 56
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cefe9e4a_6c495778",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-08T01:01:14Z",
+      "side": 1,
+      "message": "vb2api",
+      "range": {
+        "startLine": 415,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 8
+      },
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
