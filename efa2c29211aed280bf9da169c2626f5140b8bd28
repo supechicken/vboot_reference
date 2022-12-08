@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a7e2cf2_c3f0be90",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2022-12-08T01:17:41Z",
+      "side": 1,
+      "message": "Now I dont see a value in this check since we are asserting when VB2_SD_STATUS_NV_INIT is already set.",
+      "parentUuid": "24d55b93_df584766",
+      "revId": "efa2c29211aed280bf9da169c2626f5140b8bd28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17afcc08_887bc3ce",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 9
