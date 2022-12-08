@@ -206,6 +206,24 @@
       "parentUuid": "1a318a4c_fa8b0842",
       "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85815090_59c32e4a",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-12-08T02:05:52Z",
+      "side": 1,
+      "message": "Yes, that\u0027s why I suggested to set fw_result manually so you can test the case where a failure was already reported without running into the assertion due to calling the function twice.",
+      "parentUuid": "841e0a98_bbabd621",
+      "revId": "c0ddf834e8de37a2378ab52503fea487d729949f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
