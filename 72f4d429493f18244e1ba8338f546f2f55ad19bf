@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced95961_ba805e7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-08T09:19:10Z",
+      "side": 1,
+      "message": "This is not the first time people proposed to auto-format vboot code (b/243397848). As I said on the bug, the vboot_reference repo follows coreboot\u0027s style. However there hasn\u0027t been consensus about auto-formatting code there in upstream coreboot. See the previous (long) [discussions](https://mail.coreboot.org/hyperkitty/list/coreboot@coreboot.org/thread/4FAD25MJPI2XSSWHDDI5CSJR6SKCRFWW/#FDPB2PVVV7AB2CPJSGX4S2SFA4WNURN4).\n\nIn addition, hypothetically, if we\u0027d like to enable this pre-submit check, there should be CLs fixing all files in the repo (just like CL:3751462 for ec).\n\nPersonally I think it\u0027s usually good to run clang-format on a CL before uploading it for review, in order to reduce the reviewing effort. However, before enforcing the format, we have to make sure people agree on the clang-format\u0027s output (with the current config).",
+      "revId": "72f4d429493f18244e1ba8338f546f2f55ad19bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
