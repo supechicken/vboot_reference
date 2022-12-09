@@ -16,6 +16,125 @@
       "message": "Addressed feedback, also adding another reviewer since some additional files have now been modified.",
       "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35007183_e4d51a4d",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-09T17:49:24Z",
+      "side": 1,
+      "message": "blank line before/after module docstrings",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37740df6_72633af0",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-09T17:49:24Z",
+      "side": 1,
+      "message": "normally we put the parser setup into a `get_parser()` helper function that just constructs \u0026 returns it.  this keeps the main func easier to follow as we add \u0026 extend the CLI.",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a8c21e_889b7a15",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-09T17:49:24Z",
+      "side": 1,
+      "message": "should add help\u003d to each of these",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9d4da7_c7fae91b",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-09T17:49:24Z",
+      "side": 1,
+      "message": "minor, but use a loop\n\n```\nfor tool in (...):\n  ensure_executable_available(tool)\n```",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a755ad83_979f1073",
+        "filename": "scripts/image_signing/sign_uefi_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-09T17:49:24Z",
+      "side": 1,
+      "message": "blank line before/after module docstrings",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9605fe24_d4dea4e4",
+        "filename": "scripts/image_signing/sign_uefi_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-09T17:49:24Z",
+      "side": 1,
+      "message": "this is weird style.  maybe cleaner to write:\n\n`@mock.patch.object(sign_uefi.Signer, \u0027sign_efi_file\u0027)`\n\nthis also has the advantage of better error checking ... typos in the strings aren\u0027t caught until the mock code executes",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9561e137_7d81d8ff",
+        "filename": "scripts/image_signing/sign_uefi_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-09T17:49:24Z",
+      "side": 1,
+      "message": "comments are full sentences, and full sentences end in periods\n\ncomes up a few times in this CL",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
