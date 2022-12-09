@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65675c3d_644ae946",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-09T19:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35007183_e4d51a4d",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37740df6_72633af0",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-12-09T17:49:24Z",
       "side": 1,
       "message": "normally we put the parser setup into a `get_parser()` helper function that just constructs \u0026 returns it.  this keeps the main func easier to follow as we add \u0026 extend the CLI.",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c58c8e_9d2aa019",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-09T19:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37740df6_72633af0",
       "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c103fa_df60cc3e",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-09T19:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a8c21e_889b7a15",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d9d4da7_c7fae91b",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-12-09T17:49:24Z",
       "side": 1,
       "message": "minor, but use a loop\n\n```\nfor tool in (...):\n  ensure_executable_available(tool)\n```",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cd7cca_22c7f716",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-09T19:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9d4da7_c7fae91b",
       "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03d1908_1ef66bd2",
+        "filename": "scripts/image_signing/sign_uefi_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-09T19:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a755ad83_979f1073",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9605fe24_d4dea4e4",
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97f691a_f9a9f93d",
+        "filename": "scripts/image_signing/sign_uefi_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-09T19:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9605fe24_d4dea4e4",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9561e137_7d81d8ff",
@@ -133,6 +241,24 @@
       "writtenOn": "2022-12-09T17:49:24Z",
       "side": 1,
       "message": "comments are full sentences, and full sentences end in periods\n\ncomes up a few times in this CL",
+      "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd917fc8_12a7339b",
+        "filename": "scripts/image_signing/sign_uefi_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-09T19:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9561e137_7d81d8ff",
       "revId": "2aa50b510d7fbc0097c4d3afd06b3ae3388aff88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
