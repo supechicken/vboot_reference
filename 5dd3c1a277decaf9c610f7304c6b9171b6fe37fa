@@ -16,6 +16,24 @@
       "message": "failing tests highlighted the problem: they root public key needs to be available in the keyset directory.\n\nRestored arv_root.vbpubk in the orginial location and added to the script a command to copy the public key when creating a board keyset, the same way it is done for MP keys in keygeneration-hsm scripts in the sigher tree.\n\nPTAL.",
       "revId": "5dd3c1a277decaf9c610f7304c6b9171b6fe37fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65618dee_b3ebdd6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2022-12-12T23:42:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d973a97_7f6e9b85",
+      "revId": "5dd3c1a277decaf9c610f7304c6b9171b6fe37fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
