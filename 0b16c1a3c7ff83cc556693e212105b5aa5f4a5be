@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc87834_ab5184cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-13T06:56:40Z",
+      "side": 1,
+      "message": "I discovered that futility is also built in coreboot with USE_FLASHROM\u003d1. We need to support that case where the updater*.c files are not built.",
+      "revId": "0b16c1a3c7ff83cc556693e212105b5aa5f4a5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
