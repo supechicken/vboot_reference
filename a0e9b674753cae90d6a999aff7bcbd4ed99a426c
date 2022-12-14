@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30dffc28_04fbcad8",
+        "filename": ".gitignore",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2022-12-14T14:05:28Z",
+      "side": 1,
+      "message": "we don\u0027t need to ignore pyc anymore as Python 3 only uses a subdir",
+      "parentUuid": "8858dc37_f75dac23",
+      "revId": "a0e9b674753cae90d6a999aff7bcbd4ed99a426c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c158528_bae3b7b3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
