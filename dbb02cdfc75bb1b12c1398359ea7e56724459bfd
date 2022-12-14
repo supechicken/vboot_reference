@@ -70,6 +70,30 @@
       },
       "revId": "dbb02cdfc75bb1b12c1398359ea7e56724459bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09fea22_ac4faa30",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2022-12-14T04:08:47Z",
+      "side": 1,
+      "message": "\u003e I think there were two cases that the old Chromebooks would prefer WPSW_BOOT:\n\u003e \n\u003e 1. Devices with WP implemented as screws, even with a loosen screw - the WP at boot is more reliable than curr.\n\u003e 2. Chromebooks forgot to define their wpsw_cur (most checks were done using wpsw_boot at that time).\n\u003e \n\u003e But we have moved to wpsw_cur for a long time. Probably a good time to also get rid of this fallback?\n\u003e \n\u003e I\u0027m ok with having an error message as the first step.\n\nSounds good. Any chance you want to own b/254337014 ?  ;-)",
+      "parentUuid": "2fb0e680_cd0a0d14",
+      "range": {
+        "startLine": 477,
+        "startChar": 38,
+        "endLine": 477,
+        "endChar": 41
+      },
+      "revId": "dbb02cdfc75bb1b12c1398359ea7e56724459bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
