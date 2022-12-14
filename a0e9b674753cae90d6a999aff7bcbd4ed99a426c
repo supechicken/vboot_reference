@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07986b57_9accc7a8",
+        "filename": ".gitignore",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-14T16:39:54Z",
+      "side": 1,
+      "message": "Looks like all the newbitmaps stuff has moved out of this repo. I put up https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4107012 to remove all these entries.",
+      "parentUuid": "30dffc28_04fbcad8",
+      "revId": "a0e9b674753cae90d6a999aff7bcbd4ed99a426c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c158528_bae3b7b3",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-12-14T06:56:41Z",
       "side": 1,
       "message": "enable",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 12
+      },
+      "revId": "a0e9b674753cae90d6a999aff7bcbd4ed99a426c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9df4dd_62365cc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2022-12-14T16:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c158528_bae3b7b3",
       "range": {
         "startLine": 18,
         "startChar": 5,
