@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d9231e_c1ec1204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-12-15T17:57:51Z",
+      "side": 1,
+      "message": "Is this really a good idea?\n\ncros_config allows models to be defined using both model and SKU. It can\u0027t be detected solely using FRID. See Fizz, Coral, or Reef for examples that use this heavily.\n\nIt seems too fuzzy, and people are going to expect it to work in scenarios that it wont...",
+      "revId": "ff29ee63ed52b698afcaa4c2619d7163322a3785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a1883d3_f511592e",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-12-15T17:57:51Z",
+      "side": 1,
+      "message": "I think this has a bug: if the FRID in the image is longer than the FRID on the device, and the frid on the device is the start of the FRID of the image, it\u0027ll match.\n\n(Essentially, you used \"startswith\" instead of a string comparison due to using `strncasecmp` instead of `strcasecmp`).",
+      "range": {
+        "startLine": 744,
+        "startChar": 22,
+        "endLine": 744,
+        "endChar": 25
+      },
+      "revId": "ff29ee63ed52b698afcaa4c2619d7163322a3785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
