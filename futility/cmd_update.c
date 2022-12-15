@@ -152,7 +152,8 @@ static int do_update(int argc, char *argv[])
 {
 	struct updater_config *cfg;
 	struct updater_config_arguments args = {0};
-	int i, errorcnt = 0, update_needed = 1;
+	int i, errorcnt = 0;
+	bool update_needed;
 	int detect_servo = 0;
 	const char *prepare_ctrl_name = NULL;
 	char *servo_programmer = NULL;

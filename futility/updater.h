@@ -177,7 +177,7 @@ void updater_delete_config(struct updater_config *cfg);
  */
 int updater_setup_config(struct updater_config *cfg,
 			 const struct updater_config_arguments *arg,
-			 int *do_update);
+			 bool *do_update);
 
 /* Prints the name and description from all supported quirks. */
 void updater_list_config_quirks(const struct updater_config *cfg);
