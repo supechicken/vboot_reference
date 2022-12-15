@@ -1473,12 +1473,14 @@ static int updater_setup_archive(
  */
 int updater_setup_config(struct updater_config *cfg,
 			 const struct updater_config_arguments *arg,
-			 int *do_update)
+			 bool *do_update)
 {
 	int errorcnt = 0;
 	int check_single_image = 0, check_wp_disabled = 0;
 	int do_output = 0;
 	const char *archive_path = arg->archive;
+
+	*do_update = true; /* assume true unless otherwise found false. */
 
 	/* Setup values that may change output or decision of other argument. */
 	cfg->verbosity = arg->verbosity;
@@ -1499,14 +1501,14 @@ int updater_setup_config(struct updater_config *cfg,
 			      "additional images (--ec_image, --pd_image).");
 			return ++errorcnt;
 		}
-		*do_update = 0;
+		*do_update = false;
 	}
 	if (arg->repack || arg->unpack) {
 		if (!arg->archive) {
 			ERROR("--{re,un}pack needs --archive.\n");
 			return ++errorcnt;
 		}
-		*do_update = 0;
+		*do_update = false;
 	}
 	if (arg->detect_model_only) {
 		if (!arg->archive) {
@@ -1514,7 +1516,7 @@ int updater_setup_config(struct updater_config *cfg,
 			return ++errorcnt;
 		}
 		cfg->detect_model = true;
-		*do_update = 0;
+		*do_update = false;
 	}
 
 	/* Setup update mode. */
@@ -1698,7 +1700,7 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt += updater_output_image(&cfg->image, "image.bin", r);
 		errorcnt += updater_output_image(&cfg->ec_image, "ec.bin", r);
 		errorcnt += updater_output_image(&cfg->pd_image, "pd.bin", r);
-		*do_update = 0;
+		*do_update = false;
 	}
 	return errorcnt;
 }
