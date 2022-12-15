@@ -562,7 +562,7 @@ static int compare_section(const struct firmware_section *a,
  * non-zero, indicating an update should be performed.
  * If section_name is NULL, compare whole images.
  */
-static int section_needs_update(const struct firmware_image *image_from,
+int section_needs_update(const struct firmware_image *image_from,
 				const struct firmware_image *image_to,
 				const char *section_name)
 {
@@ -583,7 +583,7 @@ static int section_needs_update(const struct firmware_image *image_from,
 /*
  * Returns true if the write protection is enabled on current system.
  */
-static int is_write_protection_enabled(struct updater_config *cfg)
+int is_write_protection_enabled(struct updater_config *cfg)
 {
 	/* Default to enabled. */
 	int wp = get_system_property(SYS_PROP_WP_HW, cfg);
