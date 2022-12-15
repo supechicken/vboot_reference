@@ -28,17 +28,6 @@
  *  - ec: 'ec.bin'
  *  - pd: 'pd.bin'
  *
- * If custom label is supported, a 'keyset/' folder will be available, with key
- * files in it:
- *  - rootkey.$CLTAG
- *  - vblock_A.$CLTAG
- *  - vblock_B.$CLTAG
- *
- * The $CLTAG should come from VPD value 'custom_label_tag'. For legacy devices,
- * the VPD name may be 'whitelabel_tag', or 'customization_id'.
- * The 'customization_id' has a different format: LOEM[-VARIANT] and we can only
- * take LOEM as $CLTAG, for example A-B => $CLTAG=A.
- *
  * A package for Unified Build is more complicated.
  *
  * You need to look at the signer_config.csv file to find image files and their
