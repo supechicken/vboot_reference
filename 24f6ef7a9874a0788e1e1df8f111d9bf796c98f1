@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f541c25e_087b226e",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-12-15T10:04:52Z",
+      "side": 1,
+      "message": "are you leaning on the fall though of `do_gbb()` to clean up the heap here or are you leaking `servo_programmer` potentially.",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 11
+      },
+      "revId": "24f6ef7a9874a0788e1e1df8f111d9bf796c98f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39900a05_7c91f92c",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-12-15T10:04:52Z",
+      "side": 1,
+      "message": "ditto but also `*cfg`",
+      "range": {
+        "startLine": 358,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 11
+      },
+      "revId": "24f6ef7a9874a0788e1e1df8f111d9bf796c98f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd19a38_da522c1a",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-12-15T10:04:52Z",
+      "side": 1,
+      "message": "hmm you don\u0027t check the return code here?",
+      "range": {
+        "startLine": 539,
+        "startChar": 2,
+        "endLine": 539,
+        "endChar": 3
+      },
+      "revId": "24f6ef7a9874a0788e1e1df8f111d9bf796c98f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
