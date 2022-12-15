@@ -57,12 +57,10 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const SETVARS_SIGNATURE_ID = "SIGNATURE_ID",
 		  * const SIG_ID_IN_VPD_PREFIX = "sig-id-in",
 		  * const DIR_KEYSET = "keyset",
-		  * const DIR_MODELS = "models",
 		  * const DEFAULT_MODEL_NAME = "default",
 		  * const VPD_CUSTOM_LABEL_TAG = "custom_label_tag",
 		  * const VPD_CUSTOM_LABEL_TAG_LEGACY = "whitelabel_tag",
 		  * const VPD_CUSTOMIZATION_ID = "customization_id",
-		  * const ENV_VAR_MODEL_DIR = "${MODEL_DIR}",
 		  * const PATH_STARTSWITH_KEYSET = "keyset/",
 		  * const PATH_SIGNER_CONFIG = "signer_config.csv",
 		  * const PATH_ENDSWITH_SETVARS = "/setvars.sh";
@@ -138,7 +136,6 @@ static int model_config_parse_setvars_file(
 
 	for (line = strtok_r((char *)data, "\n\r", &ptr_line); line;
 	     line = strtok_r(NULL, "\n\r", &ptr_line)) {
-		char *expand_path = NULL;
 		int found_valid = 1;
 
 		/* Format: KEY="value" */
@@ -148,12 +145,6 @@ static int model_config_parse_setvars_file(
 		v = strtok_r(NULL, "\"", &ptr_token);
 		if (!v)
 			continue;
-
-		/* Some legacy updaters may be still using ${MODEL_DIR}. */
-		if (str_startswith(v, ENV_VAR_MODEL_DIR)) {
-			ASPRINTF(&expand_path, "%s/%s%s", DIR_MODELS, cfg->name,
-				 v + strlen(ENV_VAR_MODEL_DIR));
-		}
 
 		if (strcmp(k, SETVARS_IMAGE_MAIN) == 0)
 			cfg->image = strdup(v);
@@ -167,7 +158,6 @@ static int model_config_parse_setvars_file(
 				cfg->is_custom_label = 1;
 		} else
 			found_valid = 0;
-		free(expand_path);
 		valid += found_valid;
 	}
 	free(data);
