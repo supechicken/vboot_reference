@@ -142,6 +142,11 @@ enum {
 #define SHARED_FLASH_ARGS_SHORTOPTS
 #endif /* USE_FLASHROM */
 
+int is_write_protection_enabled(struct updater_config *cfg);
+int section_needs_update(const struct firmware_image *image_from,
+				const struct firmware_image *image_to,
+				const char *section_name);
+
 struct patch_config {
 	char *rootkey;
 	char *vblock_a;
