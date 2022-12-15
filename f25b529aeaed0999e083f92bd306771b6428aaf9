@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80441cb_cb8c6c4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-15T06:11:45Z",
+      "side": 1,
+      "message": "This change could race in with these and break: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4075310\n\nWould you like to submit it later?",
+      "revId": "f25b529aeaed0999e083f92bd306771b6428aaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
