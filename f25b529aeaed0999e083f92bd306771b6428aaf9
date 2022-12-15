@@ -16,6 +16,24 @@
       "message": "This change could race in with these and break: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4075310\n\nWould you like to submit it later?",
       "revId": "f25b529aeaed0999e083f92bd306771b6428aaf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1deecc4a_f292fce1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-12-15T10:10:32Z",
+      "side": 1,
+      "message": "of course, just something I noticed along the way. hence just you as a reviwer at the moment. Maybe we want to make that param optional too by writing into a temp and then setting it at the end with:\n\n```\nif (do_update)\n   *do_update \u003d tmp;\n```",
+      "parentUuid": "b80441cb_cb8c6c4b",
+      "revId": "f25b529aeaed0999e083f92bd306771b6428aaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
