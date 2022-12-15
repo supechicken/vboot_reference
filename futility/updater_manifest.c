@@ -60,7 +60,6 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const DEFAULT_MODEL_NAME = "default",
 		  * const VPD_CUSTOM_LABEL_TAG = "custom_label_tag",
 		  * const VPD_CUSTOM_LABEL_TAG_LEGACY = "whitelabel_tag",
-		  * const VPD_CUSTOMIZATION_ID = "customization_id",
 		  * const PATH_STARTSWITH_KEYSET = "keyset/",
 		  * const PATH_SIGNER_CONFIG = "signer_config.csv",
 		  * const PATH_ENDSWITH_SETVARS = "/setvars.sh";
@@ -744,41 +743,25 @@ cleanup:
  */
 static char *resolve_signature_id(struct model_config *model, const char *image)
 {
-	int is_unibuild = model->signature_id ? 1 : 0;
 	char *tag = vpd_get_value(image, VPD_CUSTOM_LABEL_TAG);
 	char *sig_id = NULL;
+
+	/* No pre-unibuild custom label devices remain. */
+	assert(model->signature_id);
 
 	if (tag == NULL)
 		tag = vpd_get_value(image, VPD_CUSTOM_LABEL_TAG_LEGACY);
 
-	/* Unified build: $model.$tag, or $model (b/126800200). */
-	if (is_unibuild) {
-		if (!tag) {
-			WARN("No VPD '%s' set for custom label. "
-			     "Use model name '%s' as default.\n",
-			     VPD_CUSTOM_LABEL_TAG, model->name);
-			return strdup(model->name);
-		}
-
-		ASPRINTF(&sig_id, "%s-%s", model->name, tag);
-		free(tag);
-		return sig_id;
-	}
-
-	/* Non-Unibuild: Upper($tag), or Upper(${cid%%-*}). */
 	if (!tag) {
-		char *cid = vpd_get_value(image, VPD_CUSTOMIZATION_ID);
-		if (cid) {
-			/* customization_id in format LOEM[-VARIANT]. */
-			char *dash = strchr(cid, '-');
-			if (dash)
-				*dash = '\0';
-			tag = cid;
-		}
+		WARN("No VPD '%s' set for custom label. "
+		     "Use model name '%s' as default.\n",
+		     VPD_CUSTOM_LABEL_TAG, model->name);
+		return strdup(model->name);
 	}
-	if (tag)
-		str_convert(tag, toupper);
-	return tag;
+
+	ASPRINTF(&sig_id, "%s-%s", model->name, tag);
+	free(tag);
+	return sig_id;
 }
 
 /*

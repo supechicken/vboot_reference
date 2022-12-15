@@ -435,36 +435,6 @@ cp -f "${TMP}.to/VBLOCK_B" "${A}/keyset/vblock_B.CL"
 "${FUTILITY}" load_fmap "${A}/image.bin" VBLOCK_A:"${TMP}.from/VBLOCK_A"
 "${FUTILITY}" load_fmap "${A}/image.bin" VBLOCK_B:"${TMP}.from/VBLOCK_B"
 
-test_update "Full update (--archive, custom label, no VPD)" \
-	"${A}/image.bin" "!Need VPD set for custom" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
-
-test_update "Full update (--archive, custom label, no VPD - factory mode)" \
-	"${LINK_BIOS}" "${A}/image.bin" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --mode=factory
-
-test_update "Full update (--archive, custom label, no VPD - quirk mode)" \
-	"${LINK_BIOS}" "${A}/image.bin" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 \
-	--quirks=allow_empty_custom_label_tag
-
-test_update "Full update (--archive, custom label, single package)" \
-	"${A}/image.bin" "${LINK_BIOS}" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3 --signature_id=CL
-
-CL_TAG="CL" PATH="${A}/bin:${PATH}" \
-	test_update "Full update (--archive, custom label, fake vpd)" \
-	"${A}/image.bin" "${LINK_BIOS}" \
-	-a "${A}" --wp=0 --sys_props 0,0x10001,1,3
-
-echo "TEST: Output (-a, --mode=output)"
-mkdir -p "${TMP}.outa"
-cp -f "${A}/image.bin" "${TMP}.emu"
-CL_TAG="CL" PATH="${A}/bin:${PATH}" \
-	"${FUTILITY}" update -a "${A}" --mode=output --emu="${TMP}.emu" \
-	--output_dir="${TMP}.outa"
-cmp "${LINK_BIOS}" "${TMP}.outa/image.bin"
-
 # Test archive with Unified Build contents.
 cp -r "${SCRIPT_DIR}/futility/models" "${A}/"
 mkdir -p "${A}/images"
