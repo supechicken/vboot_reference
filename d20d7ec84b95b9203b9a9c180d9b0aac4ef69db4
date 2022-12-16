@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a7131d_3ea8c290",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-16T08:53:30Z",
+      "side": 1,
+      "message": "Format:\n\n```\n/*\n * First line...\n```",
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9682c6_af73ee72",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-16T08:53:30Z",
+      "side": 1,
+      "message": "Put it in its own line?",
+      "range": {
+        "startLine": 126,
+        "startChar": 31,
+        "endLine": 126,
+        "endChar": 58
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e0d29a_04f6006c",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-16T08:53:30Z",
+      "side": 1,
+      "message": "Maybe we should just keep these undefined for !USE_FLASHROM, so that they won\u0027t be accidentally referenced.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b44aa0_c35a3fac",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-16T08:53:30Z",
+      "side": 1,
+      "message": "Format.",
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77761449_0b1b9240",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-16T08:53:30Z",
+      "side": 1,
+      "message": "Can we give it a better name such as `opt`?",
+      "range": {
+        "startLine": 212,
+        "startChar": 69,
+        "endLine": 212,
+        "endChar": 70
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
