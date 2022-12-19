@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0648e7_9e14b532",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-19T06:14:02Z",
+      "side": 1,
+      "message": "yep it was just wrong. found some other leaks to fix when i ran this with valgrind/",
+      "parentUuid": "f541c25e_087b226e",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 11
+      },
+      "revId": "24f6ef7a9874a0788e1e1df8f111d9bf796c98f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39900a05_7c91f92c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-15T10:04:52Z",
       "side": 1,
       "message": "ditto but also `*cfg`",
+      "range": {
+        "startLine": 358,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 11
+      },
+      "revId": "24f6ef7a9874a0788e1e1df8f111d9bf796c98f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dadf287_58e3c648",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-19T06:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39900a05_7c91f92c",
       "range": {
         "startLine": 358,
         "startChar": 2,
