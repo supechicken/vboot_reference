@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4166d69_71910437",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-19T09:25:16Z",
+      "side": 1,
+      "message": "Ideally we should also stop showing `--flash` and\n\n```\n\"In GET and SET mode, the following args modify the behaviour of \"\n\"flashing. Presence of any of these are imply --flash.\"\n```\n\nin the help text if !USE_FLASHROM. However, as you said, that would make the `ifdef USE_FLASHROM` spread everywhere.\n\nI guess another (simpler) option is to always show these flash options (by always defining these 3 macros), and return an error when parsing the options (just like we\u0027re already doing in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4075311/13/futility/cmd_gbb_utility.c#497).",
+      "parentUuid": "939e0032_e85c7c2f",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40b44aa0_c35a3fac",
         "filename": "futility/updater.h",
         "patchSetId": 10
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "77761449_0b1b9240",
+      "range": {
+        "startLine": 212,
+        "startChar": 69,
+        "endLine": 212,
+        "endChar": 70
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602a8be9_f01e33fa",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-19T09:25:16Z",
+      "side": 1,
+      "message": "I meant the `i` argument.",
+      "parentUuid": "4786d601_6feeed7d",
       "range": {
         "startLine": 212,
         "startChar": 69,
