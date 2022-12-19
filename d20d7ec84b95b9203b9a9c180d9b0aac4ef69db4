@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38dc501c_bfb5822e",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-19T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a7131d_3ea8c290",
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed9682c6_af73ee72",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-12-16T08:53:30Z",
       "side": 1,
       "message": "Put it in its own line?",
+      "range": {
+        "startLine": 126,
+        "startChar": 31,
+        "endLine": 126,
+        "endChar": 58
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebd14e1_939ad2f5",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-19T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9682c6_af73ee72",
       "range": {
         "startLine": 126,
         "startChar": 31,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "939e0032_e85c7c2f",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-19T06:15:17Z",
+      "side": 1,
+      "message": "Thanks, please take a look at the usage here: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4075311/12/futility/cmd_gbb_utility.c#57\n\nIf we leave this undefined, I could instead mask every usage with a `ifdef USE_FLASHROM`, but I think this is nicer. What do you think?",
+      "parentUuid": "c6e0d29a_04f6006c",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40b44aa0_c35a3fac",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb14907_2a617abf",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-19T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40b44aa0_c35a3fac",
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77761449_0b1b9240",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-12-16T08:53:30Z",
       "side": 1,
       "message": "Can we give it a better name such as `opt`?",
+      "range": {
+        "startLine": 212,
+        "startChar": 69,
+        "endLine": 212,
+        "endChar": 70
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4786d601_6feeed7d",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-19T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77761449_0b1b9240",
       "range": {
         "startLine": 212,
         "startChar": 69,
