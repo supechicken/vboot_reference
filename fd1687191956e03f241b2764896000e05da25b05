@@ -3,6 +3,161 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9555f763_3d5d4524",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "Read from",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35d0c3d_dd19368b",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "options",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0754fe88_4c9186a6",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "implies",
+      "range": {
+        "startLine": 56,
+        "startChar": 38,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "befd8a1b_c012b865",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "Format.",
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59eb61fe_f8bbf354",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "Initialize it to NULL at the beginning. Or, wrap the `prepare_servo_control` calls with `if (args-\u003edetect_servo)`.",
+      "range": {
+        "startLine": 336,
+        "startChar": 16,
+        "endLine": 336,
+        "endChar": 33
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19214d03_2b97da6a",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "Consider moving it to the beginning of the function and call `assert(cfg)` (as in cmd_update.c).",
+      "range": {
+        "startLine": 354,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 29
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690642d8_8d4e5193",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "The string returned from host_detect_servo() is a const string, so we don\u0027t need to free it.",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 5
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aad42393_89a38a95",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 13
@@ -43,6 +198,121 @@
         "startChar": 0,
         "endLine": 386,
         "endChar": 8
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2948bdcc_26e8e497",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "Why do we need to set up `image_current`? If the intention is to use `--flash-contents` for faster flash write, we have to make the following condition true in `write_system_firmware()`:\n\n```\nif (cfg-\u003euse_diff_image \u0026\u0026 cfg-\u003eimage_current.data \u0026\u0026\n    is_the_same_programmer(\u0026cfg-\u003eimage_current, image))\n```\n\nI think the GBB region should be small enough so that we don\u0027t have to use `--flash-contents`.",
+      "range": {
+        "startLine": 411,
+        "startChar": 6,
+        "endLine": 411,
+        "endChar": 19
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98b4c7e_c8f83787",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "flashrom",
+      "range": {
+        "startLine": 500,
+        "startChar": 39,
+        "endLine": 500,
+        "endChar": 44
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09a01ec_2196b474",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "No need for `else` because of the `break` above.",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 567,
+        "endChar": 9
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292373bf_03700ddf",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "No need for `else` because of the `break` above.",
+      "range": {
+        "startLine": 637,
+        "startChar": 5,
+        "endLine": 637,
+        "endChar": 9
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5ec585_9f63f4ef",
+        "filename": "tests/futility/test_gbb_utility.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-12-21T08:44:07Z",
+      "side": 1,
+      "message": "`-i` to be consistent with the test case in line #22.",
+      "range": {
+        "startLine": 76,
+        "startChar": 64,
+        "endLine": 76,
+        "endChar": 65
       },
       "revId": "fd1687191956e03f241b2764896000e05da25b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
