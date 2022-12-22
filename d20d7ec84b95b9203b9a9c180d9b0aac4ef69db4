@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c8bb621_ecd80e49",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:19:59Z",
+      "side": 1,
+      "message": "It\u0027s not the best solution, as saying `--servo` is handled by the function handle_flash_argument which does not exist without USE_FLASHROM. Then the user would get an \u0027unknown argument\u0027 message,  while the help message says they can use the argument. \n\nI tried moving that function already, but there are issues with what types are defined in what headers. I would first need to do a big cleanup of header interdependency (updater and updater_util are interdependent, and there are other issues that I found).\n\nWhat do you think",
+      "parentUuid": "e4166d69_71910437",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40b44aa0_c35a3fac",
         "filename": "futility/updater.h",
         "patchSetId": 10
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "I meant the `i` argument.",
       "parentUuid": "4786d601_6feeed7d",
+      "range": {
+        "startLine": 212,
+        "startChar": 69,
+        "endLine": 212,
+        "endChar": 70
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0d82b2_dcebec27",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "602a8be9_f01e33fa",
       "range": {
         "startLine": 212,
         "startChar": 69,
