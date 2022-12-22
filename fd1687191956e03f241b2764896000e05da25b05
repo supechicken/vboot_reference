@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9920e38_615332b1",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9555f763_3d5d4524",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d35d0c3d_dd19368b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-21T08:44:07Z",
       "side": 1,
       "message": "options",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc29c919_18fc261c",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d35d0c3d_dd19368b",
       "range": {
         "startLine": 55,
         "startChar": 38,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ccf8407_90082405",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0754fe88_4c9186a6",
+      "range": {
+        "startLine": 56,
+        "startChar": 38,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "befd8a1b_c012b865",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee471537_962e7a11",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "befd8a1b_c012b865",
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59eb61fe_f8bbf354",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-12-21T08:44:07Z",
       "side": 1,
       "message": "Initialize it to NULL at the beginning. Or, wrap the `prepare_servo_control` calls with `if (args-\u003edetect_servo)`.",
+      "range": {
+        "startLine": 336,
+        "startChar": 16,
+        "endLine": 336,
+        "endChar": 33
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e9d093_300f92aa",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59eb61fe_f8bbf354",
       "range": {
         "startLine": 336,
         "startChar": 16,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96336c55_bbf1ee59",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Moved.\n\nIs assert preferred over an actual check like I do here? It wont catch the error in release mode.",
+      "parentUuid": "19214d03_2b97da6a",
+      "range": {
+        "startLine": 354,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 29
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "690642d8_8d4e5193",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-12-21T08:44:07Z",
       "side": 1,
       "message": "The string returned from host_detect_servo() is a const string, so we don\u0027t need to free it.",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 5
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77673113_6a13a11f",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "690642d8_8d4e5193",
       "range": {
         "startLine": 369,
         "startChar": 1,
@@ -226,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "445e6605_4c50c3bb",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "I have changed it here to only write the gbb section.",
+      "parentUuid": "2948bdcc_26e8e497",
+      "range": {
+        "startLine": 411,
+        "startChar": 6,
+        "endLine": 411,
+        "endChar": 19
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d98b4c7e_c8f83787",
@@ -239,6 +425,30 @@
       "writtenOn": "2022-12-21T08:44:07Z",
       "side": 1,
       "message": "flashrom",
+      "range": {
+        "startLine": 500,
+        "startChar": 39,
+        "endLine": 500,
+        "endChar": 44
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4176962_2ccc8921",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d98b4c7e_c8f83787",
       "range": {
         "startLine": 500,
         "startChar": 39,
@@ -272,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1164a24_e22d816b",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e09a01ec_2196b474",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 567,
+        "endChar": 9
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "292373bf_03700ddf",
@@ -295,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4bd8c4_406e8fc3",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292373bf_03700ddf",
+      "range": {
+        "startLine": 637,
+        "startChar": 5,
+        "endLine": 637,
+        "endChar": 9
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff5ec585_9f63f4ef",
@@ -308,6 +566,30 @@
       "writtenOn": "2022-12-21T08:44:07Z",
       "side": 1,
       "message": "`-i` to be consistent with the test case in line #22.",
+      "range": {
+        "startLine": 76,
+        "startChar": 64,
+        "endLine": 76,
+        "endChar": 65
+      },
+      "revId": "fd1687191956e03f241b2764896000e05da25b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0750840c_ed5485e3",
+        "filename": "tests/futility/test_gbb_utility.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-12-22T03:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff5ec585_9f63f4ef",
       "range": {
         "startLine": 76,
         "startChar": 64,
