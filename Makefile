@@ -320,10 +320,8 @@ INCLUDES += \
 	-Ifirmware/include \
 	-Ifirmware/lib/include \
 	-Ifirmware/lib/cgptlib/include \
-	-Ifirmware/lib/cryptolib/include \
 	-Ifirmware/lib/tpm_lite/include \
 	-Ifirmware/2lib/include \
-	-Ifirmware/lib20/include
 
 # If we're not building for a specific target, just stub out things like the
 # TPM commands and various external functions that are provided by the BIOS.
