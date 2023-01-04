@@ -204,6 +204,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b548fa1d_be2b40af",
+        "filename": "futility/updater.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-04T03:27:36Z",
+      "side": 1,
+      "message": "I attempted the cleanup when I was writing this patch, but gave up hope.\n\nI made --flash help printing conditional on USE_FLASHROM in the other patch, let me know if that looks OK.",
+      "parentUuid": "a6119d87_3fd4a906",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "d20d7ec84b95b9203b9a9c180d9b0aac4ef69db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40b44aa0_c35a3fac",
         "filename": "futility/updater.h",
         "patchSetId": 10
