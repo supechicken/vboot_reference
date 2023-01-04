@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24ca5b8_d1b7ae05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-04T02:03:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e19a95_21dcf68b",
+      "range": {
+        "startLine": 15,
+        "startChar": 29,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "3ab7b4a7d7c73b4831495065351a967ce1ce1843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "657b901a_46e17ca2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-22T04:07:39Z",
       "side": 1,
       "message": "I think for user-facing long strings it\u0027s acceptable to exceed the line length limit, so that people can easily grep the string.",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 25
+      },
+      "revId": "3ab7b4a7d7c73b4831495065351a967ce1ce1843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3064f39_503f2874",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-04T02:03:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "657b901a_46e17ca2",
       "range": {
         "startLine": 127,
         "startChar": 1,
