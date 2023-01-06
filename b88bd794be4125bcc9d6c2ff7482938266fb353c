@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6837bcb2_3dfaf4eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-06T01:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2005c48_d688519e",
+      "revId": "b88bd794be4125bcc9d6c2ff7482938266fb353c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bda062f5_cd0bf1fa",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-05T03:33:06Z",
       "side": 1,
       "message": "Line too long. Did you upload the patch using `repo upload`? It shows\n\n```\n[FAILED] chromiumos/platform/vboot_reference: _run_checkpatch\n    /usr/local/google/home/yupingso/projects/chromiumos/src/repohooks/checkpatch.pl errors/warnings\n\n    WARNING: line over 80 characters\n    #28: FILE: host/lib/flashrom_drv.c:222:\n    +   flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNREADABLE_REGIONS, true);\n\n    WARNING: line over 80 characters\n    #29: FILE: host/lib/flashrom_drv.c:223:\n    +   flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNWRITABLE_REGIONS, true);\n```",
+      "revId": "b88bd794be4125bcc9d6c2ff7482938266fb353c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "546f7221_4e403bd3",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-06T01:50:25Z",
+      "side": 1,
+      "message": "I did I just kept the lines the full length as it helps clarity. Did we really want to line wrap them and put the `true` on its own line?",
+      "parentUuid": "bda062f5_cd0bf1fa",
       "revId": "b88bd794be4125bcc9d6c2ff7482938266fb353c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
