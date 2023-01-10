@@ -655,7 +655,7 @@ static int external_flashrom(enum flash_command flash_cmd,
 	return r;
 }
 
-static int read_flash(struct updater_config *cfg, struct firmware_image *image)
+int read_flash(struct updater_config *cfg, struct firmware_image *image)
 {
 	int r, i;
 	char *cmd;

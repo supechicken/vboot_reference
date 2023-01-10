@@ -96,6 +96,14 @@ struct updater_config;
 
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
+ * Does not parse the firmware to populate the rest of `struct firmware_image`.
+ * Returns 0 if success, non-zero if error.
+ */
+int read_flash(struct updater_config *cfg, struct firmware_image *image);
+
+/*
+ * Loads the active system firmware image (usually from SPI flash chip).
+ * Does populate `struct firmware_image`.
  * Returns 0 if success, non-zero if error.
  */
 int load_system_firmware(struct updater_config *cfg,
