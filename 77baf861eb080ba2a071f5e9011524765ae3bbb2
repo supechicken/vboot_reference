@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87dcbc5e_e1faa19b",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-10T23:52:50Z",
+      "side": 1,
+      "message": "how about we update this so that `load_system_firmware()` does a `read_flash()` and returns back exit codes that allow the caller to determine the difference between:\n\n - could not read,\n - could read however firmware could not be parsed,\n - could read and could parse firmware.\n \nThe caller can decide.",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 708,
+        "endChar": 3
+      },
+      "revId": "77baf861eb080ba2a071f5e9011524765ae3bbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
