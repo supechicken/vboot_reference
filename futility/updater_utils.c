@@ -655,13 +655,30 @@ static int external_flashrom(enum flash_command flash_cmd,
 	return r;
 }
 
-static int read_flash(struct flashrom_params *params,
-		      struct updater_config *cfg)
+static int read_flash(struct updater_config *cfg, struct firmware_image *image)
 {
-	if (get_config_quirk(QUIRK_EXTERNAL_FLASHROM, cfg))
-		return external_flashrom(FLASH_READ, params, &cfg->tempfiles);
+	int r, i;
+	char *cmd;
+	const int tries = 1 + get_config_quirk(QUIRK_EXTRA_RETRIES, cfg);
+	struct flashrom_params params = {0};
 
-	return flashrom_read_image(params->image, params->verbose);
+	params.image = image;
+	params.verbose = cfg->verbosity + 1; /* libflashrom verbose 1 = WARN. */
+
+	cmd = get_flashrom_command(FLASH_READ, &params, NULL, NULL);
+	INFO("%s\n", cmd);
+	free(cmd);
+
+	for (i = 1, r = -1; i <= tries && r != 0; i++, params.verbose++) {
+		if (i > 1)
+			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
+		if (get_config_quirk(QUIRK_EXTERNAL_FLASHROM, cfg))
+			r = external_flashrom(FLASH_READ, &params,
+					      &cfg->tempfiles);
+		else
+			r = flashrom_read_image(params.image, params.verbose);
+	}
+	return r;
 }
 
 static int write_flash(struct flashrom_params *params,
@@ -692,26 +709,9 @@ static int write_flash(struct flashrom_params *params,
 int load_system_firmware(struct updater_config *cfg,
 			 struct firmware_image *image)
 {
-	int r, i;
-	char *cmd;
-	const int tries = 1 + get_config_quirk(QUIRK_EXTRA_RETRIES, cfg);
-	struct flashrom_params params = {0};
-
-	params.image = image;
-	params.verbose = cfg->verbosity + 1; /* libflashrom verbose 1 = WARN. */
-
-	cmd = get_flashrom_command(FLASH_READ, &params, NULL, NULL);
-	INFO("%s\n", cmd);
-	free(cmd);
-
-	for (i = 1, r = -1; i <= tries && r != 0; i++, params.verbose++) {
-		if (i > 1)
-			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
-		r = read_flash(&params, cfg);
-	}
-	if (!r)
-		r = parse_firmware_image(image);
-	return r;
+	if (!read_flash(cfg, image))
+		return parse_firmware_image(image);
+	return 1;
 }
 
 /*
