@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "724f140b_a1b06e94",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1561252
+      },
+      "writtenOn": "2023-01-10T01:22:37Z",
+      "side": 1,
+      "message": "So it turns out that while this change does allow vboot_reference to compile without flashrom, when other packages such as `chromeos-base/secure-erase-file` reference the crossystem lib, the linker fails saying that certain symbols are no longer defined.\n\nTo your comment about host/arch/arm/lib/crossystem_arch.c is there a reason why I couldn\u0027t also make conditional the flashrom symbols for arm like I did in patchset 1 for x86?",
+      "parentUuid": "43639941_0d91136d",
+      "revId": "6fb9a3cef0b83e6e913839ed090d6299ad674cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63134607_818e818d",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
