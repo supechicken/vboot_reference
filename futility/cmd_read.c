@@ -104,7 +104,7 @@ static int do_read(int argc, char *argv[])
 		errorcnt += updater_setup_config(cfg, &args, &update_needed);
 	if (!errorcnt && update_needed) {
 		prepare_servo_control(prepare_ctrl_name, 1);
-		if (load_system_firmware(cfg, &cfg->image_current))
+		if (load_system_firmware(cfg, &cfg->image_current) < 0)
 			errorcnt++;
 		prepare_servo_control(prepare_ctrl_name, 0);
 	}

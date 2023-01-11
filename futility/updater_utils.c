@@ -685,10 +685,6 @@ static int write_flash(struct flashrom_params *params,
 	return r;
 }
 
-/*
- * Loads the active system firmware image (usually from SPI flash chip).
- * Returns 0 if success, non-zero if error.
- */
 int load_system_firmware(struct updater_config *cfg,
 			 struct firmware_image *image)
 {
@@ -709,9 +705,11 @@ int load_system_firmware(struct updater_config *cfg,
 			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
 		r = read_flash(&params, cfg);
 	}
-	if (!r)
-		r = parse_firmware_image(image);
-	return r;
+	if (r)
+		return -1;
+	if (parse_firmware_image(image))
+		return 1;
+	return 0;
 }
 
 /*

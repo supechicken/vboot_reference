@@ -96,7 +96,9 @@ struct updater_config;
 
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
- * Returns 0 if success, non-zero if error.
+ * Returns 0 if success. Returns 1 if the firmware could not be parsed,
+ * in this case only the data and size fields of firmware_image are filled.
+ * Returns negative on error.
  */
 int load_system_firmware(struct updater_config *cfg,
 			 struct firmware_image *image);
