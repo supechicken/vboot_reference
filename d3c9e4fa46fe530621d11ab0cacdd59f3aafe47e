@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79d5e5e5_795755c4",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-12T10:32:26Z",
+      "side": 1,
+      "message": "just waiting on https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4158631 to land and will rebase on top.",
+      "parentUuid": "cc2c3f11_52db4d4a",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "d3c9e4fa46fe530621d11ab0cacdd59f3aafe47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e173cee_dff0bbe8",
         "filename": "futility/cmd_read.c",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-12T10:17:54Z",
       "side": 1,
       "message": "nit: \n(1) Not really neccesary to have a goto here -- `nested if` also works (no strong opinion here)\n(2) Maybe call it `done`?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 3
+      },
+      "revId": "d3c9e4fa46fe530621d11ab0cacdd59f3aafe47e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4ae0b6_cf7435e9",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-12T10:32:26Z",
+      "side": 1,
+      "message": "I could use nested if blocks however it tends to lead to branch creep so will just follow the kernel style guide here and use goto in the specific case of errors.",
+      "parentUuid": "1e173cee_dff0bbe8",
       "range": {
         "startLine": 133,
         "startChar": 0,
