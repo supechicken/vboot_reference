@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eea772fe_343180d1",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-12T08:17:28Z",
+      "side": 1,
+      "message": "+1 file a bug for checking wp status before writing in futility. More specifically, we could use libflashrom calls to obtain the range from the given region name being written to and check if it resides within a wp protection range.",
+      "parentUuid": "4e890098_3e052a19",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "838a7716_6e79444d",
         "filename": "scripts/image_signing/set_gbb_flags.sh",
         "patchSetId": 3
