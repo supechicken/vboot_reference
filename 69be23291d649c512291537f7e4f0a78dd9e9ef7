@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e890098_3e052a19",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-01-12T07:12:48Z",
+      "side": 1,
+      "message": "Agreed. However, please keep in mind that we\u0027ll need to deal with that when deprecating this script. I wonder if we could check wp status in futility before writing to flash?",
+      "parentUuid": "71c4daa4_76efdc9a",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "838a7716_6e79444d",
         "filename": "scripts/image_signing/set_gbb_flags.sh",
         "patchSetId": 3
