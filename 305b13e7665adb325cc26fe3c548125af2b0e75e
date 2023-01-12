@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72de050_28163290",
+        "filename": "firmware/2lib/2gbb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T07:48:53Z",
+      "side": 1,
+      "message": "I think this library goes in embedded devices, so this code size increase may not be OK (although the theoretical linker wont leave it in). I could put it in the header or a macro or in futility if this doesnt work.",
+      "revId": "305b13e7665adb325cc26fe3c548125af2b0e75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
