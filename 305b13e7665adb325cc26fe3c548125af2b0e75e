@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79b0dc63_8d1a422d",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T23:18:26Z",
+      "side": 1,
+      "message": "I copied this from here: \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/vboot_reference/scripts/image_signing/gbb_flags_common.sh;l\u003d41\n\nMaybe I could update the text with inspiration from here: go/dut-wrangling#gbb-flags",
+      "parentUuid": "aedbe816_23e0c55a",
+      "revId": "305b13e7665adb325cc26fe3c548125af2b0e75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cedd07ef_b1ef40c4",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2023-01-12T08:54:30Z",
       "side": 1,
       "message": "forcing dev mode",
+      "range": {
+        "startLine": 79,
+        "startChar": 31,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "305b13e7665adb325cc26fe3c548125af2b0e75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8f48de_b205c7fa",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T23:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cedd07ef_b1ef40c4",
       "range": {
         "startLine": 79,
         "startChar": 31,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "921ca17a_3742a6be",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T23:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12cebd3e_45032ec2",
+      "range": {
+        "startLine": 80,
+        "startChar": 44,
+        "endLine": 80,
+        "endChar": 57
+      },
+      "revId": "305b13e7665adb325cc26fe3c548125af2b0e75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e58c4f60_4cad6762",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e23af9_1c3d6b5f",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T23:18:26Z",
+      "side": 1,
+      "message": "yes I\u0027m happy to skip it, sometimes there are interposing lines however, EG if opt_recoverykey is enabled.",
+      "parentUuid": "e58c4f60_4cad6762",
+      "revId": "305b13e7665adb325cc26fe3c548125af2b0e75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fbfad02_2888ca5b",
@@ -111,6 +195,30 @@
       "writtenOn": "2023-01-12T08:54:30Z",
       "side": 1,
       "message": "\u0026\u003d ~lsb_flag",
+      "range": {
+        "startLine": 659,
+        "startChar": 20,
+        "endLine": 659,
+        "endChar": 31
+      },
+      "revId": "305b13e7665adb325cc26fe3c548125af2b0e75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51d9438_7d5b7b78",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T23:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbfad02_2888ca5b",
       "range": {
         "startLine": 659,
         "startChar": 20,
