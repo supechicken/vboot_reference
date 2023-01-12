@@ -13,7 +13,7 @@
 #include "2sha_private.h"
 #include "2api.h"
 
-static struct vb2_sha256_context sha_ctx;
+struct vb2_sha256_context sha_ctx;
 
 typedef int vb2_m128i __attribute__ ((vector_size(16)));
 
@@ -164,6 +164,12 @@ static void vb2_sha256_transform_x86ext(const uint8_t *message,
 	vb2_storeu_si128((vb2_m128i *)&sha_ctx.h[4], state1);
 }
 
+void vb2_sha256_transform_hwcrypto(const uint8_t *message,
+				   unsigned int block_nb)
+{
+	vb2_sha256_transform_x86ext(message, block_nb);
+}
+
 vb2_error_t vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
 				       uint32_t data_size)
 {
@@ -182,40 +188,6 @@ vb2_error_t vb2ex_hwcrypto_digest_init(enum vb2_hash_algorithm hash_alg,
 	sha_ctx.total_size = 0;
 	memset(sha_ctx.block, 0, sizeof(sha_ctx.block));
 
-	return VB2_SUCCESS;
-}
-
-vb2_error_t vb2ex_hwcrypto_digest_extend(const uint8_t *buf, uint32_t size)
-{
-	unsigned int remaining_blocks;
-	unsigned int new_size, rem_size, tmp_size;
-	const uint8_t *shifted_data;
-
-	tmp_size = VB2_SHA256_BLOCK_SIZE - sha_ctx.size;
-	rem_size = size < tmp_size ? size : tmp_size;
-
-	memcpy(&sha_ctx.block[sha_ctx.size], buf, rem_size);
-
-	if (sha_ctx.size + size < VB2_SHA256_BLOCK_SIZE) {
-		sha_ctx.size += size;
-		return VB2_SUCCESS;
-	}
-
-	new_size = size - rem_size;
-	remaining_blocks = new_size / VB2_SHA256_BLOCK_SIZE;
-
-	shifted_data = buf + rem_size;
-
-	vb2_sha256_transform_x86ext(sha_ctx.block, 1);
-	vb2_sha256_transform_x86ext(shifted_data, remaining_blocks);
-
-	rem_size = new_size % VB2_SHA256_BLOCK_SIZE;
-
-	memcpy(sha_ctx.block, &shifted_data[remaining_blocks * VB2_SHA256_BLOCK_SIZE],
-	       rem_size);
-
-	sha_ctx.size = rem_size;
-	sha_ctx.total_size += (remaining_blocks + 1) * VB2_SHA256_BLOCK_SIZE;
 	return VB2_SUCCESS;
 }
 
@@ -241,7 +213,7 @@ vb2_error_t vb2ex_hwcrypto_digest_finalize(uint8_t *digest,
 	sha_ctx.block[sha_ctx.size] = SHA256_PAD_BEGIN;
 	UNPACK32(size_b, sha_ctx.block + pm_size - 4);
 
-	vb2_sha256_transform_x86ext(sha_ctx.block, block_nb);
+	vb2_sha256_transform_hwcrypto(sha_ctx.block, block_nb);
 
 	UNPACK32(sha_ctx.h[3], &digest[ 0]);
 	UNPACK32(sha_ctx.h[2], &digest[ 4]);
