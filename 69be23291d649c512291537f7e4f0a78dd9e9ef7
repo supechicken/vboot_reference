@@ -180,6 +180,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26a65dbf_0f1931ee",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-12T09:16:25Z",
+      "side": 1,
+      "message": "this bug feels related b/238694831",
+      "parentUuid": "eea772fe_343180d1",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "838a7716_6e79444d",
         "filename": "scripts/image_signing/set_gbb_flags.sh",
         "patchSetId": 3
