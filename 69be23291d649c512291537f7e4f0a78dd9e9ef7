@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7695176_0d2561a5",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T07:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87ea9617_23547528",
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ed1cc0_c50ad047",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-12T06:44:18Z",
       "side": 1,
       "message": "`--servo` is also added in line 61.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aedea528_3b0d38f3",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T07:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ed1cc0_c50ad047",
       "range": {
         "startLine": 54,
         "startChar": 2,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71c4daa4_76efdc9a",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T07:01:48Z",
+      "side": 1,
+      "message": "flashrom/futility prints a factual but not useful message in this case:\n\n```\n\u003e ssh grunt /usr/share/vboot/bin/set_gbb_flags.sh 0x39\n\nWARNING: System GBB Flags are NOT changed!!!\nERROR: You must disable write protection before setting flags.\n```\n\n```\n\u003e ssh grunt futility gbb --set --flags\u003d0 --flash\n...\n\nFAILED at 0x00d80000! Expected\u003d0xff, Found\u003d0x24, failed byte count from 0x00d80000-0x00d80fff: 0xff4\n ERASE_FAILED\nFAILED!\nUh oh. Erase/write failed. \nYour flash chip is in an unknown state.\nPlease report this to the mailing list at flashrom@flashrom.org or\non IRC (see https://www.flashrom.org/Contact for details), thanks!\n```\n\nI think I saw a bug that we should improve this UX, I\u0027m happy to leave it how it is for now?",
+      "parentUuid": "bef85e70_3de54744",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "838a7716_6e79444d",
         "filename": "scripts/image_signing/set_gbb_flags.sh",
         "patchSetId": 3
@@ -77,6 +143,30 @@
       "writtenOn": "2023-01-12T06:44:18Z",
       "side": 1,
       "message": "\"%#x\" should already include the prefix.",
+      "range": {
+        "startLine": 78,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3776a24_117fb97e",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T07:01:48Z",
+      "side": 1,
+      "message": "😮 I\u0027m blind",
+      "parentUuid": "838a7716_6e79444d",
       "range": {
         "startLine": 78,
         "startChar": 39,
