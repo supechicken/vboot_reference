@@ -22,6 +22,30 @@
       },
       "revId": "465182655083b53c31730332541760f8cb109807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e171ff_56c2efe7",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2023-01-12T04:48:55Z",
+      "side": 1,
+      "message": "the library method does a similar print, so I think we\u0027re OK",
+      "parentUuid": "67175f90_60e889c8",
+      "range": {
+        "startLine": 112,
+        "startChar": 14,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "465182655083b53c31730332541760f8cb109807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
