@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d78a0944_b5df6604",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-01-12T07:07:05Z",
+      "side": 1,
+      "message": "nits: What about adding some simple comments before the if-clause? IMO the reason is not very straightforward here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 4
+      },
+      "revId": "465182655083b53c31730332541760f8cb109807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67175f90_60e889c8",
         "filename": "futility/cmd_read.c",
         "patchSetId": 2
