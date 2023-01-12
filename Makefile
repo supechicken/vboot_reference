@@ -397,8 +397,17 @@ CFLAGS += -DX86_SHA_EXT
 FWLIB_SRCS += \
 	firmware/2lib/2sha256_x86.c
 endif
+
+ifeq (${FIRMWARE_ARCH},arm64)
+FWLIB_SRCS += \
+	firmware/2lib/2sha256_arm.c
+FWLIB_SRCS_ASM += \
+	firmware/2lib/sha256_armv8a_ce_a64.S
+endif
+
 # Even if X86_SHA_EXT is 0 we need cflags since this will be compiled for tests
 ${BUILD}/firmware/2lib/2sha256_x86.o: CFLAGS += -mssse3 -mno-avx -msha
+#${BUILD}/firmware/2lib/sha2-ce-core.o: CFLAGS += -march=armv8-a+crypto
 
 ifeq (${FIRMWARE_ARCH},)
 # Include BIOS stubs in the firmware library when compiling for host
@@ -411,6 +420,7 @@ FWLIB_SRCS += \
 endif
 
 FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
+FWLIB_OBJS_ASM = ${FWLIB_SRCS_ASM:%.S=${BUILD}/%.o}
 TLCL_OBJS = ${TLCL_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
 
@@ -891,7 +901,7 @@ endif
 .PHONY: fwlib
 fwlib: $(if ${FIRMWARE_ARCH},${FWLIB},)
 
-${FWLIB}: ${FWLIB_OBJS}
+${FWLIB}: ${FWLIB_OBJS} ${FWLIB_OBJS_ASM}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
@@ -1147,6 +1157,13 @@ ${BUILD}/%.o: ${BUILD}/%.c
 	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
 	${Q}${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
+${BUILD}/%.o: ${BUILD}/%.S
+	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
+	${Q}${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
+
+${BUILD}/%.o: %.S
+	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
+	${Q}${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 # ----------------------------------------------------------------------------
 # Here are the special tweaks to the generic rules.
 
