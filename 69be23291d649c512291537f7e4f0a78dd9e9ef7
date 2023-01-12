@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ea9617_23547528",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-01-12T06:44:18Z",
+      "side": 1,
+      "message": "The command seems to fit in one line.",
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ed1cc0_c50ad047",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-01-12T06:44:18Z",
+      "side": 1,
+      "message": "`--servo` is also added in line 61.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef85e70_3de54744",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-01-12T06:44:18Z",
+      "side": 1,
+      "message": "If write protection is on, what will happen for the futility command? If it will report a similar error, we may drop this check.",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838a7716_6e79444d",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-01-12T06:44:18Z",
+      "side": 1,
+      "message": "\"%#x\" should already include the prefix.",
+      "range": {
+        "startLine": 78,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "69be23291d649c512291537f7e4f0a78dd9e9ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
