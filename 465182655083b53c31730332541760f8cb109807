@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67175f90_60e889c8",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-01-12T04:38:43Z",
+      "side": 1,
+      "message": "```\n) {\n  if (r \u003d\u003d IMAGE_PARSE_FAILURE)\n      fprintf(stderr, \"AP firmware read is possibly corrupt\\n\");\n   [..]\n}\n```",
+      "range": {
+        "startLine": 112,
+        "startChar": 14,
+        "endLine": 112,
+        "endChar": 15
+      },
+      "revId": "465182655083b53c31730332541760f8cb109807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
