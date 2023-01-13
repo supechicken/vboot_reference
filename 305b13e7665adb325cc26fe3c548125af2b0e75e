@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d84e9ff_6290b25c",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-01-13T18:54:12Z",
+      "side": 1,
+      "message": "The short boot delay is pretty essential for making a DUT developer-friendly IMO.\n\nThat said, if you work with CrOS DUTs a lot you probably already know, and don\u0027t need this help to say so.  For someone who\u0027s new to flashing and working with CrOS DUTs, maybe they wouldn\u0027t want the short delay?",
+      "parentUuid": "79b0dc63_8d1a422d",
+      "revId": "305b13e7665adb325cc26fe3c548125af2b0e75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cedd07ef_b1ef40c4",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 2
