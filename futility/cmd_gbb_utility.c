@@ -418,6 +418,12 @@ static int write_to_flash(struct updater_config *cfg, uint8_t *outbuf,
 			  off_t filesize)
 {
 #ifdef USE_FLASHROM
+	if (get_system_property(SYS_PROP_WP_HW, cfg) == WP_ENABLED &&
+	    host_get_wp_sw() == WP_ENABLED) {
+		ERROR("You must disable write protection before setting "
+		      "flags.\n");
+		return -1;
+	}
 	cfg->image.data = outbuf;
 	cfg->image.size = filesize;
 	int ret = write_firmware(cfg, &cfg->image, FMAP_RO_GBB);
