@@ -280,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeccdf35_4b8d0985",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1561252
+      },
+      "writtenOn": "2023-01-17T21:09:48Z",
+      "side": 1,
+      "message": "Right, sounds good. I\u0027ll investigate further on what we can remove on COS and keep the chrome os team updated.",
+      "parentUuid": "593273c6_c0734236",
+      "revId": "6fb9a3cef0b83e6e913839ed090d6299ad674cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63134607_818e818d",
