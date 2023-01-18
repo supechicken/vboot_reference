@@ -16,6 +16,24 @@
       "message": "Matthew, do you have enough context to +2 this?",
       "revId": "a2e3117f18b721735636d7c51b77a623e349512a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72734080_3b10a89a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-01-18T20:43:41Z",
+      "side": 1,
+      "message": "I\u0027m really not the right person to CR+2 an futility CL.\n\nIf this is truly an emergency and must be fixed /right now/, I suggest pursuing an emergency cherrypick into labstation release branch and getting that approved ASAP.\n\nFor a true emergency, you should consider not waiting on `main` approval if no OWNERS are available.  But do followup to get this into `main` ASAP, and if there are any further changes in this `main` version that didn\u0027t get into the initial branch merge, be sure to backmerge them into the branch as well.",
+      "parentUuid": "aa7f5e6f_2721a6e7",
+      "revId": "a2e3117f18b721735636d7c51b77a623e349512a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
