@@ -78,19 +78,12 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 	len = flashrom_flash_getsize(flashctx);
 
 	if (region) {
-		r = flashrom_layout_read_fmap_from_buffer(
-			&layout, flashctx, (const uint8_t *)image->data,
-			image->size);
+		r = flashrom_layout_read_fmap_from_rom(
+			&layout, flashctx, 0, len);
 		if (r > 0) {
-			WARN("could not read fmap from image, r=%d, "
-				"falling back to read from rom\n", r);
-			r = flashrom_layout_read_fmap_from_rom(
-				&layout, flashctx, 0, len);
-			if (r > 0) {
-				ERROR("could not read fmap from rom, r=%d\n", r);
-				r = -1;
-				goto err_cleanup;
-			}
+			ERROR("could not read fmap from rom, r=%d\n", r);
+			r = -1;
+			goto err_cleanup;
 		}
 		// empty region causes seg fault in API.
 		r |= flashrom_layout_include_region(layout, region);
