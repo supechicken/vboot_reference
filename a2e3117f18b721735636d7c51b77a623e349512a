@@ -34,6 +34,24 @@
       "parentUuid": "aa7f5e6f_2721a6e7",
       "revId": "a2e3117f18b721735636d7c51b77a623e349512a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffc9991_53d5a191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-01-18T20:45:45Z",
+      "side": 1,
+      "message": "Though, if labstation builds are still from regular CrOS release branches, which I believe they are, then futility cherrypicks are risky because they could affect/break real releases.\n\nProbably best not to rush this into any official CrOS release branches.\n\nFrom a release management perspective, Labstations should really have their own release branches.",
+      "parentUuid": "72734080_3b10a89a",
+      "revId": "a2e3117f18b721735636d7c51b77a623e349512a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
