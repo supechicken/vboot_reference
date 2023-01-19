@@ -271,6 +271,8 @@ static int do_update(int argc, char *argv[])
 		else if (!args.programmer)
 			args.programmer = servo_programmer;
 	}
+	if (args.use_flash)
+		dut_set_type(DUT_TYPE_REMOTE);
 	/*
 	 * Some boards may need to fetch firmware before starting to
 	 * update (i.e., in updater_setup_config) so we want to turn on
