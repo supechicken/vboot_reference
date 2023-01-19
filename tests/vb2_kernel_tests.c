@@ -41,6 +41,7 @@ static int mock_battery_cutoff_called;
 static int mock_kernel_flag;
 static int mock_kernel_flag_set;
 static int mock_kernel_version;
+static int mock_fwmp_flags;
 
 /* Type of test to reset for */
 enum reset_type {
@@ -72,6 +73,7 @@ static void reset_common_data(enum reset_type t)
 	mock_kernel_flag = 0;
 	mock_kernel_flag_set = 0;
 	mock_kernel_version = 0x10002;
+	mock_fwmp_flags = 0;
 
 	/* Recovery key in mock GBB */
 	memset(&mock_gbb, 0, sizeof(mock_gbb));
@@ -218,6 +220,12 @@ uint32_t vb2_secdata_kernel_get(struct vb2_context *c,
 	return 0;
 }
 
+int vb2_secdata_fwmp_get_flag(struct vb2_context *c,
+			      enum vb2_secdata_fwmp_flags flag)
+{
+	return !!(mock_fwmp_flags & flag);
+}
+
 /* Tests */
 
 static void phase1_tests(void)
@@ -343,6 +351,21 @@ static void phase1_tests(void)
 	sd->preamble_size = 0;
 	TEST_EQ(vb2api_kernel_phase1(ctx), VB2_ERROR_API_KPHASE1_PREAMBLE,
 		"phase1 fw preamble");
+
+	/* Request dev disable when forced by FWMP */
+	reset_common_data(FOR_PHASE1);
+	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_DEVELOPER);
+	mock_fwmp_flags = VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
+	TEST_EQ(vb2api_kernel_phase1(ctx), VB2_SUCCESS, "dev disable good");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 1, " NV request");
+	TEST_EQ(mock_commit_data_called, 1, "  commit data");
+	reset_common_data(FOR_PHASE1);
+	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_DEVELOPER);
+	mock_fwmp_flags = VB2_SECDATA_FWMP_DEV_DISABLE_BOOT;
+	mock_gbb.h.flags |= VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON;
+	TEST_EQ(vb2api_kernel_phase1(ctx), VB2_SUCCESS, "dev disable but GBB");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST), 0, " no NV");
+	TEST_EQ(mock_commit_data_called, 0, "  no commit");
 }
 
 static void phase2_tests(void)
