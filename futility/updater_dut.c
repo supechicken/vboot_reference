@@ -10,7 +10,28 @@
 #include <crosid.h>
 #endif
 #include "crossystem.h"
-#include "updater_utils.h"
+#include "updater.h"
+
+
+/* TODO(hungte): Ideally the DUT type should be part of the updater_cfg. */
+static enum dut_type current_dut_type = DUT_TYPE_LOCAL;
+
+/* Only 'remote' or 'local' is supported now. */
+void dut_set_type(enum dut_type type)
+{
+	const char *type_msg = "LOCAL";
+	current_dut_type = type;
+
+	assert(type == DUT_TYPE_LOCAL || type == DUT_TYPE_REMOTE);
+	if (type == DUT_TYPE_REMOTE)
+		type_msg = "REMOTE";
+	WARN("Will assume the DUT is %s\n", type_msg);
+}
+
+static int dut_is_remote(void)
+{
+	return current_dut_type == DUT_TYPE_REMOTE;
+}
 
 /**
  * dut_get_manifest_key() - Wrapper to get the firmware manifest key from crosid
@@ -24,6 +45,11 @@
  */
 int dut_get_manifest_key(char **manifest_key_out)
 {
+	if (dut_is_remote()) {
+		WARN("Cannot retrieve the remote DUT manifest info. "
+		     "Please specify the DUT type by --model.\n");
+		return -1;
+	}
 #ifdef HAVE_CROSID
 	return crosid_get_firmware_manifest_key(manifest_key_out);
 #else
@@ -38,21 +64,37 @@ int dut_get_manifest_key(char **manifest_key_out)
 
 int dut_set_property_string(const char *key, const char *value)
 {
+	if (dut_is_remote()) {
+		WARN("Ignored setting property %s on remote DUT.\n", key);
+		return -1;
+	}
 	return VbSetSystemPropertyString(key, value);
 }
 
 const char *dut_get_property_string(const char *key, char *dest, size_t size)
 {
+	if (dut_is_remote()) {
+		WARN("Ignored getting property %s from remote DUT.\n", key);
+		return NULL;
+	}
 	return VbGetSystemPropertyString(key, dest, size);
 }
 
 int dut_set_property_int(const char *key, const int value)
 {
+	if (dut_is_remote()) {
+		WARN("Ignored setting property %s on remote DUT.\n", key);
+		return -1;
+	}
 	return VbSetSystemPropertyInt(key, value);
 }
 
 int dut_get_property_int(const char *key)
 {
+	if (dut_is_remote()) {
+		WARN("Ignored getting property %s from remote DUT.\n", key);
+		return -1;
+	}
 	return VbGetSystemPropertyInt(key);
 }
 
@@ -81,6 +123,10 @@ static int dut_get_tpm_fwver(struct updater_config *cfg)
 /* A helper function to return the "hardware write protection" status. */
 static int dut_get_wp_hw(struct updater_config *cfg)
 {
+	if (dut_is_remote()) {
+		WARN("Assume remote DUT hardware WP is disabled.\n");
+		return WP_DISABLED;
+	}
 	/* wpsw refers to write protection 'switch', not 'software'. */
 	return dut_get_property_int("wpsw_cur") ? WP_ENABLED : WP_DISABLED;
 }
@@ -99,6 +145,10 @@ static int dut_get_platform_version(struct updater_config *cfg)
 /* Helper function to return host software write protection status. */
 static int dut_get_wp_sw(struct updater_config *cfg)
 {
+	if (dut_is_remote()) {
+		WARN("Assume remote DUT software WP is disabled.\n");
+		return WP_DISABLED;
+	}
 	return flashrom_get_wp(PROG_HOST, -1);
 }
 
