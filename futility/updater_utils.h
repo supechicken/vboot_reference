@@ -225,6 +225,13 @@ const char *cbfs_extract_file(const char *image_file,
 
 /* DUT related functions (mostly in updater_dut.c) */
 
+enum dut_type {
+	DUT_TYPE_LOCAL,
+	DUT_TYPE_REMOTE,
+};
+
+void dut_set_type(enum dut_type type);
+
 struct dut_property {
 	int (*getter)(void);
 	int value;
