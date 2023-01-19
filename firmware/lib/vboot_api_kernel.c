@@ -330,6 +330,16 @@ static vb2_error_t vb2_kernel_setup(struct vb2_context *ctx,
 		}
 	}
 
+	/* If we're in developer mode when we shouldn't be, disable as soon as
+	   possible and commit that decision right away (b/266013201). */
+	if ((fwmp.flags & FWMP_DEV_DISABLE_BOOT) &&
+	    !(gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON) &&
+	    shared->flags & VBSD_BOOT_DEV_SWITCH_ON) {
+		vb2_nv_set(ctx, VB2_NV_DISABLE_DEV_REQUEST, 1);
+		VbExNvStorageWrite(ctx->nvdata);
+		ctx->flags &= ~VB2_CONTEXT_NVDATA_CHANGED;
+	}
+
 	return VB2_SUCCESS;
 }
 
