@@ -96,6 +96,7 @@ vb2_error_t vb2_secdata_fwmp_init(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+test_mockable
 int vb2_secdata_fwmp_get_flag(struct vb2_context *ctx,
 			      enum vb2_secdata_fwmp_flags flag)
 {

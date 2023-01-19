@@ -78,6 +78,14 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 
 	vb2_fill_dev_boot_flags(ctx);
 
+	/* If we're in developer mode when we shouldn't be, disable as soon as
+	   possible and commit that decision right away (b/266013201). */
+	if (!(ctx->flags & VB2_CONTEXT_DEV_BOOT_ALLOWED) &&
+	    (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)) {
+		vb2api_disable_developer_mode(ctx);
+		vb2ex_commit_data(ctx);
+	}
+
 	/* Find the key to use to verify the kernel keyblock */
 	if ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 		/* Load recovery key from GBB. */
