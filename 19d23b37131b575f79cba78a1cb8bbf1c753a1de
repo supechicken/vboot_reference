@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0aa683_8590c444",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-01-21T05:31:20Z",
+      "side": 1,
+      "message": "vb2_nv_commit(\u0026ctx);",
+      "range": {
+        "startLine": 358,
+        "startChar": 2,
+        "endLine": 359,
+        "endChar": 43
+      },
+      "revId": "19d23b37131b575f79cba78a1cb8bbf1c753a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
