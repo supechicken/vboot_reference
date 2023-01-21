@@ -16,6 +16,24 @@
       "message": "Error message from herobrine:\n\u003e     OBJCOPY    cbfs/fallback/ramstage.elf\n\u003e /opt/coreboot-sdk/bin/aarch64-elf-ld.bfd: Romstage exceeded its allotted size! (100K)\n\u003e /opt/coreboot-sdk/bin/aarch64-elf-ld.bfd: qcsdi overlaps the previous region!\n\nShelley, could you help with this ?",
       "revId": "e648b5343a84283f3e085d177265c2eea2167481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba66bc4_a4e3b0a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2023-01-21T18:09:21Z",
+      "side": 1,
+      "message": "Sure.  romstage needs to increase to 102K based on my memlayout hacking from before.  I basically just shrunk the qcsdi region for testing, but let me see if I can find a better solution.",
+      "parentUuid": "ccee9871_d65c7ead",
+      "revId": "e648b5343a84283f3e085d177265c2eea2167481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
