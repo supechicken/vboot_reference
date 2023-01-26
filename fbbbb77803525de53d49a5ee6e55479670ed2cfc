@@ -333,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbac56a0_6bda3aec",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T19:32:00Z",
+      "side": 1,
+      "message": "thanks, i wasn\u0027t aware that `-n` did that.  i agree we don\u0027t want that behavior.\n\ni guess putting the lock at the start (look for first file created) rather than the end (look for the last file created) is prob fine.  trying to write anything smarter is difficult in shell :/.",
+      "parentUuid": "77caea16_efdc5220",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab0d9340_679a85b9",
