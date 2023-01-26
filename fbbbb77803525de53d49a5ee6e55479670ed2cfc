@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9d2576_f9437a09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "basically nits.  overall process/flow/idea looks fine.",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d600f2_44ede8ac",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "this belongs in the usage output so people can run --help or similar to see it without having to open the file and read code",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d79caa2_c93085a6",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "put this into a usage function",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef50f3df_b692ab5c",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "this \u0026 $# checking should be in the top of the main func",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6351811_77adf136",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "this is bash, so always use `[[` and never `[`",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfca4f28_9590fc72",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "common.sh provides output helpers.  you can use `die` for echo+return.",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57472c9f_dde3b37d",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "delete blank echos",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df11cf80_015022bd",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "use `info` for these",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01aba2c_dfd2e6a5",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "add `local ext`",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b00426_9f832466",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "prob should use `-n` with all these `mv` calls to be safe, even with your `[[ -f .. ]]` check above.",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0d9340_679a85b9",
+        "filename": "scripts/keygeneration/replace_recovery_key.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-01-26T06:43:04Z",
+      "side": 1,
+      "message": "add `local k`",
+      "revId": "fbbbb77803525de53d49a5ee6e55479670ed2cfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
