@@ -1050,6 +1050,12 @@ sign_image_file() {
   local loop_rootfs="${loopdev}p3"
   local is_reven=$(get_is_reven "${loopdev}")
 
+  # Reven recovery images should be signed like base images.
+  if [[ "${image_type}" == "recovery" && "${is_reven}" == "1" ]]; then
+      kernA_keyblock="${kernB_keyblock}"
+      kernA_privkey="${kernB_privkey}"
+  fi
+
   resign_firmware_payload "${loopdev}"
   remove_old_container_key "${loopdev}"
   resign_android_image_if_exists "${loopdev}"
@@ -1072,7 +1078,7 @@ sign_image_file() {
     "${kernA_keyblock}" "${kernA_privkey}" \
     "${kernB_keyblock}" "${kernB_privkey}"
   update_stateful_partition_vblock "${loopdev}"
-  if [[ "${image_type}" == "recovery" ]]; then
+  if [[ "${image_type}" == "recovery" && "${is_reven}" == "0" ]]; then
     update_recovery_kernel_hash "${loopdev}"
   fi
   if ! resign_minios_kernels "${loopdev}" "${minios_keyblock}" \
