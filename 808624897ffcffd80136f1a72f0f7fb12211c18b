@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00eede0_3a643832",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-01-31T02:51:47Z",
+      "side": 1,
+      "message": "Sorry, this wasn\u0027t actually supposed to get merged yet. We cannot ship this before we have the RMA implications figured out in b/266013201. As long as you make sure we don\u0027t actually release an image with this yet it\u0027s fine, but if you do want to make a release before everything else is worked out we should revert this for the time being.",
+      "revId": "808624897ffcffd80136f1a72f0f7fb12211c18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
