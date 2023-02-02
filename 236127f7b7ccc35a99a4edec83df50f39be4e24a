@@ -349,6 +349,24 @@
       "parentUuid": "2339166b_0e5bc72f",
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd7a36c3_af6869d7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-02T22:11:04Z",
+      "side": 1,
+      "message": "\u003e  I am using -w just to demonstrate that very little is in fact changing with this patch.\n\ni\u0027m aware that the only thing you did was re-indent code.  i don\u0027t think that changes my feedback.",
+      "parentUuid": "cddf5fdc_8b40f50d",
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
