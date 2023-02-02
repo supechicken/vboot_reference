@@ -570,9 +570,14 @@ resign_firmware_payload() {
         echo "After setting GBB on ${bios_path}: md5 =" \
           $(md5sum ${bios_path} | awk '{print $1}')
 
-        # Do not attempt AP RO verification signing if the image FMAP does not
-        # include the RO_GSCVD section.
-        if futility dump_fmap -p "${bios_path}" | grep -q RO_GSCVD; then
+        local board_name="$(lsbval  "${rootfs_dir}/etc/lsb-release" \
+           "CHROMEOS_RELEASE_BOARD")"
+
+        if [[ ${board_name} == "guybrush" ]]; then
+          echo "Not looking for RO_GSCVD on guygrush, b/263378945"
+        elif futility dump_fmap -p "${bios_path}" | grep -q RO_GSCVD; then
+          # Attempt AP RO verification signing only in case the FMAP includes
+          # the RO_GSCVD section.
           local arv_root
 
           if [[ -z ${brand_code} ]]; then
