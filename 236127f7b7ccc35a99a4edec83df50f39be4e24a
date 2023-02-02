@@ -193,6 +193,48 @@
       },
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd7a6cb_ff5b8cb6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-02T20:07:09Z",
+      "side": 1,
+      "message": "this isn\u0027t the keyset name, this is the keyset dir.  even then, the keyset name is meant to be opaque as well.  don\u0027t use either other than \"here\u0027s a dir to find keys\".\n\nalso, you have more than just the firmware blob.  you have the whole rootfs.  so you could prob pull something from lsb-release or os-release.",
+      "parentUuid": "0cade552_219caf9d",
+      "range": {
+        "startLine": 576,
+        "startChar": 18,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2339166b_0e5bc72f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-02T20:07:09Z",
+      "side": 1,
+      "message": "you\u0027re using `-w` so that diff isn\u0027t showing you touching every line inbetween.  the Gerrit output isn\u0027t the worst (it\u0027s showing unchanged code with lighter green vs new whitespace in darker green).  but if you check it at the top as suggested, it works fine in both cases.",
+      "parentUuid": "da65d55f_11d8cacf",
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
