@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0df95245_56bbd2cf",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-02T14:33:18Z",
+      "side": 1,
+      "message": "TBH, I am struggling with the naming.\n\nIntel does have SHA extensions. https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sha-extensions.html\n\nBut SHA256 is a part of ARMv8 Crypto Extensions.\n\nAnd I don\u0027t know how to name it properly.",
+      "parentUuid": "212c7299_31981695",
+      "range": {
+        "startLine": 401,
+        "startChar": 24,
+        "endLine": 401,
+        "endChar": 36
+      },
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f10573e3_1b73ca5f",
         "filename": "firmware/2lib/2sha256_arm.c",
         "patchSetId": 3
