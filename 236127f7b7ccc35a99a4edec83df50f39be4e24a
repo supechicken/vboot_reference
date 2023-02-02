@@ -235,6 +235,30 @@
       "parentUuid": "da65d55f_11d8cacf",
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08982bd_38c41469",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T20:11:25Z",
+      "side": 1,
+      "message": "but in fact I just checked, cbfstool is there in the signer in `signer/signingtools-bin/cbfstool`, let met try using it then.",
+      "parentUuid": "dcd7a6cb_ff5b8cb6",
+      "range": {
+        "startLine": 576,
+        "startChar": 18,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
