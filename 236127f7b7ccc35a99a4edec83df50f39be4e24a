@@ -367,6 +367,24 @@
       "parentUuid": "cddf5fdc_8b40f50d",
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eeae15a_004a54b7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T22:48:19Z",
+      "side": 1,
+      "message": "well, isn\u0027t it a basic principal of sw engineering - don\u0027t do unnecessary calculations.\n\nBut since you insist I changed it as suggested.",
+      "parentUuid": "fd7a36c3_af6869d7",
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
