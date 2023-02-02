@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b548bdd_b125cb72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T19:50:40Z",
+      "side": 1,
+      "message": "ptal",
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3d13789_f7ec7b0d",
@@ -60,6 +77,72 @@
         "endLine": 576,
         "endChar": 25
       },
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b03457_feb4e751",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T19:50:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1d33fa_e740978f",
+      "range": {
+        "startLine": 576,
+        "startChar": 29,
+        "endLine": 576,
+        "endChar": 31
+      },
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3874c836_0027c57a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T19:50:40Z",
+      "side": 1,
+      "message": "this patch is a temporary workaround to be taken out when guybrush AP firmware is fixed. I would rather not add more complexitiy to this on the off chance that an unrelated keyset tempdir path would include \u0027guybrush\u0027 in it.\n\n\nLooks like `strings \"${bios_image}\"` returns a couple of good matches, like\n\n`CONFIG_BOARD_GOOGLE_GUYBRUSH\u003dy`\n\nor \n\n`MAINBOARD_PART_NUMBER: Guybrush`\n\nbut I am not sure now much more reliable this is, I would prefer to use the keyset name unless you insist.",
+      "parentUuid": "c9ee2924_e41606ae",
+      "range": {
+        "startLine": 576,
+        "startChar": 18,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da65d55f_11d8cacf",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T19:50:40Z",
+      "side": 1,
+      "message": "I would rather not make this check for all boards, logically it should run only in case when RO_GSVD section is found in fmap.\n\nI am not sure why gerrit is showing the diffs the way it does, the actual change is very limitied:\n```\n\u003e git diff -w HEAD~\ndiff --git a/scripts/image_signing/sign_official_build.sh b/scripts/image_signing/sign_official_build.sh\nindex 34258b3ae..27cf8c866 100755\n--- a/scripts/image_signing/sign_official_build.sh\n+++ b/scripts/image_signing/sign_official_build.sh\n@@ -573,6 +573,9 @@ resign_firmware_payload() {\n         # Do not attempt AP RO verification signing if the image FMAP does not\n         # include the RO_GSCVD section.\n         if futility dump_fmap -p \"${bios_path}\" | grep -q RO_GSCVD; then\n+          if [[ ${KEY_DIR^^} \u003d~ \"GUYBRUSH\" ]]; then\n+            echo \"Bypassing guybrush AP RO signing, b/263378945.\"\n+          else\n             local arv_root\n \n             if [[ -z ${brand_code} ]]; then\n@@ -604,6 +607,7 @@ resign_firmware_payload() {\n \n             echo \"After signing RO_GSCVD on ${bios_path}: md5 \u003d\" \\\n                  \"$(md5sum \"${bios_path}\" | awk \u0027{print $1}\u0027)\"\n+          fi\n         else\n           echo \"No RO_GSCVD section in the image, skipping AP RO signing\"\n         fi\n```",
+      "parentUuid": "c3d13789_f7ec7b0d",
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
