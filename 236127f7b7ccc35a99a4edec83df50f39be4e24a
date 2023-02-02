@@ -145,6 +145,30 @@
       "parentUuid": "c3d13789_f7ec7b0d",
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cade552_219caf9d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2023-02-02T20:01:36Z",
+      "side": 1,
+      "message": "I proposed a more robust solution here: b/263378945#comment79\n\nIMO, I don\u0027t see the need to regenerate the guybrush AP RO FW.",
+      "parentUuid": "3874c836_0027c57a",
+      "range": {
+        "startLine": 576,
+        "startChar": 18,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
