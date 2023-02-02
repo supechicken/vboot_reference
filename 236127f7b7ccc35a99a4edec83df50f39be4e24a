@@ -307,6 +307,48 @@
       },
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3752345_f8668158",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T20:33:10Z",
+      "side": 1,
+      "message": "I changed it to use `/etc/lsb-release` which has what\u0027s needed.",
+      "parentUuid": "f36b2a4c_d401390f",
+      "range": {
+        "startLine": 576,
+        "startChar": 18,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddf5fdc_8b40f50d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T20:33:10Z",
+      "side": 1,
+      "message": "of course, I am using `-w` just to demonstrate that very little is in fact changing woth this patch.\n\nDo you not agree that the check for guybrush should run only when necessary?",
+      "parentUuid": "2339166b_0e5bc72f",
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
