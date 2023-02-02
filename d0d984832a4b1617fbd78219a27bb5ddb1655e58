@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a46b10_1fd695f0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T23:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5906cfc7_c483bf41",
+      "range": {
+        "startLine": 574,
+        "startChar": 29,
+        "endLine": 574,
+        "endChar": 30
+      },
+      "revId": "d0d984832a4b1617fbd78219a27bb5ddb1655e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cc08a6c_b833ef81",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-02T23:03:13Z",
       "side": 1,
       "message": "nit: Why not check for `CONFIG_VBOOT_GSCVD\u003dy` in the AP RO `config` file? That\u0027s the real indication that GSCVD is actually configured and enabled.",
+      "range": {
+        "startLine": 579,
+        "startChar": 13,
+        "endLine": 579,
+        "endChar": 74
+      },
+      "revId": "d0d984832a4b1617fbd78219a27bb5ddb1655e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1dd70b7_4c031a4b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-02T23:20:00Z",
+      "side": 1,
+      "message": "I think the presence of this section in FMAP should be the indicator, because this is what the GSC is looking for, among other things.\n\nOn top of that this way of checking does not require running another utility, creating another file, etc.",
+      "parentUuid": "0cc08a6c_b833ef81",
       "range": {
         "startLine": 579,
         "startChar": 13,
