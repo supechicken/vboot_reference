@@ -16,6 +16,23 @@
       "message": "I do not have OWNERS so removing myself",
       "revId": "18fa3c4cc897ae3d0094aed7442af2c246b6b68c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb7d206_577dd364",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-03T07:09:01Z",
+      "side": 1,
+      "message": "and i just realized we also have `get_board_from_lsb_release` that does this same thing\n\nbut i\u0027m fine if you don\u0027t want to roundtrip again :P",
+      "revId": "18fa3c4cc897ae3d0094aed7442af2c246b6b68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
