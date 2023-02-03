@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e1f5ac3_a50846ff",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-03T08:43:16Z",
+      "side": 1,
+      "message": "this says \"return\", but you don\u0027t return anything, you write to stdout\n\nideally you would fix it to actually return a value and not write to stdout at all.  you could write the last line of this func:\n\n`[[ \"${board}\" \u003d\u003d \"reven\" ]]`\n\nthen callers would do `if get_is_reven ...`.  or in the case below, `...\u003d$(get_is_reven ...; echo $?)`.\n\nalthough this still leaves testing 0/1 as strings which isn\u0027t terribly readable, and inverts standard shell \u0026 C-style logic (where \"0\"\u003d\u003d\"true\" and \"1\"\u003d\u003d\"false\").  if this script used shflags, the recommendation would be `${FLAGS_TRUE}` and `${FLAGS_FALSE}` ... but it doesn\u0027t.  so the next best is use English strings like yes/no or true/false.  thus the code is unambiguous \u0026 readable:\n\n`if [[ \"${is_reven}\" \u003d\u003d \"yes\" ]]; then`\n`if [[ \"${is_reven}\" \u003d\u003d \"true\" ]]; then`\n\nyes, this means you\u0027d maintain the current `echo` logic in this func (other than changing what is echoed), and you\u0027d have to fix the comment here to not say \"return\".",
+      "revId": "fb33ce7f73ed3e0a2fee2e74ace45ced086b0c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5a22cb_006e4a00",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-03T08:43:16Z",
+      "side": 1,
+      "message": "unpacking subshells (e.g. the `rootfs_dir` on the next line) is correct, but unpacking args should be merged with the `local` calls above",
+      "revId": "fb33ce7f73ed3e0a2fee2e74ace45ced086b0c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85e3398_2534b166",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-03T08:43:16Z",
+      "side": 1,
+      "message": "shell uses 2 space indent",
+      "revId": "fb33ce7f73ed3e0a2fee2e74ace45ced086b0c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
