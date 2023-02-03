@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a3fd22d_33327bf4",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-03T02:25:12Z",
+      "side": 1,
+      "message": "How about `ARMV8_CRYPTO_EXT`?",
+      "parentUuid": "0df95245_56bbd2cf",
+      "range": {
+        "startLine": 401,
+        "startChar": 24,
+        "endLine": 401,
+        "endChar": 36
+      },
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f10573e3_1b73ca5f",
         "filename": "firmware/2lib/2sha256_arm.c",
         "patchSetId": 3
