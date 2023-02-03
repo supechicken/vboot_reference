@@ -16,6 +16,40 @@
       "message": "Friendly ping :)",
       "revId": "05d11691f3d553c297c0171a75cefa4c2207d412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f297825_ca5d8a7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-03T00:28:37Z",
+      "side": 1,
+      "message": "I\u0027ll let Mike call this.",
+      "revId": "05d11691f3d553c297c0171a75cefa4c2207d412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76fdd0c0_dc680358",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-03T00:28:37Z",
+      "side": 1,
+      "message": "looks reasonable to me, the question is could this decision be taken at the call site (and pass the same file names for keyblocks and change the image type, all in one place).",
+      "revId": "05d11691f3d553c297c0171a75cefa4c2207d412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
