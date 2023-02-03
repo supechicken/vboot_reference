@@ -50,6 +50,40 @@
       "message": "looks reasonable to me, the question is could this decision be taken at the call site (and pass the same file names for keyblocks and change the image type, all in one place).",
       "revId": "05d11691f3d553c297c0171a75cefa4c2207d412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99125a6_d5ae9d33",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-03T08:47:24Z",
+      "side": 1,
+      "message": "this comment assumes the reader knows what reven is doing differently when it isn\u0027t documented anywhere in here.  it also doesn\u0027t feel like it should be tightly coupled to \"is reven\" but rather more generalized.",
+      "revId": "05d11691f3d553c297c0171a75cefa4c2207d412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2243266b_3f0ef90c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-03T08:47:24Z",
+      "side": 1,
+      "message": "bad indentation",
+      "revId": "05d11691f3d553c297c0171a75cefa4c2207d412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
