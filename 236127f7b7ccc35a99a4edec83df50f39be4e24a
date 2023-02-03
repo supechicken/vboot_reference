@@ -385,6 +385,24 @@
       "parentUuid": "fd7a36c3_af6869d7",
       "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b27e9d5_0ee18043",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-03T07:06:01Z",
+      "side": 1,
+      "message": "iiuc, this is a short-term hack until we fix guybush, which means it\u0027s going to be reverted.  i\u0027d rather have a minimal number of lines changed here to undo the hack, and reading a line out of a small text file is cheap ... probably cheaper than running futility.",
+      "parentUuid": "6eeae15a_004a54b7",
+      "revId": "236127f7b7ccc35a99a4edec83df50f39be4e24a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
