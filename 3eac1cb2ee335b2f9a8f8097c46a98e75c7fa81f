@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b40fbd_d48fffcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-05T14:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "866804a1_3c7af4d2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5a81271_1f71808f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11a03c9_eb15038e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-05T14:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5a81271_1f71808f",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "948a619f_20fa38ca",
@@ -60,6 +108,24 @@
       "writtenOn": "2023-02-02T09:42:18Z",
       "side": 1,
       "message": "We need to do the same exclude the duplicate function definitions in 2stub_hwcrypto.c. Maybe use `SHA_EXT` for the constant.",
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95fe68d4_225eae44",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-05T14:25:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "948a619f_20fa38ca",
       "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -135,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db451a7d_268e79c2",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-05T14:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3fd22d_33327bf4",
+      "range": {
+        "startLine": 401,
+        "startChar": 24,
+        "endLine": 401,
+        "endChar": 36
+      },
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f10573e3_1b73ca5f",
@@ -148,6 +238,24 @@
       "writtenOn": "2023-02-02T09:42:18Z",
       "side": 1,
       "message": "Indentation.",
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdab2ae_ee0886fb",
+        "filename": "firmware/2lib/2sha256_arm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-05T14:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f10573e3_1b73ca5f",
       "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -169,6 +277,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab2f78d_0db1b860",
+        "filename": "firmware/2lib/2sha256_arm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-05T14:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d45656_5abe19ce",
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67106d8b_812b2720",
@@ -182,6 +308,30 @@
       "writtenOn": "2023-02-02T09:42:18Z",
       "side": 1,
       "message": "I\u0027m not sure of the correct way to write these when copying a file from another file with BSD license. The vboot LICENSE file looks like exactly BSD-2-Clause. Maybe\n\n```\n/* SPDX-License-Identifier: BSD-2-Clause */\n/*\n * Copyright 2023 The ChromiumOS Authors\n * Copyright (c) 2015-2020, Linaro Limited\n * Copyright (C) 2014 Linaro Ltd \u003card.biesheuvel@linaro.org\u003e\n */\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "3eac1cb2ee335b2f9a8f8097c46a98e75c7fa81f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c18d9f_3c534a51",
+        "filename": "firmware/2lib/sha256_armv8a_ce_a64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-05T14:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67106d8b_812b2720",
       "range": {
         "startLine": 1,
         "startChar": 0,
