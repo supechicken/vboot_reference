@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e67382_b19e4b0a",
+        "filename": "firmware/2lib/2hwcrypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-06T03:45:29Z",
+      "side": 1,
+      "message": "Update this.",
+      "revId": "9a663f7bfd83b9fd086d9a73e492113008a2a1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5d7e40_1f0bbf5d",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-06T03:45:29Z",
+      "side": 1,
+      "message": "The sequence 3, 2, 7, 6... is the only difference between x86 and arm, right? Do you think it would be a good idea to further extract that part?\n\n```\n// 2sha_private.h\nextern uint32_t sha_seq[8];  // not sure how to name it\n\n// 2sha256_x86.c\nuint32_t sha_seq[8] \u003d {3, 2, 7, 6, 1, 0, 5, 4};\n\n// 2hwcrypto.c\nvb2ex_hwcrypto_digest_init {\n    for i\n        sha_ctx.h[sha_seq[i]] \u003d vb2_sha256_h0[i];\n}\n\nvb2ex_hwcrypto_digest_finalize {\n    for i\n        UNPACK32(sha_ctx.h[sha_seq[i]], \u0026digest[i * 4]);\n}\n```",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 37
+      },
+      "revId": "9a663f7bfd83b9fd086d9a73e492113008a2a1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977fab94_54411d79",
+        "filename": "firmware/2lib/include/2sha_private.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-06T03:45:29Z",
+      "side": 1,
+      "message": "vb2_sha_ctx",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "9a663f7bfd83b9fd086d9a73e492113008a2a1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
