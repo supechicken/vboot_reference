@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "579b434d_0c9ef85f",
+        "filename": "firmware/2lib/2hwcrypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-06T07:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84e67382_b19e4b0a",
+      "revId": "9a663f7bfd83b9fd086d9a73e492113008a2a1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc5d7e40_1f0bbf5d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc5b0d25_040537c4",
+        "filename": "firmware/2lib/2sha256_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-06T07:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc5d7e40_1f0bbf5d",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 37
+      },
+      "revId": "9a663f7bfd83b9fd086d9a73e492113008a2a1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "977fab94_54411d79",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-02-06T03:45:29Z",
       "side": 1,
       "message": "vb2_sha_ctx",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "9a663f7bfd83b9fd086d9a73e492113008a2a1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1c9553_1b7d0d8a",
+        "filename": "firmware/2lib/include/2sha_private.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-06T07:55:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "977fab94_54411d79",
       "range": {
         "startLine": 22,
         "startChar": 33,
