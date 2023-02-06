@@ -107,14 +107,22 @@ get_dmparams_from_config() {
   local kernel_config=$1
   echo "${kernel_config}" | sed -nre 's/.*dm="([^"]*)".*/\1/p'
 }
-# Get the verity root digest hash from a kernel config command line.
-get_hash_from_config() {
+
+# Get the given verity arg from a kernel config command line.
+get_verity_arg_from_config() {
   local kernel_config=$1
+  local verity_arg=$2
   local dm_config
   dm_config=$(get_dmparams_from_config "${kernel_config}")
   local vroot_dev
   vroot_dev=$(get_dm_device "${dm_config}" vroot)
-  get_verity_arg "${vroot_dev}" root_hexdigest
+  get_verity_arg "${vroot_dev}" "${verity_arg}"
+}
+
+# Get the verity root digest hash from a kernel config command line.
+get_hash_from_config() {
+  local kernel_config=$1
+  get_verity_arg_from_config "${kernel_config}" root_hexdigest
 }
 
 # Get the mapped device and its args.
@@ -125,6 +133,31 @@ get_dm_device() {
   local dm=$1
   local device=$2
   echo "${dm}" | sed -nre "s/.*${device}[^,]*,([^,]*).*/\1/p"
+}
+
+# Replace the dm args in the kernel config with the new args given.
+# Usage:
+#   replace_dm_args $kernel_config $dm_args
+#
+# The new args are substituted as is, except for one thing: the payload and
+# hashtree from the original command line are preserved. This is because the
+# PARTNROFF can vary between kernels. Specifically, in factory shims KERN-A
+# and KERN-B both use ROOT-A, so PARTNROFF=-1 for KERN-B (b/269192903).
+# Example:
+# payload=PARTUUID=%U/PARTNROFF=-1 hashtree=PARTUUID=%U/PARTNROFF=-1
+replace_dm_args() {
+  local kernel_config=$1
+  local dm_args=$2
+
+  local payload=$(get_verity_arg_from_config "${kernel_config}" payload)
+  local hashtree=$(get_verity_arg_from_config "${kernel_config}" hashtree)
+
+  dm_args="$(echo "${dm_args}" |
+    sed -e "s|payload=[^\" ]*|payload=${payload}|g" \
+        -e "s|hashtree=[^\" ]*|hashtree=${hashtree}|g")"
+
+  echo "${kernel_config}" | \
+    sed -e 's#\(.*dm="\)\([^"]*\)\(".*\)'"#\1${dm_args}\3#g"
 }
 
 # Set the mapped device and its args for a device.
@@ -196,22 +229,29 @@ calculate_rootfs_hash() {
 }
 
 # Re-calculate rootfs hash, update rootfs and kernel command line(s).
-# Args: LOOPDEV KERNEL KERN_A_KEYBLOCK KERN_A_PRIVKEY KERN_B_KEYBLOCK \
-#       KERN_B_PRIVKEY
+# Args: LOOPDEV KERNEL \
+#       KERN_A_KEYBLOCK KERN_A_PRIVKEY \
+#       KERN_B_KEYBLOCK KERN_B_PRIVKEY SHOULD_SIGN_KERN_B \
+#       KERN_C_KEYBLOCK KERN_C_PRIVKEY SHOULD_SIGN_KERN_C
 #
 # The rootfs is hashed by tool 'verity', and the hash data is stored after the
 # rootfs. A hash of those hash data (also known as final verity hash) may be
 # contained in kernel 2 or kernel 4 command line.
 #
 # This function reads dm-verity configuration from KERNEL, rebuilds the rootfs
-# hash, and then resigns kernel A & B by their keyblock and private key files.
+# hash, and then resigns kernel A & B (& C if needed) by their keyblock and
+# private key files.
 update_rootfs_hash() {
   local loopdev="$1"  # Input image.
   local loop_kern="$2"  # Kernel that contains verity args.
   local kern_a_keyblock="$3"  # Keyblock file for kernel A.
   local kern_a_privkey="$4"  # Private key file for kernel A.
   local kern_b_keyblock="$5"  # Keyblock file for kernel B.
-  local kern_b_privkey="$6"  # Private key file for kernel A.
+  local kern_b_privkey="$6"  # Private key file for kernel B.
+  local should_sign_kern_b="$7"
+  local kern_c_keyblock="$8"  # Keyblock file for kernel C.
+  local kern_c_privkey="$9"  # Private key file for kernel C.
+  local should_sign_kern_c="${10}"
   local loop_rootfs="${loopdev}p3"
 
   # Note even though there are two kernels, there is one place (after rootfs)
@@ -274,7 +314,7 @@ update_rootfs_hash() {
   local priv_key=
   local new_kernel_config=
 
-  for kernelpart in 2 4; do
+  for kernelpart in 2 4 6; do
     loop_kern="${loopdev}p${kernelpart}"
     if ! new_kernel_config="$(
          sudo "${FUTILITY}" dump_kernel_config "${loop_kern}" 2>/dev/null)" &&
@@ -283,18 +323,28 @@ update_rootfs_hash() {
       info "Skipping empty kernel partition 4 (legacy images)."
       continue
     fi
+    if [[ "${should_sign_kern_b}" == "false" && "${kernelpart}" == 4 ]]; then
+      info "Skip signing kernel B."
+      continue
+    fi
+    if [[ "${should_sign_kern_c}" == "false" && "${kernelpart}" == 6 ]]; then
+      info "Skip signing kernel C."
+      continue
+    fi
     # shellcheck disable=SC2001
-    new_kernel_config="$(echo "${new_kernel_config}" |
-      sed -e 's#\(.*dm="\)\([^"]*\)\(".*\)'"#\1${dm_args}\3#g")"
+    new_kernel_config="$(replace_dm_args "${new_kernel_config}" "${dm_args}")"
     info "New config for kernel partition ${kernelpart} is:"
     echo "${new_kernel_config}" | tee "${temp_config}"
     # Re-calculate kernel partition signature and command line.
     if [[ "${kernelpart}" == 2 ]]; then
       keyblock="${kern_a_keyblock}"
       priv_key="${kern_a_privkey}"
-    else
+    elif [[ "${kernelpart}" == 4 ]]; then
       keyblock="${kern_b_keyblock}"
       priv_key="${kern_b_privkey}"
+    else
+      keyblock="${kern_c_keyblock}"
+      priv_key="${kern_c_privkey}"
     fi
     sudo "${FUTILITY}" vbutil_kernel --repack "${loop_kern}" \
       --keyblock "${keyblock}" \
@@ -934,18 +984,22 @@ EOF
 }
 
 # Re-calculate recovery kernel hash.
-# Args: LOOPDEV
+# Args: LOOPDEV RECOVERY_KERNEL_PARTITION KEYBLOCK PRIVKEY
 update_recovery_kernel_hash() {
   local loopdev="$1"
-  local loop_kerna="${loopdev}p2"
+  local recovery_kernel_partition="$2"
+  local keyblock="$3"
+  local privkey="$4"
+
+  local loop_recovery_kernel="${loopdev}p${recovery_kernel_partition}"
   local loop_kernb="${loopdev}p4"
 
-  # Update the Kernel B hash in Kernel A command line
-  local old_kerna_config
-  old_kerna_config="$(sudo "${FUTILITY}" \
-    dump_kernel_config "${loop_kerna}")"
+  # Update the kernel B hash in the recovery kernel command line.
+  local old_kernel_config
+  old_kernel_config="$(sudo "${FUTILITY}" \
+    dump_kernel_config "${loop_recovery_kernel}")"
   local old_kernb_hash
-  old_kernb_hash="$(echo "${old_kerna_config}" |
+  old_kernb_hash="$(echo "${old_kernel_config}" |
     sed -nEe "s#.*kern_b_hash=([a-z0-9]*).*#\1#p")"
   local new_kernb_hash
   if [[ "${#old_kernb_hash}" -lt 64 ]]; then
@@ -954,21 +1008,21 @@ update_recovery_kernel_hash() {
     new_kernb_hash=$(sudo sha256sum "${loop_kernb}" | cut -f1 -d' ')
   fi
 
-  new_kerna_config=$(make_temp_file)
+  new_kernel_config=$(make_temp_file)
   # shellcheck disable=SC2001
-  echo "${old_kerna_config}" |
+  echo "${old_kernel_config}" |
     sed -e "s#\(kern_b_hash=\)[a-z0-9]*#\1${new_kernb_hash}#" \
-      > "${new_kerna_config}"
-  info "New config for kernel partition 2 is"
-  cat "${new_kerna_config}"
+      > "${new_kernel_config}"
+  info "New config for kernel partition ${recovery_kernel_partition} is"
+  cat "${new_kernel_config}"
 
   # Re-calculate kernel partition signature and command line.
-  sudo "${FUTILITY}" vbutil_kernel --repack "${loop_kerna}" \
-    --keyblock "${KEY_DIR}"/recovery_kernel.keyblock \
-    --signprivate "${KEY_DIR}"/recovery_kernel_data_key.vbprivk \
+  sudo "${FUTILITY}" vbutil_kernel --repack "${loop_recovery_kernel}" \
+    --keyblock "${keyblock}" \
+    --signprivate "${privkey}" \
     --version "${KERNEL_VERSION}" \
-    --oldblob "${loop_kerna}" \
-    --config "${new_kerna_config}"
+    --oldblob "${loop_recovery_kernel}" \
+    --config "${new_kernel_config}"
 }
 
 # Re-sign miniOS kernels with new keys.
@@ -1072,7 +1126,8 @@ update_legacy_bootloader() {
 
 # Sign an image file with proper keys.
 # Args: IMAGE_TYPE INPUT OUTPUT DM_PARTNO KERN_A_KEYBLOCK KERN_A_PRIVKEY \
-#       KERN_B_KEYBLOCK KERN_B_PRIVKEY MINIOS_KEYBLOCK MINIOS_PRIVKEY
+#       KERN_B_KEYBLOCK KERN_B_PRIVKEY KERN_C_KEYBLOCK KERN_C_PRIVKEY \
+#       MINIOS_KEYBLOCK MINIOS_PRIVKEY
 #
 # A ChromiumOS image file (INPUT) always contains 2 partitions (kernel A & B).
 # This function will rebuild hash data by DM_PARTNO, resign kernel partitions by
@@ -1080,6 +1135,8 @@ update_legacy_bootloader() {
 # special images (specified by IMAGE_TYPE, like 'recovery' or 'factory_install')
 # may have additional steps (ex, tweaking verity hash or not stripping files)
 # when generating output file.
+# Some recovery images also have a kernel C, which is identical to kernel A,
+# but signed with a different key (see b/266502803).
 sign_image_file() {
   local image_type="$1"
   local input="$2"
@@ -1089,8 +1146,10 @@ sign_image_file() {
   local kernA_privkey="$6"
   local kernB_keyblock="$7"
   local kernB_privkey="$8"
-  local minios_keyblock="$9"
-  local minios_privkey="${10}"
+  local kernC_keyblock="$9"
+  local kernC_privkey="${10}"
+  local minios_keyblock="${11}"
+  local minios_privkey="${12}"
 
   info "Preparing ${image_type} image..."
   cp --sparse=always "${input}" "${output}"
@@ -1101,6 +1160,28 @@ sign_image_file() {
   local loop_rootfs="${loopdev}p3"
   local is_reven
   is_reven=$(get_is_reven "${loopdev}")
+
+  # b/266502803: Some devices have a second recovery key which is used to sign:
+  # - a second recovery kernel KERN-C in recovery images
+  # - a second installer kernel KERN-B in factory images
+  # If a device does not have a second recovery key, then these additional
+  # kernels are not signed. If they are present, they will remain in the image
+  # signed with dev keys.
+  #
+  # Sign KERN-B unless it's a factory image and this device doesn't have a
+  # second recovery key.
+  local should_sign_kernB="true"
+  if [[ "${image_type}" == "factory_install" &&
+        ! -f "${kernB_keyblock}" ]]; then
+    should_sign_kernB="false"
+  fi
+  # Sign KERN-C unless this image type doesn't have KERN-C, or it's a
+  # recovery image and this device doesn't have a second recovery key.
+  local should_sign_kernC="true"
+  if [[ -z "${kernC_keyblock}" ||
+        ( "${image_type}" == "recovery" && ! -f "${kernC_keyblock}" ) ]]; then
+    should_sign_kernC="false"
+  fi
 
   # The reven board needs to produce recovery images since some
   # downstream tools (e.g. the Chromebook Recovery Utility) expect
@@ -1142,11 +1223,17 @@ sign_image_file() {
   fi
   update_rootfs_hash "${loopdev}" "${loop_kern}" \
     "${kernA_keyblock}" "${kernA_privkey}" \
-    "${kernB_keyblock}" "${kernB_privkey}"
+    "${kernB_keyblock}" "${kernB_privkey}" "${should_sign_kernB}" \
+    "${kernC_keyblock}" "${kernC_privkey}" "${should_sign_kernC}"
   update_stateful_partition_vblock "${loopdev}"
   if [[ "${image_type}" == "recovery" &&
         "${sign_recovery_like_base}" == "false" ]]; then
-    update_recovery_kernel_hash "${loopdev}"
+    update_recovery_kernel_hash "${loopdev}" 2 "${kernA_keyblock}" \
+      "${kernA_privkey}"
+    if [[ "${should_sign_kernC}" == "true" ]]; then
+      update_recovery_kernel_hash "${loopdev}" 6 "${kernC_keyblock}" \
+        "${kernC_privkey}"
+    fi
   fi
   if ! resign_minios_kernels "${loopdev}" "${minios_keyblock}" \
       "${minios_privkey}"; then
@@ -1203,6 +1290,8 @@ if [[ "${TYPE}" == "base" ]]; then
     "${KEY_DIR}/kernel_data_key.vbprivk" \
     "${KEY_DIR}/kernel.keyblock" \
     "${KEY_DIR}/kernel_data_key.vbprivk" \
+    "" \
+    "" \
     "${KEY_DIR}/minios_kernel.keyblock" \
     "${KEY_DIR}/minios_kernel_data_key.vbprivk"
 elif [[ "${TYPE}" == "recovery" ]]; then
@@ -1211,14 +1300,18 @@ elif [[ "${TYPE}" == "recovery" ]]; then
     "${KEY_DIR}/recovery_kernel_data_key.vbprivk" \
     "${KEY_DIR}/kernel.keyblock" \
     "${KEY_DIR}/kernel_data_key.vbprivk" \
+    "${KEY_DIR}/recovery_kernel.v1.keyblock" \
+    "${KEY_DIR}/recovery_kernel_data_key.vbprivk" \
     "${KEY_DIR}/minios_kernel.keyblock" \
     "${KEY_DIR}/minios_kernel_data_key.vbprivk"
 elif [[ "${TYPE}" == "factory" ]]; then
   sign_image_file "factory_install" "${INPUT_IMAGE}" "${OUTPUT_IMAGE}" 2 \
     "${KEY_DIR}/installer_kernel.keyblock" \
     "${KEY_DIR}/installer_kernel_data_key.vbprivk" \
-    "${KEY_DIR}/kernel.keyblock" \
-    "${KEY_DIR}/kernel_data_key.vbprivk" \
+    "${KEY_DIR}/installer_kernel.v1.keyblock" \
+    "${KEY_DIR}/installer_kernel_data_key.vbprivk" \
+    "" \
+    "" \
     "${KEY_DIR}/minios_kernel.keyblock" \
     "${KEY_DIR}/minios_kernel_data_key.vbprivk"
 elif [[ "${TYPE}" == "firmware" ]]; then
