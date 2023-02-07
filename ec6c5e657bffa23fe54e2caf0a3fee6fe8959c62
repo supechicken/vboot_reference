@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554a6307_63d5bf14",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-07T17:25:07Z",
+      "side": 1,
+      "message": "Looking around, this should be:\n\n```\nlocal board\u003d$(get_boardvar_from_lsb_release \"${rootfs_dir}\")\n```\n\n`src/platform/vboot_reference/scripts/image_signing/common.sh`:\n```\n# Usage: get_boardvar_from_lsb_release rootfs\n# Returns the board name from /etc/lsb-release in a mangled form that can\n# be used in variable names.  e.g. dashes are turned into underscores.\nget_boardvar_from_lsb_release() {\n  get_board_from_lsb_release \"$@\" | sed \u0027s:[-]:_:g\u0027\n}\n```",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 37
+      },
+      "revId": "ec6c5e657bffa23fe54e2caf0a3fee6fe8959c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
