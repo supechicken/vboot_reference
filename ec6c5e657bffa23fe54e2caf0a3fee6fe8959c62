@@ -46,6 +46,30 @@
       },
       "revId": "ec6c5e657bffa23fe54e2caf0a3fee6fe8959c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f682fdd1_a65e0acd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-02-07T20:05:34Z",
+      "side": 1,
+      "message": "For completeness, this doc:\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/os_config.md#lsb\n\nShows that field `CHROMEOS_RELEASE_BOARD` may contain additions to the string beyond the board name `guybrush` to indicate it\u0027s signed (i.e., `guybrush-signed-mpkeys`). In that case, there would be dashes present, so we would want to use `get_boardvar_from_lsb_release()` to clean that up.\n\nVadim uploaded another CL with the change and additional logging: https://crrev.com/c/4228431",
+      "parentUuid": "bc81a7f4_4a128588",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 37
+      },
+      "revId": "ec6c5e657bffa23fe54e2caf0a3fee6fe8959c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
