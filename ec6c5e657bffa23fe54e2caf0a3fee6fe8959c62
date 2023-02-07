@@ -22,6 +22,30 @@
       },
       "revId": "ec6c5e657bffa23fe54e2caf0a3fee6fe8959c62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc81a7f4_4a128588",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-02-07T19:34:38Z",
+      "side": 1,
+      "message": "the board name for guybrush does not have any dashes in it, so for this particular case this would not matter.",
+      "parentUuid": "554a6307_63d5bf14",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 37
+      },
+      "revId": "ec6c5e657bffa23fe54e2caf0a3fee6fe8959c62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
