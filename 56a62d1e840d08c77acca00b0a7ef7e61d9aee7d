@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996403f0_4ab00d78",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "#include \"updater_utils.h\" for dut_* functions.",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4c43a6_2ae4c299",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "Move this to updater_dut.c?",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9067e27_d98cb46e",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "Indentation.",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eeb8af2_72e5dc53",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "Add updater_utils.h",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a8cd1b_b05db373",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "If dut_get_property is moved to updater_dut.c, all the function will be in the same file, right?",
+      "range": {
+        "startLine": 231,
+        "startChar": 26,
+        "endLine": 231,
+        "endChar": 32
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf365d5_a004b54c",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "The newly added argument doesn\u0027t seem to be used.",
+      "range": {
+        "startLine": 234,
+        "startChar": 38,
+        "endLine": 234,
+        "endChar": 41
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70514312_17c480ab",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "Gets",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 261,
+        "endChar": 6
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a22eb9_3c834ecb",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:03:30Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
