@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7065a92_fa05f378",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:25:23Z",
+      "side": 1,
+      "message": "Just `type \u003d\u003d DUT_TYPE_LOCAL ? \"LOCAL\" : \"REMOTE\"`?",
+      "range": {
+        "startLine": 28,
+        "startChar": 37,
+        "endLine": 28,
+        "endChar": 45
+      },
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b4c14d_8d1eefe5",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:25:23Z",
+      "side": 1,
+      "message": "Why is this considered as a warning? `INFO` may be more suitable.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee3ddb4_8a35ab5c",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:25:23Z",
+      "side": 1,
+      "message": "Now that this function may return -1, we need to check the return value in `is_ec_software_sync_enabled`. See the 2 comments below for similar cases.",
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87b2c66_ea962758",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:25:23Z",
+      "side": 1,
+      "message": "Need to check the return value for 2 `dut_get_property(DUT_PROP_FW_VBOOT2, cfg);` calls in updater.c. BTW, why don\u0027t we check `dut_is_remote` for this function?",
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49eacbc6_5031ac17",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-09T09:25:23Z",
+      "side": 1,
+      "message": "Check return value in `quirk_min_platform_version`.",
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
