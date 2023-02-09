@@ -99,7 +99,12 @@ static int dut_get_platform_version(struct updater_config *cfg)
 /* Helper function to return host software write protection status. */
 static int dut_get_wp_sw(struct updater_config *cfg)
 {
-	return flashrom_get_wp(PROG_HOST, -1);
+	const char *programmer = cfg->image_current.programmer;
+	if (!programmer) {
+		ERROR("No programmer defined, fallback to PROG_HOST.\n");
+		programmer = PROG_HOST;
+	}
+	return flashrom_get_wp(programmer, -1);
 }
 
 /* Helper functions to use or configure the DUT properties. */
