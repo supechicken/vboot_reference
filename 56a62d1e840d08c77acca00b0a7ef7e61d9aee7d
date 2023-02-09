@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5a60f5_f2b4bfc3",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "that is covered in the updater.h",
+      "parentUuid": "996403f0_4ab00d78",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd4c43a6_2ae4c299",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-09T09:03:30Z",
       "side": 1,
       "message": "Move this to updater_dut.c?",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183ac4e9_2137b602",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd4c43a6_2ae4c299",
       "range": {
         "startLine": 41,
         "startChar": 4,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3928a88a_41ca84c0",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9067e27_d98cb46e",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eeb8af2_72e5dc53",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "134232b4_18fbeeba",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "same as above - updater.h covers updater_utils.h",
+      "parentUuid": "4eeb8af2_72e5dc53",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38a8cd1b_b05db373",
@@ -88,6 +166,30 @@
       "writtenOn": "2023-02-09T09:03:30Z",
       "side": 1,
       "message": "If dut_get_property is moved to updater_dut.c, all the function will be in the same file, right?",
+      "range": {
+        "startLine": 231,
+        "startChar": 26,
+        "endLine": 231,
+        "endChar": 32
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cd7d60_1afaeaee",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "well... we actually also have the override/print functions, but they were for debugging or testing, mostly done in static.... maybe just leave them in the updater.c.",
+      "parentUuid": "38a8cd1b_b05db373",
       "range": {
         "startLine": 231,
         "startChar": 26,
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1eca69_dd0e6f3d",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "It will be used by get/set WP in the future.",
+      "parentUuid": "fdf365d5_a004b54c",
+      "range": {
+        "startLine": 234,
+        "startChar": 38,
+        "endLine": 234,
+        "endChar": 41
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70514312_17c480ab",
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda601ea_f3474d4d",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70514312_17c480ab",
+      "range": {
+        "startLine": 261,
+        "startChar": 3,
+        "endLine": 261,
+        "endChar": 6
+      },
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73a22eb9_3c834ecb",
@@ -157,6 +307,24 @@
       "writtenOn": "2023-02-09T09:03:30Z",
       "side": 1,
       "message": "Extra blank line.",
+      "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e49ae7d_5453b5ab",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T12:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a22eb9_3c834ecb",
       "revId": "56a62d1e840d08c77acca00b0a7ef7e61d9aee7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
