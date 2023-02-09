@@ -66,6 +66,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fec87d27_3da4f8ee",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T13:15:03Z",
+      "side": 1,
+      "message": "Just a note that VbGetSystemPropertyInt may also return -1.",
+      "parentUuid": "dee3ddb4_8a35ab5c",
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d87b2c66_ea962758",
         "filename": "futility/updater_dut.c",
         "patchSetId": 4
@@ -77,6 +95,24 @@
       "writtenOn": "2023-02-09T09:25:23Z",
       "side": 1,
       "message": "Need to check the return value for 2 `dut_get_property(DUT_PROP_FW_VBOOT2, cfg);` calls in updater.c. BTW, why don\u0027t we check `dut_is_remote` for this function?",
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4e334c_4609772a",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T13:15:03Z",
+      "side": 1,
+      "message": "Because dut_get_property_int already checks dut_is_remote.\n\nAnyway let\u0027s remote this function.",
+      "parentUuid": "d87b2c66_ea962758",
       "revId": "4c8d120af10e04c8a70223195c5b441837852699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +130,24 @@
       "writtenOn": "2023-02-09T09:25:23Z",
       "side": 1,
       "message": "Check return value in `quirk_min_platform_version`.",
+      "revId": "4c8d120af10e04c8a70223195c5b441837852699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fce1ffec_455732db",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-09T13:15:03Z",
+      "side": 1,
+      "message": "I think that is fine because the quirk_min_platform_version will fail if dut_get_property returns -1, which is expected.",
+      "parentUuid": "49eacbc6_5031ac17",
       "revId": "4c8d120af10e04c8a70223195c5b441837852699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
