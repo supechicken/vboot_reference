@@ -1000,6 +1000,11 @@ cgpt_wrapper_install: cgpt_install ${CGPT_WRAPPER}
 # These have their own headers too.
 ${BUILD}/utility/%: INCLUDES += -Iutility/include
 
+# Avoid build failures outside the chroot on Ubuntu 2022.04
+ifeq ($(OPENSSL_VERSION),3)
+${BUILD}/utility/%: CFLAGS += -Wno-error=deprecated-declarations
+endif
+
 ${UTIL_BINS_SDK}: ${UTILLIB}
 ${UTIL_BINS_SDK}: LIBS = ${UTILLIB}
 ${UTIL_BINS_BOARD}: ${UTILLIB}
