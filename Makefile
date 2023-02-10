@@ -1014,6 +1014,7 @@ util_files: $(if ${SDK_BUILD},${UTIL_FILES_SDK},${UTIL_FILES_BOARD})
 
 # These have their own headers too.
 ${BUILD}/utility/%: INCLUDES += -Iutility/include
+${BUILD}/utility/%: CFLAGS += -Wno-error=deprecated-declarations
 
 ${UTIL_BINS_SDK}: ${UTILLIB}
 ${UTIL_BINS_SDK}: LIBS = ${UTILLIB}
