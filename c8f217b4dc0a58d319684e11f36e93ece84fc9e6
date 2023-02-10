@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019bbda2_88a1121d",
+        "filename": "firmware/lib/vboot_api_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-02-10T01:51:18Z",
+      "side": 1,
+      "message": "why do we care about WP state? can we drop this condition?",
+      "range": {
+        "startLine": 1178,
+        "startChar": 22,
+        "endLine": 1178,
+        "endChar": 51
+      },
+      "revId": "c8f217b4dc0a58d319684e11f36e93ece84fc9e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
