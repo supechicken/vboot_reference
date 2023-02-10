@@ -33,6 +33,24 @@
       "message": "vboot2 was implemented around branch number 6XXX.\n```\nveyron \u003d 6588\nstrago \u003d 7287\nglados \u003d 7820\n```\nI think starting with glados we\u0027re fine. strago is tricky (because they need per-overlay configs at that time).",
       "revId": "949640cdde9150766e038a36f7bd744ce2885f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e60d3c6_8ff0554d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-10T04:34:02Z",
+      "side": 1,
+      "message": "I forgot to mention, strago\u003dbraswell, and also AUE\u0027ed last year. That\u0027s why I would say it\u0027s safe now.",
+      "parentUuid": "77106b76_d5ed0050",
+      "revId": "949640cdde9150766e038a36f7bd744ce2885f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
