@@ -174,6 +174,14 @@ vb2_error_t vb2_hash_calculate(bool allow_hwcrypto, const void *buf,
 	struct vb2_digest_context dc;
 	hash->algo = algo;
 
+#ifdef ARMV8_CRYPTO_EXT
+	if (!vb2_aligned(buf, sizeof(uint32_t))) {
+		VB2_DEBUG("buf is unnaturally aligned: %p\n", buf);
+		VB2_DEBUG("Disallow HW acceleration\n");
+		allow_hwcrypto = false;
+	}
+#endif
+
 	VB2_TRY(vb2_digest_init(&dc, allow_hwcrypto, algo, size));
 	VB2_TRY(vb2_digest_extend(&dc, buf, size));
 
