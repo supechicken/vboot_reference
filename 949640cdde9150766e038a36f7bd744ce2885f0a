@@ -16,6 +16,23 @@
       "message": "(I\u0027m not 100% sure if braswell variants using vboot1 or vboot2, but they also all reached AUE on 2022 June).",
       "revId": "949640cdde9150766e038a36f7bd744ce2885f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77106b76_d5ed0050",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-10T04:16:30Z",
+      "side": 1,
+      "message": "vboot2 was implemented around branch number 6XXX.\n```\nveyron \u003d 6588\nstrago \u003d 7287\nglados \u003d 7820\n```\nI think starting with glados we\u0027re fine. strago is tricky (because they need per-overlay configs at that time).",
+      "revId": "949640cdde9150766e038a36f7bd744ce2885f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
