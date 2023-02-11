@@ -70,6 +70,30 @@
       },
       "revId": "da7ffacd741af7477ccc508734572498c027feed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be94ac0c_fd3802af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-11T02:25:34Z",
+      "side": 1,
+      "message": "it was added to this repo to keep people from using `git cl upload` when making changes to vboot_reference.  which implies someone was doing that and bypassing the vboot checks and generating bad CLs for review.\n\nwe might be able to make this more automatic in the future, but it would take work on the Chrome browser side.",
+      "parentUuid": "1dc36cdf_c355e6b6",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "da7ffacd741af7477ccc508734572498c027feed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
