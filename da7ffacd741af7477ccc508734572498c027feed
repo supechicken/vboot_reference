@@ -22,6 +22,30 @@
       },
       "revId": "da7ffacd741af7477ccc508734572498c027feed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da24df6a_92727906",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-11T01:56:57Z",
+      "side": 1,
+      "message": "we\u0027re making PRESUBMIT.py usage automatic when `repo upload` is used.  this project has such a file which means it\u0027ll be executed and since the only thing it does is abort, all repo upload calls will fail too.  so we have to disable it explicitly.",
+      "parentUuid": "f57d5ab4_7ff60cd6",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "da7ffacd741af7477ccc508734572498c027feed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
