@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da55d560_1713644f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2023-02-13T08:07:31Z",
+      "side": 1,
+      "message": "Actually, I also met this issue using `image-geralt.net.bin` after `repo sync`. And the issue is no longer reproducible on `image-geralt.serial.bin`.\n\nAdding debug message and the different built configs could change the size of the FW body. Once the size of tailing blocks handled by `vb2api_extend_hash`(in `hash_body`) equals 64 bytes, the issue can be reproduced.",
+      "parentUuid": "183b85e3_48bb8a10",
+      "revId": "b310226bef165e337b3d06c8529d6b14aa32aaff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63339357_ad7169e8",
         "filename": "firmware/2lib/2sha256_arm.c",
         "patchSetId": 2
