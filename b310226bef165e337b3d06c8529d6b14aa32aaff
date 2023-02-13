@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183b85e3_48bb8a10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-13T07:32:08Z",
+      "side": 1,
+      "message": "I remember you observed the issue only on certain firmware images (the serial console one?). How do we explain that?",
+      "revId": "b310226bef165e337b3d06c8529d6b14aa32aaff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63339357_ad7169e8",
+        "filename": "firmware/2lib/2sha256_arm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-13T07:32:08Z",
+      "side": 1,
+      "message": "Can we also add\n\n```\nif (remaining_blocks)\n    vb2_sha256_transform_hwcrypto(shifted_data, remaining_blocks);\n```\n\nin `vb2ex_hwcrypto_digest_extend()` to avoid unnecessary calls to `vb2_sha256_transform_x86ext`?",
+      "revId": "b310226bef165e337b3d06c8529d6b14aa32aaff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
