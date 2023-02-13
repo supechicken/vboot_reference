@@ -16,6 +16,24 @@
       "message": "Similar to CL:3887562, add a comment and restrict it to openssl 3\n\n```\n# Avoid build failures outside the chroot on Ubuntu 2022.04\n# e.g.:\n# utility/dumpRSAPublicKey.c:203:3: error: ‘RSA_free’ is deprecated:\n# Since OpenSSL 3.0 [-Wdeprecated-declarations]\nifeq ($(OPENSSL_VERSION),3)\n${BUILD}/utility/%: CFLAGS +\u003d -Wno-error\u003ddeprecated-declarations\nendif\n```\n\nI\u0027m also fine if you\u0027d like to ignore the warning for all files:\n\n```\nifeq ($(OPENSSL_VERSION),3)\nCFLAGS +\u003d -Wno-error\u003ddeprecated-declarations\nendif\n```",
       "revId": "e4bb79ed533b8a7fd4e4ee3676307aaf739b8715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "482a190a_debf194d",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-02-13T16:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ea9f455_f3d69845",
+      "revId": "e4bb79ed533b8a7fd4e4ee3676307aaf739b8715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
