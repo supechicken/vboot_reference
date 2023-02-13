@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87720b73_4e93c5e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-02-13T21:27:42Z",
+      "side": 1,
+      "message": "CR-1\n\nNone of the suggested replacements have anything to do with my intended use of it. futility wants me to use an image whereas i was using {set,get}_gbb_flags directly on the system firmware.\n\n```\nlocalhost ~ # /usr/share/vboot/bin/get_gbb_flags.sh    \nNOTICE: This script has been replaced with futility functionality and will be removed.\nNOTICE: Please try `futility gbb --get --flags`\nChrome OS GBB set flags: 0x00000000\nlocalhost ~ # futility gbb --get --flags\n\nERROR: missing input filename\n...\n```\n\n```\nlocalhost ~ # /usr/share/vboot/bin/set_gbb_flags.sh 0x0\nNOTICE: This script has been replaced with futility functionality and will be removed.\nNOTICE: Please try `futility gbb --set --flags\u003d`\nSetting GBB flags from flags: 0x00000000 to 0\nINFO: write_system_firmware: flashrom -w \u003cIMAGE\u003e -p host -i GBB\nFailed to read fmap from buffer.\nWARNING: flashrom_write_image: could not read fmap from image, r\u003d1, falling back to read from rom\n\nlocalhost ~ # \nlocalhost ~ # futility gbb --set --flags\u003d0x0\n\nERROR: missing input filename\n...\n```",
+      "revId": "9020299e38c17642995f13a0fe8b09178f442d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
