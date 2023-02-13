@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b7884280_1a97c232",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-13T02:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4062aa21_709fdb85",
+      "revId": "94625b00e01a28ff279c08b59261780efeeab5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e055ee2a_c6bb2abf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24102e86_d2746b9d",
+        "filename": "futility/updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-13T02:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a2a8106_b46a5f08",
+      "range": {
+        "startLine": 1443,
+        "startChar": 2,
+        "endLine": 1443,
+        "endChar": 6
+      },
+      "revId": "94625b00e01a28ff279c08b59261780efeeab5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca870ff0_29d46d88",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-02-10T09:48:58Z",
       "side": 1,
       "message": "move { to the previous line",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "94625b00e01a28ff279c08b59261780efeeab5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d654a5cb_93e45793",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-13T02:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca870ff0_29d46d88",
       "range": {
         "startLine": 87,
         "startChar": 1,
