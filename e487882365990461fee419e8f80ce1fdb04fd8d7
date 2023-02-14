@@ -34,6 +34,24 @@
       "parentUuid": "52e5ee84_dac6cf86",
       "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5480764f_6bf88aab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-14T10:51:24Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/4160818\n\n(cr) (foo) quasisec@quasisec2 ~/chromiumos/src/platform/ish $ git remote -v\ncros    https://chromium.googlesource.com/chromiumos/platform/ec (fetch)\ncros    https://chromium.googlesource.com/chromiumos/platform/ec (push)\n(cr) (foo) quasisec@quasisec2 ~/chromiumos/src/platform/ish $ git grep gbb README.md\nREADME.md:# futility gbb --set --flash --flags\u003d0x239\n\nweird, I think some ref in codesearch are stale.\n\nI think it is easier to get a dozen one-liner trivial bugs to fix than a dozen confusion bugs and deal with maintaining the wrapper scripts. Better to just rip the band aid and get over this hill. There is no perfect mechanism in ChromeOS to do this sort of thing, a lot of these docs for example are duplicates and really should just be deleted. I don\u0027t think src/platform/release-firmware/fpmcu-nocturne/README.md is necessary for example.",
+      "parentUuid": "e5c4b4b3_2093d576",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
