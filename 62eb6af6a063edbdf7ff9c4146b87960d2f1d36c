@@ -51,6 +51,24 @@
       "parentUuid": "11829f75_0afdf778",
       "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "221b63f0_fffe2342",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-14T02:15:29Z",
+      "side": 1,
+      "message": "cs/ reported still lots of README and docs still referring to set_gbb_flags. I checked at least one repo, src/platform/cr50/README.md and seems like not updated yet. ./third_party/autotest/files/server/hosts/cros_repair.py is also still using set_gbb_flags.sh.",
+      "parentUuid": "c1cf9415_e4eb5d6c",
+      "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
