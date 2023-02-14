@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b0abe9_ed45837e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-14T00:08:43Z",
+      "side": 1,
+      "message": "There are still lots of documents and programs/scripts calling it. Please finish the migration before removing these scripts.\n\nAlso, it was a shortcut for many partners with simpler command syntax. We can replace them as a wrapper to \u0027futility\u0027, but probably not deleting immediately.",
+      "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
