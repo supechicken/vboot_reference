@@ -10,6 +10,7 @@ want something a little faster.
 """
 
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 from unittest import mock
@@ -20,8 +21,17 @@ import sign_uefi
 class Test(unittest.TestCase):
     """Test sign_uefi.py."""
 
+    @mock.patch("sign_uefi.inject_vbpubk")
+    @mock.patch("sign_uefi.is_crdyboot_file")
     @mock.patch.object(sign_uefi.Signer, "sign_efi_file")
-    def test_successful_sign(self, mock_sign):
+    def test_successful_sign(
+        self, mock_sign, mock_is_crdyboot_file, mock_inject_vbpubk
+    ):
+        def is_crdyboot_file(efi_file, _temp_dir):
+            return efi_file.name.startswith("crdyboot")
+
+        mock_is_crdyboot_file.side_effect = is_crdyboot_file
+
         with tempfile.TemporaryDirectory() as tmp_dir:
             tmp_dir = Path(tmp_dir)
 
@@ -50,6 +60,8 @@ class Test(unittest.TestCase):
             (efi_boot_dir / "bootx64.efi").touch()
             (efi_boot_dir / "testia32.efi").touch()
             (efi_boot_dir / "testx64.efi").touch()
+            (efi_boot_dir / "crdybootia32.efi").touch()
+            (efi_boot_dir / "crdybootx64.efi").touch()
             (syslinux_dir / "vmlinuz.A").touch()
             (syslinux_dir / "vmlinuz.B").touch()
             (target_dir / "vmlinuz-5.10.156").touch()
@@ -69,6 +81,9 @@ class Test(unittest.TestCase):
                     # the boot*.efi files don't.
                     mock.call(efi_boot_dir / "testia32.efi"),
                     mock.call(efi_boot_dir / "testx64.efi"),
+                    # The crdyboot files are matched by |is_crdyboot_file|.
+                    mock.call(efi_boot_dir / "crdybootia32.efi"),
+                    mock.call(efi_boot_dir / "crdybootx64.efi"),
                     # Two syslinux kernels.
                     mock.call(syslinux_dir / "vmlinuz.A"),
                     mock.call(syslinux_dir / "vmlinuz.B"),
@@ -76,6 +91,97 @@ class Test(unittest.TestCase):
                     mock.call(target_dir / "vmlinuz-5.10.156"),
                 ],
             )
+
+            # Check that `inject_vbpubk` was called only on the crdyboot
+            # executables.
+            self.assertEqual(
+                mock_inject_vbpubk.call_args_list,
+                [
+                    mock.call(
+                        efi_boot_dir / "crdybootia32.efi", key_dir, mock.ANY
+                    ),
+                    mock.call(
+                        efi_boot_dir / "crdybootx64.efi", key_dir, mock.ANY
+                    ),
+                ],
+            )
+
+    @mock.patch("sign_uefi.subprocess.run")
+    def test_read_sbat_section(self, mock_run):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_dir = Path(tmp_dir)
+            efi_file = tmp_dir / "test_efi_file"
+            efi_file.touch()
+
+            # Check that if the objdump command fails, it writes an
+            # empty file.
+            mock_run.side_effect = subprocess.CalledProcessError(1, [])
+            sbat_path = sign_uefi.read_sbat_section(efi_file, tmp_dir)
+            with open(sbat_path) as sbat_file:
+                self.assertEqual(sbat_file.read(), "")
+
+    @mock.patch("sign_uefi.read_sbat_section")
+    def test_is_crdyboot_file(self, mock_read_sbat):
+        crdyboot_sbat = """sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
+crdyboot,1,Google,crdyboot,1.0.0,https://chromium.googlesource.com/crdyboot
+"""
+
+        sbat_data = {
+            "crdybootx64.efi": crdyboot_sbat,
+            "testx64.efi": "",
+        }
+
+        def read_sbat_section(efi_file, temp_path):
+            sbat_path = temp_path / "sbat.csv"
+            with open(sbat_path, "w") as sbat_file:
+                sbat_file.write(sbat_data[efi_file])
+            return sbat_path
+
+        mock_read_sbat.side_effect = read_sbat_section
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_dir = Path(tmp_dir)
+
+            # Test parsing real SBAT data.
+            self.assertTrue(
+                sign_uefi.is_crdyboot_file("crdybootx64.efi", tmp_dir)
+            )
+
+            # Test an empty or missing SBAT section.
+            self.assertFalse(sign_uefi.is_crdyboot_file("testx64.efi", tmp_dir))
+
+    @mock.patch("sign_uefi.subprocess.run")
+    def test_inject_vbpubk(self, mock_run):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_dir = Path(tmp_dir)
+
+            key_dir = tmp_dir / "key_dir"
+            uefi_key_dir = key_dir / "uefi"
+            uefi_key_dir.mkdir(parents=True)
+
+            efi_file = tmp_dir / "test_efi_file"
+            sign_uefi.inject_vbpubk(efi_file, uefi_key_dir, tmp_dir)
+
+            # Check that the expected commands run.
+            self.assertEqual(len(mock_run.call_args_list), 3)
+            remove_section = mock_run.call_args_list[0][0][0]
+            add_section = mock_run.call_args_list[1][0][0]
+            copy = mock_run.call_args_list[2][0][0]
+            self.assertEqual(
+                remove_section[:-2],
+                ["llvm-objcopy", "--remove-section", ".vbpubk"],
+            )
+            self.assertEqual(
+                add_section[:-1],
+                [
+                    "llvm-objcopy",
+                    "--add-section",
+                    f'.vbpubk={uefi_key_dir / "../kernel_subkey.vbpubk"}',
+                    "--set-section-flags",
+                    ".vbpubk=data,readonly",
+                ],
+            )
+            self.assertEqual(copy[:-2], ["sudo", "cp"])
 
 
 if __name__ == "__main__":

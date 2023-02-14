@@ -9,6 +9,7 @@ The target directory can be either the root of ESP or /boot of root filesystem.
 """
 
 import argparse
+import csv
 import logging
 from pathlib import Path
 import shutil
@@ -96,6 +97,131 @@ class Signer:
             sys.exit("Verification failed")
 
 
+def read_sbat_section(efi_file, temp_dir):
+    """Read the SBAT section from a UEFI file into a file.
+
+    If the UEFI file doesn't have a ".sbat" section, an output file will
+    be created.
+
+    Args:
+        efi_file: Path of a UEFI file.
+        temp_dir: Path of a temporary directory.
+
+    Returns:
+        Path of a file in |temp_dir| containing the SBAT data.
+    """
+    section_name = ".sbat"
+    sbat_path = temp_dir / "sbat.csv"
+    try:
+        # Make a temporary copy of the EFI file so that objcopy doesn't
+        # complain about missing write permissions in the file's
+        # directory.
+        temp_efi_file = temp_dir / f"{efi_file.name}.copy"
+        shutil.copy(efi_file, temp_efi_file)
+
+        # Use objcopy here instead of llvm-objcopy; the latter doesn't
+        # support `--dump-section` for PE/COFF files currently.
+        subprocess.run(
+            [
+                "objcopy",
+                f"--dump-section={section_name}={sbat_path}",
+                temp_efi_file,
+            ],
+            check=True,
+        )
+    except subprocess.CalledProcessError:
+        # Write an empty file on failure.
+        sbat_path.touch()
+    return sbat_path
+
+
+def is_crdyboot_file(efi_file, temp_dir):
+    """Check if a UEFI file is a build of the crdyboot bootloader.
+
+    The check is done by reading the file's SBAT data and comparing the
+    component name against "crdyboot". For more details of the SBAT
+    format, see https://github.com/rhboot/shim/blob/main/SBAT.md.
+
+    Args:
+        efi_file: Path of a UEFI file.
+        temp_dir: Path of a temporary directory.
+
+    Returns:
+        True if the file is a crdyboot build, False otherwise.
+    """
+    sbat_path = read_sbat_section(efi_file, temp_dir)
+
+    with open(sbat_path) as sbat_file:
+        rows = list(csv.reader(sbat_file))
+        try:
+            # First line is the SBAT component, second line is the
+            # crdyboot component.
+            row = rows[1]
+            # First element of each line is the component name.
+            component = row[0]
+            return component == "crdyboot"
+        except IndexError:
+            return False
+
+
+def inject_vbpubk(efi_file, key_dir, temp_dir):
+    """Update a UEFI executable's vbpubk section.
+
+    The crdyboot bootloader contains an embedded public key in the
+    ".vbpubk" section. This function removes the existing section
+    (normally containing a dev key) and appends a new section containing
+    the real key.
+
+    Args:
+        efi_file: Path of a UEFI file.
+        key_dir: Path of the UEFI key directory.
+        temp_dir: Path of a temporary directory.
+    """
+    section_name = ".vbpubk"
+
+    # Use llvm-objcopy rather than objcopy. The latter is unable to
+    # correctly append sections into PE/COFF executables.
+    objcopy = "llvm-objcopy"
+
+    # Write to a location that doesn't require root permissions.
+    temp_efi_file = temp_dir / efi_file.name
+
+    # Remove the existing section first.
+    logging.info(
+        "removing original section %s from %s", section_name, efi_file.name
+    )
+    subprocess.run(
+        [
+            objcopy,
+            "--remove-section",
+            section_name,
+            efi_file,
+            temp_efi_file,
+        ],
+        check=True,
+    )
+
+    # Add the new section.
+    logging.info("adding new section %s to %s", section_name, efi_file.name)
+    section_data_path = key_dir / "../kernel_subkey.vbpubk"
+    # Normal flags for non-executable data.
+    section_flags = "data,readonly"
+    subprocess.run(
+        [
+            objcopy,
+            "--add-section",
+            f"{section_name}={section_data_path}",
+            "--set-section-flags",
+            f"{section_name}={section_flags}",
+            temp_efi_file,
+        ],
+        check=True,
+    )
+
+    # Copy the modified file back to the original location.
+    subprocess.run(["sudo", "cp", temp_efi_file, efi_file], check=True)
+
+
 def sign_target_dir(target_dir, key_dir, efi_glob):
     """Sign various EFI files under |target_dir|.
 
@@ -118,11 +244,27 @@ def sign_target_dir(target_dir, key_dir, efi_glob):
     sign_key = key_dir / "db/db.children/db_child.rsa"
     ensure_file_exists(sign_key, "No signing key")
 
+    crdyboot_file_names = [
+        # Names if built as the first-stage boot loader.
+        "bootia32.efi",
+        "bootx64.efi",
+        # Names if built as the second-stage boot loader.
+        "crdybootia32.efi",
+        "crdybootx64.efi",
+    ]
+
     with tempfile.TemporaryDirectory() as working_dir:
-        signer = Signer(Path(working_dir), sign_key, sign_cert, verify_cert)
+        working_dir = Path(working_dir)
+        signer = Signer(working_dir, sign_key, sign_cert, verify_cert)
 
         for efi_file in sorted(bootloader_dir.glob(efi_glob)):
             if efi_file.is_file():
+                signer.sign_efi_file(efi_file)
+
+        for name in crdyboot_file_names:
+            efi_file = bootloader_dir / name
+            if is_crdyboot_file(efi_file, working_dir):
+                inject_vbpubk(efi_file, key_dir, working_dir)
                 signer.sign_efi_file(efi_file)
 
         for syslinux_kernel_file in sorted(syslinux_dir.glob("vmlinuz.?")):
@@ -165,7 +307,13 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
     parser = get_parser()
     opts = parser.parse_args(argv)
 
-    for tool in ("sbattach", "sbsign", "sbverify"):
+    for tool in (
+        "llvm-objcopy",
+        "objcopy",
+        "sbattach",
+        "sbsign",
+        "sbverify",
+    ):
         ensure_executable_available(tool)
 
     sign_target_dir(opts.target_dir, opts.key_dir, opts.efi_glob)
