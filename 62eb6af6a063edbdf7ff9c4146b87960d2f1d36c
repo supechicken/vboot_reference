@@ -105,6 +105,24 @@
       "parentUuid": "5a9b36f0_9ff47069",
       "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf3bf12_41d600ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-14T03:32:24Z",
+      "side": 1,
+      "message": "I wonder if cr50 is doing their own branching. I synced my local tree and:\n\n````\n cd src/platform/cr50\n rg \u0027set_gbb_flags\u0027\n # README.md 274:(chroot) $ /usr/share/vboot/bin/set_gbb_flags.sh 0x239\n````\n\n\u003e They have ref for older and newer builds this is ToT.\n\nI thought I checked ./third_party/autotest/files/server/hosts/cros_repair.py  on ToT...\n```\n# repo sync .\n\n~/chromiumos/src/third_party/autotest/files/server/hosts$ rg set_gbb_flags\ncros_repair.py\n1120:        host.run(\u0027/usr/share/vboot/bin/set_gbb_flags.sh 0\u0027,\n\ncros_firmware.py\n224:        host.run(\u0027/usr/share/vboot/bin/set_gbb_flags.sh 0\u0027, ignore_status\u003dTrue)\n```",
+      "parentUuid": "ecf2bf11_f6b9fcca",
+      "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
