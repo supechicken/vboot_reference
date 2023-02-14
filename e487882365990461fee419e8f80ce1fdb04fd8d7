@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e5ee84_dac6cf86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-14T05:43:38Z",
+      "side": 1,
+      "message": "There are still lots of files from cs/.  I don\u0027t know if we have to fix labpack and autotest-drone, but it\u0027s better to check the owners, or leave some messages there so when things failed they know what to check for,\n\nhttps://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/refs/heads/main/chromeos-base/chromeos-cr50-scripts/files/cr50-reset.sh\n\nsrc/third_party/labpack/files/site_utils/deployment/prepare/dut.py\n\nsrc/third_party/autotest/files/server/site_tests/firmware_GSCAPROV1Trigger/firmware_GSCAPROV1Trigger.py\n\n\ninfra/autotest-drone/server/hosts/cros_repair.py\n\nsrc/platform/ish/README.md\n\nsrc/platform/release-firmware/fpmcu-nocturne/README.md\n\nsrc/third_party/labpack/files/server/site_tests/platform_ExternalUSBBootStress/platform_ExternalUSBBootStress.py\n\ninfra/autotest-drone/site_utils/deployment/prepare/dut.py\n\nsrc/platform/dev/contrib/lium/src/dut.rs",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
