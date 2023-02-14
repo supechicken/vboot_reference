@@ -63,13 +63,16 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	const int hmir_len = VB2_SHA256_DIGEST_SIZE;
 	vb2_error_t rv;
 
+        VB2_DEBUG("entering check_ec_hash\n");
 	/*
 	 * Get expected EC hash and length.
 	 */
+        for (int i = 0; i < 10; i++) {
 	VB2_TRY(vb2ex_ec_get_expected_image_hash(select, &hexp, &hexp_len),
 		ctx, VB2_RECOVERY_EC_EXPECTED_HASH);
 	VB2_DEBUG("Hexp %10s: ", image_name_to_string(select));
 	print_hash(hexp, hexp_len);
+        }
 
 	/*
 	 * Get mirrored EC hash. This returns NULL on old systems. On new
@@ -98,10 +101,12 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 	/*
 	 * Get effective EC hash and length.
 	 */
+        for (int i = 0; i < 10; i++) {
 	VB2_TRY(vb2ex_ec_hash_image(select, &heff, &heff_len),
 		ctx, VB2_RECOVERY_EC_HASH_FAILED);
 	VB2_DEBUG("Heff %10s: ", image_name_to_string(select));
 	print_hash(heff, heff_len);
+        }
 
 	/* Lengths should match. */
 	if (heff_len != hexp_len) {
@@ -117,6 +122,7 @@ static vb2_error_t check_ec_hash(struct vb2_context *ctx,
 		sd->flags |= SYNC_FLAG(select);
 	}
 
+        VB2_DEBUG("exitting check_ec_hash\n");
 	return VB2_SUCCESS;
 }
 
