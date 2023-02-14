@@ -52,6 +52,24 @@
       "parentUuid": "e5c4b4b3_2093d576",
       "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b291e40b_214844e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-14T14:45:47Z",
+      "side": 1,
+      "message": "We are working with a lot of partners, and now you are removing a command that many partners have get used to, trained for, had many local scripts using them, and the cost of communication with partners is large - we need to spend time dealing with each of them, figuring out their code branch and situation, make fixes for the old branches if needed.\n\nSo I\u0027d prefer a longer transition time - update all the internal docs and programs calling these scripts, make sure no one is using them for a several milestones, before we really really drop the files. \n\n\u003e They just distract and provide a maintenance burden\n\nI don\u0027t see why it is a maintenance burden. The script has been there for a very very long time, and its usage / syntax was very clear and stable. The right way is to make a good wrapper to build a smooth transition, not killing it and force everyone to move to a different command.",
+      "parentUuid": "5480764f_6bf88aab",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
