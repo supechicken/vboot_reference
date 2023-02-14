@@ -16,6 +16,23 @@
       "message": "There are still lots of documents and programs/scripts calling it. Please finish the migration before removing these scripts.\n\nAlso, it was a shortcut for many partners with simpler command syntax. We can replace them as a wrapper to \u0027futility\u0027, but probably not deleting immediately.",
       "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11829f75_0afdf778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-14T00:10:46Z",
+      "side": 1,
+      "message": "correction - they are already wrapper now. maybe adding some \u0027warning: this command is deprecated\u0027 and start cleaning it from all docs and code repos.",
+      "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
