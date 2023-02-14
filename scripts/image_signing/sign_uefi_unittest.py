@@ -20,8 +20,9 @@ import sign_uefi
 class Test(unittest.TestCase):
     """Test sign_uefi.py."""
 
+    @mock.patch("sign_uefi.inject_vbpubk")
     @mock.patch.object(sign_uefi.Signer, "sign_efi_file")
-    def test_successful_sign(self, mock_sign):
+    def test_successful_sign(self, mock_sign, mock_inject_vbpubk):
         with tempfile.TemporaryDirectory() as tmp_dir:
             tmp_dir = Path(tmp_dir)
 
@@ -50,6 +51,8 @@ class Test(unittest.TestCase):
             (efi_boot_dir / "bootx64.efi").touch()
             (efi_boot_dir / "testia32.efi").touch()
             (efi_boot_dir / "testx64.efi").touch()
+            (efi_boot_dir / "crdybootia32.efi").touch()
+            (efi_boot_dir / "crdybootx64.efi").touch()
             (syslinux_dir / "vmlinuz.A").touch()
             (syslinux_dir / "vmlinuz.B").touch()
             (target_dir / "vmlinuz-5.10.156").touch()
@@ -69,6 +72,9 @@ class Test(unittest.TestCase):
                     # the boot*.efi files don't.
                     mock.call(efi_boot_dir / "testia32.efi"),
                     mock.call(efi_boot_dir / "testx64.efi"),
+                    # Two crdyboot files.
+                    mock.call(efi_boot_dir / "crdybootia32.efi"),
+                    mock.call(efi_boot_dir / "crdybootx64.efi"),
                     # Two syslinux kernels.
                     mock.call(syslinux_dir / "vmlinuz.A"),
                     mock.call(syslinux_dir / "vmlinuz.B"),
@@ -76,6 +82,46 @@ class Test(unittest.TestCase):
                     mock.call(target_dir / "vmlinuz-5.10.156"),
                 ],
             )
+
+            # Check that `inject_vbpubk` was called on both the crdyboot
+            # executables.
+            self.assertEqual(
+                mock_inject_vbpubk.call_args_list,
+                [
+                    mock.call(
+                        efi_boot_dir / "crdybootia32.efi", key_dir, mock.ANY
+                    ),
+                    mock.call(
+                        efi_boot_dir / "crdybootx64.efi", key_dir, mock.ANY
+                    ),
+                ],
+            )
+
+    @mock.patch("sign_uefi.subprocess.run")
+    def test_inject_vbpubk(self, mock_run):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_dir = Path(tmp_dir)
+
+            key_dir = tmp_dir / "key_dir"
+            uefi_key_dir = key_dir / "uefi"
+            uefi_key_dir.mkdir(parents=True)
+
+            efi_file = tmp_dir / "test_efi_file"
+            sign_uefi.inject_vbpubk(efi_file, uefi_key_dir, tmp_dir)
+
+            # Check that the expected commands run.
+            self.assertEqual(len(mock_run.call_args_list), 2)
+            update_section = mock_run.call_args_list[0][0][0]
+            copy = mock_run.call_args_list[1][0][0]
+            self.assertEqual(
+                update_section[:-2],
+                [
+                    "objcopy",
+                    "--update-section",
+                    f'.vbpubk={uefi_key_dir / "../kernel_subkey.vbpubk"}',
+                ],
+            )
+            self.assertEqual(copy[:-2], ["sudo", "cp"])
 
 
 if __name__ == "__main__":
