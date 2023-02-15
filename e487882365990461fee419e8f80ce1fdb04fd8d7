@@ -88,6 +88,23 @@
       "parentUuid": "b291e40b_214844e4",
       "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71929156_77b757cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-15T04:44:11Z",
+      "side": 1,
+      "message": "Also, from cs/, most factory test lists are still calling set_gbb_flags.sh in their test list (see the *test_list*.json) files. For factory branches that should be fine (set_gbb_flags.sh should be still there), but for ToT it\u0027s better to fix them as well since new projects will usually copy from the recent ones and we should try to keep ToT test list as correct as possible.",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
