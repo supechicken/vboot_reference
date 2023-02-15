@@ -141,6 +141,24 @@
       "parentUuid": "daf3bf12_41d600ac",
       "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f5e3da_5a6016bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-15T04:51:00Z",
+      "side": 1,
+      "message": "\u003e I wonder if cr50 is doing their own branching.\n\nplatform/cr50 is the `cros/cr50_stab` branch of `platform/ec` repo. So need to cherry-pick CL:4160818 there.",
+      "parentUuid": "d57d0352_4dd5e02f",
+      "revId": "62eb6af6a063edbdf7ff9c4146b87960d2f1d36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
