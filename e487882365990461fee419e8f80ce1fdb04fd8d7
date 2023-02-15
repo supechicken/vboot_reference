@@ -105,6 +105,24 @@
       "message": "Also, from cs/, most factory test lists are still calling set_gbb_flags.sh in their test list (see the *test_list*.json) files. For factory branches that should be fine (set_gbb_flags.sh should be still there), but for ToT it\u0027s better to fix them as well since new projects will usually copy from the recent ones and we should try to keep ToT test list as correct as possible.",
       "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49375a83_664819d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-02-15T05:31:50Z",
+      "side": 1,
+      "message": "I\u0027m also in favor of a longer transition time.  Like 1 year or more after the deprecation notice in {g,s}et_gbb_flags.sh hits CrOS stable channels.\n\nThese shell scripts are trivial wrappers at this point, I don\u0027t see any harm in leaving them for a while to give everyone time to really notice the deprecation message and adjust their muscle memory.\n\n3 months is too quick for this.",
+      "parentUuid": "bbebd41d_668a75c6",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
