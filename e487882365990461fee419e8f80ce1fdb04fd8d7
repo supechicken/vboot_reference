@@ -70,6 +70,24 @@
       "parentUuid": "5480764f_6bf88aab",
       "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbebd41d_668a75c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-15T04:29:58Z",
+      "side": 1,
+      "message": "I agree that we should have a longer transition time, which is 3 months according to the [design doc](https://docs.google.com/document/d/1EV-vjE1_F4ZexZNCzDHKSXDV2CnUPxt8ePvPKm0JKh8/edit?usp\u003dsharing\u0026resourcekey\u003d0-60h71jzCi8ZkiZvoK9OVRQ). In addition, before removing the scripts there should be PSA sent to the entire ChromeOS team (I don\u0027t remember seeing it, did we already announce that?).\n\n\u003e Also, it was a shortcut for many partners with simpler command syntax.\n\nRegarding that, I wonder if we can drop `--flash` when running on DUT. If no servo-related options (--servo, --ccd) are specified, futility may assume it is running on DUT.",
+      "parentUuid": "b291e40b_214844e4",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
