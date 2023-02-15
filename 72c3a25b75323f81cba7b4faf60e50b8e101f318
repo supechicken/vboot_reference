@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3431875_3a00fa08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2023-02-15T04:46:17Z",
+      "side": 1,
+      "message": "Seems to work.\n\nPlease give some thought to https://b.corp.google.com/issues/260531154#comment32 though. `futility gbb --get --flash --flags` is quite a mouthful. Why can\u0027t it just be `futility gbb`? If the new command is shorter it might make this transition more welcome.",
+      "revId": "72c3a25b75323f81cba7b4faf60e50b8e101f318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
