@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e00b76d_67c01a90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-15T04:14:45Z",
+      "side": 1,
+      "message": "TBH I think the long-term solution is to make flashctx (which contains the FMAP layout) persistent in the lifetime of futility. However, that would require redesigning the flashrom_drv.c API, and seems to have too much work to do atm.",
+      "revId": "b9552b4479a9f659f32b179c56587c1de5cc06eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
