@@ -123,6 +123,24 @@
       "parentUuid": "bbebd41d_668a75c6",
       "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff99c6a_30210e79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-16T23:11:04Z",
+      "side": 1,
+      "message": "A year is definitely too long, inductively that logically means why not indefinitely.\n\nThe main problem I have is not specifically just this script but more a broader lens to the overall space of scripts littered everywhere with inconsistent interfaces and behaviors (hiding failures with zero exit codes and regex to match strings as part of the ABI because subprocess/weak couplings).\n\nBroadly speaking, given some time frame t_future how can we ensure the condition that things would have progress to end of line at t_future is indeed still true^[0]. In all likelihood we will just end up with - old thing with quirk from some emergent property vs new supported thing without quirk. Now if this was just one or two scripts that is manageable however the plethora of scripts sweeping though ChromeOS causes real issues.\n\nWe should probably all meet to discuss a real strategy everyone is happy with to turn off the tap fully on old thing fully to afford us the simple, well documented, well defined and maintainable stack.\n\n[0] - evidence to reject this hypothesis https://crrev.com/c/4206509",
+      "parentUuid": "49375a83_664819d0",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
