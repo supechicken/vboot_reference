@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6255d8bd_c817e641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:43:53Z",
+      "side": 1,
+      "message": "TlclReadPublic",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c54f66f_12331242",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:43:53Z",
+      "side": 1,
+      "message": "Add\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b14df2_679c4d63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:43:53Z",
+      "side": 1,
+      "message": "If the goal is the pass the public key to ATF (from coreboot), why do we need this in vboot, in addition to CB:71885? Where will `TlclReadPublic` be called?",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5507704b_c9e01a73",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:43:53Z",
+      "side": 1,
+      "message": "This word could be moved to the previous line.",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 270,
+        "endChar": 7
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8fff6d1_07eca195",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:43:53Z",
+      "side": 1,
+      "message": "Align",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9347b662_4fa719e8",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:43:53Z",
+      "side": 1,
+      "message": "Is this considered an error? If so, do we need to set `*buffer \u003d NULL` for the caller to check?",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4002025_68b49711",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:43:53Z",
+      "side": 1,
+      "message": "/* ... */",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 3
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
