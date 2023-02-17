@@ -39,6 +39,48 @@
       },
       "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4226f14_d8676a7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:29:07Z",
+      "side": 1,
+      "message": "hmmm, I copied the file directly from the original repo.\nBecause we will need to use the PRNG \u0026 ECDSA part, the sha256 would be necessary.\nIt\u0027s possible to replace the usage of the SHA256_init with vb2_sha256_init, but I would prefer to do that in the other CL.",
+      "parentUuid": "69ffe23a_077ea2f7",
+      "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a18044a_a7a9d732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab60efa0_be17bd7e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
