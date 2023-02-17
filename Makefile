@@ -368,6 +368,13 @@ FWLIB_SRCS = \
 	firmware/2lib/2struct.c \
 	firmware/2lib/2stub_hwcrypto.c \
 	firmware/2lib/2tpm_bootmode.c \
+	firmware/2lib/cryptoc/hmac.c \
+	firmware/2lib/cryptoc/p256.c \
+	firmware/2lib/cryptoc/p256_ec.c \
+	firmware/2lib/cryptoc/p256_ecdsa.c \
+	firmware/2lib/cryptoc/p256_prng.c \
+	firmware/2lib/cryptoc/sha256.c \
+	firmware/2lib/cryptoc/util.c \
 	firmware/lib/cgptlib/cgptlib.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
