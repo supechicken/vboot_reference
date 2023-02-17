@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ffe23a_077ea2f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:59:20Z",
+      "side": 1,
+      "message": "Before copying a large amount of code from another repo, I\u0027d like to understand what functionality is actually needed for ChromeOS firmware. Some imported code (`SHA256_init`) looks like a duplicate of existing code (`vb2_sha256_init` in firmware/2lib/2sha256.c). Can we try to add minimal code only?",
+      "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab60efa0_be17bd7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T07:59:20Z",
+      "side": 1,
+      "message": "Import",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
