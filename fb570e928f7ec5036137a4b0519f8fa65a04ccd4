@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01dd8a16_18f8fd9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6255d8bd_c817e641",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c54f66f_12331242",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-17T07:43:53Z",
       "side": 1,
       "message": "Add\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8198e721_bd167d13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c54f66f_12331242",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d46362aa_0d865bca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:23:18Z",
+      "side": 1,
+      "message": "I\u0027m trying to move the code from coreboot to depthcharge.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/4223852",
+      "parentUuid": "d2b14df2_679c4d63",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5507704b_c9e01a73",
         "filename": "firmware/include/tlcl.h",
         "patchSetId": 3
@@ -77,6 +143,30 @@
       "writtenOn": "2023-02-17T07:43:53Z",
       "side": 1,
       "message": "This word could be moved to the previous line.",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 270,
+        "endChar": 7
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3d4be2_1b776d7d",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5507704b_c9e01a73",
       "range": {
         "startLine": 270,
         "startChar": 3,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd752e8_3a4cbadf",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8fff6d1_07eca195",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9347b662_4fa719e8",
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2637edc2_0f0ee17a",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9347b662_4fa719e8",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4002025_68b49711",
@@ -134,6 +260,30 @@
       "writtenOn": "2023-02-17T07:43:53Z",
       "side": 1,
       "message": "/* ... */",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 3
+      },
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4314a73b_95897430",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T08:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4002025_68b49711",
       "range": {
         "startLine": 183,
         "startChar": 1,
