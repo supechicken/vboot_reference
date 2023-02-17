@@ -81,6 +81,24 @@
       },
       "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47c8f540_fa12eefb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-17T10:28:25Z",
+      "side": 1,
+      "message": "Okay, I think we need to continue the discussion \"What\u0027s the best way to do crypto in firmware(AP \u0026 EC)?\" here. There are a few options (sorted by the level of divergence of the vboot code from the crypto repo):\n\n1. Link with crypto lib. No code change (except API wrappers) in vboot_reference. A compile time flag needs to be created, so that vboot can still build outside chromium. This is similar to what we did for flashrom.\n2. Copy the files to vboot_reference with minimal modification (like this CL is doing).\n3. Copy only the files with new features (for example excluding `SHA256_init`). These files have to be adapted to vboot APIs.\n4. Copy only the part of the code that is actually needed in our use case. For example, remove `p256_base_point_mul` if it isn\u0027t used in coreboot and depthcharge.\n5. Change coding style to conform to existing code.\n\nPersonally I\u0027d prefer option #3, perhaps with #5 as well.\n\n\u003e Because we will need to use the PRNG \u0026 ECDSA part, the sha256 would be necessary.\n\nAgain, I\u0027d like to know what exact APIs will be used in coreboot/depthcharge.",
+      "parentUuid": "e4226f14_d8676a7f",
+      "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
