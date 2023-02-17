@@ -150,6 +150,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f300f281_f518f3a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T09:37:35Z",
+      "side": 1,
+      "message": "I think the SMC call should work.\nWe will use the SMC call to pass the data into ATF.",
+      "parentUuid": "29634a91_855fa558",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5507704b_c9e01a73",
         "filename": "firmware/include/tlcl.h",
         "patchSetId": 3
@@ -279,6 +297,24 @@
       "side": 1,
       "message": "Shouldn\u0027t we set `*size \u003d -1` similar to `unmarshal_u8()`? So that the caller will return immediately.",
       "parentUuid": "2637edc2_0f0ee17a",
+      "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2c8ae6_8717f9bf",
+        "filename": "firmware/lib/tpm2_lite/marshaling.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T09:37:35Z",
+      "side": 1,
+      "message": "Oh, make sense.\nDone",
+      "parentUuid": "cab57b4c_9ca68a29",
       "revId": "fb570e928f7ec5036137a4b0519f8fa65a04ccd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
