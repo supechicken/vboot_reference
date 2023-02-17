@@ -30,6 +30,8 @@
 #include "2return_codes.h"
 #include "2rsa.h"
 #include "2secdata_struct.h"
+#include "cryptoc/p256.h"
+#include "cryptoc/p256_ecdsa.h"
 
 #define _VB2_TRY_IMPL(expr, ctx, recovery_reason, ...) do { \
 	vb2_error_t _vb2_try_rv = (expr); \
