@@ -99,6 +99,24 @@
       "parentUuid": "e4226f14_d8676a7f",
       "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bca7a7e_48cae0a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-02-17T10:45:00Z",
+      "side": 1,
+      "message": "For the KDF part, I think we will need `p256_prng_init`, `p256_prng_draw`, `p256_base_point_mul`.\n(We will use the prng the generate the ECC private key, and use `p256_base_point_mul` to get the public key from the private key.)\n(It\u0027s possible the replace the prng with the other KDF function(e.g. simple HMAC). But we will still need the `p256_base_point_mul`.)\n\nFor the ECDSA part, we only need the `p256_ecdsa_sign`, it\u0027s possible to remove some unused functions.\n\ngo/widevine-l1-rot-arm",
+      "parentUuid": "47c8f540_fa12eefb",
+      "revId": "24514c3311af0cbbdf791364ca1114dca9c72c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
