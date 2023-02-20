@@ -63,6 +63,7 @@ static void print_help(int argc, char *argv[])
 		" -k, --rootkey=FILE  \tFile name of new Root Key.\n"
 		" -b, --bmpfv=FILE    \tFile name of new Bitmap FV.\n"
 		" -r  --recoverykey=FILE\tFile name of new Recovery Key.\n"
+		" -p, --preserve-flags \tPreserve the current flags and OR new ones.\n"
 		"\n"
 		"CREATE MODE:\n"
 		"-c, --create=hwid_size,rootkey_size,bmpfv_size,"
@@ -104,6 +105,7 @@ static struct option long_opts[] = {
 	/* name  has_arg *flag val */
 	{"get", 0, NULL, 'g'},
 	{"set", 0, NULL, 's'},
+	{"preserve-flags", 0, NULL, 'p'},
 	{"create", 1, NULL, 'c'},
 	{"output", 1, NULL, 'o'},
 	{"rootkey", 1, NULL, 'k'},
@@ -465,6 +467,7 @@ static int do_gbb(int argc, char *argv[])
 	int sel_hwid = 0;
 	int sel_digest = 0;
 	int sel_flags = 0;
+	bool preserve_flags = false;
 	int explicit_flags = 0;
 	uint8_t *inbuf = NULL;
 	off_t filesize;
@@ -500,6 +503,9 @@ static int do_gbb(int argc, char *argv[])
 			break;
 		case 'o':
 			outfile = optarg;
+			break;
+		case 'p':
+			preserve_flags = true;
 			break;
 		case 'k':
 			opt_rootkey = optarg;
@@ -766,7 +772,7 @@ static int do_gbb(int argc, char *argv[])
 				errorcnt++;
 				break;
 			}
-			gbb->flags = val;
+			gbb->flags = !preserve_flags ? val : (gbb->flags | val);
 		}
 
 		if (opt_rootkey) {
