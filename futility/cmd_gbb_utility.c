@@ -451,6 +451,29 @@ static int write_to_flash(struct updater_config *cfg, uint8_t *outbuf,
 #endif /* USE_FLASHROM */
 }
 
+static int parse_flag_value(const char *s, int *sign)
+{
+	if (!strlen(s))
+		return -1;
+
+	if (s[0] == '+')
+		*sign = 1;
+	else if (s[0] == '-')
+		*sign = 2;
+	else
+		*sign = 0;
+
+	const char *ss = !*sign ? s : &s[1];
+	char *e = NULL;
+	const uint32_t val = strtoul(ss, &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "ERROR: invalid flags value: %s\n", ss);
+		return -1;
+	}
+
+	return val;
+}
+
 static int do_gbb(int argc, char *argv[])
 {
 	enum do_what_now { DO_GET, DO_SET, DO_CREATE } mode = DO_GET;
@@ -756,17 +779,17 @@ static int do_gbb(int argc, char *argv[])
 		}
 
 		if (opt_flags) {
-			char *e = NULL;
-			uint32_t val;
-			val = (uint32_t) strtoul(opt_flags, &e, 0);
-			if (e && *e) {
-				fprintf(stderr,
-					"ERROR: invalid flags value: %s\n",
-					opt_flags);
+			int flag_sign;
+			const int val = parse_flag_value(opt_flags, &flag_sign);
+			if (val < 0) {
 				errorcnt++;
 				break;
 			}
-			gbb->flags = val;
+			if (flag_sign > 0)
+				/* flag_sign := 1 => +ve and flag_sign := 2 => -ve. */
+				gbb->flags = flag_sign == 1 ? (gbb->flags | val) : (gbb->flags ^ val);
+			else
+				gbb->flags = val;
 		}
 
 		if (opt_rootkey) {
