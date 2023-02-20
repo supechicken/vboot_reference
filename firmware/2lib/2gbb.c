@@ -193,6 +193,10 @@ vb2_error_t vb2_get_gbb_flag_description(enum vb2_gbb_flag flag,
 		*name = "VB2_GBB_FLAG_ENABLE_UDC";
 		*description = "Enable USB Device Controller.";
 		break;
+	case VB2_GBB_FLAG_ENABLE_CLI:
+		*name = "VB2_GBB_FLAG_ENABLE_CLI";
+		*description = "Enable command-line interpreter (CLI).";
+		break;
 	default:
 		*name = NULL;
 		*description = NULL;
