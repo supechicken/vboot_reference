@@ -51,6 +51,24 @@
       "parentUuid": "8f3dff19_e78349b6",
       "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c29cedc_8da653e0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-21T19:41:03Z",
+      "side": 1,
+      "message": "use `image_type` to determine which (extra) slots to sign if they exist",
+      "parentUuid": "46b4bf21_2da5f334",
+      "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
