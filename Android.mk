@@ -121,6 +121,7 @@ FUTIL_STATIC_SRCS = \
 	futility/futility.c \
 	futility/cmd_dump_fmap.c \
 	futility/cmd_gbb_utility.c \
+	futility/cmd_flash_utility.c \
 	futility/misc.c
 
 FUTIL_SRCS = \
