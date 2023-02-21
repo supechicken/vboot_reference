@@ -69,6 +69,24 @@
       "parentUuid": "46b4bf21_2da5f334",
       "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c916afd4_c3ab194b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-02-21T19:52:05Z",
+      "side": 1,
+      "message": "\u003e Should we stick with the current logic for factory shims - if installer_kernel.v1.keyblock is present sign KERN-B with it, otherwise don\u0027t sign KERN-B?\n\nYeah, that sounds right, I think. It looks like currently, `factory_install` KERN-B is signed with the normal kernel.keyblock (same as `recovery`) but we\u0027re not actually using it for anything, right? So I guess just pass installer_kernel.v1.keyblock there instead and change sign_image_file() so that kernB_keyblock may also be optional (at least for `factory_install`).",
+      "parentUuid": "6c29cedc_8da653e0",
+      "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
