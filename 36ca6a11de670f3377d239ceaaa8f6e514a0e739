@@ -33,6 +33,24 @@
       "message": "30s is too long IMO. How about 10s?\n\nCan we also add another message to inform the user about the delay:\n\n```\necho \u0027NOTICE: Waiting for 10 seconds before proceeding...\u0027 1\u003e\u00262\n```",
       "revId": "36ca6a11de670f3377d239ceaaa8f6e514a0e739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c5617a_14c41c84",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-21T10:53:04Z",
+      "side": 1,
+      "message": "10s is too short. The aim is for people to actually read the notice and not use the script not just ignore it.",
+      "parentUuid": "3778607f_bcd6d20b",
+      "revId": "36ca6a11de670f3377d239ceaaa8f6e514a0e739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
