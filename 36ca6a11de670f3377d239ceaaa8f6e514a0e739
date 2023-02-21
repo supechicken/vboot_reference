@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9968df_9db7f651",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-21T09:49:09Z",
+      "side": 1,
+      "message": "nit: Please reflow the text to 72 chars per line.",
+      "revId": "36ca6a11de670f3377d239ceaaa8f6e514a0e739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3778607f_bcd6d20b",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-21T09:49:09Z",
+      "side": 1,
+      "message": "30s is too long IMO. How about 10s?\n\nCan we also add another message to inform the user about the delay:\n\n```\necho \u0027NOTICE: Waiting for 10 seconds before proceeding...\u0027 1\u003e\u00262\n```",
+      "revId": "36ca6a11de670f3377d239ceaaa8f6e514a0e739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
