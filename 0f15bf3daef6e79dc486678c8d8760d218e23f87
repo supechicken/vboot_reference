@@ -33,6 +33,24 @@
       "message": "we shouldn\u0027t have a kernel C on these devices.  it seems like we should let it fail with missing key so we know there\u0027s a desync between what we\u0027re expecting: the build has added the kernel, but it isn\u0027t signed.",
       "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b4bf21_2da5f334",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-02-21T00:54:25Z",
+      "side": 1,
+      "message": "Yeah I wrote this assuming we were adding KERN-C on every device. Since we\u0027re not, I agree this makes sense and I\u0027ll change it.\n\nBut what about factory shims? KERN-B is already present now, so we can\u0027t use its presence as an indicator. And Stimim said the plan is to make the factory shim changes for all devices anyway.\n\nShould we stick with the current logic for factory shims - if installer_kernel.v1.keyblock is present sign KERN-B with it, otherwise don\u0027t sign KERN-B?",
+      "parentUuid": "8f3dff19_e78349b6",
+      "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
