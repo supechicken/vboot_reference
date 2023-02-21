@@ -13,6 +13,7 @@
 
 /* FMAP section names. */
 static const char * const FMAP_RO_FMAP = "FMAP",
+		  * const FMAP_WP_RO = "WP_RO",
 		  * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_RO_SECTION = "RO_SECTION",
 		  * const FMAP_RO_CBFS = "COREBOOT",
