@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4571ff_58449757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-22T01:04:40Z",
+      "side": 1,
+      "message": "Before you start counting for deprecation, we should first eliminate all reference to the two commands. Even if we ignore the documents, I\u0027m still seeing (from cs/):\n\n- src/platform/factory/py/tools/goofy_ghost/goofy_ghost.json\n- src/platform/dev/contrib/lium/src/dut.rs\n- src/third_party/autotest/files/site_utils/deployment/prepare/dut.py\n\n- src/platform/moblab/third_party/autotest/server/hosts/cros_repair.py\n- src/third_party/labpack/files/server/site_tests/platform_ExternalUSBBootStress/platform_ExternalUSBBootStress.py\n- infra/autotest-drone/server/hosts/cros_repair.py\n- lots of factory-board test list items",
+      "revId": "89e3285ade11a2e0d1ba9c9d628790cca259c29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
