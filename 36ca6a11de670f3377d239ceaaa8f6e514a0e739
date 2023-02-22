@@ -69,6 +69,24 @@
       "parentUuid": "3778607f_bcd6d20b",
       "revId": "36ca6a11de670f3377d239ceaaa8f6e514a0e739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233a3062_5c7d7a68",
+        "filename": "scripts/image_signing/get_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-22T01:00:18Z",
+      "side": 1,
+      "message": "then you should print some message to tell the user that what they saw (hang for 30s) is expected.",
+      "parentUuid": "45c5617a_14c41c84",
+      "revId": "36ca6a11de670f3377d239ceaaa8f6e514a0e739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
