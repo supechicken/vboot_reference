@@ -16,6 +16,24 @@
       "message": "Before you start counting for deprecation, we should first eliminate all reference to the two commands. Even if we ignore the documents, I\u0027m still seeing (from cs/):\n\n- src/platform/factory/py/tools/goofy_ghost/goofy_ghost.json\n- src/platform/dev/contrib/lium/src/dut.rs\n- src/third_party/autotest/files/site_utils/deployment/prepare/dut.py\n\n- src/platform/moblab/third_party/autotest/server/hosts/cros_repair.py\n- src/third_party/labpack/files/server/site_tests/platform_ExternalUSBBootStress/platform_ExternalUSBBootStress.py\n- infra/autotest-drone/server/hosts/cros_repair.py\n- lots of factory-board test list items",
       "revId": "89e3285ade11a2e0d1ba9c9d628790cca259c29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd1d385c_0659abdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-22T11:39:11Z",
+      "side": 1,
+      "message": "Lots of those items either have pending commits in the topic, call the script only binary form for older images so don\u0027t apply to ToT or sit in their own branches.\n\nThe point here is to line things up and move towards the goal of deprecation but actually reach deprecation which seems to be very novel at Google where everything is left bit rotting at the last 5%tile.",
+      "parentUuid": "4c4571ff_58449757",
+      "revId": "89e3285ade11a2e0d1ba9c9d628790cca259c29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
