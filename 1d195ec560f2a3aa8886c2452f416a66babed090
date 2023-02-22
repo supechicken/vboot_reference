@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a817a36b_0f44562e",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-22T05:59:55Z",
+      "side": 1,
+      "message": "Update the usage here.",
+      "revId": "1d195ec560f2a3aa8886c2452f416a66babed090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d04365f_c68387c8",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-02-22T05:59:55Z",
+      "side": 1,
+      "message": "`int` can\u0027t hold all possible values of `vb2_gbb_flags_t` (which is `uint32_t`). I\u0027d suggest we change the return type to `vb2_gbb_flags_t`, and set `*sign \u003d -1` to indicate failure.",
+      "range": {
+        "startLine": 454,
+        "startChar": 7,
+        "endLine": 454,
+        "endChar": 10
+      },
+      "revId": "1d195ec560f2a3aa8886c2452f416a66babed090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97bb0adb_aab902a4",
         "filename": "futility/cmd_gbb_utility.c",
         "patchSetId": 5
