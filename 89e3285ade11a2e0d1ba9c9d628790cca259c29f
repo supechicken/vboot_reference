@@ -52,6 +52,24 @@
       "parentUuid": "cd1d385c_0659abdc",
       "revId": "89e3285ade11a2e0d1ba9c9d628790cca259c29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dad4348_fc96df73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-22T11:49:08Z",
+      "side": 1,
+      "message": "\u003e Even if we ignore the documents, I\u0027m still seeing (from cs/):\n\nJust to confirm that you are actually check the doc file? Because I updated them in many places with:\n```\n#### Builds before 15306.0.0 (M110 \u003c\u003d):\n\n`sudo /usr/share/vboot/bin/set_gbb_flags.sh 0x11`\n\n#### Build 15306.0.0 (\u003e\u003d M111) and later:\n\n`sudo futility gbb --set --flash --flags\u003d0x11`\n```\n\nand cs/ may just be showing the one-liner bring you to a false conclusion.",
+      "parentUuid": "b1aad46d_ce2d8523",
+      "revId": "89e3285ade11a2e0d1ba9c9d628790cca259c29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
