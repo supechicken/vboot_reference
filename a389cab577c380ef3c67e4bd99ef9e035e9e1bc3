@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e017b25f_bfb542ca",
+        "filename": "futility/cmd_wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-22T11:32:25Z",
+      "side": 1,
+      "message": "what you want to do is:\n\n - read fmap,\n - match names with `_RO` or `_RW` in each region name,\n - annotate the fmap structure so that each region name with range has the prot bit\n - write a function that queries this fmap\u0027 data with a mode, range \u0026 expected.\n \n Related b/270216098",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "a389cab577c380ef3c67e4bd99ef9e035e9e1bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
