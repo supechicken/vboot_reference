@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377d7980_b3cfc933",
+        "filename": "futility/cmd_wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-02-22T03:40:46Z",
+      "side": 1,
+      "message": "I haven\u0027t worked out the details of this yet, but the idea is that correctly configured WP (protection range exactly matches RO) will be easy to identify. Additional region-by-region protection info for \"misconfigured\" cases might be useful but I\u0027m not sure yet.",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "344e09ac6a67fe8339f78cc99a277d08a5f628ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
