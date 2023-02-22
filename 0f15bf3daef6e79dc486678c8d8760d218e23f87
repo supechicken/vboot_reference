@@ -105,6 +105,24 @@
       "parentUuid": "c916afd4_c3ab194b",
       "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767605bd_63d46f7d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1521968
+      },
+      "writtenOn": "2023-02-22T05:51:38Z",
+      "side": 1,
+      "message": "Current plan is to add another kernel in partition 6 for `factory_install`.\nBut since we won\u0027t add KERN-C on every device, we might modify disk_layout.json in private-overlay instead of `build_library/disk_layout_v3.json`",
+      "parentUuid": "bed3fd7f_2cdd5751",
+      "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
