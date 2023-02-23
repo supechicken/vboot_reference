@@ -123,6 +123,24 @@
       "parentUuid": "bed3fd7f_2cdd5751",
       "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a8229b1_30124bfc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-02-23T23:26:28Z",
+      "side": 1,
+      "message": "\u003e we shouldn\u0027t have a kernel C on these devices. it seems like we should let it fail with missing key so we know there\u0027s a desync between what we\u0027re expecting: the build has added the kernel, but it isn\u0027t signed.\n\nFrom https://chromium-review.googlesource.com/c/chromiumos/overlays/board-overlays/+/4252300/comments/9ae52c80_9741d0ef, if we fail when KERN-C is present but recovery_kernel.v1.keyblock is missing, it will be hard to roll out the changes. So I\u0027ve left it as is - if the key is missing, we just don\u0027t sign KERN-C.\n\nFor factory, I\u0027ve changed it to sign KERN-B if installer_kernel.v1.keyblock is present, otherwise don\u0027t sign KERN-B.",
+      "parentUuid": "767605bd_63d46f7d",
+      "revId": "0f15bf3daef6e79dc486678c8d8760d218e23f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
