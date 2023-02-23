@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "361f3582_8c31a2e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-23T10:41:50Z",
+      "side": 1,
+      "message": "btw, after thinking. I think we should call this subcommand `flash` as we probably should provide the `--flash-size` and `--flash-name` primitives too.\n\nIdeally the subcommand wraps the spi flash internal state machine where wp just so happens to make up the majority of that.",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "a389cab577c380ef3c67e4bd99ef9e035e9e1bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e017b25f_bfb542ca",
         "filename": "futility/cmd_wp.c",
         "patchSetId": 3
