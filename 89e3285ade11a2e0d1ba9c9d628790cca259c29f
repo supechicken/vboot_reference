@@ -70,6 +70,24 @@
       "parentUuid": "b1aad46d_ce2d8523",
       "revId": "89e3285ade11a2e0d1ba9c9d628790cca259c29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b149c695_e162c41f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-02-24T01:00:15Z",
+      "side": 1,
+      "message": "\u003e Just to confirm that you are actually check the doc file?\n\nYes, I\u0027m referring to \n- src/platform/ish/README.md\n- src/platform/release-firmware/fpmcu-nocturne/README.md\n- src/platform/release-firmware/fpmcu-nami/README.md\n- src/platform/release-firmware/fpmcu-bloonchipper/README.md\n\nProbably fine to ignore the fpmcu-* repos because they are in a stabilized/frozen state? Not sure about ish - if we can confirm it\u0027s not an active repo then I think the doc changes are all done. Thanks!",
+      "parentUuid": "4dad4348_fc96df73",
+      "revId": "89e3285ade11a2e0d1ba9c9d628790cca259c29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
