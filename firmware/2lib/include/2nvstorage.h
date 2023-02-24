@@ -127,6 +127,8 @@ enum vb2_nv_param {
 	VB2_NV_DIAG_REQUEST,
 	/* Priority of miniOS partition to load: 0=MINIOS-A, 1=MINIOS-B. */
 	VB2_NV_MINIOS_PRIORITY,
+	/* Feature level the device is allowed to used. */
+	VB2_NV_FEATURE_LEVEL,
 };
 
 /*

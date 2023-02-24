@@ -510,6 +510,8 @@ int VbGetSystemPropertyInt(const char *name)
 		}
 	} else if (!strcasecmp(name, "post_ec_sync_delay")) {
 		value = vb2_get_nv_storage(VB2_NV_POST_EC_SYNC_DELAY);
+	} else if (!strcasecmp(name, "feature_level")) {
+		value = vb2_get_nv_storage(VB2_NV_FEATURE_LEVEL);
 	}
 
 	return value;
@@ -572,6 +574,8 @@ const char *VbGetSystemPropertyString(const char *name, char *dest, size_t size)
 		else
 			return "unknown";
 	} else if (!strcasecmp(name, "minios_priority")) {
+		return vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY) ? "B" : "A";
+	} else if (!strcasecmp(name, "feature_level")) {
 		return vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY) ? "B" : "A";
 	}
 
@@ -690,6 +694,8 @@ static int VbSetSystemPropertyIntInternal(const char *name, int value)
 		return vb2_set_nv_storage(VB2_NV_KERNEL_MAX_ROLLFORWARD, value);
 	} else if (!strcasecmp(name, "post_ec_sync_delay")) {
 		return vb2_set_nv_storage(VB2_NV_POST_EC_SYNC_DELAY, value);
+	} else if (!strcasecmp(name, "feature_level")) {
+		return vb2_set_nv_storage(VB2_NV_FEATURE_LEVEL, value);
 	}
 
 	return -1;

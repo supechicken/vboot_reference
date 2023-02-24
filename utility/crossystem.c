@@ -53,6 +53,7 @@ const Param sys_param_list[] = {
   {"ecfw_act", IS_STRING, "Active EC firmware"},
   {"post_ec_sync_delay", CAN_WRITE,
    "Short delay after EC software sync (persistent, writable, eve only)"},
+  {"feature_level", CAN_WRITE, "Feature set allowed on this device"},
   {"fw_prev_result", IS_STRING, "Firmware result of previous boot"},
   {"fw_prev_tried", IS_STRING, "Firmware tried on previous boot (A or B)"},
   {"fw_result", IS_STRING|CAN_WRITE, "Firmware result this boot"},
