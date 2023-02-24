@@ -70,6 +70,24 @@
       "parentUuid": "4269013c_1cd83ee6",
       "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915d605d_5ec68256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-02-24T10:57:18Z",
+      "side": 1,
+      "message": "Yu-Ping, the CQ failure is definitely related to this commit.\n\nThe test seems invalid, the \\0 termination is a reserved byte since it is a C string encoding in that field.",
+      "parentUuid": "7c62db56_62c69d80",
+      "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
