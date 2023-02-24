@@ -343,6 +343,8 @@ sign_android_internal() {
   # Use the versions in $PATH rather than the system ones.
   local unsquashfs=$(which unsquashfs)
   local mksquashfs=$(which mksquashfs)
+  local mkfs_erofs=$(which mkfs.erofs)
+  local fsck_erofs=$(which fsck.erofs)
 
   if [[ $# -ne 2 ]]; then
     flags_help
@@ -352,20 +354,30 @@ sign_android_internal() {
   if [[ ! -f "${system_img}" ]]; then
     die "System image does not exist: ${system_img}"
   fi
-
-  # NOTE: Keep compression_flags aligned with
-  # src/private-overlays/project-cheets-private/scripts/board_specific_setup.sh
+  
+  local image_type=""
   local compression_flags=""
-  local compression=$(sudo "${unsquashfs}" -s "${system_img}" \
-    | grep -e ^"Compression\s")
-  if [[ "${compression}" == "Compression gzip" ]]; then
-    compression_flags="-comp gzip"
-  elif [[ "${compression}" == "Compression lz4" ]]; then
-    compression_flags="-comp lz4 -Xhc -b 256K"
-  elif [[ "${compression}" == "Compression zstd" ]]; then
-    compression_flags="-comp zstd -b 256K"
+
+  # Check the magic number of erofs placed at the 1024 byte.
+  # https://elixir.bootlin.com/linux/latest/source/fs/erofs/erofs_fs.h#L53
+  local magic_number=$(hexdump -s 1024 -n 4 "${system_img}")
+  if [[ "$magic_number" =~ ^0000400[[:space:]]e1e2[[:space:]]e0f5.* ]]; then
+    image_type="erofs"
   else
-    die "Unexpected compression type: ${compression}"
+    image_type="squashfs"
+    # NOTE: Keep compression_flags aligned with
+    # src/private-overlays/project-cheets-private/scripts/board_specific_setup.sh
+    local compression=$(sudo "${unsquashfs}" -s "${system_img}" \
+      | grep -e ^"Compression\s")
+    if [[ "${compression}" == "Compression gzip" ]]; then
+      compression_flags="-comp gzip"
+    elif [[ "${compression}" == "Compression lz4" ]]; then
+      compression_flags="-comp lz4 -Xhc -b 256K"
+    elif [[ "${compression}" == "Compression zstd" ]]; then
+      compression_flags="-comp zstd -b 256K"
+    else
+      die "Unexpected compression type: ${compression}"
+    fi
   fi
 
   if ! type -P zipalign &>/dev/null || ! type -P signapk &>/dev/null \
@@ -380,19 +392,25 @@ sign_android_internal() {
   local system_mnt="${working_dir}/mnt"
   local system_capabilities_orig="${working_dir}/capabilities.orig"
 
-  # Extract with xattrs so we can read and audit capabilities. See b/179170462.
-  info "Unpacking squashfs system image with xattrs to ${system_mnt}"
-  sudo "${unsquashfs}" -x -f -no-progress -d "${system_mnt}" "${system_img}"
-  snapshot_capabilities "${system_mnt}" > "${system_capabilities_orig}"
-  sudo rm -rf "${system_mnt}"
+  if [[ "${image_type}" == "erofs" ]]; then
+    info "Unpacking erofs system image to ${system_mnt}"
+    sudo "${fsck_erofs}" "--extract=${system_mnt}" "${system_img}"
+  else
+    # Extract with xattrs so we can read and audit capabilities. See b/179170462.
+    info "Unpacking squashfs system image with xattrs to ${system_mnt}"
+    sudo "${unsquashfs}" -x -f -no-progress -d "${system_mnt}" "${system_img}"
+    snapshot_capabilities "${system_mnt}" > "${system_capabilities_orig}"
+    sudo rm -rf "${system_mnt}"
 
-  info "Unpacking squashfs system image without xattrs to ${system_mnt}"
-  list_image_files "${unsquashfs}" "${system_img}" > \
-      "${working_dir}/image_file_list.orig"
-  sudo "${unsquashfs}" -no-xattrs -f -no-progress -d "${system_mnt}" "${system_img}"
+    info "Unpacking squashfs system image without xattrs to ${system_mnt}"
+    list_image_files "${unsquashfs}" "${system_img}" > \
+        "${working_dir}/image_file_list.orig"
+    sudo "${unsquashfs}" -no-xattrs -f -no-progress -d "${system_mnt}" "${system_img}"
+  fi
 
   snapshot_file_properties "${system_mnt}" > "${working_dir}/properties.orig"
 
+ if [[ "${image_type}" == "squashfs" ]]; then  # niwa-debug DO NOT SUBMIT
   if ! sign_framework_apks "${system_mnt}" "${key_dir}" "${working_dir}"; then
     return 1
   fi
@@ -401,6 +419,7 @@ sign_android_internal() {
                                      "sign_framework_apks"; then
     return 1
   fi
+ fi
 
   update_sepolicy "${system_mnt}" "${key_dir}"
   if ! image_content_integrity_check "${system_mnt}" "${working_dir}" \
@@ -426,12 +445,19 @@ sign_android_internal() {
       local vendor_mnt=$(make_temp_dir)
       local vendor_img="${android_dir}/vendor.raw.img"
       local jar_lib="lib/arc-cache-builder/org.chromium.arc.cachebuilder.jar"
-      info "Unpacking squashfs vendor image to ${vendor_mnt}/vendor"
-      # Vendor image is not updated during this step. However we have to include
-      # vendor apks to re-generated packages cache which exists in one file for
-      # both system and vendor images.
-      sudo "${unsquashfs}" -x -f -no-progress -d "${vendor_mnt}/vendor" \
-          "${vendor_img}"
+
+      if [[ "${image_type}" == "erofs" ]]; then
+        info "Unpacking erofs vendor image to ${vendor_mnt}/vendor"
+        sudo "${fsck_erofs}" "--extract=${vendor_mnt}/vendor" "${vendor_img}"
+      else
+        info "Unpacking squashfs vendor image to ${vendor_mnt}/vendor"
+        # Vendor image is not updated during this step. However we have to include
+        # vendor apks to re-generated packages cache which exists in one file for
+        # both system and vendor images.
+        sudo "${unsquashfs}" -x -f -no-progress -d "${vendor_mnt}/vendor" \
+            "${vendor_img}"
+      fi
+
       if ! arc_generate_packages_cache "${system_mnt}" "${vendor_mnt}" \
           "${working_dir}/packages_cache.xml" \
           "${working_dir}/file_hash_cache"; then
@@ -456,33 +482,44 @@ sign_android_internal() {
     info "Packages cache ${packages_cache} does not exist. Skip regeneration."
   fi
 
-  # Apply original capabilities to system image and verify correctness.
-  if ! apply_capabilities "${system_mnt}" "${system_capabilities_orig}"; then
-    return 1
-  fi
-  if ! capabilities_integrity_check "${system_mnt}" "${working_dir}"; then
-    return 1
+  if [[ "${image_type}" == "squashfs" ]]; then
+    # Apply original capabilities to system image and verify correctness.
+    if ! apply_capabilities "${system_mnt}" "${system_capabilities_orig}"; then
+      return 1
+    fi
+    if ! capabilities_integrity_check "${system_mnt}" "${working_dir}"; then
+      return 1
+    fi
   fi
 
-  info "Repacking squashfs image with compression flags '${compression_flags}'"
+  
   local old_size=$(stat -c '%s' "${system_img}")
   # Remove old system image to prevent mksquashfs tries to merge both images.
   sudo rm -rf "${system_img}"
-  sudo mksquashfs "${system_mnt}" "${system_img}" \
-    ${compression_flags} -context-file "${file_contexts}" -mount-point "/" \
-    -no-progress
+  
+  if [[ "${image_type}" == "erofs" ]]; then
+    info "Repacking erofs image"
+    sudo "${mkfs_erofs}" "-z" "lz4hc" "-C262144" \
+      "--file-contexts" "${file_contexts}" "--mount-point" "/" \
+      "${system_img}" "${system_mnt}"
+  else
+    info "Repacking squashfs image with compression flags '${compression_flags}'"
+    sudo mksquashfs "${system_mnt}" "${system_img}" \
+      ${compression_flags} -context-file "${file_contexts}" -mount-point "/" \
+      -no-progress
+    list_image_files "${unsquashfs}" "${system_img}" > \
+      "${working_dir}/image_file_list.new"
+    if d=$(grep -v -F -x -f "${working_dir}"/image_file_list.{new,orig}); then
+      # If we have a line in image_file_list.orig which does not appear in
+      # image_file_list.new, it means some files are removed during signing
+      # process. Here we have already deleted the original Android image so
+      # cannot retry.
+      die "Unexpected change of file list\n${d}"
+    fi
+  fi
+
   local new_size=$(stat -c '%s' "${system_img}")
   info "Android system image size change: ${old_size} -> ${new_size}"
-
-  list_image_files "${unsquashfs}" "${system_img}" > \
-      "${working_dir}/image_file_list.new"
-  if d=$(grep -v -F -x -f "${working_dir}"/image_file_list.{new,orig}); then
-    # If we have a line in image_file_list.orig which does not appear in
-    # image_file_list.new, it means some files are removed during signing
-    # process. Here we have already deleted the original Android image so
-    # cannot retry.
-    die "Unexpected change of file list\n${d}"
-  fi
 
   return 0
 }
