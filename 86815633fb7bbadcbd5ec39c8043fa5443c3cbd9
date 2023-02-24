@@ -52,6 +52,24 @@
       "parentUuid": "b24011c7_f459e525",
       "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c62db56_62c69d80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-02-24T01:44:39Z",
+      "side": 1,
+      "message": "Actually it could be this too\n```\nERROR: write_to_flash: You must disable write protection before setting flags.\n```\n\nI\u0027ll still fix hwid buf size but also look into this further",
+      "parentUuid": "4269013c_1cd83ee6",
+      "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
