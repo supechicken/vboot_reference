@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cfb590_437570f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-02-24T07:49:58Z",
+      "side": 1,
+      "message": "This is failing in the case of a factory shim with both KERN-A and KERN-B (built using Chih-Yao\u0027s changes). KERN-A works, but KERN-B fails to boot with a dm-verity failure.\n\nIt\u0027s because update_rootfs_hash() only calculates the hash for ROOT-A. I guess we need to change it so that for factory shims it calculates hashes for both ROOT-A and ROOT-B, and fills them into the corresponding kernels?\n\nThere are also several other places in the script which assume we only have ROOT-A - resign_firmware_payload(), remove_old_container_key(), resign_android_image_if_exists(), sign_uefi_binaries(). So I guess we have to update them too.",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
