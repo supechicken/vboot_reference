@@ -34,6 +34,24 @@
       "parentUuid": "03b0adb8_319da39e",
       "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4269013c_1cd83ee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-02-24T01:42:00Z",
+      "side": 1,
+      "message": "This looks like the buffer in cmd_gbb_utility.c is too small. It is 16 bytes, but that only leaves enough space for a 15 byte hwid + terminator.\n\nI will create a CL resizing the buf to fix.\n\nThese are the failure log lines:\n\n```\nfutility gbb -s --hwid\u003d0123456789ABCDEF test_gbb_utility.sh.tmp.blob\nERROR: null-terminated HWID exceeds capacity (16)\n```",
+      "parentUuid": "b24011c7_f459e525",
+      "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
