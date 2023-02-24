@@ -317,6 +317,7 @@ static int read_from_file(const char *msg, const char *filename,
 		goto done_close;
 	}
 
+	// FIX: DO NOT COUNT TERMINATOR HERE
 	if (sb.st_size > size) {
 		fprintf(stderr,
 			"ERROR: file %s exceeds capacity (%" PRIu32 ")\n",
@@ -644,6 +645,8 @@ static int do_gbb(int argc, char *argv[])
 		gbb_base = (uint8_t *) gbb;
 
 		/* Get the stuff */
+		// FIX: MAY NOT BE NULL TERMINATED
+		// COPY TO BUF AND ADD TERMINATOR
 		if (sel_hwid)
 			printf("hardware_id: %s\n",
 			       gbb->hwid_size ? (char *)(gbb_base +
@@ -762,10 +765,9 @@ static int do_gbb(int argc, char *argv[])
 		gbb_base = (uint8_t *) gbb;
 
 		if (opt_hwid) {
-			if (strlen(opt_hwid) + 1 > gbb->hwid_size) {
+			if (strlen(opt_hwid) > gbb->hwid_size) {
 				fprintf(stderr,
-					"ERROR: null-terminated HWID"
-					" exceeds capacity (%d)\n",
+					"ERROR: HWID exceeds capacity (%d)\n",
 					gbb->hwid_size);
 				errorcnt++;
 				break;
@@ -773,8 +775,9 @@ static int do_gbb(int argc, char *argv[])
 			/* Wipe data before writing new value. */
 			memset(gbb_base + gbb->hwid_offset, 0,
 				gbb->hwid_size);
-			strcpy((char *)(gbb_base + gbb->hwid_offset),
-				opt_hwid);
+			memcpy(gbb_base + gbb->hwid_offset,
+				opt_hwid,
+				strlen(opt_hwid));
 			update_hwid_digest(gbb);
 		}
 
