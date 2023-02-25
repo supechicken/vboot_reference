@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "009c5956_3d4a0f75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-02-25T01:40:53Z",
+      "side": 1,
+      "message": "Ugh... I know we\u0027ve been discussing this back and forth for a bit too long now, but this seems like another good reason to not use a full ROOT-B on the factory shim for me. I feel like we have to add special cases all over the place just to support that shim doing something that\u0027s inefficient to begin with.\n\nCan\u0027t we just give in and disable kernel-level verity for factory shims so we don\u0027t need to deal with all this crap? Just removing the `root\u003d/dev/dm-0` should be good enough, right? Then the kernel won\u0027t do anything, and we can just fall back to doing userland setup_dm_root everywhere, and we don\u0027t need to worry about all these complicated differences between recovery sticks and factory shims on this kernel version vs that kernel version, etc.\n\nThat\u0027s just one little patch to change the build process somewhere, I feel like that would be less complex than trying to respect all these extra special cases in the signing script? If we just have base_image_util.sh or cros_make_image_bootable pass --boot_args\u003d\u0027root\u003d\u0027 through to build_kernel_image.sh when building a factory image, wouldn\u0027t that be enough to do the trick? The boot_args passed as a flag get added after the default root\u003d/dev/dm-0 argument, and when it appears multiple times in the command line the latter should override the earlier. (And then we can go with the 1 sector KERN-B solution where wait_for_gpt_root automatically decides to pick the other partition if the one associated with the current kernel is that small.)",
+      "parentUuid": "f6cfb590_437570f1",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68889d69_582f7293",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
