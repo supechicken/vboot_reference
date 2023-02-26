@@ -86,3 +86,14 @@ enum wp_state {
  * @return WP_DISABLED, WP_ENABLED, ot a relevant error.
  */
 enum wp_state flashrom_get_wp(const char *programmer, int verbosity);
+
+/**
+ * Get SPI flash info using flashrom.
+ *
+ * @param programmer	The name of the programmer to use for reading the
+ *                      spi flash information.
+ *
+ * @return zero on success, or <0 with relevant error.
+ */
+int flashrom_flash_info(const char *programmer,
+			char **name, uint32_t *size, int verbosity);
