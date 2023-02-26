@@ -106,6 +106,24 @@
       "parentUuid": "915d605d_5ec68256",
       "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cdfe858_97cbba67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-02-26T23:15:36Z",
+      "side": 1,
+      "message": "Something is going wrong in `flashrom_get_wp()`, it is taking an error path and returning WP_ERROR.\n\nIt appears to be something with the params/programmmer args, I\u0027m still investigating.",
+      "parentUuid": "da8e229c_0e328872",
+      "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
