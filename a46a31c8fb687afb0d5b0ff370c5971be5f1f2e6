@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8b276a2_52c5ff55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-02-26T23:59:32Z",
+      "side": 1,
+      "message": "Was there a reason we decided against changing PARTNROFF\u003d1 to PARTNROFF\u003d-1? If we\u0027re modifying the command line in the build script anyway, it seems like we might as well change it to the correct value instead of making it fail.\n\nWe could add a root_offset argument to build_kernel_image.sh, and have it use that in get_base_root(). It seems reasonable to make this an argument anyway. We already pass a lot of other verity parameters as arguments.\n\nFor the initramfs case, wait_for_gpt_root() could get the offset from the command line, so we wouldn\u0027t need the check if size is \u003e 1 sector logic, and there\u0027s still only a single place where we\u0027re encoding which rootfs to use (the build script which overrides the offset).",
+      "parentUuid": "009c5956_3d4a0f75",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68889d69_582f7293",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
