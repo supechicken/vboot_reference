@@ -124,6 +124,24 @@
       "parentUuid": "da8e229c_0e328872",
       "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1202fb4d_911d759e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-02-27T02:01:30Z",
+      "side": 1,
+      "message": "Fixed by https://crrev.com/c/4290837 (parent to this patch) and https://review.coreboot.org/c/flashrom/+/73289.\n\nThe upstream flashrom CL will need downstreaming before this patch can be submitted.",
+      "parentUuid": "6cdfe858_97cbba67",
+      "revId": "86815633fb7bbadcbd5ec39c8043fa5443c3cbd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
