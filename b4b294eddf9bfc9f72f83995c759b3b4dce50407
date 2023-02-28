@@ -16,6 +16,41 @@
       "message": "Sorry, can you explain what this flag is supposed to do? I don\u0027t really understand it from the design doc linked in the bug. Isn\u0027t the decision you make there entirely static (e.g. based on crosid information)? And even if it must be in runtime storage, why can\u0027t you just put it in a file on disk somewhere?\n\nAlso, crossystem options that are solely used by kernel/userland and don\u0027t have anything to do with firmware control at all should usually go into the kern_nv field (see block_devmode and tpm_attack). But before that there should be a good reason why they need to be in nvdata at all.",
       "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec979203_05f73893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-02-28T18:05:31Z",
+      "side": 1,
+      "message": "We need to know if the device is a chromebook X very early in the boot process (the splash screen is different on chromebook X, in init/upstart/boot-splash.conf), so we need it before we mount the stateful partition.\n\nI have debated using kern_nv. My concern is if chromebook X features percolate down to the firmware in the future (early splash screen, different recovery screen), we would be ready.",
+      "parentUuid": "7a72d40e_0d384acb",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca119d4d_c45f9052",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-02-28T18:05:31Z",
+      "side": 1,
+      "message": "cut and paste error.",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
