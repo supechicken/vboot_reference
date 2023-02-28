@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd822f63_2bbf3919",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-28T04:01:16Z",
+      "side": 1,
+      "message": "all new funcs should have typing",
+      "revId": "23871a1870c58c3d9066b05c63dcb9d7e9c5dfe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b508d03_84c180de",
+        "filename": "scripts/image_signing/sign_uefi.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-02-28T04:01:16Z",
+      "side": 1,
+      "message": "do you need a sep call ?  objcopy defaults to updating the input file which is what you do at the end anyways.",
+      "revId": "23871a1870c58c3d9066b05c63dcb9d7e9c5dfe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
