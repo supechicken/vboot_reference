@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a72d40e_0d384acb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-02-28T00:26:45Z",
+      "side": 1,
+      "message": "Sorry, can you explain what this flag is supposed to do? I don\u0027t really understand it from the design doc linked in the bug. Isn\u0027t the decision you make there entirely static (e.g. based on crosid information)? And even if it must be in runtime storage, why can\u0027t you just put it in a file on disk somewhere?\n\nAlso, crossystem options that are solely used by kernel/userland and don\u0027t have anything to do with firmware control at all should usually go into the kern_nv field (see block_devmode and tpm_attack). But before that there should be a good reason why they need to be in nvdata at all.",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
