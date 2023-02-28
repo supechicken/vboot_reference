@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a66bea0d_0dcee2b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-02-28T02:20:18Z",
+      "side": 1,
+      "message": "\u003e Was there a reason we decided against changing PARTNROFF\u003d1 to PARTNROFF\u003d-1? If we\u0027re modifying the command line in the build script anyway, it seems like we might as well change it to the correct value instead of making it fail.\n\nWell... I agree both are possible options. I think my suggestion would have the advantage that it gets rid of kernel-based verity initialization completely (I think if we can just make verity on recovery shims and all factory shims regardless of kernel version work the same way, that would just make all of this a bit easier to maintain by reducing the number of different cases we need to keep in mind), and that it can be implemented with a little less impact on the existing build scripts (basically just one line, rather than piping a whole separate option through to build_kernel_image.sh). But on the other hand, I agree that my suggestion may be seen as a bit of a hack.\n\nI don\u0027t really have a strong opinion towards one or the other, though. Both are much better than trying to put in a whole second rootfs and all the extra changes we\u0027d need for that.",
+      "parentUuid": "a8b276a2_52c5ff55",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68889d69_582f7293",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
