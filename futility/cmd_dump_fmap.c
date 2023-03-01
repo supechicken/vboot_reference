@@ -29,8 +29,7 @@ static int normal_fmap(const FmapHeader *fmh,
 {
 	int retval = 0;
 	char buf[80];		/* DWR: magic number */
-	const FmapAreaHeader *ah;
-	ah = (const FmapAreaHeader *) (fmh + 1);
+	const FmapAreaHeader *ah = (const FmapAreaHeader *) (fmh + 1);
         /* Size must greater than 0, else behavior is undefined. */
 	char *extract_names[names_len >= 1 ? names_len : 1];
 	char *outname = 0;
@@ -186,8 +185,7 @@ static void sort_nodes(int num, struct node_s *ary[])
 static void line(int indent, const char *name, uint32_t start, uint32_t end,
 		 uint32_t size, const char *append)
 {
-	int i;
-	for (i = 0; i < indent; i++)
+	for (unsigned int i = 0; i < indent; i++)
 		printf("  ");
 	printf("%-25s  %08x    %08x    %08x%s\n", name, start, end, size,
 	       append ? append : "");
@@ -272,7 +270,6 @@ static void add_dupe(int i, int j, int numnodes)
 
 static void add_child(struct node_s *p, int n)
 {
-	int i;
 	if (p->num_children && !p->child) {
 		p->child =
 		    (struct node_s **)calloc(p->num_children,
@@ -282,20 +279,17 @@ static void add_child(struct node_s *p, int n)
 			exit(1);
 		}
 	}
-	for (i = 0; i < p->num_children; i++)
+	for (unsigned int i = 0; i < p->num_children; i++) {
 		if (!p->child[i]) {
 			p->child[i] = all_nodes + n;
 			return;
 		}
+	}
 }
 
 static int human_fmap(const FmapHeader *fmh, int gaps, int overlap)
 {
-	FmapAreaHeader *ah;
-	int i, j, errorcnt = 0;
-	int numnodes;
-
-	ah = (FmapAreaHeader *) (fmh + 1);
+	int errorcnt = 0;
 
 	/* The challenge here is to generate a directed graph from the
 	 * arbitrarily-ordered FMAP entries, and then to prune it until it's as
@@ -303,17 +297,19 @@ static int human_fmap(const FmapHeader *fmh, int gaps, int overlap)
 	 * Duplicate regions are okay, but may require special handling. */
 
 	/* Convert the FMAP info into our format. */
-	numnodes = fmh->fmap_nareas;
+	int numnodes = fmh->fmap_nareas;
 
 	/* plus one for the all-enclosing "root" */
 	all_nodes = (struct node_s *) calloc(numnodes + 1,
 					     sizeof(struct node_s));
 	if (!all_nodes) {
 		perror("calloc failed");
-		exit(1);
+		return 1;
 	}
-	for (i = 0; i < numnodes; i++) {
+	for (unsigned int i = 0; i < numnodes; i++) {
 		char buf[FMAP_NAMELEN + 1];
+		const FmapAreaHeader *ah = (FmapAreaHeader *) (fmh + 1);
+
 		strncpy(buf, ah[i].area_name, FMAP_NAMELEN);
 		buf[FMAP_NAMELEN] = '\0';
 		all_nodes[i].name = strdup(buf);
@@ -332,8 +328,8 @@ static int human_fmap(const FmapHeader *fmh, int gaps, int overlap)
 	all_nodes[numnodes].end = fmh->fmap_base + fmh->fmap_size;
 
 	/* First, coalesce any duplicates */
-	for (i = 0; i < numnodes; i++) {
-		for (j = i + 1; j < numnodes; j++) {
+	for (unsigned int i = 0; i < numnodes; i++) {
+		for (unsigned int j = i + 1; j < numnodes; j++) {
 			if (duplicates(i, j)) {
 				add_dupe(i, j, numnodes);
 				numnodes--;
@@ -345,10 +341,10 @@ static int human_fmap(const FmapHeader *fmh, int gaps, int overlap)
 	 * enclosing node. Duplicate nodes "enclose" each other, but if there's
 	 * already a relationship in one direction, we won't create another.
 	 */
-	for (i = 0; i < numnodes; i++) {
+	for (unsigned int i = 0; i < numnodes; i++) {
 		/* Find the smallest parent, which might be the root node. */
 		int k = numnodes;
-		for (j = 0; j < numnodes; j++) { /* full O(N^2) comparison */
+		for (unsigned int j = 0; j < numnodes; j++) { /* full O(N^2) comparison */
 			if (i == j)
 				continue;
 			if (overlaps(i, j)) {
@@ -375,10 +371,10 @@ static int human_fmap(const FmapHeader *fmh, int gaps, int overlap)
 		return 1;
 
 	/* Force those deadbeat parents to recognize their children */
-	for (i = 0; i < numnodes; i++)	/* how many */
+	for (unsigned int i = 0; i < numnodes; i++)	/* how many */
 		if (all_nodes[i].parent)
 			all_nodes[i].parent->num_children++;
-	for (i = 0; i < numnodes; i++)	/* here they are */
+	for (unsigned int i = 0; i < numnodes; i++)	/* here they are */
 		if (all_nodes[i].parent)
 			add_child(all_nodes[i].parent, i);
 
