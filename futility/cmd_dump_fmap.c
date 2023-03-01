@@ -277,9 +277,6 @@ static void add_child(struct node_s *p, int n)
 static int human_fmap(const FmapHeader *fmh, bool gaps, int overlap)
 {
 	int errorcnt = 0;
-	int numnodes;
-
-	FmapAreaHeader *ah = (FmapAreaHeader *) (fmh + 1);
 
 	/* The challenge here is to generate a directed graph from the
 	 * arbitrarily-ordered FMAP entries, and then to prune it until it's as
@@ -287,17 +284,19 @@ static int human_fmap(const FmapHeader *fmh, bool gaps, int overlap)
 	 * Duplicate regions are okay, but may require special handling. */
 
 	/* Convert the FMAP info into our format. */
-	numnodes = fmh->fmap_nareas;
+	size_t numnodes = fmh->fmap_nareas;
 
 	/* plus one for the all-enclosing "root" */
 	all_nodes = (struct node_s *) calloc(numnodes + 1,
 					     sizeof(struct node_s));
 	if (!all_nodes) {
 		perror("calloc failed");
-		exit(1);
+		return 1;
 	}
-	for (unsigned int i = 0; i < numnodes; i++) {
+	for (size_t i = 0; i < numnodes; i++) {
 		char buf[FMAP_NAMELEN + 1];
+		const FmapAreaHeader *ah = (FmapAreaHeader *) (fmh + 1);
+
 		strncpy(buf, ah[i].area_name, FMAP_NAMELEN);
 		buf[FMAP_NAMELEN] = '\0';
 		all_nodes[i].name = strdup(buf);
@@ -316,7 +315,7 @@ static int human_fmap(const FmapHeader *fmh, bool gaps, int overlap)
 	all_nodes[numnodes].end = fmh->fmap_base + fmh->fmap_size;
 
 	/* First, coalesce any duplicates */
-	for (unsigned int i = 0; i < numnodes; i++) {
+	for (size_t i = 0; i < numnodes; i++) {
 		for (unsigned int j = i + 1; j < numnodes; j++) {
 			if (duplicates(i, j)) {
 				add_dupe(i, j, numnodes);
