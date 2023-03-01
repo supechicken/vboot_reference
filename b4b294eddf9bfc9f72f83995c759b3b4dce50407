@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "130d5d9c_1f9d07f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-01T02:49:09Z",
+      "side": 1,
+      "message": "Well... I mean, I get your point but I feel like using vboot nvdata isn\u0027t a better solution in that case, it\u0027s just one that\u0027s bad in a less obvious way. After all, the reason _why_ we\u0027re putting up the splash screen before we mount the stateful partition is because we consider boot time to splash a critical metric (although we don\u0027t have a regression test for it, but that\u0027s a different issue). We don\u0027t want the boot splash to wait on the stateful being mounted, but if you depend it on a vboot nvdata flag then it needs to wait until vboot nvdata is read instead. Reading 4-16K (depending on the platform) from flash is not free -- in fact, it might be longer than mounting that partition would take. We used to pay very close attention to where the first access to nvdata happens in the startup path because of that very problem, not sure if that\u0027s still the case (that lack of regression testing certainly isn\u0027t helping there), but that\u0027s what we should aim for.\n\nSo... I don\u0027t know... is this really a thing that we _want_ here? Do we want to regress on time-to-display just so that we can print \"Premium\" on the splash screen? That\u0027s not really what I would expect from a premium device as a user.\n\nI also still haven\u0027t understood why this determination must be stored in volatile state? I don\u0027t really see any explanation in the design doc for that. It just has that big flow chart that says \"tier attribute in cros_config\" may be \"low/high\" or \"dynamic\", but it doesn\u0027t say why the latter case needs to exist. Isn\u0027t this all supposed to be just tied to SKUs?\n\nAlso, bear in mind that vboot nvdata may get lost in certain scenarios (e.g. dead battery), and should generally not be considered trusted (e.g. can be changed via SPI programmers, CCD, temporary root exploit, etc.).",
+      "parentUuid": "ec979203_05f73893",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ca119d4d_c45f9052",
