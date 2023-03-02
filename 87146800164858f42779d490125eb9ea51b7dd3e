@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24f5970c_a80bc9be",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T23:39:38Z",
+      "side": 1,
+      "message": "I can rebase this series on HEAD || https://crrev.com/c/4290837",
+      "parentUuid": "8908acc6_ee691c8c",
+      "range": {
+        "startLine": 274,
+        "startChar": 37,
+        "endLine": 274,
+        "endChar": 51
+      },
+      "revId": "87146800164858f42779d490125eb9ea51b7dd3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e62acfe_b14f75a5",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 3
