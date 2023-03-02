@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ce5724b_02e0823d",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T23:57:45Z",
+      "side": 1,
+      "message": "structure this code with the previous model we discussed. Something like,\n\n```\nstruct ap_ro_wp_ranges {\n  size_t len;\n  struct {\n     uint32_t start;\n     uint32_t len;\n  } rr[];\n}; \n\nstatic uint32_t region_name_to_flags(const char *s)\n{\n    //\n}\n\nstatic void get_ro_ranges(struct updater_config *cfg, struct ap_ro_wp_ranges *ranges)\n{\n     uint8_t *buf \u003d read_from_flash(FMAP_RO, \u0026sz);\n     \n     struct FmapHeader *fmh \u003d fmap_find(buf, sz);\n     \n     for (unsigned i \u003d 0; i \u003c fmh-\u003efmap_nareas; i++, ah++) {\n        /* region name */\n        const char *rname \u003d ah-\u003earea_name;\n        \n        struct FmapAreaHeader ah;\n        fmap_find_by_name(NULL, 0, fmap, \u0026ah); /* rel base returned. */\n        \n        /* wp range. */\n        const uint32_t alen \u003d ah.area_size - ah.area_offset;\n        const uint32_t astart \u003d ah.area_offset;\n        \n        /* For back compatibility, populate required\n         * wp permissions if fw hasn\u0027t.\n         * src/third_party/coreboot/Documentation/lib/flashmap.md:#50\n         */\n        if (!ah.area_flags) {\n           NOTICE(\"region \u0027%s\u0027 missing flag, populating..\\n\", rname);\n           ah.area_flags \u003d region_name_to_flags(rname);\n        }\n        \n        if (ah.area_flags | FMAP_AREA_RO) {\n             ranges-\u003elen++;\n             ranges-\u003err \u003d realloc(ranges-\u003err, 8*ranges-\u003elen);\n             /* .. */\n             ranges-\u003err[ranges-\u003elen].start \u003d astart;\n             ranges-\u003err[ranges-\u003elen].len \u003d alen;\n        }\n      }\n```",
+      "parentUuid": "a22a27df_b0353769",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 95
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca59f77a_d7858bb3",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 6
