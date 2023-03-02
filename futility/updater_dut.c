@@ -107,7 +107,7 @@ static int dut_get_tpm_fwver(struct updater_config *cfg)
 static int dut_get_wp_hw(struct updater_config *cfg)
 {
 	/* wpsw refers to write protection 'switch', not 'software'. */
-	return dut_get_property_int("wpsw_cur", cfg) ? WP_ENABLED : WP_DISABLED;
+	return dut_get_property_int("wpsw_cur", cfg);
 }
 
 static int dut_get_platform_version(struct updater_config *cfg)
@@ -125,7 +125,15 @@ static int dut_get_platform_version(struct updater_config *cfg)
 static int dut_get_wp_sw(struct updater_config *cfg)
 {
 	assert(cfg->image.programmer);
-	return flashrom_get_wp(cfg->image.programmer, -1);
+	size_t wp_start, wp_len;
+	bool wp_mode;
+
+	if (flashrom_get_wp(cfg->image.programmer, &wp_mode,
+			    &wp_start, &wp_len, -1)) {
+		/* Assume WP is enabled on error */
+		return 1;
+	}
+	return wp_mode;
 }
 
 /* Helper functions to use or configure the DUT properties. */
