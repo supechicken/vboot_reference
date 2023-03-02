@@ -71,18 +71,18 @@ int flashrom_write_image(const struct firmware_image *image,
 			const struct firmware_image *diff_image,
 			int do_verify, int verbosity);
 
-enum wp_state {
-	WP_ERROR = -1,
-	WP_DISABLED = 0,
-	WP_ENABLED,
-};
-
 /**
  * Get wp state using flashrom.
  *
  * @param programmer	The name of the programmer to use for reading the
  *                      writeprotect state.
  *
- * @return WP_DISABLED, WP_ENABLED, ot a relevant error.
+ * @param wp_mode       Pointer to a bool to store the WP mode. Will be set to
+ *                      false if WP is disabled, true if WP is enabled.
+ * @param wp_start      Pointer to a uint32_t to store the WP start addr.
+ * @param wp_len        Pointer to a uint32_t to store the WP region length.
+ *
+ * @return VB2_SUCCESS on success, or a relevant error.
  */
-enum wp_state flashrom_get_wp(const char *programmer, int verbosity);
+int flashrom_get_wp(const char *programmer, bool *wp_mode,
+		    uint32_t *wp_start, uint32_t *wp_len, int verbosity);
