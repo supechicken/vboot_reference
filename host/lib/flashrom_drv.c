@@ -252,9 +252,10 @@ err_init:
 	return r;
 }
 
-enum wp_state flashrom_get_wp(const char *programmer, int verbosity)
+int flashrom_get_wp(const char *programmer, bool *wp_mode,
+		    size_t *wp_start, size_t *wp_len, int verbosity)
 {
-	enum wp_state r = WP_ERROR;
+	int ret = 1;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
 
@@ -270,7 +271,7 @@ enum wp_state flashrom_get_wp(const char *programmer, int verbosity)
 	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
 
 	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params))
+		|| flashrom_programmer_init(&prog, tmp_programmer, params))
 		goto err_init;
 
 	if (flashrom_flash_probe(&flashctx, prog, NULL))
@@ -282,10 +283,9 @@ enum wp_state flashrom_get_wp(const char *programmer, int verbosity)
 	if (flashrom_wp_read_cfg(cfg, flashctx) != FLASHROM_WP_OK)
 		goto err_read_cfg;
 
-	if (flashrom_wp_get_mode(cfg) == FLASHROM_WP_MODE_DISABLED)
-		r = WP_DISABLED;
-	else
-		r = WP_ENABLED;
+	*wp_mode = flashrom_wp_get_mode(cfg) != FLASHROM_WP_MODE_DISABLED;
+	flashrom_wp_get_range(wp_start, wp_len, cfg);
+	ret = VB2_SUCCESS;
 
 err_read_cfg:
 	flashrom_wp_cfg_release(cfg);
@@ -295,10 +295,10 @@ err_cleanup:
 
 err_probe:
 	if (flashrom_programmer_shutdown(prog))
-		r = WP_ERROR;
+		ret = 1;
 
 err_init:
 	free(tmp);
 
-	return r;
+	return ret;
 }
