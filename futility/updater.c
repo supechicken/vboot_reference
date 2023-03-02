@@ -1437,8 +1437,6 @@ int updater_setup_config(struct updater_config *cfg,
 	if (arg->force_update)
 		cfg->force_update = 1;
 
-	/* Identify DUT type. Currently only local/remote (via servo). */
-	cfg->dut_is_remote = arg->use_flash;
 	if (cfg->dut_is_remote)
 		INFO("Configured to update a remote DUT via Servo.\n");
 
@@ -1504,8 +1502,10 @@ int updater_setup_config(struct updater_config *cfg,
 	cfg->override_gbb_flags = arg->override_gbb_flags;
 
 	/* Setup properties and fields that do not have external dependency. */
-	if (arg->programmer) {
+	if (arg->programmer && strcmp(arg->programmer, cfg->image.programmer)) {
 		check_single_image = 1;
+		/* DUT should be remote if the programmer is changed. */
+		cfg->dut_is_remote = 1;
 		cfg->image.programmer = arg->programmer;
 		cfg->image_current.programmer = arg->programmer;
 		cfg->original_programmer = arg->programmer;
