@@ -69,6 +69,30 @@
       },
       "revId": "a389cab577c380ef3c67e4bd99ef9e035e9e1bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e695c07_967ffbc6",
+        "filename": "futility/cmd_wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-02T07:32:54Z",
+      "side": 1,
+      "message": "Other futility tools already assume that \"WP_RO\" is the one and only RO region (e.g. cmd_gscvd.c) so I think we should do that here too.\n\nA more generic solution would be nice, but if FMAP region names and layouts change, the assumption that names will contain `\"_RO\"` and `\"RW_\"` may become invalid and cause really weird behavior.\n\nAlso we can still only protect one continuous range. So we\u0027d need to take the union of RO regions to get the final protection range (or really convex hull in 1D).",
+      "parentUuid": "e017b25f_bfb542ca",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "a389cab577c380ef3c67e4bd99ef9e035e9e1bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
