@@ -16,6 +16,185 @@
       "message": "Will probably split this into multiple patches. flashrom_drv might need a refactor at some point too.",
       "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90fea2a1_ae259dc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "blocked by the flashrom subprocess quirk to do it properly. I have been working on getting this tech debt introduced dismantled.",
+      "parentUuid": "b2df6948_01bf22c1",
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52cee0d7_6f5adff8",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "should be \u003d NULL and validated after before the def of it?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22a27df_b0353769",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "line wrap,",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 95
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca59f77a_d7858bb3",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "neg return codes are preferably for errors, 0 for success and positive for values.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd514556_f544d87d",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "flash size it\u0027s a machine sized type. You want `uint32_t`",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 7
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8403f0b7_c34bcdeb",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "flip this predicate and return early on error (-1).",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 6
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47cceb8_2653ebf9",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "not size_t",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c54a068_811e7fc0",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-02T10:17:50Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
