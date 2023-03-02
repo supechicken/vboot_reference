@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2110b7a_b8f8a627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2023-03-02T21:01:51Z",
+      "side": 1,
+      "message": "Normally, tier attribute is in cros_config (or is easily discoverable). \"dynamic\" is for machines which have already shipped (aka legacy support) and where we need to decide of their tier based on their internal (RAM size, camera defintion, display property...). \n\ncrossystem is already used concurrently in chromeos_startup (need to know if we are in dev mode). Would it make sense to cache the result?\n\n[I can also investigate to send a message to frecon splash job when encstateful is mounted and not need to code at all.]",
+      "parentUuid": "130d5d9c_1f9d07f1",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ca119d4d_c45f9052",
