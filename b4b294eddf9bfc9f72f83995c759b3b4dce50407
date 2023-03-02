@@ -74,6 +74,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0c104a88_e2f657de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150560
+      },
+      "writtenOn": "2023-03-02T22:47:58Z",
+      "side": 1,
+      "message": "before frecon runs we already check dev mode flag using crossystem, so adding more crossystem variables will not affect anything.",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ca119d4d_c45f9052",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
