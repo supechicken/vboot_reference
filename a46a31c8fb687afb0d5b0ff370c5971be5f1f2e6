@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e33b383_0ebb94d3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-03T04:06:05Z",
+      "side": 1,
+      "message": "The problem is we only do this part (extract the dm args and run verity) once for all kernels. So we assume all kernels use the same dm args (which has always been true until now).\n\nI wondered if we could change that by moving all this inside the loop so that we run verity for each kernel with it\u0027s own args. But that doesn\u0027t make sense because we\u0027re only calculating one set of hash data which is shared by all kernels, so the dm args can\u0027t vary arbitrarily anyway.",
+      "parentUuid": "6557d6a7_38878331",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68889d69_582f7293",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
