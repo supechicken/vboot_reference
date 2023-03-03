@@ -254,6 +254,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "858d54aa_c01df7ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-03T08:17:20Z",
+      "side": 1,
+      "message": "With `--noenable_rootfs_verification` it still adds all the verity args, it just sets `root\u003dPARTUUID\u003d%U/PARTNROFF\u003d1` so the kernel won\u0027t actually set up verity.",
+      "parentUuid": "a65f03e4_6529fb2a",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
