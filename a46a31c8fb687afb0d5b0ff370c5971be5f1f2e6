@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2331b0f_3001338f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-03T02:44:55Z",
+      "side": 1,
+      "message": "Argh... yeah, I guess that\u0027s the best way to solve that. Although it starts feeling like that script is just one big mountain of special cases pretending to be generic functions.\n\nAre we sure we don\u0027t want to just remove the verity stuff from the KERN-B command line completely for factory shims and then use setup_dm_root (with the verity arguments from KERN-A) instead?",
+      "parentUuid": "f173aa26_055eb2cc",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68889d69_582f7293",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
