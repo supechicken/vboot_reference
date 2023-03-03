@@ -200,6 +200,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b7dc689_fc26e9c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-03T07:10:26Z",
+      "side": 1,
+      "message": "\u003e I just feel like adding \"root\u003d\" is a hack which might break things in places we haven\u0027t thought of.\n\nI just realized that build_kernel_image.sh also has --noenable_rootfs_verification, so I think just using that would be cleaner and make more sense than the --boot_args\u003d\" root\u003d\" I suggested earlier. (If we do this, I would recommend doing it for _both_ factory shim kernels, KERN-A and KERN-B, so that they both use the setup_dm_root path and we don\u0027t have the complexity of two kernels using two different paths.)\n\n\u003e I\u0027ve uploaded a patchset preserving payload and hashtree, so let me know what you think.\n\nI still feel like my suggestion is simpler and has more advantages (e.g. all initramfs environments using the same verity setup path). But I also recognize that we really need to get something merged here soon. So if both of you prefer this approach feel free to land that. (Adding +2 under that consideration.)",
+      "parentUuid": "bc611362_98e13c0e",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
