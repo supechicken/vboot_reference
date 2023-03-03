@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f173aa26_055eb2cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-03T02:27:21Z",
+      "side": 1,
+      "message": "I tested with Chih-Yao\u0027s latest changes. There\u0027s another issue. update_rootfs_hash() gets the dm args from KERN-A, so the KERN-B args end up changed back to PARTNROFF\u003d1.\n\nThe best solution I can think of is to change the substitution in the for loop to preserve the PARTNROFF. E.g. save the current payload and hashtree, replace dm args, then change the payload and hashtree back to their original values. Unless anyone has a better idea?",
+      "parentUuid": "3a8ac120_4d708148",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68889d69_582f7293",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
