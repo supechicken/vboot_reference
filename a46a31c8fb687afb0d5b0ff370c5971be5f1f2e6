@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd5c7976_576a9205",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-03T04:17:16Z",
+      "side": 1,
+      "message": "The for loop only substitutes dm args if they exist, so if KERN-B doesn\u0027t have dm args, nothing will change. That\u0027s what happens for KERN-A in recovery images.",
+      "parentUuid": "b7ecbf91_e4085930",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
