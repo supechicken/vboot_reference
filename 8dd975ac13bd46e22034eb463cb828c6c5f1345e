@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d333d98_55e15138",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-03T06:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52cee0d7_6f5adff8",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a22a27df_b0353769",
@@ -129,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171e4528_bebbf1cc",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-03T06:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca59f77a_d7858bb3",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd514556_f544d87d",
@@ -142,6 +190,30 @@
       "writtenOn": "2023-03-02T10:17:50Z",
       "side": 1,
       "message": "flash size it\u0027s a machine sized type. You want `uint32_t`",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 7
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec5ca7a_1c3cafb6",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-03T06:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd514556_f544d87d",
       "range": {
         "startLine": 75,
         "startChar": 1,
@@ -175,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4217246_da4af5cc",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-03T06:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8403f0b7_c34bcdeb",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 6
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d47cceb8_2653ebf9",
@@ -198,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8dc371d_311d6694",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-03T06:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47cceb8_2653ebf9",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c54a068_811e7fc0",
@@ -211,6 +331,30 @@
       "writtenOn": "2023-03-02T10:17:50Z",
       "side": 1,
       "message": "bool",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5249771_90fb2e8f",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-03T06:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c54a068_811e7fc0",
       "range": {
         "startLine": 139,
         "startChar": 0,
