@@ -89,6 +89,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "406b56c1_b7b0b690",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-03T00:29:24Z",
+      "side": 1,
+      "message": "Sorry, I still don\u0027t really understand why this needs to be in nvdata. Aren\u0027t all those factors (RAM size, USB device descriptors, EDID) things you can cheaply query from sysfs even before the stateful partition is mounted? Why not just make that determination on boot for those devices (e.g. in a board-specific shell script or something, especially if this is just a temporary fallback solution for a handful of legacy devices) rather than try to store it persistently somewhere?\n\nNot all crossystem invocations read nvdata. The `cros_debug?1` in chromeos_startup doesn\u0027t. (Also, like I said, regression testing for this isn\u0027t great atm so I can\u0027t 100% guarantee you that this hasn\u0027t been violated anywhere, but if it has we should fix that rather than further entrench the problem.)",
+      "parentUuid": "a2110b7a_b8f8a627",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3b7dd1_9e64f8b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-03T00:29:24Z",
+      "side": 1,
+      "message": "Not every item you can query via crossystem is an nvdata flag. If you\u0027re talking about `cros_debug?1` or `mainfw_act?developer`, those are implemented differently and do not require flash reads.",
+      "parentUuid": "0c104a88_e2f657de",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ca119d4d_c45f9052",
