@@ -128,6 +128,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6557d6a7_38878331",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-03-03T03:48:26Z",
+      "side": 1,
+      "message": "If we pass different kernel to this function, `update_rootfs_hash` should get the correct kernel config, right?",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68889d69_582f7293",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
