@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2f33e83_b153f637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-03T04:47:47Z",
+      "side": 1,
+      "message": "Actually, with Julius\u0027 suggestion, KERN-B would have dm args and they would have the wrong PARTNROFF, but the kernel would ignore them due to \"root\u003d\". Then the initramfs would figure out the USB_DEV based on the rootfs size.",
+      "parentUuid": "cd5c7976_576a9205",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
