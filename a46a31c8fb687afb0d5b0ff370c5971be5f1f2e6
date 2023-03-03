@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7ecbf91_e4085930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-03-03T03:56:31Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that still have the same problem: the signer will still copy the verity stuff from KERN-A to KERN-B. So you still need special logic to deal with KERN-B. And in this case, it sounds easier to make update_rootfs_hash to read each kernel partition and sign them individually.",
+      "parentUuid": "e2331b0f_3001338f",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
