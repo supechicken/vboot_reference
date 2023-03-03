@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc611362_98e13c0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-03T06:48:05Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded a patchset preserving payload and hashtree, so let me know what you think.\n\nI don\u0027t really have a strong opinion on which approach we should go with. I just feel like adding \"root\u003d\" is a hack which might break things in places we haven\u0027t thought of. But I agree the alternative isn\u0027t great either.",
+      "parentUuid": "c2f33e83_b153f637",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
