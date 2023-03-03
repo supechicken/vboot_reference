@@ -236,6 +236,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a65f03e4_6529fb2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-03-03T08:07:04Z",
+      "side": 1,
+      "message": "I\u0027m okay if we want to make factory shim always call `setup_dm_root`.\n\nBut, I don\u0027t quite understand the `--noenable_rootfs_verification` part. Don\u0027t we need this argument to generate the dm-verity args (hash, salt, ...)",
+      "parentUuid": "5ca8b664_f7e645d5",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
