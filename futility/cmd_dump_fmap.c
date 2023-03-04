@@ -21,6 +21,64 @@
 
 typedef enum { FMT_NORMAL, FMT_PRETTY, FMT_FLASHROM, FMT_HUMAN } format_t;
 
+static void normalise_filename(char *path)
+{
+	for (char *s = path; *s; s++)
+		if (*s == ' ')
+			*s = '_';
+}
+
+static int write_extracted(const FmapAreaHeader *ah,
+		const void *base_of_rom, size_t size_of_rom,
+		const char *path, const char *sname, const char *buf)
+{
+	int ret = -1;
+	FILE *fp = fopen(path, "wb");
+	if (!fp) {
+		fprintf(stderr, "%s: can't open %s: %s\n",
+			sname, path, strerror(errno));
+	} else if (!ah->area_size) {
+		fprintf(stderr, "%s: section %s has zero size\n", sname, buf);
+	} else if (ah->area_offset + ah->area_size >
+		   size_of_rom) {
+		fprintf(stderr, "%s: section %s is larger"
+			" than the image\n", sname, buf);
+	} else if (1 != fwrite(base_of_rom + ah->area_offset,
+			       ah->area_size, 1, fp)) {
+		fprintf(stderr, "%s: can't write %s: %s\n",
+			sname, buf, strerror(errno));
+	} else {
+		ret = 0;
+	}
+	if (fp)
+		fclose(fp);
+	return ret;
+}
+
+static int prepare_extract_names(char **extract_names,
+		const char **names, size_t names_len)
+{
+	int ret = 0;
+
+	/* prepare the filenames to write areas to */
+	for (unsigned int i = 0; i < names_len; i++) {
+		const char *a = names[i];
+		char *f = strchr(a, ':');
+		if (!f)
+			continue;
+		if (a == f || *(f+1) == '\0') {
+			fprintf(stderr,
+				"argument \"%s\" is bogus\n", a);
+			ret = -1;
+			continue;
+		}
+		*f++ = '\0';
+		extract_names[i] = f;
+	}
+
+	return ret;
+}
+
 /* Return 0 if successful */
 static int normal_fmap(const FmapHeader *fmh,
 	const void *base_of_rom, size_t size_of_rom,
@@ -30,30 +88,13 @@ static int normal_fmap(const FmapHeader *fmh,
 	int retval = 0;
 	char buf[80];		/* DWR: magic number */
 	const FmapAreaHeader *ah = (const FmapAreaHeader *) (fmh + 1);
+	char *outname = 0;
         /* Size must greater than 0, else behavior is undefined. */
 	char *extract_names[names_len >= 1 ? names_len : 1];
-	char *outname = 0;
-
 	memset(extract_names, 0, sizeof(extract_names));
 
 	if (extract) {
-		/* prepare the filenames to write areas to */
-		for (unsigned int i = 0; i < names_len; i++) {
-			const char *a = names[i];
-			char *f = strchr(a, ':');
-			if (!f)
-				continue;
-			if (a == f || *(f+1) == '\0') {
-				fprintf(stderr,
-					"argument \"%s\" is bogus\n", a);
-				retval = 1;
-				continue;
-			}
-			*f++ = '\0';
-			extract_names[i] = f;
-		}
-		if (retval)
-			return retval;
+		retval = prepare_extract_names(extract_names, names, names_len);
 	}
 
 	if (FMT_NORMAL == format) {
@@ -107,37 +148,14 @@ static int normal_fmap(const FmapHeader *fmh,
 
 		if (extract) {
 			if (!outname) {
-				for (char *s = buf; *s; s++)
-					if (*s == ' ')
-						*s = '_';
+				normalise_filename(buf);
 				outname = buf;
 			}
 			const char *first_name = names[0];
-			FILE *fp = fopen(outname, "wb");
-			if (!fp) {
-				fprintf(stderr, "%s: can't open %s: %s\n",
-					first_name, outname, strerror(errno));
+			if (write_extracted(ah, base_of_rom, size_of_rom, outname, first_name, buf) < 0)
 				retval = 1;
-			} else if (!ah->area_size) {
-				fprintf(stderr,
-					"%s: section %s has zero size\n",
-					first_name, buf);
-			} else if (ah->area_offset + ah->area_size >
-				   size_of_rom) {
-				fprintf(stderr, "%s: section %s is larger"
-					" than the image\n", first_name, buf);
-				retval = 1;
-			} else if (1 != fwrite(base_of_rom + ah->area_offset,
-					       ah->area_size, 1, fp)) {
-				fprintf(stderr, "%s: can't write %s: %s\n",
-					first_name, buf, strerror(errno));
-				retval = 1;
-			} else {
-				if (FMT_NORMAL == format)
-					printf("saved as \"%s\"\n", outname);
-			}
-			if (fp)
-				fclose(fp);
+			if (FMT_NORMAL == format)
+				printf("saved as \"%s\"\n", outname);
 		}
 	}
 
