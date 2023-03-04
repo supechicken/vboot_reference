@@ -132,6 +132,20 @@ int futil_valid_gbb_header(struct vb2_gbb_header *gbb, uint32_t len,
 	return 1;
 }
 
+int get_recovery_key_version(struct vb2_gbb_header *gbb)
+{
+	/* Recovery key */
+	const uint32_t rkoffset = gbb->recovery_key_offset;
+	const uint32_t rksz = gbb->recovery_key_size;
+
+	const struct vb2_packed_key *rk =
+		(struct vb2_packed_key *) ((uint8_t *)gbb + rkoffset);
+	if (!rk || !rksz)
+		return -1;
+
+	return rk->key_version;
+}
+
 /* For GBB v1.2 and later, print the stored digest of the HWID (and whether
  * it's correct). Return true if it is correct. */
 int print_hwid_digest(struct vb2_gbb_header *gbb,
