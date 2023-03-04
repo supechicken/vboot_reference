@@ -48,6 +48,7 @@ static void print_help(int argc, char *argv[])
 		"     --hwid          \tReport hardware id (default).\n"
 		"     --flags         \tReport header flags.\n"
 		"     --digest        \tReport digest of hwid (>= v1.2)\n"
+		"     --recoverykey-ver \tReport Recovery Key Version\n"
 		" -k, --rootkey=FILE  \tFile name to export Root Key.\n"
 		" -b, --bmpfv=FILE    \tFile name to export Bitmap FV.\n"
 		" -r  --recoverykey=FILE\tFile name to export Recovery Key.\n"
@@ -94,6 +95,7 @@ enum {
 	OPT_HWID = 0x1000,
 	OPT_FLAGS,
 	OPT_DIGEST,
+	OPT_RKV,
 	OPT_FLASH,
 	OPT_HELP,
 };
@@ -113,6 +115,7 @@ static struct option long_opts[] = {
 	{"flags", 0, NULL, OPT_FLAGS},
 	{"explicit", 0, NULL, 'e'},
 	{"digest", 0, NULL, OPT_DIGEST},
+	{"recoverykey-ver", 0, NULL, OPT_RKV},
 	{"flash", 0, NULL, OPT_FLASH},
 	{"help", 0, NULL, OPT_HELP},
 	{NULL, 0, NULL, 0},
@@ -487,6 +490,7 @@ static int do_gbb(int argc, char *argv[])
 	char *opt_flags = NULL;
 	int sel_hwid = 0;
 	int sel_digest = 0;
+	bool sel_rkv = false;
 	int sel_flags = 0;
 	int explicit_flags = 0;
 	uint8_t *inbuf = NULL;
@@ -549,6 +553,9 @@ static int do_gbb(int argc, char *argv[])
 			break;
 		case OPT_DIGEST:
 			sel_digest = 1;
+			break;
+		case OPT_RKV:
+			sel_rkv = true;
 			break;
 		case OPT_FLASH:
 #ifndef USE_FLASHROM
@@ -632,7 +639,7 @@ static int do_gbb(int argc, char *argv[])
 
 		/* With no args, show the HWID */
 		if (!opt_rootkey && !opt_bmpfv && !opt_recoverykey
-		    && !sel_flags && !sel_digest)
+		    && !sel_flags && !sel_digest && !sel_rkv)
 			sel_hwid = 1;
 
 		gbb = FindGbbHeader(inbuf, filesize);
@@ -651,6 +658,9 @@ static int do_gbb(int argc, char *argv[])
 							 hwid_offset) : "");
 		if (sel_digest)
 			print_hwid_digest(gbb, "digest: ", "\n");
+		if (sel_rkv)
+			printf("recovery key version: %d\n",
+				get_recovery_key_version(gbb));
 
 		if (sel_flags)
 			printf("flags: 0x%08x\n", gbb->flags);

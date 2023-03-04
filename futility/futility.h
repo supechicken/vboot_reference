@@ -113,6 +113,9 @@ void update_hwid_digest(struct vb2_gbb_header *gbb);
 int print_hwid_digest(struct vb2_gbb_header *gbb,
 		      const char *banner, const char *footer);
 
+/* Retrive the recovery key version from the GBB header. */
+int get_recovery_key_version(struct vb2_gbb_header *gbb);
+
 /* Copies a file or dies with an error message */
 void futil_copy_file_or_die(const char *infile, const char *outfile);
 
