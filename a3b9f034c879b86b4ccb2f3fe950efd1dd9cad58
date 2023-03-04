@@ -62,6 +62,52 @@
       },
       "revId": "a3b9f034c879b86b4ccb2f3fe950efd1dd9cad58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676c1375_5a57201d",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-04T00:32:35Z",
+      "side": 1,
+      "message": "Add this to `src/platform/vboot_reference/futility/updater.h#15` as `FMAP_WP_RO`.",
+      "range": {
+        "startLine": 29,
+        "startChar": 17,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "a3b9f034c879b86b4ccb2f3fe950efd1dd9cad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42448aeb_e281237d",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-04T00:32:35Z",
+      "side": 1,
+      "message": "WARN",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "a3b9f034c879b86b4ccb2f3fe950efd1dd9cad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
