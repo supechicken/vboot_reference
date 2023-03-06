@@ -272,6 +272,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "158e72cb_dd3d8bf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-06T23:33:42Z",
+      "side": 1,
+      "message": "Okay, great, sounds like we\u0027re in agreement? Let\u0027s revert back to patch set 3 and land that, then?",
+      "parentUuid": "858d54aa_c01df7ba",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6557d6a7_38878331",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 3
