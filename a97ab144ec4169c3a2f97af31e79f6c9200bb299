@@ -34,6 +34,24 @@
       "parentUuid": "8aa576c3_0e3b7857",
       "revId": "a97ab144ec4169c3a2f97af31e79f6c9200bb299",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d51e32d_80c00bb6",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-06T12:18:12Z",
+      "side": 1,
+      "message": "Merely swapping flashrom cli for futility cli isn\u0027t the goal here. It is more to understand the actual behavioral requirements of SPI interactions required for ChromeOS to work correctly and provide that as a ABI.\n\n1./ CL:4075310 wasn\u0027t added for CL:4308230, it was intended to read all of flash in a ChromeOS specific way (pad what cannot be read etc to fix flashrom usage techdebt). Reading all of flash is not suitable for just a very specific bit of data. CL:4075310 is more suitable as a hammer for bring up.\n\n2./ I looked at both implementations, `show` and `gbb`, the implementation fits nicely within `gbb` and not `show` in practice. Furthermore, since `gbb` is technically where this data is stored it is a logical grouping to have a relevant flag associated with it.\n\n3./ Seems orthogonal to the issue here to obtaining a key version, a reasonable ABI requirement much as-is the case of flags||hwid||digest. The \u0027--all\u0027 sounds more like what the `show` sub-command does.",
+      "parentUuid": "a7971dca_f6194036",
+      "revId": "a97ab144ec4169c3a2f97af31e79f6c9200bb299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
