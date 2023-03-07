@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405b791f_30c79aeb",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-07T07:36:12Z",
+      "side": 1,
+      "message": "This may return -1. To be consistent with `dut_get_wp_sw` (about error handling), should we convert -1 to 1 by `!!dut_get_property_int(...)`?\n\nAn alternative solution is to return -1 in `dut_get_wp_sw()` on error. `is_write_protection_enabled()` already implicitly handles the error case, so we just need to move the comment there: `/* Assume WP is enabled on error. */`.",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 28
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0378a7ea_fb322e3b",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-07T07:36:12Z",
+      "side": 1,
+      "message": "[optional] We may allow NULL in `flashrom_get_wp()`.",
+      "range": {
+        "startLine": 132,
+        "startChar": 7,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2827a74_d53d6fbf",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-07T07:36:12Z",
+      "side": 1,
+      "message": "Then why not use size_t for wp_start and wp_len?",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 286,
+        "endChar": 10
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "807244a3_d7179068",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-07T07:36:12Z",
+      "side": 1,
+      "message": "0",
+      "range": {
+        "startLine": 294,
+        "startChar": 7,
+        "endLine": 294,
+        "endChar": 18
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf1f8ba_ba63e83e",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-07T07:36:12Z",
+      "side": 1,
+      "message": "Remove extra blank line.",
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61bfabd3_b25949de",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-07T07:36:12Z",
+      "side": 1,
+      "message": "0 (because this function doesn\u0027t return `vb2_error_t`). Otherwise please change the return type to `vb2_error_t`.",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
