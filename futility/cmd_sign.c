@@ -1139,7 +1139,7 @@ static int do_sign(int argc, char *argv[])
 	if (!sign_option.create_new_outfile) {
 		/* We'll read-modify-write the output file */
 		if (sign_option.inout_file_count > 1)
-			futil_copy_file_or_die(infile, sign_option.outfile);
+			futil_copy_file(infile, sign_option.outfile);
 		infile = sign_option.outfile;
 	}
 
