@@ -145,7 +145,7 @@ static int do_load_fmap(int argc, char *argv[])
 
 	/* okay, let's do it ... */
 	if (outfile)
-		futil_copy_file_or_die(infile, outfile);
+		futil_copy_file(infile, outfile);
 	else
 		outfile = infile;
 
