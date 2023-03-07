@@ -52,12 +52,10 @@ static void show_sig(const char *name, const struct vb21_signature *sig)
 
 int ft_show_rwsig(const char *name, void *nuthin)
 {
-	const struct vb21_signature *sig = 0;
 	const struct vb21_packed_key *pkey = show_option.pkey;
 	struct vb2_public_key key;
 	uint8_t workbuf[VB2_VERIFY_DATA_WORKBUF_BYTES]
 		 __attribute__((aligned(VB2_WORKBUF_ALIGN)));
-	struct vb2_workbuf wb;
 	uint32_t data_size, sig_size = SIGNATURE_RSVD_SIZE;
 	uint32_t total_data_size = 0;
 	uint8_t *data;
@@ -66,18 +64,16 @@ int ft_show_rwsig(const char *name, void *nuthin)
 	int fd = -1;
 	uint8_t *buf;
 	uint32_t len;
-	int rv;
+	int rv = 1;
 
 	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
-
-	rv = 1;
 
 	VB2_DEBUG("name %s len 0x%08x (%d)\n", name, len, len);
 
 	/* Am I just looking at a signature file? */
 	VB2_DEBUG("Looking for signature at 0x0\n");
-	sig = (const struct vb21_signature *)buf;
+	const struct vb21_signature *sig = (const struct vb21_signature *)buf;
 	if (VB2_SUCCESS == vb21_verify_signature(sig, len)) {
 		show_sig(name, sig);
 		if (!show_option.fv) {
@@ -180,6 +176,7 @@ int ft_show_rwsig(const char *name, void *nuthin)
 	{
 		uint8_t sigbuf[sig->c.total_size];
 		memcpy(sigbuf, sig, sizeof(sigbuf));
+		struct vb2_workbuf wb;
 
 		vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
 
@@ -423,14 +420,13 @@ done:
 
 enum futil_file_type ft_recognize_rwsig(uint8_t *buf, uint32_t len)
 {
-	FmapHeader *fmap;
 	const struct vb21_signature *sig = NULL;
 	uint32_t sig_size;
 
 	if (!vb21_verify_signature((const struct vb21_signature *)buf, len))
 		return FILE_TYPE_RWSIG;
 
-	fmap = fmap_find(buf, len);
+	FmapHeader *fmap = fmap_find(buf, len);
 	if (fmap) {
 		/* This looks like a full image. */
 		FmapAreaHeader *fmaparea;
