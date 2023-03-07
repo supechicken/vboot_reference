@@ -288,6 +288,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd600c30_3e1e4337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-07T02:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158e72cb_dd3d8bf7",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6557d6a7_38878331",
@@ -323,6 +341,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a82612a_7e84673b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-07T02:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e33b383_0ebb94d3",
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68889d69_582f7293",
@@ -336,6 +372,30 @@
       "writtenOn": "2023-02-24T10:00:58Z",
       "side": 1,
       "message": "Can you create a CL to remove these?  We are not using minios partitions from factory shims.",
+      "range": {
+        "startLine": 1283,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 47
+      },
+      "revId": "a46a31c8fb687afb0d5b0ff370c5971be5f1f2e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2959a967_3e177713",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-07T02:22:06Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "68889d69_582f7293",
       "range": {
         "startLine": 1283,
         "startChar": 0,
