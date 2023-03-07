@@ -155,6 +155,8 @@ CFLAGS += -DCHROMEOS_ENVIRONMENT ${COMMON_FLAGS}
 endif
 
 CFLAGS += -std=gnu11
+# off64_t requires -D_LARGEFILE64_SOURCE as vboot_ref has its own CFLAGS.
+CFLAGS += -D_LARGEFILE64_SOURCE
 
 # test_ccflag
 # $(1): compiler flags to test
