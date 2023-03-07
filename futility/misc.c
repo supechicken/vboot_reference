@@ -16,6 +16,7 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
+#include <sys/sendfile.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -210,58 +211,24 @@ int futil_set_gbb_hwid(struct vb2_gbb_header *gbb, const char *hwid)
 	return VB2_SUCCESS;
 }
 
-/*
- * TODO: All sorts of race conditions likely here, and everywhere this is used.
- * Do we care? If so, fix it.
- */
-void futil_copy_file_or_die(const char *infile, const char *outfile)
+int futil_copy_file(const char *infile, const char *outfile)
 {
-	pid_t pid;
-	int status;
-
 	VB2_DEBUG("%s -> %s\n", infile, outfile);
 
-	pid = fork();
-
-	if (pid < 0) {
-		fprintf(stderr, "Couldn't fork /bin/cp process: %s\n",
-			strerror(errno));
-		exit(1);
+	int ifd, ofd;
+	if ((ifd = open(infile, O_RDONLY)) == -1)
+		return -1;
+	if ((ofd = creat(outfile, 0660)) == -1) {
+		close(ifd);
+		return -1;
 	}
-
-	/* child */
-	if (!pid) {
-		execl("/bin/cp", "/bin/cp", infile, outfile, NULL);
-		fprintf(stderr, "Child couldn't exec /bin/cp: %s\n",
-			strerror(errno));
-		exit(1);
-	}
-
-	/* parent - wait for child to finish */
-	if (wait(&status) == -1) {
-		fprintf(stderr,
-			"Couldn't wait for /bin/cp process to exit: %s\n",
-			strerror(errno));
-		exit(1);
-	}
-
-	if (WIFEXITED(status)) {
-		status = WEXITSTATUS(status);
-		/* zero is normal exit */
-		if (!status)
-			return;
-		fprintf(stderr, "/bin/cp exited with status %d\n", status);
-		exit(1);
-	}
-
-	if (WIFSIGNALED(status)) {
-		status = WTERMSIG(status);
-		fprintf(stderr, "/bin/cp was killed with signal %d\n", status);
-		exit(1);
-	}
-
-	fprintf(stderr, "I have no idea what just happened\n");
-	exit(1);
+	struct stat finfo = {0};
+	fstat(ifd, &finfo);
+	off_t bcopied;
+	ssize_t ret = sendfile(ofd, ifd, &bcopied, finfo.st_size);
+	close(ifd);
+	close(ofd);
+	return ret;
 }
 
 enum futil_file_err futil_open_file(const char *infile, int *fd,
