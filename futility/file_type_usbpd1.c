@@ -30,15 +30,15 @@
 #include "util_misc.h"
 
 /* Return 1 if okay, 0 if not */
-static int parse_size_opts(uint32_t len,
+static int parse_size_opts(const uint32_t len,
 			   uint32_t *ro_size_ptr, uint32_t *rw_size_ptr,
 			   uint32_t *ro_offset_ptr, uint32_t * rw_offset_ptr)
 {
-	uint32_t ro_size, rw_size, ro_offset, rw_offset;
-
 	/* Assume the image has both RO and RW, evenly split. */
-	ro_offset = 0;
-	ro_size = rw_size = rw_offset = len / 2;
+	uint32_t ro_offset = 0;
+	uint32_t ro_size = len / 2;
+	uint32_t rw_size = len / 2;
+	uint32_t rw_offset = len / 2;
 
 	/* Unless told otherwise... */
 	if (sign_option.ro_size != 0xffffffff)
@@ -326,7 +326,7 @@ static vb2_error_t vb21_sig_from_usbpd1(struct vb21_signature **sig,
 		.sig_size = vb2_rsa_sig_size(sig_alg),
 		.sig_offset = sizeof(s),
 	};
-	uint32_t total_size = sizeof(s) + o_sig_size;
+	const uint32_t total_size = sizeof(s) + o_sig_size;
 	uint8_t *buf = calloc(1, total_size);
 	if (!buf)
 		return VB2_ERROR_UNKNOWN;
@@ -436,7 +436,6 @@ static vb2_error_t check_self_consistency(const uint8_t *buf, const char *name,
 int ft_show_usbpd1(const char *name, void *data)
 {
 	uint32_t ro_size, rw_size, ro_offset, rw_offset;
-	int s, h;
 	int fd = -1;
 	uint8_t *buf;
 	uint32_t len;
@@ -459,8 +458,8 @@ int ft_show_usbpd1(const char *name, void *data)
 	}
 
 	/* TODO: Only loop through the numbers we haven't been given */
-	for (s = 0; s < ARRAY_SIZE(sigs); s++) {
-		for (h = 0; h < ARRAY_SIZE(hashes); h++) {
+	for (unsigned int s = 0; s < ARRAY_SIZE(sigs); s++) {
+		for (unsigned int h = 0; h < ARRAY_SIZE(hashes); h++) {
 			if (!check_self_consistency(buf, name, ro_size, rw_size,
 						    ro_offset, rw_offset,
 						    sigs[s], hashes[h])) {
@@ -478,9 +477,6 @@ done:
 
 enum futil_file_type ft_recognize_usbpd1(uint8_t *buf, uint32_t len)
 {
-	uint32_t ro_size, rw_size, ro_offset, rw_offset;
-	int s, h;
-
 	/*
 	 * Since we don't use any headers to identify or locate the pubkey and
 	 * signature, in order to identify blob as the right type we have to
@@ -488,16 +484,20 @@ enum futil_file_type ft_recognize_usbpd1(uint8_t *buf, uint32_t len)
 	 * split. Then we just try to use what we think might be the pubkey to
 	 * validate what we think might be the signature.
 	 */
-	ro_offset = 0;
-	ro_size = rw_size = rw_offset = len / 2;
+	const uint32_t ro_offset = 0;
+	const uint32_t ro_size = len / 2;
+	const uint32_t rw_size = len / 2;
+	const uint32_t rw_offset = len / 2;
 
-	for (s = 0; s < ARRAY_SIZE(sigs); s++)
-		for (h = 0; h < ARRAY_SIZE(hashes); h++)
+	for (unsigned int s = 0; s < ARRAY_SIZE(sigs); s++) {
+		for (unsigned int h = 0; h < ARRAY_SIZE(hashes); h++) {
 			if (!check_self_consistency(buf, 0,
 						    ro_size, rw_size,
 						    ro_offset, rw_offset,
 						    sigs[s], hashes[h]))
 				return FILE_TYPE_USBPD1;
+		}
+	}
 
 	return FILE_TYPE_UNKNOWN;
 }
