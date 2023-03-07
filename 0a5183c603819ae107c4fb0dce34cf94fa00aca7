@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81cfee85_905ffbbd",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-07T08:19:29Z",
+      "side": 1,
+      "message": "Because `size_t` is the machine native size not the spi flash native size. flashrom is actually in correct in this regard however requires a bunch of work to fix it",
+      "parentUuid": "c2827a74_d53d6fbf",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 286,
+        "endChar": 10
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "807244a3_d7179068",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 8
