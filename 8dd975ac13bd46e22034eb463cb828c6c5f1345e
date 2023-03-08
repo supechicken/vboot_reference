@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2108efa_b2c149ca",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-08T02:21:47Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll leave ro range logic as is for now and work on it in a new CL.",
+      "parentUuid": "5ce5724b_02e0823d",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 95
+      },
+      "revId": "8dd975ac13bd46e22034eb463cb828c6c5f1345e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca59f77a_d7858bb3",
