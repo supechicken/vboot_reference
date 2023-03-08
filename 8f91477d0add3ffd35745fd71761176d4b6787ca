@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac1a9204_9bbffac7",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T10:26:38Z",
+      "side": 1,
+      "message": "I also thought about this but sort of liked _utility as a suffix as to mitigate some confusion with the update command. Certainly a lot of overloaded terms in this space sadly.",
+      "parentUuid": "37471f08_6519ff8a",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56d4e454_d79bfc4e",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
@@ -174,6 +192,30 @@
       "writtenOn": "2023-03-08T09:02:27Z",
       "side": 1,
       "message": "Maybe just `FMAP_RO` to have a common prefix?",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7897c17a_4993676b",
+        "filename": "futility/updater.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T10:26:38Z",
+      "side": 1,
+      "message": "I thought about this one too however the suffix name is the name of the region and so you end up with `FMAP_RO_WP_RO` so it is actually the first entry that is wrong not this one. i.e., `FMAP_RO_FMAP` should perhaps just be called `FMAP_FMAP` if we were to split hairs. Also `FMAP_RO_CBFS` should be `FMAP_COREBOOT`, therefore I don\u0027t think there is a consistent way to name these as the regions were never consistently named in the first place.\n\nA probable fix here is to rename all the prefixes from `FMAP_` to `FLASH_REGION_`, but outside the scope of this patch.",
+      "parentUuid": "cd52c420_afcc2fa6",
       "range": {
         "startLine": 16,
         "startChar": 12,
