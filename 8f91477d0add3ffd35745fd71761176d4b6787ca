@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc97c3d0_01beb4da",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T23:36:18Z",
+      "side": 1,
+      "message": "I feel like this lines up with `cmd_gbb_utility.c:read_from_flash()` in a consistent and robust way. It would be a better idea to leave this as-is and follow up with a patch that factors out common access patterns afterwards not have subtle different ways of using flashrom_drv providers each time.\n\nThe flashrom_drv internal API is already a mess due to the subprocess quark. As an aside, I cannot see the advantage to using low-level raw region offsets from flashrom directly than just asking for the region by name and allowing `fmap_find_by_name()` to fall upon the trivial base case and do it\u0027s intended job. All that said, feels like a bit of a tangent to this patch.",
+      "parentUuid": "5fa2876c_a9518ee9",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56eddce6_aed5ad24",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
@@ -164,6 +188,99 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecd4b6fc_cd26efac",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T23:36:18Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "2d52f9f0_124087e8",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68605298_49458030",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T23:36:18Z",
+      "side": 1,
+      "message": "`STATUS(`",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 7
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8944bb_a5bd75b0",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T23:36:18Z",
+      "side": 1,
+      "message": "maybe worth adding a line or two here that explains the purpose of the sub-command. Perhaps something like,\n\n\"Allows for the management of AP SPI flash registers and configuration.\\n\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 12
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e54a38_0f905426",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T23:36:18Z",
+      "side": 1,
+      "message": "I noticed `futility flash` just returns with no help.",
+      "range": {
+        "startLine": 192,
+        "startChar": 18,
+        "endLine": 192,
+        "endChar": 21
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66dbfd23_e8e6cb75",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
@@ -175,6 +292,29 @@
       "writtenOn": "2023-03-08T09:02:27Z",
       "side": 1,
       "message": "Do we need `prepare_servo_control`?",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e69bd70_0eca0709",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-08T23:36:18Z",
+      "side": 1,
+      "message": "\"h registers.\"",
+      "range": {
+        "startLine": 236,
+        "startChar": 44,
+        "endLine": 236,
+        "endChar": 45
+      },
       "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
