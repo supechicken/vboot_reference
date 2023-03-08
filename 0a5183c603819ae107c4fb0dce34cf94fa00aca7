@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c22c9033_a12a719e",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-08T05:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "405b791f_30c79aeb",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 28
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0378a7ea_fb322e3b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-07T07:36:12Z",
       "side": 1,
       "message": "[optional] We may allow NULL in `flashrom_get_wp()`.",
+      "range": {
+        "startLine": 132,
+        "startChar": 7,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee037b4c_f9989e34",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-08T05:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0378a7ea_fb322e3b",
       "range": {
         "startLine": 132,
         "startChar": 7,
@@ -141,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9ae2f8_eb2a8a8c",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-08T05:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "807244a3_d7179068",
+      "range": {
+        "startLine": 294,
+        "startChar": 7,
+        "endLine": 294,
+        "endChar": 18
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcf1f8ba_ba63e83e",
@@ -158,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b4c4f4_ff71b2c0",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-08T05:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf1f8ba_ba63e83e",
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61bfabd3_b25949de",
@@ -171,6 +261,30 @@
       "writtenOn": "2023-03-07T07:36:12Z",
       "side": 1,
       "message": "0 (because this function doesn\u0027t return `vb2_error_t`). Otherwise please change the return type to `vb2_error_t`.",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "0a5183c603819ae107c4fb0dce34cf94fa00aca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5514958_c5552fc6",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-08T05:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61bfabd3_b25949de",
       "range": {
         "startLine": 85,
         "startChar": 11,
