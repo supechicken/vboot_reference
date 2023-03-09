@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "138465ab_5e3a87a5",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-09T04:07:59Z",
+      "side": 1,
+      "message": "Yeah, when I first saw the commit subject, I though it\u0027s for \"flash writing\". Maybe `cmd_flash_util.c` then (we have cmd_vbutil_firmware.c, updater_utils.c, updater_utils.c)?",
+      "parentUuid": "ac1a9204_9bbffac7",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56d4e454_d79bfc4e",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "I feel like this lines up with `cmd_gbb_utility.c:read_from_flash()` in a consistent and robust way. It would be a better idea to leave this as-is and follow up with a patch that factors out common access patterns afterwards not have subtle different ways of using flashrom_drv providers each time.\n\nThe flashrom_drv internal API is already a mess due to the subprocess quark. As an aside, I cannot see the advantage to using low-level raw region offsets from flashrom directly than just asking for the region by name and allowing `fmap_find_by_name()` to fall upon the trivial base case and do it\u0027s intended job. All that said, feels like a bit of a tangent to this patch.",
       "parentUuid": "5fa2876c_a9518ee9",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b019bbd_84f20a6c",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-09T04:07:59Z",
+      "side": 1,
+      "message": "\u003e I feel like this lines up with cmd_gbb_utility.c:read_from_flash() in a consistent and robust way.\n\nCL:4251504 is considered a workaround for `futility gbb` to avoid duplicate flash read and the misleading warning message.\n\n\u003e I cannot see the advantage to using low-level raw region offsets from flashrom directly than just asking for the region by name and allowing fmap_find_by_name() to fall upon the trivial base case and do it\u0027s intended job.\n\nOkay, that\u0027s a fair point. I was also thinking about using `flashrom_read_region()` (without changing the signature) to read a single section, which is our use case. However, that function moves the data to the beginning of the `image-\u003edata` buffer, so it would be weird to pass it to `fmap_find_by_name()`, although in practice I think the function call should still succeed.\n\nUnfortunately using `fmap_find_by_name()` still has the duplicate FMAP searching problem. In `flashrom_read_image` the FMAP section is searched in the flash (by `flashrom_layout_read_fmap_from_rom`). And then `fmap_find_by_name` will search the FMAP again (by `fmap_find`), even if we already know the FMAP content is the only data somewhere in the large `image-\u003edata` buffer.\n\nTo solve the problem I think both flashrom_drv.c and fmap.c need to be better integrated with libflashrom. For now, since there is no perfect solution, I\u0027m fine with the current code (but still leaning toward my proposed `flashrom_read_region` solution).",
+      "parentUuid": "fc97c3d0_01beb4da",
       "range": {
         "startLine": 23,
         "startChar": 1,
@@ -281,6 +323,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c02729e_982afc2f",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-09T04:07:59Z",
+      "side": 1,
+      "message": "Right, this needs to be fixed.",
+      "parentUuid": "94e54a38_0f905426",
+      "range": {
+        "startLine": 192,
+        "startChar": 18,
+        "endLine": 192,
+        "endChar": 21
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66dbfd23_e8e6cb75",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
@@ -356,6 +422,30 @@
       "side": 1,
       "message": "I thought about this one too however the suffix name is the name of the region and so you end up with `FMAP_RO_WP_RO` so it is actually the first entry that is wrong not this one. i.e., `FMAP_RO_FMAP` should perhaps just be called `FMAP_FMAP` if we were to split hairs. Also `FMAP_RO_CBFS` should be `FMAP_COREBOOT`, therefore I don\u0027t think there is a consistent way to name these as the regions were never consistently named in the first place.\n\nA probable fix here is to rename all the prefixes from `FMAP_` to `FLASH_REGION_`, but outside the scope of this patch.",
       "parentUuid": "cd52c420_afcc2fa6",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7343f9_c95f7a40",
+        "filename": "futility/updater.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-09T04:07:59Z",
+      "side": 1,
+      "message": "I think the existing naming is consistent in the sense that\n\n- RO section is named `FMAP_RO_${SIMPLIFIED_NAME}`\n- RW section is named `FMAP_RW_${SIMPLIFIED_NAME}`\n\nFollowing that logic, the whole WP_RO section should be `FMAP_RO \u003d \"WP_RO\"` here, since `FMAP_RO` suggests its the parent of all the other `FMAP_RO_*`. I\u0027d also suggest moving `FMAP_RO` to the first entry.",
+      "parentUuid": "7897c17a_4993676b",
       "range": {
         "startLine": 16,
         "startChar": 12,
