@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f20b1286_25913891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-09T07:16:57Z",
+      "side": 1,
+      "message": "I agree \u0027dying is bad\u0027, but you\u0027re introducing a behavior change. If copy failed, for example disk is full previously the command will fail. Now since no one checks the return value, the command would return success, making it harder to debug.\n\nI think we need to check the return value when the new file copy function is invoked.",
+      "revId": "d5d44335a5d2dc052bccd138ec7572fa60194d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efeaf16_4445287f",
+        "filename": "futility/misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-09T07:16:57Z",
+      "side": 1,
+      "message": "there is a behavior change. for cp it inherits the umask, but here you always do it as 0660. This change should be described in the commit description so if anything goes wrong it\u0027s easier for developers to figure out what happened.",
+      "range": {
+        "startLine": 223,
+        "startChar": 27,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "d5d44335a5d2dc052bccd138ec7572fa60194d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
