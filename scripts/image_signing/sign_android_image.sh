@@ -8,9 +8,6 @@
 . "$(dirname "$0")/lib/sign_android_lib.sh"
 load_shflags || exit 1
 
-DEFINE_boolean use_apksigner "${FLAGS_FALSE}" \
-  "Use apksigner instead of signapk for APK signing"
-
 FLAGS_HELP="
 Usage: $PROG /path/to/cros_root_fs/dir /path/to/keys/dir
 
@@ -95,33 +92,24 @@ build flavor '${flavor_prop}'."
     # Explicitly remove existing signature.
     zip -q "${temp_apk}" -d "META-INF/*"
 
-    if [ "${FLAGS_use_apksigner}" = "$FLAGS_FALSE" ]; then
-      # Signapk now creates signature of APK Signature Scheme v2. No further APK
-      # changes should happen afterward.  Also note that signapk now takes care
-      # of zipalign.
-      signapk "${key_dir}/$keyname.x509.pem" "${key_dir}/$keyname.pk8" \
-          "${temp_apk}" "${signed_apk}" > /dev/null
-    else
-      # Key rotation: old key can sign a new key and generate a lineage file.
-      # Provided the lineage file, Android P can honor the new key. Lineage file
-      # can be generated similar to the following command:
-      #
-      # apksigner rotate --out media.lineage --old-signer --key old-media.pk8
-      # --cert old-media.x509.pem --new-signer --key new-media.pk8 --cert
-      # new-media.x509.pem
-      #
-      # TODO(b/132818552): disable v1 signing once a check is removed.
+    # Key rotation: old key can sign a new key and generate a lineage file.
+    # Provided the lineage file, Android P can honor the new key. Lineage file
+    # can be generated similar to the following command:
+    #
+    # apksigner rotate --out media.lineage --old-signer --key old-media.pk8
+    # --cert old-media.x509.pem --new-signer --key new-media.pk8 --cert
+    # new-media.x509.pem
 
-      local extra_flags
-      local lineage_file="${key_dir}/$keyname.lineage}"
-      if [ -f ${lineage_file} ]; then
-        extra_flags="--lineage ${lineage_file}"
-      fi
-      apksigner sign --v1-signing-enabled true --v2-signing-enabled false \
-        --key "${key_dir}/$keyname.pk8" --cert "${key_dir}/$keyname.x509.pem" \
-        --in "${temp_apk}" --out "${signed_apk}" \
-        ${extra_flags}
+    local extra_flags
+    local lineage_file="${key_dir}/${keyname}.lineage}"
+    if [ -f ${lineage_file} ]; then
+      extra_flags="--lineage ${lineage_file}"
     fi
+    apksigner sign --v1-signing-enabled false --v2-signing-enabled false \
+      --key "${key_dir}/${keyname}.pk8" --cert "${key_dir}/${keyname}.x509.pem" \
+      --in "${temp_apk}" --out "${signed_apk}" \
+      ${extra_flags}
+
     if ! image_content_integrity_check "${system_mnt}" "${working_dir}" \
                                        "sign apk ${signed_apk}"; then
       return 1
