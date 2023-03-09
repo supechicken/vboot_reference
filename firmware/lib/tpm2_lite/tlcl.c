@@ -525,6 +525,12 @@ uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
 	case TPM_SUCCESS:
 		break;
 
+	/*
+	 * 0x14a is the official NV_UNINITIALIZED code that is returned when
+	 * a space was created but not written. 0x28b is a cr50-specific code
+	 * that is returned when the space does not exist.
+	 */
+	case 0x14a:
 	case 0x28b:
 		return TPM_E_BADINDEX;
 
