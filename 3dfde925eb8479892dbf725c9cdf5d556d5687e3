@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5acd2d1f_eb769e43",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-10T10:03:26Z",
+      "side": 1,
+      "message": "maybe just `\"%s failed.\\n\", __func__` make the logs easier.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6066040_3d200131",
         "filename": "futility/cmd_flash_util.c",
         "patchSetId": 20
@@ -83,6 +106,29 @@
         "startChar": 54,
         "endLine": 83,
         "endChar": 56
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cffc380_725e6d43",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-10T10:03:26Z",
+      "side": 1,
+      "message": "can you make srp hex as well so the tuple here is all in the same base-16.",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 42
       },
       "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
