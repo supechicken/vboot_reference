@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f934647_510eb11e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T04:04:29Z",
+      "side": 1,
+      "message": "72 chars per line please.",
+      "revId": "f5f311dc315b3f810863041b0f605c851c1bf782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bef1c02_040b3ab1",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T04:04:29Z",
+      "side": 1,
+      "message": "Indentation. Consider one arg per line.",
+      "revId": "f5f311dc315b3f810863041b0f605c851c1bf782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8afd4fb6_674a791b",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T04:04:29Z",
+      "side": 1,
+      "message": "The `opt_` prefix in these arguments can be dropped. Still need it in `do_create()`, but not here.",
+      "revId": "f5f311dc315b3f810863041b0f605c851c1bf782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "870cadd7_2f161a51",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T04:04:29Z",
+      "side": 1,
+      "message": "Indentation.",
+      "revId": "f5f311dc315b3f810863041b0f605c851c1bf782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f202d3d7_db46eece",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T04:04:29Z",
+      "side": 1,
+      "message": "(Not directly related to this CL) Make it a macro, and use `strncpy` for `strcpy(outext, \".vbprivk\");`",
+      "range": {
+        "startLine": 386,
+        "startChar": 32,
+        "endLine": 386,
+        "endChar": 34
+      },
+      "revId": "f5f311dc315b3f810863041b0f605c851c1bf782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df7d548_b68ccac6",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T04:04:29Z",
+      "side": 1,
+      "message": "Indentation.",
+      "revId": "f5f311dc315b3f810863041b0f605c851c1bf782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
