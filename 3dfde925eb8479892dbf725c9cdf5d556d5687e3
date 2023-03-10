@@ -62,6 +62,30 @@
       },
       "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48013f2e_60cf75f5",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-10T09:56:40Z",
+      "side": 1,
+      "message": "10 ?! I wouldn\u0027t expect a start to be \u003e16MB, certainly not GB.",
+      "parentUuid": "2c12d883_c5fba122",
+      "range": {
+        "startLine": 83,
+        "startChar": 54,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
