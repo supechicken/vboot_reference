@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4661b972_01274612",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T08:32:46Z",
+      "side": 1,
+      "message": "Thanks.\n\n\u003e Long strings - splitting them would break code searchability.\n\nThat\u0027s the right thing to do, as vboot_reference follows [coreboot coding style](https://doc.coreboot.org/contributing/coding_style.html#breaking-long-lines-and-strings).",
+      "parentUuid": "c3a5c8e3_f4a68d04",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fa2876c_a9518ee9",
@@ -192,6 +210,30 @@
       "side": 1,
       "message": "Ack, this seems like a good thing to refactor in the future but for now `fmap_find_by_name()` is the cleanest solution.\n\n`fmap_find_by_name()` is used in other places as well that could maybe be optimized as well so it is a good thing to do seperately.",
       "parentUuid": "8b019bbd_84f20a6c",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d12850be_5f95600c",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T08:32:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01b34312_f573a2fe",
       "range": {
         "startLine": 23,
         "startChar": 1,
@@ -598,6 +640,24 @@
       "side": 1,
       "message": "Maybe, I actually haven\u0027t tested on a servo yet but I think it would be useful to be able to run this over a servo as well as on the host.\n\nWhat do you think @quasisec@chromium.org",
       "parentUuid": "66dbfd23_e8e6cb75",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a76eeac0_4f3170af",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T08:32:46Z",
+      "side": 1,
+      "message": "Note that printing `SHARED_FLASH_ARGS_HELP` and calling `handle_flash_argument` imply that servo is supported.",
+      "parentUuid": "d8d4a252_dead1a72",
       "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ba7266_77c3f4e5",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T08:32:46Z",
+      "side": 1,
+      "message": "Unrelated change should be in a separate CL. Probably just ignore the warning for this CL.",
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6066040_3d200131",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T08:32:46Z",
+      "side": 1,
+      "message": "Note that the 8 chars include the \"0x\" prefix, so the result will be like `0x000005`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c12d883_c5fba122",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-10T08:32:46Z",
+      "side": 1,
+      "message": "Same here. What you want is `%#010x`.",
+      "range": {
+        "startLine": 83,
+        "startChar": 54,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
