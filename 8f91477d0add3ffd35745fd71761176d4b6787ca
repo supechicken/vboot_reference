@@ -682,6 +682,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2136e7bc_7fda7621",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-11T02:56:24Z",
+      "side": 1,
+      "message": "I think we need to support servo in this CL, unless we want to modify the help text.",
+      "parentUuid": "7c3d3845_6b541e4a",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e69bd70_0eca0709",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
