@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cbfe189_95143746",
+        "filename": "Makefile",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-12T22:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8ba7266_77c3f4e5",
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5acd2d1f_eb769e43",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62443940_250f9306",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-12T22:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5acd2d1f_eb769e43",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6066040_3d200131",
@@ -71,6 +113,30 @@
       "writtenOn": "2023-03-10T08:32:46Z",
       "side": 1,
       "message": "Note that the 8 chars include the \"0x\" prefix, so the result will be like `0x000005`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 24,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3140db1_5b9a5160",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-12T22:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6066040_3d200131",
       "range": {
         "startLine": 26,
         "startChar": 24,
@@ -170,6 +236,54 @@
         "startChar": 54,
         "endLine": 83,
         "endChar": 56
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc986ef_00023316",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-12T22:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5b4077_ca59fe44",
+      "range": {
+        "startLine": 83,
+        "startChar": 54,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2035fe_f6c400f4",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-12T22:47:02Z",
+      "side": 1,
+      "message": "This is just a single bit, 0/1 seems cleaner to me.\n\nAlso format strings like `%#010x` will print `0000000000` instead of `0x00000000` if the value is `0` so there isn\u0027t much consistency here anyway.",
+      "parentUuid": "5cffc380_725e6d43",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 42
       },
       "revId": "3dfde925eb8479892dbf725c9cdf5d556d5687e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
