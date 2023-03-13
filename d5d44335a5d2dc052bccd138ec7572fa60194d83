@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "704b240d_df13ae75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-13T05:35:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f20b1286_25913891",
+      "revId": "d5d44335a5d2dc052bccd138ec7572fa60194d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6efeaf16_4445287f",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-09T07:16:57Z",
       "side": 1,
       "message": "there is a behavior change. for cp it inherits the umask, but here you always do it as 0660. This change should be described in the commit description so if anything goes wrong it\u0027s easier for developers to figure out what happened.",
+      "range": {
+        "startLine": 223,
+        "startChar": 27,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "d5d44335a5d2dc052bccd138ec7572fa60194d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95033b4c_b79d70fc",
+        "filename": "futility/misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-13T05:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6efeaf16_4445287f",
       "range": {
         "startLine": 223,
         "startChar": 27,
