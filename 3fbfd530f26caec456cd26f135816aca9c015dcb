@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933d2970_d11e8939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-13T10:47:07Z",
+      "side": 1,
+      "message": "just one more nit!",
+      "revId": "3fbfd530f26caec456cd26f135816aca9c015dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af470a95_cc1d3119",
+        "filename": "futility/misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-13T10:47:07Z",
+      "side": 1,
+      "message": "Thanks so much for the modification. There is one more thing left. In the original code, if copy failed then before exit(1) the failure reason will be printed. That gave some clue for debugging - at least you saw where (cp) it failed. In current implementation we will call fcopyfile and then silently exit(1).\n\nCan you either make it:\n (1) before the all exit(1), print messages like \"ERROR: failed to copy %s-\u003e%s\"; or\n (2) add here - check ret and print \"ERROR: failed to copy %s-\u003e%s\" on error.",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "3fbfd530f26caec456cd26f135816aca9c015dcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
