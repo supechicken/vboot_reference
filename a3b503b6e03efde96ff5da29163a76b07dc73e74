@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b647825d_620523e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-13T10:50:12Z",
+      "side": 1,
+      "message": "Be aware that the ERROR will prefix the some more info (\"ERROR\" and function name) to the output messages. We should mention that in the commit messages so it will be easier for other tests or scripts calling this program to figure out what has been changed (and caused their message parsing to fail, if any).",
+      "revId": "a3b503b6e03efde96ff5da29163a76b07dc73e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c206090_39024fdf",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-13T10:50:12Z",
+      "side": 1,
+      "message": "This change is not \"clean up prints\". Did you fix it because the compiler complained anything?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "a3b503b6e03efde96ff5da29163a76b07dc73e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
