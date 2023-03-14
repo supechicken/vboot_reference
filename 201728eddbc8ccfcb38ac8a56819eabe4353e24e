@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bda85d_67734ca3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-14T18:28:35Z",
+      "side": 1,
+      "message": "+2 with comment on comment actually",
+      "revId": "201728eddbc8ccfcb38ac8a56819eabe4353e24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d30f0a_10f0e35f",
+        "filename": "firmware/lib/tpm2_lite/tlcl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-03-14T18:28:35Z",
+      "side": 1,
+      "message": "actually, just noticed wrong info on the comment.\n \nlike 0x14a, 0x28b is also coming from the spec: RC_FMT1 (0x80) + TPM_RC_HANDLE (0xB) + TPM_RC_2 (0x200), which translates something like \"unknown handle #2\" in the command - it doesn\u0027t know the handle of the nvmem space (which is #2 in params, #1 is authHandle) because the space is not defined.\n\n0x14a is using a simpler Format-Zero encoding: RC_VER1 (0x100) + TPM_RC_NV_UNINITIALIZED (0x4a). but both codes are per spec, not cr50-specific.",
+      "range": {
+        "startLine": 530,
+        "startChar": 41,
+        "endLine": 530,
+        "endChar": 70
+      },
+      "revId": "201728eddbc8ccfcb38ac8a56819eabe4353e24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
