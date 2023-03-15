@@ -734,6 +734,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb117a6d_d4cfb84a",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-15T03:48:50Z",
+      "side": 1,
+      "message": "It turns out I was missing a call to `prepare_servo_control()`, `--servo` works now.",
+      "parentUuid": "3cc2f7a5_59fe635c",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e69bd70_0eca0709",
