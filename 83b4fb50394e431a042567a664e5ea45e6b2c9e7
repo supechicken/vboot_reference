@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c13df6_4ec2a287",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-15T00:31:25Z",
+      "side": 1,
+      "message": "I\u0027ve changed this back to printf because WARN was printing extra info that made the output format inconsistent with the enabled/disabled cases.\n\nThis needs to be consistent so that scripts etc can parse it without breaking.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 8
+      },
+      "revId": "83b4fb50394e431a042567a664e5ea45e6b2c9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
