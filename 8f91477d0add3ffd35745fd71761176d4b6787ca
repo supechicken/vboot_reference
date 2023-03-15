@@ -752,6 +752,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10765b20_fb7b6e4e",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-15T06:00:59Z",
+      "side": 1,
+      "message": "Ah, I just realized I misunderstood the original comment. I thought it was suggesting removing all servo support, not pointing out the function call I missed lol.",
+      "parentUuid": "bb117a6d_d4cfb84a",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e69bd70_0eca0709",
