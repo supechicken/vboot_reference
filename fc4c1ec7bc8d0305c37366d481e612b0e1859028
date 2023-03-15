@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6286c3b4_066c7f77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-15T13:56:47Z",
+      "side": 1,
+      "message": "I guess the original author did that in case if any of the opt processing would change infile - but that\u0027s not happening today so yes it is always true.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9ce0fc_78ec180d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-15T13:56:47Z",
+      "side": 1,
+      "message": "no, the optind may be changed in previous branch, so you can\u0027t assume the second check result is the same. also, the must point to a writable buffer for later strcpy.",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "556ca0ff_00a04a76",
@@ -14,6 +60,75 @@
       "writtenOn": "2023-03-15T12:32:49Z",
       "side": 1,
       "message": "+YuPing vboot owner",
+      "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b6306b5_e64180f7",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-15T13:56:47Z",
+      "side": 1,
+      "message": "This is no longer true when you removed the if (!infile) check.",
+      "range": {
+        "startLine": 365,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 58
+      },
+      "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231871b6_43713d31",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-15T13:56:47Z",
+      "side": 1,
+      "message": "how do we ensure outfile is provided? the the previous check only verified that we have infile.",
+      "range": {
+        "startLine": 375,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 26
+      },
+      "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7b9feb_8eb8227f",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-15T13:56:47Z",
+      "side": 1,
+      "message": "outext expects a buffer that we can add file name extensions, and cannot be argv.",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 35
+      },
       "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
