@@ -718,6 +718,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cc2f7a5_59fe635c",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-15T00:43:44Z",
+      "side": 1,
+      "message": "This issue seems tangential to this commit as such a problem impacts other --servo+subcmd\u0027s. Can you open a bug with the details you found and we can sort that out as a separate issue.",
+      "parentUuid": "b5d80f33_1cdbee15",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e69bd70_0eca0709",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
