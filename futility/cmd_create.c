@@ -303,8 +303,8 @@ done:
 static int do_create(int argc, char *argv[])
 {
 	int errorcnt = 0;
-	char *e, *s;
-	int i, r, len, remove_ext = 0;
+	char *e;
+	int i, r;
 
 	while ((i = getopt_long(argc, argv, "", long_opts, NULL)) != -1) {
 		switch (i) {
@@ -363,30 +363,19 @@ static int do_create(int argc, char *argv[])
 	}
 
 	/* If we don't have an input file already, we need one */
-	if (!infile) {
-		if (argc - optind <= 0) {
-			fprintf(stderr, "ERROR: missing input filename\n");
-			errorcnt++;
-		} else {
-			infile = argv[optind++];
-		}
+	if (argc - optind <= 0) {
+		fprintf(stderr, "ERROR: missing input filename\n");
+		errorcnt++;
 	}
-
 	if (errorcnt) {
 		print_help(argc, argv);
 		return 1;
 	}
-
-	/* Decide how to determine the output filenames. */
-	if (argc > optind) {
-		s = argv[optind++];		/* just use this */
-	} else {
-		s = infile;			/* based on pem file name */
-		remove_ext = 1;
-	}
+	infile = argv[optind++];
 
 	/* Make an extra-large copy to leave room for filename extensions */
-	len = strlen(s) + 20;
+	char *s = argv[optind++];
+	size_t len = strlen(s) + 20;
 	outfile = (char *)malloc(len);
 	if (!outfile) {
 		fprintf(stderr, "ERROR: malloc() failed\n");
@@ -394,16 +383,6 @@ static int do_create(int argc, char *argv[])
 	}
 	strcpy(outfile, s);
 
-	if (remove_ext) {
-		/* Find the last '/' if any, then the last '.' before that. */
-		s = strrchr(outfile, '/');
-		if (!s)
-			s = outfile;
-		s = strrchr(s, '.');
-		/* Cut off the extension */
-		if (s)
-			*s = '\0';
-	}
 	/* Remember that spot for later */
 	outext = outfile + strlen(outfile);
 
