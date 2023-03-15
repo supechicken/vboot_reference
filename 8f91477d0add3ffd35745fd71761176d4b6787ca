@@ -700,6 +700,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5d80f33_1cdbee15",
+        "filename": "futility/cmd_flash_utility.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-03-15T00:13:39Z",
+      "side": 1,
+      "message": "I\u0027ve tested with an octopus DUT and Servo v4.1: `--ccd` worked perfectly but `--servo` had problems, it looks like flashrom just can\u0027t initialize itself properly.\n\nAfter debugging it turns out that  `--servo` gets converted to the flashrom argument: `-p raiden_debug_spi:target\u003dAP,custom_rst\u003dtrue`. The problem is caused by `custom_rst\u003dtrue`. Removing it or setting it to false fixes everything.\n\nIt looks like the `custom_rst` arg was added by default in b/216832684 and https://crrev.com/c/3577658.",
+      "parentUuid": "2136e7bc_7fda7621",
+      "revId": "8f91477d0add3ffd35745fd71761176d4b6787ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e69bd70_0eca0709",
         "filename": "futility/cmd_flash_utility.c",
         "patchSetId": 14
