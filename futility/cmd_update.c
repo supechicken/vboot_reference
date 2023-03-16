@@ -152,7 +152,8 @@ static int do_update(int argc, char *argv[])
 {
 	struct updater_config *cfg;
 	struct updater_config_arguments args = {0};
-	int i, errorcnt = 0, update_needed = 1;
+	int i, errorcnt = 0;
+	bool update_needed = true;
 	const char *prepare_ctrl_name = NULL;
 	char *servo_programmer = NULL;
 	char *endptr;
@@ -183,7 +184,7 @@ static int do_update(int argc, char *argv[])
 			args.ec_image = optarg;
 			break;
 		case 't':
-			args.try_update = 1;
+			args.try_update = true;
 			break;
 		case 'a':
 			args.archive = optarg;
@@ -229,19 +230,19 @@ static int do_update(int argc, char *argv[])
 			args.sys_props = optarg;
 			break;
 		case OPT_MANIFEST:
-			args.do_manifest = 1;
+			args.do_manifest = true;
 			break;
 		case OPT_FACTORY:
-			args.is_factory = 1;
+			args.is_factory = true;
 			break;
 		case OPT_HOST_ONLY:
-			args.host_only = 1;
+			args.host_only = true;
 			break;
 		case OPT_FORCE:
-			args.force_update = 1;
+			args.force_update = true;
 			break;
 		case OPT_FAST:
-			args.fast_update = 1;
+			args.fast_update = true;
 			break;
 		case OPT_GBB_FLAGS:
 			args.gbb_flags = strtoul(optarg, &endptr, 0);
@@ -249,7 +250,7 @@ static int do_update(int argc, char *argv[])
 				ERROR("Invalid flags: %s\n", optarg);
 				errorcnt++;
 			} else {
-				args.override_gbb_flags = 1;
+				args.override_gbb_flags = true;
 			}
 			break;
 		case OPT_DUMMY:
@@ -274,14 +275,17 @@ static int do_update(int argc, char *argv[])
 		errorcnt++;
 		ERROR("Unexpected arguments.\n");
 	}
+	if (errorcnt)
+		goto end;
 
-	if (!errorcnt && args.detect_servo) {
+	if (args.detect_servo) {
 		servo_programmer = host_detect_servo(&prepare_ctrl_name);
-
-		if (!servo_programmer)
+		if (!servo_programmer) {
 			errorcnt++;
-		else if (!args.programmer)
+			goto end;
+		} else if (!args.programmer) {
 			args.programmer = servo_programmer;
+		}
 	}
 	/*
 	 * Some boards may need to fetch firmware before starting to
@@ -290,8 +294,8 @@ static int do_update(int argc, char *argv[])
 	 */
 	prepare_servo_control(prepare_ctrl_name, 1);
 
-	if (!errorcnt)
-		errorcnt += updater_setup_config(cfg, &args, &update_needed);
+	errorcnt += updater_setup_config(cfg, &args, &update_needed);
+
 	if (!errorcnt && update_needed) {
 		int r;
 		STATUS("Starting firmware updater.\n");
@@ -308,8 +312,9 @@ static int do_update(int argc, char *argv[])
 	}
 
 	prepare_servo_control(prepare_ctrl_name, 0);
-	free(servo_programmer);
 
+end:
+	free(servo_programmer);
 	updater_delete_config(cfg);
 	return !!errorcnt;
 }

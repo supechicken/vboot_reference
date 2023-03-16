@@ -221,8 +221,10 @@ static int do_flash(int argc, char *argv[])
 			args.programmer = servo_programmer;
 	}
 
-	int update_needed;
+	bool update_needed;
 	ret = updater_setup_config(cfg, &args, &update_needed);
+	if (ret)
+		goto out_free;
 	prepare_servo_control(prepare_ctrl_name, 1);
 
 	if (!ret && get_size)
@@ -237,8 +239,9 @@ static int do_flash(int argc, char *argv[])
 	if (!ret && get_wp_status)
 		ret = print_wp_status(cfg);
 
-out_free:
 	prepare_servo_control(prepare_ctrl_name, 0);
+
+out_free:
 	free(servo_programmer);
 	updater_delete_config(cfg);
 
