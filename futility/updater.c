@@ -134,7 +134,7 @@ void updater_list_config_quirks(const struct updater_config *cfg)
 
 /*
  * Applies a quirk if applicable (the value should be non-zero).
- * Returns 0 on success, otherwise failure.
+ * Returns -1 on failure, any other value on success.
  */
 static int try_apply_quirk(enum quirk_types quirk, struct updater_config *cfg)
 {
@@ -201,19 +201,19 @@ static int setup_config_quirks(const char *quirks, struct updater_config *cfg)
 
 /*
  * Checks if the section is filled with given character.
- * If section size is 0, return 0. If section is not empty, return non-zero if
- * the section is filled with same character c, otherwise 0.
+ * If section size is 0, return false. If section is not empty,
+ * return true if the section is filled with same character c, otherwise false.
  */
-static int section_is_filled_with(const struct firmware_section *section,
+static bool section_is_filled_with(const struct firmware_section *section,
 				  uint8_t c)
 {
 	uint32_t i;
 	if (!section->size)
-		return 0;
+		return false;
 	for (i = 0; i < section->size; i++)
 		if (section->data[i] != c)
-			return 0;
-	return 1;
+			return false;
+	return true;
 }
 
 /*
@@ -243,10 +243,10 @@ static const char *decide_rw_target(struct updater_config *cfg,
  * Sets any needed DUT properties to indicate system should try the new
  * firmware on next boot.
  * The `target` argument is an FMAP section name indicating which to try.
- * Returns 0 if success, non-zero if error.
+ * Return true on success, false on error.
  */
-static int set_try_cookies(struct updater_config *cfg, const char *target,
-			   int has_update)
+static bool set_try_cookies(struct updater_config *cfg, const char *target,
+			   bool has_update)
 {
 	int tries = 8;
 	const char *slot;
@@ -265,31 +265,31 @@ static int set_try_cookies(struct updater_config *cfg, const char *target,
 		slot = FWACT_B;
 	else {
 		ERROR("Unknown target: %s\n", target);
-		return -1;
+		return false;
 	}
 
 	if (cfg->emulation) {
 		INFO("(emulation) %s slot %s on next boot, try_count=%d.\n",
 		     has_update ? "Try" : "Keep", slot, tries);
-		return 0;
+		return true;
 	}
 
 	if (dut_set_property_string("fw_try_next", slot, cfg)) {
 		ERROR("Failed to set fw_try_next to %s.\n", slot);
-		return -1;
+		return false;
 	}
 	if (!has_update &&
 	    dut_set_property_string("fw_result", "success", cfg)) {
 		ERROR("Failed to set fw_result to success.\n");
-		return -1;
+		return false;
 	}
 
 	if (dut_set_property_int("fw_try_count", tries, cfg)) {
 		ERROR("Failed to set fw_try_count to %d.\n", tries);
-		return -1;
+		return false;
 	}
 
-	return 0;
+	return true;
 }
 
 int write_firmware(struct updater_config *cfg,
@@ -305,19 +305,19 @@ int write_firmware(struct updater_config *cfg,
 /*
  * Returns True if we should start the update process for given image.
  */
-static int has_valid_update(struct updater_config *cfg,
+static bool has_valid_update(struct updater_config *cfg,
 			const struct firmware_image *image,
 			const char *section_name,
 			int is_host)
 {
 	if (!image->data) {
 		VB2_DEBUG("No data in <%s> image.\n", image->programmer);
-		return 0;
+		return false;
 	}
 	if (section_name && !firmware_section_exists(image, section_name)) {
 		VB2_DEBUG("Image %s<%s> does not have section %s.\n",
 			  image->file_name, image->programmer, section_name);
-		return 0;
+		return false;
 	}
 	/* Currently only host emulation is supported. */
 	if (cfg->emulation && !is_host) {
@@ -325,25 +325,25 @@ static int has_valid_update(struct updater_config *cfg,
 		     "skipped for non-host targets in emulation.\n",
 		     section_name ? section_name : "whole image",
 		     image->file_name, image->programmer, image->size);
-		return 0;
+		return false;
 	}
-	return 1;
+	return true;
 }
 
 /*
  * Write a section from given firmware image to system firmware if possible.
  * If section_name is NULL, write whole image.  If the image has no data or if
  * the section does not exist, ignore and return success.
- * Returns 0 if success, non-zero if error.
+ * Returns true on success, false on error.
  */
-static int write_optional_firmware(struct updater_config *cfg,
+static bool write_optional_firmware(struct updater_config *cfg,
 				   const struct firmware_image *image,
 				   const char *section_name,
 				   int check_programmer_wp,
 				   int is_host)
 {
 	if (!has_valid_update(cfg, image, section_name, is_host))
-		return 0;
+		return true;
 	/*
 	 * EC & PD may have different WP settings and we want to write
 	 * only if it is OK.
@@ -351,21 +351,21 @@ static int write_optional_firmware(struct updater_config *cfg,
 	if (check_programmer_wp && is_write_protection_enabled(cfg)) {
 		ERROR("Target %s is write protected, skip updating.\n",
 		      image->programmer);
-		return 0;
+		return true;
 	}
 
-	return write_firmware(cfg, image, section_name);
+	return write_firmware(cfg, image, section_name) == 0;
 }
 
 /*
  * Preserve the GBB contents from image_from to image_to.
  * HWID is always preserved, and flags are preserved only if preserve_flags set.
- * Returns 0 if success, otherwise -1 if GBB header can't be found or if HWID is
- * too large.
+ * Returns true if success, otherwise false if GBB header can't be found or if
+ * HWID is too large.
  */
-static int preserve_gbb(const struct firmware_image *image_from,
+static bool preserve_gbb(const struct firmware_image *image_from,
 			struct firmware_image *image_to,
-			int preserve_flags, int override_flags,
+			bool preserve_flags, bool override_flags,
 			uint64_t override_value)
 {
 	const struct vb2_gbb_header *gbb_from;
@@ -379,7 +379,7 @@ static int preserve_gbb(const struct firmware_image *image_from,
 	 * on a erased device', we only need gbb_to, not gbb_from.
 	 */
 	if (!gbb_to)
-		return -1;
+		return false;
 
 	gbb_from = find_gbb(image_from);
 
@@ -390,17 +390,17 @@ static int preserve_gbb(const struct firmware_image *image_from,
 		gbb_to->flags = gbb_from->flags;
 
 	if (!gbb_from)
-		return -1;
+		return false;
 
 	/* Preserve HWID. */
-	return futil_set_gbb_hwid(
-			gbb_to, (const char *)gbb_from + gbb_from->hwid_offset);
+	return !futil_set_gbb_hwid(gbb_to, (const char *)gbb_from +
+						   gbb_from->hwid_offset);
 }
 
 /*
  * Preserves the regions locked by Intel management engine.
  */
-static int preserve_management_engine(struct updater_config *cfg,
+static bool preserve_management_engine(struct updater_config *cfg,
 				      const struct firmware_image *image_from,
 				      struct firmware_image *image_to)
 {
@@ -409,7 +409,7 @@ static int preserve_management_engine(struct updater_config *cfg,
 	find_firmware_section(&section, image_from, FMAP_SI_ME);
 	if (!section.data) {
 		VB2_DEBUG("Skipped because no section %s.\n", FMAP_SI_ME);
-		return 0;
+		return true;
 	}
 	if (section_is_filled_with(&section, 0xFF)) {
 		VB2_DEBUG("ME is probably locked - preserving %s.\n",
@@ -430,7 +430,7 @@ static int preserve_management_engine(struct updater_config *cfg,
 			  "preserve ME.\n", image_from->programmer);
 	}
 
-	return try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
+	return !try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
 }
 
 /* Preserve firmware sections by FMAP area flags. */
@@ -523,11 +523,11 @@ static int compare_section(const struct firmware_section *a,
 }
 
 /*
- * Returns if the images are different (should be updated) in given section.
- * If the section contents are the same or if the section does not exist on both
- * images, return value is 0 (no need to update). Otherwise the return value is
- * non-zero, indicating an update should be performed.
- * If section_name is NULL, compare whole images.
+ * Returns true if the images are different (should be updated) in given
+ * section. If the section contents are the same or if the section does not
+ * exist on both images, return value is false (no need to update). Otherwise
+ * the return value is true, indicating an update should be performed. If
+ * section_name is NULL, compare whole images.
  */
 static int section_needs_update(const struct firmware_image *image_from,
 				const struct firmware_image *image_to,
@@ -537,14 +537,14 @@ static int section_needs_update(const struct firmware_image *image_from,
 
 	if (!section_name) {
 		if (image_from->size != image_to->size)
-			return -1;
+			return true;
 		return memcmp(image_from->data, image_to->data, image_to->size);
 	}
 
 	find_firmware_section(&from, image_from, section_name);
 	find_firmware_section(&to, image_to, section_name);
 
-	return compare_section(&from, &to);
+	return !!compare_section(&from, &to);
 }
 
 /*
@@ -662,9 +662,9 @@ static int verify_keyblock(const struct vb2_keyblock *block,
  * The section should contain a vb2_keyblock and a vb2_fw_preamble immediately
  * after keyblock so we can decode and save the data key and firmware version
  * into argument `data_key_version` and `firmware_version`.
- * Returns 0 for success, otherwise failure.
+ * Returns true for success, false otherwise.
  */
-static int get_key_versions(const struct firmware_image *image,
+static bool get_key_versions(const struct firmware_image *image,
 			    const char *section_name,
 			    unsigned int *data_key_version,
 			    unsigned int *firmware_version)
@@ -673,14 +673,14 @@ static int get_key_versions(const struct firmware_image *image,
 	const struct vb2_fw_preamble *pre;
 
 	if (!keyblock)
-		return -1;
+		return false;
 	*data_key_version = keyblock->data_key.key_version;
 	pre = (struct vb2_fw_preamble *)((uint8_t*)keyblock +
 					 keyblock->keyblock_size);
 	*firmware_version = pre->firmware_version;
 	VB2_DEBUG("%s: data key version = %d, firmware version = %d\n",
 		  image->file_name, *data_key_version, *firmware_version);
-	return 0;
+	return true;
 }
 
 /*
@@ -731,8 +731,8 @@ static enum rootkey_compat_result check_compatible_root_key(
 		INFO("Current (RO) firmware image has root key: %s\n",
 		     packed_key_sha1_string(rootkey));
 		if (is_same_key) {
-			ERROR("Rootkey is same as target (RW) image. \n"
-			      "Maybe RW corrupted?");
+			ERROR("Rootkey is same as target (RW) image. "
+			      "Maybe RW corrupted?\n");
 			return ROOTKEY_COMPAT_ERROR;
 		}
 		WARN("Target (RW) image is signed by root key: %s%s\n",
@@ -745,7 +745,7 @@ static enum rootkey_compat_result check_compatible_root_key(
 }
 
 /*
- * Returns non-zero if the RW_LEGACY needs to be updated, otherwise 0.
+ * Returns true if the RW_LEGACY needs to be updated, otherwise return false.
  */
 static int legacy_needs_update(struct updater_config *cfg)
 {
@@ -760,7 +760,7 @@ static int legacy_needs_update(struct updater_config *cfg)
 	tmp_from = get_firmware_image_temp_file(&cfg->image_current,
 						&cfg->tempfiles);
 	if (!tmp_from || !tmp_to)
-		return 0;
+		return false;
 
 	has_to = cbfs_file_exists(tmp_to, section, tag);
 	has_from = cbfs_file_exists(tmp_from, section, tag);
@@ -769,7 +769,7 @@ static int legacy_needs_update(struct updater_config *cfg)
 		VB2_DEBUG("Current legacy firmware has%s updater tag (%s) and "
 			  "target firmware has%s updater tag, won't update.\n",
 			  has_from ? "" : " no", tag, has_to ? "" : " no");
-		return 0;
+		return false;
 	}
 
 	return section_needs_update(
@@ -779,19 +779,19 @@ static int legacy_needs_update(struct updater_config *cfg)
 /*
  * Checks if the given firmware image is signed with a key that won't be
  * blocked by TPM's anti-rollback detection.
- * Returns 0 for success, otherwise failure.
+ * Returns true for success, false otherwise.
  */
-static int do_check_compatible_tpm_keys(struct updater_config *cfg,
-					const struct firmware_image *rw_image)
+static bool do_check_compatible_tpm_keys(struct updater_config *cfg,
+					 const struct firmware_image *rw_image)
 {
 	unsigned int data_key_version = 0, firmware_version = 0,
 		     tpm_data_key_version = 0, tpm_firmware_version = 0;
 	int tpm_fwver = 0;
 
 	/* Fail if the given image does not look good. */
-	if (get_key_versions(rw_image, FMAP_RW_VBLOCK_A, &data_key_version,
+	if (!get_key_versions(rw_image, FMAP_RW_VBLOCK_A, &data_key_version,
 			     &firmware_version) != 0)
-		return -1;
+		return false;
 
 	/* The stored tpm_fwver can be 0 (b/116298359#comment3). */
 	tpm_fwver = dut_get_property(DUT_PROP_TPM_FWVER, cfg);
@@ -802,7 +802,7 @@ static int do_check_compatible_tpm_keys(struct updater_config *cfg,
 		 */
 		if (!cfg->force_update)
 			ERROR("Invalid tpm_fwver: %d.\n", tpm_fwver);
-		return -1;
+		return false;
 	}
 
 	tpm_data_key_version = tpm_fwver >> 16;
@@ -813,45 +813,43 @@ static int do_check_compatible_tpm_keys(struct updater_config *cfg,
 	if (tpm_data_key_version > data_key_version) {
 		ERROR("Data key version rollback detected (%d->%d).\n",
 		      tpm_data_key_version, data_key_version);
-		return -1;
+		return false;
 	}
 	if (tpm_firmware_version > firmware_version) {
 		ERROR("Firmware version rollback detected (%d->%d).\n",
 		      tpm_firmware_version, firmware_version);
-		return -1;
+		return false;
 	}
-	return 0;
+	return true;
 }
 
 /*
  * Wrapper for do_check_compatible_tpm_keys.
- * Will return 0 if do_check_compatible_tpm_keys success or if cfg.force_update
- * is set; otherwise non-zero.
+ * Will return true if do_check_compatible_tpm_keys success or if
+ * cfg.force_update is set; false otherwise.
  */
 static int check_compatible_tpm_keys(struct updater_config *cfg,
 				     const struct firmware_image *rw_image)
 {
-	int r = do_check_compatible_tpm_keys(cfg, rw_image);
-	if (!r)
-		return r;
+	if (do_check_compatible_tpm_keys(cfg, rw_image))
+		return true;
 	if (!cfg->force_update) {
 		ERROR("Add --force if you want to waive TPM checks.\n");
-		return r;
+		return false;
 	}
 	WARN("TPM KEYS CHECK IS WAIVED BY --force. YOU ARE ON YOUR OWN.\n");
-	return 0;
+	return true;
 }
-
 
 /*
  * Update EC (RO+RW) firmware.
- * Returns 0 if success, non-zero if error.
+ * Returns true on success.
  */
-static int update_ec_firmware(struct updater_config *cfg)
+static bool update_ec_firmware(struct updater_config *cfg)
 {
 	struct firmware_image *ec_image = &cfg->ec_image;
 	if (!has_valid_update(cfg, ec_image, NULL, 0))
-		return 0;
+		return true;
 
 	int r = try_apply_quirk(QUIRK_EC_PARTIAL_RECOVERY, cfg);
 	switch (r) {
@@ -863,9 +861,9 @@ static int update_ec_firmware(struct updater_config *cfg)
 
 	case EC_RECOVERY_DONE:
 		/* Done by some quirks, for example EC RO software sync. */
-		return 0;
+		return true;
 	}
-	return r;
+	return r == 0;
 }
 
 const char * const updater_error_messages[] = {
@@ -897,17 +895,18 @@ static enum updater_error_codes update_try_rw_firmware(
 		int wp_enabled)
 {
 	const char *target, *self_target;
-	int has_update = 1;
+	bool has_update = true;
 
-	preserve_gbb(image_from, image_to, 1, 0, 0);
+	preserve_gbb(image_from, image_to, true, false, 0);
 	if (!wp_enabled && section_needs_update(
 			image_from, image_to, FMAP_RO_SECTION))
 		return UPDATE_ERR_NEED_RO_UPDATE;
 
 	INFO("Checking compatibility...\n");
-	if (check_compatible_root_key(image_from, image_to))
+	if (check_compatible_root_key(image_from, image_to) !=
+	    ROOTKEY_COMPAT_OK)
 		return UPDATE_ERR_ROOT_KEY;
-	if (check_compatible_tpm_keys(cfg, image_to))
+	if (!check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
 
 	self_target = target = decide_rw_target(cfg, TARGET_SELF);
@@ -946,19 +945,18 @@ static enum updater_error_codes update_try_rw_firmware(
 			    "DEFERRED UPDATE: Defer setting cookies for %s\n",
 			    target);
 			target = self_target;
-			has_update = 0;
+			has_update = false;
 		}
 	} else {
 		STATUS("NO RW UPDATE: No update for RW firmware.\n");
 	}
 
 	/* Always set right cookies for next boot. */
-	if (set_try_cookies(cfg, target, has_update))
+	if (!set_try_cookies(cfg, target, has_update))
 		return UPDATE_ERR_SET_COOKIES;
 
 	/* Do not fail on updating legacy. */
 	if (legacy_needs_update(cfg)) {
-		has_update = 1;
 		STATUS("LEGACY UPDATE: Updating %s.\n", FMAP_RW_LEGACY);
 		write_firmware(cfg, image_to, FMAP_RW_LEGACY);
 	}
@@ -995,7 +993,7 @@ static enum updater_error_codes update_rw_firmware(
 	INFO("Checking compatibility...\n");
 	if (check_compatible_root_key(image_from, image_to))
 		return UPDATE_ERR_ROOT_KEY;
-	if (check_compatible_tpm_keys(cfg, image_to))
+	if (!check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
 
 	for (i = 0; i < ARRAY_SIZE(required_sections); i++)
@@ -1064,8 +1062,8 @@ static enum updater_error_codes update_whole_firmware(
 		enum rootkey_compat_result r = check_compatible_root_key(
 				image_to, image_to);
 		if (r != ROOTKEY_COMPAT_OK) {
-			ERROR("Target image does not look valid. \n"
-			      "Add --force if you really want to use it.");
+			ERROR("Target image does not look valid. "
+			      "Add --force if you really want to use it.\n");
 			return UPDATE_ERR_ROOT_KEY;
 		}
 
@@ -1079,20 +1077,20 @@ static enum updater_error_codes update_whole_firmware(
 			INFO("Will change firmware signing key.\n");
 			break;
 		case ROOTKEY_COMPAT_REKEY_TO_DEV:
-			ERROR("Re-key to DEV is not allowed. \n"
-			      "Add --force if you really want to do that.");
+			ERROR("Re-key to DEV is not allowed. "
+			      "Add --force if you really want to do that.\n");
 			return UPDATE_ERR_ROOT_KEY;
 		default:
 			return UPDATE_ERR_ROOT_KEY;
 		}
 	}
-	if (check_compatible_tpm_keys(cfg, image_to))
+	if (!check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
 
 	/* FMAP may be different so we should just update all. */
 	if (write_firmware(cfg, image_to, NULL) ||
-	    update_ec_firmware(cfg) ||
-	    write_optional_firmware(cfg, &cfg->pd_image, NULL, 1, 0))
+	    !update_ec_firmware(cfg) ||
+	    !write_optional_firmware(cfg, &cfg->pd_image, NULL, 1, 0))
 		return UPDATE_ERR_WRITE_FIRMWARE;
 
 	return UPDATE_ERR_DONE;
@@ -1114,8 +1112,8 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	if (cfg->try_update == TRY_UPDATE_DEFERRED_APPLY) {
 		INFO("Apply deferred updates, only setting cookies for the "
 		     "next boot slot.\n");
-		if (set_try_cookies(cfg, decide_rw_target(cfg, TARGET_UPDATE),
-				    /*has_update=*/1))
+		if (!set_try_cookies(cfg, decide_rw_target(cfg, TARGET_UPDATE),
+				    /*has_update=*/true))
 			return UPDATE_ERR_SET_COOKIES;
 		return UPDATE_ERR_DONE;
 	}
@@ -1143,9 +1141,10 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		ret = load_system_firmware(cfg, image_from);
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
-			cfg->check_platform = 0;
-		} else if (ret)
+			cfg->check_platform = false;
+		} else if (ret) {
 			return UPDATE_ERR_SYSTEM_IMAGE;
+		}
 	}
 	STATUS("Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
 	       image_from->file_name, image_from->ro_version,
@@ -1218,8 +1217,8 @@ struct updater_config *updater_new_config(void)
 	cfg->ec_image.programmer = PROG_EC;
 	cfg->pd_image.programmer = PROG_PD;
 
-	cfg->check_platform = 1;
-	cfg->do_verify = 1;
+	cfg->check_platform = true;
+	cfg->do_verify = true;
 
 	dut_init_properties(&cfg->dut_properties[0],
 			    ARRAY_SIZE(cfg->dut_properties));
@@ -1278,8 +1277,11 @@ static int updater_load_images(struct updater_config *cfg,
 		if (!errorcnt)
 			errorcnt += updater_setup_quirks(cfg, arg);
 	}
-	if (arg->host_only || arg->emulation)
+	if (arg->host_only || arg->emulation) {
+		INFO("Not loading auxalitary firmware in host-only or "
+		     "emulation mode.\n");
 		return errorcnt;
+	}
 
 	if (!cfg->ec_image.data && ec_image)
 		errorcnt += !!load_firmware_image(&cfg->ec_image, ec_image, ar);
@@ -1314,9 +1316,9 @@ static int updater_output_image(const struct firmware_image *image,
 
 /*
  * Applies custom label information to an existing model config.
- * Returns 0 on success, otherwise failure.
+ * Returns true on success, false otherwise.
  */
-static int updater_apply_custom_label(struct updater_config *cfg,
+static bool updater_apply_custom_label(struct updater_config *cfg,
 				     struct model_config *model,
 				     const char *signature_id)
 {
@@ -1332,14 +1334,14 @@ static int updater_apply_custom_label(struct updater_config *cfg,
 				&cfg->image_current, &cfg->tempfiles);
 		if (!tmp_image) {
 			ERROR("Failed to get system current firmware\n");
-			return 1;
+			return false;
 		}
 		if (get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID, cfg) &&
 		    is_write_protection_enabled(cfg))
 			quirk_override_signature_id(
 					cfg, model, &signature_id);
 	}
-	return !!model_apply_custom_label(
+	return model_apply_custom_label(
 			model, cfg->archive, signature_id, tmp_image);
 }
 
@@ -1347,22 +1349,13 @@ static int updater_apply_custom_label(struct updater_config *cfg,
  * Setup what the updater has to do against an archive.
  * Returns number of failures, or 0 on success.
  */
-static int updater_setup_archive(
-		struct updater_config *cfg,
-		const struct updater_config_arguments *arg,
-		struct manifest *manifest,
-		int is_factory)
+static int updater_setup_archive(struct updater_config *cfg,
+				 const struct updater_config_arguments *arg,
+				 struct manifest *manifest, bool is_factory)
 {
 	int errorcnt = 0;
 	struct u_archive *ar = cfg->archive;
 	const struct model_config *model;
-
-	if (arg->do_manifest) {
-		assert(!arg->image);
-		print_json_manifest(manifest);
-		/* No additional error. */
-		return errorcnt;
-	}
 
 	if (cfg->detect_model)
 		model = manifest_detect_model_from_frid(cfg, manifest);
@@ -1370,12 +1363,12 @@ static int updater_setup_archive(
 		model = manifest_find_model(cfg, manifest, arg->model);
 
 	if (!model)
-		return ++errorcnt;
+		return 1;
 
 	if (arg->detect_model_only) {
 		puts(model->name);
 		/* No additional error. */
-		return errorcnt;
+		return 0;
 	}
 
 	/* Load images now so we can get quirks in custom label checks. */
@@ -1415,56 +1408,74 @@ static int updater_setup_archive(
 }
 
 /*
- * Helper function to setup an allocated updater_config object.
- * Returns number of failures, or 0 on success.
+ * Check basic options compatibility. Set do_update to false for options, which
+ * do not perform firmware update.
+ *
+ * Returns true on success, false otherwise.
  */
-int updater_setup_config(struct updater_config *cfg,
-			 const struct updater_config_arguments *arg,
-			 int *do_update)
+static bool
+updater_check_options_compatibility(struct updater_config *cfg,
+				    const struct updater_config_arguments *arg,
+				    bool *do_update)
 {
-	int errorcnt = 0;
-	int check_single_image = 0, check_wp_disabled = 0;
-	int do_output = 0;
-	const char *archive_path = arg->archive;
-
-	/* Setup values that may change output or decision of other argument. */
-	cfg->verbosity = arg->verbosity;
-	cfg->use_diff_image = arg->fast_update;
-	cfg->do_verify = !arg->fast_update;
-	cfg->factory_update = arg->is_factory;
-	if (arg->force_update)
-		cfg->force_update = 1;
-
-	/* Check incompatible options and return early. */
 	if (arg->do_manifest) {
+		/* Cannot use image and archive at the same time. */
 		if (!!arg->archive == !!arg->image) {
-			ERROR("--manifest needs either -a or -i\n");
-			return ++errorcnt;
+			ERROR("--manifest needs either -a,--archive or "
+			      "-i,--image.\n");
+			return false;
 		}
 		if (arg->archive && (arg->ec_image || arg->pd_image)) {
-			ERROR("--manifest for archive (-a) does not accept \n"
-			      "additional images (--ec_image, --pd_image).");
-			return ++errorcnt;
+			ERROR("--manifest for archive (-a,--archive) does not "
+			      "accept additional images (--ec_image, "
+			      "--pd_image).\n");
+			return false;
 		}
-		*do_update = 0;
+		if (arg->repack || arg->unpack) {
+			ERROR("--manifest is not compatible with "
+			      "--{re,un}pack.\n");
+			return false;
+		}
+		if (arg->detect_model_only) {
+			ERROR("--manifest is not compatible with "
+			      "--detect-model-only.\n");
+			return false;
+		}
+		*do_update = false;
 	}
 	if (arg->repack || arg->unpack) {
 		if (!arg->archive) {
 			ERROR("--{re,un}pack needs --archive.\n");
-			return ++errorcnt;
+			return false;
 		}
-		*do_update = 0;
+		if (arg->detect_model_only) {
+			ERROR("--{re,un}pack is not compatible with "
+			      "--detect-model-only.\n");
+			return false;
+		}
+		*do_update = false;
 	}
 	if (arg->detect_model_only) {
 		if (!arg->archive) {
 			ERROR("--detect-model-only needs --archive.\n");
-			return ++errorcnt;
+			return false;
 		}
 		cfg->detect_model = true;
-		*do_update = 0;
+		*do_update = false;
 	}
 
-	/* Setup update mode. */
+	return true;
+}
+
+/*
+ * Configures updater try-mode, output and write protection check.
+ *
+ * Returns true on success, false otherwise.
+ */
+static int updater_setup_mode(struct updater_config *cfg,
+			      const struct updater_config_arguments *arg,
+			      bool *do_output, bool *check_wp_disabled)
+{
 	if (arg->try_update)
 		cfg->try_update = TRY_UPDATE_AUTO;
 	if (arg->mode) {
@@ -1477,30 +1488,122 @@ int updater_setup_config(struct updater_config *cfg,
 		} else if (strcmp(arg->mode, "recovery") == 0) {
 			cfg->try_update = TRY_UPDATE_OFF;
 		} else if (strcmp(arg->mode, "legacy") == 0) {
-			cfg->legacy_update = 1;
+			cfg->legacy_update = true;
 		} else if (strcmp(arg->mode, "factory") == 0 ||
 			   strcmp(arg->mode, "factory_install") == 0) {
-			cfg->factory_update = 1;
+			cfg->factory_update = true;
 		} else if (strcmp(arg->mode, "output") == 0) {
-			do_output = 1;
+			*do_output = true;
 		} else {
-			errorcnt++;
 			ERROR("Invalid mode: %s\n", arg->mode);
+			return false;
 		}
 	}
+	/* factory_update must be processed after arg->mode, as mode can be set
+	   to factory/factory_install */
 	if (cfg->factory_update) {
-		/* factory_update must be processed after arg->mode. */
-		check_wp_disabled = 1;
+		*check_wp_disabled = true;
 		cfg->try_update = TRY_UPDATE_OFF;
 	}
+
+	return true;
+}
+
+/*
+ * Prints manifest. Call only for arg->do_manifest != false.
+ *
+ * Returns number of errors on failure, or zero on success.
+ */
+static int updater_do_manifest(struct updater_config *cfg,
+			       const struct updater_config_arguments *arg)
+{
+	assert(arg->do_manifest);
+
+	if (arg->archive && arg->fast_update) {
+		/* Quickly load and dump the manifest file from the archive. */
+		const char *manifest_name = "manifest.json";
+		uint8_t *data = NULL;
+		uint32_t size = 0;
+
+		if (archive_has_entry(cfg->archive, manifest_name) &&
+		    archive_read_file(cfg->archive, manifest_name, &data, &size,
+				      NULL) == 0) {
+			/* data is NUL-terminated. */
+			printf("%s\n", data);
+			free(data);
+			return 0;
+		}
+		ERROR("Failed to read the cached manifest: %s\n",
+		      manifest_name);
+		return 1;
+	} else if (arg->archive) {
+		struct manifest *m = new_manifest_from_archive(cfg->archive);
+		if (m) {
+			assert(!arg->image);
+			print_json_manifest(m);
+			delete_manifest(m);
+			/* No additional error. */
+			return 0;
+		}
+		ERROR("Failure in archive: %s\n", arg->archive);
+		return 1;
+	}
+
+	/* Build manifest from provided firmware images. */
+	char name[] = "default";
+	struct model_config model = {
+		.name = name,
+		.image = arg->image,
+		.ec_image = arg->ec_image,
+		.pd_image = arg->pd_image,
+	};
+	struct manifest manifest = {
+		.num = 1,
+		.models = &model,
+	};
+	assert(model.image);
+	print_json_manifest(&manifest);
+	return 0;
+}
+
+/*
+ * Helper function to setup an allocated updater_config object.
+ * Returns 0 on success and non-zero on failure.
+ */
+int updater_setup_config(struct updater_config *cfg,
+			 const struct updater_config_arguments *arg,
+			 bool *do_update)
+{
+	int errorcnt = 0;
+	bool check_single_image = false;
+	bool check_wp_disabled = false;
+	bool do_output = false;
+	const char *archive_path = arg->archive;
+
+	/* Setup values that may change output or decision of other argument. */
+	cfg->verbosity = arg->verbosity;
+	cfg->use_diff_image = arg->fast_update;
+	cfg->do_verify = !arg->fast_update;
+	cfg->factory_update = arg->is_factory;
+	if (arg->force_update)
+		cfg->force_update = true;
+
 	cfg->gbb_flags = arg->gbb_flags;
 	cfg->override_gbb_flags = arg->override_gbb_flags;
+
+	/* Check incompatible options and return early. */
+	if (!updater_check_options_compatibility(cfg, arg, do_update))
+		return 1;
+
+	/* Setup update mode. */
+	if (!updater_setup_mode(cfg, arg, &do_output, &check_wp_disabled))
+		return 1;
 
 	/* Setup properties and fields that do not have external dependency. */
 	if (arg->programmer && strcmp(arg->programmer, cfg->image.programmer)) {
 		check_single_image = 1;
 		/* DUT should be remote if the programmer is changed. */
-		cfg->dut_is_remote = 1;
+		cfg->dut_is_remote = true;
 		INFO("Configured to update a remote DUT%s.\n",
 		     arg->detect_servo ? " via Servo" : "");
 		cfg->image.programmer = arg->programmer;
@@ -1519,7 +1622,7 @@ int updater_setup_config(struct updater_config *cfg,
 		if (stat(arg->emulation, &statbuf)) {
 			ERROR("Failed to stat emulation file %s\n",
 			      arg->emulation);
-			return ++errorcnt;
+			return 1;
 		}
 
 		cfg->emulation = arg->emulation;
@@ -1542,18 +1645,18 @@ int updater_setup_config(struct updater_config *cfg,
 		override_dut_property(DUT_PROP_WP_SW, cfg, r);
 	}
 
-	/* Set up archive and load images. */
-	/* Always load images specified from command line directly. */
-	errorcnt += updater_load_images(
-			cfg, arg, arg->image, arg->ec_image, arg->pd_image);
-
 	if (!archive_path)
 		archive_path = ".";
 	cfg->archive = archive_open(archive_path);
 	if (!cfg->archive) {
 		ERROR("Failed to open archive: %s\n", archive_path);
-		return ++errorcnt;
+		return 1;
 	}
+
+	/* Set up archive and load images. */
+	/* Always load images specified from command line directly. */
+	errorcnt += updater_load_images(
+			cfg, arg, arg->image, arg->ec_image, arg->pd_image);
 
 	/* Process archives which may not have valid contents. */
 	if (arg->repack || arg->unpack) {
@@ -1578,25 +1681,14 @@ int updater_setup_config(struct updater_config *cfg,
 		return errorcnt;
 	}
 
-	/* Process the manifest and load images from the archive. */
-	if (arg->archive && arg->do_manifest && arg->fast_update) {
-		/* Quickly load and dump the manifest file from the archive. */
-		const char *manifest_name = "manifest.json";
-		uint8_t *data = NULL;
-		uint32_t size = 0;
+	/* Process the manifest. */
+	if (arg->do_manifest) {
+		errorcnt += updater_do_manifest(cfg, arg);
+		return errorcnt;
+	}
 
-		if (archive_has_entry(cfg->archive, manifest_name) &&
-		    archive_read_file(cfg->archive, manifest_name, &data, &size,
-				      NULL) == 0) {
-			/* data is NUL-terminated. */
-			printf("%s\n", data);
-			free(data);
-		} else {
-			ERROR("Failed to read the cached manifest: %s\n",
-			      manifest_name);
-			errorcnt++;
-		}
-	} else if (arg->archive) {
+	/* Load images from archive. */
+	if (arg->archive) {
 		struct manifest *m = new_manifest_from_archive(cfg->archive);
 		if (m) {
 			errorcnt += updater_setup_archive(
@@ -1606,20 +1698,6 @@ int updater_setup_config(struct updater_config *cfg,
 			ERROR("Failure in archive: %s\n", arg->archive);
 			++errorcnt;
 		}
-	} else if (arg->do_manifest) {
-		char name[] = "default";
-		struct model_config model = {
-			.name = name,
-			.image = arg->image,
-			.ec_image = arg->ec_image,
-			.pd_image = arg->pd_image,
-		};
-		struct manifest manifest = {
-			.num = 1,
-			.models = &model,
-		};
-		assert(model.image);
-		print_json_manifest(&manifest);
 	}
 
 	/*
@@ -1637,8 +1715,8 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 	if (check_wp_disabled && is_write_protection_enabled(cfg)) {
 		errorcnt++;
-		ERROR("Please remove write protection for factory mode \n"
-		      "( " REMOVE_WP_URL " ).");
+		ERROR("Please remove write protection for factory mode "
+		      "( " REMOVE_WP_URL " ).\n");
 	}
 	if (!errorcnt && do_output) {
 		const char *r = arg->output_dir;
@@ -1649,51 +1727,45 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt += updater_output_image(&cfg->image, "image.bin", r);
 		errorcnt += updater_output_image(&cfg->ec_image, "ec.bin", r);
 		errorcnt += updater_output_image(&cfg->pd_image, "pd.bin", r);
-		*do_update = 0;
+		*do_update = false;
 	}
 	return errorcnt;
 }
 
-int handle_flash_argument(struct updater_config_arguments *args, int opt,
+bool handle_flash_argument(struct updater_config_arguments *args, int opt,
 			  char *optarg)
 {
 	switch (opt) {
 	case 'p':
-		args->use_flash = 1;
+		args->use_flash = true;
 		args->programmer = optarg;
 		break;
 	case OPT_CCD:
-		args->use_flash = 1;
-		args->fast_update = 1;
-		args->force_update = 1;
+		args->use_flash = true;
+		args->fast_update = true;
+		args->force_update = true;
 		args->write_protection = "0";
 		args->programmer = "raiden_debug_spi:target=AP";
 		break;
 	case OPT_EMULATE:
-		args->use_flash = 1;
+		args->use_flash = true;
 		args->emulation = optarg;
-		break;
-	case OPT_SERVO:
-		args->use_flash = 1;
-		args->detect_servo = 1;
-		args->fast_update = 1;
-		args->force_update = 1;
-		args->write_protection = "0";
-		args->host_only = 1;
 		break;
 	case OPT_SERVO_PORT:
 		setenv(ENV_SERVOD_PORT, optarg, 1);
-		args->use_flash = 1;
-		args->detect_servo = 1;
-		args->fast_update = 1;
-		args->force_update = 1;
+		VBOOT_FALLTHROUGH;
+	case OPT_SERVO:
+		args->use_flash = true;
+		args->detect_servo = true;
+		args->fast_update = true;
+		args->force_update = true;
 		args->write_protection = "0";
-		args->host_only = 1;
+		args->host_only = true;
 		break;
 	default:
-		return 0;
+		return false; /* No compatible opt */
 	}
-	return 1;
+	return true; /* Compatible opt found */
 }
 
 /*
