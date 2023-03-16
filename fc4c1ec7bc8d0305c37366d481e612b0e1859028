@@ -160,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f979d63_2997f328",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-16T01:35:12Z",
+      "side": 1,
+      "message": "I should say \"outfile (name)\" will be created based on infile.",
+      "parentUuid": "bd4ae17b_7742dc52",
+      "range": {
+        "startLine": 375,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 26
+      },
+      "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c7b9feb_8eb8227f",
         "filename": "futility/cmd_create.c",
         "patchSetId": 2
