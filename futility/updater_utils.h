@@ -131,17 +131,17 @@ struct firmware_section {
 /*
  * Returns true if the given FMAP section exists in the firmware image.
  */
-int firmware_section_exists(const struct firmware_image *image,
-			    const char *section_name);
+bool firmware_section_exists(const struct firmware_image *image,
+			     const char *section_name);
 
 /*
  * Finds a firmware section by given name in the firmware image.
- * If successful, return zero and *section argument contains the address and
- * size of the section; otherwise failure.
+ * If successful, return true and *section argument contains the address and
+ * size of the section; otherwise returns false.
  */
-int find_firmware_section(struct firmware_section *section,
-			  const struct firmware_image *image,
-			  const char *section_name);
+bool find_firmware_section(struct firmware_section *section,
+			   const struct firmware_image *image,
+			   const char *section_name);
 
 /*
  * Preserves (copies) the given section (by name) from image_from to image_to.
@@ -196,7 +196,7 @@ int save_file_from_stdin(const char *output);
 /*
  * Returns true if the write protection is enabled on current system.
  */
-int is_write_protection_enabled(struct updater_config *cfg);
+bool is_write_protection_enabled(struct updater_config *cfg);
 
 /*
  * Executes a command on current host and returns stripped command output.
@@ -225,12 +225,11 @@ char *host_detect_servo(const char **prepare_ctrl_name);
 void prepare_servo_control(const char *control_name, int on);
 
 /*
- * Returns 1 if a given file (cbfs_entry_name) exists inside a particular CBFS
- * section of an image file, otherwise 0.
+ * Returns true if a given file (cbfs_entry_name) exists inside a particular
+ * CBFS section of an image file, otherwise returns false.
  */
-int cbfs_file_exists(const char *image_file,
-		     const char *section_name,
-		     const char *cbfs_entry_name);
+bool cbfs_file_exists(const char *image_file, const char *section_name,
+		      const char *cbfs_entry_name);
 
 /*
  * Extracts files from a CBFS on given region (section) of image_file.

@@ -57,13 +57,13 @@ int save_file_from_stdin(const char *output)
 
 	assert(in);
 	if (!out)
-		return -1;
+		return 1;
 
 	while (!feof(in)) {
 		sz = fread(buffer, 1, sizeof(buffer), in);
 		if (fwrite(buffer, 1, sz, out) != sz) {
 			fclose(out);
-			return -1;
+			return 1;
 		}
 	}
 	fclose(out);
@@ -71,12 +71,11 @@ int save_file_from_stdin(const char *output)
 }
 
 /*
- * Returns 1 if a given file (cbfs_entry_name) exists inside a particular CBFS
- * section of an image file, otherwise 0.
+ * Returns true if a given file (cbfs_entry_name) exists inside a particular
+ * CBFS section of an image file, otherwise returns false.
  */
-int cbfs_file_exists(const char *image_file,
-		     const char *section_name,
-		     const char *cbfs_entry_name)
+bool cbfs_file_exists(const char *image_file, const char *section_name,
+		      const char *cbfs_entry_name)
 {
 	char *cmd;
 	int r;
@@ -121,7 +120,7 @@ const char *cbfs_extract_file(const char *image_file,
 /*
  * Loads the firmware information from an FMAP section in loaded firmware image.
  * The section should only contain ASCIIZ string as firmware version.
- * Returns 0 if a non-empty version string is stored in *version, otherwise -1.
+ * Returns 0 if a non-empty version string is stored in *version, otherwise 1.
  */
 static int load_firmware_version(struct firmware_image *image,
 				 const char *section_name,
@@ -136,8 +135,8 @@ static int load_firmware_version(struct firmware_image *image,
 	 * initialize *version with empty string.
 	 */
 	if (section_name) {
-		find_firmware_section(&fwid, image, section_name);
-		if (fwid.size)
+		if (find_firmware_section(&fwid, image, section_name) &&
+		    fwid.size)
 			len = fwid.size;
 		else
 			WARN("No valid section '%s', missing version info.\n",
@@ -146,7 +145,7 @@ static int load_firmware_version(struct firmware_image *image,
 
 	if (!len) {
 		*version = strdup("");
-		return -1;
+		return 1;
 	}
 
 	/*
@@ -276,10 +275,10 @@ void free_firmware_image(struct firmware_image *image)
 
 /*
  * Finds a firmware section by given name in the firmware image.
- * If successful, return zero and *section argument contains the address and
- * size of the section; otherwise failure.
+ * If successful, return true and *section argument contains the address and
+ * size of the section; returns false on error.
  */
-int find_firmware_section(struct firmware_section *section,
+bool find_firmware_section(struct firmware_section *section,
 			  const struct firmware_image *image,
 			  const char *section_name)
 {
@@ -292,21 +291,21 @@ int find_firmware_section(struct firmware_section *section,
 			image->data, image->size, image->fmap_header,
 			section_name, &fah);
 	if (!ptr)
-		return -1;
+		return false;
 	section->data = (uint8_t *)ptr;
 	section->size = fah->area_size;
-	return 0;
+	return true;
 }
 
 /*
  * Returns true if the given FMAP section exists in the firmware image.
  */
-int firmware_section_exists(const struct firmware_image *image,
-			    const char *section_name)
+bool firmware_section_exists(const struct firmware_image *image,
+			     const char *section_name)
 {
 	struct firmware_section section;
-	find_firmware_section(&section, image, section_name);
-	return section.data != NULL;
+	return find_firmware_section(&section, image, section_name) &&
+	       section.data != NULL;
 }
 
 /*
@@ -323,12 +322,12 @@ int preserve_firmware_section(const struct firmware_image *image_from,
 {
 	struct firmware_section from, to;
 
-	find_firmware_section(&from, image_from, section_name);
-	find_firmware_section(&to, image_to, section_name);
-	if (!from.data || !to.data) {
+	if (!find_firmware_section(&from, image_from, section_name) ||
+	    !find_firmware_section(&to, image_to, section_name) ||
+	    !from.data || !to.data) {
 		VB2_DEBUG("Cannot find section %.*s: from=%p, to=%p\n",
 			  FMAP_NAMELEN, section_name, from.data, to.data);
-		return -1;
+		return 1;
 	}
 	if (from.size > to.size) {
 		WARN("Section %.*s is truncated after updated.\n",
@@ -348,19 +347,19 @@ const struct vb2_gbb_header *find_gbb(const struct firmware_image *image)
 	struct firmware_section section;
 	struct vb2_gbb_header *gbb_header;
 
-	find_firmware_section(&section, image, FMAP_RO_GBB);
-	gbb_header = (struct vb2_gbb_header *)section.data;
-	if (!futil_valid_gbb_header(gbb_header, section.size, NULL)) {
-		ERROR("Cannot find GBB in image: %s.\n", image->file_name);
-		return NULL;
+	if (find_firmware_section(&section, image, FMAP_RO_GBB)) {
+		gbb_header = (struct vb2_gbb_header *)section.data;
+		if (futil_valid_gbb_header(gbb_header, section.size, NULL))
+			return gbb_header;
 	}
-	return gbb_header;
+	ERROR("Cannot find GBB in image: %s.\n", image->file_name);
+	return NULL;
 }
 
 /*
  * Returns true if the write protection is enabled on current system.
  */
-int is_write_protection_enabled(struct updater_config *cfg)
+bool is_write_protection_enabled(struct updater_config *cfg)
 {
 	/* Assume HW/SW WP are enabled if -1 error code is returned */
 	return dut_get_property(DUT_PROP_WP_HW, cfg) &&
@@ -499,20 +498,21 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 	return ret;
 }
 /*
- * Returns 1 if the programmers in image1 and image2 are the same.
+ * Returns true if the programmers in image1 and image2 are the same,
+ * false otherwise.
  */
-static int is_the_same_programmer(const struct firmware_image *image1,
+static bool is_the_same_programmer(const struct firmware_image *image1,
 				  const struct firmware_image *image2)
 {
 	assert(image1 && image2);
 
 	/* Including if both are NULL. */
 	if (image1->programmer == image2->programmer)
-		return 1;
+		return true;
 
 	/* Not the same if either one is NULL. */
 	if (!image1->programmer || !image2->programmer)
-		return 0;
+		return false;
 
 	return strcmp(image1->programmer, image2->programmer) == 0;
 }
@@ -764,10 +764,14 @@ static int overwrite_section(struct firmware_image *image,
 {
 	struct firmware_section section;
 
-	find_firmware_section(&section, image, fmap_section);
+	if (!find_firmware_section(&section, image, fmap_section)) {
+		ERROR("Section not found: %s\n", fmap_section);
+		return 1;
+	}
+
 	if (section.size < offset + size) {
 		ERROR("Section smaller than given offset + size\n");
-		return -1;
+		return 1;
 	}
 
 	if (memcmp(section.data + offset, new_values, size) == 0) {
@@ -796,7 +800,7 @@ int unlock_flash_master(struct firmware_image *image)
 	if (overwrite_section(image, FMAP_SI_DESC, flash_master_offset,
 			      ARRAY_SIZE(flash_master), flash_master)) {
 		ERROR("Failed unlocking Flash Master values\n");
-		return -1;
+		return 1;
 	}
 
 	INFO("Changed Flash Master Values to unlocked.\n");
@@ -820,7 +824,7 @@ static int disable_gpr0(struct firmware_image *image)
 			      ARRAY_SIZE(gpr0_value_disabled),
 			      gpr0_value_disabled)) {
 		ERROR("Failed disabling GPR0.\n");
-		return -1;
+		return 1;
 	}
 
 	INFO("Disabled GPR0.\n");
@@ -837,10 +841,10 @@ static int disable_gpr0(struct firmware_image *image)
 int unlock_me(struct firmware_image *image)
 {
 	if (unlock_flash_master(image))
-		return -1;
+		return 1;
 
 	if (disable_gpr0(image))
-		return -1;
+		return 1;
 
 	INFO("Unlocked Intel ME.\n");
 	return 0;

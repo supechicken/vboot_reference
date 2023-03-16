@@ -92,7 +92,7 @@ static int archive_fallback_walk(
 
 	fts_handle = fts_open(fts_argv, FTS_NOCHDIR, NULL);
 	if (!fts_handle)
-		return -1;
+		return 1;
 
 	while ((ent = fts_read(fts_handle)) != NULL) {
 		char *path = ent->fts_path + root_len;

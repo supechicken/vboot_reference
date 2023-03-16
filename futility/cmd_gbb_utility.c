@@ -352,7 +352,7 @@ static int setup_flash(struct updater_config **cfg,
 		else
 			free(servo_programmer);
 	}
-	int ignored;
+	bool ignored;
 	if (updater_setup_config(*cfg, args, &ignored)) {
 		ERROR("Bad servo options\n");
 		goto errdelete;
@@ -526,7 +526,7 @@ static int do_gbb(int argc, char *argv[])
 			ERROR("futility was built without flashrom support\n");
 			return 1;
 #endif
-			args.use_flash = 1;
+			args.use_flash = true;
 			break;
 		case OPT_HELP:
 			print_help(argc, argv);

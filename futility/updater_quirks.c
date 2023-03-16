@@ -72,33 +72,33 @@ static int reload_firmware_image(const char *file_path,
 /*
  * Returns True if the system has EC software sync enabled.
  */
-static int is_ec_software_sync_enabled(struct updater_config *cfg)
+static bool is_ec_software_sync_enabled(struct updater_config *cfg)
 {
 	const struct vb2_gbb_header *gbb;
 
 	int vdat_flags = dut_get_property_int("vdat_flags", cfg);
 	if (vdat_flags < 0) {
 		WARN("Failed to identify DUT vdat_flags.\n");
-		return 0;
+		return false;
 	}
 
 	/* Check if current system has disabled software sync or no support. */
 	if (!(vdat_flags & VBSD_EC_SOFTWARE_SYNC)) {
 		INFO("EC Software Sync is not available.\n");
-		return 0;
+		return false;
 	}
 
 	/* Check if the system has been updated to disable software sync. */
 	gbb = find_gbb(&cfg->image);
 	if (!gbb) {
 		WARN("Invalid AP firmware image.\n");
-		return 0;
+		return false;
 	}
 	if (gbb->flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC) {
 		INFO("EC Software Sync will be disabled in next boot.\n");
-		return 0;
+		return false;
 	}
-	return 1;
+	return true;
 }
 
 /*
@@ -155,7 +155,7 @@ static int ec_ro_software_sync(struct updater_config *cfg)
 /*
  * Returns True if EC is running in RW.
  */
-static int is_ec_in_rw(struct updater_config *cfg)
+static bool is_ec_in_rw(struct updater_config *cfg)
 {
 	char buf[VB_MAX_STRING_PROPERTY];
 	return (dut_get_property_string("ecfw_act", buf, sizeof(buf), cfg) &&
@@ -181,7 +181,7 @@ static int quirk_enlarge_image(struct updater_config *cfg)
 
 	tmp_path = get_firmware_image_temp_file(image_to, &cfg->tempfiles);
 	if (!tmp_path)
-		return -1;
+		return 1;
 
 	VB2_DEBUG("Resize image from %u to %u.\n",
 		  image_to->size, image_from->size);
@@ -189,7 +189,7 @@ static int quirk_enlarge_image(struct updater_config *cfg)
 	fp = fopen(tmp_path, "ab");
 	if (!fp) {
 		ERROR("Cannot open temporary file %s.\n", tmp_path);
-		return -1;
+		return 1;
 	}
 	while (to_write-- > 0)
 		fputc('\xff', fp);
@@ -228,8 +228,8 @@ static int quirk_unlock_wilco_me_for_update(struct updater_config *cfg)
 		0xff, 0xff
 	};
 
-	find_firmware_section(&section, image_to, FMAP_SI_DESC);
-	if (section.size < flash_master_offset + ARRAY_SIZE(flash_master))
+	if (!find_firmware_section(&section, image_to, FMAP_SI_DESC) ||
+	    section.size < flash_master_offset + ARRAY_SIZE(flash_master))
 		return 0;
 	if (memcmp(section.data + flash_master_offset, flash_master,
 		   ARRAY_SIZE(flash_master)) == 0) {
@@ -259,7 +259,7 @@ static int quirk_min_platform_version(struct updater_config *cfg)
 	ERROR("Need platform version >= %d (current is %d). "
 	      "This firmware will only run on newer systems.\n",
 	      min_version, platform_version);
-	return -1;
+	return 1;
 }
 
 /*
@@ -280,7 +280,7 @@ static int quirk_eve_smm_store(struct updater_config *cfg)
 			&cfg->image_current, &cfg->tempfiles);
 
 	if (!temp_image)
-		return -1;
+		return 1;
 
 	old_store = cbfs_extract_file(temp_image, FMAP_RW_LEGACY,
 				      smm_store_name, &cfg->tempfiles);
@@ -293,7 +293,7 @@ static int quirk_eve_smm_store(struct updater_config *cfg)
 	/* Reuse temp_image */
 	temp_image = get_firmware_image_temp_file(&cfg->image, &cfg->tempfiles);
 	if (!temp_image)
-		return -1;
+		return 1;
 
 	/* crosreview.com/1165109: The offset is fixed at 0x1bf000. */
 	ASPRINTF(&command,
@@ -392,7 +392,7 @@ static int quirk_preserve_me(struct updater_config *cfg)
 	 * and writing; so we have to use the diff image to prevent contents
 	 * being changed when writing.
 	 */
-	cfg->use_diff_image = 1;
+	cfg->use_diff_image = true;
 
 	return 1;
 }
@@ -421,8 +421,8 @@ static int quirk_clear_mrc_data(struct updater_config *cfg)
 		const char *name = mrc_names[i];
 		const char *write_names[2] = {0};
 
-		find_firmware_section(&section, image, name);
-		if (!section.size)
+		if (!find_firmware_section(&section, image, name) ||
+		    !section.size)
 			continue;
 
 		WARN("Wiping memory training data: %s\n", name);
@@ -449,7 +449,7 @@ static int quirk_clear_mrc_data(struct updater_config *cfg)
 static int quirk_no_check_platform(struct updater_config *cfg)
 {
 	WARN("Disabled checking platform. You are on your own.\n");
-	cfg->check_platform = 0;
+	cfg->check_platform = false;
 	return 0;
 }
 
@@ -459,7 +459,7 @@ static int quirk_no_check_platform(struct updater_config *cfg)
 static int quirk_no_verify(struct updater_config *cfg)
 {
 	WARN("Disabled verifying flashed contents. You are on your own.\n");
-	cfg->do_verify = 0;
+	cfg->do_verify = false;
 	return 0;
 }
 
@@ -578,13 +578,13 @@ char *updater_get_cbfs_quirks(struct updater_config *cfg)
 	struct firmware_section cbfs_section;
 
 	/* Before invoking cbfstool, try to search for CBFS file name. */
-	find_firmware_section(&cbfs_section, &cfg->image, cbfs_region);
-	if (!cbfs_section.size || !memmem(cbfs_section.data, cbfs_section.size,
-					  entry_name, strlen(entry_name))) {
-		if (!cbfs_section.size)
-			VB2_DEBUG("Missing region: %s\n", cbfs_region);
-		else
-			VB2_DEBUG("Cannot find entry: %s\n", entry_name);
+	if (!find_firmware_section(&cbfs_section, &cfg->image, cbfs_region) ||
+	    !cbfs_section.size) {
+		VB2_DEBUG("Missing region: %s\n", cbfs_region);
+		return NULL;
+	} else if (!memmem(cbfs_section.data, cbfs_section.size, entry_name,
+			   strlen(entry_name))) {
+		VB2_DEBUG("Cannot find entry: %s\n", entry_name);
 		return NULL;
 	}
 

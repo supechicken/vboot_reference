@@ -198,7 +198,7 @@ int futil_set_gbb_hwid(struct vb2_gbb_header *gbb, const char *hwid)
 	assert(hwid);
 	len = strlen(hwid);
 	if (len >= gbb->hwid_size)
-		return -1;
+		return 1;
 
 	/* Zero whole area so we won't have garbage after NUL. */
 	memset(to, 0, gbb->hwid_size);
@@ -210,7 +210,7 @@ int futil_set_gbb_hwid(struct vb2_gbb_header *gbb, const char *hwid)
 
 	VB2_TRY(vb2_hash_calculate(false, to, len, VB2_HASH_SHA256, &hash));
 	memcpy(gbb->hwid_digest, hash.raw, sizeof(gbb->hwid_digest));
-	return VB2_SUCCESS;
+	return 0;
 }
 
 int futil_copy_file(const char *infile, const char *outfile)

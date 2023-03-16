@@ -78,17 +78,17 @@ struct updater_config {
 	struct u_archive *archive;
 	struct tempfile tempfiles;
 	enum try_update_type try_update;
-	int force_update;
-	int legacy_update;
-	int factory_update;
-	int check_platform;
-	int use_diff_image;
-	int do_verify;
+	bool force_update;
+	bool legacy_update;
+	bool factory_update;
+	bool check_platform;
+	bool use_diff_image;
+	bool do_verify;
 	int verbosity;
 	const char *emulation;
 	char *emulation_programmer;
 	const char *original_programmer;
-	int override_gbb_flags;
+	bool override_gbb_flags;
 	uint32_t gbb_flags;
 	bool detect_model;
 	bool dut_is_remote;
@@ -103,12 +103,16 @@ struct updater_config_arguments {
 	char *emulation, *sys_props;
 	char *output_dir;
 	char *repack, *unpack;
-	int is_factory, try_update, force_update, do_manifest, host_only;
-	int fast_update;
+	bool is_factory;
+	bool try_update;
+	bool force_update;
+	bool do_manifest;
+	bool host_only;
+	bool fast_update;
 	int verbosity;
-	int override_gbb_flags;
-	int detect_servo;
-	int use_flash;
+	bool override_gbb_flags;
+	bool detect_servo;
+	bool use_flash;
 	uint32_t gbb_flags;
 	bool detect_model_only;
 	bool unlock_me;
@@ -159,7 +163,7 @@ struct model_config {
 	char *image, *ec_image, *pd_image;
 	struct patch_config patches;
 	char *signature_id;
-	int is_custom_label;
+	bool is_custom_label;
 };
 
 struct manifest {
@@ -167,7 +171,7 @@ struct manifest {
 	struct model_config *models;
 	struct u_archive *archive;
 	int default_model;
-	int has_keyset;
+	bool has_keyset;
 };
 
 enum updater_error_codes {
@@ -214,10 +218,10 @@ void updater_delete_config(struct updater_config *cfg);
 
 /*
  * Handle an argument if it is a shared updater option.
- * Returns 1 if argument was used.
+ * Returns true if argument was used.
  */
-int handle_flash_argument(struct updater_config_arguments *args, int opt,
-			  char *optarg);
+bool handle_flash_argument(struct updater_config_arguments *args, int opt,
+			   char *optarg);
 
 /*
  * Helper function to setup an allocated updater_config object.
@@ -225,7 +229,7 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
  */
 int updater_setup_config(struct updater_config *cfg,
 			 const struct updater_config_arguments *arg,
-			 int *do_update);
+			 bool *do_update);
 
 /* Prints the name and description from all supported quirks. */
 void updater_list_config_quirks(const struct updater_config *cfg);

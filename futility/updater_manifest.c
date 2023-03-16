@@ -87,17 +87,17 @@ static void str_convert(char *s, int (*convert)(int c))
 	}
 }
 
-/* Returns 1 if name ends by given pattern, otherwise 0. */
-static int str_endswith(const char *name, const char *pattern)
+/* Returns true if name ends by given pattern, false otherwise. */
+static bool str_endswith(const char *name, const char *pattern)
 {
 	size_t name_len = strlen(name), pattern_len = strlen(pattern);
 	if (name_len < pattern_len)
-		return 0;
+		return false;
 	return strcmp(name + name_len - pattern_len, pattern) == 0;
 }
 
-/* Returns 1 if name starts by given pattern, otherwise 0. */
-static int str_startswith(const char *name, const char *pattern)
+/* Returns true if name starts by given pattern, false otherwise. */
+static bool str_startswith(const char *name, const char *pattern)
 {
 	return strncmp(name, pattern, strlen(pattern)) == 0;
 }
@@ -136,7 +136,7 @@ static int model_config_parse_setvars_file(
 
 	if (archive_read_file(archive, fpath, &data, &len, NULL) != 0) {
 		ERROR("Failed reading: %s\n", fpath);
-		return -1;
+		return 1;
 	}
 
 	/* Valid content should end with \n, or \"; ensure ASCIIZ for parsing */
@@ -193,12 +193,12 @@ static int change_gbb_rootkey(struct firmware_image *image,
 	uint8_t *gbb_rootkey;
 	if (!gbb) {
 		ERROR("Cannot find GBB in image %s.\n", image->file_name);
-		return -1;
+		return 1;
 	}
 	if (gbb->rootkey_size < rootkey_len) {
 		ERROR("New root key (%u bytes) larger than GBB (%u bytes).\n",
 		      rootkey_len, gbb->rootkey_size);
-		return -1;
+		return 1;
 	}
 
 	gbb_rootkey = (uint8_t *)gbb + gbb->rootkey_offset;
@@ -218,16 +218,16 @@ static int change_section(struct firmware_image *image,
 {
 	struct firmware_section section;
 
-	find_firmware_section(&section, image, section_name);
-	if (!section.data) {
+	if (!find_firmware_section(&section, image, section_name) ||
+	    !section.data) {
 		ERROR("Need section %s in image %s.\n", section_name,
 		      image->file_name);
-		return -1;
+		return 1;
 	}
 	if (section.size < data_len) {
 		ERROR("'%s' is too small (%zu bytes) for patching %u bytes.\n",
 		      section_name, section.size, data_len);
-		return -1;
+		return 1;
 	}
 	/* First erase (0xff) the section in case the new data is smaller. */
 	memset(section.data, 0xff, section.size);
@@ -358,7 +358,7 @@ static int manifest_scan_entries(const char *name, void *arg)
 	char *slash;
 
 	if (str_startswith(name, PATH_STARTSWITH_KEYSET))
-		manifest->has_keyset = 1;
+		manifest->has_keyset = true;
 	if (!str_endswith(name, PATH_ENDSWITH_SETVARS))
 		return 0;
 
@@ -466,7 +466,7 @@ static int manifest_from_signer_config(struct manifest *manifest)
 	char *s, *tok_ptr = NULL;
 
 	if (!archive_has_entry(archive, PATH_SIGNER_CONFIG))
-		return -1;
+		return 1;
 
 	/*
 	 * CSV format: model_name,firmware_image,key_id,ec_image
@@ -477,7 +477,7 @@ static int manifest_from_signer_config(struct manifest *manifest)
 
 	if (archive_read_file(archive, PATH_SIGNER_CONFIG, &data, &size,NULL)) {
 		ERROR("Failed reading: %s\n", PATH_SIGNER_CONFIG);
-		return -1;
+		return 1;
 	}
 
 	/* Skip headers. */
@@ -485,7 +485,7 @@ static int manifest_from_signer_config(struct manifest *manifest)
 	if (!s || !strchr(s, ',')) {
 		ERROR("Invalid %s: missing header.\n", PATH_SIGNER_CONFIG);
 		free(data);
-		return -1;
+		return 1;
 	}
 
 	for (s = strtok_r(NULL, "\n", &tok_ptr); s != NULL;
@@ -608,7 +608,7 @@ static int manifest_from_simple_folder(struct manifest *manifest)
 	if (!model.name)
 		model.name = strdup(DEFAULT_MODEL_NAME);
 	if (manifest->has_keyset)
-		model.is_custom_label = 1;
+		model.is_custom_label = true;
 	manifest_add_model(manifest, &model);
 	manifest->default_model = manifest->num - 1;
 
