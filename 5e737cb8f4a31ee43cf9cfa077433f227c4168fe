@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d27832e_4269d7dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-03-16T23:09:53Z",
+      "side": 1,
+      "message": "i don\u0027t think you want this.  the signer won\u0027t use this CL until you roll the vboot dep, and you can\u0027t do that until this lands.",
+      "revId": "5e737cb8f4a31ee43cf9cfa077433f227c4168fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "054eb2ab_ecc77db0",
