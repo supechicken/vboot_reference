@@ -43,7 +43,8 @@ static int do_read(int argc, char *argv[])
 {
 	struct updater_config *cfg;
 	struct updater_config_arguments args = {0};
-	int i, errorcnt = 0, update_needed = 1;
+	int i, errorcnt = 0;
+	bool update_needed = true;
 	const char *prepare_ctrl_name = NULL;
 	char *servo_programmer = NULL;
 	char *output_file_name = NULL;
@@ -96,19 +97,24 @@ static int do_read(int argc, char *argv[])
 		errorcnt++;
 		ERROR("Unexpected arguments.\n");
 	}
+	if (errorcnt)
+		goto err;
 
-	if (!errorcnt && args.detect_servo) {
+	if (args.detect_servo) {
 		servo_programmer = host_detect_servo(&prepare_ctrl_name);
-
-		if (!servo_programmer)
+		if (!servo_programmer) {
 			errorcnt++;
-		else if (!args.programmer)
+			goto err;
+		} else if (!args.programmer) {
 			args.programmer = servo_programmer;
+		}
 	}
 
-	if (!errorcnt)
-		errorcnt += updater_setup_config(cfg, &args, &update_needed);
-	if (!errorcnt && update_needed) {
+	errorcnt += updater_setup_config(cfg, &args, &update_needed);
+	if (errorcnt)
+		goto err;
+
+	if (update_needed) {
 		prepare_servo_control(prepare_ctrl_name, 1);
 		int r = load_system_firmware(cfg, &cfg->image_current);
 		/*
@@ -118,13 +124,13 @@ static int do_read(int argc, char *argv[])
 		if (r && r != IMAGE_PARSE_FAILURE)
 			errorcnt++;
 		prepare_servo_control(prepare_ctrl_name, 0);
+		if (errorcnt)
+			goto err;
 	}
-	if (errorcnt)
-		goto err;
 
 	if (region) {
 		struct firmware_section section;
-		if (find_firmware_section(&section, &cfg->image_current,
+		if (!find_firmware_section(&section, &cfg->image_current,
 					  region)) {
 			ERROR("Region '%s' not found in image.\n", region);
 			goto err;

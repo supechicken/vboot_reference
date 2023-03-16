@@ -71,12 +71,11 @@ int save_file_from_stdin(const char *output)
 }
 
 /*
- * Returns 1 if a given file (cbfs_entry_name) exists inside a particular CBFS
- * section of an image file, otherwise 0.
+ * Returns true if a given file (cbfs_entry_name) exists inside a particular
+ * CBFS section of an image file, otherwise returns false.
  */
-int cbfs_file_exists(const char *image_file,
-		     const char *section_name,
-		     const char *cbfs_entry_name)
+bool cbfs_file_exists(const char *image_file, const char *section_name,
+		      const char *cbfs_entry_name)
 {
 	char *cmd;
 	int r;
@@ -121,11 +120,11 @@ const char *cbfs_extract_file(const char *image_file,
 /*
  * Loads the firmware information from an FMAP section in loaded firmware image.
  * The section should only contain ASCIIZ string as firmware version.
- * Returns 0 if a non-empty version string is stored in *version, otherwise -1.
+ * Returns true if a non-empty version string is stored in *version, otherwise
+ * returns false.
  */
-static int load_firmware_version(struct firmware_image *image,
-				 const char *section_name,
-				 char **version)
+static bool load_firmware_version(struct firmware_image *image,
+				  const char *section_name, char **version)
 {
 	struct firmware_section fwid;
 	int len = 0;
@@ -146,7 +145,7 @@ static int load_firmware_version(struct firmware_image *image,
 
 	if (!len) {
 		*version = strdup("");
-		return -1;
+		return false;
 	}
 
 	/*
@@ -155,7 +154,7 @@ static int load_firmware_version(struct firmware_image *image,
 	 */
 	*version = strndup((const char *)fwid.data, len);
 	strip_string(*version, "\xff");
-	return 0;
+	return true;
 }
 
 /*
@@ -177,7 +176,7 @@ static int parse_firmware_image(struct firmware_image *image)
 		ret = IMAGE_PARSE_FAILURE;
 	}
 
-	if (load_firmware_version(image, FMAP_RO_FRID, &image->ro_version))
+	if (!load_firmware_version(image, FMAP_RO_FRID, &image->ro_version))
 		ret = IMAGE_PARSE_FAILURE;
 
 	if (firmware_section_exists(image, FMAP_RW_FWID_A)) {
@@ -276,12 +275,12 @@ void free_firmware_image(struct firmware_image *image)
 
 /*
  * Finds a firmware section by given name in the firmware image.
- * If successful, return zero and *section argument contains the address and
- * size of the section; otherwise failure.
+ * If successful, return true and *section argument contains the address and
+ * size of the section; otherwise returns false.
  */
-int find_firmware_section(struct firmware_section *section,
-			  const struct firmware_image *image,
-			  const char *section_name)
+bool find_firmware_section(struct firmware_section *section,
+			   const struct firmware_image *image,
+			   const char *section_name)
 {
 	FmapAreaHeader *fah = NULL;
 	uint8_t *ptr;
@@ -292,17 +291,17 @@ int find_firmware_section(struct firmware_section *section,
 			image->data, image->size, image->fmap_header,
 			section_name, &fah);
 	if (!ptr)
-		return -1;
+		return false;
 	section->data = (uint8_t *)ptr;
 	section->size = fah->area_size;
-	return 0;
+	return true;
 }
 
 /*
  * Returns true if the given FMAP section exists in the firmware image.
  */
-int firmware_section_exists(const struct firmware_image *image,
-			    const char *section_name)
+bool firmware_section_exists(const struct firmware_image *image,
+			     const char *section_name)
 {
 	struct firmware_section section;
 	find_firmware_section(&section, image, section_name);
@@ -315,11 +314,11 @@ int firmware_section_exists(const struct firmware_image *image,
  * If the section does not exist on either images, return as failure.
  * If the source section is larger, contents on destination be truncated.
  * If the source section is smaller, the remaining area is not modified.
- * Returns 0 if success, non-zero if error.
+ * Returns true if success and false on error.
  */
-int preserve_firmware_section(const struct firmware_image *image_from,
-			      struct firmware_image *image_to,
-			      const char *section_name)
+bool preserve_firmware_section(const struct firmware_image *image_from,
+			       struct firmware_image *image_to,
+			       const char *section_name)
 {
 	struct firmware_section from, to;
 
@@ -328,7 +327,7 @@ int preserve_firmware_section(const struct firmware_image *image_from,
 	if (!from.data || !to.data) {
 		VB2_DEBUG("Cannot find section %.*s: from=%p, to=%p\n",
 			  FMAP_NAMELEN, section_name, from.data, to.data);
-		return -1;
+		return false;
 	}
 	if (from.size > to.size) {
 		WARN("Section %.*s is truncated after updated.\n",
@@ -336,7 +335,7 @@ int preserve_firmware_section(const struct firmware_image *image_from,
 	}
 	/* Use memmove in case if we need to deal with sections that overlap. */
 	memmove(to.data, from.data, VB2_MIN(from.size, to.size));
-	return 0;
+	return true;
 }
 
 /*
@@ -499,7 +498,8 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 	return ret;
 }
 /*
- * Returns 1 if the programmers in image1 and image2 are the same.
+ * Returns true if the programmers in image1 and image2 are the same,
+ * false otherwise.
  */
 static int is_the_same_programmer(const struct firmware_image *image1,
 				  const struct firmware_image *image2)
@@ -508,11 +508,11 @@ static int is_the_same_programmer(const struct firmware_image *image1,
 
 	/* Including if both are NULL. */
 	if (image1->programmer == image2->programmer)
-		return 1;
+		return true;
 
 	/* Not the same if either one is NULL. */
 	if (!image1->programmer || !image2->programmer)
-		return 0;
+		return false;
 
 	return strcmp(image1->programmer, image2->programmer) == 0;
 }
@@ -620,15 +620,10 @@ static int external_flashrom(enum flash_command flash_cmd,
 	if (r)
 		return r;
 
-	switch (flash_cmd) {
-	case FLASH_READ:
-		r = load_firmware_image(params->image, image_name, NULL);
-		break;
-	default:
-		break;
-	}
+	if (flash_cmd == FLASH_READ)
+		return load_firmware_image(params->image, image_name, NULL);
 
-	return r;
+	return 0;
 }
 
 static int read_flash(struct flashrom_params *params,

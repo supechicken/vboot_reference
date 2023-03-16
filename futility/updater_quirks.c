@@ -72,39 +72,40 @@ static int reload_firmware_image(const char *file_path,
 /*
  * Returns True if the system has EC software sync enabled.
  */
-static int is_ec_software_sync_enabled(struct updater_config *cfg)
+static bool is_ec_software_sync_enabled(struct updater_config *cfg)
 {
 	const struct vb2_gbb_header *gbb;
 
 	int vdat_flags = dut_get_property_int("vdat_flags", cfg);
 	if (vdat_flags < 0) {
 		WARN("Failed to identify DUT vdat_flags.\n");
-		return 0;
+		return false;
 	}
 
 	/* Check if current system has disabled software sync or no support. */
 	if (!(vdat_flags & VBSD_EC_SOFTWARE_SYNC)) {
 		INFO("EC Software Sync is not available.\n");
-		return 0;
+		return false;
 	}
 
 	/* Check if the system has been updated to disable software sync. */
 	gbb = find_gbb(&cfg->image);
 	if (!gbb) {
 		WARN("Invalid AP firmware image.\n");
-		return 0;
+		return false;
 	}
 	if (gbb->flags & VB2_GBB_FLAG_DISABLE_EC_SOFTWARE_SYNC) {
 		INFO("EC Software Sync will be disabled in next boot.\n");
-		return 0;
+		return false;
 	}
-	return 1;
+	return true;
 }
 
 /*
  * Schedules an EC RO software sync (in next boot) if applicable.
+ * Returns true if EC RO sync should be applied, false otherwise.
  */
-static int ec_ro_software_sync(struct updater_config *cfg)
+static bool ec_ro_software_sync(struct updater_config *cfg)
 {
 	const char *ec_ro_path;
 	uint8_t *ec_ro_data;
@@ -115,22 +116,22 @@ static int ec_ro_software_sync(struct updater_config *cfg)
 			&cfg->image, &cfg->tempfiles);
 
 	if (!tmp_path)
-		return 1;
+		return false;
 	find_firmware_section(&ec_ro_sec, &cfg->ec_image, "EC_RO");
 	if (!ec_ro_sec.data || !ec_ro_sec.size) {
 		ERROR("EC image has invalid section '%s'.\n", "EC_RO");
-		return 1;
+		return false;
 	}
 	ec_ro_path = cbfs_extract_file(tmp_path, FMAP_RO_CBFS, "ecro",
 				       &cfg->tempfiles);
 	if (!ec_ro_path ||
 	    !cbfs_file_exists(tmp_path, FMAP_RO_CBFS, "ecro.hash")) {
 		INFO("No valid EC RO for software sync in AP firmware.\n");
-		return 1;
+		return false;
 	}
 	if (vb2_read_file(ec_ro_path, &ec_ro_data, &ec_ro_len) != VB2_SUCCESS) {
 		ERROR("Failed to read EC RO.\n");
-		return 1;
+		return false;
 	}
 
 	is_same_ec_ro = (ec_ro_len <= ec_ro_sec.size &&
@@ -146,16 +147,16 @@ static int ec_ro_software_sync(struct updater_config *cfg)
 		ERROR("The EC RO contents specified from AP (--image) and EC "
 		      "(--ec_image) firmware images are different, cannot "
 		      "update by EC RO software sync.\n");
-		return 1;
+		return false;
 	}
 	dut_set_property_int("try_ro_sync", 1, cfg);
-	return 0;
+	return true;
 }
 
 /*
  * Returns True if EC is running in RW.
  */
-static int is_ec_in_rw(struct updater_config *cfg)
+static bool is_ec_in_rw(struct updater_config *cfg)
 {
 	char buf[VB_MAX_STRING_PROPERTY];
 	return (dut_get_property_string("ecfw_act", buf, sizeof(buf), cfg) &&
@@ -368,7 +369,7 @@ static int quirk_ec_partial_recovery(struct updater_config *cfg)
 		WARN("EC Software Sync detected, will only update EC RO. "
 		     "The contents in EC RW will be updated after reboot.\n");
 		return EC_RECOVERY_RO;
-	} else if (ec_ro_software_sync(cfg) == 0) {
+	} else if (ec_ro_software_sync(cfg)) {
 		INFO("EC RO and RW should be updated after reboot.\n");
 		return EC_RECOVERY_DONE;
 	}
@@ -411,7 +412,7 @@ static int quirk_preserve_me(struct updater_config *cfg)
 	 * and writing; so we have to use the diff image to prevent contents
 	 * being changed when writing.
 	 */
-	cfg->use_diff_image = 1;
+	cfg->use_diff_image = true;
 
 	return 1;
 }
@@ -468,7 +469,7 @@ static int quirk_clear_mrc_data(struct updater_config *cfg)
 static int quirk_no_check_platform(struct updater_config *cfg)
 {
 	WARN("Disabled checking platform. You are on your own.\n");
-	cfg->check_platform = 0;
+	cfg->check_platform = false;
 	return 0;
 }
 
@@ -478,7 +479,7 @@ static int quirk_no_check_platform(struct updater_config *cfg)
 static int quirk_no_verify(struct updater_config *cfg)
 {
 	WARN("Disabled verifying flashed contents. You are on your own.\n");
-	cfg->do_verify = 0;
+	cfg->do_verify = false;
 	return 0;
 }
 
