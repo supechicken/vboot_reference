@@ -50,6 +50,23 @@
       "message": "i don\u0027t know why build.props wouldn\u0027t be world readable since it\u0027s not secret data.  is this a bug in the build ?  should it be 644 ?",
       "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b97380a_eb0c8a6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2023-03-16T21:36:07Z",
+      "side": 1,
+      "message": "Hi Mike, looks like unittests here could not executive sudo context. Do you any way how to update  ./sign_android_unittests.sh in order to use sudo?",
+      "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
