@@ -87,17 +87,17 @@ static void str_convert(char *s, int (*convert)(int c))
 	}
 }
 
-/* Returns 1 if name ends by given pattern, otherwise 0. */
-static int str_endswith(const char *name, const char *pattern)
+/* Returns true if name ends by given pattern, false otherwise. */
+static bool str_endswith(const char *name, const char *pattern)
 {
 	size_t name_len = strlen(name), pattern_len = strlen(pattern);
 	if (name_len < pattern_len)
-		return 0;
+		return false;
 	return strcmp(name + name_len - pattern_len, pattern) == 0;
 }
 
-/* Returns 1 if name starts by given pattern, otherwise 0. */
-static int str_startswith(const char *name, const char *pattern)
+/* Returns true if name starts by given pattern, false otherwise. */
+static bool str_startswith(const char *name, const char *pattern)
 {
 	return strncmp(name, pattern, strlen(pattern)) == 0;
 }
@@ -121,11 +121,11 @@ static char *vpd_get_value(const char *fpath, const char *key)
 
 /*
  * Reads and parses a setvars type file from archive, then stores into config.
- * Returns 0 on success (at least one entry found), otherwise failure.
+ * Returns true on success (at least one entry found), false otherwise.
  */
-static int model_config_parse_setvars_file(
-		struct model_config *cfg, struct u_archive *archive,
-		const char *fpath)
+static bool model_config_parse_setvars_file(struct model_config *cfg,
+					    struct u_archive *archive,
+					    const char *fpath)
 {
 	uint8_t *data;
 	uint32_t len;
@@ -136,7 +136,7 @@ static int model_config_parse_setvars_file(
 
 	if (archive_read_file(archive, fpath, &data, &len, NULL) != 0) {
 		ERROR("Failed reading: %s\n", fpath);
-		return -1;
+		return false;
 	}
 
 	/* Valid content should end with \n, or \"; ensure ASCIIZ for parsing */
@@ -171,14 +171,14 @@ static int model_config_parse_setvars_file(
 		else if (strcmp(k, SETVARS_SIGNATURE_ID) == 0) {
 			cfg->signature_id = strdup(v);
 			if (str_startswith(v, SIG_ID_IN_VPD_PREFIX))
-				cfg->is_custom_label = 1;
+				cfg->is_custom_label = true;
 		} else
 			found_valid = 0;
 		free(expand_path);
 		valid += found_valid;
 	}
 	free(data);
-	return valid == 0;
+	return valid != 0;
 }
 
 /*
@@ -358,7 +358,7 @@ static int manifest_scan_entries(const char *name, void *arg)
 	char *slash;
 
 	if (str_startswith(name, PATH_STARTSWITH_KEYSET))
-		manifest->has_keyset = 1;
+		manifest->has_keyset = true;
 	if (!str_endswith(name, PATH_ENDSWITH_SETVARS))
 		return 0;
 
@@ -369,7 +369,7 @@ static int manifest_scan_entries(const char *name, void *arg)
 		*slash = '\0';
 
 	VB2_DEBUG("Found model <%s> setvars: %s\n", model.name, name);
-	if (model_config_parse_setvars_file(&model, archive, name)) {
+	if (!model_config_parse_setvars_file(&model, archive, name)) {
 		ERROR("Invalid setvars file: %s\n", name);
 		return 0;
 	}
@@ -456,9 +456,9 @@ static void clear_patch_config(struct patch_config *patch)
 
 /*
  * Creates the manifest from the 'signer_config.csv' file.
- * Returns 0 on success (loaded), otherwise failure.
+ * Returns true on success (loaded), false otherwise.
  */
-static int manifest_from_signer_config(struct manifest *manifest)
+static bool manifest_from_signer_config(struct manifest *manifest)
 {
 	struct u_archive *archive = manifest->archive;
 	uint32_t size;
@@ -466,7 +466,7 @@ static int manifest_from_signer_config(struct manifest *manifest)
 	char *s, *tok_ptr = NULL;
 
 	if (!archive_has_entry(archive, PATH_SIGNER_CONFIG))
-		return -1;
+		return false;
 
 	/*
 	 * CSV format: model_name,firmware_image,key_id,ec_image
@@ -477,7 +477,7 @@ static int manifest_from_signer_config(struct manifest *manifest)
 
 	if (archive_read_file(archive, PATH_SIGNER_CONFIG, &data, &size,NULL)) {
 		ERROR("Failed reading: %s\n", PATH_SIGNER_CONFIG);
-		return -1;
+		return false;
 	}
 
 	/* Skip headers. */
@@ -485,7 +485,7 @@ static int manifest_from_signer_config(struct manifest *manifest)
 	if (!s || !strchr(s, ',')) {
 		ERROR("Invalid %s: missing header.\n", PATH_SIGNER_CONFIG);
 		free(data);
-		return -1;
+		return false;
 	}
 
 	for (s = strtok_r(NULL, "\n", &tok_ptr); s != NULL;
@@ -562,15 +562,15 @@ static int manifest_from_signer_config(struct manifest *manifest)
 			break;
 	}
 	free(data);
-	return 0;
+	return true;
 }
 
 /*
  * Creates the manifest from a simple (legacy) folder with only 1 set of
  * firmware images.
- * Returns 0 on success (loaded), otherwise failure.
+ * Returns true on success (loaded), false otherwise.
  */
-static int manifest_from_simple_folder(struct manifest *manifest)
+static bool manifest_from_simple_folder(struct manifest *manifest)
 {
 	const char * const host_image_name = "image.bin",
 		   * const old_host_image_name = "bios.bin",
@@ -587,7 +587,7 @@ static int manifest_from_simple_folder(struct manifest *manifest)
 	else if (archive_has_entry(archive, host_image_name))
 		image_name = host_image_name;
 	else
-		return 1;
+		return false;
 
 	model.image = strdup(image_name);
 	if (archive_has_entry(archive, ec_name))
@@ -608,11 +608,11 @@ static int manifest_from_simple_folder(struct manifest *manifest)
 	if (!model.name)
 		model.name = strdup(DEFAULT_MODEL_NAME);
 	if (manifest->has_keyset)
-		model.is_custom_label = 1;
+		model.is_custom_label = true;
 	manifest_add_model(manifest, &model);
 	manifest->default_model = manifest->num - 1;
 
-	return 0;
+	return true;
 }
 
 /*
@@ -779,16 +779,15 @@ static char *resolve_signature_id(struct model_config *model, const char *image)
  * Applies custom label information to an existing model configuration.
  * Collects signature ID information from either parameter signature_id or
  * image file (via VPD) and updates model.patches for key files.
- * Returns 0 on success, otherwise failure.
+ * Returns true on success, false otherwise.
  */
-int model_apply_custom_label(
-		struct model_config *model,
-		struct u_archive *archive,
-		const char *signature_id,
-		const char *image)
+bool model_apply_custom_label(struct model_config *model,
+			      struct u_archive *archive,
+			      const char *signature_id,
+			      const char *image)
 {
 	char *sig_id = NULL;
-	int r = 0;
+	bool r = true;
 
 	if (!signature_id) {
 		sig_id = resolve_signature_id(model, image);
@@ -806,7 +805,7 @@ int model_apply_custom_label(
 	}
 	if (!model->patches.rootkey) {
 		ERROR("No keys found for signature_id: '%s'\n", signature_id);
-		r = 1;
+		r = false;
 	} else {
 		INFO("Applied for custom label: %s\n", signature_id);
 	}
