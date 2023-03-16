@@ -432,9 +432,11 @@ sign_android_internal() {
       # both system and vendor images.
       sudo "${unsquashfs}" -x -f -no-progress -d "${vendor_mnt}/vendor" \
           "${vendor_img}"
-      if ! arc_generate_packages_cache "${system_mnt}" "${vendor_mnt}" \
-          "${working_dir}/packages_cache.xml" \
-          "${working_dir}/file_hash_cache"; then
+      if ! arc_generate_packages_cache \
+          "--system-root" "${system_mnt}" \
+          "--vendor-root" "${vendor_mnt}" \
+          "--output-packages-cache" "${working_dir}/packages_cache.xml" \
+          "--output-apk-hashes" "${working_dir}/file_hash_cache"; then
         die "Failed to generate packages cache."
       fi
       sudo cp "${working_dir}/packages_cache.xml" "${packages_cache}"
