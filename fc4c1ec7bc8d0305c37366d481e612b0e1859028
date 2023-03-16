@@ -136,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd4ae17b_7742dc52",
+        "filename": "futility/cmd_create.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-03-16T01:34:03Z",
+      "side": 1,
+      "message": "No it\u0027s not a pre-existing bug. Previously if you provide only the infile and not the outfile, the (argc \u003e optind) check would return false, and then output will be created based on infile. I see no problem here.",
+      "parentUuid": "96d082e8_2f71563f",
+      "range": {
+        "startLine": 375,
+        "startChar": 1,
+        "endLine": 375,
+        "endChar": 26
+      },
+      "revId": "fc4c1ec7bc8d0305c37366d481e612b0e1859028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c7b9feb_8eb8227f",
         "filename": "futility/cmd_create.c",
         "patchSetId": 2
