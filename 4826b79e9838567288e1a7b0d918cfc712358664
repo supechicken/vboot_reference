@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a8bb180_24cfaac1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-03-16T01:43:57Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7e6324c2_d361ef61",
@@ -14,6 +31,23 @@
       "writtenOn": "2023-03-15T21:23:25Z",
       "side": 1,
       "message": "PTAL\nTY",
+      "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183212c4_d13a175e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-03-16T01:43:57Z",
+      "side": 1,
+      "message": "i don\u0027t know why build.props wouldn\u0027t be world readable since it\u0027s not secret data.  is this a bug in the build ?  should it be 644 ?",
       "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
