@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352f296e_7d77d609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-03-17T17:18:18Z",
+      "side": 1,
+      "message": "Tested flashing over CCD and servo on Volteer/Voxel. Works correctly.\nPlans:\n- allow to flash EC and PD over CCD and Servo - flash_EC can do it, so why futility cant?\n- recover from abort - handle abort during flashing; restore cpu_fw_spi",
+      "revId": "de3392180285e33fbbe72183db6a59886e303d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
