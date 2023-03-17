@@ -679,6 +679,9 @@ struct vb2_disk_info {
 vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			       struct vb2_kernel_params *params,
 			       struct vb2_disk_info *disk_info);
+vb2_error_t vb2api_load_cserw(struct vb2_context *ctx,
+			       struct vb2_kernel_params *params,
+			       struct vb2_disk_info *disk_info);
 
 /* miniOS flags */
 

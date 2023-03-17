@@ -28,6 +28,94 @@ int GptInit(GptData *gpt)
 	GptRepair(gpt);
 	return GPT_SUCCESS;
 }
+//TODO: Move to cgpt internal
+int IsCseRwEntry(const GptEntry *e)
+{
+	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_FIRMWARE;
+	return !memcmp(&e->type, &chromeos_kernel, sizeof(Guid));
+}
+
+int GptNextCseRwEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	int new_kernel = CGPT_KERNEL_ENTRY_NOT_FOUND;
+	int new_prio = 0;
+	uint32_t i;
+
+	/*
+	 * If we already found a cse rw, continue the scan at the current
+	 * cserw's priority, in case there is another cse rw with the same
+	 * priority. current_kernel  = current_cse
+	 */
+	if (gpt->current_kernel != CGPT_KERNEL_ENTRY_NOT_FOUND) {
+		for (i = gpt->current_kernel + 1;
+		     i < header->number_of_entries; i++) {
+			e = entries + i;
+			if (!IsCseRwEntry(e))
+				continue;
+			VB2_DEBUG("GptNextCseRwEntry looking at same prio "
+				  "partition %d\n", i+1);
+			VB2_DEBUG("GptNextCseRwEntry s%d t%d p%d\n",
+				  GetEntrySuccessful(e), GetEntryTries(e),
+				  GetEntryPriority(e));
+			if (!(GetEntrySuccessful(e) || GetEntryTries(e)))
+				continue;
+			if (GetEntryPriority(e) == gpt->current_priority) {
+				gpt->current_kernel = i;
+				*start_sector = e->starting_lba;
+				*size = e->ending_lba - e->starting_lba + 1;
+				VB2_DEBUG("GptNextCseRwEntry likes it\n");
+				return GPT_SUCCESS;
+			}
+		}
+	}
+
+	/*
+	 * We're still here, so scan for the remaining kernel with the highest
+	 * priority less than the previous attempt.
+	 */
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		int current_prio = GetEntryPriority(e);
+		if (!IsCseRwEntry(e))
+			continue;
+		VB2_DEBUG("GptNextCseRwEntry looking at new prio "
+			  "partition %d\n", i+1);
+		VB2_DEBUG("GptNextCseRwEntry s%d t%d p%d\n",
+			  GetEntrySuccessful(e), GetEntryTries(e),
+			  GetEntryPriority(e));
+		if (!(GetEntrySuccessful(e) || GetEntryTries(e)))
+			continue;
+		if (current_prio >= gpt->current_priority) {
+			/* Already returned this kernel in a previous call */
+			continue;
+		}
+		if (current_prio > new_prio) {
+			new_kernel = i;
+			new_prio = current_prio;
+		}
+	}
+
+	/*
+	 * Save what we found.  Note that if we didn't find a new kernel,
+	 * new_prio will still be -1, so future calls to this function will
+	 * also fail.
+	 */
+	gpt->current_kernel = new_kernel;
+	gpt->current_priority = new_prio;
+
+	if (CGPT_KERNEL_ENTRY_NOT_FOUND == new_kernel) {
+		VB2_DEBUG("GptNextCseRwEntry no more CseRw parts\n");
+		return GPT_ERROR_NO_VALID_KERNEL;
+	}
+
+	VB2_DEBUG("GptNextCseRwEntry likes partition %d\n", new_kernel + 1);
+	e = entries + new_kernel;
+	*start_sector = e->starting_lba;
+	*size = e->ending_lba - e->starting_lba + 1;
+	return GPT_SUCCESS;
+}
 
 int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 {
@@ -111,6 +199,39 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 	return GPT_SUCCESS;
 }
 
+
+int GptUpdateCseRwWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
+{
+	int modified = 0;
+
+	if (!IsKernelEntry(e))
+		return GPT_ERROR_INVALID_UPDATE_TYPE;
+
+	switch (update_type) {
+	case GPT_UPDATE_ENTRY_BAD: {
+		/* Giving up on this partition entirely. */
+		if (!GetEntrySuccessful(e)) {
+			/*
+			 * Only clear tries and priority if the successful bit
+			 * is not set.
+			 */
+			modified = 1;
+			SetEntryTries(e, 0);
+			SetEntryPriority(e, 0);
+		}
+		break;
+	}
+	default:
+		return GPT_ERROR_INVALID_UPDATE_TYPE;
+	}
+
+	if (modified) {
+		GptModified(gpt);
+	}
+
+	return GPT_SUCCESS;
+}
+
 /*
  * Func: GptUpdateKernelWithEntry
  * Desc: This function updates the given kernel entry according to the provided
@@ -189,6 +310,24 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
 
 	return GPT_SUCCESS;
 }
+
+/*
+ * Func: GptUpdateCseRwEntry
+ * Desc: This function updates current_kernel entry with provided
+ * update_type. If current_kernel is not set, then it returns error.
+ */
+int GptUpdateCseRwEntry(GptData *gpt, uint32_t update_type)
+{
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e = entries + gpt->current_kernel;
+
+	if (gpt->current_kernel == CGPT_KERNEL_ENTRY_NOT_FOUND)
+		return GPT_ERROR_INVALID_UPDATE_TYPE;
+
+	return GptUpdateCseRwWithEntry(gpt, e, update_type);
+}
+
+
 
 /*
  * Func: GptUpdateKernelEntry

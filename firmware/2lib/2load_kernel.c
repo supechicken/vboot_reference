@@ -598,6 +598,95 @@ vb2_error_t vb2api_load_minios_kernel(struct vb2_context *ctx,
 	return rv;
 }
 
+vb2_error_t vb2api_load_cserw(struct vb2_context *ctx,
+			       struct vb2_kernel_params *params,
+			       struct vb2_disk_info *disk_info)
+{
+	vb2_error_t rv;
+
+	/* Clear output params */
+	params->partition_number = 0;
+
+	/* Read GPT data */
+	GptData gpt;
+	gpt.sector_bytes = (uint32_t)disk_info->bytes_per_lba;
+	gpt.streaming_drive_sectors = disk_info->streaming_lba_count
+		?: disk_info->lba_count;
+	gpt.gpt_drive_sectors = disk_info->lba_count;
+	gpt.flags = disk_info->flags & VB2_DISK_FLAG_EXTERNAL_GPT
+			? GPT_FLAG_EXTERNAL : 0;
+	if (AllocAndReadGptData(disk_info->handle, &gpt)) {
+		VB2_DEBUG("Unable to read GPT data\n");
+		goto gpt_done;
+	}
+
+	/* Initialize GPT library. Reusing kernel code with some mods. */
+	if (GptInit(&gpt)) {
+		VB2_DEBUG("Error parsing GPT\n");
+		goto gpt_done;
+    }
+    
+    /* Loop over candidate CSERW partitions */
+	uint64_t part_start, part_size;
+	while (GptNextCseRwEntry(&gpt, &part_start, &part_size) ==
+	       GPT_SUCCESS) {
+
+		VB2_DEBUG("Found cserw entry at %"
+			  PRIu64 " size %" PRIu64 "\n",
+			  part_start, part_size);
+
+		/* Found at least one cserw partition. */
+		found_partitions++;
+
+		/* Set up the stream */
+		VbExStream_t stream = NULL;
+		if (VbExStreamOpen(disk_info->handle,
+				   part_start, part_size, &stream)) {
+			VB2_DEBUG("Partition error getting stream.\n");
+			VB2_DEBUG("Marking cserw as invalid.\n");
+			GptUpdateCseRwEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
+			continue;
+		}
+
+		uint32_t lpflags = 0;
+		rv = vb2_load_partition(ctx, params, stream, lpflags);
+		VbExStreamClose(stream);
+
+		if (rv) {
+			VB2_DEBUG("Marking kernel as invalid (err=%x).\n", rv);
+			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
+			continue;
+		}
+
+ gpt_done:
+	/* Write and free GPT data */
+	WriteAndFreeGptData(disk_info->handle, &gpt);
+
+	/* Handle finding a good partition */
+	if (params->partition_number > 0) {
+		VB2_DEBUG("Good partition %d\n", params->partition_number);
+		/*
+		 * Validity check - only store a new TPM version if we found
+		 * one. If lowest_version is still at its initial value, we
+		 * didn't find one; for example, we're in developer mode and
+		 * just didn't look.
+		 */
+		if (lowest_version != LOWEST_TPM_VERSION &&
+		    lowest_version > sd->kernel_version_secdata)
+			sd->kernel_version = lowest_version;
+
+		/* Success! */
+		rv = VB2_SUCCESS;
+		params->disk_handle = disk_info->handle;
+	} else if (found_partitions > 0) {
+		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
+	} else {
+		rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
+	}
+
+	return rv;
+}
+
 vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			       struct vb2_kernel_params *params,
 			       struct vb2_disk_info *disk_info)
