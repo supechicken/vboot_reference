@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75b109f_7f313576",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-20T04:17:05Z",
+      "side": 1,
+      "message": "Previously `1` is passed here instead of `gapcount`. This changes the behavior. It\u0027s also unclear to me what `indent + show_first` means. The `show_first` looked like a boolean variable before.",
+      "range": {
+        "startLine": 213,
+        "startChar": 50,
+        "endLine": 213,
+        "endChar": 58
+      },
+      "revId": "63a39c46f2573eb2b47547ed4833aa8516020754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52680379_b3a408cc",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-20T04:17:05Z",
+      "side": 1,
+      "message": "So we\u0027re passing a `bool` to `int show_first`?",
+      "range": {
+        "startLine": 372,
+        "startChar": 31,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "63a39c46f2573eb2b47547ed4833aa8516020754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
