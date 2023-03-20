@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2989c6a8_9cf4a544",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-03-20T02:36:36Z",
+      "side": 1,
+      "message": "Why unsigned? There are several changes in this file introducing unnecessary signed/unsigned comparisons. Please fix all of them.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb252ba9_be797dc4",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-03-20T02:36:36Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2552267d_c93c1047",
+        "filename": "futility/cmd_vbutil_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-03-20T02:36:36Z",
+      "side": 1,
+      "message": "Why unsigned?",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
