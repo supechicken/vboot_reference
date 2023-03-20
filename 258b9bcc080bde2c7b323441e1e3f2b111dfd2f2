@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2cd0cdc_1865cea2",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-20T00:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bf75d53_1615dc1b",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "258b9bcc080bde2c7b323441e1e3f2b111dfd2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e36cd272_92e31560",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-14T09:28:34Z",
       "side": 1,
       "message": "Let\u0027s add check `names_len \u003e 0` here (or in `do_dump_fmap()`). The check in line #77 can also be removed.",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 67
+      },
+      "revId": "258b9bcc080bde2c7b323441e1e3f2b111dfd2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e23c486_df77f202",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-20T00:21:29Z",
+      "side": 1,
+      "message": "It was intentional not to touch this in this commit. The whole implementation is very fragile. These cleanups are just enough to make reading it tractable.",
+      "parentUuid": "e36cd272_92e31560",
       "range": {
         "startLine": 34,
         "startChar": 8,
