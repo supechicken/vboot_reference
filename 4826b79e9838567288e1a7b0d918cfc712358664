@@ -103,6 +103,24 @@
       "parentUuid": "183212c4_d13a175e",
       "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1144e48_15210c96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2023-03-20T21:27:06Z",
+      "side": 1,
+      "message": "Android explicitly enforced this and some other files to root owner and -rw------- in ~2016. So this explains why it used to work in nyc and stopped working rvc+",
+      "parentUuid": "2a2e00ae_7e8664e0",
+      "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
