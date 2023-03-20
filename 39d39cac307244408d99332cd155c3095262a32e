@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07806f3_f103aacd",
+        "filename": "futility/file_type.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-20T23:17:46Z",
+      "side": 1,
+      "message": "I used the enum type instead. unsigned int was just a safe default choice for it.",
+      "parentUuid": "ea7e6b1e_ffcff530",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "39d39cac307244408d99332cd155c3095262a32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f4c5f61_88037b31",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-20T04:39:06Z",
       "side": 1,
       "message": "Why size_t?",
+      "range": {
+        "startLine": 449,
+        "startChar": 6,
+        "endLine": 449,
+        "endChar": 12
+      },
+      "revId": "39d39cac307244408d99332cd155c3095262a32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5cd9511_dafe628e",
+        "filename": "futility/file_type_usbpd1.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-20T23:17:46Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "9f4c5f61_88037b31",
       "range": {
         "startLine": 449,
         "startChar": 6,
