@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f187db7_847d3317",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-21T04:01:05Z",
+      "side": 1,
+      "message": "Actually, the 8 chars in `%#08x` include `0x`, so it should be `%#010x` here.",
+      "parentUuid": "c18339a8_097d8e7c",
+      "range": {
+        "startLine": 298,
+        "startChar": 37,
+        "endLine": 298,
+        "endChar": 43
+      },
+      "revId": "116fcfa76ca9dee5ecb64779fb0c81da676505cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38e43586_f1d9353c",
         "filename": "futility/file_type_rwsig.c",
         "patchSetId": 3
