@@ -139,6 +139,24 @@
       "parentUuid": "a1144e48_15210c96",
       "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f6258a_07c69529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-03-21T01:22:00Z",
+      "side": 1,
+      "message": "seems pointless, but if that\u0027s what Android is forcing, not much we can do about it.  please add a comment above the line explaining why sudo is necessary.",
+      "parentUuid": "2b19b05e_85dbe1bd",
+      "revId": "4826b79e9838567288e1a7b0d918cfc712358664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
