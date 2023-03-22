@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16c95c25_36abdaf4",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-22T05:13:35Z",
+      "side": 1,
+      "message": "I rather a commit that fixes although those cases atomically and consistently on its own merit rather than via adhoc nits.",
+      "parentUuid": "5f187db7_847d3317",
+      "range": {
+        "startLine": 298,
+        "startChar": 37,
+        "endLine": 298,
+        "endChar": 43
+      },
+      "revId": "116fcfa76ca9dee5ecb64779fb0c81da676505cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38e43586_f1d9353c",
         "filename": "futility/file_type_rwsig.c",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "writtenOn": "2023-03-21T03:39:29Z",
       "side": 1,
       "message": "let\u0027s remove this",
+      "range": {
+        "startLine": 337,
+        "startChar": 24,
+        "endLine": 337,
+        "endChar": 39
+      },
+      "revId": "116fcfa76ca9dee5ecb64779fb0c81da676505cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cfcca92_609f52a0",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-22T05:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e43586_f1d9353c",
       "range": {
         "startLine": 337,
         "startChar": 24,
