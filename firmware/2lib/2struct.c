@@ -16,9 +16,23 @@ vb2_error_t vb2_check_keyblock(const struct vb2_keyblock *block, uint32_t size,
 		return VB2_ERROR_KEYBLOCK_TOO_SMALL_FOR_HEADER;
 	}
 
+	/* Add DMVRTRY1 and DMVRTRY2 string compare */
 	if (memcmp(block->magic, VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE)) {
-		VB2_DEBUG("Not a valid verified boot keyblock.\n");
-		return VB2_ERROR_KEYBLOCK_MAGIC;
+		if (memcmp(block->magic, VB2_KEYBLOCK_MAGIC_RETRY1, VB2_KEYBLOCK_MAGIC_SIZE)){
+			if (memcmp(block->magic, VB2_KEYBLOCK_MAGIC_RETRY2, VB2_KEYBLOCK_MAGIC_SIZE)){
+				VB2_DEBUG("Not a valid verified boot keyblock.\n");
+				return VB2_ERROR_KEYBLOCK_MAGIC;
+			}
+		}
+	}
+
+	if (memcmp(block->magic, VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE)) {
+		if (memcmp(block->magic, VB2_KEYBLOCK_MAGIC_RETRY2, VB2_KEYBLOCK_MAGIC_SIZE)){
+			if (memcmp(block->magic, VB2_KEYBLOCK_MAGIC_RETRY1, VB2_KEYBLOCK_MAGIC_SIZE)){
+				VB2_DEBUG("Not a valid verified boot keyblock.\n");
+				return VB2_ERROR_KEYBLOCK_MAGIC;
+			}
+		}
 	}
 
 	if (block->header_version_major != VB2_KEYBLOCK_VERSION_MAJOR) {

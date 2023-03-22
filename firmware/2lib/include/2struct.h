@@ -357,6 +357,8 @@ struct vb2_signature {
 /****************************************************************************/
 
 #define VB2_KEYBLOCK_MAGIC "CHROMEOS"
+#define VB2_KEYBLOCK_MAGIC_RETRY1 "DMVRTRY1"
+#define VB2_KEYBLOCK_MAGIC_RETRY2 "DMVRTRY2"
 #define VB2_KEYBLOCK_MAGIC_SIZE 8
 
 #define VB2_KEYBLOCK_VERSION_MAJOR 2
