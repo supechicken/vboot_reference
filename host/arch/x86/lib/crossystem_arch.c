@@ -846,13 +846,16 @@ static int GetBoardId(void)
 	 * SMBIOS implementation will seek to offset 4096.
 	 */
 	int board_id = -1;
+	char tmp[15];
 	FILE *f = fopen(SMBIOS_PRODUCT_VERSION_PATH, "r");
 
 	if (!f)
 		return -1;
 
-	if (fscanf(f, "rev%d\n", &board_id) != 1)
-		board_id = -1;
+	if (fscanf(f, "%s", tmp))
+		if (!sscanf(tmp, "%*[^0-9]%d\n", &board_id))
+			if (!sscanf(tmp, "%d\n", &board_id))
+				board_id = -1;
 
 	fclose(f);
 	return board_id;
