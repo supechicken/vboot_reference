@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d1d2018_5598b28e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "Could you explain why changing the return type of these functions (`find_firmware_section` in updater_utils.c, `update_ec_firmware` in updater.c and more) is better? For functions `*_exists`, `has_*` or `is_*`, I think it\u0027s clear from the function name that it returns a bool. However, for other functions I don\u0027t see the benefit of returning a bool.\n\nIf we want to prevent adding error code 1 to error code -1, we can always write `errorcnt +\u003d !!func()` instead of `errorcnt +\u003d func()` for `func` returning an int. Actually, I don\u0027t quite understand why we need to keep track of the number of errors in the first place. Can\u0027t we just return `!!errorcnt` for each function (such as `updater_setup_config`)?",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2943f565_7f320b16",
         "filename": "futility/cmd_flash_util.c",
         "patchSetId": 5
@@ -32,6 +49,138 @@
       "side": 1,
       "message": "I agree, but `free(NULL) \u003d\u003d if + return`, so there is almost no cost. All jumps to `out_free` however require call to `updater_delete_config(cfg)` to free configuration resources. I could move `out_free` one line down, and add another one to jump to after `updater_setup_config(...)` failure, but it would unnecessarily (IMO) clutter the code.",
       "parentUuid": "2943f565_7f320b16",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd61ad6a_2d5a6a91",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "+1 free(NULL) is legit and I see no problem with that.",
+      "parentUuid": "4516def6_79ffe4c1",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f2acf7_57a6e7c7",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "align",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57010db3_9cfde16b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "Can we have a separate CL for the help text change?",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be09906_ba2a142f",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "The archive is set up above, not here.",
+      "range": {
+        "startLine": 1656,
+        "startChar": 4,
+        "endLine": 1656,
+        "endChar": 18
+      },
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d550e55_84b33b58",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "Moving this here changes the behavior, because now the image will be loaded from the files within the archive. See the previous [change](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1278419/9/futility/updater.c#1784) which moves the function call.\n\nI don\u0027t quite understand the logic behind that change though. If you still want to move the function call like this, I\u0027d prefer a separate CL (and add hungte@ as a reviewer). If it turns out that we shouldn\u0027t move it, I think we either need a test case to cover that, or explicitly pass `archive\u003dNULL` to `updater_load_images`, so that people won\u0027t accidentally do the same mistake in the future.",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33626f50_92dfb125",
+        "filename": "futility/updater.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "Extra space.",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67aac341_7da0bfa3",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-24T08:46:43Z",
+      "side": 1,
+      "message": "align. can be moved to the previous line.",
       "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
