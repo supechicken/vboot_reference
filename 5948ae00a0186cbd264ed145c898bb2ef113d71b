@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6045db_59139c7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-24T23:29:27Z",
+      "side": 1,
+      "message": "Why would we want to loosen this restriction? Shouldn\u0027t this always be set to \"revX\" by coreboot? Why was it just \"1\" on Rex? That sounds like a firmware bug on Rex so I think we should fix that and leave this as strict as it is so we will be able to notice similar bugs in the future.",
+      "revId": "5948ae00a0186cbd264ed145c898bb2ef113d71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
