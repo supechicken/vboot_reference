@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8c314c5_3197f29f",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-25T23:06:26Z",
+      "side": 1,
+      "message": "the signed indexers before masked negative indexing issues. The signed/unsigned comparisons are just a indication of surfacing of this issue. They are addressed in the subsequent patch.",
+      "parentUuid": "2989c6a8_9cf4a544",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb252ba9_be797dc4",
         "filename": "futility/cmd_load_fmap.c",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd6715ca_f28f076d",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-25T23:06:26Z",
+      "side": 1,
+      "message": "The param to the func is a unsigned int.",
+      "parentUuid": "fb252ba9_be797dc4",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2552267d_c93c1047",
         "filename": "futility/cmd_vbutil_key.c",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-20T02:36:36Z",
       "side": 1,
       "message": "Why unsigned?",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe847d7_9f9cfc95",
+        "filename": "futility/cmd_vbutil_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-03-25T23:06:26Z",
+      "side": 1,
+      "message": "Just a superset, can be the the enum. Done",
+      "parentUuid": "2552267d_c93c1047",
       "range": {
         "startLine": 56,
         "startChar": 6,
