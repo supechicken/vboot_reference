@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fe6725e_3406a657",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-03-27T09:04:50Z",
+      "side": 1,
+      "message": "Such changes do not fall under \"Minor cleanups for maintainability\".",
+      "parentUuid": "a8c314c5_3197f29f",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb252ba9_be797dc4",
         "filename": "futility/cmd_load_fmap.c",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "The param to the func is a unsigned int.",
       "parentUuid": "fb252ba9_be797dc4",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc544f27_802183ec",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-03-27T09:04:50Z",
+      "side": 1,
+      "message": "The return type of `fread()` is `size_t`. If `size_t` is bigger than `unsigned int`, the comparison will promote `len` appropriately.",
+      "parentUuid": "cd6715ca_f28f076d",
       "range": {
         "startLine": 69,
         "startChar": 1,
