@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c513d630_082dda58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-03-27T04:36:40Z",
+      "side": 1,
+      "message": "\u003e With integer you have to always look at function documentation to be sure that for function A() zero is success and for B() non zero is success.\n\nIn C convention the return value 0 (for int) should always mean success. Therefore I couldn\u0027t agree more to change the return type of functions violating that (such as `has_valid_update`) to bool. However this argument doesn\u0027t justify changing the return type of other functions such as `update_ec_firmware`.\n\nI think for functions other than `*_exists`/`has_*`/`is_*`, for example `write_firmware`, returning an int (or some equivalent enum such as cb_err in coreboot) is the standard in C. One benefit of having multiple possible return values is that different non-zero error codes could be used, which is sometimes useful.\n\n\u003e ... `1 + -1 \u003d\u003d 0`. That\u0027s the second argument for removing integers whenever possible.\n\nFor `errorcnt +\u003d !!func()`, the caller needs `!!` only because it wants to maintain the error count. If we all agree that the caller doesn\u0027t have to count the errors, then changing it to `if (func()) return/goto` should be sufficient in most cases. I still don\u0027t see why we need to change the return type of `func` in this case.\n\nIn other cases where the caller wants to continue the flow on function call failure:\n\n```\nerrorcnt +\u003d !!func1();\nerrorcnt +\u003d !!func2();\nerrorcnt +\u003d !!func3();\n```\n\nwriting `if (func1()) ret \u003d -1;` would be lengthy. One trick is to use `ret |\u003d func1();`. Then the problem of `1 + -1` could be elegantly solved.",
+      "parentUuid": "a9a96bf8_1331d23d",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2943f565_7f320b16",
         "filename": "futility/cmd_flash_util.c",
         "patchSetId": 5
