@@ -646,9 +646,9 @@ int write_system_firmware(struct updater_config *cfg,
 	struct flashrom_params params = {0};
 	struct firmware_image *flash_contents = NULL;
 
-	if (cfg->use_diff_image && cfg->image_current.data &&
-	    is_the_same_programmer(&cfg->image_current, image))
-		flash_contents = &cfg->image_current;
+	if (cfg->use_diff_image && cfg->images[AP_CURRENT_IMAGE].data &&
+	    is_the_same_programmer(&cfg->images[AP_CURRENT_IMAGE], image))
+		flash_contents = &cfg->images[AP_CURRENT_IMAGE];
 
 	params.image = (struct firmware_image *)image;
 	params.flash_contents = flash_contents;

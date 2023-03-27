@@ -124,10 +124,10 @@ static int dut_get_platform_version(struct updater_config *cfg)
 /* Helper function to return host software write protection status. */
 static int dut_get_wp_sw(struct updater_config *cfg)
 {
-	assert(cfg->image.programmer);
+	assert(cfg->images[AP_NEW_IMAGE].programmer);
 	bool mode;
 
-	if (flashrom_get_wp(cfg->image.programmer, &mode, NULL, NULL, -1)) {
+	if (flashrom_get_wp(cfg->images[AP_NEW_IMAGE].programmer, &mode, NULL, NULL, -1)) {
 		/* Read WP status error */
 		return -1;
 	}

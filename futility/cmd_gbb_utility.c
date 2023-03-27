@@ -389,13 +389,13 @@ static uint8_t *read_from_flash(struct updater_config *cfg, off_t *filesize)
 	 * require another read of FMAP.
 	 */
 	const char * const regions[] = {FMAP_RO_FMAP, FMAP_RO_GBB, NULL};
-	if (flashrom_read_image(&cfg->image_current, regions,
+	if (flashrom_read_image(&cfg->images[AP_CURRENT_IMAGE], regions,
 				cfg->verbosity + 1))
 		return NULL;
-	uint8_t *ret = cfg->image_current.data;
-	cfg->image_current.data = NULL;
-	*filesize = cfg->image_current.size;
-	cfg->image_current.size = 0;
+	uint8_t *ret = cfg->images[AP_CURRENT_IMAGE].data;
+	cfg->images[AP_CURRENT_IMAGE].data = NULL;
+	*filesize = cfg->images[AP_CURRENT_IMAGE].size;
+	cfg->images[AP_CURRENT_IMAGE].size = 0;
 	return ret;
 #else
 	return NULL;
@@ -411,11 +411,11 @@ static int write_to_flash(struct updater_config *cfg, uint8_t *outbuf,
 		ERROR("You must disable write protection before setting flags.\n");
 		return -1;
 	}
-	cfg->image.data = outbuf;
-	cfg->image.size = filesize;
-	int ret = write_firmware(cfg, &cfg->image, FMAP_RO_GBB);
-	cfg->image.data = NULL;
-	cfg->image.size = 0;
+	cfg->images[AP_NEW_IMAGE].data = outbuf;
+	cfg->images[AP_NEW_IMAGE].size = filesize;
+	int ret = write_firmware(cfg, &cfg->images[AP_NEW_IMAGE], FMAP_RO_GBB);
+	cfg->images[AP_NEW_IMAGE].data = NULL;
+	cfg->images[AP_NEW_IMAGE].size = 0;
 	return ret;
 #else
 	return 1;

@@ -108,7 +108,7 @@ static int do_read(int argc, char *argv[])
 		errorcnt += updater_setup_config(cfg, &args, &update_needed);
 	if (!errorcnt && update_needed) {
 		prepare_servo_control(prepare_ctrl_name, 1);
-		int r = load_system_firmware(cfg, &cfg->image_current);
+		int r = load_system_firmware(cfg, &cfg->images[AP_CURRENT_IMAGE]);
 		/*
 		 * Ignore a parse error as we still want to write the file
 		 * out in that case
@@ -122,7 +122,7 @@ static int do_read(int argc, char *argv[])
 
 	if (region) {
 		struct firmware_section section;
-		if (find_firmware_section(&section, &cfg->image_current,
+		if (find_firmware_section(&section, &cfg->images[AP_CURRENT_IMAGE],
 					  region)) {
 			ERROR("Region '%s' not found in image.\n", region);
 			goto err;
@@ -132,8 +132,8 @@ static int do_read(int argc, char *argv[])
 			errorcnt++;
 	} else {
 		if (write_to_file("Wrote AP firmware to", output_file_name,
-				  cfg->image_current.data,
-				  cfg->image_current.size))
+				  cfg->images[AP_CURRENT_IMAGE].data,
+				  cfg->images[AP_CURRENT_IMAGE].size))
 			errorcnt++;
 	}
 
