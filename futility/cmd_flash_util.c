@@ -17,7 +17,7 @@
 static int print_flash_size(struct updater_config *cfg)
 {
 	uint32_t flash_size;
-	if (flashrom_get_size(cfg->image.programmer, &flash_size,
+	if (flashrom_get_size(cfg->images[AP_NEW_IMAGE].programmer, &flash_size,
 			      cfg->verbosity + 1)) {
 		ERROR("%s failed.\n", __func__);
 		return -1;
@@ -34,13 +34,13 @@ static int get_ro_range(struct updater_config *cfg,
 
 	/* Read fmap */
 	const char *const regions[] = {FMAP_RO_FMAP, NULL};
-	if (flashrom_read_image(&cfg->image_current, regions,
+	if (flashrom_read_image(&cfg->images[AP_CURRENT_IMAGE], regions,
 				cfg->verbosity + 1))
 		return -1;
 
 	FmapAreaHeader *wp_ro = NULL;
-	uint8_t *r = fmap_find_by_name(cfg->image_current.data,
-				       cfg->image_current.size,
+	uint8_t *r = fmap_find_by_name(cfg->images[AP_CURRENT_IMAGE].data,
+				       cfg->images[AP_CURRENT_IMAGE].size,
 				       NULL, FMAP_RO, &wp_ro);
 	if (!r || !wp_ro) {
 		ERROR("Could not find WP_RO in the FMAP\n");
@@ -52,9 +52,9 @@ static int get_ro_range(struct updater_config *cfg,
 	*len = wp_ro->area_size;
 
 err:
-	free(cfg->image_current.data);
-	cfg->image_current.data = NULL;
-	cfg->image_current.size = 0;
+	free(cfg->images[AP_CURRENT_IMAGE].data);
+	cfg->images[AP_CURRENT_IMAGE].data = NULL;
+	cfg->images[AP_CURRENT_IMAGE].size = 0;
 
 	return ret;
 }
@@ -69,7 +69,7 @@ static int print_wp_status(struct updater_config *cfg)
 	/* Get current WP region and mode from SPI flash */
 	bool wp_mode;
 	uint32_t wp_start, wp_len;
-	if (flashrom_get_wp(cfg->image.programmer, &wp_mode,
+	if (flashrom_get_wp(cfg->images[AP_NEW_IMAGE].programmer, &wp_mode,
 			    &wp_start, &wp_len, cfg->verbosity + 1)) {
 		ERROR("Failed to get WP status\n");
 		return -1;
@@ -99,7 +99,7 @@ static int set_flash_wp(struct updater_config *cfg, bool enable)
 			return -1;
 	}
 
-	if (flashrom_set_wp(cfg->image.programmer, enable,
+	if (flashrom_set_wp(cfg->images[AP_NEW_IMAGE].programmer, enable,
 			    wp_start, wp_len, cfg->verbosity + 1)) {
 		ERROR("Failed to modify WP configuration.\n");
 		return -1;

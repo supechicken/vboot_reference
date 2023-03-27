@@ -70,9 +70,16 @@ enum try_update_type {
 	TRY_UPDATE_DEFERRED_APPLY,
 };
 
+enum {
+	EC_IMAGE,
+	PD_IMAGE,
+	AP_CURRENT_IMAGE,
+	AP_NEW_IMAGE,
+	FW_IMAGE_MAX,
+};
+
 struct updater_config {
-	struct firmware_image image, image_current;
-	struct firmware_image ec_image, pd_image;
+	struct firmware_image images[FW_IMAGE_MAX];
 	struct dut_property dut_properties[DUT_PROP_MAX];
 	struct quirk_entry quirks[QUIRK_MAX];
 	struct u_archive *archive;

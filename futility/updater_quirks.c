@@ -89,7 +89,7 @@ static int is_ec_software_sync_enabled(struct updater_config *cfg)
 	}
 
 	/* Check if the system has been updated to disable software sync. */
-	gbb = find_gbb(&cfg->image);
+	gbb = find_gbb(&cfg->images[AP_NEW_IMAGE]);
 	if (!gbb) {
 		WARN("Invalid AP firmware image.\n");
 		return 0;
@@ -112,11 +112,11 @@ static int ec_ro_software_sync(struct updater_config *cfg)
 	int is_same_ec_ro;
 	struct firmware_section ec_ro_sec;
 	const char *tmp_path = get_firmware_image_temp_file(
-			&cfg->image, &cfg->tempfiles);
+			&cfg->images[AP_NEW_IMAGE], &cfg->tempfiles);
 
 	if (!tmp_path)
 		return 1;
-	find_firmware_section(&ec_ro_sec, &cfg->ec_image, "EC_RO");
+	find_firmware_section(&ec_ro_sec, &cfg->images[EC_IMAGE], "EC_RO");
 	if (!ec_ro_sec.data || !ec_ro_sec.size) {
 		ERROR("EC image has invalid section '%s'.\n", "EC_RO");
 		return 1;
@@ -170,8 +170,8 @@ static int is_ec_in_rw(struct updater_config *cfg)
  */
 static int quirk_enlarge_image(struct updater_config *cfg)
 {
-	struct firmware_image *image_from = &cfg->image_current,
-			      *image_to = &cfg->image;
+	struct firmware_image *image_from = &cfg->images[AP_CURRENT_IMAGE],
+			      *image_to = &cfg->images[AP_NEW_IMAGE];
 	const char *tmp_path;
 	size_t to_write;
 	FILE *fp;
@@ -205,7 +205,7 @@ static int quirk_enlarge_image(struct updater_config *cfg)
  */
 static int quirk_unlock_me_for_update(struct updater_config *cfg)
 {
-	return unlock_flash_master(&cfg->image);
+	return unlock_flash_master(&cfg->images[AP_NEW_IMAGE]);
 }
 
 /*
@@ -221,7 +221,7 @@ static int quirk_unlock_me_for_update(struct updater_config *cfg)
 static int quirk_unlock_wilco_me_for_update(struct updater_config *cfg)
 {
 	struct firmware_section section;
-	struct firmware_image *image_to = &cfg->image;
+	struct firmware_image *image_to = &cfg->images[AP_NEW_IMAGE];
 	const int flash_master_offset = 128;
 	const uint8_t flash_master[] = {
 		0xff, 0xff, 0xff, 0xef, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
@@ -277,7 +277,7 @@ static int quirk_eve_smm_store(struct updater_config *cfg)
 	const char *old_store;
 	char *command;
 	const char *temp_image = get_firmware_image_temp_file(
-			&cfg->image_current, &cfg->tempfiles);
+			&cfg->images[AP_CURRENT_IMAGE], &cfg->tempfiles);
 
 	if (!temp_image)
 		return -1;
@@ -291,7 +291,7 @@ static int quirk_eve_smm_store(struct updater_config *cfg)
 	}
 
 	/* Reuse temp_image */
-	temp_image = get_firmware_image_temp_file(&cfg->image, &cfg->tempfiles);
+	temp_image = get_firmware_image_temp_file(&cfg->images[AP_NEW_IMAGE], &cfg->tempfiles);
 	if (!temp_image)
 		return -1;
 
@@ -305,7 +305,7 @@ static int quirk_eve_smm_store(struct updater_config *cfg)
 	free(host_shell(command));
 	free(command);
 
-	return reload_firmware_image(temp_image, &cfg->image);
+	return reload_firmware_image(temp_image, &cfg->images[AP_NEW_IMAGE]);
 }
 
 /*
@@ -335,7 +335,7 @@ static int quirk_ec_partial_recovery(struct updater_config *cfg)
 	 * we have to update whole WP_RO, not just EC_RO.
 	 */
 	const char *ec_ro = "WP_RO";
-	struct firmware_image *ec_image = &cfg->ec_image;
+	struct firmware_image *ec_image = &cfg->images[EC_IMAGE];
 	int do_partial = get_config_quirk(QUIRK_EC_PARTIAL_RECOVERY, cfg);
 
 	if (!do_partial) {
@@ -400,7 +400,7 @@ static int quirk_preserve_me(struct updater_config *cfg)
 static int quirk_clear_mrc_data(struct updater_config *cfg)
 {
 	struct firmware_section section;
-	struct firmware_image *image = &cfg->image_current;
+	struct firmware_image *image = &cfg->images[AP_CURRENT_IMAGE];
 	int i, count = 0;
 	int flash_now = 0;
 
@@ -549,7 +549,7 @@ void updater_register_quirks(struct updater_config *cfg)
  */
 const char * const updater_get_model_quirks(struct updater_config *cfg)
 {
-	const char *pattern = cfg->image.ro_version;
+	const char *pattern = cfg->images[AP_NEW_IMAGE].ro_version;
 	int i;
 
 	if (!pattern) {
@@ -578,7 +578,7 @@ char *updater_get_cbfs_quirks(struct updater_config *cfg)
 	struct firmware_section cbfs_section;
 
 	/* Before invoking cbfstool, try to search for CBFS file name. */
-	find_firmware_section(&cbfs_section, &cfg->image, cbfs_region);
+	find_firmware_section(&cbfs_section, &cfg->images[AP_NEW_IMAGE], cbfs_region);
 	if (!cbfs_section.size || !memmem(cbfs_section.data, cbfs_section.size,
 					  entry_name, strlen(entry_name))) {
 		if (!cbfs_section.size)
@@ -589,7 +589,7 @@ char *updater_get_cbfs_quirks(struct updater_config *cfg)
 	}
 
 	const char *tmp_path = get_firmware_image_temp_file(
-			&cfg->image, &cfg->tempfiles);
+			&cfg->images[AP_NEW_IMAGE], &cfg->tempfiles);
 	uint8_t *data = NULL;
 	uint32_t size = 0;
 
@@ -626,7 +626,7 @@ int quirk_override_signature_id(struct updater_config *cfg,
 	/* b/146876241 */
 	assert(model);
 	if (strcmp(model->name, "phaser360") == 0) {
-		struct firmware_image *image = &cfg->image_current;
+		struct firmware_image *image = &cfg->images[AP_CURRENT_IMAGE];
 		const char *key_hash = get_firmware_rootkey_hash(image);
 		if (key_hash && strcmp(key_hash, DOPEFISH_KEY_HASH) == 0) {
 			const char * const sig_dopefish = "phaser360-dopefish";

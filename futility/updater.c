@@ -252,7 +252,7 @@ static int set_try_cookies(struct updater_config *cfg, const char *target,
 	const char *slot;
 
 	/* EC Software Sync needs few more reboots. */
-	if (cfg->ec_image.data)
+	if (cfg->images[EC_IMAGE].data)
 		tries += 2;
 
 	if (!has_update)
@@ -497,7 +497,7 @@ static int preserve_known_sections(struct firmware_image *from,
 static int preserve_images(struct updater_config *cfg)
 {
 	int errcnt = 0, found;
-	struct firmware_image *from = &cfg->image_current, *to = &cfg->image;
+	struct firmware_image *from = &cfg->images[AP_CURRENT_IMAGE], *to = &cfg->images[AP_NEW_IMAGE];
 
 	errcnt += preserve_gbb(from, to, !cfg->factory_update,
 			       cfg->override_gbb_flags, cfg->gbb_flags);
@@ -556,8 +556,8 @@ static int section_needs_update(const struct firmware_image *image_from,
 static int check_compatible_platform(struct updater_config *cfg)
 {
 	int len;
-	struct firmware_image *image_from = &cfg->image_current,
-			      *image_to = &cfg->image;
+	struct firmware_image *image_from = &cfg->images[AP_CURRENT_IMAGE],
+			      *image_to = &cfg->images[AP_NEW_IMAGE];
 	const char *from_dot = strchr(image_from->ro_version, '.'),
 	           *to_dot = strchr(image_to->ro_version, '.');
 
@@ -756,8 +756,8 @@ static int legacy_needs_update(struct updater_config *cfg)
 
 	VB2_DEBUG("Checking %s contents...\n", FMAP_RW_LEGACY);
 
-	tmp_to = get_firmware_image_temp_file(&cfg->image, &cfg->tempfiles);
-	tmp_from = get_firmware_image_temp_file(&cfg->image_current,
+	tmp_to = get_firmware_image_temp_file(&cfg->images[AP_NEW_IMAGE], &cfg->tempfiles);
+	tmp_from = get_firmware_image_temp_file(&cfg->images[AP_CURRENT_IMAGE],
 						&cfg->tempfiles);
 	if (!tmp_from || !tmp_to)
 		return 0;
@@ -773,7 +773,7 @@ static int legacy_needs_update(struct updater_config *cfg)
 	}
 
 	return section_needs_update(
-			&cfg->image_current, &cfg->image, FMAP_RW_LEGACY);
+			&cfg->images[AP_CURRENT_IMAGE], &cfg->images[AP_NEW_IMAGE], FMAP_RW_LEGACY);
 }
 
 /*
@@ -849,7 +849,7 @@ static int check_compatible_tpm_keys(struct updater_config *cfg,
  */
 static int update_ec_firmware(struct updater_config *cfg)
 {
-	struct firmware_image *ec_image = &cfg->ec_image;
+	struct firmware_image *ec_image = &cfg->images[EC_IMAGE];
 	if (!has_valid_update(cfg, ec_image, NULL, 0))
 		return 0;
 
@@ -1076,7 +1076,7 @@ static enum updater_error_codes update_whole_firmware(
 		}
 
 		/* Check if the system is going to re-key. */
-		r = check_compatible_root_key(&cfg->image_current, image_to);
+		r = check_compatible_root_key(&cfg->images[AP_CURRENT_IMAGE], image_to);
 		/* We only allow re-key to non-dev keys. */
 		switch (r) {
 		case ROOTKEY_COMPAT_OK:
@@ -1098,7 +1098,7 @@ static enum updater_error_codes update_whole_firmware(
 	/* FMAP may be different so we should just update all. */
 	if (write_firmware(cfg, image_to, NULL) ||
 	    update_ec_firmware(cfg) ||
-	    write_optional_firmware(cfg, &cfg->pd_image, NULL, 1, 0))
+	    write_optional_firmware(cfg, &cfg->images[PD_IMAGE], NULL, 1, 0))
 		return UPDATE_ERR_WRITE_FIRMWARE;
 
 	return UPDATE_ERR_DONE;
@@ -1126,8 +1126,8 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		return UPDATE_ERR_DONE;
 	}
 
-	struct firmware_image *image_from = &cfg->image_current,
-			      *image_to = &cfg->image;
+	struct firmware_image *image_from = &cfg->images[AP_CURRENT_IMAGE],
+			      *image_to = &cfg->images[AP_NEW_IMAGE];
 	if (!image_to->data)
 		return UPDATE_ERR_NO_IMAGE;
 
@@ -1218,11 +1218,11 @@ struct updater_config *updater_new_config(void)
 			1, sizeof(struct updater_config));
 	if (!cfg)
 		return cfg;
-	cfg->image.programmer = PROG_HOST;
-	cfg->image_current.programmer = PROG_HOST;
+	cfg->images[AP_NEW_IMAGE].programmer = PROG_HOST;
+	cfg->images[AP_CURRENT_IMAGE].programmer = PROG_HOST;
 	cfg->original_programmer = PROG_HOST;
-	cfg->ec_image.programmer = PROG_EC;
-	cfg->pd_image.programmer = PROG_PD;
+	cfg->images[EC_IMAGE].programmer = PROG_EC;
+	cfg->images[PD_IMAGE].programmer = PROG_PD;
 
 	cfg->check_platform = 1;
 	cfg->do_verify = 1;
@@ -1273,24 +1273,24 @@ static int updater_load_images(struct updater_config *cfg,
 	int errorcnt = 0;
 	struct u_archive *ar = cfg->archive;
 
-	if (!cfg->image.data && image) {
+	if (!cfg->images[AP_NEW_IMAGE].data && image) {
 		if (image && strcmp(image, "-") == 0) {
 			INFO("Reading image from stdin...\n");
 			image = create_temp_file(&cfg->tempfiles);
 			if (image)
 				errorcnt += !!save_file_from_stdin(image);
 		}
-		errorcnt += !!load_firmware_image(&cfg->image, image, ar);
+		errorcnt += !!load_firmware_image(&cfg->images[AP_NEW_IMAGE], image, ar);
 		if (!errorcnt)
 			errorcnt += updater_setup_quirks(cfg, arg);
 	}
 	if (arg->host_only || arg->emulation)
 		return errorcnt;
 
-	if (!cfg->ec_image.data && ec_image)
-		errorcnt += !!load_firmware_image(&cfg->ec_image, ec_image, ar);
-	if (!cfg->pd_image.data && pd_image)
-		errorcnt += !!load_firmware_image(&cfg->pd_image, pd_image, ar);
+	if (!cfg->images[EC_IMAGE].data && ec_image)
+		errorcnt += !!load_firmware_image(&cfg->images[EC_IMAGE], ec_image, ar);
+	if (!cfg->images[PD_IMAGE].data && pd_image)
+		errorcnt += !!load_firmware_image(&cfg->images[PD_IMAGE], pd_image, ar);
 	return errorcnt;
 }
 
@@ -1330,12 +1330,12 @@ static int updater_apply_custom_label(struct updater_config *cfg,
 
 	assert(model->is_custom_label);
 	if (!signature_id) {
-		if (!cfg->image_current.data) {
+		if (!cfg->images[AP_CURRENT_IMAGE].data) {
 			INFO("Loading system firmware for custom label...\n");
-			load_system_firmware(cfg, &cfg->image_current);
+			load_system_firmware(cfg, &cfg->images[AP_CURRENT_IMAGE]);
 		}
 		tmp_image = get_firmware_image_temp_file(
-				&cfg->image_current, &cfg->tempfiles);
+				&cfg->images[AP_CURRENT_IMAGE], &cfg->tempfiles);
 		if (!tmp_image) {
 			ERROR("Failed to get system current firmware\n");
 			return 1;
@@ -1416,7 +1416,7 @@ static int updater_setup_archive(
 			}
 		}
 	}
-	errorcnt += patch_image_by_model(&cfg->image, model, ar);
+	errorcnt += patch_image_by_model(&cfg->images[AP_NEW_IMAGE], model, ar);
 	return errorcnt;
 }
 
@@ -1503,14 +1503,14 @@ int updater_setup_config(struct updater_config *cfg,
 	cfg->override_gbb_flags = arg->override_gbb_flags;
 
 	/* Setup properties and fields that do not have external dependency. */
-	if (arg->programmer && strcmp(arg->programmer, cfg->image.programmer)) {
+	if (arg->programmer && strcmp(arg->programmer, cfg->images[AP_NEW_IMAGE].programmer)) {
 		check_single_image = 1;
 		/* DUT should be remote if the programmer is changed. */
 		cfg->dut_is_remote = 1;
 		INFO("Configured to update a remote DUT%s.\n",
 		     arg->detect_servo ? " via Servo" : "");
-		cfg->image.programmer = arg->programmer;
-		cfg->image_current.programmer = arg->programmer;
+		cfg->images[AP_NEW_IMAGE].programmer = arg->programmer;
+		cfg->images[AP_CURRENT_IMAGE].programmer = arg->programmer;
 		cfg->original_programmer = arg->programmer;
 		VB2_DEBUG("AP (host) programmer changed to %s.\n",
 			  arg->programmer);
@@ -1535,8 +1535,8 @@ int updater_setup_config(struct updater_config *cfg,
 			 "dummy:emulate=VARIABLE_SIZE,size=%d,image=%s,bus=prog",
 			 (int)statbuf.st_size, arg->emulation);
 
-		cfg->image.programmer = cfg->emulation_programmer;
-		cfg->image_current.programmer = cfg->emulation_programmer;
+		cfg->images[AP_NEW_IMAGE].programmer = cfg->emulation_programmer;
+		cfg->images[AP_CURRENT_IMAGE].programmer = cfg->emulation_programmer;
 	}
 
 	if (arg->sys_props)
@@ -1635,11 +1635,11 @@ int updater_setup_config(struct updater_config *cfg,
 	 * second call from updater_setup_archive) and quirks should be loaded.
 	 * For invocation without image, we want to get quirks now.
 	 */
-	if (!cfg->image.data && arg->quirks)
+	if (!cfg->images[AP_NEW_IMAGE].data && arg->quirks)
 		errorcnt += !!setup_config_quirks(arg->quirks, cfg);
 
 	/* Additional checks. */
-	if (check_single_image && !do_output && (cfg->ec_image.data || cfg->pd_image.data)) {
+	if (check_single_image && !do_output && (cfg->images[EC_IMAGE].data || cfg->images[PD_IMAGE].data)) {
 		errorcnt++;
 		ERROR("EC/PD images are not supported in current mode.\n");
 	}
@@ -1652,9 +1652,9 @@ int updater_setup_config(struct updater_config *cfg,
 		const char *r = arg->output_dir;
 		if (!r)
 			r = ".";
-		errorcnt += updater_output_image(&cfg->image, "image.bin", r);
-		errorcnt += updater_output_image(&cfg->ec_image, "ec.bin", r);
-		errorcnt += updater_output_image(&cfg->pd_image, "pd.bin", r);
+		errorcnt += updater_output_image(&cfg->images[AP_NEW_IMAGE], "image.bin", r);
+		errorcnt += updater_output_image(&cfg->images[EC_IMAGE], "ec.bin", r);
+		errorcnt += updater_output_image(&cfg->images[PD_IMAGE], "pd.bin", r);
 		*do_update = 0;
 	}
 	return errorcnt;
@@ -1708,12 +1708,12 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
 void updater_delete_config(struct updater_config *cfg)
 {
 	assert(cfg);
-	free_firmware_image(&cfg->image);
-	free_firmware_image(&cfg->image_current);
-	free_firmware_image(&cfg->ec_image);
-	free_firmware_image(&cfg->pd_image);
-	cfg->image.programmer = cfg->original_programmer;
-	cfg->image_current.programmer = cfg->original_programmer;
+	free_firmware_image(&cfg->images[AP_NEW_IMAGE]);
+	free_firmware_image(&cfg->images[AP_CURRENT_IMAGE]);
+	free_firmware_image(&cfg->images[EC_IMAGE]);
+	free_firmware_image(&cfg->images[PD_IMAGE]);
+	cfg->images[AP_NEW_IMAGE].programmer = cfg->original_programmer;
+	cfg->images[AP_CURRENT_IMAGE].programmer = cfg->original_programmer;
 	free(cfg->emulation_programmer);
 	remove_all_temp_files(&cfg->tempfiles);
 	if (cfg->archive)
