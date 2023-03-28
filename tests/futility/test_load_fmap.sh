@@ -11,7 +11,7 @@ cd "$OUTDIR"
 
 
 IN="${SCRIPT_DIR}/futility/data/bios_link_mp.bin"
-BIOS="${TMP}.bios.bin"
+BIOS="${TMP}.image.bin"
 
 cp "${IN}" "${BIOS}"
 
