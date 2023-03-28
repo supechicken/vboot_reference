@@ -573,29 +573,23 @@ static int manifest_from_signer_config(struct manifest *manifest)
 static int manifest_from_simple_folder(struct manifest *manifest)
 {
 	const char * const host_image_name = "image.bin",
-		   * const old_host_image_name = "bios.bin",
 		   * const ec_name = "ec.bin",
 		   * const pd_name = "pd.bin";
 	struct u_archive *archive = manifest->archive;
-	const char *image_name = NULL;
 	struct firmware_image image = {0};
 	struct model_config model = {0};
 
 	/* Try to load from current folder. */
-	if (archive_has_entry(archive, old_host_image_name))
-		image_name = old_host_image_name;
-	else if (archive_has_entry(archive, host_image_name))
-		image_name = host_image_name;
-	else
+	if (!archive_has_entry(archive, host_image_name))
 		return 1;
 
-	model.image = strdup(image_name);
+	model.image = strdup(host_image_name);
 	if (archive_has_entry(archive, ec_name))
 		model.ec_image = strdup(ec_name);
 	if (archive_has_entry(archive, pd_name))
 		model.pd_image = strdup(pd_name);
 	/* Extract model name from FWID: $Vendor_$Platform.$Version */
-	if (!load_firmware_image(&image, image_name, archive)) {
+	if (!load_firmware_image(&image, host_image_name, archive)) {
 		char *token = NULL;
 		if (strtok(image.ro_version, "_"))
 			token = strtok(NULL, ".");
