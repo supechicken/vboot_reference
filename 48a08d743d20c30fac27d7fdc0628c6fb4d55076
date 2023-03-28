@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe42bec0_e2e9e655",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-28T23:19:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a visible error and maybe make the command fail?",
+      "revId": "48a08d743d20c30fac27d7fdc0628c6fb4d55076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d0824a_d494afd4",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-03-28T23:19:16Z",
+      "side": 1,
+      "message": "nit: looks like it might be worth to factor out more of the commonalities in this code, e.g.\n```\noverwrite_section(struct firmware_image *image, const char *fmap_section,\n                  size_t offset, size_t size, const uint8_t *new_values)\n```",
+      "revId": "48a08d743d20c30fac27d7fdc0628c6fb4d55076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
