@@ -402,16 +402,10 @@ mkdir -p "${A}/bin"
 echo "echo \"\${CL_TAG}\"" >"${A}/bin/vpd"
 chmod +x "${A}/bin/vpd"
 
-cp -f "${LINK_BIOS}" "${A}/bios.bin"
-echo "TEST: Manifest (--manifest, bios.bin)"
-"${FUTILITY}" update -a "${A}" --manifest >"${TMP}.json.out"
-cmp "${TMP}.json.out" "${SCRIPT_DIR}/futility/link_bios.manifest.json"
-
-mv -f "${A}/bios.bin" "${A}/image.bin"
+cp -f "${LINK_BIOS}" "${A}/image.bin"
 echo "TEST: Manifest (--manifest, image.bin)"
 "${FUTILITY}" update -a "${A}" --manifest >"${TMP}.json.out"
-cmp "${TMP}.json.out" "${SCRIPT_DIR}/futility/link_image.manifest.json"
-
+cmp "${TMP}.json.out" "${SCRIPT_DIR}/futility/link_bios.manifest.json"
 
 cp -f "${TO_IMAGE}" "${A}/image.bin"
 test_update "Full update (--archive, single package)" \
