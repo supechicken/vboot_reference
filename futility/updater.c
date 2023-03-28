@@ -418,6 +418,10 @@ static int preserve_management_engine(struct updater_config *cfg,
 				image_from, image_to, FMAP_SI_DESC);
 	}
 
+	if (cfg->unlock_me) {
+		unlock_me(image_to);
+	}
+
 	if (!strcmp(cfg->original_programmer, PROG_HOST)) {
 		if (try_apply_quirk(QUIRK_PRESERVE_ME, cfg) > 0) {
 			VB2_DEBUG("ME needs to be preserved - preserving %s.\n",
@@ -1541,6 +1545,8 @@ int updater_setup_config(struct updater_config *cfg,
 		override_dut_property(DUT_PROP_WP_HW, cfg, r);
 		override_dut_property(DUT_PROP_WP_SW, cfg, r);
 	}
+
+	cfg->unlock_me = arg->unlock_me;
 
 	/* Set up archive and load images. */
 	/* Always load images specified from command line directly. */

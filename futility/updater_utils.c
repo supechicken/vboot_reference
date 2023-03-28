@@ -752,3 +752,73 @@ const char *get_firmware_rootkey_hash(const struct firmware_image *image)
 
 	return packed_key_sha1_string(rootkey);
 }
+
+/*
+ * Unlock the Flash Master values in SI_DESC.
+ *
+ * TODO(b/270275115): Replace with a call to ifdtool.
+ */
+int unlock_flash_master(struct firmware_image *image)
+{
+	struct firmware_section section;
+	const int flash_master_offset = 0x80;
+	const uint8_t flash_master[] = {
+		0x00, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0x00, 0xff,
+		0xff, 0xff
+	};
+
+	find_firmware_section(&section, image, FMAP_SI_DESC);
+	if (section.size < flash_master_offset + ARRAY_SIZE(flash_master))
+		return 0;
+	if (memcmp(section.data + flash_master_offset, flash_master,
+		   ARRAY_SIZE(flash_master)) == 0) {
+		VB2_DEBUG("Target ME not locked.\n");
+		return 0;
+	}
+
+	INFO("Changed Flash Master Values to unlocked.\n");
+	memcpy(section.data + flash_master_offset, flash_master,
+	       ARRAY_SIZE(flash_master));
+	return 0;
+}
+
+/*
+ * Disable GPR0 (Global Protected Range). When enabled, it provides
+ * write-protection to part of the SI_ME region, specifically CSE_RO and
+ * part of CSE_DATA, so it must be disabled to allow updating SI_ME.
+ *
+ * TODO(b/270275115): Replace with a call to ifdtool.
+ */
+static int disable_gpr0(struct firmware_image *image)
+{
+	struct firmware_section section;
+	const int gpr0_offset = 0x154;
+	const uint8_t gpr0_value_disabled[] = { 0x00, 0x00, 0x00, 0x00 };
+
+	find_firmware_section(&section, image, FMAP_SI_DESC);
+	if (section.size < gpr0_offset + ARRAY_SIZE(gpr0_value_disabled))
+		return 0;
+	if (memcmp(section.data + gpr0_offset, gpr0_value_disabled,
+		   ARRAY_SIZE(gpr0_value_disabled)) == 0) {
+		VB2_DEBUG("GPR0 already disabled.\n");
+		return 0;
+	}
+
+	INFO("Disabled GPR0.\n");
+	memcpy(section.data + gpr0_offset, gpr0_value_disabled,
+	       ARRAY_SIZE(gpr0_value_disabled));
+	return 0;
+}
+
+/*
+ * Unlock the Intel ME by:
+ * - Unlocking the FLMSTR values in the descriptor.
+ * - Disabling GPR0 in the descriptor.
+ * This allows the SI_DESC and SI_ME regions to be updated.
+ */
+int unlock_me(struct firmware_image *image)
+{
+	unlock_flash_master(image);
+	disable_gpr0(image);
+	return 0;
+}
