@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ec68cb_e394326d",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-29T00:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe42bec0_e2e9e655",
+      "revId": "48a08d743d20c30fac27d7fdc0628c6fb4d55076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40d0824a_d494afd4",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-28T23:19:16Z",
       "side": 1,
       "message": "nit: looks like it might be worth to factor out more of the commonalities in this code, e.g.\n```\noverwrite_section(struct firmware_image *image, const char *fmap_section,\n                  size_t offset, size_t size, const uint8_t *new_values)\n```",
+      "revId": "48a08d743d20c30fac27d7fdc0628c6fb4d55076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cbeece3_7c30e66f",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-03-29T00:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40d0824a_d494afd4",
       "revId": "48a08d743d20c30fac27d7fdc0628c6fb4d55076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
