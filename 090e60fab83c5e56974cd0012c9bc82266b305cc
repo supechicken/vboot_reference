@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b054543_c676116b",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1490127
+      },
+      "writtenOn": "2023-03-30T18:24:11Z",
+      "side": 1,
+      "message": "This seems OK to me for the needs of installer.\nI did notice cgpt_repair.c has `printf` to stdout but it\u0027s not the only subcmd exposed which does this (cgpt_boot has one as well).",
+      "revId": "090e60fab83c5e56974cd0012c9bc82266b305cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
