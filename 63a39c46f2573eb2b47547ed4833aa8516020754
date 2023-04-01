@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf15f9a9_a7a0dcd0",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-01T00:21:12Z",
+      "side": 1,
+      "message": "I agree, the code is extremely twisted and rotten. That is why a triple state of `(int show_first, bool gaps, int *gapcount)` is required to maintain the previous behavior.\n\nThe intentional condition to `show()` is that;\n\n show_first[arg] :\u003d gaps; \u0026\u0026 gaps[arg] :\u003d gaps;\n\nand the recursive call to `show()` still has `show_first[arg] :\u003d 1`.\n\nThe `show()` implementation needs to be rewritten but this patch gets its state to be internalised into the recursion over being a closure upon a global.",
+      "parentUuid": "a75b109f_7f313576",
+      "range": {
+        "startLine": 213,
+        "startChar": 50,
+        "endLine": 213,
+        "endChar": 58
+      },
+      "revId": "63a39c46f2573eb2b47547ed4833aa8516020754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52680379_b3a408cc",
         "filename": "futility/cmd_dump_fmap.c",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-20T04:17:05Z",
       "side": 1,
       "message": "So we\u0027re passing a `bool` to `int show_first`?",
+      "range": {
+        "startLine": 372,
+        "startChar": 31,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "63a39c46f2573eb2b47547ed4833aa8516020754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcbf56f7_74bf5ea6",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-01T00:21:12Z",
+      "side": 1,
+      "message": "A bool is defined to auto up-cast to a int. The intention to bring the code into health incrementally however that is hard given how twisted it is currently, this is just a measured first step to start from the correct type/propositional logically.",
+      "parentUuid": "52680379_b3a408cc",
       "range": {
         "startLine": 372,
         "startChar": 31,
