@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a49fd8f4_2fbf7ef0",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-01T00:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe6725e_3406a657",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb252ba9_be797dc4",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "The return type of `fread()` is `size_t`. If `size_t` is bigger than `unsigned int`, the comparison will promote `len` appropriately.",
       "parentUuid": "cd6715ca_f28f076d",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "169b8a4a7dd840b267ff9accdc148a50f5ef9960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dce083e_a20bde54",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-01T00:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc544f27_802183ec",
       "range": {
         "startLine": 69,
         "startChar": 1,
