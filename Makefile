@@ -1402,7 +1402,7 @@ ${BUILD}/cscope.files: all install_for_test
 	${Q}cat ${ALL_DEPS} | tr -d ':\\' | tr ' ' '\012' | \
 		grep -v /lib20/ | \
 		sed -e "s/${SRCDIRPAT}//" | \
-		egrep '\.[chS]$$' | sort | uniq > $@
+		grep -E '\.[chS]$$' | sort | uniq > $@
 
 cmd_etags = etags -o ${BUILD}/TAGS $(shell cat ${BUILD}/cscope.files)
 cmd_ctags = ctags -o ${BUILD}/tags $(shell cat ${BUILD}/cscope.files)
