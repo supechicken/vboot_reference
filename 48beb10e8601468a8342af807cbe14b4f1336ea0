@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92dfcf63_ad3cc89e",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-04-03T00:32:39Z",
+      "side": 1,
+      "message": "Please reformat.",
+      "revId": "48beb10e8601468a8342af807cbe14b4f1336ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9994891b_70f1e610",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1711,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-04-03T00:32:39Z",
+      "side": 1,
+      "message": "This seems like a candidate for a loop over the images array.",
+      "revId": "48beb10e8601468a8342af807cbe14b4f1336ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
