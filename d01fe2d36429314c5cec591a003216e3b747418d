@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d480767_4c34f1fc",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-05T22:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f49e0c3e_c9b942ae",
+      "range": {
+        "startLine": 46,
+        "startChar": 38,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "d01fe2d36429314c5cec591a003216e3b747418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "283c8023_50cf7095",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-05T04:49:34Z",
       "side": 1,
       "message": "This will print a lot of zeros and will not always print a `0x` prefix, use `0x%02x` instead.\n\nDitto with pid, but 4 digits: `0x%04x`.",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "d01fe2d36429314c5cec591a003216e3b747418d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ff6e4f_9dc5b58c",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-05T22:07:38Z",
+      "side": 1,
+      "message": "Ah forgot to stage the update. Done.",
+      "parentUuid": "283c8023_50cf7095",
       "range": {
         "startLine": 47,
         "startChar": 27,
