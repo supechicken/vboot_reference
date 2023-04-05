@@ -16,6 +16,24 @@
       "message": "1. the changes to comments and help messages (e.g., won\u0027t change real logic) should be in a separate commit.\n2. I\u0027m still seeing the reference to bios.bin in a several places when searching via cs/, for example src/private-overlays/chipset-skl-private/chromeos-base/chromeos-bsp-chipset-skl-private/files/sbin/cros_spi_descriptor .",
       "revId": "1a60b0152ab9b6b5a9ca3fa0c84931604b125707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f7b92c_8fcdb1ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-05T22:42:57Z",
+      "side": 1,
+      "message": "For (1) https://crrev.com/c/4402371\nFor (2) yes they are buggy scripts they need to be updated as well.",
+      "parentUuid": "22036d45_0a4ff5a9",
+      "revId": "1a60b0152ab9b6b5a9ca3fa0c84931604b125707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
