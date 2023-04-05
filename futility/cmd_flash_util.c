@@ -27,6 +27,30 @@ static int print_flash_size(struct updater_config *cfg)
 	return 0;
 }
 
+static int print_flash_info(struct updater_config *cfg)
+{
+	char *vendor;
+	char *name;
+	uint32_t vid;
+	uint32_t pid;
+	uint32_t flash_size;
+	if (flashrom_get_info(cfg->image.programmer,
+				&vendor, &name,
+				&vid, &pid,
+				&flash_size,
+			      cfg->verbosity + 1)) {
+		ERROR("%s failed.\n", __func__);
+		return -1;
+	}
+
+	printf("Flash vendor: %s\n", vendor); free(vendor);
+	printf("Flash vendor-id: %#010x\n", vid);
+	printf("Flash name: %s\n", name); free(name);
+	printf("Flash name-id: %#010x\n", pid);
+	printf("Flash size: %#010x\n", flash_size);
+	return 0;
+}
+
 static int get_ro_range(struct updater_config *cfg,
 			uint32_t *start, uint32_t *len)
 {
@@ -118,6 +142,7 @@ static struct option const long_opts[] = {
 	{"wp-status", 0, NULL, 's'},
 	{"wp-enable", 0, NULL, 'e'},
 	{"wp-disable", 0, NULL, 'd'},
+	{"flash-info", 0, NULL, 'i'},
 	{"flash-size", 0, NULL, 'z'},
 	{NULL, 0, NULL, 0},
 };
@@ -135,6 +160,7 @@ static void print_help(int argc, char *argv[])
 	       "    --wp-enable      \tEnable protection for the RO image section.\n"
 	       "    --wp-disable     \tDisable all write protection.\n"
 	       "    --flash-size     \tGet flash size.\n"
+	       "    --flash-info     \tGet flash info.\n"
 	       "\n"
 	       SHARED_FLASH_ARGS_HELP,
 	       argv[0]);
@@ -150,6 +176,7 @@ static int do_flash(int argc, char *argv[])
 	bool disable_wp = false;
 	bool get_wp_status = false;
 	bool get_size = false;
+	bool get_info = false;
 
 	struct updater_config *cfg = updater_new_config();
 	assert(cfg);
@@ -171,6 +198,9 @@ static int do_flash(int argc, char *argv[])
 			break;
 		case 'd':
 			disable_wp = true;
+			break;
+		case 'i':
+			get_info = true;
 			break;
 		case 'z':
 			get_size = true;
@@ -198,7 +228,7 @@ static int do_flash(int argc, char *argv[])
 		ERROR("Unexpected arguments.\n");
 	}
 
-	if (!get_size && !enable_wp && !disable_wp && !get_wp_status) {
+	if (!get_size && !get_info && !enable_wp && !disable_wp && !get_wp_status) {
 		print_help(argc, argv);
 		goto out_free;
 	}
@@ -224,6 +254,9 @@ static int do_flash(int argc, char *argv[])
 	int update_needed;
 	ret = updater_setup_config(cfg, &args, &update_needed);
 	prepare_servo_control(prepare_ctrl_name, 1);
+
+	if (!ret && get_info)
+		ret = print_flash_info(cfg);
 
 	if (!ret && get_size)
 		ret = print_flash_size(cfg);
