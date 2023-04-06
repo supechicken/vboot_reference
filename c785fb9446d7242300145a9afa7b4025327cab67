@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "685dd1f7_417e3a09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-04-06T13:03:26Z",
+      "side": 1,
+      "message": "I partially agree with you. After more thinking I see that my changes are too radical and were not fully thought out. Explicitly binary functions like `*_exists`/`has_*`/`is_*` can use `bool`, other functions do not have or need to.\n\nI still however do not like convention with `-1` as return value. POSIX APIs use `-1` together with `errno`, and futility does not do this for obvious reasons. I changed functions to use `1` instead whenever possible as it can be then used as default error value and larger integer values can be used as more specific error code if necessary (futility code is not shared with any other project, so we do not have to care about it much though).",
+      "parentUuid": "c513d630_082dda58",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2943f565_7f320b16",
         "filename": "futility/cmd_flash_util.c",
         "patchSetId": 5
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "+1 free(NULL) is legit and I see no problem with that.",
       "parentUuid": "4516def6_79ffe4c1",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6822b8b0_40c3e9d9",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-04-06T13:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd61ad6a_2d5a6a91",
       "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
