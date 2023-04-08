@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9ceebb_a9afb5e8",
+        "filename": "firmware/2lib/sha256_armv8a_ce_a64.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-04-08T00:41:24Z",
+      "side": 1,
+      "message": "Just noticed that this is the same array as vb2_sha256_k[] in 2sha256.c. Can we reuse that instead of having it twice?",
+      "revId": "95608084816fc30764610fc60f40d233a17368ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
