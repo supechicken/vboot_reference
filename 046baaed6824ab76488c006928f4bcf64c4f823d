@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f104b0_6bcb9094",
+        "filename": "futility/updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-10T03:13:19Z",
+      "side": 1,
+      "message": "ec/pd",
+      "range": {
+        "startLine": 1287,
+        "startChar": 20,
+        "endLine": 1287,
+        "endChar": 30
+      },
+      "revId": "046baaed6824ab76488c006928f4bcf64c4f823d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b99dfa0_b40bf4e7",
+        "filename": "futility/updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-10T03:13:19Z",
+      "side": 1,
+      "message": "Can we move these function extraction changes (unrelated return type changes) to another CL?",
+      "revId": "046baaed6824ab76488c006928f4bcf64c4f823d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df891cba_a633f455",
+        "filename": "futility/updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-10T03:13:19Z",
+      "side": 1,
+      "message": "It\u0027s fine to exceed the line length limit for long strings (for easier grep).",
+      "range": {
+        "startLine": 1430,
+        "startChar": 9,
+        "endLine": 1431,
+        "endChar": 24
+      },
+      "revId": "046baaed6824ab76488c006928f4bcf64c4f823d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3146af6b_2c8743f9",
+        "filename": "futility/updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-10T03:13:19Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 1551,
+        "startChar": 3,
+        "endLine": 1551,
+        "endChar": 29
+      },
+      "revId": "046baaed6824ab76488c006928f4bcf64c4f823d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9907e5a1_ce114617",
+        "filename": "futility/updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-10T03:13:19Z",
+      "side": 1,
+      "message": "How about `Failed to load archive`?",
+      "range": {
+        "startLine": 1554,
+        "startChar": 9,
+        "endLine": 1554,
+        "endChar": 27
+      },
+      "revId": "046baaed6824ab76488c006928f4bcf64c4f823d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

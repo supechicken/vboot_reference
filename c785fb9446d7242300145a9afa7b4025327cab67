@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "206a6403_02fab2ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-10T03:13:19Z",
+      "side": 1,
+      "message": "I\u0027m fine with using `1` as the default error code.\n\n\u003e Explicitly binary functions like `*_exists/has_*/is_*` can use bool, other functions do not have or need to.\n\nI still see the following 3 functions being changed in PS7:\n\n- find_firmware_section\n- do_check_compatible_tpm_keys\n- check_compatible_tpm_keys",
+      "parentUuid": "685dd1f7_417e3a09",
+      "revId": "c785fb9446d7242300145a9afa7b4025327cab67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2943f565_7f320b16",
         "filename": "futility/cmd_flash_util.c",
         "patchSetId": 5
