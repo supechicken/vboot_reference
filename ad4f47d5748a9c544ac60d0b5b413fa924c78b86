@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7102340_d4caec16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-04-11T07:16:57Z",
+      "side": 1,
+      "message": "nit: Please use \"futility: host/lib:\" instead of plus sign so it\u0027s easier to find patches with desired module prefix.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08f50a21_a7636a4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-04-11T07:16:57Z",
+      "side": 1,
+      "message": "supernit: Is this dot intended?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feacd43c_6929916d",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-04-11T07:16:57Z",
+      "side": 1,
+      "message": "I think code would be cleaner with printfing first and freeing at the end.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "281bbbf6_a034d655",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-04-11T07:16:57Z",
+      "side": 1,
+      "message": "Please state in docs string in the header file that all fields require a non-NULL pointer in the params. If that\u0027s not the case then please do NULL-checks for every pointer here.",
+      "range": {
+        "startLine": 400,
+        "startChar": 1,
+        "endLine": 404,
+        "endChar": 37
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
