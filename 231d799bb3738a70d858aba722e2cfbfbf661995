@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c67bc4c_b923a273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-11T08:12:11Z",
+      "side": 1,
+      "message": "BTW, I noticed that Android.mk is full of legacy files (such as firmware/lib/cryptolib/rsa.c) that no longer exist. Is that still in use?",
+      "revId": "231d799bb3738a70d858aba722e2cfbfbf661995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
