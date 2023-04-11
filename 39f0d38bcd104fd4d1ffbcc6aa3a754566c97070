@@ -22,6 +22,30 @@
       },
       "revId": "39f0d38bcd104fd4d1ffbcc6aa3a754566c97070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c041333_94634c56",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-11T08:14:24Z",
+      "side": 0,
+      "message": "With `futility update --manifest -e FILE`, `arg-\u003eimage` will be NULL.",
+      "parentUuid": "3bbb4df9_ebe23155",
+      "range": {
+        "startLine": 1629,
+        "startChar": 2,
+        "endLine": 1629,
+        "endChar": 22
+      },
+      "revId": "39f0d38bcd104fd4d1ffbcc6aa3a754566c97070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
