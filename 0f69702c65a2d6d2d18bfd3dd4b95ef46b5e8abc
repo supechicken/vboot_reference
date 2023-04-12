@@ -16,6 +16,24 @@
       "message": "Thanks! After this lands (should happen automatically in a few hours, unless our CI gets borked again, in which case you may have to set Commit-Queue+2 a few more times until it goes through), you\u0027ll need to submit an uprev commit like CB:73058 to coreboot to make sure the update gets reflected there.",
       "revId": "0f69702c65a2d6d2d18bfd3dd4b95ef46b5e8abc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0067a3c8_8756f2dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-04-12T09:02:13Z",
+      "side": 1,
+      "message": "Thank you. I already had a change queued up for this: https://review.coreboot.org/c/coreboot/+/74343",
+      "parentUuid": "35f6b70f_a27850bd",
+      "revId": "0f69702c65a2d6d2d18bfd3dd4b95ef46b5e8abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
