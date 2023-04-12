@@ -33,6 +33,24 @@
       "message": "Note that the ebuild calls cros-debug-add-NDEBUG, which bypasses this and directly adds -DNDEBUG to cflags if USE\u003dcros-debug is not set... so I think after this assertions will still be disabled in production code.",
       "revId": "231d799bb3738a70d858aba722e2cfbfbf661995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51bdeeaf_c081b035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-12T13:30:56Z",
+      "side": 1,
+      "message": "That function appends DNDEBUG to CPPFLAGS instead of CFLAGS. Uploaded CL:4416732 to drop cros-debug from ebuild.",
+      "parentUuid": "f67573a8_18e5319e",
+      "revId": "231d799bb3738a70d858aba722e2cfbfbf661995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
