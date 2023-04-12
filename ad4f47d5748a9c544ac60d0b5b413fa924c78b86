@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da8ab70_3a983039",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-12T23:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7102340_d4caec16",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08f50a21_a7636a4d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-11T07:16:57Z",
       "side": 1,
       "message": "supernit: Is this dot intended?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8fc8cf_37d14e25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-12T23:25:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "08f50a21_a7636a4d",
       "range": {
         "startLine": 24,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda86ed9_3cf48225",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-12T23:25:45Z",
+      "side": 1,
+      "message": "I think it is better to keep life-times as short close as possible rather than aesthetics.",
+      "parentUuid": "feacd43c_6929916d",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "281bbbf6_a034d655",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-04-11T07:16:57Z",
       "side": 1,
       "message": "Please state in docs string in the header file that all fields require a non-NULL pointer in the params. If that\u0027s not the case then please do NULL-checks for every pointer here.",
+      "range": {
+        "startLine": 400,
+        "startChar": 1,
+        "endLine": 404,
+        "endChar": 37
+      },
+      "revId": "ad4f47d5748a9c544ac60d0b5b413fa924c78b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b29c0ec_d5e3f407",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-04-12T23:25:45Z",
+      "side": 1,
+      "message": "Fair, done.",
+      "parentUuid": "281bbbf6_a034d655",
       "range": {
         "startLine": 400,
         "startChar": 1,
