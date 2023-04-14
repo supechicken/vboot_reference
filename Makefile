@@ -1160,15 +1160,15 @@ ${BUILD}/%: ${BUILD}/%.o ${OBJS} ${LIBS}
 
 ${BUILD}/%.o: %.c
 	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
-	${Q}${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
+	${Q}${CC} ${CPPFLAGS} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 ${BUILD}/%.o: ${BUILD}/%.c
 	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
-	${Q}${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
+	${Q}${CC} ${CPPFLAGS} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 ${BUILD}/%.o: %.S
 	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
-	${Q}${CC} ${CFLAGS} ${INCLUDES} -c -o $@ $<
+	${Q}${CC} ${CPPFLAGS} ${CFLAGS} ${INCLUDES} -c -o $@ $<
 
 # ----------------------------------------------------------------------------
 # Here are the special tweaks to the generic rules.
