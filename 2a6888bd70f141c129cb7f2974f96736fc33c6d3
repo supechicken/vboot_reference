@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f48d17b1_59cfa60e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-04-15T00:59:18Z",
+      "side": 1,
+      "message": "I think it would be better to just add ${CPPFLAGS} here. It\u0027s a small deduplication, and more importantly I would be worried about affecting firmware builds. The whole flags stuff in here is a bit of a mess, but in general the way it works in practice is that all the firmware builds directly pass CFLAGS\u003d... in which override all of this, and COMMON_FLAGS only really affect userland builds. For a firmware build, I don\u0027t think we want to risk a stray CPPFLAGS variable that was defined on the build host for some reason to suddenly start affecting firmware when it previously did not.",
+      "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c8fcf8_dc4c54ef",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-04-15T00:59:18Z",
+      "side": 1,
+      "message": "Do we still need this if we\u0027re just saying it should be passed via CPPFLAGS now?",
+      "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
