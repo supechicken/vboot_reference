@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0caf8e_c926fc28",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-17T03:15:24Z",
+      "side": 1,
+      "message": "Fair enough. BTW our firmware code isn\u0027t using `assert()` (only `VB2_ASSERT`). Therefore `NDEBUG` shouldn\u0027t affect firmware build in practice.",
+      "parentUuid": "f48d17b1_59cfa60e",
+      "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16c8fcf8_dc4c54ef",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-15T00:59:18Z",
       "side": 1,
       "message": "Do we still need this if we\u0027re just saying it should be passed via CPPFLAGS now?",
+      "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f5ae57_b09fe1ea",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-17T03:15:24Z",
+      "side": 1,
+      "message": "No strong opinion, but this could be useful when building hostlib with `make hostlib NDEBUG\u003d1`.",
+      "parentUuid": "16c8fcf8_dc4c54ef",
       "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
