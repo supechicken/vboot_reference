@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9510a8f_3e14a268",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-04-18T22:18:43Z",
+      "side": 1,
+      "message": "I know, I\u0027m not so much worried about NDEBUG but whatever else might be in those variables. The coreboot build system is designed so that existing environment variables shouldn\u0027t influence how the firmware output is built, but this would break that, that\u0027s what I want to avoid.",
+      "parentUuid": "9d0caf8e_c926fc28",
+      "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16c8fcf8_dc4c54ef",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "No strong opinion, but this could be useful when building hostlib with `make hostlib NDEBUG\u003d1`.",
       "parentUuid": "16c8fcf8_dc4c54ef",
+      "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22970c46_6e07ccf7",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-04-18T22:18:43Z",
+      "side": 1,
+      "message": "Yeah but you could just use `make hostlib CPPFLAGS\u003d\u0027-DNDEBUG\u0027`, right?",
+      "parentUuid": "d5f5ae57_b09fe1ea",
       "revId": "2a6888bd70f141c129cb7f2974f96736fc33c6d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
