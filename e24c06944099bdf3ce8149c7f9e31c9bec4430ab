@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a16910a_7c6d5f45",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-04-20T23:50:39Z",
+      "side": 1,
+      "message": "nit: I would leave this out... you\u0027re only passing $12 for the recovery type anyway, and if you were passing it for any of the other calls I think it would make more sense for this function to use what was passed in rather than have more custom behavior tied to the type argument here",
+      "range": {
+        "startLine": 1228,
+        "startChar": 10,
+        "endLine": 1228,
+        "endChar": 43
+      },
+      "revId": "e24c06944099bdf3ce8149c7f9e31c9bec4430ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
