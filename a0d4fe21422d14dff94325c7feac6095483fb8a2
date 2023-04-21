@@ -93,6 +93,30 @@
       },
       "revId": "a0d4fe21422d14dff94325c7feac6095483fb8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0669d20_4169e673",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-04-21T02:30:54Z",
+      "side": 1,
+      "message": "`show_first` is still `int`.",
+      "parentUuid": "dc5843e0_a63f951a",
+      "range": {
+        "startLine": 200,
+        "startChar": 47,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "a0d4fe21422d14dff94325c7feac6095483fb8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
