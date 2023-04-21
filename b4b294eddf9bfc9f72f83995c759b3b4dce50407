@@ -145,6 +145,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "df843ff0_6ec71b96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-04-21T00:45:34Z",
+      "side": 1,
+      "message": "No, sorry, I think you\u0027re wrong on that. The rule of thumb for process creation overhead is about a millisecond (maybe a little more than that if you have to exec bash and parse a small script). Flashrom overhead for just reading the FMAP flash directory itself (which it needs to find the nvdata section) is over 100ms on my Trogdor (this is launching the flashrom process, identifying the flash chip, scanning a certain sequence of offsets for the FMAP, etc.). Flash reading is really not cheap at all, which is why we\u0027re trying to remain vigilant about letting it creep in as a dependency in places.\n\nTry running `time crossystem dev_boot_usb` and you\u0027ll see.",
+      "parentUuid": "83bdc959_f6e00a72",
+      "revId": "b4b294eddf9bfc9f72f83995c759b3b4dce50407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ca119d4d_c45f9052",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
