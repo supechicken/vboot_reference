@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa054e1a_95b0886f",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-04-24T15:45:24Z",
+      "side": 1,
+      "message": "use make_temp_file instead.  it avoids leaking tempfiles which this code is doing.",
+      "revId": "24729c66b366341fe921437669d916f8cf645e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ffbef5_40c87449",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-04-24T15:45:24Z",
+      "side": 1,
+      "message": "--stdout implies --keep",
+      "revId": "24729c66b366341fe921437669d916f8cf645e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
