@@ -18,6 +18,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "859247d2_0e3806ad",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2023-04-24T15:52:42Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nDone.",
+      "parentUuid": "f94a54ca_db757831",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "24729c66b366341fe921437669d916f8cf645e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa23860c_457611b6",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2023-04-24T15:52:42Z",
+      "side": 1,
+      "message": "Ah, thanks! done.",
+      "parentUuid": "fa054e1a_95b0886f",
+      "revId": "24729c66b366341fe921437669d916f8cf645e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42ffbef5_40c87449",
@@ -31,6 +73,24 @@
       "writtenOn": "2023-04-24T15:45:24Z",
       "side": 1,
       "message": "--stdout implies --keep",
+      "revId": "24729c66b366341fe921437669d916f8cf645e69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883729d0_036e6216",
+        "filename": "scripts/image_signing/ensure_not_tainted_license.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2023-04-24T15:52:42Z",
+      "side": 1,
+      "message": "So it does. Good catch.",
+      "parentUuid": "42ffbef5_40c87449",
       "revId": "24729c66b366341fe921437669d916f8cf645e69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
