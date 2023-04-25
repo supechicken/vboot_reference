@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f686b12_3516dcdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-04-25T02:16:07Z",
+      "side": 1,
+      "message": "Tested this primarily with a simple executable that called `VbGetSystemPropertyString`. Unfamiliar with how unit tests are handled in c land with deps on `vb2_get_nv_storage`, happy to add those in if theres any docs/examples I can follow",
+      "revId": "032603a5731975123d4a1c60cfb456d7ace2a026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
