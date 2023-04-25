@@ -16,6 +16,92 @@
       "message": "Tested this primarily with a simple executable that called `VbGetSystemPropertyString`. Unfamiliar with how unit tests are handled in c land with deps on `vb2_get_nv_storage`, happy to add those in if theres any docs/examples I can follow",
       "revId": "032603a5731975123d4a1c60cfb456d7ace2a026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8bee24_534cbc8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-04-25T03:43:53Z",
+      "side": 1,
+      "message": "Edward is OOO",
+      "revId": "032603a5731975123d4a1c60cfb456d7ace2a026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe2aa31_adba06bb",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-04-25T03:43:53Z",
+      "side": 1,
+      "message": "Need to handle",
+      "range": {
+        "startLine": 539,
+        "startChar": 11,
+        "endLine": 539,
+        "endChar": 17
+      },
+      "revId": "032603a5731975123d4a1c60cfb456d7ace2a026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d0e802_779b9c6f",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-04-25T03:43:53Z",
+      "side": 1,
+      "message": "Need to handle",
+      "range": {
+        "startLine": 541,
+        "startChar": 11,
+        "endLine": 541,
+        "endChar": 16
+      },
+      "revId": "032603a5731975123d4a1c60cfb456d7ace2a026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ee8aa2_45bedfcc",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-04-25T03:43:53Z",
+      "side": 1,
+      "message": "return `StrCopy(...)` directly, function returns the first arg.\n\nKeeps each check cleaner and scoped without the final \"else\".",
+      "range": {
+        "startLine": 551,
+        "startChar": 2,
+        "endLine": 551,
+        "endChar": 9
+      },
+      "revId": "032603a5731975123d4a1c60cfb456d7ace2a026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
