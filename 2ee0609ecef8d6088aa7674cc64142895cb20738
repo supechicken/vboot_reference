@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9501ed41_e0602ee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-04-28T04:16:07Z",
+      "side": 1,
+      "message": "I imagine you\u0027ll need to update https://source.chromium.org/chromium/chromiumos/platform/firmware/+/main:pack_firmware.py;l\u003d862;drc\u003d26a4f82e0a479259661c3ff63abc086a75888865 and friends.",
+      "revId": "2ee0609ecef8d6088aa7674cc64142895cb20738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2083b8b_7a4baec6",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-04-28T04:16:07Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "2ee0609ecef8d6088aa7674cc64142895cb20738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
