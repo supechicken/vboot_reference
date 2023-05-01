@@ -16,6 +16,24 @@
       "message": "I think we want to retain some sort of equivalent logging of flashrom operations, covering programmer+params, {read,write,etc.}, regions.",
       "revId": "8ef4f7a9a9a68bad49e8417d5ed346dc927e1d2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea79089_a94d7b7d",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-01T05:50:49Z",
+      "side": 0,
+      "message": "The problem is, as we progress towards futility encapsulating all the platform level logic we also progress away from pure flashrom invocations telling the whole story for a given set of inputs at the top of the stack.\n\nAdditionally this cmd stylistic interface enforces certain idioms and limitations on how best to architect the low-level interface that happens to be flashrom today but also kernel tomorrow.\n\nFundamentally, why do we want to log our intention in the form of flashrom cli specifically rather than the actual required spi flash interactions required?",
+      "parentUuid": "f544c037_75f1eb68",
+      "revId": "8ef4f7a9a9a68bad49e8417d5ed346dc927e1d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
