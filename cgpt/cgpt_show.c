@@ -141,6 +141,15 @@ void EntryDetails(GptEntry *entry, uint32_t index, int raw) {
                       priority, tries, successful, error_counter);
     }
 
+    if (GuidEqual(&guid_linux_data, &entry->type)) {
+      int32_t feature_level = (entry->attrs.fields.gpt_att &
+                           CGPT_ATTRIBUTE_FEATURE_LEVEL_MASK) >>
+          CGPT_ATTRIBUTE_FEATURE_LEVEL_OFFSET;
+      clen += snprintf(contents + clen, sizeof(contents) - clen,
+                      "feaure_level=%d ", feature_level);
+      require(clen < sizeof(contents));
+    }
+
     if (entry->attrs.fields.required) {
       clen += snprintf(contents + clen, sizeof(contents) - clen,
                        "required=%d ", entry->attrs.fields.required);

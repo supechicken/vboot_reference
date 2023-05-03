@@ -26,6 +26,7 @@
  *     57  -- error counter
  *     56  -- success
  *  55-52  -- tries
+ *  53-50  -- feature level (applicable only for the stateful partition)
  *  51-48  -- priority
  *   47-3  -- UEFI: reserved for future use
  *      2  -- UEFI: Legacy BIOS bootable
@@ -46,6 +47,11 @@
 #define CGPT_ATTRIBUTE_MAX_TRIES (15ULL)
 #define CGPT_ATTRIBUTE_TRIES_MASK (CGPT_ATTRIBUTE_MAX_TRIES << \
 				   CGPT_ATTRIBUTE_TRIES_OFFSET)
+
+#define CGPT_ATTRIBUTE_FEATURE_LEVEL_OFFSET (50 - 48)
+#define CGPT_ATTRIBUTE_MAX_FEATURE_LEVEL (2ULL)
+#define CGPT_ATTRIBUTE_FEATURE_LEVEL_MASK (CGPT_ATTRIBUTE_MAX_FEATURE_LEVEL << \
+				   CGPT_ATTRIBUTE_FEATURE_LEVEL_OFFSET)
 
 #define CGPT_ATTRIBUTE_PRIORITY_OFFSET (48 - 48)
 #define CGPT_ATTRIBUTE_MAX_PRIORITY (15ULL)

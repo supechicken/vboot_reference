@@ -399,6 +399,11 @@ int GetEntryPriority(const GptEntry *e)
 		CGPT_ATTRIBUTE_PRIORITY_OFFSET;
 }
 
+int32_t GetEntryFeatureLevel(const GptEntry *e) {
+	return (e->attrs.fields.gpt_att & CGPT_ATTRIBUTE_FEATURE_LEVEL_MASK) >>
+		CGPT_ATTRIBUTE_FEATURE_LEVEL_OFFSET;
+}
+
 int GetEntryTries(const GptEntry *e)
 {
 	return (e->attrs.fields.gpt_att & CGPT_ATTRIBUTE_TRIES_MASK) >>
@@ -435,6 +440,13 @@ void SetEntryPriority(GptEntry *e, int priority)
 	e->attrs.fields.gpt_att |=
 		(priority << CGPT_ATTRIBUTE_PRIORITY_OFFSET) &
 		CGPT_ATTRIBUTE_PRIORITY_MASK;
+}
+
+void SetEntryFeatureLevel(GptEntry *e, int32_t feature_level) {
+	e->attrs.fields.gpt_att &= ~CGPT_ATTRIBUTE_FEATURE_LEVEL_MASK;
+	e->attrs.fields.gpt_att |=
+		(feature_level << CGPT_ATTRIBUTE_FEATURE_LEVEL_OFFSET) &
+		CGPT_ATTRIBUTE_FEATURE_LEVEL_MASK;
 }
 
 void SetEntryTries(GptEntry *e, int tries)

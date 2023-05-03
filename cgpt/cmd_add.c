@@ -28,6 +28,7 @@ static void Usage(void)
          "  -E NUM       set Error counter flag (0|1)\n"
          "  -S NUM       set Successful flag (0|1)\n"
          "  -T NUM       set Tries flag (0-15)\n"
+         "  -F NUM       set Features Level flag (0-2)\n"
          "  -P NUM       set Priority flag (0-15)\n"
          "  -R NUM       set Required flag (0|1)\n"
          "  -B NUM       set Legacy Boot flag (0|1)\n"
@@ -49,7 +50,7 @@ int cmd_add(int argc, char *argv[]) {
   char *e = 0;
 
   opterr = 0;                     // quiet, you
-  while ((c=getopt(argc, argv, ":hi:b:s:t:u:l:E:S:T:P:R:B:A:D:")) != -1)
+  while ((c=getopt(argc, argv, ":hi:b:s:t:u:l:E:S:T:F:P:R:B:A:D:")) != -1)
   {
     switch (c)
     {
@@ -104,6 +105,12 @@ int cmd_add(int argc, char *argv[]) {
     case 'T':
       params.set_tries = 1;
       params.tries = (uint32_t)strtoul(optarg, &e, 0);
+      errorcnt += check_int_parse(c, e);
+      errorcnt += check_int_limit(c, params.tries, 0, 15);
+      break;
+    case 'F':
+      params.set_feature_level = 1;
+      params.feature_level = (uint32_t)strtoul(optarg, &e, 0);
       errorcnt += check_int_parse(c, e);
       errorcnt += check_int_limit(c, params.tries, 0, 15);
       break;

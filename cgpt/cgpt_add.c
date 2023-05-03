@@ -35,6 +35,8 @@ static void PrintCgptAddParams(const CgptAddParams *params) {
     fprintf(stderr, "-S %d ", params->successful);
   if (params->set_tries)
     fprintf(stderr, "-T %d ", params->tries);
+  if (params->set_feature_level)
+    fprintf(stderr, "-T %d ", params->feature_level);
   if (params->set_priority)
     fprintf(stderr, "-P %d ", params->priority);
   if (params->set_required)
@@ -92,6 +94,8 @@ static int SetEntryAttributes(struct drive *drive,
       SetSuccessful(drive, PRIMARY, index, params->successful);
     if (params->set_tries)
       SetTries(drive, PRIMARY, index, params->tries);
+    if (params->set_feature_level)
+      SetFeatureLevel(drive, PRIMARY, index, params->feature_level);
     if (params->set_priority)
       SetPriority(drive, PRIMARY, index, params->priority);
     if (params->set_legacy_boot)
@@ -244,6 +248,7 @@ int CgptGetPartitionDetails(CgptAddParams *params) {
   params->error_counter = GetErrorCounter(&drive, PRIMARY, index);
   params->successful = GetSuccessful(&drive, PRIMARY, index);
   params->tries = GetTries(&drive, PRIMARY, index);
+  params->feature_level = GetFeatureLevel(&drive, PRIMARY, index);
   params->priority = GetPriority(&drive, PRIMARY, index);
   result = CGPT_OK;
 

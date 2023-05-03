@@ -11,7 +11,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif  /* __cplusplus */
+#endif /* __cplusplus */
 
 enum {
 	GPT_SUCCESS = 0,
@@ -67,7 +67,7 @@ enum {
 };
 
 /* If this bit is 1, the GPT is stored in another from the streaming data */
-#define GPT_FLAG_EXTERNAL	0x1
+#define GPT_FLAG_EXTERNAL 0x1
 
 /*
  * A note about stored_on_device and gpt_drive_sectors:
@@ -205,17 +205,19 @@ int GetEntryRequired(const GptEntry *e);
 int GetEntryLegacyBoot(const GptEntry *e);
 int GetEntrySuccessful(const GptEntry *e);
 int GetEntryPriority(const GptEntry *e);
+int32_t GetEntryFeatureLevel(const GptEntry *e);
 int GetEntryTries(const GptEntry *e);
 int GetEntryErrorCounter(const GptEntry *e);
 void SetEntryRequired(GptEntry *e, int required);
 void SetEntryLegacyBoot(GptEntry *e, int legacy_boot);
 void SetEntrySuccessful(GptEntry *e, int successful);
 void SetEntryPriority(GptEntry *e, int priority);
+void SetEntryFeatureLevel(GptEntry *e, int32_t feature_level);
 void SetEntryTries(GptEntry *e, int tries);
 void SetEntryErrorCounter(GptEntry *e, int error_counter);
 
 #ifdef __cplusplus
 }
-#endif  /* __cplusplus */
+#endif /* __cplusplus */
 
-#endif  /* VBOOT_REFERENCE_GPT_MISC_H_ */
+#endif /* VBOOT_REFERENCE_GPT_MISC_H_ */

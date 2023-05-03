@@ -144,6 +144,9 @@ int GetLegacyBoot(struct drive *drive, int secondary, uint32_t entry_index);
 void SetPriority(struct drive *drive, int secondary, uint32_t entry_index,
                  int priority);
 int GetPriority(struct drive *drive, int secondary, uint32_t entry_index);
+void SetFeatureLevel(struct drive *drive, int secondary, uint32_t entry_index,
+                 int32_t feature_level);
+int32_t GetFeatureLevel(struct drive *drive, int secondary, uint32_t entry_index);
 void SetTries(struct drive *drive, int secondary, uint32_t entry_index,
               int tries);
 int GetTries(struct drive *drive, int secondary, uint32_t entry_index);

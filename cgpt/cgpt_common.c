@@ -810,6 +810,21 @@ int GetPriority(struct drive *drive, int secondary, uint32_t entry_index) {
   return GetEntryPriority(entry);
 }
 
+void SetFeatureLevel(struct drive *drive, int secondary, uint32_t entry_index,
+                 int32_t feature_level) {
+  require(feature_level >= 0 && feature_level <= CGPT_ATTRIBUTE_MAX_FEATURE_LEVEL);
+  GptEntry *entry;
+  entry = GetEntry(&drive->gpt, secondary, entry_index);
+  SetEntryFeatureLevel(entry, feature_level);
+}
+
+int32_t GetFeatureLevel(struct drive *drive, int secondary, uint32_t entry_index) {
+  GptEntry *entry;
+  entry = GetEntry(&drive->gpt, secondary, entry_index);
+  return GetEntryFeatureLevel(entry);
+}
+
+
 void SetTries(struct drive *drive, int secondary, uint32_t entry_index,
               int tries) {
   require(tries >= 0 && tries <= CGPT_ATTRIBUTE_MAX_TRIES);
