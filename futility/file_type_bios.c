@@ -497,11 +497,10 @@ static void image_check_and_prepare_cbfs(const char *file,
 
 	if (cbfstool_get_metadata_hash(file, fmap_name[fw_c],
 				       &state->area[fw_c].metadata_hash) !=
-	    VB2_SUCCESS)
-		FATAL("CBFS metadata hash not found in area"
-		      " %s. It is required for images with"
-		      " VBOOT_CBFS_INTEGRATION",
-		      fmap_name[fw_c]);
+	    VB2_SUCCESS) {
+		state->area[fw_c].metadata_hash.algo = VB2_HASH_INVALID;
+		return;
+	}
 
 	VB2_DEBUG("CBFS metadata hash found in area %s\n", fmap_name[fw_c]);
 }
@@ -540,13 +539,14 @@ int ft_sign_bios(const char *name, void *data)
 	if (retval)
 		goto done;
 
-	retval = prepare_slot(buf, len, BIOS_FMAP_FW_MAIN_B, BIOS_FMAP_VBLOCK_B,
-			      &state);
+	retval = prepare_slot(buf, len, BIOS_FMAP_FW_MAIN_B,
+			      BIOS_FMAP_VBLOCK_B, &state);
 	if (retval && state.area[BIOS_FMAP_FW_MAIN_B].is_valid)
 		goto done;
 
 	check_slot_after_prepare(BIOS_FMAP_FW_MAIN_A, uses_cbfs_integration,
 				 &state);
+
 	check_slot_after_prepare(BIOS_FMAP_FW_MAIN_B, uses_cbfs_integration,
 				 &state);
 
