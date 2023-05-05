@@ -382,7 +382,9 @@ static int prepare_slot(uint8_t *buf, uint32_t len, enum bios_component fw_c,
 	/* FW_MAIN */
 	FmapAreaHeader *ah;
 	if (!fmap_find_by_name(buf, len, fmap, fw_main_name, &ah)) {
-		ERROR("%s area not found in FMAP\n", fw_main_name);
+		fprintf(stderr, "%s: %s: %s area not found in FMAP\n",
+			fw_c == BIOS_FMAP_FW_MAIN_A ? "ERROR" : "INFO",
+			__func__, fw_main_name);
 		return 1;
 	}
 	fmap_limit_area(ah, len);
@@ -403,7 +405,9 @@ static int prepare_slot(uint8_t *buf, uint32_t len, enum bios_component fw_c,
 
 	/* Corresponding VBLOCK */
 	if (!fmap_find_by_name(buf, len, fmap, vblock_name, &ah)) {
-		ERROR("%s area not found in FMAP\n", vblock_name);
+		fprintf(stderr, "%s: %s: %s area not found in FMAP\n",
+			vblock_c == BIOS_FMAP_VBLOCK_A ? "ERROR" : "INFO",
+			__func__, vblock_name);
 		return 1;
 	}
 	fmap_limit_area(ah, len);
@@ -509,25 +513,17 @@ static void image_check_and_prepare_cbfs(const char *file,
 {
 	if (!uses_cbfs_integration) {
 		if (cbfstool_truncate(file, fmap_name[fw_c],
-				      &state->area[fw_c].fw_size) !=
+				      &state->area[fw_c].fw_size) ==
 		    VB2_SUCCESS) {
-			VB2_DEBUG("CBFS not found in area %s\n",
-				  fmap_name[fw_c]);
+			VB2_DEBUG("CBFS found in area %s\n", fmap_name[fw_c]);
 			return;
 		}
-		VB2_DEBUG("CBFS found in area %s\n", fmap_name[fw_c]);
-		return;
 	}
 
 	if (cbfstool_get_metadata_hash(file, fmap_name[fw_c],
-				       &state->area[fw_c].metadata_hash) !=
+				       &state->area[fw_c].metadata_hash) ==
 	    VB2_SUCCESS)
-		FATAL("CBFS metadata hash not found in area"
-		      " %s. It is required for images with"
-		      " VBOOT_CBFS_INTEGRATION",
-		      fmap_name[fw_c]);
-
-	VB2_DEBUG("CBFS metadata hash found in area %s\n", fmap_name[fw_c]);
+		VB2_DEBUG("CBFS metadata hash found in area %s\n", fmap_name[fw_c]);
 }
 
 static void check_slot_after_prepare(enum bios_component fw_c,
@@ -542,37 +538,45 @@ static void check_slot_after_prepare(enum bios_component fw_c,
 		      fmap_name[fw_c]);
 }
 
+static int sign_bios_slot(const char *file, uint8_t *buf, uint32_t len,
+			  enum bios_component fw_c, enum bios_component vblock_c,
+			  struct bios_state_s *state)
+{
+	int retval;
+	bool uses_cbfs_integration = image_uses_cbfs_integration(file);
+
+	image_check_and_prepare_cbfs(file, fw_c, uses_cbfs_integration, state);
+
+	retval = prepare_slot(buf, len, fw_c, vblock_c, state);
+
+	check_slot_after_prepare(fw_c, uses_cbfs_integration, state);
+
+	return retval;
+}
+
 int ft_sign_bios(const char *name, void *data)
 {
 	struct bios_state_s state = {0};
 	int fd = -1;
 	uint8_t *buf = NULL;
 	uint32_t len = 0;
-	bool uses_cbfs_integration = image_uses_cbfs_integration(name);
-
-	image_check_and_prepare_cbfs(name, BIOS_FMAP_FW_MAIN_A,
-				     uses_cbfs_integration, &state);
-	image_check_and_prepare_cbfs(name, BIOS_FMAP_FW_MAIN_B,
-				     uses_cbfs_integration, &state);
+	int retval;
 
 	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
 				    &buf, &len))
 		return 1;
 
-	int retval = prepare_slot(buf, len, BIOS_FMAP_FW_MAIN_A, BIOS_FMAP_VBLOCK_A,
-			      &state);
+	retval = sign_bios_slot(name, buf, len, BIOS_FMAP_FW_MAIN_A,
+				BIOS_FMAP_VBLOCK_A, &state);
 	if (retval)
 		goto done;
 
-	retval = prepare_slot(buf, len, BIOS_FMAP_FW_MAIN_B, BIOS_FMAP_VBLOCK_B,
-			      &state);
-	if (retval && state.area[BIOS_FMAP_FW_MAIN_B].is_valid)
-		goto done;
-
-	check_slot_after_prepare(BIOS_FMAP_FW_MAIN_A, uses_cbfs_integration,
-				 &state);
-	check_slot_after_prepare(BIOS_FMAP_FW_MAIN_B, uses_cbfs_integration,
-				 &state);
+	/*
+	 * Don't care about the result for slot B. It may not exist.
+	 * sign_bios_at_end will sign the valid slots only.
+	 */
+	sign_bios_slot(name, buf, len, BIOS_FMAP_FW_MAIN_B,
+				BIOS_FMAP_VBLOCK_B, &state);
 
 	retval = sign_bios_at_end(&state);
 done:
