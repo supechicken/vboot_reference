@@ -16,6 +16,24 @@
       "message": "ping for review please\n\nDesign proposal at go/u-boot-cli",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce0fd76_f1119d62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-08T23:54:17Z",
+      "side": 1,
+      "message": "Sorry but I don\u0027t think this approach makes any sense compared to the other proposals for the CLI discussion. We can\u0027t just start supporting a totally separate bootloader just for a CLI payload, and do twice the driver bring-up work for every new platform.\n\nBesides, if we wanted to implement the CLI in a separate binary (and the other proposals don\u0027t go in that direction), we\u0027d probably want to load it from depthcharge with the existing chain-loading mechanisms and triggered by UI, not from coreboot with a GBB flag.",
+      "parentUuid": "367e1826_f6542f7d",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
