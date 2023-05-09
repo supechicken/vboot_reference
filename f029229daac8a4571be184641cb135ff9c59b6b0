@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cfc58de_3f834292",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-09T22:46:12Z",
+      "side": 1,
+      "message": "Yeah, this API is crap. I really think for the next attempt we should go all the way and just remove the char* return value completely, then we\u0027re force to find and update all the call sites and there should be no chance for misunderstandings or misuse afterwards. (see b/279629907)",
+      "revId": "f029229daac8a4571be184641cb135ff9c59b6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
