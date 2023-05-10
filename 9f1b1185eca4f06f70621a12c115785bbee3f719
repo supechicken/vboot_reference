@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0a6ec55_488b8d20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-10T23:00:49Z",
+      "side": 1,
+      "message": "Cool, can gerrit handle circular deps?\nie A (this CL) depends on B and C\nAnd B and C depend on A?",
+      "parentUuid": "1d98f8f9_e3cdd102",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "496bf872_f75b07b0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-10T22:56:09Z",
       "side": 1,
       "message": "All changes in platform2 should be bundled into 1 CL. (Which is the benefit for platform2)",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea34869_c95fffa4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-10T23:00:49Z",
+      "side": 1,
+      "message": "One reason I wanted to break up the CLs was to reduce noise, there were going to be 10 packages, potentially all with different owners. Is the noise vs atomic benefit in favor of 1-2 CLs here?",
+      "parentUuid": "496bf872_f75b07b0",
       "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
