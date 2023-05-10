@@ -515,7 +515,7 @@ int VbGetSystemPropertyInt(const char *name)
 	return value;
 }
 
-const char *VbGetSystemPropertyString(const char *name, char *dest, size_t size)
+int VbGetSystemPropertyString(const char *name, char *dest, size_t size)
 {
 	/* Check for HWID override via cros_config */
 	if (!strcasecmp(name, "hwid")) {
@@ -536,46 +536,68 @@ const char *VbGetSystemPropertyString(const char *name, char *dest, size_t size)
 	if (!strcasecmp(name,"kernkey_vfy")) {
 		switch(GetVdatInt(VDAT_INT_KERNEL_KEY_VERIFIED)) {
 			case 0:
-				return "hash";
+				StrCopy(dest, "hash", size);
+				return 0;
 			case 1:
-				return "sig";
+				StrCopy(dest, "sig", size);
+				return 0;
 			default:
-				return NULL;
+				return -1;
 		}
 	} else if (!strcasecmp(name, "mainfw_act")) {
-		return GetVdatString(dest, size, VDAT_STRING_MAINFW_ACT);
+		GetVdatString(dest, size, VDAT_STRING_MAINFW_ACT);
+		return 0;
 	} else if (!strcasecmp(name, "vdat_lfdebug")) {
-		return GetVdatString(dest, size,
-				     VDAT_STRING_LOAD_FIRMWARE_DEBUG);
+		GetVdatString(dest, size,
+				VDAT_STRING_LOAD_FIRMWARE_DEBUG);
+		return 0;
 	} else if (!strcasecmp(name, "fw_try_next")) {
-		return vb2_get_nv_storage(VB2_NV_TRY_NEXT) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_TRY_NEXT) ? "B" : "A",
+			size);
+		return 0;
 	} else if (!strcasecmp(name, "fw_tried")) {
-		return vb2_get_nv_storage(VB2_NV_FW_TRIED) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_FW_TRIED) ? "B" : "A",
+			size);
+		return 0;
 	} else if (!strcasecmp(name, "fw_result")) {
 		int v = vb2_get_nv_storage(VB2_NV_FW_RESULT);
-		if (v < ARRAY_SIZE(fw_results))
-			return fw_results[v];
-		else
-			return "unknown";
+		if (v < ARRAY_SIZE(fw_results)) {
+			StrCopy(dest, fw_results[v], size);
+			return 0;
+		} else {
+			return -1;
+		}
 	} else if (!strcasecmp(name, "fw_prev_tried")) {
-		return vb2_get_nv_storage(VB2_NV_FW_PREV_TRIED) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_FW_PREV_TRIED) ? "B" : "A",
+			size);
+		return 0;
 	} else if (!strcasecmp(name, "fw_prev_result")) {
 		int v = vb2_get_nv_storage(VB2_NV_FW_PREV_RESULT);
-		if (v < ARRAY_SIZE(fw_results))
-			return fw_results[v];
-		else
-			return "unknown";
+		if (v < ARRAY_SIZE(fw_results)) {
+			StrCopy(dest, fw_results[v], size);
+			return 0;
+		} else {
+			return -1;
+		}
 	} else if (!strcasecmp(name,"dev_default_boot")) {
 		int v = vb2_get_nv_storage(VB2_NV_DEV_DEFAULT_BOOT);
-		if (v < ARRAY_SIZE(default_boot))
-			return default_boot[v];
-		else
-			return "unknown";
+		if (v < ARRAY_SIZE(default_boot)) {
+			StrCopy(dest, default_boot[v], size);
+			return 0;
+		} else {
+			return -1;
+		}
 	} else if (!strcasecmp(name, "minios_priority")) {
-		return vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY) ?"B" : "A",
+			size);
+		return 0;
 	}
 
-	return NULL;
+	return -1;
 }
 
 static int VbSetSystemPropertyIntInternal(const char *name, int value)
