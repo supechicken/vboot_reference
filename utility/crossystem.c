@@ -235,24 +235,23 @@ static int PrintAllParams(int force_all) {
   const Param* p;
   int retval = 0;
   char buf[VB_MAX_STRING_PROPERTY];
-  const char* value;
 
   for (p = sys_param_list; p->name; p++) {
     if (0 == force_all && (p->flags & NO_PRINT_ALL))
       continue;
     if (p->flags & IS_STRING) {
-      value = VbGetSystemPropertyString(p->name, buf, sizeof(buf));
+      VbGetSystemPropertyString(p->name, buf, sizeof(buf));
     } else {
       int v = VbGetSystemPropertyInt(p->name);
       if (v == -1)
-        value = NULL;
+        buf = NULL;
       else {
         snprintf(buf, sizeof(buf), p->format ? p->format : "%d", v);
-        value = buf;
+        buf = buf;
       }
     }
     printf("%-*s = %-30s # [%s/%s] %s\n", kNameWidth, p->name,
-           (value ? value : "(error)"),
+           (buf ? buf : "(error)"),
            (p->flags & CAN_WRITE) ? "RW" : "RO",
            (p->flags & IS_STRING) ? "str" : "int",
            p->desc);
