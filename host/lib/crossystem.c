@@ -262,7 +262,7 @@ static int VbGetCrosDebug(void)
 	return 0;
 }
 
-static char *GetVdatLoadFirmwareDebug(char *dest, int size,
+static int GetVdatLoadFirmwareDebug(char *dest, int size,
 				      const VbSharedDataHeader *sh)
 {
 	snprintf(dest, size,
@@ -276,16 +276,16 @@ static char *GetVdatLoadFirmwareDebug(char *dest, int size,
 		 sh->firmware_index,
 		 sh->fw_version_tpm_start,
 		 sh->fw_version_lowest);
-	return dest;
+	return 0;
 }
 
-static char *GetVdatString(char *dest, int size, VdatStringField field)
+static int GetVdatString(char *dest, int size, VdatStringField field)
 {
 	VbSharedDataHeader *sh = VbSharedDataRead();
-	char *value = dest;
+	int value = 0;
 
 	if (!sh)
-		return NULL;
+		return -1;
 
 	switch (field) {
 		case VDAT_STRING_LOAD_FIRMWARE_DEBUG:
@@ -304,12 +304,12 @@ static char *GetVdatString(char *dest, int size, VdatStringField field)
 					StrCopy(dest, "recovery", size);
 					break;
 				default:
-					value = NULL;
+					value = -1;
 			}
 			break;
 
 		default:
-			value = NULL;
+			value = -1;
 			break;
 	}
 
@@ -515,8 +515,13 @@ int VbGetSystemPropertyInt(const char *name)
 	return value;
 }
 
-const char *VbGetSystemPropertyString(const char *name, char *dest, size_t size)
+int VbGetSystemPropertyString(const char *name, char *dest, size_t size)
 {
+	if (dest == NULL || size == 0)
+	{
+		fprintf(stderr, "invalid dest buffer\n");
+		return -1;
+	}
 	/* Check for HWID override via cros_config */
 	if (!strcasecmp(name, "hwid")) {
 		char *hwid_override;
@@ -536,46 +541,63 @@ const char *VbGetSystemPropertyString(const char *name, char *dest, size_t size)
 	if (!strcasecmp(name,"kernkey_vfy")) {
 		switch(GetVdatInt(VDAT_INT_KERNEL_KEY_VERIFIED)) {
 			case 0:
-				return "hash";
+				StrCopy(dest, "hash", size);
+				return 0;
 			case 1:
-				return "sig";
+				StrCopy(dest, "sig", size);
+				return 0;
 			default:
-				return NULL;
+				return -1;
 		}
 	} else if (!strcasecmp(name, "mainfw_act")) {
 		return GetVdatString(dest, size, VDAT_STRING_MAINFW_ACT);
 	} else if (!strcasecmp(name, "vdat_lfdebug")) {
 		return GetVdatString(dest, size,
-				     VDAT_STRING_LOAD_FIRMWARE_DEBUG);
+				VDAT_STRING_LOAD_FIRMWARE_DEBUG);
 	} else if (!strcasecmp(name, "fw_try_next")) {
-		return vb2_get_nv_storage(VB2_NV_TRY_NEXT) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_TRY_NEXT) ? "B" : "A",
+			size);
+		return 0;
 	} else if (!strcasecmp(name, "fw_tried")) {
-		return vb2_get_nv_storage(VB2_NV_FW_TRIED) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_FW_TRIED) ? "B" : "A",
+			size);
+		return 0;
 	} else if (!strcasecmp(name, "fw_result")) {
 		int v = vb2_get_nv_storage(VB2_NV_FW_RESULT);
 		if (v < ARRAY_SIZE(fw_results))
-			return fw_results[v];
+			StrCopy(dest, fw_results[v], size);
 		else
-			return "unknown";
+			StrCopy(dest, "unknown", size);
+		return 0;
 	} else if (!strcasecmp(name, "fw_prev_tried")) {
-		return vb2_get_nv_storage(VB2_NV_FW_PREV_TRIED) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_FW_PREV_TRIED) ? "B" : "A",
+			size);
+		return 0;
 	} else if (!strcasecmp(name, "fw_prev_result")) {
 		int v = vb2_get_nv_storage(VB2_NV_FW_PREV_RESULT);
 		if (v < ARRAY_SIZE(fw_results))
-			return fw_results[v];
+			StrCopy(dest, fw_results[v], size);
 		else
-			return "unknown";
+			StrCopy(dest, "unknown", size);
+		return 0;
 	} else if (!strcasecmp(name,"dev_default_boot")) {
 		int v = vb2_get_nv_storage(VB2_NV_DEV_DEFAULT_BOOT);
 		if (v < ARRAY_SIZE(default_boot))
-			return default_boot[v];
+			StrCopy(dest, default_boot[v], size);
 		else
-			return "unknown";
+			StrCopy(dest, "unknown", size);
+		return 0;
 	} else if (!strcasecmp(name, "minios_priority")) {
-		return vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY) ? "B" : "A";
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY) ?"B" : "A",
+			size);
+		return 0;
 	}
 
-	return NULL;
+	return -1;
 }
 
 static int VbSetSystemPropertyIntInternal(const char *name, int value)
