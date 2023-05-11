@@ -16,6 +16,29 @@
       "message": "Don\u0027t land this without a cq-depend on platform2 CL (along with any other use case CLs)",
       "revId": "44152b54d2158d5373f3537cd505843ad28f9fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48cb4dd6_1df9ad5e",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-11T20:23:26Z",
+      "side": 1,
+      "message": "nit: space after `if`\n\nAlso, might want to check size \u003d\u003d 0 too while you\u0027re at it (in that case StrCopy() would do bad things).",
+      "range": {
+        "startLine": 520,
+        "startChar": 1,
+        "endLine": 520,
+        "endChar": 3
+      },
+      "revId": "44152b54d2158d5373f3537cd505843ad28f9fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
