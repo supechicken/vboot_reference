@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e057f33_8a3153f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-11T17:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd983ad0_b81faa44",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "0aea98fe995a90a2ce33f2fb67a27e1ededc30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e23f57c_8ff0f34b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "704d97d9_40cecc4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-11T17:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e23f57c_8ff0f34b",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "0aea98fe995a90a2ce33f2fb67a27e1ededc30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b72f956_c13d92ef",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-11T17:37:29Z",
       "side": 1,
       "message": "nit: a check (not CHECK) for `dest` not being NULL.\n\nSafer to return error than crash.",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 1
+      },
+      "revId": "0aea98fe995a90a2ce33f2fb67a27e1ededc30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3504a710_b68e7f75",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-11T17:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b72f956_c13d92ef",
       "range": {
         "startLine": 519,
         "startChar": 0,
