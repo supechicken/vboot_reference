@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd983ad0_b81faa44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-05-11T17:37:29Z",
+      "side": 1,
+      "message": "Suited to add up into title without `...`",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "0aea98fe995a90a2ce33f2fb67a27e1ededc30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e23f57c_8ff0f34b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-05-11T17:37:29Z",
+      "side": 1,
+      "message": "Incorrect commit message now with API change.",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "0aea98fe995a90a2ce33f2fb67a27e1ededc30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b72f956_c13d92ef",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-05-11T17:37:29Z",
+      "side": 1,
+      "message": "nit: a check (not CHECK) for `dest` not being NULL.\n\nSafer to return error than crash.",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 1
+      },
+      "revId": "0aea98fe995a90a2ce33f2fb67a27e1ededc30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
