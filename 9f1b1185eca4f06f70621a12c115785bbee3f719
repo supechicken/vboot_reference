@@ -122,6 +122,40 @@
       "message": "Rest of API change over to jwerner@",
       "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65375a3_20bd2d08",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-11T01:34:56Z",
+      "side": 1,
+      "message": "Probably best to change the GetVdatString signature in the same way so you can still just return the result of that here?",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21142584_348217ad",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-11T01:34:56Z",
+      "side": 1,
+      "message": "I think these should still return \"unknown\" instead of an error to maintain the current behavior.",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
