@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173e3674_f3160ad3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-11T16:49:16Z",
+      "side": 1,
+      "message": "I\u0027ll add those once I put up a single CL with platform2 changes",
+      "parentUuid": "84092eac_d0ce4d66",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "496bf872_f75b07b0",
@@ -109,6 +127,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1febf2af_a6112d9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-11T16:49:16Z",
+      "side": 1,
+      "message": "Same, I\u0027ll compress other CLs",
+      "parentUuid": "4b2c5ce9_a15b0810",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "52b2990b_9b286a07",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -141,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c62ae4_1444eb6c",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-11T16:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b65375a3_20bd2d08",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21142584_348217ad",
@@ -154,6 +208,24 @@
       "writtenOn": "2023-05-11T01:34:56Z",
       "side": 1,
       "message": "I think these should still return \"unknown\" instead of an error to maintain the current behavior.",
+      "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "262caa8c_87497008",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-05-11T16:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21142584_348217ad",
       "revId": "9f1b1185eca4f06f70621a12c115785bbee3f719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
