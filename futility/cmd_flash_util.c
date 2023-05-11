@@ -92,6 +92,7 @@ static int print_wp_status(struct updater_config *cfg, bool ignore_hw)
 	uint32_t ro_start, ro_len;
 	if (get_ro_range(cfg, &ro_start, &ro_len))
 		return -1;
+	printf("Expected WP SR configuration by FW image: (start = %#010x, length = %#010x)\n", ro_start, ro_len);
 
 	/* Get current WP region and mode from SPI flash */
 	bool wp_mode;
