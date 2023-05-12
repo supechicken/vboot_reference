@@ -16,6 +16,24 @@
       "message": "This tab spacing has been vexing. The file has spaces throughout, but if I make changes the linter has been yelling at me. A single tab seems way further than the original spacing though, atleast on gerrit. This spacing looks fine in my editor. Lmk if I should be changing up my tab settings or tweaking anything on the linter side",
       "revId": "46d3d3828d5e1efa5f1461ba074917a54af08af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e21ddd8_511049bc",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-12T23:51:02Z",
+      "side": 1,
+      "message": "Just ignore the linter when it says something wrong. vboot used to have a 2-space indentation style and later was mostly converted to tabs, but not all files were updated so now it\u0027s a bit of an ugly mix in places.\n\nYou should always follow the convention of the file you\u0027re editing (even if the linter says something different, it may not have been configured right for these edge cases of the repository). This file seems to use 2 spaces (and never any tabs), so conform to that.",
+      "parentUuid": "183a3a90_67a14e58",
+      "revId": "46d3d3828d5e1efa5f1461ba074917a54af08af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
