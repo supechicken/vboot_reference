@@ -650,6 +650,7 @@ static void print_help_rwsig(int argc, char *argv[])
 	       "                                    the file does not contain an FMAP.\n"
 	       "                                    (default 1024 bytes)\n"
 	       "  --data_size   NUM               Number of bytes of INFILE to sign\n"
+	       "  --no-extract-ec_rw              Do not produce EC_RW.bin\n"
 	       "\n",
 	       argv[0],
 	       futil_file_type_name(FILE_TYPE_RWSIG),
@@ -765,6 +766,7 @@ static const struct option long_opts[] = {
 	{"sig_size",     1, NULL, OPT_SIG_SIZE},
 	{"prikey",       1, NULL, OPT_PRIKEY},
 	{"privkey",      1, NULL, OPT_PRIKEY},	/* alias */
+	{"no-extract-ec_rw", 0, &sign_option.no_extract_ec_rw, 0},
 	{"help",         0, NULL, OPT_HELP},
 	{NULL,           0, NULL, 0},
 };

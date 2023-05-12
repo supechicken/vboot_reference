@@ -322,7 +322,7 @@ int ft_sign_rwsig(const char *name, void *nuthin)
 		VB2_DEBUG("Replacing old signature with new one\n");
 		memset(old_sig, 0xff, sig_size);
 		memcpy(old_sig, tmp_sig, tmp_sig->c.total_size);
-		if (fmap) {
+		if (fmap && !sign_option.no_extract_ec_rw) {
 			VB2_DEBUG("Writing %s (size=%d)\n",
 				  EC_RW_FILENAME, fmaparea->area_size);
 			if (vb2_write_file(EC_RW_FILENAME,
