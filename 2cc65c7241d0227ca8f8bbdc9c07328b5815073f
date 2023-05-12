@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b8bfab_34ec4ced",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-05-12T06:50:08Z",
+      "side": 1,
+      "message": "BTW this should be `uint32_t`.",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 4
+      },
+      "revId": "2cc65c7241d0227ca8f8bbdc9c07328b5815073f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8533ec9e_ccc5dca3",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-05-12T06:50:08Z",
+      "side": 1,
+      "message": "`key_bytes` could still be larger than `key-\u003earrsize` when overflow happens, for example when `arrsize \u003d 0b1011000...000`. One way to do this correctly is to check `(uint64_t)key-\u003earrsize * sizeof(uint32_t) !\u003d sig_size`, and then assign `sig_size` to `key_bytes`.",
+      "range": {
+        "startLine": 359,
+        "startChar": 30,
+        "endLine": 359,
+        "endChar": 54
+      },
+      "revId": "2cc65c7241d0227ca8f8bbdc9c07328b5815073f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
