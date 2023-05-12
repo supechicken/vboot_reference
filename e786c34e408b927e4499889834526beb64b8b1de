@@ -52,6 +52,24 @@
       "parentUuid": "1ce0fd76_f1119d62",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78188d46_a85b3c12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-12T00:06:03Z",
+      "side": 1,
+      "message": "Sorry but I don\u0027t think we should allocate GBB flags and put custom hacks into coreboot\u0027s payload selection code just for personal testing. If you want to boot U-Boot in your workflow, it\u0027s easy to write scripts that replace the payload in an image.\n\nI don\u0027t think having a U-Boot CLI to debug why depthcharge isn\u0027t working is a very realistic proposition. On any new platform we\u0027re going to put effort into bringing up our main bootloader first, and would expect to get that to work before we get any other debug-CLI-only payload to work.",
+      "parentUuid": "6df846d8_cf687321",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
