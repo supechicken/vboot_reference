@@ -16,6 +16,23 @@
       "message": "Thank you! This is exactly what I was hoping for!",
       "revId": "db1c22bb33cc7609c4330f5b9e2a31b607c6ef83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec480555_a7e22ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-12T02:25:10Z",
+      "side": 1,
+      "message": "I think the test needs to be fixed up to not match on the new string in `vboot_reference/tests/futility/test_flash_util.sh`.",
+      "revId": "db1c22bb33cc7609c4330f5b9e2a31b607c6ef83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
