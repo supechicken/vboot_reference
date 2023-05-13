@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c732b370_0971efe8",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-13T01:08:36Z",
+      "side": 1,
+      "message": "This seems like a very clunky flag design. Is there some reason why we can\u0027t break the way the existing command works? Otherwise I think it might be better to not produce the file by default and add a new option like `--ecrw_out \u003cfilename\u003e` or something like that to allow specifying where it should go. (Writing out to a hardcoded file name in the current directory is generally a terrible pattern that would be good to get rid of.)",
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a1be4b0_fcb6b0bf",
         "filename": "futility/file_type_rwsig.c",
         "patchSetId": 1
