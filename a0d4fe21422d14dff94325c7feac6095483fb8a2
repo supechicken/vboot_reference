@@ -117,6 +117,30 @@
       },
       "revId": "a0d4fe21422d14dff94325c7feac6095483fb8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e46dfa_c8f763d4",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-13T02:18:15Z",
+      "side": 1,
+      "message": "Well in the case of `show_first` it is added to `indent` which is int. That algorithm needs a cleaner implementation but shouldn\u0027t block these improvement.",
+      "parentUuid": "a0669d20_4169e673",
+      "range": {
+        "startLine": 200,
+        "startChar": 47,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "a0d4fe21422d14dff94325c7feac6095483fb8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
