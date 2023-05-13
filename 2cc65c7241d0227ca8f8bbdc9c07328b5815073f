@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ac2c6c4_3bba9282",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-05-13T00:47:46Z",
+      "side": 1,
+      "message": "Of course. I wasn\u0027t suggesting changing that in this CL.",
+      "parentUuid": "f9bc42aa_35cfdd80",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 4
+      },
+      "revId": "2cc65c7241d0227ca8f8bbdc9c07328b5815073f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8533ec9e_ccc5dca3",
         "filename": "firmware/2lib/2rsa.c",
         "patchSetId": 2
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I\u0027m assuming here that sig_size stays reasonably small (under 1GB), which is true for all current results of vb2_rsa_sig_size() and presumably all algorithms we might add in the future. In that case, since we already passed the `key_bytes !\u003d sig_size` check, `key-\u003earrsize \u003e key_bytes` should be enough to catch any overflows.",
       "parentUuid": "8533ec9e_ccc5dca3",
+      "range": {
+        "startLine": 359,
+        "startChar": 30,
+        "endLine": 359,
+        "endChar": 54
+      },
+      "revId": "2cc65c7241d0227ca8f8bbdc9c07328b5815073f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c133d59_d81808f0",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-05-13T00:47:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "48b8b0da_e5eb943f",
       "range": {
         "startLine": 359,
         "startChar": 30,
