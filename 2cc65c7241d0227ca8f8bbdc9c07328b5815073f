@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9bc42aa_35cfdd80",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-13T00:43:01Z",
+      "side": 1,
+      "message": "I think this might be deliberate to prevent the `pad_size \u003d sig_size - vb2_digest_size(key-\u003ehash_alg)` below from possibly underflowing... although that\u0027s also not really realistic, but still, I think it\u0027s maybe best to not touch too many unrelated things in this code.",
+      "parentUuid": "60b8bfab_34ec4ced",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 4
+      },
+      "revId": "2cc65c7241d0227ca8f8bbdc9c07328b5815073f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8533ec9e_ccc5dca3",
         "filename": "firmware/2lib/2rsa.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-12T06:50:08Z",
       "side": 1,
       "message": "`key_bytes` could still be larger than `key-\u003earrsize` when overflow happens, for example when `arrsize \u003d 0b1011000...000`. One way to do this correctly is to check `(uint64_t)key-\u003earrsize * sizeof(uint32_t) !\u003d sig_size`, and then assign `sig_size` to `key_bytes`.",
+      "range": {
+        "startLine": 359,
+        "startChar": 30,
+        "endLine": 359,
+        "endChar": 54
+      },
+      "revId": "2cc65c7241d0227ca8f8bbdc9c07328b5815073f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b8b0da_e5eb943f",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-13T00:43:01Z",
+      "side": 1,
+      "message": "I\u0027m assuming here that sig_size stays reasonably small (under 1GB), which is true for all current results of vb2_rsa_sig_size() and presumably all algorithms we might add in the future. In that case, since we already passed the `key_bytes !\u003d sig_size` check, `key-\u003earrsize \u003e key_bytes` should be enough to catch any overflows.",
+      "parentUuid": "8533ec9e_ccc5dca3",
       "range": {
         "startLine": 359,
         "startChar": 30,
