@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1be4b0_fcb6b0bf",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-13T00:57:59Z",
+      "side": 1,
+      "message": "There is so many predicates jammed into this implementation whenever these adhoc needs come up, is adding another flag really the correct solution here or was argument parsing broken?",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 325,
+        "endChar": 46
+      },
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85b4ddc_73c5a41f",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-13T00:57:59Z",
+      "side": 1,
+      "message": "This seems broken that a output path isn\u0027t specified.",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 36
+      },
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0f0b09_3bcb2bff",
+        "filename": "futility/futility_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-13T00:57:59Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
