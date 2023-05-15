@@ -11,14 +11,12 @@
 #include "fmap.h"
 
 #define FLASHROM_PROGRAMMER_INTERNAL_AP "host"
-#define FLASHROM_PROGRAMMER_INTERNAL_EC "ec"
 
 /* Utilities for firmware images and (FMAP) sections */
 struct firmware_image {
 	/**
 	 * programmer	The name of the programmer to use. Use either
-	 *		FLASHROM_PROGRAMMER_INTERNAL_AP or,
-	 *		FLASHROM_PROGRAMMER_INTERNAL_EC
+	 *		FLASHROM_PROGRAMMER_INTERNAL_AP,
 	 *		for the AP and EC respectively.
 	 */
 	const char *programmer;
