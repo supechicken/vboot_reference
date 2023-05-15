@@ -805,6 +805,15 @@ static int check_compatible_tpm_keys(struct updater_config *cfg,
 	return 0;
 }
 
+static int ectool_flashwrite(const struct firmware_image *ec_image)
+{
+	write_to_file(NULL, "/tmp/ec_tmp.img",
+			ec_image->data,
+			ec_image->size);
+	const char *out = host_shell("/usr/bin/ectool flashwrite 0 /tmp/ec_tmp.img");
+	printf("%s\n", out);
+	return 0;
+}
 
 /*
  * Update EC (RO+RW) firmware if possible.
@@ -845,7 +854,7 @@ static int update_ec_firmware(struct updater_config *cfg)
 	}
 
 	/* TODO(quasisec): Uses cros_ec to program the EC. */
-	return write_system_firmware(cfg, ec_image, sections);
+	return ectool_flashwrite(ec_image);
 }
 
 const char * const updater_error_messages[] = {
@@ -1200,7 +1209,6 @@ struct updater_config *updater_new_config(void)
 	cfg->image.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP;
 	cfg->image_current.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP;
 	cfg->original_programmer = FLASHROM_PROGRAMMER_INTERNAL_AP;
-	cfg->ec_image.programmer = PROG_EC;
 
 	cfg->check_platform = 1;
 	cfg->do_verify = 1;

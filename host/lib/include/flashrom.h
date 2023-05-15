@@ -11,17 +11,15 @@
 #include "fmap.h"
 
 #define FLASHROM_PROGRAMMER_INTERNAL_AP "host"
-#define FLASHROM_PROGRAMMER_INTERNAL_EC "ec"
 #define FLASHROM_PROGRAMMER_SERVO_V2 "ft2232_spi:type=google-servo-v2"
 #define FLASHROM_PROGRAMMER_SERVO_CUR "raiden_debug_spi:target=AP,custom_rst=true"
 
 /* Utilities for firmware images and (FMAP) sections */
 struct firmware_image {
 	/**
-	 * programmer	The name of the programmer to use. Use either
-	 *		FLASHROM_PROGRAMMER_INTERNAL_AP or,
-	 *		FLASHROM_PROGRAMMER_INTERNAL_EC
-	 *		for the AP and EC respectively.
+	 * programmer	The name of the programmer to use. Use
+	 *		FLASHROM_PROGRAMMER_INTERNAL_AP,
+	 *		for the AP.
 	 */
 	const char *programmer;
 	uint32_t size; /* buffer size. */
