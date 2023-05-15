@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6c8586_aee8cc57",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-05-15T10:14:04Z",
+      "side": 1,
+      "message": "\u003e Is there some reason why we can\u0027t break the way the existing command works?\n\nI wanted to fix this ad-hoc for TAST tests migration to futility_library, as I didn\u0027t want to deal with checking every call. futility still needs a lot of work to shape this legacy code into something stable and usable. (Thanks to quasisec@ and other folks working on it!)\n\nI reworked it and fixed only (I hope) directly affected project which is chromeos-overlay.",
+      "parentUuid": "578a9fe6_68816032",
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a1be4b0_fcb6b0bf",
@@ -49,6 +67,30 @@
       "writtenOn": "2023-05-13T00:57:59Z",
       "side": 1,
       "message": "There is so many predicates jammed into this implementation whenever these adhoc needs come up, is adding another flag really the correct solution here or was argument parsing broken?",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 325,
+        "endChar": 46
+      },
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5807d5d_8ac51c4a",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-05-15T10:14:04Z",
+      "side": 1,
+      "message": "EC_RW.bin was a quick\u0026dirty solution I suppose. It should have never been here in the first place. It was generated as a side-effect to ${CWD}, so it had a big breaking potential. We discovered that this is an issue while porting Fingerprint TAST tests (again), so that was my attempt to a quick\u0026dirty fix to a quick\u0026dirty implementation here :p\n\nI\u0027m closing this comment as it is not relevant with a new patch version.",
+      "parentUuid": "8a1be4b0_fcb6b0bf",
       "range": {
         "startLine": 325,
         "startChar": 2,
@@ -82,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "151d4597_0d8db36b",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-05-15T10:14:04Z",
+      "side": 1,
+      "message": "Yes, it was very weird. This piece of code was implemented back in 2017, so that\u0027s why it looks like that I\u0027m afraid :/",
+      "parentUuid": "c85b4ddc_73c5a41f",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 36
+      },
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc0f0b09_3bcb2bff",
@@ -95,6 +161,30 @@
       "writtenOn": "2023-05-13T00:57:59Z",
       "side": 1,
       "message": "bool",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "fda38a4cd0208b32e5cf1bbd6ad5f50c6003985d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1764635_1d252bfd",
+        "filename": "futility/futility_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-05-15T10:14:04Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "dc0f0b09_3bcb2bff",
       "range": {
         "startLine": 66,
         "startChar": 1,
