@@ -468,6 +468,30 @@
       },
       "revId": "174da020225c20e02f4862d87a241b4295b05256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0102b655_61d98db6",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T02:29:52Z",
+      "side": 1,
+      "message": "Fair enough. (I think it would probably be more intuitive to make the API \u003c0: failure and \u003e\u003d0: success then, but as long as the comment only says -1 I guess it makes sense to stick to that.)",
+      "parentUuid": "6f8ffff2_6211081d",
+      "range": {
+        "startLine": 255,
+        "startChar": 13,
+        "endLine": 255,
+        "endChar": 18
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
