@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45b19ce3_c13143fd",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-05-16T20:43:47Z",
+      "side": 1,
+      "message": "Nit: make it a macro? or format the function to multiple lines.",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "b441a91158b0beb646f48c1c13ddbcdb629b1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0053720_9fb97100",
         "filename": "futility/cmd_dump_fmap.c",
         "patchSetId": 1
@@ -14,6 +37,24 @@
       "writtenOn": "2023-05-16T20:17:24Z",
       "side": 1,
       "message": "nit: I think this looks a bit ugly (especially when it says \"unpreserve\" on almost every section, that\u0027s not a real word...). If there\u0027s no specific tool that needs it exactly this way here, I\u0027d suggest that if you want to make the flags visible you either print them directly as hex or as a more structured list, e.g. `area_flags: preserve,compressed` (with unset flags just not listed) or something like that.",
+      "revId": "b441a91158b0beb646f48c1c13ddbcdb629b1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a55eadb_831d468b",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2023-05-16T20:43:47Z",
+      "side": 1,
+      "message": "+1. The fmap library has a call `fmap_flags_to_string()`, which returns something like `preserve,compressed`.",
+      "parentUuid": "a0053720_9fb97100",
       "revId": "b441a91158b0beb646f48c1c13ddbcdb629b1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
