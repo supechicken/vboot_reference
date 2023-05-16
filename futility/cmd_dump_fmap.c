@@ -15,11 +15,24 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 #include "fmap.h"
 #include "futility.h"
 
-typedef enum { FMT_NORMAL, FMT_PRETTY, FMT_FLASHROM, FMT_HUMAN } format_t;
+#define PRESERVE "preserve"
+#define UNPRESERVE "unpreserve"
+
+typedef enum {
+	FMT_NORMAL,
+	FMT_PRETTY,
+	FMT_FLASHROM,
+	FMT_HUMAN,
+	FMT_FLASH_EC
+} format_t;
+
+/* Return true if flags has preserve bit enabled else false */
+static bool is_preserve(uint16_t flags) { return flags & FMAP_AREA_PRESERVE; }
 
 /* Return 0 if successful */
 static int normal_fmap(const FmapHeader *fmh,
@@ -96,11 +109,21 @@ static int normal_fmap(const FmapHeader *fmh,
 				       ah->area_offset + ah->area_size - 1,
 				       buf);
 			break;
+		case FMT_FLASH_EC:
+			if (ah->area_size)
+				printf("%s %s\n", buf,
+				       is_preserve(ah->area_flags)
+					       ? PRESERVE
+					       : UNPRESERVE);
+			break;
 		default:
 			printf("area:            %d\n", i + 1);
 			printf("area_offset:     0x%08x\n", ah->area_offset);
 			printf("area_size:       0x%08x (%d)\n", ah->area_size,
 			       ah->area_size);
+			printf("area_preserve:   %s\n",
+			       is_preserve(ah->area_flags) ? PRESERVE
+							   : UNPRESERVE);
 			printf("area_name:       %s\n", buf);
 		}
 
@@ -388,6 +411,7 @@ static const char usage[] =
 	"  -h             Use a human-readable format\n"
 	"  -H             With -h, display any gaps\n"
 	"  -p             Use a format easy to parse by scripts\n"
+	"  -e             Use the format expected by flash_ec\n"
 	"  -F             Use the format expected by flashrom\n"
 	"\n"
 	"Specify one or more NAMEs to dump only those sections.\n"
@@ -416,13 +440,16 @@ static int do_dump_fmap(int argc, char *argv[])
 	format_t opt_format = FMT_NORMAL;
 
 	opterr = 0;		/* quiet, you */
-	while ((c = getopt_long(argc, argv, ":xpFhH", long_opts, 0)) != -1) {
+	while ((c = getopt_long(argc, argv, ":xpFhHe", long_opts, 0)) != -1) {
 		switch (c) {
 		case 'x':
 			opt_extract = true;
 			break;
 		case 'p':
 			opt_format = FMT_PRETTY;
+			break;
+		case 'e':
+			opt_format = FMT_FLASH_EC;
 			break;
 		case 'F':
 			opt_format = FMT_FLASHROM;
