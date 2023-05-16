@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cb2c26_f55dbdbb",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T20:45:09Z",
+      "side": 1,
+      "message": "vboot is designed to also work without coreboot, so this shouldn\u0027t depend on coreboot config. We just want to check if BIOS_FMAP_VBLOCK_B exists in the FMAP, like prepare_slot() already does.",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c52e1b0_6abe44f1",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T20:45:09Z",
+      "side": 1,
+      "message": "I think the best way to fix this is to honestly just skip this FATAL() call here. Just set state-\u003earea[fw_c].metadata_hash.algo to VB2_HASH_INVALID if this call fails. Then we should still fail in check_slot_after_prepare() if the slot actually existed.",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
