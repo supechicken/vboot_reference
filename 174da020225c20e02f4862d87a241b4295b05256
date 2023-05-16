@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47854006_1794977c",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "nit: realign with opening parenthesis",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88e98a3_fae263d7",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "realign",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 10
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2985509_678dafe2",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "generally align continuations with respective parenthesis",
+      "range": {
+        "startLine": 507,
+        "startChar": 3,
+        "endLine": 507,
+        "endChar": 4
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37069b8_0a024521",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "Doesn\u0027t this still fit on one line?",
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bf465a_9644c56d",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "!\u003d 0",
+      "range": {
+        "startLine": 196,
+        "startChar": 7,
+        "endLine": 196,
+        "endChar": 13
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db22ec2_a4852ed1",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d18c219_26113e7b",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "!\u003d 0",
+      "range": {
+        "startLine": 219,
+        "startChar": 9,
+        "endLine": 219,
+        "endChar": 13
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ba8771_238d8401",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "This whole loop body got misaligned now.",
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800caec0_4913dd2f",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "One line?",
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d798f82_00baeb39",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "\u003d\u003d 0",
+      "range": {
+        "startLine": 250,
+        "startChar": 8,
+        "endLine": 250,
+        "endChar": 20
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06dc2bf_2de67c47",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-16T00:36:23Z",
+      "side": 1,
+      "message": "\u003d\u003d 0\n\nAlso, keep aligned with parenthesis.",
+      "range": {
+        "startLine": 255,
+        "startChar": 13,
+        "endLine": 255,
+        "endChar": 18
+      },
+      "revId": "174da020225c20e02f4862d87a241b4295b05256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
