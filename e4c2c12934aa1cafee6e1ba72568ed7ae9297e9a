@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13833238_6ef1692a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-17T18:58:22Z",
+      "side": 1,
+      "message": "CR-1 for the free() issue in this patchset.  The other part of this is probably good.",
+      "revId": "e4c2c12934aa1cafee6e1ba72568ed7ae9297e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2190f533_3d55fc7c",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-17T18:58:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is safe or correct.  For one thing, this can get set to a literal:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/futility/updater.c;drc\u003d723cb4517c9ff7291f2f446ac2042b8bc10f761d;l\u003d1650\n\nFor another, it can get set to `optarg`:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/futility/updater.c;drc\u003d723cb4517c9ff7291f2f446ac2042b8bc10f761d;l\u003d1643\n\nIt\u0027s definitely not correct to free() a literal, and from looking through `getopt_long(3)` / `optarg(3)` man page I don\u0027t think it\u0027s correct to free `optarg` either.",
+      "revId": "e4c2c12934aa1cafee6e1ba72568ed7ae9297e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
