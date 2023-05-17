@@ -11,6 +11,8 @@
 #include "fmap.h"
 
 #define FLASHROM_PROGRAMMER_INTERNAL_AP "host"
+#define FLASHROM_PROGRAMMER_SERVO_V2 "ft2232_spi:type=google-servo-v2"
+#define FLASHROM_PROGRAMMER_SERVO_CUR "raiden_debug_spi:target=AP,custom_rst=true"
 
 /* Utilities for firmware images and (FMAP) sections */
 struct firmware_image {
