@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33920f8_db9b89c0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-17T05:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dede214_1e35c121",
+      "range": {
+        "startLine": 557,
+        "startChar": 17,
+        "endLine": 557,
+        "endChar": 31
+      },
+      "revId": "3d6f7c1e0e55c1263047b5a1161db4798fb50c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f7fc4db_3e0f9afa",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-05-17T03:35:20Z",
       "side": 1,
       "message": "This would be more useful if it included more of the parameters passed to `flashrom_write_image()`.",
+      "revId": "3d6f7c1e0e55c1263047b5a1161db4798fb50c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b0d699_6de55f30",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-17T05:46:44Z",
+      "side": 1,
+      "message": "Since `host/lib/flashrom_drv.c:flashrom_write_image()` already loops the regions I will add a `INFO()` into that loop.",
+      "parentUuid": "3f7fc4db_3e0f9afa",
       "revId": "3d6f7c1e0e55c1263047b5a1161db4798fb50c29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
