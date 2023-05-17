@@ -44,7 +44,6 @@ static int do_read(int argc, char *argv[])
 	struct updater_config_arguments args = {0};
 	int i, errorcnt = 0, update_needed = 1;
 	const char *prepare_ctrl_name = NULL;
-	char *servo_programmer = NULL;
 	char *region = NULL;
 
 	struct updater_config *cfg = updater_new_config();
@@ -95,13 +94,13 @@ static int do_read(int argc, char *argv[])
 		ERROR("Unexpected arguments.\n");
 	}
 
-	if (!errorcnt && args.detect_servo) {
-		servo_programmer = host_detect_servo(&prepare_ctrl_name);
-
-		if (!servo_programmer)
+	if (!errorcnt && args.detect_servo && !args.programmer) {
+		const char *servo_programmer = host_detect_servo(&prepare_ctrl_name);
+		if (!servo_programmer) {
 			errorcnt++;
-		else if (!args.programmer)
-			args.programmer = servo_programmer;
+			goto err;
+		}
+		args.programmer = servo_programmer;
 	}
 
 	if (!errorcnt)
@@ -138,7 +137,7 @@ static int do_read(int argc, char *argv[])
 	}
 
 err:
-	free(servo_programmer);
+	free(args.programmer);
 	updater_delete_config(cfg);
 	return !!errorcnt;
 }
