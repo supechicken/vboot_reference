@@ -187,7 +187,6 @@ static int do_flash(int argc, char *argv[])
 	int ret = 0;
 	struct updater_config_arguments args = {0};
 	const char *prepare_ctrl_name = NULL;
-	char *servo_programmer = NULL;
 	bool enable_wp = false;
 	bool disable_wp = false;
 	bool get_wp_status = false;
@@ -265,16 +264,14 @@ static int do_flash(int argc, char *argv[])
 		goto out_free;
 	}
 
-	if (args.detect_servo) {
-		servo_programmer = host_detect_servo(&prepare_ctrl_name);
-
+	if (args.detect_servo && !args.programmer) {
+		char *servo_programmer = host_detect_servo(&prepare_ctrl_name);
 		if (!servo_programmer) {
 			ret = -1;
 			ERROR("No servo detected.\n");
 			goto out_free;
 		}
-		if (!args.programmer)
-			args.programmer = servo_programmer;
+		args.programmer = servo_programmer;
 	}
 
 	int update_needed;
@@ -298,7 +295,7 @@ static int do_flash(int argc, char *argv[])
 
 out_free:
 	prepare_servo_control(prepare_ctrl_name, 0);
-	free(servo_programmer);
+	free(args.programmer);
 	updater_delete_config(cfg);
 
 	return ret;
