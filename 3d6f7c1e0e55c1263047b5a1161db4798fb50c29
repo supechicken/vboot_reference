@@ -22,6 +22,23 @@
       },
       "revId": "3d6f7c1e0e55c1263047b5a1161db4798fb50c29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f7fc4db_3e0f9afa",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-05-17T03:35:20Z",
+      "side": 1,
+      "message": "This would be more useful if it included more of the parameters passed to `flashrom_write_image()`.",
+      "revId": "3d6f7c1e0e55c1263047b5a1161db4798fb50c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
