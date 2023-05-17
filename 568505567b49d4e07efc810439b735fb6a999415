@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c50536_a3a82987",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-17T18:42:28Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure current patchset is broken for servo_micro, see comments.",
+      "revId": "568505567b49d4e07efc810439b735fb6a999415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deba6dc6_5dea51c8",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-17T18:42:28Z",
+      "side": 1,
+      "message": "The FLASHROM_PROGRAMMER_SERVO_CUR value in this patchset is specific to CCD.  I would just leave this assignment in the CCD branch.",
+      "revId": "568505567b49d4e07efc810439b735fb6a999415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cedb606_5ca33d5a",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-17T18:42:28Z",
+      "side": 1,
+      "message": "Servo Micro still needs `programmer \u003d \"raiden_debug_spi\"` (or a macro with that string).",
+      "revId": "568505567b49d4e07efc810439b735fb6a999415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6c23d7_943991b1",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-05-17T18:42:28Z",
+      "side": 1,
+      "message": "What does \"CUR\" mean?  Current implementation?  If that\u0027s what it means, I don\u0027t think we should use that terminology because there are multiple supported Servo implementations.  I\u0027d name this one \"CCD\" as it should be used with all CCD implementations to date (CR50 and TI50).",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "568505567b49d4e07efc810439b735fb6a999415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
