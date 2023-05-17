@@ -1647,7 +1647,7 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
 		args->fast_update = 1;
 		args->force_update = 1;
 		args->write_protection = "0";
-		args->programmer = "raiden_debug_spi:target=AP";
+		args->programmer = FLASHROM_PROGRAMMER_SERVO_CUR;
 		break;
 	case OPT_EMULATE:
 		args->use_flash = 1;

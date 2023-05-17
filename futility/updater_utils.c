@@ -422,11 +422,9 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 	const char *servo_port = getenv(ENV_SERVOD_PORT);
 	const char *servo_name = getenv(ENV_SERVOD_NAME);
 	char *servo_type = host_shell("dut-control -o servo_type 2>/dev/null");
-	const char *programmer = NULL;
 	char *ret = NULL;
 	char *servo_serial = NULL;
 
-	static const char * const raiden_debug_spi = "raiden_debug_spi";
 	static const char * const cpu_fw_spi = "cpu_fw_spi";
 	static const char * const ccd_cpu_fw_spi = "ccd_cpu_fw_spi";
 
@@ -453,6 +451,7 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 		VB2_DEBUG("Servo SN=%s (serial cmd: %s)\n", servo_serial, cmd);
 	}
 
+	const char *programmer = FLASHROM_PROGRAMMER_SERVO_CUR;
 	/* servo_type names: chromite/lib/firmware/servo_lib.py */
 	if (!*servo_type) {
 		ERROR("Failed to get servo type. Check servod.\n");
@@ -460,38 +459,32 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 		ERROR("Failed to get serial at servo port %s.\n", servo_port);
 	} else if (strcmp(servo_type, "servo_v2") == 0) {
 		VB2_DEBUG("Selected Servo V2.\n");
-		programmer = "ft2232_spi:type=google-servo-v2";
+		programmer = FLASHROM_PROGRAMMER_SERVO_V2;
 		*prepare_ctrl_name = cpu_fw_spi;
 	} else if (strstr(servo_type, "servo_micro")) {
 		VB2_DEBUG("Selected Servo Micro.\n");
-		programmer = raiden_debug_spi;
 		*prepare_ctrl_name = cpu_fw_spi;
 	} else if (strstr(servo_type, "c2d2")) {
 		VB2_DEBUG("Selected C2D2.\n");
-		programmer = raiden_debug_spi;
 		*prepare_ctrl_name = cpu_fw_spi;
 	} else if (strstr(servo_type, "ccd_cr50") ||
 		   strstr(servo_type, "ccd_gsc") ||
 		   strstr(servo_type, "ccd_ti50")) {
 		VB2_DEBUG("Selected CCD.\n");
-		programmer = "raiden_debug_spi:target=AP,custom_rst=true";
 		*prepare_ctrl_name = ccd_cpu_fw_spi;
 	} else {
 		WARN("Unknown servo: %s\nAssuming debug header.\n", servo_type);
-		programmer = raiden_debug_spi;
 		*prepare_ctrl_name = cpu_fw_spi;
 	}
 
-	if (programmer) {
-		if (!servo_serial) {
-			ret = strdup(programmer);
-		} else {
-			const char prefix = strchr(programmer, ':') ? ',' : ':';
-			ASPRINTF(&ret, "%s%cserial=%s", programmer, prefix,
-				 servo_serial);
-		}
-		VB2_DEBUG("Servo programmer: %s\n", ret);
+	if (!servo_serial) {
+		ret = strdup(programmer);
+	} else {
+		const char prefix = strchr(programmer, ':') ? ',' : ':';
+		ASPRINTF(&ret, "%s%cserial=%s", programmer, prefix,
+			 servo_serial);
 	}
+	VB2_DEBUG("Servo programmer: %s\n", ret);
 
 	free(servo_type);
 	free(servo_serial);
