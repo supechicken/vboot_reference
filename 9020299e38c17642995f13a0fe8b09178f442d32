@@ -52,6 +52,23 @@
       "parentUuid": "74ed03bd_5fb4e954",
       "revId": "9020299e38c17642995f13a0fe8b09178f442d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9ce8ba_91b2a343",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2023-05-17T16:58:17Z",
+      "side": 1,
+      "message": "Is there a way with futility to set GBB flags in a file instead of the actual flash chip?\n\nThis script provides this option...",
+      "revId": "9020299e38c17642995f13a0fe8b09178f442d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
