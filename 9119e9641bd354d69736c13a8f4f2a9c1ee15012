@@ -69,6 +69,24 @@
       "parentUuid": "3c52e1b0_6abe44f1",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006a5f42_8c5c766c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-18T23:26:13Z",
+      "side": 1,
+      "message": "Won\u0027t we see it anyway once we get to check_slot_after_prepare()? I\u0027m not really sure why we put that message in both functions to begin with tbh, it\u0027s pretty much the exact same wording.",
+      "parentUuid": "38dc0731_cda51f18",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
