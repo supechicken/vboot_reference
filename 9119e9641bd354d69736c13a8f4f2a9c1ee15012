@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8705aab_83617bdb",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-05-18T13:25:06Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "d2cb2c26_f55dbdbb",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c52e1b0_6abe44f1",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-16T20:45:09Z",
       "side": 1,
       "message": "I think the best way to fix this is to honestly just skip this FATAL() call here. Just set state-\u003earea[fw_c].metadata_hash.algo to VB2_HASH_INVALID if this call fails. Then we should still fail in check_slot_after_prepare() if the slot actually existed.",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dc0731_cda51f18",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-05-18T13:25:06Z",
+      "side": 1,
+      "message": "It think `FATAL()` should be changed to `WARNING()` or at least to `VB2_DEBUG()`, as this info might be useful for debugging.",
+      "parentUuid": "3c52e1b0_6abe44f1",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
