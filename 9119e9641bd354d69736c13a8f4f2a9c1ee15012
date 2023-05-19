@@ -87,6 +87,24 @@
       "parentUuid": "38dc0731_cda51f18",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "543f414e_b38c1924",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2023-05-19T05:49:07Z",
+      "side": 1,
+      "message": "You are right. This `FATAL()` can be dropped entirely here.",
+      "parentUuid": "006a5f42_8c5c766c",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
