@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78134aca_b152deda",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-05-23T19:26:46Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be used, except to pass to `teardown_flash()` to be freed. Instead, the servo_programmer is stored in `args`, and probably leaked.",
+      "range": {
+        "startLine": 417,
+        "startChar": 7,
+        "endLine": 417,
+        "endChar": 23
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da66208f_248353a3",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-05-23T19:26:46Z",
+      "side": 1,
+      "message": "Why is `prepare_ctrl_name` not part of `struct updater_config`?",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae9db01_b24c0824",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-05-23T19:26:46Z",
+      "side": 1,
+      "message": "Why not just before `updater_setup_config()`?",
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2befee_423a468c",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-05-23T19:26:46Z",
+      "side": 1,
+      "message": "This feels like a lot of work that most clients don\u0027t need.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fae8cdb_30acb5cd",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-05-23T19:26:46Z",
+      "side": 1,
+      "message": "Really?",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
