@@ -33,6 +33,24 @@
       "message": "Since this removes the only call to vb2ex_ec_protect() with VB_SELECT_FIRWMARE_READONLY, I think we should go further and remove the `select` parameter from the API completely.",
       "revId": "6f15fb4ef3242f994487803168998313a308d183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed27eaec_63fd4ac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2023-05-24T08:26:56Z",
+      "side": 1,
+      "message": "\u003e Since this removes the only call to vb2ex_ec_protect() with VB_SELECT_FIRWMARE_READONLY, I think we should go further and remove the `select` parameter from the API completely.\n\nI did a quick check to understand the effort to drop `select` completely from vb2ex_ec_protect()\\.\n\nThe impact is across multiple projects as `ec-\u003eprotect` would also need modification (which has been implemented by each EC vendor and common code inside EC). It might involves modifying the other functions getting called by `vboot_protect`.\n\n```\nvb2_error_t vb2ex_ec_protect(enum vb2_firmware_selection select)\n{\n\tVbootEcOps *ec \u003d vboot_get_ec();\n\tassert(ec \u0026\u0026 ec-\u003eprotect);\n\treturn ec-\u003eprotect(ec, select);\n}\n```",
+      "parentUuid": "0f981dd5_4bf165ba",
+      "revId": "6f15fb4ef3242f994487803168998313a308d183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
