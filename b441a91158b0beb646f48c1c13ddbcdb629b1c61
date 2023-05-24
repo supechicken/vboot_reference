@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54df8d00_86c854c9",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T19:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45b19ce3_c13143fd",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "b441a91158b0beb646f48c1c13ddbcdb629b1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0053720_9fb97100",
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "+1. The fmap library has a call `fmap_flags_to_string()`, which returns something like `preserve,compressed`.",
       "parentUuid": "a0053720_9fb97100",
+      "revId": "b441a91158b0beb646f48c1c13ddbcdb629b1c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff4f7e5_ba4b3487",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-24T19:27:58Z",
+      "side": 1,
+      "message": "Not adding flag info for this format in this CL",
+      "parentUuid": "9a55eadb_831d468b",
       "revId": "b441a91158b0beb646f48c1c13ddbcdb629b1c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
