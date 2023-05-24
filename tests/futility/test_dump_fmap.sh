@@ -19,6 +19,9 @@ cmp "${SCRIPT_DIR}/futility/data_fmap_expect_p.txt" "$TMP"
 "$FUTILITY" dump_fmap -h "${SCRIPT_DIR}/futility/data_fmap.bin"  > "$TMP"
 cmp "${SCRIPT_DIR}/futility/data_fmap_expect_h.txt" "$TMP"
 
+"$FUTILITY" dump_fmap -e "${SCRIPT_DIR}/futility/data_fmap3.bin"  > "$TMP"
+cmp "${SCRIPT_DIR}/futility/data_fmap_expect_e.txt" "$TMP"
+
 
 # This should fail because the input file is truncated and doesn't really
 # contain the stuff that the FMAP claims it does.
