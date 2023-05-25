@@ -413,8 +413,6 @@ static int do_gbb(int argc, char *argv[])
 	int i;
 	struct updater_config *cfg = NULL;
 	struct updater_config_arguments args = {0};
-	const char *prepare_ctrl_name = NULL;
-	char *servo_programmer = NULL;
 	int errorcnt = 0;
 
 
@@ -510,7 +508,7 @@ static int do_gbb(int argc, char *argv[])
 	}
 
 	if (args.use_flash) {
-		if (setup_flash(&cfg, &args, &prepare_ctrl_name)) {
+		if (setup_flash(&cfg, &args)) {
 			ERROR("While preparing flash\n");
 			return 1;
 		}
@@ -760,7 +758,7 @@ static int do_gbb(int argc, char *argv[])
 	}
 
 	if (args.use_flash)
-		teardown_flash(cfg, prepare_ctrl_name, servo_programmer);
+		teardown_flash(cfg);
 	if (inbuf)
 		free(inbuf);
 	if (outbuf)

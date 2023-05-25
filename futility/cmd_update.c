@@ -153,7 +153,6 @@ static int do_update(int argc, char *argv[])
 {
 	struct updater_config *cfg = NULL;
 	struct updater_config_arguments args = {0};
-	const char *prepare_ctrl_name = NULL;
 	int i, errorcnt = 0;
 	char *endptr;
 	bool do_quirks = false;
@@ -269,7 +268,7 @@ static int do_update(int argc, char *argv[])
 		return 1;
 	}
 
-	if (setup_flash(&cfg, &args, &prepare_ctrl_name)) {
+	if (setup_flash(&cfg, &args)) {
 		ERROR("While preparing flash\n");
 		return 1;
 	}
@@ -291,7 +290,7 @@ static int do_update(int argc, char *argv[])
 		errorcnt ? "aborted" : "exits successfully");
 
 _end_cmd:
-	teardown_flash(cfg, prepare_ctrl_name, NULL);
+	teardown_flash(cfg);
 	return !!errorcnt;
 }
 #define CMD_HELP_STR "Update system firmware"

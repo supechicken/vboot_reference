@@ -13,19 +13,17 @@
  * called.
  */
 int setup_flash(struct updater_config **cfg,
-		struct updater_config_arguments *args,
-		const char **prepare_ctrl_name)
+		struct updater_config_arguments *args)
 {
 #ifdef USE_FLASHROM
-	*prepare_ctrl_name = NULL;
 	*cfg = updater_new_config();
 	if (!*cfg) {
 		ERROR("Out of memory\n");
 		return 1;
 	}
+	const char *prepare_ctrl_name = (*cfg)->prepare_ctrl_name;
 	if (args->detect_servo) {
-		char *servo_programmer = host_detect_servo(prepare_ctrl_name);
-
+		char *servo_programmer = host_detect_servo(&prepare_ctrl_name);
 		if (!servo_programmer) {
 			ERROR("Problem communicating with servo\n");
 			goto errdelete;
@@ -41,8 +39,9 @@ int setup_flash(struct updater_config **cfg,
 		ERROR("Bad servo options\n");
 		goto errdelete;
 	}
-	prepare_servo_control(*prepare_ctrl_name, true);
+	prepare_servo_control(prepare_ctrl_name, true);
 	return 0;
+
 errdelete:
 	updater_delete_config(*cfg);
 	*cfg = NULL;
@@ -53,13 +52,10 @@ errdelete:
 }
 
 /* Cleanup objects created in setup_flash and release servo from flash mode. */
-void teardown_flash(struct updater_config *cfg,
-		   const char *prepare_ctrl_name,
-		   char *servo_programmer)
+void teardown_flash(struct updater_config *cfg)
 {
 #ifdef USE_FLASHROM
-	prepare_servo_control(prepare_ctrl_name, false);
-	free(servo_programmer);
+	prepare_servo_control(cfg->prepare_ctrl_name, false);
 	updater_delete_config(cfg);
 #endif /* USE_FLASHROM */
 }

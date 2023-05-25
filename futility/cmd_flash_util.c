@@ -187,7 +187,6 @@ static int do_flash(int argc, char *argv[])
 {
 	struct updater_config *cfg = NULL;
 	struct updater_config_arguments args = {0};
-	const char *prepare_ctrl_name = NULL;
 	bool enable_wp = false;
 	bool disable_wp = false;
 	bool get_wp_status = false;
@@ -260,7 +259,7 @@ static int do_flash(int argc, char *argv[])
 		return 1;
 	}
 
-	if (setup_flash(&cfg, &args, &prepare_ctrl_name)) {
+	if (setup_flash(&cfg, &args)) {
 		ERROR("While preparing flash\n");
 		return 1;
 	}
@@ -280,7 +279,7 @@ static int do_flash(int argc, char *argv[])
 	if (!ret && get_wp_status)
 		ret = print_wp_status(cfg, ignore_hw_wp);
 
-	teardown_flash(cfg, prepare_ctrl_name, NULL);
+	teardown_flash(cfg);
 	return ret;
 }
 #define CMD_HELP_STR "Manage AP SPI flash properties and writeprotect configuration"
