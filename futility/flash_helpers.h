@@ -10,11 +10,8 @@
 #include "updater.h"
 
 int setup_flash(struct updater_config **cfg,
-		struct updater_config_arguments *args,
-		const char **prepare_ctrl_name);
+		struct updater_config_arguments *args);
 
-void teardown_flash(struct updater_config *cfg,
-		   const char *prepare_ctrl_name,
-		   char *servo_programmer);
+void teardown_flash(struct updater_config *cfg);
 
 #endif /* VBOOT_REFERENCE_FLASH_HELPERS_H_ */
