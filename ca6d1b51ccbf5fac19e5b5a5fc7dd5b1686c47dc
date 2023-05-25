@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "473d49e2_50bc4aca",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-25T04:34:38Z",
+      "side": 1,
+      "message": "I did noticed that yes.",
+      "parentUuid": "78134aca_b152deda",
+      "range": {
+        "startLine": 417,
+        "startChar": 7,
+        "endLine": 417,
+        "endChar": 23
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da66208f_248353a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-23T19:26:46Z",
       "side": 1,
       "message": "Why is `prepare_ctrl_name` not part of `struct updater_config`?",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a67aa0c_319f92c3",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-25T04:34:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da66208f_248353a3",
       "range": {
         "startLine": 17,
         "startChar": 15,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f74574f0_3946fde1",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-25T04:34:38Z",
+      "side": 1,
+      "message": "can\u0027t do that if you want prepare_ctrl_name in struct updater_config",
+      "parentUuid": "dae9db01_b24c0824",
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c2befee_423a468c",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-05-23T19:26:46Z",
       "side": 1,
       "message": "This feels like a lot of work that most clients don\u0027t need.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4594d3_87ff1b8e",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-25T04:34:38Z",
+      "side": 1,
+      "message": "not sure about just dropping it?",
+      "parentUuid": "5c2befee_423a468c",
       "range": {
         "startLine": 40,
         "startChar": 5,
@@ -124,6 +214,30 @@
       "side": 1,
       "message": "Don\u0027t blame the messenger. This commit is just moving the current code, I think I would prefer doing these cleanups as its own atomic commit after all the duplication is reduced down to a canonical path here.",
       "parentUuid": "4fae8cdb_30acb5cd",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "ca6d1b51ccbf5fac19e5b5a5fc7dd5b1686c47dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7febcc_78f0735c",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-25T04:34:38Z",
+      "side": 1,
+      "message": "https://crrev.com/c/4563815",
+      "parentUuid": "131f8bba_528defcf",
       "range": {
         "startLine": 41,
         "startChar": 9,
