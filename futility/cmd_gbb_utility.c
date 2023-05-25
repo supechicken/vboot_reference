@@ -352,8 +352,7 @@ static int setup_flash(struct updater_config **cfg,
 		else
 			free(servo_programmer);
 	}
-	int ignored;
-	if (updater_setup_config(*cfg, args, &ignored)) {
+	if (updater_setup_config(*cfg, args)) {
 		ERROR("Bad servo options\n");
 		goto errdelete;
 	}

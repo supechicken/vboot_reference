@@ -277,8 +277,7 @@ static int do_flash(int argc, char *argv[])
 			args.programmer = servo_programmer;
 	}
 
-	int update_needed;
-	ret = updater_setup_config(cfg, &args, &update_needed);
+	ret = updater_setup_config(cfg, &args);
 	prepare_servo_control(prepare_ctrl_name, true);
 
 	if (!ret && get_info)

@@ -224,8 +224,7 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
  * Returns number of failures, or 0 on success.
  */
 int updater_setup_config(struct updater_config *cfg,
-			 const struct updater_config_arguments *arg,
-			 int *do_update);
+			 const struct updater_config_arguments *arg);
 
 /* Prints the name and description from all supported quirks. */
 void updater_list_config_quirks(const struct updater_config *cfg);
