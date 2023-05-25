@@ -52,6 +52,24 @@
       "parentUuid": "1c98d8cc_ea5b4ff0",
       "revId": "89758bc5ddf83081ceebdc7d77392f0d184d6102",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de02d324_27102270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-05-25T19:10:38Z",
+      "side": 1,
+      "message": "BTW, if you\u0027re looking for a GPL-compatible crypto project, one I am aware of is older versions of mbedTLS. They have ECDSA code here, maybe that\u0027s something that could be a usable substitute? (At least a starting point to steal code from, we shouldn\u0027t link the whole library and too much of its custom framework stuff.)\n\nhttps://github.com/Mbed-TLS/mbedtls/blob/archive/mbedtls-2.7/library/ecdsa.c\n\n(If you do use this make sure you take it from a branch that still has the Apache/GPL dual license, like mbedtls-2.7. The most recent versions have dropped the GPL.)",
+      "parentUuid": "34c99894_5e1963af",
+      "revId": "89758bc5ddf83081ceebdc7d77392f0d184d6102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
