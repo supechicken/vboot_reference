@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59963418_0bce9c01",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-29T07:43:24Z",
+      "side": 1,
+      "message": "Not sure if this is different for futlity code, but I think we usually puts the document in header files instead of implementation (.c) files.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "17ae010f2ea994cc5787cc079e710e3d8c5f0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48187cd5_463c7485",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-29T07:43:24Z",
+      "side": 1,
+      "message": "Don\u0027t need to free `servo_programmer`?",
+      "revId": "17ae010f2ea994cc5787cc079e710e3d8c5f0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27ea8ae_af9a5a9c",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-29T07:43:24Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 79
+      },
+      "revId": "17ae010f2ea994cc5787cc079e710e3d8c5f0481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
