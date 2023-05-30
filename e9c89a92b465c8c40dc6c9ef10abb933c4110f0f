@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be3134e_e30cefe0",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-05-30T16:51:30Z",
+      "side": 1,
+      "message": "UNPRESERVE is not a word :-)\n\nHow about MUTABLE or NOT_PRESERVE?",
+      "range": {
+        "startLine": 25,
+        "startChar": 44,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "e9c89a92b465c8c40dc6c9ef10abb933c4110f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8faf81b_6ba8e151",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-05-30T16:51:30Z",
+      "side": 1,
+      "message": "Can you comment what these mean? (separate CL)",
+      "revId": "e9c89a92b465c8c40dc6c9ef10abb933c4110f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
