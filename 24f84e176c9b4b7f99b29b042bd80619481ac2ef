@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf44c85_20fe7d7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-30T04:44:52Z",
+      "side": 1,
+      "message": "+2 with nits. Feel free to fix them in other CLs or adding TODOs.",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d400fd9c_98a1c9e7",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-30T04:44:52Z",
+      "side": 1,
+      "message": "nit: It was `-1`, the same goes to other returns. But I\u0027m ok if this was intended.",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37b6bd8_62c57192",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-30T04:44:52Z",
+      "side": 1,
+      "message": "nit: I think this should simply be `return 0`",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a13c0c_81a97510",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-30T04:44:52Z",
+      "side": 1,
+      "message": "nit: Seems like this should be `errorcnt++; goto err;` or we should simply remove `errorcnt` and return constants.",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d42b9f3_2bafc513",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-30T04:44:52Z",
+      "side": 1,
+      "message": "Is it safe to free an args not from `host_detect_servo` (I guess it is from `getopt_long`)?",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2596f6_49569164",
+        "filename": "futility/flash_helpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-30T04:44:52Z",
+      "side": 1,
+      "message": "nit: explain what is `update_needed` and how to used it.",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
