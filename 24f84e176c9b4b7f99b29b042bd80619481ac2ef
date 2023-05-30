@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9cc221c_383f6ee4",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-30T05:08:28Z",
+      "side": 1,
+      "message": "Intended as it changes subprocess ABI.",
+      "parentUuid": "d400fd9c_98a1c9e7",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b37b6bd8_62c57192",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-05-30T04:44:52Z",
       "side": 1,
       "message": "nit: I think this should simply be `return 0`",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ae20a2_9d829040",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-30T05:08:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b37b6bd8_62c57192",
       "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61451d4e_a9de314b",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-30T05:08:28Z",
+      "side": 1,
+      "message": "No because the `err` label deals with the teardown of `cfg` but `setup_flash()` hasn\u0027t init\u0027ed `cfg` yet.",
+      "parentUuid": "e6a13c0c_81a97510",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d42b9f3_2bafc513",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e83329_fcac1d61",
+        "filename": "futility/flash_helpers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-30T05:08:28Z",
+      "side": 1,
+      "message": "Removed. I prefer a plausibly mild leak of the life-time of the PID than a stack corruption or double free of dangling references.\n\nThere is far too much cyclomatic complexity in `updater_setup_config()` to reason the fix esp in a commit that just intendeds to factor out common code and be a NOP. This is getting *far* beyond the scope of the original commit and *rapidly* approaching fixing all of futility\u0027s many issues.",
+      "parentUuid": "5d42b9f3_2bafc513",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc2596f6_49569164",
@@ -99,6 +171,24 @@
       "writtenOn": "2023-05-30T04:44:52Z",
       "side": 1,
       "message": "nit: explain what is `update_needed` and how to used it.",
+      "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb47d41b_681271e5",
+        "filename": "futility/flash_helpers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-30T05:08:28Z",
+      "side": 1,
+      "message": "It is undocumented and needs documenting in `futility/updater.h`, far out of scope of this patch.",
+      "parentUuid": "cc2596f6_49569164",
       "revId": "24f84e176c9b4b7f99b29b042bd80619481ac2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
