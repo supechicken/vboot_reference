@@ -116,15 +116,12 @@ vb2_error_t vb2ex_ec_running_rw(int *in_rw)
 	return in_rw_retval;
 }
 
-vb2_error_t vb2ex_ec_protect(enum vb2_firmware_selection select)
+vb2_error_t vb2ex_ec_protect(void)
 {
 	if (protect_retval)
 		return protect_retval;
 
-	if (select == VB_SELECT_FIRMWARE_READONLY)
-		ec_ro_protected = 1;
-	else
-		ec_rw_protected = 1;
+	ec_rw_protected = 1;
 
 	return VB2_SUCCESS;
 }

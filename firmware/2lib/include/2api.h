@@ -1315,10 +1315,9 @@ vb2_error_t vb2ex_ec_update_image(enum vb2_firmware_selection select);
  * Subsequent calls to vb2ex_ec_update_image() with the same region this
  * boot will fail.
  *
- * @param select	Image to get expected hash for (RO or RW).
  * @return VB2_SUCCESS, or error code on error.
  */
-vb2_error_t vb2ex_ec_protect(enum vb2_firmware_selection select);
+vb2_error_t vb2ex_ec_protect(void);
 
 /**
  * Perform EC post-verification / updating / jumping actions.
