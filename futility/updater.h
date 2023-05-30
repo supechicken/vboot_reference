@@ -220,9 +220,13 @@ void updater_delete_config(struct updater_config *cfg);
 int handle_flash_argument(struct updater_config_arguments *args, int opt,
 			  char *optarg);
 
-/*
+/**
  * Helper function to setup an allocated updater_config object.
  * Returns number of failures, or 0 on success.
+ * @param[in]  updater_config,
+ * @param[in]  updater_config_arguments,
+ * @param[out] do_update - perform update unless model_detect, manifest,
+ * 			   unpacking or output images.
  */
 int updater_setup_config(struct updater_config *cfg,
 			 const struct updater_config_arguments *arg,

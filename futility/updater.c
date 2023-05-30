@@ -1501,10 +1501,6 @@ static int prog_arg_emulation(struct updater_config *cfg,
 	return 0;
 }
 
-/*
- * Helper function to setup an allocated updater_config object.
- * Returns number of failures, or 0 on success.
- */
 int updater_setup_config(struct updater_config *cfg,
 			 const struct updater_config_arguments *arg,
 			 bool *do_update)
