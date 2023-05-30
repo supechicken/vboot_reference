@@ -70,6 +70,24 @@
       "parentUuid": "6df846d8_cf687321",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4a9f06_2351f86a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-05-30T19:22:10Z",
+      "side": 1,
+      "message": "Once of the goals of this CL is to move away from hacks and get something which can be more widely used.\n\nThe goal is not to debug depthcharge...you\u0027ve already said that gdb is the only thing people should use there. But this feature is useful for debugging coreboot and FSP, check tables, etc.",
+      "parentUuid": "78188d46_a85b3c12",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
