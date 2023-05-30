@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <getopt.h>
 
+#include "flash_helpers.h"
 #include "futility.h"
 #include "updater.h"
 
@@ -148,14 +149,11 @@ static void print_help(int argc, char *argv[])
 
 static int do_update(int argc, char *argv[])
 {
+	struct updater_config *cfg = NULL;
 	struct updater_config_arguments args = {0};
 	int i, errorcnt = 0;
-	const char *prepare_ctrl_name = NULL;
-	char *servo_programmer = NULL;
 	char *endptr;
-
-	struct updater_config *cfg = updater_new_config();
-	assert(cfg);
+	bool do_quirks = false;
 
 	opterr = 0;
 	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
@@ -164,8 +162,7 @@ static int do_update(int argc, char *argv[])
 		switch (i) {
 		case 'h':
 			print_help(argc, argv);
-			updater_delete_config(cfg);
-			return !!errorcnt;
+			return 0;
 		case 'd':
 			debugging_enabled = 1;
 			args.verbosity++;
@@ -192,8 +189,7 @@ static int do_update(int argc, char *argv[])
 		case OPT_REPACK:
 			args.repack = optarg;
 			ERROR("Sorry, --repack is only for the script.\n");
-			errorcnt ++;
-			break;
+			return 1;
 		case OPT_UNPACK:
 			args.unpack = optarg;
 			break;
@@ -204,9 +200,8 @@ static int do_update(int argc, char *argv[])
 			args.quirks = optarg;
 			break;
 		case OPT_QUIRKS_LIST:
-			updater_list_config_quirks(cfg);
-			updater_delete_config(cfg);
-			return 0;
+			do_quirks = true;
+			break;
 		case OPT_OUTPUT_DIR:
 			args.output_dir = optarg;
 			break;
@@ -244,7 +239,7 @@ static int do_update(int argc, char *argv[])
 			args.gbb_flags = strtoul(optarg, &endptr, 0);
 			if (*endptr) {
 				ERROR("Invalid flags: %s\n", optarg);
-				errorcnt++;
+				return 1;
 			} else {
 				args.override_gbb_flags = 1;
 			}
@@ -253,7 +248,6 @@ static int do_update(int argc, char *argv[])
 			break;
 
 		case '?':
-			errorcnt++;
 			if (optopt)
 				ERROR("Unrecognized option: -%c\n", optopt);
 			else if (argv[optind - 1])
@@ -261,54 +255,43 @@ static int do_update(int argc, char *argv[])
 				      argv[optind - 1]);
 			else
 				ERROR("Unrecognized option.\n");
-			break;
+			return 1;
 		default:
-			errorcnt++;
 			ERROR("Failed parsing options.\n");
+			return 1;
 		}
 	}
 	if (optind < argc) {
-		errorcnt++;
 		ERROR("Unexpected arguments.\n");
+		return 1;
 	}
-
-	if (!errorcnt && args.detect_servo) {
-		servo_programmer = host_detect_servo(&prepare_ctrl_name);
-
-		if (!servo_programmer)
-			errorcnt++;
-		else if (!args.programmer)
-			args.programmer = servo_programmer;
-	}
-	/*
-	 * Some boards may need to fetch firmware before starting to
-	 * update (i.e., in updater_setup_config) so we want to turn on
-	 * cpu_fw_spi mode now.
-	 */
-	prepare_servo_control(prepare_ctrl_name, true);
 
 	bool update_needed;
-	if (!errorcnt)
-		errorcnt += updater_setup_config(cfg, &args, &update_needed);
-	if (!errorcnt && update_needed) {
-		int r;
+	if (setup_flash(&cfg, &args, &update_needed)) {
+		ERROR("While preparing flash\n");
+		return 1;
+	}
+	if (do_quirks) {
+		updater_list_config_quirks(cfg);
+		goto _end_cmd;
+	}
+
+	if (update_needed) {
 		STATUS("Starting firmware updater.\n");
-		r = update_firmware(cfg);
+		int r = update_firmware(cfg);
 		if (r != UPDATE_ERR_DONE) {
 			r = VB2_MIN(r, UPDATE_ERR_UNKNOWN);
 			ERROR("%s\n", updater_error_messages[r]);
 			errorcnt++;
 		}
-		/* Use stdout for the final result. */
-		printf(">> %s: Firmware updater %s.\n",
-			errorcnt ? "FAILED": "DONE",
-			errorcnt ? "aborted" : "exits successfully");
 	}
+	/* Use stdout for the final result. */
+	printf(">> %s: Firmware updater %s.\n",
+		errorcnt ? "FAILED": "DONE",
+		errorcnt ? "aborted" : "exits successfully");
 
-	prepare_servo_control(prepare_ctrl_name, false);
-	free(servo_programmer);
-
-	updater_delete_config(cfg);
+_end_cmd:
+	teardown_flash(cfg);
 	return !!errorcnt;
 }
 #define CMD_HELP_STR "Update system firmware"
