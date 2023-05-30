@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4713ab_e52299f0",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-30T17:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be3134e_e30cefe0",
+      "range": {
+        "startLine": 25,
+        "startChar": 44,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "e9c89a92b465c8c40dc6c9ef10abb933c4110f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8faf81b_6ba8e151",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-05-30T16:51:30Z",
       "side": 1,
       "message": "Can you comment what these mean? (separate CL)",
+      "revId": "e9c89a92b465c8c40dc6c9ef10abb933c4110f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7c60cc_b0f749f5",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541242
+      },
+      "writtenOn": "2023-05-30T17:44:00Z",
+      "side": 1,
+      "message": "opened issue : b:284988479",
+      "parentUuid": "c8faf81b_6ba8e151",
       "revId": "e9c89a92b465c8c40dc6c9ef10abb933c4110f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
