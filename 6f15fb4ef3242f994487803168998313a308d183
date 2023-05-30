@@ -105,6 +105,24 @@
       "parentUuid": "48e287fa_a1cf8156",
       "revId": "6f15fb4ef3242f994487803168998313a308d183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fff50d8_ad609051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2023-05-30T14:02:54Z",
+      "side": 1,
+      "message": "\u003e \u003e \u003e \u003e Since this removes the only call to vb2ex_ec_protect() with VB_SELECT_FIRWMARE_READONLY, I think we should go further and remove the `select` parameter from the API completely.\n\u003e \u003e \u003e \n\u003e \u003e \u003e I did a quick check to understand the effort to drop `select` completely from vb2ex_ec_protect()\\.\n\u003e \u003e \u003e \n\u003e \u003e \u003e The impact is across multiple projects as `ec-\u003eprotect` would also need modification (which has been implemented by each EC vendor and common code inside EC). It might involves modifying the other functions getting called by `vboot_protect`.\n\u003e \u003e \u003e \n\u003e \u003e \u003e ```\n\u003e \u003e \u003e vb2_error_t vb2ex_ec_protect(enum vb2_firmware_selection select)\n\u003e \u003e \u003e {\n\u003e \u003e \u003e \tVbootEcOps *ec \u003d vboot_get_ec();\n\u003e \u003e \u003e \tassert(ec \u0026\u0026 ec-\u003eprotect);\n\u003e \u003e \u003e \treturn ec-\u003eprotect(ec, select);\n\u003e \u003e \u003e }\n\u003e \u003e \u003e ```\n\u003e \u003e \n\u003e \u003e please advice if that is what you are suggesting and worthy here?\n\u003e \n\u003e we won\u0027t be able to remove the `select` parameter completely because vb2ex_ec_protect() takes input to know the RW EC FW current state (active vs upgrade)?\n\u003e \n\u003e ```\n\u003e \n\u003e enum vb2_firmware_selection {\n\u003e \t/* Read only firmware for normal or developer path. */\n\u003e \tVB_SELECT_FIRMWARE_READONLY \u003d 3,\n\u003e \t/* Rewritable EC firmware currently set active */\n\u003e \tVB_SELECT_FIRMWARE_EC_ACTIVE \u003d 4,\n\u003e \t/* Rewritable EC firmware currently not set active thus updatable */\n\u003e \tVB_SELECT_FIRMWARE_EC_UPDATE \u003d 5,\n\u003e \t/* Keep this at the end */\n\u003e \tVB_SELECT_FIRMWARE_COUNT,\n\u003e };\n\u003e \n\u003e \n\u003e /* Protect RW flash */\n\u003e \tVB2_TRY(vb2ex_ec_protect(select_rw), ctx, VB2_RECOVERY_EC_PROTECT);\n\u003e \n\u003e ```\n\ncan u please check if https://chromium-review.googlesource.com/q/topic:%22drop_ec_ro_protect%22 and https://review.coreboot.org/c/coreboot/+/75521 is what you might have asked to pursue ?",
+      "parentUuid": "2ee863d6_13514bb5",
+      "revId": "6f15fb4ef3242f994487803168998313a308d183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
