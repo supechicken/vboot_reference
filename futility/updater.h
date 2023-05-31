@@ -225,12 +225,17 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
  * Returns number of failures, or 0 on success.
  * @param[in]  updater_config,
  * @param[in]  updater_config_arguments,
- * @param[out] do_update - perform update unless model_detect, manifest,
- * 			   unpacking or output images.
  */
 int updater_setup_config(struct updater_config *cfg,
-			 const struct updater_config_arguments *arg,
-			 bool *do_update);
+			 const struct updater_config_arguments *arg);
+
+/**
+ * Helper function to determine if to update unless model_detect, manifest,
+ * unpacking or in output images mode.
+ * Returns true to perform update otherwise false.
+ * @param[in]  updater_config_arguments,
+ */
+bool updater_should_update(const struct updater_config_arguments *arg);
 
 /* Prints the name and description from all supported quirks. */
 void updater_list_config_quirks(const struct updater_config *cfg);
