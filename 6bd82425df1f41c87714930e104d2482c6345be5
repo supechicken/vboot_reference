@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe10ce8_25c01281",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:43:01Z",
+      "side": 1,
+      "message": "Most logic LGTM. Add comments to documentation and naming.",
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a113b2a2_43581c9e",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:43:01Z",
+      "side": 1,
+      "message": "I feel `path` is not very clear to me. How about `split-regions` or `split-output`?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50cb365_1ee5e008",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:43:01Z",
+      "side": 1,
+      "message": "Prefer `Output` / `Write`. `Read` sounds like this arg is asking futility to reading something.",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2781ca67_9d284ac7",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:43:01Z",
+      "side": 1,
+      "message": "Please also mention that those file will be `{FILE}.{region_name}`",
+      "range": {
+        "startLine": 39,
+        "startChar": 72,
+        "endLine": 39,
+        "endChar": 76
+      },
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
