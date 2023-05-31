@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5867e5a2_6674143c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2023-05-31T19:17:36Z",
+      "side": 1,
+      "message": "I\u0027ve tested this out with some crdyboot changes and confirmed it works :) I\u0027ll put up a CL with my changes shortly.",
+      "revId": "733d040398ed0001c213b75c74b7e8936fa99fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec55660_d2c84348",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2023-05-31T19:17:36Z",
+      "side": 1,
+      "message": "How would you feel about inverting this logic, so if the EFI boot stub is detected it is always used, regardless of whether `--bootloader` was passed in? That way we don\u0027t have to add `if reven ...` logic to the various bash scripts that invoke this tool.",
+      "revId": "733d040398ed0001c213b75c74b7e8936fa99fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
