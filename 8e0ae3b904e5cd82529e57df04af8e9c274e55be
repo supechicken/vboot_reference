@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b60fd47_7bb58061",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T04:02:24Z",
+      "side": 1,
+      "message": "Here also set to false. Seems like due to `do_output`.",
+      "revId": "8e0ae3b904e5cd82529e57df04af8e9c274e55be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa917db_6eddf581",
+        "filename": "futility/updater.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T04:02:24Z",
+      "side": 1,
+      "message": "What is `perform update`? Does it mean the returned `cfg` will ask updater perform a update?",
+      "range": {
+        "startLine": 228,
+        "startChar": 27,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "8e0ae3b904e5cd82529e57df04af8e9c274e55be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
