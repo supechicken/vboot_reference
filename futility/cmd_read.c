@@ -40,25 +40,56 @@ static void print_help(int argc, char *argv[])
 	       argv[0]);
 }
 
-static int read_flash_to_file(struct updater_config *cfg, const char *path,
-			const char *regions)
+static char **parse_region_string(char *str, size_t *rlen)
 {
-	/* full image read. */
-	if (!regions) {
-		if (write_to_file("Wrote AP firmware to", path,
-				  cfg->image_current.data,
-				  cfg->image_current.size)) {
-			return -1;
-		}
-		return 0;
+        if (!str || !rlen)
+                return NULL; /* no regions to parse. */
+
+	*rlen = 0;
+
+        char **regions;
+        size_t i = 0;
+        size_t len = 0;
+        char *savedptr;
+        char *region = strtok_r(str, ",", &savedptr);
+        while (region) {
+                len += strlen(region) + 1; /* +1 for null termination. */
+                regions = realloc(regions, len);
+                regions[i] = region;
+
+                /* next region to read.. */
+                region = strtok_r(NULL, ",", &savedptr);
+                i++;
+        }
+        *rlen = i;
+	printf("DEBUG region[0]= %zu,'%s'\n", i, regions[0]);
+
+        return regions;
+}
+
+static int read_flash_regions_to_file(struct updater_config *cfg,
+				      const char *path, char *str)
+{
+	size_t rlen;
+	char **regions = parse_region_string(str, &rlen);
+	if (!regions || !rlen) {
+		WARN("No parsable regions to process.\n");
+		return -1;
 	}
 
-	char *savedptr;
-	char *region = strtok_r((char *)regions, ",", &savedptr);
-	while (region) {
+	/* Read only the specified regions */
+	if (flashrom_read_image(&cfg->image_current, (const char *const *)regions,
+				cfg->verbosity + 1)) {
+		free(regions);
+		return -1;
+	}
+
+	for (size_t i = 0; i < rlen; i++) {
+		const char *region = regions[i];
+		printf("region = %s\n", region);
+
 		struct firmware_section section;
-		if (find_firmware_section(&section, &cfg->image_current,
-					  region)) {
+		if (find_firmware_section(&section, &cfg->image_current, region)) {
 			ERROR("Region '%s' not found in image.\n", region);
 			return -1;
 		}
@@ -73,9 +104,6 @@ static int read_flash_to_file(struct updater_config *cfg, const char *path,
 			return -1;
 		}
 		free(fpath);
-
-		/* next region to read.. */
-		region = strtok_r(NULL, ",", &savedptr);
 	}
 
 	return 0;
@@ -101,7 +129,7 @@ static int do_read(int argc, char *argv[])
 			args.verbosity++;
 			break;
 		case 'r':
-			regions = optarg;
+			regions = strdup(optarg);
 			break;
 		case 'v':
 			args.verbosity++;
@@ -137,18 +165,28 @@ static int do_read(int argc, char *argv[])
 		return 1;
 	}
 
-	int r = load_system_firmware(cfg, &cfg->image_current);
-	/*
-	 * Ignore a parse error as we still want to write the file
-	 * out in that case
-	 */
-	if (r && r != IMAGE_PARSE_FAILURE) {
-		errorcnt++;
-		goto err;
+	if (!regions) {
+		/* full image read. */
+		int r = load_system_firmware(cfg, &cfg->image_current);
+		/*
+		 * Ignore a parse error as we still want to write the file
+		 * out in that case
+		 */
+		if (r && r != IMAGE_PARSE_FAILURE) {
+			errorcnt++;
+			goto err;
+		}
+		if (write_to_file("Wrote AP firmware to", output_file_name,
+				  cfg->image_current.data,
+				  cfg->image_current.size)) {
+			errorcnt++;
+			goto err;
+		}
+	} else {
+		if (read_flash_regions_to_file(cfg, output_file_name, regions) < 0)
+			errorcnt++;
+		free(regions);
 	}
-
-	if (read_flash_to_file(cfg, output_file_name, regions) < 0)
-		errorcnt++;
 
 err:
 	teardown_flash(cfg);
