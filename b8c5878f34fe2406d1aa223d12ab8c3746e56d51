@@ -40,6 +40,30 @@
       },
       "revId": "b8c5878f34fe2406d1aa223d12ab8c3746e56d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "171c3098_d0c3491b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-05-31T05:45:45Z",
+      "side": 1,
+      "message": "Done. I had to make this a list (instead of a string) to make it work.",
+      "parentUuid": "217b2b79_90130c70",
+      "range": {
+        "startLine": 517,
+        "startChar": 6,
+        "endLine": 517,
+        "endChar": 26
+      },
+      "revId": "b8c5878f34fe2406d1aa223d12ab8c3746e56d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
