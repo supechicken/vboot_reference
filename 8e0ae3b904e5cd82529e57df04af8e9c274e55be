@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0282fd_d272d974",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:33:15Z",
+      "side": 1,
+      "message": "Never mind. I just found that you have mention this in the document:\n\n\u003e perform update unless model_detect, manifest, unpacking or \"output\" images.",
+      "parentUuid": "b9b4e688_29cc8c4c",
+      "revId": "8e0ae3b904e5cd82529e57df04af8e9c274e55be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aa917db_6eddf581",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "I think `updater_setup_config()` needs more splitting up to write a better comment but this was as good as I got to so far which is better than nothing.",
       "parentUuid": "7aa917db_6eddf581",
+      "range": {
+        "startLine": 228,
+        "startChar": 27,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "8e0ae3b904e5cd82529e57df04af8e9c274e55be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c52bb51_5b198dd0",
+        "filename": "futility/updater.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:33:15Z",
+      "side": 1,
+      "message": "IMO, this should be changed to something like `will_do_update` / `is_dry_run`. But I don\u0027t want to spend too many time on this because this is completely out of scope.\n\n\nSo I prefer having this change, but also leave a TODO to remind that this could be improved. I beleive there will be someone, who have better understanding than me, could help us figur this out.\nA TODO is better than only having unclear or incorrect comment. I think it is too big for us to fix that now, and it is not related to the b/ we are solving.",
+      "parentUuid": "5788a100_d10d4716",
       "range": {
         "startLine": 228,
         "startChar": 27,
