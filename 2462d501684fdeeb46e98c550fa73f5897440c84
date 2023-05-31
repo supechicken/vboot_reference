@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0de9026_b6987e86",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:10:44Z",
+      "side": 1,
+      "message": "Most functions in this file have a document comment. We should at least write `Returns 0 on success, otherwise failure`.",
+      "revId": "2462d501684fdeeb46e98c550fa73f5897440c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec6d229_6677a166",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-05-31T06:10:44Z",
+      "side": 1,
+      "message": "Most functions in this file use `!\u003d 0` for failures.",
+      "range": {
+        "startLine": 1491,
+        "startChar": 42,
+        "endLine": 1491,
+        "endChar": 45
+      },
+      "revId": "2462d501684fdeeb46e98c550fa73f5897440c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
