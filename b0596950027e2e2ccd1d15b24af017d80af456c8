@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b27006d_8de12244",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-31T10:28:26Z",
+      "side": 1,
+      "message": "ok but I was thinking about removing all those comments for static\u0027s tbh? they are not very helpful.",
+      "parentUuid": "186f6cfb_95181080",
+      "revId": "b0596950027e2e2ccd1d15b24af017d80af456c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b9dcbc0_518904eb",
         "filename": "futility/updater.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-31T06:07:25Z",
       "side": 1,
       "message": "Most of the functions in this file use `!\u003d 0` for failures.",
+      "range": {
+        "startLine": 1446,
+        "startChar": 34,
+        "endLine": 1446,
+        "endChar": 37
+      },
+      "revId": "b0596950027e2e2ccd1d15b24af017d80af456c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4c3927_4c3bf64e",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-31T10:28:26Z",
+      "side": 1,
+      "message": "This was intentional as 0 or positive values is meant to imply success consistent with POSIX conventions.",
+      "parentUuid": "0b9dcbc0_518904eb",
       "range": {
         "startLine": 1446,
         "startChar": 34,
