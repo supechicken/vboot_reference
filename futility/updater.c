@@ -1501,6 +1501,17 @@ static int prog_arg_emulation(struct updater_config *cfg,
 	return 0;
 }
 
+// TODO: Decouple from updater_setup_config().
+static bool updater_should_update(const struct updater_config_arguments *arg,
+				  bool do_output)
+{
+	if (arg->detect_model_only || arg->do_manifest
+		|| arg->repack || arg->unpack || do_output) {
+		return false;
+	}
+	return true;
+}
+
 int updater_setup_config(struct updater_config *cfg,
 			 const struct updater_config_arguments *arg,
 			 bool *do_update)
@@ -1510,7 +1521,6 @@ int updater_setup_config(struct updater_config *cfg,
 	bool check_single_image = false;
 	bool do_output = false;
 	const char *archive_path = arg->archive;
-	*do_update = true;
 
 	/* Setup values that may change output or decision of other argument. */
 	cfg->verbosity = arg->verbosity;
@@ -1527,10 +1537,6 @@ int updater_setup_config(struct updater_config *cfg,
 	if (arg->detect_model_only) {
 		cfg->detect_model = true;
 	}
-	if (arg->detect_model_only || arg->do_manifest
-		|| arg->repack || arg->unpack) {
-		*do_update = false;
-	}
 
 	/* Setup update mode. */
 	if (arg->try_update)
@@ -1538,6 +1544,7 @@ int updater_setup_config(struct updater_config *cfg,
 
 	if (parse_arg_mode(cfg, arg, &do_output) < 0)
 		return 1;
+	*do_update = updater_should_update(arg, do_output);
 
 	if (cfg->factory_update) {
 		/* factory_update must be processed after arg->mode. */
@@ -1667,7 +1674,6 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt += updater_output_image(&cfg->image, "bios.bin", r);
 		errorcnt += updater_output_image(&cfg->image, "image.bin", r);
 		errorcnt += updater_output_image(&cfg->ec_image, "ec.bin", r);
-		*do_update = false;
 	}
 	return errorcnt;
 }
