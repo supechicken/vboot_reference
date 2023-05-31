@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9b4e688_29cc8c4c",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-31T04:40:01Z",
+      "side": 1,
+      "message": "Is the suggestion to have:\n\n```\n\tif (arg-\u003edetect_model_only || arg-\u003edo_manifest\n-\t\t|| arg-\u003erepack || arg-\u003eunpack) {\n+\t\t|| arg-\u003erepack || arg-\u003eunpack || do_output) {\n\t\t*do_update \u003d false;\n\t}\n```\n\n? If so, requires a minor functional change above but seems plausible.",
+      "parentUuid": "7b60fd47_7bb58061",
+      "revId": "8e0ae3b904e5cd82529e57df04af8e9c274e55be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7aa917db_6eddf581",
         "filename": "futility/updater.h",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-31T04:02:24Z",
       "side": 1,
       "message": "What is `perform update`? Does it mean the returned `cfg` will ask updater perform a update?",
+      "range": {
+        "startLine": 228,
+        "startChar": 27,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "8e0ae3b904e5cd82529e57df04af8e9c274e55be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5788a100_d10d4716",
+        "filename": "futility/updater.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-05-31T04:40:01Z",
+      "side": 1,
+      "message": "I think `updater_setup_config()` needs more splitting up to write a better comment but this was as good as I got to so far which is better than nothing.",
+      "parentUuid": "7aa917db_6eddf581",
       "range": {
         "startLine": 228,
         "startChar": 27,
