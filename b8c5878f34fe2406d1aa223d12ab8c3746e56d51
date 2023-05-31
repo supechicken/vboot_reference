@@ -16,6 +16,30 @@
       "message": "Hi Yury, please take a look. Thanks!",
       "revId": "b8c5878f34fe2406d1aa223d12ab8c3746e56d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217b2b79_90130c70",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1136695
+      },
+      "writtenOn": "2023-05-31T03:44:37Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "14ce463c_b808c150",
+      "range": {
+        "startLine": 517,
+        "startChar": 6,
+        "endLine": 517,
+        "endChar": 26
+      },
+      "revId": "b8c5878f34fe2406d1aa223d12ab8c3746e56d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
