@@ -39,6 +39,30 @@
       },
       "revId": "ca5629bba6ca161448fe45b01416eee7f9ce164a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d34bf9cd_2a50f439",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-05-31T05:57:12Z",
+      "side": 1,
+      "message": "Yes, it is intended. I removed it because\n\"--mount-point /\" is no-op and\nthis option is only supported after mkfs.erofs 1.6 but signer currently uses mkfs.erofs 1.5",
+      "parentUuid": "891f309a_39db3b40",
+      "range": {
+        "startLine": 524,
+        "startChar": 4,
+        "endLine": 524,
+        "endChar": 20
+      },
+      "revId": "ca5629bba6ca161448fe45b01416eee7f9ce164a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
