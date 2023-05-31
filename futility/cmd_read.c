@@ -21,11 +21,12 @@ static struct option const long_opts[] = {
 	{"help", 0, NULL, 'h'},
 	{"debug", 0, NULL, 'd'},
 	{"region", 1, NULL, 'r'},
+	{"split-output", 0, NULL, 's'},
 	{"verbose", 0, NULL, 'v'},
 	{NULL, 0, NULL, 0},
 };
 
-static const char *const short_opts = "hdrv" SHARED_FLASH_ARGS_SHORTOPTS;
+static const char *const short_opts = "hdsrv" SHARED_FLASH_ARGS_SHORTOPTS;
 
 static void print_help(int argc, char *argv[])
 {
@@ -35,6 +36,7 @@ static void print_help(int argc, char *argv[])
 	       "Reads AP firmware to the FILE\n"
 	       "-d, --debug         \tPrint debugging messages\n"
 	       "-r, --region        \tThe comma delimited regions to read (optional)\n"
+	       "-s, --split-output  \tOutput each comma delimited regions to own {FILE}.{region_name} (optional)\n"
 	       "-v, --verbose       \tPrint verbose messages\n"
 	       SHARED_FLASH_ARGS_HELP,
 	       argv[0]);
@@ -67,7 +69,8 @@ static char **parse_region_string(char *str, size_t *rlen)
 }
 
 static int read_flash_regions_to_file(struct updater_config *cfg,
-				      const char *path, char *str)
+				      const char *path, char *str,
+				      bool do_split)
 {
 	size_t rlen;
 	char **regions = parse_region_string(str, &rlen);
@@ -83,6 +86,15 @@ static int read_flash_regions_to_file(struct updater_config *cfg,
 				cfg->verbosity + 1)) {
 		free(regions);
 		return -1;
+	}
+
+	if (!do_split) {
+		if (write_to_file("Wrote AP firmware region to", path,
+				  cfg->image_current.data,
+				  cfg->image_current.size)) {
+			return -1;
+		}
+		return 0;
 	}
 
 	for (size_t i = 0; i < rlen; i++) {
@@ -115,6 +127,7 @@ static int do_read(int argc, char *argv[])
 	struct updater_config_arguments args = {0};
 	int i, errorcnt = 0;
 	char *regions = NULL;
+	bool do_split = false;
 
 	opterr = 0;
 	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
@@ -130,6 +143,9 @@ static int do_read(int argc, char *argv[])
 			break;
 		case 'r':
 			regions = strdup(optarg);
+			break;
+		case 's':
+			do_split = true;
 			break;
 		case 'v':
 			args.verbosity++;
@@ -159,6 +175,10 @@ static int do_read(int argc, char *argv[])
 		ERROR("Unexpected arguments.\n");
 		return 1;
 	}
+	if (do_split && !regions) {
+		print_help(argc, argv);
+		return 0;
+	}
 
 	if (setup_flash(&cfg, &args)) {
 		ERROR("While preparing flash\n");
@@ -183,7 +203,7 @@ static int do_read(int argc, char *argv[])
 			goto err;
 		}
 	} else {
-		if (read_flash_regions_to_file(cfg, output_file_name, regions) < 0)
+		if (read_flash_regions_to_file(cfg, output_file_name, regions, do_split) < 0)
 			errorcnt++;
 		free(regions);
 	}
