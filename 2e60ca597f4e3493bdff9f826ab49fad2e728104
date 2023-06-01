@@ -50,6 +50,24 @@
       "message": "Does this change require any userland or kernel specific support? The signer hosts may be lacking them.",
       "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0383f1f7_f0eebf9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-01T03:55:19Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t require any userland or kernel specific support.\n\nThe script now uses binaries in erofs-utils, and I have already updated the deploy-new-signer script to include them. http://crrev.com/i/5719730",
+      "parentUuid": "72a9fcde_0ebd1e54",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
