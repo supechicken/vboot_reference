@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad08c289_d1b160a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-01T01:40:57Z",
+      "side": 1,
+      "message": "Nice!",
+      "parentUuid": "3864dd55_92735a45",
+      "revId": "733d040398ed0001c213b75c74b7e8936fa99fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ec55660_d2c84348",
@@ -49,6 +67,24 @@
       "writtenOn": "2023-05-31T19:17:36Z",
       "side": 1,
       "message": "How would you feel about inverting this logic, so if the EFI boot stub is detected it is always used, regardless of whether `--bootloader` was passed in? That way we don\u0027t have to add `if reven ...` logic to the various bash scripts that invoke this tool.",
+      "revId": "733d040398ed0001c213b75c74b7e8936fa99fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc9db5b2_53854055",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-01T01:40:57Z",
+      "side": 1,
+      "message": "I would really rather just get rid of all the --bootloader arguments passed by scripts completely after this patch, since I think they\u0027re all vestigial and not actually needed anymore (neither by reven nor the rest of ChromeOS). Is it okay if I land this patch first and then do that, or do you want me to split this into two parts (one that removes the --bootloader flag and then one that does the EFI stub stuff, so we can wait to land the latter until we\u0027ve updated all the scripts)?",
+      "parentUuid": "6ec55660_d2c84348",
       "revId": "733d040398ed0001c213b75c74b7e8936fa99fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
