@@ -16,6 +16,24 @@
       "message": "You need a circular Cq-Depend between all of these.",
       "revId": "6e1c83837047527e6c38c3f01b8fcbf9c79104c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9684c957_768d6874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-01T20:29:11Z",
+      "side": 1,
+      "message": "(Well, at least between the two Chromium patches, and then once they land you need to combine the coreboot patch with a vboot uprev.)",
+      "parentUuid": "166ef5bb_1133afe6",
+      "revId": "6e1c83837047527e6c38c3f01b8fcbf9c79104c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
