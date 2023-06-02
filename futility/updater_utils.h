@@ -183,6 +183,8 @@ int is_write_protection_enabled(struct updater_config *cfg);
  * Executes a command on current host and returns stripped command output.
  * If the command has failed (exit code is not zero), returns an empty string.
  * The caller is responsible for releasing the returned string.
+ *
+ * TODO(b/293560339): Replace this with subprocess_run().
  */
 char *host_shell(const char *command);
 
