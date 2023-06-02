@@ -34,6 +34,24 @@
       "parentUuid": "d9c03dba_83891027",
       "revId": "6c151311e5ebebe882c3a97c19b9345d99837765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d15619f_1e1d8c42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-02T00:26:13Z",
+      "side": 1,
+      "message": "Ahh, yeah, that makes more sense... looks like the issue is a more complicated. I was quite surprised that we didn\u0027t have the flags to catch something so basic.\n\nTurns out that this warning has always been on by default (ever since at least GCC 5), but in LLVM 15.0 they decided to promote it from warning-by-default to error-by-default, and our toolchain team took that as a reason to just completely disable the whole thing for everyone because some single crappy project couldn\u0027t deal with it. -.-\n\nSee b/259158067",
+      "parentUuid": "63954320_8d151684",
+      "revId": "6c151311e5ebebe882c3a97c19b9345d99837765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
