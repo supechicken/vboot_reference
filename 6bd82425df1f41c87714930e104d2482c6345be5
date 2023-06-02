@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cff3e22_4f6705c1",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-06-02T01:50:56Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "a113b2a2_43581c9e",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d50cb365_1ee5e008",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84606f20_48e1fea2",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-06-02T01:50:56Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "2781ca67_9d284ac7",
+      "range": {
+        "startLine": 39,
+        "startChar": 72,
+        "endLine": 39,
+        "endChar": 76
+      },
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15fc4177_8f2a358a",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-06-02T01:50:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50cb365_1ee5e008",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f66c1507_60b49803",
@@ -100,6 +172,24 @@
       "writtenOn": "2023-05-31T06:45:12Z",
       "side": 1,
       "message": "Maybe check `do_split` is not set if regions is not set.",
+      "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06979002_33b240f4",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-06-02T01:50:56Z",
+      "side": 1,
+      "message": "Ah forgot to `git add -p` the hunk. Thanks.",
+      "parentUuid": "f66c1507_60b49803",
       "revId": "6bd82425df1f41c87714930e104d2482c6345be5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
