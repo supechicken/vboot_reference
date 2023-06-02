@@ -106,6 +106,24 @@
       "parentUuid": "0b4a9f06_2351f86a",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74391185_dc66ec8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-06-02T14:25:30Z",
+      "side": 1,
+      "message": "U-Boot runs as a coreboot payload on x86. We don\u0027t need to spend much effort on this; it just works.\n\nIn any case, could you please review the code? This is blocking my EFI efforts as well.",
+      "parentUuid": "b5b1a01a_a684feae",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
