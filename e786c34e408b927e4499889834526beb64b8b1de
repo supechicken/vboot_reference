@@ -88,6 +88,24 @@
       "parentUuid": "78188d46_a85b3c12",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b1a01a_a684feae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-02T05:42:41Z",
+      "side": 1,
+      "message": "I still don\u0027t understand how running a completely separate bootloader solution after coreboot is supposed to be a better debugging environment for coreboot and FSP than anything we could implement in depthcharge (whether it\u0027s based on an inline CLI or GDB hooks there). Spending all the effort to bring up and maintain a completely different bootloader on every board just to provide a debug interface makes no sense.",
+      "parentUuid": "0b4a9f06_2351f86a",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
