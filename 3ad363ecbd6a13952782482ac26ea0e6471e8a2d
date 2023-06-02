@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cebc4b5_a2c88682",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-02T07:06:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b2cf591d_277c2946",
+      "revId": "3ad363ecbd6a13952782482ac26ea0e6471e8a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b09eadc4_4c61306e",
@@ -78,6 +96,30 @@
       "writtenOn": "2023-05-31T06:17:46Z",
       "side": 1,
       "message": "Most functions in this file use `!\u003d 0` for failures.",
+      "range": {
+        "startLine": 1556,
+        "startChar": 54,
+        "endLine": 1556,
+        "endChar": 58
+      },
+      "revId": "3ad363ecbd6a13952782482ac26ea0e6471e8a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c65ad96a_012e4b98",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-02T07:06:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b09eadc4_4c61306e",
       "range": {
         "startLine": 1556,
         "startChar": 54,
