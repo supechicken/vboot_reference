@@ -124,6 +124,24 @@
       "parentUuid": "7b58fb26_2407f057",
       "revId": "6e1c83837047527e6c38c3f01b8fcbf9c79104c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2e41b4_ef3b36d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2023-06-02T11:43:42Z",
+      "side": 1,
+      "message": "\u003e \u003e \u003e Acknowledged\n\u003e \u003e \n\u003e \u003e no luck, failed twice. not sure how to resolve this circular dependencies during CQ build\n\u003e \n\u003e I just realized that the failure is due to coreboot project as coreboot project is seeing the func() definition mismatched due to this change.hence, submitting DC and vboot alone in CQ won\u0027t be enough to solve this problem as we also need to submit CB CL together. \n\u003e \n\u003e This is like egg-chicken problem 😞\n\u003e \n\u003e Can I suggest to submit CB CL first inside chromium (i.e. downstream) along with DC and VBOOT to avoid the build issue ? and then we can upstream the coreboot patch with a vboot uprev. (we need to ensure to ignore CB CL while BOT again pulls that for downstream coreboot)\n\ncrrev/c/4584268 is the coreboot CL",
+      "parentUuid": "dbea1b9a_26fb6d87",
+      "revId": "6e1c83837047527e6c38c3f01b8fcbf9c79104c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
