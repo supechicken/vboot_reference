@@ -16,6 +16,24 @@
       "message": "In order to make the Cq-Depend work for all 3 patches now you need to draw a triangle, though. So this should Cq-Depend on chromium:4584268, CL:4584268 should Cq-Depend on chromium:4569857, and it should all go in at once.",
       "revId": "9bf07f5f55d0abd00f59dc0decb64b484d2fbf08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eff07af_501e4d6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2023-06-03T04:50:02Z",
+      "side": 1,
+      "message": "\u003e In order to make the Cq-Depend work for all 3 patches now you need to draw a triangle, though. So this should Cq-Depend on chromium:4584268, CL:4584268 should Cq-Depend on chromium:4569857, and it should all go in at once.\n\nACK",
+      "parentUuid": "7abeed7d_5b29e756",
+      "revId": "9bf07f5f55d0abd00f59dc0decb64b484d2fbf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
