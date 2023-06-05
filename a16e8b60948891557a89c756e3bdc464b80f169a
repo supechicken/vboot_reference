@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3021df25_cba84cce",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-05T07:25:32Z",
+      "side": 1,
+      "message": "Should we also support read from files and modification?",
+      "revId": "a16e8b60948891557a89c756e3bdc464b80f169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96b128f_11ec6d89",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-05T07:25:32Z",
+      "side": 1,
+      "message": "Will there be a plan to merge the features / impl of `vpd` to this `futility vpd`?",
+      "revId": "a16e8b60948891557a89c756e3bdc464b80f169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
