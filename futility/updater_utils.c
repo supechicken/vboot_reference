@@ -537,7 +537,7 @@ static char *get_flashrom_command(enum flash_command flash_cmd,
 	if (!contents_name)
 		contents_name = "<OLD-IMAGE>";
 
-	for (i = 0; params->regions && params->regions[i]; i++)
+	for (i = 0; i < params->regions_len; i++)
 		len += strlen(params->regions[i]) + strlen(" -i ");
 
 	if (len) {
@@ -548,7 +548,7 @@ static char *get_flashrom_command(enum flash_command flash_cmd,
 		}
 
 		partial[0] = '\0';
-		for (i = 0; params->regions[i]; i++) {
+		for (i = 0; i < params->regions_len; i++) {
 			strcat(partial, " -i ");
 			strcat(partial, params->regions[i]);
 		}
@@ -601,7 +601,7 @@ int load_system_firmware(struct updater_config *cfg,
 	for (i = 1, r = -1; i <= tries && r != 0; i++, params.verbose++) {
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
-		r = flashrom_read_image(image, NULL, params.verbose);
+		r = flashrom_read_image(image, NULL, 0, params.verbose);
 	}
 	if (!r)
 		r = parse_firmware_image(image);
@@ -616,7 +616,8 @@ int load_system_firmware(struct updater_config *cfg,
  */
 int write_system_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
-			  const char * const sections[])
+			  const char * const sections[],
+				const size_t sections_len)
 {
 	int r = 0, i;
 	char *cmd;
@@ -631,6 +632,7 @@ int write_system_firmware(struct updater_config *cfg,
 	params.image = (struct firmware_image *)image;
 	params.flash_contents = flash_contents;
 	params.regions = sections;
+	params.regions_len = sections_len;
 	params.noverify = !cfg->do_verify;
 	params.noverify_all = true;
 	params.verbose = cfg->verbosity + 1; /* libflashrom verbose 1 = WARN. */
@@ -642,9 +644,8 @@ int write_system_firmware(struct updater_config *cfg,
 	for (i = 1, r = -1; i <= tries && r != 0; i++, params.verbose++) {
 		if (i > 1)
 			WARN("Retry writing firmware (%d/%d)...\n", i, tries);
-		r = flashrom_write_image(image, sections,
-					 flash_contents,
-					 !params.noverify,
+		r = flashrom_write_image(image, sections, sections_len,
+					 flash_contents, !params.noverify,
 					 params.verbose);
 		/*
 		 * Force a newline to flush stdout in case if

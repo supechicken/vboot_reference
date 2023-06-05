@@ -61,6 +61,7 @@ struct flashrom_params {
 	struct firmware_image *image; /* The firmware image to read/write. */
 	const struct firmware_image *flash_contents; /* --flash-contents */
 	const char *const *regions; /* -i: only read/write <region> */
+	size_t regions_len; /* Length of regions. */
 	bool noverify; /* -n: don't auto-verify */
 	bool noverify_all; /* -N: verify included regions only */
 	int verbose; /* -V: more verbose output */
@@ -119,7 +120,7 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
  */
 int write_system_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
-			  const char * const sections[]);
+			  const char *const sections[], size_t sections_len);
 
 struct firmware_section {
 	uint8_t *data;
