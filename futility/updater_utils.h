@@ -102,7 +102,7 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
  */
 int write_system_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
-			  const char * const sections[]);
+			  const char *const sections[], size_t sections_len);
 
 struct firmware_section {
 	uint8_t *data;
