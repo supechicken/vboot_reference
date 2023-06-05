@@ -845,7 +845,8 @@ static int update_ec_firmware(struct updater_config *cfg)
 	}
 
 	/* TODO(quasisec): Uses cros_ec to program the EC. */
-	return write_system_firmware(cfg, ec_image, sections);
+	return write_system_firmware(cfg, ec_image,
+				     sections[0] ? sections : NULL);
 }
 
 const char * const updater_error_messages[] = {
