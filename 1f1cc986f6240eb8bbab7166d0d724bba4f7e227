@@ -1,0 +1,103 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ca013d_89d6c279",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T00:47:17Z",
+      "side": 1,
+      "message": "\u003e \"paramter\" is a possible misspelling of \"parameter\".\n\nPlease fix.",
+      "parentUuid": "79868b40_34aab671",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39335fd_b77fcdfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T00:47:17Z",
+      "side": 1,
+      "message": "\u003e \"sligntly\" is a possible misspelling of \"slightly\".\n\nPlease fix.",
+      "parentUuid": "c2aff833_06c5d302",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50b24ac_1ce66f88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T00:47:17Z",
+      "side": 1,
+      "message": "They don\u0027t really explain the parameters.",
+      "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f203e03_94d4420b",
+        "filename": "futility/updater.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T00:47:17Z",
+      "side": 1,
+      "message": "This seems more like an output parameter.",
+      "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61af7adb_652e9e64",
+        "filename": "futility/updater.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T00:47:17Z",
+      "side": 1,
+      "message": "Determines whether to perform an update.\n\nThe rest is implementation details, which are likely to diverge over time.",
+      "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
