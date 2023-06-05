@@ -169,6 +169,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51a074d2_092bcebc",
+        "filename": "futility/updater.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T01:02:52Z",
+      "side": 1,
+      "message": "`updater_config_arguments` is still an input; `updater_config` is the output.",
+      "parentUuid": "83a11fb5_e291060f",
+      "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61af7adb_652e9e64",
         "filename": "futility/updater.h",
         "patchSetId": 5
@@ -198,6 +216,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "61af7adb_652e9e64",
+      "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b7ab15_5539a6c2",
+        "filename": "futility/updater.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T01:02:52Z",
+      "side": 1,
+      "message": "\"Function comments should be written with an implied subject of This function and should start with the verb phrase;\"\n\nhttps://google.github.io/styleguide/cppguide.html#Function_Comments",
+      "parentUuid": "c2ca0e5e_79e511a4",
       "revId": "1f1cc986f6240eb8bbab7166d0d724bba4f7e227",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
