@@ -67,6 +67,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bba1828_f139c6b3",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-05T07:17:47Z",
+      "side": 1,
+      "message": "Is this because we need to do `find_firmware_section` below?",
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51d43c0d_c14888f0",
         "filename": "futility/cmd_read.c",
         "patchSetId": 6
@@ -78,6 +95,53 @@
       "writtenOn": "2023-06-05T05:14:13Z",
       "side": 1,
       "message": "I\u0027m not sure what you\u0027re expecting this to do.\n\nPlease ensure the tests actually provide coverage of this codepath.",
+      "range": {
+        "startLine": 79,
+        "startChar": 55,
+        "endLine": 79,
+        "endChar": 63
+      },
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e131d9_736f602d",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-05T07:17:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this, but how about RW_FMAP? Is there such thing?",
+      "range": {
+        "startLine": 79,
+        "startChar": 41,
+        "endLine": 79,
+        "endChar": 53
+      },
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8774b3_664442be",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-05T07:17:47Z",
+      "side": 1,
+      "message": "Is this trying to append FMAP_RO_FMAP before `regions`? I\u0027m not sure if this work.\n\nAlso, what if users also pass RO_FMAP to regions?",
+      "parentUuid": "51d43c0d_c14888f0",
       "range": {
         "startLine": 79,
         "startChar": 55,
