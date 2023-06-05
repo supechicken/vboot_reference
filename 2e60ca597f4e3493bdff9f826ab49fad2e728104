@@ -157,6 +157,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0f3ef84_5798c621",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-06-05T21:40:29Z",
+      "side": 1,
+      "message": "Does `fsck.erofs --extract` not retain capabilities in the first place? Or are they unsupported in general with erofs tools, such that the capabilities had already been removed during the creation of the erofs image? Or do we expect any capabilities from the original image to make it through the original mkfs.erofs -\u003e fsck.erofs process, in which case there might be nothing to do here?\n\nFor unsquashfs, we only needed to manually preserve capabilities due to wanting to use `-no-xattrs` for other purposes, e.g. in crrev.com/c/2511121.\n\nI spot-checked a recent tm-arc build and it appears to still have capabilities on a small handful of files, akin to b/179170462#comment35 - so we should ensure we preserve these through the build and signing process lest we regress like we did on b/179170462 for erofs images...",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9db037c1_8e9e23a2",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 7
