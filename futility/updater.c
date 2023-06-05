@@ -340,7 +340,7 @@ static int write_ec_firmware(struct updater_config *cfg,
 
 	/* TODO(quasisec): Uses cros_ec to program the EC. */
 	const char *sections[2] = { section_name, NULL };
-	return write_system_firmware(cfg, image, sections);
+	return write_system_firmware(cfg, image, section_name ? sections : NULL);
 }
 
 /*
