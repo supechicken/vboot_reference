@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d639050_bfffbba3",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2023-06-05T08:01:41Z",
+      "side": 1,
+      "message": "Why are the string lengths being summed when each iteration assigns to `regions[i]`?",
+      "parentUuid": "cfbe1d30_a5726da1",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bba1828_f139c6b3",
         "filename": "futility/cmd_read.c",
         "patchSetId": 6
