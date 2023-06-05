@@ -102,6 +102,29 @@
       "message": "Hi Allen, would you take a look?\n(engeg@ is out until June 12)\nI\u0027ve already got LGTM from khmel@ and hirono@",
       "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0624110_dfbda02d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2023-06-05T15:17:58Z",
+      "side": 1,
+      "message": "Is there a reason you don\u0027t keep this consistent like with squashfs? What if we want to use zstd etc in the future?",
+      "range": {
+        "startLine": 528,
+        "startChar": 28,
+        "endLine": 528,
+        "endChar": 33
+      },
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
