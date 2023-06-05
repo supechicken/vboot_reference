@@ -16,6 +16,24 @@
       "message": "Not against this change, but I think we should also provide a facility to override the flashrom command via environment variable like we have for cbfstool (see https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/main/host/lib/cbfstool.c#14) so the caller can have more control when needed. (Could be in this patch or in a follow-up, but I think it would be good to add that.)",
       "revId": "81894adc3191a6c7aa556584707b12a6098f4c57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a80c1a9_6815b7b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-06-05T00:30:54Z",
+      "side": 1,
+      "message": "This is just polishing bad design. The better thing to do is just drop this subprocess wrapping implementation and use the canonical`host/lib/flashrom_drv.c:flashrom_read_image()` helper instead.",
+      "parentUuid": "ca5c55f8_45f472f6",
+      "revId": "81894adc3191a6c7aa556584707b12a6098f4c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
