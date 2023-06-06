@@ -82,6 +82,11 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 	}
 
 	len = flashrom_flash_getsize(flashctx);
+	if (!len) {
+		ERROR("Chip found had zero length, probing probably failed.\n");
+		r = -1;
+		goto err_probe;
+	}
 
 	flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNREADABLE_REGIONS, true);
 
@@ -183,8 +188,8 @@ int flashrom_write_image(const struct firmware_image *image,
 	}
 
 	len = flashrom_flash_getsize(flashctx);
-	if (len == 0) {
-		ERROR("zero sized flash detected\n");
+	if (!len) {
+		ERROR("Chip found had zero length, probing probably failed.\n");
 		r = -1;
 		goto err_cleanup;
 	}
