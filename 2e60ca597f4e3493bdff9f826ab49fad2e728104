@@ -121,6 +121,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b795413e_f15fe324",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-06T09:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f73786_9b5296a7",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61bcb70c_8820b644",
@@ -138,6 +156,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4264f569_14e510a4",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-06T09:09:11Z",
+      "side": 1,
+      "message": "Removed sudo.\nWe don\u0027t need sudo for `unsquashfs -s /tmp/path-to-img`",
+      "parentUuid": "61bcb70c_8820b644",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25875780_a509e31a",
@@ -151,6 +187,24 @@
       "writtenOn": "2023-06-05T15:32:34Z",
       "side": 1,
       "message": "normally the regex is fully quoted or not, not partially like this\n\nif you want to use a boundary condition, `\\b` is more appropriate than `\\s`\n\nthen again for the logic below, prob better to use awk\n\n`compression\u003d\"$(\"${unsquashfs}\" -s \"${system_img}\" | awk \u0027$1 \u003d\u003d \"Compression\" {print $2}\u0027)\"`\n\nthen you can `case \"${compression}\" in` below and match `gzip` directly\n\n(i get this feedback is for existing code)",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1106e07_4660cc37",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-06T09:09:11Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion. It\u0027s much better.",
+      "parentUuid": "25875780_a509e31a",
       "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -174,6 +228,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44184a8f_3bf74cd9",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-06T09:09:11Z",
+      "side": 1,
+      "message": "I confirmed that that capabilities are preserved within an EROFS image created by mkfs.erofs. The problem is that `fsck.erofs --extract` doesn\u0027t retain capabilities when extracting files.\n\nI just filed b/286015959 and assigned it to one of the authors of erofs-utils.",
+      "parentUuid": "e0f3ef84_5798c621",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9db037c1_8e9e23a2",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 7
@@ -185,6 +257,24 @@
       "writtenOn": "2023-06-05T15:32:34Z",
       "side": 1,
       "message": "```suggestion\n    info \"Repacking squashfs image with ${squashfs_comp_flags[*]}\"\n```",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aae3771_e37768ef",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-06T09:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db037c1_8e9e23a2",
       "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +302,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f3cfc8_4c8246f8",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-06T09:09:11Z",
+      "side": 1,
+      "message": "I hardcoded lz4hc here because:\n- mkfs.erofs currently only supports lz4hc and lz4 we never use lz4\n- dump.erofs doesn\u0027t currently have an option to show the compression type.\n\nI\u0027ll update the script once erofs supports another compression type in the future.",
+      "parentUuid": "b0624110_dfbda02d",
+      "range": {
+        "startLine": 528,
+        "startChar": 28,
+        "endLine": 528,
+        "endChar": 33
+      },
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d36f6ed_71208bdd",
@@ -225,6 +339,24 @@
       "writtenOn": "2023-06-05T15:32:34Z",
       "side": 1,
       "message": "bad indentation",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbb1004_101df364",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-06T09:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d36f6ed_71208bdd",
       "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
