@@ -328,6 +328,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8676eac9_0f1ae5a1",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2023-06-06T12:10:30Z",
+      "side": 1,
+      "message": "I this case it probably makes sense to leave a TODO(b/#####) comment.",
+      "parentUuid": "19f3cfc8_4c8246f8",
+      "range": {
+        "startLine": 528,
+        "startChar": 28,
+        "endLine": 528,
+        "endChar": 33
+      },
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d36f6ed_71208bdd",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 7
