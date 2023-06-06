@@ -303,16 +303,16 @@ resign_ssd_kernel() {
     if [ "${FLAGS_enable_kdump}" = "${FLAGS_TRUE}" ]; then
       debug_msg "Enabling kdump"
       kernel_config="$(remove_parameter "${kernel_config}" \
-                       "kexec_load_limit_reboot=0")"
+                       "sysctl.kernel.kexec_load_limit_reboot=0")"
       kernel_config="$(remove_parameter "${kernel_config}" \
-                       "kexec_load_limit_panic=0")"
+                       "sysctl.kernel.kexec_load_limit_panic=0")"
       debug_msg "New kernel config: ${kernel_config}"
     elif [ "${FLAGS_disable_kdump}" = "${FLAGS_TRUE}" ]; then
       debug_msg "Disabling kdump"
       kernel_config="$(insert_parameter "${kernel_config}" \
-                       "kexec_load_limit_reboot=0")"
+                       "sysctl.kernel.kexec_load_limit_reboot=0")"
       kernel_config="$(insert_parameter "${kernel_config}" \
-                       "kexec_load_limit_panic=0")"
+                       "sysctl.kernel.kexec_load_limit_panic=0")"
       debug_msg "New kernel config: ${kernel_config}"
     fi
 
