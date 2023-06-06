@@ -124,6 +124,24 @@
       "parentUuid": "b5b1a01a_a684feae",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986dcef6_5a0bcdb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-06T00:01:36Z",
+      "side": 1,
+      "message": "No, I\u0027m sorry, I disagree fundamentally that this flag is needed. This is not in sync with the plans for the CLI feature, neither mine nor Subrata\u0027s. We do not want this to be controlled by a GBB flag (and I particularly disagree with the hack to coreboot\u0027s payload loading that this would lead to, which constitutes a bunch of layering violations to how coreboot is supposed to work).\n\nI don\u0027t know what you\u0027re doing with EFI or how this has anything to do with it; if you have a design doc that explains that relation I can take a look and we can discuss it. But right now, my understanding is that we don\u0027t want anything like this to be controlled by a GBB flag and that\u0027s why we shouldn\u0027t merge this patch.",
+      "parentUuid": "74391185_dc66ec8c",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
