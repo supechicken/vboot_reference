@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda3f574_6fceaf3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-07T21:21:02Z",
+      "side": 1,
+      "message": "I think in general, futility/ is only supposed to contain that stuff that\u0027s exclusive to the command line utility, and anything shared should go in host/lib/. So if you want to make functionality from futility available in vboot_host.a, you should move it over there and rename it to remove the futility references (and call it something like vb2_... instead).",
+      "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
