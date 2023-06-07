@@ -10,6 +10,7 @@
 
 #include "host_key.h"
 #include "vboot_struct.h"
+#include "2sha.h"
 
 struct vb2_private_key;
 struct vb2_signature;

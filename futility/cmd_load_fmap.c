@@ -19,6 +19,7 @@
 
 #include "fmap.h"
 #include "futility.h"
+#include "vb2_map_file.h"
 
 static const char usage[] = "\n"
 	"Usage:  " MYNAME " %s [OPTIONS] FILE AREA:file [AREA:file ...]\n"
@@ -145,7 +146,7 @@ static int do_load_fmap(int argc, char *argv[])
 	int fd;
 	uint8_t *buf;
 	uint32_t len;
-	errorcnt |= futil_open_and_map_file(outfile, &fd, FILE_RW, &buf, &len);
+	errorcnt |= open_and_map_file(outfile, &fd, FILE_RW, &buf, &len);
 	if (errorcnt)
 		goto done;
 
@@ -182,7 +183,7 @@ static int do_load_fmap(int argc, char *argv[])
 	}
 
 done:
-	errorcnt |= futil_unmap_and_close_file(fd, FILE_RW, buf, len);
+	errorcnt |= unmap_and_close_file(fd, FILE_RW, buf, len);
 	return !!errorcnt;
 }
 

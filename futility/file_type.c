@@ -15,6 +15,7 @@
 
 #include "file_type.h"
 #include "futility.h"
+#include "vb2_map_file.h"
 
 /* Description and functions to handle each file type */
 struct futil_file_type_s {
@@ -92,8 +93,8 @@ enum futil_file_type futil_file_type_buf(uint8_t *buf, uint32_t len)
 	return FILE_TYPE_UNKNOWN;
 }
 
-enum futil_file_err futil_file_type(const char *filename,
-				    enum futil_file_type *type)
+enum file_err futil_file_type(const char *filename,
+			      enum futil_file_type *type)
 {
 	int ifd = -1;
 	uint8_t *buf = NULL;
@@ -102,7 +103,7 @@ enum futil_file_err futil_file_type(const char *filename,
 
 	*type = FILE_TYPE_UNKNOWN;
 
-	enum futil_file_err err = futil_open_file(filename, &ifd, FILE_RO);
+	enum file_err err = open_file(filename, &ifd, FILE_RO);
 	if (err != FILE_ERR_NONE)
 		goto done;
 
@@ -113,7 +114,7 @@ enum futil_file_err futil_file_type(const char *filename,
 	}
 
 	if (S_ISREG(sb.st_mode) || S_ISBLK(sb.st_mode)) {
-		err = futil_map_file(ifd, FILE_RO, &buf, &buf_len);
+		err = map_file(ifd, FILE_RO, &buf, &buf_len);
 		if (err)
 			goto done;
 		*type = futil_file_type_buf(buf, buf_len);
@@ -128,7 +129,7 @@ enum futil_file_err futil_file_type(const char *filename,
 	}
 
 done:
-	futil_unmap_and_close_file(ifd, FILE_RO, buf, buf_len);
+	unmap_and_close_file(ifd, FILE_RO, buf, buf_len);
 	return err;
 }
 

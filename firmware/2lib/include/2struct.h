@@ -16,9 +16,8 @@
 #ifndef VBOOT_REFERENCE_2STRUCT_H_
 #define VBOOT_REFERENCE_2STRUCT_H_
 
-#include "2api.h"
 #include "2constants.h"
-#include "2crypto.h"
+#include "2context.h"
 #include "2sysincludes.h"
 
 /* Flags for vb2_shared_data.flags */
