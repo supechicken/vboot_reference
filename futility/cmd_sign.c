@@ -28,6 +28,7 @@
 #include "kernel_blob.h"
 #include "util_misc.h"
 #include "vb1_helper.h"
+#include "vb2_map_file.h"
 
 #define DEFAULT_KEYSETDIR "/usr/share/vboot/devkeys"
 
@@ -66,7 +67,7 @@ int ft_sign_pubkey(const char *name, void *data)
 	int rv = 1;
 	int fd = -1;
 
-	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
+	if (open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
 				    (uint8_t **)&data_key, &data_len))
 		return 1;
 
@@ -108,7 +109,7 @@ int ft_sign_pubkey(const char *name, void *data)
 	rv = WriteSomeParts(sign_option.outfile, block, block->keyblock_size,
 			    NULL, 0);
 done:
-	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option),
+	unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option),
 				   (uint8_t *)data_key, data_len);
 	return rv;
 }
@@ -120,7 +121,7 @@ int ft_sign_raw_kernel(const char *name, void *data)
 	int rv = 1;
 	int fd = -1;
 
-	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
+	if (open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
 				    &vmlinuz_data, &vmlinuz_size))
 		return 1;
 
@@ -164,7 +165,7 @@ int ft_sign_raw_kernel(const char *name, void *data)
 				    kblob_data, kblob_size);
 
 done:
-	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option),
+	unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option),
 				   vmlinuz_data, vmlinuz_size);
 	free(vblock_data);
 	free(kblob_data);
@@ -180,7 +181,7 @@ int ft_sign_kern_preamble(const char *name, void *data)
 	int rv = 1;
 	int fd = -1;
 
-	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
+	if (open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
 				    &kpart_data, &kpart_size))
 		return 1;
 
@@ -258,7 +259,7 @@ int ft_sign_kern_preamble(const char *name, void *data)
 		rv = 0;
 	}
 done:
-	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), kpart_data,
+	unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), kpart_data,
 				   kpart_size);
 	free(vblock_data);
 	return rv;
@@ -274,7 +275,7 @@ int ft_sign_raw_firmware(const char *name, void *data)
 	int rv = 1;
 	int fd = -1;
 
-	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
+	if (open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
 				    &buf, &len))
 		return 1;
 
@@ -301,7 +302,7 @@ int ft_sign_raw_firmware(const char *name, void *data)
 			    preamble, preamble->preamble_size);
 
 done:
-	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
+	unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
 	free(preamble);
 	free(body_sig);
 

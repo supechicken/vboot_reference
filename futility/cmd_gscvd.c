@@ -19,6 +19,7 @@
 #include "host_keyblock.h"
 #include "host_misc.h"
 #include "host_signature.h"
+#include "vb2_map_file.h"
 
 /*
  * for testing purposes let's use
@@ -164,14 +165,14 @@ static int load_ap_firmware(const char *file_name, struct file_buf *file,
 {
 	memset(file, 0, sizeof(*file));
 
-	if (futil_open_and_map_file(file_name, &file->fd, mode, &file->data,
+	if (open_and_map_file(file_name, &file->fd, mode, &file->data,
 				    &file->len))
 		return 1;
 
 	if (!fmap_find_by_name(file->data, file->len, NULL, "RO_GSCVD",
 			       &file->ro_gscvd)) {
 		ERROR("Could not find RO_GSCVD in the FMAP\n");
-		futil_unmap_and_close_file(file->fd, mode, file->data,
+		unmap_and_close_file(file->fd, mode, file->data,
 					   file->len);
 		file->fd = -1;
 		file->data = NULL;
@@ -1099,7 +1100,7 @@ static int validate_gscvd(int argc, char *argv[])
 	} while (false);
 
 	if (ap_firmware_file.fd != -1)
-		futil_unmap_and_close_file(ap_firmware_file.fd, FILE_RO,
+		unmap_and_close_file(ap_firmware_file.fd, FILE_RO,
 					   ap_firmware_file.data,
 					   ap_firmware_file.len);
 
@@ -1346,7 +1347,7 @@ static int do_gscvd(int argc, char *argv[])
 	vb2_private_key_free(plat_privk);
 
 	if (ap_firmware_file.fd != -1)
-		futil_unmap_and_close_file(ap_firmware_file.fd, FILE_RW,
+		unmap_and_close_file(ap_firmware_file.fd, FILE_RW,
 					   ap_firmware_file.data,
 					   ap_firmware_file.len);
 

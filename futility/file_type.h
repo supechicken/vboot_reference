@@ -36,7 +36,7 @@ enum futil_file_type futil_file_type_buf(uint8_t *buf, uint32_t len);
  * This opens a file and tries to match it to one of the known file types.
  * It's not an error if it returns FILE_TYPE_UKNOWN.
  */
-enum futil_file_err futil_file_type(const char *filename,
+enum file_err futil_file_type(const char *filename,
 				    enum futil_file_type *type);
 
 /*

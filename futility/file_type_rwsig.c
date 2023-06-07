@@ -28,6 +28,7 @@
 #include "host_misc.h"
 #include "host_signature21.h"
 #include "util_misc.h"
+#include "vb2_map_file.h"
 
 #define SIGNATURE_RSVD_SIZE 1024
 
@@ -65,7 +66,7 @@ int ft_show_rwsig(const char *name, void *nuthin)
 	uint32_t len;
 	int rv = 1;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
+	if (open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 
 	VB2_DEBUG("name %s len 0x%08x (%d)\n", name, len, len);
@@ -197,7 +198,7 @@ int ft_show_rwsig(const char *name, void *nuthin)
 	printf("Signature verification succeeded.\n");
 	rv = 0;
 done:
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return rv;
 }
 
@@ -218,7 +219,7 @@ int ft_sign_rwsig(const char *name, void *nuthin)
 	uint32_t len;
 	int fd = -1;
 
-	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
+	if (open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
 				    &buf, &len))
 		return 1;
 
@@ -403,7 +404,7 @@ int ft_sign_rwsig(const char *name, void *nuthin)
 	/* Finally */
 	retval = 0;
 done:
-	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
+	unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
 	free(tmp_sig);
 	if (pubkey)
 		vb2_public_key_free(pubkey);
