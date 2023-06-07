@@ -18,6 +18,7 @@
 #include "futility_options.h"
 #include "host_common.h"
 #include "vb1_helper.h"
+#include "vb2_map_file.h"
 
 static void fmap_limit_area(FmapAreaHeader *ah, uint32_t len)
 {
@@ -123,13 +124,13 @@ int ft_show_gbb(const char *name, void *data)
 	uint8_t *buf;
 	uint32_t len;
 
-	int retval = futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len);
+	int retval = open_and_map_file(name, &fd, FILE_RO, &buf, &len);
 	if (retval)
 		return 1;
 
 	retval = show_gbb_buf(name, buf, len, data);
 
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return retval;
 }
 
@@ -179,7 +180,7 @@ int ft_show_bios(const char *name, void *data)
 	uint8_t *buf;
 	uint32_t len;
 
-	int retval = futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len);
+	int retval = open_and_map_file(name, &fd, FILE_RO, &buf, &len);
 	if (retval)
 		return 1;
 
@@ -216,7 +217,7 @@ int ft_show_bios(const char *name, void *data)
 		}
 	}
 
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return retval;
 }
 
@@ -531,8 +532,8 @@ int ft_sign_bios(const char *name, void *data)
 	image_check_and_prepare_cbfs(name, BIOS_FMAP_FW_MAIN_B,
 				     uses_cbfs_integration, &state);
 
-	if (futil_open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
-				    &buf, &len))
+	if (open_and_map_file(name, &fd, FILE_MODE_SIGN(sign_option),
+			      &buf, &len))
 		return 1;
 
 	int retval = prepare_slot(buf, len, BIOS_FMAP_FW_MAIN_A, BIOS_FMAP_VBLOCK_A,
@@ -552,7 +553,7 @@ int ft_sign_bios(const char *name, void *data)
 
 	retval = sign_bios_at_end(&state);
 done:
-	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
+	unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
 	return retval;
 }
 

@@ -528,6 +528,7 @@ HOSTLIB_SRCS = \
 	$(COMMONLIB_SRCS) \
 	host/lib/fmap.c \
 	host/lib/host_misc.c \
+	host/lib/vb2_map_file.c \
 	host/lib21/host_misc.c \
 	${TLCL_SRCS}
 
@@ -648,6 +649,7 @@ FUTIL_SYMLINKS = \
 	vbutil_keyblock
 
 FUTIL_SRCS = \
+	host/lib/vb2_map_file.c \
 	futility/futility.c \
 	futility/cmd_create.c \
 	futility/cmd_dump_fmap.c \
@@ -950,8 +952,11 @@ headers_install:
 	${Q}mkdir -p ${UI_DIR}
 	${Q}${INSTALL} -t ${UI_DIR} -m644 \
 		host/include/* \
+		firmware/2lib/include/2constants.h \
+		firmware/2lib/include/2context.h \
 		firmware/2lib/include/2crypto.h \
 		firmware/2lib/include/2recovery_reasons.h \
+		firmware/2lib/include/2struct.h \
 		firmware/2lib/include/2sysincludes.h \
 		firmware/include/gpt.h \
 		firmware/include/tlcl.h \

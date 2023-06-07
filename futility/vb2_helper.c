@@ -19,6 +19,7 @@
 #include "host_misc21.h"
 #include "openssl_compat.h"
 #include "util_misc.h"
+#include "vb2_map_file.h"
 
 enum futil_file_type ft_recognize_vb21_key(uint8_t *buf, uint32_t len)
 {
@@ -91,12 +92,12 @@ int ft_show_vb21_pubkey(const char *name, void *data)
 	uint32_t len;
 	int rv;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
+	if (open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 
 	rv = show_vb21_pubkey_buf(name, buf, len, data);
 
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return rv;
 }
 
@@ -124,7 +125,7 @@ int ft_show_vb21_privkey(const char *name, void *data)
 	uint32_t len;
 	int rv = 0;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
+	if (open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 
 	if (VB2_SUCCESS != vb21_private_key_unpack(&key, buf, len)) {
@@ -150,7 +151,7 @@ int ft_show_vb21_privkey(const char *name, void *data)
 	}
 	vb2_private_key_free(key);
 done:
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return rv;
 }
 
@@ -204,7 +205,7 @@ int ft_show_pem(const char *name, void *data)
 	uint32_t len;
 	int rv = 0;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
+	if (open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 
 	/* We're called only after ft_recognize_pem, so this should work. */
@@ -236,6 +237,6 @@ int ft_show_pem(const char *name, void *data)
 	free(keyb);
 	RSA_free(rsa_key);
 done:
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return rv;
 }
