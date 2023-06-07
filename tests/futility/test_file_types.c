@@ -11,6 +11,7 @@
 #include "file_type.h"
 #include "futility.h"
 #include "common/tests.h"
+#include "vb2_map_file.h"
 
 /*
  * Files that exemplify each type.
