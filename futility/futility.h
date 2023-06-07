@@ -116,43 +116,6 @@ int print_hwid_digest(struct vb2_gbb_header *gbb,
 /* Copies a file. */
 int futil_copy_file(const char *infile, const char *outfile);
 
-/* Possible file operation errors */
-enum futil_file_err {
-	FILE_ERR_NONE,
-	FILE_ERR_STAT,
-	FILE_ERR_SIZE,
-	FILE_ERR_MMAP,
-	FILE_ERR_MSYNC,
-	FILE_ERR_MUNMAP,
-	FILE_ERR_OPEN,
-	FILE_ERR_CLOSE,
-	FILE_ERR_DIR,
-	FILE_ERR_CHR,
-	FILE_ERR_FIFO,
-	FILE_ERR_SOCK,
-};
-
-enum file_mode {
-	FILE_RO,
-	FILE_RW,
-};
-
-enum futil_file_err futil_open_file(const char *infile, int *fd,
-				    enum file_mode mode);
-enum futil_file_err futil_close_file(int fd);
-
-/* Wrapper for mmap/munmap. Skips stupidly large files. */
-enum futil_file_err futil_map_file(int fd, enum file_mode mode, uint8_t **buf,
-				   uint32_t *len);
-enum futil_file_err futil_unmap_file(int fd, enum file_mode mode, uint8_t *buf,
-				     uint32_t len);
-
-enum futil_file_err futil_open_and_map_file(const char *infile, int *fd,
-					    enum file_mode mode, uint8_t **buf,
-					    uint32_t *len);
-enum futil_file_err futil_unmap_and_close_file(int fd, enum file_mode mode,
-					       uint8_t *buf, uint32_t len);
-
 /*
  * Parse input string as a hex representation of size len, exit with error if
  *  the string is not a valid hex string or is of a wrongs size.
