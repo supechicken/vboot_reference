@@ -520,6 +520,7 @@ HOSTLIB_SRCS = \
 	firmware/stub/tpm_lite_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	futility/dump_kernel_config_lib.c \
+	futility/misc.c \
 	$(CROSSYSTEM_ARCH_C) \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \
@@ -950,14 +951,14 @@ headers_install:
 	${Q}mkdir -p ${UI_DIR}
 	${Q}${INSTALL} -t ${UI_DIR} -m644 \
 		host/include/* \
-		firmware/2lib/include/2crypto.h \
-		firmware/2lib/include/2recovery_reasons.h \
-		firmware/2lib/include/2sysincludes.h \
+		host/lib/include/host_key.h \
+		firmware/2lib/include/* \
 		firmware/include/gpt.h \
 		firmware/include/tlcl.h \
 		firmware/include/tss_constants.h \
 		firmware/include/tpm1_tss_constants.h \
-		firmware/include/tpm2_tss_constants.h
+		firmware/include/tpm2_tss_constants.h \
+		futility/futility.h
 
 .PHONY: lib_install
 lib_install: ${HOSTLIB}
