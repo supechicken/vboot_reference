@@ -32,6 +32,7 @@
 #include "host_key21.h"
 #include "util_misc.h"
 #include "vb1_helper.h"
+#include "vb2_map_file.h"
 
 /* Options */
 struct show_option_s show_option = {
@@ -94,7 +95,7 @@ int ft_show_pubkey(const char *name, void *data)
 	uint32_t len;
 	int rv = 0;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, (uint8_t **)&pubkey,
+	if (open_and_map_file(name, &fd, FILE_RO, (uint8_t **)&pubkey,
 				     &len))
 		return 1;
 
@@ -108,7 +109,7 @@ int ft_show_pubkey(const char *name, void *data)
 	show_pubkey(pubkey, "  ");
 
 done:
-	futil_unmap_and_close_file(fd, FILE_RO, (uint8_t *)pubkey, len);
+	unmap_and_close_file(fd, FILE_RO, (uint8_t *)pubkey, len);
 	return rv;
 }
 
@@ -121,7 +122,7 @@ int ft_show_privkey(const char *name, void *data)
 	struct vb2_private_key key;
 	const unsigned char *start;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, (uint8_t **)&pkey,
+	if (open_and_map_file(name, &fd, FILE_RO, (uint8_t **)&pkey,
 				     &len))
 		return 1;
 
@@ -142,7 +143,7 @@ int ft_show_privkey(const char *name, void *data)
 	       private_key_sha1_string(&key));
 
 done:
-	futil_unmap_and_close_file(fd, FILE_RO, (uint8_t *)pkey, len);
+	unmap_and_close_file(fd, FILE_RO, (uint8_t *)pkey, len);
 	return rv;
 }
 
@@ -155,7 +156,7 @@ int ft_show_keyblock(const char *name, void *data)
 	int fd = -1;
 	uint32_t len;
 
-	retval = futil_open_and_map_file(name, &fd, FILE_RO, (uint8_t **)&block,
+	retval = open_and_map_file(name, &fd, FILE_RO, (uint8_t **)&block,
 					 &len);
 	if (retval)
 		return 1;
@@ -178,7 +179,7 @@ int ft_show_keyblock(const char *name, void *data)
 	show_keyblock(block, name, !!sign_key, good_sig);
 
 done:
-	futil_unmap_and_close_file(fd, FILE_RO, (uint8_t *)block, len);
+	unmap_and_close_file(fd, FILE_RO, (uint8_t *)block, len);
 	return retval;
 }
 
@@ -370,12 +371,12 @@ int ft_show_fw_preamble(const char *name, void *data)
 	uint8_t *buf;
 	uint32_t len;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
+	if (open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 
 	rv = show_fw_preamble_buf(name, buf, len, data);
 
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return rv;
 }
 
@@ -388,7 +389,7 @@ int ft_show_kernel_preamble(const char *name, void *data)
 	uint8_t *buf;
 	uint32_t len;
 
-	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
+	if (open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 
 	keyblock = (struct vb2_keyblock *)buf;
@@ -485,7 +486,7 @@ int ft_show_kernel_preamble(const char *name, void *data)
 	if (!show_option.strict || (sign_key && good_sig))
 		retval = 0;
 done:
-	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	unmap_and_close_file(fd, FILE_RO, buf, len);
 	return retval;
 }
 
@@ -549,7 +550,7 @@ static const char *short_opts = ":f:k:t";
 
 static int show_type(char *filename)
 {
-	enum futil_file_err err;
+	enum file_err err;
 	enum futil_file_type type;
 	err = futil_file_type(filename, &type);
 	switch (err) {
