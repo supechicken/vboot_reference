@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f20a23_36ea8228",
+        "filename": "Makefile",
+        "patchSetId": 10
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:26:17Z",
+      "side": 1,
+      "message": "I\u0027d like this file to be exposed since the structs here is what enable me to read keyblock and kernel info. The other include files are included from 2struct",
+      "revId": "68768dead69d1473b65061bdf6935165231be5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06879d8e_4b80314d",
+        "filename": "host/lib/include/host_signature.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:26:17Z",
+      "side": 1,
+      "message": "This file was getting indirectly included through `2struct` before.",
+      "revId": "68768dead69d1473b65061bdf6935165231be5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84d4940_32e00750",
+        "filename": "host/lib/vb2_map_file.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:26:17Z",
+      "side": 1,
+      "message": "Open for other names for this file.",
+      "revId": "68768dead69d1473b65061bdf6935165231be5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627b9f21_94914ce0",
+        "filename": "host/lib/vb2_map_file.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:26:17Z",
+      "side": 1,
+      "message": "Lint requested change here. Changed from `0 !\u003d fstat(fd, \u0026sb)`",
+      "revId": "68768dead69d1473b65061bdf6935165231be5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab557f87_993927b6",
+        "filename": "host/lib/vb2_map_file.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:26:17Z",
+      "side": 1,
+      "message": "Lint requested change here.",
+      "revId": "68768dead69d1473b65061bdf6935165231be5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417a9d2d_f9c9ef3f",
+        "filename": "host/lib/vb2_map_file.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:26:17Z",
+      "side": 1,
+      "message": "Lint requested change here",
+      "revId": "68768dead69d1473b65061bdf6935165231be5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

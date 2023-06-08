@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c672f8e0_320bc5bc",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:26:17Z",
+      "side": 1,
+      "message": "Reduce includes to those strictly needed to limit the number of exposed headers.",
+      "revId": "48fb80aee1c505b59e81dd3e8ea91521b7068ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
