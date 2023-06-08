@@ -661,6 +661,7 @@ FUTIL_SRCS = \
 	futility/cmd_show.c \
 	futility/cmd_sign.c \
 	futility/cmd_update.c \
+	futility/cmd_write.c \
 	futility/cmd_vbutil_firmware.c \
 	futility/cmd_vbutil_kernel.c \
 	futility/cmd_vbutil_key.c \
