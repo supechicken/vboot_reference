@@ -34,6 +34,24 @@
       "parentUuid": "fda3f574_6fceaf3f",
       "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21aa330_7c59590e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T15:21:32Z",
+      "side": 1,
+      "message": "All of this sounds good. I\u0027ll take a quick stab at a move, if it proves too big of a move (multiple days of work I\u0027ll switch over to the subprocess). I\u0027d like to be able to skip parsing CLI output so that any changes breaks in tests rather than on devices",
+      "parentUuid": "335a7331_18ef6cbb",
+      "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
