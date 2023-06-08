@@ -244,6 +244,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfcd0cc0_f28397a2",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-08T03:45:01Z",
+      "side": 1,
+      "message": "I will address this in separate CLs : b/286015959",
+      "parentUuid": "44184a8f_3bf74cd9",
+      "revId": "2e60ca597f4e3493bdff9f826ab49fad2e728104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9db037c1_8e9e23a2",
