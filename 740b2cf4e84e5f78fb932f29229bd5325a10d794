@@ -52,6 +52,24 @@
       "parentUuid": "335a7331_18ef6cbb",
       "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64f0541_fffc18b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-08T22:29:11Z",
+      "side": 1,
+      "message": "Overall I found the separation work to be fairly straight forward. Renamed structs and functions to not reference futil, and made changes where these functions were called before.\nWith that said, let me know if you find this change to be too risky from a breakage and other code leak standpoint, and I can still pursue the cmd line path. \nFrom a code maintainability standpoint I\u0027d prefer to use the c api so that I won\u0027t have to worry about formatting or hex/dec changes that may happen in the future.",
+      "parentUuid": "b21aa330_7c59590e",
+      "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
