@@ -10,8 +10,8 @@
 
 #include <stdbool.h>
 
+#include "2return_codes.h"
 #include "vboot_struct.h"
-#include "vboot_api.h"
 
 /* Copy up to dest_size-1 characters from src to dest, ensuring null
  * termination (which strncpy() doesn't do).  Returns the destination
@@ -121,5 +121,15 @@ bool parse_hex(uint8_t *val, const char *str);
  * @return true on success, false otherwise.
  */
 bool parse_hash(uint8_t *buf, size_t len, const char *str);
+
+/**
+ * Calculate kernel size on disk.
+ *
+ * @param infile Path to parition where kernel is location.
+ *               ex: `/dev/nvme0n1p9`
+ * @param size   Variable to write size of kernel.
+ * @return 0 on success, -1 on failure.
+ */
+int kernel_size(const char *infile, int *size);
 
 #endif  /* VBOOT_REFERENCE_HOST_MISC_H_ */
