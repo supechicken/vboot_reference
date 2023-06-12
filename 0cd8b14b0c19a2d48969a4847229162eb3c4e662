@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f193e23_3bed6319",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-12T21:29:36Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe73e40f_077fe764",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -14,6 +37,121 @@
       "writtenOn": "2023-06-12T20:56:58Z",
       "side": 1,
       "message": "An alternative to exposing map and unmap in CL https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4598714",
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3474c2c8_bc65156e",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-12T21:29:36Z",
+      "side": 1,
+      "message": "Log an error message",
+      "range": {
+        "startLine": 461,
+        "startChar": 2,
+        "endLine": 461,
+        "endChar": 19
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a43096e_2ffa68ce",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-12T21:29:36Z",
+      "side": 1,
+      "message": "You\u0027re not verifying anything and can read garbage values.",
+      "range": {
+        "startLine": 472,
+        "startChar": 2,
+        "endLine": 472,
+        "endChar": 47
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31322c78_09183e93",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-12T21:29:36Z",
+      "side": 1,
+      "message": "On disk a strict requirement?",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcdfccde_eab689a5",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-12T21:29:36Z",
+      "side": 1,
+      "message": "`path`\n\nConfusing users of the API by having param named `infile` and descriptions telling it `Path`",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42e47d5_c83b39be",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-12T21:29:36Z",
+      "side": 1,
+      "message": "Not a very helpful example (most devs don\u0027t know or care about the partition example here referring to miniOS partition 9)",
+      "range": {
+        "startLine": 72,
+        "startChar": 20,
+        "endLine": 72,
+        "endChar": 40
+      },
       "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
