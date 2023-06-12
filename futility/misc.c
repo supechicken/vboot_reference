@@ -449,3 +449,31 @@ int write_to_file(const char *msg, const char *filename, uint8_t *start,
 
 	return r;
 }
+
+int kernel_size(const char *infile, int *size)
+{
+	int fd = -1;
+	uint8_t *buf;
+	uint32_t len;
+
+	if (futil_open_and_map_file(infile, &fd, FILE_RO, &buf, &len)
+		!= FILE_ERR_NONE)
+		return -1;
+
+	struct vb2_keyblock *keyblock;
+	// Size of kernel on disk is calculated by adding keyblock size,
+	// preamble size and body size.
+	keyblock = (struct vb2_keyblock *)buf;
+
+	// Keyblock and kernel preamble are adjacent on disk.
+	uint32_t offset = keyblock->keyblock_size;
+	struct vb2_kernel_preamble *kernel_preamble =
+		(struct vb2_kernel_preamble *)(buf + offset);
+
+	*size = keyblock->keyblock_size + kernel_preamble->preamble_size
+			+ kernel_preamble->body_signature.data_size;
+
+	// Close file before returning.
+	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	return 0;
+}

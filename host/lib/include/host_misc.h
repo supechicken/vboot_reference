@@ -10,8 +10,8 @@
 
 #include <stdbool.h>
 
+#include "2return_codes.h"
 #include "vboot_struct.h"
-#include "vboot_api.h"
 
 /* Copy up to dest_size-1 characters from src to dest, ensuring null
  * termination (which strncpy() doesn't do).  Returns the destination
