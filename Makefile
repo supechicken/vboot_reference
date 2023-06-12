@@ -520,6 +520,8 @@ HOSTLIB_SRCS = \
 	firmware/stub/tpm_lite_stub.c \
 	firmware/stub/vboot_api_stub_disk.c \
 	futility/dump_kernel_config_lib.c \
+	futility/misc.c \
+	firmware/2lib/2packed_key.c \
 	$(CROSSYSTEM_ARCH_C) \
 	host/lib/chromeos_config.c \
 	host/lib/crossystem.c \

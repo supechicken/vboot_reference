@@ -25,15 +25,23 @@
 #include <unistd.h>
 
 #include "2common.h"
+#include "2packed_key.h"
+#include "2constants.h"
 #include "2sha.h"
 #include "2sysincludes.h"
 #include "cgptlib_internal.h"
 #include "file_type.h"
 #include "futility.h"
 #include "host_misc.h"
+#include "vboot_host.h"
 
 /* Default is to support everything we can */
 enum vboot_version vboot_version = VBOOT_VERSION_ALL;
+
+/* Shared work buffer */
+static uint8_t workbuf[VB2_KERNEL_WORKBUF_RECOMMENDED_SIZE]
+__attribute__((aligned(VB2_WORKBUF_ALIGN)));
+static struct vb2_workbuf wb;
 
 int debugging_enabled;
 void vb2ex_printf(const char *func, const char *format, ...)
@@ -448,4 +456,63 @@ int write_to_file(const char *msg, const char *filename, uint8_t *start,
 		printf("%s %s\n", msg, filename);
 
 	return r;
+}
+
+int kernel_size(const char *path, int *size)
+{
+	if(!size)
+	{
+		ERROR("Invalid buffer for size\n");
+		return -1;
+	}
+	int fd = -1;
+	uint8_t *buf;
+	uint32_t len;
+
+	if (futil_open_and_map_file(path, &fd, FILE_RO, &buf, &len)
+		!= FILE_ERR_NONE)
+	{
+		ERROR("Unable to open %s: %s\n", path, strerror(errno));
+		return -1;
+	}
+
+	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)buf;
+	// Initialize work buf before verification.
+	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
+	if (vb2_verify_keyblock_hash(keyblock, len, &wb)) {
+		ERROR("key block is invalid. File: %s\n", path);
+		futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+		return -1;
+	}
+
+	// Get the data key from keyblock to verify kernel preamble.
+	struct vb2_public_key data_key;
+	if (vb2_unpack_key(&data_key, &keyblock->data_key) != VB2_SUCCESS) {
+		ERROR("Parsing data key in %s\n", path);
+		futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+		return -1;
+	}
+
+	// Keyblock and kernel preamble are adjacent on disk.
+	uint32_t offset = keyblock->keyblock_size;
+	struct vb2_kernel_preamble *kernel_preamble =
+		(struct vb2_kernel_preamble *)(buf + offset);
+
+	vb2_error_t verify_result = vb2_verify_kernel_preamble(kernel_preamble,
+							       len - offset,
+							       &data_key,
+							       &wb);
+	if ( verify_result != VB2_SUCCESS) {
+		ERROR("%s is invalid, %d\n", path, verify_result);
+		futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+		return -1;
+	}
+	// Size of kernel on disk is calculated by adding keyblock size,
+	// preamble size and body size.
+	*size = keyblock->keyblock_size + kernel_preamble->preamble_size
+			+ kernel_preamble->body_signature.data_size;
+
+	// Close file before returning.
+	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	return 0;
 }
