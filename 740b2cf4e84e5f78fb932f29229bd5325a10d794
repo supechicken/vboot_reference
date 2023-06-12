@@ -70,6 +70,24 @@
       "parentUuid": "b21aa330_7c59590e",
       "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627614d2_b29ffdb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-12T22:02:04Z",
+      "side": 1,
+      "message": "I\u0027m honestly not so sure about this overall direction anymore. There\u0027s a lot of info exposed by futility and it\u0027s going to get complicated to expose it all in a clean programmatic manner. I mean what you\u0027re doing here is basically just exposing the structure definitions and then having the caller do it themselves, but I don\u0027t think that\u0027s a good model (e.g. we don\u0027t really want the caller to have to worry about details like how to find the preamble from the keyblock).\n\nI think since we don\u0027t need this stuff _that_ often, and it\u0027s not super performance-critical, it\u0027s not really worthwhile to invest in a full library API and it would be much easier to just have the caller shell out to futility instead. I agree that the current futility output was designed for human reading and isn\u0027t very suitable for automated parsing, but I think we should just fix that by adding a new flag (e.g. `-k`/`--machine_parseable` like in cbfstool) that changes the output format to something that\u0027s guaranteed to be stable, unambiguous and extensible (e.g. one data item per line that\u0027s doesn\u0027t depend on positional context within the whole output to be understood, with colon separated tokens like `bios:gbb:root_key:sha1:\u003chash in hex\u003e`, `bios:rw_a:firmware_data_key:sha1:\u003chash in hex\u003e`, `bios:rw_b:body_signature:valid`, `bios:rw_b:firmware_key_version:1`, etc.).",
+      "parentUuid": "a64f0541_fffc18b2",
+      "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
