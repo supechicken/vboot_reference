@@ -65,6 +65,16 @@ int GuidIsZero(const Guid *guid);
 char *FindKernelConfig(const char *filename,
 		       uint64_t kernel_body_load_address);
 
+			   /**
+ * Calculate kernel size on disk.
+ *
+ * @param infile    Path to partition where kernel is location.
+ *                  ex: `/dev/nvme0n1p9`
+ * @param size      Variable to write size of kernel.
+ * @return      0 on success, -1 on failure.
+ */
+int kernel_size(const char *infile, int *size);
+
 /****************************************************************************/
 /* Kernel partition */
 
