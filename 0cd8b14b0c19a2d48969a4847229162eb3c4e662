@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b85dd7_c5382e46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-14T16:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f193e23_3bed6319",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe73e40f_077fe764",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee269ab_7f18bade",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-14T16:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3474c2c8_bc65156e",
+      "range": {
+        "startLine": 461,
+        "startChar": 2,
+        "endLine": 461,
+        "endChar": 19
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a43096e_2ffa68ce",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-06-12T21:29:36Z",
       "side": 1,
       "message": "You\u0027re not verifying anything and can read garbage values.",
+      "range": {
+        "startLine": 472,
+        "startChar": 2,
+        "endLine": 472,
+        "endChar": 47
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1b76bbf_76b7b7d7",
+        "filename": "futility/misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-14T16:15:00Z",
+      "side": 1,
+      "message": "Borrowed verification from cmd show",
+      "parentUuid": "3a43096e_2ffa68ce",
       "range": {
         "startLine": 472,
         "startChar": 2,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "522eb710_3f1572eb",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-14T16:15:00Z",
+      "side": 1,
+      "message": "Disk/image would be the only supports ways (due to requirements of preamble location). Added that detail, and specified that it works similar to `futility show`",
+      "parentUuid": "31322c78_09183e93",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcdfccde_eab689a5",
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae259f31_2d72d327",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-14T16:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcdfccde_eab689a5",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e42e47d5_c83b39be",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-06-12T21:29:36Z",
       "side": 1,
       "message": "Not a very helpful example (most devs don\u0027t know or care about the partition example here referring to miniOS partition 9)",
+      "range": {
+        "startLine": 72,
+        "startChar": 20,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "0cd8b14b0c19a2d48969a4847229162eb3c4e662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b57cbe_e08d3f19",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-14T16:15:00Z",
+      "side": 1,
+      "message": "Changed example to partition 2/`KERN-A`, let me know if you meant something else for example",
+      "parentUuid": "e42e47d5_c83b39be",
       "range": {
         "startLine": 72,
         "startChar": 20,
