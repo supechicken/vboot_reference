@@ -74,7 +74,6 @@ try_arch () {
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin"
 
   # verify the old way
   "${FUTILITY}" vbutil_kernel --verify "${TMP}.blob3.${arch}" \
@@ -88,7 +87,6 @@ try_arch () {
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin" \
     "${TMP}.blob2.${arch}" \
     "${TMP}.blob4.${arch}"
 
@@ -110,7 +108,6 @@ try_arch () {
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin" \
     "${TMP}.blob5.${arch}"
 
   "${FUTILITY}" vbutil_kernel --verify "${TMP}.blob5.${arch}" \
@@ -173,8 +170,7 @@ try_arch () {
     --keyblock "${DEVKEYS}/kernel.keyblock" \
     --version 2 \
     --pad "${padding}" \
-    --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin"
+    --config "${TMP}.config2.txt"
 
   # compare the full repacked vblock with the new repacked vblock
   dd bs="${padding}" count=1 if="${TMP}.blob3.${arch}" \
@@ -197,7 +193,6 @@ try_arch () {
     --keyblock "${DEVKEYS}/kernel.keyblock" \
     --version 2 \
     --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin" \
     --pad "${padding}" \
     --vblockonly \
     "${TMP}.blob2.${arch}" \
@@ -241,8 +236,7 @@ try_arch () {
     --keyblock "${DEVKEYS}/kernel.keyblock" \
     --version 2 \
     --pad "${padding}" \
-    --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin"
+    --config "${TMP}.config2.txt"
 
   # verify the old way
   "${FUTILITY}" vbutil_kernel --verify "${TMP}.part6.${arch}" \
@@ -260,7 +254,6 @@ try_arch () {
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin" \
     "${TMP}.part6.${arch}.new1"
 
   "${FUTILITY}" vbutil_kernel --verify "${TMP}.part6.${arch}.new1" \
@@ -284,7 +277,6 @@ try_arch () {
     --version 2 \
     --pad "${padding}" \
     --config "${TMP}.config2.txt" \
-    --bootloader "${TMP}.bootloader2.bin" \
     "${TMP}.part1.${arch}.in" \
     "${TMP}.part6.${arch}.new2"
 
@@ -303,6 +295,37 @@ try_arch () {
   # because the old way has a bug and does not update params->cmd_line_ptr to
   # point at the new on-disk location. Apparently (and not surprisingly), no
   # one has ever done that.
+
+  echo -n "7 " 1>&3
+
+  # Pack without optional arguments, the old way...
+  "${FUTILITY}" --debug vbutil_kernel \
+    --pack "${TMP}.blob7.${arch}.old" \
+    --keyblock "${DEVKEYS}/recovery_kernel.keyblock" \
+    --signprivate "${DEVKEYS}/recovery_kernel_data_key.vbprivk" \
+    --version 1 \
+    --config "${TMP}.config.txt" \
+    --vmlinuz "${SCRIPT_DIR}/futility/data/vmlinuz-${arch}.bin" \
+    --arch "${arch}"
+
+  "${FUTILITY}" vbutil_kernel --verify "${TMP}.blob7.${arch}.old" \
+    --signpubkey "${DEVKEYS}/recovery_key.vbpubk" > "${TMP}.verify7.old"
+
+  # ...and the new way
+  "${FUTILITY}" --debug sign \
+    --keyset "${DEVKEYS}/recovery_" \
+    --config "${TMP}.config.txt" \
+    --vmlinuz "${SCRIPT_DIR}/futility/data/vmlinuz-${arch}.bin" \
+    --arch "${arch}" \
+    --outfile "${TMP}.blob7.${arch}.new"
+
+  "${FUTILITY}" vbutil_kernel --verify "${TMP}.blob7.${arch}.new" \
+     --signpubkey "${DEVKEYS}/recovery_key.vbpubk" > "${TMP}.verify7.new"
+
+  # they should be identical
+  cmp "${TMP}.blob7.${arch}.old" "${TMP}.blob7.${arch}.new"
+  diff "${TMP}.verify7.old" "${TMP}.verify7.new"
+
 }
 
 try_arch amd64
