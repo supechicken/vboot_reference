@@ -41,7 +41,8 @@ static int show_gbb_buf(const char *name, uint8_t *buf, uint32_t len,
 	uint32_t maxlen = 0;
 
 	if (!len) {
-		printf("GBB header:              %s <invalid>\n", name);
+		FT_PRINT("GBB header:              %s <invalid>\n",
+			 "gbb::header::%s:<invalid>\n", name);
 		return 1;
 	}
 
@@ -49,30 +50,39 @@ static int show_gbb_buf(const char *name, uint8_t *buf, uint32_t len,
 	if (!futil_valid_gbb_header(gbb, len, &maxlen))
 		retval = 1;
 
-	printf("GBB header:              %s\n", name);
-	printf("  Version:               %d.%d\n",
-	       gbb->major_version, gbb->minor_version);
-	printf("  Flags:                 0x%08x\n", gbb->flags);
-	printf("  Regions:                 offset       size\n");
-	printf("    hwid                 0x%08x   0x%08x\n",
-	       gbb->hwid_offset, gbb->hwid_size);
-	printf("    bmpvf                0x%08x   0x%08x\n",
-	       gbb->bmpfv_offset, gbb->bmpfv_size);
-	printf("    rootkey              0x%08x   0x%08x\n",
-	       gbb->rootkey_offset, gbb->rootkey_size);
-	printf("    recovery_key         0x%08x   0x%08x\n",
-	       gbb->recovery_key_offset, gbb->recovery_key_size);
+	FT_PRINT("GBB header:              %s\n", "gbb::header::%s\n", name);
+	FT_PRINT_WITH_FILE("  Version:               %d.%d\n",
+			   "gbb::header::version::%d.%d\n", name,
+			   gbb->major_version, gbb->minor_version);
+	FT_PRINT_WITH_FILE("  Flags:                 0x%08x\n",
+			   "gbb::header::flags::0x%08x\n", name, gbb->flags);
+	FT_PRINT("  Regions:                 offset       size\n","");
+	FT_PRINT_WITH_FILE("    hwid                 0x%08x   0x%08x\n",
+			   "gbb::header::hwid::offset/size::0x%08x:0x%08x\n",
+			   name, gbb->hwid_offset, gbb->hwid_size);
+	FT_PRINT_WITH_FILE("    bmpvf                0x%08x   0x%08x\n",
+			   "gbb::header::bmpvf::offset/size::0x%08x:0x%08x\n",
+			   name, gbb->bmpfv_offset, gbb->bmpfv_size);
+	FT_PRINT_WITH_FILE("    rootkey              0x%08x   0x%08x\n",
+			   "gbb::header::rootkey::offset/size::0x%08x:0x%08x\n",
+			   name, gbb->rootkey_offset, gbb->rootkey_size);
+	FT_PRINT_WITH_FILE("    recovery_key         0x%08x   0x%08x\n",
+		"gbb::header::recovery_key::offset/size::0x%08x:0x%08x\n",
+		name, gbb->recovery_key_offset, gbb->recovery_key_size);
 
-	printf("  Size:                  0x%08x / 0x%08x%s\n",
-	       maxlen, len, maxlen > len ? "  (not enough)" : "");
+	FT_PRINT_WITH_FILE("  Size:                  0x%08x / 0x%08x%s\n",
+			  "gbb::header::size::0x%08x:0x%08x%s\n", name,
+			  maxlen, len, maxlen > len ? "  (not enough)" : "");
 
 	if (retval) {
-		printf("GBB header is invalid, ignoring content\n");
+		FT_PRINT("GBB header is invalid, ignoring content\n",
+			 "gbb::header::invalid\n");
 		return retval;
 	}
 
-	printf("GBB content:\n");
-	printf("  HWID:                  %s\n", buf + gbb->hwid_offset);
+	FT_PRINT("GBB content:\n", "");
+	FT_PRINT_WITH_FILE("  HWID:                  %s\n","gbb::hwid::%s\n",
+			   name, buf + gbb->hwid_offset);
 	print_hwid_digest(gbb, "     digest:             ", "\n");
 
 	struct vb2_packed_key *pubkey =
@@ -86,11 +96,12 @@ static int show_gbb_buf(const char *name, uint8_t *buf, uint32_t len,
 			state->rootkey.len = gbb->rootkey_size;
 			state->rootkey.is_valid = 1;
 		}
-		printf("  Root Key:\n");
+		FT_PRINT("  Root Key:\n","");
 		show_pubkey(pubkey, "    ");
 	} else {
 		retval = 1;
-		printf("  Root Key:              <invalid>\n");
+		FT_PRINT_WITH_FILE("  Root Key:              <invalid>\n",
+				   "gbb::root_key::invalid\n", name);
 	}
 
 	pubkey = (struct vb2_packed_key *)(buf + gbb->recovery_key_offset);
@@ -104,11 +115,12 @@ static int show_gbb_buf(const char *name, uint8_t *buf, uint32_t len,
 			state->recovery_key.len = gbb->recovery_key_size;
 			state->recovery_key.is_valid = 1;
 		}
-		printf("  Recovery Key:\n");
+		FT_PRINT("  Recovery Key:\n","");
 		show_pubkey(pubkey, "    ");
 	} else {
 		retval = 1;
-		printf("  Recovery Key:          <invalid>\n");
+		FT_PRINT_WITH_FILE("  Recovery Key:          <invalid>\n",
+				   "gbb::recovery_key::invalid\n", name);
 	}
 
 	if (!retval && state)
@@ -146,14 +158,18 @@ static int fmap_show_fw_main(const char *name, uint8_t *buf, uint32_t len,
 	struct bios_state_s *state = (struct bios_state_s *)data;
 
 	if (!len) {
-		printf("Firmware body:           %s <invalid>\n", name);
+		FT_PRINT("Firmware body:           %s <invalid>\n",
+			 "firmware::body::%s:<invalid>", name);
 		return 1;
 	}
 
-	printf("Firmware body:           %s\n", name);
-	printf("  Offset:                0x%08x\n",
-	       state->area[state->c].offset);
-	printf("  Size:                  0x%08x\n", len);
+	FT_PRINT("Firmware body:           %s\n", "firmware::body::%s\n",
+		 name);
+	FT_PRINT_WITH_FILE("  Offset:                0x%08x\n",
+			   "firmware::body::offset::0x%08x\n", name,
+			   state->area[state->c].offset);
+	FT_PRINT_WITH_FILE("  Size:                  0x%08x\n",
+			   "firmware::body::size::0x%08x\n", name, len);
 
 	state->area[state->c].is_valid = 1;
 
@@ -183,7 +199,7 @@ int ft_show_bios(const char *name, void *data)
 	if (retval)
 		return 1;
 
-	printf("BIOS:                    %s\n", name);
+	FT_PRINT("BIOS:                    %s\n", "bios::%s\n",name);
 
 	/* We've already checked, so we know this will work. */
 	FmapHeader *fmap = fmap_find(buf, len);

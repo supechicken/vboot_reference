@@ -1,0 +1,18 @@
+gbb::header::tests/futility/data/fw_gbb.bin
+tests/futility/data/fw_gbb.bin::gbb::header::version::1.1
+tests/futility/data/fw_gbb.bin::gbb::header::flags::0x00000039
+tests/futility/data/fw_gbb.bin::gbb::header::hwid::offset/size::0x00000080:0x00000100
+tests/futility/data/fw_gbb.bin::gbb::header::bmpvf::offset/size::0x00001180:0x000ece80
+tests/futility/data/fw_gbb.bin::gbb::header::rootkey::offset/size::0x00000180:0x00001000
+tests/futility/data/fw_gbb.bin::gbb::header::recovery_key::offset/size::0x000ee000:0x00001000
+tests/futility/data/fw_gbb.bin::gbb::header::size::0x000ef000:0x000ef000
+tests/futility/data/fw_gbb.bin::gbb::hwid::X86 PEPPY TEST 4211
+     digest:             <none>
+    vboot::api::1.0
+    pubkey::algorithm::11:RSA8192 SHA512
+    pubkey::version::1
+    pubkey::sha1sum::fc68bcb88bf9af1907289a9f377d658b3b9fe5b0
+    vboot::api::1.0
+    pubkey::algorithm::11:RSA8192 SHA512
+    pubkey::version::1
+    pubkey::sha1sum::bf39d0d3e30cbf6a121416d04df4603ad5310779

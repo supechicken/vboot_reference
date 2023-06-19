@@ -1,0 +1,57 @@
+bios::tests/futility/data/bios_peppy_mp.bin
+gbb::header::GBB
+GBB::gbb::header::version::1.1
+GBB::gbb::header::flags::0x00000039
+GBB::gbb::header::hwid::offset/size::0x00000080:0x00000100
+GBB::gbb::header::bmpvf::offset/size::0x00001180:0x000ece80
+GBB::gbb::header::rootkey::offset/size::0x00000180:0x00001000
+GBB::gbb::header::recovery_key::offset/size::0x000ee000:0x00001000
+GBB::gbb::header::size::0x000ef000:0x000ef000
+GBB::gbb::hwid::X86 PEPPY TEST 4211
+     digest:             <none>
+    vboot::api::1.0
+    pubkey::algorithm::11:RSA8192 SHA512
+    pubkey::version::1
+    pubkey::sha1sum::fc68bcb88bf9af1907289a9f377d658b3b9fe5b0
+    vboot::api::1.0
+    pubkey::algorithm::11:RSA8192 SHA512
+    pubkey::version::1
+    pubkey::sha1sum::bf39d0d3e30cbf6a121416d04df4603ad5310779
+firmware::body::FW_MAIN_A
+FW_MAIN_A::firmware::body::offset::0x00210000
+FW_MAIN_A::firmware::body::size::0x000c0000
+firmware::body::FW_MAIN_B
+FW_MAIN_B::firmware::body::offset::0x00300000
+FW_MAIN_B::firmware::body::size::0x000c0000
+keyblock::VBLOCK_A
+VBLOCK_A::keyblock::signature::valid
+VBLOCK_A::keyblock::size::2232
+VBLOCK_A::keyblock::flags::7:!DEV:DEV:!REC
+VBLOCK_A::keyblock::data_key::algorithm::8:RSA4096 SHA512
+VBLOCK_A::keyblock::data_key::version::1
+VBLOCK_A::keyblock::data_key::sha1_sum::f917ad29e36aa8a286f978c1aa0550ea31c6a561
+VBLOCK_A::fw_preamble::size::2164
+VBLOCK_A::fw_preamble::header::version::2.1
+VBLOCK_A::fw_preamble::version::2
+VBLOCK_A::fw_preamble::kernel_key::algorithm::7:RSA4096 SHA256
+VBLOCK_A::fw_preamble::kernel_key::version::2
+VBLOCK_A::fw_preamble::kernel_key::sha1sum::cc05423373b76acbec23ec45dfa3696a2ea6dc0f
+VBLOCK_A::fw_preamble::fw_body::size::146456
+VBLOCK_A::fw_preamble::flags::0
+VBLOCK_A::fw_preamble::body_verification::success
+keyblock::VBLOCK_B
+VBLOCK_B::keyblock::signature::valid
+VBLOCK_B::keyblock::size::2232
+VBLOCK_B::keyblock::flags::7:!DEV:DEV:!REC
+VBLOCK_B::keyblock::data_key::algorithm::8:RSA4096 SHA512
+VBLOCK_B::keyblock::data_key::version::1
+VBLOCK_B::keyblock::data_key::sha1_sum::f917ad29e36aa8a286f978c1aa0550ea31c6a561
+VBLOCK_B::fw_preamble::size::2164
+VBLOCK_B::fw_preamble::header::version::2.1
+VBLOCK_B::fw_preamble::version::2
+VBLOCK_B::fw_preamble::kernel_key::algorithm::7:RSA4096 SHA256
+VBLOCK_B::fw_preamble::kernel_key::version::2
+VBLOCK_B::fw_preamble::kernel_key::sha1sum::cc05423373b76acbec23ec45dfa3696a2ea6dc0f
+VBLOCK_B::fw_preamble::fw_body::size::146456
+VBLOCK_B::fw_preamble::flags::0
+VBLOCK_B::fw_preamble::body_verification::success
