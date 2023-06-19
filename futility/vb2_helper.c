@@ -64,20 +64,29 @@ int show_vb21_pubkey_buf(const char *name, uint8_t *buf, uint32_t len,
 	if (VB2_SUCCESS != vb21_unpack_key(&key, buf, len))
 		return 1;
 
-	printf("Public Key file:       %s\n", name);
-	printf("  Vboot API:           2.1\n");
-	printf("  Desc:                \"%s\"\n", key.desc);
-	printf("  Signature Algorithm: %d %s\n", key.sig_alg,
-	       vb2_get_sig_algorithm_name(key.sig_alg));
-	printf("  Hash Algorithm:      %d %s\n", key.hash_alg,
-	       vb2_get_hash_algorithm_name(key.hash_alg));
-	printf("  Version:             0x%08x\n", key.version);
-	printf("  ID:                  ");
+	FT_PRINT("Public Key file:       %s\n", "public_key_file::%s\n", name);
+	FT_PRINT_WITH_FILE("  Vboot API:           2.1\n",
+			   "vboot::api::2.1\n", name);
+	FT_PRINT_WITH_FILE("  Desc:                \"%s\"\n",
+			   "public_key::description::%s\n", name, key.desc);
+	FT_PRINT_WITH_FILE("  Signature Algorithm: %d %s\n",
+			   "public_key::signature::algorithm::%d:%s\n", name,
+			   key.sig_alg,
+			   vb2_get_sig_algorithm_name(key.sig_alg));
+	FT_PRINT_WITH_FILE("  Hash Algorithm:      %d %s\n",
+			   "public_key::hash::algorithm::%d:%s\n", name,
+			   key.hash_alg,
+			   vb2_get_hash_algorithm_name(key.hash_alg));
+	FT_PRINT_WITH_FILE("  Version:             0x%08x\n",
+			   "public_key::version::0x%08x\n", name, key.version);
+	FT_PRINT_WITH_FILE("  ID:                  ", "public_key::id::",
+			   name);
 	print_bytes(key.id, sizeof(*key.id));
 	printf("\n");
 	if (vb2_public_key_sha1sum(&key, &hash) &&
 	    memcmp(key.id, hash.sha1, sizeof(*key.id))) {
-		printf("  Key sha1sum:         ");
+		FT_PRINT_WITH_FILE("  Key sha1sum:         ",
+				   "public_key::sha1sum::", name);
 		print_bytes(hash.sha1, sizeof(hash.sha1));
 		printf("\n");
 	}
@@ -132,19 +141,29 @@ int ft_show_vb21_privkey(const char *name, void *data)
 		goto done;
 	}
 
-	printf("Private key file:      %s\n", name);
-	printf("  Vboot API:           2.1\n");
-	printf("  Desc:                \"%s\"\n", key->desc ? key->desc : "");
-	printf("  Signature Algorithm: %d %s\n", key->sig_alg,
-	       vb2_get_sig_algorithm_name(key->sig_alg));
-	printf("  Hash Algorithm:      %d %s\n", key->hash_alg,
-	       vb2_get_hash_algorithm_name(key->hash_alg));
-	printf("  ID:                  ");
+	FT_PRINT("Private key file:      %s\n",
+		 "private_key::file::%s\n", name);
+	FT_PRINT_WITH_FILE("  Vboot API:           2.1\n", "vboot::api::2.1\n",
+			   name);
+	FT_PRINT_WITH_FILE("  Desc:                \"%s\"\n",
+			   "private_key::desc::%s\n", name,
+			   key->desc ? key->desc : "");
+	FT_PRINT_WITH_FILE("  Signature Algorithm: %d %s\n",
+			   "private_key::signature::algorithm::%d:%s\n", name,
+			   key->sig_alg,
+			   vb2_get_sig_algorithm_name(key->sig_alg));
+	FT_PRINT_WITH_FILE("  Hash Algorithm:      %d %s\n",
+			   "private_key::hash::algorithm::%d:%s\n", name,
+			   key->hash_alg,
+			   vb2_get_hash_algorithm_name(key->hash_alg));
+	FT_PRINT_WITH_FILE("  ID:                  ", "private_key::id::",
+			   name);
 	print_bytes(&key->id, sizeof(key->id));
 	printf("\n");
 	if (vb2_private_key_sha1sum(key, &hash) &&
 	    memcmp(&key->id, hash.sha1, sizeof(key->id))) {
-		printf("  Key sha1sum:         ");
+		FT_PRINT_WITH_FILE("  Key sha1sum:         ",
+				   "private_key::sha1sum::", name);
 		print_bytes(hash.sha1, sizeof(hash.sha1));
 		printf("\n");
 	}
@@ -214,20 +233,23 @@ int ft_show_pem(const char *name, void *data)
 
 	/* Use to presence of the private exponent to decide if it's public */
 	RSA_get0_key(rsa_key, &rsa_key_n, NULL, &rsa_key_d);
-	printf("%s Key file:      %s\n", rsa_key_d ? "Private" : "Public",
-					 name);
+	FT_PRINT("%s Key file:      %s\n", "key_file::%s:%s\n",
+		 rsa_key_d ? "Private" : "Public", name);
 
 	bits = BN_num_bits(rsa_key_n);
-	printf("  Key length:          %d\n", bits);
+	FT_PRINT_WITH_FILE("  Key length:          %d\n", "key::length::%d\n",
+			   name, bits);
 
 	if (vb_keyb_from_rsa(rsa_key, &keyb, &keyb_len)) {
-		printf("  Key sha1sum:         <error>");
+		FT_PRINT_WITH_FILE("  Key sha1sum:         <error>",
+				   "key::sha1sum::<error>", name);
 		RSA_free(rsa_key);
 		rv = 1;
 		goto done;
 	}
 
-	printf("  Key sha1sum:         ");
+	FT_PRINT_WITH_FILE("  Key sha1sum:         ",
+			   "key::sha1sum::", name);
 	vb2_hash_calculate(false, keyb, keyb_len, VB2_HASH_SHA1, &hash);
 	for (i = 0; i < sizeof(hash.sha1); i++)
 		printf("%02x", hash.sha1[i]);

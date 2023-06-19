@@ -89,6 +89,16 @@ extern const struct futil_cmd_t *const futil_cmds[];
 				  ##__VA_ARGS__ )
 #define STATUS(format, ...) fprintf(stderr, ">> " format, ##__VA_ARGS__ )
 
+/* futility print helpers to handle parseable prints*/
+#define FT_PRINT(normal, parse_fmt,  args...) \
+	printf(show_option.parseable ? parse_fmt : normal, ## args)
+#define FT_PRINT_WITH_FILE(normal, parse_fmt, file_name, args...) do { \
+	if (show_option.parseable && file_name) \
+		printf("%s::", file_name); \
+	printf(show_option.parseable ? parse_fmt : normal, ## args); \
+} while(0)
+
+
 /* Debug output (off by default) */
 extern int debugging_enabled;
 
