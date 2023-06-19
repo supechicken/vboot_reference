@@ -1,0 +1,17 @@
+kernel::partition::tests/futility/data/kern_preamble.bin
+keyblock::signature::ignored
+keyblock::size::1464
+keyblock::flags::15:!DEV:DEV:!REC:REC
+keyblock::data_key::algorithm::8:RSA4096 SHA512
+keyblock::data_key::version::1
+keyblock::data_key::sha1_sum::50b28df3cebabeefd134b7bc96512207f57b20a5
+tests/futility/data/kern_preamble.bin::kernel::preamble::size::64072
+tests/futility/data/kern_preamble.bin::kernel::preamble::header::version::2.0
+tests/futility/data/kern_preamble.bin::kernel::preamble::version::1
+tests/futility/data/kern_preamble.bin::kernel::preamble::body::load_address::0x100000
+tests/futility/data/kern_preamble.bin::kernel::preamble::body::size::73728
+tests/futility/data/kern_preamble.bin::kernel::preamble::bootloader::address::0x10a000
+tests/futility/data/kern_preamble.bin::kernel::preamble::bootloader::size::32768
+tests/futility/data/kern_preamble.bin::kernel::preamble::flags::0
+tests/futility/data/kern_preamble.bin::body::verification::success
+tests/futility/data/kern_preamble.bin::config::hi there 
