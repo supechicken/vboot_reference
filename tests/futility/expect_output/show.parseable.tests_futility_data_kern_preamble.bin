@@ -1,0 +1,16 @@
+keyblock::signature::ignored
+keyblock::size::1464
+keyblock::flags::15::!DEV:DEV:!REC:REC
+keyblock::data_key::algorithm::8::RSA4096:SHA512
+keyblock::data_key::version::1
+keyblock::data_key::sha1_sum::50b28df3cebabeefd134b7bc96512207f57b20a5
+kernel_preamble::size::64072
+kernel_preamble::header::version::2.0
+kernel_preamble::version::1
+kernel_preamble::body::load_address::0x100000
+kernel_preamble::body::size::73728
+kernel_preamble::bootloader::address::0x10a000
+kernel_preamble::bootloader::size::32768
+kernel::flags::0
+kernel::body::verification::success
+kernel::config::hi there 
