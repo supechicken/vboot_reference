@@ -1,0 +1,16 @@
+keyblock::tests/futility/data/fw_vblock.bin
+tests/futility/data/fw_vblock.bin::keyblock::signature::ignored
+tests/futility/data/fw_vblock.bin::keyblock::size::2232
+tests/futility/data/fw_vblock.bin::keyblock::flags::7:!DEV:DEV:!REC
+tests/futility/data/fw_vblock.bin::keyblock::data_key::algorithm::8:RSA4096 SHA512
+tests/futility/data/fw_vblock.bin::keyblock::data_key::version::1
+tests/futility/data/fw_vblock.bin::keyblock::data_key::sha1_sum::f917ad29e36aa8a286f978c1aa0550ea31c6a561
+tests/futility/data/fw_vblock.bin::fw_preamble::size::2164
+tests/futility/data/fw_vblock.bin::fw_preamble::header::version::2.1
+tests/futility/data/fw_vblock.bin::fw_preamble::version::2
+tests/futility/data/fw_vblock.bin::fw_preamble::kernel_key::algorithm::7:RSA4096 SHA256
+tests/futility/data/fw_vblock.bin::fw_preamble::kernel_key::version::2
+tests/futility/data/fw_vblock.bin::fw_preamble::kernel_key::sha1sum::cc05423373b76acbec23ec45dfa3696a2ea6dc0f
+tests/futility/data/fw_vblock.bin::fw_preamble::fw_body::size::146456
+tests/futility/data/fw_vblock.bin::fw_preamble::flags::0
+tests/futility/data/fw_vblock.bin::fw_preamble::body_verification::no_body
