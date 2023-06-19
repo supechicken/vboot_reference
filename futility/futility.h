@@ -89,6 +89,26 @@ extern const struct futil_cmd_t *const futil_cmds[];
 				  ##__VA_ARGS__ )
 #define STATUS(format, ...) fprintf(stderr, ">> " format, ##__VA_ARGS__ )
 
+#define FT_PRINT_MAX_HEADER_SIZE 256
+char ft_print_header[FT_PRINT_MAX_HEADER_SIZE];
+
+/* futility print helpers to handle parseable prints*/
+#define FT_READABLE_PRINT(fmt, args...)       \
+	do {                                  \
+		if (!show_option.parseable)   \
+			printf(fmt, ##args);  \
+	} while (0)
+
+#define FT_PRINT_RAW(normal, parse_fmt, args...)\
+	printf(show_option.parseable ? parse_fmt : normal, ##args)
+
+#define FT_PRINT(normal, parse_fmt, args...) do {                       \
+		if (show_option.parseable && ft_print_header[0] != '\0') \
+			printf("%s::", ft_print_header);                 \
+	printf(show_option.parseable ?                                   \
+	       parse_fmt : normal, ##args);                              \
+	} while (0)
+
 /* Debug output (off by default) */
 extern int debugging_enabled;
 

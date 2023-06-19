@@ -2,12 +2,17 @@ BIOS:                    tests/futility/data/bios_peppy_mp.bin
 GBB header:              GBB
   Version:               1.1
   Flags:                 0x00000039
-  Regions:                 offset       size
-    hwid                 0x00000080   0x00000100
-    bmpvf                0x00001180   0x000ece80
-    rootkey              0x00000180   0x00001000
-    recovery_key         0x000ee000   0x00001000
-  Size:                  0x000ef000 / 0x000ef000
+  Regions:
+    hwid offset          0x00000080
+    hwid size            0x00000100
+    bmpvf offset         0x00001180
+    bmpvf size           0x000ece80
+    rootkey offset       0x00001180
+    rootkey size         0x00001000
+    recovery_key offset  0x000ee000
+    recovery_key size    0x00001000
+  Size:                  0x000ef000
+GBB header validnt
 GBB content:
   HWID:                  X86 PEPPY TEST 4211
      digest:             <none>
@@ -34,6 +39,7 @@ Keyblock:                VBLOCK_A
   Data key algorithm:    8 RSA4096 SHA512
   Data key version:      1
   Data key sha1sum:      f917ad29e36aa8a286f978c1aa0550ea31c6a561
+VBLOCK_A is valid
 Firmware Preamble:
   Size:                  2164
   Header version:        2.1
@@ -51,6 +57,7 @@ Keyblock:                VBLOCK_B
   Data key algorithm:    8 RSA4096 SHA512
   Data key version:      1
   Data key sha1sum:      f917ad29e36aa8a286f978c1aa0550ea31c6a561
+VBLOCK_B is valid
 Firmware Preamble:
   Size:                  2164
   Header version:        2.1
