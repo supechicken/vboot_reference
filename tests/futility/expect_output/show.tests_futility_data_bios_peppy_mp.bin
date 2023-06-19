@@ -7,7 +7,8 @@ GBB header:              GBB
     bmpvf                0x00001180   0x000ece80
     rootkey              0x00000180   0x00001000
     recovery_key         0x000ee000   0x00001000
-  Size:                  0x000ef000 / 0x000ef000
+  Size:                  0x000ef000
+GBB header validnt
 GBB content:
   HWID:                  X86 PEPPY TEST 4211
      digest:             <none>
@@ -34,6 +35,7 @@ Keyblock:                VBLOCK_A
   Data key algorithm:    8 RSA4096 SHA512
   Data key version:      1
   Data key sha1sum:      f917ad29e36aa8a286f978c1aa0550ea31c6a561
+VBLOCK_A is valid
 Firmware Preamble:
   Size:                  2164
   Header version:        2.1
@@ -51,6 +53,7 @@ Keyblock:                VBLOCK_B
   Data key algorithm:    8 RSA4096 SHA512
   Data key version:      1
   Data key sha1sum:      f917ad29e36aa8a286f978c1aa0550ea31c6a561
+VBLOCK_B is valid
 Firmware Preamble:
   Size:                  2164
   Header version:        2.1
