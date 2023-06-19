@@ -33,6 +33,16 @@
 #include "util_misc.h"
 #include "vb1_helper.h"
 
+
+/* futility print helpers to handle parseable prints*/
+#define FT_PRINT(normal, parse_fmt,  args...) \
+	printf(show_option.parseable ? parse_fmt : normal, ## args)
+#define FT_PRINT_WITH_FILE(normal, parse_fmt, file_name, args...) do { \
+	if (show_option.parseable && file_name) \
+		printf("%s::", file_name); \
+	printf(show_option.parseable ? parse_fmt : normal, ## args); \
+} while(0)
+
 /* Options */
 struct show_option_s show_option = {
 	.padding = 65536,
@@ -46,45 +56,62 @@ static struct vb2_workbuf wb;
 
 void show_pubkey(const struct vb2_packed_key *pubkey, const char *sp)
 {
-	printf("%sVboot API:           1.0\n", sp);
-	printf("%sAlgorithm:           %d %s\n", sp, pubkey->algorithm,
-	       vb2_get_crypto_algorithm_name(pubkey->algorithm));
-	printf("%sKey Version:         %d\n", sp, pubkey->key_version);
-	printf("%sKey sha1sum:         %s\n",
-	       sp, packed_key_sha1_string(pubkey));
+	FT_PRINT("%sVboot API:           1.0\n", "%svboot::api::1.0\n", sp);
+	FT_PRINT("%sAlgorithm:           %d %s\n",
+		 "%spubkey::algorithm::%d:%s\n",
+		 sp, pubkey->algorithm,
+		 vb2_get_crypto_algorithm_name(pubkey->algorithm));
+	FT_PRINT("%sKey Version:         %d\n", "%spubkey::version::%d\n",
+		 sp, pubkey->key_version);
+	FT_PRINT("%sKey sha1sum:         %s\n","%spubkey::sha1sum::%s\n",
+		 sp, packed_key_sha1_string(pubkey));
 }
 
 static void show_keyblock(struct vb2_keyblock *keyblock, const char *name,
 			  int sign_key, int good_sig)
 {
 	if (name)
-		printf("Keyblock:                %s\n", name);
+		FT_PRINT("Keyblock:                %s\n","keyblock::%s\n",
+			 name);
 	else
-		printf("Keyblock:\n");
-	printf("  Signature:             %s\n",
-	       sign_key ? (good_sig ? "valid" : "invalid") : "ignored");
-	printf("  Size:                  %#x\n", keyblock->keyblock_size);
-	printf("  Flags:                 %d ", keyblock->keyblock_flags);
+		FT_PRINT("Keyblock:\n", "");
+	FT_PRINT_WITH_FILE("  Signature:             %s\n",
+			   "keyblock::signature::%s\n", name,
+			   sign_key ? (good_sig ? "valid" : "invalid") :
+			   "ignored");
+	FT_PRINT_WITH_FILE("  Size:                  %#x\n",
+			   "keyblock::size::%d\n",
+			   name, keyblock->keyblock_size);
+	FT_PRINT_WITH_FILE("  Flags:                 %d ",
+			   "keyblock::flags::%d", name,
+			   keyblock->keyblock_flags);
 	if (keyblock->keyblock_flags & VB2_KEYBLOCK_FLAG_DEVELOPER_0)
-		printf(" !DEV");
+		FT_PRINT(" !DEV", ":!DEV");
 	if (keyblock->keyblock_flags & VB2_KEYBLOCK_FLAG_DEVELOPER_1)
-		printf(" DEV");
+		FT_PRINT(" DEV", ":DEV");
 	if (keyblock->keyblock_flags & VB2_KEYBLOCK_FLAG_RECOVERY_0)
-		printf(" !REC");
+		FT_PRINT(" !REC", ":!REC");
 	if (keyblock->keyblock_flags & VB2_KEYBLOCK_FLAG_RECOVERY_1)
-		printf(" REC");
+		FT_PRINT(" REC", ":REC");
 	if (keyblock->keyblock_flags & VB2_KEYBLOCK_FLAG_MINIOS_0)
-		printf(" !MINIOS");
+		FT_PRINT(" !MINIOS", ":!MINIOS");
 	if (keyblock->keyblock_flags & VB2_KEYBLOCK_FLAG_MINIOS_1)
-		printf(" MINIOS");
+		FT_PRINT(" MINIOS", ":MINIOS");
 	printf("\n");
 
 	struct vb2_packed_key *data_key = &keyblock->data_key;
-	printf("  Data key algorithm:    %d %s\n", data_key->algorithm,
-	       vb2_get_crypto_algorithm_name(data_key->algorithm));
-	printf("  Data key version:      %d\n", data_key->key_version);
-	printf("  Data key sha1sum:      %s\n",
-	       packed_key_sha1_string(data_key));
+	FT_PRINT_WITH_FILE("  Data key algorithm:    %d %s\n",
+			   "keyblock::data_key::algorithm::%d:%s\n", name,
+			   data_key->algorithm,
+			   vb2_get_crypto_algorithm_name(data_key->algorithm));
+	FT_PRINT_WITH_FILE("  Data key version:      %d\n",
+			   "keyblock::data_key::version::%d\n",
+			   name,
+			   data_key->key_version);
+	FT_PRINT_WITH_FILE("  Data key sha1sum:      %s\n",
+			   "keyblock::data_key::sha1_sum::%s\n",
+			   name,
+			   packed_key_sha1_string(data_key));
 }
 
 int ft_show_pubkey(const char *name, void *data)
@@ -103,8 +130,7 @@ int ft_show_pubkey(const char *name, void *data)
 		rv = 1;
 		goto done;
 	}
-
-	printf("Public Key file:       %s\n", name);
+	FT_PRINT("Public Key file:       %s\n","public_key::file::%s\n", name);
 	show_pubkey(pubkey, "  ");
 
 done:
@@ -134,12 +160,15 @@ int ft_show_privkey(const char *name, void *data)
 	len -= sizeof(*pkey);
 	key.rsa_private_key = d2i_RSAPrivateKey(NULL, &start, len);
 
-	printf("Private Key file:      %s\n", name);
-	printf("  Vboot API:           1.0\n");
-	printf("  Algorithm:           %u %s\n", pkey->algorithm,
-	       vb2_get_crypto_algorithm_name(pkey->algorithm));
-	printf("  Key sha1sum:         %s\n",
-	       private_key_sha1_string(&key));
+	FT_PRINT("Private Key file:      %s\n", "private_key_file::%s\n", name);
+	FT_PRINT_WITH_FILE("  Vboot API:           1.0\n",
+			   "vboot::api::1.0\n", name);
+	FT_PRINT_WITH_FILE("  Algorithm:           %u %s\n",
+			   "vboot::algorithm::%u:%s\n", name, pkey->algorithm,
+			   vb2_get_crypto_algorithm_name(pkey->algorithm));
+	FT_PRINT_WITH_FILE("  Key sha1sum:         %s\n",
+			   "private_key::sha1sum::%s\n", name,
+			   private_key_sha1_string(&key));
 
 done:
 	futil_unmap_and_close_file(fd, FILE_RO, (uint8_t *)pkey, len);
@@ -196,8 +225,9 @@ static int fw_show_metadata_hash(const char *name, enum bios_component body_c,
 		return 1;
 	}
 
-	printf("  Body metadata hash:    %s",
-	       vb2_get_hash_algorithm_name(body_hash->algo));
+	FT_PRINT_WITH_FILE("  Body metadata hash:    %s",
+			   "body::metatadata_hash::%s", name,
+			   vb2_get_hash_algorithm_name(body_hash->algo));
 	if (vb2_digest_size(body_hash->algo)) {
 		putchar(':');
 		print_bytes((uint8_t *)body_hash->raw,
@@ -207,7 +237,7 @@ static int fw_show_metadata_hash(const char *name, enum bios_component body_c,
 
 	if (cbfstool_get_metadata_hash(name, fmap_name[body_c], &real_hash) !=
 		    VB2_SUCCESS ||
-	    real_hash.algo == VB2_HASH_INVALID) {
+		real_hash.algo == VB2_HASH_INVALID) {
 		ERROR("Failed to get metadata hash. Firmware body is"
 			" corrupted or is not a valid CBFS.\n");
 		return 1;
@@ -298,27 +328,42 @@ int show_fw_preamble_buf(const char *name, uint8_t *buf, uint32_t len,
 	if (pre2->header_version_minor < 1)
 		flags = 0;  /* Old 2.0 structure didn't have flags */
 
-	printf("Firmware Preamble:\n");
-	printf("  Size:                  %d\n", pre2->preamble_size);
-	printf("  Header version:        %d.%d\n",
-	       pre2->header_version_major, pre2->header_version_minor);
-	printf("  Firmware version:      %d\n", pre2->firmware_version);
+	FT_PRINT("Firmware Preamble:\n", "");
+	FT_PRINT_WITH_FILE("  Size:                  %d\n",
+			   "fw_preamble::size::%d\n", name,
+			   pre2->preamble_size);
+	FT_PRINT_WITH_FILE("  Header version:        %d.%d\n",
+			   "fw_preamble::header::version::%d.%d\n", name,
+			   pre2->header_version_major,
+			   pre2->header_version_minor);
+	FT_PRINT_WITH_FILE("  Firmware version:      %d\n",
+			   "fw_preamble::version::%d\n", name,
+			   pre2->firmware_version);
 
 	struct vb2_packed_key *kernel_subkey = &pre2->kernel_subkey;
-	printf("  Kernel key algorithm:  %d %s\n",
-	       kernel_subkey->algorithm,
-	       vb2_get_crypto_algorithm_name(kernel_subkey->algorithm));
+	FT_PRINT_WITH_FILE("  Kernel key algorithm:  %d %s\n",
+			   "fw_preamble::kernel_key::algorithm::%d:%s\n", name,
+			   kernel_subkey->algorithm,
+			   vb2_get_crypto_algorithm_name(
+				kernel_subkey->algorithm));
 	if (kernel_subkey->algorithm >= VB2_ALG_COUNT)
 		retval = 1;
-	printf("  Kernel key version:    %d\n", kernel_subkey->key_version);
-	printf("  Kernel key sha1sum:    %s\n",
-	       packed_key_sha1_string(kernel_subkey));
-	printf("  Firmware body size:    %d\n", pre2->body_signature.data_size);
-	printf("  Preamble flags:        %d\n", flags);
+	FT_PRINT_WITH_FILE("  Kernel key version:    %d\n",
+			   "fw_preamble::kernel_key::version::%d\n", name,
+			   kernel_subkey->key_version);
+	FT_PRINT_WITH_FILE("  Kernel key sha1sum:    %s\n",
+			   "fw_preamble::kernel_key::sha1sum::%s\n", name,
+			   packed_key_sha1_string(kernel_subkey));
+	FT_PRINT_WITH_FILE("  Firmware body size:    %d\n",
+			   "fw_preamble::fw_body::size::%d\n", name,
+			   pre2->body_signature.data_size);
+	FT_PRINT_WITH_FILE("  Preamble flags:        %d\n",
+			   "fw_preamble::flags::%d\n", name, flags);
 
 	if (flags & VB2_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
-		printf("Preamble requests USE_RO_NORMAL;"
-		       " skipping body verification.\n");
+		FT_PRINT_WITH_FILE("Preamble requests USE_RO_NORMAL;"
+		       " skipping body verification.\n",
+		       "fw_preamble::body_verification::skipped\n", name);
 		goto done;
 	}
 
@@ -329,7 +374,9 @@ int show_fw_preamble_buf(const char *name, uint8_t *buf, uint32_t len,
 	}
 
 	if (!fv_data) {
-		printf("No firmware body available to verify.\n");
+		FT_PRINT_WITH_FILE("No firmware body available to verify.\n",
+				   "fw_preamble::body_verification::no_body\n",
+				   name);
 		if (show_option.strict)
 			return 1;
 		return 0;
@@ -351,11 +398,16 @@ done:
 	 * we've already returned), but standalone files are okay. */
 	if (state || (sign_key && good_sig)) {
 		if (!(flags & VB2_FIRMWARE_PREAMBLE_USE_RO_NORMAL))
-			printf("Body verification succeeded.\n");
+			FT_PRINT_WITH_FILE("Body verification succeeded.\n",
+				"fw_preamble::body_verification::success\n",
+				name);
 		if (state)
 			state->area[state->c].is_valid = 1;
 	} else {
-		printf("Seems legit, but the signature is unverified.\n");
+		FT_PRINT_WITH_FILE(
+			"Seems legit, but the signature is unverified.\n",
+			"fw_preamble::body_verification::good_unverified\n",
+			name);
 		if (show_option.strict)
 			retval = 1;
 	}
@@ -395,7 +447,8 @@ int ft_show_kernel_preamble(const char *name, void *data)
 
 	/* Check the hash... */
 	if (VB2_SUCCESS != vb2_verify_keyblock_hash(keyblock, len, &wb)) {
-		printf("%s keyblock component is invalid\n", name);
+		FT_PRINT("%s keyblock component is invalid\n",
+			  "%s::keyblock::invalid\n", name);
 		goto done;
 	}
 
@@ -405,7 +458,8 @@ int ft_show_kernel_preamble(const char *name, void *data)
 	    vb2_verify_keyblock(keyblock, len, sign_key, &wb))
 		good_sig = 1;
 
-	printf("Kernel partition:        %s\n", name);
+	FT_PRINT("Kernel partition:        %s\n",
+		  "kernel::partition::%s\n", name);
 	show_keyblock(keyblock, NULL, !!sign_key, good_sig);
 
 	struct vb2_public_key data_key;
@@ -420,37 +474,56 @@ int ft_show_kernel_preamble(const char *name, void *data)
 
 	if (VB2_SUCCESS != vb2_verify_kernel_preamble(pre2, len - more,
 						      &data_key, &wb)) {
-		printf("%s is invalid\n", name);
+		FT_PRINT("%s is invalid\n",
+			 "%s::kernel_preamble::invalid\n",
+			 name);
 		goto done;
 	}
-
-	printf("Kernel Preamble:\n");
-	printf("  Size:                  %#x\n", pre2->preamble_size);
-	printf("  Header version:        %u.%u\n",
-	       pre2->header_version_major,
-	       pre2->header_version_minor);
-	printf("  Kernel version:        %u\n", pre2->kernel_version);
-	printf("  Body load address:     0x%" PRIx64 "\n",
-	       pre2->body_load_address);
-	printf("  Body size:             %#x\n",
-	       pre2->body_signature.data_size);
-	printf("  Bootloader address:    0x%" PRIx64 "\n",
-	       pre2->bootloader_address);
-	printf("  Bootloader size:       %#x\n", pre2->bootloader_size);
-
 	uint64_t vmlinuz_header_address = 0;
 	uint32_t vmlinuz_header_size = 0;
 	vb2_kernel_get_vmlinuz_header(pre2,
 				      &vmlinuz_header_address,
 				      &vmlinuz_header_size);
+
+	FT_PRINT("Kernel Preamble:\n","");
+	FT_PRINT_WITH_FILE("  Size:                  %#x\n",
+			   "kernel::preamble::size::%d\n", name,
+			   pre2->preamble_size);
+	FT_PRINT_WITH_FILE("  Header version:        %u.%u\n",
+			   "kernel::preamble::header::version::%u.%u\n", name,
+			   pre2->header_version_major,
+			   pre2->header_version_minor);
+	FT_PRINT_WITH_FILE("  Kernel version:        %u\n",
+			   "kernel::preamble::version::%u\n", name,
+			   pre2->kernel_version);
+	FT_PRINT_WITH_FILE("  Body load address:     0x%" PRIx64 "\n",
+			   "kernel::preamble::body::load_address::0x%"
+			   PRIx64 "\n", name, pre2->body_load_address);
+	FT_PRINT_WITH_FILE("  Body size:             %#x\n",
+			   "kernel::preamble::body::size::%d\n", name,
+			   pre2->body_signature.data_size);
+	FT_PRINT_WITH_FILE("  Bootloader address:    0x%" PRIx64 "\n",
+			   "kernel::preamble::bootloader::address::0x%"
+			   PRIx64 "\n", name, pre2->bootloader_address);
+	FT_PRINT_WITH_FILE("  Bootloader size:       %#x\n",
+			   "kernel::preamble::bootloader::size::%d\n",
+			   name, pre2->bootloader_size);
+
+
 	if (vmlinuz_header_size) {
-		printf("  Vmlinuz_header address:    0x%" PRIx64 "\n",
-		       vmlinuz_header_address);
-		printf("  Vmlinuz header size:       %#x\n",
-		       vmlinuz_header_size);
+		FT_PRINT_WITH_FILE("  Vmlinuz_header address:    0x%"
+			PRIx64 "\n",
+			"kernel::preamble::vmlinuz::header::address::0x%"
+			PRIx64 "\n", name,
+			vmlinuz_header_address);
+		FT_PRINT_WITH_FILE("  Vmlinuz header size:       %#x\n",
+			"kernel::preamble::vmlinuz::header::size::%d\n",
+			name, vmlinuz_header_size);
 	}
 
-	printf("  Flags:                 %#x\n", vb2_kernel_get_flags(pre2));
+	FT_PRINT_WITH_FILE("  Flags:                 %#x\n",
+			   "kernel::preamble::flags::%d\n",name,
+			   vb2_kernel_get_flags(pre2));
 
 	/* Verify kernel body */
 	uint8_t *kernel_blob = 0;
@@ -478,9 +551,11 @@ int ft_show_kernel_preamble(const char *name, void *data)
 		goto done;
 	}
 
-	printf("Body verification succeeded.\n");
+	FT_PRINT_WITH_FILE("Body verification succeeded.\n",
+			   "body::verification::success\n", name);
 
-	printf("Config:\n%s\n", kernel_blob + kernel_cmd_line_offset(pre2));
+	FT_PRINT_WITH_FILE("Config:\n%s\n", "config::%s\n", name,
+			   kernel_blob + kernel_cmd_line_offset(pre2));
 
 	if (!show_option.strict || (sign_key && good_sig))
 		retval = 0;
@@ -513,6 +588,7 @@ static const char usage[] = "\n"
 	"  -t                               Just show the type of each file\n"
 	"  --type           TYPE            Override the detected file type\n"
 	"                                     Use \"--type help\" for a list\n"
+	"  -P                               Machine friendly output format\n"
 	"Type-specific options:\n"
 	"  -k|--publickey   FILE.vbpubk     Public key in vb1 format\n"
 	"  --pubkey         FILE.vpubk2     Public key in vb2 format\n"
@@ -544,7 +620,7 @@ static const struct option long_opts[] = {
 	{"help",        0, NULL, OPT_HELP},
 	{NULL, 0, NULL, 0},
 };
-static const char *short_opts = ":f:k:t";
+static const char *short_opts = ":f:k:Pt";
 
 
 static int show_type(char *filename)
@@ -621,6 +697,9 @@ static int do_show(int argc, char *argv[])
 			break;
 		case 't':
 			show_option.t_flag = 1;
+			break;
+		case 'P':
+			show_option.parseable = true;
 			break;
 		case OPT_PADDING:
 			show_option.padding = strtoul(optarg, &e, 0);
