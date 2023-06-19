@@ -70,6 +70,24 @@
       "parentUuid": "7d51e32d_80c00bb6",
       "revId": "a97ab144ec4169c3a2f97af31e79f6c9200bb299",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0cc99c_5573ed8c",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-06-19T04:54:34Z",
+      "side": 1,
+      "message": "\u003e My concern is that we will end up with more and more duplicate (or similar) code in `show` and `gbb`. If `--recoverykey-ver` is added now, there will likely be `--rootkey-ver` or `--recoverykey-algo` added in the future. It doesn\u0027t make sense for futility as a single tool to have multiple ways to do the same thing. I know that reading GBB flags and hwid are already supported for both `show` and `gbb` commands, but we don\u0027t want that to keep getting worse.\n\u003e \n\nThis seems like an orthogonal issue where we should actually just merge those two sub-commands. Much in the same way we should merge cmd_{dump,load}_fmap.c . \"show\" never was clear as a sub-command, \u0027show what\u0027 is the immediate thing that comes to mind. Therefore I agree with exactly your core point just that the implementation should be the other way, to squash show into gbb and not gbb into show.\n\n\u003e \u003e Furthermore, since gbb is technically where this data is stored it is a logical grouping to have a relevant flag associated with it.\n\u003e \n\u003e From the perspective of \"signing and verification\", which is why vboot exists, the recovery key is just one out of many keys that a ChromeOS firmware image has. The key version that CL:4308230 needs to know is in GBB only because it is for miniOS (recovery). Therefore if we really want an option to read the key version only, `futility show [--flash] --recoverykey-ver` looks like a good solution to me, because the caller doesn\u0027t even need to know where the recovery key is stored. futility should know where the key is, and only read that section from SPI flash.",
+      "parentUuid": "2f500b07_f19b0d39",
+      "revId": "a97ab144ec4169c3a2f97af31e79f6c9200bb299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
