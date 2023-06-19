@@ -94,6 +94,11 @@ int ft_show_vb21_pubkey(const char *name, void *data)
 	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 
+	if(show_option.parseable)
+	{
+		ERROR("Parseable output not supported for this file.");
+		return 1;
+	}
 	rv = show_vb21_pubkey_buf(name, buf, len, data);
 
 	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
@@ -123,6 +128,12 @@ int ft_show_vb21_privkey(const char *name, void *data)
 	uint8_t *buf;
 	uint32_t len;
 	int rv = 0;
+
+	if(show_option.parseable)
+	{
+		ERROR("Parseable output not supported for this file.");
+		return 1;
+	}
 
 	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
@@ -203,6 +214,12 @@ int ft_show_pem(const char *name, void *data)
 	uint8_t *buf;
 	uint32_t len;
 	int rv = 0;
+
+	if(show_option.parseable)
+	{
+		ERROR("Parseable output not supported for this file.");
+		return 1;
+	}
 
 	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;

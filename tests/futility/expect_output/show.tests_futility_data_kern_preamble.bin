@@ -3,9 +3,10 @@ Keyblock:
   Signature:             ignored
   Size:                  0x5b8
   Flags:                 15  !DEV DEV !REC REC
-  Data key algorithm:    8 RSA4096 SHA512
+  Data key algorithm:    8 RSA4096:SHA512
   Data key version:      1
   Data key sha1sum:      50b28df3cebabeefd134b7bc96512207f57b20a5
+tests/futility/data/kern_preamble.bin is valid
 Kernel Preamble:
   Size:                  0xfa48
   Header version:        2.0
