@@ -28,6 +28,7 @@
 /* #define FORCE_LOGGING_ON */
 
 static int log_fd = -1;
+char ft_print_header[FT_PRINT_MAX_HEADER_SIZE] = "";
 
 /* Write the string and a newline. Silently give up on errors */
 static void log_str(const char *prefix, const char *str)

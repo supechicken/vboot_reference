@@ -31,6 +31,7 @@
 #include "file_type.h"
 #include "futility.h"
 #include "host_misc.h"
+#include "futility_options.h"
 
 /* Default is to support everything we can */
 enum vboot_version vboot_version = VBOOT_VERSION_ALL;
@@ -140,7 +141,8 @@ int futil_valid_gbb_header(struct vb2_gbb_header *gbb, uint32_t len,
 int print_hwid_digest(struct vb2_gbb_header *gbb,
 		      const char *banner, const char *footer)
 {
-	printf("%s", banner);
+	FT_READABLE_PRINT("%s", banner);
+	FT_PARSEABLE_PRINT("hwid::sha256_sum::");
 
 	/* There isn't one for v1.1 and earlier, so assume it's good. */
 	if (gbb->minor_version < 2) {
@@ -166,8 +168,9 @@ int print_hwid_digest(struct vb2_gbb_header *gbb,
 		}
 	}
 
-	printf("   %s", is_valid ? "valid" : "<invalid>");
-	printf("%s", footer);
+	FT_PRINT_RAW("   %s", ":%s", is_valid ? "valid" : "invalid");
+	FT_READABLE_PRINT("%s", footer);
+	FT_PARSEABLE_PRINT("\n");
 	return is_valid;
 }
 
