@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87cae765_db7c1e04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-06-20T21:51:03Z",
+      "side": 1,
+      "message": "Honestly, personal bash standards are not that high, so I\u0027d let Mike weigh in.",
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc35cad_ca3fc3a5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-06-20T21:51:03Z",
+      "side": 1,
+      "message": "I\u0027d document what we\u0027re doing here, give a bit of background.",
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f83c89f_fcf79082",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-06-20T21:51:03Z",
+      "side": 1,
+      "message": "`-z` would be prefered here no?",
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
