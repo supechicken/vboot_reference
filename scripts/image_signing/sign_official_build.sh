@@ -24,7 +24,7 @@ MINIOS_KERNEL_GUID="09845860-705f-4bb5-b16c-8a8a099caf52"
 usage() {
   cat <<EOF
 Usage: ${PROG} <type> input_image /path/to/keys/dir [output_image] \
-[version_file]
+[version_file] (--cloud-signing)
 where <type> is one of:
              base (sign a base image)
              recovery (sign a USB recovery image)
@@ -38,6 +38,8 @@ where <type> is one of:
 
 output_image: File name of the signed output image
 version_file: File name of where to read the kernel and firmware versions.
+--cloud-signing: Instead of relying on a local key directory, retrieve keys
+  from Cloud KMS.
 
 If you are signing an image, you must specify an [output_image] and
 optionally, a [version_file].
@@ -84,11 +86,28 @@ for prereqs in ${FUTILITY} verity load_kernel_test dumpe2fs e2fsck sha1sum; do
     die "${prereqs} tool not found."
 done
 
-TYPE=$1
-INPUT_IMAGE=$2
-KEY_DIR=$3
-OUTPUT_IMAGE=$4
-VERSION_FILE=$5
+# Parse arguments with positional and optional options. This will allow the args
+# to be in the prescribed order, but also allow for `--cloud-signing` to be
+# passed in at any point in the arg list, and still have it be parsed correctly.
+script_args=()
+while [ "${#}" -gt 0 ]
+do
+    if [[ $1 == "--cloud-signing" ]]; then
+      CLOUD_SIGNING=true
+    else
+      script_args+=("${1}")
+    fi
+    shift;
+done
+
+TYPE="${script_args[0]}"
+INPUT_IMAGE="${script_args[1]}"
+KEY_DIR="${script_args[2]}"
+OUTPUT_IMAGE="${script_args[3]}"
+VERSION_FILE="${script_args[4]}"
+if [ -n "${CLOUD_SIGNING}" ]; then
+  info "signing with cloud keys"
+fi
 
 FIRMWARE_VERSION=1
 KERNEL_VERSION=1
@@ -1261,12 +1280,12 @@ verify)
   exit 0
   ;;
 *)
-  # All other signing commands take 4 to 5 args.
+  # All other signing commands take 4 to 6 args.
   if [ -z "${OUTPUT_IMAGE}" ]; then
     # Friendlier message.
     usage "Missing output image name"
   fi
-  check_argc $# 4 5
+  check_argc $# 4 6
   ;;
 esac
 
