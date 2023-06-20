@@ -16,6 +16,23 @@
       "message": "Hi Subrata! Not sure who to add as reviewer here or if I need to do anything. Could you help?",
       "revId": "462d0935aa2fb675858ce18193c8ae6a104968e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb06a2e6_9cb18218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2023-06-20T17:39:24Z",
+      "side": 1,
+      "message": "AFAICT the only systems not supporting `grep -E` should be 20+ years old, so even support for building in non-crOS contexts should be covered sufficiently.\n\nIt\u0027s a bit annoying that grep does that change unilaterally (and some distros are reverting it locally in protest), but to avoid running into random breakage, let\u0027s just go with grep -E?",
+      "revId": "462d0935aa2fb675858ce18193c8ae6a104968e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
