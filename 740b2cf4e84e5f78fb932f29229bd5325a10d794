@@ -142,6 +142,24 @@
       "parentUuid": "7b245887_0573eda7",
       "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebcafd3_2ad9acd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-20T19:46:03Z",
+      "side": 1,
+      "message": "Yes, I think it gets too complicated if we try to provide APIs for all sorts of image information in the library (and just providing a single one for kernel size but nothing else seems inconsistent). Let\u0027s try the approach with adding parseable output to futility instead.",
+      "parentUuid": "91829e6e_5435fad6",
+      "revId": "740b2cf4e84e5f78fb932f29229bd5325a10d794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
