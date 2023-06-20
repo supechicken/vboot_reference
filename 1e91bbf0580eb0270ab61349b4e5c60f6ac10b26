@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3beec0_cf3ffa10",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-20T22:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc35cad_ca3fc3a5",
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f83c89f_fcf79082",
@@ -114,6 +132,96 @@
       "side": 1,
       "message": "\u003e style: Prefer explicit -n to check non-empty string (or use \u003d/-ne to check boolean/integer).\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2244\n\nPlease fix.",
       "parentUuid": "a7fe816a_b254c912",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6258c7_a5f54707",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-20T22:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fdf34c5_92523f6b",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03ac67f1_eb39b7be",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-20T22:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a42e4c_d14356cc",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d276061_74676d15",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-20T22:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f83c89f_fcf79082",
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9e2638_5a40ff19",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-20T22:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc377816_2c0c5ab8",
       "range": {
         "startLine": 106,
         "startChar": 5,
