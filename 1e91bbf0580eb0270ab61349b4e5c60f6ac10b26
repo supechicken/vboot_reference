@@ -50,6 +50,78 @@
       "message": "`-z` would be prefered here no?",
       "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a42e4c_d14356cc",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-06-20T21:54:41Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "db9424bd_205e87d0",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fdf34c5_92523f6b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-06-20T21:54:41Z",
+      "side": 1,
+      "message": "\u003e style: Prefer double quoting even when variables don\u0027t contain special characters.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2248\n\nPlease fix.",
+      "parentUuid": "9d39b827_77f9d79b",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc377816_2c0c5ab8",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-06-20T21:54:41Z",
+      "side": 1,
+      "message": "\u003e style: Prefer explicit -n to check non-empty string (or use \u003d/-ne to check boolean/integer).\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2244\n\nPlease fix.",
+      "parentUuid": "a7fe816a_b254c912",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "1e91bbf0580eb0270ab61349b4e5c60f6ac10b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
