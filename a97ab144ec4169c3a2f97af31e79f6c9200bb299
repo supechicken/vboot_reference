@@ -88,6 +88,24 @@
       "parentUuid": "2f500b07_f19b0d39",
       "revId": "a97ab144ec4169c3a2f97af31e79f6c9200bb299",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4255dc1a_998ebee6",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-20T01:56:18Z",
+      "side": 1,
+      "message": "Sorry, but I still disagree. I think it\u0027s pretty clear from the help text of `futility show` that the FILE argument could be various things including a keyblock file and an AP firmware image. And it\u0027s designed to be \"smart\" enough to tell which kind of files it\u0027s reading, so that people don\u0027t need to remember tons of different option names.\n\n\u003e Therefore I agree with exactly your core point just that the implementation should be the other way, to squash show into gbb and not gbb into show.\n\nI\u0027m afraid that\u0027s not possible, because many file formats `futility show` supports are not in the GBB section. Maybe you mean squashing \"part of futility show\" to \"futility gbb\"? Again, from the perspective of \"signing and verification\", I don\u0027t think that will make things better.",
+      "parentUuid": "7c0cc99c_5573ed8c",
+      "revId": "a97ab144ec4169c3a2f97af31e79f6c9200bb299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
