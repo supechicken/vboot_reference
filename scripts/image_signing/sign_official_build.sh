@@ -24,7 +24,7 @@ MINIOS_KERNEL_GUID="09845860-705f-4bb5-b16c-8a8a099caf52"
 usage() {
   cat <<EOF
 Usage: ${PROG} <type> input_image /path/to/keys/dir [output_image] \
-[version_file]
+[version_file] (--cloud-signing)
 where <type> is one of:
              base (sign a base image)
              recovery (sign a USB recovery image)
@@ -38,6 +38,8 @@ where <type> is one of:
 
 output_image: File name of the signed output image
 version_file: File name of where to read the kernel and firmware versions.
+--cloud-signing: Instead of relying on a local key directory, retrieve keys
+  from Cloud KMS.
 
 If you are signing an image, you must specify an [output_image] and
 optionally, a [version_file].
@@ -89,6 +91,10 @@ INPUT_IMAGE=$2
 KEY_DIR=$3
 OUTPUT_IMAGE=$4
 VERSION_FILE=$5
+if [ "$6" ]; then
+  CLOUD_SIGNING=true
+  info "signing with cloud keys"
+fi
 
 FIRMWARE_VERSION=1
 KERNEL_VERSION=1
@@ -1261,12 +1267,12 @@ verify)
   exit 0
   ;;
 *)
-  # All other signing commands take 4 to 5 args.
+  # All other signing commands take 4 to 6 args.
   if [ -z "${OUTPUT_IMAGE}" ]; then
     # Friendlier message.
     usage "Missing output image name"
   fi
-  check_argc $# 4 5
+  check_argc $# 4 6
   ;;
 esac
 
