@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36227158_bb2b200e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-06-20T21:07:11Z",
+      "side": 1,
+      "message": "Dashed arguments are not ordered and this one is. We\u0027ll need a good/consistent way to pass this in. I\u0027d entertain environment variable (but will vapier?!?). \n\nOtherwise you could refactor the parsing to getopt or similar.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "c139d76cda579965f4417f20cd898593deacca12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
