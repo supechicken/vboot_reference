@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9174f63d_12477bbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "Are you sure you tested with this command? I had to run `futility show -m 1 FILE` for PS5 to work.",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7356d1a8_23c7564b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "me",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac10afc7_1b6db874",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "I\u0027d prefer splitting these into 2 functions.",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac77b588_1d05c485",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9e1749_83fa3ac0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "If you don\u0027t want to support all the `ft_show_*` functions, we should return an error from them when the flag is set.\n\n```\nif (show_option.m_flag) {\n    ERROR(...);\n    return 1;\n}\n```",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88aa3e61_aab81bfd",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "Space before `(`.",
+      "range": {
+        "startLine": 440,
+        "startChar": 3,
+        "endLine": 440,
+        "endChar": 4
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7064b5_9b14da4e",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "Do we need to change this as well?",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe79fb70_d103bee5",
+        "filename": "futility/futility_options.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "bool (also see CL:4348495), unless we want to support values other than 0 and 1",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1637b02_d03c7ea5",
+        "filename": "futility/futility_options.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-21T04:02:18Z",
+      "side": 1,
+      "message": "Please use a more descriptive name such as `machine_parseable` (same name as [cbfstool](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/util/cbfstool/cbfstool.c;l\u003d89?q\u003dmachine_parseable\u0026ss\u003dchromiumos)). (`t_flag` should also be renamed, but unrelated to this patch.)",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
