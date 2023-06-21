@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5a1057ba_33189fb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "Apologies, I was changing around `short_opts` since some tests were failing. Changed it back and confirmed again that this works.",
+      "parentUuid": "9174f63d_12477bbe",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7356d1a8_23c7564b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0712be69_ce6ffc2a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac10afc7_1b6db874",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac77b588_1d05c485",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b96f84_7b9825aa",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac77b588_1d05c485",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b9e1749_83fa3ac0",
@@ -88,6 +148,24 @@
       "writtenOn": "2023-06-21T04:02:18Z",
       "side": 1,
       "message": "If you don\u0027t want to support all the `ft_show_*` functions, we should return an error from them when the flag is set.\n\n```\nif (show_option.m_flag) {\n    ERROR(...);\n    return 1;\n}\n```",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d58e96_ece908e1",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b9e1749_83fa3ac0",
       "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7585e591_f8903d53",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88aa3e61_aab81bfd",
+      "range": {
+        "startLine": 440,
+        "startChar": 3,
+        "endLine": 440,
+        "endChar": 4
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce7064b5_9b14da4e",
@@ -128,6 +230,24 @@
       "writtenOn": "2023-06-21T04:02:18Z",
       "side": 1,
       "message": "Do we need to change this as well?",
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b37965_241817d8",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "I do not believe this is necessary. We already have a bunch of code that can inspect and parse kernel config, and in its current form it isn\u0027t too difficult to parse either.",
+      "parentUuid": "ce7064b5_9b14da4e",
       "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +293,54 @@
         "startChar": 5,
         "endLine": 30,
         "endChar": 11
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3192862_338de20e",
+        "filename": "futility/futility_options.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1637b02_d03c7ea5",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff43bc36_c3b1dbec",
+        "filename": "futility/futility_options.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-21T17:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe79fb70_d103bee5",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
       },
       "revId": "f58fafd61bf08c5ebfbacb65680137ef2360cf15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
