@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85debbf6_c778efc0",
+        "filename": "host/lib/fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-06-21T07:29:42Z",
+      "side": 1,
+      "message": "Let me create a CL for the linewidth issue: CL:4630972",
+      "range": {
+        "startLine": 56,
+        "startChar": 74,
+        "endLine": 56,
+        "endChar": 75
+      },
+      "revId": "0bba2484e735f836aa84edfeaaa67477dacffa47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09abdb75_19281178",
+        "filename": "host/lib/fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-06-21T07:29:42Z",
+      "side": 1,
+      "message": "checkpatch.pl told me:\n\nERROR: \"(foo*)\" should be \"(foo *)\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 22,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "0bba2484e735f836aa84edfeaaa67477dacffa47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
