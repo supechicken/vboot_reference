@@ -47,21 +47,20 @@ FmapHeader *fmap_find(uint8_t *ptr, size_t size)
 uint8_t *fmap_find_by_name(uint8_t *ptr, size_t size, FmapHeader *fmap,
 			   const char *name, FmapAreaHeader **ah_ptr)
 {
-	int i;
-	FmapAreaHeader *ah;
 
 	if (!fmap)
 		fmap = fmap_find(ptr, size);
 	if (!fmap)
 		return NULL;
 
-	ah = (FmapAreaHeader*)((void *)fmap + sizeof(FmapHeader));
-	for (i = 0; i < fmap->fmap_nareas; i++)
+	FmapAreaHeader *ah = (FmapAreaHeader*)((void *)fmap + sizeof(FmapHeader));
+	for (size_t i = 0; i < fmap->fmap_nareas; i++) {
 		if (!strncmp(ah[i].area_name, name, FMAP_NAMELEN)) {
 			if (ah_ptr)
 				*ah_ptr = ah + i;
 			return ptr + ah[i].area_offset;
 		}
+	}
 
 	return NULL;
 }
