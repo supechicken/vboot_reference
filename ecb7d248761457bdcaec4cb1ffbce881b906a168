@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f5b33b_e4e7c379",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-21T19:36:29Z",
+      "side": 1,
+      "message": "Move back to original (reformats make things harder to review)",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 55
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6a5fc8_b517fe29",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-21T19:36:29Z",
+      "side": 1,
+      "message": "Same for the tabs.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ed73d1_fe7ae245",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-21T19:36:29Z",
+      "side": 1,
+      "message": "Printing such a string is not \"machine friendly\"\n\nYou should be printing an error, not to stdout.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73681ba_a3923c1d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-21T19:36:29Z",
+      "side": 1,
+      "message": "ditto + others",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a9bf61_a5de420b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-21T19:36:29Z",
+      "side": 1,
+      "message": "This seems way too easy to break with minimal changes + a huge problem when devs start using it and requires a change here.\n\nIf you want devs to start using this format seriously, it needs to be more stable.\nRecommend using json with actual well defined keys or some other format.",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
