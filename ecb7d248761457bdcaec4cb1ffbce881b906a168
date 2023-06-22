@@ -162,6 +162,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e372a8_7775531f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T01:12:36Z",
+      "side": 1,
+      "message": "Agree that we could still add JSON output separately later if we wanted to. I don\u0027t really see why, though, I think this solution should work well for the use cases I foresee here. I know there\u0027s `jq` for scripts but I don\u0027t see the point of creating a solution that relies on that always being available when we can just solve the same use cases with something that doesn\u0027t need any extra libraries or tools to parse. futility needs to run in many different environments (normal ChromeOS, recovery initramfs, signer hosts, random upstream coreboot people trying to use vboot, etc.) so we really try avoid dependencies wherever possible.",
+      "parentUuid": "c1feeeec_e502aa5b",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
