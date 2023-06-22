@@ -186,6 +186,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba732fe_e53e1878",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-22T01:24:16Z",
+      "side": 1,
+      "message": "\u003eso we really try avoid dependencies wherever possible.\n\nAgree with you this is a good reason to avoid JSON, but JSON could definitely still help benefit the users/cases that *have* the dependencies already and..\n\nIn terms of miniOS/CrOS use cases (which the author will be using), there are handy libchrome + libbrillo dependencies already which help parse JSON.\nWhile the current outputs would be a string match/search (which is fine/good until, what needs to be printed start requiring the delimiter values, the output gets \"heavier\" because the multiple prefixes might need to get printed)\n\nAnother option might be to allow printing each individual piece like:\n`futility -p kernel.size` -\u003e stdout:`123`\n`futility -p kernel.X` -\u003e stdou:`foobar`\nin which case we don\u0027t need to worry about the output format at all(?)\n\nPlease ignore JSON / defer potentially for future iterations :P",
+      "parentUuid": "78e372a8_7775531f",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
