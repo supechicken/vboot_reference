@@ -210,6 +210,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35d3bb8_a386e0a1",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T01:34:34Z",
+      "side": 1,
+      "message": "\u003e While the current outputs would be a string match/search (which is fine/good until, what needs to be printed start requiring the delimiter values, the output gets \"heavier\" because the multiple prefixes might need to get printed)\n\nWell, part of this exercise is to figure out if there are any cases where that model doesn\u0027t work well, like you\u0027re suggesting here. ;) Let\u0027s see how it looks once Saketh has implemented this for all `show` output. I don\u0027t think futility has a case where that\u0027s really going to be a problem, but maybe I\u0027m wrong and then we can discuss it when we see it. We\u0027re not trying to design a universal data serialization format here, after all, just something that can output what futility needs to output.\n\n\u003e Another option might be to allow printing each individual piece like:\n\nYeah, I thought about that option too, that would be the next best alternative. That gets a lot more complicated inside futility itself though, since you can no longer just run through the same code that the human-readable `show` runs through and just modify the print statements, you now have to implement a full parser for all valid input indentifiers and then figure out for each of them exactly what data structures you need to unpack to get to that answer. Ultimately, since runtime isn\u0027t really important for this feature (so we don\u0027t really care about wasting time printing \"too much\") and since basically every caller ever no matter what it is written in should be easily able to do the equivalent of a grep and cut, I don\u0027t think we gain anything there that\u0027s worth the extra effort, and I think the solution implemented here is still the best combination of easy to implement and useful for all expected use cases.",
+      "parentUuid": "bba732fe_e53e1878",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
