@@ -234,6 +234,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2ae6d8_e84bf309",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-22T03:00:07Z",
+      "side": 1,
+      "message": "\u003esomething that can output what futility needs to output.\n\u003eeasy to implement and useful for all expected use cases.\n\nSounds good to me for the use cases today!\n\n(Maybe someone can go ahead and implement other stabler formats - like JSON or the alternative option for single arguments as a side gig / when necessary) :P\n\nAck\u0027ing eagerly as I don\u0027t think current outputs would break from the pseudo format.",
+      "parentUuid": "c35d3bb8_a386e0a1",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
