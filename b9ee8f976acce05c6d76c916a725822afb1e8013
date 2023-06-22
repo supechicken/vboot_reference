@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8bd103_49058554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-22T19:32:35Z",
+      "side": 1,
+      "message": "sent you a CL to cleanup the arg processing a little bit before we land this.  it\u0027s hard to reason about things when it\u0027s spread throughout the file.",
+      "revId": "b9ee8f976acce05c6d76c916a725822afb1e8013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e173702_980fef01",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-22T19:32:35Z",
+      "side": 1,
+      "message": "optional arguments are specified with `[...]`",
+      "revId": "b9ee8f976acce05c6d76c916a725822afb1e8013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
