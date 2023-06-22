@@ -138,6 +138,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1feeeec_e502aa5b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-06-22T00:59:55Z",
+      "side": 1,
+      "message": "Agree on the disagreement :)\n\nIf futility owners are fine with this approach, I can\u0027t say much.\n\nIf anything, future upload/changes can utilize `--json` as an option to spit out JSON as the preferred format.\nThere is also `jq` in ChromeOS installations or scripts to leverage now.",
+      "parentUuid": "191e54f8_d7ec7f96",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
