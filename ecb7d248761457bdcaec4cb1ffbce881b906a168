@@ -114,6 +114,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191e54f8_d7ec7f96",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "I disagree with the JSON, not every shell script that quickly tries to parse some value has access to a JSON parser. The goal here is not to serialize this full data block, it is to make it as easy as possible for any other process (written in anything, even in environments with restricted dependencies) to parse a few individual fields they may try to query. I think this format is a good solution because it easily allows you to extract any field with just a grep+cut or a simple regex match. We just need to fine-tune the individual field names to have more regularity (see my other comments), and then of course there should be an understanding that once a field has been added, it needs to be supported indefinitely (or at least deprecated very carefully).",
+      "parentUuid": "61a9bf61_a5de420b",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

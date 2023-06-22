@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d64630_ee093704",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "e not",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bc2187_dfeaf7a7",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "Please implement it for all sub-forms of `show`, for consistency. (Note that many are not implemented in this file but in the individual file type files, e.g. file_type_bios.c.)",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f38eda_aca55070",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "I wonder... and maybe that turns out to be a terrible idea once you try it out... but I wonder if it would be better to keep the two output forms for each individual line item together, rather than having one big block for normal output followed by one big block of parseable output. That way it\u0027s easier to see that the output always corresponds to each other. Otherwise, I would be worried that one of these days someone may add some extra output to one of the blocks but forget to add it to the other.\n\nYou could try to make this more readable with a helper macro, maybe something like\n```\n#define print2(normal, parseable, ...) printf(show_option.m_flag ? parseable : normal, __VA_ARGS__)\n```",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be4c259d_5f075b7c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "This needs more prefixes... e.g. when you dump a firmware image, it will show two keyblocks (RW_A and RW_B), the caller needs to be able to tell apart which output belongs to which. I also think it might be a good idea for the first prefix to just always be the file type (futil_file_type_name()) that we are dumping. So this should maybe be bios::rw_a::keyblock::....\n\nSince some of these functions call into each other and it\u0027s not always easy to access all this surrounding state from inside, maybe the easiest way would be to have a global variable for the prefix (and then maybe have the printing macro from above automatically prepend that)?",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7286d4c8_3305c177",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "I wonder if we should just keep all machine-parseable numbers in decimal, since parsing hex can be a bit cumbersome from some environments (like shell)?",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d103fb0f_76766c44",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "Might be a good idea to use a different separator for a list of items in a subfield (maybe just one colon instead of two)?",
+      "range": {
+        "startLine": 99,
+        "startChar": 11,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c580801_10fec627",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "All of these fields are still part of the preamble, so this should all be `...::preamble::header_version::...`, `...::preamble::body_load_address::...`, etc.",
+      "range": {
+        "startLine": 497,
+        "startChar": 18,
+        "endLine": 497,
+        "endChar": 33
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6831ffbb_971232b1",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "Here too, don\u0027t just use the separator like a space, it should signify a real hierarchical level. `vmlinuz_header_address` is a field in the preamble, so `...::preamble::vmlinuz_header_address::...`",
+      "range": {
+        "startLine": 510,
+        "startChar": 11,
+        "endLine": 510,
+        "endChar": 43
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d172efb9_f96afe9f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-22T00:21:23Z",
+      "side": 1,
+      "message": "We should also allocate a long-form option (e.g. `--parseable`). I also think it might be better to use a capital letter for the short form: if we want to expand this concept of parseable output to other commands in the future it would be nice to have some standardization, and that would make it less likely that the letter is already used in other commands. So I guess something like `-P` or `-M`?",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
