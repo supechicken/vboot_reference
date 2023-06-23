@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d686630_7160d297",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "tests/futility/data/fw_gbb.bin\n  tests/futility/data/bios_peppy_mp.bin\n  tests/futility/data/sample.vbpubk2\n  tests/futility/data/sample.vbprik2\n  tests/testkeys/key_rsa2048.pem\n  tests/testkeys/key_rsa8192.pub.pem\n\nAre the files from above that are currently not supported by the -P flag. Let me know if we should expand support there too.\nI didn\u0027t initially add support for these other formats since the parsing and info printing is done elsewhere (not cmd_show)",
+      "revId": "5556531e69b4fbf8e10fc475edc97d9422697048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6186d78_2d602191",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90bc2187_dfeaf7a7",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37f38eda_aca55070",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-06-22T00:21:23Z",
       "side": 1,
       "message": "I wonder... and maybe that turns out to be a terrible idea once you try it out... but I wonder if it would be better to keep the two output forms for each individual line item together, rather than having one big block for normal output followed by one big block of parseable output. That way it\u0027s easier to see that the output always corresponds to each other. Otherwise, I would be worried that one of these days someone may add some extra output to one of the blocks but forget to add it to the other.\n\nYou could try to make this more readable with a helper macro, maybe something like\n```\n#define print2(normal, parseable, ...) printf(show_option.m_flag ? parseable : normal, __VA_ARGS__)\n```",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "683d637c_418bca1d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Added 2 helpers here, one for cases where we want to prefix filename and one without. I currently take it as an additional arg, which skips the need for a global var. It should be useable from elsewhere too if we decide to expand its use.",
+      "parentUuid": "37f38eda_aca55070",
       "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95dc4cf4_5bb2964c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Added the filename prefix to dumping. The new test cases should show sample outputs. Lmk if those are in line with what you were expecting.",
+      "parentUuid": "be4c259d_5f075b7c",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7286d4c8_3305c177",
@@ -82,6 +136,30 @@
       "writtenOn": "2023-06-22T00:21:23Z",
       "side": 1,
       "message": "I wonder if we should just keep all machine-parseable numbers in decimal, since parsing hex can be a bit cumbersome from some environments (like shell)?",
+      "range": {
+        "startLine": 96,
+        "startChar": 26,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8ab9fb_e3b4966c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7286d4c8_3305c177",
       "range": {
         "startLine": 96,
         "startChar": 26,
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7196d15c_06034ba7",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d103fb0f_76766c44",
+      "range": {
+        "startLine": 99,
+        "startChar": 11,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c580801_10fec627",
@@ -128,6 +230,30 @@
       "writtenOn": "2023-06-22T00:21:23Z",
       "side": 1,
       "message": "All of these fields are still part of the preamble, so this should all be `...::preamble::header_version::...`, `...::preamble::body_load_address::...`, etc.",
+      "range": {
+        "startLine": 497,
+        "startChar": 18,
+        "endLine": 497,
+        "endChar": 33
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34efee2c_ab3d7c71",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c580801_10fec627",
       "range": {
         "startLine": 497,
         "startChar": 18,
@@ -161,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0460e543_2e811bee",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6831ffbb_971232b1",
+      "range": {
+        "startLine": 510,
+        "startChar": 11,
+        "endLine": 510,
+        "endChar": 43
+      },
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d172efb9_f96afe9f",
@@ -174,6 +324,24 @@
       "writtenOn": "2023-06-22T00:21:23Z",
       "side": 1,
       "message": "We should also allocate a long-form option (e.g. `--parseable`). I also think it might be better to use a capital letter for the short form: if we want to expand this concept of parseable output to other commands in the future it would be nice to have some standardization, and that would make it less likely that the letter is already used in other commands. So I guess something like `-P` or `-M`?",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4175b39_993b7684",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-23T04:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d172efb9_f96afe9f",
       "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
