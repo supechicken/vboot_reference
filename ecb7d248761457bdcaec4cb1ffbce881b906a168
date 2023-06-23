@@ -354,6 +354,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f057d8_bbf7b29e",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-23T19:17:41Z",
+      "side": 1,
+      "message": "JSON is a known stable format.  this is proposing a completely new unique format that no one else understands.  i don\u0027t see how \"everyone has to write a bespoke parser with their own bugs\" is better than \"just use JSON like everyone else, and if you want to write shell scripts, use jq\".\n\nhttps://www.chromium.org/chromium-os/platform/#data-serialization",
+      "parentUuid": "fe2ae6d8_e84bf309",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
