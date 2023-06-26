@@ -16,6 +16,24 @@
       "message": "tests/futility/data/fw_gbb.bin\n  tests/futility/data/bios_peppy_mp.bin\n  tests/futility/data/sample.vbpubk2\n  tests/futility/data/sample.vbprik2\n  tests/testkeys/key_rsa2048.pem\n  tests/testkeys/key_rsa8192.pub.pem\n\nAre the files from above that are currently not supported by the -P flag. Let me know if we should expand support there too.\nI didn\u0027t initially add support for these other formats since the parsing and info printing is done elsewhere (not cmd_show)",
       "revId": "5556531e69b4fbf8e10fc475edc97d9422697048",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd5efe3_72ad4adb",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-26T04:32:38Z",
+      "side": 1,
+      "message": "Julius thought we should:\n\n\u003e Please implement it for all sub-forms of show, for consistency. (Note that many are not implemented in this file but in the individual file type files, e.g. file_type_bios.c.)\n\nHowever, I\u0027m not sure if it\u0027s worth the effort given that a large amount of code needs to be modified, and that we have only one use case atm. The only thing I care is that futility should exit with an error if `-P` is passed for an unsupported type.",
+      "parentUuid": "6d686630_7160d297",
+      "revId": "5556531e69b4fbf8e10fc475edc97d9422697048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
