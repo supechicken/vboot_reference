@@ -16,6 +16,24 @@
       "message": "Do we need to check if `bootloader_address \u003e\u003d body_load_address`?",
       "revId": "0549e3c181ed6a29a16a109efd1d171c85836e74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553b449c_f3ddda77",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-26T21:43:34Z",
+      "side": 1,
+      "message": "I mean, futility sets it up that way (see the code in vb1_helper.c)? We generally completely trust the values of in the preamble at this point, so I don\u0027t think there\u0027s much of a point in trying to sprinkle in individual sanity checks like that. If the values aren\u0027t exactly what they need to be things are bad anyway, whether that causes an overflow or not.",
+      "parentUuid": "92ad2c59_be488c6e",
+      "revId": "0549e3c181ed6a29a16a109efd1d171c85836e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
