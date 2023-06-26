@@ -61,6 +61,8 @@ DEFINE_boolean force "$FLAGS_FALSE" \
   "Skip validity checks and make the change" "f"
 DEFINE_boolean default_rw_root "${FLAGS_TRUE}" \
   "When --remove_rootfs_verification is set, change root mount option to RW." ""
+DEFINE_boolean enable_kdump "${FLAGS_FALSE}" \
+  "Enable Kdump." ""
 
 # Parse command line
 FLAGS "$@" || exit 1
@@ -293,6 +295,16 @@ resign_ssd_kernel() {
     elif [ "${FLAGS_disable_console}" = "${FLAGS_TRUE}" ]; then
       debug_msg "Disabling serial console"
       kernel_config="$(insert_parameter "${kernel_config}" "console=")"
+      debug_msg "New kernel config: ${kernel_config}"
+    fi
+
+    if [ "${FLAGS_enable_kdump}" = "${FLAGS_TRUE}" ]; then
+      debug_msg "Enabling kdump"
+      kernel_config="$(insert_parameter "${kernel_config}" "crashkernel=256M")"
+      debug_msg "New kernel config: ${kernel_config}"
+    else
+      debug_msg "Disabling kdump"
+      kernel_config="$(remove_parameter "${kernel_config}" "crashkernel=256M")"
       debug_msg "New kernel config: ${kernel_config}"
     fi
 
