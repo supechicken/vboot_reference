@@ -62,6 +62,30 @@
       },
       "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd4cc82_6dc35b53",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_kern_preamble.bin",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-26T15:42:07Z",
+      "side": 1,
+      "message": "This space is present in source `kern_preamble.bin` so if I remove it here, the diff fails. This space is also present in all the other `expect_output` files.",
+      "parentUuid": "17c723db_1c864670",
+      "range": {
+        "startLine": 17,
+        "startChar": 55,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

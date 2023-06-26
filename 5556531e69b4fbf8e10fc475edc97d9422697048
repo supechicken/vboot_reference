@@ -34,6 +34,24 @@
       "parentUuid": "6d686630_7160d297",
       "revId": "5556531e69b4fbf8e10fc475edc97d9422697048",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb710c7_3132009f",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-26T15:42:07Z",
+      "side": 1,
+      "message": "Ah I missed that, let me look into adding this for the other files for now, I\u0027ll come back here to post if they become tricky to implement",
+      "parentUuid": "7dd5efe3_72ad4adb",
+      "revId": "5556531e69b4fbf8e10fc475edc97d9422697048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
