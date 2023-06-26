@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a7640a_cb4388f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-26T17:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8bd103_49058554",
+      "revId": "b9ee8f976acce05c6d76c916a725822afb1e8013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e173702_980fef01",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-22T19:32:35Z",
       "side": 1,
       "message": "optional arguments are specified with `[...]`",
+      "revId": "b9ee8f976acce05c6d76c916a725822afb1e8013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "776f1ace_03f1a914",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-26T17:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e173702_980fef01",
       "revId": "b9ee8f976acce05c6d76c916a725822afb1e8013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
