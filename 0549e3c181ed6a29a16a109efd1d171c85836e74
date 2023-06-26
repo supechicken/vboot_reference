@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ad2c59_be488c6e",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-26T02:21:07Z",
+      "side": 1,
+      "message": "Do we need to check if `bootloader_address \u003e\u003d body_load_address`?",
+      "revId": "0549e3c181ed6a29a16a109efd1d171c85836e74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
