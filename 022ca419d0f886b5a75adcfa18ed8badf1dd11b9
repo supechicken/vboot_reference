@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "363c7a17_d63ec04b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-06-26T17:23:57Z",
+      "side": 1,
+      "message": "nit/question: should we remove `/system/etc/capabilities_list` from the output image after we\u0027ve applied them?\n\non the one hand, we\u0027d be consistent end-to-end (bss -\u003e signer) with squashfs images, which don\u0027t have such a file\non the other hand, it would mean we\u0027d be inconsistent between signed/unsigned erofs images...",
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d653062c_eb9e4409",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-06-26T08:25:16Z",
       "side": 1,
       "message": "Unrelated to capabilities, but I also changed this for consistency with board_specific_setup.py (crrev.com/i/6049444)",
+      "range": {
+        "startLine": 548,
+        "startChar": 34,
+        "endLine": 548,
+        "endChar": 42
+      },
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd22700_2baa47e0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-06-26T17:23:57Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "d653062c_eb9e4409",
       "range": {
         "startLine": 548,
         "startChar": 34,
