@@ -426,9 +426,21 @@ sign_android_internal() {
         "${system_mnt}" "${system_img}"
 
   elif [[ "${image_type}" == "erofs" ]]; then
-    # TODO(b/286015959): Preserve capabilities for EROFS as well.
     info "Unpacking erofs system image to ${system_mnt}"
     sudo "${fsck_erofs}" "--extract=${system_mnt}" "${system_img}"
+
+    # Use /system/etc/capabilities_list, as fsck.erofs does not yet support
+    # extraction with xattrs.
+    local capabilities_list="${system_mnt}/system/etc/capabilities_list"
+    if [[ ! -f "${capabilities_list}" ]]; then
+      die "${capabilities_list} does not exist"
+    fi
+
+    while read line; do
+      # Add ${system_mnt} as a prefix.
+      # Example of a line: "/system/bin/run-as cap_setgid,cap_setuid=ep"
+      echo "${system_mnt}${line}" >> "${system_capabilities_orig}"
+    done < "${capabilities_list}"
 
     # List all files inside the image.
     find "${system_mnt}" > "${working_dir}/image_file_list.orig"
@@ -505,15 +517,12 @@ sign_android_internal() {
     info "Packages cache ${packages_cache} does not exist. Skip regeneration."
   fi
 
-  if [[ "${image_type}" == "squashfs" ]]; then
-    # Apply original capabilities to system image and verify correctness.
-    # TODO(b/286015959): Support this for EROFS as well.
-    if ! apply_capabilities "${system_mnt}" "${system_capabilities_orig}"; then
-      return 1
-    fi
-    if ! capabilities_integrity_check "${system_mnt}" "${working_dir}"; then
-      return 1
-    fi
+  # Apply original capabilities to system image and verify correctness.
+  if ! apply_capabilities "${system_mnt}" "${system_capabilities_orig}"; then
+    return 1
+  fi
+  if ! capabilities_integrity_check "${system_mnt}" "${working_dir}"; then
+    return 1
   fi
 
   local old_size=$(stat -c '%s' "${system_img}")
@@ -536,7 +545,7 @@ sign_android_internal() {
     info "Repacking erofs image"
     # TODO(b/286165395): Detect the original EROFS compression type and use it
     #                    instead of always using lz4hc.
-    sudo "${mkfs_erofs}" -z lz4hc --file-contexts "${file_contexts}" \
+    sudo "${mkfs_erofs}" -z lz4hc -C262144 --file-contexts "${file_contexts}" \
       "${system_img}" "${system_mnt}"
   fi
 
