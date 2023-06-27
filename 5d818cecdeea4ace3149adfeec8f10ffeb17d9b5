@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea113a3_6b5bdc83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "confirmed still working - http://screen/AZ8PFqVsQAR89BZ",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1750fbf2_8b1cd418",
@@ -14,6 +31,24 @@
       "writtenOn": "2023-06-27T04:28:58Z",
       "side": 1,
       "message": "what you\u0027re doing below is pretty standard stuff.  you only need the first sentence in this comment block.",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f29cb8d_e13bb6e0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1750fbf2_8b1cd418",
       "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -35,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74984f23_a1df37f7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d92eb6_2283dbb6",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87e19c69_384d59a6",
@@ -48,6 +101,24 @@
       "writtenOn": "2023-06-27T04:28:58Z",
       "side": 1,
       "message": "```suggestion\n  while [[ \"$#\" -gt 0 ]]; do\n```\n\nthis is bash, so always use `[[` and never `[`\n\nwe omit braces with one-char builtins like `$@` or `$1`\n\nsince `-gt` only works with integers, and we always know `$@` is an integer, we usually allow people to omit quotes.  but we also don\u0027t ban them.  shell is weird with math.",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4815433e_ddde5a0c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "ah, tricium was complaining about missing braces so I added them back in. can remove",
+      "parentUuid": "87e19c69_384d59a6",
       "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6469c5cc_8ed79a4b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2f581c_346379de",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da12b3a3_19271bfb",
@@ -99,6 +188,24 @@
       "writtenOn": "2023-06-27T04:28:58Z",
       "side": 1,
       "message": "you need to declare a default before the parsing loop",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a2e3db_82d7a409",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da12b3a3_19271bfb",
       "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be31ce64_abbe48ad",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0532dcf_5661e490",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6065e237_592ddf25",
@@ -137,6 +262,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c080a7aa_0eb9dccd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6065e237_592ddf25",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9da9e63f_421ad5f8",
@@ -150,6 +293,24 @@
       "writtenOn": "2023-06-27T04:28:58Z",
       "side": 1,
       "message": "i don\u0027t see how these `$#` checks work anymore.  your while loop above fully consumed `$@`, so `$#` is always going to be 0.\n\nyou could restore `$@` once you\u0027re done parsing above.  might be worth it so you don\u0027t have to touch an anything else.\n\n```\nset -- \"${script_args[@]}\"\n```",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b59ed4_d86b61c0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T16:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da9e63f_421ad5f8",
       "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
