@@ -3,6 +3,64 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df9dd27f_b4d1db2a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T12:14:48Z",
+      "side": 1,
+      "message": "missing `local line`",
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b79950_fbaa52a4",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T12:14:48Z",
+      "side": 1,
+      "message": "\u003e info: read without -r will mangle backslashes.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2162\n\nPlease fix.",
+      "parentUuid": "628104a9_43d97f18",
+      "range": {
+        "startLine": 439,
+        "startChar": 10,
+        "endLine": 439,
+        "endChar": 14
+      },
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1f029f_3bfa3fe9",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T12:14:48Z",
+      "side": 1,
+      "message": "can\u0027t you use `sed` instead of a while loop ?\n\n`sed \"s|^|${system_mnt}|\" ...`\n\n(assuming `$system_mnt` will never contain `|`)",
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "363c7a17_d63ec04b",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
