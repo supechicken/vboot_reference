@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8366f0f2_c0b49303",
+        "filename": "futility/misc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T14:28:33Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (!size) {\n```",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 2
+      },
+      "revId": "879ce0096891199a622345116588530da6026986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee83f0b7_ae347cb8",
+        "filename": "futility/misc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T14:28:33Z",
+      "side": 1,
+      "message": "other APIs in here seem to return errno",
+      "revId": "879ce0096891199a622345116588530da6026986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721c25f4_14d26ecb",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T14:28:33Z",
+      "side": 1,
+      "message": "incorrect indentation style for descriptions",
+      "revId": "879ce0096891199a622345116588530da6026986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31c977d_acf60c2c",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T14:28:33Z",
+      "side": 1,
+      "message": "at the very least, use `size_t` for sizes to match ExtractVmlinuz APIs.  although really feels like these should all be explicit uin64_t.",
+      "revId": "879ce0096891199a622345116588530da6026986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
