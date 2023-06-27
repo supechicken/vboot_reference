@@ -402,6 +402,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f95511a_71104b03",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-06-27T15:18:55Z",
+      "side": 1,
+      "message": "From an implementation standpoint, I think we would go down the route of parallel functions for printing in JSON vs regular print. As I\u0027ve been modifying print functions in `futility/file_type_bios.c` I\u0027ve been running into cases where `FT_PRINT` starts to become unweildy. \nSince I\u0027m the only user atm, and I really only care about a specific set of values, I would like to suggest this impl again: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4609016 as the easiest way forward.\nJSON/Psuedo format is still viable, and I have some WIP changes locally handling other file types, but the code here will probably start to have parallel paths to support the nice formatting we have now and the parseable format we\u0027d like to add.\nSimilar too with the individual piece that Jae suggested above, I could see that being a seperate executable entirely since the logic/flows could be so different",
+      "parentUuid": "f5853aaf_0cebc625",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
