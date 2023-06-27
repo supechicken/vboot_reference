@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9844ab0c_0b36f1e2",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-27T05:23:14Z",
+      "side": 1,
+      "message": "I would leave this as is.\n- The file is quite small (just a few lines).\n- For consistency we would want to remove the file from squashfs as well but this would require us to add several lines of code (so as not to break the image_file_list check, etc).",
+      "parentUuid": "363c7a17_d63ec04b",
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d653062c_eb9e4409",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 2
