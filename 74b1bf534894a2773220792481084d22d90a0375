@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f3be69_6dc6bef5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T20:53:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1559b06_573c5ead",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f27a885_fe2a74b5",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-27T18:39:49Z",
       "side": 1,
       "message": "```suggestion\n        script_args+\u003d(\"$1\")\n```",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0d3234_cc4dc7a6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T20:53:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f27a885_fe2a74b5",
       "revId": "74b1bf534894a2773220792481084d22d90a0375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9e146f_3a179a8f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T20:53:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff05889_782f1465",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1273,
+        "endChar": 34
+      },
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "686b1fdc_b4e4d3f1",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe92a254_2a428c24",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T20:53:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "686b1fdc_b4e4d3f1",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "207d5a3b_960b5ca9",
@@ -88,6 +166,24 @@
       "writtenOn": "2023-06-27T18:39:49Z",
       "side": 1,
       "message": "are you sure this is correct ?  you basically ripped out the `--cloud-signing` as if it was never specified, so $# won\u0027t be 6 options even if that option was specified.",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e32796a_277f2fc5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-06-27T20:53:03Z",
+      "side": 1,
+      "message": "that\u0027s fair, reverting this change",
+      "parentUuid": "207d5a3b_960b5ca9",
       "revId": "74b1bf534894a2773220792481084d22d90a0375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
