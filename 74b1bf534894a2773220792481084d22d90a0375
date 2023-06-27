@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1559b06_573c5ead",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T18:39:49Z",
+      "side": 1,
+      "message": "please document that this option isn\u0027t actually doing anything yet (unless i missed something)",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f27a885_fe2a74b5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T18:39:49Z",
+      "side": 1,
+      "message": "```suggestion\n        script_args+\u003d(\"$1\")\n```",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff05889_782f1465",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T18:39:49Z",
+      "side": 1,
+      "message": "seems like you could leave this block as-is -- just put it after the `$@` rebuild below (the `set -- ...` line)",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1273,
+        "endChar": 34
+      },
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "686b1fdc_b4e4d3f1",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T18:39:49Z",
+      "side": 1,
+      "message": "```suggestion\n  if [[ \"${CLOUD_SIGNING}\" \u003d\u003d true ]]; then\n```\n\nalways use `\u003d\u003d` with `[[` and never `\u003d`",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207d5a3b_960b5ca9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T18:39:49Z",
+      "side": 1,
+      "message": "are you sure this is correct ?  you basically ripped out the `--cloud-signing` as if it was never specified, so $# won\u0027t be 6 options even if that option was specified.",
+      "revId": "74b1bf534894a2773220792481084d22d90a0375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

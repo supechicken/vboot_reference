@@ -125,6 +125,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8e47e61d_d4f0e361",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T18:39:49Z",
+      "side": 1,
+      "message": "tricium shouldn\u0027t be complaining about `$@` or `$1`.  i also don\u0027t see it with current PS.",
+      "parentUuid": "4815433e_ddde5a0c",
+      "revId": "5d818cecdeea4ace3149adfeec8f10ffeb17d9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f2201773_dcc96b2d",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 5
