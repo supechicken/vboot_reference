@@ -69,6 +69,24 @@
       "message": "Is there a way with futility to set GBB flags in a file instead of the actual flash chip?\n\nThis script provides this option...",
       "revId": "9020299e38c17642995f13a0fe8b09178f442d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c4aa620_8baa9210",
+        "filename": "scripts/image_signing/set_gbb_flags.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-27T06:34:00Z",
+      "side": 1,
+      "message": "Yes, `futility gbb --set --flags 0x39 image.bin`. `futility` accesses the flash only if `--flash` is passed.",
+      "parentUuid": "1e9ce8ba_91b2a343",
+      "revId": "9020299e38c17642995f13a0fe8b09178f442d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
