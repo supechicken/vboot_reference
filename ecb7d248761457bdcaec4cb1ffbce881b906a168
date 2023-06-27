@@ -378,6 +378,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5853aaf_0cebc625",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-27T14:41:38Z",
+      "side": 1,
+      "message": "i also don\u0027t buy the \"i have a full shell environment, but i can\u0027t afford a JSON parser\" argument.  this smells like a general bias against JSON because it has origins in JavaScript, and JS is \"big and bloated\".  i\u0027ll point out that `jq` is significantly smaller than bash, and on the order of grep or sed.  it\u0027s not part of POSIX and thus won\u0027t have as much portability, but we shouldn\u0027t be making bad decisions because something isn\u0027t in POSIX.\n\nif you want to talk about embedded systems with extreme size constraints, then *maybe*, but those aren\u0027t relevant to this code as they wouldn\u0027t be creating a futility program to pipe+fork+exec in the first place.  plus, there are extremely tiny JSON C parsers out there (like [jsmn](https://github.com/zserge/jsmn)).\n\nencouraging people to use grep+cut means driving them to fragile solutions.  this format is forcing the input name as the prefix, and that is a filesystem path that can have any byte value, including spaces \u0026 colons \u0026 newlines.  \"the user should just know not to do that\" is not reasonable -- if the format is designed poorly in the first place, it\u0027s the format\u0027s fault.  how the caller arrived at a particular name can take many routes -- maybe it\u0027s a local file on disk and the path (parent or file itself) contains those values.  or it\u0027s a /dev path that is found via bus or label paths.\n\nif you really want some buggy bespoke format, go for it, but don\u0027t do it *instead of* JSON.  we need reliable formats in CrOS, we\u0027re already shipping `jq` in the rootfs \u0026 minios \u0026 factory, and should be trivial to include in recovery images.",
+      "parentUuid": "e5f057d8_bbf7b29e",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
