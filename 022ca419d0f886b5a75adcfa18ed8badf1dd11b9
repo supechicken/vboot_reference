@@ -42,6 +42,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff87944d_04ec2b84",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-28T06:58:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d6b79950_fbaa52a4",
+      "range": {
+        "startLine": 439,
+        "startChar": 10,
+        "endLine": 439,
+        "endChar": 14
+      },
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a0a002f_e4b96fec",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-28T06:58:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "df9dd27f_b4d1db2a",
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1f029f_3bfa3fe9",
@@ -55,6 +97,24 @@
       "writtenOn": "2023-06-27T12:14:48Z",
       "side": 1,
       "message": "can\u0027t you use `sed` instead of a while loop ?\n\n`sed \"s|^|${system_mnt}|\" ...`\n\n(assuming `$system_mnt` will never contain `|`)",
+      "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8aff59a_6255b9e1",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-28T06:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1f029f_3bfa3fe9",
       "revId": "022ca419d0f886b5a75adcfa18ed8badf1dd11b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

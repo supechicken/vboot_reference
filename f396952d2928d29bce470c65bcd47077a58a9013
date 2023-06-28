@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4669d675_3e84484e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-06-28T06:58:13Z",
+      "side": 1,
+      "message": "Naive question:\n\nI locally test my change with `sudo ... ./sign_official_build.sh` described here http://go/arc-making-changes-chromeos#locally-signing-an-image\n\nBut I guess it always pass even if I forget to put sudo in lines like this?\nIs there a better way to test the script locally?",
+      "range": {
+        "startLine": 441,
+        "startChar": 4,
+        "endLine": 442,
+        "endChar": 37
+      },
+      "revId": "f396952d2928d29bce470c65bcd47077a58a9013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
