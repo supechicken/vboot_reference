@@ -22,6 +22,30 @@
       },
       "revId": "f396952d2928d29bce470c65bcd47077a58a9013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787336ed_67d9cb42",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-06-28T14:24:08Z",
+      "side": 1,
+      "message": "we don\u0027t expect people to run sudo themselves.  that\u0027s why the script has it sprinkled throughout.  but we try to avoid using sudo when we don\u0027t have to because it slows things down.",
+      "parentUuid": "4669d675_3e84484e",
+      "range": {
+        "startLine": 441,
+        "startChar": 4,
+        "endLine": 442,
+        "endChar": 37
+      },
+      "revId": "f396952d2928d29bce470c65bcd47077a58a9013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
