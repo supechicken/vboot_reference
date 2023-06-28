@@ -671,8 +671,6 @@ uint8_t *CreateKernelBlob(uint8_t *vmlinuz_buf, uint32_t vmlinuz_size,
 		} else {
 			bootloader_data = vmlinuz_buf;
 			bootloader_size = vmlinuz_size - tmp;
-			if (bootloader_size & (CROS_ALIGN - 1))
-				FATAL("EFI stub size should be 4K aligned.\n");
 		}
 	}
 
