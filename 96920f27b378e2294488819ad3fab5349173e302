@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d515a6_1afd7373",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-29T06:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87562190_87d4bcbe",
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cec4f85c_9fda04ca",
@@ -89,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31113df_6329244a",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-29T06:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d639050_bfffbba3",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bba1828_f139c6b3",
@@ -102,6 +144,24 @@
       "writtenOn": "2023-06-05T07:17:47Z",
       "side": 1,
       "message": "Is this because we need to do `find_firmware_section` below?",
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe47c5c_76f7922c",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-29T06:31:58Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "8bba1828_f139c6b3",
       "revId": "96920f27b378e2294488819ad3fab5349173e302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -171,6 +231,54 @@
         "startChar": 55,
         "endLine": 79,
         "endChar": 63
+      },
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dfc914f_8c6dee81",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-29T06:31:58Z",
+      "side": 1,
+      "message": "I\u0027ve changed it now\n\nIf the user specifies RO_FMAP we\u0027ll have a duplicate but that won\u0027t cause problems.",
+      "parentUuid": "6c8774b3_664442be",
+      "range": {
+        "startLine": 79,
+        "startChar": 55,
+        "endLine": 79,
+        "endChar": 63
+      },
+      "revId": "96920f27b378e2294488819ad3fab5349173e302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4afcacd9_c549b0fd",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-29T06:31:58Z",
+      "side": 1,
+      "message": "The FMAP region is always stored in the RO, I don\u0027t think we need to change anything here.",
+      "parentUuid": "70e131d9_736f602d",
+      "range": {
+        "startLine": 79,
+        "startChar": 41,
+        "endLine": 79,
+        "endChar": 53
       },
       "revId": "96920f27b378e2294488819ad3fab5349173e302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
