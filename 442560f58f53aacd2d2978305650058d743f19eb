@@ -34,6 +34,41 @@
       "parentUuid": "1ce33b50_cb6c0029",
       "revId": "442560f58f53aacd2d2978305650058d743f19eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3697ac44_509bed0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T22:07:12Z",
+      "side": 1,
+      "message": "Hmm... okay, guess that works. It would really make more sense to get rid of the alignment entirely if we can, but I\u0027m not really sure if I may be overlooking a good reason for why it exists, and I don\u0027t really want to dig into that right now. I guess we can do this for now and then we could still get rid of the alignment later if we ever wanted to, your crdyboot code would keep working either way.",
+      "parentUuid": "8376455e_eb2b60c3",
+      "revId": "442560f58f53aacd2d2978305650058d743f19eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6757727e_e272284d",
+        "filename": "futility/vb1_helper.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T22:07:12Z",
+      "side": 1,
+      "message": "```suggestion\n\tmemcpy(g_bootloader_data, bootloader_data, bootloader_size);\n\tmemset(g_bootloader_data + bootloader_size, \u0027\\0\u0027,\n\t       g_bootloader_size - bootloader_size);\n```\nWe don\u0027t want to sign random undefined bytes.",
+      "revId": "442560f58f53aacd2d2978305650058d743f19eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
