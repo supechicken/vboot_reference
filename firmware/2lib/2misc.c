@@ -389,6 +389,12 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 	    sd->last_fw_slot == sd->fw_slot &&
 	    tries == 0) {
 		/*
+		 * If there is only RW A slot available, we have no other slot
+		 * to fall back to.
+		 */
+		if ((ctx->flags & VB2_CONTEXT_ONLY_ONE_SLOT) && sd->fw_slot == 0)
+			return VB2_ERROR_API_NEXT_SLOT_UNAVAILABLE;
+		/*
 		 * We used up our last try on the previous boot, so fall back
 		 * to the other slot this boot.
 		 */
