@@ -555,6 +555,15 @@ static void phase2_tests(void)
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_FW_SLOT, "  recovery reason");
 
+	reset_common_data(FOR_MISC);
+	retval_vb2_select_fw_slot = VB2_ERROR_API_NEXT_SLOT_UNAVAILABLE;
+	ctx->flags |= VB2_CONTEXT_ONLY_ONE_SLOT;
+	TEST_EQ(vb2api_fw_phase2(ctx), VB2_ERROR_API_NEXT_SLOT_UNAVAILABLE,
+		"phase2 only one slot");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_TRY_NEXT), 0, "  didn't select slot b");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
+		VB2_RECOVERY_FW_SLOT, "  recovery reason");
+
 	/* S3 resume exits before clearing RAM */
 	reset_common_data(FOR_MISC);
 	ctx->flags |= VB2_CONTEXT_S3_RESUME;
@@ -623,6 +632,14 @@ static void phase3_tests(void)
 	reset_common_data(FOR_MISC);
 	retval_vb2_load_fw_preamble = VB2_ERROR_MOCK;
 	TEST_EQ(vb2api_fw_phase3(ctx), VB2_ERROR_MOCK, "phase3 keyblock");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
+		VB2_RECOVERY_RO_INVALID_RW, "  recovery reason");
+
+	reset_common_data(FOR_MISC);
+	retval_vb2_load_fw_keyblock = VB2_ERROR_MOCK;
+	ctx->flags |= VB2_CONTEXT_ONLY_ONE_SLOT;
+	TEST_EQ(vb2api_fw_phase3(ctx), VB2_ERROR_MOCK, "phase3 only one slot");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_TRY_NEXT), 0, "  didn't select slot b");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST),
 		VB2_RECOVERY_RO_INVALID_RW, "  recovery reason");
 }

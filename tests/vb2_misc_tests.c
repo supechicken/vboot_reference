@@ -828,6 +828,20 @@ static void select_slot_tests(void)
 	TEST_EQ(ctx->flags & VB2_CONTEXT_FW_SLOT_B, 0, "didn't choose B");
 	TEST_EQ(vb2_nv_get(ctx, VB2_NV_TRY_COUNT), 3, "tries not decremented");
 
+	/* Slot A fails, but slot B not present */
+	reset_common_data();
+	ctx->flags |= VB2_CONTEXT_ONLY_ONE_SLOT;
+	vb2_nv_set(ctx, VB2_NV_TRY_COUNT, 0);
+	vb2_nv_set(ctx, VB2_NV_FW_TRIED, 0);
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
+	TEST_EQ(vb2_select_fw_slot(ctx), VB2_ERROR_API_NEXT_SLOT_UNAVAILABLE,
+		"don't try slot B if only one slot present");
+	TEST_EQ(sd->status & VB2_SD_STATUS_CHOSE_SLOT, 0, "didn't choose slot");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_FW_TRIED), 0, "tried A");
+	TEST_EQ(sd->fw_slot, 0, "A remain selected");
+	TEST_EQ(ctx->flags & VB2_CONTEXT_FW_SLOT_B, 0, "didn't choose B");
+	TEST_EQ(vb2_nv_get(ctx, VB2_NV_TRY_NEXT), 0, "didn't try B next");
+
 	/* Tried/result get copied to the previous fields */
 	reset_common_data();
 	vb2_nv_set(ctx, VB2_NV_FW_TRIED, 0);
