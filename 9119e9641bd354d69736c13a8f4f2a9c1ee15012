@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41890f1d_51f79622",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-06-29T15:18:06Z",
+      "side": 1,
+      "message": "Removed the obsolete function",
+      "parentUuid": "d8705aab_83617bdb",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c52e1b0_6abe44f1",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 1
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "You are right. This `FATAL()` can be dropped entirely here.",
       "parentUuid": "006a5f42_8c5c766c",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abebe9b_9dc382de",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-06-29T15:18:06Z",
+      "side": 1,
+      "message": "Thanks, dropping the FATAL() did the trick. Futility detects the FW_B is missing and does not fail signing now.",
+      "parentUuid": "543f414e_b38c1924",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
