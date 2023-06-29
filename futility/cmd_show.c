@@ -201,7 +201,8 @@ done:
 }
 
 static int fw_show_metadata_hash(const char *name, enum bios_component body_c,
-				 struct vb2_fw_preamble *pre)
+				 struct vb2_fw_preamble *pre,
+				 const char *filename)
 {
 	struct vb2_hash real_hash;
 	struct vb2_hash *body_hash =
@@ -226,7 +227,7 @@ static int fw_show_metadata_hash(const char *name, enum bios_component body_c,
 		putchar('\n');
 	}
 
-	if (cbfstool_get_metadata_hash(name, fmap_name[body_c], &real_hash) !=
+	if (cbfstool_get_metadata_hash(filename, fmap_name[body_c], &real_hash) !=
 		    VB2_SUCCESS ||
 	    real_hash.algo == VB2_HASH_INVALID) {
 		ERROR("Failed to get metadata hash. Firmware body is"
@@ -261,7 +262,7 @@ static int fw_show_metadata_hash(const char *name, enum bios_component body_c,
 }
 
 int show_fw_preamble_buf(const char *name, uint8_t *buf, uint32_t len,
-			 void *data)
+			 void *data, const char *filename)
 {
 	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)buf;
 	struct bios_state_s *state = (struct bios_state_s *)data;
@@ -401,7 +402,7 @@ int show_fw_preamble_buf(const char *name, uint8_t *buf, uint32_t len,
 			return 1;
 		}
 	} else if (state) { /* Only works for images with at least FW_MAIN_A */
-		if (fw_show_metadata_hash(name, body_c, pre2))
+		if (fw_show_metadata_hash(name, body_c, pre2, filename))
 			return 1;
 	}
 
@@ -434,7 +435,7 @@ int ft_show_fw_preamble(const char *name, void *data)
 	if (futil_open_and_map_file(name, &fd, FILE_RO, &buf, &len))
 		return 1;
 	ft_print_header = "fw_pre";
-	rv = show_fw_preamble_buf(name, buf, len, data);
+	rv = show_fw_preamble_buf(name, buf, len, data, name);
 
 	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
 	return rv;
