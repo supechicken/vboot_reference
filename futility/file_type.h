@@ -73,7 +73,7 @@ int futil_file_type_sign(enum futil_file_type type, const char *filename);
 
 /* Declared for use inside other show functions. */
 int show_fw_preamble_buf(const char *name, uint8_t *buf, uint32_t len,
-			 void *data);
+			 void *data, const char *filename);
 int show_vb21_pubkey_buf(const char *name, uint8_t *buf, uint32_t len,
 			 void *data);
 
