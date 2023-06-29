@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25f46e9_26cb4e8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2023-06-29T12:38:46Z",
+      "side": 1,
+      "message": "I think we do not need this. \n\nInstead we should add crashkernel as a kernel parameter to all the dev images for boards that support kdump.\n\nWe should start looking into sending a cl to add it as allowed parameter to the signer:\nhttps://chrome-internal-review.googlesource.com/c/chromeos/cros-signing/+/5961507",
+      "revId": "b18fea0fb75d8104b629aab6241e5629031c4a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
