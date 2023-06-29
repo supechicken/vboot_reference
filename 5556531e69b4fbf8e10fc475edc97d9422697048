@@ -70,6 +70,24 @@
       "parentUuid": "2eb710c7_3132009f",
       "revId": "5556531e69b4fbf8e10fc475edc97d9422697048",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e286d27_9aaf15c6",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Well, please do as much as you have time for, and then for the others please make sure that they fail hard (i.e. calling `futility show -P` on a file type where not all output has been implemented yet should exit with an error code so it is absolutely clear to the caller that they didn\u0027t get what they expected, in case of later version mismatches). I think it would be important to have `gbb` and `bios`, the other remaining types aren\u0027t really widely used.",
+      "parentUuid": "2eb710c7_3132009f",
+      "revId": "5556531e69b4fbf8e10fc475edc97d9422697048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

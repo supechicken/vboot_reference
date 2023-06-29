@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da334138_d957c212",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "No, sorry, the filename doesn\u0027t help. A single file may still have multiple keyblocks.\n\nConsider the file types `keyblock` (a raw keyblock file like tests/devkeys/firmware.keyblock) and `bios` (a full firmware image). They both call `show_keyblock()`, but `bios` calls it twice because a firmware image contains two firmware slots with two keyblocks. So for the `keyblock` type, the output should be `keyblock::signature::valid`, and for the `bios` type the output should be `bios::rw_a::keyblock::signature::valid`. That\u0027s why I\u0027m suggesting to have a global variable that can store a prefix, so `ft_show_bios()` can set that to `bios::rw_a::` when it calls `show_firmware_preamble_buf()` (which ends up calling `show_keyblock()`).",
+      "parentUuid": "95dc4cf4_5bb2964c",
+      "revId": "39b640a2ac7916b73d8052639903125f794aa7d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7286d4c8_3305c177",
         "filename": "futility/cmd_show.c",
         "patchSetId": 4

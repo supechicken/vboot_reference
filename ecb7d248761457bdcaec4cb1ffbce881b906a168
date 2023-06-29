@@ -426,6 +426,30 @@
       },
       "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d0e7a8_0e2d56c3",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "\u003e this smells like a general bias against JSON because it has origins in JavaScript, and JS is \"big and bloated\".\n\nNo, this is a specific bias against JSON _in this context_ because JSON is not the right tool for the job. You are misunderstanding the goal here. The goal is not \"serialize the entire output of `futility show` on a file into a format that can then be stored or passed around\". The goal is \"allow a calling process to parse a single or a handful of value(s) from `futility show`\u0027s output in a simple, reliable way that requires no external dependencies\".\n\nJae hit the issue on the head in that really the most natural way to implement this interface would be a `futility show -p kernel::size`. The reason I think we should do it the way I suggested here rather than that way is simply because that way is a lot more complicated to implement and maintain inside of futility, this way also works, and I don\u0027t think there\u0027s enough benefit to make it worth spending the extra effort to implement it that other way. But the goal is ultimately the same—make it possible to query a value. The fact that it looks like a serialization format is incidental, that\u0027s not what it is meant to be, and that doesn\u0027t mean that a true serialization format (like JSON) would be better suited here. I have nothing against JSON for serialization purposes, but that\u0027s just not what we\u0027re trying to do here.\n\nThe concern about portability and not requiring extra dependencies is very real. POSIX _is_ the only standard that you can really rely on in the wider world outside of ChromeOS, and vboot is used in those contexts. I don\u0027t want to have a discussion with the upstream coreboot people that we suddenly need to start requiring `jq` as a build dependency there if I don\u0027t need to. I disagree that there\u0027s anything \"bad\" about this approach that would outweigh these concerns... standardization is useful, but in this context it doesn\u0027t add as much as the other concerns take away. (There are also examples where the caller is not bash and then you may still need a way to read the values without dependencies. futility itself only has a single dependency with flashrom, and that alone is already causing us constant headaches and maintenance issues, and had to be kept optional because requiring it doesn\u0027t work for all our users. The C ecosystem doesn\u0027t offer a standard JSON parser that you can just expect everyone to have, and you may say that makes it a bad choice for writing programs in, but that doesn\u0027t change the reality that it is still all we and our users have to work with right now. The format I\u0027m suggesting here can trivially be parsed with `sscanf()`. JSON cannot.)\n\n\u003e this format is forcing the input name as the prefix, and that is a filesystem path that can have any byte value, including spaces \u0026 colons \u0026 newlines.\n\nYes, I totally agree, and that wasn\u0027t the intention. The filename should not be used as a key. This is supposed to be very simple, the keys should all be constant, and both keys and values should be simple ASCII that don\u0027t contain spaces or the separator tokens (`:` and `\\n`). See my other comments.\n\n\u003e Since I\u0027m the only user atm, and I really only care about a specific set of values, I would like to suggest this impl again\n\nSorry for asking you to shave this yak, but I really think it\u0027s worth solving this for good right now, because it\u0027s bound to come up again in the future and the approach to build library functions for everything is just not very scalable (in relation to what we\u0027re willing and have the resources to maintain). I think we are very close to a good, lasting solution here, we just need to fine-tune it a little more to make sure it is robust and extensible enough.",
+      "parentUuid": "8f95511a_71104b03",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 61
+      },
+      "revId": "ecb7d248761457bdcaec4cb1ffbce881b906a168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

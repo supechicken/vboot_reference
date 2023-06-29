@@ -50,6 +50,526 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a10bca51_94ed415d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "As mentioned in the other thread please don\u0027t include the file name for the reasons Mike explained.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28de626c_84c2793f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Should be `pubkey::api::1.0`",
+      "range": {
+        "startLine": 59,
+        "startChar": 44,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d0f91f_6b6a7691",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "These names can also contain spaces, which we may want to avoid for the parseable output. I think the simplest solution may be to just change the names to use underscores instead (they\u0027re only used for human-readable output for now, so changing them shouldn\u0027t cause any fallout).",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f61553_54239c0c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Please be careful to always be consistent in naming the keys (e.g. `sha1sum` here vs `sha1_sum` below—either is fine by me, but it must be the same everywhere).",
+      "range": {
+        "startLine": 66,
+        "startChar": 51,
+        "endLine": 66,
+        "endChar": 58
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602be8e5_6e7e70dc",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "This is a good example for exactly the kind of thing we must avoid here. You\u0027re printing the section name first as a heading, and then you\u0027re printing the remaining info without that additional context. If you dumped a full firmware image with this, it would look like this:\n```\nkeyblock::VBLOCK_A\nkeyblock::signature::valid\nkeyblock::signature::size::1234\n...\nkeyblock::VBLOCK_B\nkeyblock::signature::invalid\n...\n```\nSo if I want to know if the signature for keyblock B is valid, I cannot just do that with a single line grep. I have to first find the `keyblock::VBLOCK_B` \"heading\" line, and then grep through only the lines that come after that for `keyblock::signature::`. That makes everything a lot more complicated, that\u0027s exactly what we don\u0027t want here. That\u0027s why all prefixes that give context to a line must be repeated on every line, and there must be no \"headings\" that provide necessary context for following lines (i.e. it should look like `keyblock::VBLOCK_A::signature::valid`, `keyblock::VBLOCK_A::size::1234`, `keyblock::VBLOCK_B::signature::invalid`, etc.).",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0259abd_35233e2c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "nit: should have one more colon here I think, so it\u0027s `flags::7::!DEV:DEV:REC`, not `flags::7:!DEV:DEV:REC`.",
+      "range": {
+        "startLine": 86,
+        "startChar": 26,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b4db954_c943e2c2",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Here too. I would use the single colon only to separate lists of equal tokens. the numeric representation of a field is a separate thing from the list of textual representation tokens.",
+      "range": {
+        "startLine": 104,
+        "startChar": 40,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa36ebe_80f302e5",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "nit: Can you change these random error prints to ERROR() while you\u0027re here, so they don\u0027t go to stdout and mess up the parseable output?",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e41cc4_6d6e89b8",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Should be \"pubkey\" as above. However, I don\u0027t think this field should be shown for the parseable output at all, since we generally don\u0027t want to show file names.",
+      "range": {
+        "startLine": 133,
+        "startChar": 41,
+        "endLine": 133,
+        "endChar": 51
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41464e57_85837797",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222064df_54fc22ef",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t make a difference here, but please decide whether you want to use `%d` or `%u` to print algorithm fields and then be consistent everywhere with it (`show_pubkey()` used `%d`).",
+      "range": {
+        "startLine": 167,
+        "startChar": 26,
+        "endLine": 167,
+        "endChar": 27
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acbc02e_469baa96",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Should be `privkey::algorithm` (and `privkey::api` above).",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 12
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08de070e_28094935",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "If we\u0027re calling the other \"pubkey\" let\u0027s call this \"privkey\".",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b12c5d_9b993bb0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "This just prints the algorithm, so should probably be `body::metadata_hash::algorithm::%u::%s` to be consistent with the way other algorithms are printed (and of course there needs to be a prefix before body that matches the one for show_keyblock()).",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9ed0f4_4a075bec",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "We need to print this with a proper machine-parseable prefix as well (e.g. `body::metadata_hash::hex::\u003chash in hex\u003e` or something like that).",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb40947_df0489af",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "This should also change to parseable somehow. Maybe print `body::metadata_hash::valid`/`body::metadata_hash::invalid` based on the match, and then `body::metadata_hash::real_hash::algorithm::%u::%s` and `body::metadata_hash::real_hash::hex::%s` only in the invalid case.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d6032e_8950e1d0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Here we should say `preamble::signature::invalid`, and add an else path that says `preamble::signature::valid` if vb2_verify_fw_preamble() succeeded.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827a4280_a0f99bc2",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "nit: if the keyblock just say `keyblock` I think this should just say `preamble` (without the `fw_`).",
+      "range": {
+        "startLine": 333,
+        "startChar": 7,
+        "endLine": 333,
+        "endChar": 18
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ac64af_a2da93c4",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "`::header_version::`",
+      "range": {
+        "startLine": 336,
+        "startChar": 20,
+        "endLine": 336,
+        "endChar": 36
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f0d03d_f6de64f6",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "`::kernel_subkey::`",
+      "range": {
+        "startLine": 345,
+        "startChar": 20,
+        "endLine": 345,
+        "endChar": 30
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a75771_a30958f1",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "In this case I\u0027d leave the `preamble` out and just say `body::size`. (It\u0027s a field in the preamble but it\u0027s the size of the body, not the preamble. This matches the way you used `body` for the metadata_hash stuff above.)",
+      "range": {
+        "startLine": 358,
+        "startChar": 20,
+        "endLine": 358,
+        "endChar": 27
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e0b0c79_df802779",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "I\u0027d suggest to make these `body::signature::valid`/`::invalid`/`::ignored` to get some consistency with what\u0027s done for the keyblock.",
+      "range": {
+        "startLine": 366,
+        "startChar": 42,
+        "endLine": 366,
+        "endChar": 49
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81c5a91_253bc64a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "This should output `body::signature::invalid`.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f8e8f2_8de4c05f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "(Just to clarify, in the case where it goes in here it shouldn\u0027t show any `body::signature` line. The metadata hash replaces the body signature.)",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d005b2f_0f256bcd",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "This shouldn\u0027t print here. If anything, we could report the `keyblock::hash::` as `valid` or `invalid` in `show_keyblock()`... but honestly, nobody really cares about the keyblock hash (as you can see in there being to explicit output about it in the human-readable version either), so can also just ignore it for now.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d27fc4_c75bb18b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "In practice, I believe this just shows the file name, so we don\u0027t want that here. (If the `disk_img` file type was fully implemented with a show function, then we\u0027d again have the case that a single `futility show` call might show multiple kernel preambles, and they would all need to be prefixed with their respective partition. But futility can\u0027t show full disk images to begin with atm, so we don\u0027t need to worry about that right now.)",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae55c91a_0c845bd4",
         "filename": "futility/cmd_show.c",
         "patchSetId": 12
@@ -79,6 +599,166 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "ae55c91a_0c845bd4",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68c80ec_90998b55",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "`kernel::preamble::signature::invalid` (and print a corresponding `kernel::preamble::signature::valid` otherwise).",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91659e3d_6469c6f1",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "`::header_version::`\n\nPlease decide whether to use `%u.%u` or `%d.%d` for version numbers and be consistent.",
+      "range": {
+        "startLine": 493,
+        "startChar": 25,
+        "endLine": 493,
+        "endChar": 40
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c05ee1_f248da83",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Let\u0027s make this `kernel::body::address` so it looks less weirdly inconsistent with the corresponding bootloader field. Also, I think it might be best to print even addresses in decimal? Or can anyone think of a good reason why that would be a bad idea (considering that this is only meant to be parsed by code, not people)?",
+      "range": {
+        "startLine": 500,
+        "startChar": 7,
+        "endLine": 500,
+        "endChar": 48
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6903bef_b28faafe",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "These next three would then be `kernel::body::size`, `kernel::bootloader::address` and `kernel::bootloader::size`.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c8ff3e5_588f0303",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "`kernel::vmlinuz_header::address` and `kernel::vmlinuz_header::size`.",
+      "range": {
+        "startLine": 516,
+        "startChar": 10,
+        "endLine": 516,
+        "endChar": 38
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f90e0e2_47293e3b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "`kernel::body::signature::valid` or `kernel::body::signature::invalid`.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed7c4d16_8b04ab04",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "The config can also contain spaces and colons and all that stuff, so I think it\u0027s best to just not include it at all in the parseable output. We already have a separate `futility dump_kernel_config` command to extract it.",
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6dbfe2e_87579b49",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T02:37:15Z",
+      "side": 1,
+      "message": "Just put \u0027P\u0027 here so you don\u0027t need two separate `case` blocks below.",
+      "range": {
+        "startLine": 621,
+        "startChar": 26,
+        "endLine": 621,
+        "endChar": 39
+      },
       "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
