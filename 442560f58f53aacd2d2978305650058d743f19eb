@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce33b50_cb6c0029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-29T00:40:29Z",
+      "side": 1,
+      "message": "But does this actually still work for you—I mean, can crdyboot boot an image built with this? Because like you said, bootloader_size will still be 4K aligned, and there is no way to tell that the actual bootstub image was smaller. So your original reven kernel looks like\n\n\u003c3.5K EFI stub\u003e\u003c32-bit kernel\u003e\n\nand then futility will turn that into this kernel partition body\n\n\u003c32-bit kernel\u003e\u003c4K command line\u003e\u003c3.5K EFI stub\u003e\u003c0.5K padding\u003e\n\nand then when crdyboot tries to copy things back into place it ends up with\n\n\u003c3.5K EFI stub\u003e\u003c0.5K padding\u003e\u003c32-bit kernel\u003e\n\nSo I assume that wouldn\u0027t work anymore? How does the EFI stub know that the 32-bit kernel starts 512 bytes later than it thought?",
+      "revId": "442560f58f53aacd2d2978305650058d743f19eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
