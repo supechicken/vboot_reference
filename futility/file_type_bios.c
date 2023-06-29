@@ -33,7 +33,7 @@ static void fmap_limit_area(FmapAreaHeader *ah, uint32_t len)
 /** Show functions **/
 
 static int show_gbb_buf(const char *name, uint8_t *buf, uint32_t len,
-			void *data)
+			void *data, const char *filename)
 {
 	struct vb2_gbb_header *gbb = (struct vb2_gbb_header *)buf;
 	struct bios_state_s *state = (struct bios_state_s *)data;
@@ -127,7 +127,7 @@ int ft_show_gbb(const char *name, void *data)
 	if (retval)
 		return 1;
 
-	retval = show_gbb_buf(name, buf, len, data);
+	retval = show_gbb_buf(name, buf, len, data, name);
 
 	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
 	return retval;
@@ -141,7 +141,7 @@ int ft_show_gbb(const char *name, void *data)
  * VBLOCK area, we'll have this to verify.
  */
 static int fmap_show_fw_main(const char *name, uint8_t *buf, uint32_t len,
-			     void *data)
+			     void *data, const char *filename)
 {
 	struct bios_state_s *state = (struct bios_state_s *)data;
 
@@ -162,7 +162,7 @@ static int fmap_show_fw_main(const char *name, uint8_t *buf, uint32_t len,
 
 /* Functions to call to show the bios components */
 static int (*fmap_show_fn[])(const char *name, uint8_t *buf, uint32_t len,
-			       void *data) = {
+			       void *data, const char *filename) = {
 	show_gbb_buf,
 	fmap_show_fw_main,
 	fmap_show_fw_main,
@@ -212,7 +212,7 @@ int ft_show_bios(const char *name, void *data)
 				retval += fmap_show_fn[c](ah_name,
 							  state.area[c].buf,
 							  state.area[c].len,
-							  &state);
+							  &state, name);
 		}
 	}
 
