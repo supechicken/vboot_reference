@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4cd06b8_36940cf3",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-29T07:32:15Z",
+      "side": 1,
+      "message": "I think we should do `rlen++` here, instead of using `rlen + 1` below.",
+      "revId": "8a145c519e84f98d6cd3d4f4f3efbdc9f6c06194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bff1adb_6ec1c165",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-29T07:32:15Z",
+      "side": 1,
+      "message": "nit: Why break to new line?",
+      "revId": "8a145c519e84f98d6cd3d4f4f3efbdc9f6c06194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "788967c4_bb00a185",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-06-29T07:32:15Z",
+      "side": 1,
+      "message": "nit: Why break to new line?",
+      "revId": "8a145c519e84f98d6cd3d4f4f3efbdc9f6c06194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
