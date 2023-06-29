@@ -114,20 +114,22 @@ static void fail_impl(struct vb2_context *ctx,
 		/* Use up remaining tries */
 		vb2_nv_set(ctx, VB2_NV_TRY_COUNT, 0);
 
-		/*
-		 * Try the other slot next time.  We'll alternate
-		 * between slots, which may help if one or both slots is
-		 * flaky.
-		 */
-		vb2_nv_set(ctx, VB2_NV_TRY_NEXT, 1 - fw_slot);
+		if (!(ctx->flags & VB2_CONTEXT_ONLY_ONE_SLOT)) {
+			/*
+			 * Try the other slot next time.  We'll alternate
+			 * between slots, which may help if one or both slots
+			 * is flaky.
+			 */
+			vb2_nv_set(ctx, VB2_NV_TRY_NEXT, 1 - fw_slot);
 
-		/*
-		 * If we didn't try the other slot last boot, or we tried it
-		 * and it didn't fail, try it next boot.
-		 */
-		if (last_fw_slot != 1 - fw_slot ||
-		    last_fw_result != VB2_FW_RESULT_FAILURE)
-			return;
+			/*
+			 * If we didn't try the other slot last boot, or we
+			 * tried it and it didn't fail, try it next boot.
+			 */
+			if (last_fw_slot != 1 - fw_slot ||
+			    last_fw_result != VB2_FW_RESULT_FAILURE)
+				return;
+		}
 	}
 
 	/*
@@ -388,6 +390,12 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 	if (sd->last_fw_result == VB2_FW_RESULT_TRYING &&
 	    sd->last_fw_slot == sd->fw_slot &&
 	    tries == 0) {
+		/*
+		 * If there is only RW A slot available, we have no other slot
+		 * to fall back to.
+		 */
+		if ((ctx->flags & VB2_CONTEXT_ONLY_ONE_SLOT) && sd->fw_slot == 0)
+			return VB2_ERROR_API_NEXT_SLOT_UNAVAILABLE;
 		/*
 		 * We used up our last try on the previous boot, so fall back
 		 * to the other slot this boot.
