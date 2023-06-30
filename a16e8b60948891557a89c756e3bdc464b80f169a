@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2200ea53_e96ade7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-06-30T11:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac15d63f_8a17ccb2",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "a16e8b60948891557a89c756e3bdc464b80f169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "334d1de7_ab4707f5",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e99ce8_8296f822",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-06-30T11:09:29Z",
+      "side": 1,
+      "message": "Sure, lets follow the same logic as `futility gbb`\n\n```\nTEST\u003d(DUT)  sudo futility vpd --flash\nTEST\u003d(HOST) sudo futility vpd --flash --servo\nTEST\u003d(HOST) futility vpd $FW_IMG\n```\n\nSee TEST\u003d section in commit msg.",
+      "parentUuid": "3021df25_cba84cce",
+      "revId": "a16e8b60948891557a89c756e3bdc464b80f169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c96b128f_11ec6d89",
@@ -71,6 +113,24 @@
       "writtenOn": "2023-06-05T07:25:32Z",
       "side": 1,
       "message": "Will there be a plan to merge the features / impl of `vpd` to this `futility vpd`?",
+      "revId": "a16e8b60948891557a89c756e3bdc464b80f169a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545f3688_7a4100c9",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-06-30T11:09:29Z",
+      "side": 1,
+      "message": "Yes, there\u0027s plans for revising futility backends, but I am afraid it will not be included in this (or maybe recent) CLs.",
+      "parentUuid": "c96b128f_11ec6d89",
       "revId": "a16e8b60948891557a89c756e3bdc464b80f169a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
