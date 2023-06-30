@@ -16,6 +16,24 @@
       "message": "Does \"futility update\" still work after this patch?",
       "revId": "6d59350f13790130832d87444ec727e0fabd9afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1b197d_f16de1d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-06-30T02:34:58Z",
+      "side": 1,
+      "message": "Yes. The `update` subcommand doesn\u0027t use `setup_flash` at all, as you can tell from the changed files.",
+      "parentUuid": "0fe965dc_4392771b",
+      "revId": "6d59350f13790130832d87444ec727e0fabd9afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
