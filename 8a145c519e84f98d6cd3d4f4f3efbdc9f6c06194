@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d66beb6_88b7c3dd",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-30T04:49:29Z",
+      "side": 1,
+      "message": "Done, also I\u0027ve factored this into a helper to help manage all the edge cases involved with realloc().\n\nI also adjusted the bounds of the for loop below to exclude the FMAP region.",
+      "parentUuid": "a4cd06b8_36940cf3",
+      "revId": "8a145c519e84f98d6cd3d4f4f3efbdc9f6c06194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bff1adb_6ec1c165",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23c745c_be9ac49b",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-30T04:49:29Z",
+      "side": 1,
+      "message": "The preupload linter complained because the line was \u003e80 chars.\n\nI\u0027ve just gone ahead and ignored it. Really we should change the limit to something reasonable like 100.",
+      "parentUuid": "3bff1adb_6ec1c165",
+      "revId": "8a145c519e84f98d6cd3d4f4f3efbdc9f6c06194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "788967c4_bb00a185",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-06-29T07:32:15Z",
       "side": 1,
       "message": "nit: Why break to new line?",
+      "revId": "8a145c519e84f98d6cd3d4f4f3efbdc9f6c06194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf5f18e_e9a5bead",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-06-30T04:49:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "788967c4_bb00a185",
       "revId": "8a145c519e84f98d6cd3d4f4f3efbdc9f6c06194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
