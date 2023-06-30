@@ -16,6 +16,285 @@
       "message": "@jwerner, here\u0027s a version of futility with parseable output.\nLet me know if we should keep pursuing this route. I\u0027ll defer to you between this output, JSON or any other specific function calls we might want",
       "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dbad5e_6c1b33f1",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Don\u0027t think we need this... not sure when len would ever be zero here anyway.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90075d47_ebc701a1",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "decimal (all of these)",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3aa6c55_bcf00894",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Each individual value on a separate line please (`gbb::hwid::offset`,`gbb::hwid::size`, etc.)",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22b1d62_af5be3e2",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Should be `root_key` for consistency with other keys.",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe0e065_1061320c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure there\u0027s a point in showing `len` here, that\u0027s just the FMAP section size, that\u0027s available through `futility dump_fmap` already (and other show commands don\u0027t show it for their sections either). This should just be `gbb::size::\u003cmaxlen value\u003e`.\n\nIf we want to encode the \"not enough\" part, maybe something like `gbb::fits_fmap::true`/`gbb::fits_fmap::false`? (Or just leave it out, not sure anybody cares.)",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75399e4b_62d6d0c1",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Should print `gbb::header::valid` in the other case for consistency.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78fc09a_bc6dd10c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Hmmm... okay, here\u0027s the one case where we do have spaces and we still want to print it. I think that\u0027s fine, though, we don\u0027t have spaces anywhere else so there\u0027s no real reason to be afraid of them. HWIDs do not contain colons or newlines so we\u0027re fine on our actual separators.\n\nAlso, since I think the above should just be `gbb::hwid::size` etc. (without the `::header::`), this should be `gbb::hwid::value::%s` to distinguish.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219200f5_a8f69221",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Need to also print the digest with proper prefix (e.g. `gbb::hwid::sha256sum::\u003chex\u003e`).",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0968b2_c9c77217",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Should print `gbb::root_key::valid` in other case.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80997e4_6521d74b",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Don\u0027t think we need this / don\u0027t think this can happen.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639a784e_584f591d",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Don\u0027t want this here (instead there should be an appropriate prefix set for each section in `ft_show_bios()`... I\u0027d suggest `bios::\u003cah_name\u003e::`.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9029a56_67f44d72",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "...and then when we have that prefix this can just be `body::offset` and `body::size` (I\u0027m again not so sure if we need these at all, they don\u0027t really tell you anything that dump_fmap wouldn\u0027t already).",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 21
+      },
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb094b1d_5d516edc",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Don\u0027t want this.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f87d7388_f51ad955",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Similar issues here as in the other files. However, we could also choose to completely ignore this (just make sure -P immediately exits with an error code for these file types) because it\u0027s basically all but unused anyway.",
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648a0f68_1e0694bf",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-06-30T00:42:47Z",
+      "side": 1,
+      "message": "Nothing should be indented in parseabe output, this is a sign that something is wrong.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "930e059032f8ce23a7f3d6fc45eb46d41fc9b566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
