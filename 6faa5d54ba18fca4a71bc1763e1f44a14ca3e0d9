@@ -1,0 +1,422 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43326674_2f8ccd55",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m flaking a bit on this decision now. I suggested that last time before I realized that we would have a case that needs spaces with the HWID anyway. If we\u0027re okay with spaces there we might as well keep the spaces here so that we don\u0027t have to touch the existing format.",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bdbbbf1_a0ab0055",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "(This in particular wouldn\u0027t look right because the EXP3 belongs to the RSA3072. This means \"signature algorithm \u0027RSA3072 EXP3\u0027 and hash algorithm \u0027SHA1\u0027, it\u0027s not three distinct tokens.)",
+      "range": {
+        "startLine": 58,
+        "startChar": 39,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8aa6935_44189118",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "This belongs to the other two above, it should be `body::signature::valid`",
+      "range": {
+        "startLine": 410,
+        "startChar": 6,
+        "endLine": 410,
+        "endChar": 47
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ee7081_cc98dbbd",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "And this should be `body::signature::ignored` again.",
+      "range": {
+        "startLine": 416,
+        "startChar": 4,
+        "endLine": 416,
+        "endChar": 53
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab7f773_715623ea",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "You could add a `parse_fmt[0] !\u003d \u0027\\0\u0027` check to `FT_PRINT()` and then you could continue using `FT_PRINT(\"blah\", \"\")` for cases where you don\u0027t want parseable output.",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e65a531_1a3bf7a3",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "nit: calling this `FT_PRINT_RAW()` would be a bit more consistent with other existing macros in vboot (see `VB2_DEBUG_RAW()`).",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "364aaad0_823ffde3",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "`ft_print_header` is a global character array, not a pointer―it cannot be NULL.",
+      "range": {
+        "startLine": 107,
+        "startChar": 31,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "168e0464_1984d410",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "Calling `strlen()` every time is a bit inefficient. You could achieve the same thing here with `ft_print_header[0] !\u003d \u0027\\0\u0027`.",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f16e5d22_e850a6ff",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b547f7_fa3fc6a2",
+        "filename": "futility/misc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "Should be `sha256_sum` if you use `sha1_sum` for the key hashes.",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e48ab0_666a738a",
+        "filename": "tests/futility/expect_output/show.parseable.tests_devkeys_root_key.vbprivk",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "Actually, it would be nice for consistency to just always use the same string that futility use to identify the file type in other contexts (see `file_types.inc`) as the first token. So this would be `prikey`.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fbdd88_61c4e614",
+        "filename": "tests/futility/expect_output/show.parseable.tests_devkeys_root_key.vbprivk",
+        "patchSetId": 17
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "`sha1_sum`",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01b201e_73202dfe",
+        "filename": "tests/futility/expect_output/show.parseable.tests_devkeys_root_key.vbpubk",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "This would then be `pubkey`.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415c0dc9_f9e0c4a9",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "If a raw public key file has `pubkey::` as the first token, then it would be consistent if a whole BIOS image would always have `bios::` as the first token. So I think all of these should be `bios::gbb::version::1.1` and then later `bios::VBLOCK_A::keyblock::signature::valid`, etc.",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16fd996_fcbabfb8",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "Something looks wrong here, this should not be the same as bmpfv::offset. Is this from tests/futility/data/bios_peppy_mp.bin? The rootkey offset there should be 0x180 (384) according to my checkout.",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4f908d_7688f2a5",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "This prefix should be `gbb::root_key`, not `gbb_root_key`. Also, I don\u0027t think we need the `pub_key` anymore when we already know we\u0027re looking at a GBB root key. So I think this should just be `bios::gbb::root_key::api::1.0` and the `pubkey` prefix only needs to be shown when looking at a raw `.vbpubk` file.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f375e0a4_0c14fd80",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "Yeah, look at this again like this I think we should really just take these out (all the FW_MAIN_... stuff). It\u0027s confusing to have FW_MAIN_A::body::size and VBLOCK_A::body::size be two different things. If somebody wants to know the FMAP section values they can already use `futility dump_fmap` for that, it doesn\u0027t need to be shown here again.",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b731330f_aabdf8fb",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "This should be `bios::VBLOCK_A::preamble::signature::valid`, to be consistent with how it looks for the keyblock.",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c716c3_a56a3fa5",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_fw_vblock.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "So matching the same pattern, this should then be `fw_pre::keyblock::signature::ignored` and `fw_pre::preamble::header_version::2.1`. This looks a bit weird, but the original mistake was naming the file type \"fw_pre\" in file_types.inc when it really refers to a whole vblock, not just a preamble. It\u0027s been that way for years so I\u0027d say let\u0027s just keep it that way and make this output consistent even if it looks a bit weird―it\u0027s rare that anyone uses that file type directly anyway.",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aec3d75e_7f36a360",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_kern_preamble.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "...and this would be:\n```\nkernel::keyblock::signature::ignored\n...\nkernel::preamble::signature::valid\n...\nkernel::body::signature::valid\n```",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

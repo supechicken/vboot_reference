@@ -788,6 +788,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef6a49b7_79cfd475",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "But the prefixes should be providing that context, it doesn\u0027t need to be in that token itself. You also don\u0027t have `firmware_keyblock` and `kernel_keyblock`? I really think this should just be `preamble`.",
+      "parentUuid": "afb05993_c3dd4cea",
+      "range": {
+        "startLine": 333,
+        "startChar": 7,
+        "endLine": 333,
+        "endChar": 18
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ac64af_a2da93c4",
         "filename": "futility/cmd_show.c",
         "patchSetId": 12
@@ -917,6 +941,30 @@
       "side": 1,
       "message": "Is it enough context to have a line that might say `VBLOCK_B::body::size::146456`? \nIf so I can leave it with just that",
       "parentUuid": "85a75771_a30958f1",
+      "range": {
+        "startLine": 358,
+        "startChar": 20,
+        "endLine": 358,
+        "endChar": 27
+      },
+      "revId": "7bd80e549e85944d6647b6e0cd1bf488a6e37419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1567df5_53c7fd8d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "Yeah that looks fine.",
+      "parentUuid": "ff6c1589_0a4eb634",
       "range": {
         "startLine": 358,
         "startChar": 20,

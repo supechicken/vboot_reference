@@ -16,6 +16,24 @@
       "message": "Looking for thoughts on this fmt change, as well as lines added like `... is valid` etc.\nI can create a macro that only prints for parseable option for the new single lines.\n\nWe\u0027d double the number of print statements if we want offset/size in the same line for humans and different lines for machines, but that should be nbd at the end of the day.",
       "revId": "a5c22b06429c08a32da1e1de1a8cfb2bc03d2b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46367a41_df026d47",
+        "filename": "tests/futility/expect_output/show.tests_futility_data_fw_gbb.bin",
+        "patchSetId": 16
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-01T01:28:26Z",
+      "side": 1,
+      "message": "I don\u0027t think the human-readable output should change. It works well for what it\u0027s trying to do. Having exactly one machine-parseable line for each human-readable line with FT_PRINT() is a convenience because 90% of the time that\u0027s what you want anyway, but it is not a hard rule. In cases where it makes sense for human-readable output to be arranged a bit differently than machine-parseable output we should do that.",
+      "parentUuid": "2c2fcf2e_dc95b82b",
+      "revId": "a5c22b06429c08a32da1e1de1a8cfb2bc03d2b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
