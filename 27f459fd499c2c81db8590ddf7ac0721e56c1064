@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fc2311_14f0bd75",
+        "filename": "futility/cmd_read.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-03T01:09:33Z",
+      "side": 1,
+      "message": "Check if strdup returns NULL?",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 10
+      },
+      "revId": "27f459fd499c2c81db8590ddf7ac0721e56c1064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
