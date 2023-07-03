@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1b7d4b_ce7c4170",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-07-03T05:32:34Z",
+      "side": 1,
+      "message": "I\u0027ve rebased on the parent commit.\n\nOne thing I noticed about the new default behavior is that the FMAP region will always be included in the image, even if it isn\u0027t specified by the user.\n\nAlso I\u0027m not sure if read `flashrom_read_image()` zeros out unread regions, if so then we need to do that too.",
+      "revId": "da724b063dab6d174650358c39418b876c0996d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
