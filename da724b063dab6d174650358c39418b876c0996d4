@@ -16,6 +16,24 @@
       "message": "I\u0027ve rebased on the parent commit.\n\nOne thing I noticed about the new default behavior is that the FMAP region will always be included in the image, even if it isn\u0027t specified by the user.\n\nAlso I\u0027m not sure if read `flashrom_read_image()` zeros out unread regions, if so then we need to do that too.",
       "revId": "da724b063dab6d174650358c39418b876c0996d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f39264_3e4e5b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2023-07-03T06:19:10Z",
+      "side": 1,
+      "message": "If that would be a concern, maybe we should just do zero out. It would be hard to do zero out after this API release (could break exist things).\nBut I\u0027m also fine if you think that won\u0027t be a concern.",
+      "parentUuid": "de1b7d4b_ce7c4170",
+      "revId": "da724b063dab6d174650358c39418b876c0996d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
