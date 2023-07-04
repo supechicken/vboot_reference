@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "745ecbae_a2501efa",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "I think spaces should be fine here. With the rework we\u0027ve done there should be no spaces anywhere else but the value field (ie between the last `::` and `\\n`) so parser should be able to handle that without breaking.",
+      "parentUuid": "43326674_2f8ccd55",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bdbbbf1_a0ab0055",
         "filename": "firmware/2lib/2crypto.c",
         "patchSetId": 17
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "(This in particular wouldn\u0027t look right because the EXP3 belongs to the RSA3072. This means \"signature algorithm \u0027RSA3072 EXP3\u0027 and hash algorithm \u0027SHA1\u0027, it\u0027s not three distinct tokens.)",
+      "range": {
+        "startLine": 58,
+        "startChar": 39,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6bce64b_c48b4724",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Put this back to the way it was",
+      "parentUuid": "8bdbbbf1_a0ab0055",
       "range": {
         "startLine": 58,
         "startChar": 39,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc09498_7bbf3b65",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8aa6935_44189118",
+      "range": {
+        "startLine": 410,
+        "startChar": 6,
+        "endLine": 410,
+        "endChar": 47
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82ee7081_cc98dbbd",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "And this should be `body::signature::ignored` again.",
+      "range": {
+        "startLine": 416,
+        "startChar": 4,
+        "endLine": 416,
+        "endChar": 53
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1a3f8e_fa5cbbad",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82ee7081_cc98dbbd",
       "range": {
         "startLine": 416,
         "startChar": 4,
@@ -112,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e14d10af_53ae1a08",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Went a slightly different direction here, I found it helpful to have the explicit `PARSEABLE_PRINT` and `READABLE_PRINT`. I liked this approach for clarity at the callsite, and we still have code reuse, so it should still be straightforward to modify the logic later",
+      "parentUuid": "fab7f773_715623ea",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e65a531_1a3bf7a3",
         "filename": "futility/futility.h",
         "patchSetId": 17
@@ -123,6 +237,30 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "nit: calling this `FT_PRINT_RAW()` would be a bit more consistent with other existing macros in vboot (see `VB2_DEBUG_RAW()`).",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b48b8d_58761e74",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e65a531_1a3bf7a3",
       "range": {
         "startLine": 102,
         "startChar": 8,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e04a815_07874153",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "364aaad0_823ffde3",
+      "range": {
+        "startLine": 107,
+        "startChar": 31,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "168e0464_1984d410",
@@ -173,6 +335,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50aacd20_65cc39aa",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "168e0464_1984d410",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f16e5d22_e850a6ff",
@@ -186,6 +366,30 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "indentation",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cb3019_f101a636",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f16e5d22_e850a6ff",
       "range": {
         "startLine": 110,
         "startChar": 2,
@@ -219,6 +423,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b7fe98_adc3efba",
+        "filename": "futility/misc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b547f7_fa3fc6a2",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63e48ab0_666a738a",
@@ -232,6 +460,30 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "Actually, it would be nice for consistency to just always use the same string that futility use to identify the file type in other contexts (see `file_types.inc`) as the first token. So this would be `prikey`.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4c4a81_0e384ac1",
+        "filename": "tests/futility/expect_output/show.parseable.tests_devkeys_root_key.vbprivk",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63e48ab0_666a738a",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -265,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc39e940_ce148e14",
+        "filename": "tests/futility/expect_output/show.parseable.tests_devkeys_root_key.vbprivk",
+        "patchSetId": 17
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35fbdd88_61c4e614",
+      "range": {
+        "startLine": 3,
+        "startChar": 10,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f01b201e_73202dfe",
@@ -278,6 +554,30 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "This would then be `pubkey`.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e83eef_e651fdb4",
+        "filename": "tests/futility/expect_output/show.parseable.tests_devkeys_root_key.vbpubk",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f01b201e_73202dfe",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -305,6 +605,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f263ecb_a67c432b",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415c0dc9_f9e0c4a9",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e16fd996_fcbabfb8",
@@ -318,6 +636,30 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "Something looks wrong here, this should not be the same as bmpfv::offset. Is this from tests/futility/data/bios_peppy_mp.bin? The rootkey offset there should be 0x180 (384) according to my checkout.",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ddada3_a87f0432",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Ah that was a paste error. Fixed",
+      "parentUuid": "e16fd996_fcbabfb8",
       "range": {
         "startLine": 7,
         "startChar": 23,
@@ -351,6 +693,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68df4332_60a366a1",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b4f908d_7688f2a5",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f375e0a4_0c14fd80",
@@ -364,6 +730,24 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "Yeah, look at this again like this I think we should really just take these out (all the FW_MAIN_... stuff). It\u0027s confusing to have FW_MAIN_A::body::size and VBLOCK_A::body::size be two different things. If somebody wants to know the FMAP section values they can already use `futility dump_fmap` for that, it doesn\u0027t need to be shown here again.",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49078312_40fa4e93",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Just to confirm then, would you want to skip the call to `fmap_show_fw_main` from `ft_show_bios` if `parseable` is set? Do we want to keep the code paths identical regardless of format still?",
+      "parentUuid": "f375e0a4_0c14fd80",
       "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -385,6 +769,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2295c40_44ddb2ce",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b731330f_aabdf8fb",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08c716c3_a56a3fa5",
@@ -402,6 +804,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0055776f_05dcf4bd",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_fw_vblock.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c716c3_a56a3fa5",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aec3d75e_7f36a360",
@@ -415,6 +835,24 @@
       "writtenOn": "2023-07-01T01:28:26Z",
       "side": 1,
       "message": "...and this would be:\n```\nkernel::keyblock::signature::ignored\n...\nkernel::preamble::signature::valid\n...\nkernel::body::signature::valid\n```",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57060577_7b0910ac",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_kern_preamble.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-04T03:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec3d75e_7f36a360",
       "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
