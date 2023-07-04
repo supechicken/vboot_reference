@@ -34,6 +34,24 @@
       "parentUuid": "de1b7d4b_ce7c4170",
       "revId": "da724b063dab6d174650358c39418b876c0996d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a55981_88fe29b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-07-04T04:42:39Z",
+      "side": 1,
+      "message": "I\u0027ve realized we can actually just not read the FMAP in this case since we don\u0027t need it if we\u0027re writing everything to a single file.\n\nAlso the image buffer is allocated with `calloc()` in flashrom_drv.c so unread regions will just be zeros.\n\nOverall I think this patch is ready now.",
+      "parentUuid": "de1b7d4b_ce7c4170",
+      "revId": "da724b063dab6d174650358c39418b876c0996d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
