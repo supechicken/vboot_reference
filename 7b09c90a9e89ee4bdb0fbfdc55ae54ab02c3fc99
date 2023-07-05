@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa734198_1022f1af",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9edde78_a9f33139",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "`Invalid public key: %s` to be consistent with `ft_show_privkey()`.",
+      "range": {
+        "startLine": 118,
+        "startChar": 9,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06589ca5_f3821c4c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "Actually, I wonder if it will be useful to have `ft_print_header2` as the secondary header. Then this can be simplified to (assuming both `ft_print_header*` are pointers):\n\n```\nft_print_header2 \u003d \"keyblock\";\nshow_keyblock();\n// Then in below\nft_print_header2 \u003d \"preamble\";\n```\n\nTo allow changing `header` and clearing `header2` at the same time, macros (or inline functions) can be introduced: `FT_SET_HEADER(const char *)` and `FT_SET_HEADER2(const char *)`. Then, the original `ft_print_header*` variables can be made private to futility.h.\n\nJulius, what do you think of this idea (both header2 and using pointers)?",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 38
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b055e34_7c49ca6d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we should change all of these error messages to `FT_PRINT` and friends. If these are considered as unexpected errors for `futility show` (which IMO is the case), then the errors should be printed to stderr and `futility` should exit with non-zero code. Otherwise, if we\u0027re printing `data_key::invalid` for other script to parse, then `futility` should exit with 0.",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4492ea1_4c1244a5",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "Extra space.",
+      "range": {
+        "startLine": 334,
+        "startChar": 21,
+        "endLine": 334,
+        "endChar": 22
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fe63ab_7683fe5c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 487,
+        "startChar": 37,
+        "endLine": 487,
+        "endChar": 38
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af8564e_05888ed6",
+        "filename": "futility/futility.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "Should this be `extern`, so that we only have one `ft_print_header` instance?",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dcef92e_51c1ec66",
+        "filename": "futility/futility.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "Use tabs for alignment. An alternative is to have only a single space (see `FATAL` for example).",
+      "range": {
+        "startLine": 102,
+        "startChar": 45,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8bb8dd_9627d20f",
+        "filename": "futility/futility.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "Set `ft_print_header[FT_PRINT_MAX_HEADER_SIZE - 1] \u003d \u0027\\0\u0027` just to be safe.",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8436cab2_ec80de5f",
+        "filename": "futility/misc.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "`ft_print_header` shouldn\u0027t be printed here and in the `FT_PARSEABLE_PRINT` call below. See an example output:\n\n```\nbios::GBB::hwid::sha256_sum::966b97faca52b9d227f10393d23188efd30562c017d1745e473ba40a4891ca1abios::GBB:::validbios::GBB::\n```",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 9
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "493fb901_cbf35414",
+        "filename": "futility/misc.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 173,
+        "startChar": 20,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979f6488_f80003e2",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "Move this before the `futil_open_and_map_file` call.",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd60038d_a35522d4",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T07:26:22Z",
+      "side": 1,
+      "message": "Wrong format:\n\n```\nif (x) {\n}\n```\n\nSame for the 2 instances below.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
