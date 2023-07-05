@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb00c4de_c68a1651",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T00:03:47Z",
+      "side": 1,
+      "message": "Please add new test cases in our unit tests for `vb2_select_fw_slot` and `vb2api_fail`.",
+      "revId": "bd47d30ac35b0faf4bb57b5e1f13763991ebc7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf6ca9b_0d349a2d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T00:03:47Z",
+      "side": 1,
+      "message": "Instead of checking this here, I wonder if we want to set `sd-\u003efw_slot \u003d 0` in line #385 if `VB2_CONTEXT_ONLY_ONE_SLOT` is set, just in case `VB2_NV_TRY_NEXT` contains an old invalid value. We\u0027ll also need to write it back to nvdata.\n\nThe easiest way to achieve that is probably by adding\n```\nif (ctx-\u003eflags \u0026 VB2_CONTEXT_ONLY_ONE_SLOT)\n    vb2_nv_set(ctx, VB2_NV_TRY_NEXT, 0);\n```\n\nbefore line #385.",
+      "range": {
+        "startLine": 397,
+        "startChar": 50,
+        "endLine": 397,
+        "endChar": 66
+      },
+      "revId": "bd47d30ac35b0faf4bb57b5e1f13763991ebc7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a027653_4debbcf9",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-05T00:03:47Z",
+      "side": 1,
+      "message": "slots",
+      "range": {
+        "startLine": 205,
+        "startChar": 19,
+        "endLine": 205,
+        "endChar": 29
+      },
+      "revId": "bd47d30ac35b0faf4bb57b5e1f13763991ebc7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
