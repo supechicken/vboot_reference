@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4ceab4a_bf43e04c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-05T12:37:15Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "bb00c4de_c68a1651",
+      "revId": "bd47d30ac35b0faf4bb57b5e1f13763991ebc7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "daf6ca9b_0d349a2d",
         "filename": "firmware/2lib/2misc.c",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2023-07-05T00:03:47Z",
       "side": 1,
       "message": "Instead of checking this here, I wonder if we want to set `sd-\u003efw_slot \u003d 0` in line #385 if `VB2_CONTEXT_ONLY_ONE_SLOT` is set, just in case `VB2_NV_TRY_NEXT` contains an old invalid value. We\u0027ll also need to write it back to nvdata.\n\nThe easiest way to achieve that is probably by adding\n```\nif (ctx-\u003eflags \u0026 VB2_CONTEXT_ONLY_ONE_SLOT)\n    vb2_nv_set(ctx, VB2_NV_TRY_NEXT, 0);\n```\n\nbefore line #385.",
+      "range": {
+        "startLine": 397,
+        "startChar": 50,
+        "endLine": 397,
+        "endChar": 66
+      },
+      "revId": "bd47d30ac35b0faf4bb57b5e1f13763991ebc7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db220fe_52ba5cb4",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-05T12:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daf6ca9b_0d349a2d",
       "range": {
         "startLine": 397,
         "startChar": 50,
@@ -54,6 +96,30 @@
       "writtenOn": "2023-07-05T00:03:47Z",
       "side": 1,
       "message": "slots",
+      "range": {
+        "startLine": 205,
+        "startChar": 19,
+        "endLine": 205,
+        "endChar": 29
+      },
+      "revId": "bd47d30ac35b0faf4bb57b5e1f13763991ebc7fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4f215a_0f005b21",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-05T12:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a027653_4debbcf9",
       "range": {
         "startLine": 205,
         "startChar": 19,
