@@ -512,6 +512,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b486c115_f23a6348",
+        "filename": "futility/futility.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-07-06T23:46:29Z",
+      "side": 1,
+      "message": "TodayILearn ✔ thanks\n\nIt seems that if the `if` is wrapped in braces it would work too while scoping as braces.\n\ne.g.\n```\nif {\n  MYMACRO();\n}\n```\nexpands to:\n```\nif {\n  { stuff(); };\n}\n```\n\nAck\u0027ing because `do { .. } while(0)` idiom per other macros here handles all the edge cases.",
+      "parentUuid": "f008bef9_ceff86f0",
+      "range": {
+        "startLine": 96,
+        "startChar": 40,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da7315fe_bb17d6dc",
