@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe205f87_90b6151b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "I thought this was intentional.",
+      "parentUuid": "12344f9d_93d3eb6e",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "131793cb_84472590",
         "filename": "futility/cmd_show.c",
         "patchSetId": 23
@@ -169,6 +193,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e739f48e_bb66b9df",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "Should still be `ERROR`.",
+      "range": {
+        "startLine": 323,
+        "startChar": 2,
+        "endLine": 323,
+        "endChar": 19
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e23abbe9_1cc29d71",
         "filename": "futility/cmd_show.c",
         "patchSetId": 23
@@ -192,6 +239,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0064b0e_76cffa91",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "No need to print it twice for non `-P`.",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 398,
+        "endChar": 11
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34541b73_fb45accc",
         "filename": "futility/cmd_show.c",
         "patchSetId": 23
@@ -203,6 +273,30 @@
       "writtenOn": "2023-07-06T02:03:49Z",
       "side": 1,
       "message": "These kinds of messages should also be changed to ERROR(), not FT_READABLE_PRINT().",
+      "range": {
+        "startLine": 460,
+        "startChar": 2,
+        "endLine": 460,
+        "endChar": 19
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662d8bf8_e2d93150",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "There are 2 similar cases in `ft_show_keyblock` and `show_fw_preamble_buf`. Now we\u0027re handling the 3 cases in different ways. I think for these kinds of verification failure, `ERROR()` plus a `FT_PARSEABLE_PRINT(\"...::invalid\")` seems like a good solution.",
+      "parentUuid": "34541b73_fb45accc",
       "range": {
         "startLine": 460,
         "startChar": 2,
@@ -255,6 +349,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b32d30d_244edaea",
+        "filename": "futility/futility.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "Global variables are automatically initialized to zeros, so this is not needed.",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96460758_0ad5de46",
+        "filename": "futility/futility.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 95,
+        "startChar": 52,
+        "endLine": 95,
+        "endChar": 53
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "774949ec_4fda05a1",
         "filename": "futility/misc.c",
         "patchSetId": 23
@@ -266,6 +406,29 @@
       "writtenOn": "2023-07-06T02:03:49Z",
       "side": 1,
       "message": "Unfortunately we don\u0027t seem to have a testcase for this, but I think this will look wrong. We want the \"valid\" and the hash itself to be separate fields.\n\nMaybe calling it `sha256_sum` wasn\u0027t a good idea after all because the way we use `sha1_sum` for keys it implies that we\u0027re just ad-hoc hashing something we know, but here we\u0027re actually displaying a hash that is stored in the actual data structure and may or may not be correct. It\u0027s more similar to the `metadata_hash` case. So maybe we should make this\n```\nhwid::digest::algorithm::2::SHA256\nhwid::digest::hex::\u003chash value\u003e\nhwid::digest::(in)valid\n```\n(even though with the current structures the algorithm is hardcoded to SHA256, but I think this way it would look a bit more consistent).",
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b310ff_34e8c857",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "`if (...) {` in one line\n\nSame for 2 instances below.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
       "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

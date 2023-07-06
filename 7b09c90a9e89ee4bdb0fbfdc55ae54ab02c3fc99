@@ -221,6 +221,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4afdcb4_32b5d667",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-06T03:42:15Z",
+      "side": 1,
+      "message": "\u003e So I think there are cases where the return code will be 1 but we still want the machine-parseable output to explain what exactly was broken.\n\nHow do we expect the parsing script to handle that? Most scripts should have `set -e`, so in order to grep `data_key::invalid`, it has to ignore the exit code of `futility show` (which makes things more complicated IMO, because the script needs to take care of the `invalid` case and non-zero exit code case separately). I don\u0027t see how this is better than \"letting futility print the errors to stderr\".\n\nIf, the purpose of the script is to check if a signature/hash is valid, then `futility verify` should be used instead, which is designed exactly for that. BTW I just found that `verify` and `show` differ by only an option `show_option.strict`, which controls the return value.",
+      "parentUuid": "e1bbdd0b_365005a0",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4492ea1_4c1244a5",
         "filename": "futility/cmd_show.c",
         "patchSetId": 20
