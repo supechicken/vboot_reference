@@ -734,6 +734,27 @@ static char *resolve_signature_id(struct model_config *model, const char *image)
 	if (tag == NULL)
 		tag = vpd_get_value(image, VPD_CUSTOM_LABEL_TAG_LEGACY);
 
+	/*
+	 * b/286528262: Due to some non-unibuild devices now run unibuild
+	 * software, we have to check customization_id first. Ideally there
+	 * should be no unibuild custom label devices that "did set
+	 * customization id without setting custom label tag" (e.g., a non-CL
+	 * device in the very beginning but later on added more CL variants).
+	 * If that really happened we will need to add a quirk and move the
+	 * non-unibuild logic after unibuild again.
+	 */
+	/* Non-Unibuild: Upper($tag), or Upper(${cid%%-*}). */
+	if (!tag) {
+		char *cid = vpd_get_value(image, VPD_CUSTOMIZATION_ID);
+		if (cid) {
+			/* customization_id in format LOEM[-VARIANT]. */
+			char *dash = strchr(cid, '-');
+			if (dash)
+				*dash = '\0';
+			tag = cid;
+		}
+	}
+
 	/* Unified build: $model.$tag, or $model (b/126800200). */
 	if (is_unibuild) {
 		if (!tag) {
@@ -748,17 +769,7 @@ static char *resolve_signature_id(struct model_config *model, const char *image)
 		return sig_id;
 	}
 
-	/* Non-Unibuild: Upper($tag), or Upper(${cid%%-*}). */
-	if (!tag) {
-		char *cid = vpd_get_value(image, VPD_CUSTOMIZATION_ID);
-		if (cid) {
-			/* customization_id in format LOEM[-VARIANT]. */
-			char *dash = strchr(cid, '-');
-			if (dash)
-				*dash = '\0';
-			tag = cid;
-		}
-	}
+	/* Non-unibuilds are always upper cased. */
 	if (tag)
 		str_convert(tag, toupper);
 	return tag;
