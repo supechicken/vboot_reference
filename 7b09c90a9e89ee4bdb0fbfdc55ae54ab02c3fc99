@@ -239,6 +239,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "076cfc0b_66754b2c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "Well, that\u0027s up to the caller, I just think we should keep things flexible. Of course in most cases I expect callers to just abort and not try to parse any output if the return code is non-zero. But if they do want to parse the error output for some reason, I still think we should make sure it is well-formed (i.e. no log spam that doesn\u0027t match the output format on stdout) and still contains as much information as we knew before we died.\n\nI have to admit I wasn\u0027t even aware we have a `verify`. I guess if that\u0027s available as an alternative then that\u0027s fine by me as well. However, it doesn\u0027t look like `show_option.strict` is super consistently implemented everywhere... e.g. when the firmware body signature doesn\u0027t match, it looks like it still returns an error code even without `strict`.\n\nI think the important thing is that callers have a way to tell reliably if some signature doesn\u0027t match, including exactly what signature that was. We can do that either by cleaning up `strict` and making sure `show` never returns an error code if any signatures and hashes don\u0027t match, or by making sure that there\u0027s still usable output even with an error code.",
+      "parentUuid": "e4afdcb4_32b5d667",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4492ea1_4c1244a5",
         "filename": "futility/cmd_show.c",
         "patchSetId": 20

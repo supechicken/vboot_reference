@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c10e1759_640c742f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "Well, this is the same situation as https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4624937/12..23/futility/cmd_show.c#b86 . I think the single colon should only be to separate multiple tokens that form a \"set\" of equal items, but in this case that\u0027s not the case, the algorithm enum value and algorithm name are distinct things.",
+      "parentUuid": "fe205f87_90b6151b",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "131793cb_84472590",
         "filename": "futility/cmd_show.c",
         "patchSetId": 23
@@ -396,6 +420,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f665c57e_4fbad870",
+        "filename": "futility/futility.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "FWIW, this might be a matter of taste, but I think it can be good to write explicit initializers even if it matches the default like this, do indicate that the code actually relies on this being initialized to zero (rather than just not caring about the initial value).",
+      "parentUuid": "23da46f5_e456a0d8",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96460758_0ad5de46",
         "filename": "futility/futility.h",
         "patchSetId": 23
@@ -430,6 +478,30 @@
       "writtenOn": "2023-07-06T04:34:50Z",
       "side": 1,
       "message": "Note: It\u0027s okay to do without `do { ... } while (0)` in these macros.\nJust scoping into braces works the same.\n\nNot sure if futility owners follow this C pattern for some specific reason.",
+      "range": {
+        "startLine": 96,
+        "startChar": 40,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f008bef9_ceff86f0",
+        "filename": "futility/futility.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "`do { ... } while (0)` eats a trailing semicolon, while pure braces don\u0027t. This can be important in edge cases like\n```\nif (1)\n  MYMACRO();\nelse\n  something_else();\n```\nWith `#define MYMACRO() do { stuff(); } while (0)` this expands to\n```\nif (1)\n  do { stuff(); } while (0);\nelse\n  something_else();\n```\nwhich is valid C, while `#define MYMACRO() { stuff(); }` makes it expand to\n```\nif (1)\n  { stuff(); };\nelse\n  something_else();\n```\nwhich is a syntax error (I think?). It very rarely makes a difference, but it\u0027s easier to just always use the thing that\u0027s reliable everywhere, which is why `do { ... } while (0)` is the standard idiom in C.",
+      "parentUuid": "a21dc525_d344f913",
       "range": {
         "startLine": 96,
         "startChar": 40,

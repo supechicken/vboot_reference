@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2deb123_009de1c4",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "Sorry, that\u0027s the wrong way around. It should be `::metadata_hash::expected::algorithm`, not `algorithm::expected` (so that it matches with `::metadata_hash::expected::hex`)?",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83174efa_1035fe52",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "You don\u0027t need to `strdup()` literals, only stack variables. (String literals are allocated in the `.rodata` segment and pointers to them remain valid throughout the lifetime of the program.)",
+      "range": {
+        "startLine": 311,
+        "startChar": 20,
+        "endLine": 311,
+        "endChar": 26
+      },
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3b95e5_b74b97cb",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "I really wouldn\u0027t bother trying to free these, it just clutters the code unnecessarily and hurts readability. Just unconditionally set it to `NULL` and that\u0027s it.",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7218ad_dcdae4f5",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "I mean, either use `FT_READABLE_PRINT()` here and then you don\u0027t need the early return above, or do early return and then you can just use printf() here. You don\u0027t need both.",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a65aa52_8e304fa3",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "Oh, actually, this is probably important and shouldn\u0027t be skipped. That\u0027s why your firmware body isn\u0027t `valid` anymore. So I guess the early return was a bad idea after all.",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41d9ff9_0cc5401d",
+        "filename": "futility/futility.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "So why make one an array and one a pointer now? Wouldn\u0027t it be easier to make them both pointers?",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1123848_56769b5b",
+        "filename": "futility/misc.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "For consistency, let\u0027s also `FT_PARSEABLE_PRINT(\"hwid::digest::ignored\")` here, otherwise it\u0027s weird that that the valid/invalid doesn\u0027t show up at all.",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f526484d_3c4dbe06",
+        "filename": "futility/misc.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "nit: Can\u0027t you combine this with the below to FT_PRINT()?",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e26d43_85fd93a5",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 24
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T23:38:14Z",
+      "side": 1,
+      "message": "Wait, this shouldn\u0027t have changed. Why is this not `::valid` anymore?",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
