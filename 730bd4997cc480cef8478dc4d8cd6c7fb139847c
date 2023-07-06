@@ -372,6 +372,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23da46f5_e456a0d8",
+        "filename": "futility/futility.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-07-06T04:34:50Z",
+      "side": 1,
+      "message": "BSS~",
+      "parentUuid": "2b32d30d_244edaea",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96460758_0ad5de46",
         "filename": "futility/futility.h",
         "patchSetId": 23
@@ -388,6 +412,52 @@
         "startChar": 52,
         "endLine": 95,
         "endChar": 53
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21dc525_d344f913",
+        "filename": "futility/futility.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-07-06T04:34:50Z",
+      "side": 1,
+      "message": "Note: It\u0027s okay to do without `do { ... } while (0)` in these macros.\nJust scoping into braces works the same.\n\nNot sure if futility owners follow this C pattern for some specific reason.",
+      "range": {
+        "startLine": 96,
+        "startChar": 40,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7315fe_bb17d6dc",
+        "filename": "futility/misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-07-06T04:34:50Z",
+      "side": 1,
+      "message": "not in correct include order",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 29
       },
       "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
