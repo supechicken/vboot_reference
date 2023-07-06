@@ -1,0 +1,336 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12344f9d_93d3eb6e",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Should be `::`",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131793cb_84472590",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Should be `::`",
+      "range": {
+        "startLine": 159,
+        "startChar": 17,
+        "endLine": 159,
+        "endChar": 18
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd44bd0_ca6361f3",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "It should say \"metadata hash algorithm\", just \"metadata algorithm\" on its own doesn\u0027t mean anything. I think it would be better too leave this looking the way it did before for the readable version, with both the algorithm and the hash itself on the same line. (You can replace the colon there with a space or something if that makes it easier.)",
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c5edf5_d5f3f2f0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "`::`",
+      "range": {
+        "startLine": 221,
+        "startChar": 40,
+        "endLine": 221,
+        "endChar": 41
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42a01b6_f0dcd57f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Same here, should keep things on one line for the human-readable version.",
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f494c3_550e7085",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "This is missing an `::algorithm::` in the middle.",
+      "range": {
+        "startLine": 246,
+        "startChar": 34,
+        "endLine": 246,
+        "endChar": 36
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42da8ef_fd0b75e3",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "`::`",
+      "range": {
+        "startLine": 246,
+        "startChar": 38,
+        "endLine": 246,
+        "endChar": 39
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09ce88c_260fab94",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "nit: please leave an empty line below this",
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23abbe9_1cc29d71",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "`::`",
+      "range": {
+        "startLine": 356,
+        "startChar": 31,
+        "endLine": 356,
+        "endChar": 32
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34541b73_fb45accc",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "These kinds of messages should also be changed to ERROR(), not FT_READABLE_PRINT().",
+      "range": {
+        "startLine": 460,
+        "startChar": 2,
+        "endLine": 460,
+        "endChar": 19
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e36730_7f14651a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "nit: combine to FT_PRINT()?",
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207655b4_37a22db3",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Should be `::vmlinuz_header::`, not `::vmlinuz::header::`.",
+      "range": {
+        "startLine": 524,
+        "startChar": 5,
+        "endLine": 524,
+        "endChar": 20
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774949ec_4fda05a1",
+        "filename": "futility/misc.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Unfortunately we don\u0027t seem to have a testcase for this, but I think this will look wrong. We want the \"valid\" and the hash itself to be separate fields.\n\nMaybe calling it `sha256_sum` wasn\u0027t a good idea after all because the way we use `sha1_sum` for keys it implies that we\u0027re just ad-hoc hashing something we know, but here we\u0027re actually displaying a hash that is stored in the actual data structure and may or may not be correct. It\u0027s more similar to the `metadata_hash` case. So maybe we should make this\n```\nhwid::digest::algorithm::2::SHA256\nhwid::digest::hex::\u003chash value\u003e\nhwid::digest::(in)valid\n```\n(even though with the current structures the algorithm is hardcoded to SHA256, but I think this way it would look a bit more consistent).",
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50bd8a49_aa29c9ef",
+        "filename": "tests/futility/expect_output/show.parseable.tests_devkeys_root_key.vbprivk",
+        "patchSetId": 23
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Something\u0027s wrong here.",
+      "range": {
+        "startLine": 1,
+        "startChar": 6,
+        "endLine": 1,
+        "endChar": 10
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074951ce_ed55fb1f",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 23
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "I think this should just be `::VBLOCK_A::body::size`, no `::preamble::` (same as `::body::signature::valid`).",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea117f0e_53742868",
+        "filename": "tests/futility/expect_output/show.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Let\u0027s not change the existing output at all.",
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

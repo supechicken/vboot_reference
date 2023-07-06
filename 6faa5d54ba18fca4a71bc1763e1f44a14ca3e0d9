@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c107ea8e_c3980dfa",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "745ecbae_a2501efa",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bdbbbf1_a0ab0055",
@@ -220,6 +244,24 @@
       "side": 1,
       "message": "Went a slightly different direction here, I found it helpful to have the explicit `PARSEABLE_PRINT` and `READABLE_PRINT`. I liked this approach for clarity at the callsite, and we still have code reuse, so it should still be straightforward to modify the logic later",
       "parentUuid": "fab7f773_715623ea",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ee5b47_9a2f125b",
+        "filename": "futility/futility.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e14d10af_53ae1a08",
       "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -672,6 +714,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f1e78c0_48fff4a7",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "Looks like this is still wrong in the latest version?",
+      "parentUuid": "84ddada3_a87f0432",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b4f908d_7688f2a5",
         "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
         "patchSetId": 17
@@ -748,6 +814,24 @@
       "side": 1,
       "message": "Just to confirm then, would you want to skip the call to `fmap_show_fw_main` from `ft_show_bios` if `parseable` is set? Do we want to keep the code paths identical regardless of format still?",
       "parentUuid": "f375e0a4_0c14fd80",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0739db_52d6f79d",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "I think the cleanest way to do this is probably to just use `FT_READABLE_PRINT()` for all the lines in `fmap_show_fw_main()`, or put an `if (...parseable...) return` at the top of the function.",
+      "parentUuid": "49078312_40fa4e93",
       "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

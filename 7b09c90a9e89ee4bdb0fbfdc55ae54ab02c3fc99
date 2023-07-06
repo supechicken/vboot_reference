@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bea1037_40bab5fc",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "I think a header2 sounds reasonable enough considering that we also need it for some of the GBB keys. I\u0027m not sure I see the point in wrapping everything in macros. Using pointers sounds fine but then just writing `ft_print_header2 \u003d \"preamble\";` / `ft_print_header2 \u003d NULL` sounds easy enough to work with that? (If you need to build something out of a runtime string you can always use `strdup()` or `asprintf()` to make that easy. For a CLI tool we don\u0027t need to worry about memory-leaking a handful of strings.)",
+      "parentUuid": "1dd732ea_b1bddefe",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 38
+      },
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b055e34_7c49ca6d",
         "filename": "futility/cmd_show.c",
         "patchSetId": 20
@@ -173,6 +197,24 @@
       "side": 1,
       "message": "Sounds good, I can do that. I\u0027ll leave this open for an ack from Julius since he requested the `::invalid` print here.",
       "parentUuid": "4b055e34_7c49ca6d",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1bbdd0b_365005a0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-06T02:03:49Z",
+      "side": 1,
+      "message": "I agree that we probably don\u0027t need a parseable output line for every possible kind of incorrect image, but I do think we should have it for the most important ones like invalid body signature. So I think there are cases where the return code will be 1 but we still want the machine-parseable output to explain what exactly was broken.\n\nWhether this case is one of them is up for debate, I don\u0027t particularly care. I think invalid signatures and hashes in general (where there is a hash/signature and the data structure holding it could be unpacked correctly, but it just doesn\u0027t match what it\u0027s supposed to) are the important things we should indicate in the parseable output. For everything else, it doesn\u0027t matter that much.\n\nI do agree that you shouldn\u0027t change any messages from ERROR() to FT_READABLE_PRINT() (note that ERROR() already goes to stderr so it\u0027s already \"human-readable only\" in the sense that we don\u0027t expect calling programs that want parseable output to read stderr).",
+      "parentUuid": "51d59738_6df5a04c",
       "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
