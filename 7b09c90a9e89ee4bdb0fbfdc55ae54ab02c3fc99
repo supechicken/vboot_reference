@@ -255,6 +255,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58156de4_ed559fec",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T02:09:33Z",
+      "side": 1,
+      "message": "\u003e We can do that either by cleaning up `strict` and making sure `show` never returns an error code if any signatures and hashes don\u0027t match, or by making sure that there\u0027s still usable output even with an error code.\n\nI\u0027d prefer the former. Filed b/290287265 and marked this thread as resolved. There\u0027s probably no need to do it for now. We can come back for it if there are related issues found in the future.",
+      "parentUuid": "076cfc0b_66754b2c",
+      "revId": "7b09c90a9e89ee4bdb0fbfdc55ae54ab02c3fc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4492ea1_4c1244a5",
