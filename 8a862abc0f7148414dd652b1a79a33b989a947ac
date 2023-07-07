@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9c1e5e2_e5bf62a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-07-07T03:10:55Z",
+      "side": 1,
+      "message": "I thought Jack was asking how the unit tests were executed, and replaced that with the \"FEATURES\u003dtest emerge vboot_reference\" command. And yes, technically those are functional tests not really unit tests. We can\u0027t really test this now because the unibuild side changes haven\u0027t been landed yet. Once that is done, we can test this by running on the real device.",
+      "parentUuid": "380aba9e_f7a3e078",
+      "revId": "8a862abc0f7148414dd652b1a79a33b989a947ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd52dbbc_66cfde79",
         "filename": "futility/updater_manifest.c",
         "patchSetId": 2
