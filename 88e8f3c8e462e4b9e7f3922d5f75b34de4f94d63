@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fcc58d8_24de6ac0",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T06:08:58Z",
+      "side": 1,
+      "message": "Leave this and a couple of other errors as prints to pass `tests/futility/test_sign_firmware.sh` tests. We can put up a separate CL to convert the CL and tests to expect stderr",
+      "revId": "88e8f3c8e462e4b9e7f3922d5f75b34de4f94d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88358020_b86de05d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T06:08:58Z",
+      "side": 1,
+      "message": "Marking this as done since it was changed to `::` everywhere.",
+      "parentUuid": "293ec954_e4a570a8",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "730bd4997cc480cef8478dc4d8cd6c7fb139847c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "131793cb_84472590",
