@@ -736,6 +736,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efba52b9_bb7fee4c",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f1e78c0_48fff4a7",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc76070_d5048480",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Whoops, i undid a change in an edit",
+      "parentUuid": "6f1e78c0_48fff4a7",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b4f908d_7688f2a5",
@@ -832,6 +880,24 @@
       "side": 1,
       "message": "I think the cleanest way to do this is probably to just use `FT_READABLE_PRINT()` for all the lines in `fmap_show_fw_main()`, or put an `if (...parseable...) return` at the top of the function.",
       "parentUuid": "49078312_40fa4e93",
+      "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa3eb74_292e3dd5",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd0739db_52d6f79d",
       "revId": "6faa5d54ba18fca4a71bc1763e1f44a14ca3e0d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

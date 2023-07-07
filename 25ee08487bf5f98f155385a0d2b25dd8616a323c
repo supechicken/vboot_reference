@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4a68184_1414f534",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2deb123_009de1c4",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83174efa_1035fe52",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ed8ebb_9b27469d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83174efa_1035fe52",
+      "range": {
+        "startLine": 311,
+        "startChar": 20,
+        "endLine": 311,
+        "endChar": 26
+      },
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d3b95e5_b74b97cb",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-07-06T23:38:14Z",
       "side": 1,
       "message": "I really wouldn\u0027t bother trying to free these, it just clutters the code unnecessarily and hurts readability. Just unconditionally set it to `NULL` and that\u0027s it.",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc5cabd_913442b3",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d3b95e5_b74b97cb",
       "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -93,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4abc5f9f_b96b3004",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f7218ad_dcdae4f5",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a65aa52_8e304fa3",
@@ -106,6 +184,24 @@
       "writtenOn": "2023-07-06T23:38:14Z",
       "side": 1,
       "message": "Oh, actually, this is probably important and shouldn\u0027t be skipped. That\u0027s why your firmware body isn\u0027t `valid` anymore. So I guess the early return was a bad idea after all.",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fada70aa_8272ee2d",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a65aa52_8e304fa3",
       "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db26b438_10363584",
+        "filename": "futility/futility.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Good idea, made both pointers!",
+      "parentUuid": "b41d9ff9_0cc5401d",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1123848_56769b5b",
@@ -140,6 +254,24 @@
       "writtenOn": "2023-07-06T23:38:14Z",
       "side": 1,
       "message": "For consistency, let\u0027s also `FT_PARSEABLE_PRINT(\"hwid::digest::ignored\")` here, otherwise it\u0027s weird that that the valid/invalid doesn\u0027t show up at all.",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f59a215_6a9342f4",
+        "filename": "futility/misc.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1123848_56769b5b",
       "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5550af29_63d90e0a",
+        "filename": "futility/misc.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f526484d_3c4dbe06",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34e26d43_85fd93a5",
@@ -174,6 +324,24 @@
       "writtenOn": "2023-07-06T23:38:14Z",
       "side": 1,
       "message": "Wait, this shouldn\u0027t have changed. Why is this not `::valid` anymore?",
+      "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32db1360_ee6895f9",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 24
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T05:35:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34e26d43_85fd93a5",
       "revId": "25ee08487bf5f98f155385a0d2b25dd8616a323c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
