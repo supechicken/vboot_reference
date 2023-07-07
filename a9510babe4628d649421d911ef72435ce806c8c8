@@ -3,6 +3,166 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "826a3878_d5764669",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "typo\n\n(this function only gets called when futility is run on a raw keyblock file anyway, so the \"keyblock component\" is also kinda redundant)",
+      "range": {
+        "startLine": 181,
+        "startChar": 12,
+        "endLine": 181,
+        "endChar": 19
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e80c2ef_9392e07d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "Should parseable-print `keyblock::valid` here for consistency.",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b629a0_a2ac269d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "Upon re-reading this I feel it would probably be better to call this `firmware_version::`, just to make it a little clearer what it is and distinguish it better from `header_version::`.",
+      "range": {
+        "startLine": 348,
+        "startChar": 44,
+        "endLine": 348,
+        "endChar": 51
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea50c4e8_91d35e21",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "`kernel::keyblock::valid`",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e17dd4_701eff07",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "nit: could move this further up, save some redundancies in earlier strings",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ced2df_591e44be",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "...then this would be `preamble::kernel_version::%d`, respectively.",
+      "range": {
+        "startLine": 500,
+        "startChar": 14,
+        "endLine": 500,
+        "endChar": 21
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6fdb51_47305a84",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "Prefix should be redundant now with ft_print_header2?",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e119860_34412188",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "`asprintf(\u0026ft_print_header, \"bios::%.*s\", FMAP_NAMELEN, ah-\u003earea_name);`",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66208a6f_9afb722e",
         "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
         "patchSetId": 29
@@ -14,6 +174,24 @@
       "writtenOn": "2023-07-07T16:27:02Z",
       "side": 1,
       "message": "@jwerner wanted to double check on this output. This looks different than the output in line 19 with `::index::key_type sum_type` do we know these details for hwid? The struct itself contained only the raw bytes from what I can tell.",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2357419_2c9e3072",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 29
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-07T23:48:59Z",
+      "side": 1,
+      "message": "Good catch, yeah, it should also have the algorithm ID for consistency. This is just a hash while line 19 is a signature, so it\u0027s expected that it looks a bit different (no RSA part). It\u0027s more comparable to `body::metadata_hash::algorithm` (which we unfortunately don\u0027t have a test for, we should add that after your patch lands).\n\nSo this should be `bios::GBB::hwid::digest::algorithm::2::SHA256` (2 is `VB2_HASH_SHA256`, which is a different ID space from the VB2_ALG IDs used for signature algorithms).",
+      "parentUuid": "66208a6f_9afb722e",
       "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
