@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66208a6f_9afb722e",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 29
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-07T16:27:02Z",
+      "side": 1,
+      "message": "@jwerner wanted to double check on this output. This looks different than the output in line 19 with `::index::key_type sum_type` do we know these details for hwid? The struct itself contained only the raw bytes from what I can tell.",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
