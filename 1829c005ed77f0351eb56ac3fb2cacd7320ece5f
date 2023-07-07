@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23214329_c6edf68c",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T10:27:26Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 384,
+        "startChar": 16,
+        "endLine": 384,
+        "endChar": 20
+      },
+      "revId": "1829c005ed77f0351eb56ac3fb2cacd7320ece5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c608a9_5c02e506",
+        "filename": "tests/vb2_api_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T10:27:26Z",
+      "side": 1,
+      "message": "This file uses a mock `vb2_select_fw_slot`, so we\u0027re only testing `vb2api_fail` in this new test case. However, that can be done more simply in `fail_tests()` in tests/vb2_misc_tests.c. Therefore I don\u0027t think we need to modify this file. Adding one test case for `vb2api_fail` in vb2_misc_tests.c and another for `vb2_select_fw_slot` should be good enough.",
+      "revId": "1829c005ed77f0351eb56ac3fb2cacd7320ece5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1a81e1_070eecb9",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T10:27:26Z",
+      "side": 1,
+      "message": "This test case looks like the `ran out of tries` category, so how about moving it to line #805?\n\n```\n/* Slot A ran out of tries, but slot B not present */\n```",
+      "range": {
+        "startLine": 831,
+        "startChar": 4,
+        "endLine": 831,
+        "endChar": 40
+      },
+      "revId": "1829c005ed77f0351eb56ac3fb2cacd7320ece5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8135b8e6_7eab76f6",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T10:27:26Z",
+      "side": 1,
+      "message": "Although I prefer explicitly initializing them (just like what you\u0027re doing), the existing test cases are not doing that. Let\u0027s be consistent. A follow-up patch can be uploaded, if you\u0027d like to fix that.",
+      "range": {
+        "startLine": 834,
+        "startChar": 1,
+        "endLine": 835,
+        "endChar": 37
+      },
+      "revId": "1829c005ed77f0351eb56ac3fb2cacd7320ece5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3343076a_7a4cce36",
+        "filename": "tests/vb2_misc_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T10:27:26Z",
+      "side": 1,
+      "message": "selected A",
+      "range": {
+        "startLine": 841,
+        "startChar": 26,
+        "endLine": 841,
+        "endChar": 43
+      },
+      "revId": "1829c005ed77f0351eb56ac3fb2cacd7320ece5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
