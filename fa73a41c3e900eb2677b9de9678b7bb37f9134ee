@@ -1,0 +1,318 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "586fd593_eb671443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "Almost done!",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1bcbb6_a7d41f61",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "Add `FT_PARSEABLE_PRINT(\"keyblock::invalid\\n\");` here.",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c1c890_68d73913",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "`ERROR(\"%s keyblock component is invalid\\n\", name)` to be consistent with the other 2 functions.",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 31
+      },
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560d3426_d6d408cc",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "Let\u0027s not break the long string.",
+      "range": {
+        "startLine": 244,
+        "startChar": 7,
+        "endLine": 244,
+        "endChar": 19
+      },
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1282b59_fc93d53b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 277,
+        "startChar": 56,
+        "endLine": 277,
+        "endChar": 57
+      },
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab667589_42de087f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "We can set `ft_print_header2` unconditionally.",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 22
+      },
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d993dc_f6de48eb",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5186d082_317ecc25",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e798294f_332fc80d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "I thought the consensus [here](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4624937/23/futility/cmd_show.c#460) is to have `ERROR` and `FT_PARSEABLE_PRINT`?",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a19671b_0336d4e5",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but is it more natural to write:\n\n```\nft_print_header \u003d \"kernel\";\nft_print_header2 \u003d \"keyblock\";\n```\n\nThen `ft_print_header2 \u003d NULL;` below.",
+      "range": {
+        "startLine": 473,
+        "startChar": 1,
+        "endLine": 473,
+        "endChar": 16
+      },
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92be2742_83bf5c8a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "I thought the consensus [here](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4624937/23/futility/cmd_show.c#460) is to have `ERROR` and `FT_PARSEABLE_PRINT`?",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6727545_245123ac",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc878942_2c195195",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "No need for `+1` because `sizeof(bios_prefix)` already contains `\\0`.",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbe7687_f368a578",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03364872_aa39ce1e",
+        "filename": "futility/futility.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "```\nif (!show_option.parseable)\n    break;\nif (header)\n    print;\nif (header2)\n    print;\nprint;\n```",
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4938b58_fe84f2af",
+        "filename": "futility/misc.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-07T09:14:38Z",
+      "side": 1,
+      "message": "One space.",
+      "range": {
+        "startLine": 175,
+        "startChar": 25,
+        "endLine": 175,
+        "endChar": 27
+      },
+      "revId": "fa73a41c3e900eb2677b9de9678b7bb37f9134ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
