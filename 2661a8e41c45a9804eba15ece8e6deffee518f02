@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1762178e_0947a8a5",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-08T00:13:37Z",
+      "side": 1,
+      "message": "Yes because it\u0027s still wrong to try to pass it. The point here is not to prevent a bug, just to inform the user that they did something that\u0027s not gonna work the way they think.",
+      "parentUuid": "5eb38b90_7c3c5695",
+      "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62417f25_eff8cbaa",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37adafd6_322900c7",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-08T00:13:37Z",
+      "side": 1,
+      "message": "Changing to bool sounds reasonable.",
+      "parentUuid": "954e7760_b1c70534",
+      "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8376f191_c07ab1c2",
@@ -66,6 +102,30 @@
       "writtenOn": "2023-06-26T03:57:55Z",
       "side": 1,
       "message": "`sign_option.arch !\u003d ARCH_UNSPECIFIED`",
+      "range": {
+        "startLine": 1079,
+        "startChar": 25,
+        "endLine": 1079,
+        "endChar": 41
+      },
+      "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7f4078_a5e934ea",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-08T00:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8376f191_c07ab1c2",
       "range": {
         "startLine": 1079,
         "startChar": 25,
@@ -93,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e1d8474_6cf74549",
+        "filename": "futility/cmd_sign.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-08T00:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3395d99_3f0792eb",
+      "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f434476f_c2653abd",
@@ -106,6 +184,24 @@
       "writtenOn": "2023-06-26T03:57:55Z",
       "side": 1,
       "message": "Remove this if there\u0027s no instance left.",
+      "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aceb689d_34972b86",
+        "filename": "tests/futility/test_sign_kernel.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-08T00:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f434476f_c2653abd",
       "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb29198d_51f2027a",
+        "filename": "tests/run_vbutil_kernel_arg_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-08T00:13:37Z",
+      "side": 1,
+      "message": "Oh, is an empty arg not the same as no arg here or something? I have to admit I\u0027m not super well versed with bash string tokenization details. I don\u0027t think this is super important since futility/test_sign_kernel.sh already covers most of this, so let me just take it out again.",
+      "parentUuid": "69a57bec_6fd87b49",
+      "range": {
+        "startLine": 35,
+        "startChar": 57,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb259a64_e090e440",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-06-26T03:57:55Z",
       "side": 1,
       "message": "Oops... this should be `b`",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "2661a8e41c45a9804eba15ece8e6deffee518f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5b134a_11906994",
+        "filename": "tests/run_vbutil_kernel_arg_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-08T00:13:37Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "cb259a64_e090e440",
       "range": {
         "startLine": 55,
         "startChar": 22,
