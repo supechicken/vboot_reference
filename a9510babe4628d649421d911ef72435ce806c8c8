@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a411eeff_f5a75802",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "826a3878_d5764669",
+      "range": {
+        "startLine": 181,
+        "startChar": 12,
+        "endLine": 181,
+        "endChar": 19
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e80c2ef_9392e07d",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-07T23:48:59Z",
       "side": 1,
       "message": "Should parseable-print `keyblock::valid` here for consistency.",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e51f83_7d3a1acd",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e80c2ef_9392e07d",
       "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "882d7999_a81e7afa",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6b629a0_a2ac269d",
+      "range": {
+        "startLine": 348,
+        "startChar": 44,
+        "endLine": 348,
+        "endChar": 51
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea50c4e8_91d35e21",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-07-07T23:48:59Z",
       "side": 1,
       "message": "`kernel::keyblock::valid`",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda945a3_b77f40f6",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea50c4e8_91d35e21",
       "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a17444_5257542c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e17dd4_701eff07",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31ced2df_591e44be",
@@ -111,6 +213,30 @@
       "writtenOn": "2023-07-07T23:48:59Z",
       "side": 1,
       "message": "...then this would be `preamble::kernel_version::%d`, respectively.",
+      "range": {
+        "startLine": 500,
+        "startChar": 14,
+        "endLine": 500,
+        "endChar": 21
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8339b021_9f210957",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ced2df_591e44be",
       "range": {
         "startLine": 500,
         "startChar": 14,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa08628_9726732d",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de6fdb51_47305a84",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e119860_34412188",
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c88340_ab921ebb",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e119860_34412188",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64aba655_7065e4aa",
@@ -174,6 +342,30 @@
       "writtenOn": "2023-07-08T00:29:24Z",
       "side": 1,
       "message": "space",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 5
+      },
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3beab134_636e38f1",
+        "filename": "futility/futility.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64aba655_7065e4aa",
       "range": {
         "startLine": 104,
         "startChar": 4,
@@ -215,6 +407,24 @@
       "side": 1,
       "message": "Good catch, yeah, it should also have the algorithm ID for consistency. This is just a hash while line 19 is a signature, so it\u0027s expected that it looks a bit different (no RSA part). It\u0027s more comparable to `body::metadata_hash::algorithm` (which we unfortunately don\u0027t have a test for, we should add that after your patch lands).\n\nSo this should be `bios::GBB::hwid::digest::algorithm::2::SHA256` (2 is `VB2_HASH_SHA256`, which is a different ID space from the VB2_ALG IDs used for signature algorithms).",
       "parentUuid": "66208a6f_9afb722e",
+      "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccd28a0_46514eef",
+        "filename": "tests/futility/expect_output/show.parseable.tests_futility_data_bios_peppy_mp.bin",
+        "patchSetId": 29
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-08T04:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2357419_2c9e3072",
       "revId": "a9510babe4628d649421d911ef72435ce806c8c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
