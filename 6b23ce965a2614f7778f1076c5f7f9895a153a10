@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc30df48_ac5f813a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-09T22:19:48Z",
+      "side": 1,
+      "message": "We discussed this here: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4624937/comment/06589ca5_f3821c4c/\nWe decided to not go the route of macros since setting const strings is simple and the use cases here are simple clis",
+      "parentUuid": "a351c7da_c7c2b7d9",
+      "range": {
+        "startLine": 456,
+        "startChar": 1,
+        "endLine": 457,
+        "endChar": 31
+      },
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d705712b_ec1c6215",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 32
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "181eae23_53285ab9",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-09T22:19:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure which cases these checks would protect us from. Any incorrect prefixes should get caught in the unit tests, and since these are all const stings there shouldn\u0027t be any memory errors.",
+      "parentUuid": "d705712b_ec1c6215",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8e9451b_9e201daa",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 32
@@ -60,6 +108,24 @@
       "writtenOn": "2023-07-08T15:38:37Z",
       "side": 1,
       "message": "Forgetting to clear `ft_print_header`.",
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a59b7ef_0e5dc16e",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-09T22:19:48Z",
+      "side": 1,
+      "message": "iiuc, all `ft_` methods are called at the top level and exit the application when returning, so `ft_print_header` wouldn\u0027t be used in the program lifetime after `show_gbb_buf`",
+      "parentUuid": "d8e9451b_9e201daa",
       "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
