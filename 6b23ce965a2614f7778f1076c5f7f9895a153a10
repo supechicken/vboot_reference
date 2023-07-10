@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fce0231_46d8839c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-10T03:51:12Z",
+      "side": 1,
+      "message": "That looks like a valid concern to me. Let me define\n\n- L1 functions: functions that change ft_print_header\n- L2 functions: functions that change ft_print_header2\n\nThe current code works as expected only because there\u0027s no L2 function calling another L2 function. That\u0027s also the reason why we cannot simply set `ft_print_header2 \u003d ah_name` in `ft_show_bios()`, which would be much more convenient (than using `asprintf`).\n\nInstead of checking `ft_print_header2` everywhere before setting it, I think the correct way to solve this once and for all is to have macros `FT_HEADER_PUSH` and `FT_HEADER_POP` (just like Saketh suggested before), and hide the pointers within the macros. With the macros, we only need to make sure *each function doesn\u0027t change the header status by the time it returns*. Then both the `ft_print_header2` overriding and `ft_print_header` clearance (see @kimjae\u0027s comment below) problems can be solved. Note that for `ft_print_header2 \u003d ah_name` to work, the we\u0027ll need `header3` in the macro implementation.\n\nI\u0027m not sure if that will make things over-complicated. @kimjae, @jwerner opinions?",
+      "parentUuid": "f5d284f7_9976c212",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8e9451b_9e201daa",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 32
@@ -192,6 +216,24 @@
       "side": 1,
       "message": "Hi Saketh, assuming future changes to follow a pattern that has no strong checks feel a bit scary.\n\nIMO, that leaves room for future errors to happen easily.\nSeems more hermetic to scope by helping clear values so it doesn\u0027t slip into other \"upper level\" calls.",
       "parentUuid": "8a59b7ef_0e5dc16e",
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8a70af_47e71f72",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-10T03:51:12Z",
+      "side": 1,
+      "message": "Also see my comment above.",
+      "parentUuid": "d6f45d65_d147dbb4",
       "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

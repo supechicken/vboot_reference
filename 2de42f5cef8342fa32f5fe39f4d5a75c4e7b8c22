@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "274b518c_183cf6ed",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-10T03:51:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we return 1 immediately?",
+      "revId": "2de42f5cef8342fa32f5fe39f4d5a75c4e7b8c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4ceebc_9822561b",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-10T03:51:12Z",
+      "side": 1,
+      "message": "allocate",
+      "range": {
+        "startLine": 220,
+        "startChar": 21,
+        "endLine": 220,
+        "endChar": 28
+      },
+      "revId": "2de42f5cef8342fa32f5fe39f4d5a75c4e7b8c22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
