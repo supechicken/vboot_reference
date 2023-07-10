@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f11dedb0_c67d0d5d",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-10T13:38:30Z",
+      "side": 1,
+      "message": "Why do we need this call?\n\nSuppose slot A is invalid. In the first boot, `vb2api_fail()` will be called somewhere after `vb2_select_fw_slot()`. In `vb2api_fail()`, because `VB2_SD_STATUS_CHOSE_SLOT` is set, recovery will be requested, and therefore the device will boot into recovery mode in the second boot.",
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
