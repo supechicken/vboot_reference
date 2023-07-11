@@ -110,6 +110,30 @@
       },
       "revId": "b87bb4fdfeb15d1bfc115387e404db3c69dbea91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d8fdfe_a326a614",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-11T02:47:03Z",
+      "side": 1,
+      "message": "Yes, that\u0027s one problem using pointers. When suggesting using pointers, I thought we could always use string literals for `ft_print_header*`.",
+      "parentUuid": "121166fa_9ec4a2b6",
+      "range": {
+        "startLine": 218,
+        "startChar": 17,
+        "endLine": 218,
+        "endChar": 21
+      },
+      "revId": "b87bb4fdfeb15d1bfc115387e404db3c69dbea91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
