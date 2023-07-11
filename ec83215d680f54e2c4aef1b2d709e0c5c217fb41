@@ -87,6 +87,30 @@
       },
       "revId": "ec83215d680f54e2c4aef1b2d709e0c5c217fb41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec4373c_e466fb64",
+        "filename": "futility/cmd_csme_utility.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-07-11T03:19:47Z",
+      "side": 1,
+      "message": "For shimless RMA we also need some other checks which aren\u0027t included in this function yet. I listed them in b/259018682#comment17.",
+      "parentUuid": "0b56e814_3c4a0383",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "ec83215d680f54e2c4aef1b2d709e0c5c217fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
