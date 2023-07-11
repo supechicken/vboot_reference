@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc630094_3a103c43",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T00:19:32Z",
+      "side": 1,
+      "message": "Let\u0027s not overdo it, it seems unlikely that we\u0027ll ever need more than 2, and an array is probably overkill for that.",
+      "parentUuid": "5d40ebd9_a46e9201",
+      "range": {
+        "startLine": 456,
+        "startChar": 1,
+        "endLine": 457,
+        "endChar": 31
+      },
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d705712b_ec1c6215",
@@ -193,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fed5c5cb_acad7174",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T00:19:32Z",
+      "side": 1,
+      "message": "I really don\u0027t think we need this complexity. If ft_print_header2 is set and ft_print_header isn\u0027t, it will still work (just only print the second prefix). That\u0027s not something bad enough to protect against. If someone accidentally overwrites anything they shouldn\u0027t have, they should notice when testing the output. A nice advantage of having all these futility tests is that it\u0027s so easy to confirm what actual effect all the changes are gonna have on the format. I don\u0027t think there\u0027s enough risk here to warrant making all this code so much more intricate.",
+      "parentUuid": "13686787_9e974780",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8e9451b_9e201daa",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 32
@@ -258,6 +306,24 @@
       "side": 1,
       "message": "Also see my comment above.",
       "parentUuid": "d6f45d65_d147dbb4",
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065552cb_a287a9c2",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T00:19:32Z",
+      "side": 1,
+      "message": "FWIW I think this is fine as it is, the ft functions are designed to be toplevel entry points. For testing output format correctness and long-term consistency I think focusing effort on the unit tests is a lot more useful than focusing on extra safeguards in the code here (e.g. there are some cases that don\u0027t have coverage in the unit tests, and we should fix that, although it doesn\u0027t need to be part of this CL).",
+      "parentUuid": "ba8a70af_47e71f72",
       "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

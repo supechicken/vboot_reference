@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56ba941_5eecd9aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T00:19:32Z",
+      "side": 1,
+      "message": "FWIW I think this looks great and basically ready to go now (other than the one new mistake that crept in with the last revision?), thanks!",
+      "revId": "b87bb4fdfeb15d1bfc115387e404db3c69dbea91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad3e355_38fec033",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T00:19:32Z",
+      "side": 1,
+      "message": "Why did you remove the space here? Doesn\u0027t that make it `SHA256abcdef01234` (as opposed to `SHA256:abcdef01234` in the original code, and `SHA256 abcdef01234` which I thought was the intended change here and would also be fine by me)?",
+      "range": {
+        "startLine": 217,
+        "startChar": 47,
+        "endLine": 217,
+        "endChar": 48
+      },
+      "revId": "b87bb4fdfeb15d1bfc115387e404db3c69dbea91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28542ed7_ab3f208f",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T00:19:32Z",
+      "side": 1,
+      "message": "nit: why not just declare ft_print_header to not point to const to begin with?",
+      "range": {
+        "startLine": 218,
+        "startChar": 17,
+        "endLine": 218,
+        "endChar": 21
+      },
+      "revId": "b87bb4fdfeb15d1bfc115387e404db3c69dbea91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
