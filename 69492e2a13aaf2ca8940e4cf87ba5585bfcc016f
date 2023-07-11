@@ -87,6 +87,24 @@
       "parentUuid": "60f061da_fa6d3268",
       "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1658ab_51fd6b9a",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T04:02:19Z",
+      "side": 1,
+      "message": "edit: sorry, didn\u0027t really read the code here when I was responding. so in this case the string literal isn\u0027t actually the thing that goes over 80 chars, so that doesn\u0027t matter. If the continuation line wouldn\u0027t fit when matching to opening parenthesis here, I think it\u0027s perfectly fine to leave it with a standard single-tab indent instead.",
+      "parentUuid": "2f28bd65_ffca2c45",
+      "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
