@@ -105,6 +105,24 @@
       "parentUuid": "2f28bd65_ffca2c45",
       "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15789a1a_6484178d",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-11T06:29:14Z",
+      "side": 1,
+      "message": "Okay, I didn\u0027t realize this would exceed the line length limit. No strong opinion, but I\u0027d probably format this like:\n\n```\nFT_READABLE_PRINT(\n        arg1,\n        arg2);\n```\n\nBTW we\u0027re increasing the limit to 96 chars (see CL:4676840).",
+      "parentUuid": "ff1658ab_51fd6b9a",
+      "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
