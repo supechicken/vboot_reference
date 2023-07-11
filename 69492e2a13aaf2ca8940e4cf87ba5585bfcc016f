@@ -69,6 +69,24 @@
       "parentUuid": "cc42ba7e_9a36dd00",
       "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f28bd65_ffca2c45",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-11T04:00:14Z",
+      "side": 1,
+      "message": "\"Don\u0027t break up strings\" can overrule the 80 char limit.",
+      "parentUuid": "60f061da_fa6d3268",
+      "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
