@@ -141,6 +141,24 @@
       "parentUuid": "543f414e_b38c1924",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c2e9e2_67f9d859",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-11T00:43:27Z",
+      "side": 1,
+      "message": "The comment of `cbfstool_get_metadata_hash` already states that the hash type will be set to `VB2_HASH_INVALID` on errors. Therefore we don\u0027t even need to do that here.\n\nIf the slot B is considered optional, then I think we can modify `ft_sign_bios()` so that `futility sign` doesn\u0027t even print an error. The function can check the existence of FW_MAIN_B first (using `fmap_find_by_name`), and skip all the succeeding calls for FW_MAIN_B.",
+      "parentUuid": "2abebe9b_9dc382de",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
