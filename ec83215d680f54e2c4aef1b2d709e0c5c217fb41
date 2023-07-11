@@ -39,6 +39,30 @@
       },
       "revId": "ec83215d680f54e2c4aef1b2d709e0c5c217fb41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f0d770_0c5e78e0",
+        "filename": "futility/cmd_csme_utility.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-07-11T02:53:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean, the purpost of this function is to check if it is possible to apply a CSME update, so it returns as soon as it sees that the CSME is locked.\n\nWe can still add subcommands that don\u0027t update the CSME (e.g. get status command) if that\u0027s what you\u0027re asking - we would just run the subcommand without checking `check_csme_update_possible()`.",
+      "parentUuid": "b7753321_7825220b",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "ec83215d680f54e2c4aef1b2d709e0c5c217fb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
