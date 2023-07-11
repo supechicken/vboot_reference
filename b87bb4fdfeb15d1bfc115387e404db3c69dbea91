@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad87bd32_937394e2",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-11T02:17:17Z",
+      "side": 1,
+      "message": "Oh whoops! I was looking through the code again and lost track of why we had made that change. I\u0027ll add it back.\n\nLooks like another output thats not in tests :)",
+      "parentUuid": "fad3e355_38fec033",
+      "range": {
+        "startLine": 217,
+        "startChar": 47,
+        "endLine": 217,
+        "endChar": 48
+      },
+      "revId": "b87bb4fdfeb15d1bfc115387e404db3c69dbea91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28542ed7_ab3f208f",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-11T00:19:32Z",
       "side": 1,
       "message": "nit: why not just declare ft_print_header to not point to const to begin with?",
+      "range": {
+        "startLine": 218,
+        "startChar": 17,
+        "endLine": 218,
+        "endChar": 21
+      },
+      "revId": "b87bb4fdfeb15d1bfc115387e404db3c69dbea91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "121166fa_9ec4a2b6",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-11T02:17:17Z",
+      "side": 1,
+      "message": "I think we would have to cast elsewhere if it weren\u0027t const:\n```\nfutility/file_type_bios.c:153:18: error: assigning to \u0027char *\u0027 from \u0027const char[4]\u0027 discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]\n        ft_print_header \u003d \"gbb\";\n                        ^ ~~~~~\n```",
+      "parentUuid": "28542ed7_ab3f208f",
       "range": {
         "startLine": 218,
         "startChar": 17,

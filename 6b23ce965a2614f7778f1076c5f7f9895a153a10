@@ -263,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea769551_a53056f0",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-11T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37b04255_52a875ff",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8e9451b_9e201daa",
@@ -348,6 +372,24 @@
       "side": 1,
       "message": "FWIW I think this is fine as it is, the ft functions are designed to be toplevel entry points. For testing output format correctness and long-term consistency I think focusing effort on the unit tests is a lot more useful than focusing on extra safeguards in the code here (e.g. there are some cases that don\u0027t have coverage in the unit tests, and we should fix that, although it doesn\u0027t need to be part of this CL).",
       "parentUuid": "ba8a70af_47e71f72",
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea0a7d1_fc7440c0",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-11T02:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "065552cb_a287a9c2",
       "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
