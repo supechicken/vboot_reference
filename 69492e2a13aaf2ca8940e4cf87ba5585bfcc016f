@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf42bd02_c66b572e",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-11T02:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65ac57ab_1ff227f7",
+      "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc42ba7e_9a36dd00",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-11T02:47:03Z",
       "side": 1,
       "message": "Indentation.",
+      "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f061da_fa6d3268",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-11T02:56:36Z",
+      "side": 1,
+      "message": "Lint/style questions here. If I indent this line, its longer than 80 chars, and it was previously suggested that I don\u0027t break up the string. Should I indent and let the line by \u003e80 chars?",
+      "parentUuid": "cc42ba7e_9a36dd00",
       "revId": "69492e2a13aaf2ca8940e4cf87ba5585bfcc016f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
