@@ -287,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d254fb7_bd2bd53b",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-07-11T03:09:35Z",
+      "side": 1,
+      "message": "It would definitely not be \"overly\" complicated.\n__No__ explicit Push/Pop macros required.\n\nThe crux of the problem is with the cleanup/setting of the `ft_` header values.\nThis can be fixed with cleanup attributes / scoped resetting of these `ft_` values.\nRather than having them slip across at the global boundary / not even cleaned up - even throughout/through some of the other comments.\n\nSince owners are fine\u0027ing it for now, Ack from my end too.",
+      "parentUuid": "ea769551_a53056f0",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "6b23ce965a2614f7778f1076c5f7f9895a153a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8e9451b_9e201daa",
