@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04ccacb3_d0f47594",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-12T13:08:17Z",
+      "side": 1,
+      "message": "Or rather \"should\". Not setting the flag does not break anything, it just adds one more reset if something is wrong with RW slot.",
+      "parentUuid": "b9e878c3_5eadc756",
+      "range": {
+        "startLine": 203,
+        "startChar": 56,
+        "endLine": 203,
+        "endChar": 59
+      },
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99499e3b_51a13eb3",
         "filename": "firmware/2lib/include/2context.h",
         "patchSetId": 5
