@@ -88,6 +88,24 @@
       "parentUuid": "45647039_b9eaa5d4",
       "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0724c6_3be4e64c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-07-12T18:36:21Z",
+      "side": 1,
+      "message": "I just found this very old patch after getting nagged by Gerrit.\n\nThis can be solved by adding a header file to the including project called stdlib.h and including the project\u0027s malloc.h there.\n\nI am not a fan of vboot using system malloc, but at least for this case it seems easy enough to work around it.",
+      "parentUuid": "ee3cd00b_5043d64d",
+      "revId": "4b0b8db6c45b8702e3b2ecebcd6034739275f084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
