@@ -177,6 +177,24 @@
       "parentUuid": "93c2e9e2_67f9d859",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d3215b_3aca7423",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-12T13:56:55Z",
+      "side": 1,
+      "message": "I check the VBLOCK_B slot presence in the file first and omit the calls to:\nimage_check_and_prepare_cbfs, prepare_slot and check_slot_after_prepare.\n\nHowever, I am not sure if the downgrade of error messages to INFO in prepare_slot or sign_bios_at_end. These are also used to prepare and sign slot A, which must fail the hard way if something is wrong with the slot A.",
+      "parentUuid": "5f2e1281_eb72bb41",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
