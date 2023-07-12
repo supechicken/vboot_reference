@@ -159,6 +159,24 @@
       "parentUuid": "2abebe9b_9dc382de",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2e1281_eb72bb41",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-12T00:50:16Z",
+      "side": 1,
+      "message": "\u003e The comment of cbfstool_get_metadata_hash already states that the hash type will be set to VB2_HASH_INVALID on errors. Therefore we don\u0027t even need to do that here.\n\nTrue, we don\u0027t actually need to do anything on error here.\n\n\u003e If the slot B is considered optional, then I think we can modify ft_sign_bios() so that futility sign doesn\u0027t even print an error.\n\nYeah, I guess we could downgrade the prepare_slot() and sign_bios_at_end() messages to INFO().",
+      "parentUuid": "93c2e9e2_67f9d859",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
