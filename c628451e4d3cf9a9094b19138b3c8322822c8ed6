@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa1eb42_694f3f89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-12T00:47:08Z",
+      "side": 1,
+      "message": "Thanks, I think other than the remaining comment this looks good!",
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f11dedb0_c67d0d5d",
@@ -14,6 +31,70 @@
       "writtenOn": "2023-07-10T13:38:30Z",
       "side": 1,
       "message": "Why do we need this call?\n\nSuppose slot A is invalid. In the first boot, `vb2api_fail()` will be called somewhere after `vb2_select_fw_slot()`. In `vb2api_fail()`, because `VB2_SD_STATUS_CHOSE_SLOT` is set, recovery will be requested, and therefore the device will boot into recovery mode in the second boot.",
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2a78de_a787096e",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-12T00:47:08Z",
+      "side": 1,
+      "message": "Agreed, I think just returning an error here is enough (vb2api_fw_phase2() will do the rest).",
+      "parentUuid": "f11dedb0_c67d0d5d",
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e878c3_5eadc756",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-12T00:47:08Z",
+      "side": 1,
+      "message": "nit: should probably say \"must\"?",
+      "range": {
+        "startLine": 203,
+        "startChar": 56,
+        "endLine": 203,
+        "endChar": 59
+      },
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99499e3b_51a13eb3",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-12T00:47:08Z",
+      "side": 1,
+      "message": "nit: maybe call it SLOT_A_ONLY to clarify which slot is the only one in use?",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 26
+      },
       "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
