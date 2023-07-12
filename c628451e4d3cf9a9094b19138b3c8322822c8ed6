@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4efcdb3a_bccaefcd",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-12T13:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d2a78de_a787096e",
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9e878c3_5eadc756",
@@ -113,6 +131,30 @@
       "writtenOn": "2023-07-12T00:47:08Z",
       "side": 1,
       "message": "nit: maybe call it SLOT_A_ONLY to clarify which slot is the only one in use?",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 26
+      },
+      "revId": "c628451e4d3cf9a9094b19138b3c8322822c8ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56787f85_7eceaffb",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-12T13:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99499e3b_51a13eb3",
       "range": {
         "startLine": 207,
         "startChar": 1,
