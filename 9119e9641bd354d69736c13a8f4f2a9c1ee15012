@@ -195,6 +195,24 @@
       "parentUuid": "5f2e1281_eb72bb41",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03407faf_223a45ed",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-13T01:52:02Z",
+      "side": 1,
+      "message": "In my previous comment I was actually thinking about something like:\n\n```\nstatic int sign_bios_slot(slot)\n{\n    image_check_and_prepare_cbfs(slot);\n    prepare_slot(slot);\n    check_slot_after_prepare(slot);\n}\n\nint ft_sign_bios()\n{\n    futil_open_and_map_file();\n\n    sign_bios_slot(A);\n    if (fmap_find_by_name(fmap_name[BIOS_FMAP_FW_MAIN_B]))\n        sign_bios_slot(B);\n    else\n        INFO(...);\n\n    sign_bios_at_end();\n    futil_unmap_and_close_file();\n}\n```\n\nThen there\u0027s no need to downgrade the error messages. Also, when slot B is not present, `is_valid` should automatically be `0`.",
+      "parentUuid": "a7d3215b_3aca7423",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
