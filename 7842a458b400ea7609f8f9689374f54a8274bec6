@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f905d0ba_433b0633",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-13T01:25:55Z",
+      "side": 1,
+      "message": "Oh wait that doesn\u0027t quite work due to the way the macro is designed. But they both just print to stderr anyway so how much do we even care if it says ERROR or INFO?\n\nOne other option would be\n```\nfprintf(stderr, \"%s: %s: %s area not found in FMAP\\n\",\n  vblock_c \u003d\u003d BIOS_FMAP_VBLOCK_A ? \"ERROR\" : \"INFO\", __func__, fw_main_name);\n```",
+      "parentUuid": "3a0244c8_4d21ae11",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b003cee_56ab476c",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 6
