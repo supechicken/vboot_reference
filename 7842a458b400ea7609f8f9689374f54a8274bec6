@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5baa09f_fb84f2c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:23:24Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "b18ae549_019f6823",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a64766fb_c9197b7a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "This one is fine indeed. But the error in prepare_slot is misleading a bit.",
       "parentUuid": "a64766fb_c9197b7a",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382c99be_f9c95620",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:23:24Z",
+      "side": 1,
+      "message": "Downgraded the prepare_slot error to INFO for slot B",
+      "parentUuid": "d8686320_9c8a631e",
       "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +226,24 @@
       "side": 1,
       "message": "You are right. No need to guard this.",
       "parentUuid": "feae933c_4229cfb5",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0a522f_2afdd33f",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:23:24Z",
+      "side": 1,
+      "message": "Guard removed",
+      "parentUuid": "11ef32d6_f9ba3bdd",
       "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
