@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b18ae549_019f6823",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "Yes, included one extra line, which does not need to be in commit msg.",
+      "parentUuid": "28e3c2b7_4df8ef7d",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a64766fb_c9197b7a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-13T01:22:16Z",
       "side": 1,
       "message": "This one is already an INFO so it looks fine as it is, right?",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8686320_9c8a631e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "This one is fine indeed. But the error in prepare_slot is misleading a bit.",
+      "parentUuid": "a64766fb_c9197b7a",
       "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -72,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af8e17e7_2ae5f530",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "Doesn\u0027t look too well either. Maybe a new macro only available in file_type_bios.c?\n\nLike:\n\n#define ERROR_SLOT(slot, format, ...)  fprintf(stderr, \"%s: %s: %s area not found in FMAP\\n\",\n  (slot \u003d\u003d BIOS_FMAP_VBLOCK_A) || (slot \u003d\u003d BIOS_FMAP_FW_MAIN_A) ? \\\n   \"ERROR\" : \"INFO\", format, __func__, ##__VA_ARGS__ );\n\nA bit long-ish, but will be more readable possibly",
+      "parentUuid": "f905d0ba_433b0633",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b003cee_56ab476c",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 6
@@ -83,6 +137,24 @@
       "writtenOn": "2023-07-13T01:22:16Z",
       "side": 1,
       "message": "Hmm... I\u0027m not really a fan of adding this whole function and parsing the file again so many times just to decide whether to print some warning messages. We should try to make this work with just the existing state.area[BIOS_FMAP_FW_MAIN_B].is_valid stuff.",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2986706_da7a68eb",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "2b003cee_56ab476c",
       "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11ef32d6_f9ba3bdd",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "You are right. No need to guard this.",
+      "parentUuid": "feae933c_4229cfb5",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95243615_bfb138dc",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 6
@@ -123,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d285b9d_0cf69578",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "95243615_bfb138dc",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2482b662_d813395e",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 6
@@ -134,6 +242,24 @@
       "writtenOn": "2023-07-13T01:22:16Z",
       "side": 1,
       "message": "This doesn\u0027t need to be guarded, it already checks is_valid.",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b4c1700_de6b35ec",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "Indeed. Not guarded right now",
+      "parentUuid": "2482b662_d813395e",
       "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

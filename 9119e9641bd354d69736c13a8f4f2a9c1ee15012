@@ -213,6 +213,24 @@
       "parentUuid": "a7d3215b_3aca7423",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50124b63_89addcad",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:08:48Z",
+      "side": 1,
+      "message": "I tried to apply what you suggest, but to satisfy Julius comments as well, I have not added a fmap_find_by_name call. Right now I am getting the following output from coreboot build:\n\nWARNING: prepare_slot: VBLOCK_A keyblock is invalid.\nINFO: prepare_slot: FW_MAIN_B area not found in FMAP\nINFO: sign_bios_at_end: BIOS image does not have FW_MAIN_B. Signing only FW_MAIN_A\n    FLASHMAP Layout generated for RO and A partition.\n\n\nIt is already good enough.",
+      "parentUuid": "03407faf_223a45ed",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
