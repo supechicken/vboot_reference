@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e4ca80_a855cee6",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-17T14:11:42Z",
+      "side": 1,
+      "message": "We actually may not even need to guard it. check_slot_after_prepare will raise fatal error if something is wrong with either of slots when using CBFS verification",
+      "revId": "09139e91230059742e7a2af3312c8c54d8876f95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
