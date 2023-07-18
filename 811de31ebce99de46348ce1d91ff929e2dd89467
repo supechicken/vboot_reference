@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2ed867_3c3feb6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-18T16:25:27Z",
+      "side": 1,
+      "message": "couple of minor nits, otherwise lgtm",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66638849_2b43ae6b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-18T16:25:27Z",
+      "side": 1,
+      "message": "nit: combine with return?\n```\nif(futil_open_and_map_file(fname, \u0026fd, FILE_RO, (uint8_t **)\u0026block, \u0026len) \u003d\u003d 1)\n   return 1\n```",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd964601_65d421b0",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1570422
+      },
+      "writtenOn": "2023-07-18T16:25:27Z",
+      "side": 1,
+      "message": "nit: here too can be combined.",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
