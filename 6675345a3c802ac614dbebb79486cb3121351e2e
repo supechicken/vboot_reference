@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2b111e_298d4aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-18T00:28:03Z",
+      "side": 1,
+      "message": "Thanks for trying to address this! I also just stumbled across this recently.\n\nHowever, I\u0027m not sure just plumbing the file name through everything as yet another parameter is the best solution. I think in general it\u0027s pretty confusing that for most of these functions the `name` parameter is a file name, but for a few of them it only is in some circumstances but not in others. I\u0027d prefer to do a wider cleanup there to better prevent these kinds of issues in the future.\n\nI\u0027ve uploaded CL:4691093 as an alternative solution to this, please have a look.",
+      "revId": "6675345a3c802ac614dbebb79486cb3121351e2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
