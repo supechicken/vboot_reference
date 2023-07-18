@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7511ac91_30f71640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-18T03:28:03Z",
+      "side": 1,
+      "message": "Okay, the comment is really really long...",
+      "revId": "0e7f6f86e083559682a49111a1677b01340e0d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433b2516_9537cc84",
+        "filename": "futility/futility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-18T03:28:03Z",
+      "side": 1,
+      "message": "I\u0027m confused about tokens and values. For `bios::preamble::firmware_version`, `bios` and `preamble` are tokens, and `firmware_version` is the value. Is that right? In what situation will a line contains multiple values?",
+      "range": {
+        "startLine": 107,
+        "startChar": 57,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "0e7f6f86e083559682a49111a1677b01340e0d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d59388_9330d34e",
+        "filename": "futility/futility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-18T03:28:03Z",
+      "side": 1,
+      "message": "`a set`?",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 35
+      },
+      "revId": "0e7f6f86e083559682a49111a1677b01340e0d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
