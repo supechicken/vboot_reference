@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d425c630_3aa8e08d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382c99be_f9c95620",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a0244c8_4d21ae11",
@@ -174,6 +192,24 @@
       "side": 1,
       "message": "Doesn\u0027t look too well either. Maybe a new macro only available in file_type_bios.c?\n\nLike:\n\n#define ERROR_SLOT(slot, format, ...)  fprintf(stderr, \"%s: %s: %s area not found in FMAP\\n\",\n  (slot \u003d\u003d BIOS_FMAP_VBLOCK_A) || (slot \u003d\u003d BIOS_FMAP_FW_MAIN_A) ? \\\n   \"ERROR\" : \"INFO\", format, __func__, ##__VA_ARGS__ );\n\nA bit long-ish, but will be more readable possibly",
       "parentUuid": "f905d0ba_433b0633",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a641a3c4_d3ce2eb4",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:02:35Z",
+      "side": 1,
+      "message": "I guess no point in adding macro for just a single print.",
+      "parentUuid": "af8e17e7_2ae5f530",
       "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
