@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17176670_14cab53b",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:05:12Z",
+      "side": 1,
+      "message": "Right now we have:\n\n```\nINFO: prepare_slot: FW_MAIN_B area not found in FMAP\nINFO: sign_bios_at_end: BIOS image does not have FW_MAIN_B. Signing only FW_MAIN_A\n    FLASHMAP Layout generated for RO and A partition.\n```",
+      "parentUuid": "a641a3c4_d3ce2eb4",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b003cee_56ab476c",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 6
