@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b8bdab_1288ee42",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-18T00:56:09Z",
+      "side": 1,
+      "message": "I think this one should remain ERROR. When your FMAP doesn\u0027t have either VBLOCK_B or FW_MAIN_B, then you clearly don\u0027t want to have a slot B and that\u0027s fine (and then this function would have returned further up). But if you do have FW_MAIN_B but you don\u0027t have VBLOCK_B, you messed up and we should call that an error, because that combination makes no sense. Either you have the slot completely or not at all.",
+      "revId": "0463426fcfe765b39a375fe5bb20d683695bf10a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1487a51_4e1548bd",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-18T00:56:09Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not sure where this came from, why are we changing the logic here? It\u0027s intentional that we only want to call get_metadata_hash() when uses_cbfs_integration is true. (Now you made it so that it would also get called if that was false and the truncate failed. I mean it would probably just fail and do nothing, but that still sounds wrong. Note that truncate failing is not an error, that just means we\u0027re signing a non-coreboot image which is a legal use case.)",
+      "revId": "0463426fcfe765b39a375fe5bb20d683695bf10a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

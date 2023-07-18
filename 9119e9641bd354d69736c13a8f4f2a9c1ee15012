@@ -231,6 +231,24 @@
       "parentUuid": "03407faf_223a45ed",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe136d18_0833b7dd",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-18T00:56:09Z",
+      "side": 1,
+      "message": "I think it was intentional that we got all the cbfstool calls done before mapping the image, that\u0027s why it\u0027s not just combined to a single \"sign\" function per slot. Granted, it probably still works, but it feels a bit dangerous. Is there any advantage in reshuffling things like that? I think if we just left it as it was, with the fix to the error message in prepare_slot(), wouldn\u0027t that do everything we want already?",
+      "parentUuid": "50124b63_89addcad",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
