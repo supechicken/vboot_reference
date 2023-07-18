@@ -267,6 +267,24 @@
       "parentUuid": "50124b63_89addcad",
       "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee7c063_f1611463",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:01:31Z",
+      "side": 1,
+      "message": "Reverted to its original state. I think I misunderstood Yu-Ping Wu\u0027s suggestion.",
+      "parentUuid": "fe136d18_0833b7dd",
+      "revId": "9119e9641bd354d69736c13a8f4f2a9c1ee15012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

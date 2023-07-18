@@ -284,6 +284,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c806011a_7510591b",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc0a522f_2afdd33f",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95243615_bfb138dc",
@@ -315,6 +333,24 @@
       "side": 1,
       "message": "Done.",
       "parentUuid": "95243615_bfb138dc",
+      "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5771a953_208599df",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:01:31Z",
+      "side": 1,
+      "message": "Reverted to the original state where prepare_slot is run for both slots.",
+      "parentUuid": "1d285b9d_0cf69578",
       "revId": "7842a458b400ea7609f8f9689374f54a8274bec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

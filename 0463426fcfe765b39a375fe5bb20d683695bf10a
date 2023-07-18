@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b57b704a_48d385c6",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:01:31Z",
+      "side": 1,
+      "message": "Right, keeping only the FW_MAIN check as optional INFO for slot B",
+      "parentUuid": "e2b8bdab_1288ee42",
+      "revId": "0463426fcfe765b39a375fe5bb20d683695bf10a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1487a51_4e1548bd",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-18T00:56:09Z",
       "side": 1,
       "message": "Sorry, I\u0027m not sure where this came from, why are we changing the logic here? It\u0027s intentional that we only want to call get_metadata_hash() when uses_cbfs_integration is true. (Now you made it so that it would also get called if that was false and the truncate failed. I mean it would probably just fail and do nothing, but that still sounds wrong. Note that truncate failing is not an error, that just means we\u0027re signing a non-coreboot image which is a legal use case.)",
+      "revId": "0463426fcfe765b39a375fe5bb20d683695bf10a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c523656_1e165d15",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1577712
+      },
+      "writtenOn": "2023-07-18T09:01:31Z",
+      "side": 1,
+      "message": "Probably I went ahead of myself with this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4507261/comment/1a3cadab_d15dd7d2/\n\nReverted it to the original state",
+      "parentUuid": "a1487a51_4e1548bd",
       "revId": "0463426fcfe765b39a375fe5bb20d683695bf10a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
