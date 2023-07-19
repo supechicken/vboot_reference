@@ -16,6 +16,24 @@
       "message": "Something doesn\u0027t look good, sample output:\n\n```\nGBB content:\n  HWID:                  MSI_MS7E06\n     digest:             455bd9241c385446c3fecff31d7e063faf3318751882d0920d358c5168a422fb   valid  Root Key:\n    Vboot API:           1.0\n    Algorithm:           11 RSA8192 SHA512\n    Key Version:         1\n    Key sha1sum:         b11d74edd286c144e1135b49e7f0bc20cf041f10\n```\n\nNot sure which change breaks the output, I checked out the repo on the CL:4691094",
       "revId": "d450495235b9ab3a58f5c463fdb86745bae8396b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a9588f_8cbd11c7",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:03:10Z",
+      "side": 1,
+      "message": "Strange... I don\u0027t see it. I also don\u0027t see how the code could do that, the line that prints \"valid\" always prints a newline afterwards with this patch. Are you sure this wasn\u0027t a merge conflict or some other confusion in your local checkout (e.g. see the \"\\n\" that gets added to the FT_PRINT() in the last line of print_hwid_digest() by this patch, if you somehow missed that you would get the output you describe)?",
+      "parentUuid": "31b81f8d_7c7d8de0",
+      "revId": "d450495235b9ab3a58f5c463fdb86745bae8396b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
