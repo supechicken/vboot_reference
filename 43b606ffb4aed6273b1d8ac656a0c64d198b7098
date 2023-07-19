@@ -46,6 +46,30 @@
       },
       "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3da14ec_aafe6b66",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T04:03:35Z",
+      "side": 1,
+      "message": "\u003e I think the goal is kinda not to ever update them?\n\nHmmm, okay, if that\u0027s the case, then I guess we\u0027re fine here.\n\nI\u0027m asking this because a couple weeks ago when I tried to remove the trailing space from `show.tests_futility_data_kern_preamble.bin`, I had no idea how to modify `kern_preamble.bin` accordingly.",
+      "parentUuid": "56bc52a5_284bb8c3",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
