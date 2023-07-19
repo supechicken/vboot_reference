@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb16376_71053ca3",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:28:32Z",
+      "side": 1,
+      "message": "Not really part of this patch, but sure...",
+      "parentUuid": "66638849_2b43ae6b",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd964601_65d421b0",
@@ -48,6 +66,24 @@
       "writtenOn": "2023-07-18T16:25:27Z",
       "side": 1,
       "message": "nit: here too can be combined.",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7559cb_ef8d1dd6",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd964601_65d421b0",
       "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebac4b63_7c8b3614",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6698bb8_91eebfb2",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5247e23_e44542ba",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0562f405_5e9552f8",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:28:32Z",
+      "side": 1,
+      "message": "This isn\u0027t really saving a line because retval still needs to be initialized anyway (for use in the loop below).",
+      "parentUuid": "c5247e23_e44542ba",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55a2d709_f3efc1c4",
@@ -99,6 +171,24 @@
       "writtenOn": "2023-07-19T02:14:06Z",
       "side": 1,
       "message": "Can you explain in the commit message why this is moved? The reason is unclear to me.",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "034d9d30_6fa384a0",
+        "filename": "futility/file_type_bios.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a2d709_f3efc1c4",
       "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +212,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f719cf2_8d5552eb",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:28:32Z",
+      "side": 1,
+      "message": "Right, they were supposed to just throw an error like the stuff in vb2_helper.c, but I guess we forgot... fixes welcome if anyone has time.",
+      "parentUuid": "8e6546cc_0c35fb2e",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "324f8a2b_020bcf11",
         "filename": "futility/vb2_helper.c",
         "patchSetId": 3
@@ -133,6 +241,24 @@
       "writtenOn": "2023-07-19T02:14:06Z",
       "side": 1,
       "message": "Aligning with `%s Key file` should be good enough?",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32283b37_251b01ac",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:28:32Z",
+      "side": 1,
+      "message": "I mean, I\u0027m not really touching the indent here, but sure. (I\u0027ll just pull it into one line since we do 96 chars now.)",
+      "parentUuid": "324f8a2b_020bcf11",
       "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
