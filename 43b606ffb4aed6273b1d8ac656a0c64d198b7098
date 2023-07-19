@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db70ca3a_4ba1fcf0",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T02:48:03Z",
+      "side": 1,
+      "message": "Not related to this CL, but I think we should document somewhere how these files are generated, so that it will be easier for developers to update them. Maybe `tests/futility/data/${FILE}.README`?\n\nFor the current CL, can you list the exact commands/steps to generate  bios_coachz_cbfs.bin (including how metadata hash is invalidated)?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
