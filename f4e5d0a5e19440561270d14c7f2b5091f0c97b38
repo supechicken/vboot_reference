@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ab65b6_2c67c92d",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T01:50:30Z",
+      "side": 1,
+      "message": "Can we change this to 3 to include the FMAP region name in the file, so that it\u0027s easier for people to understand why there\u0027re two `keyblock` and `preamble` instances?",
+      "range": {
+        "startLine": 128,
+        "startChar": 43,
+        "endLine": 128,
+        "endChar": 44
+      },
+      "revId": "f4e5d0a5e19440561270d14c7f2b5091f0c97b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
