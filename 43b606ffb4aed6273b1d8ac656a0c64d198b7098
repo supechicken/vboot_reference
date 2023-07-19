@@ -22,6 +22,30 @@
       },
       "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56bc52a5_284bb8c3",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:35:37Z",
+      "side": 1,
+      "message": "I think the goal is kinda not to ever update them? E.g. the existing ones are very old (GBB 1.1 without HWID digest), so it\u0027s good to add new ones with the newer format, but we still wouldn\u0027t want to touch the old ones because we still want futility to be able to correctly parse very old files.\n\nFor this I just picked a random CoachZ local build I had lying around on my disk (since we don\u0027t have CBFS integration in official builds yet), I don\u0027t even really know what was in it. I don\u0027t think it matters where it came from, just that it is a firmware image that creates a specific output for `futility show` and that output shouldn\u0027t change unexpectedly with future updates.",
+      "parentUuid": "db70ca3a_4ba1fcf0",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
