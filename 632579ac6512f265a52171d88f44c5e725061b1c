@@ -16,6 +16,23 @@
       "message": "rocco@, I CC\u0027ed Brian here as he is doing work to get us a programmatic libvpd interface. We can then hook this frontend up to that as the backend instead of the subprocess.\n\nObviously the next step for this is to find call sites and migrate them to use futility canonically. Especially anything doing VPD with raw flashrom subprocess.",
       "revId": "632579ac6512f265a52171d88f44c5e725061b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f1b6d5_307b28d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-19T08:12:27Z",
+      "side": 1,
+      "message": "The build failure is related to CL:4687457\n\nTry again",
+      "revId": "632579ac6512f265a52171d88f44c5e725061b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
