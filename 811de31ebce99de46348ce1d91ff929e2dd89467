@@ -50,6 +50,91 @@
       "message": "nit: here too can be combined.",
       "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6698bb8_91eebfb2",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T02:14:06Z",
+      "side": 1,
+      "message": "Indent.",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5247e23_e44542ba",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T02:14:06Z",
+      "side": 1,
+      "message": "This too.",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a2d709_f3efc1c4",
+        "filename": "futility/file_type_bios.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T02:14:06Z",
+      "side": 1,
+      "message": "Can you explain in the commit message why this is moved? The reason is unclear to me.",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6546cc_0c35fb2e",
+        "filename": "futility/file_type_rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T02:14:06Z",
+      "side": 1,
+      "message": "Looks like we forgot to handle -P for functions in this file and other `file_type_*.c`.",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324f8a2b_020bcf11",
+        "filename": "futility/vb2_helper.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-19T02:14:06Z",
+      "side": 1,
+      "message": "Aligning with `%s Key file` should be good enough?",
+      "revId": "811de31ebce99de46348ce1d91ff929e2dd89467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
