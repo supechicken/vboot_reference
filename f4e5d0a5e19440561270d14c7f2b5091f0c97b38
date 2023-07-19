@@ -22,6 +22,30 @@
       },
       "revId": "f4e5d0a5e19440561270d14c7f2b5091f0c97b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf93a40_4cd4e704",
+        "filename": "tests/futility/test_sign_firmware.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:15:51Z",
+      "side": 1,
+      "message": "No because the LOEM test below compare this with values taken from the raw vblock files, and those won\u0027t have the FMAP region name prefix. Basically, this generates\n```\nbios::VBLOCK_A:root_key::sha1_sum::...\nbios::VBLOCK_B:root_key::sha1_sum::...\n```\nand the below generates two sets of\n```\nfw_pre::root_key::sha1_sum:...\n```\nand I cut them both off at the right place to make them comparable.\n\nI agree it\u0027s not the most clear way to do things, but this is basically what the existing test code did and I\u0027m not looking to spend too much time redesigning it from scratch here, just trying to drop in the new output format. At least by keeping the `root_key` part alive (as opposed to the old version which just dumps the bare SHA values), we can use `grep` to extract the vblock parts rather than relying on `tail`.",
+      "parentUuid": "57ab65b6_2c67c92d",
+      "range": {
+        "startLine": 128,
+        "startChar": 43,
+        "endLine": 128,
+        "endChar": 44
+      },
+      "revId": "f4e5d0a5e19440561270d14c7f2b5091f0c97b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
