@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c05047f2_ec41b5d0",
+        "filename": "futility/futility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:09:48Z",
+      "side": 1,
+      "message": "No, all of those are prefix tokens. The full line (e.g. from bios_peppy_mp.bin) is:\n```\nbios::VBLOCK_A::preamble::firmware_version::2\n```\n`bios`, `VBLOCK_A`, `PREAMBLE` and `firmware_version` are the prefix tokens, and `2` is the value.\n\nMultiple values should pretty much only exist in the \"different data representations for the same thing\" case I mentioned below, e.g. in\n```\nbios::GBB::hwid::digest::algorithm::2::SHA256                                                    \n```\nboth `2` and `SHA256` would be values. (The distinction between values and prefix tokens isn\u0027t super important for the rules of the format itself, I just wanted to explain in general that each line consists of \"the part you grep for\" on the left and \"the part you get out of it\" on the right, and both of those consist of one or more `::`-delimited fields.)",
+      "parentUuid": "433b2516_9537cc84",
+      "range": {
+        "startLine": 107,
+        "startChar": 57,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "0e7f6f86e083559682a49111a1677b01340e0d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15d59388_9330d34e",
         "filename": "futility/futility.h",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-18T03:28:03Z",
       "side": 1,
       "message": "`a set`?",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 35
+      },
+      "revId": "0e7f6f86e083559682a49111a1677b01340e0d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c013011_a5103c1c",
+        "filename": "futility/futility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-19T03:09:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15d59388_9330d34e",
       "range": {
         "startLine": 154,
         "startChar": 31,
