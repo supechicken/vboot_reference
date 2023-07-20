@@ -33,6 +33,29 @@
       "message": "The build failure is related to CL:4687457\n\nTry again",
       "revId": "632579ac6512f265a52171d88f44c5e725061b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad503ca_36c0a856",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-20T10:04:54Z",
+      "side": 1,
+      "message": "When building asurada coreboot, it shows:\n\n```\nld.lld: error: undefined symbol: host_shell\n\u003e\u003e\u003e referenced by cmd_vpd.c:68 (/build/asurada/tmp/portage/sys-boot/coreboot-0.0.1-r5928/work/coreboot-0.0.1/3rdparty/vboot/futility/cmd_vpd.c:68)\n\u003e\u003e\u003e               /build/asurada/tmp/portage/sys-boot/coreboot-0.0.1-r5928/work/build/asurada/util/vboot_lib/futility/cmd_vpd.o:(get_vpd_from_file)\nclang: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[1]: *** [Makefile:1074: /build/asurada/tmp/portage/sys-boot/coreboot-0.0.1-r5928/work/build/asurada/util/vboot_lib/futility/futility] Error 1\nmake: *** [util/futility/Makefile.inc:10: /build/asurada/tmp/portage/sys-boot/coreboot-0.0.1-r5928/work/build/asurada/util/vboot_lib/futility/futility] Error 2\n * ERROR: sys-boot/coreboot-0.0.1-r5928::chromiumos failed (compile phase):\n *   emake failed\n * \n * Build log: /build/asurada/tmp/portage/logs/sys-boot:coreboot-0.0.1-r5928:20230719-085437.log\n * Stable log symlink: /build/asurada/tmp/portage/sys-boot/coreboot-0.0.1-r5928/temp/build.log\n * CWD: /build/asurada/tmp/portage/sys-boot/coreboot-0.0.1-r5928/work/coreboot-0.0.1\n * S:   /build/asurada/tmp/portage/sys-boot/coreboot-0.0.1-r5928/work/coreboot-0.0.1\n```\n\nAnd cause the build to fail",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "632579ac6512f265a52171d88f44c5e725061b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
