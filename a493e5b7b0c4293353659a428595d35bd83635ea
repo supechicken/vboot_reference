@@ -33,6 +33,24 @@
       "message": "This is also mentioned in 110, but probably ok to repeat here in case you want to repeat this context for producer vs consumer behavior",
       "revId": "a493e5b7b0c4293353659a428595d35bd83635ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94632c05_85b5abc3",
+        "filename": "futility/futility.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-20T00:02:10Z",
+      "side": 1,
+      "message": "Yeah, I felt it was useful for clarity to describe the same aspect from two different viewpoints here (writer and reader).",
+      "parentUuid": "9e010a30_2faaed91",
+      "revId": "a493e5b7b0c4293353659a428595d35bd83635ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
