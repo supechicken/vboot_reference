@@ -118,6 +118,30 @@
       },
       "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3177aba5_8ca1a3b0",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-20T18:03:06Z",
+      "side": 1,
+      "message": "Oh, I see what you mean. I mean, you could muck around with a hex editor, but why bother? A kernel command line ending in a space is not illegal, I don\u0027t see why that would need to be changed.",
+      "parentUuid": "1bae2e0c_933ffca8",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
