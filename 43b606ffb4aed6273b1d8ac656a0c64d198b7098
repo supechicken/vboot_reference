@@ -94,6 +94,30 @@
       },
       "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bae2e0c_933ffca8",
+        "filename": "tests/futility/test_show_contents.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-20T03:32:36Z",
+      "side": 1,
+      "message": "No I think the space also exists in `kern_preamble.bin`.\n\n```\n00018000  68 69 20 74 68 65 72 65  20 00 00 00 00 00 00 00  |hi there .......|\n```",
+      "parentUuid": "f80f8a67_afa67860",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "43b606ffb4aed6273b1d8ac656a0c64d198b7098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
