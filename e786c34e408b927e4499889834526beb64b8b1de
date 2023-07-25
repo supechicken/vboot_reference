@@ -196,6 +196,24 @@
       "parentUuid": "c4b38ba3_4b93509d",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0571e5fc_e1e8c955",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-25T21:52:31Z",
+      "side": 1,
+      "message": "Yes, exactly, and coreboot already supports booting a U-Boot payload. I am not in any way against coreboot booting U-Boot (from an upstream, non-CrOS-specific perspective). coreboot should be a general purpose firmware that can boot any payload willing to fit itself to the coreboot payload API.\n\nWhat I object against is adding code to coreboot that selects a different payload based on a GBB flag. I believe that this violates the general coreboot philosophy of keeping payload policy out of coreboot itself. Besides, GBB flags are supposed to be vboot-specific configuration flags and don\u0027t really have anything to do with coreboot\u0027s payload loading. They are the wrong mechanism to do this.\n\nLike I mentioned, there is existing history of payload selection mechanisms for coreboot in the form of the \"Bayou\" payload (https://www.coreboot.org/Bayou) which is in itself a payload that displays a little menu to select another payload to chain-load into. I think that is the right approach supported by coreboot\u0027s philosophy if anyone wants to implement more advanced payload selection. If you ask around among long time upstream developers, I would expect that many of them would probably tell you the same thing: boot policy belongs in the payload.\n\nThe Bayou code itself no longer works, I believe, because nobody has needed anything like that in many years. But the basic approach is still viable and could be reimplemented if you really want something like that (again, for ChromeOS specifically I also disagree with your general U-Boot-as-CLI approach, so I don\u0027t think this is something we would ever use here, but I of course don\u0027t want to stop you from making generally useful non-ChromeOS contributions to coreboot if you want to). If you don\u0027t want a menu, you could of course also have the payload search for a boot policy config file in CBFS and take the decision from there. (That\u0027s another coreboot philosophy thing: the right place for coreboot or payload specific post-build-time configuration information is CBFS, not GBB flags. GBB flags are a vboot-specific quirk that don\u0027t really have anything to do with coreboot boot policy.)\n\nThis is only one flag but it is directly related to the corresponding coreboot patch which I am mainly objecting to.",
+      "parentUuid": "6c1c5adf_fb044f92",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
