@@ -160,6 +160,24 @@
       "parentUuid": "986dcef6_5a0bcdb7",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b38ba3_4b93509d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-25T21:01:10Z",
+      "side": 1,
+      "message": "This is not \"needed\" to use U-Boot from coreboot. U-Boot can be installed as a normal coreboot payload just like depthcharge and all the others. If anyone wants to package upstream coreboot with U-Boot they are totally free to do so. (If you want to support multiple payloads from a single image, I think the Bayou project has fallen a bit into disrepair in the last decade, but if anyone has interest in that sort of thing again I think that (having one payload choose and chain-load the next) is still the approach upstream would prefer to implement that sort of thing, and not by hardcoding policy decisions taken from some completely unrelated thing (vboot flags) directly into coreboot itself.)\n\nThis is something you\u0027re trying to introduce specifically into ChromeOS, and as such, I think it is reasonable to ask that we have consensus within the team about actually wanting to go that route before we accept code and hacks going in the wrong direction into the repo. Every time I talk to Dossym about this we agree that using U-Boot for this does not make sense and is not the plan of record for our roadmap. So I\u0027m going to continue to block this, because I strongly disagree with this general direction, until either someone higher up the chain tells me otherwise or I see this approach having a lot more support from others in our team.",
+      "parentUuid": "3c910972_bd0bbf71",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
