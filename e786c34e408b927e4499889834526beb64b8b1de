@@ -178,6 +178,24 @@
       "parentUuid": "3c910972_bd0bbf71",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1c5adf_fb044f92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-07-25T21:26:21Z",
+      "side": 1,
+      "message": "Coreboot is an open-source project with other contributors outside ChromeoS, as I understand it. It supports booting U-Boot as a payload already. This is making that same feature available as a switchable option.\n\nJulius this is just a one-line flag addition to vboot. It doesn\u0027t make any sense at all to block the addition of this flag??",
+      "parentUuid": "c4b38ba3_4b93509d",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
