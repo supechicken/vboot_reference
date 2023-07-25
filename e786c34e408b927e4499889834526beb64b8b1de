@@ -142,6 +142,24 @@
       "parentUuid": "74391185_dc66ec8c",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c910972_bd0bbf71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-07-25T20:01:39Z",
+      "side": 1,
+      "message": "I\u0027m sorry but I don\u0027t think you should be the gatekeeper here. You may not like or want changes in vboot, but that doesn\u0027t mean you can block other people\u0027s work.\n\nThis is a one-line change that is needed to jump directly into U-Boot from coreboot, as is done upstream.\n\nPlease drop the -2 and allow this work to continue.",
+      "parentUuid": "986dcef6_5a0bcdb7",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
