@@ -214,6 +214,24 @@
       "parentUuid": "6c1c5adf_fb044f92",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7441f9_dca4880e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2023-07-25T22:14:42Z",
+      "side": 1,
+      "message": "It should be obvious that a menu is not suitable here...are you expecting it to wait for serial input? Depthcharge doesn\u0027t do that. Does coreboot even support waiting for a prompt to choose a payload? The point here is to jump to the payload immediately.\n\nGBB flags affect the vboot flow in various ways as you know - developer mode, altfw, even the deprecated VB2_GBB_FLAG_ENABLE_ALTERNATE_OS. I did proposal a \u0027coreboot feature\u0027 block but that has met with the same response.\n\nIn any case, you are missing the key question. Why are you taking it upon yourself to disagree with a feature and then block it?",
+      "parentUuid": "0571e5fc_e1e8c955",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
