@@ -292,4 +292,18 @@ enum arch_t {
 int write_to_file(const char *msg, const char *filename, uint8_t *start,
 		  size_t size);
 
+/*
+ * Strips a string (usually from shell execution output) by removing all the
+ * trailing characters in pattern. If pattern is NULL, match by space type
+ * characters (space, new line, tab, ... etc).
+ */
+void strip_string(char *s, const char *pattern);
+
+/*
+ * Executes a command on current host and returns stripped command output.
+ * If the command has failed (exit code is not zero), returns an empty string.
+ * The caller is responsible for releasing the returned string.
+ */
+char *host_shell(const char *command);
+
 #endif  /* VBOOT_REFERENCE_FUTILITY_H_ */

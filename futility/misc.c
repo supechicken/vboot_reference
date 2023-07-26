@@ -33,6 +33,8 @@
 #include "futility_options.h"
 #include "host_misc.h"
 
+#define COMMAND_BUFFER_SIZE 256
+
 /* Default is to support everything we can */
 enum vboot_version vboot_version = VBOOT_VERSION_ALL;
 
@@ -451,4 +453,62 @@ int write_to_file(const char *msg, const char *filename, uint8_t *start,
 		printf("%s %s\n", msg, filename);
 
 	return r;
+}
+
+/*
+ * Strips a string (usually from shell execution output) by removing all the
+ * trailing characters in pattern. If pattern is NULL, match by space type
+ * characters (space, new line, tab, ... etc).
+ */
+void strip_string(char *s, const char *pattern)
+{
+	int len;
+	assert(s);
+
+	len = strlen(s);
+	while (len-- > 0) {
+		if (pattern) {
+			if (!strchr(pattern, s[len]))
+				break;
+		} else {
+			if (!isascii(s[len]) || !isspace(s[len]))
+				break;
+		}
+		s[len] = '\0';
+	}
+}
+
+/*
+ * Executes a command on current host and returns stripped command output.
+ * If the command has failed (exit code is not zero), returns an empty string.
+ * The caller is responsible for releasing the returned string.
+ */
+char *host_shell(const char *command)
+{
+	/* Currently all commands we use do not have large output. */
+	char buf[COMMAND_BUFFER_SIZE];
+
+	int result;
+	FILE *fp = popen(command, "r");
+
+	VB2_DEBUG("%s\n", command);
+	buf[0] = '\0';
+	if (!fp) {
+		VB2_DEBUG("Execution error for %s.\n", command);
+		return strdup(buf);
+	}
+
+	if (fgets(buf, sizeof(buf), fp))
+		strip_string(buf, NULL);
+	result = pclose(fp);
+	if (!WIFEXITED(result) || WEXITSTATUS(result) != 0) {
+		VB2_DEBUG("Execution failure with exit code %d: %s\n",
+			  WEXITSTATUS(result), command);
+		/*
+		 * Discard all output if command failed, for example command
+		 * syntax failure may lead to garbage in stdout.
+		 */
+		buf[0] = '\0';
+	}
+	return strdup(buf);
 }

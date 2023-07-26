@@ -162,13 +162,6 @@ struct vb2_gbb_header;
 const struct vb2_gbb_header *find_gbb(const struct firmware_image *image);
 
 /*
- * Strips a string (usually from shell execution output) by removing all the
- * trailing characters in pattern. If pattern is NULL, match by space type
- * characters (space, new line, tab, ... etc).
- */
-void strip_string(char *s, const char *pattern);
-
-/*
  * Saves everything from stdin to given output file.
  * Returns 0 on success, otherwise failure.
  */
@@ -178,13 +171,6 @@ int save_file_from_stdin(const char *output);
  * Returns true if the write protection is enabled on current system.
  */
 int is_write_protection_enabled(struct updater_config *cfg);
-
-/*
- * Executes a command on current host and returns stripped command output.
- * If the command has failed (exit code is not zero), returns an empty string.
- * The caller is responsible for releasing the returned string.
- */
-char *host_shell(const char *command);
 
 /* The environment variable name for setting servod port. */
 #define ENV_SERVOD_PORT	"SERVOD_PORT"
