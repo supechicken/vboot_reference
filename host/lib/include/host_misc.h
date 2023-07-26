@@ -27,6 +27,8 @@ uint8_t* ReadFile(const char* filename, uint64_t* size);
 /* Read a string from a file.  Passed the destination, dest size, and
  * filename to read.
  *
+ * Chomp the tailing newline if there is any.
+ *
  * Returns the destination, or NULL if error. */
 char* ReadFileString(char* dest, int size, const char* filename);
 
