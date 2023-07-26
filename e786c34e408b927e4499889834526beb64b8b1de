@@ -232,6 +232,24 @@
       "parentUuid": "0571e5fc_e1e8c955",
       "revId": "e786c34e408b927e4499889834526beb64b8b1de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe410bc_4f82b1e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-26T02:31:36Z",
+      "side": 1,
+      "message": "\u003e It should be obvious that a menu is not suitable here...are you expecting it to wait for serial input? Depthcharge doesn\u0027t do that. Does coreboot even support waiting for a prompt to choose a payload? The point here is to jump to the payload immediately.\n\nNo, I am saying you that existing coreboot philosophy is to implement advanced payload loading decisions into a separate chain-loading payload, not hack them directly into payload_load().\n\n\u003e I did proposal a \u0027coreboot feature\u0027 block but that has met with the same response.\n\nAnd during that discussion I said the other thing I also said above, that existing coreboot philosophy is to put configuration decisions into CBFS files. Which applies here as well, except that I think that file should still be parsed and acted upon by a separate payload, I don\u0027t think it fits coreboot philosophy to add something like this into coreboot itself. (There is of course the existing option of just using cbfstool to extract and remove a file like fallback/u-boot and then re-add it as fallback/payload to change which file coreboot decides to load. That requires essentially the same kind of access as modifying GBB flags. I also wouldn\u0027t be opposed to adding a `cbfstool rename` command if you wanted to make that simpler.)\n\n\u003e In any case, you are missing the key question. Why are you taking it upon yourself to disagree with a feature and then block it?\n\nI mean, I think I could also ask why you are taking it upon yourself to implement something that everyone else I ask seems to agree is not the right approach and not something we want to do in our firmware? Isn\u0027t design review and consensus one of the core pillars of software development at Google? We can\u0027t just all implement our own competing ideas of how we want things to look like into the same code base. In general I don\u0027t really mind people adding optional little features that do no harm to other use cases (although added maintenance burden is always a concern for any code), but this particular thing with the GBB flag violates coreboot design principles so I feel it is important to push back.",
+      "parentUuid": "ca7441f9_dca4880e",
+      "revId": "e786c34e408b927e4499889834526beb64b8b1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
