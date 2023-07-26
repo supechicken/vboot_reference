@@ -71,6 +71,9 @@ char* ReadFileString(char* dest, int size, const char* filename)
 
 	got = fgets(dest, size, f);
 	fclose(f);
+
+	/* chomp the tailing newline if any */
+	dest[strcspn(dest, "\n")] = 0;
 	return got;
 }
 
