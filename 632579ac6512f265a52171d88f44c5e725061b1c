@@ -73,6 +73,30 @@
       },
       "revId": "632579ac6512f265a52171d88f44c5e725061b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9cea8cd_04ce3f7b",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-26T07:41:21Z",
+      "side": 1,
+      "message": "It is because coreboot build without flashrom, but we always need `host_shell()`. Fixed in PS9 with CL:4719308",
+      "parentUuid": "1ad503ca_36c0a856",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "632579ac6512f265a52171d88f44c5e725061b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
