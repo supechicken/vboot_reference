@@ -27,7 +27,8 @@ uint8_t* ReadFile(const char* filename, uint64_t* size);
 /* Read a string from a sysfs file.  Passed the destination, dest size,
  * and filename to read.
  *
- * It assumes the file contains only one line.
+ * It assumes the file contains only one line.  Trailing newlines will
+ * be chomped from dest.
  *
  * Returns the destination, or NULL if error. */
 char* ReadSysfsString(char* dest, int size, const char* filename);
