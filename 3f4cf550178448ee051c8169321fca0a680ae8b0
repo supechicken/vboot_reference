@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060c4ec1_55589247",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-27T09:24:36Z",
+      "side": 1,
+      "message": "Reflow the text to 72 chars per line.",
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4465be_cbb12735",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-27T09:24:36Z",
+      "side": 1,
+      "message": "New tests should be added in tests/futility/test_vpd.sh.",
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b441e5a5_e4ba6e73",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-27T09:24:36Z",
+      "side": 1,
+      "message": "chromeos-base/vpd should be added to RDEPEND in vboot ebuild.",
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22442db_bd680b02",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-27T09:24:36Z",
+      "side": 1,
+      "message": "IMO the futility command shouldn\u0027t fail if VPD is empty (all 0xff). A warning message can be printed to stderr in that case.",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
