@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2fe4d6_62e640f5",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-07-28T02:15:13Z",
+      "side": 1,
+      "message": "I\u0027m a little worried about the design here. People may not be aware of that and try to get path pointers and not aware of they will be the same.\n\nIMHO we should split this into a several functions:\n\n````\n// return the cached result of the sysfs base\nstatic const char *GetACPISysfsBase(void);\n\n// build the path in an auto-variable, and call ReadFileInt, then return.\nint ReadSysfsFileInt(const char *fname, int *value);\n````\n\nAnd revise the other invocations if it\u0027s used only one time.\n\nThe other approach, given we\u0027ll have only a few fixed names, would be to create a mapping:\n\n````\nenum SYSFS_FILE_NAMES[] \u003d {\n  SYSFS_BINF,\n  SYSFS_CHNV,\n  SYSFS_CHSW,\n  ...\n  SYSFS_MAX,\n}\n\nstatic const char * char SYSFS_PATH_TABLE[2][] \u003d {\n [0] \u003d {\n   [SYSFS_BINF] \u003d ACPI_LEGACY_PATH \"/BINF\",\n   ...\n },\n [1] \u003d {\n   [SYSFS_BINF] \u003d ACPI_BASE_PATH \"/BINF\",\n }\n}\n\nstatic const char *GetACPISysfsPath(enum SYSFS_FILE_NAMES name) {\n  static int base \u003d -1;\n  // try to decide if base \u003d 0 or 1\n  assert(name \u003c SYSFS_MAX);\n  return SYSFS_PATH_TABLE[base][name];\n}\n````",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
