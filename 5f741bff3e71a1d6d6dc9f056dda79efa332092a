@@ -46,6 +46,30 @@
       },
       "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685cfeff_c01b37f3",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-28T03:10:12Z",
+      "side": 1,
+      "message": "Reasons for adopting the simple implementation:\n- The file names are unlikely to change.  Given that `crossystem` is relatively less active.  I don\u0027t expect it would change (e.g. for getting new sysfs file content).\n- Eventually, we expect to revert the patch and only leave the path GOOG0016.\n\nIMHO, current implementation is intended to be simple and dumb.  If some following patches are using code like:\n\n```\nconst char *legacy_name \u003d GetACPISysfsPath(\"BINF.1\");\nconst char *boot_info_name \u003d GetACPISysfsPath(\"BootInf1\");\n```\n\nIt shouldn\u0027t take too much time to sense the issue.\n\n\n\nBut if you insist, I would try the first approach you mentioned.\n\nWe would have:\nReadSysfsFileInt()\nReadSysfsFileString()\nReadSysfsFileBit()\n...and probably some more helpers.",
+      "parentUuid": "ad0bfc29_818474e6",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
