@@ -22,6 +22,30 @@
       },
       "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0bfc29_818474e6",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-07-28T02:18:33Z",
+      "side": 1,
+      "message": "\u003e People may not be aware of that and try to get path pointers and not aware of they will be the same.\n\nTypo here. I meant people try to get two pointers before accessing them, for example if someday we changed the BINF file name, a developer may write:\n\n````\n  const char *legacy_name \u003d GetACPISysfsPath(\"BINF.1\");\n  const char *boot_info_name \u003d GetACPISysfsPath(\"BootInf1\");\n  \n  if (FileExists(legacy_name))\n      boot_info_name \u003d legacy_name;\n  return ReadFileInt(boof_info_name);\n````",
+      "parentUuid": "ce2fe4d6_62e640f5",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
