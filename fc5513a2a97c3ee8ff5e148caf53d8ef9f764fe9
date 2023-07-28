@@ -16,6 +16,24 @@
       "message": "Just to make sure we\u0027re on the same page: crossystem is not the only one accessing the hard-coded path. You also need to change chromeos-config (cros-id), crash-reporter, firmware_test_manual, also some scripts like src/private-overlays/overlay-nissa-private/chromeos-base/chromeos-bsp-nissa-private/files/board-postinst",
       "revId": "fc5513a2a97c3ee8ff5e148caf53d8ef9f764fe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb09e44_b8e03de4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-28T03:37:09Z",
+      "side": 1,
+      "message": "See b/291036452#comment16.",
+      "parentUuid": "9266bf64_7c3cea57",
+      "revId": "fc5513a2a97c3ee8ff5e148caf53d8ef9f764fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
