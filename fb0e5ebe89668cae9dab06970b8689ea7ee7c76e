@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28efeb97_699729ad",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-07-28T02:28:05Z",
+      "side": 1,
+      "message": "I wonder if we should change the name to ReadFileTrimmedString or ReadFileStrippedFile or something else, but looking at how ReadFileString is used today, it\u0027s probably fine.",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "fb0e5ebe89668cae9dab06970b8689ea7ee7c76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59455e78_3126864e",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-07-28T02:28:05Z",
+      "side": 1,
+      "message": "This behavior must be documented in the declaration (host_misc.h).",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "fb0e5ebe89668cae9dab06970b8689ea7ee7c76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae8d19e_6196760c",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-07-28T02:28:05Z",
+      "side": 1,
+      "message": "If fgets() reached EOF or error, got is NULL and we can\u0027t be sure dest is a NULL terminated string. You have to look at got first.",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 13
+      },
+      "revId": "fb0e5ebe89668cae9dab06970b8689ea7ee7c76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
