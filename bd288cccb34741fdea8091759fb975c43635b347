@@ -34,6 +34,24 @@
       "parentUuid": "c08bc012_529f1851",
       "revId": "bd288cccb34741fdea8091759fb975c43635b347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29e2fb6_88573a5e",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-28T03:54:16Z",
+      "side": 1,
+      "message": "Yes, in the function comment in host_misc.h, like `This function assumes the file contains only one line. Trailing newlines will be chomped from dest.`",
+      "parentUuid": "78250ea7_38bcec3a",
+      "revId": "bd288cccb34741fdea8091759fb975c43635b347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
