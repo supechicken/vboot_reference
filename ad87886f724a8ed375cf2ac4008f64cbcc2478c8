@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca646aad_35abe84c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-28T16:09:33Z",
+      "side": 1,
+      "message": "PS 10-\u003ePS 12:\n\n* Add additional filename check since /usr/sbin/vpd allows invalid filename, which is weird\n* Use subprocess_run instead\n\nAnd unit-tests TBU",
+      "revId": "ad87886f724a8ed375cf2ac4008f64cbcc2478c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94f678b_0339f8b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-28T16:09:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "060c4ec1_55589247",
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4465be_cbb12735",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9dfcb22_e4d362cc",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-28T16:09:33Z",
+      "side": 1,
+      "message": "Here it is: CL:4728847",
+      "parentUuid": "b441e5a5_e4ba6e73",
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cc09ebd_cd1cb764",
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef39613_e357ba39",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-28T16:09:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc09ebd_cd1cb764",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d22442db_bd680b02",
@@ -88,6 +148,30 @@
       "writtenOn": "2023-07-27T09:24:36Z",
       "side": 1,
       "message": "IMO the futility command shouldn\u0027t fail if VPD is empty (all 0xff). A warning message can be printed to stderr in that case.",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "3f4cf550178448ee051c8169321fca0a680ae8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10fcc1ae_5b0b398a",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-07-28T16:09:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d22442db_bd680b02",
       "range": {
         "startLine": 71,
         "startChar": 15,
