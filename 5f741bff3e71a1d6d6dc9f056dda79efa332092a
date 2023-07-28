@@ -142,6 +142,30 @@
       },
       "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1eba6d_c73a88d2",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-28T03:57:07Z",
+      "side": 1,
+      "message": "I plan to clean up by reverting the commit and thus add the macros back.\n\n```\n#define ACPI_BASE_PATH \"/sys/devices/platform/chromeos_acpi\"\n```\n\nAnd s/chromeos_acpi/GOOG0016:00/.",
+      "parentUuid": "8cba96ee_5bd1bf26",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
