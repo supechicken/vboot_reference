@@ -16,6 +16,24 @@
       "message": "What this does is extracting the first line, not chomping the trailing newline. Note that this is in vboot hostlib API (available to other repos such as update engine), so we need to be extra careful. I see 2 options here:\n\n1. Require that the file only has one line (in the function comment in host_misc.h)\n2. Really remove the trailing newline(s) here",
       "revId": "bd288cccb34741fdea8091759fb975c43635b347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78250ea7_38bcec3a",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-28T03:35:39Z",
+      "side": 1,
+      "message": "IIUC, ReadFileString() is only used for reading sysfs.  In either legacy one (\"ACPI_CHROMEOS\") or current one (\"CHROMEOS_ACPI\"), the files are all one line (except VDAT which isn\u0027t used ReadFileString()-based to read).\n\n\nRegarding your option 1, do you mean add some warning in the comment?",
+      "parentUuid": "c08bc012_529f1851",
+      "revId": "bd288cccb34741fdea8091759fb975c43635b347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
