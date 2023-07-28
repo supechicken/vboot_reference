@@ -166,6 +166,30 @@
       },
       "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b3c377_3d639d3a",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-07-28T04:11:11Z",
+      "side": 1,
+      "message": "\u003e I plan to clean up by reverting the commit and thus add the macros back.\n\nIn that sense I think current version should be ok, but please add a TODO to make that clear.",
+      "parentUuid": "cf1eba6d_c73a88d2",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
