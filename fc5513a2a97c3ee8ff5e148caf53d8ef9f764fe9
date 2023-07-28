@@ -34,6 +34,29 @@
       "parentUuid": "9266bf64_7c3cea57",
       "revId": "fc5513a2a97c3ee8ff5e148caf53d8ef9f764fe9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feacfe85_ec1410a7",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-28T03:47:19Z",
+      "side": 1,
+      "message": "nit: I\u0027d prefer `Acpi` (to be consistent with `Cmos`).",
+      "range": {
+        "startLine": 104,
+        "startChar": 22,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "fc5513a2a97c3ee8ff5e148caf53d8ef9f764fe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

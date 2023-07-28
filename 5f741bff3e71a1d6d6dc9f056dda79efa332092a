@@ -94,6 +94,30 @@
       },
       "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1526243d_3320ae04",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-07-28T03:47:19Z",
+      "side": 1,
+      "message": "Given the simple usage in this file and the fact that this is a static function, I think the current approach is fine. Maybe just add a short comment for GetACPISysfsPath (for example `The returned pointer should be considered invalid after the next call.`)?",
+      "parentUuid": "685cfeff_c01b37f3",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "5f741bff3e71a1d6d6dc9f056dda79efa332092a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
