@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc11e8ff_398a60fa",
+        "filename": "futility/misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-28T00:27:52Z",
+      "side": 1,
+      "message": "I know you\u0027re just moving this around, but generally we shouldn\u0027t have two popen() wrappers in futility, and we already have host/lib/subprocess.c which is the more powerful and generally preferred API. I think this would be a good opportunity to replace the existing uses of host_shell() in the updater code with that.\n\n(There also seems to be a bunch of cbfstool wrapping code in updater_utils.c and we now have host/lib/cbfstool.c to do that in a more organized way, so if anyone has some free time that would also be a great thing to fix. Although I admit it has nothing to do with this CL anymore.)",
+      "revId": "c1e982f3db832b23b08641ec519d3f8b8c6b8a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
