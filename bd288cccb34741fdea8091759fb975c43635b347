@@ -70,6 +70,24 @@
       "parentUuid": "e29e2fb6_88573a5e",
       "revId": "bd288cccb34741fdea8091759fb975c43635b347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8df4ee_f2c4af47",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-29T00:22:06Z",
+      "side": 1,
+      "message": "I agree with Yu-Ping\u0027s concern and I\u0027m not sure if just changing the comment is good enough tbh. When I see the function name ReadFileString() I wouldn\u0027t expect it to only read one line. How about renaming it to ReadFileFirstLine() or something like that?",
+      "parentUuid": "e99f76c0_74bcc5b3",
+      "revId": "bd288cccb34741fdea8091759fb975c43635b347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
