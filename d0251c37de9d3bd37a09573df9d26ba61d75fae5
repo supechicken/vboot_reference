@@ -16,6 +16,57 @@
       "message": "Will hold this CL for a while until clear.  Just learnt it needs to consider backward compatible to older firmwares.",
       "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350145b2_075eea37",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-29T00:51:32Z",
+      "side": 1,
+      "message": "Uhh... I don\u0027t think we can do this. We\u0027re a library and we might be called from a multi-threaded application on multiple threads at once. I don\u0027t think that\u0027s a likely case in practice in the way ChromeOS is using vboot but it\u0027s not really a risk you\u0027d want to take, no matter how small.\n\nI think your options are either using asprintf() and dealing with the free() everywhere, or turning this into a macro so that we end up inserting both strings in full into the binary (since it\u0027s not that many strings that would probably not be too concerning).",
+      "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6fb97f3_3c983f03",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-29T00:51:32Z",
+      "side": 1,
+      "message": "Are you planning to backport this to all kernel versions we still support? Because otherwise this is going to be a long time...\n\n(Not that I think it would be a huge concern to support both for longer.)",
+      "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163977cb_cf9457b7",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-07-29T00:51:32Z",
+      "side": 1,
+      "message": "nit: I would suggest preferring the new path over the legacy path if both exist (which shouldn\u0027t happen, but... just kinda feels cleaner that way in my opinion).",
+      "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
