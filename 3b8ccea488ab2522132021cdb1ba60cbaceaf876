@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a298185_0103ded6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-31T08:18:11Z",
+      "side": 1,
+      "message": "Please review it again.  I learnt by using upstream chromeos_acpi driver with older firmware, the path will be \"/sys/devices/platform/GGL0001:00\".\n\nHungte: as we have one more path to lookup, I don\u0027t plan to revert the commit.  Instead, only the legacy patch should be removed once all ChromeOS kernels switch to upstream version.",
+      "revId": "3b8ccea488ab2522132021cdb1ba60cbaceaf876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
