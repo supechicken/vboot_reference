@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd89178a_f27132ab",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-31T08:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350145b2_075eea37",
+      "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6fb97f3_3c983f03",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af10efc1_faff3dd3",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-31T08:13:49Z",
+      "side": 1,
+      "message": "Yes, I plan to backport to ChromeOS kernels as older as I can.\n\nIt depends on how old ChromeOS kernel we could support CHROMEOS_ACPI.\n- E.g. If we can backport it up to chromeos-4.14, then we can remove the legacy path lookup soon.\n- E.g. If we can only backport it up to chromeos-5.4, thus we need to wait until no boards are using chromeos-4.14 and chromeos-4.19.",
+      "parentUuid": "d6fb97f3_3c983f03",
+      "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "163977cb_cf9457b7",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 5
@@ -65,6 +101,24 @@
       "writtenOn": "2023-07-29T00:51:32Z",
       "side": 1,
       "message": "nit: I would suggest preferring the new path over the legacy path if both exist (which shouldn\u0027t happen, but... just kinda feels cleaner that way in my opinion).",
+      "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2e0fb6_dcbf5b25",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-07-31T08:13:49Z",
+      "side": 1,
+      "message": "No.  The order here is intended.\n\nBy using the legacy chromeos_acpi driver (i.e. ACPI_CHROMEOS), both paths exist.  However, the sysfs files are at \"/sys/devices/platform/chromeos_acpi/\".",
+      "parentUuid": "163977cb_cf9457b7",
       "revId": "d0251c37de9d3bd37a09573df9d26ba61d75fae5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
