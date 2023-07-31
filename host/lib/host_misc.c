@@ -60,7 +60,7 @@ uint8_t* ReadFile(const char* filename, uint64_t* sizeptr)
 	return buf;
 }
 
-char* ReadFileString(char* dest, int size, const char* filename)
+char* ReadSysfsString(char* dest, int size, const char* filename)
 {
 	char* got;
 	FILE* f;
@@ -74,12 +74,12 @@ char* ReadFileString(char* dest, int size, const char* filename)
 	return got;
 }
 
-int ReadFileInt(const char* filename, unsigned* value)
+int ReadSysfsInt(const char* filename, unsigned* value)
 {
 	char buf[64];
 	char* e = NULL;
 
-	if (!ReadFileString(buf, sizeof(buf), filename))
+	if (!ReadSysfsString(buf, sizeof(buf), filename))
 		return -1;
 
 	/* Convert to integer.  Allow characters after the int ("123 blah"). */
@@ -90,10 +90,10 @@ int ReadFileInt(const char* filename, unsigned* value)
 	return 0;
 }
 
-int ReadFileBit(const char* filename, int bitmask)
+int ReadSysfsBit(const char* filename, int bitmask)
 {
 	unsigned value;
-	if (ReadFileInt(filename, &value) < 0)
+	if (ReadSysfsInt(filename, &value) < 0)
 		return -1;
 	else return (value & bitmask ? 1 : 0);
 }

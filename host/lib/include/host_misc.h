@@ -24,21 +24,28 @@ char* StrCopy(char* dest, const char* src, int dest_size);
  * error. */
 uint8_t* ReadFile(const char* filename, uint64_t* size);
 
-/* Read a string from a file.  Passed the destination, dest size, and
- * filename to read.
+/* Read a string from a sysfs file.  Passed the destination, dest size,
+ * and filename to read.
+ *
+ * It assumes the file contains only one line.
  *
  * Returns the destination, or NULL if error. */
-char* ReadFileString(char* dest, int size, const char* filename);
+char* ReadSysfsString(char* dest, int size, const char* filename);
 
-/* Read an unsigned integer from a file and save into passed pointer.
+/* Read an unsigned integer from a sysfs file and save into passed
+ * pointer.
+ *
+ * It assumes the file contains only one line.
  *
  * Returns 0 if success, -1 if error. */
-int ReadFileInt(const char* filename, unsigned* value);
+int ReadSysfsInt(const char* filename, unsigned* value);
 
-/* Check if a bit is set in a file which contains an integer.
+/* Check if a bit is set in a sysfs file which contains an integer.
+ *
+ * It assumes the file contains only one line.
  *
  * Returns 1 if the bit is set, 0 if clear, or -1 if error. */
-int ReadFileBit(const char* filename, int bitmask);
+int ReadSysfsBit(const char* filename, int bitmask);
 
 /* Writes [size] bytes of [data] to [filename].
  *
