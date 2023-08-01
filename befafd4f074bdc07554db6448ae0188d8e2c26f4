@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8d2917_0d385bd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-01T08:16:33Z",
+      "side": 1,
+      "message": "I think this CL should be merged to CL:4719309 (or the other way around), because this CL doesn\u0027t really change the implementation.",
+      "revId": "befafd4f074bdc07554db6448ae0188d8e2c26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26e3d7d_752dd8f1",
+        "filename": "host/lib/include/host_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-01T08:16:33Z",
+      "side": 1,
+      "message": "(not containing the newline)",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "befafd4f074bdc07554db6448ae0188d8e2c26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
