@@ -22,7 +22,10 @@ class Test(unittest.TestCase):
 
     @mock.patch("sign_uefi.inject_vbpubk")
     @mock.patch.object(sign_uefi.Signer, "sign_efi_file")
-    def test_successful_sign(self, mock_sign, mock_inject_vbpubk):
+    @mock.patch.object(sign_uefi.Signer, "init_certificate_database")
+    def test_successful_sign(
+        self, _mock_init_certdb, mock_sign, mock_inject_vbpubk
+    ):
         with tempfile.TemporaryDirectory() as tmp_dir:
             tmp_dir = Path(tmp_dir)
 
@@ -106,6 +109,7 @@ class Test(unittest.TestCase):
             sign_uefi.inject_vbpubk(efi_file, uefi_key_dir)
 
             # Check that the expected command runs.
+            expected_vbpubk = uefi_key_dir / "../kernel_subkey.vbpubk"
             self.assertEqual(
                 mock_run.call_args_list,
                 [
@@ -114,7 +118,7 @@ class Test(unittest.TestCase):
                             "sudo",
                             "objcopy",
                             "--update-section",
-                            f'.vbpubk={uefi_key_dir / "../kernel_subkey.vbpubk"}',
+                            f".vbpubk={expected_vbpubk}",
                             efi_file,
                         ],
                         check=True,
