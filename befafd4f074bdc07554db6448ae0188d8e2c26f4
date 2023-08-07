@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c23c408_147c3270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-07T06:16:22Z",
+      "side": 1,
+      "message": "Ah, sorry, I misread the implementation and thought that the function is reading the whole file instead of just the first line. This CL is perfectly fine.",
+      "parentUuid": "27d0f197_7c966fa1",
+      "revId": "befafd4f074bdc07554db6448ae0188d8e2c26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c26e3d7d_752dd8f1",
@@ -49,6 +67,30 @@
       "writtenOn": "2023-08-01T08:16:33Z",
       "side": 1,
       "message": "(not containing the newline)",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "befafd4f074bdc07554db6448ae0188d8e2c26f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab6593d_47fc0707",
+        "filename": "host/lib/include/host_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-07T06:16:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c26e3d7d_752dd8f1",
       "range": {
         "startLine": 30,
         "startChar": 15,
