@@ -56,6 +56,34 @@ class Signer:
         self.sign_cert = sign_cert
         self.verify_cert = verify_cert
 
+        self.cert_dir = self.temp_dir / "certdb"
+        self.cert_name = "uefi_cert"
+
+        # Create a temporary certificate database with no password.
+        os.mkdir(self.cert_dir)
+        subprocess.run(
+            ["certutil", "-N", "-d", self.cert_dir, "--empty-password"],
+            check=True,
+        )
+        # Add the signing certificate to the database.
+        subprocess.run(
+            [
+                "certutil",
+                "-d",
+                self.cert_dir,
+                "-A",
+                "-n",
+                self.cert_name,
+                # certutil requires setting trust args, even though the
+                # value is empty in this case.
+                "-t",
+                ",,",
+                "-i",
+                self.sign_cert,
+            ],
+            check=True,
+        )
+
     def sign_efi_file(self, target):
         """Sign an EFI binary file, if possible.
 
@@ -69,17 +97,54 @@ class Signer:
         # any signatures.
         subprocess.run(["sudo", "sbattach", "--remove", target], check=False)
 
+        # Generate the PKCS-7 SignedAttributes data.
+        signed_attrs = self.temp_dir / f"{target.name}.sattrs"
+        subprocess.run(
+            [
+                "pesign",
+                "--in",
+                target,
+                "--export-signed-attributes",
+                signed_attrs,
+            ],
+            check=True,
+        )
+
+        # Create a signature for the SignedAttributes data.
+        # TODO(b/286234394): modify this to sign with an HSM.
+        signed_attrs_sig = self.temp_dir / f"{target.name}.sattrs.sig"
+        subprocess.run(
+            [
+                "openssl",
+                "dgst",
+                "-sha256",
+                "-sign",
+                self.priv_key,
+                "-out",
+                signed_attrs_sig,
+                signed_attrs,
+            ],
+            check=True,
+        )
+
+        # Create the signed EFI binary. A temporary output file is used
+        # because pesign cannot modify in place.
         signed_file = self.temp_dir / target.name
         subprocess.run(
             [
-                "sbsign",
-                "--key",
-                self.priv_key,
-                "--cert",
-                self.sign_cert,
-                "--output",
-                signed_file,
+                "pesign",
+                "--certdir",
+                self.cert_dir,
+                "--certificate",
+                self.cert_name,
+                "--in",
                 target,
+                "--out",
+                signed_file,
+                "--import-signed-attributes",
+                signed_attrs,
+                "--import-raw-signature",
+                signed_attrs_sig,
             ],
             check=True,
         )
@@ -195,8 +260,8 @@ def main(argv: Optional[List[str]] = None) -> Optional[int]:
 
     for tool in (
         "objcopy",
+        "pesign",
         "sbattach",
-        "sbsign",
         "sbverify",
     ):
         ensure_executable_available(tool)
