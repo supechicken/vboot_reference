@@ -22,7 +22,10 @@ class Test(unittest.TestCase):
 
     @mock.patch("sign_uefi.inject_vbpubk")
     @mock.patch.object(sign_uefi.Signer, "sign_efi_file")
-    def test_successful_sign(self, mock_sign, mock_inject_vbpubk):
+    @mock.patch.object(sign_uefi.Signer, "init_certificate_database")
+    def test_successful_sign(
+        self, _mock_init_certdb, mock_sign, mock_inject_vbpubk
+    ):
         with tempfile.TemporaryDirectory() as tmp_dir:
             tmp_dir = Path(tmp_dir)
 
