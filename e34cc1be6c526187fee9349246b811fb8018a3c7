@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b496531_e754fa87",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2023-08-08T07:20:03Z",
+      "side": 1,
+      "message": "Assume that `sizeof(uint32_t)` is `4`, overflow happens if `key-\u003earrsize` is `0x7FFFFFFFU` but `key-\u003earrsize \u003e key_bytes` is false.\n\n```\n#include \"stdint.h\"\n#include \"assert.h\"\nint main() {\n    const uint32_t key_arrsize \u003d 0x7FFFFFFFU;\n    const uint32_t key_bytes \u003d key_arrsize * sizeof(uint32_t);\n\n    assert(key_bytes \u003d\u003d 0xFFFFFFFCU);\n    assert((uint64_t)0x7FFFFFFFU * sizeof(uint32_t) !\u003d 0xFFFFFFFCU);\n    assert((key_arrsize \u003e key_bytes) \u003d\u003d 0);\n}\n```\n\nTo catch all possible overflow, use `key-\u003earrsize \u003e 0xFFFFFFFFU / sizeof(uint32_t)`.",
+      "range": {
+        "startLine": 359,
+        "startChar": 30,
+        "endLine": 359,
+        "endChar": 54
+      },
+      "revId": "e34cc1be6c526187fee9349246b811fb8018a3c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
