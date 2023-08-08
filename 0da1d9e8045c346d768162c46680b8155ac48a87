@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5b71c4_2fac9a8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-08T16:44:37Z",
+      "side": 1,
+      "message": "what is this trying to solve/fix ?  i don\u0027t see the harm in having this code.  it would enable resigning of existing images but diff keys, or our build pipeline using devkey signatures and the release pipeline replacing with real keys (which is how our normal firmware/kernel flow works).",
+      "revId": "0da1d9e8045c346d768162c46680b8155ac48a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
