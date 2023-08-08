@@ -16,6 +16,24 @@
       "message": "what is this trying to solve/fix ?  i don\u0027t see the harm in having this code.  it would enable resigning of existing images but diff keys, or our build pipeline using devkey signatures and the release pipeline replacing with real keys (which is how our normal firmware/kernel flow works).",
       "revId": "0da1d9e8045c346d768162c46680b8155ac48a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "064b99c1_6bff72f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2023-08-08T17:51:25Z",
+      "side": 1,
+      "message": "Just trying to remove code that seemed unused. But I didn\u0027t consider that someone might want to re-sign an already signed image. I\u0027ve changed this CL to just improve the comment.",
+      "parentUuid": "1e5b71c4_2fac9a8b",
+      "revId": "0da1d9e8045c346d768162c46680b8155ac48a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
