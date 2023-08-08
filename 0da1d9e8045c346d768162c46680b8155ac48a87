@@ -34,6 +34,24 @@
       "parentUuid": "1e5b71c4_2fac9a8b",
       "revId": "0da1d9e8045c346d768162c46680b8155ac48a87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3429dea_7ae9e860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-08-08T18:35:52Z",
+      "side": 1,
+      "message": "it\u0027s not normal, but we\u0027ve def resigned existing images with new keys when we want to update the keys but not force a rebuild of existing (e.g. stable) images",
+      "parentUuid": "064b99c1_6bff72f1",
+      "revId": "0da1d9e8045c346d768162c46680b8155ac48a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
