@@ -24,6 +24,19 @@
 #define IS_PRESERVE(flags)                                                     \
 	((flags & FMAP_AREA_PRESERVE) ? PRESERVE : NOT_PRESERVE)
 
+/*
+ * FMT_NORMAL: This format contains info related to fmap and areas including
+ * their name, offset and size
+ * FMT_PRETTY: This format is parsable by scripts, it contains info about areas
+ * including their name, offset and size
+ * FMT_FLASHROM: This format is understandable by 'flashrom' script, it contains
+ * info about first and last offsets of areas and their names
+ * FMT_HUMAN: This format is human reader friendly, it includes hierarchy based
+ * indentation. It contains info about areas name, first and last offsets and
+ * size
+ * FMT_FLASH_EC: This format is understandable by 'flash_ec' script, it contains
+ * info about areas name and preserve flag status
+ */
 typedef enum {
 	FMT_NORMAL,
 	FMT_PRETTY,
