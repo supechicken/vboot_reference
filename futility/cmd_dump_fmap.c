@@ -24,6 +24,16 @@
 #define IS_PRESERVE(flags)                                                     \
 	((flags & FMAP_AREA_PRESERVE) ? PRESERVE : NOT_PRESERVE)
 
+/*
+ * FMT_NORMAL: Returns output for a command in normal format
+ * FMT_PRETTY: Returns output for a command in neater format
+ * FMT_FLASHROM: Returns output for a command in format understandable by
+ * flashrom script
+ * FMT_HUMAN: Returns output for a command in human reader
+ * friendly format
+ * FMT_FLASH_EC: Returns output for a command in format understandable by
+ * flash_ec script
+ */
 typedef enum {
 	FMT_NORMAL,
 	FMT_PRETTY,
