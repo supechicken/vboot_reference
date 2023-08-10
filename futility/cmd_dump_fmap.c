@@ -26,7 +26,7 @@
 
 /*
  * FMT_NORMAL: Returns output for a command in normal format
- * FMT_PRETTY: Returns output for a command in format parsable by scripts
+ * FMT_PARSER: Returns output for a command in format parsable by scripts
  * FMT_FLASHROM: Returns output for a command in format understandable by
  * flashrom script
  * FMT_HUMAN: Returns output for a command in human reader friendly format,
@@ -36,7 +36,7 @@
  */
 typedef enum {
 	FMT_NORMAL,
-	FMT_PRETTY,
+	FMT_PARSER,
 	FMT_FLASHROM,
 	FMT_HUMAN,
 	FMT_FLASH_EC
@@ -107,7 +107,7 @@ static int normal_fmap(const FmapHeader *fmh,
 		}
 
 		switch (format) {
-		case FMT_PRETTY:
+		case FMT_PARSER:
 			printf("%s %d %d\n", buf, ah->area_offset,
 			       ah->area_size);
 			break;
@@ -449,7 +449,7 @@ static int do_dump_fmap(int argc, char *argv[])
 			opt_extract = true;
 			break;
 		case 'p':
-			opt_format = FMT_PRETTY;
+			opt_format = FMT_PARSER;
 			break;
 		case 'e':
 			opt_format = FMT_FLASH_EC;
