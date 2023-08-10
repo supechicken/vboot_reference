@@ -68,6 +68,8 @@ vb2_error_t vb2_write_private_key(const char *filename,
  */
 struct vb2_private_key *vb2_read_private_key(const char *filename);
 
+struct vb2_private_key *vb2_read_p11_private_key(const char *label);
+
 /**
  * Allocate a new public key.
  * @param key_size	Size of key data the key can hold
