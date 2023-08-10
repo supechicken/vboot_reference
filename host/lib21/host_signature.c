@@ -15,6 +15,7 @@
 #include "host_common21.h"
 #include "host_key21.h"
 #include "host_misc.h"
+#include "host_p11.h"
 #include "host_signature21.h"
 
 vb2_error_t vb2_digest_info(enum vb2_hash_algorithm hash_alg,
@@ -104,6 +105,25 @@ vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr, const uint8_t *data,
 		return VB2_SIGN_DATA_SIG_SIZE;
 
 	s.c.total_size = s.sig_offset + s.sig_size;
+
+	if (key->key_location == PRIVATE_KEY_P11) {
+		/* Allocate signature buffer and copy header */
+		buf = calloc(1, s.c.total_size);
+		memcpy(buf, &s, sizeof(s));
+
+		/* strcpy() is ok because we allocated buffer based on desc length */
+		if (desc)
+			strcpy((char *)buf + s.c.fixed_size, desc);
+
+		/* RSA-encrypt the signature */
+		if (pkcs11_sign(key->p11_key, key->hash_alg, data, size, buf + s.sig_offset,
+				s.sig_size) == -1) {
+			free(buf);
+			return VB2_SIGN_DATA_RSA_ENCRYPT;
+		}
+		*sig_ptr = (struct vb21_signature *)buf;
+		return VB2_SUCCESS;
+	}
 
 	/* Determine digest size and allocate buffer */
 	if (s.sig_alg != VB2_SIG_NONE) {

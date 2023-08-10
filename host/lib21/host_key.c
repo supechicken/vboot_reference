@@ -17,6 +17,7 @@
 #include "host_common21.h"
 #include "host_key21.h"
 #include "host_misc.h"
+#include "host_p11.h"
 #include "openssl_compat.h"
 
 void vb2_private_key_free(struct vb2_private_key *key)
@@ -24,8 +25,10 @@ void vb2_private_key_free(struct vb2_private_key *key)
 	if (!key)
 		return;
 
-	if (key->rsa_private_key)
+	if (key->key_location == PRIVATE_KEY_LOCAL && key->rsa_private_key)
 		RSA_free(key->rsa_private_key);
+	else if (key->key_location == PRIVATE_KEY_P11 && key->p11_key)
+		pkcs11_free_key(key->p11_key);
 
 	if (key->desc)
 		free(key->desc);
@@ -75,6 +78,7 @@ vb2_error_t vb21_private_key_unpack(struct vb2_private_key **key_ptr,
 		return VB2_ERROR_UNPACK_PRIVATE_KEY_ALLOC;
 
 	/* Copy key algorithms and ID */
+	key->key_location = PRIVATE_KEY_LOCAL;
 	key->sig_alg = pkey->sig_alg;
 	key->hash_alg = pkey->hash_alg;
 	key->id = pkey->id;
@@ -108,16 +112,36 @@ vb2_error_t vb21_private_key_unpack(struct vb2_private_key **key_ptr,
 	return VB2_SUCCESS;
 }
 
-vb2_error_t vb21_private_key_read(struct vb2_private_key **key_ptr,
-				  const char *filename)
+vb2_error_t vb21_private_key_read(struct vb2_private_key **key_ptr, const char *key_info)
 {
 	uint32_t size = 0;
 	uint8_t *buf = NULL;
 	vb2_error_t rv;
+	static const char p11_prefix[] = "pkcs11";
+	static const char local_prefix[] = "local";
+	char *colon = strchr(key_info, ':');
+	if (colon) {
+		int prefix_size = colon - key_info;
+		struct vb2_private_key *key = (struct vb2_private_key *)calloc(sizeof(*key), 1);
+		if (!strncmp(key_info, p11_prefix, prefix_size)) {
+			if (vb2_read_p11_private_key(key_info, key) != VB2_SUCCESS) {
+				free(key);
+				return VB2_ERROR_UNKNOWN;
+			}
+			if (vb2_private_key_set_desc(key, "") != VB2_SUCCESS) {
+				free(key);
+				return VB2_ERROR_UNKNOWN;
+			}
+			*key_ptr = key;
+			return VB2_SUCCESS;
+		}
+		if (!strncmp(key_info, local_prefix, prefix_size))
+			key_info = colon + 1;
+	}
 
 	*key_ptr = NULL;
 
-	rv = vb2_read_file(filename, &buf, &size);
+	rv = vb2_read_file(key_info, &buf, &size);
 	if (rv)
 		return rv;
 
