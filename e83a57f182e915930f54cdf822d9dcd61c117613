@@ -203,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "554b4599_8593ba71",
+        "filename": "futility/cmd_vpd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-10T08:10:38Z",
+      "side": 1,
+      "message": "\u003e As if we always move to libvpd eventually, not to print it should be correct\n\nWhy? libvpd may also print some errors to stderr. Scripts should parse the stdout of `futility vpd`, I think.",
+      "parentUuid": "481c38a3_5efe702b",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "e83a57f182e915930f54cdf822d9dcd61c117613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "319aa455_24c82bdc",
         "filename": "futility/updater_utils.h",
         "patchSetId": 13
