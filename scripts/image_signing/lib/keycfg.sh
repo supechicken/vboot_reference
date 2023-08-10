@@ -37,3 +37,21 @@ setup_keycfg() {
     . "${key_dir}/key_config.sh"
   fi
 }
+
+# Get the default or configured path of firmware data key with loem suffix. It
+# could be either local or PKCS#11 path.
+# Args: KEY_DIR LOEM_INDEX
+get_firmware_loem_vbprivk() {
+  local key_dir=$1
+  local loem_index=$2
+  local default="${key_dir}/firmware_data_key.loem${loem_index}.vbprivk"
+  echo "${KEYCFG_KEY_FIRMARE_VBPRIVK_LOEM[${loem_index}]:-${default}}"
+}
+
+# Get the path of firmware key block with loem suffix.
+# Args: KEY_DIR LOEM_INDEX
+get_firmware_loem_keyblock() {
+  local key_dir=$1
+  local loem_index=$2
+  echo "${key_dir}/firmware.loem${loem_index}.keyblock"
+}
