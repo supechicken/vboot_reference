@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "sourcing key_config.sh"
+KEYCFG_KERNEL_KEYBLOCK="/home/chingkang/Documents/tmp/rsa_key2.keyblock"
+KEYCFG_KERNEL_VBPRIVK="pkcs11:$HOME/Documents/pkcs11/libkmsp11-1.2-linux-amd64/libkmsp11.so:0:rsa_key2"
+KEYCFG_MINIOS_KERNEL_VBPRIVK="pkcs11:$HOME/Documents/pkcs11/libkmsp11-1.2-linux-amd64/libkmsp11.so:0:rsa_key2"
+KEYCFG_RECOVERY_KERNEL_VBPRIVK="pkcs11:$HOME/Documents/pkcs11/libkmsp11-1.2-linux-amd64/libkmsp11.so:0:rsa_key2"
+KEYCFG_INSTALLER_KERNEL_VBPRIVK="pkcs11:$HOME/Documents/pkcs11/libkmsp11-1.2-linux-amd64/libkmsp11.so:0:rsa_key2"
+KEYCFG_ARV_PLATFORM_VBPRIVK="pkcs11:$HOME/Documents/pkcs11/libkmsp11-1.2-linux-amd64/libkmsp11.so:0:rsa_key2"
