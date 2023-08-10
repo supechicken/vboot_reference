@@ -95,6 +95,15 @@ setup_default_keycfg() {
   KEYCFG_INSTALLER_KERNEL_VBPRIVK="${key_dir}/installer_kernel_data_key.vbprivk"
   KEYCFG_ARV_PLATFORM_KEYBLOCK="${key_dir}/arv_platform.keyblock"
   KEYCFG_ARV_PLATFORM_VBPRIVK="${key_dir}/arv_platform.vbprivk"
+  KEYCFG_KEY_EC_EFS_VBRPIK2="${key_dir}/key_ec_efs.vbprik2"
+  KEYCFG_FIRMWARE_VBPRIVK="${key_dir}/firmware_data_key.vbprivk"
+  KEYCFG_KEY_ACCESSIRY_RWSIG_VBRPIK2=""
+}
+
+get_firmware_loem_vbprivk() {
+  local key_index=$1
+  local default="${KEY_DIR}/firmware_data_key.loem${key_index}.vbprivk"
+  echo ${KEYCFG_KEY_FIRMARE_VBPRIVK_LOEM[$key_index]:-$default}
 }
 
 # Run futility as root with some preserved environment variables.
@@ -519,6 +528,8 @@ resign_firmware_payload() {
         local board_name
 
         rootkey="${KEY_DIR}/root_key.vbpubk"
+        local signprivate="${KEYCFG_FIRMWARE_VBPRIVK}"
+        local keyblock="${KEY_DIR}/firmware${key_suffix}.keyblock"
 
         # If there are OEM specific keys available, we're going to use them.
         # Otherwise, we're going to ignore key_id from the config file and
@@ -548,16 +559,15 @@ resign_firmware_payload() {
           )
           rootkey="${KEY_DIR}/root_key${key_suffix}.vbpubk"
           cp "${rootkey}" "${shellball_keyset_dir}/rootkey.${output_name}"
+          signprivate="$(get_firmware_loem_vbprivk ${key_index})"
         fi
+        keyblock="${KEY_DIR}/firmware${key_suffix}.keyblock"
 
         info "Signing firmware image ${bios_image} for ${output_name} " \
           "with key suffix ${key_suffix}"
 
         local temp_fw
         temp_fw=$(make_temp_file)
-
-        local signprivate="${KEY_DIR}/firmware_data_key${key_suffix}.vbprivk"
-        local keyblock="${KEY_DIR}/firmware${key_suffix}.keyblock"
 
         # Path to bios.bin.
         local bios_path="${shellball_dir}/${bios_image}"
