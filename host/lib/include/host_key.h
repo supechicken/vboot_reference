@@ -58,6 +58,8 @@ void vb2_free_private_key(struct vb2_private_key *key);
 vb2_error_t vb2_write_private_key(const char *filename,
 				  const struct vb2_private_key *key);
 
+vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key);
+
 /**
  * Read a private key from a .vbprivk file.
  *
