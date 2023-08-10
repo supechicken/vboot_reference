@@ -544,8 +544,10 @@ resign_firmware_payload() {
         local temp_fw
         temp_fw=$(make_temp_file)
 
-        local signprivate="${KEY_DIR}/firmware_data_key${key_suffix}.vbprivk"
-        local keyblock="${KEY_DIR}/firmware${key_suffix}.keyblock"
+        local signprivate
+        local keyblock
+        signprivate="$(get_firmware_loem_vbprivk "${KEY_DIR}" "${key_index}")"
+        keyblock="$(get_firmware_loem_keyblock "${KEY_DIR}" "${key_index}")"
 
         # Path to bios.bin.
         local bios_path="${shellball_dir}/${bios_image}"
