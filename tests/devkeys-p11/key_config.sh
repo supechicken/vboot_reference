@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "sourcing key_config.sh"
+P11_LIB="$HOME/Documents/pkcs11/libkmsp11-1.2-linux-amd64/libkmsp11.so"
+KEYCFG_KERNEL_KEYBLOCK="${KEY_DIR}/kms_rsa_key2.keyblock"
+KEYCFG_KERNEL_VBPRIVK="pkcs11:${P11_LIB}:0:rsa-sign-raw-pkcs1-4096"
+KEYCFG_MINIOS_KERNEL_KEYBLOCK="${KEY_DIR}/kms_rsa_key2.keyblock"
+KEYCFG_MINIOS_KERNEL_VBPRIVK="pkcs11:${P11_LIB}:0:rsa_key2"
+KEYCFG_RECOVERY_KERNEL_KEYBLOCK="${KEY_DIR}/kms_rsa_key2.keyblock"
+KEYCFG_RECOVERY_KERNEL_VBPRIVK="pkcs11:${P11_LIB}:0:rsa_key2"
+KEYCFG_INSTALLER_KERNEL_KEYBLOCK="${KEY_DIR}/kms_rsa_key2.keyblock"
+KEYCFG_INSTALLER_KERNEL_VBPRIVK="pkcs11:${P11_LIB}:0:rsa_key2"
+KEYCFG_ARV_PLATFORM_KEYBLOCK="${KEY_DIR}/kms_rsa_key2.keyblock"
+KEYCFG_ARV_PLATFORM_VBPRIVK="pkcs11:${P11_LIB}:0:rsa_key2"
+KEYCFG_FIRMWARE_VBPRIVK="pkcs11:${P11_LIB}:0:rsa_key2"
+
+KEYCFG_KEY_EC_EFS_VBRPIK2="pkcs11:${P11_LIB}:0:rsa_key2"
+KEYCFG_KEY_ACCESSIRY_RWSIG_VBRPIK2="pkcs11:${P11_LIB}:0:rsa_key2"
