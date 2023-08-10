@@ -44,6 +44,7 @@ enum {
 	OPT_KEYBLOCK,
 	OPT_SIGNPUBKEY,
 	OPT_SIGNPRIVATE,
+	OPT_PKCS11,
 	OPT_VERSION,
 	OPT_VMLINUZ,
 	OPT_BOOTLOADER,
@@ -68,6 +69,7 @@ static const struct option long_opts[] = {
 	{"keyblock", 1, 0, OPT_KEYBLOCK},
 	{"signpubkey", 1, 0, OPT_SIGNPUBKEY},
 	{"signprivate", 1, 0, OPT_SIGNPRIVATE},
+	{"pkcs11", 0, 0, OPT_PKCS11},
 	{"version", 1, 0, OPT_VERSION},
 	{"minversion", 1, 0, OPT_MINVERSION},
 	{"vmlinuz", 1, 0, OPT_VMLINUZ},
@@ -212,7 +214,8 @@ static int do_vbutil_kernel(int argc, char *argv[])
 	char *oldfile = NULL;
 	char *keyblock_file = NULL;
 	char *signpubkey_file = NULL;
-	char *signprivkey_file = NULL;
+	char *signprivkey_info = NULL;
+	int use_pkcs11 = 0;
 	char *version_str = NULL;
 	int version = -1;
 	char *vmlinuz_file = NULL;
@@ -318,7 +321,12 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			break;
 
 		case OPT_SIGNPRIVATE:
-			signprivkey_file = optarg;
+			signprivkey_info = optarg;
+			break;
+
+		case OPT_PKCS11:
+			pkcs11_init();
+			use_pkcs11 = 1;
 			break;
 
 		case OPT_VMLINUZ:
@@ -389,10 +397,14 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		if (!t_keyblock)
 			FATAL("Error reading keyblock.\n");
 
-		if (!signprivkey_file)
-			FATAL("Missing required signprivate file.\n");
+		if (!signprivkey_info)
+			FATAL("Missing required signprivate info.\n");
 
-		signpriv_key = vb2_read_private_key(signprivkey_file);
+		if (use_pkcs11)
+			signpriv_key = vb2_read_p11_private_key(signprivkey_info);
+		else
+			signpriv_key = vb2_read_private_key(signprivkey_info);
+
 		if (!signpriv_key)
 			FATAL("Error reading signing key.\n");
 
@@ -470,13 +482,17 @@ static int do_vbutil_kernel(int argc, char *argv[])
 
 		/* Required */
 
-		if (!signprivkey_file)
-			FATAL("Missing required signprivate file.\n");
+		if (!signprivkey_info)
+			FATAL("Missing required signprivate info.\n");
 
 		if (bootloader_file)
 			FATAL("--repack doesn't support --bootloader.\n");
 
-		signpriv_key = vb2_read_private_key(signprivkey_file);
+		if (use_pkcs11)
+			signpriv_key = vb2_read_p11_private_key(signprivkey_info);
+		else
+			signpriv_key = vb2_read_private_key(signprivkey_info);
+
 		if (!signpriv_key)
 			FATAL("Error reading signing key.\n");
 
