@@ -47,6 +47,7 @@ static vb2_error_t vb2_read_local_private_key(const char *filename, struct vb2_p
 	}
 
 	uint64_t alg = *(uint64_t *)buf;
+	key->key_location = PRIVATE_KEY_LOCAL;
 	key->hash_alg = vb2_crypto_to_hash(alg);
 	key->sig_alg = vb2_crypto_to_signature(alg);
 	const unsigned char *start = buf + sizeof(alg);
@@ -62,7 +63,7 @@ static vb2_error_t vb2_read_local_private_key(const char *filename, struct vb2_p
 	return VB2_SUCCESS;
 }
 
-static vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key)
+vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key)
 {
 	/* The format of p11 key info: "pkcs11:{lib_path}:{slot_id}:{key_label}" */
 	char *p11_lib = NULL, *p11_label = NULL;

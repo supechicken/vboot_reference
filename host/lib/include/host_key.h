@@ -59,7 +59,17 @@ vb2_error_t vb2_write_private_key(const char *filename,
 				  const struct vb2_private_key *key);
 
 /**
- * Read a private key from a .vbprivk file.
+ * Read a private key from a PKCS#11 path.
+ *
+ * @param key_info	key_info to read key from.
+ * @param key		Key to read
+ *
+ * @return VB2_SUCCESS, or non-zero if error.
+ */
+vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key);
+
+/**
+ * Read a private key from a .vbprivk file or a PKCS#11 path.
  *
  * @param key_info	key_info to read key from.
  *
