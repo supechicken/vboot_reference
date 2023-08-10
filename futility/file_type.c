@@ -82,6 +82,7 @@ void print_file_types_and_exit(int retval)
 enum futil_file_type futil_file_type_buf(uint8_t *buf, uint32_t len)
 {
 	for (enum futil_file_type i = 0; i < NUM_FILE_TYPES; i++) {
+		fprintf(stderr, "file type: %s\n", futil_file_types[i].name);
 		if (futil_file_types[i].recognize) {
 			enum futil_file_type type = futil_file_types[i].recognize(buf, len);
 			if (type != FILE_TYPE_UNKNOWN)
