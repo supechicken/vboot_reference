@@ -22,6 +22,15 @@
 #include "host_common.h"
 #include "host_key21.h"
 #include "host_signature21.h"
+#include "host_p11_21.h"
+
+static void print_hex(const char *header, uint8_t *data_ptr, int data_size) {
+	int i;
+	fprintf(stderr, "%s: 0x", header);
+	for (i = 0; i < data_size; i++)
+		fprintf(stderr, "%02X", data_ptr[i]);
+	fprintf(stderr, "\n");
+}
 
 struct vb2_signature *vb2_alloc_signature(uint32_t sig_size,
 					  uint32_t data_size)
@@ -84,6 +93,26 @@ struct vb2_signature *vb2_calculate_signature(
 		const uint8_t *data, uint32_t size,
 		const struct vb2_private_key *key)
 {
+	fprintf(stderr, "hash_alg: %d, sig_alg, %d, desc:%s\n",
+			key->hash_alg, key->sig_alg, key->desc);
+	if (key->key_locate == PRIVATE_KEY_P11) {
+		fprintf(stderr, "p11_key: %p\n", key->p11_key);
+		const uint32_t sig_size = key->p11_key->signature_size;
+		struct vb2_signature *sig = (struct vb2_signature *)
+			vb2_alloc_signature(sig_size, size);
+		if (!sig)
+			return NULL;
+		if (!pkcs11_sign(key->p11_key, data,
+					size, vb2_signature_data_mutable(sig), sig_size)) {
+			fprintf(stderr, "%s: pkcs11_sign failed\n", __func__);
+			free(sig);
+			return NULL;
+		}
+		print_hex("sig", vb2_signature_data_mutable(sig), sig_size);
+		return sig;
+	}
+
+
 	struct vb2_hash hash;
 	uint32_t digest_size = vb2_digest_size(key->hash_alg);
 
@@ -108,27 +137,27 @@ struct vb2_signature *vb2_calculate_signature(
 	memcpy(signature_digest + digest_info_size, hash.raw, digest_size);
 
 	/* Allocate output signature */
+	const uint32_t sig_size = vb2_rsa_sig_size(key->sig_alg);
 	struct vb2_signature *sig = (struct vb2_signature *)
-		vb2_alloc_signature(vb2_rsa_sig_size(key->sig_alg), size);
+		vb2_alloc_signature(sig_size, size);
 	if (!sig) {
 		free(signature_digest);
 		return NULL;
 	}
 
 	/* Sign the signature_digest into our output buffer */
-	int rv = RSA_private_encrypt(signature_digest_len,    /* Input length */
-				     signature_digest,        /* Input data */
-				     vb2_signature_data_mutable(sig),  /* Output sig */
-				     key->rsa_private_key,    /* Key to use */
-				     RSA_PKCS1_PADDING);      /* Padding */
+	int rv = RSA_private_encrypt(signature_digest_len,		/* Input length */
+			signature_digest,				 /* Input data */
+			vb2_signature_data_mutable(sig),	/* Output sig */
+			key->rsa_private_key,		 /* Key to use */
+			RSA_PKCS1_PADDING);			 /* Padding */
 	free(signature_digest);
-
 	if (-1 == rv) {
 		fprintf(stderr, "%s: RSA_private_encrypt() failed\n", __func__);
 		free(sig);
 		return NULL;
 	}
-
+	print_hex("sig", vb2_signature_data_mutable(sig), sig_size);
 	/* Return the signature */
 	return sig;
 }

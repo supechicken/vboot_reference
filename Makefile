@@ -287,6 +287,12 @@ ifeq ($(HAVE_CROSID),1)
   CROSID_LIBS := $(shell ${PKG_CONFIG} --libs crosid)
 endif
 
+HAVE_NSS := $(shell ${PKG_CONFIG} --exists nss && echo 1)
+ifeq ($(HAVE_NSS),1)
+  CFLAGS += -DHAVE_NSS $(shell ${PKG_CONFIG} --cflags nss)
+  # The LIBS is not needed because we only use the header.
+endif
+
 # Get major version of openssl (e.g. version 3.0.5 -> "3")
 OPENSSL_VERSION := $(shell ${PKG_CONFIG} --modversion openssl | cut -d. -f1)
 
@@ -476,6 +482,7 @@ UTILLIB_SRCS = \
 	host/lib/host_signature2.c \
 	host/lib/signature_digest.c \
 	host/lib/util_misc.c \
+	host/lib21/host_p11.c \
 	host/lib21/host_common.c \
 	host/lib21/host_key.c \
 	host/lib21/host_misc.c \
