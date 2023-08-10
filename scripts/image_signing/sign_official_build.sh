@@ -1402,11 +1402,8 @@ main() {
       "" \
       ""
   elif [[ "${TYPE}" == "firmware" ]]; then
-    if [[ -e "${KEY_DIR}/loem.ini" ]]; then
-      die "LOEM signing not implemented yet for firmware images"
-    fi
     cp "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
-    sign_firmware "${OUTPUT_IMAGE}" "${KEY_DIR}" "${FIRMWARE_VERSION}"
+    sign_firmware "${OUTPUT_IMAGE}" "${KEY_DIR}" "${FIRMWARE_VERSION}" "/tmp/"
   elif [[ "${TYPE}" == "update_payload" ]]; then
     sign_update_payload "${INPUT_IMAGE}" "${KEYCFG_UPDATE_KEY_PEM}" "${OUTPUT_IMAGE}"
   elif [[ "${TYPE}" == "accessory_usbpd" ]]; then
