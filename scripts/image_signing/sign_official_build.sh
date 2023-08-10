@@ -537,15 +537,14 @@ resign_firmware_payload() {
           rootkey="${KEY_DIR}/root_key${key_suffix}.vbpubk"
           cp "${rootkey}" "${shellball_keyset_dir}/rootkey.${output_name}"
         fi
+        local signprivate="$(get_firmware_loem_vbprivk "${KEY_DIR}" "${key_index}")"
+        local keyblock="$(get_firmware_loem_keyblock "${KEY_DIR}" "${key_index}")"
 
         info "Signing firmware image ${bios_image} for ${output_name} " \
           "with key suffix ${key_suffix}"
 
         local temp_fw
         temp_fw=$(make_temp_file)
-
-        local signprivate="${KEY_DIR}/firmware_data_key${key_suffix}.vbprivk"
-        local keyblock="${KEY_DIR}/firmware${key_suffix}.keyblock"
 
         # Path to bios.bin.
         local bios_path="${shellball_dir}/${bios_image}"
