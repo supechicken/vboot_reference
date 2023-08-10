@@ -33,3 +33,10 @@ setup_keycfg() {
     . "${key_dir}/key_config.sh"
   fi
 }
+
+get_firmware_loem_vbprivk() {
+  local key_dir=$1
+  local key_index=$2
+  local default="${key_dir}/firmware_data_key.loem${key_index}.vbprivk"
+  echo ${KEYCFG_KEY_FIRMARE_VBPRIVK_LOEM[$key_index]:-$default}
+}
