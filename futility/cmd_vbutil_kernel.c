@@ -212,7 +212,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 	char *oldfile = NULL;
 	char *keyblock_file = NULL;
 	char *signpubkey_file = NULL;
-	char *signprivkey_file = NULL;
+	char *signprivkey_info = NULL;
 	char *version_str = NULL;
 	int version = -1;
 	char *vmlinuz_file = NULL;
@@ -318,7 +318,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			break;
 
 		case OPT_SIGNPRIVATE:
-			signprivkey_file = optarg;
+			signprivkey_info = optarg;
 			break;
 
 		case OPT_VMLINUZ:
@@ -389,10 +389,10 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		if (!t_keyblock)
 			FATAL("Error reading keyblock.\n");
 
-		if (!signprivkey_file)
-			FATAL("Missing required signprivate file.\n");
+		if (!signprivkey_info)
+			FATAL("Missing required signprivate info.\n");
 
-		signpriv_key = vb2_read_private_key(signprivkey_file);
+		signpriv_key = vb2_read_private_key(signprivkey_info);
 		if (!signpriv_key)
 			FATAL("Error reading signing key.\n");
 
@@ -470,30 +470,35 @@ static int do_vbutil_kernel(int argc, char *argv[])
 
 		/* Required */
 
-		if (!signprivkey_file)
-			FATAL("Missing required signprivate file.\n");
+		if (!signprivkey_info)
+			FATAL("Missing required signprivate info.\n");
 
 		if (bootloader_file)
 			FATAL("--repack doesn't support --bootloader.\n");
 
-		signpriv_key = vb2_read_private_key(signprivkey_file);
+		signpriv_key = vb2_read_private_key(signprivkey_info);
 		if (!signpriv_key)
 			FATAL("Error reading signing key.\n");
 
 		if (!oldfile)
 			FATAL("Missing previously packed blob.\n");
 
+		fprintf(stderr, "repacking 1\n");
 		/* Load the kernel partition */
 		kpart_data = ReadOldKPartFromFileOrDie(oldfile, &kpart_size);
 
+		fprintf(stderr, "repacking 2\n");
 		/* Make sure we have a kernel partition */
 		if (FILE_TYPE_KERN_PREAMBLE !=
 		    futil_file_type_buf(kpart_data, kpart_size))
 			FATAL("%s is not a kernel blob\n", oldfile);
 
+		fprintf(stderr, "repacking 3\n");
+		/* Make sure we have a kernel partition */
 		kblob_data = unpack_kernel_partition(kpart_data, kpart_size,
 						     opt_pad, &keyblock,
 						     &preamble, &kblob_size);
+		fprintf(stderr, "repacking 4\n");
 
 		if (!kblob_data)
 			FATAL("Unable to unpack kernel partition\n");
@@ -502,22 +507,27 @@ static int do_vbutil_kernel(int argc, char *argv[])
 
 		/* Update the config if asked */
 		if (config_file) {
+			fprintf(stderr, "repacking 5\n");
 			VB2_DEBUG("Reading %s\n", config_file);
 			t_config_data =
 				ReadConfigFile(config_file, &t_config_size);
+			fprintf(stderr, "repacking 6\n");
 			if (!t_config_data)
 				FATAL("Error reading config file.\n");
 			if (UpdateKernelBlobConfig(
 				    kblob_data, kblob_size,
 				    t_config_data, t_config_size))
 				FATAL("Unable to update config\n");
+			fprintf(stderr, "repacking 7\n");
 		}
 
+		fprintf(stderr, "repacking 8\n");
 		if (!version_str)
 			version = preamble->kernel_version;
 
 		if (vb2_kernel_get_flags(preamble))
 			flags = vb2_kernel_get_flags(preamble);
+		fprintf(stderr, "repacking 9\n");
 
 		if (keyblock_file) {
 			t_keyblock = (struct vb2_keyblock *)
@@ -525,12 +535,14 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			if (!t_keyblock)
 				FATAL("Error reading keyblock.\n");
 		}
+		fprintf(stderr, "repacking 10\n");
 
 		/* Reuse previous body size */
 		vblock_data = SignKernelBlob(kblob_data, kblob_size, opt_pad,
 					     version, kernel_body_load_address,
 					     t_keyblock ? t_keyblock : keyblock,
 					     signpriv_key, flags, &vblock_size);
+		fprintf(stderr, "repacking 11\n");
 		if (!vblock_data)
 			FATAL("Unable to sign kernel blob\n");
 
@@ -542,6 +554,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			rv = WriteSomeParts(filename,
 					    vblock_data, vblock_size,
 					    kblob_data, kblob_size);
+		fprintf(stderr, "repacking 12\n");
 		return rv;
 
 	case OPT_MODE_VERIFY:
