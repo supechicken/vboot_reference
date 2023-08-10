@@ -17,6 +17,7 @@
 #include "2sysincludes.h"
 #include "host_common.h"
 #include "host_key21.h"
+#include "host_p11.h"
 #include "host_key.h"
 #include "host_misc.h"
 
@@ -68,6 +69,32 @@ struct vb2_private_key *vb2_read_private_key(const char *filename)
 	}
 
 	free(buf);
+	return key;
+}
+
+struct vb2_private_key *vb2_read_p11_private_key(const char *label) {
+	struct vb2_private_key *key =
+		(struct vb2_private_key *)calloc(sizeof(*key), 1);
+	if (!key) {
+		VB2_DEBUG("Unable to allocate private key\n");
+		return NULL;
+	}
+	struct pkcs11_key_info key_info = {
+		.label = strdup(label),
+		.slot_id = 0,
+	};
+	struct pkcs11_key *p11_key = malloc(sizeof(struct pkcs11_key));
+	if(!pkcs11_get_key(&key_info, p11_key)) {
+		VB2_DEBUG("Unable to get pkcs11 key\n");
+		free(key);
+		return NULL;
+	}
+	key->key_locate = PRIVATE_KEY_P11;
+	key->p11_key = p11_key;
+	fprintf(stderr, "p11_key: %p\n", key->p11_key);
+	/*key->hash_alg = p11_mechanism_to_hash_alg(p11_key->mechanism.mechanism);*/
+	key->hash_alg = VB2_HASH_NONE;
+	key->sig_alg = sig_size_to_sig_alg(p11_key->signature_size);
 	return key;
 }
 
