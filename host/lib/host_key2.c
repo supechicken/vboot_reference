@@ -17,6 +17,7 @@
 #include "2sysincludes.h"
 #include "host_common.h"
 #include "host_key21.h"
+#include "host_p11.h"
 #include "host_key.h"
 #include "host_misc.h"
 
@@ -35,21 +36,13 @@ enum vb2_crypto_algorithm vb2_get_crypto_algorithm(
 		+ (hash_alg - VB2_HASH_SHA1);
 };
 
-struct vb2_private_key *vb2_read_private_key(const char *filename)
+static bool vb2_read_local_private_key(const char *filename, struct vb2_private_key *key)
 {
 	uint8_t *buf = NULL;
 	uint32_t bufsize = 0;
 	if (VB2_SUCCESS != vb2_read_file(filename, &buf, &bufsize)) {
 		VB2_DEBUG("unable to read from file %s\n", filename);
-		return NULL;
-	}
-
-	struct vb2_private_key *key =
-		(struct vb2_private_key *)calloc(sizeof(*key), 1);
-	if (!key) {
-		VB2_DEBUG("Unable to allocate private key\n");
-		free(buf);
-		return NULL;
+		return false;
 	}
 
 	uint64_t alg = *(uint64_t *)buf;
@@ -60,14 +53,85 @@ struct vb2_private_key *vb2_read_private_key(const char *filename)
 	key->rsa_private_key =
 		d2i_RSAPrivateKey(0, &start, bufsize - sizeof(alg));
 
+	free(buf);
 	if (!key->rsa_private_key) {
 		VB2_DEBUG("Unable to parse RSA private key\n");
+		return false;
+	}
+	return true;
+}
+
+static bool vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key)
+{
+	/* The format of p11 key info: "pkcs11:{lib_path}:{slot_id}:{key_label}" */
+	char *buf = strdup(key_info);
+	char delim[] = ":";
+	char *token = strtok(buf, delim);
+	char *tokens[4];
+	int token_cnt = 0;
+	for (; token && token_cnt < 4; token = strtok(NULL, delim), token_cnt++)
+		tokens[token_cnt] = token;
+	/* We expect there are exact 4 tokens. */
+	if (token != NULL && token_cnt != 4) {
 		free(buf);
-		free(key);
+		return false;
+	}
+	char *p11_lib = tokens[1];
+	int p11_slot_id = atoi(tokens[2]);
+	char *p11_label = tokens[3];
+
+	if (!pkcs11_init(p11_lib)) {
+		VB2_DEBUG("Unable to initialize pkcs11 library\n");
+		free(buf);
+		return false;
+	}
+
+	struct pkcs11_key *p11_key = malloc(sizeof(struct pkcs11_key));
+	if (!pkcs11_get_key(p11_slot_id, p11_label, p11_key)) {
+		VB2_DEBUG("Unable to get pkcs11 key\n");
+		free(buf);
+		free(p11_key);
+		return false;
+	}
+	key->key_location = PRIVATE_KEY_P11;
+	key->p11_key = p11_key;
+	key->hash_alg = VB2_HASH_NONE;
+	key->sig_alg = sig_size_to_sig_alg(p11_key->signature_size);
+	free(buf);
+	return true;
+}
+
+struct vb2_private_key *vb2_read_private_key(const char *key_info)
+{
+	struct vb2_private_key *key = (struct vb2_private_key *)calloc(sizeof(*key), 1);
+	if (!key) {
+		VB2_DEBUG("Unable to allocate private key\n");
 		return NULL;
 	}
 
-	free(buf);
+	const char p11_prefix[] = "pkcs11:";
+	const char local_prefix[] = "local:";
+	size_t p11_prefix_len = strlen(p11_prefix);
+	size_t local_prefix_len = strlen(local_prefix);
+	if (strncmp(key_info, p11_prefix, p11_prefix_len) == 0) {
+		if (!vb2_read_p11_private_key(key_info, key)) {
+			VB2_DEBUG("Unable to read pkcs11 private key\n");
+			free(key);
+			return NULL;
+		}
+	} else if (strncmp(key_info, local_prefix, local_prefix_len) == 0) {
+		if (!vb2_read_local_private_key(key_info + local_prefix_len, key)) {
+			VB2_DEBUG("Unable to read local private key\n");
+			free(key);
+			return NULL;
+		}
+	} else {
+		if (!vb2_read_local_private_key(key_info, key)) {
+			VB2_DEBUG("Unable to read local private key\n");
+			free(key);
+			return NULL;
+		}
+	}
 	return key;
 }
 
@@ -115,8 +179,10 @@ void vb2_free_private_key(struct vb2_private_key *key)
 {
 	if (!key)
 		return;
-	if (key->rsa_private_key)
+	if (key->key_location == PRIVATE_KEY_LOCAL && key->rsa_private_key)
 		RSA_free(key->rsa_private_key);
+	else if (key->key_location == PRIVATE_KEY_P11 && key->p11_key)
+		pkcs11_free_key(key->p11_key);
 	free(key);
 }
 
