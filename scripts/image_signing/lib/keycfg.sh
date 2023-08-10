@@ -32,6 +32,10 @@ setup_default_keycfg() {
   export KEYCFG_FIRMWARE_KEYBLOCK="${key_dir}/firmware.keyblock"
   export KEYCFG_ROOT_KEY_VBPUBK="${key_dir}/root_key.vbpubk"
   declare -a KEYCFG_FIRMARE_VBPRIVK_LOEM
+
+  export KEYCFG_KERNEL_SUBKEY_VBPUBK="${key_dir}/kernel_subkey.vbpubk"
+  export KEYCFG_RECOVERY_KEY_VBPUBK="${key_dir}/recovery_key.vbpubk"
+  export KEYCFG_ARC_ROOT_VBPUBK="${key_dir}/arv_root.vbpubk"
 }
 
 # Setup the key configuration. This setups the default configuration and source
