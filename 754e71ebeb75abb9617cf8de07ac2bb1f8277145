@@ -16,6 +16,24 @@
       "message": "I know the format comes from `vpd -l`, but that doesn\u0027t seem easy to be parsed (for example why do we need the quotes for keys). I\u0027d expect the output to be easy for scripts to parse any field we want. When switching to libvpd, will we want to keep the same format?",
       "revId": "754e71ebeb75abb9617cf8de07ac2bb1f8277145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02fc1134_72bfa3ed",
+        "filename": "tests/futility/data_vpd_good_expect.txt",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-08-11T07:55:54Z",
+      "side": 1,
+      "message": "Thanks for reminding me the issue of difficulty of parsing. Let\u0027s loop this back to hwid_extractor bug (b/283024460 #33) to see if chungsheng@ or rueifong@ have some comments of parsing this.",
+      "parentUuid": "643d2ad6_ec29eed6",
+      "revId": "754e71ebeb75abb9617cf8de07ac2bb1f8277145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
