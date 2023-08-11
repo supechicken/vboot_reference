@@ -229,6 +229,12 @@ vb2_error_t vb2api_get_pcr_digest(struct vb2_context *ctx,
 		digest = vb2_get_gbb(ctx)->hwid_digest;
 		digest_size = VB2_GBB_HWID_DIGEST_SIZE;
 		break;
+	case FIRMWARE_VERSION_PCR: {
+		struct vb2_shared_data *sd = vb2_get_sd(ctx);
+		digest = (uint8_t *)&sd->fw_version;
+		digest_size = sizeof(sd->fw_version);
+		break;
+	}
 	default:
 		return VB2_ERROR_API_PCR_DIGEST;
 	}

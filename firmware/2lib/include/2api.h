@@ -107,6 +107,9 @@ enum vb2_pcr_digest {
 
 	/* SHA-256 hash digest of HWID, from GBB */
 	HWID_DIGEST_PCR,
+
+	/* SHA-256 hash digest of firmware version. */
+	FIRMWARE_VERSION_PCR,
 };
 
 /******************************************************************************
