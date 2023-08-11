@@ -595,9 +595,7 @@ static void get_pcr_digest_tests(void)
 		VB2_ERROR_API_PCR_DIGEST_BUF,
 		"BOOT_MODE_PCR buffer too small");
 
-	TEST_EQ(vb2api_get_pcr_digest(
-			ctx, HWID_DIGEST_PCR + 1, digest, &digest_size),
-		VB2_ERROR_API_PCR_DIGEST,
+	TEST_EQ(vb2api_get_pcr_digest(ctx, 255, digest, &digest_size), VB2_ERROR_API_PCR_DIGEST,
 		"invalid enum vb2_pcr_digest");
 }
 
