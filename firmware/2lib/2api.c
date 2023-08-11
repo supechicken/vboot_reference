@@ -219,6 +219,8 @@ vb2_error_t vb2api_get_pcr_digest(struct vb2_context *ctx,
 {
 	const uint8_t *digest;
 	uint32_t digest_size;
+	struct vb2_shared_data *sd;
+	struct vb2_hash hash;
 
 	switch (which_digest) {
 	case BOOT_MODE_PCR:
@@ -229,6 +231,14 @@ vb2_error_t vb2api_get_pcr_digest(struct vb2_context *ctx,
 		digest = vb2_get_gbb(ctx)->hwid_digest;
 		digest_size = VB2_GBB_HWID_DIGEST_SIZE;
 		break;
+	case FIRMWARE_VERSION_PCR: {
+		sd = vb2_get_sd(ctx);
+		vb2_hash_calculate(vb2api_hwcrypto_allowed(ctx), (uint8_t *)&sd->fw_version,
+				   sizeof(sd->fw_version), VB2_HASH_SHA256, &hash);
+		digest = hash.sha256;
+		digest_size = VB2_SHA256_DIGEST_SIZE;
+		break;
+	}
 	default:
 		return VB2_ERROR_API_PCR_DIGEST;
 	}
