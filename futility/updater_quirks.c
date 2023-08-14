@@ -533,6 +533,11 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "clear_mrc_data";
 	quirks->help = "b/255617349: Clear memory training data (MRC).";
 	quirks->apply = quirk_clear_mrc_data;
+
+	quirks = &cfg->quirks[QUIRK_USE_SETVARS];
+	quirks->name = "use_setvars";
+	quirks->help = "b/251040363: Use 'setvars.sh' for the manifest.";
+	quirks->apply = NULL;  /* Simple config. */
 }
 
 /*

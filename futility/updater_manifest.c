@@ -816,40 +816,18 @@ int model_apply_custom_label(
 }
 
 /*
- * b/251040363: Checks if the archive can be parsed using signer_config.
- * Currently only wlref and whitelabel-test (both fake models for testing) must
- * use setvars. In future this can be replaced by a quirk.
- */
-static bool archive_signer_config_first(struct u_archive *archive)
-{
-	int i;
-	const char *setvars_list[] = {
-		"models/wlref/setvars.sh",
-		"models/whitelabel-test/setvars.sh"
-	};
-
-	for (i = 0; i < ARRAY_SIZE(setvars_list); i++) {
-		if (archive_has_entry(archive, setvars_list[i])) {
-			INFO("Detected %s, will ignore %s.\n",
-			     setvars_list[i], PATH_SIGNER_CONFIG);
-			return false;
-		}
-	}
-	return true;
-}
-
-/*
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
-struct manifest *new_manifest_from_archive(struct u_archive *archive)
+struct manifest *new_manifest_from_archive(
+		struct updater_config *cfg, struct u_archive *archive)
 {
 	struct manifest manifest = {0}, *new_manifest;
 
 	manifest.archive = archive;
 	manifest.default_model = -1;
 
-	if (archive_signer_config_first(archive)) {
+	if (!get_config_quirk(QUIRK_USE_SETVARS, cfg)) {
 		VB2_DEBUG("Try to build a manifest from %s\n",
 			  PATH_SIGNER_CONFIG);
 		manifest_from_signer_config(&manifest);

@@ -1625,7 +1625,8 @@ int updater_setup_config(struct updater_config *cfg,
 			errorcnt++;
 		}
 	} else if (arg->archive) {
-		struct manifest *m = new_manifest_from_archive(cfg->archive);
+		struct manifest *m = new_manifest_from_archive(
+				cfg, cfg->archive);
 		if (m) {
 			errorcnt += updater_setup_archive(
 					cfg, arg, m, cfg->factory_update);

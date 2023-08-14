@@ -55,6 +55,7 @@ enum quirk_types {
 	QUIRK_NO_VERIFY,
 	QUIRK_EXTRA_RETRIES,
 	QUIRK_CLEAR_MRC_DATA,
+	QUIRK_USE_SETVARS,
 	QUIRK_MAX,
 };
 
@@ -328,7 +329,8 @@ int archive_copy(struct u_archive *from, struct u_archive *to);
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
-struct manifest *new_manifest_from_archive(struct u_archive *archive);
+struct manifest *new_manifest_from_archive(
+		struct updater_config *cfg, struct u_archive *archive);
 
 /* Releases all resources allocated by given manifest object. */
 void delete_manifest(struct manifest *manifest);
