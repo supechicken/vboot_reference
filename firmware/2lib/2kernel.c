@@ -11,6 +11,7 @@
 #include "2nvstorage.h"
 #include "2rsa.h"
 #include "2secdata.h"
+#include "tlcl.h"
 
 int vb2api_is_developer_signed(struct vb2_context *ctx)
 {
@@ -257,6 +258,21 @@ static void update_kernel_version(struct vb2_context *ctx)
 	}
 }
 
+static vb2_error_t extend_kernel_pcr(struct vb2_context *ctx)
+{
+	uint8_t buffer[VB2_PCR_DIGEST_RECOMMENDED_SIZE] = {};
+	uint32_t size = sizeof(buffer);
+	vb2_error_t rv;
+
+	rv = vb2api_get_pcr_digest(ctx, KERNEL_VERSION_PCR, buffer, &size);
+	if (rv != VB2_SUCCESS)
+		return rv;
+
+	TlclExtend(12, buffer, buffer);
+
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2api_kernel_finalize(struct vb2_context *ctx)
 {
 	vb2_gbb_flags_t gbb_flags = vb2api_gbb_get_flags(ctx);
@@ -276,5 +292,5 @@ vb2_error_t vb2api_kernel_finalize(struct vb2_context *ctx)
 	if (ctx->boot_mode == VB2_BOOT_MODE_NORMAL)
 		update_kernel_version(ctx);
 
-	return VB2_SUCCESS;
+	return extend_kernel_pcr(ctx);
 }

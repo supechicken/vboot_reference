@@ -239,6 +239,14 @@ vb2_error_t vb2api_get_pcr_digest(struct vb2_context *ctx,
 		digest_size = VB2_SHA256_DIGEST_SIZE;
 		break;
 	}
+	case KERNEL_VERSION_PCR: {
+		sd = vb2_get_sd(ctx);
+		vb2_hash_calculate(vb2api_hwcrypto_allowed(ctx), (uint8_t *)&sd->kernel_version,
+				   sizeof(sd->kernel_version), VB2_HASH_SHA256, &hash);
+		digest = hash.sha256;
+		digest_size = VB2_SHA256_DIGEST_SIZE;
+		break;
+	}
 	default:
 		return VB2_ERROR_API_PCR_DIGEST;
 	}
