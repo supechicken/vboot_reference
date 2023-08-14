@@ -62,14 +62,12 @@ static const char * const SETVARS_IMAGE_MAIN = "IMAGE_MAIN",
 		  * const SETVARS_IMAGE_EC = "IMAGE_EC",
 		  * const SETVARS_SIGNATURE_ID = "SIGNATURE_ID",
 		  * const SIG_ID_IN_VPD_PREFIX = "sig-id-in",
-		  * const DIR_KEYSET = "keyset",
 		  * const DIR_MODELS = "models",
 		  * const DEFAULT_MODEL_NAME = "default",
 		  * const VPD_CUSTOM_LABEL_TAG = "custom_label_tag",
 		  * const VPD_CUSTOM_LABEL_TAG_LEGACY = "whitelabel_tag",
 		  * const VPD_CUSTOMIZATION_ID = "customization_id",
 		  * const ENV_VAR_MODEL_DIR = "${MODEL_DIR}",
-		  * const PATH_STARTSWITH_KEYSET = "keyset/",
 		  * const PATH_KEYSET_FOLDER = "keyset/",
 		  * const PATH_SIGNER_CONFIG = "signer_config.csv",
 		  * const PATH_ENDSWITH_SETVARS = "/setvars.sh";
@@ -315,7 +313,8 @@ static void find_patches_for_model(struct model_config *model,
 
 	assert(ARRAY_SIZE(names) == ARRAY_SIZE(targets));
 	for (i = 0; i < ARRAY_SIZE(names); i++) {
-		ASPRINTF(&path, "%s/%s.%s", DIR_KEYSET, names[i], signature_id);
+		ASPRINTF(&path, "%s%s.%s", PATH_KEYSET_FOLDER, names[i],
+			 signature_id);
 		if (archive_has_entry(archive, path))
 			*targets[i] = path;
 		else
@@ -355,8 +354,6 @@ static int manifest_scan_entries(const char *name, void *arg)
 	struct model_config model = {0};
 	char *slash;
 
-	if (str_startswith(name, PATH_STARTSWITH_KEYSET))
-		manifest->has_keyset = 1;
 	if (!str_endswith(name, PATH_ENDSWITH_SETVARS))
 		return 0;
 
@@ -445,167 +442,6 @@ static void clear_patch_config(struct patch_config *patch)
 	free(patch->vblock_b);
 	free(patch->gscvd);
 	memset(patch, 0, sizeof(*patch));
-}
-
-/*
- * Creates the manifest from the 'signer_config.csv' file.
- * Returns 0 on success (loaded), otherwise failure.
- */
-static int manifest_from_signer_config(struct manifest *manifest)
-{
-	struct u_archive *archive = manifest->archive;
-	uint32_t size;
-	uint8_t *data;
-	char *s, *tok_ptr = NULL;
-
-	if (!archive_has_entry(archive, PATH_SIGNER_CONFIG))
-		return -1;
-	if (archive_has_entry(archive, PATH_KEYSET_FOLDER))
-		manifest->has_keyset = 1;
-	VB2_DEBUG("Has keyset: %s\n", manifest->has_keyset ? "True" : "False");
-
-	/*
-	 * CSV format: model_name,firmware_image,key_id,ec_image
-	 *
-	 * Note the key_id is not signature_id and won't be used, and ec_image
-	 * may be optional (for example sarien).
-	 */
-
-	if (archive_read_file(archive, PATH_SIGNER_CONFIG, &data, &size,NULL)) {
-		ERROR("Failed reading: %s\n", PATH_SIGNER_CONFIG);
-		return -1;
-	}
-
-	/* Skip headers. */
-	s = strtok_r((char *)data, "\n", &tok_ptr);
-	if (!s || !strchr(s, ',')) {
-		ERROR("Invalid %s: missing header.\n", PATH_SIGNER_CONFIG);
-		free(data);
-		return -1;
-	}
-
-	for (s = strtok_r(NULL, "\n", &tok_ptr); s != NULL;
-	     s = strtok_r(NULL, "\n", &tok_ptr)) {
-
-		struct model_config model = {0};
-		int discard_model = 0;
-
-		/*
-		 * Both keyid (%3) and ec_image (%4) are optional so we want to
-		 * read at least 2 fields.
-		 */
-		if (sscanf(s, "%m[^,],%m[^,],%*[^,],%m[^,]",
-		    &model.name, &model.image, &model.ec_image) < 2) {
-			ERROR("Invalid entry(%s): %s\n", PATH_SIGNER_CONFIG, s);
-			discard_model = 1;
-		} else if (strchr(model.name, '-')) {
-			/* format: BaseModel-CustomLabel */
-			char *tok_dash;
-			char *base_model;
-			struct model_config *base_model_config;
-
-			VB2_DEBUG("Found custom-label: %s\n", model.name);
-			discard_model = 1;
-			base_model = strtok_r(model.name, "-", &tok_dash);
-			assert(base_model);
-
-			/*
-			 * Currently we assume the base model (e.g., base_model)
-			 * is always listed before CL models in the CSV file -
-			 * this is based on how the signerbot and the
-			 * chromeos-config works today (validated on octopus).
-			 */
-			base_model_config = manifest_get_model_config(
-					manifest, base_model);
-
-			if (!base_model_config) {
-				ERROR("Invalid CL-model: %s\n", base_model);
-			} else if (!base_model_config->is_custom_label) {
-				base_model_config->is_custom_label = 1;
-				/*
-				 * Rewriting signature_id is not necessary,
-				 * but in order to generate the same manifest
-				 * from setvars, we want to temporarily use
-				 * the special value.
-				 */
-				free(base_model_config->signature_id);
-				base_model_config->signature_id = strdup(
-						"sig-id-in-customization-id");
-				/*
-				 * Historically (e.g., setvars.sh), custom label
-				 * devices will have signature ID set to
-				 * 'sig-id-in-*' so the patch files will be
-				 * discovered later from VPD. We want to
-				 * follow that behavior until fully migrated.
-				 */
-				clear_patch_config(
-						&base_model_config->patches);
-			}
-		}
-
-		if (discard_model) {
-			free(model.name);
-			free(model.image);
-			free(model.ec_image);
-			continue;
-		}
-
-		/* Find patch files. */
-		find_patches_for_model(&model, archive, model.name);
-
-		model.signature_id = strdup(model.name);
-		if (!manifest_add_model(manifest, &model))
-			break;
-	}
-	free(data);
-	return 0;
-}
-
-/*
- * Creates the manifest from a simple (legacy) folder with only 1 set of
- * firmware images.
- * Returns 0 on success (loaded), otherwise failure.
- */
-static int manifest_from_simple_folder(struct manifest *manifest)
-{
-	const char * const host_image_name = "image.bin",
-		   * const old_host_image_name = "bios.bin",
-		   * const ec_name = "ec.bin";
-	struct u_archive *archive = manifest->archive;
-	const char *image_name = NULL;
-	struct firmware_image image = {0};
-	struct model_config model = {0};
-
-	/* Try to load from current folder. */
-	if (archive_has_entry(archive, old_host_image_name))
-		image_name = old_host_image_name;
-	else if (archive_has_entry(archive, host_image_name))
-		image_name = host_image_name;
-	else
-		return 1;
-
-	model.image = strdup(image_name);
-	if (archive_has_entry(archive, ec_name))
-		model.ec_image = strdup(ec_name);
-	/* Extract model name from FWID: $Vendor_$Platform.$Version */
-	if (!load_firmware_image(&image, image_name, archive)) {
-		char *token = NULL;
-		if (strtok(image.ro_version, "_"))
-			token = strtok(NULL, ".");
-		if (token && *token) {
-			str_convert(token, tolower);
-			model.name = strdup(token);
-		}
-		free_firmware_image(&image);
-	}
-	if (!model.name)
-		model.name = strdup(DEFAULT_MODEL_NAME);
-	if (manifest->has_keyset)
-		model.is_custom_label = 1;
-	manifest_add_model(manifest, &model);
-	manifest->default_model = manifest->num - 1;
-
-	return 0;
 }
 
 /*
@@ -816,22 +652,194 @@ int model_apply_custom_label(
 }
 
 /*
- * b/251040363: Checks if the archive can be parsed using signer_config.
+ * b/251040363: Checks if the archive must be parsed using setvars.sh.
  */
-static bool archive_signer_config_first(struct u_archive *archive)
+static bool manifest_must_enforce_setvars(struct manifest *manifest)
 {
 	int i;
 	const char *setvars_list[] = {
 	};
 
 	for (i = 0; i < ARRAY_SIZE(setvars_list); i++) {
-		if (archive_has_entry(archive, setvars_list[i])) {
-			INFO("Detected %s, will ignore %s.\n",
-			     setvars_list[i], PATH_SIGNER_CONFIG);
-			return false;
+		if (archive_has_entry(manifest->archive, setvars_list[i])) {
+			INFO("Detected %s, will use */%s.\n",
+			     setvars_list[i], PATH_ENDSWITH_SETVARS);
+			return true;
 		}
 	}
-	return true;
+	return false;
+}
+
+/*
+ * Creates the manifest from the 'signer_config.csv' file.
+ * Returns 0 on success (loaded), otherwise failure.
+ */
+static int manifest_from_signer_config(struct manifest *manifest)
+{
+	struct u_archive *archive = manifest->archive;
+	uint32_t size;
+	uint8_t *data;
+	char *s, *tok_ptr = NULL;
+
+	VB2_DEBUG("Try to build a manifest from %s\n", PATH_SIGNER_CONFIG);
+
+	if (!archive_has_entry(archive, PATH_SIGNER_CONFIG))
+		return -1;
+
+	/*
+	 * CSV format: model_name,firmware_image,key_id,ec_image
+	 *
+	 * Note the key_id is not signature_id and won't be used, and ec_image
+	 * may be optional (for example sarien).
+	 */
+
+	if (archive_read_file(archive, PATH_SIGNER_CONFIG, &data, &size,NULL)) {
+		ERROR("Failed reading: %s\n", PATH_SIGNER_CONFIG);
+		return -1;
+	}
+
+	/* Skip headers. */
+	s = strtok_r((char *)data, "\n", &tok_ptr);
+	if (!s || !strchr(s, ',')) {
+		ERROR("Invalid %s: missing header.\n", PATH_SIGNER_CONFIG);
+		free(data);
+		return -1;
+	}
+
+	for (s = strtok_r(NULL, "\n", &tok_ptr); s != NULL;
+	     s = strtok_r(NULL, "\n", &tok_ptr)) {
+
+		struct model_config model = {0};
+		int discard_model = 0;
+
+		/*
+		 * Both keyid (%3) and ec_image (%4) are optional so we want to
+		 * read at least 2 fields.
+		 */
+		if (sscanf(s, "%m[^,],%m[^,],%*[^,],%m[^,]",
+		    &model.name, &model.image, &model.ec_image) < 2) {
+			ERROR("Invalid entry(%s): %s\n", PATH_SIGNER_CONFIG, s);
+			discard_model = 1;
+		} else if (strchr(model.name, '-')) {
+			/* format: BaseModel-CustomLabel */
+			char *tok_dash;
+			char *base_model;
+			struct model_config *base_model_config;
+
+			VB2_DEBUG("Found custom-label: %s\n", model.name);
+			discard_model = 1;
+			base_model = strtok_r(model.name, "-", &tok_dash);
+			assert(base_model);
+
+			/*
+			 * Currently we assume the base model (e.g., base_model)
+			 * is always listed before CL models in the CSV file -
+			 * this is based on how the signerbot and the
+			 * chromeos-config works today (validated on octopus).
+			 */
+			base_model_config = manifest_get_model_config(
+					manifest, base_model);
+
+			if (!base_model_config) {
+				ERROR("Invalid CL-model: %s\n", base_model);
+			} else if (!base_model_config->is_custom_label) {
+				base_model_config->is_custom_label = 1;
+				/*
+				 * Rewriting signature_id is not necessary,
+				 * but in order to generate the same manifest
+				 * from setvars, we want to temporarily use
+				 * the special value.
+				 */
+				free(base_model_config->signature_id);
+				base_model_config->signature_id = strdup(
+						"sig-id-in-customization-id");
+				/*
+				 * Historically (e.g., setvars.sh), custom label
+				 * devices will have signature ID set to
+				 * 'sig-id-in-*' so the patch files will be
+				 * discovered later from VPD. We want to
+				 * follow that behavior until fully migrated.
+				 */
+				clear_patch_config(
+						&base_model_config->patches);
+			}
+		}
+
+		if (discard_model) {
+			free(model.name);
+			free(model.image);
+			free(model.ec_image);
+			continue;
+		}
+
+		/* Find patch files. */
+		find_patches_for_model(&model, archive, model.name);
+
+		model.signature_id = strdup(model.name);
+		if (!manifest_add_model(manifest, &model))
+			break;
+	}
+	free(data);
+	return 0;
+}
+
+/*
+ * Creates the manifest from a simple (legacy) folder with only 1 set of
+ * firmware images.
+ * Returns 0 on success (loaded), otherwise failure.
+ */
+static int manifest_from_simple_folder(struct manifest *manifest)
+{
+	const char * const host_image_name = "image.bin",
+		   * const old_host_image_name = "bios.bin",
+		   * const ec_name = "ec.bin";
+	struct u_archive *archive = manifest->archive;
+	const char *image_name = NULL;
+	struct firmware_image image = {0};
+	struct model_config model = {0};
+
+	VB2_DEBUG("Try to build a manifest from a simple folder\n");
+
+	/* Try to load from current folder. */
+	if (archive_has_entry(archive, old_host_image_name))
+		image_name = old_host_image_name;
+	else if (archive_has_entry(archive, host_image_name))
+		image_name = host_image_name;
+	else
+		return 1;
+
+	model.image = strdup(image_name);
+	if (archive_has_entry(archive, ec_name))
+		model.ec_image = strdup(ec_name);
+	/* Extract model name from FWID: $Vendor_$Platform.$Version */
+	if (!load_firmware_image(&image, image_name, archive)) {
+		char *token = NULL;
+		if (strtok(image.ro_version, "_"))
+			token = strtok(NULL, ".");
+		if (token && *token) {
+			str_convert(token, tolower);
+			model.name = strdup(token);
+		}
+		free_firmware_image(&image);
+	}
+	if (!model.name)
+		model.name = strdup(DEFAULT_MODEL_NAME);
+	if (manifest->has_keyset)
+		model.is_custom_label = 1;
+	manifest_add_model(manifest, &model);
+	manifest->default_model = manifest->num - 1;
+
+	return 0;
+}
+
+static void manifest_from_setvars_sh(struct manifest *manifest) {
+	VB2_DEBUG("Try to build a manifest from *%s\n", PATH_ENDSWITH_SETVARS);
+	archive_walk(manifest->archive, manifest, manifest_scan_entries);
+}
+
+static void manifest_from_build_artifacts(struct manifest *manifest) {
+	VB2_DEBUG("Try to build a manifest from a */firmware folder\n");
+	archive_walk(manifest->archive, manifest, manifest_scan_raw_entries);
 }
 
 /*
@@ -840,28 +848,31 @@ static bool archive_signer_config_first(struct u_archive *archive)
  */
 struct manifest *new_manifest_from_archive(struct u_archive *archive)
 {
+	int i;
 	struct manifest manifest = {0}, *new_manifest;
+	bool try_builders = true;
+	void (*manifest_builders[])(struct manifest *) = {
+		manifest_from_signer_config,
+		manifest_from_setvars_sh,
+		manifest_from_build_artifacts,
+		manifest_from_simple_folder,
+	};
 
 	manifest.archive = archive;
 	manifest.default_model = -1;
+	if (archive_has_entry(archive, PATH_KEYSET_FOLDER))
+		manifest.has_keyset = 1;
+	VB2_DEBUG("Has keyset: %s\n", manifest.has_keyset ? "True" : "False");
 
-	if (archive_signer_config_first(archive)) {
-		VB2_DEBUG("Try to build a manifest from %s\n",
-			  PATH_SIGNER_CONFIG);
-		manifest_from_signer_config(&manifest);
+	if (manifest_must_enforce_setvars(&manifest)) {
+		try_builders = false;
+		manifest_from_setvars_sh(&manifest);
 	}
-	if (manifest.num == 0) {
-		VB2_DEBUG("Try to build a manifest from *%s\n",
-			  PATH_ENDSWITH_SETVARS);
-		archive_walk(archive, &manifest, manifest_scan_entries);
-	}
-	if (manifest.num == 0) {
-		VB2_DEBUG("Try to build a manifest from a */firmware folder\n");
-		archive_walk(archive, &manifest, manifest_scan_raw_entries);
-	}
-	if (manifest.num == 0) {
-		VB2_DEBUG("Try to build a manifest from a simple folder\n");
-		manifest_from_simple_folder(&manifest);
+
+	for (i = 0;
+	     try_builders && !manifest.num && i < ARRAY_SIZE(manifest_builders);
+	     i++) {
+		manifest_builders[i](&manifest);
 	}
 
 	VB2_DEBUG("%d model(s) loaded.\n", manifest.num);
