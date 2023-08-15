@@ -81,6 +81,24 @@
       "parentUuid": "3aaf8763_4ef32514",
       "revId": "9cb10c8d27d0c48cb2f68d9dc69f2e8496f718a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82b6e6c_80ec996c",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-15T06:50:53Z",
+      "side": 1,
+      "message": "\u003e Chromium is still following 80 if I understand it correctly.\n\nI thought firmware repos follow coreboot style guide. Since coreboot has changed the limit to 96, I did the same to vboot_reference in CL:4676840 (and I think we can do it for depthcharge also). AFAIK chromium doesn\u0027t have a style guide for C (at least not in https://chromium.googlesource.com/chromium/src/+/main/styleguide/styleguide.md). BTW the limit is 100 in upstream kernel.",
+      "parentUuid": "54add514_038f5de3",
+      "revId": "9cb10c8d27d0c48cb2f68d9dc69f2e8496f718a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
