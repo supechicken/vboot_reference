@@ -99,6 +99,24 @@
       "parentUuid": "54add514_038f5de3",
       "revId": "9cb10c8d27d0c48cb2f68d9dc69f2e8496f718a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4cfb4e0_ef3ec256",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-08-15T07:11:40Z",
+      "side": 1,
+      "message": "I\u0027d agree coreboot and depthcharge should follow coreboot style, but vboot_reference is not only for firmware; it\u0027s also shared by other userland tools.\n\nChromium does not have C, so usually we\u0027ll look at c++; and that refers to the Google c++ coding style https://google.github.io/styleguide/cppguide.html that is still 80 chars.\n\nBut given you\u0027ve already made the changes for clang and chkconf, I\u0027d agree we can do 96 for vboot_reference.",
+      "parentUuid": "a82b6e6c_80ec996c",
+      "revId": "9cb10c8d27d0c48cb2f68d9dc69f2e8496f718a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
