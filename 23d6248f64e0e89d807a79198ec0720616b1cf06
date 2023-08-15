@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1d2367_9a451c71",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-15T01:36:25Z",
+      "side": 1,
+      "message": "I think this should go into depthcharge. We\u0027ve been trying to move all the TPM stuff out of vboot and into depthcharge. I think we\u0027re still sorta stuck half-way at this point and don\u0027t quite remember what the long-term plan was, but I think it involved not having direct TPM accesses from vboot code anymore.",
+      "revId": "23d6248f64e0e89d807a79198ec0720616b1cf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
