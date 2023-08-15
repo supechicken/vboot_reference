@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0938cc2d_2ddee614",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-15T01:26:21Z",
+      "side": 1,
+      "message": "I\u0027m honestly wondering if there\u0027s a point in hashing this, as opposed to just putting the raw version number in the lowest 4 bytes and zeroing the rest. I know that\u0027s how it\u0027s intended to be used, but it\u0027s also intended to be used with much larger data buffers, and it shouldn\u0027t make a difference (since the process of extension itself hashes it again anyway). I think firing up the SHA algorithm again here would just be a waste of time (although it\u0027s probably pretty fast for one block).\n\n+Andrey, what do you think?",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
