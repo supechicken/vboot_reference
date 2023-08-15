@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c589890_c0a382be",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-08-15T03:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e528593_0fd72590",
+      "range": {
+        "startLine": 827,
+        "startChar": 32,
+        "endLine": 827,
+        "endChar": 33
+      },
+      "revId": "9cb10c8d27d0c48cb2f68d9dc69f2e8496f718a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aaf8763_4ef32514",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-08-15T02:04:48Z",
       "side": 1,
       "message": "The line length limit is 96 now. Feel free to make it one line.",
+      "revId": "9cb10c8d27d0c48cb2f68d9dc69f2e8496f718a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54add514_038f5de3",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-08-15T03:19:35Z",
+      "side": 1,
+      "message": "I think that\u0027s coreboot? Chromium is still following 80 if I understand it correctly. Any references for 96 in vboot?",
+      "parentUuid": "3aaf8763_4ef32514",
       "revId": "9cb10c8d27d0c48cb2f68d9dc69f2e8496f718a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
