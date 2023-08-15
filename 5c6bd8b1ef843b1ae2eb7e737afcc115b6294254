@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2d05b9_9a270f25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-15T21:17:43Z",
+      "side": 1,
+      "message": "We should change the name for this if we want to export it, just `hmac()` isn\u0027t sufficiently namespaced. Maybe `vb2_hmac()`?\n\nI\u0027m also wondering if we should use this opportunity to change the function to use `struct vb2_hash`, so it could be more in line with the current hash API (and then it probably should also get an `allow_hwcrypto` argument to pass through). Could make it `vb2_hmac_calculate(allow_hwcrypto, buf, size, key, key_size, algo, output_vb2_hash)` and `vb2_hmac_verify(allow_hwcrypto, buf, size, key, key_size, vb2_hash)` to mirror the hash API. (The existing uses in Tlcl would have to be adapted then.)",
+      "revId": "5c6bd8b1ef843b1ae2eb7e737afcc115b6294254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
