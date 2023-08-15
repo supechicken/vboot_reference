@@ -16,6 +16,24 @@
       "message": "Do we want to keep the function for a while?",
       "revId": "625ddf56496039a50ed4e44570aae5dde866da00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25bbeddc_7519ff05",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-08-15T02:11:10Z",
+      "side": 1,
+      "message": "I think we do want a way to allow fallback, but I couldn\u0027t find a good approach to implement the switch... in practice this function should be replaced by the new switch. unfortunately quirks doesn\u0027t work.\n\nmaybe revise this after our offline discussion.",
+      "parentUuid": "62176773_310321f7",
+      "revId": "625ddf56496039a50ed4e44570aae5dde866da00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
