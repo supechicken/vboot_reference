@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b337c2_a9641af6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119399
+      },
+      "writtenOn": "2023-08-16T17:33:15Z",
+      "side": 1,
+      "message": "Looks like this CL added some new build warnings are they of concern to you ?\n\n4.042 futility/updater_manifest.c:855:3: error: incompatible function pointer types initializing \u0027void (*)(struct manifest *)\u0027 with an expression of type \u0027int (struct manifest *)\u0027 [-Werror,-Wincompatible-function-pointer-types]\n4.042                 manifest_from_signer_config,\n4.042                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n4.042 futility/updater_manifest.c:858:3: error: incompatible function pointer types initializing \u0027void (*)(struct manifest *)\u0027 with an expression of type \u0027int (struct manifest *)\u0027 [-Werror,-Wincompatible-function-pointer-types]\n4.042                 manifest_from_simple_folder,\n4.042                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n4.044 2 errors generated.\n4.049 make: *** [Makefile:1165: /vboot_reference/build/futility/updater_manifest.o] Error 1\n\nI believe the main CQ has warnings disabled - but the servo docker build keeps them on - however if you are not concerned by the warnings I can remove the check from out build.",
+      "revId": "1c9b603dfdacd0929ce01cb17f0e84328c2cf9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
