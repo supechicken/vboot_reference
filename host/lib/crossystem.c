@@ -806,20 +806,29 @@ int VbSetSystemPropertyString(const char *name, const char *value)
 	return result;
 }
 
+#define VBNV_FMAP_REGION "RW_NVRAM"
+
 /**
  * Get index of the last valid VBNV entry.
  *
  * @param buf		Pointer to the buffer containing VBNV entries.
  * @param buf_sz	Size of the buffer.
  * @param vbnv_size	The size of a single VBNV entry for this device.
+ * @param corrupted	Whether the entries in the buffer are corrupted
+ *			(used entries occurring before blank ones).
  *
- * @return The index of the last valid VBNV entry on success, or -1 on
- * failure.
+ * @return The index of the last valid VBNV entry, or -1 if all entries are
+ * blank.
  */
-static int vb2_nv_index(const uint8_t *buf, uint32_t buf_sz, int vbnv_size)
+static int vb2_nv_index(const uint8_t *buf, uint32_t buf_sz, int vbnv_size,
+			bool *corrupted)
 {
 	int used_below, blank_above;
 	uint8_t blank[VB2_NVDATA_SIZE_V2];
+	bool corrupted_stub;
+	if (!corrupted)
+		corrupted = &corrupted_stub;
+	*corrupted = false;
 
 	/* The size of the buffer should be an even multiple of the
 	   VBNV size. */
@@ -843,17 +852,29 @@ static int vb2_nv_index(const uint8_t *buf, uint32_t buf_sz, int vbnv_size)
 			used_below = mid;
 	}
 
-	/* If all entries are blank, used_below will be 0. Otherwise, used_below
-	   will be the index of the last used entry. */
-	if (!memcmp(blank, &buf[used_below * vbnv_size], vbnv_size)) {
-		fprintf(stderr, "VBNV is uninitialized.\n");
-		return -1;
+	if (used_below == 0 &&
+	    !memcmp(blank, &buf[used_below * vbnv_size], vbnv_size))
+		used_below = -1;
+
+	/* All entries before used_below should be used.
+	   All entries after used_below should be blank. */
+	for (int i = 0; i < buf_sz / vbnv_size; i++) {
+		bool is_blank = !memcmp(blank, &buf[i * vbnv_size], vbnv_size);
+		if ((i < used_below && is_blank) ||
+		    (i > used_below && !is_blank)) {
+			*corrupted = true;
+			break;
+		}
 	}
+
+	if (*corrupted)
+		fprintf(stderr, "FMAP region %s is corrupted.\n",
+			VBNV_FMAP_REGION);
+	else if (used_below < 0)
+		fprintf(stderr, "VBNV is uninitialized.\n");
 
 	return used_below;
 }
-
-#define VBNV_FMAP_REGION "RW_NVRAM"
 
 int vb2_read_nv_storage_flashrom(struct vb2_context *ctx)
 {
@@ -866,7 +887,7 @@ int vb2_read_nv_storage_flashrom(struct vb2_context *ctx)
 	if (flashrom_read(&image, VBNV_FMAP_REGION))
 		return -1;
 
-	index = vb2_nv_index(image.data, image.size, vbnv_size);
+	index = vb2_nv_index(image.data, image.size, vbnv_size, NULL);
 	if (index < 0) {
 		free(image.data);
 		return -1;
@@ -883,6 +904,7 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	int current_index;
 	int next_index;
 	int vbnv_size = vb2_nv_get_size(ctx);
+	bool corrupted = false;
 
 	struct firmware_image image = {
 		.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP,
@@ -890,15 +912,16 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	if (flashrom_read(&image, VBNV_FMAP_REGION))
 		return -1;
 
-	current_index = vb2_nv_index(image.data, image.size, vbnv_size);
-	if (current_index < 0) {
+	current_index = vb2_nv_index(image.data, image.size, vbnv_size,
+				     &corrupted);
+	if (current_index < 0 && !corrupted) {
 		rv = -1;
 		goto exit;
 	}
 
 	next_index = current_index + 1;
-	if (next_index * vbnv_size == image.size) {
-		/* VBNV is full.  Erase and write at beginning. */
+	if (corrupted || next_index * vbnv_size == image.size) {
+		/* VBNV is corrupted or full.  Erase and write at beginning. */
 		memset(image.data, 0xff, image.size);
 		next_index = 0;
 	}
