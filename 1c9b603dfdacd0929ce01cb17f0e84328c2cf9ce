@@ -34,6 +34,24 @@
       "parentUuid": "a3b337c2_a9641af6",
       "revId": "1c9b603dfdacd0929ce01cb17f0e84328c2cf9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "375caa83_7ef966e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-08-17T04:48:10Z",
+      "side": 1,
+      "message": "\u003e I believe the main CQ has warnings disabled \n\nI\u0027m not sure if that\u0027s the case, but the Makefile specified -Werror and the portage build actually said nothing. I also won\u0027t see error when I do \u0027make\u0027 in the chroot, unless I override the compiler to clang (CC\u003dclang make).\n\nAnd kudos to yupingso@ - he found that this is caused by different compilers ( /usr/bin/x86_64-pc-linux-gnu-clang vs /usr/bin/clang problem), and lead to CL:4066867.",
+      "parentUuid": "a7d6efc4_03e240bc",
+      "revId": "1c9b603dfdacd0929ce01cb17f0e84328c2cf9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
