@@ -16,6 +16,24 @@
       "message": "Please update the [unit tests](https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/main/tests/vb2_host_nvdata_flashrom_tests.c) for this code.",
       "revId": "394fbfad7e667e4f0fcb62a4c42edf1bd202f4a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9613317f_6e4df6f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-17T06:28:08Z",
+      "side": 1,
+      "message": "I did look at the existing tests when writing this patch. The important edge cases seem to be already covered. What additional test cases do you want me to add?",
+      "parentUuid": "c9b67103_71d9b643",
+      "revId": "394fbfad7e667e4f0fcb62a4c42edf1bd202f4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
