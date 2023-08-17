@@ -130,6 +130,7 @@ FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
 COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
 	-Wwrite-strings -Wstrict-aliasing -Wdate-time \
+	-Wint-conversion -Wincompatible-function-pointer-types \
 	-ffunction-sections -fdata-sections \
 	-Wformat -Wno-format-security ${DEBUG_FLAGS} ${CPPFLAGS}
 
