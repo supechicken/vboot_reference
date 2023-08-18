@@ -52,6 +52,24 @@
       "parentUuid": "9613317f_6e4df6f2",
       "revId": "394fbfad7e667e4f0fcb62a4c42edf1bd202f4a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2407f8_10b044bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-18T05:14:54Z",
+      "side": 1,
+      "message": "After this was merged, I found that this patch didn\u0027t actually fix anything. See my comments in b/295040078#comment28. The only thing this patch improves is the potential inconsistency between the data seen by FW and by crossystem. IMO checking \"crossystem does binary search in the exact same way as FW\" is outside the scope of unit testing. I\u0027m also considering sharing the binary search code for coreboot/depthcharge/crossystem (see b/295040078#comment24).\n\nI\u0027ll soon upload another CL for crossystem to recover the NVRAM region. In that CL I\u0027ll definitely update the tests.",
+      "parentUuid": "e8c1beed_dd1a512e",
+      "revId": "394fbfad7e667e4f0fcb62a4c42edf1bd202f4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
