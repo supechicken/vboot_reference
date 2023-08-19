@@ -766,6 +766,9 @@ enum vb2_return_code {
 	   Deprecated with b/172339016. */
 	VB2_ERROR_DEPRECATED_EX_DIAG_TEST_INIT_FAILED,
 
+	/* Invalid parameter to TPM function */
+	VB2_ERROR_EX_TPM_SETUP_ERROR,
+
 	/**********************************************************************
 	 * Kernel loading errors
 	 *

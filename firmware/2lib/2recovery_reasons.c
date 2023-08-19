@@ -120,6 +120,8 @@ const char *vb2_get_recovery_reason_string(uint8_t code)
 		return "No bootable storage device in system";
 	/* 0x49 */ case VB2_RECOVERY_TPM_E_FAIL:
 		return "TPM error that was not fixed by reboot";
+	/* 0x4a */ case VB2_RECOVERY_TPM_SETUP_ERROR:
+		return "Passed invalid param to TPM function";
 	/* 0x50 */ case VB2_RECOVERY_RO_TPM_S_ERROR:
 		return "TPM setup error in read-only firmware";
 	/* 0x51 */ case VB2_RECOVERY_RO_TPM_W_ERROR:

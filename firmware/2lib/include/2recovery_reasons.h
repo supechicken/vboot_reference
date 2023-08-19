@@ -217,6 +217,9 @@ enum vb2_nv_recovery {
 	/* Rebooting did not correct TPM_E_FAIL or TPM_E_FAILEDSELFTEST  */
 	VB2_RECOVERY_TPM_E_FAIL = 0x49,
 
+	/* Invalid parameter to TPM function */
+	VB2_RECOVERY_TPM_SETUP_ERROR = 0x4a,
+
 	/* TPM setup error in read-only firmware */
 	VB2_RECOVERY_RO_TPM_S_ERROR = 0x50,
 
