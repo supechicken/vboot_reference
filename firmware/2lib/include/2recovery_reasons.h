@@ -283,6 +283,9 @@ enum vb2_nv_recovery {
 	/* Unspecified/unknown error in rewritable firmware */
 	VB2_RECOVERY_RW_UNSPECIFIED = 0x7f,
 
+	/* Unspecified/unknown error in rewritable firmware */
+	VB2_RECOVERY_TPM_COMM_FAILED = 0x80,
+
 
 
 	/**********************************************************************/

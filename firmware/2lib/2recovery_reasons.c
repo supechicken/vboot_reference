@@ -164,6 +164,8 @@ const char *vb2_get_recovery_reason_string(uint8_t code)
 		return "Attempt to escape from NO_BOOT mode was detected";
 	/* 0x7f */ case VB2_RECOVERY_RW_UNSPECIFIED:
 		return "Unspecified/unknown error in RW firmware";
+	/* 0x80 */ case VB2_RECOVERY_TPM_COMM_FAILED:
+		return "Failed to communicate with GSC";
 	/* 0x81 */ case VB2_RECOVERY_DEPRECATED_KE_DM_VERITY:
 		return "DM-verity error";
 	/* 0xbf */ case VB2_RECOVERY_DEPRECATED_KE_UNSPECIFIED:
