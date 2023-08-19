@@ -120,6 +120,16 @@ const char *vb2_get_recovery_reason_string(uint8_t code)
 		return "No bootable storage device in system";
 	/* 0x49 */ case VB2_RECOVERY_TPM_E_FAIL:
 		return "TPM error that was not fixed by reboot";
+	/* 0x4a */ case VB2_RECOVERY_TPM_BAD_ADDR:
+		return "GSC address not specified";
+	/* 0x4b */ case VB2_RECOVERY_TPM_COMM_FAILED:
+		return "Failed to communicate with GSC";
+	/* 0x4c */ case VB2_RECOVERY_TPM_FAILED_RST:
+		return "Failed to reset GSC";
+	/* 0x4d */ case VB2_RECOVERY_TPM_FAILED_LOC:
+		return "Failed to set locality";
+	/* 0x4e */ case VB2_RECOVERY_TPM_BAD_DID_VID:
+		return "Unrecognized DID/VID";
 	/* 0x50 */ case VB2_RECOVERY_RO_TPM_S_ERROR:
 		return "TPM setup error in read-only firmware";
 	/* 0x51 */ case VB2_RECOVERY_RO_TPM_W_ERROR:

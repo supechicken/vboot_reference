@@ -766,6 +766,21 @@ enum vb2_return_code {
 	   Deprecated with b/172339016. */
 	VB2_ERROR_DEPRECATED_EX_DIAG_TEST_INIT_FAILED,
 
+	/* TPM Address is incorrect */
+	VB2_ERROR_EX_TPM_BAD_ADDR,
+
+	/* TPM Failed comms */
+	VB2_ERROR_EX_TPM_FAILED_COMM,
+
+	/* TPM Failed reset */
+	VB2_ERROR_EX_TPM_FAILED_RST,
+
+	/* TPM Failed locality */
+	VB2_ERROR_EX_TPM_FAILED_LOC,
+
+	/* BAD TPM DID/VID */
+	VB2_ERROR_EX_TPM_BAD_DID_VID,
+
 	/**********************************************************************
 	 * Kernel loading errors
 	 *
