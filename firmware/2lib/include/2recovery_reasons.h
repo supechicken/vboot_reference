@@ -217,6 +217,24 @@ enum vb2_nv_recovery {
 	/* Rebooting did not correct TPM_E_FAIL or TPM_E_FAILEDSELFTEST  */
 	VB2_RECOVERY_TPM_E_FAIL = 0x49,
 
+	/* Invalid parameter to TPM function */
+	VB2_RECOVERY_TPM_INVALID_PARAM = 0x4a,
+
+	/* TPM Failed to communicate with AP */
+	VB2_RECOVERY_TPM_COMM_FAILED = 0x4b,
+
+	/* TPM Failed to reset */
+	VB2_RECOVERY_TPM_FAILED_RST = 0x4c,
+
+	/* TPM Failed to set locality */
+	VB2_RECOVERY_TPM_FAILED_LOC = 0x4d,
+
+	/* TPM buffer too large */
+	VB2_RECOVERY_TPM_BUFF_TOO_LARGE = 0x4e,
+
+	/* Bad DID/VID for TPM */
+	VB2_RECOVERY_TPM_BAD_DID_VID = 0x4f,
+
 	/* TPM setup error in read-only firmware */
 	VB2_RECOVERY_RO_TPM_S_ERROR = 0x50,
 
