@@ -904,6 +904,14 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	}
 
 	memcpy(&image.data[next_index * vbnv_size], ctx->nvdata, vbnv_size);
+
+	if (next_index != vb2_nv_index(image.data, image.size, vbnv_size)) {
+		/* VBNV is corrupted.  Erase and write at beginning. */
+		memset(image.data, 0xff, image.size);
+		next_index = 0;
+		memcpy(&image.data[next_index * vbnv_size], ctx->nvdata, vbnv_size);
+	}
+
 	if (flashrom_write(&image, VBNV_FMAP_REGION)) {
 		rv = -1;
 		goto exit;
