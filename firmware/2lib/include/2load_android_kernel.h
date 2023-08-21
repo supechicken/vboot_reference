@@ -32,5 +32,18 @@ extern struct android_part parts[];
 
 vb2_error_t vboot_android_reserve_buffers(struct vb2_kernel_params *params, GptData *gpt,
 	const char *slot_suffix, vb2ex_disk_handle_t disk_handle);
+/**
+ * Load and verify Android partitions (boot, init_boot, vendor_boot, pvmfw).
+ *
+ * @param ctx			Vboot context
+ * @param params		Load-kernel parameters
+ * @param gpt			Partition table from the disk
+ * @param entry			GPT entry with VBMETA partition
+ * @param disk_handle		Handle to the disk containing kernel
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2_load_android(
+	struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
+	struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle);
 
 #endif  /* VBOOT_REFERENCE_2LOAD_ANDROID_KERNEL_H_ */
