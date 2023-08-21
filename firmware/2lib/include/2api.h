@@ -636,7 +636,7 @@ struct vb2_kernel_params {
 	uint32_t bootloader_size;
 	/* UniquePartitionGuid for boot partition. */
 	uint8_t partition_guid[16];
-	/* Flags set by signer. */
+	/* Flags with kernel type. */
 	uint32_t flags;
 	/* Android vendor_boot partition offset (in bytes) in kernel_buffer. */
 	uint32_t vendor_boot_offset;
