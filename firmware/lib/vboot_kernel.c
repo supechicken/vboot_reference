@@ -19,14 +19,32 @@
 #include "load_kernel_fw.h"
 #include "vboot_api.h"
 
-enum vb2_load_partition_flags {
-	VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY = (1 << 0),
-	VB2_LOAD_PARTITION_FLAG_MINIOS = (1 << 1),
+#ifdef USE_LIBAVB
+#include "vboot_avb_ops.h"
+
+/* Size of the buffer to convey cmdline properties to bootloader */
+#define AVB_CMDLINE_BUF_SIZE 1024
+#endif
+
+/* Bytes to read at start of the boot/init_boot/vendor_boot partitions */
+#define BOOT_HDR_GKI_SIZE 4096
+
+#define LOWEST_TPM_VERSION 0xffffffff
+
+enum vboot_mode {
+	kBootRecovery = 0,  /* Recovery firmware, any dev switch position */
+	kBootNormal = 1,    /* Normal boot - kernel must be verified */
+	kBootDev = 2        /* Developer boot - self-signed kernel ok */
 };
 
 #define KBUF_SIZE 65536  /* Bytes to read at start of kernel partition */
 
-/* Minimum context work buffer size needed for vb2_load_partition() */
+enum vb2_load_kernel_partition_flags {
+	VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY = (1 << 0),
+	VB2_LOAD_PARTITION_FLAG_MINIOS = (1 << 1),
+};
+
+/* Minimum context work buffer size needed for vb2_load_chromeos_kernel_partition() */
 #define VB2_LOAD_PARTITION_WORKBUF_BYTES	\
 	(VB2_VERIFY_KERNEL_PREAMBLE_WORKBUF_BYTES + KBUF_SIZE)
 
@@ -150,7 +168,7 @@ static vb2_error_t vb2_verify_kernel_dev_key_hash(
  * @param ctx		Vboot context
  * @param kbuf		Buffer containing the vblock
  * @param kbuf_size	Size of the buffer in bytes
- * @param lpflags	Flags (one or more of vb2_load_partition_flags)
+ * @param lpflags	Flags (one or more of vb2_load_chromeos_kernel_partition_flags)
  * @param wb		Work buffer.  Must be at least
  *			VB2_VERIFY_KERNEL_PREAMBLE_WORKBUF_BYTES bytes.
  * @return VB2_SUCCESS, or non-zero error code.
@@ -339,15 +357,15 @@ static vb2_error_t vb2_verify_kernel_vblock(
 }
 
 /**
- * Load and verify a partition from the stream.
+ * Load and verify a ChromeOS kernel partition from the stream.
  *
  * @param ctx		Vboot context
  * @param params	Load-kernel parameters
  * @param stream	Stream to load kernel from
- * @param lpflags	Flags (one or more of vb2_load_partition_flags)
+ * @param lpflags	Flags (one or more of vb2_load_chromeos_kernel_partition_flags)
  * @return VB2_SUCCESS, or non-zero error code.
  */
-static vb2_error_t vb2_load_partition(
+static vb2_error_t vb2_load_chromeos_kernel_partition(
 	struct vb2_context *ctx, VbSelectAndLoadKernelParams *params,
 	VbExStream_t stream, uint32_t lpflags)
 {
@@ -470,15 +488,15 @@ static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 	const uint32_t lpflags = VB2_LOAD_PARTITION_FLAG_MINIOS;
 	vb2_error_t rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
 
-	/* Re-open stream at correct offset to pass to vb2_load_partition. */
+	/* Re-open stream at correct offset to pass to vb2_load_chromeos_kernel_partition. */
 	if (VbExStreamOpen(params->disk_handle, sector, sectors_left,
 			   &stream)) {
 		VB2_DEBUG("Unable to open disk handle.\n");
 		return rv;
 	}
 
-	rv = vb2_load_partition(ctx, params, stream, lpflags);
-	VB2_DEBUG("vb2_load_partition returned: %d\n", rv);
+	rv = vb2_load_chromeos_kernel_partition(ctx, params, stream, lpflags);
+	VB2_DEBUG("vb2_load_chromeos_kernel_partition returned: %d\n", rv);
 
 	VbExStreamClose(stream);
 
@@ -603,6 +621,123 @@ vb2_error_t LoadMiniOsKernel(struct vb2_context *ctx,
 	return rv;
 }
 
+#ifdef USE_LIBAVB
+/* njv created for conflict resolution, hardocded to not require os verification */
+static int require_official_os(struct vb2_context *ctx,
+	VbSelectAndLoadKernelParams *params)
+{
+	return 0;
+}
+
+static vb2_error_t vb2_load_avb_android_partition(
+	struct vb2_context *ctx, VbExStream_t stream,
+	VbSelectAndLoadKernelParams *params, GptData *gpt)
+{
+	char *ab_suffix = NULL;
+	AvbSlotVerifyData *verify_data = NULL;
+	AvbOps *avb_ops;
+	static const char * const boot_partitions[] = {
+		GPT_ENT_NAME_ANDROID_BOOT,
+		GPT_ENT_NAME_ANDROID_INIT_BOOT,
+		GPT_ENT_NAME_ANDROID_VENDOR_BOOT,
+		NULL,
+	};
+	AvbSlotVerifyFlags avb_flags;
+	AvbSlotVerifyResult result;
+	vb2_error_t ret;
+	int need_keyblock_valid = require_official_os(ctx, params);
+
+	ret = GptGetActiveKernelPartitionSuffix(gpt, &ab_suffix);
+	if (ret != GPT_SUCCESS) {
+		VB2_DEBUG("Unable to get kernel partition suffix\n");
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+	}
+
+	avb_ops = vboot_avb_ops_new(ctx, params, stream, gpt,
+				    params->disk_handle);
+	if (avb_ops == NULL) {
+		free(ab_suffix);
+		VB2_DEBUG("Cannot allocate memory for AVB ops\n");
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+	}
+
+	avb_flags = AVB_SLOT_VERIFY_FLAGS_NONE;
+	if (!need_keyblock_valid)
+		avb_flags |= AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR;
+
+	result = avb_slot_verify(avb_ops,
+			boot_partitions,
+			ab_suffix,
+			avb_flags,
+			AVB_HASHTREE_ERROR_MODE_RESTART_AND_INVALIDATE,
+			&verify_data);
+	vboot_avb_ops_free(avb_ops);
+	free(ab_suffix);
+
+	/* Ignore verification errors in developer mode */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		switch (result) {
+		case AVB_SLOT_VERIFY_RESULT_OK:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_ROLLBACK_INDEX:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_PUBLIC_KEY_REJECTED:
+			ret = AVB_SLOT_VERIFY_RESULT_OK;
+			break;
+		default:
+			ret = VB2_ERROR_LK_NO_KERNEL_FOUND;
+		}
+	} else {
+		ret = result;
+	}
+
+	/*
+	 * Return from this function early so that caller can try fallback to
+	 * other partition in case of error.
+	 */
+	if (ret != AVB_SLOT_VERIFY_RESULT_OK) {
+		if (verify_data != NULL)
+			avb_slot_verify_data_free(verify_data);
+		return ret;
+	}
+
+	/*
+	 * Use a buffer before the GKI header for copying avb cmdline string for
+	 * bootloader.
+	 */
+	params->vboot_cmdline_offset = params->kernel_buffer_size -
+	    BOOT_HDR_GKI_SIZE - AVB_CMDLINE_BUF_SIZE;
+
+	if ((params->init_boot_offset + params->init_boot_size) >
+	    params->vboot_cmdline_offset)
+		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
+
+	if (strlen(verify_data->cmdline) >= AVB_CMDLINE_BUF_SIZE)
+		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
+
+	strcpy((char *)(params->kernel_buffer + params->vboot_cmdline_offset),
+	       verify_data->cmdline);
+
+	/* No need for slot data, partitions should be already at correct
+	 * locations in memory since we are using "get_preloaded_partitions"
+	 * callbacks.
+	 */
+	avb_slot_verify_data_free(verify_data);
+
+	/*
+	 * Bootloader expects kernel image at the very beginning of
+	 * kernel_buffer, but verification requires boot header before
+	 * kernel. Since the verification is done, we need to move kernel
+	 * at proper address.
+	 */
+	memmove((uint8_t *)params->kernel_buffer,
+	       (uint8_t *)params->kernel_buffer + BOOT_HDR_GKI_SIZE,
+	       params->vendor_boot_offset - BOOT_HDR_GKI_SIZE);
+
+	/* Rollback protection hasn't been implemented yet. */
+	return ret;
+}
+#endif /* USE_LIBAVB */
+
 vb2_error_t LoadKernel(struct vb2_context *ctx,
 		       VbSelectAndLoadKernelParams *params,
 		       VbDiskInfo *disk_info)
@@ -665,12 +800,47 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 			lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
 		}
 
-		rv = vb2_load_partition(ctx, params, stream, lpflags);
+#ifdef USE_LIBAVB
+		rv = vb2_load_avb_android_partition(ctx, stream, params, &gpt);
+#else
+		/* Don't allow to boot android without AVB */
+		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
+#endif
 		VbExStreamClose(stream);
+
+		/* If there's an error with GKI boot,
+		 * then try to fallback to ChromeOS
+		 */
+		if (rv != VB2_SUCCESS) {
+			/* Set up and reopen the stream again */
+			stream = NULL;
+			if (VbExStreamOpen(disk_info->handle,
+					   part_start, part_size, &stream)) {
+				VB2_DEBUG("Cros fallback - unable to reopen stream\n");
+				VB2_DEBUG("Marking kernel as invalid.\n");
+				GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
+				continue;
+			}
+
+			lpflags = 0;
+			if (params->partition_number > 0) {
+				/*
+				 * If we already have a good kernel, we only needed to
+				 * look at the vblock versions to check for rollback.
+				 */
+				lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
+			}
+
+			rv = vb2_load_chromeos_kernel_partition(ctx, params, stream, lpflags);
+
+			VbExStreamClose(stream);
+		}
 
 		if (rv) {
 			VB2_DEBUG("Marking kernel as invalid (err=%x).\n", rv);
 			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
+			/* Restore original ctx->flags */
+			ctx->flags = ctx_flags;
 			continue;
 		}
 
