@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea8b363_d5eb7290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-08-21T13:52:41Z",
+      "side": 1,
+      "message": "After this is merged we will need to uprev the vboot_stable_hash in cros_common.config.  Ideally we\u0027ll move dev, staging, and production so they\u0027re all equivalent",
+      "revId": "77dc27a832ab69cbcb0a6ae4936baead2436efc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
