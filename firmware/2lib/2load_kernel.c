@@ -18,12 +18,21 @@
 #include "gpt_misc.h"
 #include "vboot_api.h"
 
+#ifdef USE_LIBAVB
+#include "vboot_avb_ops.h"
+
+/* Size of the buffer to convey cmdline properties to bootloader */
+#define AVB_CMDLINE_BUF_SIZE 1024
+#endif
+
 enum vb2_load_partition_flags {
 	VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY = (1 << 0),
 	VB2_LOAD_PARTITION_FLAG_MINIOS = (1 << 1),
 };
 
 #define KBUF_SIZE 65536  /* Bytes to read at start of kernel partition */
+/* Bytes to read at start of the boot/init_boot/vendor_boot partitions */
+#define ADK_BOOT_HDR_GKI_SIZE 4096
 
 /* Minimum context work buffer size needed for vb2_load_partition() */
 #define VB2_LOAD_PARTITION_WORKBUF_BYTES	\
@@ -338,7 +347,7 @@ static vb2_error_t vb2_verify_kernel_vblock(
 }
 
 /**
- * Load and verify a partition from the stream.
+ * Load and verify a ChromeOS kernel partition from the stream.
  *
  * @param ctx		Vboot context
  * @param params	Load-kernel parameters
@@ -346,9 +355,9 @@ static vb2_error_t vb2_verify_kernel_vblock(
  * @param lpflags	Flags (one or more of vb2_load_partition_flags)
  * @return VB2_SUCCESS, or non-zero error code.
  */
-static vb2_error_t vb2_load_partition(
+static vb2_error_t vb2_load_chromeos_kernel_partition(
 	struct vb2_context *ctx, struct vb2_kernel_params *params,
-	VbExStream_t stream, uint32_t lpflags)
+	VbExStream_t stream, uint32_t lpflags, uint32_t *kernel_version)
 {
 	uint32_t read_ms = 0, start_ts;
 	struct vb2_workbuf wb;
@@ -460,6 +469,199 @@ static vb2_error_t vb2_load_partition(
 	return VB2_SUCCESS;
 }
 
+#ifdef USE_LIBAVB
+static vb2_error_t vb2_load_avb_android_partition(
+	struct vb2_context *ctx, struct vb2_kernel_params *params,
+	VbExStream_t stream, GptData *gpt, vb2ex_disk_handle_t disk_handle)
+{
+	char *ab_suffix = NULL;
+	AvbSlotVerifyData *verify_data = NULL;
+	AvbOps *avb_ops;
+	static const char * const boot_partitions[] = {
+		GPT_ENT_NAME_ANDROID_BOOT,
+		GPT_ENT_NAME_ANDROID_INIT_BOOT,
+		GPT_ENT_NAME_ANDROID_VENDOR_BOOT,
+		NULL
+	};
+	AvbSlotVerifyFlags avb_flags;
+	AvbSlotVerifyResult result;
+	vb2_error_t ret;
+
+	ret = GptGetActiveKernelPartitionSuffix(gpt, &ab_suffix);
+	if (ret != GPT_SUCCESS) {
+		VB2_DEBUG("Unable to get kernel partition suffix\n");
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+	}
+
+	avb_ops = vboot_avb_ops_new(ctx, params, stream, gpt, disk_handle);
+	if (avb_ops == NULL) {
+		free(ab_suffix);
+		VB2_DEBUG("Cannot allocate memory for AVB ops\n");
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+	}
+
+	avb_flags = AVB_SLOT_VERIFY_FLAGS_NONE;
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
+		avb_flags |= AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR;
+
+	result = avb_slot_verify(avb_ops,
+			boot_partitions,
+			ab_suffix,
+			avb_flags,
+			0,
+			&verify_data);
+	vboot_avb_ops_free(avb_ops);
+	free(ab_suffix);
+
+	/* Ignore verification errors in developer mode */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		switch (result) {
+		case AVB_SLOT_VERIFY_RESULT_OK:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_ROLLBACK_INDEX:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_PUBLIC_KEY_REJECTED:
+			ret = AVB_SLOT_VERIFY_RESULT_OK;
+			break;
+		default:
+			ret = VB2_ERROR_LK_NO_KERNEL_FOUND;
+		}
+	} else {
+		ret = result;
+	}
+
+	/*
+	 * Return from this function early so that caller can try fallback to
+	 * other partition in case of error.
+	 */
+	if (ret != AVB_SLOT_VERIFY_RESULT_OK) {
+		if (verify_data != NULL)
+			avb_slot_verify_data_free(verify_data);
+		return ret;
+	}
+
+	/*
+	 * Use a buffer before the GKI header for copying avb cmdline string for
+	 * bootloader.
+	 */
+	params->vboot_cmdline_offset = params->kernel_buffer_size -
+	    ADK_BOOT_HDR_GKI_SIZE - AVB_CMDLINE_BUF_SIZE;
+
+	if ((params->init_boot_offset + params->init_boot_size) >
+	    params->vboot_cmdline_offset)
+		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
+
+	if (strlen(verify_data->cmdline) >= AVB_CMDLINE_BUF_SIZE)
+		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
+
+	strcpy((char *)(params->kernel_buffer + params->vboot_cmdline_offset),
+	       verify_data->cmdline);
+
+	/* No need for slot data, partitions should be already at correct
+	 * locations in memory since we are using "get_preloaded_partitions"
+	 * callbacks.
+	 */
+	avb_slot_verify_data_free(verify_data);
+
+	/*
+	 * Bootloader expects kernel image at the very beginning of
+	 * kernel_buffer, so we need to move stuff around after images
+	 * are verified.
+	 *
+	 * Current state:
+	 * -----KERNEL_BUFFER_START-----
+	 *  /
+	 * | GKI_BOOT_HEADER
+	 *  \
+	 *  /
+	 * | kernel image
+	 *  \
+	 * -----VENDOR_BOOT_OFFSET-----
+	 *  /
+	 * | vendor_boot
+	 *  \
+	 *  /
+	 * | init_boot
+	 *  \
+	 * -----KERNEL_BUFFER_END - (AVB_CMDLINE_BUF_SIZE + BOOT_HEADER_GKI_SIZE)
+	 *  /
+	 * | avb cmdline
+	 *  \
+	 *  /
+	 * | EMPTY
+	 *  \
+	 * -----KERNEL_BUFFER_END
+	 */
+	/*
+	 * Expected state:
+	 * -----KERNEL_BUFFER_START-----
+	 *  /
+	 * | kernel image
+	 *  \
+	 * -----VENDOR_BOOT_OFFSET-----
+	 *  /
+	 * | vendor_boot
+	 *  \
+	 *  /
+	 * | init_boot
+	 *  \
+	 * -----KERNEL_BUFFER_END - (AVB_CMDLINE_BUF_SIZE + BOOT_HEADER_GKI_SIZE)
+	 *  /
+	 * | avb cmdline
+	 *  \
+	 *  /
+	 * | GKI_BOOT_HEADER
+	 *  \
+	 * -----KERNEL_BUFFER_END
+	 */
+
+	memcpy((uint8_t *)params->kernel_buffer + params->kernel_buffer_size -
+	       ADK_BOOT_HDR_GKI_SIZE,
+	       (uint8_t *)params->kernel_buffer,
+	       ADK_BOOT_HDR_GKI_SIZE);
+	memmove((uint8_t *)params->kernel_buffer,
+	       (uint8_t *)params->kernel_buffer + ADK_BOOT_HDR_GKI_SIZE,
+	       params->vendor_boot_offset - ADK_BOOT_HDR_GKI_SIZE);
+
+	return ret;
+}
+#endif /* USE_LIBAVB */
+
+/**
+ * @param ctx			Vboot context
+ * @param params		Load-kernel parameters
+ * @param stream		Stream to load kernel from
+ * @param gpt			Pointer to GPT on the boot medium
+ * @param lpflags		Flags (one or more of vb2_load_partition_flags)
+ * @param disk_handle		Handle to operate on the boot disk
+ * @param kernel_version	The kernel version of this partition.
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+static vb2_error_t vb2_load_partition(struct vb2_context *ctx,
+				      struct vb2_kernel_params *params,
+				      VbExStream_t stream, GptData *gpt,
+				      uint32_t lpflags,
+				      vb2ex_disk_handle_t disk_handle,
+				      uint32_t *kernel_version)
+{
+	vb2_error_t ret;
+
+	if (ctx->flags & VB2_CONTEXT_ANDROID_GKI_MODE) {
+#ifdef USE_LIBAVB
+		ret = vb2_load_avb_android_partition(ctx, params, stream, gpt,
+						     disk_handle);
+#else
+		/* Don't allow to boot android without AVB */
+		ret = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
+#endif
+	} else {
+		ret = vb2_load_chromeos_kernel_partition(ctx, params,
+							 stream, lpflags,
+							 kernel_version);
+	}
+
+	return ret;
+}
+
 static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 				     struct vb2_kernel_params *params,
 				     struct vb2_disk_info *disk_info,
@@ -476,7 +678,10 @@ static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 		return rv;
 	}
 
-	rv = vb2_load_partition(ctx, params, stream, lpflags);
+	/* We are looking for ChromeOS partitions */
+	ctx->flags &= ~VB2_CONTEXT_ANDROID_GKI_MODE;
+	rv = vb2_load_partition(ctx, params, stream, NULL, lpflags,
+				disk_info->handle, &kernel_version);
 	VB2_DEBUG("vb2_load_partition returned: %d\n", rv);
 
 	VbExStreamClose(stream);
@@ -668,7 +873,9 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
 		}
 
-		rv = vb2_load_partition(ctx, params, stream, lpflags);
+		uint32_t kernel_version = 0;
+		rv = vb2_load_partition(ctx, params, stream, &gpt, lpflags,
+					disk_info->handle, &kernel_version);
 		VbExStreamClose(stream);
 
 		if (rv) {
