@@ -871,7 +871,7 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 {
 	int rv = 0;
 	int current_index;
-	int next_index;
+	int write_index;
 	int vbnv_size = vb2_nv_get_size(ctx);
 
 	struct firmware_image image = {
@@ -881,19 +881,26 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 		return -1;
 
 	current_index = vb2_nv_index(image.data, image.size, vbnv_size);
-	if (current_index < 0) {
-		rv = -1;
-		goto exit;
-	}
 
-	next_index = current_index + 1;
-	if (next_index * vbnv_size == image.size) {
-		/* VBNV is full.  Erase and write at beginning. */
-		memset(image.data, 0xff, image.size);
-		next_index = 0;
-	}
+	do {
+		if (current_index < 0) {
+			rv = -1;
+			goto exit;
+		}
 
-	memcpy(&image.data[next_index * vbnv_size], ctx->nvdata, vbnv_size);
+		write_index = current_index + 1;
+		if (write_index * vbnv_size == image.size) {
+			/* VBNV is full.  Erase and write at beginning. */
+			memset(image.data, 0xff, image.size);
+			write_index = 0;
+		}
+
+		memcpy(&image.data[write_index * vbnv_size], ctx->nvdata, vbnv_size);
+
+		/* Make sure we will read at the new writen location. */
+		current_index = vb2_nv_index(image.data, image.size, vbnv_size);
+	} while (write_index != current_index);
+
 	if (flashrom_write(&image, VBNV_FMAP_REGION)) {
 		rv = -1;
 		goto exit;
