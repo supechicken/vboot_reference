@@ -472,7 +472,7 @@ ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
 # We are adding libavb objs to FWLIB_OBJS thus need to include this file here.
 # Since libavb sources are stored in external library, this needs to be moved
 # into expected location beforehand.
-ifneq (${USE_AVB},)
+ifneq ($(filter-out 0,${USE_AVB}),)
 include firmware/avb/Makefile
 FWLIB_SRCS += \
 	firmware/2lib/2load_android_kernel.c
