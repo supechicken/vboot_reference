@@ -19,6 +19,41 @@ size_t CalculateEntriesSectors(GptHeader* h, uint32_t sector_bytes)
 	return ret;
 }
 
+char *JoinStr(const char *a, const char *b)
+{
+	size_t len = strlen(a) + strlen(b) + 1;
+	char *ret = (char *)malloc(len);
+	if (ret == NULL)
+		return NULL;
+
+	strcpy(ret, a);
+	strcpy(&ret[strlen(a)], b);
+	return ret;
+}
+
+int AsciiToUCS2(const uint8_t *ascii_data,
+	       uint16_t *ucs2_data,
+	       size_t ucs2_data_capacity_num_bytes)
+{
+	uint32_t idx8 = 0;
+	uint32_t idx2 = 0;
+
+	if (!ascii_data || !ucs2_data)
+		return -1;
+
+	do {
+		if (idx2 >= ucs2_data_capacity_num_bytes)
+			break;
+
+		ucs2_data[idx2] = ((uint16_t)ascii_data[idx8] & 0x00FF);
+		idx8++;
+		idx2++;
+	} while (ascii_data[idx8] != 0);
+
+	/* Success */
+	return idx2;
+}
+
 int CheckParameters(GptData *gpt)
 {
 	/* Only support 512-byte or larger sectors that are a power of 2 */
