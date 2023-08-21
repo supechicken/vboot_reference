@@ -613,7 +613,7 @@ struct vb2_kernel_params {
 	uint32_t bootloader_size;
 	/* UniquePartitionGuid for boot partition. */
 	uint8_t partition_guid[16];
-	/* Flags set by signer. */
+	/* Flags with kernel type. */
 	uint32_t flags;
 	/* Size of Android boot partition (in bytes). */
 	size_t android_boot_size;
@@ -629,6 +629,8 @@ struct vb2_kernel_params {
 	char *vboot_cmdline_buffer;
 	/* Size of the region with kernel cmdline parameters. */
 	uint32_t vboot_cmdline_size;
+	/* String with active partition suffix ('_a' or '_b') */
+	const char *current_android_slot_suffix;
 };
 
 /*****************************************************************************/

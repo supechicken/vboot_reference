@@ -16,6 +16,35 @@
 #include "vb2_android_bootimg.h"
 #include "vboot_api.h"
 
+#define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate="
+
+static int vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
+{
+	/* Map AVB error into VB2 */
+	switch (avb_error) {
+	case AVB_SLOT_VERIFY_RESULT_OK:
+		return VB2_SUCCESS;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_OOM:
+		return VB2_ERROR_AVB_OOM;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_IO:
+		return VB2_ERROR_AVB_ERROR_IO;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION:
+		return VB2_ERROR_AVB_ERROR_VERIFICATION;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_ROLLBACK_INDEX:
+		return VB2_ERROR_AVB_ERROR_ROLLBACK_INDEX;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_PUBLIC_KEY_REJECTED:
+		return VB2_ERROR_AVB_ERROR_PUBLIC_KEY_REJECTED;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_INVALID_METADATA:
+		return VB2_ERROR_AVB_ERROR_INVALID_METADATA;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_UNSUPPORTED_VERSION:
+		return VB2_ERROR_AVB_ERROR_UNSUPPORTED_VERSION;
+	case AVB_SLOT_VERIFY_RESULT_ERROR_INVALID_ARGUMENT:
+		return VB2_ERROR_AVB_ERROR_INVALID_ARGUMENT;
+	default:
+		return VB2_ERROR_AVB_ERROR_VERIFICATION;
+	}
+}
+
 static vb2_error_t vb2_load_android_partition(GptData *gpt, enum GptPartition part,
 					      const char *suffix, uint8_t *buffer,
 					      size_t buffer_size, vb2ex_disk_handle_t dh,
@@ -141,4 +170,118 @@ static int vboot_preload_partition(struct vb2_kernel_params *params, GptData *gp
 	buf += bytes_used;
 
 	return 0;
+}
+
+static vb2_error_t vb2_load_pvmfw(struct vb2_kernel_params *params, GptData *gpt,
+				  vb2ex_disk_handle_t disk_handle)
+{
+	return vb2_load_android_partition(gpt, GPT_ANDROID_PVMFW,
+					  params->current_android_slot_suffix,
+					  params->pvmfw_buffer,
+					  params->pvmfw_buffer_size,
+					  disk_handle, &params->pvmfw_size);
+
+}
+
+vb2_error_t vb2_load_android(struct vb2_context *ctx, struct vb2_kernel_params *params,
+			     GptData *gpt, vb2ex_disk_handle_t disk_handle)
+{
+	AvbSlotVerifyData *verify_data = NULL;
+	AvbOps *avb_ops;
+	AvbSlotVerifyFlags avb_flags;
+	AvbSlotVerifyResult result;
+	vb2_error_t ret;
+	char *verified_str;
+	const char *boot_partitions[] = {
+		GptPartitionNames[GPT_ANDROID_BOOT],
+		GptPartitionNames[GPT_ANDROID_INIT_BOOT],
+		GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
+		NULL,
+	};
+	bool need_verification = vb2_need_kernel_verification(ctx);
+
+	/* Update flags to mark loaded GKI image */
+	params->flags &= ~VB2_KERNEL_TYPE_MASK;
+	params->flags |= VB2_KERNEL_TYPE_BOOTIMG;
+
+	ret = vboot_preload_partition(params, gpt, disk_handle);
+	if (ret != VB2_SUCCESS) {
+		VB2_DEBUG("Cannot preload android partitions\n");
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+	}
+
+	avb_ops = vboot_avb_ops_new(ctx, params, gpt, disk_handle);
+	if (avb_ops == NULL) {
+		VB2_DEBUG("Cannot allocate memory for AVB ops\n");
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+	}
+
+	avb_flags = AVB_SLOT_VERIFY_FLAGS_NONE;
+	if (!need_verification)
+		avb_flags |= AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR;
+
+	result = avb_slot_verify(avb_ops,
+			boot_partitions,
+			params->current_android_slot_suffix,
+			avb_flags,
+			AVB_HASHTREE_ERROR_MODE_RESTART_AND_INVALIDATE,
+			&verify_data);
+
+	/* Ignore verification errors in developer mode */
+	if (!need_verification && ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		switch (result) {
+		case AVB_SLOT_VERIFY_RESULT_OK:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_ROLLBACK_INDEX:
+		case AVB_SLOT_VERIFY_RESULT_ERROR_PUBLIC_KEY_REJECTED:
+			result = AVB_SLOT_VERIFY_RESULT_OK;
+			break;
+		default:
+			result = AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION;
+			break;
+		}
+	}
+
+	/* Map AVB return code into VB2 code */
+	ret = vb2_map_libavb_errors(result);
+
+	/*
+	 * Return from this function early so that caller can try fallback to
+	 * other partition in case of error.
+	 */
+	if (ret != VB2_SUCCESS) {
+		if (verify_data != NULL)
+			avb_slot_verify_data_free(verify_data);
+		return ret;
+	}
+
+	/* TODO(b/335901799): Add support for marking verifiedbootstate yellow */
+	/* Possible values for this property are "yellow", "orange" and "green"
+	 * so allocate 6 bytes plus 1 byte for NULL terminator.
+	 */
+	verified_str = malloc(strlen(VERIFIED_BOOT_PROPERTY_NAME) + 7);
+	if (verified_str == NULL)
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+	sprintf(verified_str, "%s%s", VERIFIED_BOOT_PROPERTY_NAME,
+		(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
+
+	if ((strlen(verify_data->cmdline) + strlen(verified_str) + 1) >=
+	    params->vboot_cmdline_size)
+		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
+
+	strcpy(params->vboot_cmdline_buffer, verify_data->cmdline);
+
+	/* Append verifiedbootstate property to cmdline */
+	strcat(params->vboot_cmdline_buffer, " ");
+	strcat(params->vboot_cmdline_buffer, verified_str);
+
+	free(verified_str);
+
+	/* No need for slot data, partitions should be already at correct
+	 * locations in memory since we are using "get_preloaded_partitions"
+	 * callbacks.
+	 */
+	avb_slot_verify_data_free(verify_data);
+
+	return ret;
 }
