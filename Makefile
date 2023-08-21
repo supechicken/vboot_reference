@@ -40,6 +40,7 @@ SRCDIR := $(shell pwd)
 export SRCDIR
 BUILD = ${SRCDIR}/build
 export BUILD
+LIBAVB_SRCDIR ?= firmware/avb/libavb
 
 # Stuff for 'make install'
 INSTALL = install
@@ -433,8 +434,35 @@ FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o}
 TLCL_OBJS = ${TLCL_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
 COMMONLIB_SRCS = \
 	host/lib/fmap.c \
+||||||| BASE
+# Maintain behaviour of default on.
+USE_FLASHROM ?= 1
+
+ifneq ($(filter-out 0,${USE_FLASHROM}),)
+$(info building with libflashrom support)
+FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
+COMMONLIB_SRCS += \
+=======
+# We are adding libavb objs to FWLIB_OBJS thus need to include this file here.
+# Since libavb sources are stored in external library, this needs to be moved
+# into expected location beforehand.
+ifneq ($(filter-out 0,${USE_AVB}),)
+include firmware/avb/Makefile
+FWLIB_SRCS += \
+	firmware/2lib/2load_android_kernel.c
+endif
+
+# Maintain behaviour of default on.
+USE_FLASHROM ?= 1
+
+ifneq ($(filter-out 0,${USE_FLASHROM}),)
+$(info building with libflashrom support)
+FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
+COMMONLIB_SRCS += \
+>>>>>>> CHANGE (076d4d 2lib: Load and verify android partitions)
 	host/lib/flashrom.c \
 	host/lib/subprocess.c
 
