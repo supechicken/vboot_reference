@@ -16,6 +16,24 @@
       "message": "After this is merged we will need to uprev the vboot_stable_hash in cros_common.config.  Ideally we\u0027ll move dev, staging, and production so they\u0027re all equivalent",
       "revId": "77dc27a832ab69cbcb0a6ae4936baead2436efc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbcb0d3_dd1b799e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-08-21T13:53:22Z",
+      "side": 1,
+      "message": "The dry run/CQ won\u0027t pass for where these values are used until we have done so",
+      "parentUuid": "2ea8b363_d5eb7290",
+      "revId": "77dc27a832ab69cbcb0a6ae4936baead2436efc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
