@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5037a9ae_912ebe37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-22T22:56:00Z",
+      "side": 1,
+      "message": "The error types are about TPM setup parameters, not communication errors, so it sounds like the commit message needs to be updated to match.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67f8018_b3eace7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2023-08-22T22:56:00Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something, but how is the new error message output when there wasn\u0027t any code added to output it (just the new enum values)?",
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
