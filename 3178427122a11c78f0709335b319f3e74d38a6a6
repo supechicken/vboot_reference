@@ -39,6 +39,52 @@
       "message": "Maybe I\u0027m missing something, but how is the new error message output when there wasn\u0027t any code added to output it (just the new enum values)?",
       "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d84af5_36e7b083",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-08-22T22:56:21Z",
+      "side": 1,
+      "message": "Just noticed this duplicate recovery reason. Also verstage is in RO (on x86 platforms) and it seems perfect to re-use this. I don\u0027t see it being used elsewhere.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 49
+      },
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14890b85_b045986c",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-08-22T22:56:21Z",
+      "side": 1,
+      "message": "Same comment as earlier.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 37
+      },
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
