@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb040598_e40d177e",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-22T23:29:57Z",
+      "side": 1,
+      "message": "Don\u0027t we just want to go further and just linearly scan the whole thing? I mean we loaded it all from flash already anyway, that should be the dominant part in terms of execution time, so adding this is basically free...\n\nIdeally I think we would want to:\n\n1. use a form of modified binary search to find the second-to-last index (so that if the firmware just did a find-and-update we still find the one it just wrote)\n2. treat the index right after that as the current index for reading\n3. do an exhaustive search over the whole space to check for corruption\n4. if corrupt, erase everything and write the one entry we saved as \"current\"",
+      "revId": "d2708717cdc8330220f573de4afc5985677e8992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
