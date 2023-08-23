@@ -88,6 +88,24 @@
       "parentUuid": "a99bc051_a8ef84b9",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf410955_5bb590bb",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-23T21:30:18Z",
+      "side": 1,
+      "message": "I think I agree with Yi Chou here, isn\u0027t the PCR option still preferable? One command less is still 33% faster for the feature as a whole (and we already have a lot more GSC communication overhead than we want to to begin with). We\u0027ve gotten up to 5 out of 16 PCRs in 10+ years of ChromeOS, I don\u0027t think we\u0027re in that much of a danger of running out? (Besides, does the TPM spec even mandate an exact number of PCRs? I think we could just add more if we ever needed to?)\n\nThe other problem with using NVRAM is that we really need PCR-style behavior and guarantees here, and while we could try to emulate that with NVRAM APIs it would be more complicated and more likely we\u0027d make a mistake (e.g. we need to make sure both versions are stored separately in a way that the firmware can no longer overwrite the firmware version at the point it writes the kernel version).\n\nThe GSC needs custom code to capture this either way, does it make that much of a difference whether we hook into PCR_Extend or NV_Write?",
+      "parentUuid": "49e129e2_faa3d70d",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
