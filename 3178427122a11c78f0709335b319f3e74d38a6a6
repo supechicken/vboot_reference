@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc3cb4a_76ff24bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-08-23T00:15:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5037a9ae_912ebe37",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a67f8018_b3eace7c",
@@ -37,6 +61,41 @@
       "writtenOn": "2023-08-22T22:56:00Z",
       "side": 1,
       "message": "Maybe I\u0027m missing something, but how is the new error message output when there wasn\u0027t any code added to output it (just the new enum values)?",
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c67c5a_d1b4b428",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-08-23T00:15:45Z",
+      "side": 1,
+      "message": "The output text comes from here: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4794847/9/firmware/2lib/2recovery_reasons.c#124",
+      "parentUuid": "a67f8018_b3eace7c",
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "897928bb_0afde7c6",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-08-23T00:15:45Z",
+      "side": 1,
+      "message": "Output Path",
       "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0231aa4c_437c51b9",
+        "filename": "firmware/2lib/2recovery_reasons.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-08-23T00:15:45Z",
+      "side": 1,
+      "message": "Acknowledged.  This is just on the Skyrim fw branch, but we would likely upstream after we can clean it up and get it merged.  We started here to try to get through fw qual as quickly as possible.  It\u0027s being used in coreboot here: crrev/c/4795370",
+      "parentUuid": "35d84af5_36e7b083",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 49
+      },
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14890b85_b045986c",
@@ -101,6 +184,30 @@
       "writtenOn": "2023-08-22T22:56:21Z",
       "side": 1,
       "message": "Same comment as earlier.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 37
+      },
+      "revId": "3178427122a11c78f0709335b319f3e74d38a6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04843ae_bdb7fe79",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2023-08-23T00:15:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "14890b85_b045986c",
       "range": {
         "startLine": 219,
         "startChar": 0,
