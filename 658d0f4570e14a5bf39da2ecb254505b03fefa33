@@ -52,6 +52,24 @@
       "parentUuid": "05ab8f33_11c982bd",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a99bc051_a8ef84b9",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-08-23T02:29:04Z",
+      "side": 1,
+      "message": "The downside of write + write lock is the extra two TPM commands in the boot flow.\nIs that acceptable from the fw point of view?",
+      "parentUuid": "8d155c3e_b4d5699a",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
