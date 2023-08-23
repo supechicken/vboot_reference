@@ -16,6 +16,24 @@
       "message": "I\u0027m honestly wondering if there\u0027s a point in hashing this, as opposed to just putting the raw version number in the lowest 4 bytes and zeroing the rest. I know that\u0027s how it\u0027s intended to be used, but it\u0027s also intended to be used with much larger data buffers, and it shouldn\u0027t make a difference (since the process of extension itself hashes it again anyway). I think firing up the SHA algorithm again here would just be a waste of time (although it\u0027s probably pretty fast for one block).\n\n+Andrey, what do you think?",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ab8f33_11c982bd",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-08-23T00:49:33Z",
+      "side": 1,
+      "message": "1) yeah, I\u0027d just extend the \u002700..00\u003cver\u003e\u0027 value instead of hashing it. all those level of indirection only complicate things w/o adding to security.\n2) I know it\u0027s a bit late, but to avoid growing the compatibility gap between CrOS use of PCRs and other systems use of PCRs, how about we use NV spaces with TPMA_NV_EXTEND/TPM_NT_EXTEND + TPMA_NV_CLEAR_STCLEAR attributes (+ I suggest TPMA_NV_ORDERLY to avoid committing it to flash), which behave like PCRs. But instead of spending one of 16 PCR indices we spend just one of 2^24 nv indices, and avoid potential compatibility issues.\nthat would require creating those spaces with platform auth if they are not created yet, but we have code for that already.",
+      "parentUuid": "0938cc2d_2ddee614",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
