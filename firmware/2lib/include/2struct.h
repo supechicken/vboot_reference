@@ -512,10 +512,10 @@ _Static_assert(EXPECTED_VB2_FW_PREAMBLE_SIZE == sizeof(struct vb2_fw_preamble),
 /* Flags for vb2_kernel_preamble.flags */
 /* Kernel image type = bits 1:0 */
 #define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_MASK 0x00000003
-#define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_CROS      0
-#define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_BOOTIMG   1
-#define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_MULTIBOOT 2
-/* Kernel type 3 is reserved for future use */
+#define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_CROS        0
+#define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_BOOTIMG     1
+#define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_MULTIBOOT   2
+#define VB2_KERNEL_PREAMBLE_KERNEL_TYPE_ANDROID_GKI 3
 
 /*
  * Preamble block for kernel, version 2.2
@@ -597,7 +597,8 @@ struct vb2_kernel_preamble {
 	 * [31:2] - Reserved (for future use)
 	 * [1:0]  - Kernel image type (0b00 - CrOS,
 	 *                             0b01 - bootimg,
-	 *                             0b10 - multiboot)
+	 *                             0b10 - multiboot,
+	 *                             0b11 - Android GKI)
 	 */
 	uint32_t flags;
 } __attribute__((packed));
