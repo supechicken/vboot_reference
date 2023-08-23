@@ -34,6 +34,24 @@
       "parentUuid": "0938cc2d_2ddee614",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d155c3e_b4d5699a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-08-23T00:55:59Z",
+      "side": 1,
+      "message": "and then :) if we switch to nv spaces, why do we even care about PCR-like-extending model and TPMA_NV_EXTEND/TPM_NT_EXTEND. just use TPMA_NV_WRITE_STCLEAR + TPMA_NV_CLEAR_STCLEAR and do Write+WriteLock (we also have code for that). actually, even TPMA_NV_CLEAR_STCLEAR is optional. just overwrite on every boot and then Lock. instead of digests, use version as-is. GSC code then can just take the version from this field and insert into the cert as-is (w/o the need to capture the extended value at PCR_Write or without the need for cert consumer to track digest-to-version mapping if the want to enforce version\u003e\u003dX policy).",
+      "parentUuid": "05ab8f33_11c982bd",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
