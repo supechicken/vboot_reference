@@ -70,6 +70,24 @@
       "parentUuid": "8d155c3e_b4d5699a",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e129e2_faa3d70d",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-08-23T02:36:11Z",
+      "side": 1,
+      "message": "for kernel version we technically could do just PPWRITE and since we lock platform hierarchy before jumping to kernel, nobody will be able to change it.\nessentially, use exactly the approach we use for antirollback spaces:\n- rely on WRITE_STCLEAR and WriteLock for fw antirollback (and now fw version)\n- rely on PPWRITE and hierarchy disable for kernel antirollback (and now kernel version)",
+      "parentUuid": "a99bc051_a8ef84b9",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
