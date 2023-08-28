@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0050a6_af5d9057",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-28T03:51:14Z",
+      "side": 1,
+      "message": "Replying to jwerner\u0027s comments on CL:4794523\n\n\u003e Ideally I think we would want to:\n\u003e\n\u003e 1. use a form of modified binary search to find the second-to-last index (so that if the firmware just did a find-and-update we still find the one it just wrote)\n\u003e 2. treat the index right after that as the current index for reading\n\u003e 3. do an exhaustive search over the whole space to check for corruption\n\u003e 4. if corrupt, erase everything and write the one entry we saved as \"current\"",
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
