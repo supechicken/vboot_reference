@@ -16,6 +16,24 @@
       "message": "Replying to jwerner\u0027s comments on CL:4794523\n\n\u003e Ideally I think we would want to:\n\u003e\n\u003e 1. use a form of modified binary search to find the second-to-last index (so that if the firmware just did a find-and-update we still find the one it just wrote)\n\u003e 2. treat the index right after that as the current index for reading\n\u003e 3. do an exhaustive search over the whole space to check for corruption\n\u003e 4. if corrupt, erase everything and write the one entry we saved as \"current\"",
       "revId": "16bb77f459714506edba2d18da014064acc29c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bafc41_864f8b66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-28T03:58:46Z",
+      "side": 1,
+      "message": "I don\u0027t think step 1 is theoretically possible. Consider the corrupted case where there\u0027s only one blank entry left. Suppose firmware is able to find it and write to it. Then the whole region becomes used when crossystem sees it, and crossystem won\u0027t be able to tell which entry was last written by firmware.\n\nIf we really want to prevent that case (firmware appends a new entry, but crossystem won\u0027t be able to find it), IMO we should check it in firmware instead. However I think that\u0027s a bit over-skilled. Doing a full erase for a corrupted RW_NVRAM seems good enough to me.",
+      "parentUuid": "1e0050a6_af5d9057",
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
