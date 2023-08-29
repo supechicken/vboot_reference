@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5e05ca_79201833",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-29T18:25:06Z",
+      "side": 1,
+      "message": "I guess that\u0027s fair. It probably doesn\u0027t matter that much whether we can always perfectly detect the right slot as long as we recover from corruption aggressively (then hopefully we are very unlikely to even get into the situation of finding the wrong slot).",
+      "parentUuid": "a7bafc41_864f8b66",
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa32dd8_b632b61d",
