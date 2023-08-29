@@ -34,6 +34,63 @@
       "parentUuid": "1e0050a6_af5d9057",
       "revId": "16bb77f459714506edba2d18da014064acc29c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa32dd8_b632b61d",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-29T18:22:19Z",
+      "side": 1,
+      "message": "I find it a bit weird to include this check in this function to be honest, I feel like it doesn\u0027t really have anything to do with the normal index-finding operation. I feel like it would make more sense to have a separate \"check for corruption\" function that\u0027s only called from vb2_write_nv_storage_flashrom(), and that just checks if it ever flips from zero to non-zero in linear search.",
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9854aaaf_ded2bc31",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-29T18:22:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure there\u0027s a point in checking and printing this if we\u0027re not going to do anything about it on read?",
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7ed738_014d55f0",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-08-29T18:22:19Z",
+      "side": 1,
+      "message": "BTW do we have anything to ensure that ctx-\u003envdata is actually initialized here? I guess it always worked that way, but it seems a bit brittle if we just trust that vb2_read_nv_storage_flashrom() has always been called before vb2_write_nv_storage_flashrom() (should maybe at least assert that VB2_SD_STATUS_NV_INIT is set).",
+      "range": {
+        "startLine": 922,
+        "startChar": 40,
+        "endLine": 922,
+        "endChar": 51
+      },
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
