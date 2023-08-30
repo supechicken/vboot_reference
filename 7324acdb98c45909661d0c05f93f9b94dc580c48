@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a012e63e_dc78eaa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-30T07:41:21Z",
+      "side": 1,
+      "message": "geralt-cq and trogdor-zephyr-cq failed due to CL:4811772, which changes EC RW_FWID padding from 0x00 to 0xff.",
+      "revId": "7324acdb98c45909661d0c05f93f9b94dc580c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
