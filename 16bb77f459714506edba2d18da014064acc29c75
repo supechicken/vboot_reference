@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51118c02_5e11c3ff",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-30T02:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa32dd8_b632b61d",
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9854aaaf_ded2bc31",
@@ -88,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f9730d_85828dbe",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-30T02:33:34Z",
+      "side": 1,
+      "message": "I thought it would be useful for FAFT test to grep the warning message and perform some debugging steps. Maybe that\u0027s over-skilled.",
+      "parentUuid": "9854aaaf_ded2bc31",
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d7ed738_014d55f0",
@@ -101,6 +137,30 @@
       "writtenOn": "2023-08-29T18:22:19Z",
       "side": 1,
       "message": "BTW do we have anything to ensure that ctx-\u003envdata is actually initialized here? I guess it always worked that way, but it seems a bit brittle if we just trust that vb2_read_nv_storage_flashrom() has always been called before vb2_write_nv_storage_flashrom() (should maybe at least assert that VB2_SD_STATUS_NV_INIT is set).",
+      "range": {
+        "startLine": 922,
+        "startChar": 40,
+        "endLine": 922,
+        "endChar": 51
+      },
+      "revId": "16bb77f459714506edba2d18da014064acc29c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a840a9_ead66bb3",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-08-30T02:33:34Z",
+      "side": 1,
+      "message": "Hmm I think that\u0027s fine. Our coreboot and depthcharge functions don\u0027t check that either. `vb2_write_nv_storage_flashrom` should be considered arch-dependent implementation for `vb2_set_nv_storage`, and therefore should be called only from `vb2_set_nv_storage`.",
+      "parentUuid": "2d7ed738_014d55f0",
       "range": {
         "startLine": 922,
         "startChar": 40,
