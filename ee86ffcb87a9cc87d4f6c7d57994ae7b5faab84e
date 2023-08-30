@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "174fc916_31bcbf4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2023-08-30T05:14:09Z",
+      "side": 1,
+      "message": "Based on the comments in the upstream code - it seems this recovery error code is not required - https://review.coreboot.org/c/coreboot/+/77491/comment/f19e627f_01eb1310\n\nJon is working on updating the TPM_E namespace with any appropriate errors and handle everything within coreboot.",
+      "parentUuid": "a2c50408_d15476e2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "ee86ffcb87a9cc87d4f6c7d57994ae7b5faab84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dedff5ba_9038fb86",
