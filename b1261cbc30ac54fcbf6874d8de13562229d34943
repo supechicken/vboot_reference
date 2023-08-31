@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf7a2ba_009e6edb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-08-31T09:58:45Z",
+      "side": 1,
+      "message": "Hi Julius and John, please help me review the change.\n\nAlthough I am working on unittest, I think this could be reviewed now.\n\nP.S. I think that extend integration test (e.g. `tests/futility/test_sign_kernel.sh`) for this change is acutally hard to do. It requires lots of work and would add dependency on OpenSC and OpenCryptoki since we need a fake local KMS to test it. I think we still want it, but I guess it\u0027s just a P2 for now.",
+      "revId": "b1261cbc30ac54fcbf6874d8de13562229d34943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
