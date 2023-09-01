@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5484f9_7f38e831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-01T07:33:04Z",
+      "side": 1,
+      "message": "I am not sure what you mean by \"usage() functions.\" Do you mean the help text that is printed out when you run futility help?\n\nIf so, I would prefer to maintain this markdown documentation for the help text. \n\nThis would be more helpful when rewriting documents that misuse those tools. For example, some documents use flashrom but do not mention that it will erase VPD/HWID. It would be clearer and easier to minimally edit those sections and add a link to this document than to copy and paste the correct usage repeatedly.\n\nHowever, I think it is still a good idea to have a minimal set of text printed out by futility help. This would be helpful for users who just need a quick reference for the most common commands.",
+      "parentUuid": "c942fad8_84ddd62a",
+      "revId": "ae330feaeba5eb60ae54e9917d2f029a67953d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdad1a43_974c1ea7",
