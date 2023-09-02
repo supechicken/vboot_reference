@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d468f5e_c9690b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-02T00:10:36Z",
+      "side": 1,
+      "message": "Yes, I mean functions like print_help() in cmd_gbb_utility.c (in many programs that kind of function is called usage(), I guess not in futility). We definitely need to keep that and it needs to remain comprehensive. In many cases users only have the utility itself available at the time they\u0027re trying to get help and not some README file that was included in the source repo. I understand your desire to have command documentation with better formatting options available to link to, but that can\u0027t fully replace the command\u0027s integrated help. (I\u0027m not sure if there\u0027s a way to have the same text both included in futility as help text and also available as an extra file to link to? We definitely can\u0027t ship an entire markdown parser with futility, though.)\n\nAgain, not saying I\u0027m against this patch. I think in practice this is what most e.g. GNU utilities end up doing (having a man page and a built-in usage() function that are fully separate) because there\u0027s not really a better option in practice. I\u0027m just saying that I doubt people will always remember to update this as things change. (Maybe adding a comment in the print_help() functions to remind people could help.)",
+      "parentUuid": "1c5484f9_7f38e831",
+      "revId": "ae330feaeba5eb60ae54e9917d2f029a67953d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdad1a43_974c1ea7",
