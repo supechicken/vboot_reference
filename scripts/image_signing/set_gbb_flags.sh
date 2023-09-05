@@ -13,7 +13,7 @@ SCRIPT_BASE="$(dirname "$0")"
 # DEFINE_string name default_value description flag
 DEFINE_string file "" "Path to firmware image. Default to system firmware." "f"
 DEFINE_boolean check_wp ${FLAGS_TRUE} "Check write protection states first." ""
-DEFINE_string programmer "host" "Programmer to use when setting GBB flags" "p"
+DEFINE_string programmer "internal" "Programmer to use when setting GBB flags" "p"
 DEFINE_boolean servo "${FLAGS_FALSE}"  "Determine programmer using servo" ""
 
 set -e
