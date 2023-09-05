@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a5d5b0_7100caa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-05T07:41:20Z",
+      "side": 1,
+      "message": "Add a hint in usage() function to hint users to see README file.\n\nThese files are actually linux man page-compatible. So if we want, we might also try to use `pandoc` in ebuild and generate a man page that allows us to build the documents of `man futility` which also satisfies the scenario that \"having a doc to link + having a man page + having a help\" where we could reuse the first one and the second one.",
+      "parentUuid": "f74f541a_403e782f",
+      "revId": "ae330feaeba5eb60ae54e9917d2f029a67953d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdad1a43_974c1ea7",
@@ -95,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25031fe_e2ab0251",
+        "filename": "futility/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-05T07:41:20Z",
+      "side": 1,
+      "message": "Done\n\nRemove the outdated sentences (also in `futility usage()`)",
+      "parentUuid": "fdad1a43_974c1ea7",
+      "range": {
+        "startLine": 20,
+        "startChar": 38,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "ae330feaeba5eb60ae54e9917d2f029a67953d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "502dbe9e_0cd59a6f",
@@ -108,6 +150,30 @@
       "writtenOn": "2023-08-31T21:16:18Z",
       "side": 1,
       "message": "\"state machine\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "ae330feaeba5eb60ae54e9917d2f029a67953d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a53097_fa3844cf",
+        "filename": "futility/docs/cmd_gbb_utility.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-05T07:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "502dbe9e_0cd59a6f",
       "range": {
         "startLine": 21,
         "startChar": 13,
