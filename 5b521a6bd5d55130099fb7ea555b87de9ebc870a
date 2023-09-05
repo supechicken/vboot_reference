@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa635dd3_588ba81c",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-05T10:20:05Z",
+      "side": 1,
+      "message": "I think we should catch cases when there are more than 5 tokes found. If I understand correctly, this code will silently ignore when the remaining tokes when there are 5 or more tokens.",
+      "revId": "5b521a6bd5d55130099fb7ea555b87de9ebc870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d921a1_8bc94dad",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-05T10:20:05Z",
+      "side": 1,
+      "message": "Maybe catch cases when the conversion failed?",
+      "revId": "5b521a6bd5d55130099fb7ea555b87de9ebc870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ea0abe_e5f02817",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-05T10:20:05Z",
+      "side": 1,
+      "message": "If we have p11 as a global variable, then we\u0027ll only be able to support 1 PKCS#11 module at once. We probably don\u0027t need more than 1 modules at once, so maybe you can add some comments to note that this will limit us to 1 active PKCS#11 module at a time.",
+      "revId": "5b521a6bd5d55130099fb7ea555b87de9ebc870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d63e1d_8a03f991",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-05T10:20:05Z",
+      "side": 1,
+      "message": "While Cloud HSM\u0027s PKCS#11 module supports `CKA_ALLOWED_MECHANISMS`, not all pkcs#11 supports it, maybe we can add a comment on the logic we\u0027re using here and what should we do if we encounter a module that doesn\u0027t have the same support?\n```\n/* For PKCS#11 modules that supprot CKA_ALLOWED_MECHANISMS, we\u0027ll use the attribute to determine the correct mechanism to use.\nHowever, not all PKCS#11 modules support CKA_ALLOWED_MECHANISMS. In the event that we need to support such a module, we\u0027ll then need to determine the the mechanism to use from the key type and key size. That probably involves assuming we\u0027ll use PKCS#1 v1.5 padding for RSA. */\n```",
+      "revId": "5b521a6bd5d55130099fb7ea555b87de9ebc870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b379414_67a8325a",
+        "filename": "host/lib/host_signature2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-05T10:20:05Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
+      "revId": "5b521a6bd5d55130099fb7ea555b87de9ebc870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
