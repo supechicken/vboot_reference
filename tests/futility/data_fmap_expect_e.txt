@@ -1,10 +1,10 @@
-WP_RO not-preserve
-EC_RO not-preserve
-RO_FW not-preserve
-FMAP not-preserve
-RO_FRID not-preserve
-CBI preserve
-EC_RW not-preserve
-RW_FW not-preserve
-ZEPHYR_RW not-preserve
-RW_FWID not-preserve
+WP_RO not-preserve 0 524288
+EC_RO not-preserve 0 327680
+RO_FW not-preserve 0 261984
+FMAP not-preserve 261984 476
+RO_FRID not-preserve 262460 32
+CBI preserve 323584 4096
+EC_RW not-preserve 524288 327680
+RW_FW not-preserve 524288 327680
+ZEPHYR_RW not-preserve 524288 261908
+RW_FWID not-preserve 851936 32
