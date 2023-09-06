@@ -16,6 +16,23 @@
       "message": "Update the test too: tests/futility/test_dump_fmap.sh",
       "revId": "44d69d0ba34e41dd5576e8ebf83eb48474d95574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b45624_596b4ae7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-06T00:02:56Z",
+      "side": 1,
+      "message": "Generally we\u0027re trying to keep these output formats stable so that scripts can rely on them. Since you only added these recently this is probably fine, but please make sure you now have everything you\u0027ll ever want in this output format, so that we can keep it stable from now on.",
+      "revId": "44d69d0ba34e41dd5576e8ebf83eb48474d95574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
