@@ -79,6 +79,22 @@ check_argc() {
   esac
 }
 
+setup_local_config() {
+  local key_dir=$1
+  : "${KEYCFG_KERNEL_KEY_BLOCK:="${key_dir}/kernel.keyblock"}"
+  : "${KEYCFG_KERNEL_DATA_KEY:="${key_dir}/kernel_data_key.vbprivk"}"
+  : "${KEYCFG_MINIOS_KERNEL_KEY_BLOCK:="${key_dir}/minios_kernel.keyblock"}"
+  : "${KEYCFG_MINIOS_KERNEL_V1_KEY_BLOCK:="${key_dir}/minios_kernel.v1.keyblock"}"
+  : "${KEYCFG_MINIOS_KERNEL_DATA_KEY:="${key_dir}/minios_kernel_data_key.vbprivk"}"
+  : "${KEYCFG_RECOVERY_KERNEL_KEY_BLOCK:="${key_dir}/recovery_kernel.keyblock"}"
+  : "${KEYCFG_RECOVERY_KERNEL_V1_KEY_BLOCK:="${key_dir}/recovery_kernel.v1.keyblock"}"
+  : "${KEYCFG_RECOVERY_KERNEL_DATA_KEY:="${key_dir}/recovery_kernel_data_key.vbprivk"}"
+  : "${KEYCFG_INSTALLER_KERNEL_KEY_BLOCK:="${key_dir}/installer_kernel.keyblock"}"
+  : "${KEYCFG_INSTALLER_KERNEL_V1_KEY_BLOCK:="${key_dir}/installer_kernel.v1.keyblock"}"
+  : "${KEYCFG_INSTALLER_KERNEL_DATA_KEY:="${key_dir}/installer_kernel_data_key.vbprivk"}"
+  : "${KEYCFG_LOEM_INI:="${key_dir}/loem.ini"}"
+}
+
 # TODO(gauravsh): These are duplicated from chromeos-setimage. We need
 # to move all signing and rootfs code to one single place where it can be
 # reused. crosbug.com/19543
