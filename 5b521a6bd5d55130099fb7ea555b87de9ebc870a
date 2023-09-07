@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05750fcd_644848bc",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-07T09:27:02Z",
+      "side": 1,
+      "message": "My bad. It should be `||` instead of `\u0026\u0026` for this condition.",
+      "parentUuid": "33de0dae_f3080625",
+      "revId": "5b521a6bd5d55130099fb7ea555b87de9ebc870a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d921a1_8bc94dad",
