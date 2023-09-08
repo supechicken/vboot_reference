@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ddd6e8_e498896a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-08T22:34:01Z",
+      "side": 1,
+      "message": "Hi Nicholas,\n\nIt looks like this patch is breaking signer unit tests. We only now noticed this issue because the signer is using a frozen version of vboot that is only infrequently uprevved. See here for the failed test output (in particular the `subprocess.CalledProcessError: Command \u0027[\u0027sbsign\u0027` part): https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8770548707237273089/+/u/run_presubmit_checks/checking_src_platform_signing_signer-dev/repo_presubmit/stdout\n\nYou can repro this issue by checking out patch set 1 from https://chrome-internal-review.googlesource.com/c/chromeos/cros-signing/+/6433886/1 into `~/trunk/src/platform/signing/signer-dev` and then running `./run_tests signer/signing_unittest.py` in that directory. (Note that many of the images it is trying to sign during the unit tests are incredibly old versions of ChromeOS, which may be the cause of this problem.)\n\nPlease help advise on how to resolve that issue. We can only uprev to the last version of vboot before this patch for now, which is good enough for what I need at the moment but will eventually become a problem.",
+      "revId": "06a0b9d09826a9343fa6af78ac55a47e1b2e740d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
