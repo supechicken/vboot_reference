@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f21a44_65779b8c",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-11T06:31:32Z",
+      "side": 1,
+      "message": "I think we need to check that `digest_size \u003d\u003d sizeof(session-\u003eshared_secret)`. Maybe a static assertion is easier:\n\n```\n_Static_assert(TPM_AUTH_DATA_LEN \u003d\u003d VB2_SHA1_DIGEST_SIZE, \"...\");\n```\n\nAlternatively we may check `digest_size \u003c\u003d sizeof(session-\u003eshared_secret)` and fill zeros in the remaining of `shared_secret` (don\u0027t know if that\u0027s correct though).",
+      "revId": "46fd16bc5ac5cc25c017ff1260a05b96816c7caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f03ef0_b19e20e1",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-11T06:31:32Z",
+      "side": 1,
+      "message": "Similarly, an assertion is needed. In fact, isn\u0027t `TPM_SHA1_160_HASH_LEN` a duplicate of `VB2_SHA1_DIGEST_SIZE`?",
+      "revId": "46fd16bc5ac5cc25c017ff1260a05b96816c7caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
