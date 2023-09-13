@@ -278,40 +278,47 @@ GptEntry *GptFindNthEntry(GptData *gpt, const Guid *guid, unsigned int n)
 	return NULL;
 }
 
-GptEntry *GptFindEntryByName(GptData *gpt, const char *name)
+bool GptEntryHasName(GptEntry *entry, const char *name,  const char *opt_suffix)
+{
+	for (int i = 0; i < ARRAY_SIZE(entry->name); i++) {
+		uint16_t wc = entry->name[i];
+		char c = '\0';
+
+		if (*name != '\0')
+			c = *name++;
+		else if (opt_suffix && *opt_suffix != '\0')
+			c = *opt_suffix++;
+
+		if (wc > 0x7f || (char)wc != c)
+			return false;
+
+		if (c == '\0')
+			return true;
+	}
+
+	return false;
+}
+
+GptEntry *GptFindEntryByName(GptData *gpt, const char *name, const char *opt_suffix)
 {
 	GptHeader *header = (GptHeader *)gpt->primary_header;
 	GptEntry *entries = (GptEntry *)gpt->primary_entries;
-	GptEntry *ret = NULL, *e;
+	GptEntry *e;
 	int i;
-	uint16_t *name_ucs2;
-	int size_ucs2;
-
-	name_ucs2 = calloc(NAME_SIZE, sizeof(*name_ucs2));
-	if (name_ucs2 == NULL)
-		return ret;
-
-	size_ucs2 = UTF8ToUCS2((const uint8_t *)name, name_ucs2, NAME_SIZE - 1);
-	if (size_ucs2 < 0)
-		goto out;
 
 	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
-		if (!memcmp(&e->name, name_ucs2, size_ucs2 * sizeof(*name_ucs2))) {
-			ret = e;
-			break;
-		}
+		if (GptEntryHasName(e, name, opt_suffix))
+			return e;
 	}
 
-out:
-	free(name_ucs2);
-	return ret;
+	return NULL;
 }
 
 int GptFindUniqueByName(GptData *gpt, const char *name, Guid *guid)
 {
 	GptEntry *e;
 
-	e = GptFindEntryByName(gpt, name);
+	e = GptFindEntryByName(gpt, name, NULL);
 	if (e == NULL)
 		return GPT_ERROR_NO_SUCH_ENTRY;
 
@@ -325,7 +332,7 @@ int GptFindOffsetByName(GptData *gpt, const char *name,
 {
 	GptEntry *e;
 
-	e = GptFindEntryByName(gpt, name);
+	e = GptFindEntryByName(gpt, name, NULL);
 	if (e == NULL)
 		return GPT_ERROR_NO_SUCH_ENTRY;
 
