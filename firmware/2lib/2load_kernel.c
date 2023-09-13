@@ -677,11 +677,12 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			 * Android it means we are use legacy boot from 'boot_a\b' partition.
 			 * We want change vbmeta partition to new type to allow booting for it.
 			 */
-			static const char * const names[] = {"vbmeta_a", "vbmeta_b"};
+			static const char * const suffixes[] = {"_a", "_b"};
 			static Guid vbmeta_boot = GPT_ENT_TYPE_ANDROID_VBMETA;
 
-			for (int i = 0; i < ARRAY_SIZE(names); i++) {
-				GptEntry *e = GptFindEntryByName(&gpt, names[i]);
+			for (int i = 0; i < ARRAY_SIZE(suffixes); i++) {
+				GptEntry *e = GptFindEntryByName(&gpt, GPT_ENT_NAME_ANDROID_VBMETA,
+								 suffixes[i]);
 
 				if (!memcmp(&e->type, &vbmeta_boot, sizeof(Guid)))
 					continue;
