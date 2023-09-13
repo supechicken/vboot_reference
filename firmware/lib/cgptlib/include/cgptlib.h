@@ -10,14 +10,6 @@
 #include "gpt_misc.h"
 
 /**
- * Find GPT entry for specified partition.
- * Must be called after GptNextKernelEntry.
- *
- * Returns pointer to  GPT entry if successful, NULL otherwise
- */
-GptEntry *GptFindEntryByName(GptData *gpt, const char *name);
-
-/**
  * Find boot partition for selected slot.
  * Must be called after GptNextKernelEntry.
  *
@@ -78,5 +70,19 @@ int GptFindOffsetByName(GptData *gpt, const char *name,
  *   GPT_ERROR_NO_SUCH_ENTRY.
  */
 int GptFindUniqueByName(GptData *gpt, const char *name, Guid *guid);
+
+/**
+ * Checks if entry name field is equal to name+suffix.
+ *
+ * Returns true if equal, else false.
+ */
+bool GptEntryHasName(GptEntry *entry, const char *name,  const char *opt_suffix);
+
+/**
+ * Gets GPT entry for specified partition name and suffix.
+ *
+ * Returns pointer to GPT entry if successful, else NULL
+ */
+GptEntry *GptFindEntryByName(GptData *gpt, const char *name, const char *opt_suffix);
 
 #endif  /* VBOOT_REFERENCE_CGPTLIB_H_ */
