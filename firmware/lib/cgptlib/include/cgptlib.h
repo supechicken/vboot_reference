@@ -20,4 +20,18 @@
  */
 GptEntry *GptNextKernelEntry(GptData *gpt);
 
+/**
+ * Checks if entry name field is equal to name+suffix.
+ *
+ * Returns 1 if equal, else 0.
+ */
+int GptEntryHasName(GptEntry *entry, const char *name,  const char *opt_suffix);
+
+/**
+ * Gets GPT entry for specified partition name and suffix.
+ *
+ * Returns pointer to GPT entry if successful, else NULL
+ */
+GptEntry *GptFindEntryByName(GptData *gpt, const char *name, const char *opt_suffix);
+
 #endif  /* VBOOT_REFERENCE_CGPTLIB_H_ */
