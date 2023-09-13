@@ -471,7 +471,7 @@ CL_TAG="CL" PATH="${A}/bin:${PATH}" \
 cmp "${LINK_BIOS}" "${TMP}.outa/image.bin"
 
 # Test archive with Unified Build contents.
-cp -r "${SCRIPT_DIR}/futility/models" "${A}/"
+cp -f "${SCRIPT_DIR}/futility/signer_config.csv" "${A}/"
 mkdir -p "${A}/images"
 mv "${A}/image.bin" "${A}/images/bios_coral.bin"
 cp -f "${PEPPY_BIOS}" "${A}/images/bios_peppy.bin"
