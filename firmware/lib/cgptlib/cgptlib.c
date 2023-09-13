@@ -11,6 +11,14 @@
 #include "gpt.h"
 #include "vboot_api.h"
 
+const char *GptPartitionNames[] = {
+	[GPT_ANDROID_BOOT] = "boot",
+	[GPT_ANDROID_INIT_BOOT] = "init_boot",
+	[GPT_ANDROID_VENDOR_BOOT] = "vendor_boot",
+	[GPT_ANDROID_PVMFW] = "pvmfw",
+	[GPT_ANDROID_MISC] = "misc",
+};
+
 int GptInit(GptData *gpt)
 {
 	int retval;
@@ -27,6 +35,28 @@ int GptInit(GptData *gpt)
 
 	GptRepair(gpt);
 	return GPT_SUCCESS;
+}
+
+const char *GptGetActiveKernelPartitionSuffix(GptData *gpt)
+{
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	const char suffix_a[] = GPT_ENT_NAME_ANDROID_A_SUFFIX;
+	const char suffix_b[] = GPT_ENT_NAME_ANDROID_B_SUFFIX;
+
+	if (gpt->current_kernel == CGPT_KERNEL_ENTRY_NOT_FOUND) {
+		VB2_DEBUG("Kernel not selected\n");
+		return NULL;
+	}
+
+	e = &entries[gpt->current_kernel];
+	if (IsAndroidBootPartition(e, suffix_a))
+		return GPT_ENT_NAME_ANDROID_A_SUFFIX;
+	else if (IsAndroidBootPartition(e, suffix_b))
+		return GPT_ENT_NAME_ANDROID_B_SUFFIX;
+
+	return NULL;
+
 }
 
 int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
@@ -228,4 +258,95 @@ GptEntry *GptFindNthEntry(GptData *gpt, const Guid *guid, unsigned int n)
 	}
 
 	return NULL;
+}
+
+static GptEntry *GptFindEntryByName(GptData *gpt, const char *name)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *ret = NULL, *e;
+	int i;
+	uint16_t *name_ucs2;
+	int size_ucs2;
+
+	name_ucs2 = calloc(GPT_PARTITION_NAME_SIZE, sizeof(*name_ucs2));
+	if (name_ucs2 == NULL)
+		return ret;
+
+	size_ucs2 = AsciiToUCS2((const uint8_t *)name, name_ucs2, GPT_PARTITION_NAME_SIZE - 1);
+	if (size_ucs2 < 0)
+		goto out;
+
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		if (!memcmp(&e->name, name_ucs2, size_ucs2 * sizeof(*name_ucs2))) {
+			ret = e;
+			break;
+		}
+	}
+
+out:
+	free(name_ucs2);
+	return ret;
+}
+
+int GptFindPartitionUnique(GptData *gpt, const char *name, Guid *guid)
+{
+	GptEntry *e;
+
+	e = GptFindEntryByName(gpt, name);
+	if (e == NULL)
+		return GPT_ERROR_NO_SUCH_ENTRY;
+
+	memcpy(guid, &e->unique, GUID_SIZE);
+
+	return GPT_SUCCESS;
+}
+
+int GptFindPartitionOffset(GptData *gpt, const char *name,
+			   uint64_t *start_sector, uint64_t *size)
+{
+	GptEntry *e;
+
+	if (gpt == NULL || name == NULL || start_sector == NULL || size == NULL)
+		return GPT_ERROR_NO_SUCH_ENTRY;
+
+	e = GptFindEntryByName(gpt, name);
+	if (e == NULL)
+		return GPT_ERROR_NO_SUCH_ENTRY;
+
+	*start_sector = e->starting_lba;
+	*size = e->ending_lba - e->starting_lba + 1;
+
+	return GPT_SUCCESS;
+}
+
+int GptFindActivePartitionOffset(GptData *gpt, const char *name,
+				 uint64_t *start_sector, uint64_t *size)
+{
+	int ret;
+	char *full_name;
+	const char *suffix;
+
+	if (gpt == NULL || name == NULL || start_sector ==NULL || size == NULL)
+		return GPT_ERROR_NO_SUCH_ENTRY;
+
+	suffix = GptGetActiveKernelPartitionSuffix(gpt);
+	if (!suffix) {
+		VB2_DEBUG("Unable to get kernel partition suffix\n");
+		return GPT_ERROR_NO_SUCH_ENTRY;
+	}
+
+	/* Construct full name */
+	full_name = JoinStr(name, suffix);
+	if (full_name == NULL) {
+		VB2_DEBUG("Unable to construct partition name\n");
+		return GPT_ERROR_INVALID_ENTRIES;
+	}
+
+	ret = GptFindPartitionOffset(gpt, full_name, start_sector, size);
+	if (ret != GPT_SUCCESS)
+		VB2_DEBUG("Unable to find the %s partition\n", full_name);
+
+	free(full_name);
+	return ret;
 }
