@@ -159,6 +159,24 @@
       "parentUuid": "cff99c6a_30210e79",
       "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16d964a_a1db6307",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2023-09-13T07:38:24Z",
+      "side": 1,
+      "message": "Late to the discussion... have we announced this to external and tell partners to migrate?  I agree that we will always have partners forget to migrate to the new command, and reach out to SIEs or TAMs for help, or filing issues on buganizers.\n\nHowever, I think it makes a difference if there is a PSA and tell them the command is now deprecated, and will be completely removed by YYYY-MM-DD. It will make SIEs and TAMs much easier to communicate with partners on those future issues.\n\nOtherwise they might complain that we are always changing APIs randomly without any notice, and we block/break their works from time to time.",
+      "parentUuid": "479f2a01_fdeb1688",
+      "revId": "e487882365990461fee419e8f80ce1fdb04fd8d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
