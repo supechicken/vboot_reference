@@ -106,6 +106,24 @@
       "parentUuid": "49e129e2_faa3d70d",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac06c9e5_e9e5b74c",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2023-09-14T17:46:51Z",
+      "side": 1,
+      "message": "we can get one command with TPMA_NV_EXTEND/TPM_NT_EXTEND + TPMA_NV_CLEAR_STCLEAR. but what I liked about non-PCR nvmem spaces is you can actually store the value and whoever cares about it on the server side can just look at it w/o needing to keep the mapping between the version and the resulting PCR value. but if going with one command is important, let\u0027s use the PCRs.",
+      "parentUuid": "cf410955_5bb590bb",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
