@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e228a8e3_864d8370",
+        "filename": "firmware/2lib/2hmac.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-14T23:37:39Z",
+      "side": 1,
+      "message": "You need to write mac-\u003ealgo as well.",
+      "revId": "d9c8356fdb6e7a34ce060b67081839009ce4b646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf98895f_3bc7019c",
+        "filename": "firmware/2lib/include/2hmac.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-14T23:37:39Z",
+      "side": 1,
+      "message": "msg",
+      "range": {
+        "startLine": 22,
+        "startChar": 60,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "d9c8356fdb6e7a34ce060b67081839009ce4b646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a2ed77_e75f3b1b",
+        "filename": "firmware/lib/tpm_lite/tlcl.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-14T23:37:39Z",
+      "side": 1,
+      "message": "nit: rather than this I would just use VB2_SHA1_DIGEST_SIZE (or sizeof(mac.sha1)) in the memcpy and the cursor +\u003d",
+      "revId": "d9c8356fdb6e7a34ce060b67081839009ce4b646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0bcbec_ca224e4d",
+        "filename": "tests/hmac_test.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-14T23:37:39Z",
+      "side": 1,
+      "message": "Let\u0027s also test mac.algo",
+      "revId": "d9c8356fdb6e7a34ce060b67081839009ce4b646",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
