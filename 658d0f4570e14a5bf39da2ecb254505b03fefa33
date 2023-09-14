@@ -124,6 +124,24 @@
       "parentUuid": "cf410955_5bb590bb",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1abd6102_fae73eb9",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-14T18:07:11Z",
+      "side": 1,
+      "message": "I really feel like this is a PCR thing and trying to fit it into NVRAM semantics would be abusing the wrong API for the job. We\u0027re trying to attest something here in a way that cannot be faked by later-running code. That is traditionally a PCR\u0027s job.\n\nThe problem that the verifier also needs to know the original value to be able to compute and compare the PCR value is common to all PCR usage, but usually solved by providing that information out of band (i.e. outside of the TPM). So in this case, maybe we could just have whatever userspace component reads the final cert from the GSC and provides it to the Widevine server also provide the raw version numbers on the side?",
+      "parentUuid": "ac06c9e5_e9e5b74c",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
