@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30fa2ecf_08fdc880",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-15T21:58:59Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to return the actual amount of meaningful bytes (i.e. 4). The caller knows that we\u0027re filling up the rest with zeroes so it\u0027s still allowed to treat it as a larger value if it wants to.",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc76462_84fba09a",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-15T21:58:59Z",
+      "side": 1,
+      "message": "So upon closer inspection, this is unfortunately more complicated.\n\nWe track two values for each version in vb2_shared_data: sd-\u003efw_version_secdata and sd-\u003ekernel_version_secdata are each the values that were stored in the TPM before we started booting. sd-\u003efw_version is the version of the currently booting firmware (which is also always the version we wrote back to the TPM as long as the previous boot was FW_RESULT_SUCCESS). So far, so good.\n\nsd-\u003ekernel_version is unfortunately more complicated. It is the version that we wrote back to the TPM at the end of this boot (if we are in secure mode). That version is sometimes, but not always, exactly the same version as the one from the kernel we are booting. In cases where it is limited by maxrollforward, and in cases where we are currently trying out a new kernel but still allowing potential rollback to an older kernel if the try counter runs out, it may be lower than that.\n\nThis is all pretty messy so it would probably be good to do a more comprehensive overhaul even if it will be a bit more effort. We should really store 3 separate values in vb2_shared_data for both firmware and kernel:\n\n1. The value stored in the TPM at the start of the boot\n2. The value stored in the TPM at the end of the boot\n3. The value of the currently booted firmware\n\nWe should ideally make all of them available in crossystem (on supporting boards), and also try to come up with clearer names for each of them (that we should consistently use both in crossystem and in vb2_shared_data, and then deprecate the old crossystem names).\n\nThere\u0027s currently an unused 8 byte reserved field in vb2_shared_data, so we could put the extra two values in there and call it a backwards-compatible minor version bump.",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227ad4ce_c19daa6d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-15T21:58:59Z",
+      "side": 1,
+      "message": "It\u0027s not really a digest anymore.",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
