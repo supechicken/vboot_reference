@@ -12,6 +12,7 @@
 #include "2rsa.h"
 #include "futility.h"
 #include "host_misc.h"
+#include "ifd.h"
 #include "updater.h"
 #include "util_misc.h"
 
@@ -392,8 +393,7 @@ static int preserve_management_engine(struct updater_config *cfg,
 		VB2_DEBUG("Flashing via non-host programmer %s - no need to "
 			  "preserve ME.\n", image_from->programmer);
 	}
-
-	return try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
+	return 0;
 }
 
 /* Preserve firmware sections by FMAP area flags. */
@@ -483,6 +483,42 @@ static int compare_section(const struct firmware_section *a,
 	if (a->size != b->size)
 		return a->size - b->size;
 	return memcmp(a->data, b->data, a->size);
+}
+
+/*
+ * Checks if the system has locked AP RO (SI_DESC + Ti50 AP RO Verification).
+
+ * b/284913015: When running on a DUT with SI_DESC, the SI_DESC may reject CPU
+ * (AP) from changing itself. And if we keep updating (and skipped SI_DESC and
+ * ME sections), the Ti50 AP RO verification via RO_GSCVD would fail because the
+ * hash was from a different SI_DESC (and not updated).
+ *
+ * As a result, we don't want to do full update in this case. However
+ * It is OK to do a full update if we are updating a remote DUT (via servo or
+ * other programmers).
+ *
+ * Returns:
+ *   true if AP is locked + verification enabled and we should skip updating RO.
+ *   false if AP is not locked.
+ */
+static int is_ap_ro_locked_with_verification(struct updater_config *cfg)
+{
+	struct firmware_image *current = &cfg->image_current;
+	VB2_DEBUG("Checking if the system has locked AP RO (+verif).\n");
+
+	if (cfg->dut_is_remote) {
+		VB2_DEBUG("Remote DUT, assume the AP RO can be reflashed.\n");
+		return 0;
+	}
+	if (!firmware_section_exists(current, FMAP_RO_GSCVD)) {
+		VB2_DEBUG("No %s, AP RO can be updated even if locked.\n", FMAP_RO_GSCVD);
+		return 0;
+	}
+	if (!firmware_section_exists(current, FMAP_SI_DESC)) {
+		VB2_DEBUG("No %s, AP RO won't be locked.\n", FMAP_SI_DESC);
+		return 0;
+	}
+	return is_flash_descriptor_locked(current);
 }
 
 /*
@@ -1178,6 +1214,12 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	}
 
 	if (!done) {
+		if (!wp_enabled && is_ap_ro_locked_with_verification(cfg)) {
+			WARN("The AP RO is locked so we can't do full update. "
+			     "Fall back to RW-only update.\n");
+			wp_enabled = 1;
+		}
+
 		r = wp_enabled ? update_rw_firmware(cfg, image_from, image_to) :
 				 update_whole_firmware(cfg, image_to);
 	}
@@ -1666,6 +1708,13 @@ int updater_setup_config(struct updater_config *cfg,
 		ERROR("Please remove write protection for factory mode \n"
 		      "( " REMOVE_WP_URL " ).");
 	}
+
+	if (cfg->image.data) {
+		/* Apply any quirks to modify the image before updating. */
+		errorcnt += try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
+	}
+
+	/* The images are ready for updating. Output if needed. */
 	if (!errorcnt && do_output) {
 		const char *r = arg->output_dir;
 		if (!r)
