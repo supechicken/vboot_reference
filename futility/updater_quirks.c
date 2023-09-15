@@ -14,6 +14,7 @@
 #include "crossystem.h"
 #include "futility.h"
 #include "host_misc.h"
+#include "ifd.h"
 #include "updater.h"
 
 struct quirks_record {
