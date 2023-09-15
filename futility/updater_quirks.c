@@ -475,6 +475,37 @@ static int quirk_no_verify(struct updater_config *cfg)
 }
 
 /*
+ * Checks if the system has locked AP RO (SI_DESC + Ti50 AP RO Verification).
+ *
+ * When running on a DUT with SI_DESC, the SI_DESC may reject CPU (AP) from
+ * changing itself. And if we keep updating (and skipped SI_DESC and ME
+ * sections), the Ti50 AP RO verification via RO_GSCVD would fail because the
+ * has was created by another SI_DESC.
+ *
+ * As a result, we don't want to do full update in this case.
+ * It is OK to do full update if we are updating a remote DUT (via servo or
+ * other programmers).
+ *
+ * Returns:
+ *   1 if AP is locked and we should skip updating RO.
+ *   0 if AP is not locked.
+ */
+static int quirk_locked_ap_ro(struct updater_config *cfg)
+{
+	struct firmware_image *current = &cfg->image_current;
+	VB2_DEBUG("Checking if the system has locked AP RO.\n");
+
+	if (cfg->dut_is_remote)
+		return 0;
+	if (!firmware_section_exists(FMAP_SI_DESC))
+		return 0;
+	if (!firmware_section_exists(FMAP_RO_GSCVD))
+		return 0;
+	/* TODO(hungte): check FLMSTR and return 1 if locked. */
+	return 0;
+}
+
+/*
  * Registers known quirks to a updater_config object.
  */
 void updater_register_quirks(struct updater_config *cfg)
@@ -552,6 +583,12 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "clear_mrc_data";
 	quirks->help = "b/255617349: Clear memory training data (MRC).";
 	quirks->apply = quirk_clear_mrc_data;
+
+	quirks = &cfg->quirks[QUIRK_LOCKED_AP_RO];
+	quirks->name = "locked_ap_ro";
+	quirks->help = "b/284913015: Skip RO update when SI_DESC is locked.";
+	quirks->apply = quirk_locked_ap_ro;
+	quirks->value = 1;  /* Auto enabled quirk. */
 }
 
 /*
