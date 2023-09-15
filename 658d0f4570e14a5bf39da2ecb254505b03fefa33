@@ -142,6 +142,24 @@
       "parentUuid": "ac06c9e5_e9e5b74c",
       "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b858a3a_7fefd8c5",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-15T06:48:02Z",
+      "side": 1,
+      "message": "Yeah, we have a userland plugin (hwsec-optee-plugin) that can provide the version numbers into OP-TEE if they want.\n\nAlthough I\u0027m not sure if it is a good idea to read the `tpm_fwver` \u0026 `tpm_kernver` in `crossystem`.\n\n```\ntpm_fwver   ... # [RO/int] Firmware version stored in TPM\ntpm_kernver ... # [RO/int] Kernel version stored in TPM\n```\n\nBut from the code, I think it\u0027s the current booted version...\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/firmware/2lib/2misc.c;drc\u003d1f76c38bbda3dca283f81c8fdba9c18ad1fc4e09;l\u003d546\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/vboot_reference/host/lib/crossystem.c;drc\u003d525184158a9824a8e47ded3d5c0eb62b228e8d63;l\u003d344",
+      "parentUuid": "1abd6102_fae73eb9",
+      "revId": "658d0f4570e14a5bf39da2ecb254505b03fefa33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
