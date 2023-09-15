@@ -146,6 +146,43 @@ static int is_ec_in_rw(struct updater_config *cfg)
 		&& strcasecmp(buf, "RW") == 0);
 }
 
+/* Structure from coreboot util/ifdtool/ifdtool.h */
+// flash descriptor
+struct fdbar {
+	uint32_t flvalsig;
+	uint32_t flmap0;
+	uint32_t flmap1;
+	uint32_t flmap2;
+	uint32_t flmap3; // Exist for 500 series onwards
+} __attribute__((packed));
+
+// flash master
+struct fmba {
+	uint32_t flmstr1;
+	uint32_t flmstr2;
+	uint32_t flmstr3;
+	uint32_t flmstr4;
+	uint32_t flmstr5;
+	uint32_t flmstr6;
+} __attribute__((packed));
+
+static struct fmba *find_fmba(struct firmware_section *section) {
+	const uint32_t signature = 0x0FF0A55A;
+	const struct fdbar *fd;
+
+	if (section->size < sizeof(*fd) + sizeof(struct fmba))
+		return NULL;
+	fd = memmem(section->data, section->size - sizeof(*fd),
+		    (const void *)&signature, sizeof(signature));
+	if (!fd)
+		return NULL;
+	const uint64_t offset = (fd->flmap1 & 0xff) << 4;
+	if (offset + sizeof(struct fmba) > section->size)
+		return NULL;
+
+	return (struct fmba *)(section->data + offset);
+}
+
 /*
  * Quirk to enlarge a firmware image to match flash size. This is needed by
  * devices using multiple SPI flash with different sizes, for example 8M and
@@ -433,6 +470,64 @@ static int quirk_no_verify(struct updater_config *cfg)
 }
 
 /*
+ * Checks if the system has locked AP RO (SI_DESC + Ti50 AP RO Verification).
+ *
+ * When running on a DUT with SI_DESC, the SI_DESC may reject CPU (AP) from
+ * changing itself. And if we keep updating (and skipped SI_DESC and ME
+ * sections), the Ti50 AP RO verification via RO_GSCVD would fail because the
+ * hash was from a different SI_DESC (and not updated).
+ *
+ * As a result, we don't want to do full update in this case. However
+ * It is OK to do a full update if we are updating a remote DUT (via servo or
+ * other programmers).
+ *
+ * Returns:
+ *   1 if AP is locked and we should skip updating RO.
+ *   0 if AP is not locked.
+ */
+static int quirk_check_locked_ap_ro(struct updater_config *cfg)
+{
+	struct firmware_image *current = &cfg->image_current;
+	struct firmware_section section;
+	VB2_DEBUG("Checking if the system has locked AP RO.\n");
+
+	if (cfg->dut_is_remote) {
+		VB2_DEBUG("Remote DUT, assume the AP RO can be reflashed.\n");
+		return 0;
+	}
+	if (!firmware_section_exists(current, FMAP_RO_GSCVD)) {
+		VB2_DEBUG("No %s, AP RO can be updated even if locked.\n", FMAP_RO_GSCVD);
+		return 0;
+	}
+	if (find_firmware_section(&section, current, FMAP_SI_DESC)) {
+		VB2_DEBUG("No %s, AP RO won't be locked.\n", FMAP_SI_DESC);
+		return 0;
+	}
+
+	/*
+	 * TODO(roccochen) When the flashrom supports exporting FRAP,
+	 * we can replace the parsing of FLMSTRs to rely on FRAP for deciding if
+	 * AP RO is locked or not.
+	 */
+	const struct fmba *fmba = find_fmba(&section);
+	if (!fmba) {
+		WARN("Failed to find flash master from SI_DESC. Assuming unlocked.\n");
+		return 0;
+	}
+
+	/*
+	 * (from idftool.c) There are multiple versions of IFD but there are no
+	 * version tags in the descriptor. Starting from Apollolake all
+	 * Chromebooks should be using IFD v2 so we'll check only the v2 values.
+	 * V2: unlocked FLMSTR is 0xfffffff?? (31:20=write, 19:8=read)
+	 */
+	const bool is_locked = (fmba->flmstr1 & 0xfff00000) != 0xfff00000;
+	VB2_DEBUG("FLMSTR1 = %#08x (%s)\n", fmba->flmstr1, is_locked ? "LOCKED" : "unlocked");
+
+	return is_locked ? 1 : 0;
+}
+
+/*
  * Registers known quirks to a updater_config object.
  */
 void updater_register_quirks(struct updater_config *cfg)
@@ -505,6 +600,13 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "clear_mrc_data";
 	quirks->help = "b/255617349: Clear memory training data (MRC).";
 	quirks->apply = quirk_clear_mrc_data;
+
+	quirks = &cfg->quirks[QUIRK_CHECK_LOCKED_AP_RO];
+	quirks->name = "check_locked_ap_ro";
+	quirks->help = "b/284913015: Skip updating AP RO when it is locked with "
+			"AP RO verification turned on.";
+	quirks->apply = quirk_check_locked_ap_ro;
+	quirks->value = 1;  /* Auto enabled quirk. */
 }
 
 /*
