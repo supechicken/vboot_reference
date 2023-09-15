@@ -160,6 +160,11 @@ void GptModified(GptData *gpt);
 int IsKernelEntry(const GptEntry *e);
 
 /**
+ * Return 1 if the entry is a Android OS boot partition, else 0.
+ */
+int IsAndroidBootPartition(const GptEntry *e, const char *suffix);
+
+/**
  * Copy the current kernel partition's UniquePartitionGuid to the dest.
  */
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest);

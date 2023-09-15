@@ -204,6 +204,36 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	return 0;
 }
 
+int IsAndroidBootPartition(const GptEntry *e, const char *suffix)
+{
+	int is_android_boot_part = 0;
+	uint16_t *name_ucs2;
+	char *name;
+
+	name = JoinStr(GPT_ENT_NAME_ANDROID_BOOT, suffix);
+	if (name == NULL)
+		return is_android_boot_part;
+
+	name_ucs2 = calloc(NAME_SIZE, sizeof(*name_ucs2));
+	if (name_ucs2 == NULL) {
+		free(name);
+		return is_android_boot_part;
+	}
+
+	if (UTF8ToUCS2((const uint8_t *)name, name_ucs2, NAME_SIZE-1))
+		goto cleanup;
+
+	if (memcmp(&e->name, name_ucs2, NAME_SIZE*sizeof(*name_ucs2)))
+		goto cleanup;
+
+	is_android_boot_part = 1;
+
+cleanup:
+	free(name);
+	free(name_ucs2);
+	return is_android_boot_part;
+}
+
 int IsKernelEntry(const GptEntry *e)
 {
 	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
