@@ -1178,6 +1178,12 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	}
 
 	if (!done) {
+		if (!wp_enabled && try_apply_quirk(QUIRK_CHECK_LOCKED_AP_RO, cfg)) {
+			WARN("The AP RO is locked so we can't do full update."
+			     "Fall back to RW-noly update.\n");
+			wp_enabled = 1;
+		}
+
 		r = wp_enabled ? update_rw_firmware(cfg, image_from, image_to) :
 				 update_whole_firmware(cfg, image_to);
 	}
