@@ -474,6 +474,89 @@ static int quirk_no_verify(struct updater_config *cfg)
 	return 0;
 }
 
+/* Structure from coreboot util/ifdtool/ifdtool.h */
+// flash descriptor
+struct fdbar {
+	uint32_t flvalsig;
+	uint32_t flmap0;
+	uint32_t flmap1;
+	uint32_t flmap2;
+	uint32_t flmap3; // Exist for 500 series onwards
+} __attribute__((packed));
+
+struct fmba {
+	uint32_t flmstr1;
+	uint32_t flmstr2;
+	uint32_t flmstr3;
+	uint32_t flmstr4;
+	uint32_t flmstr5;
+	uint32_t flmstr6;
+} __attribute__((packed));
+
+static const uint32_t *find_flmstr1(struct firmware_section *section) {
+	const uint32_t signature = 0x0FF0A55A;
+	struct fdbar *fd = memmem(section->data, section->size,
+				  (const void *)&signature, sizeof(signature));
+	if (!fd)
+		return NULL;
+	int offset = (fd->flmap1 & 0xf) << 4;
+	if (offset + sizeof(struct fmba) > section->size)
+		return NULL;
+	struct fmba *fmba = (void *)(section->data + offset);
+	return &fmba->flmstr1;
+}
+
+/*
+ * Checks if the system has locked AP RO (SI_DESC + Ti50 AP RO Verification).
+ *
+ * When running on a DUT with SI_DESC, the SI_DESC may reject CPU (AP) from
+ * changing itself. And if we keep updating (and skipped SI_DESC and ME
+ * sections), the Ti50 AP RO verification via RO_GSCVD would fail because the
+ * has was created by another SI_DESC.
+ *
+ * As a result, we don't want to do full update in this case.
+ * It is OK to do full update if we are updating a remote DUT (via servo or
+ * other programmers).
+ *
+ * Returns:
+ *   1 if AP is locked and we should skip updating RO.
+ *   0 if AP is not locked.
+ */
+static int quirk_locked_ap_ro(struct updater_config *cfg)
+{
+	struct firmware_image *current = &cfg->image_current;
+	struct firmware_section section;
+	VB2_DEBUG("Checking if the system has locked AP RO.\n");
+
+	if (cfg->dut_is_remote)
+		return 0;
+	if (!firmware_section_exists(current, FMAP_RO_GSCVD))
+		return 0;
+	if (find_firmware_section(&section, current, FMAP_SI_DESC) ||
+	    !section.data || !section.size)
+		return 0;
+	VB2_DEBUG("Found %s and %s, check FLMSTR1....\n", FMAP_RO_GSCVD, FMAP_SI_DESC);
+
+	const uint32_t *ptr_flmstr1 = find_flmstr1(&section);
+	if (!ptr_flmstr1) {
+		WARN("Failed to find FLMSTR1 from SI_DESC. Assuming unlocked.\n");
+		return 0;
+	}
+	uint32_t flmstr1 = *ptr_flmstr1;
+
+	/*
+	 * (from idftool.c) There are multiple versions of IDF but there is no
+	 * version tags in the descriptor, so we are doing a "best guess" here.
+	 * - v1: unlocked FLMSTR is 0xffff0000.
+	 * - v2: unlocked FLMSTR is 0xffffff00 (but the last byte may vary).
+	 * So we want to only check the first two bytes.
+	 */
+	bool is_locked = (flmstr1 & 0xffff0000) != 0xffff0000;
+	VB2_DEBUG("FLMSTR1 = %#08x (%s)\n", flmstr1, is_locked ? "LOCKED" : "unlocked");
+
+	return is_locked ? 1 : 0;
+}
+
 /*
  * Registers known quirks to a updater_config object.
  */
@@ -552,6 +635,12 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "clear_mrc_data";
 	quirks->help = "b/255617349: Clear memory training data (MRC).";
 	quirks->apply = quirk_clear_mrc_data;
+
+	quirks = &cfg->quirks[QUIRK_LOCKED_AP_RO];
+	quirks->name = "locked_ap_ro";
+	quirks->help = "b/284913015: Skip RO update when SI_DESC is locked.";
+	quirks->apply = quirk_locked_ap_ro;
+	quirks->value = 1;  /* Auto enabled quirk. */
 }
 
 /*
