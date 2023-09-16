@@ -145,7 +145,7 @@ cp -f "${TMP}.expected.full" "${TMP}.expected.full.gbb0x27"
 cp -f "${TMP}.expected.full" "${TMP}.expected.large"
 dd if=/dev/zero bs=8388608 count=1 | tr '\000' '\377' >>"${TMP}.expected.large"
 cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked_quirk"
-patch_file "${TMP}.expected.me_unlocked_quirk" SI_DESC 128 \
+patch_file "${TMP}.expected.me_unlocked_quirk" SI_DESC 0x60 \
 	"\x00\xff\xff\xff\x00\xff\xff\xff\x00\xff\xff\xff"
 cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked"
 patch_file "${TMP}.expected.me_unlocked" SI_DESC 128 \
