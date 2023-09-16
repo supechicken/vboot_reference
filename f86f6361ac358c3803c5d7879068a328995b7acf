@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee046b2_bb848276",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-16T08:38:52Z",
+      "side": 1,
+      "message": "@rekanorman@chromium.org from `ifdtools.c`, the value here should actually be \n````\nflmstr1 \u003d 0xffffff00 | (flmstr1 \u0026 0xff);\n````\n\nAre you sure putting `0xffffff00` is the right value?",
+      "range": {
+        "startLine": 280,
+        "startChar": 9,
+        "endLine": 280,
+        "endChar": 19
+      },
+      "revId": "f86f6361ac358c3803c5d7879068a328995b7acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
