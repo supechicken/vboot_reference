@@ -1,0 +1,300 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4c0cb7_cc23929e",
+        "filename": "Makefile",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "Generally the HAVE_... stuff is only for libraries that are actually optional (and then it must still be able to build if they\u0027re not available). For NSS I think we can just assume that everyone has it (like we do for OpenSSL), so we can just tie this into CRYPTO_LIBS.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c51d83e_1759f445",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "Please avoid using `bool` as return type to signify success or error for \"action\" functions. You could instead just use `vb2_error_t` with `VB2_SUCCESS` and `VB2_ERROR_UNKNOWN`. We generally try to follow Linux style on return values (and most other things): https://www.kernel.org/doc/html/v4.10/process/coding-style.html#function-return-values-and-names",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9635df7_1f8fcbc7",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "nit: consider\n```\nchar *p11_lib, *p11_label;\nint p11_slot_id;\nif (sscanf(key_info, \"pkcs11:%m[^:]:%i:%m[^:]\",\n           \u0026lib_path, \u0026p11_slot_id, \u0026key_label) !\u003d 3) {\n  ...parsing error...\n}\n```\nwhich is a bit simpler.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c170af04_60174014",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "nit: `const char ...[]` should usually be `static const char ...[]`",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795773b4_6e6c9bcc",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "nit: This works but it\u0027s maybe a bit... verbose? Maybe consider this approach instead to collapse the local cases together\n```\nchar *colon \u003d strchr(key_info, \u0027:\u0027);\nif (colon) {\n  if (!strncmp(key_info, \"pkcs11:\", colon - key_info)) {\n    ...read_p11...\n  } else if (!strncmp(key_info, \"local:\", colon - key_info)) {\n    key_info \u003d colon + 1;\n  }\n}\n...read_local...\n```",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e045c7ec_0553af8d",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "Function pointer declarations are hard enough to read as is, so I think you should declare each of these variables on their own line.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85eb87a_d83a6bab",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "nit: unnecessary cast",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce2873c_0ae090ec",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "Same comment about return values throughout this function.",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff36c699_335896cd",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "This should be stored in the `hash_alg` field of the vb2_private_key struct.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dab361f_cc2447c0",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "While vboot supports SHA224 and SHA384 for standalone hashing, they\u0027re not currently supported for RSA signing, so they shouldn\u0027t count as \"valid\" here.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee46906a_fc73dd74",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "This seems a bit brittle, especially since we also support exponent 3 which we count as a different algorithm but has the same signature sizes as the default exponent (0x10001). You can see some similar code in host/lib21/host_key.c:vb2_rsa_sig_alg(). It would be good to factor out the relevant part from that into a separate function (e.g. in host/lib/crypto.c) that takes a signature size and an exponent and returns a vb2_signature_algorithm, and then use that both in lib21/host_key.c and here.\n\nI also don\u0027t think you should store signature_size in p11_key, instead you should pull the whole vb2_private_key into this file and then have pkcs11_get_key() fill out the right sig_alg in there directly based on CKA_MODULUS and CKA_PUBLIC_EXPONENT.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0553c2e0_e0afa2aa",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "nit: I guess we don\u0027t technically need that for now(?), but it might be nice to save the name of the loaded library in another static variable and then not return an error (just return without doing anything) if it tries to load the same library again, in case we ever add a case that uses two keys in the same futility invocation.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d866f97_bfa31a6e",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "cleaner: `ARRAY_SIZE(attributes)`",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 49
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2290944_e48d9c41",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "nit: does it make sense to print `label` here, because most of the time this fails would probably be because the user mistyped the label on the command line?",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95986f5e_cbb974ed",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "Isn\u0027t this already stored in p11_key anyway? (And we should change that so that this takes the whole vb2_private_key and can use vb2_rsa_sig_size(key-\u003esig_alg) to determine this.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfb594f_fd2a10c3",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-16T00:54:11Z",
+      "side": 1,
+      "message": "It seems very odd that this needs to be called twice? Will that not lead to the signer actually calculating the signature twice? We already know the signature size to begin with, there should be no way in which it could not match what the signer wants here (and your code here is not verifying the result returned from the first call anyway), so why can\u0027t we just sign into our buffer to begin with?",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
