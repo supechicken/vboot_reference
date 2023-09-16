@@ -229,6 +229,40 @@ static int quirk_enlarge_image(struct updater_config *cfg)
 }
 
 /*
+ * A helper function to override FLMSTR values (usually for unlocking).
+ */
+static int change_flmstrs(struct firmware_image *image, const char *verb,
+			  uint32_t flmstr1, uint32_t flmstr2, uint32_t flmstr3)
+{
+	struct firmware_section section;
+	struct fmba *fmba;
+
+	find_firmware_section(&section, image, FMAP_SI_DESC);
+	fmba = find_fmba(&section);
+
+	if (!fmba) {
+		ERROR("Failed to %s Flash Master values.\n", verb);
+		return -1;
+	}
+
+	if (fmba->flmstr1 == flmstr1 &&
+	    fmba->flmstr2 == flmstr2 &&
+	    fmba->flmstr3 == flmstr3) {
+		VB2_DEBUG("No need to change Flash Master values.\n");
+		return 0;
+	}
+	VB2_DEBUG("Change flmstr1=%#08x->%#08x\n", fmba->flmstr1, flmstr1);
+	VB2_DEBUG("Change flmstr2=%#08x->%#08x\n", fmba->flmstr2, flmstr2);
+	VB2_DEBUG("Change flmstr3=%#08x->%#08x\n", fmba->flmstr3, flmstr3);
+
+	fmba->flmstr1 = flmstr1;
+	fmba->flmstr2 = flmstr2;
+	fmba->flmstr3 = flmstr3;
+	INFO("Changed Flash Master values to %s.\n", verb);
+	return 0;
+}
+
+/*
  * Quirk to unlock a firmware image with SI_ME (management engine) when updating
  * so the system has a chance to make sure SI_ME won't be corrupted on next boot
  * before locking the Flash Master values in SI_DESC.
@@ -242,20 +276,8 @@ static int quirk_enlarge_image(struct updater_config *cfg)
  */
 static int quirk_unlock_me_for_update(struct updater_config *cfg)
 {
-	const size_t flash_master_offset = 0x80;
-	const uint8_t flash_master[] = {
-		0x00, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0x00, 0xff,
-		0xff, 0xff
-	};
-
-	if (overwrite_section(&cfg->image, FMAP_SI_DESC, flash_master_offset,
-			      ARRAY_SIZE(flash_master), flash_master)) {
-		ERROR("Failed unlocking Flash Master values\n");
-		return -1;
-	}
-
-	INFO("Changed Flash Master Values to unlocked.\n");
-	return 0;
+	return change_flmstrs(&cfg->image, "unlock",
+			      0xffffff00, 0xffffff00, 0xffffff00);
 }
 
 /*
@@ -270,26 +292,8 @@ static int quirk_unlock_me_for_update(struct updater_config *cfg)
  */
 static int quirk_unlock_wilco_me_for_update(struct updater_config *cfg)
 {
-	struct firmware_section section;
-	struct firmware_image *image_to = &cfg->image;
-	const int flash_master_offset = 128;
-	const uint8_t flash_master[] = {
-		0xff, 0xff, 0xff, 0xef, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-		0xff, 0xff
-	};
-
-	find_firmware_section(&section, image_to, FMAP_SI_DESC);
-	if (section.size < flash_master_offset + ARRAY_SIZE(flash_master))
-		return 0;
-	if (memcmp(section.data + flash_master_offset, flash_master,
-		   ARRAY_SIZE(flash_master)) == 0) {
-		VB2_DEBUG("Target ME not locked.\n");
-		return 0;
-	}
-	INFO("Changed Flash Master Values to unlocked.\n");
-	memcpy(section.data + flash_master_offset, flash_master,
-	       ARRAY_SIZE(flash_master));
-	return 0;
+	return change_flmstrs(&cfg->image, "unlock",
+			      0xefffffff, 0xffffffff, 0xffffffff);
 }
 
 /*
