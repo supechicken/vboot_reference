@@ -31,7 +31,7 @@ struct quirks_record {
  */
 static const struct quirks_record quirks_records[] = {
 	{ .match = "Google_Eve.",
-	  .quirks = "unlock_me_for_update,eve_smm_store" },
+	  .quirks = "unlock_me_eve,eve_smm_store" },
 
 	{ .match = "Google_Poppy.", .quirks = "min_platform_version=6" },
 	{ .match = "Google_Scarlet.", .quirks = "min_platform_version=1" },
@@ -221,33 +221,56 @@ static int quirk_enlarge_image(struct updater_config *cfg)
 }
 
 /*
+ * A helper function to override FLMSTR values (usually for unlocking).
+ */
+static int change_flmstrs(struct firmware_image *image, const char *verb,
+			  uint32_t flmstr1, uint32_t flmstr2, uint32_t flmstr3)
+{
+	struct firmware_section section;
+	struct fmba *fmba;
+
+	find_firmware_section(&section, image, FMAP_SI_DESC);
+	fmba = find_fmba(&section);
+
+	if (!fmba) {
+		ERROR("Failed to %s Flash Master values.\n", verb);
+		return -1;
+	}
+
+	if (fmba->flmstr1 == flmstr1 &&
+	    fmba->flmstr2 == flmstr2 &&
+	    fmba->flmstr3 == flmstr3) {
+		VB2_DEBUG("No need to change Flash Master values.\n");
+		return 0;
+	}
+	VB2_DEBUG("Change flmstr1=%#08x->%#08x\n", fmba->flmstr1, flmstr1);
+	VB2_DEBUG("Change flmstr2=%#08x->%#08x\n", fmba->flmstr2, flmstr2);
+	VB2_DEBUG("Change flmstr3=%#08x->%#08x\n", fmba->flmstr3, flmstr3);
+
+	fmba->flmstr1 = flmstr1;
+	fmba->flmstr2 = flmstr2;
+	fmba->flmstr3 = flmstr3;
+	INFO("Changed Flash Master values to %s.\n", verb);
+	return 0;
+}
+
+/*
  * Quirk to unlock a firmware image with SI_ME (management engine) when updating
  * so the system has a chance to make sure SI_ME won't be corrupted on next boot
  * before locking the Flash Master values in SI_DESC.
  * Returns 0 on success, otherwise failure.
  *
- * The FLMSTR settings are slightly different to those in the common
+ * The FLMSTR settings are dedicated for the Skylake (glados) and Kabylake (eve)
+ * platforms, and are slightly different to those in the common
  * unlock_flash_master() function. The common settings might work, but we keep
  * these as is for now to avoid breaking things on old devices. These settings
  * are also hardcoded in postinst scripts (e.g. https://crrev.com/i/252522), so
  * those would probably need to be changed too.
  */
-static int quirk_unlock_me_for_update(struct updater_config *cfg)
+static int quirk_unlock_me_eve(struct updater_config *cfg)
 {
-	const size_t flash_master_offset = 0x80;
-	const uint8_t flash_master[] = {
-		0x00, 0xff, 0xff, 0xff, 0x00, 0xff, 0xff, 0xff, 0x00, 0xff,
-		0xff, 0xff
-	};
-
-	if (overwrite_section(&cfg->image, FMAP_SI_DESC, flash_master_offset,
-			      ARRAY_SIZE(flash_master), flash_master)) {
-		ERROR("Failed unlocking Flash Master values\n");
-		return -1;
-	}
-
-	INFO("Changed Flash Master Values to unlocked.\n");
-	return 0;
+	return change_flmstrs(&cfg->image, "unlock",
+			      0xffffff00, 0xffffff00, 0xffffff00);
 }
 
 /*
@@ -550,11 +573,10 @@ void updater_register_quirks(struct updater_config *cfg)
 			"(also known as Board ID version).";
 	quirks->apply = quirk_min_platform_version;
 
-	quirks = &cfg->quirks[QUIRK_UNLOCK_ME_FOR_UPDATE];
-	quirks->name = "unlock_me_for_update";
-	quirks->help = "b/35568719; only lock management engine in "
-			"board-postinst.";
-	quirks->apply = quirk_unlock_me_for_update;
+	quirks = &cfg->quirks[QUIRK_UNLOCK_ME_EVE];
+	quirks->name = "unlock_me_eve";
+	quirks->help = "b/35568719; (eve) only lock management engine in board-postinst.";
+	quirks->apply = quirk_unlock_me_eve;
 
 	quirks = &cfg->quirks[QUIRK_EVE_SMM_STORE];
 	quirks->name = "eve_smm_store";
