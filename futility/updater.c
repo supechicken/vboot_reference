@@ -1711,7 +1711,7 @@ int updater_setup_config(struct updater_config *cfg,
 
 	if (cfg->image.data) {
 		/* Apply any quirks to modify the image before updating. */
-		errorcnt += try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
+		errorcnt += try_apply_quirk(QUIRK_UNLOCK_ME_EVE, cfg);
 	}
 
 	/* The images are ready for updating. Output if needed. */
