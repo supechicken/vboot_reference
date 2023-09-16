@@ -392,8 +392,7 @@ static int preserve_management_engine(struct updater_config *cfg,
 		VB2_DEBUG("Flashing via non-host programmer %s - no need to "
 			  "preserve ME.\n", image_from->programmer);
 	}
-
-	return try_apply_quirk(QUIRK_UNLOCK_ME_FOR_UPDATE, cfg);
+	return 0;
 }
 
 /* Preserve firmware sections by FMAP area flags. */
@@ -1672,6 +1671,9 @@ int updater_setup_config(struct updater_config *cfg,
 		ERROR("Please remove write protection for factory mode \n"
 		      "( " REMOVE_WP_URL " ).");
 	}
+
+	/* Apply any quirks to adjust the image before starting to update. */
+	errorcnt += try_apply_quirk(QUIRK_UNLOCK_ME_EVE, cfg);
 	if (!errorcnt && do_output) {
 		const char *r = arg->output_dir;
 		if (!r)
