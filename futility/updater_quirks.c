@@ -194,6 +194,11 @@ static int quirk_unlock_me_eve(struct updater_config *cfg)
 	return unlock_csme_eve(&cfg->image);
 }
 
+static int quirk_unlock_me_nissa(struct updater_config *cfg)
+{
+	return unlock_csme_nissa(&cfg->image);
+}
+
 /*
  * Checks and returns 0 if the platform version of current system is larger
  * or equal to given number, otherwise non-zero.
@@ -438,6 +443,11 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "unlock_me_eve";
 	quirks->help = "b/35568719; (skl, kbl) only lock management engine in board-postinst.";
 	quirks->apply = quirk_unlock_me_eve;
+
+	quirks = &cfg->quirks[QUIRK_UNLOCK_ME_NISSA];
+	quirks->name = "unlock_me_nissa";
+	quirks->help = "b/273168873; (nissa only) unlock the management engine and CSE lite.";
+	quirks->apply = quirk_unlock_me_nissa;
 
 	quirks = &cfg->quirks[QUIRK_EVE_SMM_STORE];
 	quirks->name = "eve_smm_store";
