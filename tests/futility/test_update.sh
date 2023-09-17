@@ -157,13 +157,13 @@ cp -f "${TMP}.expected.full" "${TMP}.expected.full.gbb0x27"
 "${FUTILITY}" gbb -s --flags=0x27 "${TMP}.expected.full.gbb0x27"
 cp -f "${TMP}.expected.full" "${TMP}.expected.large"
 dd if=/dev/zero bs=8388608 count=1 | tr '\000' '\377' >>"${TMP}.expected.large"
-cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked_quirk"
-patch_file "${TMP}.expected.me_unlocked_quirk" SI_DESC 0x60 \
+cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked_eve"
+patch_file "${TMP}.expected.me_unlocked_eve" SI_DESC 0x60 \
 	"\x00\xff\xff\xff\x00\xff\xff\xff\x00\xff\xff\xff"
-cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked"
-patch_file "${TMP}.expected.me_unlocked" SI_DESC 128 \
+cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked_nissa"
+patch_file "${TMP}.expected.me_unlocked_nissa" SI_DESC 0x60 \
 	"\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff"
-patch_file "${TMP}.expected.me_unlocked" SI_DESC 0x154 \
+patch_file "${TMP}.expected.me_unlocked_nissa" SI_DESC 0x154 \
 	"\x00\x00\x00\x00"
 cp -f "${TMP}.expected.full" "${TMP}.expected.me_preserved"
 "${FUTILITY}" load_fmap "${TMP}.expected.me_preserved" \
@@ -373,12 +373,16 @@ test_update "Full update (multi-line --quirks enlarge_image)" \
 	' -i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
 
 test_update "Full update (--quirks unlock_me_eve)" \
-	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked_quirk" \
+	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked_eve" \
 	--quirks unlock_me_eve \
 	-i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
 
+test_update "Full update (--quirks unlock_me_nissa)" \
+	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked_nissa" \
+	--quirks unlock_me_nissa -i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
+
 test_update "Full update (--unlock_me)" \
-	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked" \
+	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked_nissa" \
 	--unlock_me -i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
 
 test_update "Full update (failure by --quirks min_platform_version)" \
@@ -454,10 +458,10 @@ mkdir -p "${TMP}.output"
 	--output_dir="${TMP}.output"
 cmp "${LINK_BIOS}" "${TMP}.output/image.bin"
 
-echo "TEST: Output (--mode=output, --unlock_me)"
+echo "TEST: Output (--mode=output, --quirks unlock_me_nissa)"
 "${FUTILITY}" update -i "${TMP}.expected.full" --mode=output \
-	--output_dir="${TMP}.output" --unlock_me
-cmp "${TMP}.expected.me_unlocked" "${TMP}.output/image.bin"
+	--output_dir="${TMP}.output" --quirks unlock_me_nissa
+cmp "${TMP}.expected.me_unlocked_nissa" "${TMP}.output/image.bin"
 
 mkdir -p "${A}/keyset"
 cp -f "${LINK_BIOS}" "${A}/image.bin"
