@@ -150,7 +150,7 @@ cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked_quirk"
 patch_file "${TMP}.expected.me_unlocked_quirk" SI_DESC 0x60 \
 	"\x00\xff\xff\xff\x00\xff\xff\xff\x00\xff\xff\xff"
 cp -f "${TMP}.expected.full" "${TMP}.expected.me_unlocked"
-patch_file "${TMP}.expected.me_unlocked" SI_DESC 128 \
+patch_file "${TMP}.expected.me_unlocked" SI_DESC 0x60 \
 	"\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff"
 patch_file "${TMP}.expected.me_unlocked" SI_DESC 0x154 \
 	"\x00\x00\x00\x00"
@@ -351,9 +351,9 @@ test_update "Full update (--quirks unlock_me_eve)" \
 	--quirks unlock_me_eve \
 	-i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
 
-test_update "Full update (--unlock_me)" \
+test_update "Full update (--quirks unlock_me_nissa)" \
 	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked" \
-	--unlock_me -i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
+	--quirks unlock_me_nissa -i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
 
 test_update "Full update (failure by --quirks min_platform_version)" \
 	"${FROM_IMAGE}" "!Need platform version >= 3 (current is 2)" \
@@ -428,9 +428,9 @@ mkdir -p "${TMP}.output"
 	--output_dir="${TMP}.output"
 cmp "${LINK_BIOS}" "${TMP}.output/image.bin"
 
-echo "TEST: Output (--mode=output, --unlock_me)"
+echo "TEST: Output (--mode=output, --quirks unlock_me_nissa)"
 "${FUTILITY}" update -i "${TMP}.expected.full" --mode=output \
-	--output_dir="${TMP}.output" --unlock_me
+	--output_dir="${TMP}.output" --quirks unlock_me_nissa
 cmp "${TMP}.expected.me_unlocked" "${TMP}.output/image.bin"
 
 mkdir -p "${A}/keyset"
