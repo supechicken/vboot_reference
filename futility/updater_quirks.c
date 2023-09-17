@@ -271,6 +271,51 @@ static int quirk_unlock_me_eve(struct updater_config *cfg)
 }
 
 /*
+ * Disable GPR0 (Global Protected Range). When enabled, it provides
+ * write-protection to part of the SI_ME region, specifically CSE_RO and
+ * part of CSE_DATA, so it must be disabled to allow updating SI_ME.
+ * Returns 0 on success, otherwise failure.
+ *
+ * TODO(b/270275115): Replace with a call to ifdtool.
+ */
+static int disable_gpr0_nissa(struct firmware_image *image)
+{
+	const int gpr0_offset = 0x154;
+	const uint8_t gpr0_value_disabled[] = { 0x00, 0x00, 0x00, 0x00 };
+
+	if (overwrite_section(image, FMAP_SI_DESC, gpr0_offset,
+			      ARRAY_SIZE(gpr0_value_disabled),
+			      gpr0_value_disabled)) {
+		ERROR("Failed disabling GPR0.\n");
+		return -1;
+	}
+
+	INFO("Disabled GPR0.\n");
+	return 0;
+}
+
+/*
+ * Unlock the Intel ME by:
+ * - Unlocking the FLMSTR values in the descriptor.
+ * - Disabling GPR0 in the descriptor.
+ * This allows the SI_DESC and SI_ME regions to be updated.
+ * TODO(b/270275115): Replace with a call to ifdtool.
+ *
+ * Returns 0 on success, otherwise failure.
+ */
+static int quirk_unlock_me_nissa(struct updater_config *cfg)
+{
+	if (unlock_flmstrs(&cfg->image, 0xffffffff, 0xffffffff, 0xffffffff))
+		return -1;
+
+	if (disable_gpr0_nissa(&cfg->image))
+		return -1;
+
+	INFO("Unlocked Intel ME.\n");
+	return 0;
+}
+
+/*
  * Checks and returns 0 if the platform version of current system is larger
  * or equal to given number, otherwise non-zero.
  */
@@ -572,6 +617,11 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->name = "unlock_me_eve";
 	quirks->help = "b/35568719; (skl, kbl) only lock management engine in board-postinst.";
 	quirks->apply = quirk_unlock_me_eve;
+
+	quirks = &cfg->quirks[QUIRK_UNLOCK_ME_NISSA];
+	quirks->name = "unlock_me_nissa";
+	quirks->help = "b/273168873; unlock management engine for nissa platforms.";
+	quirks->apply = quirk_unlock_me_nissa;
 
 	quirks = &cfg->quirks[QUIRK_EVE_SMM_STORE];
 	quirks->name = "eve_smm_store";
