@@ -22,6 +22,30 @@
       },
       "revId": "f86f6361ac358c3803c5d7879068a328995b7acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9230722b_09b273b7",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-17T02:55:15Z",
+      "side": 1,
+      "message": "Never mind - from the comment I think the answer is we\u0027re not sure. The real place I should put this question should be in the unlock_flash_master.",
+      "parentUuid": "bee046b2_bb848276",
+      "range": {
+        "startLine": 280,
+        "startChar": 9,
+        "endLine": 280,
+        "endChar": 19
+      },
+      "revId": "f86f6361ac358c3803c5d7879068a328995b7acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
