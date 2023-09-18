@@ -837,10 +837,19 @@ static int update_ec_firmware(struct updater_config *cfg)
 		return r;
 	}
 
-	/** EC may have different WP settings and we want to write
-	 * only if it is OK.
+	/*
+	 * EC may have different WP settings and we want to write only if it is OK.
+	 * We cannot use is_write_protection_enabled() since it can only detect the
+	 * AP software write protect status.
 	 */
-	if (is_write_protection_enabled(cfg)) {
+	bool hwwp, ec_swwp, wp_enabled;
+	hwwp = dut_get_property(DUT_PROP_WP_HW, cfg);
+	if (flashrom_get_wp(ec_image->programmer, &ec_swwp, NULL, NULL, -1))
+		ec_swwp = true;  /* Read WP statue error. */
+	wp_enabled = hwwp && ec_swwp;
+	STATUS("EC Write protection: %d (%s; HW=%d, SW=%d).\n", wp_enabled,
+	       wp_enabled ? "enabled" : "disabled", hwwp, ec_swwp);
+	if (wp_enabled) {
 		ERROR("Target ec is write protected, skip updating.\n");
 		return 0;
 	}
