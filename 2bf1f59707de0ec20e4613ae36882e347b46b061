@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5579ee79_50f06332",
+        "filename": "futility/updater.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-18T13:38:58Z",
+      "side": 1,
+      "message": "This is wrong. the `is_write_protection_enabled` will invoke `cfg-\u003eimage.programmer` where is for AP firmware write protection. In the EC case we need to use `cfg-\u003eec_image.programmer`\n\nI create a fix for this. CL:4871882",
+      "range": {
+        "startLine": 351,
+        "startChar": 28,
+        "endLine": 351,
+        "endChar": 55
+      },
+      "revId": "2bf1f59707de0ec20e4613ae36882e347b46b061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
