@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3993ede5_327d97ab",
+        "filename": "futility/updater.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T08:03:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd8e37c2_903c1fb4",
+      "range": {
+        "startLine": 1182,
+        "startChar": 56,
+        "endLine": 1182,
+        "endChar": 57
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2160272c_e9d16cc3",
@@ -276,6 +300,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7350e18_e0a02bf7",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T08:03:14Z",
+      "side": 1,
+      "message": "The messages will only be printed in the debug mode, so that\u0027s probably fine. Any recommendations for which part you think people running old platforms or non-Intel will get confused?",
+      "parentUuid": "02e7d4c7_bd101e02",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 0
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2c59119_82451d98",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 11
@@ -335,6 +383,30 @@
       "side": 1,
       "message": "I\u0027m changing this to roccochen.",
       "parentUuid": "a2c59119_82451d98",
+      "range": {
+        "startLine": 510,
+        "startChar": 4,
+        "endLine": 510,
+        "endChar": 20
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d0dc47_c78cd851",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T08:03:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1b0399a6_45a56e90",
       "range": {
         "startLine": 510,
         "startChar": 4,
