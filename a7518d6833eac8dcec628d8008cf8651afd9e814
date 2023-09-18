@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ecd75f_1738a9b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df52ea4_23e368ce",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "a7518d6833eac8dcec628d8008cf8651afd9e814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b088bbde_5d3b3bd5",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-09-18T05:45:05Z",
       "side": 1,
       "message": "I\u0027m fine with refactoring this as a quirk, however none of it is nissa-specific, and we\u0027re planning to use it on other intel platforms too, specifically MTL in the near future.\n\nDisabling GPR0 is necessary to update the ME on all platforms since JSL/TGL, and the offset/value is the same across platforms. The FLMSTR values should apply to all IFD v2 platforms. Is there any other part you think is nissa-specific?",
+      "revId": "a7518d6833eac8dcec628d8008cf8651afd9e814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c18130b_74ac5726",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:59:02Z",
+      "side": 1,
+      "message": "So\n- We need to support platforms starting from APL (Apollolake).\n- GPR0 can\u0027t be applied on devices prior to JSL/TG.\n- The values for eve (KBL) was not the same.\n\nI think there are a several approaches.\n\n1. Let --unlock_me only do FLMSTR (so it should work on all platforms), and add \u0027disable_gpr0\u0027 as another quirk. People running the the commands must know what quirks they have to use.\n2. Figure out a term that can describe the difference of \"before jsl and after jsl\".\n3. If there is a way we can identify (from the firmware image, or runtime) if disabling GPR0 is needed then we can do that, and combine all the options back to \u0027--quirks unlock_me\u0027.\n\n@rekanorman@chromium.org do you know if it (3) is feasible?",
+      "parentUuid": "b088bbde_5d3b3bd5",
       "revId": "a7518d6833eac8dcec628d8008cf8651afd9e814",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

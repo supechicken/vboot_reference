@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f4ebb5_b4b71439",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:59:02Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "c861e1ad_40aa4731",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "533e379a_4eb3f010",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1414f5fe_e03aab0e",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:59:02Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "533e379a_4eb3f010",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cdabeef_423cb1bd",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-09-18T06:58:11Z",
       "side": 0,
       "message": "Did you run the new code with `--unlock_me` to make sure the fallback mechanism works as expected? Actually, if the factory code (CL:4376520) is still using the old `--unlock_me` argument, maybe we should keep the old test case for that. Or, can the factory team updates their code to use the new quirk?",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd87ddbd_f736fa7a",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:59:02Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9cdabeef_423cb1bd",
       "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
