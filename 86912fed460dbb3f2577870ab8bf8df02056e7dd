@@ -122,6 +122,24 @@
       "parentUuid": "fd87ddbd_f736fa7a",
       "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d3e8fb_4b774240",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-18T09:01:11Z",
+      "side": 0,
+      "message": "\u003e force every OEMs and ODMs updating their test images \u0026 release images\n\nOkay, I admit I didn\u0027t know that needs to be done as well. I thought cherry-picking the CLs to factory branch is enough.",
+      "parentUuid": "cf4216ae_7fea1067",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
