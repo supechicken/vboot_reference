@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c861e1ad_40aa4731",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-18T06:58:11Z",
+      "side": 0,
+      "message": "Also remove it from updater_utils.h.",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533e379a_4eb3f010",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-18T06:58:11Z",
+      "side": 0,
+      "message": "Same here.",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cdabeef_423cb1bd",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-18T06:58:11Z",
+      "side": 0,
+      "message": "Did you run the new code with `--unlock_me` to make sure the fallback mechanism works as expected? Actually, if the factory code (CL:4376520) is still using the old `--unlock_me` argument, maybe we should keep the old test case for that. Or, can the factory team updates their code to use the new quirk?",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
