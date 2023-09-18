@@ -66,6 +66,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "359a970f_5a2df544",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-18T07:11:56Z",
+      "side": 1,
+      "message": "seems reasonable to have the implementation in its own object, I can see this being useful for a CSME specific sub-cmd. https://crrev.com/c/4290833",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 52
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc3215e1_6502c197",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-18T07:11:56Z",
+      "side": 1,
+      "message": "no need for fwd decl, C99 exists for a long time now. all need const correctness",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9b606c_2dcf9117",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-18T07:11:56Z",
+      "side": 1,
+      "message": "Is this `uint64_t` ? Also no need to fwd decl and its `const`.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 4
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a89c217_62d827ff",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 11
