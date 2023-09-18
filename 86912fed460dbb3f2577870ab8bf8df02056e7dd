@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67c2a8f_58986fc0",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:30Z",
+      "side": 1,
+      "message": "I want to prevent the duplication. Let me change that to unlock now. we may revise someday if we do see the need of verbs.",
+      "parentUuid": "82ecf43b_f608482a",
+      "range": {
+        "startLine": 226,
+        "startChar": 68,
+        "endLine": 226,
+        "endChar": 72
+      },
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa23b9b2_1e7b7a5b",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35dac1d1_1c600221",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa23b9b2_1e7b7a5b",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b7147fd_353911d2",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-09-18T06:28:43Z",
       "side": 1,
       "message": "Consider changing this reference to CL:*318698 for eve?",
+      "range": {
+        "startLine": 267,
+        "startChar": 68,
+        "endLine": 267,
+        "endChar": 74
+      },
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "378299e6_b6c6a71c",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:30Z",
+      "side": 1,
+      "message": "The CL doesn\u0027t explain why that was needed. The bug from the CL(b:35581264) is also not explaining the background.",
+      "parentUuid": "1b7147fd_353911d2",
       "range": {
         "startLine": 267,
         "startChar": 68,
