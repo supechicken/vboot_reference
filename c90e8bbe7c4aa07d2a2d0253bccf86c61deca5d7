@@ -182,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac86f571_0ee9dbf4",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T08:14:51Z",
+      "side": 1,
+      "message": "I\u0027d leave that for a future update? or even better if we can have something like libifdtool in the future",
+      "parentUuid": "359a970f_5a2df544",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 52
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc3215e1_6502c197",
@@ -205,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8123e99d_1efa6d53",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T08:14:51Z",
+      "side": 1,
+      "message": "The pointer returned by find_fmba will be used for modifying flmstrs in so that one can\u0027t be const. The others are now all const.",
+      "parentUuid": "cc3215e1_6502c197",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed9b606c_2dcf9117",
@@ -218,6 +266,30 @@
       "writtenOn": "2023-09-18T07:11:56Z",
       "side": 1,
       "message": "Is this `uint64_t` ? Also no need to fwd decl and its `const`.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 4
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d2c706_65edfc56",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T08:14:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9b606c_2dcf9117",
       "range": {
         "startLine": 173,
         "startChar": 1,
