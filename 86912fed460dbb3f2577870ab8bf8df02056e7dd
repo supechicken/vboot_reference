@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ecf43b_f608482a",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-18T06:28:43Z",
+      "side": 1,
+      "message": "It\u0027s a little bit weird to pass this only for printing messages. Can we leave the error message (if needed) to the caller? And in this function we may just use \"Change\" as the verb.",
+      "range": {
+        "startLine": 226,
+        "startChar": 68,
+        "endLine": 226,
+        "endChar": 72
+      },
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa23b9b2_1e7b7a5b",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-18T06:28:43Z",
+      "side": 1,
+      "message": "Although `section.size` would be 0 on failure, I still prefer explicitly checking the return value.",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7147fd_353911d2",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-18T06:28:43Z",
+      "side": 1,
+      "message": "Consider changing this reference to CL:*318698 for eve?",
+      "range": {
+        "startLine": 267,
+        "startChar": 68,
+        "endLine": 267,
+        "endChar": 74
+      },
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
