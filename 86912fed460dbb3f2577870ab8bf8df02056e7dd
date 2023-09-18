@@ -104,6 +104,24 @@
       "parentUuid": "9cdabeef_423cb1bd",
       "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4216ae_7fea1067",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T08:18:05Z",
+      "side": 0,
+      "message": "The factory team can definitely update, but given nissa has already got its factory branched out, I don\u0027t want to force every OEMs and ODMs updating their test images \u0026 release images just for this refactoring. It would be easier to keep the options backward compatible, and only fix that when we see the a new platform that need to be differentiated from the current configs.",
+      "parentUuid": "fd87ddbd_f736fa7a",
+      "revId": "86912fed460dbb3f2577870ab8bf8df02056e7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
