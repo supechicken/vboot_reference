@@ -46,6 +46,30 @@
       },
       "revId": "f86f6361ac358c3803c5d7879068a328995b7acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2429cb5_9f904238",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-18T05:23:42Z",
+      "side": 1,
+      "message": "Yeah, I shared the bitfield definitions on the other CL. 7:0 is the extended region access permissions. It controls access to regions which don\u0027t exist in chrome os firmware, so the value doesn\u0027t really matter and that\u0027s why it\u0027s been set inconsistently in different places.",
+      "parentUuid": "9230722b_09b273b7",
+      "range": {
+        "startLine": 280,
+        "startChar": 9,
+        "endLine": 280,
+        "endChar": 19
+      },
+      "revId": "f86f6361ac358c3803c5d7879068a328995b7acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
