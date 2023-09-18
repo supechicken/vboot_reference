@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b088bbde_5d3b3bd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-18T05:45:05Z",
+      "side": 1,
+      "message": "I\u0027m fine with refactoring this as a quirk, however none of it is nissa-specific, and we\u0027re planning to use it on other intel platforms too, specifically MTL in the near future.\n\nDisabling GPR0 is necessary to update the ME on all platforms since JSL/TGL, and the offset/value is the same across platforms. The FLMSTR values should apply to all IFD v2 platforms. Is there any other part you think is nissa-specific?",
+      "revId": "a7518d6833eac8dcec628d8008cf8651afd9e814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
