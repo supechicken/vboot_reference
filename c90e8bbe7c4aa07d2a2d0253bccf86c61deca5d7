@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0ef51300_cb350950",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07788a5b_dbc5db7a",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "859c499e_896fc33e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
@@ -77,6 +101,30 @@
       "writtenOn": "2023-09-18T04:09:30Z",
       "side": 1,
       "message": "only",
+      "range": {
+        "startLine": 1183,
+        "startChar": 25,
+        "endLine": 1183,
+        "endChar": 29
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed89730_bb4e724b",
+        "filename": "futility/updater.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2160272c_e9d16cc3",
       "range": {
         "startLine": 1183,
         "startChar": 25,
@@ -179,6 +227,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e29c5ba_f06dc3ec",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a89c217_62d827ff",
+      "range": {
+        "startLine": 181,
+        "startChar": 24,
+        "endLine": 181,
+        "endChar": 27
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02e7d4c7_bd101e02",
@@ -251,6 +323,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b0399a6_45a56e90",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:02Z",
+      "side": 1,
+      "message": "I\u0027m changing this to roccochen.",
+      "parentUuid": "a2c59119_82451d98",
+      "range": {
+        "startLine": 510,
+        "startChar": 4,
+        "endLine": 510,
+        "endChar": 20
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75b17f74_56e9286d",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 11
@@ -262,6 +358,30 @@
       "writtenOn": "2023-09-18T04:25:39Z",
       "side": 1,
       "message": "From is_platform_ifd_2() in ifdtool.c, everything since apollolake is IFD v2, so I\u0027m not sure if we need to support v1.\n\nHowever, what you have should still work since in v2 write access is bits 31:20. So I\u0027m fine if you want to leave it.\n\nFor reference the bitfields are:\n\nIFD v1:\n31:24 - write access\n23:16 - read access\n15:0 - reserved?\n\nIFD v2:\n31:20 - write access\n19:8 - read access\n7:0 - extended region write/read access (not relevant to chrome os)",
+      "range": {
+        "startLine": 523,
+        "startChar": 6,
+        "endLine": 523,
+        "endChar": 8
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55cd3d4_94b1e763",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-18T07:48:02Z",
+      "side": 1,
+      "message": "Done. Changed to 0xfff00000 (bits 31-20).",
+      "parentUuid": "75b17f74_56e9286d",
       "range": {
         "startLine": 523,
         "startChar": 6,
