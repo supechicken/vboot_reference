@@ -255,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e222d82_637fa44d",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T02:43:16Z",
+      "side": 1,
+      "message": "where are the `flmstr`\u0027s modified, `is_flmstr1_locked()` just looks like it is doing a bit check? Not withstanding the next patch where the unlock func could become part of ifd.c Also I mean to say const ptr /\u003d const content at address.",
+      "parentUuid": "8123e99d_1efa6d53",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed9b606c_2dcf9117",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 11

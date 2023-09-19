@@ -16,6 +16,75 @@
       "message": "cc chenghan to make sure the RMA is aware of the new changes.",
       "revId": "62d2974efcbd4682f9203081a04f1ea49f8eab03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951fae57_74cc91a2",
+        "filename": "futility/ifd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T02:43:16Z",
+      "side": 1,
+      "message": "static ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "62d2974efcbd4682f9203081a04f1ea49f8eab03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8767365b_62378892",
+        "filename": "futility/ifd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T02:43:16Z",
+      "side": 1,
+      "message": "isn\u0027t this const ptr const content.",
+      "range": {
+        "startLine": 36,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "62d2974efcbd4682f9203081a04f1ea49f8eab03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96aa5518_b9d8662d",
+        "filename": "futility/ifd.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T02:43:16Z",
+      "side": 1,
+      "message": "all of this hunk is internal detail to ifd.c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "62d2974efcbd4682f9203081a04f1ea49f8eab03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
