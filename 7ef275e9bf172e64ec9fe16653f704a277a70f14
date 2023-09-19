@@ -16,6 +16,24 @@
       "message": "I changed the quirk name to \u0027unlock_csme_nissa\u0027 and kept the eve-specific one for \u0027unlock_me_eve\u0027, because in eve we only changed the ME but for nissa we also changed CSE lite so \u0027csme\u0027 is the better term\u0027...?",
       "revId": "7ef275e9bf172e64ec9fe16653f704a277a70f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502f3d04_8cf98116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-19T23:40:30Z",
+      "side": 1,
+      "message": "No, ME/CSE/CSME are used interchangeably to refer to the same thing. Intel\u0027s naming just changed over time. CSE lite could just as well be called ME lite. So it would be better to be consistent here.\n\nME \u003d Mangement Engine\nCSE \u003d Converged Security Engine\nCSME \u003d Converged Security and Management Engine",
+      "parentUuid": "13cfc324_4088215b",
+      "revId": "7ef275e9bf172e64ec9fe16653f704a277a70f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
