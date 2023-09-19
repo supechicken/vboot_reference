@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78ed45e_7ba6088a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T10:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c70dec_41664b5b",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 65
+      },
+      "revId": "5c4b7eab475b636c63e282f4c6134645872f0141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "122b0f2a_87e37fef",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-19T03:00:04Z",
       "side": 1,
       "message": "sounds like we need a future of libifdtool",
+      "range": {
+        "startLine": 239,
+        "startChar": 22,
+        "endLine": 239,
+        "endChar": 52
+      },
+      "revId": "5c4b7eab475b636c63e282f4c6134645872f0141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0c1468_7b708efc",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T10:09:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "122b0f2a_87e37fef",
       "range": {
         "startLine": 239,
         "startChar": 22,
