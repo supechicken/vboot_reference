@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af980865_5e2cf82b",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T23:46:15Z",
+      "side": 1,
+      "message": "We don\u0027t need the leading `_` IMO.",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 12
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00544732_e4ce5927",
         "filename": "futility/updater_utils.c",
         "patchSetId": 4
@@ -89,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39f5190d_8b402f2b",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T23:46:15Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 12
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c17b6f0_7441581b",
         "filename": "futility/updater_utils.c",
         "patchSetId": 4
@@ -112,6 +158,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d1e6a10_f7c7dd4e",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T23:46:15Z",
+      "side": 1,
+      "message": "I think we want to print the raw value of `dut_get_property` here.",
+      "range": {
+        "startLine": 372,
+        "startChar": 57,
+        "endLine": 372,
+        "endChar": 61
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c160e7cc_e041d615",
         "filename": "futility/updater_utils.c",
         "patchSetId": 4
@@ -128,6 +197,52 @@
         "startChar": 63,
         "endLine": 381,
         "endChar": 64
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42281ae_33395e24",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T23:46:15Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 381,
+        "startChar": 63,
+        "endLine": 381,
+        "endChar": 64
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a9d305_afa813ac",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T23:46:15Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 389,
+        "startChar": 66,
+        "endLine": 389,
+        "endChar": 67
       },
       "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
