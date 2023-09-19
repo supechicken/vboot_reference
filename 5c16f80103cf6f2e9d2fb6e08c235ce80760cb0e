@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e27971_1b263a13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T02:09:49Z",
+      "side": 1,
+      "message": "When",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851bedc4_c4c52930",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T02:09:49Z",
+      "side": 1,
+      "message": "attempt",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f00a4ad_bba0dae3",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-19T02:09:49Z",
+      "side": 1,
+      "message": "Can we implement this similar to `DUT_PROP_WP_SW`?\n\n- Rename `DUT_PROP_WP_SW` to `DUT_PROP_WP_SW_AP`, and add `DUT_PROP_WP_SW_EC`\n- Add `is_ec_write_protection_enabled()` and use it here",
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
