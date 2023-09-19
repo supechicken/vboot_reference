@@ -81,6 +81,24 @@
       "parentUuid": "b088bbde_5d3b3bd5",
       "revId": "a7518d6833eac8dcec628d8008cf8651afd9e814",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fcaa3ab_94218d79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-19T00:41:10Z",
+      "side": 1,
+      "message": "The relevance of JSL/TGL is that\u0027s when we switched to CSE lite (CSE RO/RW split with updatable RW), and we use GPR0 to to protect the CSE RO.\n\nI just had a look at SPI programming guides for some older platforms and it seems the GPR0 field did exist, we just kept it disabled since we had no use for it (I think, need to check).\n\nAlso I was wrong about the offset being fixed, it actually varies and is even different on MTL. So you\u0027re right that this is nissa-specific for now and needs more work to make it generic. I already have a bug tracking that: b/270275115. Feel free to either change it back to _nissa, or add a TODO for me to make it generic.",
+      "parentUuid": "2c18130b_74ac5726",
+      "revId": "a7518d6833eac8dcec628d8008cf8651afd9e814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
