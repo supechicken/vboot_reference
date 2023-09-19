@@ -418,6 +418,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a5edbf_0ecc5d14",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-19T07:07:12Z",
+      "side": 1,
+      "message": "So it will only be printed out if a user call --debug or sometihng similar. In that case I would agree that these message should be just fine and cause no confusion.\n\nAcknowledged",
+      "parentUuid": "a7350e18_e0a02bf7",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 0
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c59119_82451d98",
