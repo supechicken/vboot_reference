@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e4ed3b_59f98b6a",
+        "filename": "futility/updater.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T01:07:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3435628c_e446a196",
+      "revId": "91ccb5dbafa2d04038e59a784145057a52b905e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cdf80b6_b132fbf2",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-18T23:43:40Z",
       "side": 1,
       "message": "Was it intentional to move this change into this CL? Seems unrelated unless I\u0027m missing something.",
+      "revId": "91ccb5dbafa2d04038e59a784145057a52b905e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02906ba_0968e894",
+        "filename": "futility/updater.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T01:07:52Z",
+      "side": 1,
+      "message": "You can right. That was an unrelated patch due to rebasing. Moved to next CL.",
+      "parentUuid": "6cdf80b6_b132fbf2",
       "revId": "91ccb5dbafa2d04038e59a784145057a52b905e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
