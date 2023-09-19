@@ -277,6 +277,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f879ea32_cabf5acb",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T09:56:28Z",
+      "side": 1,
+      "message": "the modification is in the followup CLs. but yes,  for this change it can be const.",
+      "parentUuid": "6e222d82_637fa44d",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "c90e8bbe7c4aa07d2a2d0253bccf86c61deca5d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed9b606c_2dcf9117",

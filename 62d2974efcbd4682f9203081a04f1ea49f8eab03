@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fab1629_e810a27b",
+        "filename": "futility/ifd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T09:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "951fae57_74cc91a2",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "62d2974efcbd4682f9203081a04f1ea49f8eab03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8767365b_62378892",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a1eacd_b397a3f2",
+        "filename": "futility/ifd.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T09:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8767365b_62378892",
+      "range": {
+        "startLine": 36,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "62d2974efcbd4682f9203081a04f1ea49f8eab03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96aa5518_b9d8662d",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-09-19T02:43:16Z",
       "side": 1,
       "message": "all of this hunk is internal detail to ifd.c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "62d2974efcbd4682f9203081a04f1ea49f8eab03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83c5fc5_4ac748a2",
+        "filename": "futility/ifd.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T09:56:28Z",
+      "side": 1,
+      "message": "then we\u0027ll have to do the unlock APIs in ifd.c... but well, yes that is doable.",
+      "parentUuid": "96aa5518_b9d8662d",
       "range": {
         "startLine": 13,
         "startChar": 0,
