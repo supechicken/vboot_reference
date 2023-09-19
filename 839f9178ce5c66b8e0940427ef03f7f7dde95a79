@@ -16,6 +16,144 @@
       "message": "Verified on coral",
       "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b369df1_b3367644",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T15:35:04Z",
+      "side": 1,
+      "message": "you don\u0027t need cfg in this case",
+      "range": {
+        "startLine": 125,
+        "startChar": 26,
+        "endLine": 125,
+        "endChar": 54
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00544732_e4ce5927",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T15:35:04Z",
+      "side": 1,
+      "message": "settings",
+      "range": {
+        "startLine": 361,
+        "startChar": 48,
+        "endLine": 361,
+        "endChar": 55
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c21396b_a1154dc8",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T15:35:04Z",
+      "side": 1,
+      "message": "programmers",
+      "range": {
+        "startLine": 361,
+        "startChar": 13,
+        "endLine": 361,
+        "endChar": 23
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c17b6f0_7441581b",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T15:35:04Z",
+      "side": 1,
+      "message": "w (because the %s will be lower cased)",
+      "range": {
+        "startLine": 371,
+        "startChar": 12,
+        "endLine": 371,
+        "endChar": 13
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c160e7cc_e041d615",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T15:35:04Z",
+      "side": 1,
+      "message": "\", \"",
+      "range": {
+        "startLine": 381,
+        "startChar": 63,
+        "endLine": 381,
+        "endChar": 64
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1245e4b6_34800d2f",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-19T15:35:04Z",
+      "side": 1,
+      "message": "what about changing this to bool since you\u0027re touching it?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 3
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
