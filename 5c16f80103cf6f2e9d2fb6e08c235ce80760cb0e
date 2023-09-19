@@ -47,6 +47,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe1bca9_d94cb160",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T05:40:09Z",
+      "side": 1,
+      "message": "great find!",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f00a4ad_bba0dae3",
@@ -60,6 +83,24 @@
       "writtenOn": "2023-09-19T02:09:49Z",
       "side": 1,
       "message": "Can we implement this similar to `DUT_PROP_WP_SW`?\n\n- Rename `DUT_PROP_WP_SW` to `DUT_PROP_WP_SW_AP`, and add `DUT_PROP_WP_SW_EC`\n- Add `is_ec_write_protection_enabled()` and use it here",
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd321b4_38fcbe64",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T05:40:09Z",
+      "side": 1,
+      "message": "+1 to Yu-Ping Wu\u0027s suggestion here.\n\nalso no need for C89\u0027ism\u0027s.. you can instead do:\n\n`const bool hwwp \u003d dut_get_property(DUT_PROP_WP_HW, cfg);`\n\nand so on.\n\nAdditionally, this is a good opportunity to start on the path of using libec||ectool here. I believe libec already has the functions to query WP status?",
+      "parentUuid": "6f00a4ad_bba0dae3",
       "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
