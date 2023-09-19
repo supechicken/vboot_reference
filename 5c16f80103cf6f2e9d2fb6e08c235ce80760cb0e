@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dafa17ab_a5c2c1e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-19T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e27971_1b263a13",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "851bedc4_c4c52930",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-19T02:09:49Z",
       "side": 1,
       "message": "attempt",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b554e92_a17bf7de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-19T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "851bedc4_c4c52930",
       "range": {
         "startLine": 20,
         "startChar": 18,
@@ -101,6 +149,24 @@
       "side": 1,
       "message": "+1 to Yu-Ping Wu\u0027s suggestion here.\n\nalso no need for C89\u0027ism\u0027s.. you can instead do:\n\n`const bool hwwp \u003d dut_get_property(DUT_PROP_WP_HW, cfg);`\n\nand so on.\n\nAdditionally, this is a good opportunity to start on the path of using libec||ectool here. I believe libec already has the functions to query WP status?",
       "parentUuid": "6f00a4ad_bba0dae3",
+      "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e3215dd_b545295c",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-19T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd321b4_38fcbe64",
       "revId": "5c16f80103cf6f2e9d2fb6e08c235ce80760cb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
