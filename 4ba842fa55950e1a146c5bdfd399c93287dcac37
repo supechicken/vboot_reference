@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d700f27_e24a90d7",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-19T10:00:25Z",
+      "side": 1,
+      "message": "There is a little problem in the coreboot code:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/security/vboot/tpm_common.c;drc\u003dd972ca53015e67feaf3e54946098ccb33ba5d7bb;l\u003d32\n\nIt will check the output size is not smaller than 20 bytes, if we \"trim\" the digest size to 4 bytes, it will fail.\n\nShould we remove the check in the coreboot side?",
+      "parentUuid": "30fa2ecf_08fdc880",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fc76462_84fba09a",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 9
@@ -66,6 +84,24 @@
       "writtenOn": "2023-09-15T21:58:59Z",
       "side": 1,
       "message": "It\u0027s not really a digest anymore.",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19795383_f7a2a527",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-19T10:00:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "227ad4ce_c19daa6d",
       "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
