@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c70dec_41664b5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T03:00:04Z",
+      "side": 1,
+      "message": "I would suggest a `platform_csme.c` holder and a entry-point func keyed with the platform as to trace out the theme of the underlying problem here. perhaps `ifd.c` is better called `platform_csme.c` and all of this unlock handling be constrained to that namespace.\n\nThe quirks could be wrappers of the form:\n```\nstatic int quirk_unlock_me_XXX(struct updater_config *cfg)\n{\n\treturn unlock_csme(\u0026cfg-\u003eimage, XXX_enum);\n}\n```\n\nand `unlock_csme()` be the entry-point to `platform_csme.c` that confines all the logic within this problem space thereby defining the API we wish for the rest of futility as known today.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 65
+      },
+      "revId": "5c4b7eab475b636c63e282f4c6134645872f0141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122b0f2a_87e37fef",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-09-19T03:00:04Z",
+      "side": 1,
+      "message": "sounds like we need a future of libifdtool",
+      "range": {
+        "startLine": 239,
+        "startChar": 22,
+        "endLine": 239,
+        "endChar": 52
+      },
+      "revId": "5c4b7eab475b636c63e282f4c6134645872f0141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
