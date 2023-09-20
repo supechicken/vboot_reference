@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed595c9b_5b22a0e5",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b369df1_b3367644",
+      "range": {
+        "startLine": 125,
+        "startChar": 26,
+        "endLine": 125,
+        "endChar": 54
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e097e9_35d61597",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af980865_5e2cf82b",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 12
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00544732_e4ce5927",
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b0b827_f62eb2c1",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c21396b_a1154dc8",
+      "range": {
+        "startLine": 361,
+        "startChar": 13,
+        "endLine": 361,
+        "endChar": 23
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c63aba_21240386",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00544732_e4ce5927",
+      "range": {
+        "startLine": 361,
+        "startChar": 48,
+        "endLine": 361,
+        "endChar": 55
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f5190d_8b402f2b",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-09-19T23:46:15Z",
       "side": 1,
       "message": "Same.",
+      "range": {
+        "startLine": 363,
+        "startChar": 11,
+        "endLine": 363,
+        "endChar": 12
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a8acd7_0ea6ba09",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f5190d_8b402f2b",
       "range": {
         "startLine": 363,
         "startChar": 11,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b70e65a_e35442fa",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "I was afraid if anyone was parsing the raw string, but I did a quick code search, and it seems no.\n\nI would prefer the format `Write protection (ec): 0 ...`",
+      "parentUuid": "2c17b6f0_7441581b",
+      "range": {
+        "startLine": 371,
+        "startChar": 12,
+        "endLine": 371,
+        "endChar": 13
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d1e6a10_f7c7dd4e",
@@ -169,6 +313,30 @@
       "writtenOn": "2023-09-19T23:46:15Z",
       "side": 1,
       "message": "I think we want to print the raw value of `dut_get_property` here.",
+      "range": {
+        "startLine": 372,
+        "startChar": 57,
+        "endLine": 372,
+        "endChar": 61
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7767a8e_204cbf8d",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d1e6a10_f7c7dd4e",
       "range": {
         "startLine": 372,
         "startChar": 57,
@@ -225,6 +393,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af7b1fc_ff6fb8a9",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c42281ae_33395e24",
+      "range": {
+        "startLine": 381,
+        "startChar": 63,
+        "endLine": 381,
+        "endChar": 64
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beede68f_3893f188",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c160e7cc_e041d615",
+      "range": {
+        "startLine": 381,
+        "startChar": 63,
+        "endLine": 381,
+        "endChar": 64
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2a9d305_afa813ac",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5adb4d61_613e42d3",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a9d305_afa813ac",
+      "range": {
+        "startLine": 389,
+        "startChar": 66,
+        "endLine": 389,
+        "endChar": 67
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1245e4b6_34800d2f",
@@ -261,6 +501,30 @@
       "writtenOn": "2023-09-19T15:35:04Z",
       "side": 1,
       "message": "what about changing this to bool since you\u0027re touching it?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 3
+      },
+      "revId": "839f9178ce5c66b8e0940427ef03f7f7dde95a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "863bfb48_431ffdf7",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-09-20T08:07:47Z",
+      "side": 1,
+      "message": "Done\n\nSure, also change the `wp_enable` and `done` in `update_firmware` to bool here.",
+      "parentUuid": "1245e4b6_34800d2f",
       "range": {
         "startLine": 186,
         "startChar": 0,
