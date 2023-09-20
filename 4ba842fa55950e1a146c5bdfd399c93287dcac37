@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2d4041b_b0accb4b",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-20T21:17:58Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "69e4d4c3_d9722547",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fc76462_84fba09a",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 9
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "\u003e then deprecate the old crossystem names\n\n`crossystem tpm_kernver` looks like a perfect name for the active TPM kernal version (the value stored in the TPM at the end of the boot), so maybe it\u0027s okay to reuse it? The bug (b/269204332) has been existing for a long time, and that doesn\u0027t seem to cause any issue. Therefore it should be fine to just \"fix\" that for new devices, I think. And then `crossystem kernver` can be the value of currently booted firmware.\n\nAlso, I can\u0027t think of any case where we need \"The value stored in the TPM at the start of the boot\".",
       "parentUuid": "1bbd181c_8b36638f",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eff82e5_2bcc9f57",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-20T21:17:58Z",
+      "side": 1,
+      "message": "Names are open to discussion, I don\u0027t have a strong opinion, let\u0027s just make sure it\u0027s clear at first glance which one is which. Maybe `tpm_kernver`, `tpm_kernver_prev` and `act_kernver`?\n\nI don\u0027t know if anyone needs the start-of-boot one, but we already have it in vb2_shared_data anyway and we presumably don\u0027t want to change that. I guess we don\u0027t need to expose it through crossystem if there\u0027s no use case for that.",
+      "parentUuid": "5445da30_0a76bc82",
       "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
