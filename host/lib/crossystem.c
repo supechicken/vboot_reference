@@ -267,16 +267,18 @@ static int GetVdatLoadFirmwareDebug(char *dest, int size,
 				    const VbSharedDataHeader *sh)
 {
 	snprintf(dest, size,
-		 "Check A result=%d\n"
-		 "Check B result=%d\n"
-		 "Firmware index booted=0x%02x\n"
-		 "TPM combined version at start=0x%08x\n"
-		 "Lowest combined version from firmware=0x%08x\n",
-		 sh->check_fw_a_result,
-		 sh->check_fw_b_result,
-		 sh->firmware_index,
-		 sh->fw_version_tpm_start,
-		 sh->fw_version_lowest);
+		"Check A result=%d\n"
+		"Check B result=%d\n"
+		"Firmware index booted=0x%02x\n"
+		"Active firmware version=0x%08x\n"
+		"Final firmware version in TPM=0x%08x\n"
+		"Lowest combined version from firmware=0x%08x\n",
+		sh->check_fw_a_result,
+		sh->check_fw_b_result,
+		sh->firmware_index,
+		sh->fw_version_act,
+		sh->fw_version_tpm_final,
+		sh->fw_version_lowest);
 	return 0;
 }
 
@@ -341,10 +343,10 @@ static int GetVdatInt(VdatIntField field)
 			value = (sh->flags & VBSD_KERNEL_KEY_VERIFIED ? 1 : 0);
 			break;
 		case VDAT_INT_FW_VERSION_TPM:
-			value = (int)sh->fw_version_tpm;
+			value = (int)sh->fw_version_act;
 			break;
 		case VDAT_INT_KERNEL_VERSION_TPM:
-			value = (int)sh->kernel_version_tpm;
+			value = (int)sh->kernel_version_act;
 			break;
 		case VDAT_INT_FW_BOOT2:
 			value = (sh->flags & VBSD_BOOT_FIRMWARE_VBOOT2 ? 1 : 0);
