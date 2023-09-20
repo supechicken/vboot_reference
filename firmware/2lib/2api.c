@@ -47,6 +47,7 @@ vb2_error_t vb2api_inject_kernel_subkey(
 	sd->gbb_offset = 0;
 	sd->kernel_version = 0;
 	sd->kernel_version_secdata = 0;
+	sd->kernel_version_writeback = 0;
 	ctx->flags = 0;
 	boot_mode = (enum vb2_boot_mode *)&ctx->boot_mode;
 	*boot_mode = VB2_BOOT_MODE_NORMAL;
