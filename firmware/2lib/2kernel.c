@@ -74,7 +74,7 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 	/* Read kernel version from secdata. */
 	sd->kernel_version_secdata =
 		vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_VERSIONS);
-	sd->kernel_version = sd->kernel_version_secdata;
+	sd->kernel_version_writeback = sd->kernel_version_secdata;
 
 	vb2_fill_dev_boot_flags(ctx);
 
@@ -217,6 +217,7 @@ static void update_kernel_version(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t max_rollforward =
 		vb2_nv_get(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD);
+	uint32_t write_kernel_version = sd->kernel_version_writeback;
 
 	VB2_DEBUG("Checking if TPM kernel version needs advancing\n");
 
@@ -243,17 +244,18 @@ static void update_kernel_version(struct vb2_context *ctx)
 	if (max_rollforward < sd->kernel_version_secdata)
 		max_rollforward = sd->kernel_version_secdata;
 
-	if (sd->kernel_version > max_rollforward) {
+	if (write_kernel_version > max_rollforward) {
 		VB2_DEBUG("Limiting TPM kernel version roll-forward "
 			  "to %#x < %#x\n",
-			  max_rollforward, sd->kernel_version);
+			  max_rollforward, write_kernel_version);
 
-		sd->kernel_version = max_rollforward;
+		write_kernel_version = max_rollforward;
 	}
 
-	if (sd->kernel_version > sd->kernel_version_secdata) {
+	if (write_kernel_version > sd->kernel_version_secdata) {
 		vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_VERSIONS,
-				       sd->kernel_version);
+				       write_kernel_version);
+		sd->kernel_version_secdata = write_kernel_version;
 	}
 }
 
