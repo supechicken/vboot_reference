@@ -34,6 +34,24 @@
       "parentUuid": "13cfc324_4088215b",
       "revId": "7ef275e9bf172e64ec9fe16653f704a277a70f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6291f2a_2d0d8269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-20T01:24:27Z",
+      "side": 1,
+      "message": "Ok, then I\u0027d call it CSME because it\u0027s easier to search and figure out than a simple \u0027me\u0027, also indicating it may have security related features (e.g., include CSE lite).\n\nP.S: What\u0027s the difference between ME/CSE/CSME and CSE lite? I thought CSE lite were providing TPM related functions, so the system was \"ME\" + \"CSE lite\" \u003d \"CSME\". But if you say ME\u003dCSE\u003dCSME, then what\u0027s CSE lite?",
+      "parentUuid": "502f3d04_8cf98116",
+      "revId": "7ef275e9bf172e64ec9fe16653f704a277a70f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
