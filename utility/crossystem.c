@@ -89,6 +89,8 @@ const Param sys_param_list[] = {
   {"tpm_attack", CAN_WRITE, "TPM was interrupted since this flag was cleared"},
   {"tpm_fwver", 0, "Firmware version stored in TPM", "0x%08x"},
   {"tpm_kernver", 0, "Kernel version stored in TPM", "0x%08x"},
+  {"active_fwver", 0, "Active firmware version", "0x%08x"},
+  {"active_kernver", 0, "Active kernel version", "0x%08x"},
   {"tpm_rebooted", 0, "TPM requesting repeated reboot"},
   {"tried_fwb", 0, "Tried firmware B before A this boot"},
   {"try_ro_sync", 0, "try read only software sync"},
