@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69e4d4c3_d9722547",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-20T07:11:05Z",
+      "side": 1,
+      "message": "Yes I think we can remove the check in coreboot.",
+      "parentUuid": "9d700f27_e24a90d7",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6fc76462_84fba09a",
         "filename": "firmware/2lib/2api.c",
         "patchSetId": 9
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Also see b/269204332.",
       "parentUuid": "6fc76462_84fba09a",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5445da30_0a76bc82",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-20T07:11:05Z",
+      "side": 1,
+      "message": "\u003e then deprecate the old crossystem names\n\n`crossystem tpm_kernver` looks like a perfect name for the active TPM kernal version (the value stored in the TPM at the end of the boot), so maybe it\u0027s okay to reuse it? The bug (b/269204332) has been existing for a long time, and that doesn\u0027t seem to cause any issue. Therefore it should be fine to just \"fix\" that for new devices, I think. And then `crossystem kernver` can be the value of currently booted firmware.\n\nAlso, I can\u0027t think of any case where we need \"The value stored in the TPM at the start of the boot\".",
+      "parentUuid": "1bbd181c_8b36638f",
       "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
