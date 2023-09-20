@@ -266,17 +266,33 @@ static int VbGetCrosDebug(void)
 static int GetVdatLoadFirmwareDebug(char *dest, int size,
 				    const VbSharedDataHeader *sh)
 {
-	snprintf(dest, size,
-		 "Check A result=%d\n"
-		 "Check B result=%d\n"
-		 "Firmware index booted=0x%02x\n"
-		 "TPM combined version at start=0x%08x\n"
-		 "Lowest combined version from firmware=0x%08x\n",
-		 sh->check_fw_a_result,
-		 sh->check_fw_b_result,
-		 sh->firmware_index,
-		 sh->fw_version_tpm_start,
-		 sh->fw_version_lowest);
+	if (sh->struct_version <= 2) {
+		snprintf(dest, size,
+			"Check A result=%d\n"
+			"Check B result=%d\n"
+			"Firmware index booted=0x%02x\n"
+			"TPM combined version at start=0x%08x\n"
+			"Lowest combined version from firmware=0x%08x\n",
+			sh->check_fw_a_result,
+			sh->check_fw_b_result,
+			sh->firmware_index,
+			sh->fw_version_act,
+			sh->fw_version_lowest);
+	} else {
+		snprintf(dest, size,
+			"Check A result=%d\n"
+			"Check B result=%d\n"
+			"Firmware index booted=0x%02x\n"
+			"Active firmware version=0x%08x\n"
+			"Firmware version in TPM =0x%08x\n"
+			"Lowest combined version from firmware=0x%08x\n",
+			sh->check_fw_a_result,
+			sh->check_fw_b_result,
+			sh->firmware_index,
+			sh->fw_version_act,
+			sh->fw_version_tpm,
+			sh->fw_version_lowest);
+	}
 	return 0;
 }
 
