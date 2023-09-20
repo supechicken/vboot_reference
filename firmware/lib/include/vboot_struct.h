@@ -22,7 +22,7 @@ extern "C" {
 #define VB_SHARED_DATA_MAGIC 0x44536256
 
 /* Version for struct_version */
-#define VB_SHARED_DATA_VERSION 2
+#define VB_SHARED_DATA_VERSION 3
 
 /*
  * Flags for VbSharedDataHeader
