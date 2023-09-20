@@ -22,7 +22,7 @@ extern "C" {
 #define VB_SHARED_DATA_MAGIC 0x44536256
 
 /* Version for struct_version */
-#define VB_SHARED_DATA_VERSION 2
+#define VB_SHARED_DATA_VERSION 3
 
 /*
  * Flags for VbSharedDataHeader
@@ -92,11 +92,11 @@ typedef struct VbSharedDataHeader {
 	uint64_t timer_vb_select_and_load_kernel_enter;
 	uint64_t timer_vb_select_and_load_kernel_exit;
 
-	/* Information stored in TPM, as retrieved by firmware */
-	/* Current firmware version in TPM */
-	uint32_t fw_version_tpm;
-	/* Current kernel version in TPM */
-	uint32_t kernel_version_tpm;
+	/* Information of the active versions */
+	/* The active firmware version */
+	uint32_t fw_version_act;
+	/* The active kernel version */
+	uint32_t kernel_version_act;
 
 	/* Debugging information from LoadFirmware() */
 	/* Result of checking RW firmware A and B */
@@ -106,8 +106,8 @@ typedef struct VbSharedDataHeader {
 	uint8_t firmware_index;
 	/* Reserved for padding */
 	uint8_t reserved2;
-	/* Firmware TPM version at start of VbSelectFirmware() */
-	uint32_t fw_version_tpm_start;
+	/* The final firmware version in TPM */
+	uint32_t fw_version_tpm_final;
 	/* Firmware lowest version found */
 	uint32_t fw_version_lowest;
 
@@ -124,8 +124,8 @@ typedef struct VbSharedDataHeader {
 	uint8_t reserved4[7];
 	/* Flags from firmware keyblock */
 	uint64_t fw_keyblock_flags;
-	/* Kernel TPM version at start of vb2api_kernel_phase1 */
-	uint32_t kernel_version_tpm_start;
+	/* The final kernel version in TPM */
+	uint32_t kernel_version_tpm_final;
 	/* Kernel lowest version found */
 	uint32_t kernel_version_lowest;
 
