@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75f04814_cab2b766",
+        "filename": "Makefile",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-20T11:19:13Z",
+      "side": 1,
+      "message": "In my first thought, since the pkcs11 support is not needed always for everyone building the vboot_reference, I think we\u0027d better make the dependencies of pkcs11 optional. If the case that the NSS doesn\u0027t present is negligible, it makes sense to make it mandatory.\n\nBut just to confirm, in the case that there are actually someone without NSS, is it okay to let them not able to build the vboot_reference? \n(And since you mentioned it, I found I forgot to add proper guards for things using NSS. But if it is mandatory, there is no need to add the guards)",
+      "parentUuid": "df4c0cb7_cc23929e",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c51d83e_1759f445",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 12
@@ -168,6 +186,24 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "This should be stored in the `hash_alg` field of the vb2_private_key struct.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf330e2a_cbf31121",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-20T11:19:13Z",
+      "side": 1,
+      "message": "Do you think we should have `hash_alg` as an union of `CK_MECHANISM_TYPE` and `enum vb2_hash_algorithm`?",
+      "parentUuid": "ff36c699_335896cd",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
