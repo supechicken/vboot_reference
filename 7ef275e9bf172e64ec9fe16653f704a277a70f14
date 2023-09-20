@@ -52,6 +52,24 @@
       "parentUuid": "502f3d04_8cf98116",
       "revId": "7ef275e9bf172e64ec9fe16653f704a277a70f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d987fe5_22e9aab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2023-09-20T01:39:50Z",
+      "side": 1,
+      "message": "go/cros-intel-csme-lite\n\nIt\u0027s a stripped down version of CSE firmware containing only the parts we need for chrome os.\n\nWe also sometimes use it to refer to the CSE RO/RW split with updateable RW. Technically that\u0027s separate, but as that doc shows they were enabled at the same time, so we sometimes use CSE lite to refer to both.",
+      "parentUuid": "d6291f2a_2d0d8269",
+      "revId": "7ef275e9bf172e64ec9fe16653f704a277a70f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
