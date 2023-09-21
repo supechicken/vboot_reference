@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f52a14c_b75add0b",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c51d83e_1759f445",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9635df7_1f8fcbc7",
@@ -72,6 +96,24 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "nit: consider\n```\nchar *p11_lib, *p11_label;\nint p11_slot_id;\nif (sscanf(key_info, \"pkcs11:%m[^:]:%i:%m[^:]\",\n           \u0026lib_path, \u0026p11_slot_id, \u0026key_label) !\u003d 3) {\n  ...parsing error...\n}\n```\nwhich is a bit simpler.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72500b3_21fff9a7",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9635df7_1f8fcbc7",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -93,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "163f1105_de9f93ba",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c170af04_60174014",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "795773b4_6e6c9bcc",
@@ -110,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6ef9e3_730432c7",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "795773b4_6e6c9bcc",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e045c7ec_0553af8d",
@@ -123,6 +201,24 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "Function pointer declarations are hard enough to read as is, so I think you should declare each of these variables on their own line.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a15363_dc1c73c1",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e045c7ec_0553af8d",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3e4b3d_c23e03f5",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85eb87a_d83a6bab",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ce2873c_0ae090ec",
@@ -163,6 +283,30 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "Same comment about return values throughout this function.",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e85016_815eaa66",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ce2873c_0ae090ec",
       "range": {
         "startLine": 48,
         "startChar": 7,
@@ -259,6 +403,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb8f98c_fbd755f0",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0553c2e0_e0afa2aa",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d866f97_bfa31a6e",
@@ -282,6 +444,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c24ac43_d909ae5c",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d866f97_bfa31a6e",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 49
+      },
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2290944_e48d9c41",
@@ -295,6 +481,24 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "nit: does it make sense to print `label` here, because most of the time this fails would probably be because the user mistyped the label on the command line?",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "359e2e7c_c12fd52d",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T11:07:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2290944_e48d9c41",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
