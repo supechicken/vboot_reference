@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a5c1af_4892c559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T18:58:11Z",
+      "side": 1,
+      "message": "For the signature size part, I agree that we should use sig_alg to determine the signature size instead of restoring it and we should determine the sig_alg based on CKA_MODULUS_BITS and CKA_PUBLIC_EXPONENT. But on the other hand, I would prefer not to pass vb2_private_key to this file. I think passing pkcs11_key with some additional information (e.g. signature_size) to the functions should be enough and clean.",
+      "revId": "e2f45bba89a6106320953c5062ed29f34107b05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

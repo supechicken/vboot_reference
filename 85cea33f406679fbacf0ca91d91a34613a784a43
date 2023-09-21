@@ -354,6 +354,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c15e58b1_2f09673e",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T18:58:11Z",
+      "side": 1,
+      "message": "Or maybe just mapping `CK_MECHANISM_TYPE` to the `enum vb2_hash_algorithm`?",
+      "parentUuid": "bf330e2a_cbf31121",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dab361f_cc2447c0",
         "filename": "host/lib/host_p11.c",
         "patchSetId": 12
@@ -382,6 +400,24 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "This seems a bit brittle, especially since we also support exponent 3 which we count as a different algorithm but has the same signature sizes as the default exponent (0x10001). You can see some similar code in host/lib21/host_key.c:vb2_rsa_sig_alg(). It would be good to factor out the relevant part from that into a separate function (e.g. in host/lib/crypto.c) that takes a signature size and an exponent and returns a vb2_signature_algorithm, and then use that both in lib21/host_key.c and here.\n\nI also don\u0027t think you should store signature_size in p11_key, instead you should pull the whole vb2_private_key into this file and then have pkcs11_get_key() fill out the right sig_alg in there directly based on CKA_MODULUS and CKA_PUBLIC_EXPONENT.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b525a7_d9ba74a2",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T18:58:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ee46906a_fc73dd74",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -520,6 +556,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0887a8de_058d5e3c",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T18:58:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "95986f5e_cbb974ed",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dfb594f_fd2a10c3",
@@ -533,6 +587,24 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "It seems very odd that this needs to be called twice? Will that not lead to the signer actually calculating the signature twice? We already know the signature size to begin with, there should be no way in which it could not match what the signer wants here (and your code here is not verifying the result returned from the first call anyway), so why can\u0027t we just sign into our buffer to begin with?",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a644db_c931d09c",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-21T18:58:11Z",
+      "side": 1,
+      "message": "Thanks for finding this. The first C_sign is the code I forgot to remove.",
+      "parentUuid": "5dfb594f_fd2a10c3",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
