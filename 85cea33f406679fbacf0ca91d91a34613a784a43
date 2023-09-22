@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c704ce1d_3531ba0c",
+        "filename": "Makefile",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-22T05:15:23Z",
+      "side": 1,
+      "message": "Isn\u0027t nss installed by default on pretty much every Linux distribution? Maybe I\u0027m misremembering how this works (haven\u0027t set up my own Linux system in a while) but I thought this was one of these old super-ubiquitous things that everyone had?\n\nMaking things optional has both advantages and disadvantages. It incurs a real maintenance overhead as we\u0027ve already learned the hard way with flashrom. If that\u0027s the only option to keep our wide userbase happy, sure, but if this is a library everyone already has anyway (like openssl which is also a hard depedency), it would be better not to need the extra complication.",
+      "parentUuid": "75f04814_cab2b766",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c51d83e_1759f445",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 12
@@ -366,6 +384,24 @@
       "side": 1,
       "message": "Or maybe just mapping `CK_MECHANISM_TYPE` to the `enum vb2_hash_algorithm`?",
       "parentUuid": "bf330e2a_cbf31121",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b8f065_a181528b",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-22T05:15:23Z",
+      "side": 1,
+      "message": "It should just be an `enum vb2_hash_algorithm`. You should translate the openssl value into that when you first write to it.",
+      "parentUuid": "c15e58b1_2f09673e",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

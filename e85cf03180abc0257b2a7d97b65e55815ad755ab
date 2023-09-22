@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f95beb_c2b7f1d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-22T05:15:23Z",
+      "side": 1,
+      "message": "+Patrick for opinions on the NSS dependency, since upstream coreboot and the Jenkins server are going to be the main impacted users for this. Do the current Jenkins servers have NSS installed? Do you think someone in the community would be upset if this is added as a host build dependency (when building with CONFIG_VBOOT) or would you agree that this is something everyone already has anyway?",
+      "revId": "e85cf03180abc0257b2a7d97b65e55815ad755ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccac8940_43338954",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-22T05:15:23Z",
+      "side": 1,
+      "message": "nit: free(NULL) is legal so you can just call it unconditionally. Also, might be cleaner to combine all the error cases at the bottom of the function with a goto label.",
+      "revId": "e85cf03180abc0257b2a7d97b65e55815ad755ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "846d4d44_db2a619d",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-22T05:15:23Z",
+      "side": 1,
+      "message": "nit: should be uint32_t if you want to be able to read up to 4 bytes (probably better to switch to that in the signature of vb2_get_sig_alg() too).",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 4
+      },
+      "revId": "e85cf03180abc0257b2a7d97b65e55815ad755ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "For the signature size part, I agree that we should use sig_alg to determine the signature size instead of restoring it and we should determine the sig_alg based on CKA_MODULUS_BITS and CKA_PUBLIC_EXPONENT. But on the other hand, I would prefer not to pass vb2_private_key to this file. I think passing pkcs11_key with some additional information (e.g. signature_size) to the functions should be enough and clean.",
       "revId": "e2f45bba89a6106320953c5062ed29f34107b05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ee4702_261c141c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-22T05:15:23Z",
+      "side": 1,
+      "message": "If you want to pass additional arguments into and back out of the function that\u0027s fine by me too, but I think there should not be two fields encoding the same thing (or one thing that can be easily derived from the other) in the final vb2_private_key structure (including its sub-structures).",
+      "parentUuid": "72a5c1af_4892c559",
+      "revId": "e2f45bba89a6106320953c5062ed29f34107b05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
