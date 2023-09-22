@@ -173,8 +173,8 @@ enum vb2_nv_recovery {
 	VB2_RECOVERY_AUXFW_UPDATE = 0x30,
 
 	/*
-	 * Intel CSE Lite SKU firmware failure; see subcodes defined in coreboot for specific
-	 * reason.
+	 * Intel CSE Lite SKU firmware failure; see subcodes defined in coreboot
+	 * for specific reason.
 	 */
 	VB2_RECOVERY_INTEL_CSE_LITE_SKU = 0x31,
 
@@ -279,6 +279,9 @@ enum vb2_nv_recovery {
 
 	/* Attempt to escape from NO_BOOT mode was detected */
 	VB2_RECOVERY_ESCAPE_NO_BOOT = 0x64,
+
+	/* Failed to prepare the widevine functionality */
+	VB2_RECOVERY_WIDEVINE_PREPARE = 0x65,
 
 	/* Unspecified/unknown error in rewritable firmware */
 	VB2_RECOVERY_RW_UNSPECIFIED = 0x7f,
