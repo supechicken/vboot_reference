@@ -406,6 +406,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215b7a41_154be73c",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-22T19:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7b8f065_a181528b",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dab361f_cc2447c0",
@@ -419,6 +437,24 @@
       "writtenOn": "2023-09-16T00:54:11Z",
       "side": 1,
       "message": "While vboot supports SHA224 and SHA384 for standalone hashing, they\u0027re not currently supported for RSA signing, so they shouldn\u0027t count as \"valid\" here.",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c049992d_edd6a59e",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-22T19:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dab361f_cc2447c0",
       "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

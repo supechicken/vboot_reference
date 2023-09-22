@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4196f7d_f6a609b2",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-22T19:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccac8940_43338954",
+      "revId": "e85cf03180abc0257b2a7d97b65e55815ad755ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "846d4d44_db2a619d",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-09-22T05:15:23Z",
       "side": 1,
       "message": "nit: should be uint32_t if you want to be able to read up to 4 bytes (probably better to switch to that in the signature of vb2_get_sig_alg() too).",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 4
+      },
+      "revId": "e85cf03180abc0257b2a7d97b65e55815ad755ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f7c2fa4_40b99022",
+        "filename": "host/lib/host_p11.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-22T19:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846d4d44_db2a619d",
       "range": {
         "startLine": 210,
         "startChar": 1,
