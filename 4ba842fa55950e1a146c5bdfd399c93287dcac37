@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81fade6c_764d82da",
+        "filename": "firmware/2lib/2api.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-22T11:12:54Z",
+      "side": 1,
+      "message": "I tried to write a CL for that:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/4877902\n\nBut I\u0027m not sure if I understand the vboot code correctly or not....",
+      "parentUuid": "4eff82e5_2bcc9f57",
+      "revId": "4ba842fa55950e1a146c5bdfd399c93287dcac37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "227ad4ce_c19daa6d",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 9
