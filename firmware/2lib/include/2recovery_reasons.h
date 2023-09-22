@@ -38,8 +38,6 @@ enum vb2_nv_recovery {
 	/* User manually requested recovery via recovery button */
 	VB2_RECOVERY_RO_MANUAL = 0x02,
 
-
-
 	/**********************************************************************/
 	/**** Firmware verification (RO) errors (and some EC stuff???) ********/
 
@@ -173,15 +171,13 @@ enum vb2_nv_recovery {
 	VB2_RECOVERY_AUXFW_UPDATE = 0x30,
 
 	/*
-	 * Intel CSE Lite SKU firmware failure; see subcodes defined in coreboot for specific
-	 * reason.
+	 * Intel CSE Lite SKU firmware failure; see subcodes defined in coreboot
+	 * for specific reason.
 	 */
 	VB2_RECOVERY_INTEL_CSE_LITE_SKU = 0x31,
 
 	/* Unspecified/unknown error in read-only firmware */
 	VB2_RECOVERY_RO_UNSPECIFIED = 0x3f,
-
-
 
 	/**********************************************************************/
 	/**** Kernel verification (RW) errors *********************************/
@@ -280,10 +276,11 @@ enum vb2_nv_recovery {
 	/* Attempt to escape from NO_BOOT mode was detected */
 	VB2_RECOVERY_ESCAPE_NO_BOOT = 0x64,
 
+	/*  */
+	VB2_RECOVERY_WIDEVINE_PREPARE_FAILED = 0x64,
+
 	/* Unspecified/unknown error in rewritable firmware */
 	VB2_RECOVERY_RW_UNSPECIFIED = 0x7f,
-
-
 
 	/**********************************************************************/
 	/**** OS level (kernel) errors (deprecated) ***************************/
@@ -299,8 +296,6 @@ enum vb2_nv_recovery {
 
 	/* Unspecified/unknown error in kernel (deprecated) */
 	VB2_RECOVERY_DEPRECATED_KE_UNSPECIFIED = 0xbf,
-
-
 
 	/**********************************************************************/
 	/**** OS level (userspace) errors *************************************/
