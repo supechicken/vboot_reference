@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba15106_469adc77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-23T00:18:53Z",
+      "side": 1,
+      "message": "You need to also add a reason string to 2lib/2recovery_reasons.c",
+      "revId": "1adb495d8f1a2dba3c44b1154e05555a3fafe9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae726dae_974d927d",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-23T00:18:53Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s fine to just call the constant VB2_RECOVERY_WIDEVINE_PREPARE without the FAILED. Most recovery reason names are just VB2_RECOVERY_DID_SOMETHING, and the implicit implication is that the recovery reason being set is that the \"something\" failed.",
+      "range": {
+        "startLine": 284,
+        "startChar": 30,
+        "endLine": 284,
+        "endChar": 37
+      },
+      "revId": "1adb495d8f1a2dba3c44b1154e05555a3fafe9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1480280b_b1d1a939",
+        "filename": "firmware/2lib/include/2recovery_reasons.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-23T00:18:53Z",
+      "side": 1,
+      "message": "You actually need to pick a number that isn\u0027t already used.",
+      "range": {
+        "startLine": 284,
+        "startChar": 40,
+        "endLine": 284,
+        "endChar": 44
+      },
+      "revId": "1adb495d8f1a2dba3c44b1154e05555a3fafe9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
