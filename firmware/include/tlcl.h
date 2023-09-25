@@ -271,6 +271,16 @@ uint32_t TlclIFXFieldUpgradeInfo(TPM_IFX_FIELDUPGRADEINFO *info);
  */
 uint32_t TlclReadPublic(uint32_t handle, uint8_t *data, uint32_t *length);
 
+/**
+ * Allow certain Transient Objects to be made persistent or a persistent object
+ * to be evicted. If [objectHandle] is a transient object handle, then
+ * [persistentHandle] is the persistent handle for the object. If [objectHandle]
+ * is a persistent object handle, then it shall be the same value as
+ * [persistentHandle].
+ */
+uint32_t TlclEvictControl(uint32_t authHandle, uint32_t objectHandle,
+			  uint32_t persistentHandle);
+
 #ifdef CHROMEOS_ENVIRONMENT
 
 /**
