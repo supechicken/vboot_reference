@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01995cf1_9051280f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-25T09:40:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aabed9a_f5d24059",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a835a90_c7617b12",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-25T08:40:51Z",
       "side": 1,
       "message": "Would you also like to do b:269204332 as well? You\u0027ll just need to change one more line in `vb2api_export_vbsd()` in firmware/2lib/2misc.c:\n\nfrom\n\n```\nvbsd-\u003ekernel_version_tpm \u003d sd-\u003ekernel_version;\n```\n\nto\n\n```\nvbsd-\u003ekernel_version_tpm \u003d sd-\u003ekernel_version_secdata_writeback;\n```\n\nI\u0027m also fine if you don\u0027t want to do that in this patch.",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08dd1a9c_f6549eff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-25T09:40:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a835a90_c7617b12",
       "revId": "308e24123802d079d88626c329a78e753f4d42bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49addff2_1ad6c45d",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-25T09:40:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a6c749_628fce20",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d653231_995e8aab",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d6fa36_cf98bd49",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-25T09:40:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2176d787_44cf66b6",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9a9b8b0_60abfaa8",
@@ -116,6 +188,30 @@
       "writtenOn": "2023-09-25T08:40:51Z",
       "side": 1,
       "message": "`kernel_version_secdata_writeback`. Longer but clearer.\n\nAnother thought: rename the original `kernel_version_secdata` to `kernel_version_secdata_start`, and add the new `kernel_version_secdata` here.",
+      "range": {
+        "startLine": 247,
+        "startChar": 10,
+        "endLine": 247,
+        "endChar": 34
+      },
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792828df_1e28e0c2",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-25T09:40:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9a9b8b0_60abfaa8",
       "range": {
         "startLine": 247,
         "startChar": 10,
