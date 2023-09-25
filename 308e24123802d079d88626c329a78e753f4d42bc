@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aabed9a_f5d24059",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T08:40:51Z",
+      "side": 1,
+      "message": "Elaborate.",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a835a90_c7617b12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T08:40:51Z",
+      "side": 1,
+      "message": "Would you also like to do b:269204332 as well? You\u0027ll just need to change one more line in `vb2api_export_vbsd()` in firmware/2lib/2misc.c:\n\nfrom\n\n```\nvbsd-\u003ekernel_version_tpm \u003d sd-\u003ekernel_version;\n```\n\nto\n\n```\nvbsd-\u003ekernel_version_tpm \u003d sd-\u003ekernel_version_secdata_writeback;\n```\n\nI\u0027m also fine if you don\u0027t want to do that in this patch.",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138cba04_2490a30d",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T08:40:51Z",
+      "side": 1,
+      "message": "This field should remain to be the tpm kernel version before the boot. Otherwise `vbsd-\u003ekernel_version_tpm_start` in `vb2api_export_vbsd()` would be wrong.\n\nIf our unit tests didn\u0027t catch this, we should add more checks in `finalize_tests()`.",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a6c749_628fce20",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T08:40:51Z",
+      "side": 1,
+      "message": "`finalize_tests` needs to be updated as well.",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d653231_995e8aab",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T08:40:51Z",
+      "side": 1,
+      "message": "Please also update `load_kernel_tests` to check `sd-\u003ekernel_version`. The updated tests should fail with the original `vb2api_load_kernel` code (because of the `sd-\u003ekernel_version \u003d lowest_version` line).",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2176d787_44cf66b6",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T08:40:51Z",
+      "side": 1,
+      "message": "Declaration can be moved inside the while loop right before the `vb2_load_partition` call.",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a9b8b0_60abfaa8",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T08:40:51Z",
+      "side": 1,
+      "message": "`kernel_version_secdata_writeback`. Longer but clearer.\n\nAnother thought: rename the original `kernel_version_secdata` to `kernel_version_secdata_start`, and add the new `kernel_version_secdata` here.",
+      "range": {
+        "startLine": 247,
+        "startChar": 10,
+        "endLine": 247,
+        "endChar": 34
+      },
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
