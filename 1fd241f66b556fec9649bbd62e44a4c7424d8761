@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0830cc36_2ac684ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-25T10:09:35Z",
+      "side": 1,
+      "message": "In the tpm2 spec, the type is still \"TPM2B_PUBLIC\", I think we should not change the comment of TlclReadPublic.\n\n(Note: TPM2B_PUBLIC means the TPM2B contains a TPMT_PUBLIC.)\n\nhttps://trustedcomputinggroup.org/wp-content/uploads/TCG_TPM2_r1p59_Part3_Commands_pub.pdf#page\u003d71",
+      "parentUuid": "536b5d5d_3c92f3dc",
+      "revId": "1fd241f66b556fec9649bbd62e44a4c7424d8761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5030e994_238972cc",
         "filename": "firmware/include/tpm2_tss_constants.h",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2023-09-25T09:19:41Z",
       "side": 1,
       "message": "Do we still need these?",
+      "range": {
+        "startLine": 140,
+        "startChar": 47,
+        "endLine": 140,
+        "endChar": 80
+      },
+      "revId": "1fd241f66b556fec9649bbd62e44a4c7424d8761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad111347_a254f1d2",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-25T10:09:35Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "5030e994_238972cc",
       "range": {
         "startLine": 140,
         "startChar": 47,
