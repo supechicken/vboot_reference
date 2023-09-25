@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a2500f_fd7ae7cd",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-25T22:07:34Z",
+      "side": 1,
+      "message": "We should set sd-\u003ekernel_version here too.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4a8cfa_d8508f1a",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-25T22:07:34Z",
+      "side": 1,
+      "message": "If you do add a new field you also need to bump the minor version here to make that distinguishable.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccba7aec_ed0842f9",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-25T22:07:34Z",
+      "side": 1,
+      "message": "So... I know I said earlier that we should add a new value here and track three different values, but upon taking a second look I\u0027m not so sure about that anymore. Because I also think we should do the same for both kernel and firmware versions and make sure the fields have the same meaning for each.\n\nIf you look at the way fw_version_secdata is handled, that field *is* actually updated with the new firmware_version we write back to the TPM. So in that case we don\u0027t keep tracking the version that was in the TPM at boot, and like Yu-Ping mentioned on the other CL maybe we also don\u0027t really need to (there seems to be no real use case for that).\n\nSo rather than looking at this as \"we already track two things and we need to add the third\", maybe we should look at this as \"we only want to track the version in the TPM (at the end) and the version booted, but for kernel_version that tracking is currently a bit buggy (whereas for fw_version I think it already works fine)\".\n\nSo I think we probably don\u0027t actually need to add a new field, we just need to fix the code so that sd-\u003ekernel_version always reflects the version actually booted, and sd-\u003ekernel_version_secdata gets updated with the value actually written back to the TPM. (We should maybe still bump the shared data minor version in that case, to indicate that the fields are fixed and now contain the correct values.)",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09d7c039_a6a51e97",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-25T22:07:34Z",
+      "side": 1,
+      "message": "What do we need `kernel_version_tpm_start` for? It currently seems unused.",
+      "parentUuid": "bc93dd37_9ca8b6d9",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a6c749_628fce20",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 6
