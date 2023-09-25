@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536b5d5d_3c92f3dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T09:19:41Z",
+      "side": 1,
+      "message": "Also need to modify the comment of `TlclReadPublic` in firmware/include/tlcl.h.",
+      "revId": "1fd241f66b556fec9649bbd62e44a4c7424d8761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5030e994_238972cc",
+        "filename": "firmware/include/tpm2_tss_constants.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-25T09:19:41Z",
+      "side": 1,
+      "message": "Do we still need these?",
+      "range": {
+        "startLine": 140,
+        "startChar": 47,
+        "endLine": 140,
+        "endChar": 80
+      },
+      "revId": "1fd241f66b556fec9649bbd62e44a4c7424d8761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
