@@ -726,3 +726,17 @@ uint32_t TlclReadPublic(uint32_t handle, uint8_t *data, uint32_t *length)
 
 	return TPM_SUCCESS;
 }
+
+uint32_t TlclEvictControl(uint32_t authHandle, uint32_t objectHandle,
+			  uint32_t persistentHandle)
+{
+	struct tpm2_evict_control_cmd cmd;
+
+	memset(&cmd, 0, sizeof(cmd));
+
+	cmd.auth = authHandle;
+	cmd.object_handle = objectHandle;
+	cmd.persistent_handle = persistentHandle;
+
+	return tpm_get_response_code(TPM2_EvictControl, &cmd);
+}
