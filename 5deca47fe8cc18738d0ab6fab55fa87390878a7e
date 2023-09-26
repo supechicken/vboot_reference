@@ -3,6 +3,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "671eef14_deacd291",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-09-26T19:32:54Z",
+      "side": 1,
+      "message": "\u003e warning: FUTILITY is referenced but not assigned.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2154\n\nPlease ensure this is defined (is it in common.sh?).",
+      "parentUuid": "f88d63e4_c6a25388",
+      "range": {
+        "startLine": 102,
+        "startChar": 49,
+        "endLine": 102,
+        "endChar": 60
+      },
+      "revId": "5deca47fe8cc18738d0ab6fab55fa87390878a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c6698f_f4c0e7bb",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-09-26T19:32:54Z",
+      "side": 1,
+      "message": "\u003e warning: KMS_PKCS11_CONFIG is referenced but not assigned.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2154\n\nPlease ensure this is defined (is it in common.sh?).",
+      "parentUuid": "d5d4caf1_5d774f6c",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 46
+      },
+      "revId": "5deca47fe8cc18738d0ab6fab55fa87390878a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54024bc8_11bba1f1",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 12
