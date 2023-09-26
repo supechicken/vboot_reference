@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e034757_98b1da6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f34d073f_71275fcd",
+      "range": {
+        "startLine": 12,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12bbe1df_705149c9",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-09-26T04:08:51Z",
       "side": 1,
       "message": "This should be `kernel_version_secdata_writeback`.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbf9d38_8a627281",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bbe1df_705149c9",
       "revId": "654645c119814b628e839edda0ff914a4e117ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -72,6 +114,24 @@
       "side": 1,
       "message": "Please also modify unit tests to check that.",
       "parentUuid": "20a2500f_fd7ae7cd",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a3a7f8_aa44ee84",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c7c2f0_db88227d",
       "revId": "654645c119814b628e839edda0ff914a4e117ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f25394e_6bbc1d25",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd746b81_db2f2f53",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44d430f6_b5534b0f",
@@ -158,6 +236,24 @@
       "writtenOn": "2023-09-26T04:08:51Z",
       "side": 1,
       "message": "Can we move it inside the `mock_part` struct? Then in `vb2_verify_keyblock()` we can use `gpt-\u003ecurrent_kernel` as the index.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b378aa7_7635cdc1",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d430f6_b5534b0f",
       "revId": "654645c119814b628e839edda0ff914a4e117ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -185,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84fa78f3_91f1cd15",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eedd7ff_eed84156",
+      "range": {
+        "startLine": 233,
+        "startChar": 18,
+        "endLine": 233,
+        "endChar": 19
+      },
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592acce8_50802bed",
@@ -198,6 +318,30 @@
       "writtenOn": "2023-09-26T04:08:51Z",
       "side": 1,
       "message": "No space.",
+      "range": {
+        "startLine": 249,
+        "startChar": 18,
+        "endLine": 249,
+        "endChar": 19
+      },
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbd189d_7e12340d",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592acce8_50802bed",
       "range": {
         "startLine": 249,
         "startChar": 18,
