@@ -68,6 +68,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52483973_04ae1601",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-26T20:34:58Z",
+      "side": 1,
+      "message": "I believe this is supplied by the environment in the current way this is invoked. Basically this is the path to futility binary, and before this change you can see it\u0027s `sudo \"${FUTILITY}\"`, so it already operates in a manner that expects ${FUTILITY} to be set by the environment.",
+      "parentUuid": "671eef14_deacd291",
+      "range": {
+        "startLine": 102,
+        "startChar": 49,
+        "endLine": 102,
+        "endChar": 60
+      },
+      "revId": "5deca47fe8cc18738d0ab6fab55fa87390878a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522bfb57_676a0d47",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-26T20:34:58Z",
+      "side": 1,
+      "message": "This is the configuration that tells the Cloud HSM PKCS#11 plugin on what keyrings to use. By design it is either supplied by the environment or supplied by key_config.sh. I think we can work this out with bshai@ when he\u0027s here, as this relates to how you folks plan to manage the keys and keyrings on the infra.",
+      "parentUuid": "c0c6698f_f4c0e7bb",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 46
+      },
+      "revId": "5deca47fe8cc18738d0ab6fab55fa87390878a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54024bc8_11bba1f1",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 12
@@ -79,6 +127,30 @@
       "writtenOn": "2023-09-26T19:30:55Z",
       "side": 1,
       "message": "Where is key_config.sh?",
+      "range": {
+        "startLine": 1305,
+        "startChar": 0,
+        "endLine": 1305,
+        "endChar": 44
+      },
+      "revId": "5deca47fe8cc18738d0ab6fab55fa87390878a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dadb0a0_338c1f55",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-26T20:34:58Z",
+      "side": 1,
+      "message": "It is the key configuration file mentioned in the design doc titled \"Unified Config and API for HSM Migration\", it should be supplied by the environment in place of the key directory.",
+      "parentUuid": "54024bc8_11bba1f1",
       "range": {
         "startLine": 1305,
         "startChar": 0,
