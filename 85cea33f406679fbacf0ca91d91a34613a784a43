@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7e479b3_4c506a75",
+        "filename": "Makefile",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-09-26T20:21:54Z",
+      "side": 1,
+      "message": "I discussed with Julius over GVC and the conclusion is that:\n- We\u0027ll want to make NSS a compulsory dependency of vboot_reference.\n- This is to avoid having many different possible builds of vboot_reference that can break in various different ways.\n- We\u0027ll add comments/error messages to let the users know what needs to be installed (libnss3-dev) if the dependency is not found.\n- If somebody complains about this compulsory dependency, we can re-evaluate this decision.",
+      "parentUuid": "6a0c83de_12128a96",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c51d83e_1759f445",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 12
