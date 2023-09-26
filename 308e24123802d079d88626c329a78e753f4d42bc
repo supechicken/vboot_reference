@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0557900a_d2e97f9b",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-26T16:33:41Z",
+      "side": 1,
+      "message": "Currently, I changed the meaning of the \"sd-\u003ekernel_version_secdata\" to \"The value stored in the TPM at the end of the boot\".\nSo the meaning of \"kernel_version_tpm_start\" is also changed now...",
+      "parentUuid": "7d01d31c_b6cfd1ba",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a6c749_628fce20",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 6
