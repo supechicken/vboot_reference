@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d01d31c_b6cfd1ba",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "Yeah it\u0027s not used now. Existing boards do set it correctly, so if we ever need it in crossystem in the future, it\u0027s easy to implement that. However if we decide to drop it now, it\u0027ll be impossible to do that for new devices. The situation is the same for `fw_version_tpm_start`. I guess we\u0027ll need to make a decision now. I\u0027m fine either way.",
+      "parentUuid": "09d7c039_a6a51e97",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a6c749_628fce20",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 6

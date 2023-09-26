@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f34d073f_71275fcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "purposes",
+      "range": {
+        "startLine": 12,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bbe1df_705149c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "This should be `kernel_version_secdata_writeback`.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20a2500f_fd7ae7cd",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 8
@@ -14,6 +54,24 @@
       "writtenOn": "2023-09-25T22:07:34Z",
       "side": 1,
       "message": "We should set sd-\u003ekernel_version here too.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c7c2f0_db88227d",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "Please also modify unit tests to check that.",
+      "parentUuid": "20a2500f_fd7ae7cd",
       "revId": "654645c119814b628e839edda0ff914a4e117ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -37,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16db04bb_9d8a2e64",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "Maybe we don\u0027t need to, because the new field comes from `reserved0`, and everything this patch touches happens in depthcharge.",
+      "parentUuid": "bb4a8cfa_d8508f1a",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccba7aec_ed0842f9",
         "filename": "firmware/2lib/include/2struct.h",
         "patchSetId": 8
@@ -48,6 +124,86 @@
       "writtenOn": "2023-09-25T22:07:34Z",
       "side": 1,
       "message": "So... I know I said earlier that we should add a new value here and track three different values, but upon taking a second look I\u0027m not so sure about that anymore. Because I also think we should do the same for both kernel and firmware versions and make sure the fields have the same meaning for each.\n\nIf you look at the way fw_version_secdata is handled, that field *is* actually updated with the new firmware_version we write back to the TPM. So in that case we don\u0027t keep tracking the version that was in the TPM at boot, and like Yu-Ping mentioned on the other CL maybe we also don\u0027t really need to (there seems to be no real use case for that).\n\nSo rather than looking at this as \"we already track two things and we need to add the third\", maybe we should look at this as \"we only want to track the version in the TPM (at the end) and the version booted, but for kernel_version that tracking is currently a bit buggy (whereas for fw_version I think it already works fine)\".\n\nSo I think we probably don\u0027t actually need to add a new field, we just need to fix the code so that sd-\u003ekernel_version always reflects the version actually booted, and sd-\u003ekernel_version_secdata gets updated with the value actually written back to the TPM. (We should maybe still bump the shared data minor version in that case, to indicate that the fields are fixed and now contain the correct values.)",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd746b81_db2f2f53",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "`kernel_version` shouldn\u0027t be set now.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d430f6_b5534b0f",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "Can we move it inside the `mock_part` struct? Then in `vb2_verify_keyblock()` we can use `gpt-\u003ecurrent_kernel` as the index.",
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eedd7ff_eed84156",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "No space.",
+      "range": {
+        "startLine": 233,
+        "startChar": 18,
+        "endLine": 233,
+        "endChar": 19
+      },
+      "revId": "654645c119814b628e839edda0ff914a4e117ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592acce8_50802bed",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-26T04:08:51Z",
+      "side": 1,
+      "message": "No space.",
+      "range": {
+        "startLine": 249,
+        "startChar": 18,
+        "endLine": 249,
+        "endChar": 19
+      },
       "revId": "654645c119814b628e839edda0ff914a4e117ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
