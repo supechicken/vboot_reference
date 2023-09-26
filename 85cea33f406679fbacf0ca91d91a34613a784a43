@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a0c83de_12128a96",
+        "filename": "Makefile",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-26T16:25:51Z",
+      "side": 1,
+      "message": "IIUC, the nss header we use is not installed by default, zuan@ might have more information about this.\n(I also updated the code with the HAVE_NSS guard, which make any function call in host_p11.h just fails if HAVE_NSS is not defined)",
+      "parentUuid": "c704ce1d_3531ba0c",
+      "revId": "85cea33f406679fbacf0ca91d91a34613a784a43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c51d83e_1759f445",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 12
