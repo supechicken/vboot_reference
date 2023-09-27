@@ -16,6 +16,24 @@
       "message": "how did you create this file? I\u0027ve been running http://cs/h/chrome-internal/chromeos/codesearch/+/main:src/platform/signing/signer-production/scripts/keygeneration-premp/prepare_dev_keys.sh, but it doesn\u0027t seem to have created this...",
       "revId": "6ac51b7693354bf889c29f5a08158435ce089d1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "941d1e95_a5cac55b",
+        "filename": "tests/devkeys-tmp/key_ec_efs.vbprik2",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-27T10:22:30Z",
+      "side": 1,
+      "message": "`tests/devkeys-tmp` is a copy of `tests/devkeys` that removes some stuff that we don\u0027t need. So `tests/devkeys-tmp/key_ec_efs.vbprik2` is just a copy of `tests/devkeys/key_ec_efs.vbprik2`",
+      "parentUuid": "9d4482b1_61c36137",
+      "revId": "6ac51b7693354bf889c29f5a08158435ce089d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
