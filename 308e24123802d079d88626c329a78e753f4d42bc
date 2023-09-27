@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b927e57_8fd3fdad",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-09-27T03:09:47Z",
+      "side": 1,
+      "message": "Well, we should probably rename the fields then (e.g. kernel_version_tpm -\u003e kernel_version_act and kernel_version_tpm_start -\u003e kernel_version_tpm).\n\nWe probably also need to increase VB_SHARED_DATA_VERSION so that crossystem can tell newer from older systems apart and display the right values (or at least values that are more consistent with previous output) on older systems (and then implement that logic in crossystem). Because if we just flip the fields around like this, then on older systems that didn\u0027t get the firmware update tpm_kernver will start showing the TPM version from the start of the boot, and that may break a lot of existing assumptions and tests.",
+      "parentUuid": "0557900a_d2e97f9b",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a6c749_628fce20",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 6
