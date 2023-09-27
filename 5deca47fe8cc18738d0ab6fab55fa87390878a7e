@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bebdf9_a5346963",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-09-27T10:19:15Z",
+      "side": 1,
+      "message": "The manual test is covered by the next CL, which contains the key_config.sh and kms pkcs11 `.so`. The test is basically running `sign_official_build.sh base \u003cin_image\u003e \u003ckey_dir\u003e \u003cout_image\u003e`",
+      "parentUuid": "b4bf8ff3_7b83119a",
+      "revId": "5deca47fe8cc18738d0ab6fab55fa87390878a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "671eef14_deacd291",
