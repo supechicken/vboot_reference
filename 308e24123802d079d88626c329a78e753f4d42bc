@@ -214,6 +214,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5bad28_9827e4c5",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-09-27T11:50:02Z",
+      "side": 1,
+      "message": "Done\nAnd renamed the `kernel_version_tpm_start` to `kernel_version_act`.",
+      "parentUuid": "296f8ac3_64656712",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32a6c749_628fce20",
