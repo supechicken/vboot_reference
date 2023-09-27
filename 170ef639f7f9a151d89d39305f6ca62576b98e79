@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a4bdd5_2acbe4c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T03:01:26Z",
+      "side": 1,
+      "message": "separate",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "170ef639f7f9a151d89d39305f6ca62576b98e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70043d51_26cdee63",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T03:01:26Z",
+      "side": 1,
+      "message": "Should be set only if `vb2_load_partition` succeeds. Move this right above `return rv`.",
+      "revId": "170ef639f7f9a151d89d39305f6ca62576b98e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2cf542_002b6b6a",
+        "filename": "tests/vb2_load_kernel2_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T03:01:26Z",
+      "side": 1,
+      "message": "kernel version",
+      "range": {
+        "startLine": 458,
+        "startChar": 44,
+        "endLine": 458,
+        "endChar": 51
+      },
+      "revId": "170ef639f7f9a151d89d39305f6ca62576b98e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bfe656_cff4bb31",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T03:01:26Z",
+      "side": 1,
+      "message": "These are no longer needed. Just memset `cur_kbh` to 0 here, and in below:\n\n```\nmock_parts[0].kbh \u003d (struct vb2_keyblock) {\n    .data_key...\n    .keyblock_flags \u003d ...\n    ...\n};\n```",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "170ef639f7f9a151d89d39305f6ca62576b98e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

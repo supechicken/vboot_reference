@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25130ff1_a8e055ba",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T03:01:26Z",
+      "side": 1,
+      "message": "Then `kernel_version_tpm_start` should be deprecated. Remove the assignment in 2misc.c, and add deprecation comment in vboot_struct.h.",
+      "parentUuid": "0557900a_d2e97f9b",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a6c749_628fce20",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 6
