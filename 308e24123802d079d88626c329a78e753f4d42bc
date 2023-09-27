@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "296f8ac3_64656712",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T09:46:10Z",
+      "side": 1,
+      "message": "\u003e kernel_version_tpm -\u003e kernel_version_act and kernel_version_tpm_start -\u003e kernel_version_tpm\n\nSince crossystem runs after the device boots up, I think making `kernel_version_tpm` the \"active (current) TPM kernel version\" makes perfect sense, and hence there\u0027s no need to rename the fields.",
+      "parentUuid": "0b927e57_8fd3fdad",
+      "revId": "308e24123802d079d88626c329a78e753f4d42bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a6c749_628fce20",
         "filename": "firmware/2lib/2kernel.c",
         "patchSetId": 6

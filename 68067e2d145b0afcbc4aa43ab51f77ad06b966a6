@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ab76ff_ddaa04ec",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T09:46:10Z",
+      "side": 1,
+      "message": "`.data_key.key_version \u003d 2,`",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 5
+      },
+      "revId": "68067e2d145b0afcbc4aa43ab51f77ad06b966a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1e3bcc_0b92e799",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-09-27T09:46:10Z",
+      "side": 1,
+      "message": "Still need to memset `cur_kbh` to 0.",
+      "revId": "68067e2d145b0afcbc4aa43ab51f77ad06b966a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
