@@ -51,6 +51,24 @@
       "parentUuid": "4ce29b2e_87d9c25a",
       "revId": "5b5c7f70d6f365842c8ecc8427e45202c7ca9bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e760cd_e66a6f12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-09-29T01:50:41Z",
+      "side": 1,
+      "message": "cs/ shows (if we ignore autoest-drone and all factory test list)\n- https://chromium.googlesource.com/chromiumos/platform/moblab/+/main/third_party/autotest/server/hosts/cros_repair.py\n- https://chromium.googlesource.com/chromiumos/third_party/autotest/+/main/site_utils/deployment/prepare/dut.py\n\nAre we ok with these being not updated?",
+      "parentUuid": "9bde9ff6_cc464cf4",
+      "revId": "5b5c7f70d6f365842c8ecc8427e45202c7ca9bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
