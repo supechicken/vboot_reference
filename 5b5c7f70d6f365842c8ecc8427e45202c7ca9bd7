@@ -69,6 +69,24 @@
       "parentUuid": "9bde9ff6_cc464cf4",
       "revId": "5b5c7f70d6f365842c8ecc8427e45202c7ca9bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060f30b9_012d0c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393275
+      },
+      "writtenOn": "2023-09-29T16:56:51Z",
+      "side": 1,
+      "message": "1) @varunth@google.com regarding moblab code change to be sure it changed and need to be modified if still in use.\n\n2) the `deployment/prepare/dut.py` deprecated, and no longer in use.",
+      "parentUuid": "04e760cd_e66a6f12",
+      "revId": "5b5c7f70d6f365842c8ecc8427e45202c7ca9bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
