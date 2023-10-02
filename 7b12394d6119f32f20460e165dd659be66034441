@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed50395_22e51548",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-02T06:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b9a7827_844c4569",
+      "revId": "7b12394d6119f32f20460e165dd659be66034441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a520afbf_276ba2fe",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-09-30T01:20:44Z",
       "side": 1,
       "message": "When you change this you should also change how crossystem displays those values in the same patch. And, more importantly, you need to add fallback code to crossystem so that the old VBSD version is still interpreted according to the old meaning.",
+      "revId": "7b12394d6119f32f20460e165dd659be66034441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d463e6f_aadf1afa",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-02T06:28:24Z",
+      "side": 1,
+      "message": "Done.\n\nBTW, I think we only need the fallback code for `vdat_lfdebug`, because that is the only option that uses `*_version_tpm_start`.\n\nAnd we correct the meaning of `*_version_tpm` in this CL.",
+      "parentUuid": "a520afbf_276ba2fe",
       "revId": "7b12394d6119f32f20460e165dd659be66034441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
