@@ -162,16 +162,16 @@ calculate_rootfs_hash() {
 
   local salt_arg
   if [ -n "${salt}" ]; then
-    salt_arg="salt=${salt}"
+    salt_arg="--salt=${salt}"
   fi
 
   # Run the verity tool on the rootfs partition.
   local table
-  table=$(sudo verity mode=create \
-    alg="${verity_algorithm}" \
-    payload="${rootfs_image}" \
-    payload_blocks=$((rootfs_sectors / 8)) \
-    hashtree="${hash_image}" "${salt_arg}")
+  table=$(sudo verity --mode=create \
+    --alg="${verity_algorithm}" \
+    --payload="${rootfs_image}" \
+    --payload_blocks=$((rootfs_sectors / 8)) \
+    --hashtree="${hash_image}" "${salt_arg}")
   # Reconstruct new kernel config command line and replace placeholders.
   table="$(echo "${table}" |
     sed -s "s|ROOT_DEV|${root_dev}|g;s|HASH_DEV|${hash_dev}|")"
