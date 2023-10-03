@@ -69,6 +69,24 @@
       "parentUuid": "a520afbf_276ba2fe",
       "revId": "7b12394d6119f32f20460e165dd659be66034441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc4a914_49081340",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-03T01:09:32Z",
+      "side": 1,
+      "message": "Well, I think you should probably also change GetVdatInt() to return fw_version_act for VDAT_INT_FW_VERSION_TPM for the old VBSD version. That\u0027s different from what it does today but it would be more correct, especially once we also output the current versions through crossystem (shouldn\u0027t that also be added in this patch, btw? Or do you want to do that later?).\n\nRight now, sd-\u003efw_version contains the version currently booted and sd-\u003efw_version_secdata contains the version in the TPM at the end of the boot. The previous code moved sd-\u003efw_version into vbsd-\u003efw_version_tpm and sd-\u003efw_version_secdata into vbsd-\u003efw_version_tpm_start (which is now vbsd-\u003efw_version_act). So if crossystem will show both tpm_fwver and act_fwver in the future, for devices with the old VBSD version it should show what originally came from sd-\u003efw_version_secdata in tpm_fwver and what originally came from sd-\u003efw_version in act_fwver.\n\nBasically, the VBSD source fields for tpm_fwver and act_fwver should be exactly flipped between the old and new VBSD versions in crossystem. (Alternatively we could also consider renaming the VBSD fields differently... so that the one currently called vbsd-\u003efw_version_tpm_start will then be called vbsd-\u003efw_version_tpm and the one currently called vbsd-\u003efw_version_tpm will then be called vbsd-\u003efw_version_act. Then things would match between the old and new version. Maybe that would be cleaner?)",
+      "parentUuid": "2d463e6f_aadf1afa",
+      "revId": "7b12394d6119f32f20460e165dd659be66034441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
