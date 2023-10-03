@@ -87,6 +87,24 @@
       "parentUuid": "2d463e6f_aadf1afa",
       "revId": "7b12394d6119f32f20460e165dd659be66034441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d295e34_1bf94e50",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-03T08:30:49Z",
+      "side": 1,
+      "message": "Done.\nBTW, we cannot rename the `tpm_fwver` and `tpm_kernver` in crossystem easily.\nBecause the chromeos test infra relies on these two fields, I preserve the original naming and correct the remaining code.",
+      "parentUuid": "2dc4a914_49081340",
+      "revId": "7b12394d6119f32f20460e165dd659be66034441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
