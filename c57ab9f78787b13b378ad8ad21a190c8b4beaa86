@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ecf832_ee8f2156",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2023-10-05T05:19:58Z",
+      "side": 0,
+      "message": "This should be migrated to use `futility flash --wp-disable` and `futility flash --wp-status --ignore-hw`\n\nApplications that had already been migrated to futility were not affected by crrev/c/4630571. We didn\u0027t know this script was still using flashrom, we probably missed it because it\u0027s using a `flashrom_bios` alias.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 66
+      },
+      "revId": "c57ab9f78787b13b378ad8ad21a190c8b4beaa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
