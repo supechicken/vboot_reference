@@ -105,6 +105,24 @@
       "parentUuid": "2dc4a914_49081340",
       "revId": "7b12394d6119f32f20460e165dd659be66034441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ae0ffc_815cffc4",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-06T07:05:49Z",
+      "side": 1,
+      "message": "No, sorry, I think we got something confused here now, this is not what I meant. We do want to keep `tpm_fwver` and `tpm_kernver` in crossystem and we want them to continue to mean what they used to mean (the version stored in the TPM at the end of the boot). We just want to add two _additional_ crossystem output fields on top of that which I would suggest should be called `act_fwver` and `act_kernver` which then instead show the version that was currently booted. (For older VBSDs the `act_kernver` will not be available so it should check for VBSD version there and just not show it or show \"(unavailable)\" or something like that for the old one.)\n\nI think my previous comment may have been too confusing because I was talking about several different ways to tackle the \"support old VBSDs\" problem (VDAT_INT_FW_VERSION_TPM was only supposed to return fw_version_act on the old version where fw_version_act actually used to be fw_version_tpm_start and thus actually contained the TPM version, not the active one). I think the alternative approach that I outlined at the end of that comment is a cleaner and (hopefully?) less confusing way to achieve all this. See the other comment on how to match up the fields to get that.",
+      "parentUuid": "4d295e34_1bf94e50",
+      "revId": "7b12394d6119f32f20460e165dd659be66034441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
