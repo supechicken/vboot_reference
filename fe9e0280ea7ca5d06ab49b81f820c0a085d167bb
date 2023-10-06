@@ -16,6 +16,24 @@
       "message": "Well... no, now this would be messing up the kernel version with old VBSD versions again, because for the kernel, kernel_version_tpm has actually always contained the final TPM version (not the currently booted version like for firmware_version_tpm). So in order to make sure that old VBSDs automatically have everything in the right place (as best as they can), we need to rename the fields like this:\n\n* fw_version_tpm -\u003e fw_version_act\n* fw_version_tpm_start -\u003e fw_verison_tpm (I don\u0027t think the \u0027final\u0027 really adds anything useful here when we won\u0027t have a \u0027start\u0027 anymore)\n* kernel_version_tpm_start -\u003e kernel_version_act\n* kernel_version_tpm can stay where it is\n\nThis will result in the two `tpm` versions no longer being next to each other in the structure, but I think that\u0027s a fair price to pay if it saves us most of the hassle of translating values from old VBSD versions in crossystem.",
       "revId": "fe9e0280ea7ca5d06ab49b81f820c0a085d167bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a30c3b06_40ca7a6c",
+        "filename": "firmware/lib/include/vboot_struct.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-06T13:43:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d51273_f43382be",
+      "revId": "fe9e0280ea7ca5d06ab49b81f820c0a085d167bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
