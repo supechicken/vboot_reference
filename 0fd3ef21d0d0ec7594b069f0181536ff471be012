@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09eb219_f6aba9dc",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-06T23:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66204521_0fbf8bba",
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9d86f5f_64d87190",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-06T23:14:59Z",
       "side": 1,
       "message": "The firmware version can already be displayed for the older VBSD version 1 (because we already had it, we were just calling it something else). Only the kernel version needs to be gated by VBSD version 3 here.",
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86af2583_73c75d63",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-06T23:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d86f5f_64d87190",
       "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3bc32fb_faa4f2f4",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-06T23:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26acc54a_43f68243",
+      "range": {
+        "startLine": 516,
+        "startChar": 30,
+        "endLine": 516,
+        "endChar": 39
+      },
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d83c80d_325002d8",
@@ -71,6 +131,24 @@
       "writtenOn": "2023-10-06T23:14:59Z",
       "side": 1,
       "message": "nit: insert in alphabetical order, please",
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95707f27_de7c16b8",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-06T23:48:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d83c80d_325002d8",
       "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
