@@ -159,6 +159,24 @@
       "parentUuid": "54a249f5_6672f229",
       "revId": "5b5c7f70d6f365842c8ecc8427e45202c7ca9bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95774e78_a31bfbd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-10-06T18:39:44Z",
+      "side": 1,
+      "message": "Deprecation \u003d\u003d still in place and working, with time remaining to migrate.  These scripts were deprecated early in the year, with a \"will be removed\" warning notice put in place in CL:4170143 + CL:4251505 + CL:4269751 including a 30s delay to make sure users actually see the message.\n\nAn announcement now should be about imminent removal / deletion.",
+      "parentUuid": "67d64dc9_bd231602",
+      "revId": "5b5c7f70d6f365842c8ecc8427e45202c7ca9bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
