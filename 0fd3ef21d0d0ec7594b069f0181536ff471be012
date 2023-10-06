@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66204521_0fbf8bba",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-06T23:14:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you need two versions here, the second version should work for all VBSDs. (This output has just been mislabeled before already. I don\u0027t think anyone really uses it tbh. The fw_version_lowest thing also hasn\u0027t really worked for 10 years, for example.)",
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d86f5f_64d87190",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-06T23:14:59Z",
+      "side": 1,
+      "message": "The firmware version can already be displayed for the older VBSD version 1 (because we already had it, we were just calling it something else). Only the kernel version needs to be gated by VBSD version 3 here.",
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26acc54a_43f68243",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-06T23:14:59Z",
+      "side": 1,
+      "message": "In `utility/crossystem.c` you have `active_fwver` but here it\u0027s `act_fwver`. I\u0027m fine with either but you need to decide on one.",
+      "range": {
+        "startLine": 516,
+        "startChar": 30,
+        "endLine": 516,
+        "endChar": 39
+      },
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d83c80d_325002d8",
+        "filename": "utility/crossystem.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-06T23:14:59Z",
+      "side": 1,
+      "message": "nit: insert in alphabetical order, please",
+      "revId": "0fd3ef21d0d0ec7594b069f0181536ff471be012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
