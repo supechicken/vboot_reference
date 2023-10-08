@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b56f6f02_9e943b41",
+        "filename": "firmware/lib/include/vboot_struct.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-08T01:20:18Z",
+      "side": 1,
+      "message": "We should add a comment saying this is for `struct_version \u003e\u003d 3`.",
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321f1a37_a0df9616",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-08T01:20:18Z",
+      "side": 1,
+      "message": "active",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 48
+      },
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cce3743_f50aae71",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-08T01:20:18Z",
+      "side": 1,
+      "message": "nit: I think there was one extra space here intentionally in order to align the text with `dest`.",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 2
+      },
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f9544e8_4f2a542b",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-08T01:20:18Z",
+      "side": 1,
+      "message": "I think this can be moved to version 1 above?",
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
