@@ -17,5 +17,7 @@ struct vb2_public_key;
 int vb2_mont_ge(const struct vb2_public_key *key, uint32_t *a);
 vb2_error_t vb2_check_padding(const uint8_t *sig,
 			      const struct vb2_public_key *key);
+void modpow(const struct vb2_public_key *key, uint8_t *inout,
+	    uint32_t *workbuf32, int exp);
 
 #endif  /* VBOOT_REFERENCE_2RSA_PRIVATE_H_ */
