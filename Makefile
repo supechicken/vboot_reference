@@ -362,6 +362,7 @@ FWLIB_SRCS = \
 	firmware/2lib/2kernel.c \
 	firmware/2lib/2load_kernel.c \
 	firmware/2lib/2misc.c \
+	firmware/2lib/2modpow.c \
 	firmware/2lib/2nvstorage.c \
 	firmware/2lib/2packed_key.c \
 	firmware/2lib/2recovery_reasons.c \
@@ -513,6 +514,7 @@ HOSTLIB_SRCS = \
 	firmware/2lib/2crypto.c \
 	firmware/2lib/2hmac.c \
 	firmware/2lib/2kernel.c \
+	firmware/2lib/2modpow.c \
 	firmware/2lib/2nvstorage.c \
 	firmware/2lib/2recovery_reasons.c \
 	firmware/2lib/2rsa.c \
