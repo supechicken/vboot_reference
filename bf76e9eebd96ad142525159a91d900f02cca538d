@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3004c38a_495cb7d0",
+        "filename": "firmware/lib/include/vboot_struct.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-11T08:29:25Z",
+      "side": 1,
+      "message": "Done.\ncrrev.com/c/4931568",
+      "parentUuid": "b56f6f02_9e943b41",
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "321f1a37_a0df9616",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-08T01:20:18Z",
       "side": 1,
       "message": "active",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 48
+      },
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51374d60_c6cb42a8",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-11T08:29:25Z",
+      "side": 1,
+      "message": "Done.\ncrrev.com/c/4931568",
+      "parentUuid": "321f1a37_a0df9616",
       "range": {
         "startLine": 62,
         "startChar": 42,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "977542cc_8867020f",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-11T08:29:25Z",
+      "side": 1,
+      "message": "Done.\ncrrev.com/c/4931568",
+      "parentUuid": "8cce3743_f50aae71",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 2
+      },
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f9544e8_4f2a542b",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-10-08T01:20:18Z",
       "side": 1,
       "message": "I think this can be moved to version 1 above?",
+      "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe464e7_c94473b3",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-11T08:29:25Z",
+      "side": 1,
+      "message": "Done.\ncrrev.com/c/4931568",
+      "parentUuid": "0f9544e8_4f2a542b",
       "revId": "bf76e9eebd96ad142525159a91d900f02cca538d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
