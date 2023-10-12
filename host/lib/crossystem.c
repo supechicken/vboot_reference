@@ -322,6 +322,30 @@ static int GetVdatString(char *dest, int size, VdatStringField field)
 	return value;
 }
 
+static int FwidMajorVersion(void)
+{
+	char fwid[VB_MAX_STRING_PROPERTY];
+
+	if (VbGetSystemPropertyString("fwid", fwid, sizeof(fwid)) != 0)
+		return -1;
+
+	char *s, *saveptr;
+	const char *delim = ".";
+	/* Example fwid: "Google_Geralt.15622.0.0" */
+	s = strtok_r(fwid, delim, &saveptr);
+	if (s)
+		s = strtok_r(NULL, delim, &saveptr);
+	if (!s || *s == '\0')
+		return -1;
+
+	char *endptr = NULL;
+	int version = (int)strtol(s, &endptr, 10);
+	if (!endptr || *endptr != '\0')
+		return -1;
+
+	return version;
+}
+
 static int GetVdatInt(VdatIntField field)
 {
 	VbSharedDataHeader* sh = VbSharedDataRead();
@@ -345,7 +369,12 @@ static int GetVdatInt(VdatIntField field)
 			value = (sh->flags & VBSD_KERNEL_KEY_VERIFIED ? 1 : 0);
 			break;
 		case VDAT_INT_FW_VERSION_TPM:
-			value = (int)sh->fw_version_tpm;
+			/* b/269204332#comment5: Before CL:2054270 and CL:2056343,
+			   fw_version_tpm was always 0. */
+			if (sh->struct_version <= 2 && FwidMajorVersion() < 12935)
+				value = (int)sh->fw_version_act;
+			else
+				value = (int)sh->fw_version_tpm;
 			break;
 		case VDAT_INT_KERNEL_VERSION_TPM:
 			value = (int)sh->kernel_version_tpm;
