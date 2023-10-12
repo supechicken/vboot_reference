@@ -211,7 +211,7 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 		return VB2_ERROR_RSA_VERIFY_SIG_LEN;
 	}
 
-	workbuf32 = vb2_workbuf_alloc(&wblocal, 3 * key_bytes);
+	workbuf32 = vb2_workbuf_alloc(&wblocal, 5 * key_bytes);
 	if (!workbuf32) {
 		VB2_DEBUG("ERROR - vboot2 work buffer too small!\n");
 		return VB2_ERROR_RSA_VERIFY_WORKBUF;
@@ -240,7 +240,7 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 #endif
 	}
 
-	vb2_workbuf_free(&wblocal, 3 * key_bytes);
+	vb2_workbuf_free(&wblocal, 5 * key_bytes);
 
 	/*
 	 * Check padding.  Only fail immediately if the padding size is bad.
