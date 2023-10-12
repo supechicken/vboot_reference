@@ -39,7 +39,7 @@
  * TODO: The recommended size really depends on which key algorithms are
  * used.  Should have a better / more accurate recommendation than this.
  */
-#define VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE (12 * 1024)
+#define VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE (14 * 1024)
 
 /*
  * Recommended size of work buffer for kernel verification stage.
