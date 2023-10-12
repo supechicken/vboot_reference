@@ -16,7 +16,7 @@
 #ifdef X86_SSE2_INSTR
 #define VB2_RSA_MODPOW_BUF_SIZE_FACTOR 12
 #else
-#define VB2_RSA_MODPOW_BUF_SIZE_FACTOR 3
+#define VB2_RSA_MODPOW_BUF_SIZE_FACTOR 5
 #endif
 
 struct vb2_public_key;
