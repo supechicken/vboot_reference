@@ -68,6 +68,24 @@
       "parentUuid": "0640fbb2_b35cb576",
       "revId": "b18fea0fb75d8104b629aab6241e5629031c4a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c12dbb97_1ddca485",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-13T11:55:23Z",
+      "side": 1,
+      "message": "i guess from reading the rest of the code, people wanted a tristate flag which shflags doesn\u0027t support where the default behavior is basically \"do nothing\".  if you want the default to always remove kdump unless people specify `--enable_kdump`, then PS2 would do that.  but if you want the default noop behavior, you\u0027d want PS1.\n\ni\u0027m fine either, but would help to add a comment to the flags section if you go with PS1.",
+      "parentUuid": "52367ec0_8f5aab3d",
+      "revId": "b18fea0fb75d8104b629aab6241e5629031c4a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
