@@ -13,6 +13,12 @@
 #ifndef VBOOT_REFERENCE_2RSA_PRIVATE_H_
 #define VBOOT_REFERENCE_2RSA_PRIVATE_H_
 
+#ifdef X86_SSE2_INSTR
+#define VB2_RSA_MODPOW_BUF_SIZE_FACTOR 12
+#else
+#define VB2_RSA_MODPOW_BUF_SIZE_FACTOR 3
+#endif
+
 struct vb2_public_key;
 int vb2_mont_ge(const struct vb2_public_key *key, uint32_t *a);
 vb2_error_t vb2_check_padding(const uint8_t *sig,
