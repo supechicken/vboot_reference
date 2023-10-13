@@ -1002,12 +1002,22 @@ vb2_error_t vb2ex_hwcrypto_rsa_verify_digest(const struct vb2_public_key *key,
 					     const uint8_t *digest);
 
 /**
+ * Return hwcrypto engine modexp work buffer required size.
+ *
+ * @param key		Key to use in signature verification
+ * @param size		Required buffer size (output)
+ * @return VB2_SUCCESS or HWCRYPTO_UNSUPPORTED.
+ */
+vb2_error_t vb2ex_hwcrypto_modexp_workbuf_size(const struct vb2_public_key *key,
+					       size_t *size);
+
+/**
  * Calculate modexp using hardware crypto engine.
  *
  * @param key		Key to use in signing
  * @param inout		Input and output big-endian byte array
  * @param workbuf32	Work buffer; caller must verify this is
- *			(3 * key->arrsize) elements long.
+ *			at least vb2ex_hwcrypto_modexp_buf_size() bytes long.
  * @param exp		RSA public exponent: either 65537 (F4) or 3
  * @return VB2_SUCCESS or HWCRYPTO_UNSUPPORTED.
  */
