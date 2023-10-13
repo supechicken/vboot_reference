@@ -341,6 +341,7 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 	uint32_t key_bytes;
 	int sig_size;
 	int pad_size;
+	size_t buf_size;
 	int exp;
 	vb2_error_t rv = VB2_ERROR_EX_HWCRYPTO_UNSUPPORTED;
 
@@ -361,13 +362,21 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 		return VB2_ERROR_RSA_VERIFY_SIG_LEN;
 	}
 
-	workbuf32 = vb2_workbuf_alloc(&wblocal, 3 * key_bytes);
-	if (!workbuf32) {
-		VB2_DEBUG("ERROR - vboot2 work buffer too small!\n");
-		return VB2_ERROR_RSA_VERIFY_WORKBUF;
-	}
-
 	if (key->allow_hwcrypto) {
+		rv = vb2ex_hwcrypto_modexp_workbuf_size(key, &buf_size);
+		if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("HW modexp for sig_alg %d not supported, using SW\n",
+				  key->sig_alg);
+			goto hwcrypto_done;
+		}
+
+		workbuf32 = vb2_workbuf_alloc(&wblocal, buf_size);
+		if (!workbuf32) {
+			VB2_DEBUG("ERROR - HW modexp vboot2 work buffer too small!\n");
+			rv = VB2_ERROR_RSA_VERIFY_WORKBUF;
+			goto hwcrypto_done;
+		}
+
 		rv = vb2ex_hwcrypto_modexp(key, sig, workbuf32, exp);
 
 		if (rv == VB2_SUCCESS)
@@ -376,15 +385,26 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 		else
 			VB2_DEBUG("HW modexp for sig_alg %d not supported, using SW\n",
 					key->sig_alg);
+
+		vb2_workbuf_free(&wblocal, buf_size);
 	} else {
 		VB2_DEBUG("HW modexp forbidden, using SW\n");
 	}
 
+hwcrypto_done:
 	if (rv != VB2_SUCCESS) {
+		buf_size = 3 * key_bytes;
+		workbuf32 = vb2_workbuf_alloc(&wblocal, buf_size);
+		if (!workbuf32) {
+			VB2_DEBUG("ERROR - vboot2 work buffer too small!\n");
+			return VB2_ERROR_RSA_VERIFY_WORKBUF;
+		}
+
 		modpow(key, sig, workbuf32, exp);
+
+		vb2_workbuf_free(&wblocal, buf_size);
 	}
 
-	vb2_workbuf_free(&wblocal, 3 * key_bytes);
 
 	/*
 	 * Check padding.  Only fail immediately if the padding size is bad.
