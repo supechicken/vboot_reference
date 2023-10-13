@@ -33,6 +33,23 @@
       "message": "For the dev version this is exactly what we need, sorry for the noise.",
       "revId": "b18fea0fb75d8104b629aab6241e5629031c4a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0640fbb2_b35cb576",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-13T07:59:47Z",
+      "side": 1,
+      "message": "`DEFINE_boolean` automatically creates a `--no` option, so you don\u0027t need this yourself.",
+      "revId": "b18fea0fb75d8104b629aab6241e5629031c4a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
