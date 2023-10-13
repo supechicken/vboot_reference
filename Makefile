@@ -362,7 +362,6 @@ FWLIB_SRCS = \
 	firmware/2lib/2kernel.c \
 	firmware/2lib/2load_kernel.c \
 	firmware/2lib/2misc.c \
-	firmware/2lib/2modpow.c \
 	firmware/2lib/2nvstorage.c \
 	firmware/2lib/2packed_key.c \
 	firmware/2lib/2recovery_reasons.c \
@@ -417,8 +416,21 @@ FWLIB_ASMS += \
 	firmware/2lib/sha256_armv8a_ce_a64.S
 endif
 
+# FIXME: Create a flag instead of systematically enabling SSE2 version
+# for x86
+ifeq (${FIRMWARE_ARCH}, x86)
+FWLIB_SRCS += \
+	firmware/2lib/2modpow_sse2.c
+else
+FWLIB_SRCS += \
+	firmware/2lib/2modpow.c
+endif
+
+
 # Even if X86_SHA_EXT is 0 we need cflags since this will be compiled for tests
 ${BUILD}/firmware/2lib/2sha256_x86.o: CFLAGS += -mssse3 -mno-avx -msha
+
+${BUILD}/firmware/2lib/2modpow_sse2.o: CFLAGS := $(filter-out -nostdinc,$(CFLAGS)) -msse2
 
 ifeq (${FIRMWARE_ARCH},)
 # Include BIOS stubs in the firmware library when compiling for host
