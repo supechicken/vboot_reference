@@ -39,7 +39,11 @@
  * TODO: The recommended size really depends on which key algorithms are
  * used.  Should have a better / more accurate recommendation than this.
  */
+#ifdef X86_SSE2_INSTR
+#define VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE (21 * 1024)
+#else
 #define VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE (12 * 1024)
+#endif
 
 /*
  * Recommended size of work buffer for kernel verification stage.
