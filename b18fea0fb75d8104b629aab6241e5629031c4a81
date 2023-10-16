@@ -86,6 +86,24 @@
       "parentUuid": "52367ec0_8f5aab3d",
       "revId": "b18fea0fb75d8104b629aab6241e5629031c4a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ea82a4_bec4b69b",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2023-10-16T02:55:23Z",
+      "side": 1,
+      "message": "I think PS1 better fits our use case.  Go back to PS1 and add a comment.",
+      "parentUuid": "c12dbb97_1ddca485",
+      "revId": "b18fea0fb75d8104b629aab6241e5629031c4a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
