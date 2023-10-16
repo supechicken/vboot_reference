@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012c9ecb_3805b4b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-16T02:31:41Z",
+      "side": 1,
+      "message": "Waiting for http://ci.chromium.org/b/8767116251479410577.\n\n```\ncros try release -dev -gerrit-patches crrev.com/c/4940487 --build_targets octopus\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 7
+      },
+      "revId": "ea061398f4028e832545931b5a8d0fc6eca86f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
