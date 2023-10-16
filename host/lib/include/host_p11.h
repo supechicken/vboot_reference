@@ -57,6 +57,8 @@ enum vb2_hash_algorithm pkcs11_get_hash_alg(struct pkcs11_key *p11_key);
  */
 enum vb2_signature_algorithm pkcs11_get_sig_alg(struct pkcs11_key *p11_key);
 
+uint8_t *pkcs11_get_modulus(struct pkcs11_key *p11_key, uint32_t *sizeptr);
+
 /**
  * Calculate a signature for the data using pkcs11 key.
  *
