@@ -274,6 +274,7 @@ int show_fw_preamble_buf(const char *fname, uint8_t *buf, uint32_t len,
 	struct bios_area_s *fw_body_area = 0;
 	enum bios_component body_c = BIOS_FMAP_FW_MAIN_A;
 	int good_sig = 0;
+	int data_verified = 0;
 	int retval = 0;
 
 	ft_print_header2 = "keyblock";
@@ -398,15 +399,23 @@ int show_fw_preamble_buf(const char *fname, uint8_t *buf, uint32_t len,
 
 	if (pre2->body_signature.data_size) {
 		if (vb2_verify_data(fv_data, fv_size, &pre2->body_signature,
-				    &data_key, &wb) != VB2_SUCCESS) {
+				    &data_key, &wb) == VB2_SUCCESS) {
+			data_verified = 1;
+		} else {
 			ERROR("Verifying firmware body.\n");
 			FT_PARSEABLE_PRINT("body::signature::invalid\n");
-			return 1;
 		}
-	} else if (state) { /* Only works for images with at least FW_MAIN_A */
-		if (fw_show_metadata_hash(fname, body_c, pre2))
-			return 1;
+	} else if (state) { /* Only works if `fname` is a BIOS image */
+		if (fw_show_metadata_hash(fname, body_c, pre2) == 0)
+			data_verified = 1;
+	} else {
+		WARN("Metadata hash verification not supported.\n");
+		FT_PARSEABLE_PRINT("body::metadata_hash::ignored\n");
+		FT_PARSEABLE_PRINT("body::signature::ignored\n");
 	}
+
+	if (!data_verified)
+		return show_option.strict ? 1 : 0;
 
 done:
 	/* Can't trust the BIOS unless everything is signed (in which case
