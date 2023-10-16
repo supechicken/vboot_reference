@@ -403,9 +403,13 @@ int show_fw_preamble_buf(const char *fname, uint8_t *buf, uint32_t len,
 			FT_PARSEABLE_PRINT("body::signature::invalid\n");
 			return 1;
 		}
-	} else if (state) { /* Only works for images with at least FW_MAIN_A */
+	} else if (state) { /* Only works if `fname` is a BIOS image */
 		if (fw_show_metadata_hash(fname, body_c, pre2))
 			return 1;
+	} else {
+		FATAL("Metadata hash verification not supported.\n"
+		      "Please pass a firmware image as the input file.\n");
+		return 1;
 	}
 
 done:

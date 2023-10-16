@@ -292,13 +292,21 @@ static int do_verify(const char *infile, const char *signpubkey,
 	if (flags & VB2_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
 		printf("Preamble requests USE_RO_NORMAL;"
 		       " skipping body verification.\n");
-	} else if (VB2_SUCCESS ==
-		   vb2_verify_data(fv_data, fv_size, &pre2->body_signature,
-				   &data_key, &wb)) {
-		printf("Body verification succeeded.\n");
 	} else {
-		FATAL("Error verifying firmware body.\n");
-		goto verify_cleanup;
+		if (!pre2->body_signature.data_size) {
+			/* cbfstool needs the whole firmware image to get the
+			   metadata hash */
+			FATAL("Metadata hash verification not supported.\n"
+			      "Please use `futility verify BIOS_IMAGE`.\n");
+		}
+		if (VB2_SUCCESS ==
+			   vb2_verify_data(fv_data, fv_size, &pre2->body_signature,
+					   &data_key, &wb)) {
+			printf("Body verification succeeded.\n");
+		} else {
+			FATAL("Error verifying firmware body.\n");
+			goto verify_cleanup;
+		}
 	}
 
 	if (kernelkey_file &&
