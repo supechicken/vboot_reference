@@ -14,6 +14,7 @@
 struct rsa_st;
 struct vb2_packed_key;
 struct vb2_private_key;
+struct pkcs11_key;
 
 /**
  * Returns the SHA1 digest of the packed key data as a string.
@@ -64,5 +65,8 @@ const char *private_key_sha1_string(const struct vb2_private_key *key);
  */
 int vb_keyb_from_rsa(struct rsa_st *rsa_private_key,
 		     uint8_t **keyb_data, uint32_t *keyb_size);
+int vb_keyb_from_p11_key(struct pkcs11_key *p11_key, uint8_t **keyb_data, uint32_t *keyb_size);
+int vb_keyb_from_private_key(struct vb2_private_key *key, uint8_t **keyb_data,
+			     uint32_t *keyb_size);
 
 #endif  /* VBOOT_REFERENCE_UTIL_MISC_H_ */
