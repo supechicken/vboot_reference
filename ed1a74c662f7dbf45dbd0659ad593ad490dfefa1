@@ -34,6 +34,24 @@
       "parentUuid": "b1d1851f_b7768b66",
       "revId": "ed1a74c662f7dbf45dbd0659ad593ad490dfefa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bb5683_e2552b8b",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2023-10-17T11:07:10Z",
+      "side": 1,
+      "message": "Looks to be ok if __fallthrough__ is just to avoid warning from compiler when no break.",
+      "parentUuid": "0a445c75_bdca014f",
+      "revId": "ed1a74c662f7dbf45dbd0659ad593ad490dfefa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
