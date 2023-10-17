@@ -16,6 +16,24 @@
       "message": "Missing a break ?",
       "revId": "3401d16c98c514cc2f81f585d2ebd72f57d82e41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47106733_03a645d4",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-17T10:51:43Z",
+      "side": 1,
+      "message": "Yeah, sent out crrev.com/c/4943296 to fix it.",
+      "parentUuid": "48fa48df_90adef94",
+      "revId": "3401d16c98c514cc2f81f585d2ebd72f57d82e41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
