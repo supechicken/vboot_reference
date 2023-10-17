@@ -16,6 +16,24 @@
       "message": "should we still keep VBOOT_FALLTHROUGH or safe to remove it ?",
       "revId": "ed1a74c662f7dbf45dbd0659ad593ad490dfefa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a445c75_bdca014f",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-17T10:59:17Z",
+      "side": 1,
+      "message": "hmmm, I don\u0027t get the reason why we need a fallthrough here...\n\nfallthrough to `default: break;` doesn\u0027t make the code more readable or reliable.\n\n(And IIUC, we don\u0027t need this kind of tick to optimize the code performance.)",
+      "parentUuid": "b1d1851f_b7768b66",
+      "revId": "ed1a74c662f7dbf45dbd0659ad593ad490dfefa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
