@@ -67,6 +67,24 @@
       "message": "Note that with this patch, when people want to update the vboot stable hash for the singer (for example CL:*6214191), the `verity` binary in the signer ([code](https://chrome-internal.googlesource.com/chromeos/cros-signing/+/refs/heads/dev/signer/signingtools-bin/verity)) also needs to be updated as well. Therefore, to avoid potential problems, I think it\u0027s better to update `verity` now, either by you or CrosKeyManagers.\n\n@vapier@chromium.org Do you prefer updating `verity` now, or wait until actually needed? I\u0027d like to avoid the problem of\n\n1. Update vboot stable hash\n2. Merge to production branch\n3. Signing fails\n4. Revert the production branch",
       "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45360386_09ae93f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-19T08:17:37Z",
+      "side": 1,
+      "message": "updating binaries sooner is better",
+      "parentUuid": "da3e44cb_bf41a811",
+      "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
