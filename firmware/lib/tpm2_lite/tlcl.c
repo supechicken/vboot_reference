@@ -548,6 +548,23 @@ uint32_t TlclRead(uint32_t index, void* data, uint32_t length)
 	return TPM_SUCCESS;
 }
 
+
+uint32_t TlclReadAsUser(uint32_t index, void *data, uint32_t length)
+{
+	int original_ph_disabled = tpm_is_ph_disabled();
+	uint32_t result;
+
+	// temporary disable the platform hierarchy (without sending the command).
+	tpm_set_ph_disabled(1);
+
+	result = TlclRead(index, data, length);
+
+	// Restore the platform hierarchy state.
+	tpm_set_ph_disabled(original_ph_disabled);
+
+	return result;
+}
+
 uint32_t TlclWrite(uint32_t index, const void *data, uint32_t length)
 {
 	struct tpm2_nv_write_cmd nv_writec;
