@@ -16,6 +16,24 @@
       "message": "Let us put this on hold. I created this CL because I think it may help debugging AP RO verification issues like b:284913015). But if that\u0027s not the case we can still allow falling back to RW-only update when device is locked, even if --unlock_me was specified.",
       "revId": "68bdbb6beed815f21b69ed800237ad5c16cdbf90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efeab81d_dfd46601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509762
+      },
+      "writtenOn": "2023-10-19T09:06:58Z",
+      "side": 1,
+      "message": "I revisted our flow and I think this CL will be helpful for debugging such issues.\nThanks for creating this patch!",
+      "parentUuid": "b1753ef0_e9f6c637",
+      "revId": "68bdbb6beed815f21b69ed800237ad5c16cdbf90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
