@@ -17,6 +17,8 @@
 #include "2return_codes.h"
 #include "2rsa_private.h"
 
+#include "key_positive_inverse_modulus.h"
+
 /**
  * Montgomery c[] = d[] - e[] if d[] > e[], c[] = d[] - e[] + mod[] otherwise.
  *
@@ -60,7 +62,7 @@ static void montMul(const struct vb2_public_key *key,
 		    uint32_t *d,
 		    uint32_t *e)
 {
-	const uint32_t mu = key->n0pinv;
+	const uint32_t mu = inv_mod;
 	const uint32_t mub0 = mu * b[0];
 	uint32_t i, j, q, muc0, t0, t1;
 	uint64_t p0, p1;
@@ -136,6 +138,7 @@ void modpow(const struct vb2_public_key *key, uint8_t *inout,
 	/* Convert from big endian byte array to little endian word array. */
 	swap_bignumber_endianess((uint32_t *)inout, a, key->arrsize);
 
+	inv_mod = get_inv_mod(key, 1);
 	montMul(key, aR, a, key->rr, d, e);  /* aR = a * RR / R mod M   */
 	if (exp == 3) {
 		montMul(key, aaR, aR, aR, d, e); /* aaR = aR * aR / R mod M */
