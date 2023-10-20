@@ -34,6 +34,7 @@ enum {
 	OPT_FV,
 	OPT_KERNELKEY,
 	OPT_FLAGS,
+	OPT_SKIP_VERIFY_BODY,
 	OPT_HELP,
 };
 
@@ -47,6 +48,7 @@ static const struct option long_opts[] = {
 	{"fv", 1, 0, OPT_FV},
 	{"kernelkey", 1, 0, OPT_KERNELKEY},
 	{"flags", 1, 0, OPT_FLAGS},
+	{"skip-verify-body", 0, 0, OPT_SKIP_VERIFY_BODY},
 	{"help", 0, 0, OPT_HELP},
 	{NULL, 0, 0, 0}
 };
@@ -76,7 +78,9 @@ static void print_help(int argc, char *argv[])
 	       "\n"
 	       "For '--verify <file>', optional OPTIONS are:\n"
 	       "  --kernelkey <file>"
-	       "          Write the kernel subkey to this file\n\n",
+	       "          Write the kernel subkey to this file\n"
+	       "  --skip-verify-body"
+	       "          Skip firmware body verification\n\n",
 	       argv[0]);
 }
 
@@ -184,7 +188,8 @@ vblock_cleanup:
 }
 
 static int do_verify(const char *infile, const char *signpubkey,
-		     const char *fv_file, const char *kernelkey_file)
+		     const char *fv_file, const char *kernelkey_file,
+		     bool skip_verify_body)
 {
 	uint8_t workbuf[VB2_FIRMWARE_WORKBUF_RECOMMENDED_SIZE]
 		__attribute__((aligned(VB2_WORKBUF_ALIGN)));
@@ -292,6 +297,8 @@ static int do_verify(const char *infile, const char *signpubkey,
 	if (flags & VB2_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
 		printf("Preamble requests USE_RO_NORMAL;"
 		       " skipping body verification.\n");
+	} else if (skip_verify_body) {
+		printf("Body verification skipped.\n");
 	} else if (VB2_SUCCESS ==
 		   vb2_verify_data(fv_data, fv_size, &pre2->body_signature,
 				   &data_key, &wb)) {
@@ -333,6 +340,7 @@ static int do_vbutil_firmware(int argc, char *argv[])
 	char *fv_file = NULL;
 	char *kernelkey_file = NULL;
 	uint32_t preamble_flags = 0;
+	bool skip_verify_body = false;
 	int mode = 0;
 	int parse_error = 0;
 	char *e;
@@ -390,6 +398,10 @@ static int do_vbutil_firmware(int argc, char *argv[])
 				parse_error = 1;
 			}
 			break;
+
+		case OPT_SKIP_VERIFY_BODY:
+			skip_verify_body = true;
+			break;
 		}
 	}
 
@@ -403,7 +415,8 @@ static int do_vbutil_firmware(int argc, char *argv[])
 		return do_vblock(filename, keyblock_file, signprivate, version,
 				 fv_file, kernelkey_file, preamble_flags);
 	case OPT_MODE_VERIFY:
-		return do_verify(filename, signpubkey, fv_file, kernelkey_file);
+		return do_verify(filename, signpubkey, fv_file, kernelkey_file,
+				 skip_verify_body);
 	default:
 		ERROR("Must specify a mode.\n");
 		print_help(argc, argv);
