@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acbbea86_48de873c",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-20T03:16:58Z",
+      "side": 1,
+      "message": "hmmmm, not sure if it is a good idea to replace these with the `sscanf`.\n```\nint version;\nif ( sscanf(fwid, \"%*[^.].%d\", \u0026version) !\u003d 1) \n  return -1;\nreturn version;\n```",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 12
+      },
+      "revId": "b47d6363d73cec90e4af74588fdee12e5b41a125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ace7a3b5_92d167b3",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 2
