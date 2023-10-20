@@ -103,6 +103,24 @@
       "parentUuid": "45360386_09ae93f7",
       "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6517eec0_f4045e7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-10-20T00:57:57Z",
+      "side": 1,
+      "message": "Sure, but we (last person Mike!) haven\u0027t updated `verity` in a long long time.\n\nThe README\u0027s are also out of date + we don\u0027t have static make files for verity anymore, + it\u0027s moved into platform2.\n\nI\u0027ll try and tackle all those tomorrow.",
+      "parentUuid": "28e03fff_e39dbdd8",
+      "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
