@@ -22,6 +22,30 @@
       },
       "revId": "b47d6363d73cec90e4af74588fdee12e5b41a125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13350a91_ebe74851",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-20T03:01:34Z",
+      "side": 1,
+      "message": "When any error happens, I think it\u0027s safer to fall back to the old behavior. Or do you think crossystem should exit with an error code?",
+      "parentUuid": "ace7a3b5_92d167b3",
+      "range": {
+        "startLine": 374,
+        "startChar": 34,
+        "endLine": 374,
+        "endChar": 52
+      },
+      "revId": "b47d6363d73cec90e4af74588fdee12e5b41a125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
