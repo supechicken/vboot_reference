@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace7a3b5_92d167b3",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-10-20T02:59:12Z",
+      "side": 1,
+      "message": "Should we handle the case that `FwidMajorVersion()` is `-1`?",
+      "range": {
+        "startLine": 374,
+        "startChar": 34,
+        "endLine": 374,
+        "endChar": 52
+      },
+      "revId": "b47d6363d73cec90e4af74588fdee12e5b41a125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
