@@ -42,7 +42,8 @@ for sig in rsa1024 rsa2048 rsa4096 rsa8192; do
   # expect only one
   [ "$(echo "$pem_sum" | wc -w)" = 1 ]
   num_keys=$(echo "${TMP}_key_${sig}".* | wc -w)
-  key_sums=$("${FUTILITY}" show "${TMP}_key_${sig}".* |
+  key_sums=$(ls "${TMP}_key_${sig}".* |
+    xargs -l "${FUTILITY}" show |
     awk '/sha1sum:|ID:/ {print $NF}')
   num_sums=$(echo "$key_sums" | wc -w)
   # expect one sha1sum (or ID) line per file

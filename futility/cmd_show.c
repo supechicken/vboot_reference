@@ -582,7 +582,7 @@ enum no_short_opts {
 };
 
 static const char usage[] = "\n"
-	"Usage:  " MYNAME " %s [OPTIONS] FILE [...]\n"
+	"Usage:  " MYNAME " %s [OPTIONS] FILE\n"
 	"\n"
 	"Where FILE could be\n"
 	"\n"
@@ -760,32 +760,41 @@ static int do_show(int argc, char *argv[])
 
 	if (errorcnt) {
 		print_help(argc, argv);
-		return 1;
+		goto done;
 	}
 
 	if (argc - optind < 1) {
 		ERROR("Missing input filename\n");
 		print_help(argc, argv);
-		return 1;
-	}
-
-	if (show_option.t_flag) {
-		for (i = optind; i < argc; i++)
-			errorcnt += show_type(argv[i]);
+		errorcnt++;
 		goto done;
 	}
 
-	for (i = optind; i < argc; i++) {
-		infile = argv[i];
+	infile = argv[optind++];
 
-		/* Allow the user to override the type */
-		if (type_override)
-			type = show_option.type;
-		else
-			futil_file_type(infile, &type);
-
-		errorcnt += futil_file_type_show(type, infile);
+	if (argc - optind > 0) {
+		ERROR("Extra input file %s\n", argv[optind]);
+		print_help(argc, argv);
+		errorcnt++;
+		goto done;
 	}
+
+	if (show_option.t_flag) {
+		errorcnt += show_type(infile);
+		goto done;
+	}
+
+	/* Allow the user to override the type */
+	if (type_override) {
+		type = show_option.type;
+	} else {
+		errorcnt += futil_file_type(infile, &type);
+		if (errorcnt) {
+			ERROR("Cannot detect file type\n");
+			goto done;
+		}
+	}
+	errorcnt += futil_file_type_show(type, infile);
 
 done:
 	if (pubkbuf)
