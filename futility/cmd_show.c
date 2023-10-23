@@ -328,10 +328,10 @@ int show_fw_preamble_buf(const char *fname, uint8_t *buf, uint32_t len,
 	}
 
 	ft_print_header2 = "preamble";
-	uint32_t more = keyblock->keyblock_size;
-	struct vb2_fw_preamble *pre2 = (struct vb2_fw_preamble *)(buf + more);
-	if (VB2_SUCCESS != vb2_verify_fw_preamble(pre2, len - more,
-						  &data_key, &wb)) {
+	buf += keyblock->keyblock_size;
+	len -= keyblock->keyblock_size;
+	struct vb2_fw_preamble *pre2 = (struct vb2_fw_preamble *)buf;
+	if (VB2_SUCCESS != vb2_verify_fw_preamble(pre2, len, &data_key, &wb)) {
 		ERROR("%s is invalid\n", print_name);
 		FT_PARSEABLE_PRINT("invalid\n");
 		return 1;
@@ -354,6 +354,25 @@ int show_fw_preamble_buf(const char *fname, uint8_t *buf, uint32_t len,
 		 pre2->firmware_version);
 
 	struct vb2_packed_key *kernel_subkey = &pre2->kernel_subkey;
+	const size_t subkey_offset = offsetof(struct vb2_fw_preamble, kernel_subkey);
+	if (vb2_packed_key_looks_ok(kernel_subkey, len - subkey_offset)
+	    == VB2_SUCCESS) {
+		if (state) {
+			struct bios_area_s *state_subkey = &state->kernel_subkey_a;
+			if (state->c == BIOS_FMAP_VBLOCK_B)
+				state_subkey = &state->kernel_subkey_b;
+			state_subkey->offset =
+				state->area[state->c].offset +
+				keyblock->keyblock_size + subkey_offset;
+			state_subkey->buf = buf + subkey_offset;
+			state_subkey->len = len - subkey_offset;
+			state_subkey->is_valid = 1;
+		}
+	} else {
+		retval = 1;
+		FT_PRINT("  Kernel key:              <invalid>\n",
+			 "kernel_subkey::invalid\n");
+	}
 	FT_PRINT("  Kernel key algorithm:  %d %s\n",
 		"kernel_subkey::algorithm::%d::%s\n",
 		kernel_subkey->algorithm,
@@ -443,10 +462,13 @@ int ft_show_fw_preamble(const char *fname)
 	return rv;
 }
 
-int ft_show_kernel_preamble(const char *fname)
+int show_kernel_preamble(const char *fname, struct bios_state_s *state)
 {
 	struct vb2_keyblock *keyblock;
-	struct vb2_public_key *sign_key = show_option.k;
+	struct vb2_keyblock *keyblock_copy = NULL;
+	struct vb2_public_key pubkeys[2];
+	struct vb2_public_key *sign_keys[2] = {NULL, NULL};
+	int has_sign_key = 0;
 	int retval = 1;
 	int fd = -1;
 	uint8_t *buf;
@@ -468,13 +490,48 @@ int ft_show_kernel_preamble(const char *fname)
 	}
 
 	/* If we have a key, check the signature too */
-	int good_sig = 0;
-	if (sign_key && VB2_SUCCESS ==
-	    vb2_verify_keyblock(keyblock, len, sign_key, &wb))
-		good_sig = 1;
+	int good_sig = 1;
+	if (state) {
+		const struct bios_area_s *state_subkeys[] = {
+			&state->kernel_subkey_a,
+			&state->kernel_subkey_b,
+		};
+		for (int i = 0; i < ARRAY_SIZE(state_subkeys); i++) {
+			const struct bios_area_s *state_subkey = state_subkeys[i];
+			if (!state_subkey->is_valid) {
+				good_sig = 0;
+				continue;
+			}
+			if (vb2_unpack_key_buffer(&pubkeys[i], state_subkey->buf,
+						  state_subkey->len) == VB2_SUCCESS)
+				sign_keys[i] = &pubkeys[i];
+			else
+				good_sig = 0;
+		}
+	} else {
+		if (show_option.k)
+			sign_keys[0] = show_option.k;
+		else
+			good_sig = 0;
+	}
+
+	/* The sig will be destroyed by vb2_verify_keyblock, so make a copy. */
+	keyblock_copy = malloc(keyblock->keyblock_size);
+	if (!keyblock_copy) {
+		FATAL("Failed to malloc keyblock_copy\n");
+		goto done;
+	}
+	for (int i = 0; i < ARRAY_SIZE(sign_keys); i++) {
+		if (!sign_keys[i])
+			continue;
+		has_sign_key = 1;
+		memcpy(keyblock_copy, keyblock, keyblock->keyblock_size);
+		if (vb2_verify_keyblock(keyblock_copy, len, sign_keys[i], &wb) != VB2_SUCCESS)
+			good_sig = 0;
+	}
 
 	FT_READABLE_PRINT("Kernel partition:        %s\n", fname);
-	show_keyblock(keyblock, NULL, !!sign_key, good_sig);
+	show_keyblock(keyblock, NULL, has_sign_key, good_sig);
 
 	struct vb2_public_key data_key;
 	if (VB2_SUCCESS != vb2_unpack_key(&data_key, &keyblock->data_key)) {
@@ -567,17 +624,24 @@ int ft_show_kernel_preamble(const char *fname)
 	FT_READABLE_PRINT("Config:\n%s\n",
 			  kernel_blob + kernel_cmd_line_offset(pre2));
 
-	if (!show_option.strict || (sign_key && good_sig))
+	if (!show_option.strict || (has_sign_key && good_sig))
 		retval = 0;
 done:
 	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	free(keyblock_copy);
 	return retval;
+}
+
+int ft_show_kernel_preamble(const char *fname)
+{
+	return show_kernel_preamble(fname, NULL);
 }
 
 enum no_short_opts {
 	OPT_PADDING = 1000,
 	OPT_TYPE,
 	OPT_PUBKEY,
+	OPT_KERNEL,
 	OPT_HELP,
 };
 
@@ -604,6 +668,8 @@ static const char usage[] = "\n"
 	"  --pubkey         FILE.vpubk2     Public key in vb2 format\n"
 	"  -f|--fv          FILE            Verify this payload (FW_MAIN_A/B)\n"
 	"  --pad            NUM             Kernel vblock padding size\n"
+	"  --kernel         FILE            Kernel partition or vblock"
+	" (for firmware image file type only)\n"
 	"  --strict                         "
 	"Fail unless all signatures are valid\n"
 	"\n";
@@ -627,6 +693,7 @@ static const struct option long_opts[] = {
 	{"type",        1, NULL, OPT_TYPE},
 	{"strict",      0, &show_option.strict, 1},
 	{"pubkey",      1, NULL, OPT_PUBKEY},
+	{"kernel",      1, NULL, OPT_KERNEL},
 	{"parseable",   0, NULL, 'P'},
 	{"help",        0, NULL, OPT_HELP},
 	{NULL, 0, NULL, 0},
@@ -735,6 +802,9 @@ static int do_show(int argc, char *argv[])
 				errorcnt++;
 			}
 			break;
+		case OPT_KERNEL:
+			show_option.kernel_file = optarg;
+			break;
 		case OPT_HELP:
 			print_help(argc, argv);
 			return !!errorcnt;
@@ -794,6 +864,13 @@ static int do_show(int argc, char *argv[])
 			goto done;
 		}
 	}
+
+	if (type != FILE_TYPE_BIOS_IMAGE && show_option.kernel_file) {
+		errorcnt++;
+		ERROR("--kernel is only support for firmware image file\n");
+		goto done;
+	}
+
 	errorcnt += futil_file_type_show(type, infile);
 
 done:

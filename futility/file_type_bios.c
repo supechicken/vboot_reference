@@ -235,6 +235,9 @@ int ft_show_bios(const char *fname)
 		}
 	}
 
+	if (show_option.kernel_file)
+		retval += show_kernel_preamble(show_option.kernel_file, &state);
+
 end:
 	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
 	return retval;

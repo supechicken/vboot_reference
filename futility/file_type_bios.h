@@ -58,9 +58,12 @@ struct bios_state_s {
 	struct bios_area_s area[NUM_BIOS_COMPONENTS];
 	struct bios_area_s recovery_key;
 	struct bios_area_s rootkey;
+	struct bios_area_s kernel_subkey_a;
+	struct bios_area_s kernel_subkey_b;
 };
 
 int show_fw_preamble_buf(const char *fname, uint8_t *buf, uint32_t len,
 			 struct bios_state_s *state);
+int show_kernel_preamble(const char *fname, struct bios_state_s *state);
 
 #endif /* VBOOT_REFERENCE_FILE_TYPE_BIOS_H_ */

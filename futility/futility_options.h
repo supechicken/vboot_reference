@@ -27,6 +27,7 @@ struct show_option_s {
 	enum futil_file_type type;
 	struct vb21_packed_key *pkey;
 	uint32_t sig_size;
+	const char *kernel_file;
 	bool parseable;
 };
 extern struct show_option_s show_option;

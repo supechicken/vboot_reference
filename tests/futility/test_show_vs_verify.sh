@@ -51,7 +51,39 @@ if "${FUTILITY}" verify "${TMP}.vblock_a" \
   --fv "${TMP}.fw_main_a"
 
 
+#### firmware image
+
+# Mismatched VBLOCK_B metadata hash
+if "${FUTILITY}" verify "${SCRIPT_DIR}/futility/data/bios_coachz_cbfs.bin" \
+  --type bios ; \
+  then false; fi
+
+# Good firmware image with VBOOT_CBFS_INTEGRATION (metadata hash)
+"${FUTILITY}" verify "${SCRIPT_DIR}/futility/data/bios_geralt_cbfs.bin" \
+  --type bios
+
+# Good firmware image, kernel with matched key
+"${FUTILITY}" verify "${SCRIPT_DIR}/futility/data/bios_geralt_cbfs.bin" \
+  --type bios --kernel "${SCRIPT_DIR}/futility/data/kernel_part.bin"
+
+# Good firmware image, kernel with wrong data key
+if "${FUTILITY}" verify "${SCRIPT_DIR}/futility/data/bios_geralt_cbfs.bin" \
+  --type bios --kernel "${SCRIPT_DIR}/futility/data/kernel_part.wrong_data_key.bin" ; \
+  then false; fi
+
+# Good firmware image, kernel's keyblock signed by wrong key
+if "${FUTILITY}" verify "${SCRIPT_DIR}/futility/data/bios_geralt_cbfs.bin" \
+  --type bios --kernel "${SCRIPT_DIR}/futility/data/rec_kernel_part.bin" ; \
+  then false; fi
+
 #### kernel partition
+
+"${FUTILITY}" verify "${SCRIPT_DIR}/futility/data/kernel_part.bin" \
+  --type kernel --publickey "${DEVKEYS}/kernel_subkey.vbpubk"
+
+if "${FUTILITY}" verify "${SCRIPT_DIR}/futility/data/kernel_part.wrong_data_key.bin" \
+  --type kernel --publickey "${DEVKEYS}/kernel_subkey.vbpubk" ; \
+  then false ; fi
 
 "${FUTILITY}" show "${SCRIPT_DIR}/futility/data/rec_kernel_part.bin"
 
