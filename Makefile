@@ -126,7 +126,7 @@ endif
 # please add them after this point (e.g., -DVBOOT_DEBUG).
 DEBUG_FLAGS := $(if $(filter-out 0,${DEBUG}),-g -Og,-g -Os)
 WERROR := -Werror
-FIRMWARE_FLAGS := -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
+FIRMWARE_FLAGS := -DFIRMWARE=1 -nostdinc -ffreestanding -fno-builtin -fno-stack-protector
 COMMON_FLAGS := -pipe ${WERROR} -Wall -Wstrict-prototypes -Wtype-limits \
 	-Wundef -Wmissing-prototypes -Wno-trigraphs -Wredundant-decls -Wshadow \
 	-Wwrite-strings -Wstrict-aliasing -Wdate-time \
@@ -151,7 +151,7 @@ CFLAGS ?= ${FIRMWARE_FLAGS} ${COMMON_FLAGS} -fvisibility=hidden \
 else
 # FIRMWARE_ARCH not defined; assuming local compile.
 CC ?= gcc
-CFLAGS += -DCHROMEOS_ENVIRONMENT ${COMMON_FLAGS}
+CFLAGS += -DCHROMEOS_ENVIRONMENT -DFIRMWARE=0 ${COMMON_FLAGS}
 endif
 
 CFLAGS += -std=gnu11
