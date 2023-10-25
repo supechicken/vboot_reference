@@ -20,6 +20,10 @@ setup_default_keycfg() {
   export KEYCFG_INSTALLER_KERNEL_VBPRIVK="${key_dir}/installer_kernel_data_key.vbprivk"
   export KEYCFG_ARV_PLATFORM_KEYBLOCK="${key_dir}/arv_platform.keyblock"
   export KEYCFG_ARV_PLATFORM_VBPRIVK="${key_dir}/arv_platform.vbprivk"
+  export KEYCFG_KEY_EC_EFS_VBRPIK2="${key_dir}/key_ec_efs.vbprik2"
+  export KEYCFG_ACCESSORY_RWSIG_VBRPIK2=""
+  export KEYCFG_FIRMWARE_VBPRIVK="${key_dir}/firmware_data_key.vbprivk"
+  declare -a KEYCFG_KEY_FIRMARE_VBPRIVK_LOEM
 }
 
 setup_keycfg() {
