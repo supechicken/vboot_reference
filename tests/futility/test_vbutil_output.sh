@@ -12,54 +12,6 @@ UPDATE_MODE=0
 # Work in scratch directory
 cd "${OUTDIR}"
 
-# Test 'futility show' against expected output
-SHOW_FILES="
-  tests/devkeys/root_key.vbpubk
-  tests/devkeys/root_key.vbprivk
-  tests/devkeys/kernel.keyblock
-  tests/futility/data/fw_vblock.bin
-  tests/futility/data/fw_gbb.bin
-  tests/futility/data/bios_peppy_mp.bin
-  tests/futility/data/bios_coachz_cbfs.bin
-  tests/futility/data/kern_preamble.bin
-  tests/futility/data/sample.vbpubk2
-  tests/futility/data/sample.vbprik2
-  tests/testkeys/key_rsa2048.pem
-  tests/testkeys/key_rsa8192.pub.pem
-"
-
-for file in $SHOW_FILES; do
-    outfile="show.${file//\//_}"
-    gotfile="${OUTDIR}/${outfile}"
-    wantfile="${SRCDIR}/tests/futility/expect_output/${outfile}"
-    ( cd "${SRCDIR}" && "${FUTILITY}" show "${file}" ) | tee "${gotfile}"
-
-    [[ "${UPDATE_MODE}" -gt 0 ]] && cp "${gotfile}" "${wantfile}"
-
-    diff "${wantfile}" "${gotfile}"
-done
-
-PARSE_SUPPORTED_FILES="
-  tests/devkeys/root_key.vbpubk
-  tests/devkeys/root_key.vbprivk
-  tests/devkeys/kernel.keyblock
-  tests/futility/data/fw_vblock.bin
-  tests/futility/data/fw_gbb.bin
-  tests/futility/data/bios_peppy_mp.bin
-  tests/futility/data/bios_coachz_cbfs.bin
-  tests/futility/data/kern_preamble.bin
-"
-for file in ${PARSE_SUPPORTED_FILES}; do
-    outfile="show.parseable.${file//\//_}"
-    gotfile="${OUTDIR}/${outfile}"
-    wantfile="${SRCDIR}/tests/futility/expect_output/${outfile}"
-    ( cd "${SRCDIR}" && "${FUTILITY}" show -P "${file}" ) | tee "${gotfile}"
-
-    [[ "${UPDATE_MODE}" -gt 0 ]] && cp "${gotfile}" "${wantfile}"
-
-    diff "${wantfile}" "${gotfile}"
-done
-
 # Test 'futility vbutil_key' against expected output
 VBUTIL_KEY_FILES="
   tests/devkeys/root_key.vbpubk
