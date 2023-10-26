@@ -94,11 +94,13 @@ static int print_flash_info(struct updater_config *cfg)
 	return 0;
 }
 
-static int print_wp_status(struct updater_config *cfg, bool ignore_hw)
+static int print_wp_status(struct updater_config *cfg, bool ignore_hw,
+			   bool ignore_wp_range_validation)
 {
-	/* Get WP_RO region start and length from image */
-	uint32_t ro_start, ro_len;
-	if (get_ro_range(cfg, &ro_start, &ro_len))
+	/* Get WP_RO region start and length from image.
+	   Skip this if ignore_wp_range_validation. */
+	uint32_t ro_start = 0, ro_len = 0;
+	if (!ignore_wp_range_validation && get_ro_range(cfg, &ro_start, &ro_len))
 		return -1;
 
 	/* Get current WP region and mode from SPI flash */
@@ -108,6 +110,12 @@ static int print_wp_status(struct updater_config *cfg, bool ignore_hw)
 			    &wp_start, &wp_len, cfg->verbosity + 1)) {
 		ERROR("Failed to get WP status\n");
 		return -1;
+	}
+
+	/* We always assume the WP range match if ignore_wp_range_validation. */
+	if (ignore_wp_range_validation) {
+		ro_start = wp_start;
+		ro_len = wp_len;
 	}
 
 	/* A 1 implies HWWP is enabled. */
@@ -155,6 +163,7 @@ static struct option const long_opts[] = {
 	{"help", 0, NULL, 'h'},
 	{"wp-status", 0, NULL, 's'},
 	{"ignore-hw", 0, NULL, 'o'},
+	{"ignore-wp-range-validation", 0, NULL, 'r'},
 	{"wp-enable", 0, NULL, 'e'},
 	{"wp-disable", 0, NULL, 'd'},
 	{"flash-info", 0, NULL, 'i'},
@@ -174,6 +183,11 @@ static void print_help(int argc, char *argv[])
 	       "    --wp-status          \tGet the current flash WP state.\n"
 	       "    --wp-status          \tGet the current HW and SW WP state.\n"
 	       "        [--ignore-hw]    \tGet SW WP state only.\n"
+	       "        [--ignore-wp-range-validation]\n"
+	       "                         \tSkip WP range validation to speed up the process.\n"
+	       "                         \tThis command may report incorrect status if WP\n"
+	       "                         \trange is not properly configured.\n"
+	       "                         \tUse with caution.\n"
 	       "    --wp-enable          \tEnable protection for the RO image section.\n"
 	       "    --wp-disable         \tDisable all write protection.\n"
 	       "    --flash-size         \tGet flash size.\n"
@@ -191,6 +205,7 @@ static int do_flash(int argc, char *argv[])
 	bool disable_wp = false;
 	bool get_wp_status = false;
 	bool ignore_hw_wp = false;
+	bool ignore_wp_range_validation = false;
 	bool get_size = false;
 	bool get_info = false;
 	int ret = 0;
@@ -209,6 +224,9 @@ static int do_flash(int argc, char *argv[])
 			break;
 		case 'o':
 			ignore_hw_wp = true;
+			break;
+		case 'r':
+			ignore_wp_range_validation = true;
 			break;
 		case 'e':
 			enable_wp = true;
@@ -249,9 +267,19 @@ static int do_flash(int argc, char *argv[])
 		return 0;
 	}
 
-	if (!get_wp_status && ignore_hw_wp) {
-		ERROR("--ignore-hw must be used with --wp-status.\n");
-		return 1;
+	/* Some flags only work under --wp-status. */
+	if (!get_wp_status) {
+		bool has_wrong_flags = false;
+		if (ignore_hw_wp) {
+			ERROR("--ignore-hw must be used with --wp-status.\n");
+			has_wrong_flags = true;
+		}
+		if (ignore_wp_range_validation) {
+			ERROR("--ignore-wp-range-validation must be used with --wp-status.\n");
+			has_wrong_flags = true;
+		}
+		if (has_wrong_flags)
+			return 1;
 	}
 
 	if (enable_wp && disable_wp) {
@@ -277,7 +305,7 @@ static int do_flash(int argc, char *argv[])
 		ret = set_flash_wp(cfg, false);
 
 	if (!ret && get_wp_status)
-		ret = print_wp_status(cfg, ignore_hw_wp);
+		ret = print_wp_status(cfg, ignore_hw_wp, ignore_wp_range_validation);
 
 	teardown_flash(cfg);
 	return ret;
