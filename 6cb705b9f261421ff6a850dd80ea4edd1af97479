@@ -16,6 +16,24 @@
       "message": "the root \u0026 recovery root keys are still 8k ...\n\nwe\u0027ll want to update utility/vbutil_what_keys too",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0a9d9b_caa43611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-10-26T19:28:22Z",
+      "side": 1,
+      "message": "my thought was to leave those keys as is because the new signing flow doesn\u0027t require them to live in Cloud KMS. would you prefer that I migrate these too?",
+      "parentUuid": "34eab5f0_effcfd29",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
