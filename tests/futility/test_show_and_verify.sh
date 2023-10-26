@@ -58,6 +58,9 @@ TEST_CASES=(
   # TODO(b/290287265): error_level should be 1
   "bios_coachz_cbfs tests/futility/data/bios_coachz_cbfs.bin 2"
   "parseable.bios_coachz_cbfs tests/futility/data/bios_coachz_cbfs.bin 2 -P"
+  # valid bios with VBOOT_CBFS_INTEGRATION
+  "bios_geralt_cbfs tests/futility/data/bios_geralt_cbfs.bin 0 --type bios"
+  "parseable.bios_geralt_cbfs tests/futility/data/bios_geralt_cbfs.bin 0 --type bios -P"
   # [type] kernel
   "kernel tests/futility/data/kernel_part.bin 1"
   "parseable.kernel tests/futility/data/kernel_part.bin 1 -P"
