@@ -34,6 +34,23 @@
       "parentUuid": "34eab5f0_effcfd29",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9586eb_ae402efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-26T23:57:19Z",
+      "side": 1,
+      "message": "Sorry, why do you want to do this? What do our dev keys have to do with prod signing?\n\nChanging dev keys would be a big disruption to developers who\u0027d suddenly have the images they build not match the older firmware flashed to their devices anymore. We should not touch them unless we have a _really_ good reason that would warrant a lot of wasted developer time.",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
