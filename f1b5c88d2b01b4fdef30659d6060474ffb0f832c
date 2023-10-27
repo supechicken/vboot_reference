@@ -16,6 +16,24 @@
       "message": "This is the expected output file for `futility` tests, so it shouldn\u0027t be changed. We\u0027ll need to exclude:\n\n- tests/futility/*.json\n- tests/futility/*.txt\n- tests/futility/data/\n- tests/futility/expect_output/\n\nfrom `cros format` check.",
       "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602ffb01_47087d55",
+        "filename": "tests/futility/link_bios.manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-27T06:09:25Z",
+      "side": 0,
+      "message": "i\u0027d argue that the exact JSON output should not be asserted.  what matters is the contents of the JSON, not where a space is used.  JSON is for machines, not humans.  i don\u0027t know what tools vboot_reference would accept though in the test suite ... if `jq` is acceptable, that would be easy to filter both to normalize \u0026 then compare.\n\nthe other files already pass.  for .txt files, we enforce no trailing space, and our tools shouldn\u0027t be omitting those.",
+      "parentUuid": "7ec8f329_12228785",
+      "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
