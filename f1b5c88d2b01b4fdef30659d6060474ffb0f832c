@@ -70,6 +70,24 @@
       "parentUuid": "426906f0_9f77850a",
       "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7284b5_fc3d29d3",
+        "filename": "tests/futility/link_bios.manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-27T21:59:51Z",
+      "side": 0,
+      "message": "I\u0027m not really sure what Yu-Ping meant (there\u0027s no file exactly called `tests/futility/expect_output/show.kernel` as far as I can tell), but from what I can tell the only file we have that has a trailing space is `tests/futility/expect_output/show.tests_futility_data_kern_preamble.bin`. In that case it\u0027s part of the kernel command line output, and the trailing space is actually part of the embedded command line, so I would argue that this is not a bug. However, since it\u0027s not using the .txt ending I don\u0027t think we need to worry about it (and if our expected output ever clashes with this in the future we can still change the exclusion rules at that point).",
+      "parentUuid": "7bab2459_23f3005a",
+      "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
