@@ -105,6 +105,24 @@
       "parentUuid": "3d0a9d9b_caa43611",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc2fdd5_649a143e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-27T21:49:14Z",
+      "side": 1,
+      "message": "Well, what is the point of using the existing dev keys \"for consistency\" if you then change the existing dev keys? Then nothing is consistent with anything anymore!\n\n\u003e if someone is booting a dev keyed device, the root \u0026 recovery root keys will match, so it\u0027ll still be accepted. so i don\u0027t think there will be any disruption at all.\n\nIf they\u0027re booting on a device that they has been previously flashed with firmware containing the old keys it will not match, that is the problem. Booting a test image in recovery mode is a common use case to reset TPM values, it\u0027s done by everyone running FAFT (including partners) as well as a bunch of lab tests and repair flows (and AFAIK they still don\u0027t regularly update firmware in the lab). We would spend months getting bugs from confused people all over who have their tests break and the flows in their playbooks not work anymore, including partners who only have a specific SIE or TAM to talk to, so all those teams would need to be briefed extensively to recognize all expected and unexpected manifestations of this key mismatch. It would cause an enormous disruption and I still don\u0027t even see a clear benefit on the other side (nobody other than a handful of signing specialists would ever deal with Cloud KMS to test anything anyway, it shouldn\u0027t be that much to ask for them to point at a separate keyset for that).\n\nThis is a terrible idea and we should not do it. If you want a separate set of test keys for Cloud KMS, feel free to add them here to a new directory or something. Please don\u0027t touch the keys that are essential to the work of thousands of developers, most of which don\u0027t really understand how they work or how to recognize problems with them.",
+      "parentUuid": "3591bb8a_8efcd8f7",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
