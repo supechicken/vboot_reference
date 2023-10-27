@@ -51,6 +51,24 @@
       "message": "Sorry, why do you want to do this? What do our dev keys have to do with prod signing?\n\nChanging dev keys would be a big disruption to developers who\u0027d suddenly have the images they build not match the older firmware flashed to their devices anymore. We should not touch them unless we have a _really_ good reason that would warrant a lot of wasted developer time.",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0d1360_b24a044b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2023-10-27T15:19:19Z",
+      "side": 1,
+      "message": "As part of the ChromeOS signing scaling project, we\u0027re migrating to Cloud KMS, which does not support 8K RSA (see go/cros-signing:8k24k). It is my intention to place a set of dev keys in a Cloud KMS key ring so that there is a local development story for the new signing flow, and @vapier@chromium.org suggested that I use the known dev keys for consistency. This requires migration from 8K to 4K RSA so that they can be stored in Cloud KMS.\n\nI started a thread about this (https://groups.google.com/a/google.com/g/chromeos-chatty-firmware/c/c-1FHIVmzio/m/onHeIwOmBAAJ) as well, hopefully this provides enough context.\n\nOpen to any other suggestions on how to proceed here",
+      "parentUuid": "cc9586eb_ae402efe",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
