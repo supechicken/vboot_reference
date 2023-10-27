@@ -52,6 +52,24 @@
       "parentUuid": "602ffb01_47087d55",
       "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bab2459_23f3005a",
+        "filename": "tests/futility/link_bios.manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-27T13:31:42Z",
+      "side": 0,
+      "message": "the unittests pass now that jq filters both\n\n\u003e The paths listed above are all expected output files. What if an expected output file contains a trailing space?\n\nwe should fix our tools that generate the bad output\n\n\u003e Right now we indeed have some files with trailing spaces (such as tests/futility/expect_output/show.kernel). I don\u0027t like the trailing spaces, but those shouldn\u0027t be considered bugs that must be fixed.\n\nwhy not ?  the tool shouldn\u0027t be doing that in the first place.  it\u0027s a bug, and we should fix it.\n\n\u003e Or, should we require that the expected output files must not have .txt.\n\nfor the broken tests, not using .txt suffix seems like an easy way to avoid the issue until the tools can be fixed.",
+      "parentUuid": "426906f0_9f77850a",
+      "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
