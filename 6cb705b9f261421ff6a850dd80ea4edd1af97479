@@ -69,6 +69,42 @@
       "parentUuid": "cc9586eb_ae402efe",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3591bb8a_8efcd8f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-27T18:55:05Z",
+      "side": 1,
+      "message": "for this CL specifically, these are only the recovery \u0026 factory/rma kernel keys.  if someone is booting a dev keyed device, the root \u0026 recovery root keys will match, so it\u0027ll still be accepted.  so i don\u0027t think there will be any disruption at all.",
+      "parentUuid": "3c0d1360_b24a044b",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1858bbb4_3624742e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-27T18:55:05Z",
+      "side": 1,
+      "message": "if we wanted to test firmware or recovery kernel rotation, we\u0027d need them in cloud kms right ?  but maybe that step is getting too far ahead of ourselves.\n\ni still think we should regen the root keys to step from 8k to 4k to match.  but i\u0027m ok with waiting on that as it wouldn\u0027t require regenerating any of the \"downstream\" keys (just refreshing the keyblocks).",
+      "parentUuid": "3d0a9d9b_caa43611",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
