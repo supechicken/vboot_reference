@@ -34,6 +34,24 @@
       "parentUuid": "7ec8f329_12228785",
       "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "426906f0_9f77850a",
+        "filename": "tests/futility/link_bios.manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-27T06:47:42Z",
+      "side": 0,
+      "message": "Yes, I think we can add app-misc/jq as vboot_reference\u0027s a test dependency and use it for verifying the JSON output. I just wanted to point out that some tests will fail with this CL.\n\n\u003e the other files already pass. for .txt files, we enforce no trailing space, and our tools shouldn\u0027t be omitting those.\n\nThe paths listed above are all expected output files. What if an expected output file contains a trailing space? Right now we indeed have some files with trailing spaces (such as tests/futility/expect_output/show.kernel). I don\u0027t like the trailing spaces, but those shouldn\u0027t be considered bugs that must be fixed. Currently `cros format` doesn\u0027t complain about those files only because they are not `.txt`.\n\nSo, the question here is, should `cros format` ignore all expected output files? Or, should we require that the expected output files must not have `.txt`.",
+      "parentUuid": "602ffb01_47087d55",
+      "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
