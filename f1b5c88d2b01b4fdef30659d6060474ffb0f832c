@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec8f329_12228785",
+        "filename": "tests/futility/link_bios.manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-27T01:07:37Z",
+      "side": 0,
+      "message": "This is the expected output file for `futility` tests, so it shouldn\u0027t be changed. We\u0027ll need to exclude:\n\n- tests/futility/*.json\n- tests/futility/*.txt\n- tests/futility/data/\n- tests/futility/expect_output/\n\nfrom `cros format` check.",
+      "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
