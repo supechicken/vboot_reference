@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607376e8_4d3320eb",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-28T00:06:17Z",
+      "side": 1,
+      "message": "nit: the file type recognition function did this already, it should be okay to assume it is a valid firmware preamble when it reports this type",
+      "revId": "6064c72973a0d20c20edf27580e1e8f7fc07880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0944de4_6fd851bd",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-28T00:06:17Z",
+      "side": 1,
+      "message": "nit: add \"from preamble\" so it looks a bit different than the other case?",
+      "range": {
+        "startLine": 689,
+        "startChar": 29,
+        "endLine": 689,
+        "endChar": 30
+      },
+      "revId": "6064c72973a0d20c20edf27580e1e8f7fc07880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91cce2a_b940c40c",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-28T00:06:17Z",
+      "side": 1,
+      "message": "The `--type` shouldn\u0027t be necessary here, right? The auto-detection should be able to figure that out. (I think it\u0027s good for the tests to exercise the auto-detection as much as possible so that we can be confident that it stays working.)",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "6064c72973a0d20c20edf27580e1e8f7fc07880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
