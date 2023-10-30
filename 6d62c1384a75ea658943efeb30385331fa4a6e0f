@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dcc4abd_e50fd852",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-30T21:56:05Z",
+      "side": 1,
+      "message": "nit: I know you\u0027re just trying to avoid duplication but I honestly find this a lot harder to follow than if you had just inserted the `return show_option.strict ? 1 : 0` three times in the appropriate places.",
+      "revId": "6d62c1384a75ea658943efeb30385331fa4a6e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dde50c94_a4e6d48f",
         "filename": "futility/cmd_show.c",
         "patchSetId": 2
