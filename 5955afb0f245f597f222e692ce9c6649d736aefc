@@ -16,6 +16,24 @@
       "message": "Wouldn\u0027t it make more sense to do the pubkey-wrong test _with_ `--fv`, so that we can confirm that even if everything else is the same as a the case where verify would otherwise succeed, it will still fail if given the wrong key to check against?",
       "revId": "5955afb0f245f597f222e692ce9c6649d736aefc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa91a1c8_6a48161f",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T05:04:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18db31e_06b3f189",
+      "revId": "5955afb0f245f597f222e692ce9c6649d736aefc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
