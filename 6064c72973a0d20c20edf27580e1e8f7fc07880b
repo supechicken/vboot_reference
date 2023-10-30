@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05d467f2_5aac2c9c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T05:08:10Z",
+      "side": 1,
+      "message": "I know. I just think it\u0027s safer to still have a validity check for `keyblock_size \u003c\u003d len` here, and `vb2_check_keyblock` is the simplest function checking that. Having an extra check also doesn\u0027t hurt?",
+      "parentUuid": "607376e8_4d3320eb",
+      "revId": "6064c72973a0d20c20edf27580e1e8f7fc07880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0944de4_6fd851bd",
         "filename": "futility/cmd_show.c",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2023-10-28T00:06:17Z",
       "side": 1,
       "message": "nit: add \"from preamble\" so it looks a bit different than the other case?",
+      "range": {
+        "startLine": 689,
+        "startChar": 29,
+        "endLine": 689,
+        "endChar": 30
+      },
+      "revId": "6064c72973a0d20c20edf27580e1e8f7fc07880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76d00b8_85a358fd",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T05:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0944de4_6fd851bd",
       "range": {
         "startLine": 689,
         "startChar": 29,
@@ -54,6 +96,30 @@
       "writtenOn": "2023-10-28T00:06:17Z",
       "side": 1,
       "message": "The `--type` shouldn\u0027t be necessary here, right? The auto-detection should be able to figure that out. (I think it\u0027s good for the tests to exercise the auto-detection as much as possible so that we can be confident that it stays working.)",
+      "range": {
+        "startLine": 64,
+        "startChar": 55,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "6064c72973a0d20c20edf27580e1e8f7fc07880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116e791c_5af9b506",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T05:08:10Z",
+      "side": 1,
+      "message": "No, it\u0027s not necessary. However I plan to add that option to the factory code to have stricter verification, to eliminate any possibility of false negatives. For example, without that option, when passing an invalid kernel blob, the \u0027verify\u0027 command could interpret the file as a valid keyblock. Therefore, I think we should still have test cases for `--type kernel` here.\n\n\u003e I think it\u0027s good for the tests to exercise the auto-detection as much as possible so that we can be confident that it stays working.\n\nThat\u0027s also true. Added more test cases.",
+      "parentUuid": "c91cce2a_b940c40c",
       "range": {
         "startLine": 64,
         "startChar": 55,
