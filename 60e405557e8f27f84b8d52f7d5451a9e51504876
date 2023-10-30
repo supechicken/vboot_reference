@@ -265,6 +265,41 @@
       "parentUuid": "8cd1a2dd_a7473095",
       "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "054887fc_9c81cdee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-10-30T05:12:27Z",
+      "side": 1,
+      "message": "-2 due to signing uprev.",
+      "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce594d4_66f020c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-10-30T05:12:27Z",
+      "side": 1,
+      "message": "We have to wait, as the older tools do not support these flags.",
+      "parentUuid": "5083508b_1f71b025",
+      "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
