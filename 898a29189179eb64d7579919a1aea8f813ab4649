@@ -34,6 +34,24 @@
       "parentUuid": "91f80ae4_86c2e72b",
       "revId": "898a29189179eb64d7579919a1aea8f813ab4649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a0d615_84e3b4a8",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-30T22:04:18Z",
+      "side": 1,
+      "message": "I\u0027m not so sure about that, I\u0027d say while we may not guarantee how much output we can generate for an image that can\u0027t be fully parsed, we still need to make sure that the output we do generate is correct, so it would still make sense to have some form of validation for that output. But as long as we don\u0027t actually have any test cases for error_level 2, we can postpone that discussion until we do.",
+      "parentUuid": "89e54664_cf78cd2d",
+      "revId": "898a29189179eb64d7579919a1aea8f813ab4649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
