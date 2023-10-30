@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ed49618_e8ad4de7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-10-30T10:50:33Z",
+      "side": 1,
+      "message": "Yes but I do not aware if we have a kernel ABI for write-protection. I think I could also investigate more if it is really the issue that time is sensitive in real time. But I can\u0027t figure out any implementation to make the performance not down.",
+      "parentUuid": "7307f854_5ce6fc35",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "71262881a7e57e8fdfb6bf27bc12ec8a574216bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "feef7a12_6f52299b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-26T21:16:19Z",
       "side": 1,
       "message": "s//This flag skips",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "71262881a7e57e8fdfb6bf27bc12ec8a574216bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caaead7c_9c1dd010",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-10-30T10:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feef7a12_6f52299b",
       "range": {
         "startLine": 18,
         "startChar": 32,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f53ac2e_82c3e5e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-10-30T10:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13551bf_0bfd3a02",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "71262881a7e57e8fdfb6bf27bc12ec8a574216bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd539c12_041e626e",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-10-26T21:16:19Z",
       "side": 1,
       "message": "Should have a big warning in the logs this path is being (ab)used.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "71262881a7e57e8fdfb6bf27bc12ec8a574216bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab012fd_1cb44cb9",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-10-30T10:50:33Z",
+      "side": 1,
+      "message": "Added below",
+      "parentUuid": "bd539c12_041e626e",
       "range": {
         "startLine": 116,
         "startChar": 0,
