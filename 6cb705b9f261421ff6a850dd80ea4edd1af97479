@@ -141,6 +141,24 @@
       "parentUuid": "1bc2fdd5_649a143e",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9433fbe_77661420",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-30T22:29:18Z",
+      "side": 1,
+      "message": "\u003e we want the keysize to be consistent across keysets. we aren\u0027t using 8k rsa anywhere anymore. which means our devkeys that we test against are not consistent with our actual released devices.\n\nLike you\u0027re saying yourself you are not actually changing the root keys here, so this doesn\u0027t actually get you to full parity between dev and MP keys anyway. I understand that it\u0027s a minor inconvenience that algorithms differ between those keysets, but I also understand that it would cause a major clusterf*** for all our developers to try to align them, so I think leaving the situation as is is the best we can do.\n\nBesides, we\u0027ve already been using 4K root keys for ~8 years, and already had other algorithm differences before that. We\u0027re planning to switch to PQ-crypto \"soon\" anyway. It seems dumb that after all those years of not caring about this discrepancy, we would suddenly now be willing to deal with all the fallout of making a one-time change while RSA is on the way out in the next few years anyway.\n\n\u003e and the systems we\u0027re transitioning to don\u0027t support 8k. so we can\u0027t use or verify those flows work with devkeys, only with release keys. which is the exact opposite we want out of a CQ.\n\nLike I said you\u0027re welcome to create an extra set of \"cloud developer keys\" and check it in to another directory here. I just don\u0027t want you to disrupt the keys that are used by thousands of developers for a different thing for this just because you feel that it\u0027s \"cleaner\" to only have one set of developer keys. The very real practical problems that would be caused by this far outweigh aesthetical concerns here.\n\n\u003e i doubt this is as much of a problem as you make it out. but please post to the existing e-mail thread that already has a number of people/teams looped in, and/or the design doc that Benjamin wrote.\n\nI don\u0027t really see the point in duplicating my argument there, but if you insist...",
+      "parentUuid": "e37abd64_03e4e269",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
