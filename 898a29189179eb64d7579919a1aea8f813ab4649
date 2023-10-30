@@ -16,6 +16,24 @@
       "message": "So this means that the diff is never measured for files of error level 2 (like bios_coachz_cbfs.bin)? I think that\u0027s a problem, we still want to guarantee the output for that test case.",
       "revId": "898a29189179eb64d7579919a1aea8f813ab4649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e54664_cf78cd2d",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T05:03:29Z",
+      "side": 1,
+      "message": "\u003e So this means that the diff is never measured for files of error level 2\n\nThat\u0027s intentional. If a command fails, I think the caller shouldn\u0027t trust its output. I\u0027d say the same for a function `int f(.., char *out)`. When it returns an error, the caller shouldn\u0027t trust `out`.\n\nNow CL:4940542 is moved prior to this CL, so I guess there\u0027s no problem for `bios_coachz_cbfs` anymore?",
+      "parentUuid": "91f80ae4_86c2e72b",
+      "revId": "898a29189179eb64d7579919a1aea8f813ab4649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
