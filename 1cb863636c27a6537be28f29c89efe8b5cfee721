@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11d52f2_1e931852",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T05:01:51Z",
+      "side": 1,
+      "message": "\u003e This has always been this way and CBFS integration shouldn\u0027t have made a difference for that anyway, because when you just give it a raw vblock to verify then it never had a firmware body to check the body signature against, even in the old model.\n\nThat\u0027s not entirely true. When the input file is a vblock with no `--fv` specified, this function will return in line #396 above.\n\nHowever now I agree that this shouldn\u0027t be a FATAL error, and should return 1 only if `show_option.strict`.",
+      "parentUuid": "d7b9ef9d_3b6b3969",
+      "revId": "1cb863636c27a6537be28f29c89efe8b5cfee721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc15caf3_ce6960a6",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-24T23:38:19Z",
       "side": 1,
       "message": "nit: wouldn\u0027t it look better to keep this as a sequence of \n```\nif (...) {\n  ...\n} else if (...) {\n  ...\n} else if (...) {\n  ...\n} else {\n  ...\n}\n```\nwithout the extra level of indentation?",
+      "revId": "1cb863636c27a6537be28f29c89efe8b5cfee721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "494e87cf_21e2e898",
+        "filename": "futility/cmd_vbutil_firmware.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T05:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc15caf3_ce6960a6",
       "revId": "1cb863636c27a6537be28f29c89efe8b5cfee721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
