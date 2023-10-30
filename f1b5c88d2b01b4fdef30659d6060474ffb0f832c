@@ -88,6 +88,24 @@
       "parentUuid": "7bab2459_23f3005a",
       "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6da655_1eba4734",
+        "filename": "tests/futility/link_bios.manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T03:23:49Z",
+      "side": 0,
+      "message": "Sorry, by `show.kernel` I actually meant `show.tests_futility_data_kern_preamble.bin`.\n\nAfter some more digging, I found that the trailing space is a consequence replacing newlines with spaces when reading the config file. Uploaded CL:4982049 to fix it. After the fix I believe there will no longer be trailing spaces in any file in the repo.",
+      "parentUuid": "fa7284b5_fc3d29d3",
+      "revId": "f1b5c88d2b01b4fdef30659d6060474ffb0f832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
