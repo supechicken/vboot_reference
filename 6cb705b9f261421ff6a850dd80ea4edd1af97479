@@ -123,6 +123,24 @@
       "parentUuid": "3591bb8a_8efcd8f7",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37abd64_03e4e269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-30T05:41:59Z",
+      "side": 1,
+      "message": "\u003e Well, what is the point of using the existing dev keys \"for consistency\" if you then change the existing dev keys? Then nothing is consistent with anything anymore!\n\nwe want the keysize to be consistent across keysets.  we aren\u0027t using 8k rsa anywhere anymore.  which means our devkeys that we test against are not consistent with our actual released devices.\n\nand the systems we\u0027re transitioning to don\u0027t support 8k.  so we can\u0027t use or verify those flows work with devkeys, only with release keys.  which is the exact opposite we want out of a CQ.\n\n\u003e If they\u0027re booting on a device that they has been previously flashed with firmware containing the old keys it will not match, that is the problem.\n\nagain, please look at the actual keys being changed here -- these are the installer kernel key \u0026 recovery kernel key.  the root \u0026 recovery root keys aren\u0027t changed here.  that means devices flashed with the existing root keys will trust these new keys just fine because they use the unchanged root keys to verify them.\n\n\u003e Booting a test image in recovery mode is a common use case to reset TPM values, it\u0027s done by everyone running FAFT (including partners) as well as a bunch of lab tests and repair flows (and AFAIK they still don\u0027t regularly update firmware in the lab). We would spend months getting bugs from confused people all over who have their tests break and the flows in their playbooks not work anymore, including partners who only have a specific SIE or TAM to talk to, so all those teams would need to be briefed extensively to recognize all expected and unexpected manifestations of this key mismatch. It would cause an enormous disruption and I still don\u0027t even see a clear benefit on the other side (nobody other than a handful of signing specialists would ever deal with Cloud KMS to test anything anyway, it shouldn\u0027t be that much to ask for them to point at a separate keyset for that).\n\ni doubt this is as much of a problem as you make it out.  but please post to the existing e-mail thread that already has a number of people/teams looped in, and/or the design doc that Benjamin wrote.",
+      "parentUuid": "1bc2fdd5_649a143e",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
