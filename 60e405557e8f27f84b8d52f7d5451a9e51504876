@@ -247,6 +247,24 @@
       "parentUuid": "0c997743_4e767103",
       "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5083508b_1f71b025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-10-30T03:02:00Z",
+      "side": 1,
+      "message": "The signing tool CLs are not blockers for this CL, because the signing tool pins a specific vboot_reference commit instead of using ToT. Therefore, yes, I think we can merge this.",
+      "parentUuid": "8cd1a2dd_a7473095",
+      "revId": "60e405557e8f27f84b8d52f7d5451a9e51504876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
