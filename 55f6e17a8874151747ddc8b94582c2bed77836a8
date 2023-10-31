@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdcf6e34_cb8099a3",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1607047
+      },
+      "writtenOn": "2023-10-31T08:19:18Z",
+      "side": 1,
+      "message": "Makefiles being next to illegible never heard of that. 😄\nAnyway, is there a reason keeping `FIRMWARE_FLAGS`? Maybe removing it can make the makefile slightly less \"messy\".",
+      "parentUuid": "f864c6cb_07b4c7a1",
+      "revId": "55f6e17a8874151747ddc8b94582c2bed77836a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e7ee31d_3f9137ab",
         "filename": "firmware/2lib/2crypto.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2023-10-31T00:37:55Z",
       "side": 1,
       "message": "Usually we do this with `#ifndef CHROMEOS_ENVIRONMENT`. I agree that\u0027s maybe not a good name for what it actually means anymore, but we should have consistency throughout vboot, so we should either rename it everywhere or use it like that here.",
+      "revId": "55f6e17a8874151747ddc8b94582c2bed77836a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c614539b_427400a0",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1607047
+      },
+      "writtenOn": "2023-10-31T08:19:18Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "1e7ee31d_3f9137ab",
       "revId": "55f6e17a8874151747ddc8b94582c2bed77836a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
