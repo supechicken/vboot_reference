@@ -177,6 +177,24 @@
       "parentUuid": "d9433fbe_77661420",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c696797e_309aa92a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-31T23:07:47Z",
+      "side": 1,
+      "message": "\u003e the only objection you\u0027ve raised in this CL (it will cause disruption for people) has been shown to be incorrect.\n\nUhh what? Where have you shown anything? I have told you from the start that this will screw up everyone booting in recovery mode (which means everyone running FAFT, among other cases), and that is exactly what would happen.",
+      "parentUuid": "89762ddd_6cb00011",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
