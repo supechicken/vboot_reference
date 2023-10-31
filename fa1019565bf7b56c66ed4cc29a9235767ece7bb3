@@ -16,6 +16,29 @@
       "message": "Thanks for the review Allen!",
       "revId": "fa1019565bf7b56c66ed4cc29a9235767ece7bb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57c2919_4daa4537",
+        "filename": "rust/vboot_reference-sys/build.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2023-10-31T19:11:55Z",
+      "side": 1,
+      "message": "```suggestion\n    for file in std::fs::read_dir(\"include\")? {\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 35,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "fa1019565bf7b56c66ed4cc29a9235767ece7bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
