@@ -159,6 +159,24 @@
       "parentUuid": "e37abd64_03e4e269",
       "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89762ddd_6cb00011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-10-31T09:24:28Z",
+      "side": 1,
+      "message": "the only objection you\u0027ve raised in this CL (it will cause disruption for people) has been shown to be incorrect.  changing these specific keys unblocks the ability to use devkeys in cloud kms and causes no problems for anyone.\n\nwhether we also do root keys is a related question, but ultimately irrelevant to this CL.  so what objections do you have to this CL ?",
+      "parentUuid": "d9433fbe_77661420",
+      "revId": "6cb705b9f261421ff6a850dd80ea4edd1af97479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
