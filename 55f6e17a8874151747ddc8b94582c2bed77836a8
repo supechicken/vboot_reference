@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd003f25_e6292494",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-31T00:37:55Z",
+      "side": 1,
+      "message": "Looks good to me in general, just naming details.",
+      "revId": "55f6e17a8874151747ddc8b94582c2bed77836a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f864c6cb_07b4c7a1",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-31T00:37:55Z",
+      "side": 1,
+      "message": "This wouldn\u0027t actually work because for the actual firmware use cases we have, `CFLAGS` is passed in from the outside and none of these definitions are actually used. I know this Makefile is a mess, sorry. :/",
+      "revId": "55f6e17a8874151747ddc8b94582c2bed77836a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e7ee31d_3f9137ab",
+        "filename": "firmware/2lib/2crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-10-31T00:37:55Z",
+      "side": 1,
+      "message": "Usually we do this with `#ifndef CHROMEOS_ENVIRONMENT`. I agree that\u0027s maybe not a good name for what it actually means anymore, but we should have consistency throughout vboot, so we should either rename it everywhere or use it like that here.",
+      "revId": "55f6e17a8874151747ddc8b94582c2bed77836a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
