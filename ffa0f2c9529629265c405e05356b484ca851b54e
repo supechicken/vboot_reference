@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "213f3715_9bacf76b",
+        "filename": "rust/vboot_reference-sys/build.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2023-10-31T19:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2132e243_22b0e15d",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 65
+      },
+      "revId": "ffa0f2c9529629265c405e05356b484ca851b54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f934c56_b7866da9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-31T18:45:05Z",
       "side": 1,
       "message": "This is probably fine, but if we add any more cases like this, we might want to put this in a helper function.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 7
+      },
+      "revId": "ffa0f2c9529629265c405e05356b484ca851b54e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83eff148_98f1a600",
+        "filename": "rust/vboot_reference-sys/build.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2023-10-31T19:10:01Z",
+      "side": 1,
+      "message": "Yip,I\u0027ll keep that in mind. Thought we might want to use `bindgen::Builder` here in the future anyways.\n\nhttps://docs.rs/bindgen/latest/bindgen/struct.Builder.html",
+      "parentUuid": "9f934c56_b7866da9",
       "range": {
         "startLine": 84,
         "startChar": 0,
