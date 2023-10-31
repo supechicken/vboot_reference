@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40b4a112_18add29e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2023-10-31T23:55:31Z",
+      "side": 1,
+      "message": "\u003e But I can\u0027t figure out any implementation to make the performance not down.\n\nYou ask the TPM the WP status not the AP to fetch it from SB.\n\nThis ultimately seems just like a short term hack and really not properly engineered.",
+      "parentUuid": "4ed49618_e8ad4de7",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "71262881a7e57e8fdfb6bf27bc12ec8a574216bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "feef7a12_6f52299b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
