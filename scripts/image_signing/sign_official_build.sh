@@ -765,7 +765,7 @@ resign_android_image_if_exists() {
   info "Found ARC image version '${arc_version}', re-signing APKs."
   # TODO(crbug.com/1141907): remove set -x and set +x below.
   set -x
-  "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android"
+  sudo "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android"
 
   if ! sudo umount "${rootfs_dir}"; then
     error "umount ${rootfs_dir} failed"
