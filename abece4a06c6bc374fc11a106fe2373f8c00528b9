@@ -70,6 +70,24 @@
       "parentUuid": "e121654a_d4d78fc6",
       "revId": "abece4a06c6bc374fc11a106fe2373f8c00528b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3526a0d4_7b7105ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-11-01T20:31:08Z",
+      "side": 1,
+      "message": "```\nTEST: Extract ro.build.flavor property.\n\nWe trust you have received the usual lecture from the local System\nAdministrator. It usually boils down to these three things:\n\n    #1) Respect the privacy of others.\n    #2) Think before you type.\n    #3) With great power comes great responsibility.\n\nFor security reasons, the password you type will not be visible.\n\nsudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper\nsudo: a password is required\nERROR: Incorrect build flavor \u0027\u0027 returned.\nTEST: Extract single ro.build.flavor property.\n\nWe trust you have received the usual lecture from the local System\nAdministrator. It usually boils down to these three things:\n\n    #1) Respect the privacy of others.\n    #2) Think before you type.\n    #3) With great power comes great responsibility.\n\nFor security reasons, the password you type will not be visible.\n\nsudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper\nsudo: a password is required\nERROR: Incorrect build flavor \u0027\u0027 returned.\nTEST: Avoid commented out ro.build.flavor property.\n\u001b[32;1mPASSED\u001b[0;m\ntest_main.sh ... \nWe trust you have received the usual lecture from the local System\nAdministrator. It usually boils down to these three things:\n\n    #1) Respect the privacy of others.\n    #2) Think before you type.\n    #3) With great power comes great responsibility.\n\nFor security reasons, the password you type will not be visible.\n\nsudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper\nsudo: a password is required\nERROR: Incorrect build flavor \u0027\u0027 returned.\n```\n\nRecent CQ Run still not happy, will try and dig later today.",
+      "parentUuid": "7de5ce06_2fc5cd41",
+      "revId": "abece4a06c6bc374fc11a106fe2373f8c00528b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
