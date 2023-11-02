@@ -25,6 +25,7 @@ setup_default_keycfg() {
   # one of .vbprik2 in KEY_DIR if KEYCFG_ACCESSORY_RWSIG_VBRPIK2 is empty or unset.
   export KEYCFG_ACCESSORY_RWSIG_VBRPIK2=""
   export KEYCFG_FIRMWARE_VBPRIVK="${key_dir}/firmware_data_key.vbprivk"
+  export KEYCFG_UPDATE_KEY_PEM="${key_dir}/update_key.pem"
   declare -a KEYCFG_KEY_FIRMARE_VBPRIVK_LOEM
 }
 
