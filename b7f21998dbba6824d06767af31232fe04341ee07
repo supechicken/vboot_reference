@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d898c4f8_00a21e08",
+        "filename": "host/lib/include/host_key.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-11-02T14:25:18Z",
+      "side": 1,
+      "message": "Consider adding comments just like the bv2_write_private_key() above.",
+      "revId": "b7f21998dbba6824d06767af31232fe04341ee07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad0fb85_40d84302",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-11-02T14:25:18Z",
+      "side": 1,
+      "message": "Maybe add debug messages here so that if something goes wrong we\u0027ll know? Ditto below.",
+      "revId": "b7f21998dbba6824d06767af31232fe04341ee07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb9ec27_54e48857",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-11-02T14:25:18Z",
+      "side": 1,
+      "message": "Although this code is not new in this CL (it\u0027s copied from below), I would recommend adding assertions to make sure strcpy() never write past the allocated buffer.\n\nYou can add that in another CL.",
+      "revId": "b7f21998dbba6824d06767af31232fe04341ee07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
