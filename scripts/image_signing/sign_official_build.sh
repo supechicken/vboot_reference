@@ -423,9 +423,17 @@ sign_firmware() {
 # Args: INPUT_IMAGE KEY_DIR OUTPUT_IMAGE
 sign_update_payload() {
   local image=$1
-  local key_dir=$2
+  local key_file=$2
   local output=$3
-  local key_output key_size key_file="${key_dir}/update_key.pem"
+  local key_output key_size
+
+  if [[ "${key_file}" == "pkcs11:"* ]]; then
+    # get label from key_file with format "pkcs11:<libkmsp11.so>:<slot>:<label>"
+    local key_label="${key_file##*:}"
+    # Hashing algorithm is always SHA-256.
+    openssl dgst -sha256 -engine pkcs11 -keyform engine \
+      -sign pkcs11:object="${key_label}" "${image}" > "${output}"
+  fi
   # Maps key size to verified boot's algorithm id (for pad_digest_utility).
   # Hashing algorithm is always SHA-256.
   local algo algos=(
@@ -1374,7 +1382,7 @@ main() {
     cp "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
     sign_firmware "${OUTPUT_IMAGE}" "${KEY_DIR}" "${FIRMWARE_VERSION}"
   elif [[ "${TYPE}" == "update_payload" ]]; then
-    sign_update_payload "${INPUT_IMAGE}" "${KEY_DIR}" "${OUTPUT_IMAGE}"
+    sign_update_payload "${INPUT_IMAGE}" "${KEYCFG_UPDATE_KEY_PEM}" "${OUTPUT_IMAGE}"
   elif [[ "${TYPE}" == "accessory_usbpd" ]]; then
     KEY_NAME="${KEY_DIR}/key_$(basename "$(dirname "${INPUT_IMAGE}")")"
     if [[ ! -e "${KEY_NAME}.pem" ]]; then
