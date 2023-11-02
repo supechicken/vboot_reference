@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a9766e_8b0c4288",
+        "filename": "scripts/image_signing/lib/sudo_stub.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-11-02T22:40:48Z",
+      "side": 1,
+      "message": "\u003e error: Double quote array expansions to avoid re-splitting elements.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2068\n\nPlease fix.",
+      "parentUuid": "747dfece_03d8eda3",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "340a4d6ab1c12a60a18a4f5bf524a46051878787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b628a31d_af5bae9b",
+        "filename": "scripts/image_signing/sign_android_unittests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2023-11-02T22:40:48Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "b32c44b2_9455aca2",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "340a4d6ab1c12a60a18a4f5bf524a46051878787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
