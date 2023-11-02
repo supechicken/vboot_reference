@@ -131,7 +131,15 @@ static int do_unpack(const char *infile, const char *outfile)
 		return 0;
 	}
 
-	struct vb2_private_key *privkey = vb2_read_private_key(infile);
+	struct vb2_private_key *privkey = NULL;
+	// Try to read it as .vbprik2, this should fail if it's .vbprivk.
+	vb2_error_t rv = vb21_private_key_read(&privkey, infile);
+	if (rv != VB2_SUCCESS) {
+		if (privkey)
+			free(privkey);
+		// Since it's not .vbprik2, let's read it as .vbprivk.
+		privkey = vb2_read_private_key(infile);
+	}
 	if (privkey) {
 		printf("Private Key file:  %s\n", infile);
 
