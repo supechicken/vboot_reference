@@ -95,6 +95,9 @@ setup_default_keycfg() {
   KEYCFG_INSTALLER_KERNEL_VBPRIVK="${key_dir}/installer_kernel_data_key.vbprivk"
   KEYCFG_ARV_PLATFORM_KEYBLOCK="${key_dir}/arv_platform.keyblock"
   KEYCFG_ARV_PLATFORM_VBPRIVK="${key_dir}/arv_platform.vbprivk"
+  KEYCFG_UEFI_PRIVATE_KEY="${KEY_DIR}/uefi/db/db.children/db_child.rsa"
+  KEYCFG_UEFI_SIGN_CERT="${KEY_DIR}/uefi/db/db.children/db_child.pem"
+  KEYCFG_UEFI_VERIFY_CERT="${KEY_DIR}/uefi/db/db.pem"
 }
 
 # Run futility as root with some preserved environment variables.

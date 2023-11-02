@@ -70,20 +70,22 @@ class Signer:
         subprocess.run(["sudo", "sbattach", "--remove", target], check=False)
 
         signed_file = self.temp_dir / target.name
+        sign_cmd = [
+            "sbsign",
+            "--key",
+            self.priv_key,
+            "--cert",
+            self.sign_cert,
+            "--output",
+            signed_file,
+            target,
+        ]
+        if self.priv_key.startswith("pkcs11:"):
+            sign_cmd += ["--engine", "pkcs11"]
+
         try:
-            subprocess.run(
-                [
-                    "sbsign",
-                    "--key",
-                    self.priv_key,
-                    "--cert",
-                    self.sign_cert,
-                    "--output",
-                    signed_file,
-                    target,
-                ],
-                check=True,
-            )
+            logging.info("running sbsign: %r", sign_cmd)
+            subprocess.run(sign_cmd, check=True)
         except subprocess.CalledProcessError:
             logging.warning("cannot sign %s", target)
             return
@@ -125,6 +127,7 @@ def inject_vbpubk(efi_file: os.PathLike, key_dir: os.PathLike):
     )
 
 
+# TODO(nicholasbishop): key_dir
 def sign_target_dir(target_dir, key_dir, efi_glob):
     """Sign various EFI files under |target_dir|.
 
@@ -138,14 +141,14 @@ def sign_target_dir(target_dir, key_dir, efi_glob):
     syslinux_dir = target_dir / "syslinux"
     kernel_dir = target_dir
 
-    verify_cert = key_dir / "db/db.pem"
+    verify_cert = Path(os.environ["KEYCFG_UEFI_VERIFY_CERT"])
     ensure_file_exists(verify_cert, "No verification cert")
 
-    sign_cert = key_dir / "db/db.children/db_child.pem"
+    sign_cert = Path(os.environ["KEYCFG_UEFI_SIGN_CERT"])
     ensure_file_exists(sign_cert, "No signing cert")
 
-    sign_key = key_dir / "db/db.children/db_child.rsa"
-    ensure_file_exists(sign_key, "No signing key")
+    # The private key may be a pkcs11 URI, so don't check if the path exists.
+    sign_key = os.environ["KEYCFG_UEFI_PRIVATE_KEY"]
 
     with tempfile.TemporaryDirectory() as working_dir:
         working_dir = Path(working_dir)
