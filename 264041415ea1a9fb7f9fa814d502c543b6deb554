@@ -16,6 +16,24 @@
       "message": "Some of the boards are failing with:\n```\npanicked at \u0027assertion failed: `(left \u003d\u003d right)`\n    left: `4`,\n   right: `8`: Target platform requires `--no-size_t-is-usize`. The size of `ssize_t` (4) does not match the target pointer size (8)\u0027, [REGISTRY]/bindgen-0.63.0/codegen/mod.rs:852:25\n```",
       "revId": "264041415ea1a9fb7f9fa814d502c543b6deb554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d17919a_cdd23b55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2023-11-02T11:51:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a7c3eb_65c6f830",
+      "revId": "264041415ea1a9fb7f9fa814d502c543b6deb554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
