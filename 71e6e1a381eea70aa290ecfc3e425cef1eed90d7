@@ -16,6 +16,24 @@
       "message": "Another option is to make vb21_private_key_read able to fall back to vb2_private_key, so that we could",
       "revId": "71e6e1a381eea70aa290ecfc3e425cef1eed90d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490451b5_7e065efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-02T09:52:31Z",
+      "side": 1,
+      "message": "(Accidentally replied with unfinished comment, so the following is complete one)\nAnother option is to make vb21_private_key_read able to fall back to vb2_private_key, so that we could use the vb21_private_key_read to replace vb2_private_key here, and maybe in all the other place.",
+      "parentUuid": "90e3b1fe_4e85e949",
+      "revId": "71e6e1a381eea70aa290ecfc3e425cef1eed90d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
