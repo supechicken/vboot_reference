@@ -152,9 +152,11 @@ def sign_target_dir(target_dir: os.PathLike, keys: Keys, efi_glob: str):
     syslinux_dir = target_dir / "syslinux"
     kernel_dir = target_dir
 
+    # Check for the existence of the public keys. The private signing
+    # key is not checked, as it may be a pkcs11 URI rather than a local
+    # file path.
     ensure_file_exists(keys.verify_cert, "No verification cert")
     ensure_file_exists(keys.sign_cert, "No signing cert")
-    ensure_file_exists(keys.private_key, "No signing key")
     ensure_file_exists(keys.kernel_subkey_vbpubk, "No kernel subkey public key")
 
     with tempfile.TemporaryDirectory() as working_dir:
