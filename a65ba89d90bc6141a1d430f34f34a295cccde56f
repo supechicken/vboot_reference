@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27bcc4a4_a7d1ea2a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-11-06T20:42:37Z",
+      "side": 1,
+      "message": "$match is used later, so maybe you\u0027ve got bash magic to do the equiv of `if let`...\n\nI\u0027ll see what I can conjure up.",
+      "parentUuid": "bec449f3_add3a5e4",
+      "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa9d959c_adfa4464",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e984b749_41c11785",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-11-06T20:42:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa9d959c_adfa4464",
+      "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "486a48d4_4074880c",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-11-06T19:58:48Z",
       "side": 1,
       "message": "```suggestion\n        info \"Using root key: ${rootkey##*/}\"\n```\n\nnot a new issue, but it\u0027s a bit confusing when key_suffix is empty.  since we really care which root key is used, let\u0027s show that.",
+      "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70e5435_2ce430a1",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2023-11-06T20:42:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "486a48d4_4074880c",
       "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
