@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c01c657_f9e54ddf",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-06T08:21:36Z",
+      "side": 1,
+      "message": "In the future, it would be used by other scripts, e.g. sign_firmware.sh. So, I guess it\u0027s feasible to put it in common_minimal.sh (which sign_firmware.sh would source). But personally I would prefer creating a seperate file for this, since it should be sourced in every file requiring `setup_keycfg()`. I don\u0027t insist on this, though.",
+      "parentUuid": "1b45a71a_a78ee195",
+      "revId": "f91ac0bde8a04cf820a9ac6e3d111fd8c564d3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dbd7c3b_50a7ce65",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-02T14:39:19Z",
       "side": 1,
       "message": "Doc this fn().",
+      "revId": "f91ac0bde8a04cf820a9ac6e3d111fd8c564d3a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0462161d_baa8a5ab",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-06T08:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dbd7c3b_50a7ce65",
       "revId": "f91ac0bde8a04cf820a9ac6e3d111fd8c564d3a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
