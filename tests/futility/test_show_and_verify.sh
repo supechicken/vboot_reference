@@ -55,6 +55,9 @@ TEST_CASES=(
   "fw_vblock-pubkey-wrong tests/futility/data/fw_vblock.bin 1 \
     -k tests/devkeys/root_key.vbpubk \
     --fv tests/futility/data/fw_main_peppy.bin"
+  "parseable.fw_vblock-pubkey-wrong tests/futility/data/fw_vblock.bin 1 \
+    -k tests/devkeys/root_key.vbpubk \
+    --fv tests/futility/data/fw_main_peppy.bin -P"
   ## [type] gbb
   "gbb tests/futility/data/fw_gbb.bin 0"
   "parseable.gbb tests/futility/data/fw_gbb.bin 0 -P"
