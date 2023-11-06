@@ -16,6 +16,24 @@
       "message": "Is it really necessary to set and unset nullglob here?",
       "revId": "ac7e86b268e7a4a7b79cd60dfc3aedfeef8c2005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418f5969_c00a41f4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-06T06:25:06Z",
+      "side": 1,
+      "message": "If we don\u0027t set/unset nullglob here and there is no .vbprik2 file in KEY_DIR, KEYS would be `( \u0027\u003ckey_dir\u003e/*.vbprik2\u0027 )`, so it would not die for \"Expected exactly one key present in keyset for accessory_rwsig\", but fail on `futility sign` instead. Alternatively, we could maybe use `KEYS\u003d( $(ls \"${KEY_DIR}\"/*.vbprik2) )`, but I guess set/unset nullglob is more prefered way(?).",
+      "parentUuid": "154b95e7_a403fa85",
+      "revId": "ac7e86b268e7a4a7b79cd60dfc3aedfeef8c2005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
