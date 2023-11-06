@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e727874a_6b09de4c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-06T20:45:05Z",
+      "side": 1,
+      "message": "it\u0027s a pretty common pattern:\n\n`if ! match\u003d\"$(...)\"; then`",
+      "parentUuid": "27bcc4a4_a7d1ea2a",
+      "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9d959c_adfa4464",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
