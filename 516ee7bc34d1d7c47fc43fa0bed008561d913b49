@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f5cba1_b3aff11b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-06T19:58:48Z",
+      "side": 0,
+      "message": "just noticed this grep needs a `^` to avoid matching invalid entries or comments",
+      "revId": "516ee7bc34d1d7c47fc43fa0bed008561d913b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec449f3_add3a5e4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-06T19:58:48Z",
+      "side": 1,
+      "message": "write this using `if ! ...; then` style, then you don\u0027t need the extra comment or true or -z logic.",
+      "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9d959c_adfa4464",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-06T19:58:48Z",
+      "side": 1,
+      "message": "```suggestion\n            die \"Failed to extract key_index ${key_id} in loem.ini file for\" \\\n```\n\nnot a new issue, but there\u0027s an extra space here",
+      "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486a48d4_4074880c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-06T19:58:48Z",
+      "side": 1,
+      "message": "```suggestion\n        info \"Using root key: ${rootkey##*/}\"\n```\n\nnot a new issue, but it\u0027s a bit confusing when key_suffix is empty.  since we really care which root key is used, let\u0027s show that.",
+      "revId": "a65ba89d90bc6141a1d430f34f34a295cccde56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
