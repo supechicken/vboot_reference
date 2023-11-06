@@ -22,6 +22,30 @@
       },
       "revId": "37fb0d6f4f86fc77862295bcbb734d28628ae865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0b0cf7_f01044da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-06T20:18:21Z",
+      "side": 1,
+      "message": "right, we\u0027re using \"Chrome OS\" and have been since we launched.  we can\u0027t swap to \"ChromeOS\" without breaking all branches.  seems easier to just allow both and switch ToT to \"ChromeOS\" and consider everything else a lost cause.  maybe revisit in 2034 if we haven\u0027t done another AUE extension :p.",
+      "parentUuid": "f256dc43_5c4f79d3",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "37fb0d6f4f86fc77862295bcbb734d28628ae865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
