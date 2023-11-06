@@ -205,6 +205,12 @@ enum vb2_context_flags {
 	 * support two RW slots.
 	 */
 	VB2_CONTEXT_SLOT_A_ONLY = (1 << 29),
+
+	/*
+	 * Vboot is booting Android OS with GKI, which
+	 * uses vastly different boot scheme than ChromeOS
+	 */
+	VB2_CONTEXT_ANDROID_GKI_MODE = (1 << 30),
 };
 
 /* Helper for aligning fields in vb2_context. */
