@@ -615,6 +615,11 @@ static const struct vb2_keyblock *get_keyblock(
 		ERROR("Invalid section: %s\n", section_name);
 		return NULL;
 	}
+	const struct vb2_keyblock *block = (const struct vb2_keyblock *)section.data;
+	if (vb2_check_keyblock(block, section.size, &block->keyblock_hash)) {
+		ERROR("Check keyblock failed. Keyblock might be corrupted!\n");
+		return NULL;
+	}
 	return (const struct vb2_keyblock *)section.data;
 }
 
