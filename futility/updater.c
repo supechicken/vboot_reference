@@ -655,6 +655,10 @@ static int verify_keyblock(const struct vb2_keyblock *block,
 		return -1;
 	}
 
+	if (vb2_check_keyblock(block, block->keyblock_size, &block->keyblock_hash)) {
+		ERROR("Check keyblock failed. Keyblock might be corrupted!\n");
+		return -1;
+	}
 	/*
 	 * vb2_verify_keyblock will destroy the signature inside keyblock
 	 * so we have to verify with a local copy.
