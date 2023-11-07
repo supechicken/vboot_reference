@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "747aeb8d_4bba38a0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-11-07T14:13:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ff5c09bb_fb15f697",
+      "revId": "959fef4eeeb94ef130228d7887c4eb5ee5539352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e36e6087_db7991f9",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-11-03T08:47:06Z",
       "side": 1,
       "message": "This might be NULL. Either change to `servo_id ?: \"NULL\"` or add an else block in line #489 to set `servo_id` to `\"UNKNOWN\"`.",
+      "range": {
+        "startLine": 495,
+        "startChar": 56,
+        "endLine": 495,
+        "endChar": 64
+      },
+      "revId": "959fef4eeeb94ef130228d7887c4eb5ee5539352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2748e12_9c76aee6",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-11-07T14:13:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e36e6087_db7991f9",
       "range": {
         "startLine": 495,
         "startChar": 56,
