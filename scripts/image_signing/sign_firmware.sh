@@ -10,6 +10,7 @@ SCRIPT_DIR=$(dirname "$0")
 
 # Load common constants and variables.
 . "${SCRIPT_DIR}/common_minimal.sh"
+. "${SCRIPT_DIR}/lib/keycfg.sh"
 
 # Abort on error.
 set -e
@@ -46,17 +47,18 @@ gbb_update() {
 }
 
 # Sign a single firmware image.
-# ARGS: [loem_key] [loemid]
+# ARGS: [key_dir] [loem_index] [loemid]
 sign_one() {
-  local loem_key="$1"
-  local loemid="$2"
+  local key_dir="$1"
+  local loem_index="$2"
+  local loemid="$3"
 
   # Resign the firmware with new keys.
   "${SCRIPT_DIR}/resign_firmwarefd.sh" \
     "${in_firmware}" \
     "${temp_fw}" \
-    "${key_dir}/firmware_data_key${loem_key}.vbprivk" \
-    "${key_dir}/firmware${loem_key}.keyblock" \
+    "$(get_firmware_loem_vbprivk "${key_dir}" "${loem_index}")" \
+    "$(get_firmware_loem_keyblock "${key_dir}" "${loem_index}")" \
     "${key_dir}/kernel_subkey.vbpubk" \
     "${firmware_version}" \
     "" \
@@ -65,7 +67,9 @@ sign_one() {
 }
 
 # Process all the keysets in the loem.ini file.
+# ARGS: [key_dir]
 sign_loems() {
+  local key_dir="$1"
   local line loem_section=false loem_index loemid
   local rootkey
 
@@ -92,7 +96,7 @@ sign_loems() {
     loemid=$(cut -d= -f2 <<<"${line}" | sed 's:^ *::')
 
     echo "### Processing LOEM ${loem_index} ${loemid}"
-    sign_one ".loem${loem_index}" "${loemid}"
+    sign_one "${key_dir}" "${loem_index}" "${loemid}"
 
     rootkey="${key_dir}/root_key.loem${loem_index}.vbpubk"
     cp "${rootkey}" "${loem_output_dir}/rootkey.${loemid}"
@@ -105,6 +109,7 @@ sign_loems() {
 }
 
 main() {
+  info "sign_firmware.sh"
   if [[ $# -lt 3 || $# -gt 5 ]]; then
     usage
   fi
@@ -117,13 +122,14 @@ main() {
 
   local temp_fw=$(make_temp_file)
 
+  setup_keycfg "${key_dir}"
   if [[ -e ${key_dir}/loem.ini ]]; then
     if [[ -z ${loem_output_dir} ]]; then
       die "need loem_output_dir w/loem keysets"
     fi
-    sign_loems
+    sign_loems "${key_dir}"
   else
-    sign_one
+    sign_one "${key_dir}"
     gbb_update "${temp_fw}" "${key_dir}" "${out_firmware}" \
       "${key_dir}/root_key.vbpubk"
   fi
