@@ -95,6 +95,11 @@ static vb2_error_t VbTryLoadKernelImpl(struct vb2_context *ctx,
 		}
 		kparams_ptr->disk_handle = disk_info[i].handle;
 
+		//kparams_ptr->vendor_boot_offset = disk_info[i].vendor_boot_offset;
+		//kparams_ptr->init_boot_offset = disk_info[i].init_boot_offset;
+		kparams_ptr->init_boot_size = disk_info[i].init_boot_size;
+		kparams_ptr->vboot_cmdline_offset = disk_info[i].vboot_cmdline_offset;
+
 		if (minios) {
 			new_rv = LoadMiniOsKernel(ctx, kparams_ptr,
 						  &disk_info[i], minios_flags);
