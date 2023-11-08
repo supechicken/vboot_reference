@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "625ec607_892e6c74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T20:31:25Z",
+      "side": 1,
+      "message": "LGTM but as mentioned on the other patch, I don\u0027t really see the point of this padding option. I think we can just get rid of it entirely (for `show`/`verify`).",
+      "revId": "54e42da5c612afae0b0eddfb3d80ac1b201b142d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b49fae3_6d9d38fa",
+        "filename": "tests/futility/expect_output/show.kernel-pubkey-pad-small",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T20:31:25Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this trigger the `ERROR(\"Verifying kernel body.\\n\")`? I guess that goes to stderr and that\u0027s why we don\u0027t capture it here?",
+      "revId": "54e42da5c612afae0b0eddfb3d80ac1b201b142d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
