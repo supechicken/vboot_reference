@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54cd880_9550d812",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-08T02:01:46Z",
+      "side": 1,
+      "message": "This is not the only problem we have. The other caller of `get_keyblock` from `get_key_versions` will also potentially set the preamble pointer to a too large value (even outside the data buffer in memory). Therefore I think  it\u0027s better to call `vb2_check_keyblock` in `get_keyblock`.\n\nWe also have a similar check `futil_valid_gbb_header` in `find_gbb`, so doing the check in `get_keyblock` seems consistent with that.",
+      "revId": "83544ba78daa88caec9cffd15fd5c1517ee98b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
