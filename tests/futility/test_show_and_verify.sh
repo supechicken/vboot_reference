@@ -82,6 +82,10 @@ TEST_CASES=(
     --type kernel -k tests/futility/data/fw_dev_vblock.bin"
   "kernel-pubkey-wrong tests/futility/data/kernel_part.bin 1 \
     --type kernel -k tests/futility/data/fw_vblock.bin"
+  "kernel-pubkey-pad-small tests/futility/data/kernel_part.bin 1 \
+    -k tests/futility/data/fw_dev_vblock.bin --pad 0x100"
+  "kernel-pubkey-pad-big tests/futility/data/kernel_part.bin 1 \
+    -k tests/futility/data/fw_dev_vblock.bin --pad 0x100000"
   "rec_kernel tests/futility/data/rec_kernel_part.bin 1"
   "rec_kernel-pubkey tests/futility/data/rec_kernel_part.bin 0 \
     -k tests/devkeys/recovery_key.vbpubk"
