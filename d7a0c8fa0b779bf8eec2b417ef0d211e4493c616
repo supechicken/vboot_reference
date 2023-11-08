@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ef03541_68cf1442",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-08T08:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ef8b946_2cdfa370",
+      "revId": "d7a0c8fa0b779bf8eec2b417ef0d211e4493c616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b646cbdf_57536d31",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-08T06:05:59Z",
       "side": 1,
       "message": "Change this to `if (section.size \u003c block-\u003ekeyblock_size + sizeof(struct vb2_fw_preamble))` and move below `vb2_check_keyblock`.",
+      "range": {
+        "startLine": 613,
+        "startChar": 1,
+        "endLine": 617,
+        "endChar": 2
+      },
+      "revId": "d7a0c8fa0b779bf8eec2b417ef0d211e4493c616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4103fee_00a9bfb9",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-08T08:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b646cbdf_57536d31",
       "range": {
         "startLine": 613,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce87ba0_30df0ca7",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-08T08:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1fca05b_e721213e",
+      "range": {
+        "startLine": 619,
+        "startChar": 53,
+        "endLine": 619,
+        "endChar": 66
+      },
+      "revId": "d7a0c8fa0b779bf8eec2b417ef0d211e4493c616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace68e37_ced6e916",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a7c66d2_30ddfe6c",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-08T08:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace68e37_ced6e916",
+      "revId": "d7a0c8fa0b779bf8eec2b417ef0d211e4493c616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7506a912_5984eaa6",
@@ -94,6 +178,30 @@
       "writtenOn": "2023-11-08T06:05:59Z",
       "side": 1,
       "message": "block",
+      "range": {
+        "startLine": 623,
+        "startChar": 8,
+        "endLine": 623,
+        "endChar": 49
+      },
+      "revId": "d7a0c8fa0b779bf8eec2b417ef0d211e4493c616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d149af8e_61986e07",
+        "filename": "futility/updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-08T08:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7506a912_5984eaa6",
       "range": {
         "startLine": 623,
         "startChar": 8,
