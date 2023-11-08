@@ -324,6 +324,7 @@ vb2_error_t vb2_check_padding(const uint8_t *sig,
 	return result ? VB2_ERROR_RSA_PADDING : VB2_SUCCESS;
 }
 
+void timestamp_add_now(uint32_t id);
 vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 				  uint8_t *sig, const uint8_t *digest,
 				  const struct vb2_workbuf *wb)
@@ -363,7 +364,13 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 	}
 
 	if (key->allow_hwcrypto) {
+#ifndef __x86_64__
+		timestamp_add_now(3005);
+#endif
 		rv = vb2ex_hwcrypto_modexp(key, sig, workbuf, workbuf_size, exp);
+#ifndef __x86_64__
+		timestamp_add_now(3006);
+#endif
 
 		if (rv == VB2_SUCCESS)
 			VB2_DEBUG("Using HW modexp engine for sig_alg %d\n",
@@ -376,7 +383,13 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 	}
 
 	if (rv != VB2_SUCCESS) {
+#ifndef __x86_64__
+		timestamp_add_now(3003);
+#endif
 		vb2_modexp(key, sig, workbuf, exp);
+#ifndef __x86_64__
+		timestamp_add_now(3004);
+#endif
 	}
 
 	vb2_workbuf_free(&wblocal, workbuf_size);
