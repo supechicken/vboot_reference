@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f93e75_f18d061f",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T22:49:53Z",
+      "side": 1,
+      "message": "I don\u0027t really understand why the firmware keyblock (and other keyblocks) is part of this keycfg but the public root key isn\u0027t? If we only want the things here that could potentially be sourced from pkcs11, then the keyblock shouldn\u0027t be part of that (because it should always be local)? If we just want everything here for consistency, then why exclude the root key?",
+      "revId": "e1713e142c5dd7e66323669ee8b0a1f631816418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
