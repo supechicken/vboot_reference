@@ -34,6 +34,24 @@
       "parentUuid": "90e3b1fe_4e85e949",
       "revId": "71e6e1a381eea70aa290ecfc3e425cef1eed90d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc40acb_cfefe7eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T22:39:18Z",
+      "side": 1,
+      "message": "Yeah I agree, we should make a combined universal key reading function that auto-detects the type (also mentioned this in CL:4940466).",
+      "parentUuid": "490451b5_7e065efc",
+      "revId": "71e6e1a381eea70aa290ecfc3e425cef1eed90d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
