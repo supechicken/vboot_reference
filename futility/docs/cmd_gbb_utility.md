@@ -144,9 +144,9 @@ Presence of any of these implies \--flash.
 
 :   Change AP (host) flashrom programmer
 
-\--ccd
+\--ccd_without_servod
 
-:   Do fast,force,wp=0,p=raiden_debug_spi
+:   Flash via CCD without servod
 
 \--emulate=FILE
 
