@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edebb04a_0fd03f10",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-08T01:22:37Z",
+      "side": 1,
+      "message": "Actually assert call will be a no-op in production build. When `cros-debug` USE flag is not set, `cros-debug-add-NDEBUG` will add `-DNDEBUG` to `CPPFLAGS`. Therefore I think what we want here is to print an error and return NULL.",
+      "range": {
+        "startLine": 469,
+        "startChar": 1,
+        "endLine": 469,
+        "endChar": 7
+      },
+      "revId": "9ea54598eba84e21f459e6927c66d44c638f0119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
