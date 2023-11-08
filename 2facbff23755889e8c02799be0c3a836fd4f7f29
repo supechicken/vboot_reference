@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3e5d26_fa88be7b",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T20:26:26Z",
+      "side": 1,
+      "message": "Not related to patch but I just noticed this is actually wrong, it should just be `preamble::signature::invalid`, and the `ft_print_header2 \u003d NULL` from below needs to move above here.\n\nSame thoughts as with the firmware output here, it seems odd that we have a `kernel::keyblock::valid` but no `kernel::preamble::valid`, we should probably add that for consistency (even if right now it would always show the same as `kernel::preamble::signature::valid`).",
+      "range": {
+        "startLine": 493,
+        "startChar": 22,
+        "endLine": 493,
+        "endChar": 37
+      },
+      "revId": "2facbff23755889e8c02799be0c3a836fd4f7f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31f00e0_84b42716",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T20:26:26Z",
+      "side": 1,
+      "message": "Damn, this is also a mistake I just noticed. It would really be more consistent with firmware output if this was moved up before the `ft_print_header2 \u003d NULL` (so it\u0027s `kernel::preamble::flags`).",
+      "revId": "2facbff23755889e8c02799be0c3a836fd4f7f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661bb5bb_7b8ead3c",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T20:26:26Z",
+      "side": 1,
+      "message": "I am very confused why this option even exists. Shouldn\u0027t we be able to get the preamble padding from the file when we show? Why can this even be passed in here?\n\nCan\u0027t the correct body offset just be computed as `keyblock-\u003ekeyblock_size + pre2-\u003epreamble_size`?",
+      "range": {
+        "startLine": 546,
+        "startChar": 18,
+        "endLine": 546,
+        "endChar": 37
+      },
+      "revId": "2facbff23755889e8c02799be0c3a836fd4f7f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
