@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58053c35_98a905bb",
+        "filename": "host/lib/include/host_p11.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-11-08T05:24:24Z",
+      "side": 1,
+      "message": "Not sure if we need to comment that the caller is responsible to free() the memory. Deferring to Julius.",
+      "revId": "bf3e2c1b46e75f727c7615ad68dbd4673e840624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
