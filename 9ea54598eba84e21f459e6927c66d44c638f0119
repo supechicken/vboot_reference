@@ -22,6 +22,30 @@
       },
       "revId": "9ea54598eba84e21f459e6927c66d44c638f0119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf33b007_20f661ed",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2023-11-08T07:06:43Z",
+      "side": 1,
+      "message": "But I think this is really an assert instead of runtime error.\n\nIn the `if(!servo_id || !*servo_id)` above, servo_id should be either pointing to a non-empty servo_name string, or \"9999\". There should be no cases that servo_id is NULLL or \"\\0\".",
+      "parentUuid": "edebb04a_0fd03f10",
+      "range": {
+        "startLine": 469,
+        "startChar": 1,
+        "endLine": 469,
+        "endChar": 7
+      },
+      "revId": "9ea54598eba84e21f459e6927c66d44c638f0119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
