@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "409e3f7c_64be995f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T19:00:22Z",
+      "side": 1,
+      "message": "Thanks for sending this!",
+      "revId": "d619ee5738b2f6a02db0ebbf37af18ff943dd50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c3befc_59793f35",
+        "filename": "futility/docs/cmd_gbb_utility.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-08T19:00:22Z",
+      "side": 1,
+      "message": "Keep the detailed `fast,force,wp\u003d0,p\u003draiden_debug_spi` documentation about what this is shorthand for, it\u0027s useful info as a user.\n\nWe should also warn that this will be unsafe on some boards, and using `servod` is preferred whenever possible.",
+      "revId": "d619ee5738b2f6a02db0ebbf37af18ff943dd50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
