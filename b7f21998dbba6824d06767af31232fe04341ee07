@@ -86,6 +86,24 @@
       "message": "Although this code is not new in this CL (it\u0027s copied from below), I would recommend adding assertions to make sure strcpy() never write past the allocated buffer.\n\nYou can add that in another CL.",
       "revId": "b7f21998dbba6824d06767af31232fe04341ee07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2396ef56_f440e83d",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-11-08T04:54:54Z",
+      "side": 1,
+      "message": "(Remember to add this)",
+      "parentUuid": "8fb9ec27_54e48857",
+      "revId": "b7f21998dbba6824d06767af31232fe04341ee07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
