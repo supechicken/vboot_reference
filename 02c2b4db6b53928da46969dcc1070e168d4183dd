@@ -39,6 +39,24 @@
       "message": "Preserve the behavior where failing to get the serial prevents using the auto-determined programmer, so we don\u0027t accidentally flash FW with a wrong servo device / DUT.\n\n---\n\n(Side note: If a user is manually specifying the programmer we don\u0027t and can\u0027t hand hold for the dangers in that, but most users should never do that, they should simply use --servo.)",
       "revId": "02c2b4db6b53928da46969dcc1070e168d4183dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e68efb6_b330465c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-08T23:27:30Z",
+      "side": 1,
+      "message": "Oh, ERROR() doesn\u0027t exit. I assumed that was terminal.\n\nOk, I think I have the same side effects as the old code now.",
+      "parentUuid": "afea7817_892281e1",
+      "revId": "02c2b4db6b53928da46969dcc1070e168d4183dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
