@@ -451,35 +451,15 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 	static const char * const raiden_debug_spi = "raiden_debug_spi";
 	static const char * const cpu_fw_spi = "cpu_fw_spi";
 	static const char * const ccd_cpu_fw_spi = "ccd_cpu_fw_spi";
+	const char *serial_cmd = "dut-control -o serialname 2>/dev/null";
 
 	/* By default, no control is needed. */
 	*prepare_ctrl_name = NULL;
 	VB2_DEBUG("servo_type: %s\n", servo_type);
 
-	/* Get serial name if servo port is provided. */
-	if ((servo_port && *servo_port) || (servo_name && *servo_name)) {
-		const char *cmd = "dut-control -o serialname 2>/dev/null";
-
-		VB2_DEBUG("Select servod using port: %s or name: %s\n",
-			  servo_port, servo_name);
-		if (strstr(servo_type, "with_servo_micro"))
-			cmd = ("dut-control -o servo_micro_serialname"
-			       " 2>/dev/null");
-		else if (strstr(servo_type, "with_c2d2"))
-			cmd = ("dut-control -o c2d2_serialname"
-			       " 2>/dev/null");
-		else if (strstr(servo_type, "with_ccd"))
-			cmd = "dut-control -o ccd_serialname 2>/dev/null";
-
-		servo_serial = host_shell(cmd);
-		VB2_DEBUG("Servo SN=%s (serial cmd: %s)\n", servo_serial, cmd);
-	}
-
 	/* servo_type names: chromite/lib/firmware/servo_lib.py */
 	if (!*servo_type) {
 		ERROR("Failed to get servo type. Check servod.\n");
-	} else if (servo_serial && !*servo_serial) {
-		ERROR("Failed to get serial at servo port %s.\n", servo_port);
 	} else if (strcmp(servo_type, "servo_v2") == 0) {
 		VB2_DEBUG("Selected Servo V2.\n");
 		programmer = "ft2232_spi:type=google-servo-v2";
@@ -488,20 +468,36 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 		VB2_DEBUG("Selected Servo Micro.\n");
 		programmer = raiden_debug_spi;
 		*prepare_ctrl_name = cpu_fw_spi;
-	} else if (strstr(servo_type, "c2d2")) {
-		VB2_DEBUG("Selected C2D2.\n");
-		programmer = raiden_debug_spi;
-		*prepare_ctrl_name = cpu_fw_spi;
+		serial_cmd = ("dut-control -o servo_micro_serialname"
+			" 2>/dev/null");
 	} else if (strstr(servo_type, "ccd_cr50") ||
 		   strstr(servo_type, "ccd_gsc") ||
 		   strstr(servo_type, "ccd_ti50")) {
 		VB2_DEBUG("Selected CCD.\n");
 		programmer = "raiden_debug_spi:target=AP,custom_rst=true";
 		*prepare_ctrl_name = ccd_cpu_fw_spi;
+		serial_cmd = "dut-control -o ccd_serialname 2>/dev/null";
+	} else if (strstr(servo_type, "c2d2")) {
+		VB2_DEBUG("Selected C2D2.\n");
+		programmer = raiden_debug_spi;
+		*prepare_ctrl_name = cpu_fw_spi;
+		serial_cmd = ("dut-control -o c2d2_serialname"
+			" 2>/dev/null");
 	} else {
 		WARN("Unknown servo: %s\nAssuming debug header.\n", servo_type);
 		programmer = raiden_debug_spi;
 		*prepare_ctrl_name = cpu_fw_spi;
+	}
+
+	/* Get serial name if servo port is provided. */
+	if ((servo_port && *servo_port) || (servo_name && *servo_name)) {
+		VB2_DEBUG("Select servod using port: %s or name: %s\n",
+			  servo_port, servo_name);
+		servo_serial = host_shell(serial_cmd);
+		VB2_DEBUG("Servo SN=%s (serial cmd: %s)\n", servo_serial, serial_cmd);
+		if (servo_serial && !*servo_serial) {
+			ERROR("Failed to get serial at servo port %s.\n", servo_port);
+		}
 	}
 
 	if (programmer) {
