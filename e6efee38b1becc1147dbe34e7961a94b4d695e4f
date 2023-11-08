@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90653462_3c03a21e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T19:16:37Z",
+      "side": 1,
+      "message": "I agree that the `|| (sign_key \u0026\u0026 good_sig)` looks wrong and we should probably remove that. It seems to have always been superfluous here, and it became a bug when CL:262894 made `state` optional (because when verifying a raw preamble file without --fv it shouldn\u0027t print anything about body verification).\n\nBut I don\u0027t like the solution here where you\u0027re printing that string even when the keyblock hash was wrong. The \"Body verification succeeded\" string has always been a \"if it gets far enough to print this then everything is alright and signed correctly\"",
+      "revId": "e6efee38b1becc1147dbe34e7961a94b4d695e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d795655_1efc7965",
+        "filename": "tests/futility/expect_output/show.fw_vblock-pubkey-wrong",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T19:16:37Z",
+      "side": 1,
+      "message": "So if we had a full firmware image with a correct preamble/body but an incorrect keyblock signature, it would have already printed \"Body verification succeeded\" before this patch? And you\u0027re just aligning the case with a raw preamble file and --fv argument to that here? (Just want to verify my understanding is correct.)\n\nIt would be good if we could also have a unit test case for that (full BIOS image but with incorrect keyblock signature).",
+      "revId": "e6efee38b1becc1147dbe34e7961a94b4d695e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ba4729_900cc92b",
+        "filename": "tests/futility/expect_output/show.parseable.fw_vblock-pubkey-wrong",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T19:16:37Z",
+      "side": 1,
+      "message": "I wonder if we should insert another parseable print here that just says \"preamble::signature::invalid\" (or \"::valid\"). It seems a bit unbalanced that we have separate output for the validity of the data structure itself and for the signature with the keyblock but not with the preamble. Even if currently vb2_verify_fw_preamble() tests both in one go, if we make them two separate fields right now that would give us the opportunity to separate those checks in the future if we wanted to (without breaking assumptions that parsers might hardcode in the meantime if they thing just checking for \"preamble::valid\" means it\u0027s correctly signed).",
+      "revId": "e6efee38b1becc1147dbe34e7961a94b4d695e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

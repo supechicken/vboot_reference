@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba0b5589_a7767fe7",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T19:16:37Z",
+      "side": 0,
+      "message": "nit: This seems correct but it would be good if we had a case in our unit tests that makes this difference visible.",
+      "revId": "d643da9739ad3073cce3cb25971201ae2c9f1762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
