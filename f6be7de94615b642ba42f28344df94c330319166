@@ -16,6 +16,24 @@
       "message": "Oh sh... that\u0027s a bad thing to miss in the original review, we actually meant for this output format to remain stable once it landed. Hopefully we can assume that anybody trying to actually grep for this key would\u0027ve noticed the typo and let us know, so since that hasn\u0027t happened nobody should be using it yet.",
       "revId": "f6be7de94615b642ba42f28344df94c330319166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d851036f_7004fa3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-08T00:58:38Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any existing code parsing `metadata_hash`, so I guess we should be fine in this case. In fact, people don\u0027t seem to even know the existence of the `-P` option.",
+      "parentUuid": "30fea45f_2611e9e6",
+      "revId": "f6be7de94615b642ba42f28344df94c330319166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
