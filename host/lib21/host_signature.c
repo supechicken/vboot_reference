@@ -11,6 +11,7 @@
 #include "2rsa.h"
 #include "2sha.h"
 #include "2sysincludes.h"
+#include "assert.h"
 #include "host_common.h"
 #include "host_common21.h"
 #include "host_key21.h"
@@ -112,9 +113,10 @@ vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr, const uint8_t *data,
 		buf = calloc(1, s.c.total_size);
 		memcpy(buf, &s, sizeof(s));
 
-		/* strcpy() is ok because we allocated buffer based on desc length */
-		if (desc)
-			strcpy((char *)buf + s.c.fixed_size, desc);
+		if (desc) {
+			assert(s.c.total_size >= s.c.fixed_size + s.c.desc_size);
+			memcpy(buf + s.c.fixed_size, desc, s.c.desc_size);
+		}
 
 		/* RSA-encrypt the signature */
 		if (pkcs11_sign(key->p11_key, key->hash_alg, data, size, buf + s.sig_offset,
@@ -165,9 +167,10 @@ vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr, const uint8_t *data,
 	buf = calloc(1, s.c.total_size);
 	memcpy(buf, &s, sizeof(s));
 
-	/* strcpy() is ok because we allocated buffer based on desc length */
-	if (desc)
-		strcpy((char *)buf + s.c.fixed_size, desc);
+	if (desc) {
+		assert(s.c.total_size >= s.c.fixed_size + s.c.desc_size);
+		memcpy(buf + s.c.fixed_size, desc, s.c.desc_size);
+	}
 
 	if (s.sig_alg == VB2_SIG_NONE) {
 		/* Bare hash signature is just the digest */
