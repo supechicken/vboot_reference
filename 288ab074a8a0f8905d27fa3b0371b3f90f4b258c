@@ -22,6 +22,30 @@
       },
       "revId": "288ab074a8a0f8905d27fa3b0371b3f90f4b258c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e166a8ed_dc07d07a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T23:05:07Z",
+      "side": 1,
+      "message": "I don\u0027t really see how futility could make this parsing any simpler, you still need to return 3 separate pieces to the shell script.",
+      "parentUuid": "b0448a18_5b9241b6",
+      "range": {
+        "startLine": 431,
+        "startChar": 4,
+        "endLine": 432,
+        "endChar": 52
+      },
+      "revId": "288ab074a8a0f8905d27fa3b0371b3f90f4b258c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

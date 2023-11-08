@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70adb91c_7c6b36ff",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-08T23:05:07Z",
+      "side": 1,
+      "message": "It would be good to strip the `local:` token from the start of `key_info` here if it exists.",
+      "revId": "ee56f7db6f502c6069ed6e68dec62dc60f3078a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
