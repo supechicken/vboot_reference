@@ -181,6 +181,7 @@ vb2_error_t vb2_check_padding(const uint8_t *sig,
 	return result ? VB2_ERROR_RSA_PADDING : VB2_SUCCESS;
 }
 
+void timestamp_add_now(uint32_t id);
 vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 				  uint8_t *sig, const uint8_t *digest,
 				  const struct vb2_workbuf *wb)
@@ -230,7 +231,13 @@ vb2_error_t vb2_rsa_verify_digest(const struct vb2_public_key *key,
 	}
 
 	if (rv != VB2_SUCCESS) {
+#ifndef __x86_64__
+		timestamp_add_now(3003);
+#endif
 		modpow(key, sig, workbuf32, exp);
+#ifndef __x86_64__
+		timestamp_add_now(3004);
+#endif
 	}
 
 	vb2_workbuf_free(&wblocal, 3 * key_bytes);
