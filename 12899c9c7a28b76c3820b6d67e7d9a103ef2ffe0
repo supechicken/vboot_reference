@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e4931df_99051e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-09T09:13:29Z",
+      "side": 1,
+      "message": "We might want to change these two comments?",
+      "revId": "12899c9c7a28b76c3820b6d67e7d9a103ef2ffe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bb66d9_17db7b14",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-09T09:13:29Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\"   or with --ccd_without_servod effectively disables ability to update EC\\n\"\n\t\t\"   and PD firmware images.\\n\"\n```",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 25
+      },
+      "revId": "12899c9c7a28b76c3820b6d67e7d9a103ef2ffe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7ce46b_02575930",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-09T09:13:29Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t * tpm_fwver is commonly misreported in --ccd_without_servod mode, so allow\n```",
+      "range": {
+        "startLine": 820,
+        "startChar": 42,
+        "endLine": 820,
+        "endChar": 47
+      },
+      "revId": "12899c9c7a28b76c3820b6d67e7d9a103ef2ffe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
