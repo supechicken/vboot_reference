@@ -16,6 +16,24 @@
       "message": "In your change, the type \u0027SERVO_V4_CCD \u003d \"servo_v4_with_ccd\"\u0027 and \u0027SERVO_V4P1_CCD \u003d \"servo_v4p1_with_ccd\"\u0027 is now not handled. Is that ok?",
       "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf044c8_a315c3ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-09T01:44:51Z",
+      "side": 1,
+      "message": "The concern is plain \"ccd\" as a servo type name (e.g. not \"ccd_cr50\" / \"ccd_ti50\" / \"ccd_gsc\")?\n\nI don\u0027t think `servo_type` should ever return plain \"ccd\" or suffix \"_ccd\" , it should always be \"ccd_cr50\" or \"ccd_ti50\" or - due to some tech debt hackery - \"ccd_gsc\" .\n\nAlso, I don\u0027t think the `main` baseline here supports plain \"ccd\" as a servo type name either - but I could be missing something.",
+      "parentUuid": "14cb0202_06102e7f",
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
