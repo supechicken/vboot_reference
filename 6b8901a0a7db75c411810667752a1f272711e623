@@ -16,6 +16,24 @@
       "message": "This condition should match the `!servo_serial` case too, i.e. change this line to:\n\n```\n\tif (!(servo_serial \u0026\u0026 *servo_serial)) {\n```",
       "revId": "6b8901a0a7db75c411810667752a1f272711e623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf2e2c1_f4f638e0",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-09T00:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d682048d_4cbb31a7",
+      "revId": "6b8901a0a7db75c411810667752a1f272711e623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
