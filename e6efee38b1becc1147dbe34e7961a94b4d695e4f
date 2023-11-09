@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1e7b58_ff849ffe",
+        "filename": "tests/futility/expect_output/show.fw_vblock-pubkey-wrong",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-09T10:07:32Z",
+      "side": 1,
+      "message": "\u003e So if we had a full firmware image with a correct preamble/body but an incorrect keyblock signature, it would have already printed \"Body verification succeeded\" before this patch? And you\u0027re just aligning the case with a raw preamble file and --fv argument to that here? (Just want to verify my understanding is correct.)\n\nYes.\n\n\u003e It would be good if we could also have a unit test case for that (full BIOS image but with incorrect keyblock signature).\n\nDone.",
+      "parentUuid": "5d795655_1efc7965",
+      "revId": "e6efee38b1becc1147dbe34e7961a94b4d695e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35ba4729_900cc92b",
@@ -66,6 +84,24 @@
       "writtenOn": "2023-11-08T19:16:37Z",
       "side": 1,
       "message": "I wonder if we should insert another parseable print here that just says \"preamble::signature::invalid\" (or \"::valid\"). It seems a bit unbalanced that we have separate output for the validity of the data structure itself and for the signature with the keyblock but not with the preamble. Even if currently vb2_verify_fw_preamble() tests both in one go, if we make them two separate fields right now that would give us the opportunity to separate those checks in the future if we wanted to (without breaking assumptions that parsers might hardcode in the meantime if they thing just checking for \"preamble::valid\" means it\u0027s correctly signed).",
+      "revId": "e6efee38b1becc1147dbe34e7961a94b4d695e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fef6070_3b0400d6",
+        "filename": "tests/futility/expect_output/show.parseable.fw_vblock-pubkey-wrong",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-09T10:07:32Z",
+      "side": 1,
+      "message": "Will do in a follow-up patch.",
+      "parentUuid": "35ba4729_900cc92b",
       "revId": "e6efee38b1becc1147dbe34e7961a94b4d695e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
