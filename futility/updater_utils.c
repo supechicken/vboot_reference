@@ -471,6 +471,8 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 	/*
 	 * To support "multiple servos connected but only one servod running" we
 	 * should always try to get the serial number.
+	 * Note: C2D2 devices may not have read/write capabilities so it must be
+	 * the last preferred option.
 	 */
 	const char *cmd = "dut-control -o serialname 2>/dev/null";
 
@@ -478,11 +480,11 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 	if (strstr(servo_type, "with_servo_micro"))
 		cmd = ("dut-control -o servo_micro_serialname"
 		       " 2>/dev/null");
+	else if (strstr(servo_type, "with_ccd"))
+		cmd = "dut-control -o ccd_serialname 2>/dev/null";
 	else if (strstr(servo_type, "with_c2d2"))
 		cmd = ("dut-control -o c2d2_serialname"
 		       " 2>/dev/null");
-	else if (strstr(servo_type, "with_ccd"))
-		cmd = "dut-control -o ccd_serialname 2>/dev/null";
 
 	servo_serial = host_shell(cmd);
 	VB2_DEBUG("Servo SN=%s (serial cmd: %s)\n", servo_serial, cmd);
@@ -500,16 +502,16 @@ char *host_detect_servo(const char **prepare_ctrl_name)
 		VB2_DEBUG("Selected Servo Micro.\n");
 		programmer = raiden_debug_spi;
 		*prepare_ctrl_name = cpu_fw_spi;
-	} else if (strstr(servo_type, "c2d2")) {
-		VB2_DEBUG("Selected C2D2.\n");
-		programmer = raiden_debug_spi;
-		*prepare_ctrl_name = cpu_fw_spi;
 	} else if (strstr(servo_type, "ccd_cr50") ||
 		   strstr(servo_type, "ccd_gsc") ||
 		   strstr(servo_type, "ccd_ti50")) {
 		VB2_DEBUG("Selected CCD.\n");
 		programmer = "raiden_debug_spi:target=AP,custom_rst=true";
 		*prepare_ctrl_name = ccd_cpu_fw_spi;
+	} else if (strstr(servo_type, "c2d2")) {
+		VB2_DEBUG("Selected C2D2.\n");
+		programmer = raiden_debug_spi;
+		*prepare_ctrl_name = cpu_fw_spi;
 	} else {
 		WARN("Unknown servo: %s\nAssuming debug header.\n", servo_type);
 		programmer = raiden_debug_spi;
