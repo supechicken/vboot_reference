@@ -69,6 +69,42 @@
       "message": "Please also address the comment from Mary in b/309809421#c9",
       "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56fec40d_b6b00fdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-09T16:44:24Z",
+      "side": 1,
+      "message": "Ah, I see.  There is no need to support plain \"with_ccd\" .  Even in the `main` baseline revision here, only the serial num selection would match that, but not the programmer selection.  To me it looks like that was used as a shortcut to match all the CCD names.\n\nIn other words, plain \"with_ccd\" doesn\u0027t work with `futility --servo` today, so nothing needs to be preserved there.\n\nIn Chromite, all of that servo selection stuff will go away with b:273604839.",
+      "parentUuid": "baf2444b_7fc09f78",
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7544403_6eb45145",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2023-11-09T16:44:24Z",
+      "side": 1,
+      "message": "[marking unresolved]",
+      "parentUuid": "d3f4ee60_fd9f3464",
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
