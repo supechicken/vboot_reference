@@ -105,6 +105,42 @@
       "parentUuid": "d3f4ee60_fd9f3464",
       "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a35eb3d_d7e8fd07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-09T17:28:37Z",
+      "side": 1,
+      "message": "There are no servos that return servo_XXX_with_ccd. Servo v4, v4.1, and SuzyQ all use ccd_gsc or ccd_cr50.",
+      "parentUuid": "56fec40d_b6b00fdd",
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d33877_671f6895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-09T17:28:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c7544403_6eb45145",
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
