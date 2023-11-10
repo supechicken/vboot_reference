@@ -34,6 +34,24 @@
       "parentUuid": "69f93e75_f18d061f",
       "revId": "e1713e142c5dd7e66323669ee8b0a1f631816418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34d2064_345e30b1",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-10T15:20:37Z",
+      "side": 1,
+      "message": "Well, I guess we could either remove all public keys variables, or add all the keys as variables here. While I don\u0027t have strong opinion, I think adding all the keys here is not a bad idea and would go this way if there is no other problem.",
+      "parentUuid": "a1cac0c7_32a66b89",
+      "revId": "e1713e142c5dd7e66323669ee8b0a1f631816418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
