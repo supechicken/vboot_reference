@@ -463,7 +463,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		free(t_config_data);
 		free(t_bootloader_data);
 		free(vblock_data);
-		vb2_free_private_key(signpriv_key);
+		vb2_private_key_free(signpriv_key);
 		return rv;
 
 	case OPT_MODE_REPACK:

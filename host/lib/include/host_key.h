@@ -41,13 +41,6 @@ struct vb2_private_key *vb2_read_private_key_pem(
 	enum vb2_crypto_algorithm algorithm);
 
 /**
- * Free a private key.
- *
- * @param key		Key to free; ok to pass NULL (ignored).
- */
-void vb2_free_private_key(struct vb2_private_key *key);
-
-/**
  * Write a private key to a file in .vbprivk format.
  *
  * @param filename	Filename to write to
@@ -57,15 +50,6 @@ void vb2_free_private_key(struct vb2_private_key *key);
  */
 vb2_error_t vb2_write_private_key(const char *filename,
 				  const struct vb2_private_key *key);
-
-/**
- * Read a private key from a .vbprivk file.
- *
- * @param key_info	key_info to read key from.
- *
- * @return The private key or NULL if error.  Caller must free() it.
- */
-struct vb2_private_key *vb2_read_private_key(const char *key_info);
 
 /**
  * Allocate a new public key.

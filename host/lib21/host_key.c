@@ -17,6 +17,7 @@
 #include "host_common21.h"
 #include "host_key21.h"
 #include "host_misc.h"
+#include "host_p11.h"
 #include "openssl_compat.h"
 #include "util_misc.h"
 
@@ -25,8 +26,10 @@ void vb2_private_key_free(struct vb2_private_key *key)
 	if (!key)
 		return;
 
-	if (key->rsa_private_key)
+	if (key->key_location == PRIVATE_KEY_LOCAL && key->rsa_private_key)
 		RSA_free(key->rsa_private_key);
+	else if (key->key_location == PRIVATE_KEY_P11 && key->p11_key)
+		pkcs11_free_key(key->p11_key);
 
 	if (key->desc)
 		free(key->desc);
@@ -34,16 +37,13 @@ void vb2_private_key_free(struct vb2_private_key *key)
 	free(key);
 }
 
-vb2_error_t vb21_private_key_unpack(struct vb2_private_key **key_ptr,
-				    const uint8_t *buf, uint32_t size)
+static vb2_error_t vb21_private_key_unpack_raw(const uint8_t *buf, uint32_t size,
+					       struct vb2_private_key *key)
 {
 	const struct vb21_packed_private_key *pkey =
 		(const struct vb21_packed_private_key *)buf;
-	struct vb2_private_key *key;
 	const unsigned char *start;
 	uint32_t min_offset = 0;
-
-	*key_ptr = NULL;
 
 	/*
 	 * Check magic number.
@@ -70,63 +70,162 @@ vb2_error_t vb21_private_key_unpack(struct vb2_private_key **key_ptr,
 	    VB21_PACKED_PRIVATE_KEY_VERSION_MAJOR)
 		return VB2_ERROR_UNPACK_PRIVATE_KEY_STRUCT_VERSION;
 
-	/* Allocate the new key */
-	key = calloc(1, sizeof(*key));
-	if (!key)
-		return VB2_ERROR_UNPACK_PRIVATE_KEY_ALLOC;
-
 	/* Copy key algorithms and ID */
+	key->key_location = PRIVATE_KEY_LOCAL;
 	key->sig_alg = pkey->sig_alg;
 	key->hash_alg = pkey->hash_alg;
 	key->id = pkey->id;
 
 	/* Unpack RSA key */
 	if (pkey->sig_alg == VB2_SIG_NONE) {
-		if (pkey->key_size != 0) {
-			free(key);
+		if (pkey->key_size != 0)
 			return VB2_ERROR_UNPACK_PRIVATE_KEY_HASH;
-		}
 	} else {
 		start = (const unsigned char *)(buf + pkey->key_offset);
 		key->rsa_private_key = d2i_RSAPrivateKey(0, &start,
 							 pkey->key_size);
-		if (!key->rsa_private_key) {
-			free(key);
+		if (!key->rsa_private_key)
 			return VB2_ERROR_UNPACK_PRIVATE_KEY_RSA;
-		}
 	}
 
 	/* Key description */
 	if (pkey->c.desc_size) {
-		if (vb2_private_key_set_desc(
-			     key, (const char *)(buf + pkey->c.fixed_size))) {
-			vb2_private_key_free(key);
+		if (vb2_private_key_set_desc(key, (const char *)(buf + pkey->c.fixed_size)))
 			return VB2_ERROR_UNPACK_PRIVATE_KEY_DESC;
-		}
 	}
 
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vb21_private_key_unpack(struct vb2_private_key **key_ptr, const uint8_t *buf,
+				    uint32_t size)
+{
+	*key_ptr = NULL;
+	struct vb2_private_key *key = (struct vb2_private_key *)calloc(sizeof(*key), 1);
+	if (!key)
+		return VB2_ERROR_UNPACK_PRIVATE_KEY_ALLOC;
+
+	vb2_error_t rv = vb21_private_key_unpack_raw(buf, size, key);
+	if (rv != VB2_SUCCESS) {
+		vb2_private_key_free(key);
+		return rv;
+	}
 	*key_ptr = key;
 	return VB2_SUCCESS;
 }
 
-vb2_error_t vb21_private_key_read(struct vb2_private_key **key_ptr,
-				  const char *filename)
+static vb2_error_t vb2_read_local_private_key(uint8_t *buf, uint32_t bufsize,
+					      struct vb2_private_key *key)
 {
-	uint32_t size = 0;
+	uint64_t alg = *(uint64_t *)buf;
+	key->key_location = PRIVATE_KEY_LOCAL;
+	key->hash_alg = vb2_crypto_to_hash(alg);
+	key->sig_alg = vb2_crypto_to_signature(alg);
+	const unsigned char *start = buf + sizeof(alg);
+
+	key->rsa_private_key = d2i_RSAPrivateKey(0, &start, bufsize - sizeof(alg));
+
+	if (!key->rsa_private_key) {
+		VB2_DEBUG("Unable to parse RSA private key\n");
+		return VB2_ERROR_UNKNOWN;
+	}
+	return VB2_SUCCESS;
+}
+
+static vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key)
+{
+	/* The format of p11 key info: "pkcs11:{lib_path}:{slot_id}:{key_label}" */
+	char *p11_lib = NULL, *p11_label = NULL;
+	int p11_slot_id;
+	vb2_error_t ret = VB2_ERROR_UNKNOWN;
+	if (sscanf(key_info, "pkcs11:%m[^:]:%i:%m[^:]", &p11_lib, &p11_slot_id, &p11_label) !=
+	    3) {
+		VB2_DEBUG("Failed to parse pkcs11 key info\n");
+		goto done;
+	}
+
+	if (pkcs11_init(p11_lib) != VB2_SUCCESS) {
+		VB2_DEBUG("Unable to initialize pkcs11 library\n");
+		goto done;
+	}
+
+	struct pkcs11_key *p11_key = malloc(sizeof(struct pkcs11_key));
+	if (pkcs11_get_key(p11_slot_id, p11_label, p11_key) != VB2_SUCCESS) {
+		VB2_DEBUG("Unable to get pkcs11 key\n");
+		free(p11_key);
+		goto done;
+	}
+
+	key->key_location = PRIVATE_KEY_P11;
+	key->p11_key = p11_key;
+	key->sig_alg = pkcs11_get_sig_alg(p11_key);
+	key->hash_alg = pkcs11_get_hash_alg(p11_key);
+	if (key->sig_alg == VB2_SIG_INVALID || key->hash_alg == VB2_HASH_INVALID) {
+		VB2_DEBUG("Unable to get signature or hash algorithm\n");
+		free(p11_key);
+		goto done;
+	}
+	ret = VB2_SUCCESS;
+done:
+	free(p11_lib);
+	free(p11_label);
+	return ret;
+}
+
+static bool is_vb21_private_key(const uint8_t *buf, uint32_t bufsize)
+{
+	const struct vb21_packed_private_key *pkey =
+		(const struct vb21_packed_private_key *)buf;
+	return bufsize >= sizeof(pkey->c.magic) && pkey->c.magic == VB21_MAGIC_PACKED_PRIVATE_KEY;
+}
+
+struct vb2_private_key *vb2_read_private_key(const char *key_info)
+{
+	struct vb2_private_key *key = (struct vb2_private_key *)calloc(sizeof(*key), 1);
+	if (!key) {
+		VB2_DEBUG("Unable to allocate private key\n");
+		return NULL;
+	}
+
+	static const char p11_prefix[] = "pkcs11";
+	static const char local_prefix[] = "local";
+	char *colon = strchr(key_info, ':');
+	if (colon) {
+		int prefix_size = colon - key_info;
+		if (!strncmp(key_info, p11_prefix, prefix_size)) {
+			if (vb2_read_p11_private_key(key_info, key) != VB2_SUCCESS) {
+				VB2_DEBUG("Unable to read pkcs11 private key\n");
+				free(key);
+				return NULL;
+			}
+			return key;
+		}
+		if (!strncmp(key_info, local_prefix, prefix_size))
+			key_info = colon + 1;
+	}
+
+	// Read the private key from local file.
 	uint8_t *buf = NULL;
+	uint32_t bufsize = 0;
+	if (vb2_read_file(key_info, &buf, &bufsize) != VB2_SUCCESS) {
+		VB2_DEBUG("unable to read from file %s\n", key_info);
+		return NULL;
+	}
+
 	vb2_error_t rv;
-
-	*key_ptr = NULL;
-
-	rv = vb2_read_file(filename, &buf, &size);
-	if (rv)
-		return rv;
-
-	rv = vb21_private_key_unpack(key_ptr, buf, size);
+	bool is_vb21 = is_vb21_private_key(buf, bufsize);
+	if (is_vb21)
+		rv = vb21_private_key_unpack_raw(buf, bufsize, key);
+	else
+		rv = vb2_read_local_private_key(buf, bufsize, key);
 
 	free(buf);
-
-	return rv;
+	if (rv != VB2_SUCCESS) {
+		VB2_DEBUG("Unable to read local %s private key\n", is_vb21 ? "vb21" : "vb2");
+		free(key);
+		return NULL;
+	}
+	return key;
 }
 
 vb2_error_t vb2_private_key_read_pem(struct vb2_private_key **key_ptr,

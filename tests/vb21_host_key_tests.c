@@ -77,13 +77,13 @@ static void private_key_tests(const struct alg_combo *combo,
 
 	unlink(testfile);
 
-	TEST_EQ(vb21_private_key_read(&k2, testfile),
-		VB2_ERROR_READ_FILE_OPEN, "Read key no file");
+	k2 = vb2_read_private_key(testfile);
+	TEST_PTR_EQ(k2, NULL, "  key_ptr");
 	TEST_EQ(vb21_private_key_write(key, "no/such/dir"),
 		VB2_ERROR_PRIVATE_KEY_WRITE_FILE, "Write key to bad path");
 
 	TEST_SUCC(vb21_private_key_write(key, testfile), "Write key good");
-	TEST_SUCC(vb21_private_key_read(&k2, testfile), "Read key good");
+	k2 = vb2_read_private_key(testfile);
 	TEST_PTR_NEQ(k2, NULL, "  key_ptr");
 	TEST_EQ(k2->sig_alg, key->sig_alg, "  sig alg");
 	TEST_EQ(k2->hash_alg, key->hash_alg, "  hash alg");
@@ -162,7 +162,8 @@ static void private_key_tests(const struct alg_combo *combo,
 		       sizeof(ckey->id)), 0, "  id");
 
 	TEST_SUCC(vb21_private_key_write(ckey, testfile), "Write hash key");
-	TEST_SUCC(vb21_private_key_read(&key, testfile), "Read hash key");
+	key = vb2_read_private_key(testfile);
+	TEST_PTR_NEQ(key, NULL, "  key_ptr");
 	unlink(testfile);
 }
 
