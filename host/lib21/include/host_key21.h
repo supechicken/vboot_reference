@@ -63,15 +63,13 @@ vb2_error_t vb21_private_key_unpack(struct vb2_private_key **key_ptr,
 				    const uint8_t *buf, uint32_t size);
 
 /**
- * Read a private key from vb21_packed_private_key format.
+ * Read a private key from a .vbprivk/.vbprik2 file or a PKCS#11 path.
  *
- * @param key_ptr	Destination for newly allocated key; this must be
- *			freed with vb2_private_key_free().
- * @param filename	File to read key data from.
- * @return VB2_SUCCESS, or non-zero error code if error.
+ * @param key_info	key_info to read key from.
+ *
+ * @return The private key or NULL if error.  Caller must free() it.
  */
-vb2_error_t vb21_private_key_read(struct vb2_private_key **key_ptr,
-				  const char *filename);
+struct vb2_private_key *vb2_read_private_key(const char *key_info);
 
 /**
  * Read a private key from a .pem file.
