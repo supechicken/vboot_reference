@@ -86,9 +86,8 @@ static void output(RSA* key) {
   B = BN_new();
   BN_exp(B, Big2, Big32, bn_ctx); /* B = 2^32 */
 
-  /* Calculate and output N0inv = -1 / N[0] mod 2^32 */
+  /* Calculate and output N0inv = 1 / N[0] mod 2^32 */
   BN_mod_inverse(N0inv, N, B, bn_ctx);
-  BN_sub(N0inv, B, N0inv);
   n0invout = BN_get_word(N0inv);
   if (-1 == write(1, &n0invout, sizeof(n0invout)))
     goto failure;

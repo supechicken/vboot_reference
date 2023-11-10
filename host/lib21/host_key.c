@@ -457,7 +457,7 @@ vb2_error_t vb21_public_key_pack(struct vb21_packed_key **key_ptr,
 		/* Re-pack the key arrays */
 		buf32 = (uint32_t *)(buf + key.key_offset);
 		buf32[0] = pubk->arrsize;
-		buf32[1] = pubk->n0inv;
+		buf32[1] = pubk->n0pinv;
 		memcpy(buf32 + 2, pubk->n, pubk->arrsize * sizeof(uint32_t));
 		memcpy(buf32 + 2 + pubk->arrsize, pubk->rr,
 		       pubk->arrsize * sizeof(uint32_t));

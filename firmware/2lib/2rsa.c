@@ -82,7 +82,7 @@ uint32_t vb2_packed_key_size(enum vb2_signature_algorithm sig_alg)
 	/*
 	 * Total size needed by a RSAPublicKey buffer is =
 	 *  2 * key_len bytes for the n and rr arrays
-	 *  + sizeof len + sizeof n0inv.
+	 *  + sizeof len + sizeof n0pinv.
 	 */
 	return 2 * sig_size + 2 * sizeof(uint32_t);
 }
