@@ -221,6 +221,7 @@ enum vb2_signature_algorithm pkcs11_get_sig_alg(struct pkcs11_key *p11_key)
 vb2_error_t pkcs11_sign(struct pkcs11_key *p11_key, enum vb2_hash_algorithm hash_alg,
 			const uint8_t *data, int data_size, uint8_t *sig, CK_ULONG sig_size)
 {
+	VB2_DEBUG("pkcs11_sign\n");
 	if (!p11) {
 		fprintf(stderr, "pkcs11 is not loaded\n");
 		return VB2_ERROR_UNKNOWN;
