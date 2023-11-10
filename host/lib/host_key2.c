@@ -384,7 +384,7 @@ vb2_error_t vb2_unpack_key_data(struct vb2_public_key *key,
 	if (key->arrsize * sizeof(uint32_t) != vb2_rsa_sig_size(key->sig_alg))
 		return VB2_ERROR_UNPACK_KEY_ARRAY_SIZE;
 
-	key->n0inv = buf32[1];
+	key->n0pinv = buf32[1];
 
 	/* Arrays point inside the key data */
 	key->n = buf32 + 2;

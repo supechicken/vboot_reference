@@ -287,7 +287,7 @@ static void vb2_pubkey_from_usbpd1(struct vb2_public_key *key,
 				   uint32_t o_pubkey_size)
 {
 	key->arrsize = vb2_rsa_sig_size(sig_alg) / sizeof(uint32_t);
-	key->n0inv = *((uint32_t *)o_pubkey + 2 * key->arrsize);
+	key->n0pinv = *((uint32_t *)o_pubkey + 2 * key->arrsize);
 	key->n = (uint32_t *)o_pubkey;
 	key->rr = (uint32_t *)o_pubkey + key->arrsize;
 	key->sig_alg = sig_alg;
