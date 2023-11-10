@@ -28,11 +28,11 @@ int vb2api_is_developer_signed(struct vb2_context *ctx)
 	/* This is a debugging aid, not a security-relevant feature. There's no
 	   reason to hardcode the whole key or waste time computing a hash. Just
 	   spot check the starting bytes of the pseudorandom part of the key. */
-	uint32_t devkey_n0inv = ctx->flags & VB2_CONTEXT_RECOVERY_MODE ?
-		0x18cebcf5 :	/*  recovery_key.vbpubk @0x24 */
-		0xe0cd87d9;	/* kernel_subkey.vbpubk @0x24 */
+	uint32_t devkey_n0pinv = ctx->flags & VB2_CONTEXT_RECOVERY_MODE ?
+		0xe731430b :	/*  recovery_key.vbpubk @0x24 */
+		0x1f327827;	/* kernel_subkey.vbpubk @0x24 */
 
-	if (key.n0inv == devkey_n0inv)
+	if (key.n0pinv == devkey_n0pinv)
 		return 1;
 
 	return 0;

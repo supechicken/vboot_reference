@@ -14,7 +14,7 @@ struct vb2_workbuf;
 /* Public key structure in RAM */
 struct vb2_public_key {
 	uint32_t arrsize;    /* Length of n[] and rr[] in number of uint32_t */
-	uint32_t n0inv;      /* -1 / n[0] mod 2^32 */
+	uint32_t n0pinv;     /* 1 / n[0] mod 2^32 */
 	const uint32_t *n;   /* Modulus as little endian array */
 	const uint32_t *rr;  /* R^2 as little endian array */
 	enum vb2_signature_algorithm sig_alg;	/* Signature algorithm */
