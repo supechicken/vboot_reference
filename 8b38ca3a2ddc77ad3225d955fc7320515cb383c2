@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0054f038_510da06c",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-13T16:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "119c59dc_d146a15a",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "8b38ca3a2ddc77ad3225d955fc7320515cb383c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbebe5c6_2fb76e93",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-11-08T21:55:13Z",
       "side": 1,
       "message": "Can we move these parts up above the branch point so we don\u0027t need to duplicate them?",
+      "revId": "8b38ca3a2ddc77ad3225d955fc7320515cb383c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116a7793_9f0180c6",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-13T16:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbebe5c6_2fb76e93",
       "revId": "8b38ca3a2ddc77ad3225d955fc7320515cb383c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
