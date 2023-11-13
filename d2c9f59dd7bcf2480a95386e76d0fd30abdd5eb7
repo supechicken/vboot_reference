@@ -16,6 +16,24 @@
       "message": "Sorry, I don\u0027t understand what this fixes? desc_size gets initialized to be big enough just a few lines further up, I don\u0027t see why it would need to be checked again there. (Also, `vb2_desc_size()` uses the `strlen()` to determine that size, so it is fine to use `strcpy()` on the same string later.)\n\nThe only thing that I think might potentially be missing here is a\n```\nif (!s.c.desc_size)\n  desc \u003d NULL;\n```\nright after desc_size is initialized, to account for the `desc \u003d\u003d \u0027\\0\u0027` case.",
       "revId": "d2c9f59dd7bcf2480a95386e76d0fd30abdd5eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "155a1fc1_f9995d88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-13T16:23:36Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this especially since we move the `strcpy()` nearer to `vb2_desc_size()` on the latest patches.",
+      "parentUuid": "744a0cd7_05a14ece",
+      "revId": "d2c9f59dd7bcf2480a95386e76d0fd30abdd5eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
