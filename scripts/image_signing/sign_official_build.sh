@@ -99,6 +99,7 @@ setup_default_keycfg() {
   KEYCFG_UEFI_PRIVATE_KEY="${KEY_DIR}/uefi/db/db.children/db_child.rsa"
   KEYCFG_UEFI_SIGN_CERT="${KEY_DIR}/uefi/db/db.children/db_child.pem"
   KEYCFG_UEFI_VERIFY_CERT="${KEY_DIR}/uefi/db/db.pem"
+  KEYCFG_UEFI_CRDYSHIM_PRIVATE_KEY="${KEY_DIR}/uefi/crdyshim.priv.pem"
 }
 
 # Run futility as root with some preserved environment variables.
@@ -848,6 +849,7 @@ sign_uefi_binaries() {
       --sign-cert "${KEYCFG_UEFI_SIGN_CERT}" \
       --verify-cert "${KEYCFG_UEFI_VERIFY_CERT}" \
       --kernel-subkey-vbpubk "${KEY_DIR}/kernel_subkey.vbpubk" \
+      --crdyshim-private-key "${KEYCFG_UEFI_CRDYSHIM_PRIVATE_KEY}" \
       --efi-glob "${efi_glob}"
   sudo umount "${esp_dir}"
 
@@ -860,6 +862,7 @@ sign_uefi_binaries() {
       --sign-cert "${KEYCFG_UEFI_SIGN_CERT}" \
       --verify-cert "${KEYCFG_UEFI_VERIFY_CERT}" \
       --kernel-subkey-vbpubk "${KEY_DIR}/kernel_subkey.vbpubk" \
+      --crdyshim-private-key "${KEYCFG_UEFI_CRDYSHIM_PRIVATE_KEY}" \
       --efi-glob "${efi_glob}"
   sudo umount "${rootfs_dir}"
 
