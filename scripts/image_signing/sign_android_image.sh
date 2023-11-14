@@ -11,6 +11,12 @@ load_shflags || exit 1
 DEFINE_boolean use_apksigner "${FLAGS_FALSE}" \
   "Use apksigner instead of signapk for APK signing"
 
+DEFINE_boolean use_gcloud false \
+  "Use gcloud KMS CloudHSM keys to sign instead of local keys"
+
+DEFINE_string keyring "" \
+  "Key ring to be used for cloud signing, ignored otherwise."
+
 FLAGS_HELP="
 Usage: $PROG /path/to/cros_root_fs/dir /path/to/keys/dir
 
@@ -40,6 +46,28 @@ sign_framework_apks() {
   local working_dir="$3"
   local flavor_prop=""
   local keyset=""
+
+  # Generate key config directory. Needed for gcloud configs.
+  # Currently setting it to input key dir which can be changed in future.
+  local gen_key_config_dir=${key_dir}
+
+  # Generate config file needed for gcloud to run the KMS.
+  if [ "${FLAGS_use_gcloud}" != "${FLAGS_FALSE}" ]; then
+    if [[ -z "${FLAGS_keyring}" ]]; then
+      die "Using we need keyring as input as well when using gcloud option."
+    fi
+
+    if [[ "${FLAGS_use_apksigner}" == "${FLAGS_FALSE}" ]]; then
+      die "use_apksigner flag is required when using gcloud to sign."
+    fi
+
+    "${SCRIPT_DIR}/lib/generate_android_cert_config.py" -kr="${FLAGS_keyring}" \
+      -i="${key_dir}/" -o="${gen_key_config_dir}/"
+
+    if [[ $? -ne 0 ]]; then
+      die "Unable to generate config for cloud signing, exiting."
+    fi
+  fi
 
   if ! flavor_prop=$(android_get_build_flavor_prop \
     "${system_mnt}/system/build.prop"); then
@@ -120,13 +148,33 @@ build flavor '${flavor_prop}'."
 
       local extra_flags
       local lineage_file="${key_dir}/$keyname.lineage}"
+      local gcloud_provider_class="sun.security.pkcs11.SunPKCS11"
+
       if [ -f ${lineage_file} ]; then
         extra_flags="--lineage ${lineage_file}"
       fi
-      apksigner sign --v1-signing-enabled true --v2-signing-enabled false \
-        --key "${key_dir}/$keyname.pk8" --cert "${key_dir}/$keyname.x509.pem" \
-        --in "${temp_apk}" --out "${signed_apk}" \
-        ${extra_flags}
+
+      if [ "${FLAGS_use_gcloud}" != "$FLAGS_FALSE" ]; then
+        if [[ "${keyname}" == "networkstack" ]]; then
+          info "Skipping networkstack key."
+        else
+          KMS_PKCS11_CONFIG="${gen_key_config_dir}/${keyname}_config.yaml" \
+            apksigner sign --v3-signing-enabled true --min-sdk-version=28 \
+            --provider-class "${gcloud_provider_class}" \
+            --provider-arg "${gen_key_config_dir}/pkcs11_java.cfg" --ks "NONE" \
+            --ks-type "PKCS11" --ks-key-alias "android_${keyname}" \
+            --ks-pass pass:"" \
+            --in "${temp_apk}" --out "${signed_apk}" "${extra_flags}"
+          if [[ $? -ne 0 ]]; then
+            die "apksigner failed for signing using gcloud."
+          fi
+        fi
+      else
+        apksigner sign --v1-signing-enabled true --v2-signing-enabled false \
+          --key "${key_dir}/$keyname.pk8" --cert "${key_dir}/$keyname.x509.pem" \
+          --in "${temp_apk}" --out "${signed_apk}" \
+          ${extra_flags}
+      fi
     fi
     if ! image_content_integrity_check "${system_mnt}" "${working_dir}" \
                                        "sign apk ${signed_apk}"; then
@@ -160,6 +208,14 @@ build flavor '${flavor_prop}'."
         ${counter_shared} -lt 2 || ${counter_releasekey} -lt 2 ||
         ${counter_total} -lt 25 ]]; then
     die "Number of re-signed package seems to be wrong"
+  fi
+
+  # Cleanup generated files
+
+  # Cleanup gcloud KMS files.
+  if [[ "${FLAGS_use_gcloud}" != "$FLAGS_FALSE" ]]; then
+    "${SCRIPT_DIR}/lib/generate_android_cert_config.py" -kr="${FLAGS_keyring}" \
+      -i="${key_dir}/" -o="${gen_key_config_dir}/" "--clean"
   fi
 
   return 0
@@ -359,9 +415,9 @@ sign_android_internal() {
   fsck_erofs=$(which fsck.erofs)
   mkfs_erofs=$(which mkfs.erofs)
 
-  if [[ $# -ne 2 ]]; then
+  if [[ $# -lt 2 || $# -gt 4 ]]; then
     flags_help
-    die "command takes exactly 2 args"
+    die "command takes exactly between 2-4 arguments."
   fi
 
   if [[ ! -f "${system_img}" ]]; then
