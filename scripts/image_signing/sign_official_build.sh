@@ -776,8 +776,13 @@ resign_android_image_if_exists() {
     return
   fi
 
+  local extra_args
+  if [[ "${CLOUD_SIGNING}" == true ]]; then
+    extra_args="--cloud_signing"
+  fi
+
   info "Found ARC image version '${arc_version}', re-signing APKs."
-  "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android"
+  "${SCRIPT_DIR}/sign_android_image.sh" "${rootfs_dir}" "${KEY_DIR}/android" ${extra_args}
 
   if ! sudo umount "${rootfs_dir}"; then
     error "umount ${rootfs_dir} failed"
