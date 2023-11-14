@@ -7,12 +7,16 @@
 . "$(dirname "$0")/common.sh"
 . "$(dirname "$0")/lib/sign_android_lib.sh"
 load_shflags || exit 1
+SCRIPT_DIR="${SCRIPT_DIR:-$(dirname "$0")}"
 
 DEFINE_boolean use_apksigner "${FLAGS_FALSE}" \
   "Use apksigner instead of signapk for APK signing"
 
+DEFINE_boolean use_gcloud "${FLAGS_FALSE}" \
+  "Use gcloud KMS CloudHSM keys to sign instead of local keys"
+
 FLAGS_HELP="
-Usage: $PROG /path/to/cros_root_fs/dir /path/to/keys/dir
+Usage: $PROG /path/to/cros_root_fs/dir /path/to/keys/dir [--use_apksigner] [--use_gcloud]
 
 Re-sign framework apks in an Android system image.  The image itself does not
 need to be signed since it is shipped with Chrome OS image, which is already
@@ -41,6 +45,23 @@ sign_framework_apks() {
   local flavor_prop=""
   local keyset=""
 
+  # Generate key config directory.
+  local gen_key_config_dir="$(make_temp_dir)"
+  # Generate config file needed for gcloud to run the KMS.
+  if [ "${FLAGS_use_gcloud}" != "${FLAGS_FALSE}" ]; then
+    info "Using gcloud for signing."
+
+    if [[ "${FLAGS_use_apksigner}" == "${FLAGS_FALSE}" ]]; then
+      die "use_apksigner flag is required when using gcloud to sign."
+    fi
+
+    if ! "${SCRIPT_DIR}/lib/generate_android_cert_config.py" \
+      -b="${KMS_PKCS11_CONFIG}" -i="${key_dir}/" -o="${gen_key_config_dir}/";
+    then
+      die "Unable to generate config for cloud signing, exiting."
+    fi
+  fi
+
   if ! flavor_prop=$(android_get_build_flavor_prop \
     "${system_mnt}/system/build.prop"); then
     die "Failed to extract build flavor property from \
@@ -52,7 +73,11 @@ sign_framework_apks() {
   fi
   info "Expecting signing keyset '${keyset}'."
 
-  info "Start signing framework apks"
+  if [[ "${FLAGS_use_apksigner}" == "${FLAGS_FALSE}" ]]; then
+    info "Using signapk to sign the Framework apk's."
+  else
+    info "Using apksigner to sign the Framework apk's."
+  fi
 
   if ! image_content_integrity_check "${system_mnt}" "${working_dir}" \
                                      "Prepare apks signing"; then
@@ -66,12 +91,6 @@ sign_framework_apks() {
   local counter_releasekey=0
   local counter_networkstack=0
   local counter_total=0
-
-  if [[ "${FLAGS_use_apksigner}" == "${FLAGS_FALSE}" ]]; then
-    info "Using signapk to sign the Framework apk's."
-  else
-    info "Using apksigner to sign the Framework apk's."
-  fi
 
   local apk
   while read -d $'\0' -r apk; do
@@ -119,14 +138,29 @@ build flavor '${flavor_prop}'."
       # TODO(b/132818552): disable v1 signing once a check is removed.
 
       local extra_flags
-      local lineage_file="${key_dir}/$keyname.lineage}"
-      if [ -f ${lineage_file} ]; then
+      local lineage_file="${key_dir}/${keyname}.lineage"
+      local gcloud_provider_class="sun.security.pkcs11.SunPKCS11"
+
+      if [[ -f ${lineage_file} ]]; then
         extra_flags="--lineage ${lineage_file}"
       fi
-      apksigner sign --v1-signing-enabled true --v2-signing-enabled false \
-        --key "${key_dir}/$keyname.pk8" --cert "${key_dir}/$keyname.x509.pem" \
-        --in "${temp_apk}" --out "${signed_apk}" \
-        ${extra_flags}
+
+      if [ "${FLAGS_use_gcloud}" != "${FLAGS_FALSE}" ]; then
+        # Assumes the key would be names `android_${keyname}` in gcloud kms.
+        KMS_PKCS11_CONFIG="${gen_key_config_dir}/${keyname}_config.yaml" \
+          apksigner sign --v3-signing-enabled true --min-sdk-version=28 \
+          --provider-class "${gcloud_provider_class}" \
+          --provider-arg "${gen_key_config_dir}/pkcs11_java.cfg" --ks "NONE" \
+          --ks-type "PKCS11" --ks-key-alias "android_${keyname}" \
+          --ks-pass pass:\"\" --in "${temp_apk}" --out "${signed_apk}"  \
+          ${extra_flags}
+      else
+        apksigner sign --v1-signing-enabled true --v2-signing-enabled false \
+          --key "${key_dir}/${keyname}.pk8" \
+          --cert "${key_dir}/${keyname}.x509.pem" \
+          --in "${temp_apk}" --out "${signed_apk}" \
+          ${extra_flags}
+      fi
     fi
     if ! image_content_integrity_check "${system_mnt}" "${working_dir}" \
                                        "sign apk ${signed_apk}"; then
@@ -134,7 +168,9 @@ build flavor '${flavor_prop}'."
     fi
 
     # Copy the content instead of mv to avoid owner/mode changes.
-    sudo cp "${signed_apk}" "${apk}" && rm -f "${signed_apk}"
+    if ! sudo cp "${signed_apk}" "${apk}" && rm -f "${signed_apk}"; then
+      die "Unable to copy signed apk."
+    fi
 
     # Set timestamp rounded to second since squash file system has resolution
     # in seconds. Required in order for the packages cache generator output is
@@ -361,7 +397,7 @@ sign_android_internal() {
 
   if [[ $# -ne 2 ]]; then
     flags_help
-    die "command takes exactly 2 args"
+    die "command requires 2 input args and can take 2 optional arguments."
   fi
 
   if [[ ! -f "${system_img}" ]]; then
