@@ -138,8 +138,8 @@ static vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_pri
 	char *p11_lib = NULL, *p11_label = NULL;
 	int p11_slot_id;
 	vb2_error_t ret = VB2_ERROR_UNKNOWN;
-	if (sscanf(key_info, "pkcs11:%m[^:]:%i:%m[^:]", &p11_lib, &p11_slot_id, &p11_label) !=
-	    3) {
+	if (sscanf(key_info, "custom_pkcs11:%m[^:]:%i:%m[^:]", &p11_lib, &p11_slot_id,
+		   &p11_label) != 3) {
 		VB2_DEBUG("Failed to parse pkcs11 key info\n");
 		goto done;
 	}
@@ -187,7 +187,7 @@ struct vb2_private_key *vb2_read_private_key(const char *key_info)
 		return NULL;
 	}
 
-	static const char p11_prefix[] = "pkcs11";
+	static const char p11_prefix[] = "custom_pkcs11";
 	static const char local_prefix[] = "local";
 	char *colon = strchr(key_info, ':');
 	if (colon) {

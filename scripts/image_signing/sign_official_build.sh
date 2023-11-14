@@ -427,8 +427,8 @@ sign_update_payload() {
   local output=$3
   local key_output key_size
 
-  if [[ "${key_info}" == "pkcs11:"* ]]; then
-    # get label from key_info with format "pkcs11:<libkmsp11.so>:<slot>:<label>"
+  if [[ "${key_info}" == "custom_pkcs11:"* ]]; then
+    # get label from key_info with format "custom_pkcs11:<libkmsp11.so>:<slot>:<label>"
     IFS=":" read -r -a parsed_info <<< "${key_info}"
     if [[ "${#parsed_info[@]}" -ne 4 ]]; then
       die "Failed to parsed key info '${key_info}'"
