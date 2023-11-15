@@ -16,6 +16,24 @@
       "message": "I\u0027m okay with adding newer images to have wider coverage, but I don\u0027t think we should be deleting the old ones. We are trying to support image types of all eras with futility (including those that don\u0027t even use CBFS), so I think this is a useful case to keep around because if it ever stops working that indicates we may have inadvertently broken some of that legacy image support.",
       "revId": "1f4a3420d78d95124297f9d7371c56f162f613b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0e169a_e8a8d151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-15T09:35:50Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e We are trying to support image types of all eras with futility\n\nYes, I understand that, futility, as a standalone project, needs to support all coreboot boards with VBOOT support, not only those ChromeOS boards. However, to what extent does futility need to support those ancient boards? For example, the reason why I decided to \"replace\" the peppy image is that `futility sign` can\u0027t truncate the zero bytes at the end of `FW_MAIN_A`, when re-signing bios_peppy_mp.bin (but from `data_size` the MP-signed image was signed with truncated `FW_MAIN_A`). Instead, a warning is printed\n\n```\nWARNING: prepare_slot: FW_MAIN_A does not contain CBFS. Trying to sign entire area.\n```\n\nI don\u0027t know how we used to sign bios_peppy_mp.bin (did futility even exist?), but do you think we need to support truncating the zero bytes when seeing a non-CBFS `FW_MAIN_A` section?",
+      "parentUuid": "878b5dc8_47edde09",
+      "revId": "1f4a3420d78d95124297f9d7371c56f162f613b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
