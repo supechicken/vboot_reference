@@ -52,6 +52,24 @@
       "parentUuid": "1bda38cc_2e23bf64",
       "revId": "1bc3d8c67df704436d280f8afaf25b9c0831e282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2300f5c_ed7276b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-15T23:33:12Z",
+      "side": 1,
+      "message": "Idk I think `remote:` is fine and would look a lot better. This is a custom vboot format then anyway, and we\u0027re not planning to ever add any other kind of remote key management to vboot, right?",
+      "parentUuid": "9d731fd6_7b26f757",
+      "revId": "1bc3d8c67df704436d280f8afaf25b9c0831e282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
