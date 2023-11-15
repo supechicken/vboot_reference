@@ -141,6 +141,47 @@
       "parentUuid": "c7544403_6eb45145",
       "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c1339a_8bdd601a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-15T11:15:36Z",
+      "side": 1,
+      "message": "But the [servo_lib.py](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:chromite/lib/firmware/servo_lib.py;l\u003d88) still has some hint like:\n\n```\n_SERIAL_NUMBER_OPTION_OVERRIDE \u003d {\n    SERVO_V4_CCD: \"ccd_serialname\",\n    SERVO_V4_CCD_CR50: \"ccd_serialname\",\n    SERVO_V4_CCD_TI50: \"ccd_serialname\",\n    SERVO_V4_CCD_GSC: \"ccd_serialname\",\n    SERVO_V4_MICRO: \"servo_micro_serialname\",\n    SERVO_V4P1_CCD: \"ccd_serialname\",\n    SERVO_V4P1_CCD_CR50: \"ccd_serialname\",\n    SERVO_V4P1_CCD_TI50: \"ccd_serialname\",\n    SERVO_V4P1_CCD_GSC: \"ccd_serialname\",\n    SERVO_V4P1_MICRO: \"servo_micro_serialname\",\n}\n```\n\nCould we just check `strstr(servo_type, \"ccd\")` or `with_ccd` to make futility and servo_lib.py consistant?",
+      "parentUuid": "6a35eb3d_d7e8fd07",
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4af62f2_2942b4e8",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2023-11-15T11:15:36Z",
+      "side": 1,
+      "message": "Do we want to err if `servo_serial` is \"unknown\"? Or is it impossible to happen?",
+      "range": {
+        "startLine": 514,
+        "startChar": 39,
+        "endLine": 514,
+        "endChar": 40
+      },
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
