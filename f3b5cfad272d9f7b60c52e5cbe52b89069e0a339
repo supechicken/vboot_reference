@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71b0087_e48f156a",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-15T23:43:28Z",
+      "side": 1,
+      "message": "nit: This should be all the keys now, but it looks pretty unordered and kinda hard to find anything. I would suggest maybe defining keys in the order they appear in the chain of trust, e.g.:\n\n* root\n* firmware\n* kernel subkey\n* kernel\n* recovery\n* recovery kernel\n* installer kernel\n* minios kernel\n* other stuff",
+      "revId": "f3b5cfad272d9f7b60c52e5cbe52b89069e0a339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f85c630_f259cf82",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-15T23:43:28Z",
+      "side": 1,
+      "message": "Woah, careful. ARC and ARV are two completely different (though maybe carelessly named) things.",
+      "revId": "f3b5cfad272d9f7b60c52e5cbe52b89069e0a339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
