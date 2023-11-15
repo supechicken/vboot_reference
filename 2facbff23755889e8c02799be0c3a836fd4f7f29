@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccfa5910_54d51474",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-15T10:29:11Z",
+      "side": 1,
+      "message": "See CL:5032515.",
+      "parentUuid": "0e3e5d26_fa88be7b",
+      "range": {
+        "startLine": 493,
+        "startChar": 22,
+        "endLine": 493,
+        "endChar": 37
+      },
+      "revId": "2facbff23755889e8c02799be0c3a836fd4f7f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b31f00e0_84b42716",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-11-08T20:26:26Z",
       "side": 1,
       "message": "Damn, this is also a mistake I just noticed. It would really be more consistent with firmware output if this was moved up before the `ft_print_header2 \u003d NULL` (so it\u0027s `kernel::preamble::flags`).",
+      "revId": "2facbff23755889e8c02799be0c3a836fd4f7f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39abc94_ae7355a6",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-15T10:29:11Z",
+      "side": 1,
+      "message": "See CL:5032516.",
+      "parentUuid": "b31f00e0_84b42716",
       "revId": "2facbff23755889e8c02799be0c3a836fd4f7f29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
