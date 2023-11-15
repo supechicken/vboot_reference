@@ -161,6 +161,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4ea561b_af32dac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-15T16:54:21Z",
+      "side": 1,
+      "message": "You can feel free to change servo_lib.py, I don\u0027t see how it has anything to do with this cl.",
+      "parentUuid": "c1c1339a_8bdd601a",
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4af62f2_2942b4e8",
@@ -174,6 +192,30 @@
       "writtenOn": "2023-11-15T11:15:36Z",
       "side": 1,
       "message": "Do we want to err if `servo_serial` is \"unknown\"? Or is it impossible to happen?",
+      "range": {
+        "startLine": 514,
+        "startChar": 39,
+        "endLine": 514,
+        "endChar": 40
+      },
+      "revId": "d66de1e8fd23d51087abfe633fa031ade35cf25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710901b2_f5053a74",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2023-11-15T16:54:21Z",
+      "side": 1,
+      "message": "The old code didn\u0027t check for the string \"unknown\" and I don\u0027t know why that would ever happen.",
+      "parentUuid": "b4af62f2_2942b4e8",
       "range": {
         "startLine": 514,
         "startChar": 39,
