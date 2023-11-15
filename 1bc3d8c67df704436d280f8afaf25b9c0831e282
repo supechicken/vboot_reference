@@ -34,6 +34,24 @@
       "parentUuid": "e2e4ac0f_4cca5e49",
       "revId": "1bc3d8c67df704436d280f8afaf25b9c0831e282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d731fd6_7b26f757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-15T04:42:39Z",
+      "side": 1,
+      "message": "As Benjamin said, there are some future plans to support (at least partial) official URI parsing in futility, but for now, we would still use the custome pkcs11 path.\n\nAnd, Originally, I did want to use \"remote:\" as the new prefix, but later I thought since it\u0027s still a pkcs11 related path, \"custom_pkcs11\" might make more senses.",
+      "parentUuid": "1bda38cc_2e23bf64",
+      "revId": "1bc3d8c67df704436d280f8afaf25b9c0831e282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
