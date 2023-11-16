@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb86b01_5b9f039a",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-16T00:05:45Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it make more sense to keep the shared functions in lib/host_key2.c, rather than in this 2.1-specific file?",
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60db3c3_c845fcae",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-16T00:05:45Z",
+      "side": 1,
+      "message": "nit: better to pass bufsize in here and check that it\u0027s `\u003e\u003d sizeof(pkey-\u003ec.magic)` just in case",
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b98c92_23230ec8",
+        "filename": "host/lib21/include/host_key21.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-16T00:05:45Z",
+      "side": 1,
+      "message": "Why flip the order of words here? `vb2_private_key_read()` would be more consistent with the  other functions.",
+      "range": {
+        "startLine": 72,
+        "startChar": 24,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
