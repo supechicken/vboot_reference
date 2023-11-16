@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf04c238_45a43274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-16T03:24:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "625ec607_892e6c74",
+      "revId": "54e42da5c612afae0b0eddfb3d80ac1b201b142d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b49fae3_6d9d38fa",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-11-08T20:31:25Z",
       "side": 1,
       "message": "Shouldn\u0027t this trigger the `ERROR(\"Verifying kernel body.\\n\")`? I guess that goes to stderr and that\u0027s why we don\u0027t capture it here?",
+      "revId": "54e42da5c612afae0b0eddfb3d80ac1b201b142d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cff6130_9a64f155",
+        "filename": "tests/futility/expect_output/show.kernel-pubkey-pad-small",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-16T03:24:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2b49fae3_6d9d38fa",
       "revId": "54e42da5c612afae0b0eddfb3d80ac1b201b142d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
