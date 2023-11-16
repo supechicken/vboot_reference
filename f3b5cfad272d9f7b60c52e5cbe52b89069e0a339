@@ -41,6 +41,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10288cef_aaffa38c",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-16T08:07:48Z",
+      "side": 1,
+      "message": "It\u0027s actually `arv_root.vbpubk` (AP RO verification root key); not arc related. Sorry for the typo.",
+      "parentUuid": "f6118a68_1ab9532b",
+      "range": {
+        "startLine": 38,
+        "startChar": 44,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "f3b5cfad272d9f7b60c52e5cbe52b89069e0a339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72042f3_8b72bd9c",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-16T08:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d71b0087_e48f156a",
+      "revId": "f3b5cfad272d9f7b60c52e5cbe52b89069e0a339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f85c630_f259cf82",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-11-15T23:43:28Z",
       "side": 1,
       "message": "Woah, careful. ARC and ARV are two completely different (though maybe carelessly named) things.",
+      "revId": "f3b5cfad272d9f7b60c52e5cbe52b89069e0a339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a073d5c4_79f0efae",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-16T08:07:48Z",
+      "side": 1,
+      "message": "Done. It\u0027s for ARV (AP RO Verification).",
+      "parentUuid": "1f85c630_f259cf82",
       "revId": "f3b5cfad272d9f7b60c52e5cbe52b89069e0a339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
