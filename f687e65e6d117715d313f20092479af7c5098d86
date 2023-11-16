@@ -69,6 +69,24 @@
       "message": "Well, if you do an override array for the LOEM firmware privkeys, it would make sense to also do that for the keyblocks and root keys.",
       "revId": "f687e65e6d117715d313f20092479af7c5098d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d6863b_f2385567",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-16T08:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77304680_7823203f",
+      "revId": "f687e65e6d117715d313f20092479af7c5098d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
