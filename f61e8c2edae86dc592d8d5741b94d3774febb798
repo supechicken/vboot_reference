@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a143bbce_d17b41c3",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-16T04:53:15Z",
+      "side": 1,
+      "message": "IIUC, `lib/host_key2.c` depends on `lib21/include/host_key21.h`, but not verse vice (`lib21/host_key.c`, `lib/inclue/host_key.h`). I don\u0027t fully understand the whole story between vb21 and vb2, but from my perspective, the vb21 stuffs should be newer ones, and having backward-compatibility on vb21 should make more senses than verse vice.",
+      "parentUuid": "0eb86b01_5b9f039a",
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f60db3c3_c845fcae",
         "filename": "host/lib21/host_key.c",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2023-11-16T00:05:45Z",
       "side": 1,
       "message": "Why flip the order of words here? `vb2_private_key_read()` would be more consistent with the  other functions.",
+      "range": {
+        "startLine": 72,
+        "startChar": 24,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08c4c0c_77474b86",
+        "filename": "host/lib21/include/host_key21.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-16T04:53:15Z",
+      "side": 1,
+      "message": "This is just the same function migrated from `lib/host_key2.c`. Due to the comment of where this should be put, if we have it put in `lib/host_key2.c`, then we don\u0027t need to rename it, else if we have it stay in here, I think we could rename it to `vb2_private_key_read()` or even `vb21_private_key_read()`.",
+      "parentUuid": "08b98c92_23230ec8",
       "range": {
         "startLine": 72,
         "startChar": 24,
