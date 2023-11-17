@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb02348_2ca34a5a",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-17T00:08:37Z",
+      "side": 1,
+      "message": "I find it a bit weird that everything else is taken from KEYCFG now, yet this key_dir is still passed in by the caller. I think it would make much more sense if KEYCFG just stored the initial key_dir it was set up with in one of its private variables and used that here, and the caller had no direct access to it at all.\n\nAt the end of this exercise (once you\u0027ve converted everything to KEYCFG), I think there should be no KEY_DIR global at all in sign_official_build.sh anymore. It should just go from a positional parameter to the script directly into setup_default_keycfg(), and from then on only KEYCFG should be in charge of where any keys are.",
+      "range": {
+        "startLine": 90,
+        "startChar": 19,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "d2bc5256cb0998173cae2277a742302edaf9c636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
