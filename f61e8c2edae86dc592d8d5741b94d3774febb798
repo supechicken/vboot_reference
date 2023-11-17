@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd1d4a4_d69fff86",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-17T10:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "278d5f68_a6d97055",
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f60db3c3_c845fcae",
@@ -150,6 +168,30 @@
       "side": 1,
       "message": "Yeah, I guess if we kept it in this file that would make more sense. But you also deduplicate the free() functions and chose vb2_private_key_free() as the survivor there, so that\u0027s what threw me off. I don\u0027t really care which order we use (though sticking with the 2.0 probably makes more sense at this point), but the shared read() and free() functions should follow the same pattern.",
       "parentUuid": "c08c4c0c_77474b86",
+      "range": {
+        "startLine": 72,
+        "startChar": 24,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861ff4f7_f57b02b0",
+        "filename": "host/lib21/include/host_key21.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-11-17T10:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59df6866_cca9fde7",
       "range": {
         "startLine": 72,
         "startChar": 24,
