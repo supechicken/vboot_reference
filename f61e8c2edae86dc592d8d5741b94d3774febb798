@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "278d5f68_a6d97055",
+        "filename": "host/lib21/host_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-17T00:18:25Z",
+      "side": 1,
+      "message": "Yeah I know it is pretty messy at the moment, I\u0027m just trying to not make it worse. From my perspective I would say `lib/host_key2.c` is general stuff that applies to both 2.0 and 2.1, while anything in lib21/ is specific to 2.1 so generic code reused elsewhere should probably not go there.\n\nvb21 was essentially a failed and aborted attempt at generating a new signing structure format that has never really rolled out into our main firmware signing process, and at this point I would rather just throw it away (and maybe start over if we ever want to update the format again, as we might need to with the PQ signing initiative). Unfortunately it is used in production in a few weird edge cases (IIRC signing code for keyboard base controller on detachables), so it\u0027s hard to fully get rid of atm. But it\u0027s not the future that eventually everything will be migrated to.",
+      "parentUuid": "a143bbce_d17b41c3",
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f60db3c3_c845fcae",
         "filename": "host/lib21/host_key.c",
         "patchSetId": 2
@@ -108,6 +126,30 @@
       "side": 1,
       "message": "This is just the same function migrated from `lib/host_key2.c`. Due to the comment of where this should be put, if we have it put in `lib/host_key2.c`, then we don\u0027t need to rename it, else if we have it stay in here, I think we could rename it to `vb2_private_key_read()` or even `vb21_private_key_read()`.",
       "parentUuid": "08b98c92_23230ec8",
+      "range": {
+        "startLine": 72,
+        "startChar": 24,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "f61e8c2edae86dc592d8d5741b94d3774febb798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59df6866_cca9fde7",
+        "filename": "host/lib21/include/host_key21.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-17T00:18:25Z",
+      "side": 1,
+      "message": "Yeah, I guess if we kept it in this file that would make more sense. But you also deduplicate the free() functions and chose vb2_private_key_free() as the survivor there, so that\u0027s what threw me off. I don\u0027t really care which order we use (though sticking with the 2.0 probably makes more sense at this point), but the shared read() and free() functions should follow the same pattern.",
+      "parentUuid": "c08c4c0c_77474b86",
       "range": {
         "startLine": 72,
         "startChar": 24,
