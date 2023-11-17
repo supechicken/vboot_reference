@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c08373e_3ce5342a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1002736
+      },
+      "writtenOn": "2023-11-17T00:03:24Z",
+      "side": 1,
+      "message": "How about mentioning why it does not exit (e.g. the image is created before build system change)",
+      "range": {
+        "startLine": 399,
+        "startChar": 34,
+        "endLine": 399,
+        "endChar": 47
+      },
+      "revId": "6bf49b1e09d83d591c0f0370419cbe2114ef6836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
