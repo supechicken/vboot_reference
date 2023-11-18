@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "386ae0c1_a4211387",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-18T04:06:50Z",
+      "side": 1,
+      "message": "Done\n\nDo you think each file should be tested with *both* readable and parseable output?",
+      "parentUuid": "344aefa1_71a42177",
+      "revId": "2cbad1c9c4b28534cc1794e04134789e2196608b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "751b60ff_bbaabd27",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "196a1070_4f758215",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-18T04:06:50Z",
+      "side": 1,
+      "message": "I was modifying these back and forth and forgot to change this back.",
+      "parentUuid": "751b60ff_bbaabd27",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "2cbad1c9c4b28534cc1794e04134789e2196608b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5746edf_0b60bb8f",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-11-18T00:32:07Z",
       "side": 1,
       "message": "Would it be wrong to always check both? Other than the return value, the output of show and verify should always be identical, right?",
+      "revId": "2cbad1c9c4b28534cc1794e04134789e2196608b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c46e6a_cdd80a07",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-18T04:06:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5746edf_0b60bb8f",
       "revId": "2cbad1c9c4b28534cc1794e04134789e2196608b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
