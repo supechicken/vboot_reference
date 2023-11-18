@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "344aefa1_71a42177",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-18T00:32:07Z",
+      "side": 1,
+      "message": "Why not both parseable and human-readable?",
+      "revId": "2cbad1c9c4b28534cc1794e04134789e2196608b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751b60ff_bbaabd27",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-18T00:32:07Z",
+      "side": 1,
+      "message": "Is there a reason we `tee` above but directly redirect here?",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "2cbad1c9c4b28534cc1794e04134789e2196608b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5746edf_0b60bb8f",
+        "filename": "tests/futility/test_show_and_verify.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-18T00:32:07Z",
+      "side": 1,
+      "message": "Would it be wrong to always check both? Other than the return value, the output of show and verify should always be identical, right?",
+      "revId": "2cbad1c9c4b28534cc1794e04134789e2196608b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
