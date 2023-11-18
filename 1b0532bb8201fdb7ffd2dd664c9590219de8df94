@@ -22,6 +22,30 @@
       },
       "revId": "1b0532bb8201fdb7ffd2dd664c9590219de8df94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a804aeca_655e4189",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-18T04:04:08Z",
+      "side": 1,
+      "message": "Done\n\nAlso added new test cases in CL:5042017, which should catch this bug.",
+      "parentUuid": "0ba24d7f_4943d03f",
+      "range": {
+        "startLine": 557,
+        "startChar": 6,
+        "endLine": 557,
+        "endChar": 17
+      },
+      "revId": "1b0532bb8201fdb7ffd2dd664c9590219de8df94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
