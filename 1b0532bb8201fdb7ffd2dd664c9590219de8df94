@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba24d7f_4943d03f",
+        "filename": "futility/cmd_show.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-18T00:14:35Z",
+      "side": 1,
+      "message": "I think this should change to `!kernel_size` so that for a file that contains only the kernel vblock without the body, we still take this path.",
+      "range": {
+        "startLine": 557,
+        "startChar": 6,
+        "endLine": 557,
+        "endChar": 17
+      },
+      "revId": "1b0532bb8201fdb7ffd2dd664c9590219de8df94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
