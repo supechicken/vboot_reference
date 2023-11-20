@@ -206,11 +206,18 @@ ifneq ($(filter-out 0,${MOCK_TPM}),)
 CFLAGS += -DMOCK_TPM
 endif
 
-# TPM2_SIMULATOR indicates whether the TPM2 simulator feature is enable or not.
+# TPM2_SIMULATOR indicates whether the TPM2 simulator feature is enabled or not.
 ifneq ($(filter-out 0,${TPM2_SIMULATOR}),)
 CFLAGS += -DTPM2_SIMULATOR=1
 else
 CFLAGS += -DTPM2_SIMULATOR=0
+endif
+
+# TPM_DYNAMIC indicates whether the dynamic TPM feature is enabled or not.
+ifneq ($(filter-out 0,${TPM_DYNAMIC}),)
+CFLAGS += -DTPM_DYNAMIC=1
+else
+CFLAGS += -DTPM_DYNAMIC=0
 endif
 
 # NOTE: We don't use these files but they are useful for other packages to
