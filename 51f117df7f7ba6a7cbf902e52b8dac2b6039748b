@@ -16,6 +16,57 @@
       "message": "Thanks! Still LGTM but deferring +2 to signer experts.",
       "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9132e4_f916ea8d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-20T23:39:40Z",
+      "side": 1,
+      "message": "```suggestion\n  # Detect image compression flags.\n```\n\ncomments are full sentences, and sentences end in periods",
+      "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312ee0a9_05db65eb",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-20T23:39:40Z",
+      "side": 1,
+      "message": "```suggestion\n    # The file contains a line such as:\n    # mkfs.erofs -z lz4hc -C32768\n```",
+      "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4acc800d_02c267c5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2023-11-20T23:39:40Z",
+      "side": 1,
+      "message": "```suggestion\n    read -r -a tokens \u003c\"${compression_flags_path}\"\n```\n\nthis uses `cat` to create a string.  bash has a `$(\u003cfoo)` shortcut to avoid `cat`.\n\nbut rather than use a herestring, can\u0027t you simply redirect from the file directly ?",
+      "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
