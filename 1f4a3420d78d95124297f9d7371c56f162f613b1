@@ -52,6 +52,24 @@
       "parentUuid": "1b0e169a_e8a8d151",
       "revId": "1f4a3420d78d95124297f9d7371c56f162f613b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "539c67c4_0bb7fe42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-20T02:13:35Z",
+      "side": 1,
+      "message": "\u003e Also, the non-CBFS case does in fact keep the old firmware size upon resigning if the previous preamble was valid.\n\nIt turned out that \u0027futility sign\u0027 was working as expected. It\u0027s just that the warning message shouldn\u0027t be printed. Uploaded CL:5043266 to fix it.",
+      "parentUuid": "c0f6542b_3a0fabbb",
+      "revId": "1f4a3420d78d95124297f9d7371c56f162f613b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
