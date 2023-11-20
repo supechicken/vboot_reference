@@ -213,6 +213,13 @@ else
 CFLAGS += -DTPM2_SIMULATOR=0
 endif
 
+# TPM_DYNAMIC indicates whether the dynamic TPM feature is enable or not.
+ifneq ($(filter-out 0,${TPM_DYNAMIC}),)
+CFLAGS += -DTPM_DYNAMIC=1
+else
+CFLAGS += -DTPM_DYNAMIC=0
+endif
+
 # NOTE: We don't use these files but they are useful for other packages to
 # query about required compiling/linking flags.
 PC_IN_FILES = vboot_host.pc.in
