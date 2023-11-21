@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b321a6b_787c23df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-21T23:36:41Z",
+      "side": 1,
+      "message": "Wow, this is bad... it\u0027s amazing that this never caused more fallout. I\u0027m very confused how I got to my TEST\u003d line on CL:3063692... when I try that again today I can see the flag not getting cleared.",
+      "revId": "c164c63ba159dbf379187f0b0ed67a90abf9ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4228c9_713fd0b4",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-21T23:36:41Z",
+      "side": 1,
+      "message": "These aren\u0027t correct for arm64 (and honestly not really for our later arm32 boards either), but they always get overwritten anyway. It would be good to do a bigger cleanup on this file at some point and do away with all these unused `?\u003d` definitions completely.",
+      "revId": "c164c63ba159dbf379187f0b0ed67a90abf9ef49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
