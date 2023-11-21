@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa2142f_514c9190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-11-21T09:57:35Z",
+      "side": 1,
+      "message": "There are 2 problems:\n\n1. See CL:5046147.\n2. We use empty `FIRMWARE_ARCH` when building vboot_fw.a for depthcharge unit tests, so `COMMON_FLAGS` will be appended. However `CC\u003dHOSTCC\u003dgcc` doesn\u0027t have `-Wincompatible-function-pointer-types`. I think the correct solution is to pass `FIRMWARE_ARCH\u003dmock` for depthcharge unit tests, and handle that in vboot\u0027s Makefile (where we want firmware/2lib/2stub.c but not `-DCHROMEOS_ENVIRONMENT ${COMMON_FLAGS}`).",
+      "revId": "d4e83cc0622f6d89c04f752da707cb3ac66bde25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
