@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16222470_4139debb",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-11-21T05:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb9132e4_f916ea8d",
+      "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "312ee0a9_05db65eb",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3c2568_e264ea7a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-11-21T05:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312ee0a9_05db65eb",
+      "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4acc800d_02c267c5",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-11-20T23:39:40Z",
       "side": 1,
       "message": "```suggestion\n    read -r -a tokens \u003c\"${compression_flags_path}\"\n```\n\nthis uses `cat` to create a string.  bash has a `$(\u003cfoo)` shortcut to avoid `cat`.\n\nbut rather than use a herestring, can\u0027t you simply redirect from the file directly ?",
+      "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe79cdb_901eefce",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-11-21T05:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4acc800d_02c267c5",
       "revId": "51f117df7f7ba6a7cbf902e52b8dac2b6039748b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
