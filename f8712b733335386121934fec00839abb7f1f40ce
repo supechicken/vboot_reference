@@ -22,6 +22,30 @@
       },
       "revId": "f8712b733335386121934fec00839abb7f1f40ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7811b9_f6402193",
+        "filename": "Makefile",
+        "patchSetId": 26
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-22T23:35:06Z",
+      "side": 1,
+      "message": "Yeah, the same problem was reported in coreboot CB:78865. I agree adding `-ldl` is probably the right solution. Ching-Kan, what do you think?",
+      "parentUuid": "84e1c225_e437700d",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 58
+      },
+      "revId": "f8712b733335386121934fec00839abb7f1f40ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
