@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7d51fc_4e963996",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-11-22T22:48:58Z",
+      "side": 1,
+      "message": "PTAL, adding few things but this is how signing script would look like.",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621961fa_963d65a9",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-11-22T22:48:58Z",
+      "side": 1,
+      "message": "For now as we are unable to import networkstack key in cloud KMS.",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
