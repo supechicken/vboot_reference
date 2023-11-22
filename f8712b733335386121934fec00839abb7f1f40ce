@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e1c225_e437700d",
+        "filename": "Makefile",
+        "patchSetId": 26
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 3050913
+      },
+      "writtenOn": "2023-11-22T12:56:18Z",
+      "side": 1,
+      "message": "Not directly, but there is probably missing `-ldl` in `LDFLAGS`.\nThe linker then reports a missing symbol for `dlclose()` (called in host/lib/host_p11.c:109).",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 58
+      },
+      "revId": "f8712b733335386121934fec00839abb7f1f40ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
