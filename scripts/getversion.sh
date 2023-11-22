@@ -28,6 +28,4 @@ else
 	ver="unknown"
 fi
 
-date=$(date '+%F %T')
-
-echo "const char futility_version[] = \"${ver} ${date} ${USER}\";";
+echo "const char futility_version[] = \"${ver}\";";
