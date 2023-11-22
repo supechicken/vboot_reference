@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf5237d_c01a7b5a",
+        "filename": "scripts/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-11-22T00:50:27Z",
+      "side": 1,
+      "message": "nit: If you want it reproducible this probably need an argument (e.g. `--short\u003d8`), since the default depends on gitconfig.",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "c55089750d2d0983f07676cb1e6a5e68c0e37616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
