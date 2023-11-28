@@ -22,6 +22,23 @@
       },
       "revId": "fa7c17cdc05d2030e01876b216f81063e128b7e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a82604_bfcacdcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3111836
+      },
+      "writtenOn": "2023-11-28T06:23:21Z",
+      "side": 1,
+      "message": "I cherry-picked it in coreboot environment with red hat 8.8 and glibc 2.28 where we got errors building futility before this patch here (reported on CL:4798534 and CB:78865). Now it works fine.",
+      "revId": "fa7c17cdc05d2030e01876b216f81063e128b7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
