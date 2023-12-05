@@ -52,6 +52,24 @@
       "parentUuid": "e404aa30_14443c36",
       "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2788ec_79281546",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-12-05T02:36:20Z",
+      "side": 1,
+      "message": "It\u0027s possible to make GSC accept platform auth. But it will change the attributes of all virtual NV(we use same attribute for all virtual NV), we will need to check all server side to make sure they will accept the new NV certify result, otherwise we may accidentally break something.\n\nAnd this is function is still useful if we want to read the NV with user permission in the future.",
+      "parentUuid": "156ca083_85ce7457",
+      "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
