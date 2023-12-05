@@ -16,6 +16,24 @@
       "message": "Where is this being used?",
       "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e404aa30_14443c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-12-05T01:36:42Z",
+      "side": 1,
+      "message": "This will be used at here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/4223852/67/src/vboot/widevine/root_of_trust.c\n\n(Note: The virtual NV of GSC cannot be read with the platform auth.)",
+      "parentUuid": "594636db_eb4adae2",
+      "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
