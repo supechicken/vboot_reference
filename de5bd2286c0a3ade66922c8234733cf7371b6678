@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379bc365_a2d138d5",
+        "filename": "firmware/include/tlcl.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-05T01:42:59Z",
+      "side": 1,
+      "message": "nit: could consider making this `void` so you don\u0027t need to cast in the caller",
+      "range": {
+        "startLine": 296,
+        "startChar": 58,
+        "endLine": 296,
+        "endChar": 65
+      },
+      "revId": "de5bd2286c0a3ade66922c8234733cf7371b6678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
