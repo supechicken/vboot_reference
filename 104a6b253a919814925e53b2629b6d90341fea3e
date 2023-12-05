@@ -88,6 +88,24 @@
       "parentUuid": "0f2788ec_79281546",
       "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e1dcd7_070048be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2023-12-05T03:02:29Z",
+      "side": 1,
+      "message": "\u003e Isn\u0027t it kinda silly to have a space that can only be read with user auth but not with platform auth in the first place?\n\nFrom the TPM spec point of view, because the user can set a standalone password for the NV space, having a space that can only be read with the user auth is useful.\n\nThe reason we feel weird here is because we use the \"empty\" password.\n\nAnyway, I will try to add the platform read attribute to the GSC virtual NV.",
+      "parentUuid": "60f00fd3_b8ee0bc7",
+      "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
