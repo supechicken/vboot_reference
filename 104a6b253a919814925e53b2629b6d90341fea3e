@@ -34,6 +34,24 @@
       "parentUuid": "594636db_eb4adae2",
       "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156ca083_85ce7457",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-05T01:51:48Z",
+      "side": 1,
+      "message": "\u003e The virtual NV of GSC cannot be read with the platform auth\n\n...why? Is there a good reason for that? Is that mandated by the spec somehow (I assume since this is a virtual space we made up there\u0027s no specification about how this should work anyway)? Why don\u0027t we just make the GSC accept platform auth there?",
+      "parentUuid": "e404aa30_14443c36",
+      "revId": "104a6b253a919814925e53b2629b6d90341fea3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
