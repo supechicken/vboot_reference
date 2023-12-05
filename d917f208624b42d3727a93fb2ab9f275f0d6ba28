@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3e463a_33cd2981",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2023-12-05T12:03:21Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8762563371200780833) is being automatically retried for the following reasons:\n- Some tests are now retryable:jacuzzi-cq.hw.cq-medium\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "d917f208624b42d3727a93fb2ab9f275f0d6ba28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
