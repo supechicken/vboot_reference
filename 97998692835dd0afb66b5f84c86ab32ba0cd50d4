@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f67b149_0243fbec",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "The name for this should say \"RSA\" somewhere, e.g. `X86_RSA_SSE2`.",
+      "range": {
+        "startLine": 419,
+        "startChar": 24,
+        "endLine": 419,
+        "endChar": 38
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b10915_429c1202",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "IIRC for 2sha256_x86.c we decided to reimplement the necessary intrinsics in the file directly to keep the firmware build hermetic, so we should do the same here as well.\n\nShould you maybe also add an `-mno-avx` here to make sure the compiler doesn\u0027t go further than intended with this?",
+      "range": {
+        "startLine": 431,
+        "startChar": 51,
+        "endLine": 431,
+        "endChar": 72
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b4a4b7_22bad0a8",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "We should have special tests similar to here to cover this RSA implementation. Maybe you could build a second version of the `vb20_verify_fw` test that links the hwcrypto implementation and then have `vb2_firmware_tests.sh` run that in addition to the default one with the same arguments (that way we would also have the workbuffer watermark numbers for this version in the test output, which would be good).",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff418d8_44025a8d",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "Normally I like these macros, but since we only need it in a single spot here it\u0027s probably easier to just hardcode the masking there.",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c686d48_e77e2835",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "Is there a notable time difference if you just regenerate `b_modulus[i]` from scratch inside this loop, rather than memoize it beforehand? I mean this is basically the difference between loading one full 128-bit SSE2 register from memory vs. loading two 32-bit locations (`b[i]` and `key-\u003en[i]`) into an SSE2 register from memory. I\u0027m wondering if we can save some space by avoiding the `b_modulus` array.",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a8a6b5_e84122db",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "Could we use `_mm_mask_compressstoreu_epi32` (or a similar instruction if you know a better one) to store the two 32-bit integers we care about here in a 64-bit array in memory, and then later re-extract them from there with `_mm_maskz_expandloadu_epi32` where we need them? I\u0027m trying to find more ways to cut down on the workbuf space demand.",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ac7ea9_ca85d0b9",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "Since we know this is only targeting x86 to begin with we can probably just use `__builtin_bswap32()` here. (In fact, I\u0027m not sure why we didn\u0027t just do that everywhere to begin with...)",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c81088_1bb0ce40",
+        "filename": "firmware/2lib/include/2rsa_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-06T01:56:45Z",
+      "side": 1,
+      "message": "Let\u0027s make this a macro that takes `key_bytes` as an argument, that way you can make this `((s * 11) + 8)` instead of `(s * 12)` (or better `((s * 7) + 8)` if you can avoid the `b_modulus` array).",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
