@@ -16,6 +16,24 @@
       "message": "do we need to swallow the output entirely ?",
       "revId": "9c03e430315073e92dbc549ba7606aa6b00f1272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d369e46c_54f75900",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2023-12-07T23:24:02Z",
+      "side": 1,
+      "message": "Actually we don\u0027t.\nDecided to use a simple existing pattern like L526 so both output and error are shown in the lActually we don\u0027t.\nDecided to use a simple existing pattern like L526 so that both output and error are shown in the log.og.",
+      "parentUuid": "fd5dc13c_a17ff1a8",
+      "revId": "9c03e430315073e92dbc549ba7606aa6b00f1272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
