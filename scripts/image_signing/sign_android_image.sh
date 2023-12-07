@@ -561,9 +561,11 @@ sign_android_internal() {
 
   if [[ "${image_type}" == "squashfs" ]]; then
     info "Repacking squashfs image with ${compression_flags[*]}"
-    sudo "${mksquashfs}" "${system_mnt}" "${system_img}" \
-      -context-file "${file_contexts}" -mount-point "/" \
-      -no-progress "${compression_flags[@]}"
+    if ! err=$(sudo "${mksquashfs}" "${system_mnt}" "${system_img}" \
+               -context-file "${file_contexts}" -mount-point "/" \
+               -no-progress "${compression_flags[@]}" 2>&1); then
+       die "mksquashfs failed: ${err}"
+    fi
 
     list_files_in_squashfs_image "${unsquashfs}" "${system_img}" > \
         "${working_dir}/image_file_list.new"
@@ -573,9 +575,11 @@ sign_android_internal() {
     sudo find "${system_mnt}" > "${working_dir}/image_file_list.new"
 
     info "Repacking erofs image with ${compression_flags[*]}"
-    sudo "${mkfs_erofs}" "${compression_flags[@]}" \
-      --file-contexts "${file_contexts}" \
-      "${system_img}" "${system_mnt}"
+    if ! err=$(sudo "${mkfs_erofs}" "${compression_flags[@]}" \
+               --file-contexts "${file_contexts}" \
+               "${system_img}" "${system_mnt}" 2>&1); then
+      die "mkfs.erofs failed: ${err}"
+    fi
   fi
 
   local new_size
