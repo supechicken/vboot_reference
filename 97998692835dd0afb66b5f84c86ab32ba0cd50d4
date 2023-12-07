@@ -83,6 +83,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35c8590a_795db342",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-07T01:25:01Z",
+      "side": 1,
+      "message": "Just want to double-check, are there any integer multiply-and-add instructions in SSE that would allow us to combine these two steps into a single one? I found that Arm has a UMLAL instruction which I believe would work for that, but it seems that Intel has no equivalent?",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c686d48_e77e2835",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
