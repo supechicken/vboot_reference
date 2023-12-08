@@ -158,6 +158,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83774743_b94f7254",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-08T00:24:32Z",
+      "side": 1,
+      "message": "I just did the experiments: Removing the array and using `_mm_set_epi32(0, b[i], 0, key-\u003en[i])` instead of per-computing increases the modpow() total time by about 4%.",
+      "parentUuid": "4c686d48_e77e2835",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70a8a6b5_e84122db",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
