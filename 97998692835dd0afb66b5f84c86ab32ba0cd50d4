@@ -182,6 +182,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25df3480_616a671a",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-08T00:57:19Z",
+      "side": 1,
+      "message": "That sounds like it\u0027s probably within the margin of measurement error and could be acceptable?\n\nI think I would prefer for simplicity if we can fit within the existing 12KB workbuf size (at least for the common 11-7-4 algorithm case... 11-11-11 isn\u0027t really used in practice, so as long as that would safely fall back to the old code by implementing this as a hwcrypto backend, I think we don\u0027t need to care about it). With all the suggestions I added (eliminate `b_modulus`, cut `de` in half and reuse `inout` buffer), I think that might just barely be possible. But if it isn\u0027t and we need to make some architecture-specific adjustment either way, then I guess the amount for x86 doesn\u0027t really matter so we could leave it at whatever is the fastest.",
+      "parentUuid": "83774743_b94f7254",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70a8a6b5_e84122db",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
@@ -210,6 +234,29 @@
       "writtenOn": "2023-12-06T01:56:45Z",
       "side": 1,
       "message": "Since we know this is only targeting x86 to begin with we can probably just use `__builtin_bswap32()` here. (In fact, I\u0027m not sure why we didn\u0027t just do that everywhere to begin with...)",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fefae8_2fc518ed",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-08T00:57:19Z",
+      "side": 1,
+      "message": "Actually, was there ever a good reason why `inout` is copied into `a` instead of just swapping the bytes in-place? That shouldn\u0027t be hard, right? That could save us another `4*arrsize` bytes...",
+      "range": {
+        "startLine": 160,
+        "startChar": 28,
+        "endLine": 160,
+        "endChar": 33
+      },
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
