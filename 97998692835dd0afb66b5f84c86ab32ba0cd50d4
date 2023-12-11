@@ -135,6 +135,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efa50305_d94c4564",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3062142
+      },
+      "writtenOn": "2023-12-11T22:58:48Z",
+      "side": 1,
+      "message": "We have implemented using _subborrow_u32() according to your suggestion and tested Vboot RSA signature verification with Linux user-space program (performance of user-space program is linear to the boot time as we experimented before). Unfortunately, this implementation increases the performance overhead by around 12%, which is a significant degradation. Again, _subborrow_u32() is not available in SSE2, it requires AVX (reference given below).\n\nhttps://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#text\u003d_subborrow_u32\u0026ig_expand\u003d305,2886,2886,2886,4602,1338,1338,1338,6665,6665",
+      "parentUuid": "42716495_b7244cf9",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35c8590a_795db342",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
