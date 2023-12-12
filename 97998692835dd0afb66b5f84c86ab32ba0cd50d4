@@ -153,6 +153,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "176328e7_b7a58aa3",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-12T01:11:49Z",
+      "side": 1,
+      "message": "Huh... that seems strange, isn\u0027t that API specifically made to speed up subtractions with borrow like this? It shouldn\u0027t be slower than the C implementation. Are you saying that the system doesn\u0027t support AVX and this intrinsic gets automatically software emulated on your machine, and that\u0027s why it\u0027s slower? I was assuming RaptorLake/MeteorLake would support AVX?\n\nAnyway, it was just a minor suggestion, if it doesn\u0027t help then just forget about it. I would be curious _why_ it doesn\u0027t help, but we can go with your software implementation for now.",
+      "parentUuid": "efa50305_d94c4564",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35c8590a_795db342",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
@@ -182,6 +200,24 @@
       "side": 1,
       "message": "You are correct. We also did not find such instructions (32 bits of MUL and 64bits of ADD operations) in SSE/SSE2. We find _mm_madd_epi16, which suggests 16 bits of MUL and 32 bits of ADD operations.",
       "parentUuid": "35c8590a_795db342",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38f9ab2_fd444c5c",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-12T01:11:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bc854bfb_9eca8473",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
