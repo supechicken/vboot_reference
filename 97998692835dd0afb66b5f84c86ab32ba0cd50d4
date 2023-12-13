@@ -171,6 +171,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7876e4b7_c4109949",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3062142
+      },
+      "writtenOn": "2023-12-13T00:44:05Z",
+      "side": 1,
+      "message": "Yeah! It seems strange! We were also curious to see that. The system on which we tested user-space program earlier indeed supports AVX. Raptor Lake and Meteor Lake both support AVX indeed. To avoid confusion with software emulation for user-space programs, today we have tested real boot on Meteor Lake SoC-based Rex board. We have observed the similar trend in the results. There was a 3.6% degradation in boot time because of using _subborrow_u32().",
+      "parentUuid": "176328e7_b7a58aa3",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35c8590a_795db342",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
