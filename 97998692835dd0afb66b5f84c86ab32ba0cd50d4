@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d73bde_3e763fd6",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-13T22:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f67b149_0243fbec",
+      "range": {
+        "startLine": 419,
+        "startChar": 24,
+        "endLine": 419,
+        "endChar": 38
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05b10915_429c1202",
@@ -72,6 +96,30 @@
       "writtenOn": "2023-12-06T01:56:45Z",
       "side": 1,
       "message": "IIRC for 2sha256_x86.c we decided to reimplement the necessary intrinsics in the file directly to keep the firmware build hermetic, so we should do the same here as well.\n\nShould you maybe also add an `-mno-avx` here to make sure the compiler doesn\u0027t go further than intended with this?",
+      "range": {
+        "startLine": 431,
+        "startChar": 51,
+        "endLine": 431,
+        "endChar": 72
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ecefc46_e96ddab3",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-13T22:09:06Z",
+      "side": 1,
+      "message": "I re-implemented the necessary intrinsics to get rid of this `filter-out`. However, we decided to use `__builtins` function instead of re-implementing in assembly.\n\nI added `-mno-avx` as I agree this is good addition.",
+      "parentUuid": "05b10915_429c1202",
       "range": {
         "startLine": 431,
         "startChar": 51,
@@ -112,6 +160,24 @@
       "writtenOn": "2023-12-06T01:56:45Z",
       "side": 1,
       "message": "Normally I like these macros, but since we only need it in a single spot here it\u0027s probably easier to just hardcode the masking there.",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a7c4377_6054bec9",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-13T22:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff418d8_44025a8d",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
