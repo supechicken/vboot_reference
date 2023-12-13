@@ -161,6 +161,7 @@ CFLAGS += -std=gnu11
 # $(2): code to insert into test snippet
 # returns: $(1) if compiler was successful, empty string otherwise
 test_ccflag = $(shell \
+	set -x; \
 	printf "$(2)\nvoid _start(void) {}\n" | \
 	$(CC) -nostdlib -Werror $(1) -xc -c - -o /dev/null \
 	>/dev/null 2>&1 && echo "$(1)")
@@ -231,7 +232,10 @@ CFLAGS += -D_GNU_SOURCE
 # but if the environment doesn't support it, at least compile support
 # for what is possible.
 # Pass through cflags_use_64bits to evaluate it only once, here.
-cflags_use_64bits := $(call test_ccflag,-D_FILE_OFFSET_BITS=64,\#include <fts.h>)
+hash_const := \#
+cflags_use_64bits := $(call test_ccflag,$\
+		     -D_FILE_OFFSET_BITS=64,$\
+		     ${hash_const}include <fts.h>)
 CFLAGS += $(cflags_use_64bits)
 
 # Code coverage
