@@ -189,6 +189,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12b15493_8688f62b",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3062142
+      },
+      "writtenOn": "2023-12-13T06:04:53Z",
+      "side": 1,
+      "message": "A correction: The aforementioned 3.6% degradation is in modpow execution (i.e., RSA signature verification) using _subborrow_u32().",
+      "parentUuid": "7876e4b7_c4109949",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35c8590a_795db342",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
@@ -348,6 +366,24 @@
       "writtenOn": "2023-12-06T01:56:45Z",
       "side": 1,
       "message": "Could we use `_mm_mask_compressstoreu_epi32` (or a similar instruction if you know a better one) to store the two 32-bit integers we care about here in a 64-bit array in memory, and then later re-extract them from there with `_mm_maskz_expandloadu_epi32` where we need them? I\u0027m trying to find more ways to cut down on the workbuf space demand.",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce66374e_0dc751be",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 3062142
+      },
+      "writtenOn": "2023-12-13T06:04:53Z",
+      "side": 1,
+      "message": "To execute these instructions, SoC requires to support AVX512 family (required compilation flags or extensions: AVX512F and AVX512VL). We tried this to execute these intrinsic instructions that you suggested, but we observe illegal instruction exception while computing modpow. The reason behind this is that Intel SIMD AVX-512 may not be available on all SKUs. Again, when hybrid computing is enabled, AVX-512 is disabled. Basically, the processor contains two types of cores, denoted as big and small cores. The big and small cores share the same instruction set and model specific registers. The available instruction sets, when hybrid computing is enabled, is limited compared to the instruction sets available to the big core and AVX-512 is not available in that case.\n\nFurthermore, the CPI (cycles per instruction) is 2 for _mm_mask_compressstoreu_epi32 [1] and _mm_maskz_expandloadu_epi32 [2], which is significantly high as compared to the CPI of 0.33 for _mm_and_si128 [3] that we used.\n\nReferences:\n[1] https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#text\u003d_mm_mask_compressstoreu_epi32\u0026ig_expand\u003d2886,2886,2886,4602,1338,1338,1338,6665,6665,5737,6414,305,1338,305,1338,305,1338,220,6665,2886,1338,305,305,1338\n[2] https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand\u003d2886,2886,2886,4602,1338,1338,1338,6665,6665,5737,6414,305,1338,305,1338,305,1338,220,6665,2886,1338,305,305,1338,2886\u0026text\u003d_mm_maskz_expandloadu_epi32%2520\n[3] https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#text\u003d_mm_and_si128\u0026ig_expand\u003d2886,2886,2886,4602,1338,1338,1338,6665,6665,5737,6414,305,1338,305,1338,305,1338,220,6665,2886,1338,305,305",
+      "parentUuid": "70a8a6b5_e84122db",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
