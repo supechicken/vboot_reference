@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4396c26a_e8ab1df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-12-14T16:20:28Z",
+      "side": 1,
+      "message": "LGTM from hwsec team perspective.",
+      "revId": "9d932ddd10446caf0a0201be2148b84cbc1799a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd6fadbe_3951ebed",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "I was discussing this with @bdhess@google.com but didn\u0027t get a clear answer yet",
       "parentUuid": "fd6fadbe_3951ebed",
+      "range": {
+        "startLine": 437,
+        "startChar": 4,
+        "endLine": 438,
+        "endChar": 36
+      },
+      "revId": "9d932ddd10446caf0a0201be2148b84cbc1799a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05852164_4b3d4008",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2023-12-14T16:20:28Z",
+      "side": 1,
+      "message": "This looks like the same issue with openssl\u0026opensc\u0027s limitation on PKCS#11 URI, opensc\u0027s implementation doesn\u0027t support specifying a slot the way we want to, so I guess at least for now care should be taken on the infra side to avoid label collision.",
+      "parentUuid": "6f84c8de_a1a351d6",
       "range": {
         "startLine": 437,
         "startChar": 4,
