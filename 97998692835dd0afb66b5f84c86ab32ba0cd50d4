@@ -527,6 +527,24 @@
       "message": "Let\u0027s make this a macro that takes `key_bytes` as an argument, that way you can make this `((s * 11) + 8)` instead of `(s * 12)` (or better `((s * 7) + 8)` if you can avoid the `b_modulus` array).",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd6c5c2_54ac5f3d",
+        "filename": "firmware/2lib/include/2rsa_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-14T21:52:57Z",
+      "side": 1,
+      "message": "Actually, I think the hwcrypto implementation should provide the size of the work buffer it neesds to run. I created and implemented `vb2ex_hwcrypto_modexp_workbuf_size` for this purpose. Let me know what you think.",
+      "parentUuid": "31c81088_1bb0ce40",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
