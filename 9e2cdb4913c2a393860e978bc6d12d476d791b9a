@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40709ebf_be14c059",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-14T00:05:56Z",
+      "side": 1,
+      "message": "Should we use upper case `HASH_CONST` to be consistent with other constants such as `Q`?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 10
+      },
+      "revId": "9e2cdb4913c2a393860e978bc6d12d476d791b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7600836_97ca1c58",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-14T00:05:56Z",
+      "side": 1,
+      "message": "Does a single `\\` not work? For example we have this below:\n\n```\nCFLAGS ?\u003d ${FIRMWARE_FLAGS} ${COMMON_FLAGS} -fvisibility\u003dhidden \\\n    -fomit-frame-pointer\n```",
+      "range": {
+        "startLine": 235,
+        "startChar": 40,
+        "endLine": 235,
+        "endChar": 42
+      },
+      "revId": "9e2cdb4913c2a393860e978bc6d12d476d791b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
