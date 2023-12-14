@@ -16,6 +16,29 @@
       "message": "Verified in led:\n\nhttps://ci.chromium.org/raw/build/logs.chromium.org/chromeos/led/jackneus_google.com/70597136c62d80772848d402277ea57e0f03b6d49bd65d673d258311fe5631f0/+/build.proto?server\u003dchromeos-swarming.appspot.com",
       "revId": "9d932ddd10446caf0a0201be2148b84cbc1799a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd6fadbe_3951ebed",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2023-12-14T05:38:23Z",
+      "side": 1,
+      "message": "Although the slot id is not neccessary here, but we use it to prevent label collision; does this mean it\u0027s impossible to use slot_id to specify key ring to use with pkeyutl command?",
+      "range": {
+        "startLine": 437,
+        "startChar": 4,
+        "endLine": 438,
+        "endChar": 36
+      },
+      "revId": "9d932ddd10446caf0a0201be2148b84cbc1799a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
