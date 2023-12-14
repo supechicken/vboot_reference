@@ -855,6 +855,19 @@ sign_uefi_binaries() {
       --verify-cert "${KEYCFG_UEFI_VERIFY_CERT}" \
       --kernel-subkey-vbpubk "${KEYCFG_KERNEL_SUBKEY_VBPUBK}" \
       --efi-glob "${efi_glob}"
+
+  # If Flexor is present on the images rootfs, extract it and sign it
+  # as well.
+  if [ -f "${rootfs_dir}/root/flexor_vmlinuz" ]; then
+    signed_flexor_path="$(dirname "${OUTPUT_IMAGE}")/flexor_vmlinuz.signed"
+    mv "${rootfs_dir}/root/flexor_vmlinuz" "${signed_flexor_path}"
+    "${SCRIPT_DIR}/sign_uefi.py" \
+      --target-file "${signed_flexor_path}" \
+      --private-key "${KEYCFG_UEFI_PRIVATE_KEY}" \
+      --sign-cert "${KEYCFG_UEFI_SIGN_CERT}" \
+      --verify-cert "${KEYCFG_UEFI_VERIFY_CERT}" \
+      --kernel-subkey-vbpubk "${KEYCFG_KERNEL_SUBKEY_VBPUBK}"
+  fi
   sudo umount "${rootfs_dir}"
 
   info "Signed UEFI binaries"
