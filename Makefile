@@ -71,6 +71,8 @@ TEST_INSTALL_DIR = ${BUILD}/install_for_test
 # Set when installing into the SDK instead of building for a board sysroot.
 SDK_BUILD ?=
 
+ENABLE_HW_RSA_TEST = 0
+
 # Verbose? Use V=1
 ifeq ($(filter-out 0,${V}),)
 Q := @
@@ -550,6 +552,13 @@ HOSTLIB_SRCS = \
 
 ifneq ($(filter-out 0,${GPT_SPI_NOR}),)
 HOSTLIB_SRCS += cgpt/cgpt_nor.c
+endif
+
+ifneq (,$(filter x86 x86_64,${HOST_ARCH}))
+HOSTLIB_SRCS += \
+	firmware/2lib/2modpow_sse2.c
+ENABLE_HW_RSA_TEST = 1
+CFLAGS += -DTEST_HWCRYPTO_RSA_ACCELERATION
 endif
 
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
@@ -1293,7 +1302,10 @@ runtestscripts: install_for_test genfuzztestcases
 	${RUNTEST} ${SRC_RUN}/tests/run_vbutil_kernel_arg_tests.sh
 	${RUNTEST} ${SRC_RUN}/tests/run_vbutil_tests.sh
 	${RUNTEST} ${SRC_RUN}/tests/vb2_rsa_tests.sh
-	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh
+	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh -enable_hwcrypto 0
+ifeq (${ENABLE_HW_RSA_TEST}, 1)
+	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh -enable_hwcrypto 1
+endif
 
 .PHONY: runmisctests
 runmisctests: install_for_test
