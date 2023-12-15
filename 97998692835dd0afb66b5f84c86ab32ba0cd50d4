@@ -514,6 +514,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25a729a6_8a850999",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-15T17:04:44Z",
+      "side": 1,
+      "message": "I suggest to go over that comment in a separate commit.",
+      "parentUuid": "43fefae8_2fc518ed",
+      "range": {
+        "startLine": 160,
+        "startChar": 28,
+        "endLine": 160,
+        "endChar": 33
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31c81088_1bb0ce40",
         "filename": "firmware/2lib/include/2rsa_private.h",
         "patchSetId": 11
