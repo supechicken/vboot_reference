@@ -149,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0a7f874_4bbb3a34",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-15T18:38:45Z",
+      "side": 1,
+      "message": "Just a reminder that this item is still open.",
+      "parentUuid": "77b4a4b7_22bad0a8",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ff418d8_44025a8d",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
@@ -267,6 +285,24 @@
       "side": 1,
       "message": "A correction: The aforementioned 3.6% degradation is in modpow execution (i.e., RSA signature verification) using _subborrow_u32().",
       "parentUuid": "7876e4b7_c4109949",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85995145_17121522",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-15T18:38:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "12b15493_8688f62b",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -419,6 +455,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6acd1c_43105945",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-15T18:38:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0fb540a4_a5975fd5",
+      "range": {
+        "startLine": 110,
+        "startChar": 28,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70a8a6b5_e84122db",
@@ -450,6 +510,24 @@
       "side": 1,
       "message": "To execute these instructions, SoC requires to support AVX512 family (required compilation flags or extensions: AVX512F and AVX512VL). We tried this to execute these intrinsic instructions that you suggested, but we observe illegal instruction exception while computing modpow. The reason behind this is that Intel SIMD AVX-512 may not be available on all SKUs. Again, when hybrid computing is enabled, AVX-512 is disabled. Basically, the processor contains two types of cores, denoted as big and small cores. The big and small cores share the same instruction set and model specific registers. The available instruction sets, when hybrid computing is enabled, is limited compared to the instruction sets available to the big core and AVX-512 is not available in that case.\n\nFurthermore, the CPI (cycles per instruction) is 2 for _mm_mask_compressstoreu_epi32 [1] and _mm_maskz_expandloadu_epi32 [2], which is significantly high as compared to the CPI of 0.33 for _mm_and_si128 [3] that we used.\n\nReferences:\n[1] https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#text\u003d_mm_mask_compressstoreu_epi32\u0026ig_expand\u003d2886,2886,2886,4602,1338,1338,1338,6665,6665,5737,6414,305,1338,305,1338,305,1338,220,6665,2886,1338,305,305,1338\n[2] https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand\u003d2886,2886,2886,4602,1338,1338,1338,6665,6665,5737,6414,305,1338,305,1338,305,1338,220,6665,2886,1338,305,305,1338,2886\u0026text\u003d_mm_maskz_expandloadu_epi32%2520\n[3] https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#text\u003d_mm_and_si128\u0026ig_expand\u003d2886,2886,2886,4602,1338,1338,1338,6665,6665,5737,6414,305,1338,305,1338,305,1338,220,6665,2886,1338,305,305",
       "parentUuid": "70a8a6b5_e84122db",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ee2055_41bd0d80",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-15T18:38:45Z",
+      "side": 1,
+      "message": "Okay, thanks for trying. It sounds like there\u0027s no practical way to fit within the 12KB workbuf anyway, so then let\u0027s just forget about all this and stick with your 20KB implementation after all (if it has to be made platform-specific anyway, I guess the exact size doesn\u0027t matter that much anymore, at least not for recent Intel chips where we usually have enough CAR space).",
+      "parentUuid": "ce66374e_0dc751be",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -536,6 +614,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e8acad_f81822d0",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-15T18:38:45Z",
+      "side": 1,
+      "message": "Okay, can probably forget about this now if we decide to not care that much about the size.",
+      "parentUuid": "25a729a6_8a850999",
+      "range": {
+        "startLine": 160,
+        "startChar": 28,
+        "endLine": 160,
+        "endChar": 33
+      },
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31c81088_1bb0ce40",
@@ -603,6 +705,24 @@
       "side": 1,
       "message": "I totally forgot about **Julius** original suggestion, thanks for the reminder. I considered such a solution though. I did not have any strong argument against but here is what I though :\n\n-   I had concern about the fact the hwcrypto implementation was going to be responsible of memory allocation. I believe that this function should stick to the algorithm only to keep it simple.\n-   The change of prototype could would make the code in `2rsa.c` looks a little bit less consistent.\n\nThe solution I went with isn\u0027t perfect either as it adds an extra function.\n\n**@Julius** and **@Yu-Ping**, let me know what is your final recommendation and I will go with it.",
       "parentUuid": "5e3ff9c4_0a47e1a2",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e23a874_a3cf9201",
+        "filename": "firmware/2lib/include/2rsa_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-15T18:38:45Z",
+      "side": 1,
+      "message": "I actually like Yu-Ping\u0027s suggestion a lot — just pass the entire remaining space, and then we don\u0027t have to deal with those API visibility issues or add extra callbacks. You should be able to just use `VB2_MIN(wb-\u003esize, wb-\u003esize - VB2_WORKBUF_ALIGN)` as the allocation size and then that should always fit exactly what we have left (minus an amount of alignment padding that shouldn\u0027t matter at these sizes). You can reuse that same allocation for the hwcrypto and the fallback implementation so it should look pretty clean in 2rsa.c.",
+      "parentUuid": "24dd92ad_7383cd97",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
