@@ -71,6 +71,8 @@ TEST_INSTALL_DIR = ${BUILD}/install_for_test
 # Set when installing into the SDK instead of building for a board sysroot.
 SDK_BUILD ?=
 
+ENABLE_HW_RSA_TEST = 0
+
 # Verbose? Use V=1
 ifeq ($(filter-out 0,${V}),)
 Q := @
@@ -552,6 +554,13 @@ ifneq ($(filter-out 0,${GPT_SPI_NOR}),)
 HOSTLIB_SRCS += cgpt/cgpt_nor.c
 endif
 
+ifneq (,$(filter x86 x86_64,${HOST_ARCH}))
+${BUILD}/tests/vb20_verify_fw: ${BUILD}/firmware/2lib/2modpow_sse2.o
+${BUILD}/tests/vb20_rsa_padding_tests_hwcrypto: ${BUILD}/firmware/2lib/2modpow_sse2.o
+${BUILD}/tests/vb20_rsa_padding_tests_hwcrypto: CFLAGS += -DTEST_HWCRYPTO_RSA_ACCELERATION -DVB2_X86_RSA_ACCELERATION
+ENABLE_HW_RSA_TEST = 1
+endif
+
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${HOSTLIB_OBJS}
 
@@ -788,6 +797,10 @@ TEST20_NAMES = \
 	tests/vb20_kernel_tests \
 	tests/vb20_rsa_padding_tests \
 	tests/vb20_verify_fw
+
+ifneq (,$(filter x86 x86_64,${HOST_ARCH}))
+TEST20_NAMES += tests/vb20_rsa_hwcrypto_padding_tests
+endif
 
 TEST21_NAMES = \
 	tests/vb21_host_common2_tests \
@@ -1292,8 +1305,14 @@ runtestscripts: install_for_test genfuzztestcases
 	${RUNTEST} ${SRC_RUN}/tests/run_preamble_tests.sh
 	${RUNTEST} ${SRC_RUN}/tests/run_vbutil_kernel_arg_tests.sh
 	${RUNTEST} ${SRC_RUN}/tests/run_vbutil_tests.sh
-	${RUNTEST} ${SRC_RUN}/tests/vb2_rsa_tests.sh
-	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh
+	${RUNTEST} ${SRC_RUN}/tests/vb2_rsa_tests.sh -enable_hwcrypto 0
+ifeq (${ENABLE_HW_RSA_TEST}, 1)
+	${RUNTEST} ${SRC_RUN}/tests/vb2_rsa_tests.sh -enable_hwcrypto 1
+endif
+	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh -enable_hwcrypto 0
+ifeq (${ENABLE_HW_RSA_TEST}, 1)
+	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh -enable_hwcrypto 1
+endif
 
 .PHONY: runmisctests
 runmisctests: install_for_test
