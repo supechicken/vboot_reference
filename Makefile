@@ -71,6 +71,8 @@ TEST_INSTALL_DIR = ${BUILD}/install_for_test
 # Set when installing into the SDK instead of building for a board sysroot.
 SDK_BUILD ?=
 
+ENABLE_HW_RSA_TEST = 0
+
 # Verbose? Use V=1
 ifeq ($(filter-out 0,${V}),)
 Q := @
@@ -789,6 +791,10 @@ TEST20_NAMES = \
 	tests/vb20_rsa_padding_tests \
 	tests/vb20_verify_fw
 
+ifneq (,$(filter x86 x86_64,${HOST_ARCH}))
+TEST20_NAMES += tests/vb20_rsa_hwcrypto_padding_tests
+endif
+
 TEST21_NAMES = \
 	tests/vb21_host_common2_tests \
 	tests/vb21_host_common_tests \
@@ -1148,6 +1154,19 @@ ${BUILD}/tests/vb2_sha256_x86_tests: \
 ${BUILD}/tests/vb2_sha256_x86_tests: \
 	LIBS += ${BUILD}/firmware/2lib/2sha256_x86.o ${BUILD}/firmware/2lib/2hwcrypto.o
 
+ifneq (,$(filter x86 x86_64,${HOST_ARCH}))
+define enable_sse2_hwcrypto
+${BUILD}/tests/$(1): CFLAGS += -DVB2_X86_RSA_ACCELERATION
+${BUILD}/tests/$(1): ${BUILD}/firmware/2lib/2modpow_sse2.o
+${BUILD}/tests/$(1): LIBS += ${BUILD}/firmware/2lib/2modpow_sse2.o
+endef
+
+$(foreach test, vb20_verify_fw vb20_rsa_hwcrypto_padding_tests, \
+	$(eval $(call enable_sse2_hwcrypto,${test})))
+
+ENABLE_HW_RSA_TEST = 1
+endif
+
 .PHONY: install_dut_test
 install_dut_test: ${DUT_TEST_BINS}
 ifneq ($(strip ${DUT_TEST_BINS}),)
@@ -1292,8 +1311,14 @@ runtestscripts: install_for_test genfuzztestcases
 	${RUNTEST} ${SRC_RUN}/tests/run_preamble_tests.sh
 	${RUNTEST} ${SRC_RUN}/tests/run_vbutil_kernel_arg_tests.sh
 	${RUNTEST} ${SRC_RUN}/tests/run_vbutil_tests.sh
-	${RUNTEST} ${SRC_RUN}/tests/vb2_rsa_tests.sh
-	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh
+	${RUNTEST} ${SRC_RUN}/tests/vb2_rsa_tests.sh -enable_hwcrypto 0
+ifeq (${ENABLE_HW_RSA_TEST}, 1)
+	${RUNTEST} ${SRC_RUN}/tests/vb2_rsa_tests.sh -enable_hwcrypto 1
+endif
+	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh -enable_hwcrypto 0
+ifeq (${ENABLE_HW_RSA_TEST}, 1)
+	${RUNTEST} ${SRC_RUN}/tests/vb2_firmware_tests.sh -enable_hwcrypto 1
+endif
 
 .PHONY: runmisctests
 runmisctests: install_for_test
