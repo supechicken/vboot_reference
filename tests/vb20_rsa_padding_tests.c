@@ -15,17 +15,19 @@
 #include "rsa_padding_test.h"
 
 vb2_error_t hwcrypto_modexp_return_value = VB2_SUCCESS;
+#if !defined(TEST_HWCRYPTO_RSA_ACCELERATION)
 vb2_error_t vb2ex_hwcrypto_modexp(const struct vb2_public_key *key,
-				  uint8_t *inout,
-				  uint32_t *workbuf32, int exp) {
+				  uint8_t *inout, void *workbuf,
+				  size_t workbuf_size, int exp) {
 	return hwcrypto_modexp_return_value;
 }
+#endif
 
 
 /**
  * Test valid and invalid signatures.
  */
-static void test_signatures(const struct vb2_public_key *key)
+static void test_signatures(struct vb2_public_key *key)
 {
 	uint8_t workbuf[VB2_VERIFY_DIGEST_WORKBUF_BYTES]
 		 __attribute__((aligned(VB2_WORKBUF_ALIGN)));
@@ -35,6 +37,10 @@ static void test_signatures(const struct vb2_public_key *key)
 	int i;
 
 	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
+
+#if defined(TEST_HWCRYPTO_RSA_ACCELERATION)
+	key->allow_hwcrypto = 1;
+#endif
 
 	/* The first test signature is valid. */
 	memcpy(sig, signatures[0], sizeof(sig));
@@ -79,6 +85,7 @@ static void test_verify_digest(struct vb2_public_key *key) {
 	memcpy(sig, signatures[0], sizeof(sig));
 	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
 	hwcrypto_modexp_return_value = VB2_SUCCESS;
+#if !defined(TEST_HWCRYPTO_RSA_ACCELERATION)
 	TEST_NEQ(vb2_rsa_verify_digest(key, sig, test_message_sha1_hash, &wb),
 		VB2_SUCCESS, "vb2_rsa_verify_digest() hwcrypto modexp fails");
 
@@ -88,6 +95,10 @@ static void test_verify_digest(struct vb2_public_key *key) {
 	TEST_SUCC(vb2_rsa_verify_digest(key, sig, test_message_sha1_hash, &wb),
 		"vb2_rsa_verify_digest() hwcrypto modexp fallback to sw");
 	key->allow_hwcrypto = 0;
+#else
+	TEST_SUCC(vb2_rsa_verify_digest(key, sig, test_message_sha1_hash, &wb),
+		"vb2_rsa_verify_digest() hwcrypto modexp fails");
+#endif
 
 	memcpy(sig, signatures[0], sizeof(sig));
 	vb2_workbuf_init(&wb, workbuf, sizeof(sig) * 3 - 1);
