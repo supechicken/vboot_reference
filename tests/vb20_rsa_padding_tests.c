@@ -15,11 +15,13 @@
 #include "rsa_padding_test.h"
 
 vb2_error_t hwcrypto_modexp_return_value = VB2_SUCCESS;
+#if !defined(TEST_HWCRYPTO_RSA_ACCELERATION)
 vb2_error_t vb2ex_hwcrypto_modexp(const struct vb2_public_key *key,
 				  uint8_t *inout,
 				  uint32_t *workbuf32, int exp) {
 	return hwcrypto_modexp_return_value;
 }
+#endif
 
 
 /**
