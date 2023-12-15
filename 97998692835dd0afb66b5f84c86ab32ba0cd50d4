@@ -545,6 +545,24 @@
       "parentUuid": "31c81088_1bb0ce40",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3ff9c4_0a47e1a2",
+        "filename": "firmware/2lib/include/2rsa_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-15T09:25:35Z",
+      "side": 1,
+      "message": "Julius suggested another approach in CL:5055249:\n\n\u003e In order to allow for the bigger work buffer use, I think we should change the signature of vb2ex_hwcrypto_modexp() to pass in `wblocal` directly, and then the implementation can make its own allocations as necessary.\n\nThe problem with this approach is that `vb2_workbuf_alloc` should be private to vboot.\n\nYour `vb2ex_hwcrypto_modexp_workbuf_size` solution looks fine. However you\u0027ll need to implement that for coreboot/src/soc/amd/common/psp_verstage/vboot_crypto.c, to not break amd boards.\n\nI think another simpler solution is to allocate as much memory as possible (even all the remaining in `wblocal`) for `vb2ex_hwcrypto_modexp`. The range of memory will be freed right after the `vb2ex_hwcrypto_modexp` call anyway. For that to work, we\u0027ll just need to pass `workbuf32_size` to `vb2ex_hwcrypto_modexp` (and maybe change `workbuf32` to `void *`), so that the platform\u0027s implementation can fail if the allocated size is too small.\n\n(I\u0027ll be OOO until Dec 25)",
+      "parentUuid": "efd6c5c2_54ac5f3d",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
