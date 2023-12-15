@@ -23,6 +23,12 @@ cd "$DIR"
 echo 'This is a test firmware body.  This is only a test.  Lalalalala' \
     > body.test
 
+if [[ $1 = "-enable_hwcrypto" ]]; then
+    enable_hwcrypt=$2
+else
+    echo "Use Option -enable_hwcrypto and provide 1 to enable HW RSA TEST"
+fi
+
 algo_to_rsa()
 {
 	case $1 in
@@ -96,7 +102,7 @@ run_test()
 		"(root=${root_algo}, fw=${fw_algo}, kernel=${kern_algo})"
 
 	# Verify the firmware using vboot2 checks
-	"${BUILD_RUN}/tests/vb20_verify_fw" gbb.test vblock.test body.test
+	"${BUILD_RUN}/tests/vb20_verify_fw" gbb.test vblock.test body.test $enable_hwcrypt
 
 	happy 'vb2_verify_fw succeeded'
 }
