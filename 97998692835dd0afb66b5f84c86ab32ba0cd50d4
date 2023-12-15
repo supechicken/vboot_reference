@@ -563,6 +563,24 @@
       "parentUuid": "efd6c5c2_54ac5f3d",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24dd92ad_7383cd97",
+        "filename": "firmware/2lib/include/2rsa_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-15T16:44:42Z",
+      "side": 1,
+      "message": "I totally forgot about **Julius** original suggestion, thanks for the reminder. I considered such a solution though. I did not have any strong argument against but here is what I though :\n\n-   I had concern about the fact the hwcrypto implementation was going to be responsible of memory allocation. I believe that this function should stick to the algorithm only to keep it simple.\n-   The change of prototype could would make the code in `2rsa.c` looks a little bit less consistent.\n\nThe solution I went with isn\u0027t perfect either as it adds an extra function.\n\n**@Julius** and **@Yu-Ping**, let me know what is your final recommendation and I will go with it.",
+      "parentUuid": "5e3ff9c4_0a47e1a2",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
