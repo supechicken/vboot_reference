@@ -16,6 +16,24 @@
       "message": "I think this can just be 20K, right? Since this is the entire workbuf (not just the size needed for a single modpow call, but the total estimate we get from running vb2_firmware_tests.sh and looking at the watermarks), I don\u0027t think we need to take the 8 bytes padding into account here. There was enough slack in it beforehand to hide that.",
       "revId": "061911ff6ac7303fdaf3316ca8d57eef785d7f11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d11c907_8562225e",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-15T23:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e8bfc93_f4b4b95d",
+      "revId": "061911ff6ac7303fdaf3316ca8d57eef785d7f11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

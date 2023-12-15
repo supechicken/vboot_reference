@@ -167,6 +167,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1f8dfcf_53c71ab2",
+        "filename": "Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-15T23:15:58Z",
+      "side": 1,
+      "message": "Absolutely and we have been working on it. Monir made good progress, I unfortunately did not get a chance to look into this as much I wanted. Nevertheless I have uploaded the patch. Please have a look and let us know if this approach is satisfying.",
+      "parentUuid": "e0a7f874_4bbb3a34",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ff418d8_44025a8d",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 11
@@ -723,6 +741,24 @@
       "side": 1,
       "message": "I actually like Yu-Ping\u0027s suggestion a lot — just pass the entire remaining space, and then we don\u0027t have to deal with those API visibility issues or add extra callbacks. You should be able to just use `VB2_MIN(wb-\u003esize, wb-\u003esize - VB2_WORKBUF_ALIGN)` as the allocation size and then that should always fit exactly what we have left (minus an amount of alignment padding that shouldn\u0027t matter at these sizes). You can reuse that same allocation for the hwcrypto and the fallback implementation so it should look pretty clean in 2rsa.c.",
       "parentUuid": "24dd92ad_7383cd97",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3d204b_eda91e68",
+        "filename": "firmware/2lib/include/2rsa_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-15T23:15:58Z",
+      "side": 1,
+      "message": "Implemented Yu-Ping suggestion. I did not get the point of your `VB2_MIN(wb-\u003esize, wb-\u003esize - VB2_WORKBUF_ALIGN)`, is it for overflow ? so I kept this comment open...",
+      "parentUuid": "1e23a874_a3cf9201",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
