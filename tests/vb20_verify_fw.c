@@ -11,6 +11,7 @@
 
 #include "2common.h"
 #include "2misc.h"
+#include "2secdata.h"
 #include "2sysincludes.h"
 
 const char *gbb_fname;
@@ -151,8 +152,9 @@ int main(int argc, char *argv[])
 	struct vb2_context *ctx;
 	struct vb2_shared_data *sd;
 	vb2_error_t rv;
+	uint8_t enable_hwcrypto;
 
-	if (argc < 4) {
+	if (argc < 5) {
 		print_help(argv[0]);
 		return 1;
 	}
@@ -161,6 +163,7 @@ int main(int argc, char *argv[])
 	gbb_fname = argv[1];
 	vblock_fname = argv[2];
 	body_fname = argv[3];
+	enable_hwcrypto = atoi(argv[4]);
 
 	/* Intialize workbuf with sentinel value to see how much we'll use. */
 	uint32_t *ptr = (uint32_t *)workbuf;
@@ -196,6 +199,12 @@ int main(int argc, char *argv[])
 		printf("Phase 2 wants reboot.\n");
 		save_if_needed(ctx);
 		return rv;
+	}
+
+	if (enable_hwcrypto) {
+		vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_FLAGS,
+				       VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED);
+		printf("x86 RSA acceleration enabled.\n");
 	}
 
 	/* Try that slot */

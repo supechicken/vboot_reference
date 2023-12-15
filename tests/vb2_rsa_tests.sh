@@ -14,6 +14,13 @@ set -e
 return_code=0
 TEST_FILE=${TESTCASE_DIR}/test_file
 
+if [[ $1 = "-enable_hwcrypto" ]]
+then
+    enable_hwcrypt=$2
+else
+    echo "Use Option -enable_hwcrypto and provide 1 to enable HW RSA TEST"
+fi
+
 function test_signatures {
   algorithmcounter=0
   for keylen in "${key_lengths[@]}"
@@ -34,6 +41,11 @@ function test_signatures {
   echo -e "Peforming ${COL_YELLOW}PKCS #1 v1.5 Padding Tests${COL_STOP}..."
   "${TEST_DIR}/vb20_rsa_padding_tests" \
     "${TESTKEY_DIR}/rsa_padding_test_pubkey.keyb"
+  if [[ $enable_hwcrypt -eq 1 ]]
+  then
+    "${TEST_DIR}/vb20_rsa_hwcrypto_padding_tests" \
+      "${TESTKEY_DIR}/rsa_padding_test_pubkey.keyb"
+  fi
 }
 
 check_test_keys
