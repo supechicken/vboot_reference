@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3f09ac_1ea16b86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-16T00:52:31Z",
+      "side": 1,
+      "message": "Thanks, the approach looks good in general. I think the vb20_verify_fw part should pretty much work with this(?), now you\u0027ll just need to also run the padding test both with and without hwcrypto enabled.",
+      "revId": "0d99597a1da0ed5e4c92242fd9a57dd2a6c92a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445ae574_ba7b15a2",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-16T00:52:31Z",
+      "side": 1,
+      "message": "I think you need to do this the same way as for the SHA extensions (line 1154), by adding that file dependency directly to the corresponding test file. If you add it directly to hostlib it will be built into the libvboot_host.a that we actually use with other host programs, and we don\u0027t want that.",
+      "revId": "0d99597a1da0ed5e4c92242fd9a57dd2a6c92a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
