@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9153fcf9_693c9765",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-16T00:13:07Z",
+      "side": 1,
+      "message": "I think according to the rules this is always supposed to be the same \"The ChromiumOS Authors\" banner at the top, at least for files contributed directly to ChromiumOS. \"The ChromiumOS Authors\" is supposed to encompass all contributors to the project. If you want, I think(?) you should be allowed to add Intel to the global AUTHORS file in https://chromium.googlesource.com/chromiumos/chromite/+/refs/heads/main/AUTHORS (that\u0027s the file that gets copied to `~/trunk/AUTHORS` in each checkout and is supposed to count for all repos using this style of license).",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a57ef76_62013f2d",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-16T00:13:07Z",
+      "side": 1,
+      "message": "Feel free to add a little \"original implementation by ...\" or something like that here if you want, I think that\u0027s not as strictly regulated as the copyright line at the top.",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4182b5d_f5782951",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-16T00:13:07Z",
+      "side": 1,
+      "message": "Same effect but less reliant on manual math: `if ((void *)\u0026b_modulus[key-\u003earrsize] - workbuf \u003e workbuf_size)`",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
