@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a1f5db1_91801f99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-16T02:56:24Z",
+      "side": 1,
+      "message": "Missing `Signed-off-by`. Could you upload patches via `repo upload` instead of `git` command? See https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#upload-changes.",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9153fcf9_693c9765",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 20
@@ -37,6 +54,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0cd2848_094f4714",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-16T02:56:24Z",
+      "side": 1,
+      "message": "nit: `sub_mod`",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8aad7a_c8cca053",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-16T02:56:24Z",
+      "side": 1,
+      "message": "nit: `mont_mul`",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 19
+      },
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c96981b_21f7b682",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-16T02:56:24Z",
+      "side": 1,
+      "message": "As this is declared in 2api.h, we don\u0027t need to repeat the comments here.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 3
+      },
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4182b5d_f5782951",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 20
@@ -48,6 +134,40 @@
       "writtenOn": "2023-12-16T00:13:07Z",
       "side": 1,
       "message": "Same effect but less reliant on manual math: `if ((void *)\u0026b_modulus[key-\u003earrsize] - workbuf \u003e workbuf_size)`",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd28e486_8aa52427",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-16T02:56:24Z",
+      "side": 1,
+      "message": "Change this to `void *workbuf`?",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96b25be_4211f434",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-16T02:56:24Z",
+      "side": 1,
+      "message": "Let\u0027s print the value of `workbuf_size` for easier debugging in case this happens.",
       "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
