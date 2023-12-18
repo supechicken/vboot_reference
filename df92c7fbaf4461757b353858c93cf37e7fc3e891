@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bac0c26_72e3bcd4",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "I did because I found a few occurrences where this is being done:\n\n```\n./firmware/2lib/2sha256.c:15: * Copyright (C) 2005, 2007 Olivier Gay \u003colivier.gay@a3.epfl.ch\u003e\n./firmware/2lib/2modpow_sse2.c:1:/* Copyright (C) 2023 Intel Corporation\n./firmware/2lib/sha256_armv8a_ce_a64.S:5: * Copyright (C) 2014 Linaro Ltd \u003card.biesheuvel@linaro.org\u003e\n./firmware/2lib/2sha512.c:10: * Copyright (C) 2005, 2007 Olivier Gay \u003colivier.gay@a3.epfl.ch\u003e\n```\n\nBut I can certainly rollback to \"The ChromiumOS Authors\".\n\nLet\u0027s add Intel to the AUTHORS once we are done with this patch.",
+      "parentUuid": "9153fcf9_693c9765",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a57ef76_62013f2d",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 20
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "557b5e63_aac38a9d",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "I added \"Microsoft Research\" to give a bit of credit hoping that\u0027s what you were looking for.",
+      "parentUuid": "0a57ef76_62013f2d",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0cd2848_094f4714",
         "filename": "firmware/2lib/2modpow_sse2.c",
         "patchSetId": 20
@@ -65,6 +101,30 @@
       "writtenOn": "2023-12-16T02:56:24Z",
       "side": 1,
       "message": "nit: `sub_mod`",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc56b455_1a7e3586",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0cd2848_094f4714",
       "range": {
         "startLine": 73,
         "startChar": 12,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "048c5414_7c6944c0",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef8aad7a_c8cca053",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 19
+      },
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c96981b_21f7b682",
@@ -111,6 +195,30 @@
       "writtenOn": "2023-12-16T02:56:24Z",
       "side": 1,
       "message": "As this is declared in 2api.h, we don\u0027t need to repeat the comments here.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 3
+      },
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9023e82_c859e536",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c96981b_21f7b682",
       "range": {
         "startLine": 166,
         "startChar": 0,
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7d6175_0844b36c",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "Absolutely, this is much better.",
+      "parentUuid": "d4182b5d_f5782951",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd28e486_8aa52427",
@@ -155,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c590a1_46ccfa5e",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd28e486_8aa52427",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a96b25be_4211f434",
@@ -168,6 +312,24 @@
       "writtenOn": "2023-12-16T02:56:24Z",
       "side": 1,
       "message": "Let\u0027s print the value of `workbuf_size` for easier debugging in case this happens.",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436fc4f9_2debffbe",
+        "filename": "firmware/2lib/2rsa.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a96b25be_4211f434",
       "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
