@@ -16,6 +16,24 @@
       "message": "I think this should be implemented as a \"hwcrypto\" implementation, just like we did for the SHA extensions. That way we can feel safer about shipping this since we\u0027ll always have a kill switch to disable it and fall back to the old implementation later if there turns out to be an edge case problem, and it would also fall back gracefully if we ever get that workbuf size wrong somewhere.\n\nIn order to allow for the bigger work buffer use, I think we should change the signature of vb2ex_hwcrypto_modexp() to pass in `wblocal` directly, and then the implementation can make its own allocations as necessary.",
       "revId": "dbc30e29c131bf04d6ecc7ffba764ec2bdf2998b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82e003b_af55550e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T23:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2d3583_d57d3fbc",
+      "revId": "dbc30e29c131bf04d6ecc7ffba764ec2bdf2998b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
