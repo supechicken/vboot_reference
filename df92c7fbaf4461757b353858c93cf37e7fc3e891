@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6b3dac_409b7cae",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-18T22:15:24Z",
+      "side": 1,
+      "message": "I believe those are files which were originally copied verbatim into vboot from somewhere else, which is different. Or maybe they were just mistakes.",
+      "parentUuid": "6bac0c26_72e3bcd4",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a57ef76_62013f2d",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "I added \"Microsoft Research\" to give a bit of credit hoping that\u0027s what you were looking for.",
       "parentUuid": "0a57ef76_62013f2d",
+      "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3a783f_6457c906",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-18T22:15:24Z",
+      "side": 1,
+      "message": "I meant adding your names after this, actually. I see you left them above now... I guess that\u0027s fine as long as the standard copyright line comes before it.",
+      "parentUuid": "557b5e63_aac38a9d",
       "revId": "df92c7fbaf4461757b353858c93cf37e7fc3e891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

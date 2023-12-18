@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71717ea1_a76c2c90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-18T22:15:24Z",
+      "side": 1,
+      "message": "Sorry, you added one new typo, otherwise this looks good to go.",
+      "revId": "c9b65491d9ddbfb635b9c5012b13949b1b53f28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f488974_b6f94d8f",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-18T22:15:24Z",
+      "side": 1,
+      "message": "Looks like you accidentally ate a newline here now.",
+      "revId": "c9b65491d9ddbfb635b9c5012b13949b1b53f28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
