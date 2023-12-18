@@ -797,6 +797,24 @@
       "parentUuid": "ac3d204b_eda91e68",
       "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f270792_80f165f3",
+        "filename": "firmware/2lib/include/2rsa_private.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T23:53:36Z",
+      "side": 1,
+      "message": "It turns out it was failing the following test:\n```\ntests/vb2_common2_tests.c:202: vb2_verify_data() workbuf too small ... FAILED\n```\nSo I added your suggestion.",
+      "parentUuid": "d785d9a3_f3104182",
+      "revId": "97998692835dd0afb66b5f84c86ab32ba0cd50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
