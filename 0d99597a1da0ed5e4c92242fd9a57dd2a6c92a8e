@@ -33,6 +33,24 @@
       "message": "I think you need to do this the same way as for the SHA extensions (line 1154), by adding that file dependency directly to the corresponding test file. If you add it directly to hostlib it will be built into the libvboot_host.a that we actually use with other host programs, and we don\u0027t want that.",
       "revId": "0d99597a1da0ed5e4c92242fd9a57dd2a6c92a8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e46844_3c079c3c",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-18T17:50:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "445ae574_ba7b15a2",
+      "revId": "0d99597a1da0ed5e4c92242fd9a57dd2a6c92a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
