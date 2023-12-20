@@ -18,6 +18,74 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c4c7982_31ee8691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-20T23:23:45Z",
+      "side": 1,
+      "message": "Some early comments/questions, even though this is still listed as WIP",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bead3d90_1c607167",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-20T23:23:45Z",
+      "side": 1,
+      "message": "nit: generate_android_cert_config.py",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3c1fb7_4d6a5718",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-20T23:23:45Z",
+      "side": 1,
+      "message": "Why is this `false` here but \"${FLAGS_FALSE}\" is used for use_apksigner?",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca62f4d_3161eae0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-20T23:23:45Z",
+      "side": 1,
+      "message": "Should we update Usage text now?",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "621961fa_963d65a9",
@@ -37,6 +105,64 @@
         "endLine": 159,
         "endChar": 14
       },
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4600ad_7bfd86a4",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-20T23:23:45Z",
+      "side": 1,
+      "message": "Do we have to resolve this before we can use cloud KMS?",
+      "parentUuid": "621961fa_963d65a9",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e68d5e_178ddd1a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-20T23:23:45Z",
+      "side": 1,
+      "message": "Do flags count as arguments here?\nif so, how does this work with use_apksigner, which I assume is an optional flag?",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97685652_1b7396da",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-20T23:23:45Z",
+      "side": 1,
+      "message": "nit: remove \"exactly\" here when discussing a range. Maybe \u0027command takes between 2 and 4 arguments\" ?",
       "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
