@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c5d735_2e8121af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-20T22:52:39Z",
+      "side": 1,
+      "message": "Sorry, I hadn\u0027t noticed your were updating this for a while. Gerrit can be weird in which messages it hides by default sometimes.",
+      "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cd2c70_40981216",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-20T22:52:39Z",
+      "side": 1,
+      "message": "I think it would be better to do an \"if x86 -\u003e `ENABLE_HW_RSA_TEST :\u003d 1`\" once and then guard everything else with a check for `ENABLE_HW_RSA_TEST`.",
+      "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6b69f4_3d554744",
+        "filename": "tests/vb20_rsa_hwcrypto_padding_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-20T22:52:39Z",
+      "side": 1,
+      "message": "It\u0027s kinda weird that you are solving what\u0027s basically the same problem (run the same test once with and once without hwcrypto) in two so different ways (the symlink here, and the command line parameter that sets allow_hwcrypto for the other one). I think you should pick one method and use it for both. (The symlink method maybe seems a bit more flexible.)",
+      "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d337ebf9_60c331ff",
+        "filename": "tests/vb20_rsa_padding_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-20T22:52:39Z",
+      "side": 1,
+      "message": "nit: I would maybe consider putting an #else case here that overwrites the normal `modpow()` function with something that just calls `TEST_TRUE(0, ...)` or something like that. That way we could guarantee that the hwcrypto function actually ran and worked correctly, because if it just returns an error then 2rsa.c would automatically fall back to the software implementation and the test might still pass. You would have to mark `modpow()` in 2rsa.c with `test_mockable` for that to work (I _believe_ that should work even if the function is static, but am not entirely sure).",
+      "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
