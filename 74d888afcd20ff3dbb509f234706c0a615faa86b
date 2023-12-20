@@ -34,6 +34,23 @@
       "parentUuid": "c8d3498d_2358a3b2",
       "revId": "74d888afcd20ff3dbb509f234706c0a615faa86b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d87013_a7db07b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-20T22:26:15Z",
+      "side": 1,
+      "message": "```\nvboot_reference-tests-0.0.1-r2459:     CC            tests/vb2_sha256_x86_tests.o\nvboot_reference-tests-0.0.1-r2459: tests/vb20_rsa_padding_tests.c:18:13: error: conflicting types for\nvboot_reference-tests-0.0.1-r2459:       \u0027vb2ex_hwcrypto_modexp\u0027\nvboot_reference-tests-0.0.1-r2459:    18 | vb2_error_t vb2ex_hwcrypto_modexp(const struct vb2_public_key *key,\nvboot_reference-tests-0.0.1-r2459:       |             ^\nvboot_reference-tests-0.0.1-r2459: firmware/2lib/include/2api.h:1020:13: note: previous declaration is here\nvboot_reference-tests-0.0.1-r2459:  1020 | vb2_error_t vb2ex_hwcrypto_modexp(const struct vb2_public_key *key,\nvboot_reference-tests-0.0.1-r2459:       |             ^\nvboot_reference-tests-0.0.1-r2459: 1 error generated.\nvboot_reference-tests-0.0.1-r2459: make: *** [Makefile:1185: /build/amd64-generic/tmp/portage/chromeos-base/vboot_reference-tests-0.0.1-r2459/work/vboot_reference-tests-0.0.1/build-main/tests/vb20_rsa_padding_tests.o] Error 1\nvboot_reference-tests-0.0.1-r2459: make: *** Waiting for unfinished jobs....\nvboot_reference-tests-0.0.1-r2459:  * ERROR: chromeos-base/vboot_reference-tests-0.0.1-r2459::chromiumos failed (compile phase):\nvboot_reference-tests-0.0.1-r2459:  *   emake failed\nvboot_reference-tests-0.0.1-r2459:  * \n```\n\nYou can add the new unit tests in the next patch but you still need to update the function signatures with this one, or the CQ won\u0027t take it.",
+      "revId": "74d888afcd20ff3dbb509f234706c0a615faa86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
