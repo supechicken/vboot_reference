@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d177dfd6_66d35e22",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T23:53:51Z",
+      "side": 1,
+      "message": "removed this block. moved it to temp folder for better cleanup.",
+      "parentUuid": "8cfe9f86_18c5fbd1",
+      "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe584ba2_5c7e5927",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67363c55_13a3590b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T23:53:51Z",
+      "side": 1,
+      "message": "Ack, moved it to temp_dir so we don\u0027t need to worry about cleanup.",
+      "parentUuid": "fe584ba2_5c7e5927",
+      "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b8d5e08_8303a294",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-12-21T22:16:53Z",
       "side": 1,
       "message": "nit/question: Is there a reason we use |--use_gcloud| for sign_android_image.sh rather than |--cloud-signing| like in the invocation of this script?",
+      "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e78adfc_39be17ad",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T23:53:51Z",
+      "side": 1,
+      "message": "No reason renamed it, i thought we can keep them different but no strong preference.",
+      "parentUuid": "2b8d5e08_8303a294",
       "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
