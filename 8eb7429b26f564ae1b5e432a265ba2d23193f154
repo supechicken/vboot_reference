@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f06b93_d3178c34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-21T22:16:53Z",
+      "side": 1,
+      "message": "just a few more early comments - I haven\u0027t reviewed the python scripts/tests yet, fwiw",
+      "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cfe9f86_18c5fbd1",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-21T22:16:53Z",
+      "side": 1,
+      "message": "nit/question: is this comment needed, especially since we have a second \u0027cleanup\u0027 comment below?",
+      "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe584ba2_5c7e5927",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-21T22:16:53Z",
+      "side": 1,
+      "message": "Is it important that we clean these up even if the script exits abnormally, e.g. via a \"die\" or other early-exit (`return 1` for example) above? As-is, it seems like this step isn\u0027t guaranteed to run.\n\nAlso, would it make more sense to run this cleanup step inside the scope of lines 160-164, or does it need to happen this late in the flow?",
+      "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8d5e08_8303a294",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2023-12-21T22:16:53Z",
+      "side": 1,
+      "message": "nit/question: Is there a reason we use |--use_gcloud| for sign_android_image.sh rather than |--cloud-signing| like in the invocation of this script?",
+      "revId": "8eb7429b26f564ae1b5e432a265ba2d23193f154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
