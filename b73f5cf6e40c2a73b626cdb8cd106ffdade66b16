@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f03b1d_a0e84016",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T21:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bead3d90_1c607167",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b3c1fb7_4d6a5718",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "803a8c2d_aa20b440",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T21:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b3c1fb7_4d6a5718",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca62f4d_3161eae0",
@@ -82,6 +118,24 @@
       "writtenOn": "2023-12-20T23:23:45Z",
       "side": 1,
       "message": "Should we update Usage text now?",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9307b100_4ccd0082",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T21:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca62f4d_3161eae0",
       "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -135,6 +189,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa8ca1ff_ad9596e7",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T21:52:41Z",
+      "side": 1,
+      "message": "Yes we have to resolve this. I will remove it in the next iteration. We cannot test without this for now as in gcloud we are unable to import networkstack key.",
+      "parentUuid": "dd4600ad_7bfd86a4",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82e68d5e_178ddd1a",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 1
@@ -146,6 +224,24 @@
       "writtenOn": "2023-12-20T23:23:45Z",
       "side": 1,
       "message": "Do flags count as arguments here?\nif so, how does this work with use_apksigner, which I assume is an optional flag?",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be78d490_97185356",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T21:52:41Z",
+      "side": 1,
+      "message": "IMO, The following [line](https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/main/scripts/image_signing/sign_android_image.sh#30) takes care of removing those flags.\nIn the next edition we can actually go back to `-ne 2` as we have two optional arguments.",
+      "parentUuid": "82e68d5e_178ddd1a",
       "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +259,24 @@
       "writtenOn": "2023-12-20T23:23:45Z",
       "side": 1,
       "message": "nit: remove \"exactly\" here when discussing a range. Maybe \u0027command takes between 2 and 4 arguments\" ?",
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458746f2_5550cefe",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2023-12-21T21:52:41Z",
+      "side": 1,
+      "message": "Thanks removed the exactly word as we now can have two optional commands as well.",
+      "parentUuid": "97685652_1b7396da",
       "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
