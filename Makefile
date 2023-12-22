@@ -806,7 +806,16 @@ ifeq (${ARCH}, x86_64)
 DUT_TEST_NAMES += tests/vb2_sha256_x86_tests
 endif
 
+HWCRYPTO_RSA_TESTS = \
+	tests/vb20_hwcrypto_rsa_padding_tests \
+	tests/vb20_hwcrypto_verify_fw
+
 TEST_NAMES += ${DUT_TEST_NAMES}
+
+ifneq (,$(filter x86 x86_64,${HOST_ARCH}))
+export TEST_HWCRYPTO_RSA = 1
+TEST_NAMES += ${HWCRYPTO_RSA_TESTS}
+endif
 
 # And a few more...
 ifeq ($(filter-out 0,${TPM2_MODE}),)
@@ -1153,6 +1162,17 @@ ${BUILD}/tests/vb2_sha256_x86_tests: \
 	${BUILD}/firmware/2lib/2sha256_x86.o ${BUILD}/firmware/2lib/2hwcrypto.o
 ${BUILD}/tests/vb2_sha256_x86_tests: \
 	LIBS += ${BUILD}/firmware/2lib/2sha256_x86.o ${BUILD}/firmware/2lib/2hwcrypto.o
+
+ifeq (${TEST_HWCRYPTO_RSA}, 1)
+define enable_hwcrypto_sse2_test
+${BUILD}/$(1): CFLAGS += -DVB2_X86_RSA_ACCELERATION
+${BUILD}/$(1): ${BUILD}/firmware/2lib/2modpow_sse2.o
+${BUILD}/$(1): LIBS += ${BUILD}/firmware/2lib/2modpow_sse2.o
+endef
+
+$(foreach test, ${HWCRYPTO_RSA_TESTS}, \
+	$(eval $(call enable_hwcrypto_sse2_test,${test})))
+endif
 
 .PHONY: install_dut_test
 install_dut_test: ${DUT_TEST_BINS}

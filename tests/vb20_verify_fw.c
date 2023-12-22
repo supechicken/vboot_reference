@@ -11,6 +11,7 @@
 
 #include "2common.h"
 #include "2misc.h"
+#include "2secdata.h"
 #include "2sysincludes.h"
 
 const char *gbb_fname;
@@ -197,6 +198,12 @@ int main(int argc, char *argv[])
 		save_if_needed(ctx);
 		return rv;
 	}
+
+#if defined(VB2_X86_RSA_ACCELERATION)
+	vb2_secdata_kernel_set(ctx, VB2_SECDATA_KERNEL_FLAGS,
+			       VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED);
+	printf("x86 RSA acceleration enabled.\n");
+#endif
 
 	/* Try that slot */
 	printf("Phase 3...\n");
