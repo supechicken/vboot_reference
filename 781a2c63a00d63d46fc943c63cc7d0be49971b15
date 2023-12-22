@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad727dbc_eb7c03df",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-22T20:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8cd2c70_40981216",
+      "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e6b69f4_3d554744",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caab6579_6e0634a9",
+        "filename": "tests/vb20_rsa_hwcrypto_padding_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-22T20:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e6b69f4_3d554744",
+      "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d337ebf9_60c331ff",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-12-20T22:52:39Z",
       "side": 1,
       "message": "nit: I would maybe consider putting an #else case here that overwrites the normal `modpow()` function with something that just calls `TEST_TRUE(0, ...)` or something like that. That way we could guarantee that the hwcrypto function actually ran and worked correctly, because if it just returns an error then 2rsa.c would automatically fall back to the software implementation and the test might still pass. You would have to mark `modpow()` in 2rsa.c with `test_mockable` for that to work (I _believe_ that should work even if the function is static, but am not entirely sure).",
+      "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77dcef84_69310b5a",
+        "filename": "tests/vb20_rsa_padding_tests.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-22T20:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d337ebf9_60c331ff",
       "revId": "781a2c63a00d63d46fc943c63cc7d0be49971b15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
