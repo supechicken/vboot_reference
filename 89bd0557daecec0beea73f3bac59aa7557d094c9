@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a0b906_9822ed29",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "Not related to this patch, but this seems to be a mistake?",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2022eeb_fb7f3d74",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "I actually prefer the original name `ENABLE_HW_RSA_TEST`.",
+      "range": {
+        "startLine": 816,
+        "startChar": 7,
+        "endLine": 816,
+        "endChar": 24
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b279bf75_2f67e757",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "nit: Can be `:\u003d`",
+      "range": {
+        "startLine": 816,
+        "startChar": 25,
+        "endLine": 816,
+        "endChar": 26
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5b3c37_0aa9d508",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "I think Julius meant to move this line inside the `ifeq (${TEST_HWCRYPTO_RSA}, 1)` conditional. Also, we should append these to `TEST20_NAMES` instead.",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d200ff_3955f0f6",
+        "filename": "firmware/2lib/include/2rsa.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "I think we can drop \"software\" here, as everything is software unless explicitly marked as \"hwcrypto\".",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a9bd39_cf467d94",
+        "filename": "tests/vb20_rsa_padding_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "Move this inside the #else block. The test code shouldn\u0027t access this variable if `defined(VB2_X86_RSA_ACCELERATION)`.",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe815de_6fd94340",
+        "filename": "tests/vb20_rsa_padding_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "Move this into the #else block.",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5cd744_a90b9fc6",
+        "filename": "tests/vb20_verify_fw.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s more straightforward to mock out `vb2api_hwcrypto_allowed()` instead?",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19adfd5_544e87eb",
+        "filename": "tests/vb2_firmware_tests.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "nit: `if [...]; then`",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2812a9_fdf5508e",
+        "filename": "tests/vb2_firmware_tests.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "vb20",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "997928c8_d20f42aa",
+        "filename": "tests/vb2_rsa_tests.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2023-12-26T08:12:19Z",
+      "side": 1,
+      "message": "nit: `if [...]; then`",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
