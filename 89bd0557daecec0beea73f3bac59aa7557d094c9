@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "566d2651_ef968fdd",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "I totally agree, this is clearly a mistake. I looked at the history and the patch author +2 himself. I also did a quick compare with and without and there are no differences (as expected).\n\nI created a CL to fix: \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5152203",
+      "parentUuid": "c4a0b906_9822ed29",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2022eeb_fb7f3d74",
@@ -64,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "458193ab_da93df92",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b279bf75_2f67e757",
+      "range": {
+        "startLine": 816,
+        "startChar": 25,
+        "endLine": 816,
+        "endChar": 26
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aafc9db_5ecf4b8f",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2022eeb_fb7f3d74",
+      "range": {
+        "startLine": 816,
+        "startChar": 7,
+        "endLine": 816,
+        "endChar": 24
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca5b3c37_0aa9d508",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-12-26T08:12:19Z",
       "side": 1,
       "message": "I think Julius meant to move this line inside the `ifeq (${TEST_HWCRYPTO_RSA}, 1)` conditional. Also, we should append these to `TEST20_NAMES` instead.",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c6858a_cfce175a",
+        "filename": "Makefile",
+        "patchSetId": 17
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5b3c37_0aa9d508",
       "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead8d66f_e849015c",
+        "filename": "firmware/2lib/include/2rsa.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71d200ff_3955f0f6",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a9bd39_cf467d94",
@@ -117,6 +225,24 @@
       "writtenOn": "2023-12-26T08:12:19Z",
       "side": 1,
       "message": "Move this inside the #else block. The test code shouldn\u0027t access this variable if `defined(VB2_X86_RSA_ACCELERATION)`.",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a37db03_b423854f",
+        "filename": "tests/vb20_rsa_padding_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3a9bd39_cf467d94",
       "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df534c0b_5f821237",
+        "filename": "tests/vb20_rsa_padding_tests.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fe815de_6fd94340",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d5cd744_a90b9fc6",
@@ -155,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "936b21ba_8693707a",
+        "filename": "tests/vb20_verify_fw.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d5cd744_a90b9fc6",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e19adfd5_544e87eb",
@@ -168,6 +330,24 @@
       "writtenOn": "2023-12-26T08:12:19Z",
       "side": 1,
       "message": "nit: `if [...]; then`",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ec0ab1_0e8cb9df",
+        "filename": "tests/vb2_firmware_tests.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "We picked this indentation style because it seems to be the most common in the scripts (see below) and also because this is the one used in `vb2_rsa_tests.sh` a few lines above. \n\n    ▶ grep -e then  *.sh | grep \u0027;\u0027 | wc -l\n    15\n    ▶ grep -e then  *.sh | grep -v \u0027;\u0027 | wc -l\n    21",
+      "parentUuid": "e19adfd5_544e87eb",
       "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -195,6 +375,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68e847d_adcd9f85",
+        "filename": "tests/vb2_firmware_tests.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd2812a9_fdf5508e",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "997928c8_d20f42aa",
@@ -208,6 +412,24 @@
       "writtenOn": "2023-12-26T08:12:19Z",
       "side": 1,
       "message": "nit: `if [...]; then`",
+      "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "846b60c6_7cde914a",
+        "filename": "tests/vb2_rsa_tests.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2023-12-26T18:25:59Z",
+      "side": 1,
+      "message": "I kept is as-is for consistency.",
+      "parentUuid": "997928c8_d20f42aa",
       "revId": "89bd0557daecec0beea73f3bac59aa7557d094c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
