@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee338dc3_23e03c3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-28T18:25:05Z",
+      "side": 1,
+      "message": "Builds on all the non-x86 platforms are failing with\n```\n    CC            tests/vb20_hwcrypto_verify_fw.o\nfirmware/2lib/2modpow_sse2.c:52:20: warning: use of unknown builtin\n      \u0027__builtin_ia32_psrlqi128\u0027 [-Wimplicit-function-declaration]\n   52 |         return (vb2_m128i)__builtin_ia32_psrlqi128(a, b);\n      |                           ^\n```\nfor the vboot_reference-tests ebuild.\n\nI forget how exactly this works, but I think there\u0027s some automated magic in portage that builds everything for Arm and runs all the host tests through QEMU in that case. It probably gets confused because `${HOST_ARCH}` is directly derived off `uname` and not properly mocked for that. I think you should just check for `${ARCH}` instead, `${ARCH}` and `${HOST_ARCH}` can\u0027t really effectively differ anyway (because we\u0027re only building the library once and it must be able to both run on the target and get linked into the tests).",
+      "revId": "f45a47f55e9f2965d6105959997940d46b209fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f81824_27b379c2",
+        "filename": "Makefile",
+        "patchSetId": 18
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2023-12-28T18:25:05Z",
+      "side": 1,
+      "message": "nit: I think we usually don\u0027t put spaces in `ifeq`s, I don\u0027t know if that\u0027s actually necessary or superstition left over from 1980s versions of `make`, but let\u0027s stick to that style for consistency.",
+      "range": {
+        "startLine": 819,
+        "startChar": 35,
+        "endLine": 819,
+        "endChar": 36
+      },
+      "revId": "f45a47f55e9f2965d6105959997940d46b209fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
