@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7cc820_c00e97bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2023-12-29T21:38:04Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8760356129543640993) is being automatically retried for the following reasons:\n- Some tests are now retryable:jacuzzi-cq.hw.crostini-slow-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "e9fe5b8bf4c27b796aed39852bef2856aeeefc10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
