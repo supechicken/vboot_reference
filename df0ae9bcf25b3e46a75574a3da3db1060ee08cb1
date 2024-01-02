@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e505bfe_53dd889c",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-01-02T19:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a8f136_4814eccd",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 47
+      },
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd313548_374360a0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-02T16:17:27Z",
       "side": 1,
       "message": "```suggestion\n        \"if nothing is provided.\",\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 23
+      },
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90cb3250_c528f498",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-01-02T19:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd313548_374360a0",
       "range": {
         "startLine": 113,
         "startChar": 9,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cffe62fe_71f537d2",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-01-02T19:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35bc93c_855fed6f",
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7140d51f_93d84eb5",
@@ -77,6 +143,24 @@
       "writtenOn": "2024-01-02T16:17:27Z",
       "side": 1,
       "message": "typo: \"untitest\" -\u003e \"unittest\"",
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746fd995_8f3b1c97",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config_untitest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-01-02T19:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7140d51f_93d84eb5",
       "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
