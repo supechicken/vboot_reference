@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a8f136_4814eccd",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-01-02T16:17:27Z",
+      "side": 1,
+      "message": "nit: \"converts....convert\" is a bit confusing",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 47
+      },
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd313548_374360a0",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-01-02T16:17:27Z",
+      "side": 1,
+      "message": "```suggestion\n        \"if nothing is provided.\",\n```",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 23
+      },
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35bc93c_855fed6f",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-01-02T16:17:27Z",
+      "side": 1,
+      "message": "nit: this is singular but the default is a list",
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7140d51f_93d84eb5",
+        "filename": "scripts/image_signing/lib/generate_android_cert_config_untitest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-01-02T16:17:27Z",
+      "side": 1,
+      "message": "typo: \"untitest\" -\u003e \"unittest\"",
+      "revId": "df0ae9bcf25b3e46a75574a3da3db1060ee08cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
