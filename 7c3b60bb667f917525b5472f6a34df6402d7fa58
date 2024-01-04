@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a6f6bb_4b0d219b",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-04T22:50:08Z",
+      "side": 1,
+      "message": "I\u0027ve been playing around with doing an Arm port of this code for a bit, and I noticed in the version I tested there that I would get a very noticeable speed difference (about 30%!) if I declare this as `const struct vb2_public_key *restrict key` instead. I believe the problem is that the compiler thinks it needs to reload `key-\u003earrsize` at every iteration of the inner loop because it cannot tell that the pointer for `key` doesn\u0027t point to the same memory as `de`, and thus updating `de` might have changed `key-\u003earrsize`.\n\nI don\u0027t have an Intel device to test this for your version at hand right now, but you might want to try it out and see if it makes a difference for you as well. (Alternatively you should get the same benefits by just putting `key-\u003earrsize` into a local variable at the top of the function and using that everywhere else.)",
+      "range": {
+        "startLine": 113,
+        "startChar": 22,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "7c3b60bb667f917525b5472f6a34df6402d7fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
