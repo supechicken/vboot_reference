@@ -46,6 +46,30 @@
       },
       "revId": "7c3b60bb667f917525b5472f6a34df6402d7fa58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035c0410_5cb1307d",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2024-01-05T21:00:37Z",
+      "side": 1,
+      "message": "I tested the following change on my Meteor Lake rex board. I did not observe any significant/measurable change.\n\n    modified   firmware/2lib/2modpow_sse2.c\n    @@ -71,7 +71,8 @@ vb2_and_si128 (vb2_m128i a, vb2_m128i b)\n      * 64 bits (effectively lower 32 bits)\n      * de[] is used as a temporary buffer and therefore its content will be lost.\n      */\n    -static void sub_mod(const struct vb2_public_key *key, vb2_m128i *de, uint32_t *c)\n    +static void sub_mod(const struct vb2_public_key * restrict key,\n    +\t\t    vb2_m128i *de, uint32_t *c)\n     {\n    \tuint32_t i, borrow \u003d 0, carry \u003d 0, d, e;\n    \tuint64_t sum, *de_i;",
+      "parentUuid": "a1c34950_191c4156",
+      "range": {
+        "startLine": 113,
+        "startChar": 22,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "7c3b60bb667f917525b5472f6a34df6402d7fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
