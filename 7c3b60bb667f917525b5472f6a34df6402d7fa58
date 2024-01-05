@@ -22,6 +22,30 @@
       },
       "revId": "7c3b60bb667f917525b5472f6a34df6402d7fa58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c34950_191c4156",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1542640
+      },
+      "writtenOn": "2024-01-05T18:23:33Z",
+      "side": 1,
+      "message": "That\u0027s interesting because using a local variable is something we tried and it did not bring any benefit. I\u0027ll try the `restrict` keyword once I am out of the critical task I am working on.",
+      "parentUuid": "70a6f6bb_4b0d219b",
+      "range": {
+        "startLine": 113,
+        "startChar": 22,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "7c3b60bb667f917525b5472f6a34df6402d7fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
