@@ -70,6 +70,30 @@
       },
       "revId": "7c3b60bb667f917525b5472f6a34df6402d7fa58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b7422e3_80b0b306",
+        "filename": "firmware/2lib/2modpow_sse2.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-05T22:25:38Z",
+      "side": 1,
+      "message": "Okay, yeah, if moving it to a local variable didn\u0027t help you then `restrict` wouldn\u0027t either. It\u0027s kind of a complicated edge case anyway, since the compiler should not assume the two pointers point to the same thing unless they\u0027re of the same type. On Arm the vector types express more explicitly what they contain (e.g. `uint32x4_t`), so maybe in that case the compiler considers those the same as a normal `uint32_t` for strict-aliasing purposes, whereas with your `__m128i` it doesn\u0027t.",
+      "parentUuid": "035c0410_5cb1307d",
+      "range": {
+        "startLine": 113,
+        "startChar": 22,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "7c3b60bb667f917525b5472f6a34df6402d7fa58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
