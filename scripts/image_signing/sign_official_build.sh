@@ -436,6 +436,7 @@ sign_update_payload() {
     local p11_module="${parsed_info[1]}"
     # We omit slot because the pkeyutl command will look in every keyring in the
     # config file for the named key.
+    local slot_id="${parsed_info[2]}"
     local key_label="${parsed_info[3]}"
     # Hashing algorithm is always SHA-256.
     PKCS11_MODULE_PATH="${p11_module}" openssl pkeyutl -pkeyopt \
