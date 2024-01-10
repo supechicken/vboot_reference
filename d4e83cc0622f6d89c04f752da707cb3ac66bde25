@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faa491e8_de9d88b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-10T07:56:23Z",
+      "side": 1,
+      "message": "To add Cq-Depend for the coreboot patch (not uploaded yet).",
+      "revId": "d4e83cc0622f6d89c04f752da707cb3ac66bde25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fa2142f_514c9190",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "Yeah I think the FIRMWARE_ARCH\u003dmock suggestion makes sense, we should have some kind of system where it\u0027s clear whether the flags get passed in or come from this Makefile, this weird mix is not healthy. (We may also want to consider moving the `-std\u003dgnu11` and `test_ccflag` stuff, which is currently applied to all builds but would probably also better be omitted if everything else gets passed in.)",
       "parentUuid": "4fa2142f_514c9190",
+      "revId": "d4e83cc0622f6d89c04f752da707cb3ac66bde25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "681c069b_1171365d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-10T07:56:23Z",
+      "side": 1,
+      "message": "Uploaded CL:5182247. For mock build, I\u0027m not sure if we should append `-Wno-address-of-packed-member` to `CFLAGS` in vboot\u0027s Makefile, or pass it from libpayload. Anyway, let\u0027s discuss it in that CL.",
+      "parentUuid": "2184a3a4_71ecef5d",
       "revId": "d4e83cc0622f6d89c04f752da707cb3ac66bde25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
