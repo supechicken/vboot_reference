@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91610fce_dbdfd597",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-13T00:47:02Z",
+      "side": 1,
+      "message": "Rather than adding another argument wouldn\u0027t it have been easier to just check if `${signkey}` begins with `remote:`?",
+      "revId": "ffe3fb2066fe60df26191f0ed07126902b94148b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
