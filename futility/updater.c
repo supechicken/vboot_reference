@@ -551,13 +551,19 @@ static bool is_ap_ro_locked_with_verification(struct updater_config *cfg)
 	return is_flash_descriptor_locked(current);
 }
 
-/* Returns true if the UNLOCK_CSME_* quirks were requested, otherwise false. */
-static bool is_unlock_csme_requested(struct updater_config *cfg)
+/*
+ * Applies quirks to unlock the Intel CSME.
+ * Returns 0 on success, otherwise failure.
+ */
+static int apply_unlock_csme_quirks(struct updater_config *cfg)
 {
-	if (get_config_quirk(QUIRK_UNLOCK_CSME, cfg) ||
-	    get_config_quirk(QUIRK_UNLOCK_CSME_EVE, cfg))
-		return true;
-	return false;
+	if (try_apply_quirk(QUIRK_UNLOCK_CSME_EVE, cfg))
+		return -1;
+
+	if (try_apply_quirk(QUIRK_UNLOCK_CSME, cfg))
+		return -1;
+
+	return 0;
 }
 
 /*
@@ -916,7 +922,7 @@ const char * const updater_error_messages[] = {
 	[UPDATE_ERR_ROOT_KEY] = "RW signed by incompatible root key "
 			        "(different from RO).",
 	[UPDATE_ERR_TPM_ROLLBACK] = "RW not usable due to TPM anti-rollback.",
-	[UPDATE_ERR_UNLOCK_CSME] = "The CSME was already locked (b/284913015).",
+	[UPDATE_ERR_UNLOCK_CSME] = "Failed to unlock Intel CSME.",
 	[UPDATE_ERR_UNKNOWN] = "Unknown error.",
 };
 
@@ -1207,6 +1213,17 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	if (try_apply_quirk(QUIRK_CLEAR_MRC_DATA, cfg))
 		return UPDATE_ERR_SYSTEM_IMAGE;
 
+	/*
+	 * Only unlock the descriptor if the descriptor on flash is not already
+	 * locked. This avoids switching to an RW-only update because unlocking
+	 * the descriptor makes it appears as if the descriptor has changed (and
+	 * AP RO verification is enabled).
+	 */
+	if (!is_flash_descriptor_locked(&cfg->image_current)) {
+		if (apply_unlock_csme_quirks(cfg))
+			return UPDATE_ERR_UNLOCK_CSME;
+	}
+
 	if (debugging_enabled)
 		print_dut_properties(cfg);
 
@@ -1224,8 +1241,6 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 
 	if (!done) {
 		if (!wp_enabled && is_ap_ro_locked_with_verification(cfg)) {
-			if (is_unlock_csme_requested(cfg))
-				return UPDATE_ERR_UNLOCK_CSME;
 			WARN("The AP RO is locked with verification turned on so we can't do "
 			     "full update (b/284913015). Fall back to RW-only update.\n");
 			wp_enabled = 1;
@@ -1718,19 +1733,21 @@ int updater_setup_config(struct updater_config *cfg,
 		      "( " REMOVE_WP_URL " ).");
 	}
 
-	if (cfg->image.data) {
-		/* Apply any quirks to modify the image before updating. */
-		if (arg->unlock_me)
-			cfg->quirks[QUIRK_UNLOCK_CSME].value = 1;
-		errorcnt += try_apply_quirk(QUIRK_UNLOCK_CSME_EVE, cfg);
-		errorcnt += try_apply_quirk(QUIRK_UNLOCK_CSME, cfg);
-	}
+	/* Handle legacy --unlock_me option */
+	if (arg->unlock_me)
+		cfg->quirks[QUIRK_UNLOCK_CSME].value = 1;
 
 	/* The images are ready for updating. Output if needed. */
 	if (!errorcnt && do_output) {
 		const char *r = arg->output_dir;
 		if (!r)
 			r = ".";
+
+		/* Unlock Intel CSME if requested before outputting the image */
+		if (apply_unlock_csme_quirks(cfg)) {
+			errorcnt++;
+			ERROR("Failed to unlock Intel CSME\n");
+		}
 
 		/* TODO(hungte) Remove bios.bin when migration is done. */
 		errorcnt += updater_output_image(&cfg->image, "bios.bin", r);

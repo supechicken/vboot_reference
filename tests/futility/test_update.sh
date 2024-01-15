@@ -420,22 +420,27 @@ test_update "Full update (multi-line --quirks enlarge_image)" \
 	' -i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
 
 test_update "Full update (--quirks unlock_csme_eve)" \
-	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked_eve" \
+	"${FROM_IMAGE}.unlocked" "${TMP}.expected.me_unlocked_eve" \
 	--quirks unlock_csme_eve \
 	-i "${TO_IMAGE}" --wp=0 --sys_props 0,0x10001
 
 test_update "Full update (--quirks unlock_csme)" \
-	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked.ifd_chipset" \
+	"${FROM_IMAGE}.unlocked" "${TMP}.expected.me_unlocked.ifd_chipset" \
+	--quirks unlock_csme -i "${TO_IMAGE}.ifd_chipset" \
+	--wp=0 --sys_props 0,0x10001
+
+test_update "Full update (--quirks unlock_csme, current image locked)" \
+	"${FROM_IMAGE}" "${TMP}.expected.ifd_chipset" \
 	--quirks unlock_csme -i "${TO_IMAGE}.ifd_chipset" \
 	--wp=0 --sys_props 0,0x10001
 
 test_update "Full update (--quirks unlock_csme)" \
-	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked.ifd_path" \
+	"${FROM_IMAGE}.unlocked" "${TMP}.expected.me_unlocked.ifd_path" \
 	--quirks unlock_csme -i "${TO_IMAGE}.ifd_path" \
 	--wp=0 --sys_props 0,0x10001
 
 test_update "Full update (--unlock_me)" \
-	"${FROM_IMAGE}" "${TMP}.expected.me_unlocked.ifd_chipset" \
+	"${FROM_IMAGE}.unlocked" "${TMP}.expected.me_unlocked.ifd_chipset" \
 	--unlock_me -i "${TO_IMAGE}.ifd_chipset" --wp=0 --sys_props 0,0x10001
 
 test_update "Full update (failure by --quirks min_platform_version)" \
