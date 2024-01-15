@@ -42,6 +42,7 @@ where <type> is one of:
              accessory_usbpd (sign USB-PD accessory firmware)
              accessory_rwsig (sign accessory RW firmware)
              gsc_firmware (sign a GSC firmware image)
+             uefi_kernel (sign a UEFI kernel image)
 
 output_image: File name of the signed output image
 version_file: File name of where to read the kernel and firmware versions.
@@ -1274,6 +1275,23 @@ sign_image_file() {
   info "Signed ${image_type} image output to ${output}"
 }
 
+# Sign a UEFI kernel kernel image with proper keys.
+# Args: INPUT OUTPUT
+sign_uefi_kernel() {
+  local input="$1"
+  local output="$2"
+
+  info "Preparing UEFI kernel image..."
+  cp --sparse=always "${input}" "${output}"
+
+  "${SCRIPT_DIR}/sign_uefi.py" \
+    --target-file "${output}" \
+    --private-key "${KEYCFG_UEFI_PRIVATE_KEY}" \
+    --sign-cert "${KEYCFG_UEFI_SIGN_CERT}" \
+    --verify-cert "${KEYCFG_UEFI_VERIFY_CERT}" \
+    --kernel-subkey-vbpubk "${KEYCFG_KERNEL_SUBKEY_VBPUBK}"
+}
+
 main() {
   # Add to the path since some tools reside here and may not be in the non-root
   # system path.
@@ -1343,6 +1361,10 @@ main() {
   verify)
     check_argc $# 2
     verify_image
+    exit 0
+    ;;
+  uefi_kernel)
+    sign_uefi_kernel "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
     exit 0
     ;;
   *)
