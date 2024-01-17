@@ -16,6 +16,23 @@
       "message": "I have concern on this change. \"Not fail\" usually implies to hiding the bug especially that the partner will insist they have already unlocked the firmware. We should not have unexpected results when the user really intends to do something.\n\nI\u0027d say instead we should have some better tool to determine if the firmware is already locked (outside the firmware updater), and the caller should check that, and add --unlock_me only if they believe the firmware must be unlocked.",
       "revId": "106ee76f7222048fad7eb7c8e2831fa67a959531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede4b01f_58fd76cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-01-17T02:40:20Z",
+      "side": 1,
+      "message": "For example, can we add some option in the ifdtool to identify if the device firmware is already locked? And only call `chromeos-firmwareupdate --unlock_csme` if it said no.\n\nThis will make debugging more easier because you can easily realize the flow from the code, log and traces.",
+      "revId": "106ee76f7222048fad7eb7c8e2831fa67a959531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
