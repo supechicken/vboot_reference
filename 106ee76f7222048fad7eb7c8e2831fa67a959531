@@ -33,6 +33,24 @@
       "message": "For example, can we add some option in the ifdtool to identify if the device firmware is already locked? And only call `chromeos-firmwareupdate --unlock_csme` if it said no.\n\nThis will make debugging more easier because you can easily realize the flow from the code, log and traces.",
       "revId": "106ee76f7222048fad7eb7c8e2831fa67a959531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39405c97_1acead7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2024-01-17T03:38:39Z",
+      "side": 1,
+      "message": "FYI I already had a similar discussion about this with Phoebe in b/270275115#comment22 and following comments.\n\nI don’t understand how it’s better to have the check outside futility. For example in the case where the ODM is intending to use flex EOM, but mistakenly flashes locked firmware. Even if the check is outside futility, the factory code will see that the firmware is already locked and not pass --unlock_me. And still nothing will raise an error.\n\nThe ideal solution would be to know whether you expect it to be locked, i.e. whether you’re in factory or RMA, and use that to decide whether to pass --unlock_me. But Phoebe said this is not possible.\n\nAlso if it’s just about logging, can we just add more logs to futility?",
+      "parentUuid": "ede4b01f_58fd76cd",
+      "revId": "106ee76f7222048fad7eb7c8e2831fa67a959531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
