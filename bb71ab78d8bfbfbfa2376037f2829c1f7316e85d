@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45cc447_6d7e5f41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-01-17T01:27:13Z",
+      "side": 1,
+      "message": "BTW there were some offline discussion about should we call ifdtool directly, copy-paste the ifdtool source to futility, or create a libifdtool.\n\nCopy-pasting is not preferred and libifdtool is not available yet, so for now we\u0027ll stick with calling ifdtool - given the quirk is usually manually specified by the user (or factory programs), and the user should see a failure immediately if their environment does not have the ifdtool.",
+      "revId": "bb71ab78d8bfbfbfa2376037f2829c1f7316e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f578a34_ae47d4cd",
