@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6d5750_2e1f8ed2",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2024-01-17T03:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f578a34_ae47d4cd",
+      "range": {
+        "startLine": 155,
+        "startChar": 35,
+        "endLine": 155,
+        "endChar": 40
+      },
+      "revId": "bb71ab78d8bfbfbfa2376037f2829c1f7316e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eea379e_33ac9f36",
@@ -94,6 +118,54 @@
       "writtenOn": "2024-01-17T01:28:50Z",
       "side": 1,
       "message": "How can we make sure the ifdtool is doing the right thing? Should we call is_flash_descriptor_locked() to double check?",
+      "range": {
+        "startLine": 235,
+        "startChar": 7,
+        "endLine": 235,
+        "endChar": 15
+      },
+      "revId": "bb71ab78d8bfbfbfa2376037f2829c1f7316e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1a987f1_5470111f",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2024-01-17T03:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eea379e_33ac9f36",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 5
+      },
+      "revId": "bb71ab78d8bfbfbfa2376037f2829c1f7316e85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3de7ac_1fdab958",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1487622
+      },
+      "writtenOn": "2024-01-17T03:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b31b7c_c42c0e8d",
       "range": {
         "startLine": 235,
         "startChar": 7,
