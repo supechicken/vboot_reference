@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "550bc4bc_5f342503",
+        "filename": "futility/updater.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-01-18T19:32:46Z",
+      "side": 1,
+      "message": "Could this error suggest running `gsctool -a -I AllowUnverifiedRo:always` to fix this?",
+      "range": {
+        "startLine": 1223,
+        "startChar": 9,
+        "endLine": 1224,
+        "endChar": 64
+      },
+      "revId": "81429ee94de8fd79bbd15b9223a3e6280e08efeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
