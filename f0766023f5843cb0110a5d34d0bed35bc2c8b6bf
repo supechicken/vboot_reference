@@ -50,6 +50,24 @@
       "message": "Is this really just support for UEFI signing generally? If so should we use \u0027flexor\u0027 in any of the commands? That seems to reference a specific project.",
       "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ab3128_ab3fb436",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2024-01-19T08:11:42Z",
+      "side": 1,
+      "message": "Well this maps directly to the ARTIFACT_TYPE in the signer code and the instructions name. We could name this uefi_kernel, but then we would need a variant for uefi_kernel_flexor (just like with firmware and gsc_firmware), right? I am fine with either.",
+      "parentUuid": "98ba845d_2ad8fdf8",
+      "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
