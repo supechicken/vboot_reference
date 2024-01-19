@@ -86,6 +86,24 @@
       "parentUuid": "f1ab3128_ab3fb436",
       "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda77ced_8a212e69",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2024-01-19T15:57:53Z",
+      "side": 1,
+      "message": "This has Flexor specific logic. It is a kernel + custom initramfs + custom packages.\n\nWhen it comes to sign it, we sign it like Grub \u0026 reven kernel",
+      "parentUuid": "c8099846_5e7743b9",
+      "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
