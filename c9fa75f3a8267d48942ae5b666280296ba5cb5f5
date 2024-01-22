@@ -16,6 +16,24 @@
       "message": "Are you intentionally dropping the verification with the root key? I mean it should be easy to do with `futility verify` as well... although I admit I don\u0027t really see the point of doing it here either.",
       "revId": "c9fa75f3a8267d48942ae5b666280296ba5cb5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5482ecf2_99a50e9f",
+        "filename": "scripts/image_signing/make_dev_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T03:58:25Z",
+      "side": 1,
+      "message": "\u003e Are you intentionally dropping the verification with the root key?\n\nYes, because the point here is to retrieve the versions. However I have no strong opinion about it. I can change it to `futility verify` if you prefer.",
+      "parentUuid": "ce9b89e7_642609f1",
+      "revId": "c9fa75f3a8267d48942ae5b666280296ba5cb5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
