@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure about using the word `valid` (when not directly referring to a signature) to say \"fully signed\", because in other cases we\u0027re using it for different things (e.g. keyblock::valid just means that the keyblock is correctly formatted, but not that the signature matches). How about using the word `verified` instead?",
       "revId": "4b26e99b4486dae98aac919d54d58e92a3b2cb3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c375a9ca_db3d79f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T04:14:50Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "59e9f831_3f6506ed",
+      "revId": "4b26e99b4486dae98aac919d54d58e92a3b2cb3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
