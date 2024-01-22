@@ -16,6 +16,213 @@
       "message": "Am I reading that right that we currently have no way of running arm64-specific unit tests? I thought we had this QEMU-based thing but it looks like it is not enabled?",
       "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36de23df_16cdf159",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Unit tests on arm seem to have never been enabled. I think a good alternative (or in addition to unit testing) is to add a HW test in Tast, similar to what we did for `X86_SHA_EXT` (CL:3249705). That also reminds me that we don\u0027t have tests for `ARMV8_CRYPTO_EXT`.",
+      "parentUuid": "8d4ea531_30c9b019",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e589ce_a9b7b1e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Reviewed everything except for the assembly, which would take me a large amount of time to review because I\u0027m not familiar with that at all.",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689a3a39_fc28762a",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Not related to this patch, but we should probably remove the `VB2_` prefix to be consistent with the `*_EXT` above.",
+      "range": {
+        "startLine": 429,
+        "startChar": 24,
+        "endLine": 429,
+        "endChar": 28
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b6b3b0_6c969adb",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Subtract",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b352830_5350edd5",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Isn\u0027t this simply `0`? I think `mu \u003d -key-\u003en0inv` should work, because `-key-\u003en0inv` should always be of type `uint32_t`.",
+      "range": {
+        "startLine": 165,
+        "startChar": 21,
+        "endLine": 165,
+        "endChar": 43
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da72aff_7b0a39c2",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "This name confuses me. The comment in 2rsa.h says this is `-1 / n[0] mod 2^32`, but I think it should be `-1 / n mod 2^32` instead, where `n` is the `M` in the paper [1]?\n\n[1] https://eprint.iacr.org/2013/519.pdf",
+      "range": {
+        "startLine": 165,
+        "startChar": 51,
+        "endLine": 165,
+        "endChar": 56
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e8f00eb_d0fff7bb",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Do you mean to align it to 16 bytes? If so, 8 should be changed to 15 (even if `VB2_WORKBUF_ALIGN` is currently 8). Actually, I\u0027d prefer adding a macro `ALIGN_UP` in this file for better readability.",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4693e11d_ff120074",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Please mention in the commit message that exp 3 isn\u0027t implemented.",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 17
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a52f33f_22734475",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 183,
+        "startChar": 22,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915fa58e_574341c3",
+        "filename": "firmware/2lib/2stub_hwcrypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-22T11:08:50Z",
+      "side": 1,
+      "message": "Actually, this is already a `weak` function, so there seems to be no need for the `#if` directive.",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
