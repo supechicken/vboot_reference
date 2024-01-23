@@ -175,6 +175,24 @@
       "parentUuid": "279ee60b_3d8b3bc1",
       "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a7ee3d_6c894fa4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2024-01-23T18:14:55Z",
+      "side": 1,
+      "message": "you moved it to the early parse block.  it should be in the `if` block after that.  please see the lines i quoted.",
+      "parentUuid": "9120d1c0_fd47cc1a",
+      "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
