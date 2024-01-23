@@ -354,6 +354,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "327c970f_b37aa6b6",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T21:42:27Z",
+      "side": 1,
+      "message": "lol... yeah... sorry, I must have had a total brainfart when writing this. Guess that\u0027s a good argument in favor of having macros for this sort of stuff. Anyway, it\u0027s out now.",
+      "parentUuid": "c2b4fe2e_532ae4e2",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4693e11d_ff120074",
@@ -462,6 +480,30 @@
       "side": 1,
       "message": "Not changed yet.",
       "parentUuid": "fd74e3b7_82a42035",
+      "range": {
+        "startLine": 183,
+        "startChar": 22,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f449d8fd_34d8b92c",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T21:42:27Z",
+      "side": 1,
+      "message": "Sorry, said done too early. Fixed now.",
+      "parentUuid": "e80cbea1_bc505449",
       "range": {
         "startLine": 183,
         "startChar": 22,
