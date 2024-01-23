@@ -53,6 +53,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56dbe66_2f62f024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "Hmm... do we have anyone else with experience in reviewing Arm assembly? Maybe +Yidi? (Make sure to use CL:5055251 to compare what the algorithm is trying to do, that makes it easier.)",
+      "parentUuid": "71e589ce_a9b7b1e6",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621f8c04_a6d7d5cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "Oh right, that would also be a way to do it. I\u0027ll try to look into both options.",
+      "parentUuid": "36de23df_16cdf159",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "689a3a39_fc28762a",
@@ -78,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a275dfc_256077c8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "This one is different from the others because it is used in exported header files, not just within vboot itself. That means the calling firmware needs to `#define` it for its own sources, and for that we should properly namespace it.",
+      "parentUuid": "689a3a39_fc28762a",
+      "range": {
+        "startLine": 429,
+        "startChar": 24,
+        "endLine": 429,
+        "endChar": 28
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57b6b3b0_6c969adb",
         "filename": "firmware/2lib/2modpow_neon.c",
         "patchSetId": 1
@@ -89,6 +149,30 @@
       "writtenOn": "2024-01-22T11:08:50Z",
       "side": 1,
       "message": "Subtract",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eecedc54_5b150747",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57b6b3b0_6c969adb",
       "range": {
         "startLine": 11,
         "startChar": 9,
@@ -145,6 +229,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86811f4_8cd4f2c9",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "I think you may be right (I honestly barely understand all the actual RSA math stuff, I just translated Intel\u0027s implementation into NEON), but this name has been in vboot like this forever, so we probably don\u0027t want to change it now.",
+      "parentUuid": "2da72aff_7b0a39c2",
+      "range": {
+        "startLine": 165,
+        "startChar": 51,
+        "endLine": 165,
+        "endChar": 56
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b98a364_1c73627c",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "Uhh... yes, of course it is. Intel has it that way too in their version and I guess I didn\u0027t see it. I agree just writing `-key-\u003en0inv` seems cleaner.",
+      "parentUuid": "8b352830_5350edd5",
+      "range": {
+        "startLine": 165,
+        "startChar": 21,
+        "endLine": 165,
+        "endChar": 43
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e8f00eb_d0fff7bb",
@@ -162,6 +294,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd211982_d2b4c84d",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "No, it\u0027s just 8. For the Arm implementation I can pack the numbers differently and make the `de` array (I called it `ed` because e actually comes first) just two 32-bit values, unlike Intel who don\u0027t have the \"multiply-and-widen in one go\" instruction and thus need to store it as two 64-bits with the top halves zero.\n\nI guess you\u0027re right that VB2_WORKBUF_ALIGN already guarantees that, so I can just take this stuff out.",
+      "parentUuid": "6e8f00eb_d0fff7bb",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4693e11d_ff120074",
@@ -175,6 +325,30 @@
       "writtenOn": "2024-01-22T11:08:50Z",
       "side": 1,
       "message": "Please mention in the commit message that exp 3 isn\u0027t implemented.",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 17
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "470d775d_9bdf5cc5",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4693e11d_ff120074",
       "range": {
         "startLine": 175,
         "startChar": 12,
@@ -208,6 +382,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd74e3b7_82a42035",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a52f33f_22734475",
+      "range": {
+        "startLine": 183,
+        "startChar": 22,
+        "endLine": 183,
+        "endChar": 24
+      },
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915fa58e_574341c3",
@@ -221,6 +419,24 @@
       "writtenOn": "2024-01-22T11:08:50Z",
       "side": 1,
       "message": "Actually, this is already a `weak` function, so there seems to be no need for the `#if` directive.",
+      "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a1afc1_6f5d29b8",
+        "filename": "firmware/2lib/2stub_hwcrypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-23T01:31:21Z",
+      "side": 1,
+      "message": "Yes but all the other built-in hwcrypto implementations here are doing the same so I just followed the existing model. I\u0027m not sure if there\u0027s any good reason they did it that way but if we want to change it we should do it for all of them in a separate patch.",
+      "parentUuid": "915fa58e_574341c3",
       "revId": "90458b6de32336bd97377325f85aa9abffdac2ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
