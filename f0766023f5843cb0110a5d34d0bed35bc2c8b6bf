@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "350edc72_1eea886a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2024-01-23T10:13:13Z",
+      "side": 1,
+      "message": "There is nothing different. I called it uefi_kernel now.",
+      "parentUuid": "3b485065_3498ed4e",
+      "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279ee60b_3d8b3bc1",
@@ -137,6 +155,24 @@
       "writtenOn": "2024-01-22T21:43:35Z",
       "side": 1,
       "message": "why does it need to be up here ?  it should be down in the existing block below (line 1368 `Make all modifications on output copy.`).",
+      "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9120d1c0_fd47cc1a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2024-01-23T10:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279ee60b_3d8b3bc1",
       "revId": "f0766023f5843cb0110a5d34d0bed35bc2c8b6bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
