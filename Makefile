@@ -1398,6 +1398,9 @@ rununittests: runcgpttests runmisctests run2tests
 runtests: rununittests runtestscripts runfutiltests
 	${Q}echo -e "\nruntests: \E[32;1mALL TESTS PASSED SUCCESSFULLY!\E[0;m\n"
 
+# Try disabling parallel runs to see if b/321736583 can be fixed.
+.NOTPARALLEL: runtests
+
 # Code coverage
 .PHONY: coverage
 ifeq ($(filter-out 0,${COV}),)
