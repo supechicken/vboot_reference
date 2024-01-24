@@ -296,9 +296,14 @@ resign_ssd_kernel() {
     if [ "${FLAGS_enable_console}" = "${FLAGS_TRUE}" ]; then
       debug_msg "Enabling serial console"
       kernel_config="$(remove_parameter "${kernel_config}" "console")"
+      kernel_config="$(remove_parameter "${kernel_config}" "earlyprintk")"
+      kernel_config="$(insert_parameter "${kernel_config}" "console=ttyS0,115200n8")"
+      kernel_config="$(insert_parameter "${kernel_config}" "earlyprintk=serial,ttyS0,115200")"
       debug_msg "New kernel config: ${kernel_config}"
     elif [ "${FLAGS_disable_console}" = "${FLAGS_TRUE}" ]; then
       debug_msg "Disabling serial console"
+      kernel_config="$(remove_parameter "${kernel_config}" "console")"
+      kernel_config="$(remove_parameter "${kernel_config}" "earlyprintk")"
       kernel_config="$(insert_parameter "${kernel_config}" "console=")"
       debug_msg "New kernel config: ${kernel_config}"
     fi
