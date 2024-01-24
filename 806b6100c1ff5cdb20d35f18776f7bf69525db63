@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb07eee7_21f3bc3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-24T20:45:53Z",
+      "side": 1,
+      "message": "I don\u0027t think we should do this for long, parallel execution is pretty important to make our tests not last forever. At most we should do this temporarily for a short amount of time to confirm whether it affects the issues (because I don\u0027t see any evidence yet that they have anything to do with parallelism). But it sounds like the incident rates aren\u0027t really high enough that we could reliably tell when they disappear anyway?",
+      "revId": "806b6100c1ff5cdb20d35f18776f7bf69525db63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30e05336_ed6a1612",
