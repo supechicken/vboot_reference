@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75070a64_a524e5bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2024-01-24T07:43:56Z",
+      "side": 1,
+      "message": "I just review the assembly part with the C implementation in CL:5055251.",
+      "revId": "fbc0775bc1938125b8a50871a10bf3effb7f71c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f9ef413_b1c6aa59",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2024-01-24T07:43:56Z",
+      "side": 1,
+      "message": "leave a note that the inner loop starts from index 1 ?",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "fbc0775bc1938125b8a50871a10bf3effb7f71c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
