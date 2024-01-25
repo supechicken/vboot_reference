@@ -39,6 +39,30 @@
       },
       "revId": "fbc0775bc1938125b8a50871a10bf3effb7f71c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6226ce95_61e3b464",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-25T00:24:53Z",
+      "side": 1,
+      "message": "Well, I tried to do that below with the `/* for (j \u003d 1; j \u003c arrsize - 1; j++) */` comment (line 108). Is that unclear?",
+      "parentUuid": "4f9ef413_b1c6aa59",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "fbc0775bc1938125b8a50871a10bf3effb7f71c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
