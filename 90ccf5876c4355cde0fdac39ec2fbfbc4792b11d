@@ -22,6 +22,40 @@
       },
       "revId": "90ccf5876c4355cde0fdac39ec2fbfbc4792b11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443f9cc2_b4fb41bf",
+        "filename": "README",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-25T19:15:15Z",
+      "side": 1,
+      "message": "Could also mention that it can resign a full firmware image while you\u0027re at it?",
+      "revId": "90ccf5876c4355cde0fdac39ec2fbfbc4792b11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72afb5e2_2be28273",
+        "filename": "README",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-25T19:15:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure why we still have this tbh, what does it even do? It seems to want a raw signature as a file which is not something we generally have.",
+      "revId": "90ccf5876c4355cde0fdac39ec2fbfbc4792b11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
