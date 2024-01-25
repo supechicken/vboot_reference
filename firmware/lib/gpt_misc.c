@@ -35,16 +35,16 @@ int AllocAndReadGptData(vb2ex_disk_handle_t disk_handle, GptData *gptdata)
 	gptdata->primary_entries = (uint8_t *)malloc(GPT_ENTRIES_ALLOC_SIZE);
 	gptdata->secondary_entries = (uint8_t *)malloc(GPT_ENTRIES_ALLOC_SIZE);
 
-	/* In some cases we try to validate header1 with entries2 or vice versa,
-	   so make sure the entries buffers always got fully initialized. */
-	memset(gptdata->primary_entries, 0, GPT_ENTRIES_ALLOC_SIZE);
-	memset(gptdata->secondary_entries, 0, GPT_ENTRIES_ALLOC_SIZE);
-
 	if (gptdata->primary_header == NULL ||
 	    gptdata->secondary_header == NULL ||
 	    gptdata->primary_entries == NULL ||
 	    gptdata->secondary_entries == NULL)
 		return 1;
+
+	/* In some cases we try to validate header1 with entries2 or vice versa,
+	   so make sure the entries buffers always got fully initialized. */
+	memset(gptdata->primary_entries, 0, GPT_ENTRIES_ALLOC_SIZE);
+	memset(gptdata->secondary_entries, 0, GPT_ENTRIES_ALLOC_SIZE);
 
 	/* Read primary header from the drive, skipping the protective MBR */
 	if (0 != VbExDiskRead(disk_handle, 1, 1, gptdata->primary_header)) {

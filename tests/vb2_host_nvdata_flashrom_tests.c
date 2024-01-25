@@ -96,7 +96,7 @@ vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
 
 	assert_mock_params(image->programmer, region);
 
-	image->data = malloc(sizeof(fake_flash_region));
+	image->data = xmalloc(sizeof(fake_flash_region));
 	image->size = sizeof(fake_flash_region);
 	memcpy(image->data, fake_flash_region, sizeof(fake_flash_region));
 	return VB2_SUCCESS;

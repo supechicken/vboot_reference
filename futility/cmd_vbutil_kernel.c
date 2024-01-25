@@ -193,6 +193,8 @@ static uint8_t *ReadOldKPartFromFileOrDie(const char *filename,
 		      strerror(errno));
 
 	buf = malloc(file_size);
+	if (!buf)
+		FATAL("Unable to malloc %u bytes for kernel\n", file_size);
 	if (1 != fread(buf, file_size, 1, fp))
 		FATAL("Unable to read entirety of %s: %s\n", filename,
 		      error_fread(fp));

@@ -438,6 +438,10 @@ uint8_t *SignKernelBlob(uint8_t *kernel_blob,
 
 	uint32_t outsize = keyblock->keyblock_size + preamble->preamble_size;
 	void *outbuf = calloc(outsize, 1);
+	if (!outbuf) {
+		fprintf(stderr, "Error allocating buffer.\n");
+		return NULL;
+	}
 	memcpy(outbuf, keyblock, keyblock->keyblock_size);
 	memcpy(outbuf + keyblock->keyblock_size,
 	       preamble, preamble->preamble_size);
@@ -687,6 +691,11 @@ uint8_t *CreateKernelBlob(uint8_t *vmlinuz_buf, uint32_t vmlinuz_size,
 
 	/* Allocate space for the blob. */
 	g_kernel_blob_data = malloc(g_kernel_blob_size);
+	if (!g_kernel_blob_data) {
+		fprintf(stderr, "Unable to malloc %#x bytes for kernel blob\n",
+			g_kernel_blob_size);
+		return NULL;
+	}
 	memset(g_kernel_blob_data, 0, g_kernel_blob_size);
 
 	/* Assign the sub-pointers */
@@ -753,6 +762,11 @@ enum futil_file_type ft_recognize_vblock1(uint8_t *buf, uint32_t len)
 
 	/* Vboot 2.0 signature checks destroy the buffer, so make a copy */
 	uint8_t *buf2 = malloc(len);
+	if (!buf2) {
+		fprintf(stderr, "Unable to malloc %#x bytes for vblock\n",
+			len);
+		return FILE_TYPE_UNKNOWN;
+	}
 	memcpy(buf2, buf, len);
 	struct vb2_keyblock *keyblock = (struct vb2_keyblock *)buf2;
 	if (VB2_SUCCESS != vb2_verify_keyblock_hash(keyblock, len, &wb)) {

@@ -28,6 +28,10 @@ uint8_t* PrependDigestInfo(enum vb2_hash_algorithm hash_alg, uint8_t* digest)
 		return NULL;
 
 	uint8_t* p = malloc(digestinfo_size + digest_size);
+	if (!p) {
+		fprintf(stderr, "Unable to malloc digest buffer\n");
+		return NULL;
+	}
 	memcpy(p, digestinfo, digestinfo_size);
 	memcpy(p + digestinfo_size, digest, digest_size);
 	return p;
@@ -88,12 +92,18 @@ uint8_t* SignatureBuf(const uint8_t* buf, uint64_t len, const char* key_file,
 		free(signature_digest);
 		return NULL;
 	}
-	if ((key = PEM_read_RSAPrivateKey(key_fp, NULL, NULL, NULL)))
+	if ((key = PEM_read_RSAPrivateKey(key_fp, NULL, NULL, NULL))) {
 		signature = (uint8_t *)malloc(
 		    vb2_rsa_sig_size(vb2_crypto_to_signature(algorithm)));
-	else
+		if (!signature) {
+			fprintf(stderr, "Unable to malloc signature buffer\n");
+			free(signature_digest);
+			return NULL;
+		}
+	} else {
 		fprintf(stderr, "SignatureBuf(): "
 			"Couldn't read private key from: %s\n", key_file);
+	}
 	if (signature) {
 		if (-1 == RSA_private_encrypt(
 				signature_digest_len,  /* Input length. */

@@ -172,6 +172,10 @@ int main(int argc, char* argv[])
 	/* Initialize the GBB */
 	uint32_t gbb_size = sizeof(struct vb2_gbb_header) + key_size;
 	gbb = (struct vb2_gbb_header*)malloc(gbb_size);
+	if(!gbb) {
+		fprintf(stderr, "Unable to allocate gbb buffer\n");
+		return 1;
+	}
 	memset(gbb, 0, gbb_size);
 	memcpy(gbb->signature, VB2_GBB_SIGNATURE, VB2_GBB_SIGNATURE_SIZE);
 	gbb->major_version = VB2_GBB_MAJOR_VER;

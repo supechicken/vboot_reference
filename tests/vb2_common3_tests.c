@@ -42,7 +42,7 @@ static void test_check_keyblock(const struct vb2_public_key *public_key,
 	if (!hdr)
 		return;
 	hsize = hdr->keyblock_size;
-	h = (struct vb2_keyblock *)malloc(hsize + 2048);
+	h = (struct vb2_keyblock *)xmalloc(hsize + 2048);
 	sig = &h->keyblock_signature;
 
 	memcpy(h, hdr, hsize);
@@ -153,7 +153,7 @@ static void test_verify_keyblock(const struct vb2_public_key *public_key,
 	if (!hdr)
 		return;
 	hsize = hdr->keyblock_size;
-	h = (struct vb2_keyblock *)malloc(hsize + 2048);
+	h = (struct vb2_keyblock *)xmalloc(hsize + 2048);
 
 	memcpy(h, hdr, hsize);
 	TEST_SUCC(vb2_verify_keyblock(h, hsize, public_key, &wb),
@@ -227,7 +227,7 @@ static void test_verify_fw_preamble(struct vb2_packed_key *public_key,
 	}
 
 	hsize = (uint32_t) hdr->preamble_size;
-	h = (struct vb2_fw_preamble *)malloc(hsize + 16384);
+	h = (struct vb2_fw_preamble *)xmalloc(hsize + 16384);
 
 	memcpy(h, hdr, hsize);
 	TEST_SUCC(vb2_verify_fw_preamble(h, hsize, &rsa, &wb),
@@ -372,7 +372,7 @@ static void test_verify_kernel_preamble(
 
 	hsize = (uint32_t) hdr->preamble_size;
 	struct vb2_kernel_preamble *h =
-		(struct vb2_kernel_preamble *)malloc(hsize + 16384);
+		(struct vb2_kernel_preamble *)xmalloc(hsize + 16384);
 
 	memcpy(h, hdr, hsize);
 	TEST_SUCC(vb2_verify_kernel_preamble(h, hsize, &rsa, &wb),

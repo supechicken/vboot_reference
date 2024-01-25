@@ -124,7 +124,7 @@ int main(int argc, char *argv[])
 	}
 
 	/* Initialize long_msg with 'a' x 1,000,000 */
-	long_msg = (char *) malloc(1000001);
+	long_msg = (char *) xmalloc(1000001);
 	memset(long_msg, 'a', 1000000);
 	long_msg[1000000]=0;
 

@@ -164,4 +164,7 @@ int test_abort(int aborted,
 			abort(); \
 	} while (0)
 
+void *xmalloc(size_t size);
+void *xcalloc(size_t num, size_t size);
+
 #endif  /* VBOOT_REFERENCE_COMMON_TESTS_H_ */

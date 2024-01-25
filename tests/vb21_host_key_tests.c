@@ -96,6 +96,10 @@ static void private_key_tests(const struct alg_combo *combo,
 
 	/* Make a backup of the good buffer so we can mangle it */
 	buf2 = malloc(bufsize);
+	if (!buf2) {
+		TEST_TRUE(0, "Unable to malloc buffer");
+		return;
+	}
 	memcpy(buf2, buf, bufsize);
 
 	TEST_SUCC(vb21_private_key_unpack(&k2, buf, bufsize),
@@ -192,7 +196,7 @@ static void public_key_tests(const struct alg_combo *combo,
 	vb2_public_key_free(key);
 
 	bufsize = vb2_packed_key_size(combo->sig_alg);
-	buf = calloc(1, bufsize);
+	buf = xcalloc(1, bufsize);
 
 	vb2_write_file(testfile, buf, bufsize - 1);
 	TEST_EQ(vb2_public_key_read_keyb(&key, testfile),

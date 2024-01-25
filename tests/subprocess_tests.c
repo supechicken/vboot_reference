@@ -171,7 +171,7 @@ static void test_subprocess_return_code_failure(void)
 }
 
 struct cb_ctx {
-	char buffer[49 * 1024];
+	char buffer[120 * 1024];
 	char *ptr;
 };
 

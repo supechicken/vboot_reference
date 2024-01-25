@@ -10,6 +10,7 @@
 #include "2common.h"
 #include "2sha.h"
 #include "2sysincludes.h"
+#include "common/tests.h"
 #include "common/timer_utils.h"
 #include "host_common.h"
 
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
 	int i;
 	double speed;
 	uint32_t msecs;
-	uint8_t *buffer = malloc(TEST_BUFFER_SIZE);
+	uint8_t *buffer = xmalloc(TEST_BUFFER_SIZE);
 	struct vb2_hash hash;
 	ClockTimerState ct;
 

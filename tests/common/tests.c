@@ -215,3 +215,23 @@ void vb2ex_abort(void)
 		exit(1);
 	}
 }
+
+void *xmalloc(size_t size)
+{
+	void *ret = malloc(size);
+	if (!ret) {
+		TEST_TRUE(0, "malloc failed");
+		abort();
+	}
+	return ret;
+}
+
+void *xcalloc(size_t num, size_t size)
+{
+	void *ret = calloc(num, size);
+	if (!ret) {
+		TEST_TRUE(0, "calloc failed");
+		abort();
+	}
+	return ret;
+}

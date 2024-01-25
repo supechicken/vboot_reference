@@ -53,6 +53,7 @@ typedef struct Command {
  */
 static void AddVisibleField(Command* cmd, const char* name, int offset) {
   Field* fld = (Field*) calloc(1, sizeof(Field));
+  assert(fld);
   if (cmd->fields != NULL) {
     assert(offset > fn->offset);
   }
@@ -69,6 +70,7 @@ static void AddVisibleField(Command* cmd, const char* name, int offset) {
 static void AddInitializedField(Command* cmd, int offset,
                                 int size, uint32_t value) {
   Field* fld = (Field*) calloc(1, sizeof(Field));
+  assert(fld);
   fld->next = cmd->fields;
   cmd->fields = fld;
   fld->name = NULL;
@@ -82,6 +84,7 @@ static void AddInitializedField(Command* cmd, int offset,
  */
 Command* newCommandWithTag(TPM_COMMAND_CODE code, int size, TPM_TAG tag) {
   Command* cmd = (Command*) calloc(1, sizeof(Command));
+  assert(cmd);
   cmd->size = size;
   AddInitializedField(cmd, 0, sizeof(TPM_TAG), tag);
   AddInitializedField(cmd, sizeof(TPM_TAG), sizeof(uint32_t), size);

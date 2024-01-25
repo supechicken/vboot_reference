@@ -29,7 +29,7 @@ static void test_unpack_key(const struct vb21_packed_key *key)
 	uint32_t size = key->c.total_size;
 
 	/* Make a copy of the key for testing */
-	key2 = (struct vb21_packed_key *)malloc(size);
+	key2 = (struct vb21_packed_key *)xmalloc(size);
 
 	memcpy(key2, key, size);
 	TEST_SUCC(vb21_unpack_key(&pubk, (uint8_t *)key2, size),
@@ -120,7 +120,7 @@ static void test_verify_signature(const struct vb21_signature *sig)
 
 	/* Make a copy of the signature */
 	size = sig->c.total_size;
-	buf2 = malloc(size);
+	buf2 = xmalloc(size);
 	sig2 = (struct vb21_signature *)buf2;
 
 	memcpy(buf2, sig, size);
@@ -184,7 +184,7 @@ static void test_verify_data(const struct vb2_public_key *pubk_orig,
 
 	/* Allocate signature copy for tests */
 	size = sig->c.total_size;
-	buf2 = malloc(size);
+	buf2 = xmalloc(size);
 	sig2 = (struct vb21_signature *)buf2;
 
 	memcpy(buf2, sig, size);

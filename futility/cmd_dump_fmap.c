@@ -277,6 +277,10 @@ static int duplicates(int i, int j)
 static void add_dupe(int i, int j, int numnodes)
 {
 	struct dup_s *alias = (struct dup_s *) malloc(sizeof(struct dup_s));
+	if (!alias) {
+		perror("malloc failed");
+		exit(1);
+	}
 	alias->name = all_nodes[j].name;
 	alias->next = all_nodes[i].alias;
 	all_nodes[i].alias = alias;

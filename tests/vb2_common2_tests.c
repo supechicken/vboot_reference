@@ -114,7 +114,7 @@ static void test_unpack_key(const struct vb2_packed_key *key1)
 	 * calculate the buffer size by looking at how far the key data goes.
 	 */
 	uint32_t size = key1->key_offset + key1->key_size;
-	uint8_t *buf = malloc(size);
+	uint8_t *buf = xmalloc(size);
 	struct vb2_packed_key *key = (struct vb2_packed_key *)buf;
 
 	memcpy(key, key1, size);
@@ -180,7 +180,7 @@ static void test_verify_data(const struct vb2_packed_key *key1,
 	vb2_workbuf_init(&wb, workbuf, sizeof(workbuf));
 
 	/* Allocate signature copy for tests */
-	sig2 = (struct vb2_signature *)malloc(sig_total_size);
+	sig2 = (struct vb2_signature *)xmalloc(sig_total_size);
 
 	TEST_SUCC(vb2_unpack_key(&pubk, key1), "vb2_verify_data() unpack key");
 	pubk_orig = pubk;

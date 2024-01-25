@@ -114,6 +114,10 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 	}
 
 	image->data = calloc(1, len);
+	if (!image->data) {
+		ERROR("could not allocate %zu bytes\n", len);
+		goto err_cleanup;
+	}
 	image->size = len;
 	image->file_name = strdup("<sys-flash>");
 

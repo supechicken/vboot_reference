@@ -132,7 +132,7 @@ vb2_error_t VbExStreamOpen(vb2ex_disk_handle_t handle, uint64_t lba_start,
 	if (lba_start + lba_count > disk_info.lba_count)
 		return VB2_ERROR_UNKNOWN;
 
-	s = malloc(sizeof(*s));
+	s = xmalloc(sizeof(*s));
 	s->handle = handle;
 	s->sector = lba_start;
 	s->sectors_left = lba_count;

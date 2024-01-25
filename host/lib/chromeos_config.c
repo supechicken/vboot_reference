@@ -48,6 +48,10 @@ vb2_error_t chromeos_config_get_string(const char *path, const char *property,
 
 	if (rv == VB2_SUCCESS) {
 		*val_out = realloc(*val_out, size + 1);
+		if (!*val_out) {
+			VB2_DEBUG("Failed to realloc %u bytes\n", size + 1);
+			return VB2_ERROR_UNKNOWN;
+		}
 		(*val_out)[size] = '\0';
 	}
 
