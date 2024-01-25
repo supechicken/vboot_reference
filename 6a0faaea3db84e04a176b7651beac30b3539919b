@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e464b6c_4bad25be",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-25T03:26:03Z",
+      "side": 1,
+      "message": "I don\u0027t really understand why you need two `sed`s and the complicated back-reference to catch the quotes? How about this:\n```\n\u0027s/(^|\\s)\\s*\u0027\"${param}\"\u0027(\u003d\\S*|\u003d\"(\\\\\"|[^\"])*\")?\\s*/\\1/g\u0027\n```",
+      "revId": "6a0faaea3db84e04a176b7651beac30b3539919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
