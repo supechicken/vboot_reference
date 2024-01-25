@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56dded0c_b0b614cb",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-01-25T03:44:27Z",
+      "side": 1,
+      "message": "Unfortunately this is not universally correct, it only works for certain x86 devices. For example, on a Trogdor device you would need to add `console\u003dttyMSM0,115200n8 earlycon\u003dqcom_geni,0xa88000`.\n\nAdding some people who might know: do we have a comprehensive database of which command line is correct for what board that we could reuse here? Or is that info only scattered across various care\u0026feeding docs? (Then we should maybe create such a list somewhere?)",
+      "revId": "2fd889db0ab4f8e61a543dd7ef99b3014d4ff32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
