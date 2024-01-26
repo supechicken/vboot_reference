@@ -16,6 +16,24 @@
       "message": "If it\u0027s not used at all shouldn\u0027t we just remove the whole rule and the script itself as well?",
       "revId": "cd9bc6f84cedc0de06ba1b3f8c8909769db10fde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3dede8_de8d0d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-01-26T00:44:38Z",
+      "side": 1,
+      "message": "The script isn\u0027t used by any tests run by the cq. However I think it might still be useful if we want to generate random images for manual testing.",
+      "parentUuid": "9b6acf4b_4aba3ce9",
+      "revId": "cd9bc6f84cedc0de06ba1b3f8c8909769db10fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
