@@ -16,6 +16,24 @@
       "message": "I don\u0027t really understand why you need two `sed`s and the complicated back-reference to catch the quotes? How about this:\n```\n\u0027s/(^|\\s)\\s*\u0027\"${param}\"\u0027(\u003d\\S*|\u003d\"(\\\\\"|[^\"])*\")?\\s*/\\1/g\u0027\n```",
       "revId": "6a0faaea3db84e04a176b7651beac30b3539919b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe148c3a_27b624f1",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-01-26T13:36:05Z",
+      "side": 1,
+      "message": "Thanks for noticing. Back-reference is leftover from tries to implement double and single-quote string, but kernel params do not seem to support it so I dropped it but forgot to simplify it further.",
+      "parentUuid": "8e464b6c_4bad25be",
+      "revId": "6a0faaea3db84e04a176b7651beac30b3539919b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
