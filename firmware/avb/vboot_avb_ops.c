@@ -16,11 +16,101 @@
 #include "cgptlib_internal.h"
 
 struct vboot_avb_data {
+	GptData *gpt;
 	struct vb2_context *vb2_ctx;
 };
 
 static AvbOps avb_ops;
 static struct vboot_avb_data vboot_avb;
+
+static AvbIOResult vboot_avb_read_from_partition(AvbOps *ops,
+				       const char *partition_name,
+				       int64_t offset_from_partition,
+				       size_t num_bytes,
+				       void *buf,
+				       size_t *out_num_read)
+{
+	struct vboot_avb_data *avbctx;
+	VbExStream_t stream;
+	uint64_t part_bytes, part_start_sector;
+	uint64_t start_sector, sectors_to_read, pre_misalign;
+	uint32_t sector_bytes;
+	GptData *gpt;
+	GptEntry *e;
+
+	avbctx = (struct vboot_avb_data *)ops->user_data;
+	gpt = avbctx->gpt;
+
+	e = GptFindEntryByName(gpt, partition_name, NULL);
+	if (e == NULL) {
+		VB2_DEBUG("Unable to find %s partition\n", partition_name);
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+	}
+
+	part_bytes = GptGetEntrySizeBytes(gpt, e);
+	part_start_sector = e->starting_lba;
+	sector_bytes = gpt->sector_bytes;
+
+	if (num_bytes > part_bytes) {
+		VB2_DEBUG("Trying to read %zu bytes from %s@%lld, but only %llu bytes long.\n",
+			  num_bytes, partition_name, offset_from_partition, part_bytes);
+		num_bytes = part_bytes;
+	}
+
+	if (part_start_sector * sector_bytes > (part_start_sector * sector_bytes) + part_bytes)
+		return AVB_IO_RESULT_ERROR_RANGE_OUTSIDE_PARTITION;
+
+	if (offset_from_partition < 0) {
+		offset_from_partition += part_bytes;
+		if (offset_from_partition < 0 || offset_from_partition > part_bytes)
+			return AVB_IO_RESULT_ERROR_RANGE_OUTSIDE_PARTITION;
+	}
+
+	start_sector = (offset_from_partition / sector_bytes);
+	pre_misalign = offset_from_partition % sector_bytes;
+
+	VB2_ASSERT(pre_misalign == 0 && (num_bytes % sector_bytes) == 0);
+
+	start_sector += part_start_sector;
+	sectors_to_read = num_bytes / sector_bytes;
+
+
+	if (VbExStreamOpen(avbctx->disk_handle, start_sector, sectors_to_read,
+			   &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		return AVB_IO_RESULT_ERROR_IO;
+	}
+
+	if (VbExStreamRead(stream, sectors_to_read * sector_bytes, buf)) {
+		VB2_DEBUG("Unable to read ramdisk partition\n");
+		return AVB_IO_RESULT_ERROR_IO;
+	}
+
+	*out_num_read = num_bytes;
+
+	VbExStreamClose(stream);
+
+	return AVB_IO_RESULT_OK;
+}
+
+
+static AvbIOResult vboot_avb_get_size_of_partition(AvbOps *ops,
+					 const char *partition_name,
+					 uint64_t *out_size)
+{
+	struct vboot_avb_data *avbctx = (struct vboot_avb_data *)ops->user_data;
+	GptEntry *e;
+
+	e = GptFindEntryByName(avbctx->gpt, partition_name, NULL);
+	if (e == NULL) {
+		VB2_DEBUG("Unable to find %s partition\n", partition_name);
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+	}
+
+	*out_size = GptGetEntrySizeBytes(avbctx->gpt, e);
+
+	return AVB_IO_RESULT_OK;
+}
 
 static AvbIOResult vboot_avb_read_is_device_unlocked(AvbOps *ops, bool *out_is_unlocked)
 {
@@ -90,14 +180,19 @@ static AvbIOResult get_unique_guid_for_partition(AvbOps *ops,
  * Initialize platform callbacks used within libavb.
  *
  * @param  vb2_ctx     Vboot context
+ * @param  gpt         Pointer to gpt struct correlated with boot disk
  * @return pointer to AvbOps structure which should be used for invocation of
  *         libavb methods.
  */
-AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx)
+AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
+			  GptData *gpt)
 {
+	vboot_avb.gpt = gpt;
 	vboot_avb.vb2_ctx = vb2_ctx;
 	avb_ops.user_data = &vboot_avb;
 
+	avb_ops.read_from_partition = vboot_avb_read_from_partition;
+	avb_ops.get_size_of_partition = vboot_avb_get_size_of_partition;
 	avb_ops.read_is_device_unlocked = vboot_avb_read_is_device_unlocked;
 	avb_ops.read_rollback_index = vboot_avb_read_rollback_index;
 	avb_ops.get_unique_guid_for_partition = get_unique_guid_for_partition;
