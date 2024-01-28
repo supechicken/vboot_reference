@@ -204,82 +204,6 @@ static AvbIOResult get_unique_guid_for_partition(AvbOps *ops,
 	return AVB_IO_RESULT_OK;
 }
 
-static AvbIOResult validate_vbmeta_public_key(AvbOps *ops,
-					      const uint8_t *public_key_data,
-					      size_t public_key_length,
-					      const uint8_t *public_key_metadata,
-					      size_t public_key_metadata_length,
-					      bool *out_key_is_trusted)
-{
-	struct vboot_avb_ctx *ctx = (struct vboot_avb_ctx *)ops->user_data;
-	struct vb2_shared_data *sd = vb2_get_sd(ctx->vb2_ctx);
-	struct vb2_public_key kernel_key;
-	AvbRSAPublicKeyHeader h;
-	uint8_t *key_data;
-	uint32_t key_size;
-	uint32_t avb_key_len;
-	const uint8_t *n, *rr;
-	uint32_t *tmp_buf = NULL;
-
-	if (out_key_is_trusted == NULL)
-		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
-
-	*out_key_is_trusted = false;
-	key_data = vb2_member_of(sd, sd->kernel_key_offset);
-	key_size = sd->kernel_key_size;
-	vb2_unpack_key_buffer(&kernel_key, key_data, key_size);
-
-	/*
-	 * Convert key format stored in the vbmeta image - it has different
-	 * endianness and size units compared to the kernel_subkey stored in
-	 * flash
-	 */
-	if (!avb_rsa_public_key_header_validate_and_byteswap(
-		(const AvbRSAPublicKeyHeader *)public_key_data, &h)) {
-		avb_error("Invalid vbmeta pulic key\n");
-		goto out;
-	}
-
-	/* Kernel key length is stored as number of uint32_t */
-	avb_key_len = h.key_num_bits / 32;
-
-	if (kernel_key.arrsize != avb_key_len) {
-		avb_error("Mismatch in key length!\n");
-		goto out;
-	}
-
-	if (kernel_key.n0inv != h.n0inv) {
-		avb_error("Mismatch in n0inv value!\n");
-		goto out;
-	}
-
-	tmp_buf = malloc(h.key_num_bits / 8);
-
-	n = public_key_data + sizeof(AvbRSAPublicKeyHeader);
-	for (int i = 0; i < avb_key_len; i++)
-		tmp_buf[i] = avb_be32toh(((uint32_t *)n)[avb_key_len - 1 - i]);
-
-	if (memcmp(kernel_key.n, tmp_buf, kernel_key.arrsize)) {
-		avb_error("Mismatch in n key component!\n");
-		goto out;
-	}
-
-	rr = public_key_data + sizeof(AvbRSAPublicKeyHeader) + h.key_num_bits / 8;
-	for (int i = 0; i < avb_key_len; i++)
-		tmp_buf[i] = avb_be32toh(((uint32_t *)rr)[avb_key_len - 1 - i]);
-
-	if (memcmp(kernel_key.rr, tmp_buf, kernel_key.arrsize)) {
-		avb_error("Mismatch in rr key component!\n");
-		goto out;
-	}
-
-	*out_key_is_trusted = true;
-
-out:
-	free(tmp_buf);
-	return AVB_IO_RESULT_OK;
-}
-
 static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 				  struct vb2_kernel_params *params,
 				  vb2ex_disk_handle_t disk_handle,
@@ -641,6 +565,85 @@ static AvbIOResult get_size_of_partition(AvbOps *ops,
 
 	*out_size = GptGetEntrySizeBytes(avbctx->gpt, e);
 
+	return AVB_IO_RESULT_OK;
+}
+
+static AvbIOResult validate_vbmeta_public_key(AvbOps *ops,
+					      const uint8_t *public_key_data,
+					      size_t public_key_length,
+					      const uint8_t *public_key_metadata,
+					      size_t public_key_metadata_length,
+					      bool *out_key_is_trusted)
+{
+	struct vboot_avb_ctx *avbctx = user_data(ops);
+	struct vb2_shared_data *sd = vb2_get_sd(avbctx->vb2_ctx);
+	struct vb2_public_key kernel_key;
+	AvbRSAPublicKeyHeader h;
+	uint8_t *key_data;
+	uint32_t key_size;
+	uint32_t arrsize;
+	const uint32_t *avb_n, *avb_rr;
+	vb2_error_t rv;
+
+	*out_key_is_trusted = false;
+	key_data = vb2_member_of(sd, sd->kernel_key_offset);
+	key_size = sd->kernel_key_size;
+	rv = vb2_unpack_key_buffer(&kernel_key, key_data, key_size);
+	if (rv != VB2_SUCCESS) {
+		VB2_DEBUG("Problem with unpacking key buffer: %#x\n", rv);
+		goto out;
+	}
+
+	/*
+	 * Convert key format stored in the vbmeta image - it has different
+	 * endianness and size units compared to the kernel key stored in
+	 * flash
+	 */
+	if (public_key_length < sizeof(AvbRSAPublicKeyHeader)) {
+		VB2_DEBUG("Public key length too small: %zu\n", public_key_length);
+		goto out;
+	}
+
+	if (!avb_rsa_public_key_header_validate_and_byteswap(
+		(const AvbRSAPublicKeyHeader *)public_key_data, &h)) {
+		VB2_DEBUG("Invalid vbmeta public key\n");
+		goto out;
+	}
+
+	if (public_key_length < sizeof(AvbRSAPublicKeyHeader) + h.key_num_bits / 8 * 2) {
+		VB2_DEBUG("Invalid vbmeta public key length: %zu, key_num_bits: %d\n",
+			  public_key_length, h.key_num_bits);
+		goto out;
+	}
+
+	arrsize = kernel_key.arrsize;
+	if (arrsize != (h.key_num_bits / 32)) {
+		VB2_DEBUG("Mismatch in key length! arrsize: %u key_num_bits: %u\n",
+			  arrsize, h.key_num_bits);
+		goto out;
+	}
+
+	if (kernel_key.n0inv != h.n0inv) {
+		VB2_DEBUG("Mismatch in n0inv value: %x! Expected: %x\n",
+			  h.n0inv, kernel_key.n0inv);
+		goto out;
+	}
+
+	avb_n = (uint32_t *)(public_key_data + sizeof(AvbRSAPublicKeyHeader));
+	avb_rr = avb_n + arrsize;
+	for (int i = 0; i < arrsize; i++) {
+		if (kernel_key.n[i] != be32toh(avb_n[arrsize - 1 - i])) {
+			VB2_DEBUG("Mismatch in n key component!\n");
+			goto out;
+		}
+		if (kernel_key.rr[i] != be32toh(avb_rr[arrsize - 1 - i])) {
+			VB2_DEBUG("Mismatch in rr key component!\n");
+			goto out;
+		}
+	}
+
+	*out_key_is_trusted = true;
+out:
 	return AVB_IO_RESULT_OK;
 }
 
