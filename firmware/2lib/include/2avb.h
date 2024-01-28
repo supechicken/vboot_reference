@@ -6,6 +6,7 @@
 #ifndef VBOOT_REFERENCE_2AVB_H_
 #define VBOOT_REFERENCE_2AVB_H_
 
+#include "2api.h"
 #include "2common.h"
 #include "gpt_misc.h"
 #include "vboot_api.h"
