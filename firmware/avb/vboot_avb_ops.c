@@ -176,6 +176,80 @@ static AvbIOResult get_unique_guid_for_partition(AvbOps *ops,
 	return AVB_IO_RESULT_OK;
 }
 
+static AvbIOResult validate_vbmeta_public_key(AvbOps *ops,
+					      const uint8_t *public_key_data,
+					      size_t public_key_length,
+					      const uint8_t *public_key_metadata,
+					      size_t public_key_metadata_length,
+					      bool *out_key_is_trusted)
+{
+	struct vboot_avb_data *avbctx = (struct vboot_avb_data *)ops->user_data;
+	struct vb2_shared_data *sd = vb2_get_sd(avbctx->vb2_ctx);
+	struct vb2_public_key kernel_key;
+	AvbRSAPublicKeyHeader h;
+	uint8_t *key_data;
+	uint32_t key_size;
+	uint32_t arrsize;
+	const uint32_t *avb_n, *avb_rr;
+	vb2_error_t vb2_err;
+
+	if (out_key_is_trusted == NULL)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
+
+	*out_key_is_trusted = false;
+	key_data = vb2_member_of(sd, sd->kernel_key_offset);
+	key_size = sd->kernel_key_size;
+	vb2_err = vb2_unpack_key_buffer(&kernel_key, key_data, key_size);
+	if (vb2_err != VB2_SUCCESS) {
+		VB2_DEBUG("Problem with unpacking key buffer: %d\n", vb2_err);
+		goto out;
+	}
+
+	/*
+	 * Convert key format stored in the vbmeta image - it has different
+	 * endianness and size units compared to the kernel_subkey stored in
+	 * flash
+	 */
+	if (!avb_rsa_public_key_header_validate_and_byteswap(
+		(const AvbRSAPublicKeyHeader *)public_key_data, &h)) {
+		VB2_DEBUG("Invalid vbmeta public key\n");
+		goto out;
+	}
+
+	if (public_key_length < sizeof(AvbRSAPublicKeyHeader) + h.key_num_bits / 8 * 2) {
+		VB2_DEBUG("Invalid vbmeta public key length\n");
+		goto out;
+	}
+
+	arrsize = kernel_key.arrsize;
+	if (arrsize != (h.key_num_bits / 32)) {
+		VB2_DEBUG("Mismatch in key length!\n");
+		goto out;
+	}
+
+	if (kernel_key.n0inv != h.n0inv) {
+		VB2_DEBUG("Mismatch in n0inv value!\n");
+		goto out;
+	}
+
+	avb_n = (uint32_t *)(public_key_data + sizeof(AvbRSAPublicKeyHeader));
+	avb_rr = (uint32_t *)(public_key_data + sizeof(AvbRSAPublicKeyHeader)) + arrsize;
+	for (int i = 0; i < arrsize; i++) {
+		if (kernel_key.n[i] != be32toh(avb_n[arrsize - 1 - i])) {
+			VB2_DEBUG("Mismatch in n key component!\n");
+			goto out;
+		}
+		if (kernel_key.rr[i] != be32toh(avb_rr[arrsize - 1 - i])) {
+			VB2_DEBUG("Mismatch in rr key component!\n");
+			goto out;
+		}
+	}
+
+	*out_key_is_trusted = true;
+out:
+	return AVB_IO_RESULT_OK;
+}
+
 /*
  * Initialize platform callbacks used within libavb.
  *
@@ -198,6 +272,7 @@ AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 	avb_ops.read_is_device_unlocked = vboot_avb_read_is_device_unlocked;
 	avb_ops.read_rollback_index = vboot_avb_read_rollback_index;
 	avb_ops.get_unique_guid_for_partition = get_unique_guid_for_partition;
+	avb_ops.validate_vbmeta_public_key = validate_vbmeta_public_key;
 
 	return &avb_ops;
 }
