@@ -615,10 +615,20 @@ struct vb2_kernel_params {
 	uint8_t partition_guid[16];
 	/* Flags set by signer. */
 	uint32_t flags;
-	/* Android vendor_boot partition offset (in bytes) in kernel_buffer. */
-	uint32_t vendor_boot_offset;
-	/* Android init_boot partition offset (in bytes) in kernel_buffer. */
-	uint32_t init_boot_offset;
+	/* Size of Android boot partition (in bytes). */
+	size_t android_boot_size;
+	/* Android vendor_boot partition address. */
+	void *vendor_boot_buffer;
+	/* Size of Android vendor_boot partition (in bytes). */
+	size_t vendor_boot_size;
+	/* Android init_boot partition address. */
+	void *init_boot_buffer;
+	/* Size of Android init_boot partition (in bytes). */
+	size_t init_boot_size;
+	/* Address of the region with kernel cmdline parameters. */
+	char *vboot_cmdline_buffer;
+	/* Size of the region with kernel cmdline parameters. */
+	uint32_t vboot_cmdline_size;
 };
 
 /*****************************************************************************/

@@ -9,13 +9,16 @@
 
 #include "2avb.h"
 #include "2common.h"
+#include "2load_android_kernel.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2secdata.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
+#include "vb2_android_bootimg.h"
 
 struct vboot_avb_data {
+	struct vb2_kernel_params *params;
 	GptData *gpt;
 	vb2ex_disk_handle_t disk_handle;
 	struct vb2_context *vb2_ctx;
@@ -251,20 +254,71 @@ out:
 }
 
 /*
+ * Instead of using heap (huge allocations) lets use the buffer which is intended
+ * to have kernel and ramdisk images anyway.
+ * */
+static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
+				       const char *partition,
+				       size_t num_bytes,
+				       uint8_t **out_pointer,
+				       size_t *out_num_bytes_preloaded)
+{
+	struct vboot_avb_data *avbctx = (struct vboot_avb_data *)ops->user_data;
+	const char *suffix;
+	size_t namelen;
+	int ret = AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+
+	/*
+	 * Only load the partitions with suffix matching to the currently
+	 * selected slot.
+	 */
+	suffix = avbctx->params->current_android_slot_suffix;
+	if (strcmp(&partition[strlen(partition) - strlen(suffix)], suffix))
+		return ret;
+
+	/*
+	 * Below we only need to compare partition name without suffix, since
+	 * the suffix is already verified above.
+	 */
+	namelen = strlen(partition) - strlen(suffix);
+
+	*out_pointer = NULL;
+	if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_BOOT], namelen)) {
+		*out_pointer = (uint8_t *)avbctx->params->kernel_buffer;
+		*out_num_bytes_preloaded = avbctx->params->android_boot_size;
+		return AVB_IO_RESULT_OK;
+	} else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_VENDOR_BOOT], namelen)) {
+		*out_pointer = (uint8_t *)avbctx->params->vendor_boot_buffer;
+		*out_num_bytes_preloaded = avbctx->params->vendor_boot_size;
+		return AVB_IO_RESULT_OK;
+	} else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_INIT_BOOT], namelen)) {
+		*out_pointer = (uint8_t *)avbctx->params->init_boot_buffer;
+		*out_num_bytes_preloaded = avbctx->params->init_boot_size;
+		return AVB_IO_RESULT_OK;
+	}
+
+	return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+}
+
+/*
  * Initialize platform callbacks used within libavb.
  *
  * @param  vb2_ctx     Vboot context
+ * @param  params      Vboot kernel parameters
  * @param  gpt         Pointer to gpt struct correlated with boot disk
  * @param  disk_handle Handle to boot disk
  * @return pointer to AvbOps structure which should be used for invocation of
  *         libavb methods.
  */
 AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
-			  GptData *gpt)
+			  struct vb2_kernel_params *params,
+			  GptData *gpt,
+			  vb2ex_disk_handle_t disk_handle)
 {
 	vboot_avb.gpt = gpt;
-	vboot_avb.vb2_ctx = vb2_ctx;
+	vboot_avb.params = params;
 	vboot_avb.disk_handle = disk_handle;
+	vboot_avb.vb2_ctx = vb2_ctx;
 	avb_ops.user_data = &vboot_avb;
 
 	avb_ops.read_from_partition = vboot_avb_read_from_partition;
@@ -273,6 +327,7 @@ AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 	avb_ops.read_rollback_index = vboot_avb_read_rollback_index;
 	avb_ops.get_unique_guid_for_partition = get_unique_guid_for_partition;
 	avb_ops.validate_vbmeta_public_key = validate_vbmeta_public_key;
+	avb_ops.get_preloaded_partition = vboot_avb_get_preloaded_partition;
 
 	return &avb_ops;
 }
