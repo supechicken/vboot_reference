@@ -21,6 +21,8 @@
  * @param  stream      Open stream to kernel partition
  * @param  gpt         Pointer to gpt struct correlated with boot disk
  * @param  disk_handle Handle to boot disk
+ * @param  slot_suffix Suffix of active partition
+ * @param  legacy      Indicates if we use legacy Android boot flow
  * @return pointer to AvbOps structure which should be used for invocation of
  *         libavb methods.
  */
@@ -28,7 +30,9 @@ AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 			  struct vb2_kernel_params *params,
 			  VbExStream_t stream,
 			  GptData *gpt,
-			  vb2ex_disk_handle_t disk_handle);
+			  vb2ex_disk_handle_t disk_handle,
+			  const char *slot_suffix,
+			  bool legacy);
 
 /*
  * Free structure associated with AvbOps structure.
