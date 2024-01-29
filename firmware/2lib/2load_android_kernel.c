@@ -227,7 +227,7 @@ vb2_error_t vb2_load_android_kernel(
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
 	}
 
-	avb_ops = vboot_avb_ops_new(ctx, params, stream, gpt, disk_handle);
+	avb_ops = vboot_avb_ops_new(ctx, params, stream, gpt, disk_handle, ab_suffix, true);
 	if (avb_ops == NULL) {
 		free(ab_suffix);
 		VB2_DEBUG("Cannot allocate memory for AVB ops\n");
