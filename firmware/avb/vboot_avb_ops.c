@@ -9,17 +9,24 @@
 
 #include "2avb.h"
 #include "2common.h"
+#include "2load_android_kernel.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2secdata.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
+#include "vb2_android_bootimg.h"
 
 struct vboot_avb_data {
 	GptData *gpt;
 	vb2ex_disk_handle_t disk_handle;
+	struct vb2_kernel_params *params;
+	const char *slot_suffix;
 	struct vb2_context *vb2_ctx;
 };
+
+/* Android partitions address & sizes */
+struct android_part parts[GPT_ANDROID_PRELOADED_NUM];
 
 static AvbOps avb_ops;
 static struct vboot_avb_data vboot_avb;
@@ -29,24 +36,19 @@ static inline struct vboot_avb_data *user_data(AvbOps *ops)
 	return ops->user_data;
 }
 
-static AvbIOResult read_from_partition(AvbOps *ops,
-				       const char *partition_name,
-				       int64_t offset_from_partition,
-				       size_t num_bytes,
-				       void *buf,
-				       size_t *out_num_read)
+static vb2_error_t vb2_load_android_partition(GptData *gpt, vb2ex_disk_handle_t dh,
+					      const char *partition_name,
+					      int64_t offset_from_partition,
+					      size_t num_bytes, void *buf, size_t *out_num_read)
 {
-	struct vboot_avb_data *avbctx;
 	VbExStream_t stream;
 	uint64_t part_bytes, part_start_sector;
 	uint64_t start_sector, sectors_to_read;
 	uint32_t sector_bytes;
-	GptData *gpt;
 	GptEntry *e;
 
-	avbctx = user_data(ops);
-	gpt = avbctx->gpt;
-	*out_num_read = 0;
+	if (out_num_read)
+		*out_num_read = 0;
 
 	e = GptFindEntryByName(gpt, partition_name, NULL);
 	if (e == NULL) {
@@ -85,8 +87,7 @@ static AvbIOResult read_from_partition(AvbOps *ops,
 	start_sector = part_start_sector +  offset_from_partition / sector_bytes;
 	sectors_to_read = num_bytes / sector_bytes;
 
-	if (VbExStreamOpen(avbctx->disk_handle, start_sector, sectors_to_read,
-			   &stream)) {
+	if (VbExStreamOpen(dh, start_sector, sectors_to_read, &stream)) {
 		VB2_DEBUG("Unable to open disk handle\n");
 		return AVB_IO_RESULT_ERROR_IO;
 	}
@@ -99,6 +100,128 @@ static AvbIOResult read_from_partition(AvbOps *ops,
 	*out_num_read = num_bytes;
 
 	VbExStreamClose(stream);
+
+	return AVB_IO_RESULT_OK;
+}
+
+static AvbIOResult read_from_partition(AvbOps *ops,
+				       const char *partition_name,
+				       int64_t offset_from_partition,
+				       size_t num_bytes,
+				       void *buf,
+				       size_t *out_num_read)
+{
+	struct vboot_avb_data *avbctx = user_data(ops);
+
+	return vb2_load_android_partition(avbctx->gpt, avbctx->disk_handle, partition_name,
+					  offset_from_partition, num_bytes, buf, out_num_read);
+}
+
+static vb2_error_t get_partition_size(GptData *gpt, enum GptPartition name,
+				      const char *suffix, uint64_t *size)
+{
+	GptEntry *e = GptFindEntryByName(gpt, GptPartitionNames[name], suffix);
+	if (!e) {
+		VB2_DEBUG("Unable to find %s%s\n", GptPartitionNames[name], suffix);
+		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
+	}
+
+	*size = GptGetEntrySizeBytes(gpt, e);
+
+	return VB2_SUCCESS;
+}
+
+vb2_error_t vboot_android_reserve_buffers(struct vb2_kernel_params *params, GptData *gpt,
+				  const char *slot_suffix, vb2ex_disk_handle_t disk_handle)
+{
+	uint64_t size;
+	vb2_error_t err;
+
+	parts[GPT_ANDROID_BOOT].buffer = params->kernel_buffer;
+	err = get_partition_size(gpt, GPT_ANDROID_BOOT, slot_suffix, &size);
+	if (err)
+		return err;
+	parts[GPT_ANDROID_BOOT].size = size;
+	VB2_DEBUG("Reserved buffer 'boot' %p[%lx]\n", parts[GPT_ANDROID_BOOT].buffer,
+		  parts[GPT_ANDROID_BOOT].size);
+
+	parts[GPT_ANDROID_VENDOR_BOOT].buffer = params->kernel_buffer + size;
+	err = get_partition_size(gpt, GPT_ANDROID_VENDOR_BOOT, slot_suffix, &size);
+	if (err)
+		return err;
+	parts[GPT_ANDROID_VENDOR_BOOT].size = size;
+	VB2_DEBUG("Reserve buffer for 'vendor_boot' %p[%lx]\n",
+		   parts[GPT_ANDROID_VENDOR_BOOT].buffer,
+		   parts[GPT_ANDROID_VENDOR_BOOT].size);
+
+	parts[GPT_ANDROID_INIT_BOOT].buffer = parts[GPT_ANDROID_VENDOR_BOOT].buffer + size;
+	err = get_partition_size(gpt, GPT_ANDROID_INIT_BOOT, slot_suffix, &size);
+	if (err)
+		return err;
+	parts[GPT_ANDROID_INIT_BOOT].size = size;
+	VB2_DEBUG("Reserve buffer for `init_boot` %p[%lx\n",
+		   parts[GPT_ANDROID_INIT_BOOT].buffer,
+		   parts[GPT_ANDROID_INIT_BOOT].size);
+
+	if (params->pvmfw_buffer_size) {
+		parts[GPT_ANDROID_PVMFW].buffer = params->pvmfw_buffer;
+		parts[GPT_ANDROID_PVMFW].size = 0;
+		VB2_DEBUG("init_boot partition %p\n", parts[GPT_ANDROID_PVMFW].buffer);
+	}
+
+	return VB2_SUCCESS;
+}
+
+
+/*
+ * Instead of using heap (huge allocations) lets use the buffer which is intended
+ * to have kernel and ramdisk images anyway.
+ * */
+static AvbIOResult get_preloaded_partition(AvbOps *ops,
+					   const char *partition,
+					   size_t num_bytes,
+					   uint8_t **out_pointer,
+					   size_t *out_num_bytes_preloaded)
+{
+	struct vboot_avb_data *avbctx = user_data(ops);
+	GptData *gpt = avbctx->gpt;
+	vb2ex_disk_handle_t disk_handle = avbctx->disk_handle;
+	enum GptPartition gpt_part;
+	int err;
+
+	*out_pointer = NULL;
+
+	const char *suffix = strrchr(partition, '_');
+	if (!suffix || strcmp(suffix, avbctx->slot_suffix) != 0)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+
+	size_t namelen = suffix - partition;
+
+	if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_BOOT], namelen))
+		gpt_part = GPT_ANDROID_BOOT;
+	else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_VENDOR_BOOT], namelen))
+		gpt_part = GPT_ANDROID_VENDOR_BOOT;
+	else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_INIT_BOOT], namelen))
+		gpt_part = GPT_ANDROID_INIT_BOOT;
+	else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_PVMFW], namelen))
+		gpt_part = GPT_ANDROID_PVMFW;
+	else
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+
+	if (num_bytes > parts[gpt_part].size) {
+		VB2_DEBUG("Try to load too many bytes (%ld) into buffer of size (%ld) for %s\n",
+		    num_bytes, parts[gpt_part].size, partition);
+		return AVB_IO_RESULT_ERROR_INSUFFICIENT_SPACE;
+	}
+
+	*out_pointer = parts[gpt_part].buffer;
+	err = vb2_load_android_partition(gpt, disk_handle, partition, 0, num_bytes,
+					 *out_pointer, NULL);
+	if (err)
+		return err;
+
+	*out_num_bytes_preloaded = num_bytes;
+	VB2_DEBUG("Load %s into %p bytes:%lx\n", partition, *out_pointer, num_bytes);
 
 	return AVB_IO_RESULT_OK;
 }
@@ -193,7 +316,7 @@ static AvbIOResult validate_vbmeta_public_key(AvbOps *ops,
 					      size_t public_key_metadata_length,
 					      bool *out_key_is_trusted)
 {
-	struct vboot_avb_data *avbctx = (struct vboot_avb_data *)ops->user_data;
+	struct vboot_avb_data *avbctx = user_data(ops);
 	struct vb2_shared_data *sd = vb2_get_sd(avbctx->vb2_ctx);
 	struct vb2_public_key kernel_key;
 	AvbRSAPublicKeyHeader h;
@@ -254,6 +377,7 @@ static AvbIOResult validate_vbmeta_public_key(AvbOps *ops,
 
 	*out_key_is_trusted = true;
 out:
+
 	return AVB_IO_RESULT_OK;
 }
 
@@ -261,20 +385,27 @@ out:
  * Initialize platform callbacks used within libavb.
  *
  * @param  vb2_ctx     Vboot context
+ * @param  params      Vboot kernel parameters
  * @param  gpt         Pointer to gpt struct correlated with boot disk
  * @param  disk_handle Handle to boot disk
  * @return pointer to AvbOps structure which should be used for invocation of
  *         libavb methods.
  */
 AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
-			  GptData *gpt)
+			  struct vb2_kernel_params *params,
+			  GptData *gpt,
+			  vb2ex_disk_handle_t disk_handle,
+			  const char *slot_suffix)
 {
 	vboot_avb.gpt = gpt;
-	vboot_avb.vb2_ctx = vb2_ctx;
 	vboot_avb.disk_handle = disk_handle;
+	vboot_avb.params = params;
+	vboot_avb.slot_suffix = slot_suffix;
+	vboot_avb.vb2_ctx = vb2_ctx;
 	avb_ops.user_data = &vboot_avb;
 
 	avb_ops.read_from_partition = read_from_partition;
+	avb_ops.get_preloaded_partition = get_preloaded_partition;
 	avb_ops.read_rollback_index = read_rollback_index;
 	avb_ops.read_is_device_unlocked = read_is_device_unlocked;
 	avb_ops.get_unique_guid_for_partition = get_unique_guid_for_partition;

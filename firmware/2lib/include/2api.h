@@ -613,8 +613,22 @@ struct vb2_kernel_params {
 	uint32_t bootloader_size;
 	/* UniquePartitionGuid for boot partition. */
 	uint8_t partition_guid[16];
-	/* Flags set by signer. */
+	/* Flags with kernel type. */
 	uint32_t flags;
+	/* Ramdisk address */
+	uint8_t *ramdisk;
+	/* Size of the ramdisk */
+	size_t ramdisk_size;
+	/* Bootconfig address */
+	void *bootconfig;
+	/* Size of the bootconfig */
+	size_t bootconfig_size;
+	/* Pointer to Android vendor command line buffer */
+	char *vendor_cmdline_buffer;
+	/* Address of the region with kernel cmdline parameters. */
+	char *vboot_cmdline_buffer;
+	/* Size of the region with kernel cmdline parameters. */
+	uint32_t vboot_cmdline_size;
 };
 
 /*****************************************************************************/
