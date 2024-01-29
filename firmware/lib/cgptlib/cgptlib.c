@@ -11,6 +11,15 @@
 #include "gpt.h"
 #include "vboot_api.h"
 
+const char *GptPartitionNames[] = {
+	[GPT_ANDROID_BOOT] = "boot",
+	[GPT_ANDROID_INIT_BOOT] = "init_boot",
+	[GPT_ANDROID_VENDOR_BOOT] = "vendor_boot",
+	[GPT_ANDROID_PVMFW] = "pvmfw",
+	[GPT_ANDROID_MISC] = "misc",
+	[GPT_ANDROID_VBMETA] = "vbmeta",
+};
+
 bool GptEntryHasName(GptEntry *entry, const char *name,  const char *opt_suffix)
 {
 	for (int i = 0; i < ARRAY_SIZE(entry->name); i++) {

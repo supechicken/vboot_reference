@@ -9,15 +9,19 @@
 
 #include "2avb.h"
 #include "2common.h"
+#include "2load_android_kernel.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2secdata.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
+#include "vb2_android_bootimg.h"
 
 struct vboot_avb_data {
 	GptData *gpt;
 	vb2ex_disk_handle_t disk_handle;
+	struct vb2_kernel_params *params;
+	const char *slot_suffix;
 	struct vb2_context *vb2_ctx;
 };
 
@@ -103,6 +107,43 @@ static AvbIOResult read_from_partition(AvbOps *ops,
 	VbExStreamClose(stream);
 
 	return AVB_IO_RESULT_OK;
+}
+
+/*
+ * Instead of using heap (huge allocations) lets use the buffer which is intended
+ * to have kernel and ramdisk images anyway.
+ * */
+static AvbIOResult get_preloaded_partition(AvbOps *ops,
+					   const char *partition,
+					   size_t num_bytes,
+					   uint8_t **out_pointer,
+					   size_t *out_num_bytes_preloaded)
+{
+	struct vboot_avb_data *avbctx = user_data(ops);
+
+	*out_pointer = NULL;
+
+	const char *suffix = strrchr(partition, '_');
+	if (!suffix || strcmp(suffix, avbctx->slot_suffix) != 0)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+
+	size_t namelen = suffix - partition;
+
+	if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_BOOT], namelen)) {
+		*out_pointer = (uint8_t *)avbctx->params->kernel_buffer;
+		*out_num_bytes_preloaded = avbctx->params->android_boot_size;
+		return AVB_IO_RESULT_OK;
+	} else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_VENDOR_BOOT], namelen)) {
+		*out_pointer = (uint8_t *)avbctx->params->vendor_boot_buffer;
+		*out_num_bytes_preloaded = avbctx->params->vendor_boot_size;
+		return AVB_IO_RESULT_OK;
+	} else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_INIT_BOOT], namelen)) {
+		*out_pointer = (uint8_t *)avbctx->params->init_boot_buffer;
+		*out_num_bytes_preloaded = avbctx->params->init_boot_size;
+		return AVB_IO_RESULT_OK;
+	}
+
+	return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
 }
 
 static AvbIOResult read_rollback_index(AvbOps *ops,
@@ -264,20 +305,27 @@ out:
  * Initialize platform callbacks used within libavb.
  *
  * @param  vb2_ctx     Vboot context
+ * @param  params      Vboot kernel parameters
  * @param  gpt         Pointer to gpt struct correlated with boot disk
  * @param  disk_handle Handle to boot disk
  * @return pointer to AvbOps structure which should be used for invocation of
  *         libavb methods.
  */
 AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
-			  GptData *gpt)
+			  struct vb2_kernel_params *params,
+			  GptData *gpt,
+			  vb2ex_disk_handle_t disk_handle,
+			  const char *slot_suffix)
 {
 	vboot_avb.gpt = gpt;
 	vboot_avb.disk_handle = disk_handle;
+	vboot_avb.params = params;
+	vboot_avb.slot_suffix = slot_suffix;
 	vboot_avb.vb2_ctx = vb2_ctx;
 	avb_ops.user_data = &vboot_avb;
 
 	avb_ops.read_from_partition = read_from_partition;
+	avb_ops.get_preloaded_partition = get_preloaded_partition;
 	avb_ops.read_rollback_index = read_rollback_index;
 	avb_ops.read_is_device_unlocked = read_is_device_unlocked;
 	avb_ops.get_unique_guid_for_partition = get_unique_guid_for_partition;
