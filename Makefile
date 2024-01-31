@@ -516,7 +516,7 @@ ALL_OBJS += ${UTILLIB_OBJS}
 
 # Externally exported library for some target userspace apps to link with
 # (cryptohome, updater, etc.)
-HOSTLIB = ${BUILD}/libvboot_host.a
+HOSTLIB = ${BUILD}/libvboot_host.so
 
 HOSTLIB_SRCS = \
 	cgpt/cgpt_add.c \
@@ -961,6 +961,7 @@ ${TLCL}: ${TLCL_OBJS}
 
 # Some UTILLIB files need dlopen(), doesn't hurt to just link it everywhere.
 LDLIBS += -ldl
+${HOSTLIB}: LDLIBS += ${FLASHROM_LIBS}
 
 .PHONY: utillib
 utillib: ${UTILLIB}
@@ -975,12 +976,11 @@ ${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${TLCL_OBJS}
 .PHONY: hostlib
 hostlib: ${HOSTLIB}
 
-# TODO: better way to make .a than duplicating this recipe each time?
-${HOSTLIB}: ${HOSTLIB_OBJS}
+${HOSTLIB}: ${HOSTLIB_OBJS} ${FWLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
-	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
+	@${PRINTF} "    LINK          $(subst ${BUILD}/,,$@)\n"
+	${Q}$(LD) $(LDFLAGS) ${LDLIBS} -shared -Wl,-soname,$(subst ${BUILD}/,,$@) $^ -o $@
 
 .PHONY: headers_install
 headers_install:
