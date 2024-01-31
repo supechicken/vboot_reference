@@ -8,6 +8,10 @@
 #ifndef VBOOT_REFERENCE_2PACKED_KEY_H_
 #define VBOOT_REFERENCE_2PACKED_KEY_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * Unpack a vboot1-format key buffer for use in verification
  *
@@ -35,5 +39,9 @@ vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
  */
 vb2_error_t vb2_unpack_key(struct vb2_public_key *key,
 			   const struct vb2_packed_key *packed_key);
+
+#ifdef __cplusplus
+}  /* extern "C" */
+#endif
 
 #endif  /* VBOOT_REFERENCE_2PACKED_KEY_H_ */
