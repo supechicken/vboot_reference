@@ -17,6 +17,10 @@
 #include "cgptlib.h"
 #include "gpt.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct legacy_partition {
   uint8_t  status;
   uint8_t  f_head;
@@ -208,5 +212,9 @@ const char *GptError(int errnum);
             #A, __FILE__, __LINE__); \
     exit(1); } \
   } while (0)
+
+#ifdef __cplusplus
+}  /* extern "C" */
+#endif
 
 #endif  /* VBOOT_REFERENCE_CGPT_H_ */
