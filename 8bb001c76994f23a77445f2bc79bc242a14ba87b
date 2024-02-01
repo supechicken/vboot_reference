@@ -50,6 +50,64 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8757317157827396465) is being automatically retried for the following reasons:\n- Some child builders are now retryable:elm-kernelnext-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5786ec0_92e05234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-01T21:15:41Z",
+      "side": 1,
+      "message": "For the upstream coreboot build it should still build everything static by default. But you could look into adding an optional flag to make it dynamic and using that for coreboot-utils if you want to. Some utilities are used in a number of tricky environments like postinst and recovery initramfs, though, so I\u0027m not sure if dynamic libraries are supported or a good idea in all of those.",
+      "parentUuid": "34b7c9ff_f285f516",
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b9da28_cbb991b4",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-01T21:15:41Z",
+      "side": 1,
+      "message": "Why FWLIB_OBJS? The parts of the firmware/ directory that are needed for hostlib should be mentioned separately in HOSTLIB_SRCS.",
+      "range": {
+        "startLine": 989,
+        "startChar": 30,
+        "endLine": 989,
+        "endChar": 40
+      },
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0514584a_192d5984",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-01T21:15:41Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we still install the static version as well?",
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
