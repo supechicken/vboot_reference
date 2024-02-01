@@ -33,6 +33,23 @@
       "message": "Nice!",
       "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf0498c_bbc75c13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-02-01T19:36:36Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8757317157827396465) is being automatically retried for the following reasons:\n- Some child builders are now retryable:elm-kernelnext-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
