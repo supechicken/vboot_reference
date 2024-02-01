@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34b7c9ff_f285f516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-01T09:02:08Z",
+      "side": 1,
+      "message": "Yu-Ping, I kept the static library for coreboot-utils, since it forces a compilation of vboot_host with flashrom support disabled. Is still needed when vboot_host is a dynamic library?",
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
