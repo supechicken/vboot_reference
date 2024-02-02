@@ -528,27 +528,6 @@ HOSTLIB_SRCS = \
 	cgpt/cgpt_prioritize.c \
 	cgpt/cgpt_repair.c \
 	cgpt/cgpt_show.c \
-	firmware/2lib/2common.c \
-	firmware/2lib/2context.c \
-	firmware/2lib/2crc8.c \
-	firmware/2lib/2crypto.c \
-	firmware/2lib/2hmac.c \
-	firmware/2lib/2kernel.c \
-	firmware/2lib/2nvstorage.c \
-	firmware/2lib/2recovery_reasons.c \
-	firmware/2lib/2rsa.c \
-	firmware/2lib/2sha1.c \
-	firmware/2lib/2sha256.c \
-	firmware/2lib/2sha512.c \
-	firmware/2lib/2sha_utility.c \
-	firmware/2lib/2struct.c \
-	firmware/2lib/2stub.c \
-	firmware/2lib/2stub_hwcrypto.c \
-	firmware/lib/cgptlib/cgptlib_internal.c \
-	firmware/lib/cgptlib/crc32.c \
-	firmware/lib/gpt_misc.c \
-	firmware/stub/tpm_lite_stub.c \
-	firmware/stub/vboot_api_stub_disk.c \
 	futility/dump_kernel_config_lib.c \
 	$(CROSSYSTEM_ARCH_C) \
 	host/lib/chromeos_config.c \
@@ -559,7 +538,8 @@ HOSTLIB_SRCS = \
 	host/lib/fmap.c \
 	host/lib/host_misc.c \
 	host/lib21/host_misc.c \
-	${TLCL_SRCS}
+	${TLCL_SRCS} \
+	${FWLIB_SRCS}
 
 ifneq ($(filter-out 0,${GPT_SPI_NOR}),)
 HOSTLIB_SRCS += cgpt/cgpt_nor.c
