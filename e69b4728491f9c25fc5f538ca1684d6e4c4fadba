@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "654c477e_2c978210",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2024-02-02T16:42:16Z",
+      "side": 1,
+      "message": "A fair question. There\u0027s a lot of code duplication in these scripts, and really all of them should probably be rewritten in Python or something more easily tested. Most of the duplication for the new script here is boilerplate argparse stuff, so my inclination is to leave as-is, but if a shell-script person has suggestions I\u0027m open to changes.",
+      "parentUuid": "24c42c13_1d09676d",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b13bc333_781c8640",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31762d9b_6ab1aab5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2024-02-02T16:42:16Z",
+      "side": 1,
+      "message": "I will add another reviewer.",
+      "parentUuid": "449ba209_b422dd7a",
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcd8fd2a_898493da",
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b660f66_6b069770",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2024-02-02T16:42:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd8fd2a_898493da",
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72091169_44799495",
@@ -105,6 +165,30 @@
       "writtenOn": "2024-02-02T10:06:19Z",
       "side": 1,
       "message": "nit: alphabetical sort",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 69
+      },
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2c931c_59808562",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2024-02-02T16:42:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72091169_44799495",
       "range": {
         "startLine": 218,
         "startChar": 0,
