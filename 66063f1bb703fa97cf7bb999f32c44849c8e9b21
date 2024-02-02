@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64533462_b660f5d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-02T18:47:24Z",
+      "side": 1,
+      "message": "I also removed the extern declaration: I first thought it was the cause of linking errors, but the problem was elsewhere.",
+      "revId": "66063f1bb703fa97cf7bb999f32c44849c8e9b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
