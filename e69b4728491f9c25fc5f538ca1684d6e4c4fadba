@@ -77,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcd8fd2a_898493da",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2024-02-02T15:46:03Z",
+      "side": 1,
+      "message": "One is --output, one is --output_dir. Should they match?",
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72091169_44799495",
         "filename": "scripts/keygeneration/create_new_keys.sh",
         "patchSetId": 5
