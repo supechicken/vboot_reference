@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e11637_c193efef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-02T23:18:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a good idea. We only want to pull the stuff into hostlib that is generic utility code which makes sense in a userspace context. Some of the other stuff in there (e.g. 2api.c or 2load_kernel.c) really make no sense outside the firmware, and would at best be dead weight in the .so, at worst do weird and wrong things if someone accidentally tries to call them. (2kernel.c is actually also one of those, not sure how it snuck into hostlib, we should probably take it out.)\n\nI know we need to get better at organizing sources (would probably be best to split those two kinds of files into separate directories for a cleaner separation), but this patch would basically go the other way and throw it all together to forever become hopelessly entangled.\n\nI don\u0027t know, Yu-Ping, what do you think?",
+      "revId": "90b185518bfd937002a8718a7af69c9ab8c5cda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
