@@ -150,6 +150,24 @@
       "parentUuid": "0514584a_192d5984",
       "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815ca0c0_80b6bad6",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-02T23:19:15Z",
+      "side": 1,
+      "message": "Isn\u0027t it standard practice for library packages to always install both static and dynamic versions so other programs have a choice what to link? This isn\u0027t just a ChromeOS decision, vboot is used by other people externally and there are packages for it in some Linux distributions. This Makefile should follow the normal conventions of the Linux ecosystem, and if you care strongly about not installing the static version for ChromeOS (that only places it in the /build sysroot anyway right? AFAIK static libraries don\u0027t get copied into actual OS images), then you could have the ebuild delete it again in the `src_install()` step.",
+      "parentUuid": "f7255a9c_d1c42e9d",
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
