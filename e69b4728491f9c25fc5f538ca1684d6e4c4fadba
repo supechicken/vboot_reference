@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c42c13_1d09676d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2024-02-02T10:06:19Z",
+      "side": 1,
+      "message": "If I read it correctly, those two scripts are 100% identical. Is it possible to just reuse it and rename to the preferred name in create_new_keys.sh?",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b13bc333_781c8640",
@@ -31,6 +54,46 @@
       "writtenOn": "2024-02-01T17:38:24Z",
       "side": 1,
       "message": "Friendly ping",
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "449ba209_b422dd7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2024-02-02T10:06:19Z",
+      "side": 1,
+      "message": "Thank you for inviting me as reviewer. But I\u0027d like to confess that I am not really familiar with keygeneration. I could only provide some basic review.\n\nIs it possible to find some other experts to review this?",
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72091169_44799495",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2024-02-02T10:06:19Z",
+      "side": 1,
+      "message": "nit: alphabetical sort",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 69
+      },
       "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
