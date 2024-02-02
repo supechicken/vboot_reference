@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "504ef263_366713d8",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-02T18:46:39Z",
+      "side": 1,
+      "message": "Addressed in a seperate CL, as I think it was a bug: the library would miss symbols, but we were lucky to not need them in the clients.",
+      "parentUuid": "d4b9da28_cbb991b4",
+      "range": {
+        "startLine": 989,
+        "startChar": 30,
+        "endLine": 989,
+        "endChar": 40
+      },
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0514584a_192d5984",
         "filename": "Makefile",
         "patchSetId": 3
@@ -106,6 +130,24 @@
       "writtenOn": "2024-02-01T21:15:41Z",
       "side": 1,
       "message": "Shouldn\u0027t we still install the static version as well?",
+      "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7255a9c_d1c42e9d",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-02T18:46:39Z",
+      "side": 1,
+      "message": "I would prefer not too: I left the static library for coreboot-utils that takes it directly from built location.\nFor other needs, I hope the dynamic library will be enough.",
+      "parentUuid": "0514584a_192d5984",
       "revId": "8bb001c76994f23a77445f2bc79bc242a14ba87b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
