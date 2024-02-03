@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47e54cd_b266bff9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-03T00:16:59Z",
+      "side": 1,
+      "message": "Well, the argument parsing is honestly a bit complicated for something that always takes exactly one argument. I\u0027m not sure why `create_new_hps_key.sh` was written that way, but most of our other scripts would not require the `-o` and instead just use `$1` as the directory directly (and then you should only need 2-3 lines for parsing).\n\nThe `generate_ed25519_key()` function should be factored out to `common.sh` if you\u0027re reusing it, I think.",
+      "parentUuid": "654c477e_2c978210",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b13bc333_781c8640",
