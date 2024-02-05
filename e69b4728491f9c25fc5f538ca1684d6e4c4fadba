@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4a688c37_421ec64c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2024-02-05T18:13:36Z",
+      "side": 1,
+      "message": "Simplified the arg parsing as suggested and moved generate_ed25519_key to common in crrev.com/c/5268805",
+      "parentUuid": "c47e54cd_b266bff9",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 75
+      },
+      "revId": "e69b4728491f9c25fc5f538ca1684d6e4c4fadba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b13bc333_781c8640",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
