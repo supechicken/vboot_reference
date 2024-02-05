@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca84cd5_148dbb0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-02-05T15:32:21Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8756941515115497665) is being automatically retried for the following reasons:\n- Some child builders are now retryable:amd64-generic-cq, arm-generic-cq, arm64-generic-cq, asurada-cq, atlas-cq,...\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "a2a22f5aa9baa9e1800ea8b3bfdf339a3133fc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
