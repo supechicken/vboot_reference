@@ -16,6 +16,52 @@
       "message": "I also removed the extern declaration: I first thought it was the cause of linking errors, but the problem was elsewhere.",
       "revId": "66063f1bb703fa97cf7bb999f32c44849c8e9b21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc27d31_393df6b6",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-02-05T08:56:47Z",
+      "side": 1,
+      "message": "nit: `LD` for consistency.",
+      "range": {
+        "startLine": 972,
+        "startChar": 17,
+        "endLine": 972,
+        "endChar": 21
+      },
+      "revId": "66063f1bb703fa97cf7bb999f32c44849c8e9b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db86dbd0_5ed95375",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-02-05T08:56:47Z",
+      "side": 1,
+      "message": "Any reason to use `$()` instead of `${}`?",
+      "range": {
+        "startLine": 973,
+        "startChar": 5,
+        "endLine": 973,
+        "endChar": 21
+      },
+      "revId": "66063f1bb703fa97cf7bb999f32c44849c8e9b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
