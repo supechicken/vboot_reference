@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure this is a good idea. We only want to pull the stuff into hostlib that is generic utility code which makes sense in a userspace context. Some of the other stuff in there (e.g. 2api.c or 2load_kernel.c) really make no sense outside the firmware, and would at best be dead weight in the .so, at worst do weird and wrong things if someone accidentally tries to call them. (2kernel.c is actually also one of those, not sure how it snuck into hostlib, we should probably take it out.)\n\nI know we need to get better at organizing sources (would probably be best to split those two kinds of files into separate directories for a cleaner separation), but this patch would basically go the other way and throw it all together to forever become hopelessly entangled.\n\nI don\u0027t know, Yu-Ping, what do you think?",
       "revId": "90b185518bfd937002a8718a7af69c9ab8c5cda0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6db3102_dab8a4fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-02-05T08:21:11Z",
+      "side": 1,
+      "message": "On seeing this patch, I\u0027m thinking the same. Adding all the firmware files to `HOSTLIB_SRCS` doesn\u0027t look like a good idea to me either.\n\nHere\u0027s the list of undefined symbols: https://paste.googleplex.com/6580144456597504. All the `vb2_*` undefined symbols seem to come from 2kernel.c, which was added to `HOSTLIB_SRCS` in CL:2091126. However right now I cannot see why the hostlib would ever need it. Could you try removing 2kernel.c from `HOSTLIB_SRCS` and see if CQ will fail?",
+      "parentUuid": "f9e11637_c193efef",
+      "revId": "90b185518bfd937002a8718a7af69c9ab8c5cda0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
