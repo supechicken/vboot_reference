@@ -18,7 +18,7 @@ const char *gbb_fname;
 const char *vblock_fname;
 const char *body_fname;
 
-#if defined(VB2_X86_RSA_ACCELERATION)
+#if defined(TEST_ENABLE_HWCRYPTO_RSA)
 bool vb2api_hwcrypto_allowed(struct vb2_context *ctx)
 {
 	printf("hwcrypto is allowed.\n");

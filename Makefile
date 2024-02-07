@@ -441,7 +441,7 @@ endif
 # pattern, `make runtests` will do the right thing locally but not in the CQ.
 # (Yeah, it's stupid, I know.)
 export TEST_ENABLE_HWCRYPTO_RSA := 0
-ifneq (,$(filter x86 x86_64,${ARCH}))
+ifneq (,$(filter arm64 x86 x86_64,${ARCH}))
 TEST_ENABLE_HWCRYPTO_RSA := 1
 endif
 
@@ -1183,9 +1183,16 @@ ${BUILD}/tests/vb2_sha256_x86_tests: \
 
 ifeq (${TEST_ENABLE_HWCRYPTO_RSA},1)
 define test_enable_hwcrypto_rsa
+${BUILD}/$(1): CFLAGS += -DTEST_ENABLE_HWCRYPTO_RSA
+ifeq (${ARCH},arm64)
+${BUILD}/$(1): CFLAGS += -DARM64_RSA_ACCELERATION
+${BUILD}/$(1): ${BUILD}/firmware/2lib/2modpow_neon.o
+${BUILD}/$(1): LIBS += ${BUILD}/firmware/2lib/2modpow_neon.o
+else
 ${BUILD}/$(1): CFLAGS += -DVB2_X86_RSA_ACCELERATION
 ${BUILD}/$(1): ${BUILD}/firmware/2lib/2modpow_sse2.o
 ${BUILD}/$(1): LIBS += ${BUILD}/firmware/2lib/2modpow_sse2.o
+endif
 endef
 
 $(foreach test, ${HWCRYPTO_RSA_TESTS}, \
