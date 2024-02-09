@@ -519,6 +519,10 @@ ALL_OBJS += ${UTILLIB_OBJS}
 HOSTLIB = ${BUILD}/libvboot_host.so
 HOSTLIB_STATIC = ${BUILD}/libvboot_host.a
 
+# For testing purposes files contianing some libvboot_host symbols.
+HOSTLIB_DEF = ${BUILD}/tests/libvboot_host_def.txt
+HOSTLIB_UNDEF = ${BUILD}/tests/libvboot_host_undef.txt
+
 HOSTLIB_SRCS = \
 	cgpt/cgpt_add.c \
 	cgpt/cgpt_boot.c \
@@ -988,8 +992,17 @@ ${HOSTLIB_STATIC}: ${HOSTLIB_OBJS}
 ${HOSTLIB}: ${HOSTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
-	@${PRINTF} "    LD          $(subst ${BUILD}/,,$@)\n"
+	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
 	${Q}${LD} ${LDFLAGS} ${LDLIBS} -shared -Wl,-soname,$(subst ${BUILD}/,,$@) $^ -o $@
+
+${HOSTLIB_DEF}: ${HOSTLIB_STATIC}
+	@${PRINTF} "    NMd           $(subst ${BUILD}/,,$@)\n"
+	${Q}nm --defined-only --format=just-symbols $^ > $@
+
+${HOSTLIB_UNDEF}: ${HOSTLIB_STATIC}
+	@${PRINTF} "    NMu           $(subst ${BUILD}/,,$@)\n"
+	${Q}nm --undefined-only --format=just-symbols $^ > $@
+
 
 .PHONY: headers_install
 headers_install:
@@ -1398,13 +1411,17 @@ runlongtests: install_for_test genkeys genfuzztestcases
 	${RUNTEST} ${SRC_RUN}/tests/run_preamble_tests.sh --all
 	${RUNTEST} ${SRC_RUN}/tests/run_vbutil_tests.sh --all
 
+.PHONY: runvhosttests
+runvhosttests: install_for_test ${HOSTLIB_DEF} ${HOSTLIB_UNDEF}
+	${RUNTEST} ${SRC_RUN}/tests/vhost_reference.sh ${HOSTLIB_DEF} ${HOSTLIB_UNDEF}
+
 .PHONY: rununittests
 rununittests: runcgpttests runmisctests run2tests
 
 # Print a big green success message at the end of all tests. If you don't see
 # that, you know there was an error somewhere further up.
 .PHONY: runtests
-runtests: rununittests runtestscripts runfutiltests
+runtests: rununittests runtestscripts runfutiltests runvhosttests
 	${Q}echo -e "\nruntests: \E[32;1mALL TESTS PASSED SUCCESSFULLY!\E[0;m\n"
 
 # Code coverage
