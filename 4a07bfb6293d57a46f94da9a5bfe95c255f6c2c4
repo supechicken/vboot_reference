@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1673a13a_d5165038",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-10T05:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc8c89bc_cdcdacee",
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7761eee5_5bc3af1a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-10T02:26:10Z",
       "side": 1,
       "message": "I don\u0027t really get the purpose of the first line. Shouldn\u0027t there never be any overlap between def_symbols and undef_symbols to begin with? (I kinda wonder why this entire script couldn\u0027t just have been a `${Q}nm --undefined-only --format\u003djust-symbols $@ | grep vb2 \u0026\u0026 echo \"Undefined vb2 symbols in $@!\" \u0026\u0026 exit 1` line in the `${HOSTLIB_STATIC}` recipe.)",
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46bdf05a_3d384e16",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-10T05:20:20Z",
+      "side": 1,
+      "message": "because `nm` output the symbols of several .o files within the library: in some of them some vb2 functions are not definded, they are defined in other .o in the .a:\n\n```\nnm --undefined --format\u003djust-symbols ./build/libvboot_host.a | grep vb2 | head -10\nvb2_hash_calculate\nvb2_rsa_sig_size\nvb2_rsa_verify_digest\nvb2ex_hwcrypto_rsa_verify_digest\nvb2ex_printf\nvb2_workbuf_init\nvb2_digest_extend\nvb2_digest_finalize\nvb2_digest_init\nvb2_digest_size\n```",
+      "parentUuid": "7761eee5_5bc3af1a",
       "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
