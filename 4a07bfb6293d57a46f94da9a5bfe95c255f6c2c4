@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8c89bc_cdcdacee",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-10T02:26:10Z",
+      "side": 1,
+      "message": "nit: This could probably just be part of runtestscripts rather than its own thing.",
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7761eee5_5bc3af1a",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-10T02:26:10Z",
+      "side": 1,
+      "message": "I don\u0027t really get the purpose of the first line. Shouldn\u0027t there never be any overlap between def_symbols and undef_symbols to begin with? (I kinda wonder why this entire script couldn\u0027t just have been a `${Q}nm --undefined-only --format\u003djust-symbols $@ | grep vb2 \u0026\u0026 echo \"Undefined vb2 symbols in $@!\" \u0026\u0026 exit 1` line in the `${HOSTLIB_STATIC}` recipe.)",
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
