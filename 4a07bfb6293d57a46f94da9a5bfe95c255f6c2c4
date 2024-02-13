@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b1c177_e7df1de1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-13T00:07:36Z",
+      "side": 1,
+      "message": "LGTM if you address the nits and Tricorder stuff.",
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc8c89bc_cdcdacee",
@@ -67,6 +84,24 @@
       "side": 1,
       "message": "because `nm` output the symbols of several .o files within the library: in some of them some vb2 functions are not definded, they are defined in other .o in the .a:\n\n```\nnm --undefined --format\u003djust-symbols ./build/libvboot_host.a | grep vb2 | head -10\nvb2_hash_calculate\nvb2_rsa_sig_size\nvb2_rsa_verify_digest\nvb2ex_hwcrypto_rsa_verify_digest\nvb2ex_printf\nvb2_workbuf_init\nvb2_digest_extend\nvb2_digest_finalize\nvb2_digest_init\nvb2_digest_size\n```",
       "parentUuid": "7761eee5_5bc3af1a",
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ec1658_eee5bb5d",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-13T00:07:36Z",
+      "side": 1,
+      "message": "Ahh okay, got it.",
+      "parentUuid": "46bdf05a_3d384e16",
       "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
