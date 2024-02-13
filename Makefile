@@ -429,8 +429,14 @@ FWLIB_SRCS += \
 	firmware/2lib/2modpow_sse2.c
 endif
 
+# Careful: Do NOT rename this variable. platform2_test.py has an allowlist of
+# variable patterns that it passes through from the environment, and `^TEST_` is
+# one of the patterns. If you rename this to something that doesn't match the
+# pattern, `make runtests` will do the right thing locally but not in the CQ.
+# (Yeah, it's stupid, I know.)
+export TEST_ENABLE_HWCRYPTO_RSA := 0
 ifneq (,$(filter x86 x86_64,${ARCH}))
-export ENABLE_HWCRYPTO_RSA_TESTS := 1
+TEST_ENABLE_HWCRYPTO_RSA := 1
 endif
 
 # Even if X86_SHA_EXT is 0 we need cflags since this will be compiled for tests
@@ -819,7 +825,7 @@ HWCRYPTO_RSA_TESTS = \
 
 TEST_NAMES += ${DUT_TEST_NAMES}
 
-ifeq (${ENABLE_HWCRYPTO_RSA_TESTS},1)
+ifeq (${TEST_ENABLE_HWCRYPTO_RSA},1)
 TEST20_NAMES += ${HWCRYPTO_RSA_TESTS}
 endif
 
@@ -1169,15 +1175,15 @@ ${BUILD}/tests/vb2_sha256_x86_tests: \
 ${BUILD}/tests/vb2_sha256_x86_tests: \
 	LIBS += ${BUILD}/firmware/2lib/2sha256_x86.o ${BUILD}/firmware/2lib/2hwcrypto.o
 
-ifeq (${ENABLE_HWCRYPTO_RSA_TESTS},1)
-define enable_hwcrypto_sse2_test
+ifeq (${TEST_ENABLE_HWCRYPTO_RSA},1)
+define test_enable_hwcrypto_rsa
 ${BUILD}/$(1): CFLAGS += -DVB2_X86_RSA_ACCELERATION
 ${BUILD}/$(1): ${BUILD}/firmware/2lib/2modpow_sse2.o
 ${BUILD}/$(1): LIBS += ${BUILD}/firmware/2lib/2modpow_sse2.o
 endef
 
 $(foreach test, ${HWCRYPTO_RSA_TESTS}, \
-	$(eval $(call enable_hwcrypto_sse2_test,${test})))
+	$(eval $(call test_enable_hwcrypto_rsa,${test})))
 endif
 
 .PHONY: install_dut_test
