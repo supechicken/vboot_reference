@@ -1,6 +1,30 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe1df73_74a56749",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:41:50Z",
+      "side": 1,
+      "message": "\u003e info: The mentioned syntax error was in this brace group.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC1009\n\nPlease fix.",
+      "parentUuid": "cbd5473d_3f9b112b",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90e1dd3f_437e8d8b",
@@ -14,6 +38,126 @@
       "writtenOn": "2024-02-13T01:30:53Z",
       "side": 1,
       "message": "No, this doesn\u0027t actually work. You want a `||` here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8abe6680_f910ecd0",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:41:50Z",
+      "side": 1,
+      "message": "\u003e error: Expected \u0027then\u0027.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC1050\n\nPlease fix.",
+      "parentUuid": "92ea1ab5_b4c7f3d8",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b21fddb_0685e21f",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:41:50Z",
+      "side": 1,
+      "message": "\u003e error: Expected \u0027then\u0027. Fix any mentioned problems and try again.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC1072\n\nPlease fix.",
+      "parentUuid": "f9bd02a6_e55ab030",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09497a1f_4c5176c4",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:41:50Z",
+      "side": 1,
+      "message": "Indeed, emerge passes but inside the test section I see:\n```\n...line 19: [: too many arguments\n```\nFixed now.\n\nBTW, I see another script failure:\n\n```\nvboot_reference-9999/vboot_reference/tests/vb2_firmware_tests.sh: line 100: [: : integer expression expected\n```",
+      "parentUuid": "90e1dd3f_437e8d8b",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9480d0bb_f820dfea",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:41:50Z",
+      "side": 1,
+      "message": "\u003e error: Couldn\u0027t parse this if expression. Fix to allow more checks.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC1073\n\nPlease fix.",
+      "parentUuid": "4519f1ed_e09b91c7",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cfa978a_a226ce67",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:41:50Z",
+      "side": 1,
+      "message": "\u003e error: Use || instead of \u0027-o\u0027 between test commands.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC1139\n\nPlease fix.",
+      "parentUuid": "3e9f959c_6edfb356",
       "range": {
         "startLine": 19,
         "startChar": 39,
