@@ -53,6 +53,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76ae072_8d6661fc",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:25:17Z",
+      "side": 1,
+      "message": "\u003e warning: Prefer [ p ] \u0026\u0026 [ q ] as [ p -a q ] is not well defined.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2166\n\nPlease fix.",
+      "parentUuid": "5cc14b4d_1d8ada6b",
+      "range": {
+        "startLine": 19,
+        "startChar": 40,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7761eee5_5bc3af1a",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Ahh okay, got it.",
       "parentUuid": "46bdf05a_3d384e16",
+      "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c1922c_37a3a558",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2024-02-13T01:25:17Z",
+      "side": 1,
+      "message": "\u003e style: Prefer double quoting even when variables don\u0027t contain special characters.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2248\n\nPlease fix.",
+      "parentUuid": "dfdd3fdb_6f006df4",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 23
+      },
       "revId": "4a07bfb6293d57a46f94da9a5bfe95c255f6c2c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
