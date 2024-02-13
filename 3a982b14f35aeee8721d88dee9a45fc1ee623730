@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e1dd3f_437e8d8b",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-13T01:30:53Z",
+      "side": 1,
+      "message": "No, this doesn\u0027t actually work. You want a `||` here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
