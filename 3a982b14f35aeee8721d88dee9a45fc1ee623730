@@ -166,6 +166,30 @@
       },
       "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb3b9b2_c4761792",
+        "filename": "tests/vhost_reference.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-13T02:01:43Z",
+      "side": 1,
+      "message": "\u003e BTW, I see another script failure:\n\nDoes that make the test fail or is that just a stray warning?",
+      "parentUuid": "09497a1f_4c5176c4",
+      "range": {
+        "startLine": 19,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "3a982b14f35aeee8721d88dee9a45fc1ee623730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
