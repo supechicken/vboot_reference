@@ -151,26 +151,30 @@ make_keyblock() {
   local base=$1
   local flags=$2
   local pubkey=$3
-  local signkey=$4
+  # ARV Root public key is always local.
+  local arv_root_key_path=$4
+  # ARV Root private key may be local or remote.
+  local arv_root_key_uri=$5
 
-  local privkey="${signkey}"
-  if [[ "${signkey}" != "remote:"* ]]; then
-    privkey="${signkey}.vbprivk"
+  local arv_root_priv_key="${arv_root_key_path}.vbprivk"
+  # If the URI is set, the private key is remote.
+  if [[ -n "${arv_root_key_uri}" ]]; then
+    arv_root_priv_key="${arv_root_key_uri}"
   fi
 
   echo "creating $base keyblock..."
 
   # create it
-  vbutil_keyblock \
+  futility --debug vbutil_keyblock \
     --pack "${base}.keyblock" \
     --flags $flags \
     --datapubkey "${pubkey}.vbpubk" \
-    --signprivate "${privkey}"
+    --signprivate "${arv_root_priv_key}"
 
   # verify it
-  vbutil_keyblock \
+  futility --debug vbutil_keyblock \
     --unpack "${base}.keyblock" \
-    --signpubkey "${signkey}.vbpubk"
+    --signpubkey "${arv_root_key_path}.vbpubk"
 }
 
 # File to read current versions from.
