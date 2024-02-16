@@ -26,6 +26,8 @@ Options:
   --output <dir>         Where to write the keys (default is cwd)
   --arv-root-path <dir>  Path to AP RO verificaton root key directory,
                          defaults to ./${ARV_ROOT_DIR}
+  --arv-root-uri <uri>   URI to remote AP RO verification root key (stored in
+                         GCP, accessed using CloudKMS).
 EOF
 
   if [[ $# -ne 0 ]]; then
@@ -48,6 +50,8 @@ main() {
   local keyname
   local output_dir="${PWD}" setperms="false"
   local arv_root_path=""
+  local arv_root_name="${ARV_ROOT_NAME_BASE}"
+  local arv_root_uri=""
 
   while [[ $# -gt 0 ]]; do
     case $1 in
@@ -103,6 +107,14 @@ main() {
       arv_root_path="$(readlink -f "$2")"
       shift
       ;;
+    --arv-root-name)
+      arv_root_name="$2"
+      shift
+      ;;
+    --arv-root-uri)
+      arv_root_uri="$2"
+      shift
+      ;;
 
     --key-name)
       keyname="$2"
@@ -134,17 +146,19 @@ main() {
     chmod 700 .
   fi
 
-  if [[ -z "${arv_root_path}" ]]; then
-    # If not explicitly set, expect AP RO verification root key directory one
-    # level above the output directory where the specific board keys are going
-    # to be placed.
-    arv_root_path="$(readlink -f "../${ARV_ROOT_DIR}")"
-  fi
+  if [[ -z "${arv_root_uri}" ]]; then
+    if [[ -z "${arv_root_path}" ]]; then
+      # If not explicitly set, expect AP RO verification root key directory one
+      # level above the output directory where the specific board keys are going
+      # to be placed.
+      arv_root_path="$(readlink -f "../${ARV_ROOT_DIR}")"
+    fi
 
-  if [[ ! -d "${arv_root_path}" ]]; then
-    die "AP RO root key directory \"${arv_root_path}\" not found." \
-        "Run make_arv_root.sh to create it or specify --arv-root-path."
-    exit 1
+    if [[ ! -d "${arv_root_path}" ]]; then
+      die "AP RO root key directory \"${arv_root_path}\" not found." \
+          "Run make_arv_root.sh to create it or specify --arv-root-path."
+      exit 1
+    fi
   fi
 
   if [[ ! -e "${VERSION_FILE}" ]]; then
@@ -179,9 +193,11 @@ main() {
   make_pair installer_kernel_data_key ${installer_kernel_algoid}
   make_pair arv_platform "${ARV_PLATFORM_ALGOID}"
 
-  # Make sure there is a copy of the AP RO verification root public key in the
-  # keyset directory.
-  cp "${arv_root_path}/${ARV_ROOT_NAME_BASE}.vbpubk" .
+  # If we're using a local key, make sure there is a copy of the AP RO
+  # verification root public key in the keyset directory.
+  if [[ -z "${arv_root_uri}" ]]; then
+    cp "${arv_root_path}/${arv_root_name}.vbpubk" .
+  fi
 
   # Create the firmware keyblock for use only in Normal mode. This is redundant,
   # since it's never even checked during Recovery mode.
@@ -200,9 +216,15 @@ main() {
   # For use in Factory Install and Developer Mode install shims.
   make_keyblock installer_kernel ${INSTALLER_KERNEL_KEYBLOCK_MODE} installer_kernel_data_key recovery_key
 
+  # If arv_root_uri is set, use the remote URI. Otherwise construct the
+  # key path.
+  local arv_root_key="${arv_root_path}/${arv_root_name}"
+  if [[ ! -z "${arv_root_uri}" ]]; then
+    arv_root_key="${arv_root_uri}"
+  fi
   # Create AP RO verification platform keyblock.
   make_keyblock arv_platform "${ARV_KEYBLOCK_MODE}" arv_platform \
-                "${arv_root_path}/${ARV_ROOT_NAME_BASE}"
+                "${arv_root_path}/${arv_root_name}" "${arv_root_uri}"
 
   # Copy AP RO verification root public key into the output directory, it is
   # necessary for AP RO verification signing.

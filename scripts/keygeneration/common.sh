@@ -152,23 +152,24 @@ make_keyblock() {
   local flags=$2
   local pubkey=$3
   local signkey=$4
+  local remoteuri=$5
 
-  local privkey="${signkey}"
-  if [[ "${signkey}" != "remote:"* ]]; then
-    privkey="${signkey}.vbprivk"
+  local privkey="${signkey}.vbprivk"
+  if [[ ! -z "${remoteuri}" ]]; then
+    privkey="${remoteuri}"
   fi
 
   echo "creating $base keyblock..."
 
   # create it
-  vbutil_keyblock \
+  futility --debug vbutil_keyblock \
     --pack "${base}.keyblock" \
     --flags $flags \
     --datapubkey "${pubkey}.vbpubk" \
     --signprivate "${privkey}"
 
   # verify it
-  vbutil_keyblock \
+  futility --debug vbutil_keyblock \
     --unpack "${base}.keyblock" \
     --signpubkey "${signkey}.vbpubk"
 }
