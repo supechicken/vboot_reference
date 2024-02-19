@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e2e05f_77c2cae5",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-02-19T02:29:13Z",
+      "side": 1,
+      "message": "This is not defined. Did you intend to remove the definition as well as `HOST_ARCH` (not mentioned in the commit message)?",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 21
+      },
+      "revId": "a51aaa324929958730f9057f24908a178eaaf510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
