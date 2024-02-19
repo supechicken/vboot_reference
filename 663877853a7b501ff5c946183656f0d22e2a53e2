@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23af3ffa_4e01727b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-02-19T07:19:51Z",
+      "side": 1,
+      "message": "`src_test()` in the ebuild is skipped for arm:\n\n```\n! use amd64 \u0026\u0026 ! use x86 \u0026\u0026 ewarn \"Skipping unittests for non-x86\" \u0026\u0026 return 0\n```\n\nDid you really see the tests running for trogdor?",
+      "revId": "663877853a7b501ff5c946183656f0d22e2a53e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
