@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7758fe63_b5bd6a36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-02-19T07:05:06Z",
+      "side": 1,
+      "message": "Hmmm... it seems weird to rely on the magic list. From the comment in platform2_test.py, the `\"^TEST_\"` pattern is for Bazel, and I don\u0027t think it\u0027s a good idea to depend on that. platform2_test.py has the `--env` option for setting env variables. Maybe it\u0027s cleaner (and more consistent) to use that in the ebuild (similar to how `BUILD_RUN` is passed).",
+      "range": {
+        "startLine": 14,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 63
+      },
+      "revId": "5ea9d34fe75e813789bf17bffda8a018682b3156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45e20c33_efec39ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-02-19T07:05:06Z",
+      "side": 1,
+      "message": "You mean `--packages`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "5ea9d34fe75e813789bf17bffda8a018682b3156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
