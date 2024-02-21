@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "219a9c3a_58237216",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-21T00:26:41Z",
+      "side": 1,
+      "message": "I don\u0027t really like either option tbh, it all seems too easily (and silently) broken if someone changes something somewhere. I\u0027ve decided to go a different route now and not use variables at all, instead just check if the files exist — I think that should be more robust.",
+      "parentUuid": "7758fe63_b5bd6a36",
+      "range": {
+        "startLine": 14,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 63
+      },
+      "revId": "5ea9d34fe75e813789bf17bffda8a018682b3156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45e20c33_efec39ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-19T07:05:06Z",
       "side": 1,
       "message": "You mean `--packages`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "5ea9d34fe75e813789bf17bffda8a018682b3156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24af5b32_f2aef680",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-21T00:26:41Z",
+      "side": 1,
+      "message": "Yeah",
+      "parentUuid": "45e20c33_efec39ea",
       "range": {
         "startLine": 22,
         "startChar": 25,
