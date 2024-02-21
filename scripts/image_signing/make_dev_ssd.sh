@@ -250,12 +250,15 @@ resign_ssd_kernel() {
       local new_config_file="$(make_temp_file)"
       echo "${kernel_config}" >"${new_config_file}"
       local old_md5sum="$(md5sum "${new_config_file}")"
-      local editor="${VISUAL:-${EDITOR:-vi}}"
+      local editor="${VISUAL:-${EDITOR:-vim}}"
       info "${name}: Editing kernel config:"
       # On ChromiumOS, some builds may come with broken EDITOR that refers to
       # nano so we want to check again if the editor really exists.
       if type "${editor}" >/dev/null 2>&1; then
         "${editor}" "${new_config_file}"
+      elif type vi >/dev/null 2>&1; then
+        debug_msg "Falling back to vi"
+        vi "${new_config_file}"
       else
         # This script runs under dash but we want readline in bash to support
         # editing in in console.
