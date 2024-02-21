@@ -22,6 +22,30 @@
       },
       "revId": "a51aaa324929958730f9057f24908a178eaaf510",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86f2f70_90639377",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-21T00:27:08Z",
+      "side": 1,
+      "message": "Right, sorry, this was supposed to use `$(shell uname -m)` directly. IIRC I wanted to remove the `HOST_ARCH` variable because I saw people trying to use it as \"the architecture that crossystem runs as\", which it isn\u0027t.",
+      "parentUuid": "77e2e05f_77c2cae5",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 21
+      },
+      "revId": "a51aaa324929958730f9057f24908a178eaaf510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
