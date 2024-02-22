@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "355922dc_c9808be7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2024-02-22T00:35:20Z",
+      "side": 1,
+      "message": "What\u0027s the best way to change `EDITOR` based on whether `vim` is present?\n\nIt looks like `chromeos-base-9999.ebuild` installs `01editor`, which sets `EDITOR\u003d/usr/bin/vi`.\n\nDoing something like this doesn\u0027t seem to work and set `$EDITOR` correctly:\n\n`cat /etc/env.d/01editor`\n```\nif [ -f /usr/local/bin/vim ]; then\n    EDITOR\u003d/usr/local/bin/vim\nelse\n    EDITOR\u003d/usr/bin/vi\nfi\n```\n\nOverriding it in `/etc/env.d/99devinstall` by adding `EDITOR\u003d/usr/local/bin/vim` also doesn\u0027t seem to work.\n\nIt\u0027s possibly I\u0027m missing an extra step somewhere though, since `$EDITOR` is set in a few different places in `/etc`:\n\n```\nnipperkin-rev4 /etc # grep -R EDITOR\ncsh.env:setenv EDITOR \u0027/usr/bin/vi\u0027\nenv.d/01editor:EDITOR\u003d/usr/bin/vi\nprofile:export EDITOR\u003d${EDITOR:-/bin/nano}\nprofile.env:export EDITOR\u003d\u0027/usr/bin/vi\u0027\n```",
+      "parentUuid": "64f622f6_1158faed",
+      "revId": "bbc613cd89dc0ad1ea45bad32955e3f4f494eb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a959db38_1cf3ce10",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
         "patchSetId": 1
