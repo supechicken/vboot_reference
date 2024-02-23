@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8506686d_51ea8795",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-23T00:04:51Z",
+      "side": 1,
+      "message": "This function is used for all keys, not just ARV keys. These names don\u0027t belong in here.",
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd32a96_2f824126",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-23T00:04:51Z",
+      "side": 1,
+      "message": "What was wrong with the old auto-detection based on the `remote:` prefix, why can\u0027t we use that for ARV as well?",
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b95cfe97_6e428d3d",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-23T00:04:51Z",
+      "side": 1,
+      "message": "If people feel that this scripts need more verbose output I\u0027m not necessarily against it, but that should probably done in a separate CL and more consistently  across all futility invocations in this file, not just in this one function.",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e50a1256_340cec87",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-02-23T00:04:51Z",
+      "side": 1,
+      "message": "There still needs to be a copy of the public half in the keyset directory either way, even if the private half is kept in CloudKMS. `futility gscvd` needs it to include in the GSCVD structure of the firmware image (in `sign_official_build.sh`), because the GSC itself only knows a hash of it.",
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
