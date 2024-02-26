@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccb04ff_23989c65",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1350839
+      },
+      "writtenOn": "2024-02-26T16:19:59Z",
+      "side": 1,
+      "message": "Chose more generic",
+      "parentUuid": "8506686d_51ea8795",
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afd32a96_2f824126",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-02-23T00:04:51Z",
       "side": 1,
       "message": "What was wrong with the old auto-detection based on the `remote:` prefix, why can\u0027t we use that for ARV as well?",
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23290ba1_3c1540a6",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1350839
+      },
+      "writtenOn": "2024-02-26T16:19:59Z",
+      "side": 1,
+      "message": "For the ARV keys, the private key is remote: but the public key is local, so we need to pass in both locations.",
+      "parentUuid": "afd32a96_2f824126",
       "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae96b0dc_6f20d15a",
+        "filename": "scripts/keygeneration/common.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1350839
+      },
+      "writtenOn": "2024-02-26T16:19:59Z",
+      "side": 1,
+      "message": "Didn\u0027t mean to leave this debugging change in. Removed.",
+      "parentUuid": "b95cfe97_6e428d3d",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 18
+      },
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e50a1256_340cec87",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-02-23T00:04:51Z",
       "side": 1,
       "message": "There still needs to be a copy of the public half in the keyset directory either way, even if the private half is kept in CloudKMS. `futility gscvd` needs it to include in the GSCVD structure of the firmware image (in `sign_official_build.sh`), because the GSC itself only knows a hash of it.",
+      "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd972412_e02db9ef",
+        "filename": "scripts/keygeneration/create_new_keys.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1350839
+      },
+      "writtenOn": "2024-02-26T16:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e50a1256_340cec87",
       "revId": "798f6de830e0a895d613dfeb3e63291da2734488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
