@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "decf0764_17720259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2024-03-05T19:50:18Z",
+      "side": 1,
+      "message": "env.d files by design can only be static variables.  it isn\u0027t dynamic shell logic.  dynamic logic would have to live in /etc/profile.d/.\n\nwe should do this in chromeos-base/chromeos-base.  and prob add one for updating PAGER too instead so we can delete the mod_for_test_scripts/360setPagerLess hack.\n\nand then we delete 01editor entirely.",
+      "parentUuid": "993d6544_8be8c69a",
+      "revId": "bbc613cd89dc0ad1ea45bad32955e3f4f494eb69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a959db38_1cf3ce10",
         "filename": "scripts/image_signing/make_dev_ssd.sh",
         "patchSetId": 1
