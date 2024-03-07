@@ -515,6 +515,11 @@ validity_check() {
     debug_msg "Device is a VM, skipping firmware checks"
     return $FLAGS_TRUE
   fi
+  # TODO: is crossystem mainfw_type?nonchrome OK here?
+  if crossystem hwid?"REVEN-ANAE A6A-A7I"; then
+    debug_msg "Device is reven, skip validity checks"
+    return $FLAGS_TRUE
+  fi
 
   validity_check_live_firmware || return $FLAGS_FALSE
   validity_check_crossystem_flags || return $FLAGS_FALSE
