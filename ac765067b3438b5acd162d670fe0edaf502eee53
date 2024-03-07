@@ -16,6 +16,24 @@
       "message": "This won\u0027t break kernels that don\u0027t have the config right?",
       "revId": "ac765067b3438b5acd162d670fe0edaf502eee53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4150d77_9b364da1",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2024-03-07T19:01:45Z",
+      "side": 1,
+      "message": "Yeah, it shouldn\u0027t. I\u0027ll update the TEST\u003d field once I get a chance to validate",
+      "parentUuid": "53111215_5019e87b",
+      "revId": "ac765067b3438b5acd162d670fe0edaf502eee53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
