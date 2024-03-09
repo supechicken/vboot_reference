@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33b32a7_022bce28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-09T02:20:52Z",
+      "side": 1,
+      "message": "Most of us who develop the C library don\u0027t really know how any of this works, so we\u0027ll probably not remember to keep that allowlist updated when any APIs change. Can\u0027t you instead just somehow tell it to expose all the symbols from the library itself, but not any further dependencies (e.g. kinda allowlist what `nm -jUg libvboot_host.a` would show)?",
+      "revId": "6c1ecf12a3d983179118475361577441095727f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
