@@ -16,6 +16,24 @@
       "message": "Most of us who develop the C library don\u0027t really know how any of this works, so we\u0027ll probably not remember to keep that allowlist updated when any APIs change. Can\u0027t you instead just somehow tell it to expose all the symbols from the library itself, but not any further dependencies (e.g. kinda allowlist what `nm -jUg libvboot_host.a` would show)?",
       "revId": "6c1ecf12a3d983179118475361577441095727f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59068fa7_40d776a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297374
+      },
+      "writtenOn": "2024-03-09T05:37:03Z",
+      "side": 1,
+      "message": "`bindgen` operates on the C headers (after preprocessing, so including all of the stuff that is transitively included like `stdlib.h`, which ends up pulling in all of those math functions with `long double` referred to by the comment and blocklist replaced in this change), not the .so/.a, so it isn\u0027t possible to use link-time knowledge of symbol visibility.\n\nI think the ideal situation to use a a common prefix for all of the names that are intended to be publicly exported (like the `Vb.*` used for crossystem), but I understand if it\u0027s not desirable to add a bunch of churn to rename existing functions.\n\nI can drop this patch if you prefer to keep the existing blocklist approach, as it doesn\u0027t really cause any problems (I just noticed this while attempting to get it to build outside of the SDK, which is fixed by the other commit in this series).",
+      "parentUuid": "d33b32a7_022bce28",
+      "revId": "6c1ecf12a3d983179118475361577441095727f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
