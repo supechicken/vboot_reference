@@ -34,6 +34,24 @@
       "parentUuid": "d33b32a7_022bce28",
       "revId": "6c1ecf12a3d983179118475361577441095727f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbe9b24_b1163d0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-11T21:36:03Z",
+      "side": 1,
+      "message": "FWIW I don\u0027t think we\u0027d be opposed to someone cleaning up and standardizing our function names if you wanted to. A lot of this stuff is very old and should be ported to the newer coding style anyway (i.e. away from CamelCase), but we never really have the time.\n\nI don\u0027t care either way what you do here, just a fair warning that by the time someone next renames those functions for some reason we\u0027ll almost certainly have forgotten that there\u0027s a list here that needs to be updated.",
+      "parentUuid": "59068fa7_40d776a5",
+      "revId": "6c1ecf12a3d983179118475361577441095727f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
