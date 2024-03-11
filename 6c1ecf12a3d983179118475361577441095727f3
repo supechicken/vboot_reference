@@ -52,6 +52,24 @@
       "parentUuid": "59068fa7_40d776a5",
       "revId": "6c1ecf12a3d983179118475361577441095727f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0ffee8_d160ca37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2024-03-11T22:26:04Z",
+      "side": 1,
+      "message": "To chime in here: If someone renames a function that anyone depends on (I would assume the enire allowlist is a \"hard\" dependency of some lib), we probably brake the build (e.g. Flexor calls CgptAdd, this would break in case we rename it and not allowlist it here. So sounds like a good approach?",
+      "parentUuid": "4dbe9b24_b1163d0a",
+      "revId": "6c1ecf12a3d983179118475361577441095727f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
