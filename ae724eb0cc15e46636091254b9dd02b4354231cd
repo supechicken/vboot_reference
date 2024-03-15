@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e30a3c_b4b1bfbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-15T18:34:38Z",
+      "side": 1,
+      "message": "Using this approach - https://stackoverflow.com/a/21941473\n\nBefore - http://screen/BxeVtCTHhz6cF8d\n\nAfter - http://screen/4vc5Sc5KF5dyXN2",
+      "revId": "ae724eb0cc15e46636091254b9dd02b4354231cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a1823f_e56d32ff",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-15T18:34:38Z",
+      "side": 1,
+      "message": "opportunistic typo fix",
+      "revId": "ae724eb0cc15e46636091254b9dd02b4354231cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139d2d78_109d4fba",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-15T18:34:38Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ae724eb0cc15e46636091254b9dd02b4354231cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
