@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e40c311_d4e918a2",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2024-03-19T00:43:19Z",
+      "side": 1,
+      "message": "what are the expected values for other flags? can we check that `bid_flags \u003d\u003d xxx`?",
+      "range": {
+        "startLine": 199,
+        "startChar": 31,
+        "endLine": 199,
+        "endChar": 59
+      },
+      "revId": "1066a89249ba6c6e7e9cde7eac68a8aa5820a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
