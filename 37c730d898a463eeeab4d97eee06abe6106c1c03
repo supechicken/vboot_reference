@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "deb7f1dc_a5d12692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-19T02:54:20Z",
+      "side": 1,
+      "message": "I did test this and it worked:\n\nBefore - http://screen/BxeVtCTHhz6cF8d\n\nAfter - http://screen/4vc5Sc5KF5dyXN2\n\nI\u0027m open to any suggestions, I\u0027m not a bash expert at all, just going off this stack overflow answer - https://stackoverflow.com/a/21941473",
+      "parentUuid": "37dbbcce_f48dd54d",
+      "revId": "37c730d898a463eeeab4d97eee06abe6106c1c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "296967a8_8dc83159",
         "filename": "scripts/image_signing/lib/keycfg.sh",
         "patchSetId": 2
@@ -49,6 +67,30 @@
       "writtenOn": "2024-03-19T01:12:52Z",
       "side": 1,
       "message": "You fixed the typo below but these still all say \"FIRMARE\"",
+      "range": {
+        "startLine": 70,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "37c730d898a463eeeab4d97eee06abe6106c1c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9a9aaf_73b17b3d",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-19T02:54:20Z",
+      "side": 1,
+      "message": "ugh - thanks for pointing this out. https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5379740",
+      "parentUuid": "296967a8_8dc83159",
       "range": {
         "startLine": 70,
         "startChar": 15,
