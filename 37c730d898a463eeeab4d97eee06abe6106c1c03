@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20688aa3_9f55ab0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-19T01:12:52Z",
+      "side": 1,
+      "message": "Honestly, I have no idea what you\u0027ve tried to do here. You were already sourcing the key_config.sh file, so doesn\u0027t that mean that it was already executing in the same shell to begin with? Does BASH_ENV even run on source (I thought it only runs when a new shell is created)?\n\nI\u0027m not a shell expert by any means but I hope you ran this by one, because it looks very strange to me.",
+      "revId": "37c730d898a463eeeab4d97eee06abe6106c1c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296967a8_8dc83159",
+        "filename": "scripts/image_signing/lib/keycfg.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-19T01:12:52Z",
+      "side": 1,
+      "message": "You fixed the typo below but these still all say \"FIRMARE\"",
+      "range": {
+        "startLine": 70,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "37c730d898a463eeeab4d97eee06abe6106c1c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
