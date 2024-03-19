@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e63cd6e_01b3ecab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-19T22:19:13Z",
+      "side": 1,
+      "message": "Are you sure that moving the `declare -a` outside of the function in line 7 wasn\u0027t already all the fix you need, and the `BASH_ENV` stuff down here is superfluous?",
+      "parentUuid": "deb7f1dc_a5d12692",
+      "revId": "37c730d898a463eeeab4d97eee06abe6106c1c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "296967a8_8dc83159",
         "filename": "scripts/image_signing/lib/keycfg.sh",
         "patchSetId": 2
