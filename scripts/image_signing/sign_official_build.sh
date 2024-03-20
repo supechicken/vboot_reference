@@ -481,13 +481,77 @@ resign_firmware_payload() {
   local rootfs_dir
   rootfs_dir=$(make_temp_dir)
   mount_loop_image_partition "${loopdev}" 3 "${rootfs_dir}"
-  local firmware_bundle="${rootfs_dir}/usr/sbin/chromeos-firmwareupdate"
+
+  local stateful_dir
+  stateful_dir=$(make_temp_dir)
+
+  local unsigned_dlc_id signed_dlc_id
+  unsigned_dlc_id="unsigned-chromeos-firmware"
+  signed_dlc_id="chromeos-firmware"
+
+  local unsigned_metadata_dir signed_metadata_dir
+  unsigned_metadata_dir="${rootfs_dir}/opt/google/dlc/${unsigned_dlc_id}/package/"
+  signed_metadata_dir="${rootfs_dir}/opt/google/dlc/${signed_dlc_id}/package/"
+
+  local dlc_has_firmware rootfs_has_firmware
+
+  local firmware_bundle_path="usr/sbin/chromeos-firmwareupdate"
+  local firmware_bundle_rootfs="${rootfs_dir}/${firmware_bundle_path}"
+  local firmware_bundle_in_dlc="root/${firmware_bundle_path}"
+  local firmware_bundle
+
+  local dlc_factory_install_dir
+  local unsigned_install_stateful_dir signed_install_stateful_dir
+
+  local dlc_dev
+  local dlc_temp_dir
+  local dlc_dir
+
   local shellball_dir
   shellball_dir=$(make_temp_dir)
 
-  # extract_firmware_bundle can fail if the image has no firmware update.
-  if ! extract_firmware_bundle "${firmware_bundle}" "${shellball_dir}"; then
+  # check dlc metadata existence
+  if [[ -d "${unsigned_metadata_dir}" ]]; then
+    # Find the shellball from the DLC
+    # mount stateful as rw because we will put new DLC here
+    mount_loop_image_partition "${loopdev}" 1 "${stateful_dir}"
+
+    # get dlc.img path
+    # mount dlc
+    dlc_factory_install_dir="${stateful_dir}/unencrypted/dlc-factory-images/"
+
+    unsigned_install_stateful_dir="${dlc_factory_install_dir}/${unsigned_dlc_id}/package/"
+    signed_install_stateful_dir="${dlc_factory_install_dir}/${signed_dlc_id}/package/"
+
+    dlc_dev=$(sudo losetup --show -f "${unsigned_install_stateful_dir}/dlc.img")
+    dlc_temp_dir=$(make_temp_dir)
+    dlc_dir="${dlc_temp_dir}/dlc_dir"
+    mkdir -p "${dlc_dir}"
+    sudo mount -o ro "${dlc_dev}" "${dlc_dir}"
+
+    # extract firmware archive to shellball_dir
+    if ! extract_firmware_bundle "${dlc_dir}/${firmware_bundle_in_dlc}" "${shellball_dir}"; then
+      die "Can't extract firmware from firmware DLC"
+    fi
+
+    firmware_bundle="${dlc_dir}/${firmware_bundle_in_dlc}"
+    dlc_has_firmware=true
+    # check the cut mark
+    if true; then
+      rootfs_has_firmware=true
+    else
+      rootfs_has_firmware=false
+    fi
+  elif extract_firmware_bundle "${firmware_bundle_rootfs}" "${shellball_dir}"; then
+    firmware_bundle="${firmware_bundle_rootfs}"
+    dlc_has_firmware=false
+    rootfs_has_firmware=true
+  else
+    # extract_firmware_bundle can fail if the image has no firmware update.
     # Unmount now to prevent changes.
+    sudo umount "${dlc_dir}"
+    sudo losetup --detach "${dlc_dev}"
+    sudo umount "${stateful_dir}"
     sudo umount "${rootfs_dir}"
     info "Didn't find a firmware update. Not signing firmware."
     return
@@ -732,15 +796,120 @@ resign_firmware_payload() {
     echo "  root: ${sha1}" >>"${signer_notes}"
   fi
 
+  local new_shellball
   new_shellball=$(make_temp_file)
   cp -f "${firmware_bundle}" "${new_shellball}"
   chmod a+rx "${new_shellball}"
   repack_firmware_bundle "${shellball_dir}" "${new_shellball}"
-  sudo cp -f "${new_shellball}" "${firmware_bundle}"
-  sudo chmod a+rx "${firmware_bundle}"
+
+
+  if ${rootfs_has_firmware}; then
+    sudo cp -f "${new_shellball}" "${firmware_bundle_rootfs}"
+    sudo chmod a+rx "${firmware_bundle_rootfs}"
+  fi
+  if ${dlc_has_firmware}; then
+    # Create a new DLC containing the new shellball
+    # The process below mimic GenerateDLC from chromite/lib/dlc_lib.py
+
+    local new_dlc_dir
+    new_dlc_dir="${dlc_temp_dir}/squashfs_root"
+    mkdir -p "${new_dlc_dir}"
+
+    cp -a "${dlc_dir}"/* "${new_dlc_dir}"
+
+    # done with old dlc. we can umount it.
+    sudo umount "${dlc_dir}"
+    sudo losetup --detach "${dlc_dev}"
+
+    # put new firmware in place. DLC and rootfs
+    sudo cp -f "${new_shellball}" "${new_dlc_dir}/${firmware_bundle_in_dlc}"
+    sudo chmod a+rx "${new_dlc_dir}/${firmware_bundle_in_dlc}"
+
+    # Update /etc/lsb-release in DLC.
+    # Remove "unsigned-" from DLC_ID, DLC_NAME, DLC_RELEASE_APPID
+    # TODO(jjsu): find a proper way to remove the unsigned- prefix
+    sudo sed -i "s/${unsigned_dlc_id}/${signed_dlc_id}/" \
+      "${new_dlc_dir}/etc/lsb-release"
+
+    # squash ownership
+    sudo chown -R "0:0" "${new_dlc_dir}"
+    sudo find "${new_dlc_dir}" -exec touch -h -t "197001010000.00" "{}" "+"
+
+    # generate new dlc image
+    local new_dlc_img
+    new_dlc_img="${dlc_temp_dir}/dlc.img"
+    mksquashfs "${new_dlc_dir}" "${new_dlc_img}" -b 1m -4k-align -noappend
+    # TODO(jjsu): if new dlc_img is smaller than 2 blocks, fix it for verity
+
+    # verify new dlc img
+    local squashfs_out
+    squashfs_out="${dlc_temp_dir}/squashfs_out"
+    mkdir -p "${squashfs_out}"
+    unsquashfs -d "${squashfs_out}" "${new_dlc_img}"
+    if [ "$?" != "0" ]; then
+      die "Can not unsquash new dlc img."
+    fi
+    sudo rm -rf "${new_dlc_dir}"
+    sudo rm -rf "${squashfs_out}"
+
+    # TODO(jjsu): generate new dlc metadata
+    #  generate verity
+    #  copy to build dir?
+    local hash_tree hash_table
+    hash_tree=$(make_temp_file)
+    hash_table="${dlc_temp_dir}/table"
+    verity --mode=create --alg=sha256 \
+      --payload="${new_dlc_img}" \
+      --hashtree="${hash_tree}" \
+      --salt=random \
+      > "${hash_table}"
+    cat "${hash_tree}" >> "${new_dlc_img}"
+    sudo rm "${hash_tree}"
+    info "generate hash content"
+
+    local image_size image_hash table_hash
+    image_size="$(stat --printf="%s" "${new_dlc_img}")"
+    image_hash="$(sha256sum < "${new_dlc_img}" | awk '{print $1}')"
+    table_hash="$(sha256sum < "${hash_table}" | awk '{print $1}')"
+    info "load hash content"
+
+    local imageloader_json
+    imageloader_json="${dlc_temp_dir}/imageloader.json"
+    jq --arg image_hash "${image_hash}" \
+      --arg table_hash "${table_hash}" \
+      --arg size "${image_size}" \
+      '.["image-sha256-hash"] = $image_hash
+        | .["table-sha256-hash"] = $table_hash
+        | .["size"] = $size
+        | (.["id"],.["name"]) |= ltrimstr("unsigned-")
+        | .["description"] |= ltrimstr("Dev-signed ")' \
+      "${unsigned_metadata_dir}imageloader.json" \
+      > "${imageloader_json}"
+
+    # put new dlc image in stateful
+    sudo mkdir -p "${signed_install_stateful_dir}"
+    sudo cp -f "${new_dlc_img}" "${signed_install_stateful_dir}/dlc.img"
+    sudo chmod 644 "${signed_install_stateful_dir}/dlc.img"
+
+    local dlcservice_uid dlcservice_gid
+    dlcservice_uid="$(stat -c '%u' "${unsigned_install_stateful_dir}/dlc.img")"
+    dlcservice_gid="$(stat -c '%g' "${unsigned_install_stateful_dir}/dlc.img")"
+    sudo chown -R "${dlcservice_uid}:${dlcservice_gid}" "${signed_install_stateful_dir}/dlc.img"
+
+    sudo mkdir -p "${signed_metadata_dir}"
+    sudo cp -f "${hash_table}" "${signed_metadata_dir}table"
+    sudo cp -f "${imageloader_json}" "${signed_metadata_dir}imageloader.json"
+
+    sudo umount "${stateful_dir}"
+  fi
+
   # Unmount now to flush changes.
+  #sudo umount "${dlc_dir}"
+  #sudo losetup -d "${dlc_dev}"
+
   sudo umount "${rootfs_dir}"
   info "Re-signed firmware AU payload in ${loopdev}"
+  info "DLC is updated. dlc metadata in rootfs is updated."
 }
 
 # Remove old container key if it exists.
