@@ -90,6 +90,7 @@ static void mont_mult(uint32_t *c,
 		void *ed_clobber = ed;
 		uint32_t size_clobber = arrsize - 1;
 		asm volatile (
+			".arch	armv8-a+fp\n\t"
 			/* v4.2d = always contains [0, 0] (for idempotent Add High Narrow) */
 			"movi	v4.2d, #0\n\t"
 			/* v3.2s = "mul" = [q, a[i]] */
@@ -144,6 +145,7 @@ static void swap_bignumber_endianness(const void *in, void *out, size_t size_byt
 	/* REV64 can only swap within each 8-byte half of the 16-byte register, so use a
 	   transposed STP to do the final swap of the two halves afterwards. */
 	asm volatile (
+		".arch	armv8-a+fp\n\t"
 		"1:\n\t"
 		"ldr	q0, [%[in], #-16]!\n\t"
 		"rev64	v0.16b, v0.16b\n\t"
