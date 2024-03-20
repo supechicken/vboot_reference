@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83ca082_2d088e3f",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-20T23:13:08Z",
+      "side": 1,
+      "message": "Adding this to every `asm` statement doesn\u0027t feel right. Can\u0027t we do this through CFLAGS (e.g. `-march\u003darmv8-a+fp`) instead? coreboot passes its CFLAGS through to vboot so if you just set it in xcompile it should work here.",
+      "revId": "086b924f410cf4761f24ae41b2efcffbbe2506a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
