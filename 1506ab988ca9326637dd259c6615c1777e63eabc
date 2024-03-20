@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9aec2c_f0757db6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-20T22:27:48Z",
+      "side": 1,
+      "message": "Note that the signers always run the latest sign_official_build.sh, but they may be signing images from older branches. So you can\u0027t just replace the existing code to handle only firmware bundles in DLC. You need to make the code detect whether you have a DLC or a rootfs bundle and perform the right action for either.",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eba5b57_8414b97c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-20T22:27:48Z",
+      "side": 1,
+      "message": "Yes, definitely reuse existing code where applicable.",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40b574a_37bc604d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-20T22:27:48Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me why you do this, can you elaborate more in the comment?",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2709182_469c6496",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-20T22:27:48Z",
+      "side": 1,
+      "message": "I think we can guarantee that as long as there\u0027s at least one firmware image compressed in there, it will be larger than 8k.",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f36f0244_e6e4d879",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-20T22:27:48Z",
+      "side": 1,
+      "message": "Is there a reason not to trust mksquashfs?",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c31e27_83cf02c4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-20T22:27:48Z",
+      "side": 1,
+      "message": "What\u0027s the point of the redirection here? (Also, if you just want to log status you should use the existing `error`/`warn`/`info` functions.)",
+      "range": {
+        "startLine": 833,
+        "startChar": 32,
+        "endLine": 833,
+        "endChar": 36
+      },
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
