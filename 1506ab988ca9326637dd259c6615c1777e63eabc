@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c905ab0_bba48185",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-03-21T09:04:34Z",
+      "side": 1,
+      "message": "Maybe move this to a function so we can do simple\n\n local firmware_bundle\u003d\"$(get_firmware_bundle \"${rootfs_dir}\" \"${stateful_dir}\")\"\n \nAnd in that function, you can create a temporary folder and put the udpater into it , unmount/clean before exit; so the following signer code will only need to focus on the file, no need to worry where the updater comes from.\n\nIn the end, also add a \"update_firmware_bundle\" that will replace the updater file. And the get_firmware_bundle/update_firmware_bundle can share some sub functions in searching and identifying DLC paths.",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 35
+      },
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0eba5b57_8414b97c",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
