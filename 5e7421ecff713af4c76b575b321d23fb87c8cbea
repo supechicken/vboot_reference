@@ -33,6 +33,75 @@
       "message": "@vbendeb can you take a look at this?",
       "revId": "5e7421ecff713af4c76b575b321d23fb87c8cbea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9966f26_0ddff754",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-03-21T18:50:10Z",
+      "side": 1,
+      "message": "this needs to be updated",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "5e7421ecff713af4c76b575b321d23fb87c8cbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2d50b3_d0616a6d",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-03-21T18:50:10Z",
+      "side": 1,
+      "message": "no tabs please",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 1
+      },
+      "revId": "5e7421ecff713af4c76b575b321d23fb87c8cbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6586a6d_f5b8a14d",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2024-03-21T18:50:10Z",
+      "side": 1,
+      "message": "add `generation` and `major` to the error message?\n\nas an alternative print `unsupported target` here and fall through to die and print the rest of the information",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 48
+      },
+      "revId": "5e7421ecff713af4c76b575b321d23fb87c8cbea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
