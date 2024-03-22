@@ -34,6 +34,24 @@
       "parentUuid": "f83ca082_2d088e3f",
       "revId": "086b924f410cf4761f24ae41b2efcffbbe2506a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5019b37b_bf7aa5fc",
+        "filename": "firmware/2lib/2modpow_neon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-22T23:34:49Z",
+      "side": 1,
+      "message": "Hmm... okay, this seems to be an issue with clang incorrectly implementing `-mgeneral-regs-only`. I found https://bugs.llvm.org/show_bug.cgi?id\u003d30792 and https://reviews.llvm.org/D38479 which seems to indicate that they\u0027ve been aware of this for close to a decade but haven\u0027t really managed to do anything about it yet. -.-\n\nIt sounds like the clang-specific option `-mno-implicit-float` does basically the same as `-mgeneral-regs-only`, except that it will still allow instructions with floating point (including NEON) registers if the code explicitly asks for them. This means it would also allow C code that uses float types (which is something we\u0027d want to avoid and get warnings for in coreboot), but since we\u0027re running the CI on GCC anyway we would still avoid checking in any code that does that, even if clang couldn\u0027t detect it.\n\nSo how about we solve this by making coreboot set `-mgeneral-regs-only` in AArch64 only for GCC, and make it set `-mno-implicit-float` for clang instead? I think I\u0027d prefer that to having to work around a broken compiler in every single `asm ()` block.",
+      "parentUuid": "0eae297c_03084a79",
+      "revId": "086b924f410cf4761f24ae41b2efcffbbe2506a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
