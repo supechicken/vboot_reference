@@ -211,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b273bb6b_e84d3e7b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-22T22:54:18Z",
+      "side": 1,
+      "message": "Done, we were able to upload networkstack keys. We will no longer be needing this workaround.",
+      "parentUuid": "fa8ca1ff_ad9596e7",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "b73f5cf6e40c2a73b626cdb8cd106ffdade66b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82e68d5e_178ddd1a",
