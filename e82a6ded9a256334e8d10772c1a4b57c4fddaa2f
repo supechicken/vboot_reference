@@ -16,6 +16,46 @@
       "message": "PTAL!",
       "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d504974_9536f14e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-25T14:50:31Z",
+      "side": 1,
+      "message": "```suggestion\n        # Assumes the key would be named `android_${keyname}` in cloud kms.\n```",
+      "range": {
+        "startLine": 149,
+        "startChar": 35,
+        "endLine": 149,
+        "endChar": 40
+      },
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901a5ff9_11449ac3",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-25T14:50:31Z",
+      "side": 1,
+      "message": "did you intentionally strip out these flags? `--v1-signing-enabled true --v2-signing-enabled false` (they used to be present in the call)",
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
