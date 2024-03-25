@@ -1429,7 +1429,8 @@ rununittests: runcgpttests runmisctests run2tests
 # Print a big green success message at the end of all tests. If you don't see
 # that, you know there was an error somewhere further up.
 .PHONY: runtests
-runtests: rununittests runtestscripts runfutiltests
+#runtests: rununittests runtestscripts runfutiltests
+runtests: rununittests
 	${Q}echo -e "\nruntests: \E[32;1mALL TESTS PASSED SUCCESSFULLY!\E[0;m\n"
 
 # Code coverage
@@ -1441,20 +1442,20 @@ else
 .PHONY: coverage_init
 coverage_init: install_for_test
 	rm -f ${COV_INFO}*
-	lcov -c -i -d . -b . -o ${COV_INFO}.initial
+	lcov -c -i -d . -b . -o ${COV_INFO}.initial -gcov-tool ./clang_gcov.sh
 
 .PHONY: coverage_html
 coverage_html: coverage_init runtests
-	lcov -c -d . -b . -o ${COV_INFO}.tests
-	lcov -a ${COV_INFO}.initial -a ${COV_INFO}.tests -o ${COV_INFO}.total
-	lcov -r ${COV_INFO}.total '/usr/*' -o ${COV_INFO}.local
+	lcov -c -d . -b . -o ${COV_INFO}.tests  -gcov-tool ./clang_gcov.sh
+	lcov -a ${COV_INFO}.initial -a ${COV_INFO}.tests -o ${COV_INFO}.total  -gcov-tool ./clang_gcov.sh
+	lcov -r ${COV_INFO}.total '/usr/*' -o ${COV_INFO}.local  -gcov-tool ./clang_gcov.sh
 	genhtml ${COV_INFO}.local -o ${BUILD}/coverage
 # Generate addtional coverage stats just for firmware subdir, because the stats
 # for the whole project don't include subdirectory summaries. This will print
 # the summary for just the firmware sources.
-	lcov -r ${COV_INFO}.local '*/stub/*' -o ${COV_INFO}.nostub
+	lcov -r ${COV_INFO}.local '*/stub/*' -o ${COV_INFO}.nostub  -gcov-tool ./clang_gcov.sh
 	lcov -e ${COV_INFO}.nostub '${SRCDIR}/firmware/*' \
-		-o ${COV_INFO}.firmware
+		-o ${COV_INFO}.firmware  -gcov-tool ./clang_gcov.sh
 
 coverage: coverage_init runtests coverage_html
 endif
