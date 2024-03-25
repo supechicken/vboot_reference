@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76b596eb_d2c1d92e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-25T18:07:54Z",
+      "side": 1,
+      "message": "Ack, most likely will remove this comment as we are now using ${KEYCFG_ANDROID_CLOUD_KEY_PREFIX} instead of `android_`.",
+      "parentUuid": "1d504974_9536f14e",
+      "range": {
+        "startLine": 149,
+        "startChar": 35,
+        "endLine": 149,
+        "endChar": 40
+      },
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "901a5ff9_11449ac3",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 7
@@ -54,6 +78,24 @@
       "writtenOn": "2024-03-25T14:50:31Z",
       "side": 1,
       "message": "did you intentionally strip out these flags? `--v1-signing-enabled true --v2-signing-enabled false` (they used to be present in the call)",
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e59b0c8_54bfe608",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-25T18:07:54Z",
+      "side": 1,
+      "message": "Yes intentional. We need to apksigner v3 atleast. It automatically signs based on android version. Also even with flag v1/v2 it still does v3 due to android version.",
+      "parentUuid": "901a5ff9_11449ac3",
       "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
