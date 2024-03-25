@@ -189,8 +189,8 @@ static char *extract_config_value(const char *buf, const char *config_field)
 	return NULL;
 }
 
-vb2_error_t cbfstool_get_config_value(const char *file, const char *region,
-				      const char *config_field, char **value)
+static vb2_error_t get_config_value(const char *file, const char *region,
+				    const char *config_field, char **value)
 {
 	int status;
 	const char *cbfstool = get_cbfstool_path();
@@ -232,5 +232,61 @@ vb2_error_t cbfstool_get_config_value(const char *file, const char *region,
 	rv = VB2_SUCCESS;
 done:
 	free(data_buffer);
+	return rv;
+}
+
+vb2_error_t cbfstool_get_config_bool(const char *file, const char *region,
+				     const char *config_field, bool *value)
+{
+	vb2_error_t rv;
+	char *raw_value = NULL;
+
+	*value = false;
+
+	rv = get_config_value(file, region, config_field, &raw_value);
+	if (rv)
+		return rv;
+
+	if (raw_value && strcmp(raw_value, "y") == 0)
+		*value = true;
+
+	free(raw_value);
+	return VB2_SUCCESS;
+}
+
+vb2_error_t cbfstool_get_config_string(const char *file, const char *region,
+				       const char *config_field, char **value)
+{
+	vb2_error_t rv;
+	char *raw_value = NULL;
+
+	*value = NULL;
+
+	rv = get_config_value(file, region, config_field, &raw_value);
+	if (rv)
+		return rv;
+
+	/*
+	 * Prior to CL:4040731 and CL:4085654, only config values different
+	 * from the default values will be stored in the "config" CBFS file.
+	 * Therefore, a missing config can also mean the default value. Since
+	 * we don't know the default value here, set `*value` to NULL and return
+	 * success.
+	 */
+	if (!raw_value)
+		return VB2_SUCCESS;
+
+	size_t len = strlen(raw_value);
+	if (len < 2 || raw_value[0] != '"' || raw_value[len - 1] != '"') {
+		VB2_DEBUG("%s value '%s' is not enclosed with double quotes.",
+			  config_field, raw_value);
+		rv = VB2_ERROR_CBFSTOOL;
+		goto done;
+	}
+
+	*value = strndup(&raw_value[1], len - 2);
+
+done:
+	free(raw_value);
 	return rv;
 }
