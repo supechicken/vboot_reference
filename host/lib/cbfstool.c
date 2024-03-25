@@ -234,3 +234,23 @@ done:
 	free(data_buffer);
 	return rv;
 }
+
+vb2_error_t cbfstool_get_config_string(const char *file, const char *region,
+				       const char *config_field, char **value)
+{
+	vb2_error_t rv =
+		cbfstool_get_config_value(file, region, config_field, value);
+	if (rv || !*value)
+		return rv;
+
+	char *str = *value;
+	size_t len = strlen(str);
+	if (len < 2 || str[0] != '"' || str[len - 1] != '"') {
+		VB2_DEBUG("Config value %s is enclosed with double quotes.", str);
+		return VB2_ERROR_CBFSTOOL;
+	}
+
+	*value = strndup(&str[1], len - 2);
+	free(str);
+	return VB2_SUCCESS;
+}

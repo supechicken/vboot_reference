@@ -35,3 +35,7 @@ vb2_error_t cbfstool_get_metadata_hash(const char *file, const char *region,
  */
 vb2_error_t cbfstool_get_config_value(const char *file, const char *region,
 				      const char *config_field, char **value);
+
+/* Get string value of `config` file field, with double quotes stripped. */
+vb2_error_t cbfstool_get_config_string(const char *file, const char *region,
+				       const char *config_field, char **value);
