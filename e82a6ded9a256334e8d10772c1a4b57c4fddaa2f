@@ -178,6 +178,23 @@
       "parentUuid": "901a5ff9_11449ac3",
       "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c63182f_402e2a73",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2024-03-26T17:54:44Z",
+      "side": 1,
+      "message": "If it can take between 2 and 3 arguments, should we die if there are 4+ ?",
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
