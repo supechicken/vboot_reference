@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edefba6d_6d04b42e",
+        "filename": "scripts/image_signing/lib/generate_android_cloud_config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2024-03-26T17:32:39Z",
+      "side": 1,
+      "message": "Break this out into a var? Logic or function calls in format strings can make debugging hard.",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 68
+      },
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab4cf5e_3e2ea006",
+        "filename": "scripts/image_signing/lib/generate_android_cloud_config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2024-03-26T17:32:39Z",
+      "side": 1,
+      "message": "Should we be using a path library?",
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d504974_9536f14e",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 7
@@ -60,6 +100,29 @@
         "startChar": 35,
         "endLine": 149,
         "endChar": 40
+      },
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6864d8d_11535fbc",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2024-03-26T17:32:39Z",
+      "side": 1,
+      "message": "Should this be a const?",
+      "range": {
+        "startLine": 151,
+        "startChar": 69,
+        "endLine": 151,
+        "endChar": 71
       },
       "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
