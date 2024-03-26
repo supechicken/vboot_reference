@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e555e7ec_23287a66",
+        "filename": "scripts/image_signing/lib/generate_android_cloud_config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-26T22:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e80980cb_a5e7d5fc",
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edefba6d_6d04b42e",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "525762ac_a0414822",
+        "filename": "scripts/image_signing/lib/generate_android_cloud_config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-26T22:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edefba6d_6d04b42e",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 68
+      },
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ab4cf5e_3e2ea006",
@@ -71,6 +113,24 @@
       "writtenOn": "2024-03-26T17:32:39Z",
       "side": 1,
       "message": "Should we be using a path library?",
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e83d134_599ae8b7",
+        "filename": "scripts/image_signing/lib/generate_android_cloud_config.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-26T22:18:24Z",
+      "side": 1,
+      "message": "Replaced with os.path.join",
+      "parentUuid": "6ab4cf5e_3e2ea006",
       "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc4f490_09aa7ac8",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-26T22:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b596eb_d2c1d92e",
+      "range": {
+        "startLine": 149,
+        "startChar": 35,
+        "endLine": 149,
+        "endChar": 40
+      },
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6864d8d_11535fbc",
@@ -135,6 +219,30 @@
       "writtenOn": "2024-03-26T17:32:39Z",
       "side": 1,
       "message": "Should this be a const?",
+      "range": {
+        "startLine": 151,
+        "startChar": 69,
+        "endLine": 151,
+        "endChar": 71
+      },
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858a20d3_5460baa1",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-26T22:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6864d8d_11535fbc",
       "range": {
         "startLine": 151,
         "startChar": 69,
@@ -193,6 +301,24 @@
       "writtenOn": "2024-03-26T17:54:44Z",
       "side": 1,
       "message": "If it can take between 2 and 3 arguments, should we die if there are 4+ ?",
+      "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "626cb286_3aa44381",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-26T22:18:24Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "3c63182f_402e2a73",
       "revId": "e82a6ded9a256334e8d10772c1a4b57c4fddaa2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
