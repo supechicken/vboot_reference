@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8d560f_7a291317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-27T00:48:10Z",
+      "side": 1,
+      "message": "Hmm... I get why you\u0027re doing this but it feels a bit wrong from an API design point of view. We should either only have `get_config_value()`, or have a `get_config_string()`, `get_config_bool()`, etc. (as needed) and not export the underlying raw string extraction beyond the file.",
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05082d26_ddc2c8d4",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-27T00:48:10Z",
+      "side": 1,
+      "message": "This suggests that an empty result would still be returned as VB2_SUCCESS. Shouldn\u0027t an empty result be `\"\"`, and an actually empty string be an error?",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 18
+      },
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "715222f7_1c4f49b7",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-27T00:48:10Z",
+      "side": 1,
+      "message": "Should this say \"is not\"?",
+      "range": {
+        "startLine": 249,
+        "startChar": 29,
+        "endLine": 249,
+        "endChar": 32
+      },
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
