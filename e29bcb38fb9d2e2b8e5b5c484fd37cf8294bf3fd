@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09ffa0d_1bd424ea",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-03-27T01:06:43Z",
+      "side": 1,
+      "message": "```suggestion\nIt can also sign using cloud kms keys based on env variables present for it.\n```",
+      "revId": "e29bcb38fb9d2e2b8e5b5c484fd37cf8294bf3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
