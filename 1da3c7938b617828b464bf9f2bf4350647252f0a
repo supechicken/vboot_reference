@@ -16,6 +16,24 @@
       "message": "```suggestion\n        self.tempdir \u003d tempfile.TemporaryDirectory()\n```\n\nthis is the name we use in chromite",
       "revId": "1da3c7938b617828b464bf9f2bf4350647252f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc6973d_6e389cbb",
+        "filename": "scripts/image_signing/sign_uefi_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2024-03-28T18:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c725d686_667cfe78",
+      "revId": "1da3c7938b617828b464bf9f2bf4350647252f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
