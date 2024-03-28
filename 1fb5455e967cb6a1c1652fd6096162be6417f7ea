@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04f13670_21ce224d",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-28T23:49:09Z",
+      "side": 1,
+      "message": "I think this API is only meant to access files generated after those patches (because otherwise `get_bool()` would also return plenty of incorrect results for things that are `y` by default). So an empty result would always mean the config doesn\u0027t exist and trying to look for it was probably an error.\n\nIf you imagine that we also added a `get_int()` later, we\u0027d have the same problem about what to return when it wasn\u0027t found, but setting the passed-in int to 0 wouldn\u0027t be a good solution because that\u0027s indistinguishable from the value actually being 0. We\u0027d have to return an error instead. So I think in anticipation of being consistent with that case, it would make sense to return an error when a string isn\u0027t found as well.",
+      "parentUuid": "674ced72_7423165b",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 18
+      },
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "715222f7_1c4f49b7",
         "filename": "host/lib/cbfstool.c",
         "patchSetId": 1

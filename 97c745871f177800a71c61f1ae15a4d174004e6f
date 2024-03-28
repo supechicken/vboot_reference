@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23ed838_8d062c81",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-28T23:49:09Z",
+      "side": 1,
+      "message": "nit: initialization unnecessary",
+      "range": {
+        "startLine": 491,
+        "startChar": 8,
+        "endLine": 491,
+        "endChar": 16
+      },
+      "revId": "97c745871f177800a71c61f1ae15a4d174004e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da76ba03_a48713c6",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-28T23:49:09Z",
+      "side": 1,
+      "message": "nit: technically also don\u0027t need to check for error anymore with the way it\u0027s written now.",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 4
+      },
+      "revId": "97c745871f177800a71c61f1ae15a4d174004e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
