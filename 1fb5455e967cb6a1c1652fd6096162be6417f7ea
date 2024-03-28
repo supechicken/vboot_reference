@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7e1f0a_b6271105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-03-28T03:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8d560f_7a291317",
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05082d26_ddc2c8d4",
@@ -78,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "674ced72_7423165b",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-03-28T03:16:58Z",
+      "side": 1,
+      "message": "With CB:69710 and CB:69955, I think all the configs should be listed in the `config` CBFS file, so there shouldn\u0027t be empty results. For old images without these 2 patches, an empty result just means the default value, which isn\u0027t necessarily an empty string.\n\nSo, I don\u0027t know. Maybe return `VB2_SUCCESS` and set `*value \u003d NULL`, and leave the decision to the caller?",
+      "parentUuid": "05082d26_ddc2c8d4",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 18
+      },
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "715222f7_1c4f49b7",
         "filename": "host/lib/cbfstool.c",
         "patchSetId": 1
@@ -89,6 +131,30 @@
       "writtenOn": "2024-03-27T00:48:10Z",
       "side": 1,
       "message": "Should this say \"is not\"?",
+      "range": {
+        "startLine": 249,
+        "startChar": 29,
+        "endLine": 249,
+        "endChar": 32
+      },
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7aacd26_db9bd048",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-03-28T03:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "715222f7_1c4f49b7",
       "range": {
         "startLine": 249,
         "startChar": 29,
