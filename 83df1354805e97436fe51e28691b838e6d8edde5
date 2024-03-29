@@ -16,6 +16,23 @@
       "message": "Please test with signer unit tests to confirm there aren\u0027t other errors masked by the errors that required this (and annotate this with TEST\u003d line indicating this happened)",
       "revId": "83df1354805e97436fe51e28691b838e6d8edde5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8cc2ea_1ff29784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2024-03-29T18:01:19Z",
+      "side": 1,
+      "message": "Adding a V+1. I tested `make runtests` in vboot, and also `./run_tests` in the signer with `vboot_stable_hash\u003d83df1354805e97436fe51e28691b838e6d8edde5`.",
+      "revId": "83df1354805e97436fe51e28691b838e6d8edde5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
