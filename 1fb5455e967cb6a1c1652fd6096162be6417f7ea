@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8af792_7939f029",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-29T22:58:35Z",
+      "side": 1,
+      "message": "Yeah yeah, I know the bool needs to be special (and I guess we make use of how that works for staying compatible with older images too), I was just trying to aim for consistency between the other cases.\n\n\u003e by adding all the ... is not set comments to the config CBFS file\n\nNo, I intentionally didn\u0027t want to do that to not waste too much space in the firmware image.",
+      "parentUuid": "b9c1d96b_4d5de152",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 18
+      },
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "715222f7_1c4f49b7",

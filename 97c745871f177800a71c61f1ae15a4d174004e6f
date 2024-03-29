@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6803a70_7f5a6711",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-03-29T22:58:35Z",
+      "side": 1,
+      "message": "It does modify `rv` in all cases though, if you look at the way you implemented it. In other cases you make use of the fact that the passed-in value gets initialized to a default value even in the error case (e.g. in `determine_ifd_platform()`), so I assumed that was an intended feature of the API and then it would make sense that you could rely on it here too.",
+      "parentUuid": "405893ff_9c34a300",
+      "range": {
+        "startLine": 491,
+        "startChar": 8,
+        "endLine": 491,
+        "endChar": 16
+      },
+      "revId": "97c745871f177800a71c61f1ae15a4d174004e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da76ba03_a48713c6",
         "filename": "futility/file_type_bios.c",
         "patchSetId": 3
