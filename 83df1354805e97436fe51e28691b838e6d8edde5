@@ -51,6 +51,23 @@
       "message": "Adding a V+1. I tested `make runtests` in vboot, and also `./run_tests` in the signer with `vboot_stable_hash\u003d83df1354805e97436fe51e28691b838e6d8edde5`.",
       "revId": "83df1354805e97436fe51e28691b838e6d8edde5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d7d2a4_a21e9a5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-03-29T23:47:04Z",
+      "side": 1,
+      "message": "CQ failing with issue similar to b/331961977 which is dup of b/331944991. Waiting for CQ to recover.",
+      "revId": "83df1354805e97436fe51e28691b838e6d8edde5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
