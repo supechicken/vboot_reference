@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9c1d96b_4d5de152",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-03-29T08:56:26Z",
+      "side": 1,
+      "message": "\u003e I think this API is only meant to access files generated after those patches\n\nNote that both `futility sign` (CONFIG_VBOOT_CBFS_INTEGRATION) and `futility update` (CONFIG_IFD_CHIPSET) need to run on old images, so calling these functions on images without those 2 patches is inevitable.\n\n\u003e If you imagine that we also added a get_int() later, we\u0027d have the same problem\n\nThe current `get_bool` in PS3 already has the same `get_int` problem you mentioned. Recall that the latest `config` file consists of two parts: defconfig and derivable values, and CB:69955 didn\u0027t add `# CONFIG_XXX is not set` to the 2nd part. Therefore, when a bool config isn\u0027t found, it can mean either `false` or error (non-existing config, such as `CONFIG_VBOOT_CBFS_INTEGRATION` in old images). And IMO whether the error means `false` should be determined by the caller, instead of by `get_bool`.\n\nSo, in order to make these functions really \"consistent\", I think we\u0027ll have to make `false` and error distinguishable, by adding all the `... is not set` comments to the `config` CBFS file (so that `extract_config_value` can also search the requested config in comments).\n\nPS4: `get_string` is modified as suggested.",
+      "parentUuid": "04f13670_21ce224d",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 18
+      },
+      "revId": "1fb5455e967cb6a1c1652fd6096162be6417f7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "715222f7_1c4f49b7",
         "filename": "host/lib/cbfstool.c",
         "patchSetId": 1
