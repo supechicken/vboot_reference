@@ -58,6 +58,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6fee446_68c564e3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2024-04-01T11:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eba5b57_8414b97c",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f40b574a_37bc604d",
@@ -71,6 +89,24 @@
       "writtenOn": "2024-03-20T22:27:48Z",
       "side": 1,
       "message": "It\u0027s not clear to me why you do this, can you elaborate more in the comment?",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2fa17d_2293c65d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2024-04-01T11:51:48Z",
+      "side": 1,
+      "message": "Here I implement GenerateDLC from chromite/lib/dlc_lib.py\nAdd a comment above.",
+      "parentUuid": "f40b574a_37bc604d",
       "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +147,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c83af0f7_1f2aa20b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2024-04-01T11:51:48Z",
+      "side": 1,
+      "message": "There was a bug that mksquashfs failed in a rare case and thus this check. b/303628900\nThe bug was caught and fixed now.\nIn the future we will create tens of DLC here for model specific DLC. But we probably should use the chromite lib to generate DLC instead.",
+      "parentUuid": "f36f0244_e6e4d879",
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9c31e27_83cf02c4",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -122,6 +176,30 @@
       "writtenOn": "2024-03-20T22:27:48Z",
       "side": 1,
       "message": "What\u0027s the point of the redirection here? (Also, if you just want to log status you should use the existing `error`/`warn`/`info` functions.)",
+      "range": {
+        "startLine": 833,
+        "startChar": 32,
+        "endLine": 833,
+        "endChar": 36
+      },
+      "revId": "1506ab988ca9326637dd259c6615c1777e63eabc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5894a086_6373fb36",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2024-04-01T11:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9c31e27_83cf02c4",
       "range": {
         "startLine": 833,
         "startChar": 32,
