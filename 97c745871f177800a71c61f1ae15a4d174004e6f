@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b59b0a_5f68ec60",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-04-01T06:10:25Z",
+      "side": 1,
+      "message": "\u003e It does modify rv in all cases though, if you look at the way you implemented it.\n\nYes, I know, just for making it more defensive. I\u0027d also prefer initializing `platform` to `NULL` in `determine_ifd_platform()` for the same reason.\n\nAnyway, I don\u0027t have a strong opinion. Removed the initialization, modified the tests to explicitly test the case, and made the documentation clearer.",
+      "parentUuid": "d6803a70_7f5a6711",
+      "range": {
+        "startLine": 491,
+        "startChar": 8,
+        "endLine": 491,
+        "endChar": 16
+      },
+      "revId": "97c745871f177800a71c61f1ae15a4d174004e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da76ba03_a48713c6",
