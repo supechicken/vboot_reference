@@ -12,6 +12,7 @@ SRCDIR="${ROOT_DIR}"
 # Some test scripts change the cwd so use an absolute path.
 BUILD_RUN="$(realpath "${BUILD_RUN}")"
 BIN_DIR="${BUILD_RUN}/install_for_test/usr/bin"
+VBOOT_BIN_DIR="${BUILD_RUN}/install_for_test/usr/share/vboot/bin"
 FUTILITY="${BIN_DIR}/futility"
 TEST_DIR="${BUILD_RUN}/tests"
 TESTKEY_DIR="${SCRIPT_DIR}/testkeys"
