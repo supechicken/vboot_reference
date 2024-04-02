@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "380b1037_b82ae3d9",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-02T01:41:03Z",
+      "side": 1,
+      "message": "Would be nicer if we also checked in the modified image so we can confirm it\u0027s byte-for-byte identical? (I guess that can break in the same rare cases as we discussed with that hash, but maybe it\u0027s better to become aware of those and fix them manually than to have barely any coverage at all?)",
+      "revId": "9b316f5831056cf1da57e53c0bcd7dae73d5a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
