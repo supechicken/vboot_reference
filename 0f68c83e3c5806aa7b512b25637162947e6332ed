@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7ebaf4_e9bd8975",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-02T23:44:06Z",
+      "side": 1,
+      "message": "nit: Is there some logic behind when we\u0027re using diff and when we\u0027re using cmp? I think most of the other test scripts here tend to use cmp.",
+      "revId": "0f68c83e3c5806aa7b512b25637162947e6332ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
