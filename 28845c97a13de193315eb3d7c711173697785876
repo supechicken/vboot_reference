@@ -22,6 +22,30 @@
       },
       "revId": "28845c97a13de193315eb3d7c711173697785876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a4a3567_2dbe22d3",
+        "filename": "futility/cmd_dump_fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-04-02T08:09:16Z",
+      "side": 0,
+      "message": "It should actually be `argv[0]`. Fixed in CL:5410328.",
+      "parentUuid": "43cfb9c0_a5e6fbf3",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "28845c97a13de193315eb3d7c711173697785876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
