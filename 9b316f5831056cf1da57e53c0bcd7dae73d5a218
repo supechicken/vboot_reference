@@ -34,6 +34,24 @@
       "parentUuid": "380b1037_b82ae3d9",
       "revId": "9b316f5831056cf1da57e53c0bcd7dae73d5a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9f7fdc_46a149d9",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-03T01:46:52Z",
+      "side": 1,
+      "message": "Yeah, I mean we already have 146MB of futility test data anyway... I think we should try to reuse test blobs where it makes sense but we also shouldn\u0027t shy away from adding more when it\u0027s necessary to provide important coverage.\n\nChecking in FW_MAIN_A sounds like a good compromise, although I think checking in the whole image would also be okay. Adding a dependency on bsdiff seems a bit excessive.\n\n(Not sure why this comment didn\u0027t come out last time already, I wrote it back then.)",
+      "parentUuid": "ed433086_e52a87aa",
+      "revId": "9b316f5831056cf1da57e53c0bcd7dae73d5a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
