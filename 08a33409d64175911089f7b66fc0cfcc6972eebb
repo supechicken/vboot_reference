@@ -33,6 +33,42 @@
       "message": "/tmp/portage/chromeos-base/vboot_reference-1.0-r2831/work/vboot_reference-1.0/vboot_reference/tests/swap_ec_rw_tests.sh: line 28: /tmp/portage/chromeos-base/vboot_reference-1.0-r2831/work/vboot_reference-1.0/build-main/install_for_test/usr/share/vboot/bin/swap_ec_rw: No such file or directory",
       "revId": "08a33409d64175911089f7b66fc0cfcc6972eebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba87433_401a018c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-04-08T02:29:55Z",
+      "side": 1,
+      "message": "Fixed in PS7.",
+      "parentUuid": "dca545d6_88310f0a",
+      "revId": "08a33409d64175911089f7b66fc0cfcc6972eebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8bb6bb_21a7a0a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-04-08T02:29:55Z",
+      "side": 1,
+      "message": "Duplicate comment. Seems like a Gerrit bug.",
+      "parentUuid": "2a14a0bb_5745a2cb",
+      "revId": "08a33409d64175911089f7b66fc0cfcc6972eebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
