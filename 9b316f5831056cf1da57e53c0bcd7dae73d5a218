@@ -70,6 +70,24 @@
       "parentUuid": "9a9f7fdc_46a149d9",
       "revId": "9b316f5831056cf1da57e53c0bcd7dae73d5a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc851562_f973ceca",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-11T23:23:12Z",
+      "side": 1,
+      "message": "No, it was just the general idea of limiting dependencies where possible. If you think this is an important enough problem then I\u0027m not hard against doing it either (although it sounds like overkill for this one case, and I don\u0027t think we have many more cases where different test blobs are close enough to each other that bsdiff would be useful?).\n\nI would be more concerned about normal build or runtime dependencies because then we have the whole headache again about making sure other users (like upstream coreboot) can deal with them. But I guess as long as it only affects `make runtests`, we don\u0027t need to care that much.",
+      "parentUuid": "e0ae7961_ba619cf8",
+      "revId": "9b316f5831056cf1da57e53c0bcd7dae73d5a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
