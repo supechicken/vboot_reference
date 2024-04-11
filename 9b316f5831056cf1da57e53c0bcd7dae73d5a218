@@ -52,6 +52,24 @@
       "parentUuid": "ed433086_e52a87aa",
       "revId": "9b316f5831056cf1da57e53c0bcd7dae73d5a218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ae7961_ba619cf8",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-04-11T07:58:03Z",
+      "side": 1,
+      "message": "\u003e Adding a dependency on bsdiff seems a bit excessive.\n\nJust to clarify your point, is that because we\u0027d need to build bsdiff for all the boards (because vboot tests are run via platform2_test.py)? hungte@ and I are having a similar discussion about platform/firmware tests in CL:5442995. I think using only SDK\u0027s bsdiff should be fine, because the package is already a dependency of target-chromium-os-sdk.",
+      "parentUuid": "9a9f7fdc_46a149d9",
+      "revId": "9b316f5831056cf1da57e53c0bcd7dae73d5a218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
