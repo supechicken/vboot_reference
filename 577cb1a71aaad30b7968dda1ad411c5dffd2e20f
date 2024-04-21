@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f96596e_58472025",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-04-21T16:09:00Z",
+      "side": 1,
+      "message": "same here - can we move this if-block to a standalone function?",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 49
+      },
+      "revId": "577cb1a71aaad30b7968dda1ad411c5dffd2e20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2ca2d8_11665e88",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-04-21T16:09:00Z",
+      "side": 1,
+      "message": "I\u0027d rather put this big if-block to a standalone function and simply call it here.",
+      "range": {
+        "startLine": 810,
+        "startChar": 2,
+        "endLine": 810,
+        "endChar": 30
+      },
+      "revId": "577cb1a71aaad30b7968dda1ad411c5dffd2e20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
