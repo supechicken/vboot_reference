@@ -4,3 +4,10 @@ twawrzynczak@chromium.org
 hungte@chromium.org
 roccochen@chromium.org
 quasisec@chromium.org
+
+per-file ANDROID_OWNERS=file://OWNERS.android
+
+per-file scripts/image_signing/*android*=file://OWNERS.android
+per-file scripts/image_signing/lib/*android*=file://OWNERS.android
+per-file scripts/keygeneration/*android*=file://OWNERS.android
+per-file tests/devkeys/android/*=file://OWNERS.android
