@@ -4,3 +4,7 @@ twawrzynczak@chromium.org
 hungte@chromium.org
 roccochen@chromium.org
 quasisec@chromium.org
+
+per-file ANDROID_OWNERS=file://ANDROID_OWNERS
+
+per-file **android**=file://ANDROID_OWNERS
