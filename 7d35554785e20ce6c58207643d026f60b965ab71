@@ -16,6 +16,40 @@
       "message": "Add android OWNERS file for vboot.",
       "revId": "7d35554785e20ce6c58207643d026f60b965ab71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8597127c_41e96924",
+        "filename": "ANDROID_OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-23T00:17:02Z",
+      "side": 1,
+      "message": "I think it would match the naming conventions in other repos better to call this `OWNERS.android`. (Or, if you move some of the Android stuff in a separate directory, it could just be the `OWNERS` file in there and still be referenced explicitly for a few per-file rules for other stuff.)",
+      "revId": "7d35554785e20ce6c58207643d026f60b965ab71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0edcbd_d8f62cef",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-23T00:17:02Z",
+      "side": 1,
+      "message": "I think globbing through the whole repo is a bit too fuzzy, I\u0027d prefer listing affected files and directories explicitly. Maybe we could create a new directory to combine all or at least most of the Android stuff (e.g. scrips/image_signing/android)?",
+      "revId": "7d35554785e20ce6c58207643d026f60b965ab71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
