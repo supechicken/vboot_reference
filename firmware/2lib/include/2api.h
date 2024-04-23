@@ -1410,4 +1410,8 @@ union vb2_fw_boot_info vb2api_get_fw_boot_info(struct vb2_context *ctx);
  */
 void vb2api_clear_recovery(struct vb2_context *ctx);
 
+/* Returns 0 if no compromise found, otherwise a value that contains all
+   relevant information for logging. */
+uint16_t vb2hack_is_secdata_compromised(struct vb2_context *ctx, int index);
+
 #endif  /* VBOOT_REFERENCE_2API_H_ */
