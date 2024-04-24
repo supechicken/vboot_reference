@@ -50,6 +50,24 @@
       "message": "I think globbing through the whole repo is a bit too fuzzy, I\u0027d prefer listing affected files and directories explicitly. Maybe we could create a new directory to combine all or at least most of the Android stuff (e.g. scrips/image_signing/android)?",
       "revId": "7d35554785e20ce6c58207643d026f60b965ab71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623bf660_cd48cd6a",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-24T19:18:00Z",
+      "side": 1,
+      "message": "We have Android in the following directory, probably not the best idea to merge these.\n./tests/devkeys/\n./scripts/keygeneration/\n./scripts/image_signing/\n./scripts/image_signing/lib/\n\nI can try to be make it more directory driven, but may end up having multiple lines. If thats ok we can go with that. LMKWYT?",
+      "parentUuid": "0c0edcbd_d8f62cef",
+      "revId": "7d35554785e20ce6c58207643d026f60b965ab71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
