@@ -86,6 +86,24 @@
       "parentUuid": "0c0edcbd_d8f62cef",
       "revId": "7d35554785e20ce6c58207643d026f60b965ab71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce563172_3b2e1c56",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-24T23:21:06Z",
+      "side": 1,
+      "message": "Sorry, I really mean just not using glob-masks at all (because they can have unexpected consequences when people later add or rename files). If we want to group anything by responsibility, it should be done with subdirectories, not file name fragments.\n\nI\u0027m not really sure what the point of the `lib/` under `image_signing/` is... maybe it would make sense to move all of `image_signing/*android*` and `image_signing/lib/*android*` under `image_signing/android` (which could then also have a `lib/` subfolder if you prefer), put your `OWNERS` there, put another `OWNERS` that just contains a single `file://../../../scripts/image_signing/android/OWNERS` into `tests/devkeys/android`, and add a `per-file keygeneration/create_new_android_keys.sh\u003dfile://image_signing/android/OWNERS` into `scripts/OWNERS`?",
+      "parentUuid": "623bf660_cd48cd6a",
+      "revId": "7d35554785e20ce6c58207643d026f60b965ab71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
