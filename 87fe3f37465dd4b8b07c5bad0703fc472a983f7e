@@ -1,0 +1,195 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb2cca9_bfba8b30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "nit: yaml",
+      "range": {
+        "startLine": 10,
+        "startChar": 71,
+        "endLine": 10,
+        "endChar": 74
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e1a1c4_8ed8e55d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
+      "parentUuid": "0dc73fdc_abbea87c",
+      "range": {
+        "startLine": 222,
+        "startChar": 8,
+        "endLine": 222,
+        "endChar": 12
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f09d82e_105a73e6",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "cb252470_608ea186",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec380a0_cc607644",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "\u003e style: Prefer putting braces around variable references even when not strictly required.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2250\n\nPlease fix.",
+      "parentUuid": "f42aa362_145390d9",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464ab124_9a54983b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
+      "parentUuid": "b4e7fa6a_6ff14a8c",
+      "range": {
+        "startLine": 305,
+        "startChar": 8,
+        "endLine": 305,
+        "endChar": 17
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a28c68_227694c5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
+      "parentUuid": "bf6bac8b_1b6658cc",
+      "range": {
+        "startLine": 306,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 12
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b624b59e_5b8671ec",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
+      "parentUuid": "fc5219fe_853b204d",
+      "range": {
+        "startLine": 312,
+        "startChar": 8,
+        "endLine": 312,
+        "endChar": 16
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c83d1d1_e7f5703e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-04-26T17:58:44Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
+      "parentUuid": "17ca8d45_6ce6b726",
+      "range": {
+        "startLine": 315,
+        "startChar": 8,
+        "endLine": 315,
+        "endChar": 16
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
