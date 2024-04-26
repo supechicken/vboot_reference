@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae9d85d_f7f023fe",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-26T23:53:57Z",
+      "side": 1,
+      "message": "So, wait, all you need to get this out of the binary is look at the FMAP? I thought it was a much more complicated extraction process than that.\n\nI\u0027m honestly not sure I understand the point of putting it in a separate CBFS file in that case, then. I don\u0027t think that\u0027s considerably \"easier\" than just dumping the FMAP section off the EC binary, at least not enough to warrant the redundancy. I mean, if you have a ROM image and you want to get this version out, then even if it\u0027s in a CBFS file you still need to at least run a cbfstool command to extract it. cbfstool even has an FMAP parser integrated in itself already, so it\u0027s not even about avoiding an extra dependency on dump_fmap (which is pretty much always available wherever we have cbfstool anyway). The entire difference between the two is just whether you need to invoke cbfstool once\n```\ncbfstool image.bin extract -n ecrw.version -f version\n```\nor twice\n```\ncbfstool image.bin extract -n ecrw -f ${TMPFILE}\ncbfstool ${TMPFILE} read -r RW_FWID -f version\n```\nIs that really worth the hassle (and the risk that the CBFS file could get out of sync)?",
+      "revId": "1fd75063934ea963e0432b71b2d4fb0d965bbfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
