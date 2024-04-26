@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78722ea3_a1ebd4e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eb2cca9_bfba8b30",
+      "range": {
+        "startLine": 10,
+        "startChar": 71,
+        "endLine": 10,
+        "endChar": 74
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00e1a1c4_8ed8e55d",
@@ -38,6 +62,30 @@
       "side": 1,
       "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
       "parentUuid": "0dc73fdc_abbea87c",
+      "range": {
+        "startLine": 222,
+        "startChar": 8,
+        "endLine": 222,
+        "endChar": 12
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa858bc_f1133a6e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e1a1c4_8ed8e55d",
       "range": {
         "startLine": 222,
         "startChar": 8,
@@ -96,6 +144,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "066506e0_6142d08c",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "cb252470_608ea186",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29abf2aa_f7494ec8",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec380a0_cc607644",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 15
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "464ab124_9a54983b",
@@ -110,6 +206,30 @@
       "side": 1,
       "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
       "parentUuid": "b4e7fa6a_6ff14a8c",
+      "range": {
+        "startLine": 305,
+        "startChar": 8,
+        "endLine": 305,
+        "endChar": 17
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2926ae_08b9ea2b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464ab124_9a54983b",
       "range": {
         "startLine": 305,
         "startChar": 8,
@@ -144,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01826ccf_a09447f7",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7a28c68_227694c5",
+      "range": {
+        "startLine": 306,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 12
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b624b59e_5b8671ec",
@@ -168,6 +312,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d859458b_53c88aba",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b624b59e_5b8671ec",
+      "range": {
+        "startLine": 312,
+        "startChar": 8,
+        "endLine": 312,
+        "endChar": 16
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c83d1d1_e7f5703e",
@@ -182,6 +350,30 @@
       "side": 1,
       "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix.",
       "parentUuid": "17ca8d45_6ce6b726",
+      "range": {
+        "startLine": 315,
+        "startChar": 8,
+        "endLine": 315,
+        "endChar": 16
+      },
+      "revId": "87fe3f37465dd4b8b07c5bad0703fc472a983f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ec93f1_1a3ed463",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-04-26T21:46:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c83d1d1_e7f5703e",
       "range": {
         "startLine": 315,
         "startChar": 8,
