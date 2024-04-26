@@ -16,6 +16,57 @@
       "message": "PTAL!",
       "revId": "e91f5f0e5bcbd75cce825083195eeba332f6f905",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f519b9e8_37da6358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2024-04-26T22:21:02Z",
+      "side": 1,
+      "message": "generally looks good, just a few nitty questions/comments",
+      "revId": "e91f5f0e5bcbd75cce825083195eeba332f6f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc72ca38_6c7840de",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2024-04-26T22:21:02Z",
+      "side": 1,
+      "message": "unrelated to this CL, but is this comment still accurate? We call |change_cert| with media and network stack key below IIUC",
+      "revId": "e91f5f0e5bcbd75cce825083195eeba332f6f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d7c7d6_5506ed14",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2024-04-26T22:21:02Z",
+      "side": 1,
+      "message": "nit/question: should we only declare these locals in the if block below, as they aren\u0027t used outside of there?\n\n(similar for the |public_*_key| values above, I suppose...)",
+      "revId": "e91f5f0e5bcbd75cce825083195eeba332f6f905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
