@@ -16,6 +16,24 @@
       "message": "So, wait, all you need to get this out of the binary is look at the FMAP? I thought it was a much more complicated extraction process than that.\n\nI\u0027m honestly not sure I understand the point of putting it in a separate CBFS file in that case, then. I don\u0027t think that\u0027s considerably \"easier\" than just dumping the FMAP section off the EC binary, at least not enough to warrant the redundancy. I mean, if you have a ROM image and you want to get this version out, then even if it\u0027s in a CBFS file you still need to at least run a cbfstool command to extract it. cbfstool even has an FMAP parser integrated in itself already, so it\u0027s not even about avoiding an extra dependency on dump_fmap (which is pretty much always available wherever we have cbfstool anyway). The entire difference between the two is just whether you need to invoke cbfstool once\n```\ncbfstool image.bin extract -n ecrw.version -f version\n```\nor twice\n```\ncbfstool image.bin extract -n ecrw -f ${TMPFILE}\ncbfstool ${TMPFILE} read -r RW_FWID -f version\n```\nIs that really worth the hassle (and the risk that the CBFS file could get out of sync)?",
       "revId": "1fd75063934ea963e0432b71b2d4fb0d965bbfaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb08a9c_3abc5c79",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-04-29T10:10:16Z",
+      "side": 1,
+      "message": "The 2nd command `cbfstool ${TMPFILE} read -r RW_FWID -f version` doesn\u0027t work because `ecrw` itself is just an FMAP region `RW_FW`, which doesn\u0027t contain the FMAP header which contains the the FMAP layout information. The `RW_FW` region does contain `RW_FWID`, but without the FMAP header we don\u0027t know where it is.\n\nAn alternative solution is to store EC\u0027s FMAP region `FMAP` in (RO maybe?) CBFS. Then we\u0027d never need to modify it, and in the swap_ec_rw script we could verify the new EC\u0027s FMAP header, by comparing it with the one in CBFS. However, extracting `RW_FWID` from `ecrw` would be slightly more complicated with this approach.",
+      "parentUuid": "5ae9d85d_f7f023fe",
+      "revId": "1fd75063934ea963e0432b71b2d4fb0d965bbfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
