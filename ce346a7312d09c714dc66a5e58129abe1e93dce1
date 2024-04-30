@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43906609_1a391938",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-30T18:26:11Z",
+      "side": 1,
+      "message": "Why is this necessary here but there\u0027s no similar rule for `tests/futility/data`?",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab7d9e6_2b415ff2",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-30T18:26:11Z",
+      "side": 1,
+      "message": "nit: A bit off-topic but it is kinda weird to read out the type for one file and then reuse it for all three. That works when we know they\u0027re all \"raw\" anyway, of course, but if we make that assumption (which I think is reasonable to make in this script) we might as well hardcode that and not read anything from the old image in the first place. If you really want to make the extra effort to preserve types I think you should do it for each file individually.",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c659d9f7_02811915",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-30T18:26:11Z",
+      "side": 1,
+      "message": "If you want to use a temp directory outside of `./build` I think you should do more to ensure it gets cleaned up even if your script errors out somewhere in the middle, e.g. install a `trap` handler. (While I see both patterns in vboot tests, keeping everything within `${BUILD_RUN}` is probably the cleaner one.)",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

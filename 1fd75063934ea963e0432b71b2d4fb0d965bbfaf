@@ -34,6 +34,24 @@
       "parentUuid": "5ae9d85d_f7f023fe",
       "revId": "1fd75063934ea963e0432b71b2d4fb0d965bbfaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904f6b14_736db8a1",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-04-30T18:26:11Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t notice the distinction between full EC image and RW-only image here. You\u0027re right of course, carry on.",
+      "parentUuid": "dbb08a9c_3abc5c79",
+      "revId": "1fd75063934ea963e0432b71b2d4fb0d965bbfaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
