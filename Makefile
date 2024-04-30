@@ -665,9 +665,8 @@ SIGNING_SCRIPTS_BOARD = \
 	scripts/image_signing/make_dev_ssd.sh \
 	scripts/image_signing/common_minimal.sh
 
-# SDK installations just want everything.
+# SDK installations have some extra scripts.
 SIGNING_SCRIPTS_SDK = \
-	$(wildcard scripts/image_signing/*.sh) \
 	scripts/image_signing/swap_ec_rw
 
 # Unified firmware utility.
