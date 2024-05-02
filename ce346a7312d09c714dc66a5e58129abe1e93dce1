@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23059c4_1b46497e",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-02T07:36:05Z",
+      "side": 1,
+      "message": "Because by default files without extensions (such as RW_FWID) are included by the pre-upload hooks (not sure about the reason), while all files in tests/futility/data have extensions that are not in the \"included list\".",
+      "parentUuid": "43906609_1a391938",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ab7d9e6_2b415ff2",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef443fa_45aaccd7",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-02T07:36:05Z",
+      "side": 1,
+      "message": "That seems to be a copy-paste mistake when I first wrote the script. Fixed in CL:5509092.",
+      "parentUuid": "7ab7d9e6_2b415ff2",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c659d9f7_02811915",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-04-30T18:26:11Z",
       "side": 1,
       "message": "If you want to use a temp directory outside of `./build` I think you should do more to ensure it gets cleaned up even if your script errors out somewhere in the middle, e.g. install a `trap` handler. (While I see both patterns in vboot tests, keeping everything within `${BUILD_RUN}` is probably the cleaner one.)",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc4efa35_cb30e8c1",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-02T07:36:05Z",
+      "side": 1,
+      "message": "Changed to `\"${ME}.tmp\"`.",
+      "parentUuid": "c659d9f7_02811915",
       "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
