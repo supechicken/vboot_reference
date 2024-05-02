@@ -72,9 +72,9 @@ swap_ecrw() {
     cbfstool "${ap_file}" expand -r "${region}"
     cbfstool "${ap_file}" add -r "${region}" -t "${ecrw_type}" \
       -c "${ecrw_comp_type}" -f "${ecrw_file}" -n "${CBFS_ECRW_NAME}"
-    cbfstool "${ap_file}" add -r "${region}" -t "${ecrw_type}" \
+    cbfstool "${ap_file}" add -r "${region}" -t raw \
       -c none -f "${ecrw_hash_file}" -n "${CBFS_ECRW_HASH_NAME}"
-    cbfstool "${ap_file}" add -r "${region}" -t "${ecrw_type}" \
+    cbfstool "${ap_file}" add -r "${region}" -t raw \
       -c none -f "${ecrw_version_file}" -n "${CBFS_ECRW_VERSION_NAME}"
   done
 
