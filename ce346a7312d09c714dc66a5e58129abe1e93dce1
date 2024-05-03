@@ -104,6 +104,24 @@
       "parentUuid": "c659d9f7_02811915",
       "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410ab008_5dc99dd3",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-03T23:34:58Z",
+      "side": 1,
+      "message": "So this creates it in the current directory? Sorry, I\u0027m still confused... is the current directory guaranteed to be set to something specific when running this? Then why are all the other paths absolute?\n\nI found some futility tests that do something similar, but they all do `cd \"${OUTDIR}\"` as well, which you don\u0027t here. Otherwise I\u0027d expect you to do something like `TMPD\u003d\"${TEST_DIR}/${ME}\"` instead.",
+      "parentUuid": "fc4efa35_cb30e8c1",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
