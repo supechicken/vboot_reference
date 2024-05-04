@@ -122,6 +122,24 @@
       "parentUuid": "fc4efa35_cb30e8c1",
       "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9574162_36dbe244",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-04T02:36:51Z",
+      "side": 1,
+      "message": "Sorry, I thought by `BUILD_RUN` you wanted me to change it back to `${ME}.tmp`.\n\nYou are right about all of these. Looking more closely into the existing tests, I think writing `TMPD\u003d\"${TEST_DIR}/${ME}\"` is better.",
+      "parentUuid": "410ab008_5dc99dd3",
+      "revId": "ce346a7312d09c714dc66a5e58129abe1e93dce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
