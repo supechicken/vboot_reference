@@ -481,6 +481,14 @@ resign_firmware_payload() {
   local rootfs_dir
   rootfs_dir=$(make_temp_dir)
   mount_loop_image_partition "${loopdev}" 3 "${rootfs_dir}"
+
+  board_name="$(get_boardvar_from_lsb_release "${rootfs_dir}")"
+  echo "Board name from lsb-release: ${board_name}"
+  local skip_guybrush=0
+  if [[ ${board_name} == *guybrush* ]]; then
+    skip_guybrush=1
+  fi
+
   local firmware_bundle="${rootfs_dir}/usr/sbin/chromeos-firmwareupdate"
   local shellball_dir
   shellball_dir=$(make_temp_dir)
@@ -493,6 +501,26 @@ resign_firmware_payload() {
     return
   fi
   info "Found a valid firmware update shellball."
+
+  resign_firmware_directory "${shellball_dir}" ${skip_guybrush}
+
+  new_shellball=$(make_temp_file)
+  cp -f "${firmware_bundle}" "${new_shellball}"
+  chmod a+rx "${new_shellball}"
+  repack_firmware_bundle "${shellball_dir}" "${new_shellball}"
+  sudo cp -f "${new_shellball}" "${firmware_bundle}"
+  sudo chmod a+rx "${firmware_bundle}"
+  # Unmount now to flush changes.
+  sudo umount "${rootfs_dir}"
+  info "Re-signed firmware AU payload in ${loopdev}"
+}
+
+# Re-sign the firmware AU payload provided with a new key.
+# Args: firmware_bundle, skip_ro_gscsd_guybrush
+resign_firmware_directory() {
+  local firmware_dir=$1
+  # Either 0 for "don't skip" or 1 for "is guybrush and please skip".
+  local skip_ro_gscsd_guybrush=$2
 
   # For context on signing firmware for unified builds, see:
   #   go/cros-unibuild-signing
@@ -514,7 +542,7 @@ resign_firmware_payload() {
   # It then outputs the appropriate signature blocks based on the output_name.
   # The firmware updater scripts then detects what output_name to use at
   # runtime based on the platform.
-  local signer_config="${shellball_dir}/signer_config.csv"
+  local signer_config="${firmware_dir}/signer_config.csv"
   if [[ -e "${signer_config}" ]]; then
     info "Using signer_config.csv to determine firmware signatures"
     info "See go/cros-unibuild-signing for details"
@@ -524,7 +552,6 @@ resign_firmware_payload() {
       do
         local extra_args=()
         local full_command=()
-        local board_name
 
         rootkey="$(get_root_key_vbpubk)"
 
@@ -554,7 +581,7 @@ resign_firmware_payload() {
               "${output_name}"
           fi
 
-          shellball_keyset_dir="${shellball_dir}/keyset"
+          shellball_keyset_dir="${firmware_dir}/keyset"
           mkdir -p "${shellball_keyset_dir}"
           extra_args+=(
             --loemdir "${shellball_keyset_dir}"
@@ -575,14 +602,14 @@ resign_firmware_payload() {
         keyblock="$(get_firmware_keyblock "${key_index}")"
 
         # Path to bios.bin.
-        local bios_path="${shellball_dir}/${bios_image}"
+        local bios_path="${firmware_dir}/${bios_image}"
 
         echo "Before EC signing ${bios_path}: md5 =" \
           "$(md5sum "${bios_path}" | awk '{print $1}')"
 
         if [ -n "${ec_image}" ]; then
           # Path to ec.bin.
-          local ec_path="${shellball_dir}/${ec_image}"
+          local ec_path="${firmware_dir}/${ec_image}"
 
           # Resign ec.bin.
           if is_ec_rw_signed "${ec_path}"; then
@@ -646,9 +673,7 @@ resign_firmware_payload() {
         echo "After setting GBB on ${bios_path}: md5 =" \
           "$(md5sum "${bios_path}" | awk '{print $1}')"
 
-        board_name="$(get_boardvar_from_lsb_release "${rootfs_dir}")"
-        echo "Board name from lsb-release: ${board_name}"
-        if [[ ${board_name} == *guybrush* ]]; then
+        if [[ ${skip_ro_gscsd_guybrush} == 1 ]]; then
           echo "Not looking for RO_GSCVD on guybrush, b/263378945"
         elif futility dump_fmap -p "${bios_path}" | grep -q RO_GSCVD; then
           # Attempt AP RO verification signing only in case the FMAP includes
@@ -693,12 +718,12 @@ resign_firmware_payload() {
     } < "${signer_config}"
   else
     local image_file sign_args=() loem_sfx loem_output_dir
-    for image_file in "${shellball_dir}"/bios*.bin; do
+    for image_file in "${firmware_dir}"/bios*.bin; do
       if [[ -e "${KEY_DIR}/loem.ini" ]]; then
         # Extract the extended details from "bios.bin" and use that in the
         # subdir for the keyset.
         loem_sfx=$(sed -r 's:.*/bios([^/]*)[.]bin$:\1:' <<<"${image_file}")
-        loem_output_dir="${shellball_dir}/keyset${loem_sfx}"
+        loem_output_dir="${firmware_dir}/keyset${loem_sfx}"
         sign_args=( "${loem_output_dir}" )
         mkdir -p "${loem_output_dir}"
       fi
@@ -707,7 +732,7 @@ resign_firmware_payload() {
     done
   fi
 
-  local signer_notes="${shellball_dir}/VERSION.signer"
+  local signer_notes="${firmware_dir}/VERSION.signer"
   echo "" >"${signer_notes}"
   echo "Signed with keyset in $(readlink -f "${KEY_DIR}") ." >>"${signer_notes}"
   # record recovery_key
@@ -731,16 +756,6 @@ resign_firmware_payload() {
       | grep sha1sum | cut -d" " -f9)
     echo "  root: ${sha1}" >>"${signer_notes}"
   fi
-
-  new_shellball=$(make_temp_file)
-  cp -f "${firmware_bundle}" "${new_shellball}"
-  chmod a+rx "${new_shellball}"
-  repack_firmware_bundle "${shellball_dir}" "${new_shellball}"
-  sudo cp -f "${new_shellball}" "${firmware_bundle}"
-  sudo chmod a+rx "${firmware_bundle}"
-  # Unmount now to flush changes.
-  sudo umount "${rootfs_dir}"
-  info "Re-signed firmware AU payload in ${loopdev}"
 }
 
 # Remove old container key if it exists.
@@ -1411,11 +1426,28 @@ main() {
       "" \
       ""
   elif [[ "${TYPE}" == "firmware" ]]; then
-    if [[ -e "${KEY_DIR}/loem.ini" ]]; then
-      die "LOEM signing not implemented yet for firmware images"
+    # Firmware signing supports two separate modes. One is signing a provided
+    # single firmware image. The other is receiving a full firmware bundle
+    # unpacked as a directory.
+    if [[ -d "${INPUT_IMAGE}" ]]; then
+      # Sign a full firmware bundle, which must include AP firmware, EC
+      # firmware, and the signer_config.csv file. To be extra clear, this bundle
+      # should be an unpacked firmware tar, so the expected input is a dir.
+      cp -r "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
+      # Since we just have a firmware bundle, unlike full image signing, we
+      # don't have `lsb-release` which contains the board name (and board name
+      # is used to determine whether the board is guybrush). Just pass through
+      # 0 which disables the guybrush skip (which means a guybrush firmware may
+      # fail in looking up the RO GSCVD, b/263378945).
+      resign_firmware_directory "${OUTPUT_IMAGE}" 0
+    else
+      # If a file is passed in, we currently don't support LOEM keysets.
+      if [[ -e "${KEY_DIR}/loem.ini" ]]; then
+        die "LOEM signing not implemented yet for firmware images"
+      fi
+      cp "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
+      sign_firmware "${OUTPUT_IMAGE}" "${KEY_DIR}" "${FIRMWARE_VERSION}"
     fi
-    cp "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
-    sign_firmware "${OUTPUT_IMAGE}" "${KEY_DIR}" "${FIRMWARE_VERSION}"
   elif [[ "${TYPE}" == "update_payload" ]]; then
     sign_update_payload "${INPUT_IMAGE}" "${KEYCFG_UPDATE_KEY_PEM}" "${OUTPUT_IMAGE}"
   elif [[ "${TYPE}" == "accessory_usbpd" ]]; then
