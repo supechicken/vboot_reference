@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd116020_cfb7da69",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-07T18:38:01Z",
+      "side": 1,
+      "message": "No, we should find the right solution for the new state, not just blindly move code around. Are you sure that you looked at the right kind of archive? This script is designed to run on a `chromeos-firmwareupdate` shellball, not on the `ChromeOS-firmware-xxx.tbz` tarballs you can download from GoldenEye (the ones that contain all the `image-\u003cboard\u003e.bin` and `image-\u003cboard\u003e.serial.bin` files). (Of course please make sure you actually test any code you submit here.)",
+      "parentUuid": "781044ad_6fc95d92",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a9f7713_59f79255",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -220,6 +238,24 @@
       "side": 1,
       "message": "to support LOEM keysets, we need to have the firmware images as well as the signer.csv file that indicates which key to use. The easiest way to support that was to package all that into a directory, and since the other path for firmware signing takes in a single file, this seemed like a good distinction",
       "parentUuid": "28fb3512_2082ac2f",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887afd7c_8491bef4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-07T18:38:01Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand... `signer_config.csv` already exists in the shellball archive? Line 547 is already using it?",
+      "parentUuid": "c7d7c8d9_993068c6",
       "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
