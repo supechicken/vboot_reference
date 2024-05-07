@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d08bdf19_3728fef1",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T19:06:49Z",
+      "side": 1,
+      "message": "I tested this by:\n- downloading a firmware tarball that came out of a firmware builder (https://ci.chromium.org/ui/p/chromeos/builders/firmware/firmware-brya-14505.B-branch/779/infra, gs://chromeos-image-archive/firmware-brya-14505.B-branch-firmware/R100-14505.761.0/brya/firmware_from_source.tar.bz2) and unpacked into a directory\n- pulled a signer_config.csv from an existing signed firmware of the same board\n- modified that signer_config.csv to reference the loem names in http://cs/h/chromium/chromiumos/codesearch/+/main:src/platform/vboot_reference/tests/loemkeys/loem.ini\n- called the script with that directory as the input",
+      "parentUuid": "74db0a08_23df4f3d",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a9f7713_59f79255",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
