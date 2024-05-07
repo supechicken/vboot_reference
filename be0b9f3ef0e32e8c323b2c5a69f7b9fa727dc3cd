@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "974772e2_a33cfad3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-07T21:05:09Z",
+      "side": 1,
+      "message": "Sorry, I still don\u0027t get it. Okay, so type `firmware` was actually just meant to operate on a raw image, not a shellball. But now you\u0027re trying to make it do something completely different, which is to operate on a directory that looks exactly like an unpacked shellball?\n\nI don\u0027t see how you could just take a `signer_config.csv` from somewhere, throw it into an unpacked `firmware_from_source` directory and make that work — the file names are all completely different. When you say \"modified\" do you mean that you completely rewrote the CSV (e.g. update all names from something like `bios-brya.ro-14505-761-0.rw-14505-761-0.bin` to `image-brya.bin`)? Or how would you make that fit together?\n\nI still don\u0027t get the whole point of what you\u0027re trying to do here (I thought you just wanted it to be able to sign a raw shellball without surrounding recovery image, but apparently it\u0027s not that). You\u0027re basically saying \"what if someone wanted to bypass the entire firmware packer and somehow assemble a vaguely comparable directory by hand and then sign it\" and I really don\u0027t see where that use case comes from, nor why we should allow it (and risk things getting out of sync every time something in the normal packer-\u003esigner flow changes). If you really have a raw `firmware_from_source` tarball and want to get it to a state where it could run through this script, I think it would make more sense for you to run `pack_firmware.py` manually and then feed the output of that into here (and for that use case we could consider adding a mode that takes a raw shellball), not try to redo the same steps and hack together the whole CSV and directory structure by hand.",
+      "parentUuid": "d08bdf19_3728fef1",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a9f7713_59f79255",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
