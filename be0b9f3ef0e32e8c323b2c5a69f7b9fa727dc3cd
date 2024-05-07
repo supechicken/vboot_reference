@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1cd2fb2_bd5c1267",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T16:07:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "968901ea_8575293f",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae7f8b1b_7b2e9a2b",
@@ -54,6 +72,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "781044ad_6fc95d92",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T16:07:38Z",
+      "side": 1,
+      "message": "I just unpacked a firmware tarball from a firmware builder and I don\u0027t see a `VERSION` file or a `models` directory. is it ok if I leave this for now?",
+      "parentUuid": "ae7f8b1b_7b2e9a2b",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46664b3e_bb174862",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T16:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "896b80c1_468f7b2c",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a9f7713_59f79255",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -66,6 +120,30 @@
       "side": 1,
       "message": "\u003e style: Prefer double quoting even when variables don\u0027t contain special characters.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2248\n\nPlease fix.",
       "parentUuid": "24c63818_e0c251c0",
+      "range": {
+        "startLine": 505,
+        "startChar": 47,
+        "endLine": 505,
+        "endChar": 63
+      },
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead445b9_53b63f30",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T16:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a9f7713_59f79255",
       "range": {
         "startLine": 505,
         "startChar": 47,
@@ -93,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2639f9c_1e53915f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T16:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "719b4e3c_129f07b7",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28fb3512_2082ac2f",
@@ -106,6 +202,24 @@
       "writtenOn": "2024-05-07T00:18:44Z",
       "side": 1,
       "message": "I don\u0027t really understand what this operating mode has to do with LOEM support? I\u0027m not sure this is a particularly useful option to offer...",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d7c8d9_993068c6",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T16:07:38Z",
+      "side": 1,
+      "message": "to support LOEM keysets, we need to have the firmware images as well as the signer.csv file that indicates which key to use. The easiest way to support that was to package all that into a directory, and since the other path for firmware signing takes in a single file, this seemed like a good distinction",
+      "parentUuid": "28fb3512_2082ac2f",
       "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
