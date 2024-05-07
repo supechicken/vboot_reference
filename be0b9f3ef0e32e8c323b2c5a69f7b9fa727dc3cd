@@ -294,6 +294,24 @@
       "parentUuid": "c7d7c8d9_993068c6",
       "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa608b9_a87ee385",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-07T19:15:44Z",
+      "side": 1,
+      "message": "this approach is for signing firmware not part of a full chromeos image, and thus we don\u0027t have a shellball yet.",
+      "parentUuid": "887afd7c_8491bef4",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
