@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968901ea_8575293f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-07T00:18:44Z",
+      "side": 1,
+      "message": "Note that as far as I\u0027m aware nothing is calling this script with the \"firmware\" type to begin with (I wouldn\u0027t have high confidence that that signing mode still works correctly at all). LOEM support is correctly implemented for the \"recovery\" type which is how all our firmware actually gets signed in practice. So I\u0027m not opposed to you fixing this if you want to, but it\u0027s not really relevant to what we\u0027re actually using.",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7f8b1b_7b2e9a2b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-07T00:18:44Z",
+      "side": 1,
+      "message": "If using lsb-release to detect this quirk becomes too complicated, we can just find another solution rather than spilling this plumbing all over the place. I think just something like `[[ -e \"${firmware_dir}/models/guybrush\" ]]` or `grep Google_Guybrush \"${firmware_dir}/VERSION\"` should probably do the trick.",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fb3512_2082ac2f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-07T00:18:44Z",
+      "side": 1,
+      "message": "I don\u0027t really understand what this operating mode has to do with LOEM support? I\u0027m not sure this is a particularly useful option to offer...",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
