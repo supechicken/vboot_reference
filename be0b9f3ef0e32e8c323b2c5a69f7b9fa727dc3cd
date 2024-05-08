@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fab5bac6_e65d811a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-08T20:16:58Z",
+      "side": 1,
+      "message": "+Hung-Te and +Yu-Ping who are more familiar with the firmware packer than I am.\n\nIf you want to MP-sign the output of a firmware build directly, you need (in addition to the images themselves from that build) the signing key ID and the brand code. Both of those need to come from cros-config (and we shouldn\u0027t try to introduce a second source of truth beside that, nor should we expect people to input them correctly by hand somehow). I believe(?) that cros-config is \"built\" as an ebuild and it\u0027s not possible to directly query it from sources (because it can come from multiple sources, including Boxster, and the \"building\" process is needed to figure out exactly which part comes from where). So if your goal is to have a firmware builder immediately MP-sign its output, I think that may be complicated in practice because the firmware builder runs on the firmware branch and the signing information needs to come from cros-config on ToT (for firmware branches it is generally not kept up to date). So I think your firmware builder would basically need to create a second chroot from ToT just to build the cros-config package and get the right signing information.\n\nI\u0027m also not sure that this is really a good idea in the first place. Firmware release is a process, there are a bunch of important steps and gates involved (e.g. firmware qualification / FAFT), and MP-signing is the final step once all the gates are passed. Having a firmware MP-signed _proves_ that all these gates have been passed and all those checks have been run, and other parts of the system may depend on that information — for example, the TPM rollback protection version roll-forward process only cares that it booted an MP-signed image with a certain rollback version and takes that as \"proof\" that this rollback version is now the new officially active one and all previous ones shall forever become invalid. It cannot tell whether that MP-signed image was actually officially released as part of a recovery image or just a firmware builder signing its own output. We also use changes to the officially pinned firmware version (in cros-config/Boxster) to track all the RO firmware versions that have ever been released for a certain board, to know all the versions that new RW updates may need to be tested against.\n\nSo if you start MP-signing things straight off the firmware builder and people actually start installing and using those images somewhere, it may cause the devices running those images to get out of sync and into unexpected states. Rollback protection versions may roll further forward than they\u0027re supposed to be from the current official releases. Devices may get RO firmware versions installed that are not officially supposed to be possible and may have hidden incompatibilities to new RW images that we didn\u0027t test for. Images with security-relevant bugs may get MP-signed and pose a risk if that image somehow leaks out into the wild even if firmware QA would have found that bug before the official release.\n\nIn short, if you don\u0027t really have a good reason to do so I\u0027d prefer we do not MP-sign any more images than the official process currently does. If we want to make it easier for people to download MP-signed images, I\u0027d recommend we integrate that into the existing process (e.g. make the builder that builds a recovery image also upload the raw firmware shellball as a release artifact in addition to the full recovery image), rather than doing it right on the firmware builder.",
+      "parentUuid": "13ccc7ca_50c82e55",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a9f7713_59f79255",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
