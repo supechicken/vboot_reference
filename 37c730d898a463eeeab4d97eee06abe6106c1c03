@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0c0c505_bddb822f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2024-05-09T17:57:57Z",
+      "side": 1,
+      "message": "that SO question is about exporting arrays into the env for executing a new program.  sourcing a script (i.e. the `.` command) is not executing a new program, it\u0027s loading source directly into the current execution context.\n\nare you sure you tested your changes correctly ?  if i login to chromeos-signing.cbf, the example you showed works just fine w/out BASH_ENV.\n\n```\n# cd /cros/vboot_reference/\n# git diff\n--- a/scripts/image_signing/lib/keycfg.sh\n+++ b/scripts/image_signing/lib/keycfg.sh\n@@ -66,8 +66,6 @@ setup_keycfg() {\n   export KEYCFG_KEY_DIR\u003d\"${key_dir}\"\n   if [ -f \"${key_dir}/key_config.sh\" ]; then\n     # Use process substitution to pass in the array to the key_config.sh file.\n-    BASH_ENV\u003d\u003c(declare -p KEYCFG_ROOT_KEY_VBPUBK_LOEM \\\n-      KEYCFG_FIRMWARE_VBPRIVK_LOEM KEYCFG_FIRMWARE_KEYBLOCK_LOEM) \\\n       . \"${key_dir}/key_config.sh\"\n   fi\n }\n\n# (source scripts/image_signing/lib/keycfg.sh\n   setup_keycfg /cros/keys/AmbassadorMPKeys-v8\n   get_firmware_vbprivk 2)\n/cros/keys/AmbassadorMPKeys-v8/firmware_data_key.loem2.vbprivk\n```",
+      "parentUuid": "deb7f1dc_a5d12692",
+      "revId": "37c730d898a463eeeab4d97eee06abe6106c1c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "296967a8_8dc83159",
         "filename": "scripts/image_signing/lib/keycfg.sh",
         "patchSetId": 2
