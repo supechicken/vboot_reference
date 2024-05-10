@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a03225c0_b31d5066",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-10T08:20:12Z",
+      "side": 1,
+      "message": "\u003e jwerner@: If using lsb-release to detect this quirk becomes too complicated, we can just find another solution rather than spilling this plumbing all over the place.\n\nWe shouldn\u0027t parse VERSION in any script, because the file is purely informational. Either `\"${firmware_dir}/models/guybrush\"` or grepping `guybrush` in signer_config.csv `model_name` field sound good to me.\n\n\u003e vapier@: we want to make the output of firmware builders directly signable again like they are in non-unibuild images, and not have to go through a full uprev in ToT/OS build just to get a shellball that\u0027s signed\n\nI think we need a little bit more background to determine what to do now. What\u0027s the use case of that? Do we need to support firmware archives (built from firmware branch) for *all* the existing platforms, or just future platforms?\n\n\u003e jwerner@: If you want to MP-sign the output of a firmware build directly, you need (in addition to the images themselves from that build) the signing key ID and the brand code.\n\nYes, I agree that signer_config.csv should be the single source of truth of `key_id` and `brand_code`. In b/230679721, we added signer_config.csv to `${SYSROOT}/firmware/`, in order to have better support for firmware provisioning in the lab. Therefore, for recent platforms (starting from corsola), signer_config.csv should exist in the firmware archive built from the firmware branch. However, as Julius said, one major problem is that the `key_id` and `brand_code` may out of sync from the ToT. When enabling a new project from an existing program, we usually don\u0027t cherry-pick all the Boxster config CLs to the firmware branch (for example CL:\\*5320710 and CL:\\*5071069 are missing in corsola firmware branch). Also, the cost of maintaining firmware branch\u0027s signer_config.csv seems pretty high. Therefore, the only option I can think of is to pull in either signer_config.csv or config.yaml from ToT build.\n\n\u003e jwerner@: I\u0027d recommend we integrate that into the existing process (e.g. make the builder that builds a recovery image also upload the raw firmware shellball as a release artifact in addition to the full recovery image), rather than doing it right on the firmware builder.\n\n+1. This is somewhat related to b/335446974, where we plan to create a new build artifact pinned_firmware.tar.bz2 (where the directory layout is the same as firmware.tar.bz2, but only contains AP and EC images). It\u0027d be easy to add signer_config.csv to that artifact.",
+      "parentUuid": "fab5bac6_e65d811a",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a9f7713_59f79255",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -293,6 +311,29 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "719b4e3c_129f07b7",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f129b5_07f2a7e8",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-10T08:20:12Z",
+      "side": 1,
+      "message": "firmware_dir",
+      "range": {
+        "startLine": 519,
+        "startChar": 8,
+        "endLine": 519,
+        "endChar": 23
+      },
       "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
