@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7259cd_2a34bd73",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-14T23:48:58Z",
+      "side": 1,
+      "message": "nit: variable used only once is a bit superfluous",
+      "revId": "710a1c2fa69c8a4e0d44a16e2846983c892c18b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee55ddd_885fa136",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-14T23:48:58Z",
+      "side": 1,
+      "message": "Well now you don\u0027t unmount the loop device in the error case, that\u0027s also not great. I think this would work:\n```\nlocal ret\u003d0\nresign_firmware_shellball \"${rootfs_dir}/usr/sbin/chromeos-firmwareupdate\" || ret\u003d$?\nsudo umount \"${rootfs_dir}\"\nif [[ \"${ret}\" \u003d\u003d 0 ]]; then\n  info \"Re-signed firmware AU payload in ${loopdev}\"\nelse\n  error \"Couldn\u0027t sign firmware AU payload in ${loopdev}\"\nfi\nreturn \"${ret}\"\n```",
+      "revId": "710a1c2fa69c8a4e0d44a16e2846983c892c18b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "154b5942_b3bb1fb5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-14T23:48:58Z",
+      "side": 1,
+      "message": "nit: declaration and initialization can be combined on one line (e.g. `local new_shellball\u003d\"$(make_temp_file)\"`)",
+      "revId": "710a1c2fa69c8a4e0d44a16e2846983c892c18b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
