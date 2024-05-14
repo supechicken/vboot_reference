@@ -250,6 +250,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35232003_117eebf2",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-14T20:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06bffff0_2eff32e4",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a9f7713_59f79255",
@@ -346,6 +364,30 @@
       "writtenOn": "2024-05-10T08:20:12Z",
       "side": 1,
       "message": "firmware_dir",
+      "range": {
+        "startLine": 519,
+        "startChar": 8,
+        "endLine": 519,
+        "endChar": 23
+      },
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0525c4fc_f15ec1a8",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-14T20:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f129b5_07f2a7e8",
       "range": {
         "startLine": 519,
         "startChar": 8,
