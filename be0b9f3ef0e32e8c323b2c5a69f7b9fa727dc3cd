@@ -234,6 +234,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06bffff0_2eff32e4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-14T19:39:37Z",
+      "side": 1,
+      "message": "I\u0027ve restructured this to take in a shellball. Let me know if this looks better?",
+      "parentUuid": "974772e2_a33cfad3",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a9f7713_59f79255",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 1
@@ -405,6 +423,24 @@
       "side": 1,
       "message": "this approach is for signing firmware not part of a full chromeos image, and thus we don\u0027t have a shellball yet.",
       "parentUuid": "887afd7c_8491bef4",
+      "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0720cadc_87b0ed06",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-14T19:39:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fa608b9_a87ee385",
       "revId": "be0b9f3ef0e32e8c323b2c5a69f7b9fa727dc3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
