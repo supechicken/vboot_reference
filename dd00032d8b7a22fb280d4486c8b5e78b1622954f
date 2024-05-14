@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b767043e_b06aa206",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-14T21:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5eabead_41442083",
+      "revId": "dd00032d8b7a22fb280d4486c8b5e78b1622954f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84579b47_410512fd",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6b900e_8f9d0fd5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-14T21:12:27Z",
+      "side": 1,
+      "message": "I can do that now that I\u0027m doing a shellball",
+      "parentUuid": "84579b47_410512fd",
+      "range": {
+        "startLine": 540,
+        "startChar": 25,
+        "endLine": 540,
+        "endChar": 37
+      },
+      "revId": "dd00032d8b7a22fb280d4486c8b5e78b1622954f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cb2a22a_6df38ca5",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-05-14T20:31:37Z",
       "side": 1,
       "message": "I think this is a bad way to test the difference, since this is just about the keys and not about the image actually passed in. This script generally expects you to tell it what operation you want rather than auto-detecting the target file, so I think the most consistent way to implement this would be to just make this an entirely different mode (e.g. `\"shellball\"` instead of `\"firmware\"`).",
+      "revId": "dd00032d8b7a22fb280d4486c8b5e78b1622954f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c822e7_7349a70e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-14T21:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb2a22a_6df38ca5",
       "revId": "dd00032d8b7a22fb280d4486c8b5e78b1622954f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
