@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5eabead_41442083",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-14T20:31:37Z",
+      "side": 1,
+      "message": "Doing this unconditionally here is good but you still need to pass out the error code from the called function somehow (to promote it to the error code of the entire script).",
+      "revId": "dd00032d8b7a22fb280d4486c8b5e78b1622954f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84579b47_410512fd",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-14T20:31:37Z",
+      "side": 1,
+      "message": "nit: Why not keep the name `shellball_dir`?",
+      "range": {
+        "startLine": 540,
+        "startChar": 25,
+        "endLine": 540,
+        "endChar": 37
+      },
+      "revId": "dd00032d8b7a22fb280d4486c8b5e78b1622954f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb2a22a_6df38ca5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-14T20:31:37Z",
+      "side": 1,
+      "message": "I think this is a bad way to test the difference, since this is just about the keys and not about the image actually passed in. This script generally expects you to tell it what operation you want rather than auto-detecting the target file, so I think the most consistent way to implement this would be to just make this an entirely different mode (e.g. `\"shellball\"` instead of `\"firmware\"`).",
+      "revId": "dd00032d8b7a22fb280d4486c8b5e78b1622954f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
