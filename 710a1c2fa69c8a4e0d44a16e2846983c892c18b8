@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc89ebb9_53e24ca9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-15T15:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7259cd_2a34bd73",
+      "revId": "710a1c2fa69c8a4e0d44a16e2846983c892c18b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee55ddd_885fa136",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca7b1c27_e93a187e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-15T15:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee55ddd_885fa136",
+      "revId": "710a1c2fa69c8a4e0d44a16e2846983c892c18b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "154b5942_b3bb1fb5",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-05-14T23:48:58Z",
       "side": 1,
       "message": "nit: declaration and initialization can be combined on one line (e.g. `local new_shellball\u003d\"$(make_temp_file)\"`)",
+      "revId": "710a1c2fa69c8a4e0d44a16e2846983c892c18b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "061dea55_258f3324",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-05-15T15:54:31Z",
+      "side": 1,
+      "message": "shellcheck disagrees - https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5519148/comment/84735c60_6477fc91/",
+      "parentUuid": "154b5942_b3bb1fb5",
       "revId": "710a1c2fa69c8a4e0d44a16e2846983c892c18b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
