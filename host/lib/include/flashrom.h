@@ -26,6 +26,7 @@ struct firmware_image {
 	uint8_t *data; /* data allocated buffer to read/write with. */
 	char *file_name;
 	char *ro_version, *rw_version_a, *rw_version_b;
+	char *ecrw_version_a, *ecrw_version_b;
 	FmapHeader *fmap_header;
 };
 
