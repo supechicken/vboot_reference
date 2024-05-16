@@ -16,6 +16,41 @@
       "message": "Is there any reason rwa and rwb should be different? IMHO that\u0027s simply making everything complicated and people just want to know \"what is the version my EC will be after being installed\".\n\nCan we put only one version?",
       "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f0a1e7_9f6ed7d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-16T10:08:21Z",
+      "side": 1,
+      "message": "To clarify, the AP RW has exactly the same issue. However it was decided to only print one \u0027RW\u0027 version to simplify the message to the users.\n\nI think the ecrw should follow the same idea - it can alert if ecrw_a !\u003d ecrw_b, but for the output there should be just one. What do you think?",
+      "parentUuid": "411341be_57404e92",
+      "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42681e99_ce1f34ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-16T10:08:21Z",
+      "side": 1,
+      "message": "to cl",
+      "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
