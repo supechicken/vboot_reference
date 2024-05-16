@@ -51,6 +51,24 @@
       "message": "to cl",
       "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36480852_0f953273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-16T23:40:02Z",
+      "side": 1,
+      "message": "Okay, followed your suggestion in PS2.\n\nThe ecrw version output is for 2 use cases:\n1. FAFT log: FAFT log should contain the ecrw version, so that we can tell from the log that the partner is using the correct AP image (possibly with ecrw swapped) for FW Qual.\n2. Manual debugging: Developers may want to know the ecrw version of a given AP firmware image file.\n\nFor 1, since we should always expect the RW A and B sections are exactly the same, your suggestion is fine. For 2, however, I think people need to know the exact versions of ecrw in both sections. Therefore if we follow the \"alert\" solution, the warning message needs to contain `ecrw_b`.\n\n\u003e IMHO that\u0027s simply making everything complicated and people just want to know \"what is the version my EC will be after being installed\".\n\nTBH I don\u0027t think it\u0027s that complicated. It\u0027s just one more line in the output. If `ecrw_a` and `ecrw_b` are same most of the time, showing both shouldn\u0027t confuse people. Also, if both versions are different, the `ecrw_a` we\u0027re printing is not necessarily the one that will be installed.\n\nOn the other hand, I agree that showing both ecrw versions is inconsistent with \"rw\". And since \"rw\" has been there for a while and no one has ever complained the missing \"rw_b\" output, maybe I\u0027m over-concerned.",
+      "parentUuid": "54f0a1e7_9f6ed7d3",
+      "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
