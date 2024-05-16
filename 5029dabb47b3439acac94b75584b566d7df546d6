@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96643a6f_221f34ca",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-16T02:56:56Z",
+      "side": 1,
+      "message": "I don\u0027t know. CL:1250464 said this is for eve (not just eve-campfire). @hungte@chromium.org",
+      "parentUuid": "ad058964_24ed08bc",
+      "revId": "5029dabb47b3439acac94b75584b566d7df546d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a17861e6_219c0b91",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c816ecf_e7234796",
+        "filename": "host/lib/cbfstool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-16T02:56:56Z",
+      "side": 1,
+      "message": "Maybe not a good idea because \"Macros with complex values should be enclosed in parentheses\". If we want to do it the right way, we will need some helper functions to compose `argv`. Do you think that\u0027s worth the effort?",
+      "parentUuid": "a17861e6_219c0b91",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "5029dabb47b3439acac94b75584b566d7df546d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed3795dc_88f41ec0",
         "filename": "host/lib/include/cbfstool.h",
         "patchSetId": 1
@@ -54,6 +96,30 @@
       "writtenOn": "2024-05-15T23:21:24Z",
       "side": 1,
       "message": "nit: That\u0027s maybe a bit too much to ask for this patch, but we could consider expanding the updater-specific tempfile management to a general host library, and then this function could also use it here to just generate and return a tempfile by itself. I think a global list and an `atexit()` handler could be used to avoid having to call the cleanup explicitly from anywhere.",
+      "range": {
+        "startLine": 41,
+        "startChar": 25,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "5029dabb47b3439acac94b75584b566d7df546d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f26c96d_a514c78a",
+        "filename": "host/lib/include/cbfstool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-16T02:56:56Z",
+      "side": 1,
+      "message": "IMO `atexit()` would make the API over-complicated. It\u0027s true that that would simplify the callers from futility, but other users (maybe outside vboot_reference) may just want to extract it to a specified file name. With your proposal, they would need to add an extra renaming step.\n\nI think a reasonable solution is to make the `file` argument optional. When is NULL, we generate a tmp file and return the path to the caller. However, the caller should manage the tmp file by itself.\n\nIf we really want to simplify the futility callers, we can keep the original `cbfs_extract_file` as a wrapper, which calls `create_temp_file` and then `cbfstool_extract`.\n\nAnyway, I\u0027m going to leave that as a future work.",
+      "parentUuid": "ed3795dc_88f41ec0",
       "range": {
         "startLine": 41,
         "startChar": 25,
