@@ -16,6 +16,7 @@
 #endif
 
 #include "2common.h"
+#include "cbfstool.h"
 #include "host_misc.h"
 #include "util_misc.h"
 #include "updater.h"
@@ -111,10 +112,75 @@ static int load_firmware_version(struct firmware_image *image,
 }
 
 /*
+ * Loads the version of "ecrw" CBFS file within `section_name` of `image_file`.
+ * Returns the version string on success; otherwise an empty string.
+ */
+static char *load_ecrw_version(const struct firmware_image *image,
+			       const char *image_file,
+			       const char *section_name)
+{
+	char *version = NULL;
+	struct tempfile tempfile_head = {0};
+
+	if (!firmware_section_exists(image, section_name)) {
+		WARN("No valid section '%s', missing ecrw version info\n",
+		     section_name);
+		goto done;
+	}
+
+	const char *ecrw_version_file = create_temp_file(&tempfile_head);
+	if (!ecrw_version_file)
+		goto done;
+
+	/* "ecrw.version" doesn't exist in old images. */
+	const char *ecrw_version_name = "ecrw.version";
+	if (!cbfstool_file_exists(image_file, section_name, ecrw_version_name))
+		goto done;
+
+	if (cbfstool_extract(image_file, section_name, ecrw_version_name,
+			     ecrw_version_file)) {
+		ERROR("Failed to extract %s from %s\n",
+		      ecrw_version_name, section_name);
+		goto done;
+	}
+
+	uint8_t *data;
+	uint32_t size;
+	if (vb2_read_file(ecrw_version_file, &data, &size) != VB2_SUCCESS)
+		goto done;
+
+	version = strndup((const char *)data, size);
+
+done:
+	if (!version)
+		version = strdup("");
+	remove_all_temp_files(&tempfile_head);
+	return version;
+}
+
+/* Loads the version of "ecrw" CBFS file for FW_MAIN_A and FW_MAIN_B. */
+static void load_ecrw_versions(struct firmware_image *image)
+{
+	struct tempfile tempfile_head = {0};
+	const char *image_file = get_firmware_image_temp_file(
+			image, &tempfile_head);
+
+	if (image_file) {
+		image->ecrw_version_a = load_ecrw_version(
+				image, image_file, FMAP_RW_FW_MAIN_A);
+		image->ecrw_version_b = load_ecrw_version(
+				image, image_file, FMAP_RW_FW_MAIN_B);
+	}
+
+	remove_all_temp_files(&tempfile_head);
+}
+
+/*
  * Fills in the other fields of image using image->data.
  * Returns IMAGE_LOAD_SUCCESS or IMAGE_PARSE_FAILURE.
  */
-static int parse_firmware_image(struct firmware_image *image)
+static int parse_firmware_image(struct firmware_image *image,
+				bool is_host)
 {
 	int ret = IMAGE_LOAD_SUCCESS;
 	const char *section_a = NULL, *section_b = NULL;
@@ -150,18 +216,16 @@ static int parse_firmware_image(struct firmware_image *image)
 	load_firmware_version(image, section_a, &image->rw_version_a);
 	load_firmware_version(image, section_b, &image->rw_version_b);
 
+	if (is_host)
+		load_ecrw_versions(image);
+
 	return ret;
 }
 
-/*
- * Loads a firmware image from file.
- * If archive is provided and file_name is a relative path, read the file from
- * archive.
- * Returns IMAGE_LOAD_SUCCESS on success, IMAGE_READ_FAILURE on file I/O
- * failure, or IMAGE_PARSE_FAILURE for non-vboot images.
- */
-int load_firmware_image(struct firmware_image *image, const char *file_name,
-			struct u_archive *archive)
+static int load_firmware_image(struct firmware_image *image,
+			       const char *file_name,
+			       struct u_archive *archive,
+			       bool is_host)
 {
 	if (!file_name) {
 		ERROR("No file name given\n");
@@ -182,9 +246,20 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 
 	image->file_name = strdup(file_name);
 
-	return parse_firmware_image(image);
+	return parse_firmware_image(image, is_host);
 }
 
+int load_ap_firmware_image(struct firmware_image *image, const char *file_name,
+			   struct u_archive *archive)
+{
+	return load_firmware_image(image, file_name, archive, true);
+}
+
+int load_ec_firmware_image(struct firmware_image *image, const char *file_name,
+			   struct u_archive *archive)
+{
+	return load_firmware_image(image, file_name, archive, false);
+}
 /*
  * Generates a temporary file for snapshot of firmware image contents.
  *
@@ -212,8 +287,8 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
 void free_firmware_image(struct firmware_image *image)
 {
 	/*
-	 * The programmer is not allocated by load_firmware_image and must be
-	 * preserved explicitly.
+	 * The programmer is not allocated by load_ap_firmware_image and
+	 * load_ec_firmware_image, and therefore must be preserved explicitly.
 	 */
 	const char *programmer = image->programmer;
 
@@ -222,15 +297,18 @@ void free_firmware_image(struct firmware_image *image)
 	free(image->ro_version);
 	free(image->rw_version_a);
 	free(image->rw_version_b);
+	free(image->ecrw_version_a);
+	free(image->ecrw_version_b);
 	memset(image, 0, sizeof(*image));
 	image->programmer = programmer;
 }
 
 /* Preserves meta data and reloads image contents from given file path. */
-int reload_firmware_image(const char *file_path, struct firmware_image *image)
+int reload_ap_firmware_image(const char *file_path,
+			     struct firmware_image *image)
 {
 	free_firmware_image(image);
-	return load_firmware_image(image, file_path, NULL);
+	return load_ap_firmware_image(image, file_path, NULL);
 }
 
 /*
@@ -528,7 +606,7 @@ int load_system_firmware(struct updater_config *cfg,
 		r = flashrom_read_image(image, NULL, 0, verbose);
 	}
 	if (!r)
-		r = parse_firmware_image(image);
+		r = parse_firmware_image(image, true);
 	return r;
 }
 
