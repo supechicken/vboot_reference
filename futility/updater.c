@@ -1163,9 +1163,10 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	if (!image_to->data)
 		return UPDATE_ERR_NO_IMAGE;
 
-	STATUS("Target image: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
+	STATUS("Target image: %s (RO:%s, RW/A:%s, RW/B:%s, EC-RW/A:%s, EC-RW/B:%s).\n",
 	     image_to->file_name, image_to->ro_version,
-	     image_to->rw_version_a, image_to->rw_version_b);
+	     image_to->rw_version_a, image_to->rw_version_b,
+	     image_to->ecrw_version_a, image_to->ecrw_version_b);
 
 	try_apply_quirk(QUIRK_NO_VERIFY, cfg);
 	if (try_apply_quirk(QUIRK_MIN_PLATFORM_VERSION, cfg)) {
@@ -1185,9 +1186,10 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		} else if (ret)
 			return UPDATE_ERR_SYSTEM_IMAGE;
 	}
-	STATUS("Current system: %s (RO:%s, RW/A:%s, RW/B:%s).\n",
+	STATUS("Current system: %s (RO:%s, RW/A:%s, RW/B:%s, EC-RW/A:%s, EC-RW/B:%s).\n",
 	       image_from->file_name, image_from->ro_version,
-	       image_from->rw_version_a, image_from->rw_version_b);
+	       image_from->rw_version_a, image_from->rw_version_b,
+	       image_from->ecrw_version_a, image_from->ecrw_version_b);
 
 	try_apply_quirk(QUIRK_NO_CHECK_PLATFORM, cfg);
 	if (cfg->check_platform && check_compatible_platform(cfg)) {
