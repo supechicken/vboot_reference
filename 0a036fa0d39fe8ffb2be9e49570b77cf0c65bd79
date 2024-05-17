@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc98eb5d_b37a07bf",
+        "filename": "futility/updater.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-17T03:20:54Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "af9bbde6_a19757e7",
+      "range": {
+        "startLine": 1166,
+        "startChar": 34,
+        "endLine": 1166,
+        "endChar": 73
+      },
+      "revId": "0a036fa0d39fe8ffb2be9e49570b77cf0c65bd79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb1ed6cf_10fdf68e",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-17T02:42:31Z",
       "side": 1,
       "message": "Add a comment here like\n````\n/* The AP images may contain a special ECRW that will be synced on boot. */\n````",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "0a036fa0d39fe8ffb2be9e49570b77cf0c65bd79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a304cb17_32e8c7be",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-17T03:20:54Z",
+      "side": 1,
+      "message": "Done. In the future we should probably move those version fields outside flashrom.h.",
+      "parentUuid": "cb1ed6cf_10fdf68e",
       "range": {
         "startLine": 29,
         "startChar": 1,
