@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a1b8d9_1406ffde",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-17T05:40:40Z",
+      "side": 1,
+      "message": "Again, I\u0027m not sure if the warning should be added here or only for `--manifest`, because in end users\u0027 devices (and also devices in the lab), this will be printed quite often.",
+      "revId": "168d309a1fa10d56492e070bed6463039b44fcd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
