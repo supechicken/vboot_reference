@@ -219,6 +219,10 @@ static int parse_firmware_image(struct firmware_image *image)
 	 */
 	load_firmware_version(image, section_a, &image->rw_version_a);
 	load_firmware_version(image, section_b, &image->rw_version_b);
+	if (strcmp(image->rw_version_a, image->rw_version_b))
+		WARN("Different versions in %s (%s) and %s (%s)\n",
+		     FMAP_RW_FWID_A, image->rw_version_a,
+		     FMAP_RW_FWID_B, image->rw_version_b);
 
 	load_ecrw_versions(image);
 
