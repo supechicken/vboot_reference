@@ -754,6 +754,9 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 		goto gpt_done;
 	}
 
+	/* Store context flags for fallback */
+	const uint64_t ctx_flags = ctx->flags;
+
 	/* Loop over candidate kernel partitions */
 	uint64_t part_start, part_size;
 	while (GptNextKernelEntry(&gpt, &part_start, &part_size) ==
