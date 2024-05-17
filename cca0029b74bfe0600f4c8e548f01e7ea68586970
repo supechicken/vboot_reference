@@ -141,6 +141,24 @@
       "parentUuid": "0711e0ca_20e1ca20",
       "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c3f398_361f0ffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-17T08:36:04Z",
+      "side": 1,
+      "message": "I think we should print it when image (not image_current) is decided, because the \u0027update to image\u0027 should not contain a different A \u0026 B.\n\nIt\u0027s also OK for --manifest case to warn if A !\u003d B.",
+      "parentUuid": "d275767f_e70b6db0",
+      "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

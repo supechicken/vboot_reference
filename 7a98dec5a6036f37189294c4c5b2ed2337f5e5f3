@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230df238_13d30a79",
+        "filename": "futility/updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-17T08:36:04Z",
+      "side": 1,
+      "message": "move the check here (after image_to is available), to verify if A \u003d\u003d B ?",
+      "range": {
+        "startLine": 1168,
+        "startChar": 8,
+        "endLine": 1169,
+        "endChar": 58
+      },
+      "revId": "7a98dec5a6036f37189294c4c5b2ed2337f5e5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e058d921_204f4bda",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-17T08:36:04Z",
+      "side": 1,
+      "message": "The parse_firmware_version is called for every images - including the system live image, which it is very common that A can be !\u003d B.\n\nI think we should move it to where after config-\u003eimage (not image_current) is loaded.",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 49
+      },
+      "revId": "7a98dec5a6036f37189294c4c5b2ed2337f5e5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
