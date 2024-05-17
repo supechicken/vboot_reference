@@ -123,6 +123,24 @@
       "parentUuid": "61fbc8fa_50e7b13c",
       "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d275767f_e70b6db0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-17T05:39:02Z",
+      "side": 1,
+      "message": "The check for ecrw_version has been added in PS3, at the end of `load_ecrw_versions`. Please take a look. I\u0027m not so sure if the warning should be printed unconditionally, or only for `--manifest`.\n\nThe check for rw_version is added in CL:5547096.",
+      "parentUuid": "0711e0ca_20e1ca20",
+      "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
