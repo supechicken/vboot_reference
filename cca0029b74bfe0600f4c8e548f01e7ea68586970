@@ -69,6 +69,24 @@
       "parentUuid": "54f0a1e7_9f6ed7d3",
       "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e0d1e3_1c59b6be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-17T02:42:31Z",
+      "side": 1,
+      "message": "\u003e TBH I don\u0027t think it\u0027s that complicated\n\nWell, it was. For the case of AP rw_version, there were lots of ambiguity in the GE and other systems for deciding which version they should output, also the test programs. Having two strings made them really confused on how to deal with it - they have to repeat the checking (is A\u003d\u003dB) everywhere. It was mentioned that the firmware updater and the packer should guarantee the RW versions are the same. That\u0027s why in the end we choose to better only having one single entry.",
+      "parentUuid": "36480852_0f953273",
+      "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
