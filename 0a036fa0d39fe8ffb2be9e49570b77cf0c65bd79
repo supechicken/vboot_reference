@@ -93,6 +93,30 @@
       },
       "revId": "0a036fa0d39fe8ffb2be9e49570b77cf0c65bd79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee07316_51d5c7d9",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-17T04:01:36Z",
+      "side": 1,
+      "message": "They were in updater.h. It is quasisec@ who moved it to flashrom.h because he wanted to use it for all flashrom operations, which IMHO, is a wrong refactoring.\n\nFeel free to reshape the code to whatever that looks better.",
+      "parentUuid": "a304cb17_32e8c7be",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "0a036fa0d39fe8ffb2be9e49570b77cf0c65bd79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

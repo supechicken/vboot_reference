@@ -105,6 +105,24 @@
       "parentUuid": "53e0d1e3_1c59b6be",
       "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0711e0ca_20e1ca20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-17T04:01:36Z",
+      "side": 1,
+      "message": "Hmm. Can you add the checks somewhere? Maybe in a follow up CL. We should check both rw_version_a and the new ec_rw_version.",
+      "parentUuid": "61fbc8fa_50e7b13c",
+      "revId": "cca0029b74bfe0600f4c8e548f01e7ea68586970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
