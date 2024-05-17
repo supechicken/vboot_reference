@@ -624,8 +624,7 @@ vb2_error_t LoadMiniOsKernel(struct vb2_context *ctx,
 #ifdef USE_LIBAVB
 static vb2_error_t vb2_load_avb_android_partition(
 	struct vb2_context *ctx, VbExStream_t stream,
-	VbSharedDataKernelPart *shpart, LoadKernelParams *params,
-	GptData *gpt)
+	LoadKernelParams *params, GptData *gpt)
 {
 	char *ab_suffix = NULL;
 	AvbSlotVerifyData *verify_data = NULL;
@@ -644,7 +643,6 @@ static vb2_error_t vb2_load_avb_android_partition(
 	ret = GptGetActiveKernelPartitionSuffix(gpt, &ab_suffix);
 	if (ret != GPT_SUCCESS) {
 		VB2_DEBUG("Unable to get kernel partition suffix\n");
-		shpart->check_result = VBSD_LKC_CHECK_INVALID_PARTITIONS;
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
 	}
 
@@ -692,7 +690,6 @@ static vb2_error_t vb2_load_avb_android_partition(
 	if (ret != AVB_SLOT_VERIFY_RESULT_OK) {
 		if (verify_data != NULL)
 			avb_slot_verify_data_free(verify_data);
-		shpart->check_result = VBSD_LKP_CHECK_VERIFY_DATA;
 		return ret;
 	}
 
@@ -729,9 +726,7 @@ static vb2_error_t vb2_load_avb_android_partition(
 	       (uint8_t *)params->kernel_buffer + BOOT_HDR_GKI_SIZE,
 	       params->vendor_boot_offset - BOOT_HDR_GKI_SIZE);
 
-	shpart->check_result = VBSD_LKP_CHECK_KERNEL_GOOD;
 	/* Rollback protection hasn't been implemented yet. */
-	shpart->combined_version = LOWEST_TPM_VERSION;
 
 	return ret;
 }
@@ -768,6 +763,9 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 		goto gpt_done;
 	}
 
+	/* Store context flags for fallback */
+	const uint64_t ctx_flags = ctx->flags;
+
 	/* Loop over candidate kernel partitions */
 	uint64_t part_start, part_size;
 	while (GptNextKernelEntry(&gpt, &part_start, &part_size) ==
@@ -800,18 +798,46 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 		}
 
 #ifdef USE_LIBAVB
-		/* NOTE - need shpart - njv */
-		rv = vb2_load_avb_android_partition(ctx, stream, shpart,
-			params, &gpt);
+		rv = vb2_load_avb_android_partition(ctx, stream, params, &gpt);
 #else
 		/* Don't allow to boot android without AVB */
 		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 #endif
 		VbExStreamClose(stream);
 
+		/* If there's an error with GKI boot,
+		 * then try to fallback to ChromeOS
+		 */
+		if (rv != VB2_SUCCESS) {
+			/* Set up and reopen the stream again */
+			stream = NULL;
+			if (VbExStreamOpen(params->disk_handle,
+					   part_start, part_size, &stream)) {
+				VB2_DEBUG("Cros fallback - unable to reopen stream\n");
+				VB2_DEBUG("Marking kernel as invalid.\n");
+				GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
+				continue;
+			}
+
+			lpflags = 0;
+			if (params->partition_number > 0) {
+				/*
+				 * If we already have a good kernel, we only needed to
+				 * look at the vblock versions to check for rollback.
+				 */
+				lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
+			}
+
+			rv = vb2_load_chromeos_kernel_partition(ctx, params, stream, lpflags);
+
+			VbExStreamClose(stream);
+		}
+
 		if (rv) {
 			VB2_DEBUG("Marking kernel as invalid (err=%x).\n", rv);
 			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
+			/* Restore original ctx->flags */
+			ctx->flags = ctx_flags;
 			continue;
 		}
 
