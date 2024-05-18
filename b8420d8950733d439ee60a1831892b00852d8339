@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd57843_3c4537d3",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-18T10:48:06Z",
+      "side": 1,
+      "message": "Fixed segmentation fault (`tempfile_head` not initialized) when `section_name` does not exist.",
+      "revId": "b8420d8950733d439ee60a1831892b00852d8339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
