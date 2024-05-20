@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59fba526_fedf1a1d",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-20T02:52:09Z",
+      "side": 1,
+      "message": "just a side note: have you measured how slow it is when doing this (external spawn) when we\u0027re dealing with large archives like brya and dedede, that has 200+MB updater?",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "819b520d31c7b17e9d583e826aa4c89c0620d0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "057c6980_e6921eda",
         "filename": "futility/updater_utils.h",
         "patchSetId": 7
