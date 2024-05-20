@@ -73,6 +73,30 @@
       ],
       "revId": "819b520d31c7b17e9d583e826aa4c89c0620d0fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a30d195_2640ef26",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-20T02:59:08Z",
+      "side": 1,
+      "message": "\u003e Is there a reason why the original method won\u0027t work?\n\n`load_ecrw_version` already checks the presence of the FW_MAIN_A section, so, yes, the original method will work. The only side effect is the warning message\n\n```\nNo valid section \u0027FW_MAIN_A\u0027, missing ecrw version info\n```\n\nwhich will be always printed out whenever futility parses an EC image. The code is refactored to avoid that, because we already know there is no FW_MAIN_A in an EC image. Therefore `load_firmware_image` needs to differentiate between AP and EC images.\n\n\u003e Even if yes, I\u0027d prefer the refactoring should be done separately, not combined in such a large patch.\n\nOkay, fair enough. Regarding that, instead of splitting `load_firmware_image` into 2 functions, how about adding `bool is_ec` to `struct firmware_image`?",
+      "parentUuid": "057c6980_e6921eda",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "819b520d31c7b17e9d583e826aa4c89c0620d0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
