@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057c6980_e6921eda",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-20T02:49:40Z",
+      "side": 1,
+      "message": "I don\u0027t prefer to have different APIs for a several reasons:\n\n1. We used to trust the image-\u003eprogrammer to decide what to do (although this was later became more complicated due to servo flashing)\n2. EC was never a core target to support in the updater\n\nIs there a reason why the original method won\u0027t work? Even if yes, I\u0027d prefer the refactoring should be done separately, not combined in such a large patch.",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c3b997af_7499c12a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "futility/updater_utils.h",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": " * Loads a firmware image from file.\n"
+            },
+            {
+              "path": "futility/updater_utils.h",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "int load_firmware_image(struct firmware_image *image, const char *file_name,\n\t\t\tstruct u_archive *archive);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "819b520d31c7b17e9d583e826aa4c89c0620d0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
