@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5648b937_86a18d0c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-20T03:27:01Z",
+      "side": 1,
+      "message": "How is the archive size related to this call?\n\nBy the time `load_ecrw_versions` runs, the AP image data has been read into `image-\u003edata`, and then we dump the content to a temp `image_file` (which should be fast) for cbfstool to work. Therefore this call is not related to the archive.",
+      "parentUuid": "59fba526_fedf1a1d",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "819b520d31c7b17e9d583e826aa4c89c0620d0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "057c6980_e6921eda",
