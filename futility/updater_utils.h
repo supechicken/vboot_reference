@@ -60,14 +60,18 @@ enum {
 };
 
 /*
- * Loads a firmware image from file.
+ * Loads an AP firmware image from file.
  * If archive is provided and file_name is a relative path, read the file from
  * archive.
  * Returns IMAGE_LOAD_SUCCESS on success, IMAGE_READ_FAILURE on file I/O
  * failure, or IMAGE_PARSE_FAILURE for non-vboot images.
  */
-int load_firmware_image(struct firmware_image *image, const char *file_name,
-			struct u_archive *archive);
+int load_ap_firmware_image(struct firmware_image *image, const char *file_name,
+			   struct u_archive *archive);
+
+/* Loads an EC firmware image from file. */
+int load_ec_firmware_image(struct firmware_image *image, const char *file_name,
+			   struct u_archive *archive);
 
 /* Structure(s) declared in updater.h */
 struct updater_config;
@@ -83,8 +87,8 @@ int load_system_firmware(struct updater_config *cfg,
 /* Frees the allocated resource from a firmware image object. */
 void free_firmware_image(struct firmware_image *image);
 
-/* Preserves meta data and reloads image contents from given file path. */
-int reload_firmware_image(const char *file_path, struct firmware_image *image);
+/* Preserves meta data and reloads AP image contents from given file path. */
+int reload_ap_firmware_image(const char *file_path, struct firmware_image *image);
 
 /*
  * Generates a temporary file for snapshot of firmware image contents.
