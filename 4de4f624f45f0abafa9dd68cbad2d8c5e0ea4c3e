@@ -34,6 +34,24 @@
       "parentUuid": "2670002c_d062670d",
       "revId": "4de4f624f45f0abafa9dd68cbad2d8c5e0ea4c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b45ac0e_3663f7cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-22T14:38:28Z",
+      "side": 1,
+      "message": "IMHO,\n- the struct firmware_image should remain as a \"basic\" data that contains only what every firmware-like image should have. it should not have tags like \u0027is_ec\u0027. What if we need to deal with PD, SH or something else again in future?\n\n- The code can identify if the firmware image is for EC by other logic, for example looking at FMAP section names, or checking the programmer (compare with EC programmer)\n\n- also, the additional fields only makes sense for CrOS should be outside the firmware_image. they can be part of the manifest, but not firmware_image.",
+      "parentUuid": "4c0dcb92_dfd91582",
+      "revId": "4de4f624f45f0abafa9dd68cbad2d8c5e0ea4c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
