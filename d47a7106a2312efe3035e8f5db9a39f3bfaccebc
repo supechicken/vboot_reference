@@ -22,6 +22,30 @@
       },
       "revId": "d47a7106a2312efe3035e8f5db9a39f3bfaccebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef54f80_1e88ce59",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-23T02:16:19Z",
+      "side": 1,
+      "message": "Assuming you meant `futility update --manifest -i - \u003cimage.bin`, the problem already exists before my change. `print_json_manifest()` doesn\u0027t use `cfg-\u003eimage`. Instead, it calls `load_ap_firmware_image` by itself to load AP images. The `print_manifest` call is moved earlier than `updater_load_images` to avoid unnecessary image reads. Therefore I think this patch doesn\u0027t break anything.",
+      "parentUuid": "7aad6df7_0a00071e",
+      "range": {
+        "startLine": 1602,
+        "startChar": 12,
+        "endLine": 1602,
+        "endChar": 23
+      },
+      "revId": "d47a7106a2312efe3035e8f5db9a39f3bfaccebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
