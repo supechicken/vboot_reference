@@ -16,6 +16,24 @@
       "message": "Previous CQ run failed with:\n\n```\nFAILED: \u001b[0mobj/secagentd/test/secagentd_testrunner.message_sender_test.o \nx86_64-cros-linux-gnu-clang++ -MMD -MF obj/secagentd/test/secagentd_testrunner.message_sender_test.o.d -DSECAGENTD_TEST\u003d1 ...\n.../secagentd-0.0.1/platform2/secagentd/test/message_sender_test.cc:19:10: fatal error: \u0027missive/client/mock_report_queue.h\u0027 file not found\n   19 | #include \"missive/client/mock_report_queue.h\"\n```\n\nI checked and missive/client/mock_report_queue.h actually exists in the repo.",
       "revId": "d678315c18b38a4a00ba764c9421ec97e9af7dae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6213a7e6_af16aed5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-23T06:58:24Z",
+      "side": 1,
+      "message": "Still failing. Filed b/342311871.",
+      "parentUuid": "6b58cac6_a916cb05",
+      "revId": "d678315c18b38a4a00ba764c9421ec97e9af7dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
