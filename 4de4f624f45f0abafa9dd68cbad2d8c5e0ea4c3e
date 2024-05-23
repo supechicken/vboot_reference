@@ -52,6 +52,24 @@
       "parentUuid": "4c0dcb92_dfd91582",
       "revId": "4de4f624f45f0abafa9dd68cbad2d8c5e0ea4c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baab70ed_a2c3271f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-23T00:46:31Z",
+      "side": 1,
+      "message": "I totally agree with the 1st and 3rd points.\n\nIt\u0027s easy to remove the \u0027is_ec\u0027 field. See CL:5561604. I think that will make the code slightly better.\n\n\u003e The code can identify if the firmware image is for EC by other logic, for example looking at FMAP section names, or checking the programmer (compare with EC programmer)\n\nAs I explained in the other CL, checking the programmer doesn\u0027t work when we\u0027re loading an image from a file (and that\u0027s why we need to split `load_firmware_image` into 2 functions). Checking the FMAP also doesn\u0027t seem reliable, if we want futility to support *all* types of images (for example ancient images without FW_MAIN_A, or AP images with only one RW section, which is supported by coreboot).\n\nWait... maybe there\u0027s an even simpler solution. `parse_firmware_image()` doesn\u0027t need to know the image type. It can parse `ecrw_version_a` whenever FW_MAIN_A is present, regardless what the image is, so that FW_MAIN_A becomes totally optional (even for AP images). What do you think?",
+      "parentUuid": "3b45ac0e_3663f7cb",
+      "revId": "4de4f624f45f0abafa9dd68cbad2d8c5e0ea4c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
