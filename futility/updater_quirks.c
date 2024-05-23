@@ -176,7 +176,7 @@ static int quirk_enlarge_image(struct updater_config *cfg)
 	while (to_write-- > 0)
 		fputc('\xff', fp);
 	fclose(fp);
-	return reload_firmware_image(tmp_path, image_to);
+	return reload_ap_firmware_image(tmp_path, image_to);
 }
 
 /*
@@ -264,7 +264,7 @@ static int quirk_eve_smm_store(struct updater_config *cfg)
 	free(host_shell(command));
 	free(command);
 
-	return reload_firmware_image(temp_image, &cfg->image);
+	return reload_ap_firmware_image(temp_image, &cfg->image);
 }
 
 /*

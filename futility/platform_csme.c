@@ -227,7 +227,7 @@ int unlock_csme(struct updater_config *cfg)
 		goto cleanup;
 	}
 
-	if (reload_firmware_image(temp_path, &cfg->image)) {
+	if (reload_ap_firmware_image(temp_path, &cfg->image)) {
 		ERROR("Failed to reload firmware image\n");
 		goto cleanup;
 	}
