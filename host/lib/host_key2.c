@@ -213,7 +213,9 @@ void vb2_free_private_key(struct vb2_private_key *key)
 	if (key->key_location == PRIVATE_KEY_LOCAL && key->rsa_private_key)
 		RSA_free(key->rsa_private_key);
 	else if (key->key_location == PRIVATE_KEY_P11 && key->p11_key)
+#ifdef HAVE_NSS
 		pkcs11_free_key(key->p11_key);
+#endif
 
 	if (key->desc)
 		free(key->desc);

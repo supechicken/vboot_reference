@@ -224,9 +224,11 @@ int vb_keyb_from_private_key(struct vb2_private_key *private_key, uint8_t **keyb
 			     uint32_t *keyb_size)
 {
 	switch (private_key->key_location) {
-#ifdef HAVE_NSS
 	case PRIVATE_KEY_P11:
+#ifdef HAVE_NSS
 		return vb_keyb_from_p11_key(private_key->p11_key, keyb_data, keyb_size);
+#else
+		return 1;
 #endif
 	case PRIVATE_KEY_LOCAL:
 		return vb_keyb_from_rsa(private_key->rsa_private_key, keyb_data, keyb_size);
