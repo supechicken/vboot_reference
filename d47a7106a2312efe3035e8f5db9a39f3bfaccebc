@@ -46,6 +46,30 @@
       },
       "revId": "d47a7106a2312efe3035e8f5db9a39f3bfaccebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0d6491_3faeb5eb",
+        "filename": "futility/updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-23T02:51:28Z",
+      "side": 1,
+      "message": "Hmm, you are right. I thought the original implementation was \"not reload if the image was already loaded\", but manifest was truly done in a different way now.",
+      "parentUuid": "2ef54f80_1e88ce59",
+      "range": {
+        "startLine": 1602,
+        "startChar": 12,
+        "endLine": 1602,
+        "endChar": 23
+      },
+      "revId": "d47a7106a2312efe3035e8f5db9a39f3bfaccebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
