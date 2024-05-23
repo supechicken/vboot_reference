@@ -88,6 +88,24 @@
       "parentUuid": "baab70ed_a2c3271f",
       "revId": "4de4f624f45f0abafa9dd68cbad2d8c5e0ea4c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efdb71de_6569e01a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-05-23T02:00:32Z",
+      "side": 1,
+      "message": "\u003e As I explained in the other CL, checking the programmer doesn\u0027t work when we\u0027re loading an image from a file \n\nI think that\u0027s the problem caused by Edward\u0027s \"refactoring\" to mess up the programmers.\n\nPreviously, the programmers are always only \u0027where to write\u0027, and reading/writing from file (e.g. emulation) is a separate config so the programmer is a trusted source for \"where this image should write to\".",
+      "parentUuid": "135ab3c2_2dfcbe8b",
+      "revId": "4de4f624f45f0abafa9dd68cbad2d8c5e0ea4c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
