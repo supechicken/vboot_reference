@@ -179,7 +179,7 @@ static void load_ecrw_versions(struct firmware_image *image)
  * Fills in the other fields of image using image->data.
  * Returns IMAGE_LOAD_SUCCESS or IMAGE_PARSE_FAILURE.
  */
-static int parse_firmware_image(struct firmware_image *image)
+static int parse_firmware_image(struct firmware_image *image, bool is_host)
 {
 	int ret = IMAGE_LOAD_SUCCESS;
 	const char *section_a = NULL, *section_b = NULL;
@@ -215,7 +215,7 @@ static int parse_firmware_image(struct firmware_image *image)
 	load_firmware_version(image, section_a, &image->rw_version_a);
 	load_firmware_version(image, section_b, &image->rw_version_b);
 
-	if (!image->is_ec)
+	if (is_host)
 		load_ecrw_versions(image);
 
 	return ret;
@@ -223,7 +223,8 @@ static int parse_firmware_image(struct firmware_image *image)
 
 static int load_firmware_image(struct firmware_image *image,
 			       const char *file_name,
-			       struct u_archive *archive)
+			       struct u_archive *archive,
+			       bool is_host)
 {
 	if (!file_name) {
 		ERROR("No file name given\n");
@@ -244,21 +245,19 @@ static int load_firmware_image(struct firmware_image *image,
 
 	image->file_name = strdup(file_name);
 
-	return parse_firmware_image(image);
+	return parse_firmware_image(image, is_host);
 }
 
 int load_ap_firmware_image(struct firmware_image *image, const char *file_name,
 			   struct u_archive *archive)
 {
-	image->is_ec = false;
-	return load_firmware_image(image, file_name, archive);
+	return load_firmware_image(image, file_name, archive, true);
 }
 
 int load_ec_firmware_image(struct firmware_image *image, const char *file_name,
 			   struct u_archive *archive)
 {
-	image->is_ec = true;
-	return load_firmware_image(image, file_name, archive);
+	return load_firmware_image(image, file_name, archive, false);
 }
 
 void check_firmware_versions(const struct firmware_image *image)
@@ -317,13 +316,10 @@ void free_firmware_image(struct firmware_image *image)
 	image->programmer = programmer;
 }
 
-int reload_firmware_image(const char *file_path, struct firmware_image *image)
+int reload_ap_firmware_image(const char *file_path, struct firmware_image *image)
 {
 	free_firmware_image(image);
-	if (image->is_ec)
-		return load_ec_firmware_image(image, file_path, NULL);
-	else
-		return load_ap_firmware_image(image, file_path, NULL);
+	return load_ap_firmware_image(image, file_path, NULL);
 }
 
 /*
@@ -605,8 +601,9 @@ static int is_the_same_programmer(const struct firmware_image *image1,
 int load_system_firmware(struct updater_config *cfg,
 			 struct firmware_image *image)
 {
+	bool is_host = true;
 	if (!strcmp(image->programmer, FLASHROM_PROGRAMMER_INTERNAL_EC)) {
-		image->is_ec = true;
+		is_host = false;
 		WARN("%s: flashrom support for CrOS EC is EOL.\n", __func__);
 	}
 
@@ -622,7 +619,7 @@ int load_system_firmware(struct updater_config *cfg,
 		r = flashrom_read_image(image, NULL, 0, verbose);
 	}
 	if (!r)
-		r = parse_firmware_image(image);
+		r = parse_firmware_image(image, is_host);
 	return r;
 }
 
