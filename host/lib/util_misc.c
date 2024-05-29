@@ -173,6 +173,7 @@ done:
 	return retval;
 }
 
+#ifdef HAVE_NSS
 static int vb_keyb_from_p11_key(struct pkcs11_key *p11_key, uint8_t **keyb_data,
 				uint32_t *keyb_size)
 {
@@ -196,6 +197,7 @@ done:
 	free(modulus);
 	return ret;
 }
+#endif
 
 int vb_keyb_from_rsa(struct rsa_st *rsa_private_key, uint8_t **keyb_data, uint32_t *keyb_size)
 {
@@ -208,12 +210,17 @@ int vb_keyb_from_rsa(struct rsa_st *rsa_private_key, uint8_t **keyb_data, uint32
 	return vb_keyb_from_modulus(N, RSA_size(rsa_private_key), keyb_data, keyb_size);
 }
 
+
 int vb_keyb_from_private_key(struct vb2_private_key *private_key, uint8_t **keyb_data,
 			     uint32_t *keyb_size)
 {
 	switch (private_key->key_location) {
 	case PRIVATE_KEY_P11:
+#ifdef HAVE_NSS
 		return vb_keyb_from_p11_key(private_key->p11_key, keyb_data, keyb_size);
+#else
+		return 1;
+#endif
 	case PRIVATE_KEY_LOCAL:
 		return vb_keyb_from_rsa(private_key->rsa_private_key, keyb_data, keyb_size);
 	}

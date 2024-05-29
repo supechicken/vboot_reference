@@ -6,6 +6,8 @@
 #ifndef VBOOT_REFERENCE_HOST_P11_H_
 #define VBOOT_REFERENCE_HOST_P11_H_
 
+#ifdef HAVE_NSS
+
 #include <pkcs11.h>
 
 #include "2id.h"
@@ -88,5 +90,7 @@ vb2_error_t pkcs11_sign(struct pkcs11_key *p11_key, enum vb2_hash_algorithm hash
  * @param key		Pkcs11 key to free.
  */
 void pkcs11_free_key(struct pkcs11_key *p11_key);
+
+#endif /* HAVE_NSS */
 
 #endif /* VBOOT_REFERENCE_HOST_P11_H_ */

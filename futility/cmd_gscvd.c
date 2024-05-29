@@ -825,6 +825,7 @@ static int validate_privk(struct vb2_keyblock *kblock,
 		RSA_get0_key(plat_privk->rsa_private_key, (const BIGNUM **)&privn,
 			     NULL, NULL);
 	} else {
+#ifdef HAVE_NSS
 		uint32_t size;
 		uint8_t *bytes;
 
@@ -841,6 +842,11 @@ static int validate_privk(struct vb2_keyblock *kblock,
 			ERROR("Failed to allocate BN for priv key modulus\n");
 			return rv;
 		}
+#else
+		/* Missing dependencies to support PKCS11 */
+		ERROR("%s: PKCS11 support not available\n", __func__);
+		return rv;
+#endif
 	}
 
 	if (vb2_unpack_key(&pubk, &kblock->data_key) != VB2_SUCCESS) {

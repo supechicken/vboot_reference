@@ -86,6 +86,7 @@ struct vb2_signature *vb2_calculate_signature(
 		const struct vb2_private_key *key)
 {
 	if (key->key_location == PRIVATE_KEY_P11) {
+#ifdef HAVE_NSS
 		const uint32_t sig_size = vb2_rsa_sig_size(key->sig_alg);
 		struct vb2_signature *sig =
 			(struct vb2_signature *)vb2_alloc_signature(sig_size, size);
@@ -98,6 +99,11 @@ struct vb2_signature *vb2_calculate_signature(
 			return NULL;
 		}
 		return sig;
+#else
+		/* Missing dependencies to support PKCS11 */
+		fprintf(stderr, "%s: PKCS11 support not available\n", __func__);
+		return NULL;
+#endif
 	}
 
 	struct vb2_hash hash;

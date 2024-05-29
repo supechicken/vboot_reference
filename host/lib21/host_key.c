@@ -16,8 +16,8 @@
 #include "host_common.h"
 #include "host_common21.h"
 #include "host_key21.h"
-#include "host_misc.h"
 #include "host_p11.h"
+#include "host_misc.h"
 #include "openssl_compat.h"
 #include "util_misc.h"
 

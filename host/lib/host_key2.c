@@ -56,6 +56,8 @@ static vb2_error_t vb2_read_local_private_key(uint8_t *buf, uint32_t bufsize,
 	return VB2_SUCCESS;
 }
 
+#ifdef HAVE_NSS
+
 static vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key)
 {
 	/* The format of p11 key info: "remote:{lib_path}:{slot_id}:{key_label}" */
@@ -96,6 +98,8 @@ done:
 	return ret;
 }
 
+#endif
+
 static bool is_vb21_private_key(const uint8_t *buf, uint32_t bufsize)
 {
 	const struct vb21_packed_private_key *pkey =
@@ -118,12 +122,17 @@ struct vb2_private_key *vb2_read_private_key(const char *key_info)
 	if (colon) {
 		int prefix_size = colon - key_info;
 		if (!strncmp(key_info, p11_prefix, prefix_size)) {
+#ifdef HAVE_NSS
 			if (vb2_read_p11_private_key(key_info, key) != VB2_SUCCESS) {
 				VB2_DEBUG("Unable to read pkcs11 private key\n");
 				free(key);
 				return NULL;
 			}
 			return key;
+#else
+			VB2_DEBUG("PKCS11 key support not available\n");
+			return NULL;
+#endif
 		}
 		if (!strncmp(key_info, local_prefix, prefix_size))
 			key_info = colon + 1;
@@ -200,8 +209,10 @@ void vb2_free_private_key(struct vb2_private_key *key)
 
 	if (key->key_location == PRIVATE_KEY_LOCAL && key->rsa_private_key)
 		RSA_free(key->rsa_private_key);
+#ifdef HAVE_NSS
 	else if (key->key_location == PRIVATE_KEY_P11 && key->p11_key)
 		pkcs11_free_key(key->p11_key);
+#endif
 
 	if (key->desc)
 		free(key->desc);

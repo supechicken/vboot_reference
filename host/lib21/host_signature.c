@@ -122,9 +122,14 @@ vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr, const uint8_t *data,
 
 	/* If it is PKCS11#11 key, we could sign with pkcs11_sign instead */
 	if (key->key_location == PRIVATE_KEY_P11) {
+#ifdef HAVE_NSS
 		/* RSA-encrypt the signature */
 		rv = pkcs11_sign(key->p11_key, key->hash_alg, data, size,
 				 buf + s.sig_offset, s.sig_size);
+#else
+		/* Missing dependencies to support PKCS11 */
+		rv = VB2_ERROR_UNKNOWN;
+#endif
 		goto done;
 	}
 
