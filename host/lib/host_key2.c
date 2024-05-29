@@ -21,7 +21,10 @@
 #include "host_key21.h"
 #include "host_key.h"
 #include "host_misc.h"
+
+#ifdef HAVE_NSS
 #include "host_p11.h"
+#endif
 
 enum vb2_crypto_algorithm vb2_get_crypto_algorithm(
 	enum vb2_hash_algorithm hash_alg,
@@ -55,6 +58,8 @@ static vb2_error_t vb2_read_local_private_key(uint8_t *buf, uint32_t bufsize,
 	}
 	return VB2_SUCCESS;
 }
+
+#ifdef HAVE_NSS
 
 static vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_private_key *key)
 {
@@ -96,6 +101,8 @@ done:
 	return ret;
 }
 
+#endif
+
 static bool is_vb21_private_key(const uint8_t *buf, uint32_t bufsize)
 {
 	const struct vb21_packed_private_key *pkey =
@@ -118,12 +125,17 @@ struct vb2_private_key *vb2_read_private_key(const char *key_info)
 	if (colon) {
 		int prefix_size = colon - key_info;
 		if (!strncmp(key_info, p11_prefix, prefix_size)) {
+#ifdef HAVE_NSS
 			if (vb2_read_p11_private_key(key_info, key) != VB2_SUCCESS) {
 				VB2_DEBUG("Unable to read pkcs11 private key\n");
 				free(key);
 				return NULL;
 			}
 			return key;
+#else
+			VB2_DEBUG("PKCS11 key support not available\n");
+			return NULL;
+#endif
 		}
 		if (!strncmp(key_info, local_prefix, prefix_size))
 			key_info = colon + 1;

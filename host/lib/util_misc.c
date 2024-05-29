@@ -18,9 +18,12 @@
 #include "2sysincludes.h"
 #include "host_common.h"
 #include "host_key21.h"
-#include "host_p11.h"
 #include "openssl_compat.h"
 #include "util_misc.h"
+
+#ifdef HAVE_NSS
+#include "host_p11.h"
+#endif
 
 const char *packed_key_sha1_string(const struct vb2_packed_key *key)
 {
@@ -61,6 +64,8 @@ const char *private_key_sha1_string(const struct vb2_private_key *key)
 	free(buf);
 	return dest;
 }
+
+#ifdef HAVE_NSS
 
 static int vb_keyb_from_modulus(const BIGNUM *rsa_private_key_n, uint32_t modulus_size,
 				uint8_t **keyb_data, uint32_t *keyb_size)
@@ -197,8 +202,11 @@ done:
 	return ret;
 }
 
+#endif
+
 int vb_keyb_from_rsa(struct rsa_st *rsa_private_key, uint8_t **keyb_data, uint32_t *keyb_size)
 {
+#ifdef HAVE_NSS
 	const BIGNUM *N;
 	RSA_get0_key(rsa_private_key, &N, NULL, NULL);
 	if (!N) {
@@ -206,14 +214,20 @@ int vb_keyb_from_rsa(struct rsa_st *rsa_private_key, uint8_t **keyb_data, uint32
 		return 1;
 	}
 	return vb_keyb_from_modulus(N, RSA_size(rsa_private_key), keyb_data, keyb_size);
+#else
+	return 1;
+#endif
 }
+
 
 int vb_keyb_from_private_key(struct vb2_private_key *private_key, uint8_t **keyb_data,
 			     uint32_t *keyb_size)
 {
 	switch (private_key->key_location) {
+#ifdef HAVE_NSS
 	case PRIVATE_KEY_P11:
 		return vb_keyb_from_p11_key(private_key->p11_key, keyb_data, keyb_size);
+#endif
 	case PRIVATE_KEY_LOCAL:
 		return vb_keyb_from_rsa(private_key->rsa_private_key, keyb_data, keyb_size);
 	}

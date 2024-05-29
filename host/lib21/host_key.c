@@ -17,9 +17,12 @@
 #include "host_common21.h"
 #include "host_key21.h"
 #include "host_misc.h"
-#include "host_p11.h"
 #include "openssl_compat.h"
 #include "util_misc.h"
+
+#ifdef HAVE_NSS
+#include "host_p11.h"
+#endif
 
 vb2_error_t vb21_private_key_unpack_raw(const uint8_t *buf, uint32_t size,
 					       struct vb2_private_key *key)
