@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b0b4d3_7a2b42f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-31T00:49:27Z",
+      "side": 1,
+      "message": "Thanks for the patch! It generally looks good (besides some minor nits, see comments) so I\u0027d be happy to merge it — but in general, it looks like this file is some aborted attempt to support something that never fully materialized, and the code isn\u0027t and never has been used anywhere. So I guess we may also want to decide to just delete the whole thing. (The more official way to do this which is at least used by Flex in a few places is `futility vbutil_kernel --get-vmlinuz`, which shares the same code from `vb1_helper.c` that is also used to build kernel partitions. If we needed a hostlib version of that functionality, it would probably be better to share that code rather than maintain two separate versions.)\n\nAre you using vboot for some other project outside ChromeOS that needs this functionality, or did you just want to fix some warnings?",
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf640404_44034390",
+        "filename": "host/lib/extract_vmlinuz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-31T00:49:27Z",
+      "side": 1,
+      "message": "This is not correct. vmlinuz_header is not embedded in the preamble, it is embedded within kblob_data.\n\nkblob_data is basically subdivided into different sections again, in order: actual 32-bit kernel (remaining bytes), kernel command line (constant 4K), modified vmlinuz setup header (constant 4K), \"bootloader\" (nowdays contains EFI stub on Flex builds, otherwise unused; what preamble-\u003ebootloader_address and preamble-\u003ebootloader_size refer to), and original vmlinuz parts before 32-bit kernel (remaining bytes).",
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54eab9a3_6188bff9",
+        "filename": "host/lib/extract_vmlinuz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-31T00:49:27Z",
+      "side": 1,
+      "message": "I think the concern is still here that for a (maliciously designed) kernel partition, `vmlinuz_header + vmlinuz_header_size` could overflow 32 bits. I believe what the original author meant to check for was `kpart_data + vmlinuz_header_offset + vmlinuz_header_size \u003c kpart_data` which would have detected exactly that, they just flipped the condition by accident (and they forgot to calculate `vmlinuz_header_offset` first.\n\nI\u0027m not sure why this code does all of this math manually rather than using the helper functions we have for that anyway. I think this check could instead just call `vb2_verify_member_inside(kblob_data, kblob_size, vmlinuz_header, vmlinuz_header_size, 0, 0)` and that should assure that all overflow risks are correctly checked for.",
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa919673_d1c86a10",
+        "filename": "host/lib/extract_vmlinuz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-05-31T00:49:27Z",
+      "side": 1,
+      "message": "FWIW I believe this is technically incorrect and will create an image that is too large and has extra stuff at the end (the command line and bootloader and all that which I mentioned above). I guess nobody ever noticed or cared, `futility vbutil_kernel --get-vmlinuz` seems to be making the same mistake. Correct should be:\n```\nuint32_t bootloader_offset \u003d preamble-\u003ebootloader_address - preamble-\u003ebody_load_address;\nmemcpy(vmlinuz + vmlinuz_header_size, kblob_data, bootloader_offset - CROS_PARAMS_SIZE - CROS_CONFIG_SIZE);\n```",
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
