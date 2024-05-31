@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f50734_92dfb9ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-31T02:32:10Z",
+      "side": 1,
+      "message": "Why? Do you mean\n\n```\n`kpart_data + some_unsigned_values` can obviously never be `\u003c kpart_data`, unless something has overflowed!\n```",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 73
+      },
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "88b0b4d3_7a2b42f0",
@@ -37,6 +60,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "898662b7_da39801a",
+        "filename": "host/lib/extract_vmlinuz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-31T02:32:10Z",
+      "side": 1,
+      "message": "There\u0027s `vb2_kernel_get_vmlinuz_header` that can be used, so that the check `header_version_minor \u003e 0` doesn\u0027t need to repeat everywhere.",
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd954ed3_a25aabf6",
+        "filename": "host/lib/extract_vmlinuz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-31T02:32:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this means. `vmlinuz_header_address - body_load_address` is just the vmlinuz header offset relative to `kblob_data`. `keyblock_size` and `preamble_size` are added to the offset so that that becomes the offset relative to `kpart_data`.",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54eab9a3_6188bff9",
         "filename": "host/lib/extract_vmlinuz.c",
         "patchSetId": 1
@@ -65,6 +128,24 @@
       "writtenOn": "2024-05-31T00:49:27Z",
       "side": 1,
       "message": "FWIW I believe this is technically incorrect and will create an image that is too large and has extra stuff at the end (the command line and bootloader and all that which I mentioned above). I guess nobody ever noticed or cared, `futility vbutil_kernel --get-vmlinuz` seems to be making the same mistake. Correct should be:\n```\nuint32_t bootloader_offset \u003d preamble-\u003ebootloader_address - preamble-\u003ebody_load_address;\nmemcpy(vmlinuz + vmlinuz_header_size, kblob_data, bootloader_offset - CROS_PARAMS_SIZE - CROS_CONFIG_SIZE);\n```",
+      "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b58410_7d182206",
+        "filename": "host/lib/extract_vmlinuz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-05-31T02:32:10Z",
+      "side": 1,
+      "message": "There\u0027s `kernel_cmd_line_offset(preamble)` for `bootloader_offset - CROS_PARAMS_SIZE - CROS_CONFIG_SIZE`, so we don\u0027t need to repeat the calculation here.",
+      "parentUuid": "fa919673_d1c86a10",
       "revId": "195f61375aeec9eec16604ec59f6eda2e6058cc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
