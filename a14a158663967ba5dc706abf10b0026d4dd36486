@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad090e6b_92e0c79a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-05T11:15:44Z",
+      "side": 1,
+      "message": "`currently produces`\n\nSee https://www.chromium.org/chromium-os/developer-library/guides/development/contributing/#commit-messages.",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "a14a158663967ba5dc706abf10b0026d4dd36486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0af3f1_b326e618",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-05T11:15:44Z",
+      "side": 1,
+      "message": "How about\n\n```\nVB2_DEBUG(\"HWWP\u003d%s, SWWP\u003d%d, start\u003d%#010x, length\u003d%#010x\\n\",\n          ignore_hw ? \"ignored\" : hwwp ? \"1\" : \"0\" ,\n          wp_mode, wp_start, wp_len);\n```",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 33
+      },
+      "revId": "a14a158663967ba5dc706abf10b0026d4dd36486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5183fd_b1bd93fa",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-05T11:15:44Z",
+      "side": 1,
+      "message": "Can this be moved inside the if block around line #129? Also, can we print this warning only if `(!wp_mode \u0026\u0026 wp_start \u003d\u003d 0 \u0026\u0026 wp_len \u003d\u003d 0)` is false (so that \"may not\" becomes \"does not\")?\n\n```\nbool swwp_disabled \u003d !wp_mode \u0026\u0026 wp_start \u003d\u003d 0 \u0026\u0026 wp_len \u003d\u003d 0;\nif (!hwwp || swwp_disabled) {\n    if (!ignore_hw \u0026\u0026 !swwp_disabled)\n        WARN(...);\n    printf(\"WP status: disabled\\n\");\n}\n```",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "a14a158663967ba5dc706abf10b0026d4dd36486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
