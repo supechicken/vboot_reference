@@ -114,7 +114,14 @@ static int print_wp_status(struct updater_config *cfg, bool ignore_hw)
 	/* A 1 implies HWWP is enabled. */
 	int hwwp = ignore_hw ? 1 : dut_get_property(DUT_PROP_WP_HW, cfg);
 
+	VB2_DEBUG("HWWP=%s, SWWP=%d, start=0x%08" PRIx32 ", length=0x%08" PRIx32 "\n",
+		  ignore_hw ? "ignored" : hwwp ? "1" : "0", wp_mode, wp_start, wp_len);
+
 	if (!hwwp || (!wp_mode && wp_start == 0 && wp_len == 0)) {
+		if (!ignore_hw && (wp_mode || wp_start != 0 || wp_len != 0)) {
+			WARN("HWWP disabled. Result does not reflect the SWWP status.\n");
+			WARN("Use --ignore-hw instead to see the SWWP status specifically.\n");
+		}
 		printf("WP status: disabled\n");
 	} else if (wp_mode && wp_start == ro_start && wp_len == ro_len) {
 		printf("WP status: enabled\n");
