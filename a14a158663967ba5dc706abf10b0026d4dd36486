@@ -140,6 +140,30 @@
       },
       "revId": "a14a158663967ba5dc706abf10b0026d4dd36486",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f084a00_f6a23441",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-06T15:05:15Z",
+      "side": 1,
+      "message": "Can we define the bool variable to reduce duplicate code?",
+      "parentUuid": "443d1411_83674e40",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "a14a158663967ba5dc706abf10b0026d4dd36486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
