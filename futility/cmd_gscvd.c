@@ -1307,7 +1307,8 @@ static int do_gscvd(int argc, char *argv[])
 		if (validate_pubk_signature(root_pubk, kblock))
 			break;
 
-		if (validate_privk(kblock, plat_privk))
+		if ((plat_privk->key_location != PRIVATE_KEY_P11) &&
+			validate_privk(kblock, plat_privk))
 			break;
 
 		if (load_ap_firmware(work_file, &ap_firmware_file, FILE_RW))
