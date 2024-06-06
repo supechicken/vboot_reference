@@ -19,6 +19,7 @@
 #include "host_keyblock.h"
 #include "host_misc.h"
 #include "host_signature.h"
+#include "host_p11.h"
 
 /*
  * for testing purposes let's use
@@ -813,14 +814,30 @@ static int validate_pubk_signature(const struct vb2_packed_key *root_pubk,
 static int validate_privk(struct vb2_keyblock *kblock,
 			  struct vb2_private_key *plat_privk)
 {
-	const BIGNUM *privn;
+	BIGNUM *privn;
 	BIGNUM *pubn;
 	struct vb2_public_key pubk;
 	int rv;
 
 	privn = pubn = NULL;
 
-	RSA_get0_key(plat_privk->rsa_private_key, &privn, NULL, NULL);
+	if (plat_privk->key_location != PRIVATE_KEY_P11) {
+		RSA_get0_key(plat_privk->rsa_private_key, (const BIGNUM **)&privn,
+			     NULL, NULL);
+	} else {
+		uint32_t size;
+		uint8_t *bytes;
+
+		bytes = pkcs11_get_modulus(plat_privk->p11_key, &size);
+		if (bytes == NULL) {
+			ERROR("Failed to retrieve private key modulus\n");
+			return -1;
+		}
+
+	    privn = BN_new();
+	    BN_bin2bn(bytes, size, privn);
+	    free(bytes);
+	}
 
 	if (vb2_unpack_key(&pubk, &kblock->data_key) != VB2_SUCCESS) {
 		ERROR("Failed to unpack public key\n");
@@ -831,10 +848,14 @@ static int validate_privk(struct vb2_keyblock *kblock,
 	pubn = BN_lebin2bn((uint8_t *)pubk.n, vb2_rsa_sig_size(pubk.sig_alg),
 			   pubn);
 	rv = BN_cmp(pubn, privn);
+
+	if (plat_privk->key_location == PRIVATE_KEY_P11)
+		BN_free(privn);
+	BN_free(pubn);
+
 	if (rv)
 		ERROR("Public/private key N mismatch!\n");
 
-	BN_free(pubn);
 	return rv;
 }
 
