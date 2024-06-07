@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bdbc94c_3c6d08ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2024-06-07T04:23:00Z",
+      "side": 1,
+      "message": "Thanks for the fix, just a few comments here.",
+      "revId": "2b2e97b181516caffe401cac07e1ab8ae71df481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e6a362_6b948412",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2024-06-07T04:23:00Z",
+      "side": 1,
+      "message": "BN_bin2bn might fail and return NULL here, so consider to catch the error.",
+      "range": {
+        "startLine": 838,
+        "startChar": 5,
+        "endLine": 838,
+        "endChar": 14
+      },
+      "revId": "2b2e97b181516caffe401cac07e1ab8ae71df481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10290206_d4f531df",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2024-06-07T04:23:00Z",
+      "side": 1,
+      "message": "nit: fix indentation",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 17
+      },
+      "revId": "2b2e97b181516caffe401cac07e1ab8ae71df481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
