@@ -113,6 +113,7 @@ build flavor '${flavor_prop}'."
 
     local temp_dir="$(make_temp_dir)"
     local temp_apk="${temp_dir}/temp.apk"
+    local temp_zipaligned_apk="${temp_dir}/temp_zipaligned.apk"
     local signed_apk="${temp_dir}/signed.apk"
 
     # Follow the standard manual signing process.  See
@@ -138,6 +139,9 @@ build flavor '${flavor_prop}'."
       #
       # TODO(b/132818552): disable v1 signing once a check is removed.
 
+      # If using apksigner zipalign needs to be done before signing.
+      zipalign -p -f -v 4 "${temp_apk}" "${temp_zipaligned_apk}"
+
       local extra_flags
       local lineage_file="${key_dir}/${keyname}.lineage"
       local apksigner_min_sdk_version=28
@@ -154,12 +158,13 @@ build flavor '${flavor_prop}'."
           --provider-arg "${gen_key_config_dir}/pkcs11_java.cfg" --ks "NONE" \
           --ks-type "PKCS11" \
           --ks-key-alias "${KEYCFG_ANDROID_CLOUD_KEY_PREFIX}${keyname}" \
-          --ks-pass pass:\"\" --in "${temp_apk}" --out "${signed_apk}"  \
+          --ks-pass pass:\"\" \
+          --in "${temp_zipaligned_apk}" --out "${signed_apk}"  \
           ${extra_flags}
       else
         apksigner sign --key "${key_dir}/${keyname}.pk8" \
           --cert "${key_dir}/${keyname}.x509.pem" \
-          --in "${temp_apk}" --out "${signed_apk}" \
+          --in "${temp_zipaligned_apk}" --out "${signed_apk}" \
           ${extra_flags}
       fi
     fi
