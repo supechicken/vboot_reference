@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "7fad6a58016db0af5091db9b1bde8cce2d54aac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fbec3b_0807e05a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2024-06-10T18:16:19Z",
+      "side": 1,
+      "message": "Should this local be declared only in the scope it\u0027s used - e.g. can we declare it near the locals in lines 145-147, obviously with the zipalign command executed just after those?\n\nOtherwise it\u0027s a variable that references a file that\u0027s potentially not really created in other code paths (use_apksigner false) which could lead to confusion down the road...",
+      "revId": "7fad6a58016db0af5091db9b1bde8cce2d54aac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
