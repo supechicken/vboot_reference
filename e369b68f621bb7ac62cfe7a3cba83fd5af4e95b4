@@ -34,6 +34,24 @@
       "parentUuid": "830fb978_d7044a1f",
       "revId": "e369b68f621bb7ac62cfe7a3cba83fd5af4e95b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84dcb83_ad567d3b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2024-06-11T19:52:02Z",
+      "side": 1,
+      "message": "sgtm to leave it as-is, just thought it might save someone having to dig into logs if the failing APK name was in the error message itself.\n\nThen again, these errors should be rare, and hopefully not APK-specific...",
+      "parentUuid": "9ddf4c07_0bd4d186",
+      "revId": "e369b68f621bb7ac62cfe7a3cba83fd5af4e95b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
