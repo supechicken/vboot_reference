@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "830fb978_d7044a1f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2024-06-11T19:43:22Z",
+      "side": 1,
+      "message": "nit/question: Should we include the APK name in the message here (similar to line 105) if this fails?",
+      "revId": "e369b68f621bb7ac62cfe7a3cba83fd5af4e95b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
