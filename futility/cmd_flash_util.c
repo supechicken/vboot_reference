@@ -118,6 +118,7 @@ static int print_wp_status(struct updater_config *cfg, bool ignore_hw)
 
 	VB2_DEBUG("HWWP=%s, SWWP=%d, start=0x%08" PRIx32 ", length=0x%08" PRIx32 "\n",
 		  ignore_hw ? "ignored" : hwwp ? "1" : "0", wp_mode, wp_start, wp_len);
+	VB2_DEBUG("ro_start=0x%08" PRIx32 ", ro_length=0x%08" PRIx32 "\n", ro_start, ro_len);
 
 	if (!hwwp || is_swwp_disabled) {
 		if (!ignore_hw && !is_swwp_disabled) {
@@ -129,8 +130,9 @@ static int print_wp_status(struct updater_config *cfg, bool ignore_hw)
 		printf("WP status: enabled\n");
 	} else {
 		printf("WP status: misconfigured (srp = %d, start = 0x%08" PRIx32
-		       ", length = 0x%08" PRIx32 ")\n",
-		       wp_mode, wp_start, wp_len);
+		       ", length = 0x%08" PRIx32 "), expected start = 0x%08" PRIx32
+		       ", length = 0x%08" PRIx32 "\n", wp_mode, wp_start, wp_len, ro_start,
+		       ro_len);
 	}
 
 	return 0;
