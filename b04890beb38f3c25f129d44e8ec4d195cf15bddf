@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386c1bf2_c135abdc",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-12T00:49:17Z",
+      "side": 1,
+      "message": "I wonder if this can be moved inside `get_ro_range()`, so that this information is also available for other sub-commands. There will be duplicate information printed in `print_flash_info()`, but that should be fine with `--debug`. What do you think?",
+      "revId": "b04890beb38f3c25f129d44e8ec4d195cf15bddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13ed951_c4afec6c",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-12T00:49:17Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a warning? BTW, I think the warning should be printed whenever neither of the following is true\n\n1. `!wp_mode \u0026\u0026 wp_start \u003d\u003d 0 \u0026\u0026 wp_len \u003d\u003d 0`\n2. `wp_mode \u0026\u0026 wp_start \u003d\u003d ro_start \u0026\u0026 wp_len \u003d\u003d ro_len`\n\nnot just in this else block. I\u0027d probably write it this way:\n\n```\nbool is_swwp_disabled \u003d !wp_mode \u0026\u0026 wp_start \u003d\u003d 0 \u0026\u0026 wp_len \u003d\u003d 0;\nbool is_swwp_enabled \u003d wp_mode \u0026\u0026 wp_start \u003d\u003d ro_start \u0026\u0026 wp_len \u003d\u003d ro_len;\nif (!is_swwp_disabled \u0026\u0026 !is_swwp_enabled)\n    WARN(..., wp_mode, wp_start, ro_start, wp_len, ro_len);\nif (!hwwp || is_swwp_disabled) {\n    ...\n} else if (is_swwp_enabled) {\n    ...\n} else {\n    // Simplified message here, as the warning should have been printed above.\n    printf(\"WP status: misconfigured\\n\");\n}\n```",
+      "revId": "b04890beb38f3c25f129d44e8ec4d195cf15bddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
