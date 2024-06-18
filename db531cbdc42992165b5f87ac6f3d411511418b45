@@ -38,6 +38,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e715b4f_79f6e585",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-18T21:11:19Z",
+      "side": 1,
+      "message": "I think we\u0027re not currently doing that for any of the build-time options. We could consider starting it, but it would require compiling all of vboot multiple times during each test run (and I\u0027m also not sure if it\u0027s that easy to realize from within a Makefile itself because I think it might confuse the dependency tracking?). Maybe a discussion we should move outside of this CL.",
+      "parentUuid": "d413cdfe_4752030b",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80687059_e5011876",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-18T21:11:19Z",
+      "side": 1,
+      "message": "Let\u0027s at least move this include guard inside host_p11.h so we don\u0027t need to have it in so many places.",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "290de1d9_0c2d2843",
         "filename": "host/lib/host_key2.c",
         "patchSetId": 1
@@ -67,6 +102,41 @@
       "side": 1,
       "message": "Stub implementation is not enough. Function declarations are an issue too due to use of types from pkcs11.h. This header is not available on Android, and maintaining libnss mirror in Android is too much of a hassle just for this feature which is not even needed on the device.",
       "parentUuid": "290de1d9_0c2d2843",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e228e2bf_b450da5d",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-18T21:11:19Z",
+      "side": 1,
+      "message": "As far as I can tell, the only type that actually comes from that header in the function signatures in host_p11.h is the `CK_ULONG sig_size` in `pkcs11_sign()`. Can we just change that to `size_t` and then do the stub solution? I agree with Yu-Ping that it would make things a lot cleaner.",
+      "parentUuid": "71e23bf6_5246801e",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae7de38_9686b422",
+        "filename": "host/lib/util_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-18T21:11:19Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually have anything to do with PKCS11, I believe. Is there actually something here (or in `vb_keyb_from_modulus()`) that depends on libnss? (All the `RSA_...` stuff is coming from openssl which I assume we still have in Android, right?)",
       "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
