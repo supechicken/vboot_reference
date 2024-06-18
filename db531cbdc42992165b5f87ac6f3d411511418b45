@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e59efc0_fb06f22e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-18T01:46:50Z",
+      "side": 1,
+      "message": "If we start allowing building without nss, I think we need a test (with `$(MAKE) HAVE_NSS\u003d ...`) to make sure vboot can build (maybe UTILLIB is enough) without nss.",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290de1d9_0c2d2843",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-18T01:46:50Z",
+      "side": 1,
+      "message": "Instead of spreading the ifdef throughout the code, I wonder if we can have a stub host/lib/host_p11_stub.c (and add it in the Makefile), which implements all the functions in host_p11.h for the `!HAVE_NSS` case. The `pkcs11_key` struct can also be defined as an empty structure for `!HAVE_NSS`. Then, host_p11.h can always be included, and the rest of the code remains the same as it is right now.",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
