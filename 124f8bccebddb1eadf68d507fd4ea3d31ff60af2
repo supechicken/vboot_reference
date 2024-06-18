@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b572d69c_e3c5437f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-18T00:31:12Z",
+      "side": 1,
+      "message": "Yes, this is for local run only. I don\u0027t even plan to install it in SDK.",
+      "parentUuid": "30e72237_9d07bffd",
+      "revId": "124f8bccebddb1eadf68d507fd4ea3d31ff60af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99b4628c_1789253a",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-06-18T00:04:59Z",
       "side": 1,
       "message": "In my version I\u0027ve always been doing ` \u0026 0xffffffff` here. I guess it\u0027s not strictly necessary because those high bits would never affect the calculations on the lower side, but I think(?) Python automatically converts to bignum when numbers get too big, so it may be wasting performance to not truncate the high bits out here.",
+      "revId": "124f8bccebddb1eadf68d507fd4ea3d31ff60af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2f9d57_31f84711",
+        "filename": "utility/vbnv_util.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-18T00:31:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99b4628c_1789253a",
       "revId": "124f8bccebddb1eadf68d507fd4ea3d31ff60af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
