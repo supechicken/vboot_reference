@@ -16,6 +16,24 @@
       "message": "stick to 80 cols",
       "revId": "e57032094f0a14b6ad34b24494af98aac47f0718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49f10d6_bfed5251",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2024-06-19T14:20:03Z",
+      "side": 1,
+      "message": "Done, however this removed the CRs, can you please re-review?",
+      "parentUuid": "50677efa_554be64d",
+      "revId": "e57032094f0a14b6ad34b24494af98aac47f0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
