@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296fde50_d4c968b1",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-20T20:21:14Z",
+      "side": 1,
+      "message": "Let\u0027s just rewrite this so that `pkcs11_get_key()` allocates the key and returns a pointer to it on its own?",
+      "revId": "c4f4284ade043e878019829d11002d8552cb71c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e941dc2_caf742a7",
+        "filename": "host/lib/host_p11_stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-20T20:21:14Z",
+      "side": 1,
+      "message": "I would recommend that these all print a `VB2_DEBUG(\"%s() called, but compiled without PKCS#11 support (libnss).\\n\", __func__)` before returning the error.",
+      "revId": "c4f4284ade043e878019829d11002d8552cb71c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35520746_cd6a8875",
+        "filename": "host/lib/include/host_p11.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-20T20:21:14Z",
+      "side": 1,
+      "message": "I\u0027m confused why you changed the name here? Shouldn\u0027t we keep forward-declaring the same name (just not define it)?",
+      "revId": "c4f4284ade043e878019829d11002d8552cb71c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
