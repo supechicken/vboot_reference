@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b245eeaa_a9af6146",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-20T13:28:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "80687059_e5011876",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "290de1d9_0c2d2843",
@@ -160,6 +178,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe650148_362f8752",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-20T13:28:50Z",
+      "side": 1,
+      "message": "Done in crrev/c/5645522",
+      "parentUuid": "6824b597_2320fe9d",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ae7de38_9686b422",
@@ -173,6 +209,24 @@
       "writtenOn": "2024-06-18T21:11:19Z",
       "side": 1,
       "message": "This doesn\u0027t actually have anything to do with PKCS11, I believe. Is there actually something here (or in `vb_keyb_from_modulus()`) that depends on libnss? (All the `RSA_...` stuff is coming from openssl which I assume we still have in Android, right?)",
+      "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad97584f_0ff05e49",
+        "filename": "host/lib/util_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-20T13:28:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ae7de38_9686b422",
       "revId": "db531cbdc42992165b5f87ac6f3d411511418b45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
