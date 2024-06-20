@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "081b6469_f3afcc52",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-20T21:40:54Z",
+      "side": 1,
+      "message": "Sorry, I meant an interface where it just returns the pointer (or NULL on error). Passing in a pointer like this seems weird.",
+      "revId": "36519dfc16e24a399dd77cc53ddf72c807937561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
