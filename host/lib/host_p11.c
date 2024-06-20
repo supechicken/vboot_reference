@@ -16,6 +16,11 @@
 #include "vboot_host.h"
 #include "util_misc.h"
 
+struct pkcs11_key {
+	CK_OBJECT_HANDLE handle;
+	CK_SESSION_HANDLE session;
+};
+
 // We only maintain one global p11 module at a time.
 static CK_FUNCTION_LIST_PTR p11 = NULL;
 
@@ -112,6 +117,11 @@ vb2_error_t pkcs11_init(const char *pkcs11_lib)
 	}
 	loaded_pkcs11_lib = strdup(pkcs11_lib);
 	return VB2_SUCCESS;
+}
+
+struct pkcs11_key *pkcs11_alloc_key(void)
+{
+	return malloc(sizeof(struct pkcs11_key));
 }
 
 vb2_error_t pkcs11_get_key(int slot_id, char *label, struct pkcs11_key *p11_key)
@@ -243,7 +253,7 @@ uint8_t *pkcs11_get_modulus(struct pkcs11_key *p11_key, uint32_t *sizeptr)
 }
 
 vb2_error_t pkcs11_sign(struct pkcs11_key *p11_key, enum vb2_hash_algorithm hash_alg,
-			const uint8_t *data, int data_size, uint8_t *sig, CK_ULONG sig_size)
+			const uint8_t *data, int data_size, uint8_t *sig, uint32_t sig_size)
 {
 	if (!p11) {
 		fprintf(stderr, "pkcs11 is not loaded\n");
@@ -273,8 +283,9 @@ vb2_error_t pkcs11_sign(struct pkcs11_key *p11_key, enum vb2_hash_algorithm hash
 		fprintf(stderr, "Failed to sign init\n");
 		return VB2_ERROR_UNKNOWN;
 	}
-	result =
-		p11->C_Sign(p11_key->session, (unsigned char *)data, data_size, sig, &sig_size);
+	CK_ULONG ck_sig_size = sig_size;
+	result = p11->C_Sign(p11_key->session, (unsigned char *)data, data_size, sig,
+			     &ck_sig_size);
 	if (result != CKR_OK) {
 		fprintf(stderr, "Failed to sign\n");
 		return VB2_ERROR_UNKNOWN;

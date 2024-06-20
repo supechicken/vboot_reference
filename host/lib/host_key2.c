@@ -73,7 +73,11 @@ static vb2_error_t vb2_read_p11_private_key(const char *key_info, struct vb2_pri
 		goto done;
 	}
 
-	struct pkcs11_key *p11_key = malloc(sizeof(struct pkcs11_key));
+	struct pkcs11_key *p11_key = pkcs11_alloc_key();
+	if (!p11_key) {
+		VB2_DEBUG("Failed to allocate pkcs11 key\n");
+		goto done;
+	}
 	if (pkcs11_get_key(p11_slot_id, p11_label, p11_key) != VB2_SUCCESS) {
 		VB2_DEBUG("Unable to get pkcs11 key\n");
 		free(p11_key);
