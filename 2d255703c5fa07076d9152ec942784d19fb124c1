@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e996e79_28a57ba6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-21T01:58:06Z",
+      "side": 1,
+      "message": "I haven\u0027t tried to build vboot on Android, but I believe you have tested this thoroughly.",
+      "revId": "2d255703c5fa07076d9152ec942784d19fb124c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d39cb1b_94a3e22f",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-21T01:58:06Z",
+      "side": 1,
+      "message": "Can we remove these comments? I feel like these missing pieces should be tracked in the bug instead of here. Also, this patch is about migrating to the new build system. Since these signing scripts don\u0027t appear in the old Android.mk, I think it\u0027s perfectly fine to drop them here.",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 2
+      },
+      "revId": "2d255703c5fa07076d9152ec942784d19fb124c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
