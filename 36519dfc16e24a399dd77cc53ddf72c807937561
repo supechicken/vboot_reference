@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef852ce_f4b6776c",
+        "filename": "host/lib/host_key2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-21T07:28:46Z",
+      "side": 1,
+      "message": "This function is basically returning a bool (with extra steps) right now, so returning a pointer instead is good idea :)",
+      "parentUuid": "081b6469_f3afcc52",
+      "revId": "36519dfc16e24a399dd77cc53ddf72c807937561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3f07254_7150f648",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-06-20T21:42:07Z",
       "side": 1,
       "message": "Let\u0027s put the pattern (or maybe the whole line) in a `#define` so we don\u0027t need to duplicate it so much.",
+      "revId": "36519dfc16e24a399dd77cc53ddf72c807937561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7a6eca1_ca060ecf",
+        "filename": "host/lib/host_p11_stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-21T07:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3f07254_7150f648",
       "revId": "36519dfc16e24a399dd77cc53ddf72c807937561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
