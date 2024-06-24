@@ -444,7 +444,15 @@ int VbGetSystemPropertyInt(const char *name)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		value = vb2_get_nv_storage(VB2_NV_DISABLE_DEV_REQUEST);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
-		if (EXTERNAL_TPM_CLEAR_REQUEST) {
+		char fwtype_buf[VB_MAX_STRING_PROPERTY];
+		bool fwtype_nonchrome = false;
+		int fwtype_ret;
+		fwtype_ret = VbGetSystemPropertyString("mainfw_type",
+			fwtype_buf, sizeof(fwtype_buf));
+		if (fwtype_ret == 0 && !strcasecmp(fwtype_buf, "nonchrome"))
+			fwtype_nonchrome = true;
+
+		if (EXTERNAL_TPM_CLEAR_REQUEST && fwtype_nonchrome) {
 			const char *const argv[] = {
 				TPM_CLEAR_REQUEST_EXEC_NAME,
 				NULL,
@@ -666,7 +674,15 @@ static int VbSetSystemPropertyIntInternal(const char *name, int value)
 	} else if (!strcasecmp(name,"disable_dev_request")) {
 		return vb2_set_nv_storage(VB2_NV_DISABLE_DEV_REQUEST, value);
 	} else if (!strcasecmp(name,"clear_tpm_owner_request")) {
-		if (EXTERNAL_TPM_CLEAR_REQUEST) {
+		char fwtype_buf[VB_MAX_STRING_PROPERTY];
+		bool fwtype_nonchrome = false;
+		int fwtype_ret;
+		fwtype_ret = VbGetSystemPropertyString("mainfw_type",
+			fwtype_buf, sizeof(fwtype_buf));
+		if (fwtype_ret == 0 && !strcasecmp(fwtype_buf, "nonchrome"))
+			fwtype_nonchrome = true;
+
+		if (EXTERNAL_TPM_CLEAR_REQUEST && fwtype_nonchrome) {
 			const char *const argv[] = {
 				TPM_CLEAR_REQUEST_EXEC_NAME,
 				value ? "1" : "0",
