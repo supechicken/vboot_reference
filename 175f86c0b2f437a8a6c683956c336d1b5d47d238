@@ -1,0 +1,292 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff5235a_7fb93f17",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n * Returns GPT_SUCCESS if successful, else\n *   GPT_ERROR_NO_VALID_KERNEL.\n */\n```",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 3
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de044750_a8f08dc1",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n * Returns GPT_SUCCESS if successful, else\n *   GPT_ERROR_NO_SUCH_ENTRY.\n */\n```",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "32e9da69_73e9360e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/gpt_misc.h",
+              "range": {
+                "startLine": 209,
+                "startChar": 0,
+                "endLine": 209,
+                "endChar": 0
+              },
+              "replacement": " *\n * Returns GPT_SUCCESS if successful, else\n *   GPT_ERROR_NO_VALID_KERNEL.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd1b333_f577f5ff",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n\tconst char suffix_a[] \u003d GPT_ENT_NAME_ANDROID_A_SUFFIX;\n\tconst char suffix_b[] \u003d GPT_ENT_NAME_ANDROID_B_SUFFIX;\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06b2a60_7ebf2adf",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n\tuint16_t *name_ucs2;\n\tint ret \u003d GPT_ERROR_NO_SUCH_ENTRY;\n```",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea1f831_f09eff81",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "Can be either: `return ret;` or `goto out;`",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 33
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0678e9_5e2ffe6e",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "This has to be changed if you apply [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650810/comment/acdc5e1c_040c2776/)",
+      "range": {
+        "startLine": 288,
+        "startChar": 35,
+        "endLine": 288,
+        "endChar": 62
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391e3dde_9e1a016e",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tret \u003d GPT_SUCCESS;\n\t\t\tbreak;\n```",
+      "range": {
+        "startLine": 291,
+        "startChar": 3,
+        "endLine": 292,
+        "endChar": 22
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9194337_7dd25f6a",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n\tfree(name_ucs2);\n\treturn ret;\n```",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 298,
+        "endChar": 32
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9b2c74_2f88d49f",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "This can simply be changed to `goto cleanup;`. `free(name_ucs2)` will be `noop` for `NULL` and cost of `call + cmp + ret` is basically nothing these days.",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 30
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf79a452_f307bed6",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "This has to be changed if you apply [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650810/comment/acdc5e1c_040c2776/)",
+      "range": {
+        "startLine": 226,
+        "startChar": 33,
+        "endLine": 226,
+        "endChar": 61
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3561ae6d_7ec49070",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n * Returns GPT_SUCCESS if successful.\n */\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a3989e_c7a1b98e",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:12:19Z",
+      "side": 1,
+      "message": "```suggestion\n * Returns GPT_SUCCESS if successful.\n */\n```",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
