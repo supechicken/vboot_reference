@@ -112,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acdc5e1c_040c2776",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T10:52:54Z",
+      "side": 1,
+      "message": "I think returning `i2` here is more appropriate. And `-1` on error.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1745f186_7c2ed781",
         "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
         "patchSetId": 1
