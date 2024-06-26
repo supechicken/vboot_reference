@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9705bb2_0baa2e8a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:35:39Z",
+      "side": 1,
+      "message": "```suggestion\n\tuint8_t *part_ramdisk_buf;\n\tvb2_error_t res \u003d VB2_ERROR_LOAD_PARTITION_READ_BODY;\n```",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea03feec_458ecd89",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:35:39Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tgoto out;\n```",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 44
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62dd3763_7e5c76de",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:35:39Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tgoto out;\n```",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 43
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb74184c_e469caa8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-06-26T11:35:39Z",
+      "side": 1,
+      "message": "```suggestion\n\tres \u003d VB2_SUCCESS;\nout:\n\tVbExStreamClose(stream);\n\treturn res;\n```",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 20
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
