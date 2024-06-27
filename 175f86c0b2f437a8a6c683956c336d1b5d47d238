@@ -84,6 +84,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed442a81_b3d9ca74",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-27T16:56:49Z",
+      "side": 1,
+      "message": "This function does not seem to be used outside this file. So can be static.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2bd1b333_f577f5ff",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 1
@@ -100,6 +123,29 @@
         "startChar": 0,
         "endLine": 37,
         "endChar": 30
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ca2bf7_e7e2a186",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-27T16:56:49Z",
+      "side": 1,
+      "message": "This function does not seem to be used outside this file. So can be static.",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 42
       },
       "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
