@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f39d22d0_22cc6d80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-27T02:28:44Z",
+      "side": 1,
+      "message": "This patch itself isn\u0027t related to Android at all. Maybe consider merging this patch into CL:5650811?",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c1ea197_a3f3c696",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
