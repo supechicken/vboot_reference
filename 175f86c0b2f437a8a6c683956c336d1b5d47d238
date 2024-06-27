@@ -216,6 +216,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de4f965d_9c441f1d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-27T16:52:29Z",
+      "side": 1,
+      "message": "bool. I see similar functions are returning int. But bool sounds more reasonable based on true or false that these functions are returning.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 3
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f9b2c74_2f88d49f",
         "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
         "patchSetId": 1
@@ -318,6 +341,52 @@
         "startChar": 0,
         "endLine": 42,
         "endChar": 3
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e93e3364_b0141874",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-27T16:52:29Z",
+      "side": 1,
+      "message": "Should you extend the mock partition to include the new Android partitions and set the start_sector and size based on that?\n\nSame comment for GptFindVendorBoot",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d4a3f8_e73cff2a",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-27T16:52:29Z",
+      "side": 1,
+      "message": "Same comment as in vb2_inject_kernel_subkey_tests.c",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 1
       },
       "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
