@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a0c12e2_addd534f",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-27T02:31:30Z",
+      "side": 1,
+      "message": "Please add tests in tests/gpt_misc_tests.c.",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de044750_a8f08dc1",
         "filename": "firmware/include/gpt_misc.h",
         "patchSetId": 1
@@ -262,6 +279,23 @@
         "endLine": 32,
         "endChar": 3
       },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b661f2_e21a2334",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-27T02:31:30Z",
+      "side": 1,
+      "message": "Please add tests in tests/cgptlib_test.c for these 2 functions.",
       "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
