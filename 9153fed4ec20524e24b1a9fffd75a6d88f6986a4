@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38013287_33045f7b",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2024-06-27T17:03:03Z",
+      "side": 1,
+      "message": "My first reaction - This seems to be the first time we are bringing in Platform knowledge into vboot. I am wondering if there is a better way to abstract that knowledge.",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "93b93a01_e1432877",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2context.h",
+              "range": {
+                "startLine": 210,
+                "startChar": 0,
+                "endLine": 212,
+                "endChar": 0
+              },
+              "replacement": "\t * Vboot is booting Android OS with GKI, which uses vastly different boot\n\t * scheme than ChromeOS.\n\t *\n\t * This flag is set by the caller when initializing the context.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9153fed4ec20524e24b1a9fffd75a6d88f6986a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
