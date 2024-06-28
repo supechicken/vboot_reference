@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f879f40_167b2881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-06-28T01:32:04Z",
+      "side": 1,
+      "message": "I think each patch should be a functional change. Please merge this into CL:5650819 where VB2_CONTEXT_ANDROID_GKI_MODE is actually used.",
+      "revId": "9153fed4ec20524e24b1a9fffd75a6d88f6986a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38013287_33045f7b",
         "filename": "firmware/2lib/include/2context.h",
         "patchSetId": 1
