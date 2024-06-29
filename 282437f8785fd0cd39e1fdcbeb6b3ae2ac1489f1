@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba345efa_a0955d31",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-06-29T00:51:47Z",
+      "side": 1,
+      "message": "We should just change the bootloader expectations rather than waste time memmove()ing the whole kernel around here. If AVB treats the command line separately from the kernel image, maybe just pass it back out to depthcharge like that (e.g. just put another pointer of offset for that in vb2_kernel_params).",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
