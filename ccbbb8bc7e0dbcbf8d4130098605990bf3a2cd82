@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c65709_95191120",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:23:07Z",
+      "side": 1,
+      "message": "Either the correct partition name `vendor_boot` or descriptive name `Android vendor boot`. The same comment also applies `init_boot_offset`.",
+      "range": {
+        "startLine": 618,
+        "startChar": 4,
+        "endLine": 618,
+        "endChar": 15
+      },
+      "revId": "ccbbb8bc7e0dbcbf8d4130098605990bf3a2cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a31c6ff_95a8eaca",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:23:07Z",
+      "side": 1,
+      "message": "nit: Add a trailing `.` for these comments for consistency.",
+      "range": {
+        "startLine": 618,
+        "startChar": 60,
+        "endLine": 618,
+        "endChar": 61
+      },
+      "revId": "ccbbb8bc7e0dbcbf8d4130098605990bf3a2cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299f6e3d_fe6284af",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:23:07Z",
+      "side": 1,
+      "message": "This is not used in depthcharge. Do we need it?",
+      "range": {
+        "startLine": 623,
+        "startChar": 10,
+        "endLine": 623,
+        "endChar": 24
+      },
+      "revId": "ccbbb8bc7e0dbcbf8d4130098605990bf3a2cd82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
