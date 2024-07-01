@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad3ca28_60a8db5c",
+        "filename": "Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2024-07-01T07:08:36Z",
+      "side": 1,
+      "message": "Those sources seem to be reused across a few other places. Please consider filegroup for a subset of `cgpt/cgpt_*` sources.",
+      "revId": "8ca0f7f6270f174d4246525c84149bb01ec740ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
