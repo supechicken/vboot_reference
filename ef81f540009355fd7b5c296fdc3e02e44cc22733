@@ -91,6 +91,29 @@
       },
       "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c4cdcc_490351f4",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T10:06:56Z",
+      "side": 1,
+      "message": "`ctx` is used exclusively for `vb2_context` in this repo. Please name it something else.",
+      "range": {
+        "startLine": 433,
+        "startChar": 24,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
