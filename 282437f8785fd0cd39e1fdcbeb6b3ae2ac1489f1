@@ -3,6 +3,224 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bbd0f3b_171249bf",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "What does ADK stand for?",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f958a2_bf05f6ea",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "Please use `GPT_ENT_NAME_ANDROID_*` constants.",
+      "range": {
+        "startLine": 486,
+        "startChar": 40,
+        "endLine": 486,
+        "endChar": 74
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cad8da4_e4d44920",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "boot_partitions",
+      "range": {
+        "startLine": 486,
+        "startChar": 20,
+        "endLine": 486,
+        "endChar": 34
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d96e982e_42dcc3b1",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "Don\u0027t convert `GPT_*` to vb2_error_t. Please use `VB2_ERROR_*` such as `VB2_ERROR_LK_NO_KERNEL_FOUND`.",
+      "range": {
+        "startLine": 494,
+        "startChar": 9,
+        "endLine": 494,
+        "endChar": 12
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d74ad9_01c3ddc1",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "need_valid_keyblock",
+      "range": {
+        "startLine": 504,
+        "startChar": 5,
+        "endLine": 504,
+        "endChar": 44
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3530cc_09856082",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "```\navb_flags \u003d AVB_SLOT_VERIFY_FLAGS_NONE;\nif (...)\n\tavb_flags |\u003d AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR;\n```",
+      "range": {
+        "startLine": 504,
+        "startChar": 1,
+        "endLine": 507,
+        "endChar": 41
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7310c382_484f2b51",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "AVB_HASHTREE_ERROR_MODE_RESTART_AND_INVALIDATE",
+      "range": {
+        "startLine": 513,
+        "startChar": 3,
+        "endLine": 513,
+        "endChar": 4
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc9cb68_683b6fc4",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "need_valid_keyblock\n\n`VB2_CONTEXT_DEVELOPER_MODE` actually means \"dev switch is on\", not \"in dev mode\". In recovery mode, dev switch can be either on or off, but we can\u0027t ignore verification errors.",
+      "range": {
+        "startLine": 519,
+        "startChar": 5,
+        "endLine": 519,
+        "endChar": 44
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "891e170a_b78bb3d7",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "Can we first store `AVB_SLOT_VERIFY_RESULT_OK` back to `result`, and then convert `result` to `ret` outside the if-else block?",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471887c6_304298a1",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-01T14:55:19Z",
+      "side": 1,
+      "message": "`VB2_SUCCESS`. `ret` needs to be one of the constants defined for `vb2_error_t`. The same argument applies to other assignments for `ret` below.",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba345efa_a0955d31",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 1
