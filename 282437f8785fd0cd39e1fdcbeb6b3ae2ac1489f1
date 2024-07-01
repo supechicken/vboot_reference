@@ -116,6 +116,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2b7cdf_25a38b55",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 3512440
+      },
+      "writtenOn": "2024-07-01T15:40:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d74ad9_01c3ddc1",
+      "range": {
+        "startLine": 504,
+        "startChar": 5,
+        "endLine": 504,
+        "endChar": 44
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3530cc_09856082",
@@ -129,6 +153,30 @@
       "writtenOn": "2024-07-01T14:55:19Z",
       "side": 1,
       "message": "```\navb_flags \u003d AVB_SLOT_VERIFY_FLAGS_NONE;\nif (...)\n\tavb_flags |\u003d AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR;\n```",
+      "range": {
+        "startLine": 504,
+        "startChar": 1,
+        "endLine": 507,
+        "endChar": 41
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b152a92c_bda99377",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 3512440
+      },
+      "writtenOn": "2024-07-01T15:40:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac3530cc_09856082",
       "range": {
         "startLine": 504,
         "startChar": 1,
