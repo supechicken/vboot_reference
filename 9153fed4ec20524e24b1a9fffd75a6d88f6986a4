@@ -57,6 +57,30 @@
       ],
       "revId": "9153fed4ec20524e24b1a9fffd75a6d88f6986a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82fc2d52_2c7bef16",
+        "filename": "firmware/2lib/include/2context.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:03:12Z",
+      "side": 1,
+      "message": "I think we can remove this flag. Let me try this in next patchset",
+      "parentUuid": "38013287_33045f7b",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 42
+      },
+      "revId": "9153fed4ec20524e24b1a9fffd75a6d88f6986a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
