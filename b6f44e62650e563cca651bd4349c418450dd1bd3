@@ -34,6 +34,24 @@
       "parentUuid": "5105f81a_528774c2",
       "revId": "b6f44e62650e563cca651bd4349c418450dd1bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70b71d1_f53580a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-02T23:12:45Z",
+      "side": 1,
+      "message": "Hmm... looks like I may have falsely assumed that we\u0027ll never have slow ECs again in the future and therefore didn\u0027t care about porting that part in the review.\n\nSo how do we fix this? I guess, like you said, passing `EC_SLOW_UPDATE` as a Makefile switch seems like the most straight-forward option, and then `ec_sync_phase1()` can set the request flag.\n\nFor disabling it again afterwards, I guess one of our concerns may have been that often when the EC gets updated the AUXFW will also get updated, so just leaving the display on after the EC update may be the correct choice more often than not (and is generally better for limiting the maximum possible amount of reboots).\n\nFor AUXFW, since the update flow itself doesn\u0027t automatically force any reboots before or after, the automatic reboot-to-disable at the end of `vb2_kernel_phase2()` should be good enough.",
+      "parentUuid": "0ccddc62_03d684f3",
+      "revId": "b6f44e62650e563cca651bd4349c418450dd1bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
