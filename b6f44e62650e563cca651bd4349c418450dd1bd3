@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5105f81a_528774c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-02T01:29:43Z",
+      "side": 1,
+      "message": "Something seems wrong here, this amount of rebooting is a bit ridiculous. I know we\u0027re not doing a good job integrating the CSE-triggered reboots with the rest of the flow, but at least for the EC and display stuff I recall us explicitly making sure to avoid extra reboots there where possible (IIRC Karthik wrote that, a while back). Boot 4 and boot 7 should be unnecessary because the display request should have been automatically set/unset in boot 2 / boot 5 already.\n\nCompare CL:1592472, where this was first explicitly designed to work that way (see how it calls `check_reboot_for_display()` right before rebooting to RO to make sure the DISPLAY_REQUEST flag is already set correctly, and how it disables display after `ec_sync_update_aux_fw()` even in the non-zero path where we go into a reboot). Did we break something there during all the EC sync refactoring that happened since? Or did this just not work right because VBOOT_ALWAYS_ENABLE_DISPLAY wasn\u0027t set correctly for this board?",
+      "revId": "b6f44e62650e563cca651bd4349c418450dd1bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
