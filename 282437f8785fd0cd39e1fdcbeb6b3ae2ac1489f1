@@ -70,6 +70,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ce9554_1a01e504",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cad8da4_e4d44920",
+      "range": {
+        "startLine": 486,
+        "startChar": 20,
+        "endLine": 486,
+        "endChar": 34
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ca5429_ef4f004f",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6f958a2_bf05f6ea",
+      "range": {
+        "startLine": 486,
+        "startChar": 40,
+        "endLine": 486,
+        "endChar": 74
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d96e982e_42dcc3b1",
@@ -83,6 +131,30 @@
       "writtenOn": "2024-07-01T14:55:19Z",
       "side": 1,
       "message": "Don\u0027t convert `GPT_*` to vb2_error_t. Please use `VB2_ERROR_*` such as `VB2_ERROR_LK_NO_KERNEL_FOUND`.",
+      "range": {
+        "startLine": 494,
+        "startChar": 9,
+        "endLine": 494,
+        "endChar": 12
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5c48c7_cef0bcf7",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d96e982e_42dcc3b1",
       "range": {
         "startLine": 494,
         "startChar": 9,
@@ -225,6 +297,30 @@
       "side": 1,
       "message": "Not done.",
       "parentUuid": "b152a92c_bda99377",
+      "range": {
+        "startLine": 504,
+        "startChar": 1,
+        "endLine": 507,
+        "endChar": 41
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c094739_b17ab7c2",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8663e9_a18df73a",
       "range": {
         "startLine": 504,
         "startChar": 1,
