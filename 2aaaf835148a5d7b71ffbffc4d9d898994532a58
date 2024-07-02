@@ -16,6 +16,23 @@
       "message": "TBH I\u0027m not sure we should merge a patch like this. On the other hand, I\u0027m worried that if both EC and auxfw sync happen in the same firmware update, the try count 10 (increased in CL:5666540) will still be not enough, not to mention GSC updates.",
       "revId": "2aaaf835148a5d7b71ffbffc4d9d898994532a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4448f548_ace4312f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-07-02T09:29:17Z",
+      "side": 1,
+      "message": "how can we land this change seamlessly on all CrOS device? should we pass some information to sysinfo table to know if the display is enabled and available ? (this would avoid us setting the required variable unconditionally)",
+      "revId": "2aaaf835148a5d7b71ffbffc4d9d898994532a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
