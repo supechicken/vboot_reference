@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf347e2_6a3732b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-02T08:59:43Z",
+      "side": 1,
+      "message": "TBH I\u0027m not sure we should merge a patch like this. On the other hand, I\u0027m worried that if both EC and auxfw sync happen in the same firmware update, the try count 10 (increased in CL:5666540) will still be not enough, not to mention GSC updates.",
+      "revId": "2aaaf835148a5d7b71ffbffc4d9d898994532a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
