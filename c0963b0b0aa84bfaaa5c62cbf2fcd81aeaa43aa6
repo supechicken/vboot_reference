@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7d12a6_b626ad33",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:02:07Z",
+      "side": 1,
+      "message": "Revert this change, it was done incorrectly",
+      "fixSuggestions": [
+        {
+          "fixId": "2e3b0cd2_bf0950b7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/gpt_misc.h",
+              "range": {
+                "startLine": 198,
+                "startChar": 0,
+                "endLine": 199,
+                "endChar": 0
+              },
+              "replacement": " *   GPT_ERROR_NO_VALID_KERNEL, current_kernel is not set.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c0963b0b0aa84bfaaa5c62cbf2fcd81aeaa43aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
