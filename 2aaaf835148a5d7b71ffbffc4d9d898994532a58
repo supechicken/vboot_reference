@@ -33,6 +33,24 @@
       "message": "how can we land this change seamlessly on all CrOS device? should we pass some information to sysinfo table to know if the display is enabled and available ? (this would avoid us setting the required variable unconditionally)",
       "revId": "2aaaf835148a5d7b71ffbffc4d9d898994532a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701bf02d_16e1630d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-02T23:22:52Z",
+      "side": 1,
+      "message": "I think this is fine, that\u0027s what firmware branches are for.",
+      "parentUuid": "1bf347e2_6a3732b5",
+      "revId": "2aaaf835148a5d7b71ffbffc4d9d898994532a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
