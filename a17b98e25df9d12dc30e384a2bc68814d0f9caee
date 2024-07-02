@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f15e2226_6e04c419",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c1ea197_a3f3c696",
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc05f9c_431bedff",
@@ -58,6 +76,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a81e271_e916561b",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc05f9c_431bedff",
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6595ba7d_c9d5a3ee",
@@ -71,6 +107,30 @@
       "writtenOn": "2024-06-26T10:48:01Z",
       "side": 1,
       "message": "```suggestion\n\treturn strcat(ret, b);\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33595496_d4044b71",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6595ba7d_c9d5a3ee",
       "range": {
         "startLine": 30,
         "startChar": 1,
@@ -104,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b35ee4b3_103b73ae",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8c415d_5f2062aa",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4cb2403_46c421de",
@@ -117,6 +201,30 @@
       "writtenOn": "2024-06-26T10:48:01Z",
       "side": 1,
       "message": "Why is it incorrect? Can you add a comment?",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45faf94_8ae97173",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4cb2403_46c421de",
       "range": {
         "startLine": 49,
         "startChar": 3,
@@ -150,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f2f2830_a090297f",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dfeadc9_1ab08a84",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93663d9a_90432977",
@@ -163,6 +295,30 @@
       "writtenOn": "2024-06-26T10:48:01Z",
       "side": 1,
       "message": "Shouldn\u0027t it be `utf8_data[i8] !\u003d 0` ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a464b55b_df3c6b21",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93663d9a_90432977",
       "range": {
         "startLine": 67,
         "startChar": 20,
@@ -209,6 +365,30 @@
       "writtenOn": "2024-06-26T10:48:01Z",
       "side": 1,
       "message": "Add a comment stating that the caller is responsible for freeing the returned pointer.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 44
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a339baf_b8f3c386",
+        "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1745f186_7c2ed781",
       "range": {
         "startLine": 188,
         "startChar": 0,
