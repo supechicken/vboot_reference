@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec95535_923f57b0",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9705bb2_0baa2e8a",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea03feec_458ecd89",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-26T11:35:39Z",
       "side": 1,
       "message": "```suggestion\n\t\tgoto out;\n```",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 44
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c34495_ff10db93",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea03feec_458ecd89",
       "range": {
         "startLine": 282,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0889c695_46cc41a9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62dd3763_7e5c76de",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 43
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb74184c_e469caa8",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a8640b_4de974af",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb74184c_e469caa8",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 20
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44c4cdcc_490351f4",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-07-01T10:06:56Z",
       "side": 1,
       "message": "`ctx` is used exclusively for `vb2_context` in this repo. Please name it something else.",
+      "range": {
+        "startLine": 433,
+        "startChar": 24,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "ef81f540009355fd7b5c296fdc3e02e44cc22733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aec1354_61c42173",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c4cdcc_490351f4",
       "range": {
         "startLine": 433,
         "startChar": 24,
