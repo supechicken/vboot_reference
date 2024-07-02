@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f1ae939_4f41d3a3",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:04:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e31a18a4_97d87b8a",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "ae4140ad74b4dd0f3c7e06e9fef08a73964d9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd97d02d_df562e74",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "556a7848_e8e664ec",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:04:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd97d02d_df562e74",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "ae4140ad74b4dd0f3c7e06e9fef08a73964d9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39215864_13fb62a1",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-06-26T11:22:48Z",
       "side": 1,
       "message": "Let\u0027s rewrite this a bit to avoid the `false -\u003e true -\u003e false` case.\nWhat do you think about it?\n\n\n```suggestion\n\tint dev_mode \u003d ctx-\u003evb2_ctx-\u003eflags \u0026 VB2_CONTEXT_DEVELOPER_MODE;\n\n\t/* FWMP can require developer mode to use signed images */\n\tint fwmp_locked \u003d vb2_secdata_fwmp_get_flag(ctx-\u003evb2_ctx,\n\t\t\t\tVB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY);\n\n\t/* Developers may require signed images */\n\tint nv_dev_locked \u003d vb2_nv_get(ctx-\u003evb2_ctx, VB2_NV_DEV_BOOT_SIGNED_ONLY);\n\n\tif (dev_mode \u0026\u0026 !fwmp_locked \u0026\u0026 nv_dev_locked)\n\t\t*out_is_unlocked \u003d true;\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "ae4140ad74b4dd0f3c7e06e9fef08a73964d9efb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "574d8ebb_71d23104",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-02T12:04:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39215864_13fb62a1",
       "range": {
         "startLine": 34,
         "startChar": 1,
