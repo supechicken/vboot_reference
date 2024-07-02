@@ -16,6 +16,24 @@
       "message": "Something seems wrong here, this amount of rebooting is a bit ridiculous. I know we\u0027re not doing a good job integrating the CSE-triggered reboots with the rest of the flow, but at least for the EC and display stuff I recall us explicitly making sure to avoid extra reboots there where possible (IIRC Karthik wrote that, a while back). Boot 4 and boot 7 should be unnecessary because the display request should have been automatically set/unset in boot 2 / boot 5 already.\n\nCompare CL:1592472, where this was first explicitly designed to work that way (see how it calls `check_reboot_for_display()` right before rebooting to RO to make sure the DISPLAY_REQUEST flag is already set correctly, and how it disables display after `ec_sync_update_aux_fw()` even in the non-zero path where we go into a reboot). Did we break something there during all the EC sync refactoring that happened since? Or did this just not work right because VBOOT_ALWAYS_ENABLE_DISPLAY wasn\u0027t set correctly for this board?",
       "revId": "b6f44e62650e563cca651bd4349c418450dd1bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccddc62_03d684f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-02T08:44:19Z",
+      "side": 1,
+      "message": "\u003e Did we break something there during all the EC sync refactoring that happened since?\n\nYes, we did.\n\n- Enabling DISPLAY_REQUEST was changed in CL:2117776, which can be fixed by passing `EC_SLOW_UPDATE` to vboot (either via build-time option or another callback `vb2ex_ec_update_need_display()`).\n- Disabling DISPLAY_REQUEST was changed in CL:1634453 (a few days after Karthik\u0027s CL). From our previous discussions on b/243793671, the conclusion was to disable DISPLAY_REQUEST at the end of `vb2api_auxfw_sync()` (not at the end of EC sync). However no one seems to have ever done that. Note that this will NOT save boot 7 in this example.\n\n\u003e Or did this just not work right because VBOOT_ALWAYS_ENABLE_DISPLAY wasn\u0027t set correctly for this board?\n\nThat\u0027s a separate issue. I\u0027ve uploaded CB:83256 to fix it, which will bypass the problem mentioned above, for the next Intel platform.",
+      "parentUuid": "5105f81a_528774c2",
+      "revId": "b6f44e62650e563cca651bd4349c418450dd1bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
