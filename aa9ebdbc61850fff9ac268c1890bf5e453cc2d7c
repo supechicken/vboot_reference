@@ -16,6 +16,24 @@
       "message": "This is conceptually incorrect, as GKI doesn\u0027t have a vb2_kernel_preamble. Prior to this change, `vb2_kernel_params.flags` comes from `vb2_kernel_preamble.flags`, which is set by the signer. For GKI, however, we\u0027re setting `vb2_kernel_params.flags` directly from the firmware code, so that means we\u0027re decoupling `vb2_kernel_params.flags` from the preamble flags.\n\nTherefore I\u0027d suggest we rename the constants here to `VB2_KERNEL_TYPE_*` (dropping `PREAMBLE`), and refer to them in comments of `vb2_kernel_preamble.flags` and `vb2_kernel_params.flags`. We can also take the chance to expose them to depthcharge via 2api.h, so that depthcharge doesn\u0027t need to re-define these values.",
       "revId": "aa9ebdbc61850fff9ac268c1890bf5e453cc2d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da492170_e8883f8b",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-03T06:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab4b89cd_3843c45a",
+      "revId": "aa9ebdbc61850fff9ac268c1890bf5e453cc2d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
