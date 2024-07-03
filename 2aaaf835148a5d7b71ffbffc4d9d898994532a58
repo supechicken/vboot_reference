@@ -51,6 +51,24 @@
       "parentUuid": "1bf347e2_6a3732b5",
       "revId": "2aaaf835148a5d7b71ffbffc4d9d898994532a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b98a9ef_c2d259ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-03T09:20:26Z",
+      "side": 1,
+      "message": "This patch is just a workaround corresponding to the formal fix CB:83256.\n\nThe purpose of this patch is mainly to avoid having to further increasing the try count (which is 10 after CL:5666540). For previous Intel/AMD platforms, a firmware update with CSE+EC+auxfw sync only needs max 8 boots, so there\u0027s no need to fix them.\n\nSee b/350885214#comment2 for detailed explanation.\n\n\u003e should we pass some information to sysinfo table to know if the display is enabled and available?\n\nWe already have a mechanism to pass that info, which is `VB2_SD_FLAG_DISPLAY_AVAILABLE` (the whole vboot shared data is passed from verstage all the way to depthcharge). The problem is that the flag isn\u0027t correctly set in verstage, so we\u0027ll have to fix it in RW. Using sysinfo table to pass to depthcharge doesn\u0027t fix the problem, because depthcharge still needs to somehow tell vboot to fix the flag (there\u0027s no API to do that).",
+      "parentUuid": "4448f548_ace4312f",
+      "revId": "2aaaf835148a5d7b71ffbffc4d9d898994532a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
