@@ -52,6 +52,24 @@
       "parentUuid": "0ccddc62_03d684f3",
       "revId": "b6f44e62650e563cca651bd4349c418450dd1bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c205f6_0dd183f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-03T08:40:35Z",
+      "side": 1,
+      "message": "Filed b/350885214. Let\u0027s move the discussions there.\n\n\u003e I guess, like you said, passing EC_SLOW_UPDATE as a Makefile switch\n\nI just realize that we can\u0027t do this, because right now vboot is built with libpayload instead of depthcharge. I guess we\u0027ll need to add `vb2ex_ec_update_need_display()`.\n\n\u003e For AUXFW, since the update flow itself doesn\u0027t automatically force any reboots before or after\n\nActually `vb2api_auxfw_sync()` will always trigger EC reset after auxfw sync.",
+      "parentUuid": "a70b71d1_f53580a4",
+      "revId": "b6f44e62650e563cca651bd4349c418450dd1bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
