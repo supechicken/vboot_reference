@@ -22,6 +22,30 @@
       },
       "revId": "d2e09f9a9a3ead53ba8fea0678425ea4bc821965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ece733d_4beccc77",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2024-07-03T06:17:11Z",
+      "side": 1,
+      "message": "use \"WP_RO\".",
+      "parentUuid": "fa3f6a98_2771a474",
+      "range": {
+        "startLine": 123,
+        "startChar": 37,
+        "endLine": 123,
+        "endChar": 45
+      },
+      "revId": "d2e09f9a9a3ead53ba8fea0678425ea4bc821965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
