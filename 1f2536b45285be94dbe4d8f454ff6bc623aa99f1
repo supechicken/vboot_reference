@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa644192_cff462b0",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-04T09:34:35Z",
+      "side": 1,
+      "message": "Consider moving them to 2api.h (maybe right above vb2_kernel_params definition) to be exposed to depthcharge. The comment of `vb2_kernel_params.flags` needs to be modified as well, because for GKI `vb2_kernel_params.flags` is NOT set by the signer.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 37
+      },
+      "revId": "1f2536b45285be94dbe4d8f454ff6bc623aa99f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f940b69b_3b7cec6a",
+        "filename": "firmware/2lib/include/2struct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-04T09:34:35Z",
+      "side": 1,
+      "message": "```\n/*\n * Flags. Readers should return 0 for header version \u003c 2.2.\n * Flags field is currently defined as:\n * [31:2] - Reserved (for future use).\n * [1:0]  - Kernel image type; see VB2_KERNEL_TYPE_*.\n */\n```",
+      "range": {
+        "startLine": 594,
+        "startChar": 1,
+        "endLine": 602,
+        "endChar": 4
+      },
+      "revId": "1f2536b45285be94dbe4d8f454ff6bc623aa99f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
