@@ -606,6 +606,14 @@ void vb2_fill_dev_boot_flags(struct vb2_context *ctx)
 		ctx->flags |= VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED;
 }
 
+vb2_error_t vb2_clear_display_request(struct vb2_context *ctx)
+{
+	if (!vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST))
+		return VB2_SUCCESS;
+	vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);
+	return VB2_REQUEST_REBOOT;
+}
+
 int vb2api_use_short_dev_screen_delay(struct vb2_context *ctx)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);

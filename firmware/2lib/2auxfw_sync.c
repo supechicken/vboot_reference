@@ -60,6 +60,8 @@ vb2_error_t vb2api_auxfw_sync(struct vb2_context *ctx)
 	if (fw_update > VB2_AUXFW_NO_UPDATE) {
 		VB2_DEBUG("Updating auxfw\n");
 		VB2_TRY(vb2ex_auxfw_update(), ctx, VB2_RECOVERY_AUXFW_UPDATE);
+		/* Ignore the return value. */
+		vb2_clear_display_request(ctx);
 		/*
 		 * auxfw update is applied successfully. Request EC reboot to
 		 * RO, so that the chips that had FW update get reset to a

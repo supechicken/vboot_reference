@@ -170,6 +170,15 @@ vb2_error_t vb2_load_kernel_preamble(struct vb2_context *ctx);
 void vb2_fill_dev_boot_flags(struct vb2_context *ctx);
 
 /**
+ * Clear display request.
+ *
+ * @param ctx		Vboot context.
+ * @return VB2_REQUEST_REBOOT if display request was set and is now cleared;
+ *	   VB2_SUCCESS if display request was already cleared.
+ */
+vb2_error_t vb2_clear_display_request(struct vb2_context *ctx);
+
+/**
  * Determine and set a mutually exclusive boot mode in the vboot context.
  *
  * Determine the most relevant boot mode for current boot, store into

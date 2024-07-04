@@ -195,12 +195,7 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx)
 	case VB2_BOOT_MODE_DEVELOPER:
 		break;
 	case VB2_BOOT_MODE_NORMAL:
-		if (vb2_nv_get(ctx, VB2_NV_DISPLAY_REQUEST)) {
-			vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0);
-			VB2_DEBUG("Normal mode: "
-				  "reboot to unset display request\n");
-			return VB2_REQUEST_REBOOT;
-		}
+		VB2_TRY(vb2_clear_display_request(ctx));
 		break;
 	default:
 		return VB2_ERROR_ESCAPE_NO_BOOT;
