@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62add91e_387bfa65",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-07-05T03:16:47Z",
+      "side": 1,
+      "message": "do we need this logic now for rex ? as line 505 explicitly sets the required flag hence, this additional check is meaningless now. Thoughts ?",
+      "range": {
+        "startLine": 507,
+        "startChar": 1,
+        "endLine": 511,
+        "endChar": 2
+      },
+      "revId": "29ed2d1d235f6f2f1005051146b53cef80d0fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
