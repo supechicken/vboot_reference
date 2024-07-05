@@ -22,6 +22,30 @@
       },
       "revId": "29ed2d1d235f6f2f1005051146b53cef80d0fd6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2e68ed_0c3adf7b",
+        "filename": "firmware/2lib/2misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-05T03:19:40Z",
+      "side": 1,
+      "message": "This if block can be removed. I just thought that it\u0027d be easier for readers to understand the workaround if we kept the original code.",
+      "parentUuid": "62add91e_387bfa65",
+      "range": {
+        "startLine": 507,
+        "startChar": 1,
+        "endLine": 511,
+        "endChar": 2
+      },
+      "revId": "29ed2d1d235f6f2f1005051146b53cef80d0fd6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
