@@ -411,7 +411,8 @@ static int prepare_slot(uint8_t *buf, uint32_t len, enum bios_component fw_c,
 
 	if (vb2_verify_keyblock_hash(keyblock, state->area[vblock_c].len,
 				     &wb) != VB2_SUCCESS) {
-		WARN("%s keyblock is invalid.\n", vblock_name);
+		INFO("%s keyblock is invalid. Trying to create new keyblock.\n",
+		     vblock_name);
 		goto end;
 	}
 
