@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29153abc_404b864a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-09T23:08:44Z",
+      "side": 1,
+      "message": "Do we have unit tests we could add this to (previous CL as well)?",
+      "revId": "96b59091a302270793ba1c473aaec2775e2d0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d3f83c_219a67b4",
+        "filename": "firmware/2lib/2kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-09T23:08:44Z",
+      "side": 1,
+      "message": "I feel like factoring this out into a function makes it harder to follow than if you don\u0027t tbh (because it\u0027s not obvious that the function always returns REBOOT_TO_RO if the display was active).\n\nI think it might be better to leave the code here as is and just add an unconditional `vb2_nv_set(ctx, VB2_NV_DISPLAY_REQUEST, 0)` to the auxfw code.",
+      "revId": "96b59091a302270793ba1c473aaec2775e2d0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
