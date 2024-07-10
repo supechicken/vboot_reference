@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba59f4ca_a142b901",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-10T00:28:15Z",
+      "side": 1,
+      "message": "Maybe it would make more sense to just print nothing if the whole thing is full of zeroes? How about\n```\nif (keyblock-\u003emagic[0] !\u003d 0)\n  WARN(...);\n```\n?",
+      "revId": "f76b7889df1f787221c29d4b01b57eff47bc2b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
