@@ -16,6 +16,24 @@
       "message": "I don\u0027t know if `futility` in the factory image is used in the factory flow. If not, please abandon this patch. Otherwise, we may need this to avoid potential firmware update problems.",
       "revId": "25227083d083fefa4c2529530fb130a6ba5722d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b3c99d_651a93a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509762
+      },
+      "writtenOn": "2024-07-10T03:15:59Z",
+      "side": 1,
+      "message": "We actually uses futility a lot in our factory flow (e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/factory/py/external/chromeos_cli/futility.py) and we also (almost) always update firmware in the factory.",
+      "parentUuid": "ed332dba_0de98ab7",
+      "revId": "25227083d083fefa4c2529530fb130a6ba5722d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
