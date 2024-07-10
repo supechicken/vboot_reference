@@ -16,6 +16,24 @@
       "message": "Maybe it would make more sense to just print nothing if the whole thing is full of zeroes? How about\n```\nif (keyblock-\u003emagic[0] !\u003d 0)\n  WARN(...);\n```\n?",
       "revId": "f76b7889df1f787221c29d4b01b57eff47bc2b7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a374cfea_72cfa597",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-10T22:40:01Z",
+      "side": 1,
+      "message": "Good idea. It\u0027s actually 0xff, and I think we should check the magic even before `vb2_verify_keyblock_hash`.",
+      "parentUuid": "ba59f4ca_a142b901",
+      "revId": "f76b7889df1f787221c29d4b01b57eff47bc2b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
