@@ -46,6 +46,30 @@
       },
       "revId": "8872e969e37388d0194388a6305c3f20a168db23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214e59e0_ba38af73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-07-15T17:56:18Z",
+      "side": 1,
+      "message": "\u003e That is not what the documentation says:\n\u003e \n\u003e https://chromium.googlesource.com/chromium/src/+/HEAD/docs/contributing.md#uploading-a-change-for-review\n\u003e \n\u003e There is no requirement to use topics.\n\n\nplease avoid marking the comment if you are up for a discussion.\n\nThere is no restriction to adopt a goodness of writing a good code commit msg.\nexample: https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5690583\n\nSuch commit msg (which topic) helps while doing the git bisect (w/o need to open the CL itself) to know which file the code actually landed and what problem the code meant to solve.",
+      "parentUuid": "a8537ff5_cda97fd6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "8872e969e37388d0194388a6305c3f20a168db23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
