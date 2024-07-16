@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "59aef40944cc15fef3101f67502dc237a4ee82c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881a8f53_f0496d5e",
+        "filename": "scripts/keygeneration/vbprivk_to_pem.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-16T22:17:45Z",
+      "side": 1,
+      "message": "This probably deserves an extra comment explaining that you\u0027re intentionally reading out the first 8 bytes here so that the FD position pointer points 8 bytes further in, and the `base64` below then skips those first 8 bytes. It\u0027s not very obvious that you\u0027re only converting part of the file otherwise.",
+      "revId": "59aef40944cc15fef3101f67502dc237a4ee82c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
