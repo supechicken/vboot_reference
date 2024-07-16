@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7778e02e_5396d0b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-16T06:44:06Z",
+      "side": 1,
+      "message": "Deprecate",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "8872e969e37388d0194388a6305c3f20a168db23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dec1566b_63186a8e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -72,6 +95,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "06bd029d_92aa3bbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-16T06:44:06Z",
+      "side": 1,
+      "message": "Also mention that all the active FAFT tests don\u0027t use this flag anymore.",
+      "revId": "8872e969e37388d0194388a6305c3f20a168db23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1aafa721_1b44c04b",
@@ -85,6 +125,29 @@
       "writtenOn": "2024-07-15T17:56:55Z",
       "side": 1,
       "message": "dropping myself from code review if you are not wiling to adopt the code review comment and marking things resolved.",
+      "revId": "8872e969e37388d0194388a6305c3f20a168db23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a2ddfa_81c3598b",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-16T06:44:06Z",
+      "side": 1,
+      "message": "Rename to `VB2_GBB_FLAG_DEPRECATED_RUNNING_FAFT`.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 26
+      },
       "revId": "8872e969e37388d0194388a6305c3f20a168db23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
