@@ -193,6 +193,10 @@ vb2_error_t vb2_get_gbb_flag_description(enum vb2_gbb_flag flag,
 		*name = "VB2_GBB_FLAG_ENABLE_UDC";
 		*description = "Enable USB Device Controller.";
 		break;
+	case VB2_GBB_FLAG_FORCE_CSME_SYNC:
+		*name = "VB2_GBB_FLAG_FORCE_CSME_SYNC";
+		*description = "Always sync CSME, even if it is same as CBFS CSME";
+		break;
 	default:
 		*name = NULL;
 		*description = NULL;
