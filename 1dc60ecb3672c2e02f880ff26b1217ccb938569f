@@ -52,6 +52,24 @@
       "parentUuid": "2b21b792_e735c9f2",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5698ab4_d46dabae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-07-19T02:13:23Z",
+      "side": 1,
+      "message": "\u003e There were no compilation issues but still I couldn\u0027t find the new GBB\n\ncheck coreboot code about adding gbb (makefile.mk)\n\nas requested did you check with Julius and Yu-ping about adding new gbb name for csme sync test enforcement",
+      "parentUuid": "bee60719_8daab79c",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
