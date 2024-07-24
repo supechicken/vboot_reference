@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b92c8fa_dfd272f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-24T07:03:40Z",
+      "side": 1,
+      "message": "Like I said in the chat, I don\u0027t think cherry-picking all of these unrelated CLs is the correct decision. Vboot CLs usually have a long dependency chain, even on other repositories such as coreboot and depthcharge. Therefore if we\u0027d like to have clean cherry picks for those android patches, then the safest and easiest way would be to cherry-pick literally *all* the CLs to this branch. However that would make the \tfirmware-android-brya branch kind of pointless, because the purpose of the branch is to keep it close to our brya firmware branch.\n\nI think we should instead manually solve the merge conflicts for the android CLs. For some CLs you may also need to move it to another repo, because we\u0027ve moved lots of code from vboot to depthcharge. I\u0027m familiar with most of the vboot CLs, so I can help if you have difficulties resolving some of the conflicts.",
+      "revId": "f958a40f23b1f1ef3aa6c41ca2716469fc11e5c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
