@@ -16,6 +16,24 @@
       "message": "Changing this straight-up creates a circular dependency between coreboot and vboot, which is difficult to upstream. It\u0027s usually easier to add both names for an intermediary period, e.g.\n```\nVB2_GBB_FLAG_DEPRECATED_RUNNING_FAFT \u003d 1 \u003c\u003c 8,\nVB2_GBB_FLAG_RUNNING_FAFT \u003d 1 \u003c\u003c 8,\n```\nsync that to upstream, then change all the names upstream, and then remove the older name here. (Alternatively, if that\u0027s the decision on CL:5714819, you can completely remove all upstream references to this name first, and then you can change it without any dependencies.)",
       "revId": "2333f55bf3320f6fa1f1c182203b2d49dbab38b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18f607a_d8dd2a0b",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2024-07-25T16:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f68c08_9410898b",
+      "revId": "2333f55bf3320f6fa1f1c182203b2d49dbab38b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
