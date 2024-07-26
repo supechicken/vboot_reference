@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39fd7c7a_24efbf30",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T12:44:16Z",
+      "side": 1,
+      "message": "`tmp_buf` is null here, you\u0027ll end up trying to free it in the error path.",
+      "revId": "8d1a1d7dc1896e78d4db2c7803c915375ac44447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90b0b2c_c3d22fdc",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T12:44:16Z",
+      "side": 1,
+      "message": "You can avoid this malloc by changing the endianness in flight and comparing keys in a loop instead of using memcmp.",
+      "revId": "8d1a1d7dc1896e78d4db2c7803c915375ac44447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
