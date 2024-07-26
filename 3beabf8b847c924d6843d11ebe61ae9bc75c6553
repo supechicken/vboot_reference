@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e521376_18ccd8aa",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T13:36:04Z",
+      "side": 1,
+      "message": "IMO `part_size` here should be passed by value, not by pointer.",
+      "revId": "3beabf8b847c924d6843d11ebe61ae9bc75c6553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8a57a7_4b093c79",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T13:36:04Z",
+      "side": 1,
+      "message": "Hide the time measuring logic behind `#ifdef VBOOT_DEBUG`. The result is only used in VB2_DEBUG, which is a no-op if `VBOOT_DEBUG` is not defined.",
+      "revId": "3beabf8b847c924d6843d11ebe61ae9bc75c6553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c3fc1ff_ec3b08c8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T13:36:04Z",
+      "side": 1,
+      "message": "Same here, you should hide the speed calculation code behind `#ifdef VBOOT_DEBUG`",
+      "revId": "3beabf8b847c924d6843d11ebe61ae9bc75c6553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
