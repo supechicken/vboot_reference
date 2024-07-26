@@ -33,6 +33,23 @@
       "message": "nit: Let\u0027s add a trailing `,` here.",
       "revId": "51320a2ae346cfed618e86e8748d16338e34b631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad54ec2a_e2c751d4",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T13:47:02Z",
+      "side": 1,
+      "message": "I think this should be moved to the previous patch",
+      "revId": "51320a2ae346cfed618e86e8748d16338e34b631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
