@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fdb0249_5d75bc95",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T11:34:36Z",
+      "side": 1,
+      "message": "From what I can see the logic here is very similar to what is done in `need_valid_keyblock`.\nIMO it\u0027d be better to call that function from here instead, and set `out_is_unlocked` based on the result.",
+      "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09aafeb_4ca8529c",
+        "filename": "firmware/avb/vboot_avb_sysdeps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-26T11:34:36Z",
+      "side": 1,
+      "message": "Maybe we can add `libavb/avb_sysdeps_posix.c` from libavb to our build instead of this?\n\nThe main difference between this and the _posix.c is the use of `vb2ex_printf` instead of `fprintf`.\nWith that being said `cgpt/cgpt_common.c` also calls `fprintf`, so maybe that\u0027s fine?",
+      "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
