@@ -88,6 +88,23 @@
       "parentUuid": "f5698ab4_d46dabae",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7126afa3_4fcd2c98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-30T01:22:16Z",
+      "side": 1,
+      "message": "Not against adding a flag like this if it helps with testing, but... does the system ever actually boot all the way if you have this set? Doesn\u0027t CSME sync always include a reset at the end? If this flag causes a reboot loop, is that actually useful for testing?\n\nNormally when we test sync features (e.g. EC sync) we tend to instead modify the part of the image that tells coreboot whether it is different from the currently installed one (e.g. version number or whatever it has). Is that approach not possible for the CSME case?",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
