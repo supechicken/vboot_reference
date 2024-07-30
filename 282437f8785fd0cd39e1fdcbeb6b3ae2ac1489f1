@@ -480,6 +480,24 @@
       "parentUuid": "b855e6a0_bf3a1c1b",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5315d7d7_bf116fd7",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-30T08:59:26Z",
+      "side": 1,
+      "message": "I already removed copying GKI header and moving kernel in next patchset. Header is not required anymore and I just modified offset move kernel in boot() function for x86. I just need to check if ARM booting requires similar changes.",
+      "parentUuid": "bd9a2cf4_2ffb6d95",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
