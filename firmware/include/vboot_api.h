@@ -202,6 +202,15 @@ typedef struct VbDiskInfo {
 	 * not available.
 	 */
 	const char *name;
+
+	/* Android vendor_boot partition offset (in bytes) in kernel_buffer. */
+	uint32_t vendor_boot_offset;
+	/* Android init_boot partition offset (in bytes) in kernel_buffer. */
+	uint32_t init_boot_offset;
+	/* Size of init boot partition in bytes. */
+	uint32_t init_boot_size;
+	/* Offset (in bytes) to the region with vboot cmdline parameters. */
+	uint32_t vboot_cmdline_offset;
 } VbDiskInfo;
 
 /**
