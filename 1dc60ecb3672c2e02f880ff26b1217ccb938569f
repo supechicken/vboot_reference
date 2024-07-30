@@ -105,6 +105,24 @@
       "message": "Not against adding a flag like this if it helps with testing, but... does the system ever actually boot all the way if you have this set? Doesn\u0027t CSME sync always include a reset at the end? If this flag causes a reboot loop, is that actually useful for testing?\n\nNormally when we test sync features (e.g. EC sync) we tend to instead modify the part of the image that tells coreboot whether it is different from the currently installed one (e.g. version number or whatever it has). Is that approach not possible for the CSME case?",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4635a0_73d8278b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558987
+      },
+      "writtenOn": "2024-07-30T03:52:23Z",
+      "side": 1,
+      "message": "Yes, indeed, the device will go into a loop if we rely solely on the GBB flag. The current firmware design has two preconditions for forced CSE sync:\n\n1. The boot partition should be RO.\n2. GBB should be forced CSME.\n\nOnce both conditions are met, CSE will trigger a forced CSE sync, an RO to RW switch, and a global reset.\nSo, in the next cycle, the system will boot in RW, hence no boot loop. \nThe firmware changes are currently implemented and verified in chromium:5705989 and chromium:574358.",
+      "parentUuid": "7126afa3_4fcd2c98",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
