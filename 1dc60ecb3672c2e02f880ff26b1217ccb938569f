@@ -213,6 +213,24 @@
       "parentUuid": "a69fa6b9_f0930a49",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0d4af7_887ecaf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-07-30T07:20:28Z",
+      "side": 1,
+      "message": "\u003e By modifying the version bytes (offsets 16 18 20 22), do we NOT change the actual ME RW version? If not, where\u0027s the source of truth of the actual ME RW version?\n\nno, to change actual ME RW binary (CSE RW FW), we need to rerun the MFIT tool to regenerate the CSE blob.\n\nME RW version stays inside the ME binary and the CBFS file is our metadata to check if the currently running CSE binary has different version that CBFS store meta data file.\n\nAssume case,\n\n1. currently running CSE RW binary is 18.0.5.1234\n2. You have new CSE RW blob 18.0.5.5678 in CBFS and metadata file in CBFS also 18.0.5.5678\n\nResult, we are able to perform the CSE update and boot to OS\n\n1. currently running CSE RW binary is 18.0.5.5678\n2. You have same CSE RW blob 18.0.5.5678 in CBFS and metadata file in CBFS says 18.0.5.9000\n\nresult, system will assume there is newer binary as issue CSE sync because `18.0.5.5678!\u003d18.0.5.9000` but on next boot, it will again run into same version mismatch. This will be eternal process of CSE sync. So, we can\u0027t fake any version in CBFS meta data file which is used to check the CSE sync logic.",
+      "parentUuid": "80a499fc_e5d2c1cb",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
