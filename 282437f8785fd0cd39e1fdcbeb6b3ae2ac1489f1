@@ -444,6 +444,24 @@
       "parentUuid": "ba345efa_a0955d31",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b855e6a0_bf3a1c1b",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-07-30T00:21:09Z",
+      "side": 1,
+      "message": "We could do that but we still need the GKI header somewhere in depthcharge, so we\u0027d still need to move that around, right?\n\nIf this is supposed to be the basis of our products for years to come, we should change the code wherever needed so that it makes sense from the ground up for this boot flow, and not just put in the smallest possible hacks that makes it work with our existing ChromeOS code. The code that receives this on the depthcharge side is not sacred, we are allowed to change it. It was written in a way that makes sense for vboot images but if we now need to support other images we should make it aware of the difference, rather than underhandedly massaging its inputs.",
+      "parentUuid": "e3ad4584_5b258d32",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
