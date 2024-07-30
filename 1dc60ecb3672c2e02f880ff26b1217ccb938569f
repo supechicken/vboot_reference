@@ -141,6 +141,24 @@
       "parentUuid": "6c4635a0_73d8278b",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ec7c3a_8aa199e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-07-30T04:12:03Z",
+      "side": 1,
+      "message": "\u003e \u003e Yes, indeed, the device will go into a loop if we rely solely on the GBB flag. The current firmware design has two preconditions for forced CSE sync:\n\u003e \u003e \n\u003e \u003e 1. The boot partition should be RO.\n\u003e \u003e 2. GBB should be forced CSME.\n\u003e \u003e \n\u003e \u003e Once both conditions are met, CSE will trigger a forced CSE sync, an RO to RW switch, and a global reset.\n\u003e \u003e So, in the next cycle, the system will boot in RW, hence no boot loop. \n\u003e \u003e The firmware changes are currently implemented and verified in chromium:5705989 and chromium:574358.\n\u003e \n\u003e Also read the design doc go/faft-cse-update if interested. It talks about complete flow.\n\u003e \n\u003e @dinesh, can you please push the coreboot side changes in upstream first. I want to get that review at the earliest.\n\n\u003e Normally when we test sync features (e.g. EC sync) we tend to instead modify the part of the image that tells coreboot whether it is different from the currently installed one (e.g. version number or whatever it has). Is that approach not possible for the CSME case?\n\nIn order to tell CSE if there is upgrade or downgrade blob is available, we also need to provide the newer binary. This would cause two issues\n\n1. During very first release of Intel CSE blob, there is no \"N-1\" blob available\n2. To support the CSE sync idea, we always need to maintain N and N-1 copy into our repository. This would cost the SPI size issue. Also, not all N-1 and N blobs are compatible during dev cycle.\n\nHence, we have designed go/faft-cse-update to ensure we are testing three things\n\n1. CSE updater logic code\n2. CSE RW read/write/erase function\n3. Able to boot to OS after flashing the CSE RW blob\n\nHope it clarifies why we are coming with idea of enforced CSE sync.",
+      "parentUuid": "6ab662a5_f4501b29",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
