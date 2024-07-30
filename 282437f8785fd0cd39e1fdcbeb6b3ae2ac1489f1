@@ -462,6 +462,24 @@
       "parentUuid": "e3ad4584_5b258d32",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9a2cf4_2ffb6d95",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-30T08:37:10Z",
+      "side": 1,
+      "message": "Hmm, ok, fair point.\n\nI looked into depthcharge logic and noticed two things:\n1. I don\u0027t see any references to GKI_BOOT_HEADER there. So maybe we don\u0027t need to pass it in the first place.\n2. The pointer to where the kernel is can be adjusted - https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/5650801/1/src/vboot/boot_policy.c#319.\n\nAt this point I\u0027d get rid of all this moving/copying here and modify deptcharge instead.\nI don\u0027t think we\u0027ll need to pass any additional info, or modify the API though.",
+      "parentUuid": "b855e6a0_bf3a1c1b",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
