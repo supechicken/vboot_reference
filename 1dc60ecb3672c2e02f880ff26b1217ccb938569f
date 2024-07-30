@@ -195,6 +195,24 @@
       "parentUuid": "3249a48e_d9bcfc76",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a499fc_e5d2c1cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-30T07:12:59Z",
+      "side": 1,
+      "message": "By modifying the version bytes (offsets 16 18 20 22), do we NOT change the actual ME RW version? If not, where\u0027s the source of truth of the actual ME RW version?",
+      "parentUuid": "a69fa6b9_f0930a49",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
