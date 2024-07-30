@@ -159,6 +159,24 @@
       "parentUuid": "6ab662a5_f4501b29",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3249a48e_d9bcfc76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-30T06:52:28Z",
+      "side": 1,
+      "message": "Have we ever considered the solution of modifying the CSE version in CBFS (both the version bytes in `me_rw` and the version file `me_rw.version`) in FAFT, similar to the `firmware.SoftwareSync` test? Then we won\u0027t have to implement custom logic in firmware. I imagine the FAFT test can do the following:\n\n1. Read the AP image as `ap.bin`\n2. Extract CBFS file `me_rw` from `ap.bin` as `me_rw.new`\n3. Modify the version bytes in `me_rw.new` (offsets 16 18 20 22)\n4. Create the new version file `me_rw.new.version`\n5. Replace CBFS files `me_rw` and `me_rw.version` with `me_rw.new` and `me_rw.new.version` in `ap.bin`\n6. Resign `ap.bin` and do whatever needed to make it a valid image\n7. Flash the modified `ap.bin` to DUT\n\nThe benefit is that the update flow will be closer to the one actually happening on a real user\u0027s device. In particular, we can test the CSE RW update flow when CSE is running RW partition (i.e., DUT switching to CSE RO -\u003e updating CSE RW -\u003e switching back to the new RW).",
+      "parentUuid": "b8ec7c3a_8aa199e9",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
