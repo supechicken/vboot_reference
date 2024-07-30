@@ -231,6 +231,88 @@
       "parentUuid": "80a499fc_e5d2c1cb",
       "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee438b02_f2f75a1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-30T09:27:39Z",
+      "side": 1,
+      "message": "\u003e no, to change actual ME RW binary (CSE RW FW), we need to rerun the MFIT tool to regenerate the CSE blob.\n\nYes I know modifying the CBFS file `me_rw.version` is not enough. By \"version bytes\" I meant the CSE RW blob (such as `me_rw-karis4es.bin`). Coreboot\u0027s Makefile generates `me_rw.version` by reading specific offsets from the CSE RW blob. Therefore I thought the source of truth of version info is stored within those offsets, and hence we should be able to modify it.\n\nNow I just found b/327842062. It looks like the version info cannot be extracted from a PTL CSE blob, which means modifying the version is also infeasible (at least for PTL).\n\nLet\u0027s proceed with the GBB flag solution.",
+      "parentUuid": "3a0d4af7_887ecaf4",
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82b5993_515a9970",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-30T09:27:39Z",
+      "side": 1,
+      "message": "Or `CSE`?",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5a6d7d_29ac3afd",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-07-30T09:27:39Z",
+      "side": 1,
+      "message": "`sync`",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7ebc394e_cec275ce",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2gbb_flags.h",
+              "range": {
+                "startLine": 97,
+                "startChar": 0,
+                "endLine": 98,
+                "endChar": 0
+              },
+              "replacement": "\t/* Enforce CSME sync, even if current CSME is same as CBFS CSME */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1dc60ecb3672c2e02f880ff26b1217ccb938569f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
