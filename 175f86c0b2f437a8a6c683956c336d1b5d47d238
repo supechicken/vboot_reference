@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0a662e_ba4248b9",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff5235a_7fb93f17",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 3
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a0c12e2_addd534f",
@@ -37,6 +61,24 @@
       "writtenOn": "2024-06-27T02:31:30Z",
       "side": 1,
       "message": "Please add tests in tests/gpt_misc_tests.c.",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "636ac9ec_76081f1e",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "I\u0027ll add test in next patchset, I just wanted to address other comments first.",
+      "parentUuid": "8a0c12e2_addd534f",
       "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -352,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d38da0_9324369c",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0678e9_5e2ffe6e",
+      "range": {
+        "startLine": 288,
+        "startChar": 35,
+        "endLine": 288,
+        "endChar": 62
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "391e3dde_9e1a016e",
@@ -469,6 +535,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56bd743_d1758ae8",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de4f965d_9c441f1d",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 3
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f9b2c74_2f88d49f",
@@ -529,6 +619,30 @@
       "writtenOn": "2024-06-26T11:12:19Z",
       "side": 1,
       "message": "This has to be changed if you apply [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650810/comment/acdc5e1c_040c2776/)",
+      "range": {
+        "startLine": 226,
+        "startChar": 33,
+        "endLine": 226,
+        "endChar": 61
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c19967a_6e9fff88",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf79a452_f307bed6",
       "range": {
         "startLine": 226,
         "startChar": 33,
@@ -605,6 +719,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99e87955_afa4a4b1",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "I\u0027ll add test in next patchset, I just wanted to address other comments first.",
+      "parentUuid": "b8b661f2_e21a2334",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09a3989e_c7a1b98e",
         "filename": "firmware/lib/cgptlib/include/cgptlib.h",
         "patchSetId": 1
@@ -675,6 +807,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54a14c89_09f0f1bc",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "I\u0027ll do test related changes in next patchset, I just wanted to address other comments first.",
+      "parentUuid": "e93e3364_b0141874",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6d4a3f8_e73cff2a",
         "filename": "tests/vb2_load_kernel_tests.c",
         "patchSetId": 1
@@ -686,6 +842,30 @@
       "writtenOn": "2024-06-27T16:52:29Z",
       "side": 1,
       "message": "Same comment as in vb2_inject_kernel_subkey_tests.c",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 1
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40835c5a_0fa784fb",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:30:10Z",
+      "side": 1,
+      "message": "I\u0027ll do test related changes in next patchset, I just wanted to address other comments first.",
+      "parentUuid": "a6d4a3f8_e73cff2a",
       "range": {
         "startLine": 207,
         "startChar": 1,
