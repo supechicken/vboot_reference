@@ -516,6 +516,24 @@
       "parentUuid": "5315d7d7_bf116fd7",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce9b3b0_ad0ec432",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-07-31T08:02:58Z",
+      "side": 1,
+      "message": "IIUC `init_hdr` is the header of a ramdisk that is placed after the kernel.",
+      "parentUuid": "e0afb6f8_e49775ae",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
