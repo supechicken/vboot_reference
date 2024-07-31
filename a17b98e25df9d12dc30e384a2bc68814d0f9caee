@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77585c6_dcd4a640",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f39d22d0_22cc6d80",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c1ea197_a3f3c696",
@@ -342,6 +366,30 @@
       "writtenOn": "2024-06-26T10:52:54Z",
       "side": 1,
       "message": "I think returning `i2` here is more appropriate. And `-1` on error.",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "a17b98e25df9d12dc30e384a2bc68814d0f9caee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eea2238_fdb31bd5",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-07-31T10:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdc5e1c_040c2776",
       "range": {
         "startLine": 70,
         "startChar": 2,
