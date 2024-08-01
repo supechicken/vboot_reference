@@ -488,9 +488,9 @@ resign_firmware_payload() {
   if [[ "${ret}" == 0 ]]; then
     info "Re-signed firmware AU payload in ${loopdev}"
   else
-    error "Couldn't sign firmware AU payload in ${loopdev}"
+    # Boards for virtual machine are expected to not have firmware in the image.
+    info "No firmware AU payload in ${loopdev}"
   fi
-  return "${ret}"
 }
 
 # Re-sign the firmware AU payload provided with a new key.
@@ -503,9 +503,8 @@ resign_firmware_shellball() {
 
   # extract_firmware_bundle can fail if the image has no firmware update.
   if ! extract_firmware_bundle "${firmware_bundle}" "${shellball_dir}"; then
-    # Unmount now to prevent changes.
     info "Didn't find a firmware update. Not signing firmware."
-    return
+    return 1
   fi
   info "Found a valid firmware update shellball."
 
