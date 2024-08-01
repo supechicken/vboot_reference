@@ -17,6 +17,8 @@ vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint8_t *size)
 	struct vb2_secdata_fwmp *sec =
 		(struct vb2_secdata_fwmp *)&ctx->secdata_fwmp;
 
+	print_debug_info(ctx);
+
 	/* Verify that at least the minimum size has been read */
 	if (*size < VB2_SECDATA_FWMP_MIN_SIZE) {
 		VB2_DEBUG("FWMP: missing %d bytes for minimum size\n",
@@ -43,6 +45,7 @@ vb2_error_t vb2api_secdata_fwmp_check(struct vb2_context *ctx, uint8_t *size)
 	/* Verify CRC */
 	if (sec->crc8 != vb2_secdata_fwmp_crc(sec)) {
 		VB2_DEBUG("FWMP: bad CRC\n");
+		VB2_DEBUG("Expected: 0x%02x - Got: 0x%02x\n", sec->crc8, vb2_secdata_fwmp_crc(sec));
 		return VB2_ERROR_SECDATA_FWMP_CRC;
 	}
 

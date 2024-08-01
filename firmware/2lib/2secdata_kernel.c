@@ -61,6 +61,7 @@ static vb2_error_t secdata_kernel_check_v0(struct vb2_context *ctx,
 	/* Verify CRC */
 	if (sec->crc8 != secdata_kernel_crc(ctx)) {
 		VB2_DEBUG("secdata_kernel: bad CRC\n");
+		VB2_DEBUG("Expected: 0x%02x - Got: 0x%02x\n", sec->crc8, secdata_kernel_crc(ctx));
 		return VB2_ERROR_SECDATA_KERNEL_CRC;
 	}
 
@@ -121,7 +122,7 @@ vb2_error_t vb2api_secdata_kernel_check(struct vb2_context *ctx, uint8_t *size)
 		*size = VB2_SECDATA_KERNEL_MIN_SIZE;
 		return VB2_ERROR_SECDATA_KERNEL_INCOMPLETE;
 	}
-
+	print_debug_info(ctx);
 	if (is_v0(ctx))
 		return secdata_kernel_check_v0(ctx, size);
 	else
