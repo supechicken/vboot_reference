@@ -503,9 +503,8 @@ resign_firmware_shellball() {
 
   # extract_firmware_bundle can fail if the image has no firmware update.
   if ! extract_firmware_bundle "${firmware_bundle}" "${shellball_dir}"; then
-    # Unmount now to prevent changes.
     info "Didn't find a firmware update. Not signing firmware."
-    return
+    return 1
   fi
   info "Found a valid firmware update shellball."
 
