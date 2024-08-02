@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a9f1bc_49d4f933",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T08:06:35Z",
+      "side": 1,
+      "message": "`disk_info-\u003ehandle` is preferred. See CL:2846281.",
+      "range": {
+        "startLine": 814,
+        "startChar": 22,
+        "endLine": 814,
+        "endChar": 41
+      },
+      "revId": "801239e196933bb99e05987196ba8e9194434f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
