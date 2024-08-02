@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29200250_21bce6c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T03:17:12Z",
+      "side": 1,
+      "message": "No they are not the same. For example geralt\u0027s EC has:\n\n```\n# name                     start       end         size\nEC_RW                      00060000    000c0000    00060000\n  RW_FW                      00060000    000a8ca8    00048ca8\n  ZEPHYR_RW                  00060000    000a8ca8    00048ca8  // DUPLICATE\n    RW_FWID                    00060098    000600b8    00000020\n```\n\nThe chromeos-bootimage ebuild extracts `RW_FW` instead of `EC_RW` for zephyr EC, so we should do the same thing here. When I first wrote the script, I intended to support Zephyr EC only, because there\u0027s no use case for CrOS EC.\n\nTo support CrOS EC, it\u0027s actually more complicated than extracting EC_RW. See https://chromium-review.googlesource.com/c/chromiumos/platform/dev-util/+/4357891/4/contrib/firmware/swap_ec_rw#43.",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "05ca8fc2c4b7dcdda8280ada69100448b5d848f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
