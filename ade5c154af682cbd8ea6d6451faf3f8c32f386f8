@@ -16,6 +16,24 @@
       "message": "Irrelevant change that doesn\u0027t belong to this patch.",
       "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2dd405_23dc25bd",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-02T19:07:19Z",
+      "side": 0,
+      "message": "Thanks for pointing this out.  \n\nThe original source that the original change was made in contained the use of VbSharedDataKernelPart, but firmware-brya-14505.B branch does not know what a VbShareDataKernelPart is or have any code that does anything with it.\n\nI should have made this change when cherry-picking over https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5721004.  The code in the left column here in this change/file is the new code that was cherry-picked in with 5721004 prior to this change in the cherry-pick stack.\n\nI moved this change down lower in the stack where it belongs (i.e. the commit for 5721004 should have never brought it in).",
+      "parentUuid": "2d1d3961_3338c6f5",
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
