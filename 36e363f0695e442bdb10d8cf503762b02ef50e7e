@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fccf739_81cb9c7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T03:01:12Z",
+      "side": 1,
+      "message": "Why does this need to be run outside the SDK? This script depends on cbfstool and futility, which should only exist inside the SDK. Do you have a new usecase for b/352556657?",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "36e363f0695e442bdb10d8cf503762b02ef50e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
