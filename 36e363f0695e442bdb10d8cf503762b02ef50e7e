@@ -22,6 +22,30 @@
       },
       "revId": "36e363f0695e442bdb10d8cf503762b02ef50e7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57d9615_3b97a927",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-08-02T15:41:22Z",
+      "side": 1,
+      "message": "\u003e Why does this need to be run outside the SDK?\n\nThe shellballizer recipe will run without an SDK, as it\u0027s not necessary.\n\n\u003e This script depends on cbfstool and futility, which should only exist inside the SDK\n\nThey\u0027re also available via subtool.",
+      "parentUuid": "5fccf739_81cb9c7b",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "36e363f0695e442bdb10d8cf503762b02ef50e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
