@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b086b4_f7c28a46",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "Already defined below.",
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b80922_766692ae",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "Are these used anywhere?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c908b6b6_9a064f24",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "We don\u0027t need to rename `vb2_load_partition_flags`, right?",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359c1659_e6f17305",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "Can we keep the order consistent with CL:5716729?\n\n```\nenum vb2_load_partition_flags {\n\tVB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY \u003d (1 \u003c\u003c 0),\n\tVB2_LOAD_PARTITION_FLAG_MINIOS \u003d (1 \u003c\u003c 1),\n};\n\n#define KBUF_SIZE 65536  /* Bytes to read at start of kernel partition */\n/* Bytes to read at start of the boot/init_boot/vendor_boot partitions */\n#define BOOT_HDR_GKI_SIZE 4096\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5b424c_3976e015",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "No such enum.",
+      "range": {
+        "startLine": 171,
+        "startChar": 40,
+        "endLine": 171,
+        "endChar": 80
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22d800d_412070e5",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "No such enum.",
+      "range": {
+        "startLine": 365,
+        "startChar": 40,
+        "endLine": 365,
+        "endChar": 80
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c744142_2997f188",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "Can this be moved above `try_minios_kernel` so that this branch will be closer to CL:5716729? That may make future cherry-picks easier.",
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3dfa88_9b5d6529",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-02T06:44:05Z",
+      "side": 1,
+      "message": "What does njv mean? Maybe there\u0027s no need to leave this comment?",
+      "range": {
+        "startLine": 803,
+        "startChar": 26,
+        "endLine": 803,
+        "endChar": 29
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
