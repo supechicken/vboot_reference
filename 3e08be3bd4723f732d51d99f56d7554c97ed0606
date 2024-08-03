@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e0bdd01_843b1b73",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-03T02:03:52Z",
+      "side": 1,
+      "message": "`VbSelectAndLoadKernelParams`. The same fix needs to be applied to firmware/avb/vboot_avb_ops.{c,h}.\n\nThe arguments of this function should be:\n\n```\n    struct vb2_context *ctx, VbSelectAndLoadKernelParams *params,\n    VbExStream_t stream, GptData *gpt\n```",
+      "range": {
+        "startLine": 627,
+        "startChar": 1,
+        "endLine": 627,
+        "endChar": 17
+      },
+      "revId": "3e08be3bd4723f732d51d99f56d7554c97ed0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd71068d_61cdbf86",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-03T02:03:52Z",
+      "side": 1,
+      "message": "Should be `need_valid_keyblock`. Are you sure this can build? I wonder if something wasn\u0027t set up correctly, so that `USE_LIBAVB` was not even enabled.",
+      "range": {
+        "startLine": 641,
+        "startChar": 27,
+        "endLine": 641,
+        "endChar": 46
+      },
+      "revId": "3e08be3bd4723f732d51d99f56d7554c97ed0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "101c782c_955405b7",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 4
