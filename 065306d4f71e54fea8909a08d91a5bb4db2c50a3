@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37402754_2144b909",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-03T01:16:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I agree. See my reply in the other comment thread.",
+      "parentUuid": "c0b737f9_7a7b0446",
+      "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47926180_16614bef",
         "filename": "futility/cmd_load_fmap.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-02T02:23:30Z",
       "side": 1,
       "message": "FWIW I feel like it would probably make sense to do a `memset(buf + n, len - n, 0xff)` here. There current implementation (if I understand it right) just leaves whatever bytes were there before in the rest of the section, which I don\u0027t think is usually the intention of the caller.",
+      "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fd2299_69aa679c",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-03T01:16:50Z",
+      "side": 1,
+      "message": "I actually prefer the cbfstool (more rigourous) approach.\n\n- If no extra option is specified, the file size is required to be the area length. Otherwise the command fails.\n- If the caller intends to pass in a smaller file, then an extra option is required. Different options affect how we treat the remaining bytes.\n\nFor the second case, we can start with defining an option `--erase-existing-data` (any better naming?). If we have a use case in the future, we can add `--keep-existing-data`.",
+      "parentUuid": "47926180_16614bef",
       "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
