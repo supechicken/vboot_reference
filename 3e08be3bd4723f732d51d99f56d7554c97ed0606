@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "101c782c_955405b7",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-03T01:52:10Z",
+      "side": 1,
+      "message": "These changed should be moved to CL:5736325.",
+      "range": {
+        "startLine": 804,
+        "startChar": 2,
+        "endLine": 830,
+        "endChar": 3
+      },
+      "revId": "3e08be3bd4723f732d51d99f56d7554c97ed0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
