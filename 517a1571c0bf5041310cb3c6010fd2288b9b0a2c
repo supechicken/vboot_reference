@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a9ffa7_4d092ff1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-03T01:48:38Z",
+      "side": 1,
+      "message": "I think you\u0027re doing 2 things in this patch.\n\n1. Fix the return value of `resign_firmware_shellball`\n2. Allow `resign_firmware_payload` without firmware payload\n\nI assume 2 is the actual point of this patch. Could you explain more in the commit message about \"boards for virtual machine\"? What\u0027s the use case of that? If there\u0027s no firmware AU payload in the image, should `resign_firmware_payload` be NOT called at all? Or, can `resign_firmware_payload` still return 1 for the caller to decide what to do?\n\nI\u0027m confused, because you fix the return value of `resign_firmware_shellball`, but do the opposite for `resign_firmware_payload`.",
+      "revId": "517a1571c0bf5041310cb3c6010fd2288b9b0a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
