@@ -87,6 +87,24 @@
       "parentUuid": "17fd2299_69aa679c",
       "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef983b0_e4c98ecd",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-05T09:03:43Z",
+      "side": 1,
+      "message": "No, I don\u0027t think so, and that should be fixed. Anyway, that\u0027s too much to ask in a single patch. I\u0027m fine with merging this CL as is.",
+      "parentUuid": "44f94191_88bb609c",
+      "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
