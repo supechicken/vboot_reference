@@ -69,6 +69,30 @@
       },
       "revId": "36e363f0695e442bdb10d8cf503762b02ef50e7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3d150e_8f9b727d",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2024-08-05T15:21:44Z",
+      "side": 1,
+      "message": "When executing from the SDK, the source tree may not be accessible.  We can remove this later if `/usr/share/vboot/bin/swap_ec_rw` is removed from the SDK.",
+      "parentUuid": "87ef1ef3_e1fa97a1",
+      "range": {
+        "startLine": 80,
+        "startChar": 41,
+        "endLine": 80,
+        "endChar": 77
+      },
+      "revId": "36e363f0695e442bdb10d8cf503762b02ef50e7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
