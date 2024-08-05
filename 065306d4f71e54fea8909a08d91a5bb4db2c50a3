@@ -69,6 +69,24 @@
       "parentUuid": "47926180_16614bef",
       "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f94191_88bb609c",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2024-08-05T08:54:03Z",
+      "side": 1,
+      "message": "On the other side, I\u0027m more concerned that there\u0027s no any warning when file size greater than area size.\n\nIs this a legal use case?",
+      "parentUuid": "17fd2299_69aa679c",
+      "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
