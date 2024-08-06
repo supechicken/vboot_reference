@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e2d9c78_7d2eaa3e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-08-06T08:54:45Z",
+      "side": 1,
+      "message": "This change is part of other patch:\n\"2lib: Implement fallback for dual-boot with ChromeOS\"",
+      "revId": "4eae67d22f8f5aafe0300548f2b5f6c2302112da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d66a92f_74672f3c",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 5
