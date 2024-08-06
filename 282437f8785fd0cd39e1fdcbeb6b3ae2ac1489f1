@@ -534,6 +534,24 @@
       "parentUuid": "e0afb6f8_e49775ae",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "309542f1_2e1a08b1",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-08-06T01:32:24Z",
+      "side": 1,
+      "message": "Hmm... okay, I\u0027m a bit confused. Looking at the code more closely, you\u0027re right that that init_hdr is loaded from the ramdisk partition (init_boot, not boot). But it\u0027s still using the boot_img_hdr_v4 struct. And the main GKI header (loaded from boot) is also using the boot_img_hdr_v4 struct in gki_validate_boot_header(). Is Android reusing that same header format for two different pieces? I\u0027m a bit confused because some of those fields (e.g. kernel_size, cmdline) wouldn\u0027t really make sense for the header of a ramdisk?",
+      "parentUuid": "3ce9b3b0_ad0ec432",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
