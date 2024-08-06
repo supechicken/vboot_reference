@@ -105,6 +105,24 @@
       "parentUuid": "44f94191_88bb609c",
       "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746a670d_d7f9585a",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-08-06T20:09:18Z",
+      "side": 1,
+      "message": "I honestly don\u0027t think there\u0027s ever a case where you actually want to preserve the old data (if anybody knows one, let me know). As such, I\u0027d prefer we fix this now to at least introduce the `memset()` if nothing else. I don\u0027t want us to end up doing nothing and forever leave this in a bad state just because we bikeshedded the problem into something too big to tackle.\n\nIn general, I don\u0027t mind adding more options if you prefer that as long as preserving is not the automatic default case. I also think it might be worth considering to just kill this functionality in futility and just make everyone use cbfstool for it instead (although I guess sometimes we may use it on EC files and then using cbfstool would be a bit awkward, although I think it would technically work). Both of those would require updating all callers of this, though, so it\u0027s a bit more work.",
+      "parentUuid": "6ef983b0_e4c98ecd",
+      "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
