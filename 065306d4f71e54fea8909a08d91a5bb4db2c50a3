@@ -123,6 +123,24 @@
       "parentUuid": "6ef983b0_e4c98ecd",
       "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccfe0ddd_c1e70e14",
+        "filename": "futility/cmd_load_fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-07T02:07:34Z",
+      "side": 1,
+      "message": "Fine. I quickly uploaded CL:5768173 to add `memset`. My proposal can be left as future work.",
+      "parentUuid": "746a670d_d7f9585a",
+      "revId": "065306d4f71e54fea8909a08d91a5bb4db2c50a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
