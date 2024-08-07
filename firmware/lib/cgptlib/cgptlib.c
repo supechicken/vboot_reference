@@ -279,9 +279,11 @@ int GptFindOffsetByName(GptData *gpt, const char *name,
 	int size_ucs2;
 	int ret = GPT_ERROR_NO_SUCH_ENTRY;
 
-	name_ucs2 = calloc(NAME_SIZE, sizeof(*name_ucs2));
+	name_ucs2 = malloc(NAME_SIZE * sizeof(*name_ucs2));
 	if (name_ucs2 == NULL)
 		return ret;
+
+	memset(name_ucs2, 0, NAME_SIZE * sizeof(*name_ucs2));
 
 	size_ucs2 = UTF8ToUCS2((const uint8_t *)name, name_ucs2, NAME_SIZE - 1);
 	if (size_ucs2 < 0)
