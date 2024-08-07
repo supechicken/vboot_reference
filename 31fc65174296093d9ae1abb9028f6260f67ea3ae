@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ff1a0b_7a145874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4be7fd6f_5d4e1419",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "31fc65174296093d9ae1abb9028f6260f67ea3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf386e6d_fca1edae",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "255e5a48_97a96f2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:24:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf386e6d_fca1edae",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "31fc65174296093d9ae1abb9028f6260f67ea3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "865bd75c_f94dd0ad",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-02T06:21:00Z",
       "side": 1,
       "message": "What\u0027s H2C?",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "31fc65174296093d9ae1abb9028f6260f67ea3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdfba3d_ad3207f9",
+        "filename": "firmware/include/vboot_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:24:45Z",
+      "side": 1,
+      "message": "Not sure, the TODO came from the cherry-pick, so I left it there.",
+      "parentUuid": "865bd75c_f94dd0ad",
       "range": {
         "startLine": 79,
         "startChar": 13,
