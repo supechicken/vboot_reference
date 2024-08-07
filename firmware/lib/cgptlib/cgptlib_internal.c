@@ -34,7 +34,8 @@ char *JoinStr(const char *a, const char *b)
 		return NULL;
 
 	strcpy(ret, a);
-	return strcat(ret, b);
+	strcpy(&ret[strlen(a)], b);
+	return ret;
 }
 
 int UTF8ToUCS2(const uint8_t *utf8_data,
@@ -224,9 +225,11 @@ bool IsAndroidBootPartition(const GptEntry *e, const char *suffix)
 	if (name == NULL)
 		return is_android_boot_part;
 
-	name_ucs2 = calloc(NAME_SIZE, sizeof(*name_ucs2));
+	name_ucs2 = malloc(NAME_SIZE * sizeof(*name_ucs2));
 	if (name_ucs2 == NULL)
 		goto cleanup;
+
+	memset(name_ucs2, 0, NAME_SIZE * sizeof(*name_ucs2));
 
 	size_ucs2 = UTF8ToUCS2((const uint8_t *)name, name_ucs2, NAME_SIZE - 1);
 	if (size_ucs2 < 0)
