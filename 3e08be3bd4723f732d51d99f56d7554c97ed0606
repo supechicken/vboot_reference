@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f857393d_a741bbbc",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0bdd01_843b1b73",
+      "range": {
+        "startLine": 627,
+        "startChar": 1,
+        "endLine": 627,
+        "endChar": 17
+      },
+      "revId": "3e08be3bd4723f732d51d99f56d7554c97ed0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd71068d_61cdbf86",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5d23a8_cf03b07d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Yes, prior runs were missing the changes to vboot_reference-9999.ebuild, so USE_LIBAVB wasn\u0027t set.",
+      "parentUuid": "cd71068d_61cdbf86",
+      "range": {
+        "startLine": 641,
+        "startChar": 27,
+        "endLine": 641,
+        "endChar": 46
+      },
+      "revId": "3e08be3bd4723f732d51d99f56d7554c97ed0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "101c782c_955405b7",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-03T01:52:10Z",
       "side": 1,
       "message": "These changed should be moved to CL:5736325.",
+      "range": {
+        "startLine": 804,
+        "startChar": 2,
+        "endLine": 830,
+        "endChar": 3
+      },
+      "revId": "3e08be3bd4723f732d51d99f56d7554c97ed0606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab89696_8b2f8f16",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "101c782c_955405b7",
       "range": {
         "startLine": 804,
         "startChar": 2,

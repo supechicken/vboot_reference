@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc673c8_c9a5e926",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e2d9c78_7d2eaa3e",
+      "revId": "4eae67d22f8f5aafe0300548f2b5f6c2302112da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d66a92f_74672f3c",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-06T08:52:28Z",
       "side": 1,
       "message": "In original patchset, ctx_flags is defined and initialized at the begining of this function. I dont see it here. Was it missed during the port?",
+      "revId": "4eae67d22f8f5aafe0300548f2b5f6c2302112da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a1ad056_4749ebfc",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d66a92f_74672f3c",
       "revId": "4eae67d22f8f5aafe0300548f2b5f6c2302112da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

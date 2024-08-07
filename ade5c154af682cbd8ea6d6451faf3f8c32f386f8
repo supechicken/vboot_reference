@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ec0e98_dd6c1210",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b086b4_f7c28a46",
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b80922_766692ae",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-02T06:44:05Z",
       "side": 1,
       "message": "Are these used anywhere?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42324210_aa0dcc7b",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Not used in this file, removed.",
+      "parentUuid": "35b80922_766692ae",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96cc4d55_0db9628d",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c908b6b6_9a064f24",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "359c1659_e6f17305",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-08-02T06:44:05Z",
       "side": 1,
       "message": "Can we keep the order consistent with CL:5716729?\n\n```\nenum vb2_load_partition_flags {\n\tVB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY \u003d (1 \u003c\u003c 0),\n\tVB2_LOAD_PARTITION_FLAG_MINIOS \u003d (1 \u003c\u003c 1),\n};\n\n#define KBUF_SIZE 65536  /* Bytes to read at start of kernel partition */\n/* Bytes to read at start of the boot/init_boot/vendor_boot partitions */\n#define BOOT_HDR_GKI_SIZE 4096\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fcc2e4c_ab41cc50",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "359c1659_e6f17305",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c115d8f3_7788625e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc5b424c_3976e015",
+      "range": {
+        "startLine": 171,
+        "startChar": 40,
+        "endLine": 171,
+        "endChar": 80
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f22d800d_412070e5",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c5b211f_005cdcb9",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f22d800d_412070e5",
+      "range": {
+        "startLine": 365,
+        "startChar": 40,
+        "endLine": 365,
+        "endChar": 80
+      },
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c744142_2997f188",
@@ -146,6 +284,24 @@
       "writtenOn": "2024-08-02T06:44:05Z",
       "side": 1,
       "message": "Can this be moved above `try_minios_kernel` so that this branch will be closer to CL:5716729? That may make future cherry-picks easier.",
+      "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cacbaca_0007c364",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2024-08-07T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c744142_2997f188",
       "revId": "ade5c154af682cbd8ea6d6451faf3f8c32f386f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
