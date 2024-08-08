@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34f38a7_a892d82b",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-08T02:58:06Z",
+      "side": 1,
+      "message": "Add `/* We are looking for ChromeOS partitions */` to be aligned with CL:5716729.",
+      "revId": "b3b9f57d0941fbff5d2d58706bad93e3df6110fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
