@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20991c67_c5ead321",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-08T23:39:11Z",
+      "side": 1,
+      "message": "Align with `disk_info-\u003ehandle,` above.",
+      "range": {
+        "startLine": 807,
+        "startChar": 6,
+        "endLine": 807,
+        "endChar": 16
+      },
+      "revId": "0f26129c63b14091dfd769a82d78ef491f618d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a00e176_a58dbef6",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 10
