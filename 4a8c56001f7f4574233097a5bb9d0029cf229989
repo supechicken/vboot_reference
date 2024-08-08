@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab47f97_a45511bf",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-08T03:00:54Z",
+      "side": 1,
+      "message": "Tabs, not spaces.",
+      "range": {
+        "startLine": 799,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 16
+      },
+      "revId": "4a8c56001f7f4574233097a5bb9d0029cf229989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee4f6ed6_5145a33e",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-08T03:00:54Z",
+      "side": 1,
+      "message": "Add `/* Append status and try to load chromeos partition */` to be aligned with CL:5716730.",
+      "revId": "4a8c56001f7f4574233097a5bb9d0029cf229989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
