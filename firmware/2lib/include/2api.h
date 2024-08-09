@@ -601,11 +601,11 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx);
  */
 vb2_error_t vb2api_kernel_finalize(struct vb2_context *ctx);
 
-/* Android BCB commands */
+/* Android BCB (boot control block) commands */
 enum vb2_boot_command {
-	VB2_BOOT_CMD_NORMAL_BOOT = 0,
-	VB2_BOOT_CMD_RECOVERY_BOOT = 1,
-	VB2_BOOT_CMD_BOOTLOADER_BOOT = 2,
+	VB2_BOOT_CMD_NORMAL_BOOT,
+	VB2_BOOT_CMD_RECOVERY_BOOT,
+	VB2_BOOT_CMD_BOOTLOADER_BOOT,
 };
 
 struct vb2_kernel_params {
