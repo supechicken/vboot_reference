@@ -23,6 +23,14 @@
 
 /* Size of the buffer to convey cmdline properties to bootloader */
 #define AVB_CMDLINE_BUF_SIZE 1024
+
+/* Size of BCB on misc partition */
+#define BCB_MISC_SIZE 2048
+
+/* Possible values of BCB command */
+#define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
+#define BCB_CMD_BOOT_RECOVERY "boot-recovery"
+
 #endif
 
 enum vb2_load_partition_flags {
@@ -479,6 +487,55 @@ static vb2_error_t vb2_load_chromeos_kernel_partition(
 
 #define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate="
 
+static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
+{
+	char *bcb;
+	AvbIOResult io_ret;
+	size_t num_bytes_read;
+	enum vb2_boot_command cmd;
+
+	bcb = malloc(BCB_MISC_SIZE);
+
+	if (bcb == NULL) {
+		/*
+		 * TODO(b/349304841): Handle IO errors, for now just try to boot
+		 *                    normally
+		 */
+		VB2_DEBUG("Cannot allocate memory for BCB.\n");
+		return BOOT_CMD_NORMAL_BOOT;
+	}
+
+	io_ret = ops->read_from_partition(ops,
+					  "misc",
+					  0,
+					  BCB_MISC_SIZE,
+					  bcb,
+					  &num_bytes_read);
+	if (io_ret != AVB_IO_RESULT_OK ||
+	    num_bytes_read != BCB_MISC_SIZE) {
+		/*
+		 * TODO(b/349304841): Handle IO errors, for now just try to boot
+		 *                    normally
+		 */
+		VB2_DEBUG("Cannot read misc partition.\n");
+		free(bcb);
+		return BOOT_CMD_NORMAL_BOOT;
+	}
+
+	/* First 32 bytes of BCB are command for the bootloader */
+	if (!strncmp(bcb, BCB_CMD_BOOT_RECOVERY, sizeof(BCB_CMD_BOOT_RECOVERY) - 1))
+		cmd = BOOT_CMD_RECOVERY_BOOT;
+	else if (!strncmp(bcb, BCB_CMD_BOOTONCE_BOOTLOADER,
+		     sizeof(BCB_CMD_BOOTONCE_BOOTLOADER) - 1))
+		cmd = BOOT_CMD_BOOTLOADER_BOOT;
+	else
+		/* If empty or unknown command, just boot normally */
+		cmd = BOOT_CMD_NORMAL_BOOT;
+
+	free(bcb);
+	return cmd;
+}
+
 static vb2_error_t vb2_load_avb_android_partition(
 	struct vb2_context *ctx, struct vb2_kernel_params *params,
 	VbExStream_t stream, GptData *gpt, vb2ex_disk_handle_t disk_handle)
@@ -549,6 +606,8 @@ static vb2_error_t vb2_load_avb_android_partition(
 			avb_slot_verify_data_free(verify_data);
 		return ret;
 	}
+
+	params->boot_command = vb2_bcb_command(avb_ops);
 
 	/* TODO(b/335901799): Add support for marking verifiedbootstate yellow */
 	/* Possible values for this property are "yellow", "orange" and "green"
