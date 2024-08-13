@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88104bba_ecfa478a",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1490127
+      },
+      "writtenOn": "2024-08-13T16:46:12Z",
+      "side": 1,
+      "message": "Perhaps you could encapsulate this code so it will only occur with EXTERNAL_TPM_CLEAR_REQUEST set.",
+      "revId": "ef29d2e0fca7abf285a83c6be9d996c8f546524e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
