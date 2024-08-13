@@ -33,6 +33,7 @@ struct fmba {
 } __attribute__((packed));
 
 static struct fmba * const find_fmba(const struct firmware_image *image) {
+#ifdef USE_FLASHROM
 	struct firmware_section section;
 	const uint32_t signature = 0x0FF0A55A;
 	const struct fdbar *fd;
@@ -54,6 +55,9 @@ static struct fmba * const find_fmba(const struct firmware_image *image) {
 		return NULL;
 
 	return (struct fmba * const)(section.data + offset);
+#else
+	return NULL;
+#endif /* USE_FLASHROM */
 }
 
 static bool is_flmstr1_locked(const struct fmba * const fmba)
@@ -132,6 +136,7 @@ int unlock_csme_eve(struct firmware_image *image)
 	return unlock_flmstrs(image, 0xffffff00, 0xffffff00, 0xffffff00);
 }
 
+#ifdef USE_FLASHROM
 /*
  * Determine the platform to pass to ifdtool (e.g. 'adl') by extracting
  * CONFIG_IFD_CHIPSET from the config file in CBFS. However, old nissa firmware
@@ -183,6 +188,7 @@ static int run_ifdtool(const char *image_path, char *platform, const char *extra
 	free(command);
 	return ret;
 }
+#endif /* USE_FLASHROM */
 
 /*
  * Unlock the CSME for recent Intel platforms (CML onwards).
@@ -193,6 +199,7 @@ static int run_ifdtool(const char *image_path, char *platform, const char *extra
  */
 int unlock_csme(struct updater_config *cfg)
 {
+#ifdef USE_FLASHROM
 	const char *temp_path;
 	char *platform;
 	int ret = -1;
@@ -245,4 +252,7 @@ cleanup:
 	free(platform);
 
 	return ret;
+#else
+	return -1;
+#endif /* USE_FLASHROM */
 }
