@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "960afff2_4d4f68c0",
+        "filename": "firmware/avb/vboot_avb_sysdeps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-15T06:41:09Z",
+      "side": 1,
+      "message": "Right. libavb has a separate function `avb_safe_memcmp` for that, so here we don\u0027t have to use `vb2_safe_memcmp`.",
+      "parentUuid": "03ee29a6_f8de1405",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9e9a3f5_a65e43fb",
