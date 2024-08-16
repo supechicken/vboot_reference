@@ -16,6 +16,24 @@
       "message": "Sorry for breaking this, we don\u0027t have a good solution to test the `!USE_FLASHROM` at the moment.\n\nI think the solution should be much simpler than adding all these guards: the platform_csme.c file is only used by cmd_update, which is completely disabled for `!USE_FLASHROM` anyway. You just need to edit the Makefile to move the `futility/platform_csme.c \\` line from the initial `FUTIL_SRCS \u003d` into the `FUTIL_SRCS +\u003d` part guarded by `ifneq ($(filter-out 0,${USE_FLASHROM}),)`.",
       "revId": "3244ea140c1b5b07ebb30f3d17e467d853b0db0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c1deb8_386dd4c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-16T00:37:47Z",
+      "side": 1,
+      "message": "I can\u0027t reproduce this with `make USE_FLASHROM\u003d0 DEBUG\u003d1 futil`. All the call sites of platform_csme functions are in either updater.c or updater_quirks.c, and both files are not compiled if `!USE_FLASHROM`. With the `-Wl,--gc-sections` option in the default `LDFLAGS`, all the symbols in platform_csme.o should be dropped. Did you build futility with custom `LDFLAGS`?\n\nThat said, Julius\u0027 suggestion of the moving platform_csme.c around is the correct solution.\n\n\u003e we don\u0027t have a good solution to test the !USE_FLASHROM at the moment.\n\nUploaded CL:5790404 to cover the case in our tests.",
+      "parentUuid": "979d30ee_2f62c788",
+      "revId": "3244ea140c1b5b07ebb30f3d17e467d853b0db0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
