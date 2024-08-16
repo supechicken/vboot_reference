@@ -32,6 +32,7 @@ test "$(test_quirks " enlarge_image, enlarge_image=2")" = \
 
 # Test data files
 DATA_DIR="${SCRIPT_DIR}/futility/data"
+DRALLION_BIOS="${DATA_DIR}/bios_drallion_signed.bin"
 GERALT_BIOS="${DATA_DIR}/bios_geralt_cbfs.bin"
 LINK_BIOS="${DATA_DIR}/bios_link_mp.bin"
 PEPPY_BIOS="${DATA_DIR}/bios_peppy_mp.bin"
@@ -477,6 +478,13 @@ cp -f "${GERALT_BIOS}" image.bin
 cmp \
   <(jq -S <"${TMP}.json.out") \
   <(jq -S <"${SCRIPT_DIR}/futility/bios_geralt_cbfs.manifest.json")
+
+echo "TEST: Manifest (--manifest, -i, image.bin) for Wilco"
+cp -f "${DRALLION_BIOS}" image.bin
+"${FUTILITY}" update -i image.bin --manifest >"${TMP}.json.out"
+cmp \
+  <(jq -S <"${TMP}.json.out") \
+  <(jq -S <"${SCRIPT_DIR}/futility/bios_drallion.manifest.json")
 
 # Test archive and manifest. CL_TAG is for custom_label_tag.
 A="${TMP}.archive"

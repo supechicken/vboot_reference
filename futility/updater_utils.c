@@ -7,6 +7,7 @@
 
 #include <assert.h>
 #include <limits.h>
+#include <stdbool.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <string.h>
@@ -111,6 +112,12 @@ static int load_firmware_version(struct firmware_image *image,
 	return 0;
 }
 
+static bool is_wilco_image(const struct firmware_image *image)
+{
+	/* Only wilco device (e.g. sarien & drallion) has DIAG_NVRAM. */
+	return firmware_section_exists(image, FMAP_RW_DIAG_NVRAM);
+}
+
 /*
  * Loads the version of "ecrw" CBFS file within `section_name` of `image_file`.
  * Returns the version string on success; otherwise an empty string.
@@ -124,6 +131,14 @@ static char *load_ecrw_version(const struct firmware_image *image,
 
 	/* EC image or older AP images may not have the section. */
 	if (!firmware_section_exists(image, section_name))
+		goto done;
+
+	/*
+	 * Wilco image also has CBFS file ecrw.version, but it's meaning is
+	 * different from the same CBFS file in other images. Therefore,
+	 * wilco images should be skipped here.
+	 */
+	if (is_wilco_image(image))
 		goto done;
 
 	const char *ecrw_version_file = create_temp_file(&tempfile_head);
