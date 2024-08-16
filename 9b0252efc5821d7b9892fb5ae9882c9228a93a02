@@ -39,6 +39,23 @@
       },
       "revId": "9b0252efc5821d7b9892fb5ae9882c9228a93a02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5b898b_85f0a361",
+        "filename": "tests/futility/data/bios_drallion_signed.bin",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-16T13:59:45Z",
+      "side": 1,
+      "message": "I really don\u0027t want to add a random 32M data just for a test, especially it\u0027s not a common case.\n\nCan you instead patch an image to add the section, and to add a broken ecrw.version for testing?",
+      "revId": "9b0252efc5821d7b9892fb5ae9882c9228a93a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
