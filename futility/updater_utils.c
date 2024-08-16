@@ -46,6 +46,14 @@ void strip_string(char *s, const char *pattern)
 	}
 }
 
+static void ensure_printable(char *s)
+{
+	assert(s);
+	while (*s && isprint(*s))
+		s++;
+	*s = '\0';
+}
+
 /*
  * Saves everything from stdin to given output file.
  * Returns 0 on success, otherwise failure.
@@ -148,6 +156,9 @@ static char *load_ecrw_version(const struct firmware_image *image,
 		goto done;
 
 	version = strndup((const char *)data, size);
+
+	/* Wilco image may have non-printable characters in "ecrw.version". */
+	ensure_printable(version);
 
 done:
 	if (!version)
