@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "09ad7168_8dc0f50f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-16T09:44:57Z",
+      "side": 1,
+      "message": "Please check PS2.",
+      "parentUuid": "a8eb5020_80904e65",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c9679b45_348ed92c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -186,6 +210,24 @@
       "side": 1,
       "message": "\u003e \u003e Wilco is in already in the quirks_records\n\u003e It used to be there, but you removed it in CL:4864628 last year.\n\n  Ah you are right :)\n\n\u003e \u003e it\u0027s not increasing the time we have to support that\n\u003e Trogdor is in the list, whose AUE date (2031) is later than Wilco (2030), so adding Wilco back wouldn\u0027t make things worse? Are you okay with that?\n\n I\u0027m OK with that.",
       "parentUuid": "03f24d06_2648a394",
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2e63d2_042d0d5b",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-16T09:44:57Z",
+      "side": 1,
+      "message": "`updater_setup_quirks` isn\u0027t called for `--manifest`, so I give up on this approach. Please check PS2.",
+      "parentUuid": "d2670546_c39aa21f",
       "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
