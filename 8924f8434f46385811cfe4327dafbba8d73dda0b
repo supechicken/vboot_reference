@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8eb5020_80904e65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-16T06:47:33Z",
+      "side": 1,
+      "message": "Well, if its content happens to be all printable (which is possible), it still doesn\u0027t make sense to print it in `\"ecrw\": \"xxx\"`. So I\u0027d like to avoid printing confusing information.\n\nAn alternative way is to check if \"ecrw.version\" match the expected pattern (for example, the length should be at least 4 (Wilco\u0027s file is 3 bytes)). If it doesn\u0027t, skip printing the ecrw version. However, I don\u0027t like this approach either, because it would need extra assumptions about the EC version string.\n\nThat said, if there\u0027s no good way to tell Wilco devices from others, I\u0027m okay with either of the above workarounds.",
+      "parentUuid": "4c08df51_c879ebe5",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9679b45_348ed92c",
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "I\u0027d prefer such hacks to be implemented as quirks.\n\nyou can create a quirk like QUIRK_IGNORE_ECRW_VER, and either enable the quirk in the wilco firmware image builders (although this implies another firmware release, which we probably want to prevent), or add that to the platform-specific quirks list.",
       "parentUuid": "0f54456d_62cdd52d",
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d89fcd_79396cf9",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-16T06:47:33Z",
+      "side": 1,
+      "message": "This definitely isn\u0027t worth a firmware release. So, are you okay to add Wilco names to `quirks_records`? Your comment (in CL:3458024) says that should NOT be used anymore.",
+      "parentUuid": "efe1594e_e912318b",
       "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
