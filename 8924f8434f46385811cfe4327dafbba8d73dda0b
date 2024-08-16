@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c08df51_c879ebe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-16T06:29:38Z",
+      "side": 1,
+      "message": "if that\u0027s the case, what about just do a isprint() check and replace that with \u0027\u003cnot printable\u003e for the manifest?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0f54456d_62cdd52d",
@@ -14,6 +37,24 @@
       "writtenOn": "2024-08-16T05:50:25Z",
       "side": 1,
       "message": "Let me know if there\u0027s a better way to tell Wilco from others.",
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe1594e_e912318b",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-16T06:29:38Z",
+      "side": 1,
+      "message": "I\u0027d prefer such hacks to be implemented as quirks.\n\nyou can create a quirk like QUIRK_IGNORE_ECRW_VER, and either enable the quirk in the wilco firmware image builders (although this implies another firmware release, which we probably want to prevent), or add that to the platform-specific quirks list.",
+      "parentUuid": "0f54456d_62cdd52d",
       "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
