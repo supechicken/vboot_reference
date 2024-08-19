@@ -288,6 +288,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e77c76a_4ad58faa",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-19T03:04:08Z",
+      "side": 1,
+      "message": "I\u0027m ok with the PS1 option, but it is better to prevent device-specific logic in the generic code. I tried to keep all device-specific stuff to quirks, or name them using the feature (or bug) instead of the device.\n\nIf non_cros_ec is not the right name, what about `if (!has_printable_ec_ver(x))` or something else?",
+      "parentUuid": "a49129b3_9d3ae5ac",
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98f04565_ab7b3360",
         "filename": "futility/updater_utils.c",
         "patchSetId": 1
