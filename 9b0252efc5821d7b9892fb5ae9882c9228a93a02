@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209e8409_b8555f7c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-19T03:14:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "aa59fcb8_071366fe",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 9
+      },
+      "revId": "9b0252efc5821d7b9892fb5ae9882c9228a93a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d5b898b_85f0a361",
@@ -125,6 +149,24 @@
       "side": 1,
       "message": "SGTM",
       "parentUuid": "61a269e0_4e9c2779",
+      "revId": "9b0252efc5821d7b9892fb5ae9882c9228a93a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc104fc4_6ec2ed38",
+        "filename": "tests/futility/data/bios_drallion_signed.bin",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-19T03:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a16a8d_753e2b67",
       "revId": "9b0252efc5821d7b9892fb5ae9882c9228a93a02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
