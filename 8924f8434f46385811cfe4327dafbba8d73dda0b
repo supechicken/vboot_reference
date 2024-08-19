@@ -270,6 +270,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a49129b3_9d3ae5ac",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-19T02:49:09Z",
+      "side": 1,
+      "message": "Sorry to re-open this, but I actually like the PS1 version better. The only minor problem with your suggestion about `has_non_cros_ec` is that, there\u0027s also Zephyr EC. Therefore the function should be renamed to `has_wilco_ec(image)`. Let me know if you\u0027re okay with that (with your suggested comments).",
+      "parentUuid": "359deecf_f94a3443",
+      "revId": "8924f8434f46385811cfe4327dafbba8d73dda0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98f04565_ab7b3360",
         "filename": "futility/updater_utils.c",
         "patchSetId": 1
