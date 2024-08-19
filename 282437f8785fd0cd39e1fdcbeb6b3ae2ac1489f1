@@ -570,6 +570,24 @@
       "parentUuid": "309542f1_2e1a08b1",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "666a6b28_30b80d2e",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2024-08-19T09:25:10Z",
+      "side": 1,
+      "message": "\u003e Is Android reusing that same header format for two different pieces?\n\nYes - see [this slide](https://docs.google.com/presentation/d/1jHYoKIn9Qj5NCrvtz2vFRe3mg-rEnWA3r8IV_CZiLEI/edit?resourcekey\u003d0-U_C6GFY8yYq6STLfhFXhmw#slide\u003did.g2158409f8fc_0_2) from go/al-eng-bootcamp.",
+      "parentUuid": "5aceca03_97177007",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
