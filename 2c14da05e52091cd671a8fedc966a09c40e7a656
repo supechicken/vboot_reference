@@ -33,6 +33,24 @@
       "message": "The Android code is under Apache license. It\u0027s compatible with the BSC license that the vboot project is under. Therefore I think we could add the `system/tools/mkbootimg` repo to the chromiumos manifest.\n\n@jwerner@chromium.org I wonder if we could keep this file here under Apache license. There is no requirement for all the code in vboot_reference to be BSD, right?",
       "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c22153dc_963fae10",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-19T11:18:18Z",
+      "side": 1,
+      "message": "@korneld@google.com\n\nActually, I just recalled that Apache 2.0 is not compatible with GPLv2, which leaves us few options:\n\n1. Rewrite the struct definition by ourselves, so that we can have whatever license we want. This option is easier, but with higher risks.\n2. Ask the upstream to re-license it to something like `Apache OR BSD`. I haven\u0027t checked if BSD is allowed in AOSP. The contributors of the header file are all googlers except 2 `@android.com` and 1 `@intel.com`.",
+      "parentUuid": "9d166f2a_a6702c17",
+      "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
