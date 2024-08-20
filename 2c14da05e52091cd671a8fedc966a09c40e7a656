@@ -69,6 +69,24 @@
       "parentUuid": "c22153dc_963fae10",
       "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30688f9_ea8f3963",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-08-20T13:21:13Z",
+      "side": 1,
+      "message": "Hi Julius, so we can use BSD licensed file in vboot_reference repo? If so, the quickest way would be to get the U-Boot BSD licensed file and add it instead of this one.",
+      "parentUuid": "8250eff9_a9ca19d5",
+      "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
