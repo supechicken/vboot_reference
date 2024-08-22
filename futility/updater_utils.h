@@ -106,6 +106,14 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
 int write_system_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
 			  const char *const regions[], size_t regions_len);
+/*
+ * Update EC (RO+RW) firmware if possible.
+ * If the image has no data or if the section does not exist, ignore and return success.
+ * Returns 0 if success, non-zero if error.
+ */
+int write_system_ec_firmware(struct updater_config *cfg,
+			     const struct firmware_image *image,
+			     const char *region);
 
 struct firmware_section {
 	uint8_t *data;
