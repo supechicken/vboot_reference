@@ -868,18 +868,20 @@ static int check_compatible_tpm_keys(struct updater_config *cfg,
 static int update_ec_firmware(struct updater_config *cfg)
 {
 	struct firmware_image *ec_image = &cfg->ec_image;
+
 	if (!has_valid_update(cfg, ec_image, NULL, 0))
 		return 0;
 
-	const char *sections[] = {"WP_RO"};
-	size_t num_sections = 0;
+	const char *region;
 	int r = try_apply_quirk(QUIRK_EC_PARTIAL_RECOVERY, cfg);
 	switch (r) {
-	case EC_RECOVERY_FULL:
-		break; /* 0 num_sections implies write whole image. */
+	case EC_RECOVERY_FULL: {
+		region = "";  /* The whole image (RO+RW) */
+		break;
+	}
 
 	case EC_RECOVERY_RO: {
-		num_sections = ARRAY_SIZE(sections);
+		region = "RO";
 		break;
 	}
 
@@ -896,8 +898,7 @@ static int update_ec_firmware(struct updater_config *cfg)
 		return 0;
 	}
 
-	/* TODO(quasisec): Uses cros_ec to program the EC. */
-	return write_system_firmware(cfg, ec_image, sections, num_sections);
+	return write_system_ec_firmware(cfg, ec_image, region);
 }
 
 const char * const updater_error_messages[] = {

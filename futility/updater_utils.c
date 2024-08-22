@@ -660,6 +660,32 @@ int write_system_firmware(struct updater_config *cfg,
 }
 
 /*
+ * Update EC (RO+RW) firmware if possible.
+ * If the image has no data or if the section does not exist, ignore and return success.
+ * Returns 0 if success, non-zero if error.
+ */
+int write_system_ec_firmware(struct updater_config *cfg,
+			     const struct firmware_image *image,
+			     const char *region)
+{
+	const char *fpath;
+	char *cmd;
+	int r;
+
+	fpath = get_firmware_image_temp_file(image, &cfg->tempfiles);
+	if (!fpath)
+		return 1;
+
+	INFO("Updating EC image using ectool updateimage...\n");
+	/* TODO(hungte): Replace the `system` by `subprocess_run`. */
+	ASPRINTF(&cmd, "ectool updateimage %s %s >&2", fpath, region);
+	r = WEXITSTATUS(system(cmd));
+	VB2_DEBUG("cmd [%s] returned: %d\n", cmd, r);
+	free(cmd);
+	return r;
+}
+
+/*
  * Helper function to create a new temporary file.
  * All files created will be removed remove_all_temp_files().
  * Returns the path of new file, or NULL on failure.
