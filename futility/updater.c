@@ -866,15 +866,16 @@ static int update_ec_firmware(struct updater_config *cfg)
 	if (!has_valid_update(cfg, ec_image, NULL, 0))
 		return 0;
 
-	const char *sections[] = {"WP_RO"};
-	size_t num_sections = 0;
+	enum ec_image_area area;
 	int r = try_apply_quirk(QUIRK_EC_PARTIAL_RECOVERY, cfg);
 	switch (r) {
-	case EC_RECOVERY_FULL:
-		break; /* 0 num_sections implies write whole image. */
+	case EC_RECOVERY_FULL: {
+		area = EC_IMAGE_ALL;
+		break;
+	}
 
 	case EC_RECOVERY_RO: {
-		num_sections = ARRAY_SIZE(sections);
+		area = EC_IMAGE_RO;
 		break;
 	}
 
@@ -891,8 +892,7 @@ static int update_ec_firmware(struct updater_config *cfg)
 		return 0;
 	}
 
-	/* TODO(quasisec): Uses cros_ec to program the EC. */
-	return write_system_firmware(cfg, ec_image, sections, num_sections);
+	return write_system_ec_firmware(cfg, ec_image, area);
 }
 
 const char * const updater_error_messages[] = {
