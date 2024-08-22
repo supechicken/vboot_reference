@@ -660,6 +660,66 @@ int write_system_firmware(struct updater_config *cfg,
 }
 
 /*
+ * Returns True if we should start the update process for given image.
+ */
+static int has_valid_update(struct updater_config *cfg,
+			const struct firmware_image *image,
+			const char *section_name,
+			int is_host)
+{
+	if (!image->data) {
+		VB2_DEBUG("No data in <%s> image.\n", image->programmer);
+		return 0;
+	}
+	if (section_name && !firmware_section_exists(image, section_name)) {
+		VB2_DEBUG("Image %s<%s> does not have section %s.\n",
+			  image->file_name, image->programmer, section_name);
+		return 0;
+	}
+	/* Currently only host emulation is supported. */
+	if (cfg->emulation && !is_host) {
+		INFO("(emulation) Update %s from %s to %s (%d bytes), "
+		     "skipped for non-host targets in emulation.\n",
+		     section_name ? section_name : "whole image",
+		     image->file_name, image->programmer, image->size);
+		return 0;
+	}
+	return 1;
+}
+
+/*
+ * Update EC (RO+RW) firmware if possible.
+ * If the image has no data or if the section does not exist, ignore and return success.
+ * Returns 0 if success, non-zero if error.
+ */
+int write_system_ec_firmware(struct updater_config *cfg,
+			     const struct firmware_image *image)
+{
+	const char *fpath;
+	char *cmd;
+	int r;
+
+	if (!has_valid_update(cfg, image, NULL, 0))
+		return 0;
+
+	if (is_ec_write_protection_enabled(cfg)) {
+		ERROR("Target ec is write protected, skip updating.\n");
+		return 0;
+	}
+
+	fpath = get_firmware_image_temp_file(image, &cfg->tempfiles);
+	if (!fpath)
+		return 1;
+
+	INFO("Updating EC image using ectools updateimage...\n");
+	ASPRINTF(&cmd, "ectools updateimage %s >&2", fpath);
+	r = system(cmd);
+	VB2_DEBUG("cmd [%s] returned: %d\n", cmd, WEXITSTATUS(r));
+	free(cmd);
+	return WEXITSTATUS(r);
+}
+
+/*
  * Helper function to create a new temporary file.
  * All files created will be removed remove_all_temp_files().
  * Returns the path of new file, or NULL on failure.

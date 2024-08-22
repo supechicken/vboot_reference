@@ -291,34 +291,6 @@ static int set_try_cookies(struct updater_config *cfg, const char *target,
 }
 
 /*
- * Returns True if we should start the update process for given image.
- */
-static int has_valid_update(struct updater_config *cfg,
-			const struct firmware_image *image,
-			const char *section_name,
-			int is_host)
-{
-	if (!image->data) {
-		VB2_DEBUG("No data in <%s> image.\n", image->programmer);
-		return 0;
-	}
-	if (section_name && !firmware_section_exists(image, section_name)) {
-		VB2_DEBUG("Image %s<%s> does not have section %s.\n",
-			  image->file_name, image->programmer, section_name);
-		return 0;
-	}
-	/* Currently only host emulation is supported. */
-	if (cfg->emulation && !is_host) {
-		INFO("(emulation) Update %s from %s to %s (%d bytes), "
-		     "skipped for non-host targets in emulation.\n",
-		     section_name ? section_name : "whole image",
-		     image->file_name, image->programmer, image->size);
-		return 0;
-	}
-	return 1;
-}
-
-/*
  * Preserve the GBB contents from image_from to image_to.
  * HWID is always preserved, and flags are preserved only if preserve_flags set.
  * Returns 0 if success, otherwise -1 if GBB header can't be found or if HWID is
@@ -859,27 +831,6 @@ static int check_compatible_tpm_keys(struct updater_config *cfg,
 	return 0;
 }
 
-
-/*
- * Update EC (RO+RW) firmware if possible.
- * If the image has no data or if the section does not exist, ignore and return success.
- * Returns 0 if success, non-zero if error.
- */
-static int update_ec_firmware(struct updater_config *cfg)
-{
-	struct firmware_image *ec_image = &cfg->ec_image;
-	if (!has_valid_update(cfg, ec_image, NULL, 0))
-		return 0;
-
-	if (is_ec_write_protection_enabled(cfg)) {
-		ERROR("Target ec is write protected, skip updating.\n");
-		return 0;
-	}
-
-	/* TODO(quasisec): Uses cros_ec to program the EC. */
-	return write_system_firmware(cfg, ec_image, NULL, 0);
-}
-
 const char * const updater_error_messages[] = {
 	[UPDATE_ERR_DONE] = "Done (no error)",
 	[UPDATE_ERR_NEED_RO_UPDATE] = "RO changed and no WP. Need full update.",
@@ -1106,7 +1057,7 @@ static enum updater_error_codes update_whole_firmware(
 
 	/* FMAP may be different so we should just update all. */
 	if (write_system_firmware(cfg, image_to, NULL, 0) ||
-	    update_ec_firmware(cfg))
+	    write_system_ec_firmware(cfg, &cfg->ec_image))
 		return UPDATE_ERR_WRITE_FIRMWARE;
 
 	return UPDATE_ERR_DONE;
