@@ -953,7 +953,7 @@ ${FWLIB}: ${FWLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
+	${Q}ar qcT $@ $^
 
 .PHONY: tlcl
 tlcl: ${TLCL}
@@ -962,7 +962,7 @@ ${TLCL}: ${TLCL_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
+	${Q}ar qcT $@ $^
 
 # ----------------------------------------------------------------------------
 # Host library(s)
@@ -981,7 +981,7 @@ ${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${TLCL_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
+	${Q}ar qcT $@ $^
 
 .PHONY: hostlib
 hostlib: ${HOSTLIB} ${HOSTLIB_STATIC}
@@ -991,7 +991,7 @@ ${HOSTLIB_STATIC}: ${HOSTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
+	${Q}ar qcT $@ $^
 
 ${HOSTLIB}: ${HOSTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
@@ -1187,7 +1187,7 @@ ${TESTLIB}: ${TESTLIB_OBJS}
 	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
 	${Q}rm -f $@
 	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
-	${Q}ar qc $@ $^
+	${Q}ar qcT $@ $^
 
 DUT_TEST_BINS = $(addprefix ${BUILD}/,${DUT_TEST_NAMES})
 
