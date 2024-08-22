@@ -871,33 +871,13 @@ static int update_ec_firmware(struct updater_config *cfg)
 	if (!has_valid_update(cfg, ec_image, NULL, 0))
 		return 0;
 
-	const char *sections[] = {"WP_RO"};
-	size_t num_sections = 0;
-	int r = try_apply_quirk(QUIRK_EC_PARTIAL_RECOVERY, cfg);
-	switch (r) {
-	case EC_RECOVERY_FULL:
-		break; /* 0 num_sections implies write whole image. */
-
-	case EC_RECOVERY_RO: {
-		num_sections = ARRAY_SIZE(sections);
-		break;
-	}
-
-	case EC_RECOVERY_DONE:
-		/* Done by some quirks, for example EC RO software sync. */
-		return 0;
-
-	default:
-		return r;
-	}
-
 	if (is_ec_write_protection_enabled(cfg)) {
 		ERROR("Target ec is write protected, skip updating.\n");
 		return 0;
 	}
 
 	/* TODO(quasisec): Uses cros_ec to program the EC. */
-	return write_system_firmware(cfg, ec_image, sections, num_sections);
+	return write_system_firmware(cfg, ec_image, NULL, 0);
 }
 
 const char * const updater_error_messages[] = {

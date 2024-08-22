@@ -52,7 +52,6 @@ enum quirk_types {
 	QUIRK_MIN_PLATFORM_VERSION,
 	QUIRK_EXTRA_RETRIES,
 	/* Arch-specific quirks */
-	QUIRK_EC_PARTIAL_RECOVERY,
 	QUIRK_CLEAR_MRC_DATA,
 	QUIRK_PRESERVE_ME,
 	/* Platform-specific quirks (removed after AUE) */
@@ -63,13 +62,6 @@ enum quirk_types {
 	QUIRK_UNLOCK_CSME,
 	/* End of quirks */
 	QUIRK_MAX,
-};
-
-/* Return values from QUIRK_EC_PARTIAL_RECOVERY. */
-enum {
-	EC_RECOVERY_FULL = 0,  /* Must be 0 as default value of quirks. */
-	EC_RECOVERY_RO,
-	EC_RECOVERY_DONE
 };
 
 enum try_update_type {
