@@ -107,6 +107,20 @@ int write_system_firmware(struct updater_config *cfg,
 			  const struct firmware_image *image,
 			  const char *const regions[], size_t regions_len);
 
+enum ec_image_area {
+	EC_IMAGE_ALL,
+	EC_IMAGE_RO,
+	EC_IMAGE_RW,  /* May be RW_A + RW_B for some platforms like fizz */
+};
+
+/*
+ * Update the system EC firmware.
+ * Returns 0 if success, non-zero if error.
+ */
+int write_system_ec_firmware(struct updater_config *cfg,
+			     const struct firmware_image *image,
+			     enum ec_image_area area);
+
 struct firmware_section {
 	uint8_t *data;
 	size_t size;
