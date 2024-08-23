@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c05802_e2b0ee07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-23T14:43:07Z",
+      "side": 1,
+      "message": "CL:5803124",
+      "parentUuid": "0629a4d4_896ac9ff",
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a93b7d7_7e3176bd",
@@ -149,6 +167,30 @@
       "side": 1,
       "message": "The cmd allows me to easily print out the real command, also easier to control optional parameter (region). Let me keep current version for testing \u0026 validation. subprocess_run can be revised later.",
       "parentUuid": "5ef59fa8_8176cd95",
+      "range": {
+        "startLine": 698,
+        "startChar": 5,
+        "endLine": 698,
+        "endChar": 11
+      },
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "322f5a18_b2a3e798",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-23T14:43:07Z",
+      "side": 1,
+      "message": "marked as TODO",
+      "parentUuid": "1414a70c_212d06eb",
       "range": {
         "startLine": 698,
         "startChar": 5,
