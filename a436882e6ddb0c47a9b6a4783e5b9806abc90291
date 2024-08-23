@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d68152a_c7d4559c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-23T14:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d28e8ef_77278d20",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0629a4d4_896ac9ff",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25f80cf_b01f2518",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-23T14:29:18Z",
+      "side": 1,
+      "message": "no I haven\u0027t. waiting for the ectool patch to land.",
+      "parentUuid": "5a93b7d7_7e3176bd",
+      "range": {
+        "startLine": 697,
+        "startChar": 17,
+        "endLine": 697,
+        "endChar": 24
+      },
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ef59fa8_8176cd95",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-08-23T08:45:35Z",
       "side": 1,
       "message": "Can we use `subprocess_run` (possibly create helper functions in futility/ectool.c)?",
+      "range": {
+        "startLine": 698,
+        "startChar": 5,
+        "endLine": 698,
+        "endChar": 11
+      },
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1414a70c_212d06eb",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-23T14:29:18Z",
+      "side": 1,
+      "message": "The cmd allows me to easily print out the real command, also easier to control optional parameter (region). Let me keep current version for testing \u0026 validation. subprocess_run can be revised later.",
+      "parentUuid": "5ef59fa8_8176cd95",
       "range": {
         "startLine": 698,
         "startChar": 5,
