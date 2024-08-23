@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0629a4d4_896ac9ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-23T08:45:35Z",
+      "side": 1,
+      "message": "Need to add `ec-utils/ec-utils` to ebuild\u0027s `RDEPEND`.",
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a93b7d7_7e3176bd",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-23T08:45:35Z",
+      "side": 1,
+      "message": "Isn\u0027t it \"ectool\" without the \"s\"? I guess you haven\u0027t tested this patch on a real device yet.",
+      "range": {
+        "startLine": 697,
+        "startChar": 17,
+        "endLine": 697,
+        "endChar": 24
+      },
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef59fa8_8176cd95",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-23T08:45:35Z",
+      "side": 1,
+      "message": "Can we use `subprocess_run` (possibly create helper functions in futility/ectool.c)?",
+      "range": {
+        "startLine": 698,
+        "startChar": 5,
+        "endLine": 698,
+        "endChar": 11
+      },
+      "revId": "a436882e6ddb0c47a9b6a4783e5b9806abc90291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
