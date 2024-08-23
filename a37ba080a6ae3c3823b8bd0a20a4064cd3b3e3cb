@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1285eeb2_0327f59b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-23T08:26:57Z",
+      "side": 1,
+      "message": "There are callers in autotest: https://source.corp.google.com/search?q\u003dr:chrome-internal%2Fchromeos%2Fsuperproject%20b:main%20case:true%20%22ec_partial_recovery%3D%22. You may want to remove those first.",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "a37ba080a6ae3c3823b8bd0a20a4064cd3b3e3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b356ae8_e89f0085",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-23T08:26:57Z",
+      "side": 1,
+      "message": "Could you elaborate? Do you mean even if `--quirks\u003dec_partial_recovery` is specified, EC RO sync would not be performed?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "a37ba080a6ae3c3823b8bd0a20a4064cd3b3e3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
