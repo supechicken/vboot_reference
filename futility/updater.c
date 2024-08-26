@@ -810,6 +810,12 @@ static int do_check_compatible_tpm_keys(struct updater_config *cfg,
 			     &firmware_version) != 0)
 		return -1;
 
+	/* Skip reading DUT property for emulation. */
+	if (cfg->emulation) {
+		INFO("(emulation) Skip checking\n");
+		return 0;
+	}
+
 	/* The stored tpm_fwver can be 0 (b/116298359#comment3). */
 	tpm_fwver = dut_get_property(DUT_PROP_TPM_FWVER, cfg);
 	if (tpm_fwver < 0) {
