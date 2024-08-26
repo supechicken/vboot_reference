@@ -105,6 +105,24 @@
       "parentUuid": "c30688f9_ea8f3963",
       "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0551ab97_a0487530",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-08-26T10:44:36Z",
+      "side": 1,
+      "message": "I talked with opensource-licensing@ . The preferred way to do this is to get u-boot version of the file and update missing part. It is the simplest and fastest solution. I will update the file.",
+      "parentUuid": "19288034_4d129139",
+      "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
