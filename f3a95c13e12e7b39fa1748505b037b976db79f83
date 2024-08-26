@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fc87fcc_5e8f15c1",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-26T05:44:54Z",
+      "side": 1,
+      "message": "I didn\u0027t notice this for other futility functions. AFAICT, we don\u0027t have duplicate comments in .c files in coreboot, vboot firmware code, depthcharge. That\u0027s IMO a common practice for software development (so that probably no repo would document that in its coding style guideline). The comments in .h explain the expected behavior. The comments in .c, if any, explain how the expected behavior is implemented. Therefore, in this particular case, I think the comments belong to the header file. `load_system_firmware` above doesn\u0027t have the comments, so I don\u0027t think we need to worry about consistency here. This file is already inconsistent anyway.\n\nIn my own experience, duplicate comments in .c are often the result of changing a static function to non-static and forgetting to remove the comments in .c. People also tend to remove the duplicate comments, for example in CL:4158631.",
+      "parentUuid": "7b2c68e7_161c7e5a",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 3
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea459c2d_e3d1fe43",
         "filename": "futility/updater_utils.c",
         "patchSetId": 10
