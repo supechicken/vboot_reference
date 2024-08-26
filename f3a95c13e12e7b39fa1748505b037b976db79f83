@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b2c68e7_161c7e5a",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-26T04:32:31Z",
+      "side": 1,
+      "message": "Do we have a coding style policy here? All other functions in updater related files have the same comments both in header and  implementation files so I\u0027d like to keep that style?",
+      "parentUuid": "bbc6bad5_17e2d763",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 3
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea459c2d_e3d1fe43",
         "filename": "futility/updater_utils.c",
         "patchSetId": 10
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-26T03:58:41Z",
       "side": 1,
       "message": "Or let roccochen@ do it?",
+      "range": {
+        "startLine": 680,
+        "startChar": 9,
+        "endLine": 680,
+        "endChar": 15
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93cefbe3_81f2f660",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-26T04:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea459c2d_e3d1fe43",
       "range": {
         "startLine": 680,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a36288_34951b55",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-26T04:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a960e0f3_f0622eba",
+      "range": {
+        "startLine": 681,
+        "startChar": 36,
+        "endLine": 681,
+        "endChar": 38
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1905f943_0dd30a28",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-08-26T03:58:41Z",
       "side": 1,
       "message": "This is no longer correct in PS10. Also, since `region` is NOT the FMAP region/section name, I think we should use enum here instead of a string:\n\n```\nenum ec_image_region {\n    EC_IMAGE_ALL,\n    EC_IMAGE_RO,\n    EC_IMAGE_RW,  // This should be RW_A+RW_B for fizz (left a comment on CL:5797299)\n};\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 88
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5334d3a_6646114e",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-26T04:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1905f943_0dd30a28",
       "range": {
         "startLine": 110,
         "startChar": 3,
