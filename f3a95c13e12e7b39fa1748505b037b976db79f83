@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53cba31_b1fbf615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-26T03:58:41Z",
+      "side": 1,
+      "message": "Not directly related to this patch, but I think we should add test cases for updating EC.",
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc6bad5_17e2d763",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-26T03:58:41Z",
+      "side": 1,
+      "message": "As these already exist in the header file, we may remove the comments here.",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 3
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea459c2d_e3d1fe43",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-26T03:58:41Z",
+      "side": 1,
+      "message": "Or let roccochen@ do it?",
+      "range": {
+        "startLine": 680,
+        "startChar": 9,
+        "endLine": 680,
+        "endChar": 15
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a960e0f3_f0622eba",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-26T03:58:41Z",
+      "side": 1,
+      "message": "quotes?",
+      "range": {
+        "startLine": 681,
+        "startChar": 36,
+        "endLine": 681,
+        "endChar": 38
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1905f943_0dd30a28",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-26T03:58:41Z",
+      "side": 1,
+      "message": "This is no longer correct in PS10. Also, since `region` is NOT the FMAP region/section name, I think we should use enum here instead of a string:\n\n```\nenum ec_image_region {\n    EC_IMAGE_ALL,\n    EC_IMAGE_RO,\n    EC_IMAGE_RW,  // This should be RW_A+RW_B for fizz (left a comment on CL:5797299)\n};\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 88
+      },
+      "revId": "f3a95c13e12e7b39fa1748505b037b976db79f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
