@@ -253,6 +253,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, struct vb2_kernel_params *
 		GptPartitionNames[GPT_ANDROID_BOOT],
 		GptPartitionNames[GPT_ANDROID_INIT_BOOT],
 		GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
+		GptPartitionNames[GPT_ANDROID_PVMFW],
 		NULL,
 	};
 	bool need_verification = vb2_need_kernel_verification(ctx);
@@ -261,11 +262,22 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, struct vb2_kernel_params *
 	params->flags &= ~VB2_KERNEL_TYPE_MASK;
 	params->flags |= VB2_KERNEL_TYPE_BOOTIMG;
 
+	/*
+	 * Check if the buffer is zero sized (ie. pvmfw loading is not
+	 * requested) or the pvmfw partition does not exist. If so skip
+	 * loading and verifying it.
+	 */
+	if (params->pvmfw_buffer_size == 0 || vb2_load_pvmfw(params, gpt, disk_handle)) {
+		VB2_DEBUG("Couldn't load pvmfw partition. Ignoring.\n");
+		boot_partitions[3] = NULL;
+		params->pvmfw_size = 0;
+	}
+
 	ret = vboot_preload_partition(params, gpt, disk_handle);
 	if (ret != VB2_SUCCESS) {
 		VB2_DEBUG("Cannot preload android partitions\n");
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
-	}
+	}	vboot_preload_partition(params, gpt, disk_handle);
 
 	avb_ops = vboot_avb_ops_new(ctx, params, gpt, disk_handle);
 	if (avb_ops == NULL) {
