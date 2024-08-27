@@ -353,6 +353,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		GptPartitionNames[GPT_ANDROID_BOOT],
 		GptPartitionNames[GPT_ANDROID_INIT_BOOT],
 		GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
+		GptPartitionNames[GPT_ANDROID_PVMFW],
 		NULL,
 	};
 	const char *slot_suffix = NULL;
@@ -368,6 +369,16 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		slot_suffix = GPT_ENT_NAME_ANDROID_B_SUFFIX;
 	else
 		return VB2_ERROR_ANDROID_INVALID_SLOT_SUFFIX;
+
+	/*
+	 * Check if the buffer is zero sized (ie. pvmfw loading is not
+	 * requested)
+	 */
+	if (params->pvmfw_buffer_size == 0) {
+		VB2_DEBUG("Ignore loading pvmfw partition. Ignoring.\n");
+		boot_partitions[3] = NULL;
+		params->pvmfw_size = 0;
+	}
 
 	avb_ops = vboot_avb_ops_new(ctx, params, gpt, disk_handle, slot_suffix);
 
