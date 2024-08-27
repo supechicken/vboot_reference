@@ -153,10 +153,15 @@ static AvbIOResult reserve_buffers(AvbOps *ops)
 	enum GptPartition part;
 
 	for (part = GPT_ANDROID_BOOT; part < GPT_ANDROID_PRELOADED_NUM; part++) {
+		/* Skip pvmfw for now and set up it later */
+		if (part == GPT_ANDROID_PVMFW)
+			continue;
+
 		partition_name = GptPartitionNames[part];
 		err = get_partition_size(gpt, partition_name, slot_suffix, &size);
 		if (err)
 			return err;
+
 		if (buffer + size > kernel_buffer_end) {
 			VB2_DEBUG("Buffer too small for '%s': has %lu requested %" PRIu64 "\n",
 				  partition_name, kernel_buffer_end - buffer, size);
@@ -169,6 +174,31 @@ static AvbIOResult reserve_buffers(AvbOps *ops)
 			  parts[part].buffer, parts[part].alloced_size);
 		buffer += size;
 	}
+
+	/* If pvmfw is not requested to load then skip any preparions */
+	if (params->pvmfw_buffer_size == 0) {
+		parts[GPT_ANDROID_PVMFW].buffer = NULL;
+		parts[GPT_ANDROID_PVMFW].alloced_size = 0;
+		parts[GPT_ANDROID_PVMFW].loaded_size = 0;
+
+		return AVB_IO_RESULT_OK;
+	}
+
+	partition_name = GptPartitionNames[GPT_ANDROID_PVMFW];
+	err = get_partition_size(gpt, partition_name, slot_suffix, &size);
+	if (err)
+		return err;
+
+	/* Make sure the buffer is big enough */
+	if (size > params->pvmfw_buffer_size) {
+		VB2_DEBUG("Buffer too small for %s': has %" PRIu32 " requested %" PRIu64 "\n",
+			  partition_name, params->pvmfw_buffer_size, size);
+		return AVB_IO_RESULT_ERROR_INSUFFICIENT_SPACE;
+	}
+
+	parts[GPT_ANDROID_PVMFW].buffer = params->pvmfw_buffer;
+	parts[GPT_ANDROID_PVMFW].alloced_size = params->pvmfw_buffer_size;
+	parts[GPT_ANDROID_PVMFW].loaded_size = 0;
 
 	return AVB_IO_RESULT_OK;
 }

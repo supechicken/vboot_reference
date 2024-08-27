@@ -258,6 +258,36 @@ static vb2_error_t prepare_vendor_ramdisks(struct vendor_boot_img_hdr_v4 *vendor
 	return VB2_SUCCESS;
 }
 
+static vb2_error_t prepare_pvmfw(AvbOps *avb_ops, struct vb2_kernel_params *params)
+{
+	struct boot_img_hdr_v4 *pvmfw_hdr;
+	size_t pvmfw_size;
+
+	if (vb2_android_get_buffer(avb_ops, GPT_ANDROID_PVMFW, (void **)&pvmfw_hdr,
+				   &pvmfw_size)) {
+		VB2_DEBUG("Cannot get information about pvmfw paritition\n");
+		return VB2_ERROR_ANDROID_BROKEN_PVMFW;
+	}
+
+	/* If loaded pvmfw is smaller then boot header or the boot header magic is invalid, then
+	 * fail */
+	if (pvmfw_size < sizeof(*pvmfw_hdr) ||
+	    memcmp(pvmfw_hdr->magic, BOOT_MAGIC, BOOT_MAGIC_SIZE)) {
+		VB2_DEBUG("Incorrect magic or size (%zx) of 'pvmfw' image\n", pvmfw_size);
+		return VB2_ERROR_ANDROID_BROKEN_PVMFW;
+	}
+
+	/* Get pvmfw code size */
+	params->pvmfw_size = pvmfw_hdr->kernel_size;
+
+	/* pvmfw code starts after the boot header. Discard the boot header, by
+	 * moving the buffer start and triming its size. */
+	params->pvmfw_buffer = ((void *)pvmfw_hdr) + BOOT_HEADER_SIZE;
+	params->pvmfw_buffer_size -= BOOT_HEADER_SIZE;
+
+	return VB2_SUCCESS;
+}
+
 /*
  * This function validates the partitions magic numbers and move them into place requested
  * from linux.
@@ -325,6 +355,9 @@ static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 	vendor_hdr->cmdline[sizeof(vendor_hdr->cmdline) - 1] = '\0';
 	params->vendor_cmdline_buffer = (char *)vendor_hdr->cmdline;
 
+	if (params->pvmfw_buffer_size != 0)
+		VB2_TRY(prepare_pvmfw(avb_ops, params));
+
 	return VB2_SUCCESS;
 }
 
@@ -340,10 +373,21 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		GptPartitionNames[GPT_ANDROID_BOOT],
 		GptPartitionNames[GPT_ANDROID_INIT_BOOT],
 		GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
+		GptPartitionNames[GPT_ANDROID_PVMFW],
 		NULL,
 	};
 	const char *slot_suffix = NULL;
 	bool need_verification = vb2_need_kernel_verification(ctx);
+
+	/*
+	 * Check if the pvmfw buffer is zero sized
+	 * (ie. pvmfw loading is not requested)
+	 */
+	if (params->pvmfw_buffer_size == 0) {
+		VB2_DEBUG("Ignore loading pvmfw partition. Ignoring.\n");
+		boot_partitions[3] = NULL;
+		params->pvmfw_size = 0;
+	}
 
 	/* Update flags to mark loaded GKI image */
 	params->flags = VB2_KERNEL_TYPE_BOOTIMG;
