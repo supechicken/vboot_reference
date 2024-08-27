@@ -141,6 +141,10 @@ static AvbIOResult get_preloaded_partition(AvbOps *ops,
 		*out_pointer = (uint8_t *)avbctx->params->init_boot_buffer;
 		*out_num_bytes_preloaded = avbctx->params->init_boot_size;
 		return AVB_IO_RESULT_OK;
+	} else if (!strncmp(partition, GptPartitionNames[GPT_ANDROID_PVMFW], namelen)) {
+		*out_pointer = (uint8_t *)avbctx->params->pvmfw_buffer;
+		*out_num_bytes_preloaded = avbctx->params->pvmfw_size;
+		return AVB_IO_RESULT_OK;
 	}
 
 	return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
