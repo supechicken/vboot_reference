@@ -263,6 +263,70 @@ out:
 	return AVB_IO_RESULT_OK;
 }
 
+static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
+				  struct vb2_kernel_params *params,
+				  vb2ex_disk_handle_t disk_handle,
+				  uint32_t *bytes_used)
+{
+	VbExStream_t stream;
+	uint64_t part_start, part_size;
+	uint32_t read_ms = 0, start_ts;
+	uint64_t part_bytes;
+	uint8_t *part_pvmfw_buf;
+	vb2_error_t res = VB2_ERROR_LOAD_PARTITION_READ_BODY;
+
+	/* Fail there is no pvmfw partition */
+	if (GptFindPvmfw(gpt, &part_start, &part_size) != GPT_SUCCESS) {
+		VB2_DEBUG("Unable to find pvmfw partition\n");
+		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
+	}
+
+	if (VbExStreamOpen(disk_handle, part_start, part_size,
+			   &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		return res;
+	}
+
+	/*
+	 * Align the placement to the page size so the region can be easily
+	 * secured by MMU.
+	 */
+	params->pvmfw_offset = (*bytes_used + (4096 - 1)) & ~(4096 - 1);
+	part_bytes = gpt->sector_bytes * part_size;
+
+	if (part_bytes > (params->kernel_buffer_size - params->pvmfw_offset)) {
+		VB2_DEBUG("No space left to load pvmfw partition\n");
+		goto out;
+	}
+
+	part_pvmfw_buf = params->kernel_buffer + params->pvmfw_offset;
+
+	/* Load partition to the buffer */
+	start_ts = vb2ex_mtime();
+	if (VbExStreamRead(stream, part_bytes, part_pvmfw_buf)) {
+		VB2_DEBUG("Unable to read pvmfw partition\n");
+		goto out;
+	}
+	read_ms += vb2ex_mtime() - start_ts;
+
+	VB2_DEBUG("part_bytes = %" PRIu64 "\n", part_bytes);
+
+	if (read_ms == 0)  /* Avoid division by 0 in speed calculation */
+		read_ms = 1;
+	VB2_DEBUG("read %u KB in %u ms at %u KB/s.\n",
+		  (uint32_t)(part_bytes) / 1024, read_ms,
+		  (uint32_t)(((part_bytes) * VB2_MSEC_PER_SEC) /
+			  (read_ms * 1024)));
+
+	params->pvmfw_size = part_bytes;
+	*bytes_used += params->pvmfw_size;
+
+	res = VB2_SUCCESS;
+out:
+	VbExStreamClose(stream);
+	return res;
+}
+
 static vb2_error_t vb2_load_ramdisk(GptData *gpt, struct vb2_kernel_params *params,
 				    vb2ex_disk_handle_t disk_handle,
 				    uint64_t *part_start, uint64_t *part_size,
@@ -509,6 +573,17 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 		if (!strcmp(short_partition_name, "init_boot"))
 			*out_pointer = (uint8_t *)avb_data->params->kernel_buffer +
 				       avb_data->params->init_boot_offset;
+
+		ret = AVB_IO_RESULT_OK;
+	} else if (!strcmp(short_partition_name, "pvmfw")) {
+		if (vb2_load_pvmfw(avb_data->vb2_ctx, avb_data->gpt, avb_data->params,
+				   avb_data->disk_handle, &bytes_used)) {
+			return AVB_IO_RESULT_ERROR_IO;
+		}
+
+		*out_pointer = (uint8_t *)avb_data->params->kernel_buffer +
+			       avb_data->params->pvmfw_offset;
+		*out_num_bytes_preloaded = avb_data->params->pvmfw_size;
 
 		ret = AVB_IO_RESULT_OK;
 	}

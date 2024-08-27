@@ -486,10 +486,11 @@ static vb2_error_t vb2_load_avb_android_partition(
 	char *ab_suffix = NULL;
 	AvbSlotVerifyData *verify_data = NULL;
 	AvbOps *avb_ops;
-	static const char * const boot_partitions[] = {
+	const char *boot_partitions[5] = {
 		GPT_ENT_NAME_ANDROID_BOOT,
 		GPT_ENT_NAME_ANDROID_INIT_BOOT,
 		GPT_ENT_NAME_ANDROID_VENDOR_BOOT,
+		GPT_ENT_NAME_ANDROID_PVMFW,
 		NULL,
 	};
 	AvbSlotVerifyFlags avb_flags;
@@ -497,6 +498,18 @@ static vb2_error_t vb2_load_avb_android_partition(
 	vb2_error_t ret;
 	int need_keyblock_valid = need_valid_keyblock(ctx);
 	char *verified_str;
+
+	/*
+	 * Check if the pvmfw partition does not exists. If so skip verifying
+	 * it and loading.
+	 */
+	uint64_t pvmfw_start;
+	uint64_t pvmfw_size;
+	if (GptFindPvmfw(gpt, &pvmfw_start, &pvmfw_size) != GPT_SUCCESS) {
+		VB2_DEBUG("Couldn't find pvmfw partition. Ignoring.\n");
+		boot_partitions[3] = NULL;
+		params->pvmfw_size = 0;
+	}
 
 	ret = GptGetActiveKernelPartitionSuffix(gpt, &ab_suffix);
 	if (ret != GPT_SUCCESS) {
@@ -566,6 +579,10 @@ static vb2_error_t vb2_load_avb_android_partition(
 	 */
 	params->vboot_cmdline_offset = params->kernel_buffer_size -
 	    BOOT_HDR_GKI_SIZE - AVB_CMDLINE_BUF_SIZE;
+
+	if (params->pvmfw_size && (params->pvmfw_offset + params->pvmfw_size) >
+	    params->vboot_cmdline_offset)
+		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 
 	if ((params->init_boot_offset + params->init_boot_size) >
 	    params->vboot_cmdline_offset)
