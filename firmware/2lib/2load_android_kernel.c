@@ -217,6 +217,16 @@ static int vboot_preload_partition(struct vb2_kernel_params *params, GptData *gp
 	return 0;
 }
 
+static vb2_error_t vb2_load_pvmfw(struct vb2_kernel_params *params, GptData *gpt,
+				  const char *slot_suffix, vb2ex_disk_handle_t disk_handle)
+{
+	return vb2_load_android_partition(gpt, GPT_ANDROID_PVMFW, slot_suffix,
+					  params->pvmfw_buffer,
+					  params->pvmfw_buffer_size,
+					  disk_handle, &params->pvmfw_size);
+
+}
+
 vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
 			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle)
 {
@@ -229,6 +239,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		GptPartitionNames[GPT_ANDROID_BOOT],
 		GptPartitionNames[GPT_ANDROID_INIT_BOOT],
 		GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
+		GptPartitionNames[GPT_ANDROID_PVMFW],
 		NULL,
 	};
 	const char *slot_suffix = NULL;
@@ -243,6 +254,18 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		slot_suffix = GPT_ENT_NAME_ANDROID_A_SUFFIX;
 	else if (GptEntryHasName(entry, vb, GPT_ENT_NAME_ANDROID_B_SUFFIX))
 		slot_suffix = GPT_ENT_NAME_ANDROID_B_SUFFIX;
+
+	/*
+	 * Check if the buffer is zero sized (ie. pvmfw loading is not
+	 * requested) or the pvmfw partition does not exist. If so skip
+	 * loading and verifying it.
+	 */
+	if (params->pvmfw_buffer_size == 0 ||
+	    vb2_load_pvmfw(params, gpt, slot_suffix, disk_handle)) {
+		VB2_DEBUG("Couldn't load pvmfw partition. Ignoring.\n");
+		boot_partitions[3] = NULL;
+		params->pvmfw_size = 0;
+	}
 
 	ret = vboot_preload_partition(params, gpt, slot_suffix, disk_handle);
 	if (ret != VB2_SUCCESS) {
