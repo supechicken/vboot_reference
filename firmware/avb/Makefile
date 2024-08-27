@@ -43,6 +43,10 @@ AVB_CFLAGS += -Wno-strict-prototypes
 LIBAVB_OBJS = ${LIBAVB_SRCS:${LIBAVB_SRCDIR}/libavb/%.c=${BUILD}/libavb/%.o}
 FWLIB_OBJS += ${LIBAVB_OBJS}
 
+ifneq (${LOAD_PVMFW},)
+CFLAGS += -DLOAD_PVMFW
+endif
+
 # Catch all avb-related objects and append extra cflags
 ${BUILD}/libavb/%.o: $(addprefix ${LIBAVB_SRCDIR}/libavb/,%.c)
 	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
