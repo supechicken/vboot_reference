@@ -8,8 +8,8 @@
  * Commit: a306f82e5a60ca1fc0be77ca2afa31a01d797295
  */
 
-#ifndef VB2_ANDROID_BOOTIMG_H_
-#define VB2_ANDROID_BOOTIMG_H_
+#ifndef VBOOT_REFERENCE_VB2_ANDROID_BOOTIMG_H_
+#define VBOOT_REFERENCE_VB2_ANDROID_BOOTIMG_H_
 
 #include <stdint.h>
 
@@ -18,6 +18,7 @@
 #define BOOT_NAME_SIZE 16
 #define BOOT_ARGS_SIZE 512
 #define BOOT_EXTRA_ARGS_SIZE 1024
+#define BOOT_HEADER_SIZE 4096
 
 #define VENDOR_BOOT_MAGIC "VNDRBOOT"
 #define VENDOR_BOOT_MAGIC_SIZE 8
@@ -187,4 +188,4 @@ struct vendor_ramdisk_table_entry_v4 {
 	uint32_t board_id[VENDOR_RAMDISK_TABLE_ENTRY_BOARD_ID_SIZE];
 } __attribute__((packed));
 
-#endif /* VB2_ANDROID_BOOTIMG_H_ */
+#endif /* VBOOT_REFERENCE_VB2_ANDROID_BOOTIMG_H_ */
