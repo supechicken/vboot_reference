@@ -422,7 +422,7 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 			  (read_ms * 1024)));
 
 	/* Trim the pvmfw to the requested load size. */
-	params->pvmfw_size = load_bytes;
+	params->pvmfw_out_size = load_bytes;
 
 	res = VB2_SUCCESS;
 out:
@@ -685,7 +685,7 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 		}
 
 		*out_pointer = (uint8_t *)avb_data->params->pvmfw_buffer;
-		*out_num_bytes_preloaded = avb_data->params->pvmfw_size;
+		*out_num_bytes_preloaded = avb_data->params->pvmfw_out_size;
 
 		ret = AVB_IO_RESULT_OK;
 	}

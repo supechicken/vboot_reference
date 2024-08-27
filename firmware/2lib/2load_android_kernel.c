@@ -225,7 +225,7 @@ vb2_error_t vb2_load_android_kernel(
 			VB2_DEBUG("Couldn't find pvmfw partition. Ignoring.\n");
 
 		boot_partitions[3] = NULL;
-		params->pvmfw_size = 0;
+		params->pvmfw_out_size = 0;
 	}
 
 	ret = GptGetActiveKernelPartitionSuffix(gpt, &ab_suffix);

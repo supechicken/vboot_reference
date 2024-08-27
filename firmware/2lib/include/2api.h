@@ -614,14 +614,6 @@ struct vb2_kernel_params {
 	void *kernel_buffer;
 	/* Size of kernel buffer in bytes. */
 	uint32_t kernel_buffer_size;
-	/* Destination buffer for pvmfw. Shall be ignored if pvmfw_size is 0 */
-	void *pvmfw_buffer;
-	/*
-	 * Size of pvmfw buffer in bytes. If non-zero then implementation shall
-	 * try to load pvmfw to the pvmfw buffer. If successful the pvmfw_size
-	 * shall be set to the correct non-zero value.
-	 */
-	uint32_t pvmfw_buffer_size;
 
 	/*
 	 * Outputs from vb2api_load_kernel(); valid only if it returns success.
@@ -671,8 +663,21 @@ struct vb2_kernel_params {
 	/* Boot command from Android BCB on misc partition. */
 	enum vb2_boot_command boot_command;
 
+	/*
+	 * Destination buffer for pvmfw. Shall be ignored if pvmfw_buffer_size is 0.
+	 * This field can be overwritten by implementation and the caller needs
+	 * to respect the new value.
+	 */
+	void *pvmfw_buffer;
+	/*
+	 * Size of pvmfw buffer in bytes. If non-zero then implementation shall
+	 * try to load pvmfw to the pvmfw buffer. This field can be overwritten
+	 * by implementation and the caller needs to respect the new value.
+	 * If successful the pvmfw_out_size shall be set to the correct non-zero value.
+	 */
+	uint32_t pvmfw_buffer_size;
 	/* Size of pvmfw partition in bytes in pvmfw buffer. */
-	uint32_t pvmfw_size;
+	uint32_t pvmfw_out_size;
 };
 
 /*****************************************************************************/
