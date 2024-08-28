@@ -68,6 +68,24 @@
       "parentUuid": "c3a48614_81ea511c",
       "revId": "8a1c72d7ba013a7d4d3c494b1db537e4792efc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e57fd1_c497bf4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-08-28T05:06:25Z",
+      "side": 1,
+      "message": "But then we don\u0027t have a way to write the unit tests for verifying flash behavior against different system properties. Or do you mean providing a \"fake\" default param for --emualte and still allowing --sys_props to override that in the unit tests? That may work.",
+      "parentUuid": "3fe17efc_fa5014e6",
+      "revId": "8a1c72d7ba013a7d4d3c494b1db537e4792efc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
