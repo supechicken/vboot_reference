@@ -50,6 +50,24 @@
       "message": "will this break the unit tests?",
       "revId": "8a1c72d7ba013a7d4d3c494b1db537e4792efc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe17efc_fa5014e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-28T04:59:28Z",
+      "side": 1,
+      "message": "Yes. I just realized that there\u0027s `--sys_props` which can override the DUT property, so we don\u0027t need this patch anymore.\n\nEven better is to provide reasonable default DUT properties for `--emulate`. For example, `tpm_fwver` can be 0, so that the check for TPM keys will be bypassed. Then `futility update --emulate image.bin -i new.bin` can be run without `--sys_props`. What do you think?",
+      "parentUuid": "c3a48614_81ea511c",
+      "revId": "8a1c72d7ba013a7d4d3c494b1db537e4792efc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
