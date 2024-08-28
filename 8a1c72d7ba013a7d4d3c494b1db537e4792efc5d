@@ -86,6 +86,24 @@
       "parentUuid": "3fe17efc_fa5014e6",
       "revId": "8a1c72d7ba013a7d4d3c494b1db537e4792efc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53576bcb_97d64793",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-28T05:08:23Z",
+      "side": 1,
+      "message": "Yes, a \"fake\" default for `--emulate`. `--sys_props` is still supported to override the default.",
+      "parentUuid": "61e57fd1_c497bf4c",
+      "revId": "8a1c72d7ba013a7d4d3c494b1db537e4792efc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
