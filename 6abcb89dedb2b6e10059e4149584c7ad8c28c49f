@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e66d9c_0ac12547",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-08-29T21:01:22Z",
+      "side": 1,
+      "message": "How about `awk \u0027{print $1}\u0027`. Probably owner would decide what is preferable.",
+      "range": {
+        "startLine": 434,
+        "startChar": 61,
+        "endLine": 434,
+        "endChar": 77
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b11e72_20b4477d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-08-29T21:01:22Z",
+      "side": 1,
+      "message": "Shall we print an error message if any step fails along the way?",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 82
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc44e934_34fee8ab",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-08-29T21:01:22Z",
+      "side": 1,
+      "message": "Deferring to owner if this can be cleaner.",
+      "range": {
+        "startLine": 436,
+        "startChar": 2,
+        "endLine": 436,
+        "endChar": 60
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
