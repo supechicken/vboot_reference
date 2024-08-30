@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "451654a7_4310f51b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-08-30T17:16:02Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8738173444873624945) is being automatically retried for the following reasons:\n- Some tests are now retryable:fizz-cq.hw.cq-minimal\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "5bae2aa11afda0e181f97a9d40aea097682e1056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
