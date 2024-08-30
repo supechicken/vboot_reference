@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e329c1_8a28d867",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-08-30T13:47:39Z",
+      "side": 1,
+      "message": "A related problem I found is that `dut_is_remote` will always be false with `--emulate`. Therefore, without this patch, the updater will try to get the crossystem value **on the machine that futility runs** (for example workstation), which seems wrong. IMO `dut_is_remote` should be set to true with `--emulate`. WDYT?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "df039379b0632a2bc04a9842a46d24a5edea844e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
