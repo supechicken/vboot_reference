@@ -55,4 +55,13 @@ int GptFindVendorBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size);
  */
 int GptFindPvmfw(GptData *gpt, uint64_t *start_sector, uint64_t *size);
 
+/**
+ * Find unique GUID for give partition namet.
+ * Must be called after GptNextKernelEntry.
+ *
+ * On return the guid_buf contains the unique GUID of partition.
+ * Returns GPT_SUCCESS if successful.
+ */
+int GptGetUniqueFromName(GptData *gpt, const char *name, Guid *guid);
+
 #endif  /* VBOOT_REFERENCE_CGPTLIB_H_ */
