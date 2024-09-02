@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0467bff_e8c139a9",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-02T08:57:21Z",
+      "side": 1,
+      "message": "I think this can be removed now. I\u0027d prefer removing \"sig-id-in-*\" entirely from the codebase.",
+      "range": {
+        "startLine": 388,
+        "startChar": 4,
+        "endLine": 395,
+        "endChar": 36
+      },
+      "revId": "f3f4d2a7c42c182071c47ce6af8a5ea13034561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb69be64_1fda453c",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-02T08:57:21Z",
+      "side": 1,
+      "message": "I\u0027m confused of the \"fully migrated\" term. After this CL, the migration from setvars.sh to signer_config.csv should be considered finished, right? The actual reason to clear the patches here is that, these patches for the base model are looked up using the base model name (line #145 below), which is wrong for custom label devices. For custom label devices, we need to find the correct patches using the `signature_id` (retrieved from VPD), which is done in `model_apply_custom_label()`. Therefore, we clear the incorrect patches here to avoid being misused later (for example when `signature_id` isn\u0027t found in VPD). Do I misunderstand anything?",
+      "range": {
+        "startLine": 401,
+        "startChar": 21,
+        "endLine": 401,
+        "endChar": 41
+      },
+      "revId": "f3f4d2a7c42c182071c47ce6af8a5ea13034561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85813ec_5837109e",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-02T08:57:21Z",
+      "side": 1,
+      "message": "`break`\n\nRemove `try_builders` local variable.",
+      "revId": "f3f4d2a7c42c182071c47ce6af8a5ea13034561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
