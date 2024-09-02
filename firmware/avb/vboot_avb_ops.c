@@ -175,15 +175,33 @@ static AvbIOResult get_unique_guid_for_partition(AvbOps *ops,
 						 char *guid_buf,
 						 size_t guid_buf_size)
 {
-	/* TODO(b/324233168): Implement getter for vbmeta partition GUID */
-	/*
-	 * Use test UUID from android codebase as a placeholder for now. As it
-	 * is informational only, there is no harm. Leaving it empty may cause
-	 * issues with cmdline properties formatting.
-	 */
-	char tmp[] = "aa08f1a4-c7c9-402e-9a66-9707cafa9ceb";
-	memcpy(guid_buf, &tmp, sizeof(tmp));
-	avb_debug("TODO: function not implemented yet\n");
+	struct vboot_avb_data *data;
+	GptData *gpt;
+	Guid guid;
+	int ret;
+
+	if (guid_buf_size < NAME_SIZE)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
+
+	if (!ops || !ops->user_data)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
+
+	data = (struct vboot_avb_data *)ops->user_data;
+	gpt = data->gpt;
+	if (!gpt)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
+
+	ret = GptGetUniqueFromName(gpt, partition, &guid);
+	if (ret != GPT_SUCCESS)
+		return AVB_IO_RESULT_ERROR_IO;
+
+	snprintf(guid_buf, guid_buf_size,
+		"%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x",
+		guid.u.raw[3], guid.u.raw[2], guid.u.raw[1], guid.u.raw[0],
+		guid.u.raw[5], guid.u.raw[4], guid.u.raw[7], guid.u.raw[6],
+		guid.u.raw[8], guid.u.raw[9], guid.u.raw[10], guid.u.raw[11],
+		guid.u.raw[12], guid.u.raw[13], guid.u.raw[14], guid.u.raw[15]);
+
 	return AVB_IO_RESULT_OK;
 }
 
