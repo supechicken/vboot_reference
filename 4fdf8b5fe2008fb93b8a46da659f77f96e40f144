@@ -86,6 +86,30 @@
       },
       "revId": "4fdf8b5fe2008fb93b8a46da659f77f96e40f144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b14e2fd_1099ee57",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2024-09-03T21:16:03Z",
+      "side": 1,
+      "message": "It would catch images with no kernels in the partitions.\n\nHowever, we are going from a check of: `part type \u003d\u003d miniOS \u0026\u0026 kernel in 9/10`\nTo: `kernel in 9/10`\n\nWith the partition type check drop, if we are only ever going to call `resign_minios_kernels` for miniOS supported devices and assume a kernel in partition 9/10 is always miniOS for layout v3+, it should be safe/future proof.\n\nConsidering all things, I don\u0027t see a layout of v4+, so we \"should\" be good, but please help confirm this.\n\n---\n\nNote: we could also try adding adding a different copy of lsblk or replace with another command too.",
+      "parentUuid": "441212fc_491839a9",
+      "range": {
+        "startLine": 1052,
+        "startChar": 2,
+        "endLine": 1052,
+        "endChar": 39
+      },
+      "revId": "4fdf8b5fe2008fb93b8a46da659f77f96e40f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
