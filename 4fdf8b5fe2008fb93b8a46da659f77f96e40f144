@@ -16,6 +16,52 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "4fdf8b5fe2008fb93b8a46da659f77f96e40f144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca6ad46_fe2d1c98",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2024-09-03T20:53:06Z",
+      "side": 1,
+      "message": "We need this condition to hold now: only ever call `resign_minios_kernels` for miniOS supported devices.\n\nIf the above condition holds, the dropping of partition type checking should be safe.\n\nOtherwise, we will pass through and run additional steps against non-miniOS supported image that still have partition 9+10.",
+      "range": {
+        "startLine": 1052,
+        "startChar": 2,
+        "endLine": 1052,
+        "endChar": 39
+      },
+      "revId": "4fdf8b5fe2008fb93b8a46da659f77f96e40f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e20662_0985ba2c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2024-09-03T20:53:06Z",
+      "side": 1,
+      "message": "We can drop the looping entirely + strictly check against 9 + 10 partitions.",
+      "range": {
+        "startLine": 1052,
+        "startChar": 2,
+        "endLine": 1052,
+        "endChar": 5
+      },
+      "revId": "4fdf8b5fe2008fb93b8a46da659f77f96e40f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
