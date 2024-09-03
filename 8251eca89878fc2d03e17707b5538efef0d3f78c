@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6380def9_373e89b5",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-03T13:52:38Z",
+      "side": 1,
+      "message": "Please check the overflow case. You cannot use a larger type than size_t, as uint128_t is not supported, so you have to perform additional check. Example below. If you see a better way, then feel free to use your approach.\n```suggestion\n\tif (params-\u003epvmfw_size \u0026\u0026 (params-\u003epvmfw_offset + params-\u003epvmfw_size) \u003e params-\u003evboot_cmdline_offset \u0026\u0026 params-\u003epvmfw_offset \u003e SIZE_T_MAX - params-\u003epvmfw_size)\n```",
+      "range": {
+        "startLine": 587,
+        "startChar": 28,
+        "endLine": 587,
+        "endChar": 69
+      },
+      "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03eb4e78_351235d8",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-03T13:52:38Z",
+      "side": 1,
+      "message": "Please add a comment briefly describing the feature this define enables.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
