@@ -266,15 +266,19 @@ out:
 #ifdef LOAD_PVMFW
 static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 				  struct vb2_kernel_params *params,
-				  vb2ex_disk_handle_t disk_handle,
-				  uint32_t *bytes_used)
+				  vb2ex_disk_handle_t disk_handle)
 {
 	VbExStream_t stream;
 	uint64_t part_start, part_size;
 	uint32_t read_ms = 0, start_ts;
 	uint64_t part_bytes;
-	uint8_t *part_pvmfw_buf;
+	uint8_t *part_pvmfw_buf = (uint8_t *) params->pvmfw_buffer;
 	vb2_error_t res = VB2_ERROR_LOAD_PARTITION_READ_BODY;
+
+	if (params->pvmfw_buffer_size == 0) {
+		VB2_DEBUG("No buffer for pvmfw partition\n");
+		return VB2_ERROR_INVALID_PARAMETER;
+	}
 
 	/* Fail there is no pvmfw partition */
 	if (GptFindPvmfw(gpt, &part_start, &part_size) != GPT_SUCCESS) {
@@ -288,19 +292,13 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 		return res;
 	}
 
-	/*
-	 * Align the placement to the page size so the region can be easily
-	 * secured by MMU.
-	 */
-	params->pvmfw_offset = (*bytes_used + (4096 - 1)) & ~(4096 - 1);
 	part_bytes = gpt->sector_bytes * part_size;
-
-	if (part_bytes > (params->kernel_buffer_size - params->pvmfw_offset)) {
+	/* Check if the pvmfw buffer is big enough */
+	if (part_bytes > params->pvmfw_buffer_size) {
 		VB2_DEBUG("No space left to load pvmfw partition\n");
+		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 		goto out;
 	}
-
-	part_pvmfw_buf = params->kernel_buffer + params->pvmfw_offset;
 
 	/* Load partition to the buffer */
 	start_ts = vb2ex_mtime();
@@ -320,7 +318,6 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 			  (read_ms * 1024)));
 
 	params->pvmfw_size = part_bytes;
-	*bytes_used += params->pvmfw_size;
 
 	res = VB2_SUCCESS;
 out:
@@ -582,12 +579,11 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 #ifdef LOAD_PVMFW
 	if (!strcmp(short_partition_name, "pvmfw")) {
 		if (vb2_load_pvmfw(avb_data->vb2_ctx, avb_data->gpt, avb_data->params,
-				   avb_data->disk_handle, &bytes_used)) {
+				   avb_data->disk_handle)) {
 			return AVB_IO_RESULT_ERROR_IO;
 		}
 
-		*out_pointer = (uint8_t *)avb_data->params->kernel_buffer +
-			       avb_data->params->pvmfw_offset;
+		*out_pointer = (uint8_t *)avb_data->params->pvmfw_buffer;
 		*out_num_bytes_preloaded = avb_data->params->pvmfw_size;
 
 		ret = AVB_IO_RESULT_OK;
