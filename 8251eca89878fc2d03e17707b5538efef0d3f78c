@@ -45,6 +45,40 @@
       },
       "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b807876_6085f0f5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2024-09-03T13:52:51Z",
+      "side": 1,
+      "message": "Hardcodes shall be defines.\n\nAdditionally, comment here shall be modified that `pvmfw` shall be loaded at 4k-aligned address (not page size, since page size is not always set to 4K).",
+      "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe18682c_ce1cefa8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2024-09-03T13:52:51Z",
+      "side": 1,
+      "message": "It looks like you\u0027re missing here the leftover bytes required for alignment from line L295 (since IIUC `bytes_used` indicates number of bytes used in `kernel_buffer`).",
+      "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
