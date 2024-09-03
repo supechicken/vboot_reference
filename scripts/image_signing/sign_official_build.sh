@@ -1050,11 +1050,6 @@ resign_minios_kernels() {
 
   local loop_minios
   for loop_minios in "${loopdev}p"*; do
-    local part_type_guid
-    part_type_guid=$(sudo lsblk -rnb -o PARTTYPE "${loop_minios}")
-    if [[ "${part_type_guid}" != "${MINIOS_KERNEL_GUID}" ]]; then
-      continue
-    fi
 
     local keyblock
     if [[ "${loop_minios}" == "${loopdev}p9" ]]; then
@@ -1062,8 +1057,10 @@ resign_minios_kernels() {
     elif [[ "${loop_minios}" == "${loopdev}p10" ]]; then
       keyblock="${minios_b_keyblock}"
     else
-      error "Unexpected miniOS partition ${loop_minios}"
-      return 1
+      # miniOS partitions are only present in loop devices p9 and p10, so skip
+      # all other devices. The next check below will actually verify that the
+      # loop device contains a miniOS partition.
+      continue
     fi
 
     # Skip miniOS partitions which are empty. This happens when miniOS
