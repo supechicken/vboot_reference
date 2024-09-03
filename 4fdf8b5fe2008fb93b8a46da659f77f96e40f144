@@ -62,6 +62,30 @@
       },
       "revId": "4fdf8b5fe2008fb93b8a46da659f77f96e40f144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441212fc_491839a9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-09-03T20:55:35Z",
+      "side": 1,
+      "message": "won\u0027t this line below (`    if ! sudo_futility dump_kernel_config \"${loop_minios}\"; then`) catch non-miniOS images?",
+      "parentUuid": "0ca6ad46_fe2d1c98",
+      "range": {
+        "startLine": 1052,
+        "startChar": 2,
+        "endLine": 1052,
+        "endChar": 39
+      },
+      "revId": "4fdf8b5fe2008fb93b8a46da659f77f96e40f144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
