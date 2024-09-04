@@ -22,6 +22,30 @@
       },
       "revId": "6fa96c4879ec67699714a484be40c0a1fb45443b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b45681_8c72b5f9",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2024-09-04T12:47:25Z",
+      "side": 1,
+      "message": "Are those definitely required by the code style? I see few examples of such if style in the this file as well.",
+      "parentUuid": "e65b32e8_c95c56e5",
+      "range": {
+        "startLine": 382,
+        "startChar": 2,
+        "endLine": 382,
+        "endChar": 55
+      },
+      "revId": "6fa96c4879ec67699714a484be40c0a1fb45443b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
