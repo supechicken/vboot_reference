@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae281acb_34e2568c",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-04T16:57:48Z",
+      "side": 1,
+      "message": "One concern is there\u0027s no way to identify if a model is actually a custom label from the manifest, expect looking at the signature_id.\n\nWe should move that in a follow up change, not here.",
+      "parentUuid": "c0467bff_e8c139a9",
+      "range": {
+        "startLine": 388,
+        "startChar": 4,
+        "endLine": 395,
+        "endChar": 36
+      },
+      "revId": "f3f4d2a7c42c182071c47ce6af8a5ea13034561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb69be64_1fda453c",
         "filename": "futility/updater_manifest.c",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e23ce5b_c3eaf178",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-04T16:57:48Z",
+      "side": 1,
+      "message": "You are right. Let me rephrase this comment.",
+      "parentUuid": "bb69be64_1fda453c",
+      "range": {
+        "startLine": 401,
+        "startChar": 21,
+        "endLine": 401,
+        "endChar": 41
+      },
+      "revId": "f3f4d2a7c42c182071c47ce6af8a5ea13034561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b85813ec_5837109e",
         "filename": "futility/updater_manifest.c",
         "patchSetId": 1
@@ -60,6 +108,24 @@
       "writtenOn": "2024-09-02T08:57:21Z",
       "side": 1,
       "message": "`break`\n\nRemove `try_builders` local variable.",
+      "revId": "f3f4d2a7c42c182071c47ce6af8a5ea13034561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db26f77e_5452d74b",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-04T16:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b85813ec_5837109e",
       "revId": "f3f4d2a7c42c182071c47ce6af8a5ea13034561f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
