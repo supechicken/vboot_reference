@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b04fa1_501b75f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2024-09-04T12:44:43Z",
+      "side": 1,
+      "message": "After offline discussion with @konrada@google.com I reworked where the pvmfw contents are stored. This let me introduce a boot contract regarding whenever the pvmfw should be loaded instead of using `LOAD_PVMFW` which I removed. This shifts enabling pvmfw loading from USE flags to solely depthcharge defconfigs.",
+      "revId": "23a966d89a6b48e44880ecadc66f50f7035c44bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c162d50a_55a7eb17",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2024-09-04T12:44:43Z",
+      "side": 1,
+      "message": "`pvmfw_offset` was removed.",
+      "parentUuid": "6380def9_373e89b5",
+      "range": {
+        "startLine": 587,
+        "startChar": 28,
+        "endLine": 587,
+        "endChar": 69
+      },
+      "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03eb4e78_351235d8",
@@ -88,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c194ee46_bc69d1e9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2024-09-04T12:44:43Z",
+      "side": 1,
+      "message": "The offset is no longer calculated. The destination address is set via defconfig and it\u0027s up to user to set address with desired alignment.",
+      "parentUuid": "2b807876_6085f0f5",
+      "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe18682c_ce1cefa8",
@@ -101,6 +143,24 @@
       "writtenOn": "2024-09-03T13:52:51Z",
       "side": 1,
       "message": "It looks like you\u0027re missing here the leftover bytes required for alignment from line L295 (since IIUC `bytes_used` indicates number of bytes used in `kernel_buffer`).",
+      "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4f9407_c9ddf46e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2024-09-04T12:44:43Z",
+      "side": 1,
+      "message": "`bytes_used` is no longer used.",
+      "parentUuid": "fe18682c_ce1cefa8",
       "revId": "8251eca89878fc2d03e17707b5538efef0d3f78c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
