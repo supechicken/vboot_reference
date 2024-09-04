@@ -43,6 +43,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a18fd52_9b9db117",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-09-04T17:52:53Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix. Check the return value and log as well.",
+      "parentUuid": "c8a24ec0_35fa0e90",
+      "range": {
+        "startLine": 434,
+        "startChar": 8,
+        "endLine": 434,
+        "endChar": 23
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931f2ba0_fb7166e0",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-09-04T17:52:53Z",
+      "side": 1,
+      "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix. Check the return value and log as well.",
+      "parentUuid": "0c2eea4c_1489226a",
+      "range": {
+        "startLine": 435,
+        "startChar": 8,
+        "endLine": 435,
+        "endChar": 23
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35b11e72_20b4477d",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 3
@@ -83,6 +131,40 @@
         "endLine": 436,
         "endChar": 60
       },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ac4e0d_3c332c68",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-09-04T17:52:53Z",
+      "side": 1,
+      "message": "Can we time this and see how much more delta this is adding?",
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ed57ca_5ccc4794",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1520692
+      },
+      "writtenOn": "2024-09-04T17:52:53Z",
+      "side": 1,
+      "message": "Add a log that tell new hash has been generated. We don\u0027t have to print the hash just info on hash being generated.",
       "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
