@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59fe4a8d_c1f5594e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-09-04T20:38:15Z",
+      "side": 1,
+      "message": "Do we have a separate test environment to test such CLs since `sign_android_image.sh` does not run at build time?",
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09e66d9c_0ac12547",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 3
