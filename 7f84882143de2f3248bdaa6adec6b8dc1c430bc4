@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22be7386_1ed0451b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-05T13:37:46Z",
+      "side": 1,
+      "message": "@jwerner@chromium.org I have some concerns about misc partition. I load it here without any validation (it is not described and verified by vbmeta, because its content is created by kernel). There is even no CRC to ensure integrity of the content. What do you think, should we adopt this solution as this is how Android is handling entering recovery (and assume that it is good enough) or should we propose different solution?",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
