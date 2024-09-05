@@ -22,6 +22,30 @@
       },
       "revId": "d96db8b6ef49a243c788bb427022ba650cd994a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e94962_cb9f43e0",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-05T10:40:11Z",
+      "side": 1,
+      "message": "I think we may have that (simple archive) soon when the per-model updater, either in the DLC design or the future cros next design. Let\u0027s keep it here for a little longer until we know how the LOEM will be implemented in the future.",
+      "parentUuid": "8b20ca9e_426e6813",
+      "range": {
+        "startLine": 588,
+        "startChar": 6,
+        "endLine": 588,
+        "endChar": 17
+      },
+      "revId": "d96db8b6ef49a243c788bb427022ba650cd994a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
