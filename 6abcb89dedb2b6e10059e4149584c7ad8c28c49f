@@ -117,6 +117,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b92f81_77e3cbbf",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-07T02:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a18fd52_9b9db117",
+      "range": {
+        "startLine": 434,
+        "startChar": 8,
+        "endLine": 434,
+        "endChar": 23
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c05376_ea1763d2",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-07T02:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e66d9c_0ac12547",
+      "range": {
+        "startLine": 434,
+        "startChar": 61,
+        "endLine": 434,
+        "endChar": 77
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "931f2ba0_fb7166e0",
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "\u003e warning: Declare and assign separately to avoid masking return values.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2155\n\nPlease fix. Check the return value and log as well.",
       "parentUuid": "0c2eea4c_1489226a",
+      "range": {
+        "startLine": 435,
+        "startChar": 8,
+        "endLine": 435,
+        "endChar": 23
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a610baca_a7da0d7c",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-07T02:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "931f2ba0_fb7166e0",
       "range": {
         "startLine": 435,
         "startChar": 8,
@@ -187,6 +259,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21ded172_04a1f44a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-07T02:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b11e72_20b4477d",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 82
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf347829_4543e97e",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-07T02:08:51Z",
+      "side": 1,
+      "message": "Split it up into multiple lines to help readability",
+      "parentUuid": "bc44e934_34fee8ab",
+      "range": {
+        "startLine": 436,
+        "startChar": 2,
+        "endLine": 436,
+        "endChar": 60
+      },
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6ac4e0d_3c332c68",
@@ -217,6 +337,42 @@
       "writtenOn": "2024-09-04T17:52:53Z",
       "side": 1,
       "message": "Add a log that tell new hash has been generated. We don\u0027t have to print the hash just info on hash being generated.",
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec2e8d1_90ac63ef",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-07T02:08:51Z",
+      "side": 1,
+      "message": "After adding logs to check the time and locally signing an image, it only took one second. I checked multiple times.",
+      "parentUuid": "f6ac4e0d_3c332c68",
+      "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef505ad_86700f6a",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-07T02:08:51Z",
+      "side": 1,
+      "message": "This log is already present within `write_arcvm_vbmeta_digest`",
+      "parentUuid": "91ed57ca_5ccc4794",
       "revId": "6abcb89dedb2b6e10059e4149584c7ad8c28c49f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
