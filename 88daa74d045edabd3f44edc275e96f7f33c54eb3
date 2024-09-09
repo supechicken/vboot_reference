@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53be32ff_f36ac5d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-09-09T23:16:32Z",
+      "side": 1,
+      "message": "This bug does not seem to be relevant to this CL.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07cbe541_999a2983",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-09-09T23:16:32Z",
+      "side": 1,
+      "message": "Did you write any unit-tests for this? Not sure if we need one here. Deferring to owner.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5adab0_fcf04e0b",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-09-09T23:16:32Z",
+      "side": 1,
+      "message": "Can there be a case where there is no hash present in this file or the file is not present at all?\n\nShall we assert these conditions? Deferring to owner",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 70
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4941ef99_39d9021f",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-09-09T23:16:32Z",
+      "side": 1,
+      "message": "nit: Re-calculating the VB Meta digest",
+      "range": {
+        "startLine": 454,
+        "startChar": 8,
+        "endLine": 454,
+        "endChar": 26
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40fe43f_4a860da3",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-09-09T23:16:32Z",
+      "side": 1,
+      "message": "Before overwriting, shall we verify that the existing hash and the newly calculated hash are different?",
+      "range": {
+        "startLine": 456,
+        "startChar": 2,
+        "endLine": 456,
+        "endChar": 33
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
