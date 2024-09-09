@@ -46,6 +46,30 @@
       },
       "revId": "6fa96c4879ec67699714a484be40c0a1fb45443b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cabe593_9b202c7e",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-09T05:45:40Z",
+      "side": 1,
+      "message": "It\u0027s better to be safe than sorry, especially with vboot code. Braces are not necessarily required, but they prevent weird errors. However in this case it\u0027s safe to not have them as the if statement only does a debug print, so any additive change here will still require adding braces.",
+      "parentUuid": "e8b45681_8c72b5f9",
+      "range": {
+        "startLine": 382,
+        "startChar": 2,
+        "endLine": 382,
+        "endChar": 55
+      },
+      "revId": "6fa96c4879ec67699714a484be40c0a1fb45443b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
