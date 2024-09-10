@@ -16,6 +16,52 @@
       "message": "@jwerner@chromium.org I have some concerns about misc partition. I load it here without any validation (it is not described and verified by vbmeta, because its content is created by kernel). There is even no CRC to ensure integrity of the content. What do you think, should we adopt this solution as this is how Android is handling entering recovery (and assume that it is good enough) or should we propose different solution?",
       "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84670a7c_28ff2eb1",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-10T12:54:55Z",
+      "side": 1,
+      "message": "Can you use definition of [BCB as a struct here](https://android.googlesource.com/platform/bootable/recovery/+/refs/heads/main/bootloader_message/include/bootloader_message/bootloader_message.h#67)? It would make code easier to understand. (add struct packing just for safety)",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 11
+      },
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c62c7811_2bea8131",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-10T12:54:55Z",
+      "side": 1,
+      "message": "`/* Android BCB commands */`",
+      "range": {
+        "startLine": 604,
+        "startChar": 3,
+        "endLine": 604,
+        "endChar": 22
+      },
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
