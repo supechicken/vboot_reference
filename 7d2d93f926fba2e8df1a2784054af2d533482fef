@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53da7f77_1f070d77",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-11T14:02:11Z",
+      "side": 1,
+      "message": "Please add size assert, so any unintended change can be noticed in an easier way. e.g.:\n```\n_Static_assert(sizeof(struct bootloader_message) \u003d\u003d \u003cVALUE\u003e, \"bootloader_message size is incorrect\");\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb87829c_62703a10",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-11T14:02:11Z",
+      "side": 1,
+      "message": "I feel that this const string should be a define.",
+      "range": {
+        "startLine": 515,
+        "startChar": 7,
+        "endLine": 515,
+        "endChar": 13
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de1a79e_2628246e",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-11T14:02:11Z",
+      "side": 1,
+      "message": "I know it\u0027s a bit paranoid, but can you use min/MIN() for these sizes in case someone changes any of the fields/values? Same below. It should be optimized during compile time anyway.",
+      "range": {
+        "startLine": 533,
+        "startChar": 7,
+        "endLine": 533,
+        "endChar": 41
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
