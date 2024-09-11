@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd202ac_4f60f71a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-11T18:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53be32ff_f36ac5d3",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07cbe541_999a2983",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-09T23:16:32Z",
       "side": 1,
       "message": "Did you write any unit-tests for this? Not sure if we need one here. Deferring to owner.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd063d41_bc0859ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-11T18:01:01Z",
+      "side": 1,
+      "message": "In order to add unit tests, the script will need to be sourced from the test file. To prevent the main method from running it will need to be wrapped by an if statement:\n```\nif [ \"$0\" \u003d \"$BASH_SOURCE\" ] ; then\n  main \"$@\"\nfi\n```\nIn my local testing, it didn\u0027t seem to affect anything. I also checked the code to make sure the script is not executed through a source statement and I did not find anything. Also deferring to the owner if this change should be added so a unit test can be added.",
+      "parentUuid": "07cbe541_999a2983",
       "range": {
         "startLine": 20,
         "startChar": 5,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5c54a0a_f51cda27",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-11T18:01:01Z",
+      "side": 1,
+      "message": "Do you mean if it would fail during `echo -n \"${vbmeta_digest}\" \u003e \"${vbmeta_digest_path}\"`?",
+      "parentUuid": "4c5adab0_fcf04e0b",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 70
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4941ef99_39d9021f",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2024-09-09T23:16:32Z",
       "side": 1,
       "message": "nit: Re-calculating the VB Meta digest",
+      "range": {
+        "startLine": 454,
+        "startChar": 8,
+        "endLine": 454,
+        "endChar": 26
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3856151_972d7b97",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-11T18:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4941ef99_39d9021f",
       "range": {
         "startLine": 454,
         "startChar": 8,
@@ -106,6 +202,30 @@
       "writtenOn": "2024-09-09T23:16:32Z",
       "side": 1,
       "message": "Before overwriting, shall we verify that the existing hash and the newly calculated hash are different?",
+      "range": {
+        "startLine": 456,
+        "startChar": 2,
+        "endLine": 456,
+        "endChar": 33
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f26dcce_f25db063",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-11T18:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d40fe43f_4a860da3",
       "range": {
         "startLine": 456,
         "startChar": 2,
