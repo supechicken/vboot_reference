@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "567fecd6_ff9ab04c",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2024-09-11T20:19:23Z",
+      "side": 1,
+      "message": "No, now that you have added the code to check for existing VB Meta Digest. Commenting there.",
+      "parentUuid": "a5c54a0a_f51cda27",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 70
+      },
+      "revId": "88daa74d045edabd3f44edc275e96f7f33c54eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4941ef99_39d9021f",
