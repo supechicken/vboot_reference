@@ -34,6 +34,24 @@
       "parentUuid": "ba59f4ca_a142b901",
       "revId": "f76b7889df1f787221c29d4b01b57eff47bc2b7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df812791_ff383f9c",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 3509970
+      },
+      "writtenOn": "2024-09-11T15:47:59Z",
+      "side": 1,
+      "message": "Added the magic check before `vb2_verify_keyblock_hash` and restored the warning to the original value",
+      "parentUuid": "a374cfea_72cfa597",
+      "revId": "f76b7889df1f787221c29d4b01b57eff47bc2b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
