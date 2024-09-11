@@ -22,6 +22,30 @@
       },
       "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8934ef5f_457a8d54",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-11T20:34:29Z",
+      "side": 1,
+      "message": "The next line will evaluate to false and the new vbmeta_digest will be written in arcvm_vbmeta_digest.sha256",
+      "parentUuid": "c8c8800c_88286624",
+      "range": {
+        "startLine": 459,
+        "startChar": 4,
+        "endLine": 459,
+        "endChar": 22
+      },
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
