@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be9b7ce3_182b721b",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-13T20:37:32Z",
+      "side": 1,
+      "message": "There\u0027s no reason to make this packed since all the contents are char arrays. In general it\u0027s better to avoid packed unless it is absolutely unavoidable, since it can have odd effects on code generation.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb87829c_62703a10",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 4

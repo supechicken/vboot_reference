@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccdfc9b0_fd286cbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-13T20:37:32Z",
+      "side": 1,
+      "message": "The general idea that boot control metadata is unverified is normal and true for the ChromeOS approach as well. However, I\u0027m not sure having a whole extra disk partition with its own format just for this stuff is a good idea. I thought(?) that the bootloader_message stuff was not a generic Android requirement but only a Pixel implementation detail, and other OEMs are free to implement the same features in other ways?\n\nIf possible, I think it would be better to integrate this into vboot nvdata instead. We would not be using big strings like \"boot-recovery\" there, but just a small bit field to encode the possible values. Whether that\u0027s feasible depends on how much of this bootloader_message block is really used by Android in practice... if it\u0027s only the one thing you\u0027re implementing here (normal, bootonce or recovery), then that should fit into vboot nvdata. The bootloader message file suggests that there are uses for the other fields, e.g. \"recovery\" is supposed to contain a kernel command line for recovery boot... we should check whether that\u0027s actually used that way and how exactly it works (e.g. can we just hardcode that recovery commandline in firmware instead and turn the field into a single on/off bit?). The idea that a whole kernel command line is read out of an unverified partition _does_ sound pretty dangerous to me.",
+      "parentUuid": "22be7386_1ed0451b",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
