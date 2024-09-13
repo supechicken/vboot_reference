@@ -1,4 +1,4 @@
-/* Copyright 2011 The Chromium OS Authors. All rights reserved.
+/* Copyright 2011 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -22,7 +22,6 @@
 #include "kernel_blob.h"
 #include "util_misc.h"
 #include "vb1_helper.h"
-#include "vb2_common.h"
 
 /* Command line options */
 enum {
@@ -208,11 +207,11 @@ static int do_verify(const char *infile, const char *signpubkey,
 	uint32_t pubklen;
 	struct vb2_public_key sign_key;
 	if (VB2_SUCCESS != vb2_read_file(signpubkey, &pubkbuf, &pubklen)) {
-		fprintf(stderr, "Error reading signpubkey.\n");
+		ERROR("Reading signpubkey.\n");
 		goto verify_cleanup;
 	}
 	if (VB2_SUCCESS != vb2_unpack_key_buffer(&sign_key, pubkbuf, pubklen)) {
-		fprintf(stderr, "Error unpacking signpubkey.\n");
+		ERROR("Unpacking signpubkey.\n");
 		goto verify_cleanup;
 	}
 
@@ -255,7 +254,7 @@ static int do_verify(const char *infile, const char *signpubkey,
 	struct vb2_public_key data_key;
 	if (VB2_SUCCESS !=
 	    vb2_unpack_key(&data_key, &keyblock->data_key)) {
-		fprintf(stderr, "Error parsing data key.\n");
+		ERROR("Parsing data key.\n");
 		goto verify_cleanup;
 	}
 
@@ -293,6 +292,12 @@ static int do_verify(const char *infile, const char *signpubkey,
 	if (flags & VB2_FIRMWARE_PREAMBLE_USE_RO_NORMAL) {
 		printf("Preamble requests USE_RO_NORMAL;"
 		       " skipping body verification.\n");
+	} else if (!pre2->body_signature.data_size) {
+		/* cbfstool needs the whole firmware image to get the
+		   metadata hash */
+		FATAL("Metadata hash verification not supported.\n"
+		      "Please use `futility verify BIOS_IMAGE`.\n");
+		goto verify_cleanup;
 	} else if (VB2_SUCCESS ==
 		   vb2_verify_data(fv_data, fv_size, &pre2->body_signature,
 				   &data_key, &wb)) {
@@ -406,7 +411,7 @@ static int do_vbutil_firmware(int argc, char *argv[])
 	case OPT_MODE_VERIFY:
 		return do_verify(filename, signpubkey, fv_file, kernelkey_file);
 	default:
-		fprintf(stderr, "Must specify a mode.\n");
+		ERROR("Must specify a mode.\n");
 		print_help(argc, argv);
 		return 1;
 	}

@@ -1,4 +1,4 @@
-/* Copyright 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -40,61 +40,9 @@ static void print_help(int argc, char *argv[])
 	printf(usage, argv[0], argv[0], argv[0]);
 }
 
-static int parse_hex(uint8_t *val, const char *str)
+static void print_digest(const uint8_t *buf, size_t len)
 {
-	uint8_t v = 0;
-	char c;
-	int digit;
-
-	for (digit = 0; digit < 2; digit++) {
-		c = *str;
-		if (!c)
-			return 0;
-		if (!isxdigit(c))
-			return 0;
-		c = tolower(c);
-		if (c >= '0' && c <= '9')
-			v += c - '0';
-		else
-			v += 10 + c - 'a';
-		if (!digit)
-			v <<= 4;
-		str++;
-	}
-
-	*val = v;
-	return 1;
-}
-
-static void parse_digest_or_die(uint8_t *buf, int len, const char *str)
-{
-	const char *s = str;
-	int i;
-
-	for (i = 0; i < len; i++) {
-		/* skip whitespace */
-		while (*s && isspace(*s))
-			s++;
-		if (!*s)
-			break;
-		if (!parse_hex(buf, s))
-			break;
-
-		/* on to the next byte */
-		s += 2;
-		buf++;
-	}
-
-	if (i != len) {
-		fprintf(stderr, "Invalid DIGEST \"%s\"\n", str);
-		exit(1);
-	}
-}
-
-static void print_digest(const uint8_t *buf, int len)
-{
-	int i;
-	for (i = 0; i < len; i++)
+	for (size_t i = 0; i < len; i++)
 		printf("%02x", buf[i]);
 }
 
@@ -108,9 +56,8 @@ static const struct option long_opts[] = {
 static int do_pcr(int argc, char *argv[])
 {
 	uint8_t accum[VB2_MAX_DIGEST_SIZE * 2];
-	uint8_t pcr[VB2_MAX_DIGEST_SIZE];
+	uint8_t pcr[VB2_MAX_DIGEST_SIZE] = {0};
 	int digest_alg = VB2_HASH_SHA1;
-	int digest_size;
 	int opt_init = 0;
 	int errorcnt = 0;
 	int i;
@@ -129,14 +76,14 @@ static int do_pcr(int argc, char *argv[])
 			return !!errorcnt;
 		case '?':
 			if (optopt)
-				fprintf(stderr, "Unrecognized option: -%c\n",
+				ERROR("Unrecognized option: -%c\n",
 					optopt);
 			else
-				fprintf(stderr, "Unrecognized option\n");
+				ERROR("Unrecognized option\n");
 			errorcnt++;
 			break;
 		case ':':
-			fprintf(stderr, "Missing argument to -%c\n", optopt);
+			ERROR("Missing argument to -%c\n", optopt);
 			errorcnt++;
 			break;
 		default:
@@ -150,16 +97,14 @@ static int do_pcr(int argc, char *argv[])
 	}
 
 	if (argc - optind < 1 + opt_init) {
-		fprintf(stderr, "You must extend at least one DIGEST\n");
+		ERROR("You must extend at least one DIGEST\n");
 		print_help(argc, argv);
 		return 1;
 	}
 
-	memset(pcr, 0, sizeof(pcr));
-
-	digest_size = vb2_digest_size(digest_alg);
+	int digest_size = vb2_digest_size(digest_alg);
 	if (!digest_size) {
-		fprintf(stderr, "Error determining digest size!\n");
+		ERROR("Cannot determine digest size!\n");
 		return 1;
 	}
 
@@ -180,12 +125,14 @@ static int do_pcr(int argc, char *argv[])
 		print_digest(accum + digest_size, digest_size);
 		printf("\n");
 
-		if (VB2_SUCCESS != vb2_digest_buffer(accum, digest_size * 2,
-						     digest_alg,
-						     pcr, digest_size)) {
-			fprintf(stderr, "Error computing digest!\n");
+		struct vb2_hash hash;
+		if (VB2_SUCCESS != vb2_hash_calculate(false, accum,
+						      digest_size * 2,
+						      digest_alg, &hash)) {
+			ERROR("Cannot compute digest!\n");
 			return 1;
 		}
+		memcpy(pcr, hash.raw, digest_size);
 
 		printf("PCR: ");
 		print_digest(pcr, digest_size);

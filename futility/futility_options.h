@@ -1,4 +1,4 @@
-/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -21,12 +21,12 @@ struct show_option_s {
 	struct vb2_public_key *k;
 	uint8_t *fv;
 	uint64_t fv_size;
-	uint32_t padding;
 	int strict;
 	int t_flag;
 	enum futil_file_type type;
 	struct vb21_packed_key *pkey;
 	uint32_t sig_size;
+	bool parseable;
 };
 extern struct show_option_s show_option;
 
@@ -34,8 +34,7 @@ struct sign_option_s {
 	struct vb2_private_key *signprivate;
 	struct vb2_keyblock *keyblock;
 	struct vb2_packed_key *kernel_subkey;
-	struct vb2_private_key *devsignprivate;
-	struct vb2_keyblock *devkeyblock;
+	const char *keysetdir;
 	uint32_t version;
 	int version_specified;
 	uint32_t flags;
@@ -64,7 +63,11 @@ struct sign_option_s {
 	uint32_t ro_offset, rw_offset;
 	uint32_t data_size, sig_size;
 	struct vb2_private_key *prikey;
+	const char *ecrw_out;
 };
 extern struct sign_option_s sign_option;
+
+#define FILE_MODE_SIGN(sign_options)                                           \
+	(sign_options.create_new_outfile ? FILE_RO : FILE_RW)
 
 #endif  /* VBOOT_REFERENCE_FUTILITY_OPTIONS_H_ */

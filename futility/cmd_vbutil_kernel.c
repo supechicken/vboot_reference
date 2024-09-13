@@ -1,4 +1,4 @@
-/* Copyright 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -9,7 +9,7 @@
 #include <fcntl.h>
 #include <getopt.h>
 #include <inttypes.h>		/* For PRIu64 */
-#if !defined(HAVE_MACOS) && !defined(__FreeBSD__)
+#if !defined(HAVE_MACOS) && !defined(__FreeBSD__) && !defined(__OpenBSD__)
 #include <linux/fs.h>		/* For BLKGETSIZE64 */
 #endif
 #include <stdarg.h>
@@ -26,7 +26,6 @@
 #include "host_common.h"
 #include "kernel_blob.h"
 #include "vb1_helper.h"
-#include "vb2_common.h"
 
 /* Global opts */
 static int opt_verbose;
@@ -95,12 +94,12 @@ static const char usage[] =
 	"                                in .vbprivk format\n"
 	"    --version <number>        Kernel version\n"
 	"    --vmlinuz <file>          Linux kernel bzImage file\n"
-	"    --bootloader <file>       Bootloader stub\n"
 	"    --config <file>           Command line file\n"
 	"    --arch <arch>             Cpu architecture (default x86)\n"
 	"\n"
 	"  Optional:\n"
 	"    --kloadaddr <address>     Assign kernel body load address\n"
+	"    --bootloader <file>       Bootloader stub\n"
 	"    --pad <number>            Verification padding size in bytes\n"
 	"    --vblockonly              Emit just the verification blob\n"
 	"    --flags NUM               Flags to be passed in the header\n"
@@ -169,11 +168,11 @@ static uint8_t *ReadOldKPartFromFileOrDie(const char *filename,
 	uint8_t *buf;
 	uint32_t file_size = 0;
 
-	if (0 != stat(filename, &statbuf))
+	if (stat(filename, &statbuf))
 		FATAL("Unable to stat %s: %s\n", filename, strerror(errno));
 
 	if (S_ISBLK(statbuf.st_mode)) {
-#if !defined(HAVE_MACOS) && !defined(__FreeBSD__)
+#if !defined(HAVE_MACOS) && !defined(__FreeBSD__) && !defined(__OpenBSD__)
 		int fd = open(filename, O_RDONLY);
 		if (fd >= 0) {
 			ioctl(fd, BLKGETSIZE64, &file_size);
@@ -213,7 +212,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 	char *oldfile = NULL;
 	char *keyblock_file = NULL;
 	char *signpubkey_file = NULL;
-	char *signprivkey_file = NULL;
+	char *signprivkey_info = NULL;
 	char *version_str = NULL;
 	int version = -1;
 	char *vmlinuz_file = NULL;
@@ -273,8 +272,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		case OPT_MODE_VERIFY:
 		case OPT_MODE_GET_VMLINUZ:
 			if (mode && (mode != i)) {
-				fprintf(stderr,
-					"Only one mode can be specified\n");
+				ERROR("Only one mode can be specified\n");
 				parse_error = 1;
 				break;
 			}
@@ -294,9 +292,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			else if (!strcasecmp(optarg, "mips"))
 				arch = ARCH_MIPS;
 			else {
-				fprintf(stderr,
-					"Unknown architecture string: %s\n",
-					optarg);
+				ERROR("Unknown architecture string: %s\n", optarg);
 				parse_error = 1;
 			}
 			break;
@@ -308,7 +304,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		case OPT_KLOADADDR:
 			kernel_body_load_address = strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
-				fprintf(stderr, "Invalid --kloadaddr\n");
+				ERROR("Invalid --kloadaddr\n");
 				parse_error = 1;
 			}
 			break;
@@ -322,7 +318,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			break;
 
 		case OPT_SIGNPRIVATE:
-			signprivkey_file = optarg;
+			signprivkey_info = optarg;
 			break;
 
 		case OPT_VMLINUZ:
@@ -332,7 +328,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		case OPT_FLAGS:
 			flags = (uint32_t)strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
-				fprintf(stderr, "Invalid --flags\n");
+				ERROR("Invalid --flags\n");
 				parse_error = 1;
 			}
 			break;
@@ -353,7 +349,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			version_str = optarg;
 			version = strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
-				fprintf(stderr, "Invalid --version\n");
+				ERROR("Invalid --version\n");
 				parse_error = 1;
 			}
 			break;
@@ -361,7 +357,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		case OPT_MINVERSION:
 			min_version = strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
-				fprintf(stderr, "Invalid --minversion\n");
+				ERROR("Invalid --minversion\n");
 				parse_error = 1;
 			}
 			break;
@@ -369,7 +365,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		case OPT_PAD:
 			opt_pad = strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
-				fprintf(stderr, "Invalid --pad\n");
+				ERROR("Invalid --pad\n");
 				parse_error = 1;
 			}
 			break;
@@ -393,10 +389,10 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		if (!t_keyblock)
 			FATAL("Error reading keyblock.\n");
 
-		if (!signprivkey_file)
-			FATAL("Missing required signprivate file.\n");
+		if (!signprivkey_info)
+			FATAL("Missing required signprivate info.\n");
 
-		signpriv_key = vb2_read_private_key(signprivkey_file);
+		signpriv_key = vb2_read_private_key(signprivkey_info);
 		if (!signpriv_key)
 			FATAL("Error reading signing key.\n");
 
@@ -409,16 +405,18 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		if (!t_config_data)
 			FATAL("Error reading config file.\n");
 
-		if (!bootloader_file)
-			FATAL("Missing required bootloader file.\n");
-
-		VB2_DEBUG("Reading %s\n", bootloader_file);
-
-		if (VB2_SUCCESS != vb2_read_file(bootloader_file,
-						 &t_bootloader_data,
-						 &t_bootloader_size))
-			FATAL("Error reading bootloader file.\n");
-		VB2_DEBUG(" bootloader file size=%#x\n", t_bootloader_size);
+		if (bootloader_file) {
+			VB2_DEBUG("Reading %s\n", bootloader_file);
+			if (VB2_SUCCESS != vb2_read_file(bootloader_file,
+							 &t_bootloader_data,
+							 &t_bootloader_size))
+				FATAL("Error reading bootloader file.\n");
+			VB2_DEBUG(" bootloader file size=%#x\n", t_bootloader_size);
+		} else {
+			t_bootloader_data = NULL;
+			t_bootloader_size = 0;
+			VB2_DEBUG("No external bootloader file passed in.\n");
+		}
 
 		if (!vmlinuz_file)
 			FATAL("Missing required vmlinuz file.\n");
@@ -472,10 +470,13 @@ static int do_vbutil_kernel(int argc, char *argv[])
 
 		/* Required */
 
-		if (!signprivkey_file)
-			FATAL("Missing required signprivate file.\n");
+		if (!signprivkey_info)
+			FATAL("Missing required signprivate info.\n");
 
-		signpriv_key = vb2_read_private_key(signprivkey_file);
+		if (bootloader_file)
+			FATAL("--repack doesn't support --bootloader.\n");
+
+		signpriv_key = vb2_read_private_key(signprivkey_info);
 		if (!signpriv_key)
 			FATAL("Error reading signing key.\n");
 
@@ -491,8 +492,8 @@ static int do_vbutil_kernel(int argc, char *argv[])
 			FATAL("%s is not a kernel blob\n", oldfile);
 
 		kblob_data = unpack_kernel_partition(kpart_data, kpart_size,
-						     opt_pad, &keyblock,
-						     &preamble, &kblob_size);
+						     &keyblock, &preamble,
+						     &kblob_size);
 
 		if (!kblob_data)
 			FATAL("Unable to unpack kernel partition\n");
@@ -506,7 +507,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 				ReadConfigFile(config_file, &t_config_size);
 			if (!t_config_data)
 				FATAL("Error reading config file.\n");
-			if (0 != UpdateKernelBlobConfig(
+			if (UpdateKernelBlobConfig(
 				    kblob_data, kblob_size,
 				    t_config_data, t_config_size))
 				FATAL("Unable to update config\n");
@@ -559,8 +560,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		kpart_data = ReadOldKPartFromFileOrDie(filename, &kpart_size);
 
 		kblob_data = unpack_kernel_partition(kpart_data, kpart_size,
-						     opt_pad, 0, 0,
-						     &kblob_size);
+						     0, 0, &kblob_size);
 		if (!kblob_data)
 			FATAL("Unable to unpack kernel partition\n");
 
@@ -572,8 +572,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 	case OPT_MODE_GET_VMLINUZ:
 
 		if (!vmlinuz_out_file) {
-			fprintf(stderr,
-				"USE: vbutil_kernel --get-vmlinuz <file> "
+			ERROR("USE: vbutil_kernel --get-vmlinuz <file> "
 				"--vmlinuz-out <file>\n");
 			print_help(argc, argv);
 			return 1;
@@ -582,8 +581,8 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		kpart_data = ReadOldKPartFromFileOrDie(filename, &kpart_size);
 
 		kblob_data = unpack_kernel_partition(kpart_data, kpart_size,
-						     opt_pad, &keyblock,
-						     &preamble, &kblob_size);
+						     &keyblock, &preamble,
+						     &kblob_size);
 
 		if (!kblob_data)
 			FATAL("Unable to unpack kernel partition\n");
@@ -642,8 +641,7 @@ static int do_vbutil_kernel(int argc, char *argv[])
 		return 0;
 	}
 
-	fprintf(stderr,
-		"You must specify a mode: "
+	ERROR("You must specify a mode: "
 		"--pack, --repack, --verify, or --get-vmlinuz\n");
 	print_help(argc, argv);
 	return 1;

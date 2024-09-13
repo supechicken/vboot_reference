@@ -1,4 +1,4 @@
-/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -12,11 +12,18 @@
 #include "updater_utils.h"
 
 /* FMAP section names. */
-static const char * const FMAP_RO_FRID = "RO_FRID",
+static const char * const FMAP_RO = "WP_RO",
+		  * const FMAP_RO_FMAP = "FMAP",
+		  * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_RO_SECTION = "RO_SECTION",
+		  * const FMAP_RO_CBFS = "COREBOOT",
 		  * const FMAP_RO_GBB = "GBB",
+		  * const FMAP_RO_GSCVD = "RO_GSCVD",
+		  * const FMAP_RO_VPD = "RO_VPD",
 		  * const FMAP_RW_VBLOCK_A = "VBLOCK_A",
 		  * const FMAP_RW_VBLOCK_B = "VBLOCK_B",
+		  * const FMAP_RW_FW_MAIN_A = "FW_MAIN_A",
+		  * const FMAP_RW_FW_MAIN_B = "FW_MAIN_B",
 		  * const FMAP_RW_SECTION_A = "RW_SECTION_A",
 		  * const FMAP_RW_SECTION_B = "RW_SECTION_B",
 		  * const FMAP_RW_FWID = "RW_FWID",
@@ -24,6 +31,8 @@ static const char * const FMAP_RO_FRID = "RO_FRID",
 		  * const FMAP_RW_FWID_B = "RW_FWID_B",
 		  * const FMAP_RW_SHARED = "RW_SHARED",
 		  * const FMAP_RW_LEGACY = "RW_LEGACY",
+		  * const FMAP_RW_VPD = "RW_VPD",
+		  * const FMAP_RW_DIAG_NVRAM = "DIAG_NVRAM",
 		  * const FMAP_SI_DESC = "SI_DESC",
 		  * const FMAP_SI_ME = "SI_ME";
 
@@ -36,16 +45,23 @@ struct quirk_entry {
 };
 
 enum quirk_types {
+	/* Platform-independent quirks */
+	QUIRK_NO_CHECK_PLATFORM,
+	QUIRK_NO_VERIFY,
 	QUIRK_ENLARGE_IMAGE,
 	QUIRK_MIN_PLATFORM_VERSION,
-	QUIRK_UNLOCK_ME_FOR_UPDATE,
-	QUIRK_UNLOCK_WILCO_ME_FOR_UPDATE,
-	QUIRK_EVE_SMM_STORE,
-	QUIRK_ALLOW_EMPTY_WLTAG,
+	QUIRK_EXTRA_RETRIES,
+	/* Arch-specific quirks */
 	QUIRK_EC_PARTIAL_RECOVERY,
-	QUIRK_OVERRIDE_SIGNATURE_ID,
+	QUIRK_CLEAR_MRC_DATA,
 	QUIRK_PRESERVE_ME,
-	QUIRK_NO_CHECK_PLATFORM,
+	/* Platform-specific quirks (removed after AUE) */
+	QUIRK_ALLOW_EMPTY_CUSTOM_LABEL_TAG,
+	QUIRK_OVERRIDE_SIGNATURE_ID,
+	QUIRK_EVE_SMM_STORE,
+	QUIRK_UNLOCK_CSME_EVE,
+	QUIRK_UNLOCK_CSME,
+	/* End of quirks */
 	QUIRK_MAX,
 };
 
@@ -56,27 +72,40 @@ enum {
 	EC_RECOVERY_DONE
 };
 
+enum try_update_type {
+	TRY_UPDATE_OFF = 0,
+	TRY_UPDATE_AUTO,
+	TRY_UPDATE_DEFERRED_HOLD,
+	TRY_UPDATE_DEFERRED_APPLY,
+};
+
 struct updater_config {
 	struct firmware_image image, image_current;
-	struct firmware_image ec_image, pd_image;
-	struct system_property system_properties[SYS_PROP_MAX];
+	struct firmware_image ec_image;
+	struct dut_property dut_properties[DUT_PROP_MAX];
 	struct quirk_entry quirks[QUIRK_MAX];
-	struct archive *archive;
+	struct u_archive *archive;
 	struct tempfile tempfiles;
-	int try_update;
+	enum try_update_type try_update;
 	int force_update;
 	int legacy_update;
 	int factory_update;
 	int check_platform;
-	int fast_update;
+	int use_diff_image;
+	int do_verify;
 	int verbosity;
 	const char *emulation;
+	char *emulation_programmer;
+	const char *original_programmer;
+	const char *prepare_ctrl_name;
 	int override_gbb_flags;
 	uint32_t gbb_flags;
+	bool detect_model;
+	bool dut_is_remote;
 };
 
 struct updater_config_arguments {
-	char *image, *ec_image, *pd_image;
+	char *image, *ec_image;
 	char *archive, *quirks, *mode;
 	const char *programmer, *write_protection;
 	char *model, *signature_id;
@@ -87,27 +116,65 @@ struct updater_config_arguments {
 	int fast_update;
 	int verbosity;
 	int override_gbb_flags;
+	int detect_servo;
+	int use_flash;
 	uint32_t gbb_flags;
+	bool detect_model_only;
+	bool unlock_me;
 };
+
+/*
+ * Shared getopt arguments controlling flash behaviour.
+ * These are shared by multiple commands.
+ */
+enum {
+	OPT_CCD = 0x100,
+	OPT_EMULATE,
+	OPT_SERVO,
+	OPT_SERVO_PORT,
+};
+
+#ifdef USE_FLASHROM
+#define SHARED_FLASH_ARGS_SHORTOPTS "p:"
+
+#define SHARED_FLASH_ARGS_LONGOPTS                                             \
+	{"programmer", 1, NULL, 'p'},                                          \
+	{"ccd_without_servod", 2, NULL, OPT_CCD},                              \
+	{"servo", 0, NULL, OPT_SERVO},                                         \
+	{"servo_port", 1, NULL, OPT_SERVO_PORT},                               \
+	{"emulate", 1, NULL, OPT_EMULATE},
+
+#define SHARED_FLASH_ARGS_HELP                                                 \
+	"-p, --programmer=PRG\tChange AP (host) flashrom programmer\n"         \
+	"    --ccd_without_servod[=SERIAL] \tFlash via CCD without servod\n"   \
+	"    --emulate=FILE  \tEmulate system firmware using file\n"           \
+	"    --servo         \tFlash using Servo (v2, v4, micro, ...)\n"       \
+	"    --servo_port=PRT\tOverride servod port, implies --servo\n"
+#else
+#define SHARED_FLASH_ARGS_HELP
+#define SHARED_FLASH_ARGS_LONGOPTS
+#define SHARED_FLASH_ARGS_SHORTOPTS
+#endif /* USE_FLASHROM */
 
 struct patch_config {
 	char *rootkey;
 	char *vblock_a;
 	char *vblock_b;
+	char *gscvd;
 };
 
 struct model_config {
 	char *name;
-	char *image, *ec_image, *pd_image;
+	char *image, *ec_image;
 	struct patch_config patches;
 	char *signature_id;
-	int is_white_label;
+	int is_custom_label;
 };
 
 struct manifest {
 	int num;
 	struct model_config *models;
-	struct archive *archive;
+	struct u_archive *archive;
 	int default_model;
 	int has_keyset;
 };
@@ -124,6 +191,7 @@ enum updater_error_codes {
 	UPDATE_ERR_TARGET,
 	UPDATE_ERR_ROOT_KEY,
 	UPDATE_ERR_TPM_ROLLBACK,
+	UPDATE_ERR_UNLOCK_CSME,
 	UPDATE_ERR_UNKNOWN,
 };
 
@@ -154,12 +222,27 @@ struct updater_config *updater_new_config(void);
 void updater_delete_config(struct updater_config *cfg);
 
 /*
+ * Handle an argument if it is a shared updater option.
+ * Returns 1 if argument was used.
+ */
+int handle_flash_argument(struct updater_config_arguments *args, int opt,
+			  char *optarg);
+
+/**
  * Helper function to setup an allocated updater_config object.
  * Returns number of failures, or 0 on success.
+ * @param[out]  updater_config,
+ * @param[int]  updater_config_arguments,
  */
 int updater_setup_config(struct updater_config *cfg,
-			 const struct updater_config_arguments *arg,
-			 int *do_update);
+			 const struct updater_config_arguments *arg);
+
+/**
+ * Helper function to determine if to perform a update.
+ * Returns true to perform update otherwise false.
+ * @param[in]  updater_config_arguments,
+ */
+bool updater_should_update(const struct updater_config_arguments *arg);
 
 /* Prints the name and description from all supported quirks. */
 void updater_list_config_quirks(const struct updater_config *cfg);
@@ -172,9 +255,6 @@ void updater_register_quirks(struct updater_config *cfg);
 /* Gets the value (setting) of specified quirks from updater configuration. */
 int get_config_quirk(enum quirk_types quirk, const struct updater_config *cfg);
 
-/* Gets the system property by given type. Returns the property value. */
-int get_system_property(enum system_property_type property_type,
-			struct updater_config *cfg);
 /*
  * Gets the default quirk config string from target image name.
  * Returns a string (in same format as --quirks) to load or NULL if no quirks.
@@ -203,26 +283,26 @@ int quirk_override_signature_id(struct updater_config *cfg,
  * Returns a pointer to reference to archive (must be released by archive_close
  * when not used), otherwise NULL on error.
  */
-struct archive *archive_open(const char *path);
+struct u_archive *archive_open(const char *path);
 
 /*
  * Closes an archive reference.
  * Returns 0 on success, otherwise non-zero as failure.
  */
-int archive_close(struct archive *ar);
+int archive_close(struct u_archive *ar);
 
 /*
  * Checks if an entry (either file or directory) exists in archive.
  * Returns 1 if exists, otherwise 0
  */
-int archive_has_entry(struct archive *ar, const char *name);
+int archive_has_entry(struct u_archive *ar, const char *name);
 
 /*
  * Reads a file from archive.
  * Returns 0 on success (data and size reflects the file content),
  * otherwise non-zero as failure.
  */
-int archive_read_file(struct archive *ar, const char *fname,
+int archive_read_file(struct u_archive *ar, const char *fname,
 		      uint8_t **data, uint32_t *size, int64_t *mtime);
 
 /*
@@ -231,20 +311,30 @@ int archive_read_file(struct archive *ar, const char *fname,
  * file system.
  * Returns 0 on success, otherwise non-zero as failure.
  */
-int archive_write_file(struct archive *ar, const char *fname,
+int archive_write_file(struct u_archive *ar, const char *fname,
 		       uint8_t *data, uint32_t size, int64_t mtime);
+
+/*
+ * Traverses all files within archive (directories are ignored).
+ * For every entry, the path (relative the archive root) will be passed to
+ * callback function, until the callback returns non-zero.
+ * The arg argument will also be passed to callback.
+ * Returns 0 on success otherwise non-zero as failure.
+ */
+int archive_walk(struct u_archive *ar, void *arg,
+		 int (*callback)(const char *path, void *arg));
 
 /*
  * Copies all entries from one archive to another.
  * Returns 0 on success, otherwise non-zero as failure.
  */
-int archive_copy(struct archive *from, struct archive *to);
+int archive_copy(struct u_archive *from, struct u_archive *to);
 
 /*
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
-struct manifest *new_manifest_from_archive(struct archive *archive);
+struct manifest *new_manifest_from_archive(struct u_archive *archive);
 
 /* Releases all resources allocated by given manifest object. */
 void delete_manifest(struct manifest *manifest);
@@ -258,25 +348,35 @@ void print_json_manifest(const struct manifest *manifest);
  */
 int patch_image_by_model(
 		struct firmware_image *image, const struct model_config *model,
-		struct archive *archive);
+		struct u_archive *archive);
 
 /*
  * Finds the existing model_config from manifest that best matches current
  * system (as defined by model_name).
  * Returns a model_config from manifest, or NULL if not found.
  */
-const struct model_config *manifest_find_model(const struct manifest *manifest,
+const struct model_config *manifest_find_model(struct updater_config *cfg,
+					       const struct manifest *manifest,
 					       const char *model_name);
 
 /*
- * Applies white label information to an existing model configuration.
+ * Finds the first existing model_config from manifest that matches current
+ * system by reading RO_FRID from the existing host firmware.
+ * Returns a model_config from manifest, or NULL if not found.
+ */
+const struct model_config *
+manifest_detect_model_from_frid(struct updater_config *cfg,
+				struct manifest *manifest);
+
+/*
+ * Applies custom label information to an existing model configuration.
  * Collects signature ID information from either parameter signature_id or
  * image file (via VPD) and updates model.patches for key files.
  * Returns 0 on success, otherwise failure.
  */
-int model_apply_white_label(
+int model_apply_custom_label(
 		struct model_config *model,
-		struct archive *archive,
+		struct u_archive *archive,
 		const char *signature_id,
 		const char *image);
 

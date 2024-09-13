@@ -1,6 +1,6 @@
 /* -*- mode:c -*-
  *
- * Copyright 2015 The Chromium OS Authors. All rights reserved.
+ * Copyright 2015 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -16,10 +16,6 @@
  *        sign function
  */
 FILE_TYPE(BIOS_IMAGE,       "bios",          "Chrome OS BIOS image",
-	  R_(ft_recognize_bios_image),
-	  S_(ft_show_bios),
-	  S_(ft_sign_bios))
-FILE_TYPE(OLD_BIOS_IMAGE,   "oldbios",       "Cr-48 Chrome OS BIOS image",
 	  R_(ft_recognize_bios_image),
 	  S_(ft_show_bios),
 	  S_(ft_sign_bios))

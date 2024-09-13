@@ -1,4 +1,4 @@
-/* Copyright 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -20,7 +20,6 @@
 #include "2common.h"
 #include "file_type.h"
 #include "file_type_bios.h"
-#include "fmap.h"
 #include "futility.h"
 #include "futility_options.h"
 #include "host_common.h"
@@ -29,10 +28,12 @@
 #include "kernel_blob.h"
 #include "util_misc.h"
 #include "vb1_helper.h"
-#include "vb2_common.h"
+
+#define DEFAULT_KEYSETDIR "/usr/share/vboot/devkeys"
 
 /* Options */
 struct sign_option_s sign_option = {
+	.keysetdir = DEFAULT_KEYSETDIR,
 	.version = 1,
 	.arch = ARCH_UNSPECIFIED,
 	.kloadaddr = CROS_32BIT_ENTRY_ADDR,
@@ -47,24 +48,41 @@ struct sign_option_s sign_option = {
 };
 
 /* Helper to complain about invalid args. Returns num errors discovered */
-static int no_opt_if(int expr, const char *optname)
+static int no_opt_if(bool expr, const char *optname)
 {
 	if (expr) {
-		fprintf(stderr, "Missing --%s option\n", optname);
+		ERROR("Missing --%s option\n", optname);
+		return 1;
+	}
+	return 0;
+}
+
+static int bad_opt_if(bool expr, const char *optname)
+{
+	if (expr) {
+		ERROR("Option --%s is not supported for file type %s\n",
+		      optname, futil_file_type_name(sign_option.type));
 		return 1;
 	}
 	return 0;
 }
 
 /* This wraps/signs a public key, producing a keyblock. */
-int ft_sign_pubkey(const char *name, uint8_t *buf, uint32_t len, void *data)
+int ft_sign_pubkey(const char *fname)
 {
-	struct vb2_packed_key *data_key = (struct vb2_packed_key *)buf;
+	struct vb2_packed_key *data_key;
+	uint32_t data_len;
 	struct vb2_keyblock *block;
+	int rv = 1;
+	int fd = -1;
 
-	if (vb2_packed_key_looks_ok(data_key, len)) {
-		fprintf(stderr, "Public key looks bad.\n");
+	if (futil_open_and_map_file(fname, &fd, FILE_MODE_SIGN(sign_option),
+				    (uint8_t **)&data_key, &data_len))
 		return 1;
+
+	if (vb2_packed_key_looks_ok(data_key, data_len)) {
+		ERROR("Public key looks bad.\n");
+		goto done;
 	}
 
 	if (sign_option.pem_signpriv) {
@@ -81,10 +99,10 @@ int ft_sign_pubkey(const char *name, uint8_t *buf, uint32_t len, void *data)
 				sign_option.pem_signpriv,
 				sign_option.pem_algo);
 			if (!sign_option.signprivate) {
-				fprintf(stderr,
+				ERROR(
 					"Unable to read PEM signing key: %s\n",
 					strerror(errno));
-				return 1;
+				goto done;
 			}
 			block = vb2_create_keyblock(data_key,
 						    sign_option.signprivate,
@@ -97,20 +115,24 @@ int ft_sign_pubkey(const char *name, uint8_t *buf, uint32_t len, void *data)
 	}
 
 	/* Write it out */
-	return WriteSomeParts(sign_option.outfile,
-			      block, block->keyblock_size,
-			      NULL, 0);
+	rv = WriteSomeParts(sign_option.outfile, block, block->keyblock_size,
+			    NULL, 0);
+done:
+	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option),
+				   (uint8_t *)data_key, data_len);
+	return rv;
 }
 
-int ft_sign_raw_kernel(const char *name, uint8_t *buf, uint32_t len,
-		       void *data)
+int ft_sign_raw_kernel(const char *fname)
 {
-	uint8_t *vmlinuz_data, *kblob_data, *vblock_data;
+	uint8_t *vmlinuz_data = NULL, *kblob_data = NULL, *vblock_data = NULL;
 	uint32_t vmlinuz_size, kblob_size, vblock_size;
-	int rv;
+	int rv = 1;
+	int fd = -1;
 
-	vmlinuz_data = buf;
-	vmlinuz_size = len;
+	if (futil_open_and_map_file(fname, &fd, FILE_MODE_SIGN(sign_option),
+				    &vmlinuz_data, &vmlinuz_size))
+		return 1;
 
 	kblob_data = CreateKernelBlob(
 		vmlinuz_data, vmlinuz_size,
@@ -119,8 +141,8 @@ int ft_sign_raw_kernel(const char *name, uint8_t *buf, uint32_t len,
 		sign_option.bootloader_data, sign_option.bootloader_size,
 		&kblob_size);
 	if (!kblob_data) {
-		fprintf(stderr, "Unable to create kernel blob\n");
-		return 1;
+		ERROR("Unable to create kernel blob\n");
+		goto done;
 	}
 	VB2_DEBUG("kblob_size = %#x\n", kblob_size);
 
@@ -132,9 +154,8 @@ int ft_sign_raw_kernel(const char *name, uint8_t *buf, uint32_t len,
 				     sign_option.signprivate,
 				     sign_option.flags, &vblock_size);
 	if (!vblock_data) {
-		fprintf(stderr, "Unable to sign kernel blob\n");
-		free(kblob_data);
-		return 1;
+		ERROR("Unable to sign kernel blob\n");
+		goto done;
 	}
 	VB2_DEBUG("vblock_size = %#x\n", vblock_size);
 
@@ -152,31 +173,34 @@ int ft_sign_raw_kernel(const char *name, uint8_t *buf, uint32_t len,
 				    vblock_data, vblock_size,
 				    kblob_data, kblob_size);
 
+done:
+	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option),
+				   vmlinuz_data, vmlinuz_size);
 	free(vblock_data);
 	free(kblob_data);
 	return rv;
 }
 
-int ft_sign_kern_preamble(const char *name, uint8_t *buf, uint32_t len,
-			  void *data)
+int ft_sign_kern_preamble(const char *fname)
 {
-	uint8_t *kpart_data, *kblob_data, *vblock_data;
+	uint8_t *kpart_data = NULL, *kblob_data = NULL, *vblock_data = NULL;
 	uint32_t kpart_size, kblob_size, vblock_size;
 	struct vb2_keyblock *keyblock = NULL;
 	struct vb2_kernel_preamble *preamble = NULL;
-	int rv = 0;
+	int rv = 1;
+	int fd = -1;
 
-	kpart_data = buf;
-	kpart_size = len;
+	if (futil_open_and_map_file(fname, &fd, FILE_MODE_SIGN(sign_option),
+				    &kpart_data, &kpart_size))
+		return 1;
 
 	/* Note: This just sets some static pointers. It doesn't malloc. */
 	kblob_data = unpack_kernel_partition(kpart_data, kpart_size,
-					     sign_option.padding,
 					     &keyblock, &preamble, &kblob_size);
 
 	if (!kblob_data) {
-		fprintf(stderr, "Unable to unpack kernel partition\n");
-		return 1;
+		ERROR("Unable to unpack kernel partition\n");
+		goto done;
 	}
 
 	/*
@@ -193,8 +217,8 @@ int ft_sign_kern_preamble(const char *name, uint8_t *buf, uint32_t len,
 	    0 != UpdateKernelBlobConfig(kblob_data, kblob_size,
 					sign_option.config_data,
 					sign_option.config_size)) {
-		fprintf(stderr, "Unable to update config\n");
-		return 1;
+		ERROR("Unable to update config\n");
+		goto done;
 	}
 
 	/* Preserve the version unless a new one is given */
@@ -220,8 +244,8 @@ int ft_sign_kern_preamble(const char *name, uint8_t *buf, uint32_t len,
 				     sign_option.flags,
 				     &vblock_size);
 	if (!vblock_data) {
-		fprintf(stderr, "Unable to sign kernel blob\n");
-		return 1;
+		ERROR("Unable to sign kernel blob\n");
+		goto done;
 	}
 	VB2_DEBUG("vblock_size = %#x\n", vblock_size);
 
@@ -240,24 +264,33 @@ int ft_sign_kern_preamble(const char *name, uint8_t *buf, uint32_t len,
 		 * all our modifications to the buffer will get flushed to
 		 * disk when we close it. */
 		memcpy(kpart_data, vblock_data, vblock_size);
+		rv = 0;
 	}
-
+done:
+	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), kpart_data,
+				   kpart_size);
 	free(vblock_data);
 	return rv;
 }
 
 
-int ft_sign_raw_firmware(const char *name, uint8_t *buf, uint32_t len,
-			 void *data)
+int ft_sign_raw_firmware(const char *fname)
 {
-	struct vb2_signature *body_sig;
-	struct vb2_fw_preamble *preamble;
-	int rv;
+	struct vb2_signature *body_sig = NULL;
+	struct vb2_fw_preamble *preamble = NULL;
+	uint8_t *buf;
+	uint32_t len;
+	int rv = 1;
+	int fd = -1;
+
+	if (futil_open_and_map_file(fname, &fd, FILE_MODE_SIGN(sign_option),
+				    &buf, &len))
+		return 1;
 
 	body_sig = vb2_calculate_signature(buf, len, sign_option.signprivate);
 	if (!body_sig) {
-		fprintf(stderr, "Error calculating body signature\n");
-		return 1;
+		ERROR("Calculating body signature\n");
+		goto done;
 	}
 
 	preamble = vb2_create_fw_preamble(
@@ -267,9 +300,8 @@ int ft_sign_raw_firmware(const char *name, uint8_t *buf, uint32_t len,
 			sign_option.signprivate,
 			sign_option.flags);
 	if (!preamble) {
-		fprintf(stderr, "Error creating firmware preamble.\n");
-		free(body_sig);
-		return 1;
+		ERROR("Creating firmware preamble.\n");
+		goto done;
 	}
 
 	rv = WriteSomeParts(sign_option.outfile,
@@ -277,10 +309,92 @@ int ft_sign_raw_firmware(const char *name, uint8_t *buf, uint32_t len,
 			    sign_option.keyblock->keyblock_size,
 			    preamble, preamble->preamble_size);
 
+done:
+	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
 	free(preamble);
 	free(body_sig);
 
 	return rv;
+}
+
+static int load_keyset(void)
+{
+	char *buf = NULL;
+	int errorcnt = 0;
+	const char *s = NULL;
+	const char *b = NULL;
+	const char *k = NULL;
+	const char *format;
+	struct stat sb;
+
+	if (!sign_option.keysetdir)
+		FATAL("Keyset should never be NULL. Aborting\n");
+
+	/* Failure means this is not a directory */
+	if (stat(sign_option.keysetdir, &sb) == -1 ||
+	    (sb.st_mode & S_IFMT) != S_IFDIR)
+		format = "%s%s.%s";
+	else
+		format = "%s/%s.%s";
+
+	switch (sign_option.type) {
+	case FILE_TYPE_BIOS_IMAGE:
+	case FILE_TYPE_RAW_FIRMWARE:
+		s = "firmware_data_key";
+		b = "firmware";
+		k = "kernel_subkey";
+		break;
+	case FILE_TYPE_RAW_KERNEL:
+		s = "kernel_data_key";
+		b = "kernel";
+		break;
+	case FILE_TYPE_KERN_PREAMBLE:
+		s = "kernel_data_key";
+		break;
+	default:
+		return 0;
+	}
+
+	if (s && !sign_option.signprivate) {
+		if (asprintf(&buf, format, sign_option.keysetdir, s,
+			     "vbprivk") <= 0)
+			FATAL("Failed to allocate string\n");
+		INFO("Loading private data key from default keyset: %s\n", buf);
+		sign_option.signprivate = vb2_read_private_key(buf);
+		if (!sign_option.signprivate) {
+			ERROR("Reading %s\n", buf);
+			errorcnt++;
+		}
+		free(buf);
+	}
+
+	if (b && !sign_option.keyblock) {
+		if (asprintf(&buf, format, sign_option.keysetdir, b,
+			     "keyblock") <= 0)
+			FATAL("Failed to allocate string\n");
+		INFO("Loading keyblock from default keyset: %s\n", buf);
+		sign_option.keyblock = vb2_read_keyblock(buf);
+		if (!sign_option.keyblock) {
+			ERROR("Reading %s\n", buf);
+			errorcnt++;
+		}
+		free(buf);
+	}
+
+	if (k && !sign_option.kernel_subkey) {
+		if (asprintf(&buf, format, sign_option.keysetdir, k,
+			     "vbpubk") <= 0)
+			FATAL("Failed to allocate string\n");
+		INFO("Loading kernel subkey from default keyset: %s\n", buf);
+		sign_option.kernel_subkey = vb2_read_packed_key(buf);
+		if (!sign_option.kernel_subkey) {
+			ERROR("Reading %s\n", buf);
+			errorcnt++;
+		}
+		free(buf);
+	}
+
+	return errorcnt;
 }
 
 static const char usage_pubkey[] = "\n"
@@ -315,41 +429,46 @@ static const char usage_fw_main[] = "\n"
 	"To sign a raw firmware blob (FW_MAIN_A/B):\n"
 	"\n"
 	"Required PARAMS:\n"
-	"  -s|--signprivate FILE.vbprivk    The private firmware data key\n"
-	"  -b|--keyblock    FILE.keyblock   The keyblock containing the\n"
-	"                                     public firmware data key\n"
-	"  -k|--kernelkey   FILE.vbpubk     The public kernel subkey\n"
 	"  -v|--version     NUM             The firmware version number\n"
 	"  [--fv]           INFILE"
 	"          The raw firmware blob (FW_MAIN_A/B)\n"
 	"  [--outfile]      OUTFILE         Output VBLOCK_A/B\n"
 	"\n"
 	"Optional PARAMS:\n"
-	"  -f|--flags       NUM             The preamble flags value"
-	" (default is 0)\n"
-	"\n";
-static void print_help_raw_firmware(int argc, char *argv[])
-{
-	puts(usage_fw_main);
-}
-
-static const char usage_bios[] = "\n"
-	"To sign a complete firmware image (bios.bin):\n"
-	"\n"
-	"Required PARAMS:\n"
 	"  -s|--signprivate FILE.vbprivk    The private firmware data key\n"
 	"  -b|--keyblock    FILE.keyblock   The keyblock containing the\n"
 	"                                     public firmware data key\n"
 	"  -k|--kernelkey   FILE.vbpubk     The public kernel subkey\n"
+	"  -f|--flags       NUM             The preamble flags value"
+	" (default is 0)\n"
+	"  -K|--keyset      PATH            Prefix of private firmware data"
+	" key,\n"
+	"                                   keyblock and public kernel"
+	" subkey.\n"
+	"                                   Prefix must be valid path with\n"
+	"                                   optional file name prefix.\n"
+	"                                   Used as defaults for -s, -b and"
+	" -k,\n"
+	"                                   if not passed expliticly\n"
+	"                                   (default is '%s')\n"
+	"\n";
+static void print_help_raw_firmware(int argc, char *argv[])
+{
+	printf(usage_fw_main, DEFAULT_KEYSETDIR);
+}
+
+static const char usage_bios[] = "\n"
+	"To sign a complete firmware image (image.bin):\n"
+	"\n"
+	"Required PARAMS:\n"
 	"  [--infile]       INFILE          Input firmware image (modified\n"
 	"                                     in place if no OUTFILE given)\n"
 	"\n"
-	"These are required if the A and B firmware differ:\n"
-	"  -S|--devsign     FILE.vbprivk    The DEV private firmware data key\n"
-	"  -B|--devkeyblock FILE.keyblock   The keyblock containing the\n"
-	"                                     DEV public firmware data key\n"
-	"\n"
 	"Optional PARAMS:\n"
+	"  -s|--signprivate FILE.vbprivk    The private firmware data key\n"
+	"  -b|--keyblock    FILE.keyblock   The keyblock containing the\n"
+	"                                     public firmware data key\n"
+	"  -k|--kernelkey   FILE.vbpubk     The public kernel subkey\n"
 	"  -v|--version     NUM             The firmware version number"
 	" (default %d)\n"
 	"  -f|--flags       NUM             The preamble flags value"
@@ -357,23 +476,27 @@ static const char usage_bios[] = "\n"
 	"                                     unchanged, or 0 if unknown)\n"
 	"  -d|--loemdir     DIR             Local OEM output vblock directory\n"
 	"  -l|--loemid      STRING          Local OEM vblock suffix\n"
+	"  -K|--keyset      PATH            Prefix of private firmware data"
+	" key,\n"
+	"                                   keyblock and public kernel"
+	" subkey.\n"
+	"                                   Prefix must be valid path with\n"
+	"                                   optional file name prefix.\n"
+	"                                   Used as defaults for -s, -b and"
+	" -k,\n"
+	"                                   if not passed expliticly\n"
+	"                                   (default is '%s')\n"
 	"  [--outfile]      OUTFILE         Output firmware image\n"
 	"\n";
 static void print_help_bios_image(int argc, char *argv[])
 {
-	printf(usage_bios, sign_option.version);
+	printf(usage_bios, sign_option.version, DEFAULT_KEYSETDIR);
 }
 
 static const char usage_new_kpart[] = "\n"
 	"To create a new kernel partition image (/dev/sda2, /dev/mmcblk0p2):\n"
 	"\n"
 	"Required PARAMS:\n"
-	"  -s|--signprivate FILE.vbprivk"
-	"    The private key to sign the kernel blob\n"
-	"  -b|--keyblock    FILE.keyblock   Keyblock containing the public\n"
-	"                                     key to verify the kernel blob\n"
-	"  -v|--version     NUM             The kernel version number\n"
-	"  --bootloader     FILE            Bootloader stub\n"
 	"  --config         FILE            The kernel commandline file\n"
 	"  --arch           ARCH            The CPU architecture (one of\n"
 	"                                     x86|amd64, arm|aarch64, mips)\n"
@@ -381,6 +504,12 @@ static const char usage_new_kpart[] = "\n"
 	"  [--outfile]      OUTFILE         Output kernel partition or vblock\n"
 	"\n"
 	"Optional PARAMS:\n"
+	"  -s|--signprivate FILE.vbprivk"
+	"    The private key to sign the kernel blob\n"
+	"  -b|--keyblock    FILE.keyblock   Keyblock containing the public\n"
+	"                                     key to verify the kernel blob\n"
+	"  -v|--version     NUM             The kernel version number (def:1)\n"
+	"  --bootloader     FILE            Bootloader stub\n"
 	"  --kloadaddr      NUM"
 	"             RAM address to load the kernel body\n"
 	"                                     (default %#x)\n"
@@ -389,22 +518,30 @@ static const char usage_new_kpart[] = "\n"
 	" --vblockonly                      Emit just the vblock (requires a\n"
 	"                                     distinct outfile)\n"
 	"  -f|--flags       NUM             The preamble flags value\n"
+	"  -K|--keyset      PATH            Prefix of private kernel data key\n"
+	"                                   and keyblock.\n"
+	"                                   Prefix must be valid path with\n"
+	"                                   optional file name prefix.\n"
+	"                                   Used as defaults for -s and -b,\n"
+	"                                   if not passed expliticly\n"
+	"                                   (default is '%s')\n"
 	"\n";
 static void print_help_raw_kernel(int argc, char *argv[])
 {
-	printf(usage_new_kpart, sign_option.kloadaddr, sign_option.padding);
+	printf(usage_new_kpart, sign_option.kloadaddr, sign_option.padding,
+	       DEFAULT_KEYSETDIR);
 }
 
 static const char usage_old_kpart[] = "\n"
 	"To resign an existing kernel partition (/dev/sda2, /dev/mmcblk0p2):\n"
 	"\n"
 	"Required PARAMS:\n"
-	"  -s|--signprivate FILE.vbprivk"
-	"    The private key to sign the kernel blob\n"
 	"  [--infile]       INFILE          Input kernel partition (modified\n"
 	"                                     in place if no OUTFILE given)\n"
 	"\n"
 	"Optional PARAMS:\n"
+	"  -s|--signprivate FILE.vbprivk"
+	"    The private key to sign the kernel blob\n"
 	"  -b|--keyblock    FILE.keyblock   Keyblock containing the public\n"
 	"                                     key to verify the kernel blob\n"
 	"  -v|--version     NUM             The kernel version number\n"
@@ -415,10 +552,17 @@ static const char usage_old_kpart[] = "\n"
 	"  --vblockonly                     Emit just the vblock (requires a\n"
 	"                                     distinct OUTFILE)\n"
 	"  -f|--flags       NUM             The preamble flags value\n"
+	"  -K|--keyset      PATH            Prefix of private kernel data"
+	" key.\n"
+	"                                   Prefix must be valid path with\n"
+	"                                   optional file name prefix.\n"
+	"                                   Used as default for -s,\n"
+	"                                   if not passed expliticly\n"
+	"                                   (default is '%s')\n"
 	"\n";
 static void print_help_kern_preamble(int argc, char *argv[])
 {
-	printf(usage_old_kpart, sign_option.padding);
+	printf(usage_old_kpart, sign_option.padding, DEFAULT_KEYSETDIR);
 }
 
 static void print_help_usbpd1(int argc, char *argv[])
@@ -496,8 +640,7 @@ static void print_help_rwsig(int argc, char *argv[])
 	       "If INFILE contains an FMAP, RW and signatures offsets are read from\n"
 	       "FMAP. These regions must be named EC_RW and SIG_RW respectively.\n"
 	       "If a public key is found in the region named KEY_RO, it will be replaced\n"
-	       "in the RO image. This mode also produces EC_RW.bin which is a EC_RW\n"
-	       "region image (same as the input file for 'Data + Signature mode').\n"
+	       "in the RO image.\n"
 	       "\n"
 	       "Options:\n"
 	       "\n"
@@ -512,6 +655,8 @@ static void print_help_rwsig(int argc, char *argv[])
 	       "                                    the file does not contain an FMAP.\n"
 	       "                                    (default 1024 bytes)\n"
 	       "  --data_size   NUM               Number of bytes of INFILE to sign\n"
+	       "  --ecrw_out    FILE              Output path for Key+Data+Signature mode\n"
+	       "                                  to extract EC_RW region to\n"
 	       "\n",
 	       argv[0],
 	       futil_file_type_name(FILE_TYPE_RWSIG),
@@ -536,7 +681,7 @@ static const char usage_default[] = "\n"
 	"    INFILE                              OUTFILE\n"
 	"  public key (.vbpubk)                keyblock\n"
 	"  raw firmware blob (FW_MAIN_A/B)     firmware preamble (VBLOCK_A/B)\n"
-	"  full firmware image (bios.bin)      same, or signed in-place\n"
+	"  full firmware image (image.bin)     same, or signed in-place\n"
 	"  raw linux kernel (vmlinuz)          kernel partition image\n"
 	"  kernel partition (/dev/sda2)        same, or signed in-place\n"
 	"  usbpd1 firmware image               same, or signed in-place\n"
@@ -589,6 +734,7 @@ enum no_short_opts {
 	OPT_DATA_SIZE,
 	OPT_SIG_SIZE,
 	OPT_PRIKEY,
+	OPT_ECRW_OUT,
 	OPT_HELP,
 };
 
@@ -597,12 +743,11 @@ static const struct option long_opts[] = {
 	{"signprivate",  1, NULL, 's'},
 	{"keyblock",     1, NULL, 'b'},
 	{"kernelkey",    1, NULL, 'k'},
-	{"devsign",      1, NULL, 'S'},
-	{"devkeyblock",  1, NULL, 'B'},
 	{"version",      1, NULL, 'v'},
 	{"flags",        1, NULL, 'f'},
 	{"loemdir",      1, NULL, 'd'},
 	{"loemid",       1, NULL, 'l'},
+	{"keyset",       1, NULL, 'K'},
 	{"fv",           1, NULL, OPT_FV},
 	{"infile",       1, NULL, OPT_INFILE},
 	{"datapubkey",   1, NULL, OPT_INFILE},	/* alias */
@@ -628,10 +773,11 @@ static const struct option long_opts[] = {
 	{"sig_size",     1, NULL, OPT_SIG_SIZE},
 	{"prikey",       1, NULL, OPT_PRIKEY},
 	{"privkey",      1, NULL, OPT_PRIKEY},	/* alias */
+	{"ecrw_out",     1, NULL, OPT_ECRW_OUT},
 	{"help",         0, NULL, OPT_HELP},
 	{NULL,           0, NULL, 0},
 };
-static const char *short_opts = ":s:b:k:S:B:v:f:d:l:";
+static const char *short_opts = ":s:b:k:v:f:d:l:K:";
 
 /* Return zero on success */
 static int parse_number_opt(const char *arg, const char *name, uint32_t *dest)
@@ -639,7 +785,7 @@ static int parse_number_opt(const char *arg, const char *name, uint32_t *dest)
 	char *e;
 	uint32_t val = strtoul(arg, &e, 0);
 	if (!*arg || (e && *e)) {
-		fprintf(stderr, "Invalid --%s \"%s\"\n", name, arg);
+		ERROR("Invalid --%s \"%s\"\n", name, arg);
 		return 1;
 	}
 	*dest = val;
@@ -650,12 +796,8 @@ static int do_sign(int argc, char *argv[])
 {
 	char *infile = 0;
 	int i;
-	int ifd = -1;
 	int errorcnt = 0;
-	uint8_t *buf;
-	uint32_t buf_len;
 	char *e = 0;
-	int mapping;
 	int helpind = 0;
 	int longindex;
 
@@ -666,36 +808,21 @@ static int do_sign(int argc, char *argv[])
 		case 's':
 			sign_option.signprivate = vb2_read_private_key(optarg);
 			if (!sign_option.signprivate) {
-				fprintf(stderr, "Error reading %s\n", optarg);
+				ERROR("Reading %s\n", optarg);
 				errorcnt++;
 			}
 			break;
 		case 'b':
 			sign_option.keyblock = vb2_read_keyblock(optarg);
 			if (!sign_option.keyblock) {
-				fprintf(stderr, "Error reading %s\n", optarg);
+				ERROR("Reading %s\n", optarg);
 				errorcnt++;
 			}
 			break;
 		case 'k':
 			sign_option.kernel_subkey = vb2_read_packed_key(optarg);
 			if (!sign_option.kernel_subkey) {
-				fprintf(stderr, "Error reading %s\n", optarg);
-				errorcnt++;
-			}
-			break;
-		case 'S':
-			sign_option.devsignprivate =
-				vb2_read_private_key(optarg);
-			if (!sign_option.devsignprivate) {
-				fprintf(stderr, "Error reading %s\n", optarg);
-				errorcnt++;
-			}
-			break;
-		case 'B':
-			sign_option.devkeyblock = vb2_read_keyblock(optarg);
-			if (!sign_option.devkeyblock) {
-				fprintf(stderr, "Error reading %s\n", optarg);
+				ERROR("Reading %s\n", optarg);
 				errorcnt++;
 			}
 			break;
@@ -703,8 +830,7 @@ static int do_sign(int argc, char *argv[])
 			sign_option.version_specified = 1;
 			sign_option.version = strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
-				fprintf(stderr,
-					"Invalid --version \"%s\"\n", optarg);
+				ERROR("Invalid --version \"%s\"\n", optarg);
 				errorcnt++;
 			}
 			break;
@@ -719,6 +845,9 @@ static int do_sign(int argc, char *argv[])
 			break;
 		case 'l':
 			sign_option.loemid = optarg;
+			break;
+		case 'K':
+			sign_option.keysetdir = optarg;
 			break;
 		case OPT_FV:
 			sign_option.fv_specified = 1;
@@ -735,8 +864,7 @@ static int do_sign(int argc, char *argv[])
 			sign_option.bootloader_data = ReadFile(
 				optarg, &sign_option.bootloader_size);
 			if (!sign_option.bootloader_data) {
-				fprintf(stderr,
-					"Error reading bootloader file: %s\n",
+				ERROR("Error reading bootloader file: %s\n",
 					strerror(errno));
 				errorcnt++;
 			}
@@ -747,8 +875,7 @@ static int do_sign(int argc, char *argv[])
 			sign_option.config_data = ReadConfigFile(
 				optarg, &sign_option.config_size);
 			if (!sign_option.config_data) {
-				fprintf(stderr,
-					"Error reading config file: %s\n",
+				ERROR("Error reading config file: %s\n",
 					strerror(errno));
 				errorcnt++;
 			}
@@ -764,8 +891,7 @@ static int do_sign(int argc, char *argv[])
 			else if (!strcasecmp(optarg, "mips"))
 				sign_option.arch = ARCH_MIPS;
 			else {
-				fprintf(stderr,
-					"Unknown architecture: \"%s\"\n",
+				ERROR("Unknown architecture: \"%s\"\n",
 					optarg);
 				errorcnt++;
 			}
@@ -810,16 +936,14 @@ static int do_sign(int argc, char *argv[])
 			sign_option.pem_algo = strtoul(optarg, &e, 0);
 			if (!*optarg || (e && *e) ||
 			    (sign_option.pem_algo >= VB2_ALG_COUNT)) {
-				fprintf(stderr,
-					"Invalid --pem_algo \"%s\"\n", optarg);
+				ERROR("Invalid --pem_algo \"%s\"\n", optarg);
 				errorcnt++;
 			}
 			break;
 		case OPT_HASH_ALG:
 			if (!vb2_lookup_hash_alg(optarg,
 						 &sign_option.hash_alg)) {
-				fprintf(stderr,
-					"invalid hash_alg \"%s\"\n", optarg);
+				ERROR("Invalid hash_alg \"%s\"\n", optarg);
 				errorcnt++;
 			}
 			break;
@@ -831,17 +955,19 @@ static int do_sign(int argc, char *argv[])
 						    &sign_option.type)) {
 				if (!strcasecmp("help", optarg))
 				    print_file_types_and_exit(errorcnt);
-				fprintf(stderr,
-					"Invalid --type \"%s\"\n", optarg);
+				ERROR("Invalid --type \"%s\"\n", optarg);
 				errorcnt++;
 			}
 			break;
 		case OPT_PRIKEY:
-			if (vb21_private_key_read(&sign_option.prikey,
-						  optarg)) {
-				fprintf(stderr, "Error reading %s\n", optarg);
+			sign_option.prikey = vb2_read_private_key(optarg);
+			if (!sign_option.prikey) {
+				ERROR("Reading %s\n", optarg);
 				errorcnt++;
 			}
+			break;
+		case OPT_ECRW_OUT:
+			sign_option.ecrw_out = optarg;
 			break;
 		case OPT_HELP:
 			helpind = optind - 1;
@@ -849,15 +975,15 @@ static int do_sign(int argc, char *argv[])
 
 		case '?':
 			if (optopt)
-				fprintf(stderr, "Unrecognized option: -%c\n",
+				ERROR("Unrecognized option: -%c\n",
 					optopt);
 			else
-				fprintf(stderr, "Unrecognized option: %s\n",
+				ERROR("Unrecognized option: %s\n",
 					argv[optind - 1]);
 			errorcnt++;
 			break;
 		case ':':
-			fprintf(stderr, "Missing argument to -%c\n", optopt);
+			ERROR("Missing argument to -%c\n", optopt);
 			errorcnt++;
 			break;
 		case 0:				/* handled option */
@@ -881,7 +1007,7 @@ static int do_sign(int argc, char *argv[])
 	if (!infile) {
 		if (argc - optind <= 0) {
 			errorcnt++;
-			fprintf(stderr, "ERROR: missing input filename\n");
+			ERROR("Missing input filename\n");
 			goto done;
 		} else {
 			sign_option.inout_file_count++;
@@ -911,6 +1037,10 @@ static int do_sign(int argc, char *argv[])
 			sign_option.type = FILE_TYPE_RAW_FIRMWARE;
 	}
 
+	/* Load keys and keyblocks from keyset path, if they were not provided
+	   earlier. */
+	errorcnt += load_keyset();
+
 	VB2_DEBUG("type=%s\n", futil_file_type_name(sign_option.type));
 
 	/* Check the arguments for the type of thing we want to sign */
@@ -918,8 +1048,7 @@ static int do_sign(int argc, char *argv[])
 	case FILE_TYPE_PUBKEY:
 		sign_option.create_new_outfile = 1;
 		if (sign_option.signprivate && sign_option.pem_signpriv) {
-			fprintf(stderr,
-				"Only one of --signprivate and --pem_signpriv"
+			ERROR("Only one of --signprivate and --pem_signpriv"
 				" can be specified\n");
 			errorcnt++;
 		}
@@ -927,12 +1056,12 @@ static int do_sign(int argc, char *argv[])
 		     sign_option.pem_algo_specified) ||
 		    (sign_option.pem_signpriv &&
 		     !sign_option.pem_algo_specified)) {
-			fprintf(stderr, "--pem_algo must be used with"
+			ERROR("--pem_algo must be used with"
 				" --pem_signpriv\n");
 			errorcnt++;
 		}
 		if (sign_option.pem_external && !sign_option.pem_signpriv) {
-			fprintf(stderr, "--pem_external must be used with"
+			ERROR("--pem_external must be used with"
 				" --pem_signpriv\n");
 			errorcnt++;
 		}
@@ -940,12 +1069,17 @@ static int do_sign(int argc, char *argv[])
 		 * may want to read it instead. */
 		break;
 	case FILE_TYPE_BIOS_IMAGE:
-	case FILE_TYPE_OLD_BIOS_IMAGE:
 		errorcnt += no_opt_if(!sign_option.signprivate, "signprivate");
 		errorcnt += no_opt_if(!sign_option.keyblock, "keyblock");
 		errorcnt += no_opt_if(!sign_option.kernel_subkey, "kernelkey");
 		break;
 	case FILE_TYPE_KERN_PREAMBLE:
+		errorcnt += bad_opt_if(sign_option.bootloader_data,
+				       "bootloader");
+		errorcnt += bad_opt_if(sign_option.arch != ARCH_UNSPECIFIED,
+				       "arch");
+		errorcnt += bad_opt_if(sign_option.kloadaddr !=
+				       CROS_32BIT_ENTRY_ADDR, "kloadaddr");
 		errorcnt += no_opt_if(!sign_option.signprivate, "signprivate");
 		if (sign_option.vblockonly || sign_option.inout_file_count > 1)
 			sign_option.create_new_outfile = 1;
@@ -962,10 +1096,6 @@ static int do_sign(int argc, char *argv[])
 		sign_option.create_new_outfile = 1;
 		errorcnt += no_opt_if(!sign_option.signprivate, "signprivate");
 		errorcnt += no_opt_if(!sign_option.keyblock, "keyblock");
-		errorcnt += no_opt_if(!sign_option.version_specified,
-				      "version");
-		errorcnt += no_opt_if(!sign_option.bootloader_data,
-				      "bootloader");
 		errorcnt += no_opt_if(!sign_option.config_data, "config");
 		errorcnt += no_opt_if(sign_option.arch == ARCH_UNSPECIFIED,
 				      "arch");
@@ -995,7 +1125,7 @@ static int do_sign(int argc, char *argv[])
 	if (!sign_option.outfile) {
 		if (sign_option.create_new_outfile) {
 			errorcnt++;
-			fprintf(stderr, "Missing output filename\n");
+			ERROR("Missing output filename\n");
 			goto done;
 		} else {
 			sign_option.outfile = infile;
@@ -1006,67 +1136,30 @@ static int do_sign(int argc, char *argv[])
 
 	if (argc - optind > 0) {
 		errorcnt++;
-		fprintf(stderr, "ERROR: too many arguments left over\n");
+		ERROR("Too many arguments left over\n");
 	}
 
 	if (errorcnt)
 		goto done;
 
-	if (sign_option.create_new_outfile) {
-		/* The input is read-only, the output is write-only. */
-		mapping = MAP_RO;
-		VB2_DEBUG("open RO %s\n", infile);
-		ifd = open(infile, O_RDONLY);
-		if (ifd < 0) {
-			errorcnt++;
-			fprintf(stderr, "Can't open %s for reading: %s\n",
-				infile, strerror(errno));
-			goto done;
-		}
-	} else {
+	if (!sign_option.create_new_outfile) {
 		/* We'll read-modify-write the output file */
-		mapping = MAP_RW;
 		if (sign_option.inout_file_count > 1)
-			futil_copy_file_or_die(infile, sign_option.outfile);
-		VB2_DEBUG("open RW %s\n", sign_option.outfile);
+			if (futil_copy_file(infile, sign_option.outfile) < 0)
+				goto done;
 		infile = sign_option.outfile;
-		ifd = open(sign_option.outfile, O_RDWR);
-		if (ifd < 0) {
-			errorcnt++;
-			fprintf(stderr, "Can't open %s for writing: %s\n",
-				sign_option.outfile, strerror(errno));
-			goto done;
-		}
 	}
 
-	if (0 != futil_map_file(ifd, mapping, &buf, &buf_len)) {
-		errorcnt++;
-		goto done;
-	}
-
-	errorcnt += futil_file_type_sign(sign_option.type, infile,
-					 buf, buf_len);
-
-	errorcnt += futil_unmap_file(ifd, mapping, buf, buf_len);
-
+	errorcnt += futil_file_type_sign(sign_option.type, infile);
 done:
-	if (ifd >= 0 && close(ifd)) {
-		errorcnt++;
-		fprintf(stderr, "Error when closing ifd: %s\n",
-			strerror(errno));
-	}
-
-	if (sign_option.signprivate)
-		free(sign_option.signprivate);
-	if (sign_option.keyblock)
-		free(sign_option.keyblock);
-	if (sign_option.kernel_subkey)
-		free(sign_option.kernel_subkey);
+	free(sign_option.signprivate);
+	free(sign_option.keyblock);
+	free(sign_option.kernel_subkey);
 	if (sign_option.prikey)
-		vb2_private_key_free(sign_option.prikey);
+		vb2_free_private_key(sign_option.prikey);
 
 	if (errorcnt)
-		fprintf(stderr, "Use --help for usage instructions\n");
+		ERROR("Use --help for usage instructions\n");
 
 	return !!errorcnt;
 }

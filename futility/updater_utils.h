@@ -1,4 +1,4 @@
-/* Copyright 2019 The Chromium OS Authors. All rights reserved.
+/* Copyright 2019 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -8,6 +8,7 @@
 #ifndef VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_
 #define VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_
 
+#include <stdbool.h>
 #include <stdio.h>
 #include "fmap.h"
 
@@ -15,12 +16,7 @@
 	ERROR("Failed to allocate memory, abort.\n"); exit(1); } while (0)
 
 /* Structure(s) declared in updater_archive */
-struct archive;
-
-/* flashrom programmers. */
-static const char * const PROG_HOST = "host",
-		  * const PROG_EC = "ec",
-		  * const PROG_PD = "ec:type=pd";
+struct u_archive;
 
 /* Firmware slots */
 static const char * const FWACT_A = "A",
@@ -54,15 +50,8 @@ const char *create_temp_file(struct tempfile *head);
  */
 void remove_all_temp_files(struct tempfile *head);
 
-/* Utilities for firmware images and (FMAP) sections */
-struct firmware_image {
-	const char *programmer;
-	uint32_t size;
-	uint8_t *data;
-	char *file_name;
-	char *ro_version, *rw_version_a, *rw_version_b;
-	FmapHeader *fmap_header;
-};
+/* Include definition of 'struct firmware_image;' */
+#include "flashrom.h"
 
 enum {
 	IMAGE_LOAD_SUCCESS = 0,
@@ -78,17 +67,27 @@ enum {
  * failure, or IMAGE_PARSE_FAILURE for non-vboot images.
  */
 int load_firmware_image(struct firmware_image *image, const char *file_name,
-			struct archive *archive);
+			struct u_archive *archive);
+
+/* Structure(s) declared in updater.h */
+struct updater_config;
 
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
- * Returns 0 if success, non-zero if error.
+ * Returns 0 if success. Returns IMAGE_PARSE_FAILURE for non-vboot images.
+ * Returns other values for error.
  */
-int load_system_firmware(struct firmware_image *image,
-			 struct tempfile *tempfiles, int verbosity);
+int load_system_firmware(struct updater_config *cfg,
+			 struct firmware_image *image);
 
 /* Frees the allocated resource from a firmware image object. */
 void free_firmware_image(struct firmware_image *image);
+
+/* Preserves meta data and reloads image contents from given file path. */
+int reload_firmware_image(const char *file_path, struct firmware_image *image);
+
+/* Checks the consistency of RW A and B firmware versions. */
+void check_firmware_versions(const struct firmware_image *image);
 
 /*
  * Generates a temporary file for snapshot of firmware image contents.
@@ -99,15 +98,14 @@ const char *get_firmware_image_temp_file(const struct firmware_image *image,
 					 struct tempfile *tempfiles);
 
 /*
- * Writes a section from given firmware image to system firmware.
- * If section_name is NULL, write whole image.
+ * Writes sections from a given firmware image to the system firmware.
+ * regions_len should be zero for writing the whole image; otherwise, regions
+ * should contain a list of FMAP section names of at least regions_len size.
  * Returns 0 if success, non-zero if error.
  */
-int write_system_firmware(const struct firmware_image *image,
-			  const struct firmware_image *diff_image,
-			  const char *section_name,
-			  struct tempfile *tempfiles,
-			  int verbosity);
+int write_system_firmware(struct updater_config *cfg,
+			  const struct firmware_image *image,
+			  const char *const regions[], size_t regions_len);
 
 struct firmware_section {
 	uint8_t *data;
@@ -142,6 +140,20 @@ int preserve_firmware_section(const struct firmware_image *image_from,
 			      const char *section_name);
 
 /*
+ * Overwrite the given offset of a section in the firmware image with the
+ * given values.
+ * Returns 0 on success, otherwise failure.
+ */
+int overwrite_section(struct firmware_image *image,
+			     const char *fmap_section, size_t offset,
+			     size_t size, const uint8_t *new_values);
+
+/*
+ * Returns rootkey hash of firmware image, or NULL on failure.
+ */
+const char *get_firmware_rootkey_hash(const struct firmware_image *image);
+
+/*
  * Finds the GBB (Google Binary Block) header on a given firmware image.
  * Returns a pointer to valid GBB header, or NULL on not found.
  */
@@ -162,70 +174,75 @@ void strip_string(char *s, const char *pattern);
 int save_file_from_stdin(const char *output);
 
 /*
+ * Returns true if the AP write protection is enabled on current system.
+ */
+bool is_ap_write_protection_enabled(struct updater_config *cfg);
+
+/*
+ * Returns true if the EC write protection is enabled on current system.
+ */
+bool is_ec_write_protection_enabled(struct updater_config *cfg);
+
+/*
  * Executes a command on current host and returns stripped command output.
  * If the command has failed (exit code is not zero), returns an empty string.
  * The caller is responsible for releasing the returned string.
  */
 char *host_shell(const char *command);
 
-enum wp_state {
-	WP_ERROR = -1,
-	WP_DISABLED = 0,
-	WP_ENABLED,
-};
-
-/* Helper function to return write protection status via given programmer. */
-enum wp_state host_get_wp(const char *programmer);
-
 /* The environment variable name for setting servod port. */
 #define ENV_SERVOD_PORT	"SERVOD_PORT"
+
+/* The environment variable name for setting servod name. */
+#define ENV_SERVOD_NAME	"SERVOD_NAME"
 
 /*
  * Helper function to detect type of Servo board attached to host.
  * Returns a string as programmer parameter on success, otherwise NULL.
  */
-char *host_detect_servo(int *need_prepare_ptr);
+char *host_detect_servo(const char **prepare_ctrl_name);
 
 /*
- * Returns 1 if a given file (cbfs_entry_name) exists inside a particular CBFS
- * section of an image file, otherwise 0.
+ * Makes a dut-control request for control_name.
+ * Sets control_name to "on" if on is non zero, else "off".
+ * Does not check for failure.
  */
-int cbfs_file_exists(const char *image_file,
-		     const char *section_name,
-		     const char *cbfs_entry_name);
+void prepare_servo_control(const char *control_name, bool on);
 
-/*
- * Extracts files from a CBFS on given region (section) of image_file.
- * Returns the path to a temporary file on success, otherwise NULL.
- */
-const char *cbfs_extract_file(const char *image_file,
-			      const char *cbfs_region,
-			      const char *cbfs_name,
-			      struct tempfile *tempfiles);
+/* DUT related functions (implementations in updater_dut.c) */
 
-/* Utilities for accessing system properties */
-struct system_property {
-	int (*getter)(void);
+struct dut_property {
+	int (*getter)(struct updater_config *cfg);
 	int value;
 	int initialized;
 };
 
-enum system_property_type {
-	SYS_PROP_MAINFW_ACT,
-	SYS_PROP_TPM_FWVER,
-	SYS_PROP_FW_VBOOT2,
-	SYS_PROP_PLATFORM_VER,
-	SYS_PROP_WP_HW,
-	SYS_PROP_WP_SW,
-	SYS_PROP_MAX
+enum dut_property_type {
+	DUT_PROP_MAINFW_ACT,
+	DUT_PROP_TPM_FWVER,
+	DUT_PROP_PLATFORM_VER,
+	DUT_PROP_WP_HW,
+	DUT_PROP_WP_SW_AP,
+	DUT_PROP_WP_SW_EC,
+	DUT_PROP_MAX
 };
 
-/* Helper function to initialize system properties. */
-void init_system_properties(struct system_property *props, int num);
+/* Helper function to initialize DUT properties. */
+void dut_init_properties(struct dut_property *props, int num);
 
-/*
- * Returns rootkey hash of firmware image, or NULL on failure.
- */
-const char *get_firmware_rootkey_hash(const struct firmware_image *image);
+/* Gets the DUT system property by given type. Returns the property value. */
+int dut_get_property(enum dut_property_type property_type,
+		     struct updater_config *cfg);
+
+int dut_set_property_string(const char *key, const char *value,
+			    struct updater_config *cfg);
+int dut_get_property_string(const char *key, char *dest, size_t size,
+			    struct updater_config *cfg);
+int dut_set_property_int(const char *key, const int value,
+			 struct updater_config *cfg);
+int dut_get_property_int(const char *key, struct updater_config *cfg);
+
+/* Gets the 'firmware manifest key' on the DUT. */
+int dut_get_manifest_key(char **manifest_key_out, struct updater_config *cfg);
 
 #endif  /* VBOOT_REFERENCE_FUTILITY_UPDATER_UTILS_H_ */

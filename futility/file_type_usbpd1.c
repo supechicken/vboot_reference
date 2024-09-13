@@ -1,4 +1,4 @@
-/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2015 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -30,15 +30,15 @@
 #include "util_misc.h"
 
 /* Return 1 if okay, 0 if not */
-static int parse_size_opts(uint32_t len,
+static int parse_size_opts(const uint32_t len,
 			   uint32_t *ro_size_ptr, uint32_t *rw_size_ptr,
 			   uint32_t *ro_offset_ptr, uint32_t * rw_offset_ptr)
 {
-	uint32_t ro_size, rw_size, ro_offset, rw_offset;
-
 	/* Assume the image has both RO and RW, evenly split. */
-	ro_offset = 0;
-	ro_size = rw_size = rw_offset = len / 2;
+	uint32_t ro_offset = 0;
+	uint32_t ro_size = len / 2;
+	uint32_t rw_size = len / 2;
+	uint32_t rw_offset = len / 2;
 
 	/* Unless told otherwise... */
 	if (sign_option.ro_size != 0xffffffff)
@@ -78,7 +78,7 @@ static int parse_size_opts(uint32_t len,
 	return 1;
 }
 
-int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
+int ft_sign_usbpd1(const char *fname)
 {
 	struct vb2_private_key *key_ptr = 0;
 	struct vb21_signature *sig_ptr = 0;
@@ -94,8 +94,15 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	uint32_t ro_offset;
 	uint32_t rw_offset;
 	uint32_t r;
+	uint8_t *buf = NULL;
+	uint32_t len;
+	int fd = -1;
 
-	VB2_DEBUG("name %s len  %#.8x (%d)\n", name, len, len);
+	if (futil_open_and_map_file(fname, &fd, FILE_MODE_SIGN(sign_option),
+				    &buf, &len))
+		return 1;
+
+	VB2_DEBUG("name %s len  %#.8x (%d)\n", fname, len, len);
 
 	/* Get image locations */
 	if (!parse_size_opts(len, &ro_size, &rw_size, &ro_offset, &rw_offset))
@@ -103,8 +110,8 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 
 	/* Read the signing keypair file */
 	if (vb2_private_key_read_pem(&key_ptr, sign_option.pem_signpriv)) {
-		fprintf(stderr, "Unable to read keypair from %s\n",
-			sign_option.pem_signpriv);
+		ERROR("Unable to read keypair from %s\n",
+		      sign_option.pem_signpriv);
 		goto done;
 	}
 
@@ -112,16 +119,16 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	key_ptr->hash_alg = sign_option.hash_alg;
 	key_ptr->sig_alg = vb2_rsa_sig_alg(key_ptr->rsa_private_key);
 	if (key_ptr->sig_alg == VB2_SIG_INVALID) {
-		fprintf(stderr, "Unsupported sig algorithm in RSA key\n");
+		ERROR("Unsupported sig algorithm in RSA key\n");
 		goto done;
 	}
 
 	/* Figure out what needs signing */
 	sig_size = vb2_rsa_sig_size(key_ptr->sig_alg);
 	if (rw_size < sig_size) {
-		fprintf(stderr,
-			"The RW image is too small to hold the signature"
-			" (0x%08x < %08x)\n", rw_size, sig_size);
+		ERROR("The RW image is too small to hold the signature"
+		      " (0x%08x < %08x)\n",
+		      rw_size, sig_size);
 		goto done;
 	}
 	rw_size -= sig_size;
@@ -135,25 +142,20 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	/* Sign the blob */
 	r = vb21_sign_data(&sig_ptr, buf + rw_offset, rw_size, key_ptr, "Bah");
 	if (r) {
-		fprintf(stderr,
-			"Unable to sign data (error 0x%08x, if that helps)\n",
-			r);
+		ERROR("Unable to sign data (error 0x%08x, if that helps)\n", r);
 		goto done;
 	}
 
 	/* Double-check the size */
 	if (sig_ptr->sig_size != sig_size) {
-		fprintf(stderr,
-			"ERROR: sig size is %d bytes, not %d as expected.\n",
-			sig_ptr->sig_size, sig_size);
+		ERROR("The sig size is %d bytes, not %d as expected.\n",
+		      sig_ptr->sig_size, sig_size);
 		goto done;
 	}
 
 	/* Okay, looking good. Update the signature. */
-	memcpy(buf + sig_offset,
-	       (uint8_t *)sig_ptr + sig_ptr->sig_offset,
+	memcpy(buf + sig_offset, (uint8_t *)sig_ptr + sig_ptr->sig_offset,
 	       sig_ptr->sig_size);
-
 
 	/* If there's no RO section, we're done. */
 	if (!ro_size) {
@@ -162,9 +164,8 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	}
 
 	/* Otherwise, now update the public key */
-	if (vb_keyb_from_rsa(key_ptr->rsa_private_key,
-			     &keyb_data, &keyb_size)) {
-		fprintf(stderr, "Couldn't extract the public key\n");
+	if (vb_keyb_from_private_key(key_ptr, &keyb_data, &keyb_size)) {
+		ERROR("Could not extract the public key\n");
 		goto done;
 	}
 	VB2_DEBUG("keyb_size is %#x (%d):\n", keyb_size, keyb_size);
@@ -196,9 +197,9 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	pub_offset = ro_offset + ro_size - pub_size;
 
 	if (ro_size < pub_size) {
-		fprintf(stderr,
-			"The RO image is too small to hold the public key"
-			" (0x%08x < %08x)\n", ro_size, pub_size);
+		ERROR("The RO image is too small to hold the public key"
+		      " (0x%08x < %08x)\n",
+		      ro_size, pub_size);
 		goto done;
 	}
 
@@ -220,31 +221,25 @@ int ft_sign_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
 	VB2_DEBUG("pub_pad 0x%08x\n", pub_pad);
 
 	/* Copy n[nwords] */
-	memcpy(buf + dst_ofs_n,
-	       keyb_data + src_ofs_n,
-	       nbytes);
+	memcpy(buf + dst_ofs_n, keyb_data + src_ofs_n, nbytes);
 	/* Copy rr[nwords] */
-	memcpy(buf + dst_ofs_rr,
-	       keyb_data + src_ofs_rr,
-	       nbytes);
+	memcpy(buf + dst_ofs_rr, keyb_data + src_ofs_rr, nbytes);
 	/* Copy n0inv */
-	memcpy(buf + dst_ofs_n0inv,
-	       keyb_data + src_ofs_n0inv,
-	       4);
+	memcpy(buf + dst_ofs_n0inv, keyb_data + src_ofs_n0inv, 4);
 	/* Pad with 0xff */
 	memset(buf + dst_ofs_n0inv + 4, 0xff, pub_pad);
 
 	/* Finally */
 	retval = 0;
 done:
+	futil_unmap_and_close_file(fd, FILE_MODE_SIGN(sign_option), buf, len);
 	if (key_ptr)
-		vb2_private_key_free(key_ptr);
+		vb2_free_private_key(key_ptr);
 	if (keyb_data)
 		free(keyb_data);
 
 	return retval;
 }
-
 
 /*
  * Algorithms that we want to try, in order. We've only ever shipped with
@@ -318,7 +313,7 @@ static vb2_error_t vb21_sig_from_usbpd1(struct vb21_signature **sig,
 		.sig_size = vb2_rsa_sig_size(sig_alg),
 		.sig_offset = sizeof(s),
 	};
-	uint32_t total_size = sizeof(s) + o_sig_size;
+	const uint32_t total_size = sizeof(s) + o_sig_size;
 	uint8_t *buf = calloc(1, total_size);
 	if (!buf)
 		return VB2_ERROR_UNKNOWN;
@@ -330,14 +325,14 @@ static vb2_error_t vb21_sig_from_usbpd1(struct vb21_signature **sig,
 	return VB2_SUCCESS;
 }
 
-static void show_usbpd1_stuff(const char *name,
+static void show_usbpd1_stuff(const char *fname,
 			      enum vb2_signature_algorithm sig_alg,
 			      enum vb2_hash_algorithm hash_alg,
 			      const uint8_t *o_pubkey, uint32_t o_pubkey_size)
 {
 	struct vb2_public_key key;
 	struct vb21_packed_key *pkey;
-	uint8_t sha1sum[VB2_SHA1_DIGEST_SIZE];
+	struct vb2_hash hash;
 	int i;
 
 	vb2_pubkey_from_usbpd1(&key, sig_alg, hash_alg,
@@ -346,21 +341,20 @@ static void show_usbpd1_stuff(const char *name,
 	if (vb21_public_key_pack(&pkey, &key))
 		return;
 
-	vb2_digest_buffer((uint8_t *)pkey + pkey->key_offset, pkey->key_size,
-			  VB2_HASH_SHA1, sha1sum, sizeof(sha1sum));
+	vb2_hash_calculate(false, (uint8_t *)pkey + pkey->key_offset,
+			   pkey->key_size, VB2_HASH_SHA1, &hash);
 
-	printf("USB-PD v1 image:       %s\n", name);
+	printf("USB-PD v1 image:       %s\n", fname);
 	printf("  Algorithm:           %s %s\n",
 	       vb2_get_sig_algorithm_name(sig_alg),
 	       vb2_get_hash_algorithm_name(hash_alg));
 	printf("  Key sha1sum:         ");
-	for (i = 0; i < VB2_SHA1_DIGEST_SIZE; i++)
-		printf("%02x", sha1sum[i]);
+	for (i = 0; i < sizeof(hash.sha1); i++)
+		printf("%02x", hash.sha1[i]);
 	printf("\n");
 
 	free(pkey);
 }
-
 
 /* Returns VB2_SUCCESS or random error code */
 static vb2_error_t try_our_own(enum vb2_signature_algorithm sig_alg,
@@ -394,7 +388,7 @@ static vb2_error_t try_our_own(enum vb2_signature_algorithm sig_alg,
 }
 
 /* Returns VB2_SUCCESS if the image validates itself */
-static vb2_error_t check_self_consistency(const uint8_t *buf, const char *name,
+static vb2_error_t check_self_consistency(const uint8_t *buf, const char *fname,
 					  uint32_t ro_size, uint32_t rw_size,
 					  uint32_t ro_offset,
 					  uint32_t rw_offset,
@@ -402,65 +396,71 @@ static vb2_error_t check_self_consistency(const uint8_t *buf, const char *name,
 					  enum vb2_hash_algorithm hash_alg)
 {
 	/* Where are the important bits? */
-	uint32_t sig_size = vb2_rsa_sig_size(sig_alg);
-	uint32_t sig_offset = rw_offset + rw_size - sig_size;
-	uint32_t pubkey_size = usbpd1_packed_key_size(sig_alg);
-	uint32_t pubkey_offset = ro_offset + ro_size - pubkey_size;
-	vb2_error_t rv;
+	const uint32_t sig_size = vb2_rsa_sig_size(sig_alg);
+	const uint32_t sig_offset = rw_offset + rw_size - sig_size;
+	const uint32_t pubkey_size = usbpd1_packed_key_size(sig_alg);
+	const uint32_t pubkey_offset = ro_offset + ro_size - pubkey_size;
 
 	/* Skip stuff that obviously doesn't work */
 	if (sig_size > rw_size || pubkey_size > ro_size)
 		return VB2_ERROR_UNKNOWN;
 
-	rv = try_our_own(sig_alg, hash_alg,		   /* algs */
-			 buf + pubkey_offset, pubkey_size, /* pubkey blob */
-			 buf + sig_offset, sig_size,	   /* sig blob */
+	vb2_error_t rv = try_our_own(sig_alg, hash_alg,		/* algs */
+			 buf + pubkey_offset, pubkey_size,     /* pubkey blob */
+			 buf + sig_offset, sig_size,	       /* sig blob */
 			 buf + rw_offset, rw_size - sig_size); /* RW image */
 
-	if (rv == VB2_SUCCESS && name)
-		show_usbpd1_stuff(name, sig_alg, hash_alg,
+	if (rv == VB2_SUCCESS && fname)
+		show_usbpd1_stuff(fname, sig_alg, hash_alg,
 				  buf + pubkey_offset, pubkey_size);
 
 	return rv;
 }
 
-
-int ft_show_usbpd1(const char *name, uint8_t *buf, uint32_t len, void *data)
+int ft_show_usbpd1(const char *fname)
 {
-	uint32_t ro_size, rw_size, ro_offset, rw_offset;
-	int s, h;
+	int fd = -1;
+	uint8_t *buf;
+	uint32_t len;
+	int rv = 1;
 
-	VB2_DEBUG("name %s len  0x%08x (%d)\n", name, len, len);
+	if (futil_open_and_map_file(fname, &fd, FILE_RO, &buf, &len))
+		return 1;
+
+	VB2_DEBUG("name %s len  0x%08x (%d)\n", fname, len, len);
 
 	/* Get image locations */
+	uint32_t ro_size, rw_size, ro_offset, rw_offset;
 	if (!parse_size_opts(len, &ro_size, &rw_size, &ro_offset, &rw_offset))
-		return 1;
+		goto done;
 
 	/* TODO: If we don't have a RO image, ask for a public key
 	 * TODO: If we're given an external public key, use it (and its alg) */
 	if (!ro_size) {
 		printf("Can't find the public key\n");
-		return 1;
+		goto done;
 	}
 
 	/* TODO: Only loop through the numbers we haven't been given */
-	for (s = 0; s < ARRAY_SIZE(sigs); s++)
-		for (h = 0; h < ARRAY_SIZE(hashes); h++)
-			if (!check_self_consistency(buf, name,
-						    ro_size, rw_size,
+	for (enum vb2_signature_algorithm s = 0; s < ARRAY_SIZE(sigs); s++) {
+		for (enum vb2_hash_algorithm h = 0; h < ARRAY_SIZE(hashes); h++) {
+			if (!check_self_consistency(buf, fname, ro_size, rw_size,
 						    ro_offset, rw_offset,
-						    sigs[s], hashes[h]))
-				return 0;
+						    sigs[s], hashes[h])) {
+				rv = 0;
+				goto done;
+			}
+		}
+	}
 
 	printf("This doesn't appear to be a complete usbpd1 image\n");
-	return 1;
+done:
+	futil_unmap_and_close_file(fd, FILE_RO, buf, len);
+	return rv;
 }
 
 enum futil_file_type ft_recognize_usbpd1(uint8_t *buf, uint32_t len)
 {
-	uint32_t ro_size, rw_size, ro_offset, rw_offset;
-	int s, h;
-
 	/*
 	 * Since we don't use any headers to identify or locate the pubkey and
 	 * signature, in order to identify blob as the right type we have to
@@ -468,16 +468,19 @@ enum futil_file_type ft_recognize_usbpd1(uint8_t *buf, uint32_t len)
 	 * split. Then we just try to use what we think might be the pubkey to
 	 * validate what we think might be the signature.
 	 */
-	ro_offset = 0;
-	ro_size = rw_size = rw_offset = len / 2;
+	const uint32_t ro_offset = 0;
+	const uint32_t ro_size = len / 2;
+	const uint32_t rw_size = len / 2;
+	const uint32_t rw_offset = len / 2;
 
-	for (s = 0; s < ARRAY_SIZE(sigs); s++)
-		for (h = 0; h < ARRAY_SIZE(hashes); h++)
-			if (!check_self_consistency(buf, 0,
-						    ro_size, rw_size,
+	for (enum vb2_signature_algorithm s = 0; s < ARRAY_SIZE(sigs); s++) {
+		for (enum vb2_hash_algorithm h = 0; h < ARRAY_SIZE(hashes); h++) {
+			if (!check_self_consistency(buf, 0, ro_size, rw_size,
 						    ro_offset, rw_offset,
 						    sigs[s], hashes[h]))
 				return FILE_TYPE_USBPD1;
+		}
+	}
 
 	return FILE_TYPE_UNKNOWN;
 }
