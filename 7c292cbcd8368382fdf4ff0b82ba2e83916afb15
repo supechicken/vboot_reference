@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e60bce5_97ac19a8",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-13T23:48:42Z",
+      "side": 1,
+      "message": "nit: can sha256sum realistically fail? I\u0027d consider just letting `set -e` cover these to keep the code less verbose.",
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a141a6d_464ef7fb",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-13T23:48:42Z",
+      "side": 1,
+      "message": "This is a bit ugly because you\u0027re using the hash of the concatenated hex representations of two other hashes. It probably doesn\u0027t matter for your use case but it would get complicated if you ever wanted to explain to someone else how to recreate that hash.\n\nHave you considered just using something like `cat ${system_img_path} ${vendor_img_path} | sha256sum -b` instead? That would seem more normal for \"hash over two images\".",
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8c8800c_88286624",
         "filename": "scripts/image_signing/sign_android_image.sh",
         "patchSetId": 7
@@ -61,6 +95,40 @@
         "endLine": 459,
         "endChar": 22
       },
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e453499_6d2c8273",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-13T23:48:42Z",
+      "side": 1,
+      "message": "Is this always an error? I don\u0027t know what all the rest of this file does, but if you\u0027re just resigning the same image with the same key is there no chance that you may legitimately get the same hash here?",
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f3550a_9621ef4d",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-13T23:48:42Z",
+      "side": 1,
+      "message": "nit: might as well print the hash here?",
       "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
