@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e26368e_79d66794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-16T16:01:42Z",
+      "side": 1,
+      "message": "The \"recovery\" field is not a kernel command line but it contains arguments for `recovery` application which is executed in Android recovery. (Some options are [there](https://android.googlesource.com/platform/bootable/recovery/+/refs/heads/main/recovery_main.cpp#349) and rest are [there](https://android.googlesource.com/platform/bootable/recovery/+/refs/heads/main/recovery.cpp#594) with some [comments](https://android.googlesource.com/platform/bootable/recovery/+/refs/heads/main/recovery.cpp#75))\n\nSo if we would like to not use misc partition at all, we need to not only translate commands (bootonce, normal, recovery) but also somehow pass arguments to recovery executable.\n\nI am not sure how much AOSP relies on misc partition presence for other purposes than recovery, but documentation reserves some space on the partition for use by AOSP, [misc layout](https://android.googlesource.com/platform/bootable/recovery/+/refs/heads/main/bootloader_message/include/bootloader_message/bootloader_message.h#25) 32K-64K.\n\nSo we have option a) where we integrate bootcommand and recover arguments into vboot nvdata or b) we will just use misc. Option a) seems to be more robust, but we will need to revisit this code every time when Android recovery gain new option. Also we may miss out on any new Android feature that requires misc partition. Option b) is easier to implement, because this and deptcharge CL is enough to use Android recovery for userdata wipe and other functionalities. For option a) we would need to modify recovery to read its arguments from nvdata.",
+      "parentUuid": "ccdfc9b0_fd286cbd",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
