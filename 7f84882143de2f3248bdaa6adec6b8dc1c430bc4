@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8808381b_975760ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-16T23:43:50Z",
+      "side": 1,
+      "message": "Okay, yeah, that\u0027s definitely enough for vboot nvdata (at least long string fields like `reason` or `update_package`). And I agree that if the recovery initramfs code is already written to expect this it makes more sense to just use that.\n\nHowever, I still think it may be a good idea to mirror only the bootonce/normal/recovery decision into vboot nvdata, if that\u0027s the only thing relevant to the bootloader. That way we don\u0027t have to find, read and parse an extra partition on every boot. Leave the misc partition to be only relevant to the recovery userspace. What do you think?",
+      "parentUuid": "7e26368e_79d66794",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
