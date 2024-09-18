@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91d7c052_df572fb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-18T22:35:59Z",
+      "side": 1,
+      "message": "\u003e I was thinking about creating fake device in vendor kernel module\n\nOh god no! Okay, okay, I give up. ;) My concern here is definitely not worth that level of hackery.\n\nIf it is possible for us to at least wrap `misctrl` somehow then I still think it would be nice to mirror bootloader command and kcmdline into vboot nvdata (kcmdline should be fine if it\u0027s only a few flags), to avoid needing to read that partition from firmware every boot. If not, then I guess doing what you do here is the only real option.",
+      "parentUuid": "116f576b_4e9a435e",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
