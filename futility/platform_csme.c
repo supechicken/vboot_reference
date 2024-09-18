@@ -134,9 +134,9 @@ int unlock_csme_eve(struct firmware_image *image)
 
 /*
  * Determine the platform to pass to ifdtool (e.g. 'adl') by extracting
- * CONFIG_IFD_CHIPSET from the config file in CBFS. However, old nissa firmware
- * may not have all config fields in the CBFS file, so fall back to a hack of
- * checking for 'nissa' in the descriptor file path.
+ * CONFIG_IFD_CHIPSET from the config file in CBFS. However, old firmware branches without
+ * CB:69710 may not have all config fields in the CBFS file, so fall back to a hack of
+ * checking for the board name in the descriptor file path.
  *
  * On success, returns the platform, which must be freed by the caller.
  * On failure, returns NULL.
@@ -150,15 +150,30 @@ static char *determine_ifd_platform(const char *image_path)
 	if (platform)
 		return platform;
 
-	/* Fall back to checking for nissa in the descriptor file path */
+	/* Fall back to checking the board name in the descriptor file path */
 	cbfstool_get_config_string(image_path, NULL, "CONFIG_IFD_BIN_PATH", &ifd_path);
-	if (ifd_path && strstr(ifd_path, "/nissa/")) {
-		VB2_DEBUG("Use platform 'adl' since descriptor path contains 'nissa'\n");
-		ASPRINTF(&platform, "adl");
+
+	if (!ifd_path)
+		return NULL;
+
+	const struct match {
+		const char *pattern;
+		const char *platform;
+	} matches[] = {
+		{ "/baseboard-dedede/", "jsl" },
+		{ "/nissa/", "adl" },
+	};
+
+	for (int i = 0; i < ARRAY_SIZE(matches); i++) {
+		const struct match *m = &matches[i];
+		if (strstr(ifd_path, m->pattern)) {
+			VB2_DEBUG("Use platform '%s' since descriptor path contains '%s'\n",
+			m->platform, m->pattern);
+			ASPRINTF(&platform, m->platform);
+		}
 	}
 
-	if (ifd_path)
-		free(ifd_path);
+	free(ifd_path);
 
 	return platform;
 }
