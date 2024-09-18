@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c7e471_60b28d91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-18T08:53:51Z",
+      "side": 1,
+      "message": "Android",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53da7f77_1f070d77",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 4
@@ -49,6 +72,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d2adfe7_3698aea7",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-18T08:53:51Z",
+      "side": 1,
+      "message": "As this USE_LIBAVB section starts getting larger, maybe it\u0027s time to move that to a separate file.",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2416cd6b_832b1a93",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-18T08:53:51Z",
+      "side": 1,
+      "message": "Why not just `struct bootloader_message bcb`?",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb87829c_62703a10",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 4
@@ -88,6 +145,63 @@
         "startChar": 7,
         "endLine": 533,
         "endChar": 41
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9339e1_7a613005",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-18T08:53:51Z",
+      "side": 1,
+      "message": "Print a debug message of it\u0027s an unknown command.",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26899b11_41c0550d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-18T08:53:51Z",
+      "side": 1,
+      "message": "Add `VB2_` prefix.",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f8c884_22bd0457",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-18T08:53:51Z",
+      "side": 1,
+      "message": "Android",
+      "range": {
+        "startLine": 641,
+        "startChar": 21,
+        "endLine": 641,
+        "endChar": 22
       },
       "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
