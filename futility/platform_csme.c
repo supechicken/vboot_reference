@@ -157,6 +157,13 @@ static char *determine_ifd_platform(const char *image_path)
 		ASPRINTF(&platform, "adl");
 	}
 
+	/* Fall back to checking for dedede in the descriptor file path */
+	cbfstool_get_config_string(image_path, NULL, "CONFIG_IFD_BIN_PATH", &ifd_path);
+	if (ifd_path && strstr(ifd_path, "/baseboard-dedede/")) {
+		VB2_DEBUG("Use platform 'jsl' since descriptor path contains 'baseboard-dedede'\n");
+		ASPRINTF(&platform, "jsl");
+	}
+
 	if (ifd_path)
 		free(ifd_path);
 
