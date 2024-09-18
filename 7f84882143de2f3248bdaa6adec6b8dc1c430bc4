@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcdce882_69094e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T10:02:39Z",
+      "side": 1,
+      "message": "I traced where `misc` is used and I am afraid that we cannot get away from reading it in the future.\n\nThere is `kcmdlinectrl` tool. At the moment it is used for telling the bootloader to set `kcmdline.binder` property to `rust` or `c` (to select different implementation of binder, it seems to be relevant only during development). The tool was crated at the beginning of 2024, so it is plausible that its capabilities may grow over time.\n\nSecond tool is `mtectrl`. It can control memtag setting through misc partition. It is relevant only on ARM platforms. Bootloader requirements are described [here](https://source.android.com/docs/security/test/memory-safety/bootloader-support)\n\nI am not sure about that, but it is possible that bootloader should revoke key used for userdata encryption on wipe request. For that we would need to parse even more data on misc. (I am not sure if revoking keys would be responsibility of bootloader or Android recovery).\n\nIf we go with mirroring boot command into nvdata, how would we ensure that nvdata and misc stay in sync? And what to do in case of mismatch, Android should check misc content against nvdata and potentially update misc?",
+      "parentUuid": "2d64a29c_49f2cdc1",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
