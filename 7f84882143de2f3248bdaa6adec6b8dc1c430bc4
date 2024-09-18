@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c52c67a6_78c16ca4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-18T20:54:10Z",
+      "side": 1,
+      "message": "How exactly does this kcmdlinectrl work and what exactly does it do? Does it just write some arbitrary kernel command line options to the misc partition and then the bootloader appends those to the normal command line? That would seem like a huge security problem.\n\nmtectrl looks to be to control some memory tagging experiment, we hopefully don\u0027t need to worry about that for now.\n\nWe expect that the keys for userdata encryption will be tied to the TPM on AL, and will be wiped via TPM owner clear, same as it used to work on Chromebooks.\n\nI was hoping that all accesses to the misc partition from the OS would go through some HAL interface or something that we could override with our own implementation in our vendor partition. Is that not how it works? If there\u0027s no good way to intercept what sets this from the core Android code framework that we don\u0027t control then I agree it may not be worth trying to do something different here.",
+      "parentUuid": "fcdce882_69094e37",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
