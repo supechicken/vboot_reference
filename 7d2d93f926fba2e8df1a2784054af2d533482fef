@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c986814b_b03ba2dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c7e471_60b28d91",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53da7f77_1f070d77",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3923e02_42a2f487",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53da7f77_1f070d77",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e26b477_bbb24866",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be9b7ce3_182b721b",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d2adfe7_3698aea7",
@@ -83,6 +155,24 @@
       "writtenOn": "2024-09-18T08:53:51Z",
       "side": 1,
       "message": "As this USE_LIBAVB section starts getting larger, maybe it\u0027s time to move that to a separate file.",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0637e1f_059b6ac5",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "It makes sense to separate that, but I would prefer to do that in a follow up CL.",
+      "parentUuid": "9d2adfe7_3698aea7",
       "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93f43b17_71c4a786",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "There is no reason for that. Changed it.",
+      "parentUuid": "2416cd6b_832b1a93",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb87829c_62703a10",
@@ -117,6 +225,30 @@
       "writtenOn": "2024-09-11T14:02:11Z",
       "side": 1,
       "message": "I feel that this const string should be a define.",
+      "range": {
+        "startLine": 515,
+        "startChar": 7,
+        "endLine": 515,
+        "endChar": 13
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9e6cc3_43c6ab68",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb87829c_62703a10",
       "range": {
         "startLine": 515,
         "startChar": 7,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40fbb6dc_4aa2b27a",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de1a79e_2628246e",
+      "range": {
+        "startLine": 533,
+        "startChar": 7,
+        "endLine": 533,
+        "endChar": 41
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a9339e1_7a613005",
@@ -163,6 +319,24 @@
       "writtenOn": "2024-09-18T08:53:51Z",
       "side": 1,
       "message": "Print a debug message of it\u0027s an unknown command.",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b644ff8f_13c48ead",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a9339e1_7a613005",
       "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +358,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31ae7e2_e15afce4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26899b11_41c0550d",
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7f8c884_22bd0457",
@@ -197,6 +389,30 @@
       "writtenOn": "2024-09-18T08:53:51Z",
       "side": 1,
       "message": "Android",
+      "range": {
+        "startLine": 641,
+        "startChar": 21,
+        "endLine": 641,
+        "endChar": 22
+      },
+      "revId": "7d2d93f926fba2e8df1a2784054af2d533482fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b31595c_46769831",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T17:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7f8c884_22bd0457",
       "range": {
         "startLine": 641,
         "startChar": 21,
