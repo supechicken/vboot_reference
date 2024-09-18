@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "116f576b_4e9a435e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-18T21:41:03Z",
+      "side": 1,
+      "message": "kcmdlinectrl sets one bit in `struct misc_kcmdline_message` (this is part of system space on misc) and bootloader checks value of that bit and append predefined property to kernel cmdline. So there is no arbitrary value just added to cmdline and this shouldn\u0027t be huge security risk.\n\nAll accesses to the misc partition should go through `misctrl` binary which (AFAIK) is part of AOSP. This tool is accessing block device that has mount point `/misc` in fstab. I was thinking about creating fake device in vendor kernel module which would be the proxy to real misc partition, but it feels more like a hack then a solution. Other solutions probably require modifying `misctrl`.",
+      "parentUuid": "c52c67a6_78c16ca4",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
