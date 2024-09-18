@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98dadd4c_0cc67116",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2024-09-18T20:06:15Z",
+      "side": 1,
+      "message": "Please resolve these conflicts",
+      "fixSuggestions": [
+        {
+          "fixId": "e7177432_b2021de9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 823,
+                "startChar": 0,
+                "endLine": 825,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 980,
+                "startChar": 0,
+                "endLine": 981,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "dd5acc0d03c5bc1bd6450fb62be34d34162ac8d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
