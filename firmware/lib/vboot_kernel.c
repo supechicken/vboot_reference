@@ -7,6 +7,7 @@
  */
 
 #include "2common.h"
+#include "2load_android_kernel.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2rsa.h"
@@ -22,31 +23,18 @@
 #include "vboot_kernel.h"
 #include "vboot_struct.h"
 
-#ifdef USE_LIBAVB
-#include "vboot_avb_ops.h"
 
-/* Size of the buffer to convey cmdline properties to bootloader */
-#define AVB_CMDLINE_BUF_SIZE 1024
-
-/* BCB structure from Android recovery bootloader_message.h */
-struct bootloader_message {
-	char command[32];
-	char status[32];
-	char recovery[768];
-	char stage[32];
-	char reserved[1184];
-};
-_Static_assert(sizeof(struct bootloader_message) == 2048,
-	       "bootloader_message size is incorrect");
-
-/* Possible values of BCB command */
-#define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
-#define BCB_CMD_BOOT_RECOVERY "boot-recovery"
-
-#endif
-
+<<<<<<< HEAD:firmware/lib/vboot_kernel.c
 /* Bytes to read at start of the boot/init_boot/vendor_boot partitions */
 #define BOOT_HDR_GKI_SIZE 4096
+=======
+enum vb2_load_partition_flags {
+	VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY = (1 << 0),
+	VB2_LOAD_PARTITION_FLAG_MINIOS = (1 << 1),
+};
+
+#define KBUF_SIZE 65536  /* Bytes to read at start of kernel partition */
+>>>>>>> 70589868 (2lib: Extract Android specific functions to separate file):firmware/2lib/2load_kernel.c
 
 #define LOWEST_TPM_VERSION 0xffffffff
 
@@ -462,6 +450,7 @@ static vb2_error_t vb2_load_chromeos_kernel_partition(
 	return VB2_SUCCESS;
 }
 
+<<<<<<< HEAD:firmware/lib/vboot_kernel.c
 #ifdef USE_LIBAVB
 
 #define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate="
@@ -646,6 +635,159 @@ static vb2_error_t vb2_load_avb_android_partition(
 #endif /* USE_LIBAVB */
 
 vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
+=======
+static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
+				     struct vb2_kernel_params *params,
+				     struct vb2_disk_info *disk_info,
+				     uint64_t sector) {
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	VbExStream_t stream;
+	uint64_t sectors_left = disk_info->lba_count - sector;
+	const uint32_t lpflags = VB2_LOAD_PARTITION_FLAG_MINIOS;
+	uint32_t kernel_version = 0;
+	vb2_error_t rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
+
+	/* Re-open stream at correct offset to pass to vb2_load_partition. */
+	if (VbExStreamOpen(disk_info->handle, sector, sectors_left,
+			   &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		return rv;
+	}
+
+	/* We are looking for ChromeOS partitions */
+	rv = vb2_load_chromeos_kernel_partition(ctx, params,
+						stream, lpflags,
+						&kernel_version);
+	VB2_DEBUG("vb2_load_chromeos_kernel_partition returned: %d\n", rv);
+
+	VbExStreamClose(stream);
+
+	if (rv)
+		return VB2_ERROR_LK_NO_KERNEL_FOUND;
+
+	sd->kernel_version = kernel_version;
+
+	return rv;
+}
+
+static vb2_error_t try_minios_sectors(struct vb2_context *ctx,
+				      struct vb2_kernel_params *params,
+				      struct vb2_disk_info *disk_info,
+				      uint64_t start, uint64_t count)
+{
+	const uint32_t buf_size = count * disk_info->bytes_per_lba;
+	char *buf;
+	VbExStream_t stream;
+	uint64_t isector;
+	vb2_error_t rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
+
+	buf = malloc(buf_size);
+	if (buf == NULL) {
+		VB2_DEBUG("Unable to allocate disk read buffer.\n");
+		return rv;
+	}
+
+	if (VbExStreamOpen(disk_info->handle, start, count, &stream)) {
+		VB2_DEBUG("Unable to open disk handle.\n");
+		free(buf);
+		return rv;
+	}
+	if (VbExStreamRead(stream, buf_size, buf)) {
+		VB2_DEBUG("Unable to read disk.\n");
+		free(buf);
+		VbExStreamClose(stream);
+		return rv;
+	}
+	VbExStreamClose(stream);
+
+	for (isector = 0; isector < count; isector++) {
+		if (memcmp(buf + isector * disk_info->bytes_per_lba,
+			   VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE))
+			continue;
+		VB2_DEBUG("Match on sector %" PRIu64 " / %" PRIu64 "\n",
+			  start + isector,
+			  disk_info->lba_count - 1);
+		rv = try_minios_kernel(ctx, params, disk_info, start + isector);
+		if (rv == VB2_SUCCESS)
+			break;
+	}
+
+	free(buf);
+	return rv;
+}
+
+static vb2_error_t try_minios_sector_region(struct vb2_context *ctx,
+					    struct vb2_kernel_params *params,
+					    struct vb2_disk_info *disk_info,
+					    int end_region)
+{
+	const uint64_t disk_count_half = (disk_info->lba_count + 1) / 2;
+	const uint64_t check_count_256 = 256 * 1024
+		* 1024 / disk_info->bytes_per_lba;  // 256 MB
+	const uint64_t batch_count_1 = 1024
+		* 1024 / disk_info->bytes_per_lba;  // 1 MB
+	const uint64_t check_count = VB2_MIN(disk_count_half, check_count_256);
+	const uint64_t batch_count = VB2_MIN(disk_count_half, batch_count_1);
+	uint64_t sector;
+	uint64_t start;
+	uint64_t end;
+	const char *region_name;
+	vb2_error_t rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
+
+	if (!end_region) {
+		start = 0;
+		end = check_count;
+		region_name = "start";
+	} else {
+		start = disk_info->lba_count - check_count;
+		end = disk_info->lba_count;
+		region_name = "end";
+	}
+
+	VB2_DEBUG("Checking %s of disk for kernels...\n", region_name);
+	for (sector = start; sector < end; sector += batch_count) {
+		rv = try_minios_sectors(ctx, params, disk_info, sector,
+					batch_count);
+		if (rv == VB2_SUCCESS)
+			return rv;
+	}
+
+	return rv;
+}
+
+/*
+ * Search for kernels by sector, rather than by partition.  Only sectors near
+ * the start and end of disks are considered, and the kernel must start exactly
+ * at the first byte of the sector.
+ */
+vb2_error_t vb2api_load_minios_kernel(struct vb2_context *ctx,
+				      struct vb2_kernel_params *params,
+				      struct vb2_disk_info *disk_info,
+				      uint32_t minios_flags)
+{
+	vb2_error_t rv;
+	int end_region_first = vb2_nv_get(ctx, VB2_NV_MINIOS_PRIORITY);
+
+	if (minios_flags & VB2_MINIOS_FLAG_NON_ACTIVE)
+		rv = VB2_ERROR_UNKNOWN;  /* Ignore active partition */
+	else
+		rv = try_minios_sector_region(ctx, params, disk_info,
+					      end_region_first);
+
+	if (rv)
+		rv = try_minios_sector_region(ctx, params, disk_info,
+					      !end_region_first);
+
+	if (rv == VB2_SUCCESS)
+		params->disk_handle = disk_info->handle;
+
+	return rv;
+}
+
+vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
+			       struct vb2_kernel_params *params,
+			       struct vb2_disk_info *disk_info)
+>>>>>>> 70589868 (2lib: Extract Android specific functions to separate file):firmware/2lib/2load_kernel.c
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_workbuf wb;
@@ -751,8 +893,14 @@ vb2_error_t LoadKernel(struct vb2_context *ctx, LoadKernelParams *params)
 		}
 
 #ifdef USE_LIBAVB
+<<<<<<< HEAD:firmware/lib/vboot_kernel.c
 		rv = vb2_load_avb_android_partition(ctx, stream, shpart,
 			params, &gpt);
+=======
+		rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
+					     disk_info->handle,
+					     need_valid_keyblock(ctx));
+>>>>>>> 70589868 (2lib: Extract Android specific functions to separate file):firmware/2lib/2load_kernel.c
 #else
 		/* Don't allow to boot android without AVB */
 		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
