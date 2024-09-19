@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76bd8dd9_691b85f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2024-09-19T12:26:15Z",
+      "side": 1,
+      "message": "I didn\u0027t found a way to add wrapper for `misctrl` in such a way that doesn\u0027t require providing whole custom implementation of this tool or modifying generic sources.\n\nLet\u0027s go with current implementation to unblock OOBE team which needs Android recovery.",
+      "parentUuid": "91d7c052_df572fb1",
+      "revId": "7f84882143de2f3248bdaa6adec6b8dc1c430bc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84670a7c_28ff2eb1",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
