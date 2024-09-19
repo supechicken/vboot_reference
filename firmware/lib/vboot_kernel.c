@@ -8,6 +8,7 @@
 
 #include "2api.h"
 #include "2common.h"
+#include "2load_android_kernel.h"
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2packed_key.h"
@@ -19,28 +20,6 @@
 #include "load_kernel_fw.h"
 #include "vboot_api.h"
 
-#ifdef USE_LIBAVB
-#include "vboot_avb_ops.h"
-
-/* Size of the buffer to convey cmdline properties to bootloader */
-#define AVB_CMDLINE_BUF_SIZE 1024
-
-/* BCB structure from Android recovery bootloader_message.h */
-struct bootloader_message {
-	char command[32];
-	char status[32];
-	char recovery[768];
-	char stage[32];
-	char reserved[1184];
-};
-_Static_assert(sizeof(struct bootloader_message) == 2048,
-	       "bootloader_message size is incorrect");
-
-/* Possible values of BCB command */
-#define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
-#define BCB_CMD_BOOT_RECOVERY "boot-recovery"
-
-#endif
 
 enum vb2_load_partition_flags {
 	VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY = (1 << 0),
@@ -48,9 +27,12 @@ enum vb2_load_partition_flags {
 };
 
 #define KBUF_SIZE 65536  /* Bytes to read at start of kernel partition */
+<<<<<<< HEAD:firmware/lib/vboot_kernel.c
 
 /* Bytes to read at start of the boot/init_boot/vendor_boot partitions */
 #define BOOT_HDR_GKI_SIZE 4096
+=======
+>>>>>>> 70589868 (2lib: Extract Android specific functions to separate file):firmware/2lib/2load_kernel.c
 
 /* Minimum context work buffer size needed for vb2_load_chromeos_kernel_partition() */
 #define VB2_LOAD_PARTITION_WORKBUF_BYTES	\
@@ -487,6 +469,7 @@ static vb2_error_t vb2_load_chromeos_kernel_partition(
 	return VB2_SUCCESS;
 }
 
+<<<<<<< HEAD:firmware/lib/vboot_kernel.c
 #ifdef USE_LIBAVB
 
 #define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate="
@@ -664,6 +647,8 @@ static vb2_error_t vb2_load_avb_android_partition(
 }
 #endif /* USE_LIBAVB */
 
+=======
+>>>>>>> 70589868 (2lib: Extract Android specific functions to separate file):firmware/2lib/2load_kernel.c
 static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 				     VbSelectAndLoadKernelParams *params,
 				     VbDiskInfo *disk_info,
@@ -873,7 +858,13 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 		}
 
 #ifdef USE_LIBAVB
+<<<<<<< HEAD:firmware/lib/vboot_kernel.c
 		rv = vb2_load_avb_android_partition(ctx, stream, params, &gpt);
+=======
+		rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
+					     disk_info->handle,
+					     need_valid_keyblock(ctx));
+>>>>>>> 70589868 (2lib: Extract Android specific functions to separate file):firmware/2lib/2load_kernel.c
 #else
 		/* Don't allow to boot android without AVB */
 		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
