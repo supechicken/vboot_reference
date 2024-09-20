@@ -16,6 +16,23 @@
       "message": "+Subrata since this is related to b/359655788",
       "revId": "d96707f9515b742672d443b3c975994c2942494a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a9bbf3_900ec1a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-20T08:45:23Z",
+      "side": 1,
+      "message": "Will we have lots of platform-specific hacks in the future?\n\nI wonder if this should be moved to something inside cbfstool, or the host/lib/cbfstool.c to make sure other callsites can get the same platform data easily, not just the updater.",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
