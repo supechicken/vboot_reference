@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dc5eb4f6_207cf29e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479892
+      },
+      "writtenOn": "2024-09-20T09:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7813f439_dd9ce13c",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "80e44123_b9081db1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -76,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60151c4e_86735e52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479892
+      },
+      "writtenOn": "2024-09-20T09:52:03Z",
+      "side": 1,
+      "message": "RMA U-disk factory_install.sh will call \"firmware --force --mode\u003dfactory_install --quirks\u003dunlock_csme\" to flash unlocked firmware in CL:5208375.",
+      "parentUuid": "a28b11a0_4855a036",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f8061f2_e1581f44",
@@ -89,6 +131,30 @@
       "writtenOn": "2024-09-20T08:56:21Z",
       "side": 1,
       "message": "`firmware branches without CB:69710`",
+      "range": {
+        "startLine": 137,
+        "startChar": 65,
+        "endLine": 137,
+        "endChar": 79
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def1f036_065bc3f0",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1479892
+      },
+      "writtenOn": "2024-09-20T09:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f8061f2_e1581f44",
       "range": {
         "startLine": 137,
         "startChar": 65,
@@ -122,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0e56980_e5004d9a",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1479892
+      },
+      "writtenOn": "2024-09-20T09:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df31a2a_cd02c96e",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 23
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b19ac91d_c33d2192",
@@ -145,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ad6041_149d29a3",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1479892
+      },
+      "writtenOn": "2024-09-20T09:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b19ac91d_c33d2192",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "435b0c90_6f693ba2",
@@ -158,6 +272,30 @@
       "writtenOn": "2024-09-20T08:56:21Z",
       "side": 1,
       "message": "`free(ifd_path);`",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4385914a_7de68b91",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1479892
+      },
+      "writtenOn": "2024-09-20T09:52:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "435b0c90_6f693ba2",
       "range": {
         "startLine": 167,
         "startChar": 1,
