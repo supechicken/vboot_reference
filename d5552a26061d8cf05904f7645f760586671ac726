@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714789ed_81280507",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T03:52:40Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 5,
+        "startChar": 32,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "d5552a26061d8cf05904f7645f760586671ac726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cad5390_64b42703",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T03:52:40Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 5,
+        "startChar": 32,
+        "endLine": 5,
+        "endChar": 33
+      },
+      "revId": "d5552a26061d8cf05904f7645f760586671ac726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b85584_414be9ba",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T03:52:40Z",
+      "side": 1,
+      "message": "remove (because partition`s`)",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "d5552a26061d8cf05904f7645f760586671ac726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123a852c_67ee632c",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T03:52:40Z",
+      "side": 1,
+      "message": "How about renaming it to `vb2_load_android_kernel`, since\n\n1. We cannot load an Android kernel without AVB.\n2. This function actually loads multiple partitions.",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "d5552a26061d8cf05904f7645f760586671ac726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "666c130b_4a62e09c",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T03:52:40Z",
+      "side": 1,
+      "message": "VBOOT_REFERENCE_2LOAD_ANDROID_KERNEL_H_",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "d5552a26061d8cf05904f7645f760586671ac726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
