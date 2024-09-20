@@ -156,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "616e31fb_144a3020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T13:24:17Z",
+      "side": 1,
+      "message": "That\u0027s really bad. We shouldn\u0027t have any duplicate hacks in the lab code for `unlock_csme`. What the lab needs is actually \"trying to unlock CSME if futility supports it for the running device\". Right now the lab needs the hack because `futility --quirks unlock_csme` would fail on unsupported devices. Therefore, I think the correct solution to this problem is to add (or replace `unlock_csme` with) `--quirks try_unlock_csme`, which would be a no-op on unsupported Intel devices.",
+      "parentUuid": "062b5289_92ed2545",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f8061f2_e1581f44",
         "filename": "futility/platform_csme.c",
         "patchSetId": 1
