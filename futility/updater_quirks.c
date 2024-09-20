@@ -566,8 +566,8 @@ char *updater_get_cbfs_quirks(struct updater_config *cfg)
  * Overrides signature id if the device was shipped with known
  * special rootkey.
  */
-int quirk_override_signature_id(struct updater_config *cfg,
-				struct model_config *model,
+int quirk_override_signature_id(const struct updater_config *cfg,
+				const struct model_config *model,
 				const char **signature_id)
 {
 	const char * const DOPEFISH_KEY_HASH =
@@ -576,7 +576,7 @@ int quirk_override_signature_id(struct updater_config *cfg,
 	/* b/146876241 */
 	assert(model);
 	if (strcmp(model->name, "phaser360") == 0) {
-		struct firmware_image *image = &cfg->image_current;
+		const struct firmware_image *image = &cfg->image_current;
 		const char *key_hash = get_firmware_rootkey_hash(image);
 		if (key_hash && strcmp(key_hash, DOPEFISH_KEY_HASH) == 0) {
 			const char * const sig_dopefish = "phaser360-dopefish";
