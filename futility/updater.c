@@ -1355,37 +1355,6 @@ static int updater_output_image(const struct firmware_image *image,
 }
 
 /*
- * Applies custom label information to an existing model config.
- * Returns 0 on success, otherwise failure.
- */
-static int updater_apply_custom_label(struct updater_config *cfg,
-				     struct model_config *model,
-				     const char *signature_id)
-{
-	const char *tmp_image = NULL;
-
-	assert(model->is_custom_label);
-	if (!signature_id) {
-		if (!cfg->image_current.data) {
-			INFO("Loading system firmware for custom label...\n");
-			load_system_firmware(cfg, &cfg->image_current);
-		}
-		tmp_image = get_firmware_image_temp_file(
-				&cfg->image_current, &cfg->tempfiles);
-		if (!tmp_image) {
-			ERROR("Failed to get system current firmware\n");
-			return 1;
-		}
-		if (get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID, cfg) &&
-		    is_ap_write_protection_enabled(cfg))
-			quirk_override_signature_id(
-					cfg, model, &signature_id);
-	}
-	return !!model_apply_custom_label(
-			model, cfg->archive, signature_id, tmp_image);
-}
-
-/*
  * Setup what the updater has to do against an archive.
  * Returns number of failures, or 0 on success.
  */
@@ -1417,32 +1386,29 @@ static int updater_setup_archive(
 	errorcnt += updater_load_images(
 			cfg, arg, model->image, model->ec_image);
 
-	if (model->is_custom_label && !manifest->has_keyset) {
-		/*
-		 * Developers running unsigned updaters (usually local build)
-		 * won't be able match any custom label tags.
-		 */
-		WARN("No keysets found - this is probably a local build of \n"
-		     "unsigned firmware updater. Skip applying custom label.");
-	} else if (model->is_custom_label) {
-		/*
-		 * It is fine to fail in updater_apply_custom_label for factory
-		 * mode so we are not checking the return value; instead we
-		 * verify if the patches do contain new root key.
-		 */
-		updater_apply_custom_label(cfg, (struct model_config *)model,
-					  arg->signature_id);
-		if (!model->patches.rootkey) {
-			if (is_factory ||
-			    is_ap_write_protection_enabled(cfg) ||
-			    get_config_quirk(QUIRK_ALLOW_EMPTY_CUSTOM_LABEL_TAG,
-					     cfg)) {
-				WARN("No VPD for custom label.\n");
-			} else {
-				ERROR("Need VPD set for custom label.\n");
-				return ++errorcnt;
-			}
+	if (model->is_custom_label) {
+
+		if (!cfg->image_current.data) {
+			INFO("Loading system firmware for custom label...\n");
+			load_system_firmware(cfg, &cfg->image_current);
 		}
+
+		const char *signature_id = arg->signature_id;
+
+		if (get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID, cfg) &&
+		    is_ap_write_protection_enabled(cfg))
+			quirk_override_signature_id(
+					cfg, model, &signature_id);
+
+		model = manifest_find_custom_label_model(
+				cfg, manifest, model, signature_id);
+		if (!model)
+			return ++errorcnt;
+		/*
+		 * The assumption is all custom label models should share the
+		 * same image and ec_image, so we don't need to reload again -
+		 * just pick up a new model config to be patched later.
+		 */
 	}
 	errorcnt += patch_image_by_model(&cfg->image, model, ar);
 	return errorcnt;
