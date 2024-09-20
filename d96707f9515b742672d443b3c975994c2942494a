@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7813f439_dd9ce13c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T08:56:21Z",
+      "side": 1,
+      "message": "baseboard-dedede",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80e44123_b9081db1",
@@ -31,6 +54,98 @@
       "writtenOn": "2024-09-20T08:45:23Z",
       "side": 1,
       "message": "Will we have lots of platform-specific hacks in the future?\n\nI wonder if this should be moved to something inside cbfstool, or the host/lib/cbfstool.c to make sure other callsites can get the same platform data easily, not just the updater.",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8061f2_e1581f44",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T08:56:21Z",
+      "side": 1,
+      "message": "`firmware branches without CB:69710`",
+      "range": {
+        "startLine": 137,
+        "startChar": 65,
+        "endLine": 137,
+        "endChar": 79
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df31a2a_cd02c96e",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T08:56:21Z",
+      "side": 1,
+      "message": "`the board name`",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 23
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b19ac91d_c33d2192",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T08:56:21Z",
+      "side": 1,
+      "message": "```\nif (!ifd_path)\n    return NULL;\n\nconst struct match {\n    const char *pattern;\n    const char *platform;\n} matches[] \u003d {\n    { \"/baseboard-dedede/\", \"jsl\" },\n    { \"/nissa/\", \"adl\" },\n};\n\nfor (int i \u003d 0; i \u003c ARRAY_SIZE(matches); i++) {\n    const struct match *m \u003d \u0026matches[i];\n    if (strstr(ifd_path, m-\u003epattern)) {\n        VB2_DEBUG(\"Use platform \u0027%s\u0027 since descriptor path contains \u0027%s\u0027\\n\",\n                  m-\u003eplatform, m-\u003epattern);\n        ASPRINTF(\u0026platform, m-\u003eplatform);\n    }\n}\n```",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435b0c90_6f693ba2",
+        "filename": "futility/platform_csme.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-20T08:56:21Z",
+      "side": 1,
+      "message": "`free(ifd_path);`",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 17
+      },
       "revId": "d96707f9515b742672d443b3c975994c2942494a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
