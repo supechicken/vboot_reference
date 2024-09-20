@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "062b5289_92ed2545",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-20T13:08:29Z",
+      "side": 1,
+      "message": "\u003e On the other hand, why would other call sites need to get the data?\n\nWell, it\u0027s a simple call to get the platform, so anyone calling cbfstool will encounter the same problem. Examples:\n\n- https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/infra/cros/recovery/internal/components/cros/firmware/v3_programmer.go?q\u003dCONFIG_IFD_CHIPSET\u0026ss\u003dchromium\n\n- src/platform/dev/src/go.chromium.org/chromiumos/test/provision/v2/cros-fw-provision/service/firmwareservice.go\n\nBut if it\u0027s for known old platforms then yes we may have the hacks.",
+      "parentUuid": "19f27375_f56fbd20",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f8061f2_e1581f44",
         "filename": "futility/platform_csme.c",
         "patchSetId": 1
