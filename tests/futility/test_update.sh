@@ -554,10 +554,6 @@ test_update "Full update (--archive, model=peppy)" \
 test_update "Full update (--archive, model=unknown)" \
   "${FROM_IMAGE}.ap" "!Unsupported model: 'unknown'" \
   -a "${A}" --wp=0 --sys_props 0,0x10001,3 --model=unknown
-test_update "Full update (--archive, model=customtip, signature_id=customtip-cl)" \
-  "${FROM_IMAGE}.al" "${LINK_BIOS}" \
-  -a "${A}" --wp=0 --sys_props 0,0x10001,3 --model=customtip \
-  --signature_id=customtip-cl
 
 test_update "Full update (--archive, detect-model)" \
   "${FROM_IMAGE}.ap" "${PEPPY_BIOS}" \
@@ -573,6 +569,10 @@ echo "*** Test Item: Detect model (--archive, --detect-model-only)"
   --emulate "${FROM_IMAGE}.ap" --detect-model-only >"${TMP}.model.out"
 cmp "${TMP}.model.out" <(echo peppy)
 
+# Custom label tests
+test_update "Full update (--archive, model=customtip-cl; custom label + tag)" \
+  "${FROM_IMAGE}.al" "${LINK_BIOS}" \
+  -a "${A}" --wp=0 --sys_props 0,0x10001,3 --model=customtip-cl
 CL_TAG="cl" PATH="${A}/bin:${PATH}" \
   test_update "Full update (-a, model=customtip, fake VPD)" \
   "${FROM_IMAGE}.al" "${LINK_BIOS}" \
