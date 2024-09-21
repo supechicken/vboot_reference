@@ -1386,22 +1386,41 @@ static int updater_setup_archive(
 	errorcnt += updater_load_images(
 			cfg, arg, model->image, model->ec_image);
 
-	if (model->has_custom_label) {
-
+	/*
+	 * For custom label devices, we have to read the system firmware
+	 * (image_current) to get the tag from VPD. Some quirks may also need
+	 * the system firmware to identify if they should override the tags.
+	 *
+	 * The only different case is `--mode=output` (cfg->output_only) but
+	 * tags should be specified by `--model=MODEL-TAG`. And that will
+	 * make model->has_custom_label become false.
+	 */
+	if (cfg->output_only && arg->model && model->has_custom_label) {
+		printf(">> Generating output for a custom label device without tags. "
+		       "The firmware images will be signed the DEFAULT keys. "
+		       "To get the images signed by the LOEM keys, "
+		       "add the corresponding tag from one of the following list: \n");
+		int i, len = strlen(arg->model);
+		bool printed = false;
+		for (i = 0; i < manifest->num; i++) {
+			struct model_config *m = &manifest->models[i];
+			if (strncmp(m->name, arg->model, len) || m->name[len] != '-')
+				continue;
+			printf("%s `--model=%s`", printed ? "," : "", m->name);
+			printed = true;
+		}
+		printf("\n\n");
+	} else if (model->has_custom_label) {
 		if (!cfg->image_current.data) {
 			INFO("Loading system firmware for custom label...\n");
 			load_system_firmware(cfg, &cfg->image_current);
 		}
 
-		const char *signature_id = arg->signature_id;
-
-		if (get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID, cfg) &&
-		    is_ap_write_protection_enabled(cfg))
-			quirk_override_signature_id(
-					cfg, model, &signature_id);
-
-		model = manifest_find_custom_label_model(
-				cfg, manifest, model, signature_id);
+		if (!cfg->image_current.data) {
+			ERROR("Failed to load system firmware for tags.\n");
+			return ++errorcnt;
+		}
+		model = manifest_find_custom_label_model(cfg, manifest, model);
 		if (!model)
 			return ++errorcnt;
 		/*
