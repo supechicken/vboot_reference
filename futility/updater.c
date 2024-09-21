@@ -1387,21 +1387,13 @@ static int updater_setup_archive(
 			cfg, arg, model->image, model->ec_image);
 
 	if (model->has_custom_label) {
-
+		/* Quirks and custom label from VPD all need image_current. */
 		if (!cfg->image_current.data) {
 			INFO("Loading system firmware for custom label...\n");
 			load_system_firmware(cfg, &cfg->image_current);
 		}
 
-		const char *signature_id = arg->signature_id;
-
-		if (get_config_quirk(QUIRK_OVERRIDE_SIGNATURE_ID, cfg) &&
-		    is_ap_write_protection_enabled(cfg))
-			quirk_override_signature_id(
-					cfg, model, &signature_id);
-
-		model = manifest_find_custom_label_model(
-				cfg, manifest, model, signature_id);
+		model = manifest_find_custom_label_model(cfg, manifest, model);
 		if (!model)
 			return ++errorcnt;
 		/*

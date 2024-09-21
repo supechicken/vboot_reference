@@ -44,7 +44,7 @@ static const struct quirks_record quirks_records[] = {
 	{ .match = "Google_Hana.", .quirks = "allow_empty_custom_label_tag" },
 
 	/* reference design: octopus */
-	{ .match = "Google_Phaser.", .quirks = "override_signature_id" },
+	{ .match = "Google_Phaser.", .quirks = "override_custom_label" },
 };
 
 /*
@@ -466,9 +466,9 @@ void updater_register_quirks(struct updater_config *cfg)
 	quirks->help = "chromium/1024401; recover EC by partial RO update.";
 	quirks->apply = quirk_ec_partial_recovery;
 
-	quirks = &cfg->quirks[QUIRK_OVERRIDE_SIGNATURE_ID];
-	quirks->name = "override_signature_id";
-	quirks->help = "chromium/146876241; override signature id for "
+	quirks = &cfg->quirks[QUIRK_OVERRIDE_CUSTOM_LABEL];
+	quirks->name = "override_custom_label";
+	quirks->help = "chromium/146876241; override custom label name for "
 			"devices shipped with different root key.";
 	quirks->apply = NULL; /* Simple config. */
 
@@ -564,25 +564,31 @@ char *updater_get_cbfs_quirks(struct updater_config *cfg)
 	return (char *)data;
 }
 
-int quirk_override_signature_id(const struct updater_config *cfg,
-				const struct model_config *model,
-				const char **signature_id)
+const struct model_config *quirk_override_custom_label(
+		struct updater_config *cfg,
+		const struct manifest *manifest,
+		const struct model_config *model)
 {
-	const char * const DOPEFISH_KEY_HASH =
-				"9a1f2cc319e2f2e61237dc51125e35ddd4d20984";
+	const struct firmware_image *image = &cfg->image_current;
+	assert(image->data);
+
+	/* If not write protected, no need to apply the hack. */
+	if (!is_ap_write_protection_enabled(cfg))
+		return NULL;
 
 	/* b/146876241 */
 	assert(model);
 	if (strcmp(model->name, "phaser360") == 0) {
-		const struct firmware_image *image = &cfg->image_current;
 		const char *key_hash = get_firmware_rootkey_hash(image);
+		const char * const DOPEFISH_KEY_HASH =
+				"9a1f2cc319e2f2e61237dc51125e35ddd4d20984";
 		if (key_hash && strcmp(key_hash, DOPEFISH_KEY_HASH) == 0) {
-			const char * const sig_dopefish = "phaser360-dopefish";
+			const char * const dopefish = "phaser360-dopefish";
 			WARN("A Phaser360 with Dopefish rootkey - "
-			     "override signature_id to '%s'.\n", sig_dopefish);
-			*signature_id = sig_dopefish;
+			     "override custom label to '%s'.\n", dopefish);
+			return manifest_find_model(cfg, manifest, dopefish);
 		}
 	}
 
-	return 0;
+	return NULL;
 }
