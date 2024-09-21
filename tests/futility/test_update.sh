@@ -554,10 +554,9 @@ test_update "Full update (--archive, model=peppy)" \
 test_update "Full update (--archive, model=unknown)" \
   "${FROM_IMAGE}.ap" "!Unsupported model: 'unknown'" \
   -a "${A}" --wp=0 --sys_props 0,0x10001,3 --model=unknown
-test_update "Full update (--archive, model=customtip, signature_id=customtip-cl)" \
+test_update "Full update (--archive, model=customtip-cl)" \
   "${FROM_IMAGE}.al" "${LINK_BIOS}" \
-  -a "${A}" --wp=0 --sys_props 0,0x10001,3 --model=customtip \
-  --signature_id=customtip-cl
+  -a "${A}" --wp=0 --sys_props 0,0x10001,3 --model=customtip-cl
 
 test_update "Full update (--archive, detect-model)" \
   "${FROM_IMAGE}.ap" "${PEPPY_BIOS}" \
