@@ -98,6 +98,7 @@ struct updater_config {
 	uint32_t gbb_flags;
 	bool detect_model;
 	bool dut_is_remote;
+	bool output_only;
 };
 
 struct updater_config_arguments {
