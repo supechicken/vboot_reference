@@ -1480,8 +1480,7 @@ static int check_arg_compatibility(
 }
 
 static int parse_arg_mode(struct updater_config *cfg,
-			  const struct updater_config_arguments *arg,
-			  bool *do_output)
+			  const struct updater_config_arguments *arg)
 {
 	if (!arg->mode)
 		return 0;
@@ -1500,7 +1499,7 @@ static int parse_arg_mode(struct updater_config *cfg,
 		   strcmp(arg->mode, "factory_install") == 0) {
 		cfg->factory_update = 1;
 	} else if (strcmp(arg->mode, "output") == 0) {
-		*do_output = 1;
+		cfg->output_only = true;
 	} else {
 		ERROR("Invalid mode: %s\n", arg->mode);
 		return -1;
@@ -1637,7 +1636,6 @@ int updater_setup_config(struct updater_config *cfg,
 	int errorcnt = 0;
 	int check_wp_disabled = 0;
 	bool check_single_image = false;
-	bool do_output = false;
 	const char *archive_path = arg->archive;
 
 	/* Setup values that may change output or decision of other argument. */
@@ -1660,7 +1658,7 @@ int updater_setup_config(struct updater_config *cfg,
 	if (arg->try_update)
 		cfg->try_update = TRY_UPDATE_AUTO;
 
-	if (parse_arg_mode(cfg, arg, &do_output) < 0)
+	if (parse_arg_mode(cfg, arg) < 0)
 		return 1;
 
 	if (cfg->factory_update) {
@@ -1751,7 +1749,7 @@ int updater_setup_config(struct updater_config *cfg,
 		errorcnt += !!setup_config_quirks(arg->quirks, cfg);
 
 	/* Additional checks. */
-	if (check_single_image && !do_output && cfg->ec_image.data) {
+	if (check_single_image && !cfg->output_only && cfg->ec_image.data) {
 		errorcnt++;
 		ERROR("EC/PD images are not supported in current mode.\n");
 	}
@@ -1770,7 +1768,7 @@ int updater_setup_config(struct updater_config *cfg,
 	}
 
 	/* The images are ready for updating. Output if needed. */
-	if (!errorcnt && do_output) {
+	if (!errorcnt && cfg->output_only) {
 		const char *r = arg->output_dir;
 		if (!r)
 			r = ".";
