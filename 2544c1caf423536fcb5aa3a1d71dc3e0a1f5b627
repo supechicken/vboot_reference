@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b6211ec_d577d70f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3cdc649_c1d3c0ea",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57f21d80_9f1f47fd",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9418aa8e_825c65ce",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "hmmm, that\u0027s true.",
+      "parentUuid": "84550b0c_70e64859",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a6ffa9c_cbcc0eab",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0e68a7_a76bb81c",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a6ffa9c_cbcc0eab",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c1f4588_ef21f88a",
@@ -88,6 +148,30 @@
       "writtenOn": "2024-09-23T02:02:00Z",
       "side": 1,
       "message": "We\u0027d better check this in pack_firmware.py, in case the new Android firmware configs break the assumption. @jjsu@chromium.org",
+      "range": {
+        "startLine": 1408,
+        "startChar": 5,
+        "endLine": 1409,
+        "endChar": 28
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31a0c80_0ed0b532",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "I added a check here so it\u0027ll fail immediately.",
+      "parentUuid": "9c1f4588_ef21f88a",
       "range": {
         "startLine": 1408,
         "startChar": 5,
@@ -123,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d7d1003_bb38f764",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Yes, because we changed where quirk_override_signature_id was invoked (e.g. removed quirk_override_signature_id) so the two params are now const from where it was called. Can\u0027t compile without changing these two params.",
+      "parentUuid": "c9c11083_05baf6e2",
+      "range": {
+        "startLine": 272,
+        "startChar": 32,
+        "endLine": 272,
+        "endChar": 37
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04a01b73_39b86101",
         "filename": "futility/updater.h",
         "patchSetId": 9
@@ -134,6 +242,30 @@
       "writtenOn": "2024-09-23T02:02:00Z",
       "side": 1,
       "message": "base_model",
+      "range": {
+        "startLine": 379,
+        "startChar": 29,
+        "endLine": 379,
+        "endChar": 33
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8e3bd4_ef2c205b",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a01b73_39b86101",
       "range": {
         "startLine": 379,
         "startChar": 29,
@@ -169,6 +301,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38415829_a8dc3c29",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "signature_id was a special term from setvars.sh that represents (at least expected) to describe the model, something like the fw_manifest_key today; and for custom label it\u0027s \"sig-in-the-customization-id\", where that should contain the tag itself, and here we need the whole (model+tag) so I\u0027m trying to name it \u0027signature\u0027 instead of \u0027signature_id\u0027.\n\nI\u0027d agree it\u0027s a mess that the follow up changes will clean out all signature stuff.",
+      "parentUuid": "428ea742_8df7a3ec",
+      "range": {
+        "startLine": 380,
+        "startChar": 14,
+        "endLine": 380,
+        "endChar": 23
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e283881_405a9ca7",
         "filename": "futility/updater_manifest.c",
         "patchSetId": 9
@@ -180,6 +336,30 @@
       "writtenOn": "2024-09-23T02:02:00Z",
       "side": 1,
       "message": "Does this mean \"pre Unified Build\"?",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac0cfaea_3a3eb71b",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "revised.",
+      "parentUuid": "6e283881_405a9ca7",
       "range": {
         "startLine": 51,
         "startChar": 7,
@@ -213,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1ccdb7_ae5de77a",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af90d8c2_19512ed0",
+      "range": {
+        "startLine": 358,
+        "startChar": 33,
+        "endLine": 358,
+        "endChar": 44
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb4dc535_eae4e43d",
@@ -230,6 +434,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3798d899_b51a7533",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb4dc535_eae4e43d",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbc1f6e6_082f6f66",
@@ -243,6 +465,30 @@
       "writtenOn": "2024-09-23T02:02:00Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 387,
+        "startChar": 20,
+        "endLine": 387,
+        "endChar": 21
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32523e87_de53ce67",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "I\u0027d like to keep {} here because ERROR is a macro and may easily go wrong. Safer to do {}.",
+      "parentUuid": "bbc1f6e6_082f6f66",
       "range": {
         "startLine": 387,
         "startChar": 20,
@@ -276,6 +522,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de916b6_969558c4",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82f0752c_c01f4ccb",
+      "range": {
+        "startLine": 576,
+        "startChar": 36,
+        "endLine": 576,
+        "endChar": 62
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab0092d1_4171bf51",
@@ -289,6 +559,30 @@
       "writtenOn": "2024-09-23T02:02:00Z",
       "side": 1,
       "message": "be returned",
+      "range": {
+        "startLine": 594,
+        "startChar": 50,
+        "endLine": 594,
+        "endChar": 56
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4196ad82_9ae92ae9",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab0092d1_4171bf51",
       "range": {
         "startLine": 594,
         "startChar": 50,
@@ -345,6 +639,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb919695_e81e2174",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "218a07d5_d8fbe646",
+      "range": {
+        "startLine": 598,
+        "startChar": 49,
+        "endLine": 598,
+        "endChar": 58
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "398e7ac4_087b3b82",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58dba0a_79dce494",
+      "range": {
+        "startLine": 598,
+        "startChar": 4,
+        "endLine": 598,
+        "endChar": 5
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e499215c_c1a6e401",
@@ -358,6 +700,30 @@
       "writtenOn": "2024-09-23T02:02:00Z",
       "side": 1,
       "message": "Why\u0027s this a warning instead of INFO (both will go to stderr if that\u0027s what you care)? Is this because `customization_id` is now deprecated?",
+      "range": {
+        "startLine": 599,
+        "startChar": 1,
+        "endLine": 599,
+        "endChar": 5
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a656534_a5a2cef3",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Changed to INFO.",
+      "parentUuid": "e499215c_c1a6e401",
       "range": {
         "startLine": 599,
         "startChar": 1,
@@ -391,6 +757,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74650a85_07ad80b2",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a2f488_d47a88eb",
+      "range": {
+        "startLine": 622,
+        "startChar": 10,
+        "endLine": 622,
+        "endChar": 47
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "441984ec_ff00175c",
@@ -414,6 +804,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5824309a_50430c24",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441984ec_ff00175c",
+      "range": {
+        "startLine": 627,
+        "startChar": 46,
+        "endLine": 627,
+        "endChar": 53
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76ea75c0_bf98c87c",
@@ -427,6 +841,30 @@
       "writtenOn": "2024-09-23T02:02:00Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 639,
+        "startChar": 12,
+        "endLine": 639,
+        "endChar": 13
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66ebfcc_902d68ea",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T03:54:36Z",
+      "side": 1,
+      "message": "I tend to leave the { } because INFO and ERROR are macros, and the preprocessing may easily get broken if some one changed their definition.",
+      "parentUuid": "76ea75c0_bf98c87c",
       "range": {
         "startLine": 639,
         "startChar": 12,
