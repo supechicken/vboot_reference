@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e19aef_ebb2faa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f21d80_9f1f47fd",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84550b0c_70e64859",
@@ -182,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bbe326_3cbaab36",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b31a0c80_0ed0b532",
+      "range": {
+        "startLine": 1408,
+        "startChar": 5,
+        "endLine": 1409,
+        "endChar": 28
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9c11083_05baf6e2",
@@ -242,6 +284,30 @@
       "writtenOn": "2024-09-23T05:45:45Z",
       "side": 1,
       "message": "\u003e e.g. removed quirk_override_signature_id\n\nCopy-paste failed. What I meant was updater_apply_custom_label",
+      "parentUuid": "1d7d1003_bb38f764",
+      "range": {
+        "startLine": 272,
+        "startChar": 32,
+        "endLine": 272,
+        "endChar": 37
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f4bfb6_e625758b",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Acknowledged",
       "parentUuid": "1d7d1003_bb38f764",
       "range": {
         "startLine": 272,
@@ -337,6 +403,30 @@
       "side": 1,
       "message": "signature_id was a special term from setvars.sh that represents (at least expected) to describe the model, something like the fw_manifest_key today; and for custom label it\u0027s \"sig-in-the-customization-id\", where that should contain the tag itself, and here we need the whole (model+tag) so I\u0027m trying to name it \u0027signature\u0027 instead of \u0027signature_id\u0027.\n\nI\u0027d agree it\u0027s a mess that the follow up changes will clean out all signature stuff.",
       "parentUuid": "428ea742_8df7a3ec",
+      "range": {
+        "startLine": 380,
+        "startChar": 14,
+        "endLine": 380,
+        "endChar": 23
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b126e1_d927f7d8",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "38415829_a8dc3c29",
       "range": {
         "startLine": 380,
         "startChar": 14,
@@ -513,6 +603,30 @@
       "side": 1,
       "message": "I\u0027d like to keep {} here because ERROR is a macro and may easily go wrong. Safer to do {}.",
       "parentUuid": "bbc1f6e6_082f6f66",
+      "range": {
+        "startLine": 387,
+        "startChar": 20,
+        "endLine": 387,
+        "endChar": 21
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef291903_554a684b",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32523e87_de53ce67",
       "range": {
         "startLine": 387,
         "startChar": 20,
@@ -889,6 +1003,30 @@
       "side": 1,
       "message": "I tend to leave the { } because INFO and ERROR are macros, and the preprocessing may easily get broken if some one changed their definition.",
       "parentUuid": "76ea75c0_bf98c87c",
+      "range": {
+        "startLine": 639,
+        "startChar": 12,
+        "endLine": 639,
+        "endChar": 13
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6df9db_913dea55",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e66ebfcc_902d68ea",
       "range": {
         "startLine": 639,
         "startChar": 12,

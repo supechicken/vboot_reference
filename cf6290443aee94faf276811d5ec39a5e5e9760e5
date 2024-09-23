@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4766711_4b1e94d8",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "`test_update()` has `cmp [actual] [expected]`. Can we take the chance to make the order consistent?",
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5928c9_a38ceef9",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "How about `custom label, fake VPD, wrong image` to be consistent with the test name below at line #581?",
+      "range": {
+        "startLine": 577,
+        "startChar": 39,
+        "endLine": 577,
+        "endChar": 73
+      },
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c8c978_f1bffd0a",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Not related to this patch.\n\nThe `futility` help text says \"Emulation works only with AP ... and does not work with --mode\u003doutput\", which seems wrong. From my testing, emulation works perfectly fine. A minor side effect is that, with emulation, ec.bin won\u0027t be generated in the output dir, because of the logic in `updater_load_images()`. It should be fine to load the EC image from the archive. It only needs to skip loading the *system* EC image.\n\nAnother unrelated issue is the output file \"bios.bin\". That seems ancient (has been replaced with \"image.bin\"), and it looks like we\u0027ve never finished deprecating it.",
+      "range": {
+        "startLine": 586,
+        "startChar": 17,
+        "endLine": 586,
+        "endChar": 24
+      },
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947b8175_2d2d921b",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T10:15:00Z",
+      "side": 1,
+      "message": "Same here. Can we take the chance to make the order consistent?",
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
