@@ -25,7 +25,11 @@
 #include "vboot_struct.h"
 
 /* Filename for crossystem lock */
+#ifdef __ANDROID__
+#define CROSSYSTEM_LOCK_PATH "/data/local/tmp/crossystem.lock"
+#else
 #define CROSSYSTEM_LOCK_PATH "/run/lock/crossystem.lock"
+#endif
 
 /* Filename for kernel command line */
 #define KERNEL_CMDLINE_PATH "/proc/cmdline"
