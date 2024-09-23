@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01daaf8_e7bdabf1",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T12:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4766711_4b1e94d8",
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f5928c9_a38ceef9",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-09-23T10:15:00Z",
       "side": 1,
       "message": "How about `custom label, fake VPD, wrong image` to be consistent with the test name below at line #581?",
+      "range": {
+        "startLine": 577,
+        "startChar": 39,
+        "endLine": 577,
+        "endChar": 73
+      },
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "023d4e7f_e1fe2170",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T12:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f5928c9_a38ceef9",
       "range": {
         "startLine": 577,
         "startChar": 39,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48688a63_29c5cd01",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T12:13:18Z",
+      "side": 1,
+      "message": "For 1 emulation, we can have follow up changes to fix that.\n\nFor 2 `bios.bin`, that\u0027s a tough one... we have autotest and factory code, even some partner scripts still using bios.bin.  Also I feel that \u0027image\u0027 is confusing, wonder if we should change that to something like \u0027host\u0027. Also some partners felt that bios.bin is easier to understand (together with EC).\n\nAnd it\u0027s even worse now we changed the \u0027-p host\u0027 programmer to \u0027-p internal\u0027. Well, there\u0027s no good consistent way I think...\n\nAnd yes, welcome to fix the bios.bin, but that\u0027s low priority to me.",
+      "parentUuid": "75c8c978_f1bffd0a",
+      "range": {
+        "startLine": 586,
+        "startChar": 17,
+        "endLine": 586,
+        "endChar": 24
+      },
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "947b8175_2d2d921b",
@@ -77,6 +143,24 @@
       "writtenOn": "2024-09-23T10:15:00Z",
       "side": 1,
       "message": "Same here. Can we take the chance to make the order consistent?",
+      "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ed62f0_715700a8",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T12:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "947b8175_2d2d921b",
       "revId": "cf6290443aee94faf276811d5ec39a5e5e9760e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
