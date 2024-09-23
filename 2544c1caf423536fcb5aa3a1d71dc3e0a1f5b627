@@ -231,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fd17231_0400ee31",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-23T05:45:45Z",
+      "side": 1,
+      "message": "\u003e e.g. removed quirk_override_signature_id\n\nCopy-paste failed. What I meant was updater_apply_custom_label",
+      "parentUuid": "1d7d1003_bb38f764",
+      "range": {
+        "startLine": 272,
+        "startChar": 32,
+        "endLine": 272,
+        "endChar": 37
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04a01b73_39b86101",
         "filename": "futility/updater.h",
         "patchSetId": 9
