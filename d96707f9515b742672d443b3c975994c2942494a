@@ -192,6 +192,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "060c6594_84e44821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509762
+      },
+      "writtenOn": "2024-09-23T09:40:22Z",
+      "side": 1,
+      "message": "Re @yupingso@chromium.org\nIIUC, Dedede uses the factory shim from ToT and uses the test image from the factory branch.\nTherefore, CL:5208375 will impact them. According to the code logic in the factory shim,\n- In pre-PVT, ME will not be locked so futility will be invoked with quirks `unlock_csme`.\n- In PVT, since dedede does not follow flexible EOM, ME will be locked in the first boot. Therefore, futility won\u0027t be invoked with `unlock_csme`.",
+      "parentUuid": "af49a7f3_c3505ea9",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f8061f2_e1581f44",
         "filename": "futility/platform_csme.c",
         "patchSetId": 1
