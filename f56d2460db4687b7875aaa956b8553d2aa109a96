@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7c1ec8_066d40ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2024-09-23T20:56:31Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8735985074648176289) is being automatically retried for the following reasons:\n- Some tests are now retryable:dedede-cq.hw.bvt-tast-cq-hw\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "f56d2460db4687b7875aaa956b8553d2aa109a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
