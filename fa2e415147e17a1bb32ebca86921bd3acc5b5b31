@@ -73,6 +73,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d11b00d6_62095617",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-23T23:18:35Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be relying on predefined macros for this, this is not the same as things like `__FreeBSD__`. If we want an Android flag, it should go through the Makefile.\n\nBut I think it would be better if we could do without an opaque \"Android\" switch that makes it hard to see what behaviors it changes anyway. Hopefully we don\u0027t need so many differences, so that we can cover the few that there are with individual switches.\n\nSo I would suggest you add `CROSSYSTEM_LOCK_DIR` as a Makefile variable that defaults to `/run/lock` and can be overridden to point to something else on the make command line.",
+      "revId": "fa2e415147e17a1bb32ebca86921bd3acc5b5b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fdb5f4a_86b3713d",
         "filename": "host/lib/crossystem.c",
         "patchSetId": 1
