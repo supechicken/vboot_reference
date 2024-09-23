@@ -1,0 +1,440 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3cdc649_c1d3c0ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "getting",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f21d80_9f1f47fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "Tests not reviewed yet.",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84550b0c_70e64859",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "I think `arg-\u003esignature_id` should have precedence over the quirk.",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6ffa9c_cbcc0eab",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "Consider adding a comment such as\n```\n/* manifest_find_model returns the base model, so we\u0027ll need to ... */\n```",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1f4588_ef21f88a",
+        "filename": "futility/updater.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "We\u0027d better check this in pack_firmware.py, in case the new Android firmware configs break the assumption. @jjsu@chromium.org",
+      "range": {
+        "startLine": 1408,
+        "startChar": 5,
+        "endLine": 1409,
+        "endChar": 28
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c11083_05baf6e2",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "Is this change related to this CL?",
+      "range": {
+        "startLine": 272,
+        "startChar": 32,
+        "endLine": 272,
+        "endChar": 37
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a01b73_39b86101",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "base_model",
+      "range": {
+        "startLine": 379,
+        "startChar": 29,
+        "endLine": 379,
+        "endChar": 33
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428ea742_8df7a3ec",
+        "filename": "futility/updater.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "It looks like you intentionally rename `signature_id` to `signature`. May I ask why?",
+      "range": {
+        "startLine": 380,
+        "startChar": 14,
+        "endLine": 380,
+        "endChar": 23
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e283881_405a9ca7",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "Does this mean \"pre Unified Build\"?",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af90d8c2_19512ed0",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "This field is not used anymore.",
+      "range": {
+        "startLine": 358,
+        "startChar": 33,
+        "endLine": 358,
+        "endChar": 44
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb4dc535_eae4e43d",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "Free `model.*` here, add `continue` here, and remove `discard_model`.",
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc1f6e6_082f6f66",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 387,
+        "startChar": 20,
+        "endLine": 387,
+        "endChar": 21
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f0752c_c01f4ccb",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "I think the signature ID is BASE_MODEL-TAG, not just TAG.",
+      "range": {
+        "startLine": 576,
+        "startChar": 36,
+        "endLine": 576,
+        "endChar": 62
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0092d1_4171bf51",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "be returned",
+      "range": {
+        "startLine": 594,
+        "startChar": 50,
+        "endLine": 594,
+        "endChar": 56
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218a07d5_d8fbe646",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "Some people (like me) are more familiar with C code than shell script, so this comment doesn\u0027t help. I\u0027d prefer the original comment.",
+      "range": {
+        "startLine": 598,
+        "startChar": 49,
+        "endLine": 598,
+        "endChar": 58
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58dba0a_79dce494",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "F",
+      "range": {
+        "startLine": 598,
+        "startChar": 4,
+        "endLine": 598,
+        "endChar": 5
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e499215c_c1a6e401",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "Why\u0027s this a warning instead of INFO (both will go to stderr if that\u0027s what you care)? Is this because `customization_id` is now deprecated?",
+      "range": {
+        "startLine": 599,
+        "startChar": 1,
+        "endLine": 599,
+        "endChar": 5
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a2f488_d47a88eb",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "This sentence sounds confusing to me. I know you just copied the code here, but can we take the chance to re-phrase this? This could be changed to something like \"Failed to save system firmware to file\".",
+      "range": {
+        "startLine": 622,
+        "startChar": 10,
+        "endLine": 622,
+        "endChar": 47
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441984ec_ff00175c",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "base",
+      "range": {
+        "startLine": 627,
+        "startChar": 46,
+        "endLine": 627,
+        "endChar": 53
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ea75c0_bf98c87c",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-23T02:02:00Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 639,
+        "startChar": 12,
+        "endLine": 639,
+        "endChar": 13
+      },
+      "revId": "2544c1caf423536fcb5aa3a1d71dc3e0a1f5b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
