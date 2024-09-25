@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89bff5ec_abffccd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-25T10:00:40Z",
+      "side": 1,
+      "message": "Example in the form of Android\u0027s gdbclient.py added. I also added more info about the path requirements itself.",
+      "parentUuid": "ca6a807a_c9cb3a35",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "fa2e415147e17a1bb32ebca86921bd3acc5b5b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0d0a224_cd13d311",
@@ -61,6 +85,30 @@
       "writtenOn": "2024-09-23T16:04:22Z",
       "side": 1,
       "message": "should we have a meta bug for all vboot_reference tools?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "fa2e415147e17a1bb32ebca86921bd3acc5b5b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9845b635_cab604c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-25T10:00:40Z",
+      "side": 1,
+      "message": "I created one according to my manager\u0027s instructions: b/369290629",
+      "parentUuid": "c0d0a224_cd13d311",
       "range": {
         "startLine": 12,
         "startChar": 4,
@@ -88,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c538e6f2_7cc63826",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-25T10:00:40Z",
+      "side": 1,
+      "message": "Good idea. I had to solve it the `#ifdef` way for pciutils and flashrom due to us not owning them, but as we own the vboot_reference it seems to be the best way. (Btw. we have to finally refactor vboot Makefiles, because they are a nightmare to work with at this point).\n\nAnyway, I added `CROSSYSTEM_LOCK_DIR` to the Makefile with it defaulting to `/run/lock`. Android does not use Makefile, but Android.bp so I just defined it for Android builds only.",
+      "parentUuid": "d11b00d6_62095617",
+      "revId": "fa2e415147e17a1bb32ebca86921bd3acc5b5b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fdb5f4a_86b3713d",
@@ -101,6 +167,30 @@
       "writtenOn": "2024-09-23T17:25:05Z",
       "side": 1,
       "message": "Some questions we should probably answer about this path before settling on it.\n\n**Is this a tmpfs like `/run`?**\n\n**If not do we care if the lock file is present from boot?**\n\nWe might want to include the answer in a comment as justification for why this path is the right one for Android for anyone who comes along later trying to understand our choice.",
+      "range": {
+        "startLine": 29,
+        "startChar": 30,
+        "endLine": 29,
+        "endChar": 45
+      },
+      "revId": "fa2e415147e17a1bb32ebca86921bd3acc5b5b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "741a5782_a50a791b",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-09-25T10:00:40Z",
+      "side": 1,
+      "message": "Thank you for the suggestion. I added the appropriate description in the commit message. PTAL :)",
+      "parentUuid": "5fdb5f4a_86b3713d",
       "range": {
         "startLine": 29,
         "startChar": 30,
