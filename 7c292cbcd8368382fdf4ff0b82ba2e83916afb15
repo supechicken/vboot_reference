@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a93271_9bbff0ba",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-25T23:47:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9e60bce5_97ac19a8",
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a141a6d_464ef7fb",
@@ -65,6 +83,24 @@
       "writtenOn": "2024-09-13T23:48:42Z",
       "side": 1,
       "message": "This is a bit ugly because you\u0027re using the hash of the concatenated hex representations of two other hashes. It probably doesn\u0027t matter for your use case but it would get complicated if you ever wanted to explain to someone else how to recreate that hash.\n\nHave you considered just using something like `cat ${system_img_path} ${vendor_img_path} | sha256sum -b` instead? That would seem more normal for \"hash over two images\".",
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a6ea2b_5a470eaf",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-25T23:47:53Z",
+      "side": 1,
+      "message": "Per a change to the design to include the vendor image to calculate the digest, it was decided to take a hash of the combined hashes. This code should be kept in sync with https://crrev.com/i/7619063 so we will keep the implementation as-is.",
+      "parentUuid": "3a141a6d_464ef7fb",
       "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ee3e3b_a3e968a5",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-25T23:47:53Z",
+      "side": 1,
+      "message": "True, it\u0027s possible that it will be the same. This log might be useful to know, especially if we notice it happening a lot. Returning here is also ok since we do not need to overwrite the existing value with the same exact value.",
+      "parentUuid": "5e453499_6d2c8273",
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1f3550a_9621ef4d",
@@ -146,6 +200,24 @@
       "writtenOn": "2024-09-13T23:48:42Z",
       "side": 1,
       "message": "nit: might as well print the hash here?",
+      "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a895fbda_58881b47",
+        "filename": "scripts/image_signing/sign_android_image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1504887
+      },
+      "writtenOn": "2024-09-25T23:47:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f1f3550a_9621ef4d",
       "revId": "7c292cbcd8368382fdf4ff0b82ba2e83916afb15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
