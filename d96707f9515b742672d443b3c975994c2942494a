@@ -228,6 +228,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "343f8efb_d6765f9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-09-25T12:16:08Z",
+      "side": 1,
+      "message": "Can we cherry pick CL:4040731 to dedede firmware branch to resolve the problem? @phoebewang@chromium.org A follow up question: Does CL:5208375 affect RMA process for existing dedede models, or only the new model Awasuki?",
+      "parentUuid": "ea1a4600_9a01bc81",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f8061f2_e1581f44",
         "filename": "futility/platform_csme.c",
         "patchSetId": 1
