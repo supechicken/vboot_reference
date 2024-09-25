@@ -221,6 +221,9 @@ endif
 CROSSYSTEM_LOCK_DIR := /run/lock
 CFLAGS += -DCROSSYSTEM_LOCK_DIR=\"${CROSSYSTEM_LOCK_DIR}\"
 
+FLASHROM_EXEC_NAME := /usr/sbin/flashrom
+CFLAGS += -DFLASHROM_EXEC_NAME=\"${FLASHROM_EXEC_NAME}\"
+
 # NOTE: We don't use these files but they are useful for other packages to
 # query about required compiling/linking flags.
 PC_IN_FILES = vboot_host.pc.in
