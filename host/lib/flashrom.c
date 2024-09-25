@@ -23,8 +23,6 @@
 #include "flashrom.h"
 #include "subprocess.h"
 
-#define FLASHROM_EXEC_NAME "/usr/sbin/flashrom"
-
 /**
  * Helper to create a temporary file, and optionally write some data
  * into it.
