@@ -16,6 +16,24 @@
       "message": "I kind of feel like we should leave a comment around here saying that `FLASHROM_EXEC_NAME` is expected to be set by the build environment, but maybe this isn\u0027t the right place for that.\n\nIn typical open source projects something like that would normally go in the \"build and install\" section of the README.",
       "revId": "b08ac37db3e0972a3799f19eedafdb829e9914fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7220b0d_cbc84cd6",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-26T01:23:19Z",
+      "side": 0,
+      "message": "u",
+      "parentUuid": "b176f6fa_b9da31bf",
+      "revId": "b08ac37db3e0972a3799f19eedafdb829e9914fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
