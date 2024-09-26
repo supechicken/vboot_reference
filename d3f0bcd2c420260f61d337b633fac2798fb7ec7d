@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9c09a6_da4f0991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-26T00:40:47Z",
+      "side": 1,
+      "message": "Is there a good reason why flashrom should be invoked as `/usr/sbin/flashrom` on ChromeOS in the first place (instead of also using PATH)? For comparison, `cbfstool` is also invoked without absolute path by futility.",
+      "revId": "d3f0bcd2c420260f61d337b633fac2798fb7ec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
