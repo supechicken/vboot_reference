@@ -88,6 +88,24 @@
       "parentUuid": "2e7f4f74_0db69ae7",
       "revId": "d3f0bcd2c420260f61d337b633fac2798fb7ec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c6ceab_42b63307",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-09-26T11:42:35Z",
+      "side": 1,
+      "message": "chromeos-firmwareupdate was always run as root in ChromeOS. Meanwhile, the flashrom in chromeoso-firmwareupdate today is provided by libflashrom, so no external execution. The flashrom in futility is for other sub commands like crossystem.",
+      "parentUuid": "737d1c08_f28ac1a0",
+      "revId": "d3f0bcd2c420260f61d337b633fac2798fb7ec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
