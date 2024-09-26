@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06dece6a_404fc92b",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-09-26T00:38:15Z",
+      "side": 1,
+      "message": "I know it\u0027s not done consistently in this file but I\u0027d generally recommend to use `\u003d` (or better `:\u003d`), not `?\u003d` for these sort of things. Both are overrideable on the command line, but the difference is that `?\u003d` can be overridden from environment variables while `\u003d` and `:\u003d` can only be overridden from explicit parameter (e.g. `make PARAM\u003dvalue`). Most of the time you intend it to be used the latter way, and using environment variables is usually unintended for anything other than a few very standard variables (like `CC` or `CFLAGS`).",
+      "range": {
+        "startLine": 221,
+        "startChar": 20,
+        "endLine": 221,
+        "endChar": 22
+      },
+      "revId": "b08ac37db3e0972a3799f19eedafdb829e9914fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
