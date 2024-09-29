@@ -334,7 +334,7 @@ all: fwlib futil utillib hostlib cgpt tlcl util_files \
 # Now we need to describe everything we might want or need to build
 
 # Everything wants these headers.
-INCLUDES += \
+INCLUDES := \
 	-Ifirmware/include \
 	-Ifirmware/lib/include \
 	-Ifirmware/lib/cgptlib/include \
@@ -359,123 +359,13 @@ FWLIB = ${BUILD}/vboot_fw.a
 # Separate TPM lightweight command library (TLCL)
 TLCL = ${BUILD}/tlcl.a
 
-FWLIB_SRCS = \
-	firmware/2lib/2api.c \
-	firmware/2lib/2auxfw_sync.c \
-	firmware/2lib/2common.c \
-	firmware/2lib/2context.c \
-	firmware/2lib/2crc8.c \
-	firmware/2lib/2crypto.c \
-	firmware/2lib/2ec_sync.c \
-	firmware/2lib/2firmware.c \
-	firmware/2lib/2gbb.c \
-	firmware/2lib/2hmac.c \
-	firmware/2lib/2kernel.c \
-	firmware/2lib/2load_kernel.c \
-	firmware/2lib/2misc.c \
-	firmware/2lib/2nvstorage.c \
-	firmware/2lib/2packed_key.c \
-	firmware/2lib/2recovery_reasons.c \
-	firmware/2lib/2rsa.c \
-	firmware/2lib/2secdata_firmware.c \
-	firmware/2lib/2secdata_fwmp.c \
-	firmware/2lib/2secdata_kernel.c \
-	firmware/2lib/2sha1.c \
-	firmware/2lib/2sha256.c \
-	firmware/2lib/2sha512.c \
-	firmware/2lib/2sha_utility.c \
-	firmware/2lib/2struct.c \
-	firmware/2lib/2stub_hwcrypto.c \
-	firmware/2lib/2tpm_bootmode.c \
-	firmware/lib/cgptlib/cgptlib.c \
-	firmware/lib/cgptlib/cgptlib_internal.c \
-	firmware/lib/cgptlib/crc32.c \
-	firmware/lib/gpt_misc.c \
-	firmware/lib20/api_kernel.c \
-	firmware/lib20/kernel.c
-
-# TPM lightweight command library
-ifeq ($(filter-out 0,${TPM2_MODE}),)
-TLCL_SRCS = \
-	firmware/lib/tpm_lite/tlcl.c
-else
-# TODO(apronin): tests for TPM2 case?
-TLCL_SRCS = \
-	firmware/lib/tpm2_lite/tlcl.c \
-	firmware/lib/tpm2_lite/marshaling.c
-endif
-
-# Support real TPM unless MOCK_TPM is set
-ifneq ($(filter-out 0,${MOCK_TPM}),)
-FWLIB_SRCS += \
-	firmware/lib/tpm_lite/mocked_tlcl.c
-endif
-
-ifneq ($(filter-out 0,${X86_SHA_EXT}),)
-CFLAGS += -DX86_SHA_EXT
-FWLIB_SRCS += \
-	firmware/2lib/2hwcrypto.c \
-	firmware/2lib/2sha256_x86.c
-endif
-
-ifneq ($(filter-out 0,${ARMV8_CRYPTO_EXT}),)
-CFLAGS += -DARMV8_CRYPTO_EXT
-FWLIB_SRCS += \
-	firmware/2lib/2hwcrypto.c \
-	firmware/2lib/2sha256_arm.c
-FWLIB_ASMS += \
-	firmware/2lib/sha256_armv8a_ce_a64.S
-endif
-
-ifneq ($(filter-out 0,${ARM64_RSA_ACCELERATION}),)
-CFLAGS += -DARM64_RSA_ACCELERATION
-FWLIB_SRCS += \
-	firmware/2lib/2modpow_neon.c
-endif
-
-ifneq ($(filter-out 0,${VB2_X86_RSA_ACCELERATION}),)
-CFLAGS += -DVB2_X86_RSA_ACCELERATION
-FWLIB_SRCS += \
-	firmware/2lib/2modpow_sse2.c
-endif
-
-ifneq (,$(filter arm64 x86 x86_64,${ARCH}))
-ENABLE_HWCRYPTO_RSA_TESTS := 1
-endif
-
-# Even if X86_SHA_EXT is 0 we need cflags since this will be compiled for tests
-${BUILD}/firmware/2lib/2sha256_x86.o: CFLAGS += -mssse3 -mno-avx -msha
-
-${BUILD}/firmware/2lib/2modpow_sse2.o: CFLAGS += -msse2 -mno-avx
-
-ifneq (${FIRMWARE_STUB},)
-# Include BIOS stubs in the firmware library when compiling for host
-# TODO: split out other stub funcs too
-FWLIB_SRCS += \
-	firmware/stub/tpm_lite_stub.c \
-	firmware/stub/vboot_api_stub_disk.c \
-	firmware/stub/vboot_api_stub_stream.c \
-	firmware/2lib/2stub.c
-endif
-
-FWLIB_OBJS = ${FWLIB_SRCS:%.c=${BUILD}/%.o} ${FWLIB_ASMS:%.S=${BUILD}/%.o}
-TLCL_OBJS = ${TLCL_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${FWLIB_OBJS} ${TLCL_OBJS}
-
 # Maintain behaviour of default on.
 USE_FLASHROM ?= 1
 
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
 $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
-COMMONLIB_SRCS += \
-	host/lib/flashrom.c \
-	host/lib/flashrom_drv.c
-CFLAGS += -DUSE_FLASHROM
 endif
-COMMONLIB_SRCS += \
-	host/lib/subprocess.c \
-	host/lib/cbfstool.c
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
@@ -488,47 +378,6 @@ ifeq ($(OPENSSL_VERSION),3)
 ${UTILLIB}: CFLAGS += -Wno-error=deprecated-declarations
 endif
 
-UTILLIB_SRCS = \
-	cgpt/cgpt_add.c \
-	cgpt/cgpt_boot.c \
-	cgpt/cgpt_common.c \
-	cgpt/cgpt_create.c \
-	cgpt/cgpt_edit.c \
-	cgpt/cgpt_prioritize.c \
-	cgpt/cgpt_repair.c \
-	cgpt/cgpt_show.c \
-	futility/dump_kernel_config_lib.c \
-	host/arch/${ARCH_DIR}/lib/crossystem_arch.c \
-	host/lib/chromeos_config.c \
-	host/lib/crossystem.c \
-	host/lib/crypto.c \
-	host/lib/file_keys.c \
-	$(COMMONLIB_SRCS) \
-	host/lib/fmap.c \
-	host/lib/host_common.c \
-	host/lib/host_key2.c \
-	host/lib/host_keyblock.c \
-	host/lib/host_misc.c \
-	host/lib/host_signature.c \
-	host/lib/host_signature2.c \
-	host/lib/signature_digest.c \
-	host/lib/util_misc.c \
-	host/lib21/host_common.c \
-	host/lib21/host_key.c \
-	host/lib21/host_misc.c \
-	host/lib21/host_signature.c
-
-ifeq ($(HAVE_NSS),1)
-UTILLIB_SRCS += \
-	host/lib/host_p11.c
-else
-UTILLIB_SRCS += \
-	host/lib/host_p11_stub.c
-endif
-
-UTILLIB_OBJS = ${UTILLIB_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${UTILLIB_OBJS}
-
 # Externally exported library for some target userspace apps to link with
 # (cryptohome, updater, etc.)
 HOSTLIB = ${BUILD}/libvboot_host.so
@@ -538,97 +387,13 @@ HOSTLIB_STATIC = ${BUILD}/libvboot_host.a
 HOSTLIB_DEF = ${BUILD}/tests/libvboot_host_def.txt
 HOSTLIB_UNDEF = ${BUILD}/tests/libvboot_host_undef.txt
 
-HOSTLIB_SRCS = \
-	cgpt/cgpt_add.c \
-	cgpt/cgpt_boot.c \
-	cgpt/cgpt_common.c \
-	cgpt/cgpt_create.c \
-	cgpt/cgpt_edit.c \
-	cgpt/cgpt_find.c \
-	cgpt/cgpt_prioritize.c \
-	cgpt/cgpt_repair.c \
-	cgpt/cgpt_show.c \
-	firmware/2lib/2common.c \
-	firmware/2lib/2context.c \
-	firmware/2lib/2crc8.c \
-	firmware/2lib/2crypto.c \
-	firmware/2lib/2hmac.c \
-	firmware/2lib/2nvstorage.c \
-	firmware/2lib/2recovery_reasons.c \
-	firmware/2lib/2rsa.c \
-	firmware/2lib/2sha1.c \
-	firmware/2lib/2sha256.c \
-	firmware/2lib/2sha512.c \
-	firmware/2lib/2sha_utility.c \
-	firmware/2lib/2struct.c \
-	firmware/2lib/2stub.c \
-	firmware/2lib/2stub_hwcrypto.c \
-	firmware/lib/cgptlib/cgptlib_internal.c \
-	firmware/lib/cgptlib/crc32.c \
-	firmware/lib/gpt_misc.c \
-	firmware/stub/tpm_lite_stub.c \
-	firmware/stub/vboot_api_stub_disk.c \
-	futility/dump_kernel_config_lib.c \
-	host/arch/${ARCH_DIR}/lib/crossystem_arch.c \
-	host/lib/chromeos_config.c \
-	host/lib/crossystem.c \
-	host/lib/crypto.c \
-	host/lib/extract_vmlinuz.c \
-	$(COMMONLIB_SRCS) \
-	host/lib/fmap.c \
-	host/lib/host_misc.c \
-	host/lib21/host_misc.c \
-	${TLCL_SRCS}
-
-ifneq ($(filter-out 0,${GPT_SPI_NOR}),)
-HOSTLIB_SRCS += cgpt/cgpt_nor.c
-endif
-
-HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
-ALL_OBJS += ${HOSTLIB_OBJS}
 
 # ----------------------------------------------------------------------------
 # Now for the userspace binaries
 
 CGPT = ${BUILD}/cgpt/cgpt
 
-CGPT_SRCS = \
-	cgpt/cgpt.c \
-	cgpt/cgpt_add.c \
-	cgpt/cgpt_boot.c \
-	cgpt/cgpt_common.c \
-	cgpt/cgpt_create.c \
-	cgpt/cgpt_edit.c \
-	cgpt/cgpt_find.c \
-	cgpt/cgpt_legacy.c \
-	cgpt/cgpt_prioritize.c \
-	cgpt/cgpt_repair.c \
-	cgpt/cgpt_show.c \
-	cgpt/cmd_add.c \
-	cgpt/cmd_boot.c \
-	cgpt/cmd_create.c \
-	cgpt/cmd_edit.c \
-	cgpt/cmd_find.c \
-	cgpt/cmd_legacy.c \
-	cgpt/cmd_prioritize.c \
-	cgpt/cmd_repair.c \
-	cgpt/cmd_show.c
-
-ifneq ($(filter-out 0,${GPT_SPI_NOR}),)
-CGPT_SRCS += cgpt/cgpt_nor.c
-endif
-
-CGPT_OBJS = ${CGPT_SRCS:%.c=${BUILD}/%.o}
-
-ALL_OBJS += ${CGPT_OBJS}
-
 CGPT_WRAPPER = ${BUILD}/cgpt/cgpt_wrapper
-
-CGPT_WRAPPER_SRCS = \
-	cgpt/cgpt_nor.c \
-	cgpt/cgpt_wrapper.c
-
-CGPT_WRAPPER_OBJS = ${CGPT_WRAPPER_SRCS:%.c=${BUILD}/%.o}
 
 ALL_OBJS += ${CGPT_WRAPPER_OBJS}
 
@@ -645,28 +410,10 @@ UTIL_SCRIPT_NAMES_BOARD = \
 	utility/enable_dev_usb_boot \
 	utility/tpm-nvsize
 
-UTIL_BIN_NAMES_SDK = \
-	utility/dumpRSAPublicKey \
-	utility/load_kernel_test \
-	utility/pad_digest_utility \
-	utility/signature_digest_utility \
-	utility/verify_data
-UTIL_BIN_NAMES_BOARD = \
-	utility/dumpRSAPublicKey \
-	utility/tpmc
-
-ifneq ($(filter-out 0,${USE_FLASHROM}),)
-UTIL_BIN_NAMES_BOARD += utility/crossystem
-endif
-
 UTIL_SCRIPTS_SDK = $(addprefix ${BUILD}/,${UTIL_SCRIPT_NAMES_SDK})
 UTIL_SCRIPTS_BOARD = $(addprefix ${BUILD}/,${UTIL_SCRIPT_NAMES_BOARD})
-UTIL_BINS_SDK = $(addprefix ${BUILD}/,${UTIL_BIN_NAMES_SDK})
-UTIL_BINS_BOARD = $(addprefix ${BUILD}/,${UTIL_BIN_NAMES_BOARD})
 UTIL_FILES_SDK = ${UTIL_BINS_SDK} ${UTIL_SCRIPTS_SDK}
 UTIL_FILES_BOARD = ${UTIL_BINS_BOARD} ${UTIL_SCRIPTS_BOARD}
-ALL_OBJS += $(addsuffix .o,${UTIL_BINS_SDK})
-ALL_OBJS += $(addsuffix .o,${UTIL_BINS_BOARD})
 
 
 # Signing scripts that are also useful on DUTs.
@@ -697,62 +444,6 @@ FUTIL_SYMLINKS = \
 	vbutil_kernel \
 	vbutil_key \
 	vbutil_keyblock
-
-FUTIL_SRCS = \
-	futility/futility.c \
-	futility/cmd_create.c \
-	futility/cmd_dump_fmap.c \
-	futility/cmd_dump_kernel_config.c \
-	futility/cmd_flash_util.c \
-	futility/cmd_gbb_utility.c \
-	futility/cmd_gscvd.c \
-	futility/cmd_load_fmap.c \
-	futility/cmd_pcr.c \
-	futility/cmd_read.c \
-	futility/cmd_show.c \
-	futility/cmd_sign.c \
-	futility/cmd_update.c \
-	futility/cmd_vbutil_firmware.c \
-	futility/cmd_vbutil_kernel.c \
-	futility/cmd_vbutil_key.c \
-	futility/cmd_vbutil_keyblock.c \
-	futility/file_type_bios.c \
-	futility/file_type.c \
-	futility/file_type_rwsig.c \
-	futility/file_type_usbpd1.c \
-	futility/flash_helpers.c \
-	futility/platform_csme.c \
-	futility/misc.c \
-	futility/vb1_helper.c \
-	futility/vb2_helper.c
-
-ifneq ($(filter-out 0,${USE_FLASHROM}),)
-FUTIL_SRCS += host/lib/flashrom_drv.c \
-	futility/updater_archive.c \
-	futility/updater_dut.c \
-	futility/updater_manifest.c \
-	futility/updater_quirks.c \
-	futility/updater_utils.c \
-	futility/updater.c
-endif
-
-# List of commands built in futility.
-FUTIL_CMD_LIST = ${BUILD}/gen/futility_cmds.c
-
-FUTIL_OBJS = ${FUTIL_SRCS:%.c=${BUILD}/%.o} ${FUTIL_CMD_LIST:%.c=%.o}
-
-${FUTIL_OBJS}: INCLUDES += -Ihost/lib21/include
-
-# Avoid build failures outside the chroot on Ubuntu 2022.04
-# e.g.:
-# futility/cmd_create.c:161:9: warning: ‘RSA_free’ is deprecated: Since OpenSSL 3.0
-# [-Wdeprecated-declarations]
-ifeq ($(OPENSSL_VERSION),3)
-${FUTIL_OBJS}: CFLAGS += -Wno-error=deprecated-declarations
-endif
-
-ALL_OBJS += ${FUTIL_OBJS}
-
 
 # Library of handy test functions.
 TESTLIB = ${BUILD}/tests/test.a
@@ -1023,7 +714,6 @@ ${HOSTLIB_DEF}: ${HOSTLIB_STATIC}
 ${HOSTLIB_UNDEF}: ${HOSTLIB_STATIC}
 	@${PRINTF} "    NMu           $(subst ${BUILD}/,,$@)\n"
 	${Q}nm --undefined-only --format=just-symbols $^ > $@
-
 
 .PHONY: headers_install
 headers_install:
@@ -1319,28 +1009,6 @@ endif
 # ----------------------------------------------------------------------------
 # Here are the special rules that don't fit in the generic rules.
 
-# Generates the list of commands defined in futility by running grep in the
-# source files looking for the DECLARE_FUTIL_COMMAND() macro usage.
-${FUTIL_CMD_LIST}: ${FUTIL_SRCS}
-	@${PRINTF} "    GEN           $(subst ${BUILD}/,,$@)\n"
-	${Q}rm -f $@ $@_t $@_commands
-	${Q}mkdir -p ${BUILD}/gen
-	${Q}grep -hoRE '^DECLARE_FUTIL_COMMAND\([^,]+' $^ \
-		| sed 's/DECLARE_FUTIL_COMMAND(\(.*\)/_CMD(\1)/' \
-		| sort >>$@_commands
-	${Q}./scripts/getversion.sh >> $@_t
-	${Q}echo '#define _CMD(NAME) extern const struct' \
-		'futil_cmd_t __cmd_##NAME;' >> $@_t
-	${Q}cat $@_commands >> $@_t
-	${Q}echo '#undef _CMD' >> $@_t
-	${Q}echo '#define _CMD(NAME) &__cmd_##NAME,' >> $@_t
-	${Q}echo 'const struct futil_cmd_t *const futil_cmds[] = {' >> $@_t
-	${Q}cat $@_commands >> $@_t
-	${Q}echo '0};  /* null-terminated */' >> $@_t
-	${Q}echo '#undef _CMD' >> $@_t
-	${Q}mv $@_t $@
-	${Q}rm -f $@_commands
-
 ##############################################################################
 # Targets that exist just to run tests
 
@@ -1518,3 +1186,160 @@ ${PC_FILES}: ${PC_IN_FILES}
 pc_files_install: ${PC_FILES}
 	${Q}mkdir -p ${ULP_DIR}
 	${Q}${INSTALL} -D -m 0644 $< ${ULP_DIR}/$(notdir $<)
+
+##############################################################################
+# Modular Makefile facilities
+
+.SECONDEXPANSION:
+
+# Add a new class of sources/object files to the build system
+# Class can have one or more types by selecting from list: executable, static-lib, shared-lib
+# Class can have additional dependencies besides LDLIBS.
+#   Format: <type>:<name>
+#   Accepted types:
+#     - objs - objects of specified class
+#     - static - static library produced by class
+#     - shared - shared library produced by class
+add-class=                         \
+	$(if $(filter $(1),$(classes)),, \
+	$(eval $(1)-objs:=)              \
+	$(eval $(1)-srcs:=)              \
+	$(eval $(1)-type:=)              \
+	$(eval $(1)-deps:=)              \
+	$(eval classes+=$(1)))
+
+# Clean -y variables, include Makefile.mk
+# Add paths to files in X-y to X-srcs
+# Add subdirs-y to subdirs
+includemakefiles= \
+	$(foreach class,classes subdirs $(classes),$(eval $(class)-y:=)) \
+	$(eval -include $(1)) \
+	$(foreach class,$(classes-y),$(call add-class,$(class))) \
+	$(foreach class,$(classes), \
+		$(eval $(class)-srcs+= \
+			$$(subst $(abspath $(BUILD))/,$(BUILD), \
+			$$(subst $(SRCDIR)/,, \
+			$$(addprefix $(dir $(1)),$$($(class)-y)))))) \
+	$(eval subdirs+=$$(subst $(CURDIR)/,,$$(wildcard $$(abspath $$(addprefix $(dir $(1)),$$(subdirs-y))))))
+
+# For each path in $(subdirs) call includemakefiles
+# Releat process until all recursively added subdirs are empty
+evaluate_subdirs= \
+	$(eval cursubdirs:=$(subdirs)) \
+	$(eval subdirs:=) \
+	$(foreach sub_dir,$(cursubdirs), \
+		$(eval $(call includemakefiles, $(sub_dir)/Makefile.mk))) \
+	$(if $(subdirs),$(eval $(call evaluate_subdirs)))
+
+# Macros to get class output target name
+class-static-lib-name = $(BUILD)/$(if $($(1)-static-lib-name),$($(1)-static-lib-name),lib$(1).a)
+class-shared-lib-name = $(BUILD)/$(if $($(1)-shared-lib-name),$($(1)-shared-lib-name),lib$(1).so)
+class-executable-name = $(BUILD)/$(if $($(1)-executable-name),$($(1)-executable-name),$(1))
+
+# Macro producing list of dependencies for LD
+class-get-deps-for-ld = \
+	$(foreach dep,$($(1)-deps), \
+	  $(if $(filter objs:%,$(dep)),$($(word 2,$(subst :, ,$(dep)))-objs), \
+	    $(if $(filter static:%,$(dep)),$(call class-static-lib-name, $(word 2,$(subst :, ,$(dep)))), \
+		    $(if $(filter shared:%,$(dep)),$(call class-shared-lib-name, $(word 2,$(subst :, ,$(dep))))) \
+	)))
+
+# Macro used to create static library targets
+# $1 - class name
+# $1-static-lib-name - optional static library filename
+define create_static_lib_template
+$(eval $(call class-static-lib-name $(1))): $($(1)-objs)
+	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
+	${Q}rm -f $@
+	@${PRINTF} "    AR            $(subst ${BUILD}/,,$@)\n"
+	${Q}ar qc $@ $^
+endef
+
+# Macro used to create shared library targets
+# $1 - class name
+# $1-static-lib-name - optional shared library filename
+define create_shared_lib_template
+$(eval $(call class-shared-lib-name $(1))): $($(1)-objs)
+	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
+	${Q}rm -f $@
+	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
+	${Q}${LD} ${LDFLAGS} ${LDLIBS} -shared -Wl,-soname,$(subst ${BUILD}/,,$@) $^ -o $@
+endef
+
+# Macro used to create eecutable binaries targets
+# $1 - class name
+# $1-executable-name - optional executable file name
+define create_executable_template
+$(eval $(call class-executable-name $(1))): $($(1)-objs)
+	@${PRINTF} "    RM            $(subst ${BUILD}/,,$@)\n"
+	${Q}rm -f $@
+	@${PRINTF} "    LD            $(subst ${BUILD}/,,$@)\n"
+	${Q}${LD} -o $@ ${LDFLAGS} $^ ${LDLIBS}
+endef
+
+
+# Start from the current directory and recursively evaluate from there
+subdirs:=$(CURDIR)
+$(eval $(call evaluate_subdirs))
+
+# Convert one or more source file paths to the corresponding BUILD/ paths
+# $1 - lib name
+# $2 - list of file paths
+src-to-obj= \
+	$(addsuffix .$(1).o,\
+	$(basename \
+	$(addprefix $(BUILD)/,$(2))))
+$(foreach class,$(classes),$(eval $(class)-objs+=$(call src-to-obj,$(class),$($(class)-srcs))))
+
+allsrcs:=$(foreach var,$(addsuffix -srcs,$(classes)),$($(var)))
+allobjs:=$(foreach var,$(addsuffix -objs,$(classes)),$($(var)))
+alldirs:=$(sort $(abspath $(dir $(allsrcs))))
+allobjdirs:=$(sort $(abspath $(dir $(allobjs))))
+
+# Macro to define template macros that are used to create targets for classes
+# $1 obj class
+# $2 source suffix (c, S, ...)
+# $3 additional compiler flags
+# $4 additional dependencies
+define create_cc_template
+ifn$(EMPTY)def $(1)-objs_$(2)_template
+de$(EMPTY)fine $(1)-objs_$(2)_template
+$$(call src-to-obj,$(1),$$(1).$(1)): $$(1).$(2) $(4)
+	@printf "    CC        $$$$(subst $$$$(BUILD)/,,$$$$(@))\n"
+	$(CC) $(3) -MMD $$$$(CFLAGS) $($(1)-cflags) $(EXTRA_CFLAGS) -c -o $$$$@ $$$$<
+en$(EMPTY)def
+end$(EMPTY)if
+endef
+
+# Macro to define build targets for classes
+define create_class_template
+build-$(1): $($(1)-objs)
+	@echo Building $(1)
+
+clean-$(1):
+	rm -f $($(1)-objs)
+
+endef
+$(eval $(foreach class,$(classes),$(call create_class_template,$(class))))
+
+filetypes-of-class=$(subst .,,$(sort $(suffix $($(1)-srcs))))
+$(foreach class,$(classes), \
+	$(foreach type,$(call filetypes-of-class,$(class)), \
+		$(eval $(call create_cc_template,$(class),$(type),$($(class)-$(type)-ccopts),$($(class)-$(type)-deps)))))
+
+foreach-src=$(foreach file,$($(1)-srcs),$(eval $(call $(1)-objs_$(subst .,,$(suffix $(file)))_template,$(basename $(file)))))
+$(eval $(foreach class,$(classes),$(call foreach-src,$(class))))
+
+DEPENDENCIES = $($(filter %.0,$(allobjs)):.o=.d)
+-include $(DEPENDENCIES)
+
+printall:
+	@$(foreach class,$(classes),\
+		echo $(class)-srcs := $($(class)-srcs); \
+		echo $(class)-objs := $($(class)-objs); \
+		echo $(class)-cflags := $($(class)-cflags);)
+	@echo allsrcs:=$(allsrcs)
+	@echo allobjs:=$(subst $(SRCDIR)/,,$(allobjs))
+	@echo alldirs:=$(subst $(SRCDIR)/,,$(alldirs))
+	@echo allobjdirs:=$(subst $(SRCDIR)/,,$(allobjdirs))
+
