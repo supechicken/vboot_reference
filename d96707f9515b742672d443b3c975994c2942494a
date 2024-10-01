@@ -280,6 +280,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0794f8a3_6729e6dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479892
+      },
+      "writtenOn": "2024-10-01T03:23:27Z",
+      "side": 1,
+      "message": "Abandon this CL.\n\nAplied these two patchs:\nCL:5894824\nCL:5900955\n\nVerified:\ncbfstool image-awasuki.bin extract -n config -f config.txt\nChecking CONFIG_IFD_CHIPSET\u003d\"jsl\" is in config.txt",
+      "parentUuid": "ff51a45e_65d342b3",
+      "revId": "d96707f9515b742672d443b3c975994c2942494a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f8061f2_e1581f44",
