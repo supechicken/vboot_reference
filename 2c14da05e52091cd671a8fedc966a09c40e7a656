@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47fb0eb8_232b216c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-01T23:22:59Z",
+      "side": 1,
+      "message": "This file should not be in both vboot and depthcharge separately. If it is needed in both, put it in vboot and let depthcharge include it through there (e.g. call it `vb2_android_bootimg.h` or something like that).",
+      "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d166f2a_a6702c17",
         "filename": "firmware/avb/android_image_hdr.h",
         "patchSetId": 1
