@@ -114,6 +114,7 @@ vb2_error_t vb2api_kernel_phase1(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+#if 0
 static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 {
 	/*
@@ -135,6 +136,7 @@ static vb2_error_t handle_battery_cutoff(struct vb2_context *ctx)
 
 	return VB2_SUCCESS;
 }
+#endif
 
 vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx)
 {
@@ -147,12 +149,13 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx)
 	 * Do EC and auxfw software sync unless we're in recovery mode. This
 	 * has UI but it's just a single non-interactive WAIT screen.
 	 */
+#if 0
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
 		VB2_TRY(vb2api_ec_sync(ctx));
 		VB2_TRY(vb2api_auxfw_sync(ctx));
 		VB2_TRY(handle_battery_cutoff(ctx));
 	}
-
+#endif
 	/*
 	 * If in the broken screen, save the recovery reason as subcode.
 	 * Otherwise, clear any leftover recovery requests or subcodes.
