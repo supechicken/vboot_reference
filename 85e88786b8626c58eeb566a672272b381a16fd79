@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ca0176_75217f21",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-01T22:54:30Z",
+      "side": 1,
+      "message": "How is this different from bootimg? They\u0027re both referring to the Android bootimg header, just different versions of it. The original bootimg type implementation hasn\u0027t been used for many years, I think this would be a good opportunity to drop it and reuse the type code for your new implementation.",
+      "revId": "85e88786b8626c58eeb566a672272b381a16fd79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
