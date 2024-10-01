@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b671029_7c13dfb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-01T10:12:31Z",
+      "side": 1,
+      "message": "I upload new version of file from Android mkbootimg repo. I did not modify the file, so I must uploaded it with no-verify options, due to coding style error\u0026warnings. I just change the name to android_image_hdr.h cause bootimg.h seemed a little to generic and confusing.\n\nIf you think that coding style changes should be applied or filename should be changed, please let me know, I am totally fine with changing it.",
+      "revId": "5ef2d5527397ed85cfc37170ec828b11e9ee96ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
