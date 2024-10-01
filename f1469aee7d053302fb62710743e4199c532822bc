@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e480382c_51bd7510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-01T22:59:01Z",
+      "side": 1,
+      "message": "See comments on CL:5650819, I think it would be better if vboot just does the raw loading and verification, and any parsing is done in depthcharge. That means vboot should just be passing the buffer(s) out as loaded without doing any moving or stitching. (I\u0027d prefer if it only was one buffer but we\u0027ll see where we get in b/361576571. If we need to stick to the Android partition concept, then I guess an offset pointer for each partition past the first one is the best we can do.)",
+      "revId": "f1469aee7d053302fb62710743e4199c532822bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
