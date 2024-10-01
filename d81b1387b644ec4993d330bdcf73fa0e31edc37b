@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06aed95_b9133611",
+        "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-01T20:48:59Z",
+      "side": 1,
+      "message": "Do we really need to do all this string stuff at runtime? Can\u0027t we just define the constants we\u0027re looking for in UTF16LE in the first place, and also handle the A/B suffix statically, e.g.:\n```\n#define GPT_UCS2_NAME_VBMETA(slot_b) (slot_b ? \\\n  \"\\x00v\\x00b\\x00m...\\x00a\\x00_\\x00b\" : \\\n  \"\\x00v\\x00b\\x00m...\\x00a\\x00_\\x00a\"\n```\nI feel like having a whole UTF16 converter in firmware (especially one handling all the non-ASCII stuff we don\u0027t really need) a bit overkill.",
+      "revId": "d81b1387b644ec4993d330bdcf73fa0e31edc37b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
