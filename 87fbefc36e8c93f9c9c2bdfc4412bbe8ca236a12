@@ -16,6 +16,24 @@
       "message": "Let\u0027s rewrite using the standard `ifndef` guard.",
       "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dee171f_723b7ea9",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-02T19:55:07Z",
+      "side": 1,
+      "message": "I think we should either transform the entire file to vboot coding style (including things like indentation style), or leave it exactly as it was. Or do you think there\u0027s a technical problem with `#pragma once` with our toolchain?\n\nI\u0027d normally say everything needs to be converted to our coding style, but I can also see an argument to be made that leaving it makes it easier to pull in future updates... so I think I\u0027m fine with either option.",
+      "parentUuid": "b00829bb_5a144770",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
