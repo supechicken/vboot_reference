@@ -121,6 +121,24 @@
       "message": "In order to avoid the duplication (and thus risk of mistakes creeping in), should we maybe move the contents of this struct out into a macro that can be used both here and in the \"inheriting\" structs? E.g.\n```\n#define _BOOT_IMG_HDR_V3_MEMBERS \\\n  uint8_t magic[BOOT_MAGIC_SIZE]; \\\n  uint32_t kernel_size; \\\n  uint32_t ramdisk_size; \\\n  ... \\\n\nstruct boot_img_hdr_v3 {\n  _BOOT_IMG_HDR_V3_MEMBERS\n};\n\nstruct boot_img_hdr_v4 {\n  _BOOT_IMG_HDR_V3_MEMBERS\n  uint32_t signature_size;\n};\n```\nAlternatively (since that is kinda ugly), we could also just give up on having 1-to-1 member naming equivalence with the original header, and put a `struct boot_img_hdr_v3 v3;` member at the top of `struct boot_img_hdr_v4` (so that to access it, instead of `bootimg-\u003ekernel_size` you\u0027d have to write `bootimg-\u003ev3.kernel_size`).",
       "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9c5927_8aabcc26",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-03T23:05:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I like either of the approaches. If your point is about duplication, why not just delete v3?\n\nI think a better way is to fix the upstream header to make it work for `!__cplusplus`. There\u0027s no point of having the `#if __cplusplus` guard somewhere in the header, while still using c++ inheritance outside the guard.",
+      "parentUuid": "ff50c655_93884702",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
