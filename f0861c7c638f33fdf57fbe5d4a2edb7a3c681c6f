@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2a911a_ffcf5e40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-03T10:52:57Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275695f8_23896bee",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1396,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-03T10:52:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I understand this paragraph. If `--mode\u003doutput`, then `--model` should always be specified, right? Do we check it when parsing the options? If we do, then here should be\n\n```\nif (cfg-\u003eoutput_only \u0026\u0026 model-\u003ehas_custom_label) {\n    assert(arg-\u003emodel);\n    ...\n```",
+      "range": {
+        "startLine": 1394,
+        "startChar": 4,
+        "endLine": 1396,
+        "endChar": 46
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeaa6513_1c8b9676",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-03T10:52:57Z",
+      "side": 1,
+      "message": "type size_t",
+      "range": {
+        "startLine": 1403,
+        "startChar": 9,
+        "endLine": 1403,
+        "endChar": 12
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdff947a_8c1d15e7",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-03T10:52:57Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1406,
+        "startChar": 3,
+        "endLine": 1406,
+        "endChar": 9
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b6d613_0e3fc0be",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-03T10:52:57Z",
+      "side": 1,
+      "message": "Check the return value of `load_system_firmware` instead of the data?",
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd42ab3_ada22d19",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-03T10:52:57Z",
+      "side": 1,
+      "message": "b",
+      "range": {
+        "startLine": 463,
+        "startChar": 17,
+        "endLine": 463,
+        "endChar": 25
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
