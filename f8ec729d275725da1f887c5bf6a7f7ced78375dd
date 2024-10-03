@@ -16,6 +16,24 @@
       "message": "Do we still want to support `--signature_id xxx --model yyy`?",
       "revId": "f8ec729d275725da1f887c5bf6a7f7ced78375dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a458a69_bbf8a955",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-03T16:05:24Z",
+      "side": 1,
+      "message": "I think we can support `--model y --signature_id x` but not `--sig y --model x` because we can easily get the correct full model in the prior but not the later.",
+      "parentUuid": "27296219_9df82ac9",
+      "revId": "f8ec729d275725da1f887c5bf6a7f7ced78375dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
