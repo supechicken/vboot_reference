@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69828296_c49f34f2",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-03T20:20:22Z",
+      "side": 1,
+      "message": "This license matches the normal vboot BSD3 license, so we can just use the normal vboot license header:\n```\n/* Copyright 2007 The Android Open Source Project\n * Use of this source code is governed by a BSD-style license that can be\n * found in the LICENSE file.\n */\n```",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c12a26d9_948bf34a",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-03T20:20:22Z",
+      "side": 1,
+      "message": "Please also add a comment up here explaining that the file was taken from Android with a link to the original.",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b00829bb_5a144770",
         "filename": "firmware/avb/android_image_hdr.h",
         "patchSetId": 5
@@ -50,6 +84,41 @@
       "side": 1,
       "message": "Since the file is pulled in to this repo (instead of installing the libavb repo\u0027s header from an ebuild), I\u0027d prefer converting it to our coding style. We\u0027ve expanded struct inheritance here. Changing 4 spaces to a tab should be much easier than that.",
       "parentUuid": "9dee171f_723b7ea9",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e015f7_b91f6054",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-03T20:20:22Z",
+      "side": 1,
+      "message": "Oh... okay, I didn\u0027t realize that there have already been other changes made here as well. In that case I agree we should convert to all of our coding style rules.",
+      "parentUuid": "4cbb7862_893e9c88",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff50c655_93884702",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-03T20:20:22Z",
+      "side": 1,
+      "message": "In order to avoid the duplication (and thus risk of mistakes creeping in), should we maybe move the contents of this struct out into a macro that can be used both here and in the \"inheriting\" structs? E.g.\n```\n#define _BOOT_IMG_HDR_V3_MEMBERS \\\n  uint8_t magic[BOOT_MAGIC_SIZE]; \\\n  uint32_t kernel_size; \\\n  uint32_t ramdisk_size; \\\n  ... \\\n\nstruct boot_img_hdr_v3 {\n  _BOOT_IMG_HDR_V3_MEMBERS\n};\n\nstruct boot_img_hdr_v4 {\n  _BOOT_IMG_HDR_V3_MEMBERS\n  uint32_t signature_size;\n};\n```\nAlternatively (since that is kinda ugly), we could also just give up on having 1-to-1 member naming equivalence with the original header, and put a `struct boot_img_hdr_v3 v3;` member at the top of `struct boot_img_hdr_v4` (so that to access it, instead of `bootimg-\u003ekernel_size` you\u0027d have to write `bootimg-\u003ev3.kernel_size`).",
       "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
