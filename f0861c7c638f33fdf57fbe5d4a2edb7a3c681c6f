@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ab0a68e_5b9ea097",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1396,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-03T16:09:10Z",
+      "side": 1,
+      "message": "If you are running this on a DUT, and you want to get \"the expected output for this device\", then you\u0027ll run without `--model`.",
+      "parentUuid": "275695f8_23896bee",
+      "range": {
+        "startLine": 1394,
+        "startChar": 4,
+        "endLine": 1396,
+        "endChar": 46
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aeaa6513_1c8b9676",
         "filename": "futility/updater.c",
         "patchSetId": 18
