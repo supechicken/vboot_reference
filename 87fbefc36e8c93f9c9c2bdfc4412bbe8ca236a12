@@ -139,6 +139,24 @@
       "parentUuid": "ff50c655_93884702",
       "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca97b14_c32dbfbd",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-04T00:06:17Z",
+      "side": 1,
+      "message": "\u003e If your point is about duplication, why not just delete v3?\n\nFair enough, if we\u0027re not using it I guess that works too. (Then we should go all the way and only have the v4 versions that we\u0027re actually using in our header, nothing else.)\n\n\u003e I think a better way is to fix the upstream header to make it work for !__cplusplus. There\u0027s no point of having the #if __cplusplus guard somewhere in the header, while still using c++ inheritance outside the guard.\n\nAgreed but I don\u0027t see an easy fix. There\u0027s no way to get this kind of inheritance semantics in pure C without the ugly macro soup I suggested as far as I know. I presume upstream probably wouldn\u0027t want to force everyone to change accesses to `bootimg-\u003ev3.kernel_size` just to solve a problem that they don\u0027t have on their end.",
+      "parentUuid": "4c9c5927_8aabcc26",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
