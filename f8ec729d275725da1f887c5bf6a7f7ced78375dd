@@ -34,6 +34,24 @@
       "parentUuid": "27296219_9df82ac9",
       "revId": "f8ec729d275725da1f887c5bf6a7f7ced78375dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043da36c_ddfce06e",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-04T04:09:11Z",
+      "side": 1,
+      "message": "I think the behavior of any program should not depend on the order of options. Therefore, we should either accept both (then `--signature` should have precedence over `--model`) or disallow both (then we should add the same check for the `OPT_SIGNATURE` case). I\u0027m fine either way.",
+      "parentUuid": "1a458a69_bbf8a955",
+      "revId": "f8ec729d275725da1f887c5bf6a7f7ced78375dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
