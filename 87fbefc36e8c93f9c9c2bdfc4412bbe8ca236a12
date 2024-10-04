@@ -157,6 +157,24 @@
       "parentUuid": "4c9c5927_8aabcc26",
       "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a786fb_4ea3dde7",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-04T01:06:50Z",
+      "side": 1,
+      "message": "\u003e Agreed but I don\u0027t see an easy fix.\n\nI think the fix would be to stop using inheritance (which is apparently better than another duplication with `#if __cplusplus ... #else ...`). Yes, that means duplicate code again. However, since people should no longer add new fields to v3, we just need to review the code once to make sure the duplicate fields are identical in v3 and v4 (in the CL dropping inheritance). Then, all the future changes to v4 can be easily ported back here (with only minor style fixes).",
+      "parentUuid": "bca97b14_c32dbfbd",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
