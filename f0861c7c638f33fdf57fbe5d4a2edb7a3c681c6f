@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad916aef_2fd82e42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-05T06:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2a911a_ffcf5e40",
+      "range": {
+        "startLine": 10,
+        "startChar": 62,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "275695f8_23896bee",
@@ -94,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed5561e5_d27e401e",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-05T06:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeaa6513_1c8b9676",
+      "range": {
+        "startLine": 1403,
+        "startChar": 9,
+        "endLine": 1403,
+        "endChar": 12
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdff947a_8c1d15e7",
@@ -107,6 +155,30 @@
       "writtenOn": "2024-10-03T10:52:57Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 1406,
+        "startChar": 3,
+        "endLine": 1406,
+        "endChar": 9
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f92b2b_2940bc4a",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-05T06:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdff947a_8c1d15e7",
       "range": {
         "startLine": 1406,
         "startChar": 3,
@@ -136,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbc09033_1950b78c",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-05T06:37:22Z",
+      "side": 1,
+      "message": "But it is possible we successfully loaded system firmware (flashrom_read) and just not able to parse. So it\u0027s more correct to only look at image_current.data.",
+      "parentUuid": "41b6d613_0e3fc0be",
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fd42ab3_ada22d19",
         "filename": "futility/updater_quirks.c",
         "patchSetId": 18
@@ -147,6 +237,30 @@
       "writtenOn": "2024-10-03T10:52:57Z",
       "side": 1,
       "message": "b",
+      "range": {
+        "startLine": 463,
+        "startChar": 17,
+        "endLine": 463,
+        "endChar": 25
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc8a1829_e0228873",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-05T06:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd42ab3_ada22d19",
       "range": {
         "startLine": 463,
         "startChar": 17,
