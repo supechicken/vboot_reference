@@ -1400,8 +1400,8 @@ static int updater_setup_archive(
 	 * provide the TAG is when has_custom_label=true (only BASEMODEL).
 	 */
 	if (cfg->output_only && arg->model && model->has_custom_label) {
-		printf(">> Generating output for a custom label device without tags. "
-		       "The firmware images will be signed using the DEFAULT keys. "
+		printf(">> Generating output for a custom label device without tags (e.g., base model). "
+		       "The firmware images will be signed using the base model (or DEFAULT) keys. "
 		       "To get the images signed by the LOEM keys, "
 		       "add the corresponding tag from one of the following list: \n");
 
