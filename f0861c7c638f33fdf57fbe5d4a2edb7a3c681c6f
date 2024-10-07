@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9031515e_462c8ba2",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1396,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-07T07:17:28Z",
+      "side": 1,
+      "message": "updated.",
+      "parentUuid": "58d3da36_725f2771",
+      "range": {
+        "startLine": 1394,
+        "startChar": 4,
+        "endLine": 1396,
+        "endChar": 46
+      },
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aeaa6513_1c8b9676",
         "filename": "futility/updater.c",
         "patchSetId": 18
@@ -262,6 +286,24 @@
       "side": 1,
       "message": "But it\u0027s also possible that, after `image-\u003edata` is successfully allocated, `flashrom_image_read` fails, so that `image-\u003edata` contains non-null invalid data. Therefore I think it\u0027s better to err on the side of caution (i.e., by checking the return value, which is more rigorous) in this case.\n\nAlternatively, `flashrom_read_image` can be called directly here to skip parsing the image. A side effect is that there won\u0027t be retries. If we really want to do this in the most correct way, we\u0027ll need to add another function to the updater_utils API, which does \"`flashrom_read_image` with retries\", or equivalently \"`load_system_firmware` without parsing the image\".\n\nThat said, the original code doesn\u0027t even check for `cfg-\u003eimage_current.data \u003d\u003d NULL` after `load_system_firmware`. So, maybe keep it that way (i.e., removing lines #1422-1425 of PS19) in this patch, and then fix that in a follow-up patch?",
       "parentUuid": "cbc09033_1950b78c",
+      "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8410b2_80d60189",
+        "filename": "futility/updater.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-07T07:17:28Z",
+      "side": 1,
+      "message": "Hmmm. I thought the underlying implementation would leave image-\u003edata as empty when flashrom read failed. I think that should be fixed.\n\nAgree let\u0027s move this to a follow up change.",
+      "parentUuid": "4617168e_3a7cefc3",
       "revId": "f0861c7c638f33fdf57fbe5d4a2edb7a3c681c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
