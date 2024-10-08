@@ -124,6 +124,24 @@
       "parentUuid": "91c6ceab_42b63307",
       "revId": "d3f0bcd2c420260f61d337b633fac2798fb7ec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86d4bf7_b7f464d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2024-10-08T12:42:07Z",
+      "side": 1,
+      "message": "On the ARM recovery path, `crossystem` needs to call `flashrom` to access NVDATA. However, the call fails because the correct path to `/usr/sbin` isn\u0027t included in the `PATH` environment variable.\n\nThe root cause likely lies within `subprocess_run()`, which seems to be mishandling the `PATH`. Considering the potential time sensitivity, should we consider reverting crrev/c/5890746 while we explore the root cause?\n\nDetailed discussions are in https://b/370374826#comment22.",
+      "parentUuid": "8c4a5023_68f9fa0a",
+      "revId": "d3f0bcd2c420260f61d337b633fac2798fb7ec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
