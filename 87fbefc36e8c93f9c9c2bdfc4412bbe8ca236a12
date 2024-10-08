@@ -175,6 +175,24 @@
       "parentUuid": "bca97b14_c32dbfbd",
       "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a58ab7c_eb53bd18",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-08T00:17:44Z",
+      "side": 1,
+      "message": "Okay, sure, we can try to propose that upstream and see what they say.\n\nUntil then, let\u0027s proceed here by just using a v4-only version.",
+      "parentUuid": "82a786fb_4ea3dde7",
+      "revId": "87fbefc36e8c93f9c9c2bdfc4412bbe8ca236a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
