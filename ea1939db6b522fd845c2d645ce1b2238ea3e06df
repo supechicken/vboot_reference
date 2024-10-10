@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f306d105_85a74964",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-10T09:56:54Z",
+      "side": 1,
+      "message": "These two can be merged as they return the same value. Is there any reason to keep them separated?",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 43
+      },
+      "revId": "ea1939db6b522fd845c2d645ce1b2238ea3e06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdab4da9_0443f701",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-10T09:56:54Z",
+      "side": 1,
+      "message": "Can you extract this implementation into a separate CL? Adding unit-tests would be great too. `tests/cgptlib_test.c`",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 68
+      },
+      "revId": "ea1939db6b522fd845c2d645ce1b2238ea3e06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
