@@ -243,7 +243,7 @@ size_t GptGetEntrySizeLba(const GptEntry *e)
  * Desc: This function returns size(in bytes) of a partition represented by
  * given GPT entry.
  */
-size_t GptGetEntrySizeBytes(const GptData *gpt, const GptEntry *e)
+uint64_t GptGetEntrySizeBytes(const GptData *gpt, const GptEntry *e)
 {
-	return GptGetEntrySizeLba(e) * gpt->sector_bytes;
+	return (uint64_t)GptGetEntrySizeLba(e) * gpt->sector_bytes;
 }
