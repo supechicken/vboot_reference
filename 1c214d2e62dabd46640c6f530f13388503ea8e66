@@ -16,6 +16,47 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "1c214d2e62dabd46640c6f530f13388503ea8e66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cacfe3_aabaa097",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-10T23:57:47Z",
+      "side": 1,
+      "message": "nit: This should technically be uint64_t as well, although it will probably be a while before we hit that 2TB limit on a laptop.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b572cefd_d89c9474",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/gpt_misc.h",
+              "range": {
+                "startLine": 174,
+                "startChar": 0,
+                "endLine": 175,
+                "endChar": 0
+              },
+              "replacement": "uint64_t GptGetEntrySizeLba(const GptEntry *e);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1c214d2e62dabd46640c6f530f13388503ea8e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
