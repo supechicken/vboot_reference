@@ -384,3 +384,34 @@ int GptFindPvmfw(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 	free(name);
 	return ret;
 }
+
+int GptGetUniqueFromName(GptData *gpt, const char *name, Guid *guid)
+{
+	GptHeader *header = (GptHeader *)gpt->primary_header;
+	GptEntry *entries = (GptEntry *)gpt->primary_entries;
+	GptEntry *e;
+	int i;
+	uint16_t *name_ucs2;
+	int size_ucs2;
+	int ret = GPT_ERROR_NO_SUCH_ENTRY;
+
+	name_ucs2 = calloc(NAME_SIZE, sizeof(*name_ucs2));
+	if (name_ucs2 == NULL)
+		return ret;
+
+	size_ucs2 = UTF8ToUCS2((const uint8_t *)name, name_ucs2, NAME_SIZE - 1);
+	if (size_ucs2 < 0)
+		goto out;
+
+	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
+		if (!memcmp(&e->name, name_ucs2, size_ucs2 * sizeof(*name_ucs2))) {
+			memcpy(guid, &e->unique, GUID_SIZE);
+			ret = GPT_SUCCESS;
+			break;
+		}
+	}
+
+out:
+	free(name_ucs2);
+	return ret;
+}
