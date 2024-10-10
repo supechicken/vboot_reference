@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5190f60_ab77f386",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-10T10:16:24Z",
+      "side": 1,
+      "message": "I\u0027d prefer merging them",
+      "parentUuid": "52fc68a8_ddf00c0f",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 43
+      },
+      "revId": "ea1939db6b522fd845c2d645ce1b2238ea3e06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdab4da9_0443f701",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
