@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57294724_c7ce44a7",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-10T13:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5190f60_ab77f386",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 43
+      },
+      "revId": "ea1939db6b522fd845c2d645ce1b2238ea3e06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdab4da9_0443f701",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "ok",
       "parentUuid": "bdab4da9_0443f701",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 68
+      },
+      "revId": "ea1939db6b522fd845c2d645ce1b2238ea3e06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6163c3d_ae869f31",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-10T13:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281fe8c0_a278d7fb",
       "range": {
         "startLine": 388,
         "startChar": 0,
