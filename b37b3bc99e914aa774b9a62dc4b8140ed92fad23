@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9543badd_81b1ab0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2024-10-10T08:15:02Z",
+      "side": 1,
+      "message": "Nit with the spelling.",
+      "revId": "b37b3bc99e914aa774b9a62dc4b8140ed92fad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35d2d22_0996f456",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2024-10-10T08:15:02Z",
+      "side": 1,
+      "message": "s/give/given/ s/namet/name/",
+      "fixSuggestions": [
+        {
+          "fixId": "01435db5_88a4c6a2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/cgptlib/include/cgptlib.h",
+              "range": {
+                "startLine": 59,
+                "startChar": 0,
+                "endLine": 60,
+                "endChar": 0
+              },
+              "replacement": " * Find unique GUID for give partition name.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b37b3bc99e914aa774b9a62dc4b8140ed92fad23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
