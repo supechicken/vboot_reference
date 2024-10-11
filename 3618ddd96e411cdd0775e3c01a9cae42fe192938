@@ -68,6 +68,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cf7e707_cb89a0c3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-11T10:17:03Z",
+      "side": 1,
+      "message": "I tried to use it, but libpayload does not contain that symbol. I thought about copy GuidToStr function, but it seems to be a little to much for just one function. What do you think?",
+      "parentUuid": "3c1bf433_3eeb6c44",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
