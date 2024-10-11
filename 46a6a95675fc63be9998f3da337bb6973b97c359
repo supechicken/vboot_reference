@@ -52,6 +52,24 @@
       "parentUuid": "098c4463_870b2651",
       "revId": "46a6a95675fc63be9998f3da337bb6973b97c359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed86e612_7a638975",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-11T22:12:58Z",
+      "side": 1,
+      "message": "\u003e Right now all the vboot2 APIs are exposed through a single header vb2_api.h\n\nWell, that\u0027s not entirely true, right? `vb2_sha.h` is separate. (It looks like technically `2sha.h` is also available to `vb2_api.h` through a chain-include through `2secdata_struct.h`, but I think that is unintentional and not meant to mean \"you can use SHA functions just from including `vb2_api.h`\". The intention is, I think, to always include `vb2_sha.h` separately where needed.)\n\nI think it\u0027s roughly supposed to be that `vb2_api.h` contains all the `vb2api_...` functions that contain the \"top-level\" API that has all the firmware and kernel verification entry points and utility functions. Basically, every function that takes a `vb2_context` argument and operates on the current global \"vboot state\" goes into `2api.h`.\n\nSmaller, isolated utility functions like the hash library that can be used independently can get their own header. That also goes for things like the TPM library, which is totally separate... it hasn\u0027t been rewritten to follow the vb2 naming conventions yet, but if it was I think we would still make it a separate header rather than integrate it with `vb2_api.h`.\n\nFor this Android header, I think the same argument applies. Particularly because none of the identifiers it defines are namespaced with `vb2...`, so I don\u0027t think it would be appropriate to suddenly make them available to everyone who is just including `vb2_api.h`.",
+      "parentUuid": "29540064_c750e31f",
+      "revId": "46a6a95675fc63be9998f3da337bb6973b97c359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
