@@ -92,6 +92,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc23919_0255618c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-11T22:58:43Z",
+      "side": 1,
+      "message": "Duplicate code is not good. We can move `GuidToStr` (and `StrToGuid` for consistency) declaration from vboot_host.h to gpt_misc.h, and move implementation to cgptlib.c. Vboot\u0027s UTILLIB is also linked with FWLIB, so that way the functions can be shared between both firmware and the cgpt tool.\n\nPlease do the refactoring (i.e. moving the functions) in a separate CL prior to this one. Thanks.",
+      "parentUuid": "4cf7e707_cb89a0c3",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
