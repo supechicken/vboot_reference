@@ -16,6 +16,24 @@
       "message": "Right now all the vboot2 APIs are exposed through a single header vb2_api.h, so that dependency projects such as depthcharge only need to include vb2_api.h. Therefore I think we\u0027d like to also add the Android header to either vb2_api.h or 2api.h (and there\u0027s no need to rename the header to vb2_android_bootimg.h). @jwerner@chromium.org What\u0027s your opinion?",
       "revId": "46a6a95675fc63be9998f3da337bb6973b97c359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098c4463_870b2651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-11T06:24:39Z",
+      "side": 1,
+      "message": "I am not quite sure if this is part of VB2 API, but I am fine with adding it to vb2_api.h if that simplifies the code. Filename change was suggested by Julius in https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5749024/comments/47fb0eb8_232b216c",
+      "parentUuid": "a3caa5d1_206b32a1",
+      "revId": "46a6a95675fc63be9998f3da337bb6973b97c359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
