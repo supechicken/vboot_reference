@@ -164,6 +164,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2e2c25_96cf65de",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-14T12:05:48Z",
+      "side": 1,
+      "message": "Yes, that makes more sense",
+      "parentUuid": "1d5e7519_30183928",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
