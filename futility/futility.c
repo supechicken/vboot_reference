@@ -20,7 +20,7 @@
 /* Logging stuff */
 
 /* File to use for logging, if present */
-#define LOGFILE "/tmp/futility.log"
+#define LOGFILE VBOOT_TMP_DIR "/futility.log"
 
 /* Normally logging will only happen if the logfile already exists. Uncomment
  * this to force log file creation (and thus logging) always. */
