@@ -116,6 +116,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2083c840_56e84e38",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-14T09:49:20Z",
+      "side": 1,
+      "message": "It seems that `UTF8ToUTF16` from cgpt_common.c and `UTF8ToUCS2` from cgptlib_internal.c have the same functionality. What do you think of moving `UTF8ToUTF16` and `UTF16ToUTF8\u0027 to cgptlib as well? And maybe change the return value to size of converted string?",
+      "parentUuid": "8cc23919_0255618c",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
