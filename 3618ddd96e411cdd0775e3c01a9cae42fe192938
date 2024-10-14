@@ -140,6 +140,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5e7519_30183928",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-14T12:02:21Z",
+      "side": 1,
+      "message": "Sure, we should have done that. However, from Julius\u0027 [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650810/3/firmware/lib/cgptlib/include/cgptlib_internal.h#185), he thinks we don\u0027t even need `UTF8ToUCS2` for avb. So, maybe we can move only `GuidToStr`/`StrToGuid` for now, and we\u0027ll see if we can get rid of `UTF8ToUCS2`.",
+      "parentUuid": "2083c840_56e84e38",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
