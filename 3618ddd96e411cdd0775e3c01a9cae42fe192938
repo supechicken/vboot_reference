@@ -236,6 +236,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc7b409_8f2b8503",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-15T09:29:49Z",
+      "side": 1,
+      "message": "Sure, we can do it. But it makes me wonder if it really makes sense to put all this code into FW, just to avoid duplication of one `snprintf()`.",
+      "parentUuid": "a22dd795_6aea9128",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
