@@ -11,19 +11,9 @@
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
+#include "vb2_android_misc.h"
 #include "vboot_api.h"
 #include "vboot_avb_ops.h"
-
-/* BCB structure from Android recovery bootloader_message.h */
-struct bootloader_message {
-	char command[32];
-	char status[32];
-	char recovery[768];
-	char stage[32];
-	char reserved[1184];
-};
-_Static_assert(sizeof(struct bootloader_message) == 2048,
-	       "bootloader_message size is incorrect");
 
 /* Possible values of BCB command */
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
@@ -60,7 +50,7 @@ static int vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 
 static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 {
-	struct bootloader_message bcb;
+	struct vb2_bootloader_message bcb;
 	AvbIOResult io_ret;
 	size_t num_bytes_read;
 	enum vb2_boot_command cmd;
@@ -68,11 +58,11 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 	io_ret = ops->read_from_partition(ops,
 					  GptPartitionNames[GPT_ANDROID_MISC],
 					  0,
-					  sizeof(struct bootloader_message),
+					  sizeof(struct vb2_bootloader_message),
 					  &bcb,
 					  &num_bytes_read);
 	if (io_ret != AVB_IO_RESULT_OK ||
-	    num_bytes_read != sizeof(struct bootloader_message)) {
+	    num_bytes_read != sizeof(struct vb2_bootloader_message)) {
 		/*
 		 * TODO(b/349304841): Handle IO errors, for now just try to boot
 		 *                    normally
