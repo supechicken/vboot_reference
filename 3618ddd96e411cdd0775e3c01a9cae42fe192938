@@ -284,6 +284,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a55cd4_6e66aee5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-15T09:37:08Z",
+      "side": 1,
+      "message": "The reason why I used `guid.u.raw` is that FW does not have `le32toh`, but I can prepare quick patch on cros/main with moving header file into cgptlib directory:\n`git mv cgpt/cgpt_endian.h firmware/lib/cgptlib/include/`\nthat\u0027 ok with you?",
+      "parentUuid": "8bd93a54_02d15d1c",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
