@@ -56,6 +56,24 @@
       },
       "revId": "70a81ad82e5288bccc250e3c3837966b94dc91da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50b51a1_3ab29cbd",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2024-10-15T16:31:08Z",
+      "side": 1,
+      "message": "We can always add more sync or fsync calls without breaking anything, but I don\u0027t think we need to in this case because both tools just use the normal `reboot` command to reboot:\n\ncros flash: http://cs/h/chrome-internal/chromeos/superproject/+/main:chromite/lib/remote_access.py?l\u003d638\n\nfflash: http://cs/h/chrome-internal/chromeos/superproject/+/main:src/platform/dev/contrib/fflash/internal/reboot.go?l\u003d66\n\nand `reboot` does a sync unless you pass a --no-sync option:\n\nhttps://man.archlinux.org/man/core/systemd-sysvcompat/reboot.8.en",
+      "parentUuid": "3c95cded_c7a08cec",
+      "revId": "70a81ad82e5288bccc250e3c3837966b94dc91da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
