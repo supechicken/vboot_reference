@@ -11,6 +11,7 @@
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
+#include "vb2_android_misc.h"
 #include "vboot_api.h"
 #include "vboot_avb_ops.h"
 
@@ -19,17 +20,6 @@
 
 /* Bytes to read at start of the boot/init_boot/vendor_boot partitions */
 #define BOOT_HDR_GKI_SIZE 4096
-
-/* BCB structure from Android recovery bootloader_message.h */
-struct bootloader_message {
-	char command[32];
-	char status[32];
-	char recovery[768];
-	char stage[32];
-	char reserved[1184];
-};
-_Static_assert(sizeof(struct bootloader_message) == 2048,
-	       "bootloader_message size is incorrect");
 
 /* Possible values of BCB command */
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
