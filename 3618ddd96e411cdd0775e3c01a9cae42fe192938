@@ -260,6 +260,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd93a54_02d15d1c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-15T09:32:51Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem worth it to me. For the `snprintf` call arguments here, I\u0027d still prefer using field names like `le32toh(guid.u.Uuid.time_low)` instead of `guid.u.raw`.",
+      "parentUuid": "1dc7b409_8f2b8503",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
