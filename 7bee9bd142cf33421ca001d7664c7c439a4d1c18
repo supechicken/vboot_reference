@@ -16,6 +16,24 @@
       "message": "It might be worth wrapping this in a helper function. Especially, if it gets used one or more additional times.",
       "revId": "7bee9bd142cf33421ca001d7664c7c439a4d1c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3fd658_8884d797",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2024-10-15T20:51:59Z",
+      "side": 1,
+      "message": "Sure, I guess my vote is to wait until we have 1 more use \u0026 then consolidate, but yell if you feel strongly.",
+      "parentUuid": "7767ff73_90fa40ff",
+      "revId": "7bee9bd142cf33421ca001d7664c7c439a4d1c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
