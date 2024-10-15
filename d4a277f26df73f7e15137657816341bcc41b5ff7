@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "654055cb_a30f743f",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-15T14:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5093a6_ff59cf37",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 66
+      },
+      "revId": "d4a277f26df73f7e15137657816341bcc41b5ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6d031c4_d39ac630",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa351cb_e04e275b",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-15T14:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d031c4_d39ac630",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "d4a277f26df73f7e15137657816341bcc41b5ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d8a7930_bfdf824e",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-10-11T03:25:51Z",
       "side": 1,
       "message": "static",
+      "revId": "d4a277f26df73f7e15137657816341bcc41b5ff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd8517e_9cfe1d0f",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-15T14:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d8a7930_bfdf824e",
       "revId": "d4a277f26df73f7e15137657816341bcc41b5ff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
