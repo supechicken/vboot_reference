@@ -308,6 +308,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ea843b_80a44166",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-15T09:45:43Z",
+      "side": 1,
+      "message": "\u003e FW does not have `le32toh`\n\nWe can add `endian.h` (which exists in both coreboot and libpayload) to 2sysincludes.h.",
+      "parentUuid": "61a55cd4_6e66aee5",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
