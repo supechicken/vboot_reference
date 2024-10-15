@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826bb7ef_6e7b237d",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2024-10-15T19:54:23Z",
+      "side": 1,
+      "message": "Instead of hardcoding for root, would it make sense to check for `[ -w /proc/sys/vm/drop_caches ]`?  I haven\u0027t looked, but I\u0027m assuming non-root wouldn\u0027t have write permission on that file.",
+      "revId": "8dd674852a291f6801774eb03005a72a2c3eaf95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
