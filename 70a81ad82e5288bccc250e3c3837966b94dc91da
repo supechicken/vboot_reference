@@ -74,6 +74,30 @@
       "parentUuid": "3c95cded_c7a08cec",
       "revId": "70a81ad82e5288bccc250e3c3837966b94dc91da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e62696c4_83faf446",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1303279
+      },
+      "writtenOn": "2024-10-15T16:46:36Z",
+      "side": 1,
+      "message": "It does get called when updating both a regular disk partition and a partition on a .bin file.\n\nThe existing \u0027sync \u0026\u0026 sync \u0026\u0026 sync\u0027 code gets called in the .bin case as well.\n\nWe could potentially test if we\u0027re updating a .bin and avoid the sync \u0026 cache flush in that case, but I\u0027m not sure if it\u0027s worth the extra complexity.  Those operations should never be harmful, and at worst case could cause a performance drop because we\u0027ve just caused a bunch of disk write operations and cleared out our page cache.  I personally think it\u0027s a rare enough occurrence and the performance implications are low enough that we\u0027re better off keeping the calls unconditional \u0026 saving complexity.",
+      "parentUuid": "1d94082a_90e79cb9",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "70a81ad82e5288bccc250e3c3837966b94dc91da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
