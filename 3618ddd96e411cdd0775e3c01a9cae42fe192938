@@ -212,6 +212,30 @@
       },
       "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22dd795_6aea9128",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-15T09:06:15Z",
+      "side": 1,
+      "message": "As it seems non-trivial to implement `sscanf` in FW, how about implementing the parsing by ourselves? Something like:\n\n```\nint hex2int(const char *str, size_t maxlen)\n{\n    const char *end \u003d str + maxlen;\n    int res \u003d 0;\n    while (str \u003c end \u0026\u0026 *str) {\n        int digit \u003d (int)*str - \u00270\u0027;\n        if (digit \u003c 0 || digit \u003e 9)\n            return -1;\n        res \u003d (res \u003c\u003c 4) + digit;\n        str++;\n    }\n    return res;\n}\n```",
+      "parentUuid": "41a47782_f3e9014c",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 66
+      },
+      "revId": "3618ddd96e411cdd0775e3c01a9cae42fe192938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
