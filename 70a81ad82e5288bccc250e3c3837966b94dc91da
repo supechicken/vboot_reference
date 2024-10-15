@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c95cded_c7a08cec",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2024-10-15T16:18:39Z",
+      "side": 1,
+      "message": "This seems right as far as it goes, but should fflash and cros flash also do an fsync at the end of writing the partition to ensure all their blocks are on disk?  Otherwise the same sort of window could happen if they reboot immediately after writing the partition, right?",
+      "revId": "70a81ad82e5288bccc250e3c3837966b94dc91da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
