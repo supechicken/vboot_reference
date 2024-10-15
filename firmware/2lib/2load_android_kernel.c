@@ -15,6 +15,7 @@
 #include "gpt_misc.h"
 #include "vboot_api.h"
 #include "vb2_android_bootimg.h"
+#include "vb2_android_misc.h"
 
 #define ANDROID_GKI_BOOT_HDR_SIZE 4096
 
@@ -31,17 +32,6 @@ enum vb2_boot_command {
 	VB2_BOOT_CMD_RECOVERY_BOOT,
 	VB2_BOOT_CMD_BOOTLOADER_BOOT,
 };
-
-/* BCB structure from Android recovery bootloader_message.h */
-struct bootloader_message {
-	char command[32];
-	char status[32];
-	char recovery[768];
-	char stage[32];
-	char reserved[1184];
-};
-_Static_assert(sizeof(struct bootloader_message) == 2048,
-	       "bootloader_message size is incorrect");
 
 /* Possible values of BCB command */
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
@@ -76,7 +66,7 @@ static vb2_error_t vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 
 static enum vb2_boot_command bcb_command(AvbOps *ops)
 {
-	struct bootloader_message bcb;
+	struct vb2_bootloader_message bcb;
 	AvbIOResult io_ret;
 	size_t num_bytes_read;
 	enum vb2_boot_command cmd;
