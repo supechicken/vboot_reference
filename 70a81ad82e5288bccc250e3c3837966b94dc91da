@@ -98,6 +98,30 @@
       },
       "revId": "70a81ad82e5288bccc250e3c3837966b94dc91da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "343b770a_c01f8f85",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-10-15T16:55:16Z",
+      "side": 1,
+      "message": "Does `echo 1 \u003e /proc/sys/vm/drop_caches` require running as root? When working on a .bin we shouldn\u0027t require running as root.",
+      "parentUuid": "e62696c4_83faf446",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "70a81ad82e5288bccc250e3c3837966b94dc91da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
