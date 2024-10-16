@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3988997_51a46536",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-16T16:11:45Z",
+      "side": 1,
+      "message": "`GUID_STRLEN` (37) and `NAME_SIZE` (36) seem to be different things. Similar to `GuidToStr`, I think we should we check `ret !\u003d GUID_STRLEN - 1` here.",
+      "range": {
+        "startLine": 205,
+        "startChar": 12,
+        "endLine": 205,
+        "endChar": 21
+      },
+      "revId": "1cd31a19aaa3121d41d014ebd4bb57770661d541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
