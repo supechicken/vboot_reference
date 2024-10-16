@@ -81,6 +81,24 @@
       "parentUuid": "216bf796_cd8474e3",
       "revId": "3a3bf766446efab2a58d8ef6f4b1a6df32d44dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68fc8be2_5c6831c0",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-16T16:25:05Z",
+      "side": 1,
+      "message": "I overlooked that fact. Yes, you\u0027re right. If vboot_host.h includes gpt.h, then moving the macro to gpt.h is perfectly fine.",
+      "parentUuid": "0f417f70_a762fe71",
+      "revId": "3a3bf766446efab2a58d8ef6f4b1a6df32d44dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
