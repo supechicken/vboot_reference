@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0db2600_423788a3",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-10-16T03:43:42Z",
+      "side": 1,
+      "message": "`GptFindOffsetByName` is declared in gpt_misc.h. Can we put them in the same place?",
+      "revId": "dc75401b07b97c2c2cc5992a5b0e57e3848bccc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
