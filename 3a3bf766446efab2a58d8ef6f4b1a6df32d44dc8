@@ -63,6 +63,24 @@
       "message": "This is defined in vboot hostlib, which is considered a standalone library that code outside this repo may depend on. Therefore it should remain here. The cgpt code can include \"vboot_host.h\" if needed.",
       "revId": "3a3bf766446efab2a58d8ef6f4b1a6df32d44dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f417f70_a762fe71",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-16T16:20:37Z",
+      "side": 1,
+      "message": "So now I am a little confused. I was wondering about including vboot_host.h, but it seems that vboot_host.h includes cgpt.h which in turn includes gpt.h, so I thought that it would be the best place fot GUID_STRLEN.",
+      "parentUuid": "216bf796_cd8474e3",
+      "revId": "3a3bf766446efab2a58d8ef6f4b1a6df32d44dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
