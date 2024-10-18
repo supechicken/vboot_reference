@@ -34,6 +34,24 @@
       "parentUuid": "a06aed95_b9133611",
       "revId": "d81b1387b644ec4993d330bdcf73fa0e31edc37b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5978f391_31d7c021",
+        "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-18T21:45:02Z",
+      "side": 1,
+      "message": "If it allows us to keep live UTF16 encoding/decoding functions out of firmware, I think it\u0027s absolutely worth it. The firmware always knows which partitions it is looking for anyway.",
+      "parentUuid": "a1520476_c7f6b9e7",
+      "revId": "d81b1387b644ec4993d330bdcf73fa0e31edc37b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
