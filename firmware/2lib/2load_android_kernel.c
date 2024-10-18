@@ -174,8 +174,7 @@ vb2_error_t vb2_load_android_kernel(
 	 * Use a buffer before the GKI header for copying avb cmdline string for
 	 * bootloader.
 	 */
-	params->vboot_cmdline_offset = params->kernel_buffer_size -
-	    BOOT_HDR_GKI_SIZE - AVB_CMDLINE_BUF_SIZE;
+	params->vboot_cmdline_offset = params->kernel_buffer_size - AVB_CMDLINE_BUF_SIZE;
 
 	if ((params->init_boot_offset + params->init_boot_size) >
 	    params->vboot_cmdline_offset)
