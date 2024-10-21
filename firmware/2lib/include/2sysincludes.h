@@ -16,6 +16,7 @@
 #include <ctype.h>
 #include <endian.h>
 #include <inttypes.h>  /* For PRIu64 */
+#include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
