@@ -15,6 +15,7 @@
 
 #include <ctype.h>
 #include <inttypes.h>  /* For PRIu64 */
+#include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
