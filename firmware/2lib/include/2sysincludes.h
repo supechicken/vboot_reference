@@ -15,11 +15,17 @@
 
 #include <ctype.h>
 #include <inttypes.h>  /* For PRIu64 */
+#include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if defined(__NetBSD__) || defined(__FreeBSD__) || defined(__DragonFly__)
+#include <sys/endian.h>
+#else
+#include <endian.h>
+#endif
 
 #endif  /* VBOOT_REFERENCE_2SYSINCLUDES_H_ */
