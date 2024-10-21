@@ -62,6 +62,7 @@ extern "C" {
 
 #define UUID_NODE_LEN 6
 #define GUID_SIZE 16
+#define GUID_STRLEN 37
 
 /* GUID definition. Defined in appendix A of UEFI standard. */
 typedef struct {
@@ -79,6 +80,18 @@ typedef struct {
 } __attribute__((packed)) Guid;
 
 #define GUID_EXPECTED_SIZE GUID_SIZE
+
+/* GUID conversion functions. Accepted format:
+ *
+ *   "C12A7328-F81F-11D2-BA4B-00A0C93EC93B"
+ *
+ * At least GUID_STRLEN bytes should be reserved in 'str' (included the tailing
+ * '\0').
+ */
+int StrToGuid(const char *str, Guid *guid);
+void GuidToStr(const Guid *guid, char *str, unsigned int buflen);
+int GuidEqual(const Guid *guid1, const Guid *guid2);
+int GuidIsZero(const Guid *guid);
 
 /*
  * GPT header defines how many partitions exist on a drive and sectors managed.
