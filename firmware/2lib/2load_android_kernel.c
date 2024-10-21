@@ -332,6 +332,87 @@ static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 	return VB2_SUCCESS;
 }
 
+static uint32_t fletcher32(const char *data, size_t len)
+{
+	uint32_t s0 = 0;
+	uint32_t s1 = 0;
+
+	for (; len > 0; len--, data++) {
+		s0 = (s0 + *data) % UINT16_MAX;
+		s1 = (s1 + s0) % UINT16_MAX;
+	}
+
+	return (s1 << 16) | s0;
+}
+
+bool vb2_is_fastboot_cmdline_valid(struct vb2_fastboot_cmdline *fb_cmd)
+{
+	if (fb_cmd->version != 0) {
+		VB2_DEBUG("Unknown vb2_fastboot_cmdline version (%d)", fb_cmd->version);
+		return false;
+	}
+
+	if (fb_cmd->magic != VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_MAGIC) {
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline magic (0x%x)", fb_cmd->magic);
+		return false;
+	}
+
+	if (fb_cmd->len > sizeof(fb_cmd->cmdline)) {
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline len (%d)", fb_cmd->len);
+		return false;
+	}
+
+	if (fb_cmd->fletcher != fletcher32((char *)&fb_cmd->len,
+					   sizeof(fb_cmd->len) + fb_cmd->len)) {
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline checksum");
+		return false;
+	}
+
+	return true;
+}
+
+bool vb2_update_fastboot_cmdline_checksum(struct vb2_fastboot_cmdline *fb_cmd)
+{
+	if (fb_cmd->len > sizeof(fb_cmd->cmdline)) {
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline len (%d)", fb_cmd->len);
+		return false;
+	}
+
+	fb_cmd->fletcher = fletcher32((char *)&fb_cmd->len, sizeof(fb_cmd->len) + fb_cmd->len);
+
+	return true;
+}
+
+static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(AvbOps *ops)
+{
+	struct vb2_fastboot_cmdline *fb_cmd;
+	AvbIOResult io_ret;
+	size_t num_bytes_read;
+
+	fb_cmd = malloc(sizeof(*fb_cmd));
+	if (fb_cmd == NULL)
+		return NULL;
+
+	io_ret = ops->read_from_partition(ops,
+					  GptPartitionNames[GPT_ANDROID_MISC],
+					  VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET,
+					  sizeof(*fb_cmd),
+					  fb_cmd,
+					  &num_bytes_read);
+	if (io_ret != AVB_IO_RESULT_OK || num_bytes_read != sizeof(*fb_cmd)) {
+		VB2_DEBUG("Cannot read misc partition.\n");
+		free(fb_cmd);
+		return NULL;
+	}
+
+	if (!vb2_is_fastboot_cmdline_valid(fb_cmd)) {
+		free(fb_cmd);
+		return NULL;
+	}
+
+	return fb_cmd;
+}
+
 vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
 			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle)
 {
@@ -348,6 +429,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	};
 	const char *slot_suffix = NULL;
 	bool need_verification = vb2_need_kernel_verification(ctx);
+	struct vb2_fastboot_cmdline *fb_cmd = NULL;
 
 	/* Update flags to mark loaded GKI image */
 	params->flags |= VB2_KERNEL_TYPE_BOOTIMG;
@@ -402,23 +484,30 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	if (rv)
 		goto out;
 
+	/* Load fastboot cmdline only in developer mode */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
+		fb_cmd = vb2_fastboot_cmdline(avb_ops);
+
 	/*
 	 * TODO(b/335901799): Add support for marking verifiedbootstate yellow
 	 * Possible values for this property are "yellow", "orange" and "green"
 	 * so allocate 6 bytes plus 1 byte for NULL terminator.
 	 */
 	int chars = snprintf(params->vboot_cmdline_buffer, params->vboot_cmdline_size,
-			     "%s %s=%s %s=%s %s=%s", verify_data->cmdline,
+			     "%s %s=%s %s=%s %s=%s%s%s", verify_data->cmdline,
 			     VERIFIED_BOOT_PROPERTY_NAME,
 			     need_verification ? "green" : "orange",
 			     SLOT_SUFFIX_BOOT_PROPERTY_NAME, slot_suffix,
-			     ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME, recovery_boot ? "0" : "1"
+			     ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME, recovery_boot ? "0" : "1",
+			     fb_cmd ? " " : "", fb_cmd ? fb_cmd->cmdline : ""
 			     );
 	if (chars < 0 || chars >= params->vboot_cmdline_size) {
 		VB2_DEBUG("ERROR: Command line doesn't fit provided buffer: %s\n",
 			  verify_data->cmdline);
 		rv = VB2_ERROR_ANDROID_CMDLINE_BUF_TOO_SMALL;
 	}
+	if (fb_cmd)
+		free(fb_cmd);
 
 out:
 	/* No need for slot data */
