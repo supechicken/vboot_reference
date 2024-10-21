@@ -1,16 +1,14 @@
-/* Copyright 2024 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
  * Implementation of system dependencies required by libavb
-*/
+ */
 
 #include <libavb.h>
 
 #include "2common.h"
-#include "stdarg.h"
-#include "stdlib.h"
-#include "string.h"
+#include "2sysincludes.h"
 
 int avb_memcmp(const void *src1, const void *src2, size_t n) {
 	return memcmp(src1, src2, n);
@@ -37,7 +35,7 @@ size_t avb_strlen(const char *str) {
 }
 
 void avb_abort(void) {
-	abort();
+	vb2ex_abort();
 }
 
 void avb_print(const char *message) {
