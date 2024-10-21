@@ -15,6 +15,13 @@
 
 #include <ctype.h>
 #include <inttypes.h>  /* For PRIu64 */
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
+||||||| BASE
+#include <stdbool.h>
+=======
+#include <stdarg.h>
+#include <stdbool.h>
+>>>>>>> CHANGE (911e5a avb: Implement basic AVB callbacks)
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
