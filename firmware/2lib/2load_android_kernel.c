@@ -16,7 +16,7 @@
 #include "vboot_avb_ops.h"
 
 /* Size of the buffer to convey cmdline properties to bootloader */
-#define AVB_CMDLINE_BUF_SIZE 1024
+#define AVB_CMDLINE_BUF_SIZE 3072
 
 /* Bytes to read at start of the boot/init_boot/vendor_boot partitions */
 #define BOOT_HDR_GKI_SIZE 4096
@@ -69,6 +69,88 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 	return cmd;
 }
 
+static uint32_t fletcher32(const char *data, size_t len)
+{
+	uint32_t s0 = 0;
+	uint32_t s1 = 0;
+
+	for (; len > 0; len--, data++) {
+		s0 = (s0 + *data) % UINT16_MAX;
+		s1 = (s1 + s0) % UINT16_MAX;
+	}
+
+	return (s1 << 16) | s0;
+}
+
+bool vb2_is_fastboot_cmdline_valid(struct fastboot_cmdline *fb_cmd)
+{
+	if (fb_cmd->version != 0) {
+		VB2_DEBUG("Unknown fastboot_cmdline version (%d)", fb_cmd->version);
+		return false;
+	}
+
+	if (fb_cmd->magic != MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_MAGIC) {
+		VB2_DEBUG("Wrong fastboot_cmdline magic (0x%x)", fb_cmd->magic);
+		return false;
+	}
+
+	if (fb_cmd->len > sizeof(fb_cmd->cmdline)) {
+		VB2_DEBUG("Wrong fastboot_cmdline len (%d)", fb_cmd->len);
+		return false;
+	}
+
+	if (fb_cmd->fletcher != fletcher32((char *)&fb_cmd->len,
+					   sizeof(fb_cmd->len) + fb_cmd->len)) {
+		VB2_DEBUG("Wrong fastboot_cmdline checksum");
+		return false;
+	}
+
+	return true;
+}
+
+bool vb2_set_fastboot_cmdline_checksum(struct fastboot_cmdline *fb_cmd)
+{
+	if (fb_cmd->len > sizeof(fb_cmd->cmdline)) {
+		VB2_DEBUG("Wrong fastboot_cmdline len (%d)", fb_cmd->len);
+		return false;
+	}
+
+	fb_cmd->fletcher = fletcher32((char *)&fb_cmd->len, sizeof(fb_cmd->len) + fb_cmd->len);
+
+	return true;
+}
+
+static struct fastboot_cmdline *vb2_fastboot_cmdline(AvbOps *ops)
+{
+	struct fastboot_cmdline *fb_cmd;
+	AvbIOResult io_ret;
+	size_t num_bytes_read;
+
+	fb_cmd = malloc(sizeof(struct fastboot_cmdline));
+	if (fb_cmd == NULL)
+		return NULL;
+
+	io_ret = ops->read_from_partition(ops,
+					  GPT_ENT_NAME_ANDROID_MISC,
+					  MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET,
+					  sizeof(struct fastboot_cmdline),
+					  fb_cmd,
+					  &num_bytes_read);
+	if (io_ret != AVB_IO_RESULT_OK ||
+	    num_bytes_read != sizeof(struct fastboot_cmdline)) {
+		VB2_DEBUG("Cannot read misc partition.\n");
+		free(fb_cmd);
+		return NULL;
+	}
+
+	if (!vb2_is_fastboot_cmdline_valid(fb_cmd)) {
+		free(fb_cmd);
+		return NULL;
+	}
+
+	return fb_cmd;
+}
+
 vb2_error_t vb2_load_android_kernel(
 	struct vb2_context *ctx, struct vb2_kernel_params *params,
 	VbExStream_t stream, GptData *gpt, vb2ex_disk_handle_t disk_handle,
@@ -88,6 +170,7 @@ vb2_error_t vb2_load_android_kernel(
 	AvbSlotVerifyResult result;
 	vb2_error_t ret;
 	char *verified_str;
+	struct fastboot_cmdline *fb_cmd = NULL;
 
 	/*
 	 * Check if the buffer is zero sized (ie. pvmfw loading is not
@@ -158,6 +241,11 @@ vb2_error_t vb2_load_android_kernel(
 	}
 
 	params->boot_command = vb2_bcb_command(avb_ops);
+
+	/* Load fastboot cmdline only in developer mode */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
+		fb_cmd = vb2_fastboot_cmdline(avb_ops);
+
 	vboot_avb_ops_free(avb_ops);
 
 	/* TODO(b/335901799): Add support for marking verifiedbootstate yellow */
@@ -180,8 +268,8 @@ vb2_error_t vb2_load_android_kernel(
 	    params->vboot_cmdline_offset)
 		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 
-	if ((strlen(verify_data->cmdline) + strlen(verified_str) + 1) >=
-	    AVB_CMDLINE_BUF_SIZE)
+	if ((strlen(verify_data->cmdline) + strlen(verified_str) +
+	     (fb_cmd ? fb_cmd->len : 0) + 1) >= AVB_CMDLINE_BUF_SIZE)
 		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 
 	strcpy((char *)(params->kernel_buffer + params->vboot_cmdline_offset),
@@ -194,6 +282,16 @@ vb2_error_t vb2_load_android_kernel(
 	       verified_str);
 
 	free(verified_str);
+
+	if (fb_cmd) {
+		/* Append fastboot properties to cmdline */
+		strcat((char *)(params->kernel_buffer + params->vboot_cmdline_offset),
+		       " ");
+		strncat((char *)(params->kernel_buffer + params->vboot_cmdline_offset),
+		       fb_cmd->cmdline, fb_cmd->len);
+
+		free(fb_cmd);
+	}
 
 	/* No need for slot data, partitions should be already at correct
 	 * locations in memory since we are using "get_preloaded_partitions"

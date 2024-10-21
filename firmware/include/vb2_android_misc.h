@@ -19,4 +19,43 @@ struct bootloader_message {
 _Static_assert(sizeof(struct bootloader_message) == 2048,
 	       "bootloader_message size is incorrect");
 
+/*
+ * Reserve space for fastboot oem cmdline on misc partition. Use for that vendor
+ * space which is at 2K - 16K range in misc. Skip 2K - 4K range as it may be
+ * optionally used as bootloader_message_ab struct.
+ */
+#define MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET (1024 * 4)
+#define MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE (1024 * 2)
+/* Hex values for ASCII "FCML" */
+#define MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_MAGIC 0x46434d4c
+struct fastboot_cmdline {
+	uint8_t version;
+	uint32_t magic;
+	/* Fletcher-32 checksum of len and cmdline up to len bytes */
+	uint32_t fletcher;
+	uint16_t len;
+	char cmdline[2037];
+} __attribute__((packed));
+_Static_assert(sizeof(struct fastboot_cmdline) ==
+	       MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE,
+	       "fastboot_cmdline size is incorrect");
+
+/*
+ * Check if fastboot_cmdline structure is valid, i.e if magic is correct,
+ * len property doesn't exceed cmdline size, fletcher checksum is valid.
+ *
+ * @param fb_cmd	Fastboot cmdline structure from misc partition.
+ * @returns 1 if structure data pass all checks, 0 otherwise.
+ */
+bool vb2_is_fastboot_cmdline_valid(struct fastboot_cmdline *fb_cmd);
+
+/*
+ * Calculate and set checksum property of given fastboot_cmdline structure.
+ * If len property exceed cmdline size, then checksum is not calculated.
+ *
+ * @param fb_cmd	Fastboot cmdline structure from misc partition.
+ * @returns 1 if checksum is set, 0 otherwise.
+ */
+bool vb2_set_fastboot_cmdline_checksum(struct fastboot_cmdline *fb_cmd);
+
 #endif  /* VBOOT_REFERENCE_VB2_ANDROID_MISC_H_ */
