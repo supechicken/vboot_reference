@@ -1,21 +1,22 @@
-/* Copyright 2024 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
  * Implementation of callbacks needed by libavb library
-*/
+ */
 
 #include <libavb.h>
 
+#include "2avb.h"
 #include "2common.h"
+#include "2misc.h"
 #include "2nvstorage.h"
 #include "2secdata.h"
-#include "vboot_avb_ops.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
-#include "vb2_android_bootimg.h"
+#include "gpt_misc.h"
 
-struct vboot_avb_data {
+struct vboot_avb_ctx {
 	struct vb2_kernel_params *params;
 	GptData *gpt;
 	VbExStream_t stream; /* Stream opened for kernel partition read */
@@ -23,13 +24,9 @@ struct vboot_avb_data {
 	struct vb2_context *vb2_ctx;
 };
 
-void vboot_avb_ops_free(AvbOps *ops)
+static inline struct vboot_avb_ctx *user_data(AvbOps *ops)
 {
-	if (ops == NULL)
-		return;
-
-	avb_free(ops->user_data);
-	avb_free(ops);
+	return ops->user_data;
 }
 
 static AvbIOResult vboot_avb_read_from_partition(AvbOps *ops,
@@ -39,7 +36,7 @@ static AvbIOResult vboot_avb_read_from_partition(AvbOps *ops,
 				       void *buf,
 				       size_t *out_num_read)
 {
-	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
+	struct vboot_avb_ctx *ctx = (struct vboot_avb_ctx *)ops->user_data;
 	VbExStream_t stream;
 	uint64_t part_start, part_size;
 	uint64_t start_sector, sectors_to_read, pre_misalign;
@@ -118,7 +115,7 @@ static AvbIOResult vboot_avb_write_to_partition(AvbOps *ops,
 						size_t size,
 						const void *buf)
 {
-	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
+	struct vboot_avb_ctx *ctx = (struct vboot_avb_ctx *)ops->user_data;
 	uint64_t part_start, part_size;
 
 	if (size % ctx->gpt->sector_bytes ||
@@ -158,7 +155,7 @@ static AvbIOResult vboot_avb_get_size_of_partition(AvbOps *ops,
 					 const char *partition_name,
 					 uint64_t *out_size)
 {
-	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
+	struct vboot_avb_ctx *ctx = (struct vboot_avb_ctx *)ops->user_data;
 	uint64_t part_start, part_size;
 
 	if (GptFindOffsetByName(ctx->gpt, partition_name, &part_start, &part_size) !=
@@ -172,41 +169,34 @@ static AvbIOResult vboot_avb_get_size_of_partition(AvbOps *ops,
 	return AVB_IO_RESULT_OK;
 }
 
-static AvbIOResult vboot_avb_read_is_device_unlocked(AvbOps *ops, bool *out_is_unlocked)
-{
-	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
-
-	*out_is_unlocked = false;
-
-	int dev_mode = ctx->vb2_ctx->flags & VB2_CONTEXT_DEVELOPER_MODE;
-
-	/* FWMP can require developer mode to use signed images */
-	int fwmp_locked = vb2_secdata_fwmp_get_flag(
-		ctx->vb2_ctx, VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY);
-
-	/* Developers may require signed images */
-	int nv_dev_locked  = vb2_nv_get(ctx->vb2_ctx, VB2_NV_DEV_BOOT_SIGNED_ONLY);
-
-	/*
-	 * If developer mode is enabled and signed image is not required,
-	 * then unlocked is TRUE
-	 */
-	if (dev_mode && !fwmp_locked && !nv_dev_locked)
-		*out_is_unlocked = true;
-
-	return AVB_IO_RESULT_OK;
-}
-
-static AvbIOResult vboot_avb_read_rollback_index(AvbOps *ops,
+static AvbIOResult read_rollback_index(AvbOps *ops,
 				       size_t rollback_index_slot,
-				       uint64_t *out_rollback_index) {
+				       uint64_t *out_rollback_index)
+{
 	/*
 	 * TODO(b/324230492): Implement rollback protection
 	 * For now we always return 0 as the stored rollback index.
 	 */
-	avb_debug("TODO: implement read_rollback_index().\n");
+	VB2_DEBUG("TODO: not implemented yet\n");
 	if (out_rollback_index != NULL)
 		*out_rollback_index = 0;
+
+	return AVB_IO_RESULT_OK;
+}
+
+static AvbIOResult read_is_device_unlocked(AvbOps *ops, bool *out_is_unlocked)
+{
+	struct vboot_avb_ctx *avbctx = user_data(ops);
+
+	if (vb2_need_kernel_verification(avbctx->vb2_ctx))
+		*out_is_unlocked = false;
+	else if (avbctx->vb2_ctx->boot_mode == VB2_BOOT_MODE_DEVELOPER &&
+	    vb2_secdata_fwmp_get_flag(avbctx->vb2_ctx, VB2_SECDATA_FWMP_DEV_USE_KEY_HASH))
+		*out_is_unlocked = false;
+	else
+		*out_is_unlocked = true;
+
+	VB2_DEBUG("%s\n", *out_is_unlocked ? "true" : "false");
 
 	return AVB_IO_RESULT_OK;
 }
@@ -216,36 +206,21 @@ static AvbIOResult get_unique_guid_for_partition(AvbOps *ops,
 						 char *guid_buf,
 						 size_t guid_buf_size)
 {
-	struct vboot_avb_data *data;
+	struct vboot_avb_ctx *avbctx;
 	GptData *gpt;
-	Guid guid;
-	int ret;
+	GptEntry *e;
 
-	if (guid_buf_size < GUID_STRLEN || !ops || !ops->user_data)
-		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
+	VB2_ASSERT(ops && ops->user_data);
 
-	data = (struct vboot_avb_data *)ops->user_data;
-	gpt = data->gpt;
-	if (!gpt)
-		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
+	avbctx = user_data(ops);
+	gpt = avbctx->gpt;
+	VB2_ASSERT(gpt);
 
-	if (GptFindUniqueByName(gpt, partition, &guid) != GPT_SUCCESS)
-		return AVB_IO_RESULT_ERROR_IO;
+	e = GptFindEntryByName(gpt, partition, NULL);
+	if (e == NULL)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
 
-	ret = snprintf(guid_buf, guid_buf_size,
-		       "%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x",
-		       le32toh(guid.u.Uuid.time_low),
-		       le16toh(guid.u.Uuid.time_mid),
-		       le16toh(guid.u.Uuid.time_high_and_version),
-		       guid.u.Uuid.clock_seq_high_and_reserved,
-		       guid.u.Uuid.clock_seq_low,
-		       guid.u.Uuid.node[0], guid.u.Uuid.node[1],
-		       guid.u.Uuid.node[2], guid.u.Uuid.node[3],
-		       guid.u.Uuid.node[4], guid.u.Uuid.node[5]);
-
-	if (ret != (GUID_STRLEN - 1))
-		return AVB_IO_RESULT_ERROR_IO;
-
+	GptGuidToStr(&e->unique, guid_buf, guid_buf_size, GPT_GUID_UPPERCASE);
 	return AVB_IO_RESULT_OK;
 }
 
@@ -256,7 +231,7 @@ static AvbIOResult validate_vbmeta_public_key(AvbOps *ops,
 					      size_t public_key_metadata_length,
 					      bool *out_key_is_trusted)
 {
-	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
+	struct vboot_avb_ctx *ctx = (struct vboot_avb_ctx *)ops->user_data;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx->vb2_ctx);
 	struct vb2_public_key kernel_key;
 	AvbRSAPublicKeyHeader h;
@@ -591,7 +566,7 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 	 * content in memory */
 	static uint32_t bytes_used;
 	static bool ramdisk_preloaded = false;
-	struct vboot_avb_data *avb_data = (struct vboot_avb_data *)ops->user_data;
+	struct vboot_avb_ctx *avb_data = (struct vboot_avb_ctx *)ops->user_data;
 	char *suffix = NULL;
 	char *short_partition_name;
 	int ret;
@@ -680,44 +655,55 @@ out:
  * @param  gpt         Pointer to gpt struct correlated with boot disk
  * @param  disk_handle Handle to boot disk
  * @return pointer to AvbOps structure which should be used for invocation of
- *         libavb methods. This should be freed using vboot_avb_ops_free().
- *         NULL in case of error.
+ *         libavb methods.
  */
 AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 			  struct vb2_kernel_params *params,
 			  VbExStream_t stream,
 			  GptData *gpt,
 			  vb2ex_disk_handle_t disk_handle)
+)
 {
-	struct vboot_avb_data *data;
-	AvbOps *ops;
+	struct vboot_avb_ctx *avbctx;
+	AvbOps *avb_ops;
 
-	ops = avb_calloc(sizeof(AvbOps));
-	if (ops == NULL)
+	avb_ops = malloc(sizeof(*avb_ops));
+	if (avb_ops == NULL)
 		return NULL;
+	memset(avb_ops, 0, sizeof(*avb_ops));
 
-	data = avb_calloc(sizeof(struct vboot_avb_data));
-	if (data == NULL) {
-		avb_free(ops);
+	avbctx = malloc(sizeof(*avbctx));
+	if (avbctx == NULL) {
+		free(avb_ops);
 		return NULL;
 	}
+	memset(avbctx, 0, sizeof(*avbctx));
 
-	ops->user_data = data;
+	avbctx->gpt = gpt;
+	avbctx->params = params;
+	avbctx->stream = stream;
+	avbctx->vb2_ctx = vb2_ctx;
+	avbctx->disk_handle = disk_handle;
 
-	data->gpt = gpt;
-	data->params = params;
-	data->stream = stream;
-	data->vb2_ctx = vb2_ctx;
-	data->disk_handle = disk_handle;
+	avb_ops->user_data = avbctx;
 
-	ops->read_from_partition = vboot_avb_read_from_partition;
-	ops->write_to_partition = vboot_avb_write_to_partition;
-	ops->get_size_of_partition = vboot_avb_get_size_of_partition;
-	ops->read_is_device_unlocked = vboot_avb_read_is_device_unlocked;
-	ops->read_rollback_index = vboot_avb_read_rollback_index;
-	ops->get_unique_guid_for_partition = get_unique_guid_for_partition;
-	ops->validate_vbmeta_public_key = validate_vbmeta_public_key;
-	ops->get_preloaded_partition = vboot_avb_get_preloaded_partition;
+	avb_ops->read_from_partition = vboot_avb_read_from_partition;
+	avb_ops->write_to_partition = vboot_avb_write_to_partition;
+	avb_ops->get_size_of_partition = vboot_avb_get_size_of_partition;
+	avb_ops->read_rollback_index = read_rollback_index;
+	avb_ops->read_is_device_unlocked = read_is_device_unlocked;
+	avb_ops->get_unique_guid_for_partition = get_unique_guid_for_partition;
+	avb_ops->validate_vbmeta_public_key = validate_vbmeta_public_key;
+	avb_ops->get_preloaded_partition = vboot_avb_get_preloaded_partition;
 
-	return ops;
+	return avb_ops;
+}
+
+void vboot_avb_ops_free(AvbOps *ops)
+{
+	if (ops == NULL)
+		return;
+
+	free(ops->user_data);
+	free(ops);
 }

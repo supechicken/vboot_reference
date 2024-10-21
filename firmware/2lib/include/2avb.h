@@ -1,10 +1,10 @@
-/* Copyright 2024 The ChromiumOS Authors
+/* Copyright 2025 The ChromiumOS Authors
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-#ifndef VBOOT_AVB_OPS_H_
-#define VBOOT_AVB_OPS_H_
+#ifndef VBOOT_REFERENCE_2AVB_H_
+#define VBOOT_REFERENCE_2AVB_H_
 
 #include "2common.h"
 #include "gpt_misc.h"
@@ -21,8 +21,7 @@
  * @param  gpt         Pointer to gpt struct correlated with boot disk
  * @param  disk_handle Handle to boot disk
  * @return pointer to AvbOps structure which should be used for invocation of
- *         libavb methods. This should be freed using vboot_avb_ops_free().
- *         NULL in case of error.
+ *         libavb methods.
  */
 AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 			  struct vb2_kernel_params *params,
@@ -30,6 +29,11 @@ AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 			  GptData *gpt,
 			  vb2ex_disk_handle_t disk_handle);
 
+/*
+ * Free structure associated with AvbOps structure.
+ *
+ * @param  ops    pointer AvbOps structure
+ */
 void vboot_avb_ops_free(AvbOps *ops);
 
-#endif // VBOOT_AVB_OPS_H_
+#endif // VBOOT_REFERENCE_2AVB_H_
