@@ -60,6 +60,7 @@ extern "C" {
 
 #define UUID_NODE_LEN 6
 #define GUID_SIZE 16
+#define GUID_STRLEN 37
 #define GPT_PARTITION_NAME_SIZE 36
 
 #define GPT_ENT_NAME_ANDROID_A_SUFFIX "_a"
