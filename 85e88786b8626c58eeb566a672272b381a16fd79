@@ -34,6 +34,24 @@
       "parentUuid": "d7ca0176_75217f21",
       "revId": "85e88786b8626c58eeb566a672272b381a16fd79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cdd1cfc_a03828ca",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-24T20:26:29Z",
+      "side": 1,
+      "message": "Yeah, remove those references. You can remove the whole Smaug and Foster boards if necessary. I don\u0027t think anybody cares about them anymore.",
+      "parentUuid": "48b2e42f_3aaef25f",
+      "revId": "85e88786b8626c58eeb566a672272b381a16fd79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
