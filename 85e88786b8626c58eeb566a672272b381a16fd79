@@ -16,6 +16,24 @@
       "message": "How is this different from bootimg? They\u0027re both referring to the Android bootimg header, just different versions of it. The original bootimg type implementation hasn\u0027t been used for many years, I think this would be a good opportunity to drop it and reuse the type code for your new implementation.",
       "revId": "85e88786b8626c58eeb566a672272b381a16fd79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b2e42f_3aaef25f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-10-24T11:03:28Z",
+      "side": 1,
+      "message": "We can use VB2_KERNEL_TYPE_BOOTIMG, but only if we remove old code using this enum in smaug and foster. We can use VB2_KERNEL_TYPE_BOOTIMG, but only if we remove old code using this enum in smaug and foster. It would be hard to determine if we are booting Android with v4 bootimg header or an old image with v0 header. Do you want me to remove old references?",
+      "parentUuid": "d7ca0176_75217f21",
+      "revId": "85e88786b8626c58eeb566a672272b381a16fd79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
