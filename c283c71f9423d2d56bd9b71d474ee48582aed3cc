@@ -39,6 +39,23 @@
       "message": "Let me know if there\u0027s a better solution to the problem.",
       "revId": "c283c71f9423d2d56bd9b71d474ee48582aed3cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8258861e_c0ce4edf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2024-10-28T16:58:10Z",
+      "side": 1,
+      "message": "I\u0027m in general fine with this, but I\u0027d also like to hear what Julius would say.\n\nIMHO the \"try attempts\" design is somehow broken today because the complexity of updating on certain platforms especially CSME, also the fact we can\u0027t distinguish a \"user simply turns off the device\" versus \"device hang / not able to see the system up\".",
+      "revId": "c283c71f9423d2d56bd9b71d474ee48582aed3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
