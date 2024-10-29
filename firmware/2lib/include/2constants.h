@@ -98,4 +98,7 @@ typedef void *vb2ex_disk_handle_t;
    the struct definition as part of a vb2_api.h include. */
 #define VB2_VBSD_SIZE 1096
 
+/* Size of the buffer to convey cmdline properties to bootloader */
+#define AVB_CMDLINE_BUF_SIZE 1024
+
 #endif  /* VBOOT_REFERENCE_2CONSTANTS_H_ */
