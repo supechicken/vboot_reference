@@ -644,8 +644,8 @@ struct vb2_kernel_params {
 	uint32_t init_boot_offset;
 	/* Size of init boot partition in bytes. */
 	uint32_t init_boot_size;
-	/* Offset (in bytes) to the region with vboot cmdline parameters. */
-	uint32_t vboot_cmdline_offset;
+	/* Address of the region with vboot cmdline parameters. */
+	char *vboot_cmdline_addr;
 	/* Boot command from Android BCB on misc partition. */
 	enum vb2_boot_command boot_command;
 
