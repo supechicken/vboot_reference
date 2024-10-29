@@ -74,6 +74,24 @@
       "parentUuid": "8258861e_c0ce4edf",
       "revId": "c283c71f9423d2d56bd9b71d474ee48582aed3cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "614f57e9_ae3f4fb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-29T20:59:00Z",
+      "side": 1,
+      "message": "Yeah, I think there\u0027s also a bug about changing how vboot generally tracks platform-triggered reboots floating about somewhere, but for now I think we\u0027re stuck with bumping this number up whenever someone reports an issue.",
+      "parentUuid": "1fc4b472_15417890",
+      "revId": "c283c71f9423d2d56bd9b71d474ee48582aed3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
