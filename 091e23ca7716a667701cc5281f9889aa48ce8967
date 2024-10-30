@@ -87,6 +87,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6edee13c_06a6bab3",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1004789
+      },
+      "writtenOn": "2024-10-30T15:56:36Z",
+      "side": 1,
+      "message": "\u003e I assume system_executes_vendor_violators should be avoided, but I\u0027m fine adding this exception that\u0027s preferred.\n\ni don\u0027t think that\u0027s what will happen --- stuff on /system will run the /system/bin copy while stuff on /vendor will run the /vendor/bin copy.\n\nit\u0027s not that uncommon to have binaries in both bins --- look at toybox and mksh and so on (and feel free to copy \u0026 paste from their .bp files; that\u0027s how everything works around here :-) ).",
+      "parentUuid": "257bb526_806afcae",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
