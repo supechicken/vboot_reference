@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd37a56_5426ece1",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-30T01:11:08Z",
+      "side": 1,
+      "message": "off-topic, but this sounds like a bad feature that we should remove (I actually never knew this was in here, and I doubt anyone is ever using this). /tmp tends to be world writable so anyone can put a symlink to `/etc/passwd` or whatever there and trick the next futility process running as root to trample over important files. This sort of thing is a classic security red flag.",
+      "revId": "4d9c1eadccc56fb279932b71ae32bdc7a298dc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96371d60_b950138b",
+        "filename": "vboot.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-10-30T01:11:08Z",
+      "side": 1,
+      "message": "nit: single `mkdir -p`?",
+      "revId": "4d9c1eadccc56fb279932b71ae32bdc7a298dc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
