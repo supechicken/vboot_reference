@@ -63,6 +63,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257bb526_806afcae",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-30T14:34:11Z",
+      "side": 1,
+      "message": "I have no issue with having `crossystem` in `/system/bin`, however this is a vendor binary and should be on `/vendor`. I\u0027d ask Android folks about this as I\u0027m not knowledgeable enough to be the judge here.",
+      "parentUuid": "8e0e9486_d4aedcc8",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
