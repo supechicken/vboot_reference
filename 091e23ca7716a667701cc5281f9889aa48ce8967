@@ -111,6 +111,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4543616a_c423c538",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-30T16:02:14Z",
+      "side": 1,
+      "message": "\u003e stuff on /system will run the /system/bin copy while stuff on /vendor will run the /vendor/bin copy.\n\nOh, good to know. Are there any resources I could look into on stuff like that?\n\n\u003e it\u0027s not that uncommon to have binaries in both bins\n\nOk, then I do not have any issues with marking this as `vendor_available` as long as both will be present. ;-)",
+      "parentUuid": "6edee13c_06a6bab3",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
