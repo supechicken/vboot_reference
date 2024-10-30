@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4283fc78_18fe073f",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-30T14:25:36Z",
+      "side": 1,
+      "message": "Why is this necessary? Shouldn\u0027t it be on the `/vendor` partition like the rest of `vboot` tools? Or is it needed by some `/system` project which does not want to use SELinux `system_executes_vendor_violators` attribute?",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
