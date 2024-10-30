@@ -39,6 +39,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0e9486_d4aedcc8",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2024-10-30T14:29:49Z",
+      "side": 1,
+      "message": "Correct. I\u0027m attempting to use it from `ec_crash_collector` (which is on /system) to get the bios version. \n\nI assume `system_executes_vendor_violators` should be avoided, but I\u0027m fine adding this exception that\u0027s preferred.",
+      "parentUuid": "4283fc78_18fe073f",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
