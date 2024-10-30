@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed488f5_fcfa5e91",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-30T12:20:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "cf02b692_bc4bfee0",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "4d9c1eadccc56fb279932b71ae32bdc7a298dc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dd37a56_5426ece1",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee0f790_62567e3a",
+        "filename": "futility/futility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-30T12:20:06Z",
+      "side": 1,
+      "message": "I was wondering if anyone is using this functionality. I removed it in CL:5972390.",
+      "parentUuid": "8dd37a56_5426ece1",
+      "revId": "4d9c1eadccc56fb279932b71ae32bdc7a298dc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96371d60_b950138b",
@@ -54,6 +96,24 @@
       "writtenOn": "2024-10-30T01:11:08Z",
       "side": 1,
       "message": "nit: single `mkdir -p`?",
+      "revId": "4d9c1eadccc56fb279932b71ae32bdc7a298dc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e96aa73_88868a30",
+        "filename": "vboot.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-30T12:20:06Z",
+      "side": 1,
+      "message": "According to the [Android Init Language](https://android.googlesource.com/platform/system/core/+/master/init/README.md) document there is no support for `-p` in `mkdir`. This is not a shell call but `init` builtin function call. I checked the implementation and it seems there is no way to directly call recursive `mkdir` implementation, so this has to stay as it is now.",
+      "parentUuid": "96371d60_b950138b",
       "revId": "4d9c1eadccc56fb279932b71ae32bdc7a298dc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
