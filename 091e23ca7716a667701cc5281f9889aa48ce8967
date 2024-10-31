@@ -207,6 +207,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c869e0f8_5f0d36e7",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1004789
+      },
+      "writtenOn": "2024-10-31T13:22:13Z",
+      "side": 1,
+      "message": "i think the interesting question is \"who\u0027s calling?\". if you have callers (which includes \"the shell\") from /system, then you need to be in system; if you have callers from /vendor, then you need to be in vendor. this means you can sometimes legitimately need to be in both (like the toybox and mksh examples i gave earlier), but it is rare (as jiyong points out).\n\ni misunderstood your earlier \"this is a vendor binary\" to mean \"this needs to be run by code /vendor\". re-reading it looks like you\u0027ve only ever admitted to needing to be called by code on /system (in which case too you should be on the system partition).\n\n\"vendor binaries\" in the Android sense of \"you need to go in /vendor/bin\" is better read as \"this is not google code\". your code is google code, and will be on all your devices, so i think you only need to be in /system.\n\nif you\u0027re just trying to avoid being on all phones too, say, then just stay out of the the shell-and-utilities list of \"everyone gets these tools\" binaries. make sure you\u0027re only added to the system image by something that\u0027s only for your products.",
+      "parentUuid": "97f9b441_e4df68fe",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
