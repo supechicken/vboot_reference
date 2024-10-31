@@ -183,6 +183,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f9b441_e4df68fe",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-10-31T10:33:04Z",
+      "side": 1,
+      "message": "Hi Jiyong,\n\n\u003e Are you saying it is specific to the underlying hardware? (ex: partners have to implement it differently depending on which hardware they use)\n\nNo, there is only arch-dependent implementation difference for ARM and x86. There is no point in extending `crossystem` by partners. I just assumed that `/system` should contain only binaries which are common to the Android ecosystem and not just to vendor/partner. And also looking at that all vboot (and related like flashrom, cbfstool etc.) binaries are in `/vendor` right now I assumed it\u0027s the preferred configuration. However, as I said, I\u0027m not knowledgeable enough in this topics to decisively dictate how it should be done, so thank you Elliott and Jiyong for your insights. :D\n\n\u003e Another question is how is this binary used from its clients? Do they just fork/exec this and consume its stdout?\n\nSome projects `exec*()` it and collect stdout/err, some use it as a static (.a) library.",
+      "parentUuid": "c989bf5f_61db25af",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
