@@ -159,6 +159,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c989bf5f_61db25af",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1506471
+      },
+      "writtenOn": "2024-10-31T01:07:47Z",
+      "side": 1,
+      "message": "We seldom have two copies of the same binary in /system and /vendor. \n\nHi Jakub, I find it hard to understand the below. Could you elaborate?\n\n\u003e however this is a vendor binary and should be on /vendor\n\nAre you saying it is specific to the underlying hardware? (ex: partners have to implement it differently depending on which hardware they use)\n\nAnother question is how is this binary used from its clients? Do they just fork/exec this and consume its stdout?",
+      "parentUuid": "e637d494_5798dfbc",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
