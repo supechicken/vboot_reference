@@ -231,6 +231,30 @@
       },
       "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e295fc06_db1e5c6a",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1506471
+      },
+      "writtenOn": "2024-11-01T01:26:39Z",
+      "side": 1,
+      "message": "Thanks Jakub for the answers; very helpful. I am sorry if all these system/vendor distinctions have confused you. In the end, all that matters is updatability. That\u0027s the whole purpose of the system/vendor separation. It\u0027s NOT about code ownership, hiding proprietary code, or anything else. We need to make sure that device makers can upgrade to the new system partition without having to touch/upgrade the vendor part. Please use your best judge under this \"requirement\".\n\n------------\n\nIf we have crossystem both in system and vendor, it means we could have two different implementations of crossystem on the device. The one in the system partition is new and the one in the vendor partition could be (years) old. Whether this discrepancy is okay or not depends on the very nature of crossystem. If such a case is not desirable for you, you need to keep it only in one place. And of course, having two copies is bad for syshealth as well.\n\nWhen you are going to have one copy of it, where to put it is actually a second-order issue. What matters more is how will you provide stable interface to your clients. If you put the binary in the system partition, you\u0027d need provide a stable interface for your clients in the vendor partition. If you put it in the vendor partition, the interface towards system should be stable.\n\nIn either case, the interface of crossystem is the cmdline parameters and the exact output from stdout/err. As you know, these types of interfaces are hard to keep in a backwards compatible manner; you need to be very careful when extending it.\n\nSo, in Android, we don\u0027t recommend using cmdline/stdout as a cross-domain interface. A more common approach is making it a system service and let your clients talk to it over AIDL, instead of fork/exec\u0027ing it. AIDL helps you keep the protocol backwards compatible.",
+      "parentUuid": "c869e0f8_5f0d36e7",
+      "range": {
+        "startLine": 408,
+        "startChar": 4,
+        "endLine": 408,
+        "endChar": 27
+      },
+      "revId": "091e23ca7716a667701cc5281f9889aa48ce8967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
