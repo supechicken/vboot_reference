@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0376c88_670b1cef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-02T00:57:00Z",
+      "side": 1,
+      "message": "This isn\u0027t an urgent fix but just something that has come up twice in enrollment related edge cases in the past. Cherry-picking it to a few old EDU-relevant boards, in case they happen to ship another firmware update at some point for some other reason anyway. If not, that\u0027s fine too.",
+      "revId": "54624d1bfcec922d3c3896f298b98cec68fa3ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
