@@ -13,7 +13,13 @@
 extern "C" {
 #endif  /* __cplusplus */
 
+<<<<<<< HEAD   (f1aded509f0e61fb963dde124bb11024a478daf6 2lib: Add androidboot parameters)
 #define TPM_BUFFER_SIZE 256
+||||||| BASE   (dbdf50adc5e64b3cc211c116aded1970ef95ca90 2load_android_kernel: Set VB2_SD_FLAG_KERNEL_SIGNED on verif)
+#define TPM_BUFFER_SIZE 512
+=======
+#define TPM_BUFFER_SIZE 2048
+>>>>>>> CHANGE (b5fb33f01c347c73babf709e4b10e2a4057c01e1 tlcl: Increase TPM buffer size)
 
 /* Tpm2 command tags. */
 #define TPM_ST_NO_SESSIONS 0x8001
