@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fe0441_fe27c12c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-11-05T09:49:56Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "bfca844d1b14130e15ff78f4bef4177ee080bf9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e3fd0a_5af7b203",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-11-05T09:49:56Z",
+      "side": 1,
+      "message": "Wrap the text with 72 chars per line.",
+      "revId": "bfca844d1b14130e15ff78f4bef4177ee080bf9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ba9f4c_038928a6",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-11-05T09:49:56Z",
+      "side": 1,
+      "message": "Instead of defining `AVB_CMDLINE_BUF_SIZE` here in vboot and referencing it in depthcharge to calculate `vboot_cmdline_addr`, can we move the constant to depthcharge, and pass the size via this `vb2_kernel_params` struct?\n\nAlso, the constant doesn\u0027t seem directly related to avb, so naming it like `KERNEL_CMDLINE_BUF_SIZE` seems okay to me.",
+      "revId": "bfca844d1b14130e15ff78f4bef4177ee080bf9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04541b2_b7adb254",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-11-05T09:49:56Z",
+      "side": 1,
+      "message": "Rename to `kernel_cmdline_buffer`?",
+      "range": {
+        "startLine": 648,
+        "startChar": 7,
+        "endLine": 648,
+        "endChar": 25
+      },
+      "revId": "bfca844d1b14130e15ff78f4bef4177ee080bf9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
