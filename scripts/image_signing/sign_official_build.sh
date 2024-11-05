@@ -1484,6 +1484,16 @@ main() {
       --private-key "${KEY_DIR}/key_hps.priv.pem"
   elif [[ "${TYPE}" == "uefi_kernel" ]]; then
       sign_uefi_kernel "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
+  elif [[ "${TYPE}" == "recovery_kernel" ]]; then
+    cp "${INPUT_IMAGE}" "${OUTPUT_IMAGE}"
+    if [[ -n "${KEYCFG_RECOVERY_KERNEL_V1_KEYBLOCK}" && -f \
+        "${KEYCFG_RECOVERY_KERNEL_V1_KEYBLOCK}" ]]; then
+      cp "${OUTPUT_IMAGE}" "${OUTPUT_IMAGE}.v1"
+      do_futility sign -b "${KEYCFG_RECOVERY_KERNEL_V1_KEYBLOCK}" -s \
+        "${KEYCFG_RECOVERY_KERNEL_VBPRIVK}" "${OUTPUT_IMAGE}.v1"
+    fi
+    do_futility sign -b "${KEYCFG_RECOVERY_KERNEL_KEYBLOCK}" -s \
+      "${KEYCFG_RECOVERY_KERNEL_VBPRIVK}" "${OUTPUT_IMAGE}"
   else
     die "Invalid type ${TYPE}"
   fi
