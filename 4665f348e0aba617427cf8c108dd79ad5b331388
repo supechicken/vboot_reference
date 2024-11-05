@@ -16,6 +16,29 @@
       "message": "Doesn\u0027t `-f` imply `-n`?",
       "revId": "4665f348e0aba617427cf8c108dd79ad5b331388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160601c3_cfa8350e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2024-11-05T23:47:03Z",
+      "side": 1,
+      "message": "nit: a constant for this extension/naming",
+      "range": {
+        "startLine": 1493,
+        "startChar": 60,
+        "endLine": 1493,
+        "endChar": 63
+      },
+      "revId": "4665f348e0aba617427cf8c108dd79ad5b331388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
