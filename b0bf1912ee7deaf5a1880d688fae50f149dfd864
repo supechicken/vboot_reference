@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1071b06b_e391f859",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-07T01:09:46Z",
+      "side": 1,
+      "message": "nit: not sure what exactly Jae meant but I think this would look better if you just did it down here:\n```\nlocal output_image_v1\u003d\"${OUTPUT_IMAGE}.v1\"\ncp \"${OUTPUT_IMAGE} \"${output_image_v1}\"\ndo_futility sign ... \"${output_image_v1}\"\n```",
+      "revId": "b0bf1912ee7deaf5a1880d688fae50f149dfd864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
