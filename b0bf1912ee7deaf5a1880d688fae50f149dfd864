@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d34d26d4_513ce56d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-11-07T16:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9111c010_8c442415",
+      "revId": "b0bf1912ee7deaf5a1880d688fae50f149dfd864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35978c78_5e5e9b55",
@@ -49,6 +67,30 @@
       "writtenOn": "2024-11-07T01:37:12Z",
       "side": 1,
       "message": "nit nit: imo, `V1_SUFFIX` variable still so it\u0027s well known.\n```suggestion\ndo_futility_sign() {\n  cp \"$1\" \"$2\"\n  do_futility sign -b \"$3\" -s \"${KEYCFG_RECOVERY_KERNEL_VBPRIVK}\" \"$2\"\n}\n\n    do_futility_sign \\\n      \"${INPUT_IMAGE}\" \\\n      \"${KEYCFG_RECOVERY_KERNEL_KEYBLOCK}\" \\\n      \"${OUTPUT_IMAGE}\"\n    if [[ -f \"${KEYCFG_RECOVERY_KERNEL_V1_KEYBLOCK}\" ]]; then\n      do_futility_sign \\\n        \"${INPUT_IMAGE}\" \\\n        \"${KEYCFG_RECOVERY_KERNEL_V1_KEYBLOCK}\" \\\n        \"${OUTPUT_IMAGE}${V1_SUFFIX}\"\n    fi\n```",
+      "range": {
+        "startLine": 1489,
+        "startChar": 4,
+        "endLine": 1496,
+        "endChar": 59
+      },
+      "revId": "b0bf1912ee7deaf5a1880d688fae50f149dfd864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82eac5fd_8cc5287e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2024-11-07T16:24:51Z",
+      "side": 1,
+      "message": "I think extracting a method here will make things more confusing. these commands are simple to read.",
+      "parentUuid": "35978c78_5e5e9b55",
       "range": {
         "startLine": 1489,
         "startChar": 4,
