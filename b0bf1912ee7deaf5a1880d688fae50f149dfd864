@@ -16,6 +16,29 @@
       "message": "nit: not sure what exactly Jae meant but I think this would look better if you just did it down here:\n```\nlocal output_image_v1\u003d\"${OUTPUT_IMAGE}.v1\"\ncp \"${OUTPUT_IMAGE} \"${output_image_v1}\"\ndo_futility sign ... \"${output_image_v1}\"\n```",
       "revId": "b0bf1912ee7deaf5a1880d688fae50f149dfd864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35978c78_5e5e9b55",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2024-11-07T01:37:12Z",
+      "side": 1,
+      "message": "nit nit: imo, `V1_SUFFIX` variable still so it\u0027s well known.\n```suggestion\ndo_futility_sign() {\n  cp \"$1\" \"$2\"\n  do_futility sign -b \"$3\" -s \"${KEYCFG_RECOVERY_KERNEL_VBPRIVK}\" \"$2\"\n}\n\n    do_futility_sign \\\n      \"${INPUT_IMAGE}\" \\\n      \"${KEYCFG_RECOVERY_KERNEL_KEYBLOCK}\" \\\n      \"${OUTPUT_IMAGE}\"\n    if [[ -f \"${KEYCFG_RECOVERY_KERNEL_V1_KEYBLOCK}\" ]]; then\n      do_futility_sign \\\n        \"${INPUT_IMAGE}\" \\\n        \"${KEYCFG_RECOVERY_KERNEL_V1_KEYBLOCK}\" \\\n        \"${OUTPUT_IMAGE}${V1_SUFFIX}\"\n    fi\n```",
+      "range": {
+        "startLine": 1489,
+        "startChar": 4,
+        "endLine": 1496,
+        "endChar": 59
+      },
+      "revId": "b0bf1912ee7deaf5a1880d688fae50f149dfd864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
