@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7581e71_c91f5f20",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-08T00:21:37Z",
+      "side": 1,
+      "message": "I really don\u0027t get all the allocating and copying here. Why not just pass out the suffix as const and directly return a pointer to the literal? In fact, I think you can just have a `const char *` return value and use NULL to signify errors.",
+      "revId": "f36b76182b2f915aecadb863f91112bf520d0d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6780d953_088ae88e",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-08T00:21:37Z",
+      "side": 1,
+      "message": "If we\u0027re going to need to support the Android partition model (and I\u0027m still hoping we can switch to a FIT image, after all, but that\u0027s where this code is at right now) we\u0027ll probably need a lot more of these functions once we add support for FDT selection and pKVM. Rather than duplicate this stuff half a dozen times, I\u0027d suggest to introduce an enum or the partition name and make the function work with that, e.g. something like:\n```\nenum GptAndroidPartition {\n\tGPT_ANDROID_BOOT,\n\tGPT_ANDROID_INIT_BOOT,\n\tGPT_ANDROID_VENDOR_BOOT,\n\tGPT_ANDROID_DTB,\n\tGPT_ANDROID_DTBO,\n\tGPT_ANDROID_PVMFW,\n\t...\n};\n\nconst char GptAndroidPartitionNames[] \u003d {\n\t[GPT_ANDROID_BOOT] \u003d \"boot\",\n\t[GPT_ANDROID_INIT_BOOT] \u003d \"init_boot\",\n\t...\n};\n\nint GptFindAndroidPartition(GptData *gpt, enum GptAndroidPartition part,\n                            uint64_t *out_start_sector, uint64_t out_size);\n```",
+      "revId": "f36b76182b2f915aecadb863f91112bf520d0d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
