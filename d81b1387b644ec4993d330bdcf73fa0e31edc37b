@@ -52,6 +52,24 @@
       "parentUuid": "a1520476_c7f6b9e7",
       "revId": "d81b1387b644ec4993d330bdcf73fa0e31edc37b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60114b92_43b07efb",
+        "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-08T00:10:03Z",
+      "side": 1,
+      "message": "Thought about this some more, I think it\u0027s fine to pass the strings as ASCII in the higher-level functions as long as we don\u0027t have such a complicated conversion step in the end. My main concerns here are the big UTF8ToUCS2() function with all the UTF8 special cases (which we don\u0027t need because we know the partition names we care about only use ASCII characters), and the dynamic allocations from string stitching. A super simple ASCII-only conversion like utfle16_to_ascii() in libpayload would be fine.\n\nReally, you don\u0027t exactly need a conversion function for anything you do here, you just need a function that compares a GPT entry to an ASCII partition name. So why not just provide that? We also usually need a suffix and that tends to be the only stitching we need, so I would suggest something like this:\n```\nbool GptEntryHasName(GptEntry *entry, const char *name, const char *opt_suffix)\n{\n\tfor (int i \u003d 0; i \u003c ARRAY_SIZE(entry-\u003ename); i++) {\n\t\tuint16_t wc \u003d entry-\u003ename[i];\n\t\tchar c \u003d \u0027\\0\u0027\n\t\t\n\t\tif (*name !\u003d \u0027\\0\u0027)\n\t\t\tc \u003d *name++;\n\t\telse if (opt_suffix \u0026\u0026 *opt_suffix !\u003d \u0027\\0\u0027)\n\t\t\tc \u003d *opt_suffix++;\n\t\t  \n\t\tif (wc \u003e 0x7f || (char)wc !\u003d c)\n\t\t\treturn false;\n\t\t  \n\t\tif (c \u003d\u003d \u0027\\0\u0027)\n\t\t\treturn true;\n\t}\n\t\n\treturn false;\n}\n```",
+      "parentUuid": "5978f391_31d7c021",
+      "revId": "d81b1387b644ec4993d330bdcf73fa0e31edc37b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
