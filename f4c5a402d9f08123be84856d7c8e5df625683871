@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d3c0847_6f30c928",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-11-08T06:40:20Z",
+      "side": 1,
+      "message": "Sorry, I think I misunderstood the meaning of this field. I thought vboot would store the complete kernel cmdline here, but this actually only contains the cmdline for avb. Therefore the naming `vboot_cmdline_buffer` is more appropriate.",
+      "range": {
+        "startLine": 648,
+        "startChar": 7,
+        "endLine": 648,
+        "endChar": 28
+      },
+      "revId": "f4c5a402d9f08123be84856d7c8e5df625683871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
