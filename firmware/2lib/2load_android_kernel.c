@@ -42,7 +42,7 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 	enum vb2_boot_command cmd;
 
 	io_ret = ops->read_from_partition(ops,
-					  GPT_ENT_NAME_ANDROID_MISC,
+					  GptPartitionNames[GPT_ANDROID_MISC],
 					  0,
 					  sizeof(struct bootloader_message),
 					  &bcb,
@@ -81,14 +81,14 @@ vb2_error_t vb2_load_android_kernel(
 	VbExStream_t stream, GptData *gpt, vb2ex_disk_handle_t disk_handle,
 	int need_keyblock_valid)
 {
-	char *ab_suffix = NULL;
+	const char *ab_suffix = NULL;
 	AvbSlotVerifyData *verify_data = NULL;
 	AvbOps *avb_ops;
 	const char *boot_partitions[] = {
-		GPT_ENT_NAME_ANDROID_BOOT,
-		GPT_ENT_NAME_ANDROID_INIT_BOOT,
-		GPT_ENT_NAME_ANDROID_VENDOR_BOOT,
-		GPT_ENT_NAME_ANDROID_PVMFW,
+		GptPartitionNames[GPT_ANDROID_BOOT],
+		GptPartitionNames[GPT_ANDROID_INIT_BOOT],
+		GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
+		GptPartitionNames[GPT_ANDROID_PVMFW],
 		NULL,
 	};
 	AvbSlotVerifyFlags avb_flags;
@@ -103,8 +103,10 @@ vb2_error_t vb2_load_android_kernel(
 	 */
 	uint64_t pvmfw_start;
 	uint64_t pvmfw_size;
-	if (params->pvmfw_buffer_size == 0 ||
-	    GptFindPvmfw(gpt, &pvmfw_start, &pvmfw_size) != GPT_SUCCESS) {
+	int err;
+	err = GptFindActivePartitionOffset(gpt, GptPartitionNames[GPT_ANDROID_PVMFW],
+					   &pvmfw_start, &pvmfw_size);
+	if (params->pvmfw_buffer_size == 0 || err != GPT_SUCCESS) {
 		if (params->pvmfw_buffer_size != 0)
 			VB2_DEBUG("Couldn't find pvmfw partition. Ignoring.\n");
 
@@ -112,15 +114,14 @@ vb2_error_t vb2_load_android_kernel(
 		params->pvmfw_size = 0;
 	}
 
-	ret = GptGetActiveKernelPartitionSuffix(gpt, &ab_suffix);
-	if (ret != GPT_SUCCESS) {
+	ab_suffix = GptGetActiveKernelPartitionSuffix(gpt);
+	if (ab_suffix == NULL) {
 		VB2_DEBUG("Unable to get kernel partition suffix\n");
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
 	}
 
 	avb_ops = vboot_avb_ops_new(ctx, params, stream, gpt, disk_handle);
 	if (avb_ops == NULL) {
-		free(ab_suffix);
 		VB2_DEBUG("Cannot allocate memory for AVB ops\n");
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
 	}
@@ -135,7 +136,6 @@ vb2_error_t vb2_load_android_kernel(
 			avb_flags,
 			AVB_HASHTREE_ERROR_MODE_RESTART_AND_INVALIDATE,
 			&verify_data);
-	free(ab_suffix);
 
 	/* Ignore verification errors in developer mode */
 	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {

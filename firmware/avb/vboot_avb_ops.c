@@ -45,7 +45,7 @@ static AvbIOResult vboot_avb_read_from_partition(AvbOps *ops,
 	uint64_t start_sector, sectors_to_read, pre_misalign;
 	uint8_t *tmp_buf;
 
-	if (GptFindOffsetByName(ctx->gpt, partition_name, &part_start, &part_size) !=
+	if (GptFindPartitionOffset(ctx->gpt, partition_name, &part_start, &part_size) !=
 	    GPT_SUCCESS) {
 		VB2_DEBUG("Unable to find %s partition\n", partition_name);
 		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
@@ -120,7 +120,7 @@ static AvbIOResult vboot_avb_get_size_of_partition(AvbOps *ops,
 	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
 	uint64_t part_start, part_size;
 
-	if (GptFindOffsetByName(ctx->gpt, partition_name, &part_start, &part_size) !=
+	if (GptFindPartitionOffset(ctx->gpt, partition_name, &part_start, &part_size) !=
 	    GPT_SUCCESS) {
 		VB2_DEBUG("Unable to find %s partition\n", partition_name);
 		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
@@ -188,7 +188,7 @@ static AvbIOResult get_unique_guid_for_partition(AvbOps *ops,
 	if (!gpt)
 		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
 
-	if (GptFindUniqueByName(gpt, partition, &guid) != GPT_SUCCESS)
+	if (GptFindPartitionUnique(gpt, partition, &guid) != GPT_SUCCESS)
 		return AVB_IO_RESULT_ERROR_IO;
 
 	ret = snprintf(guid_buf, guid_buf_size,
@@ -294,6 +294,7 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 	uint64_t part_bytes;
 	uint8_t *part_pvmfw_buf = (uint8_t *) params->pvmfw_buffer;
 	vb2_error_t res = VB2_ERROR_LOAD_PARTITION_READ_BODY;
+	int ret;
 
 	if (params->pvmfw_buffer_size == 0) {
 		VB2_DEBUG("No buffer for pvmfw partition\n");
@@ -301,7 +302,9 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 	}
 
 	/* Fail there is no pvmfw partition */
-	if (GptFindPvmfw(gpt, &part_start, &part_size) != GPT_SUCCESS) {
+	ret = GptFindActivePartitionOffset(gpt, GptPartitionNames[GPT_ANDROID_PVMFW],
+					   &part_start, &part_size);
+	if (ret != GPT_SUCCESS) {
 		VB2_DEBUG("Unable to find pvmfw partition\n");
 		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
 	}
@@ -396,8 +399,11 @@ static vb2_error_t vb2_load_vendor_boot_ramdisk(struct vb2_context *ctx, GptData
 						uint32_t *bytes_used)
 {
 	uint64_t part_start, part_size;
+	int ret;
 
-	if (GptFindVendorBoot(gpt, &part_start, &part_size) != GPT_SUCCESS) {
+	ret = GptFindActivePartitionOffset(gpt, GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
+					   &part_start, &part_size);
+	if (ret != GPT_SUCCESS) {
 		VB2_DEBUG("Unable to find vendor_boot partition\n");
 		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
 	}
@@ -419,8 +425,11 @@ static vb2_error_t vb2_load_init_boot_ramdisk(struct vb2_context *ctx, GptData *
 					      uint32_t *bytes_used)
 {
 	uint64_t part_start, part_size;
+	int ret;
 
-	if (GptFindInitBoot(gpt, &part_start, &part_size) != GPT_SUCCESS) {
+	ret = GptFindActivePartitionOffset(gpt, GptPartitionNames[GPT_ANDROID_INIT_BOOT],
+					   &part_start, &part_size);
+	if (ret != GPT_SUCCESS) {
 		VB2_DEBUG("Unable to find init_boot partition\n");
 		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
 	}
@@ -530,7 +539,7 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 	static uint32_t bytes_used;
 	static bool ramdisk_preloaded = false;
 	struct vboot_avb_data *avb_data = (struct vboot_avb_data *)ops->user_data;
-	char *suffix = NULL;
+	const char *suffix;
 	char *short_partition_name;
 	int ret;
 
@@ -538,13 +547,12 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 	 * Only load the partitions with suffix matching to the currently
 	 * selected slot.
 	 */
-	ret = GptGetActiveKernelPartitionSuffix(avb_data->gpt, &suffix);
-	if (ret != GPT_SUCCESS) {
+	suffix = GptGetActiveKernelPartitionSuffix(avb_data->gpt);
+	if (suffix == NULL) {
 		VB2_DEBUG("Unable to get kernel partition suffix\n");
-		return ret;
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
 	}
 	if (strcmp(&partition[strlen(partition) - strlen(suffix)], suffix)) {
-		free(suffix);
 		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
 	}
 
@@ -555,7 +563,6 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 	short_partition_name = malloc(strlen(partition) - strlen(suffix) + 1);
 	memcpy(short_partition_name, partition, strlen(partition) - strlen(suffix));
 	short_partition_name[strlen(partition) - strlen(suffix)] = '\0';
-	free(suffix);
 
 	*out_pointer = NULL;
 	if (!strcmp(short_partition_name, "boot")) {
@@ -601,6 +608,8 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 		*out_num_bytes_preloaded = avb_data->params->pvmfw_size;
 
 		ret = AVB_IO_RESULT_OK;
+	} else {
+		ret = AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
 	}
 
 out:

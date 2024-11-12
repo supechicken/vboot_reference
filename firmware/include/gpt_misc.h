@@ -199,14 +199,6 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type);
  */
 int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type);
 
-/**
- * Get kernel partition suffix of active current_kernel.
- *
- * Returns GPT_SUCCESS if successful, else
- *   GPT_ERROR_NO_VALID_KERNEL.
- */
-int GptGetActiveKernelPartitionSuffix(GptData *gpt, char **suffix);
-
 /* Getters and setters for partition attribute fields. */
 
 int GetEntryRequired(const GptEntry *e);

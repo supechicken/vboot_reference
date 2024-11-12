@@ -221,7 +221,7 @@ bool IsAndroidBootPartition(const GptEntry *e, const char *suffix)
 	int size_ucs2;
 	char *name;
 
-	name = JoinStr(GPT_ENT_NAME_ANDROID_BOOT, suffix);
+	name = JoinStr(GptPartitionNames[GPT_ANDROID_BOOT], suffix);
 	if (name == NULL)
 		return is_android_boot_part;
 

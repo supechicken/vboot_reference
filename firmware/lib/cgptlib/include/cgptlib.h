@@ -9,6 +9,18 @@
 #include "2sysincludes.h"
 #include "gpt_misc.h"
 
+enum GptPartition {
+	GPT_ANDROID_BOOT,
+	GPT_ANDROID_INIT_BOOT,
+	GPT_ANDROID_VENDOR_BOOT,
+	GPT_ANDROID_PVMFW,
+	GPT_ANDROID_MISC,
+	/* Last entry, add new above */
+	GPT_PART_MAX
+};
+
+extern const char *GptPartitionNames[GPT_PART_MAX];
+
 /**
  * Provides the location of the next kernel partition, in order of decreasing
  * priority.
@@ -23,54 +35,38 @@
 int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size);
 
 /**
- * Find init_boot partition for selected slot.
- * Must be called after GptNextKernelEntry.
+ * Get kernel partition suffix of active current_kernel.
  *
- * On return the start_sector parameter contains the LBA sector for the start
- * of the init_boot partition, and the size parameter contains the size of the
- * init_boot partition in LBA sectors.
- * Returns GPT_SUCCESS if successful.
+ * Returns suffix if successful, else NULL
  */
-int GptFindInitBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size);
-
-/**
- * Find vendor_boot partition for selected slot.
- * Must be called after GptNextKernelEntry.
- *
- * On return the start_sector parameter contains the LBA sector for the start
- * of the init_boot partition, and the size parameter contains the size of the
- * init_boot partition in LBA sectors.
- * Returns GPT_SUCCESS if successful.
- */
-int GptFindVendorBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size);
-
-/**
- * Find pvmfw partition for selected slot.
- * Must be called after GptNextKernelEntry.
- *
- * On return the start_sector parameter contains the LBA sector for the start
- * of the pvmfw partition, and the size parameter contains the size of the
- * pvmfw partition in LBA sectors.
- * Returns GPT_SUCCESS if successful.
- */
-int GptFindPvmfw(GptData *gpt, uint64_t *start_sector, uint64_t *size);
+const char *GptGetActiveKernelPartitionSuffix(GptData *gpt);
 
 /**
  * Provides start_sector and size for given partition by its UTF16LE name.
  *
- * Returns GPT_SUCCESS if successful, else
- *   GPT_ERROR_NO_SUCH_ENTRY.
+ * On successful return the start sectore and size of partition.
+ * Returns GPT_SUCCESS if successful, else GPT_ERROR_NO_SUCH_ENTRY.
  */
-int GptFindOffsetByName(GptData *gpt, const char *name,
+int GptFindPartitionOffset(GptData *gpt, const char *name,
 			uint64_t *start_sector, uint64_t *size);
+
+/**
+ * Provides start_sector and size for active partition by its UTF16LE name.
+ * It checks what is the active suffix (a/b) and adds it to name before
+ * finding partition.
+ *
+ * On successful return the start sectore and size of partition.
+ * Returns GPT_SUCCESS if successful, else GPT_ERROR_NO_SUCH_ENTRY.
+ */
+int GptFindActivePartitionOffset(GptData *gpt, const char *name,
+			    uint64_t *start_sector, uint64_t *size);
 
 /**
  * Find unique GUID for given partition name.
  *
  * On successful return the guid contains the unique GUID of partition.
- * Returns GPT_SUCCESS if successful, else
- *   GPT_ERROR_NO_SUCH_ENTRY.
+ * Returns GPT_SUCCESS if successful, else GPT_ERROR_NO_SUCH_ENTRY.
  */
-int GptFindUniqueByName(GptData *gpt, const char *name, Guid *guid);
+int GptFindPartitionUnique(GptData *gpt, const char *name, Guid *guid);
 
 #endif  /* VBOOT_REFERENCE_CGPTLIB_H_ */
