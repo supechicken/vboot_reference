@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "760dd9be_f26b05a6",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "+1. need_valid_keyblock() is currently static, though, so would have to find a better name and location to export it first (e.g. `vb2_need_valid_keyblock()`, maybe in `2misc.h`).",
+      "parentUuid": "4fdb0249_5d75bc95",
+      "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e09aafeb_4ca8529c",
         "filename": "firmware/avb/vboot_avb_sysdeps.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-26T11:34:36Z",
       "side": 1,
       "message": "Maybe we can add `libavb/avb_sysdeps_posix.c` from libavb to our build instead of this?\n\nThe main difference between this and the _posix.c is the use of `vb2ex_printf` instead of `fprintf`.\nWith that being said `cgpt/cgpt_common.c` also calls `fprintf`, so maybe that\u0027s fine?",
+      "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c77de3_24c13def",
+        "filename": "firmware/avb/vboot_avb_sysdeps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "cgpt is a userspace utility, those have different rules. For firmware code we want to stick to `vb2ex_printf()` (and certain other differences, e.g. `vb2ex_abort()`). I think having a separate file is probably best.",
+      "parentUuid": "e09aafeb_4ca8529c",
       "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

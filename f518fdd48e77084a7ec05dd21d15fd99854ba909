@@ -3,6 +3,263 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8eaa1f4_51130c78",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "I think it would be better to pull in AVB as a submodule or a pre-built library or something like that, and build it using its own official build system. Copying files gets messy, and so does duplicating build rules. We can do this as a stopgap for now if the alternatives are too cumbersome but eventually we should improve things.\n\nIt is unfortunate that AVB seems to depend on Soong, since we want vboot to remain a standalone library that can be integrated into upstream coreboot. But we don\u0027t really need the AVB parts in coreboot, so I think we can probably solve that by treating AVB as an optional feature that will simply not be included in the coreboot build (similar to how we already have USE_FLASHROM). For our depthcharge build we could either create a separate ebuild that builds libavb.a using Soong and then passes that file in for vboot to link, or we could have the vboot Makefile invoke the Soong build as a recipe.",
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef274986_dbb32e95",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "Is anyone actually working on these bugs or routing them to the appropriate Android team?",
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda14772_76cf122d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "(I really don\u0027t get why they decided to model this as both a flag (AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR) and a callback. It\u0027s frustrating when we just have to follow these questionable design decisions with no way to influence them or even an explanation...)",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5383555_080c5e83",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "Let\u0027s generally use `actx` or `avbctx` or something like that for these locals, because everywhere else in vboot `ctx` means the vb2_context.",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "383637e9_7d474246",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "This should check for `ctx-\u003evb2_ctx-\u003eboot_mode \u003d\u003d VB2_BOOT_MODE_DEVELOPER`. (When the developer switch is set but we\u0027re booting in recovery mode, we still want to verify kernels.)",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 65
+      },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a785d411_fc4ac2c8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "nit: bool (all of these)",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "785e35ee_0bb38f28",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "The FWMP_DEV_USE_KEY_HASH flag would put us into \"yellow\" boot mode, which I think is technically still supposed to count as \"locked\" for Android. So maybe that should be checked here as well?",
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d560c4c4_70cce53d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "nit: I would write this whole function a bit simpler, as:\n\n```\n*out_is_unlocked \u003d false;\n\nif (ctx-\u003evb2_ctx-\u003eboot_mode !\u003d VB2_BOOT_MODE_DEVELOPER)\n  return AVB_IO_RESULT_OK;\n\nif (vb2_secdata_fwmp_get_flag...)\n  return AVB_IO_RESULT_OK;\n  \n...more checks...\n\n*out_is_unlocked \u003d true;\n\nreturn AVB_IO_RESULT_OK;\n```",
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20aba5c0_082437f2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "Why can\u0027t we implement this right now? We should maybe change GptFindOffsetByName() into GptFindEntryByName(), so that callers still have a chance to extract other entry fields (like the GUID). I think they\u0027re about to switch to using GUID for kernel rootfs selection (b/316324155), so this may become very relevant quite soon.",
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6335accf_f6dbeaa0",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 5
+      },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85bea7fd_e46d73a9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "This isn\u0027t part of AVB so we should just use VB2_DEBUG().",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be308b9_7f369273",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "Why is this using avb_calloc() rather than vboot\u0027s normal malloc()? This isn\u0027t really part of AVB.\n\nIn fact, does this need to be dynamically allocated at all? Why not just define a static global with a static initializer?",
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799124d6_8b0deeed",
+        "filename": "firmware/avb/vboot_avb_ops.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "Rather than putting this here I think it would be better to put it into firmware/2lib/include (call it 2avb.h or something like that).",
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9fec7dc_cc25431a",
         "filename": "firmware/avb/vboot_avb_sysdeps.c",
         "patchSetId": 3
@@ -91,6 +348,23 @@
         "endLine": 16,
         "endChar": 14
       },
+      "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f639e7_94524787",
+        "filename": "firmware/avb/vboot_avb_sysdeps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-14T21:59:41Z",
+      "side": 1,
+      "message": "I believe(?) it might be possible to deal with these identical-signature cases with the alias attribute. This would have the advantage that they can be linked to the right function directly without an extra stub function in between. Try:\n```\nvoid *avb_memcpy(void *dest, const void *src, size_t n) __attribute__((alias(\"memcpy\")));\n```",
       "revId": "f518fdd48e77084a7ec05dd21d15fd99854ba909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
