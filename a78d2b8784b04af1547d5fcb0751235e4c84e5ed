@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e647e5c5_66aa441e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c00f7cdd_ad62ea3d",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "a78d2b8784b04af1547d5fcb0751235e4c84e5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d950213_34f20c32",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-11-08T08:56:55Z",
       "side": 1,
       "message": "are",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "a78d2b8784b04af1547d5fcb0751235e4c84e5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7ba9dd_a7cb0a10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d950213_34f20c32",
       "range": {
         "startLine": 10,
         "startChar": 56,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "754c7569_d61785aa",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1675,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e65318d6_8a741509",
+      "revId": "a78d2b8784b04af1547d5fcb0751235e4c84e5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fd387f0_b97a520a",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "667cad46_f771ae7f",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:47:14Z",
+      "side": 1,
+      "message": "I modified functions based on Julius comment, it is the first patch in this relationship chain. Tests for GptFindOffsetByName (renamed to GptFindPartitionOffset) has been added. GptFindVendorBoot \u0026 GptFindPvmfw were removed",
+      "parentUuid": "1fd387f0_b97a520a",
+      "revId": "a78d2b8784b04af1547d5fcb0751235e4c84e5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f582e34f_0b5038bf",
@@ -94,6 +178,30 @@
       "writtenOn": "2024-11-08T08:56:55Z",
       "side": 1,
       "message": "Should initialize these variables for all the 3 test cases here.",
+      "range": {
+        "startLine": 1693,
+        "startChar": 1,
+        "endLine": 1694,
+        "endChar": 10
+      },
+      "revId": "a78d2b8784b04af1547d5fcb0751235e4c84e5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f83642a_0878605a",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f582e34f_0b5038bf",
       "range": {
         "startLine": 1693,
         "startChar": 1,
