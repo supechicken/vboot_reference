@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd2473a_02607b74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:55:54Z",
+      "side": 1,
+      "message": "Done on firmware-android-15949.B. This patchset will be abandoned due to new features implemented on firmware-android-15949.B which makes this one obsolete. New patchset will be based on changes from firmware-android-15949.B",
+      "parentUuid": "38660075_93dbb0bf",
+      "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47fb0eb8_232b216c",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-10-01T23:22:59Z",
       "side": 1,
       "message": "This file should not be in both vboot and depthcharge separately. If it is needed in both, put it in vboot and let depthcharge include it through there (e.g. call it `vb2_android_bootimg.h` or something like that).",
+      "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352b3930_752eedba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:55:54Z",
+      "side": 1,
+      "message": "This changes has been made in firmware-android-15949.B branch and will be sent in a  new patchset. This patchset will be abandoned due to new features implemented on firmware-android-15949.B which makes this one obsolete.New patchset will be based on changes from firmware-android-15949.B",
+      "parentUuid": "47fb0eb8_232b216c",
       "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +174,24 @@
       "side": 1,
       "message": "I talked with opensource-licensing@ . The preferred way to do this is to get u-boot version of the file and update missing part. It is the simplest and fastest solution. I will update the file.",
       "parentUuid": "19288034_4d129139",
+      "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3347fac6_8119478d",
+        "filename": "firmware/avb/android_image_hdr.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-14T18:55:54Z",
+      "side": 1,
+      "message": "Relicensing has been made on firmware-android-15949.B. This patchset will be abandoned due to new features implemented on firmware-android-15949.B which makes this one obsolete. New patchset will be based on changes from firmware-android-15949.B",
+      "parentUuid": "0551ab97_a0487530",
       "revId": "2c14da05e52091cd671a8fedc966a09c40e7a656",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
