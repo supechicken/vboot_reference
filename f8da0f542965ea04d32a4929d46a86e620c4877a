@@ -16,6 +16,24 @@
       "message": "Keeping the changes on hold, though the changes has been verified and forced CSE sync is working for dedede platform, but it may not be useful in autotest as dedede platform lacks doesn\u0027t have elog for CSE sync.",
       "revId": "f8da0f542965ea04d32a4929d46a86e620c4877a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f25f676_e1840749",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2024-11-14T06:16:49Z",
+      "side": 1,
+      "message": "\u003e Keeping the changes on hold, though the changes has been verified and forced CSE sync is working for dedede platform, but it may not be useful in autotest as dedede platform lacks doesn\u0027t have elog for CSE sync.\n\n\nplease sync with Karthik and Noga before adding more changes into the older device fw branch",
+      "parentUuid": "a6cf6ab9_8eb361d8",
+      "revId": "f8da0f542965ea04d32a4929d46a86e620c4877a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
