@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "210521b2_a74b3fc1",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "ADK was removed.",
+      "parentUuid": "0bbd0f3b_171249bf",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6f958a2_bf05f6ea",
@@ -236,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83b9d38_c5ded47c",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6ac673_9cd53adf",
+      "range": {
+        "startLine": 504,
+        "startChar": 5,
+        "endLine": 504,
+        "endChar": 44
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3530cc_09856082",
@@ -354,6 +402,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d53d629_3caa774f",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7310c382_484f2b51",
+      "range": {
+        "startLine": 513,
+        "startChar": 3,
+        "endLine": 513,
+        "endChar": 4
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fc9cb68_683b6fc4",
@@ -367,6 +439,30 @@
       "writtenOn": "2024-07-01T14:55:19Z",
       "side": 1,
       "message": "need_valid_keyblock\n\n`VB2_CONTEXT_DEVELOPER_MODE` actually means \"dev switch is on\", not \"in dev mode\". In recovery mode, dev switch can be either on or off, but we can\u0027t ignore verification errors.",
+      "range": {
+        "startLine": 519,
+        "startChar": 5,
+        "endLine": 519,
+        "endChar": 44
+      },
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5636f4b_45997f1d",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Fixed in CL:6030619",
+      "parentUuid": "1fc9cb68_683b6fc4",
       "range": {
         "startLine": 519,
         "startChar": 5,
@@ -394,6 +490,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9cc7514_be66e30d",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Fixed in CL:6030619",
+      "parentUuid": "891e170a_b78bb3d7",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "471887c6_304298a1",
@@ -407,6 +521,24 @@
       "writtenOn": "2024-07-01T14:55:19Z",
       "side": 1,
       "message": "`VB2_SUCCESS`. `ret` needs to be one of the constants defined for `vb2_error_t`. The same argument applies to other assignments for `ret` below.",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c576c8ab_dac83aea",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Fixed in CL:6030619",
+      "parentUuid": "471887c6_304298a1",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -586,6 +718,24 @@
       "side": 1,
       "message": "\u003e Is Android reusing that same header format for two different pieces?\n\nYes - see [this slide](https://docs.google.com/presentation/d/1jHYoKIn9Qj5NCrvtz2vFRe3mg-rEnWA3r8IV_CZiLEI/edit?resourcekey\u003d0-U_C6GFY8yYq6STLfhFXhmw#slide\u003did.g2158409f8fc_0_2) from go/al-eng-bootcamp.",
       "parentUuid": "5aceca03_97177007",
+      "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f45179e_de29f992",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce9b3b0_ad0ec432",
       "revId": "282437f8785fd0cd39e1fdcbeb6b3ae2ac1489f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

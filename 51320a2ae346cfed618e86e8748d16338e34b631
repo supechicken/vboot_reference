@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc96b43e_9af717ad",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d87b67c6_66596eb4",
+      "revId": "51320a2ae346cfed618e86e8748d16338e34b631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad54ec2a_e2c751d4",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-07-26T13:47:02Z",
       "side": 1,
       "message": "I think this should be moved to the previous patch",
+      "revId": "51320a2ae346cfed618e86e8748d16338e34b631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f331da6_1e9f7a99",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:15:14Z",
+      "side": 1,
+      "message": "Actually this should be removed, the comment for removal is added to new patchset",
+      "parentUuid": "ad54ec2a_e2c751d4",
       "revId": "51320a2ae346cfed618e86e8748d16338e34b631",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
