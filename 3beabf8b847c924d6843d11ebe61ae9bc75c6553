@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5414153f_ab6a4813",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:08:15Z",
+      "side": 1,
+      "message": "Fixed in CL:6030618",
+      "parentUuid": "6e521376_18ccd8aa",
+      "revId": "3beabf8b847c924d6843d11ebe61ae9bc75c6553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec8a57a7_4b093c79",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "962b8d66_ba49bf39",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:08:15Z",
+      "side": 1,
+      "message": "That\u0027s not exactly true. VB2_DEBUG is defined always, but is is empty if VBOOT_DEBUG is not defined.",
+      "parentUuid": "ec8a57a7_4b093c79",
+      "revId": "3beabf8b847c924d6843d11ebe61ae9bc75c6553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c3fc1ff_ec3b08c8",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-07-26T13:36:04Z",
       "side": 1,
       "message": "Same here, you should hide the speed calculation code behind `#ifdef VBOOT_DEBUG`",
+      "revId": "3beabf8b847c924d6843d11ebe61ae9bc75c6553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00da288_dd8acd2d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:08:15Z",
+      "side": 1,
+      "message": "As above",
+      "parentUuid": "7c3fc1ff_ec3b08c8",
       "revId": "3beabf8b847c924d6843d11ebe61ae9bc75c6553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
