@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1366c2e7_5b1650fb",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:01:25Z",
+      "side": 1,
+      "message": "Moved to CL:6030615",
+      "parentUuid": "760dd9be_f26b05a6",
+      "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e09aafeb_4ca8529c",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "cgpt is a userspace utility, those have different rules. For firmware code we want to stick to `vb2ex_printf()` (and certain other differences, e.g. `vb2ex_abort()`). I think having a separate file is probably best.",
       "parentUuid": "e09aafeb_4ca8529c",
+      "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9673b7_14724200",
+        "filename": "firmware/avb/vboot_avb_sysdeps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c77de3_24c13def",
       "revId": "afac2088846beb90ff985e43e79d3f3af74ac6bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
