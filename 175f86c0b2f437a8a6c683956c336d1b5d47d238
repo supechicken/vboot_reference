@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a919e564_7bd80b34",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:19:08Z",
+      "side": 1,
+      "message": "Done in CL:6030611",
+      "parentUuid": "636ac9ec_76081f1e",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de044750_a8f08dc1",
         "filename": "firmware/include/gpt_misc.h",
         "patchSetId": 1
@@ -737,6 +755,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c17d38d_be0ed849",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:19:08Z",
+      "side": 1,
+      "message": "Done in CL:6030611",
+      "parentUuid": "99e87955_afa4a4b1",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09a3989e_c7a1b98e",
         "filename": "firmware/lib/cgptlib/include/cgptlib.h",
         "patchSetId": 1
@@ -829,6 +865,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fbddff_3d6c0342",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:19:08Z",
+      "side": 1,
+      "message": "It was removed in CL:6030611",
+      "parentUuid": "54a14c89_09f0f1bc",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6d4a3f8_e73cff2a",
@@ -866,6 +926,30 @@
       "side": 1,
       "message": "I\u0027ll do test related changes in next patchset, I just wanted to address other comments first.",
       "parentUuid": "a6d4a3f8_e73cff2a",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 1
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618e0bb4_6bc76d99",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:19:08Z",
+      "side": 1,
+      "message": "It was removed in CL:6030611",
+      "parentUuid": "40835c5a_0fa784fb",
       "range": {
         "startLine": 207,
         "startChar": 1,
