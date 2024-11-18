@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac2ad86_745cf3e6",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a919e564_7bd80b34",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de044750_a8f08dc1",
@@ -771,6 +789,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0225d1b_9153e154",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c17d38d_be0ed849",
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09a3989e_c7a1b98e",
@@ -950,6 +986,30 @@
       "side": 1,
       "message": "It was removed in CL:6030611",
       "parentUuid": "40835c5a_0fa784fb",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 1
+      },
+      "revId": "175f86c0b2f437a8a6c683956c336d1b5d47d238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87dace8_8a39152a",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "618e0bb4_6bc76d99",
       "range": {
         "startLine": 207,
         "startChar": 1,
