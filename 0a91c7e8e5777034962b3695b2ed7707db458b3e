@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34b0afad_7910fddb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:25:56Z",
+      "side": 1,
+      "message": ".",
+      "fixSuggestions": [
+        {
+          "fixId": "c2848501_9e92f598",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "#define VB2_KERNEL_TYPE_BOOTIMG     1  /* Single boot image */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0a91c7e8e5777034962b3695b2ed7707db458b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df6105e_a2e08722",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:25:56Z",
+      "side": 1,
+      "message": "Since we are reusing VB2_KERNEL_TYPE_BOOTIMG, remove Smaug and Foster boards",
+      "fixSuggestions": [
+        {
+          "fixId": "1b067ff0_1d3d0a47",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 37,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "#define VB2_KERNEL_TYPE_BOOTIMG     0\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0a91c7e8e5777034962b3695b2ed7707db458b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
