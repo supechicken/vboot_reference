@@ -44,6 +44,24 @@
       ],
       "revId": "2d2105832a13ba0afdf65bbbc9eb2452fc4fe1a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fccb56ca_06cd6ef7",
+        "filename": "firmware/include/gpt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:09:56Z",
+      "side": 1,
+      "message": "Fixed in CL:6030611",
+      "parentUuid": "03e6d5db_9bc1df31",
+      "revId": "2d2105832a13ba0afdf65bbbc9eb2452fc4fe1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
