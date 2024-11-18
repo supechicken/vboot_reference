@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153cca24_e1b933ee",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:35:23Z",
+      "side": 1,
+      "message": "Address comment:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650814/comment/299f6e3d_fe6284af/",
+      "fixSuggestions": [
+        {
+          "fixId": "8e3b511e_aad1ed21",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 626,
+                "startChar": 0,
+                "endLine": 627,
+                "endChar": 0
+              },
+              "replacement": "\t/* Android init_boot partition address (in bytes) in kernel_buffer. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "579b274b551b9990a2ee3a17ad01e04bd4177b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
