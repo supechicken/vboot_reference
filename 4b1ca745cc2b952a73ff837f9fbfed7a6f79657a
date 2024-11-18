@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t belong to this patch (maybe you meant to add this in CL:5650813 instead?).\n\nOn the other hand, structures defined in 2struct.h seem to be private to vboot, and therefore shouldn\u0027t be added here. As I said in CL:5650813, I\u0027d suggest moving the `VB2_KERNEL_TYPE_*` to this file.",
       "revId": "4b1ca745cc2b952a73ff837f9fbfed7a6f79657a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d582450_0f70cfb4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T15:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75ffdf9_4ec0132b",
+      "revId": "4b1ca745cc2b952a73ff837f9fbfed7a6f79657a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
