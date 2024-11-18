@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8decc424_cff9c8b9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:05:15Z",
+      "side": 1,
+      "message": "Freeing null is not a problem.",
+      "parentUuid": "39fd7c7a_24efbf30",
+      "revId": "8d1a1d7dc1896e78d4db2c7803c915375ac44447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a90b0b2c_c3d22fdc",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-26T12:44:16Z",
       "side": 1,
       "message": "You can avoid this malloc by changing the endianness in flight and comparing keys in a loop instead of using memcmp.",
+      "revId": "8d1a1d7dc1896e78d4db2c7803c915375ac44447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e31a788_4888634d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:05:15Z",
+      "side": 1,
+      "message": "Yes, I tried that in new patchset, but it would not look good.",
+      "parentUuid": "a90b0b2c_c3d22fdc",
       "revId": "8d1a1d7dc1896e78d4db2c7803c915375ac44447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "372e194e_67555b5d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ee8467_21647631",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "8adb01b2b281241c56d8e07970b29cd2414fdcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5be4635d_e6628328",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-26T11:28:22Z",
       "side": 1,
       "message": "Just do it once at the beginning of this function. Then you can drop all repeated lines and set it to true at the end.",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 30
+      },
+      "revId": "8adb01b2b281241c56d8e07970b29cd2414fdcb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55c78b3_c25ec7bc",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-18T16:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5be4635d_e6628328",
       "range": {
         "startLine": 214,
         "startChar": 2,
