@@ -1,0 +1,100 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b98478_c2690eb4",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-21T23:11:28Z",
+      "side": 1,
+      "message": "Is there a reason to have a buffer for the GUID passed in here, rather than just returning a `Guid *` to the bytes inside the GptEntry (or `NULL` when not found)? Alternatively I\u0027m not sure we need this function at all, it doesn\u0027t really abstract enough to be worth a different interface compared to just calling `e \u003d GptFindEntryByName()` and then operating on `e-\u003eunique`.\n\n(If you do want to keep this function, I think the term \"Unique\" is a bit too confusing here, I\u0027d just call this `GptGetPartitionGuid()`.)",
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b02b45_575dd917",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-21T23:11:28Z",
+      "side": 1,
+      "message": "Here too, I think that honestly needing to prepare all these locals to pass in pointers to them is more complicated than just calling `GptFindEntryByName()` and operating on the result structure. To avoid having to code the `ending_lba - starting_lba + 1` every time, you can use `GptGetEntrySizeLba()`. Everything else in here is kinda overhead for the function API rather than actually useful logic we want to reuse.",
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bd0797_78989227",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-21T23:11:28Z",
+      "side": 1,
+      "message": "If you follow the above suggestions, then it would probably make sense to just turn this into a `GptFindActivePartitionByName()` that just finds the correct suffix and does a `GptFindPartitionByName()` on that, and then the caller can access the Guid, offsets or whatever it wants in the returned `GptEntry *` struct.",
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db02136_4e9ccc89",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-21T23:11:28Z",
+      "side": 1,
+      "message": "\"MAX\" implies that it\u0027s the last valid one, which isn\u0027t true here. `NUM_GPT_PART` or `GPT_PART_COUNT` would be more appropriate, however that name is also kinda confusing because it sounds like the number of GPT partitions you have, not the number of predefined constants for Android-specific partitions.\n\nI don\u0027t think you need this constant at all. I think(?) you can just forward-declare the array without size:\n```\nextern const char *GptPartitionNames[];\n```\n(That means you can\u0027t `ARRAY_SIZE()` it but I don\u0027t think there should ever be a need for that anyway.)",
+      "fixSuggestions": [
+        {
+          "fixId": "37516f24_e9d0c8ec",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/cgptlib/include/cgptlib.h",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 20,
+                "endChar": 0
+              },
+              "replacement": "\tGPT_PART_NUM\n"
+            },
+            {
+              "path": "firmware/lib/cgptlib/include/cgptlib.h",
+              "range": {
+                "startLine": 22,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": "extern const char *GptPartitionNames[GPT_PART_NUM];\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
