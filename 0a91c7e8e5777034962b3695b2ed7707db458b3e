@@ -3,6 +3,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a7b29ca_47f9e651",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-21T23:15:14Z",
+      "side": 1,
+      "message": "This would probably fit better in `2constants.h` (chain-included from here).",
+      "fixSuggestions": [
+        {
+          "fixId": "9f219b85_5ca7948f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "0a91c7e8e5777034962b3695b2ed7707db458b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34b0afad_7910fddb",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 1
