@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f842c1_d5610bf6",
+        "filename": "firmware/include/vb2_android_bootimg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-21T23:18:45Z",
+      "side": 1,
+      "message": "If we rewrite all those other things anyway we should also rewrite the header guard to match the new file name and vboot convention.",
+      "fixSuggestions": [
+        {
+          "fixId": "43312d9c_516867e1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/vb2_android_bootimg.h",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 13,
+                "endChar": 0
+              },
+              "replacement": "#ifndef VB2_ANDROID_BOOTIMG_H_\n#define VB2_ANDROID_BOOTIMG_H_\n"
+            },
+            {
+              "path": "firmware/include/vb2_android_bootimg.h",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 191,
+                "endChar": 0
+              },
+              "replacement": "#endif /* VB2_ANDROID_BOOTIMG_H_ */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6360fc9c0b07f3d6c9c21e30df75db4d323fa0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
