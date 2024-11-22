@@ -3,6 +3,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e48a1c6b_61e5301b",
+        "filename": "firmware/2lib/include/2sysincludes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-22T00:27:47Z",
+      "side": 1,
+      "message": "The CGPT code has never been endianness-safe, and there are many more serious issues in there than just printing GUIDs correctly. I think it\u0027s better to use an all-or-nothing approach for these kinds of things, because if you only use correct endinanness-accessors in a few places, people seeing them might erroneously believe that you\u0027ve done it everywhere.\n\nSo it would be good if all our GPT code was endianness-safe, and if you want to go through all the code and add the accessors wherever appropriate that would be great. But if you don\u0027t have time for that right now, I think it would be better to not add this and the few `le32toh()` in this patch, and instead leave that for a future cleanup over the whole code base. (vboot is also generally not endianness-safe elsewhere, e.g. in serialization and deserialization of runtime-persistent firmware data structures. It would be better if it was but it also just never really has been an important enough issue to address, seeing as big-endian CPUs are all but dead anyway.)",
+      "fixSuggestions": [
+        {
+          "fixId": "cf206381_14f52103",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2sysincludes.h",
+              "range": {
+                "startLine": 17,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4795f8_fb9a0d7d",
         "filename": "firmware/avb/Makefile",
         "patchSetId": 1
