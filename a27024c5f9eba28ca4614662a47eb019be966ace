@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae65d2d2_5befb1e2",
+        "filename": "firmware/include/vb2_android_bootimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-27T23:54:36Z",
+      "side": 1,
+      "message": "nit: should be VBOOT_REFERENCE_VB2_ANDROID_BOOTIMG_H_ (see vb2_api.h, etc.)",
+      "fixSuggestions": [
+        {
+          "fixId": "c74bd0d6_dd09d990",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/vb2_android_bootimg.h",
+              "range": {
+                "startLine": 11,
+                "startChar": 0,
+                "endLine": 13,
+                "endChar": 0
+              },
+              "replacement": "#ifndef VBOOT_REFERENCE_VB2_ANDROID_BOOTIMG_H_\n#define VBOOT_REFERENCE_VB2_ANDROID_BOOTIMG_H_\n"
+            },
+            {
+              "path": "firmware/include/vb2_android_bootimg.h",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 191,
+                "endChar": 0
+              },
+              "replacement": "#endif /* VBOOT_REFERENCE_VB2_ANDROID_BOOTIMG_H_ */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a27024c5f9eba28ca4614662a47eb019be966ace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
