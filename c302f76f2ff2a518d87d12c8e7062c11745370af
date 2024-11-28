@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0add3026_50c37275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-28T01:06:50Z",
+      "side": 1,
+      "message": "If that\u0027s how this works, shouldn\u0027t you remove the `host_supported` for libvboot_host and libvboot_util as well? (In fact, libvboot_util doesn\u0027t really need to be a standalone output artifact anywhere, it\u0027s only purpose is to be linked into the other static utilities built by this package.)",
+      "revId": "c302f76f2ff2a518d87d12c8e7062c11745370af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
