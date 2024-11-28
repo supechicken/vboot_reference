@@ -52,6 +52,24 @@
       "parentUuid": "410273ac_fa7a504a",
       "revId": "76f429274bc6fed746ebf251465a156900c6d7b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f2096e_fdc9969e",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-28T08:25:01Z",
+      "side": 1,
+      "message": "I thought that the reason for the change was function size, so I just simplified it. But avoiding allocation makes sense. I will use Julius\u0027s function in the next version.",
+      "parentUuid": "af8cc4c0_8fff9317",
+      "revId": "76f429274bc6fed746ebf251465a156900c6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
