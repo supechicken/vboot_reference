@@ -103,7 +103,6 @@ filegroup {
 cc_library_static {
     name: "tlcl",
     defaults: ["vboot_defaults"],
-    host_supported: true,
     vendor_available: true,
     srcs: [":tlcl_srcs"],
 }
@@ -156,7 +155,6 @@ filegroup {
 cc_library_static {
     name: "vboot_fw",
     defaults: ["vboot_defaults"],
-    host_supported: true,
     vendor_available: true,
     srcs: [":vboot_fw_srcs"],
 }
@@ -415,7 +413,6 @@ cc_binary {
 cc_binary {
     name: "crossystem",
     defaults: ["vboot_defaults"],
-    host_supported: true,
     vendor_available: true,
 
     srcs: ["utility/crossystem.c"],
