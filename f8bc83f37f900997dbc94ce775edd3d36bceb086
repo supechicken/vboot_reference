@@ -34,6 +34,24 @@
       "parentUuid": "fcfe7c7e_10f9953d",
       "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19a62598_f9ada069",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2024-11-28T06:24:40Z",
+      "side": 1,
+      "message": "Pixel is using some kind of vendor-defined [devinfo](https://source.corp.google.com/h/googleplex-android/platform/superproject/main-al-dev/+/main-al-dev:device/google/gs-common/bootctrl/aidl/BootControl.cpp;l\u003d49?q\u003ddevinfo_ab_slot_data_t\u0026ss\u003dh%2Fgoogleplex-android%2Fplatform%2Fsuperproject%2Fmain-al-dev%2F%2B%2Frefs%2Fheads%2Fmain-al-dev) block device to gather those information.\n\nLooking at [this comment](https://source.corp.google.com/h/googleplex-android/platform/superproject/main-al-dev/+/main-al-dev:device/google/gs-common/bootctrl/aidl/DevInfo.h;l\u003d22), it suggests that ABL exposes somehow this data (through kernel) to userspace.\n\nHowever, they seem to have a fallback to setting GptAttributes [here](https://source.corp.google.com/h/googleplex-android/platform/superproject/main-al-dev/+/main-al-dev:device/google/gs-common/bootctrl/aidl/BootControl.cpp;l\u003d414?q\u003dattr\u0026ss\u003dh%2Fgoogleplex-android%2Fplatform%2Fsuperproject%2Fmain-al-dev%2F%2B%2Frefs%2Fheads%2Fmain-al-dev:device%2Fgoogle%2Fgs-common%2Fbootctrl%2Faidl%2F) (since [setSlotFlag](https://source.corp.google.com/h/googleplex-android/platform/superproject/main-al-dev/+/main-al-dev:device/google/gs-common/bootctrl/aidl/BootControl.cpp;l\u003d106?q\u003dattr\u0026ss\u003dh%2Fgoogleplex-android%2Fplatform%2Fsuperproject%2Fmain-al-dev%2F%2B%2Frefs%2Fheads%2Fmain-al-dev:device%2Fgoogle%2Fgs-common%2Fbootctrl%2Faidl%2F) modifies the GPT attributes defined [here](https://source.corp.google.com/h/googleplex-android/platform/superproject/main-al-dev/+/main-al-dev:device/google/gs-common/bootctrl/aidl/BootControl.cpp;l\u003d54?q\u003dattr\u0026ss\u003dh%2Fgoogleplex-android%2Fplatform%2Fsuperproject%2Fmain-al-dev%2F%2B%2Frefs%2Fheads%2Fmain-al-dev:device%2Fgoogle%2Fgs-common%2Fbootctrl%2Faidl%2F)).\n\n\nIt looks to me they have a special GPT type for `boot` partition, with different attribute offsets than `ChromeOS Kernel GUID`.",
+      "parentUuid": "f55a38f5_f6634fe3",
+      "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
