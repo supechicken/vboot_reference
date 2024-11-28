@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18afce59_017b6f69",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-28T02:26:33Z",
+      "side": 1,
+      "message": "Where are these used (other than `gpt`)? Please try to add variables and struct fields in the same patch as the first code using them so that it\u0027s easier to review. Every patch should make sense on its own.",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60986c8d_3a3acbd9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-28T02:26:33Z",
+      "side": 1,
+      "message": "There should be some validation of the GPT values as well, they are also untrusted. Maybe `if (part_start * ctx-\u003egpt-\u003esector_bytes \u003e (part_start + part_size) * ctx-\u003egpt-\u003esector_bytes) ...error out...`.\n\nAlso, when you change the GPT interface to GptFindPartitionEntry() as suggested in the other CL, all those multiplications should become GptGetEntrySizeBytes() calls. Maybe we should move GptGetEntrySizeBytes() and GptGetEntrySizeLba() into a header and make them static inline for better compiler optimization.\n\nActually, you need the partition size in bytes so often you should probably just make another local variable for it. And the sector_bytes too.",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3473e5c5_f4a0f1c6",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-28T02:26:33Z",
+      "side": 1,
+      "message": "Let\u0027s take the misalign calculation out of the `if`-block here, I think that should make things simpler. Just do\n```\nif (offset_from_partition \u003c 0) {\n  offset_from_partition +\u003d part_size * ctx-\u003egpt-\u003esector_bytes;\n  if (offset_from_partition \u003c 0)\n    ...error...\n}\n```\nand then convert the positive value into sectors and misalign for both cases afterwards.",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab8de58_d21b13d7",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-28T02:26:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `sectors_to_read \u003e part_size - start_sector`?\n\nActually, on a strict reading of the API description one might get the impression that we\u0027re supposed to return RESULT_OK with a smaller out_num_read in this case. Also it doesn\u0027t look like any of the code in libavb actually cares about that case right now.",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71aed6a7_981236dd",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-28T02:26:33Z",
+      "side": 1,
+      "message": "We might want to print more details in these, e.g.\n```\n\"Trying to read %zu bytes from %s@%lld, but only %llu bytes long.\\n\",\n  num_bytes, partition_name, offset_from_partition, part_size * ctx-\u003egpt-\u003esector_bytes\n```",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3eebf3f_d8ce031b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-11-28T02:26:33Z",
+      "side": 1,
+      "message": "Actually, let\u0027s fix this on the depthcharge side. VbExStreamRead() is a byte interface so it should not have alignment restrictions. We just didn\u0027t implement unaligned reads back when it was introduced because no one needed it yet, but now we do. Just add a block-sized buffer to the stream object implementations, and when an unaligned amount of blocks is read, read n-1 blocks into the caller\u0027s buffer and then the last block into the stream object\u0027s scratch buffer, and memcpy the amount of bytes you need out of it. Then on the next read we keep memcpying those bytes until we cross the next block boundary and then start reading from the underlying device again.",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
