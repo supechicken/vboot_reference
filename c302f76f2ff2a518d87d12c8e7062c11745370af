@@ -34,6 +34,47 @@
       "parentUuid": "0add3026_50c37275",
       "revId": "c302f76f2ff2a518d87d12c8e7062c11745370af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340ee646_405a3eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-11-28T11:09:03Z",
+      "side": 1,
+      "message": "According to Android.bp documentation: `host_supported bool, If set to true, build a variant of the module for the host. Defaults to false.`. All dependencies of target with this option enabled need to also have it enabled, otherwise it will cause errors.\n\n\u003e The .a libs only appear in the intermediate directory. I don\u0027t know the reason though.\n\nThere is no need to install them anywhere else as ninja-build underneath will link all libraries to their parent targets before installing executables like futility to the host tools path. Also static libraries won\u0027t be installed anywhere by default as there is no need for that.",
+      "parentUuid": "41dd12ba_77f03ac1",
+      "revId": "c302f76f2ff2a518d87d12c8e7062c11745370af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8704da16_3ed42a07",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-11-28T11:09:03Z",
+      "side": 1,
+      "message": "Can we actually remove this target? I put it there when I was rewriting the whole thing, but now I do not see where it could be used as it\u0027s target for firmware dependency, not Linux userspace one.",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 21
+      },
+      "revId": "c302f76f2ff2a518d87d12c8e7062c11745370af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
