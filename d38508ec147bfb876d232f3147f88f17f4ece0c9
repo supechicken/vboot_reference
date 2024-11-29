@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73fb4bde_5358167e",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-29T15:22:03Z",
+      "side": 1,
+      "message": "It is used only once, removal is a good idea.",
+      "parentUuid": "a0b98478_c2690eb4",
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56b02b45_575dd917",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65676705_3e1ef6c3",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-29T15:22:03Z",
+      "side": 1,
+      "message": "Agree, removed",
+      "parentUuid": "56b02b45_575dd917",
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3bd0797_78989227",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-11-21T23:11:28Z",
       "side": 1,
       "message": "If you follow the above suggestions, then it would probably make sense to just turn this into a `GptFindActivePartitionByName()` that just finds the correct suffix and does a `GptFindPartitionByName()` on that, and then the caller can access the Guid, offsets or whatever it wants in the returned `GptEntry *` struct.",
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bdaaca_8bccc7cb",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-29T15:22:03Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "a3bd0797_78989227",
       "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -93,6 +147,24 @@
           ]
         }
       ],
+      "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82204289_6bc2f8c9",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-11-29T15:22:03Z",
+      "side": 1,
+      "message": "It was used for parameter validation, which was already removed. No longer needed, so I removed it.",
+      "parentUuid": "3db02136_4e9ccc89",
       "revId": "d38508ec147bfb876d232f3147f88f17f4ece0c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
