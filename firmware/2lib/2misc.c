@@ -740,3 +740,21 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 		*boot_mode = VB2_BOOT_MODE_DEVELOPER;
 	}
 }
+
+int vb2_need_kernel_verification(struct vb2_context *ctx)
+{
+	/* Normal and recovery modes always require official OS */
+	if (ctx->boot_mode != VB2_BOOT_MODE_DEVELOPER)
+		return 1;
+
+	/* FWMP can require developer mode to use signed kernels */
+	if (vb2_secdata_fwmp_get_flag(
+		ctx, VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY))
+		return 1;
+
+	/* Developers may require signed kernels */
+	if (vb2_nv_get(ctx, VB2_NV_DEV_BOOT_SIGNED_ONLY))
+		return 1;
+
+	return 0;
+}
