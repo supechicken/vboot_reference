@@ -52,6 +52,24 @@
       "parentUuid": "f55a38f5_f6634fe3",
       "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa1f89d_73001c31",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-03T02:11:00Z",
+      "side": 1,
+      "message": "Yeah... looks like once again they copied from us but didn\u0027t actually bother to keep anything compatible. :/ Oh well. Guess it\u0027s probably best to just ignore what they\u0027re doing and just generate a new type GUID from scratch for our purposes here.",
+      "parentUuid": "19a62598_f9ada069",
+      "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
