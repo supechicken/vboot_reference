@@ -240,6 +240,24 @@
       "parentUuid": "9650d7d9_2d05d49a",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb62cb11_b20bfad8",
+        "filename": "firmware/avb/vboot_avb_sysdeps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-04T22:40:36Z",
+      "side": 1,
+      "message": "Hmm... too bad. Could also `objcopy --redefine-sym` `libavb.a` in the Makefile. Maybe that\u0027s a bit too obscure to be worth it, though.",
+      "parentUuid": "871f20cd_1c61d441",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
