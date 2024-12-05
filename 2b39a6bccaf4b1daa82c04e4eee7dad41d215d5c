@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e65cd79_6583d821",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T23:11:31Z",
+      "side": 1,
+      "message": "We should have some unit tests for this function to ensure that it catches all edge cases (e.g. only first or last byte of N or RR different, etc.), because it is so critical to the security of the entire system and the failure cases will otherwise not get exercised much.",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cedca33_fbc62c3d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T23:11:31Z",
+      "side": 1,
+      "message": "Check return value",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce53387_a37e3a7c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T23:11:31Z",
+      "side": 1,
+      "message": "typo\n\n(Also, I think the callbacks are not part of AVB and should thus probably use VB2_DEBUG() directly.)",
+      "range": {
+        "startLine": 248,
+        "startChar": 28,
+        "endLine": 248,
+        "endChar": 33
+      },
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb03c82_73debb44",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T23:11:31Z",
+      "side": 1,
+      "message": "nit: this is the key length for both the vboot and avb versions, so I\u0027d just call it `key_len`. (Or maybe better `arrsize` or `key_len32` or something like that to clarify that it counts in u32s. Or just use `kernel_key.arrsize` everywhere.)",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8005eb_bbfe199c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T23:11:31Z",
+      "side": 1,
+      "message": "There should be a length check somewhere (ensure that `public_key_length \u003e\u003d sizeof(AvbRsaPublicKeyHeader) + h.key_num_bits / 8 * 2`).",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89bdbebd_fd5e3de3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T23:11:31Z",
+      "side": 1,
+      "message": "Can\u0027t we just compare as we go, rather than first transpose the whole thing in a scratch buffer and then memcmp? E.g.:\n```\nconst uint32_t *avb_n \u003d (uint32_t *)(public_key_data + sizeof(AvbRSAPublicKeyHeader));\nconst uint32_t *avb_rr \u003d (uint32_t *)(public_key_data + sizeof(AvbRSAPublicKeyHeader) + h.key_num_bits / 8);\nfor (int vb_i \u003d 0, avb_i \u003d avb_key_len - 1; vb_i \u003c avb_key_len; vb_i++, avb_i--) {\n  if (kernel_key.n[vb_i] !\u003d be32toh(avb_n[avb_i]) {\n    VB2_DEBUG(\"Key mismatch in N[%d]\\n\", vb_i);\n    goto out;\n  }\n  if (kernel_key.rr[vb_i] !\u003d be32toh(avb_rr[avb_i])) {\n    VB2_DEBUG(\"Key mismatch in RR[%d]\\n\", vb_i);\n    goto out;\n  }\n}\n```",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc010a1_9b4cf6f5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T23:11:31Z",
+      "side": 1,
+      "message": "nit: vboot has these directly from `\u003c2sysincludes.h\u003e`-\u003e`\u003cendian.h\u003e`, so you don\u0027t need to use the AVB versions (the vboot ones are usually inlined and therefore more efficient).",
+      "range": {
+        "startLine": 269,
+        "startChar": 15,
+        "endLine": 269,
+        "endChar": 26
+      },
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
