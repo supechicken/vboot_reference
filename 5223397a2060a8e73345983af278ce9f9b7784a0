@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "77549411_86254386",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-05T09:24:06Z",
+      "side": 1,
+      "message": "2constants.h. Actually, the point is not about moving macros to another file. Instead, it\u0027s about removing `_PREAMBLE` from the macro names. How about `2lib: Rename kernel type macros`?",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "5223397a2060a8e73345983af278ce9f9b7784a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b845bf4_f23d1433",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-05T09:24:06Z",
+      "side": 1,
+      "message": "Wrap the text to 72 chars per line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "5223397a2060a8e73345983af278ce9f9b7784a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a2ab313_6683ed17",
@@ -14,6 +60,29 @@
       "writtenOn": "2024-12-03T08:22:12Z",
       "side": 1,
       "message": "Friendly ping for review of v3. ;)",
+      "revId": "5223397a2060a8e73345983af278ce9f9b7784a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e7d965_631bdab1",
+        "filename": "firmware/2lib/include/2constants.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-05T09:24:06Z",
+      "side": 1,
+      "message": "Use tabs for alignment.",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 36
+      },
       "revId": "5223397a2060a8e73345983af278ce9f9b7784a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
