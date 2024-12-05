@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b8f9c2_bd4d57b0",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-05T08:58:02Z",
+      "side": 1,
+      "message": "its",
+      "range": {
+        "startLine": 391,
+        "startChar": 55,
+        "endLine": 391,
+        "endChar": 59
+      },
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f990034_efe01f6f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-05T08:58:02Z",
+      "side": 1,
+      "message": "This is under the assumption that no other partitions have the \"boot\" suffix, which might be not correct anymore in the future. Can we make sure the partition name ends with the correct suffix (`gpt-\u003ecurrent_ab_slot)`) here? I know for ramdisks `vb2_load_ramdisk` already checks it, but I\u0027d like to make sure other partition names are also checked.",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
