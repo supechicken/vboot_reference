@@ -66,6 +66,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21501764_23ff1a87",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T22:25:01Z",
+      "side": 1,
+      "message": "I don\u0027t really like the redundancy between having both `current_kernel` and this in here to be honest. Do we really need it?\n\nAs far as I can tell, this is only used in two places: in `vb2_load_android_kernel()`, it is determined from `current_kernel` and then immediately used, so it could just be a local variable there. And in `vb2_load_{pvmfw,android_ramdisks}()`, it looks like the initial `vboot_avb_get_preloaded_partition()` receives the full partition name (including suffix) anyway, but then you throw the suffix away and take it from here instead? That seems wrong anyway. When AVB instructs us to load a specific partition (name and suffix), we should be loading exactly that partition.",
+      "parentUuid": "4279efc1_51682e05",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c76a19_a15a8bbf",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T22:25:01Z",
+      "side": 1,
+      "message": "nit: let\u0027s also call this `opt_suffix` for consistency (and to make it easier to see when just reading the function signature that it\u0027s valid to leave it NULL).",
+      "range": {
+        "startLine": 262,
+        "startChar": 73,
+        "endLine": 262,
+        "endChar": 79
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1a3d52_629cd09b",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-05T22:25:01Z",
+      "side": 1,
+      "message": "This can just be `return e`",
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da2b2853_e723939e",
         "filename": "firmware/lib/cgptlib/include/cgptlib.h",
         "patchSetId": 3
