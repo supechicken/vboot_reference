@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37647019_4cd77c50",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18afce59_017b6f69",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60986c8d_3a3acbd9",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d50011a_95310f15",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60986c8d_3a3acbd9",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3473e5c5_f4a0f1c6",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-11-28T02:26:33Z",
       "side": 1,
       "message": "Let\u0027s take the misalign calculation out of the `if`-block here, I think that should make things simpler. Just do\n```\nif (offset_from_partition \u003c 0) {\n  offset_from_partition +\u003d part_size * ctx-\u003egpt-\u003esector_bytes;\n  if (offset_from_partition \u003c 0)\n    ...error...\n}\n```\nand then convert the positive value into sectors and misalign for both cases afterwards.",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7f00c5_f9cf4ed5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3473e5c5_f4a0f1c6",
       "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e305d787_01ae990c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71aed6a7_981236dd",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3eebf3f_d8ce031b",
@@ -105,6 +177,24 @@
       "writtenOn": "2024-11-28T02:26:33Z",
       "side": 1,
       "message": "Actually, let\u0027s fix this on the depthcharge side. VbExStreamRead() is a byte interface so it should not have alignment restrictions. We just didn\u0027t implement unaligned reads back when it was introduced because no one needed it yet, but now we do. Just add a block-sized buffer to the stream object implementations, and when an unaligned amount of blocks is read, read n-1 blocks into the caller\u0027s buffer and then the last block into the stream object\u0027s scratch buffer, and memcpy the amount of bytes you need out of it. Then on the next read we keep memcpying those bytes until we cross the next block boundary and then start reading from the underlying device again.",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a2aad9_67419fce",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:42:22Z",
+      "side": 1,
+      "message": "Actually, we don\u0027t really need it. I believe that the byte access would be used only if we would like to have descriptors in the footer and we don\u0027t have it now.\nI agree that the change you proposed would be useful in future, but since there is a lot of other work I think we can leave with current solution.",
+      "parentUuid": "f3eebf3f_d8ce031b",
       "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
