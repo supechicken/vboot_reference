@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "89ddf921_2662bad3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed22d385_68b120a9",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "92956190_1e8ff042",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -90,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20a11502_c80ce171",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:25:02Z",
+      "side": 1,
+      "message": "AVB choose the suffix based on the one we pass to avb_slot_verify(). So I thought it would be easier and cleaner to keep it GptData structure instead of passing it throuh the chain of functions. But I am fine with extracting it in vboot_avb_get_preloaded_partition() and use it for preloading all the other partitions.",
+      "parentUuid": "21501764_23ff1a87",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c76a19_a15a8bbf",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
@@ -101,6 +149,30 @@
       "writtenOn": "2024-12-05T22:25:01Z",
       "side": 1,
       "message": "nit: let\u0027s also call this `opt_suffix` for consistency (and to make it easier to see when just reading the function signature that it\u0027s valid to leave it NULL).",
+      "range": {
+        "startLine": 262,
+        "startChar": 73,
+        "endLine": 262,
+        "endChar": 79
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0657650c_086d35e5",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c76a19_a15a8bbf",
       "range": {
         "startLine": 262,
         "startChar": 73,
@@ -128,6 +200,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04f9078_e3b802eb",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be1a3d52_629cd09b",
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da2b2853_e723939e",
@@ -141,6 +231,30 @@
       "writtenOn": "2024-12-05T09:13:08Z",
       "side": 1,
       "message": "if",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a3bc4a_50201ba1",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2b2853_e723939e",
       "range": {
         "startLine": 36,
         "startChar": 10,
@@ -174,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bb019a_dd14d096",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:25:02Z",
+      "side": 1,
+      "message": "I changed the function below to `opt_suffix`. Julius pointed out that this parameter is optional so the opt prefix makes sense.",
+      "parentUuid": "bad39daa_1c917c0e",
+      "range": {
+        "startLine": 40,
+        "startChar": 69,
+        "endLine": 40,
+        "endChar": 79
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6550ea_2965ddcb",
@@ -187,6 +325,30 @@
       "writtenOn": "2024-12-05T09:13:08Z",
       "side": 1,
       "message": "Gets",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca207f8_048a608b",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6550ea_2965ddcb",
       "range": {
         "startLine": 43,
         "startChar": 3,
