@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4f456a3_d5d06d3c",
+        "filename": "firmware/2lib/include/2sysincludes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "I will try to add correct accessors to GPT related code, but this will be done at the end of my work, when all other comment are already resolved.",
+      "parentUuid": "e48a1c6b_61e5301b",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4795f8_fb9a0d7d",
         "filename": "firmware/avb/Makefile",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2024-11-18T16:04:18Z",
       "side": 1,
       "message": "Address comment:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650815/comment/c8eaa1f4_51130c78/",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8b89b1_236ad041",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Original comment from @jwerner@chromium.org\n\"I think it would be better to pull in AVB as a submodule or a pre-built library or something like that, and build it using its own official build system. [..]\"\n\nAs above, I will try to do that when all other comments are resolved.",
+      "parentUuid": "5f4795f8_fb9a0d7d",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "028b4c4a_7eded706",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Original comment from @korneld@google.com:\n\"From what I can see the logic here is very similar to what is done in need_valid_keyblock.\nIMO it\u0027d be better to call that function from here instead, and set out_is_unlocked based on the result.\"\n\nDone.",
+      "parentUuid": "7d54270b_4970beae",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76e777a1_ab6601fb",
@@ -83,6 +137,24 @@
       "writtenOn": "2024-11-18T16:04:18Z",
       "side": 1,
       "message": "Adress comment:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650815/comment/c5383555_080c5e83/",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a9e47e_65d35f3e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Name `ctx` changed to `avbctx` for each occurence.",
+      "parentUuid": "76e777a1_ab6601fb",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +193,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fad4477_092d3fc3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Comment related to removed code.",
+      "parentUuid": "f5ffefb0_a19a5723",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d7ef90_6215c36d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Comment related to removed code.",
+      "parentUuid": "409b353e_1dd993ff",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d182360_0ad23fbe",
@@ -134,6 +242,24 @@
       "writtenOn": "2024-11-18T16:04:18Z",
       "side": 1,
       "message": "Address comment:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650815/comment/785e35ee_0bb38f28/",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18088c0b_46d53595",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Comment from @jwerner@chromium.org:\n\"The FWMP_DEV_USE_KEY_HASH flag would put us into \"yellow\" boot mode, which I think is technically still supposed to count as \"locked\" for Android. So maybe that should be checked here as well?\"\n\nYes, you\u0027re right, I will add it in next version.",
+      "parentUuid": "7d182360_0ad23fbe",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef18cb0e_dedb78c5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Comment related to removed function.",
+      "parentUuid": "1fa0e277_53af732b",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "159b09ab_24220a94",
@@ -168,6 +312,24 @@
       "writtenOn": "2024-11-18T16:04:18Z",
       "side": 1,
       "message": "Address comment:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/5650815/comment/3be308b9_7f369273/",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d695bf6_f91e00d3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-06T14:38:33Z",
+      "side": 1,
+      "message": "Original comment:\n\"Why is this using avb_calloc() rather than vboot\u0027s normal malloc()? This isn\u0027t really part of AVB.\n\nIn fact, does this need to be dynamically allocated at all? Why not just define a static global with a static initializer?\n\"\n\nI changed it to malloc(). I am still allocating it, cause other comments before I assumed that we do not want to put to much unnecessary bytes in the binary. But I am fine with make it static.",
+      "parentUuid": "159b09ab_24220a94",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
