@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec6bc7f_a8496dc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-06T14:29:18Z",
+      "side": 1,
+      "message": "Commit message is missing the new function name. It will be harder to look for changes with git-log.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 48
+      },
+      "revId": "0160fdb36ed302465dfd5de6b34421f61588dce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa651c98_c46b6a4d",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-06T14:29:18Z",
+      "side": 1,
+      "message": "Please add `vb2_` prefix.",
+      "range": {
+        "startLine": 194,
+        "startChar": 4,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6fa302eb_19052dd1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2misc.h",
+              "range": {
+                "startLine": 194,
+                "startChar": 0,
+                "endLine": 195,
+                "endChar": 0
+              },
+              "replacement": "int vb2_need_kernel_verification(struct vb2_context *ctx);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0160fdb36ed302465dfd5de6b34421f61588dce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
