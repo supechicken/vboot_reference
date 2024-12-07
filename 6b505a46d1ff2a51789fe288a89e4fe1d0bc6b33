@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76eb30fa_88e85667",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:45:38Z",
+      "side": 1,
+      "message": "Yes, I think `vboot_avb_get_preloaded_partition()` should only work on the partition name passed in and not try to rely on existing state set up elsewhere so much. Added more comments on that patch now, hope that makes things clearer.",
+      "parentUuid": "20a11502_c80ce171",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c76a19_a15a8bbf",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
