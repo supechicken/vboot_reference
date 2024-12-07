@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851fc3e6_aba38741",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:33:01Z",
+      "side": 1,
+      "message": "I think these kinds of things would probably be better checked with VB2_ASSERT(), since they should normally never go wrong.",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f10083_86402901",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:33:01Z",
+      "side": 1,
+      "message": "also VB2_ASSERT()",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6790c5bc_323d276a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:33:01Z",
+      "side": 1,
+      "message": "ERROR_NO_SUCH_PARTITION",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecfd6a0_7ee382ce",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:33:01Z",
+      "side": 1,
+      "message": "This seems a bit unnecessary to check at all, but if you want to, it should also be an assertion.",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fdf140_334df486",
+        "filename": "firmware/include/2avb.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:33:01Z",
+      "side": 1,
+      "message": "In general, 2xxx.h headers should only live in 2lib/include. If you want this in firmware/include then vboot_avb_ops.h was the more appropriate name. (firmware/include is mostly for externally-available headers though, which this isn\u0027t, so firmware/lib/include would maybe be a better place if you don\u0027t want it in this folder.)\n\nI\u0027ve actually been wondering back-and-forth whether I like firmware/avb being a separate directory or not. Maybe it would be better to just throw all that code into 2lib (and integrate the Makefile stuff in the main Makefile). Then putting 2avb.h into 2lib/include would make sense.",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22dae26e_70799bcb",
+        "filename": "firmware/include/2avb.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:33:01Z",
+      "side": 1,
+      "message": "Update include guard on name change",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
