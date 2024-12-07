@@ -49,6 +49,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24731713_129fb0d2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:44:08Z",
+      "side": 1,
+      "message": "Now that we have more partitions the simple timestamp hack in `VbExStreamRead()` is not really enough anymore. It\u0027s probably time to give vboot more explicit access to the actual coreboot timestamps (since just writing it in the log like this isn\u0027t very discoverable). I\u0027d suggest adding a new `void vb2ex_timestamp(enum vb2_timestamps)` and then have depthcharge translate those vboot timestamps (counting from 0) into coreboot timestamps by adding a suitable base value (e.g. 1150).",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2386d94_531b2695",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:44:08Z",
+      "side": 1,
+      "message": "Do we need to do these checks here? I would assume that either AVB does this itself or we\u0027ll do it later when actually trying to boot the thing. Doing it in a loading function seems out of place.",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd1c2f3_0a59786d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:44:08Z",
+      "side": 1,
+      "message": "Oh no, please don\u0027t use statics to track stuff here, we have `avb_data-\u003eparams` for that.\n\nIn general, I would really like to avoid the needing to load things out of order in here. It would be cleanest if this was a very simple callback: AVB tells us to load partition X, so we load partition X. The whole \"oh wait maybe we need to load partition Y first so we can place it before that\" is pretty ugly.\n\nIs the order of loaded partitions in `kernel_buffer` actually important? (I know for arm64 it shouldn\u0027t be because we memcpy() the whole thing again right before entering the kernel anyway. Less sure for x86.) If not, I think the best solution here would be to just load the partitions one after the other into the buffer in the order they are requested. All you need for that is a `kernel_buffer_used` value in `vb2_kernel_params`, and offset values for each partition type we expect to load.\n\nYou shouldn\u0027t even need all these separate load_kernel/load_ramdisk functions here then, the loading process should basically be the same for everything, only the partition name, the `vb2_kernel_params` member you store the offset in and the timestamp ID you log would change.",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f990034_efe01f6f",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 4
@@ -60,6 +111,87 @@
       "writtenOn": "2024-12-05T08:58:02Z",
       "side": 1,
       "message": "This is under the assumption that no other partitions have the \"boot\" suffix, which might be not correct anymore in the future. Can we make sure the partition name ends with the correct suffix (`gpt-\u003ecurrent_ab_slot)`) here? I know for ramdisks `vb2_load_ramdisk` already checks it, but I\u0027d like to make sure other partition names are also checked.",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3f98b5d_7712d82e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:44:08Z",
+      "side": 1,
+      "message": "Please use `GptPartitionNames` everywhere, you should never need to write a partition name as a raw string literal (this protects against typos and makes future name changes easier and safer). It might make sense to write a little `bool GptIsAndroidPartition(const char *name, enum GptPartition)` helper to simplify this repeated prefix matching (and maybe hand-code it because `strncmp(a, \"x\", strlen(\"x\"))` is inefficient, although that\u0027s probably just me overoptimizing again).",
+      "range": {
+        "startLine": 448,
+        "startChar": 26,
+        "endLine": 448,
+        "endChar": 30
+      },
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e9b6a9d_5ea41e61",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:44:08Z",
+      "side": 1,
+      "message": "As mentioned in the earlier patch, I don\u0027t think we should take any selected slot info from the GptData here anymore. AVB told us to load one specific partition, so we should only be working with that partition name, nothing else. We should check the prefix here to decide which loading function to call, but then still pass the full partition name into there and use that to find the right GPT entry.",
+      "parentUuid": "5f990034_efe01f6f",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db73bca_ca6c4c87",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:44:08Z",
+      "side": 1,
+      "message": "It\u0027s pretty odd and inconsistent that for the kernel we keep this pre-saved stream around, and for the other partitions we open a new stream every time. I don\u0027t think that makes sense, AVB wants to treat all partitions equally as a load-by-name thing, then we shouldn\u0027t make the kernel special. I think vb2_load_android_kernel() shouldn\u0027t take in an existing stream, and should branch off in vb2api_load_kernel() earlier (so that the stream opening is in the ChromeOS-specific part).",
+      "range": {
+        "startLine": 449,
+        "startChar": 44,
+        "endLine": 449,
+        "endChar": 60
+      },
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e00cc4f_7267462a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T01:44:08Z",
+      "side": 1,
+      "message": "Yeah, this in particular should really be done inside the function so you can concentrate the details about where stuff is placed in the kernel buffer in fewer places.",
       "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
