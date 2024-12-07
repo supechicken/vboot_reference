@@ -336,6 +336,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "988cb550_9b1dc180",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:10:00Z",
+      "side": 1,
+      "message": "Eh... it\u0027s a couple of function pointers. The code to initialize them all here probably takes up more space than the struct would with static initialization. Yeah, make it static.",
+      "parentUuid": "2d695bf6_f91e00d3",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef3d262d_ef3a90ac",
         "filename": "firmware/avb/vboot_avb_ops.h",
         "patchSetId": 1
