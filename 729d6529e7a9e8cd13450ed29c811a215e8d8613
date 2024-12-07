@@ -197,6 +197,24 @@
       "parentUuid": "f3eebf3f_d8ce031b",
       "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73f15eb_07447156",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:48:30Z",
+      "side": 1,
+      "message": "Hmm... I don\u0027t think it\u0027s great leaving that possibility open, though. We can\u0027t control AVB like vboot so we know they wouldn\u0027t pay attention if in some future update they started writing stuff that makes unaligned accesses.\n\nIf there\u0027s no time to do it right now, would you mind adding it to the list of open tickets that will be dealt with once all the initial code is in? (This seems like something way more useful than endianness accessors in GPT code, for example.)",
+      "parentUuid": "86a2aad9_67419fce",
+      "revId": "729d6529e7a9e8cd13450ed29c811a215e8d8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

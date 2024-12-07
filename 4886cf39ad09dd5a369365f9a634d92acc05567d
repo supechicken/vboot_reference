@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df61573_29996dfe",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:48:30Z",
+      "side": 1,
+      "message": "nit: I\u0027d recommend using names that more clearly clarify whether you\u0027re counting in sectors or bytes in functions that mix both (e.g. `part_bytes` and `part_start_sector`).",
+      "revId": "4886cf39ad09dd5a369365f9a634d92acc05567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7fa93c_1d18ae2b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:48:30Z",
+      "side": 1,
+      "message": "Isn\u0027t this supposed to just return a smaller out_num_read?",
+      "revId": "4886cf39ad09dd5a369365f9a634d92acc05567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a1d80e_4077c125",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-07T02:48:30Z",
+      "side": 1,
+      "message": "So, anyway, the point was you shouldn\u0027t need a temporary buffer here. If you\u0027re saying that misaligned sectors are not gonna happen and you want to leave the work of supporting them in depthcharge streams until later, that\u0027s fine, but then take this other workaround code out of here.\n\nIn order to support pre_misalign, I think we should allow reading a stream with a NULL buffer in the VbExStreamRead() API, which will advance the stream without returning bytes.",
+      "revId": "4886cf39ad09dd5a369365f9a634d92acc05567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
