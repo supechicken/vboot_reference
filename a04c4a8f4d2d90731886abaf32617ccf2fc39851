@@ -16,6 +16,24 @@
       "message": "Hi, release TPMs review the merge requests but not the CLs themselves",
       "revId": "a04c4a8f4d2d90731886abaf32617ccf2fc39851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce82f17_f59f5ec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-09T23:21:20Z",
+      "side": 1,
+      "message": "Sorry, I was trying to follow go/cros-merge-guidelines#approval which says: \"The release owner will also +1 the cherrypick CL using \u0027MergeApprovedYolo\u0027 label.\" I wasn\u0027t really sure what that means.",
+      "parentUuid": "2cd1adf2_cfd711e7",
+      "revId": "a04c4a8f4d2d90731886abaf32617ccf2fc39851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
