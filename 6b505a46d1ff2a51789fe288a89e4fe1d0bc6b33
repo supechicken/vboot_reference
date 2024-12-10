@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e774a69_7c21e401",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-10T09:12:33Z",
+      "side": 1,
+      "message": "What about comment https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/6030716/comment/e9847e3d_98ab8eb9/ ? I really like Yu-Ping\u0027s idea of getting rid of partition number macros and using slot suffix field instead.",
+      "parentUuid": "76eb30fa_88e85667",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c76a19_a15a8bbf",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
