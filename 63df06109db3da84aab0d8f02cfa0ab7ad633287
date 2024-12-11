@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc53c195_975fed51",
+        "filename": "firmware/include/vb2_android_misc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-11T13:40:50Z",
+      "side": 1,
+      "message": "If you are moving this to the public API, then I suggest adding `vb2_` prefix to the struct name. Otherwise please use `_priv` in the filename so it\u0027s indicated that this file should not be included by external programs nor public-facing header files.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "63df06109db3da84aab0d8f02cfa0ab7ad633287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
