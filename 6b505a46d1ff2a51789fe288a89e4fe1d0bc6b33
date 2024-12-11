@@ -210,6 +210,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "016f439f_80866b94",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-11T13:27:41Z",
+      "side": 1,
+      "message": "Can I do that from depthcharge/",
+      "parentUuid": "6ffcc70f_f976e99d",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c76a19_a15a8bbf",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
