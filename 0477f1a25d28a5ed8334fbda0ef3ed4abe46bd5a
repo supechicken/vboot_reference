@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9087fb68_89b2be2c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-11T14:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "851fc3e6_aba38741",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66f10083_86402901",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-07T02:33:01Z",
       "side": 1,
       "message": "also VB2_ASSERT()",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f22a74_7f27ddc3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-11T14:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f10083_86402901",
       "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad8be6a_66ef0d89",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-11T14:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6790c5bc_323d276a",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aecfd6a0_7ee382ce",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-12-07T02:33:01Z",
       "side": 1,
       "message": "This seems a bit unnecessary to check at all, but if you want to, it should also be an assertion.",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4a023b_5066b221",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-11T14:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aecfd6a0_7ee382ce",
       "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8034ecfa_b0945fb5",
+        "filename": "firmware/include/2avb.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-11T14:57:54Z",
+      "side": 1,
+      "message": "| Maybe it would be better to just throw all that code into 2lib\n\nI\u0027ll do that in next version of patch",
+      "parentUuid": "04fdf140_334df486",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22dae26e_70799bcb",
         "filename": "firmware/include/2avb.h",
         "patchSetId": 5
@@ -105,6 +201,24 @@
       "writtenOn": "2024-12-07T02:33:01Z",
       "side": 1,
       "message": "Update include guard on name change",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a83f54_fb3833aa",
+        "filename": "firmware/include/2avb.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-11T14:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22dae26e_70799bcb",
       "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
