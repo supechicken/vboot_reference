@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ffcc70f_f976e99d",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-11T01:12:12Z",
+      "side": 1,
+      "message": "I totally agree that you shouldn\u0027t hardcode partition numbers, but I don\u0027t think you need to put the suffix into kparams instead? Can\u0027t you just parse the suffix out of the partition table entry pointed to by current_kernel in that function (I think that\u0027s the only one that needs this)?",
+      "parentUuid": "3e774a69_7c21e401",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c76a19_a15a8bbf",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
