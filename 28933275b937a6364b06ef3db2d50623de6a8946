@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e5d297_83353059",
+        "filename": "firmware/2lib/include/2misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-12T07:07:02Z",
+      "side": 1,
+      "message": "Can take the chance to change it to bool. Previously (IIRC) libpayload didn\u0027t have bool, so we used `int` for booleans.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "28933275b937a6364b06ef3db2d50623de6a8946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
