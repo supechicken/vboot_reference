@@ -278,7 +278,7 @@ GptEntry *GptFindNthEntry(GptData *gpt, const Guid *guid, unsigned int n)
 	return NULL;
 }
 
-static GptEntry *GptFindEntryByName(GptData *gpt, const char *name)
+GptEntry *GptFindEntryByName(GptData *gpt, const char *name)
 {
 	GptHeader *header = (GptHeader *)gpt->primary_header;
 	GptEntry *entries = (GptEntry *)gpt->primary_entries;
