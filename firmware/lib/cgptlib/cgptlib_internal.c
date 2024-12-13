@@ -247,7 +247,13 @@ cleanup:
 int IsKernelEntry(const GptEntry *e)
 {
 	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
-	return !memcmp(&e->type, &chromeos_kernel, sizeof(Guid));
+	static Guid alos_boot = GPT_ENT_TYPE_ALOS_BOOT;
+	if (!memcmp(&e->type, &chromeos_kernel, sizeof(Guid)))
+		return CHROME_OS_KERNEL;
+	else if (!memcmp(&e->type, &alos_boot, sizeof(Guid)))
+		return ALUMINIUM_OS_KERNEL;
+	else
+		return NO_KERNEL;
 }
 
 int CheckEntries(GptEntry *entries, GptHeader *h)
@@ -541,6 +547,11 @@ void SetEntryErrorCounter(GptEntry *e, int error_counter)
 	e->attrs.fields.gpt_att |=
             (error_counter << CGPT_ATTRIBUTE_ERROR_COUNTER_OFFSET) &
             CGPT_ATTRIBUTE_ERROR_COUNTER_MASK;
+}
+
+void SetEntryTypeGuid(GptEntry *e, Guid *type)
+{
+	memcpy(&e->type, type, sizeof(Guid));
 }
 
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)

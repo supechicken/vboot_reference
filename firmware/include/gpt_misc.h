@@ -69,6 +69,12 @@ enum {
 /* If this bit is 1, the GPT is stored in another from the streaming data */
 #define GPT_FLAG_EXTERNAL	0x1
 
+enum EntryType {
+	NO_KERNEL = 0,
+	CHROME_OS_KERNEL = 1,
+	ALUMINIUM_OS_KERNEL = 2,
+};
+
 /*
  * A note about stored_on_device and gpt_drive_sectors:
  *
@@ -109,6 +115,8 @@ typedef struct {
 	 * 1-based, but we're using a zero-based index here.
 	 */
 	int current_kernel;
+
+	enum EntryType entry_type;
 
 	/* Internal variables */
 	uint8_t valid_headers, valid_entries, ignored;
@@ -221,6 +229,7 @@ void SetEntrySuccessful(GptEntry *e, int successful);
 void SetEntryPriority(GptEntry *e, int priority);
 void SetEntryTries(GptEntry *e, int tries);
 void SetEntryErrorCounter(GptEntry *e, int error_counter);
+void SetEntryTypeGuid(GptEntry *e, Guid *guid);
 
 #ifdef __cplusplus
 }

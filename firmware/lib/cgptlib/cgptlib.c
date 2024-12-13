@@ -74,6 +74,7 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 	GptEntry *e;
 	int new_kernel = CGPT_KERNEL_ENTRY_NOT_FOUND;
 	int new_prio = 0;
+	int new_type = NO_KERNEL;
 	uint32_t i;
 
 	/*
@@ -82,11 +83,14 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 	 * priority.
 	 */
 	if (gpt->current_kernel != CGPT_KERNEL_ENTRY_NOT_FOUND) {
+		int type;
 		for (i = gpt->current_kernel + 1;
 		     i < header->number_of_entries; i++) {
 			e = entries + i;
-			if (!IsKernelEntry(e))
+			type = IsKernelEntry(e);
+			if (type == NO_KERNEL)
 				continue;
+
 			VB2_DEBUG("GptNextKernelEntry looking at same prio "
 				  "partition %d\n", i+1);
 			VB2_DEBUG("GptNextKernelEntry s%d t%d p%d\n",
@@ -96,6 +100,7 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 				continue;
 			if (GetEntryPriority(e) == gpt->current_priority) {
 				gpt->current_kernel = i;
+				gpt->entry_type = type;
 				*start_sector = e->starting_lba;
 				*size = e->ending_lba - e->starting_lba + 1;
 				VB2_DEBUG("GptNextKernelEntry likes it\n");
@@ -110,7 +115,9 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 	 */
 	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
 		int current_prio = GetEntryPriority(e);
-		if (!IsKernelEntry(e))
+
+		int type = IsKernelEntry(e);
+		if (type == NO_KERNEL)
 			continue;
 		VB2_DEBUG("GptNextKernelEntry looking at new prio "
 			  "partition %d\n", i+1);
@@ -124,6 +131,7 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 			continue;
 		}
 		if (current_prio > new_prio) {
+			new_type = type;
 			new_kernel = i;
 			new_prio = current_prio;
 		}
@@ -136,6 +144,7 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 	 */
 	gpt->current_kernel = new_kernel;
 	gpt->current_priority = new_prio;
+	gpt->entry_type = new_type;
 
 	if (CGPT_KERNEL_ENTRY_NOT_FOUND == new_kernel) {
 		VB2_DEBUG("GptNextKernelEntry no more kernels\n");

@@ -682,6 +682,19 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
 					     disk_info->handle,
 					     need_valid_keyblock(ctx));
+		if (rv == VB2_SUCCESS && gpt.entry_type == CHROME_OS_KERNEL) {
+			/*
+			 * Update entry type for Android partitions boot_a and boot_b,
+			 * which are in etries 12 and 13
+			 */
+			static Guid alos_boot = GPT_ENT_TYPE_ALOS_BOOT;
+			GptEntry *entries = (GptEntry *)gpt.primary_entries;
+			GptEntry *e = entries + 12;
+			SetEntryTypeGuid(e, &alos_boot);
+			e = entries + 13;
+			SetEntryTypeGuid(e, &alos_boot);
+			GptModified(&gpt);
+		}
 #else
 		/* Don't allow to boot android without AVB */
 		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
