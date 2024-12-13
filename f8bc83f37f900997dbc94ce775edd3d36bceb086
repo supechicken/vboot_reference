@@ -106,6 +106,24 @@
       "parentUuid": "e4e9966c_c97921a1",
       "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a85104_f44fdd44",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-13T23:47:49Z",
+      "side": 1,
+      "message": "I think the idea here is that `GptNextKernelEntry()` will scan through both ChromeOS Kernel partitions and whichever Android partition type we decide to tie the flags to (`boot` or `vbmeta`, so `IsKernelEntry()` would have to be updated to return true for that type as well). There will be no fallback from one to the other, they just both compete equally in the same prioritization system. Then for whichever one gets returned, we\u0027ll look at the type and load it in the Android or the ChromeOS way depending on that.",
+      "parentUuid": "c831b631_1dd93c52",
+      "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
