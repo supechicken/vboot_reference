@@ -642,6 +642,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 	while ((entry = GptNextKernelEntry(&gpt))) {
 		uint64_t part_start = entry->starting_lba;
 		uint64_t part_size = GptGetEntrySizeLba(entry);
+		char *ab_suffix = NULL;
 
 		VB2_DEBUG("Found kernel entry at %"
 			  PRIu64 " size %" PRIu64 "\n",
@@ -659,6 +660,28 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			 * to the vb2_load_android_kernel() function.
 			 */
 			GptFindBoot(&gpt, &part_start, &part_size);
+		} else if (GptGetActiveKernelPartitionSuffix(&gpt, &ab_suffix) == GPT_SUCCESS &&
+			   IsAndroidBootPartition(entry, ab_suffix)) {
+			/*
+			 * If we find a partition with Chromeos kernel guid and we try to boot
+			 * Android it means we are use legacy boot from 'boot_a\b' partition.
+			 * We want change vbmeta partition to new type to allow booting for it.
+			 */
+			static const char * const names[] = {"vbmeta_a", "vbmeta_b"};
+			static Guid vbmeta_boot = GPT_ENT_TYPE_ANDROID_VBMETA;
+
+			for (int i = 0; i < ARRAY_SIZE(names); i++) {
+				GptEntry *e = GptFindEntryByName(&gpt, names[i]);
+
+				if (!memcmp(&e->type, &vbmeta_boot, sizeof(Guid)))
+					continue;
+
+				memcpy(&e->type, (void *)&vbmeta_boot, sizeof(Guid));
+				SetEntryPriority(e, 0);
+				SetEntrySuccessful(e, 0);
+				SetEntryTries(e, 0);
+				GptModified(&gpt);
+			}
 		}
 
 		/* Set up the stream */
@@ -680,7 +703,6 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
 		}
 
-		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 #ifdef USE_LIBAVB
 		if (!(lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)) {
 			rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
@@ -689,6 +711,9 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		} else
 			rv = VB2_SUCCESS;
 
+#else
+		/* Don't allow to boot android without AVB */
+		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 #endif
 		VbExStreamClose(stream);
 
