@@ -88,6 +88,24 @@
       "parentUuid": "5fa1f89d_73001c31",
       "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c831b631_1dd93c52",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2024-12-13T23:31:39Z",
+      "side": 1,
+      "message": "Do we need to hard code the fallback logic? Can we not leverage the `priority`/`success` flags like we do today to select the kernel partition?",
+      "parentUuid": "e4e9966c_c97921a1",
+      "revId": "f8bc83f37f900997dbc94ce775edd3d36bceb086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
