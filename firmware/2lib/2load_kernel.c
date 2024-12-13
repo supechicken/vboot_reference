@@ -682,6 +682,28 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
 					     disk_info->handle,
 					     need_valid_keyblock(ctx));
+		if (rv == VB2_SUCCESS) {
+			/*
+			 * Update entry type for Android VBMETA partitions, which are
+			 * in entries 14 and 15.
+			 * NOTE: this is will be removed when we start looking for VBMETA
+			 * partition in GptNextKernelEntry()
+			 */
+			static Guid alos_boot = GPT_ENT_TYPE_ALOS_BOOT;
+			GptEntry *entries = (GptEntry *)gpt.primary_entries;
+			GptEntry *e;
+			int i;
+
+			for (i = 0, e = &entries[14]; i < 2; i++, e++) {
+				if (memcmp(&e->type, &alos_boot, sizeof(Guid))) {
+					memcpy(&e->type, (void *)&alos_boot, sizeof(Guid));
+					SetEntryPriority(e, 0);
+					SetEntrySuccessful(e, 0);
+					SetEntryTries(e, 0);
+					GptModified(&gpt);
+				}
+			}
+		}
 #else
 		/* Don't allow to boot android without AVB */
 		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
