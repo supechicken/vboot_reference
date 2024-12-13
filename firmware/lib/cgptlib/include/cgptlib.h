@@ -10,6 +10,14 @@
 #include "gpt_misc.h"
 
 /**
+ * Find GPT entry for specified partition.
+ * Must be called after GptNextKernelEntry.
+ *
+ * Returns pointer to  GPT entry if successful, NULL otherwise
+ */
+GptEntry *GptFindEntryByName(GptData *gpt, const char *name);
+
+/**
  * Find boot partition for selected slot.
  * Must be called after GptNextKernelEntry.
  *
