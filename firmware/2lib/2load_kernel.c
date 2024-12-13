@@ -669,6 +669,27 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			 * to the vb2_load_android_kernel() function.
 			 */
 			GptFindBoot(&gpt, &part_start, &part_size);
+		} else {
+			char *ab_suffix = NULL;
+			if ((GptGetActiveKernelPartitionSuffix(&gpt, &ab_suffix) == GPT_SUCCESS) &&
+			    IsAndroidBootPartition(entry, ab_suffix)) {
+				static const char *names[] = {"vbmeta_a", "vbmeta_b"};
+				static Guid vbmeta_boot = GPT_ENT_TYPE_ANDROID_VBMETA;
+				GptEntry *e;
+				int i;
+
+				for (i = 0; i < ARRAY_SIZE(names); i++) {
+					e = GptFindEntryByName(&gpt, names[i]);
+
+					if (memcmp(&e->type, &vbmeta_boot, sizeof(Guid))) {
+						memcpy(&e->type, (void *)&vbmeta_boot, sizeof(Guid));
+						SetEntryPriority(e, 0);
+						SetEntrySuccessful(e, 0);
+						SetEntryTries(e, 0);
+						GptModified(&gpt);
+					}
+				}
+			}
 		}
 
 		/* Set up the stream */
@@ -691,7 +712,6 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		}
 
 		uint32_t kernel_version = 0;
-		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 #ifdef USE_LIBAVB
 		if (!(lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)) {
 			rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
@@ -700,6 +720,9 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		} else
 			rv = VB2_SUCCESS;
 
+#else
+		/* Don't allow to boot android without AVB */
+		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 #endif
 		VbExStreamClose(stream);
 
