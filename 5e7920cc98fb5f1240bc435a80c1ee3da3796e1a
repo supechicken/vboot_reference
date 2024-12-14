@@ -16,6 +16,24 @@
       "message": "I am not against this change, but curious: can you tell us on what system and with which calling firmware you\u0027re intending to use vboot on RISC-V? Is this an open source project?\n\nAlso, be aware that the part you\u0027re changing is pretty vestigial and not really used anymore (on any architecture), we just never really had time to clean up that part of the Makefile. In practice, all firmwares integrating vboot are passing `CFLAGS` and `CC` explicitly which overrides anything defined in that part of the Makefile. You can see here how it\u0027s done on coreboot, for example: https://github.com/coreboot/coreboot/blob/main/src/security/vboot/Makefile.mk#L25",
       "revId": "5e7920cc98fb5f1240bc435a80c1ee3da3796e1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0ea965_f90fb822",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3772575
+      },
+      "writtenOn": "2024-12-14T00:15:44Z",
+      "side": 1,
+      "message": "I am trying to build coreboot for RISC-V with vboot support.\n\nThe issue is precisely that, in the Makefile you link, FIRMWARE_ARCH\u003driscv is passed to vboot, but since the architecture is not considered in the if-else chain in the file I modified, the build stops at the last else statement (\"unexpected FIRMWARE_ARCH\").",
+      "parentUuid": "26dae5c3_44d7390f",
+      "revId": "5e7920cc98fb5f1240bc435a80c1ee3da3796e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
