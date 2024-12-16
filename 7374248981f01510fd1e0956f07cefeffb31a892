@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e5020d_694d9881",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-16T02:33:25Z",
+      "side": 1,
+      "message": "Add at least one test case to tests/futility/test_update.sh (near `# Test manifest`).",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4583b818_6c414ff8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-16T02:33:25Z",
+      "side": 1,
+      "message": "Do you not like the output format of `futility show -P` (it\u0027d be `brya0::host::versions::rw::Google_Brya.14505.782.118`)? I think it\u0027d be good to have consistent formats for those 2 commands.",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9dc570c_d4ae19ab",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-16T02:33:25Z",
+      "side": 1,
+      "message": "(Optional) Consider dropping `s`.",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 11
+      },
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25cb7615_2a12fe4d",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-16T02:33:25Z",
+      "side": 1,
+      "message": "Should return 1 here.",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb3deaa9_1939984c",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-16T02:33:25Z",
+      "side": 1,
+      "message": "`--fast` doesn\u0027t work with `MANIFEST_PRINT_FORMAT_KV_PAIRS`. Please check it and return 1.",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b72325_6a7e88bb",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-16T02:33:25Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
