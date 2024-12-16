@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a251af_19a83a23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-16T13:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87e5020d_694d9881",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4583b818_6c414ff8",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-12-16T02:33:25Z",
       "side": 1,
       "message": "Do you not like the output format of `futility show -P` (it\u0027d be `brya0::host::versions::rw::Google_Brya.14505.782.118`)? I think it\u0027d be good to have consistent formats for those 2 commands.",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31aa9a1b_b005c5cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-16T13:40:54Z",
+      "side": 1,
+      "message": "I was not aware of this format. Thanks for the tip.\nTBH I do not like this format because it is not as easy to parse with simple `cut -d: -f2`. It does not seem to be very intuitive to me. But well, we should limit differences as much as possible, and this format is still relatively easy to parse in Android shell, so I\u0027m fine with this. PTAL.",
+      "parentUuid": "4583b818_6c414ff8",
       "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c07760d6_d71dd80f",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-16T13:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9dc570c_d4ae19ab",
+      "range": {
+        "startLine": 64,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 11
+      },
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25cb7615_2a12fe4d",
@@ -71,6 +131,24 @@
       "writtenOn": "2024-12-16T02:33:25Z",
       "side": 1,
       "message": "Should return 1 here.",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f79e0d5_356d54e8",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-16T13:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25cb7615_2a12fe4d",
       "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3cbb89_fff63f0d",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-16T13:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3deaa9_1939984c",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25b72325_6a7e88bb",
@@ -105,6 +201,24 @@
       "writtenOn": "2024-12-16T02:33:25Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b8dc45_e25cba60",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2024-12-16T13:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b72325_6a7e88bb",
       "revId": "7374248981f01510fd1e0956f07cefeffb31a892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
