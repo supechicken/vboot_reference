@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c47aaa72_45b197a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-17T08:23:57Z",
+      "side": 1,
+      "message": "Move above `BRANCH\u003dmain`.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "b8560521a78ddb907a04a045951a6ce19bef7deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d6c503d_50f6152e",
@@ -14,6 +37,52 @@
       "writtenOn": "2024-12-16T13:52:57Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "b8560521a78ddb907a04a045951a6ce19bef7deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44198eba_3736e3c7",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-17T08:23:57Z",
+      "side": 1,
+      "message": "`OPT_`",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "b8560521a78ddb907a04a045951a6ce19bef7deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b98a188_5880065b",
+        "filename": "futility/cmd_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-17T08:23:57Z",
+      "side": 1,
+      "message": "shell-parseable",
+      "range": {
+        "startLine": 115,
+        "startChar": 28,
+        "endLine": 115,
+        "endChar": 43
+      },
       "revId": "b8560521a78ddb907a04a045951a6ce19bef7deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
