@@ -16,6 +16,23 @@
       "message": "```suggestion\nIntroduce two new parameters to vb2_kernel_params API:\n```",
       "revId": "cdfb0b9e7fe00b447455e66972fd2d223ac486d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a16175_21d6f755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-12-17T08:56:30Z",
+      "side": 1,
+      "message": "IMO referencing the old version of the CL might be a bit confusing for someone reading this commit message in a few years. My vote would be to remove this from all CLs.",
+      "revId": "cdfb0b9e7fe00b447455e66972fd2d223ac486d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
