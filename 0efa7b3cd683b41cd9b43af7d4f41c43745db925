@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefed82f_bfb4ba62",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2024-12-17T16:05:16Z",
+      "side": 1,
+      "message": "```suggestion\n\tread_ms \u003d vb2ex_mtime() - start_ts;\n```",
+      "revId": "0efa7b3cd683b41cd9b43af7d4f41c43745db925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
