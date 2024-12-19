@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a05bbc_4703cc28",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T15:23:50Z",
+      "side": 1,
+      "message": "This doesn\u0027t really make sense up here. We\u0027re clamping to the whole size of the partition here before we have evaluated which offset we start reading at. This should be done further down, after `offset_from_partition` has been normalized, and then be\n```\nif (num_bytes \u003e part_bytes - offset_from_partition) {\n  VB2_DEBUG(...);\n  num_bytes \u003d part_bytes - offset_from_partition;\n}\n```",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a7b145_c44cf3eb",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T15:23:50Z",
+      "side": 1,
+      "message": "Actually, all these numbers come from the partition table and not the caller, so it indicates a corrupted disk rather than an incorrect request. ERROR_IO would maybe be more fitting for that.",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b38f81a_80ae749c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T15:23:50Z",
+      "side": 1,
+      "message": "nit: I know we want to fix this before we ship anyway, but just in case we forget, it would probably be better to return an error (e.g. ERROR_IO) in this case rather than a hard assert (which gives the system a chance to gracefully roll back in case a vbmeta that leads to this gets installed with an update or something like that).",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
