@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c040595f_6a16d498",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T15:01:44Z",
+      "side": 1,
+      "message": "You can statically initialize this so you don\u0027t need to do it inside the function:\n```\nstatic struct AvbOps avb_ops \u003d {\n  .user_data \u003d \u0026vboot_avb,\n  .read_is_device_unlocked \u003d vboot_avb_read_is_device_unlocked,\n  .read_rollback_index \u003d vboot_avb_read_rollback_index,\n  .get_unique_guid_for_partition \u003d get_unique_guid_for_partition,\n};\n```",
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f1430fb_d7f4211b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T15:01:44Z",
+      "side": 1,
+      "message": "nit: indentation alignment",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8540c976_983aa13a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T15:01:44Z",
+      "side": 1,
+      "message": "nit: naming-wise, either all of these should start with `vboot_avb_` or none of them. I don\u0027t care either way but it should be consistent.",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c10d20_b1516598",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T15:01:44Z",
+      "side": 1,
+      "message": "nit: consistently call this the same (`avbctx` or `data` or whatever) in every function",
+      "range": {
+        "startLine": 61,
+        "startChar": 24,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
