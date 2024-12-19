@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1904038_05ca9fc2",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-19T14:15:39Z",
+      "side": 1,
+      "message": "Yeah sorry, I think I got confused between GptData and kparams here. What Yu-Ping said makes sense, let\u0027s put a field for the suffix into kparams. But it doesn\u0027t need to be here.",
+      "parentUuid": "fbaf081c_2db139dc",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c76a19_a15a8bbf",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
