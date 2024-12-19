@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06cb2a8b_8f2339a1",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-19T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cedca33_fbc62c3d",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ce53387_a37e3a7c",
@@ -48,6 +66,30 @@
       "writtenOn": "2024-12-05T23:11:31Z",
       "side": 1,
       "message": "typo\n\n(Also, I think the callbacks are not part of AVB and should thus probably use VB2_DEBUG() directly.)",
+      "range": {
+        "startLine": 248,
+        "startChar": 28,
+        "endLine": 248,
+        "endChar": 33
+      },
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bce12d_cf20dc90",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-19T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ce53387_a37e3a7c",
       "range": {
         "startLine": 248,
         "startChar": 28,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9221e4b_8b8c4b19",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-19T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb03c82_73debb44",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b8005eb_bbfe199c",
@@ -88,6 +148,24 @@
       "writtenOn": "2024-12-05T23:11:31Z",
       "side": 1,
       "message": "There should be a length check somewhere (ensure that `public_key_length \u003e\u003d sizeof(AvbRsaPublicKeyHeader) + h.key_num_bits / 8 * 2`).",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd18358_b5fe3361",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-19T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8005eb_bbfe199c",
       "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a34792f_20df0889",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-19T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89bdbebd_fd5e3de3",
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdc010a1_9b4cf6f5",
@@ -122,6 +218,30 @@
       "writtenOn": "2024-12-05T23:11:31Z",
       "side": 1,
       "message": "nit: vboot has these directly from `\u003c2sysincludes.h\u003e`-\u003e`\u003cendian.h\u003e`, so you don\u0027t need to use the AVB versions (the vboot ones are usually inlined and therefore more efficient).",
+      "range": {
+        "startLine": 269,
+        "startChar": 15,
+        "endLine": 269,
+        "endChar": 26
+      },
+      "revId": "2b39a6bccaf4b1daa82c04e4eee7dad41d215d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79156631_97c0384c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-19T13:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdc010a1_9b4cf6f5",
       "range": {
         "startLine": 269,
         "startChar": 15,
