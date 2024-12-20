@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ab9d45b_969a4366",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-20T13:42:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check that kind of thing as soon as possible? What is the point of process this data further if apparently content is corrupted?",
+      "parentUuid": "f2386d94_531b2695",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd1c2f3_0a59786d",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 4
