@@ -131,6 +131,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10aad819_f27529c4",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:19:10Z",
+      "side": 1,
+      "message": "nit: Can we sort these based on the order in avb_ops.h? Also sort the implemented functions in the same order.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 70
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c398111e_38f60a0d",
         "filename": "host/include/vboot_host.h",
         "patchSetId": 7
