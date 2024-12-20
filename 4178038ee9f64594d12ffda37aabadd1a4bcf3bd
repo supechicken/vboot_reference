@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a88052b_b012eec2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T08:46:53Z",
+      "side": 1,
+      "message": "The current API of `vboot_avb_ops_new` allows it to be called multiple times (although that won\u0027t hannen in normal flow). Therefore I\u0027d prefer setting all fields of `avb_ops` in the function (by memset-ing the whole struct to 0 and setting individual fields), to make sure there\u0027s no obsolete data left by the previous caller.\n\nAlternatively, we can change `vboot_avb_ops_new` to allow only a single call. However that would put some constraint on unit testing (if any).",
+      "parentUuid": "c040595f_6a16d498",
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f1430fb_d7f4211b",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 7
@@ -66,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "255e6914_0d95c4c0",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T08:46:53Z",
+      "side": 1,
+      "message": "I prefer shorter names for static functions.",
+      "parentUuid": "8540c976_983aa13a",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00c10d20_b1516598",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 7
@@ -82,6 +124,29 @@
         "startChar": 24,
         "endLine": 61,
         "endChar": 28
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c398111e_38f60a0d",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T08:46:53Z",
+      "side": 1,
+      "message": "Also move these to gpt.h? The comment is supposed to be close to the `GUID_STRLEN` definition. The comment should also be close to `StrToGuid` declaration.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 33
       },
       "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

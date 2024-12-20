@@ -190,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c95373f_f303130a",
+        "filename": "firmware/include/2avb.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T08:46:53Z",
+      "side": 1,
+      "message": "+1 for moving code to 2lib.",
+      "parentUuid": "8034ecfa_b0945fb5",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22dae26e_70799bcb",
         "filename": "firmware/include/2avb.h",
         "patchSetId": 5
@@ -219,6 +237,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "22dae26e_70799bcb",
+      "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef45a4aa_21d2369f",
+        "filename": "firmware/include/2avb.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T08:46:53Z",
+      "side": 1,
+      "message": "Remove.",
       "revId": "0477f1a25d28a5ed8334fbda0ef3ed4abe46bd5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

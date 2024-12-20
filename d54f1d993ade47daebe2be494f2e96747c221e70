@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f32ea18_9dfccde3",
+        "filename": "firmware/2lib/include/2sysincludes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T08:46:53Z",
+      "side": 1,
+      "message": "I\u0027d say, let\u0027s remove those `le32toh` calls for now and move on. The endianness-safe problem is unrelated to Android development anyway, which could be left as future work.",
+      "parentUuid": "f4f456a3_d5d06d3c",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4795f8_fb9a0d7d",
         "filename": "firmware/avb/Makefile",
         "patchSetId": 1
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Original comment from @jwerner@chromium.org\n\"I think it would be better to pull in AVB as a submodule or a pre-built library or something like that, and build it using its own official build system. [..]\"\n\nAs above, I will try to do that when all other comments are resolved.",
       "parentUuid": "5f4795f8_fb9a0d7d",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca2fdf2_de8dbf56",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T08:46:53Z",
+      "side": 1,
+      "message": "\u003e For our depthcharge build we could either create a separate ebuild that builds libavb.a using Soong and then passes that file in for vboot to link, or we could have the vboot Makefile invoke the Soong build as a recipe.\n\nTo confirm, you meant building libavb using Soong *within CrOS SDK* right? I can see [aosp/build](https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/aosp/build/) already existing in the chromiumos manifest (with \"notdefault\" group though). However I\u0027m not sure how difficult it would be to build libavb using Soong.\n\nAnyway, for now I think it\u0027s good enough to file a bug and add a TODO comment linking to the bug in Makefile.",
+      "parentUuid": "4e8b89b1_236ad041",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
