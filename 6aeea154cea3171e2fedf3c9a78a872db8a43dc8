@@ -3,6 +3,80 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0044451a_ce4518ed",
+        "filename": "firmware/2lib/include/2avb.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "Add 2api.h for `vb2_kernel_params`",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae49ad69_98510624",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "Align with \"AvbOps *ops\". An alternative is:\n\n```\nstatic AvbIOResult vboot_avb_read_from_partition(\n        AvbOps *ops,\n        const char *partition_name,\n        ...\n        last_param)\n```",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66873b25_8d4a6179",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "Let\u0027s set `*out_num_read` to 0 at the beginning.",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f29161_ab4fab9c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "Make it a function or macro, so we don\u0027t need the cast everywhere.\n\n```\nstatic inline struct vboot_avb_data *user_data(ops)\n{\n    return ops-\u003euser_data;\n}\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58a05bbc_4703cc28",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 8
@@ -43,6 +117,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fcd4309_958cc4db",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b38f81a_80ae749c",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 8
@@ -54,6 +151,87 @@
       "writtenOn": "2024-12-19T15:23:50Z",
       "side": 1,
       "message": "nit: I know we want to fix this before we ship anyway, but just in case we forget, it would probably be better to return an error (e.g. ERROR_IO) in this case rather than a hard assert (which gives the system a chance to gracefully roll back in case a vbmeta that leads to this gets installed with an update or something like that).",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a032563d_977034a1",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "And add `TODO(b/331881159): ...`",
+      "parentUuid": "9b38f81a_80ae749c",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba3f9052_048c3f22",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "nit: Drop `.`",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f408e432_2f1ccdc3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049ebc32_86881b53",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T09:20:07Z",
+      "side": 1,
+      "message": "Can we sort these based on the order in avb_ops.h?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 71
+      },
       "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
