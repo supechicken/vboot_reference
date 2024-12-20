@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69c01409_008ec3c2",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-20T11:13:46Z",
+      "side": 1,
+      "message": "I just want to also set priority, tries and succesfull just in case, so I left `e` variable to make code more readable",
+      "parentUuid": "01a4f990_da3b924f",
+      "range": {
+        "startLine": 692,
+        "startChar": 3,
+        "endLine": 692,
+        "endChar": 30
+      },
+      "revId": "6b54801f3cffb973e313b65d2554853b1241beee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9b91c1a_63c67c74",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-13T13:09:58Z",
       "side": 1,
       "message": "Remove",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "6b54801f3cffb973e313b65d2554853b1241beee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bba5ea8_686c9c5c",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-20T11:13:46Z",
+      "side": 1,
+      "message": "It was removed. Now I change type for vbmeta so no need to modify looking for boot partition.",
+      "parentUuid": "e9b91c1a_63c67c74",
       "range": {
         "startLine": 86,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eca81ac_c57c11ac",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-20T11:13:46Z",
+      "side": 1,
+      "message": "It was removed. Now I change type for vbmeta so no need to modify looking for boot partition.",
+      "parentUuid": "079c25a2_ab9addbb",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 27
+      },
+      "revId": "6b54801f3cffb973e313b65d2554853b1241beee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "152fac86_b066ce17",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4f7fe9_68825832",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-20T11:13:46Z",
+      "side": 1,
+      "message": "It was removed. Now I change type for vbmeta so no need to modify looking for boot partition.",
+      "parentUuid": "152fac86_b066ce17",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "6b54801f3cffb973e313b65d2554853b1241beee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e401c058_67d6d7de",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-12-13T13:09:58Z",
       "side": 1,
       "message": "Just `OR` these `memcmp` calls here and reate new function to get entry type. `Is` functions should return only return value from boolean domain.",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 19
+      },
+      "revId": "6b54801f3cffb973e313b65d2554853b1241beee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b53831_7f42bcc6",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2024-12-20T11:13:46Z",
+      "side": 1,
+      "message": "It was removed. Now I change type for vbmeta so no need to modify looking for boot partition.",
+      "parentUuid": "e401c058_67d6d7de",
       "range": {
         "startLine": 250,
         "startChar": 1,
