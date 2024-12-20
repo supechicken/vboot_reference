@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f92f890e_419cc66e",
+        "filename": "firmware/2lib/include/2sysincludes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-20T18:28:31Z",
+      "side": 1,
+      "message": "Well, the other thing (which I didn\u0027t realize yet when I wrote that other comment) is that we do need some be32-helpers for the RSA key transformation in a later patch, so I think we\u0027ll need to include \u003cendian.h\u003e anyway. In that case I guess we might as well use it for the UUID too.",
+      "parentUuid": "7f32ea18_9dfccde3",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4795f8_fb9a0d7d",
         "filename": "firmware/avb/Makefile",
         "patchSetId": 1
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "\u003e For our depthcharge build we could either create a separate ebuild that builds libavb.a using Soong and then passes that file in for vboot to link, or we could have the vboot Makefile invoke the Soong build as a recipe.\n\nTo confirm, you meant building libavb using Soong *within CrOS SDK* right? I can see [aosp/build](https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/aosp/build/) already existing in the chromiumos manifest (with \"notdefault\" group though). However I\u0027m not sure how difficult it would be to build libavb using Soong.\n\nAnyway, for now I think it\u0027s good enough to file a bug and add a TODO comment linking to the bug in Makefile.",
       "parentUuid": "4e8b89b1_236ad041",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65cc193c_9dc88e81",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-20T18:28:31Z",
+      "side": 1,
+      "message": "Yes, as long as we\u0027re building firmware in CrOS SDK we\u0027d have to pull Soong in there somehow. I also don\u0027t know how complicated it is to set up in practice.",
+      "parentUuid": "9ca2fdf2_de8dbf56",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

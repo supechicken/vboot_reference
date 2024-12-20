@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "255b2094_01832acf",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-20T18:28:31Z",
+      "side": 1,
+      "message": "I don\u0027t really understand this concern tbh. If `vboot_avb_ops_new` doesn\u0027t write any member of `avb_ops`, then why would you be concerned about repeated invocations of the function changing anything? I think you may just get that impression because of how it looks in this patch set, but if you looked at a patch set where the entire strucutre is statically initialized and never modified by any function, it would look fine. (In fact, we could make it `const`, except for the fact that libavb unfortunately uses non-const pointers for the AvbOps argument in all its APIs so that would require an annoying amount of casting.)",
+      "parentUuid": "1a88052b_b012eec2",
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f1430fb_d7f4211b",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 7
@@ -165,6 +183,30 @@
       "writtenOn": "2024-12-20T08:46:53Z",
       "side": 1,
       "message": "Also move these to gpt.h? The comment is supposed to be close to the `GUID_STRLEN` definition. The comment should also be close to `StrToGuid` declaration.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7a8159_6cf6afa6",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-20T18:28:31Z",
+      "side": 1,
+      "message": "Be aware that this header (and possibly also gpt.h?) is part of the external interface of libvboot_host.a, and moving functions away from here may affect other ChromeOS userland code that links to vboot. I didn\u0027t find any obvious dependencies at first glance (there\u0027s a nice copy\u0026paste in platform2/installer/chromeos_install_config.cc, though), but we should keep a bit of an eye on the builders after we make changes here to see if anything else broke.",
+      "parentUuid": "c398111e_38f60a0d",
       "range": {
         "startLine": 41,
         "startChar": 0,
