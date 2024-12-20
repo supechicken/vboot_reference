@@ -140,6 +140,24 @@
       "parentUuid": "34b0afad_7910fddb",
       "revId": "0a91c7e8e5777034962b3695b2ed7707db458b3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153771ac_e92fd3b3",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-20T07:24:48Z",
+      "side": 1,
+      "message": "Assuming you meant removing their code from depthcharge, I\u0027m fine with that. They seem to be ancient (since 2015) boards, where right now I cannot even find them on DLM, so I think it\u0027s fine to drop ChromeOS support for them (they still exist in coreboot).\n\nCould you upload a CL to remove them (out of the long depthcharge chain)?",
+      "parentUuid": "9df6105e_a2e08722",
+      "revId": "0a91c7e8e5777034962b3695b2ed7707db458b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
