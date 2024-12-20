@@ -101,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52c1ed41_4cc1786e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-20T18:41:41Z",
+      "side": 1,
+      "message": "It\u0027s just a clean separation of concerns — the loading code loads and the verification code verifies. Intermixing those responsibilities makes things harder to follow. It\u0027s also a bit redundant to check the same thing multiple times (unless there\u0027s really a practical benefit from aborting early here in this case, which I\u0027m not seeing at the moment). \"Processing data further\" isn\u0027t really a problem as long as we\u0027re confident that the problem will be detected eventually (it will take a bit more time, but we usually only care about time in the normal boot path where everything works out, not in a critical error path).\n\nBesides, with some of my other suggestions from the comments below I hope we can change all of this so that `get_preloaded_partition()` can be a very simple callback that just loads what it was told to load, without needing to know any details about what the various partitions mean and how they are formatted. I think that would be a much cleaner design, and if we can get there then format-specific checks like this wouldn\u0027t belong here.",
+      "parentUuid": "7ab9d45b_969a4366",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd1c2f3_0a59786d",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 4
