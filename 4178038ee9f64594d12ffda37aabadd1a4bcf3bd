@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f274b0f2_b4a4d7b8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-23T07:12:15Z",
+      "side": 1,
+      "message": "The return type of `vboot_avb_ops_new` isn\u0027t const, so callers can theoretically modify its fields. It feels safer to me if `vboot_avb_ops_new` guarantees to return the same data for each call, just like it would with `malloc + memset`.",
+      "parentUuid": "255b2094_01832acf",
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f1430fb_d7f4211b",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 7
@@ -207,6 +225,30 @@
       "side": 1,
       "message": "Be aware that this header (and possibly also gpt.h?) is part of the external interface of libvboot_host.a, and moving functions away from here may affect other ChromeOS userland code that links to vboot. I didn\u0027t find any obvious dependencies at first glance (there\u0027s a nice copy\u0026paste in platform2/installer/chromeos_install_config.cc, though), but we should keep a bit of an eye on the builders after we make changes here to see if anything else broke.",
       "parentUuid": "c398111e_38f60a0d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00102991_9eb71402",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2024-12-23T07:12:15Z",
+      "side": 1,
+      "message": "\u003e this header (and possibly also gpt.h?) is part of the external interface of libvboot_host.a\n\nThis header indirectly includes gpt.h, so moving declarations (and the `GUID_STRLEN` macro) there won\u0027t have any practical impact. We may include \"gpt.h\" in this file to make that explicit.",
+      "parentUuid": "bb7a8159_6cf6afa6",
       "range": {
         "startLine": 41,
         "startChar": 0,
