@@ -197,6 +197,10 @@ vb2_error_t vb2_get_gbb_flag_description(enum vb2_gbb_flag flag,
 		*name = "VB2_GBB_FLAG_FORCE_CSE_SYNC";
 		*description = "Always sync CSE, even if it is same as CBFS CSE";
 		break;
+	case VB2_GBB_FLAG_ENABLE_SILICON_FW_DEBUG:
+		*name = "VB2_GBB_FLAG_ENABLE_SILICON_FW_DEBUG";
+		*description = "To control the verbosity of debug prints in silicon firmware.";
+		break;
 	default:
 		*name = NULL;
 		*description = NULL;
