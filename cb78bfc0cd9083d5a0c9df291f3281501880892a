@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ff8736_86b19478",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-30T17:55:07Z",
+      "side": 1,
+      "message": "Can you please link the patch that would actually use this flag to give an idea what kinds of output you want to guard with it?\n\nIn general, I would caution not to hide a ton of super verbose debugging output behind a runtime flag, because even if the output is disabled the compiler is still adding all of those strings to the binary. You\u0027re basically still eating all of the cost of adding extra debugging output so there is little reason to not have it enabled and logged to CBMEM console all the time. I would normally suggest to just add as much debugging output with normal printk as you feel might be needed on production builds (and if that feels too spammy you can mark it as BIOS_SPEW and people can reduce the loglevel if it annoys them, that\u0027s what that\u0027s for), and any extra output that adds a large amount of new strings which we don\u0027t want to burden the production build with should be hidden behind a hard Kconfig. I don\u0027t think there\u0027s really a good use case for output that\u0027s compiled in but never active by default.\n\nIn essence, I think you\u0027re basically just reinventing the loglevel here, and we should just use the actual loglevel for that instead (and maybe adjust the way we use it if it doesn\u0027t suit your needs right now).",
+      "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
