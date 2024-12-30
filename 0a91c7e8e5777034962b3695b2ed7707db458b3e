@@ -158,6 +158,24 @@
       "parentUuid": "9df6105e_a2e08722",
       "revId": "0a91c7e8e5777034962b3695b2ed7707db458b3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8b6893_12e78250",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2024-12-30T15:31:20Z",
+      "side": 1,
+      "message": "Smaug is the Pixel-C Android tablet shipped in 2015 (a result of the first aborted attempt to join ChromeOS and Android). Foster was an earlier development board based on the same chip that didn\u0027t ship. I\u0027m okay with deleting them.",
+      "parentUuid": "153771ac_e92fd3b3",
+      "revId": "0a91c7e8e5777034962b3695b2ed7707db458b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
