@@ -52,6 +52,24 @@
       "parentUuid": "715cbfe1_d3c687e7",
       "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6bd99ba_226811e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-01-04T01:41:35Z",
+      "side": 1,
+      "message": "\u003e Sure, I can wait. I do feel like my concerns may still apply to what you sketched there, though. \"Dynamic Debug Control\" is basically the point of having a log level already, we don\u0027t need to reinvent it. The `cbmem` utility already has a `--loglevel` option to filter the output, and we\u0027ve had plans for adding a serial-console-specific loglevel control as a CBFS file before that could be revived (CB:45208). You might want to look into those options when writing your design.\n\u003e \n\u003e (Also, the problem about debug print strings increasing binary size remains, so for the really spammy stuff I\u0027d recommend to still keep them behind a Kconfig that\u0027s only enabled for the .serial.bin build.)\n\n\nNot sure if we are in same page here. Let me share the design doc with you first to start with go/dynamic_ap_firmware\n\nThe idea is to keep debug build if FSP/silicon FW in all serial bin image and then use GBB to control the flow.",
+      "parentUuid": "78c80d1c_193df4d2",
+      "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
