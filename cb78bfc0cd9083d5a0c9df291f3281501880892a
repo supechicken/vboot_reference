@@ -70,6 +70,24 @@
       "parentUuid": "78c80d1c_193df4d2",
       "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036fb05e_eaa550aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-06T16:21:53Z",
+      "side": 1,
+      "message": "Okay, thanks, I think I understand better now. So if I understand your document right:\n\n* You don\u0027t want to change anything for production (image.bin) images.\n\n* You don\u0027t want to change anything for logs that are printed by coreboot (this is only about FSP logging)\n\n* All you want to do is essentially to always link the debug FSP build into image.serial.bin, but then have a runtime control for the FSP loglevel?\n\nThat all makes sense and seems like a good idea to me, however, I still think a GBB flag is probably not the best backend for this runtime control. GBB flags are tied into vboot and really just meant to control vboot and boot flow related things (this hasn\u0027t always been 100% followed in practice but was the general idea). \n\nFor general coreboot stuff that has nothing to do with vboot, the usual way to encode easily changeable options in the flash image is with CBFS files just containing an integer. You can then use e.g. `cbfstool image.serial.bin add-int -i 5 -n fsp_pcd_debug_level` to create a file that stores the FSP loglevel and then just read it and pass it to the UPD from coreboot. You could even have two files for the two separate log levels you have there (PCD and MRC). I think that may be a better way to implement this?",
+      "parentUuid": "d6bd99ba_226811e4",
+      "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
