@@ -119,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "471aa103_3baefc4f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-07T11:06:35Z",
+      "side": 1,
+      "message": "Actually, I think it should be done a little differently. `vboot_avb_get_preloaded_partition` should not load any data. This callback is added to return pointer to already preloaded partition. I think that the code would simplify if we change it following way:\n\n- when we determine that we want to boot Android (by partition guid or by partition name) we should load all the necessary partition to memory and store the pointer to each of it\n- then we can run AVB verification function and `vboot_avb_get_preloaded_partition\u0027 should only return previously saved pointer\n- if partition is not preloaded than it will use `read_from_parition` callback\n- when verification is done, we can move all the data (kernel \u0026 ramdisks) to proper buffers expected by boot protocol in the way you suggested in b/388063011\n\nIt would be nice to load partition directly to final destination, but unfortunatelly AVB verification requires header which should be removed before booting kernel, so memmove is hard to avoid.\n\nAfter this changes we can simplify `vboot_avb_get_preloaded_partition` and remove functions like `vb2_load_android_ramdisks` and couple of `vb2_load_*` functions. We can have one function which just preloads partitions and stores the pointers.\n\nPlease let me know what do you think about it",
+      "parentUuid": "52c1ed41_4cc1786e",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd1c2f3_0a59786d",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 4
