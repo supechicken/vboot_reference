@@ -56,6 +56,7 @@ typedef struct VbSelectAndLoadKernelParams {
 	void *kernel_buffer;
 	/* Size of kernel buffer in bytes */
 	uint32_t kernel_buffer_size;
+
 	/* Destination buffer for pvmfw. Shall be ignored if pvmfw_size is 0 */
 	void *pvmfw_buffer;
 	/*
@@ -99,6 +100,11 @@ typedef struct VbSelectAndLoadKernelParams {
 	 * passed as an index instead of a handle.  Is that used anymore now
 	 * that we're passing partition_guid?
 	 */
+	/* Address of the region with kernel cmdline parameters. */
+	char *kernel_cmdline_buffer;
+	/* Size of the region with kernel cmdline parameters. */
+	uint32_t kernel_cmdline_size;
+
 } VbSelectAndLoadKernelParams;
 
 /**
