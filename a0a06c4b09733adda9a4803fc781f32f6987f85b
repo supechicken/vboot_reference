@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab99df34_a8339ed3",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T18:42:44Z",
+      "side": 1,
+      "message": "Newer version of `vboot_avb_ops_new()` cannot fail.",
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c300554e_8b910cb4",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T18:42:44Z",
+      "side": 1,
+      "message": "Doesn\u0027t `!need_verification` imply this?",
+      "range": {
+        "startLine": 95,
+        "startChar": 23,
+        "endLine": 95,
+        "endChar": 66
+      },
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c00e3d0_59503a0e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T18:42:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you just not rewrite the error and leave it as it is (for the `map()` below) in this case?",
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130c7a1e_132d0666",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T18:42:44Z",
+      "side": 1,
+      "message": "I think you can simplify all this to\n```\nint chars \u003d snprintf(params-\u003evboot_cmdline_buffer, params-\u003evboot_cmdline_size,\n                     \"%s %s\u003d%s\", verify_data-\u003ecmdline, VERIFIED_BOOT_PROPERTY_NAME,\n                     need_verification ? PROPERTY_GREEN : PROPERTY_ORANGE);\nif (chars \u003c 0 || chars \u003e\u003d params-\u003evboot_cmdline_size) {\n  VB2_DEBUG(\"ERROR: Command line doesn\u0027t fit provided buffer: %s\\n\",\n            verify_data-\u003ecmdline);\n  return VB2_ERROR_LOAD_PARTITION_WORKBUF; /* is this error really the right one? */\n}\n```\n(Example above would be if you remove the \u0027\u003d\u0027 from the `NAME` constant which seems a bit cleaner.)",
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
