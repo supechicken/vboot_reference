@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "784c24b3_975aadd5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T17:22:10Z",
+      "side": 1,
+      "message": "Yeah, you can also preload them completely before kicking off AVB if you prefer. That\u0027s fine by me.\n\nRegarding the memmoves, I am hoping that we don\u0027t have a strict \"XXX needs to be loaded exactly at this address\" situation and more of a general \"XXX need to be somewhere in this general memory area\" situation, and that way we can avoid the memmove by loading it to the right place to begin with even if there are some small headers of unknown size in the front. From my reading of the kernel code I think(?) that should be true for both the x86 kernel and ramdisk, but someone needs to try it out. For arm64, the ramdisk can go pretty much anywhere (\"within the first 32GB of memory\", which encompasses all memory depthcharge generally uses), and the kernel gets decompressed anyway so where we place the compressed image beforehand also doesn\u0027t matter (as long as we keep the decompression area at the front of DRAM free, which the existing `CONFIG_KERNEL_START`s for all platforms should do).",
+      "parentUuid": "471aa103_3baefc4f",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd1c2f3_0a59786d",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 4
