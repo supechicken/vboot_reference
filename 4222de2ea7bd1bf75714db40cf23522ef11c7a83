@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be317bd2_97be5fbf",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T21:42:03Z",
+      "side": 1,
+      "message": "nit: prefer to use `sizeof(bcb)` instead of the struct type for these sorts of things to make it more obvious that it matches the variable we\u0027re loading into (just in case the type ever changes or something).",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "4222de2ea7bd1bf75714db40cf23522ef11c7a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b7d7b1_512d411c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T21:42:03Z",
+      "side": 1,
+      "message": "strcmp",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 86,
+        "endChar": 13
+      },
+      "revId": "4222de2ea7bd1bf75714db40cf23522ef11c7a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "923ed601_5749d8b4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-07T21:42:03Z",
+      "side": 1,
+      "message": "Unless these get serialized somewhere, you shouldn\u0027t need to provide explicit values.",
+      "range": {
+        "startLine": 598,
+        "startChar": 25,
+        "endLine": 598,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "99f47f0a_e88552f1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 598,
+                "startChar": 0,
+                "endLine": 601,
+                "endChar": 0
+              },
+              "replacement": "\tVB2_BOOT_CMD_NORMAL_BOOT,\n\tVB2_BOOT_CMD_RECOVERY_BOOT,\n\tVB2_BOOT_CMD_BOOTLOADER_BOOT,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4222de2ea7bd1bf75714db40cf23522ef11c7a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
