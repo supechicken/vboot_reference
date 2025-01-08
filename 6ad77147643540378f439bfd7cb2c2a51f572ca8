@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35236ab8_8d59b1bf",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-08T11:48:27Z",
+      "side": 1,
+      "message": "It a hack anyway :) but I can change it. Should I only check if part 14 is \u0027vbmeta\u0027 or is is makes more sense to iterate thru partition table to find \u0027vbmeta_a\u0027 and \u0027vbmeta_b\u0027?",
+      "parentUuid": "680fe942_26581533",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff57a702_f931b130",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-08T11:16:57Z",
       "side": 1,
       "message": "Do we want to fail silently here (without any log)?",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4996b9_0882d97f",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-08T11:48:27Z",
+      "side": 1,
+      "message": "We do not fail here, it just means the partition already has correct guid.",
+      "parentUuid": "ff57a702_f931b130",
       "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
