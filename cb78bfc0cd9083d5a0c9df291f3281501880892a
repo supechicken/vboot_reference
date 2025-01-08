@@ -142,6 +142,24 @@
       "parentUuid": "69319699_2ccb65cd",
       "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd50cc5_7865e687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-08T17:01:22Z",
+      "side": 1,
+      "message": "That\u0027s one way to do it. You could also decide to just always access the file in RO (via `cbfs_ro_map()`). Considering that this is supposed to just be a tool for people who already have full flash access anyway, that\u0027s probably the more convenient option.",
+      "parentUuid": "bd872176_e1b960b3",
+      "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
