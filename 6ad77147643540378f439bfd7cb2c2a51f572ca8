@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "680fe942_26581533",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-01-08T11:16:57Z",
+      "side": 1,
+      "message": "Is hardcoding partition index a good idea? Maybe we shall consider checking the partition name (to not accidentally change GUID for any other partition)?",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff57a702_f931b130",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-01-08T11:16:57Z",
+      "side": 1,
+      "message": "Do we want to fail silently here (without any log)?",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
