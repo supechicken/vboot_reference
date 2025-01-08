@@ -178,6 +178,24 @@
       "parentUuid": "dcd50cc5_7865e687",
       "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03571290_5edbccc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-08T17:12:59Z",
+      "side": 1,
+      "message": "Yes, I know that this will be read from romstage/ramstage, but I don\u0027t really understand your concern. An RW romstage/ramstage can access a file in RO CBFS via the `cbfs_ro_map()` API no problem, that\u0027s what that\u0027s there for. coreboot is already doing that in other cases where duplicating a file across the 3 sections doesn\u0027t make sense (e.g. for the `cmos.layout` file when using OPTION_TABLE). This is essentially also how GBB flags work, we only have one instance of GBB flags in the RO flash, not a different set of flags for each slot, that would just be confusing and is not really needed.",
+      "parentUuid": "52993d02_3778e598",
+      "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
