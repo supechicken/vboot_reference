@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "472ca467_9cbfe549",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-01-08T12:56:23Z",
+      "side": 1,
+      "message": "\u003e Is it not enough that partition name starts with \u0027vbmeta\u0027 to change it?\n\nThis makes sense to me, thank you for clarifying. Just wanted to make sure that we\u0027ll change GUID for both `vbmeta` partitions and checking the `vbmeta*` prefix is enough in this case.",
+      "parentUuid": "c271ecd2_ec6485f9",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff57a702_f931b130",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
