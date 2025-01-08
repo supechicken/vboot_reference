@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c271ecd2_ec6485f9",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-08T12:52:46Z",
+      "side": 1,
+      "message": "But the whole idea was to change the type for both \u0027a\u0027 and \u0027b\u0027 at the same time. Why should we delay the GUID change for the inactive partition? Is it not enough that partition name starts with \u0027vbmeta\u0027 to change it?",
+      "parentUuid": "c55eb4e9_73faf848",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff57a702_f931b130",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
