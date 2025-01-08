@@ -77,6 +77,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8f55448_c09b129b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-01-08T12:54:34Z",
+      "side": 1,
+      "message": "I believe Jan already clarified that in b/335901799#comment3, however I\u0027d be grateful if we all could sign-off on that one.",
+      "parentUuid": "902e6f25_aa5c4683",
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "130c7a1e_132d0666",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 8
