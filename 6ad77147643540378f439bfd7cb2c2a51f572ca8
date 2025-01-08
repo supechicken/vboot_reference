@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c55eb4e9_73faf848",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-01-08T12:37:06Z",
+      "side": 1,
+      "message": "I\u0027d sleep well if we check for suffix as well. ;)",
+      "parentUuid": "35236ab8_8d59b1bf",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff57a702_f931b130",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 3
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "We do not fail here, it just means the partition already has correct guid.",
       "parentUuid": "ff57a702_f931b130",
+      "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d1d4cf_a2e6d028",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-01-08T12:37:06Z",
+      "side": 1,
+      "message": "Ah, my bad, sorry for the mess here!",
+      "parentUuid": "df4996b9_0882d97f",
       "revId": "6ad77147643540378f439bfd7cb2c2a51f572ca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
