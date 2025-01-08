@@ -95,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35382fd6_36238e3f",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-08T17:06:48Z",
+      "side": 1,
+      "message": "Yes, Jan basically summarized what I said there. It doesn\u0027t make sense to try to display firmware verification state in the UI or pass it to the kernel — if the firmware is not verified, then it could simply forge all of those measurements anyway. The state reported to Android from AP firmware can only describe kernel verification state, and firmware verification state can only be managed and reported by the GSC (including via remote attestation and DICE certificates, which will contain a measurement for this).",
+      "parentUuid": "e8f55448_c09b129b",
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "130c7a1e_132d0666",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 8
