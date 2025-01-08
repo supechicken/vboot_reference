@@ -60,6 +60,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "902e6f25_aa5c4683",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-01-08T10:52:48Z",
+      "side": 1,
+      "message": "Does checking the VB2_CONTEXT_DEVELOPER_MODE sufficient here to set `green` state?\n\nIIUC, when the firmware is dev-signed, we\u0027d be setting `verifiedbootstate` to `green`.\n\nAs per [libavb integration](https://android.googlesource.com/platform/external/avb/+/refs/heads/main#android-specific-integration):\n```\ngreen: If in LOCKED state and the key used for verification was not set by the end user.\nyellow: If in LOCKED state and the key used for verification was set by the end user.\n```\nI wonder if we\u0027re not falling into `yellow` state for non-MP-signed firmware.\n\nJulius/Jan/Yu-Ping, WDYT?",
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "130c7a1e_132d0666",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 8
