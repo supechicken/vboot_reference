@@ -160,6 +160,24 @@
       "parentUuid": "bd872176_e1b960b3",
       "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52993d02_3778e598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-01-08T17:05:28Z",
+      "side": 1,
+      "message": "\u003e That\u0027s one way to do it. You could also decide to just always access the file in RO (via `cbfs_ro_map()`). Considering that this is supposed to just be a tool for people who already have full flash access anyway, that\u0027s probably the more convenient option.\n\nI think we should integrate this into coreboot stages like romstage and ramstage. These stages try to control the log level of SoC firmware blobs, so we need these files outside of RO as well. That is, these copies should also be present inside RW-A/B. We might need to allow for utmost configurability, where partners or users are not limited with their resources while enabling verbose mode for the SoC firmware log during debugging. What do you think? The first approach, which keeps the file in all copies, seems like the best option here.",
+      "parentUuid": "dcd50cc5_7865e687",
+      "revId": "cb78bfc0cd9083d5a0c9df291f3281501880892a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
