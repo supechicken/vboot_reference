@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9387ac71_dbaa4145",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-01-10T00:05:56Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8726194429011622449) is being automatically retried for the following reasons:\n- Some child builders are now retryable:grunt-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "cd908405151ede76e48b11980ae02b838d0172df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
