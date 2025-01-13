@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9489a881_49622614",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-01-13T09:10:11Z",
+      "side": 1,
+      "message": "That\u0027s already considered in Boot 11 below: `Everything is updated, but need to reboot again to unset display.` In this worst-case analysis, we assume both EC and PD need to be updated.",
+      "parentUuid": "7f9b1aa8_7d2d42d8",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "8c26861144411957a8ac875ddb885b523909bcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f924d57_0694eeb2",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-01-13T02:58:00Z",
       "side": 1,
       "message": "too long",
+      "revId": "8c26861144411957a8ac875ddb885b523909bcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7df99d7_7d5aedcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-01-13T09:10:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f924d57_0694eeb2",
       "revId": "8c26861144411957a8ac875ddb885b523909bcd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
