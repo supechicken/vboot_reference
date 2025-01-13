@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f9b1aa8_7d2d42d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-01-13T03:26:19Z",
+      "side": 1,
+      "message": "In Nissa, after the EC sync ends, there\u0027s an extra warm boot during the next boot to reset the display flag since there\u0027s nothing to display.\n\n\nDuring EC sync\n```\nTrying to locate \u0027ecrw.hash\u0027 in CBFS\nCBFS: Found \u0027ecrw.hash\u0027 @0x199740 size 0x20 in mcache @0x76add72c\nvb2_digest_init: 32 bytes, hash algo 2, HW acceleration enabled\ncheck_ec_hash: Hexp RW(active): 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\ncheck_ec_hash:            Hmir: 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\ncheck_ec_hash: Heff RW(active): 470152b1aad2c316e275fc19a56b0def691b9327ebc51486d3050d0a6fe676be\ncheck_ec_hash: Heff !\u003d Hexp. Schedule update\nsync_ec: select_rw\u003dRW(active)\nupdate_ec: Updating RW(active)...\nEC is updating. Show firmware sync screen.\nCBFS: Found \u0027locales\u0027 @0x326b80 size 0x96 in mcache @0x76adc9cc\nvb2_digest_init: 150 bytes, hash algo 2, HW acceleration enabled\nget_locale_data: Supported locales: en bn ca da de et es es-419 fil fr hr id it lv lt hu ms nl nb pl pt-PT pt-BR ro sk sl fi sv vi tr cs el bg ru sr uk he(rtl) ar(rtl) fa(rtl) mr hi gu ta te kn ml th zh-CN zh-TW ja ko (50 locales)\nui_display: screen\u003d0x100, locale\u003d0, selected_item\u003d0, disabled_item_mask\u003d0x0, hidden_item_mask\u003d0x0, timer_disabled\u003d0, current_page\u003d0, error\u003d0x0\nCBGFX: cbgfx initialized: screen:width\u003d1920, height\u003d1200, offset\u003d0 canvas:width\u003d1200, height\u003d1200, offset\u003d360\ndisplay: display_init called but not implemented.\ndisplay: backlight_update called but not implemented.\nload_archive: Loading locale_en.bin\nCBFS: Found \u0027locale_en.bin\u0027 @0x1b6840 size 0x6ff4 in mcache @0x76adb950\nvb2_digest_init: 28660 bytes, hash algo 2, HW acceleration enabled\nload_archive: Loading rw_locale_en.bin\nCBFS: \u0027rw_locale_en.bin\u0027 not found.\nload_archive: Failed to load rw_locale_en.bin (dir: 0x0, size: 805654616)\nTrying to locate \u0027ecrw\u0027 in CBFS\nCBFS: Found \u0027ecrw\u0027 @0x16f940 size 0x29d78 in mcache @0x76add6d0\nvb2_digest_init: 171384 bytes, hash algo 2, HW acceleration enabled\nvb2ex_ec_update_image: Finished in 16801 ms\nTrying to locate \u0027ecrw.hash\u0027 in CBFS\nCBFS: Found \u0027ecrw.hash\u0027 @0x199740 size 0x20 in mcache @0x76add72c\nvb2_digest_init: 32 bytes, hash algo 2, HW acceleration enabled\ncheck_ec_hash: Hexp RW(active): 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\ncheck_ec_hash:            Hmir: 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\nvboot_hash_image: No valid hash (status\u003d0 size\u003d0). Compute one...\ncheck_ec_hash: Heff RW(active): 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\nupdate_ec: Updated RW(active) successfully \u003c------  sync is successful\nsync_ec: Rebooting to jump to new EC-RW\nvb2api_ec_sync: ec_sync_phase2(ctx) returned 0x1004\nvb2api_kernel_phase2: vb2api_ec_sync(ctx) returned 0x1004\nEC Reboot requested. Doing cold reboot.\ndisplay: backlight_update called but not implemented.\nTPM: secdata_kernel unchanged\nTPM: secdata_firmware unchanged\nnvdata unchanged\nExiting depthcharge with code 2 at timestamp: 32205100\nPowering off.. \u003c---- issued a reset\n```\n\n\n\n\n\n\nnext boot after EC sync is done\n```\nvb2api_kernel_phase1: This is developer-signed firmware.\nvb2api_kernel_phase2: GBB flags are 0x0\nTrying to locate \u0027ecrw.hash\u0027 in CBFS\nCBFS: Found \u0027ecrw.hash\u0027 @0x199740 size 0x20 in mcache @0x76add72c\nvb2_digest_init: 32 bytes, hash algo 2, HW acceleration enabled\ncheck_ec_hash: Hexp RW(active): 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\ncheck_ec_hash:            Hmir: 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\ncheck_ec_hash: Heff RW(active): 05fe78eec2e71b73f8d914deb0071db0fd8812d6f9020ce2c63685bafec83c86\nsync_ec: select_rw\u003dRW(active)\nvb2api_kernel_phase2: Normal mode: reboot to unset display request \u003c--- again issued a warm reset for unset the display request\nReboot requested. Doing warm reboot.\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "8c26861144411957a8ac875ddb885b523909bcd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f924d57_0694eeb2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
