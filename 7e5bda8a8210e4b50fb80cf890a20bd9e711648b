@@ -94,6 +94,30 @@
       },
       "revId": "7e5bda8a8210e4b50fb80cf890a20bd9e711648b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4f3105_60e49a0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-01-14T08:46:43Z",
+      "side": 1,
+      "message": "I\u0027d prefer not extending the bit-field. A larger trycount implies when there\u0027s a real bug (causing the system not able to boot), the enduser will need more real attempts before the system rollsback to the usable system.  16 is already a super large number and you really don\u0027t want to go over that...",
+      "parentUuid": "91254d60_d1c9dc16",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "7e5bda8a8210e4b50fb80cf890a20bd9e711648b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
