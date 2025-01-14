@@ -15,6 +15,7 @@ Swap the EC RW (ecrw) within an AP firmware (BIOS) image.
 # Flags.
 DEFINE_string image "" "The AP firmware file (e.g 'image-steelix.bin') to swap out ecrw" i
 DEFINE_string ec "" "The EC firmware file (e.g 'ec.bin')" e
+DEFINE_string ap_for_ec "" "The AP firmware file (e.g 'image-steelix.bin') as source of EC firmware file" a
 
 # Parse command line.
 FLAGS "$@" || exit 1
@@ -30,15 +31,58 @@ CBFS_ECRW_HASH_NAME="ecrw.hash"
 CBFS_ECRW_VERSION_NAME="ecrw.version"
 CBFS_ECRW_CONFIG_NAME="ecrw.config"
 
-swap_ecrw() {
+swap_ecrw_from_ap() {
+  local ap_file=$1
+  local ap_for_ec_file=$2
+  local temp_dir
+  local ecrw_file
+  local ecrw_hash_file
+  local ecrw_version_file
+  local region="${FMAP_REGIONS[0]}"
+  local ecrw_ver
+  local apro_ver
+  local aprw_ver
+
+  temp_dir=$(mktemp -d)
+  ecrw_file="${temp_dir}/ecrw"
+  cbfstool "${ap_for_ec_file}" extract -r "${region}" -n "${CBFS_ECRW_NAME}" \
+    -f "${ecrw_file}"
+  info "EC RW extracted to ${ecrw_file}"
+
+  ecrw_hash_file="${temp_dir}/ecrw.hash"
+  cbfstool "${ap_for_ec_file}" extract -r "${region}" -n "${CBFS_ECRW_HASH_NAME}" \
+    -f "${ecrw_hash_file}"
+  info "EC RW hash extracted to ${ecrw_hash_file}"
+
+  ecrw_version_file="${temp_dir}/ecrw.version"
+  cbfstool "${ap_for_ec_file}" extract -r "${region}" -n "${CBFS_ECRW_VERSION_NAME}" \
+    -f "${ecrw_version_file}" \
+    || ecrw_version_file="" \
+    && warn "${CBFS_ECRW_VERSION_NAME} not found in source ap file"
+
+  swap_ecrw_in_ap "${ap_file}" "${ecrw_file}" "${ecrw_hash_file}" "${ecrw_version_file}"
+
+  if [[ -n "${ecrw__version_file}" ]]; then
+    ecrw_ver="$(cat "${ecrw_version_file}")"
+  else
+    ecrw_ver="unknown"
+  fi
+  apro_ver=$(futility update --manifest -i "${ap_file}" \
+    | jq -r '.default.host.versions.ro')
+  aprw_ver=$(futility update --manifest -i "${ap_file}" \
+    | jq -r '.default.host.versions.rw')
+  info "${CBFS_ECRW_NAME} (${ecrw_ver}) swapped in ${ap_file}"
+  info "${CBFS_ECRW_NAME} (${ecrw_ver}) swapped in ${ap_file} (RO:${apro_ver}, RW:${aprw_ver})"
+  info "Done"
+}
+
+swap_ecrw_from_ec() {
   local ap_file=$1
   local ec_file=$2
   local temp_dir
-  local info
   local ecrw_file
   local ecrw_hash_file
   local ecrw_ver_file
-  local ecrw_comp_type
   local ecrw_ver
   local apro_ver
   local aprw_ver
@@ -54,37 +98,7 @@ swap_ecrw() {
   ecrw_ver_file="${temp_dir}/ecrw.version"
   futility dump_fmap -x "${ec_file}" "RW_FWID:${ecrw_ver_file}" >/dev/null
 
-  for region in "${FMAP_REGIONS[@]}"
-  do
-    info="$(cbfstool "${ap_file}" print -r "${region}" -k -v \
-      | grep -m 1 "^${CBFS_ECRW_NAME}\s")"
-    ecrw_comp_type="$(cut -f7- <<< "${info}" | grep -o '\<comp\>:\w*' \
-      | cut -d: -f2)"
-    ecrw_comp_type=${ecrw_comp_type:-none}
-    cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_NAME}"
-    cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_HASH_NAME}"
-    cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_VERSION_NAME}" \
-      || warn "${CBFS_ECRW_VERSION_NAME} not found, but will be added"
-    # TODO(b/307788351): Update ecrw.config. Right now the config info cannot
-    # be obtained from ec.bin.
-    cbfstool "${ap_file}" remove -r "${region}" \
-      -n "${CBFS_ECRW_CONFIG_NAME_NAME}" || true
-    cbfstool "${ap_file}" expand -r "${region}"
-    cbfstool "${ap_file}" add -r "${region}" -t raw \
-      -c "${ecrw_comp_type}" -f "${ecrw_file}" -n "${CBFS_ECRW_NAME}"
-    cbfstool "${ap_file}" add -r "${region}" -t raw \
-      -c none -f "${ecrw_hash_file}" -n "${CBFS_ECRW_HASH_NAME}"
-    cbfstool "${ap_file}" add -r "${region}" -t raw \
-      -c none -f "${ecrw_ver_file}" -n "${CBFS_ECRW_VERSION_NAME}"
-  done
-
-  local keyset
-  for keyset in /usr/share/vboot/devkeys "${SCRIPT_BASE}/../../tests/devkeys"; do
-    [[ -d "${keyset}" ]] && break
-  done
-
-  # 'futility sign' will call 'cbfstool truncate' if needed
-  futility sign "${ap_file}" --keyset "${keyset}"
+  swap_ecrw_in_ap "${ap_file}" "${ecrw_file}" "${ecrw_hash_file}" "${ecrw_ver_file}"
 
   ecrw_ver=$(futility update --manifest -e "${ec_file}" \
     | jq -r '.default.ec.versions.rw')
@@ -96,17 +110,67 @@ swap_ecrw() {
   info "Done"
 }
 
+swap_ecrw_in_ap() {
+  local ap_file=$1
+  local ecrw_file=$2
+  local ecrw_hash_file=$3
+  local ecrw_ver_file=$4
+  local region
+  local info
+  local ecrw_comp_type
+
+  for region in "${FMAP_REGIONS[@]}"
+  do
+    info="$(cbfstool "${ap_file}" print -r "${region}" -k -v \
+      | grep -m 1 "^${CBFS_ECRW_NAME}\s")"
+    ecrw_comp_type="$(cut -f7- <<< "${info}" | grep -o '\<comp\>:\w*' \
+      | cut -d: -f2)"
+    ecrw_comp_type=${ecrw_comp_type:-none}
+    cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_NAME}"
+    cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_HASH_NAME}"
+    cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_VERSION_NAME}" \
+      || warn "${CBFS_ECRW_VERSION_NAME} not found, but will be added."
+    # TODO(b/307788351): Update ecrw.config. Right now the config info cannot
+    # be obtained from ec.bin.
+    cbfstool "${ap_file}" remove -r "${region}" \
+      -n "${CBFS_ECRW_CONFIG_NAME_NAME}" || true
+    cbfstool "${ap_file}" expand -r "${region}"
+    cbfstool "${ap_file}" add -r "${region}" -t raw \
+      -c "${ecrw_comp_type}" -f "${ecrw_file}" -n "${CBFS_ECRW_NAME}"
+    cbfstool "${ap_file}" add -r "${region}" -t raw \
+      -c none -f "${ecrw_hash_file}" -n "${CBFS_ECRW_HASH_NAME}"
+    if [[ -n "${ecrw_ver_file}" ]]; then
+      cbfstool "${ap_file}" add -r "${region}" -t raw \
+        -c none -f "${ecrw_ver_file}" -n "${CBFS_ECRW_VERSION_NAME}"
+    else
+      warn "${CBFS_ECRW_VERSION_NAME} is missing from source file."
+    fi
+  done
+
+  local keyset
+  for keyset in /usr/share/vboot/devkeys "${SCRIPT_BASE}/../../tests/devkeys"; do
+    [[ -d "${keyset}" ]] && break
+  done
+
+  # 'futility sign' will call 'cbfstool truncate' if needed
+  futility sign "${ap_file}" --keyset "${keyset}"
+}
+
 main() {
   if [[ -z "${FLAGS_image}" ]]; then
     flags_help
     die "-i or --image required."
   fi
-  if [[ -z "${FLAGS_ec}" ]]; then
+  if [[ -z "${FLAGS_ec}" ]] && [[ -z "${FLAGS_ap_for_ec}" ]]; then
     flags_help
-    die "-e or --ec required."
+    die "-e or --ec or -a or --ap_for_ec required."
   fi
 
-  swap_ecrw "${FLAGS_image}" "${FLAGS_ec}"
+  if [[ -n "${FLAGS_ec}" ]];then
+    swap_ecrw_from_ec "${FLAGS_image}" "${FLAGS_ec}"
+  elif [[ -n "${FLAGS_ap_for_ec}" ]]; then
+    swap_ecrw_from_ap "${FLAGS_image}" "${FLAGS_ap_for_ec}"
+  fi
 }
 
 main "$@"
