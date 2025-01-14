@@ -41,6 +41,19 @@ cbfstool "${TMP}" extract -r "FW_MAIN_A" -n ecrw.version -f "${TMPD}/v.old"
 cbfstool "${TMP}" extract -r "FW_MAIN_A" -n ecrw.version -f "${TMPD}/v.new"
 cmp -s "${TMPD}/v.old" "${TMPD}/v.new" && error "ecrw.version was not modified"
 
+# Good case: swap from ap source
+cp -f "${AP_IMAGE}" "${TMP}"
+"${SWAP}" -i "${TMP}" -a "${AP_IMAGE}"
+cp -f "${TMP}" "${TMP}.copy"
+
+cbfstool "${TMP}" extract -r "FW_MAIN_A" -n ecrw.version -f "${TMPD}/v.old"
+"${SWAP}" -i "${TMP}" -e "${EC_IMAGE}"
+
+cbfstool "${TMP}" extract -r "FW_MAIN_A" -n ecrw.version -f "${TMPD}/v.new"
+cmp -s "${TMPD}/v.old" "${TMPD}/v.new" && error "ecrw.version was not modified"
+"${SWAP}" -i "${TMP}" -a "${AP_IMAGE}"
+cmp "${TMP}" "${TMP}.copy"
+
 # Cleanup
 rm -rf "${TMPD}"
 exit 0
