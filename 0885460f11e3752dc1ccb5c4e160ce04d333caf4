@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce506ab8_5b19c922",
+        "filename": "cgpt/cgpt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2025-01-14T16:02:07Z",
+      "side": 1,
+      "message": "I would use `android` here and throughout the CL.",
+      "range": {
+        "startLine": 102,
+        "startChar": 23,
+        "endLine": 102,
+        "endChar": 27
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7bec6e04_355b7c76",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cgpt/cgpt.h",
+              "range": {
+                "startLine": 102,
+                "startChar": 0,
+                "endLine": 103,
+                "endChar": 0
+              },
+              "replacement": "extern const Guid guid_android_vbmeta;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0885460f11e3752dc1ccb5c4e160ce04d333caf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
