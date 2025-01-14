@@ -99,6 +99,7 @@ int Save(struct drive *drive, const uint8_t *buf,
 extern const Guid guid_chromeos_firmware;
 extern const Guid guid_chromeos_kernel;
 extern const Guid guid_chromeos_rootfs;
+extern const Guid guid_alos_vbmeta;
 extern const Guid guid_linux_data;
 extern const Guid guid_chromeos_reserved;
 extern const Guid guid_efi;
