@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60d79e7_e901cc76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-01-14T08:20:49Z",
+      "side": 1,
+      "message": "Unfortunately `VB2_NV_TRY_COUNT` has only 4 bits in vboot nvdata, meaning the maximum effective try count is 15. A larger value like 17 will be capped to 15 (by `VB2_NV_BOOT_TRY_COUNT_MASK`).",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "7e5bda8a8210e4b50fb80cf890a20bd9e711648b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
