@@ -282,6 +282,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c43d40f3_e6ebf6ec",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-15T22:05:39Z",
+      "side": 1,
+      "message": "I think I just had a better idea here: can\u0027t we just let `vb2_load_android_kernel()` (which has access to the GptData) add `androidboot.slot_suffix` to the command line, and then we shouldn\u0027t need the suffix in depthcharge? See comment on CL:6030716.",
+      "parentUuid": "b1904038_05ca9fc2",
+      "range": {
+        "startLine": 117,
+        "startChar": 13,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "6b505a46d1ff2a51789fe288a89e4fe1d0bc6b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4c76a19_a15a8bbf",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 3
