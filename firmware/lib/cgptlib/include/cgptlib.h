@@ -20,6 +20,6 @@
  *
  * Returns GPT_SUCCESS if successful, else
  *   GPT_ERROR_NO_VALID_KERNEL, no avaliable kernel, enters recovery mode */
-int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size);
+GptEntry *GptNextKernelEntry(GptData *gpt);
 
 #endif  /* VBOOT_REFERENCE_CGPTLIB_H_ */
