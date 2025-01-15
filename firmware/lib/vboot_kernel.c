@@ -643,8 +643,11 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 
 	/* Loop over candidate kernel partitions */
 	uint64_t part_start, part_size;
-	while (GptNextKernelEntry(&gpt, &part_start, &part_size) ==
+	GptEntry *entry;
+	while ((entry = GptNextKernelEntry(&gpt)) ==
 	       GPT_SUCCESS) {
+		part_start = entry->starting_lba;
+		part_size = GptGetEntrySizeLba(entry);
 
 		VB2_DEBUG("Found kernel entry at %"
 			  PRIu64 " size %" PRIu64 "\n",
