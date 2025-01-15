@@ -172,21 +172,24 @@ int GptInit(GptData *gpt)
 	return gpt_init_fail;
 }
 
-int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
+uint64_t GptGetEntrySizeLba(const GptEntry *e)
+{
+	return (e->ending_lba - e->starting_lba + 1);
+}
+
+GptEntry *GptNextKernelEntry(GptData *gpt)
 {
 	struct mock_part *p = mock_parts + mock_part_next;
 
-	if (!p->size)
-		return GPT_ERROR_NO_VALID_KERNEL;
+	if (!p->e.ending_lba)
+		return NULL;
 
 	if (gpt->flags & GPT_FLAG_EXTERNAL)
 		gpt_flag_external++;
 
 	gpt->current_kernel = mock_part_next;
-	*start_sector = p->start;
-	*size = p->size;
 	mock_part_next++;
-	return GPT_SUCCESS;
+	return &p->e;
 }
 
 int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type)
@@ -332,12 +335,12 @@ static void load_kernel_tests(void)
 
 	/* Fail if no kernels found */
 	ResetMocks();
-	mock_parts[0].size = 0;
+	mock_parts[0].e.ending_lba = 0;
 	test_load_kernel(VB2_ERROR_LK_NO_KERNEL_FOUND, "No kernels");
 
 	/* Skip kernels which are too small */
 	ResetMocks();
-	mock_parts[0].size = 10;
+	mock_parts[0].e.ending_lba = 109;
 	test_load_kernel(VB2_ERROR_LK_INVALID_KERNEL_FOUND, "Too small");
 
 	ResetMocks();
@@ -598,7 +601,7 @@ static void load_kernel_tests(void)
 			 "Kernel too big for buffer");
 
 	ResetMocks();
-	mock_parts[0].size = 130;
+	mock_parts[0].e.ending_lba = 229;
 	test_load_kernel(VB2_ERROR_LK_INVALID_KERNEL_FOUND,
 			 "Kernel too big for partition");
 
