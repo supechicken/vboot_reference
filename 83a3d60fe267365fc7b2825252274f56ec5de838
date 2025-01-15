@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ec8ef7_17993b41",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-01-15T13:43:48Z",
+      "side": 1,
+      "message": "Why not just declare and assign them at the same time?",
+      "range": {
+        "startLine": 646,
+        "startChar": 2,
+        "endLine": 648,
+        "endChar": 40
+      },
+      "revId": "83a3d60fe267365fc7b2825252274f56ec5de838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
