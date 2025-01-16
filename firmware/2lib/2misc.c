@@ -369,14 +369,18 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t tries;
+	uint32_t fw_slot = vb2_nv_get(ctx, VB2_NV_FW_TRIED);
+	uint32_t fw_result = vb2_nv_get(ctx, VB2_NV_FW_RESULT);
 
-	/* Get result of last boot */
-	sd->last_fw_slot = vb2_nv_get(ctx, VB2_NV_FW_TRIED);
-	sd->last_fw_result = vb2_nv_get(ctx, VB2_NV_FW_RESULT);
+	if (fw_result != VB2_FW_RESULT_TRYING) {
+		/* Get result of last boot */
+		sd->last_fw_slot = fw_slot;
+		sd->last_fw_result = fw_result;
 
-	/* Save to the previous result fields in NV storage */
-	vb2_nv_set(ctx, VB2_NV_FW_PREV_TRIED, sd->last_fw_slot);
-	vb2_nv_set(ctx, VB2_NV_FW_PREV_RESULT, sd->last_fw_result);
+		/* Save to the previous result fields in NV storage */
+		vb2_nv_set(ctx, VB2_NV_FW_PREV_TRIED, sd->last_fw_slot);
+		vb2_nv_set(ctx, VB2_NV_FW_PREV_RESULT, sd->last_fw_result);
+	}
 
 	/* Clear result, since we don't know what will happen this boot */
 	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_UNKNOWN);
@@ -391,14 +395,28 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 	/* Check try count */
 	tries = vb2_nv_get(ctx, VB2_NV_TRY_COUNT);
 
-	if (sd->last_fw_result == VB2_FW_RESULT_TRYING &&
-	    sd->last_fw_slot == sd->fw_slot &&
+	if (fw_result == VB2_FW_RESULT_TRYING &&
+	    fw_slot == sd->fw_slot &&
 	    tries == 0) {
+		bool all_fw_slot_failed = false;
+		/* Get result of last boot */
+		sd->last_fw_slot = vb2_nv_get(ctx, VB2_NV_FW_PREV_TRIED);
+		sd->last_fw_result = vb2_nv_get(ctx, VB2_NV_FW_PREV_RESULT);
+
+		all_fw_slot_failed = ((sd->last_fw_slot == 1 - fw_slot) && (sd->last_fw_result == VB2_FW_RESULT_FAILURE));
+
+		/* We have exhausted fw_try_count. Mark the slot as failed. */
+		sd->last_fw_slot = fw_slot;
+		sd->last_fw_result = VB2_FW_RESULT_FAILURE;
+
+		/* Save to the previous result fields in NV storage */
+		vb2_nv_set(ctx, VB2_NV_FW_PREV_TRIED, sd->last_fw_slot);
+		vb2_nv_set(ctx, VB2_NV_FW_PREV_RESULT, sd->last_fw_result);
 		/*
-		 * If there is only RW A slot available, we have no other slot
-		 * to fall back to.
+		 * If there is only RW A slot available or both RW A/B slots
+		 * have been tried, we have no other slot to fall back to.
 		 */
-		if (ctx->flags & VB2_CONTEXT_SLOT_A_ONLY)
+		if ((ctx->flags & VB2_CONTEXT_SLOT_A_ONLY) || all_fw_slot_failed)
 			return VB2_ERROR_API_NEXT_SLOT_UNAVAILABLE;
 		/*
 		 * We used up our last try on the previous boot, so fall back
@@ -406,6 +424,9 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 		 */
 		sd->fw_slot = 1 - sd->fw_slot;
 		vb2_nv_set(ctx, VB2_NV_TRY_NEXT, sd->fw_slot);
+		/* Retry for maximum possible count */
+		vb2_nv_set(ctx, VB2_NV_TRY_COUNT, 15);
+		vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
 	}
 
 	if (tries > 0) {
