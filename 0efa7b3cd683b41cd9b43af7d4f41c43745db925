@@ -16,6 +16,24 @@
       "message": "```suggestion\n\tread_ms \u003d vb2ex_mtime() - start_ts;\n```",
       "revId": "0efa7b3cd683b41cd9b43af7d4f41c43745db925",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b146e8c1_ca9c1ee5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "Fixed in vb2_load_android_partition() in firmware/2lib/2load_android_kernel.c",
+      "parentUuid": "aefed82f_bfb4ba62",
+      "revId": "0efa7b3cd683b41cd9b43af7d4f41c43745db925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4dddc27_e9af346e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a60bcbba_c41d21d4",
+      "range": {
+        "startLine": 375,
+        "startChar": 9,
+        "endLine": 375,
+        "endChar": 14
+      },
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61b8f9c2_bd4d57b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-05T08:58:02Z",
       "side": 1,
       "message": "its",
+      "range": {
+        "startLine": 391,
+        "startChar": 55,
+        "endLine": 391,
+        "endChar": 59
+      },
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae95ba15_32c8a458",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "Fixed in vboot_preload_partition() in firmware/2lib/2load_android_kernel.c",
+      "parentUuid": "61b8f9c2_bd4d57b0",
       "range": {
         "startLine": 391,
         "startChar": 55,
@@ -155,6 +203,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "024deb41_ce133e99",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "Partially done, for now we are still preloading into kernel buffer, I will change the addresses of target buffer in next patchset. It would be to big change to do it at once.",
+      "parentUuid": "784c24b3_975aadd5",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abd1c2f3_0a59786d",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 4
@@ -166,6 +232,24 @@
       "writtenOn": "2024-12-07T01:44:08Z",
       "side": 1,
       "message": "Oh no, please don\u0027t use statics to track stuff here, we have `avb_data-\u003eparams` for that.\n\nIn general, I would really like to avoid the needing to load things out of order in here. It would be cleanest if this was a very simple callback: AVB tells us to load partition X, so we load partition X. The whole \"oh wait maybe we need to load partition Y first so we can place it before that\" is pretty ugly.\n\nIs the order of loaded partitions in `kernel_buffer` actually important? (I know for arm64 it shouldn\u0027t be because we memcpy() the whole thing again right before entering the kernel anyway. Less sure for x86.) If not, I think the best solution here would be to just load the partitions one after the other into the buffer in the order they are requested. All you need for that is a `kernel_buffer_used` value in `vb2_kernel_params`, and offset values for each partition type we expect to load.\n\nYou shouldn\u0027t even need all these separate load_kernel/load_ramdisk functions here then, the loading process should basically be the same for everything, only the partition name, the `vb2_kernel_params` member you store the offset in and the timestamp ID you log would change.",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb370e1_c6b04435",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "This code was removed and new preload function is in firmware/2lib/2load_android_kernel.c",
+      "parentUuid": "abd1c2f3_0a59786d",
       "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -228,6 +312,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d75f0cc4_415bb77f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "Fixed in vboot_preload_partition() in firmware/2lib/2load_android_kernel.c",
+      "parentUuid": "d3f98b5d_7712d82e",
+      "range": {
+        "startLine": 448,
+        "startChar": 26,
+        "endLine": 448,
+        "endChar": 30
+      },
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a435ca1d_e4381ea6",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "Preload function was moved to firmware/2lib/2load_android_kernel.c. Now we only check suffix to make sure that this is the partition we preloaded.",
+      "parentUuid": "7e9b6a9d_5ea41e61",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8db73bca_ca6c4c87",
@@ -251,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7acbfd_0fd540ca",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "8db73bca_ca6c4c87",
+      "range": {
+        "startLine": 449,
+        "startChar": 44,
+        "endLine": 449,
+        "endChar": 60
+      },
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e00cc4f_7267462a",
@@ -264,6 +414,24 @@
       "writtenOn": "2024-12-07T01:44:08Z",
       "side": 1,
       "message": "Yeah, this in particular should really be done inside the function so you can concentrate the details about where stuff is placed in the kernel buffer in fewer places.",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb6f693_3e0beed9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-17T13:32:26Z",
+      "side": 1,
+      "message": "I am not quite sure what you meant by that comment",
+      "parentUuid": "7e00cc4f_7267462a",
       "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
