@@ -155,14 +155,14 @@ void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 	memcpy(dest, fake_guid, sizeof(fake_guid));
 }
 
-int GptFindInitBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size)
+bool IsChromeOS(const GptEntry *e)
 {
-	return GPT_SUCCESS;
+	return true;
 }
 
-int GptFindVendorBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size)
+bool IsAndroid(const GptEntry *e)
 {
-	return GPT_SUCCESS;
+	return false;
 }
 
 vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
