@@ -153,10 +153,24 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	return 0;
 }
 
-int IsKernelEntry(const GptEntry *e)
+int IsChromeOS(const GptEntry *e)
 {
 	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
 	return !memcmp(&e->type, &chromeos_kernel, sizeof(Guid));
+}
+
+int IsAndroid(const GptEntry *e)
+{
+	static Guid chromeos_kernel = GPT_ENT_TYPE_ANDROID_VBMETA;
+	return !memcmp(&e->type, &chromeos_kernel, sizeof(Guid));
+}
+
+int IsBootableEntry(const GptEntry *e)
+{
+	if (IsChromeOS(e) || IsAndroid(e))
+		return true;
+
+	return false;
 }
 
 int CheckEntries(GptEntry *entries, GptHeader *h)

@@ -1267,15 +1267,15 @@ static int EntryTypeTest(void)
 
 	memcpy(&e->type, &guid_zero, sizeof(Guid));
 	EXPECT(1 == IsUnusedEntry(e));
-	EXPECT(0 == IsKernelEntry(e));
+	EXPECT(0 == IsChromeOS(e));
 
 	memcpy(&e->type, &guid_kernel, sizeof(Guid));
 	EXPECT(0 == IsUnusedEntry(e));
-	EXPECT(1 == IsKernelEntry(e));
+	EXPECT(1 == IsChromeOS(e));
 
 	memcpy(&e->type, &guid_rootfs, sizeof(Guid));
 	EXPECT(0 == IsUnusedEntry(e));
-	EXPECT(0 == IsKernelEntry(e));
+	EXPECT(0 == IsChromeOS(e));
 
 	return TEST_OK;
 }
