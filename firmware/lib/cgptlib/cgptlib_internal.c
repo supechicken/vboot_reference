@@ -13,24 +13,17 @@
 
 static const int MIN_SECTOR_SIZE = 512;
 
-#define UTF8_4BYTES_MASK   0xf8
-#define UTF8_4BYTES_START  0xf0
-#define UTF8_3BYTES_MASK   0xf0
-#define UTF8_3BYTES_START  0xe0
-#define UTF8_2BYTES_MASK   0xe0
-#define UTF8_2BYTES_START  0xc0
-
 /* global types to compare against */
 const Guid guid_chromeos_firmware = GPT_ENT_TYPE_CHROMEOS_FIRMWARE;
-const Guid guid_chromeos_kernel =   GPT_ENT_TYPE_CHROMEOS_KERNEL;
-const Guid guid_chromeos_rootfs =   GPT_ENT_TYPE_CHROMEOS_ROOTFS;
-const Guid guid_android_vbmeta =    GPT_ENT_TYPE_ANDROID_VBMETA;
-const Guid guid_basic_data =        GPT_ENT_TYPE_BASIC_DATA;
-const Guid guid_linux_data =        GPT_ENT_TYPE_LINUX_FS;
+const Guid guid_chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
+const Guid guid_chromeos_rootfs = GPT_ENT_TYPE_CHROMEOS_ROOTFS;
+const Guid guid_android_vbmeta = GPT_ENT_TYPE_ANDROID_VBMETA;
+const Guid guid_basic_data = GPT_ENT_TYPE_BASIC_DATA;
+const Guid guid_linux_data = GPT_ENT_TYPE_LINUX_FS;
 const Guid guid_chromeos_reserved = GPT_ENT_TYPE_CHROMEOS_RESERVED;
-const Guid guid_efi =               GPT_ENT_TYPE_EFI;
-const Guid guid_unused =            GPT_ENT_TYPE_UNUSED;
-const Guid guid_chromeos_minios =   GPT_ENT_TYPE_CHROMEOS_MINIOS;
+const Guid guid_efi = GPT_ENT_TYPE_EFI;
+const Guid guid_unused = GPT_ENT_TYPE_UNUSED;
+const Guid guid_chromeos_minios = GPT_ENT_TYPE_CHROMEOS_MINIOS;
 const Guid guid_chromeos_hibernate = GPT_ENT_TYPE_CHROMEOS_HIBERNATE;
 
 size_t CalculateEntriesSectors(GptHeader* h, uint32_t sector_bytes)
@@ -228,57 +221,19 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	return 0;
 }
 
-bool IsAndroidBootPartition(const GptEntry *e, const char *suffix)
-{
-	bool is_android_boot_part = false;
-	uint16_t *name_ucs2;
-	int size_ucs2;
-	char *name;
-	const char *partitions[] = { GPT_ENT_NAME_ANDROID_BOOT,
-				     GPT_ENT_NAME_ANDROID_VBMETA
-				   };
-
-	for (int i = 0; i < ARRAY_SIZE(partitions); i++) {
-		name = JoinStr(partitions[i], suffix);
-		if (name == NULL)
-			continue;
-
-		name_ucs2 = calloc(NAME_SIZE, sizeof(*name_ucs2));
-		if (name_ucs2 == NULL)
-			goto cleanup;
-
-		size_ucs2 = UTF8ToUCS2((const uint8_t *)name, name_ucs2, NAME_SIZE - 1);
-		if (size_ucs2 < 0)
-			goto cleanup;
-
-		if (memcmp(&e->name, name_ucs2, size_ucs2 * sizeof(*name_ucs2)))
-			goto cleanup;
-
-		is_android_boot_part = true;
-
-cleanup:
-		free(name);
-		free(name_ucs2);
-	}
-	return is_android_boot_part;
-}
-
-int IsChromeOS(const GptEntry *e)
+bool IsChromeOS(const GptEntry *e)
 {
 	return !memcmp(&e->type, &guid_chromeos_kernel, sizeof(Guid));
 }
 
-int IsAndroid(const GptEntry *e)
+bool IsAndroid(const GptEntry *e)
 {
 	return !memcmp(&e->type, &guid_android_vbmeta, sizeof(Guid));
 }
 
-int IsBootableEntry(const GptEntry *e)
+bool IsBootableEntry(const GptEntry *e)
 {
-	if (IsChromeOS(e) || IsAndroid(e))
-		return true;
-
-	return false;
+	return IsChromeOS(e) || IsAndroid(e);
 }
 
 int CheckEntries(GptEntry *entries, GptHeader *h)
