@@ -663,6 +663,7 @@ int UTF8ToUTF16(const uint8_t *utf8, uint16_t *utf16, unsigned int maxoutput)
   return retval;
 }
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
 /* global types to compare against */
 const Guid guid_chromeos_firmware = GPT_ENT_TYPE_CHROMEOS_FIRMWARE;
 const Guid guid_chromeos_kernel =   GPT_ENT_TYPE_CHROMEOS_KERNEL;
@@ -679,6 +680,30 @@ const static struct {
   const Guid *type;
   const char *name;
   const char *description;
+||||||| BASE
+/* global types to compare against */
+const Guid guid_chromeos_firmware = GPT_ENT_TYPE_CHROMEOS_FIRMWARE;
+const Guid guid_chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
+const Guid guid_chromeos_rootfs = GPT_ENT_TYPE_CHROMEOS_ROOTFS;
+const Guid guid_android_vbmeta = GPT_ENT_TYPE_ANDROID_VBMETA;
+const Guid guid_basic_data = GPT_ENT_TYPE_BASIC_DATA;
+const Guid guid_linux_data = GPT_ENT_TYPE_LINUX_FS;
+const Guid guid_chromeos_reserved = GPT_ENT_TYPE_CHROMEOS_RESERVED;
+const Guid guid_efi = GPT_ENT_TYPE_EFI;
+const Guid guid_unused = GPT_ENT_TYPE_UNUSED;
+const Guid guid_chromeos_minios = GPT_ENT_TYPE_CHROMEOS_MINIOS;
+const Guid guid_chromeos_hibernate = GPT_ENT_TYPE_CHROMEOS_HIBERNATE;
+
+static const struct {
+	const Guid *type;
+	const char *name;
+	const char *description;
+=======
+static const struct {
+	const Guid *type;
+	const char *name;
+	const char *description;
+>>>>>>> CHANGE (3f3681 cgptlib: Allow to boot from Android vbmeta)
 } supported_types[] = {
   {&guid_chromeos_firmware, "firmware", "ChromeOS firmware"},
   {&guid_chromeos_kernel, "kernel", "ChromeOS kernel"},

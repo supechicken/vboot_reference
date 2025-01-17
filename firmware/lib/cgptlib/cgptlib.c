@@ -47,7 +47,7 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 		for (i = gpt->current_kernel + 1;
 		     i < header->number_of_entries; i++) {
 			e = entries + i;
-			if (!IsKernelEntry(e))
+			if (!IsBootableEntry(e))
 				continue;
 			VB2_DEBUG("GptNextKernelEntry looking at same prio "
 				  "partition %d\n", i+1);
@@ -72,7 +72,7 @@ int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 	 */
 	for (i = 0, e = entries; i < header->number_of_entries; i++, e++) {
 		int current_prio = GetEntryPriority(e);
-		if (!IsKernelEntry(e))
+		if (!IsBootableEntry(e))
 			continue;
 		VB2_DEBUG("GptNextKernelEntry looking at new prio "
 			  "partition %d\n", i+1);
@@ -120,7 +120,7 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
 {
 	int modified = 0;
 
-	if (!IsKernelEntry(e))
+	if (!IsBootableEntry(e))
 		return GPT_ERROR_INVALID_UPDATE_TYPE;
 
 	switch (update_type) {

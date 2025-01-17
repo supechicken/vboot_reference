@@ -43,9 +43,12 @@
 #define TOTAL_ENTRIES_SIZE GPT_ENTRIES_ALLOC_SIZE /* 16384 */
 #define PARTITION_ENTRIES_SIZE TOTAL_ENTRIES_SIZE /* 16384 */
 
+enum kernel_type { NO_KERNEL, CHROMEOS, ANDROID };
+
 static const Guid guid_zero = {{{0, 0, 0, 0, 0, {0, 0, 0, 0, 0, 0}}}};
 static const Guid guid_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
 static const Guid guid_rootfs = GPT_ENT_TYPE_CHROMEOS_ROOTFS;
+static const Guid guid_vbmeta = GPT_ENT_TYPE_ANDROID_VBMETA;
 
 // cgpt_common.c requires these be defined if linked in.
 const char *progname = "CGPT-TEST";
@@ -1197,16 +1200,26 @@ static int EntryTypeTest(void)
 	GptEntry *e = (GptEntry *)(gpt->primary_entries);
 
 	memcpy(&e->type, &guid_zero, sizeof(Guid));
-	EXPECT(1 == IsUnusedEntry(e));
-	EXPECT(0 == IsKernelEntry(e));
+	EXPECT(true == IsUnusedEntry(e));
+	EXPECT(false == IsChromeOS(e));
 
 	memcpy(&e->type, &guid_kernel, sizeof(Guid));
-	EXPECT(0 == IsUnusedEntry(e));
-	EXPECT(1 == IsKernelEntry(e));
+	EXPECT(false == IsUnusedEntry(e));
+	EXPECT(true == IsChromeOS(e));
+	EXPECT(false == IsAndroid(e));
+	EXPECT(true == IsBootableEntry(e));
+
+	memcpy(&e->type, &guid_vbmeta, sizeof(Guid));
+	EXPECT(false == IsUnusedEntry(e));
+	EXPECT(false == IsChromeOS(e));
+	EXPECT(true == IsAndroid(e));
+	EXPECT(true == IsBootableEntry(e));
 
 	memcpy(&e->type, &guid_rootfs, sizeof(Guid));
-	EXPECT(0 == IsUnusedEntry(e));
-	EXPECT(0 == IsKernelEntry(e));
+	EXPECT(false == IsUnusedEntry(e));
+	EXPECT(false == IsChromeOS(e));
+	EXPECT(false == IsAndroid(e));
+	EXPECT(false == IsBootableEntry(e));
 
 	return TEST_OK;
 }
@@ -1218,10 +1231,21 @@ static void FreeEntry(GptEntry *e)
 }
 
 /* Set up an entry. */
-static void FillEntry(GptEntry *e, int is_kernel,
-		      int priority, int successful, int tries)
+static void FillEntry(GptEntry *e, enum kernel_type type, int priority, int successful,
+		      int tries)
 {
-	memcpy(&e->type, (is_kernel ? &guid_kernel : &guid_zero), sizeof(Guid));
+	switch (type) {
+	case CHROMEOS:
+		memcpy(&e->type, &guid_kernel, sizeof(Guid));
+		break;
+	case ANDROID:
+		memcpy(&e->type, &guid_vbmeta, sizeof(Guid));
+		break;
+	case NO_KERNEL:
+	default:
+		memcpy(&e->type, &guid_zero, sizeof(Guid));
+		break;
+	}
 	SetEntryPriority(e, priority);
 	SetEntrySuccessful(e, successful);
 	SetEntryTries(e, tries);
@@ -1254,8 +1278,8 @@ static int GetNextNormalTest(void)
 
 	/* Normal case - both kernels successful */
 	BuildTestGptData(gpt);
-	FillEntry(e1 + KERNEL_A, 1, 2, 1, 0);
-	FillEntry(e1 + KERNEL_B, 1, 2, 1, 0);
+	FillEntry(e1 + KERNEL_A, CHROMEOS, 2, 1, 0);
+	FillEntry(e1 + KERNEL_B, CHROMEOS, 2, 1, 0);
 	RefreshCrc32(gpt);
 	GptInit(gpt);
 
@@ -1289,10 +1313,10 @@ static int GetNextPrioTest(void)
 
 	/* Priority 3, 4, 0, 4 - should boot order B, Y, A */
 	BuildTestGptData(gpt);
-	FillEntry(e1 + KERNEL_A, 1, 3, 1, 0);
-	FillEntry(e1 + KERNEL_B, 1, 4, 1, 0);
-	FillEntry(e1 + KERNEL_X, 1, 0, 1, 0);
-	FillEntry(e1 + KERNEL_Y, 1, 4, 1, 0);
+	FillEntry(e1 + KERNEL_A, CHROMEOS, 3, 1, 0);
+	FillEntry(e1 + KERNEL_B, CHROMEOS, 4, 1, 0);
+	FillEntry(e1 + KERNEL_X, CHROMEOS, 0, 1, 0);
+	FillEntry(e1 + KERNEL_Y, CHROMEOS, 4, 1, 0);
 	RefreshCrc32(gpt);
 	GptInit(gpt);
 
@@ -1316,10 +1340,10 @@ static int GetNextTriesTest(void)
 
 	/* Tries=nonzero is attempted just like success, but tries=0 isn't */
 	BuildTestGptData(gpt);
-	FillEntry(e1 + KERNEL_A, 1, 2, 1, 0);
-	FillEntry(e1 + KERNEL_B, 1, 3, 0, 0);
-	FillEntry(e1 + KERNEL_X, 1, 4, 0, 1);
-	FillEntry(e1 + KERNEL_Y, 1, 0, 0, 5);
+	FillEntry(e1 + KERNEL_A, CHROMEOS, 2, 1, 0);
+	FillEntry(e1 + KERNEL_B, CHROMEOS, 3, 0, 0);
+	FillEntry(e1 + KERNEL_X, CHROMEOS, 4, 0, 1);
+	FillEntry(e1 + KERNEL_Y, CHROMEOS, 0, 0, 5);
 	RefreshCrc32(gpt);
 	GptInit(gpt);
 
@@ -1342,9 +1366,9 @@ static int GptUpdateTest(void)
 
 	/* Tries=nonzero is attempted just like success, but tries=0 isn't */
 	BuildTestGptData(gpt);
-	FillEntry(e + KERNEL_A, 1, 4, 1, 0);
-	FillEntry(e + KERNEL_B, 1, 3, 0, 2);
-	FillEntry(e + KERNEL_X, 1, 2, 0, 2);
+	FillEntry(e + KERNEL_A, CHROMEOS, 4, 1, 0);
+	FillEntry(e + KERNEL_B, CHROMEOS, 3, 0, 2);
+	FillEntry(e + KERNEL_X, ANDROID, 2, 0, 2);
 	RefreshCrc32(gpt);
 	GptInit(gpt);
 	gpt->modified = 0;  /* Nothing modified yet */
