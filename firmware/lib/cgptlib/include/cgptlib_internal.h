@@ -73,7 +73,7 @@
 #define GPT_PMBR_SECTORS 1  /* size (in sectors) of PMBR */
 #define GPT_HEADER_SECTORS 1
 
-/* global types to compare against */
+/* Global types to compare against */
 extern const Guid guid_chromeos_firmware;
 extern const Guid guid_chromeos_kernel;
 extern const Guid guid_chromeos_rootfs;
@@ -168,20 +168,20 @@ void GptRepair(GptData *gpt);
 void GptModified(GptData *gpt);
 
 /**
- * Return 1 if the entry is a Android VBMETA partition, else 0.
+ * Return true if the entry is a Android VBMETA partition, else false.
  */
-int IsAndroid(const GptEntry *e);
+bool IsAndroid(const GptEntry *e);
 
 /**
- * Return 1 if the entry is a Chrome OS kernel partition, else 0.
+ * Return true if the entry is a ChromeOS kernel partition, else false.
  */
-int IsChromeOS(const GptEntry *e);
+bool IsChromeOS(const GptEntry *e);
 
 /**
- * Return 1 if the entry is a Chrome OS or Android partition,
- * else 0.
+ * Return true if the entry is a ChromeOS or Android partition,
+ * else false.
  */
-int IsBootableEntry(const GptEntry *e);
+bool IsBootableEntry(const GptEntry *e);
 
 /**
  * Return true if the entry is a Android OS boot partition, else false.
