@@ -646,6 +646,10 @@ struct vb2_kernel_params {
 	char *vboot_cmdline_buffer;
 	/* Size of the region with kernel cmdline parameters. */
 	uint32_t vboot_cmdline_size;
+	/* Address of the region with kernel bootconfig parameters. */
+	char *vboot_bootconfig_buffer;
+	/* Size of the region with kernel bootconfig parameters. */
+	uint32_t vboot_bootconfig_size;
 	/* Boot command from Android BCB on misc partition. */
 	enum vb2_boot_command boot_command;
 	/* Size of pvmfw partition in bytes in pvmfw buffer. */
