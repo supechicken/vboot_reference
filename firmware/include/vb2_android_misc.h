@@ -30,6 +30,17 @@ _Static_assert(sizeof(struct vb2_bootloader_message) == 2048,
 #define VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE (1024 * 2)
 /* Hex values for ASCII "FCML" */
 #define VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_MAGIC 0x46434d4c
+
+/* Reserve space for fastboot oem bootconfig */
+#define VB2_MISC_VENDOR_SPACE_FASTBOOT_BOOTCONFIG_OFFSET \
+	(VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET + \
+	 VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE)
+#define VB2_MISC_VENDOR_SPACE_FASTBOOT_BOOTCONFIG_SIZE \
+	VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE
+/* Hex values for ASCII "FBCF" */
+#define VB2_MISC_VENDOR_SPACE_FASTBOOT_BOOTCONFIG_MAGIC 0x46424346
+
+/* The same structure is used for fastboot cmdline and bootconfig */
 struct vb2_fastboot_cmdline {
 	uint8_t version;
 	uint32_t magic;

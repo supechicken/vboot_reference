@@ -117,7 +117,7 @@ bool vb2_update_fastboot_cmdline_checksum(struct vb2_fastboot_cmdline *fb_cmd)
 	return true;
 }
 
-static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(AvbOps *ops)
+static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(AvbOps *ops, int64_t offset)
 {
 	struct vb2_fastboot_cmdline *fb_cmd;
 	AvbIOResult io_ret;
@@ -129,7 +129,7 @@ static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(AvbOps *ops)
 
 	io_ret = ops->read_from_partition(ops,
 					  GPT_ENT_NAME_ANDROID_MISC,
-					  VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET,
+					  offset,
 					  sizeof(struct vb2_fastboot_cmdline),
 					  fb_cmd,
 					  &num_bytes_read);
@@ -168,6 +168,7 @@ vb2_error_t vb2_load_android_kernel(
 	vb2_error_t ret;
 	char *verified_str;
 	struct vb2_fastboot_cmdline *fb_cmd = NULL;
+	struct vb2_fastboot_cmdline *fb_bootconfig = NULL;
 
 	/*
 	 * Check if the buffer is zero sized (ie. pvmfw loading is not
@@ -239,9 +240,13 @@ vb2_error_t vb2_load_android_kernel(
 
 	params->boot_command = vb2_bcb_command(avb_ops);
 
-	/* Load fastboot cmdline only in developer mode */
-	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
-		fb_cmd = vb2_fastboot_cmdline(avb_ops);
+	/* Load fastboot cmdline and bootconfig only in developer mode */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+		fb_cmd = vb2_fastboot_cmdline(avb_ops,
+				VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET);
+		fb_bootconfig = vb2_fastboot_cmdline(avb_ops,
+				VB2_MISC_VENDOR_SPACE_FASTBOOT_BOOTCONFIG_OFFSET);
+	}
 
 	vboot_avb_ops_free(avb_ops);
 
@@ -256,21 +261,32 @@ vb2_error_t vb2_load_android_kernel(
 		(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
 
 	if ((strlen(verify_data->cmdline) + strlen(verified_str) +
-	     (fb_cmd ? fb_cmd->len : 0) + 1) >= params->kernel_cmdline_size)
+	     (fb_bootconfig ? fb_bootconfig->len : 0) + 1) >= params->kernel_bootconfig_size)
 		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 
-	strcpy(params->kernel_cmdline_buffer, verify_data->cmdline);
+	strcpy(params->kernel_bootconfig_buffer, verify_data->cmdline);
 
-	/* Append verifiedbootstate property to cmdline */
-	strcat(params->kernel_cmdline_buffer, " ");
-	strcat(params->kernel_cmdline_buffer, verified_str);
+	/* Append verifiedbootstate property to bootconfig */
+	strcat(params->kernel_bootconfig_buffer, " ");
+	strcat(params->kernel_bootconfig_buffer, verified_str);
 
 	free(verified_str);
 
+	if (fb_bootconfig) {
+		/* Append fastboot properties to bootconfig */
+		strcat(params->kernel_bootconfig_buffer, " ");
+		strncat(params->kernel_bootconfig_buffer, fb_bootconfig->cmdline,
+			fb_bootconfig->len);
+
+		free(fb_bootconfig);
+	}
+
 	if (fb_cmd) {
+		if (fb_cmd->len >= params->kernel_cmdline_size)
+			return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 		/* Append fastboot properties to cmdline */
-		strcat(params->kernel_cmdline_buffer, " ");
-		strncat(params->kernel_cmdline_buffer, fb_cmd->cmdline, fb_cmd->len);
+		strncpy(params->kernel_cmdline_buffer, fb_cmd->cmdline, fb_cmd->len);
+		params->kernel_cmdline_buffer[fb_cmd->len] = '\0';
 
 		free(fb_cmd);
 	}
