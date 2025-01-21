@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65e6764c_6c1d589e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-01-21T16:32:40Z",
+      "side": 1,
+      "message": "Both `strlen()` in `strlen(verify_data-\u003ecmdline) + strlen(verified_str)` are missing + 1 to cover trailing `\\0`. Also with all terminating zeros it should be possible to fit exactly `params-\u003ekernel_bootconfig_size`, am I right? I believe the code below should fix the problem.\n```c\n\tif ((strlen(verify_data-\u003ecmdline) + 1 + strlen(verified_str) + 1 +\n\t     (fb_bootconfig ? fb_bootconfig-\u003elen : 0) + 1) \u003e params-\u003ekernel_bootconfig_size)\n```\nThis way these strings can cover whole buffer w/o leaving a single byte at the end for `\u003e\u003d` instead of `\u003e`.\n\nAlso these `+ 1` should cover separation spaces inserted below.",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 86
+      },
+      "revId": "48798ae594b4bd742f4c7d3ce385a81a076daf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
