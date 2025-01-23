@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c4ad67_6c3a89bd",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T20:43:54Z",
+      "side": 1,
+      "message": "It would be better to have these as global static consts somewhere, to ensure there\u0027ll be no duplication in the binary if we start using them elsewhere. I would suggest you move `guid_chromeos_kernel` (or maybe just all the predefined GUIDs there) from `cgpt_common.c` to this file, and then add a new `guid_android_vbmeta` beside it.",
+      "revId": "357423e3984523f26b74efbdeea6a41812119c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91e4804_f0ef4945",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T20:43:54Z",
+      "side": 1,
+      "message": "nit: `android_vbmeta`",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 28
+      },
+      "revId": "357423e3984523f26b74efbdeea6a41812119c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
