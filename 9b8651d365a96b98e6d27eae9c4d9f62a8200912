@@ -434,6 +434,24 @@
       "parentUuid": "7e00cc4f_7267462a",
       "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7d968b_3bf7ab1e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "I think I just meant that this should be handled by the combined loading function I suggested in other comments (i.e. you pass in these pointers into the function that does the loading and it fills them out). Now that you changed to the explicit pre-loading design, it\u0027s no longer relevant.",
+      "parentUuid": "0bb6f693_3e0beed9",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

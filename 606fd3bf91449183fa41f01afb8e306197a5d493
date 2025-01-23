@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24fb35bd_1b22916c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "Why not `size_t`?",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecea9666_7f6f799b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "Use `GptGetEntrySizeBytes()`",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316a08fb_93e55faf",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "wrong name",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f2391e_ebc6826c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "You don\u0027t need the parenthesis around `part_bytes` (and in our coding style we usually don\u0027t do that for a cast).",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94877770_45dd8053",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "`VB2_TRY()` (or otherwise check return value)",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51feb98e_f44d1c3a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "I still don\u0027t think this kind of stuff belongs in this code. This code is just responsible for loading, not interpretation. Leave the interpretation to AVB and later depthcharge code. (In general, it\u0027s a good security practice to not touch the untrusted data at all before signature verification.)",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65994bf9_2d324cfb",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "I wonder if rather than all these unstructured values, we should do something like this:\n```\n  struct {\n    void *buffer;\n    size_t size;\n  } preloaded[GPT_ANDROID_PRELOADED_NUM];\n```\nThen we\u0027d have to do modify the enum a little:\n```\nenum GptPartition {\n  GPT_ANDROID_BOOT \u003d 0,\n  GPT_ANDROID_INIT_BOOT,\n  GPT_ANDROID_VENDOR_BOOT,\n  GPT_ANDROID_PVMFW,\n  GPT_ANDROID_PRELOADED_NUM,\n  \n  /* Partitions below this point do not get passed via kparams */\n  GPT_ANDROID_MISC \u003d GPT_ANDROID_PRELOADED_NUM,\n  GPT_ANDROID_VBMETA,\n};\n```\nThen you could do the preloading with something like\n```\nfor (enum GptPartition p \u003d 0; p \u003c GPT_ANDROID_PRELOADED_NUM; p++) {\n  VB2_TRY(vb2_load_android_partition(gpt, p, params-\u003ecurrent_android_slot_suffix,\n                                     buf, buf_size, disk_handle, \u0026bytes_used));\n  params-\u003epreloaded[p].buffer \u003d buf;\n  params-\u003epreloaded[p].size \u003d bytes_used;\n  buf +\u003d bytes_used;\n  buf_size -\u003d bytes_used;\n}\n```\nand the implementation of `vboot_avb_get_preloaded_partition()` also gets cleaner:\n```\nfor (enum GptPartition p \u003d 0; p \u003c GPT_ANDROID_PRELOADED_NUM; p++) {\n  if (!strncmp(partition, GptPartitionNames[p], prefix_len)) {\n    *out_pointer \u003d params-\u003epreloaded[p].buffer;\n    *out_num_bytes_preloaded \u003d params-\u003epreloaded[p].size;\n    return AVB_IO_RESULT_OK;\n  }\n}\n```",
+      "fixSuggestions": [
+        {
+          "fixId": "922b655d_62f04963",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 618,
+                "startChar": 0,
+                "endLine": 628,
+                "endChar": 0
+              },
+              "replacement": "\t/* Preloaded partitions. */\n\tstruct {\n\t\tvoid *buffer;\n\t\tsize_t size;\n\t} preloaded[GPT_ANDROID_PRELOADED_NUM];\n"
+            }
+          ]
+        }
+      ],
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059967e0_b69c6b4c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "`strlen()` is a more than trivially expensive operation so you should try to make as few calls as possible and cache the results in a variable if needed.\n\nIn general maybe this first part looks a little more complicated than it needs to be... how about writing it like this:\n```\nconst char *suffix \u003d strrchr(\u0027_\u0027, partition);\nif (!suffix || strcmp(suffix, avbctx-\u003eparams-\u003ecurrent_android_slot_suffix) !\u003d 0)\n  return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;\n\nsize_t prefix_len \u003d suffix - partition;\n```",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4e9dec_add4378f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-23T00:52:35Z",
+      "side": 1,
+      "message": "Put this before the first `return`.",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
