@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "098a410e_086c5f1a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f1430fb_d7f4211b",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8540c976_983aa13a",
@@ -160,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d000381e_faeb7830",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255e6914_0d95c4c0",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c10d20_b1516598",
@@ -183,6 +231,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6280dbc7_8407e671",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c10d20_b1516598",
+      "range": {
+        "startLine": 61,
+        "startChar": 24,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10aad819_f27529c4",
@@ -196,6 +268,30 @@
       "writtenOn": "2024-12-20T09:19:10Z",
       "side": 1,
       "message": "nit: Can we sort these based on the order in avb_ops.h? Also sort the implemented functions in the same order.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 70
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12cd0f57_2740cc42",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10aad819_f27529c4",
       "range": {
         "startLine": 101,
         "startChar": 1,
@@ -291,6 +387,30 @@
       "side": 1,
       "message": "Oh, via cgpt_params.h... okay, fair enough.",
       "parentUuid": "00102991_9eb71402",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "4178038ee9f64594d12ffda37aabadd1a4bcf3bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc26eb4_900cbc54",
+        "filename": "host/include/vboot_host.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfbec89e_e1ef2023",
       "range": {
         "startLine": 41,
         "startChar": 0,

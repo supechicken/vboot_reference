@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09ae24e5_43aa93d6",
+        "filename": "firmware/2lib/include/2sysincludes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:14:36Z",
+      "side": 1,
+      "message": "So what is the decision here? Should I leave existing `le32toh`?",
+      "parentUuid": "f92f890e_419cc66e",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4795f8_fb9a0d7d",
         "filename": "firmware/avb/Makefile",
         "patchSetId": 1
@@ -491,6 +509,24 @@
           ]
         }
       ],
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3602ecf0_21f57a68",
+        "filename": "firmware/avb/vboot_avb_ops.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3d262d_ef3a90ac",
       "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
