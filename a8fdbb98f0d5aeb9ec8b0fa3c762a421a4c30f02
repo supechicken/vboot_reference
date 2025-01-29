@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "875ef7d5_8b139042",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25f41015_3a627ae3",
+      "revId": "a8fdbb98f0d5aeb9ec8b0fa3c762a421a4c30f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a7959d5_ac75ed2a",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-12-19T16:36:50Z",
       "side": 1,
       "message": "nit: `avb_rr \u003d avb_n + arrsize`",
+      "range": {
+        "startLine": 235,
+        "startChar": 10,
+        "endLine": 235,
+        "endChar": 71
+      },
+      "revId": "a8fdbb98f0d5aeb9ec8b0fa3c762a421a4c30f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0427cd5a_23bfcd65",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:16:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a7959d5_ac75ed2a",
       "range": {
         "startLine": 235,
         "startChar": 10,
