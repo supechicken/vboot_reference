@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2286e8f6_e7abb38c",
+        "filename": "firmware/2lib/include/2avb.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0044451a_ce4518ed",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae49ad69_98510624",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab4c95e_a0362183",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae49ad69_98510624",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66873b25_8d4a6179",
@@ -48,6 +84,24 @@
       "writtenOn": "2024-12-20T09:20:07Z",
       "side": 1,
       "message": "Let\u0027s set `*out_num_read` to 0 at the beginning.",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c93ea2dc_849e22a9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66873b25_8d4a6179",
       "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24222916_b2418601",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f29161_ab4fab9c",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58a05bbc_4703cc28",
@@ -88,6 +166,24 @@
       "writtenOn": "2024-12-19T15:23:50Z",
       "side": 1,
       "message": "This doesn\u0027t really make sense up here. We\u0027re clamping to the whole size of the partition here before we have evaluated which offset we start reading at. This should be done further down, after `offset_from_partition` has been normalized, and then be\n```\nif (num_bytes \u003e part_bytes - offset_from_partition) {\n  VB2_DEBUG(...);\n  num_bytes \u003d part_bytes - offset_from_partition;\n}\n```",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51476f1a_5713888f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58a05bbc_4703cc28",
       "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f2b9d4_c11c6eab",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75a7b145_c44cf3eb",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fcd4309_958cc4db",
@@ -128,6 +248,30 @@
       "writtenOn": "2024-12-20T09:20:07Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2fddfa_cbef7986",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcd4309_958cc4db",
       "range": {
         "startLine": 69,
         "startChar": 16,
@@ -173,6 +317,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f493682_38880086",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a032563d_977034a1",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba3f9052_048c3f22",
@@ -186,6 +348,30 @@
       "writtenOn": "2024-12-20T09:20:07Z",
       "side": 1,
       "message": "nit: Drop `.`",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d26bce_dc4990f2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba3f9052_048c3f22",
       "range": {
         "startLine": 79,
         "startChar": 39,
@@ -213,6 +399,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e87d490_3b538987",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f408e432_2f1ccdc3",
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "049ebc32_86881b53",
@@ -226,6 +430,30 @@
       "writtenOn": "2024-12-20T09:20:07Z",
       "side": 1,
       "message": "Can we sort these based on the order in avb_ops.h?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 71
+      },
+      "revId": "6aeea154cea3171e2fedf3c9a78a872db8a43dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c17b358_298a7f91",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T15:15:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "049ebc32_86881b53",
       "range": {
         "startLine": 193,
         "startChar": 1,
