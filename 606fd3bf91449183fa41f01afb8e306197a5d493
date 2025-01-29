@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbce6181_ad96246a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24fb35bd_1b22916c",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecea9666_7f6f799b",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d8f567_94271acf",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecea9666_7f6f799b",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "316a08fb_93e55faf",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-01-23T00:52:35Z",
       "side": 1,
       "message": "wrong name",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63f0c9d2_7f6caa34",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "316a08fb_93e55faf",
       "range": {
         "startLine": 54,
         "startChar": 28,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59394dce_5bdea686",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f2391e_ebc6826c",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94877770_45dd8053",
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c608a928_222d947c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94877770_45dd8053",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51feb98e_f44d1c3a",
@@ -117,6 +225,24 @@
       "writtenOn": "2025-01-23T00:52:35Z",
       "side": 1,
       "message": "I still don\u0027t think this kind of stuff belongs in this code. This code is just responsible for loading, not interpretation. Leave the interpretation to AVB and later depthcharge code. (In general, it\u0027s a good security practice to not touch the untrusted data at all before signature verification.)",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce149ed7_36464e59",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51feb98e_f44d1c3a",
       "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -158,6 +284,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d21038dd_388d6a89",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Ok, I can do that, just one question, should I move `enum GptPartition` to 2api.h or include cgptlib.h in 2api.h?",
+      "parentUuid": "65994bf9_2d324cfb",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "059967e0_b69c6b4c",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 9
@@ -186,6 +330,24 @@
       "writtenOn": "2025-01-23T00:52:35Z",
       "side": 1,
       "message": "Put this before the first `return`.",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2531679_53ebe46c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-29T14:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea4e9dec_add4378f",
       "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
