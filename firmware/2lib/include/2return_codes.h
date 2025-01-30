@@ -47,6 +47,9 @@ enum vb2_return_code {
 	/* Break from the UI loop.  This is used in UI internal functions. */
 	VB2_REQUEST_UI_EXIT = 0x1006,
 
+	/* Calling firmware needs to perform a warm reboot */
+	VB2_REQUEST_WARM_REBOOT = 0x1007,
+
 	/* End of VB2_REQUEST_* */
 	VB2_REQUEST_END = 0x5000,
 
