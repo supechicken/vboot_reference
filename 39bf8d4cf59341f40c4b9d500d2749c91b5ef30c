@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2b9db8_0d7b6f4f",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-30T22:36:37Z",
+      "side": 1,
+      "message": "Should this be `true`? I think we only reach here if we walked the entire `entry-\u003ename` array, and all characters matched. I don\u0027t know if `entry-\u003ename` needs to be NUL-terminated or if it is legal to have a name that just uses up exactly all characters.\n\nActually, we still don\u0027t want `name` to be longer. So maybe the correctest answer here is\n```\nreturn *name \u003d\u003d \u0027\\0\u0027 \u0026\u0026 (!opt_suffix || *opt_suffix \u003d\u003d \u0027\\0\u0027);\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "39bf8d4cf59341f40c4b9d500d2749c91b5ef30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7c305a_83210031",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1675,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-30T22:36:37Z",
+      "side": 1,
+      "message": "Please test negatives for cases like `(\"non_exist\", \"misc\")`, `(\"misc\", \"_a\")`, `(\"boot\", NULL)`, `(\"miscabcd\", NULL)` and `(\"boot\", \"_abcd\")` too.",
+      "revId": "39bf8d4cf59341f40c4b9d500d2749c91b5ef30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
