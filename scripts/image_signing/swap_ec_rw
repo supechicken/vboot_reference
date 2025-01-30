@@ -40,6 +40,8 @@ swap_ecrw() {
   local ecrw_version_file
   local ecrw_comp_type
   local ecrw_version
+  local apro_version
+  local aprw_version
   temp_dir=$(mktemp -d)
   ecrw_file="${temp_dir}/ecrw"
   futility dump_fmap -x "${ec_file}" "RW_FW:${ecrw_file}" >/dev/null
@@ -86,7 +88,11 @@ swap_ecrw() {
 
   ecrw_version=$(futility update --manifest -e "${ec_file}" \
     | jq -r '.default.ec.versions.rw')
-  info "${CBFS_ECRW_NAME} (${ecrw_version}) swapped in ${ap_file}"
+  apro_version=$(futility update --manifest -i "${ap_file}" \
+    | jq -r '.default.host.versions.ro')
+  aprw_version=$(futility update --manifest -i "${ap_file}" \
+    | jq -r '.default.host.versions.rw')
+  info "${CBFS_ECRW_NAME} (${ecrw_version}) swapped in ${ap_file} (RO:${apro_version}, RW:${aprw_version})"
   info "Done"
 }
 
