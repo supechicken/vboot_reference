@@ -302,6 +302,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23e6b4c3_f5d24ed7",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-01-30T11:29:15Z",
+      "side": 1,
+      "message": "Hi Julius, it would be nice to link list of partition to preload with the list of partition to verify (`boot_partitions` variable in `2load_android` function).\nBut there is a \u0027pvmfw\u0027 partition which is part of GPT layout but the content of this partition may not be valid on each board family. Right now we are checking value of \u0027pvmfw_buffer_size\u0027 to determine if it needs to be loaded.\n\nPlease let me know if you ok with leaving this workaround and add something like:\n```\nif ((p \u003d\u003d GPT_ANDROID_PVMFW) \u0026\u0026 (params-\u003epvmfw_buffer_size \u003d\u003d 0))\n    continue;\n```\nto the function which preloads partitions.",
+      "parentUuid": "d21038dd_388d6a89",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "059967e0_b69c6b4c",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 9
