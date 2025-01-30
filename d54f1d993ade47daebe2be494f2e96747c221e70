@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc0070f4_1dc5f5dc",
+        "filename": "firmware/2lib/include/2sysincludes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-30T22:52:29Z",
+      "side": 1,
+      "message": "Yeah, I guess leave them in.\n\nBTW, there\u0027s an external guy who always likes to compile vboot on FreeBSD, so to preempt the inevitable complaint I think we need to write this as\n```\n#if defined(__NetBSD__) || defined(__FreeBSD__) || defined(__DragonFly__)\n#include \u003csys/endian.h\u003e\n#else\n#include \u003cendian.h\u003e\n#endif\n```",
+      "parentUuid": "09ae24e5_43aa93d6",
+      "revId": "d54f1d993ade47daebe2be494f2e96747c221e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4795f8_fb9a0d7d",
         "filename": "firmware/avb/Makefile",
         "patchSetId": 1
