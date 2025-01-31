@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db94e62_262a4849",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-31T05:00:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this check be outside the other `if`?\n```\nif (offset_from_partition \u003c 0)\n  offset_from_partition +\u003d part_bytes;\nif (offset_from_partition \u003c 0 || offset_from_partition \u003e part_bytes)\n  return AVB_IO_RESULT_ERROR_RANGE_OUTSIDE_PARTITION;\n```\n(We want to check that the offset doesn\u0027t exceed the end of the partition even in the positive offset case.)",
+      "revId": "8ec58e516742d792c7b7d8d473ba7a107c66a451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80666bfe_d00a28bb",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-31T05:00:49Z",
+      "side": 1,
+      "message": "nit: considering this is only used once now I think it would be more consistent to inline it here\n```\nif (offset_from_partition % sector_bytes || num_bytes % sector_bytes) {\n```",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "8ec58e516742d792c7b7d8d473ba7a107c66a451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e4374f_e4895118",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-01-31T05:00:49Z",
+      "side": 1,
+      "message": "nit: could be combined with definition above\n```\nstart_sector \u003d part_start_sector + offset_from_partition / sector_bytes;\n```",
+      "revId": "8ec58e516742d792c7b7d8d473ba7a107c66a451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
