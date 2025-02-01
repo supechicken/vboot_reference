@@ -320,6 +320,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84912ed6_5382695a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-01T02:31:50Z",
+      "side": 1,
+      "message": "Move the enum to `2api.h`.\n\nYeah, I guess pvmfw will need to be treated specially if we want to have it in CBMEM. And the ramdisk may also need to be treated specially if we want to load it straight to a different memory area than the kernel, as discussed in that one other CL. So I guess you may need to expand the suggestion above a bit... uhh... okay this is getting a bit complicated, let me know if this makes things too confusing, but I think you could do:\n```\nfor (enum GptPartition p \u003d 0; p \u003c GPT_ANDROID_PRELOADED_NUM; p++) {\n  void **buffer_ptr;\n  size_t *size_ptr;\n  switch (p) {\n  case GPT_ANDROID_PVMFW:\n    if (!params-\u003epvmfw_buffer_size)\n      continue; /* don\u0027t load pvmfw if not requested */\n    buffer_ptr \u003d \u0026params-\u003epvmfw_buffer;\n    size_ptr \u003d \u0026params-\u003epvmfw_buffer_size;\n    break;\n  case GPT_ANDROID_VENDOR_BOOT:\n  case GPT_ANDROID_INIT_BOOT:\n    if (params-\u003eramdisk_buffer_size) {\n      /* x86 case */\n      buffer_ptr \u003d \u0026params-\u003eramdisk_buffer;\n      size_ptr \u003d \u0026params-\u003eramdisk_buffer_size;\n      break;\n    }\n    /* otherwise fallthrough, use default buffer for the Arm case */\n  default:\n    buffer_ptr \u003d \u0026params-\u003ekernel_buffer;\n    size_ptr \u003d \u0026params-\u003ekernel_buffer_size;\n  }\n  VB2_TRY(vb2_load_android_partition(gpt, p, params-\u003ecurrent_android_slot_suffix,\n                                     *buffer_ptr, *size_ptr, disk_handle, \u0026bytes_used));\n  params-\u003epreloaded[p].buffer \u003d *buffer_ptr;\n  params-\u003epreloaded[p].size \u003d bytes_used;\n  *buffer_ptr +\u003d bytes_used;\n  *size_ptr -\u003d bytes_used;\n}\n```\n(BTW I also just realized that `VENDOR_BOOT` should probably come before `INIT_BOOT` in the enum so that it gets loaded first... I think that\u0027s important for the ramdisk coalescing later.)",
+      "parentUuid": "23e6b4c3_f5d24ed7",
+      "revId": "606fd3bf91449183fa41f01afb8e306197a5d493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "059967e0_b69c6b4c",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 9
