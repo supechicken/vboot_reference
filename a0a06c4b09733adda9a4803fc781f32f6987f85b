@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc0726b8_7b5cf7b8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-01T02:33:48Z",
+      "side": 1,
+      "message": "Yes... sorry, I didn\u0027t mean get rid of the whole `switch`. I just meant get rid of the `default:` case.",
+      "parentUuid": "7b676f2e_1b21ecfc",
+      "revId": "a0a06c4b09733adda9a4803fc781f32f6987f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "902e6f25_aa5c4683",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 8
