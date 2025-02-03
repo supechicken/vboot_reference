@@ -286,12 +286,14 @@ out:
 
 static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 				  struct vb2_kernel_params *params,
-				  vb2ex_disk_handle_t disk_handle)
+				  vb2ex_disk_handle_t disk_handle,
+				  size_t load_bytes)
 {
 	VbExStream_t stream;
 	uint64_t part_start, part_size;
 	uint32_t read_ms = 0, start_ts;
 	uint64_t part_bytes;
+	size_t aligned_load_bytes;
 	uint8_t *part_pvmfw_buf = (uint8_t *) params->pvmfw_buffer;
 	vb2_error_t res = VB2_ERROR_LOAD_PARTITION_READ_BODY;
 
@@ -312,17 +314,35 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 		return res;
 	}
 
-	part_bytes = gpt->sector_bytes * part_size;
+	/* TODO(b/331881159): Support unaligned reads. */
+	aligned_load_bytes = (load_bytes + (gpt->sector_bytes - 1)) & ~(gpt->sector_bytes - 1);
+
+	/* Check if add overflowed */
+	if (aligned_load_bytes < load_bytes) {
+		VB2_DEBUG("pvmfw requested partition size is too big (overflowed align up)\n");
+		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
+		goto out;
+	}
+
 	/* Check if the pvmfw buffer is big enough */
-	if (part_bytes > params->pvmfw_buffer_size) {
+	if (aligned_load_bytes > params->pvmfw_buffer_size) {
 		VB2_DEBUG("No space left to load pvmfw partition\n");
+		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
+		goto out;
+	}
+
+	part_bytes = gpt->sector_bytes * part_size;
+	/* Check if the pvmfw partition is at least that big */
+	if (aligned_load_bytes > part_bytes) {
+		VB2_DEBUG("The pvmfw partition is smaller (%llu B) than requested %zu B.\n",
+			  part_bytes, load_bytes);
 		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 		goto out;
 	}
 
 	/* Load partition to the buffer */
 	start_ts = vb2ex_mtime();
-	if (VbExStreamRead(stream, part_bytes, part_pvmfw_buf)) {
+	if (VbExStreamRead(stream, aligned_load_bytes, part_pvmfw_buf)) {
 		VB2_DEBUG("Unable to read pvmfw partition\n");
 		goto out;
 	}
@@ -331,11 +351,12 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 	if (read_ms == 0)  /* Avoid division by 0 in speed calculation */
 		read_ms = 1;
 	VB2_DEBUG("read %u KB in %u ms at %u KB/s.\n",
-		  (uint32_t)(part_bytes) / 1024, read_ms,
-		  (uint32_t)(((part_bytes) * VB2_MSEC_PER_SEC) /
+		  (uint32_t)(aligned_load_bytes) / 1024, read_ms,
+		  (uint32_t)(((aligned_load_bytes) * VB2_MSEC_PER_SEC) /
 			  (read_ms * 1024)));
 
-	params->pvmfw_size = part_bytes;
+	/* Trim the pvmfw to the requested load size. */
+	params->pvmfw_size = load_bytes;
 
 	res = VB2_SUCCESS;
 out:
@@ -593,7 +614,7 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 		ret = AVB_IO_RESULT_OK;
 	} else if (!strcmp(short_partition_name, "pvmfw")) {
 		if (vb2_load_pvmfw(avb_data->vb2_ctx, avb_data->gpt, avb_data->params,
-				   avb_data->disk_handle)) {
+				   avb_data->disk_handle, num_bytes)) {
 			return AVB_IO_RESULT_ERROR_IO;
 		}
 
