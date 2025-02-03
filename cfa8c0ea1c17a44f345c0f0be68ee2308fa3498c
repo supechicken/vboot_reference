@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25502d7_c389baae",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-02-03T14:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ce4b3bf_62290ad8",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dcc002a_30e5c66c",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-02-03T12:49:40Z",
       "side": 1,
       "message": "No need to read that many bytes. Use load_bytes. Need to check if this function supports arbitrary number of bytes.",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1259510e_46e25cd4",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-02-03T14:05:01Z",
+      "side": 1,
+      "message": "The function requires the size to be LBA aligned (\u003d512). I am not sure if we can guarantee that.\n\npvmfw partition is described with bootimg header (apart from AVB headers) and the `kernel_size` that describes its size is page aligned (\u003d4096). However I don\u0027t know if that enforces this alignment to AVB structures as well.",
+      "parentUuid": "1dcc002a_30e5c66c",
       "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
