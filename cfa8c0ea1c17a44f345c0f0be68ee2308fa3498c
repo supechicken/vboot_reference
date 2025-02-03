@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc95a70_67072143",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-02-03T16:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7059dfb_8f5a2200",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ce4b3bf_62290ad8",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "\u003e The function requires the size to be LBA aligned (\u003d512).\n\nThere\u0027s already b/331881159 filed for that. Before that\u0027s fixed, we\u0027ll need to align-up `load_bytes` to `gpt-\u003esector_bytes` here. Something like\n\n```\n/* TODO(b/331881159): Support unaligned reads. */\naligned_load_bytes \u003d ALIGN_UP(load_bytes, gpt-\u003esector_bytes);\n...\nif (aligned_load_bytes \u003e part_bytes) {\n    error...\n}\nif (aligned_load_bytes \u003e params-\u003epvmfw_buffer_size) {\n    error...\n}\n...\nVbExStreamRead(... aligned_load_bytes ...)\n...\nparams-\u003epvmfw_size \u003d load_bytes;\n```",
       "parentUuid": "1259510e_46e25cd4",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f759eb6c_5e41907a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-02-03T16:49:17Z",
+      "side": 1,
+      "message": "Sure! Done.",
+      "parentUuid": "7573acc2_6afe995f",
       "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

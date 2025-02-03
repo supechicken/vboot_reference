@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "801e3ab9_d9cfc127",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-02-03T16:49:17Z",
+      "side": 1,
+      "message": "Unfortunatelly ALIGN_UP is not present in `vboot_reference`.",
+      "revId": "8bb20e77bbe6a9ac75bb24455424d54b2130ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
