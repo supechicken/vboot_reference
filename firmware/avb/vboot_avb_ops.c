@@ -286,7 +286,8 @@ out:
 
 static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 				  struct vb2_kernel_params *params,
-				  vb2ex_disk_handle_t disk_handle)
+				  vb2ex_disk_handle_t disk_handle,
+				  size_t load_bytes)
 {
 	VbExStream_t stream;
 	uint64_t part_start, part_size;
@@ -318,6 +319,10 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 		VB2_DEBUG("No space left to load pvmfw partition\n");
 		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 		goto out;
+	} else if (part_bytes < load_bytes) {
+		VB2_DEBUG("The pvmfw partition is smaller then requested\n");
+		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
+		goto out;
 	}
 
 	/* Load partition to the buffer */
@@ -335,7 +340,8 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 		  (uint32_t)(((part_bytes) * VB2_MSEC_PER_SEC) /
 			  (read_ms * 1024)));
 
-	params->pvmfw_size = part_bytes;
+	/* Trim the pvmfw to the requested load size. */
+	params->pvmfw_size = load_bytes;
 
 	res = VB2_SUCCESS;
 out:
@@ -593,7 +599,7 @@ static AvbIOResult vboot_avb_get_preloaded_partition(AvbOps *ops,
 		ret = AVB_IO_RESULT_OK;
 	} else if (!strcmp(short_partition_name, "pvmfw")) {
 		if (vb2_load_pvmfw(avb_data->vb2_ctx, avb_data->gpt, avb_data->params,
-				   avb_data->disk_handle)) {
+				   avb_data->disk_handle, num_bytes)) {
 			return AVB_IO_RESULT_ERROR_IO;
 		}
 
