@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7059dfb_8f5a2200",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-03T12:49:40Z",
+      "side": 1,
+      "message": "Should be load_bytes. No need to read more than necessary.",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce4b3bf_62290ad8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-03T12:49:40Z",
+      "side": 1,
+      "message": "Print both sizes.",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dcc002a_30e5c66c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-03T12:49:40Z",
+      "side": 1,
+      "message": "No need to read that many bytes. Use load_bytes. Need to check if this function supports arbitrary number of bytes.",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
