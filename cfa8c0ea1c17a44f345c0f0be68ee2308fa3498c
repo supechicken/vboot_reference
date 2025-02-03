@@ -86,6 +86,24 @@
       "parentUuid": "1dcc002a_30e5c66c",
       "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7573acc2_6afe995f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-03T16:14:10Z",
+      "side": 1,
+      "message": "\u003e The function requires the size to be LBA aligned (\u003d512).\n\nThere\u0027s already b/331881159 filed for that. Before that\u0027s fixed, we\u0027ll need to align-up `load_bytes` to `gpt-\u003esector_bytes` here. Something like\n\n```\n/* TODO(b/331881159): Support unaligned reads. */\naligned_load_bytes \u003d ALIGN_UP(load_bytes, gpt-\u003esector_bytes);\n...\nif (aligned_load_bytes \u003e part_bytes) {\n    error...\n}\nif (aligned_load_bytes \u003e params-\u003epvmfw_buffer_size) {\n    error...\n}\n...\nVbExStreamRead(... aligned_load_bytes ...)\n...\nparams-\u003epvmfw_size \u003d load_bytes;\n```",
+      "parentUuid": "1259510e_46e25cd4",
+      "revId": "cfa8c0ea1c17a44f345c0f0be68ee2308fa3498c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
