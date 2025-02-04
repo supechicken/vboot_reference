@@ -16,6 +16,70 @@
       "message": "Unfortunatelly ALIGN_UP is not present in `vboot_reference`.",
       "revId": "8bb20e77bbe6a9ac75bb24455424d54b2130ea6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee8a50d5_27a3d16e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-04T02:53:32Z",
+      "side": 1,
+      "message": "I know. My code is just for illustration purposes. This will be removed in the future anyway, so I\u0027m fine with this for now.\n\nGoing forward, maybe we can copy coreboot\u0027s `ALIGN_UP` and friends to vboot_reference, as they are all BSD-licensed.",
+      "parentUuid": "801e3ab9_d9cfc127",
+      "revId": "8bb20e77bbe6a9ac75bb24455424d54b2130ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "084cf25e_93771b34",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-04T02:53:32Z",
+      "side": 1,
+      "message": "Is this supposed to be `\u003e`? If `aligned_load_bytes` overflows, then it should become a small number.",
+      "range": {
+        "startLine": 321,
+        "startChar": 16,
+        "endLine": 321,
+        "endChar": 18
+      },
+      "revId": "8bb20e77bbe6a9ac75bb24455424d54b2130ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e76103e_98584a8b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-04T02:53:32Z",
+      "side": 1,
+      "message": "than",
+      "range": {
+        "startLine": 337,
+        "startChar": 53,
+        "endLine": 337,
+        "endChar": 57
+      },
+      "revId": "8bb20e77bbe6a9ac75bb24455424d54b2130ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
