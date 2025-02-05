@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12dc3599_e2f2bc78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-02-05T16:14:04Z",
+      "side": 1,
+      "message": "In the future, please wait for the change to merge in the firmware-android-15949.B repo, and then use copybot to move the change.  go/cros-luci to schedule a run.\n\nThe vboot job for this branch is: https://luci-scheduler.appspot.com/jobs/chromeos/android-main-fw-brya-vboot_reference-copybot-downstream\n\nUploading this CL without the copybot metadata and not using copybot caused the copybot job to break.",
+      "revId": "3bf02ae442225cda6b48f7eaa46cc4c091546469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
