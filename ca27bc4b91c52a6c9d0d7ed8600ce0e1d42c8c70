@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33cb1aeb_19d2fc8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "AP image",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319a6a54_bfa5a44b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "Without any context, it\u0027s difficult to understand the meaning of this sentence. How about\n\n```\nFor the upcoming firmware release for Android, we want to update the AP_RW without changing the EC_RW version inside AP_RW. Currently the swap_ec_rw script only supports getting the EC_RW from an EC image. Therefore, we would need the EC image (on CBS) with the same version as the old AP_RW to perform the swap, which is a tedious task.\n\nTo simplify the process, support extracting EC_RW from one AP image and swapping into another AP image.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b001dd8c_386e607f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -14,6 +60,126 @@
       "writtenOn": "2025-02-06T17:23:30Z",
       "side": 1,
       "message": "I haven\u0027t reviewed the implementation, but could you add a test case?",
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80afb0a_d58be203",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "I think tis function and swap_ecrw_from_ec still contain too much duplicate code such as this line. Instead of creating `swap_ecrw_from_ap` and `swap_ecrw_from_ec`, I wonder if we can factor out only the extracting part to separate functions?\n\n```\nextract_ecrw_files_from_ec() {\n  local ecrw_file\u003d$1\n  local ecrw_hash_file\u003d$2\n  local ecrw_version_file\u003d$3\n  local ecrw_config_file\u003d$4\n  # Generate these 4 files\n}\n\nextract_ecrw_files_from_ap() {\n}\n\nswap_ecrw() {\n  local ap_file\u003d$1\n  local ec_file\u003d$2\n  local ap_for_ec_file\u003d$3\n  \n  # Create temp dir here and init ecrw_*_file local variables\n\n  if [[ -n \"${ec_file}\" ]]; then\n    extract_ecrw_files_from_ec ...\n  else\n    extract_ecrw_files_from_ap ...\n  fi\n\n  swap_ecrw_in_ap\n\n  if [[ -n \"${ec_file}\" ]]; then\n    ecrw_ver \u003d ...\n  else\n    ecrw_ver \u003d ...\n  fi\n  apro_ver \u003d ...\n  ...\n}\n```",
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d145817d_9f2b7aa6",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "Also extract CBFS_ECRW_CONFIG_NAME and swap it in ap_file.",
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a56a14_ac2c5591",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7d109a_5506cd29",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "Remove this duplicate line.",
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd12985_70316044",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "For informational logs, I think it\u0027s more reasonable to print the `ap_for_ec_file` version. What do you think?",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc720b8d_bdeee576",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-06T23:15:49Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 169,
+        "startChar": 27,
+        "endLine": 169,
+        "endChar": 28
+      },
       "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
