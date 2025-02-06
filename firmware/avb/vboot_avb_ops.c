@@ -334,7 +334,7 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 	part_bytes = gpt->sector_bytes * part_size;
 	/* Check if the pvmfw partition is at least that big */
 	if (aligned_load_bytes > part_bytes) {
-		VB2_DEBUG("The pvmfw partition is smaller (%llu B) than requested %zu B.\n",
+		VB2_DEBUG("The pvmfw partition is smaller (%" PRIu64 " B) than requested %zu B.\n",
 			  part_bytes, load_bytes);
 		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 		goto out;
