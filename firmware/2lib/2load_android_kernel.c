@@ -228,6 +228,11 @@ vb2_error_t vb2_load_android_kernel(
 			&verify_data);
 	free(ab_suffix);
 
+	if (result == AVB_SLOT_VERIFY_RESULT_OK) {
+		struct vb2_shared_data *sd = vb2_get_sd(ctx);
+		sd->flags |= VB2_SD_FLAG_KERNEL_SIGNED;
+	}
+
 	/* Ignore verification errors in developer mode */
 	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		switch (result) {
