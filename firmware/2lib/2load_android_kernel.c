@@ -58,7 +58,7 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 	} else {
 		/* If empty or unknown command, just boot normally */
 		if (bcb.command[0] != '\0')
-			VB2_DEBUG("Unknown boot command \"%.*s\". Use normal boot.",
+			VB2_DEBUG("Unknown boot command \"%.*s\". Use normal boot.\n",
 				  (int)sizeof(bcb.command), bcb.command);
 		cmd = VB2_BOOT_CMD_NORMAL_BOOT;
 	}
@@ -83,24 +83,24 @@ bool vb2_is_fastboot_cmdline_valid(struct vb2_fastboot_cmdline *fb_cmd,
 				   enum vb2_fastboot_cmdline_magic magic)
 {
 	if (fb_cmd->version != 0) {
-		VB2_DEBUG("Unknown vb2_fastboot_cmdline version (%d)", fb_cmd->version);
+		VB2_DEBUG("Unknown vb2_fastboot_cmdline version (%d)\n", fb_cmd->version);
 		return false;
 	}
 
 	if (fb_cmd->magic != magic) {
-		VB2_DEBUG("Wrong vb2_fastboot_cmdline magic (got: 0x%x, expected 0x%x)",
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline magic (got 0x%x, expected 0x%x)\n",
 			  fb_cmd->magic, magic);
 		return false;
 	}
 
 	if (fb_cmd->len > sizeof(fb_cmd->cmdline)) {
-		VB2_DEBUG("Wrong vb2_fastboot_cmdline len (%d)", fb_cmd->len);
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline len (%d)\n", fb_cmd->len);
 		return false;
 	}
 
 	if (fb_cmd->fletcher != fletcher32((char *)&fb_cmd->len,
 					   sizeof(fb_cmd->len) + fb_cmd->len)) {
-		VB2_DEBUG("Wrong vb2_fastboot_cmdline checksum");
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline checksum\n");
 		return false;
 	}
 
@@ -110,7 +110,7 @@ bool vb2_is_fastboot_cmdline_valid(struct vb2_fastboot_cmdline *fb_cmd,
 bool vb2_update_fastboot_cmdline_checksum(struct vb2_fastboot_cmdline *fb_cmd)
 {
 	if (fb_cmd->len > sizeof(fb_cmd->cmdline)) {
-		VB2_DEBUG("Wrong vb2_fastboot_cmdline len (%d)", fb_cmd->len);
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline len (%d)\n", fb_cmd->len);
 		return false;
 	}
 
