@@ -46,6 +46,30 @@
       },
       "revId": "018f0efdebb00e0e66beeb257626d5fe8e79402f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f582a375_5bca699e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1454267
+      },
+      "writtenOn": "2025-02-10T15:44:51Z",
+      "side": 1,
+      "message": "I secnd Konrad\u0027s request. This is blocking pvmfw usage for Brya and therefore HWSec from working on x86 and HPA feature.",
+      "parentUuid": "1c17d742_e9fc263f",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 40
+      },
+      "revId": "018f0efdebb00e0e66beeb257626d5fe8e79402f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
