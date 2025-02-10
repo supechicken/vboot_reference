@@ -22,6 +22,30 @@
       },
       "revId": "018f0efdebb00e0e66beeb257626d5fe8e79402f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c17d742_e9fc263f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-02-10T12:46:31Z",
+      "side": 1,
+      "message": "Nick, can we get it fixed on `firmware-android-brya` and regenerate the brya prebuilts?",
+      "parentUuid": "d4c3d564_e3a2c111",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 40
+      },
+      "revId": "018f0efdebb00e0e66beeb257626d5fe8e79402f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
