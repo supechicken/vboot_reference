@@ -319,7 +319,7 @@ static vb2_error_t vb2_load_pvmfw(struct vb2_context *ctx, GptData *gpt,
 	aligned_load_bytes = (load_bytes + (gpt->sector_bytes - 1)) & ~(gpt->sector_bytes - 1);
 
 	/* Check if add overflowed */
-	if (load_bytes <= aligned_load_bytes) {
+	if (aligned_load_bytes < load_bytes) {
 		VB2_DEBUG("pvmfw requested partition size is too big (overflowed align up)\n");
 		res = VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 		goto out;
