@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b201476_7dd63b2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-12T20:49:42Z",
+      "side": 1,
+      "message": "Uploading v2 with \u0027FIXED\u003d\u0027 line.\n\nI verified that `cgpt repair` correctly updates the primary header\u0027s `Alternate LBA` and `Last LBA` in both primary/secondary headers, and a partition resize to the new available space now works.\n\nThe steps are documented in the commit message.",
+      "revId": "fddd50a9af271fbb96df79870196b916dbd585e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
