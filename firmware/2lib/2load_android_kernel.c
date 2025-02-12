@@ -209,6 +209,7 @@ vb2_error_t vb2_load_android_kernel(
 	struct vb2_fastboot_cmdline *fb_cmd = NULL;
 	struct vb2_fastboot_cmdline *fb_bootconfig = NULL;
 
+	VB2_DEBUG("Use legacy Android boot flow\n");
 	/*
 	 * Check if the buffer is zero sized (ie. pvmfw loading is not
 	 * requested) or the pvmfw partition does not exist. If so skip
@@ -518,7 +519,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	else
 		return VB2_ERROR_ANDROID_INVALID_SLOT_SUFFIX;
 
-	avb_ops = vboot_avb_ops_new(ctx, params, gpt, disk_handle, slot_suffix);
+	avb_ops = vboot_avb_ops_new(ctx, params, NULL, gpt, disk_handle, slot_suffix, false);
 	if (!avb_ops)
 		return VB2_ERROR_ANDROID_MEMORY_ALLOC;
 
