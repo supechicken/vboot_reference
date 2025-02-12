@@ -67,6 +67,16 @@ typedef struct VbSelectAndLoadKernelParams {
 	uint8_t partition_guid[16];
 	/* Flags with kernel type. */
 	uint32_t flags;
+	/* Ramdisk address */
+	uint8_t *ramdisk;
+	/* Size of the ramdisk */
+	size_t ramdisk_size;
+	/* Bootconfig address */
+	void *bootconfig;
+	/* Size of the bootconfig */
+	size_t bootconfig_size;
+	/* Pointer to Android vendor command line buffer */
+	char *vendor_cmdline_buffer;
 } VbSelectAndLoadKernelParams;
 
 /**
