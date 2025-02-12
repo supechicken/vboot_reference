@@ -23,6 +23,10 @@
 #define GPT_ENT_NAME_ANDROID_A_SUFFIX "_a"
 #define GPT_ENT_NAME_ANDROID_B_SUFFIX "_b"
 
+#define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate"
+#define SLOT_SUFFIX_BOOT_PROPERTY_NAME "androidboot.slot_suffix"
+#define ANDROID_FORCE_NORMAL_BOOT_KEY_STR "androidboot.force_normal_boot"
+
 /* Android BCB commands */
 enum vb2_boot_command {
 	VB2_BOOT_CMD_NORMAL_BOOT,
@@ -384,6 +388,23 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	 * - concatenate ramdisks from vendor_boot & init_boot partitions
 	 */
 	ret = android_rearrange_partitions(params, recovery_boot);
+
+	/* TODO(b/335901799): Add support for marking verifiedbootstate yellow */
+	/* Possible values for this property are "yellow", "orange" and "green"
+	 * so allocate 6 bytes plus 1 byte for NULL terminator.
+	 */
+	int chars = snprintf(params->vboot_cmdline_buffer, params->vboot_cmdline_size,
+			     "%s %s=%s %s=%s %s=%s", verify_data->cmdline,
+			     VERIFIED_BOOT_PROPERTY_NAME,
+			     need_verification ? "green" : "orange",
+			     SLOT_SUFFIX_BOOT_PROPERTY_NAME, slot_suffix,
+			     ANDROID_FORCE_NORMAL_BOOT_KEY_STR, recovery_boot ? "0" : "1"
+			     );
+	if (chars < 0 || chars >= params->vboot_cmdline_size) {
+		VB2_DEBUG("ERROR: Command line doesn't fit provided buffer: %s\n",
+			  verify_data->cmdline);
+		return VB2_ERROR_ANDROID_CMDLINE_BUF_TOO_SMALL;
+	}
 
 	/* No need for slot data, partitions should be already at correct
 	 * locations in memory since we are using "get_preloaded_partitions"
