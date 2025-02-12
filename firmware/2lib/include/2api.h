@@ -638,25 +638,16 @@ struct vb2_kernel_params {
 	uint8_t partition_guid[16];
 	/* Flags with kernel type. */
 	uint32_t flags;
-	/* Android vendor_boot partition offset (in bytes) in kernel_buffer. */
-	uint32_t vendor_boot_offset;
-	/* Android init_boot partition offset (in bytes) in kernel_buffer. */
-	uint32_t init_boot_offset;
-	/* Size of init boot partition in bytes. */
-	uint32_t init_boot_size;
-	/* Address of the region with kernel cmdline parameters. */
-	char *kernel_cmdline_buffer;
-	/* Size of the region with kernel cmdline parameters. */
-	uint32_t kernel_cmdline_size;
-	/* Address of the region with kernel bootconfig parameters. */
-	char *kernel_bootconfig_buffer;
-	/* Size of the region with kernel bootconfig parameters. */
-	uint32_t kernel_bootconfig_size;
-	/* Boot command from Android BCB on misc partition. */
-	enum vb2_boot_command boot_command;
-
-	/* Size of pvmfw partition in bytes in pvmfw buffer. */
-	uint32_t pvmfw_size;
+	/* Ramdisk address */
+	uint8_t *ramdisk;
+	/* Size of the ramdisk */
+	size_t ramdisk_size;
+	/* Bootconfig address */
+	void *bootconfig;
+	/* Size of the bootconfig */
+	size_t bootconfig_size;
+	/* Pointer to Android vendor command line buffer */
+	char *vendor_cmdline_buffer;
 };
 
 /*****************************************************************************/
