@@ -638,6 +638,17 @@ struct vb2_kernel_params {
 	uint8_t partition_guid[16];
 	/* Flags with kernel type. */
 	uint32_t flags;
+	/* Ramdisk address */
+	uint8_t *ramdisk;
+	/* Size of the ramdisk */
+	size_t ramdisk_size;
+	/* Bootconfig address */
+	void *bootconfig;
+	/* Size of the bootconfig */
+	size_t bootconfig_size;
+	/* Pointer to Android vendor command line buffer */
+	char *vendor_cmdline_buffer;
+	// Legacy Android boot
 	/* Android vendor_boot partition offset (in bytes) in kernel_buffer. */
 	uint32_t vendor_boot_offset;
 	/* Android init_boot partition offset (in bytes) in kernel_buffer. */
