@@ -16,6 +16,10 @@
 #include "vboot_api.h"
 #include "vb2_android_bootimg.h"
 
+#define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate"
+#define SLOT_SUFFIX_BOOT_PROPERTY_NAME "androidboot.slot_suffix"
+#define ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME "androidboot.force_normal_boot"
+
 // Legacy Android boot
 #include "vb2_android_misc.h"
 
@@ -25,8 +29,6 @@
 /* Possible values of BCB command */
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
 #define BCB_CMD_BOOT_RECOVERY "boot-recovery"
-
-#define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate="
 
 static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 {
@@ -300,7 +302,7 @@ vb2_error_t vb2_load_android_kernel(
 	verified_str = malloc(strlen(VERIFIED_BOOT_PROPERTY_NAME) + 7);
 	if (verified_str == NULL)
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
-	sprintf(verified_str, "%s%s", VERIFIED_BOOT_PROPERTY_NAME,
+	sprintf(verified_str, "%s=%s", VERIFIED_BOOT_PROPERTY_NAME,
 		(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
 
 	if ((strlen(verify_data->cmdline) + 1 + strlen(verified_str) + 1 +
@@ -735,6 +737,24 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	 * - concatenate ramdisks from vendor_boot & init_boot partitions
 	 */
 	rv = rearrange_partitions(avb_ops, params, recovery_boot);
+	if (rv)
+		goto out;
+
+	/*
+	 * TODO(b/335901799): Add support for marking verifiedbootstate yellow
+	 */
+	int chars = snprintf(params->vboot_cmdline_buffer, params->vboot_cmdline_size,
+			     "%s %s=%s %s=%s %s=%s", verify_data->cmdline,
+			     VERIFIED_BOOT_PROPERTY_NAME,
+			     need_verification ? "green" : "orange",
+			     SLOT_SUFFIX_BOOT_PROPERTY_NAME, slot_suffix,
+			     ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME, recovery_boot ? "0" : "1"
+			     );
+	if (chars < 0 || chars >= params->vboot_cmdline_size) {
+		VB2_DEBUG("ERROR: Command line doesn't fit provided buffer: %s\n",
+			  verify_data->cmdline);
+		rv = VB2_ERROR_ANDROID_CMDLINE_BUF_TOO_SMALL;
+	}
 
 out:
 	/* No need for slot data */
