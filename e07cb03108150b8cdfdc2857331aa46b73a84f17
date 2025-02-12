@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42680fb6_2bc3169f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-12T20:44:15Z",
+      "side": 1,
+      "message": "I verified that `cgpt create` still generates the same `Last LBA:` with `cgpt show -v` before/after this change.",
+      "revId": "e07cb03108150b8cdfdc2857331aa46b73a84f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
