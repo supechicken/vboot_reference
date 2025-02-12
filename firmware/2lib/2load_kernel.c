@@ -8,7 +8,9 @@
 
 #include "2api.h"
 #include "2common.h"
+#ifdef USE_LIBAVB
 #include "2load_android_kernel.h"
+#endif
 #include "2misc.h"
 #include "2nvstorage.h"
 #include "2packed_key.h"
@@ -325,7 +327,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
  * @param kernel_version	The kernel version of this partition.
  * @return VB2_SUCCESS, or non-zero error code.
  */
-static vb2_error_t vb2_load_chromeos_kernel_partition(
+static vb2_error_t vb2_load_chromeos_kernel(
 	struct vb2_context *ctx, struct vb2_kernel_params *params,
 	VbExStream_t stream, uint32_t lpflags, uint32_t *kernel_version)
 {
@@ -459,10 +461,8 @@ static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 	}
 
 	/* We are looking for ChromeOS partitions */
-	rv = vb2_load_chromeos_kernel_partition(ctx, params,
-						stream, lpflags,
-						&kernel_version);
-	VB2_DEBUG("vb2_load_chromeos_kernel_partition returned: %d\n", rv);
+	rv = vb2_load_chromeos_kernel(ctx, params, stream, lpflags, &kernel_version);
+	VB2_DEBUG("vb2_load_chromeos_kernel returned: %#x\n", rv);
 
 	VbExStreamClose(stream);
 
@@ -595,7 +595,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int found_partitions = 0;
 	uint32_t lowest_version = LOWEST_TPM_VERSION;
-	vb2_error_t rv;
+	vb2_error_t rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 
 	/* Clear output params */
 	params->partition_number = 0;
@@ -629,24 +629,17 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		uint64_t part_size = GptGetEntrySizeLba(entry);
 		char *ab_suffix = NULL;
 
-		VB2_DEBUG("Found kernel entry at %"
+		VB2_DEBUG("Found %s kernel entry at %"
 			  PRIu64 " size %" PRIu64 "\n",
+			  IsAndroid(entry) ? "Android" : "ChromeOS",
 			  part_start, part_size);
 
 		/* Found at least one kernel partition. */
 		found_partitions++;
 
-		if (IsAndroid(entry)) {
-			/*
-			 * The goal is to boot Android if we find the VBMETA partition.
-			 * However, because we've been searching for the BOOT partition
-			 * up to now and we do not want to make too many changes,
-			 * we need to find according BOOT partitions and pass its data
-			 * to the vb2_load_android_kernel() function.
-			 */
-			GptFindBoot(&gpt, &part_start, &part_size);
-		} else if (GptGetActiveKernelPartitionSuffix(&gpt, &ab_suffix) == GPT_SUCCESS &&
-			   IsAndroidBootPartition(entry, ab_suffix)) {
+		if (IsChromeOS(entry) &&
+		    GptGetActiveKernelPartitionSuffix(&gpt, &ab_suffix) == GPT_SUCCESS &&
+		    IsAndroidBootPartition(entry, ab_suffix)) {
 			/*
 			 * If we find a partition with Chromeos kernel guid and we try to boot
 			 * Android it means we are use legacy boot from 'boot_a\b' partition.
@@ -669,17 +662,6 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 				GptModified(&gpt);
 			}
 		}
-
-		/* Set up the stream */
-		VbExStream_t stream = NULL;
-		if (VbExStreamOpen(disk_info->handle,
-				   part_start, part_size, &stream)) {
-			VB2_DEBUG("Partition error getting stream.\n");
-			VB2_DEBUG("Marking kernel as invalid.\n");
-			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
-			continue;
-		}
-
 		uint32_t lpflags = 0;
 		if (params->partition_number > 0) {
 			/*
@@ -690,50 +672,72 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		}
 
 		uint32_t kernel_version = 0;
+		if (IsAndroid(entry)) {
+			/*
+			 * Android does not support versioning yet
+			 * TODO: b/324230492
+			 */
+			if (lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)
+				continue;
 #ifdef USE_LIBAVB
-		if (!(lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)) {
-			rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
-						     disk_info->handle,
-						     vb2_need_kernel_verification(ctx));
-		} else
-			rv = VB2_SUCCESS;
-
+			rv = vb2_load_android(ctx, &gpt, entry, params, disk_info->handle);
 #else
-		/* Don't allow to boot android without AVB */
-		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
+			/* Don't allow to boot android without AVB */
+			rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 #endif
-		VbExStreamClose(stream);
+		} else if (IsChromeOS(entry)) {
+			/* Set up the stream */
+			VbExStream_t stream = NULL;
 
-		/* If there's an error with GKI boot,
-		 * then try to fallback to ChromeOS
-		 */
-		if (rv) {
-			/* Set up and reopen the stream again */
-			stream = NULL;
-			if (VbExStreamOpen(disk_info->handle,
-					   part_start, part_size, &stream)) {
-				VB2_DEBUG("Cros fallback - unable to reopen stream\n");
+			if (VbExStreamOpen(disk_info->handle, part_start, part_size, &stream)) {
+				VB2_DEBUG("Partition error getting stream.\n");
 				VB2_DEBUG("Marking kernel as invalid.\n");
 				GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
 				continue;
 			}
-
-			lpflags = 0;
-			if (params->partition_number > 0) {
-				/*
-				 * If we already have a good kernel, we only needed to
-				 * look at the vblock versions to check for rollback.
-				 */
-				lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
-			}
-
-			/* Append status and try to load chromeos partition */
-			rv = vb2_load_chromeos_kernel_partition(ctx, params, stream,
-								lpflags, &kernel_version);
-
+#ifdef USE_LIBAVB
+			if (!(lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)) {
+				rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
+							     disk_info->handle,
+							     vb2_need_kernel_verification(ctx));
+			} else
+				rv = VB2_SUCCESS;
+#else
+			/* Don't allow to boot android without AVB */
+			rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
+#endif
 			VbExStreamClose(stream);
-		}
 
+			/* If there's an error with GKI boot,
+			 * then try to fallback to ChromeOS
+			 */
+			if (rv) {
+				/* Set up and reopen the stream again */
+				stream = NULL;
+				if (VbExStreamOpen(disk_info->handle,
+						   part_start, part_size, &stream)) {
+					VB2_DEBUG("Cros fallback - unable to reopen stream\n");
+					VB2_DEBUG("Marking kernel as invalid.\n");
+					GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
+					continue;
+				}
+
+				lpflags = 0;
+				if (params->partition_number > 0) {
+					/*
+					 * If we already have a good kernel, we only needed to
+					 * look at the vblock versions to check for rollback.
+					 */
+					lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
+				}
+
+				/* Append status and try to load chromeos partition */
+				rv = vb2_load_chromeos_kernel(ctx, params, stream, lpflags,
+							      &kernel_version);
+
+				VbExStreamClose(stream);
+			}
+		}
 		if (rv) {
 			VB2_DEBUG("Marking kernel as invalid (err=%x).\n", rv);
 			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
