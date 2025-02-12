@@ -648,6 +648,11 @@ struct vb2_kernel_params {
 	size_t bootconfig_size;
 	/* Pointer to Android vendor command line buffer */
 	char *vendor_cmdline_buffer;
+	/* Address of the region with kernel cmdline parameters. */
+	char *vboot_cmdline_buffer;
+	/* Size of the region with kernel cmdline parameters. */
+	uint32_t vboot_cmdline_size;
+
 	// Legacy Android boot
 	/* Android vendor_boot partition offset (in bytes) in kernel_buffer. */
 	uint32_t vendor_boot_offset;
