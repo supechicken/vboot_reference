@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a102866_88a0651a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2025-02-13T23:46:42Z",
+      "side": 1,
+      "message": "Based on Rob\u0027s comment, please run:\n\n```\natest -s \u003cDUT Serial\u003e ec_crash_collector_test\n```",
+      "revId": "3a63d8777286924f7fda82160d04f84bc97d687a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f2e3084_da6302f0",
