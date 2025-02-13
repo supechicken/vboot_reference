@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ebf381e_0f3ffb17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:40:28Z",
+      "side": 1,
+      "message": "Uploaded v2 addressing Jakub\u0027s comments.\n\nI verified that `cgpt create` still generates the same `Last LBA:` with `cgpt show -v` before/after this change.\n\nThe steps are documented in the commit message.",
+      "revId": "b6cce86c6db08aea797482a28d0bd602cde3aa4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

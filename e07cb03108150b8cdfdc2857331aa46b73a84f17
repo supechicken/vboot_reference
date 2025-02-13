@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d773454_e90ea5a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:40:28Z",
+      "side": 1,
+      "message": "Thanks for clarifying that is allowed!\n\n\nI\u0027ll append `--ignore LEADING_SPACE` to `.checkpatch.conf` for this submission.\n\nBTW, `clang-format --style\u003dfile` (to use `.clang-format`) formatted many other lines in the file, so I\u0027ll skip it.",
+      "parentUuid": "5c7293fd_6aac4568",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "e07cb03108150b8cdfdc2857331aa46b73a84f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "42680fb6_2bc3169f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2025-02-13T14:22:56Z",
       "side": 1,
       "message": "This structure can be simplified to:\n```c\nif (!(drive-\u003egpt.flags \u0026 GPT_FLAG_EXTERNAL))\n  return (drive-\u003egpt.streaming_drive_sectors - GPT_HEADER_SECTORS\n          - CalculateEntriesSectors(h, drive-\u003egpt.sector_bytes) - 1);\n\nreturn (drive-\u003egpt.streaming_drive_sectors - 1);\n```",
+      "range": {
+        "startLine": 399,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "e07cb03108150b8cdfdc2857331aa46b73a84f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc10920_9566801d",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:40:28Z",
+      "side": 1,
+      "message": "Indeed. I intended to keep the code similar for review, but will simplify it per your comment, as that\u0027s better. Thanks.",
+      "parentUuid": "55045791_36b1d381",
       "range": {
         "startLine": 399,
         "startChar": 1,
