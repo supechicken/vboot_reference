@@ -16,6 +16,23 @@
       "message": "Uploaded v3 addressing Jakub\u0027s comments.\n\nI verified that `cgpt repair` correctly updates the primary header\u0027s `Alternate LBA` and  `Last LBA` in both primary/secondary headers, \nand a partition resize to the new available space now works.\nThe steps are documented in the commit message.",
       "revId": "34f1ac32d0f1bfa8602406d17dacde2a885a8dae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9349fb4a_4a00ec20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:44:04Z",
+      "side": 1,
+      "message": "For documentation purposes: the changes to `.checkpatch.conf` to allow usage of the code style as in these files are:\n```\n--ignore LEADING_SPACE\n--ignore SUSPECT_CODE_INDENT\n--ignore CONSTANT_COMPARISON\n--ignore CODE_INDENT\n```",
+      "revId": "34f1ac32d0f1bfa8602406d17dacde2a885a8dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
