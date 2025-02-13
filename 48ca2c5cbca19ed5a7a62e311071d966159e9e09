@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5dc776_d9cc14b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e82ff27_9d2d2a09",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3a2d8de_9373ab14",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-13T14:32:06Z",
       "side": 1,
       "message": "AFAIK `FIXED\u003d` is not a valid label in chromium-review. Or at least it\u0027s not something we or our tools expect to be here. `BUG\u003d` is enough as bots will pull this CL to the Buganizer CLs list by this reference.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e02a710_b8d66f98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:38:17Z",
+      "side": 1,
+      "message": "Ok, thanks for clarifying! I\u0027ll drop that.\n\nFor reference, I read that in\nhttps://www.chromium.org/chromium-os/developer-library/guides/development/contributing/#link-to-issue-trackers\n```\nIf your commit would close an issue, you can append FIXED\u003dbug-tracker:number\n(using the same format as BUG\u003d) to your CL description as well. When the\nchange lands, the FIXED issue will close automatically.\n```",
+      "parentUuid": "c3a2d8de_9373ab14",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ed2f15_1b95f4a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:38:17Z",
+      "side": 1,
+      "message": "Ok, thanks.",
+      "parentUuid": "f6b2a709_5f93e410",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7b98b46_640b84b5",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6c8f3c_0fc776a5",
+        "filename": "cgpt/cgpt_repair.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:38:17Z",
+      "side": 1,
+      "message": "Ok, thanks.",
+      "parentUuid": "a7b98b46_640b84b5",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81ecb6d9_6ba3a491",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-02-13T14:32:06Z",
       "side": 1,
       "message": "nit: Drop `is` from these logs.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 43
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30dec8e0_8cfaea41",
+        "filename": "cgpt/cgpt_repair.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3875375
+      },
+      "writtenOn": "2025-02-13T18:38:17Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll drop \u0027is\u0027.\nI had copied that usage from the previous lines/messages for consistency, as the same message can be displayed in the same command run.",
+      "parentUuid": "81ecb6d9_6ba3a491",
       "range": {
         "startLine": 69,
         "startChar": 2,
