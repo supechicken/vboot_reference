@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "3a63d8777286924f7fda82160d04f84bc97d687a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2c0a36_8710c8c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-02-13T23:45:00Z",
+      "side": 1,
+      "message": "ec_crash_collector is system and depends on crossystem.\nSo crossystem can\u0027t be moved to vendor only without breaking ec_crash_collector. Either ec_crash_collector needs to be moved to vendor or the dependency on crossystem needs to be removed from ec_crash_collector(which is in on the backlog).",
+      "revId": "3a63d8777286924f7fda82160d04f84bc97d687a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
