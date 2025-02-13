@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7293fd_6aac4568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:22:56Z",
+      "side": 1,
+      "message": "Please use `.checkpatch.conf` which has appropriate ignore flags that allow to follow the convention used in vboot_reference.\nWe also have clang-format config file too.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "e07cb03108150b8cdfdc2857331aa46b73a84f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "42680fb6_2bc3169f",
@@ -14,6 +37,46 @@
       "writtenOn": "2025-02-12T20:44:15Z",
       "side": 1,
       "message": "I verified that `cgpt create` still generates the same `Last LBA:` with `cgpt show -v` before/after this change.",
+      "revId": "e07cb03108150b8cdfdc2857331aa46b73a84f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace252b8_06946082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:22:56Z",
+      "side": 1,
+      "message": "@tmichalec@google.com You were doing a lot around cgpt lately. Can you take a look at this CL in context of your own CLs?",
+      "revId": "e07cb03108150b8cdfdc2857331aa46b73a84f17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55045791_36b1d381",
+        "filename": "cgpt/cgpt_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:22:56Z",
+      "side": 1,
+      "message": "This structure can be simplified to:\n```c\nif (!(drive-\u003egpt.flags \u0026 GPT_FLAG_EXTERNAL))\n  return (drive-\u003egpt.streaming_drive_sectors - GPT_HEADER_SECTORS\n          - CalculateEntriesSectors(h, drive-\u003egpt.sector_bytes) - 1);\n\nreturn (drive-\u003egpt.streaming_drive_sectors - 1);\n```",
+      "range": {
+        "startLine": 399,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 24
+      },
       "revId": "e07cb03108150b8cdfdc2857331aa46b73a84f17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
