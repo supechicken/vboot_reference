@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e82ff27_9d2d2a09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:32:06Z",
+      "side": 1,
+      "message": "Same as in [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6258635/comment/5c7293fd_6aac4568/)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a2d8de_9373ab14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:32:06Z",
+      "side": 1,
+      "message": "AFAIK `FIXED\u003d` is not a valid label in chromium-review. Or at least it\u0027s not something we or our tools expect to be here. `BUG\u003d` is enough as bots will pull this CL to the Buganizer CLs list by this reference.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b2a709_5f93e410",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:32:06Z",
+      "side": 1,
+      "message": "You can omit `TEST\u003d` in multiline test description for better grep-ability. I think continuing from the beginning of the line (w/o aligning to first `TEST\u003d` should be OK.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b98b46_640b84b5",
+        "filename": "cgpt/cgpt_repair.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:32:06Z",
+      "side": 1,
+      "message": "I\u0027d rather see `primary` and `secondary` here instead of `header1` and `header2` for better readability.",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ecb6d9_6ba3a491",
+        "filename": "cgpt/cgpt_repair.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-13T14:32:06Z",
+      "side": 1,
+      "message": "nit: Drop `is` from these logs.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 43
+      },
+      "revId": "48ca2c5cbca19ed5a7a62e311071d966159e9e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
