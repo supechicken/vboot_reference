@@ -67,6 +67,24 @@
       "message": "I unfortunately cannot access the CQ logs, even after signing in:\n\n`code: 5 (NOT_FOUND) desc: requested resource not found or \"user:mfo@igalia.com\" does not have permission to view it`\n\nHow to request access? Apparently that\u0027s not in the docs.\n\nThanks!",
       "revId": "b6cce86c6db08aea797482a28d0bd602cde3aa4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edea780_9b3476e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-14T17:26:25Z",
+      "side": 1,
+      "message": "You probably do not have permissions to run CQ by yourself or something broke on ToT again. I\u0027ll pass it to CQ. I\u0027m closing this commit so Gerrit allows me to run CQ+2.",
+      "parentUuid": "b0fe4ddc_d89232e7",
+      "revId": "b6cce86c6db08aea797482a28d0bd602cde3aa4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
