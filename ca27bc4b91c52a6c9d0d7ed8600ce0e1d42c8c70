@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19bce821_ac719254",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-14T08:23:25Z",
+      "side": 1,
+      "message": "Correct.",
+      "parentUuid": "a2d4e297_75471912",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b001dd8c_386e607f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -219,6 +243,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "43a56a14_ac2c5591",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c7c270_ab301e9e",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-14T08:23:25Z",
+      "side": 1,
+      "message": "Didn\u0027t see the new patchset yet.",
+      "parentUuid": "00701b89_06fe674a",
       "range": {
         "startLine": 65,
         "startChar": 18,
