@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df64f5f_e2e00b33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33cb1aeb_19d2fc8c",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "319a6a54_bfa5a44b",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-06T23:15:49Z",
       "side": 1,
       "message": "Without any context, it\u0027s difficult to understand the meaning of this sentence. How about\n\n```\nFor the upcoming firmware release for Android, we want to update the AP_RW without changing the EC_RW version inside AP_RW. Currently the swap_ec_rw script only supports getting the EC_RW from an EC image. Therefore, we would need the EC image (on CBS) with the same version as the old AP_RW to perform the swap, which is a tedious task.\n\nTo simplify the process, support extracting EC_RW from one AP image and swapping into another AP image.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d4e297_75471912",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done.\n\nJust to confirm, you mean \"on BCS\", not \"on CBS\"?",
+      "parentUuid": "319a6a54_bfa5a44b",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba8a6bd_5b843e62",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e80afb0a_d58be203",
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d145817d_9f2b7aa6",
@@ -94,6 +160,24 @@
       "writtenOn": "2025-02-06T23:15:49Z",
       "side": 1,
       "message": "Also extract CBFS_ECRW_CONFIG_NAME and swap it in ap_file.",
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe94fe63_0825746f",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d145817d_9f2b7aa6",
       "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00701b89_06fe674a",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a56a14_ac2c5591",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f7d109a_5506cd29",
@@ -134,6 +242,24 @@
       "writtenOn": "2025-02-06T23:15:49Z",
       "side": 1,
       "message": "Remove this duplicate line.",
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0dc1800_d0f4ccb2",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7d109a_5506cd29",
       "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe4cfec_bdfd7db1",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd12985_70316044",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc720b8d_bdeee576",
@@ -174,6 +324,30 @@
       "writtenOn": "2025-02-06T23:15:49Z",
       "side": 1,
       "message": "space",
+      "range": {
+        "startLine": 169,
+        "startChar": 27,
+        "endLine": 169,
+        "endChar": 28
+      },
+      "revId": "ca27bc4b91c52a6c9d0d7ed8600ce0e1d42c8c70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc68b33_d9ed7853",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-02-14T07:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc720b8d_bdeee576",
       "range": {
         "startLine": 169,
         "startChar": 27,
