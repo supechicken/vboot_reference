@@ -1,3 +1,11 @@
 allenwebb@google.com
 
 include chromiumos/platform2:/libchromeos-rs/OWNERS
+
+# ChromeOS Prod
+chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com #{LAST_RESORT_SUGGESTION}
+
+
+# Android Owners
+include chromiumos/owners:v1:/firmware/OWNERS.android
+
