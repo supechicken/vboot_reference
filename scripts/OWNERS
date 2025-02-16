@@ -2,3 +2,11 @@ vapier@chromium.org
 engeg@google.com
 allenwebb@google.com
 bshai@google.com
+
+# ChromeOS Prod
+chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com #{LAST_RESORT_SUGGESTION}
+
+
+# Android Owners
+include chromiumos/owners:v1:/firmware/OWNERS.android
+
