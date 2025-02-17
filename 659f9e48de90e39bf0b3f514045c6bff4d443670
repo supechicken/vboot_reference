@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72df3c19_6d183dba",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-17T02:13:02Z",
+      "side": 1,
+      "message": "Are you sure this works (when `ecrw_ver_file` is a local variable)?",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc233b1_66b9f3b6",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-17T02:13:02Z",
+      "side": 1,
+      "message": "```\nAs some old `ap_for_ec_file` image may not have `ecrw_config_file`, use the `ap_for_ec_file` AP version as the EC RW version.\n```",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a62f56_cbcfcf1c",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-17T02:13:02Z",
+      "side": 1,
+      "message": "nit: Can we move this above `swap_ecrw` to have consistent function order? Alternatively, we don\u0027t necessarily need to extract the code to this separate function. I\u0027m fine with keeping the code in `swap_ecrw`.",
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f59c45_436d8d82",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-17T02:13:02Z",
+      "side": 1,
+      "message": "This may not be always true. Maybe just remove this warning message (by changing to `|| true`?",
+      "range": {
+        "startLine": 161,
+        "startChar": 56,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
