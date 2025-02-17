@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6082fcf4_aed6a20c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-17T13:28:18Z",
+      "side": 1,
+      "message": "Resolving. More info under Rob\u0027s comment.",
+      "parentUuid": "9a102866_88a0651a",
+      "revId": "3a63d8777286924f7fda82160d04f84bc97d687a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7f2e3084_da6302f0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "After [SEPolicy changes](ag/31734561)(Internal only) we no longer have correct config for crossystem on `/system`. There are two options:\n1. Move ec_crash_collector to `/vendor` where IMO it should be\n2. Restore Revert crossystem `file_context` pattern to cover `/system` and add another crossystem install path for `/vendor` so vendor apps can use it w/o a need to have special SELinux label for violating vendor-execs-system.\n\nMoreover opensource-licensing requires us to make all GPL-licensed tools to live outside of `/system` and `crossystem` relies on libflashrom, so it has to be moved to `/vendor`.",
       "parentUuid": "df2c0a36_8710c8c2",
+      "revId": "3a63d8777286924f7fda82160d04f84bc97d687a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6525506_02a75b20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-02-17T13:28:18Z",
+      "side": 1,
+      "message": "To reiterate - `ec_crash_collector` should be on `/vendor` from the beginning as it\u0027s not an Android core program. I\u0027m closing comments on this CL and merging this CL. I still have to update vboot_reference in AOSP/AG, so this change won\u0027t be affecting you until I do it. But please migrate `ec_crash_collector` to `/vendor` ASAP as I really need this CL in Android so FW OTA can finally be merged after half a year.",
+      "parentUuid": "095bc625_9964a3dd",
       "revId": "3a63d8777286924f7fda82160d04f84bc97d687a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
