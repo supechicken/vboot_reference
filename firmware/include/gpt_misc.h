@@ -179,6 +179,17 @@ uint64_t GptGetEntrySizeLba(const GptEntry *e);
 uint64_t GptGetEntrySizeBytes(const GptData *gpt, const GptEntry *e);
 
 /**
+ * Provides the location of the next bootable partition, in order of decreasing
+ * priority.
+ *
+ * On return gpt.current_kernel contains the partition index of the current
+ * bootable partition.
+ *
+ * Returns gpt entry of partition to boot if successful, else NULL
+ */
+GptEntry *GptNextKernelEntry(GptData *gpt);
+
+/**
  * Updates the kernel entry with the specified index, using the specified type
  * of update (GPT_UPDATE_ENTRY_*).
  *
