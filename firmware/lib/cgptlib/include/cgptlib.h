@@ -24,17 +24,6 @@ enum GptPartition {
 extern const char *GptPartitionNames[];
 
 /**
- * Provides the location of the next bootable partition, in order of decreasing
- * priority.
- *
- * On return gpt.current_kernel contains the partition index of the current
- * bootable partition.
- *
- * Returns gpt entry of partition to boot if successful, else NULL
- */
-GptEntry *GptNextKernelEntry(GptData *gpt);
-
-/**
  * Checks if entry name field is equal to name+suffix.
  *
  * Returns true if equal, else false.
