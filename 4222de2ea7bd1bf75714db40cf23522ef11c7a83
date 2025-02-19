@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadd3f2a_3d77fd32",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-19T12:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be317bd2_97be5fbf",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "4222de2ea7bd1bf75714db40cf23522ef11c7a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82b7d7b1_512d411c",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-01-07T21:42:03Z",
       "side": 1,
       "message": "strcmp",
+      "range": {
+        "startLine": 86,
+        "startChar": 6,
+        "endLine": 86,
+        "endChar": 13
+      },
+      "revId": "4222de2ea7bd1bf75714db40cf23522ef11c7a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e311024_57622148",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-19T12:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b7d7b1_512d411c",
       "range": {
         "startLine": 86,
         "startChar": 6,
@@ -84,6 +132,30 @@
           ]
         }
       ],
+      "revId": "4222de2ea7bd1bf75714db40cf23522ef11c7a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2521eada_32b34a21",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-19T12:18:13Z",
+      "side": 1,
+      "message": "Done, this enum was moved into 2load_android_kernel.c",
+      "parentUuid": "923ed601_5749d8b4",
+      "range": {
+        "startLine": 598,
+        "startChar": 25,
+        "endLine": 598,
+        "endChar": 30
+      },
       "revId": "4222de2ea7bd1bf75714db40cf23522ef11c7a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
