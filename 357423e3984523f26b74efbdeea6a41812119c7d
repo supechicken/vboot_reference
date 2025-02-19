@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a964971_99497b2d",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-19T12:08:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1c4ad67_6c3a89bd",
+      "revId": "357423e3984523f26b74efbdeea6a41812119c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a91e4804_f0ef4945",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-23T20:43:54Z",
       "side": 1,
       "message": "nit: `android_vbmeta`",
+      "range": {
+        "startLine": 164,
+        "startChar": 13,
+        "endLine": 164,
+        "endChar": 28
+      },
+      "revId": "357423e3984523f26b74efbdeea6a41812119c7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed6ed5d_84d9039c",
+        "filename": "firmware/lib/cgptlib/cgptlib_internal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-19T12:08:01Z",
+      "side": 1,
+      "message": "Code removed",
+      "parentUuid": "a91e4804_f0ef4945",
       "range": {
         "startLine": 164,
         "startChar": 13,
