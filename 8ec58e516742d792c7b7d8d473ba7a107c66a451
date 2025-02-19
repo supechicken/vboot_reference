@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4aa28e_ce464533",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-19T12:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db94e62_262a4849",
+      "revId": "8ec58e516742d792c7b7d8d473ba7a107c66a451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80666bfe_d00a28bb",
@@ -54,6 +72,24 @@
       "writtenOn": "2025-01-31T05:00:49Z",
       "side": 1,
       "message": "nit: could be combined with definition above\n```\nstart_sector \u003d part_start_sector + offset_from_partition / sector_bytes;\n```",
+      "revId": "8ec58e516742d792c7b7d8d473ba7a107c66a451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a83764e_68d031b1",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-19T12:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e4374f_e4895118",
       "revId": "8ec58e516742d792c7b7d8d473ba7a107c66a451",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
