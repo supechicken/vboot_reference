@@ -10,6 +10,17 @@
 #include "gpt_misc.h"
 
 /**
+ * Find boot partition for selected slot.
+ * Must be called after GptNextKernelEntry.
+ *
+ * On return the start_sector parameter contains the LBA sector for the start
+ * of the init_boot partition, and the size parameter contains the size of the
+ * init_boot partition in LBA sectors.
+ * Returns GPT_SUCCESS if successful.
+ */
+int GptFindBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size);
+
+/**
  * Find init_boot partition for selected slot.
  * Must be called after GptNextKernelEntry.
  *
