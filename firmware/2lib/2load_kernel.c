@@ -650,6 +650,17 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		/* Found at least one kernel partition. */
 		found_partitions++;
 
+		if (IsAndroid(entry)) {
+			/*
+			 * The goal is to boot Android if we find the VBMETA partition.
+			 * However, because we've been searching for the BOOT partition
+			 * up to now and we do not want to make too many changes,
+			 * we need to find according BOOT partitions and pass its data
+			 * to the vb2_load_android_kernel() function.
+			 */
+			GptFindBoot(&gpt, &part_start, &part_size);
+		}
+
 		/* Set up the stream */
 		VbExStream_t stream = NULL;
 		if (VbExStreamOpen(disk_info->handle,
@@ -669,13 +680,15 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
 		}
 
-#ifdef USE_LIBAVB
-		rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
-					     disk_info->handle,
-					     need_valid_keyblock(ctx));
-#else
-		/* Don't allow to boot android without AVB */
 		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
+#ifdef USE_LIBAVB
+		if (!(lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)) {
+			rv = vb2_load_android_kernel(ctx, params, stream, &gpt,
+						     disk_info->handle,
+						     need_valid_keyblock(ctx));
+		} else
+			rv = VB2_SUCCESS;
+
 #endif
 		VbExStreamClose(stream);
 
