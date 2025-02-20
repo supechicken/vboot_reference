@@ -16,6 +16,23 @@
       "message": "Oops. Good thing we have that clipping logic...",
       "revId": "12caa24c2192ac279237eaa5d3a2fda2d117e523",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71e2ade_5008aeff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-02-20T23:06:15Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8722378179669032865) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.hw.cq-minimal\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "12caa24c2192ac279237eaa5d3a2fda2d117e523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
