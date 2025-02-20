@@ -321,6 +321,34 @@ int GptFindOffsetByName(GptData *gpt, const char *name,
 	return GPT_SUCCESS;
 }
 
+int GptFindBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size)
+{
+	int ret;
+	char *name;
+	char *suffix = NULL;
+
+	ret = GptGetActiveKernelPartitionSuffix(gpt, &suffix);
+	if (ret != GPT_SUCCESS) {
+		VB2_DEBUG("Unable to get kernel partition suffix\n");
+		return ret;
+	}
+
+	/* Construct name */
+	name = JoinStr(GPT_ENT_NAME_ANDROID_BOOT, suffix);
+	free(suffix);
+	if (name == NULL) {
+		VB2_DEBUG("Unable to construct vendor_boot partition name\n");
+		return GPT_ERROR_INVALID_ENTRIES;
+	}
+
+	ret = GptFindOffsetByName(gpt, name, start_sector, size);
+	if (ret != GPT_SUCCESS)
+		VB2_DEBUG("Unable to find the %s partition\n", name);
+
+	free(name);
+	return ret;
+}
+
 int GptFindInitBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size)
 {
 	int ret;
