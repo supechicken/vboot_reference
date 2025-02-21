@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4cbc4b_12a2ed95",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:17:56Z",
+      "side": 1,
+      "message": "Unused? (Note that vboot has `vb2_align()` for this, although it works a bit differently.)",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24166319_d3eef37f",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:17:56Z",
+      "side": 1,
+      "message": "These should be 0 before this point so you should be able to straight-up assign here.",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7360573f_2fad9303",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:17:56Z",
+      "side": 1,
+      "message": "else we should return an error.",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d9bbf4_8255f469",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:17:56Z",
+      "side": 1,
+      "message": "nit: mapping OK to OK seems a bit redundant?",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271f9c23_753186c2",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:17:56Z",
+      "side": 1,
+      "message": "You don\u0027t need to have a default case in a switch statement if it does nothing (or does that trigger some weird warning?).",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca872b27_b6f43685",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:17:56Z",
+      "side": 1,
+      "message": "I don\u0027t get the point of this construct? Isn\u0027t this doing exactly the same thing (safe for the `verify_data !\u003d NULL` check which I don\u0027t think you need) as would have happened anyway?",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
