@@ -1,0 +1,318 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfd3c49_d8289a41",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "Is this size value needed when it\u0027s null-terminated?",
+      "fixSuggestions": [
+        {
+          "fixId": "7ea9e245_2c3920e0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 630,
+                "startChar": 0,
+                "endLine": 632,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21447dc_aa582bcb",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f81df7_b99286b1",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "Sorry, I meant that this array goes inside the kparams struct, and shouldn\u0027t just be a freestanding global. That way, depthcharge can get the partition information back out of there right away. Although I do acknowledge that for some cases like the ramdisk or bootconfig you may still need separate entries to communicate them, but we should still avoid having state in globals anyway. You can probably just reuse the same struct (maybe instead of `android_part` just name it something more generic like `vb2_preload_buffer`) and just make separate fields for those, e.g.:\n```\nstruct vb2_kernel_params {\n  ...\n  uint8_t partition_guid[16];\n  uint32_t flags;\n  struct vb2_preload_buffer preloaded[GPT_ANDROID_PRELOADED_NUM];\n  struct vb2_preload_buffer combined_ramdisk;\n  struct vb2_preload_buffer bootconfig;\n  char *vendor_cmdline; /* null-terminated */\n  char *vboot_cmdline; /* null-terminated */\n}\n```",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0c87d5_8a0df2fc",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "This still returns `AvbIOResult`, not `vb2_error_t` (and I think that is okay, but the type here needs to be corrected).",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9540fdec_48ea34d7",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "nit: usually we only use the `vb2_` prefix for non-static functions.",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf67837_b6d73903",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "If you want out_num_read to be nullable, this needs to be guarded too.",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753034a3_d5aad2f1",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "nit: this on the other hand could use the `vb2_` prefix. We don\u0027t really use `vboot_`...",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4004e9e8_8ba70685",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "This should be doable with a for loop (something similar to my comment from last time, just without the actual loading part).",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53af0767_32e81952",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "I think when you want to signal that the partition is not pre-loaded and the caller should fall back to `read_from_partition()`, you need to return `RESULT_OK` and just leave `*out_pointer` set to `NULL`.",
+      "range": {
+        "startLine": 196,
+        "startChar": 9,
+        "endLine": 196,
+        "endChar": 46
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2077e864_7fd99b3a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "This, too, can be a for loop (that was the whole point of putting the partitions in an array and rearranging the enum to match what we need to load).",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5251b9d8_e71b908f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "I think the idea here is that we again just return the actual size in `*out_num_bytes_preloaded` if it is smaller (and `RESULT_OK`).",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3796c2e_5ddb4cb2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "This should be done after the loading succeeded.",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be64182a_652b8342",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "`return get_partition_size(avbctx-\u003egpt, partition_name, NULL, out_size)`\n\n(I think to make things simpler you can use AVB errors inside `get_partition_size()`, same as you\u0027re doing it in the common `vb2_load_android_partition()`.)",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea58bfe7_6cf74e54",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:54:03Z",
+      "side": 1,
+      "message": "To make allocating the buffers easier, I think these should be defined in the same order as areas are allocated in the kernel buffer. So init_boot should come after vendor_boot.",
+      "fixSuggestions": [
+        {
+          "fixId": "5e02d2a8_cf7d9f24",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/cgptlib/include/cgptlib.h",
+              "range": {
+                "startLine": 14,
+                "startChar": 0,
+                "endLine": 15,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/lib/cgptlib/include/cgptlib.h",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 16,
+                "endChar": 0
+              },
+              "replacement": "\tGPT_ANDROID_INIT_BOOT,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
