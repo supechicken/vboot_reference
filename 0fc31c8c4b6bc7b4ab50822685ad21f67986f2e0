@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba501ae2_f3a2c94d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:09:06Z",
+      "side": 1,
+      "message": "`user_data(ops)`",
+      "range": {
+        "startLine": 196,
+        "startChar": 33,
+        "endLine": 196,
+        "endChar": 72
+      },
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "102fb651_4d2815a6",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
