@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102fb651_4d2815a6",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T07:31:41Z",
+      "side": 1,
+      "message": "nit: We usually use `rv` in the rest of vboot code.",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 204,
+        "endChar": 20
+      },
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c55df18_801ec688",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T07:31:41Z",
+      "side": 1,
+      "message": "%#x",
+      "range": {
+        "startLine": 211,
+        "startChar": 48,
+        "endLine": 211,
+        "endChar": 50
+      },
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c42cf2c_0a99499f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T07:31:41Z",
+      "side": 1,
+      "message": "It would be recovery key in recovery mode (I assume this code path is also run in recovery mode, right?). Therefore it\u0027s more accurate to say \"kernel key\" here.",
+      "range": {
+        "startLine": 217,
+        "startChar": 46,
+        "endLine": 217,
+        "endChar": 59
+      },
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438d59dd_540dec84",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T07:31:41Z",
+      "side": 1,
+      "message": "Check `public_key_length \u003e\u003d sizeof(AvbRSAPublicKeyHeader)` before calling this function.",
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d15089b_3d6185e7",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T07:31:41Z",
+      "side": 1,
+      "message": "Print `public_key_length` and `key_num_bits` values.",
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa1e4ae_10e40b1a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T07:31:41Z",
+      "side": 1,
+      "message": "Print the values.",
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d7d51f_85485ba5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T07:31:41Z",
+      "side": 1,
+      "message": "Print both values.",
+      "revId": "0fc31c8c4b6bc7b4ab50822685ad21f67986f2e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
