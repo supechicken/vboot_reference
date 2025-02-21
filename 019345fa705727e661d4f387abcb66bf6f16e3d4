@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed289ea_96d10f0f",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:55:28Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at how you wrote the depthcharge side of this yet, but if it makes things easier we should just reserve extra space right here so depthcharge can add its own values.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e2f07c_9ee1cd92",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:55:28Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need explicit casts between `void *` and other pointer types in C.",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bf6c27_0ef20245",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:55:28Z",
+      "side": 1,
+      "message": "Isn\u0027t this an OOM, technically?",
+      "range": {
+        "startLine": 106,
+        "startChar": 9,
+        "endLine": 106,
+        "endChar": 37
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f85364_3471ace7",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:55:28Z",
+      "side": 1,
+      "message": "Wait, is this all there is? Don\u0027t you need to determine whether you\u0027re in recovery mode, parse the vendor ramdisk table, determine which ramdisks are actually valid for the current boot, and all that stuff?",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f4b3fd_fc25538a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T00:55:28Z",
+      "side": 1,
+      "message": "Please only add code at the point where it\u0027s needed to avoid confusion during the review. In this case, I think a `goto` would be a cleaner way to solve this?",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
