@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb6bd15_a150d7f8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T06:53:59Z",
+      "side": 1,
+      "message": "Can we name this consistently by either \"data\" or \"ctx\"? Either\n\n1. Rename the struct to `vboot_avb_ctx` in CL:6030615, or\n2. Rename the variable to `avb_data` (`avbdata`) here",
+      "revId": "9657e0456917e19b2186961458e574918f232496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63a95d2_cb41bd60",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T06:53:59Z",
+      "side": 1,
+      "message": "Print an error message here?",
+      "revId": "9657e0456917e19b2186961458e574918f232496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a961ef49_1d2ddc60",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T06:53:59Z",
+      "side": 1,
+      "message": "Missing `vb2ex_disk_handle_t disk_handle`",
+      "revId": "9657e0456917e19b2186961458e574918f232496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
