@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fc7af47_b0c347d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "memcpy",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbfd3c49_d8289a41",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 12
@@ -38,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a5746f7_d48044b4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "I think it means the cmdline buffer size (passed from depthcharge), not the cmdline string len.",
+      "parentUuid": "fbfd3c49_d8289a41",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a21447dc_aa582bcb",
         "filename": "firmware/2lib/include/2load_android_kernel.h",
         "patchSetId": 12
@@ -54,6 +95,46 @@
         "startChar": 20,
         "endLine": 24,
         "endChar": 30
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47b9c33_ed01fa08",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "remove blank line",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a515a2_06343b66",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "```suggestion\nvb2_error_t vboot_android_reserve_buffers(\n\tstruct vb2_kernel_params *params,\n\tGptData *gpt,\n\tconst char *slot_suffix,\n\tvb2ex_disk_handle_t disk_handle);\n```",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 59
       },
       "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -124,6 +205,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "856c075b_2688705b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "+1. We may also drop \"android\" from the name.",
+      "parentUuid": "9540fdec_48ea34d7",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "baf67837_b6d73903",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
@@ -152,6 +257,30 @@
       "writtenOn": "2025-02-21T00:54:03Z",
       "side": 1,
       "message": "nit: this on the other hand could use the `vb2_` prefix. We don\u0027t really use `vboot_`...",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f4065c_c0b2d44e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "I don\u0027t think this function belongs here. Only functions needed by `vboot_avb_ops_new` should exist in this file. Can we remove this from this patch, and add this to 2load_android_kernel.c as a static function in CL:6030619?\n\nAlternatively, we can call `vboot_android_reserve_buffers` at the beginning of `get_preloaded_partition` (when it\u0027s called for the 1st time). `bool is_buffer_reserved` can be added in `vboot_avb_data` to remember if `vboot_android_reserve_buffers` is done or not.",
+      "parentUuid": "753034a3_d5aad2f1",
       "range": {
         "startLine": 134,
         "startChar": 12,
@@ -238,6 +367,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c37c25c5_9882d97e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "Note that libavb checks the returned `*out_num_bytes_preloaded` against the expected size, and treats it as `AVB_SLOT_VERIFY_RESULT_ERROR_IO` when that doesn\u0027t match. Therefore I don\u0027t think returning `RESULT_OK` would make a difference in practice.",
+      "parentUuid": "5251b9d8_e71b908f",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c37db20_6f76e514",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "align",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3796c2e_5ddb4cb2",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
@@ -266,6 +430,23 @@
       "writtenOn": "2025-02-21T00:54:03Z",
       "side": 1,
       "message": "`return get_partition_size(avbctx-\u003egpt, partition_name, NULL, out_size)`\n\n(I think to make things simpler you can use AVB errors inside `get_partition_size()`, same as you\u0027re doing it in the common `vb2_load_android_partition()`.)",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b3137f2_fe01521f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-21T10:15:28Z",
+      "side": 1,
+      "message": "unrelated change",
       "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
