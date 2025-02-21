@@ -81,6 +81,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae88f2c_9a576ed9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T23:55:07Z",
+      "side": 1,
+      "message": "Oh, I see, it\u0027s two patches down the road. It\u0027s kinda hard to review things when you upload patches that are \"wrong\" by themselves and then fix them with later patches. We can keep this the way you did it for this patch series now, but in the future try to split your patches thus that each of them makes sense in itself and can be reasoned about without peeking ahead further up the series (e.g. in this case, you could\u0027ve probably added the BCB support first).",
+      "parentUuid": "20f85364_3471ace7",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5f4b3fd_fc25538a",
