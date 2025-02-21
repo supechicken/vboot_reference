@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b343bf_19ef8cf6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T23:40:53Z",
+      "side": 1,
+      "message": "This makes it sound like we\u0027re trying to boot all Android partitions first, and only if we don\u0027t find any we fall back to trying the ChromeOS partitions. That\u0027s not what we do here, though. We treat both Android and ChromeOS equally and just go by the priority values.",
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9652470f_c7960bf3",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T23:40:53Z",
+      "side": 1,
+      "message": "Let\u0027s keep this message in the common part, and also say whether it is a ChromeOS or Android kernel.",
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
