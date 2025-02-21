@@ -385,6 +385,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49a02a3a_c16202ca",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T23:27:56Z",
+      "side": 1,
+      "message": "Not with the current code, no, but they may change it in the future. The API seems to be defined to allow returning smaller partition data and we should implement that correctly, even if libavb currently doesn\u0027t use that.",
+      "parentUuid": "c37c25c5_9882d97e",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c37db20_6f76e514",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
