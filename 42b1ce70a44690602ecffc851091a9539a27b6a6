@@ -81,6 +81,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d57971b_88724f7e",
+        "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-21T23:22:26Z",
+      "side": 1,
+      "message": "You mean define them in the header? I\u0027m not sure that\u0027s a good idea for larger structs, as that will put them separately into every object file. I mean, the linker would hopefully be smart enough to deduplicate them again, but I think it\u0027s cleaner to write the C code in the way we want it to work in the final binary (single .rodata instance that all code locations refer to).",
+      "parentUuid": "91f8ae29_0dabbdda",
+      "revId": "42b1ce70a44690602ecffc851091a9539a27b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a05497d_2be575f9",
