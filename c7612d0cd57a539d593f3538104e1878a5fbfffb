@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b172b1_1df231bc",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "nit: static functions don\u0027t need the `vb2_` prefix.",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 44
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5ec4c6_3c19fccc",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "bcb",
+      "range": {
+        "startLine": 89,
+        "startChar": 30,
+        "endLine": 89,
+        "endChar": 55
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729422a9_cd1584a2",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "nit: print error code",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5264cb57_febfafa5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "You\u0027re inconsistent here, in `vb2_bcb_command()` you\u0027re mapping unknown cases to normal boot. You should probably do the same here, even though this case cannot really happen anyway. (I think once we implement fastboot mode this function can go away anyway and just become a `if (boot_command \u003d\u003d VB2_BOOT_CMD_NORMAL_BOOT)` in the caller.)",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2de656_bbdd9cee",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "Okay, looking at the way you use these, `vb2_align()` is probably not a good substitute in these cases. So I\u0027d say let\u0027s add an alignment macro, but we might want to call it `VB2_ALIGN_UP()` to make sure we won\u0027t get naming conflicts with anything we might pull in from the calling firmware\u0027s headers (e.g. `\u003cstdint.h\u003e` and things may pull in a surprising amount of extra stuff from coreboot). You could put it in `2common.h`.",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f311a6_9222f581",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "You should also check that the offsets you calculated and sizes in the struct don\u0027t overflow the total size of the buffer (should get passed in from `parts[GPT_ANDROID_VENDOR_BOOT].size`):\n```\nif (vendor_ramdisk_offset \u003e total_size ||\n    vendor_ramdisk_table_offset \u003e total_size ||\n    total_size - vendor_ramdisk_offset \u003c vendor_hdr-\u003evendor_ramdisk_size ||\n    total_size - vendor_ramdisk_table_offset \u003c vendor_hdr-\u003evendor_ramdisk_table_size)\n```",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae31111b_88dac81d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "This isn\u0027t really a pointer? I\u0027d just use `int` for loop variables.",
+      "range": {
+        "startLine": 216,
+        "startChar": 6,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103dbeec_8c08e55d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "Am I missing something or is this variable never declared anywhere? (I assume you checked that this code compiles?)",
+      "range": {
+        "startLine": 217,
+        "startChar": 6,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2eb635a_bb2503ff",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:24:46Z",
+      "side": 1,
+      "message": "Should again do some validity checks on the fragment here:\n```\nif (fragment-\u003eramdisk_offset \u003e vendor_hdr-\u003evendor_ramdisk_size ||\n    vendor_hdr-\u003evendor_ramdisk_size - fragment-\u003eramdisk_offset \u003c fragment-\u003eramdisk_size) {\n  ...error message and `continue`...\n}\n```",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
