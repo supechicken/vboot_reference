@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9cbda2f5_8bb99c98",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:23:48Z",
+      "side": 1,
+      "message": "You should probably only set this at the end after you\u0027re certain that the function didn\u0027t fail.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6cd2744_a7c831b1",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:23:48Z",
+      "side": 1,
+      "message": "Here we should also check that the bootconfig actually fits in the struct:\n```\nsize_t bootconfig_offset \u003d ALIGN_UP(sizeof(...), ...) + ... + ALIGN_UP(vendor_hdr-\u003evendor_ramdisk_table_size, ...);\nif (bootconfig_offset \u003e total_size /* passed in from parts[...].size */ ||\n    total_size - bootconfig_offset \u003c vendor_hdr-\u003ebootconfig_size) {\n  ...print and return error...\n}\nbootconfig \u003d (uint8_t *)vendor_hdr + bootconfig_offset;\n```",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ed289ea_96d10f0f",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 1
@@ -14,6 +48,29 @@
       "writtenOn": "2025-02-21T00:55:28Z",
       "side": 1,
       "message": "I haven\u0027t looked at how you wrote the depthcharge side of this yet, but if it makes things easier we should just reserve extra space right here so depthcharge can add its own values.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87792cd5_1bd932c4",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:23:48Z",
+      "side": 1,
+      "message": "Actually (and I maybe missed that in earlier patches already, please apply it to all new code), for code inside vboot, please always use `vb2_error_t` for return values that only signify success or error, not raw integers.",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 10
+      },
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -43,6 +100,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "560f8a10_62d81f1e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:23:48Z",
+      "side": 1,
+      "message": "There should also be a check that `sizeof(*vendor_hdr)` even fits in the buffer here.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0785891a_2ca9e6f6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:23:48Z",
+      "side": 1,
+      "message": "...and most definitely never mix `vb2_error_t`s and raw integers.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58bf6c27_0ef20245",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 1
@@ -60,6 +151,23 @@
         "endLine": 106,
         "endChar": 37
       },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd848a1_6251c3f6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:23:48Z",
+      "side": 1,
+      "message": "Same here, and then you should check (here or later) whether `parts[...].size - ANDROID_GKI_BOOT_HDR_SIZE \u003c init_hdr-\u003eramdisk_size`.",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +203,23 @@
       "side": 1,
       "message": "Oh, I see, it\u0027s two patches down the road. It\u0027s kinda hard to review things when you upload patches that are \"wrong\" by themselves and then fix them with later patches. We can keep this the way you did it for this patch series now, but in the future try to split your patches thus that each of them makes sense in itself and can be reasoned about without peeking ahead further up the series (e.g. in this case, you could\u0027ve probably added the BCB support first).",
       "parentUuid": "20f85364_3471ace7",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd1b1e9_a2a622e3",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-22T01:23:48Z",
+      "side": 1,
+      "message": "Let\u0027s put a `vendor_hdr-\u003ecmdline[sizeof(vendor_hdr-\u003ecmdline) - 1] \u003d \u0027\\0\u0027;` here, so that we later never need to worry about whether the command line was NUL-terminated.",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
