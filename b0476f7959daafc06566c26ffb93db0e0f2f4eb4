@@ -77,6 +77,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37f109b_4b418bed",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-24T14:16:29Z",
+      "side": 1,
+      "message": "Yu-Ping is right, this is the size of the region with kernel cmdline parameters.",
+      "parentUuid": "3a5746f7_d48044b4",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a21447dc_aa582bcb",
@@ -153,6 +171,24 @@
       "writtenOn": "2025-02-21T00:54:03Z",
       "side": 1,
       "message": "Sorry, I meant that this array goes inside the kparams struct, and shouldn\u0027t just be a freestanding global. That way, depthcharge can get the partition information back out of there right away. Although I do acknowledge that for some cases like the ramdisk or bootconfig you may still need separate entries to communicate them, but we should still avoid having state in globals anyway. You can probably just reuse the same struct (maybe instead of `android_part` just name it something more generic like `vb2_preload_buffer`) and just make separate fields for those, e.g.:\n```\nstruct vb2_kernel_params {\n  ...\n  uint8_t partition_guid[16];\n  uint32_t flags;\n  struct vb2_preload_buffer preloaded[GPT_ANDROID_PRELOADED_NUM];\n  struct vb2_preload_buffer combined_ramdisk;\n  struct vb2_preload_buffer bootconfig;\n  char *vendor_cmdline; /* null-terminated */\n  char *vboot_cmdline; /* null-terminated */\n}\n```",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bccdc1bc_d9d0fadb",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-24T14:16:29Z",
+      "side": 1,
+      "message": "But Depthcharge does not need to know the address of each partition. It just cares about kernel and ramdisk as a whole. Does it really make sense to add variable which is only used in two places in vboot to kparams struct?",
+      "parentUuid": "58f81df7_b99286b1",
       "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -304,6 +340,24 @@
       "writtenOn": "2025-02-21T00:54:03Z",
       "side": 1,
       "message": "This should be doable with a for loop (something similar to my comment from last time, just without the actual loading part).",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0c27a2_ef4d935f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-24T14:16:29Z",
+      "side": 1,
+      "message": "Yes, but I think that in the future we do not want to put VENDOR_BOOT/INIT_BOOT partition directly above the kernel. So we would have kernel, then some address at which we put vendor/init boot and next address at which we put pvmfw. So \u0027for\u0027 loop would be a little akward as almost each partition requires different start address? Or maybe I miss something?",
+      "parentUuid": "4004e9e8_8ba70685",
       "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
