@@ -239,6 +239,24 @@
       "message": "Please only add code at the point where it\u0027s needed to avoid confusion during the review. In this case, I think a `goto` would be a cleaner way to solve this?",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "568f4f78_8852f67d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-24T14:23:18Z",
+      "side": 1,
+      "message": "I am really sorry, but I am confused. Which code do you mean? This chunk was added in different patch.",
+      "parentUuid": "f5f4b3fd_fc25538a",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
