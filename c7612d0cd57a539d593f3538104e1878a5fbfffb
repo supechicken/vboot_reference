@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc67a3a4_141734be",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-02-24T12:08:32Z",
+      "side": 1,
+      "message": "There is comma after `i \u003d 0,`, so `fragment_ptr` is declared here as `uintptr_t`. This is why `i` isn\u0027t `int`. I wanted to declare both variables just in the for loop, `fragment_ptr` needs to be `uintptr_t` and I assumed that this type is also valid for `i` accumulator, since `i` can be any integer type.",
+      "parentUuid": "103dbeec_8c08e55d",
+      "range": {
+        "startLine": 217,
+        "startChar": 6,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2eb635a_bb2503ff",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 14
