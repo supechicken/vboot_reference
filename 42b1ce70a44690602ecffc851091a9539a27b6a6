@@ -99,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a24abd2_a151cd27",
+        "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-24T01:52:37Z",
+      "side": 1,
+      "message": "Ack. Guid isn\u0027t that big, but also isn\u0027t small enough to put in the header I guess.",
+      "parentUuid": "3d57971b_88724f7e",
+      "revId": "42b1ce70a44690602ecffc851091a9539a27b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a05497d_2be575f9",
