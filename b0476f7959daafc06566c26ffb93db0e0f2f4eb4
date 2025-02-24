@@ -437,6 +437,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ede74e1_285d0c0c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-24T02:12:41Z",
+      "side": 1,
+      "message": "Now that the buffers are reserved in advance, I think we also need to store the \"data size\" (partition size) in the `parts` struct for 2 reasons.\n\n1. When the partition is already preloaded, the following `vb2_load_android_partition` call could be skipped. In practice I think this won\u0027t happen, but it\u0027s still good for this function to make sure we only actually load the partition once.\n2. The caller of libavb (i.e. `vb2_load_android`) needs to access some partitions stored in `parts`. Therefore, it should check the availability of the data before using it.",
+      "range": {
+        "startLine": 217,
+        "startChar": 16,
+        "endLine": 217,
+        "endChar": 21
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be64182a_652b8342",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
