@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f456569_66e47c07",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-25T23:47:36Z",
+      "side": 1,
+      "message": "Ohh... yeah, that\u0027s not really great to read. I\u0027d just declare `fragment_ptr` outside of the loop, then `i` can just be `int` and you can still initalize both in the for-statement if you want (you could also just initialize `fragment_ptr` before that, though).",
+      "parentUuid": "dc67a3a4_141734be",
+      "range": {
+        "startLine": 217,
+        "startChar": 6,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2eb635a_bb2503ff",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 14
