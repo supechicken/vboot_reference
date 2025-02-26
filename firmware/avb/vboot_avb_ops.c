@@ -116,6 +116,52 @@ static AvbIOResult load_partition(GptData *gpt, vb2ex_disk_handle_t dh,
 	return AVB_IO_RESULT_OK;
 }
 
+static AvbIOResult write_to_partition(AvbOps *ops,
+				      const char *partition_name,
+				      int64_t offset,
+				      size_t size,
+				      const void *buf)
+{
+	struct vboot_avb_ctx *ctx = user_data(ops);
+	uint64_t part_start, part_size;
+	GptEntry *e;
+
+
+	if (size % ctx->gpt->sector_bytes ||
+	    offset % ctx->gpt->sector_bytes) {
+		VB2_DEBUG("Unaligned writes are not supported\n");
+		return AVB_IO_RESULT_ERROR_IO;
+	}
+
+	offset /= ctx->gpt->sector_bytes;
+	size /= ctx->gpt->sector_bytes;
+
+	e = GptFindEntryByName(ctx->gpt, partition_name, NULL);
+	if (e == NULL) {
+		VB2_DEBUG("Unable to find %s partition\n", partition_name);
+		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
+	}
+	part_size = GptGetEntrySizeLba(e);
+	part_start = e->starting_lba;
+
+	if (offset < 0)
+		offset += part_size;
+
+	if (offset < 0 || offset + size > part_size) {
+		VB2_DEBUG("Write outside partition range");
+		return AVB_IO_RESULT_ERROR_RANGE_OUTSIDE_PARTITION;
+	}
+
+	offset += part_start;
+
+	if (VbExDiskWrite(ctx->disk_handle, offset, size, buf)) {
+		VB2_DEBUG("Unable to complete write to disk\n");
+		return AVB_IO_RESULT_ERROR_IO;
+	}
+
+	return AVB_IO_RESULT_OK;
+}
+
 static AvbIOResult read_from_partition(AvbOps *ops,
 				       const char *partition_name,
 				       int64_t offset_from_partition,
@@ -435,6 +481,7 @@ AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 	avb_ops.user_data = &vboot_avb;
 
 	avb_ops.read_from_partition = read_from_partition;
+	avb_ops.write_to_partition = write_to_partition;
 	avb_ops.get_preloaded_partition = get_preloaded_partition;
 	avb_ops.read_rollback_index = read_rollback_index;
 	avb_ops.read_is_device_unlocked = read_is_device_unlocked;
