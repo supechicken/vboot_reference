@@ -1012,7 +1012,10 @@ ${UTILLIB}: ${UTILLIB_OBJS} ${FWLIB_OBJS} ${TLCL_OBJS}
 	${Q}ar qcT $@ $^
 
 .PHONY: hostlib
-hostlib: ${HOSTLIB} ${HOSTLIB_STATIC}
+ifeq ($(filter-out 0,${STATIC}),)
+hostlib: ${HOSTLIB}
+endif
+hostlib: ${HOSTLIB_STATIC}
 
 # TODO: better way to make .a than duplicating this recipe each time?
 ${HOSTLIB_STATIC}: ${HOSTLIB_OBJS}
