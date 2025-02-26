@@ -551,6 +551,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f28fd143_0b8e5470",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-26T09:04:51Z",
+      "side": 1,
+      "message": "Size is based on whole partition size, if AVB asks for more data it means that something is wrong, I would leave it as it is.",
+      "parentUuid": "49a02a3a_c16202ca",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c37db20_6f76e514",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
