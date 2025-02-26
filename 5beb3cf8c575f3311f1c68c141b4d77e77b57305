@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b95fec_b585efb1",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-26T09:49:35Z",
+      "side": 1,
+      "message": "We should still remove the old ecrw.config file before adding the new one. Maybe move the \"add\" part after line #85 below for consistency?",
+      "revId": "5beb3cf8c575f3311f1c68c141b4d77e77b57305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ceaa2e_b226422d",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-26T09:49:35Z",
+      "side": 1,
+      "message": "Can we check the existence of this before setting `FLAGS_ec_config` and remove the check in line #71 above? I think the script should fail if the user manually specify a non-existing `FLAGS_ec_config`.",
+      "revId": "5beb3cf8c575f3311f1c68c141b4d77e77b57305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
