@@ -195,6 +195,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b70b9536_d50e1cc3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-26T00:13:37Z",
+      "side": 1,
+      "message": "I think we just shouldn\u0027t store state in global variables in any way. kparams doesn\u0027t just need to be the interface to depthcharge, it can also be scratch space for vboot associated with the current boot. (Actually, the same applies to vboot_avb so maybe we should `malloc()` that.)",
+      "parentUuid": "bccdc1bc_d9d0fadb",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
@@ -358,6 +376,64 @@
       "side": 1,
       "message": "Yes, but I think that in the future we do not want to put VENDOR_BOOT/INIT_BOOT partition directly above the kernel. So we would have kernel, then some address at which we put vendor/init boot and next address at which we put pvmfw. So \u0027for\u0027 loop would be a little akward as almost each partition requires different start address? Or maybe I miss something?",
       "parentUuid": "4004e9e8_8ba70685",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98a1069_2175b164",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-26T00:13:37Z",
+      "side": 1,
+      "message": "Hmm... maybe. We can leave it like this for now and see how things look once we added all those special cases. (I still feel the for loop option, even with special cases for target variables, might be cleaner though. You\u0027re duplicating a bunch of lines for each partition here.)",
+      "parentUuid": "dc0c27a2_ef4d935f",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce7f134_68b0ea71",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-26T00:13:37Z",
+      "side": 1,
+      "message": "BTW as long as you\u0027re using `vb2_error_t`, you can simplify constructions like this with `VB2_TRY()`.",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "260b4ea4_471122a7",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-26T00:13:37Z",
+      "side": 1,
+      "message": "Should this be `params-\u003epvmfw_buffer_size`?",
+      "range": {
+        "startLine": 168,
+        "startChar": 34,
+        "endLine": 168,
+        "endChar": 35
+      },
       "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
