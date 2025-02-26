@@ -213,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b099d075_f8b03a58",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-26T02:44:52Z",
+      "side": 1,
+      "message": "\u003e it can also be scratch space\n\nI\u0027m not sure if I agree. The standard scratch space for vboot is `vb2_shared_data`. The `vb2_kernel_params` object is defined in depthcharge, so I\u0027d prefer only adding what depthcharge needs to that struct.\n\nFor this particular case, I don\u0027t like the `parts` global either. However the best solution I can think of is to move that inside the `vboot_avb_data` struct. I\u0027m fine with using `malloc+memset` for that.",
+      "parentUuid": "b70b9536_d50e1cc3",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
