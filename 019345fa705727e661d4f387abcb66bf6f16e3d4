@@ -257,6 +257,24 @@
       "parentUuid": "f5f4b3fd_fc25538a",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d2d07a_6d1cf1dd",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-02-26T00:16:55Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I mean. See https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6030619/12/firmware/2lib/2load_android_kernel.c#119 where I was confused why you\u0027re adding this. After seeing this patch, it becomes obvious, but it\u0027s annoying to always have to \"search ahead\" during review to figure out why the code that seems to not make sense in the current patch gets added, so please try to only add code in the patch where it has a purpose (e.g. this `if` should have only been added in this patch).",
+      "parentUuid": "568f4f78_8852f67d",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
