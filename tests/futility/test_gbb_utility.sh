@@ -3,6 +3,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+# Skip test with USE_FLASHROM=0
+"${FUTILITY}" gbb --flash 2>&1 | grep -vq 'built without flashrom support' || exit 0
+
 me=${0##*/}
 TMP="$me.tmp"
 
