@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5af745e_9d1274d7",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T12:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a2bc98c_3d85a7f1",
+      "revId": "2cbfc044d62e3ccded27881e461d8831beb6eb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41830404_5e58bc83",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-21T04:19:52Z",
       "side": 1,
       "message": "extra blank line",
+      "revId": "2cbfc044d62e3ccded27881e461d8831beb6eb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3872a254_4fd67813",
+        "filename": "tests/cgptlib_test.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T12:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41830404_5e58bc83",
       "revId": "2cbfc044d62e3ccded27881e461d8831beb6eb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
