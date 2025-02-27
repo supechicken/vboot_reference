@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec4bc12_ad1228c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34cf95bb_ec15d484",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e88beb_1deb978c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2474047_95958e5d",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d23030_17f0f819",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-02-27T06:52:10Z",
       "side": 1,
       "message": "align",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98213cac_f3f1b961",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d23030_17f0f819",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54288947_c5c9e8bf",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cbda2f5_8bb99c98",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6cd2744_a7c831b1",
@@ -94,6 +178,24 @@
       "writtenOn": "2025-02-22T01:23:48Z",
       "side": 1,
       "message": "Here we should also check that the bootconfig actually fits in the struct:\n```\nsize_t bootconfig_offset \u003d ALIGN_UP(sizeof(...), ...) + ... + ALIGN_UP(vendor_hdr-\u003evendor_ramdisk_table_size, ...);\nif (bootconfig_offset \u003e total_size /* passed in from parts[...].size */ ||\n    total_size - bootconfig_offset \u003c vendor_hdr-\u003ebootconfig_size) {\n  ...print and return error...\n}\nbootconfig \u003d (uint8_t *)vendor_hdr + bootconfig_offset;\n```",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67bab7f_b5b8848c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6cd2744_a7c831b1",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62659d5f_2cf3fa0d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "I changed printed variable to the one which is uint32_t",
+      "parentUuid": "7445203b_2f58b3b4",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 30
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87792cd5_1bd932c4",
@@ -161,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a993fe_39c7aabc",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87792cd5_1bd932c4",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e2f07c_9ee1cd92",
@@ -174,6 +324,30 @@
       "writtenOn": "2025-02-21T00:55:28Z",
       "side": 1,
       "message": "nit: you don\u0027t need explicit casts between `void *` and other pointer types in C.",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf595d4a_ef4f090a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Code removed",
+      "parentUuid": "d4e2f07c_9ee1cd92",
       "range": {
         "startLine": 97,
         "startChar": 14,
@@ -219,6 +393,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "155ba5a2_9aae0818",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee8ef895_e1329d59",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0785891a_2ca9e6f6",
@@ -236,6 +428,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18968d2_6cee682d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0785891a_2ca9e6f6",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28220735_32f7edd5",
@@ -249,6 +459,24 @@
       "writtenOn": "2025-02-27T06:52:10Z",
       "side": 1,
       "message": "It might be easier to make `save_bootconfig` return `vb2_error_t` so that we can use `VB2_TRY` here.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75d0bd6_693e0a73",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28220735_32f7edd5",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -293,6 +521,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02740443_b45c118a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa53fb8_255b699c",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edd848a1_6251c3f6",
@@ -310,6 +556,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01d5689_66bf7a3b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edd848a1_6251c3f6",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dea8cd9_cc554b6e",
@@ -323,6 +587,30 @@
       "writtenOn": "2025-02-27T06:52:10Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Spellchecker: \"contatenated\" is a possible misspelling of \"concatenated\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"contatenated\" is a possible misspelling of \"concatenated\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 128,
+        "startChar": 41,
+        "endLine": 128,
+        "endChar": 53
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7746e85a_4bf42666",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dea8cd9_cc554b6e",
       "range": {
         "startLine": 128,
         "startChar": 41,
@@ -381,6 +669,24 @@
       "writtenOn": "2025-02-27T06:52:10Z",
       "side": 1,
       "message": "Check destination doesn\u0027t exceed `params-\u003ekernel_buffer_size`.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd94e988_6059ce57",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "I think that `VB2_ASSERT(vendor_ramdisk_end \u003c init_boot_ramdisk)` implies it",
+      "parentUuid": "6ea03cfc_10b76b68",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -451,6 +757,24 @@
       "side": 1,
       "message": "Yeah, that\u0027s what I mean. See https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6030619/12/firmware/2lib/2load_android_kernel.c#119 where I was confused why you\u0027re adding this. After seeing this patch, it becomes obvious, but it\u0027s annoying to always have to \"search ahead\" during review to figure out why the code that seems to not make sense in the current patch gets added, so please try to only add code in the patch where it has a purpose (e.g. this `if` should have only been added in this patch).",
       "parentUuid": "568f4f78_8852f67d",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "189f7405_25e9a595",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d2d07a_6d1cf1dd",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
