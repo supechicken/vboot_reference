@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5a9ed39_d9626a71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "Mention the `USE_AVB` make variable.",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e757302f_7a0acecf",
+        "filename": "Makefile",
+        "patchSetId": 12
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "`ifneq ($(filter-out 0,${USE_AVB}),)` to be consistent with other options.",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a4aaec_15b424a7",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a4cbc4b_12a2ed95",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 12
@@ -14,6 +71,69 @@
       "writtenOn": "2025-02-21T00:17:56Z",
       "side": 1,
       "message": "Unused? (Note that vboot has `vb2_align()` for this, although it works a bit differently.)",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da09425_6e45b522",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "one blank line only",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0244a11_bd51a51d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "vb2_error_t",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dbd9a17_aecf270c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "convention is (mostly) `rv` in vboot code",
+      "range": {
+        "startLine": 62,
+        "startChar": 13,
+        "endLine": 62,
+        "endChar": 16
+      },
       "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -37,6 +157,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b381203c_5087aa6c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "vbmeta",
+      "range": {
+        "startLine": 76,
+        "startChar": 13,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7360573f_2fad9303",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 12
@@ -48,6 +191,29 @@
       "writtenOn": "2025-02-21T00:17:56Z",
       "side": 1,
       "message": "else we should return an error.",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1dddb5_46bf30d3",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "Could use `VB2_TRY` here.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
       "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +265,103 @@
       "writtenOn": "2025-02-21T00:17:56Z",
       "side": 1,
       "message": "I don\u0027t get the point of this construct? Isn\u0027t this doing exactly the same thing (safe for the `verify_data !\u003d NULL` check which I don\u0027t think you need) as would have happened anyway?",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006da0b5_a2d0e5c6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "wrong format",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b4c28a_86195a4b",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "Add a blank line below.",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bccf79_3ab0196a",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "`Loads and verifies`\n\nSome headers in this repo are not consistent, but at least this file itself could be consistent.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e08cf2d_b9e88559",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "wrong param order",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5bd01a7_d6ce299b",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T00:26:52Z",
+      "side": 1,
+      "message": "The comment says this is for \"Errors generated by host library (non-firmware) start here\". AVB is firmware code. Please move these to the correct section (I\u0027d put right below the `VB2_ERROR_UI` sub-section).",
+      "range": {
+        "startLine": 1039,
+        "startChar": 17,
+        "endLine": 1039,
+        "endChar": 36
+      },
       "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
