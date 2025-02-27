@@ -16,6 +16,24 @@
       "message": "nit: to be consistent either add `writeback \u003d false` in line 67 or remove this one, since `writeback` is initialized as `false`.",
       "revId": "0b55ab70f8ea296fa35e0070a032c6a7c98a546b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "839a31d0_833e6607",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1565377
+      },
+      "writtenOn": "2025-02-27T13:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "609e042a_eee50cd5",
+      "revId": "0b55ab70f8ea296fa35e0070a032c6a7c98a546b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
