@@ -274,6 +274,24 @@
       "message": "Add test cases for Android kernels. We\u0027ll need to enable `USE_LIBAVB` for test builds.",
       "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536e5a53_6e6d7e6d",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T14:02:42Z",
+      "side": 1,
+      "message": "There is a follow up bug for that: b/399612484",
+      "parentUuid": "42288e49_66d26141",
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
