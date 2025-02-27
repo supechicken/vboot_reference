@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af95b881_c41b7364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "Based on the content of this CL, I think the point is to \"Drop unused ramdisk fragments based on BCB command\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252914e6_0e0f657e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t do that.",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec596f50_5b4bd476",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "Seems to be the wrong CL.",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04031a3_e52d4155",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "Remove these?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 56
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc2528a_69a1b6c8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "`BCB (boot control block)`",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57b172b1_1df231bc",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 14
@@ -83,6 +198,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2365b6f3_73b47559",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "print the value",
+      "range": {
+        "startLine": 162,
+        "startChar": 23,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a661e6_34a2dc05",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "concatenates",
+      "range": {
+        "startLine": 187,
+        "startChar": 66,
+        "endLine": 187,
+        "endChar": 78
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa2de656_bbdd9cee",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 14
@@ -117,6 +278,24 @@
       "writtenOn": "2025-02-22T01:24:46Z",
       "side": 1,
       "message": "You should also check that the offsets you calculated and sizes in the struct don\u0027t overflow the total size of the buffer (should get passed in from `parts[GPT_ANDROID_VENDOR_BOOT].size`):\n```\nif (vendor_ramdisk_offset \u003e total_size ||\n    vendor_ramdisk_table_offset \u003e total_size ||\n    total_size - vendor_ramdisk_offset \u003c vendor_hdr-\u003evendor_ramdisk_size ||\n    total_size - vendor_ramdisk_table_offset \u003c vendor_hdr-\u003evendor_ramdisk_table_size)\n```",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a083b3_f9e30cbe",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "Also error if `vendor_ramdisk_table_entry_size \u003c sizeof(vendor_ramdisk_table_entry_v4)`",
+      "parentUuid": "72f311a6_9222f581",
       "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -217,6 +396,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7e6eaed_b89c82ad",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "This comment seems trivial. Can we remove it?",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2eb635a_bb2503ff",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 14
@@ -228,6 +424,52 @@
       "writtenOn": "2025-02-22T01:24:46Z",
       "side": 1,
       "message": "Should again do some validity checks on the fragment here:\n```\nif (fragment-\u003eramdisk_offset \u003e vendor_hdr-\u003evendor_ramdisk_size ||\n    vendor_hdr-\u003evendor_ramdisk_size - fragment-\u003eramdisk_offset \u003c fragment-\u003eramdisk_size) {\n  ...error message and `continue`...\n}\n```",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80472ee_935f486d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "depending",
+      "range": {
+        "startLine": 383,
+        "startChar": 31,
+        "endLine": 383,
+        "endChar": 38
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce4543a_c9db3458",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T09:11:42Z",
+      "side": 1,
+      "message": "`remove`",
+      "range": {
+        "startLine": 383,
+        "startChar": 6,
+        "endLine": 383,
+        "endChar": 14
+      },
       "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
