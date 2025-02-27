@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f6bbbc1_77e10133",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T12:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb6bd15_a150d7f8",
+      "revId": "9657e0456917e19b2186961458e574918f232496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e63a95d2_cb41bd60",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-02-21T06:53:59Z",
       "side": 1,
       "message": "Missing `vb2ex_disk_handle_t disk_handle`",
+      "revId": "9657e0456917e19b2186961458e574918f232496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7fb6158_ccee2da8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T12:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a961ef49_1d2ddc60",
       "revId": "9657e0456917e19b2186961458e574918f232496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
