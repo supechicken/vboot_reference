@@ -493,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb3cd35_153ef8a9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T14:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa2de656_bbdd9cee",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72f311a6_9222f581",
@@ -541,6 +565,30 @@
       "writtenOn": "2025-02-22T01:24:46Z",
       "side": 1,
       "message": "This isn\u0027t really a pointer? I\u0027d just use `int` for loop variables.",
+      "range": {
+        "startLine": 216,
+        "startChar": 6,
+        "endLine": 216,
+        "endChar": 15
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a69c10_d64e32c6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T14:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae31111b_88dac81d",
       "range": {
         "startLine": 216,
         "startChar": 6,
