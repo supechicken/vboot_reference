@@ -631,6 +631,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb80f48_74a79737",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:59:41Z",
+      "side": 1,
+      "message": "I dont think VB2_TRY simplifies code. Let me leave it as it is.",
+      "parentUuid": "0ce7f134_68b0ea71",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac4a320e_b2981eb6",
@@ -1117,6 +1135,24 @@
           ]
         }
       ],
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994b5c74_a26735fc",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:59:41Z",
+      "side": 1,
+      "message": "I dont think loop would be doable if we want to have ramdisk load at predefined address",
+      "parentUuid": "ea58bfe7_6cf74e54",
       "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

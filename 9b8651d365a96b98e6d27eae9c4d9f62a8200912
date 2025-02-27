@@ -112,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3151033a_10f3ffe3",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:59:41Z",
+      "side": 1,
+      "message": "I agree, but in my opinion this change is beyond the scope of this particular support. Fill free to file a bug for it.",
+      "parentUuid": "24731713_129fb0d2",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2386d94_531b2695",
@@ -215,6 +233,24 @@
       "side": 1,
       "message": "Partially done, for now we are still preloading into kernel buffer, I will change the addresses of target buffer in next patchset. It would be to big change to do it at once.",
       "parentUuid": "784c24b3_975aadd5",
+      "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a28db85_36c5dab7",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-27T13:59:41Z",
+      "side": 1,
+      "message": "Allocating buffer for ramdisk at specified address will be done after these changes are merged as a part of b/388063011",
+      "parentUuid": "024deb41_ce133e99",
       "revId": "9b8651d365a96b98e6d27eae9c4d9f62a8200912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
