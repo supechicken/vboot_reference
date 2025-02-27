@@ -435,6 +435,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac4a320e_b2981eb6",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T06:51:50Z",
+      "side": 1,
+      "message": "Should check that, for all partitions, the overall size doesn\u0027t exceed `params-\u003ekernel_buffer_size`.",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "333377dd_7b246548",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
