@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc75aefb_ef485959",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T08:30:19Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 462,
+        "startChar": 36,
+        "endLine": 462,
+        "endChar": 37
+      },
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6040b98f_0f47a143",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T08:30:19Z",
+      "side": 1,
+      "message": "`Android`\n\nShould we change this to a TODO comment? Is there a tracking bug?",
+      "range": {
+        "startLine": 638,
+        "startChar": 6,
+        "endLine": 638,
+        "endChar": 17
+      },
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9652470f_c7960bf3",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 1
@@ -31,6 +77,69 @@
       "writtenOn": "2025-02-21T23:40:53Z",
       "side": 1,
       "message": "Let\u0027s keep this message in the common part, and also say whether it is a ChromeOS or Android kernel.",
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ed585b_f045447c",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T08:30:19Z",
+      "side": 1,
+      "message": "Add `{}`",
+      "range": {
+        "startLine": 669,
+        "startChar": 7,
+        "endLine": 669,
+        "endChar": 8
+      },
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a569c352_66241488",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T08:30:19Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42288e49_66d26141",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-02-27T08:30:19Z",
+      "side": 1,
+      "message": "Add test cases for Android kernels. We\u0027ll need to enable `USE_LIBAVB` for test builds.",
       "revId": "d492a217e0cc20f9d0d8e9c839b09d7753989bcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
