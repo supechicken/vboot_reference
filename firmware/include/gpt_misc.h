@@ -13,6 +13,8 @@
 extern "C" {
 #endif  /* __cplusplus */
 
+#define GUID_STRLEN 37
+
 enum {
 	GPT_SUCCESS = 0,
 	GPT_ERROR_NO_VALID_KERNEL,
@@ -214,6 +216,7 @@ void SetEntryPriority(GptEntry *e, int priority);
 void SetEntryTries(GptEntry *e, int tries);
 void SetEntryErrorCounter(GptEntry *e, int error_counter);
 
+void GptGuidToStr(const Guid *guid, char *str, unsigned int buflen, bool lowercase);
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */
