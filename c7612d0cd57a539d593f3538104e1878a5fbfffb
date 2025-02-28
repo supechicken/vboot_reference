@@ -423,6 +423,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07ab10f_8f7fa420",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T11:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2365b6f3_73b47559",
+      "range": {
+        "startLine": 162,
+        "startChar": 23,
+        "endLine": 162,
+        "endChar": 30
+      },
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1a661e6_34a2dc05",
@@ -548,6 +572,24 @@
       "side": 1,
       "message": "Also error if `vendor_ramdisk_table_entry_size \u003c sizeof(vendor_ramdisk_table_entry_v4)`",
       "parentUuid": "72f311a6_9222f581",
+      "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80db01ef_92232526",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T11:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a083b3_f9e30cbe",
       "revId": "c7612d0cd57a539d593f3538104e1878a5fbfffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
