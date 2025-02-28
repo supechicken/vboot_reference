@@ -498,6 +498,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "964f4bda_434113f5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T10:02:37Z",
+      "side": 1,
+      "message": "Missing default case triggers errors:\n```\nfirmware/2lib/2load_android_kernel.c:393:17: error: enumeration value \u0027AVB_SLOT_VERIFY_RESULT_OK\u0027 not handled in switch [-Werror\u003dswitch]\n  393 |                 switch (result) {\n      |                 ^~~~~~\nfirmware/2lib/2load_android_kernel.c:393:17: error: enumeration value \u0027AVB_SLOT_VERIFY_RESULT_ERROR_OOM\u0027 not handled in switch [-Werror\u003dswitch]\nfirmware/2lib/2load_android_kernel.c:393:17: error: enumeration value \u0027AVB_SLOT_VERIFY_RESULT_ERROR_IO\u0027 not handled in switch [-Werror\u003dswitch]\nfirmware/2lib/2load_android_kernel.c:393:17: error: enumeration value \u0027AVB_SLOT_VERIFY_RESULT_ERROR_INVALID_METADATA\u0027 not handled in switch [-Werror\u003dswitch]\nfirmware/2lib/2load_android_kernel.c:393:17: error: enumeration value \u0027AVB_SLOT_VERIFY_RESULT_ERROR_UNSUPPORTED_VERSION\u0027 not handled in switch [-Werror\u003dswitch]\nfirmware/2lib/2load_android_kernel.c:393:17: error: enumeration value \u0027AVB_SLOT_VERIFY_RESULT_ERROR_INVALID_ARGUMENT\u0027 not handled in switch [-Werror\u003dswitch]\n```",
+      "parentUuid": "271f9c23_753186c2",
+      "revId": "954dcbcc38b9ad7e987ff68c35f2d5b4d5617f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca872b27_b6f43685",
