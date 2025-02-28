@@ -217,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce9b28ed_42a5afbb",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T11:58:13Z",
+      "side": 1,
+      "message": "It is not the final destination of bootconfig, depthcharge will copy it to the end of ramdisk and add its own values. It make no sense to expand this malloc",
+      "parentUuid": "0ed289ea_96d10f0f",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7445203b_2f58b3b4",
@@ -504,6 +522,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8773fde3_6bd9fbaa",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T11:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bf6c27_0ef20245",
+      "range": {
+        "startLine": 106,
+        "startChar": 9,
+        "endLine": 106,
+        "endChar": 37
+      },
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa53fb8_255b699c",
@@ -704,6 +746,24 @@
       "writtenOn": "2025-02-22T01:23:48Z",
       "side": 1,
       "message": "Let\u0027s put a `vendor_hdr-\u003ecmdline[sizeof(vendor_hdr-\u003ecmdline) - 1] \u003d \u0027\\0\u0027;` here, so that we later never need to worry about whether the command line was NUL-terminated.",
+      "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20eea1a7_46a78e1c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T11:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd1b1e9_a2a622e3",
       "revId": "019345fa705727e661d4f387abcb66bf6f16e3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
