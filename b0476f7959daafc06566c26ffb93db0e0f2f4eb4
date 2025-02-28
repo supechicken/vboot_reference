@@ -707,6 +707,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7962c1_c533e4a9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T12:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333377dd_7b246548",
+      "range": {
+        "startLine": 145,
+        "startChar": 37,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "260b4ea4_471122a7",
@@ -903,6 +927,24 @@
       "side": 1,
       "message": "Size is based on whole partition size, if AVB asks for more data it means that something is wrong, I would leave it as it is.",
       "parentUuid": "49a02a3a_c16202ca",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44865cd5_b6826fe4",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-02-28T12:00:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f28fd143_0b8e5470",
       "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
