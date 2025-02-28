@@ -16,6 +16,7 @@ TMPD="${TEST_DIR}/${ME}"
 mkdir -p "${TMPD}"
 TMP="${TMPD}/image.bin"
 
+export FUTILITY # for swap_ec_rw
 SWAP="${SRCDIR:?}/scripts/image_signing/swap_ec_rw"
 DATA="${SRCDIR:?}/tests/swap_ec_rw_data"
 

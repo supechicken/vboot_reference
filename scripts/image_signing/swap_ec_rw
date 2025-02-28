@@ -46,7 +46,7 @@ swap_ecrw() {
   local aprw_ver
   temp_dir=$(mktemp -d)
   ecrw_file="${temp_dir}/ecrw"
-  futility dump_fmap -x "${ec_file}" "RW_FW:${ecrw_file}" >/dev/null
+  ${FUTILITY} dump_fmap -x "${ec_file}" "RW_FW:${ecrw_file}" >/dev/null
   info "EC RW extracted to ${ecrw_file}"
 
   ecrw_hash_file="${temp_dir}/ecrw.hash"
@@ -54,7 +54,7 @@ swap_ecrw() {
   info "EC RW hash saved to ${ecrw_hash_file}"
 
   ecrw_ver_file="${temp_dir}/ecrw.version"
-  futility dump_fmap -x "${ec_file}" "RW_FWID:${ecrw_ver_file}" >/dev/null
+  ${FUTILITY} dump_fmap -x "${ec_file}" "RW_FWID:${ecrw_ver_file}" >/dev/null
 
   for region in "${FMAP_REGIONS[@]}"
   do
@@ -90,13 +90,13 @@ swap_ecrw() {
   done
 
   # 'futility sign' will call 'cbfstool truncate' if needed
-  futility sign "${ap_file}" --keyset "${keyset}"
+  ${FUTILITY} sign "${ap_file}" --keyset "${keyset}"
 
-  ecrw_ver=$(futility update --manifest -e "${ec_file}" \
+  ecrw_ver=$(${FUTILITY} update --manifest -e "${ec_file}" \
     | jq -r '.default.ec.versions.rw')
-  apro_ver=$(futility update --manifest -i "${ap_file}" \
+  apro_ver=$(${FUTILITY} update --manifest -i "${ap_file}" \
     | jq -r '.default.host.versions.ro')
-  aprw_ver=$(futility update --manifest -i "${ap_file}" \
+  aprw_ver=$(${FUTILITY} update --manifest -i "${ap_file}" \
     | jq -r '.default.host.versions.rw')
   info "${CBFS_ECRW_NAME} (${ecrw_ver}) swapped in ${ap_file} (RO:${apro_ver}, RW:${aprw_ver})"
   info "Done"
@@ -114,6 +114,10 @@ main() {
   if [[ -z "${FLAGS_ec_config}" ]] && [[ -f "$(dirname ${FLAGS_ec})/ec.config" ]]; then
         FLAGS_ec_config="$(dirname ${FLAGS_ec})/ec.config"
         info "Using ec.config from ${FLAGS_ec_config}"
+  fi
+
+  if "${FUTILITY}" help update 2>&1 | grep -q 'built without flashrom support'; then
+    die 'futility built with flashrom support required.'
   fi
 
   swap_ecrw "${FLAGS_image}" "${FLAGS_ec}" "${FLAGS_ec_config}"
