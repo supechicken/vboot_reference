@@ -583,6 +583,91 @@ sign_gsc_firmware() {
   info "Image successfully signed to ${output_file}"
 }
 
+# Given a file containing an ECDSA signature in ASN.1 wrapping extract the R
+# and S components, change their endianness and concatenated them together in
+# a single 64 byte blob.
+ecdsa_sig_to_raw() {
+  if [[ $# -ne 2 ]]; then
+    die "Usage: ecdsa_sig_to_raw <ASN.1 DER ECDSA sig> <RAW ECDSA SIG>"
+  fi
+
+  local asn1_sig
+  local raw_sig
+
+  asn1_sig="$1"
+  raw_sig="$2"
+
+  # When parsing the signature, the two components are printed as 32 byte hex
+  # numbers in the following format:
+  #    2:d=1  hl=2 l=  33 prim: INTEGER :<hex ascii value>
+  # let's pick them up, reverse the values and save in a single blob
+  for line in $(openssl asn1parse -inform der -in "${asn1_sig}" |
+               awk -F: '/INTEGER/ {print $4}'); do
+    echo "${line}" |
+      xxd -r -p |
+      /usr/bin/od -An -tx1 -w32 |
+      tr ' ' '\n' |
+      tac |
+      xargs |
+      sed 's/ //g'
+  done | xxd -r -p > "${raw_sig}"
+}
+
+c4a_sign_firmware() {
+  if [[ $# -ne 6 ]]; then
+    die "Usage: `
+        `c4a_sign_firmware <rom_ext_{a,b}> <pao_{ecdsa,spx}> <rw_bin> <ouput>"
+  fi
+  local rom_ext_a="$1"
+  local rom_ext_b="$2"
+  local pao_ecdsa="$3"
+  local pao_spx="$4"
+  local rw_bin="$5"
+  local output="$6"
+
+  local ecdsa_sig="./ecdsa_sig"
+  local ecdsa_sig_raw="./raw_ecdsa_sig"
+  local full_image_size_kb=1024
+  local rw_kb_offset=64
+  local signed_rw_bin="./signed_rw_bin"
+  local spx_sig="./spx_sig"
+  local spx_sig_offset
+  local ssh_socket="./socket"
+  local x
+
+  ssh -o "ControlMaster=yes" \
+      -o "ControlPersist=2m" \
+      -S "${ssh_socket}" hsm pao < "${pao_ecdsa}" > "${ecdsa_sig}"
+  ssh -S "${ssh_socket}" hsm pao < "${pao_spx}" > "${spx_sig}"
+  ssh -O stop -S "${ssh_socket}" hsm
+
+  ecdsa_sig_to_raw "${ecdsa_sig}" "${ecdsa_sig_raw}"
+
+  cp "${rw_bin}" "${signed_rw_bin}"
+  # ECDSA signature is at the very bottom of the binary
+  dd if="${ecdsa_sig_raw}" of="${signed_rw_bin}" conv=notrunc status=none
+
+  # SPX signature is at the very top of the binary
+  spx_sig_offset=$(( "$(stat -c '%s' "${signed_rw_bin}")" - "$(stat -c '%s' "${spx_sig}")" ))
+  dd if="${spx_sig}" of="${signed_rw_bin}" seek="${spx_sig_offset}" bs=1  conv=notrunc status=none
+
+  # Now build a full OT image
+  tr '\000' '\377' < /dev/zero | dd of="${output}.tmp" \
+                                        bs=1K count="${full_image_size_kb}"
+  for x in "${rom_ext_a}:0" "${rom_ext_b}:$(( full_image_size_kb/2 ))" \
+                                "${signed_rw_bin}:${rw_kb_offset}" \
+                                "${signed_rw_bin}:$(( full_image_size_kb/2 + rw_kb_offset ))"
+  do
+    local tuple
+
+   # shellcheck disable=SC2206
+    IFS=: tuple=( "${x}" )
+    dd if="${tuple[0]}" of="${output}.tmp" bs=1k seek="${tuple[1]}" \
+       conv=notrunc status=none
+  done
+  mv "${output}.tmp" "${output}"
+}
+
 # Sign the directory holding GSC firmware.
 sign_gsc_firmware_dir() {
   if [[ $# -ne 3 ]]; then
@@ -600,6 +685,14 @@ sign_gsc_firmware_dir() {
   local key_file
   local base_name
 
+   # shellcheck disable=SC2012
+  if [[  $(ls "${input}/pao".{ecdsa,spx} | wc -l) -eq 2 ]]; then
+    # This is an Opentitan signing with C4a HSM
+    c4a_sign_firmware "${input}/rom_ext.A" "${input}/rom_ext.B" \
+                      "${input}/pao.ecdsa" "${input}/pao.spx" \
+                      "${input}/rw.bin" "${output}"
+    return
+  fi
   manifest_source="${input}/prod.json"
   manifest_file="${manifest_source}.updated"
 
