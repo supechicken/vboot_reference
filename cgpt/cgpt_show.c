@@ -90,7 +90,7 @@ static void HeaderDetails(GptHeader *header, GptEntry *entries,
 
 	{ /* For disk guid */
 		char buf[GUID_STRLEN];
-		GuidToStr(&header->disk_uuid, buf, GUID_STRLEN);
+		GptGuidToStr(&header->disk_uuid, buf, GUID_STRLEN, GPT_GUID_UPPERCASE);
 		printf("%sDisk UUID: %s\n", indent, buf);
 	}
 
@@ -123,10 +123,10 @@ void EntryDetails(GptEntry *entry, uint32_t index, int raw)
 	if (!raw && CGPT_OK == ResolveType(&entry->type, type)) {
 		printf(PARTITION_MORE, "Type: ", type);
 	} else {
-		GuidToStr(&entry->type, type, GUID_STRLEN);
+		GptGuidToStr(&entry->type, type, GUID_STRLEN, GPT_GUID_UPPERCASE);
 		printf(PARTITION_MORE, "Type: ", type);
 	}
-	GuidToStr(&entry->unique, unique, GUID_STRLEN);
+	GptGuidToStr(&entry->unique, unique, GUID_STRLEN, GPT_GUID_UPPERCASE);
 	printf(PARTITION_MORE, "UUID: ", unique);
 
 	clen = 0;
@@ -230,11 +230,11 @@ static int GptShow(struct drive *drive, CgptShowParams *params)
 				break;
 			}
 			case 't':
-				GuidToStr(&entry->type, buf, sizeof(buf));
+				GptGuidToStr(&entry->type, buf, sizeof(buf), GPT_GUID_UPPERCASE);
 				printf("%s\n", buf);
 				break;
 			case 'u':
-				GuidToStr(&entry->unique, buf, sizeof(buf));
+				GptGuidToStr(&entry->unique, buf, sizeof(buf), GPT_GUID_UPPERCASE);
 				printf("%s\n", buf);
 				break;
 			case 'l':
@@ -287,7 +287,7 @@ static int GptShow(struct drive *drive, CgptShowParams *params)
 			if (!params->numeric &&
 			    CGPT_OK == ResolveType(&entry->type, type)) {
 			} else {
-				GuidToStr(&entry->type, type, GUID_STRLEN);
+				GptGuidToStr(&entry->type, type, GUID_STRLEN, GPT_GUID_UPPERCASE);
 			}
 			printf(PARTITION_FMT, (uint64_t)entry->starting_lba,
 			       (uint64_t)(entry->ending_lba -
