@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb541b3_96136c85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-02-28T03:16:50Z",
+      "side": 1,
+      "message": "A proof of concept of plugging signatures into the image and compiling a full OT image without the use of opentitantool",
+      "revId": "75c988ce76af0b859ebb0d8c44dd39a69ff80309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae09805_5ef43578",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-02-28T03:16:50Z",
+      "side": 1,
+      "message": "ssh obvioiusly not going to work on the signer, just a placeholder to verify the rest of the functionality",
+      "range": {
+        "startLine": 638,
+        "startChar": 1,
+        "endLine": 642,
+        "endChar": 36
+      },
+      "revId": "75c988ce76af0b859ebb0d8c44dd39a69ff80309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1d9d73_1d9d8d2a",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-02-28T03:16:50Z",
+      "side": 1,
+      "message": "preprocessing ECDSA and pasting both signatures into the image withouth the use of opentitantool\n\nOut of band verification using opentitantool succeeds for both signatures.",
+      "range": {
+        "startLine": 644,
+        "startChar": 2,
+        "endLine": 653,
+        "endChar": 0
+      },
+      "revId": "75c988ce76af0b859ebb0d8c44dd39a69ff80309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9b5ec3_b6d9c2ca",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-02-28T03:16:50Z",
+      "side": 1,
+      "message": "pasting the pieces into their respective locatoin in the output blob without the use of opentitantool",
+      "range": {
+        "startLine": 655,
+        "startChar": 1,
+        "endLine": 667,
+        "endChar": 6
+      },
+      "revId": "75c988ce76af0b859ebb0d8c44dd39a69ff80309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
