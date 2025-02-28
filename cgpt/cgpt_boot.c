@@ -38,8 +38,16 @@ int CgptGetBootPartitionNumber(CgptBootParams *params) {
     goto done;
   }
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
   char buf[GUID_STRLEN];
   GuidToStr(&drive.pmbr.boot_guid, buf, sizeof(buf));
+||||||| BASE
+	char buf[GUID_STRLEN];
+	GuidToStr(&drive.pmbr.boot_guid, buf, sizeof(buf));
+=======
+	char buf[GUID_STRLEN];
+	GptGuidToStr(&drive.pmbr.boot_guid, buf, sizeof(buf), GPT_GUID_UPPERCASE);
+>>>>>>> CHANGE (015ee3 cgpt: Move GuidToStr to firmware code)
 
   int numEntries = GetNumberOfEntries(&drive);
   int i;
@@ -136,8 +144,18 @@ int CgptBoot(CgptBootParams *params) {
       goto done;
     }
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
     close(fd);
   }
+||||||| BASE
+	char buf[GUID_STRLEN];
+	GuidToStr(&drive.pmbr.boot_guid, buf, sizeof(buf));
+	printf("%s\n", buf);
+=======
+	char buf[GUID_STRLEN];
+	GptGuidToStr(&drive.pmbr.boot_guid, buf, sizeof(buf), GPT_GUID_UPPERCASE);
+	printf("%s\n", buf);
+>>>>>>> CHANGE (015ee3 cgpt: Move GuidToStr to firmware code)
 
   char buf[GUID_STRLEN];
   GuidToStr(&drive.pmbr.boot_guid, buf, sizeof(buf));

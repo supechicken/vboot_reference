@@ -81,11 +81,25 @@ static void HeaderDetails(GptHeader *header, GptEntry *entries,
   printf("%sFirst LBA: %lld\n", indent, (long long)header->first_usable_lba);
   printf("%sLast LBA: %lld\n", indent, (long long)header->last_usable_lba);
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
   {  /* For disk guid */
     char buf[GUID_STRLEN];
     GuidToStr(&header->disk_uuid, buf, GUID_STRLEN);
     printf("%sDisk UUID: %s\n", indent, buf);
   }
+||||||| BASE
+	{ /* For disk guid */
+		char buf[GUID_STRLEN];
+		GuidToStr(&header->disk_uuid, buf, GUID_STRLEN);
+		printf("%sDisk UUID: %s\n", indent, buf);
+	}
+=======
+	{ /* For disk guid */
+		char buf[GUID_STRLEN];
+		GptGuidToStr(&header->disk_uuid, buf, GUID_STRLEN, GPT_GUID_UPPERCASE);
+		printf("%sDisk UUID: %s\n", indent, buf);
+	}
+>>>>>>> CHANGE (015ee3 cgpt: Move GuidToStr to firmware code)
 
   printf("%sEntries LBA: %lld\n", indent, (long long)header->entries_lba);
   printf("%sNumber of entries: %d\n", indent, header->number_of_entries);
@@ -112,6 +126,7 @@ void EntryDetails(GptEntry *entry, uint32_t index, int raw) {
          (uint64_t)(entry->ending_lba - entry->starting_lba + 1),
          index+1, contents);
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
   if (!raw && CGPT_OK == ResolveType(&entry->type, type)) {
     printf(PARTITION_MORE, "Type: ", type);
   } else {
@@ -120,6 +135,25 @@ void EntryDetails(GptEntry *entry, uint32_t index, int raw) {
   }
   GuidToStr(&entry->unique, unique, GUID_STRLEN);
   printf(PARTITION_MORE, "UUID: ", unique);
+||||||| BASE
+	if (!raw && CGPT_OK == ResolveType(&entry->type, type)) {
+		printf(PARTITION_MORE, "Type: ", type);
+	} else {
+		GuidToStr(&entry->type, type, GUID_STRLEN);
+		printf(PARTITION_MORE, "Type: ", type);
+	}
+	GuidToStr(&entry->unique, unique, GUID_STRLEN);
+	printf(PARTITION_MORE, "UUID: ", unique);
+=======
+	if (!raw && CGPT_OK == ResolveType(&entry->type, type)) {
+		printf(PARTITION_MORE, "Type: ", type);
+	} else {
+		GptGuidToStr(&entry->type, type, GUID_STRLEN, GPT_GUID_UPPERCASE);
+		printf(PARTITION_MORE, "Type: ", type);
+	}
+	GptGuidToStr(&entry->unique, unique, GUID_STRLEN, GPT_GUID_UPPERCASE);
+	printf(PARTITION_MORE, "UUID: ", unique);
+>>>>>>> CHANGE (015ee3 cgpt: Move GuidToStr to firmware code)
 
   clen = 0;
   if (!raw) {
@@ -197,6 +231,7 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
     GptEntry *entry = GetEntry(&drive->gpt, ANY_VALID, index);
     char buf[256];                      // scratch buffer for string conversion
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
     if (params->single_item) {
       switch(params->single_item) {
       case 'b':
@@ -246,6 +281,111 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
       printf(TITLE_FMT, "start", "size", "part", "contents");
       EntryDetails(entry, index, params->numeric);
     }
+||||||| BASE
+		if (params->single_item) {
+			switch (params->single_item) {
+			case 'b':
+				printf("%" PRId64 "\n", entry->starting_lba);
+				break;
+			case 's': {
+				uint64_t size = 0;
+				// If these aren't actually defined, don't show anything
+				if (entry->ending_lba || entry->starting_lba)
+					size = entry->ending_lba - entry->starting_lba + 1;
+				printf("%" PRId64 "\n", size);
+				break;
+			}
+			case 't':
+				GuidToStr(&entry->type, buf, sizeof(buf));
+				printf("%s\n", buf);
+				break;
+			case 'u':
+				GuidToStr(&entry->unique, buf, sizeof(buf));
+				printf("%s\n", buf);
+				break;
+			case 'l':
+				UTF16ToUTF8(entry->name,
+					    sizeof(entry->name) / sizeof(entry->name[0]),
+					    (uint8_t *)buf, sizeof(buf));
+				printf("%s\n", buf);
+				break;
+			case 'S':
+				printf("%d\n", GetSuccessful(drive, ANY_VALID, index));
+				break;
+			case 'T':
+				printf("%d\n", GetTries(drive, ANY_VALID, index));
+				break;
+			case 'P':
+				printf("%d\n", GetPriority(drive, ANY_VALID, index));
+				break;
+			case 'R':
+				printf("%d\n", GetRequired(drive, ANY_VALID, index));
+				break;
+			case 'B':
+				printf("%d\n", GetLegacyBoot(drive, ANY_VALID, index));
+				break;
+			case 'A':
+				printf("%#x\n", entry->attrs.fields.gpt_att);
+				break;
+			}
+		} else {
+			printf(TITLE_FMT, "start", "size", "part", "contents");
+			EntryDetails(entry, index, params->numeric);
+		}
+=======
+		if (params->single_item) {
+			switch (params->single_item) {
+			case 'b':
+				printf("%" PRId64 "\n", entry->starting_lba);
+				break;
+			case 's': {
+				uint64_t size = 0;
+				// If these aren't actually defined, don't show anything
+				if (entry->ending_lba || entry->starting_lba)
+					size = entry->ending_lba - entry->starting_lba + 1;
+				printf("%" PRId64 "\n", size);
+				break;
+			}
+			case 't':
+				GptGuidToStr(&entry->type, buf, sizeof(buf),
+					     GPT_GUID_UPPERCASE);
+				printf("%s\n", buf);
+				break;
+			case 'u':
+				GptGuidToStr(&entry->unique, buf, sizeof(buf),
+					     GPT_GUID_UPPERCASE);
+				printf("%s\n", buf);
+				break;
+			case 'l':
+				UTF16ToUTF8(entry->name,
+					    sizeof(entry->name) / sizeof(entry->name[0]),
+					    (uint8_t *)buf, sizeof(buf));
+				printf("%s\n", buf);
+				break;
+			case 'S':
+				printf("%d\n", GetSuccessful(drive, ANY_VALID, index));
+				break;
+			case 'T':
+				printf("%d\n", GetTries(drive, ANY_VALID, index));
+				break;
+			case 'P':
+				printf("%d\n", GetPriority(drive, ANY_VALID, index));
+				break;
+			case 'R':
+				printf("%d\n", GetRequired(drive, ANY_VALID, index));
+				break;
+			case 'B':
+				printf("%d\n", GetLegacyBoot(drive, ANY_VALID, index));
+				break;
+			case 'A':
+				printf("%#x\n", entry->attrs.fields.gpt_att);
+				break;
+			}
+		} else {
+			printf(TITLE_FMT, "start", "size", "part", "contents");
+			EntryDetails(entry, index, params->numeric);
+		}
+>>>>>>> CHANGE (015ee3 cgpt: Move GuidToStr to firmware code)
 
   } else if (params->quick) {                   // show all partitions, quickly
     uint32_t i;
@@ -258,6 +398,7 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
       if (GuidIsZero(&entry->type))
         continue;
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
       if (!params->numeric && CGPT_OK == ResolveType(&entry->type, type)) {
       } else {
         GuidToStr(&entry->type, type, GUID_STRLEN);
@@ -268,6 +409,30 @@ static int GptShow(struct drive *drive, CgptShowParams *params) {
     }
   } else {                              // show all partitions
     GptEntry *entries;
+||||||| BASE
+			if (!params->numeric && CGPT_OK == ResolveType(&entry->type, type)) {
+			} else {
+				GuidToStr(&entry->type, type, GUID_STRLEN);
+			}
+			printf(PARTITION_FMT, (uint64_t)entry->starting_lba,
+			       (uint64_t)(entry->ending_lba - entry->starting_lba + 1), i + 1,
+			       type);
+		}
+	} else { // show all partitions
+		GptEntry *entries;
+=======
+			if (!params->numeric && CGPT_OK == ResolveType(&entry->type, type)) {
+			} else {
+				GptGuidToStr(&entry->type, type, GUID_STRLEN,
+					     GPT_GUID_UPPERCASE);
+			}
+			printf(PARTITION_FMT, (uint64_t)entry->starting_lba,
+			       (uint64_t)(entry->ending_lba - entry->starting_lba + 1), i + 1,
+			       type);
+		}
+	} else { // show all partitions
+		GptEntry *entries;
+>>>>>>> CHANGE (015ee3 cgpt: Move GuidToStr to firmware code)
 
     if (params->debug || params->verbose) {
       printf("Drive details:\n");

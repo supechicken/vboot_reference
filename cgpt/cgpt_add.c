@@ -14,6 +14,7 @@
 static void PrintCgptAddParams(const CgptAddParams *params) {
   char tmp[64];
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
   fprintf(stderr, "-i %d ", params->partition);
   if (params->label)
     fprintf(stderr, "-l %s ", params->label);
@@ -41,6 +42,67 @@ static void PrintCgptAddParams(const CgptAddParams *params) {
     fprintf(stderr, "-B %d ", params->legacy_boot);
   if (params->set_raw)
     fprintf(stderr, "-A %#x ", params->raw_value);
+||||||| BASE
+	fprintf(stderr, "-i %d ", params->partition);
+	if (params->label)
+		fprintf(stderr, "-l %s ", params->label);
+	if (params->set_begin)
+		fprintf(stderr, "-b %llu ", (unsigned long long)params->begin);
+	if (params->set_size)
+		fprintf(stderr, "-s %llu ", (unsigned long long)params->size);
+	if (params->set_type) {
+		GuidToStr(&params->type_guid, tmp, sizeof(tmp));
+		fprintf(stderr, "-t %s ", tmp);
+	}
+	if (params->set_unique) {
+		GuidToStr(&params->unique_guid, tmp, sizeof(tmp));
+		fprintf(stderr, "-u %s ", tmp);
+	}
+	if (params->set_error_counter)
+		fprintf(stderr, "-E %d ", params->error_counter);
+	if (params->set_successful)
+		fprintf(stderr, "-S %d ", params->successful);
+	if (params->set_tries)
+		fprintf(stderr, "-T %d ", params->tries);
+	if (params->set_priority)
+		fprintf(stderr, "-P %d ", params->priority);
+	if (params->set_required)
+		fprintf(stderr, "-R %d ", params->required);
+	if (params->set_legacy_boot)
+		fprintf(stderr, "-B %d ", params->legacy_boot);
+	if (params->set_raw)
+		fprintf(stderr, "-A %#x ", params->raw_value);
+=======
+	fprintf(stderr, "-i %d ", params->partition);
+	if (params->label)
+		fprintf(stderr, "-l %s ", params->label);
+	if (params->set_begin)
+		fprintf(stderr, "-b %llu ", (unsigned long long)params->begin);
+	if (params->set_size)
+		fprintf(stderr, "-s %llu ", (unsigned long long)params->size);
+	if (params->set_type) {
+		GptGuidToStr(&params->type_guid, tmp, sizeof(tmp), GPT_GUID_UPPERCASE);
+		fprintf(stderr, "-t %s ", tmp);
+	}
+	if (params->set_unique) {
+		GptGuidToStr(&params->unique_guid, tmp, sizeof(tmp), GPT_GUID_UPPERCASE);
+		fprintf(stderr, "-u %s ", tmp);
+	}
+	if (params->set_error_counter)
+		fprintf(stderr, "-E %d ", params->error_counter);
+	if (params->set_successful)
+		fprintf(stderr, "-S %d ", params->successful);
+	if (params->set_tries)
+		fprintf(stderr, "-T %d ", params->tries);
+	if (params->set_priority)
+		fprintf(stderr, "-P %d ", params->priority);
+	if (params->set_required)
+		fprintf(stderr, "-R %d ", params->required);
+	if (params->set_legacy_boot)
+		fprintf(stderr, "-B %d ", params->legacy_boot);
+	if (params->set_raw)
+		fprintf(stderr, "-A %#x ", params->raw_value);
+>>>>>>> CHANGE (015ee3 cgpt: Move GuidToStr to firmware code)
 
   fprintf(stderr, "\n");
 }
