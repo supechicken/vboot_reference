@@ -9,6 +9,9 @@
 # Load common constants and variables.
 . "$(dirname "$0")/common.sh"
 
+# Skip test with USE_FLASHROM=0
+"${FUTILITY}" help update 2>&1 | grep -vq 'built without flashrom support' || exit 0
+
 set -e
 
 ME=${0##*/}
