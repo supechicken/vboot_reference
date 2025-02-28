@@ -16,6 +16,13 @@
 
 #ifdef USE_FLASHROM
 
+#ifdef USE_FLASHROM_UPSTREAM
+#define FLASH_INFO_HELP
+#else
+#define FLASH_INFO_HELP                                                        \
+	"-i, --flash-info         \tGet flash info.\n"
+#endif /* USE_FLASHROM_UPSTREAM */
+
 static int get_ro_range(struct updater_config *cfg,
 			uint32_t *start, uint32_t *len)
 {
@@ -62,6 +69,7 @@ static int print_flash_size(struct updater_config *cfg)
 	return 0;
 }
 
+#ifndef USE_FLASHROM_UPSTREAM
 static int print_flash_info(struct updater_config *cfg)
 {
 	char *vendor;
@@ -95,6 +103,7 @@ static int print_flash_info(struct updater_config *cfg)
 
 	return 0;
 }
+#endif
 
 static int print_wp_status(struct updater_config *cfg, bool ignore_hw)
 {
@@ -191,7 +200,7 @@ static void print_help(int argc, char *argv[])
 	       "-o,     [--ignore-hw]    \tGet SW WP state only.\n"
 	       "-e, --wp-enable          \tEnable protection for the RO image section.\n"
 	       "-d, --wp-disable         \tDisable all write protection.\n"
-	       "-i, --flash-info         \tGet flash info.\n"
+	       FLASH_INFO_HELP
 	       "-z, --flash-size         \tGet flash size.\n"
 	       "-v, --verbose            \tPrint verbose messages\n"
 	       "\n"
@@ -232,9 +241,11 @@ static int do_flash(int argc, char *argv[])
 		case 'd':
 			disable_wp = true;
 			break;
+#ifndef USE_FLASHROM_UPSTREAM
 		case 'i':
 			get_info = true;
 			break;
+#endif
 		case 'z':
 			get_size = true;
 			break;
@@ -280,8 +291,10 @@ static int do_flash(int argc, char *argv[])
 		return 1;
 	}
 
+#ifndef USE_FLASHROM_UPSTREAM
 	if (get_info)
 		ret = print_flash_info(cfg);
+#endif
 
 	if (!ret && get_size)
 		ret = print_flash_size(cfg);

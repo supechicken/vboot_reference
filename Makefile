@@ -483,6 +483,14 @@ COMMONLIB_SRCS += \
 	host/lib/subprocess.c \
 	host/lib/cbfstool.c
 
+# Build with flashrom upstream (default off).
+# Disables code deps on non-upstream patches.
+USE_FLASHROM_UPSTREAM ?= 0
+ifneq ($(filter-out 0,${USE_FLASHROM_UPSTREAM}),)
+$(info building with libflashrom upstream)
+CFLAGS += -DUSE_FLASHROM_UPSTREAM
+endif
+
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
 

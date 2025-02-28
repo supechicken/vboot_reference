@@ -375,6 +375,7 @@ err_init:
 	return ret;
 }
 
+#ifndef USE_FLASHROM_UPSTREAM
 int flashrom_get_info(const char *prog_with_params,
 		      char **vendor, char **name,
 		      uint32_t *vid, uint32_t *pid,
@@ -421,6 +422,17 @@ err_init:
 	free(tmp);
 	return r;
 }
+#else
+int flashrom_get_info(const char *prog_with_params,
+		      char **vendor, char **name,
+		      uint32_t *vid, uint32_t *pid,
+		      uint32_t *flash_len, int verbosity)
+{
+	FATAL(MYNAME " was built with upstream flashrom, `%s` unavailable!\n",
+	      __func__);
+	return -1;
+}
+#endif /* USE_FLASHROM_UPSTREAM */
 
 int flashrom_get_size(const char *prog_with_params,
 		      uint32_t *flash_len, int verbosity)
