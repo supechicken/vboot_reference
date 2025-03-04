@@ -102,6 +102,30 @@
       },
       "revId": "7d9692fd621080a29adf931611fd32ae66006f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0557db69_c686d90d",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-04T20:10:27Z",
+      "side": 1,
+      "message": "this whole path of HSM signing is a no go because it uses ssh, I included it origninally to check the signature addition code.\n\n`openssl_sign_firmware()` is the way to go for signing.",
+      "parentUuid": "ad4f9d77_64a1177f",
+      "range": {
+        "startLine": 771,
+        "startChar": 25,
+        "endLine": 771,
+        "endChar": 28
+      },
+      "revId": "7d9692fd621080a29adf931611fd32ae66006f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
