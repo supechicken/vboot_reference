@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "05f81441_4b0afc68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-04T17:21:59Z",
+      "side": 1,
+      "message": "not the details of signing (they are changing to use openssl instead of hsm), but the approach of adding OT signing to the set of signing types",
+      "parentUuid": "d5b9000d_35d669c3",
+      "revId": "75c988ce76af0b859ebb0d8c44dd39a69ff80309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "eae09805_5ef43578",
         "filename": "scripts/image_signing/sign_gsc_firmware.sh",
         "patchSetId": 1
