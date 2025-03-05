@@ -16,6 +16,63 @@
       "message": "Aren\u0027t there more options now?",
       "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c96617_b90d4e1a",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-05T17:48:33Z",
+      "side": 1,
+      "message": "this would have to be edited",
+      "range": {
+        "startLine": 588,
+        "startChar": 1,
+        "endLine": 590,
+        "endChar": 4
+      },
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7e5b09_6ec3f8b2",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-05T17:48:33Z",
+      "side": 1,
+      "message": "seems like a singe `${key_file}` argument would be enough",
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9a5cc9_be118e39",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-05T17:48:33Z",
+      "side": 1,
+      "message": "why pass two keys if a single signing type is going to be performed?",
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
