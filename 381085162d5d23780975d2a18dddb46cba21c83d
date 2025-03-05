@@ -169,6 +169,24 @@
       "parentUuid": "e631cd8d_9ac894ff",
       "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89d06b7_b33aec9a",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-05T18:52:02Z",
+      "side": 1,
+      "message": "this approach is what the entirety of chromeos signing uses to differentiate between signing using a file on disk and signing using a remote key. we need a consistent way to configure a keyset such that the call is the same and we can easily flip it from legacy to Cloud KMS.",
+      "parentUuid": "c536d4b8_468651c3",
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
