@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4afef47e_f9870d91",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-05T05:57:34Z",
+      "side": 1,
+      "message": "The variable is `int64_t`, so this would break some older firmware branches (see CL:6240332). Either use `PRIu64` or cast the variable to `long long int` for printing.\n\nI\u0027m curiuos about why this wouldn\u0027t result in a warning in ToT (only happening on firmware branches, possibly due to older toolchain). I checked the GCC release notes, but found nothing. If anyone has spare time, this might be worth looking into, so that we could either enable the warning in ToT or suppress it in firmware branches, to avoid similar issues in the future.",
+      "range": {
+        "startLine": 68,
+        "startChar": 45,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "bfeffd7835f318bd0e3d60b8b088652f619c1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f853411_2a0f1396",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-05T05:57:34Z",
+      "side": 1,
+      "message": "Same problem here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 47,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "bfeffd7835f318bd0e3d60b8b088652f619c1a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
