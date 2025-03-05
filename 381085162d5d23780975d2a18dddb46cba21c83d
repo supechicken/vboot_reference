@@ -151,6 +151,24 @@
       "parentUuid": "6b9a5cc9_be118e39",
       "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c536d4b8_468651c3",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-05T18:21:39Z",
+      "side": 1,
+      "message": "ah, I understand where this comes from. Sure, it will work, but I think we could keep the approach of passing a directory the way it has been done until now, and just change the contents of the directory, say save the pertinent information in a file. \n\n`sign_gsc_firmware.sh` would decide the type of GCS signing base on tarball/manifest contents and then in case of NT signing expect the said file in the `./keys` directory. This way nothing has to change for the existing GSC flow and for `sign_gsc_firmware.sh` API.",
+      "parentUuid": "e631cd8d_9ac894ff",
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
