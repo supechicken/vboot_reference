@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c746b193_7ff5e34b",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-05T17:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af387705_ffb02938",
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52c96617_b90d4e1a",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-05T17:48:33Z",
       "side": 1,
       "message": "this would have to be edited",
+      "range": {
+        "startLine": 588,
+        "startChar": 1,
+        "endLine": 590,
+        "endChar": 4
+      },
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01800f14_4a1a0027",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-05T17:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52c96617_b90d4e1a",
       "range": {
         "startLine": 588,
         "startChar": 1,
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "436ad7d6_e3fdc828",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-05T17:53:30Z",
+      "side": 1,
+      "message": "does the caller know if it\u0027s supposed to be cr50 or ti50? or are you suggesting getting rid of base_name, because that is used below...",
+      "parentUuid": "fc7e5b09_6ec3f8b2",
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b9a5cc9_be118e39",
         "filename": "scripts/image_signing/sign_gsc_firmware.sh",
         "patchSetId": 1
@@ -71,6 +131,24 @@
       "writtenOn": "2025-03-05T17:48:33Z",
       "side": 1,
       "message": "why pass two keys if a single signing type is going to be performed?",
+      "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e631cd8d_9ac894ff",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-05T17:53:30Z",
+      "side": 1,
+      "message": "because you\u0027re keying the signing operation off the chip manifest, and sign_official_build doesn\u0027t unpack that. do you want me to change that?",
+      "parentUuid": "6b9a5cc9_be118e39",
       "revId": "381085162d5d23780975d2a18dddb46cba21c83d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
