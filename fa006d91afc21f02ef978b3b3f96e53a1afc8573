@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e09602_3058b1e2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "align",
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ce0133_82de642b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "Okay, so you decided to move the buffer reservation back to `get_preloaded_partition`. I\u0027m fine with that.\n\nFor static functions, `android_` prefix could be dropped.",
+      "range": {
+        "startLine": 142,
+        "startChar": 19,
+        "endLine": 142,
+        "endChar": 27
+      },
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3d1105_2944fa75",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "I think we can use a local variables to simplify the code by a little bit.\n\n```\nvoid *buffer \u003d params-\u003ekernel_buffer;\nvoid *const kernel_buffer_end \u003d buffer + params-\u003ekernel_buffer_size;\n\nget_partition_size(GptPartitionNames[GPT_ANDROID_BOOT], \u0026size);\nif (buffer + size \u003e kernel_buffer_end)\n    return ERROR;\nparts[GPT_ANDROID_BOOT].buffer \u003d buffer;\nparts[GPT_ANDROID_BOOT].size \u003d size;\nbuffer +\u003d size;\n\n// Repeat the above block here\n```",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 46
+      },
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "805ed2f2_06e4395d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "align",
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fe2cc7_f10e41c5",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "align",
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2381083_117018b1",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "align",
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8026c31_5a2eff99",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "Move to the previous line",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 2
+      },
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f839c743_e218336f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "Define `struct avb_preload_buffer *part \u003d \u0026parts[gpt_part]` use it to access fields.",
+      "range": {
+        "startLine": 259,
+        "startChar": 5,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb30dee_d8b89f7d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "I think we still need to know the actual loaded bytes here, and set `data_size` to it. Then the `out_num_read` argument could be changed to \"required\".\n\n```\nload_partition(..., \u0026data_size);\npart-\u003edata_size \u003d data_size;\n\n*out_pointer \u003d part-\u003ebuffer;\n*out_num_bytes_preloaded \u003d VB2_MIN(num_bytes, data_size);\n```",
+      "range": {
+        "startLine": 272,
+        "startChar": 32,
+        "endLine": 272,
+        "endChar": 36
+      },
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad04631_05f58c1c",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "Missing `slot_suffix`",
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f7bbbb_73a0107b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:40:37Z",
+      "side": 1,
+      "message": "false",
+      "range": {
+        "startLine": 459,
+        "startChar": 32,
+        "endLine": 459,
+        "endChar": 33
+      },
+      "revId": "fa006d91afc21f02ef978b3b3f96e53a1afc8573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
