@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88b5376_7a50181d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a85562a_9cd2e5a6",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 9
+      },
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce9d40d3_3a2fbcdc",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-06T09:05:41Z",
       "side": 1,
       "message": "nit: Drop `android_`.",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f29445_e7d0b494",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9d40d3_3a2fbcdc",
       "range": {
         "startLine": 93,
         "startChar": 19,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "185d9c3c_5c3df374",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acccfdc5_48ba1816",
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ee88151_cb14a745",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-03-06T09:05:41Z",
       "side": 1,
       "message": "z",
+      "range": {
+        "startLine": 112,
+        "startChar": 39,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7897f014_b46e8452",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee88151_cb14a745",
       "range": {
         "startLine": 112,
         "startChar": 39,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37645453_f85536fd",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "no, I don\u0027t like it",
+      "parentUuid": "d2e0cd63_3225018b",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19cd368c_a7ca2e73",
@@ -123,6 +237,24 @@
       "writtenOn": "2025-03-06T09:05:41Z",
       "side": 1,
       "message": "Also `init_boot_size \u003c ANDROID_GKI_BOOT_HDR_SIZE`",
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3839f6_7c58b2c9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19cd368c_a7ca2e73",
       "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1498ae82_6f8ffb63",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789723d6_c181faaa",
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b2a3423_769682f5",
@@ -157,6 +307,30 @@
       "writtenOn": "2025-03-06T09:05:41Z",
       "side": 1,
       "message": "`*vendor_hdr`",
+      "range": {
+        "startLine": 149,
+        "startChar": 22,
+        "endLine": 149,
+        "endChar": 51
+      },
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac58a147_458e380c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b2a3423_769682f5",
       "range": {
         "startLine": 149,
         "startChar": 22,
@@ -190,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e847b1_e9dfb11b",
+        "filename": "firmware/2lib/include/2common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8bc8b09_6673c1b3",
+      "range": {
+        "startLine": 78,
+        "startChar": 45,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cf6f4bc_7ff88a2d",
@@ -207,6 +405,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa4aa3b_f5474f27",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cf6f4bc_7ff88a2d",
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ada888d_941cdee3",
@@ -220,6 +436,24 @@
       "writtenOn": "2025-03-06T09:05:41Z",
       "side": 1,
       "message": "I feel like 2avb.h is the better place for the declaration, as the implementation is in vboot_avb_ops.c.\n\nAbout the naming, I don\u0027t know... I know Julius said we should avoid the `vboot_` prefix, but vboot_avb_ops.c isn\u0027t under firmware/2lib, and `vboot_avb_ops_new` also has the `vboot_` prefix. Maybe `vboot_avb_get_partition`? Let\u0027s see what Julius thinks.",
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03838475_8d58399b",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:32Z",
+      "side": 1,
+      "message": "I moved it to 2avb.h.",
+      "parentUuid": "6ada888d_941cdee3",
       "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
