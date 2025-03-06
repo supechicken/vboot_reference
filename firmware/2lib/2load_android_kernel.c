@@ -26,13 +26,6 @@
 #define SLOT_SUFFIX_BOOT_PROPERTY_NAME "androidboot.slot_suffix"
 #define ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME "androidboot.force_normal_boot"
 
-/* Android BCB (boot control block) commands */
-enum vb2_boot_command {
-	VB2_BOOT_CMD_NORMAL_BOOT,
-	VB2_BOOT_CMD_RECOVERY_BOOT,
-	VB2_BOOT_CMD_BOOTLOADER_BOOT,
-};
-
 /* Possible values of BCB command */
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
 #define BCB_CMD_BOOT_RECOVERY "boot-recovery"
@@ -64,12 +57,12 @@ static vb2_error_t vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 	}
 }
 
-static enum vb2_boot_command bcb_command(AvbOps *ops)
+static vb2_error_t bcb_command(AvbOps *ops, bool *recovery_boot)
 {
 	struct vb2_bootloader_message bcb;
 	AvbIOResult io_ret;
 	size_t num_bytes_read;
-	enum vb2_boot_command cmd;
+	vb2_error_t rv;
 	bool writeback = false;
 
 	io_ret = ops->read_from_partition(ops,
@@ -84,28 +77,32 @@ static enum vb2_boot_command bcb_command(AvbOps *ops)
 		 *                    normally
 		 */
 		VB2_DEBUG("Cannot read misc partition, err: %d\n", io_ret);
-		return VB2_BOOT_CMD_NORMAL_BOOT;
+		*recovery_boot = false;
+		return VB2_SUCCESS;
 	}
 
 	/* BCB command field is for the bootloader */
 	if (!strcmp(bcb.command, BCB_CMD_BOOT_RECOVERY)) {
-		cmd = VB2_BOOT_CMD_RECOVERY_BOOT;
+		*recovery_boot = true;
+		rv = VB2_SUCCESS;
 		/* Recovery image will clear the command by itself. */
 		writeback = false;
 	} else if (!strcmp(bcb.command, BCB_CMD_BOOTONCE_BOOTLOADER)) {
-		cmd = VB2_BOOT_CMD_BOOTLOADER_BOOT;
+		*recovery_boot = false;
+		rv = VB2_REQUEST_FASTBOOT;
 		writeback = true;
 	} else {
 		/* If empty or unknown command, just boot normally */
 		if (bcb.command[0] != '\0')
 			VB2_DEBUG("Unknown boot command \"%.*s\". Use normal boot.\n",
 				  (int)sizeof(bcb.command), bcb.command);
-		cmd = VB2_BOOT_CMD_NORMAL_BOOT;
+		*recovery_boot = false;
+		rv = VB2_SUCCESS;
 		writeback = false;
 	}
 
 	if (!writeback)
-		return cmd;
+		return rv;
 
 	/* Command field is supposed to be a one-shot thing. Clear it. */
 	memset(bcb.command, 0, sizeof(bcb.command));
@@ -117,7 +114,7 @@ static enum vb2_boot_command bcb_command(AvbOps *ops)
 	if (io_ret != AVB_IO_RESULT_OK)
 		VB2_DEBUG("Failed to update misc parition\n");
 
-	return cmd;
+	return rv;
 }
 
 /*
@@ -155,30 +152,6 @@ static vb2_error_t save_bootconfig(struct vendor_boot_img_hdr_v4 *vendor_hdr,
 	memcpy(params->bootconfig, bootconfig, vendor_hdr->bootconfig_size);
 	params->bootconfig_size = vendor_hdr->bootconfig_size;
 	return VB2_SUCCESS;
-}
-
-static bool gki_is_recovery_boot(enum vb2_boot_command boot_command)
-{
-	switch (boot_command) {
-	case VB2_BOOT_CMD_NORMAL_BOOT:
-		return false;
-
-	case VB2_BOOT_CMD_BOOTLOADER_BOOT:
-		/*
-		 * TODO(b/358088653): We should enter fastboot mode and clear
-		 * BCB command in misc partition. For now ignore that and boot
-		 * to recovery where fastbootd should be available.
-		 */
-		return true;
-
-	case VB2_BOOT_CMD_RECOVERY_BOOT:
-		return true;
-
-	default:
-		VB2_DEBUG("Unknown boot command %d, assume normal boot is required\n",
-			  boot_command);
-		return false;
-	}
 }
 
 static bool gki_ramdisk_fragment_needed(struct vendor_ramdisk_table_entry_v4 *fragment,
@@ -507,8 +480,10 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		goto out;
 
 	/* Check "misc" partition for boot type */
-	enum vb2_boot_command boot_command = bcb_command(avb_ops);
-	bool recovery_boot = gki_is_recovery_boot(boot_command);
+	bool recovery_boot;
+	rv = bcb_command(avb_ops, &recovery_boot);
+	if (rv != VB2_SUCCESS)
+		goto out;
 
 	/*
 	 * Before booting we need to rearrange buffers with partition data, which includes:
