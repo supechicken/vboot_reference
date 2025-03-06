@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0689b9e_97e4f857",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e473b413_362a0b94",
+      "range": {
+        "startLine": 464,
+        "startChar": 48,
+        "endLine": 464,
+        "endChar": 49
+      },
+      "revId": "8c84607fdd0881840e064410b46a28965fbcafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f22cda8_066fd6dc",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-03-06T09:11:52Z",
       "side": 1,
       "message": "Is this supposed to be a TODO comment? Is there a tracking bug?",
+      "revId": "8c84607fdd0881840e064410b46a28965fbcafc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b416da4_a0387d53",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f22cda8_066fd6dc",
       "revId": "8c84607fdd0881840e064410b46a28965fbcafc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
