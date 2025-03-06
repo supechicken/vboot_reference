@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4d4410_7a5595e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:32:39Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. I just need to setup dependency on top commit of each repo.",
+      "parentUuid": "a24fa176_155f1478",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12594126_3ce03d65",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0ef139_f4130f2d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12594126_3ce03d65",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 6
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cef5d42_a864e9ec",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54e89baa_91a3e3b0",
+      "range": {
+        "startLine": 220,
+        "startChar": 27,
+        "endLine": 220,
+        "endChar": 28
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88bc9074_34e9894b",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c47845_cc01320b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88bc9074_34e9894b",
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c78768f8_512790ea",
@@ -100,6 +190,24 @@
       "writtenOn": "2025-03-06T09:23:35Z",
       "side": 1,
       "message": "align",
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e8ffd2_2a8ea6c0",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78768f8_512790ea",
       "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -141,6 +249,30 @@
       "side": 1,
       "message": "V2_TRY macro is a way more complicated that simple \u0027if (rv)\u0027. Let me keep original code for simplicity.",
       "parentUuid": "7c0f52ca_00022e0a",
+      "range": {
+        "startLine": 300,
+        "startChar": 9,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc379d9_66d65e5b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T15:32:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9b78d552_a3f05ede",
       "range": {
         "startLine": 300,
         "startChar": 9,
