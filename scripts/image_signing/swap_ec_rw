@@ -65,10 +65,18 @@ swap_ecrw() {
     ecrw_comp_type=${ecrw_comp_type:-none}
     cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_NAME}"
     cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_HASH_NAME}"
-    cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_VERSION_NAME}" \
-      || warn "${CBFS_ECRW_VERSION_NAME} not found, but will be added"
-    cbfstool "${ap_file}" remove -r "${region}" \
-      -n "${CBFS_ECRW_CONFIG_NAME}" || true
+    if cbfstool "${ap_file}" print -r "${region}" -k | \
+        grep -q "${CBFS_ECRW_VERSION_NAME}"; then
+      cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_VERSION_NAME}"
+    else
+      warn "${CBFS_ECRW_VERSION_NAME} not found, but will be added"
+    fi
+    if cbfstool "${ap_file}" print -r "${region}" -k | \
+        grep -q "${CBFS_ECRW_CONFIG_NAME}"; then
+      cbfstool "${ap_file}" remove -r "${region}" -n "${CBFS_ECRW_CONFIG_NAME}"
+    elif [ -n "${ec_config_file}" ]; then
+      warn "${CBFS_ECRW_CONFIG_NAME} not found, but will be added"
+    fi
     cbfstool "${ap_file}" expand -r "${region}"
     cbfstool "${ap_file}" add -r "${region}" -t raw \
       -c "${ecrw_comp_type}" -f "${ecrw_file}" -n "${CBFS_ECRW_NAME}"
