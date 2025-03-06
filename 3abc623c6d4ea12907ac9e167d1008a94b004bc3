@@ -125,6 +125,30 @@
       },
       "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b78d552_a3f05ede",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-06T09:25:47Z",
+      "side": 1,
+      "message": "V2_TRY macro is a way more complicated that simple \u0027if (rv)\u0027. Let me keep original code for simplicity.",
+      "parentUuid": "7c0f52ca_00022e0a",
+      "range": {
+        "startLine": 300,
+        "startChar": 9,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
