@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a86a23a_b70d344a",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T07:53:31Z",
+      "side": 1,
+      "message": "Ah, it doesn\u0027t work when I move it in to a new function.\n\nFixed.",
+      "parentUuid": "72df3c19_6d183dba",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fc233b1_66b9f3b6",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-17T02:13:02Z",
       "side": 1,
       "message": "```\nAs some old `ap_for_ec_file` image may not have `ecrw_config_file`, use the `ap_for_ec_file` AP version as the EC RW version.\n```",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f6f1bb_7b241d3a",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T07:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fc233b1_66b9f3b6",
       "range": {
         "startLine": 125,
         "startChar": 6,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56bd276f_8fe6187c",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T07:53:31Z",
+      "side": 1,
+      "message": "Keep the code in `swap_ecrw`. Done.",
+      "parentUuid": "f9a62f56_cbcfcf1c",
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9f59c45_436d8d82",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-02-17T02:13:02Z",
       "side": 1,
       "message": "This may not be always true. Maybe just remove this warning message (by changing to `|| true`?",
+      "range": {
+        "startLine": 161,
+        "startChar": 56,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "659f9e48de90e39bf0b3f514045c6bff4d443670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1104693_a5067664",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T07:53:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f59c45_436d8d82",
       "range": {
         "startLine": 161,
         "startChar": 56,
