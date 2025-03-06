@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24fa176_155f1478",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T09:23:35Z",
+      "side": 1,
+      "message": "Sorry, is this wrong again? Why does this depend on the boot time fixup?",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12594126_3ce03d65",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T09:23:35Z",
+      "side": 1,
+      "message": "parentheses not needed",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 6
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e89baa_91a3e3b0",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T09:23:35Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 220,
+        "startChar": 27,
+        "endLine": 220,
+        "endChar": 28
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88bc9074_34e9894b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T09:23:35Z",
+      "side": 1,
+      "message": "align",
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78768f8_512790ea",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T09:23:35Z",
+      "side": 1,
+      "message": "align",
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c0f52ca_00022e0a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T09:23:35Z",
+      "side": 1,
+      "message": "rv\n\nShould return the original error. Again, `VB2_TRY` would be useful here.",
+      "range": {
+        "startLine": 300,
+        "startChar": 9,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
