@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724c86b2_0e1149e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:55:43Z",
+      "side": 1,
+      "message": "This reads weird to me. How about `To compile with AVB support, set \u0027USE_AVB\u0027 when building vboot`?",
+      "revId": "ec4b6e09ce28fe6a824ec1198c16f2f366f53985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74973971_dcf28cc0",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:55:43Z",
+      "side": 1,
+      "message": "I think right now the preferred way is to write the full error codes explicitly (see an old [comment](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1728297/comment/d52e7149_21f8fd0e/)), just like we did for the UI section above. This way it would be easier for people to search the error in the repo.",
+      "revId": "ec4b6e09ce28fe6a824ec1198c16f2f366f53985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f73294_a3648950",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-06T04:55:43Z",
+      "side": 1,
+      "message": "Not used here. Can be moved to CL:6281347.",
+      "revId": "ec4b6e09ce28fe6a824ec1198c16f2f366f53985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
