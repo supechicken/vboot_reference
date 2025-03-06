@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78650e6d_f1b531c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b266731_e95be261",
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "379952ab_eeb157e6",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-06T08:30:47Z",
       "side": 1,
       "message": "AP",
+      "range": {
+        "startLine": 54,
+        "startChar": 56,
+        "endLine": 54,
+        "endChar": 58
+      },
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3697f161_a3709600",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379952ab_eeb157e6",
       "range": {
         "startLine": 54,
         "startChar": 56,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de0c1c7_e84cbd2d",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7667699c_883e963e",
+      "range": {
+        "startLine": 60,
+        "startChar": 55,
+        "endLine": 60,
+        "endChar": 57
+      },
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "416cf636_b0afeaf5",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-03-06T08:30:47Z",
       "side": 1,
       "message": "Instead of changing the patch to empty string, can we use `[[ -e ... ]]` directly below?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 4
+      },
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609038fb_42936719",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "416cf636_b0afeaf5",
       "range": {
         "startLine": 122,
         "startChar": 2,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0bbc186_e8d31518",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a733f3df_1a713085",
+      "range": {
+        "startLine": 195,
+        "startChar": 9,
+        "endLine": 195,
+        "endChar": 40
+      },
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfded9d5_56d72256",
@@ -123,6 +237,30 @@
       "writtenOn": "2025-03-06T08:30:47Z",
       "side": 1,
       "message": "Let\u0027s make the description consistent.\n\n`swap from EC source (--ec), no ecrw.version`",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a79910_fb11ddae",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfded9d5_56d72256",
       "range": {
         "startLine": 32,
         "startChar": 13,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b13ee36_6d3d81ef",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d8ef0dc_bebf54e6",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99ebeb34_e90b7518",
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8af89e0_0020b78a",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ebeb34_e90b7518",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d04a64_fb24a11f",
@@ -192,6 +378,24 @@
       "writtenOn": "2025-03-06T08:30:47Z",
       "side": 1,
       "message": "Sorry, but I don\u0027t quite follow the test case here. Here `$TMP` and `$AP_IMAGE` are the same. Shouldn\u0027t we provide a different AP image (for -a) to test with?",
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f869d5_c8a53ef8",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "I want to minimize the number of binary files in the repo. The plan is to use `-e ec_krabby.bin` to put a different ecrw in the AP image, then `-a bios_geralt.bin` to swap the original ecrw back.\n\nThat didn\u0027t work. I\u0027m guessing it\u0027s because `bios_geralt.bin` has differences in FW_MAIN_B. The workaround it to first swap the ecrw from the AP image to make them match.",
+      "parentUuid": "d0d04a64_fb24a11f",
       "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -227,6 +431,24 @@
       "side": 1,
       "message": "That\u0027s expected (for testing purposes). bios_geralt.bin\u0027s FW_MAIN_B doesn\u0027t have ecrw.version.",
       "parentUuid": "df136828_0c92a930",
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20100a4b_12668351",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-06T10:42:41Z",
+      "side": 1,
+      "message": "When we swap ecrw from AP, we only use the ecrw from FW_MAIN_A. It should have ecrw.version, right?",
+      "parentUuid": "29dc4497_36aba5e5",
       "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
