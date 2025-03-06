@@ -9,20 +9,6 @@
 #include "2sysincludes.h"
 #include "gpt_misc.h"
 
-enum GptPartition {
-	GPT_ANDROID_BOOT = 0,
-	GPT_ANDROID_VENDOR_BOOT,
-	GPT_ANDROID_INIT_BOOT,
-	GPT_ANDROID_PRELOADED_NUM,
-
-	/* Partitions below this point do not get preloaded */
-	GPT_ANDROID_PVMFW = GPT_ANDROID_PRELOADED_NUM,
-	GPT_ANDROID_MISC,
-	GPT_ANDROID_VBMETA,
-};
-
-extern const char *GptPartitionNames[];
-
 /**
  * Checks if entry name field is equal to name+suffix.
  *
