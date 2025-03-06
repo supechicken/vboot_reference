@@ -33,6 +33,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "03be73aa6cdbe5c865b00e723544e6dc2829eb8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebed4fd9_e75dd0f3",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-03-06T23:54:01Z",
+      "side": 1,
+      "message": "nit: \n```suggestion\n# function expects KMS_PKCS11_CONFIG env variable to be the name of the\n```",
+      "range": {
+        "startLine": 645,
+        "startChar": 37,
+        "endLine": 645,
+        "endChar": 40
+      },
+      "revId": "03be73aa6cdbe5c865b00e723544e6dc2829eb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
