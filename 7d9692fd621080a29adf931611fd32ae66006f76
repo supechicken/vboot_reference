@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "444304ef_d11f1876",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-03-07T16:20:58Z",
+      "side": 1,
+      "message": "I guess the image manifest header already has the spx extension pointing to this location?",
+      "parentUuid": "90f62cd4_55f9b025",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 31
+      },
+      "revId": "7d9692fd621080a29adf931611fd32ae66006f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4f9d77_64a1177f",
         "filename": "scripts/image_signing/sign_gsc_firmware.sh",
         "patchSetId": 2
