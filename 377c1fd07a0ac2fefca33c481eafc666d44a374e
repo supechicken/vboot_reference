@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffd32ea_10e117bb",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-07T22:48:46Z",
+      "side": 1,
+      "message": "changed these to reduce confusion of the parser which considers \u003c\u003c to be a part of here doc",
+      "revId": "377c1fd07a0ac2fefca33c481eafc666d44a374e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
