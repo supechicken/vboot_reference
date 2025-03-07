@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d60c027_03a28673",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-07T16:50:39Z",
+      "side": 1,
+      "message": "Ah, you are talking about the pointer to the SPX signature - yes, it is presumed to be already in the image manifest.\n\nThis is a good question, in fact SPX signing will require a little more handling, we will have  to add a \u0027fake\u0027 SPX signautre by opentitantool while preparing the image inside chroot so that here it can be overwritten.\n\nIn the current iteration we are adding ECDSA signagture only, I\u0027ll address the SPX case separately.",
+      "parentUuid": "444304ef_d11f1876",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 31
+      },
+      "revId": "7d9692fd621080a29adf931611fd32ae66006f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4f9d77_64a1177f",
         "filename": "scripts/image_signing/sign_gsc_firmware.sh",
         "patchSetId": 2
