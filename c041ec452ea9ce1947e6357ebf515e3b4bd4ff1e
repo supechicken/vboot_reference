@@ -33,6 +33,24 @@
       "message": "instead of checking for the existence of a pao file, why not check the prod.json file and see what generation the chip is? there is already a case statement for that below...",
       "revId": "c041ec452ea9ce1947e6357ebf515e3b4bd4ff1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d340e3a9_124fb1be",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-07T18:28:57Z",
+      "side": 1,
+      "message": "there is no prod.json file in the NT tarball. It does include a json manifest, but it is veryd diffeerent from H1/DR manifest",
+      "parentUuid": "c4e1356c_35e30217",
+      "revId": "c041ec452ea9ce1947e6357ebf515e3b4bd4ff1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
