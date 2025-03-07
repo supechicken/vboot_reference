@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90f62cd4_55f9b025",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-07T00:38:09Z",
+      "side": 1,
+      "message": "I don\u0027t understan what needs to be updated? `$tpm_signed_bin` is the  binary, its manifest is updated, what else needs to be done?",
+      "parentUuid": "0b56ab55_f3a6da6a",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 31
+      },
+      "revId": "7d9692fd621080a29adf931611fd32ae66006f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4f9d77_64a1177f",
         "filename": "scripts/image_signing/sign_gsc_firmware.sh",
         "patchSetId": 2
