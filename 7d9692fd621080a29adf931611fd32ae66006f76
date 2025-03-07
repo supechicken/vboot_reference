@@ -275,6 +275,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04d13f2a_8a1202ff",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2025-03-07T18:42:05Z",
+      "side": 1,
+      "message": "The SPX handling would be added in a future CL. I feel that it is OK to keep this not functional code here because it will be used soon, but I can drop it if you prefer.",
+      "parentUuid": "f633e411_b7e330f3",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 31
+      },
+      "revId": "7d9692fd621080a29adf931611fd32ae66006f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4f9d77_64a1177f",
         "filename": "scripts/image_signing/sign_gsc_firmware.sh",
         "patchSetId": 2
