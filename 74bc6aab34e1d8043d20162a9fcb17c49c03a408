@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3aaa4e_40570a36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-07T02:55:41Z",
+      "side": 1,
+      "message": "In case the command `cbfstool remove` fails, we want the script to fail.",
+      "parentUuid": "2332a3f7_48e6b447",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "74bc6aab34e1d8043d20162a9fcb17c49c03a408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5427b5f8_c09135f1",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa795855_3768e65f",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-07T02:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5427b5f8_c09135f1",
+      "revId": "74bc6aab34e1d8043d20162a9fcb17c49c03a408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f963e650_495c8823",
@@ -54,6 +96,24 @@
       "writtenOn": "2025-03-07T01:54:05Z",
       "side": 1,
       "message": "Is there any way to avoid partial matching (for example a file named xxecrw.version)?",
+      "revId": "74bc6aab34e1d8043d20162a9fcb17c49c03a408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "175f4858_8e4e55a5",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-03-07T02:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f963e650_495c8823",
       "revId": "74bc6aab34e1d8043d20162a9fcb17c49c03a408",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
