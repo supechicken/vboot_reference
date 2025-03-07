@@ -203,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "947a0227_c5c7218a",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2025-03-07T17:36:38Z",
+      "side": 1,
+      "message": "\u003e In the current iteration we are adding ECDSA signagture only, I\u0027ll address the SPX case separately.\n\nSounds good to me, but I am a little confused as to what the plan is. Do you plan to remove this `if [[ -n ${spx_sig} ]]; then` section of the CL to do it seperately/later or what do you mean by addressing the SPX case seperately?",
+      "parentUuid": "6d60c027_03a28673",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 736,
+        "endChar": 31
+      },
+      "revId": "7d9692fd621080a29adf931611fd32ae66006f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4f9d77_64a1177f",
         "filename": "scripts/image_signing/sign_gsc_firmware.sh",
         "patchSetId": 2
