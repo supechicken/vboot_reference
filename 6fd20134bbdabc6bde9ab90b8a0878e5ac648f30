@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "6fd20134bbdabc6bde9ab90b8a0878e5ac648f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4315de9f_c7b3cd62",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-07T20:18:01Z",
+      "side": 1,
+      "message": "```suggestion\n  local ti50_key\u003d\"$4\"\n  local output\u003d\"$5\"\n```",
+      "range": {
+        "startLine": 660,
+        "startChar": 11,
+        "endLine": 661,
+        "endChar": 11
+      },
+      "revId": "6fd20134bbdabc6bde9ab90b8a0878e5ac648f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
