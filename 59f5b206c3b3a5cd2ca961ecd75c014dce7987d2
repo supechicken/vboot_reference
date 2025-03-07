@@ -451,6 +451,24 @@
       "parentUuid": "29dc4497_36aba5e5",
       "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018f19c6_ef372e71",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-07T06:57:52Z",
+      "side": 1,
+      "message": "This warning is generated when we want to get the version of AP_FOR_EC image using `futility update --manifest -i \"${ap_for_ec_file}\"`, which is expected like you said.",
+      "parentUuid": "20100a4b_12668351",
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
