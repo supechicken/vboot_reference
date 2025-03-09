@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "442ffc68_d5768452",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-09T09:57:21Z",
+      "side": 1,
+      "message": "Why not just `ecrw_config_file\u003d\"${ec_config_file}\"`?",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 50
+      },
+      "revId": "e24bbfef0bf9cd1f6ef35a2ba562ae04809b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75651779_84710ee4",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 11
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-09T09:57:21Z",
+      "side": 1,
+      "message": "How about `-e/--ec conflicts with -a/--ap_for_ec.`",
+      "range": {
+        "startLine": 192,
+        "startChar": 9,
+        "endLine": 192,
+        "endChar": 43
+      },
+      "revId": "e24bbfef0bf9cd1f6ef35a2ba562ae04809b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f17c92_96331ce5",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-09T09:57:21Z",
+      "side": 1,
+      "message": "Should die if both `FLAGS_ap_for_ec` and `FLAGS_ec_config` are set (either here or in `swap_ecrw`).",
+      "revId": "e24bbfef0bf9cd1f6ef35a2ba562ae04809b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
