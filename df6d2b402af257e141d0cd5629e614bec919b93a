@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55427012_d401e351",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-09T23:43:03Z",
+      "side": 1,
+      "message": "changed",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4e7c0a_0e96293c",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-09T23:43:03Z",
+      "side": 1,
+      "message": "nit: One blank line below.",
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33fd1b94_d7018b0c",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-09T23:43:03Z",
+      "side": 1,
+      "message": "I still prefer keeping the original name, to be consistent with `StrToGuid`.\n\nAlternatively, we can add `#define GuidToStr(guid, str, buflen) GptGuidToStr(guid, str, buflen, false)` in vboot_host.h. Let\u0027s see what Julius thinks.",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
