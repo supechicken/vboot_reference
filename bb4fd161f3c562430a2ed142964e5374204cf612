@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3d2f16_53cdf98c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-09T23:59:28Z",
+      "side": 1,
+      "message": "Can we still return the original error code `rv`?",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
