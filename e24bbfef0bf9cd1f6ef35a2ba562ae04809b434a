@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51af8ae_8ff0d01a",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T07:58:48Z",
+      "side": 1,
+      "message": "Done\n\nI was thinking to use the same path in temp_dir. But it didn\u0027t bring much.",
+      "parentUuid": "442ffc68_d5768452",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 50
+      },
+      "revId": "e24bbfef0bf9cd1f6ef35a2ba562ae04809b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75651779_84710ee4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "923da170_8dca0d68",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 11
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T07:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75651779_84710ee4",
+      "range": {
+        "startLine": 192,
+        "startChar": 9,
+        "endLine": 192,
+        "endChar": 43
+      },
+      "revId": "e24bbfef0bf9cd1f6ef35a2ba562ae04809b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58f17c92_96331ce5",
@@ -60,6 +108,24 @@
       "writtenOn": "2025-03-09T09:57:21Z",
       "side": 1,
       "message": "Should die if both `FLAGS_ap_for_ec` and `FLAGS_ec_config` are set (either here or in `swap_ecrw`).",
+      "revId": "e24bbfef0bf9cd1f6ef35a2ba562ae04809b434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59fce641_28c3d172",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 11
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T07:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58f17c92_96331ce5",
       "revId": "e24bbfef0bf9cd1f6ef35a2ba562ae04809b434a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

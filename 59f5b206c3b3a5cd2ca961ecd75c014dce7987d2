@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f456eb6_02270072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T07:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b9450a_f361befc",
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "379952ab_eeb157e6",
@@ -432,6 +450,24 @@
       "side": 1,
       "message": "I see. For such a complicated reason, please always document it in a comment. Otherwise people would possibly never know why the test was written this way.\n\n\u003e That didn\u0027t work.\n\nI tried it and it worked as expected.\n\n```\ncp tests/swap_ec_rw_data/bios_geralt.bin image0.bin\nswap_ec_rw -i image0.bin -e tests/swap_ec_rw_data/ec_krabby.bin\ncp tests/swap_ec_rw_data/bios_geralt.bin image.bin\nswap_ec_rw -i image.bin -a image0.bin\ncmp image0.bin image.bin\n```",
       "parentUuid": "a4f869d5_c8a53ef8",
+      "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46df4f7_c7939880",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T07:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b79d7808_4e2688c6",
       "revId": "59f5b206c3b3a5cd2ca961ecd75c014dce7987d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
