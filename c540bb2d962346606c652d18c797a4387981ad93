@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "c540bb2d962346606c652d18c797a4387981ad93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95c9c76_5d2d3a7f",
+        "filename": "scripts/image_signing/sign_gsc_firmware.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-10T17:32:59Z",
+      "side": 1,
+      "message": "```suggestion\n  make_nt_image \"${rom_ext_a}\" \"${rom_ext_b}\" \"${signed_rw_bin}\" \"${output}\"\n  \n  # Tell the signer how to rename the @CHIP@ portion of the output.\n  echo \"ti50\" \u003e \"${output_file}.rename\"\n```",
+      "revId": "c540bb2d962346606c652d18c797a4387981ad93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
