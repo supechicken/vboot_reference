@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f24bd2b_88ca6738",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T09:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1296eb6d_dd2edd60",
+      "revId": "33bbf8d717e963e73085200c3a693c3fd393f0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a455a8df_b7fc0261",
@@ -54,6 +72,54 @@
       "writtenOn": "2025-03-10T08:52:13Z",
       "side": 1,
       "message": "S",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 3
+      },
+      "revId": "33bbf8d717e963e73085200c3a693c3fd393f0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b880726e_78b990c2",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T09:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a455a8df_b7fc0261",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "33bbf8d717e963e73085200c3a693c3fd393f0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c47f8db_f79bd3fe",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-10T09:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19850797_7d58b891",
       "range": {
         "startLine": 49,
         "startChar": 2,
