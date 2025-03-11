@@ -86,6 +86,47 @@
       },
       "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036e0e55_0bc8bb07",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T20:16:30Z",
+      "side": 1,
+      "message": "I think changing the other one to GptStrToGuid sounds good.",
+      "parentUuid": "aafa3c7f_7d1e0d4e",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ca143b_ad2d2f1e",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T20:16:30Z",
+      "side": 1,
+      "message": "nit: might as well assert that the return value of snprintf is \u003c buflen instead?",
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
