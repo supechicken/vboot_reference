@@ -183,6 +183,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59233122_c8e59c22",
+        "filename": "firmware/lib/cgptlib/include/cgptlib_internal.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T20:20:15Z",
+      "side": 1,
+      "message": "As a rule of thumb I\u0027d recommend that anything larger than the size of a pointer should be defined in a .c file.",
+      "parentUuid": "2a24abd2_a151cd27",
+      "revId": "42b1ce70a44690602ecffc851091a9539a27b6a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a05497d_2be575f9",
