@@ -43,6 +43,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3b7acc1_f2235488",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T21:05:20Z",
+      "side": 1,
+      "message": "It\u0027s a bit hard to understand what this does when just reading code that calls into the function. How about we make this a little enum with GPT_GUID_LOWERCASE and GPT_GUID_UPPERCASE values, so that when you read a call like `GptGuidToStr(\u0026e-\u003eunique, guid_buf, guid_buf_size, GPT_GUID_LOWERCASE);` you can immediately tell what the last argument is supposed to do?",
+      "range": {
+        "startLine": 219,
+        "startChar": 68,
+        "endLine": 219,
+        "endChar": 82
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a02721ce_fb4a2a38",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/gpt_misc.h",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": "/*\n * The \u0027case_type\u0027 of GptGuidToStr().\n */\nenum {\n\tGPT_GUID_LOWERCASE \u003d 0,\n\tGPT_GUID_UPPERCASE \u003d 1,\n};\n\n"
+            },
+            {
+              "path": "firmware/include/gpt_misc.h",
+              "range": {
+                "startLine": 219,
+                "startChar": 0,
+                "endLine": 220,
+                "endChar": 0
+              },
+              "replacement": "/**\n * Convert a GUID to a string.\n *\n * @param guid The GUID to convert.\n * @param str The string to store the GUID in.\n * @param buflen The maximum length of the string.\n * @param case_type The case type of the string.\n */\nvoid GptGuidToStr(const Guid *guid, char *str, unsigned int buflen,\n\t\t  enum { GPT_GUID_LOWERCASE, GPT_GUID_UPPERCASE } case_type);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33fd1b94_d7018b0c",
         "filename": "firmware/lib/gpt_misc.c",
         "patchSetId": 1
