@@ -46,7 +46,8 @@ swap_ecrw() {
   local aprw_ver
   temp_dir=$(mktemp -d)
   ecrw_file="${temp_dir}/ecrw"
-  futility dump_fmap -x "${ec_file}" "RW_FW:${ecrw_file}" >/dev/null
+  futility dump_fmap -x "${ec_file}" "RW_FW:${ecrw_file}" >/dev/null || \
+    futility dump_fmap -x "${ec_file}" "EC_RW:${ecrw_file}" >/dev/null
   info "EC RW extracted to ${ecrw_file}"
 
   ecrw_hash_file="${temp_dir}/ecrw.hash"
