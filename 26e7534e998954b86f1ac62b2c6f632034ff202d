@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb475f3_65daf1fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2025-03-11T20:14:07Z",
+      "side": 1,
+      "message": "% comment.",
+      "revId": "26e7534e998954b86f1ac62b2c6f632034ff202d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc070416_2a511b95",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "Would you find it clearer? I find || equally clear, but I\u0027m not an owner of this script.",
       "parentUuid": "cc070416_2a511b95",
+      "range": {
+        "startLine": 100,
+        "startChar": 48,
+        "endLine": 100,
+        "endChar": 57
+      },
+      "revId": "26e7534e998954b86f1ac62b2c6f632034ff202d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f5a20d_87f90d36",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2025-03-11T20:14:07Z",
+      "side": 1,
+      "message": "I would thanks.",
+      "parentUuid": "d7070e2c_8065adef",
       "range": {
         "startLine": 100,
         "startChar": 48,
