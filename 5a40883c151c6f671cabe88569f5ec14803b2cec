@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca738e8b_151a6c06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T20:04:09Z",
+      "side": 1,
+      "message": "Don\u0027t most other futility tests use cmp as well? I feel like I see at least as much cmp as diff.\n\nI don\u0027t really care about the difference, but doesn\u0027t diff create line-based output while cmp just outputs a summary? I think that\u0027s the major difference, and we should probably decide globally which one we want for these tests.",
+      "revId": "5a40883c151c6f671cabe88569f5ec14803b2cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
