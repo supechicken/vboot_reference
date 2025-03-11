@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc0e8cc_acb91513",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T23:39:46Z",
+      "side": 1,
+      "message": "This seems meaningless now that we\u0027re using snprintf?",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 56
+      },
+      "revId": "2ea40b7b417d50d6ee235baa96c4757a7e95d338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
