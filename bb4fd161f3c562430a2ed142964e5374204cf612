@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec3188fb_c7dacafd",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:35:10Z",
+      "side": 1,
+      "message": "nit: weird alignment?\n\nEither do exact alignment\n```\ntype functionname(param1,\n\u003cTAB\u003e\u003cTAB\u003e\u003cSPACES\u003eparam2);\n```\nor just one indent\n```\ntype functionname(param1,\n\u003cTAB\u003eparam2);\n```",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c3d2f16_53cdf98c",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 5
@@ -20,6 +43,92 @@
         "endLine": 120,
         "endChar": 39
       },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ca6cbb_7b13f6bc",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:35:10Z",
+      "side": 1,
+      "message": "This seems redundant with the check below? (If you\u0027re concerned that the struct may ever grow beyond the constant, you can put a `_Static_assert(sizeof(*init_hdr) \u003c\u003d ANDROID_GKI_BOOT_HDR_SIZE, \"...message...\");` somewhere instead.)",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6363594_d4d44007",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:35:10Z",
+      "side": 1,
+      "message": "Is the newline here intentional? It seems a bit weird, we usually keep error messages to one line unless it\u0027s really a lot of strucutred output.",
+      "range": {
+        "startLine": 127,
+        "startChar": 58,
+        "endLine": 127,
+        "endChar": 60
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f749555_6f7338d5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:35:10Z",
+      "side": 1,
+      "message": "It\u0027s not good to dereference that here since technically you may have failed because the buffer was so small that the ramdisk_size field is no longer in it. I don\u0027t think the error needs to be that detailed.",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 43
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2068f1ea_c8a9e43c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:35:10Z",
+      "side": 1,
+      "message": "Could maybe also incorporate that into the check above, I don\u0027t think we need so much differentiation for all these \"broken image\" cases that should never happen anyway.",
       "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

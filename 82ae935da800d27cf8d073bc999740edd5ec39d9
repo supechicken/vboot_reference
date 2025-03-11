@@ -456,6 +456,24 @@
       "parentUuid": "6ada888d_941cdee3",
       "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ec6c76_33726348",
+        "filename": "firmware/2lib/include/2load_android_kernel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:35:10Z",
+      "side": 1,
+      "message": "I think we\u0027d generally want to use `vb2_` everywhere, we don\u0027t really use `vboot_` anywhere else other than for stuff relating to legacy vb1 structures. So technically, should should be renaming everything like `vboot_avb_ops` to `vb2_avb_ops`. But it\u0027s also not really that important.\n\n(I\u0027m also not sure why we have those files under `firmware/avb` tbh, they don\u0027t really seem different enough from the other 2lib code to deserve their own directory, maybe they should be `2lib/2avb.c` and `2lib/2avb_sysdeps.c` instead?)",
+      "parentUuid": "03838475_8d58399b",
+      "revId": "82ae935da800d27cf8d073bc999740edd5ec39d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
