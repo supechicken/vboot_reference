@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f96f25da_9677cdc3",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T23:27:17Z",
+      "side": 1,
+      "message": "nit: This shouldn\u0027t really be necessary since the value is written by another function in the same file and can only be one of those three values.",
+      "revId": "6e63e0eddd17d1dd7d77c8e5dc87a62c45094e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c9e43db_9b57cb0e",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 18

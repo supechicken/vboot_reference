@@ -281,6 +281,30 @@
       },
       "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5577e667_683294a2",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T23:27:17Z",
+      "side": 1,
+      "message": "I agree with Yu-Ping, the VB2_TRY macro was exactly created for code like this. It saves a lot of boilerplate lines to just write\n```\nVB2_TRY(func1());\nVB2_TRY(func2());\nVB2_TRY(func3());\n```\ninstead of\n```\nrv \u003d func1();\nif (rv)\n  return rv;\nrv \u003d func2();\nif (rv)\n  return rv;\nrv \u003d func3();\nif (rv)\n  return rv;\n```\nand thus makes the code more readable by allowing the reader to focus on the important parts.\n\nI understand that if you\u0027re new to the vboot code base you have to get used to it first, but it is a choice we\u0027ve made that we feel the ongoing benefit outweighs that initial adjustment friction for new contributors. All other 2lib code is written to use it wherever it is applicable, so this code should conform to that established style.",
+      "parentUuid": "2dc379d9_66d65e5b",
+      "range": {
+        "startLine": 300,
+        "startChar": 9,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "3abc623c6d4ea12907ac9e167d1008a94b004bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
