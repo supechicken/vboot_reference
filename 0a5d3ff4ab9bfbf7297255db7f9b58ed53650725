@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7294cd34_06de3971",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "Does this need to be an extra field? Why not just check `if (avbctx-\u003epreloaded[0].size)`?",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3697a99d_285e51ef",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 16
@@ -37,6 +54,160 @@
       "writtenOn": "2025-03-09T23:54:47Z",
       "side": 1,
       "message": "align",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d069346e_66593069",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "This doesn\u0027t really reflect the \"has\" amount, it should be `kernel_buffer_end - buffer`.",
+      "range": {
+        "startLine": 167,
+        "startChar": 20,
+        "endLine": 167,
+        "endChar": 46
+      },
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e9f4b7_9da22d04",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "If you do keep this, `reserve_buffers()` should set it to true. (But as mentioned above I don\u0027t think you need it at all.)",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cf74d1_81a73485",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "I think we should also set `*out_num_bytes_preloaded \u003d 0` before the first point where we\u0027re potentially returning OK without loading anything, just in case.",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff3d89b_e34a9297",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "This check should come before `reserve_buffers()`.",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3679ce49_e78efd62",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "This comment would make more sense at the first point where you\u0027re potentially returning OK.",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d10ade7_0026b7b2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "I don\u0027t think this is correct? `part-\u003esize` will always be the exact size of the partition. My understanding of the way `out_num_bytes_preloaded` works is that if you request more `num_bytes` than the partition has, we should just return OK with the amount we have in `*out_num_bytes_preloaded`. But that case wouldn\u0027t work with this code because you would already be returning an error here. (It would be great to have unit tests for all these edge cases, btw.)",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b40b026_ec5a9362",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "I think we should always load `part-\u003esize`, even if `num_bytes` is smaller. Otherwise we risk having a half-loaded partition, and you don\u0027t have the code to remedy that if we later get a call for a larger size. Rather than implement extra logic for that edge case (which shouldn\u0027t happen in practice with the current AVB code anyway), let\u0027s just always load the full thing no matter how many bytes we were asked for.",
+      "range": {
+        "startLine": 239,
+        "startChar": 54,
+        "endLine": 239,
+        "endChar": 63
+      },
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b904d802_cdc064f8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "This should be `data_size`.",
+      "range": {
+        "startLine": 246,
+        "startChar": 19,
+        "endLine": 246,
+        "endChar": 28
+      },
       "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

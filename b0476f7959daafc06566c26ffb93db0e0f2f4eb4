@@ -339,6 +339,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "baef2660_0a556ca1",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-11T22:00:10Z",
+      "side": 1,
+      "message": "vboot_avb_data is fine too but then let\u0027s actually malloc() that.",
+      "parentUuid": "81fe0229_936a8fc7",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
