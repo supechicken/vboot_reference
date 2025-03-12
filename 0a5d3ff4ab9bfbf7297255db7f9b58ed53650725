@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31f15432_271cf7bb",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-12T07:22:27Z",
+      "side": 1,
+      "message": "Note that in normal mode `num_bytes` will actually be smaller than `part-\u003esize` (at least for pvmfw, see b/393987899#comment3). Do we really want to waste time reading hundreds of KB of unused data?\n\nWith the current implementation (PS16), when there\u0027s another call with a larger requested size (`num_bytes \u003e\u003d part-\u003edata_size`), then `load_partition` will be called again with the larger size, so nothing will go wrong functionally. The only problem is the duplicate read, but as you said, that won\u0027t happen in practice. Therefore I see no problem with that.",
+      "parentUuid": "5b40b026_ec5a9362",
+      "range": {
+        "startLine": 239,
+        "startChar": 54,
+        "endLine": 239,
+        "endChar": 63
+      },
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b904d802_cdc064f8",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 16
@@ -202,6 +226,30 @@
       "writtenOn": "2025-03-11T22:00:10Z",
       "side": 1,
       "message": "This should be `data_size`.",
+      "range": {
+        "startLine": 246,
+        "startChar": 19,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac966dd_1d8a3d21",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-12T07:22:27Z",
+      "side": 1,
+      "message": "Yeah... not sure how I missed that.",
+      "parentUuid": "b904d802_cdc064f8",
       "range": {
         "startLine": 246,
         "startChar": 19,
