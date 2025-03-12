@@ -76,7 +76,7 @@ int cmd_add(int argc, char *argv[])
 			params.set_type = 1;
 			if (CGPT_OK !=
 				    SupportedType(optarg, &params.type_guid) &&
-			    CGPT_OK != StrToGuid(optarg, &params.type_guid)) {
+			    CGPT_OK != GptStrToGuid(optarg, &params.type_guid)) {
 				Error("invalid argument to -%c: %s\n", c,
 				      optarg);
 				errorcnt++;
@@ -84,7 +84,7 @@ int cmd_add(int argc, char *argv[])
 			break;
 		case 'u':
 			params.set_unique = 1;
-			if (CGPT_OK != StrToGuid(optarg, &params.unique_guid)) {
+			if (CGPT_OK != GptStrToGuid(optarg, &params.unique_guid)) {
 				Error("invalid argument to -%c: %s\n", c,
 				      optarg);
 				errorcnt++;
