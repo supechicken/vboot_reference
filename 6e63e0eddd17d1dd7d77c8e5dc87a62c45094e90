@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e194737_3339f064",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:36:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f96f25da_9677cdc3",
+      "revId": "6e63e0eddd17d1dd7d77c8e5dc87a62c45094e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c9e43db_9b57cb0e",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-10T00:01:46Z",
       "side": 1,
       "message": "`rv`",
+      "range": {
+        "startLine": 300,
+        "startChar": 9,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "6e63e0eddd17d1dd7d77c8e5dc87a62c45094e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe12ba9a_85b60e4d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:36:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c9e43db_9b57cb0e",
       "range": {
         "startLine": 300,
         "startChar": 9,
