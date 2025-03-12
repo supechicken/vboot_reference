@@ -430,7 +430,7 @@ int DriveClose(struct drive *drive, int update_as_needed)
  *
  * Returns CGPT_OK if parsing is successful; otherwise CGPT_FAILED.
  */
-int StrToGuid(const char *str, Guid *guid)
+int GptStrToGuid(const char *str, Guid *guid)
 {
 	uint32_t time_low;
 	uint16_t time_mid;
