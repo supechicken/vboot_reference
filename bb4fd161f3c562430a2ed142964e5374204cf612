@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a1ae5b_68b86a84",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec3188fb_c7dacafd",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 6
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c3d2f16_53cdf98c",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-09T23:59:28Z",
       "side": 1,
       "message": "Can we still return the original error code `rv`?",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b255e8b_9451ab64",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c3d2f16_53cdf98c",
       "range": {
         "startLine": 120,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "199f3414_44613bf1",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:37:22Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "b7ca6cbb_7b13f6bc",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6363594_d4d44007",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-03-11T22:35:10Z",
       "side": 1,
       "message": "Is the newline here intentional? It seems a bit weird, we usually keep error messages to one line unless it\u0027s really a lot of strucutred output.",
+      "range": {
+        "startLine": 127,
+        "startChar": 58,
+        "endLine": 127,
+        "endChar": 60
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d5ac11_a9062de2",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6363594_d4d44007",
       "range": {
         "startLine": 127,
         "startChar": 58,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80449742_f7546b9a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f749555_6f7338d5",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 43
+      },
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2068f1ea_c8a9e43c",
@@ -129,6 +249,24 @@
       "writtenOn": "2025-03-11T22:35:10Z",
       "side": 1,
       "message": "Could maybe also incorporate that into the check above, I don\u0027t think we need so much differentiation for all these \"broken image\" cases that should never happen anyway.",
+      "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c8bd0f_ac55d08b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:37:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2068f1ea_c8a9e43c",
       "revId": "bb4fd161f3c562430a2ed142964e5374204cf612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
