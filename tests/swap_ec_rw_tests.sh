@@ -50,6 +50,7 @@ cp -f "${AP_IMAGE}" "${TMP}.source"
 cp -f "${AP_IMAGE}" "${TMP}.target"
 "${SWAP}" -i "${TMP}.target" -a "${TMP}.source"
 cmp "${TMP}.target" "${TMP}.source"
+futility update -i "${TMP}.target" --manifest | jq -r '.' > /dev/null
 
 # Cleanup
 rm -rf "${TMPD}"
