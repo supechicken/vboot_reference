@@ -286,6 +286,24 @@
       "parentUuid": "b5ca143b_ad2d2f1e",
       "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec2ee7e_269ce8bc",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-12T23:21:16Z",
+      "side": 1,
+      "message": "You can just avoid the implicit assumption that the output of your snprintf() is exactly GUID_STRLEN bytes long if you just assert the return value of snprintf() itself. No big deal either way.",
+      "parentUuid": "23a5098f_fedf2707",
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
