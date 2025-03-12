@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8aa7d4e6_9abcee1c",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-12T10:27:24Z",
+      "side": 1,
+      "message": "The testing AP image doesn\u0027t contain EC config so it return from check_exist.\n\nLet\u0027s move the discussion to CL:6346058.",
+      "parentUuid": "4d22284c_5a03dff2",
+      "revId": "4a9586937f1981e7afc2a33869c8856ee4ce7be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dfbfe56_7fcd5efc",
         "filename": "scripts/image_signing/swap_ec_rw",
         "patchSetId": 14
