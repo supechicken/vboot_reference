@@ -34,6 +34,23 @@
       "parentUuid": "ca738e8b_151a6c06",
       "revId": "5a40883c151c6f671cabe88569f5ec14803b2cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "257f016b_423db524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-12T10:19:36Z",
+      "side": 1,
+      "message": "CQ blocked by b/400997771.\n\n```\nld.lld: error: cannot open /usr/lib64/clang/20/lib/aarch64-cros-linux-gnu/libclang_rt.builtins.a: No such file or directory\n```",
+      "revId": "5a40883c151c6f671cabe88569f5ec14803b2cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
