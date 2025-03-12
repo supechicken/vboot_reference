@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d22284c_5a03dff2",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-03-12T09:43:58Z",
+      "side": 1,
+      "message": "Let\u0027s add a validity check for the existence of `${output}`.",
+      "revId": "4a9586937f1981e7afc2a33869c8856ee4ce7be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dfbfe56_7fcd5efc",
         "filename": "scripts/image_signing/swap_ec_rw",
         "patchSetId": 14
