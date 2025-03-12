@@ -399,11 +399,27 @@ int DriveClose(struct drive *drive, int update_as_needed) {
  *
  * Returns CGPT_OK if parsing is successful; otherwise CGPT_FAILED.
  */
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
 int StrToGuid(const char *str, Guid *guid) {
   uint32_t time_low;
   uint16_t time_mid;
   uint16_t time_high_and_version;
   unsigned int chunk[11];
+||||||| BASE
+int StrToGuid(const char *str, Guid *guid)
+{
+	uint32_t time_low;
+	uint16_t time_mid;
+	uint16_t time_high_and_version;
+	unsigned int chunk[11];
+=======
+int GptStrToGuid(const char *str, Guid *guid)
+{
+	uint32_t time_low;
+	uint16_t time_mid;
+	uint16_t time_high_and_version;
+	unsigned int chunk[11];
+>>>>>>> CHANGE (ea4986 cgpt: Add Gpt prefix to StrToGuid() function)
 
   if (11 != sscanf(str, "%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X",
                    chunk+0,

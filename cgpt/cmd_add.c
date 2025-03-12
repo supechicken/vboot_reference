@@ -47,6 +47,7 @@ int cmd_add(int argc, char *argv[]) {
   int errorcnt = 0;
   char *e = 0;
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
   opterr = 0;                     // quiet, you
   while ((c=getopt(argc, argv, ":hi:b:s:t:u:l:S:T:P:R:B:A:D:")) != -1)
   {
@@ -123,6 +124,169 @@ int cmd_add(int argc, char *argv[]) {
       params.raw_value = strtoull(optarg, &e, 0);
       errorcnt += check_int_parse(c, e);
       break;
+||||||| BASE
+	opterr = 0; // quiet, you
+	while ((c = getopt(argc, argv, ":hi:b:s:t:u:l:E:S:T:P:R:B:A:D:")) != -1) {
+		switch (c) {
+		case 'D':
+			params.drive_size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'i':
+			params.partition = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'b':
+			params.set_begin = 1;
+			params.begin = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 's':
+			params.set_size = 1;
+			params.size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 't':
+			params.set_type = 1;
+			if (CGPT_OK != SupportedType(optarg, &params.type_guid) &&
+			    CGPT_OK != StrToGuid(optarg, &params.type_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'u':
+			params.set_unique = 1;
+			if (CGPT_OK != StrToGuid(optarg, &params.unique_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'l':
+			params.label = optarg;
+			break;
+		case 'E':
+			params.set_error_counter = 1;
+			params.error_counter = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.error_counter, 0, 1);
+			break;
+		case 'S':
+			params.set_successful = 1;
+			params.successful = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.successful, 0, 1);
+			break;
+		case 'T':
+			params.set_tries = 1;
+			params.tries = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.tries, 0, 15);
+			break;
+		case 'P':
+			params.set_priority = 1;
+			params.priority = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.priority, 0, 15);
+			break;
+		case 'R':
+			params.set_required = 1;
+			params.required = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.required, 0, 1);
+			break;
+		case 'B':
+			params.set_legacy_boot = 1;
+			params.legacy_boot = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.legacy_boot, 0, 1);
+			break;
+		case 'A':
+			params.set_raw = 1;
+			params.raw_value = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+=======
+	opterr = 0; // quiet, you
+	while ((c = getopt(argc, argv, ":hi:b:s:t:u:l:E:S:T:P:R:B:A:D:")) != -1) {
+		switch (c) {
+		case 'D':
+			params.drive_size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'i':
+			params.partition = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'b':
+			params.set_begin = 1;
+			params.begin = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 's':
+			params.set_size = 1;
+			params.size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 't':
+			params.set_type = 1;
+			if (CGPT_OK != SupportedType(optarg, &params.type_guid) &&
+			    CGPT_OK != GptStrToGuid(optarg, &params.type_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'u':
+			params.set_unique = 1;
+			if (CGPT_OK != GptStrToGuid(optarg, &params.unique_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'l':
+			params.label = optarg;
+			break;
+		case 'E':
+			params.set_error_counter = 1;
+			params.error_counter = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.error_counter, 0, 1);
+			break;
+		case 'S':
+			params.set_successful = 1;
+			params.successful = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.successful, 0, 1);
+			break;
+		case 'T':
+			params.set_tries = 1;
+			params.tries = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.tries, 0, 15);
+			break;
+		case 'P':
+			params.set_priority = 1;
+			params.priority = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.priority, 0, 15);
+			break;
+		case 'R':
+			params.set_required = 1;
+			params.required = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.required, 0, 1);
+			break;
+		case 'B':
+			params.set_legacy_boot = 1;
+			params.legacy_boot = (uint32_t)strtoul(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			errorcnt += check_int_limit(c, params.legacy_boot, 0, 1);
+			break;
+		case 'A':
+			params.set_raw = 1;
+			params.raw_value = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+>>>>>>> CHANGE (ea4986 cgpt: Add Gpt prefix to StrToGuid() function)
 
     case 'h':
       Usage();

@@ -31,6 +31,7 @@ int cmd_edit(int argc, char *argv[]) {
   int errorcnt = 0;
   char *e = 0;
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
   opterr = 0;                     // quiet, you
   while ((c=getopt(argc, argv, ":hu:D:")) != -1)
   {
@@ -68,6 +69,77 @@ int cmd_edit(int argc, char *argv[]) {
     Usage();
     return CGPT_FAILED;
   }
+||||||| BASE
+	opterr = 0; // quiet, you
+	while ((c = getopt(argc, argv, ":hu:D:")) != -1) {
+		switch (c) {
+		case 'D':
+			params.drive_size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'u':
+			params.set_unique = 1;
+			if (CGPT_OK != StrToGuid(optarg, &params.unique_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'h':
+			Usage();
+			return CGPT_OK;
+		case '?':
+			Error("unrecognized option: -%c\n", optopt);
+			errorcnt++;
+			break;
+		case ':':
+			Error("missing argument to -%c\n", optopt);
+			errorcnt++;
+			break;
+		default:
+			errorcnt++;
+			break;
+		}
+	}
+	if (errorcnt) {
+		Usage();
+		return CGPT_FAILED;
+	}
+=======
+	opterr = 0; // quiet, you
+	while ((c = getopt(argc, argv, ":hu:D:")) != -1) {
+		switch (c) {
+		case 'D':
+			params.drive_size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'u':
+			params.set_unique = 1;
+			if (CGPT_OK != GptStrToGuid(optarg, &params.unique_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'h':
+			Usage();
+			return CGPT_OK;
+		case '?':
+			Error("unrecognized option: -%c\n", optopt);
+			errorcnt++;
+			break;
+		case ':':
+			Error("missing argument to -%c\n", optopt);
+			errorcnt++;
+			break;
+		default:
+			errorcnt++;
+			break;
+		}
+	}
+	if (errorcnt) {
+		Usage();
+		return CGPT_FAILED;
+	}
+>>>>>>> CHANGE (ea4986 cgpt: Add Gpt prefix to StrToGuid() function)
 
   if (optind >= argc)
   {

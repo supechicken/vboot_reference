@@ -45,9 +45,15 @@ int CgptLegacy(CgptLegacyParams *params);
  * At least GUID_STRLEN bytes should be reserved in 'str' (included the tailing
  * '\0').
  */
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
 #define GUID_STRLEN 37
 int StrToGuid(const char *str, Guid *guid);
 void GuidToStr(const Guid *guid, char *str, unsigned int buflen);
+||||||| BASE
+int StrToGuid(const char *str, Guid *guid);
+=======
+int GptStrToGuid(const char *str, Guid *guid);
+>>>>>>> CHANGE (ea4986 cgpt: Add Gpt prefix to StrToGuid() function)
 int GuidEqual(const Guid *guid1, const Guid *guid2);
 int GuidIsZero(const Guid *guid);
 

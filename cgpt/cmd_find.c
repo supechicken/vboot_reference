@@ -80,6 +80,7 @@ int cmd_find(int argc, char *argv[]) {
   char *e = 0;
   int c;
 
+<<<<<<< HEAD   (425ede 2lib: Add gbb flag to enforce CSE sync)
   opterr = 0;                     // quiet, you
   while ((c=getopt(argc, argv, ":hv1nt:u:l:M:O:D:")) != -1)
   {
@@ -135,6 +136,117 @@ int cmd_find(int argc, char *argv[]) {
       params.matchoffset = strtoull(optarg, &e, 0);
       errorcnt += check_int_parse(c, e);
       break;
+||||||| BASE
+	opterr = 0; // quiet, you
+	while ((c = getopt(argc, argv, ":hv1nt:u:l:M:O:D:")) != -1) {
+		switch (c) {
+		case 'D':
+			params.drive_size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'v':
+			params.verbose++;
+			break;
+		case 'n':
+			params.numeric = 1;
+			break;
+		case '1':
+			params.oneonly = 1;
+			break;
+		case 'l':
+			params.set_label = 1;
+			params.label = optarg;
+			break;
+		case 't':
+			params.set_type = 1;
+			if (CGPT_OK != SupportedType(optarg, &params.type_guid) &&
+			    CGPT_OK != StrToGuid(optarg, &params.type_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'u':
+			params.set_unique = 1;
+			if (CGPT_OK != StrToGuid(optarg, &params.unique_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'M':
+			params.matchbuf = ReadFile(optarg, &params.matchlen);
+			if (!params.matchbuf || !params.matchlen) {
+				Error("Unable to read from %s\n", optarg);
+				errorcnt++;
+			}
+			// Go ahead and allocate space for the comparison too
+			params.comparebuf = (uint8_t *)malloc(params.matchlen);
+			if (!params.comparebuf) {
+				Error("Unable to allocate %" PRIu64
+				      "bytes for comparison buffer\n",
+				      params.matchlen);
+				errorcnt++;
+			}
+			break;
+		case 'O':
+			params.matchoffset = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+=======
+	opterr = 0; // quiet, you
+	while ((c = getopt(argc, argv, ":hv1nt:u:l:M:O:D:")) != -1) {
+		switch (c) {
+		case 'D':
+			params.drive_size = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+		case 'v':
+			params.verbose++;
+			break;
+		case 'n':
+			params.numeric = 1;
+			break;
+		case '1':
+			params.oneonly = 1;
+			break;
+		case 'l':
+			params.set_label = 1;
+			params.label = optarg;
+			break;
+		case 't':
+			params.set_type = 1;
+			if (CGPT_OK != SupportedType(optarg, &params.type_guid) &&
+			    CGPT_OK != GptStrToGuid(optarg, &params.type_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'u':
+			params.set_unique = 1;
+			if (CGPT_OK != GptStrToGuid(optarg, &params.unique_guid)) {
+				Error("invalid argument to -%c: %s\n", c, optarg);
+				errorcnt++;
+			}
+			break;
+		case 'M':
+			params.matchbuf = ReadFile(optarg, &params.matchlen);
+			if (!params.matchbuf || !params.matchlen) {
+				Error("Unable to read from %s\n", optarg);
+				errorcnt++;
+			}
+			// Go ahead and allocate space for the comparison too
+			params.comparebuf = (uint8_t *)malloc(params.matchlen);
+			if (!params.comparebuf) {
+				Error("Unable to allocate %" PRIu64
+				      "bytes for comparison buffer\n",
+				      params.matchlen);
+				errorcnt++;
+			}
+			break;
+		case 'O':
+			params.matchoffset = strtoull(optarg, &e, 0);
+			errorcnt += check_int_parse(c, e);
+			break;
+>>>>>>> CHANGE (ea4986 cgpt: Add Gpt prefix to StrToGuid() function)
 
     case 'h':
       Usage();
