@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9fb1db_cdf7e4b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:33:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55427012_d401e351",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c4e7c0a_0e96293c",
@@ -88,6 +112,48 @@
           ]
         }
       ],
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065c1480_d8ec9597",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:33:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b7acc1_f2235488",
+      "range": {
+        "startLine": 219,
+        "startChar": 68,
+        "endLine": 219,
+        "endChar": 82
+      },
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8d7079_01d78178",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:33:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4e7c0a_0e96293c",
       "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9649e1cf_9e6fe0c3",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:33:17Z",
+      "side": 1,
+      "message": "I will do that in separate patch",
+      "parentUuid": "036e0e55_0bc8bb07",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ca143b_ad2d2f1e",
@@ -176,6 +266,24 @@
       "writtenOn": "2025-03-11T20:16:30Z",
       "side": 1,
       "message": "nit: might as well assert that the return value of snprintf is \u003c buflen instead?",
+      "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a5098f_fedf2707",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-12T12:33:17Z",
+      "side": 1,
+      "message": "I dont understand if I need to add new assert or change the existing one. I like the one in the code and dont really think we need another one.",
+      "parentUuid": "b5ca143b_ad2d2f1e",
       "revId": "df6d2b402af257e141d0cd5629e614bec919b93a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
