@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b90c00_1bc29e99",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-13T02:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e70eb2ba_97686080",
+      "range": {
+        "startLine": 50,
+        "startChar": 66,
+        "endLine": 50,
+        "endChar": 74
+      },
+      "revId": "85685d8ec60a47639e26d8bcfd06b4db01b78ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "377290b8_4a9a3e2c",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-03-12T10:52:32Z",
       "side": 1,
       "message": "Per our offline discussion, I think a better way is to add `ecrw.config` to tests/swap_ec_rw_data/bios_geralt.bin `FW_MAIN_A` to avoid regression.",
+      "revId": "85685d8ec60a47639e26d8bcfd06b4db01b78ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "064f7e31_13b38472",
+        "filename": "tests/swap_ec_rw_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2025-03-13T02:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377290b8_4a9a3e2c",
       "revId": "85685d8ec60a47639e26d8bcfd06b4db01b78ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
