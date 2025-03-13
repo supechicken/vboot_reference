@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33dc1764_9bc9d6be",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-13T12:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40b96048_95b5183d",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3697a99d_285e51ef",
@@ -308,6 +326,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d11f6343_5227deac",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-13T12:44:47Z",
+      "side": 1,
+      "message": "It was not about lazy initialization, TBH I wanted to call it as soon as possible. We moved it here just to keep all buffer loading function together in one file.",
+      "parentUuid": "37ea375e_e18d58d0",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3679ce49_e78efd62",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 16
@@ -390,6 +426,24 @@
       "side": 1,
       "message": "What would be the point of having the `out_num_bytes_preloaded` parameter at all if success always meant that we return exactly the amount of bytes requested? I think the fact that it exists proves that short reads are an intended case. It also says `|out_num_bytes_preloaded| must be no larger than |num_bytes|`, which kinda implies that it can be smaller (otherwise they would\u0027ve written \"equal\").\n\nIt would also be consistent with how we implemented `read_from_partition()`.",
       "parentUuid": "44a66fc6_e2a18108",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1c0114_cef3b98e",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-13T12:44:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7158119_7551bf51",
       "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

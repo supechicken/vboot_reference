@@ -393,6 +393,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a573286_2a160255",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-13T12:44:47Z",
+      "side": 1,
+      "message": "\"Well, that comment was specific to the AvbObs data structure, not vboot_avb_data.\"\n\nOk, but it was changed to be static in December last year, pointing out that it should be like that two months later is kind of unfair.\n\n\"I also asked for that to be static initialized but we didn\u0027t end up doing that either. (Granted, AvbOps has a pointer to vboot_avb_data so it couldn\u0027t have been completely immutable anyway, and I didn\u0027t really think that through the first time I looked at this. Sorry for the back-and-forth.)\"\n\nI really don\u0027t understand that argument, it sounds like \"I also ask you to did another change which you did not (but ok, it cannot be done).\"\n\n\"\"\"\nIn general, mutable global data should be avoided unless there\u0027s really a need for that data to be singleton. Normal functions that just work on their input parameters should generally be reentrant, meaning you should be able to call vboot_avb_ops_new() twice with different parameters and operate on both of them independently. Our code doesn\u0027t currently do that but it\u0027s still good design to not write code that would introduce problems if it did (and it tends to help with testing).\n\nFor data structures that really just contain immutable function pointers you could have both instances share the same structure, but when we actually have stuff like partition buffers in there that doesn\u0027t work. So it would be better to heap-allocate them for each instance separately.\n\"\"\"\n\n I totally agree with you that in a perfect world it should be like that. But:\n - this change will impact 5 other commits and some of them are already +2\n - it will create another iteration of review, test and comments\n - it will delay pvmfw and fastboot support\n - it will allow us to use 2 instances of avb which probably wont ever be needed\n\nInitial version of the patchset was uploaded in June last year. For the last 3 months when the second iteration was uploaded I did almost all the changes you requested (no matter if I agree with it or not). I did a couple of refactoring. I cleaned up Foster/Smaug, simplify boot_policy, cleaned up cgpt which actually was out of the scope of my task. But right now I am losing hope that we really want to add this support to main. At some point we need to live with the fact that the code is not perfect and moving on with the project is more important.",
+      "parentUuid": "a5564121_c9d7b19a",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
