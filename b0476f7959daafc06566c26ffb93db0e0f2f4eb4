@@ -411,6 +411,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5b3a702_c9fade1b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-13T22:01:29Z",
+      "side": 1,
+      "message": "Hi Grzegorz,\n\nI understand your frustration (I once waited 9+ months for Aaron to just do a single review cycle, trust me, I know) but I can also tell you from experience that for an effort of this size and importance, the amount of time and review cycles we have spent on it (and are still going to spend) is not at all unusual. That is the big difference between proof-of-concept code written up by one person and a well-designed and maintained production code base that we can base many generations of products on. vboot is the most security-critical piece of our firmware code so this is the part that really needs to be designed and unit-tested (which is also a part we still need to get around to) most thoroughly before we ship it to users. And thorough design also means that you may sometimes need to clean up adjacent, not directly related parts so that things fit together better, because otherwise you just accumulate technical debt that will eventually drag you down further and further, and that usually takes more time to clean up later on than if you had already made that effort right away.\n\nThis isn\u0027t really about \"fairness\" — I\u0027m not here to make your life hard or judge your efforts overly harshly, I\u0027m here to work together with you to make this code the best it can be. You have been doing some great work already and you should absolutely not take any of these requests as criticism, it\u0027s just that sometimes as a reviewer you only see after some time that maybe there\u0027s yet another even better way to structure things. I brought up the static initializer thing just to illustrate that I originally thought this could go into a different direction where keeping that structure static would have been acceptable (if it would have been completely immutable). But I was wrong back then and didn\u0027t think things through all the way, they developed into a different direction, and with the way it turned out right now I think dynamic allocation is clearly the better choice because there\u0027s no need for this code to be non-reentrant when the alternative doesn\u0027t really cost notably more. I\u0027m definitely trying not to flip-flop on my review suggestions whenever possible, and it\u0027s fair to call me out on it, but in this case I can really just say that it looked different to me back then and the way I thought it could go didn\u0027t quite turn out. That happens, unfortunately.\n\nWe can discuss schedule risk trade-offs when there\u0027s a big request that would really take a lot more time to implement (as I know we\u0027ve still had a few open ones on the depthcharge side, which is why I\u0027m trying to get through with this code ASAP so that I can go look at that again next). But in this case, as far as I can tell (unless I\u0027m missing something?), it should be a really easy change of a few lines that\u0027s basically localized to the `vboot_avb_ops_new()` function. So... we could go back and forth a few more times arguing whether this is the one more cleanup that is too much, or we could probably just fix it in the time it takes to write another long comment?",
+      "parentUuid": "1a573286_2a160255",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
