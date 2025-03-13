@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40b96048_95b5183d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-13T00:00:04Z",
+      "side": 1,
+      "message": "Well, you\u0027re introducing data redundancies where there don\u0027t really need to be any. It just introduces the chance that something might go out of sync.",
+      "parentUuid": "8549b42b_eb38ed59",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3697a99d_285e51ef",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 16
@@ -272,6 +290,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37ea375e_e18d58d0",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-13T00:00:04Z",
+      "side": 1,
+      "message": "I mean, if we\u0027re going with lazy initialization then it just seems consequential to really make it as lazy as it can be, not initialize those partitions when the caller is asking for something completely different.",
+      "parentUuid": "09d1f9d7_dcd3ecc1",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3679ce49_e78efd62",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 16
@@ -342,6 +378,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7158119_7551bf51",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-13T00:00:04Z",
+      "side": 1,
+      "message": "What would be the point of having the `out_num_bytes_preloaded` parameter at all if success always meant that we return exactly the amount of bytes requested? I think the fact that it exists proves that short reads are an intended case. It also says `|out_num_bytes_preloaded| must be no larger than |num_bytes|`, which kinda implies that it can be smaller (otherwise they would\u0027ve written \"equal\").\n\nIt would also be consistent with how we implemented `read_from_partition()`.",
+      "parentUuid": "44a66fc6_e2a18108",
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b40b026_ec5a9362",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 16
@@ -401,6 +455,30 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "31f15432_271cf7bb",
+      "range": {
+        "startLine": 239,
+        "startChar": 54,
+        "endLine": 239,
+        "endChar": 63
+      },
+      "revId": "0a5d3ff4ab9bfbf7297255db7f9b58ed53650725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72cc8bb4_ff59aa45",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-13T00:00:04Z",
+      "side": 1,
+      "message": "Right, good point, and I didn\u0027t realize that the current implementation already handles that. I guess it\u0027s good as it is then.",
+      "parentUuid": "f9baea07_669b9f60",
       "range": {
         "startLine": 239,
         "startChar": 54,

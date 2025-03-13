@@ -375,6 +375,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5564121_c9d7b19a",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-13T00:00:04Z",
+      "side": 1,
+      "message": "Well, that comment was specific to the AvbObs data structure, not vboot_avb_data. I also asked for that to be static initialized but we didn\u0027t end up doing that either. (Granted, AvbOps has a pointer to vboot_avb_data so it couldn\u0027t have been completely immutable anyway, and I didn\u0027t really think that through the first time I looked at this. Sorry for the back-and-forth.)\n\nIn general, mutable global data should be avoided unless there\u0027s really a need for that data to be singleton. Normal functions that just work on their input parameters should generally be reentrant, meaning you should be able to call `vboot_avb_ops_new()` twice with different parameters and operate on both them independently. Our code doesn\u0027t currently do that but it\u0027s still good design to not write code that would introduce problems if it did (and it tends to help with testing).\n\nFor data structures that really just contain immutable function pointers you could have both instances share the same structure, but when we actually have stuff like partition buffers in there that doesn\u0027t work. So it would be better to heap-allocate them for each instance separately.",
+      "parentUuid": "424dc72a_a770167a",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
