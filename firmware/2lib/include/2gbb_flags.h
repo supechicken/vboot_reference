@@ -97,6 +97,9 @@ enum vb2_gbb_flag {
 
 	/* Enforce CSE SYNC, even if current CSE is same as CBFS CSE */
 	VB2_GBB_FLAG_FORCE_CSE_SYNC = 1 << 17,
+
+	/* Force ADB to be enabled. */
+	VB2_GBB_FLAG_ENABLE_ADB = 1 << 31,
 };
 
 vb2_error_t vb2_get_gbb_flag_description(enum vb2_gbb_flag flag,
