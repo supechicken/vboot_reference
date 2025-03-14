@@ -447,6 +447,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e656cc3d_805d6560",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-14T12:32:44Z",
+      "side": 1,
+      "message": "Julius, just to clarify. You want to have both avb_ops and vboot_avb_ctx structure malloced in vboot_avb_ops_new() function, right?",
+      "parentUuid": "f4e33e85_b784485f",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
