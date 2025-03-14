@@ -465,6 +465,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fbc5a6c_afd84379",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-14T23:03:49Z",
+      "side": 1,
+      "message": "Hi Konrad,\n\nIf you are asking whether it is standard behavior to review large, sweeping changes to our most security critical code for many months in ways that may occasionally go back-and-forth a bit before we find the optimal solution, then yes, that is how we have operated for 15 years and how we have managed to build the only personal computing devices with a perfect boot security track record over all that time. I understand that we have a schedule to keep and if you are worried that it is at risk (I don\u0027t think it\u0027s that serious yet) we should probably discuss that somewhere separately and look at the high level items that are still outstanding and how long we\u0027d expect them to take, rather than squeezing that into a comment thread about what should have been a 5 minute fix of a few lines.\n\nI understand that the branch situation leads to extra friction but unfortunately some of that is unavoidable. If you are worried that things are diverging too far, maybe we can resolve that by updating the branch to track the current state of this patch train? How many features do we still have that are branch-only and have not been ported here? If this patch train is feature complete now, even if it is not yet fully reviewed, why don\u0027t we just build the dogfood images from here so that we don\u0027t need to keep maintaining two versions?\n\nIf review iterations are too painful because Grzegorz is doing so much testing for each version, then honestly, maybe that\u0027s not necessary. I don\u0027t think you need to test all edge cases on multiple platforms for every small iteration, I would expect you to just make sure it still boots AL once on one board. You can do another larger, more thorough round of testing when a group of patches is actually ready to go in to make sure we didn\u0027t miss anything. But having many review cycles with often just small fixes here and there is common and normal, and if your processes make that painful they should probably be adjusted.\n\nI do not really want to have a fight about how many months it has taken or who took how much time for what, I would much rather see us focus on getting this done instead. But if you keep bringing up the first version from last June, I feel it\u0027s also important to point out that for the comments that were already made on that version, no new iteration was uploaded until November when we actually started working on this again, and that for the months in-between we spent a lot of time on more high-level design discussions related to the whole project which were more urgent at the time. (I\u0027ll also point out that I wasn\u0027t told anything concrete about the Bluey project and my involvement in it until this January, so please view the estimates I made about how long I expect this to take when we met last year in that light. I am trying to split my time between these two top-priority items and anything else that\u0027s regularly coming up as best as I can.)\n\nI\u0027m not going to commit to any specific \"remaining amount of review cycles\" since as you can see (https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6030618/20/firmware/avb/vboot_avb_ops.c#198) even for simple changes typoes or small mistakes and misunderstandings can still creep in. But I do hope that we can probably get all this (up to CL:6330151 where Tomasz\u0027 newer stuff starts) sorted out and ready to land with the next iteration.\n\nLastly, please be aware that having long discussions like this (of which this is not the first) also take a notable amount of time that could have been spent on more reviews instead.\n\n\u003e Julius, just to clarify. You want to have both avb_ops and vboot_avb_ctx structure malloced in vboot_avb_ops_new() function, right?\n\nYes.",
+      "parentUuid": "e656cc3d_805d6560",
+      "revId": "b0476f7959daafc06566c26ffb93db0e0f2f4eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b0c87d5_8a0df2fc",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 12
