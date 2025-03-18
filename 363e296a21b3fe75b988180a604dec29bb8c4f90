@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74b98ab2_3b359d95",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-18T10:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf45d0c8_4508c154",
+      "range": {
+        "startLine": 198,
+        "startChar": 27,
+        "endLine": 198,
+        "endChar": 38
+      },
+      "revId": "363e296a21b3fe75b988180a604dec29bb8c4f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d78de9a2_11a9b272",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-14T22:58:13Z",
       "side": 1,
       "message": "`loaded_size` for consistency",
+      "range": {
+        "startLine": 237,
+        "startChar": 8,
+        "endLine": 237,
+        "endChar": 17
+      },
+      "revId": "363e296a21b3fe75b988180a604dec29bb8c4f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "651be246_1e8943ce",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-03-18T10:31:17Z",
+      "side": 1,
+      "message": "I think it is beneficiary to have local variable name different then the structure field. I like it now better than in original version. This name is still meaningfull. But if you insist I will modify it.",
+      "parentUuid": "d78de9a2_11a9b272",
       "range": {
         "startLine": 237,
         "startChar": 8,
