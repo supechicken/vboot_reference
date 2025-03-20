@@ -16,6 +16,47 @@
       "message": "Could you please review or suggest another reviewer?\n\nVerified with the `TEST\u003d` steps.\n\nThanks!",
       "revId": "3c39540fac7fc7ddfd5e0db8c85920104bf3e0c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e783575_3105231d",
+        "filename": "tests/futility/test_flash_util.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-20T23:21:37Z",
+      "side": 1,
+      "message": "I think this grep is returning true whenever there is any line that does not include the text, so that\u0027s probably not the kind of check you want. Just use `grep -q \u0027...\u0027 \u0026\u0026 exit 0`.",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f63b2c3e_cdadffdf",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tests/futility/test_flash_util.sh",
+              "range": {
+                "startLine": 7,
+                "startChar": 0,
+                "endLine": 8,
+                "endChar": 0
+              },
+              "replacement": "grep -q \u0027built without flashrom support\u0027 \u003c \u003c(\"${FUTILITY}\" help flash 2\u003e\u00261) \u0026\u0026 exit 0\n"
+            }
+          ]
+        }
+      ],
+      "revId": "3c39540fac7fc7ddfd5e0db8c85920104bf3e0c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
