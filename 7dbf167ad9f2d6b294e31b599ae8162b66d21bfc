@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24d8ff3_e611310a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-20T15:56:29Z",
+      "side": 1,
+      "message": "```suggestion\nsign_gsc_firmware.sh: sign ECDSA only image for NT\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "7dbf167ad9f2d6b294e31b599ae8162b66d21bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f887bc28_bf4b9278",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-03-20T15:56:29Z",
+      "side": 1,
+      "message": "```suggestion\nWith the recent update in the build scripts an ECDSA only binary is\n```",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "7dbf167ad9f2d6b294e31b599ae8162b66d21bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b8c8e0fd_271891b7",
