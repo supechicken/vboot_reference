@@ -1,0 +1,79 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1ce8a7_556c955a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T21:34:08Z",
+      "side": 1,
+      "message": "nit: as long as this is the only \"writeback\" case we can put the code for that right here",
+      "fixSuggestions": [
+        {
+          "fixId": "1ddf406d_c90b2b82",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 93,
+                "startChar": 0,
+                "endLine": 95,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 97,
+                "startChar": 0,
+                "endLine": 98,
+                "endChar": 0
+              },
+              "replacement": "\t\t/* Command field is supposed to be a one-shot thing. Clear it. */\n\t\tmemset(bcb.command, 0, sizeof(bcb.command));\n\t\tio_ret \u003d ops-\u003ewrite_to_partition(ops,\n\t\t\t\t\t\t GptPartitionNames[GPT_ANDROID_MISC],\n\t\t\t\t\t\t 0,\n\t\t\t\t\t\t sizeof(bcb),\n\t\t\t\t\t\t \u0026bcb);\n\t\tif (io_ret !\u003d AVB_IO_RESULT_OK)\n\t\t\tVB2_DEBUG(\"Failed to update misc parition\\n\");\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 104,
+                "startChar": 0,
+                "endLine": 105,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 119,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "9b1272a95e07a387ae799c8a27b31a5eb8a2155b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
