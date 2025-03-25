@@ -1,0 +1,346 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf61ca9_b94db5d9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "In the interest of not making checksum implementation proliferation worse than it already is, let\u0027s maybe add this to libpayload (via `commonlib/bsd`) so that the next thing that uses Fletcher32 can reuse it.",
+      "fixSuggestions": [
+        {
+          "fixId": "f660cb9e_7bc357c6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 334,
+                "startChar": 0,
+                "endLine": 347,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 365,
+                "startChar": 0,
+                "endLine": 367,
+                "endChar": 0
+              },
+              "replacement": "\tif (fb_cmd-\u003efletcher !\u003d fletcher32_be((char *)\u0026fb_cmd-\u003elen,\n\t\t\t\t\t      sizeof(fb_cmd-\u003elen) + fb_cmd-\u003elen)) {\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 381,
+                "startChar": 0,
+                "endLine": 382,
+                "endChar": 0
+              },
+              "replacement": "\tfb_cmd-\u003efletcher \u003d fletcher32_be((char *)\u0026fb_cmd-\u003elen, sizeof(fb_cmd-\u003elen) + fb_cmd-\u003elen);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad71be6_0b21f1f7",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "Let\u0027s also check `fb_cmd-\u003ecmdline[fb_cmd-\u003elen - 1] \u003d\u003d \u0027\\0\u0027`",
+      "fixSuggestions": [
+        {
+          "fixId": "ec77de80_f15daffe",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 360,
+                "startChar": 0,
+                "endLine": 361,
+                "endChar": 0
+              },
+              "replacement": "\tif (fb_cmd-\u003elen \u003e sizeof(fb_cmd-\u003ecmdline) ||\n\t    fb_cmd-\u003ecmdline[fb_cmd-\u003elen - 1] !\u003d \u0027\\0\u0027) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0d88ab_18db6090",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "`%u` (version as well)",
+      "range": {
+        "startLine": 361,
+        "startChar": 46,
+        "endLine": 361,
+        "endChar": 47
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "99a28395_02e1d3f0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 361,
+                "startChar": 0,
+                "endLine": 362,
+                "endChar": 0
+              },
+              "replacement": "\t\tVB2_DEBUG(\"Wrong vb2_fastboot_cmdline len (%u)\", fb_cmd-\u003elen);\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 377,
+                "startChar": 0,
+                "endLine": 378,
+                "endChar": 0
+              },
+              "replacement": "\t\tVB2_DEBUG(\"Wrong vb2_fastboot_cmdline len (%u)\", fb_cmd-\u003elen);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759e14cc_b7ecd88d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "Please use `ctx-\u003eboot_mode \u003d\u003d VB2_BOOT_MODE_DEVELOPER`.",
+      "fixSuggestions": [
+        {
+          "fixId": "411b779d_46408c9e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 488,
+                "startChar": 0,
+                "endLine": 489,
+                "endChar": 0
+              },
+              "replacement": "\tif (ctx-\u003eboot_mode \u003d\u003d VB2_BOOT_MODE_DEVELOPER)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc394cce_dfa7ad64",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "Putting it here means it will actually end up in bootconfig, not on the kernel command line. Is that what fastboot intended?",
+      "fixSuggestions": [
+        {
+          "fixId": "69ce6db1_e55df5dd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 415,
+                "startChar": 0,
+                "endLine": 415,
+                "endChar": 0
+              },
+              "replacement": "\nstatic void vb2_add_cmdline_property(struct vb2_kernel_params *params,\n\t\t\t\t     const char *name, const char *value)\n{\n\tint chars \u003d snprintf(params-\u003evboot_cmdline_buffer, params-\u003evboot_cmdline_size,\n\t\t\t     \"%s %s\u003d%s\", params-\u003evboot_cmdline_buffer, name, value);\n\tif (chars \u003c 0 || chars \u003e\u003d params-\u003evboot_cmdline_size) {\n\t\tVB2_DEBUG(\"ERROR: Command line doesn\u0027t fit provided buffer: %s\\n\",\n\t\t\t  value);\n\t\tparams-\u003evboot_cmdline_size \u003d 0;\n\t}\n\tparams-\u003evboot_cmdline_buffer +\u003d chars + 1;\n}\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 491,
+                "startChar": 0,
+                "endLine": 509,
+                "endChar": 0
+              },
+              "replacement": "\t/* Add properties to cmdline */\n\tvb2_add_cmdline_property(params, VERIFIED_BOOT_PROPERTY_NAME,\n\t\t\t\t   need_verification ? \"green\" : \"orange\");\n\tvb2_add_cmdline_property(params, SLOT_SUFFIX_BOOT_PROPERTY_NAME, slot_suffix);\n\tvb2_add_cmdline_property(params, ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME,\n\t\t\t\t   recovery_boot ? \"0\" : \"1\");\n\tif (fb_cmd)\n\t\tvb2_add_cmdline_property(params, \"\", fb_cmd-\u003ecmdline);\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5881e633_6a0eb916",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "nit: is this necessary? it shouldn\u0027t hurt to just have an extra space at the end",
+      "range": {
+        "startLine": 502,
+        "startChar": 8,
+        "endLine": 502,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "583c24bc_386dab3d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 497,
+                "startChar": 0,
+                "endLine": 498,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t     \"%s %s\u003d%s %s\u003d%s %s\u003d%s %s%s\", verify_data-\u003ecmdline,\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 502,
+                "startChar": 0,
+                "endLine": 503,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t     fb_cmd ? fb_cmd-\u003ecmdline : \"\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77f566b_b4acc44c",
+        "filename": "firmware/include/vb2_android_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "Is this an Android standard or did we make it up? Is it shared with Pixel? (The comment here should clarify that.)",
+      "fixSuggestions": [
+        {
+          "fixId": "0dbc4b18_368b1f1d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/vb2_android_misc.h",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": " * Reserve space for fastboot oem cmdline on misc partition. Use for that\n * vendor space which is at 2K - 16K range in misc. Skip 2K - 4K range as it\n * may be optionally used as bootloader_message_ab struct.\n *\n * This is a custom format for passing fastboot oem cmdline to bootloader.\n * It\u0027s not a standard format and it\u0027s not shared with Pixel.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75604704_f35cb4e5",
+        "filename": "firmware/include/vb2_android_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T02:30:04Z",
+      "side": 1,
+      "message": "If we\u0027re making something up I\u0027d prefer a checksum we already have support for (e.g. ipchksum), but if it is an existing format shared with Pixel then we need to use what they used.\n\n(Also, generally packing structures in a way that misaligns fields is a bad idea and should be avoided wherever possible, but if it\u0027s an existing format we need to live with the bad decisions they already made.)",
+      "fixSuggestions": [
+        {
+          "fixId": "bb5fff3b_86b82ac7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/vb2_android_misc.h",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 38,
+                "endChar": 0
+              },
+              "replacement": "\t/* CRC32 checksum of len and cmdline up to len bytes */\n\tuint32_t crc32;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f884b21934888426604efdd4db2160fbe36ffeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
