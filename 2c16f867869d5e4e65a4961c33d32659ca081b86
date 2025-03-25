@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313ff469_c705d6e5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T00:57:18Z",
+      "side": 1,
+      "message": "nit: maybe these constants too?",
+      "revId": "2c16f867869d5e4e65a4961c33d32659ca081b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ad9bfb_879e3ec6",
+        "filename": "firmware/include/vb2_android_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T00:57:18Z",
+      "side": 1,
+      "message": "I\u0027d maybe just add them to `vb2_android_bootimg.h`, it seems well-enough related.",
+      "revId": "2c16f867869d5e4e65a4961c33d32659ca081b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
