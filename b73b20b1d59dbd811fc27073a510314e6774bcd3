@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ab51b2_171742d4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T21:12:55Z",
+      "side": 1,
+      "message": "I feel like we\u0027re starting to have a few too many different \"command line\" fields, it\u0027s getting confusing. The existing ones can be explained with `vendor_cmdline_buffer` being the actual command line and `vboot_cmdline_buffer` being the thing that AVB calls \"command line\" but modern Android actually wants to have in bootconfig (although you\u0027re right that the naming could be better to clarify that).\n\nBut if you want to add more parts to the actual command line, in a non-time-critical path, I think it would be better if you realloc `vendor_cmdline_buffer` and copy your stuff to the end of that, rather than adding yet another field.",
+      "fixSuggestions": [
+        {
+          "fixId": "863788f5_3965ee8a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 628,
+                "startChar": 0,
+                "endLine": 636,
+                "endChar": 0
+              },
+              "replacement": "\t/* Address of the region with kernel cmdline parameters.\n\t * This is the same as `vendor_cmdline_buffer` for now.\n\t */\n\tchar *vboot_cmdline_buffer_v0;\n\t/* Size of the region with kernel cmdline parameters.\n\t * This is the same as `vendor_cmdline_buffer` for now.\n\t */\n\tuint32_t vboot_cmdline_size_v0;\n\t/* Address of the region with kernel bootconfig parameters.\n\t * This is the same as `bootconfig` for now.\n\t */\n\tchar *vboot_bootconfig_buffer_v0;\n\t/* Size of the region with kernel bootconfig parameters.\n\t * This is the same as `bootconfig` for now.\n\t */\n\tuint32_t vboot_bootconfig_size_v0;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b73b20b1d59dbd811fc27073a510314e6774bcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb0e225_c8107696",
+        "filename": "firmware/include/vb2_android_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-25T21:12:55Z",
+      "side": 1,
+      "message": "I\u0027m again wondering if this is matching any existing standard or we\u0027re making it up? If we are making it up, do we really need both of these? Are there any fields that can only go in bootconfig and not in the command line? Otherwise, I doubt our command line would ever be long enough (with most of the non-fastboot part moved out into bootconfig) that we can\u0027t just throw everything fastboot wants to add in there. (Also, if we are making things up here, how does Pixel solve this? Or do they not support the same fastboot features we\u0027re trying to add?)",
+      "fixSuggestions": [
+        {
+          "fixId": "7131b4c5_eecb2ac4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/vb2_android_misc.h",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 42,
+                "endChar": 0
+              },
+              "replacement": " * Magic value for vb2_fastboot_cmdline that identifies content of the\n * structure. Magic value is four ASCII characters in little-endian order.\n"
+            },
+            {
+              "path": "firmware/include/vb2_android_misc.h",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 48,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "b73b20b1d59dbd811fc27073a510314e6774bcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
