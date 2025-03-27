@@ -16,6 +16,24 @@
       "message": "sys-boot/crdyboot-1.0.5-r749 build failed on reven-cq: [build](https://ci.chromium.org/ui/p/chromeos/builders/cq/reven-cq/b8719413600094516817/overview).\n\n```\nfirmware/lib/gpt_misc.c:16:10: fatal error: \u0027endian.h\u0027 file not found\n```",
       "revId": "7134e59e75f8270d791e67596880a809899a18ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155c4e3b_4a3658c1",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-27T00:09:32Z",
+      "side": 1,
+      "message": "+nicholasbishop, can we add an `endian.h` (and `le32toh()`/`le16toh()`) in crdyboot? I assume we just need to drop it in here to work: https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/crdyboot/vboot/src/libc/\n\nI don\u0027t know how to get the host endianness in that environment, but since crdyboot only supports x86 at the moment anyway(?) we could just hardcode to little endian if necessary.",
+      "parentUuid": "7b33a7f2_4bbf4ecf",
+      "revId": "7134e59e75f8270d791e67596880a809899a18ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
