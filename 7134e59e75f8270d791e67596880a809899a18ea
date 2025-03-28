@@ -3,6 +3,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa6b66ba_f3493b60",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1490127
+      },
+      "writtenOn": "2025-03-28T16:54:19Z",
+      "side": 1,
+      "message": "Should this be included in 2sysincludes.h? 2sysincludes.h has a comment https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/main/firmware/2lib/include/2sysincludes.h#7 mentioning to include system headers there.",
+      "fixSuggestions": [
+        {
+          "fixId": "c7d709a9_e7811f90",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/gpt_misc.c",
+              "range": {
+                "startLine": 13,
+                "startChar": 0,
+                "endLine": 18,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7134e59e75f8270d791e67596880a809899a18ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b33a7f2_4bbf4ecf",
         "filename": "firmware/lib/gpt_misc.c",
         "patchSetId": 6
@@ -32,6 +67,24 @@
       "side": 1,
       "message": "+nicholasbishop, can we add an `endian.h` (and `le32toh()`/`le16toh()`) in crdyboot? I assume we just need to drop it in here to work: https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/crdyboot/vboot/src/libc/\n\nI don\u0027t know how to get the host endianness in that environment, but since crdyboot only supports x86 at the moment anyway(?) we could just hardcode to little endian if necessary.",
       "parentUuid": "7b33a7f2_4bbf4ecf",
+      "revId": "7134e59e75f8270d791e67596880a809899a18ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f5b7a6_7f9fe00e",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1490127
+      },
+      "writtenOn": "2025-03-28T16:54:19Z",
+      "side": 1,
+      "message": "It is only supported on x86 but it can be compiled for arm64 targets.\nIt would be possible to add endian.h to that location and have crdyboot implement the swapping. An example at crrev.com/c/6403913\n\nIs it possible to implement the swapping in vboot without requiring endian.h (libavb does this)?\n\nDo you expect there will be quite a few more interface changes and additional libc  dependencies in this chain?",
+      "parentUuid": "155c4e3b_4a3658c1",
       "revId": "7134e59e75f8270d791e67596880a809899a18ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
