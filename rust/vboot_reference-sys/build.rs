@@ -66,14 +66,23 @@ fn generate_vboot_host_binding() -> Result<()> {
         println!("cargo:rerun-if-changed={}", file?.path().display());
     }
 
-    let bindings = get_bindgen_builder()
+    let target = env::var("TARGET")?;
+
+    let mut builder = get_bindgen_builder()
         .allowlist_function("Cgpt.*")
         .allowlist_function(".*Guid.*")
         .allowlist_function("FindKernelConfig")
         .allowlist_function("ExtractVmlinuz")
         .allowlist_function("vb2_.*")
         .size_t_is_usize(false)
-        .clang_args(COMMON_CFLAGS)
+        .clang_args(COMMON_CFLAGS);
+
+    // Point to correct sysroot argument when cross-compiling
+    if target != "x86_64-pc-linux-gnu" {
+        builder = builder.clang_arg(format!("--sysroot=/usr/{}", target));
+    }
+
+    let bindings = builder
         .clang_arg("-Iinclude")
         .header(header_path.display().to_string())
         .generate()
