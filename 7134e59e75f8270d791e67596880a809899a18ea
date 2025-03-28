@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53e67265_b45718b8",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-28T22:18:39Z",
+      "side": 1,
+      "message": "Yes, actually, that\u0027s a good point. Grzegorz, can you please move this into `2sysincludes.h`?",
+      "parentUuid": "fa6b66ba_f3493b60",
+      "revId": "7134e59e75f8270d791e67596880a809899a18ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b33a7f2_4bbf4ecf",
         "filename": "firmware/lib/gpt_misc.c",
         "patchSetId": 6
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "It is only supported on x86 but it can be compiled for arm64 targets.\nIt would be possible to add endian.h to that location and have crdyboot implement the swapping. An example at crrev.com/c/6403913\n\nIs it possible to implement the swapping in vboot without requiring endian.h (libavb does this)?\n\nDo you expect there will be quite a few more interface changes and additional libc  dependencies in this chain?",
       "parentUuid": "155c4e3b_4a3658c1",
+      "revId": "7134e59e75f8270d791e67596880a809899a18ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ba6def_a466c7ed",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-03-28T22:18:39Z",
+      "side": 1,
+      "message": "Thanks for providing the fix!\n\nWe generally prefer not to duplicate stuff in vboot that is so standard across most C firmware environments that we should be able to expect all our callers to already have it or be able to provide it easily. I\u0027d count byte swap helpers as part of that. (Also this gives callers the opportunity to use architecture-specific optimizations if they want — e.g. the AVB method doesn\u0027t seem to be auto-folded into a `rev` instruction on arm32 by GCC.)\n\nIIRC this was the only new dependency added by this series, and we only decided to add it because it\u0027s so minor we thought it shouldn\u0027t cause much of a hassle. (I did, admittedly, forget that crdyboot is also a dependency for us now, I was more thinking of things like upstream u-boot, but it seems like it\u0027s not a problem to add it to crdyboot either.)",
+      "parentUuid": "59f5b7a6_7f9fe00e",
       "revId": "7134e59e75f8270d791e67596880a809899a18ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
