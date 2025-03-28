@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6645ee1_1725a19e",
+        "filename": "rust/vboot_reference-sys/build.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-03-28T18:45:39Z",
+      "side": 1,
+      "message": "To be clear, is `get_bindgen_builder` returning some \"we loaded libclang dynamically, and [...]\" thing, rather than \"we called ${CC} and [...]?\"\n\nWe apply `--sysroot` through the compiler wrapper, so if this is bypassing that by loading libclang.so, it makes sense that this isn\u0027t getting `--sysroot`",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8c79c15b_88fae2dd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "rust/vboot_reference-sys/build.rs",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 84,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "cfed0e168b50a5ca56d194d5c639e671a9eeb04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ce1d42_85d7965b",
+        "filename": "rust/vboot_reference-sys/build.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2025-03-28T18:45:39Z",
+      "side": 1,
+      "message": "nit: \n```suggestion\n        builder \u003d builder.clang_arg(format!(\"--sysroot\u003d/usr/{target}\"));\n```\n\nthough i wonder if this can just parse the `SYSROOT` env var instead?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "cfed0e168b50a5ca56d194d5c639e671a9eeb04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
