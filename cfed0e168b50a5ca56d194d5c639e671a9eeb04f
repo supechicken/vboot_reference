@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f93fcea_c4652759",
+        "filename": "rust/vboot_reference-sys/build.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2025-03-31T12:46:47Z",
+      "side": 1,
+      "message": "Yes, bindgen is using libclang and is bypassing the compiler wrapper, so we need a way to tell it which is the proper sysroot from where to include libc headers from.\n\nThis worked in the past due to a freak accident: the cross- architecture headers bingden was using were compatible, not anymore with float128 support 😊",
+      "parentUuid": "f6645ee1_1725a19e",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "cfed0e168b50a5ca56d194d5c639e671a9eeb04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48ce1d42_85d7965b",
@@ -55,6 +79,30 @@
       "writtenOn": "2025-03-28T18:45:39Z",
       "side": 1,
       "message": "nit: \n```suggestion\n        builder \u003d builder.clang_arg(format!(\"--sysroot\u003d/usr/{target}\"));\n```\n\nthough i wonder if this can just parse the `SYSROOT` env var instead?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "cfed0e168b50a5ca56d194d5c639e671a9eeb04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dabee1b2_92873693",
+        "filename": "rust/vboot_reference-sys/build.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2025-03-31T12:46:47Z",
+      "side": 1,
+      "message": "I think I actually found a better solution: add this to cros-rust.eclass:\n\n```\nexport BINDGEN_EXTRA_CLANG_ARGS\u003d\"--sysroot\u003d/usr/${TARGET}\"\n```\n\nthis way we ensure bindgen is configured for the proper sysroot before calling Cargo and will work for all packages.\n\nSo I will abandon this and post a CL to modify cros-rust.eclass. 😊",
+      "parentUuid": "48ce1d42_85d7965b",
       "range": {
         "startLine": 82,
         "startChar": 0,
