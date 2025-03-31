@@ -123,6 +123,24 @@
       "parentUuid": "59f5b7a6_7f9fe00e",
       "revId": "7134e59e75f8270d791e67596880a809899a18ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89573ed9_0257a9b9",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1490127
+      },
+      "writtenOn": "2025-03-31T20:16:26Z",
+      "side": 1,
+      "message": "crrev.com/c/6403913 has been merged so I expect this to be resolved now.\n\nThanks for the context surrounding why it shouldn\u0027t be implemented here.",
+      "parentUuid": "47ba6def_a466c7ed",
+      "revId": "7134e59e75f8270d791e67596880a809899a18ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
