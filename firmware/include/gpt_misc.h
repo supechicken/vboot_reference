@@ -64,6 +64,11 @@ enum {
 	 * its GPT entry is marked with S0,P0,T0.
 	 */
 	GPT_UPDATE_ENTRY_INVALID = 4,
+	/*
+	 * Used for fastboot mode. This allows setting the priority of a
+	 * kernel partition.
+	 */
+	GPT_UPDATE_ENTRY_SET_PRIORITY = 5,
 };
 
 /* If this bit is 1, the GPT is stored in another from the streaming data */
@@ -190,7 +195,6 @@ uint64_t GptGetEntrySizeBytes(const GptData *gpt, const GptEntry *e);
  */
 GptEntry *GptNextKernelEntry(GptData *gpt);
 
-
 /**
  * Updates the kernel entry with the specified index, using the specified type
  * of update (GPT_UPDATE_ENTRY_*).
@@ -227,6 +231,7 @@ int GetEntryLegacyBoot(const GptEntry *e);
 int GetEntrySuccessful(const GptEntry *e);
 int GetEntryPriority(const GptEntry *e);
 int GetEntryTries(const GptEntry *e);
+
 void SetEntryRequired(GptEntry *e, int required);
 void SetEntryLegacyBoot(GptEntry *e, int legacy_boot);
 void SetEntrySuccessful(GptEntry *e, int successful);
