@@ -65,6 +65,11 @@ enum {
 	 * its GPT entry is marked with S0,P0,T0.
 	 */
 	GPT_UPDATE_ENTRY_INVALID = 4,
+	/*
+	 * Used for fastboot mode. This allows setting the priority of a
+	 * kernel partition.
+	 */
+	GPT_UPDATE_ENTRY_SET_PRIORITY = 5,
 };
 
 /* If this bit is 1, the GPT is stored in another from the streaming data */

@@ -184,6 +184,20 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
 		SetEntrySuccessful(e, 0);
 		break;
 	}
+	case GPT_UPDATE_ENTRY_SET_PRIORITY: {
+		/*
+		 * Used for fastboot mode. This allows setting the priority of a
+		 * kernel partition.
+		 */
+		if (gpt == NULL)
+			return GPT_ERROR_INVALID_UPDATE_TYPE;
+		int priority = gpt->current_priority;
+		if (priority < 0 || priority > 15)
+			return GPT_ERROR_INVALID_UPDATE_TYPE;
+		modified = 1;
+		SetEntryPriority(e, priority);
+		break;
+	}
 	default:
 		return GPT_ERROR_INVALID_UPDATE_TYPE;
 	}
