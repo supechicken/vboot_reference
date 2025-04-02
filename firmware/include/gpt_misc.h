@@ -176,6 +176,12 @@ void SetEntrySuccessful(GptEntry *e, int successful);
 void SetEntryPriority(GptEntry *e, int priority);
 void SetEntryTries(GptEntry *e, int tries);
 
+/**
+ * Called when the primary entries are modified and the CRCs need to be
+ * recalculated and propagated to the secondary entries
+ */
+void GptModified(GptData *gpt);
+
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */
