@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e51fb5a4_35f94798",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1540587
+      },
+      "writtenOn": "2025-04-03T17:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09de8a56_b7fec32d",
+      "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "639b8703_5d4b22e2",
@@ -65,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1278b5d_d9b26d8c",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1540587
+      },
+      "writtenOn": "2025-04-03T17:20:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the strategy is with regards to where to merge Fastboot related changes first. I see the main branch is missing a lot of related changes both in depthcharge and in vboot_reference",
+      "parentUuid": "639b8703_5d4b22e2",
+      "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "413a017b_3255af99",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 2
@@ -104,6 +140,24 @@
           ]
         }
       ],
+      "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3933297_1549103e",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1540587
+      },
+      "writtenOn": "2025-04-03T17:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "413a017b_3255af99",
       "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
