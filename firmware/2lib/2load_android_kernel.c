@@ -253,7 +253,7 @@ vb2_error_t vb2_load_android_kernel(
 	}
 
 	/* Ignore verification errors in developer mode */
-	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
+	if (!need_keyblock_valid) {
 		switch (result) {
 		case AVB_SLOT_VERIFY_RESULT_OK:
 		case AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION:
