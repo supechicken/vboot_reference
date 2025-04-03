@@ -1,0 +1,111 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09de8a56_b7fec32d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-03T14:12:25Z",
+      "side": 1,
+      "message": "It would be good to state the exact command that was used to verify this functionality (`fastboot tcp:\u003cIP\u003e:5554 oem ...`).\n\nAlso, do we want to enable setting successful/tries flag as well?",
+      "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639b8703_5d4b22e2",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-03T14:12:25Z",
+      "side": 1,
+      "message": "I wonder if this is a best place to store this specific part. I believe that this change shall go directly into the `main` branch for Julius \u0026 Yu-Ping review (no dependency of `fastboot` code itself) and then cherry-picked to `firmware-android-15949.B`",
+      "fixSuggestions": [
+        {
+          "fixId": "b6a09a97_cff42097",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/gpt_misc.h",
+              "range": {
+                "startLine": 67,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/include/gpt_misc.h",
+              "range": {
+                "startLine": 218,
+                "startChar": 0,
+                "endLine": 218,
+                "endChar": 0
+              },
+              "replacement": "/**\n * Updates the priority of the kernel entry identified by current_kernel field.\n * If current_kernel is not set it returns an error.\n *\n * Returns GPT_SUCCESS if successful, else\n *   GPT_ERROR_NO_SUCH_ENTRY, current_kernel is not set.\n */\nint GptUpdateKernelPriority(GptData *gpt, int priority);\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413a017b_3255af99",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-03T14:12:25Z",
+      "side": 1,
+      "message": "We shall set it in L227 only (there\u0027s a possibility that you\u0027ll set `modified` and fall to the if in L225).",
+      "fixSuggestions": [
+        {
+          "fixId": "005a48e8_b2d8d731",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/cgptlib/cgptlib.c",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 225,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/lib/cgptlib/cgptlib.c",
+              "range": {
+                "startLine": 227,
+                "startChar": 0,
+                "endLine": 227,
+                "endChar": 0
+              },
+              "replacement": "\t\tmodified \u003d 1;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
