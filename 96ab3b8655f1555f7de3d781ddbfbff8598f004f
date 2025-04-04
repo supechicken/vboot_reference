@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e083f83_739360e2",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-04T11:42:48Z",
+      "side": 1,
+      "message": "Please clarify why are you checking here `GptGetActiveKernelPartitionSuffix` and `IsAndroidBootPartition` (seems counter-intuitive, however I see your point - you\u0027re already checking `IsAndroid` - whether the VBMETA GUID was already set).",
+      "fixSuggestions": [
+        {
+          "fixId": "7268da90_3f27a193",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_kernel.c",
+              "range": {
+                "startLine": 673,
+                "startChar": 0,
+                "endLine": 673,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t/*\n\t\t\t * If we find a boot partition that is not Android,\n\t\t\t * we check if it is a vbmeta partition.\n\t\t\t * If it is, we mark it as a vbmeta partition.\n\t\t\t * This is needed because the vbmeta partition is not\n\t\t\t * marked as such in the GPT.\n\t\t\t */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "96ab3b8655f1555f7de3d781ddbfbff8598f004f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f11d67_475978cf",
+        "filename": "firmware/lib/cgptlib/include/cgptlib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-04T11:42:48Z",
+      "side": 1,
+      "message": "nit: redundant whitespace (as well as in L14).",
+      "fixSuggestions": [
+        {
+          "fixId": "62d71ba0_db960b03",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/cgptlib/include/cgptlib.h",
+              "range": {
+                "startLine": 13,
+                "startChar": 0,
+                "endLine": 14,
+                "endChar": 0
+              },
+              "replacement": " * Find GPT entry for specified partition.\n"
+            },
+            {
+              "path": "firmware/lib/cgptlib/include/cgptlib.h",
+              "range": {
+                "startLine": 16,
+                "startChar": 0,
+                "endLine": 17,
+                "endChar": 0
+              },
+              "replacement": " * Returns pointer to GPT entry if successful, NULL otherwise\n"
+            }
+          ]
+        }
+      ],
+      "revId": "96ab3b8655f1555f7de3d781ddbfbff8598f004f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
