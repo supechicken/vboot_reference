@@ -101,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42c0993b_34bd88b5",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-04T06:42:29Z",
+      "side": 1,
+      "message": "In general, if the change that you\u0027re implementing does not depend of the divergence for fastboot (and this change falls into that category), it\u0027s best to submit it against `main` branch directly - then, after merge to `main`, copybot will cherry-pick this change directly to `firmware-android-15949.B` (but will not process it to `firmware-android-\u003cboard\u003e-\u003cID\u003e` branches, so you\u0027ll need to cherry-pick those manually and add AL firmware OWNERs for review).\n\nThe reasoning behind it is that we\u0027re trying to remove divergence created on `firmware-android-15949.B` and push all changes to `main` branch, so if there\u0027s even a tiny possibility to push change directly to `main`, it\u0027s much less of a burden for patch author to push it directly to `main` than pushing to `firmware-android-15949.B` and then to `main`.",
+      "parentUuid": "b1278b5d_d9b26d8c",
+      "revId": "9006f243945175ab8f431d2a3f9532665c4f0e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "413a017b_3255af99",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 2

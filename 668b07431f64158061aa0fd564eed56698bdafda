@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab22ffb_7f73c2fb",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-04T06:42:29Z",
+      "side": 1,
+      "message": "I wonder if this check is worth to be moved to L159 (since at L235 we\u0027re updating the GPT entry).",
+      "fixSuggestions": [
+        {
+          "fixId": "455c823a_356e0121",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/cgptlib/cgptlib.c",
+              "range": {
+                "startLine": 157,
+                "startChar": 0,
+                "endLine": 157,
+                "endChar": 0
+              },
+              "replacement": "\tif (gpt \u003d\u003d NULL)\n\t\treturn GPT_ERROR_INVALID_UPDATE_TYPE;\n\n"
+            },
+            {
+              "path": "firmware/lib/cgptlib/cgptlib.c",
+              "range": {
+                "startLine": 221,
+                "startChar": 0,
+                "endLine": 223,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "668b07431f64158061aa0fd564eed56698bdafda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d0f6de_a02455ca",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-04T06:42:29Z",
+      "side": 1,
+      "message": "How does the `oem set-priority:boot_a:PRIORITY` is propagated to the `gpt-\u003ecurrent_priority`?",
+      "fixSuggestions": [
+        {
+          "fixId": "3356996a_732c49a1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/lib/cgptlib/cgptlib.c",
+              "range": {
+                "startLine": 220,
+                "startChar": 0,
+                "endLine": 220,
+                "endChar": 0
+              },
+              "replacement": "\t\t *\n\t\t * The priority is passed in gpt-\u003ecurrent_priority.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "668b07431f64158061aa0fd564eed56698bdafda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
