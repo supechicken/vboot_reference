@@ -97,6 +97,24 @@
       ],
       "revId": "668b07431f64158061aa0fd564eed56698bdafda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247ad989_84faca77",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1540587
+      },
+      "writtenOn": "2025-04-07T18:04:16Z",
+      "side": 1,
+      "message": "This happens depthcharge, see line 488 here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/6427811/6/src/fastboot/cmd.c",
+      "parentUuid": "b6d0f6de_a02455ca",
+      "revId": "668b07431f64158061aa0fd564eed56698bdafda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
