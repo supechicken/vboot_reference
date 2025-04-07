@@ -1,0 +1,247 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d483301a_4520e9da",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T10:10:19Z",
+      "side": 1,
+      "message": "Is the additional set of parentheses necessary?",
+      "range": {
+        "startLine": 679,
+        "startChar": 6,
+        "endLine": 679,
+        "endChar": 75
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "795b7f24_3d393244",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_kernel.c",
+              "range": {
+                "startLine": 679,
+                "startChar": 0,
+                "endLine": 680,
+                "endChar": 0
+              },
+              "replacement": "\t\t\tif (GptGetActiveKernelPartitionSuffix(\u0026gpt, \u0026ab_suffix) \u003d\u003d GPT_SUCCESS \u0026\u0026\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f05442d_9c8a02cb",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T10:10:19Z",
+      "side": 1,
+      "message": "This can be merged with `else` into `else-if` thus removing one indentation level. WDYT?",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 679,
+        "endChar": 78
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ced0511_32555974",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T10:10:19Z",
+      "side": 1,
+      "message": "These static variables can be made into static constants.",
+      "range": {
+        "startLine": 681,
+        "startChar": 4,
+        "endLine": 682,
+        "endChar": 58
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e5c00d2a_a88a159a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_kernel.c",
+              "range": {
+                "startLine": 681,
+                "startChar": 0,
+                "endLine": 682,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\tstatic const char * const names[] \u003d {\"vbmeta_a\", \"vbmeta_b\"};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9e1c83_717836bc",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T10:10:19Z",
+      "side": 1,
+      "message": "`GptEntry *e` and `int i` are not used outside of the loop, so they can be integrated with it. .",
+      "range": {
+        "startLine": 683,
+        "startChar": 4,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "04182733_59e1523c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_kernel.c",
+              "range": {
+                "startLine": 683,
+                "startChar": 0,
+                "endLine": 685,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "firmware/2lib/2load_kernel.c",
+              "range": {
+                "startLine": 686,
+                "startChar": 0,
+                "endLine": 688,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\tfor (int i \u003d 0; i \u003c ARRAY_SIZE(names); i++) {\n\t\t\t\t\tGptEntry *e \u003d GptFindEntryByName(\u0026gpt, names[i]);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be730304_c835932a",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T10:10:19Z",
+      "side": 1,
+      "message": "Remove one indentation level by continuing on mismatch instead.",
+      "range": {
+        "startLine": 689,
+        "startChar": 5,
+        "endLine": 689,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "93ea67b1_ec6f32d7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_kernel.c",
+              "range": {
+                "startLine": 689,
+                "startChar": 0,
+                "endLine": 696,
+                "endChar": 0
+              },
+              "replacement": "\t\t\t\t\tif (!memcmp(\u0026e-\u003etype, \u0026vbmeta_boot, sizeof(Guid)))\n\t\t\t\t\t\tcontinue;\n\n\t\t\t\t\tmemcpy(\u0026e-\u003etype, (void *)\u0026vbmeta_boot, sizeof(Guid));\n\t\t\t\t\tSetEntryPriority(e, 0);\n\t\t\t\t\tSetEntrySuccessful(e, 0);\n\t\t\t\t\tSetEntryTries(e, 0);\n\t\t\t\t\tGptModified(\u0026gpt);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df72bb9_4b89bdd4",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T10:10:19Z",
+      "side": 1,
+      "message": "Please add VB2_DEBUG here.",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 730,
+        "endChar": 41
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002745c7_22b6cdab",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T10:10:19Z",
+      "side": 1,
+      "message": "Making this function public should be a separate CL, so it can be merged even if changes to `2load_kernel.c` are causing issues and have to be reverted.",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 60
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
