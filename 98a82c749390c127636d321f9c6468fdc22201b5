@@ -16,6 +16,41 @@
       "message": "happy to provide owners but I have zero context here and would like someone who knows what\u0027s going on to approve.",
       "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff6df2e_90b4eac8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-04-07T18:05:52Z",
+      "side": 1,
+      "message": "Ok, I have a little more context here. Adding a separate note for thoughts",
+      "parentUuid": "b9dda06b_9decb339",
+      "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f068d1e5_f81827d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-04-07T18:05:52Z",
+      "side": 1,
+      "message": "Wanted to tag in @vapier@chromium.org and @jwerner@chromium.org to get thoughts on this implementation.\n\nMike/Julius - the TL;DR here is that the signer modifies lsb-release, so a value in lsb-release that contains the hash of the image is subsequently inaccurate. They\u0027re trying to update that hash to reflect the true image hash.\n\nI\u0027m wondering if you feel good about this logic living here in `sign_official_build.sh` or if it makes more sense to do it in the same place where we modify lsb-release in the signer (http://cs/h/chrome-internal/chromeos/superproject/+/main:crostools/signing_docker/dockerbuild/src/sign_utils.py?l\u003d164).",
+      "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
