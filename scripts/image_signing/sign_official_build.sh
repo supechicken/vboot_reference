@@ -194,6 +194,71 @@ calculate_rootfs_hash() {
     sed -e 's#\(.*dm="\)\([^"]*\)\(".*\)'"#\1${CALCULATED_DM_ARGS}\3#g")"
 }
 
+CALCULATED_LSB_RELEASE_HASH=
+# Calculate the hash of the lsb-release file for attestation
+# Args: ROOTFS_IMAGE
+#
+# The /etc/lsb-release file is grabbed from the rootfs image,
+# then the hash is calculated.
+#
+# The resulting hash is populated in CALCULATED_LSB_RELEASE_HASH.
+calculate_lsb_release_hash() {
+  local rootfs_image="$1"
+  local extracted_dir=`mktemp -d`
+
+  7z x "${rootfs_image}" -o"${extracted_dir}" /etc/lsb-release
+  local extracted_path="${extracted_dir}/etc/lsb-release"
+
+  # Generate the sha256 hash of /etc/lsb-release for version attestation.
+  local lsb_hash_all
+  local lsb_hash_raw
+  local lsb_hash_base64
+  # First we capture the output of sha256sum of the lsb-release file, it'll
+  # look something like this:
+  # 1c01ef(...)8d3ec5 */etc/lsb-release
+  lsb_hash_all=$(sha256sum -b "${extracted_path}")
+  # We only want the hash and not the file name, so we split by space to get
+  # the hex-encoded hash.
+  lsb_hash_raw=$(echo "${lsb_hash_all}" | cut -d' ' -f1)
+  # To conserve the space used in kernel cmdline, we encode the hash in base64
+  # instead to reduce its size.
+  lsb_hash_base64=$(echo "${lsb_hash_raw}" | xxd -r -p | base64)
+
+  info "New hashes: ${lsb_hash_raw} ${lsb_hash_base64}"
+  # Set the output variable.
+  CALCULATED_LSB_RELEASE_HASH="${lsb_hash_base64}"
+}
+
+CALCULATED_KERNEL_CONFIG_WITH_LSB_RELEASE_HASH=
+# Add or set the lsb-release hash in a kernel config.
+# Args: kernel_config
+#
+# If "cros_lsb_release_hash" parameter doesn't exist in the kernel config, then
+# this will add it, if not it'll update it.
+# This takes the hash from CALCULATED_LSB_RELEASE_HASH so
+# calculate_lsb_release_hash() must be called first.
+#
+# The resulting kernel config is stored in
+# CALCULATED_KERNEL_CONFIG_WITH_LSB_RELEASE_HASH
+add_or_set_lsb_release_in_kernel_config() {
+  local kernel_config="$1"
+  local result
+  local newhash="${CALCULATED_LSB_RELEASE_HASH}"
+
+  if [[ "${kernel_config}" == *"cros_lsb_release_hash"* ]]; then
+    # Contains the hash.
+    # shellcheck disable=SC2001
+    result="$(echo "${kernel_config}" |
+      sed -E "s#(cros_lsb_release_hash=)[a-zA-Z0-9+/=]+#\1${newhash}#")"
+  else
+    # Does not contain the hash.
+    result="${kernel_config} cros_lsb_release_hash=${newhash}"
+  fi
+
+  # Update the variable.
+  CALCULATED_KERNEL_CONFIG_WITH_LSB_RELEASE_HASH="${result}"
+}
+
 # Re-calculate rootfs hash, update rootfs and kernel command line(s).
 # Args: LOOPDEV KERNEL \
 #       KERN_A_KEYBLOCK KERN_A_PRIVKEY \
@@ -259,6 +324,13 @@ update_rootfs_hash() {
     error "Aborting rootfs hash update!"
     return 1
   fi
+  if ! calculate_lsb_release_hash "${loop_rootfs}"; then
+    error "calculate_lsb_release_hash failed!"
+    error "Aborting rootfs hash update!"
+    return 1
+  fi
+
+  add_or_set_lsb_release_in_kernel_config "${kernel_config}"
 
   local rootfs_blocks
   rootfs_blocks=$(sudo dumpe2fs "${loop_rootfs}" 2> /dev/null |
@@ -300,6 +372,11 @@ update_rootfs_hash() {
     # shellcheck disable=SC2001
     new_kernel_config="$(echo "${new_kernel_config}" |
       sed -e 's#\(.*dm="\)\([^"]*\)\(".*\)'"#\1${dm_args}\3#g")"
+    if ! add_or_set_lsb_release_in_kernel_config "${new_kernel_config}"; then
+      error "Failed to update kernel config with lsb-release hash"
+      return 1
+    fi
+    new_kernel_config="${CALCULATED_KERNEL_CONFIG_WITH_LSB_RELEASE_HASH}"
     info "New config for kernel partition ${kernelpart} is:"
     echo "${new_kernel_config}" | tee "${temp_config}"
     # Re-calculate kernel partition signature and command line.
