@@ -223,6 +223,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bbc9afe_583c3eef",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-07T14:01:11Z",
+      "side": 1,
+      "message": "What should this debug message say?",
+      "parentUuid": "0df72bb9_4b89bdd4",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 730,
+        "endChar": 41
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "002745c7_22b6cdab",
         "filename": "firmware/lib/cgptlib/cgptlib.c",
         "patchSetId": 5
