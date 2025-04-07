@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f294ae_aa6f1af3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2025-04-07T11:09:22Z",
+      "side": 1,
+      "message": "Hello Benjamin, please help me review this change. This change is needed to fix invalid ARC attestation that appeared on some devices. I don\u0027t have the full set of keys to test this completely end to end, but I did set-up the docker and tested the modified parts, so I believe this should work.",
+      "revId": "d5c902d8d73206bd471bedf965c493cdddfa350e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
