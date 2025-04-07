@@ -245,6 +245,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e6bcaaa_6c0a656a",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-07T14:04:44Z",
+      "side": 1,
+      "message": "Never mind, I missed that this is just moving the variable assignment. No debug message is necessary here.",
+      "parentUuid": "6bbc9afe_583c3eef",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 730,
+        "endChar": 41
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "002745c7_22b6cdab",
