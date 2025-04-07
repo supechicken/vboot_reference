@@ -51,6 +51,24 @@
       "message": "Wanted to tag in @vapier@chromium.org and @jwerner@chromium.org to get thoughts on this implementation.\n\nMike/Julius - the TL;DR here is that the signer modifies lsb-release, so a value in lsb-release that contains the hash of the image is subsequently inaccurate. They\u0027re trying to update that hash to reflect the true image hash.\n\nI\u0027m wondering if you feel good about this logic living here in `sign_official_build.sh` or if it makes more sense to do it in the same place where we modify lsb-release in the signer (http://cs/h/chrome-internal/chromeos/superproject/+/main:crostools/signing_docker/dockerbuild/src/sign_utils.py?l\u003d164).",
       "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883b6f7e_4a2b2fcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-07T22:23:57Z",
+      "side": 1,
+      "message": "Hmm... this is the first I ever hear of this entire design. I think it creates a problem in that it adds a new kind of \"signing\" (i.e. tying different components of the update payload together with verification) that\u0027s separate from our main signing, and thus breaks the assumption of \"I can change whatever I want, run `sign_official_build.sh` again, and have a verified image again\". From that perspective, I think the code to fix it up should probably live in `sign_official_build.sh`.\n\nBut I really don\u0027t understand why it is necessary in the first place, and it would be much nicer if we could just avoid that extra complexity in the signing process. As I understand, we want to attest the contents of `/etc/lsb-release` to a server. You guys do that by putting the hash of `/etc/lsb-release` into the kernel command line at build time (which is the part that causes problems here), then you have `chromeos_startup` write that entire command line into PCR13 during early userspace boot, and then the server can request attestation for that PCR and compare it with the contents of `/etc/lsb-release` (and the entire kernel command line) sent to it later on.\n\nWhy is the kernel command line even involved at all in any of this? Why don\u0027t you just have `chromeos_startup` read and hash the `/etc/lsb-release` file from disk directly and just write that into PCR13? Seems like that would have made the whole process simpler and prevent these problems with conflicting verification schemes we have right now altogether. (Also, you wouldn\u0027t have to send the entire kernel command line to the server for attestation then, just the release version parts that you\u0027re interested in. There are other things in there like `root\u003dPARTUUID\u003d...` which is a unique per-unit identifier. Is Privacy okay with sending that for attestation when it\u0027s not really necessary for the design?)",
+      "parentUuid": "f068d1e5_f81827d7",
+      "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
