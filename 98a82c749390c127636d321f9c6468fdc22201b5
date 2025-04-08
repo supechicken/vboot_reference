@@ -69,6 +69,24 @@
       "parentUuid": "f068d1e5_f81827d7",
       "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552192d8_0db63c48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2025-04-08T10:06:17Z",
+      "side": 1,
+      "message": "First addressing the kernel command line and per-unit identifier concerns:\n\nMy understanding is that the kernel command line is fixed at signing time, and the kernel command line does not change after signing or at the user\u0027s device. The partition UUID is tied directly to that root filesystem which is immutable, and thus is unique per image (vs unique per-unit). If we use the /etc/lsb-release instead, I believe it is unique per-image as well, thus it\u0027s the same whether it\u0027s /etc/lsb-release or kernel command line. Given that our purpose is version attestation, we\u0027ll need to know the exact version, which is basically the exact image that\u0027s running on the device, I believe we\u0027re not disclosing more information than necessary.",
+      "parentUuid": "883b6f7e_4a2b2fcf",
+      "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
