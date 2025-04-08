@@ -87,6 +87,24 @@
       "parentUuid": "883b6f7e_4a2b2fcf",
       "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce3b82f_f7118db4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2025-04-08T10:19:21Z",
+      "side": 1,
+      "message": "Next on why in the kernel command line:\n\nFor version attestation, we\u0027ll want to minimize the exploit window during boot process. In the current (stepping stone) design, we\u0027re extending the kernel command line into PCR13 during chromeos-init, which is one of the earliest service to start in ChromeOS boot process. However, there\u0027s still a gap between when the kernel loads and when chromeos-init runs. Should there be any kernel exploit or any vulnerabilities in processes that runs before chromeos-init (such as upstart), then it\u0027s possible to defeat version attestation.\n\nTherefore, the ideal solution to version attestation would be to extend the PCR in the firmware/RW, at the time when the kernel is loaded, such as in vboot or depthcharge. However, /etc/lsb-release is not available at that stage, and the closest thing we\u0027ve that can hold the version information would be the kernel command line. Alternatives include adjusting the format of the kernel block to include version information, which is likely not feasible given the amount of units already out there.\n\nThus, the choice to put it in the kernel command line is so that there\u0027s a path way to more secure version attestation. Note that this was designed a while ago, and previously the addition to the kernel command line lived in src/scripts:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/crosutils/+/4421695\nIt was only recently that we\u0027re launching the feature and discovered that /etc/lsb-release might be changed at signing time and thus breaking version attestation and therefore ARC Attestation.",
+      "parentUuid": "552192d8_0db63c48",
+      "revId": "98a82c749390c127636d321f9c6468fdc22201b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
