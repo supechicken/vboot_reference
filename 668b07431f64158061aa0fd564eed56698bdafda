@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "166dff68_cc4f4eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-08T13:06:32Z",
+      "side": 1,
+      "message": "ACK for this version, given dependency (unfortunate) with `firmware-android-15949.B`, please make sure to notify Tomasz about this CL (to upload that one to `main` as well).",
+      "revId": "668b07431f64158061aa0fd564eed56698bdafda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab22ffb_7f73c2fb",
@@ -113,6 +130,24 @@
       "side": 1,
       "message": "This happens depthcharge, see line 488 here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/6427811/6/src/fastboot/cmd.c",
       "parentUuid": "b6d0f6de_a02455ca",
+      "revId": "668b07431f64158061aa0fd564eed56698bdafda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceeecb78_22047981",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-04-08T13:06:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "247ad989_84faca77",
       "revId": "668b07431f64158061aa0fd564eed56698bdafda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
