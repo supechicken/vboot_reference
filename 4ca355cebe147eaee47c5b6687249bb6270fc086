@@ -65,6 +65,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3582221b_1d73cdee",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-08T13:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f05442d_9c8a02cb",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 679,
+        "endChar": 78
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edda919a_bd260baf",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-08T13:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d483301a_4520e9da",
+      "range": {
+        "startLine": 679,
+        "startChar": 6,
+        "endLine": 679,
+        "endChar": 75
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ced0511_32555974",
@@ -102,6 +150,30 @@
           ]
         }
       ],
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0580076a_e67cdee5",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-08T13:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ced0511_32555974",
+      "range": {
+        "startLine": 681,
+        "startChar": 4,
+        "endLine": 682,
+        "endChar": 58
+      },
       "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c110d4_dd699f62",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-08T13:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d9e1c83_717836bc",
+      "range": {
+        "startLine": 683,
+        "startChar": 4,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be730304_c835932a",
@@ -194,6 +290,30 @@
           ]
         }
       ],
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982cec62_cb10c9a9",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-08T13:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be730304_c835932a",
+      "range": {
+        "startLine": 689,
+        "startChar": 5,
+        "endLine": 689,
+        "endChar": 56
+      },
       "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -282,6 +402,30 @@
       "writtenOn": "2025-04-07T10:10:19Z",
       "side": 1,
       "message": "Making this function public should be a separate CL, so it can be merged even if changes to `2load_kernel.c` are causing issues and have to be reverted.",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 60
+      },
+      "revId": "4ca355cebe147eaee47c5b6687249bb6270fc086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3d1584_660381c3",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-08T13:05:01Z",
+      "side": 1,
+      "message": "I would prefer to keep it together, these changes should not be ported into \u0027main\u0027 branch and I would like to avoid situtation when someone ports only cgptlib part by mistake.",
+      "parentUuid": "002745c7_22b6cdab",
       "range": {
         "startLine": 267,
         "startChar": 0,
