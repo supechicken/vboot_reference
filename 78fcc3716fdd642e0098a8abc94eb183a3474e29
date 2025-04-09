@@ -16,6 +16,46 @@
       "message": "Could you please review or suggest another reviewer?\n\nVerified with the `TEST\u003d` steps.\n\nThanks!",
       "revId": "78fcc3716fdd642e0098a8abc94eb183a3474e29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d5ad1f_00f4bcaf",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-04-09T02:22:50Z",
+      "side": 1,
+      "message": "Quotes",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "78fcc3716fdd642e0098a8abc94eb183a3474e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cec59acf_a73950bf",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-04-09T02:22:50Z",
+      "side": 1,
+      "message": "This seems to be the only reason why this script won\u0027t work `USE_FLASHROM\u003d0`. As this script doesn\u0027t actually interact with flash chips, I wonder if we can allow futility code to be compiled with `USE_FLASHROM\u003d0`, by creating a stub implementation of host/lib/flashrom_drv.c.",
+      "revId": "78fcc3716fdd642e0098a8abc94eb183a3474e29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
