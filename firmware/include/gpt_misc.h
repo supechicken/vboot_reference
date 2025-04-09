@@ -69,6 +69,10 @@ enum {
 	 * kernel partition.
 	 */
 	GPT_UPDATE_ENTRY_SET_PRIORITY = 5,
+	/*
+	 * Mark the kernel partition as successfully booted.
+	 */
+	GPT_UPDATE_ENTRY_SUCCESSFUL = 6,
 };
 
 /* If this bit is 1, the GPT is stored in another from the streaming data */
@@ -119,6 +123,7 @@ typedef struct {
 	/* Internal variables */
 	uint8_t valid_headers, valid_entries, ignored;
 	int current_priority;
+	int current_successful;
 } GptData;
 
 /**
