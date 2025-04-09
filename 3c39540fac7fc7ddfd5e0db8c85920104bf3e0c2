@@ -57,6 +57,47 @@
       ],
       "revId": "3c39540fac7fc7ddfd5e0db8c85920104bf3e0c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebd740b_8912bbb9",
+        "filename": "tests/futility/test_flash_util.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-04-09T01:25:43Z",
+      "side": 1,
+      "message": "Also note that `grep -q` may lead to broken pipe (`SIGPIPE`), which is usually harmless unless `pipefail` is set. We do set `pipefail` in some of the test scripts. The 4 scripts you modified happen to be not among them.",
+      "parentUuid": "0e783575_3105231d",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "3c39540fac7fc7ddfd5e0db8c85920104bf3e0c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa37da8f_fab9412b",
+        "filename": "tests/futility/test_flash_util.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-04-09T01:25:43Z",
+      "side": 1,
+      "message": "Instead of repeating the same check in multiple places, can we do that in tests/futility/run_test_scripts.sh, and filter out these tests from the list? Alternatively, we can set and export `HAS_FLASHROM` in tests/futility/run_test_scripts.sh, and check `${HAS_FLASHROM}` in individual test files.",
+      "revId": "3c39540fac7fc7ddfd5e0db8c85920104bf3e0c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
