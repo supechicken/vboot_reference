@@ -227,6 +227,25 @@ int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type)
 		SetEntryPriority(e, priority);
 		break;
 	}
+	case GPT_UPDATE_ENTRY_SUCCESSFUL: {
+	    /* Set the partition's successful state (S=0 or S=1) based on gpt->current_successful */
+	    if (gpt == NULL)
+		return GPT_ERROR_INVALID_UPDATE_TYPE;
+
+	    int desired_state = gpt->current_successful;
+	    if (desired_state != 0 && desired_state != 1)
+		return GPT_ERROR_INVALID_UPDATE_TYPE;
+
+	    if (GetEntrySuccessful(e) != desired_state) {
+		modified = 1;
+		SetEntrySuccessful(e, desired_state);
+		/* Reset tries when marking successful. */
+		if (desired_state == 1) {
+		    SetEntryTries(e, 0);
+		}
+	    }
+	    break;
+	}
 	default:
 		return GPT_ERROR_INVALID_UPDATE_TYPE;
 	}
