@@ -33,6 +33,24 @@
       "message": "Sorry, but I\u0027m not sure we want to have this in here. We want to keep the amount of different compile-time switches we need to maintain to the absolute minimum necessary. We already introduced the `USE_FLASHROM` switch to solve the \"non-ChromeOS distros\" problem, because all the flashrom-related functionality in futility is really ChromeOS-specific and we didn\u0027t expect anyone else would want it anyway (it\u0027s mostly just the updater... `futility flash` is just a little helper wrapper for stuff you can all do with `flashrom` directly anyway).\n\nI\u0027m not really familiar with the `flashrom_flash_getinfo()` issue (unfortunately our internal flashrom team that used to maintain this kinda disintegrated...). Do you know what that\u0027s about? Did upstream refuse that feature, or did just nobody ever upstream it (in that case you could solve your problem if you upstreamed it to them)? Or did this get replaced with some other equivalent API upstream (in that case we can change our version to conform, as long as it does the same thing)?\n\nIf there\u0027s no other way to resolve this and you really want vboot with USE_FLASHROM\u003d1 in your distro for some reason (why?), I think I\u0027d prefer if you kept this as a local distro package patch.",
       "revId": "e09e8f8aa96f4007316974c9317a0270a865b4de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e78a9e_91860ec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-04-09T02:38:31Z",
+      "side": 1,
+      "message": "The chromium patch CL:4401775 is marked as `FROMLIST`, where the upstream patch is CB:73286, which hasn\u0027t been updated for 2 years. @roccochen@chromium.org Could you take a look at that patch to see if it would be easy to merge it?\n\nThat said, I don\u0027t think futility is intended to work with the upstream flashrom. ChromiumOS\u0027s flashrom repo has been divergent from the upstream for a long time (although we do want to close the gap between them), and our CI/CD doesn\u0027t test it with the upstream flashrom. Therefore, even if the `flashrom_flash_getinfo` issue is solved this time, similar issues may occur again in the future.",
+      "parentUuid": "d32d20a3_899a3d2c",
+      "revId": "e09e8f8aa96f4007316974c9317a0270a865b4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
