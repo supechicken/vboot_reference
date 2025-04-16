@@ -295,8 +295,16 @@ vb2_error_t vb2_load_android_kernel(
 	verified_str = malloc(strlen(VERIFIED_BOOT_PROPERTY_NAME) + 7);
 	if (verified_str == NULL)
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
-	sprintf(verified_str, "%s%s", VERIFIED_BOOT_PROPERTY_NAME,
-		(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
+	/*
+	 * When booting to recovery with GBB enabled fastboot, always set
+	 * verifiedbootstate to ornage to unlock all commands of fastbootd.
+	 */
+	if (ctx->flags & VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT &&
+	    params->boot_command == VB2_BOOT_CMD_RECOVERY_BOOT)
+		sprintf(verified_str, "%sorange", VERIFIED_BOOT_PROPERTY_NAME);
+	else
+		sprintf(verified_str, "%s%s", VERIFIED_BOOT_PROPERTY_NAME,
+			(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
 
 	if ((strlen(verify_data->cmdline) + 1 + strlen(verified_str) + 1 +
 	     (fb_bootconfig ? fb_bootconfig->len + 1 : 0)) > params->kernel_bootconfig_size)
