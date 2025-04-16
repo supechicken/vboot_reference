@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4a1b34_bafcd423",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-16T16:46:32Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 300,
+        "startChar": 25,
+        "endLine": 300,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d3e3292e_8691e06c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 300,
+                "startChar": 0,
+                "endLine": 301,
+                "endChar": 0
+              },
+              "replacement": "\t * verifiedbootstate to orange to unlock all commands of fastbootd.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9fd99e9caa0dd048a8b7635655926dc4138c62fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf02b9ad_a9449426",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-16T16:46:32Z",
+      "side": 1,
+      "message": "Please make it verbose that these are BUG references, and not CL references. `chromium:XXXXX` is used in `Cq-Depend:`, so it\u0027s confusing here. You can use crrev.com/c/1758148 if you want to reference a CL here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 42,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "9fd99e9caa0dd048a8b7635655926dc4138c62fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
