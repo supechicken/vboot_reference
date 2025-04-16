@@ -1,0 +1,232 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1980c830_04a65cb8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-16T20:43:25Z",
+      "side": 1,
+      "message": "Might as well check for `\u003c BOOT_HEADER_SIZE` here right away, which I think(?) is a bit larger than `sizeof(struct boot_img_hdr_v4)`. And then we also need to check for `pvmfw_size - BOOT_HEADER_SIZE \u003c pvmfw_hdr-\u003ekernel_size`.",
+      "fixSuggestions": [
+        {
+          "fixId": "bad923e8_003f1537",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 274,
+                "startChar": 0,
+                "endLine": 275,
+                "endChar": 0
+              },
+              "replacement": "\tif (pvmfw_size \u003c BOOT_HEADER_SIZE ||\n\t    pvmfw_size - BOOT_HEADER_SIZE \u003c pvmfw_hdr-\u003ekernel_size ||\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 286,
+                "startChar": 0,
+                "endLine": 287,
+                "endChar": 0
+              },
+              "replacement": "\tparams-\u003epvmfw_buffer_size \u003d pvmfw_size - BOOT_HEADER_SIZE;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b64a9db_7cd39197",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-16T20:43:25Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure what the extra \"Ignoring.\" at the end here adds, it seems a bit weird. How about just saying `\"Not loading pvmfw: not requested.\"` or something like that?",
+      "range": {
+        "startLine": 387,
+        "startChar": 44,
+        "endLine": 387,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "beb38bc6_b21147b4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 387,
+                "startChar": 0,
+                "endLine": 388,
+                "endChar": 0
+              },
+              "replacement": "\t\tVB2_DEBUG(\"Not loading pvmfw: not requested.\\n\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3051c93f_21542224",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-16T20:43:25Z",
+      "side": 1,
+      "message": "They\u0027re already initialized to 0 (and have to be, otherwise the way `reserve_buffers()` gets called in `get_preloaded_partition()` wouldn\u0027t work), so you don\u0027t need to do this.",
+      "fixSuggestions": [
+        {
+          "fixId": "95866fef_24c6a171",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/avb/vboot_avb_ops.c",
+              "range": {
+                "startLine": 180,
+                "startChar": 0,
+                "endLine": 184,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347c7960_5a77fa1b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-16T20:43:25Z",
+      "side": 1,
+      "message": "Do we know in all cases that pvmfw must exist? I\u0027m thinking particularly of USB recovery, for example.\n\nMaybe it would be better here to just print a warning if the partition does not exist and continue as if we are in the no-pvmfw case. We would later throw an error at a more appropriate time if AVB decides to actually request that partition because it is listed in vbmeta, but it gives the builder side the flexibility to exclude that in certain images (for whatever reason) without needing to modify firmware.\n\n(In fact, I wonder if we should apply a more flexible approach to all the partitions, not just this one? Some like `boot` are pretty unavoidable but e.g. `init_boot` might get dropped in a future Android redesign without breaking anything fundamental if `vendor_boot` takes over its ramdisk contents. Is it worth writing our code such that it dynamically figures out what to use for loading OS components based on what AVB returns in `verify_data-\u003eloaded_partitions`?)",
+      "fixSuggestions": [
+        {
+          "fixId": "e23e5dc0_4374944c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/avb/vboot_avb_ops.c",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 191,
+                "endChar": 0
+              },
+              "replacement": "\t\t{\n\t\t\tVB2_DEBUG(\"Unable to find %s%s\\n\", partition_name, slot_suffix);\n\t\t\tparts[GPT_ANDROID_PVMFW].buffer \u003d NULL;\n\t\t\tparts[GPT_ANDROID_PVMFW].alloced_size \u003d 0;\n\t\t\tparts[GPT_ANDROID_PVMFW].loaded_size \u003d 0;\n\t\t\treturn AVB_IO_RESULT_OK;\n\t\t}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9a2ea2_887b83e2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-16T20:43:25Z",
+      "side": 1,
+      "message": "Just some thoughts for the record: so this means that the buffer reserved in CBMEM will always need to be large enough to match the size of the entire disk partition, not just the actual size of the pvmfw image. We could write it differently if we wanted to. However, after thinking about it a bit I think this is okay: there\u0027s no real reason for us to ever make the partition bigger than the firmware can support anyway, even if we were not planning to use all that space at the moment. Leaving this code like this ensures that we will immediately notice when someone makes the partition size on the disk image larger, and can have the full conversation about the firmware limitations (rather than e.g. someone just changing the partition layout to reserve more for future expansion without realizing that that\u0027s not all that needs to be done).\n\nThe only reason to do this differently would be if we wanted to reserve more space on disk right away, because updating RW firmware in the field is much easier than updating the partition layout (and because reserving RAM from the OS is a bit more valuable than reserving space on a disk). For now it seems we\u0027ve decided to reserve 4MB in RAM and IIRC actual pvmfw is more like 1MB? So I assume that should be enough room to grow for the lifetime of the system? Or do we maybe want to use that opportunity to reduce the CBMEM area a little, give e.g. 2 more MB back to the OS for now, and change this code so it supports loading from a larger partition into a smaller space so that we can leave the partition size at 4MB and be ready to support that with an RW firmware update if it ever becomes necessary?",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191e1431_45f3571f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-16T20:43:25Z",
+      "side": 1,
+      "message": "Would be nice to avoid duplicating this message. Can we do something like this:\n```\nsize_t available;\n...\navailable \u003d kernel_buffer_end - buffer;\nif (size \u003e available)\n  goto overflow;\n...\navailable \u003d params-\u003epvmfw_buffer_size;\nif (size \u003e available)\n  goto overflow;\n...\nreturn AVB_IO_RESULT_OK;\n\noverflow:\nVB2_DEBUG(\"...\", partition_name, available, size);\nreturn AVB_IO_RESULT_ERROR_INSUFFICIENT_SPACE;\n```",
+      "fixSuggestions": [
+        {
+          "fixId": "cc0aeab8_4bb1429c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/avb/vboot_avb_ops.c",
+              "range": {
+                "startLine": 149,
+                "startChar": 0,
+                "endLine": 149,
+                "endChar": 0
+              },
+              "replacement": "\tsize_t available;\n"
+            },
+            {
+              "path": "firmware/avb/vboot_avb_ops.c",
+              "range": {
+                "startLine": 165,
+                "startChar": 0,
+                "endLine": 168,
+                "endChar": 0
+              },
+              "replacement": "\t\tavailable \u003d kernel_buffer_end - buffer;\n\t\tif (size \u003e available) {\n\t\t\tVB2_DEBUG(\"Buffer too small for \u0027%s\u0027: has %zu requested %\" PRIu64 \"\\n\",\n\t\t\t\t  partition_name, available, size);\n"
+            },
+            {
+              "path": "firmware/avb/vboot_avb_ops.c",
+              "range": {
+                "startLine": 193,
+                "startChar": 0,
+                "endLine": 196,
+                "endChar": 0
+              },
+              "replacement": "\tavailable \u003d params-\u003epvmfw_buffer_size;\n\tif (size \u003e available) {\n\t\tVB2_DEBUG(\"Buffer too small for %s\u0027: has %zu requested %\" PRIu64 \"\\n\",\n\t\t\t  partition_name, available, size);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
