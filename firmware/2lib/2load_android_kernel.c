@@ -468,6 +468,13 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		goto out;
 
 	/*
+	 * When booting to recovery with GBB enabled fastboot, always set
+	 * verifiedbootstate to orange to unlock all commands of fastbootd.
+	 */
+	if (recovery_boot && ctx->flags & VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT)
+		need_verification = false;
+
+	/*
 	 * TODO(b/335901799): Add support for marking verifiedbootstate yellow
 	 */
 	int chars = snprintf(params->vboot_cmdline_buffer, params->vboot_cmdline_size,
