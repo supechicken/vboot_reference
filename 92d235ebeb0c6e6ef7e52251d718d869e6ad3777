@@ -34,6 +34,24 @@
       "parentUuid": "78feaa3c_ec36eebd",
       "revId": "92d235ebeb0c6e6ef7e52251d718d869e6ad3777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1828218e_a7a78435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-04-17T15:35:55Z",
+      "side": 1,
+      "message": "the protocol won\u0027t change, but the fields in the certificate can. so if you have space for a bigger buffer, use bigger buffer",
+      "parentUuid": "04b8cf2e_b0b92f9b",
+      "revId": "92d235ebeb0c6e6ef7e52251d718d869e6ad3777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
