@@ -16,6 +16,24 @@
       "message": "Is there any risk that this requirement might grow beyond 1KB over the lifetime of the shipped product (through GSC updates)? If so we should maybe go to 2KB right away...",
       "revId": "92d235ebeb0c6e6ef7e52251d718d869e6ad3777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b8cf2e_b0b92f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-17T10:35:42Z",
+      "side": 1,
+      "message": "For pvmfw related logic, only DICE chain size is variable in the current protocol with GSC. So I\u0027d say it depends on our discussion in the b/359340876. I don\u0027t know if the protocol might change, @apronin@chromium.org should know if there\u0027s such a risk.\n\nIf you\u0027re fine with 2KB, I think we could play safe and just change it to 2KB.",
+      "parentUuid": "78feaa3c_ec36eebd",
+      "revId": "92d235ebeb0c6e6ef7e52251d718d869e6ad3777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
