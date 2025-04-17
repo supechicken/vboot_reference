@@ -46,6 +46,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03913297_631cce5d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-17T11:11:28Z",
+      "side": 1,
+      "message": "Right, good catch. Thank you!",
+      "parentUuid": "1980c830_04a65cb8",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b64a9db_7cd39197",
@@ -87,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd86017_182f6576",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-17T11:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b64a9db_7cd39197",
+      "range": {
+        "startLine": 387,
+        "startChar": 44,
+        "endLine": 387,
+        "endChar": 54
+      },
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3051c93f_21542224",
@@ -118,6 +160,24 @@
           ]
         }
       ],
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b36927_42bf82e0",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-17T11:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3051c93f_21542224",
       "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +217,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "62520f9c_ce772892",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-17T11:11:28Z",
+      "side": 1,
+      "message": "\u003e Do we know in all cases that pvmfw must exist? I\u0027m thinking particularly of USB recovery, for example.\n\nIIUC all partitions do exist in USB recovery, however you\u0027re right we don\u0027t need to load pvmfw during the recovery.\n\n\u003e Maybe it would be better here to just print a warning if the partition does not exist and continue as if we are in the no-pvmfw case. We would later throw an error at a more appropriate time if AVB decides to actually request that partition because it is listed in vbmeta, but it gives the builder side the flexibility to exclude that in certain images (for whatever reason) without needing to modify firmware.\n\nI don\u0027t think like making such a shift in the protocol. Currently it\u0027s \"if  `pvmfw_buffer_size !\u003d 0` then load pvmfw, fail otherwise\". It would change the logic to \"if `pvmfw_buffer_size !\u003d 0` then maybe load pvmfw\". Honestly it seems it would be better for the depthcharge to just skip setting `pvmfw_buffer_size` in such cases.\n \n\u003e (In fact, I wonder if we should apply a more flexible approach to all the partitions, not just this one? Some like boot are pretty unavoidable but e.g. init_boot might get dropped in a future Android redesign without breaking anything fundamental if vendor_boot takes over its ramdisk contents. Is it worth writing our code such that it dynamically figures out what to use for loading OS components based on what AVB returns in verify_data-\u003eloaded_partitions?)\n\nI don\u0027t think this change is a place for such a change.",
+      "parentUuid": "347c7960_5a77fa1b",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc9a2ea2_887b83e2",
@@ -170,6 +248,24 @@
       "writtenOn": "2025-04-16T20:43:25Z",
       "side": 1,
       "message": "Just some thoughts for the record: so this means that the buffer reserved in CBMEM will always need to be large enough to match the size of the entire disk partition, not just the actual size of the pvmfw image. We could write it differently if we wanted to. However, after thinking about it a bit I think this is okay: there\u0027s no real reason for us to ever make the partition bigger than the firmware can support anyway, even if we were not planning to use all that space at the moment. Leaving this code like this ensures that we will immediately notice when someone makes the partition size on the disk image larger, and can have the full conversation about the firmware limitations (rather than e.g. someone just changing the partition layout to reserve more for future expansion without realizing that that\u0027s not all that needs to be done).\n\nThe only reason to do this differently would be if we wanted to reserve more space on disk right away, because updating RW firmware in the field is much easier than updating the partition layout (and because reserving RAM from the OS is a bit more valuable than reserving space on a disk). For now it seems we\u0027ve decided to reserve 4MB in RAM and IIRC actual pvmfw is more like 1MB? So I assume that should be enough room to grow for the lifetime of the system? Or do we maybe want to use that opportunity to reduce the CBMEM area a little, give e.g. 2 more MB back to the OS for now, and change this code so it supports loading from a larger partition into a smaller space so that we can leave the partition size at 4MB and be ready to support that with an RW firmware update if it ever becomes necessary?",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e4d956_d1449832",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-17T11:11:28Z",
+      "side": 1,
+      "message": "Currently the layout reserves the 4MB for the pvmfw, just to make sure we have plenty of space for the future.\n\nIn order to keep this space smaller we\u0027d have to allocate the space in RAM in runtime (eg. just use the space in the kernel buffer) and later copy the contents to the CBMEM (which takes some time). \n\nHowever there\u0027s one thing that I don\u0027t like about this concept. The layout does not change often (or at all). The pvmfw code size might change between updates, builds etc. This introduces a possibility of one build refusing to boot because the pvmfw grew and no longer fits in the buffer and the next to boot successfully, because the build shrank for some reason. With the current approach we reduce the risk of that significantly.",
+      "parentUuid": "cc9a2ea2_887b83e2",
       "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -225,6 +321,24 @@
           ]
         }
       ],
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a177c6cf_2b2c0007",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-17T11:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "191e1431_45f3571f",
       "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
