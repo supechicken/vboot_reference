@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2944e16_0d347dcf",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-18T01:16:07Z",
+      "side": 1,
+      "message": "Sorry, another thing I just realized is that these comments should explicitly point out that `pvmfw_buffer` and `pvmfw_buffer_size` get overwritten by vboot and the caller needs to respect the new values afterwards. Because that\u0027s not intuitive, at first glance these just look like input (not also output) parameters, and callers need to be careful to not just keep working with a separate local copy of whatever they initialized `pvmfw_buffer` to.",
+      "fixSuggestions": [
+        {
+          "fixId": "ff3cee95_ab44e729",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 633,
+                "startChar": 0,
+                "endLine": 634,
+                "endChar": 0
+              },
+              "replacement": "\t/*\n\t * Destination buffer for pvmfw. Shall be ignored if pvmfw_buffer_size\n\t * is 0. This field will be overwritten by vboot and the caller needs to\n\t * respect the new value.\n\t */\n"
+            },
+            {
+              "path": "firmware/2lib/include/2api.h",
+              "range": {
+                "startLine": 638,
+                "startChar": 0,
+                "endLine": 639,
+                "endChar": 0
+              },
+              "replacement": "\t * shall be set to the correct non-zero value. This field will be\n\t * overwritten by vboot and the caller needs to respect the new value.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "86b81586019d697d5fac7951ef9bd7844b18742e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
