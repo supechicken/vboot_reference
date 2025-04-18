@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bac225da_e3a2df76",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-18T01:01:50Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 268,
+        "startChar": 48,
+        "endLine": 268,
+        "endChar": 58
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fb0712e5_c4d32e45",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 268,
+                "startChar": 0,
+                "endLine": 269,
+                "endChar": 0
+              },
+              "replacement": "\t\tVB2_DEBUG(\"Cannot get information about pvmfw partition\\n\");\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 309,
+                "startChar": 0,
+                "endLine": 310,
+                "endChar": 0
+              },
+              "replacement": "\t\tVB2_DEBUG(\"Cannot get information about preloaded partition\\n\");\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 360,
+                "startChar": 0,
+                "endLine": 361,
+                "endChar": 0
+              },
+              "replacement": "\t\tVB2_RETURN_IF_ERROR(prepare_pvmfw(avb_ops, params));\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 444,
+                "startChar": 0,
+                "endLine": 447,
+                "endChar": 0
+              },
+              "replacement": "\tVB2_RETURN_IF_ERROR(rearrange_partitions(avb_ops, params, recovery_boot));\n"
+            },
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 461,
+                "startChar": 0,
+                "endLine": 462,
+                "endChar": 0
+              },
+              "replacement": "\t\treturn VB2_ERROR_ANDROID_CMDLINE_BUF_TOO_SMALL;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fae2820a226ac0bf47b2e103f1c1390e1ae3b0c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

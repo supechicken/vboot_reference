@@ -235,6 +235,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5affd2fc_d25296cd",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-18T01:01:50Z",
+      "side": 1,
+      "message": "\u003e IIUC all partitions do exist in USB recovery, however you\u0027re right we don\u0027t need to load pvmfw during the recovery.\n\nWell, right now AFAIK we don\u0027t even have Android-based USB recovery images yet. But when we do we may want to omit pvmfw on those.\n\n\u003e It would change the logic to \"if pvmfw_buffer_size !\u003d 0 then maybe load pvmfw\". Honestly it seems it would be better for the depthcharge to just skip setting pvmfw_buffer_size in such cases.\n\nI\u0027m just thinking about preserving flexibility, because the firmware part will eventually become unchangeable in RO flash (at least for recovery boots), whereas the image builders can still change how they build new images for the lifetime of the product. If you want to do this in depthcharge, it\u0027s still a decision in firmware. If we just take the presence of the partition as indicator whether it should be loaded or not, then we don\u0027t need to answer the \"should pvmfw be part of recovery images\" question now, and could even change how that works after the product has shipped.\n\nFrom the technical side, I think the best way to handle this would be to inspect `verify_data-\u003eloaded_partitions` for the presence of the `pvmfw` partition and then pass that as a boolean to `rearrange_partitions()` (or maybe just call `prepare_pvmfw()` directly from `vb2_load_android()`, that might be easier). That way, builders also have the flexibility to stop shipping pvmfw on certain images without having to actually remove the partition from the partition table, in case we\u0027d ever want to OTA an image like that for some reason (because the absence of the descriptor from vbmeta will be the actual signal to decide whether to load pvmfw, not the presence of the partition).\n\n\u003e I don\u0027t think this change is a place for such a change.\n\nRight, I was just asking for general opinions on that topic (also to Grzegorz and Konrad if they\u0027re reading this), not saying this was something that should be done in this patch. I\u0027m not sure what the right answer there is yet. For those partitions, the probability that we\u0027d want to make changes in certain images later seems less likely, but in general more flexibility is almost always better than less when it comes to how code that we will need to freeze in RO firmware treats data structures that will be generated at a later point.",
+      "parentUuid": "62520f9c_ce772892",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc9a2ea2_887b83e2",
@@ -266,6 +284,24 @@
       "side": 1,
       "message": "Currently the layout reserves the 4MB for the pvmfw, just to make sure we have plenty of space for the future.\n\nIn order to keep this space smaller we\u0027d have to allocate the space in RAM in runtime (eg. just use the space in the kernel buffer) and later copy the contents to the CBMEM (which takes some time). \n\nHowever there\u0027s one thing that I don\u0027t like about this concept. The layout does not change often (or at all). The pvmfw code size might change between updates, builds etc. This introduces a possibility of one build refusing to boot because the pvmfw grew and no longer fits in the buffer and the next to boot successfully, because the build shrank for some reason. With the current approach we reduce the risk of that significantly.",
       "parentUuid": "cc9a2ea2_887b83e2",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b64bc0_30ff6c40",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-18T01:01:50Z",
+      "side": 1,
+      "message": "\u003e In order to keep this space smaller we\u0027d have to allocate the space in RAM in runtime (eg. just use the space in the kernel buffer) and later copy the contents to the CBMEM (which takes some time).\n\nNo, you could just set `alloced_size` to `VB2_MIN(params-\u003epvmfw_buffer_size, size)`. Then later in `get_preloaded_partition()` the `num_bytes \u003e\u003d part-\u003ealloced_size` clamp would trigger if the signed pvmfw binary was actually larger, and then AVB would hit an error because we returned fewer bytes. Technically, both options are easy to do, but like I said I agree that your version is probably better (and I guess 2MB more or less are 0.025ish% of total memory, so perhaps not really something worth getting concerned about).",
+      "parentUuid": "b1e4d956_d1449832",
       "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
