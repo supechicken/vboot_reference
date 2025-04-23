@@ -253,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "617890dc_b61f203d",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-04-23T13:08:21Z",
+      "side": 1,
+      "message": "Actually, using \u0027verify_data-\u003eloaded_partitions` makes a lot of sense. I can modify `rearrage_partition` to use it (it should give us the possibility to drop partitions in future). But let\u0027s do it as a follow up. I don\u0027t want to force Bartek to rebase his patchset once again.",
+      "parentUuid": "5affd2fc_d25296cd",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cc9a2ea2_887b83e2",
