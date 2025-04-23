@@ -273,6 +273,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a424c6b1_df988aec",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1525062
+      },
+      "writtenOn": "2025-04-23T13:09:40Z",
+      "side": 1,
+      "message": "\u003e From the technical side, I think the best way to handle this would be to inspect verify_data-\u003eloaded_partitions for the presence of the pvmfw partition and then pass that as a boolean to rearrange_partitions() (or maybe just call prepare_pvmfw() directly from vb2_load_android(), that might be easier). That way, builders also have the flexibility to stop shipping pvmfw on certain images without having to actually remove the partition from the partition table, in case we\u0027d ever want to OTA an image like that for some reason (because the absence of the descriptor from vbmeta will be the actual signal to decide whether to load pvmfw, not the presence of the partition).\n\nDone. Please let me know if this is okay now.",
+      "parentUuid": "617890dc_b61f203d",
+      "revId": "1f5485d4b43e164974ffd6b9a2b87b6db1e6d7b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cc9a2ea2_887b83e2",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 1
