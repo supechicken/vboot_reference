@@ -16,6 +16,102 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "ca0706ee70bd968b0584663b8afd1cdbf7b49d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c65ec25_39fda3bc",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-24T22:55:38Z",
+      "side": 1,
+      "message": "Can we wrap this all in `if (key-\u003ekey_location \u003d\u003d PRIVATE_KEY_P11)`?",
+      "fixSuggestions": [
+        {
+          "fixId": "7440573e_f4315317",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "host/lib21/host_signature.c",
+              "range": {
+                "startLine": 83,
+                "startChar": 0,
+                "endLine": 89,
+                "endChar": 0
+              },
+              "replacement": "\tif (key-\u003ekey_location \u003d\u003d PRIVATE_KEY_P11) {\n\t\tuint8_t *keyb_data \u003d 0;\n\t\tuint32_t keyb_size;\n\t\tif (vb_keyb_from_private_key(key, \u0026keyb_data, \u0026keyb_size)) {\n\t\t\tfprintf(stderr, \"Couldn\u0027t extract the public key\\n\");\n\t\t\trv \u003d VB2_ERROR_UNKNOWN;\n\t\t\tgoto done;\n\t\t}\n"
+            },
+            {
+              "path": "host/lib21/host_signature.c",
+              "range": {
+                "startLine": 135,
+                "startChar": 0,
+                "endLine": 136,
+                "endChar": 0
+              },
+              "replacement": "\t/* If it is PKCS11 key, we could sign with pkcs11_sign instead */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ca0706ee70bd968b0584663b8afd1cdbf7b49d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1a770e_9f1877a5",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-24T22:55:38Z",
+      "side": 1,
+      "message": "NULL (or just don\u0027t initialize)",
+      "range": {
+        "startLine": 83,
+        "startChar": 22,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "19968a71_3cc4d7a4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "host/lib21/host_signature.c",
+              "range": {
+                "startLine": 83,
+                "startChar": 0,
+                "endLine": 84,
+                "endChar": 0
+              },
+              "replacement": "\tuint8_t *keyb_data \u003d NULL;\n"
+            },
+            {
+              "path": "host/lib21/host_signature.c",
+              "range": {
+                "startLine": 90,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "\tfree(keyb_data);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ca0706ee70bd968b0584663b8afd1cdbf7b49d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
