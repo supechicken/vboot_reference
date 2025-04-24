@@ -335,7 +335,7 @@ static vb2_error_t ec_sync_phase2(struct vb2_context *ctx)
 }
 
 test_mockable
-vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
+vb2_error_t vb2api_ec_sync_phase1(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
@@ -359,6 +359,42 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
 
 	/* Phase 1; this determines if we need an update */
 	VB2_TRY(ec_sync_phase1(ctx));
+
+	return VB2_SUCCESS;
+}
+
+test_mockable
+vb2_error_t vb2api_is_ec_sync_required(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+		if(sd->flags & (VB2_SD_FLAG_ECSYNC_EC_RO | VB2_SD_FLAG_ECSYNC_EC_RW))
+			return VB2_REQUEST_EC_SYNC;
+
+	return VB2_SUCCESS;
+}
+
+test_mockable
+vb2_error_t vb2api_ec_sync(struct vb2_context *ctx)
+{
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+
+	/*
+	 * If the status indicates that the EC has already gone through
+	 * software sync this boot, then don't do it again.
+	 */
+	if (sd->status & VB2_SD_STATUS_EC_SYNC_COMPLETE) {
+		return VB2_SUCCESS;
+	}
+
+	/*
+	 * If the device is in recovery mode, then EC sync should
+	 * not be performed.
+	 */
+	if (ctx->flags & VB2_CONTEXT_RECOVERY_MODE) {
+		VB2_DEBUG("In recovery mode, skipping EC sync\n");
+		return VB2_SUCCESS;
+	}
 
 	/* Phase 2; Applies update and/or jumps to the correct EC image */
 	VB2_TRY(ec_sync_phase2(ctx));

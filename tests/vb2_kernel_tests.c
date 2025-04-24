@@ -35,6 +35,8 @@ static struct {
 static int mock_read_res_fail_on_call;
 static int mock_secdata_fwmp_check_retval;
 static int mock_commit_data_called;
+static int mock_ec_sync_phase1_called;
+static int mock_ec_sync_phase1_retval;
 static int mock_ec_sync_called;
 static int mock_ec_sync_retval;
 static int mock_battery_cutoff_called;
@@ -66,6 +68,8 @@ static void reset_common_data(enum reset_type t)
 	mock_read_res_fail_on_call = 0;
 	mock_secdata_fwmp_check_retval = VB2_SUCCESS;
 	mock_commit_data_called = 0;
+	mock_ec_sync_phase1_called = 0;
+	mock_ec_sync_phase1_retval = VB2_SUCCESS;
 	mock_ec_sync_called = 0;
 	mock_ec_sync_retval = VB2_SUCCESS;
 	mock_battery_cutoff_called = 0;
@@ -123,6 +127,12 @@ vb2_error_t vb2api_ec_sync(struct vb2_context *c)
 {
 	mock_ec_sync_called = 1;
 	return mock_ec_sync_retval;
+}
+
+vb2_error_t vb2api_ec_sync_phase1(struct vb2_context *c)
+{
+	mock_ec_sync_phase1_called = 1;
+	return mock_ec_sync_phase1_retval;
 }
 
 vb2_error_t vb2api_auxfw_sync(struct vb2_context *c)
@@ -344,6 +354,7 @@ static void phase2_tests(void)
 	reset_common_data(FOR_PHASE2);
 	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_NORMAL);
 	TEST_SUCC(vb2api_kernel_phase2(ctx), "Normal mode");
+	TEST_EQ(mock_ec_sync_phase1_called, 1, "  EC sync phase1");
 	TEST_EQ(mock_ec_sync_called, 1, "  EC sync");
 
 	reset_common_data(FOR_PHASE2);
@@ -357,11 +368,13 @@ static void phase2_tests(void)
 	reset_common_data(FOR_PHASE2);
 	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_DEVELOPER);
 	TEST_SUCC(vb2api_kernel_phase2(ctx), "Developer mode");
+	TEST_EQ(mock_ec_sync_phase1_called, 1, "  EC sync phase1");
 	TEST_EQ(mock_ec_sync_called, 1, "  EC sync");
 
 	reset_common_data(FOR_PHASE2);
 	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_DIAGNOSTICS);
 	TEST_SUCC(vb2api_kernel_phase2(ctx), "Diagnostics mode");
+	TEST_EQ(mock_ec_sync_phase1_called, 1, "  EC sync phase1");
 	TEST_EQ(mock_ec_sync_called, 1, "  EC sync");
 
 	/* Commit data for recovery mode */
@@ -370,12 +383,14 @@ static void phase2_tests(void)
 		      VB2_RECOVERY_RO_MANUAL);
 	TEST_SUCC(vb2api_kernel_phase2(ctx), "Manual recovery mode");
 	TEST_EQ(mock_commit_data_called, 1, "  commit data");
+	TEST_EQ(mock_ec_sync_phase1_called, 0, "  EC sync phase1");
 	TEST_EQ(mock_ec_sync_called, 0, "  EC sync");
 
 	reset_common_data(FOR_PHASE2);
 	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_BROKEN_SCREEN, 123);
 	TEST_SUCC(vb2api_kernel_phase2(ctx), "Broken screen mode");
 	TEST_EQ(mock_commit_data_called, 1, "  commit data");
+	TEST_EQ(mock_ec_sync_phase1_called, 0, "  EC sync phase1");
 	TEST_EQ(mock_ec_sync_called, 0, "  EC sync");
 
 	/* Boot recovery - memory retraining */
@@ -410,6 +425,13 @@ static void phase2_tests(void)
 		"Set VB2_NV_BATTERY_CUTOFF_REQUEST");
 	TEST_EQ(mock_battery_cutoff_called, 1,
 		"  battery_cutoff called after EC sync");
+
+	/* Return EC sync phase1 error */
+	reset_common_data(FOR_PHASE2);
+	SET_BOOT_MODE(ctx, VB2_BOOT_MODE_NORMAL);
+	mock_ec_sync_phase1_retval = VB2_ERROR_MOCK;
+	TEST_EQ(vb2api_kernel_phase2(ctx), VB2_ERROR_MOCK,
+		"Return EC sync phase1 error");
 
 	/* Return EC sync error */
 	reset_common_data(FOR_PHASE2);
