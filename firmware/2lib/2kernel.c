@@ -148,6 +148,7 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx)
 	 * has UI but it's just a single non-interactive WAIT screen.
 	 */
 	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) {
+		VB2_TRY(vb2api_ec_sync_phase1(ctx));
 		VB2_TRY(vb2api_ec_sync(ctx));
 		VB2_TRY(vb2api_auxfw_sync(ctx));
 		VB2_TRY(handle_battery_cutoff(ctx));

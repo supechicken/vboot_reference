@@ -1253,13 +1253,30 @@ enum vb2_firmware_selection {
 };
 
 /**
+ * This function will check if the EC is running the correct image to do
+ * EC sync, and if any updates are necessary by comparing the expected
+ * image hash to the actual image hash.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, VB2_REQUEST_REBOOT_EC_TO_RO if the EC must reboot back
+ * to its RO code to continue EC sync, or other non-zero error code.
+*/
+vb2_error_t vb2api_ec_sync_phase1(struct vb2_context *ctx);
+
+/**
+ * Check if the EC sync is required after running `vb2api_ec_sync_phase1`.
+ *
+ * @param ctx		Vboot context
+ * @return VB2_SUCCESS, VB2_REQUEST_EC_SYNC if EC sync is required.
+*/
+vb2_error_t vb2api_is_ec_sync_required(struct vb2_context *ctx);
+
+/**
  * Sync the Embedded Controller device to the expected version.
  *
- * This function will check if EC software sync is allowed, and if it
- * is, it will compare the expected image hash to the actual image
- * hash.  If they are the same, the EC will simply jump to its RW
- * firwmare.  Otherwise, the specified flash image will be updated to
- * the new version, and the EC will reboot into its new firmware.
+ * This function updates the EC flash image to the new version if specified
+ * by `vb2api_ec_sync_phase1` API, and the EC reboots into its new firmware.
+ * Otherwise EC simply jumps to its RW firmware.
  *
  * @param ctx		Vboot context
  * @return VB2_SUCCESS, or non-zero if error.
