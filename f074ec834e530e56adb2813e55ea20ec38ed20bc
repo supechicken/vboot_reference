@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33fd932_a443c673",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-24T23:24:03Z",
+      "side": 1,
+      "message": "Oh, also you need to `free(keyb_data)` here.",
+      "fixSuggestions": [
+        {
+          "fixId": "ed267cce_d584638b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "host/lib21/host_signature.c",
+              "range": {
+                "startLine": 91,
+                "startChar": 0,
+                "endLine": 91,
+                "endChar": 0
+              },
+              "replacement": "\t\tfree(keyb_data);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f074ec834e530e56adb2813e55ea20ec38ed20bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
