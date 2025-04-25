@@ -63,6 +63,30 @@
       },
       "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e6b59e_46d3e8ac",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-25T17:09:56Z",
+      "side": 1,
+      "message": "OK, so if only fingerprint is using this code then we can land this right now, as it seems to be really important due to the bug being P0. If it fails, then FP team will have to fix it. Julius CR+2\u0027d it and I know he doesn\u0027t give CR+2 for free. I would still like to see tests, but they might land in the followup CL. (I need to refactor the testing framework in vboot, it\u0027s hard to write tests at this point)",
+      "parentUuid": "49bc3382_f3bdf0e2",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
