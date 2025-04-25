@@ -16,6 +16,29 @@
       "message": "@bshai@google.com I updated the tests, please check if that works for you",
       "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb110ace_7c087f29",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-04-25T13:10:21Z",
+      "side": 1,
+      "message": "Can you cover this branch with tests? This is a security feature after all.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
