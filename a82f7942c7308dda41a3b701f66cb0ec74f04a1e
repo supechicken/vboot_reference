@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b5cb21_f28cc9a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-04-25T03:10:11Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8716659951556833489) is being automatically retried for the following reasons:\n- Some tests are now retryable:hatch-cq.hw.cq-medium\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "a82f7942c7308dda41a3b701f66cb0ec74f04a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
