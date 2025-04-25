@@ -39,6 +39,30 @@
       },
       "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49bc3382_f3bdf0e2",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-04-25T17:06:12Z",
+      "side": 1,
+      "message": "I defer to @jwerner@chromium.org\u0027s judgment on that request. I personally don\u0027t have enough expertise in this codebase to do so (honestly I\u0027m even struggling to even see if the pkcs11 path is tested at all right now) so I would need some support in doing so.",
+      "parentUuid": "fb110ace_7c087f29",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
