@@ -16,6 +16,42 @@
       "message": "Is this blank line intentional?",
       "revId": "ed1455943cff4fdb870ed8d44e2e5da77a3dbc3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51082358_354d2be0",
+        "filename": "futility/updater_quirks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-04-28T16:33:57Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "b64921dd_1c4ba615",
+      "fixSuggestions": [
+        {
+          "fixId": "36fd749a_2c6d9ca5",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "futility/updater_quirks.c",
+              "range": {
+                "startLine": 343,
+                "startChar": 0,
+                "endLine": 344,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "ed1455943cff4fdb870ed8d44e2e5da77a3dbc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
