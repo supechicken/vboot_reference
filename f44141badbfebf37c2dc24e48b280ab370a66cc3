@@ -87,6 +87,30 @@
       },
       "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "817d8bcf_4f73f382",
+        "filename": "host/lib21/host_signature.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-04-28T21:45:10Z",
+      "side": 1,
+      "message": "My position on the vb21 stuff (which I had discussed with Benjamin offline) is basically that it is unsupported. It was an aborted attempt from Randall to replace the entire vboot AP signing system 10 years ago, which never happened, and we don\u0027t have any intention on changing that in the future (if we ever redo signing structures again it would probably be a new design from scratch). I don\u0027t know how the fingerprint and accessory stuff ever came to use this in the first place, that was probably a bad decision and should be rectified.\n\nUntil then, as far as I\u0027m concerned, anyone using this code is on their own and should be aware that there\u0027s nobody really paying attention to make sure it works or keeps working. I\u0027m happy to +2 random fixes as long as they look fine on the surface and don\u0027t want to be too strict on the unit test requirements as long as the people who still care about this code aren\u0027t, but really, they probably shouldn\u0027t be using it at all.",
+      "parentUuid": "69e6b59e_46d3e8ac",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "f44141badbfebf37c2dc24e48b280ab370a66cc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
