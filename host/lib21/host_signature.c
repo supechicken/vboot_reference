@@ -71,6 +71,23 @@ vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr, const uint8_t *data,
 			   uint32_t size, const struct vb2_private_key *key,
 			   const char *desc)
 {
+	/* Preinitialize these fields used in the error handling. */
+	vb2_error_t rv;
+	*sig_ptr = NULL;
+	uint8_t *sig_digest = NULL, *buf = NULL;
+
+	if (key->key_location == PRIVATE_KEY_P11) {
+		/* Load keyb from the key to force PKCS11 fields to initialize. */
+		uint8_t *keyb_data;
+		uint32_t keyb_size;
+		if (vb_keyb_from_private_key(key, &keyb_data, &keyb_size)) {
+			fprintf(stderr, "Couldn't extract the public key\n");
+			rv = VB2_ERROR_UNKNOWN;
+			goto done;
+		}
+		free(keyb_data);
+	}
+
 	struct vb21_signature s = {
 		.c.magic = VB21_MAGIC_SIGNATURE,
 		.c.struct_version_major = VB21_SIGNATURE_VERSION_MAJOR,
@@ -87,10 +104,6 @@ vb2_error_t vb21_sign_data(struct vb21_signature **sig_ptr, const uint8_t *data,
 	const uint8_t *info = NULL;
 	uint32_t info_size = 0;
 	uint32_t sig_digest_size;
-	uint8_t *sig_digest;
-	uint8_t *buf;
-
-	*sig_ptr = NULL;
 
 	/* Use key description if no description supplied */
 	if (!desc)
