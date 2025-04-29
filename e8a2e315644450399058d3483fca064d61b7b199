@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca3c8380_b69dbd57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-04-29T12:04:24Z",
+      "side": 1,
+      "message": "It is not the problem with this CL, since precedence was already done with `ENTRY_ACTIVE|INVALID`, but for me `GptUpdateKernelWithEntry` feels strange. Why this function isn\u0027t split into separate functions? Then each variant could have different parameter list instead of relaying on special fields in `GptData` structure. But as I said, the problem isn\u0027t introduced by this CL, so I guess we can refactor that later.",
+      "revId": "e8a2e315644450399058d3483fca064d61b7b199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
