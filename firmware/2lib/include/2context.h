@@ -205,6 +205,12 @@ enum vb2_context_flags {
 	 * support two RW slots.
 	 */
 	VB2_CONTEXT_SLOT_A_ONLY = (1 << 29),
+
+	/*
+	 * Boot into Android recovery mode. Caller must set/clear this flag
+	 * before calling vb2api_load_kernel().
+	 */
+	VB2_CONTEXT_ANDROID_RECOVERY = (1 << 30),
 };
 
 /* Helper for aligning fields in vb2_context. */
