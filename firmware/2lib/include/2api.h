@@ -28,6 +28,7 @@
 #include "2return_codes.h"
 #include "2rsa.h"
 #include "2secdata_struct.h"
+#include "gpt_misc.h"
 
 /* Kernel image type */
 #define VB2_KERNEL_TYPE_MASK 0x00000003
@@ -1326,6 +1327,31 @@ void vb2ex_abort(void);
  * @return VB2_SUCCESS, or non-zero error code.
  */
 vb2_error_t vb2ex_commit_data(struct vb2_context *ctx);
+
+/* Boot modes that vb2ex_get_android_bootmode can return */
+enum vb2_android_bootmode {
+	/* Boot android normally */
+	VB2_ANDROID_NORMAL_BOOT = 0,
+	/* Boot android into recovery mode */
+	VB2_ANDROID_RECOVERY_BOOT = 1,
+};
+
+/**
+ * Get Android boot mode.
+ *
+ * Android boot mode is saved on the misc partition where FW can obtain
+ * information about what boot mode is requested.
+ *
+ * @param ctx		Vboot context
+ * @param disk		Pointer to the disk
+ * @param gpt		Pointer to the GPT from the disk
+ * @param bootmode	Return requested boot mode for Android
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_get_android_bootmode(struct vb2_context *ctx,
+				       vb2ex_disk_handle_t disk,
+				       GptData *gpt,
+				       enum vb2_android_bootmode *bootmode);
 
 /*****************************************************************************/
 /* TPM functionality */
