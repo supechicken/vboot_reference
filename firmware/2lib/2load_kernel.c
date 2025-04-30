@@ -591,6 +591,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			       struct vb2_kernel_params *params,
 			       struct vb2_disk_info *disk_info)
 {
+	enum vb2_android_bootmode android_bootmode = VB2_ANDROID_NORMAL_BOOT;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int found_partitions = 0;
 	uint32_t lowest_version = LOWEST_TPM_VERSION;
@@ -615,6 +616,11 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 	/* Initialize GPT library */
 	if (GptInit(&gpt)) {
 		VB2_DEBUG("Error parsing GPT\n");
+		goto gpt_done;
+	}
+
+	if (vb2ex_get_android_bootmode(ctx, disk_info->handle, &gpt, &android_bootmode)) {
+		VB2_DEBUG("Unable to get android bootmode\n");
 		goto gpt_done;
 	}
 
@@ -650,7 +656,8 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			if (lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)
 				continue;
 #ifdef USE_LIBAVB
-			rv = vb2_load_android(ctx, &gpt, entry, params, disk_info->handle);
+			rv = vb2_load_android(ctx, &gpt, entry, params, disk_info->handle,
+					      android_bootmode);
 #else
 			/* Don't allow to boot android without AVB */
 			rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;

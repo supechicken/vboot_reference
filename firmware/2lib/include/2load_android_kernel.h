@@ -22,6 +22,7 @@
  * @param entry			GPT entry with VBMETA partition
  * @param params		Load-kernel parameters
  * @param disk_handle		Handle to the disk containing kernel
+ * @param bootmode		Select boot mode of Android
  * @return VB2_SUCCESS, or non-zero error code.
  */
 vb2_error_t vb2_load_android(
@@ -29,6 +30,7 @@ vb2_error_t vb2_load_android(
 	GptData *gpt,
 	GptEntry *entry,
 	struct vb2_kernel_params *params,
-	vb2ex_disk_handle_t disk_handle);
+	vb2ex_disk_handle_t disk_handle,
+	enum vb2_android_bootmode bootmode);
 
 #endif  /* VBOOT_REFERENCE_2LOAD_ANDROID_KERNEL_H_ */
