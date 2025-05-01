@@ -149,9 +149,14 @@ void GptRepair(GptData *gpt);
 void GptModified(GptData *gpt);
 
 /**
- * Return 1 if the entry is a Chrome OS kernel partition, else 0.
+ * Return true if the entry is a Android VBMETA partition, else false.
  */
-int IsKernelEntry(const GptEntry *e);
+bool IsAndroid(const GptEntry *e);
+
+/**
+ * Return true if the entry is a ChromeOS kernel partition, else false.
+ */
+bool IsChromeOS(const GptEntry *e);
 
 /**
  * Return true if the entry is a Android OS boot partition, else false.
