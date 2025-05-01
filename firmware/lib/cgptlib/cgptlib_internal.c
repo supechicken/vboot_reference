@@ -273,7 +273,7 @@ int IsAndroid(const GptEntry *e)
 	return !memcmp(&e->type, &guid_android_vbmeta, sizeof(Guid));
 }
 
-int IsBootableEntry(const GptEntry *e)
+bool IsBootableEntry(const GptEntry *e)
 {
 	if (IsChromeOS(e) || IsAndroid(e))
 		return true;
