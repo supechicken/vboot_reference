@@ -1,0 +1,79 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18250ef_5141aa14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-05-02T23:23:45Z",
+      "side": 1,
+      "message": "Apologies for the long review times, just had too many other things come in last week. Just one small issue to fix then this looks good to go (and I know I still need to look at the depthcharge side, too).",
+      "revId": "b982721c96d90dea60b81f3ec974e36314f6dbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c5a4d6_a4a0bfca",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-05-02T23:23:45Z",
+      "side": 1,
+      "message": "This should explicitly set `params-\u003epvmfw_out_size \u003d 0`.",
+      "fixSuggestions": [
+        {
+          "fixId": "f9d7c04a_d9f2c573",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/2load_android_kernel.c",
+              "range": {
+                "startLine": 286,
+                "startChar": 0,
+                "endLine": 286,
+                "endChar": 0
+              },
+              "replacement": "\t\tparams-\u003epvmfw_out_size \u003d 0;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "b982721c96d90dea60b81f3ec974e36314f6dbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d0714c_27aabd24",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-05-02T23:23:45Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 292,
+        "startChar": 30,
+        "endLine": 292,
+        "endChar": 38
+      },
+      "revId": "b982721c96d90dea60b81f3ec974e36314f6dbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
