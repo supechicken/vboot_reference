@@ -16,6 +16,24 @@
       "message": "Please don\u0027t manually cherry-pick changes to firmware branches. this broke copybot",
       "revId": "31bd9f05c19b92f8aeb1f5d36febb69fadc9b10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9dfe39_2de5c23d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-05-04T15:47:07Z",
+      "side": 1,
+      "message": "I see now this is a very old change, I\u0027m not sure why copybot picked it up",
+      "parentUuid": "65865a61_9474b8e9",
+      "revId": "31bd9f05c19b92f8aeb1f5d36febb69fadc9b10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
