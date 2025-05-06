@@ -69,6 +69,24 @@
       "parentUuid": "d0e179de_040f88d1",
       "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd36b73_6f5e9b4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-05-06T06:53:41Z",
+      "side": 1,
+      "message": "\u003e From b/386920751#comment101, it looks like we enabled `VBOOT_EARLY_EC_SYNC` for Rull (Nissa), just in order for EC RW to complete PD negotiation before showing firmware screen. I didn\u0027t read every comment on the bug, but have we considered adding a short delay or busy loop (waiting for PD negotiation to complete) before showing firmware screen? That delay won\u0027t affect normal boot time anyway.\n\n\nIn summary, it looks like the ITE EC chip has a limitation where it takes 1 second to settle down when switching from read-only to read-write mode. If we send any commands to get PD mux info during this transition, we get incorrect data. After a month of analysis, we\u0027ve determined that syncing the EC in romstage is the best way to fix this error. We can\u0027t keep 1sec delay before sending any PD mux info cmd.\n\nWe\u0027ve already moved EC sync for rull and equivalent devices, but it can take 4-8 seconds to complete. To ensure users are notified during this time, we\u0027re working on enabling eSOL during EC sync.",
+      "parentUuid": "492c40a9_16939a43",
+      "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
