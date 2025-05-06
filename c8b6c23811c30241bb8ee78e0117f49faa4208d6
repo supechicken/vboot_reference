@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b919ac37_a504db50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-05-06T12:19:19Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"decleration\" is a possible misspelling of \"declaration\" or \"deceleration\".\n\nAnalyzer Description: Checks for common typos.\nOwner: chops-source-team@google.com\n\n\"decleration\" is a possible misspelling of \"declaration\" or \"deceleration\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "c8b6c23811c30241bb8ee78e0117f49faa4208d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
