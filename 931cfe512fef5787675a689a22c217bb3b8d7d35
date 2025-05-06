@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6505dce1_e58f3d85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-05-06T01:22:41Z",
+      "side": 1,
+      "message": "Before we review this, can someone remind me if there is even still any reason *why* we\u0027re using EARLY_EC_SYNC on x86? (Apologies if I\u0027ve asked this before and forgotten the answer since.) Originally this option was introduced to help with power envelope edge cases when the EC was booting in RO with dead battery and couldn\u0027t do PD negotiation, where we were worried that the device couldn\u0027t reach depthcharge on 15W. But that problem has since been solved separately with EC-EFS2. So nowadays the EC should always be able to do PD negotiation even when the AP is booting in recovery mode (and besides, I\u0027m not sure if these newer Intel chips could even get to romstage and turn on the eSOL display on 15W?).\n\nSo why are we still doing this EARLY_EC_SYNC thing? If we don\u0027t need it for power, then otherwise it has only drawbacks (e.g. it doesn\u0027t allow us to compress the EC image in CBFS). Why don\u0027t we just turn it off and then we don\u0027t have this problem and don\u0027t need to add new eSOL screens, because the normal depthcharge UI can handle it?",
+      "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
