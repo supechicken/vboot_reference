@@ -19,4 +19,4 @@ EOF
 fi
 
 out_dir=$1
-generate_ed25519_key "${out_dir}/crdyshim"
+generate_ecdsa_p256_key "${out_dir}/crdyshim"
