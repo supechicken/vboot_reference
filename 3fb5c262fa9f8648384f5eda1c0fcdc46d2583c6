@@ -33,6 +33,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "3fb5c262fa9f8648384f5eda1c0fcdc46d2583c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2a193e_04a92486",
+        "filename": "scripts/keygeneration/uefi/create_new_crdyshim_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2025-05-07T18:19:28Z",
+      "side": 1,
+      "message": "We have some dev/test code that uses the test key, so I think we should create the output under a new name (e.g. `crdyshim-v2` or something), and keep the old key in the repo until such time as we\u0027ve fully transitioned to ecdsa.",
+      "revId": "3fb5c262fa9f8648384f5eda1c0fcdc46d2583c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
