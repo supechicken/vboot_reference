@@ -50,6 +50,24 @@
       "message": "We have some dev/test code that uses the test key, so I think we should create the output under a new name (e.g. `crdyshim-v2` or something), and keep the old key in the repo until such time as we\u0027ve fully transitioned to ecdsa.",
       "revId": "3fb5c262fa9f8648384f5eda1c0fcdc46d2583c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4afbcc_c10a8fea",
+        "filename": "scripts/keygeneration/uefi/create_new_crdyshim_key.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1516607
+      },
+      "writtenOn": "2025-05-07T19:54:53Z",
+      "side": 1,
+      "message": "thank you - updated",
+      "parentUuid": "7c2a193e_04a92486",
+      "revId": "3fb5c262fa9f8648384f5eda1c0fcdc46d2583c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
