@@ -327,7 +327,8 @@ static vb2_error_t prepare_dtb(AvbSlotVerifyData *verify_data,
 }
 
 vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
-			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle)
+			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle,
+			     uint32_t *kernel_version)
 {
 	enum vb2_android_bootmode bootmode = VB2_ANDROID_NORMAL_BOOT;
 	AvbSlotVerifyData *verify_data = NULL;
@@ -410,6 +411,16 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	rv = vb2_map_libavb_errors(result);
 	if (rv != VB2_SUCCESS)
 		goto out;
+
+	/* Fetch kernel version */
+	if (verify_data->rollback_indexes[0] & 0xFFFFFFFFFFFF0000ULL) {
+		rv = VB2_ERROR_ANDROID_INVALID_ROLLBACK_VERSION;
+		goto out;
+	}
+
+	uint16_t cros_version = (uint16_t)verify_data->rollback_indexes[0];
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	*kernel_version = (sd->kernel_version_secdata & 0xFFFF0000) | cros_version;
 
 	rv = vb2ex_get_android_bootmode(ctx, disk_handle, gpt, &bootmode);
 	if (rv != VB2_SUCCESS) {
