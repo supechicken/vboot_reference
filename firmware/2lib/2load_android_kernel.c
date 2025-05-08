@@ -328,8 +328,38 @@ static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 	return VB2_SUCCESS;
 }
 
+vb2_error_t vb2_get_android_version(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
+				    struct vb2_disk_info *disk_info, uint32_t *kernel_version)
+{
+	uint8_t buf[512]; // TODO: add non-sector size read
+	AvbVBMetaImageHeader *vbmeta_header;
+	VbExStream_t stream = NULL;
+	uint64_t part_start = entry->starting_lba;
+	uint64_t part_size = GptGetEntrySizeLba(entry);
+
+	if (VbExStreamOpen(disk_info->handle, part_start, part_size, &stream)) {
+		VB2_DEBUG("Partition error getting stream.\n");
+		VB2_DEBUG("Marking kernel as invalid.\n");
+		GptUpdateKernelEntry(gpt, GPT_UPDATE_ENTRY_BAD);
+		return VB2_ERROR_LOAD_PARTITION_VERIFY_VBLOCK;
+	}
+
+	if (VbExStreamRead(stream, sizeof(buf), &buf)) {
+		VB2_DEBUG("Unable to read start of partition.\n");
+		return VB2_ERROR_LOAD_PARTITION_VERIFY_VBLOCK;
+	}
+
+	vbmeta_header = (AvbVBMetaImageHeader *)buf;
+	*kernel_version = android_timestamp_to_cros_version(vbmeta_header->rollback_index);
+	VB2_DEBUG("timestamp: %"PRId64" version: %d", vbmeta_header->rollback_index, *kernel_version);
+	VbExStreamClose(stream);
+
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
-			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle)
+			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle,
+			     uint32_t *kernel_version)
 {
 	AvbSlotVerifyData *verify_data = NULL;
 	AvbOps *avb_ops;
@@ -385,6 +415,10 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	rv = vb2_map_libavb_errors(result);
 	if (rv != VB2_SUCCESS)
 		goto out;
+
+	uint16_t cros_version = android_timestamp_to_cros_version(verify_data->rollback_indexes[0]);
+	struct vb2_shared_data *sd = vb2_get_sd(ctx);
+	*kernel_version = (sd->kernel_version_secdata & 0xffff0000) | cros_version;
 
 	/* Check "misc" partition for boot type */
 	enum vb2_boot_command boot_command = bcb_command(avb_ops);

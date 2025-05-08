@@ -264,13 +264,17 @@ static AvbIOResult read_rollback_index(AvbOps *ops,
 				       size_t rollback_index_slot,
 				       uint64_t *out_rollback_index)
 {
-	/*
-	 * TODO(b/324230492): Implement rollback protection
-	 * For now we always return 0 as the stored rollback index.
-	 */
-	VB2_DEBUG("TODO: not implemented yet\n");
-	if (out_rollback_index != NULL)
-		*out_rollback_index = 0;
+	if (rollback_index_slot != 0)
+		return AVB_IO_RESULT_ERROR_NO_SUCH_VALUE;
+
+	if (out_rollback_index != NULL) {
+		struct vboot_avb_ctx *avbctx = user_data(ops);
+		struct vb2_shared_data *sd = vb2_get_sd(avbctx->vb2_ctx);
+		uint16_t cros_ver = sd->kernel_version_secdata & 0xffff;
+
+		*out_rollback_index = cros_version_to_android_timestamp(cros_ver);
+		VB2_DEBUG("timestamp: %"PRId64" version: %d\n", *out_rollback_index, cros_ver);
+	}
 
 	return AVB_IO_RESULT_OK;
 }
