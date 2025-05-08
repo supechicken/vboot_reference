@@ -10,6 +10,7 @@
 #include "2common.h"
 #ifdef USE_LIBAVB
 #include "2load_android_kernel.h"
+#include <libavb.h>
 #endif
 #include "2misc.h"
 #include "2nvstorage.h"
@@ -643,15 +644,18 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 
 		uint32_t kernel_version = 0;
 		if (IsAndroid(entry)) {
-			/*
-			 * Android does not support versioning yet
-			 * TODO: b/324230492
-			 */
+#ifdef USE_LIBAVB
+			if (lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY) {
+				vb2_get_android_version(ctx, &gpt, entry, disk_info,
+							&kernel_version);
+				continue;
+			}
+
+			rv = vb2_load_android(ctx, &gpt, entry, params, disk_info->handle,
+					      &kernel_version);
+#else
 			if (lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)
 				continue;
-#ifdef USE_LIBAVB
-			rv = vb2_load_android(ctx, &gpt, entry, params, disk_info->handle);
-#else
 			/* Don't allow to boot android without AVB */
 			rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
 #endif

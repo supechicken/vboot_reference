@@ -15,6 +15,17 @@
 #include "vboot_api.h"
 
 /**
+ * Loads Android vbmeta partitions and fetches version.
+ * @param ctx			Vboot context
+ * @param gpt			Partition table from the disk
+ * @param entry			GPT entry with VBMETA partition
+ * @param disk_info		Pointer to disk_info structure
+ * @param kernel_version	Pointer to kernel version
+ */
+vb2_error_t vb2_get_android_version(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
+				    struct vb2_disk_info *disk_info, uint32_t *kernel_version);
+
+/**
  * Loads and verifies Android partitions (boot, init_boot, vendor_boot, pvmfw).
  *
  * @param ctx			Vboot context
@@ -22,6 +33,7 @@
  * @param entry			GPT entry with VBMETA partition
  * @param params		Load-kernel parameters
  * @param disk_handle		Handle to the disk containing kernel
+ * @param kernel_version	Pointer to kernel version
  * @return VB2_SUCCESS, or non-zero error code.
  */
 vb2_error_t vb2_load_android(
@@ -29,6 +41,7 @@ vb2_error_t vb2_load_android(
 	GptData *gpt,
 	GptEntry *entry,
 	struct vb2_kernel_params *params,
-	vb2ex_disk_handle_t disk_handle);
+	vb2ex_disk_handle_t disk_handle,
+	uint32_t *kernel_version);
 
 #endif  /* VBOOT_REFERENCE_2LOAD_ANDROID_KERNEL_H_ */
