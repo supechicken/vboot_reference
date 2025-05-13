@@ -122,6 +122,24 @@
       "message": "Looking at how these 2 functions are called in CB:87575, I don\u0027t think we actually need these 2 functions. The existing vboot API already provides `vb2ex_ec_update_image` as the callback function. In the coreboot implementation of `vb2ex_ec_update_image` you can simply show the SOL screen before doing the actual update. Note that we\u0027re doing the same in depthcharge for showing the firmware sync screen.\n\nIn coreboot I\u0027d write something like:\n\n```\n// src/security/vboot/ec_sync.c\n__weak void mainboard_prepare_ec_update(void) { }\n\nvb2_error_t vb2ex_ec_update_image(...)\n{\n    mainboard_prepare_ec_update();\n    return ec_update_image(select); \n}\n\n// src/soc/intel/alderlake/romstage/romstage.c\nvoid mainboard_prepare_ec_update(void)\n{\n    static bool informed;\n    if (CONFIG(VBOOT_EC_SYNC_ESOL) \u0026\u0026 !informed) {\n        ux_inform_user_of_update_operation(...);\n        informed \u003d true;\n    }\n}\n\nvoid mainboard_romstage_entry(void)\n{\n    ...\n    if (CONFIG(VBOOT_EARLY_EC_SYNC) \u0026\u0026 CONFIG(VBOOT_EC_SYNC_ESOL))\n        vboot_sync_ec();\n}\n```\n\nLet me know if that works for you.",
       "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c293e2d_820ca576",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-05-13T16:33:06Z",
+      "side": 1,
+      "message": "\u003e Looking at how these 2 functions are called in CB:87575, I don\u0027t think we actually need these 2 functions. The existing vboot API already provides `vb2ex_ec_update_image` as the callback function. In the coreboot implementation of `vb2ex_ec_update_image` you can simply show the SOL screen before doing the actual update. Note that we\u0027re doing the same in depthcharge for showing the firmware sync screen.\n\u003e \n\u003e In coreboot I\u0027d write something like:\n\u003e \n\u003e ```\n\u003e // src/security/vboot/ec_sync.c\n\u003e __weak void mainboard_prepare_ec_update(void) { }\n\u003e \n\u003e vb2_error_t vb2ex_ec_update_image(...)\n\u003e {\n\u003e     mainboard_prepare_ec_update();\n\u003e     return ec_update_image(select); \n\u003e }\n\u003e \n\u003e // src/soc/intel/alderlake/romstage/romstage.c\n\u003e void mainboard_prepare_ec_update(void)\n\u003e {\n\u003e     static bool informed;\n\u003e     if (CONFIG(VBOOT_EC_SYNC_ESOL) \u0026\u0026 !informed) {\n\u003e         ux_inform_user_of_update_operation(...);\n\u003e         informed \u003d true;\n\u003e     }\n\u003e }\n\u003e \n\u003e void mainboard_romstage_entry(void)\n\u003e {\n\u003e     ...\n\u003e     if (CONFIG(VBOOT_EARLY_EC_SYNC) \u0026\u0026 CONFIG(VBOOT_EC_SYNC_ESOL))\n\u003e         vboot_sync_ec();\n\u003e }\n\u003e ```\n\u003e \n\u003e Let me know if that works for you.\n\n\nI like this idea about adding cascading callbacks into the SoC/MB layer",
+      "parentUuid": "7b4b868f_4ef5eb90",
+      "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
