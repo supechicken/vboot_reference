@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7eb4de9c_34970611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-05-14T21:49:47Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve tried to read through b/412210635 and b/386920751 but I\u0027m still not sure I understand the underlying problem. Can somebody summarize why it is impossible to fix the bug with depthcharge sync? The EARLY_EC_SYNC path is technical debt that I\u0027d prefer to remove eventually, not further cement as workarounds for various minor issues. There\u0027s a pretty big cost attached to maintaining two entirely different paths for EC sync with each their own quirks. We should try to get away from that unless we have a really hard reason.\n\nAs I understood those bugs, the EC temporarily reports an incorrect mode (role) after the software sync sysjump. But if the situation fixes itself eventually, then shouldn\u0027t depthcharge also eventually notice that fix (and e.g. reenumerate USB devices at that point that it previously lost track of)? Is the problem that depthcharge doesn\u0027t continuously poll that state correctly from the EC?\n\nOr is the problem what I think b/386920751#comment93 is saying, that depthcharge hands off to the OS before the EC has sorted out the situation on its end? But why is that a problem? Wouldn\u0027t the OS re-read this state from the EC eventually? I don\u0027t really understand how some temporary state confusion on the EC leads to a permanent problem on the AP side here.\n\n...also, maybe I have completely forgotten how all this works, but why is the EC even sysjumping in depthcharge in the first place? Wasn\u0027t the whole point of EC-EFS2 that the EC no longer sysjumps in depthcharge (instead, it will have decided to boot from RO or RW before the AP even started, and if AP software sync decides to change that that causes a full system reset)? I fail to understand how with EFS2 anything the AP does during the software sync stage causes the EC to redo PD negotiation in the first place. Or is Nissa not actually using EFS2 for some reason?",
+      "parentUuid": "4c17f1a3_96e65db3",
+      "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b4b868f_4ef5eb90",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
