@@ -30,6 +30,8 @@
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
 #define BCB_CMD_BOOT_RECOVERY "boot-recovery"
 
+#define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate"
+
 static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 {
 	struct vb2_bootloader_message bcb;
