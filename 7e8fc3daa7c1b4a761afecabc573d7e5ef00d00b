@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b318c673_0c450ea4",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-05-15T15:05:55Z",
+      "side": 1,
+      "message": "Please use:\n\ninclude chromeos/owners:v1:/bots/OWNERS.copybot #{LAST_RESORT_SUGGESTION}",
+      "fixSuggestions": [
+        {
+          "fixId": "37bffa71_c763d74c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "OWNERS",
+              "range": {
+                "startLine": 3,
+                "startChar": 0,
+                "endLine": 4,
+                "endChar": 0
+              },
+              "replacement": "include chromeos/owners:v1:/bots/OWNERS.copybot #{LAST_RESORT_SUGGESTION}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7e8fc3daa7c1b4a761afecabc573d7e5ef00d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
