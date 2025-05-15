@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c4b1ac1_0fe3d065",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2025-05-15T15:07:53Z",
+      "side": 1,
+      "message": "You may want to include copybot if you plan on syncing this:\ninclude chromeos/owners:v1:/bots/OWNERS.copybot #{LAST_RESORT_SUGGESTION}",
+      "fixSuggestions": [
+        {
+          "fixId": "61f6507a_c6939926",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "OWNERS",
+              "range": {
+                "startLine": 2,
+                "startChar": 0,
+                "endLine": 2,
+                "endChar": 0
+              },
+              "replacement": "include chromeos/owners:v1:/bots/OWNERS.copybot #{LAST_RESORT_SUGGESTION}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "17f4f0044b71409a0a554dc0c6c4d7aebf0d8246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
