@@ -30,6 +30,14 @@
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
 #define BCB_CMD_BOOT_RECOVERY "boot-recovery"
 
+<<<<<<< HEAD   (5556a6 copybot: Switch to dedicated service account)
+||||||| BASE
+#define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate="
+
+=======
+#define VERIFIED_BOOT_PROPERTY_NAME "androidboot.verifiedbootstate"
+
+>>>>>>> CHANGE (7bcba9 2lib: Fix VERIFIED_BOOT_PROPERTY_NAME macro)
 static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 {
 	struct vb2_bootloader_message bcb;
