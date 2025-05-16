@@ -22,6 +22,30 @@
       },
       "revId": "7bcba9da8d22c92eb2b06f3f4484c0901007f8da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc70e2b_20734086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1515687
+      },
+      "writtenOn": "2025-05-16T09:07:29Z",
+      "side": 1,
+      "message": "\u003e This change removes the \"s\" from the end of the string, but I don\u0027t see any \"\u003d\" in the original or new change.\n\nI\u0027m not sure if that\u0027s accurate, I\u0027m seeing a removal for `\u003d` in the diff between Base and Patchset 5 (see [here](https://drive.google.com/file/d/1cuOsmxOMP8gob00QVOxyRcs4Dut3C_qO/view?usp\u003dsharing). Could you clarify what do you mean by removal of the `s` at the end of the string?",
+      "parentUuid": "2fce387c_3853a388",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "7bcba9da8d22c92eb2b06f3f4484c0901007f8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
