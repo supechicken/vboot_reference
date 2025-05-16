@@ -16,6 +16,24 @@
       "message": "Please add cherrypick info and change footer-tags to `Original-*`. Applies to the whole chain.\nCherry-picking via Gerrit UI will do it for you :)",
       "revId": "57d54a1870ed80ad53ede76334ad6cc7d1fb6b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e82fb9_ee0d8030",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-05-16T03:52:00Z",
+      "side": 1,
+      "message": "I use Gerrit UI to cherry-pick the new patchset. But the footer does not show `Original-*`. It looks to me that `Original-*` string is done by bot.",
+      "parentUuid": "122a972d_b7f0f0a6",
+      "revId": "57d54a1870ed80ad53ede76334ad6cc7d1fb6b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
