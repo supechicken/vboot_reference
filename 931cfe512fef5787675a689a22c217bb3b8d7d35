@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0eb7b6b6_c03db0fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-05-19T23:04:12Z",
+      "side": 1,
+      "message": "\u003e In a nutshell, the ITE EC chip has a one-second settling period when transitioning from read-only to read-write mode.\n\nThis still doesn\u0027t answer the question why it is sysjumping while the AP is in depthcharge? With EC-EFS2, shouldn\u0027t it have been in RW since before the AP started booting already?\n\n\u003e If we send commands to obtain PD mux info during this transition, we receive incorrect data.\n\nCan the EC tell whether the data is accurate or not? If so, shouldn\u0027t it just stall the AP until the problem resolves? (either literally stall the SPI/LPC/whatever connection, or return some error code that tells the AP \"wait a bit and try again\")?\n\nAlso, is the period really a whole second? Surely we need less than a second in normal-mode boot to get from romstage to depthcharge? (It also sounds very dangerous to leave something like this up to \"the period between romstage and depthcharge is probably long enough\"... it sounds like the EC should explicitly check and communicate if the problem is resolved, or if that\u0027s really not possible then at least the EC should explicitly count time passed to ensure that we\u0027ve waited long enough to make the reading trustworthy, no matter how slow or fast the AP boots.)",
+      "parentUuid": "cee052b0_e044d649",
+      "revId": "931cfe512fef5787675a689a22c217bb3b8d7d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b4b868f_4ef5eb90",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 2
