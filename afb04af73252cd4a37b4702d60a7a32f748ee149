@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62df23e_a45ec00c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-05-20T12:15:36Z",
+      "side": 1,
+      "message": "Example output:\n\n```\n# futility update -i zero.bin --mode\u003dautoupdate\n\u003e\u003e Starting firmware updater.\n\u003e\u003e Target image: zero.bin (RO:Google_Squirtle.15194.222.0, RW/A:Google_Squirtle.15194.222.0 (w/ECRW:), RW/B:Google_Squirtle.15194.250.0 (w/E\nCRW:)).                                                               \nWARNING: check_firmware_versions: Different versions in RW_FWID_A (Google_Squirtle.15194.222.0) and RW_FWID_B (Google_Squirtle.15194.250.0).\nINFO: update_firmware: Loading current system firmware...      \nINFO: load_system_firmware: Reading SPI Flash..\n\u003e\u003e Current system: \u003csys-flash\u003e (RO:Google_Squirtle.15194.222.0, RW/A:Google_Squirtle.15194.222.0 (w/ECRW:), RW/B:Google_Squirtle.15194.250.0\n (w/ECRW:)).         \nOpened /dev/mtd0 successfully\nFound Programmer flash chip \"Opaque flash chip\" (8192 kB, Programmer-specific) on internal.\n\u003e\u003e Write protection (internal): 0 (disabled; HW\u003d0, SW\u003d0).\nWARNING: update_firmware: RO changed and no WP. Need full update.\nWARNING: update_firmware: Write protection is OFF. Proceeding with FULL firmware update.\nWARNING: update_firmware:   Current state: cfg-\u003etry_update \u003d 1, previous r \u003d 1 (RO changed and no WP. Need full update.)\nWARNING: update_firmware:   This operation WILL OVERWRITE the entire SPI flash, including RO sections.\nWARNING: update_firmware:   If you want to prevent RO sections from being modified, ensure hardware write\nWARNING: update_firmware:   protection is enabled or use the \u0027--wp\u003d1\u0027 option to simulate it.\n\u003e\u003e   Pausing for 5 seconds to allow cancellation (Ctrl+C)...\n```",
+      "revId": "afb04af73252cd4a37b4702d60a7a32f748ee149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
