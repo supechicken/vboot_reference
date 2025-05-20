@@ -8,6 +8,7 @@
 #include <assert.h>
 #include <ctype.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #include "2rsa.h"
 #include "cbfstool.h"
@@ -1238,8 +1239,24 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 			wp_enabled = 1;
 		}
 
-		r = wp_enabled ? update_rw_firmware(cfg, image_from, image_to) :
-				 update_whole_firmware(cfg, image_to);
+		if (wp_enabled) {
+			r = update_rw_firmware(cfg, image_from, image_to);
+		} else {
+			WARN("Write protection is OFF. Proceeding with FULL firmware update.\n");
+			WARN("  Current state: cfg->try_update = %d, previous r = %d (%s)\n",
+			     cfg->try_update, r,
+			     (r < UPDATE_ERR_UNKNOWN && r >= 0) ? updater_error_messages[r]
+								: "N/A");
+			WARN("  This operation WILL OVERWRITE the entire SPI flash, "
+			     "including RO sections.\n");
+			WARN("  If you want to prevent RO sections from being modified, "
+			     "ensure hardware write\n");
+			WARN("  protection is enabled or use the '--wp=1' "
+			     "option to simulate it.\n");
+			STATUS("  Pausing for 5 seconds to allow cancellation (Ctrl+C)...\n");
+			sleep(5);
+			r = update_whole_firmware(cfg, image_to);
+		}
 	}
 
 	/* Providing more hints for what to do on failure. */
@@ -1834,13 +1851,13 @@ int updater_setup_config(struct updater_config *cfg,
 static char ccd_programmer[128];
 
 int handle_flash_argument(struct updater_config_arguments *args, int opt,
-			  char *optarg)
+			  char *optval)
 {
 	int ret;
 	switch (opt) {
 	case 'p':
 		args->use_flash = 1;
-		args->programmer = optarg;
+		args->programmer = optval;
 		break;
 	case OPT_CCD:
 		args->use_flash = 1;
@@ -1849,7 +1866,7 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
 		args->write_protection = "0";
 		ret = snprintf(ccd_programmer, sizeof(ccd_programmer),
 			       "raiden_debug_spi:target=AP%s%s",
-			       optarg ? ",serial=" : "", optarg ?: "");
+			       optval ? ",serial=" : "", optval ?: "");
 		if (ret >= sizeof(ccd_programmer)) {
 			ERROR("%s: CCD serial number was too long\n", __func__);
 			return 0;
@@ -1858,7 +1875,7 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
 		break;
 	case OPT_EMULATE:
 		args->use_flash = 1;
-		args->emulation = optarg;
+		args->emulation = optval;
 		break;
 	case OPT_SERVO:
 		args->use_flash = 1;
@@ -1869,7 +1886,7 @@ int handle_flash_argument(struct updater_config_arguments *args, int opt,
 		args->host_only = 1;
 		break;
 	case OPT_SERVO_PORT:
-		setenv(ENV_SERVOD_PORT, optarg, 1);
+		setenv(ENV_SERVOD_PORT, optval, 1);
 		args->use_flash = 1;
 		args->detect_servo = 1;
 		args->fast_update = 1;
