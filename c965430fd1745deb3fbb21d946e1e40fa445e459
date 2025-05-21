@@ -73,6 +73,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a59f850_5f964a92",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-21T02:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e90b4a7_d1390290",
+      "revId": "c965430fd1745deb3fbb21d946e1e40fa445e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa87f459_0f741a70",
@@ -154,6 +172,24 @@
           ]
         }
       ],
+      "revId": "c965430fd1745deb3fbb21d946e1e40fa445e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b63771f_74973865",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2025-05-21T02:18:04Z",
+      "side": 1,
+      "message": "Done. Also added BUILD_ASSERT in http://crrev.com/c/6572292.",
+      "parentUuid": "aa87f459_0f741a70",
       "revId": "c965430fd1745deb3fbb21d946e1e40fa445e459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
