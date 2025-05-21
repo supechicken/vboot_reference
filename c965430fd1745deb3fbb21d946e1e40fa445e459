@@ -1,0 +1,161 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f995499d_375cbebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-21T00:13:01Z",
+      "side": 1,
+      "message": "Worked as expected when I tested.",
+      "revId": "c965430fd1745deb3fbb21d946e1e40fa445e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e90b4a7_d1390290",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-21T00:13:01Z",
+      "side": 1,
+      "message": "Cookies should be constants. A comment pointer reader to cros_version.h would also be helpful.",
+      "fixSuggestions": [
+        {
+          "fixId": "6c3222f3_8772b5a5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 37,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "# Cookies of the image_data header. See cros_version.h.\nIMAGE_DATA_COOKIE1\u003d\"ce778899\"\nIMAGE_DATA_COOKIE2\u003d\"ceaabbdd\"\n\n"
+            },
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 113,
+                "startChar": 0,
+                "endLine": 114,
+                "endChar": 0
+              },
+              "replacement": "        if [[ \"${cookie1}\" \u003d\u003d \"${IMAGE_DATA_COOKIE1}\" ]]; then\n"
+            },
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 116,
+                "startChar": 0,
+                "endLine": 117,
+                "endChar": 0
+              },
+              "replacement": "            if [ \"${cookie2}\" \u003d\u003d \"${IMAGE_DATA_COOKIE2}\" ]; then\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c965430fd1745deb3fbb21d946e1e40fa445e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa87f459_0f741a70",
+        "filename": "scripts/image_signing/swap_ec_rw",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2025-05-21T00:13:01Z",
+      "side": 1,
+      "message": "Offsets should be moved to constants and documented. Probably just include the struct in the comment: \nstruct image_data {\n\tuint32_t cookie1;\n\tchar version[32];\n\tuint32_t size;\n\tint32_t rollback_version;\n\tuint32_t cookie2;\n        ...",
+      "fixSuggestions": [
+        {
+          "fixId": "8724894d_7e68a32a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 98,
+                "startChar": 0,
+                "endLine": 99,
+                "endChar": 0
+              },
+              "replacement": "  hexdump -n 4 -s \"${offset}\" -e \u00271/4 \"%08x\"\u0027 \"${ecrw_file}\" 2\u003e /dev/null\n"
+            },
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 106,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": "    # struct image_data {\n    #   uint32_t cookie1;\n    #   char version[32];\n    #   uint32_t size;\n    #   int32_t rollback_version;\n    #   uint32_t cookie2;\n    # };\n    local COOKIE1_OFFSET\u003d0\n    local COOKIE2_OFFSET\u003d44\n    local SIZE_OFFSET\u003d36\n\n"
+            },
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 112,
+                "startChar": 0,
+                "endLine": 113,
+                "endChar": 0
+              },
+              "replacement": "        cookie1\u003d\"$(read_hex32 \"${ecrw_file}\" $((offset + COOKIE1_OFFSET)))\"\n"
+            },
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 114,
+                "startChar": 0,
+                "endLine": 116,
+                "endChar": 0
+              },
+              "replacement": "            cookie2\u003d\"$(read_hex32 \"${ecrw_file}\" $((offset + COOKIE2_OFFSET)))\"\n"
+            },
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 126,
+                "endChar": 0
+              },
+              "replacement": "    size_hex\u003d\"$(read_hex32 \"${ecrw_file}\" $((offset + SIZE_OFFSET)))\"\n"
+            },
+            {
+              "path": "scripts/image_signing/swap_ec_rw",
+              "range": {
+                "startLine": 143,
+                "startChar": 0,
+                "endLine": 144,
+                "endChar": 0
+              },
+              "replacement": "    info \"Falling back to EC_RW section for legacy EC.\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c965430fd1745deb3fbb21d946e1e40fa445e459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
