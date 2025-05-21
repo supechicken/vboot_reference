@@ -16,6 +16,24 @@
       "message": "Are we actually going to implement it this way now? I thought we had decided somewhere to only support Fastboot in developer mode? (If this is intended for developer mode, then be aware that the code you\u0027re changing here only runs after the user has selected \"boot from internal disk\" or let the boot timer expire. If we want this to be able to immediately transition us to the fastboot screen upon reboot, we probably need to read the misc partition earlier in the flow already.)",
       "revId": "953637c7e3507d7089cf6de12ae90303fdb41f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5edac62_40565a74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-05-21T13:17:21Z",
+      "side": 1,
+      "message": "We are going to support entering to fastboot based on BCB command on misc partition. We will enter fastboot in normal mode only if special GBB flag is set.",
+      "parentUuid": "02dc5f15_8e8cc1b2",
+      "revId": "953637c7e3507d7089cf6de12ae90303fdb41f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
