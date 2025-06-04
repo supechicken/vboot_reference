@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e31637f1_97bdf309",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-04T21:07:08Z",
+      "side": 1,
+      "message": "I feel like we\u0027re moving so much out of cgptlib.h that the file doesn\u0027t really make sense anymore. Should we maybe go the other way and move cgptlib.h itself into the toplevel include directory so that depthcharge can include it directly? (And then we can clean up gpt_misc.h and move some of the stuff back so that both actually correspond to the .c files with the same name.)",
+      "revId": "b49d1bcc2c42af7a53357c92a514016e71443e89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
