@@ -1,0 +1,116 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9377d0e1_ea21eb01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-04T21:22:56Z",
+      "side": 1,
+      "message": "Is this the only way to unlock this in fastbootd? It seems kinda weird to lie about the verified boot state, so if there was another option we should probably aim for that instead. But if this is how Android expects things to work then I guess we have to conform.",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ba548c_99f8ce04",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-04T21:22:56Z",
+      "side": 1,
+      "message": "I feel it\u0027s kinda confusing to change the need_verification variable here, even if it is only used for the green/orange decision after this point. Because verification still did happen in this case (and it is important that it did), we are just reporting state differently.\n\nHow about adding a new\n```\nbool orange \u003d !need_verification ||\n              recovery_boot \u0026\u0026 ctx-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT;\n```\n\ninstead?",
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e1de04_7fe2de92",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-04T21:22:56Z",
+      "side": 1,
+      "message": "I think we can just delete this one?",
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461e5e45_1869e7a9",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-04T21:22:56Z",
+      "side": 1,
+      "message": "Why is this here? This has nothing to do with the GBB flag. There used to be two independent ways to force fastboot in the 2015 implementation, this is the other one.",
+      "fixSuggestions": [
+        {
+          "fixId": "3c44df03_81f07896",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/2lib/include/2nvstorage_fields.h",
+              "range": {
+                "startLine": 95,
+                "startChar": 0,
+                "endLine": 97,
+                "endChar": 0
+              },
+              "replacement": "#define VB2_NV_DEV_FLAG_DEPRECATED_FASTBOOT_FULL_CAP\t0x08 /* Deprecated */\n"
+            },
+            {
+              "path": "firmware/2lib/include/2nvstorage_fields.h",
+              "range": {
+                "startLine": 107,
+                "startChar": 0,
+                "endLine": 108,
+                "endChar": 0
+              },
+              "replacement": "#define VB2_NV_MISC_DEPRECATED_UNLOCK_FASTBOOT\t0x01 /* Deprecated */\n"
+            },
+            {
+              "path": "firmware/2lib/include/2nvstorage_fields.h",
+              "range": {
+                "startLine": 113,
+                "startChar": 0,
+                "endLine": 113,
+                "endChar": 0
+              },
+              "replacement": "#define VB2_NV_MISC_FORCE_UNLOCK_FASTBOOT\t0x80\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
