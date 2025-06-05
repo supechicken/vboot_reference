@@ -1,0 +1,170 @@
+/* Copyright 2025 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef VBOOT_REFERENCE_CGPTLIB_H_
+#define VBOOT_REFERENCE_CGPTLIB_H_
+
+#include "../2lib/include/2sysincludes.h"
+#include "gpt_misc.h"
+
+/**
+ * Find GPT entry for specified partition.
+ * Must be called after GptNextKernelEntry.
+ *
+ * Returns pointer to  GPT entry if successful, NULL otherwise
+ */
+GptEntry *GptFindEntryByName(GptData *gpt, const char *name);
+
+/**
+ * Initializes the GPT data structure's internal state.
+ *
+ * The following fields must be filled before calling this function:
+ *
+ *   primary_header
+ *   secondary_header
+ *   primary_entries
+ *   secondary_entries
+ *   sector_bytes
+ *   drive_sectors
+ *   stored_on_device
+ *   gpt_device_sectors
+ *
+ * On return the modified field may be set, if the GPT data has been modified
+ * and should be written to disk.
+ *
+ * Returns GPT_SUCCESS if successful, non-zero if error:
+ *   GPT_ERROR_INVALID_HEADERS, both partition table headers are invalid, enters
+ *                              recovery mode,
+ *   GPT_ERROR_INVALID_ENTRIES, both partition table entries are invalid, enters
+ *                              recovery mode,
+ *   GPT_ERROR_INVALID_SECTOR_SIZE, size of a sector is not supported,
+ *   GPT_ERROR_INVALID_SECTOR_NUMBER, number of sectors in drive is invalid (too
+ *                                    small) */
+int GptInit(GptData *gpt);
+
+/**
+ * Return the nth instance of partition entry matching the partition type guid
+ * from the gpt table. Instance value starts from 0. If the entry is not found,
+ * it returns NULL.
+ */
+GptEntry *GptFindNthEntry(GptData *gpt, const Guid *guid, unsigned int n);
+
+/**
+ * Updates the kernel entry with the specified index, using the specified type
+ * of update (GPT_UPDATE_ENTRY_*).
+ *
+ * On return the modified field may be set, if the GPT data has been modified
+ * and should be written to disk.
+ *
+ * Returns GPT_SUCCESS if successful, else
+ *   GPT_ERROR_INVALID_UPDATE_TYPE, invalid 'update_type' is given.
+ */
+int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type);
+
+/**
+ * Updates the kernel entry identified by current_kernel field. If
+ * current_kernel is not set it returns an error.
+ *
+ * Returns GPT_SUCCESS if successful, else
+ *   GPT_ERROR_INVALID_UPDATE_TYPE, invalid 'update_type' is given.
+ */
+int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type);
+
+/**
+ * Get kernel partition suffix of active current_kernel.
+ *
+ * Returns GPT_SUCCESS if successful, else
+ *   GPT_ERROR_NO_VALID_KERNEL.
+ */
+int GptGetActiveKernelPartitionSuffix(GptData *gpt, char **suffix);
+
+/**
+ * Provides the location of the next bootable partition, in order of decreasing
+ * priority.
+ *
+ * On return gpt.current_kernel contains the partition index of the current
+ * bootable partition.
+ *
+ * Returns gpt entry of partition to boot if successful, else NULL
+ */
+GptEntry *GptNextKernelEntry(GptData *gpt);
+
+/**
+ * Checks if entry name field is equal to name+suffix.
+ *
+ * Returns true if equal, else false.
+ */
+bool GptEntryHasName(GptEntry *entry, const char *name,  const char *opt_suffix);
+
+/**
+ * Gets GPT entry for specified partition name and suffix.
+ *
+ * Returns pointer to GPT entry if successful, else NULL
+ */
+GptEntry *GptFindEntryByName(GptData *gpt, const char *name, const char *opt_suffix);
+
+/**
+ * Find boot partition for selected slot.
+ * Must be called after GptNextKernelEntry.
+ *
+ * On return the start_sector parameter contains the LBA sector for the start
+ * of the init_boot partition, and the size parameter contains the size of the
+ * init_boot partition in LBA sectors.
+ * Returns GPT_SUCCESS if successful.
+ */
+int GptFindBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size);
+
+/**
+ * Find init_boot partition for selected slot.
+ * Must be called after GptNextKernelEntry.
+ *
+ * On return the start_sector parameter contains the LBA sector for the start
+ * of the init_boot partition, and the size parameter contains the size of the
+ * init_boot partition in LBA sectors.
+ * Returns GPT_SUCCESS if successful.
+ */
+int GptFindInitBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size);
+
+/**
+ * Find vendor_boot partition for selected slot.
+ * Must be called after GptNextKernelEntry.
+ *
+ * On return the start_sector parameter contains the LBA sector for the start
+ * of the init_boot partition, and the size parameter contains the size of the
+ * init_boot partition in LBA sectors.
+ * Returns GPT_SUCCESS if successful.
+ */
+int GptFindVendorBoot(GptData *gpt, uint64_t *start_sector, uint64_t *size);
+
+/**
+ * Find pvmfw partition for selected slot.
+ * Must be called after GptNextKernelEntry.
+ *
+ * On return the start_sector parameter contains the LBA sector for the start
+ * of the pvmfw partition, and the size parameter contains the size of the
+ * pvmfw partition in LBA sectors.
+ * Returns GPT_SUCCESS if successful.
+ */
+int GptFindPvmfw(GptData *gpt, uint64_t *start_sector, uint64_t *size);
+
+/**
+ * Provides start_sector and size for given partition by its UTF16LE name.
+ *
+ * Returns GPT_SUCCESS if successful, else
+ *   GPT_ERROR_NO_SUCH_ENTRY.
+ */
+int GptFindOffsetByName(GptData *gpt, const char *name,
+			uint64_t *start_sector, uint64_t *size);
+
+/**
+ * Find unique GUID for given partition name.
+ *
+ * On successful return the guid contains the unique GUID of partition.
+ * Returns GPT_SUCCESS if successful, else
+ *   GPT_ERROR_NO_SUCH_ENTRY.
+ */
+int GptFindUniqueByName(GptData *gpt, const char *name, Guid *guid);
+
+#endif  /* VBOOT_REFERENCE_CGPTLIB_H_ */
