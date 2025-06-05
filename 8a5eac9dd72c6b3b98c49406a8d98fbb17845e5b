@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0e0ad54_61f01abd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-06-05T13:36:37Z",
+      "side": 1,
+      "message": "fastbootd uses this function ([link](https://cs.android.com/android/platform/superproject/main/+/main:system/core/fastboot/device/utility.cpp;l\u003d197)) to verify locked state. I guess we could try to add proposal for adding extra property to AOSP, but for now changing `verifiedbootstate` is the only option.",
+      "parentUuid": "9377d0e1_ea21eb01",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0ba548c_99f8ce04",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2025-06-04T21:22:56Z",
       "side": 1,
       "message": "I feel it\u0027s kinda confusing to change the need_verification variable here, even if it is only used for the green/orange decision after this point. Because verification still did happen in this case (and it is important that it did), we are just reporting state differently.\n\nHow about adding a new\n```\nbool orange \u003d !need_verification ||\n              recovery_boot \u0026\u0026 ctx-\u003eflags \u0026 VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT;\n```\n\ninstead?",
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eebadeff_46f0820b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-06-05T13:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0ba548c_99f8ce04",
       "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,24 @@
       "writtenOn": "2025-06-04T21:22:56Z",
       "side": 1,
       "message": "I think we can just delete this one?",
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe397a79_66825955",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-06-05T13:36:37Z",
+      "side": 1,
+      "message": "I belive that @czapiga@google.com gave me an explanation during offline chat why we may want to leave it there. Kuba, do you remember what was the reason to left it there?",
+      "parentUuid": "d7e1de04_7fe2de92",
       "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +169,24 @@
           ]
         }
       ],
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ac9605_fcc9d2fb",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-06-05T13:36:37Z",
+      "side": 1,
+      "message": "To be honest I was grepping for `FLAG_DEPRECATED_FASTBOOT_FULL_CAP` and changed this without checking what it is for. Removed it.",
+      "parentUuid": "461e5e45_1869e7a9",
       "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
