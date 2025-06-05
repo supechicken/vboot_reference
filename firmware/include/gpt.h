@@ -11,7 +11,7 @@
 #ifndef VBOOT_REFERENCE_CGPTLIB_GPT_H_
 #define VBOOT_REFERENCE_CGPTLIB_GPT_H_
 
-#include <stdint.h>
+#include "2sysincludes.h"
 
 #ifdef __cplusplus
 extern "C" {
