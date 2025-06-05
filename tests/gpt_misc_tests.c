@@ -9,7 +9,7 @@
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt.h"
-#include "test_common.h"
+#include "vboot_api.h"
 
 #define LOGCALL(fmt, args...) sprintf(call_log + strlen(call_log), fmt, ##args)
 #define TEST_CALLS(expect_log) TEST_STR_EQ(call_log, expect_log, "  calls")
