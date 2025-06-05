@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6e2833c_21ce8b8b",
+        "filename": "firmware/2lib/include/2gbb_flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-06-05T14:56:29Z",
+      "side": 1,
+      "message": "I think I told you that we should leave it, because we do not know if anyone outside is using this. However this is a GBB (Google Binary Blob) flag, so we should be the only ones using it. I do not see any usage of this flag in CrOS sources, so we can safely drop it.\nSorry for the confusion.",
+      "parentUuid": "fe397a79_66825955",
+      "revId": "8a5eac9dd72c6b3b98c49406a8d98fbb17845e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "461e5e45_1869e7a9",
         "filename": "firmware/2lib/include/2nvstorage_fields.h",
         "patchSetId": 2
