@@ -9,7 +9,12 @@
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt.h"
+<<<<<<< HEAD   (f6b0aafaa380ac115df48e3b0818d4c7a1037e49 avb: Implement unaligned read in load_partition)
 #include "test_common.h"
+||||||| BASE   (4ab8d0085e8dbcc88d24af6ed37e118905a5ac08 futility/updater: Add load_system_frid() and get_model_from_)
+=======
+#include "vboot_api.h"
+>>>>>>> CHANGE (6cf177721568a098e58afed45d053f122f1445b3 cgptlib: Move cgptlib.h to firmware/include dir)
 
 #define LOGCALL(fmt, args...) sprintf(call_log + strlen(call_log), fmt, ##args)
 #define TEST_CALLS(expect_log) TEST_STR_EQ(call_log, expect_log, "  calls")

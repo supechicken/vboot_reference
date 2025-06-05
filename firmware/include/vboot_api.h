@@ -25,7 +25,7 @@
 #include <stdlib.h>
 
 #include "../2lib/include/2return_codes.h"
-#include "gpt.h"
+#include "vb2_gpt.h"
 
 #ifdef __cplusplus
 extern "C" {
