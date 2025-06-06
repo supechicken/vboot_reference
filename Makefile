@@ -748,11 +748,21 @@ FUTIL_SRCS = \
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
 FUTIL_SRCS += host/lib/flashrom_drv.c \
 	futility/updater_archive.c \
+	futility/archive/updater_archive_fallback.c \
 	futility/updater_dut.c \
 	futility/updater_manifest.c \
 	futility/updater_quirks.c \
 	futility/updater_utils.c \
 	futility/updater.c
+
+ifneq ($(filter-out 0,${HAVE_LIBARCHIVE}))
+FUTIL_SRCS += futility/archive/updater_archive_libarchive.c
+endif
+
+ifneq ($(filter-out 0,${HAVE_LIBZIP}))
+FUTIL_SRCS += futility/archive/updater_archive_libzip.c
+endif
+
 endif
 
 # List of commands built in futility.
