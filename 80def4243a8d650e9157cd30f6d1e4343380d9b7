@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42303be_45e4a185",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-06-10T15:07:57Z",
+      "side": 1,
+      "message": "nit: does not need parentheses.",
+      "range": {
+        "startLine": 88,
+        "startChar": 48,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0c22f0c9_be55c94c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/avb/vboot_avb_ops.c",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 89,
+                "endChar": 0
+              },
+              "replacement": "\tsectors_to_read \u003d (num_bytes + bytes_to_seek + sector_bytes - 1) / sector_bytes;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "80def4243a8d650e9157cd30f6d1e4343380d9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a65ab2f_604bf2f4",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-06-10T15:07:57Z",
+      "side": 1,
+      "message": "Please add more information like seeking from where to where.",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 61
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6f1111f0_478def9a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/avb/vboot_avb_ops.c",
+              "range": {
+                "startLine": 96,
+                "startChar": 0,
+                "endLine": 97,
+                "endChar": 0
+              },
+              "replacement": "\t\tVB2_DEBUG(\"Unable to seek %s partition to %u bytes\\n\",\n\t\t\t  partition_name, bytes_to_seek);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "80def4243a8d650e9157cd30f6d1e4343380d9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
