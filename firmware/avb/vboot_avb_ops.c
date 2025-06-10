@@ -45,6 +45,7 @@ static AvbIOResult load_partition(GptData *gpt, vb2ex_disk_handle_t dh,
 	VbExStream_t stream;
 	uint64_t part_bytes, part_start_sector;
 	uint64_t start_sector, sectors_to_read;
+	uint32_t bytes_to_seek;
 	uint32_t sector_bytes;
 	GptEntry *e;
 
@@ -82,23 +83,24 @@ static AvbIOResult load_partition(GptData *gpt, vb2ex_disk_handle_t dh,
 		num_bytes = part_bytes - offset_from_partition;
 	}
 
-	/* TODO(b/331881159): remove this check when misaligned read implemented */
-	if ((offset_from_partition % sector_bytes) || (num_bytes % sector_bytes)) {
-		VB2_DEBUG("Misaligned read from %s, offset %" PRId64 " num_bytes %zu\n",
-			  partition_name, offset_from_partition, num_bytes);
-		return AVB_IO_RESULT_ERROR_IO;
-	}
-
 	start_sector = part_start_sector +  offset_from_partition / sector_bytes;
-	sectors_to_read = num_bytes / sector_bytes;
+	bytes_to_seek = offset_from_partition % sector_bytes;
+	sectors_to_read = (num_bytes + bytes_to_seek + sector_bytes - 1) / sector_bytes;
 
 	if (VbExStreamOpen(dh, start_sector, sectors_to_read, &stream)) {
 		VB2_DEBUG("Unable to open disk handle\n");
 		return AVB_IO_RESULT_ERROR_IO;
 	}
 
-	if (VbExStreamRead(stream, sectors_to_read * sector_bytes, buf)) {
-		VB2_DEBUG("Unable to read ramdisk partition\n");
+	if (VbExStreamSeek(stream, bytes_to_seek)) {
+		VB2_DEBUG("Unable to seek %" PRIu32 " bytes from %s partition (part start %"
+			  PRIu64 ", stream start %" PRIu64 ")\n", bytes_to_seek,
+			  partition_name, part_start_sector, start_sector);
+		return AVB_IO_RESULT_ERROR_IO;
+	}
+
+	if (VbExStreamRead(stream, num_bytes, buf)) {
+		VB2_DEBUG("Unable to read %s partition\n", partition_name);
 		return AVB_IO_RESULT_ERROR_IO;
 	}
 
