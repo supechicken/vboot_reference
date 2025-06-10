@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41050ab_22719347",
+        "filename": "firmware/include/cgptlib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-10T22:14:06Z",
+      "side": 1,
+      "message": "You still need `2sysincludes.h` for stuff like `uint32_t`.",
+      "fixSuggestions": [
+        {
+          "fixId": "6dcd7b2a_388bcb50",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "firmware/include/cgptlib.h",
+              "range": {
+                "startLine": 9,
+                "startChar": 0,
+                "endLine": 9,
+                "endChar": 0
+              },
+              "replacement": "#include \"2sysincludes.h\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
