@@ -34,6 +34,24 @@
       ],
       "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf9d374_58fa22f8",
+        "filename": "firmware/include/cgptlib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-06-11T12:43:07Z",
+      "side": 1,
+      "message": "The problem with `2sysincludes.h` is that it isn\u0027t visible for depthcharge. I can add explicit include of `stdint.h`, but `gpt_misc.h` includes `vboot_api.h` which includes `stdint.h` and `stdlib.h`. Explicit include is redundant, but let me know if you think that it will improve readability/quality of this code.",
+      "parentUuid": "c41050ab_22719347",
+      "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
