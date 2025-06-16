@@ -52,6 +52,24 @@
       "parentUuid": "c41050ab_22719347",
       "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c134ed_ed5c4641",
+        "filename": "firmware/include/cgptlib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-06-16T09:13:31Z",
+      "side": 1,
+      "message": "Actually, vboot\u0027s vb2_api.h is designed as the single point of contact for vboot callers (like depthcharge) to include, so strictly speaking depthcharge should not include other vboot headers such as gpt_misc.h and cgptlib.h. I guess we can make cgptlib.h (or wrapped as vboot_cgptlib.h) yet another top-level vboot header exposed to coreboot/depthcharge. In that case, all GPT-related headers should be available from the single cgptlib.h header. That means depthcharge should cease to include other headers like gpt_misc.h.\n\nEither way, IMO the depthcharge include path (`-I`) shouldn\u0027t contain firmware/2lib/include, because that path is subject to vboot\u0027s internal header organization. I think the solution is to use the relative path \"../2lib/include/2sysincludes.h\" in *all vboot headers* that are exposed via cgptlib.h.",
+      "parentUuid": "2cf9d374_58fa22f8",
+      "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
