@@ -70,6 +70,24 @@
       "parentUuid": "2cf9d374_58fa22f8",
       "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36308d41_bbd6f8fd",
+        "filename": "firmware/include/cgptlib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-17T22:05:22Z",
+      "side": 1,
+      "message": "Hmmm... yeah, things are somewhat inconsistent here, some headers are doing it this way and some that way. `gpt_misc.h` gets away with it by including `vboot_api.h`, and that includes _both_ `\u003cstdint.h\u003e` directly and `\"../2lib/include/2return_codes.h\"` (which in turn includes `\"2sysincludes.h\"`).\n\nI think the right path to clean this up is that each file in `firmware/include` should include `../2lib/include/2sysincludes.h`, and should not include any POSIX headers (like `\u003cstdint.h\u003e`) directly. (Also, I don\u0027t see why `gpt_misc.h` would still need to include `vboot_api.h` after that.)",
+      "parentUuid": "a9c134ed_ed5c4641",
+      "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
