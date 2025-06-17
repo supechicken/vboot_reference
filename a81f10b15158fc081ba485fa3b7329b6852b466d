@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e7c4cf_08d2ed92",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-17T22:35:18Z",
+      "side": 1,
+      "message": "Really the point of checking `need_verification` here is that verification wasn\u0027t _done_ so we can\u0027t call the system green. Let\u0027s try to make that a bit clearer in the comment (e.g. \"verifiedbootstate must be orange if we did not verify the key. If we did but we are booting to recovery with GBB-enabled fastboot, we also force the state to orange even if it would normally be green to make fastbootd unlock all commands.\").",
+      "range": {
+        "startLine": 471,
+        "startChar": 32,
+        "endLine": 471,
+        "endChar": 61
+      },
+      "revId": "a81f10b15158fc081ba485fa3b7329b6852b466d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664611a5_940fc70c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-17T22:35:18Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 471,
+        "startChar": 15,
+        "endLine": 471,
+        "endChar": 31
+      },
+      "revId": "a81f10b15158fc081ba485fa3b7329b6852b466d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
