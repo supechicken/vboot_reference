@@ -88,6 +88,24 @@
       "parentUuid": "a9c134ed_ed5c4641",
       "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a395835f_340f9744",
+        "filename": "firmware/include/cgptlib.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-06-20T18:54:35Z",
+      "side": 1,
+      "message": "I have added `vb2_gpt.h`. PTAL if this look ok now.",
+      "parentUuid": "36308d41_bbd6f8fd",
+      "revId": "d7298d17337757f740a2a68f288b011e3fe26fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
