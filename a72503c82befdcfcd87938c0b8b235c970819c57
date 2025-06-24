@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24573eac_a7b15011",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-24T22:39:22Z",
+      "side": 1,
+      "message": "This isn\u0027t guarded by `USE_LIBAVB` but it should be. Also, it would be nicer if we only did this once we have decided to use an Android partition.\n\nIs there a reason you can\u0027t just call this from within `vb2_load_android()`? (That may make us call it twice in rare edge cases, but that should only happen when something is wrong (e.g. one disk slot corrupted) so I don\u0027t think the performance impact really matters.)",
+      "revId": "a72503c82befdcfcd87938c0b8b235c970819c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
