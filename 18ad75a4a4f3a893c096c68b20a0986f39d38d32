@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23e2f791_c7f8ae36",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-25T23:17:43Z",
+      "side": 1,
+      "message": "btw I just noticed that there\u0027s a device tree fixup in depthcharge which independently adds a `/firmware/android/verifiedbootstate` property to the device tree (`depthcharge/src/boot/android_dt.c`). That one is only dependent on `vboot_in_developer()` so it may be out of sync with this one. Is that a concern? Maybe we should have it find and scan `/chosen/bootargs` for the value in the command line instead so it will copy that faithfully in all cases.",
+      "revId": "18ad75a4a4f3a893c096c68b20a0986f39d38d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
