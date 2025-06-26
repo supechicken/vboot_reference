@@ -16,6 +16,24 @@
       "message": "btw I just noticed that there\u0027s a device tree fixup in depthcharge which independently adds a `/firmware/android/verifiedbootstate` property to the device tree (`depthcharge/src/boot/android_dt.c`). That one is only dependent on `vboot_in_developer()` so it may be out of sync with this one. Is that a concern? Maybe we should have it find and scan `/chosen/bootargs` for the value in the command line instead so it will copy that faithfully in all cases.",
       "revId": "18ad75a4a4f3a893c096c68b20a0986f39d38d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5738f998_ea140492",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-06-26T07:32:21Z",
+      "side": 1,
+      "message": "`android_dt.c` is compiled only if `ANDROID_DT_FIXUP` config is set. I was looking through defconfigs and depthcharge\u0027s overlay and it seems that nobody is setting that. If this file was in use, then I think we would have a problem with \"serialno\" property too, as it is set in `depthcharge/src/boot/android_bootconfig_params.c` from vpd, but in `android_dt.c` `lib_sysinfo` is used for that.\n\nWhat do you think about removing `android_dt.c`?",
+      "parentUuid": "23e2f791_c7f8ae36",
+      "revId": "18ad75a4a4f3a893c096c68b20a0986f39d38d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
