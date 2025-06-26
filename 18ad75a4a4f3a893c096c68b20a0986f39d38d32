@@ -34,6 +34,24 @@
       "parentUuid": "23e2f791_c7f8ae36",
       "revId": "18ad75a4a4f3a893c096c68b20a0986f39d38d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "224cf436_1b326b6a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-06-26T21:28:48Z",
+      "side": 1,
+      "message": "Oooohh... sorry, I got completely confused there. This isn\u0027t from AL, this is an Andromeda leftover from 2015 that nobody ever noticed. Yeah, let\u0027s get rid of it to avoid confusion. CL:6680434",
+      "parentUuid": "5738f998_ea140492",
+      "revId": "18ad75a4a4f3a893c096c68b20a0986f39d38d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
