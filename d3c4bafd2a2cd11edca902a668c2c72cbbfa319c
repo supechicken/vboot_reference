@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f33b4a_86a2dc36",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "Just `malloc()` a buffer for the partition size, that\u0027s what `avb_slot_verify()` does internally too.",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7a5c23_f8318c43",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "You don\u0027t need to do that here, if you don\u0027t continue too early (see below) the `vb2api_load_kernel()` main loop will do that for you.",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4911770a_e6e53cf8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "No, we need to verify it in this case too. You can call `avb_vbmeta_image_verify()` directly to do that. Remember to also compare the key hash afterwards.",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2a7fb4_66803df2",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "Let\u0027s try to factor out the common parts between here and below into a separate function.",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b95f24_4b969f21",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "ASSERT should be reserved for real internal programming consistency errors, not for something that depends on an outside input (even if it\u0027s signed). Let\u0027s just return a new `VB2_ERROR_ANDROID_INVALID_ROLLBACK_VERSION` here.",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e29b055_bb7dcdae",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "You can\u0027t continue here yet, the point of going through more kernels is to run through the `lowest_version \u003d kernel_version;` bit below first.",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348224fa_a546d1fa",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "nit: Odd to still return OK in this case. I don\u0027t really think you need to check this since the API makes no sense without it. But if you want to, maybe just combine it with the index check above.",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2cddad5_ac4963d2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-02T00:31:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to show this every time?",
+      "revId": "d3c4bafd2a2cd11edca902a668c2c72cbbfa319c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
