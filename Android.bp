@@ -36,6 +36,7 @@ cc_defaults {
         "-Wno-macro-redefined",
         "-DTPM2_MODE",
         "-DEC_EFS=0",
+        "-DGPIO_UAPI_V2=1",
     ],
 
     local_include_dirs: [
