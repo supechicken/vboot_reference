@@ -36,6 +36,7 @@ cc_defaults {
         "-Wno-macro-redefined",
         "-DTPM2_MODE",
         "-DEC_EFS=0",
+        "-DGPIO_UAPI_V2",
     ],
 
     local_include_dirs: [
@@ -186,6 +187,7 @@ cc_library_static {
         "host/lib/crypto.c",
         "host/lib/file_keys.c",
         "host/lib/fmap.c",
+        "host/lib/gpio_uapi.c",
         "host/lib/host_common.c",
         "host/lib/host_key2.c",
         "host/lib/host_keyblock.c",
@@ -261,6 +263,7 @@ cc_library_static {
         "host/lib/crypto.c",
         "host/lib/extract_vmlinuz.c",
         "host/lib/fmap.c",
+        "host/lib/gpio_uapi.c",
         "host/lib/host_misc.c",
         "host/lib21/host_misc.c",
         ":tlcl_srcs",
