@@ -8,6 +8,8 @@
 #include <errno.h>
 #include <fcntl.h>
 #if !defined(__FreeBSD__) && !defined(__OpenBSD__)
+#include <linux/fs.h>
+#include <linux/gpio.h>
 #include <linux/nvram.h>
 #include <linux/version.h>
 #endif
@@ -839,6 +841,127 @@ static const struct GpioChipset *FindChipset(const char *name)
 	return NULL;
 }
 
+static int ReadGpioSysfs(unsigned controller_num, const char *controller_name)
+{
+	unsigned controller_offset = 0;
+	const struct GpioChipset *chipset;
+	char name[256];
+	unsigned value = -1;
+
+	chipset = FindChipset(controller_name);
+	if (chipset == NULL)
+		return -1;
+
+	/* Modify GPIO number by driver's offset */
+	if (!chipset->ChipOffsetAndGpioNumber(&controller_num, &controller_offset,
+					      chipset->name))
+		return -1;
+	controller_offset += controller_num;
+
+	/* Try reading the GPIO value */
+	snprintf(name, sizeof(name), "%s/gpio%d/value", GPIO_BASE_PATH, controller_offset);
+	if (ReadFileInt(name, &value) < 0) {
+		/* Try exporting the GPIO */
+		FILE *f = fopen(GPIO_EXPORT_PATH, "wt");
+		if (!f)
+			return -1;
+		fprintf(f, "%u", controller_offset);
+		fclose(f);
+
+		/* Try re-reading the GPIO value */
+		if (ReadFileInt(name, &value) < 0)
+			return -1;
+	}
+
+	return value;
+}
+
+static int gpioline_read_value(int chip_fd, int idx, bool active_low)
+{
+	struct gpio_v2_line_request request;
+	struct gpio_v2_line_values line_value;
+	int trynum;
+	int ret;
+
+	memset(&request, 0, sizeof(request));
+	memset(&line_value, 0, sizeof(line_value));
+
+	/* Request a single line with an input mode and corresponding active state.
+	   Set consumer to allow for easy identification of access. */
+	request.offsets[0] = idx;
+	request.num_lines = 1,
+	request.config.flags =
+		GPIO_V2_LINE_FLAG_INPUT | (active_low ? GPIO_V2_LINE_FLAG_ACTIVE_LOW : 0);
+	strcpy(request.consumer, "vboot");
+
+	/* Set first bit corresponding to the first an only index/offset from the request. */
+	line_value.mask = 0x1;
+
+	/*
+	 * If two callers try to read the same GPIO at the same time then
+	 * one of the two will get back EBUSY. There's no great way to
+	 * solve this, so we'll just retry a bunch with a small sleep in
+	 * between.
+	 */
+	for (trynum = 0; true; trynum++) {
+		ret = ioctl(chip_fd, GPIO_V2_GET_LINE_IOCTL, &request);
+
+		/*
+		 * Not part of the loop condition so usleep doesn't clobber
+		 * errno (implicitly used by perror).
+		 */
+		if (ret >= 0 || errno != EBUSY || trynum >= 50)
+			break;
+
+		usleep(trynum * 1000);
+	}
+
+	if (ret < 0) {
+		perror("GPIO_V2_GET_LINE_IOCTL");
+		return -1;
+	}
+
+	if (request.fd < 0) {
+		fprintf(stderr, "bad LINE fd %d\n", request.fd);
+		return -1;
+	}
+
+	ret = ioctl(request.fd, GPIO_V2_LINE_GET_VALUES_IOCTL, &line_value);
+	if (ret < 0) {
+		perror("GPIO_V2_LINE_GET_VALUES_IOCTL");
+		close(request.fd);
+		return -1;
+	}
+	close(request.fd);
+	return line_value.bits & 0x1;
+}
+
+
+static int ReadGpioCdev(unsigned line_number, bool active_low)
+{
+	/* Available Intel platforms export a single controller. */
+	const char *controller_path = "/dev/gpiochip0";
+	int value = -1;
+	struct gpiochip_info info;
+
+	int fd = open(controller_path, O_RDWR|O_CLOEXEC);
+	if (fd < 0) {
+		perror("open /dev/gpiochip0");
+		return -1;
+	}
+
+	if (ioctl(fd, GPIO_GET_CHIPINFO_IOCTL, &info) < 0) {
+		perror("GPIO_GET_CHIPINFO_IOCTL");
+		close(fd);
+		return -1;
+	}
+
+	value = gpioline_read_value(fd, line_number, active_low);
+
+	close(fd);
+	return value;
+}
+
 /* Read a GPIO of the specified signal type (see ACPI GPIO SignalType).
  *
  * Returns 1 if the signal is asserted, 0 if not asserted, or -1 if error. */
@@ -849,10 +972,8 @@ static int ReadGpio(unsigned signal_type)
 	unsigned gpio_type;
 	unsigned active_high;
 	unsigned controller_num;
-	unsigned controller_offset = 0;
 	char controller_name[128];
-	unsigned value;
-	const struct GpioChipset *chipset;
+	int value;
 	char base_path[128];
 	char* path;
 
@@ -887,32 +1008,14 @@ static int ReadGpio(unsigned signal_type)
 	snprintf(name, sizeof(name), "%s.%d/GPIO.3", base_path, index);
 	if (!ReadFileFirstLine(controller_name, sizeof(controller_name), name))
 		return -1;
-	chipset = FindChipset(controller_name);
-	if (chipset == NULL)
+
+	value = ReadGpioSysfs(controller_num, controller_name);
+
+	if (value < 0)
+		value = ReadGpioCdev(controller_num, !active_high);
+
+	if (value < 0)
 		return -1;
-
-	/* Modify GPIO number by driver's offset */
-	if (!chipset->ChipOffsetAndGpioNumber(&controller_num,
-					      &controller_offset,
-					      chipset->name))
-		return -1;
-	controller_offset += controller_num;
-
-	/* Try reading the GPIO value */
-	snprintf(name, sizeof(name), "%s/gpio%d/value",
-		 GPIO_BASE_PATH, controller_offset);
-	if (ReadFileInt(name, &value) < 0) {
-		/* Try exporting the GPIO */
-		FILE* f = fopen(GPIO_EXPORT_PATH, "wt");
-		if (!f)
-			return -1;
-		fprintf(f, "%u", controller_offset);
-		fclose(f);
-
-		/* Try re-reading the GPIO value */
-		if (ReadFileInt(name, &value) < 0)
-			return -1;
-	}
 
 	/* Normalize the value read from the kernel in case it is not always
 	 * 1. */
