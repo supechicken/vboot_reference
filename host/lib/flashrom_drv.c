@@ -49,17 +49,28 @@ static char *flashrom_extract_params(const char *str, char **prog, char **params
 /*
  * NOTE: When `regions` contains multiple regions, `region_start` and
  * `region_len` will be filled with the data of the first region.
+ *
+ * if `helper_image` is provided, will use it to try to guess
+ * fmap location. if fails, normal search will be executed
  */
 static int flashrom_read_image_impl(struct firmware_image *image,
-				    const char * const regions[],
-						const size_t regions_len,
-				    unsigned int *region_start,
-				    unsigned int *region_len, int verbosity)
+				    struct firmware_image *helper_image,
+				    const char *const regions[], const size_t regions_len,
+				    unsigned int *region_start, unsigned int *region_len,
+				    int verbosity)
 {
 	int r = 0;
 	size_t len = 0;
 	*region_start = 0;
 	*region_len = 0;
+	int locate_fmap = 1;
+	uint8_t *fmap_ptr;
+	FmapHeader *fmap_helper, *fmap_guess;
+	FmapAreaHeader *ah;
+	size_t fmap_len;
+	uint64_t fmap_pos;
+
+	image->fmap_header = NULL;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
 
@@ -72,8 +83,7 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 
 	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
 
-	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params)) {
+	if (flashrom_init(1) || flashrom_programmer_init(&prog, programmer, params)) {
 		r = -1;
 		goto err_init;
 	}
@@ -91,21 +101,80 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 
 	flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNREADABLE_REGIONS, true);
 
-	if (regions_len) {
-		int i;
-		r = flashrom_layout_read_fmap_from_rom(
-			&layout, flashctx, 0, len);
-		if (r > 0) {
-			ERROR("could not read fmap from rom, r=%d\n", r);
-			r = -1;
-			goto err_cleanup;
+	/*
+	 * if helper_image is provived, we may use it to guess the FMAP location in the target
+	 * image. if we guess incorrectly - revert to normal FMAP search
+	 */
+	if (!region_len || !helper_image)
+		goto skip_helper;
+
+	INFO("Attempting to guess fmap location...\n");
+
+	fmap_ptr = fmap_find_by_name(helper_image->data, helper_image->size,
+				     helper_image->fmap_header, "FMAP", &ah);
+	if (!fmap_ptr) {
+		INFO("Guessing attempt failed (fmap_find_by_name), reverting to normal "
+		     "search.\n");
+		goto skip_helper;
+	}
+
+	fmap_helper = fmap_find(fmap_ptr, sizeof(FmapHeader));
+	if (!fmap_helper) {
+		INFO("Guessing attempt failed (fmap_find), reverting to normal search.\n");
+		goto skip_helper;
+	}
+
+	fmap_len = sizeof(FmapHeader) + sizeof(FmapAreaHeader) * fmap_helper->fmap_nareas;
+	fmap_len += 4096 - fmap_len % 4096; /* must be aligned to 4KiB */
+
+	fmap_pos = ah->area_offset + fmap_helper->fmap_base;
+	INFO("Guessing at %" PRId64 " (%zu bytes)\n", fmap_pos, fmap_len);
+
+	r |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, fmap_pos, fmap_len);
+	if (r != 0) {
+		INFO("Guessing attempt failed (flashrom_layout_read_fmap_from_rom), reverting "
+		     "to normal search.\n");
+		goto skip_helper;
+	}
+	flashrom_layout_add_region(layout, fmap_pos, fmap_pos + fmap_len - 1,
+				   "FMAP-GUESS-LOCATION");
+	flashrom_layout_include_region(layout, "FMAP-GUESS-LOCATION");
+	flashrom_layout_set(flashctx, layout);
+
+	image->data = calloc(1, len);
+	image->size = len;
+	image->file_name = strdup("<sys-flash>");
+
+	flashrom_image_read(flashctx, image->data, len);
+	fmap_guess = fmap_find(image->data + fmap_pos, fmap_len);
+	if (!fmap_guess) {
+		INFO("Guessed fmap location incorrectly, reverting to normal search.\n");
+		goto skip_helper;
+	}
+
+	INFO("Guessed fmap location correctly.\n");
+	image->fmap_header = fmap_guess;
+	locate_fmap = 0;
+
+skip_helper:;
+	r = 0;
+
+	if (region_len) {
+		if (locate_fmap) {
+			r = flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
+			if (r > 0) {
+				ERROR("could not read fmap from rom, r=%d\n", r);
+				r = -1;
+				goto err_cleanup;
+			}
 		}
+
+		int i;
 		for (i = 0; i < regions_len; i++) {
 			// empty region causes seg fault in API.
 			r |= flashrom_layout_include_region(layout, regions[i]);
 			if (r > 0) {
-				ERROR("could not include region = '%s'\n",
-				      regions[i]);
+				ERROR("could not include region = '%s'\n", regions[i]);
 				r = -1;
 				goto err_cleanup;
 			}
@@ -113,15 +182,11 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 		flashrom_layout_set(flashctx, layout);
 	}
 
-	image->data = calloc(1, len);
-	image->size = len;
-	image->file_name = strdup("<sys-flash>");
-
 	r |= flashrom_image_read(flashctx, image->data, len);
 
 	if (r == 0 && regions_len)
-		r |= flashrom_layout_get_region_range(layout, regions[0],
-						      region_start, region_len);
+		r |= flashrom_layout_get_region_range(layout, regions[0], region_start,
+						      region_len);
 
 err_cleanup:
 	flashrom_layout_release(layout);
@@ -135,14 +200,12 @@ err_init:
 	return r;
 }
 
-int flashrom_read_image(struct firmware_image *image,
-			const char * const regions[],
-			const size_t regions_len,
-			int verbosity)
+int flashrom_read_image(struct firmware_image *image, struct firmware_image *helper_image,
+			const char *const regions[], const size_t regions_len, int verbosity)
 {
 	unsigned int start, len;
-	return flashrom_read_image_impl(image, regions, regions_len, &start,
-					&len, verbosity);
+	return flashrom_read_image_impl(image, helper_image, regions, regions_len, &start, &len,
+					verbosity);
 }
 
 int flashrom_read_region(struct firmware_image *image, const char *region,
@@ -150,7 +213,7 @@ int flashrom_read_region(struct firmware_image *image, const char *region,
 {
 	const char * const regions[] = {region};
 	unsigned int start, len;
-	int r = flashrom_read_image_impl(image, regions, ARRAY_SIZE(regions),
+	int r = flashrom_read_image_impl(image, NULL, regions, ARRAY_SIZE(regions),
 					 &start, &len, verbosity);
 	if (r != 0)
 		return r;
