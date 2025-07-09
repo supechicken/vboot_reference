@@ -224,6 +224,16 @@ CFLAGS += -DVBOOT_TMP_DIR=\"${VBOOT_TMP_DIR}\"
 CROSSYSTEM_LOCK_DIR := /run/lock
 CFLAGS += -DCROSSYSTEM_LOCK_DIR=\"${CROSSYSTEM_LOCK_DIR}\"
 
+# Use Linux GPIO UAPI V2
+# Some systems still stick to old Linux headers without GPIO UAPI V2
+# definitions. Bu guarding this feature we can allow older systems
+# to use GPIO_CDEV driver instead of the deprecated GPIO_SYSFS.
+# NOTE: This mechanism can be removed and defaulted to V2 once
+# ChromeOS moves to at least Linux headers 5.10.
+ifneq ($(filter-out 0,${GPIO_UAPI_V2}),)
+CFLAGS += -DGPIO_UAPI_V2
+endif
+
 # NOTE: We don't use these files but they are useful for other packages to
 # query about required compiling/linking flags.
 PC_IN_FILES = vboot_host.pc.in
@@ -521,6 +531,7 @@ UTILLIB_SRCS = \
 	host/lib/file_keys.c \
 	$(COMMONLIB_SRCS) \
 	host/lib/fmap.c \
+	host/lib/gpio_uapi.c \
 	host/lib/host_common.c \
 	host/lib/host_key2.c \
 	host/lib/host_keyblock.c \
