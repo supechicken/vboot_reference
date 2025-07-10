@@ -338,7 +338,7 @@ static uint8_t *read_from_flash(struct updater_config *cfg, off_t *filesize)
 	 * require another read of FMAP.
 	 */
 	const char * const regions[] = {FMAP_RO_FMAP, FMAP_RO_GBB};
-	if (flashrom_read_image(&cfg->image_current, regions,
+	if (flashrom_read_image(&cfg->image_current, NULL, regions,
 				ARRAY_SIZE(regions), cfg->verbosity + 1))
 		return NULL;
 	uint8_t *ret = cfg->image_current.data;
