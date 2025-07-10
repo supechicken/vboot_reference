@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "fca0d77ea12c60e98569c1bbca25a339533de944",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a766377_ceff4b6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-10T08:15:32Z",
+      "side": 1,
+      "message": "We can use it as an interim solution. This filegroup should be then re-used by `futility` target and the keys directory config should be refactored as I said in the chat message:\n\u003e This would require moving DEFAULT_KEYSETDIR from futility/cmd_sign.c to the Makefile and Android.bp and adding the keys installation target\n\nDev keys should be installed at least for the `-userdebug` and `-eng` images. `-user` images are debatable, but if we want to provide an open system then they should be present there too.",
+      "revId": "fca0d77ea12c60e98569c1bbca25a339533de944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
