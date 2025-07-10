@@ -1191,8 +1191,16 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	if (!image_from->data) {
 		int ret;
 
-		INFO("Loading current system firmware...\n");
-		ret = load_system_firmware(cfg, image_from);
+		if (cfg->legacy_update) {
+			INFO("Loading current (legacy) system firmware...\n");
+			const char *const regions[] = {"RO_FRID"};
+			ret = load_system_firmware_regions(cfg, image_from, image_to, regions,
+						   ARRAY_SIZE(regions));
+		} else {
+			INFO("Loading current system firmware...\n");
+			ret = load_system_firmware(cfg, image_from);
+		}
+
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
 			cfg->check_platform = 0;
