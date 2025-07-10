@@ -72,6 +72,12 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 /* Structure(s) declared in updater.h */
 struct updater_config;
 
+/**
+ * Loads entire firmware except for RO_SECTION.
+ * Returns 0 if success, other values for error.
+ */
+int load_system_firmware_without_ro(struct updater_config *cfg, struct firmware_image *image);
+
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
  * Returns 0 if success. Returns IMAGE_PARSE_FAILURE for non-vboot images.
@@ -79,6 +85,17 @@ struct updater_config;
  */
 int load_system_firmware(struct updater_config *cfg,
 			 struct firmware_image *image);
+/*
+ * Loads specified regions of the active system firmware.
+ *
+ * If `helper_fmap` is provided, uses it to locate the FMAP in flash.
+ *
+ * Returns 0 if success. Returns IMAGE_PARSE_FAILURE for non-vboot images.
+ * Returns other values for error.
+ */
+int load_system_firmware_regions(struct updater_config *cfg, struct firmware_image *image,
+			 FmapHeader *helper_fmap, const char *const regions[],
+			 size_t regions_len);
 
 /* Frees the allocated resource from a firmware image object. */
 void free_firmware_image(struct firmware_image *image);

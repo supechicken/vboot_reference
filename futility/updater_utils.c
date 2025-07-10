@@ -190,7 +190,10 @@ static int parse_firmware_image(struct firmware_image *image)
 	VB2_DEBUG("Image size: %d\n", image->size);
 	assert(image->data);
 
-	image->fmap_header = fmap_find(image->data, image->size);
+	/* In case FMAP has been located beforehand. */
+	if (!image->fmap_header) {
+		image->fmap_header = fmap_find(image->data, image->size);
+	}
 
 	if (!image->fmap_header) {
 		ERROR("Invalid image file (missing FMAP): %s\n", image->file_name);
@@ -244,8 +247,38 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 	}
 
 	image->file_name = strdup(file_name);
+	image->fmap_header = NULL; /* Must be NULL because otherwise it will not be located. */
 
 	return parse_firmware_image(image);
+}
+
+int load_system_firmware_without_ro(struct updater_config *cfg, struct firmware_image *image)
+{
+	int verbosity = cfg->verbosity + 1;
+	uint64_t offset[2];
+	size_t size[2];
+
+	uint32_t flash_size;
+	FmapAreaHeader *ah = NULL;
+	if (!fmap_find_by_name(image->data, image->size, image->fmap_header, "RO_SECTION",
+			       &ah)) {
+		ERROR("Failed to find RO_SECTION.\n");
+		return -1;
+	}
+
+	/* Note: invalid regions will be ignored by flashrom_read_segments. */
+
+	offset[0] = 0;
+	size[0] = ah->area_offset;
+
+	offset[1] = ah->area_offset + ah->area_size;
+	if (flashrom_get_size(image->programmer, &flash_size, verbosity)) {
+		ERROR("Failed to fetch flash size.\n");
+		return -1;
+	}
+	size[1] = flash_size - ah->area_offset - ah->area_size;
+
+	return flashrom_read_segments(image, offset, size, ARRAY_SIZE(offset), verbosity);
 }
 
 void check_firmware_versions(const struct firmware_image *image)
@@ -578,8 +611,9 @@ static int is_the_same_programmer(const struct firmware_image *image1,
 	return strcmp(image1->programmer, image2->programmer) == 0;
 }
 
-int load_system_firmware(struct updater_config *cfg,
-			 struct firmware_image *image)
+int load_system_firmware_regions(struct updater_config *cfg, struct firmware_image *image,
+			 FmapHeader *helper_fmap, const char *const regions[],
+			 size_t regions_len)
 {
 	if (!strcmp(image->programmer, FLASHROM_PROGRAMMER_INTERNAL_EC))
 		WARN("%s: flashrom support for CrOS EC is EOL.\n", __func__);
@@ -593,7 +627,8 @@ int load_system_firmware(struct updater_config *cfg,
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
 		INFO("Reading SPI Flash..\n");
-		r = flashrom_read_image(image, NULL, 0, verbose);
+		r = flashrom_read_image(image, helper_fmap, regions, regions_len,
+					verbose);
 	}
 	if (r) {
 		/* Read failure, the content cannot be trusted. */
@@ -608,6 +643,12 @@ int load_system_firmware(struct updater_config *cfg,
 		r = parse_firmware_image(image);
 	}
 	return r;
+}
+
+int load_system_firmware(struct updater_config *cfg,
+			 struct firmware_image *image)
+{
+	return load_system_firmware_regions(cfg, image, NULL, NULL, 0);
 }
 
 int write_system_firmware(struct updater_config *cfg,
