@@ -98,7 +98,7 @@ static int read_flash_regions_to_file(struct updater_config *cfg,
 	}
 
 	/* Read only the specified regions */
-	if (flashrom_read_image(&cfg->image_current, regions,
+	if (flashrom_read_image(&cfg->image_current, NULL, regions,
 				rlen, cfg->verbosity + 1)) {
 		ret = -1;
 		goto out_free;
@@ -222,8 +222,8 @@ static int do_read(int argc, char *argv[])
 	}
 
 	if (!regions) {
-		/* full image read. */
-		int r = load_system_firmware(cfg, &cfg->image_current);
+		/* full image read. why? */
+		int r = load_system_firmware(cfg, &cfg->image_current, NULL, NULL, 0);
 		/*
 		 * Ignore a parse error as we still want to write the file
 		 * out in that case
