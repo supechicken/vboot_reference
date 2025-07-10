@@ -62,6 +62,30 @@
       },
       "revId": "add3e0b03e7e15d6dc1ef58a9d8b67627ac99aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03bc3624_3e9ca387",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-10T14:50:58Z",
+      "side": 1,
+      "message": "Update: APIv2 is not available on ChromeOS and in CrosSDK as they are using linux-headers-5.4 that only have APIv1. I\u0027ll add 2 implementations. APIv1 and APIv2. APIv1 will be the default and APIv2 will be added depending on the ifdef configuration.",
+      "parentUuid": "0df3e499_154b2138",
+      "range": {
+        "startLine": 881,
+        "startChar": 1,
+        "endLine": 881,
+        "endChar": 37
+      },
+      "revId": "add3e0b03e7e15d6dc1ef58a9d8b67627ac99aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
