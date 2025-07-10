@@ -1170,15 +1170,13 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		return UPDATE_ERR_DONE;
 	}
 
-	struct firmware_image *image_from = &cfg->image_current,
-			      *image_to = &cfg->image;
+	struct firmware_image *image_from = &cfg->image_current, *image_to = &cfg->image;
 	if (!image_to->data)
 		return UPDATE_ERR_NO_IMAGE;
 
 	STATUS("Target image: %s (RO:%s, RW/A:%s (w/ECRW:%s), RW/B:%s (w/ECRW:%s)).\n",
-	       image_to->file_name, image_to->ro_version,
-	       image_to->rw_version_a, image_to->ecrw_version_a,
-	       image_to->rw_version_b, image_to->ecrw_version_b);
+	       image_to->file_name, image_to->ro_version, image_to->rw_version_a,
+	       image_to->ecrw_version_a, image_to->rw_version_b, image_to->ecrw_version_b);
 	check_firmware_versions(image_to);
 
 	try_apply_quirk(QUIRK_NO_VERIFY, cfg);
@@ -1191,8 +1189,17 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 	if (!image_from->data) {
 		int ret;
 
-		INFO("Loading current system firmware...\n");
-		ret = load_system_firmware(cfg, image_from);
+		if (cfg->legacy_update) {
+			INFO("Loading current (legacy) system firmware...\n");
+			const char *const regions[] = {"RO_FRID"};
+			ret = load_system_firmware(cfg, image_from, image_to, regions,
+						   ARRAY_SIZE(regions));
+		} else {
+			INFO("Loading current system firmware...\n");
+			ret = load_system_firmware(cfg, image_from, image_to, NULL,
+						   0); // entire image
+		}
+
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
 			cfg->check_platform = 0;
@@ -1200,9 +1207,9 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 			return UPDATE_ERR_SYSTEM_IMAGE;
 	}
 	STATUS("Current system: %s (RO:%s, RW/A:%s (w/ECRW:%s), RW/B:%s (w/ECRW:%s)).\n",
-	       image_from->file_name, image_from->ro_version,
-	       image_from->rw_version_a, image_from->ecrw_version_a,
-	       image_from->rw_version_b, image_from->ecrw_version_b);
+	       image_from->file_name, image_from->ro_version, image_from->rw_version_a,
+	       image_from->ecrw_version_a, image_from->rw_version_b,
+	       image_from->ecrw_version_b);
 
 	try_apply_quirk(QUIRK_NO_CHECK_PLATFORM, cfg);
 	if (cfg->check_platform && check_compatible_platform(cfg)) {
@@ -1230,8 +1237,7 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		return update_legacy_firmware(cfg, image_to);
 
 	if (cfg->try_update) {
-		r = update_try_rw_firmware(cfg, image_from, image_to,
-					   wp_enabled);
+		r = update_try_rw_firmware(cfg, image_from, image_to, wp_enabled);
 		if (r == UPDATE_ERR_NEED_RO_UPDATE) {
 			WARN("%s\n", updater_error_messages[r]);
 			STATUS("  Pausing for 5 seconds to allow cancellation (Ctrl+C)...\n");
@@ -1250,8 +1256,8 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 			wp_enabled = 1;
 		}
 
-		r = wp_enabled ? update_rw_firmware(cfg, image_from, image_to) :
-				 update_whole_firmware(cfg, image_to);
+		r = wp_enabled ? update_rw_firmware(cfg, image_from, image_to)
+			       : update_whole_firmware(cfg, image_to);
 	}
 
 	/* Providing more hints for what to do on failure. */
@@ -1436,7 +1442,7 @@ static int updater_setup_archive(
 	} else if (model->has_custom_label) {
 		if (!cfg->image_current.data) {
 			INFO("Loading system firmware for custom label...\n");
-			load_system_firmware(cfg, &cfg->image_current);
+			load_system_firmware(cfg, &cfg->image_current, NULL, NULL, 0);
 		}
 
 		if (!cfg->image_current.data) {
