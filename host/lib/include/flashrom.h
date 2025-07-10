@@ -45,6 +45,9 @@ struct firmware_image {
  *
  * @param image		The parameter that contains the programmer, buffer and
  *			size to use in the read operation.
+ * @param helper_image	If provided, will be used in attempt to guess FMAP location in flash.
+ *			If guessing fails or cannot be performed, FMAP will be located via
+ *			the normal searching method.
  * @param regions	A list of the names of the fmap regions to read. Must
  *			be non-null if regions_len is non-zero. Otherwise, must
  *			be at least regions_len items long.
