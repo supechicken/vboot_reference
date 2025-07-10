@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47d9d77d_bcbc0a8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-10T13:37:06Z",
+      "side": 1,
+      "message": "For now only verified on non-ChromeOS system w/o GPIO_SYSFS and with GPIO_CDEV. Will test on ChromeOS once UAPI headers are updated.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "add3e0b03e7e15d6dc1ef58a9d8b67627ac99aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0df3e499_154b2138",
         "filename": "host/arch/x86/lib/crossystem_arch.c",
         "patchSetId": 1
