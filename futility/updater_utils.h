@@ -74,11 +74,13 @@ struct updater_config;
 
 /*
  * Loads the active system firmware image (usually from SPI flash chip).
+ * If helper_image is provided, uses it to guess the FMAP location.
  * Returns 0 if success. Returns IMAGE_PARSE_FAILURE for non-vboot images.
  * Returns other values for error.
  */
-int load_system_firmware(struct updater_config *cfg,
-			 struct firmware_image *image);
+int load_system_firmware(struct updater_config *cfg, struct firmware_image *image,
+			 struct firmware_image *helper_image, const char *const regions[],
+			 size_t regions_len);
 
 /* Frees the allocated resource from a firmware image object. */
 void free_firmware_image(struct firmware_image *image);
