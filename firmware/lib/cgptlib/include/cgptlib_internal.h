@@ -162,22 +162,6 @@ void GptRepair(GptData *gpt);
 void GptModified(GptData *gpt);
 
 /**
- * Return 1 if the entry is a Android VBMETA partition, else 0.
- */
-int IsAndroid(const GptEntry *e);
-
-/**
- * Return 1 if the entry is a ChromeOS kernel partition, else 0.
- */
-int IsChromeOS(const GptEntry *e);
-
-/**
- * Return 1 if the entry is a ChromeOS or Android partition,
- * else 0.
- */
-int IsBootableEntry(const GptEntry *e);
-
-/**
  * Copy the current kernel partition's UniquePartitionGuid to the dest.
  */
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest);

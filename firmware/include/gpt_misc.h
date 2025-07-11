@@ -147,6 +147,22 @@ uint64_t GptGetEntrySizeLba(const GptEntry *e);
  */
 uint64_t GptGetEntrySizeBytes(const GptData *gpt, const GptEntry *e);
 
+/**
+ * Return 1 if the entry is a Android VBMETA partition, else 0.
+ */
+int IsAndroid(const GptEntry *e);
+
+/**
+ * Return 1 if the entry is a ChromeOS kernel partition, else 0.
+ */
+int IsChromeOS(const GptEntry *e);
+
+/**
+ * Return 1 if the entry is a ChromeOS or Android partition,
+ * else 0.
+ */
+int IsBootableEntry(const GptEntry *e);
+
 /* Getters and setters for partition attribute fields. */
 
 int GetEntryRequired(const GptEntry *e);
