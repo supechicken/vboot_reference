@@ -43,6 +43,8 @@ struct firmware_image {
  *
  * flashrom_read_region returns the buffer truncated to the region.
  *
+ * flashrom_read_segments will ignore invalid (empty or out of bounds) segments.
+ *
  * @param image		The parameter that contains the programmer, buffer and
  *			size to use in the read operation.
  * @param helper_image	If provided, will be used in attempt to guess FMAP location in flash.
@@ -53,13 +55,14 @@ struct firmware_image {
  *			be at least regions_len items long.
  * @param regions_len	The size of regions, or 0 to read the entire flash
  *			chip.
- *
  * @return VB2_SUCCESS on success, or a relevant error.
  */
 vb2_error_t flashrom_read(struct firmware_image *image, const char *region);
 int flashrom_read_image(struct firmware_image *image, struct firmware_image *helper_image,
 			const char *const regions[], size_t regions_len, int verbosity);
 int flashrom_read_region(struct firmware_image *image, const char *region, int verbosity);
+int flashrom_read_segments(struct firmware_image *image, uint64_t offset[], size_t size[],
+			   size_t segments_count, int verbosity);
 
 /**
  * Write using flashrom from a buffer.
