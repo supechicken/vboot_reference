@@ -222,7 +222,7 @@ static int do_read(int argc, char *argv[])
 	}
 
 	if (!regions) {
-		/* full image read. why? */
+		/* full image read. */
 		int r = load_system_firmware(cfg, &cfg->image_current, NULL, NULL, 0);
 		/*
 		 * Ignore a parse error as we still want to write the file
