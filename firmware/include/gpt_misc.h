@@ -232,6 +232,22 @@ int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type);
  */
 int GptGetActiveKernelPartitionSuffix(GptData *gpt, char **suffix);
 
+/**
+ * Return true if the entry is a Android VBMETA partition, else false.
+ */
+bool IsAndroid(const GptEntry *e);
+
+/**
+ * Return true if the entry is a ChromeOS kernel partition, else false.
+ */
+bool IsChromeOS(const GptEntry *e);
+
+/**
+ * Return true if the entry is a ChromeOS or Android partition,
+ * else false.
+ */
+bool IsBootableEntry(const GptEntry *e);
+
 /* Getters and setters for partition attribute fields. */
 
 int GetEntryRequired(const GptEntry *e);
