@@ -146,7 +146,7 @@ int WriteAndFreeGptData(vb2ex_disk_handle_t disk_handle, GptData *gptdata);
 int IsUnusedEntry(const GptEntry *e);
 
 /**
- * Return size(in lba) of a partition represented by given GPT entry.
+ * Return size(in lba) of a partition represented by given GPT entry. 
  */
 uint64_t GptGetEntrySizeLba(const GptEntry *e);
 
@@ -154,27 +154,6 @@ uint64_t GptGetEntrySizeLba(const GptEntry *e);
  * Return size(in bytes) of a partition represented by given GPT entry.
  */
 uint64_t GptGetEntrySizeBytes(const GptData *gpt, const GptEntry *e);
-
-/**
- * Return true if the entry is a Android VBMETA partition, else false.
- */
-bool IsAndroid(const GptEntry *e);
-
-/**
- * Return true if the entry is a ChromeOS kernel partition, else false.
- */
-bool IsChromeOS(const GptEntry *e);
-
-/**
- * Return true if the entry is a ChromeOS or Android partition,
- * else false.
- */
-bool IsBootableEntry(const GptEntry *e);
-
-/**
- * Return true if the entry is a Android OS boot partition, else false.
- */
-bool IsAndroidBootPartition(const GptEntry *e, const char *suffix);
 
 /* Getters and setters for partition attribute fields. */
 
