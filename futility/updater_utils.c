@@ -251,6 +251,35 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 	return parse_firmware_image(image);
 }
 
+int load_system_firmware_without_ro(struct updater_config *cfg, struct firmware_image *image)
+{
+	uint64_t offset[2];
+	size_t size[2];
+
+	uint32_t flash_size;
+	FmapAreaHeader *ah = NULL;
+	if (!fmap_find_by_name(image->data, image->size, image->fmap_header, "RO_SECTION",
+			       &ah)) {
+		ERROR("Failed to find RO_SECTION\n");
+		return 1;
+	}
+
+	/* if regions are invalid (empty) they will be ignored and not read */
+
+	int verbosity = cfg->verbosity + 1;
+
+	offset[0] = 0;
+	size[0] = ah->area_offset;
+
+	offset[1] = ah->area_offset + ah->area_size;
+	if (flashrom_get_size(image->programmer, &flash_size, verbosity)) {
+		ERROR("Failed to fetch flash size\n");
+		return 1;
+	}
+	size[1] = flash_size - ah->area_offset - ah->area_size;
+	return flashrom_read_segments(image, offset, size, 2, verbosity);
+}
+
 void check_firmware_versions(const struct firmware_image *image)
 {
 	if (strcmp(image->rw_version_a, image->rw_version_b))

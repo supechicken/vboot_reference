@@ -73,6 +73,12 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 struct updater_config;
 
 /*
+* Loads entire firmware except RO_SECTION.
+* Returns 0 if success, other value for error.
+*/
+int load_system_firmware_without_ro(struct updater_config *cfg, struct firmware_image *image);
+
+/*
  * Loads the active system firmware image (usually from SPI flash chip).
 
  * load_system_firmware loads the entire image.
