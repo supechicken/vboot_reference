@@ -101,6 +101,84 @@ locate_fail:;
 	return r;
 }
 
+int flashrom_read_segments(struct firmware_image *image, uint64_t offset[], size_t size[],
+			   size_t segments_count, int verbosity)
+{
+	if (segments_count > 64) {
+		ERROR("Cannot read more than 64 regions\n");
+		return 3;
+	}
+	int r = 0;
+
+	size_t len = 0;
+
+	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
+
+	char *programmer, *params;
+	char *tmp = flashrom_extract_params(image->programmer, &programmer, &params);
+
+	struct flashrom_programmer *prog = NULL;
+	struct flashrom_flashctx *flashctx = NULL;
+	struct flashrom_layout *layout = NULL;
+
+	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
+	if (flashrom_init(1) || flashrom_programmer_init(&prog, programmer, params)) {
+		r = -1;
+		goto err_init;
+	}
+	if (flashrom_flash_probe(&flashctx, prog, NULL)) {
+		r = -1;
+		goto err_probe;
+	}
+	len = flashrom_flash_getsize(flashctx);
+	if (!len) {
+		ERROR("Chip found had zero length, probing probably failed.\n");
+		r = -1;
+		goto err_probe;
+	}
+	flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNREADABLE_REGIONS, true);
+
+	flashrom_layout_new(&layout);
+	char name[] = "\x1\0"; /* each region has to have a name, so iterate from 1 */
+
+	for (size_t i = 0; i < segments_count; i++) {
+		INFO("Including segment %zu (%" PRId64 ", %zu) ...\n", i, offset[i], size[i]);
+		if (size[i] == 0 || offset[i] + size[i] > len) {
+			ERROR("Invalid segment %zu (%" PRId64 ", %zu), ignoring.\n", i,
+			      offset[i], size[i]);
+			continue;
+		}
+
+		if (flashrom_layout_add_region(layout, offset[i], offset[i] + size[i] - 1,
+					       name)) {
+			ERROR("Failed to add segment %zu (%" PRId64 ", %zu), ignoring.\n", i,
+			      offset[i], size[i]);
+			continue;
+		}
+		if (flashrom_layout_include_region(layout, name)) {
+			ERROR("Failed to include segment %zu (%" PRId64 ", %zu), ignoring.\n",
+			      i, offset[i], size[i]);
+			continue;
+		}
+		name[0]++;
+	}
+
+	flashrom_layout_set(flashctx, layout);
+
+	INFO("Reading image...\n");
+
+	r |= flashrom_image_read(flashctx, image->data, len);
+
+	flashrom_layout_release(layout);
+	flashrom_flash_release(flashctx);
+
+err_probe:
+	r |= flashrom_programmer_shutdown(prog);
+err_init:
+	free(tmp);
+	return r;
+}
+
 /*
  * NOTE: When `regions` contains multiple regions, `region_start` and
  * `region_len` will be filled with the data of the first region.
@@ -153,12 +231,17 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 
 	flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNREADABLE_REGIONS, true);
 
-	/* flash is ready to be read */
-
-	image->data = calloc(1, len);
-	image->size = len;
-	image->file_name = strdup("<sys-flash>");
-	image->fmap_header = NULL;
+	if (!image->data) {
+		image->data = calloc(1, len);
+		image->size = len;
+		image->file_name = strdup("<sys-flash>");
+		image->fmap_header = NULL;
+	} else {
+		/* Reading additional regions (FMAP location is already known) */
+		fmap_pos = (uint8_t *)image->fmap_header - image->data;
+		fmap_len = VB2_ALIGN_UP(sizeof(FmapHeader) +
+			   sizeof(FmapAreaHeader) * image->fmap_header->fmap_nareas, 4096);
+	}
 
 	if (regions_count) {
 		if (helper_image) {
@@ -181,7 +264,7 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 			 * locate the FMAP */
 			r |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
 			if (r != 0) {
-				ERROR("could not read fmap from rom, r=%d\n", r);
+				ERROR("Could not read fmap from rom, r=%d\n", r);
 				r = -1;
 				goto err_cleanup;
 			}
@@ -189,7 +272,7 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 			VB2_DEBUG("Including region 'FMAP' (because guessing failed)\n");
 			r |= flashrom_layout_include_region(layout, "FMAP");
 			if (r > 0) {
-				ERROR("could not include FMAP region\n");
+				ERROR("Could not include FMAP region\n");
 				r = -1;
 				goto err_cleanup;
 			}
@@ -199,8 +282,7 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 			// empty region causes seg fault in API.
 			r |= flashrom_layout_include_region(layout, regions[i]);
 			if (r > 0) {
-				ERROR("could not include region = '%s'\n",
-				      regions[i]);
+				ERROR("Could not include region %s\n", regions[i]);
 				r = -1;
 				goto err_cleanup;
 			}
