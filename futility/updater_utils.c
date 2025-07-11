@@ -21,6 +21,7 @@
 #include "host_misc.h"
 #include "util_misc.h"
 #include "updater.h"
+#include "updater_utils.h"
 
 #define COMMAND_BUFFER_SIZE 256
 
@@ -249,6 +250,35 @@ int load_firmware_image(struct firmware_image *image, const char *file_name,
 	image->fmap_header = NULL;
 
 	return parse_firmware_image(image);
+}
+
+int load_system_firmware_without_ro(struct updater_config *cfg, struct firmware_image *image)
+{
+	uint64_t offset[2];
+	size_t size[2];
+
+	uint32_t flash_size;
+	FmapAreaHeader *ah = NULL;
+	if (!fmap_find_by_name(image->data, image->size, image->fmap_header, "RO_SECTION",
+			       &ah)) {
+		ERROR("Failed to find RO_SECTION\n");
+		return 1;
+	}
+
+	/* if regions are invalid (empty) they will be ignored and not read */
+
+	int verbosity = cfg->verbosity + 1;
+
+	offset[0] = image->fmap_header->fmap_base;
+	size[0] = image->fmap_header->fmap_base + ah->area_offset;
+
+	offset[1] = image->fmap_header->fmap_base + ah->area_offset + ah->area_size;
+	if (flashrom_get_size(image->programmer, &flash_size, verbosity)) {
+		ERROR("Failed to fetch flash size\n");
+		return 1;
+	}
+	size[1] = flash_size - image->fmap_header->fmap_base - ah->area_offset - ah->area_size;
+	return flashrom_read_segments(image, offset, size, 2, verbosity);
 }
 
 void check_firmware_versions(const struct firmware_image *image)
@@ -549,7 +579,7 @@ static int is_the_same_programmer(const struct firmware_image *image1,
 
 int load_system_firmware_regions(struct updater_config *cfg, struct firmware_image *image,
 			 struct firmware_image *helper_image, const char *const regions[],
-			 size_t regions_len)
+			 size_t regions_count)
 {
 	if (!strcmp(image->programmer, FLASHROM_PROGRAMMER_INTERNAL_EC))
 		WARN("%s: flashrom support for CrOS EC is EOL.\n", __func__);
@@ -562,8 +592,7 @@ int load_system_firmware_regions(struct updater_config *cfg, struct firmware_ima
 	for (i = 1, r = -1; i <= tries && r != 0; i++, verbose++) {
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
-		INFO("Reading SPI Flash..\n");
-		r = flashrom_read_image(image, helper_image, regions, regions_len,
+		r = flashrom_read_image(image, helper_image, regions, regions_count,
 					verbose); // will set image->fmap_header
 	}
 	if (r) {
