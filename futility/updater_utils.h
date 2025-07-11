@@ -80,7 +80,7 @@ struct updater_config;
  */
 int load_system_firmware(struct updater_config *cfg, struct firmware_image *image,
 			 struct firmware_image *helper_image, const char *const regions[],
-			 size_t regions_len);
+			 size_t regions_count);
 
 /* Frees the allocated resource from a firmware image object. */
 void free_firmware_image(struct firmware_image *image);
