@@ -189,44 +189,20 @@ uint64_t GptGetEntrySizeLba(const GptEntry *e);
 uint64_t GptGetEntrySizeBytes(const GptData *gpt, const GptEntry *e);
 
 /**
- * Provides the location of the next bootable partition, in order of decreasing
- * priority.
- *
- * On return gpt.current_kernel contains the partition index of the current
- * bootable partition.
- *
- * Returns gpt entry of partition to boot if successful, else NULL
+ * Return true if the entry is a Android VBMETA partition, else false.
  */
-GptEntry *GptNextKernelEntry(GptData *gpt);
+bool IsAndroid(const GptEntry *e);
 
 /**
- * Updates the kernel entry with the specified index, using the specified type
- * of update (GPT_UPDATE_ENTRY_*).
- *
- * On return the modified field may be set, if the GPT data has been modified
- * and should be written to disk.
- *
- * Returns GPT_SUCCESS if successful, else
- *   GPT_ERROR_INVALID_UPDATE_TYPE, invalid 'update_type' is given.
+ * Return true if the entry is a ChromeOS kernel partition, else false.
  */
-int GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type);
+bool IsChromeOS(const GptEntry *e);
 
 /**
- * Updates the kernel entry identified by current_kernel field. If
- * current_kernel is not set it returns an error.
- *
- * Returns GPT_SUCCESS if successful, else
- *   GPT_ERROR_INVALID_UPDATE_TYPE, invalid 'update_type' is given.
+ * Return true if the entry is a ChromeOS or Android partition,
+ * else false.
  */
-int GptUpdateKernelEntry(GptData *gpt, uint32_t update_type);
-
-/**
- * Get kernel partition suffix of active current_kernel.
- *
- * Returns GPT_SUCCESS if successful, else
- *   GPT_ERROR_NO_VALID_KERNEL.
- */
-int GptGetActiveKernelPartitionSuffix(GptData *gpt, char **suffix);
+bool IsBootableEntry(const GptEntry *e);
 
 /* Getters and setters for partition attribute fields. */
 
