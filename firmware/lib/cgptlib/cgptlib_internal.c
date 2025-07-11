@@ -263,12 +263,12 @@ cleanup:
 	return is_android_boot_part;
 }
 
-int IsChromeOS(const GptEntry *e)
+bool IsChromeOS(const GptEntry *e)
 {
 	return !memcmp(&e->type, &guid_chromeos_kernel, sizeof(Guid));
 }
 
-int IsAndroid(const GptEntry *e)
+bool  IsAndroid(const GptEntry *e)
 {
 	return !memcmp(&e->type, &guid_android_vbmeta, sizeof(Guid));
 }
