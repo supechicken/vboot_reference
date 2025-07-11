@@ -171,11 +171,6 @@ bool IsChromeOS(const GptEntry *e);
  */
 bool IsBootableEntry(const GptEntry *e);
 
-/**
- * Return true if the entry is a Android OS boot partition, else false.
- */
-bool IsAndroidBootPartition(const GptEntry *e, const char *suffix);
-
 /* Getters and setters for partition attribute fields. */
 
 int GetEntryRequired(const GptEntry *e);
