@@ -966,7 +966,8 @@ static enum updater_error_codes update_try_rw_firmware(
 		struct updater_config *cfg,
 		struct firmware_image *image_from,
 		struct firmware_image *image_to,
-		bool wp_enabled)
+		bool wp_enabled,
+		bool read_rest_of_the_sections)
 {
 	const char *target, *self_target;
 	int has_update = 1;
@@ -976,13 +977,23 @@ static enum updater_error_codes update_try_rw_firmware(
 			image_from, image_to, FMAP_RO_SECTION))
 		return UPDATE_ERR_NEED_RO_UPDATE;
 
+	self_target = target = decide_rw_target(cfg, TARGET_SELF);
+
+	if (read_rest_of_the_sections) {
+		const char *regions[2] = {"RW_LEGACY", target};
+		if (load_system_firmware(cfg, image_from, image_to, regions, target ? 2 : 1)) {
+			ERROR("Failed to load the rest of the firmware sections (%s, %s).\n",
+			      "RW_LEGACY", target);
+			return UPDATE_ERR_SYSTEM_IMAGE;
+		}
+	}
+
 	INFO("Checking compatibility...\n");
 	if (check_compatible_root_key(image_from, image_to))
 		return UPDATE_ERR_ROOT_KEY;
 	if (check_compatible_tpm_keys(cfg, image_to))
 		return UPDATE_ERR_TPM_ROLLBACK;
 
-	self_target = target = decide_rw_target(cfg, TARGET_SELF);
 	if (target == NULL) {
 		ERROR("TRY-RW update needs system to boot in RW firmware.\n");
 		return UPDATE_ERR_TARGET;
@@ -1186,19 +1197,54 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 			return UPDATE_ERR_PLATFORM;
 		}
 	}
+
+	bool wp_enabled = is_ap_write_protection_enabled(cfg);
+
+	/* if try_rw decides to run full update, we only want to load the remaining sections */
+	const char *rw_target_to_read = decide_rw_target(cfg, TARGET_SELF);
+
+	bool read_rest_of_the_sections = 0;
+
 	if (!image_from->data) {
 		int ret;
 
+		const char *regions[4];
+		size_t regions_count = 0;
+
 		if (cfg->legacy_update) {
-			INFO("Loading current (legacy) system firmware...\n");
-			const char *const regions[] = {"RO_FRID"};
-			ret = load_system_firmware(cfg, image_from, image_to, regions,
-						   ARRAY_SIZE(regions));
-		} else {
-			INFO("Loading current system firmware...\n");
-			ret = load_system_firmware(cfg, image_from, image_to, NULL,
-						   0); // entire image
+			regions[regions_count++] = "RO_FRID";
+		} else if (cfg->try_update) {
+			if (rw_target_to_read) {
+
+				if (wp_enabled) {
+					regions[regions_count++] = "RO_FRID"; // needed
+					regions[regions_count++] = "GBB";     // needed
+					regions[regions_count++] = "RW_LEGACY";
+					regions[regions_count++] = rw_target_to_read;
+				} else {
+					/*
+					 * If wp is disabled, rw update might fail if RO_SECTION
+					 * has changed. If that happens, the whole image will
+					 * have to be read again, which would read some (big)
+					 * sections twice.
+					 *
+					 * To avoid that, the rest of the sections used in rw
+					 * update will be read when needed (after check leading
+					 * to full update).
+					 */
+
+					regions[regions_count++] = "RO_SECTION"; // +GBB
+					read_rest_of_the_sections = 1;
+				}
+			}
 		}
+
+		INFO("Regions to load:\n");
+		for (int i = 0; i < regions_count; i++)
+			INFO("    %s\n", regions[i]);
+
+		INFO("Loading current system firmware...\n");
+		ret = load_system_firmware(cfg, image_from, image_to, regions, regions_count);
 
 		if (ret == IMAGE_PARSE_FAILURE && cfg->force_update) {
 			WARN("No compatible firmware in system.\n");
@@ -1219,8 +1265,6 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		return UPDATE_ERR_PLATFORM;
 	}
 
-	bool wp_enabled = is_ap_write_protection_enabled(cfg);
-
 	if (try_apply_quirk(QUIRK_ENLARGE_IMAGE, cfg))
 		return UPDATE_ERR_SYSTEM_IMAGE;
 
@@ -1237,7 +1281,8 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		return update_legacy_firmware(cfg, image_to);
 
 	if (cfg->try_update) {
-		r = update_try_rw_firmware(cfg, image_from, image_to, wp_enabled);
+		r = update_try_rw_firmware(cfg, image_from, image_to, wp_enabled,
+					   read_rest_of_the_sections);
 		if (r == UPDATE_ERR_NEED_RO_UPDATE) {
 			WARN("%s\n", updater_error_messages[r]);
 			STATUS("  Pausing for 5 seconds to allow cancellation (Ctrl+C)...\n");
@@ -1254,6 +1299,13 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 			WARN("The AP RO is locked with verification turned on so we can't do "
 			     "full update (b/284913015). Fall back to RW-only update.\n");
 			wp_enabled = 1;
+		}
+
+		if (!wp_enabled) {
+			/*
+			 * try_rw failed because RO is different, entire fw update will be run.
+			 */
+			load_system_firmware(cfg, image_from, image_to, NULL, 0);
 		}
 
 		r = wp_enabled ? update_rw_firmware(cfg, image_from, image_to)
