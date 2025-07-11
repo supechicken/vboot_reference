@@ -157,12 +157,21 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 
 	/* flash is ready to be read */
 
-	image->data = calloc(1, len);
-	image->size = len;
-	image->file_name = strdup("<sys-flash>");
-	image->fmap_header = NULL;
+	if (!image->data) {
+		image->data = calloc(1, len);
+		image->size = len;
+		image->file_name = strdup("<sys-flash>");
+		image->fmap_header = NULL;
+	} else {
+		/* reading additional regions */
+		fmap_pos = (uint8_t *)image->fmap_header - image->data;
+		fmap_len = sizeof(FmapHeader) +
+			   sizeof(FmapAreaHeader) * image->fmap_header->fmap_nareas;
+		if (fmap_len % 4096 != 0)
+			fmap_len += 4096 - fmap_len % 4096; /* must be aligned to 4KiB */
+	}
 
-	if (regions_count && helper_image) {
+	if (regions_count && helper_image && !image->fmap_header) {
 		/* return value is disregarded as image->fmap_header will either be NULL or
 		 * correctly set */
 		flashrom_guess_fmap(image, helper_image, flashctx, &fmap_pos, &fmap_len, len);
@@ -183,7 +192,7 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 			// read the entire image (if unlucky)
 			r |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
 			if (r != 0) {
-				ERROR("could not read fmap from rom, r=%d\n", r);
+				ERROR("Could not read fmap from rom, r=%d\n", r);
 				r = -1;
 				goto err_cleanup;
 			}
@@ -191,7 +200,7 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 			INFO("Including region 'FMAP' (because guessing failed)\n");
 			r |= flashrom_layout_include_region(layout, "FMAP");
 			if (r > 0) {
-				ERROR("could not include FMAP region\n");
+				ERROR("Could not include FMAP region\n");
 				r = -1;
 				goto err_cleanup;
 			}
@@ -199,16 +208,18 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 		int i;
 		for (i = 0; i < regions_count; i++) {
 			// empty region causes seg fault in API.
-			INFO("Including region '%s'\n", regions[i]);
+			INFO("Including region %s\n", regions[i]);
 			r |= flashrom_layout_include_region(layout, regions[i]);
 			if (r > 0) {
-				ERROR("could not include region = '%s'\n", regions[i]);
+				ERROR("Could not include region %s\n", regions[i]);
 				r = -1;
 				goto err_cleanup;
 			}
 		}
 		flashrom_layout_set(flashctx, layout);
 	}
+
+	INFO("Reading image...\n");
 
 	r |= flashrom_image_read(flashctx, image->data, len);
 	if (r == 0 && regions_count)

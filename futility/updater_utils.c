@@ -549,7 +549,7 @@ static int is_the_same_programmer(const struct firmware_image *image1,
 
 int load_system_firmware(struct updater_config *cfg, struct firmware_image *image,
 			 struct firmware_image *helper_image, const char *const regions[],
-			 size_t regions_len)
+			 size_t regions_count)
 {
 	if (!strcmp(image->programmer, FLASHROM_PROGRAMMER_INTERNAL_EC))
 		WARN("%s: flashrom support for CrOS EC is EOL.\n", __func__);
@@ -562,8 +562,7 @@ int load_system_firmware(struct updater_config *cfg, struct firmware_image *imag
 	for (i = 1, r = -1; i <= tries && r != 0; i++, verbose++) {
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
-		INFO("Reading SPI Flash..\n");
-		r = flashrom_read_image(image, helper_image, regions, regions_len,
+		r = flashrom_read_image(image, helper_image, regions, regions_count,
 					verbose); // will set image->fmap_header
 	}
 	if (r) {
@@ -576,7 +575,6 @@ int load_system_firmware(struct updater_config *cfg, struct firmware_image *imag
 		 * because we may be trying to recover a device with corrupted
 		 * firmware.
 		 */
-
 		r = parse_firmware_image(image);
 	}
 	return r;
