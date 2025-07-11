@@ -163,6 +163,7 @@ void GptRepair(GptData *gpt);
 void GptModified(GptData *gpt);
 
 /**
+<<<<<<< HEAD   (40877eabb0f2deb61dd6f653eb9cc528225668ae 2load_android_kernel: Quick fix for 4KiB misc partition clea)
  * Return 1 if the entry is a Android VBMETA partition, else 0.
  */
 int IsAndroid(const GptEntry *e);
@@ -178,6 +179,25 @@ int IsChromeOS(const GptEntry *e);
 bool IsAndroidBootPartition(const GptEntry *e, const char *suffix);
 
 /**
+||||||| BASE   (ac6cc721c1ef4b62f834c56760e44fe2aeb76b65 2lib: Get Android boot mode)
+ * Return true if the entry is a Android VBMETA partition, else false.
+ */
+bool IsAndroid(const GptEntry *e);
+
+/**
+ * Return true if the entry is a ChromeOS kernel partition, else false.
+ */
+bool IsChromeOS(const GptEntry *e);
+
+/**
+ * Return true if the entry is a ChromeOS or Android partition,
+ * else false.
+ */
+bool IsBootableEntry(const GptEntry *e);
+
+/**
+=======
+>>>>>>> CHANGE (9b362962860caef101b6d11debd2dd6366a2d274 cgptlib: Make IsBootableEntry available for depthcharge)
  * Copy the current kernel partition's UniquePartitionGuid to the dest.
  */
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest);
