@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "29626736_d003874a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-14T14:12:54Z",
+      "side": 1,
+      "message": "Verified on both ChromeOS and Android (compile+runtime) and the host (compile only, code not used). ChromeOS defaults to GPIO_SYSFS and compiles with GPIO UAPI V1 as a default. Android compiles with GPIO_SYSFS as a default but always fails on it and then uses GPIO UAPI V2. I left it in this state so older platforms still can use legacy GPIO_SYSFS and newer platforms wil use configured GPIO_CDEV (UAPI) interface.",
+      "parentUuid": "47d9d77d_bcbc0a8a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "add3e0b03e7e15d6dc1ef58a9d8b67627ac99aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c28135dd_57bc6ac3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "Update: APIv2 is not available on ChromeOS and in CrosSDK as they are using linux-headers-5.4 that only have APIv1. I\u0027ll add 2 implementations. APIv1 and APIv2. APIv1 will be the default and APIv2 will be added depending on the ifdef configuration.",
       "parentUuid": "0df3e499_154b2138",
+      "range": {
+        "startLine": 881,
+        "startChar": 1,
+        "endLine": 881,
+        "endChar": 37
+      },
+      "revId": "add3e0b03e7e15d6dc1ef58a9d8b67627ac99aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbce0a8_fb9faa4b",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-14T14:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03bc3624_3e9ca387",
       "range": {
         "startLine": 881,
         "startChar": 1,
