@@ -1,0 +1,665 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f77ceeb_7638b2bc",
+        "filename": "futility/updater.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "mistype",
+      "range": {
+        "startLine": 940,
+        "startChar": 0,
+        "endLine": 940,
+        "endChar": 6
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86555a4f_7ebb41fb",
+        "filename": "futility/updater.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Unnecessary formatting.",
+      "range": {
+        "startLine": 1173,
+        "startChar": 1,
+        "endLine": 1173,
+        "endChar": 82
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a714646d_278a5298",
+        "filename": "futility/updater.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Unnecessary formatting.",
+      "range": {
+        "startLine": 1178,
+        "startChar": 8,
+        "endLine": 1179,
+        "endChar": 84
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d193cec_0bee13ea",
+        "filename": "futility/updater.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Unnecessary formatting. Previous formatting was intentional to show match between AP and EC versions.",
+      "range": {
+        "startLine": 1209,
+        "startChar": 1,
+        "endLine": 1212,
+        "endChar": 36
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0342c78a_01e5de15",
+        "filename": "futility/updater.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Unnecessary formatting.",
+      "range": {
+        "startLine": 1240,
+        "startChar": 2,
+        "endLine": 1240,
+        "endChar": 68
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2898d47e_e92ecaf3",
+        "filename": "futility/updater.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Unnecessary formatting.",
+      "range": {
+        "startLine": 1259,
+        "startChar": 2,
+        "endLine": 1260,
+        "endChar": 49
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f69a8af_ecc2dbe6",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "This function should always read the whole firmware image as it was intended from the beginning. If you want to have code reading certain sections, then use `flashrom_drv` directly or create another function for reading RO/RW-A/RW-B.",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 23
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc0947e_6d2ad0af",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Extra line",
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3837838a_abb3dd8a",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "This is more about searching than guessing. Also the `flashrom_` prefix is not needed for static symbols. What do you think about: `locate_fmap` or `find_fmap_location`?",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eabe2aa_b41eecb7",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "The convention is to pass the context as a first argument.",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1b7cde_8c76c053",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "This should be DEBUG. It\u0027s code-related not environment or data related.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 71
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2298e830_62fcb698",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "The alignment is the guideline for creating and placing the FMAP, not reading it. `flashrom` should take care of most unaligned reads. However if it does not then I do not see a problem with leaving alignment here, but use `VB2_ALIGN_UP()` instead.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 69
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1a297b_781a97f1",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "DEBUG",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 74
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc89dcee_c030f6ca",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "DEBUG",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 81
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa95a59e_0546f9e1",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "DEBUG",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 67
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf0f1060_154f9435",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "DEBUG",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbbeab7_af94c410",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "DEBUG",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 44
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a13108_6d399cd9",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "style: Upper-case `If...`",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 6
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2418defb_8f53d6ae",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Unnecessary formatting.",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 79
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bb9871_2d7aa99c",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "This can be moved inside the if statement below. and merged with sub-if-statement.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a1e0df_cf9bdb8b",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "`else` ?",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716d5037_8eb2fa17",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "DEBUG",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd228590_67a95f77",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "DEBUG",
+      "range": {
+        "startLine": 202,
+        "startChar": 3,
+        "endLine": 202,
+        "endChar": 47
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf4a064_15477875",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Unnecessary formatting.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 24
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d83b7e0_ec9e7d08",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Do not format unchanged code or the code not in the immediate vicinity. Use `git checkout -p main` to restore this code to its original form. I know it\u0027s tempting to format all the code, but it messes with the git history when one tries to find the commit introducing original changes to the lines.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e92992_e6c3104e",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Do not format unchanged code or the code not in the immediate vicinity.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f98ed8_6d456044",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Do not format unchanged code or the code not in the immediate vicinity.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc722d0_329910fc",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Do not format unchanged code or the code not in the immediate vicinity.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 59
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748e44d9_345f9b83",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-15T14:39:05Z",
+      "side": 1,
+      "message": "Do not format unchanged code or the code not in the immediate vicinity.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 82
+      },
+      "revId": "24aad4cb235d3de738cae3dd591cce6b8934500b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
