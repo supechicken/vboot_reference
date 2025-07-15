@@ -68,7 +68,11 @@ static void print_help(int argc, char *argv[])
 		"CREATE MODE:\n"
 		"-c, --create=hwid_size,rootkey_size,bmpfv_size,"
 		"recoverykey_size\n"
-		"                     \tCreate a GBB blob by given size list.\n\n"
+		"                     \tCreate a GBB blob by given size list.\n"
+		"\n"
+		"Debugging and testing options:\n"
+		"-v, --verbose        \tPrint verbose messages\n"
+		"\n"
 		FLASH_MORE_HELP
 		"SAMPLE:\n"
 		"  %s -g image.bin\n"
@@ -103,6 +107,7 @@ enum {
 static struct option long_opts[] = {
 	SHARED_FLASH_ARGS_LONGOPTS
 	/* name  has_arg *flag val */
+	{"verbose", 0, NULL, 'v'},
 	{"get", 0, NULL, 'g'},
 	{"set", 0, NULL, 's'},
 	{"create", 1, NULL, 'c'},
@@ -119,7 +124,7 @@ static struct option long_opts[] = {
 	{NULL, 0, NULL, 0},
 };
 
-static const char *short_opts = ":gsc:o:k:b:r:e" SHARED_FLASH_ARGS_SHORTOPTS;
+static const char *short_opts = ":gvsc:o:k:b:r:e" SHARED_FLASH_ARGS_SHORTOPTS;
 
 /* Change the has_arg field of a long_opts entry */
 static void opt_has_arg(const char *name, int val)
@@ -463,6 +468,9 @@ static int do_gbb(int argc, char *argv[])
 		case 'e':
 			sel_flags = true;
 			explicit_flags = 1;
+			break;
+		case 'v':
+			args.verbosity++;
 			break;
 		case OPT_DIGEST:
 			sel_digest = true;
