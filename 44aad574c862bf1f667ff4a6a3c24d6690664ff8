@@ -16,6 +16,109 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8709297956066869505) is being automatically retried for the following reasons:\n- Some child builders are now retryable:asurada-cq, brask-cq, brox-cq, brya-cq, cherry-cq,...\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "44aad574c862bf1f667ff4a6a3c24d6690664ff8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740f8e08_4cbc7c62",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-15T16:07:15Z",
+      "side": 1,
+      "message": "V",
+      "range": {
+        "startLine": 233,
+        "startChar": 33,
+        "endLine": 233,
+        "endChar": 34
+      },
+      "revId": "44aad574c862bf1f667ff4a6a3c24d6690664ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f49758_8f78f5a2",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-15T16:07:15Z",
+      "side": 1,
+      "message": "I\u0027d say, if this is only for guards, then write `-DGPIO_UAPI_V2` here and use `#if defined(GPIO_UAPI_V2)` (or `#ifdef`) in the source code.",
+      "range": {
+        "startLine": 234,
+        "startChar": 10,
+        "endLine": 234,
+        "endChar": 26
+      },
+      "revId": "44aad574c862bf1f667ff4a6a3c24d6690664ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6fbe08_0578b068",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-15T16:07:15Z",
+      "side": 1,
+      "message": "This seems like a duplicate of `gpioline_read_value` in host/arch/arm/lib/crossystem_arch.c. Please extract this to a common file (somewhere in host/lib), so that the v2 API can also be used for ARM.\n\nAnd, as you\u0027re adding \"retries\" for x86 here, I\u0027m assigning b/254337014 to you.",
+      "revId": "44aad574c862bf1f667ff4a6a3c24d6690664ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b4189d_d03e0665",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-15T16:07:15Z",
+      "side": 1,
+      "message": "Better to stick to the PascalCase style in this file.",
+      "range": {
+        "startLine": 1014,
+        "startChar": 9,
+        "endLine": 1014,
+        "endChar": 31
+      },
+      "revId": "44aad574c862bf1f667ff4a6a3c24d6690664ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339ab4c5_4fb34f95",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-15T16:07:15Z",
+      "side": 1,
+      "message": "Can we give this higher precedence over `ReadGpioSysfs`? Actually, I\u0027m not sure if `ReadGpioSysfs` is still needed for ChromeOS devices.",
+      "revId": "44aad574c862bf1f667ff4a6a3c24d6690664ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
