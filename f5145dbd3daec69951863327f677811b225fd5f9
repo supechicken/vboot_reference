@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7b744e_ad380b31",
+        "filename": "tests/gpt_misc_tests.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-07-15T14:29:30Z",
+      "side": 1,
+      "message": "Previously `gpt_misc.h` (included by `cgptlib.h`) was including `vboot_api.h`. I changed this to include `vboot_api.h` here explicitly.",
+      "revId": "f5145dbd3daec69951863327f677811b225fd5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
