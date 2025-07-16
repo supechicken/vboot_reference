@@ -61,9 +61,9 @@ vb2_error_t flashrom_read(struct firmware_image *image, const char *region);
 int flashrom_read_image(struct firmware_image *image,
 			struct firmware_image *helper_image,
 			const char *const regions[], size_t regions_len,
-			int verbosity);
+			int verbosity, int use_cbmem);
 int flashrom_read_region(struct firmware_image *image, const char *region,
-			 int verbosity);
+			 int verbosity, int use_cbmem);
 
 /**
  * Read flash segments given by offsets into `image`.

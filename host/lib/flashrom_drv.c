@@ -9,6 +9,7 @@
 
 #include "2common.h"
 #include "crossystem.h"
+#include "cbmem.h"
 #include "host_misc.h"
 #include "util_misc.h"
 //#include "updater.h"
@@ -97,6 +98,78 @@ fail:
 	flashrom_layout_release(layout);
 }
 
+/**
+ * Attempts to locate FMAP in flash using cbmem.
+ * Returns 0 and sets image->fmap_header on success, 1 on fail.
+ */
+static int locate_fmap_using_cbmem(struct flashrom_flashctx *flashctx,
+				   struct firmware_image *image, uint64_t *fmap_pos,
+				   size_t *fmap_len, size_t len)
+{
+	int r = 0;
+
+	image->fmap_header = NULL;
+
+	FmapAreaHeader *ah = NULL;
+	*fmap_len = 4096;
+	uint8_t buffer[*fmap_len];
+
+	struct flashrom_layout *layout = NULL;
+
+	const char CBMEM_ID_FMAP[] = "464d4150";
+	if (cbmem_get_rawdump(CBMEM_ID_FMAP, buffer, fmap_len)) {
+		r = 1;
+		goto locate_fail;
+	}
+
+	if (flashrom_layout_read_fmap_from_buffer(&layout, flashctx, buffer, *fmap_len) != 0) {
+		r = 1;
+		goto locate_fail;
+	}
+
+	image->fmap_header = fmap_find(buffer, *fmap_len);
+	if (!image->fmap_header) {
+		r = 1;
+		goto locate_fail;
+	}
+
+	if (!fmap_find_by_name(buffer, *fmap_len, image->fmap_header, "FMAP", &ah)) {
+		r = 1;
+		goto locate_fail;
+	}
+
+	*fmap_pos = ah->area_offset;
+	*fmap_len = ah->area_size;
+
+	image->fmap_header = NULL; /* Needs to be read from flash for verification */
+
+	flashrom_layout_include_region(layout, "FMAP");
+	flashrom_layout_set(flashctx, layout);
+
+	VB2_DEBUG("Looking for FMAP at %" PRId64 " (%zu bytes) (cbmem)\n", *fmap_pos,
+		  *fmap_len);
+
+	if (flashrom_image_read(flashctx, image->data, len) != 0) {
+		r = 1;
+		goto locate_fail;
+	}
+
+	/* verify if the fmap was located correctly */
+	image->fmap_header = fmap_find(image->data + *fmap_pos, *fmap_len);
+	if (!image->fmap_header) {
+		r = 1;
+		goto locate_fail;
+	}
+
+	// note: image->fmap_header is not NULL
+	VB2_DEBUG("Located FMAP successfully (cbmem)\n");
+
+locate_fail:;
+	flashrom_layout_release(layout);
+
+	return r;
+}
+
 enum flashrom_error {
 	FLASHROM_SUCCESS = 0,
 	FLASHROM_INIT_FAILURE = -1,
@@ -104,7 +177,7 @@ enum flashrom_error {
 	FLASHROM_GETSIZE_FAILURE = -3,
 };
 
-/**
+/*
  * Prepares flash for operations.
  *
  * `len` is set to the flash size. `programmer` and `params` are extracted into `tmp`, which has
@@ -229,7 +302,7 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 				    struct firmware_image *helper_image,
 				    const char *const regions[], const size_t regions_len,
 				    unsigned int *region_start, unsigned int *region_len,
-				    int verbosity)
+				    int verbosity, int use_cbmem)
 {
 	int r = 0;
 	*region_start = 0;
@@ -280,12 +353,16 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 	}
 
 	if (regions_len) {
-		if (helper_image && !image->fmap_header) {
-			/* Note: If this fails, `image->fmap_header` will stay NULL. */
+		/* Use helper image. */
+		if (helper_image && !image->fmap_header)
 			locate_fmap_using_helper_image(flashctx, image, helper_image, &fmap_pos,
 						       &fmap_len, len);
-		}
 
+		/* Use cbmem if using helper image failed. */
+		if (!image->fmap_header && use_cbmem)
+			locate_fmap_using_cbmem(flashctx, image, &fmap_pos, &fmap_len, len);
+
+		/* If located, read FMAP into layout. */
 		if (image->fmap_header &&
 		    flashrom_layout_read_fmap_from_buffer(
 			    &layout, flashctx, image->data + fmap_pos, fmap_len) != 0) {
@@ -296,7 +373,8 @@ static int flashrom_read_image_impl(struct firmware_image *image,
 
 		/* Search the flash for FMAP since it could not be located faster. */
 		if (!image->fmap_header) {
-			if (flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len)) {
+			r |= flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
+			if (r != 0) {
 				ERROR("could not read fmap from rom, r=%d\n", r);
 				r = -1;
 				goto err_cleanup;
@@ -353,20 +431,20 @@ int flashrom_read_image(struct firmware_image *image,
 			struct firmware_image *helper_image,
 			const char * const regions[],
 			const size_t regions_len,
-			int verbosity)
+			int verbosity, int use_cbmem)
 {
 	unsigned int start, len;
 	return flashrom_read_image_impl(image, helper_image, regions, regions_len, &start,
-					&len, verbosity);
+					&len, verbosity, use_cbmem);
 }
 
 int flashrom_read_region(struct firmware_image *image, const char *region,
-			 int verbosity)
+			 int verbosity, int use_cbmem)
 {
 	const char * const regions[] = {region};
 	unsigned int start, len;
 	int r = flashrom_read_image_impl(image, NULL, regions, ARRAY_SIZE(regions),
-					 &start, &len, verbosity);
+					 &start, &len, verbosity, use_cbmem);
 	if (r != 0)
 		return r;
 

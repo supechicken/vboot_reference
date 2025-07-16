@@ -405,7 +405,7 @@ char *load_system_frid(struct updater_config *cfg)
 	};
 	char *frid;
 
-	if (flashrom_read_region(&image, FMAP_RO_FRID, cfg->verbosity + 1)) {
+	if (flashrom_read_region(&image, FMAP_RO_FRID, cfg->verbosity + 1, 1)) {
 		ERROR("Failed to load %s\n", FMAP_RO_FRID);
 		return NULL;
 	}
@@ -627,8 +627,8 @@ int load_system_firmware_regions(struct updater_config *cfg, struct firmware_ima
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
 		INFO("Reading SPI Flash..\n");
-		r = flashrom_read_image(image, helper_image, regions, regions_len,
-					verbose);
+		r = flashrom_read_image(image, helper_image, regions, regions_len, verbose,
+					!cfg->dut_is_remote); // will set image->fmap_header
 	}
 	if (r) {
 		/* Read failure, the content cannot be trusted. */
