@@ -13,6 +13,9 @@
 #define FLASHROM_PROGRAMMER_INTERNAL_AP "internal"
 #define FLASHROM_PROGRAMMER_INTERNAL_EC "ec"
 
+#define NO_USE_CBMEM 0
+#define USE_CBMEM 1
+
 /* Utilities for firmware images and (FMAP) sections */
 struct firmware_image {
 	/**
@@ -54,6 +57,8 @@ struct firmware_image {
  *			be at least regions_len items long.
  * @param regions_len	The size of regions, or 0 to read the entire flash
  *			chip.
+ * @param use_cbmem	If true, and FMAP was not located using `helper_fmap`, will also attempt
+ *			to locate the FMAP using cbmem.
  *
  * @return VB2_SUCCESS on success, or a relevant error.
  */
@@ -61,9 +66,9 @@ vb2_error_t flashrom_read(struct firmware_image *image, const char *region);
 int flashrom_read_image(struct firmware_image *image,
 			FmapHeader *helper_fmap,
 			const char *const regions[], size_t regions_len,
-			int verbosity);
+			int verbosity, int use_cbmem);
 int flashrom_read_region(struct firmware_image *image, const char *region,
-			 int verbosity);
+			 int verbosity, int use_cbmem);
 
 /**
  * Read flash segments given by offsets into `image`.
