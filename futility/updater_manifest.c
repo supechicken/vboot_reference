@@ -526,7 +526,7 @@ manifest_detect_model_from_frid(struct updater_config *cfg,
 	struct firmware_image current_ro_frid = {0};
 	current_ro_frid.programmer = cfg->image_current.programmer;
 	int error = flashrom_read_region(&current_ro_frid, FMAP_RO_FRID,
-					 cfg->verbosity + 1);
+					 cfg->verbosity + 1, !cfg->dut_is_remote);
 	const char *from_dot;
 	int len;
 
