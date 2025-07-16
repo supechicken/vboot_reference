@@ -24,7 +24,7 @@ static int get_ro_range(struct updater_config *cfg,
 	/* Read fmap */
 	const char *const regions[] = {FMAP_RO_FMAP};
 	if (flashrom_read_image(&cfg->image_current, NULL, regions,
-				ARRAY_SIZE(regions), cfg->verbosity + 1))
+				ARRAY_SIZE(regions), cfg->verbosity + 1, !cfg->dut_is_remote))
 		return -1;
 
 	FmapAreaHeader *wp_ro = NULL;

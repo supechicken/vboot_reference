@@ -491,7 +491,8 @@ CFLAGS += -DUSE_FLASHROM
 endif
 COMMONLIB_SRCS += \
 	host/lib/subprocess.c \
-	host/lib/cbfstool.c
+	host/lib/cbfstool.c \
+	host/lib/cbmem.c \
 
 # Intermediate library for the vboot_reference utilities to link against.
 UTILLIB = ${BUILD}/libvboot_util.a
