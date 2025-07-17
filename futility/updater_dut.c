@@ -13,6 +13,24 @@
 #include "crossystem.h"
 #include "updater.h"
 
+#define SKU_ID_UNKNOWN 0xFFFFFFFF
+
+uint32_t dut_get_sku_id(struct updater_config *cfg)
+{
+	uint32_t sku_id;
+
+	if (cfg->dut_is_remote) {
+		WARN("Returning SKU ID %#x a remote DUT.\n", SKU_ID_UNKNOWN);
+		return SKU_ID_UNKNOWN;
+	}
+
+	if (VbGetSystemSkuId(&sku_id)) {
+		WARN("Failed to get SKU ID; returning %#x.\n", SKU_ID_UNKNOWN);
+		sku_id = SKU_ID_UNKNOWN;
+	}
+	return sku_id;
+}
+
 int dut_get_manifest_key(char **manifest_key_out, struct updater_config *cfg)
 {
 	if (cfg->dut_is_remote) {
