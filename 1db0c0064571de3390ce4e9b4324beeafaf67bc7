@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "1db0c0064571de3390ce4e9b4324beeafaf67bc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a1fe913_3afb081a",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-17T11:04:40Z",
+      "side": 1,
+      "message": "Please use `defaults: [\"vboot_defaults\"],`. This test will be executed on the device, so it needs the same libraries, flags, etc.",
+      "range": {
+        "startLine": 451,
+        "startChar": 4,
+        "endLine": 451,
+        "endChar": 13
+      },
+      "revId": "1db0c0064571de3390ce4e9b4324beeafaf67bc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
