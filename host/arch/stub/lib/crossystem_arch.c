@@ -25,11 +25,15 @@ VbSharedDataHeader* VbSharedDataRead(void)
 	return NULL;
 }
 
-int VbGetArchPropertyInt(const char* name)
+int VbGetSystemSkuId(uint32_t *sku_id)
 {
 	return -1;
 }
 
+int VbGetArchPropertyInt(const char* name)
+{
+	return -1;
+}
 
 const char* VbGetArchPropertyString(const char* name, char* dest,
 				    size_t size)
