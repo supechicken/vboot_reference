@@ -242,6 +242,8 @@ int dut_set_property_int(const char *key, const int value,
 			 struct updater_config *cfg);
 int dut_get_property_int(const char *key, struct updater_config *cfg);
 
+uint32_t dut_get_sku_id(struct updater_config *cfg);
+
 /* Gets the 'firmware manifest key' on the DUT. */
 int dut_get_manifest_key(char **manifest_key_out, struct updater_config *cfg);
 
