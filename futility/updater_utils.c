@@ -365,6 +365,35 @@ const struct vb2_gbb_header *find_gbb(const struct firmware_image *image)
 	return gbb_header;
 }
 
+char *load_system_frid(struct updater_config *cfg)
+{
+	struct firmware_image image = {
+		.programmer = cfg->image_current.programmer,
+	};
+	char *frid;
+	char *from_dot;
+
+	if (flashrom_read_region(&image, FMAP_RO_FRID, cfg->verbosity + 1)) {
+		ERROR("Failed to load %s\n", FMAP_RO_FRID);
+		return NULL;
+	}
+
+	free_firmware_image(&image);
+
+	frid = strndup((const char *)image.data, image.size);
+	if (!frid)
+		return NULL;
+
+	from_dot = strchr(frid, '.');
+	if (!from_dot) {
+		ERROR("Missing dot in FRID: %s\n", frid);
+		return NULL;
+	}
+
+	*from_dot = '\0';
+	return frid;
+}
+
 /*
  * Different settings may have different SWWP programmers.
  */
