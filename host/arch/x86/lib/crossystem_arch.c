@@ -75,6 +75,7 @@
 /* Base for SMBIOS information files */
 #define SMBIOS_BASE_PATH "/sys/class/dmi/id"
 #define SMBIOS_PRODUCT_VERSION_PATH SMBIOS_BASE_PATH "/product_version"
+#define SMBIOS_PRODUCT_SKU_PATH SMBIOS_BASE_PATH "/product_sku"
 
 /* Filename for NVRAM file */
 #define NVRAM_PATH "/dev/nvram"
@@ -599,6 +600,22 @@ static int ReadGpio(unsigned signal_type)
 		return -1;
 
 	return gpio_read_value_by_idx(controller_num, !active_high);
+}
+
+int VbGetSystemSkuId(uint32_t *sku_id)
+{
+	FILE *f;
+	uint32_t read_sku_id;
+
+	f = fopen(SMBIOS_PRODUCT_SKU_PATH, "r");
+	if (!f)
+		return -1;
+
+	if (fscanf(f, "sku%u\n", &read_sku_id) == 1)
+		*sku_id = read_sku_id;
+
+	fclose(f);
+	return 0;
 }
 
 static int GetBoardId(void)
