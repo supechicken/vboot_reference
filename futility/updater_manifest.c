@@ -59,6 +59,7 @@ static const char * const DEFAULT_MODEL_NAME = "default",
 		  * const VPD_CUSTOM_LABEL_TAG_LEGACY = "whitelabel_tag",
 		  * const VPD_CUSTOMIZATION_ID = "customization_id",
 		  * const PATH_KEYSET_FOLDER = "keyset/",
+		  * const PATH_IDENTITY = "identity.csv",
 		  * const PATH_SIGNER_CONFIG = "signer_config.csv";
 
 /* Utility function to convert a string. */
@@ -454,6 +455,105 @@ static int manifest_from_simple_folder(struct manifest *manifest)
 	return 0;
 }
 
+static char *get_manifest_key_from_identity(struct updater_config *cfg,
+					    const struct manifest *manifest)
+{
+	char *system_frid;
+	uint32_t system_sku_id;
+	struct u_archive *archive = manifest->archive;
+	uint8_t *data = NULL;
+	uint32_t size;
+	char *s, *tok_ptr = NULL;
+	char *result_manifest_key = NULL;
+
+	VB2_DEBUG("Try to get manifest key from %s\n", PATH_IDENTITY);
+
+	if (!archive_has_entry(archive, PATH_IDENTITY))
+		return NULL;
+
+	/* Load system identities. */
+	system_frid = load_system_frid(cfg);
+	if (!system_frid) {
+		ERROR("Failed loading system FRID\n");
+		goto exit;
+	}
+	system_sku_id = dut_get_sku_id(cfg);
+
+	/* CSV format: manifest_key,frid,sku_id */
+
+	if (archive_read_file(archive, PATH_IDENTITY, &data, &size, NULL)) {
+		ERROR("Failed reading: %s\n", PATH_IDENTITY);
+		goto exit;
+	}
+
+	/* Skip headers. */
+	s = strtok_r((char *)data, "\n", &tok_ptr);
+	if (!s || !strchr(s, ',')) {
+		ERROR("Invalid %s: missing header.\n", PATH_IDENTITY);
+		goto exit;
+	}
+
+	for (s = strtok_r(NULL, "\n", &tok_ptr); s != NULL;
+	     s = strtok_r(NULL, "\n", &tok_ptr)) {
+		char *manifest_key = NULL;
+		char *frid = NULL;
+		char *sku_id_str = NULL;
+		uint32_t sku_id;
+
+		if (sscanf(s, "%m[^,],%m[^,],%m[^,]",
+			   &manifest_key, &frid, &sku_id_str) < 3) {
+			ERROR("Invalid entry(%s): %s\n", PATH_IDENTITY, s);
+			free(manifest_key);
+			free(frid);
+			free(sku_id_str);
+			continue;
+		}
+
+		sku_id = strtoul(sku_id_str, NULL, 10);
+		if (strcasecmp(system_frid, frid) && system_sku_id == sku_id)
+			result_manifest_key = strdup(manifest_key);
+
+		free(manifest_key);
+		free(frid);
+		free(sku_id_str);
+
+		if (result_manifest_key) {
+			INFO("Identified the device using %s: "
+			     "manifest key (model): %s\n",
+			     PATH_IDENTITY, result_manifest_key);
+			break;
+		}
+	}
+
+exit:
+	free(system_frid);
+	free(data);
+	return result_manifest_key;
+}
+
+#ifdef HAVE_CROSID
+static char *get_manifest_key_from_crosid(struct updater_config *cfg,
+					  const struct manifest *manifest)
+{
+	int matched_index;
+	char *manifest_key = NULL;
+
+	VB2_DEBUG("Try to get manifest key from libcrosid\n");
+
+	matched_index = dut_get_manifest_key(&manifest_key, cfg);
+	if (matched_index < 0) {
+		ERROR("Failed to get device identity.  "
+		      "Run \"crosid -v\" for explanation.\n");
+		return NULL;
+	}
+
+	INFO("Identified the device using libcrosid, "
+	     "matched chromeos-config index: %d, manifest key (model): %s\n",
+	     matched_index, manifest_key);
+	return manifest_key;
+}
+#endif
+
 /*
  * Finds the existing model_config from manifest that best matches current
  * system (as defined by model_name).
@@ -466,7 +566,6 @@ const struct model_config *manifest_find_model(struct updater_config *cfg,
 	char *manifest_key = NULL;
 	const struct model_config *model = NULL;
 	int i;
-	int matched_index;
 
 	/*
 	 * For manifest with single model defined, we should just return because
@@ -477,17 +576,15 @@ const struct model_config *manifest_find_model(struct updater_config *cfg,
 		return &manifest->models[0];
 
 	if (!model_name) {
-		matched_index = dut_get_manifest_key(&manifest_key, cfg);
-		if (matched_index < 0) {
-			ERROR("Failed to get device identity.  "
-			      "Run \"crosid -v\" for explanation.\n");
+		manifest_key = get_manifest_key_from_identity(cfg, manifest);
+#ifdef HAVE_CROSID
+		if (!manifest_key)
+			manifest_key = get_manifest_key_from_crosid(cfg, manifest);
+#endif
+		if (!manifest_key) {
+			ERROR("Failed to get manifest key.\n");
 			return NULL;
 		}
-
-		INFO("Identified the device using libcrosid, "
-		     "matched chromeos-config index: %d, "
-		     "manifest key (model): %s\n",
-		     matched_index, manifest_key);
 		model_name = manifest_key;
 	}
 
@@ -524,7 +621,7 @@ manifest_detect_model_from_frid(struct updater_config *cfg,
 {
 	const struct model_config *result = NULL;
 	char *frid;
-	size_t len;
+	int len;
 
 	frid = load_system_frid(cfg);
 	if (!frid)
