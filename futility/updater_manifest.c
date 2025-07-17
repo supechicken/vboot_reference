@@ -523,49 +523,41 @@ manifest_detect_model_from_frid(struct updater_config *cfg,
 				struct manifest *manifest)
 {
 	const struct model_config *result = NULL;
-	struct firmware_image current_ro_frid = {0};
-	current_ro_frid.programmer = cfg->image_current.programmer;
-	int error = flashrom_read_region(&current_ro_frid, FMAP_RO_FRID,
-					 cfg->verbosity + 1);
-	const char *from_dot;
-	int len;
+	char *frid;
+	size_t len;
 
-	if (error)
+	frid = load_system_frid(cfg);
+	if (!frid)
 		return NULL;
 
-	current_ro_frid.data[current_ro_frid.size - 1] = '\0';
-	from_dot = strchr((const char *)current_ro_frid.data, '.');
-	if (!from_dot) {
-		VB2_DEBUG("Missing dot (%s)\n",
-			  (const char *)current_ro_frid.data);
-		goto cleanup;
-	}
-	len = from_dot - (const char *)current_ro_frid.data + 1;
+	len = strlen(frid);
 
 	for (int i = 0; i < manifest->num && !result; ++i) {
 		struct model_config *m = &manifest->models[i];
 		struct firmware_image image = {0};
 
 		if (load_firmware_image(&image, m->image, manifest->archive))
-			return NULL;
+			goto cleanup;
 
-		VB2_DEBUG("Comparing '%*.*s' with '%*.*s'\n", len, len,
-			  (const char *)current_ro_frid.data, len, len,
-			  image.ro_version);
-		if (strncasecmp((const char *)current_ro_frid.data,
-				image.ro_version, len) == 0) {
+		size_t ro_version_len = strlen(image.ro_version);
+		VB2_DEBUG("Comparing '%s.' with '%*.*s'\n", frid,
+			  (int)len + 1, (int)len + 1, image.ro_version);
+		if (strncasecmp(frid, image.ro_version, len) == 0 &&
+		    ro_version_len >= len + 1 &&
+		    image.ro_version[len] == '.')
 			result = m;
-		}
 		free_firmware_image(&image);
+		if (result)
+			break;
 	}
 	if (result) {
 		INFO("Detected model: '%s'\n", result->name);
 	} else {
-		ERROR("Unsupported FRID: '%*.*s'.\n", len - 1, len - 1,
-		      (const char *)current_ro_frid.data);
+		ERROR("Unsupported FRID: '%s'.\n", frid);
 	}
+
 cleanup:
-	free_firmware_image(&current_ro_frid);
+	free(frid);
 
 	return result;
 }

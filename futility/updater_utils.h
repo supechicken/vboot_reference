@@ -174,6 +174,12 @@ void strip_string(char *s, const char *pattern);
 int save_file_from_stdin(const char *output);
 
 /*
+ * Loads FRID from system firmware, with version numbers trimmed.
+ * The caller is responsible for freeing the returned string.
+ */
+char *load_system_frid(struct updater_config *cfg);
+
+/*
  * Returns true if the AP write protection is enabled on current system.
  */
 bool is_ap_write_protection_enabled(struct updater_config *cfg);
