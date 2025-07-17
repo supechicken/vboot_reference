@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c1eee86_d07a9319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-17T13:52:49Z",
+      "side": 1,
+      "message": "Tested on:\n- ChromeOS\n  - x86\n  - ARM\n- ALOS\n  - x86\n  - ARM\n\nAll devices correctly read WP pin state.",
+      "parentUuid": "5c04fac1_3800a758",
+      "revId": "44aad574c862bf1f667ff4a6a3c24d6690664ff8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "740f8e08_4cbc7c62",
