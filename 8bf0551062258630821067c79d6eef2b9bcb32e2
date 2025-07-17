@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6475d3a4_5fc478a2",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-17T20:54:20Z",
+      "side": 0,
+      "message": "We need to retain the MACOS exclusion, or some upstream coreboot guy will complain again the moment we sync this. Or maybe instead of that we could also just use `#ifdef GPIO_GET_LINEHANDLE_IOCTL` there (similar suggestion as below)? So if the v2 API constants are defined we\u0027re going to use v2, otherwise if the v1 ones are defined we\u0027ll use v1, and if we don\u0027t have any ioctl constants because we\u0027re running a Mach kernel that only sometimes plays a POSIX OS on TV, then we\u0027ll just return -1.",
+      "revId": "8bf0551062258630821067c79d6eef2b9bcb32e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

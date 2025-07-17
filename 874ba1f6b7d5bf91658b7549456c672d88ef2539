@@ -16,6 +16,40 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "874ba1f6b7d5bf91658b7549456c672d88ef2539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573d6e73_1a6c4276",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-17T20:54:20Z",
+      "side": 1,
+      "message": "Note that vboot utilities are also built outside ChromeOS/AL by upstream coreboot and other Linux distributions, so they need to support a wider range of environments. However, can we maybe just auto-detect this with `#ifdef GPIO_V2_GET_LINE_IOCTL` instead of putting the burden to manually specify it on the build environment?",
+      "revId": "874ba1f6b7d5bf91658b7549456c672d88ef2539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48363b89_6eed622b",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-17T20:54:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `if (value \u003e\u003d 0)`? We want to return a valid value if we got it (1 or 0), and only fall back to the older method if there was an error (-1), right?",
+      "revId": "874ba1f6b7d5bf91658b7549456c672d88ef2539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
