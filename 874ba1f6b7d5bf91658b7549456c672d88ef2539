@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3f3e06_ee3cb300",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-18T10:36:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "573d6e73_1a6c4276",
+      "revId": "874ba1f6b7d5bf91658b7549456c672d88ef2539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48363b89_6eed622b",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-07-17T20:54:20Z",
       "side": 1,
       "message": "Shouldn\u0027t this be `if (value \u003e\u003d 0)`? We want to return a valid value if we got it (1 or 0), and only fall back to the older method if there was an error (-1), right?",
+      "revId": "874ba1f6b7d5bf91658b7549456c672d88ef2539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a43ec5f7_74c379e4",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-18T10:36:01Z",
+      "side": 1,
+      "message": "You are right, thanks. I tested this patch with the CL:6764817, so It was always working as intended, but in this case it would fallback to the old code if the WP was disabled.",
+      "parentUuid": "48363b89_6eed622b",
       "revId": "874ba1f6b7d5bf91658b7549456c672d88ef2539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
