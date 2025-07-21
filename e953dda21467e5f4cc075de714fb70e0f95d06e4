@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2545582e_99623e8c",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "This won\u0027t work, because:\n1) ARM has RO at the beginning of FLASH [(link)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/mainboard/google/corsola/chromeos.fmd)\n2) Intel x86 has `SI_ALL` before RW sections, which we do not want to touch most of the time [(link)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/mainboard/google/brya/chromeos.fmd)",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 59
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5c1ccb_2e10841a",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "Please do not introduce unrelated changes. `regions_len` is a reasonable name because `regions` is an array.",
+      "range": {
+        "startLine": 581,
+        "startChar": 4,
+        "endLine": 581,
+        "endChar": 25
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71972a5_f250e0d3",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "The function name does not seem to fully describe its purpose. Either include a comment or change the name to a more descriptive one. Or both.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 43
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8455c7_19af5c9a",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c933ea2e_112637de",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "The overall convention is to return negative numbers as an error. e.g. `-1`.",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d166a1_2f4d628a",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "Unnecessary empty line. Variables should be organised in blocks unless their separation could be of great help when reading the code (which is almost never :) )",
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a464a36a_5ed58df8",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "Unused",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 78
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0210cba1_6eb40959",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "Probing is a block higher. If the code reached here then it clearly didn\u0027t fail. Please describe the actual problem here. e.g. `Chip size is zero.`.",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 66
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55afbbaf_e442d5c2",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "Set the result to `-1` by default and change it to zero only if the whole function is successful.",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 9
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c0505a4_7c792421",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "can be `r \u003d ...` if `r \u003d -1` by default.",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 54
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3599c9b_815946f2",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "This is not needed if you already know the FMAP position.",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 250,
+        "endChar": 3
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4ec8fb_f9a1b567",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-21T09:30:27Z",
+      "side": 1,
+      "message": "The message style should be updated in a separate CL. Please drop this diff and the ones below from this CL.",
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
