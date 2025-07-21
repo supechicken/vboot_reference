@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "2common.h"
 #include "2sysincludes.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
@@ -153,6 +154,7 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	return 0;
 }
 
+test_mockable
 int IsKernelEntry(const GptEntry *e)
 {
 	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
@@ -438,6 +440,7 @@ void SetEntryTries(GptEntry *e, int tries)
 		CGPT_ATTRIBUTE_TRIES_MASK;
 }
 
+test_mockable
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 {
 	GptEntry *entries = (GptEntry *)gpt->primary_entries;

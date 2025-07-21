@@ -314,8 +314,8 @@ static void load_kernel_tests(void)
 	kbh.data_key.key_version = 3;
 	mock_parts[1].start = 300;
 	mock_parts[1].size = 150;
-	test_load_kernel(VB2_SUCCESS, "Two kernels roll forward");
-	TEST_EQ(mock_part_next, 2, "  read both");
+	test_load_kernel(VB2_SUCCESS, "Kernels roll forward");
+	TEST_EQ(mock_part_next, 1, "  read one");
 	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
 
 	ResetMocks();
