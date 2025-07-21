@@ -158,6 +158,25 @@ void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 	memcpy(dest, fake_guid, sizeof(fake_guid));
 }
 
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+bool IsChromeOS(const GptEntry *e)
+{
+	return true;
+}
+
+bool IsAndroid(const GptEntry *e)
+{
+	return false;
+}
+
+=======
+bool IsChromeOS(const GptEntry *e)
+{
+	return true;
+}
+
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 				  const uint8_t *buf, uint32_t size)
 {
@@ -312,10 +331,27 @@ static void load_kernel_tests(void)
 
 	ResetMocks();
 	kbh.data_key.key_version = 3;
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
 	mock_parts[1].start = 300;
 	mock_parts[1].size = 150;
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+	mock_parts[1].starting_lba = 300;
+	mock_parts[1].ending_lba = 449;
+=======
+	mock_parts[1].starting_lba = 300;
+	mock_parts[1].ending_lba = 449;
+	test_load_kernel(VB2_SUCCESS, "Kernels roll forward");
+	TEST_EQ(mock_part_next, 1, "  read one");
+	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+
+	ResetMocks();
+	SetEntrySuccessful(&mock_parts[0], 1);
+	kbh.data_key.key_version = 3;
+	mock_parts[1].starting_lba = 300;
+	mock_parts[1].ending_lba = 449;
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 	test_load_kernel(VB2_SUCCESS, "Two kernels roll forward");
-	TEST_EQ(mock_part_next, 2, "  read both");
+	TEST_EQ(mock_part_next, 1, "  read one");
 	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
 
 	ResetMocks();

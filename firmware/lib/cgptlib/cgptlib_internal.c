@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "2common.h"
 #include "2sysincludes.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
@@ -153,7 +154,14 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	return 0;
 }
 
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
 int IsKernelEntry(const GptEntry *e)
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+bool IsChromeOS(const GptEntry *e)
+=======
+test_mockable
+bool IsChromeOS(const GptEntry *e)
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 {
 	static Guid chromeos_kernel = GPT_ENT_TYPE_CHROMEOS_KERNEL;
 	return !memcmp(&e->type, &chromeos_kernel, sizeof(Guid));
@@ -438,6 +446,27 @@ void SetEntryTries(GptEntry *e, int tries)
 		CGPT_ATTRIBUTE_TRIES_MASK;
 }
 
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+void SetEntryErrorCounter(GptEntry *e, int error_counter)
+{
+	e->attrs.fields.gpt_att &= ~CGPT_ATTRIBUTE_ERROR_COUNTER_MASK;
+	e->attrs.fields.gpt_att |=
+            (error_counter << CGPT_ATTRIBUTE_ERROR_COUNTER_OFFSET) &
+            CGPT_ATTRIBUTE_ERROR_COUNTER_MASK;
+}
+
+=======
+void SetEntryErrorCounter(GptEntry *e, int error_counter)
+{
+	e->attrs.fields.gpt_att &= ~CGPT_ATTRIBUTE_ERROR_COUNTER_MASK;
+	e->attrs.fields.gpt_att |=
+            (error_counter << CGPT_ATTRIBUTE_ERROR_COUNTER_OFFSET) &
+            CGPT_ATTRIBUTE_ERROR_COUNTER_MASK;
+}
+
+test_mockable
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 {
 	GptEntry *entries = (GptEntry *)gpt->primary_entries;

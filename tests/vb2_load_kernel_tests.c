@@ -18,6 +18,8 @@
 #include "gpt.h"
 #include "vboot_api.h"
 
+#define INIT_KERN_SECDATA 0x20001
+
 /* Mock kernel partition */
 struct mock_part {
 	uint32_t start;
@@ -104,9 +106,10 @@ static void ResetMocks(void)
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
 	vb2_nv_init(ctx);
+	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0xfffffffe);
 
 	sd = vb2_get_sd(ctx);
-	sd->kernel_version_secdata = 0x20001;
+	sd->kernel_version_secdata = INIT_KERN_SECDATA;
 
 	/* CRC will be invalid after here, but nobody's checking */
 	sd->status |= VB2_SD_STATUS_SECDATA_FWMP_INIT;
@@ -172,7 +175,18 @@ int GptInit(GptData *gpt)
 	return gpt_init_fail;
 }
 
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
 int GptNextKernelEntry(GptData *gpt, uint64_t *start_sector, uint64_t *size)
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+uint64_t GptGetEntrySizeLba(const GptEntry *e)
+{
+	return (e->ending_lba - e->starting_lba + 1);
+}
+
+GptEntry *GptNextKernelEntry(GptData *gpt)
+=======
+GptEntry *GptNextKernelEntry(GptData *gpt)
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 {
 	struct mock_part *p = mock_parts + mock_part_next;
 
@@ -206,6 +220,25 @@ void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 	memcpy(dest, fake_guid, sizeof(fake_guid));
 }
 
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+bool IsChromeOS(const GptEntry *e)
+{
+	return true;
+}
+
+bool IsAndroid(const GptEntry *e)
+{
+	return false;
+}
+
+=======
+bool IsChromeOS(const GptEntry *e)
+{
+	return true;
+}
+
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 				  const uint8_t *buf, uint32_t size)
 {
@@ -476,17 +509,59 @@ static void load_kernel_tests(void)
 			 "Keyblock kernel key version too big");
 
 	ResetMocks();
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
 	kbh.data_key.key_version = 3;
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+	mock_parts[0].kbh.data_key.key_version = 3;
+=======
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
+	mock_parts[0].kbh.data_key.key_version = 3;
+	SetEntrySuccessful(&mock_parts[0].e, 1);
+	test_load_kernel(VB2_SUCCESS, "Don't roll forward when trying new FW - key version");
+	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, INIT_KERN_SECDATA, "  SD write back");
+
+	ResetMocks();
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
+	kph.kernel_version = 2;
+	SetEntrySuccessful(&mock_parts[0].e, 1);
+	test_load_kernel(VB2_SUCCESS, "Don't roll forward when trying new FW - kernel version");
+	TEST_EQ(sd->kernel_version, 0x20002, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, INIT_KERN_SECDATA, "  SD write back");
+
+	ResetMocks();
+	mock_parts[0].kbh.data_key.key_version = 3;
+	SetEntrySuccessful(&mock_parts[0].e, 1);
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 	test_load_kernel(VB2_SUCCESS, "Keyblock version roll forward");
 	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
 
 	ResetMocks();
+<<<<<<< HEAD   (62a10649b63d26111f39caeaba34f086046383a5 2lib: Move kernel secdata update to vb2api_load_kernel())
 	kbh.data_key.key_version = 3;
 	mock_parts[1].start = 300;
 	mock_parts[1].size = 150;
 	test_load_kernel(VB2_SUCCESS, "Two kernels roll forward");
 	TEST_EQ(mock_part_next, 2, "  read both");
 	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+||||||| BASE   (3d5855fa8da3c12bbe76fa279b2debb15698ecec 2lib: Move kernel secdata update to vb2api_load_kernel())
+	memcpy(&mock_parts[1].kbh, &mock_parts[0].kbh,
+	       sizeof(mock_parts[0].kbh));
+	mock_parts[0].kbh.data_key.key_version = 4;
+	mock_parts[1].e.starting_lba = 300;
+	mock_parts[1].e.ending_lba = 449;
+	mock_parts[1].kbh.data_key.key_version = 3;
+	test_load_kernel(VB2_SUCCESS, "Two kernels roll forward");
+	TEST_EQ(mock_part_next, 2, "  read both");
+	TEST_EQ(sd->kernel_version, 0x40001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, 0x30001, "  SD write back");
+=======
+	kph.kernel_version = 2;
+	SetEntrySuccessful(&mock_parts[0].e, 1);
+	test_load_kernel(VB2_SUCCESS, "Kernel version roll forward");
+	TEST_EQ(sd->kernel_version, 0x20002, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, 0x20002, "  SD write back");
+>>>>>>> CHANGE (e8e6493e1f92936a825c8866d18f3e2cee0f3c41 2lib: Modify logic of setting secdata kernel version)
 
 	ResetMocks();
 	kbh.data_key.key_version = 1;
@@ -502,6 +577,22 @@ static void load_kernel_tests(void)
 	ResetMocks();
 	unpack_key_fail = 2;
 	test_load_kernel(VB2_ERROR_LK_INVALID_KERNEL_FOUND, "Bad data key");
+
+	ResetMocks();
+	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x30001);
+	mock_parts[0].kbh.data_key.key_version = 4;
+	SetEntrySuccessful(&mock_parts[0].e, 1);
+	test_load_kernel(VB2_SUCCESS, "Limit max roll forward");
+	TEST_EQ(sd->kernel_version, 0x40001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, 0x30001, "  SD write back");
+
+	ResetMocks();
+	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x10001);
+	mock_parts[0].kbh.data_key.key_version = 3;
+	SetEntrySuccessful(&mock_parts[0].e, 1);
+	test_load_kernel(VB2_SUCCESS, "Max roll forward can't rollback");
+	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, INIT_KERN_SECDATA, "  kernel version");
 
 	ResetMocks();
 	preamble_verify_fail = 1;
