@@ -263,6 +263,7 @@ cleanup:
 	return is_android_boot_part;
 }
 
+test_mockable
 bool IsChromeOS(const GptEntry *e)
 {
 	return !memcmp(&e->type, &guid_chromeos_kernel, sizeof(Guid));
@@ -571,6 +572,7 @@ void SetEntryErrorCounter(GptEntry *e, int error_counter)
             CGPT_ATTRIBUTE_ERROR_COUNTER_MASK;
 }
 
+test_mockable
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 {
 	GptEntry *entries = (GptEntry *)gpt->primary_entries;
