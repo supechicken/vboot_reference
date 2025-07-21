@@ -19,6 +19,7 @@
  *
  * Returns 0 if successful, 1 if error.
  */
+test_mockable
 int AllocAndReadGptData(vb2ex_disk_handle_t disk_handle, GptData *gptdata)
 {
 	int primary_valid = 0, secondary_valid = 0;
@@ -126,6 +127,7 @@ int AllocAndReadGptData(vb2ex_disk_handle_t disk_handle, GptData *gptdata)
  *
  * Returns 0 if successful, 1 if error.
  */
+test_mockable
 int WriteAndFreeGptData(vb2ex_disk_handle_t disk_handle, GptData *gptdata)
 {
 	int skip_primary = 0;

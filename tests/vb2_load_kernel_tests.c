@@ -18,6 +18,8 @@
 #include "gpt.h"
 #include "vboot_api.h"
 
+#define INIT_KERN_SECDATA 0x20001
+
 /* Mock kernel partition */
 struct mock_part {
 	uint32_t start;
@@ -104,9 +106,10 @@ static void ResetMocks(void)
 	TEST_SUCC(vb2api_init(workbuf, sizeof(workbuf), &ctx),
 		  "vb2api_init failed");
 	vb2_nv_init(ctx);
+	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0xfffffffe);
 
 	sd = vb2_get_sd(ctx);
-	sd->kernel_version_secdata = 0x20001;
+	sd->kernel_version_secdata = INIT_KERN_SECDATA;
 
 	/* CRC will be invalid after here, but nobody's checking */
 	sd->status |= VB2_SD_STATUS_SECDATA_FWMP_INIT;
@@ -204,6 +207,11 @@ void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 	static char fake_guid[] = "FakeGuid";
 
 	memcpy(dest, fake_guid, sizeof(fake_guid));
+}
+
+int GetEntrySuccessful(const GptEntry *e)
+{
+	return true;
 }
 
 vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
@@ -477,16 +485,29 @@ static void load_kernel_tests(void)
 
 	ResetMocks();
 	kbh.data_key.key_version = 3;
-	test_load_kernel(VB2_SUCCESS, "Keyblock version roll forward");
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
+	test_load_kernel(VB2_SUCCESS, "Don't roll forward when trying new FW - key version");
 	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, INIT_KERN_SECDATA, "  SD write back");
+
+	ResetMocks();
+	vb2_nv_set(ctx, VB2_NV_FW_RESULT, VB2_FW_RESULT_TRYING);
+	kph.kernel_version = 2;
+	test_load_kernel(VB2_SUCCESS, "Don't roll forward when trying new FW - kernel version");
+	TEST_EQ(sd->kernel_version, 0x20002, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, INIT_KERN_SECDATA, "  SD write back");
 
 	ResetMocks();
 	kbh.data_key.key_version = 3;
-	mock_parts[1].start = 300;
-	mock_parts[1].size = 150;
-	test_load_kernel(VB2_SUCCESS, "Two kernels roll forward");
-	TEST_EQ(mock_part_next, 2, "  read both");
+	test_load_kernel(VB2_SUCCESS, "Keyblock version roll forward");
 	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, 0x30001, "  SD version");
+
+	ResetMocks();
+	kph.kernel_version = 2;
+	test_load_kernel(VB2_SUCCESS, "Kernel version roll forward");
+	TEST_EQ(sd->kernel_version, 0x20002, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, 0x20002, "  SD write back");
 
 	ResetMocks();
 	kbh.data_key.key_version = 1;
@@ -502,6 +523,20 @@ static void load_kernel_tests(void)
 	ResetMocks();
 	unpack_key_fail = 2;
 	test_load_kernel(VB2_ERROR_LK_INVALID_KERNEL_FOUND, "Bad data key");
+
+	ResetMocks();
+	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x30001);
+	kbh.data_key.key_version = 4;
+	test_load_kernel(VB2_SUCCESS, "Limit max roll forward");
+	TEST_EQ(sd->kernel_version, 0x40001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, 0x30001, "  SD write back");
+
+	ResetMocks();
+	vb2_nv_set(ctx, VB2_NV_KERNEL_MAX_ROLLFORWARD, 0x10001);
+	kbh.data_key.key_version = 3;
+	test_load_kernel(VB2_SUCCESS, "Max roll forward can't rollback");
+	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+	TEST_EQ(sd->kernel_version_secdata, INIT_KERN_SECDATA, "  kernel version");
 
 	ResetMocks();
 	preamble_verify_fail = 1;
