@@ -228,41 +228,7 @@ int CheckHeader(GptHeader *h, int is_secondary,
 	return 0;
 }
 
-bool IsAndroidBootPartition(const GptEntry *e, const char *suffix)
-{
-	bool is_android_boot_part = false;
-	uint16_t *name_ucs2;
-	int size_ucs2;
-	char *name;
-	const char *partitions[] = { GPT_ENT_NAME_ANDROID_BOOT,
-				     GPT_ENT_NAME_ANDROID_VBMETA
-				   };
-
-	for (int i = 0; i < ARRAY_SIZE(partitions); i++) {
-		name = JoinStr(partitions[i], suffix);
-		if (name == NULL)
-			continue;
-
-		name_ucs2 = calloc(NAME_SIZE, sizeof(*name_ucs2));
-		if (name_ucs2 == NULL)
-			goto cleanup;
-
-		size_ucs2 = UTF8ToUCS2((const uint8_t *)name, name_ucs2, NAME_SIZE - 1);
-		if (size_ucs2 < 0)
-			goto cleanup;
-
-		if (memcmp(&e->name, name_ucs2, size_ucs2 * sizeof(*name_ucs2)))
-			goto cleanup;
-
-		is_android_boot_part = true;
-
-cleanup:
-		free(name);
-		free(name_ucs2);
-	}
-	return is_android_boot_part;
-}
-
+test_mockable
 bool IsChromeOS(const GptEntry *e)
 {
 	return !memcmp(&e->type, &guid_chromeos_kernel, sizeof(Guid));
@@ -571,6 +537,7 @@ void SetEntryErrorCounter(GptEntry *e, int error_counter)
             CGPT_ATTRIBUTE_ERROR_COUNTER_MASK;
 }
 
+test_mockable
 void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
 {
 	GptEntry *entries = (GptEntry *)gpt->primary_entries;
