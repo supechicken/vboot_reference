@@ -165,6 +165,20 @@ bool IsAndroid(const GptEntry *e)
 	return false;
 }
 
+int GetEntrySuccessful(const GptEntry *e)
+{
+	return (e->attrs.fields.gpt_att & CGPT_ATTRIBUTE_SUCCESSFUL_MASK) >>
+		CGPT_ATTRIBUTE_SUCCESSFUL_OFFSET;
+}
+
+void SetEntrySuccessful(GptEntry *e, int successful)
+{
+	if (successful)
+		e->attrs.fields.gpt_att |= CGPT_ATTRIBUTE_SUCCESSFUL_MASK;
+	else
+		e->attrs.fields.gpt_att &= ~CGPT_ATTRIBUTE_SUCCESSFUL_MASK;
+}
+
 vb2_error_t vb2_unpack_key_buffer(struct vb2_public_key *key,
 				  const uint8_t *buf, uint32_t size)
 {
@@ -321,8 +335,17 @@ static void load_kernel_tests(void)
 	kbh.data_key.key_version = 3;
 	mock_parts[1].starting_lba = 300;
 	mock_parts[1].ending_lba = 449;
+	test_load_kernel(VB2_SUCCESS, "Kernels roll forward");
+	TEST_EQ(mock_part_next, 1, "  read one");
+	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
+
+	ResetMocks();
+	SetEntrySuccessful(&mock_parts[0], 1);
+	kbh.data_key.key_version = 3;
+	mock_parts[1].starting_lba = 300;
+	mock_parts[1].ending_lba = 449;
 	test_load_kernel(VB2_SUCCESS, "Two kernels roll forward");
-	TEST_EQ(mock_part_next, 2, "  read both");
+	TEST_EQ(mock_part_next, 1, "  read one");
 	TEST_EQ(sd->kernel_version, 0x30001, "  SD version");
 
 	ResetMocks();
