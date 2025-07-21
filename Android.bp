@@ -464,9 +464,10 @@ cc_test {
     },
     device_supported: true,
     host_supported: false,
-    arch: {
-        x86_64: {
-            enabled: true
+    enabled: false,
+    target: {
+        android_x86_64: {
+            enabled: true,
         }
     },
     test_suites: ["dts"],
