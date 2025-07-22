@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc250c1_6149eb09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-22T21:05:48Z",
+      "side": 1,
+      "message": "Looks like the toolchain is injecting warning flags here that weren\u0027t defined in our package\u0027s own Makefile, which is probably a bad idea. That said, unused-variable is a reasonable warning flag to have, so we should probably add it to the vboot Makefile so that the CQ will catch this before merge next time?",
+      "revId": "92c264a42bed3d22537b62fe3b0f609407637c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
