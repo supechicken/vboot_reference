@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffed444_e48905be",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-23T00:01:29Z",
+      "side": 1,
+      "message": "Actually, I got a bit concerned about this when looking at it again for a test: the goal for vboot here is that `VB2_SD_FLAG_KERNEL_SIGNED` is only set when the image actually fully verified, without any errors, regardless of which mode we\u0027re booting in. Are we sure that `avb_slot_verify()` will always return an error for any verification issue, even when `ALLOW_VERIFICATION_ERROR` is set? I haven\u0027t followed the whole thing but it looks like it\u0027s playing pretty fast and loose with the return status in some cases (e.g. the main loop at the end of `load_and_verify_vbmeta()` will \"continue with the error\", but then if the next iteration of the loop checks a different descriptor that succeeds again, that success may be returned for the whole call).\n\nIdeally AVB would always give us accurate results, but unless we\u0027re really certain of that we should probably be careful here and only set this if we know we were running validation property (i.e. `if (need_verification \u0026\u0026 result \u003d\u003d ...OK)`.",
+      "revId": "dbdf50adc5e64b3cc211c116aded1970ef95ca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
