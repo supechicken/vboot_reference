@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f02e5dc_0c9a5d03",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-23T11:46:26Z",
+      "side": 1,
+      "message": "I think all non-NULL entries should be free\u0027d here. But it can be done in the follow-up CL.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "aa7e38e1e1a9911bf17374816a0b5450dd3ebc35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
