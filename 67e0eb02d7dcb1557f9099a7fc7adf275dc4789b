@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f523eef_d7baa706",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-23T12:48:02Z",
+      "side": 1,
+      "message": "style: Keep braces on all `if` statement parts. Or invert the condition and break on `!rv` and move the if contents below it.",
+      "range": {
+        "startLine": 712,
+        "startChar": 2,
+        "endLine": 713,
+        "endChar": 9
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

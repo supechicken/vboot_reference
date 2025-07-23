@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6964283_628478ba",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-23T12:48:02Z",
+      "side": 0,
+      "message": "Please leave this TODO comment. I know that at this point fixing the cgptlib is not easy, but we should keep this comment abound in some form to know, why we have this `+ 1` here.",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 754,
+        "endChar": 5
+      },
+      "revId": "c07bb8ca7fe47e7eb07576855cff2afee3941dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
