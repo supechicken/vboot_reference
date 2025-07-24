@@ -70,6 +70,24 @@
       "parentUuid": "67191bd5_a9b64b5d",
       "revId": "dbdf50adc5e64b3cc211c116aded1970ef95ca90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da8e8c3_df134cf9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-24T22:45:49Z",
+      "side": 1,
+      "message": "I mean, it\u0027s just directly printing the current state of the bit in a debug message. I think that\u0027s fine as it is.\n\nMaybe AVB can be fixed but it clearly hasn\u0027t been a priority for their team, so even if we were to send them patches I wouldn\u0027t be very confident that it would really stay reliable with future updates. We\u0027d at least need to add a bunch of unit tests to try to catch this case when it breaks again.",
+      "parentUuid": "f8d8aaf8_ee021565",
+      "revId": "dbdf50adc5e64b3cc211c116aded1970ef95ca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
