@@ -34,6 +34,24 @@
       "parentUuid": "5ffed444_e48905be",
       "revId": "dbdf50adc5e64b3cc211c116aded1970ef95ca90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67191bd5_a9b64b5d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-24T00:33:10Z",
+      "side": 1,
+      "message": "So this flag is mainly used to determine the result of `crossystem kernkey_vfy`. Which isn\u0027t used by anything other than tests, I think, but just in general if we provide a field like that we should make sure that it can be trusted.\n\n\u003e If we\u0027re changing this, we may need to rewrite the VB2_DEBUG(\"Keyblock valid: %d\\n\", keyblock_valid) message to avoid confusion.\n\nThis is only affecting the Android boot path, I\u0027m only suggesting we should change this here. For ChromeOS we can continue to return `kernkey_vfy?sig` when we know  that we actually had a correctly-signed keyblock.",
+      "parentUuid": "60d564b4_90540379",
+      "revId": "dbdf50adc5e64b3cc211c116aded1970ef95ca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
