@@ -52,6 +52,24 @@
       "parentUuid": "60d564b4_90540379",
       "revId": "dbdf50adc5e64b3cc211c116aded1970ef95ca90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d8aaf8_ee021565",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-24T02:51:42Z",
+      "side": 1,
+      "message": "\u003e This is only affecting the Android boot path\n\nYes I know. I was just trying to say, with the suggested change, the meaning of `keyblock_valid \u003d\u003d 0` would change from \"invalid\" to \"cannot guarantee validity\" for Android. So we will be changing the meaning of `kernkey_vfy`.\n\nAnd, looking at the avb implementation, `ret \u003d read_persistent_digest` and `ret \u003d avb_add_root_digest_substitution` seem to be the only problem. The results should be assigned to `sub_ret` first, and assigned to `ret` only for the error case.",
+      "parentUuid": "67191bd5_a9b64b5d",
+      "revId": "dbdf50adc5e64b3cc211c116aded1970ef95ca90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
