@@ -22,6 +22,30 @@
       },
       "revId": "c07bb8ca7fe47e7eb07576855cff2afee3941dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252a21fa_5036b4b0",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-24T11:37:02Z",
+      "side": 0,
+      "message": "But do we really need to store partition number. It seems to be only used to substitute `%P` in command line when commandline_subst() is called. But I cannot find any usage of `%P`",
+      "parentUuid": "b6964283_628478ba",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 754,
+        "endChar": 5
+      },
+      "revId": "c07bb8ca7fe47e7eb07576855cff2afee3941dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
