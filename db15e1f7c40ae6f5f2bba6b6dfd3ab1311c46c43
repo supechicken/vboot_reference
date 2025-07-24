@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "208310ee_b4f38715",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-07-24T09:25:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e85a513_cb1de7f5",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "db15e1f7c40ae6f5f2bba6b6dfd3ab1311c46c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec6e6abf_b78edf39",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-18T11:12:19Z",
       "side": 1,
       "message": "`c` needs `:` to correctly indicate the missing argument. `v` should not have `:` after it. See `case \u0027:\u0027:` and `case \u0027?\u0027:` in `main()` and `getopt` manual page.\n\u003e An option character in this string can be followed by a colon (‘:’) to indicate that it takes a required argument.",
+      "range": {
+        "startLine": 127,
+        "startChar": 37,
+        "endLine": 127,
+        "endChar": 38
+      },
+      "revId": "db15e1f7c40ae6f5f2bba6b6dfd3ab1311c46c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f82615a_ab8e9fde",
+        "filename": "futility/cmd_gbb_utility.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-07-24T09:25:51Z",
+      "side": 1,
+      "message": "This has been fixed in the latest patchset.",
+      "parentUuid": "ec6e6abf_b78edf39",
       "range": {
         "startLine": 127,
         "startChar": 37,
