@@ -46,6 +46,30 @@
       },
       "revId": "c07bb8ca7fe47e7eb07576855cff2afee3941dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74027f58_8e3fc946",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-25T06:32:40Z",
+      "side": 0,
+      "message": "@jwerner@chromium.org @yupingso@chromium.org Do you know maybe if \u0027%P\u0027 substitution for command line is used anywhere?",
+      "parentUuid": "252a21fa_5036b4b0",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 754,
+        "endChar": 5
+      },
+      "revId": "c07bb8ca7fe47e7eb07576855cff2afee3941dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
