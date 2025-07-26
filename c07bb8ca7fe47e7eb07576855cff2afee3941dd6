@@ -94,6 +94,30 @@
       },
       "revId": "c07bb8ca7fe47e7eb07576855cff2afee3941dd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b6c27fd_9208637a",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 0,
+      "message": "Probably not (found one old reference in a comment here, but the respective code seems to have long since been updated: https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/scripts/update_bootloaders.sh;l\u003d76). It is also used in the raw NAND version of `%R`. I think we have been talking about removing raw NAND support before and basically agreed on it but nobody ever really had the time to do it (some discussions in b/184812319 and b/331610729).\n\nI\u0027m okay with removing both and waiting to see whether anyone complains if you want. (We should still print the correct number here in the `VB2_DEBUG()`, though, so you\u0027ll still need to have the `+ 1` somewhere.)",
+      "parentUuid": "7de92219_cc4dfe19",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 754,
+        "endChar": 5
+      },
+      "revId": "c07bb8ca7fe47e7eb07576855cff2afee3941dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

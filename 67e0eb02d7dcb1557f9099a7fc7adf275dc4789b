@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7de40b78_9e3c5861",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 1,
+      "message": "Is this initialization still needed? We only have one kernel version now (the one from the kernel we pick), and it is only written, so we don\u0027t really need to initialize this variable. (If we want to hedge against the possibility that the OS-specific load_kernel-functions might return success without writing to this, even though that\u0027s not supposed to happen, the best safe value to initialize this to would probably be 0.)",
+      "range": {
+        "startLine": 644,
+        "startChar": 27,
+        "endLine": 644,
+        "endChar": 45
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f523eef_d7baa706",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 1
@@ -20,6 +43,127 @@
         "endLine": 713,
         "endChar": 9
       },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64867fa_4e0a44bc",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 1,
+      "message": "+1 on the second suggestion",
+      "parentUuid": "3f523eef_d7baa706",
+      "range": {
+        "startLine": 712,
+        "startChar": 2,
+        "endLine": 713,
+        "endChar": 9
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78a98fc_35a32b2c",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 1,
+      "message": "I know this has been here forever, but this should really be `0x%x`. We always print combined versions in hex (otherwise they\u0027re basically unreadable). Would be a good opportunity to fix that.",
+      "range": {
+        "startLine": 725,
+        "startChar": 31,
+        "endLine": 725,
+        "endChar": 32
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c55d95_098ee6f4",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 1,
+      "message": "Why is this here? Can\u0027t we only get here when `rv` is already SUCCESS anyway?",
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9090fecf_79f0cb14",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 1,
+      "message": "Doesn\u0027t this also need `SetEntrySuccessful()` or it wouldn\u0027t try to roll forward anyway?",
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33969dd_d8533074",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 1,
+      "message": "I\u0027m unclear how this text relates to what the test does. Isn\u0027t this just the \"Higher max roll forward allows version update\" case? If you want to test that a lower maxrollforward isn\u0027t going to make the version lower when it was (which is what I\u0027d think of from this text, not sure if that is what you meant?), you\u0027ll need to set `VB2_NV_KERNEL_MAXROLLFORWARD` to `0x10001` and then confirm that `kernel_version_secdata` is still `0x20001` afterwards.",
+      "range": {
+        "startLine": 572,
+        "startChar": 32,
+        "endLine": 572,
+        "endChar": 63
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e718b8_1515a623",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-26T01:03:36Z",
+      "side": 1,
+      "message": "Isn\u0027t this the same as line 538?",
       "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
