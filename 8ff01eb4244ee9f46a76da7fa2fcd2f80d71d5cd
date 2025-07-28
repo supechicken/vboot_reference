@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f925032_1a9561a5",
+        "filename": "firmware/lib/gpt_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-28T13:43:03Z",
+      "side": 1,
+      "message": "This return statement should be adjusted. For `return 1` it should go further to the `fail:`.\n```suggestion\n\t/* Return 0 if least one GPT header was valid */\n\tif (primary_valid || secondary_valid)\n\t\treturn 0;\nfail:\n```",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "8ff01eb4244ee9f46a76da7fa2fcd2f80d71d5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
