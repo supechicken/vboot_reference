@@ -219,12 +219,11 @@ static int gpiochip_scan_filter(const struct dirent *d)
 }
 
 /*
- * Read the pin value. If `name` is passed (non NULL), then look for the named pin.
- * Otherwise use `idx` as the pin index.
+ * Read value of a named pin.
  *
  * Returns -1 on failure, 1 for active pin state and 0 for inactive pin state.
  */
-static int gpio_read_value_by_name_or_index(const char *name, int idx, bool active_low)
+int gpio_read_value_by_name(const char *name, bool active_low)
 {
 	struct dirent **list;
 	int i, entries_num, ret;
@@ -251,16 +250,8 @@ static int gpio_read_value_by_name_or_index(const char *name, int idx, bool acti
 		}
 		fd = ret;
 
-		if (name) {
-			ret = gpio_uapi_read_value_by_name(fd, name, active_low);
-		} else if (idx != -1) {
-			ret = gpio_uapi_read_value_by_idx(fd, idx, active_low);
-		} else {
-			fprintf(stderr, "%s: No correct GPIO pin name or index provided\n",
-				__func__);
-			ret = -1;
-			break;
-		}
+		ret = gpio_uapi_read_value_by_name(fd, name, active_low);
+
 		close(fd);
 		if (ret >= 0)
 			break;
@@ -273,12 +264,22 @@ static int gpio_read_value_by_name_or_index(const char *name, int idx, bool acti
 	return ret;
 }
 
-int gpio_read_value_by_name(const char *name, bool active_low)
+int gpio_read_value_by_idx(int controller_num, int idx, bool active_low)
 {
-	return gpio_read_value_by_name_or_index(name, -1, active_low);
-}
+	int fd, ret;
+	char path[5 + NAME_MAX + 1];
 
-int gpio_read_value_by_idx(int idx, bool active_low)
-{
-	return gpio_read_value_by_name_or_index(NULL, idx, active_low);
+	snprintf(path, sizeof(path), "/dev/gpiochip%d", controller_num);
+
+	fd = open(path, O_RDWR);
+	if (fd < 0) {
+		fprintf(stderr, "Unable to open %s\n", path);
+		perror("open");
+		return -1;
+	}
+
+	ret = gpio_uapi_read_value_by_idx(fd, idx, active_low);
+
+	close(fd);
+	return ret;
 }
