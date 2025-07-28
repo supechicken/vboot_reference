@@ -70,6 +70,30 @@
       },
       "revId": "aa7e38e1e1a9911bf17374816a0b5450dd3ebc35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd29244_f3ba60b0",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-28T13:50:03Z",
+      "side": 0,
+      "message": "I\u0027m fine with it as long as this and the next CL have `Cq-Depends` on each other, so it\u0027s obvious that they have to be cherry-picked together. @yupingso@chromium.org what do you think?",
+      "parentUuid": "a4b4b412_7a484073",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 0
+      },
+      "revId": "aa7e38e1e1a9911bf17374816a0b5450dd3ebc35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
