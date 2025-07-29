@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fcf7742_91ca9ba0",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T15:27:11Z",
+      "side": 1,
+      "message": "\u003e This will print only `Google_\u003cModel\u003e`\n\nThat\u0027s intentional. I think the original code also does the same.\n\nHowever, my code is also problematic, because in addition to matching `Google_\u003cModel\u003e`, we also need to make sure there\u0027s a dot following that. Please see the new patchset and re-open this if needed.\n\nThe reason that I extract `load_system_frid` is for CL:6764273.",
+      "parentUuid": "c756576b_174720e1",
+      "range": {
+        "startLine": 542,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 43
+      },
+      "revId": "45e61b75ec8c58dae807c9d3ef325a6bcf494d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cc59049_ac6486df",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-29T12:01:16Z",
       "side": 1,
       "message": "This frees the `image.data` and zeroes `image`. This will result in NULL pointer dereference in the code below or at least in the `strndup` call returning NULL.",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 28
+      },
+      "revId": "45e61b75ec8c58dae807c9d3ef325a6bcf494d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9ad32a_7aa10b19",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T15:27:11Z",
+      "side": 1,
+      "message": "Done. Verified by `make runfutiltests`.",
+      "parentUuid": "3cc59049_ac6486df",
       "range": {
         "startLine": 381,
         "startChar": 1,
