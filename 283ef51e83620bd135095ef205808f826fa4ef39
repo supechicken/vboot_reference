@@ -1,0 +1,406 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e22c959_09f818e3",
+        "filename": "futility/updater.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "What happened here? `load_system_firmware()` loads the whole FW image. `RO_FRID` is the section with the RO firmware version string.\nThe legacy firmware update was intended to update the `RW_LEGACY`, so ChromeOS firmware can boot a side-loaded firmware for booting e.g. Linux. See: `update_legacy_firmware()`",
+      "range": {
+        "startLine": 1195,
+        "startChar": 3,
+        "endLine": 1198,
+        "endChar": 30
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13427c81_4e0cb75c",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Split the documentation of these functions into two separate blocks. Merging them in the docs makes it harder to read intuitively.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 24
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ada4a6e_2c708600",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Unnecessary empty line.",
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7e8b46_f0bea263",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "It\u0027s better to set `r \u003d 1` at the beginning and set it to zero in case the function succeeds., This makes the code shorter and easier to read.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35a786f_3783a7c4",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Please leave a comment with a reason for alignment here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 77
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf39752_1e67e068",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Size will be aligned, but position not, why? Aligned reads are intended to have both size and offset aligned. Aligning the size only won\u0027t help much.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 71
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f285eb_d7ba5151",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "This does not seem like only verification, but also finding the correct FMAP offset. I do not think the comment here is needed, as the code tells us enough by itself.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 47
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7841487c_9feb218b",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Comment not needed. If-statement above tells us that.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 40
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2629ce3_a17955c4",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Unnecessary semicolon. Labels do not need a semicolon.",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95862a23_883e9ecc",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "What do you think about:\n```\nIf the `helper_image` is provided, the function will compare its FlashMap with the\nFlashMap from the target device. In case the FlashMap is not present in the\n`helper_image` the function will default to normal searching method.\n```",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc706f2_0c614e28",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Space for variable declarations from below?",
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce62448_20457828",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Move it to the declaration/definition block above.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34c33dbc_1125c71f",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "This comment does not seem to be necessary. Actual operations on the FLASH memory are performed by `libflashrom`. We are just using it as provided by the library.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 32
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206986cf_1c5b1f78",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Return value is ignored, but should not be.",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 29
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e066482b_522f38d8",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "This can be merged into a signle if statement.\n```suggestion\n\t\tif (image-\u003efmap_header \u0026\u0026 flashrom_layout_read_fmap_from_buffer(\n\t\t\t\t    \u0026layout, flashctx, image-\u003edata + fmap_pos, fmap_len) !\u003d 0) {\n```",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 68
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18f79b6_cd258de5",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Doesn\u0027t it need to be free\u0027d first?",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 30
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f20f4c_96dbb032",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "`else`?",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 28
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b20dcf_aedade78",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:37:33Z",
+      "side": 1,
+      "message": "Just pull `int i \u003d 0` into the for at this point. It\u0027s not re-used anywhere else anyway. And the code will be easier to read too :)",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 39
+      },
+      "revId": "283ef51e83620bd135095ef205808f826fa4ef39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
