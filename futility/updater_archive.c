@@ -21,6 +21,9 @@ struct u_archive archive_zip;
 #if defined(HAVE_LIBARCHIVE)
 struct u_archive archive_libarchive;
 #endif
+#if defined(HAVE_LIBZIPARCHIVE)
+struct u_archive archive_libziparchive;
+#endif
 struct u_archive archive_fallback;
 
 /*
@@ -69,6 +72,18 @@ struct u_archive *archive_open(const char *path)
 			ar->read_file = archive_zip.read_file;
 			ar->write_file = archive_zip.write_file;
 		}
+	}
+#endif
+
+#ifdef HAVE_LIBZIPARCHIVE
+	if (!ar->open) {
+		VB2_DEBUG("Found a file, use libziparchive: %s\n", path);
+		ar->open = archive_libziparchive.open;
+		ar->close = archive_libziparchive.close;
+		ar->walk = archive_libziparchive.walk;
+		ar->has_entry = archive_libziparchive.has_entry;
+		ar->read_file = archive_libziparchive.read_file;
+		ar->write_file = archive_libziparchive.write_file;
 	}
 #endif
 
