@@ -21,6 +21,9 @@ extern struct u_archive archive_zip;
 #if defined(HAVE_LIBARCHIVE)
 extern struct u_archive archive_libarchive;
 #endif
+#if defined(HAVE_LIBZIPARCHIVE)
+extern struct u_archive archive_libziparchive;
+#endif
 
 /*
  * -- The public functions for using u_archive. --
@@ -57,6 +60,17 @@ struct u_archive *archive_open(const char *path)
 		if (handle) {
 			VB2_DEBUG("Found a ZIP file: %s\n", path);
 			*ar = archive_zip;
+			ar->handle = handle;
+		}
+	}
+#endif
+
+#ifdef HAVE_LIBZIPARCHIVE
+	if (!ar->open) {
+		handle = archive_libziparchive.open(path);
+		if (handle) {
+			VB2_DEBUG("Found a file, use libziparchive: %s\n", path);
+			*ar = archive_libziparchive;
 			ar->handle = handle;
 		}
 	}
