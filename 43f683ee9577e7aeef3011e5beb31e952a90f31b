@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df1afc7_56f5749f",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T10:10:41Z",
+      "side": 1,
+      "message": "Incorrect format should also return `-1` here instead of going to the `return 0;`. This way the next CL making use of this function will correctly handle the error instead of defaulting to the `sku_id \u003d 0`.",
+      "range": {
+        "startLine": 614,
+        "startChar": 1,
+        "endLine": 615,
+        "endChar": 24
+      },
+      "revId": "43f683ee9577e7aeef3011e5beb31e952a90f31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
