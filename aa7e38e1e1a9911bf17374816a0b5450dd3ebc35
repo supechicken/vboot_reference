@@ -166,6 +166,30 @@
       },
       "revId": "aa7e38e1e1a9911bf17374816a0b5450dd3ebc35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "667bbe6a_655fd6ce",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-29T22:54:15Z",
+      "side": 0,
+      "message": "Honestly I think we don\u0027t need to overdo this. It was right to separate this patch out from the next one, that makes review a lot easier, we shouldn\u0027t squash them together. But for the tests I think it\u0027s fine to not modify the tests for an intermediate version in the middle that\u0027s going to be immediately changed again. It is important that each patch can be built on its own, but losing test coverage for a moment isn\u0027t that big of a deal. (I don\u0027t see why it would need a Cq-Depend either, since the build doesn\u0027t actually break from this. The only point of Cq-Depend is to make the commit queue work, it\u0027s not meant to be a more lasting annotation about patch dependencies. If you\u0027re concerned about documenting the dependency maybe just explain that explicitly in the commit message, e.g. \"This patch removes test cases that will be re-added for the changed code in CL:XXX\" or something like that.)",
+      "parentUuid": "38f163ea_7e305c4c",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 0
+      },
+      "revId": "aa7e38e1e1a9911bf17374816a0b5450dd3ebc35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
