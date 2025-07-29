@@ -118,6 +118,30 @@
       },
       "revId": "aa7e38e1e1a9911bf17374816a0b5450dd3ebc35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe189572_c14d339b",
+        "filename": "tests/vb2_kernel_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-29T10:59:58Z",
+      "side": 0,
+      "message": "I separated this patch on purpose, cause I did not want to move the function and modify it in the same patch. In that case it would be hard to see what changes has been made. But if you\u0027re ok with that I can squash it.",
+      "parentUuid": "17851f3f_ac349e23",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 0
+      },
+      "revId": "aa7e38e1e1a9911bf17374816a0b5450dd3ebc35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
