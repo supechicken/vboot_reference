@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a030cda_f8e4c29e",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-07-29T23:02:03Z",
+      "side": 1,
+      "message": "Sorry, I should\u0027ve been more clear: after thinking this through I think we should actually initialize it to 0 (that means no roll-forward and is equivalent to what the `lowest_version !\u003d LOWEST_TPM_VERSION` check at the end previously did).",
+      "parentUuid": "b36f95b1_6f0334e9",
+      "range": {
+        "startLine": 644,
+        "startChar": 27,
+        "endLine": 644,
+        "endChar": 45
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f523eef_d7baa706",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 1
