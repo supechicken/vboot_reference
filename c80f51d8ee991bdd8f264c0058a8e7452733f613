@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "305f44a3_bc054338",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T16:02:20Z",
+      "side": 1,
+      "message": "Can you try `test_mockable`, which will make the original implementation weak?",
+      "parentUuid": "d1cf8a73_192498ab",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c29913c7_2d1adcd4",
         "filename": "tests/vb2_load_kernel_tests.c",
         "patchSetId": 2
