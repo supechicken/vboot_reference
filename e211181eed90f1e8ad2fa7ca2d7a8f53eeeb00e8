@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab7f6436_7e5246ea",
+        "filename": "host/lib/gpio_uapi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T08:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c06bea2c_8ce1f2cb",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 3
+      },
+      "revId": "e211181eed90f1e8ad2fa7ca2d7a8f53eeeb00e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37c045c3_113f286b",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-07-29T03:54:21Z",
       "side": 1,
       "message": "specified",
+      "range": {
+        "startLine": 23,
+        "startChar": 59,
+        "endLine": 23,
+        "endChar": 69
+      },
+      "revId": "e211181eed90f1e8ad2fa7ca2d7a8f53eeeb00e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64cb951b_67ec5b6d",
+        "filename": "host/lib/include/gpio_uapi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T08:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c045c3_113f286b",
       "range": {
         "startLine": 23,
         "startChar": 59,
