@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c756576b_174720e1",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:01:16Z",
+      "side": 1,
+      "message": "This will print only `Google_\u003cModel\u003e`, because the current `load_system_frid()` only returns the FRID prefix. We need a whole version here. Rather than making `load_system_frid()` load only the version prefix, it should load the whole FRID to the provided buffer and add the trailing zero at the end of the buffer for safety.\nThen the length of a prefix used for comparison can be calculated with:\n```c\n// `true` if prefix was found, `false` otherwise.\nstatic bool get_fwid_prefix_len(const char *c, size_t *len)\n{\n\tconst char *dot \u003d strchr(c, \u0027.\u0027);\n\t\n\tif (!dot)\n\t\treturn false;\n\t\n\t*len \u003d (size_t)(dot - c + 1);\n\treturn true;\n}\n```\n\nWith this we will have `frid` in a variable for easy printing, and we can also do:\n```c\nsize_t prefix_len;\nif (!get_fwid_prefix_len(frid, \u0026prefix_len))\n\tgoto cleanup; // or return NULL;\n\t\n...\n\t// in loop\n\tstrncasecmp(frid, image.ro_version, prefix_len);\n```\n\nThis way we have both: the correct length for comparison, and correct output.",
+      "range": {
+        "startLine": 542,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 43
+      },
+      "revId": "45e61b75ec8c58dae807c9d3ef325a6bcf494d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc59049_ac6486df",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-29T12:01:16Z",
+      "side": 1,
+      "message": "This frees the `image.data` and zeroes `image`. This will result in NULL pointer dereference in the code below or at least in the `strndup` call returning NULL.",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 28
+      },
+      "revId": "45e61b75ec8c58dae807c9d3ef325a6bcf494d02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
