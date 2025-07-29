@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ec9aec_2d5de81f",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T09:41:11Z",
+      "side": 1,
+      "message": "Let\u0027s add `VB2_ASSERT(entry)` here",
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "004a3b38_37607b3e",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T09:41:11Z",
+      "side": 1,
+      "message": "This is not needed. By the time we reach here, we already find a valid kernel and set `sd-\u003ekernel_version`. Also remove `LOWEST_TPM_VERSION` from this file.",
+      "range": {
+        "startLine": 742,
+        "startChar": 6,
+        "endLine": 742,
+        "endChar": 49
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a0b6db_e3502c9e",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T09:41:11Z",
+      "side": 1,
+      "message": "nit: Can we take the chance to fix the comment style?",
+      "range": {
+        "startLine": 746,
+        "startChar": 2,
+        "endLine": 746,
+        "endChar": 5
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b23459_a3b3a617",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T09:41:11Z",
+      "side": 1,
+      "message": "Can we use the real implementation in cgptlib_internal.c?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29913c7_2d1adcd4",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-29T09:41:11Z",
+      "side": 1,
+      "message": "Can we use the real implementation?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 1
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
