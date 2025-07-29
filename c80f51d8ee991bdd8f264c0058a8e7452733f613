@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1cf8a73_192498ab",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-29T13:58:51Z",
+      "side": 1,
+      "message": "The problem is that we need to have local implementation of AllocAndReadGptData() which returns success. If we want to link cgpt_internal.o then we get an error about multiple definitions of that function.",
+      "parentUuid": "09b23459_a3b3a617",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c29913c7_2d1adcd4",
         "filename": "tests/vb2_load_kernel_tests.c",
         "patchSetId": 2
