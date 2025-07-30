@@ -318,6 +318,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41dff422_c955282a",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-07-30T06:48:09Z",
+      "side": 1,
+      "message": "`flashrom_extract_params` extracts parameters into a string returned by `strdup` and then returns it. Therefore, it has to be freed at the end to avoid memory leaks.",
+      "parentUuid": "5b7c6cda_868506fb",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 78
+      },
+      "revId": "e953dda21467e5f4cc075de714fb70e0f95d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0210cba1_6eb40959",
