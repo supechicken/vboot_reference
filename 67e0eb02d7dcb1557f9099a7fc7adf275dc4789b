@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7237f02d_b843ad2f",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-30T09:24:06Z",
+      "side": 1,
+      "message": "I added `kernel_version \u003d 0` inside while loop, it should protect us in case when loading kernel fails but `kernel_version` was set.\n\n`TODO` was removed, cause it referred to these lines (which are not obvious):\n```\nif (lpflags \u0026 VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)\n    continue;\n```",
+      "parentUuid": "0fc8621e_913f0fcd",
+      "range": {
+        "startLine": 644,
+        "startChar": 27,
+        "endLine": 644,
+        "endChar": 45
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f523eef_d7baa706",

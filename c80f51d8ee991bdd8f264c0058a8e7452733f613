@@ -201,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5515cd53_64c6f78f",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-30T09:24:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305f44a3_bc054338",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c29913c7_2d1adcd4",
@@ -214,6 +238,30 @@
       "writtenOn": "2025-07-29T09:41:11Z",
       "side": 1,
       "message": "Can we use the real implementation?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 1
+      },
+      "revId": "c80f51d8ee991bdd8f264c0058a8e7452733f613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3f0328_582eb6a9",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-30T09:24:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c29913c7_2d1adcd4",
       "range": {
         "startLine": 229,
         "startChar": 0,
