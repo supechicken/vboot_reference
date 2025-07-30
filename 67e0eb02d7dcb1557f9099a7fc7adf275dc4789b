@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fc8621e_913f0fcd",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-30T06:38:46Z",
+      "side": 1,
+      "message": "+1, because we don\u0027t set `kernel_version` for Android. Also, why is the `TODO: b/324230492` comment removed? I think we should set `kernel_version` to 0 for the Android case (for the following edge case), before the rollback protection is implemented.\n\n1. `vb2_load_chromeos_kernel` fails, but sets `kernel_version` to non-zero.\n2. `vb2_load_android` succeeds, but `kernel_version` is not set.\n3. Then, the device boots to the Android slot, but rollforwards the TPM version to the ChromeOS `kernel_version`.",
+      "parentUuid": "1a030cda_f8e4c29e",
+      "range": {
+        "startLine": 644,
+        "startChar": 27,
+        "endLine": 644,
+        "endChar": 45
+      },
+      "revId": "67e0eb02d7dcb1557f9099a7fc7adf275dc4789b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f523eef_d7baa706",
         "filename": "firmware/2lib/2load_kernel.c",
         "patchSetId": 1
