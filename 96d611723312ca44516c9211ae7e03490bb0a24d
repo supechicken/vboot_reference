@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc1a255_aa1d239c",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-31T14:15:28Z",
+      "side": 1,
+      "message": "Can we `break` + `free_firmware_image(\u0026image)` here? Is there a reason to iterate further after we found the first match?",
+      "range": {
+        "startLine": 548,
+        "startChar": 3,
+        "endLine": 548,
+        "endChar": 14
+      },
+      "revId": "96d611723312ca44516c9211ae7e03490bb0a24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a7fed2_e21c094a",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-31T14:15:28Z",
+      "side": 1,
+      "message": "This should also `goto exit`. `flashrom_read_region()` can fail after the `image.data` and `image.filename` are set to the newly allocated buffers. `flashrom_read_region()` should do it itself, but unfortunately it doesn\u0027t.",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 14
+      },
+      "revId": "96d611723312ca44516c9211ae7e03490bb0a24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370493bf_0d1cee1f",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-31T14:15:28Z",
+      "side": 1,
+      "message": "Please add a note telling that the returned pointer has to be freed by the caller.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 68
+      },
+      "revId": "96d611723312ca44516c9211ae7e03490bb0a24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
