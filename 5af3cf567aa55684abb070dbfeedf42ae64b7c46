@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de1f783_cc4a2fda",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-31T11:34:46Z",
+      "side": 1,
+      "message": "nit: I think the `!!` is not needed here. The return value should be implicitly cast to bool.",
+      "range": {
+        "startLine": 116,
+        "startChar": 32,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "5af3cf567aa55684abb070dbfeedf42ae64b7c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb48d01_76efd946",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-31T11:34:46Z",
+      "side": 1,
+      "message": "If you decide to use `int64_t`, then `PRId64` should be used here.\nI also think we could use a prefixed hex value here instead for e.g. `tmp_fwver`.",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "5af3cf567aa55684abb070dbfeedf42ae64b7c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a97c15_e00f3781",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-07-31T11:34:46Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to use `int64_t` here? It\u0027s more standard and portable than `long long`.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 37
+      },
+      "revId": "5af3cf567aa55684abb070dbfeedf42ae64b7c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
