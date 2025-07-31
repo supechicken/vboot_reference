@@ -34,6 +34,24 @@
       "parentUuid": "ae273435_e03d472e",
       "revId": "b536b244bf40f8eab00e80c31e8cce1d6faeb3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d30e805e_02b749e3",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-31T07:18:45Z",
+      "side": 0,
+      "message": "Sorry, I used wrong comment style. Here is correct reply:\n`IsChromeOS` has local implementation. I decided to use the original version for `IsAndroid`. I can bring it back if that\u0027s necessary.",
+      "parentUuid": "e223a7f1_fce57a32",
+      "revId": "b536b244bf40f8eab00e80c31e8cce1d6faeb3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
