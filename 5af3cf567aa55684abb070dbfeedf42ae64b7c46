@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0c7c02a_284384dc",
+        "filename": "futility/cmd_flash_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-31T16:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7de1f783_cc4a2fda",
+      "range": {
+        "startLine": 116,
+        "startChar": 32,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "5af3cf567aa55684abb070dbfeedf42ae64b7c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb48d01_76efd946",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5543b26_74faa2a4",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-31T16:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb48d01_76efd946",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "5af3cf567aa55684abb070dbfeedf42ae64b7c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82a97c15_e00f3781",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-31T11:34:46Z",
       "side": 1,
       "message": "Wouldn\u0027t it be better to use `int64_t` here? It\u0027s more standard and portable than `long long`.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 37
+      },
+      "revId": "5af3cf567aa55684abb070dbfeedf42ae64b7c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b25e9e76_7ed92817",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-07-31T16:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82a97c15_e00f3781",
       "range": {
         "startLine": 214,
         "startChar": 0,
