@@ -16,6 +16,24 @@
       "message": "Why is this removed? I\u0027d prefer keeping it to be clear that we\u0027re testing the ChromeOS code path.",
       "revId": "b536b244bf40f8eab00e80c31e8cce1d6faeb3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e223a7f1_fce57a32",
+        "filename": "tests/vb2_inject_kernel_subkey_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-07-31T07:09:38Z",
+      "side": 0,
+      "message": "Only `IsChromeOS\u0027 has local implementation. I decided to use original version for `IsAndroid`. I can bring it back if that\u0027s necessary.",
+      "parentUuid": "ae273435_e03d472e",
+      "revId": "b536b244bf40f8eab00e80c31e8cce1d6faeb3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
