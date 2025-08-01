@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d997efa2_1c924a23",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-01T03:11:03Z",
+      "side": 1,
+      "message": "I didn\u0027t check strdup failure because the rest of the hostlib code seems to just assume it won\u0027t fail.",
+      "revId": "5c6d1d75f6be5f173d49e8737c25389b54e3d9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
