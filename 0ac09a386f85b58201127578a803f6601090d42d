@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2e5362_29bbf5ee",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-01T09:34:34Z",
+      "side": 1,
+      "message": "I\u0027m still not convinced about this function name. It does not return full FRID, but only a part of it. FRID and FWID are created by concatenating `CONFIG_VBOOT_FWID_MODEL` and `CONFIG_VBOOT_FWID_VERSION` (prefixed with a dot). This function effectively returns `CONFIG_VBOOT_FWID_MODEL`. What do you think about `load_system_frid_model()`?",
+      "range": {
+        "startLine": 368,
+        "startChar": 6,
+        "endLine": 368,
+        "endChar": 22
+      },
+      "revId": "0ac09a386f85b58201127578a803f6601090d42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7fc2cc9_1532ccd3",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-01T09:34:34Z",
+      "side": 1,
+      "message": "`frid` is not NULL at this point.\n```suggestion\n\t\tfree(frid);\n\t\tfrid \u003d NULL;\n```",
+      "range": {
+        "startLine": 388,
+        "startChar": 2,
+        "endLine": 388,
+        "endChar": 13
+      },
+      "revId": "0ac09a386f85b58201127578a803f6601090d42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
