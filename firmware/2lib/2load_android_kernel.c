@@ -183,6 +183,36 @@ static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(
 	return fb_cmd;
 }
 
+static AvbIOResult vb2_set_recovery_for_factory_data_reset_android(AvbOps *ops)
+{
+	struct vb2_bootloader_message bcb = {
+		.command = {VB2_BOOT_CMD_RECOVERY_BOOT},
+		.recovery = "wipe_data"};
+
+	/* DEBUG: Loop over candidate kernel partitions */
+	//   struct vboot_avb_ctx *avbctx = user_data(ops);
+	//   GptEntry *entry;
+	//   while ((entry = GptNextKernelEntry(avbctx->gpt))) {
+	//       uint64_t part_start = entry->starting_lba;
+	//       uint64_t part_size = GptGetEntrySizeLba(entry);
+
+	//       VB2_DEBUG("THOMAS: Found %s kernel entry at %"
+	//             PRIu64 " size %" PRIu64 "\n",
+	//             IsAndroid(entry) ? "Android" : "ChromeOS",
+	//             part_start, part_size);
+	//   }
+
+	AvbIOResult io_ret;
+	io_ret = ops->write_to_partition(ops,
+					GPT_ENT_NAME_ANDROID_MISC,
+					0,
+					sizeof(struct vb2_bootloader_message),
+					&bcb);
+	if (io_ret != AVB_IO_RESULT_OK)
+		VB2_DEBUG("Failed to update misc parition\n");
+	return io_ret;
+}
+
 vb2_error_t vb2_load_android_kernel(
 	struct vb2_context *ctx, VbExStream_t stream,
 	VbSelectAndLoadKernelParams *params, GptData *gpt,
@@ -250,6 +280,16 @@ vb2_error_t vb2_load_android_kernel(
 	if (result == AVB_SLOT_VERIFY_RESULT_OK) {
 		struct vb2_shared_data *sd = vb2_get_sd(ctx);
 		sd->flags |= VB2_SD_FLAG_KERNEL_SIGNED;
+	}
+
+	/* Trigger factory data reset through recovery if this device
+	is transitioning from/to developer mode */
+	VB2_DEBUG("THOMAS: vb2_factory_data_reset_android(ctx)\n");
+	if (vb2_check_dev_switch(ctx)) {
+		VB2_DEBUG("THOMAS: developer switch has triggered!\n");
+		//vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
+		// VB2_RECOVERY_RO_MANUAL);
+		vb2_set_recovery_for_factory_data_reset_android(avb_ops);
 	}
 
 	/* Ignore verification errors in developer mode */
