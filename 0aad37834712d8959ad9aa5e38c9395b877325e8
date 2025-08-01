@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dde9445_9d48462a",
+        "filename": "futility/updater.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6717970/comment/6e22c959_09f818e3/\n\n\nWhen updating legacy firmware RW_LEGACY is not read (it is always overwritten). The only thing that needs to be read is RO_FRID, because it is used to check firmware compatibility.",
+      "range": {
+        "startLine": 1218,
+        "startChar": 3,
+        "endLine": 1218,
+        "endChar": 38
+      },
+      "revId": "0aad37834712d8959ad9aa5e38c9395b877325e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0fbb186_419e1640",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b09eaa58_20b49561",
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b52a7d6e_c42cb43b",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-08-01T11:10:41Z",
       "side": 1,
       "message": "Return from the function, so the `fmap_header` is not read multiple times unless the pointer is actually NULL. If one wants to read it again, then they should set it to NULL manually.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 27
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c84c20_75b97448",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b52a7d6e_c42cb43b",
       "range": {
         "startLine": 62,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0242f87_dd323ac9",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Removed unnecessary alignment.",
+      "parentUuid": "677ef2de_d2e94575",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 77
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc1847d1_5abafaa0",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f7ced5_3efa42a4",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "That alignment was a result of a bug which was actually my mistake :[. Removed it.",
+      "parentUuid": "bc1847d1_5abafaa0",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 71
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f516d95e_10fa89f5",
@@ -100,6 +190,30 @@
       "writtenOn": "2025-08-01T11:10:41Z",
       "side": 1,
       "message": "nit (nitpick): labels are function-local, so you can re-use simple names like `fail`, `cleanup`, `exit`, etc. I appreciate you using descriptive names. However here `fail` would suffice, because this is the only `fail` label in this function :)",
+      "range": {
+        "startLine": 75,
+        "startChar": 7,
+        "endLine": 75,
+        "endChar": 18
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f387bcc1_94196a51",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f516d95e_10fa89f5",
       "range": {
         "startLine": 75,
         "startChar": 7,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82a29aa2_6a983812",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "The approach you are suggesting would increase the code size (because an if branch for `memcmp` returning non-zero value would have to be added) as well as decrease the performance (because flash would be read twice in case FMAP is different).\n\nIMO reading at `fmap_pos` offset is just as clear as reading it using `fmap_header` in the helper image (which would have to be loaded in a similar manner as well).\n\nPlease advice on how to proceed ;)",
+      "parentUuid": "4af7375c_6d36a24c",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "769bd3da_8093679e",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 24
@@ -146,6 +284,30 @@
       "writtenOn": "2025-08-01T11:10:41Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11029bb_b0997651",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "769bd3da_8093679e",
       "range": {
         "startLine": 99,
         "startChar": 1,
@@ -173,6 +335,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08dbe261_3c3e5b2f",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25916a5a_6c731275",
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "328bb042_03484895",
@@ -190,6 +370,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c34a354_76639e87",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328bb042_03484895",
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4790cf85_89bc37ae",
@@ -203,6 +401,30 @@
       "writtenOn": "2025-08-01T11:10:41Z",
       "side": 1,
       "message": "This is not needed. You can get the `FMAP` area from `fmap_header` with `fmap_find_by_name`.",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 70
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e0767c_8ba53560",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4790cf85_89bc37ae",
       "range": {
         "startLine": 230,
         "startChar": 2,
@@ -236,6 +458,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b77836ee_21d35198",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Return value is ignored because `fmap_header` is set to either a valid FMAP or NULL. Made `locate_fmap_using_helper_image` function return void.",
+      "parentUuid": "74650199_8d28991a",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 29
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2352162e_62cd57a9",
@@ -249,6 +495,30 @@
       "writtenOn": "2025-08-01T11:10:41Z",
       "side": 1,
       "message": "Merge into a single if statement.\n\nOriginal comment: [link](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6717970/comment/e066482b_522f38d8/)",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 68
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff777bd_4bb75a8b",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2352162e_62cd57a9",
       "range": {
         "startLine": 243,
         "startChar": 2,
@@ -282,6 +552,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8037e9a0_7674acbf",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "`image-\u003efmap_header` points to some address in `image-\u003edata`. Therefore, no need to free it.",
+      "parentUuid": "6dbdfa5b_50bccf2d",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 30
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "851e07b9_b66a5289",
@@ -305,6 +599,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "876ece2c_b3dcd545",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "851e07b9_b66a5289",
+      "range": {
+        "startLine": 255,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 16
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a5d4e2f_a7bc2ebf",
@@ -318,6 +636,30 @@
       "writtenOn": "2025-08-01T11:10:41Z",
       "side": 1,
       "message": "Same as above.\n```suggestion\n\t\t\tif (flashrom_layout_include_region(layout, \"FMAP\") !\u003d 0) {\n```",
+      "range": {
+        "startLine": 263,
+        "startChar": 3,
+        "endLine": 264,
+        "endChar": 15
+      },
+      "revId": "4535f7f63b4504baaa32574928e82b2165d79529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993d71e4_8b006f24",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-01T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a5d4e2f_a7bc2ebf",
       "range": {
         "startLine": 263,
         "startChar": 3,
