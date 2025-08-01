@@ -16,6 +16,24 @@
       "message": "I didn\u0027t check strdup failure because the rest of the hostlib code seems to just assume it won\u0027t fail.",
       "revId": "5c6d1d75f6be5f173d49e8737c25389b54e3d9ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad56a1fa_bc76311f",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-01T09:21:23Z",
+      "side": 1,
+      "message": "I don\u0027t think I ever saw  this function failing with correct input data. If we would be this unlucky in terms of available memory, then checking it here would not help us at all.",
+      "parentUuid": "d997efa2_1c924a23",
+      "revId": "5c6d1d75f6be5f173d49e8737c25389b54e3d9ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
