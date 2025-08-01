@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38790b67_f780001e",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-01T03:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc1a255_aa1d239c",
+      "range": {
+        "startLine": 548,
+        "startChar": 3,
+        "endLine": 548,
+        "endChar": 14
+      },
+      "revId": "96d611723312ca44516c9211ae7e03490bb0a24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0a7fed2_e21c094a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e0d774_29d3dc2a",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-01T03:11:55Z",
+      "side": 1,
+      "message": "Fixed `flashrom_read_region` in CL:6808998.",
+      "parentUuid": "e0a7fed2_e21c094a",
+      "range": {
+        "startLine": 378,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 14
+      },
+      "revId": "96d611723312ca44516c9211ae7e03490bb0a24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "370493bf_0d1cee1f",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-31T14:15:28Z",
       "side": 1,
       "message": "Please add a note telling that the returned pointer has to be freed by the caller.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 68
+      },
+      "revId": "96d611723312ca44516c9211ae7e03490bb0a24d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5669c2df_ae028b88",
+        "filename": "futility/updater_utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-01T03:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370493bf_0d1cee1f",
       "range": {
         "startLine": 176,
         "startChar": 0,
