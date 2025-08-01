@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb4756c_faf1bbf5",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-01T14:55:45Z",
+      "side": 1,
+      "message": "Double space here.",
+      "range": {
+        "startLine": 26,
+        "startChar": 64,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "59af36576da9efe097e5267a35ed959688cadd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58089c85_feb42710",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-01T14:55:45Z",
+      "side": 1,
+      "message": "SKU ID would be easier to decode as hex. How about:\n```suggestion\n\t\tERROR(\"Failed getting system SKU ID: %\" PRId64 \"(%#\" PRIx64 \")\\n\", prop);\n```\n\nExample output from EC:\n```\n25-08-01 14:39:11.069 \u003e cbi\n25-08-01 14:39:12.228 [7543.108331 CBI Reading board info]\n25-08-01 14:39:12.232 CBI_VERSION: 0x0000\n25-08-01 14:39:12.232 TOTAL_SIZE: 48\n25-08-01 14:39:12.235 BOARD_VERSION: 2 (0x2)\n25-08-01 14:39:12.235 OEM_ID: (Error 1)\n25-08-01 14:39:12.238 MODEL_ID: (Error 1)\n25-08-01 14:39:12.238 SKU_ID: 1441799 (0x160007)\n25-08-01 14:39:12.242 FW_CONFIG: 9 (0x9)\n```\n\nAlso the SKU ID is stored as hex in our device configurations: `src/project/\u003cboard\u003e/\u003cmodel\u003e/config.star`",
+      "range": {
+        "startLine": 483,
+        "startChar": 41,
+        "endLine": 483,
+        "endChar": 48
+      },
+      "revId": "59af36576da9efe097e5267a35ed959688cadd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff61c4d6_fe1852ec",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-01T14:55:45Z",
+      "side": 1,
+      "message": "Please use hex here too:\n```suggestion\n\t\tVB2_DEBUG(\"Comparing FRID %s vs %s; SKU ID %#x vs %#x\\n\",\n\t\t\t  system_frid, frid, system_sku_id, sku_id);\n```",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 520,
+        "endChar": 47
+      },
+      "revId": "59af36576da9efe097e5267a35ed959688cadd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
