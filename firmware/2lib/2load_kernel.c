@@ -88,14 +88,14 @@ static vb2_error_t vb2_verify_kernel_dev_key_hash(
 	uint32_t buflen = key->key_size;
 	struct vb2_hash hash;
 
-	VB2_DEBUG("Checking developer key hash.\n");
+	VB2_ERROR("Checking developer key hash.\n");
 	VB2_TRY(vb2_hash_calculate(vb2api_hwcrypto_allowed(ctx), buf, buflen,
 				   VB2_HASH_SHA256, &hash));
 
 	uint8_t *fwmp_dev_key_hash =
 		vb2_secdata_fwmp_get_dev_key_hash(ctx);
 	if (fwmp_dev_key_hash == NULL) {
-		VB2_DEBUG("Couldn't retrieve developer key hash.\n");
+		VB2_ERROR("Couldn't retrieve developer key hash.\n");
 		return VB2_ERROR_KERNEL_KEYBLOCK_DEV_KEY_HASH;
 	}
 
@@ -103,12 +103,12 @@ static vb2_error_t vb2_verify_kernel_dev_key_hash(
 			    sizeof(hash.sha256))) {
 		int i;
 
-		VB2_DEBUG("Wrong developer key hash.\n");
-		VB2_DEBUG("Want: ");
+		VB2_ERROR("Wrong developer key hash.\n");
+		VB2_ERROR("Want: ");
 		for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
 			VB2_DEBUG_RAW("%02x ", fwmp_dev_key_hash[i]);
 		VB2_DEBUG_RAW("\n");
-		VB2_DEBUG("Got:  ");
+		VB2_ERROR("Got:  ");
 		for (i = 0; i < VB2_SHA256_DIGEST_SIZE; i++)
 			VB2_DEBUG_RAW("%02x ", hash.sha256[i]);
 		VB2_DEBUG_RAW("\n");
@@ -167,19 +167,19 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	struct vb2_keyblock *keyblock = get_keyblock(kbuf);
 	rv = vb2_verify_keyblock(keyblock, kbuf_size, &kernel_key, wb);
 	if (rv) {
-		VB2_DEBUG("Verifying keyblock signature failed.\n");
+		VB2_ERROR("Verifying keyblock signature failed.\n");
 		keyblock_valid = 0;
 
 		/* Check if we must have an officially signed kernel */
 		if (need_keyblock_valid) {
-			VB2_DEBUG("Self-signed kernels not enabled.\n");
+			VB2_ERROR("Self-signed kernels not enabled.\n");
 			return rv;
 		}
 
 		/* Otherwise, allow the kernel if the keyblock hash is valid */
 		rv = vb2_verify_keyblock_hash(keyblock, kbuf_size, wb);
 		if (rv) {
-			VB2_DEBUG("Verifying keyblock hash failed.\n");
+			VB2_ERROR("Verifying keyblock hash failed.\n");
 			return rv;
 		}
 	}
@@ -189,7 +189,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	      ((ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ?
 	       VB2_KEYBLOCK_FLAG_DEVELOPER_1 :
 	       VB2_KEYBLOCK_FLAG_DEVELOPER_0))) {
-		VB2_DEBUG("Keyblock developer flag mismatch.\n");
+		VB2_ERROR("Keyblock developer flag mismatch.\n");
 		keyblock_valid = 0;
 		if (need_keyblock_valid)
 			return VB2_ERROR_KERNEL_KEYBLOCK_DEV_FLAG;
@@ -198,7 +198,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	      ((ctx->flags & VB2_CONTEXT_RECOVERY_MODE) ?
 	       VB2_KEYBLOCK_FLAG_RECOVERY_1 :
 	       VB2_KEYBLOCK_FLAG_RECOVERY_0))) {
-		VB2_DEBUG("Keyblock recovery flag mismatch.\n");
+		VB2_ERROR("Keyblock recovery flag mismatch.\n");
 		keyblock_valid = 0;
 		if (need_keyblock_valid)
 			return VB2_ERROR_KERNEL_KEYBLOCK_REC_FLAG;
@@ -207,7 +207,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	      ((lpflags & VB2_LOAD_PARTITION_FLAG_MINIOS) ?
 	       VB2_KEYBLOCK_FLAG_MINIOS_1 :
 	       VB2_KEYBLOCK_FLAG_MINIOS_0))) {
-		VB2_DEBUG("Keyblock miniOS flag mismatch.\n");
+		VB2_ERROR("Keyblock miniOS flag mismatch.\n");
 		keyblock_valid = 0;
 		if (need_keyblock_valid)
 			return VB2_ERROR_KERNEL_KEYBLOCK_MINIOS_FLAG;
@@ -219,7 +219,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 		if (key_version < (sd->kernel_version_secdata >> 16)) {
 			keyblock_valid = 0;
 			if (need_keyblock_valid) {
-				VB2_DEBUG("Key version too old.\n");
+				VB2_ERROR("Key version too old.\n");
 				return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_ROLLBACK;
 			}
 		}
@@ -229,7 +229,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 			 * versions greater than 0xFFFF can't be stored
 			 * properly.
 			 */
-			VB2_DEBUG("Key version > 0xFFFF.\n");
+			VB2_ERROR("Key version > 0xFFFF.\n");
 			keyblock_valid = 0;
 			if (need_keyblock_valid)
 				return VB2_ERROR_KERNEL_KEYBLOCK_VERSION_RANGE;
@@ -255,7 +255,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	struct vb2_public_key data_key;
 	rv = vb2_unpack_key(&data_key, &keyblock->data_key);
 	if (rv) {
-		VB2_DEBUG("Unable to unpack kernel data key\n");
+		VB2_ERROR("Unable to unpack kernel data key\n");
 		return rv;
 	}
 
@@ -268,7 +268,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 					&data_key,
 					wb);
 	if (rv) {
-		VB2_DEBUG("Preamble verification failed.\n");
+		VB2_ERROR("Preamble verification failed.\n");
 		return rv;
 	}
 
@@ -278,7 +278,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 		    (sd->kernel_version_secdata >> 24)) {
 			keyblock_valid = 0;
 			if (need_keyblock_valid) {
-				VB2_DEBUG("miniOS kernel version too old.\n");
+				VB2_ERROR("miniOS kernel version too old.\n");
 				return VB2_ERROR_KERNEL_PREAMBLE_VERSION_ROLLBACK;
 			}
 		}
@@ -288,7 +288,7 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 			 * in the TPM, so key versions greater than 0xFF can't
 			 * be stored properly.
 			 */
-			VB2_DEBUG("Key version > 0xFF.\n");
+			VB2_ERROR("Key version > 0xFF.\n");
 			keyblock_valid = 0;
 			if (need_keyblock_valid)
 				return VB2_ERROR_KERNEL_PREAMBLE_VERSION_RANGE;
@@ -309,11 +309,11 @@ static vb2_error_t vb2_verify_kernel_vblock(struct vb2_context *ctx,
 	if (need_keyblock_valid &&
 	    ctx->boot_mode != VB2_BOOT_MODE_MANUAL_RECOVERY &&
 	    *kernel_version < sd->kernel_version_secdata) {
-		VB2_DEBUG("Kernel version too low.\n");
+		VB2_ERROR("Kernel version too low.\n");
 		return VB2_ERROR_KERNEL_PREAMBLE_VERSION_ROLLBACK;
 	}
 
-	VB2_DEBUG("Kernel preamble is good.\n");
+	VB2_ERROR("Kernel preamble is good.\n");
 	return VB2_SUCCESS;
 }
 
@@ -343,7 +343,7 @@ static vb2_error_t vb2_load_chromeos_kernel(
 
 	start_ts = vb2ex_mtime();
 	if (VbExStreamRead(stream, KBUF_SIZE, kbuf)) {
-		VB2_DEBUG("Unable to read start of partition.\n");
+		VB2_ERROR("Unable to read start of partition.\n");
 		return VB2_ERROR_LOAD_PARTITION_READ_VBLOCK;
 	}
 	read_ms += vb2ex_mtime() - start_ts;
@@ -367,7 +367,7 @@ static vb2_error_t vb2_load_chromeos_kernel(
 	 */
 	uint32_t body_offset = get_body_offset(kbuf);
 	if (body_offset > KBUF_SIZE) {
-		VB2_DEBUG("Kernel body offset is %u > 64KB.\n", body_offset);
+		VB2_ERROR("Kernel body offset is %u > 64KB.\n", body_offset);
 		return VB2_ERROR_LOAD_PARTITION_BODY_OFFSET;
 	}
 
@@ -378,7 +378,7 @@ static vb2_error_t vb2_load_chromeos_kernel(
 		kernbuf = (uint8_t *)((long)preamble->body_load_address);
 		kernbuf_size = preamble->body_signature.data_size;
 	} else if (preamble->body_signature.data_size > kernbuf_size) {
-		VB2_DEBUG("Kernel body doesn't fit in memory.\n");
+		VB2_ERROR("Kernel body doesn't fit in memory.\n");
 		return 	VB2_ERROR_LOAD_PARTITION_BODY_SIZE;
 	}
 
@@ -399,13 +399,13 @@ static vb2_error_t vb2_load_chromeos_kernel(
 	/* Read the kernel data */
 	start_ts = vb2ex_mtime();
 	if (body_toread && VbExStreamRead(stream, body_toread, body_readptr)) {
-		VB2_DEBUG("Unable to read kernel data.\n");
+		VB2_ERROR("Unable to read kernel data.\n");
 		return VB2_ERROR_LOAD_PARTITION_READ_BODY;
 	}
 	read_ms += vb2ex_mtime() - start_ts;
 	if (read_ms == 0)  /* Avoid division by 0 in speed calculation */
 		read_ms = 1;
-	VB2_DEBUG("read %u KB in %u ms at %u KB/s.\n",
+	VB2_ERROR("read %u KB in %u ms at %u KB/s.\n",
 		  (body_toread + KBUF_SIZE) / 1024, read_ms,
 		  (uint32_t)(((body_toread + KBUF_SIZE) * VB2_MSEC_PER_SEC) /
 			     (read_ms * 1024)));
@@ -413,7 +413,7 @@ static vb2_error_t vb2_load_chromeos_kernel(
 	/* Get key for preamble/data verification from the keyblock. */
 	struct vb2_public_key data_key;
 	if (vb2_unpack_key(&data_key, &keyblock->data_key)) {
-		VB2_DEBUG("Unable to unpack kernel data key\n");
+		VB2_ERROR("Unable to unpack kernel data key\n");
 		return VB2_ERROR_LOAD_PARTITION_DATA_KEY;
 	}
 
@@ -422,12 +422,12 @@ static vb2_error_t vb2_load_chromeos_kernel(
 	/* Verify kernel data */
 	if (vb2_verify_data(kernbuf, kernbuf_size, &preamble->body_signature,
 			    &data_key, &wb)) {
-		VB2_DEBUG("Kernel data verification failed.\n");
+		VB2_ERROR("Kernel data verification failed.\n");
 		return VB2_ERROR_LOAD_PARTITION_VERIFY_BODY;
 	}
 
 	/* If we're still here, the kernel is valid */
-	VB2_DEBUG("Partition is good.\n");
+	VB2_ERROR("Partition is good.\n");
 
 	/* Save kernel data back to parameters */
 	params->bootloader_offset = preamble->bootloader_address -
@@ -456,13 +456,13 @@ static vb2_error_t try_minios_kernel(struct vb2_context *ctx,
 	/* Re-open stream at correct offset to pass to vb2_load_partition. */
 	if (VbExStreamOpen(disk_info->handle, sector, sectors_left,
 			   &stream)) {
-		VB2_DEBUG("Unable to open disk handle.\n");
+		VB2_ERROR("Unable to open disk handle.\n");
 		return rv;
 	}
 
 	/* We are looking for ChromeOS partitions */
 	rv = vb2_load_chromeos_kernel(ctx, params, stream, lpflags, &kernel_version);
-	VB2_DEBUG("vb2_load_chromeos_kernel returned: %#x\n", rv);
+	VB2_ERROR("vb2_load_chromeos_kernel returned: %#x\n", rv);
 
 	VbExStreamClose(stream);
 
@@ -487,17 +487,17 @@ static vb2_error_t try_minios_sectors(struct vb2_context *ctx,
 
 	buf = malloc(buf_size);
 	if (buf == NULL) {
-		VB2_DEBUG("Unable to allocate disk read buffer.\n");
+		VB2_ERROR("Unable to allocate disk read buffer.\n");
 		return rv;
 	}
 
 	if (VbExStreamOpen(disk_info->handle, start, count, &stream)) {
-		VB2_DEBUG("Unable to open disk handle.\n");
+		VB2_ERROR("Unable to open disk handle.\n");
 		free(buf);
 		return rv;
 	}
 	if (VbExStreamRead(stream, buf_size, buf)) {
-		VB2_DEBUG("Unable to read disk.\n");
+		VB2_ERROR("Unable to read disk.\n");
 		free(buf);
 		VbExStreamClose(stream);
 		return rv;
@@ -508,7 +508,7 @@ static vb2_error_t try_minios_sectors(struct vb2_context *ctx,
 		if (memcmp(buf + isector * disk_info->bytes_per_lba,
 			   VB2_KEYBLOCK_MAGIC, VB2_KEYBLOCK_MAGIC_SIZE))
 			continue;
-		VB2_DEBUG("Match on sector %" PRIu64 " / %" PRIu64 "\n",
+		VB2_ERROR("Match on sector %" PRIu64 " / %" PRIu64 "\n",
 			  start + isector,
 			  disk_info->lba_count - 1);
 		rv = try_minios_kernel(ctx, params, disk_info, start + isector);
@@ -548,7 +548,7 @@ static vb2_error_t try_minios_sector_region(struct vb2_context *ctx,
 		region_name = "end";
 	}
 
-	VB2_DEBUG("Checking %s of disk for kernels...\n", region_name);
+	VB2_ERROR("Checking %s of disk for kernels...\n", region_name);
 	for (sector = start; sector < end; sector += batch_count) {
 		rv = try_minios_sectors(ctx, params, disk_info, sector,
 					batch_count);
@@ -609,13 +609,13 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 	gpt.flags = disk_info->flags & VB2_DISK_FLAG_EXTERNAL_GPT
 			? GPT_FLAG_EXTERNAL : 0;
 	if (AllocAndReadGptData(disk_info->handle, &gpt)) {
-		VB2_DEBUG("Unable to read GPT data\n");
+		VB2_ERROR("Unable to read GPT data\n");
 		goto gpt_done;
 	}
 
 	/* Initialize GPT library */
 	if (GptInit(&gpt)) {
-		VB2_DEBUG("Error parsing GPT\n");
+		VB2_ERROR("Error parsing GPT\n");
 		goto gpt_done;
 	}
 
@@ -629,7 +629,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		uint64_t part_size = GptGetEntrySizeLba(entry);
 		char *ab_suffix = NULL;
 
-		VB2_DEBUG("Found %s kernel entry at %"
+		VB2_ERROR("Found %s kernel entry at %"
 			  PRIu64 " size %" PRIu64 "\n",
 			  IsAndroid(entry) ? "Android" : "ChromeOS",
 			  part_start, part_size);
@@ -690,8 +690,8 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			VbExStream_t stream = NULL;
 
 			if (VbExStreamOpen(disk_info->handle, part_start, part_size, &stream)) {
-				VB2_DEBUG("Partition error getting stream.\n");
-				VB2_DEBUG("Marking kernel as invalid.\n");
+				VB2_ERROR("Partition error getting stream.\n");
+				VB2_ERROR("Marking kernel as invalid.\n");
 				GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
 				continue;
 			}
@@ -716,8 +716,8 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 				stream = NULL;
 				if (VbExStreamOpen(disk_info->handle,
 						   part_start, part_size, &stream)) {
-					VB2_DEBUG("Cros fallback - unable to reopen stream\n");
-					VB2_DEBUG("Marking kernel as invalid.\n");
+					VB2_ERROR("Cros fallback - unable to reopen stream\n");
+					VB2_ERROR("Marking kernel as invalid.\n");
 					GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
 					continue;
 				}
@@ -739,7 +739,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 			}
 		}
 		if (rv) {
-			VB2_DEBUG("Marking kernel as invalid (err=%x).\n", rv);
+			VB2_ERROR("Marking kernel as invalid (err=%x).\n", rv);
 			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
 			/* Restore original ctx->flags */
 			ctx->flags = ctx_flags;
@@ -751,8 +751,8 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		if (keyblock_valid && lowest_version > kernel_version)
 			lowest_version = kernel_version;
 
-		VB2_DEBUG("Keyblock valid: %d\n", keyblock_valid);
-		VB2_DEBUG("Combined version: %u\n", kernel_version);
+		VB2_ERROR("Keyblock valid: %d\n", keyblock_valid);
+		VB2_ERROR("Combined version: %u\n", kernel_version);
 
 		/*
 		 * If we're only looking at headers, we're done with this
@@ -792,7 +792,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		 */
 		if (ctx->boot_mode == VB2_BOOT_MODE_MANUAL_RECOVERY ||
 		    !keyblock_valid) {
-			VB2_DEBUG("In recovery mode or dev-signed kernel\n");
+			VB2_ERROR("In recovery mode or dev-signed kernel\n");
 			break;
 		}
 
@@ -804,7 +804,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 		 * contain a newer key.
 		 */
 		if (sd->kernel_version == sd->kernel_version_secdata) {
-			VB2_DEBUG("Same kernel version\n");
+			VB2_ERROR("Same kernel version\n");
 			break;
 		}
 	} /* while (GptNextKernelEntry) */
@@ -815,7 +815,7 @@ vb2_error_t vb2api_load_kernel(struct vb2_context *ctx,
 
 	/* Handle finding a good partition */
 	if (params->partition_number > 0) {
-		VB2_DEBUG("Good partition %d\n", params->partition_number);
+		VB2_ERROR("Good partition %d\n", params->partition_number);
 		/*
 		 * Validity check - only store a new TPM version if we found
 		 * one. If lowest_version is still at its initial value, we
