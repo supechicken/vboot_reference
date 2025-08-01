@@ -44,7 +44,10 @@ struct vb2_public_key;
 #endif
 
 /* Platform-dependent debug/assert output macros. */
-#define VB2_DEBUG(format, args...) \
+//#define VB2_DEBUG(format, args...) do {} while (0)
+#define VB2_DEBUG(format, ...) do { (void)(format); } while (0)
+
+#define VB2_ERROR(format, args...) \
 	vb2ex_printf(__func__, format, ## args)
 
 #define VB2_DEBUG_RAW(format, args...) \
@@ -66,7 +69,7 @@ struct vb2_public_key;
 } while (0)
 
 #define VB2_REC_OR_DIE(ctx, format, args...) do { \
-	VB2_DEBUG(format, ## args); \
+	VB2_ERROR(format, ## args); \
 	if ((vb2_get_sd(ctx)->status & VB2_SD_STATUS_RECOVERY_DECIDED) && \
 	    !(ctx->flags & VB2_CONTEXT_RECOVERY_MODE)) { \
 		vb2ex_abort(); \

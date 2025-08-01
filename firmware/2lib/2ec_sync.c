@@ -31,19 +31,6 @@ static void print_hash(const uint8_t *hash, uint32_t hash_size)
 	VB2_DEBUG_RAW("\n");
 }
 
-static const char *image_name_to_string(enum vb2_firmware_selection select)
-{
-	switch (select) {
-	case VB_SELECT_FIRMWARE_READONLY:
-		return "RO";
-	case VB_SELECT_FIRMWARE_EC_ACTIVE:
-		return "RW(active)";
-	case VB_SELECT_FIRMWARE_EC_UPDATE:
-		return "RW(update)";
-	default:
-		return "UNKNOWN";
-	}
-}
 
 /**
  * Check if the hash of the EC code matches the expected hash.

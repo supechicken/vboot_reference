@@ -141,7 +141,7 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx)
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	vb2_gbb_flags_t gbb_flags = vb2api_gbb_get_flags(ctx);
 
-	VB2_DEBUG("GBB flags are %#x\n", gbb_flags);
+	VB2_ERROR("GBB flags are %#x\n", gbb_flags);
 
 	/*
 	 * Do EC and auxfw software sync unless we're in recovery mode. This
