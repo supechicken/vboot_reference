@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ac10c2_34c28fd0",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-04T10:46:19Z",
+      "side": 1,
+      "message": "Oh, sorry. It seems I was looking at another comment\u0027s \"Done\" while replying to this one. You can roll back this change to have double space here if you want.\n\nHowever I do not see why double space here would improve readability. Double `[ERROR]` tag from calling `ERROR(...)` twice here would be more readable IMO.",
+      "parentUuid": "e05132b2_43ab38c4",
+      "range": {
+        "startLine": 26,
+        "startChar": 64,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "59af36576da9efe097e5267a35ed959688cadd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58089c85_feb42710",
