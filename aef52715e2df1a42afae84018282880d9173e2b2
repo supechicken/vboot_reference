@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c2e3c8_a57e5a39",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-04T10:40:52Z",
+      "side": 1,
+      "message": "Done, but with a slightly modified condition.",
+      "parentUuid": "3a17c3fa_c6f3c3ad",
+      "range": {
+        "startLine": 524,
+        "startChar": 2,
+        "endLine": 524,
+        "endChar": 40
+      },
+      "revId": "aef52715e2df1a42afae84018282880d9173e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57e0ae80_f1dc888d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-04T09:53:13Z",
       "side": 1,
       "message": "```suggestion\n\t\tERROR(\"Failed to get device identity from %s.\\n\", PATH_IDENTITY);\n```",
+      "range": {
+        "startLine": 549,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 62
+      },
+      "revId": "aef52715e2df1a42afae84018282880d9173e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1f0908_68f40ec6",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-04T10:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57e0ae80_f1dc888d",
       "range": {
         "startLine": 549,
         "startChar": 2,
