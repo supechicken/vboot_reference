@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a17c3fa_c6f3c3ad",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-04T09:53:13Z",
+      "side": 1,
+      "message": "Without checking the `endptr` here we won\u0027t know if the `sku_id` is really zero or if the function failed. Please add a check for that. `if (sku_id \u003d\u003d 0 \u0026\u0026 sku_id_str \u003d\u003d sku_id_endptr) {error}`",
+      "range": {
+        "startLine": 524,
+        "startChar": 2,
+        "endLine": 524,
+        "endChar": 40
+      },
+      "revId": "aef52715e2df1a42afae84018282880d9173e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e0ae80_f1dc888d",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-04T09:53:13Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tERROR(\"Failed to get device identity from %s.\\n\", PATH_IDENTITY);\n```",
+      "range": {
+        "startLine": 549,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 62
+      },
+      "revId": "aef52715e2df1a42afae84018282880d9173e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
