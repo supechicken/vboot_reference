@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56cb0945_156fbe6d",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-04T03:21:12Z",
+      "side": 1,
+      "message": "Well, I think the definition of \"frid\" depends on the context. In coreboot, it does include the version, but in CrOS config, it\u0027s only the model name. \n\nAnyway, let me change this to what you previously suggested.",
+      "parentUuid": "fc2e5362_29bbf5ee",
+      "range": {
+        "startLine": 368,
+        "startChar": 6,
+        "endLine": 368,
+        "endChar": 22
+      },
+      "revId": "0ac09a386f85b58201127578a803f6601090d42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7fc2cc9_1532ccd3",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-01T09:34:34Z",
       "side": 1,
       "message": "`frid` is not NULL at this point.\n```suggestion\n\t\tfree(frid);\n\t\tfrid \u003d NULL;\n```",
+      "range": {
+        "startLine": 388,
+        "startChar": 2,
+        "endLine": 388,
+        "endChar": 13
+      },
+      "revId": "0ac09a386f85b58201127578a803f6601090d42d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe766c98_95764c51",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-04T03:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7fc2cc9_1532ccd3",
       "range": {
         "startLine": 388,
         "startChar": 2,
