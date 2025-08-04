@@ -22,6 +22,30 @@
       },
       "revId": "78002c47fe9770543c5e0fa8a784e9a9da01a1f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde3e93a_8fa3f9fd",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2025-08-04T22:26:58Z",
+      "side": 1,
+      "message": "I suggest inspecting this file closely, looks like the cherry-pick did some interesting things.  IIRC, the src CL this change was picked from doesn\u0027t contain the \"#ifdef USE_LIBAVB\" code, so this cherry-pick modification may be removing something that is important to have in this branch.",
+      "parentUuid": "9b19521c_4fed8cc3",
+      "range": {
+        "startLine": 708,
+        "startChar": 1,
+        "endLine": 708,
+        "endChar": 6
+      },
+      "revId": "78002c47fe9770543c5e0fa8a784e9a9da01a1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
