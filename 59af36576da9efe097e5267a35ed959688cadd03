@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ec48cb_59e8c469",
+        "filename": "futility/updater_dut.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-04T03:29:08Z",
+      "side": 1,
+      "message": "That\u0027s intentional, which IMO improves readability. We also do the same for other logs and comments in vboot_reference.",
+      "parentUuid": "3eb4756c_faf1bbf5",
+      "range": {
+        "startLine": 26,
+        "startChar": 64,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "59af36576da9efe097e5267a35ed959688cadd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58089c85_feb42710",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "876ed5d3_9f000f18",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-04T03:29:08Z",
+      "side": 1,
+      "message": "Using hex doesn\u0027t help for the error log here, as the value will always be -1. I updated the following `\"Comparing model ...\"` log though.",
+      "parentUuid": "58089c85_feb42710",
+      "range": {
+        "startLine": 483,
+        "startChar": 41,
+        "endLine": 483,
+        "endChar": 48
+      },
+      "revId": "59af36576da9efe097e5267a35ed959688cadd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff61c4d6_fe1852ec",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-08-01T14:55:45Z",
       "side": 1,
       "message": "Please use hex here too:\n```suggestion\n\t\tVB2_DEBUG(\"Comparing FRID %s vs %s; SKU ID %#x vs %#x\\n\",\n\t\t\t  system_frid, frid, system_sku_id, sku_id);\n```",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 520,
+        "endChar": 47
+      },
+      "revId": "59af36576da9efe097e5267a35ed959688cadd03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a95e824_6dab850e",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-04T03:29:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff61c4d6_fe1852ec",
       "range": {
         "startLine": 519,
         "startChar": 2,
