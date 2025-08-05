@@ -1,0 +1,567 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91cce40_124ea4cd",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "This can be removed. `libziparchive_wrapper` already has the dependency.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 24
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d1b4539_8b578b7b",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Change to `vendor: true`. We are not planning to move to `/system` or any other partition at this time.",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 27
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3100a849_c71afcbc",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Unnecessary blank line.",
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977942c7_996ae7dd",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "As I described below - please use actual descriptive types that don\u0027t hide the fact that they are pointers. This is really confusing while working in C.\n```\nstruct libziparchive_reader;\nstruct libziparchive_writer;\n```\nBare structure declarations are enough for them to function as a poiter.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f85978_e8622a50",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "`\u003cname\u003e_t` is reserved for `typedef` and `#define` in C. Please use `struct zip_handle` instead. Or even better `libziparchive_handle` so we have a clear distinction of types that we cannot confuse with e.g. `libzip` or any other ZIP library.",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb53100_adf07844",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Do you need a full declaration here? Only the wrapper code is accessing these fields directly. The caller should not have an access to them. You can have `struct libziparchive_handle;` here and full declaration in the `cpp` file.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a1d714_7936c2dd",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Please use direct types instead of typedef here. `typedef` is unnecessarily hiding the pointer type.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10b6abb_da1b760b",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "These pointer typedefs don\u0027t seem good to me. They are hiding the fact that they are pointers. I think it would be better to have an empty struct in its place. Example: `struct libziparchive_entry;` Let\u0027s not bring `HWND` from the `windows.h` here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28b984d_dc71d350",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "That\u0027s what I\u0027m talking about in the comment about the typedefs. This function returns some `typedef`ed value, so why would it suddenly be NULL here?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e8478c_6e24dfe9",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "`Returns zero on success` is enough. The same for other functions.",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 78
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c59753_2a1b39e3",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Add a note about requiring the caller to free `*name`",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76af8946_837e9697",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper/libziparchive_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Add a note telling the caller has to free the returned buffer.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6794ae_a57a581c",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "This does not seem right. IIRC we cannot read from the writer, so this function should either reopen the file as a reader or return an error if it\u0027s in the writer mode.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1493716_87dbec38",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Errors have to be printed to `stderr`.\n```suggestion\n\t\tfprintf(stderr, \"ERROR: failed to open %s for writing\\n\", handle-\u003epath);\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716c4817_f77d022b",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Set `handle-\u003ereader` to `nullptr` after closing it.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5515451d_0b62d810",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Set `handle-\u003ewriter` to `nullptr` after deleting it.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b6c813_0624bf1c",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "style:\n```suggestion\nzip_entry libziparchive_alloc_entry()\n{\n\treturn (zip_entry)(new ZipEntry64);\n}\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 77
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7a36f9_babba2ce",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "This always returns zero, so the type can be changed to `void`.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6c8c46_eb814037",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "style:\n```suggestion\nvoid libziparchive_stop_iteration(zip_cookie cookie)\n{\n\tEndIteration(cookie);\n}\n```",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 78
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59087e5c_fccba3f9",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "style:\n```suggestion\nint32_t libziparchive_get_mtime(zip_entry entry)\n{\n\treturn ((ZipEntry64 *)entry)-\u003emod_time;\n}\n```",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 92
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850fcf42_5af36815",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "Use `malloc(*size)` so we can safely free these data from the C code. `new` and `delete` are incompatible with `malloc` and `free`.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e08071e_c08f6e7d",
+        "filename": "futility/archive/updater_archive_libziparchive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "You can re-define the error codes in the wrapper\u0027s header file. Right now there are magic numbers that require the reader to go to the libziparchive sources to know what\u0027s happening here.\n\nFor context in libziparchive/zip_error.h we have:\n```\nkSuccess \u003d 0,\nkIterationEnd \u003d -1,\nother errors are \u003c\u003d -2,\n```",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf7557a_f6f766ae",
+        "filename": "futility/archive/updater_archive_libziparchive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tif (callback(name, arg)) {\n\t\t\t\tr \u003d -1;\n\t\t\t\tfree(name);\n\t\t\t\tbreak;\n\t\t\t}\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 11
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ba5424_67c4aa4e",
+        "filename": "futility/archive/updater_archive_libziparchive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "You have to release the entry here.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03162119_4e5ab814",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-05T09:59:32Z",
+      "side": 1,
+      "message": "for reference: `data` from archive_read_file() -\u003e archive_libziparchive.read_file -\u003e archive_libziparchive_read_file()` is free\u0027d here.",
+      "revId": "8d7f45be0076f55ff73cf77fad14a3f06fe45842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
