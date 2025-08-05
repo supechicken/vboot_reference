@@ -425,6 +425,7 @@ inline bool is_ec_write_protection_enabled(struct updater_config *cfg)
 	return is_write_protection_enabled(cfg, cfg->ec_image.programmer, DUT_PROP_WP_SW_EC);
 }
 
+test_mockable
 char *host_shell(const char *command)
 {
 	/* Currently all commands we use do not have large output. */
