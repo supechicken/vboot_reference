@@ -805,7 +805,8 @@ endif
 TEST_FUTIL_NAMES = \
 	tests/futility/binary_editor \
 	tests/futility/test_file_types \
-	tests/futility/test_not_really
+	tests/futility/test_not_really \
+	tests/futility/test_updater_utils
 
 TEST_NAMES += ${TEST_FUTIL_NAMES}
 
@@ -1450,11 +1451,43 @@ run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_sig_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/hmac_test
 
+.PHONY: futility_tests_prepare_data
+futility_tests_prepare_data:
+	${Q}mkdir -p ${SRC_RUN}/tests/futility/data_copy
+
+	${Q}cp ${SRC_RUN}/tests/futility/data/image-newer.bin ${SRC_RUN}/tests/futility/data_copy/
+	${Q}cp ${SRC_RUN}/tests/futility/data/images.zip ${SRC_RUN}/tests/futility/data_copy/
+
+#	Random noise
+	${Q}dd if=/dev/zero of=${SRC_RUN}/tests/futility/data_copy/image-bad.bin bs=512 count=65536
+
+#	Missing FMAP
+	${Q}cp ${SRC_RUN}/tests/futility/data_copy/image-newer.bin \
+		${SRC_RUN}/tests/futility/data_copy/image-missing-fmap.bin
+	${Q}dd if=/dev/zero of=${SRC_RUN}/tests/futility/data_copy/image-missing-fmap.bin \
+		bs=1 count=2048 seek=25182208 conv=notrunc
+
+# 	Missing RO_FRID in FMAP
+	${Q}cp ${SRC_RUN}/tests/futility/data_copy/image-newer.bin \
+		${SRC_RUN}/tests/futility/data_copy/image-missing-ro_frid.bin
+	${Q}dd if=/dev/zero of=${SRC_RUN}/tests/futility/data_copy/image-missing-ro_frid.bin \
+		bs=1 count=7 seek=25183700 conv=notrunc
+
+#	Missing RW_FRID_A in FMAP
+	${Q}cp ${SRC_RUN}/tests/futility/data_copy/image-newer.bin \
+		${SRC_RUN}/tests/futility/data_copy/image-missing-rw_fwid.bin
+	${Q}dd if=/dev/zero of=${SRC_RUN}/tests/futility/data_copy/image-missing-rw_fwid.bin \
+		bs=1 count=9 seek=25182734 conv=notrunc
+
+
 .PHONY: runfutiltests
-runfutiltests: install_for_test
+runfutiltests: install_for_test futility_tests_prepare_data
 	${RUNTEST} ${SRC_RUN}/tests/futility/run_test_scripts.sh
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
+	${RUNTEST} ${BUILD_RUN}/tests/futility/test_updater_utils
+
+	${Q}rm -rf ${SRC_RUN}/tests/futility/data_copy
 
 # Test all permutations of encryption keys, instead of just the ones we use.
 # Not run by automated build.
