@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "3e4ef87b73c5ebc7ddfb905440d0f7b5b9779b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ded72b_522827be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-06T20:07:15Z",
+      "side": 1,
+      "message": "This is pretty common in coreboot (e.g. https://github.com/coreboot/coreboot/blob/main/src/include/console/console.h#L78). There\u0027s no Google C coding style to my knowledge, and we don\u0027t follow the Google C++ style for our code... instead, we mostly (unofficially) follow coreboot style in vboot and depthcharge, which is 95% copied from Linux (which also likes to do this a lot).\n\nSo I don\u0027t think this really comes up much in vboot, but if it did we\u0027d probably want to allow it.",
+      "revId": "3e4ef87b73c5ebc7ddfb905440d0f7b5b9779b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
