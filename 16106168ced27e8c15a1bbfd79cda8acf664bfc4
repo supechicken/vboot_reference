@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "52337539_ba5fd942",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:54:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t test the newly added files. Do we have a plan to add tests either in ChromiumOS or Android?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "16106168ced27e8c15a1bbfd79cda8acf664bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d78a63f5_20b7a769",
@@ -14,6 +37,29 @@
       "writtenOn": "2025-08-05T18:04:37Z",
       "side": 1,
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8707364406049872385) is being automatically retried for the following reasons:\n- Some tests are now retryable:corsola-cq.hw.cq-minimal\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "16106168ced27e8c15a1bbfd79cda8acf664bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13864428_4def12bc",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:54:41Z",
+      "side": 1,
+      "message": "Why do we write a .cpp wrapper instead of .c?",
+      "range": {
+        "startLine": 337,
+        "startChar": 78,
+        "endLine": 337,
+        "endChar": 81
+      },
       "revId": "16106168ced27e8c15a1bbfd79cda8acf664bfc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
