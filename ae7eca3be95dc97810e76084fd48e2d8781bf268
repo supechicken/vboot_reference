@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96cc44dd_92bad8ba",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-06T14:57:37Z",
+      "side": 1,
+      "message": "You can shorten this to an enum and drop the comments. Checking the exact cause of the error code requires looking into the libziparchive sources anyway.\n\nAnd you can add your custom error value here too.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "ae7eca3be95dc97810e76084fd48e2d8781bf268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc124f7_c88b9b21",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-06T14:57:37Z",
+      "side": 1,
+      "message": "There are no fields here to speak of. Now that the struct definition is in the `.c` file you do not need this comment because the implementation will do its job anyway. And in case the wrapper implementation changes in some way the comment will probably become obsolete because someone will forget to update it.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "ae7eca3be95dc97810e76084fd48e2d8781bf268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd941809_81341d74",
+        "filename": "futility/archive/libziparchive_wrapper/include/libziparchive_wrapper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-06T14:57:37Z",
+      "side": 1,
+      "message": "We cannot extend the error codes from libziparchive/zip_error.h. They can add another error code with a value of `-15` so the return values might overlap complicating the debugging. If you want to have a custom error value then you can use `-1000` for safety here. I doubt they will add another error value range.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "ae7eca3be95dc97810e76084fd48e2d8781bf268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323f13d8_2e685ec1",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-06T14:57:37Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tfprintf(stderr, \"ERROR: libziparchive_wrapper: simultaneous reading and \"\n\t\t\t\t\"writing is not supported.\\n\");\n```\nPutting `ERROR:` first is the convention here. The same applies below.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "ae7eca3be95dc97810e76084fd48e2d8781bf268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad58704f_ed5608bf",
+        "filename": "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-06T14:57:37Z",
+      "side": 1,
+      "message": "Please check the return value here in case the `fopen()` succeded but the `ZipWriter` constructor failed.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "ae7eca3be95dc97810e76084fd48e2d8781bf268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
