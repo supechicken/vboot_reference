@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef14b1a_a1139dc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-06T10:05:32Z",
+      "side": 1,
+      "message": "We cannot test it on the ChromeOS side, because we do not have a reliable way to get libziparchive here. We can test it on the Android side though.\nFor the device side we will have DTS/ATS (desktop) tests which I will work on after this change lands.\nOn the host side we can use Android.bp `*_test_host` to run the host-side tests. However the question is, how should we really test it? We cannot run ChromeOS changes through the Android presubmit, and we also cannot require all patches to be mirrored as Android CLs for just testing too - divergence between AOSP, Android internal and the state of vboot_reference mirror in Android between all three. With the current state of things the `*_test_host` tests would only run on the `Upgrade vboot_reference to \u003csha\u003e` CLs in Android.\nI\u0027ll talk to CrOS CQ guys in my offise to figure out if we can have some bot that will test all vboot_reference CLs in Android, but I don\u0027t thin it\u0027s a viable solution.",
+      "parentUuid": "52337539_ba5fd942",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "16106168ced27e8c15a1bbfd79cda8acf664bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d78a63f5_20b7a769",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-08-06T08:54:41Z",
       "side": 1,
       "message": "Why do we write a .cpp wrapper instead of .c?",
+      "range": {
+        "startLine": 337,
+        "startChar": 78,
+        "endLine": 337,
+        "endChar": 81
+      },
+      "revId": "16106168ced27e8c15a1bbfd79cda8acf664bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba7bfe87_6ad5879b",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-06T10:05:32Z",
+      "side": 1,
+      "message": "`libziparchive` is a C++ library and to correctly access C++ symbols we need a C++ to C wrapper written in C++. The C++ symbol mangling is compiler and even compiler version dependent, so the only way here is to have a wrapper written in C++ that exports C symbols with `extern \"C\"`.\nContext: https://cs.android.com/android/platform/superproject/main/+/main:system/libziparchive/?q\u003df:libziparchive%2F",
+      "parentUuid": "13864428_4def12bc",
       "range": {
         "startLine": 337,
         "startChar": 78,
