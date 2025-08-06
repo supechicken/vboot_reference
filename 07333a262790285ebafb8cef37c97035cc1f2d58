@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35c1c95_019bbe97",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:42:35Z",
+      "side": 1,
+      "message": "nit: sort",
+      "revId": "07333a262790285ebafb8cef37c97035cc1f2d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a5d56f_ffaa9fce",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:42:35Z",
+      "side": 1,
+      "message": "nit: sort",
+      "range": {
+        "startLine": 750,
+        "startChar": 1,
+        "endLine": 751,
+        "endChar": 46
+      },
+      "revId": "07333a262790285ebafb8cef37c97035cc1f2d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5455d8e_0159a211",
+        "filename": "futility/archive/updater_archive_fallback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:42:35Z",
+      "side": 1,
+      "message": "Can we add `-Ifutility` to Makefile for `FUTIL_OBJS`? Then we can write `\"futility.h\"` here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "07333a262790285ebafb8cef37c97035cc1f2d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7e24d9_c74a04d1",
+        "filename": "futility/archive/updater_archive_fallback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:42:35Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "07333a262790285ebafb8cef37c97035cc1f2d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63278e8_08c03ada",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:42:35Z",
+      "side": 1,
+      "message": "Move to header as `extern struct u_archive archive_fallback;`",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "07333a262790285ebafb8cef37c97035cc1f2d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02000039_2068cd1c",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:42:35Z",
+      "side": 1,
+      "message": "`*ar \u003d archive_fallback;`",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "07333a262790285ebafb8cef37c97035cc1f2d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de6104d_12faea61",
+        "filename": "futility/updater_archive.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-06T08:42:35Z",
+      "side": 1,
+      "message": "```\nhandle \u003d archive_zip.open(path);\nif (handle) {\n    *ar \u003d archive_zip;\n    ar-\u003ehandle \u003d handle;\n}\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "07333a262790285ebafb8cef37c97035cc1f2d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
