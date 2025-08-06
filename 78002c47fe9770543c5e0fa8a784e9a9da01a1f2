@@ -46,6 +46,30 @@
       },
       "revId": "78002c47fe9770543c5e0fa8a784e9a9da01a1f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21888dea_b58bc2e9",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-08-06T12:25:28Z",
+      "side": 1,
+      "message": "Let me handle this. I think I fixed it on my local branch, but would like to test it before submitting.",
+      "parentUuid": "cde3e93a_8fa3f9fd",
+      "range": {
+        "startLine": 708,
+        "startChar": 1,
+        "endLine": 708,
+        "endChar": 6
+      },
+      "revId": "78002c47fe9770543c5e0fa8a784e9a9da01a1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
