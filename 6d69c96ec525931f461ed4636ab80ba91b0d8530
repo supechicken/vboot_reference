@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d60d429_5fb80555",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-07T12:25:28Z",
+      "side": 1,
+      "message": "@ihorlukianov@google.com Please do these tests on Android device:\n```\nfutility update --archive\u003d/vendor/firmware/ap-ec-fw.zip --manifest\nfutility update --archive\u003d/vendor/firmware/ap-ec-fw.zip --detect-model-only\nfutility update --archive\u003d/vendor/firmware/ap-ec-fw.zip --unpack\u003d/tmp/\u003csome-dir\u003e\nfutility update --archive\u003d/vendor/firmware/ap-ec-fw.zip --mode\u003dautoupdate --wp\u003d1\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "6d69c96ec525931f461ed4636ab80ba91b0d8530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
