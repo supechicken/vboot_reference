@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2c336c88_708a401b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-07T16:24:03Z",
+      "side": 1,
+      "message": "After thinking more about this, I couldn\u0027t think of a good way to test it either. Therefore, I agree with you that the Android host-side tests might be the best option.",
+      "parentUuid": "5ef14b1a_a1139dc3",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "16106168ced27e8c15a1bbfd79cda8acf664bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d78a63f5_20b7a769",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "`libziparchive` is a C++ library and to correctly access C++ symbols we need a C++ to C wrapper written in C++. The C++ symbol mangling is compiler and even compiler version dependent, so the only way here is to have a wrapper written in C++ that exports C symbols with `extern \"C\"`.\nContext: https://cs.android.com/android/platform/superproject/main/+/main:system/libziparchive/?q\u003df:libziparchive%2F",
       "parentUuid": "13864428_4def12bc",
+      "range": {
+        "startLine": 337,
+        "startChar": 78,
+        "endLine": 337,
+        "endChar": 81
+      },
+      "revId": "16106168ced27e8c15a1bbfd79cda8acf664bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49614b04_ef1d8c31",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-07T16:24:03Z",
+      "side": 1,
+      "message": "Ack. Can we briefly explain that in the commit message?",
+      "parentUuid": "ba7bfe87_6ad5879b",
       "range": {
         "startLine": 337,
         "startChar": 78,
