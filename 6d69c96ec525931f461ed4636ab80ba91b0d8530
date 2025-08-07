@@ -22,6 +22,30 @@
       },
       "revId": "6d69c96ec525931f461ed4636ab80ba91b0d8530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bddf431b_de544552",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-07T13:46:31Z",
+      "side": 1,
+      "message": "Everything seems to be working fine except for the `autoupdate`. It fails with the message \n\n```\nERROR: dut_get_manifest_key: This version of futility was compiled without libcrosid (perhaps compiled outside of the Chrome OS build system?) and the update command is not fully supported.  Either compile from the Chrome OS build, or pass --model to manually specify the machine model.\nERROR: manifest_find_model: Failed to get device identity.  Run \"crosid -v\" for explanation.\n```\n\nPassing `--model\u003d\u003ccrota in my case\u003e` fixes the issue. I am guessing the mentioned problem is not caused by this CL, so in the end everything works.",
+      "parentUuid": "1d60d429_5fb80555",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "6d69c96ec525931f461ed4636ab80ba91b0d8530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
