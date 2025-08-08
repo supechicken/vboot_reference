@@ -18,6 +18,17 @@
 /* Bytes to read at start of the boot/init_boot/vendor_boot partitions */
 #define BOOT_HDR_GKI_SIZE 4096
 
+/* BCB structure from Android recovery bootloader_message.h */
+struct bootloader_message {
+	char command[32];
+	char status[32];
+	char recovery[768];
+	char stage[32];
+	char reserved[1184];
+};
+_Static_assert(sizeof(struct bootloader_message) == 2048,
+	       "bootloader_message size is incorrect");
+
 /* Possible values of BCB command */
 #define BCB_CMD_BOOTONCE_BOOTLOADER "bootonce-bootloader"
 #define BCB_CMD_BOOT_RECOVERY "boot-recovery"
@@ -26,13 +37,7 @@
 
 static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 {
-	/*
-	 * TODO(b/425282891): This will be properly fixed on main branch. It
-	 * isn't easy to access block_size of disk through AvbOps, so as a quick
-	 * fix, always read and write 4KiB of misc partition.
-	 */
-	char buf[4096];
-	struct vb2_bootloader_message *bcb = (struct vb2_bootloader_message *)buf;
+	struct bootloader_message bcb;
 	AvbIOResult io_ret;
 	size_t num_bytes_read;
 	enum vb2_boot_command cmd;
@@ -40,11 +45,11 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 	io_ret = ops->read_from_partition(ops,
 					  GPT_ENT_NAME_ANDROID_MISC,
 					  0,
-					  sizeof(buf),
-					  buf,
+					  sizeof(struct bootloader_message),
+					  &bcb,
 					  &num_bytes_read);
 	if (io_ret != AVB_IO_RESULT_OK ||
-	    num_bytes_read != sizeof(buf)) {
+	    num_bytes_read != sizeof(struct bootloader_message)) {
 		/*
 		 * TODO(b/349304841): Handle IO errors, for now just try to boot
 		 *                    normally
