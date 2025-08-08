@@ -238,7 +238,6 @@ int GetEntryRequired(const GptEntry *e);
 int GetEntryLegacyBoot(const GptEntry *e);
 int GetEntrySuccessful(const GptEntry *e);
 int GetEntryPriority(const GptEntry *e);
-bool IsBootableEntry(const GptEntry *e);
 int GetEntryTries(const GptEntry *e);
 void SetEntryRequired(GptEntry *e, int required);
 void SetEntryLegacyBoot(GptEntry *e, int legacy_boot);
