@@ -89,17 +89,15 @@ static uint32_t fletcher32(const char *data, size_t len)
 	return (s1 << 16) | s0;
 }
 
-bool vb2_is_fastboot_cmdline_valid(struct vb2_fastboot_cmdline *fb_cmd,
-				   enum vb2_fastboot_cmdline_magic magic)
+bool vb2_is_fastboot_cmdline_valid(struct vb2_fastboot_cmdline *fb_cmd)
 {
 	if (fb_cmd->version != 0) {
 		VB2_DEBUG("Unknown vb2_fastboot_cmdline version (%d)\n", fb_cmd->version);
 		return false;
 	}
 
-	if (fb_cmd->magic != magic) {
-		VB2_DEBUG("Wrong vb2_fastboot_cmdline magic (got 0x%x, expected 0x%x)\n",
-			  fb_cmd->magic, magic);
+	if (fb_cmd->magic != VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_MAGIC) {
+		VB2_DEBUG("Wrong vb2_fastboot_cmdline magic (0x%x)", fb_cmd->magic);
 		return false;
 	}
 
@@ -129,25 +127,11 @@ bool vb2_update_fastboot_cmdline_checksum(struct vb2_fastboot_cmdline *fb_cmd)
 	return true;
 }
 
-static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(
-		AvbOps *ops, enum vb2_fastboot_cmdline_magic magic)
+static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(AvbOps *ops)
 {
 	struct vb2_fastboot_cmdline *fb_cmd;
 	AvbIOResult io_ret;
 	size_t num_bytes_read;
-	int64_t offset;
-
-	switch (magic) {
-	case VB2_FASTBOOT_CMDLINE_MAGIC:
-		offset = VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET;
-		break;
-	case VB2_FASTBOOT_BOOTCONFIG_MAGIC:
-		offset = VB2_MISC_VENDOR_SPACE_FASTBOOT_BOOTCONFIG_OFFSET;
-		break;
-	default:
-		VB2_DEBUG("Unknown magic: 0x%x\n", magic);
-		return NULL;
-	}
 
 	fb_cmd = malloc(sizeof(struct vb2_fastboot_cmdline));
 	if (fb_cmd == NULL)
@@ -155,19 +139,18 @@ static struct vb2_fastboot_cmdline *vb2_fastboot_cmdline(
 
 	io_ret = ops->read_from_partition(ops,
 					  GPT_ENT_NAME_ANDROID_MISC,
-					  offset,
+					  VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET,
 					  sizeof(struct vb2_fastboot_cmdline),
 					  fb_cmd,
 					  &num_bytes_read);
 	if (io_ret != AVB_IO_RESULT_OK ||
 	    num_bytes_read != sizeof(struct vb2_fastboot_cmdline)) {
-		VB2_DEBUG("Cannot read misc partition (magic: 0x%x, offset: %" PRIi64 ").\n",
-			   magic, offset);
+		VB2_DEBUG("Cannot read misc partition.\n");
 		free(fb_cmd);
 		return NULL;
 	}
 
-	if (!vb2_is_fastboot_cmdline_valid(fb_cmd, magic)) {
+	if (!vb2_is_fastboot_cmdline_valid(fb_cmd)) {
 		free(fb_cmd);
 		return NULL;
 	}
@@ -195,7 +178,6 @@ vb2_error_t vb2_load_android_kernel(
 	vb2_error_t ret;
 	char *verified_str;
 	struct vb2_fastboot_cmdline *fb_cmd = NULL;
-	struct vb2_fastboot_cmdline *fb_bootconfig = NULL;
 
 	VB2_DEBUG("Use legacy Android boot flow\n");
 	/*
@@ -276,11 +258,9 @@ vb2_error_t vb2_load_android_kernel(
 
 	params->boot_command = vb2_bcb_command(avb_ops);
 
-	/* Load fastboot cmdline and bootconfig only in developer mode */
-	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
-		fb_cmd = vb2_fastboot_cmdline(avb_ops, VB2_FASTBOOT_CMDLINE_MAGIC);
-		fb_bootconfig = vb2_fastboot_cmdline(avb_ops, VB2_FASTBOOT_BOOTCONFIG_MAGIC);
-	}
+	/* Load fastboot cmdline only in developer mode */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE)
+		fb_cmd = vb2_fastboot_cmdline(avb_ops);
 
 	vboot_avb_ops_free(avb_ops);
 
@@ -294,37 +274,24 @@ vb2_error_t vb2_load_android_kernel(
 	sprintf(verified_str, "%s=%s", VERIFIED_BOOT_PROPERTY_NAME,
 		(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
 
-	if ((strlen(verify_data->cmdline) + 1 + strlen(verified_str) + 1 +
-	     (fb_bootconfig ? fb_bootconfig->len + 1 : 0)) > params->kernel_bootconfig_size)
+	if ((strlen(verify_data->cmdline) + strlen(verified_str) +
+	     (fb_cmd ? fb_cmd->len : 0) + 1) >= params->kernel_cmdline_size)
 		return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 
-	strcpy(params->kernel_bootconfig_buffer, verify_data->cmdline);
+	strcpy(params->kernel_cmdline_buffer, verify_data->cmdline);
 
-	/* Append verifiedbootstate property to bootconfig */
-	strcat(params->kernel_bootconfig_buffer, " ");
-	strcat(params->kernel_bootconfig_buffer, verified_str);
+	/* Append verifiedbootstate property to cmdline */
+	strcat(params->kernel_cmdline_buffer, " ");
+	strcat(params->kernel_cmdline_buffer, verified_str);
 
 	free(verified_str);
 
-	if (fb_bootconfig) {
-		/* Append fastboot properties to bootconfig */
-		strcat(params->kernel_bootconfig_buffer, " ");
-		strncat(params->kernel_bootconfig_buffer, fb_bootconfig->cmdline,
-			fb_bootconfig->len);
-
-		free(fb_bootconfig);
-	}
-
 	if (fb_cmd) {
-		if (fb_cmd->len >= params->kernel_cmdline_size)
-			return VB2_ERROR_LOAD_PARTITION_WORKBUF;
 		/* Append fastboot properties to cmdline */
-		strncpy(params->kernel_cmdline_buffer, fb_cmd->cmdline, fb_cmd->len);
-		params->kernel_cmdline_buffer[fb_cmd->len] = '\0';
+		strcat(params->kernel_cmdline_buffer, " ");
+		strncat(params->kernel_cmdline_buffer, fb_cmd->cmdline, fb_cmd->len);
 
 		free(fb_cmd);
-	} else {
-		params->kernel_cmdline_buffer[0] = '\0';
 	}
 
 	/* No need for slot data, partitions should be already at correct

@@ -28,26 +28,8 @@ _Static_assert(sizeof(struct vb2_bootloader_message) == 2048,
  */
 #define VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET (1024 * 4)
 #define VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE (1024 * 2)
-
-/* Reserve space for fastboot oem bootconfig */
-#define VB2_MISC_VENDOR_SPACE_FASTBOOT_BOOTCONFIG_OFFSET \
-	(VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_OFFSET + \
-	 VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE)
-#define VB2_MISC_VENDOR_SPACE_FASTBOOT_BOOTCONFIG_SIZE \
-	VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_SIZE
-
-/*
- * Magic value for vb2_fastboot_cmdline that identifies content of the structure.
- * Magic value is four ASCII characters in little-endian order.
- */
-enum vb2_fastboot_cmdline_magic {
-	/* Hex values for ASCII "FCML" */
-	VB2_FASTBOOT_CMDLINE_MAGIC = 0x4c4d4346,
-	/* Hex values for ASCII "FBCF" */
-	VB2_FASTBOOT_BOOTCONFIG_MAGIC = 0x46434246,
-};
-
-/* The same structure is used for fastboot cmdline and bootconfig */
+/* Hex values for ASCII "FCML" */
+#define VB2_MISC_VENDOR_SPACE_FASTBOOT_CMDLINE_MAGIC 0x46434d4c
 struct vb2_fastboot_cmdline {
 	uint8_t version;
 	uint32_t magic;
@@ -65,11 +47,9 @@ _Static_assert(sizeof(struct vb2_fastboot_cmdline) ==
  * len property doesn't exceed cmdline size, fletcher checksum is valid.
  *
  * @param fb_cmd	Fastboot cmdline structure from misc partition.
- * @param magic		Expected magic value
  * @returns 1 if structure data pass all checks, 0 otherwise.
  */
-bool vb2_is_fastboot_cmdline_valid(struct vb2_fastboot_cmdline *fb_cmd,
-				   enum vb2_fastboot_cmdline_magic magic);
+bool vb2_is_fastboot_cmdline_valid(struct vb2_fastboot_cmdline *fb_cmd);
 
 /*
  * Calculate and set checksum property of given vb2_fastboot_cmdline structure.
