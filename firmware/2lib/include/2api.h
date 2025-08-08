@@ -842,7 +842,136 @@ vb2_error_t vb2api_kernel_phase2(struct vb2_context *ctx);
  * @param ctx		Vboot context.
  * @return VB2_SUCCESS, or error code on error.
  */
-vb2_error_t vb2api_normal_boot(struct vb2_context *ctx);
+vb2_error_t vb2api_kernel_finalize(struct vb2_context *ctx);
+
+/* Android BCB (boot control block) commands */
+enum vb2_boot_command {
+	VB2_BOOT_CMD_NORMAL_BOOT,
+	VB2_BOOT_CMD_RECOVERY_BOOT,
+	VB2_BOOT_CMD_BOOTLOADER_BOOT,
+};
+
+struct vb2_kernel_params {
+	/* Inputs to vb2api_load_kernel(). */
+	/* Destination buffer for kernel (normally at 0x100000 on x86). */
+	void *kernel_buffer;
+	/* Size of kernel buffer in bytes. */
+	uint32_t kernel_buffer_size;
+
+	/*
+	 * Outputs from vb2api_load_kernel(); valid only if it returns success.
+	 */
+	/* Handle of disk containing loaded kernel. */
+	vb2ex_disk_handle_t disk_handle;
+	/* Partition number on disk to boot (1...M). */
+	uint32_t partition_number;
+	/* Offset of bootloader image from `kernel_buffer` address. */
+	uint64_t bootloader_offset;
+	/* Size of bootloader image in bytes. */
+	uint32_t bootloader_size;
+	/* UniquePartitionGuid for boot partition. */
+	uint8_t partition_guid[16];
+	/* Flags with kernel type. */
+	uint32_t flags;
+	/* Ramdisk address */
+	uint8_t *ramdisk;
+	/* Size of the ramdisk */
+	size_t ramdisk_size;
+	/* Bootconfig address */
+	void *bootconfig;
+	/* Size of the bootconfig */
+	size_t bootconfig_size;
+	/* Pointer to Android vendor command line buffer */
+	char *vendor_cmdline_buffer;
+	/* Address of the region with kernel cmdline parameters. */
+	char *vboot_cmdline_buffer;
+	/* Size of the region with kernel cmdline parameters. */
+	uint32_t vboot_cmdline_size;
+
+	// Legacy Android boot
+	/* Android vendor_boot partition offset (in bytes) in kernel_buffer. */
+	uint32_t vendor_boot_offset;
+	/* Android init_boot partition offset (in bytes) in kernel_buffer. */
+	uint32_t init_boot_offset;
+	/* Size of init boot partition in bytes. */
+	uint32_t init_boot_size;
+	/* Address of the region with kernel cmdline parameters. */
+	char *kernel_cmdline_buffer;
+	/* Size of the region with kernel cmdline parameters. */
+	uint32_t kernel_cmdline_size;
+	/* Boot command from Android BCB on misc partition. */
+	enum vb2_boot_command boot_command;
+
+	/*
+	 * Destination buffer for pvmfw. Shall be ignored if pvmfw_buffer_size is 0.
+	 * This field can be overwritten by implementation and the caller needs
+	 * to respect the new value.
+	 */
+	void *pvmfw_buffer;
+	/*
+	 * Size of pvmfw buffer in bytes. If non-zero then implementation shall
+	 * try to load pvmfw to the pvmfw buffer. This field can be overwritten
+	 * by implementation and the caller needs to respect the new value.
+	 * If successful the pvmfw_out_size shall be set to the correct non-zero value.
+	 */
+	uint32_t pvmfw_buffer_size;
+	/* Size of pvmfw partition in bytes in pvmfw buffer. */
+	uint32_t pvmfw_out_size;
+};
+
+/*****************************************************************************/
+/* Disk access */
+
+/* Flags for vb2_disk_info */
+
+/*
+ * Disk selection in the lower 16 bits (where the disk lives), and disk
+ * attributes in the higher 16 bits (extra information about the disk
+ * needed to access it correctly).
+ */
+#define VB2_DISK_FLAG_SELECT_MASK 0xffff
+#define VB2_DISK_FLAG_ATTRIBUTE_MASK (0xffff << 16)
+
+/*
+ * Disks are used in two ways:
+ * - As a random-access device to read and write the GPT
+ * - As a streaming device to read the kernel
+ * These are implemented differently on raw NAND vs eMMC/SATA/USB
+ * - On eMMC/SATA/USB, both of these refer to the same underlying
+ *   storage, so they have the same size and LBA size. In this case,
+ *   the GPT should not point to the same address as itself.
+ * - On raw NAND, the GPT is held on a portion of the SPI flash.
+ *   Random access GPT operations refer to the SPI and streaming
+ *   operations refer to NAND. The GPT may therefore point into
+ *   the same offsets as itself.
+ * These types are distinguished by the following flag and vb2_disk_info
+ * has separate fields to describe the random-access ("GPT") and
+ * streaming aspects of the disk. If a disk is random-access (i.e.
+ * not raw NAND) then these fields are equal.
+ */
+#define VB2_DISK_FLAG_EXTERNAL_GPT (1 << 16)
+
+/* Information on a single disk. */
+struct vb2_disk_info {
+	/* Disk handle. */
+	vb2ex_disk_handle_t handle;
+	/* Size of a random-access LBA sector in bytes. */
+	uint64_t bytes_per_lba;
+	/* Number of random-access LBA sectors on the device.
+	 * If streaming_lba_count is 0, this stands in for the size of the
+	 * randomly accessed portion as well as the streaming portion.
+	 * Otherwise, this is only the randomly-accessed portion. */
+	uint64_t lba_count;
+	/* Number of streaming sectors on the device. */
+	uint64_t streaming_lba_count;
+	/* Flags (see VB2_DISK_FLAG_* constants). */
+	uint32_t flags;
+	/*
+	 * Optional name string, for use in debugging.  May be empty or null if
+	 * not available.
+	 */
+	const char *name;
+};
 
 /**
  * Finalize for kernel verification stage.
