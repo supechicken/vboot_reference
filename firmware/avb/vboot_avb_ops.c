@@ -39,49 +39,6 @@ static inline struct vboot_avb_ctx *user_data(AvbOps *ops)
 	return ops->user_data;
 }
 
-static AvbIOResult vboot_avb_write_to_partition(AvbOps *ops,
-						const char *partition_name,
-						int64_t offset,
-						size_t size,
-						const void *buf)
-{
-	struct vboot_avb_ctx *ctx = (struct vboot_avb_ctx *)ops->user_data;
-	uint64_t part_start, part_size;
-
-	if (size % ctx->gpt->sector_bytes ||
-	    offset % ctx->gpt->sector_bytes) {
-		VB2_DEBUG("Unaligned writes are not supported\n");
-		return AVB_IO_RESULT_ERROR_IO;
-	}
-
-	offset /= ctx->gpt->sector_bytes;
-	size /= ctx->gpt->sector_bytes;
-
-	if (GptFindOffsetByName(ctx->gpt, partition_name, &part_start, &part_size) !=
-	    GPT_SUCCESS) {
-		VB2_DEBUG("Unable to find %s partition\n", partition_name);
-		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
-	}
-
-	if (offset < 0)
-		offset += part_size;
-
-	if (offset < 0 || offset + size > part_size) {
-		VB2_DEBUG("Write outside partition range");
-		return AVB_IO_RESULT_ERROR_RANGE_OUTSIDE_PARTITION;
-	}
-
-	offset += part_start;
-
-	if (VbExDiskWrite(ctx->disk_handle, offset, size, buf)) {
-		VB2_DEBUG("Unable to complete write to disk\n");
-		return AVB_IO_RESULT_ERROR_IO;
-	}
-
-	return AVB_IO_RESULT_OK;
-}
-
-
 static AvbIOResult load_partition(GptData *gpt, vb2ex_disk_handle_t dh,
 				  const char *partition_name, int64_t offset_from_partition,
 				  size_t num_bytes, void *buf, size_t *out_num_read)
@@ -860,7 +817,6 @@ AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 	avb_ops->user_data = avbctx;
 
 	avb_ops->read_from_partition = read_from_partition;
-	avb_ops->write_to_partition = vboot_avb_write_to_partition;
 	if (legacy)
 		avb_ops->get_preloaded_partition = vboot_avb_get_preloaded_partition;
 	else
