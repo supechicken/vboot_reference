@@ -431,6 +431,44 @@ static vb2_error_t vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 	}
 }
 
+static enum vb2_boot_command bcb_command(AvbOps *ops)
+{
+	struct bootloader_message bcb;
+	AvbIOResult io_ret;
+	size_t num_bytes_read;
+	enum vb2_boot_command cmd;
+
+	io_ret = ops->read_from_partition(ops,
+					  GptPartitionNames[GPT_ANDROID_MISC],
+					  0,
+					  sizeof(bcb),
+					  &bcb,
+					  &num_bytes_read);
+	if (io_ret != AVB_IO_RESULT_OK || num_bytes_read != sizeof(bcb)) {
+		/*
+		 * TODO(b/349304841): Handle IO errors, for now just try to boot
+		 *                    normally
+		 */
+		VB2_DEBUG("Cannot read misc partition, err: %d\n", io_ret);
+		return VB2_BOOT_CMD_NORMAL_BOOT;
+	}
+
+	/* BCB command field is for the bootloader */
+	if (!strcmp(bcb.command, BCB_CMD_BOOT_RECOVERY)) {
+		cmd = VB2_BOOT_CMD_RECOVERY_BOOT;
+	} else if (!strcmp(bcb.command, BCB_CMD_BOOTONCE_BOOTLOADER)) {
+		cmd = VB2_BOOT_CMD_BOOTLOADER_BOOT;
+	} else {
+		/* If empty or unknown command, just boot normally */
+		if (bcb.command[0] != '\0')
+			VB2_DEBUG("Unknown boot command \"%.*s\". Use normal boot.\n",
+				  (int)sizeof(bcb.command), bcb.command);
+		cmd = VB2_BOOT_CMD_NORMAL_BOOT;
+	}
+
+	return cmd;
+}
+
 /*
  * Copy bootconfig into separate buffer, it can be overwritten when ramdisks
  * are concatenated. Bootconfig buffer will be processed by depthcharge.
@@ -775,8 +813,8 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		goto out;
 
 	/* Check "misc" partition for boot type */
-	params->boot_command = vb2_bcb_command(avb_ops);
-	bool recovery_boot = gki_is_recovery_boot(params->boot_command);
+	enum vb2_boot_command boot_command = bcb_command(avb_ops);
+	bool recovery_boot = gki_is_recovery_boot(boot_command);
 
 	/*
 	 * Before booting we need to rearrange buffers with partition data, which includes:
