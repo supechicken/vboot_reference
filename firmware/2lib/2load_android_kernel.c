@@ -36,13 +36,7 @@ static vb2_error_t prepare_pvmfw(AvbSlotVerifyData *verify_data,
 
 static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 {
-	/*
-	 * TODO(b/425282891): This will be properly fixed on main branch. It
-	 * isn't easy to access block_size of disk through AvbOps, so as a quick
-	 * fix, always read and write 4KiB of misc partition.
-	 */
-	char buf[4096];
-	struct vb2_bootloader_message *bcb = (struct vb2_bootloader_message *)buf;
+	struct vb2_bootloader_message bcb;
 	AvbIOResult io_ret;
 	size_t num_bytes_read;
 	enum vb2_boot_command cmd;
@@ -51,11 +45,11 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 	io_ret = ops->read_from_partition(ops,
 					  GPT_ENT_NAME_ANDROID_MISC,
 					  0,
-					  sizeof(buf),
-					  buf,
+					  sizeof(struct vb2_bootloader_message),
+					  &bcb,
 					  &num_bytes_read);
 	if (io_ret != AVB_IO_RESULT_OK ||
-	    num_bytes_read != sizeof(buf)) {
+	    num_bytes_read != sizeof(struct vb2_bootloader_message)) {
 		/*
 		 * TODO(b/349304841): Handle IO errors, for now just try to boot
 		 *                    normally
@@ -65,21 +59,21 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 	}
 
 	/* BCB command field is for the bootloader */
-	if (!strncmp(bcb->command, BCB_CMD_BOOT_RECOVERY,
-		     VB2_MIN(sizeof(BCB_CMD_BOOT_RECOVERY) - 1, sizeof(bcb->command)))) {
+	if (!strncmp(bcb.command, BCB_CMD_BOOT_RECOVERY,
+		     VB2_MIN(sizeof(BCB_CMD_BOOT_RECOVERY) - 1, sizeof(bcb.command)))) {
 		cmd = VB2_BOOT_CMD_RECOVERY_BOOT;
 		/* Recovery image will clear the command by itself. */
 		writeback = false;
-	} else if (!strncmp(bcb->command, BCB_CMD_BOOTONCE_BOOTLOADER,
+	} else if (!strncmp(bcb.command, BCB_CMD_BOOTONCE_BOOTLOADER,
 			    VB2_MIN(sizeof(BCB_CMD_BOOTONCE_BOOTLOADER) - 1,
-				    sizeof(bcb->command)))) {
+				    sizeof(bcb.command)))) {
 		cmd = VB2_BOOT_CMD_BOOTLOADER_BOOT;
 		writeback = true;
 	} else {
 		/* If empty or unknown command, just boot normally */
-		if (bcb->command[0] != '\0')
+		if (bcb.command[0] != '\0')
 			VB2_DEBUG("Unknown boot command \"%.*s\". Use normal boot.\n",
-				  (int)sizeof(bcb->command), bcb->command);
+				  (int)sizeof(bcb.command), bcb.command);
 		cmd = VB2_BOOT_CMD_NORMAL_BOOT;
 		writeback = false;
 	}
@@ -88,12 +82,12 @@ static enum vb2_boot_command vb2_bcb_command(AvbOps *ops)
 		return cmd;
 
 	/* Command field is supposed to be a one-shot thing. Clear it. */
-	memset(bcb->command, 0, sizeof(bcb->command));
+	memset(bcb.command, 0, sizeof(bcb.command));
 	io_ret = ops->write_to_partition(ops,
 					 GPT_ENT_NAME_ANDROID_MISC,
 					 0,
-					 sizeof(buf),
-					 &buf);
+					 sizeof(struct vb2_bootloader_message),
+					 &bcb);
 	if (io_ret != AVB_IO_RESULT_OK)
 		VB2_DEBUG("Failed to update misc parition\n");
 
