@@ -113,51 +113,9 @@ static AvbIOResult vboot_avb_read_from_partition(AvbOps *ops,
 	return AVB_IO_RESULT_OK;
 }
 
-static AvbIOResult vboot_avb_write_to_partition(AvbOps *ops,
-						const char *partition_name,
-						int64_t offset,
-						size_t size,
-						const void *buf)
-{
-	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
-	uint64_t part_start, part_size;
-
-	if (size % ctx->gpt->sector_bytes ||
-	    offset % ctx->gpt->sector_bytes) {
-		VB2_DEBUG("Unaligned writes are not supported\n");
-		return AVB_IO_RESULT_ERROR_IO;
-	}
-
-	offset /= ctx->gpt->sector_bytes;
-	size /= ctx->gpt->sector_bytes;
-
-	if (GptFindOffsetByName(ctx->gpt, partition_name, &part_start, &part_size) !=
-	    GPT_SUCCESS) {
-		VB2_DEBUG("Unable to find %s partition\n", partition_name);
-		return AVB_IO_RESULT_ERROR_NO_SUCH_PARTITION;
-	}
-
-	if (offset < 0)
-		offset += part_size;
-
-	if (offset < 0 || offset + size > part_size) {
-		VB2_DEBUG("Write outside partition range");
-		return AVB_IO_RESULT_ERROR_RANGE_OUTSIDE_PARTITION;
-	}
-
-	offset += part_start;
-
-	if (VbExDiskWrite(ctx->disk_handle, offset, size, buf)) {
-		VB2_DEBUG("Unable to complete write to disk\n");
-		return AVB_IO_RESULT_ERROR_IO;
-	}
-
-	return AVB_IO_RESULT_OK;
-}
-
-static AvbIOResult vboot_avb_get_size_of_partition(AvbOps *ops,
-					 const char *partition_name,
-					 uint64_t *out_size)
+static AvbIOResult load_partition(GptData *gpt, vb2ex_disk_handle_t dh,
+				  const char *partition_name, int64_t offset_from_partition,
+				  size_t num_bytes, void *buf, size_t *out_num_read)
 {
 	struct vboot_avb_data *ctx = (struct vboot_avb_data *)ops->user_data;
 	uint64_t part_start, part_size;
@@ -711,14 +669,16 @@ AvbOps *vboot_avb_ops_new(struct vb2_context *vb2_ctx,
 	data->vb2_ctx = vb2_ctx;
 	data->disk_handle = disk_handle;
 
-	ops->read_from_partition = vboot_avb_read_from_partition;
-	ops->write_to_partition = vboot_avb_write_to_partition;
-	ops->get_size_of_partition = vboot_avb_get_size_of_partition;
-	ops->read_is_device_unlocked = vboot_avb_read_is_device_unlocked;
-	ops->read_rollback_index = vboot_avb_read_rollback_index;
-	ops->get_unique_guid_for_partition = get_unique_guid_for_partition;
-	ops->validate_vbmeta_public_key = validate_vbmeta_public_key;
-	ops->get_preloaded_partition = vboot_avb_get_preloaded_partition;
+	avb_ops->read_from_partition = read_from_partition;
+	if (legacy)
+		avb_ops->get_preloaded_partition = vboot_avb_get_preloaded_partition;
+	else
+		avb_ops->get_preloaded_partition = get_preloaded_partition;
+	avb_ops->read_rollback_index = read_rollback_index;
+	avb_ops->read_is_device_unlocked = read_is_device_unlocked;
+	avb_ops->get_unique_guid_for_partition = get_unique_guid_for_partition;
+	avb_ops->get_size_of_partition = get_size_of_partition;
+	avb_ops->validate_vbmeta_public_key = validate_vbmeta_public_key;
 
 	return ops;
 }
