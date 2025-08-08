@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d492de_304b450b",
+        "filename": "firmware/include/gpt_misc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-08T07:53:15Z",
+      "side": 1,
+      "message": "The successful boot flag is a single bit. Changing this field to `bool` will make the rest of the code shorter.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "402950b062f7c96ee8415f21344f2fb92aa6890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dbbcab_ea3b5c78",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-08T07:53:15Z",
+      "side": 1,
+      "message": "This code is not necessary. `SetEntrySuccessful()` checks for zero/non-zero value.",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 0
+      },
+      "revId": "402950b062f7c96ee8415f21344f2fb92aa6890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd6ccbb_0aaa5393",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-08T07:53:15Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\tif (desired_state)\n```",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 26
+      },
+      "revId": "402950b062f7c96ee8415f21344f2fb92aa6890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a878aac_989ed0ba",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-08T07:53:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be moved one scope up? Or will it produce some side-effects?",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 24
+      },
+      "revId": "402950b062f7c96ee8415f21344f2fb92aa6890d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
