@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116150ab_f1ae3bd0",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-11T22:20:49Z",
+      "side": 0,
+      "message": "At least `convert_recovery_to_full_ssd.sh` and `convert_recovery_to_ssd.sh` are still expecting the file to exist, so you have to remove their reference to the `vmlinuz_hd.vblock` before submitting this.",
+      "range": {
+        "startLine": 353,
+        "startChar": 45,
+        "endLine": 353,
+        "endChar": 62
+      },
+      "revId": "26130316a50bfeaaedd8b3fda37b144f3eafd423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
