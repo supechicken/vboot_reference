@@ -322,38 +322,6 @@ update_rootfs_hash() {
   done
 }
 
-# Update the SSD install-able vblock file on stateful partition.
-# ARGS: Loopdev
-# This is deprecated because all new images should have a SSD boot-able kernel
-# in partition 4. However, the signer needs to be able to sign new & old images
-# (crbug.com/449450#c13) so we will probably never remove this.
-update_stateful_partition_vblock() {
-  local loopdev="$1"
-  local temp_out_vb
-  temp_out_vb="$(make_temp_file)"
-
-  local loop_kern="${loopdev}p4"
-  if [[ -z "$(sudo_futility dump_kernel_config "${loop_kern}" \
-        2>/dev/null)" ]]; then
-    info "Building vmlinuz_hd.vblock from legacy image partition 2."
-    loop_kern="${loopdev}p2"
-  fi
-
-  # vblock should always use kernel keyblock.
-  sudo_futility vbutil_kernel --repack "${temp_out_vb}" \
-    --keyblock "${KEYCFG_KERNEL_KEYBLOCK}" \
-    --signprivate "${KEYCFG_KERNEL_VBPRIVK}" \
-    --oldblob "${loop_kern}" \
-    --vblockonly
-
-  # Copy the installer vblock to the stateful partition.
-  local stateful_dir
-  stateful_dir=$(make_temp_dir)
-  sudo mount "${loopdev}p1" "${stateful_dir}"
-  sudo cp "${temp_out_vb}" "${stateful_dir}"/vmlinuz_hd.vblock
-  sudo umount "${stateful_dir}"
-}
-
 # Do a validity check on the image's rootfs
 # ARGS: Image
 verify_image_rootfs() {
@@ -1271,7 +1239,30 @@ sign_image_file() {
     "${kernA_keyblock}" "${kernA_privkey}" \
     "${kernB_keyblock}" "${kernB_privkey}" "${should_sign_kernB}" \
     "${kernC_keyblock}" "${kernC_privkey}" "${should_sign_kernC}"
+<<<<<<< PATCH SET (cb30edaa080669ebbdea88c148dc04a678bfd83b Remove deprecated stateful partition vblock update)
+  if [[ "${image_type}" == "recovery" &&
+        "${sign_recovery_like_base}" == "false" ]]; then
+    update_recovery_kernel_hash "${loopdev}" 2 "${kernA_keyblock}" \
+      "${kernA_privkey}"
+    if [[ "${should_sign_kernC}" == "true" ]]; then
+      update_recovery_kernel_hash "${loopdev}" 6 "${kernC_keyblock}" \
+        "${kernC_privkey}"
+    fi
+  fi
+||||||| BASE      (26130316a50bfeaaedd8b3fda37b144f3eafd423 futility/archive: Add libziparchive support on Android)
   update_stateful_partition_vblock "${loopdev}"
+  if [[ "${image_type}" == "recovery" &&
+        "${sign_recovery_like_base}" == "false" ]]; then
+    update_recovery_kernel_hash "${loopdev}" 2 "${kernA_keyblock}" \
+      "${kernA_privkey}"
+    if [[ "${should_sign_kernC}" == "true" ]]; then
+      update_recovery_kernel_hash "${loopdev}" 6 "${kernC_keyblock}" \
+        "${kernC_privkey}"
+    fi
+  fi
+=======
+  update_stateful_partition_vblock "${loopdev}"
+>>>>>>> BASE      (9510c7f8eeb078a21979be44100d53156442093f Reorder recovery kernel hash updates after MiniOS resigning)
 
   if [[ -n "${minios_keyblock}" ]]; then
     # b/266502803: If it's a recovery image and minios_kernel.v1.keyblock
