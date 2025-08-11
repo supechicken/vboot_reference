@@ -22,6 +22,30 @@
       },
       "revId": "26130316a50bfeaaedd8b3fda37b144f3eafd423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035a7233_e8c45243",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-11T22:36:47Z",
+      "side": 0,
+      "message": "Appreciate the reference Hung-Te\n\nI removed the bits of code from those scripts that copied from stateful into the new image\u0027s offset in kern-a.\n\nPlease let me know if this should suffice for this deprecation portion.\n\n(I see some other references that could be removed, but will defer those into another CL)",
+      "parentUuid": "116150ab_f1ae3bd0",
+      "range": {
+        "startLine": 353,
+        "startChar": 45,
+        "endLine": 353,
+        "endChar": 62
+      },
+      "revId": "26130316a50bfeaaedd8b3fda37b144f3eafd423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
