@@ -23,7 +23,6 @@ struct u_archive *archive_open(const char *path)
 {
 	struct stat path_stat;
 	struct u_archive *ar;
-	void *handle;
 
 	if (stat(path, &path_stat) != 0) {
 		ERROR("Cannot identify type of path: %s\n", path);
