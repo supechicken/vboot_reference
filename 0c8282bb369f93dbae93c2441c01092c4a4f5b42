@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ef5aab4_4ddf2bd7",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T21:03:49Z",
+      "side": 1,
+      "message": "Yeah, but why optimize for `if` statements right now..\n\nCan\u0027t we be happy with just moving forward with what\u0027s set here?\n\nI can revisit if we need later, but I don\u0027t have much more time to work on these",
+      "parentUuid": "6b7d3f96_ebbbb22e",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38027b66_c9ec629f",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 12
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-12T20:53:05Z",
       "side": 1,
       "message": "Why not just update all that are in there?",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae27e1b0_c3dfeedf",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T21:03:49Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6839636/comment/4a52232f_83f38e69/\n\nsame comment",
+      "parentUuid": "38027b66_c9ec629f",
       "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e7f8f6f_9c2a642f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T21:03:49Z",
+      "side": 1,
+      "message": "Can we just add this as a follow-up?\n\nIt seems fine right now to just keep the lists static / in sync between rather than trusting the given image and it\u0027s configs to decide which partitions to include.",
+      "parentUuid": "4a52232f_83f38e69",
+      "range": {
+        "startLine": 1052,
+        "startChar": 23,
+        "endLine": 1052,
+        "endChar": 35
+      },
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c48dd8e5_0a5c2118",
         "filename": "scripts/image_signing/sign_official_build.sh",
         "patchSetId": 12
@@ -71,6 +131,24 @@
       "writtenOn": "2025-08-12T20:53:05Z",
       "side": 1,
       "message": "nit: not sure you need to output these twice, you\u0027re already printing the whole thing below",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6105479_311255fe",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T21:03:49Z",
+      "side": 1,
+      "message": "Acknowledged, did so to print as it\u0027s going through them too",
+      "parentUuid": "c48dd8e5_0a5c2118",
       "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +166,102 @@
       "writtenOn": "2025-08-12T20:53:05Z",
       "side": 1,
       "message": "nit: While we\u0027re at it let\u0027s fix the naming here to make it more clear that `old_kernel_config` is text and this one is a file name, e.g. call it `new_config_file` or something like that.",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ca72d0_20f1e474",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T21:03:49Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f7dad75b_f53ef5a2",
+      "fixSuggestions": [
+        {
+          "fixId": "eb26d06e_d3853e00",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1068,
+                "startChar": 0,
+                "endLine": 1069,
+                "endChar": 0
+              },
+              "replacement": "  local new_config_file\u003d\"$(make_temp_file)\"\n"
+            },
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1071,
+                "startChar": 0,
+                "endLine": 1072,
+                "endChar": 0
+              },
+              "replacement": "  echo \"${old_kernel_config}\" \u003e \"${new_config_file}\"\n"
+            },
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1073,
+                "startChar": 0,
+                "endLine": 1074,
+                "endChar": 0
+              },
+              "replacement": "  # Only use `new_config_file` from now on.\n"
+            },
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1077,
+                "startChar": 0,
+                "endLine": 1078,
+                "endChar": 0
+              },
+              "replacement": "    \"${new_config_file}\"\n"
+            },
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1083,
+                "startChar": 0,
+                "endLine": 1084,
+                "endChar": 0
+              },
+              "replacement": "      \"${new_config_file}\"\n"
+            },
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1087,
+                "startChar": 0,
+                "endLine": 1088,
+                "endChar": 0
+              },
+              "replacement": "  cat \"${new_config_file}\"\n"
+            },
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1095,
+                "startChar": 0,
+                "endLine": 1096,
+                "endChar": 0
+              },
+              "replacement": "    --config \"${new_config_file}\"\n"
+            }
+          ]
+        }
+      ],
       "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
