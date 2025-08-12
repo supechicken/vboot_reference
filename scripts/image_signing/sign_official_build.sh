@@ -1015,7 +1015,7 @@ update_recovery_kernel_hash() {
     dump_kernel_config "${loop_recovery_kernel}")"
   local old_kernb_hash
   old_kernb_hash="$(echo "${old_kernel_config}" |
-    sed -nEe "s#.*kern_b_hash=([a-z0-9]*).*#\1#p")"
+    sed -nEe 's#.*kern_b_hash=([a-z0-9]*).*#\1#p')"
   local new_kernb_hash
   if [[ "${#old_kernb_hash}" -lt 64 ]]; then
     new_kernb_hash=$(sudo sha1sum "${loop_kernb}" | cut -f1 -d' ')
@@ -1023,11 +1023,66 @@ update_recovery_kernel_hash() {
     new_kernb_hash=$(sudo sha256sum "${loop_kernb}" | cut -f1 -d' ')
   fi
 
-  new_kernel_config=$(make_temp_file)
-  # shellcheck disable=SC2001
-  echo "${old_kernel_config}" |
-    sed -e "s#\(kern_b_hash=\)[a-z0-9]*#\1${new_kernb_hash}#" \
-      > "${new_kernel_config}"
+  # Check in the kernel command line if `part_hash` is present.
+  local has_part_hash_in_config=false
+  if echo "${old_kernel_config}" | grep -q "part_hash="; then
+    has_part_hash_in_config=true
+  fi
+
+  if [[ "${has_part_hash_in_config}" == "true" ]]; then
+    # So here, we need to update the `part_hash` in the kernel command line.
+    info "Update the part_hash in the kernel command line."
+
+    local old_part_hash
+    old_part_hash="$(echo "${old_kernel_config}" |
+      sed -nEe 's#.*part_hash=([A-Za-z0-9+/,:=]*).*#\1#p')"
+
+    info "The old part_hash is: ${old_part_hash}"
+
+    # The list of partitions that we need to generate the digest for and update
+    # the `part_hash` in the kernel command line.
+    local part_nums=(
+        "9" # MiniOS A
+        "10" # MiniOS B
+    )
+
+    # We generate the digest for each partition in `part_nums` and join them
+    # with `part_num:base64(hextobin(digest))` format that is comma separated.
+    local part_hashes=()
+    for part_num in "${part_nums[@]}"; do
+      local part_hash
+      part_hash="$(sudo sha256sum "${loopdev}p${part_num}" | cut -f1 -d' ')"
+      # Convert to binary then base64 format.
+      part_hash="$(echo "${part_hash}" | xxd -r -p | base64 -w0)"
+
+      info "The part_hash for ${part_num} is: ${part_hash}"
+      part_hashes+=("${part_num}:${part_hash}")
+    done
+
+    local new_part_hash
+    new_part_hash="$(IFS=','; echo "${part_hashes[*]}")"
+
+    info "The new part_hash is: ${new_part_hash}"
+  fi
+
+  local new_kernel_config="$(make_temp_file)"
+
+  # Set the new kernel config to be the same as the old one.
+  echo "${old_kernel_config}" > "${new_kernel_config}"
+
+  # Only use `new_kernel_config` from now on.
+
+  # Update the kernel B hash in the recovery kernel command line.
+  sed -i -e 's#\(kern_b_hash=\)[a-z0-9]*#\1'"${new_kernb_hash}#" \
+    "${new_kernel_config}"
+
+  # Update the `part_hash` in the recovery kernel command line.
+  if [[ "${has_part_hash_in_config}" == "true" ]]; then
+    # shellcheck disable=SC2001
+    sed -i -e 's#\(part_hash=\)[A-Za-z0-9+/,:=]*#\1'"${new_part_hash}#" \
+      "${new_kernel_config}"
+  fi
+
   info "New config for kernel partition ${recovery_kernel_partition} is"
   cat "${new_kernel_config}"
 
