@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34f2080_fbcf494b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T09:11:23Z",
+      "side": 1,
+      "message": "\u003e Also, once we set it up, it\u0027s likely a forget + leave as it is setup.\n\nAnything landed in the signer, we must keep it forward compatible for 10+ years, even if we dropped the design on ToT (the factory/fw/release branches will still need it). That\u0027s why I want to see a clear design of discussion for new features.\n\nUnderstood adding to verity may need a long time so a kernel command line hash is probably what we can have in minimal development time. I\u0027m fine if Julius can agree with this.",
+      "parentUuid": "297794de_fbb692d5",
+      "range": {
+        "startLine": 1056,
+        "startChar": 53,
+        "endLine": 1056,
+        "endChar": 59
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27fe77dc_b18a26e9",
