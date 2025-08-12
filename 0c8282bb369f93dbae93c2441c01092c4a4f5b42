@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b7d3f96_ebbbb22e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T20:53:05Z",
+      "side": 1,
+      "message": "This seems a bit more complicated than needed? Why not just do the `kern_b_hash` stuff first, and then at the end you can put all of this in one `if` block and don\u0027t need to store this boolean in an extra variable?\n```\nlocal new_kernel...\n\necho \"${old_kernel...\n\nsed -i -e \u0027s#\\(kern_b_hash...\n\nif grep -q \"part_hash\u003d\" \u003c\u003c\u003c \"${old_kernel_config}\"; then\n  ...do all the other stuff...\n  \n  sed -i -e \u0027s#\\(part_hash\u003d...\nfi\n```",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38027b66_c9ec629f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T20:53:05Z",
+      "side": 1,
+      "message": "Why not just update all that are in there?",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a52232f_83f38e69",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T20:53:05Z",
+      "side": 1,
+      "message": "This is blindly adding a new `part_hash` for 9 and 10 regardless of whether they were in the old one. I don\u0027t think we should do that, I think we should update exactly those that existed in the old string and not add anything else that wasn\u0027t already there.\n```\nwhile IFS\u003d: read -d , part_num old_hash; do\n  ...recalculate hash for ${part_num}...\ndone \u003c\u003c\u003c \"${old_part_hash}\"\n```",
+      "range": {
+        "startLine": 1052,
+        "startChar": 23,
+        "endLine": 1052,
+        "endChar": 35
+      },
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48dd8e5_0a5c2118",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T20:53:05Z",
+      "side": 1,
+      "message": "nit: not sure you need to output these twice, you\u0027re already printing the whole thing below",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7dad75b_f53ef5a2",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T20:53:05Z",
+      "side": 1,
+      "message": "nit: While we\u0027re at it let\u0027s fix the naming here to make it more clear that `old_kernel_config` is text and this one is a file name, e.g. call it `new_config_file` or something like that.",
+      "revId": "0c8282bb369f93dbae93c2441c01092c4a4f5b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

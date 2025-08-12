@@ -154,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4504191d_0adfd1b3",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T20:53:05Z",
+      "side": 1,
+      "message": "I think this one is probably fine, I\u0027m just glad we were able to talk Jae out of the gzip thing. 😄 At the end of the day, there\u0027s no real \"default\" format for printing hashes, hex digits and base64 are equally valid choices, it\u0027s just that `sha256sum` uses hex digits (but that\u0027s a choice in that utility, not the SHA256 algorithm itself). Base64 is a very widespread encoding, it can be converted back to hash digits with just `base64` and `od` (both very standard utilities basically available everywhere, including busybox and toybox), and when it comes to reading hashes it\u0027s not really any more or less readable than hex digits (because you don\u0027t care about the specific bit sequence of a hash, you usually just want to compare if two are equal), so I don\u0027t think we\u0027re painting ourselves into a corner with this one.",
+      "parentUuid": "a34f2080_fbcf494b",
+      "range": {
+        "startLine": 1056,
+        "startChar": 53,
+        "endLine": 1056,
+        "endChar": 59
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27fe77dc_b18a26e9",
