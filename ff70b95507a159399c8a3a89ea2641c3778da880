@@ -34,6 +34,24 @@
       "parentUuid": "0075196d_bf3377c5",
       "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2280a36_00c6f328",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T21:06:16Z",
+      "side": 1,
+      "message": "Oh, I see, I think Hung-Te\u0027s concern was just the `\"\\1\"`? I mean, you could theoretically say that should be `\"\\\\1\"` but in practice either one works and I think many people write `sed` patterns that way, I wouldn\u0027t really consider it a problem.\n\nI do think there\u0027s a risk that someone used `sed \"s/\u003cold\u003e/\u003cnew\u003e/\"` on something parsing the kernel command line though, and that will eventually blow up when we start putting base64 strings there, so it would be good if you could double-check that all `sed` invocations related to the command line are guarded against that (e.g. use `#` instead).",
+      "parentUuid": "86700905_63a01080",
+      "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
