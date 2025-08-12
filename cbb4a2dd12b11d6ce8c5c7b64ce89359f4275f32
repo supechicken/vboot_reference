@@ -16,6 +16,24 @@
       "message": "Any reason we have to make it RO? We probably need a BUG\u003d to know why we\u0027d like to make the change now.",
       "revId": "cbb4a2dd12b11d6ce8c5c7b64ce89359f4275f32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6088fba6_5ce6a905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T07:39:53Z",
+      "side": 1,
+      "message": "When looking at the callsite, it appears that we never pass in any \"ro\" as a variable.\n\nSo, should this always default to no option at all?\n\nIt seems like the value isn\u0027t ever set in this function, unless there\u0027s some global magic happening.",
+      "parentUuid": "ac3da371_e19ef448",
+      "revId": "cbb4a2dd12b11d6ce8c5c7b64ce89359f4275f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
