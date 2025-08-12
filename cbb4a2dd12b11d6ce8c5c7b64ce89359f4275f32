@@ -34,6 +34,24 @@
       "parentUuid": "ac3da371_e19ef448",
       "revId": "cbb4a2dd12b11d6ce8c5c7b64ce89359f4275f32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8062789_d83b2388",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T09:06:44Z",
+      "side": 1,
+      "message": "Yes I agree the \"ro\" variable was probably a mistake, or something wrong when refactoring in the past.\n\nLooking at sign_official_build.sh, the esp partition was expected to be rw so I think changing ro\u003d\"\" would be more correct. Should not be ro\u003dro.",
+      "parentUuid": "6088fba6_5ce6a905",
+      "revId": "cbb4a2dd12b11d6ce8c5c7b64ce89359f4275f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
