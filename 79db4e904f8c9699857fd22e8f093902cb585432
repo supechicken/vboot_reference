@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eff8f60_ea6ead4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T07:52:36Z",
+      "side": 1,
+      "message": "Yeah, the option you mentioned would also work.\n\nUltimately, the goal is to copy the data with verification checking. There\u0027s no need for real-time mounting, booting, or using artifacts in the partition.\n\nSo, this digest, which is a checksum, seems like a good enough solution.\n\nUnless we want to go down in the number of bytes for the checksum, but SHA256 seems like the right choice.",
+      "parentUuid": "464e1bdb_8567e0e3",
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f19e946_bc4df95f",
