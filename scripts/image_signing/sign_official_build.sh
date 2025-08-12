@@ -98,7 +98,7 @@ do_futility() {
 
 # get_verity_arg <commandline> <key> -> <value>
 get_verity_arg() {
-  echo "$1" | sed -n "s/.*\b$2=\([^ \"]*\).*/\1/p"
+  echo "$1" | sed -n 's/.*\b'"$2"'=\([^ \"]*\).*/\1/p'
 }
 
 # Get the dmparams parameters from a kernel config.
@@ -123,7 +123,7 @@ get_hash_from_config() {
 get_dm_device() {
   local dm=$1
   local device=$2
-  echo "${dm}" | sed -nre "s/.*${device}[^,]*,([^,]*).*/\1/p"
+  echo "${dm}" | sed -nre 's/.*'"${device}"'[^,]*,([^,]*).*/\1/p'
 }
 
 # Set the mapped device and its args for a device.
@@ -134,7 +134,8 @@ set_dm_device() {
   local dm=$1
   local device=$2
   local args=$3
-  echo "${dm}" | sed -nre "s#(.*${device}[^,]*,)([^,]*)(.*)#\1${args}\3#p"
+  echo "${dm}" | \
+    sed -nre 's#(.*'"${device}"'[^,]*,)([^,]*)(.*)#\1'"${args}"'\3#p'
 }
 
 CALCULATED_KERNEL_CONFIG=
@@ -394,7 +395,7 @@ repack_firmware_bundle() {
     local temp_version
     temp_version="$(make_temp_file)"
     cat "${input_dir}"/VERSION |
-    sed -e "s#\(.*\)\ \(.*bios.bin.*\)#${newfd_checksum}\ \2#" > \
+    sed -e 's#\(.*\)\ \(.*bios.bin.*\)#'"${newfd_checksum}"'\ \2#' > \
       "${temp_version}"
     mv "${temp_version}" "${input_dir}"/VERSION
 
