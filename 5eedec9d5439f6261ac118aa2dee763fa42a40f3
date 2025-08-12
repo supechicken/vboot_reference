@@ -22,6 +22,29 @@
       },
       "revId": "5eedec9d5439f6261ac118aa2dee763fa42a40f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0695ab_a4d544ba",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T09:14:36Z",
+      "side": 1,
+      "message": "You\u0027ll be executing `part_hash` as a command here. Don\u0027t use backquotes in double quotes.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 22,
+        "endLine": 1034,
+        "endChar": 32
+      },
+      "revId": "5eedec9d5439f6261ac118aa2dee763fa42a40f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
