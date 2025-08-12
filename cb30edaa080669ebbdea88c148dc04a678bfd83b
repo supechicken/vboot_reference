@@ -51,6 +51,24 @@
       "message": "not sure if the current signing process has these pinned and need updating before changing other parts in the build.  Benjamin should know.",
       "revId": "cb30edaa080669ebbdea88c148dc04a678bfd83b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b156b48_f6c3690c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524007
+      },
+      "writtenOn": "2025-08-12T01:30:52Z",
+      "side": 1,
+      "message": "Once this lands I can kick a build to repackage the signing docker container. When that gets promoted to prod we can move forward.",
+      "parentUuid": "a600bd58_2e61bc56",
+      "revId": "cb30edaa080669ebbdea88c148dc04a678bfd83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
