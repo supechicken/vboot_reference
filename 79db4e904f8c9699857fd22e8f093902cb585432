@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1caf66d2_3feaafa2",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T07:44:46Z",
+      "side": 1,
+      "message": "Fix applied. (Thanks for catching this mistake)",
+      "parentUuid": "9f19e946_bc4df95f",
+      "range": {
+        "startLine": 1038,
+        "startChar": 32,
+        "endLine": 1038,
+        "endChar": 44
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6052e4e_a9dcf8e5",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "297794de_fbb692d5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T07:44:46Z",
+      "side": 1,
+      "message": "Yeah, I think @jwerner@chromium.org mentioned the same thing on another build time effort that this is parallel work for.\n\nIn the runtime environments we work in, we already have the necessary tooling to unwind this.\n\nAlso, once we set it up, it\u0027s likely a forget + leave as it is setup.\n\n---\n\nThere are no design proposals.\nJust some discussions on the tracker + reason for this happening.\n\nTime is tight, but if you want to see a 1 pager, can make it happen, but it seems small enough of a design to not warrant one.",
+      "parentUuid": "a6052e4e_a9dcf8e5",
+      "range": {
+        "startLine": 1056,
+        "startChar": 53,
+        "endLine": 1056,
+        "endChar": 59
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27fe77dc_b18a26e9",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-08-12T06:02:03Z",
       "side": 1,
       "message": "same here - you need \u0027:\u0027 and \u0027,\u0027.",
+      "range": {
+        "startLine": 1082,
+        "startChar": 31,
+        "endLine": 1082,
+        "endChar": 45
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d86a83_72e13512",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T07:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27fe77dc_b18a26e9",
       "range": {
         "startLine": 1082,
         "startChar": 31,
