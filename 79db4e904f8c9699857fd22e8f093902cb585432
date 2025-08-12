@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12f70bb_aff3d1e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-12T21:02:18Z",
+      "side": 1,
+      "message": "If we wanted to use verity on the miniOS partitions we\u0027d have to add a whole verity block to that partition that contains the Merkle tree with all the block hashes, and I\u0027m not actually sure if that\u0027s easily possible when the rest of that partition is just a ChromeOS kernel (or whatever the hell we decide to do for Android), not an ext4. Doing all that only for the one time where the recovery installer copies the entire partition from A/B seems excessive (the entire point of verity is to allow verification even when the blocks are randomly accessed, not just in neat sequential order). This solution matches what we had already been for KERN-B the whole time and seems appropriate for what we need here.",
+      "parentUuid": "0eff8f60_ea6ead4f",
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f19e946_bc4df95f",
