@@ -70,6 +70,24 @@
       "parentUuid": "f8062789_d83b2388",
       "revId": "cbb4a2dd12b11d6ce8c5c7b64ce89359f4275f32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c000ec_32da3b08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2025-08-12T21:27:17Z",
+      "side": 1,
+      "message": "i agree the `ro` var is broken, and it makes it look like it\u0027s doing something it\u0027s not.  we should delete it to match reality.",
+      "parentUuid": "6087db6a_08019cfc",
+      "revId": "cbb4a2dd12b11d6ce8c5c7b64ce89359f4275f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
