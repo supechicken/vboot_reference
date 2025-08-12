@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd761fa3_ef32de86",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T02:53:30Z",
+      "side": 1,
+      "message": "It\u0027s better to do single quote `\u0027\u0027` for regex.\n\nFor double quotes, \"\\1\" is actually \"\\\\\\\\1\" - although in your case, bash will interpret  \\1 as-is because it failed to match the known backslash escapes.",
+      "range": {
+        "startLine": 1038,
+        "startChar": 15,
+        "endLine": 1038,
+        "endChar": 55
+      },
+      "revId": "761dfd9851ef6580e1c1e3023b91e52111a7d294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9326587d_db315cca",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T02:53:30Z",
+      "side": 1,
+      "message": "I\u0027d recommend adding the names of the partition in the comment so people doing further cleanup would know what we were trying to hash.",
+      "range": {
+        "startLine": 1042,
+        "startChar": 10,
+        "endLine": 1042,
+        "endChar": 14
+      },
+      "revId": "761dfd9851ef6580e1c1e3023b91e52111a7d294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a98678_00dc6818",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T02:53:30Z",
+      "side": 1,
+      "message": "\"$(...)\"",
+      "range": {
+        "startLine": 1051,
+        "startChar": 16,
+        "endLine": 1051,
+        "endChar": 74
+      },
+      "revId": "761dfd9851ef6580e1c1e3023b91e52111a7d294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a560b7_f605e308",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T02:53:30Z",
+      "side": 1,
+      "message": "\"$(...)\"",
+      "range": {
+        "startLine": 1055,
+        "startChar": 19,
+        "endLine": 1055,
+        "endChar": 53
+      },
+      "revId": "761dfd9851ef6580e1c1e3023b91e52111a7d294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee523be_645f5993",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T02:53:30Z",
+      "side": 1,
+      "message": "Wasn\u0027t part_has_list already become a string in the last line?",
+      "range": {
+        "startLine": 1059,
+        "startChar": 38,
+        "endLine": 1059,
+        "endChar": 52
+      },
+      "revId": "761dfd9851ef6580e1c1e3023b91e52111a7d294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff9d783_226a4a5c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T02:53:30Z",
+      "side": 1,
+      "message": "I\u0027d still recommend always \"$(...)\"",
+      "range": {
+        "startLine": 1065,
+        "startChar": 26,
+        "endLine": 1065,
+        "endChar": 43
+      },
+      "revId": "761dfd9851ef6580e1c1e3023b91e52111a7d294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb3a4c2_13b5628c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T02:53:30Z",
+      "side": 1,
+      "message": "Better to use `\u0027` to prevent unexpected expansion.\n\n\n`\u0027s#\\(kern_b_hash\u003d\\)[a-z0-9]*#\\1\u0027\"${new_kernb_hash}#\"`",
+      "range": {
+        "startLine": 1073,
+        "startChar": 12,
+        "endLine": 1073,
+        "endChar": 13
+      },
+      "revId": "761dfd9851ef6580e1c1e3023b91e52111a7d294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
