@@ -16,6 +16,24 @@
       "message": "I (think I) understand the problem but I don\u0027t understand how this patch is supposed to fix it? If there is a `/` in the variable (I assume that\u0027s what this is about, because slashes are part of the base64 character set?) it will still end up being passed to `sed` if you write it like this.\n\nIn fact, I\u0027m not sure there is a clean way to do this. You\u0027d basically have to write an `escape_for_sed` function and then make this `sed -n \"s/.*\\b$(escape_for_sed \"$2\")\u003d...` and have that function insert a backslash before all the characters that `sed` treat\u0027s specially.\n\nThe good news though is that I don\u0027t think any of the characters that are really special to `sed` (I believe that is `$.*[\\^`) should appear in our command lines (except for maybe the dot but that should be mostly harmless on its own). If your only real problem is the delimiter character, just pick a different one, e.g. `sed -n \"s#.*\\b$2\u003d\\([^ \\\"]*\\).*#\\1/p`.",
       "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86700905_63a01080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-12T20:49:45Z",
+      "side": 1,
+      "message": "Hung-te might know more about this, but I think the issue is with the `\\` character. This is a more idiomatic way to write bash.",
+      "parentUuid": "0075196d_bf3377c5",
+      "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
