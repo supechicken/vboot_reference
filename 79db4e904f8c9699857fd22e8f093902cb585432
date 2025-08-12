@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464e1bdb_8567e0e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T06:02:03Z",
+      "side": 1,
+      "message": "I somehow feel such hashes should be implemented as part of the verity data so we won\u0027t need to hack with uuencode in kernel command line, but that\u0027s probably beyond the scope of a reviewer.",
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f19e946_bc4df95f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T06:02:03Z",
+      "side": 1,
+      "message": "I think the regex is wrong because you forgot to add \u0027:\u0027 and \u0027,\u0027.",
+      "range": {
+        "startLine": 1038,
+        "startChar": 32,
+        "endLine": 1038,
+        "endChar": 44
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6052e4e_a9dcf8e5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T06:02:03Z",
+      "side": 1,
+      "message": "One SHA256sum is 64 bytes. The `xxd -r+base64` is 44 bytes.\n\nI wonder if all these compression is necessary, because we are saving only (64-44)*2 \u003d 40 bytes, with the cost of not able to decode easily without base64. and extra parsing (:, for each entry and then base64).\n\nBut I\u0027ll leave that for you to decide if you already have a design proposal and signed off by the owner.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 53,
+        "endLine": 1056,
+        "endChar": 59
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fe77dc_b18a26e9",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-12T06:02:03Z",
+      "side": 1,
+      "message": "same here - you need \u0027:\u0027 and \u0027,\u0027.",
+      "range": {
+        "startLine": 1082,
+        "startChar": 31,
+        "endLine": 1082,
+        "endChar": 45
+      },
+      "revId": "79db4e904f8c9699857fd22e8f093902cb585432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
