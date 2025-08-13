@@ -52,6 +52,24 @@
       "parentUuid": "86700905_63a01080",
       "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a64f9ee_007b3e2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-13T01:03:23Z",
+      "side": 1,
+      "message": "The change here, just tackling the double quoted transition to single quote and explicitly only using double quoted for variable expansion.",
+      "parentUuid": "b2280a36_00c6f328",
+      "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
