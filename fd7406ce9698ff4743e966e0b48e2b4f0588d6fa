@@ -24,6 +24,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0c86f0_b9fc5055",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-13T20:06:10Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "522b0663_5edde530",
+      "range": {
+        "startLine": 1026,
+        "startChar": 8,
+        "endLine": 1026,
+        "endChar": 23
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0c1836c9_45d67665",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1026,
+                "startChar": 0,
+                "endLine": 1027,
+                "endChar": 0
+              },
+              "replacement": "  local new_config_file\n  new_config_file\u003d\"$(make_temp_file)\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a49d652d_4a369897",
@@ -37,6 +79,24 @@
       "writtenOn": "2025-08-13T19:36:10Z",
       "side": 1,
       "message": "nit: This works, but have you tried the version I suggested? You could just let `read` do both parts of the splitting for you, then you wouldn\u0027t have to `cut` the result separately.\n\nI think my last version had a small issue in that `read -d` doesn\u0027t recognize the part after the last delimiter, but that\u0027s easily remedied by attaching a trailing comma:\n```\nwhile IFS\u003d\u0027:\u0027 read -d \u0027,\u0027 part_num old_hash; do\n  local part_hash\n  part_hash\u003d\"$(sudo sha256sum \"${loopdev}p${part_num}\" | cut -f1 -d\u0027 \u0027 | xxd -r -p | base64 -w0)\"\n  [[ \"${part_hash}\" \u003d \"${old_hash}\" ]] || info \"Updated part_hash for partition ${part_num} from \u0027${old_hash}\u0027 to \u0027${part_hash}\u0027\"\n  part_hashes+\u003d(\"${part_num}:${part_hash}\")\ndone \u003c\u003c\u003c \"${old_part_hash},\"\n```",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a714d4_ce4ae922",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-13T20:06:10Z",
+      "side": 1,
+      "message": "Yes, I think your version will work too\n\nEven with one more loop / more variables, this was easier to break into parts for me.\n\nCan we ack for now?",
+      "parentUuid": "a49d652d_4a369897",
       "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "076ddf3e_62d7ba50",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-13T20:06:10Z",
+      "side": 1,
+      "message": "I kept it in two separate steps.\nRather than it being monolithic\n\nIt\u0027s a bit more readable / easier to follow the actual action steps.",
+      "parentUuid": "292083f7_8fab58a1",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b232720_440d8a41",
@@ -75,6 +153,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b0b21f2_cc869c5a",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-13T20:06:10Z",
+      "side": 1,
+      "message": "It\u0027s to clear out just in case!",
+      "parentUuid": "1b232720_440d8a41",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a76ac586_5c290c7e",
@@ -88,6 +184,24 @@
       "writtenOn": "2025-08-13T19:36:10Z",
       "side": 1,
       "message": "Considering that we\u0027re going to print the entire kernel command line in the next debug message anyway, we really don\u0027t need this.",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de7a1ec_a688f7d1",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-13T20:06:10Z",
+      "side": 1,
+      "message": "We don\u0027t need it, but it helped debugging / showing proof of run\n\nLet\u0027s keep this as it\u0027s a simple log!",
+      "parentUuid": "a76ac586_5c290c7e",
       "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
