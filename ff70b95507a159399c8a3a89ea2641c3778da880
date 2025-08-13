@@ -106,6 +106,24 @@
       "parentUuid": "ae0311fa_69ceaabb",
       "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf6e6e5_71a60813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-13T19:39:41Z",
+      "side": 1,
+      "message": "Sounds like we\u0027re agreeing that it\u0027s more readable to leave things as is (double-quotes). For patterns that don\u0027t contain any variable expansions, I agree with Hung-Te that you can use single-quotes for the whole string (but it\u0027s not a problem to use double quotes either and we don\u0027t need to go hunting down existing instances).",
+      "parentUuid": "24412e58_9ac609a3",
+      "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
