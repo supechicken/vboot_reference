@@ -70,6 +70,24 @@
       "parentUuid": "b2280a36_00c6f328",
       "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0311fa_69ceaabb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-13T03:06:43Z",
+      "side": 1,
+      "message": "I tried to look at the shell script coding style guide but there was no clear definition. And looking at dash (this script is equipped with bash, but I usually prefer to have cros shell scripts being compatible between bash and dash since we usually need to port between each), it said\n````\nThe backslash inside double quotes is historically weird,\nand serves to quote only the following characters:\n$ ` \" \\ \u003cnewline\u003e. Otherwise it remains literal.\"\n````\nAnd seems like with the \"historically weird\", most POSIX shells today are following the same behavior.\n\nI personally still prefer to use single quotes `\u0027\u0027` especially when there are no parameters to be expanded in the string, to make it a very clear signal \"this is a raw/safe regex string\", also easier to copy-paste across different languages. However, I also agree if there are variables in the regex together with the \\1 substitution, making the whole regex as `\"s/pattern$1/\\1\u003d$2/\"` is probably easier to read than `\u0027s/pattern\u0027\"$1\"\u0027/\\1\u003d\u0027\"$2\"\u0027/\u0027`.\n\nLike Julius said, if most people writing shell script are already expecting \"\\1\" to work as-is, we don\u0027t really need to change them.\n\nAll the 4 sed commands do have variables inside. My recommendation is we don\u0027t need to really \"fix\" them (e.g., we can abandon this patch); or, at least change the title to \"revise\" since the existing code does work.\n\nAnd thanks for Jae\u0027s work on proposing this change!",
+      "parentUuid": "4a64f9ee_007b3e2e",
+      "revId": "ff70b95507a159399c8a3a89ea2641c3778da880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
