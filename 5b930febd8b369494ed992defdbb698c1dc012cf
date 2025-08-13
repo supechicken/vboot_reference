@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236495a1_a3e2c158",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-13T03:26:55Z",
+      "side": 1,
+      "message": "We can remove this because an undefined variable always expands to empty string and that uses the default option (rw).",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "5b930febd8b369494ed992defdbb698c1dc012cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
