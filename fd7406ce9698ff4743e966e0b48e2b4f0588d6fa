@@ -136,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f25cc79_9728fd7d",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-13T20:48:23Z",
+      "side": 1,
+      "message": "Well, I really disagree with this but I can tell you\u0027re eager to move on. It\u0027s only two steps because you\u0027re making it two steps. Every extra line, every extra variable you add to code adds one more thing that the reader needs to keep in their head when trying to follow what it\u0027s doing. I\u0027m not saying you should be using any obscure pattern just to save a line, but there\u0027s nothing obscure about \"loop over all part_num,hash pairs, process part_num and add the result to a list\". Splitting it into \"loop over all part_num,hash pairs, put part_num in a list, then loop over all pairs in that list, process them and add the result to another list\" really doesn\u0027t simplify anything, it just makes the entire flow more complicated and adds more opportunities for people to become confused about which list contains what.",
+      "parentUuid": "076ddf3e_62d7ba50",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b232720_440d8a41",
