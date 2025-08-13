@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522b0663_5edde530",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-13T19:36:10Z",
+      "side": 1,
+      "message": "Should we fix the ShellCheck here? I think it just wants you to do\n```\nlocal new_config_file\nnew_config_file\u003d\"$(make_temp_file)\"\n```\n(because it makes some kind of difference of how it interacts with `set -e`, I think).",
+      "range": {
+        "startLine": 1026,
+        "startChar": 8,
+        "endLine": 1026,
+        "endChar": 23
+      },
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49d652d_4a369897",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-13T19:36:10Z",
+      "side": 1,
+      "message": "nit: This works, but have you tried the version I suggested? You could just let `read` do both parts of the splitting for you, then you wouldn\u0027t have to `cut` the result separately.\n\nI think my last version had a small issue in that `read -d` doesn\u0027t recognize the part after the last delimiter, but that\u0027s easily remedied by attaching a trailing comma:\n```\nwhile IFS\u003d\u0027:\u0027 read -d \u0027,\u0027 part_num old_hash; do\n  local part_hash\n  part_hash\u003d\"$(sudo sha256sum \"${loopdev}p${part_num}\" | cut -f1 -d\u0027 \u0027 | xxd -r -p | base64 -w0)\"\n  [[ \"${part_hash}\" \u003d \"${old_hash}\" ]] || info \"Updated part_hash for partition ${part_num} from \u0027${old_hash}\u0027 to \u0027${part_hash}\u0027\"\n  part_hashes+\u003d(\"${part_num}:${part_hash}\")\ndone \u003c\u003c\u003c \"${old_part_hash},\"\n```",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292083f7_8fab58a1",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-13T19:36:10Z",
+      "side": 1,
+      "message": "Why two loops and more arrays? Just extract the `part_hash` right here.",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b232720_440d8a41",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-13T19:36:10Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this when it\u0027s written like this.",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a76ac586_5c290c7e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-13T19:36:10Z",
+      "side": 1,
+      "message": "Considering that we\u0027re going to print the entire kernel command line in the next debug message anyway, we really don\u0027t need this.",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
