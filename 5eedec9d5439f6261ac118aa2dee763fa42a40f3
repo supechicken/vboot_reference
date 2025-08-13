@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04de8a89_1f7f37c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-13T04:09:51Z",
+      "side": 1,
+      "message": "```\nsign_official_build.sh: INFO   : Update the part_hash in the kernel command line.\nsign_official_build.sh: INFO   : The old part_hash is: 9:g02OQ3NB1ch1FKguHTHYsXyrV6HSd2TOhdn4lopSpV0,10:g02OQ3NB1ch1FKguHTHYsXyrV6HSd2TOhdn4lopSpV0\nsign_official_build.sh: INFO   : The part_hash for 9 is: tpGlT7mjLXmToc/yYks29TCIx0myXAJ7v4PReCjTqI0\u003d\nsign_official_build.sh: INFO   : The part_hash for 10 is: tpGlT7mjLXmToc/yYks29TCIx0myXAJ7v4PReCjTqI0\u003d\nsign_official_build.sh: INFO   : The new part_hash is: 9:tpGlT7mjLXmToc/yYks29TCIx0myXAJ7v4PReCjTqI0\u003d,10:tpGlT7mjLXmToc/yYks29TCIx0myXAJ7v4PReCjTqI0\u003d\nsign_official_build.sh: INFO   : New config for kernel partition 2 is\nconsole\u003d loglevel\u003d7 init\u003d/sbin/init cros_secure drm.trace\u003d0x106 root\u003d/dev/dm-0 rootwait ro dm_verity.error_behavior\u003d3 dm_verity.max_bios\u003d-1 dm_verity.dev_wait\u003d1  noinitrd panic\u003d60 cros_recovery kern_b_hash\u003d971d0374ab116e9e404ece1154f57078d5051526d954f1657719972a2887d0d8 vt.global_cursor_default\u003d0 kern_guid\u003d%U add_efi_memmap noresume i915.modeset\u003d1 ramoops.ecc\u003d1 tpm_tis.force\u003d0 intel_pmc_core.warn_on_s0ix_failures\u003d1 i915.enable_guc\u003d3 i915.enable_dc\u003d4 xdomain\u003d0 swiotlb\u003d65536 intel_iommu\u003don i915.enable_psr\u003d1 part_hash\u003d9:tpGlT7mjLXmToc/yYks29TCIx0myXAJ7v4PReCjTqI0\u003d,10:tpGlT7mjLXmToc/yYks29TCIx0myXAJ7v4PReCjTqI0\u003d\n```\n\nHack script + hacked image+kernel with the part we care about under test.",
+      "parentUuid": "62699a4c_6046f7ee",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "5eedec9d5439f6261ac118aa2dee763fa42a40f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c0695ab_a4d544ba",
