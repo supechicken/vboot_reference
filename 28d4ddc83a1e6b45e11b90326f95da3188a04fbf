@@ -16,6 +16,24 @@
       "message": "I feel like I discussed this on an earlier version of this patch somewhere already, but not sure where that ended up...\n\nAnyway, this is a really bad API, the whole \"using a global that\u0027s actually supposed to be for something else as a temporary function parameter\" thing. Please don\u0027t do that. Either add another argument that\u0027s just left 0 and ignored for the other update types, i.e.\n```\nint GptUpdateKernelWithEntry(GptData *gpt, GptEntry *e, uint32_t update_type,\n                             uint32_t optional_update_arg)\n```\nor abuse the `update_type` field to encode this by doing something like\n```\nenum {\n  GPT_UPDATE_ENTRY_TRY \u003d 1,\n  ...\n  GPT_UPDATE_ENTRY_INVALID \u003d 4,\n  GPT_UPDATE_ENTRY_SET_SUCCESSFUL_BIT \u003d 5,\n  GPT_UPDATE_ENTRY_CLEAR_SUCCESSFUL_BIT \u003d 6,\n  \n  GPT_UPDATE_ENTRY_SET_PRIORITY_N \u003d 32,\n  /* Caller should pass `GPT_UPDATE_ENTRY_SET_PRIORITY_N + priority` and is\n     responsible to ensure that the result is not larger than ..._LAST */\n  GPT_UPDATE_ENTRY_SET_PRIORITY_LAST \u003d 32 + 15,\n};\n```",
       "revId": "28d4ddc83a1e6b45e11b90326f95da3188a04fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a183d02_e639a61c",
+        "filename": "firmware/lib/cgptlib/cgptlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-08-14T12:03:17Z",
+      "side": 1,
+      "message": "Since `SetEntry*` functions are already available for depthcharge, I decided to expose `GptModified()` too. So now fastboot command can use `SetEntry*` setters directly CL:6846624",
+      "parentUuid": "c1b660d0_0e1caa42",
+      "revId": "28d4ddc83a1e6b45e11b90326f95da3188a04fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
