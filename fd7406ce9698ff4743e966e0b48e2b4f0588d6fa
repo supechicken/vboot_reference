@@ -207,6 +207,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68456d87_a7d06505",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-14T03:27:37Z",
+      "side": 1,
+      "message": "Since both you mentioned it, let\u0027s remove this line.\n\nI think it will be okay even without a full retest, local testing seems to be ok.",
+      "parentUuid": "032feb34_47681a1c",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a76ac586_5c290c7e",
