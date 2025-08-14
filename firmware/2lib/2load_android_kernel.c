@@ -281,12 +281,8 @@ vb2_error_t vb2_load_android_kernel(
 
 	params->boot_command = vb2_bcb_command(avb_ops);
 
-	/*
-	 * Load fastboot cmdline and bootconfig if fastboot is enabled by GBB flag or
-	 * FW is in developer mode
-	 */
-	if (ctx->flags & (VB2_CONTEXT_DEVELOPER_MODE |
-			  VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT)) {
+	/* Load fastboot cmdline and bootconfig only in developer mode */
+	if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		fb_cmd = vb2_fastboot_cmdline(avb_ops, VB2_FASTBOOT_CMDLINE_MAGIC);
 		fb_bootconfig = vb2_fastboot_cmdline(avb_ops, VB2_FASTBOOT_BOOTCONFIG_MAGIC);
 	}
@@ -300,16 +296,8 @@ vb2_error_t vb2_load_android_kernel(
 	verified_str = malloc(strlen(VERIFIED_BOOT_PROPERTY_NAME) + 7);
 	if (verified_str == NULL)
 		return VB2_ERROR_LK_NO_KERNEL_FOUND;
-	/*
-	 * When booting to recovery with GBB enabled fastboot, always set
-	 * verifiedbootstate to orange to unlock all commands of fastbootd.
-	 */
-	if (ctx->flags & VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT &&
-	    params->boot_command == VB2_BOOT_CMD_RECOVERY_BOOT)
-		sprintf(verified_str, "%s=orange", VERIFIED_BOOT_PROPERTY_NAME);
-	else
-		sprintf(verified_str, "%s=%s", VERIFIED_BOOT_PROPERTY_NAME,
-			(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
+	sprintf(verified_str, "%s%s", VERIFIED_BOOT_PROPERTY_NAME,
+		(ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) ? "orange" : "green");
 
 	if ((strlen(verify_data->cmdline) + 1 + strlen(verified_str) + 1 +
 	     (fb_bootconfig ? fb_bootconfig->len + 1 : 0)) > params->kernel_bootconfig_size)

@@ -89,12 +89,11 @@ enum vb2_nv_offset {
 #define VB2_NV_BOOT2_REQ_DIAG                  0x80
 
 /* Fields in VB2_NV_OFFS_DEV (unused = 0x80) */
-#define VB2_NV_DEV_FLAG_EXTERNAL		0x01
-#define VB2_NV_DEV_FLAG_SIGNED_ONLY		0x02
-#define VB2_NV_DEV_FLAG_LEGACY			0x04
-#define VB2_NV_DEV_FLAG_DEPRECATED_FASTBOOT_FULL_CAP	0x08
-#define VB2_NV_DEV_FLAG_FORCE_UNLOCK_FASTBOOT	0x08
-#define VB2_NV_DEV_FLAG_DEFAULT_BOOT		0x30
+#define VB2_NV_DEV_FLAG_EXTERNAL               0x01
+#define VB2_NV_DEV_FLAG_SIGNED_ONLY            0x02
+#define VB2_NV_DEV_FLAG_LEGACY                 0x04
+#define VB2_NV_DEV_FLAG_DEPRECATED_FASTBOOT_FULL_CAP      0x08
+#define VB2_NV_DEV_FLAG_DEFAULT_BOOT           0x30
 #define VB2_NV_DEV_DEFAULT_BOOT_SHIFT 4  /* Number of bits to shift */
 #define VB2_NV_DEV_FLAG_UDC                    0x40
 
