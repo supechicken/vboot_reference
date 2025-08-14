@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7385df9_040c736c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-14T01:52:32Z",
+      "side": 1,
+      "message": "a few nits in variable scope",
+      "revId": "b7aa2f34846e6109b69cd0a897fbd73a16947414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d261e33_d5eacd8b",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-14T01:52:32Z",
+      "side": 1,
+      "message": "In bash, only \u0027local\u0027 can declare a local variable. Putting a new named variable in for will actually create a new variable in the global space.\n\nExample:\n````\nf() {\n for v in a; do\n   echo \"v\u003d$v inside f\"\n done\n}\n\nf\necho \"v is still $v outside f\"\n# output: \n# v\u003da inside f\n# v is still a outside f\n````",
+      "range": {
+        "startLine": 1054,
+        "startChar": 8,
+        "endLine": 1054,
+        "endChar": 26
+      },
+      "revId": "b7aa2f34846e6109b69cd0a897fbd73a16947414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2277dbe_338e5137",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-14T01:52:32Z",
+      "side": 1,
+      "message": "same here - part_num will become a global variable",
+      "range": {
+        "startLine": 1064,
+        "startChar": 8,
+        "endLine": 1064,
+        "endChar": 16
+      },
+      "revId": "b7aa2f34846e6109b69cd0a897fbd73a16947414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

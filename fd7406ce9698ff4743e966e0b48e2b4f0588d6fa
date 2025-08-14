@@ -189,6 +189,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "032feb34_47681a1c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2025-08-14T01:52:32Z",
+      "side": 1,
+      "message": "I\u0027d also prefer to remove this unset.\n\nOther developers will try to look for where IFS was set in the scope (and found none), and then considering if this is something left from an incomplete refactoring.",
+      "parentUuid": "4b0b21f2_cc869c5a",
+      "revId": "fd7406ce9698ff4743e966e0b48e2b4f0588d6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a76ac586_5c290c7e",
