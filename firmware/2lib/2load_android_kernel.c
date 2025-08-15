@@ -10,6 +10,8 @@
 #include "2common.h"
 #include "2load_android_kernel.h"
 #include "2misc.h"
+#include "2nvstorage.h"
+#include "2secdata.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
@@ -50,12 +52,23 @@ static vb2_error_t vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 	}
 }
 
+static bool check_dev_mode_switch(struct vb2_context *ctx)
+{
+	uint32_t secdata_flags = vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS);
+	VB2_DEBUG("THOMAS: - VB2_SECDATA_FIRMWARE_FLAG_LAST_BOOT_DEVELOPER(%x))\n", (secdata_flags & VB2_SECDATA_FIRMWARE_FLAG_LAST_BOOT_DEVELOPER));
+	VB2_DEBUG("THOMAS: - VB2_CONTEXT_DEVELOPER_MODE(%llx))\n", (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE));
+	VB2_DEBUG("THOMAS: - VB2_CONTEXT_DISABLE_DEVELOPER_MODE(%llx))\n", (ctx->flags & VB2_CONTEXT_DISABLE_DEVELOPER_MODE));
+	VB2_DEBUG("THOMAS: - VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE(%x))\n", (secdata_flags & VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE));
+	VB2_DEBUG("THOMAS: - VB2_NV_DISABLE_DEV_REQUEST(%x))\n", vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST));
+	VB2_DEBUG("THOMAS: - VB2_NV_DEV_MODE_SWITCH(%#x))\n", vb2_nv_get(ctx, VB2_NV_DEV_MODE_SWITCH));
+	return vb2_nv_get(ctx, VB2_NV_DEV_MODE_SWITCH);
+}
+
 /*
  * Copy bootconfig into separate buffer, it can be overwritten when ramdisks
  * are concatenated. Bootconfig buffer will be processed by depthcharge.
  */
-static vb2_error_t save_bootconfig(struct vendor_boot_img_hdr_v4 *vendor_hdr,
-				   size_t total_size,
+static vb2_error_t save_bootconfig(struct vendor_boot_img_hdr_v4 *vendor_hdr, size_t total_size,
 				   struct vb2_kernel_params *params)
 {
 	uint8_t *bootconfig;
@@ -126,8 +139,7 @@ static AvbPartitionData *avb_find_part(AvbSlotVerifyData *verify_data, enum GptP
  * them and returns start and end of new ramdisk.
  */
 static vb2_error_t prepare_vendor_ramdisks(struct vendor_boot_img_hdr_v4 *vendor_hdr,
-					   size_t total_size,
-					   bool recovery_boot,
+					   size_t total_size, bool recovery_boot,
 					   uint8_t **vendor_ramdisk,
 					   uint8_t **vendor_ramdisk_end)
 {
@@ -142,12 +154,11 @@ static vb2_error_t prepare_vendor_ramdisks(struct vendor_boot_img_hdr_v4 *vendor
 	/* Calculate address offset of vendor_ramdisk section on vendor_boot partition */
 	ramdisk_offset = VB2_ALIGN_UP(sizeof(struct vendor_boot_img_hdr_v4), page_size);
 	ramdisk_table_offset = ramdisk_offset +
-		VB2_ALIGN_UP(vendor_hdr->vendor_ramdisk_size, page_size) +
-		VB2_ALIGN_UP(vendor_hdr->dtb_size, page_size);
+			       VB2_ALIGN_UP(vendor_hdr->vendor_ramdisk_size, page_size) +
+			       VB2_ALIGN_UP(vendor_hdr->dtb_size, page_size);
 
 	/* Check if vendor ramdisk table is correct */
-	if (ramdisk_offset > total_size ||
-	    ramdisk_table_offset > total_size ||
+	if (ramdisk_offset > total_size || ramdisk_table_offset > total_size ||
 	    ramdisk_table_entry_size < sizeof(struct vendor_ramdisk_table_entry_v4) ||
 	    total_size - ramdisk_offset < vendor_hdr->vendor_ramdisk_size ||
 	    total_size - ramdisk_table_offset < ramdisk_table_size ||
@@ -161,7 +172,7 @@ static vb2_error_t prepare_vendor_ramdisks(struct vendor_boot_img_hdr_v4 *vendor
 	fragment_ptr = (uintptr_t)vendor_hdr + ramdisk_table_offset;
 	/* Go through all ramdisk fragments and keep only the required ones */
 	for (int i = 0; i < ramdisk_table_entry_num;
-	    fragment_ptr += ramdisk_table_entry_size, i++) {
+	     fragment_ptr += ramdisk_table_entry_size, i++) {
 		struct vendor_ramdisk_table_entry_v4 *fragment;
 		uint8_t *fragment_src;
 
@@ -232,8 +243,7 @@ static vb2_error_t prepare_pvmfw(AvbSlotVerifyData *verify_data,
  * This function validates the partitions magic numbers and move them into place requested
  * from linux.
  */
-static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
-					struct vb2_kernel_params *params,
+static vb2_error_t rearrange_partitions(AvbOps *avb_ops, struct vb2_kernel_params *params,
 					bool recovery_boot)
 {
 	struct vendor_boot_img_hdr_v4 *vendor_hdr;
@@ -269,8 +279,7 @@ static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 	    init_boot_size - BOOT_HEADER_SIZE < init_hdr->ramdisk_size ||
 	    init_hdr->kernel_size != 0 ||
 	    memcmp(init_hdr->magic, BOOT_MAGIC, BOOT_MAGIC_SIZE)) {
-		VB2_DEBUG("Incorrect 'init_boot' header, total size: %zx\n",
-			  init_boot_size);
+		VB2_DEBUG("Incorrect 'init_boot' header, total size: %zx\n", init_boot_size);
 		return VB2_ERROR_ANDROID_BROKEN_INIT_BOOT;
 	}
 
@@ -347,12 +356,24 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		avb_flags |= AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR;
 
 	result = avb_slot_verify(avb_ops, boot_partitions, slot_suffix, avb_flags,
-				 AVB_HASHTREE_ERROR_MODE_RESTART_AND_INVALIDATE,
-				 &verify_data);
+				 AVB_HASHTREE_ERROR_MODE_RESTART_AND_INVALIDATE, &verify_data);
 
 	if (result == AVB_SLOT_VERIFY_RESULT_OK) {
 		struct vb2_shared_data *sd = vb2_get_sd(ctx);
 		sd->flags |= VB2_SD_FLAG_KERNEL_SIGNED;
+	}
+
+	/* Trigger factory data reset through recovery if this device
+	is transitioning from/to developer mode */
+	VB2_DEBUG("THOMAS: vb2_factory_data_reset_android(ctx)\n");
+	if (check_dev_mode_switch(ctx)) {
+		VB2_DEBUG("THOMAS: developer switch has triggered!\n");
+		rv = vb2ex_factory_data_reset_in_android_recovery(disk_handle, gpt);
+		if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("Unable to write to misc partition and wipe userdata during dev mode transition\n");
+			goto out;
+		}
+		vb2_nv_set(ctx, VB2_NV_DEV_MODE_SWITCH, 0);
 	}
 
 	/* Ignore verification errors in developer mode */
@@ -402,13 +423,11 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	/*
 	 * TODO(b/335901799): Add support for marking verifiedbootstate yellow
 	 */
-	int chars = snprintf(params->vboot_cmdline_buffer, params->vboot_cmdline_size,
-			     "%s %s=%s %s=%s %s=%s", verify_data->cmdline,
-			     VERIFIED_BOOT_PROPERTY_NAME,
-			     orange ? "orange" : "green",
-			     SLOT_SUFFIX_BOOT_PROPERTY_NAME, slot_suffix,
-			     ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME, recovery_boot ? "0" : "1"
-			     );
+	int chars = snprintf(
+		params->vboot_cmdline_buffer, params->vboot_cmdline_size,
+		"%s %s=%s %s=%s %s=%s", verify_data->cmdline, VERIFIED_BOOT_PROPERTY_NAME,
+		orange ? "orange" : "green", SLOT_SUFFIX_BOOT_PROPERTY_NAME, slot_suffix,
+		ANDROID_FORCE_NORMAL_BOOT_PROPERTY_NAME, recovery_boot ? "0" : "1");
 	if (chars < 0 || chars >= params->vboot_cmdline_size) {
 		VB2_DEBUG("ERROR: Command line doesn't fit provided buffer: %s\n",
 			  verify_data->cmdline);
