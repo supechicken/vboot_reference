@@ -205,10 +205,15 @@ enum vb2_context_flags {
 	 * support two RW slots.
 	 */
 	VB2_CONTEXT_SLOT_A_ONLY = (1 << 29),
+
+	/*
+	 * Mark if we are currently switching to/from developer mode on this boot.
+	 */
+	VB2_DEV_MODE_SWITCH = (1 << 30),
 };
 
 /* Helper for aligning fields in vb2_context. */
-#define VB2_PAD_STRUCT3(size, align, count) \
+#define VB2_PAD_STRUCT3(size, align, count)                                                    \
 	uint8_t _pad##count[align - (((size - 1) % align) + 1)]
 #define VB2_PAD_STRUCT2(size, align, count) VB2_PAD_STRUCT3(size, align, count)
 #define VB2_PAD_STRUCT(size, align) VB2_PAD_STRUCT2(size, align, __COUNTER__)
@@ -293,4 +298,4 @@ struct vb2_context {
 	const uint8_t boot_mode;
 };
 
-#endif  /* VBOOT_REFERENCE_2CONTEXT_H_ */
+#endif /* VBOOT_REFERENCE_2CONTEXT_H_ */
