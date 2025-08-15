@@ -355,6 +355,16 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		sd->flags |= VB2_SD_FLAG_KERNEL_SIGNED;
 	}
 
+	/* Trigger factory data reset through recovery if this device
+	is transitioning from/to developer mode */
+	VB2_DEBUG("THOMAS: vb2_factory_data_reset_android(ctx)\n");
+	if (vb2_check_dev_switch(ctx)) {
+		VB2_DEBUG("THOMAS: developer switch has triggered!\n");
+		//vb2_nv_set(ctx, VB2_NV_RECOVERY_REQUEST,
+		// VB2_RECOVERY_RO_MANUAL);
+		vb2ex_factory_data_reset_in_android_recovery(disk_handle, gpt);
+	}
+
 	/* Ignore verification errors in developer mode */
 	if (!need_verification) {
 		switch (result) {

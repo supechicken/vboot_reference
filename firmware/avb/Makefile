@@ -34,7 +34,7 @@ CFLAGS += -DUSE_LIBAVB -Ifirmware/avb -I${LIBAVB_SRCDIR} -I${LIBAVB_SRCDIR}/liba
 AVB_CFLAGS += -DAVB_COMPILATION -I${LIBAVB_SRCDIR}/libavb/sha
 
 # TODO(b/329135129): Fix maybe uninitialized variables in upstream libavb
-AVB_CFLAGS += -Wno-maybe-uninitialized
+AVB_CFLAGS += -Wno-uninitialized
 
 # TODO(b/329411445): Fix func declaration without a prototype in upstream libavb
 AVB_CFLAGS += -Wno-strict-prototypes
