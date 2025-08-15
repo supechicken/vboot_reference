@@ -20,8 +20,7 @@
 
 vb2_error_t vb2_validate_gbb_signature(uint8_t *sig)
 {
-	static const uint8_t sig_xor[VB2_GBB_SIGNATURE_SIZE] =
-			VB2_GBB_XOR_SIGNATURE;
+	static const uint8_t sig_xor[VB2_GBB_SIGNATURE_SIZE] = VB2_GBB_XOR_SIGNATURE;
 	int i;
 	for (i = 0; i < VB2_GBB_SIGNATURE_SIZE; i++) {
 		if (sig[i] != (sig_xor[i] ^ VB2_GBB_XOR_CHARS[i]))
@@ -30,8 +29,7 @@ vb2_error_t vb2_validate_gbb_signature(uint8_t *sig)
 	return VB2_SUCCESS;
 }
 
-test_mockable
-struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *ctx)
+test_mockable struct vb2_gbb_header *vb2_get_gbb(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	if (sd->gbb_offset == 0)
@@ -45,8 +43,8 @@ uint32_t vb2api_get_firmware_size(struct vb2_context *ctx)
 	if (!sd->preamble_size)
 		VB2_DIE("Firmware preamble size is zero\n");
 
-	const struct vb2_fw_preamble *pre = (const struct vb2_fw_preamble *)
-		vb2_member_of(sd, sd->preamble_offset);
+	const struct vb2_fw_preamble *pre =
+		(const struct vb2_fw_preamble *)vb2_member_of(sd, sd->preamble_offset);
 
 	if (!pre->body_signature.data_size)
 		VB2_DIE("Firmware body data size in signature is zero\n");
@@ -54,9 +52,8 @@ uint32_t vb2api_get_firmware_size(struct vb2_context *ctx)
 	return pre->body_signature.data_size;
 }
 
-test_mockable
-vb2_error_t vb2_read_gbb_header(struct vb2_context *ctx,
-				struct vb2_gbb_header *gbb)
+test_mockable vb2_error_t vb2_read_gbb_header(struct vb2_context *ctx,
+					      struct vb2_gbb_header *gbb)
 {
 	/* Read the entire header */
 	VB2_TRY(vb2ex_read_resource(ctx, VB2_RES_GBB, 0, gbb, sizeof(*gbb)));
@@ -82,8 +79,8 @@ vb2_error_t vb2_read_gbb_header(struct vb2_context *ctx,
 	return VB2_SUCCESS;
 }
 
-static void fail_impl(struct vb2_context *ctx,
-		      uint8_t reason, uint8_t subcode, bool previous_boot)
+static void fail_impl(struct vb2_context *ctx, uint8_t reason, uint8_t subcode,
+		      bool previous_boot)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t last_fw_slot, last_fw_result, fw_slot;
@@ -98,8 +95,7 @@ static void fail_impl(struct vb2_context *ctx,
 	 * been set through vb2api_fail() in the previous boot and the new
 	 * failure can stand.
 	 */
-	if (previous_boot &&
-	    vb2_nv_get(ctx, VB2_NV_FW_RESULT) == VB2_FW_RESULT_FAILURE)
+	if (previous_boot && vb2_nv_get(ctx, VB2_NV_FW_RESULT) == VB2_FW_RESULT_FAILURE)
 		return;
 
 	/* See if we were far enough in the boot process to choose a slot */
@@ -148,15 +144,13 @@ static void fail_impl(struct vb2_context *ctx,
 	}
 }
 
-test_mockable
-void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
+test_mockable void vb2api_fail(struct vb2_context *ctx, uint8_t reason, uint8_t subcode)
 {
 	fail_impl(ctx, reason, subcode, false);
 }
 
-test_mockable
-void vb2api_previous_boot_fail(struct vb2_context *ctx,
-			       uint8_t reason, uint8_t subcode)
+test_mockable void vb2api_previous_boot_fail(struct vb2_context *ctx, uint8_t reason,
+					     uint8_t subcode)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
@@ -172,8 +166,7 @@ void vb2_check_recovery(struct vb2_context *ctx)
 	uint32_t reason = vb2_nv_get(ctx, VB2_NV_RECOVERY_REQUEST);
 	uint32_t subcode = vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE);
 
-	VB2_DEBUG("Recovery reason from previous boot: %#x / %#x\n",
-		  reason, subcode);
+	VB2_DEBUG("Recovery reason from previous boot: %#x / %#x\n", reason, subcode);
 
 	/*
 	 * Sets the current recovery request, unless there's already been a
@@ -184,8 +177,7 @@ void vb2_check_recovery(struct vb2_context *ctx)
 
 	if (ctx->flags & VB2_CONTEXT_FORCE_RECOVERY_MODE) {
 		VB2_DEBUG("Recovery was requested manually\n");
-		if (subcode && !sd->recovery_reason &&
-		    subcode != VB2_RECOVERY_TRAIN_AND_REBOOT)
+		if (subcode && !sd->recovery_reason && subcode != VB2_RECOVERY_TRAIN_AND_REBOOT)
 			/*
 			 * Recovery was requested at 'broken' screen.
 			 * Promote subcode to reason.
@@ -199,16 +191,14 @@ void vb2_check_recovery(struct vb2_context *ctx)
 	/* If recovery reason is non-zero, tell caller we need recovery mode */
 	if (sd->recovery_reason) {
 		ctx->flags |= VB2_CONTEXT_RECOVERY_MODE;
-		VB2_DEBUG("We have a recovery request: %#x / %#x\n",
-			  sd->recovery_reason,
+		VB2_DEBUG("We have a recovery request: %#x / %#x\n", sd->recovery_reason,
 			  vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE));
 	}
 
 	sd->status |= VB2_SD_STATUS_RECOVERY_DECIDED;
 }
 
-test_mockable
-vb2_error_t vb2_fw_init_gbb(struct vb2_context *ctx)
+test_mockable vb2_error_t vb2_fw_init_gbb(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb;
@@ -234,8 +224,7 @@ vb2_error_t vb2_fw_init_gbb(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-test_mockable
-vb2_error_t vb2_check_dev_switch(struct vb2_context *ctx)
+test_mockable vb2_error_t vb2_check_dev_switch(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
@@ -315,6 +304,8 @@ vb2_error_t vb2_check_dev_switch(struct vb2_context *ctx)
 		 * override).
 		 */
 		rv = vb2ex_tpm_clear_owner(ctx);
+		VB2_DEBUG("THOMAS: developer switch has triggered in check_dev_switch!\n");
+		vb2_nv_set(ctx, VB2_NV_DEV_MODE_SWITCH, 1);
 		/* Check for failure to clear owner */
 		if (valid_secdata && rv) {
 			/*
@@ -328,21 +319,19 @@ vb2_error_t vb2_check_dev_switch(struct vb2_context *ctx)
 		}
 
 		/* Save new flags */
-		vb2_secdata_firmware_set(ctx, VB2_SECDATA_FIRMWARE_FLAGS,
-					 flags);
+		vb2_secdata_firmware_set(ctx, VB2_SECDATA_FIRMWARE_FLAGS, flags);
 	}
 
 	return VB2_SUCCESS;
 }
 
-test_mockable
-vb2_error_t vb2_check_tpm_clear(struct vb2_context *ctx)
+test_mockable vb2_error_t vb2_check_tpm_clear(struct vb2_context *ctx)
 {
 	vb2_error_t rv;
 
 	/* Check if we've been asked to clear the owner */
 	if (!vb2_nv_get(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST))
-		return VB2_SUCCESS;  /* No need to clear */
+		return VB2_SUCCESS; /* No need to clear */
 
 	/* Request applies one time only */
 	vb2_nv_set(ctx, VB2_NV_CLEAR_TPM_OWNER_REQUEST, 0);
@@ -364,8 +353,7 @@ vb2_error_t vb2_check_tpm_clear(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-test_mockable
-vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
+test_mockable vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint32_t tries;
@@ -391,8 +379,7 @@ vb2_error_t vb2_select_fw_slot(struct vb2_context *ctx)
 	/* Check try count */
 	tries = vb2_nv_get(ctx, VB2_NV_TRY_COUNT);
 
-	if (sd->last_fw_result == VB2_FW_RESULT_TRYING &&
-	    sd->last_fw_slot == sd->fw_slot &&
+	if (sd->last_fw_result == VB2_FW_RESULT_TRYING && sd->last_fw_slot == sd->fw_slot &&
 	    tries == 0) {
 		/*
 		 * If there is only RW A slot available, we have no other slot
@@ -465,7 +452,8 @@ vb2_error_t vb2api_disable_developer_mode(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
-void vb2api_request_diagnostics(struct vb2_context *ctx) {
+void vb2api_request_diagnostics(struct vb2_context *ctx)
+{
 	vb2_nv_set(ctx, VB2_NV_DIAG_REQUEST, 1);
 	VB2_DEBUG("Diagnostics requested\n");
 }
@@ -477,8 +465,7 @@ void vb2api_clear_recovery(struct vb2_context *ctx)
 	uint32_t subcode = vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE);
 
 	if (reason || subcode)
-		VB2_DEBUG("Clearing recovery request: %#x / %#x  %s\n",
-			  reason, subcode,
+		VB2_DEBUG("Clearing recovery request: %#x / %#x  %s\n", reason, subcode,
 			  vb2_get_recovery_reason_string(reason));
 
 	/* Clear recovery request for both the manual recovery and the broken
@@ -488,14 +475,12 @@ void vb2api_clear_recovery(struct vb2_context *ctx)
 
 	/* But stow recovery reason as subcode for the broken screen. */
 	if (ctx->boot_mode == VB2_BOOT_MODE_BROKEN_SCREEN) {
-		VB2_DEBUG("Stow recovery reason as subcode (%#x)\n",
-			  sd->recovery_reason);
+		VB2_DEBUG("Stow recovery reason as subcode (%#x)\n", sd->recovery_reason);
 		vb2_nv_set(ctx, VB2_NV_RECOVERY_SUBCODE, sd->recovery_reason);
 	}
 }
 
-test_mockable
-int vb2api_need_reboot_for_display(struct vb2_context *ctx)
+test_mockable int vb2api_need_reboot_for_display(struct vb2_context *ctx)
 {
 	if (!(vb2_get_sd(ctx)->flags & VB2_SD_FLAG_DISPLAY_AVAILABLE)) {
 		VB2_DEBUG("Need reboot to initialize display\n");
@@ -557,32 +542,29 @@ void vb2api_export_vbsd(struct vb2_context *ctx, void *dest)
 	else
 		vbsd->firmware_index = sd->fw_slot;
 }
-_Static_assert(VB2_VBSD_SIZE == sizeof(VbSharedDataHeader),
-	       "VB2_VBSD_SIZE incorrect");
+_Static_assert(VB2_VBSD_SIZE == sizeof(VbSharedDataHeader), "VB2_VBSD_SIZE incorrect");
 
-test_mockable
-int vb2api_diagnostic_ui_enabled(struct vb2_context *ctx)
+test_mockable int vb2api_diagnostic_ui_enabled(struct vb2_context *ctx)
 {
 	return !(vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS) &
 		 VB2_SECDATA_KERNEL_FLAG_DIAGNOSTIC_UI_DISABLED);
 }
 
-enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(
-	struct vb2_context *ctx)
+enum vb2_dev_default_boot_target vb2api_get_dev_default_boot_target(struct vb2_context *ctx)
 {
 	if (vb2api_gbb_get_flags(ctx) & VB2_GBB_FLAG_DEFAULT_DEV_BOOT_ALTFW)
 		return VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW;
 
 	switch (vb2_nv_get(ctx, VB2_NV_DEV_DEFAULT_BOOT)) {
-		case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
-			if (ctx->flags & VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED)
-				return VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
-			break;
+	case VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL:
+		if (ctx->flags & VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED)
+			return VB2_DEV_DEFAULT_BOOT_TARGET_EXTERNAL;
+		break;
 
-		case VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW:
-			if (ctx->flags & VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED)
-				return VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW;
-			break;
+	case VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW:
+		if (ctx->flags & VB2_CONTEXT_DEV_BOOT_ALTFW_ALLOWED)
+			return VB2_DEV_DEFAULT_BOOT_TARGET_ALTFW;
+		break;
 	}
 
 	return VB2_DEV_DEFAULT_BOOT_TARGET_INTERNAL;
@@ -592,15 +574,13 @@ void vb2_fill_dev_boot_flags(struct vb2_context *ctx)
 {
 	struct vb2_gbb_header *gbb = vb2_get_gbb(ctx);
 
-	if (!vb2_secdata_fwmp_get_flag(ctx,
-				       VB2_SECDATA_FWMP_DEV_DISABLE_BOOT) ||
+	if (!vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_DISABLE_BOOT) ||
 	    (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_SWITCH_ON))
 		ctx->flags |= VB2_CONTEXT_DEV_BOOT_ALLOWED;
 
 	if (vb2_nv_get(ctx, VB2_NV_DEV_BOOT_EXTERNAL) ||
 	    (gbb->flags & VB2_GBB_FLAG_FORCE_DEV_BOOT_USB) ||
-	    vb2_secdata_fwmp_get_flag(ctx,
-				      VB2_SECDATA_FWMP_DEV_ENABLE_EXTERNAL))
+	    vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_EXTERNAL))
 		ctx->flags |= VB2_CONTEXT_DEV_BOOT_EXTERNAL_ALLOWED;
 
 	if (vb2_nv_get(ctx, VB2_NV_DEV_BOOT_ALTFW) ||
@@ -615,9 +595,8 @@ int vb2api_use_short_dev_screen_delay(struct vb2_context *ctx)
 	return gbb->flags & VB2_GBB_FLAG_DEV_SCREEN_SHORT_DELAY;
 }
 
-static void snprint_sha1_sum(struct vb2_context *ctx,
-			     struct vb2_packed_key *key,
-			     char *dest, size_t dest_size)
+static void snprint_sha1_sum(struct vb2_context *ctx, struct vb2_packed_key *key, char *dest,
+			     size_t dest_size)
 {
 	uint8_t *buf = ((uint8_t *)key) + key->key_offset;
 	uint64_t buflen = key->key_size;
@@ -625,22 +604,21 @@ static void snprint_sha1_sum(struct vb2_context *ctx,
 	int32_t used = 0;
 	int i;
 
-	vb2_hash_calculate(vb2api_hwcrypto_allowed(ctx), buf, buflen,
-			   VB2_HASH_SHA1, &hash);
+	vb2_hash_calculate(vb2api_hwcrypto_allowed(ctx), buf, buflen, VB2_HASH_SHA1, &hash);
 	for (i = 0; i < sizeof(hash.sha1); i++)
 		if (used < dest_size)
-			used += snprintf(dest + used, dest_size - used,
-					 "%02x", hash.sha1[i]);
+			used += snprintf(dest + used, dest_size - used, "%02x", hash.sha1[i]);
 	dest[dest_size - 1] = '\0';
 }
 
 #define DEBUG_INFO_MAX_LENGTH 1024
 
-#define DEBUG_INFO_APPEND(format, args...) do { \
-	if (used < DEBUG_INFO_MAX_LENGTH) \
-		used += snprintf(buf + used, DEBUG_INFO_MAX_LENGTH - used, \
-				 format, ## args); \
-} while (0)
+#define DEBUG_INFO_APPEND(format, args...)                                                     \
+	do {                                                                                   \
+		if (used < DEBUG_INFO_MAX_LENGTH)                                              \
+			used += snprintf(buf + used, DEBUG_INFO_MAX_LENGTH - used, format,     \
+					 ##args);                                              \
+	} while (0)
 
 char *vb2api_get_debug_info(struct vb2_context *ctx)
 {
@@ -679,8 +657,7 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 
 	/* Add recovery reason and subcode */
 	i = vb2_nv_get(ctx, VB2_NV_RECOVERY_SUBCODE);
-	DEBUG_INFO_APPEND("\nrecovery_reason: %#.2x / %#.2x  %s",
-			  sd->recovery_reason, i,
+	DEBUG_INFO_APPEND("\nrecovery_reason: %#.2x / %#.2x  %s", sd->recovery_reason, i,
 			  vb2_get_recovery_reason_string(sd->recovery_reason));
 
 	/* Add vb2_context and vb2_shared_data flags */
@@ -690,7 +667,7 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 
 	/* Add raw contents of nvdata */
 	DEBUG_INFO_APPEND("\nnvdata:");
-	if (vb2_nv_get_size(ctx) > 16)  /* Multi-line starts on next line */
+	if (vb2_nv_get_size(ctx) > 16) /* Multi-line starts on next line */
 		DEBUG_INFO_APPEND("\n  ");
 	for (i = 0; i < vb2_nv_get_size(ctx); i++) {
 		/* Split into 16-byte blocks */
@@ -716,8 +693,8 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 	DEBUG_INFO_APPEND("\ndev_boot_signed_only: %d", i);
 
 	/* Add TPM versions */
-	DEBUG_INFO_APPEND("\nTPM: fwver=%#.8x kernver=%#.8x",
-			  sd->fw_version_secdata, sd->kernel_version_secdata);
+	DEBUG_INFO_APPEND("\nTPM: fwver=%#.8x kernver=%#.8x", sd->fw_version_secdata,
+			  sd->kernel_version_secdata);
 
 	/* Add GBB flags */
 	if (gbb) {
@@ -746,10 +723,8 @@ char *vb2api_get_debug_info(struct vb2_context *ctx)
 	}
 
 	/* If we're in dev-mode, show the kernel subkey that we expect, too. */
-	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE) &&
-	    sd->kernel_key_offset) {
-		struct vb2_packed_key *key =
-			vb2_member_of(sd, sd->kernel_key_offset);
+	if (!(ctx->flags & VB2_CONTEXT_RECOVERY_MODE) && sd->kernel_key_offset) {
+		struct vb2_packed_key *key = vb2_member_of(sd, sd->kernel_key_offset);
 		snprint_sha1_sum(ctx, key, sha1sum, sizeof(sha1sum));
 		DEBUG_INFO_APPEND("\nkernel_subkey: %s", sha1sum);
 	}
@@ -773,8 +748,7 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 	 * (compromised) host will end up with 'broken' screen.
 	 */
 	if ((ctx->flags & VB2_CONTEXT_FORCE_RECOVERY_MODE) &&
-	    !(ctx->flags & VB2_CONTEXT_NO_BOOT) &&
-	    (ctx->flags & VB2_CONTEXT_EC_TRUSTED)) {
+	    !(ctx->flags & VB2_CONTEXT_NO_BOOT) && (ctx->flags & VB2_CONTEXT_EC_TRUSTED)) {
 		*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 	} else if (sd->recovery_reason) {
 		vb2_gbb_flags_t gbb_flags = vb2api_gbb_get_flags(ctx);
@@ -782,16 +756,14 @@ void vb2_set_boot_mode(struct vb2_context *ctx)
 			*boot_mode = VB2_BOOT_MODE_MANUAL_RECOVERY;
 		else
 			*boot_mode = VB2_BOOT_MODE_BROKEN_SCREEN;
-	} else if (vb2api_diagnostic_ui_enabled(ctx) &&
-		   vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
+	} else if (vb2api_diagnostic_ui_enabled(ctx) && vb2_nv_get(ctx, VB2_NV_DIAG_REQUEST)) {
 		*boot_mode = VB2_BOOT_MODE_DIAGNOSTICS;
 	} else if (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE) {
 		*boot_mode = VB2_BOOT_MODE_DEVELOPER;
 	}
 }
 
-test_mockable
-bool vb2api_hwcrypto_allowed(struct vb2_context *ctx)
+test_mockable bool vb2api_hwcrypto_allowed(struct vb2_context *ctx)
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 
@@ -805,7 +777,7 @@ bool vb2api_hwcrypto_allowed(struct vb2_context *ctx)
 
 	/* enable hwcrypto only if RW firmware set the flag */
 	return vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS) &
-		VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED;
+	       VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED;
 }
 
 bool vb2_need_kernel_verification(struct vb2_context *ctx)
@@ -815,8 +787,7 @@ bool vb2_need_kernel_verification(struct vb2_context *ctx)
 		return true;
 
 	/* FWMP can require developer mode to use signed kernels */
-	if (vb2_secdata_fwmp_get_flag(
-		ctx, VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY))
+	if (vb2_secdata_fwmp_get_flag(ctx, VB2_SECDATA_FWMP_DEV_ENABLE_OFFICIAL_ONLY))
 		return true;
 
 	/* Developers may require signed kernels */
