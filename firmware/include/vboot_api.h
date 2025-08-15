@@ -95,11 +95,6 @@ typedef struct VbSelectAndLoadKernelParams {
 	enum vb2_boot_command boot_command;
 	/* Size of pvmfw partition in bytes in pvmfw buffer. */
 	uint32_t pvmfw_size;
-	/* Address of the region with kernel bootconfig parameters. */
-	char *kernel_bootconfig_buffer;
-	/* Size of the region with kernel bootconfig parameters. */
-	uint32_t kernel_bootconfig_size;
-
 	/*
 	 * TODO: in H2C, all that pretty much just gets passed to the
 	 * bootloader as KernelBootloaderOptions, though the disk handle is
