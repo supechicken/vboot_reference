@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce281888_52b78bef",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2025-08-15T21:16:43Z",
+      "side": 1,
+      "message": "comment is a bit redundant with the `info` line saying the samething\n\nat the very least, \"So here\" is unnecessary and pushes you over the 80 col limit",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69900742_cbb9c4cf",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2025-08-15T21:16:43Z",
+      "side": 1,
+      "message": "needs updating\n\ncomes up below too",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67642d8_8d40cbe4",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2025-08-15T21:16:43Z",
+      "side": 1,
+      "message": "`old_cros_part_hash_list` isn\u0027t declared",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0717f3e3_58e48a7f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2025-08-15T21:16:43Z",
+      "side": 1,
+      "message": "`local` is a command and will rerun in every loop iteration.  hoist it outside.",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81031767_a36e3694",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2025-08-15T21:16:43Z",
+      "side": 1,
+      "message": "just use double quotes for the whole string instead of switching between single \u0026 double",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f9bb37_1003c011",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2025-08-15T21:16:43Z",
+      "side": 1,
+      "message": "since it\u0027s new code, use `-E` so you don\u0027t have to escape things",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
