@@ -18,6 +18,60 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c107b66e_63a55468",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-15T21:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce281888_52b78bef",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "397cf9bf_1a877f9e",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-15T21:52:40Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "ce281888_52b78bef",
+      "fixSuggestions": [
+        {
+          "fixId": "eb1470a2_9880072e",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1040,
+                "startChar": 0,
+                "endLine": 1041,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69900742_cbb9c4cf",
@@ -31,6 +85,24 @@
       "writtenOn": "2025-08-15T21:16:43Z",
       "side": 1,
       "message": "needs updating\n\ncomes up below too",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9bd179_29fdb11f",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-15T21:52:40Z",
+      "side": 1,
+      "message": "Acknowledged, this one should be up to date",
+      "parentUuid": "69900742_cbb9c4cf",
       "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +124,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49bc9b65_4dcb3d3c",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-15T21:52:40Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d67642d8_8d40cbe4",
+      "fixSuggestions": [
+        {
+          "fixId": "c3c1b515_35773edb",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1052,
+                "startChar": 0,
+                "endLine": 1052,
+                "endChar": 0
+              },
+              "replacement": "    local old_cros_part_hash_list\u003d()\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0717f3e3_58e48a7f",
@@ -65,6 +173,52 @@
       "writtenOn": "2025-08-15T21:16:43Z",
       "side": 1,
       "message": "`local` is a command and will rerun in every loop iteration.  hoist it outside.",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a707a09_51497310",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-15T21:52:40Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "0717f3e3_58e48a7f",
+      "fixSuggestions": [
+        {
+          "fixId": "e45a7483_5a2c8686",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1056,
+                "startChar": 0,
+                "endLine": 1056,
+                "endChar": 0
+              },
+              "replacement": "    local par_num\n"
+            },
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1057,
+                "startChar": 0,
+                "endLine": 1058,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
       "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +253,60 @@
       "writtenOn": "2025-08-15T21:16:43Z",
       "side": 1,
       "message": "since it\u0027s new code, use `-E` so you don\u0027t have to escape things",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964be3c5_a61f12f5",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-15T21:52:40Z",
+      "side": 1,
+      "message": "I am getting mixed signals for this.\n\nSince this method works, will just leave as is + follow-up with changes as needed.",
+      "parentUuid": "81031767_a36e3694",
+      "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d92764_08ef69de",
+        "filename": "scripts/image_signing/sign_official_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2025-08-15T21:52:40Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "28f9bb37_1003c011",
+      "fixSuggestions": [
+        {
+          "fixId": "be9578cd_9e35cd20",
+          "description": "GET_AI_FIX_FOR_COMMENT prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "scripts/image_signing/sign_official_build.sh",
+              "range": {
+                "startLine": 1082,
+                "startChar": 0,
+                "endLine": 1083,
+                "endChar": 0
+              },
+              "replacement": "    sed -i -E \u0027s#(cros_part_hash\u003d)[A-Za-z0-9+/,:\u003d]*#\\1\u0027\"${new_cros_part_hash}#\" \\\n"
+            }
+          ]
+        }
+      ],
       "revId": "e78b0706cfdd69308334fe9dcf34d3c9f272beaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
