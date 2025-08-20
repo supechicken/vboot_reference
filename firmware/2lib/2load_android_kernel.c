@@ -15,6 +15,7 @@
 #include "gpt_misc.h"
 #include "vboot_api.h"
 #include "vb2_android_bootimg.h"
+#include "vb2_android_dtimg.h"
 
 #define GPT_ENT_NAME_ANDROID_A_SUFFIX "_a"
 #define GPT_ENT_NAME_ANDROID_B_SUFFIX "_b"
@@ -379,6 +380,49 @@ static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 	return VB2_SUCCESS;
 }
 
+/* This function validates the dtb/dtbo partitions magic numbers */
+static vb2_error_t prepare_dtb(AvbOps *avb_ops, struct vb2_kernel_params *params)
+{
+	struct dt_table_header *dtb_hdr = NULL, *dtbo_hdr = NULL;
+	size_t dtb_size = 0, dtbo_size = 0;
+
+	if (!params->load_dtb_partitions)
+		return VB2_SUCCESS;
+
+	if (vb2_android_get_buffer(avb_ops, GPT_ANDROID_DTB, (void **)&dtb_hdr, &dtb_size) &&
+	    vb2_android_get_buffer(avb_ops, GPT_ANDROID_DTBO, (void **)&dtbo_hdr, &dtbo_size)) {
+		VB2_DEBUG("Cannot get information about preloaded partition\n");
+		return VB2_ERROR_ANDROID_BROKEN_DTB;
+	}
+
+	if (!dtb_hdr || dtb_size < sizeof(*dtb_hdr) ||
+			ntohl(dtb_hdr->magic) != DT_TABLE_MAGIC) {
+		VB2_DEBUG("Continuing without a DTB image\n");
+		params->dtb = NULL;
+		params->dtb_size = 0;
+	} else {
+		params->dtb = dtb_hdr;
+		params->dtb_size = dtb_size;
+	}
+
+	if (!dtbo_hdr || dtbo_size < sizeof(*dtbo_hdr) ||
+			 ntohl(dtbo_hdr->magic) != DT_TABLE_MAGIC) {
+		VB2_DEBUG("Continuing without a DTBO image\n");
+		params->dtbo = NULL;
+		params->dtbo_size = 0;
+	} else {
+		params->dtbo = dtbo_hdr;
+		params->dtbo_size = dtbo_size;
+	}
+
+	if (!params->dtb_size && !params->dtbo_size) {
+		VB2_DEBUG("Invalid DTB and DTBO images\n");
+		return VB2_ERROR_ANDROID_BROKEN_DTB;
+	}
+
+	return VB2_SUCCESS;
+}
+
 vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
 			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle)
 {
@@ -392,6 +436,8 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		GptPartitionNames[GPT_ANDROID_INIT_BOOT],
 		GptPartitionNames[GPT_ANDROID_VENDOR_BOOT],
 		GptPartitionNames[GPT_ANDROID_PVMFW],
+		GptPartitionNames[GPT_ANDROID_DTB],
+		GptPartitionNames[GPT_ANDROID_DTBO],
 		NULL,
 	};
 	const char *slot_suffix = NULL;
@@ -405,6 +451,17 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		VB2_DEBUG("Not loading pvmfw: not requested.\n");
 		boot_partitions[3] = NULL;
 		params->pvmfw_out_size = 0;
+	}
+
+	/* Check if dtb/dtbo partition load is requesed. */
+	if (!params->load_dtb_partitions) {
+		VB2_DEBUG("Not loading dtb/dtbo: not requested.\n");
+		boot_partitions[4] = NULL;
+		boot_partitions[5] = NULL;
+		params->dtb = NULL;
+		params->dtbo = NULL;
+		params->dtb_size = 0;
+		params->dtbo_size = 0;
 	}
 
 	/* Update flags to mark loaded GKI image */
@@ -485,6 +542,10 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	}
 
 	rv = prepare_pvmfw(verify_data, params);
+	if (rv)
+		goto out;
+
+	rv = prepare_dtb(avb_ops, params);
 
 out:
 	/* No need for slot data */
