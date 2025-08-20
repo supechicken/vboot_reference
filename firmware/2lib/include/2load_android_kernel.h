@@ -32,7 +32,7 @@ vb2_error_t vb2_load_android_kernel(
 	int need_keyblock_valid);
 
 /**
- * Loads and verifies Android partitions (boot, init_boot, vendor_boot, pvmfw).
+ * Loads and verifies Android partitions (boot, init_boot, vendor_boot, pvmfw, dtb, dtbo).
  *
  * @param ctx			Vboot context
  * @param gpt			Partition table from the disk
