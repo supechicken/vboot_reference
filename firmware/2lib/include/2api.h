@@ -645,6 +645,15 @@ struct vb2_kernel_params {
 	uint32_t pvmfw_buffer_size;
 	/* Size of pvmfw partition in bytes in pvmfw buffer. */
 	uint32_t pvmfw_out_size;
+
+	/* Input flag from depthcharge to load dtb/dtbo partitions */
+	bool load_dtb_partitions;
+	/* dtb/dtbo address */
+	void *dtb;
+	void *dtbo;
+	/* Size of dtb/dtbo in bytes */
+	size_t dtb_size;
+	size_t dtbo_size;
 };
 
 /*****************************************************************************/
