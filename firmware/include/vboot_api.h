@@ -96,6 +96,13 @@ typedef struct VbSelectAndLoadKernelParams {
 	uint32_t pvmfw_buffer_size;
 	/* Size of pvmfw partition in bytes in pvmfw buffer. */
 	uint32_t pvmfw_out_size;
+
+	/* dtb address & size */
+	void *dtb;
+	size_t dtb_size;
+	/* dtbo address & size */
+	void *dtbo;
+	size_t dtbo_size;
 } VbSelectAndLoadKernelParams;
 
 /**
