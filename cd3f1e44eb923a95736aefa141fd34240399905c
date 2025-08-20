@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc46f037_c5c947f9",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "The same can be achieved by using a normal read with a full layout and excluded section.",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 1
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16685275_c949ebbf",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "`host/lib/fmap.c:fmap_find_by_name()` can be called like that: `fmap_find_by_name(NULL, 0, non_null_fmap, \"AREA\", \u0026ah)`. `ptr` and `size` are required only in case the `FmapHeader` is NULL.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 52
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d75e736_bf4689a2",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "You can use `ah-\u003earea_offset` here instead. This way you will get actual start of the `FMAP` section instead of the struct header that can be offset in the section (what should never happen, but is allowed).",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 71
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30917fe_64af522e",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "```suggestion\n\tVB2_DEBUG(\"Looking for FMAP at %\" PRId64 \" (%zu bytes)\\n\", ah-\u003earea_offset, ah-\u003earea_size);\n```\nSame below.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 82
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710f6bbc_d449dcf0",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "This pointer is going to be invalid if any operation overwrites the contents of `image-\u003edata`.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 68
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeffff2c_97b5cef3",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "```suggestion\n\tif (image-\u003efmap_header)\n\t\tVB2_DEBUG(\"Located FMAP using helper image: %s\\n\", image-\u003efmap_header ? \"YES\" : \"NO\");\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 87
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45307bc7_86c1c588",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "This label does not match it\u0027s actual functionality. I think `cleanup` or `end` would be better.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55600ee6_ea6f3ed5",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "```suggestion\n\tchar region_name[FMAP_NAMELEN + 1];\n```",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 22
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f510b531_fb7dabda",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "Passing `FmapHeader` of the helper/target image should be enough. You should not need anything besides this.",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 44
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10128133_4670f41c",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "```suggestion\n\t} else if (!image-\u003efmap_header) {\n\t\tERROR(\"Reading additional regions failed: FMAP header is not set.\\n\");\n\t\tr \u003d -1;\n\t\tgoto err_cleanup;\n\t} else {\n```",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 0
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3f39af_b2e8501c",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "`ah-\u003earea_offset`",
+      "range": {
+        "startLine": 247,
+        "startChar": 13,
+        "endLine": 247,
+        "endChar": 57
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a04b288_522150a4",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "You could add a bool return value to `locate_fmap_using_helper_image`.\n```suggestion\n\t\t/* Try to use prvided FlashMap. If it does not match, then fall back to the default searching mechanism. */\n\t\tif (helper_image \u0026\u0026 !image-\u003efmap_header \u0026\u0026\n\t\t    locate_fmap_using_helper_image(flashctx, image, helper_image, \u0026fmap_pos,\n\t\t\t\t\t\t       \u0026fmap_len, len) \u0026\u0026\n\t\t    flashrom_layout_read_fmap_from_buffer(\u0026layout, flashctx,\n\t\t                                          image-\u003edata + fmap_pos,\n\t\t                                          fmap_len)) {\n\t\t\tVB2_DEBUG(\"Failed to locate FMAP using helper image. Will search the \"\n\t\t\t\t  \"flash...\");\n\t\t\timage-\u003efmap_header \u003d NULL;\n\t\t}\n```",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 263,
+        "endChar": 3
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419e4c4b_1eef8cda",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "This does not seem necessary. What\u0027s the purpose of this call?",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 282,
+        "endChar": 4
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae903d4_f15b7250",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-20T09:04:36Z",
+      "side": 1,
+      "message": "The code could be simplified by moving whole FlashMap checking above `if(regions_len)`.",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "cd3f1e44eb923a95736aefa141fd34240399905c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
