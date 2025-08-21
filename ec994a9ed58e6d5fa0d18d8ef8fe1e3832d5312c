@@ -52,6 +52,24 @@
       "parentUuid": "40bb1b59_8b32d2fd",
       "revId": "ec994a9ed58e6d5fa0d18d8ef8fe1e3832d5312c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dcb50a_743ff133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-21T06:42:52Z",
+      "side": 1,
+      "message": "- Tested Android OTA on Hylia. See https://paste.googleplex.com/6295615189024768 for firmware_update.log.\n- Tested x86\u0027s `VbGetSystemSkuId()` on Brya.\n\nWe\u0027re good to go with this patch.",
+      "parentUuid": "594df5e1_95e56a87",
+      "revId": "ec994a9ed58e6d5fa0d18d8ef8fe1e3832d5312c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
