@@ -67,6 +67,7 @@ static int FindEmmcDev(void)
 		if (value == 0)
 			return mmcblk;
 	}
+	fprintf(stderr, "ERROR: %s: Failed to find eMMC.\n", __func__);
 	/* eMMC not found */
 	return E_FAIL;
 }
@@ -199,8 +200,10 @@ static int vb2_read_nv_storage_disk(struct vb2_context *ctx)
 		return E_FAIL;
 	snprintf(nvctx_path, sizeof(nvctx_path), NVCTX_PATH, emmc_dev);
 
-	if (size != vb2_nv_get_size(ctx) || (size + offset > SECTOR_SIZE))
+	if (size != vb2_nv_get_size(ctx) || (size + offset > SECTOR_SIZE)) {
+		fprintf(stderr, "ERROR: %s: Invalid size or offset.\n", __func__);
 		return E_FAIL;
+	}
 
 	nvctx_fd = open(nvctx_path, O_RDONLY);
 	if (nvctx_fd == -1) {
@@ -246,6 +249,7 @@ static int vb2_write_nv_storage_disk(struct vb2_context *ctx)
 	snprintf(nvctx_path, sizeof(nvctx_path), NVCTX_PATH, emmc_dev);
 
 	if (size != vb2_nv_get_size(ctx) || (size + offset > SECTOR_SIZE))
+		fprintf(stderr, "ERROR: %s: Invalid size or offset.\n", __func__);
 		return E_FAIL;
 
 	do {
@@ -303,6 +307,8 @@ int vb2_read_nv_storage(struct vb2_context *ctx)
 		return vb2_read_nv_storage_disk(ctx);
 	if (!strcmp(media, "flash"))
 		return vb2_read_nv_storage_flashrom(ctx);
+
+	fprintf(stderr, "ERROR: %s: Failed to read NV storage.\n", __func__);
 	return -1;
 }
 
@@ -318,6 +324,8 @@ int vb2_write_nv_storage(struct vb2_context *ctx)
 		return vb2_write_nv_storage_disk(ctx);
 	if (!strcmp(media, "flash"))
 		return vb2_write_nv_storage_flashrom(ctx);
+
+	fprintf(stderr, "ERROR: %s: Failed to write NV storage.\n", __func__);
 	return -1;
 }
 
@@ -379,6 +387,7 @@ int VbGetArchPropertyInt(const char* name)
 			return -1;
 		return board_id;
 	} else {
+		fprintf(stderr, "ERROR: %s: Failed to get integer property.\n", __func__);
 		return -1;
 	}
 }
@@ -412,6 +421,8 @@ const char* VbGetArchPropertyString(const char* name, char* dest,
 		free(str);
 		return rv;
 	}
+
+	fprintf(stderr, "ERROR: %s: Failed to get string property.\n", __func__);
 	return NULL;
 }
 
