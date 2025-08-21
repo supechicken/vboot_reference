@@ -130,6 +130,10 @@ static char* GetAcpiSysfsPath(const char* name)
 	else
 		ret = -1;
 
+	if (ret == -1)
+		fprintf(stderr, "ERROR: %s: Failed to get ChromeOS ACPI sysfs path %s\n",
+			__func__, name);
+
 	return ret == -1 ? NULL : path;
 }
 
@@ -185,10 +189,14 @@ static int VbCmosRead(unsigned offs, size_t size, void *ptr)
 	FILE* f;
 
 	f = fopen(NVRAM_PATH, "rb");
-	if (!f)
+	if (!f) {
+		fprintf(stderr, "ERROR: %s: Failed to open %s: %s\n", __func__, NVRAM_PATH,
+			strerror(errno));
 		return -1;
+	}
 
 	if (0 != fseek(f, offs, SEEK_SET)) {
+		fprintf(stderr, "ERROR: %s: fseek failed: %s\n", __func__, strerror(errno));
 		fclose(f);
 		return -1;
 	}
@@ -198,6 +206,10 @@ static int VbCmosRead(unsigned offs, size_t size, void *ptr)
 		VbFixCmosChecksum(f);
 		res = fread(ptr, size, 1, f);
 	}
+
+	if (res != 1)
+		fprintf(stderr, "ERROR: %s: Failed to read data from %s: %s\n", __func__,
+			NVRAM_PATH, strerror(errno));
 
 	fclose(f);
 	return (1 == res) ? 0 : -1;
@@ -210,10 +222,14 @@ static int VbCmosWrite(unsigned offs, size_t size, const void *ptr)
 	FILE* f;
 
 	f = fopen(NVRAM_PATH, "w+b");
-	if (!f)
+	if (!f) {
+		fprintf(stderr, "ERROR: %s: Failed to open %s: %s\n", __func__, NVRAM_PATH,
+			strerror(errno));
 		return -1;
+	}
 
 	if (0 != fseek(f, offs, SEEK_SET)) {
+		fprintf(stderr, "ERROR: %s: fseek failed: %s\n", __func__, strerror(errno));
 		fclose(f);
 		return -1;
 	}
@@ -223,6 +239,10 @@ static int VbCmosWrite(unsigned offs, size_t size, const void *ptr)
 		VbFixCmosChecksum(f);
 		res = fwrite(ptr, size, 1, f);
 	}
+
+	if (res != 1)
+		fprintf(stderr, "ERROR: %s: Failed to write data to %s: %s\n", __func__,
+			NVRAM_PATH, strerror(errno));
 
 	fclose(f);
 	return (1 == res) ? 0 : -1;
@@ -239,8 +259,10 @@ int vb2_read_nv_storage(struct vb2_context *ctx)
 		return -1;
 	if (ReadAcpiSysfsInt("VBNV.1", &blksz) < 0)
 		return -1;
-	if (expectsz > blksz)
+	if (expectsz > blksz) {
+		fprintf(stderr, "ERROR: %s: NV storage block is too small.\n", __func__);
 		return -1;  /* NV storage block is too small */
+	}
 
 	if (0 != VbCmosRead(offs, expectsz, ctx->nvdata))
 		return -1;
@@ -262,8 +284,10 @@ int vb2_write_nv_storage(struct vb2_context *ctx)
 		return -1;
 	if (ReadAcpiSysfsInt("VBNV.1", &blksz) < 0)
 		return -1;
-	if (expectsz > blksz)
+	if (expectsz > blksz) {
+		fprintf(stderr, "ERROR: %s: NV storage block is too small.\n", __func__);
 		return -1;  /* NV storage block is too small */
+	}
 
 	if (0 != VbCmosWrite(offs, expectsz, ctx->nvdata))
 		return -1;
