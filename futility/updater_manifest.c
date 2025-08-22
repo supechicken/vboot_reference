@@ -177,6 +177,7 @@ static int apply_key_file(
  * Modifies a firmware image from patch information specified in model config.
  * Returns 0 on success, otherwise number of failures.
  */
+test_mockable
 int patch_image_by_model(
 		struct firmware_image *image, const struct model_config *model,
 		struct u_archive *archive)
@@ -586,6 +587,7 @@ static char *get_manifest_key_from_crosid(struct updater_config *cfg,
  * system (as defined by model_name).
  * Returns a model_config from manifest, or NULL if not found.
  */
+test_mockable
 const struct model_config *manifest_find_model(struct updater_config *cfg,
 					       const struct manifest *manifest,
 					       const char *model_name)
@@ -645,6 +647,7 @@ const struct model_config *manifest_find_model(struct updater_config *cfg,
 	return model;
 }
 
+test_mockable
 const struct model_config *
 manifest_detect_model_from_frid(struct updater_config *cfg,
 				struct manifest *manifest)
@@ -725,6 +728,7 @@ static char *get_custom_label_tag(const char *image_file)
 	return tag;
 }
 
+test_mockable
 const struct model_config *manifest_find_custom_label_model(
 		struct updater_config *cfg,
 		const struct manifest *manifest,
@@ -784,6 +788,7 @@ static int manifest_from_build_artifacts(struct manifest *manifest) {
  * Creates a new manifest object by scanning files in archive.
  * Returns the manifest on success, otherwise NULL for failure.
  */
+test_mockable
 struct manifest *new_manifest_from_archive(struct u_archive *archive)
 {
 	int i;
@@ -823,6 +828,7 @@ struct manifest *new_manifest_from_archive(struct u_archive *archive)
 }
 
 /* Releases all resources allocated by given manifest object. */
+test_mockable
 void delete_manifest(struct manifest *manifest)
 {
 	int i;
@@ -899,6 +905,7 @@ static void print_json_image(
 }
 
 /* Prints the information of objects in manifest (models and images) in JSON. */
+test_mockable
 void print_json_manifest(const struct manifest *manifest)
 {
 	int i, j, indent;
@@ -978,6 +985,7 @@ static void print_parseable_image(const char *name, const char *fpath, struct mo
 	free_firmware_image(&image);
 }
 
+test_mockable
 void print_parseable_manifest(const struct manifest *manifest)
 {
 	struct u_archive *ar = manifest->archive;
