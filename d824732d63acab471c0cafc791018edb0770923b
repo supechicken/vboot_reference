@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d997ded6_1cd0ddc8",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-22T08:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "284292cd_a68d8eba",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 67
+      },
+      "revId": "d824732d63acab471c0cafc791018edb0770923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "077c8be8_d1d4ceea",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-21T11:27:25Z",
       "side": 1,
       "message": "This is not needed. If this function returns `-1`, then we are trying another \"common\" read option. See: `host/lib/crossystem.c:VbGetSystemPropertyInt()`",
+      "range": {
+        "startLine": 390,
+        "startChar": 2,
+        "endLine": 390,
+        "endChar": 76
+      },
+      "revId": "d824732d63acab471c0cafc791018edb0770923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5cb71e3_56ce0b13",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-22T08:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "077c8be8_d1d4ceea",
       "range": {
         "startLine": 390,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1f1f30_ffe7637e",
+        "filename": "host/arch/arm/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-22T08:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8f0268_e5b21665",
+      "range": {
+        "startLine": 425,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 74
+      },
+      "revId": "d824732d63acab471c0cafc791018edb0770923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d7753d2_cfe94163",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6fcbcc_8120b6f3",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-22T08:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7753d2_cfe94163",
+      "range": {
+        "startLine": 71,
+        "startChar": 40,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "d824732d63acab471c0cafc791018edb0770923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1998540_0d5d5463",
@@ -106,6 +202,30 @@
       "writtenOn": "2025-08-21T11:27:25Z",
       "side": 1,
       "message": "```suggestion\n\t\tfprintf(stderr, \"ERROR: %s: File does not contain a correct integer value: %s\\n\", __func__,\n\t\t\tfilename);\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "d824732d63acab471c0cafc791018edb0770923b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e37c09_49a0d2d8",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-22T08:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1998540_0d5d5463",
       "range": {
         "startLine": 96,
         "startChar": 2,
