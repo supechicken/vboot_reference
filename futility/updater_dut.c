@@ -13,6 +13,7 @@
 #include "crossystem.h"
 #include "updater.h"
 
+test_mockable
 int dut_get_manifest_key(char **manifest_key_out, struct updater_config *cfg)
 {
 	if (cfg->dut_is_remote) {

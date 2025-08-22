@@ -569,6 +569,7 @@ char *updater_get_cbfs_quirks(struct updater_config *cfg)
 	return (char *)data;
 }
 
+test_mockable
 const struct model_config *quirk_override_custom_label(
 		struct updater_config *cfg,
 		const struct manifest *manifest,
