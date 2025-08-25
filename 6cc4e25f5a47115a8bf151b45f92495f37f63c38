@@ -16,6 +16,29 @@
       "message": "This CL can be squashed into CL:6871966.",
       "revId": "6cc4e25f5a47115a8bf151b45f92495f37f63c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e07d00a7_98a81b43",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:15Z",
+      "side": 1,
+      "message": "caller",
+      "range": {
+        "startLine": 649,
+        "startChar": 20,
+        "endLine": 649,
+        "endChar": 31
+      },
+      "revId": "6cc4e25f5a47115a8bf151b45f92495f37f63c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
