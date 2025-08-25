@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c79519_1149a069",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-25T23:56:52Z",
+      "side": 1,
+      "message": "I don\u0027t think vboot should do any validation beyond the structures it parses and uses itself. Let\u0027s leave this to depthcharge.",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f0d630_be44a74c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-25T23:56:52Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be easier to follow if you built the list forward rather than doing this post-processing?\n```\nconst char *boot_partitions[8] \u003d {0};\nint partition_count \u003d 0;\n\nboot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_BOOT];\nboot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_INIT_BOOT];\nboot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_VENDOR_BOOT];\n\nif (...pvmfw...) {\n  boot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_PVMFW];\n  ...\n}\n\nif (...dtb...) {\n  boot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_DTB];\n  boot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_DTBO];\n  ...\n}\n```",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6744e688_0b8f1166",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-25T23:56:52Z",
+      "side": 1,
+      "message": "Should this be decided by the caller? I feel like we should just depend this on the image (similar to pvmfw): if the partitions exist, they\u0027ll get loaded, if they don\u0027t then not.",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b513001_140033ea",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-25T23:56:52Z",
+      "side": 1,
+      "message": "nit: let\u0027s order them dtb, dtb_size, dtbo, dtbo_size, for consistency with other pairs.",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ea63b9_5a7a3db2",
+        "filename": "firmware/include/vb2_android_dtboimg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-25T23:56:52Z",
+      "side": 1,
+      "message": "nit: Do we just want to add this to `vb2_android_bootimg.h` so that we got all the imported Android structures in one place?",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

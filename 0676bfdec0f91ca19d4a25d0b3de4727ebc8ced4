@@ -445,6 +445,30 @@
       },
       "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d24e76_7971d4c5",
+        "filename": "firmware/include/vb2_android_dtimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-08-25T23:56:52Z",
+      "side": 1,
+      "message": "\u003e Yes we are using version 0 and hence DTB/DTBOs are uncompressed.\n\nIs there some background discussion/doc on this decision?\n\nI think we should definitely compress DTBs, regardless of which of the version formats we follow. I don\u0027t think we should necessarily be beholden to what mkdtboimg implements for that -- if that works for us, fine, but if it doesn\u0027t and we cannot change it we could also find another way to generate this partition, it\u0027s not that hard. The other partitions also use compress that\u0027s just hardcoded in the bootloader without being explicitly mentioned in the image format somewhere, so I see no strong reason why DTB needs to be different (in general hardcoded algorithms are bad, of course, but I don\u0027t think there\u0027s a big benefit of only fixing this in some partitions but not others).\n\nIf we do use compression it should of course be one of the two algorithms we already support (probably LZ4), we shouldn\u0027t implement Deflate just for this.",
+      "parentUuid": "590e1c1c_3008c35a",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
