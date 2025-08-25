@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c38ae4a_9ce6fc38",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:46:43Z",
+      "side": 1,
+      "message": "Hopefully this will never get triggered, but in case it does I\u0027d rather have an error message printed than wonder what went wrong if someone else forgets to handle the `-1` return value.",
+      "parentUuid": "90f4d358_ec34d442",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a9f658a_42d0af4e",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e77152b_23c5ff36",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:46:43Z",
+      "side": 1,
+      "message": "One of the reasons why I made this CL is because there was an error happening after an unsuccessful `open` call, but no error message was printed. I think we should leave this be.",
+      "parentUuid": "6a9f658a_42d0af4e",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d70f80c_62ca2dc4",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-22T21:48:53Z",
       "side": 1,
       "message": "I don\u0027t think all cases of this constitute a real error (as opposed to just a platform difference that is probed by seeing if this call succeeds or not), so we probably shouldn\u0027t print an error message here. You can print errors in the callers where you\u0027re sure that this really only fails in unexpected cases.",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8319a68_bcdc5a06",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:46:43Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "9d70f80c_62ca2dc4",
       "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
