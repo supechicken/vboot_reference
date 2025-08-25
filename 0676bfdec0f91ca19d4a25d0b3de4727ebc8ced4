@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d22038_f898cdb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "`2lib:`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b86bdd_76392331",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "I believe this is wrong, which violates C\u0027s strict aliasing rule. Declare a void pointer to pass to this function instead, and then cast it back to `struct dt_table_header *`.\n\nWe should also fix `rearrange_partitions`.",
+      "range": {
+        "startLine": 392,
+        "startChar": 54,
+        "endLine": 392,
+        "endChar": 71
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d1c276_c1ce0bab",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "Similar to `prepare_pvmfw`, use `avb_find_part` to have the flexibility of dropping the dtb/dtbo partitions from the builder side. If `avb_find_part` returns NULL, then we return `VB2_SUCCESS` directly (however IMO dtb/dtbo partitions should both exist or NOT exist at the same time). See previous pvmfw [discussions](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6458943/comment/347c7960_5a77fa1b/).\n\n@bernacki@google.com From that discussion, we should also change `rearrange_partitions` to use `avb_find_part` instead of `vb2_android_get_buffer`, right?",
+      "range": {
+        "startLine": 392,
+        "startChar": 5,
+        "endLine": 392,
+        "endChar": 27
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82ffd44_05bb1b49",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "Should we return an error for incorrect size/magic?",
+      "range": {
+        "startLine": 398,
+        "startChar": 17,
+        "endLine": 399,
+        "endChar": 42
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a93ac99_54f49aac",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "nit: Align with `!dtb_hdr`",
+      "range": {
+        "startLine": 399,
+        "startChar": 3,
+        "endLine": 399,
+        "endChar": 8
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a02b21_da5df8e7",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "This would be wrong (NULL means the end of array). I guess we\u0027ll need to keep PVMFW as the last in the array.",
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e38d7e_5fd3a77f",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"requesed\" is a possible misspelling of \"requested\".\n\nTo bypass Spellchecker, ad...\n\n\"requesed\" is a possible misspelling of \"requested\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 456,
+        "startChar": 40,
+        "endLine": 456,
+        "endChar": 48
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85aaa73_084a955d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "You\u0027ll need to dynamically append them to the `boot_partitions` array to make this work, if we want pvmfw and dtb/dtbo to be both configurable in runtime in depthcharge.\n\nThis makes me think if we really need the depthcharge Kconfig `ANDROID_SEPARATE_DTB` and the boolean option `load_dtb_partitions` here. For now, we would like that to be always enabled, but in the future we may switch to FIT via OTA. That said, if we use `avb_find_part` in `prepare_dtb` (suggested by the other comment above) and ignore dtb/dtbo partitions if vbmeta doesn\u0027t contain hash descriptors of them, then I think we may always add those partitions to `boot_partitions` here without having any side effect.",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 460,
+        "endChar": 28
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d03d8f3a_430d6b5f",
+        "filename": "firmware/include/vb2_android_dtimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "nit: vb2_android_dtboimg.h (consistent with system/libufdt/utils/src/mkdtboimg.py)",
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf858f2_3655a4df",
+        "filename": "firmware/include/vb2_android_dtimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-25T10:03:20Z",
+      "side": 1,
+      "message": "`dt_table_entry_v0`\n\nAre the DTBOs uncompressed? From [mkdtboimg.py](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/libufdt/utils/src/mkdtboimg.py) I think compression is only supported in `version\u003d1`, where another 32-bit custom field is used as `flags`.\n\nI think we do want compressed DTBs/DTBOs. However reserving 32 bits for flags doesn\u0027t seem like a good idea to me. As `COMPRESSION_FORMAT_MASK` is 0xF, I wonder if we can use v1 while keeping the remaining 32-4\u003d28 bits of `flags` as a custom field?",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
