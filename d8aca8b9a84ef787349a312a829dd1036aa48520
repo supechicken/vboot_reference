@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "070a7f70_52fef2b0",
+        "filename": "tests/futility/prepare_data_for_tests_updater_utils.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c1c605_a24341fb",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "d8aca8b9a84ef787349a312a829dd1036aa48520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b10a7c1_a6d0fd2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-06T15:24:31Z",
       "side": 1,
       "message": "Move the quotation mark so the potential side effects are limited.\n```suggestion\nmkdir -p \"${SRC_RUN}/tests/futility/data_copy\"\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "d8aca8b9a84ef787349a312a829dd1036aa48520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c14dfe_9db457c1",
+        "filename": "tests/futility/prepare_data_for_tests_updater_utils.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b10a7c1_a6d0fd2d",
       "range": {
         "startLine": 9,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe9efff0_20e99262",
+        "filename": "tests/futility/prepare_data_for_tests_updater_utils.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:36:25Z",
+      "side": 1,
+      "message": "Tests require that the zip archive contains `tests/futility/data_copy/image-newer.bin`. Adding it with `${SRC_RUN}` will include that unwanted prefix, and it is not easy to change it after the archive is created.",
+      "parentUuid": "0b9993ae_e8e62993",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 80
+      },
+      "revId": "d8aca8b9a84ef787349a312a829dd1036aa48520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "945ef080_6a7ea797",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-08-06T15:24:31Z",
       "side": 1,
       "message": "Use `pushd` and `popd` instead of `cd` wherever you can in the test scripts.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "d8aca8b9a84ef787349a312a829dd1036aa48520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eb04068_c9817a79",
+        "filename": "tests/futility/prepare_data_for_tests_updater_utils.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "945ef080_6a7ea797",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d466baef_d6646b13",
+        "filename": "tests/futility/prepare_data_for_tests_updater_utils.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:36:25Z",
+      "side": 1,
+      "message": "Indeed :)",
+      "parentUuid": "cb58c2b2_903394dd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 89
+      },
+      "revId": "d8aca8b9a84ef787349a312a829dd1036aa48520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e815854c_c453a876",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-08-06T15:24:31Z",
       "side": 1,
       "message": "This looks very faulty. I\u0027d rather see you use `futility {dump,load}_fmap` here. We can assume they are working here. We have tests for them.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "d8aca8b9a84ef787349a312a829dd1036aa48520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2361331_c500c9aa",
+        "filename": "tests/futility/prepare_data_for_tests_updater_utils.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-25T11:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e815854c_c453a876",
       "range": {
         "startLine": 23,
         "startChar": 0,
