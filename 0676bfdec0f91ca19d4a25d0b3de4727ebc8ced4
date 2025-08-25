@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f9bfa4_1cc11486",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d22038_f898cdb1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69b86bdd_76392331",
@@ -60,6 +84,54 @@
       "writtenOn": "2025-08-25T10:03:20Z",
       "side": 1,
       "message": "Similar to `prepare_pvmfw`, use `avb_find_part` to have the flexibility of dropping the dtb/dtbo partitions from the builder side. If `avb_find_part` returns NULL, then we return `VB2_SUCCESS` directly (however IMO dtb/dtbo partitions should both exist or NOT exist at the same time). See previous pvmfw [discussions](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6458943/comment/347c7960_5a77fa1b/).\n\n@bernacki@google.com From that discussion, we should also change `rearrange_partitions` to use `avb_find_part` instead of `vb2_android_get_buffer`, right?",
+      "range": {
+        "startLine": 392,
+        "startChar": 5,
+        "endLine": 392,
+        "endChar": 27
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae6fe5d_cb47fe6e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "With the latest patchset, this violation is not hit.",
+      "parentUuid": "69b86bdd_76392331",
+      "range": {
+        "startLine": 392,
+        "startChar": 54,
+        "endLine": 392,
+        "endChar": 71
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45799c15_a01684ed",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "Done with respect to this CL\u0027s context.",
+      "parentUuid": "48d1c276_c1ce0bab",
       "range": {
         "startLine": 392,
         "startChar": 5,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf7a594_82f67e72",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "With the latest patchset, if the AVB finds a verified DTB partition then the incorrect size/magic returns an error.",
+      "parentUuid": "e82ffd44_05bb1b49",
+      "range": {
+        "startLine": 398,
+        "startChar": 17,
+        "endLine": 399,
+        "endChar": 42
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f722e42_bcf3139d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a93ac99_54f49aac",
+      "range": {
+        "startLine": 399,
+        "startChar": 3,
+        "endLine": 399,
+        "endChar": 8
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a02b21_da5df8e7",
@@ -133,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09bec217_fd9ae8f1",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "I added a consolidate_boot_partitions helper to handle the scenario you pointed out which bubbles up all expected boot_partitions to the top of the array.",
+      "parentUuid": "f5a02b21_da5df8e7",
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e38d7e_5fd3a77f",
@@ -146,6 +284,30 @@
       "writtenOn": "2025-08-25T10:03:20Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Spellchecker: \"requesed\" is a possible misspelling of \"requested\".\n\nTo bypass Spellchecker, ad...\n\n\"requesed\" is a possible misspelling of \"requested\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 456,
+        "startChar": 40,
+        "endLine": 456,
+        "endChar": 48
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9063ac2f_aad8db1a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e38d7e_5fd3a77f",
       "range": {
         "startLine": 456,
         "startChar": 40,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d964ed_80c25a69",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a85aaa73_084a955d",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 460,
+        "endChar": 28
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d03d8f3a_430d6b5f",
@@ -196,6 +382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3fb243_94de12ca",
+        "filename": "firmware/include/vb2_android_dtimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03d8f3a_430d6b5f",
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cf858f2_3655a4df",
@@ -209,6 +413,30 @@
       "writtenOn": "2025-08-25T10:03:20Z",
       "side": 1,
       "message": "`dt_table_entry_v0`\n\nAre the DTBOs uncompressed? From [mkdtboimg.py](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/libufdt/utils/src/mkdtboimg.py) I think compression is only supported in `version\u003d1`, where another 32-bit custom field is used as `flags`.\n\nI think we do want compressed DTBs/DTBOs. However reserving 32 bits for flags doesn\u0027t seem like a good idea to me. As `COMPRESSION_FORMAT_MASK` is 0xF, I wonder if we can use v1 while keeping the remaining 32-4\u003d28 bits of `flags` as a custom field?",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590e1c1c_3008c35a",
+        "filename": "firmware/include/vb2_android_dtimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-25T22:02:14Z",
+      "side": 1,
+      "message": "I have renamed it as dt_table_entry_v0. I will add v1 support in a follow-up CL.\n\nYes we are using version 0 and hence DTB/DTBOs are uncompressed.\n\nRegarding the 32 bit flag, I am hesitant to use the remaining bits as custom fields. If the Android DTB team decides to use the remaining fields for other flags/purposes (with a compatible minor version update), then our implementation will break. In v1, flags field got inserted between rev \u0026 custom fields and custom3 field is dropped. I am ok with keeping the transient use-cases like ID type/version in flags field. But for any permanent/long-term use-cases, I would prefer not to rely on that flags field.",
+      "parentUuid": "7cf858f2_3655a4df",
       "range": {
         "startLine": 33,
         "startChar": 7,
