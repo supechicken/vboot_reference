@@ -382,11 +382,7 @@ static vb2_error_t prepare_pvmfw(AvbSlotVerifyData *verify_data,
 
 	/* Get pvmfw code size */
 	params->pvmfw_out_size = pvmfw_hdr->kernel_size;
-
-	/* pvmfw code starts after the boot header. Discard the boot header, by
-	 * moving the buffer start and trimming its size. */
-	params->pvmfw_buffer = ((void *)pvmfw_hdr) + BOOT_HEADER_SIZE;
-	params->pvmfw_buffer_size -= BOOT_HEADER_SIZE;
+	params->pvmfw_buffer = pvmfw_hdr;
 
 	return VB2_SUCCESS;
 }

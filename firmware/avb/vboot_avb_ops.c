@@ -186,8 +186,8 @@ static AvbIOResult reserve_buffers(AvbOps *ops)
 
 	return AVB_IO_RESULT_OK;
 overflow:
-	VB2_DEBUG("Buffer too small for '%s': has %lu requested %" PRIu64 "\n",
-			partition_name, kernel_buffer_end - buffer, size);
+	VB2_DEBUG("Buffer too small for '%s': has %llu requested %" PRIu64 "\n",
+			partition_name, available, size);
 
 	return AVB_IO_RESULT_ERROR_INSUFFICIENT_SPACE;
 
