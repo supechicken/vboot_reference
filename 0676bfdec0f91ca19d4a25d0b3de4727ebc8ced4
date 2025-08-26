@@ -469,6 +469,30 @@
       },
       "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f4c07ab_1fb24939",
+        "filename": "firmware/include/vb2_android_dtimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-26T08:24:59Z",
+      "side": 1,
+      "message": "\u003e Is there some background discussion/doc on this decision?\n\nI\u0027m not aware of any.\n\n\u003e we shouldn\u0027t implement Deflate just for this.\n\nAgreed.\n\n\u003e I think we should definitely compress DTBs\n\nMaybe we can re-consider that, as the DTBs should be pretty small compared to the kernel. I think we could do experiments to see what\u0027s the boot time difference with uncompressed DTBs. With FW_CONFIG-based DTBOs, we should expect more smaller DTBOs to be loaded, so uncompressed DTBs might event result in faster boot.",
+      "parentUuid": "72d24e76_7971d4c5",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

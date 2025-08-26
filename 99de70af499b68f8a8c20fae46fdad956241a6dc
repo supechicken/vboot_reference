@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ff2daf8_d1b1ce3a",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-26T08:24:59Z",
+      "side": 1,
+      "message": "+1. We can also get rid of the depthcarge Kconfig `ANDROID_SEPARATE_DTB`.",
+      "parentUuid": "6744e688_0b8f1166",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b513001_140033ea",
         "filename": "firmware/2lib/include/2api.h",
         "patchSetId": 4
@@ -82,6 +100,24 @@
       "writtenOn": "2025-08-25T23:56:52Z",
       "side": 1,
       "message": "nit: Do we just want to add this to `vb2_android_bootimg.h` so that we got all the imported Android structures in one place?",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456cd78c_f55ce606",
+        "filename": "firmware/include/vb2_android_dtboimg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-08-26T08:24:59Z",
+      "side": 1,
+      "message": "I\u0027d prefer keeping them separated, because they are copied from different places.\n\nActually, I guess the code block from https://source.android.com/docs/core/architecture/dto/partitions was copied from [system/libufdt/utils/src/dt_table.h](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/libufdt/utils/src/dt_table.h), which is under Apache v2.0 license. The license isn\u0027t mentioned in the doc, but I doubt if it\u0027s legit to change to BSD license here.",
+      "parentUuid": "d1ea63b9_5a7a3db2",
       "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
