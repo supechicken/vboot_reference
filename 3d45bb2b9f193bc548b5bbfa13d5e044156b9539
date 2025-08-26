@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa077f6c_14bad585",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-26T13:38:49Z",
+      "side": 1,
+      "message": "You can move assignment to the `ret` declaration and then omit the else statement here.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "3d45bb2b9f193bc548b5bbfa13d5e044156b9539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
