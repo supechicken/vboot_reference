@@ -125,8 +125,10 @@ static char* GetAcpiSysfsPath(const char* name)
 		ret = asprintf(&path, "%s/%s", legacy_driver_path, name);
 	else if (stat(legacy_fw_path, &fs) == 0 && S_ISDIR(fs.st_mode))
 		ret = asprintf(&path, "%s/%s", legacy_fw_path, name);
-	else
+	else if (stat(current_path, &fs) == 0 && S_ISDIR(fs.st_mode))
 		ret = asprintf(&path, "%s/%s", current_path, name);
+	else
+		ret = -1;
 
 	return ret == -1 ? NULL : path;
 }
