@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fd656b_40a38341",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-26T11:53:53Z",
+      "side": 1,
+      "message": "I agree with Ihor here. We need as much diagnostic info as possible. Especially for the FW OTA, where all we have are the `futility` logs. I have many problems with diagnostics the FW OTA issues due to lack of proper logs and this one might be actually very helpful.\n\nI\u0027d also add the `stat()` call for the `current_path` so we know that it\u0027s not present (missing driver) or if some MAC like SELinux blocks the access to it. @ihorlukianov@google.com Please add path checking here. It should be a separate CL below this one. Also adjust the message accordingly.",
+      "parentUuid": "6c38ae4a_9ce6fc38",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a9f658a_42d0af4e",
