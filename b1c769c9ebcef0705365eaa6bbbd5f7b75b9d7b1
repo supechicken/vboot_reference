@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c00381_e4ae5bef",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-27T13:51:00Z",
+      "side": 1,
+      "message": "Added check for `errno !\u003d ENOENT` (File does not exist).",
+      "parentUuid": "31c43de8_50343ace",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d70f80c_62ca2dc4",
