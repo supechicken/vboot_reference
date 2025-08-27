@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c46bda5_c96e2a14",
+        "filename": "host/arch/x86/lib/crossystem_arch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-27T12:03:26Z",
+      "side": 1,
+      "message": "http://crrev.com/c/6884984",
+      "parentUuid": "48d28a1c_1cbb67e8",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a9f658a_42d0af4e",
@@ -107,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c43de8_50343ace",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-27T12:03:26Z",
+      "side": 1,
+      "message": "Ok, this indeed is an overkill. We discussed it with Ihor.\\\nWith the current architecture adding logs here won\u0027t be a good strategy despite being very useful for debugging. This function is used for two things:\n1. reading the contents of a file (ofc...),\n2. checking if the file exists.\n\nSo if the file does not exist for the `crossystem_arch.c` it will fall back to the common implementation that will most likely return a proper value. Having logs here will misleadingly print information about a missing file in case .e.g where arch-dependent path is deprecated. Example: `crossystem mainfw_act` on x86 will first look for `/sys/devices/platform/GOOG0016\\:00/BINF.1`. If it does not exist, then it will fall back to `/sys/devices/platform/GOOG0016\\:00/VDAT`. With this change it will print error even if it eventually finds the correct value.\n\nAdding file checks before reads does not help here, because it would have to know when the final check is performed requiring passing of some verbosity flag futher cluttering the code.\\\nAs the compromise we could print an error only if the `fopen()` returns with an error and `errno\u003dEACCES`, so we know that the path exists, but id not accessible for some reason e.g. SELinux or FS permissions.",
+      "parentUuid": "6e77152b_23c5ff36",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d70f80c_62ca2dc4",
@@ -138,6 +174,24 @@
       "side": 1,
       "message": "Acknowledged.",
       "parentUuid": "9d70f80c_62ca2dc4",
+      "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adc6081_2cea9259",
+        "filename": "host/lib/host_misc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-27T12:03:26Z",
+      "side": 1,
+      "message": "Remove this error message.",
+      "parentUuid": "d8319a68_bcdc5a06",
       "revId": "b1c769c9ebcef0705365eaa6bbbd5f7b75b9d7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
