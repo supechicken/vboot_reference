@@ -22,6 +22,19 @@ char* StrCopy(char* dest, const char* src, int dest_size)
 	return dest;
 }
 
+int FileAccessible(const char *filename)
+{
+	if (access(filename, R_OK) == 0)
+		return 1;
+
+	/* Missing file means falling back to the generic non-arch dependent implementation. */
+	if (errno != ENOENT)
+		fprintf(stderr, "ERROR: %s: %s not accessible: %s\n", __func__, filename,
+			strerror(errno));
+
+	return 0;
+}
+
 uint8_t* ReadFile(const char* filename, uint64_t* sizeptr)
 {
 	FILE* f;

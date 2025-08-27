@@ -62,7 +62,7 @@ static int FindEmmcDev(void)
 		/* Get first non-removable mmc block device */
 		snprintf(filename, sizeof(filename),
 			 "/sys/block/mmcblk%d/removable", mmcblk);
-		if (ReadFileInt(filename, &value) < 0)
+		if (!FileAccessible(filename) || ReadFileInt(filename, &value) < 0)
 			continue;
 		if (value == 0)
 			return mmcblk;
@@ -175,7 +175,7 @@ static int VbGetPlatformGpioStatus(const char* name)
 
 	snprintf(gpio_name, sizeof(gpio_name), "%s/%s/value",
 		 PLATFORM_DEV_PATH, name);
-	if (ReadFileInt(gpio_name, &value) < 0)
+	if (!FileAccessible(gpio_name) || ReadFileInt(gpio_name, &value) < 0)
 		return -1;
 
 	return (int)value;

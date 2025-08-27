@@ -138,14 +138,13 @@ static char* GetAcpiSysfsPath(const char* name)
 
 static char* ReadAcpiSysfsString(char* dest, int size, const char* name)
 {
-	char* path;
-	char* ret;
+	char *path;
+	char *ret = NULL;
 
 	path = GetAcpiSysfsPath(name);
-	if (!path)
-		return NULL;
+	if (path && FileAccessible(path))
+		ret = ReadFileFirstLine(dest, size, path);
 
-	ret = ReadFileFirstLine(dest, size, path);
 	free(path);
 	return ret;
 }
@@ -154,13 +153,12 @@ static char* ReadAcpiSysfsString(char* dest, int size, const char* name)
 static int ReadAcpiSysfsInt(const char* name, unsigned* value)
 {
 	char* path;
-	int ret;
+	int ret = -1;
 
 	path = GetAcpiSysfsPath(name);
-	if (!path)
-		return -1;
+	if (path && FileAccessible(path))
+		ret = ReadFileInt(path, value);
 
-	ret = ReadFileInt(path, value);
 	free(path);
 	return ret;
 }
@@ -169,13 +167,12 @@ static int ReadAcpiSysfsInt(const char* name, unsigned* value)
 static int ReadAcpiSysfsBit(const char* name, int bitmask)
 {
 	char* path;
-	int ret;
+	int ret = -1;
 
 	path = GetAcpiSysfsPath(name);
-	if (!path)
-		return -1;
+	if (path && FileAccessible(path))
+		ret = ReadFileBit(path, bitmask);
 
-	ret = ReadFileBit(path, bitmask);
 	free(path);
 	return ret;
 }
@@ -627,7 +624,7 @@ static int ReadGpio(unsigned signal_type)
 	/* Scan GPIO.* to find a matching signal type */
 	for (index = 0; ; index++) {
 		snprintf(name, sizeof(name), "%s.%d/GPIO.0", base_path, index);
-		if (ReadFileInt(name, &gpio_type) < 0)
+		if (!FileAccessible(name) || ReadFileInt(name, &gpio_type) < 0)
 			return -1; /* Ran out of GPIOs before finding a match */
 		if (gpio_type == signal_type)
 			break;
@@ -635,16 +632,17 @@ static int ReadGpio(unsigned signal_type)
 
 	/* Read attributes and controller info for the GPIO */
 	snprintf(name, sizeof(name), "%s.%d/GPIO.1", base_path, index);
-	if (ReadFileInt(name, &active_high) < 0)
+	if (!FileAccessible(name) || ReadFileInt(name, &active_high) < 0)
 		return -1;
 	snprintf(name, sizeof(name), "%s.%d/GPIO.2", base_path, index);
-	if (ReadFileInt(name, &pin_num) < 0)
+	if (!FileAccessible(name) || ReadFileInt(name, &pin_num) < 0)
 		return -1;
 	/* Do not attempt to read GPIO that is set to -1 in ACPI */
 	if (pin_num == 0xFFFFFFFF)
 		return -1;
 	snprintf(name, sizeof(name), "%s.%d/GPIO.3", base_path, index);
-	if (!ReadFileFirstLine(controller_name, sizeof(controller_name), name))
+	if (!FileAccessible(name) ||
+	    !ReadFileFirstLine(controller_name, sizeof(controller_name), name))
 		return -1;
 	controller_num = get_controller_number_from_name(controller_name);
 	if (controller_num == -1) {
@@ -746,7 +744,8 @@ int VbGetArchPropertyInt(const char* name)
 				     * arch-specific implementation to normal
 				     * implementation. */
 		/* Read value from file; missing file means value=0. */
-		if (ReadFileInt(NEED_FWUPDATE_PATH, &fwupdate_value) < 0)
+		if (!FileAccessible(NEED_FWUPDATE_PATH) ||
+		    ReadFileInt(NEED_FWUPDATE_PATH, &fwupdate_value) < 0)
 			value = 0;
 		else
 			value = (int)fwupdate_value;

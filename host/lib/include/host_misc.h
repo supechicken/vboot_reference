@@ -18,6 +18,14 @@
  * string. */
 char* StrCopy(char* dest, const char* src, int dest_size);
 
+/**
+ * Check whether the file exists and can be read. Print a relevant error in case the file cannot
+ * be accessed. The error is not printed if the file does not exist.
+ *
+ * Returns 1 if the file exists and can be read, 0 otherwise.
+ */
+int FileAccessible(const char *filename);
+
 /* Read data from [filename].  Store the size of returned data in [size].
  *
  * Returns the data buffer, which the caller must Free(), or NULL if
