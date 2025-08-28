@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "856c4f84_58f83eef",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-28T00:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28c79519_1149a069",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f0d630_be44a74c",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-25T23:56:52Z",
       "side": 1,
       "message": "Wouldn\u0027t it be easier to follow if you built the list forward rather than doing this post-processing?\n```\nconst char *boot_partitions[8] \u003d {0};\nint partition_count \u003d 0;\n\nboot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_BOOT];\nboot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_INIT_BOOT];\nboot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_VENDOR_BOOT];\n\nif (...pvmfw...) {\n  boot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_PVMFW];\n  ...\n}\n\nif (...dtb...) {\n  boot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_DTB];\n  boot_partitions[partition_count++] \u003d GptPartitionNames[GPT_ANDROID_DTBO];\n  ...\n}\n```",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c88e2c_8436f425",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-28T00:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f0d630_be44a74c",
       "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e99fd6d_2d5c3c28",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-28T00:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ff2daf8_d1b1ce3a",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b513001_140033ea",
@@ -83,6 +137,24 @@
       "writtenOn": "2025-08-25T23:56:52Z",
       "side": 1,
       "message": "nit: let\u0027s order them dtb, dtb_size, dtbo, dtbo_size, for consistency with other pairs.",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a2b3ec_24df5ed1",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-28T00:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b513001_140033ea",
       "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +190,24 @@
       "side": 1,
       "message": "I\u0027d prefer keeping them separated, because they are copied from different places.\n\nActually, I guess the code block from https://source.android.com/docs/core/architecture/dto/partitions was copied from [system/libufdt/utils/src/dt_table.h](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/libufdt/utils/src/dt_table.h), which is under Apache v2.0 license. The license isn\u0027t mentioned in the doc, but I doubt if it\u0027s legit to change to BSD license here.",
       "parentUuid": "d1ea63b9_5a7a3db2",
+      "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d19ea7_a89e9ee3",
+        "filename": "firmware/include/vb2_android_dtboimg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-28T00:11:08Z",
+      "side": 1,
+      "message": "This header file was required only for validating dtb image. Since in another comment, there was a recommendation to move any non vboot validation into depthcharge, I am moving this file and any DT specific validation into depthcharge. Let us discuss about the licensing there.",
+      "parentUuid": "456cd78c_f55ce606",
       "revId": "99de70af499b68f8a8c20fae46fdad956241a6dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
