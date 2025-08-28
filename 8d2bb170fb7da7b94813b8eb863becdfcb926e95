@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b68811_72251554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-08-28T13:27:31Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8705298416988728625) is being automatically retried for the following reasons:\n- Some tests are now retryable:brya-cq.hw.cq-minimal, corsola-cq.hw.cq-minimal\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "8d2bb170fb7da7b94813b8eb863becdfcb926e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
