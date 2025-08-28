@@ -517,6 +517,30 @@
       },
       "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7ab784_5efb9204",
+        "filename": "firmware/include/vb2_android_dtimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-08-28T00:12:11Z",
+      "side": 1,
+      "message": "Since this header file has moved completely into depthcharge, let us keep the discussion there.",
+      "parentUuid": "6330ff5d_ed12b373",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "0676bfdec0f91ca19d4a25d0b3de4727ebc8ced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
