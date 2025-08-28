@@ -16,6 +16,24 @@
       "message": "Sorry, I don\u0027t have time to review this CL in detail, but just to comment on the general approach: isn\u0027t this entirely programmer-dependent? Not all programmers access flash on the local host (in fact, most don\u0027t). And if you happen to use a host that also runs coreboot to e.g. write with a Servo programmer to a different DUT, you may read an entirely wrong FMAP. I think you need to check that you\u0027re actually operating on an internal programmer somewhere.",
       "revId": "bf8445c3f8966c2c4270bf2df2e789cf3d2fc268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d51e4f6_fbd0d469",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T10:33:15Z",
+      "side": 1,
+      "message": "Good point. It worked because `locate_fmap_using_cbmem` extracts only the FMAP position using `cbmem`, and then reads flash to get the actual (and therefore always correct) FMAP structure.\nNevertheless, I will add a check for the remote update case.",
+      "parentUuid": "8474fc73_81d39731",
+      "revId": "bf8445c3f8966c2c4270bf2df2e789cf3d2fc268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
