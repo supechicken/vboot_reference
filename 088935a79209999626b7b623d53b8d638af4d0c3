@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6578bae9_ed50d2f3",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Removed the macro as it is only used in one function.",
+      "parentUuid": "88345f85_52a386e1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50fd135d_545adc29",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-08-28T12:14:32Z",
       "side": 1,
       "message": "I understand that using ASSERT() will exit(1) and this is what the existing common/tests.h helper can\u0027t provide. Could I know if it is necessary to abort the program immediately? Is there any chance to reconsider using \"TEST_EQ\" or \"TEST_TRUE\"?",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e5bddd_99b785a5",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "If `ASSERT` fails, it means that either the test data was not loaded correctly, or that some functionality, which is not being tested and is assumed to work correctly, behaved unexpectedly. Both of the cases mean that something has unexpectedly gone wrong, and the tests should not continue.\n\nI will make the `ASSERT` macro return from the active function instead of exiting.",
+      "parentUuid": "50fd135d_545adc29",
       "range": {
         "startLine": 33,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d25af2_bbf5d367",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4e990b_8d0f1579",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b1ada0_04f9e1b4",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a9d532_4108886b",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b1ada0_04f9e1b4",
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4da3fae_0d30f0c2",
@@ -100,6 +190,24 @@
       "writtenOn": "2025-08-28T12:14:32Z",
       "side": 1,
       "message": "What about calling remove(FILE_NONEXISTENT) before this?",
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5de51c4_ae91d2e5",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Added to `main()`.",
+      "parentUuid": "f4da3fae_0d30f0c2",
       "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c17306_c97409d1",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffe2defb_3a816bc7",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "421e1d8b_dadd5ce0",
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b867ad77_ddce87b4",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "421e1d8b_dadd5ce0",
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c56f4f9_5351f9ca",
@@ -157,6 +307,30 @@
       "writtenOn": "2025-08-28T12:14:32Z",
       "side": 1,
       "message": "nit: remove this \u0027*\u0027 here",
+      "range": {
+        "startLine": 365,
+        "startChar": 2,
+        "endLine": 365,
+        "endChar": 3
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19921be5_c5284c75",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c56f4f9_5351f9ca",
       "range": {
         "startLine": 365,
         "startChar": 2,
@@ -190,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be01a1b_85e5cc60",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "7872d779_c1c2c8a9",
+      "range": {
+        "startLine": 369,
+        "startChar": 17,
+        "endLine": 369,
+        "endChar": 49
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "763b9850_f7d8add0",
@@ -207,6 +405,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4ff036_214f6194",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "763b9850_f7d8add0",
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f766e71_5ae9b1ac",
@@ -220,6 +436,30 @@
       "writtenOn": "2025-08-28T12:14:32Z",
       "side": 1,
       "message": "nit: Why not checking the success case first to prevent the additional reload_firmware?",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 53
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "334377f7_4e578317",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f766e71_5ae9b1ac",
       "range": {
         "startLine": 422,
         "startChar": 0,
@@ -253,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb19c1d9_e0aaaac8",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "56c0e638_906acfc0",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 493,
+        "endChar": 25
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bfa288e_4db739a7",
@@ -266,6 +530,30 @@
       "writtenOn": "2025-08-28T12:14:32Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 25
+      },
+      "revId": "088935a79209999626b7b623d53b8d638af4d0c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81112e8c_66888678",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-28T14:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bfa288e_4db739a7",
       "range": {
         "startLine": 515,
         "startChar": 0,
