@@ -478,16 +478,54 @@ FWLIB_SRCS += \
 	firmware/2lib/2load_android_kernel.c
 endif
 
-# Maintain behaviour of default on.
-USE_FLASHROM ?= 1
+# --- Temporary Compatibility Layer for USE_FLASHROM ---
+# Check if the deprecated USE_FLASHROM variable is being used.
+# The `origin` function checks if the variable was set on the command line.
+ifneq ($(origin USE_FLASHROM), undefined)
+$(warning #################################################################)
+$(warning # DEPRECATION WARNING: The 'USE_FLASHROM' variable is deprecated.)
+$(warning # Please use 'FLASHROM_BACKEND=lib' or 'FLASHROM_BACKEND=none' instead.)
+$(warning # This compatibility layer will be removed in a future release.)
+$(warning #################################################################)
 
-ifneq ($(filter-out 0,${USE_FLASHROM}),)
+# Translate the old value to the new variable.
+ifeq ($(filter-out 0,${USE_FLASHROM}),)
+# USE_FLASHROM was 0
+FLASHROM_BACKEND := none
+else
+# USE_FLASHROM was 1 or non-zero
+FLASHROM_BACKEND := lib
+endif
+endif
+# --- End of Compatibility Layer ---
+
+# Select the flashrom backend. Options: lib, none
+# lib:  Use libflashrom via flashrom_lib.c (requires linking)
+# none: No flashrom support. Uses stubs to satisfy the linker.
+FLASHROM_BACKEND ?= lib
+
+# Set the legacy USE_FLASHROM flag based on the new backend selection.
+# This acts as a bridge, allowing us to incrementally remove the old flag
+# in a later CL without breaking the build now.
+ifeq (${FLASHROM_BACKEND},lib)
+USE_FLASHROM := 1
+else
+USE_FLASHROM := 0
+endif
+
+ifeq (${FLASHROM_BACKEND},lib)
 $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
+# flashrom.c was previously tied to USE_FLASHROM, keeping for compatibility.
 COMMONLIB_SRCS += \
 	host/lib/flashrom.c \
-	host/lib/flashrom_drv.c
+	host/lib/flashrom_lib.c
 CFLAGS += -DUSE_FLASHROM
+else ifeq (${FLASHROM_BACKEND},none)
+$(info building without flashrom support)
+COMMONLIB_SRCS += host/lib/flashrom_stub.c
+else
+$(error Invalid FLASHROM_BACKEND: ${FLASHROM_BACKEND}. Use 'lib' or 'none'.)
 endif
 COMMONLIB_SRCS += \
 	host/lib/subprocess.c \
@@ -746,7 +784,7 @@ FUTIL_SRCS = \
 	futility/vb2_helper.c
 
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
-FUTIL_SRCS += host/lib/flashrom_drv.c \
+FUTIL_SRCS += \
 	futility/archive/updater_archive_fallback.c \
 	futility/updater_archive.c \
 	futility/updater_dut.c \
