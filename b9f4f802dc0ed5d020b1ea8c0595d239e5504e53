@@ -33,6 +33,75 @@
       "message": "@yupingso@chromium.org Do you have any thoughts on the new ASSERT() test helper macro? I believe we don\u0027t have anything similar in common/tests.h at the moment.\n\nLet me know if you have any suggestions. Otherwise, I\u0027m ready to approve this CL.",
       "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf0ec36_31f91509",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-29T11:30:40Z",
+      "side": 1,
+      "message": "Use either enum or `bool`.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816a9c54_a41316b0",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-29T11:30:40Z",
+      "side": 1,
+      "message": "These macros do not return any value, but only insert a code. In this case the parentheses `()`should be removed from here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 58
+      },
+      "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e704e04_f8b2f253",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-08-29T11:30:40Z",
+      "side": 1,
+      "message": "`TEST_EQ()` returns `0` on success and `1` on failure. You can use this return value in the `if` condition instead of having custom unassociated `0 \u003d\u003d 1` equivalent here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
