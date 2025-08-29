@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05408d1a_387b1189",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-29T11:51:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cf0ec36_31f91509",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "816a9c54_a41316b0",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6118c1_f8c742c0",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-29T11:51:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "816a9c54_a41316b0",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 58
+      },
+      "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e704e04_f8b2f253",
@@ -94,6 +142,30 @@
       "writtenOn": "2025-08-29T11:30:40Z",
       "side": 1,
       "message": "`TEST_EQ()` returns `0` on success and `1` on failure. You can use this return value in the `if` condition instead of having custom unassociated `0 \u003d\u003d 1` equivalent here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a71ab4_ee36fe39",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-08-29T11:51:28Z",
+      "side": 1,
+      "message": "I want `ASSERT` to print the message only if the assertion fails. However, `TEST_EQ` always prints the message regardless of the result.",
+      "parentUuid": "6e704e04_f8b2f253",
       "range": {
         "startLine": 43,
         "startChar": 2,
