@@ -10,6 +10,8 @@
 #include "2common.h"
 #include "2load_android_kernel.h"
 #include "2misc.h"
+#include "2nvstorage.h"
+#include "2secdata.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
@@ -48,6 +50,18 @@ static vb2_error_t vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 	default:
 		return VB2_ERROR_AVB_ERROR_VERIFICATION;
 	}
+}
+
+static bool check_dev_mode_switch(struct vb2_context *ctx)
+{
+	uint32_t secdata_flags = vb2_secdata_firmware_get(ctx, VB2_SECDATA_FIRMWARE_FLAGS);
+	VB2_DEBUG("THOMAS: - VB2_SECDATA_FIRMWARE_FLAG_LAST_BOOT_DEVELOPER(%x))\n", (secdata_flags & VB2_SECDATA_FIRMWARE_FLAG_LAST_BOOT_DEVELOPER));
+	VB2_DEBUG("THOMAS: - VB2_CONTEXT_DEVELOPER_MODE(%llx))\n", (ctx->flags & VB2_CONTEXT_DEVELOPER_MODE));
+	VB2_DEBUG("THOMAS: - VB2_CONTEXT_DISABLE_DEVELOPER_MODE(%llx))\n", (ctx->flags & VB2_CONTEXT_DISABLE_DEVELOPER_MODE));
+	VB2_DEBUG("THOMAS: - VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE(%x))\n", (secdata_flags & VB2_SECDATA_FIRMWARE_FLAG_DEV_MODE));
+	VB2_DEBUG("THOMAS: - VB2_NV_DISABLE_DEV_REQUEST(%x))\n", vb2_nv_get(ctx, VB2_NV_DISABLE_DEV_REQUEST));
+	VB2_DEBUG("THOMAS: - VB2_NV_DEV_MODE_SWITCH(%#x))\n", vb2_nv_get(ctx, VB2_NV_DEV_MODE_SWITCH));
+	return vb2_nv_get(ctx, VB2_NV_DEV_MODE_SWITCH);
 }
 
 /*
@@ -354,6 +368,20 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		struct vb2_shared_data *sd = vb2_get_sd(ctx);
 		sd->flags |= VB2_SD_FLAG_KERNEL_SIGNED;
 	}
+
+	/* Trigger factory data reset through recovery if this device
+	is transitioning from/to developer mode */
+	VB2_DEBUG("THOMAS: vb2_factory_data_reset_android(ctx)\n");
+	if (check_dev_mode_switch(ctx)) {
+		VB2_DEBUG("THOMAS: developer switch has triggered!\n");
+		rv = vb2ex_factory_data_reset_in_android_recovery(disk_handle, gpt);
+		if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("Unable to write to misc partition and wipe userdata during dev mode transition\n");
+			goto out;
+		}
+		vb2_nv_set(ctx, VB2_NV_DEV_MODE_SWITCH, 0);
+	}
+
 
 	/* Ignore verification errors in developer mode */
 	if (!need_verification) {

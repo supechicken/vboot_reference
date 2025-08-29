@@ -315,6 +315,8 @@ vb2_error_t vb2_check_dev_switch(struct vb2_context *ctx)
 		 * override).
 		 */
 		rv = vb2ex_tpm_clear_owner(ctx);
+		VB2_DEBUG("THOMAS: developer switch has triggered in check_dev_switch!\n");
+		vb2_nv_set(ctx, VB2_NV_DEV_MODE_SWITCH, 1);
 		/* Check for failure to clear owner */
 		if (valid_secdata && rv) {
 			/*
