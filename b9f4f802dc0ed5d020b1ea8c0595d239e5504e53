@@ -16,6 +16,23 @@
       "message": "The previous build (https://cr-buildbucket.appspot.com/build/8705282245826080273) is being automatically retried for the following reasons:\n- Some tests are now retryable:nissa-cq.hw.cq-minimal, brya-cq.hw.cq-minimal, corsola-cq.hw.cq-minimal\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
       "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0399a2c_106b7bfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-08-29T09:15:19Z",
+      "side": 1,
+      "message": "@yupingso@chromium.org Do you have any thoughts on the new ASSERT() test helper macro? I believe we don\u0027t have anything similar in common/tests.h at the moment.\n\nLet me know if you have any suggestions. Otherwise, I\u0027m ready to approve this CL.",
+      "revId": "b9f4f802dc0ed5d020b1ea8c0595d239e5504e53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
