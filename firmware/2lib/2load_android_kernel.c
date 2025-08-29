@@ -10,6 +10,8 @@
 #include "2common.h"
 #include "2load_android_kernel.h"
 #include "2misc.h"
+#include "2nvstorage.h"
+#include "2secdata.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
@@ -48,6 +50,12 @@ static vb2_error_t vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 	default:
 		return VB2_ERROR_AVB_ERROR_VERIFICATION;
 	}
+}
+
+// Compare what the NV has written from the last boot to what mode we are booting into.
+static bool check_dev_mode_switch(struct vb2_context *ctx, bool dev_mode)
+{
+	return vb2_nv_get(ctx, VB2_NV_DEV_MODE_SWITCH) != dev_mode;
 }
 
 /*
@@ -402,6 +410,21 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	rv = vb2_map_libavb_errors(result);
 	if (rv != VB2_SUCCESS)
 		goto out;
+
+	/* Trigger factory data reset through recovery if this device
+	is transitioning from/to developer mode */
+	VB2_DEBUG("THOMAS: WORKING DEMO!\n");
+	if (check_dev_mode_switch(ctx, need_verification)) {
+		VB2_DEBUG("THOMAS: check_dev_mode_switch has triggered!\n");
+		// rv = vb2ex_factory_data_reset_in_android_recovery(disk_handle, gpt);
+		// if (rv != VB2_SUCCESS) {
+		// 	VB2_DEBUG("Unable to write to misc partition and wipe userdata during dev mode transition\n");
+		// 	goto out;
+		// }
+		vb2_nv_set(ctx, VB2_NV_DEV_MODE_SWITCH, need_verification);
+	} else {
+		VB2_DEBUG("THOMAS: developer switch was NOT triggered in check_dev_mode_switch!\n");
+	}
 
 	rv = vb2ex_get_android_bootmode(ctx, disk_handle, gpt, &bootmode);
 	if (rv != VB2_SUCCESS) {

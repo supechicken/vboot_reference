@@ -165,6 +165,9 @@ uint32_t vb2_nv_get(struct vb2_context *ctx, enum vb2_nv_param param)
 	case VB2_NV_DEV_ENABLE_UDC:
 		return GETBIT(VB2_NV_OFFS_DEV, VB2_NV_DEV_FLAG_UDC);
 
+	case VB2_NV_DEV_MODE_SWITCH:
+		return GETBIT(VB2_NV_OFFS_DEV , VB2_NV_DEV_FLAG_MODE_SWITCH);
+
 	case VB2_NV_DISABLE_DEV_REQUEST:
 		return GETBIT(VB2_NV_OFFS_BOOT, VB2_NV_BOOT_DISABLE_DEV);
 
@@ -348,6 +351,10 @@ void vb2_nv_set(struct vb2_context *ctx,
 
 	case VB2_NV_DEV_BOOT_SIGNED_ONLY:
 		SETBIT(VB2_NV_OFFS_DEV, VB2_NV_DEV_FLAG_SIGNED_ONLY);
+		break;
+
+	case VB2_NV_DEV_MODE_SWITCH:
+		SETBIT(VB2_NV_OFFS_DEV , VB2_NV_DEV_FLAG_MODE_SWITCH);
 		break;
 
 	case VB2_NV_DEV_DEFAULT_BOOT:
