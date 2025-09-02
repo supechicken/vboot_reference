@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fce4931_e0377bc9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-02T20:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c1455b1_46902178",
+      "revId": "aeca78fcfd6ca698678bcf75597ba8a92e6091f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c97d0a_cf83d1d1",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33e8c54_ae43fdfe",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-02T20:57:42Z",
+      "side": 1,
+      "message": "True, but I think this provides a template for the future when a new optional GPT partition is added. Also by inserting DTB/DTBO ahead of PVMFW, the code still needs to update `boot_partitions[3] \u003d NULL` -\u003e `boot_partitions[5] \u003d NULL:`\n\nAnyways, I switched to the older approach. We can revisit later if required in the future.",
+      "parentUuid": "64c97d0a_cf83d1d1",
+      "revId": "aeca78fcfd6ca698678bcf75597ba8a92e6091f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6101c2de_a90cc61a",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-08-30T01:24:05Z",
       "side": 1,
       "message": "No longer needed?",
+      "revId": "aeca78fcfd6ca698678bcf75597ba8a92e6091f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "584b0610_35f6170e",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-02T20:57:42Z",
+      "side": 1,
+      "message": "Yeah, not needed anymore. If the validation fails, then the partition does not get loaded.",
+      "parentUuid": "6101c2de_a90cc61a",
       "revId": "aeca78fcfd6ca698678bcf75597ba8a92e6091f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
