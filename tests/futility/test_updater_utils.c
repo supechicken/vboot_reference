@@ -3,51 +3,33 @@
  * found in the LICENSE file.
  */
 
-#define __USE_GNU
-
-#include <stdlib.h>
-#include "futility.h"
-#include "updater.h"
-#include "2struct.h"
-#include "common/tests.h"
-
+#include "unit_tests.h"
 #include "updater_utils.c"
 
-#define DATA_PATH "tests/futility/data_copy/"
-#define IMAGE_MAIN DATA_PATH "image.bin"
-#define ARCHIVE DATA_PATH "images.zip"
-#define FILE_NONEXISTENT DATA_PATH "nonexistent"
-#define FILE_READONLY DATA_PATH "read-only"
-
+#define IMAGE_MAIN GET_DATA("image.bin")
+#define ARCHIVE GET_DATA("images.zip")
+#define FILE_NONEXISTENT GET_DATA("nonexistent")
+#define FILE_READONLY GET_DATA("read-only")
 /* When a custom image needs to be created, it will be written to this file. It also acts as a
    temporary file. */
-#define TARGET DATA_PATH "target"
+#define TARGET GET_DATA("target-file-temp.bin")
 
-enum unit_result {
-	UNIT_FAIL = 0,
-	UNIT_SUCCESS = 1
-};
+static int unit_tests_prepare_data(void)
+{
+	UNIT_TEST_BEGIN;
 
-/* IMPORTANT! Every function that uses `ASSERT` has to implement `unit_cleanup` label. The
-   function must also start with `UNIT_TEST_BEGIN` and end with `UNIT_TEST_RETURN` */
+	ASSERT(system("rm -rf " DATA_COPY_PATH) == 0);
+	ASSERT(system("mkdir -p " DATA_COPY_PATH) == 0);
 
-/* This should be called once at the beginning of any function that uses ASSERT. */
-#define UNIT_TEST_BEGIN int __unit_test_return_value = UNIT_SUCCESS
+	ASSERT(futil_copy_file(GET_SOURCE("image-steelix.bin"), IMAGE_MAIN) != -1);
+	ASSERT(futil_copy_file(GET_SOURCE("images.zip"), ARCHIVE) != -1);
+	remove(FILE_NONEXISTENT);
+	ASSERT(system("touch " FILE_READONLY) == 0);
+	ASSERT(system("chmod 444 " FILE_READONLY) == 0);
 
-/* This should be called once at the end of any function that uses ASSERT. */
-#define UNIT_TEST_RETURN return __unit_test_return_value
-
-/* If assertion fails, will set the resulf of the current unit test to UNIT_FAIL and go to
-   `unit_cleanup`. To use this, `UNIT_TEST_BEGIN` has to be called at the beginning of the
-   function. */
-#define ASSERT(value)                                                                          \
-	do {                                                                                   \
-		if ((value) != UNIT_SUCCESS) {                                                 \
-			TEST_EQ(0, 1, "Assertion failed: " #value);                            \
-			__unit_test_return_value = UNIT_FAIL;                                  \
-			goto unit_cleanup;                                                     \
-		}                                                                              \
-	} while (0)
+unit_cleanup:
+	UNIT_TEST_RETURN;
+}
 
 static enum unit_result create_image_missing_fmap(void)
 {
@@ -616,7 +598,10 @@ unit_cleanup:
 
 int main(int argc, char *argv[])
 {
-	remove(FILE_NONEXISTENT);
+	if (unit_tests_prepare_data() == UNIT_FAIL) {
+		ERROR("Failed to prepare data.\n");
+		return 1;
+	}
 
 	test_temp_file();
 	test_load_firmware_image();
