@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63afe93b_7cdbd232",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-03T23:05:28Z",
+      "side": 1,
+      "message": "This looks a bit weird but since it\u0027s only a backport I guess it\u0027s fine (and probably better than trying to do larger refactoring here). On ToT I think we may want to consider getting rid of `GetCurrentKernelUniqueGuid()` and open-coding the `memcpy()` instead, since it\u0027s weird that some accesses to the same entry work on the `entry` pointer and some imply it through `gpt.current_kernel`.",
+      "revId": "6a1262c2c1e80b5b5f4457e2c1a28e9fedae3bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac7d07d_7e4022ce",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-03T23:05:28Z",
+      "side": 1,
+      "message": "This isn\u0027t very useful here since after what you did above it can\u0027t really be NULL.",
+      "revId": "6a1262c2c1e80b5b5f4457e2c1a28e9fedae3bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d120c5_979d27f3",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-03T23:05:28Z",
+      "side": 1,
+      "message": "Note that when you get to older branches, eventually you\u0027ll not have `ctx-\u003eboot_mode` anymore. In that case, this should become `!(ctx-\u003eflags \u0026 (VB2_CONTEXT_DEVELOPER_MODE | VB2_CONTEXT_RECOVERY_MODE))`. (And if you go really far back there may not be `vb2_context` anymore and you\u0027ll have to go with some VbSharedData flag and `recovery_reason \u003d\u003d 0` instead...)",
+      "revId": "6a1262c2c1e80b5b5f4457e2c1a28e9fedae3bf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
