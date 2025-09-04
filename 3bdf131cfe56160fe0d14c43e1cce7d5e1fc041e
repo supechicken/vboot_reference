@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "512d2640_42c4dbfb",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-04T14:48:51Z",
+      "side": 1,
+      "message": "Format defines so the values start at the same column.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef803e74_30b2aa6f",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-04T14:48:51Z",
+      "side": 1,
+      "message": "This is a static function. There is no need to prefix it with `unit_tests`. How about `prepare_test_data()`?",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865b9c33_3440d172",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-04T14:48:51Z",
+      "side": 1,
+      "message": "Missing ifdef include guards.",
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cde414_23c4a44c",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-04T14:48:51Z",
+      "side": 1,
+      "message": "Format defines so the values start at the same column.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6909b49a_cace0cb5",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-04T14:48:51Z",
+      "side": 1,
+      "message": "`GET_SOURCE` and `GET_DATA` suggest that these macros perform some kind of data fetching. These macros only provide paths, so their names should reflect that in some way. e.g. `GET_TEST_INPUT_DATA_FILE_PATH(filename)`. The \"DATA\" part does not seem to match the context here, how about `GET_TEST_WORK_COPY_FILE_PATH(filename)`?\n\nSorry for not catching it in the previous CL.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8649f2_740ac612",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-04T14:48:51Z",
+      "side": 1,
+      "message": "`ASSERT()` is a pretty generic macro name. In the libc there is already a lower-case macro `assert()`. What do you think about `UNIT_ASSERT(...)`? This will better reflect the context.",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
