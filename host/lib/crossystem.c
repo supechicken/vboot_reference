@@ -565,6 +565,8 @@ int VbGetSystemPropertyInt(const char *name)
 		}
 	} else if (!strcasecmp(name, "post_ec_sync_delay")) {
 		value = vb2_get_nv_storage(VB2_NV_POST_EC_SYNC_DELAY);
+	} else if (!strcasecmp(name, "previous_boot_dev_mode")) {
+		value = vb2_get_nv_storage(VB2_NV_PREVIOUS_BOOT_DEV_MODE);
 	}
 
 	return value;
