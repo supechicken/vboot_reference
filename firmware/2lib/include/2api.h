@@ -1119,6 +1119,19 @@ vb2_error_t vb2ex_get_android_bootmode(struct vb2_context *ctx,
 				       GptData *gpt,
 				       enum vb2_android_bootmode *bootmode);
 
+/**
+ * Request that Android boot into recovery mode and perform a factory data reset.
+ *
+ * Android boot mode is saved on the misc partition where FW can obtain
+ * information about what boot mode is requested.
+ *
+ * @param disk		Pointer to the disk
+ * @param gpt		Pointer to the GPT from the disk
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_factory_data_reset_in_android_recovery(vb2ex_disk_handle_t disk,
+							 GptData *gpt);
+
 /*****************************************************************************/
 /* TPM functionality */
 

@@ -56,6 +56,13 @@ vb2_error_t vb2ex_read_resource(struct vb2_context *ctx,
 }
 
 __attribute__((weak))
+vb2_error_t vb2ex_factory_data_reset_in_android_recovery(vb2ex_disk_handle_t disk,
+							 GptData *gpt)
+{
+	return VB2_SUCCESS;
+}
+
+__attribute__((weak))
 vb2_error_t vb2ex_get_android_bootmode(struct vb2_context *ctx,
 				       vb2ex_disk_handle_t disk,
 				       GptData *gpt,
