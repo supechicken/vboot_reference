@@ -66,6 +66,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6df31bd_1cde845e",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-09-05T03:43:49Z",
+      "side": 1,
+      "message": "Just to clarify, are the extra headers in unit_tests.h included intentionally for the convenience of the C files that will be using these test utilities?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35062fd_7b52dc9a",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-09-05T03:43:49Z",
+      "side": 1,
+      "message": "nit: Add a newline between standard headers and project headers.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8cde414_23c4a44c",
         "filename": "tests/futility/unit_tests.h",
         "patchSetId": 2
@@ -104,6 +150,29 @@
         "startLine": 17,
         "startChar": 0,
         "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffeeb309_17565c89",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-09-05T03:43:49Z",
+      "side": 1,
+      "message": "nit: result",
+      "range": {
+        "startLine": 36,
+        "startChar": 36,
+        "endLine": 36,
         "endChar": 42
       },
       "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
