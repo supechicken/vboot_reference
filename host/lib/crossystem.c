@@ -650,6 +650,13 @@ int VbGetSystemPropertyString(const char *name, char *dest, size_t size)
 			vb2_get_nv_storage(VB2_NV_MINIOS_PRIORITY) ?"B" : "A",
 			size);
 		return 0;
+	} else if (!strcasecmp(name, "kernel_verification_previous_boot")) {
+		StrCopy(dest,
+			vb2_get_nv_storage(VB2_NV_KERNEL_VERIFICATION_PREVIOUS_BOOT)
+				? "verified"
+				: "unverified",
+			size);
+		return 0;
 	}
 
 	return -1;
