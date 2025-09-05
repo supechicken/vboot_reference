@@ -127,6 +127,10 @@ enum vb2_nv_param {
 	VB2_NV_DIAG_REQUEST,
 	/* Priority of miniOS partition to load: 0=MINIOS-A, 1=MINIOS-B. */
 	VB2_NV_MINIOS_PRIORITY,
+	/* Check if we are transitioning from/to dev-mode during the current boot.
+	 *  This value is only updated when we are booting from an internal disk.
+	 */
+	VB2_NV_PREVIOUS_BOOT_DEV_MODE,
 };
 
 /*
