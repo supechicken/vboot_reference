@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde68970_2d48c523",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done. We really need to update `.clang-format`, as this kind of issues originate from it.",
+      "parentUuid": "512d2640_42c4dbfb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef803e74_30b2aa6f",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-04T14:48:51Z",
       "side": 1,
       "message": "This is a static function. There is no need to prefix it with `unit_tests`. How about `prepare_test_data()`?",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d225e38_0e11f4d5",
+        "filename": "tests/futility/test_updater_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef803e74_30b2aa6f",
       "range": {
         "startLine": 17,
         "startChar": 11,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "382401b2_298f6154",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "865b9c33_3440d172",
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6df31bd_1cde845e",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a8bccd_8fee21da",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Yes. Though, `errno` is not needed here. Fixed.",
+      "parentUuid": "d6df31bd_1cde845e",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d35062fd_7b52dc9a",
@@ -100,6 +190,30 @@
       "writtenOn": "2025-09-05T03:43:49Z",
       "side": 1,
       "message": "nit: Add a newline between standard headers and project headers.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67803bde_cde29f5f",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d35062fd_7b52dc9a",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -156,6 +270,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b748a55_e07fa2a0",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6909b49a_cace0cb5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b14c0a3c_c6be214c",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8cde414_23c4a44c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffeeb309_17565c89",
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "737f165a_cb6cdf2f",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffeeb309_17565c89",
+      "range": {
+        "startLine": 36,
+        "startChar": 36,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d8649f2_740ac612",
@@ -192,6 +378,30 @@
       "writtenOn": "2025-09-04T14:48:51Z",
       "side": 1,
       "message": "`ASSERT()` is a pretty generic macro name. In the libc there is already a lower-case macro `assert()`. What do you think about `UNIT_ASSERT(...)`? This will better reflect the context.",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "3bdf131cfe56160fe0d14c43e1cce7d5e1fc041e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2b9230_4ef100db",
+        "filename": "tests/futility/unit_tests.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-05T09:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d8649f2_740ac612",
       "range": {
         "startLine": 39,
         "startChar": 8,
