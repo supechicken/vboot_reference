@@ -127,6 +127,10 @@ enum vb2_nv_param {
 	VB2_NV_DIAG_REQUEST,
 	/* Priority of miniOS partition to load: 0=MINIOS-A, 1=MINIOS-B. */
 	VB2_NV_MINIOS_PRIORITY,
+	/* Record whether the kernel was verified on the previous boot.
+	 * This value is only updated when we are booting from an internal disk.
+	 */
+	VB2_NV_KERNEL_VERIFICATION_PREVIOUS_BOOT,
 };
 
 /*

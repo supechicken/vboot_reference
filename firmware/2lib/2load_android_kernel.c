@@ -10,6 +10,7 @@
 #include "2common.h"
 #include "2load_android_kernel.h"
 #include "2misc.h"
+#include "2nvstorage.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
@@ -316,6 +317,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	};
 	const char *slot_suffix = NULL;
 	bool need_verification = vb2_need_kernel_verification(ctx);
+	bool unverified_os = !need_verification;
 
 	/*
 	 * Check if the pvmfw buffer is zero sized
@@ -343,7 +345,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		return VB2_ERROR_ANDROID_MEMORY_ALLOC;
 
 	avb_flags = AVB_SLOT_VERIFY_FLAGS_NONE;
-	if (!need_verification)
+	if (unverified_os)
 		avb_flags |= AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR;
 
 	result = avb_slot_verify(avb_ops, boot_partitions, slot_suffix, avb_flags,
@@ -356,7 +358,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	}
 
 	/* Ignore verification errors in developer mode */
-	if (!need_verification) {
+	if (unverified_os) {
 		switch (result) {
 		case AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION:
 		case AVB_SLOT_VERIFY_RESULT_ERROR_ROLLBACK_INDEX:
@@ -365,6 +367,23 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 			break;
 		default:
 			break;
+		}
+	}
+
+	/* Trigger factory data reset through recovery mode if kernel verification has changed
+	 * from the last boot (analogous to transitioning to/from developer mode).
+	 */
+	if (vb2_nv_get(ctx, VB2_NV_KERNEL_VERIFICATION_PREVIOUS_BOOT) != unverified_os) {
+		rv = vb2ex_factory_data_reset(disk_handle, gpt);
+		if (rv == VB2_SUCCESS) {
+			vb2_nv_set(ctx, VB2_NV_KERNEL_VERIFICATION_PREVIOUS_BOOT,
+				   unverified_os);
+		} else if (rv == VB2_EXTERNAL_DISK_FOUND) {
+			VB2_DEBUG("External disk found, skipping factory data reset.\n");
+		} else {
+			VB2_DEBUG("Unable to write to misc partition during dev mode "
+				  "transition.\n");
+			goto out;
 		}
 	}
 
@@ -396,7 +415,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	 * fastbootd (normally when we boot to recovery with green flag, fastbootd would be
 	 * locked).
 	 */
-	bool orange = !need_verification ||
+	bool orange = unverified_os ||
 		      (recovery_boot && ctx->flags & VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT);
 
 	/*
