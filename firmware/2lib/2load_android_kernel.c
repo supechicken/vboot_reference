@@ -10,6 +10,7 @@
 #include "2common.h"
 #include "2load_android_kernel.h"
 #include "2misc.h"
+#include "2nvstorage.h"
 #include "cgptlib.h"
 #include "cgptlib_internal.h"
 #include "gpt_misc.h"
@@ -48,6 +49,12 @@ static vb2_error_t vb2_map_libavb_errors(AvbSlotVerifyResult avb_error)
 	default:
 		return VB2_ERROR_AVB_ERROR_VERIFICATION;
 	}
+}
+
+/* Compare what the NV has written from the last boot to what mode we are booting into.*/
+static bool dev_mode_transitioning(struct vb2_context *ctx, bool current_dev_mode)
+{
+	return vb2_nv_get(ctx, VB2_NV_PREVIOUS_BOOT_DEV_MODE) != current_dev_mode;
 }
 
 /*
@@ -366,6 +373,20 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		default:
 			break;
 		}
+	}
+
+	/* Trigger factory data reset through recovery if this device
+	is transitioning from/to developer mode */
+	if (dev_mode_transitioning(ctx, need_verification)) {
+		rv = vb2ex_factory_data_reset(disk_handle, gpt);
+		if (rv == VB2_EXTERNAL_DISK_FOUND) {
+			VB2_DEBUG("External disk found, skipping factory data reset.\n");
+		} else if (rv != VB2_SUCCESS) {
+			VB2_DEBUG("Unable to write to misc partition during dev mode "
+				  "transition.\n");
+			goto out;
+		}
+		vb2_nv_set(ctx, VB2_NV_PREVIOUS_BOOT_DEV_MODE, need_verification);
 	}
 
 	/* Map AVB return code into VB2 code */
