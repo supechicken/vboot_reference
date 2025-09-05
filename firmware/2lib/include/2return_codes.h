@@ -769,6 +769,12 @@ enum vb2_return_code {
 	   Deprecated with b/172339016. */
 	VB2_ERROR_DEPRECATED_EX_DIAG_TEST_INIT_FAILED,
 
+	/* Error writing to the gpt misc partition in android_misc_bcb_write */
+	VB2_ERROR_WRITE_MISC_BCB_DATA,
+
+	/* External disk was found, not considered an error */
+	VB2_EXTERNAL_DISK_FOUND,
+
 	/**********************************************************************
 	 * Kernel loading errors
 	 *
