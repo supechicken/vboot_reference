@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6b7a48_385b39d6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-09T15:41:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075c107a_6c45bcb3",
+      "revId": "0788fbd401325fdcdacaeca3a3a2c861a7c0c4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c8d03fd_c217e6f0",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-09T10:17:58Z",
       "side": 1,
       "message": "From CL:6892551 `vb2ex_factory_data_reset` will return error when booting from external disk. Please correct me if I am wrong, but it will break flow where developer is using external disk and switches DUT from normal to developer mode. There is required extra boot from internal drive. If image on internal drive is unbootable then we need to fix it in the first place (either from fastboot or by switching back to normal mode and performing recovery).\n\nI don\u0027t know if that scenario is common, but if we decide to break that flow at lest do it intentionally.",
+      "revId": "0788fbd401325fdcdacaeca3a3a2c861a7c0c4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc6eb35b_6825a37e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-09T15:41:22Z",
+      "side": 1,
+      "message": "Yes, the intent I wanted to express with this is that in order to transition to developer mode, we should only be formatting the internal drive - I wouldn\u0027t want the FDR requirement to be bypassed by presenting an external disk for formatting and leave the internal disk untouched after a transition to dev mode. The edge case you present is interesting, would it be best to check the result of avb_slot_verifiy, so the check would be \"Ignore misc partition on external disks unless the internal disk is having verification errors\"?",
+      "parentUuid": "1c8d03fd_c217e6f0",
       "revId": "0788fbd401325fdcdacaeca3a3a2c861a7c0c4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
