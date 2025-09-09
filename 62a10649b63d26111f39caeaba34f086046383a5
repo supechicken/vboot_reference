@@ -94,6 +94,30 @@
       },
       "revId": "62a10649b63d26111f39caeaba34f086046383a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c867d5f_2e2ea46e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-09T23:34:17Z",
+      "side": 1,
+      "message": "Oh, okay, I understand. So this is referring to us adding `ctx-\u003ebootmode`, and it\u0027s fine to cherry-pick this back to all the branches that have that (and for earlier stuff we\u0027ll have to think about the solution). (We should however keep in mind that the goal of this backport is to change how other slots affect the TPM write-back, and not to move the TPM write-back into `load_kernel()`. So for branches like Nissa which are so close to ToT that the cherry-pick can apply almost cleanly, I think backporting it like this is fine, and we can land these. But for earlier branches where you need to rewrite most of it from scratch anyway, I think you should focus on changing how `lowest_version` gets calculated, and leave the part about how that gets written back to the TPM in the way that the branch previously had it, to minimize the footprint of the backport.)",
+      "parentUuid": "7c9ace0d_6b8a69b3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "62a10649b63d26111f39caeaba34f086046383a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
