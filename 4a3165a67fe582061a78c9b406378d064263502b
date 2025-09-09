@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a8ecec_48feed58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-09T18:18:12Z",
+      "side": 1,
+      "message": "@tmichalec@google.com - Would cherry picking this onto the firmware branch \"firmware-android-*\"resolve the rauru-cq errors? The error is \"undefined reference to `vb2ex_factory_data_reset\u0027\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "4a3165a67fe582061a78c9b406378d064263502b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3747aec9_56a21c10",
