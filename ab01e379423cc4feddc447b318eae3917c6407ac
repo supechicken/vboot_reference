@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49aae9c_9848e252",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-09T22:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ac14cb_a05af2b7",
+      "revId": "ab01e379423cc4feddc447b318eae3917c6407ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "051746d9_d4022dd5",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-09-09T20:55:38Z",
       "side": 1,
       "message": "Just move this below the `slot_suffix` detection part so that you only need to check the right slot.",
+      "revId": "ab01e379423cc4feddc447b318eae3917c6407ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8382817d_8c80c993",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-09T22:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051746d9_d4022dd5",
       "revId": "ab01e379423cc4feddc447b318eae3917c6407ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
