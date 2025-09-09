@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ac14cb_a05af2b7",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-09T20:55:38Z",
+      "side": 1,
+      "message": "I think we may want a `GptFindEntryByName()` here as well, actually. The depthcharge code was written to react properly when no pvmfw partition is found, but it would run into this same bug in dev mode before that.",
+      "revId": "ab01e379423cc4feddc447b318eae3917c6407ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051746d9_d4022dd5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-09T20:55:38Z",
+      "side": 1,
+      "message": "Just move this below the `slot_suffix` detection part so that you only need to check the right slot.",
+      "revId": "ab01e379423cc4feddc447b318eae3917c6407ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
