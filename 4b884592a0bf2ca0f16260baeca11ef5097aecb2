@@ -16,6 +16,24 @@
       "message": "Please don\u0027t make changes like this directly in the firmware-android branch.  The change will be cherry-picked automatically after submission on ToT.  Doing this will break the syncing process by copybot.",
       "revId": "4b884592a0bf2ca0f16260baeca11ef5097aecb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f80b6c72_dcb6903e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-09-09T16:52:12Z",
+      "side": 1,
+      "message": "\u003e Please don\u0027t make changes like this directly in the firmware-android branch.  The change will be cherry-picked automatically after submission on ToT.  Doing this will break the syncing process by copybot.\n\n\nI pulled in an extra revert to the firmware branch. The mainline reverts weren\u0027t applying cleanly to our branch",
+      "parentUuid": "c9c49025_314aae5c",
+      "revId": "4b884592a0bf2ca0f16260baeca11ef5097aecb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
