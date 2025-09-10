@@ -124,4 +124,19 @@ bool parse_hex(uint8_t *val, const char *str);
  */
 bool parse_hash(uint8_t *buf, size_t len, const char *str);
 
+/**
+ * Create a temporary file in VBOOT_TMP_DIR.
+ *
+ * The file is created securely using mkstemp(). The final filename is copied
+ * back into the template buffer.
+ *
+ * @param path_template   A buffer containing a filename template, ending in
+ *                        "XXXXXX". This buffer will be modified in-place to
+ *                        contain the actual filename.
+ * @param template_size   The total size of the path_template buffer.
+ *
+ * @return the file descriptor on success, or -1 on error.
+ */
+int create_vboot_temp_file(char *path_template, size_t template_size);
+
 #endif  /* VBOOT_REFERENCE_HOST_MISC_H_ */

@@ -178,3 +178,50 @@ bool parse_hash(uint8_t *buf, size_t len, const char *str)
 		return false;
 	return true;
 }
+
+#include <sys/stat.h> // For fchmod
+
+/**
+ * Create a temporary file in VBOOT_TMP_DIR.
+ *
+ * The file is created securely using mkstemp(). The final filename is copied
+ * back into the template buffer.
+ *
+ * @param path_template   A buffer containing a filename template, ending in
+ *                        "XXXXXX". This buffer will be modified in-place to
+ *                        contain the actual filename.
+ * @param template_size   The total size of the path_template buffer.
+ *
+ * @return the file descriptor on success, or -1 on error.
+ */
+int create_vboot_temp_file(char *path_template, size_t template_size)
+{
+	char full_path[template_size];
+	int fd;
+
+	/* Safely construct the full path template */
+	snprintf(full_path, sizeof(full_path), VBOOT_TMP_DIR "/%s",
+		 path_template);
+
+	fd = mkstemp(full_path);
+	if (fd == -1) {
+		fprintf(stderr, "Unable to create temporary file: %s\n",
+			strerror(errno));
+		return -1;
+	}
+
+	/* Set permissions to be readable by all, writable by owner */
+	if (fchmod(fd, 0644) == -1) {
+		fprintf(stderr, "Unable to set permissions on temp file: %s\n",
+			strerror(errno));
+		close(fd);
+		unlink(full_path);
+		return -1;
+	}
+
+	/* Copy the generated path back to the caller's buffer */
+	strncpy(path_template, full_path, template_size);
+	path_template[template_size - 1] = '\0';
+
+	return fd;
+}
