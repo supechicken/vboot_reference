@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b458068_2f3b2820",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-10T22:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f9ba51_dc28be19",
+      "revId": "9f52d7f60fe471da7a8277b63bde5e5845b732d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d91e0169_971e335b",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-09-10T21:56:09Z",
       "side": 1,
       "message": "We should update this as well, since pvmfw missing can also be legal.",
+      "revId": "9f52d7f60fe471da7a8277b63bde5e5845b732d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "956b550e_953eb712",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-10T22:23:31Z",
+      "side": 1,
+      "message": "Done. I had split opinion regarding this: the fact that the code had reached here means PVMFW partition is explicitly requested to be loaded and the code should return error because it cannot honor the request. On the other hand, PVMFW parition is an optional one and hence not returning error feels right.\n\nI believe the scenario of PVMFW explicitly requested but not present/loaded is handled appropriately in the payload.",
+      "parentUuid": "d91e0169_971e335b",
       "revId": "9f52d7f60fe471da7a8277b63bde5e5845b732d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
