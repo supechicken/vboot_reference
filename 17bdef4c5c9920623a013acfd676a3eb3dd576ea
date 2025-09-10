@@ -51,6 +51,24 @@
       "parentUuid": "32874c61_9ad05535",
       "revId": "17bdef4c5c9920623a013acfd676a3eb3dd576ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a387505_b7c86db6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-10T16:07:52Z",
+      "side": 1,
+      "message": "Done. Fixed this through: crrev.com/c/6933976",
+      "parentUuid": "bb449a8a_6b56c10d",
+      "revId": "17bdef4c5c9920623a013acfd676a3eb3dd576ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
