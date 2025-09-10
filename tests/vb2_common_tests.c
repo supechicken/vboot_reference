@@ -241,9 +241,14 @@ static void test_helper_functions(void)
 			  "vb2_verify_member_inside() ok 1");
 		TEST_SUCC(vb2_verify_member_inside(p, 20, p+4, 4, 8, 4),
 			  "vb2_verify_member_inside() ok 2");
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
 		TEST_EQ(vb2_verify_member_inside(p, 20, p-4, 4, 8, 4),
 			VB2_ERROR_INSIDE_MEMBER_OUTSIDE,
 			"vb2_verify_member_inside() member before parent");
+#pragma GCC diagnostic pop
+
 		TEST_EQ(vb2_verify_member_inside(p, 20, p+20, 4, 8, 4),
 			VB2_ERROR_INSIDE_MEMBER_OUTSIDE,
 			"vb2_verify_member_inside() member after parent");
