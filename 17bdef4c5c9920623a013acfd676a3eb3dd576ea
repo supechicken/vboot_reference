@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a37ec95_e79094fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-09-10T06:11:38Z",
+      "side": 1,
+      "message": "Still unable to boot ALOS on felino\n```\nvb2api_load_kernel: Found Android kernel entry at 17514496 size 8192                                                                              \nvboot_avb_ops_new: AVB ops in non-legacy mode                                                                                                     \nread_rollback_index: TODO: not implemented yet                                                                                                    \nreserve_buffers: Reserved buffer for \u0027boot\u0027 0x100000[4000000]                                                                                     \nreserve_buffers: Reserved buffer for \u0027vendor_boot\u0027 0x4100000[2000000]                                                                             \nreserve_buffers: Reserved buffer for \u0027init_boot\u0027 0x6100000[800000]                                                                                \nget_partition_size: Unable to find dtb_a                                                                                                          \nget_preloaded_partition: Failed to reserve buffers: 3avb_slot_verify.c:106: ERROR: boot_a: Error loading data from partition.                     \nvb2api_load_kernel: Marking kernel as invalid (err\u003d100d0002).                                                                                     \nGptNextKernelEntry: GptNextKernelEntry looking at same prio partition 16                                                                          \nGptNextKernelEntry: GptNextKernelEntry s0 t0 p0   \n```",
+      "revId": "17bdef4c5c9920623a013acfd676a3eb3dd576ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
