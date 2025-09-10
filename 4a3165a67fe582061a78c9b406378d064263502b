@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "12450200_41537810",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-09-10T10:01:13Z",
+      "side": 1,
+      "message": "I think you need to add `Cq-Depend: chromium:6892551` and schedule both CLs to CQ, so they are tried together.\n\n`2stub.c` is not used when actual FW (depthcharge) is build, so the real implementation (from your other CL) is needed.",
+      "parentUuid": "b3a8ecec_48feed58",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "4a3165a67fe582061a78c9b406378d064263502b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3747aec9_56a21c10",
