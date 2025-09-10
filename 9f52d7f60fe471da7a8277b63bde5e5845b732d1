@@ -16,6 +16,40 @@
       "message": "Just a rebase since other CLs should not land before the fix for reserve_buffer.",
       "revId": "9f52d7f60fe471da7a8277b63bde5e5845b732d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f9ba51_dc28be19",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-10T21:56:09Z",
+      "side": 1,
+      "message": "nit: We already have a message in `get_partition_size()`, I don\u0027t think we need another one here, since this is not an illegal case.",
+      "revId": "9f52d7f60fe471da7a8277b63bde5e5845b732d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91e0169_971e335b",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-10T21:56:09Z",
+      "side": 1,
+      "message": "We should update this as well, since pvmfw missing can also be legal.",
+      "revId": "9f52d7f60fe471da7a8277b63bde5e5845b732d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
