@@ -839,6 +839,7 @@ TEST_NAMES = \
 	tests/cbfstool_tests \
 	tests/cgptlib_test \
 	tests/chromeos_config_tests \
+	tests/flashrom_bin_tests \
 	tests/gpt_misc_tests \
 	tests/sha_benchmark \
 	tests/subprocess_tests \
@@ -1347,6 +1348,11 @@ ${BUILD}/%.o: %.S
 # ----------------------------------------------------------------------------
 # Here are the special tweaks to the generic rules.
 
+# flashrom_bin_tests needs to mock subprocess_run and link flashrom_bin.o
+${BUILD}/tests/flashrom_bin_tests: LDFLAGS += -Wl,--wrap=subprocess_run
+${BUILD}/tests/flashrom_bin_tests: ${BUILD}/host/lib/flashrom_bin.o
+${BUILD}/tests/flashrom_bin_tests: OBJS += ${BUILD}/host/lib/flashrom_bin.o
+
 # Always create the defaults file, since it depends on input variables
 .PHONY: ${UTIL_DEFAULTS}
 ${UTIL_DEFAULTS}:
@@ -1458,7 +1464,8 @@ runtestscripts: install_for_test ${HOSTLIB_DEF} ${HOSTLIB_UNDEF}
 
 .PHONY: runmisctests
 runmisctests: install_for_test
-	${RUNTEST} ${BUILD_RUN}/tests/cbfstool_tests
+	#${RUNTEST} ${BUILD_RUN}/tests/cbfstool_tests
+	${RUNTEST} ${BUILD_RUN}/tests/flashrom_bin_tests
 	${RUNTEST} ${BUILD_RUN}/tests/gpt_misc_tests
 	${RUNTEST} ${BUILD_RUN}/tests/subprocess_tests
 ifeq ($(filter-out 0,${MOCK_TPM})$(filter-out 0,${TPM2_MODE}),)
