@@ -567,6 +567,7 @@ UTILLIB_SRCS = \
 	host/lib/host_signature.c \
 	host/lib/host_signature2.c \
 	host/lib/signature_digest.c \
+	host/lib/tempfile.c \
 	host/lib/util_misc.c \
 	host/lib21/host_common.c \
 	host/lib21/host_key.c \
