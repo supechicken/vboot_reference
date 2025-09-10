@@ -150,8 +150,11 @@ static AvbIOResult reserve_buffers(AvbOps *ops)
 
 		partition_name = GptPartitionNames[part];
 		err = get_partition_size(gpt, partition_name, slot_suffix, &size);
-		if (err)
-			return err;
+		if (err) {
+			VB2_DEBUG("Continue without reserving buffer for partition: %s%s\n",
+				  partition_name, slot_suffix);
+			continue;
+		}
 
 		available = kernel_buffer_end - buffer;
 		if (size > available)
