@@ -33,6 +33,24 @@
       "message": "I think that you should skip DTB partitions in `reserve_buffer()` function the same way as it is done for PVMFW or we need to have zero length DTB partitions for x86. Otherwise, reserve_buffer() will fail.",
       "revId": "17bdef4c5c9920623a013acfd676a3eb3dd576ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb449a8a_6b56c10d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-10T07:28:00Z",
+      "side": 1,
+      "message": "Ah ok. reserve_buffer reserving buffer for all partitions even if it is not requested to be preloaded is a big disconnect. I think we can leave the reserve_buffer to continue for non-existent partitions - leaving the alloced_size to 0, instead of a dummy zero sized partition.",
+      "parentUuid": "32874c61_9ad05535",
+      "revId": "17bdef4c5c9920623a013acfd676a3eb3dd576ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
