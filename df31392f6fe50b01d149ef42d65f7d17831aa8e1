@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10a5a47_c736a586",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-09-11T08:10:09Z",
+      "side": 1,
+      "message": "Would it be possible to move lines 168-184 to a separate function, like reserve_pvmfw_buffer(), call it instead of `continue` and add a comment which says that pvmfw buffer is handled differently? I think it will make code more readable.",
+      "revId": "df31392f6fe50b01d149ef42d65f7d17831aa8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
