@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e47f354_238991b9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "I\u0027m confused by this statement - normal/dev mode have to do with loading a modified/unverified OS, while IIUC recovery mode is it\u0027s own thing. The only two actual \"boot\" modes are normal and recovery as far as the bootloader is concerned - covered in vb2ex_get_android_bootmode?",
+      "parentUuid": "5ad82e71_f5d052ff",
+      "range": {
+        "startLine": 55,
+        "startChar": 65,
+        "endLine": 55,
+        "endChar": 81
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e66a79a3_d3888d90",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 16
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-11T09:51:31Z",
       "side": 1,
       "message": "This function is complicating the logic here. There is only a single use of it, so it can be removed and comment can be moved to the place of the usage.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "100310b8_fa139808",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e66a79a3_d3888d90",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2025-09-11T09:51:31Z",
       "side": 1,
       "message": "style: comment not matching requirements. Please use one of the styles below:\n```\n/* Short multiline\n   comment */\n\n/* \n * Long\n * multiline\n * comment\n */\n ```",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 43
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34cb8666_613b5962",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09fbcb5d_7e92af79",
       "range": {
         "startLine": 378,
         "startChar": 1,
@@ -119,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b93067c9_f98e2e39",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "I already tried to use the vb2_check_dev_switch to check this, @jwerner@chromium.org informed me that modifying/using that function is *almost* impossible since it is in RO firmware. Since the last flag it modifies is VB2_SECDATA_FIRMWARE_FLAG_LAST_BOOT_DEVELOPER (which incorporates all the above concerns), I think that would be better to determine \"Are we in dev mode on the current boot?\"",
+      "parentUuid": "2b48bcbf_51799573",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
@@ -130,6 +226,30 @@
       "writtenOn": "2025-09-11T09:51:31Z",
       "side": 1,
       "message": "extra space",
+      "range": {
+        "startLine": 357,
+        "startChar": 24,
+        "endLine": 357,
+        "endChar": 25
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8cfd33_0c20a470",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb43de8_10b19320",
       "range": {
         "startLine": 357,
         "startChar": 24,
@@ -163,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b05b9de_e16e0700",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1365ef80_87488c96",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70a34f91_69842e96",
@@ -176,6 +320,30 @@
       "writtenOn": "2025-09-11T09:51:31Z",
       "side": 1,
       "message": "style",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 22
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14877f2_22e287ce",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a34f91_69842e96",
       "range": {
         "startLine": 1125,
         "startChar": 0,
@@ -209,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8664f749_5dfd9550",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b241bfe1_0a2d42fe",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d24d4cc6_6acfe026",
@@ -222,6 +414,30 @@
       "writtenOn": "2025-09-11T09:51:31Z",
       "side": 1,
       "message": "No longer correct.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c52552b_869c1188",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-11T14:22:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d24d4cc6_6acfe026",
       "range": {
         "startLine": 91,
         "startChar": 0,
