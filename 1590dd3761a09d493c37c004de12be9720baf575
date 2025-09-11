@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f5842d_05a99660",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "You can use a static const char array. Then use `ARRAY_SIZE(x)-1` to get the size w/o the trailing zero.",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89878ef8_cb6f5467",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "Please add an assert here. Otherwise it might crash with SIGSEGV. It\u0027s better to have a descriptive error message than a crash and then look for the cause \"by hand\".",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 80
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5bf1b0_0e318402",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "\"Ft\" is \"File type\". Makes test logs easier to understand.",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e4c7b3_6fc872cf",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "`memset(gbb-\u003esignature, 0, sizeof(gbb-\u003esignature));` is safer.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de176c66_99b20557",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "Using hex or standard C defined values gives a proper context:\n```suggestion\n\tgbb-\u003emajor_version \u003d 0xFFFF; /* UINT16_MAX */\n```\nor\n```suggestion\n\tgbb-\u003emajor_version \u003d UINT16_MAX;\n```",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21ad4ae_71386af0",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "I think this should be treated more like a test-case setup than a cleanup. What I mean by this is: moving it to the beginning of the next code block will more intuitively group the code. Same for all other cases here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef768952_2e3769c1",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "This works only by chance. `futil_set_gbb_hwid(gbb, hwid)` calls `strlen(hwid)`. Your input data does not contain a trailing zero, so `strlen()` accesses data beyond the allocated string. To fix this you can use a buffer that\u0027s 2 bytes larger + memset:\n```suggestion\n\tstr \u003d calloc(1, gbb-\u003ehwid_size + 2);\n\tUNIT_ASSERT(str !\u003d NULL);\n\tmemset(str, \u0027X\u0027, gbb-\u003ehwid_size + 1);\n\tTEST_EQ(futil_set_gbb_hwid(gbb, str), -1, \"Futil set GBB HWID: too big\");\n\tfree(str);\n```",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53707dd5_792c2ecc",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "Reset `gbb` before each of these tests.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 74
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b531d3_83dd916f",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "This free is not necessary here. `str` is freed just after the test case above. There are no `UNIT_ASSERT()` calls between them, so the only way the program could exit w/o freeing it is by crashing in `TEST_EQ`.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c52e28_622d1f87",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "This also tests the copy functions. What do you think about `test_futil_file_helpers`?",
+      "range": {
+        "startLine": 141,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4346ab6_d6d99abb",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "```suggestion\n\tint fd \u003d -1;\n```",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 8
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c64b1e_014fc092",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "Please add checks for `fd \u003e 0`. If someone changes these functions to return a correct exit code but incorrect `fd` or not set `fd` at all, then we won\u0027t reliably catch it.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 89
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcdd80c5_98f2dc84",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "Set `fd \u003d -1` to reset test state.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 76
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed9804a_e979ebab",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "```suggestion\n\tint fd \u003d -1;\n```",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4a0985_c682522e",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "```suggestion\n\tuint32_t size \u003d 0;\n```",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 15
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17eddac0_a632adab",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "IIRC we are assuming the firmware images and archives are up to 4GiB. There are a lot of places in the code that would require fixing to support files above 4GiB.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 60
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61663c7f_c169ec27",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "Setup: `fd \u003d -1; data \u003d NULL; size \u003d 0;`",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 29
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "880a9dca_aae7443c",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "Add a NULL check.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 29
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47832c0_7c0259c7",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "How does it break HeaderCrc? We should not rely on Undefined Behavior.\nIf it is just to change the checksum, then please put that in the comment. Having function names in non-doc comments leads to the inconsistencies in the future.",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 45
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c91bd8_56d79666",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "It would be better to get a binary negation of this value: `~GPT_HEADER_REVISION`.",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 39
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e313a6c_4f9e4b6b",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T12:07:16Z",
+      "side": 1,
+      "message": "`data` and `len` are calculated independently. Please call `strlen()` on `data` here so we have a hard dependency instead of the implied one.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 34
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
