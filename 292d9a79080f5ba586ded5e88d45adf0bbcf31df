@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70aefb70_8619cbfb",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T15:14:18Z",
+      "side": 1,
+      "message": "\u003e I\u0027m confused by this statement - normal/dev mode have to do with loading a modified/unverified OS, while IIUC recovery mode is it\u0027s own thing\n\nRecovery mode in vboot is not related to the OS recovery mode. vboot\u0027s recovery is staying in the RO (Read-Only) firmware version. There we can run either the ChromeOS-type recovery image or we can boot ChromeOS testimage. AFAIK for now Android is not supported in this mode. AL recovery is done through a specially prepared image.\n\n\u003e The only two actual \"boot\" modes are normal and recovery as far as the bootloader is concerned - covered in vb2ex_get_android_bootmode?\n\nThis is true for Android OS, but not the AL Firmware. \n\n---\n\nI got confused by the `dev_mode_transitioning` and `current_dev_mode` names. This actually describes changes between verified vs unverified OS which is not equal to transitioning between dev and normal modes (PTAL: `vb2_need_kernel_verification()`). I think that changing the name from `PREVIOUS_BOOT_DEV_MODE` to something like `KERNEL_VERIFICATION_PREVIOUS_BOOT` would make the intent clearer.",
+      "parentUuid": "8e47f354_238991b9",
+      "range": {
+        "startLine": 55,
+        "startChar": 65,
+        "endLine": 55,
+        "endChar": 81
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e66a79a3_d3888d90",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 16
