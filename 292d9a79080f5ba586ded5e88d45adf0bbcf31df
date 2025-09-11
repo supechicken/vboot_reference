@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad82e71_f5d052ff",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "There are 3 basic boot modes: normal, dev, recovery. You cannot cover them with a boolean value.",
+      "range": {
+        "startLine": 55,
+        "startChar": 65,
+        "endLine": 55,
+        "endChar": 81
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66a79a3_d3888d90",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "This function is complicating the logic here. There is only a single use of it, so it can be removed and comment can be moved to the place of the usage.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09fbcb5d_7e92af79",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "style: comment not matching requirements. Please use one of the styles below:\n```\n/* Short multiline\n   comment */\n\n/* \n * Long\n * multiline\n * comment\n */\n ```",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 43
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a331e0_ea3350c3",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "Kernel verification does not imply dev mode. There is `vb2_check_dev_switch()` to check for the real dev mode including the GBB Dev mode flag.",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb43de8_10b19320",
+        "filename": "firmware/2lib/2nvstorage.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 357,
+        "startChar": 24,
+        "endLine": 357,
+        "endChar": 25
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1365ef80_87488c96",
+        "filename": "firmware/2lib/2stub.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "style: indentation (there is a `.clang-format` you can use :) )",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a34f91_69842e96",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "style",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 22
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b241bfe1_0a2d42fe",
+        "filename": "firmware/2lib/include/2nvstorage.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "style",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24d4cc6_6acfe026",
+        "filename": "firmware/2lib/include/2nvstorage_fields.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-11T09:51:31Z",
+      "side": 1,
+      "message": "No longer correct.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
