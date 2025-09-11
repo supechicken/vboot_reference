@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b48bcbf_51799573",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-09-11T10:11:56Z",
+      "side": 1,
+      "message": "I think that the best solution is to used `vb2_check_dev_swith()` to verify that transition happened and pass that info up in `vb2_shared_data-\u003eflags`. @yupingso@chromium.org @jwerner@chromium.org do we have other mechanisms to detect dev\u003c-\u003enormal transition?",
+      "parentUuid": "b2a331e0_ea3350c3",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
