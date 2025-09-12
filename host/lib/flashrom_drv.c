@@ -266,6 +266,17 @@ err_init:
 	return r ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
 }
 
+vb2_error_t flashrom_write_region(const struct firmware_image *image, const char *region,
+				  int do_verify, int verbosity)
+{
+	const char *const regions[] = {region};
+	if (region != NULL)
+		return flashrom_write_image(image, regions, ARRAY_SIZE(regions), NULL,
+					    do_verify, verbosity);
+	else
+		return flashrom_write_image(image, NULL, 0, NULL, do_verify, verbosity);
+}
+
 vb2_error_t flashrom_get_wp(const char *prog_with_params, bool *wp_mode,
 			    uint32_t *wp_start, uint32_t *wp_len, int verbosity)
 {
