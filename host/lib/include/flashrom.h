@@ -36,9 +36,6 @@ struct firmware_image {
  * Read using flashrom into an allocated buffer.
  * The caller is responsible for freeing image-data and image->file_name.
  *
- * flashrom_read subprocesses the flashrom binary and returns a buffer truncated
- * to the region.
- *
  * flashrom_read_image reads the returns a full sized buffer with only the
  * regions filled with data.
  *
@@ -54,7 +51,6 @@ struct firmware_image {
  *
  * @return VB2_SUCCESS on success, or a relevant error.
  */
-vb2_error_t flashrom_read(struct firmware_image *image, const char *region);
 vb2_error_t flashrom_read_image(struct firmware_image *image,
 				const char *const regions[], size_t regions_len, int verbosity);
 vb2_error_t flashrom_read_region(struct firmware_image *image, const char *region,
@@ -73,7 +69,6 @@ vb2_error_t flashrom_read_region(struct firmware_image *image, const char *regio
  *
  * @return VB2_SUCCESS on success, or a relevant error.
  */
-vb2_error_t flashrom_write(struct firmware_image *image, const char *region);
 vb2_error_t flashrom_write_image(const struct firmware_image *image,
 				 const char *const regions[], size_t regions_len,
 				 const struct firmware_image *diff_image, int do_verify,
