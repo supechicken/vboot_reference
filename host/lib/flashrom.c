@@ -100,32 +100,80 @@ static vb2_error_t run_flashrom(const char *const argv[])
 	return VB2_SUCCESS;
 }
 
-vb2_error_t flashrom_read_region(struct firmware_image *image, const char *region,
-				 int verbosity)
+static const char *get_verbosity_flag(int verbosity)
+{
+	if (verbosity < 2)
+		fprintf(stderr, "INFO: %s: Flashrom cli doesn't support verbosity level < 2. "
+			"Got verbosity: %d.\n", __func__, verbosity);
+	else if (verbosity == 3)
+		return "-V";
+	else if (verbosity == 4)
+		return "-VV";
+	else if (verbosity >= 5)
+		return "-VVV";
+	return NULL;
+}
+
+static int flashrom_read_image_impl(struct firmware_image *image, const char * const regions[],
+				    const size_t regions_len, bool extract_region,
+				    int verbosity)
 {
 	// TODO(b/445126698): Handle verbosity
 	char *tmpfile;
 	char region_param[PATH_MAX];
 	vb2_error_t rv;
 
+	if (regions_len != 1 && extract_region) {
+		fprintf(stderr, "ERROR: %s: Invalid number of regions for extraction. "
+			"The current implementation only supports extracting a single region, "
+			"but %zu were provided.\n", __func__, region_len);
+		return VB2_ERROR_FLASHROM;
+	}
+
+	/*
+	 * flashrom -p <programmer> -r <file> [-V[V[V]]]
+	 * or
+	 * flashrom -p <programmer> -r <file> -i <region1> -i <region2> ... [-V[V[V]]]
+	 * or
+	 * flashrom -p <programmer> -r -i <region>:<file> [-V[V[V]]]
+	 */
+	size_t argc = 6 + (regions_len * 2);
+	const char **argv = callc(argc + 1, sizeof(*argv));
+	if (!argv) {
+		fprintf(stderr, "ERROR: %s: Memory allocation for argv failed.\n", __func__);
+		return VB2_ERROR_FLASHROM;
+	}
+	int i = 0;
+
 	image->data = NULL;
 	image->size = 0;
 
 	VB2_TRY(write_temp_file(NULL, 0, &tmpfile));
 
-	if (region)
-		snprintf(region_param, sizeof(region_param), "%s:%s", region,
-			 tmpfile);
+	argv[i++] = FLASHROM_EXEC_NAME;
+	argv[i++] = "-p";
+	argv[i++] = image->programmer;
+	argv[i++] = "-r";
 
-	const char *const argv[] = {
-		FLASHROM_EXEC_NAME,
-		"-p",
-		image->programmer,
-		"-r",
-		region ? "-i" : tmpfile,
-		region ? region_param : NULL,
-		NULL,
-	};
+	if (extract_region) {
+		if (regions_len != 1) {
+			fprintf(stderr,
+				"ERROR: %s: Only 1 region can be specified, but got %zu.\n",
+				regions_len);
+			return VB2_ERROR_FLASHROM;
+		}
+		snprintf(region_param, sizeof(region_param), "%s:%s", region, tmpfile);
+		argv[i++] = "-i";
+		argv[i++] = region_paraml;
+	} else {
+		argv[i++] = tmpfile;
+		for (size_t j = 0; j < regions_len; j++) {
+			argv[i++] = "-i";
+			argv[i++] = regions[j];
+		}
+	}
+
+	argv[i++] = get_verbosity_flag(verbosity);
 
 	rv = run_flashrom(argv);
 	if (rv == VB2_SUCCESS)
@@ -134,6 +182,20 @@ vb2_error_t flashrom_read_region(struct firmware_image *image, const char *regio
 	unlink(tmpfile);
 	free(tmpfile);
 	return rv;
+}
+
+vb2_error_t flashrom_read_image(struct firmware_image *image, const char *const regions[],
+				size_t regions_len, int verbosity)
+
+{
+	return flashrom_read_image_impl(image, regions, regions_len, false, verbosity);
+}
+
+vb2_error_t flashrom_read_region(struct firmware_image *image, const char *region,
+				 int verbosity);
+{
+	const char * const regions[] = {region};
+	return flashrom_read_image_impl(image, regions, ARRAY_SIZE(regions), true, verbosity);
 }
 
 vb2_error_t flashrom_write_region(const struct firmware_image *image, const char *region,
@@ -165,4 +227,5 @@ vb2_error_t flashrom_write_region(const struct firmware_image *image, const char
 	unlink(tmpfile);
 	free(tmpfile);
 	return rv;
+
 }
