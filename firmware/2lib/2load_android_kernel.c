@@ -795,6 +795,29 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		goto out;
 
 	/*
+<<<<<<< HEAD   (814560a3e8323df2d7d23a15c126cb77502e590f 2load_android_kernel: Quick fix for 4KiB misc partition clea)
+||||||| BASE   (a4b20c904dd52411aa2380ba759272093f256197 Revert "2api: Add support to load DTB/DTBO images from GPT p)
+	 * Use orange verifiedbootstate if OS wasn't verified (e.g. in developer mode) or
+	 * when booting to recovery with GBB enabled fastboot to unlock all commands of
+	 * fastbootd (normally when we boot to recovery with green flag, fastbootd would be
+	 * locked).
+	 */
+	bool orange = !need_verification ||
+		      (recovery_boot && ctx->flags & VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT);
+
+	/*
+=======
+	 * Use orange verifiedbootstate if OS wasn't verified (e.g. in developer mode) or
+	 * when booting to recovery with GBB enabled fastboot to unlock all commands of
+	 * fastbootd (normally when we boot to recovery with green flag, fastbootd would be
+	 * locked).
+	 */
+	bool orange = !need_verification ||
+		(recovery_boot &&
+		 vb2api_gbb_get_flags(ctx) & VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT);
+
+	/*
+>>>>>>> CHANGE (92a4936e3e2f38f7d886fa88806897cc0cbfb589 2load_android_kernel: Fix VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT)
 	 * TODO(b/335901799): Add support for marking verifiedbootstate yellow
 	 */
 	int chars = snprintf(params->vboot_cmdline_buffer, params->vboot_cmdline_size,
