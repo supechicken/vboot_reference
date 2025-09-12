@@ -484,10 +484,10 @@ USE_FLASHROM ?= 1
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
 $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
-COMMONLIB_SRCS += \
-	host/lib/flashrom.c \
-	host/lib/flashrom_drv.c
+COMMONLIB_SRCS += host/lib/flashrom_drv.c
 CFLAGS += -DUSE_FLASHROM
+else
+COMMONLIB_SRCS += host/lib/flashrom.c
 endif
 COMMONLIB_SRCS += \
 	host/lib/subprocess.c \
@@ -856,7 +856,7 @@ TEST2X_NAMES = \
 	tests/vb2_sha_tests \
 	tests/hmac_test
 
-ifneq ($(filter-out 0,${USE_FLASHROM}),)
+ifeq ($(filter-out 0,${USE_FLASHROM}),)
 TEST2X_NAMES += \
 	tests/vb2_host_flashrom_tests
 endif
@@ -1150,6 +1150,9 @@ ${UTIL_BINS_SDK}: ${UTILLIB}
 ${UTIL_BINS_SDK}: LIBS = ${UTILLIB}
 ${UTIL_BINS_BOARD}: ${UTILLIB}
 ${UTIL_BINS_BOARD}: LIBS = ${UTILLIB}
+ifneq ($(filter-out 0,${USE_FLASHROM}),)
+${UTIL_BINS_BOARD}: LDLIBS += ${FLASHROM_LIBS}
+endif
 
 ${UTIL_SCRIPTS_SDK} ${UTIL_SCRIPTS_BOARD}: ${BUILD}/%: %
 	${Q}cp -f $< $@
@@ -1445,7 +1448,7 @@ run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_firmware_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_init_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_gbb_tests
-ifneq ($(filter-out 0,${USE_FLASHROM}),)
+ifeq ($(filter-out 0,${USE_FLASHROM}),)
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_host_flashrom_tests
 endif
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_host_key_tests
