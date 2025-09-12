@@ -150,7 +150,7 @@ static void test_read_whole_chip(void)
 		.programmer = "someprog",
 	};
 
-	TEST_SUCC(flashrom_read_region(&image, NULL, 0),
+	TEST_SUCC(flashrom_read_image(&image, NULL, 0, 0),
 		  "Flashrom read succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -163,6 +163,18 @@ static void test_read_whole_chip(void)
 	TEST_EQ(image.size, strlen(MOCK_ROM_CONTENTS), "Contents correct size");
 	TEST_SUCC(memcmp(image.data, MOCK_ROM_CONTENTS, image.size),
 		  "Buffer has correct contents");
+
+	free(image.data);
+}
+
+static void test_read_region_null_name(void)
+{
+	struct firmware_image image = {
+		.programmer = "someprog",
+	};
+
+	TEST_FAIL(flashrom_read_region(&image, NULL, 0),
+		  "Flashrom read region with NULL name fails");
 
 	free(image.data);
 }
@@ -276,6 +288,7 @@ static void test_write_failure(void)
 int main(int argc, char *argv[])
 {
 	test_read_whole_chip();
+	test_read_region_null_name();
 	test_read_region();
 	test_read_failure();
 	test_write_whole_chip();
