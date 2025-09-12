@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850ffc0c_2db52f5d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-12T09:55:09Z",
+      "side": 1,
+      "message": "Need `+1` for the trailing `NULL`.\n\nI\u0027d actually prefer an explicit `boot_partitions[partition_count] \u003d NULL` at the end.",
+      "range": {
+        "startLine": 338,
+        "startChar": 29,
+        "endLine": 338,
+        "endChar": 54
+      },
+      "revId": "5911da00d8885b0861622ab48cabaf4ff5d60b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957c1fa5_f51bfe9c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-12T09:55:09Z",
+      "side": 1,
+      "message": "nit: `size_t` or `int`",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 9
+      },
+      "revId": "5911da00d8885b0861622ab48cabaf4ff5d60b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e765a974_552a176b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-12T09:55:09Z",
+      "side": 1,
+      "message": "`or not present`",
+      "range": {
+        "startLine": 366,
+        "startChar": 45,
+        "endLine": 366,
+        "endChar": 46
+      },
+      "revId": "5911da00d8885b0861622ab48cabaf4ff5d60b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3003c988_5efbd1d6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-12T09:55:09Z",
+      "side": 1,
+      "message": "nit: `exist`",
+      "range": {
+        "startLine": 370,
+        "startChar": 27,
+        "endLine": 370,
+        "endChar": 33
+      },
+      "revId": "5911da00d8885b0861622ab48cabaf4ff5d60b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
