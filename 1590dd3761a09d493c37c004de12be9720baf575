@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21b2b46_4f6c411c",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f5842d_05a99660",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89878ef8_cb6f5467",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "Please add an assert here. Otherwise it might crash with SIGSEGV. It\u0027s better to have a descriptive error message than a crash and then look for the cause \"by hand\".",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 80
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe9384e_e1a5f285",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89878ef8_cb6f5467",
       "range": {
         "startLine": 50,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8df904_97ea318a",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c5bf1b0_0e318402",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e4c7b3_6fc872cf",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "`memset(gbb-\u003esignature, 0, sizeof(gbb-\u003esignature));` is safer.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "766496ab_915df3f7",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e4c7b3_6fc872cf",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8911ea37_d595e55f",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de176c66_99b20557",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e21ad4ae_71386af0",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "I think this should be treated more like a test-case setup than a cleanup. What I mean by this is: moving it to the beginning of the next code block will more intuitively group the code. Same for all other cases here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d59da64_c3f014b7",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e21ad4ae_71386af0",
       "range": {
         "startLine": 115,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b36edc_fe4734e1",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "That `\u0027\\n\u0027` should have been `\u0027\\0\u0027`. Fixed.",
+      "parentUuid": "ef768952_2e3769c1",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53707dd5_792c2ecc",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "Reset `gbb` before each of these tests.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 74
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f434ef90_11747914",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53707dd5_792c2ecc",
       "range": {
         "startLine": 125,
         "startChar": 1,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d92eaf_de1efcd2",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b531d3_83dd916f",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c52e28_622d1f87",
@@ -221,6 +437,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "This also tests the copy functions. What do you think about `test_futil_file_helpers`?",
+      "range": {
+        "startLine": 141,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48c1a6a_d1b749a3",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c52e28_622d1f87",
       "range": {
         "startLine": 141,
         "startChar": 11,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f23eb6e_cdc246bf",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4346ab6_d6d99abb",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 8
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99c64b1e_014fc092",
@@ -267,6 +531,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "Please add checks for `fd \u003e 0`. If someone changes these functions to return a correct exit code but incorrect `fd` or not set `fd` at all, then we won\u0027t reliably catch it.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 89
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c47ea57_bb48d349",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c64b1e_014fc092",
       "range": {
         "startLine": 157,
         "startChar": 1,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ac45a5_7d4bacd9",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcdd80c5_98f2dc84",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 76
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ed9804a_e979ebab",
@@ -313,6 +625,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "```suggestion\n\tint fd \u003d -1;\n```",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb4addb_694f90ed",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed9804a_e979ebab",
       "range": {
         "startLine": 173,
         "startChar": 1,
@@ -346,6 +682,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70db6e75_9ab6eef5",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4a0985_c682522e",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 15
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17eddac0_a632adab",
@@ -359,6 +719,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "IIRC we are assuming the firmware images and archives are up to 4GiB. There are a lot of places in the code that would require fixing to support files above 4GiB.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 60
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb63dfc_d23bc11e",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "17eddac0_a632adab",
       "range": {
         "startLine": 180,
         "startChar": 1,
@@ -392,6 +776,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "320d44c3_a7079e82",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61663c7f_c169ec27",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 29
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "880a9dca_aae7443c",
@@ -405,6 +813,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "Add a NULL check.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 29
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2662e539_3a53951f",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "880a9dca_aae7443c",
       "range": {
         "startLine": 204,
         "startChar": 1,
@@ -438,6 +870,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c55fef9_813646ce",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "b47832c0_7c0259c7",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 45
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c91bd8_56d79666",
@@ -461,6 +917,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f7d26b_3943a7fb",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c91bd8_56d79666",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 39
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e313a6c_4f9e4b6b",
@@ -474,6 +954,30 @@
       "writtenOn": "2025-09-11T12:07:16Z",
       "side": 1,
       "message": "`data` and `len` are calculated independently. Please call `strlen()` on `data` here so we have a hard dependency instead of the implied one.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 34
+      },
+      "revId": "1590dd3761a09d493c37c004de12be9720baf575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "587cd386_71452941",
+        "filename": "tests/futility/test_misc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 4203158
+      },
+      "writtenOn": "2025-09-12T10:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e313a6c_4f9e4b6b",
       "range": {
         "startLine": 239,
         "startChar": 1,
