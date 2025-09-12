@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "963832a6_cacd37cd",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-12T14:59:39Z",
+      "side": 1,
+      "message": "I have spent some time thinking about this exact scenario you describe, and I think this impl fits the behavior of the old /mnt/stateful_partition/.developer_mode.\n\nIf a user reboots during any arbitrary point in the bootup process one of two things retry the powerwash process\n1) If only the VB2_NV_PREVIOUS_BOOT_DEV_MODE has been written, but the system failed to write to the gpt misc partition in vb2ex_factory_data_reset, it will try again over repeated boots\n2) Once the system has successfully written to the gpt misc partition it will continually try to perform FDR and only AFTER it has successfully done so will it clear the commands in the BCB - see the comments in https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:bootable/recovery/recovery.cpp;l\u003d91?q\u003drecovery%20wipe_data\u0026ss\u003dh%2Fgoogleplex-android%2Fplatform%2Fsuperproject%2Fmain%2F%2B%2Frefs%2Fheads%2Fmain.\n\nPerforming FDR on my machine is very fast (i.e. less than 30 seconds) and for lab scenarios if you are running an eng build it doesn\u0027t reset ADB connections so I think he have are bases covered on that front.",
+      "parentUuid": "53a05caa_77ebaaf6",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
