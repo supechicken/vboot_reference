@@ -149,7 +149,7 @@ static void test_read_whole_chip(void)
 		.programmer = "someprog",
 	};
 
-	TEST_SUCC(flashrom_read(&image, NULL),
+	TEST_SUCC(flashrom_read_region(&image, NULL, 0),
 		  "Flashrom read succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -172,7 +172,7 @@ static void test_read_region(void)
 		.programmer = "someprog",
 	};
 
-	TEST_SUCC(flashrom_read(&image, "SOME_REGION"),
+	TEST_SUCC(flashrom_read_region(&image, "SOME_REGION", 0),
 		  "Flashrom read succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -197,7 +197,7 @@ static void test_read_failure(void)
 	};
 
 	flashrom_mock_success = false;
-	TEST_NEQ(flashrom_read(&image, "SOME_REGION"),
+	TEST_NEQ(flashrom_read_region(&image, "SOME_REGION", 0),
 		 VB2_SUCCESS, "Flashrom read fails");
 	flashrom_mock_success = true;
 }
@@ -213,7 +213,7 @@ static void test_write_whole_chip(void)
 
 	memcpy(buf, MOCK_ROM_CONTENTS, sizeof(buf));
 
-	TEST_SUCC(flashrom_write(&image, NULL),
+	TEST_SUCC(flashrom_write_image(&image, NULL, 0, NULL, 1, 0),
 		  "Flashrom write succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -237,10 +237,11 @@ static void test_write_region(void)
 		.data = buf,
 		.size = sizeof(buf),
 	};
+	const char *const regions[] = {"SOME_REGION"};
 
 	memcpy(buf, MOCK_ROM_CONTENTS, sizeof(buf));
 
-	TEST_SUCC(flashrom_write(&image, "SOME_REGION"),
+	TEST_SUCC(flashrom_write_image(&image, regions, ARRAY_SIZE(regions), NULL, 1, 0),
 		  "Flashrom write succeeds");
 	TEST_STR_EQ(captured_programmer, "someprog",
 		    "Using specified programmer");
@@ -265,9 +266,10 @@ static void test_write_failure(void)
 		.data = buf,
 		.size = sizeof(buf),
 	};
+	const char *const regions[] = {"SOME_REGION"};
 
 	flashrom_mock_success = false;
-	TEST_NEQ(flashrom_write(&image, "SOME_REGION"),
+	TEST_NEQ(flashrom_write_image(&image, regions, ARRAY_SIZE(regions), NULL, 1, 0),
 		 VB2_SUCCESS, "Flashrom write fails");
 	flashrom_mock_success = true;
 }
