@@ -655,7 +655,7 @@ int write_system_firmware(struct updater_config *cfg,
 			WARN("Retry writing firmware (%d/%d)...\n", i, tries);
 		INFO("Writing SPI Flash..\n");
 		r = flashrom_write_image(image, regions, regions_len,
-					 flash_contents, cfg->do_verify,
+					 flash_contents, !!cfg->do_verify,
 					 verbose);
 		/*
 		 * Force a newline to flush stdout in case if
