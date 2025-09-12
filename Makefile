@@ -484,9 +484,7 @@ USE_FLASHROM ?= 1
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
 $(info building with libflashrom support)
 FLASHROM_LIBS := $(shell ${PKG_CONFIG} --libs flashrom)
-COMMONLIB_SRCS += \
-	host/lib/flashrom.c \
-	host/lib/flashrom_drv.c
+COMMONLIB_SRCS += host/lib/flashrom_drv.c
 CFLAGS += -DUSE_FLASHROM
 endif
 COMMONLIB_SRCS += \
@@ -1145,6 +1143,9 @@ ${UTIL_BINS_SDK}: ${UTILLIB}
 ${UTIL_BINS_SDK}: LIBS = ${UTILLIB}
 ${UTIL_BINS_BOARD}: ${UTILLIB}
 ${UTIL_BINS_BOARD}: LIBS = ${UTILLIB}
+ifneq ($(filter-out 0,${USE_FLASHROM}),)
+${UTIL_BINS_BOARD}: LDLIBS += ${FLASHROM_LIBS}
+endif
 
 ${UTIL_SCRIPTS_SDK} ${UTIL_SCRIPTS_BOARD}: ${BUILD}/%: %
 	${Q}cp -f $< $@
