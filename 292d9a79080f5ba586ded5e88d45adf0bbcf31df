@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e826a913_2a365f34",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-12T16:20:30Z",
+      "side": 1,
+      "message": "I see that kernel verification can be skipped even if were not in dev mode - what we care about in this case is the unlocked bootloader status which IIUC is \u003d\u003d to \"androidboot.verifiedbootstate\u003dorange\". I\u0027ve changed the name to be KERNEL_VERIFICATION_PREVIOUS_BOOT to match this closely",
+      "parentUuid": "70aefb70_8619cbfb",
+      "range": {
+        "startLine": 55,
+        "startChar": 65,
+        "endLine": 55,
+        "endChar": 81
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e66a79a3_d3888d90",
