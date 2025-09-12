@@ -16,6 +16,24 @@
       "message": "Would it be possible to move lines 168-184 to a separate function, like reserve_pvmfw_buffer(), call it instead of `continue` and add a comment which says that pvmfw buffer is handled differently? I think it will make code more readable.",
       "revId": "df31392f6fe50b01d149ef42d65f7d17831aa8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3ec12f_972f89b9",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-09-12T00:34:28Z",
+      "side": 1,
+      "message": "Done here - crrev.com/c/6941641. Refactored this function a bit such that PVMFW is handled along with other partitions sequentially.",
+      "parentUuid": "a10a5a47_c736a586",
+      "revId": "df31392f6fe50b01d149ef42d65f7d17831aa8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
