@@ -11,11 +11,10 @@
 #include "crossystem.h"
 #include "host_misc.h"
 #include "util_misc.h"
-//#include "updater.h"
 #include "../../futility/futility.h"
 #include "flashrom.h"
 
-// global to allow verbosity level to be injected into callback.
+/* global to allow verbosity level to be injected into callback. */
 static enum flashrom_log_level g_verbose_screen = FLASHROM_MSG_INFO;
 
 static int flashrom_print_cb(enum flashrom_log_level level, const char *fmt,
@@ -156,6 +155,10 @@ vb2_error_t flashrom_read_region(struct firmware_image *image, const char *regio
 {
 	const char * const regions[] = {region};
 	unsigned int start, len;
+	if (region == NULL) {
+		ERROR("region name must be specified\n");
+		return VB2_ERROR_FLASHROM;
+	}
 	vb2_error_t r = flashrom_read_image_impl(image, regions, ARRAY_SIZE(regions),
 						 &start, &len, verbosity);
 	if (r != VB2_SUCCESS)
@@ -166,10 +169,24 @@ vb2_error_t flashrom_read_region(struct firmware_image *image, const char *regio
 	return VB2_SUCCESS;
 }
 
-vb2_error_t flashrom_write_image(const struct firmware_image *image,
-				 const char * const regions[], const size_t regions_len,
-				 const struct firmware_image *diff_image,
-				 int do_verify, int verbosity)
+/*
+ * Internal implementation for flashrom writes.
+ *
+ * This function handles two distinct cases:
+ *
+ * 1. Full-layout buffer (image->size == flash_size):
+ * The image is passed directly to libflashrom. The `regions` array (if non-zero) is used to
+ * specify which parts of the full buffer to write.
+ *
+ * 2. Fitted-region buffer (image->size != flash_size):
+ * This function allocates a new full-size buffer, copies the small `image` data into the
+ * correct FMAP offset, and then passes that new full buffer to libflashrom.
+ */
+static vb2_error_t flashrom_write_image_impl(const struct firmware_image *image,
+					     const char * const regions[],
+					     const size_t regions_len,
+					     const struct firmware_image *diff_image,
+					     bool do_verify, int verbosity)
 {
 	int r = 0;
 	size_t len = 0;
@@ -182,6 +199,18 @@ vb2_error_t flashrom_write_image(const struct firmware_image *image,
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
 	struct flashrom_layout *layout = NULL;
+
+	/*
+	 * `image_to_write` points to the final, full-size buffer that will be passed to
+	 * libflashrom.
+	 *
+	 * It defaults to `image` (for the full-layout case).
+	 * If a fitted-region buffer is detected, `image_full` will be allocated and this
+	 * pointer will be updated to point to it.
+	 */
+	const struct firmware_image *image_to_write = image;
+	struct firmware_image image_full = *image;
+	image_full.data = NULL;
 
 	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
 
@@ -213,25 +242,70 @@ vb2_error_t flashrom_write_image(const struct firmware_image *image,
 	/* Must occur before attempting to read FMAP from SPI flash. */
 	flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNREADABLE_REGIONS, true);
 
-	if (regions_len) {
-		int i;
-		r = flashrom_layout_read_fmap_from_buffer(
-			&layout, flashctx, (const uint8_t *)image->data,
-			image->size);
+	/* image->size != len implies a fitted-region buffer update. This mode must target
+	   exactly one region. */
+	if (image->size != len) {
+		if (regions_len != 1) {
+			ERROR("image size (%u) does not match flash size (%zu). "
+			      "Fitted-region update requires exactly 1 region, but got %zu.\n",
+			      image->size, len, regions_len);
+			r = -1;
+			goto err_cleanup;
+		}
+		r = flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
+		if (r > 0) {
+			ERROR("could not read fmap from rom, r=%d\n", r);
+			r = -1;
+			goto err_cleanup;
+		}
+		/* Get the region_start and region_len. */
+		if (flashrom_layout_include_region(layout, regions[0])) {
+			ERROR("region '%s' not found in FMAP\n", regions[0]);
+			r = -1;
+			goto err_cleanup;
+		}
+		unsigned int region_start, region_len;
+		if (flashrom_layout_get_region_range(layout, regions[0], &region_start,
+						     &region_len)) {
+			ERROR("could not get range for region '%s'\n", regions[0]);
+			r = -1;
+			goto err_cleanup;
+		}
+		if (image->size != region_len) {
+			ERROR("image size (%u) does not match region '%s' size (%u)\n",
+			      image->size, regions[0], region_len);
+			r = -1;
+			goto err_cleanup;
+		}
+		/* Prepare the full-layout image buffer. */
+		image_full.size = len;
+		image_full.data = malloc(len);
+		if (!image_full.data) {
+			ERROR("could not allocate memory for full image (%zu bytes)\n", len);
+			r = -1;
+			goto err_cleanup;
+		}
+		memset(image_full.data, 0xff, len);
+		memcpy(image_full.data + region_start, image->data, image->size);
+		image_to_write = &image_full;
+	} else {
+		r = flashrom_layout_read_fmap_from_buffer(&layout, flashctx,
+							  (const uint8_t *)image->data,
+							  image->size);
 		if (r > 0) {
 			WARN("could not read fmap from image, r=%d, "
 				"falling back to read from rom\n", r);
-			r = flashrom_layout_read_fmap_from_rom(
-				&layout, flashctx, 0, len);
+			r = flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len);
 			if (r > 0) {
 				ERROR("could not read fmap from rom, r=%d\n", r);
 				r = -1;
 				goto err_cleanup;
 			}
 		}
+		int i;
 		for (i = 0; i < regions_len; i++) {
 			INFO(" including region '%s'\n", regions[i]);
-			// empty region causes seg fault in API.
+			/* empty region causes seg fault in API. */
 			r |= flashrom_layout_include_region(layout, regions[i]);
 			if (r > 0) {
 				ERROR("could not include region = '%s'\n",
@@ -240,18 +314,15 @@ vb2_error_t flashrom_write_image(const struct firmware_image *image,
 				goto err_cleanup;
 			}
 		}
-		flashrom_layout_set(flashctx, layout);
-	} else if (image->size != len) {
-		r = -1;
-		goto err_cleanup;
 	}
+	if (regions_len)
+		flashrom_layout_set(flashctx, layout);
 
 	flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNWRITABLE_REGIONS, true);
 	flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_WHOLE_CHIP, false);
-	flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_AFTER_WRITE,
-			  do_verify);
+	flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_AFTER_WRITE, do_verify);
 
-	r |= flashrom_image_write(flashctx, image->data, image->size,
+	r |= flashrom_image_write(flashctx, image_to_write->data, image_to_write->size,
 				  diff_image ? diff_image->data : NULL);
 
 err_cleanup:
@@ -262,8 +333,30 @@ err_probe:
 	r |= flashrom_programmer_shutdown(prog);
 
 err_init:
+	free(image_full.data);
 	free(tmp);
 	return r ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
+}
+
+vb2_error_t flashrom_write_image(const struct firmware_image *image,
+				 const char * const regions[], const size_t regions_len,
+				 const struct firmware_image *diff_image,
+				 bool do_verify, int verbosity)
+{
+	return flashrom_write_image_impl(image, regions, regions_len, diff_image, do_verify,
+					 verbosity);
+}
+
+vb2_error_t flashrom_write_region(const struct firmware_image *image, const char *region,
+				  bool do_verify, int verbosity)
+{
+	const char * const regions[] = {region};
+	if (region == NULL) {
+		ERROR("region name must be specified\n");
+		return VB2_ERROR_FLASHROM;
+	}
+	return flashrom_write_image(image, regions, ARRAY_SIZE(regions), NULL, do_verify,
+				    verbosity);
 }
 
 vb2_error_t flashrom_get_wp(const char *prog_with_params, bool *wp_mode,
