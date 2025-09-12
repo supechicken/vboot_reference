@@ -239,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53a05caa_77ebaaf6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-12T09:34:43Z",
+      "side": 1,
+      "message": "Sorry, but I think there\u0027s a major design problem here (with either `VB2_SECDATA_FIRMWARE_FLAG_LAST_BOOT_DEVELOPER` or `vb2_check_dev_switch`). As the powerwash for dev/norm transition is a security feature, the implementation must take edge cases into account. For example, after enabling dev mode, the user may reboot the device at any time before the powerwash. I think the only way to do this correctly is to clear the `FLAG` (flag indicating powerwash needed) only after the powerwash, no matter where the `FLAG` is stored. That implies that the `FLAG` must be cleared outside firmware.\n\nThat\u0027s also how powerwash is done in ChromeOS, where the `FLAG` is a file `/mnt/stateful_partition/.developer_mode`, maintained by `clobber-state` and checked by [`startup`](https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform2/init/startup/chromeos_startup.cc;l\u003d518;drc\u003d3358d3d5811c7ceb6f847d177a9eee048d493fe6) for powerwash decision.\n\n@thomascedeno@google.com Has anyone looked into how we can implement a similar mechanism in Android? One possible solution is to have a custom script for AL (with logic similar to `startup`), instead of directly calling `recovery --wipe_data` from `vb2ex_factory_data_reset()`. If that doesn\u0027t work for any reason, I guess we can also check if TPM is owned here in firmware as part of the powerwash condition (in this case \"TPM owned\" is used as the `FLAG`).\n\nIn addition, we also need to consider the use cases of developers and labs (FAFT). If FDR is pretty fast (BTW is the 5-min transition still a requirement for AL?), then that probably isn\u0027t an issue. Otherwise, we\u0027ll need to think about how to skip FDR for those cases (for example by adding a GBB flag to skip FDR, or by having a \"debugging AL image\" similar to ChromeOS test image).",
+      "parentUuid": "b93067c9_f98e2e39",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
