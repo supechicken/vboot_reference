@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1912c6cf_100cec77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "Implement",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a42201_b3afd286",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "72 chars per line",
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26cc4e85_30201201",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "(FDR)",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9140ac25_77e78a60",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "This term is ambiguous here because \"ChromeOS recovery mode\" is a different thing. Maybe write `\"Android recovery mode\"` here?",
+      "range": {
+        "startLine": 373,
+        "startChar": 39,
+        "endLine": 373,
+        "endChar": 52
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46daeb7a_0d405024",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "Still wrong style.\n\n```\n/*\n * Trigger ...\n * something\n */\n```",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 4
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba82c699_32336617",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "FDR is only needed for normal and dev mode, i.e. `!(ctx-\u003eflags \u0026 VB2_CONTEXT_RECOVERY_MODE)`.",
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17f9c59_249fc7dc",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "`vb2ex_android_factory_data_reset`",
+      "range": {
+        "startLine": 1125,
+        "startChar": 12,
+        "endLine": 1125,
+        "endChar": 36
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183b9aab_cef50e5b",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "Could you move crossystem changes to a separate patch? I\u0027m also curious about the use case of this.",
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

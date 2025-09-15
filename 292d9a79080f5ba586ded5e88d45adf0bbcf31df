@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a92f5ca1_bf81582d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "\u003e I see that kernel verification can be skipped even if were not in dev mod\n\nThat\u0027s not true. In non-dev mode (norma/recovery modes), kernel verification is always needed. In dev mode, kernel verification *may* be enabled (by either FWMP or NVDATA flag).\n\nI think checking dev switch (instead of `vb2_need_kernel_verification`) makes better sense. My interpretation of `vb2_need_kernel_verification` is that, \"unlocked mode\" is still equivalent to \"dev mode\", but our bootloader just provides extra flags to make dev mode safer.\n\nAlso, [C-1-9] requires physical confirmation for changing bootloader to unlocked mode, and we implement that for normal-to-dev transition only. We don\u0027t require physical confirmation for toggling `VB2_NV_DEV_BOOT_SIGNED_ONLY` in dev mode (which in turn toggles the result of `vb2_need_kernel_verification`). \n\n@jwerner@chromium.org",
+      "parentUuid": "e826a913_2a365f34",
+      "range": {
+        "startLine": 55,
+        "startChar": 65,
+        "endLine": 55,
+        "endChar": 81
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e66a79a3_d3888d90",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 16
@@ -322,6 +346,30 @@
       "writtenOn": "2025-09-15T07:21:18Z",
       "side": 1,
       "message": "I am not quite sure why we cannot change code in RO FW. I think that cannot update RO FW only for the boards which are after the FSI phase and have its own firmware branch.\n\nSo, if using vb2_check_dev_switch() simplifies the code, then such a change should be implemented on `main`. Any alternative implementation that avoids modifying the RO firmware should be done on board specific firmware-xxx branches.",
+      "parentUuid": "963832a6_cacd37cd",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7b6f43_b484241f",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T08:38:26Z",
+      "side": 1,
+      "message": "\u003e I have spent some time thinking about this exact scenario you describe, and I think this impl fits the behavior of the old /mnt/stateful_partition/.developer_mode.\n\nThank you. I didn\u0027t know about \"2)\" mentioned above.\n\n\u003e Performing FDR on my machine is very fast (i.e. less than 30 seconds)\n\nFirmware developers may switch between normal and dev modes quite often, so I\u0027d still prefer saving the 30 seconds for both lab and developers. I\u0027m fine with proceeding with this patch, but can we file a bug to discuss that and leave it as a future work?\n\n\u003e I am not quite sure why we cannot change code in RO FW. I think that cannot update RO FW only for the boards which are after the FSI phase and have its own firmware branch.\n\n+1 to this argument. However the problem here is that, the flag cannot be written back to nvdata *before* `vb2ex_factory_data_reset` is called. Otherwise a reboot between \"flag write\" and `vb2ex_factory_data_reset` will allow the user to bypass FDR. Therefore the solution of passing `vb2_shared_data-\u003eflags` from `vb2_check_dev_swith` to depthcharge wouldn\u0027t work.",
       "parentUuid": "963832a6_cacd37cd",
       "range": {
         "startLine": 380,
