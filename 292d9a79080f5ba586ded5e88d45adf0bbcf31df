@@ -455,6 +455,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5429010f_a50ef624",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T16:11:00Z",
+      "side": 1,
+      "message": "Yes, you are correct, of course. Sorry, I just missed \"set non-volatile variable\" in your previous comment. I also found an existing `VB2_NV_REQ_WIPEOUT` flag, so I think we can do the following:\n\n- For new Android devices, re-use `VB2_NV_REQ_WIPEOUT`. The flag is set in `vb2_check_dev_switch` and cleared after calling `vb2ex_factory_data_reset`.\n- For launched devices, add a new nvdata flag `VB2_NV_PREV_DEV_BOOT`. In `vb2_load_android`, set `VB2_NV_REQ_WIPEOUT` based on the value of `VB2_NV_PREV_DEV_BOOT`, and then update `VB2_NV_PREV_DEV_BOOT`. Finally, call `vb2ex_factory_data_reset` and clear `VB2_NV_REQ_WIPEOUT`. This slightly complicated flow is just for making it closer to the ToT code.",
+      "parentUuid": "83d101ea_47013335",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
