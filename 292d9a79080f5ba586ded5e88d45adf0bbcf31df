@@ -407,6 +407,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8a9bf9f_a98ceb1d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-15T10:03:49Z",
+      "side": 1,
+      "message": "\u003e still we can detect transition at `vb2_check_dev_switch` and set non-volatile variable there, right?\n\nHow? `vb2_check_dev_switch` is called from `vb2api_fw_phase1`. After it detects the transition, the new `VB2_SECDATA_FIRMWARE_FLAGS` value will be saved to `ctx-\u003esecdata_firmware` (in memory), which will then be saved back to GSC at the end of verstage (`vboot_save_data` in coreboot/src/security/vboot/vboot_logic.c).\n\nTherefore, now if an abrupt reboot happens (before device boots to depthcharge), the next `vb2_check_dev_switch` after reboot will detect no transition.",
+      "parentUuid": "98a64027_aed9e42e",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
