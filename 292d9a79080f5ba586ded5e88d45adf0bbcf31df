@@ -431,6 +431,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83d101ea_47013335",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-09-15T10:33:21Z",
+      "side": 1,
+      "message": "Maybe I complicate things, but if `vb2_check_dev_switch` detects transition it can save it in non-volatile variable, which can be cleared only when `vb2ex_factory_data_reset()` is called. That\u0027s all, am I missing something?\nI just think, that it would be simpler if we could put all transition detection in one place.",
+      "parentUuid": "b8a9bf9f_a98ceb1d",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
