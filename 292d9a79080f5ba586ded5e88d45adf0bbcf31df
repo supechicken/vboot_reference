@@ -479,6 +479,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dac89e8_93c2dd0e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "I think it would be fine to re-use `VB2_NV_REQ_WIPEOUT` for checking the dev switch, but since this value is only cleared by the TPM specific code I don\u0027t think we should have vb2ex_factory_data_reset reset it, since clearing of the TPM might not line up 1:1 with clearing disk storage.\n\nIn addition `VB2_NV_REQ_WIPEOUT` is only modified with the  VB2_CONTEXT_FORCE_WIPEOUT_MODE flag, which I\u0027m unfamiliar with when that flag may/may not be enabled.\n\nWhy not just have the approach of setting something like `VB2_NV_DEV_TRANSITION` in vb2_check_dev_switch at the same time \u0027VB2_NV_REQ_WIPEOUT\u0027 would be set, then have it be checked at vb2_load_android so the time they are cleared at would be distinctly separate?\n\nThis is the approach I used in patchset #7 if you want to take a look.",
+      "parentUuid": "5429010f_a50ef624",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8e05db_f51ab6ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1912c6cf_100cec77",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78a42201_b3afd286",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6674ce6_7148d88d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a42201_b3afd286",
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26cc4e85_30201201",
@@ -54,6 +96,30 @@
       "writtenOn": "2025-09-15T08:38:26Z",
       "side": 1,
       "message": "(FDR)",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f427e95_6b45adff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cc4e85_30201201",
       "range": {
         "startLine": 10,
         "startChar": 39,
@@ -110,6 +176,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6501df_839ec016",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46daeb7a_0d405024",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 4
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d71588_49d9bc04",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9140ac25_77e78a60",
+      "range": {
+        "startLine": 373,
+        "startChar": 39,
+        "endLine": 373,
+        "endChar": 52
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba82c699_32336617",
@@ -123,6 +237,24 @@
       "writtenOn": "2025-09-15T08:38:26Z",
       "side": 1,
       "message": "FDR is only needed for normal and dev mode, i.e. `!(ctx-\u003eflags \u0026 VB2_CONTEXT_RECOVERY_MODE)`.",
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8234b67e_76f43015",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba82c699_32336617",
       "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14e4def_323bfad2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c17f9c59_249fc7dc",
+      "range": {
+        "startLine": 1125,
+        "startChar": 12,
+        "endLine": 1125,
+        "endChar": 36
+      },
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183b9aab_cef50e5b",
@@ -163,6 +319,24 @@
       "writtenOn": "2025-09-15T08:38:26Z",
       "side": 1,
       "message": "Could you move crossystem changes to a separate patch? I\u0027m also curious about the use case of this.",
+      "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c968e140_7b80ced2",
+        "filename": "host/lib/crossystem.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-15T18:13:34Z",
+      "side": 1,
+      "message": "Sure thing, there isn\u0027t any compelling to have the nv variables available through crossystem, it just seemed like best practice when looking at other patches/useful for debugging purposes.",
+      "parentUuid": "183b9aab_cef50e5b",
       "revId": "ef14313292d9bdda73f0f3d5f6d703dc33bce2c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
