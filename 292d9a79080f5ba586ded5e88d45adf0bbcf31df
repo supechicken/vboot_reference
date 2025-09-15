@@ -503,6 +503,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e87c4fb7_4f110412",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-15T23:30:38Z",
+      "side": 1,
+      "message": "I had already talked to Thomas offline when this patch was first uploaded and I thought(?) we had remained with the understanding that firmware is not a good place to implement this (because of basically the reasons Yu-Ping pointed out). So I\u0027m not quite sure why we are suddenly uploading patch sets for this approach again.\n\nTo clarify for the record here again:\n\n* The actual dev-mode transition happens in RO firmware during early boot. We need to support migrating devices where we cannot modify RO firmware anymore. Therefore, there\u0027s no real way around a solution that imprecisely tracks the dev mode transition independently from later stages with separate state-keeping, even though that\u0027s clunky.\n\n* If we need to do that independent state-keeping anyway, there\u0027s no real reason to do it from RW firmware vs the OS level. This is a notification that the OS needs so it would make more sense for it to just do that itself rather than create another OS\u003c-\u003efirmware interdependency.\n\n* So I think the most straightforward solution here would be that something in early Android userspace compares some local state about dev mode (maybe on the misc partition?) with the state reported by firmware, and triggers the appropriate transition behavior if they mismatch. That\u0027s equivalent to what ChromeOS has been doing all these years. RW firmware doesn\u0027t really need to be involved.",
+      "parentUuid": "9dac89e8_93c2dd0e",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
