@@ -311,6 +311,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab44ae55_d9893ca5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-09-15T07:21:18Z",
+      "side": 1,
+      "message": "I am not quite sure why we cannot change code in RO FW. I think that cannot update RO FW only for the boards which are after the FSI phase and have its own firmware branch.\n\nSo, if using vb2_check_dev_switch() simplifies the code, then such a change should be implemented on `main`. Any alternative implementation that avoids modifying the RO firmware should be done on board specific firmware-xxx branches.",
+      "parentUuid": "963832a6_cacd37cd",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
