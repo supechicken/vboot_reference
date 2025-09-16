@@ -551,6 +551,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ee32bbf_9041157e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-16T08:04:34Z",
+      "side": 1,
+      "message": "\u003e If we need to do that independent state-keeping anyway, there\u0027s no real reason to do it from RW firmware vs the OS level.\n\nMy reason is to keep the implementation of migrating devices closer to new Android devices, and the price is to add a new `VB2_NV_PREV_DEV_BOOT` to old firmware branches, which IMO is acceptable. I\u0027d prefer not making major design decisions due to the even-not-finalized fact that there will be devices migrating to Android. IMO, any design/implementation should be optimized for new devices.",
+      "parentUuid": "41db1f6d_fcc74a38",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
