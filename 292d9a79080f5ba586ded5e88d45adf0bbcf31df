@@ -527,6 +527,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41db1f6d_fcc74a38",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-09-16T07:25:37Z",
+      "side": 1,
+      "message": "\"The actual dev-mode transition happens in RO firmware during early boot. We need to support migrating devices where we cannot modify RO firmware anymore.\"\nBut still we can use that for new boards which are still before FSI, right? For migrating devices (if there will be any) we can use other solution.\n\n\n\"So I think the most straightforward solution here would be that something in early Android userspace compares some local state about dev mode (maybe on the misc partition?)\"\nIf I understand code correctly, FDR requires going into recovery mode. It is much simpler and quicker to force it from FW than go to Android normal mode and then reboot again to recovery mode. @thomascedeno@google.com, can you confirm how it works? I am also not sure if this is a safe solution to allow boot to normal mode when FDR is required.\nWhile we can implement other Android data-wiping mechanisms, should we change the OS for the firmware?",
+      "parentUuid": "e87c4fb7_4f110412",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
