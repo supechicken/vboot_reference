@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12a16f4_c16285e4",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-16T19:26:21Z",
+      "side": 1,
+      "message": "Let\u0027s keep this as\n```\nif (shpart-\u003ecombined_version \u003e sd-\u003ekernel_version)\n  sd-\u003ekernel_version \u003d shpart-\u003ecombined_version;\n```\nto reflect the old logic that `sd-\u003ekernel_version` is only ever updated to be higher, not lower. I don\u0027t know if that\u0027s important here but since it\u0027s a backport it\u0027s better to play it safe, especially since we might then copy this backport to other branches where the logic of how `sd-\u003ekernel_version` is used outside this function might change.\n\nAlso, let\u0027s keep this under the `if (keyblock_valid)` check. `sd-\u003ekernel_version` is not supposed to get updated in developer mode here (same argument, I think it may not matter for this branch but it might start to when we cherry-pick it further back).",
+      "revId": "b2bc21306c9d57edcd9ebab48e26edb9fe8889b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
