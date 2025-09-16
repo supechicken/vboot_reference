@@ -575,6 +575,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27892a1c_c35719ca",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-16T14:58:07Z",
+      "side": 1,
+      "message": "\"This is a notification that the OS needs so it would make more sense for it to just do that itself rather than create another OS\u003c-\u003efirmware interdependency\".\nI’m not quite sure what this is referring to, @jwerner@chromium.org why does the OS need this notification? Back in ChromeOS classic the wiping of stateful partition was done by userspace script clobber_stateful.cc so it made sense there, but to confirm what @bernacki@google.com said FDR will require going into recovery mode so I don’t see how main OS should be involved?\n\nI uploaded this change since there is a way for firmware to keep track of all this state internally without the use of RO firmware changes, but as @yupingso@chromium.org stated the only real drawback from this CL over the ChromeOS approach is the use of an NV bit to track what /mnt/stateful_partition/.developer_mode used to track, but I wasn’t sure how precious nv bit storage is since it’s a record that was extended to 64 bytes back in 2019.",
+      "parentUuid": "8ee32bbf_9041157e",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
