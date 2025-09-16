@@ -605,6 +605,11 @@ endif
 HOSTLIB_OBJS = ${HOSTLIB_SRCS:%.c=${BUILD}/%.o}
 ALL_OBJS += ${HOSTLIB_OBJS}
 
+ifneq ($(filter-out 0,${USE_FLASHROM}),)
+# Crossystem requires libflashrom
+${BUILD}/host/lib/crossystem.o: LDLIBS += ${FLASHROM_LIBS}
+endif
+
 # ----------------------------------------------------------------------------
 # Now for the userspace binaries
 
@@ -675,6 +680,8 @@ UTIL_BIN_NAMES_BOARD = \
 
 ifneq ($(filter-out 0,${USE_FLASHROM}),)
 UTIL_BIN_NAMES_BOARD += utility/crossystem
+# Crossystem requires libflashrom
+${BUILD}/utility/crossystem: LDLIBS += ${FLASHROM_LIBS}
 endif
 
 UTIL_SCRIPTS_SDK = $(addprefix ${BUILD}/,${UTIL_SCRIPT_NAMES_SDK})
@@ -1222,6 +1229,7 @@ tests: ${TEST_BINS}
 ${TEST_BINS}: ${UTILLIB} ${TESTLIB}
 ${TEST_BINS}: INCLUDES += -Itests
 ${TEST_BINS}: LIBS = ${TESTLIB} ${UTILLIB}
+${TEST_BINS}: LDLIBS = ${FLASHROM_LIBS}
 
 # Futility tests need almost everything that futility needs.
 ${TEST_FUTIL_BINS}: ${FUTIL_OBJS} ${UTILLIB}

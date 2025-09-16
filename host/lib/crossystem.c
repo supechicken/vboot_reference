@@ -934,11 +934,13 @@ int vb2_read_nv_storage_flashrom(struct vb2_context *ctx)
 {
 	int index;
 	int vbnv_size = vb2_nv_get_size(ctx);
+	int verbosity = 1;
 
 	struct firmware_image image = {
 		.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP,
 	};
-	if (flashrom_read(&image, VBNV_FMAP_REGION))
+
+	if (flashrom_read_region(&image, VBNV_FMAP_REGION, verbosity))
 		return -1;
 
 	index = vb2_nv_index(image.data, image.size, vbnv_size);
@@ -958,11 +960,14 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	int index;
 	bool corrupted;
 	int vbnv_size = vb2_nv_get_size(ctx);
+	int do_verify = 1;
+	int verbosity = 1;
+	const char *const regions[1] = {VBNV_FMAP_REGION};
 
 	struct firmware_image image = {
 		.programmer = FLASHROM_PROGRAMMER_INTERNAL_AP,
 	};
-	if (flashrom_read(&image, VBNV_FMAP_REGION))
+	if (flashrom_read_region(&image, VBNV_FMAP_REGION, verbosity))
 		return -1;
 
 	index = vb2_nv_index(image.data, image.size, vbnv_size) + 1;
@@ -978,7 +983,8 @@ int vb2_write_nv_storage_flashrom(struct vb2_context *ctx)
 	}
 
 	memcpy(&image.data[index * vbnv_size], ctx->nvdata, vbnv_size);
-	if (flashrom_write(&image, VBNV_FMAP_REGION)) {
+	if (flashrom_write_image(&image, regions, ARRAY_SIZE(regions), NULL, do_verify,
+				 verbosity)) {
 		rv = -1;
 		goto exit;
 	}

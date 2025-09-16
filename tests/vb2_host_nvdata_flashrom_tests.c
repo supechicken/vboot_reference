@@ -85,8 +85,9 @@ static void reset_test_data(struct vb2_context *ctx, int nvdata_size)
 	mock_flashrom_fail = false;
 }
 
-/* Mocked flashrom_read for tests. */
-vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
+/* Mocked flashrom_read_region for tests. */
+int flashrom_read_region(struct firmware_image *image, const char *region,
+			 int verbosity)
 {
 	if (mock_flashrom_fail) {
 		image->data = NULL;
@@ -102,13 +103,18 @@ vb2_error_t flashrom_read(struct firmware_image *image, const char *region)
 	return VB2_SUCCESS;
 }
 
-/* Mocked flashrom_write for tests. */
-vb2_error_t flashrom_write(struct firmware_image *image, const char *region)
+/* Mocked flashrom_write_image for tests. */
+int flashrom_write_image(const struct firmware_image *image,
+			const char * const regions[],
+			const size_t regions_len,
+			const struct firmware_image *diff_image,
+			int do_verify, int verbosity)
 {
-	if (mock_flashrom_fail)
+	/* crossystem writes only one region. */
+	if (mock_flashrom_fail || regions_len != 1)
 		return VB2_ERROR_FLASHROM;
 
-	assert_mock_params(image->programmer, region);
+	assert_mock_params(image->programmer, regions[0]);
 
 	TEST_EQ(image->size, sizeof(fake_flash_region),
 		"The flash size is correct");
