@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccb1170e_ade4ac99",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-17T00:25:52Z",
+      "side": 1,
+      "message": "edit: actually, I meant `VB2_ASSERT(boot_partitions[ARRAY_SIZE(boot_partitions) - 1] \u003d\u003d NULL)`",
+      "parentUuid": "cd34ee9b_431e1307",
+      "range": {
+        "startLine": 338,
+        "startChar": 29,
+        "endLine": 338,
+        "endChar": 54
+      },
+      "revId": "5911da00d8885b0861622ab48cabaf4ff5d60b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "957c1fa5_f51bfe9c",
