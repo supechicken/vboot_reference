@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6ee7ea_b5c665e8",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-17T00:32:50Z",
+      "side": 1,
+      "message": "Is this necessary? What breaks if we use the actual size on disk for pvmfw as well?",
+      "revId": "368a9957a4045fe6fd30d6b07e461356bef61326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafa972e_bd0aaa42",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-17T00:32:50Z",
+      "side": 1,
+      "message": "nit: comment out of date?",
+      "revId": "368a9957a4045fe6fd30d6b07e461356bef61326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
