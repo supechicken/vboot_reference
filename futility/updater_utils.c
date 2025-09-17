@@ -384,7 +384,7 @@ char *load_system_frid(struct updater_config *cfg)
 	};
 	char *frid;
 
-	if (flashrom_read_region(&image, FMAP_RO_FRID, cfg->verbosity + 1)) {
+	if (flashrom_read_region(&image, FMAP_RO_FRID, cfg->verbosity + 1) != VB2_SUCCESS) {
 		ERROR("Failed to load %s\n", FMAP_RO_FRID);
 		return NULL;
 	}
@@ -603,7 +603,8 @@ int load_system_firmware(struct updater_config *cfg,
 	if (!strcmp(image->programmer, FLASHROM_PROGRAMMER_INTERNAL_EC))
 		WARN("%s: flashrom support for CrOS EC is EOL.\n", __func__);
 
-	int r, i;
+	int i;
+	vb2_error_t r;
 	const int tries = 1 + get_config_quirk(QUIRK_EXTRA_RETRIES, cfg);
 
 	int verbose = cfg->verbosity + 1; /* libflashrom verbose 1 = WARN. */
@@ -614,7 +615,7 @@ int load_system_firmware(struct updater_config *cfg,
 		INFO("Reading SPI Flash..\n");
 		r = flashrom_read_image(image, NULL, 0, verbose);
 	}
-	if (r) {
+	if (r != VB2_SUCCESS) {
 		/* Read failure, the content cannot be trusted. */
 		free_firmware_image(image);
 	} else {
@@ -663,7 +664,7 @@ int write_system_firmware(struct updater_config *cfg,
 		fprintf(stdout, "\n");
 
 	}
-	return r;
+	return r != VB2_SUCCESS;
 }
 
 test_mockable
