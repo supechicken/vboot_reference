@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ba6aba6_f3f6ddb2",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-09-17T16:09:37Z",
+      "side": 1,
+      "message": "Let\u0027s leave the original implementation. Bartek who created this code is OOO, when he\u0027s back I ask him if we can simplify it.",
+      "parentUuid": "2747f5f3_05e66845",
+      "revId": "368a9957a4045fe6fd30d6b07e461356bef61326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eafa972e_bd0aaa42",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 2
