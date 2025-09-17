@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7eb80bdd_1724d3b2",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-17T10:06:18Z",
+      "side": 1,
+      "message": "You are removing `host/lib/flashrom.c` and it\u0027s not used anywhere else. Why not just delete it?",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 41
+      },
+      "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa5da000_e859532b",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 2
@@ -37,6 +60,24 @@
       "writtenOn": "2025-09-17T02:38:39Z",
       "side": 1,
       "message": "Eventually we will have only one of `flashrom_read_region` and `flashrom_read`, right? I assume the co-existence of them for now is for migration only.",
+      "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2981eab_ef05b4ca",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-17T10:06:18Z",
+      "side": 1,
+      "message": "Do we really need to re-implement these symbols? There aren\u0027t many uses of `flashrom_{read,write}` in the codebase, so replacing them should not take much time. The whole host vboot code is over-complicated enough at this point, so we should avoid anything that can add unnecessary debt that we will have to deal with later.",
+      "parentUuid": "aa5da000_e859532b",
       "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
