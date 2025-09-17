@@ -79,6 +79,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8aeb9b5_dc77ab7f",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-17T20:24:16Z",
+      "side": 1,
+      "message": "I agree that using `size` here should be fine. The only relevant place where `alloced_size` is used is in `get_preloaded_partition()`, and that should never be called by AVB to load more bytes than the partition actually has. I\u0027m pretty sure Bartek just put `params-\u003epvmfw_buffer_size` down there because it didn\u0027t make a difference, but we don\u0027t need to carry it forward into here if it requires such a weird hack.",
+      "parentUuid": "8ba6aba6_f3f6ddb2",
+      "revId": "368a9957a4045fe6fd30d6b07e461356bef61326",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eafa972e_bd0aaa42",
         "filename": "firmware/avb/vboot_avb_ops.c",
         "patchSetId": 2
