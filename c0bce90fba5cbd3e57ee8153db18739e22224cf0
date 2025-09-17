@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6db78efd_d0daabea",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-09-17T10:11:00Z",
+      "side": 1,
+      "message": "The binary invocation logic in flashrom.c is kept for now and will be\nrefactored in the next CL. (see the WIP CL:6939028)",
+      "parentUuid": "7eb80bdd_1724d3b2",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 41
+      },
+      "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa5da000_e859532b",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 2
