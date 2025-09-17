@@ -384,7 +384,7 @@ char *load_system_frid(struct updater_config *cfg)
 	};
 	char *frid;
 
-	if (flashrom_read_region(&image, FMAP_RO_FRID, cfg->verbosity + 1)) {
+	if (flashrom_read_region(&image, FMAP_RO_FRID, cfg->verbosity + 1) != VB2_SUCCESS) {
 		ERROR("Failed to load %s\n", FMAP_RO_FRID);
 		return NULL;
 	}
@@ -612,7 +612,8 @@ int load_system_firmware(struct updater_config *cfg,
 		if (i > 1)
 			WARN("Retry reading firmware (%d/%d)...\n", i, tries);
 		INFO("Reading SPI Flash..\n");
-		r = flashrom_read_image(image, NULL, 0, verbose);
+		if (flashrom_read_image(image, NULL, 0, verbose) == VB2_SUCCESS)
+			r = 0;
 	}
 	if (r) {
 		/* Read failure, the content cannot be trusted. */
@@ -663,7 +664,7 @@ int write_system_firmware(struct updater_config *cfg,
 		fprintf(stdout, "\n");
 
 	}
-	return r;
+	return r != VB2_SUCCESS;
 }
 
 test_mockable
