@@ -623,6 +623,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0285607b_2201d8d4",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-17T02:21:58Z",
+      "side": 1,
+      "message": "\u003e Sorry, I might have missed what solution you\u0027re proposing? It\u0027s not the same as this latest patch set is implementing, right?\n\nOkay, forget about `VB2_NV_REQ_WIPEOUT`. Whether to re-use that is a separate thing.\n\n- For new devices, my solution is to add `VB2_NV_FDR_REQUESTED` flag, set in `vb2_check_dev_switch()` and cleared in `vb2_load_android()` after the `vb2ex_android_factory_data_reset` call. Yes, that\u0027s a two-step process.\n- For migrating devices, we\u0027ll need to add another `VB2_NV_PREV_DEV_BOOT` flag as a workaround for the `vb2_check_dev_switch()` change because RO cannot be modified.\n\nRegarding `VB2_NV_REQ_WIPEOUT` (b/35546035), right now I can\u0027t find any reader of that flag (`wipeout_request`) in the ChromiumOS code base, so that feature seems to be dropped already. That\u0027s why I think we may re-use the flag to save us one bit.",
+      "parentUuid": "ba839cff_cede78a7",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
