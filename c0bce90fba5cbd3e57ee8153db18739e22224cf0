@@ -22,6 +22,46 @@
       },
       "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5da000_e859532b",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-17T02:38:39Z",
+      "side": 1,
+      "message": "Eventually we will have only one of `flashrom_read_region` and `flashrom_read`, right? I assume the co-existence of them for now is for migration only.",
+      "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bf0533_bf3813a5",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-17T02:38:39Z",
+      "side": 1,
+      "message": "Please don\u0027t cast int to vb2_error_t. Simply return `VB2_ERROR_FLASHROM` on error.",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 21
+      },
+      "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
