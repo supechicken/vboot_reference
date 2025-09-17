@@ -599,6 +599,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba839cff_cede78a7",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-17T00:21:39Z",
+      "side": 1,
+      "message": "\u003e But still we can use that for new boards which are still before FSI, right? For migrating devices (if there will be any) we can use other solution.\n\nYes, we could, but I don\u0027t think it would really be better to have to maintain two different solutions? If we already have to do something that doesn\u0027t involve RO firmware changes anyway, I think it\u0027s easier to just stick with that across all platforms.\n\n\u003e It is much simpler and quicker to force it from FW than go to Android normal mode and then reboot again to recovery mode.\n\nWhat makes it simpler? In both cases you\u0027re just writing a thing to the misc partition (and `reboot` is one command from userspace)? In terms of code I would expect this to be at most equivalent (or probably simpler in userland because you don\u0027t have to deal with the split between vboot and depthcharge, and other firmware intricacies). I don\u0027t think execution time really matters much for this rare transition use case. (Also, I don\u0027t really understand why this _has_ to be done from recovery mode. Why can\u0027t we just call the code that does the wipe and reinitialize thing from normal early Android userspace?)\n\n\u003e should we change the OS for the firmware?\n\nI think this is really a case of \"should we change the firmware for the OS\"? Firmware is the code that is more security critical, has tighter space constraints and therefore less flexible APIs available, and is harder to update. In general, no feature should be implemented in firmware when it can without notable drawback be just as well implemented at the OS level.\n\n\u003e My reason is to keep the implementation of migrating devices closer to new Android devices, and the price is to add a new VB2_NV_PREV_DEV_BOOT to old firmware branches\n\nSorry, I might have missed what solution you\u0027re proposing? It\u0027s not the same as this latest patch set is implementing, right?\n\nNote that I don\u0027t think there\u0027s much that can be reused about `VB2_NV_REQ_WIPEOUT` for this. That was a solution specifically for devices where a factory reset is requested with an external button. It\u0027s set in `vb2_check_dev_switch()` but the decision isn\u0027t really tied to dev mode.\n\nIf we wanted to build a solution for this that allows changes to RO firmware I still don\u0027t think it would necessarily be that easy, because the actual dev mode transition is detected before we have disk access available. So you would need to have `vb2_check_dev_switch()` store the fact that a transition occurred in some nvdata (or secdata) flag, and then have later depthcharge code clear that flag and have it write commands into the misc partition instead. That\u0027s also a two-step process and doesn\u0027t really seem much less complicated to me than just tracking the thing in the misc partition in the first place.\n\n\u003e why does the OS need this notification\n\nWell, it\u0027s the OS that wants the disk wiped when the dev mode state changes. So I think it\u0027s most natural if the OS does the tracking necessary to do that by itself, since the firmware isn\u0027t really in a better position to do it anyway.\n\n\u003e but I wasn’t sure how precious nv bit storage is\n\nWe could probably spare one more bit, I\u0027m more concerned about finding the solution that creates the smallest long-term maintenance burden.",
+      "parentUuid": "27892a1c_c35719ca",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
