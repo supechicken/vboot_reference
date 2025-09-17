@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "86e95391f43b5e13c8dda2733eafbb8fcc7c59ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08f3356_0480d3ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2025-09-17T17:26:35Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8703487071483967073) is being automatically retried for the following reasons:\n- Some tests are now retryable:dedede-cq.hw.bvt-tast-cq-hw\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "86e95391f43b5e13c8dda2733eafbb8fcc7c59ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
