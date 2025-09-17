@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ce94c2_945cdcd0",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-17T10:12:45Z",
+      "side": 1,
+      "message": "Understood. Thanks :)",
+      "parentUuid": "6db78efd_d0daabea",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 41
+      },
+      "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa5da000_e859532b",
@@ -102,6 +126,24 @@
       "side": 1,
       "message": "Do we really need to re-implement these symbols? There aren\u0027t many uses of `flashrom_{read,write}` in the codebase, so replacing them should not take much time. The whole host vboot code is over-complicated enough at this point, so we should avoid anything that can add unnecessary debt that we will have to deal with later.",
       "parentUuid": "aa5da000_e859532b",
+      "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a85d67_2e15dec1",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-17T10:12:45Z",
+      "side": 1,
+      "message": "Ignore my comment. It was explained to me in another [(comment)](https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6938951/comment/7eb80bdd_1724d3b2/)",
+      "parentUuid": "e2981eab_ef05b4ca",
       "revId": "c0bce90fba5cbd3e57ee8153db18739e22224cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
