@@ -647,6 +647,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ac97d66_b1edbc84",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-17T14:46:22Z",
+      "side": 1,
+      "message": "“In terms of code I would expect this to be at most equivalent (or probably simpler in userland because you don\u0027t have to deal with the split between vboot and depthcharge, and other firmware intricacies)”.\nIf the userspace solution also stores this in an NV bit instead of a file on the stateful partition then yes it could be comparable, otherwise the logic becomes much more complicated.\n\n“Why can\u0027t we just call the code that does the wipe and reinitialize thing from normal early Android userspace?”\nUnder the hood every method (except for fastboot IIUC) that performs factory reset does it through this method. I.e. if you perform FDR through the settings app it writes a command to the BCB and reboots the device same as this proposed CL.\n\n“In general, no feature should be implemented in firmware when it can without notable drawback be just as well implemented at the OS level.”\nOther than the overhead of having to go through Android FR. I imagine the owners in charge of their corner of Android init would push back on whether the OS should be responsible for this.\n\n“Well, it\u0027s the OS that wants the disk wiped when the dev mode state changes.”\nI’m unsure what you mean by this, while the end effect is on state partitions for the OS, IIUC the only place developer mode can be initialized/uninitialized is in the bootloader sequence through explicit key presses. In Android world a fairly equivalent property “ro.boot.verifiedbootstate” is initialized, tracked in firmware and then passed into the main OS. From the looks of things, it’s actually the firmware that wants the disk wiped, and I imagine for any change in userspace I would have to justify this to the main OS owners.\n\nI would like to proceed with the solution proposed by @yupingso@chromium.org, above, but I\u0027m pretty indifferent on whether we decide to just implement VB2_NV_PREV_DEV_BOOT as the *only* solution to keep things simpler, or just reusing VB2_NV_REQ_WIPEOUT if there truly is no other consumers of the bit.",
+      "parentUuid": "0285607b_2201d8d4",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
