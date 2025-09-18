@@ -16,6 +16,24 @@
       "message": "Could you squash this into CL:6954760? We can add all missing tests in the same patch.",
       "revId": "b72b72cc1892510f4d617445cac11217a540e472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9961ff_5e91f1a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-18T12:42:18Z",
+      "side": 1,
+      "message": "We should be careful about that. These test were not run for some time, so we don\u0027t know if they will fail out of the blue in CQ after so many changes were introduced. Adding them in separate CLs allows for easy reverts.",
+      "parentUuid": "7572126d_49c61aaa",
+      "revId": "b72b72cc1892510f4d617445cac11217a540e472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
