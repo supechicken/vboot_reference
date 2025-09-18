@@ -671,6 +671,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bd1873c_8cac0031",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-18T21:40:46Z",
+      "side": 1,
+      "message": "Let\u0027s refocus from the ideological questions to more practical aspects for a moment: let\u0027s say we implement Yu-Ping\u0027s proposal. That means that any dev mode transition, whether caused by the UI flow or by changing the GBB flag, will result in depthcharge writing the recovery request to the misc partition. Are we sure we actually want that for all edge cases?\n\nConsider testing: I believe FAFT regularly switches back and forth between dev and verified mode in the course of various tests. We don\u0027t want to wait the time for a full disk wipe between all of those transitions, and also they usually have exact expectations about how the system comes back up during each reboot so this extra recovery boot would throw them off. On ChromeOS, I believe this is solved by just never doing a dev mode wipe on test images (I believe that\u0027s the `!DevIsDebugBuild()` check in `chromeos_startup.cc`). Do we have an equivalent on Android? I assume the equivalent to test images is userdebug(?), but would it be correct to generally skip this wipe on userdebug images? Also, this image type is a property of the OS image so it\u0027s not really easily accessible from firmware. How do you solve this with your solution?\n\nConsider factory and RMA use cases: I don\u0027t know what exactly the current plans for AL are, but generally in ChromeOS factories we run most of the installation process in dev mode and then transition back out of it at the end of finalization. On ChromeOS this does not trigger a dev mode wipe afterwards since the internal disk was just freshly reinstalled (and not actually booted because the factory toolkit runs from netboot), so there\u0027s no dev mode flag file. But if we move this into firmware and tie it to the result of `vb2_check_dev_switch()`, it becomes a very strict check that can\u0027t be forged and picks up transitions like this. Will this mean that factories will always need to reboot the device once more after finalization to let a needless disk wipe run through? Or worse, customers seeing this after unboxing? Keeping the state that says whether a disk wipe is needed _on_ the disk makes it easy to reset it with other out-of-band means that already wipe the disk anyway. (Ideally, the design should really be that the booting system can automatically recognize whether the disk is still \"pristine\" and unused and then know that it doesn\u0027t need to wipe anything again. It\u0027s frustrating that Android demands this explicit state keeping and is unable to repair unexpected states automatically in the way ChromeOS was, and that we can\u0027t change that.)",
+      "parentUuid": "2ac97d66_b1edbc84",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
