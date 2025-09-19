@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0070a5e8_8ea3c14b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-19T00:29:03Z",
+      "side": 1,
+      "message": "Oops! That\u0027s not great, thanks for finding!\n\nIt would be good if we could tie flags fields and their values syntactically better together to prevent these kinds of mistakes from happening... maybe we should consider writing these as bit fields instead, i.e.:\n```\ntypedef union {\n  uint32_t raw;\n  struct {\n    uint32_t dev_screen_short_delay : 1;\n    uint32_t load_option_roms : 1;\n    uint32_t enable_alternate_os : 1;\n    ...\n  }\n} vb2_gbb_flags_t;\n```\nMaybe too much effort to do those for all existing flags, and there might be use cases where that model doesn\u0027t work well that I\u0027m not thinking of right now. But something to maybe keep in mind for future flag definitions.",
+      "revId": "dd3c8066cda75290cb8affe4bf4d9bdd2f3f9acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
