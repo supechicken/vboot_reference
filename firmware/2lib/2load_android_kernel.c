@@ -326,6 +326,7 @@ static vb2_error_t prepare_dtb(AvbSlotVerifyData *verify_data,
 	return VB2_SUCCESS;
 }
 
+#define EXTRA_CMDLINE_SIZE	1024
 vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
 			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle)
 {
@@ -339,6 +340,8 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	size_t partition_count = 0;
 	const char *slot_suffix = NULL;
 	bool need_verification = vb2_need_kernel_verification(ctx);
+	char *extra_cmdline = malloc(sizeof(char) * EXTRA_CMDLINE_SIZE);
+	extra_cmdline[0] = '\0';
 
 	boot_partitions[partition_count++] = GptPartitionNames[GPT_ANDROID_BOOT];
 	boot_partitions[partition_count++] = GptPartitionNames[GPT_ANDROID_INIT_BOOT];
@@ -411,7 +414,8 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	if (rv != VB2_SUCCESS)
 		goto out;
 
-	rv = vb2ex_handle_android_misc_partition(ctx, disk_handle, gpt, &bootmode);
+	rv = vb2ex_handle_android_misc_partition(ctx, disk_handle, gpt, &bootmode,
+						 extra_cmdline, EXTRA_CMDLINE_SIZE);
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("Unable to get android bootmode\n");
 		goto out;
@@ -460,8 +464,27 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		goto out;
 
 	rv = prepare_dtb(verify_data, params);
+	if (rv)
+		goto out;
 
+	if (extra_cmdline[0] != '\0') {
+		size_t orig_len = strlen(params->vendor_cmdline_buffer);
+		size_t new_len = strlen(extra_cmdline);
+
+		if (orig_len + new_len + 2 <=
+		    (sizeof(struct vendor_boot_img_hdr_v4) -
+		     offsetof(struct vendor_boot_img_hdr_v4, cmdline))) {
+			params->vendor_cmdline_buffer[orig_len] = ' ';
+			memcpy(params->vendor_cmdline_buffer + orig_len + 1, extra_cmdline,
+			       new_len + 1);
+		} else {
+			VB2_DEBUG("ERROR: Insufficient buffer for extra command line: %s\n"
+				  "ERROR: Continue the boot sequence\n",
+				  extra_cmdline);
+		}
+	}
 out:
+	free(extra_cmdline);
 	/* No need for slot data */
 	if (verify_data != NULL)
 		avb_slot_verify_data_free(verify_data);
