@@ -695,6 +695,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45bc85f5_486878b4",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-19T07:53:07Z",
+      "side": 1,
+      "message": "\u003e Are we sure we actually want that for all edge cases?\n\nNo we don\u0027t. In one of my comments above, I\u0027ve mentioned the lab use cases. Even if FDR takes less than 30s, I\u0027d still prefer skipping it for FAFT. A trivial solution is to add a GBB flag to skip the FDR. Another solution is to skip FDR for normal-to-DevModeGBB transition (meaning only do FDR for GSC normal-to-dev transition). Yet another solution is to skip FDR for dev-signed keys.\n\nFor developers using a userdebug image, I guess 30-second FDR might be acceptable. For factory/RMA, I have no comment because I\u0027m not familiar with that.\n\nSo, with my proposal, someone will need to design how to handle those edge cases and have the design properly reviewed (from testing, factory and RMA teams). We\u0027ll also need to carefully check if all the edge cases supported in ChromeOS are covered by our new solution.",
+      "parentUuid": "0bd1873c_8cac0031",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
