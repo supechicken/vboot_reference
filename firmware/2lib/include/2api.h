@@ -1102,22 +1102,34 @@ enum vb2_android_bootmode {
 	VB2_ANDROID_RECOVERY_BOOT = 1,
 };
 
+#define EXTRA_CMDLINE_SIZE	1024
+struct vb2_android_misc_data {
+	enum vb2_android_bootmode bootmode;
+	char *cmdline;
+};
+
 /**
- * Get Android boot mode.
+ * Get data from Android misc partition.
  *
- * Android boot mode is saved on the misc partition where FW can obtain
- * information about what boot mode is requested.
+ * Handles the Android misc partition to retrieve boot mode and compose
+ * an extra kernel command line.
+ *
+ * This function reads the Android misc partition to determine the requested
+ * boot mode and, based on values like memtag_mode, composes an additional
+ * kernel command line string. The results are populated into the provided
+ * `out_data` structure.
  *
  * @param ctx		Vboot context
  * @param disk		Pointer to the disk
  * @param gpt		Pointer to the GPT from the disk
- * @param bootmode	Return requested boot mode for Android
+ * @param out_data	Output structure to be populated with Android misc data,
+ *			including boot mode and an optional extra command line.
  * @return VB2_SUCCESS, or non-zero error code.
  */
 vb2_error_t vb2ex_handle_android_misc_partition(struct vb2_context *ctx,
 						vb2ex_disk_handle_t disk,
 						GptData *gpt,
-						enum vb2_android_bootmode *bootmode);
+						struct vb2_android_misc_data *out_data);
 
 /*****************************************************************************/
 /* TPM functionality */
