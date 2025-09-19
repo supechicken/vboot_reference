@@ -59,8 +59,13 @@ __attribute__((weak))
 vb2_error_t vb2ex_handle_android_misc_partition(struct vb2_context *ctx,
 						vb2ex_disk_handle_t disk,
 						GptData *gpt,
-						enum vb2_android_bootmode *bootmode)
+						enum vb2_android_bootmode *bootmode,
+						char *extra_cmdline_out,
+						size_t out_size)
 {
+	if (extra_cmdline_out)
+		extra_cmdline_out[0] = '\0';
+
 	*bootmode = VB2_ANDROID_NORMAL_BOOT;
 
 	return VB2_SUCCESS;
