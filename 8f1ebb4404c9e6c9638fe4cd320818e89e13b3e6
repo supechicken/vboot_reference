@@ -16,6 +16,24 @@
       "message": "Should we fix those \"ShellCheck\" warnings?",
       "revId": "8f1ebb4404c9e6c9638fe4cd320818e89e13b3e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71281950_ec719943",
+        "filename": "scripts/image_signing/make_dev_ssd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-19T07:05:09Z",
+      "side": 1,
+      "message": "Nearby code is fixed, but I don\u0027t want to fix the whole file.",
+      "parentUuid": "22083396_9fe6f1d1",
+      "revId": "8f1ebb4404c9e6c9638fe4cd320818e89e13b3e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
