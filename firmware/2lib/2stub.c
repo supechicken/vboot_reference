@@ -55,10 +55,22 @@ vb2_error_t vb2ex_read_resource(struct vb2_context *ctx,
 }
 
 __attribute__((weak))
+<<<<<<< HEAD   (9489dabc771d59234e85f6333b6d5825f79b2a6e 2lib: Rename vboot_cmdline related buffers)
 vb2_error_t vb2ex_get_android_bootmode(struct vb2_context *ctx,
 				       VbExDiskHandle_t disk,
 				       GptData *gpt,
 				       enum vb2_android_bootmode *bootmode)
+||||||| BASE   (f90a1c7ab168d614ea7a962bae2202c7dafdd45e tests/vb2_host_flashrom_tests: Fix missing '\0' for strncpy )
+vb2_error_t vb2ex_get_android_bootmode(struct vb2_context *ctx,
+				       vb2ex_disk_handle_t disk,
+				       GptData *gpt,
+				       enum vb2_android_bootmode *bootmode)
+=======
+vb2_error_t vb2ex_handle_android_misc_partition(struct vb2_context *ctx,
+						vb2ex_disk_handle_t disk,
+						GptData *gpt,
+						enum vb2_android_bootmode *bootmode)
+>>>>>>> CHANGE (a086faa63858ea0f15265f00f246abefa404fe93 vboot: Rename vb2ex_get_android_bootmode to vb2ex_handle_and)
 {
 	*bootmode = VB2_ANDROID_NORMAL_BOOT;
 
