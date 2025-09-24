@@ -626,10 +626,10 @@ struct vb2_kernel_params {
 	size_t bootconfig_size;
 	/* Pointer to Android vendor command line buffer */
 	char *vendor_cmdline_buffer;
-	/* Address of the region with kernel cmdline parameters. */
-	char *vboot_cmdline_buffer;
-	/* Size of the region with kernel cmdline parameters. */
-	uint32_t vboot_cmdline_size;
+	/* Address of the region with bootconfig parameters. */
+	char *vboot_bootconfig_buffer;
+	/* Size of the region with bootconfig parameters. */
+	uint32_t vboot_bootconfig_size;
 
 	/*
 	 * Destination buffer for pvmfw. Shall be ignored if pvmfw_buffer_size is 0.
