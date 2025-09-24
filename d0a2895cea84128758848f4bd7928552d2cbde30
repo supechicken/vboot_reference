@@ -46,6 +46,30 @@
       },
       "revId": "d0a2895cea84128758848f4bd7928552d2cbde30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f958be_15e9819a",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-09-24T06:55:15Z",
+      "side": 1,
+      "message": "I agree that we should keep the changes at the minimum, but leaving this chunk of code makes it very confusing (we do not check for the vblock version of the other kernel anymore). Let me remove it.",
+      "parentUuid": "d1da5dc4_cf801d77",
+      "range": {
+        "startLine": 698,
+        "startChar": 2,
+        "endLine": 705,
+        "endChar": 3
+      },
+      "revId": "d0a2895cea84128758848f4bd7928552d2cbde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
