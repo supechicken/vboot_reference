@@ -1466,13 +1466,13 @@ run2tests: install_for_test
 
 .PHONY: runfutiltests
 runfutiltests: install_for_test
-	${RUNTEST} ${SRC_RUN}/tests/futility/run_test_scripts.sh
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_misc
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_updater_utils
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_updater_utils_servo
 	rm -rf ${SRC_RUN}/tests/futility/data_copy
+	${RUNTEST} ${SRC_RUN}/tests/futility/run_test_scripts.sh
 
 # Test all permutations of encryption keys, instead of just the ones we use.
 # Not run by automated build.
