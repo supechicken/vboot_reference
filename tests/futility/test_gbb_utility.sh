@@ -70,10 +70,12 @@ cmp "${TMP}.data2" "${TMP}.read2"
 
 # Basic get and set test using flashrom
 # The implementation requires an FMAP so use a full firmware image
-PEPPY_BIOS="${SCRIPT_DIR}/futility/data/bios_peppy_mp.bin"
-cp "${PEPPY_BIOS}" "${TMP}.full.blob"
-"${FUTILITY}" gbb -s --emulate="${TMP}.full.blob" --flags="0xdeadbeef"
-"${FUTILITY}" gbb -g --emulate="${TMP}.full.blob" --flags | grep -i "0xdeadbeef"
+if [ -n "${VBOOT_TEST_USE_FLASHROM:-}" ]; then
+  PEPPY_BIOS="${SCRIPT_DIR}/futility/data/bios_peppy_mp.bin"
+  cp "${PEPPY_BIOS}" "${TMP}.full.blob"
+  "${FUTILITY}" gbb -s --emulate="${TMP}.full.blob" --flags="0xdeadbeef"
+  "${FUTILITY}" gbb -g --emulate="${TMP}.full.blob" --flags | grep -i "0xdeadbeef"
+fi
 
 # Okay, creating GBB blobs seems to work. Now let's make sure that corrupted
 # blobs are rejected.
