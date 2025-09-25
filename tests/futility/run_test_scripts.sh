@@ -39,6 +39,15 @@ ${SCRIPT_DIR}/futility/test_read.sh
 ${SCRIPT_DIR}/futility/test_vbutil_output.sh
 "
 
+# If USE_FLASHROM is not enabled in the build, skip related tests.
+if [ -z "${VBOOT_TEST_USE_FLASHROM:-}" ]; then
+  echo "NOTE: Skipping flashrom-dependent tests (USE_FLASHROM=0)"
+  TESTS=$(echo "${TESTS}" | grep -v "test_flash_util.sh")
+  TESTS=$(echo "${TESTS}" | grep -v "test_gbb_utility.sh")
+  TESTS=$(echo "${TESTS}" | grep -v "test_update.sh")
+  TESTS=$(echo "${TESTS}" | grep -v "test_read.sh")
+fi
+
 # Get ready...
 pass=0
 progs=0

@@ -816,9 +816,13 @@ endif
 TEST_FUTIL_NAMES = \
 	tests/futility/binary_editor \
 	tests/futility/test_file_types \
-	tests/futility/test_not_really \
+	tests/futility/test_not_really
+
+ifneq ($(filter-out 0,${USE_FLASHROM}),)
+TEST_FUTIL_NAMES += \
 	tests/futility/test_updater_utils \
 	tests/futility/test_updater_utils_servo
+endif
 
 TEST_NAMES += ${TEST_FUTIL_NAMES}
 
@@ -1465,11 +1469,17 @@ run2tests: install_for_test
 
 .PHONY: runfutiltests
 runfutiltests: install_for_test
+ifeq ($(filter-out 0,${USE_FLASHROM}),)
 	${RUNTEST} ${SRC_RUN}/tests/futility/run_test_scripts.sh
+else
+	VBOOT_TEST_USE_FLASHROM=1 ${RUNTEST} ${SRC_RUN}/tests/futility/run_test_scripts.sh
+endif
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_file_types
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_not_really
+ifneq ($(filter-out 0,${USE_FLASHROM}),)
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_updater_utils
 	${RUNTEST} ${BUILD_RUN}/tests/futility/test_updater_utils_servo
+endif
 	rm -rf ${SRC_RUN}/tests/futility/data_copy
 
 # Test all permutations of encryption keys, instead of just the ones we use.
