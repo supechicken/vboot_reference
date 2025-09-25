@@ -94,6 +94,30 @@
       },
       "revId": "d0a2895cea84128758848f4bd7928552d2cbde30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1960ce8_31c1c821",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-25T22:45:48Z",
+      "side": 1,
+      "message": "Okay, I mean, I don\u0027t really care, but this CL has also already landed and it\u0027s usually easier if a backport only consists of a single patch you need to track, not a bunch of extra follow-up cleanups.\n\nSo go ahead and do it if you feel strongly, but I think the more important thing is really to get this to more branches now. Have you started looking at Dedede yet?",
+      "parentUuid": "b731b358_9c57d3dc",
+      "range": {
+        "startLine": 698,
+        "startChar": 2,
+        "endLine": 705,
+        "endChar": 3
+      },
+      "revId": "d0a2895cea84128758848f4bd7928552d2cbde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
