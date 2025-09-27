@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6124b51a_540be641",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-27T01:06:07Z",
+      "side": 1,
+      "message": "No, I meant this much simpler. The function signature should be `const char **extra_cmdline_out`, and then the callee can just do stuff like `*extra_cmdline_out \u003d \"kasan\u003don\";`.",
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14a6f2a_556ecf2b",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-09-27T01:06:07Z",
+      "side": 1,
+      "message": "Doing this means `rv` is still success so we\u0027d not return an error from this function. Not sure if that\u0027s intentional? If it is, please write the code more clearly (without a `goto`), e.g.\n```\nif (...fits...) {\n  params-... \u003d \u0027 \u0027;\n  memcpy(...);\n} else {\n  VB2_DEBUG(\"...problem but we\u0027ll continue anyway...\");\n}\n```\nIf not, you need to set `rv` to an explicit error.\n\nI think it\u0027s probably better to return a hard error here.",
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
