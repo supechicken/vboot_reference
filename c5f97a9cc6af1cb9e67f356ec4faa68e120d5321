@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5da6abb_fb273ae2",
+        "filename": "Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-29T10:05:52Z",
+      "side": 1,
+      "message": "FYI nit:\n```suggestion\n\t\"VBOOT_TEST_USE_FLASHROM\u003d$(filter-out 0,${USE_FLASHROM})\" ${RUNTEST} ${SRC_RUN}/tests/futility/run_test_scripts.sh\n```\n\nBut let\u0027s leave this as it is. It will be easier to remove this code later in it\u0027s current form :)",
+      "range": {
+        "startLine": 1478,
+        "startChar": 0,
+        "endLine": 1482,
+        "endChar": 5
+      },
+      "revId": "c5f97a9cc6af1cb9e67f356ec4faa68e120d5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83112995_1d26a0dc",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-29T10:05:52Z",
+      "side": 1,
+      "message": "It\u0027s less error-prone to conditionally add these tests than to remove them from the list here. I don\u0027t think we have to maintain the order of the tests here. You can add them after the base tests in the list and print message in both cases.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "c5f97a9cc6af1cb9e67f356ec4faa68e120d5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa850f4_abf44d70",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-29T10:05:52Z",
+      "side": 1,
+      "message": "Missing quotes around eval statements: `TEST\u003d\"$(...)\"`",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 51
+      },
+      "revId": "c5f97a9cc6af1cb9e67f356ec4faa68e120d5321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
