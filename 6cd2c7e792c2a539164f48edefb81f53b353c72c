@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49076c0c_9a92a3fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-29T12:37:11Z",
+      "side": 1,
+      "message": "On Linux we can link with the binary as if it was a library, so the title might be misleading. How about: `crossystem: Use libflashrom instead of flashrom CLI for USE_FLASHROM\u003d1`",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "6cd2c7e792c2a539164f48edefb81f53b353c72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121dc323_2c0cba52",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-29T12:37:11Z",
+      "side": 1,
+      "message": "Please use boolean instead of int for do_verify. It\u0027s not C89 anymore :)\nYou can do this in a follow-up CL to get it in line with other flashrom-related functions.",
+      "range": {
+        "startLine": 122,
+        "startChar": 6,
+        "endLine": 122,
+        "endChar": 19
+      },
+      "revId": "6cd2c7e792c2a539164f48edefb81f53b353c72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c70ad9c_efa3e254",
+        "filename": "tests/vb2_host_flashrom_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-29T12:37:11Z",
+      "side": 1,
+      "message": "Move down to other system includes.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "6cd2c7e792c2a539164f48edefb81f53b353c72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
