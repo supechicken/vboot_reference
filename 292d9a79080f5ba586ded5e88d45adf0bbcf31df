@@ -719,6 +719,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcab92cd_6ef06bc8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-09-29T18:40:53Z",
+      "side": 1,
+      "message": "If these signals for testing and RMA/repair mode can only be accessed at the OS level then that would be a compelling reason to change the design. I’ll contact the teams for testing and RMA/repair respectively to find what their exact requirements are for this to properly function and I’ll update this CL and/or the overall design once those discussions are concluded.",
+      "parentUuid": "45bc85f5_486878b4",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
