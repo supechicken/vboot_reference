@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33eb07d_b3c3b7eb",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-09-29T09:53:57Z",
+      "side": 1,
+      "message": "```suggestion\n\treturn r ? VB2_ERROR_FLASHROM : VB2_SUCCESS;\n```",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 12
+      },
+      "revId": "54098cbe9572445592ea7af61a55a464e257fd0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
