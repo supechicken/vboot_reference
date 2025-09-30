@@ -726,11 +726,22 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 		 * Otherwise, we do care about the key index in the TPM.  If
 		 * the good partition's key version is the same as the tpm,
 		 * then the TPM doesn't need updating; we can stop now.
-		 * Otherwise, we'll check all the other headers to see if they
-		 * contain a newer key.
 		 */
 		if (sd->kernel_version == sd->kernel_version_secdata) {
 			VB2_DEBUG("Same kernel version\n");
+			break;
+		}
+
+		/* If secdata version is different than kernel version and
+		 * entry is already marked as succesfull we can update secdata
+		 * without checking version of previous kernel.
+		 * Otherwise, we'll check all the other headers.
+		 */
+		GptEntry *entry = (GptEntry *)gpt.primary_entries +
+			gpt.current_kernel;
+		if (GetEntrySuccessful(entry)) {
+			VB2_DEBUG("Booting from successful entry,"
+				  "do not check other kernel version\n");
 			break;
 		}
 	} /* while(GptNextKernelEntry) */
