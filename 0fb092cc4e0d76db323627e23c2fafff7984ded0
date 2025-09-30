@@ -22,6 +22,29 @@
       },
       "revId": "0fb092cc4e0d76db323627e23c2fafff7984ded0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58f00fb_383baed2",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-30T15:25:42Z",
+      "side": 1,
+      "message": "How about we change it to a struct `vb2_android_misc_data`, so that we don\u0027t have to modify the API every time we need a new field?",
+      "range": {
+        "startLine": 1120,
+        "startChar": 6,
+        "endLine": 1120,
+        "endChar": 41
+      },
+      "revId": "0fb092cc4e0d76db323627e23c2fafff7984ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
