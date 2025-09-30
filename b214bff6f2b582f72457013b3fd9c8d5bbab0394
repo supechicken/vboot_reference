@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecc395cc_0eeacfe5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-09-30T16:50:00Z",
+      "side": 1,
+      "message": "\u003e mentioned that MTE may extend MISC Partition Protocol with new flags to memtag_mode. e.g. kasan.mode\u003d[sync, async, asymm]. It will need a buffer to compose the cmldine string.\n\nIt doesn\u0027t need to be a string type, enum works better. for example:  kasan.mode \u003d {0\u003dsync, 1\u003dasync 2\u003dasymm}. This applys to other strings appeared in the design doc.",
+      "parentUuid": "c81ec7ec_1a3ffdfc",
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "385345eb_777972a8",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 3
