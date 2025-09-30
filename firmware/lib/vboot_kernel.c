@@ -30,8 +30,6 @@ enum vb2_load_partition_flags {
 #define VB2_LOAD_PARTITION_WORKBUF_BYTES	\
 	(VB2_VERIFY_KERNEL_PREAMBLE_WORKBUF_BYTES + KBUF_SIZE)
 
-#define LOWEST_TPM_VERSION 0xffffffff
-
 /**
  * Check if a valid keyblock is required.
  *
@@ -609,8 +607,7 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 {
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	int found_partitions = 0;
-	uint32_t lowest_version = LOWEST_TPM_VERSION;
-	vb2_error_t rv;
+	vb2_error_t rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
 
 	/* Clear output params */
 	params->partition_number = 0;
@@ -625,13 +622,13 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 			? GPT_FLAG_EXTERNAL : 0;
 	if (AllocAndReadGptData(disk_info->handle, &gpt)) {
 		VB2_DEBUG("Unable to read GPT data\n");
-		goto gpt_done;
+		goto exit;
 	}
 
 	/* Initialize GPT library */
 	if (GptInit(&gpt)) {
 		VB2_DEBUG("Error parsing GPT\n");
-		goto gpt_done;
+		goto exit;
 	}
 
 	/* Loop over candidate kernel partitions */
@@ -656,109 +653,49 @@ vb2_error_t LoadKernel(struct vb2_context *ctx,
 			continue;
 		}
 
-		uint32_t lpflags = 0;
-		if (params->partition_number > 0) {
-			/*
-			 * If we already have a good kernel, we only needed to
-			 * look at the vblock versions to check for rollback.
-			 */
-			lpflags |= VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY;
-		}
-
-		rv = vb2_load_partition(ctx, params, stream, lpflags);
+		rv = vb2_load_partition(ctx, params, stream, 0);
 		VbExStreamClose(stream);
 
-		if (rv) {
-			VB2_DEBUG("Marking kernel as invalid (err=%x).\n", rv);
-			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
-			continue;
-		}
-
-		int keyblock_valid = sd->flags & VB2_SD_FLAG_KERNEL_SIGNED;
-		/* Track lowest version from a valid header. */
-		if (keyblock_valid && lowest_version > sd->kernel_version) {
-			lowest_version = sd->kernel_version;
-		}
-		VB2_DEBUG("Keyblock valid: %d\n", keyblock_valid);
-		VB2_DEBUG("Combined version: %u\n", sd->kernel_version);
-
-		/*
-		 * If we're only looking at headers, we're done with this
-		 * partition.
-		 */
-		if (lpflags & VB2_LOAD_PARTITION_FLAG_VBLOCK_ONLY)
-			continue;
-
-		/*
-		 * Otherwise, we found a partition we like.
-		 *
-		 * TODO: GPT partitions start at 1, but cgptlib starts them at
-		 * 0.  Adjust here, until cgptlib is fixed.
-		 */
-		params->partition_number = gpt.current_kernel + 1;
-
-		/*
-		 * TODO: GetCurrentKernelUniqueGuid() should take a destination
-		 * size, or the dest should be a struct, so we know it's big
-		 * enough.
-		 */
-		GetCurrentKernelUniqueGuid(&gpt, &params->partition_guid);
-
-		/* Update GPT to note this is the kernel we're trying.
-		 * But not when we assume that the boot process may
-		 * not complete for valid reasons (eg. early shutdown).
-		 */
-		if (!(ctx->flags & VB2_CONTEXT_NOFAIL_BOOT))
-			GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_TRY);
-
-		/*
-		 * If we're in recovery mode or we're about to boot a
-		 * non-officially-signed kernel, there's no rollback
-		 * protection, so we can stop at the first valid kernel.
-		 */
-		if (ctx->boot_mode == VB2_BOOT_MODE_MANUAL_RECOVERY ||
-		    !keyblock_valid) {
-			VB2_DEBUG("In recovery mode or dev-signed kernel\n");
+		if (rv == VB2_SUCCESS)
 			break;
-		}
 
-		/*
-		 * Otherwise, we do care about the key index in the TPM.  If
-		 * the good partition's key version is the same as the tpm,
-		 * then the TPM doesn't need updating; we can stop now.
-		 * Otherwise, we'll check all the other headers to see if they
-		 * contain a newer key.
-		 */
-		if (sd->kernel_version == sd->kernel_version_secdata) {
-			VB2_DEBUG("Same kernel version\n");
-			break;
-		}
+		VB2_DEBUG("Marking kernel as invalid (err=%x).\n", rv);
+		GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_BAD);
 	} /* while(GptNextKernelEntry) */
 
- gpt_done:
+	if (rv) {
+		if (found_partitions > 0)
+			rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
+		else
+			rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
+		goto exit;
+	}
+
+	VB2_DEBUG("Combined version: 0x%x\n", sd->kernel_version);
+
+	/*
+	 * TODO: GPT partitions start at 1, but cgptlib starts them at
+	 * 0.  Adjust here, until cgptlib is fixed.
+	 */
+	params->partition_number = gpt.current_kernel + 1;
+
+	/*
+	 * TODO: GetCurrentKernelUniqueGuid() should take a destination
+	 * size, or the dest should be a struct, so we know it's big
+	 * enough.
+	 */
+	GetCurrentKernelUniqueGuid(&gpt, &params->partition_guid);
+
+	/* Update GPT to note this is the kernel we're trying.
+	 * But not when we assume that the boot process may
+	 * not complete for valid reasons (eg. early shutdown).
+	 */
+	if (!(ctx->flags & VB2_CONTEXT_NOFAIL_BOOT))
+		GptUpdateKernelEntry(&gpt, GPT_UPDATE_ENTRY_TRY);
+
+exit:
 	/* Write and free GPT data */
 	WriteAndFreeGptData(disk_info->handle, &gpt);
-
-	/* Handle finding a good partition */
-	if (params->partition_number > 0) {
-		VB2_DEBUG("Good partition %d\n", params->partition_number);
-		/*
-		 * Validity check - only store a new TPM version if we found
-		 * one. If lowest_version is still at its initial value, we
-		 * didn't find one; for example, we're in developer mode and
-		 * just didn't look.
-		 */
-		if (lowest_version != LOWEST_TPM_VERSION &&
-		    lowest_version > sd->kernel_version_secdata)
-			sd->kernel_version = lowest_version;
-
-		/* Success! */
-		rv = VB2_SUCCESS;
-	} else if (found_partitions > 0) {
-		rv = VB2_ERROR_LK_INVALID_KERNEL_FOUND;
-	} else {
-		rv = VB2_ERROR_LK_NO_KERNEL_FOUND;
-	}
 
 	return rv;
 }
