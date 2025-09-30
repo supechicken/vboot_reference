@@ -743,6 +743,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc13141e_c839bdd9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1466877
+      },
+      "writtenOn": "2025-09-30T23:45:44Z",
+      "side": 1,
+      "message": "From the GSC side, changing dev to normal or vice-versa is going to require a factory reset. Currently this isn\u0027t an issue on AL because it\u0027s using a fake KeyMint intended only for testing. For  the HPA work we\u0027re trying to enable, the FDR will become a requirement and is what cause the revert of the trusty GK/KM change.",
+      "parentUuid": "bcab92cd_6ef06bc8",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
