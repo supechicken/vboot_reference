@@ -38,6 +38,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f18ec24_f9feedc5",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-30T16:05:34Z",
+      "side": 1,
+      "message": "I don\u0027t see how that prevents you from changing to the API suggested by Julius. The depthcharge code can `malloc` the buffer by itself and then set `*extra_cmdline_out \u003d buffer`. Benefits:\n\n1. No need to pass the size to `vb2ex_handle_android_misc_partition`\n2. Easier to tell if `vb2ex_handle_android_misc_partition` sets the extra cmdline or not (by `*extra_cmdline_out !\u003d NULL`)",
+      "parentUuid": "841aa76b_f54c2d89",
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385345eb_777972a8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-30T16:05:34Z",
+      "side": 1,
+      "message": "Is this supposed to be `sizeof(vendor_hdr-\u003ecmdline)`?\n\nI wonder if it would be cleaner to do this inside `rearrange_partitions()` (by passing `extra_cmdline` to that function)?",
+      "range": {
+        "startLine": 475,
+        "startChar": 6,
+        "endLine": 476,
+        "endChar": 55
+      },
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e14a6f2a_556ecf2b",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 3
