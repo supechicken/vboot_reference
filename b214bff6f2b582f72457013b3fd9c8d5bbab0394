@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c81ec7ec_1a3ffdfc",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-09-30T16:43:57Z",
+      "side": 1,
+      "message": "My intention is allocating the buffer for extra_cmdline and freeing the buffer after using it. I am fine with your approach if allocating the memory without freeing is not a concern.",
+      "parentUuid": "6f18ec24_f9feedc5",
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "385345eb_777972a8",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 3
@@ -67,6 +85,30 @@
       "writtenOn": "2025-09-30T16:05:34Z",
       "side": 1,
       "message": "Is this supposed to be `sizeof(vendor_hdr-\u003ecmdline)`?\n\nI wonder if it would be cleaner to do this inside `rearrange_partitions()` (by passing `extra_cmdline` to that function)?",
+      "range": {
+        "startLine": 475,
+        "startChar": 6,
+        "endLine": 476,
+        "endChar": 55
+      },
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5305b8_e95ce19a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-09-30T16:43:57Z",
+      "side": 1,
+      "message": "\u003e Is this supposed to be sizeof(vendor_hdr-\u003ecmdline)?\n\nThe original discussion is here.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/6887991/comment/fd8606d7_29cb2a8f/\n\n\u003e I wonder if it would be cleaner to do this inside rearrange_partitions() (by passing extra_cmdline to that function)?\n\nLooks good. I will do that in the next revision.",
+      "parentUuid": "385345eb_777972a8",
       "range": {
         "startLine": 475,
         "startChar": 6,
@@ -126,6 +168,24 @@
       "side": 1,
       "message": ".. should not be blocked ..",
       "parentUuid": "2d73e9f5_d410e140",
+      "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3643118f_9686bc51",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-09-30T16:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a1d38cf_cde0942f",
       "revId": "b214bff6f2b582f72457013b3fd9c8d5bbab0394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
