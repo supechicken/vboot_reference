@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68319526_7ab8ca27",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-09-30T15:44:55Z",
+      "side": 1,
+      "message": "Sorry, but I\u0027m not quite convinced of this renaming. I think here \"cmdline\" refers to the space-separated format, and in `bootconfig_append_cmdline()` that cmdline-formatted string is converted to bootconfig-formatted string. \n\nI\u0027d explain the original naming this way. Vboot\u0027s `vb2api_load_kernel` API is responsible for filling in all `vb2_kernel_params` fields including `vboot_cmdline_buffer`. How `vboot_cmdline_buffer` is used is entirely up to the caller (depthcharge). The caller can either append it to the real cmdline, or convert it to bootconfig (and append \"bootconfig\" to cmdline). Either way, the decision is in the caller, and should be irrelevant to the field naming here.",
+      "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
