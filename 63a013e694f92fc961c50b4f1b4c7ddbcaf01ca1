@@ -16,6 +16,24 @@
       "message": "Sorry, but I\u0027m not quite convinced of this renaming. I think here \"cmdline\" refers to the space-separated format, and in `bootconfig_append_cmdline()` that cmdline-formatted string is converted to bootconfig-formatted string. \n\nI\u0027d explain the original naming this way. Vboot\u0027s `vb2api_load_kernel` API is responsible for filling in all `vb2_kernel_params` fields including `vboot_cmdline_buffer`. How `vboot_cmdline_buffer` is used is entirely up to the caller (depthcharge). The caller can either append it to the real cmdline, or convert it to bootconfig (and append \"bootconfig\" to cmdline). Either way, the decision is in the caller, and should be irrelevant to the field naming here.",
       "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a13219e_6b147c50",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-01T03:34:04Z",
+      "side": 1,
+      "message": "I support Julius\u0027s proposal due to the following reasons:\nThe `vboot_cmdline_buffer` must adhere to the bootconfig format, as outlined in [1] and [2]. When the bootconfig cmdline arguments are appended to conventional kernel cmdline, any `kernel.*` prefixes must be removed if the string is retrieved from the bootconfig buffer. Additionally, Android properties must be converted from `androidboot.*` to `ro.boot.*` to ensure proper recognition by the OS.\n\nUnless we implement a parser/converter in depthcharge, bootconfig cmdline string and kernel cmdline string can not be used interchangeably.\n\n[1]: https://source.android.com/docs/core/architecture/bootloader/implementing-bootconfig\n[2]: https://docs.kernel.org/admin-guide/bootconfig.html",
+      "parentUuid": "68319526_7ab8ca27",
+      "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
