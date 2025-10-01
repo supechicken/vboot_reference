@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca58026_1bad7486",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-01T14:29:51Z",
+      "side": 1,
+      "message": "use a vb2_error_t variable for return value",
+      "range": {
+        "startLine": 615,
+        "startChar": 2,
+        "endLine": 615,
+        "endChar": 3
+      },
+      "revId": "78e4576f0969a760892f5f8a5ca8a4fbb497c6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5df1cf_d99dd44f",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-01T14:29:51Z",
+      "side": 1,
+      "message": "vb2_error_t",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 4
+      },
+      "revId": "78e4576f0969a760892f5f8a5ca8a4fbb497c6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f8d6fa_bc1d3d8f",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-01T14:29:51Z",
+      "side": 1,
+      "message": "SUCCESS",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "78e4576f0969a760892f5f8a5ca8a4fbb497c6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
