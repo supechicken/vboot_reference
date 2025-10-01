@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91da4c1_a921f689",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-01T09:11:36Z",
+      "side": 1,
+      "message": "This patch simply changes the function. The description is done in CL:6979706.",
+      "parentUuid": "e6ea2950_8969a18b",
+      "range": {
+        "startLine": 1106,
+        "startChar": 3,
+        "endLine": 1106,
+        "endChar": 24
+      },
+      "revId": "0fb092cc4e0d76db323627e23c2fafff7984ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c58f00fb_383baed2",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-09-30T15:25:42Z",
       "side": 1,
       "message": "How about we change it to a struct `vb2_android_misc_data`, so that we don\u0027t have to modify the API every time we need a new field?",
+      "range": {
+        "startLine": 1120,
+        "startChar": 6,
+        "endLine": 1120,
+        "endChar": 41
+      },
+      "revId": "0fb092cc4e0d76db323627e23c2fafff7984ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6803608_b5cb4962",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-01T09:11:36Z",
+      "side": 1,
+      "message": "CL:6979706",
+      "parentUuid": "c58f00fb_383baed2",
       "range": {
         "startLine": 1120,
         "startChar": 6,
