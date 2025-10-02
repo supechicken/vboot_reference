@@ -767,6 +767,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f1438d6_ef8d00a3",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-02T22:14:47Z",
+      "side": 1,
+      "message": "\u003e From the GSC side, changing dev to normal or vice-versa is going to require a factory reset.\n\nYes, that is normal, that is also the case for ChromeOS. Changing the mode already triggers a TPM owner clean which should(?) erase any per-user secrets on the GSC. The security guarantees for the user data must be tied to that.\n\nThe whole issue with this CL is just that the OS cannot use detect the owner clear alone as a signal, so it needs to do its own state tracking to know when to wipe and reinitialize the user data that it couldn\u0027t decrypt anymore anyway. That tracking must not be relied upon for security reasons (because it is not stored very securely), it\u0027s just additional housekeeping for the OS.",
+      "parentUuid": "dc13141e_c839bdd9",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
