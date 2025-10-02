@@ -22,6 +22,30 @@
       },
       "revId": "a74abd7b75aa88ca55fcb8bd5f55142e1b42f1e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d78331ff_de03af23",
+        "filename": "tests/futility/test_gbb_utility.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-10-02T11:04:14Z",
+      "side": 1,
+      "message": "You can add `# shellcheck disable\u003dSC2154` before this line.\n`tests/common.sh` is not shellcheck-compliant, so we have to employ such tricks here.",
+      "parentUuid": "75186ef4_b4d38358",
+      "range": {
+        "startLine": 74,
+        "startChar": 14,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "a74abd7b75aa88ca55fcb8bd5f55142e1b42f1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
