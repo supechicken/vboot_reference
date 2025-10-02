@@ -34,6 +34,24 @@
       "parentUuid": "68319526_7ab8ca27",
       "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdd6de9_f4aeadea",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-02T15:31:37Z",
+      "side": 1,
+      "message": "I\u0027m resolving this because this naming is not a big deal.\n\n\u003e The `vboot_cmdline_buffer` must adhere to the bootconfig format\n\nThat\u0027s exactly my point, because we\u0027re not doing that. Bootconfig doesn\u0027t support space-separated entries, but we\u0027re forming a space-separated string in `vb2_load_android()`. So, from the `vboot_cmdline_buffer` format itself, it\u0027s a cmdline instead of a bootconfig string. I think both `verify_data-\u003ecmdline` and the `cmdline_string` argument of `bootconfig_append_cmdline()` are called \"cmdline\" for the same reason. Are you going to also rename the argument of `bootconfig_append_cmdline()` in depthcharge?\n\nTherefore, I still think \"cmdline\" is more appropriate than \"bootconfig\" here. At least we can name it something like \"androidboot_cmdline_buffer\" to make it clear that it doesn\u0027t contain those `kernel.*` parameters.",
+      "parentUuid": "4a13219e_6b147c50",
+      "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
