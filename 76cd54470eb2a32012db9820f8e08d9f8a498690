@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ae9506_24332460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-02T20:36:48Z",
+      "side": 1,
+      "message": "You don\u0027t have the `GetEntrySuccessful()` check at all now, that\u0027s a clear sign that there\u0027s a problem here. The issue with this version (unlike the Nissa one) is that updating the kernel version is done automatically by later code (`vb2_normal_boot()` in `2lib/2kernel.c`), it\u0027s not explicitly triggered from here, and it always rolls forward to whatever `sd-\u003ekernel_version` is set to. So if we just let `vb2_verify_kernel_vblock()` set `sd-\u003ekernel_version` and then never touch it again, we would roll forward even if the slot is not marked successful yet. The older code would ensure with the `lowest_version` thing that `sd-\u003ekernel_version` was always set to what the lowest slot had, so this was still okay, but now that we only look at one slot it is not anymore.\n\nI can think of a number of options to solve this but none of them are super clean. One is to just store `sd-\u003ekernel_version` at the start of `LoadKernel()` in a local variable and then restore it to whatever it was at the end if the slot was not successful. The other is to change the implementation of `vb2_load_partition()`/`vb2_verify_kernel_vblock()` similar to what we have on ToT now, that they have an extra `*kernel_version` out pointer argument and don\u0027t write to `sd-\u003ekernel_version` directly anymore (and then have `LoadKernel()` set `sd-\u003ekernel_version` at the end if needed).\n\nI think the latter is probably the better one?\n\n(Also, are there no tests you need to modify in this branch?)",
+      "revId": "76cd54470eb2a32012db9820f8e08d9f8a498690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
