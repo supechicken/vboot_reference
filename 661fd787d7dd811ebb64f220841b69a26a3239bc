@@ -56,6 +56,23 @@
       "message": "remove extra blank line",
       "revId": "661fd787d7dd811ebb64f220841b69a26a3239bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e226fbf1_05035e8a",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-02T21:20:36Z",
+      "side": 1,
+      "message": "Same problem as in the Brya version here (but a little easier to solve), you can\u0027t immediately write to `sd-\u003ekernel_version`, you need to check if the slot was successful first.",
+      "revId": "661fd787d7dd811ebb64f220841b69a26a3239bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
