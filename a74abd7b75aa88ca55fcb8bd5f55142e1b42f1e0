@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75186ef4_b4d38358",
+        "filename": "tests/futility/test_gbb_utility.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-02T10:59:35Z",
+      "side": 1,
+      "message": "```\nPlease fix this WARNING reported by ShellCheck: WARNING: error code: SC2154\n\nSCRIPT_DIR is referenced but not assigned.\n\nhttps:/...\n\nWARNING: error code: SC2154\n\nSCRIPT_DIR is referenced but not assigned.\n\nhttps://github.com/koalaman/shellcheck/wiki/SC2154\n```\n\nBut it seems that ${SCRIPT_DIR} comes from tests/common.sh. How to ignore this?",
+      "range": {
+        "startLine": 74,
+        "startChar": 14,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "a74abd7b75aa88ca55fcb8bd5f55142e1b42f1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

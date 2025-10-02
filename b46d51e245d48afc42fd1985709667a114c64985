@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3482ed39_b7082e25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-02T10:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6509d168_ad60ffa0",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "b46d51e245d48afc42fd1985709667a114c64985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be1dc8df_6983f191",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-01T15:32:27Z",
       "side": 1,
       "message": "I think we should still run this test, as futility/misc.c is compiled when USE_FLASHROM\u003d0. In tests/futility/test_misc.c, the `load_firmware_image` call in `test_gbb()` seems to be the only problem. Loading a complete AP firmware image (`IMAGE_MAIN`) and then parsing it to find the GBB section seem over complicated to me. In the tests/ dir there are already futility/data/fw_gbb.bin and futility/data/nivviks.GBB. I think we can change `test_gbb()` to use either of those files directly and avoid the `load_firmware_image` call.\n\nI\u0027m fine with skipping `test_misc` in this patch, but please add a TODO comment here about refactoring this test.",
+      "range": {
+        "startLine": 823,
+        "startChar": 16,
+        "endLine": 823,
+        "endChar": 25
+      },
+      "revId": "b46d51e245d48afc42fd1985709667a114c64985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a582991c_070befe4",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-02T10:59:35Z",
+      "side": 1,
+      "message": "Done\n\nAdd # TODO(roccochen): Make test_gbb() use a GBB file so test_misc runs with USE_FLASHROM\u003d0.",
+      "parentUuid": "be1dc8df_6983f191",
       "range": {
         "startLine": 823,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c557c8db_a1e11d16",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-02T10:59:35Z",
+      "side": 1,
+      "message": "Done\n\nMove the export logic into ifneq ($(filter-out 0,${USE_FLASHROM}),) in line 490",
+      "parentUuid": "9397ec4c_896e00eb",
+      "range": {
+        "startLine": 1481,
+        "startChar": 1,
+        "endLine": 1481,
+        "endChar": 26
+      },
+      "revId": "b46d51e245d48afc42fd1985709667a114c64985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42abca8f_6828363e",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06fe00fb_4acd9f4d",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-02T10:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42abca8f_6828363e",
+      "revId": "b46d51e245d48afc42fd1985709667a114c64985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a554b2e_dfaa2722",
@@ -100,6 +190,24 @@
       "writtenOn": "2025-10-01T15:32:27Z",
       "side": 1,
       "message": "We can still run this. I think the two futility calls with `--emulate` are the only problem. We can skip that specific test case in test_gbb_utility.sh if `VBOOT_TEST_USE_FLASHROM` is not set. Please check if that would work.",
+      "revId": "b46d51e245d48afc42fd1985709667a114c64985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e793c4a_123328aa",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-02T10:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a554b2e_dfaa2722",
       "revId": "b46d51e245d48afc42fd1985709667a114c64985",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
