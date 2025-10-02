@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85aae67b_607adfdd",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-02T15:37:53Z",
+      "side": 1,
+      "message": "Add a comment explaining why this is NOT `sizeof(cmdline)`.",
+      "range": {
+        "startLine": 305,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 55
+      },
+      "revId": "76aa752de8fdd9dec5a62dd95db1f55d4a8ecf33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
