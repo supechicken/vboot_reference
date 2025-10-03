@@ -1110,6 +1110,9 @@ static int do_sign(int argc, char *argv[])
 			/* Signing raw data. No signature pre-exists. */
 			errorcnt += no_opt_if(!sign_option.prikey, "prikey");
 		break;
+	case FILE_TYPE_ROCHKSUM:
+
+		break;
 	default:
 		/* Anything else we don't care */
 		break;
