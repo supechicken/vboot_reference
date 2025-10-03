@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "699d4175_f78ffeef",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-03T10:23:51Z",
+      "side": 1,
+      "message": "Done. I\u0027ve changed the function signature to use bool for do_verify.\n\nFor the call site, I\u0027m using !!cfg-\u003edo_verify for now, as updater_config has many other ints used as booleans and changing just one felt inconsistent.",
+      "parentUuid": "121dc323_2c0cba52",
+      "range": {
+        "startLine": 122,
+        "startChar": 6,
+        "endLine": 122,
+        "endChar": 19
+      },
+      "revId": "6cd2c7e792c2a539164f48edefb81f53b353c72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c70ad9c_efa3e254",
@@ -60,6 +84,30 @@
       "writtenOn": "2025-09-29T12:37:11Z",
       "side": 1,
       "message": "Move down to other system includes.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "6cd2c7e792c2a539164f48edefb81f53b353c72c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "997d9cc0_11161f8f",
+        "filename": "tests/vb2_host_flashrom_tests.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-03T10:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c70ad9c_efa3e254",
       "range": {
         "startLine": 9,
         "startChar": 0,
