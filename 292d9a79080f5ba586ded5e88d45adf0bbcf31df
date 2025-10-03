@@ -791,6 +791,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06a83240_e815ecf0",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-10-03T13:36:40Z",
+      "side": 1,
+      "message": "\u003e The whole issue with this CL is just that the OS cannot use detect the owner clear alone as a signal, so it needs to do its own state tracking to know when to wipe and reinitialize the user data that it couldn\u0027t decrypt anymore anyway.\n\nThe Android OS currently does sort of keep track of when the TPM owner is cleared? As per Brian Granaghan when GK/Keymint keys are actually backed by the GSC, and when vold goes to mount the user’s data it would fail, and send the user to a recovery screen to request a manual reset even without this change. I’m still unsure why the OS needs to track that state (are we in a dev-\u003everified transition) / initiate the boot to recovery mode.\n\n\u003e That tracking must not be relied upon for security reasons (because it is not stored very securely), it\u0027s just additional housekeeping for the OS.\n\nI’m unsure what you mean by this, do you mean having a read-only NV storage bit is less secure than the .developer_mode file in /mnt/stateful_partition on ChromeOS? If this was the case, since we already track when to clear the TPM based on NV bit storage that would be an existing vulnerability.",
+      "parentUuid": "9f1438d6_ef8d00a3",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
