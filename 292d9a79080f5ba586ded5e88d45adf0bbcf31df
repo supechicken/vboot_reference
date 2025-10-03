@@ -815,6 +815,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b078b80d_c9c047a9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2025-10-03T13:38:33Z",
+      "side": 1,
+      "message": "Also, I took the time to reach out to each of the respective owners of the features mentioned, I don’t believe any of them are reasons to block this bug. Going through the list\n\nFAFT\nContacted Jeremy Bettis, as far as performance concerns they don’t have an issue with the extra time introduced by FDR - “It takes a long time to reboot already, I think we can cope with that.” He also believes this change should not functionally break the FAFT tests, but I plan to run the FAFT tests once I get access to my DUT on Monday to ensure nothing breaks. I’ll upload the results on this thread by Monday EOD.\n\nRMA/Repair Mode\nContacted Chung-sheng Wu, while they do interact with resetting the GSC they don’t directly transition from/to developer mode, so there isn’t a concern/requirement from them, automated notes of the meeting here: https://docs.google.com/document/d/1jouHIADIjGcHpNXniQ8hIieKCSfWk1UrdB-PIM3Olq0/edit?resourcekey\u003d0-I5m40kRKjUD7N7IDYVdFYQ\u0026tab\u003dt.0#heading\u003dh.8ov3kilw1lkj\n\nFactory Images\nContacted Cheng-Han Yang, for information on the factory edge case. As far as the customer seeing this after unboxing, that’s not an issue - “At the end of the process we switch to verified mode, and trigger another app to perform some wrap-up operations (e.g. putting the battery into shipping state)”, meaning they (factory) will trigger the FDR before the device ends up on shelves. Nothing functional would break, but I’ll still coordinate with their process to not introduce any extraneous factory resets and add additional length to the manufacturing process. But I don’t think that’s a reason to block this CL.",
+      "parentUuid": "06a83240_e815ecf0",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
