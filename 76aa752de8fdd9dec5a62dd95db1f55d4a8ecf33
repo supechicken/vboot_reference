@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6489c9_e55d43a8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-03T09:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85aae67b_607adfdd",
+      "range": {
+        "startLine": 305,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 55
+      },
+      "revId": "76aa752de8fdd9dec5a62dd95db1f55d4a8ecf33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aefdd3b_adffda1e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-03T07:57:30Z",
       "side": 1,
       "message": "Move to depthcharge.",
+      "range": {
+        "startLine": 1105,
+        "startChar": 8,
+        "endLine": 1105,
+        "endChar": 26
+      },
+      "revId": "76aa752de8fdd9dec5a62dd95db1f55d4a8ecf33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d34cee_386108af",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-03T09:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aefdd3b_adffda1e",
       "range": {
         "startLine": 1105,
         "startChar": 8,
