@@ -52,6 +52,24 @@
       "parentUuid": "4a13219e_6b147c50",
       "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16c650d_db0efde5",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-03T22:31:31Z",
+      "side": 1,
+      "message": "I understand where the name came from (because AVB calls it that), but that doesn\u0027t help the fact that it\u0027s incredibly confusing. We have exactly two pointers in kparams that pass kernel parameters back to depthcharge, one goes into the actual command line and one into bootconfig, and they\u0027re both called \"cmdline\". That is just going to throw off anyone trying to follow this stuff.\n\nIf you want to emphasize the fact that it is not formatted like a true bootconfig yet at this point we can find another name, but the name should make the difference clear between the actual command line and the fake command line that later becomes bootconfig. Maybe `real_cmdline_ptr` and `bootconfig_cmdline_buffer`/`bootconfig_cmdline_size`?",
+      "parentUuid": "ebdd6de9_f4aeadea",
+      "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
