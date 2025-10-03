@@ -93,6 +93,30 @@
       },
       "revId": "0fb092cc4e0d76db323627e23c2fafff7984ded0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb16e95_aa760f0d",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-03T23:20:45Z",
+      "side": 1,
+      "message": "Not sure I see the point in this tbh. The structure definition is still going to be in the same header that the function prototype would be, so you\u0027ll still need to change both that and the caller and callee when you\u0027re adding a new field. This just adds one more step to trying to understand what the function does.",
+      "parentUuid": "a6803608_b5cb4962",
+      "range": {
+        "startLine": 1120,
+        "startChar": 6,
+        "endLine": 1120,
+        "endChar": 41
+      },
+      "revId": "0fb092cc4e0d76db323627e23c2fafff7984ded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
