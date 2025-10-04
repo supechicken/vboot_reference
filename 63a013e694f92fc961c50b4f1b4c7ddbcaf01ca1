@@ -70,6 +70,24 @@
       "parentUuid": "ebdd6de9_f4aeadea",
       "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f92e77d_a19612ea",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-04T03:07:44Z",
+      "side": 1,
+      "message": "bootconfig_cmdline_buffer sounds good to me, but I\u0027ll defer that to Yidi.",
+      "parentUuid": "e16c650d_db0efde5",
+      "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
