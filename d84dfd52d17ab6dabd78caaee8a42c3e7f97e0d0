@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "054fc6c9_02007467",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-04T00:00:12Z",
+      "side": 1,
+      "message": "Why does this need to be explicitly initialized to NORMAL? Both are out-parameters, you can just do `... misc_data \u003d {};`.",
+      "revId": "d84dfd52d17ab6dabd78caaee8a42c3e7f97e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
