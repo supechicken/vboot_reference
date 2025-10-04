@@ -88,6 +88,24 @@
       "parentUuid": "e16c650d_db0efde5",
       "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a1caa0_83a293b4",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-04T05:25:09Z",
+      "side": 1,
+      "message": "I updated the naming.\n\nLet\u0027s get following patches merged first.\n- vboot\nCL:6979704\nCL:6979706\n- depthcharge\nCL:6979174\nCL:6887991",
+      "parentUuid": "0f92e77d_a19612ea",
+      "revId": "63a013e694f92fc961c50b4f1b4c7ddbcaf01ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
