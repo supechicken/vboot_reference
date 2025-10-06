@@ -839,6 +839,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46a7c751_7425b7d3",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-06T21:23:40Z",
+      "side": 1,
+      "message": "\u003e and when vold goes to mount the user’s data it would fail, and send the user to a recovery screen to request a manual reset even without this change\n\nOkay, so it sounds like maybe we don\u0027t need any separate tracking/wiping at all? That would of course be ideal. I thought from our earlier discussions that the Android OS couldn\u0027t recognize the TPM clear directly and just act on that for some reason.\n\n\u003e I’m unsure what you mean by this, do you mean having a read-only NV storage bit is less secure than the .developer_mode file in /mnt/stateful_partition on ChromeOS?\n\nI\u0027m just saying that no security guarantee (e.g. making sure that an attacker cannot exfiltrate user data if they physically open the device) should be tied to this \"wipe\" feature, because for an attacker at that level it would be easy to manipulate both NV storage and the disk. The security of user data must be guaranteed by encryption tied to the TPM and nothing else. A TPM clear alone (which is the only thing we guarantee in RO firmware on dev-mode transition) must be enough to ensure that user data is unrecoverable, and any explicit disk wipe is just an OS maintenance function and shouldn\u0027t be \"load-bearing\" for the security threat model.\n\n\u003e since we already track when to clear the TPM based on NV bit storage that would be an existing vulnerability.\n\nThere are two different things here: the OS can request a TPM wipe via NV storage, and that request can of course be faked by anyone who can manipulate NV storage. But that function is mostly for non-security-relevant maintenance tasks, it is not used to securely invalidate user data. The firmware will also automatically, without any signal from NV storage, clear the TPM owner whenever there\u0027s a transition into or out of dev mode, and that operation cannot be faked or avoided (unless an attack can break into the TPM itself).\n\n\u003e It takes a long time to reboot already, I think we can cope with that\n\nAre you sure you clarified how long this can really take (minutes, I presume)? This statement makes no sense to me, sure reboot already takes a couple of seconds in FAFT and possibly longer than it needs to, but we\u0027re talking about adding many times that on top here.",
+      "parentUuid": "b078b80d_c9c047a9",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
