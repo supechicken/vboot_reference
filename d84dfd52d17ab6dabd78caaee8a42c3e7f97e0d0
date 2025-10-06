@@ -34,6 +34,24 @@
       "parentUuid": "054fc6c9_02007467",
       "revId": "d84dfd52d17ab6dabd78caaee8a42c3e7f97e0d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72147c71_f1312672",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-06T23:26:48Z",
+      "side": 1,
+      "message": "That\u0027s also not really the point, though. `vb2ex_handle_android_misc_partition()` should overwrite that value in all cases, there is no situation where a \"default\" should come into play.",
+      "parentUuid": "8292512e_0fdd7e40",
+      "revId": "d84dfd52d17ab6dabd78caaee8a42c3e7f97e0d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
