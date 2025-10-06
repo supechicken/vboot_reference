@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee45dd8_2fe57973",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-06T23:08:21Z",
+      "side": 1,
+      "message": "This should be `bootconfig_cmdline_size` then, for consistency.",
+      "range": {
+        "startLine": 632,
+        "startChar": 10,
+        "endLine": 632,
+        "endChar": 31
+      },
+      "revId": "61266d287dd8b20e699397471b43698324574e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
