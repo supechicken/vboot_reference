@@ -27,8 +27,22 @@ LIBAVB_SRCS += \
 	${LIBAVB_SRCDIR}/libavb/avb_util.c \
 	${LIBAVB_SRCDIR}/libavb/avb_vbmeta_image.c \
 	${LIBAVB_SRCDIR}/libavb/avb_version.c \
+
+ifneq (,$(filter x86 x86_64,${ARCH}))
+LIBAVB_SRCS += \
+	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_hw_accelerator.c \
+	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_x86.c \
+	${LIBAVB_SRCDIR}/libavb/sha/sha512_impl_hw_accelerator.c
+else ifneq (,$(filter arm arm64,${ARCH}))
+LIBAVB_SRCS += \
+	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_hw_accelerator.c \
+	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_arm.c \
+	${LIBAVB_SRCDIR}/libavb/sha/sha512_impl_hw_accelerator.c
+else
+LIBAVB_SRCS += \
 	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl.c \
 	${LIBAVB_SRCDIR}/libavb/sha/sha512_impl.c
+endif
 
 CFLAGS += -DUSE_LIBAVB -Ifirmware/avb -I${LIBAVB_SRCDIR} -I${LIBAVB_SRCDIR}/libavb
 AVB_CFLAGS += -DAVB_COMPILATION -I${LIBAVB_SRCDIR}/libavb/sha
