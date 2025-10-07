@@ -34,6 +34,24 @@
       "parentUuid": "d03f13d2_5fc17eee",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594e854f_791d202b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3333882
+      },
+      "writtenOn": "2025-10-07T08:21:57Z",
+      "side": 1,
+      "message": "\u003e If we need to also parse the kernel command line and then do some kind of logical OR between the two MTE requests\n\nUsually you can handle this kind of thing by just passing the same parameter to the kernel multiple times. The kernel usually handles that by picking the value from the last instance in the cmdline, so whichever option goes last is the one that is used.",
+      "parentUuid": "606c10a2_0e9cda9a",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
