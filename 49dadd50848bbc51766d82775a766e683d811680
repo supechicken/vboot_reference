@@ -124,6 +124,24 @@
       "parentUuid": "2edbe2b6_286cb561",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "804e89aa_f0dfcb84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-07T11:47:24Z",
+      "side": 1,
+      "message": "\u003e kasan.freeze\u003dyes\n\nWhen it comes up with more cmdline options, `kasan.mode\u003dsync \u003e asymm \u003e async` and  `kasan.fault\u003dpanic \u003e panic_on_write \u003e report` (phase 2 in the Doc), adding something like `kasan.freeze\u003dyes` would introduce the complexities in the parsing of cmdline string.\n\n\u003e fill_info_gki\n\nYes, I am thinking about whether we should move all the MTE stuffs to `fill_info_gki`. Because the cmdline is finalized in that function.",
+      "parentUuid": "d7a5de29_81902436",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
