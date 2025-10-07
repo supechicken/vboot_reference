@@ -70,6 +70,24 @@
       "parentUuid": "594e854f_791d202b",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d294ab1_771ca1ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-07T09:21:17Z",
+      "side": 1,
+      "message": "Originally, MTE stuff is placed inside `vb2ex_handle_android_misc_partition` (vb2ex_get_android_bootmode) because we don\u0027t wan\u0027t to read and parse GPT twice[1].\nYu-Ping\u0027s suggestion looks simpler to me. Maybe it is time to consider \"don\u0027t free gptdata-\u003eprimary_header, gptdata-\u003eprimary_entries, ... etc\" inside `WriteAndFreeGptData` ?\n\nI am still uncertain about the exact point where the \"logic OR\" operation occurs, even when considering a separate `vb2ex_android_set_up_mte`. It appears that both `fastboot oem cmdline` and `commandline_append` should also be taken into this consideration.\n\n\n[1]: https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/6887991/2..13/src/boot/android_mte.c#b30\n\n[WriteAndFreeGptData]: https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/refs/heads/main/firmware/lib/gpt_misc.c#231",
+      "parentUuid": "c837c00e_40bd7382",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
