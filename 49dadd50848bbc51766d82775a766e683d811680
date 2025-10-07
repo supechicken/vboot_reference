@@ -88,6 +88,24 @@
       "parentUuid": "c837c00e_40bd7382",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edbe2b6_286cb561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3333882
+      },
+      "writtenOn": "2025-10-07T09:51:11Z",
+      "side": 1,
+      "message": "Another option you can consider is to add a new kernel parameter that freezes the value, and have the kernel ignore any options that come later on the cmdline.\n\nThat way, if you pass `kasan\u003don kasan.freeze\u003dyes kasan\u003doff`, then when evaluating `kasan\u003doff` it would see that `kasan.freeze\u003dyes` is already set and ignore the value.\n\nThis way, the logic goes in kernel instead of bootloader.",
+      "parentUuid": "4d294ab1_771ca1ee",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
