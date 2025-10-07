@@ -52,6 +52,24 @@
       "parentUuid": "606c10a2_0e9cda9a",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c837c00e_40bd7382",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-07T09:00:37Z",
+      "side": 1,
+      "message": "\u003e Usually you can handle this kind of thing by just passing the same parameter to the kernel multiple times. The kernel usually handles that by picking the value from the last instance in the cmdline, so whichever option goes last is the one that is used.\n\nIt is not about how kernel handles the cmdline. It is about the precedence when the two sources have different options. e.g,\n- cmdline: enable MTE /  misc: disable MTE\n- cmdline: disable MTE /  misc: enable MTE \n\nAccording to Jeff\u0027s [Doc], we should enable MTE for both cases.\n\n[Doc]: https://docs.google.com/document/d/1O31UJzI5WWN8VsOJl-woCSDYlocoPiYIJ5xC61KI3fo/edit?disco\u003dAAABsU49178",
+      "parentUuid": "594e854f_791d202b",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
