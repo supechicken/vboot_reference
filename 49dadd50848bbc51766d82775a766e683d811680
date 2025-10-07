@@ -16,6 +16,24 @@
       "message": "LGTM for our current design, but with what I just read in that Doc this isn\u0027t going to be enough anymore. If we need to also parse the kernel command line and then do some kind of logical OR between the two MTE requests, we\u0027re going to have a problem because `vb2ex_handle_android_misc_partition()` runs before we have the vendor command line. Either we will need to push `vb2ex_handle_android_misc_partition()` deep into `prepare_vendor_ramdisks()` (to that point where we already have the header with the command line available, but before we need to know whether to load the recovery ramdisk), or we need to change this entire thing such that `vb2ex_handle_android_misc_partition()` only returns some abstract \"MTE state\" that will then be stored to kparams (maybe just as a few flags) and later translated into command line arguments at a point where we also have the whole rest of the command line available for parsing, maybe in `commandline_subst()`.\n\nI also just remembered that we still have b/408266619 pending, which I think might require us to move the misc partition check to before `avb_slot_verify()` once it gets implemented (since we need to tell it whether to verify the recovery partition or not). So maybe, honestly, this whole `extra_cmdline` approach might have always been doomed to become unsuitable at some point (sorry for not thinking about that earlier). Maybe we should think about taking this into a different direction right away?",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606c10a2_0e9cda9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-07T06:48:03Z",
+      "side": 1,
+      "message": "\u003e 1. push vb2ex_handle_android_misc_partition() deep into prepare_vendor_ramdisks()\n\u003e 2. change this entire thing such that vb2ex_handle_android_misc_partition() only returns some abstract \"MTE state\" that will then be stored to kparams\n\nBoth of them look over-complicated to me. As there\u0027s no directly dependency between misc `bcb` and `system_space`, maybe the cleanest solution is to change `vb2ex_handle_android_misc_partition()` back to 2 separate functions (bootmode \u0026 MTE)? I assume eventually the calling order will be:\n\n- `vb2ex_get_android_bootmode`\n- `avb_slot_verify` (partitions depending on bootmode)\n- Parse MTE flag from vendor cmdline\n- `vb2ex_android_set_up_mte(vendor_mte_flag)`",
+      "parentUuid": "d03f13d2_5fc17eee",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
