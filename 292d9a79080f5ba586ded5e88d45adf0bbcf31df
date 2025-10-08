@@ -863,6 +863,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0574e43f_0df8735c",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2025-10-08T17:55:10Z",
+      "side": 1,
+      "message": "the latest approach we plan to implement: triggering the wiping logic based on `crossystem clear_tpm_owner_done` flag during OS boot. \n\ncoreboot already gives us this sticky flag, we can finally use it. so, the same wiping logic as was proposed to be added to coreboot but in the OS. based on the information coreboot already gives to the OS.",
+      "parentUuid": "46a7c751_7425b7d3",
+      "range": {
+        "startLine": 380,
+        "startChar": 33,
+        "endLine": 380,
+        "endChar": 50
+      },
+      "revId": "292d9a79080f5ba586ded5e88d45adf0bbcf31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8eb43de8_10b19320",
         "filename": "firmware/2lib/2nvstorage.c",
         "patchSetId": 16
