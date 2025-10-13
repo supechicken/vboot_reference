@@ -27,8 +27,32 @@ LIBAVB_SRCS += \
 	${LIBAVB_SRCDIR}/libavb/avb_util.c \
 	${LIBAVB_SRCDIR}/libavb/avb_vbmeta_image.c \
 	${LIBAVB_SRCDIR}/libavb/avb_version.c \
-	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl.c \
 	${LIBAVB_SRCDIR}/libavb/sha/sha512_impl.c
+
+# Define common sources that are included when ANY hardware acceleration is present.
+COMMON_HW_SRCS := firmware/avb/wrapper/vboot_avb_sha256.c \
+                  firmware/2lib/2hwcrypto.c
+
+# --- Hardware Acceleration Selection ---
+
+# Check if X86 SHA Extensions are enabled.
+ifeq ($(X86_SHA_EXT),1)
+    # Use X86 acceleration sources
+    LIBAVB_SRCS += $(COMMON_HW_SRCS) \
+                   firmware/2lib/2sha256_x86.c
+
+# Check if ARMv8 Crypto Extensions are enabled.
+else ifeq ($(ARMV8_CRYPTO_EXT),1)
+    # Use ARM acceleration sources
+    LIBAVB_SRCS += $(COMMON_HW_SRCS) \
+                   firmware/2lib/2sha256_arm.c
+
+# --- Software Fallback ---
+
+else
+    # Use the software implementation if neither flag is set.
+    LIBAVB_SRCS += ${LIBAVB_SRCDIR}/libavb/sha/sha256_impl.c
+endif
 
 CFLAGS += -DUSE_LIBAVB -Ifirmware/avb -I${LIBAVB_SRCDIR} -I${LIBAVB_SRCDIR}/libavb
 AVB_CFLAGS += -DAVB_COMPILATION -I${LIBAVB_SRCDIR}/libavb/sha
@@ -41,10 +65,22 @@ AVB_CFLAGS += -Wno-strict-prototypes
 
 # Add avb-related objects to the fwlib library
 LIBAVB_OBJS = ${LIBAVB_SRCS:${LIBAVB_SRCDIR}/libavb/%.c=${BUILD}/libavb/%.o}
+LIBAVB_OBJS := ${LIBAVB_OBJS:firmware/avb/wrapper/%.c=${BUILD}/firmware/avb/wrapper/%.o}
+LIBAVB_OBJS := ${LIBAVB_OBJS:firmware/2lib/%.c=${BUILD}/firmware/2lib/%.o}
 FWLIB_OBJS += ${LIBAVB_OBJS}
 
 # Catch all avb-related objects and append extra cflags
 ${BUILD}/libavb/%.o: $(addprefix ${LIBAVB_SRCDIR}/libavb/,%.c)
+	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
+	${Q}mkdir -p $(dir $@)
+	${Q}${CC} ${CFLAGS} ${AVB_CFLAGS} ${INCLUDES} -c -o $@ $<
+
+${BUILD}/firmware/avb/wrapper/%.o: $(addprefix firmware/avb/wrapper/,%.c)
+	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
+	${Q}mkdir -p $(dir $@)
+	${Q}${CC} ${CFLAGS} ${AVB_CFLAGS} ${INCLUDES} -c -o $@ $<
+
+${BUILD}/firmware/2lib/%.o: $(addprefix firmware/2lib/,%.c)
 	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
 	${Q}mkdir -p $(dir $@)
 	${Q}${CC} ${CFLAGS} ${AVB_CFLAGS} ${INCLUDES} -c -o $@ $<
