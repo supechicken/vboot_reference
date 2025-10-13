@@ -33,6 +33,23 @@
       "message": "Per b/444375123#comment7, the implementation is yet to be discussed. I think we are supposed to discuss that on the bug before reviewing this patch?",
       "revId": "6ed508afa674c96f38a1262ff3b66ce2da4a59a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47efa6c1_e3dfe5a2",
+        "filename": "firmware/avb/wrapper/vboot_avb_sha256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2025-10-13T11:05:23Z",
+      "side": 1,
+      "message": "```\n/* Copyright 2025 The ChromiumOS Authors\n * Use of this source code is governed by a BSD-style license that can be\n * found in the LICENSE file.\n *\n * Implementation of SHA256 required by libavb, using hardware accelerator by leveraging existing\n * vboot library.\n */\n\n```",
+      "revId": "6ed508afa674c96f38a1262ff3b66ce2da4a59a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
