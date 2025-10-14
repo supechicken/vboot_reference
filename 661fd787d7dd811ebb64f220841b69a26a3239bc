@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5de967e_01e2dc5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-10-14T13:26:43Z",
+      "side": 1,
+      "message": "I like short version more",
+      "parentUuid": "2d8612b4_8c2eda10",
+      "revId": "661fd787d7dd811ebb64f220841b69a26a3239bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5d975d4_cab03967",
         "filename": "firmware/lib/vboot_kernel.c",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2025-10-02T06:56:35Z",
       "side": 1,
       "message": "This isn\u0027t set yet.",
+      "range": {
+        "startLine": 551,
+        "startChar": 34,
+        "endLine": 551,
+        "endChar": 58
+      },
+      "revId": "661fd787d7dd811ebb64f220841b69a26a3239bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8389a3b_82240894",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-10-14T13:26:43Z",
+      "side": 1,
+      "message": "Moved to the proper place",
+      "parentUuid": "d5d975d4_cab03967",
       "range": {
         "startLine": 551,
         "startChar": 34,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd026562_c5bd9341",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-10-14T13:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b2e64b_fa4be39e",
+      "revId": "661fd787d7dd811ebb64f220841b69a26a3239bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e226fbf1_05035e8a",
@@ -71,6 +131,24 @@
       "writtenOn": "2025-10-02T21:20:36Z",
       "side": 1,
       "message": "Same problem as in the Brya version here (but a little easier to solve), you can\u0027t immediately write to `sd-\u003ekernel_version`, you need to check if the slot was successful first.",
+      "revId": "661fd787d7dd811ebb64f220841b69a26a3239bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c002bdfd_0bc21f33",
+        "filename": "firmware/lib/vboot_kernel.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-10-14T13:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e226fbf1_05035e8a",
       "revId": "661fd787d7dd811ebb64f220841b69a26a3239bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
