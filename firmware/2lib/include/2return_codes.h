@@ -904,6 +904,15 @@ enum vb2_return_code {
 	/* Flashrom exited with failure status */
 	VB2_ERROR_FLASHROM,
 
+	/* Unable to initialize flashrom */
+	VB2_ERROR_FLASHROM_INIT,
+
+	/* Flash probing failed */
+	VB2_ERROR_FLASHROM_PROBE,
+
+	/* Flash has length of zero */
+	VB2_ERROR_FLASHROM_ZERO_LENGTH,
+
 	/* cbfstool exited with failure status */
 	VB2_ERROR_CBFSTOOL,
 

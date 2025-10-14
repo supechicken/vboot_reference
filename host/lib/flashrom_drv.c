@@ -46,6 +46,48 @@ static char *flashrom_extract_params(const char *str, char **prog, char **params
 	return tmp;
 }
 
+/**
+ * Prepares flash for operations by initializing `flashctx` and `prog`.
+ * If `len` is provided, it will be set to the size of the flash.
+ *
+ * The caller is responsible for shutting down the programmer `prog`.
+ */
+static vb2_error_t flashrom_setup(struct flashrom_flashctx **flashctx,
+						struct flashrom_programmer **prog, size_t *len,
+						const char *image_programmer)
+{
+	char *tmp, *programmer, *params;
+
+	tmp = flashrom_extract_params(image_programmer, &programmer, &params);
+	if (!tmp) {
+		ERROR("Could not setup programmer: out of memory.\n");
+		return VB2_ERROR_FLASHROM_INIT;
+	}
+
+	*prog = NULL;
+	*flashctx = NULL;
+	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
+
+	if (flashrom_init(1) || flashrom_programmer_init(prog, programmer, params)) {
+		free(tmp);
+		return VB2_ERROR_FLASHROM_INIT;
+	}
+	free(tmp);
+
+	if (flashrom_flash_probe(flashctx, *prog, NULL))
+		return VB2_ERROR_FLASHROM_PROBE;
+
+	if (len) {
+		*len = flashrom_flash_getsize(*flashctx);
+		if (!*len) {
+			ERROR("Chip found had zero length, probing probably failed.\n");
+			return VB2_ERROR_FLASHROM_ZERO_LENGTH;
+		}
+	}
+
+	return VB2_SUCCESS;
+}
+
 /*
  * NOTE: When `regions` contains multiple regions, `region_start` and
  * `region_len` will be filled with the data of the first region.
@@ -56,57 +98,40 @@ static vb2_error_t flashrom_read_image_impl(struct firmware_image *image,
 					    unsigned int *region_start,
 					    unsigned int *region_len, int verbosity)
 {
-	int r = 0;
+	vb2_error_t r;
 	size_t len = 0;
 	*region_start = 0;
 	*region_len = 0;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
 
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(image->programmer, &programmer, &params);
-
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
 	struct flashrom_layout *layout = NULL;
 
-	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
-
-	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params)) {
-		r = -1;
+	r = flashrom_setup(&flashctx, &prog, &len, image->programmer);
+	switch (r) {
+	case VB2_ERROR_FLASHROM_INIT:
 		goto err_init;
-	}
-	if (flashrom_flash_probe(&flashctx, prog, NULL)) {
-		r = -1;
+	case VB2_ERROR_FLASHROM_PROBE:
 		goto err_probe;
+	case VB2_ERROR_FLASHROM_ZERO_LENGTH:
+		goto err_cleanup;
+	default:
+		r = VB2_ERROR_FLASHROM;
 	}
-
-	len = flashrom_flash_getsize(flashctx);
-	if (!len) {
-		ERROR("Chip found had zero length, probing probably failed.\n");
-		r = -1;
-		goto err_probe;
-	}
-
-	flashrom_flag_set(flashctx, FLASHROM_FLAG_SKIP_UNREADABLE_REGIONS, true);
 
 	if (regions_len) {
 		int i;
-		r = flashrom_layout_read_fmap_from_rom(
-			&layout, flashctx, 0, len);
-		if (r > 0) {
+		if (flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len)) {
 			ERROR("could not read fmap from rom, r=%d\n", r);
-			r = -1;
 			goto err_cleanup;
 		}
 		for (i = 0; i < regions_len; i++) {
 			// empty region causes seg fault in API.
-			r |= flashrom_layout_include_region(layout, regions[i]);
-			if (r > 0) {
+			if (flashrom_layout_include_region(layout, regions[i])) {
 				ERROR("could not include region = '%s'\n",
 				      regions[i]);
-				r = -1;
 				goto err_cleanup;
 			}
 		}
@@ -116,32 +141,33 @@ static vb2_error_t flashrom_read_image_impl(struct firmware_image *image,
 	image->data = calloc(1, len);
 	if (!image->data) {
 		ERROR("could not allocate image data (%zu bytes)\n", len);
-		r = -1;
 		goto err_cleanup;
 	}
 	image->size = len;
 	image->file_name = strdup("<sys-flash>");
 
-	r |= flashrom_image_read(flashctx, image->data, len);
+	if (flashrom_image_read(flashctx, image->data, len) == 0) {
+		r = VB2_SUCCESS;
 
-	if (r == 0 && regions_len)
-		r |= flashrom_layout_get_region_range(layout, regions[0],
-						      region_start, region_len);
+		if (regions_len && flashrom_layout_get_region_range(layout, regions[0],
+								    region_start, region_len))
+			r = VB2_ERROR_FLASHROM;
+	}
 
 err_cleanup:
 	flashrom_layout_release(layout);
 	flashrom_flash_release(flashctx);
 
 err_probe:
-	r |= flashrom_programmer_shutdown(prog);
+	if (flashrom_programmer_shutdown(prog) && r == VB2_SUCCESS)
+		r = VB2_ERROR_FLASHROM;
 
 err_init:
-	free(tmp);
-	if (r) {
+	if (r != VB2_SUCCESS) {
 		free(image->data);
 		free(image->file_name);
 	}
-	return r ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
+	return r;
 }
 
 vb2_error_t flashrom_read_image(struct firmware_image *image, const char * const regions[],
@@ -171,41 +197,30 @@ vb2_error_t flashrom_write_image(const struct firmware_image *image,
 				 const struct firmware_image *diff_image,
 				 int do_verify, int verbosity)
 {
-	int r = 0;
+	vb2_error_t r;
 	size_t len = 0;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
-
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(image->programmer, &programmer, &params);
 
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
 	struct flashrom_layout *layout = NULL;
 
-	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
-
-	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params)) {
-		r = -1;
+	r = flashrom_setup(&flashctx, &prog, &len, image->programmer);
+	switch (r) {
+	case VB2_ERROR_FLASHROM_INIT:
 		goto err_init;
-	}
-	if (flashrom_flash_probe(&flashctx, prog, NULL)) {
-		r = -1;
+	case VB2_ERROR_FLASHROM_PROBE:
 		goto err_probe;
-	}
-
-	len = flashrom_flash_getsize(flashctx);
-	if (!len) {
-		ERROR("Chip found had zero length, probing probably failed.\n");
-		r = -1;
+	case VB2_ERROR_FLASHROM_ZERO_LENGTH:
 		goto err_cleanup;
+	default:
+		r = VB2_ERROR_FLASHROM;
 	}
 
 	if (diff_image) {
 		if (diff_image->size != image->size) {
 			ERROR("diff_image->size != image->size");
-			r = -1;
 			goto err_cleanup;
 		}
 	}
@@ -215,34 +230,26 @@ vb2_error_t flashrom_write_image(const struct firmware_image *image,
 
 	if (regions_len) {
 		int i;
-		r = flashrom_layout_read_fmap_from_buffer(
-			&layout, flashctx, (const uint8_t *)image->data,
-			image->size);
-		if (r > 0) {
+		if (flashrom_layout_read_fmap_from_buffer(
+			    &layout, flashctx, (const uint8_t *)image->data, image->size)) {
 			WARN("could not read fmap from image, r=%d, "
 				"falling back to read from rom\n", r);
-			r = flashrom_layout_read_fmap_from_rom(
-				&layout, flashctx, 0, len);
-			if (r > 0) {
+			if (flashrom_layout_read_fmap_from_rom(&layout, flashctx, 0, len)) {
 				ERROR("could not read fmap from rom, r=%d\n", r);
-				r = -1;
 				goto err_cleanup;
 			}
 		}
 		for (i = 0; i < regions_len; i++) {
 			INFO(" including region '%s'\n", regions[i]);
 			// empty region causes seg fault in API.
-			r |= flashrom_layout_include_region(layout, regions[i]);
-			if (r > 0) {
+			if (flashrom_layout_include_region(layout, regions[i])) {
 				ERROR("could not include region = '%s'\n",
 				      regions[i]);
-				r = -1;
 				goto err_cleanup;
 			}
 		}
 		flashrom_layout_set(flashctx, layout);
 	} else if (image->size != len) {
-		r = -1;
 		goto err_cleanup;
 	}
 
@@ -251,45 +258,42 @@ vb2_error_t flashrom_write_image(const struct firmware_image *image,
 	flashrom_flag_set(flashctx, FLASHROM_FLAG_VERIFY_AFTER_WRITE,
 			  do_verify);
 
-	r |= flashrom_image_write(flashctx, image->data, image->size,
-				  diff_image ? diff_image->data : NULL);
+	if (flashrom_image_write(flashctx, image->data, image->size,
+				  diff_image ? diff_image->data : NULL) == 0)
+		r = VB2_SUCCESS;
 
 err_cleanup:
 	flashrom_layout_release(layout);
 	flashrom_flash_release(flashctx);
 
 err_probe:
-	r |= flashrom_programmer_shutdown(prog);
+	if (flashrom_programmer_shutdown(prog) && r == VB2_SUCCESS)
+		r = VB2_ERROR_FLASHROM;
 
 err_init:
-	free(tmp);
-	return r ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
+	return r;
 }
 
 vb2_error_t flashrom_get_wp(const char *prog_with_params, bool *wp_mode,
 			    uint32_t *wp_start, uint32_t *wp_len, int verbosity)
 {
-	int ret = -1;
+	vb2_error_t r;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
 
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
-
 	struct flashrom_wp_cfg *cfg = NULL;
 
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(prog_with_params, &programmer,
-					    &params);
-
-	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
-
-	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params))
+	r = flashrom_setup(&flashctx, &prog, NULL, prog_with_params);
+	switch (r) {
+	case VB2_ERROR_FLASHROM_INIT:
 		goto err_init;
-
-	if (flashrom_flash_probe(&flashctx, prog, NULL))
+	case VB2_ERROR_FLASHROM_PROBE:
 		goto err_probe;
+	default:
+		r = VB2_ERROR_FLASHROM;
+	}
 
 	if (flashrom_wp_cfg_new(&cfg) != FLASHROM_WP_OK)
 		goto err_cleanup;
@@ -308,7 +312,7 @@ vb2_error_t flashrom_get_wp(const char *prog_with_params, bool *wp_mode,
 	if (wp_mode != NULL)
 		*wp_mode = flashrom_wp_get_mode(cfg) != FLASHROM_WP_MODE_DISABLED;
 
-	ret = 0;
+	r = VB2_SUCCESS;
 
 err_read_cfg:
 	flashrom_wp_cfg_release(cfg);
@@ -317,39 +321,33 @@ err_cleanup:
 	flashrom_flash_release(flashctx);
 
 err_probe:
-	if (flashrom_programmer_shutdown(prog))
-		ret = -1;
+	if (flashrom_programmer_shutdown(prog) && r == VB2_SUCCESS)
+		r = VB2_ERROR_FLASHROM;
 
 err_init:
-	free(tmp);
-
-	return ret ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
+	return r;
 }
 
 vb2_error_t flashrom_set_wp(const char *prog_with_params, bool wp_mode,
 			    uint32_t wp_start, uint32_t wp_len, int verbosity)
 {
-	int ret = 1;
+	vb2_error_t r;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
 
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
-
 	struct flashrom_wp_cfg *cfg = NULL;
 
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(prog_with_params, &programmer,
-					    &params);
-
-	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
-
-	if (flashrom_init(1)
-		|| flashrom_programmer_init(&prog, programmer, params))
+	r = flashrom_setup(&flashctx, &prog, NULL, prog_with_params);
+	switch (r) {
+	case VB2_ERROR_FLASHROM_INIT:
 		goto err_init;
-
-	if (flashrom_flash_probe(&flashctx, prog, NULL))
+	case VB2_ERROR_FLASHROM_PROBE:
 		goto err_probe;
+	default:
+		r = VB2_ERROR_FLASHROM;
+	}
 
 	if (flashrom_wp_cfg_new(&cfg) != FLASHROM_WP_OK)
 		goto err_cleanup;
@@ -362,7 +360,7 @@ vb2_error_t flashrom_set_wp(const char *prog_with_params, bool wp_mode,
 	if (flashrom_wp_write_cfg(flashctx, cfg) != FLASHROM_WP_OK)
 		goto err_write_cfg;
 
-	ret = 0;
+	r = VB2_SUCCESS;
 
 err_write_cfg:
 	flashrom_wp_cfg_release(cfg);
@@ -371,38 +369,31 @@ err_cleanup:
 	flashrom_flash_release(flashctx);
 
 err_probe:
-	if (flashrom_programmer_shutdown(prog))
-		ret = 1;
+	if (flashrom_programmer_shutdown(prog) && r == VB2_SUCCESS)
+		r = VB2_ERROR_FLASHROM;
 
 err_init:
-	free(tmp);
-	return ret ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
+	return r;
 }
 
 vb2_error_t flashrom_get_info(const char *prog_with_params, char **vendor, char **name,
 			      uint32_t *vid, uint32_t *pid, uint32_t *flash_len, int verbosity)
 {
-	int r = 0;
+	vb2_error_t r;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
-
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(prog_with_params,
-					    &programmer, &params);
 
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
 
-	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
-
-	if (flashrom_init(1) ||
-	    flashrom_programmer_init(&prog, programmer, params)) {
-		r = -1;
+	r = flashrom_setup(&flashctx, &prog, NULL, prog_with_params);
+	switch (r) {
+	case VB2_ERROR_FLASHROM_INIT:
 		goto err_init;
-	}
-	if (flashrom_flash_probe(&flashctx, prog, NULL)) {
-		r = -1;
+	case VB2_ERROR_FLASHROM_PROBE:
 		goto err_probe;
+	default:
+		r = VB2_SUCCESS;
 	}
 
 	struct flashrom_flashchip_info info;
@@ -417,36 +408,30 @@ vb2_error_t flashrom_get_info(const char *prog_with_params, char **vendor, char 
 	flashrom_flash_release(flashctx);
 
 err_probe:
-	r |= flashrom_programmer_shutdown(prog);
+	if (flashrom_programmer_shutdown(prog) && r == VB2_SUCCESS)
+		r = VB2_ERROR_FLASHROM;
 
 err_init:
-	free(tmp);
-	return r ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
+	return r;
 }
 
 vb2_error_t flashrom_get_size(const char *prog_with_params, uint32_t *flash_len, int verbosity)
 {
-	int r = 0;
+	vb2_error_t r;
 
 	g_verbose_screen = (verbosity == -1) ? FLASHROM_MSG_INFO : verbosity;
-
-	char *programmer, *params;
-	char *tmp = flashrom_extract_params(prog_with_params,
-					    &programmer, &params);
 
 	struct flashrom_programmer *prog = NULL;
 	struct flashrom_flashctx *flashctx = NULL;
 
-	flashrom_set_log_callback((flashrom_log_callback *)&flashrom_print_cb);
-
-	if (flashrom_init(1) ||
-	    flashrom_programmer_init(&prog, programmer, params)) {
-		r = -1;
+	r = flashrom_setup(&flashctx, &prog, NULL, prog_with_params);
+	switch (r) {
+	case VB2_ERROR_FLASHROM_INIT:
 		goto err_init;
-	}
-	if (flashrom_flash_probe(&flashctx, prog, NULL)) {
-		r = -1;
+	case VB2_ERROR_FLASHROM_PROBE:
 		goto err_probe;
+	default:
+		r = VB2_SUCCESS;
 	}
 
 	*flash_len = flashrom_flash_getsize(flashctx);
@@ -454,9 +439,9 @@ vb2_error_t flashrom_get_size(const char *prog_with_params, uint32_t *flash_len,
 	flashrom_flash_release(flashctx);
 
 err_probe:
-	r |= flashrom_programmer_shutdown(prog);
+	if (flashrom_programmer_shutdown(prog) && r == VB2_SUCCESS)
+		r = VB2_ERROR_FLASHROM;
 
 err_init:
-	free(tmp);
-	return r ? VB2_ERROR_FLASHROM : VB2_SUCCESS;
+	return r;
 }
