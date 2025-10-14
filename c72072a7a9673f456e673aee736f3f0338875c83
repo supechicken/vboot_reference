@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a463ead1_abd12e3c",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-14T03:40:48Z",
+      "side": 1,
+      "message": "Can we use `/* ... */` for consistency (and other comments in other files)?",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a157df4e_16ab6e73",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-14T03:40:48Z",
+      "side": 1,
+      "message": "I think we should provide a single API to support reading the full image. Right now `flashrom_read_image(image, NULL, 0, verbose)` already supports it, so I don\u0027t think we need to support `region \u003d\u003d NULL` here (and `flashrom_write_region`). The crossystem code doesn\u0027t pass `region \u003d NULL` anyway.\n\nIf the caller wants to read the entire flash, IMO it shouldn\u0027t use this function.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 75
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051180e5_9011bcd1",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-14T03:40:48Z",
+      "side": 1,
+      "message": "Could you explain why this change is needed? What\u0027s wrong with returning an error if `image-\u003esize !\u003d len`? I don\u0027t see this mentioned in the commit message. Is this related to crossystem (if not and you think this change is necessary, please move to a separate patch)?",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 45
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43cd165a_39d98ea3",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-14T03:40:48Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 334,
+        "endChar": 74
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d96d00_a531c0c8",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-14T03:40:48Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 68,
+        "startChar": 61,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46732e36_9ffecc56",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-14T03:40:48Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 110,
+        "startChar": 60,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
