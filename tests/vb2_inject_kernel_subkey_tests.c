@@ -143,13 +143,6 @@ int WriteAndFreeGptData(vb2ex_disk_handle_t disk_handle, GptData *gptdata)
 	return GPT_SUCCESS;
 }
 
-void GetCurrentKernelUniqueGuid(GptData *gpt, void *dest)
-{
-	static const char fake_guid[] = "FakeGuid";
-
-	memcpy(dest, fake_guid, sizeof(fake_guid));
-}
-
 bool IsChromeOS(const GptEntry *e)
 {
 	return true;
@@ -240,7 +233,6 @@ static void load_kernel_tests(void)
 	TEST_EQ(lkp.partition_number, 1, "  part num");
 	TEST_EQ(lkp.bootloader_offset, 0xbeadd008, "  bootloader offset");
 	TEST_EQ(lkp.bootloader_size, 0x1234, "  bootloader size");
-	TEST_STR_EQ((char *)lkp.partition_guid, "FakeGuid", "  guid");
 	TEST_EQ(gpt_flag_external, 0, "GPT was internal");
 	TEST_NEQ(sd->flags & VB2_SD_FLAG_KERNEL_SIGNED, 0, "  use signature");
 
