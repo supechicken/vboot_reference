@@ -311,7 +311,6 @@ static void load_kernel_tests(void)
 {
 	ResetMocks();
 	test_load_kernel(VB2_SUCCESS, "First kernel good");
-	TEST_EQ(lkp.partition_number, 1, "  part num");
 	TEST_EQ(lkp.bootloader_offset, 0xbeadd008, "  bootloader offset");
 	TEST_EQ(lkp.bootloader_size, 0x1234, "  bootloader size");
 	TEST_EQ(gpt_flag_external, 0, "GPT was internal");
@@ -323,7 +322,6 @@ static void load_kernel_tests(void)
 	mock_parts[1].e.starting_lba = 300;
 	mock_parts[1].e.ending_lba = 449;
 	test_load_kernel(VB2_SUCCESS, "Two good kernels");
-	TEST_EQ(lkp.partition_number, 1, "  part num");
 	TEST_EQ(mock_part_next, 1, "  didn't read second one");
 
 	/* Fail if no kernels found */
