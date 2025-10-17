@@ -142,6 +142,24 @@
       "parentUuid": "d7a5de29_81902436",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfeadc33_c41133ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-10-17T10:26:31Z",
+      "side": 1,
+      "message": "\u003e adding something like kasan.freeze\u003dyes would introduce the complexities in the parsing of cmdline string\n\nI think the reason Alice mentioned `kasan.freeze` is that, we don\u0027t need to parse the cmdline string. However, like you said, apparently that would work only for boolean properties. Therefore, as we\u0027re going to parse cmdline for other properties, `kasan.freeze` doesn\u0027t give us any benefit.\n\n\u003e Yes, I am thinking about whether we should move all the MTE stuffs to `fill_info_gki`. Because the cmdline is finalized in that function.\n\nEven if we remove the `WriteAndFreeGptData` call in `vb2api_load_kernel`, we\u0027ll still need to call `alloc_gpt` in `fill_info_gki`, right? Then we will still have the \"parsing GPT twice\" problem as in CL:6887991 PS2.\n\n\u003e It appears that both `fastboot oem cmdline` and `commandline_append` should also be taken into this consideration.\n\nSorry, I missed this comment previously. Following the [design doc](https://docs.google.com/document/d/1O31UJzI5WWN8VsOJl-woCSDYlocoPiYIJ5xC61KI3fo/edit?usp\u003dsharing), I think for Android firmware, no platform code (board.c) is supposed to set kasan properties via `commandline_append`. Also, oem cmdline will be read only in dev mode (or when VB2_GBB_FLAG_FORCE_UNLOCK_FASTBOOT is set), so that doesn\u0027t seem to be important. IMO MTE settings should be changed via `fastboot oem mte` instead of `fastboot oem cmdline`. So if people set conflicting properties in `oem mte` vs `oem cmdline`, the behavior is undefined. We may need to discuss with MTE owner @jeffxu@google.com and fastboot owner @tmichalec@google.com about this.",
+      "parentUuid": "804e89aa_f0dfcb84",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
