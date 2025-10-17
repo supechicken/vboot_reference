@@ -160,6 +160,24 @@
       "parentUuid": "804e89aa_f0dfcb84",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1ab945_d1ad57d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-10-17T14:04:58Z",
+      "side": 1,
+      "message": "I am okay with adding `fastboot oem mte` which just flips bits on `misc` partition. `fastboot oem cmdline` should be only used by developers, so I don\u0027t think that we should care if someone uses it to pass mte properties again. `oem cmdline` allows to add anything and FW isn\u0027t verifying it, so already it is possible to create something unexpected.",
+      "parentUuid": "dfeadc33_c41133ac",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
