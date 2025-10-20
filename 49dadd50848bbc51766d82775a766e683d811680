@@ -196,6 +196,24 @@
       "parentUuid": "fc1ab945_d1ad57d4",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41f2999_b70ea850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2025-10-20T10:26:24Z",
+      "side": 1,
+      "message": "AFAIK `misc` isn\u0027t wiped when switching to normal mode. But in normal mode, commandline/bootconfig (that was set using `fastboot oem cmdline/bootconfig`) isn\u0027t appended to the kernel commandline (unless `GBB_FLAG_FORCE_UNLOCK_FASTBOOT` is set). When you switch back to dev mode/set fastboot GBB flag, then bootloader will use again whatever was set on the `misc` partition before.",
+      "parentUuid": "8336118b_5a55a111",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
