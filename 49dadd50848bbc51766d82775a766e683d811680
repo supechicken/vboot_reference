@@ -178,6 +178,24 @@
       "parentUuid": "dfeadc33_c41133ac",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8336118b_5a55a111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-20T04:09:48Z",
+      "side": 1,
+      "message": "According to\n\u003e In Android, you can change the property via adb in developer mode. Unlike in ChromeOS dev mode, the property will remain after switching back to normal mode.[1]\n\nIIUC, MTE setting can be written in `Android development mode`, the setting will remain on misc partition after switching to normal mode.\n\n\u003e fastboot oem cmdline should be only used by developers,\n\n@tmichalec@google.com If we set cmdline when the FW is switching to dev mode (ChromeOS definiton), will the cmdline remain after FW is switching to normal mode ? Will misc partition be wiped out or formatted to a initial state after switching to normal mode ?\n\n\n[1]: https://docs.google.com/document/d/1O31UJzI5WWN8VsOJl-woCSDYlocoPiYIJ5xC61KI3fo/edit?disco\u003dAAABsU49178",
+      "parentUuid": "fc1ab945_d1ad57d4",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
