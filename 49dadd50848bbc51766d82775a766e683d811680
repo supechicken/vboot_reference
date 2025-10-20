@@ -214,6 +214,24 @@
       "parentUuid": "8336118b_5a55a111",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4444694_de85220e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-20T10:26:29Z",
+      "side": 1,
+      "message": "It looks like the [cmdline] saved in misc partition is ignored in normal mode. I will simplify MTE request handling by following order in `side vb2_load_android`.\n\n```\nvb2_load_android () {\n    vb2ex_get_android_bootmode\n    avb_slot_verify (partitions depending on bootmode)\n    rearrange_partitions(params) // read kernel cmdline from vendor\n\n    // vb2ex_android_set_up_mte()\n    // 1. read memtag_mode from misc\n    // 2. Parse params-\u003ereal_cmdline_ptr and do logic OR with memtag_mode\n    // 3. Update params-\u003ereal_cmdline_ptr accordingly.\n    vb2ex_android_set_up_mte(gpt, params)\n}\n```\nIn the development mode (either Android or ChromeOS definition), the developer should be responsible for the order of cmdline coming from `fastboot oem cmdline` and `fastboot oem mte`.\n\n@jwerner@chromium.org @yupingso@chromium.org what do you think ?\n\n[cmdline]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/depthcharge/src/vboot/boot_info.c;l\u003d236",
+      "parentUuid": "8336118b_5a55a111",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
