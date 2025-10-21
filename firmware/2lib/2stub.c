@@ -66,6 +66,13 @@ vb2_error_t vb2ex_get_android_bootmode(struct vb2_context *ctx,
 	return VB2_SUCCESS;
 }
 
+__attribute__((weak)) vb2_error_t vb2ex_android_mte_setup(vb2ex_disk_handle_t disk,
+							  GptData *gpt,
+							  struct vb2_kernel_params *params)
+{
+	return VB2_SUCCESS;
+}
+
 /*****************************************************************************/
 /* TPM-related stubs */
 
