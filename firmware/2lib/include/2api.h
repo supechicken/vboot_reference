@@ -1119,6 +1119,21 @@ vb2_error_t vb2ex_get_android_bootmode(struct vb2_context *ctx,
 				       GptData *gpt,
 				       enum vb2_android_bootmode *bootmode);
 
+/**
+ * Setup MTE
+ *
+ * vb2ex_android_mte_setup reads memtag_mode from misc partition and sets the
+ * the kernel command line accordingly.
+ *
+ * @param disk		Pointer to the disk
+ * @param gpt		Pointer to the GPT from the disk
+ * @param params	Params specific to loading the kernel
+ * @return VB2_SUCCESS, or non-zero error code.
+ */
+vb2_error_t vb2ex_android_mte_setup(vb2ex_disk_handle_t disk,
+				    GptData *gpt,
+				    struct vb2_kernel_params *params);
+
 /*****************************************************************************/
 /* TPM functionality */
 

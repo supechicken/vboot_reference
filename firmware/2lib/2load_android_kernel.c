@@ -460,7 +460,10 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		goto out;
 
 	rv = prepare_dtb(verify_data, params);
+	if (rv)
+		goto out;
 
+	rv = vb2ex_android_mte_setup(disk_handle, gpt, params);
 out:
 	/* No need for slot data */
 	if (verify_data != NULL)
