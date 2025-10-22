@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e6971b_f72c015e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-10-22T16:59:30Z",
+      "side": 1,
+      "message": "actually, I think the original \"get\" works better.\n\nEventually, vb2_load_android could be the place to reserve the memory for MTE, right ?\n\nI expect vb2_load_android() do 3 steps.\n1\u003e retrieve the mte info from asop image\n2\u003e retrieve the mte info from misc partition\n3\u003e decide the mte mode, reserve memory, setup kernel cmdline.\n\n1,2,3 can be sub-functions, see go/es-code\n\nThis is better than passing kernel cmdline buffer inside vb2ex_handle_android_misc_partition, iiuc, misc partition only exists in android and not chromeOS.",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 41
+      },
+      "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
