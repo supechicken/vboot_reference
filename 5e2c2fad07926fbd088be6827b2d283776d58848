@@ -16,6 +16,46 @@
       "message": "Polished and fixed version of crrev.com/c/6734102",
       "revId": "5e2c2fad07926fbd088be6827b2d283776d58848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e932f0_50ae2f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-22T06:55:37Z",
+      "side": 1,
+      "message": "Please rebase this patch against the latest main branch, as my CL:6959029 has recently landed and caused a conflict/is required here. Thanks!",
+      "revId": "5e2c2fad07926fbd088be6827b2d283776d58848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00aba7bd_a6032562",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-22T06:55:37Z",
+      "side": 1,
+      "message": "With CL:6959029 we now return vb2_error_t for all the flashrom.h functions. We might want to add those errors directly into 2return_codes.h",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "5e2c2fad07926fbd088be6827b2d283776d58848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
