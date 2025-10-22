@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a199d6_4569380f",
+        "filename": "firmware/2lib/include/2api.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-10-22T17:11:29Z",
+      "side": 1,
+      "message": "there is no need to pass cmdline string, which makes vb2ex_handle_android_misc_partition  tightly coupled with the data structure that stores cmdline buffer.\n\nWe could let caller to pass in a data structure to retrieve the MTE related information in misc partition, then caller to process cmdline buffer.",
+      "range": {
+        "startLine": 1107,
+        "startChar": 7,
+        "endLine": 1107,
+        "endChar": 14
+      },
+      "revId": "679d96b238c72488775168d5f51ab867fcf4f2ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
