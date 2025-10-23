@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a46b0002_8e75c09b",
+        "filename": "host/lib/flashrom.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-23T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a463ead1_abd12e3c",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a157df4e_16ab6e73",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-14T03:40:48Z",
       "side": 1,
       "message": "I think we should provide a single API to support reading the full image. Right now `flashrom_read_image(image, NULL, 0, verbose)` already supports it, so I don\u0027t think we need to support `region \u003d\u003d NULL` here (and `flashrom_write_region`). The crossystem code doesn\u0027t pass `region \u003d NULL` anyway.\n\nIf the caller wants to read the entire flash, IMO it shouldn\u0027t use this function.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 75
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78844ee_05097129",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-23T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a157df4e_16ab6e73",
       "range": {
         "startLine": 160,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17abb3d0_a52c4f7c",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-23T11:17:36Z",
+      "side": 1,
+      "message": "We are actually merging 4 different functionalities:\n\n1. flashrom_write_image() with zero regions_len:\n  Will perform a full image write. image-\u003esize \u003d\u003d len is expected. In this scenario, the whole image-\u003edata will write into system flash.\n  \n2. flashrom_write_image() with non-zero regions_len:\n  Will perform a partial image write. image-\u003esize \u003d\u003d len is expected. In this scenario, we will only write the specified regions from image to system flash.\n  \n3. flashrom_write() with NULL region:\n  Will perform a full image write. This is exactly the same as case 1. (Not really in use in any part of vboot_reference).\n  \n4. flashrom_write() with a specific region. This is why we need image-\u003esize !\u003d len. In this case, image will only contains the exact size that equals to the selected region. that\u0027s what the \"if\" does here.\n\nSo what about making things more clear:\n\na. Make a static helper flashrom_write_image_impl() to prevent confusiion\n\nb. Merging 1,2,3, into flashrom_write_image() (full layout update)\n\nc. Make 4 to be flashrom_write_region(), also disallow user to call flashrom_write_region() without specifying region. (fitted region update)",
+      "parentUuid": "051180e5_9011bcd1",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 45
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43cd165a_39d98ea3",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 17
@@ -83,6 +155,30 @@
       "writtenOn": "2025-10-14T03:40:48Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 334,
+        "endChar": 74
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffeba2c_523949f6",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-23T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43cd165a_39d98ea3",
       "range": {
         "startLine": 332,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfbb67b3_880c30a6",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-23T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15d96d00_a531c0c8",
+      "range": {
+        "startLine": 68,
+        "startChar": 61,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46732e36_9ffecc56",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-10-14T03:40:48Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 110,
+        "startChar": 60,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aece2e2d_b79f8c5c",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-10-23T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46732e36_9ffecc56",
       "range": {
         "startLine": 110,
         "startChar": 60,
