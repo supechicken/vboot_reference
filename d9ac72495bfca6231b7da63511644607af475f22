@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b054cc_b4d3990a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T00:16:04Z",
+      "side": 1,
+      "message": "Note that while this patch is WIP I won\u0027t get email updates if you upload a new version, so you should usually clear the WIP once you want to get reviews.",
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1466aec2_84dbfbc9",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T00:16:04Z",
+      "side": 1,
+      "message": "I think we should treat this as a 32-bit number, not a 16-bit number, because that\u0027s what we\u0027re storing in `sd-\u003ekernel_version` as well. We\u0027ll only use the lower 16 bits for the time being, but the upper might come in handy for eventualities down the line (like I mentioned on a comment in your doc). Also, for devices migrating from ChromeOS the upper 16 will already be at least 0x0001 anyway.",
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3eafc06_17fa2cce",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T00:16:04Z",
+      "side": 1,
+      "message": "I am a bit concerned that there is no mechanism from AVB (other than the return code and \"trust that they didn\u0027t miss a case\") to clearly indicate that this field was initialized correctly. I think we should initialize it to some sentinel value like `~(uint64_t)0` before calling `avb_slot_verify()`, and then confirm that it\u0027s not that anymore before we trust it here.",
+      "range": {
+        "startLine": 421,
+        "startChar": 35,
+        "endLine": 421,
+        "endChar": 64
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "064312ce_e9322483",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T00:16:04Z",
+      "side": 1,
+      "message": "nit: Let\u0027s put this at the top of the function just because most functions have it there.",
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e9a129_4e3d3b2a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T00:16:04Z",
+      "side": 1,
+      "message": "No, I don\u0027t think there would be any point in doing this. We should use the entire value given to us in the partition (at least as much as fits in our 32 bits), and then make sure that it gets generated to match what we need on the builder side.",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a68c5e_d9b520d6",
+        "filename": "firmware/2lib/include/2return_codes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T00:16:04Z",
+      "side": 1,
+      "message": "nit: let\u0027s name this `VB2_ERROR_ANDROID_ROLLBACK_VERSION_RANGE` for consistency with the likes of `VB2_ERROR_KERNEL_PREAMBLE_VERSION_RANGE`.",
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43fe3d69_7c61a8ca",
+        "filename": "firmware/avb/vboot_avb_ops.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T00:16:04Z",
+      "side": 1,
+      "message": "Again, should pass in the whole 32 bits.",
+      "range": {
+        "startLine": 293,
+        "startChar": 24,
+        "endLine": 293,
+        "endChar": 60
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
