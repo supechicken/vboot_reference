@@ -268,6 +268,24 @@
       "parentUuid": "d688ede5_5cbb7324",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba38ed0_bf7617f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-25T01:20:48Z",
+      "side": 1,
+      "message": "Apologies for not keeping up with this discussion in time. However, I\u0027m not a fan of the current outcome. In order to follow the latest approach discussed on Jeff\u0027s doc (with \"fake\" command line arguments parsed by depthcharge that then get combined with the misc partition state into real arguments), and to keep details about the (platform-specific) MTE stuff out of vboot, I would prefer different approach:\n\nWe should keep the concept of `vb2ex_handle_android_misc_partition()`, even if it may later need to be moved before `avb_slot_verify()`. However, we can\u0027t pass the MTE state back out as a command line argument string because the final command line arguments are not decided yet (we need to combine it with the \"fake\" arguments from the actual command line first, and I believe the cleanest point to do that would be after `commandline_subst()` when the full, final command line with all `commandline_append()` bits is assembled). So `vb2ex_handle_android_misc_partition()` no longer needs the `extra_commandline` output parameter, and should instead store the MTE state requested by the misc partition in a different way (e.g. just as the `memtag_mode` integer bitfield that was read from the misc partition) for later until we also have the other pieces at hand and can combine them. I believe it should be fine to just use a static global variable in depthcharge for that, as long as we make sure that that variable is overwritten on every call to `vb2ex_handle_android_misc_partition()` (because we know that function will be called again for every boot attempt).\n\nThen in `arch/arm/fit.c:update_chosen()`, right after the final command line is assembled, we should call into a different function in `android_mte.c` and pass it the `cmd_line_buf` and size. That function will then parse the \"fake\" argument (e.g. `bl.mtectl\u003d` or however we\u0027re calling it) out of that command line, and combine it with the `memtag_mode` stored in the global variable into the final requested MTE state. Then it will just append the arguments that result from that at the end of `cmd_line_buf` (which is going to have free space left at that point so we don\u0027t need to deal with string allocation or copying).\n\nDoes that seem like a reasonable approach?",
+      "parentUuid": "910987f4_e1f34d31",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
