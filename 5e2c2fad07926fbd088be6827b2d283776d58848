@@ -56,6 +56,30 @@
       },
       "revId": "5e2c2fad07926fbd088be6827b2d283776d58848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f300188_30ab72bf",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-10-26T14:00:06Z",
+      "side": 1,
+      "message": "Good idea. In the future, we should add the rest of the possible error codes and return them from the flashrom.h functions. Maybe I will make a different CL for that.",
+      "parentUuid": "00aba7bd_a6032562",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "5e2c2fad07926fbd088be6827b2d283776d58848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
