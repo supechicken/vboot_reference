@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28f7d5fc_2b14ea1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-10-27T16:16:24Z",
+      "side": 1,
+      "message": "may I ask what is the benefit?\n\nThis patch seems moving away from what we agreed on using the new c structure to get mte ctrl info from aosp image and misc partition.\n\nI m reopen the other comment,",
+      "parentUuid": "bd1260f1_cd36a694",
+      "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6e6971b_f72c015e",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 5
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "You can ignore this patch. I will abandon it soon.",
       "parentUuid": "c6e6971b_f72c015e",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 41
+      },
+      "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bf7c80_7baa966e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-10-27T16:16:24Z",
+      "side": 1,
+      "message": "Marked as unresolved.\nSince it seems this patch won\u0027t be abandoned ?",
+      "parentUuid": "f42c0300_67895e1f",
       "range": {
         "startLine": 414,
         "startChar": 6,
