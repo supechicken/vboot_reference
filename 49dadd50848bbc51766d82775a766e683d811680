@@ -304,6 +304,24 @@
       "parentUuid": "aba38ed0_bf7617f6",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86cad787_7c64dde0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-27T08:36:42Z",
+      "side": 1,
+      "message": "Revice the call inside `vboot_boot_kernel`.\n\n```\nvboot_boot_kernel()\n{\n   ...\n   if (bi.cmd_line) {\n      if (commandline_subst())\n          ....\n      ...\n      mte_finalize_cmdline(cmd_line_buf, sizeof(cmd_line_buf));\n      ...\n   }\n\n   post_code(POST_CODE_CROSSYSTEM_SETUP);\n   ...\n}\n```",
+      "parentUuid": "54360b8a_32df6912",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
