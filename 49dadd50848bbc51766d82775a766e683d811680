@@ -286,6 +286,24 @@
       "parentUuid": "910987f4_e1f34d31",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54360b8a_32df6912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-27T07:19:27Z",
+      "side": 1,
+      "message": "\u003e Then in arch/arm/fit.c:update_chosen(), right after the final command line is assembled, we should call into a different function in android_mte.c and pass it the cmd_line_buf and size.\n\nThere is no such `update_chosen()` function in `arch/arm/fit.c`. If you are referring to `update_cmdline()`, neither CrOS kernel nor AL kernel would call to this function due to below if statement.\n```\nif (bi-\u003ecmd_line \u003d\u003d NULL)\n    update_cmdline(bi, tree);\n```\nIf you are referring to `src/boot/dt_update.c:dt_update_chosen()`, there is no size info passed to that function.\n\nIt looks to me that `src/vboot/stages.c: vboot_boot_kernel()` is the right place to handle the final MTE kernel cmdline.\n\n```\nvboot_boot_kernel()\n{\n   ...\n   if (bi.cmd_line) {\n      if (commandline_subst())\n          ....\n      ...\n   }\n\n   mte_finalize_cmdline(cmd_line_buf, sizeof(cmd_line_buf));\n\n   post_code(POST_CODE_CROSSYSTEM_SETUP);\n}\n```\n\nIf you are fine with above approach, I will update the design doc based on Julius\u0027 comment and this comment. And we can move the discusstion to the doc.",
+      "parentUuid": "aba38ed0_bf7617f6",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
