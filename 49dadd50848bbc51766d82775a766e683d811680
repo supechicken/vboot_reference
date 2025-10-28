@@ -322,6 +322,24 @@
       "parentUuid": "54360b8a_32df6912",
       "revId": "49dadd50848bbc51766d82775a766e683d811680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "922a4e27_30cee9b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-28T00:54:28Z",
+      "side": 1,
+      "message": "Oh, sorry, guess I followed the wrong flow. Thanks for keeping me honest!\n\nI was hoping to find an architecture-specific point where the command line was finalized for all Arm platforms, but I guess that doesn\u0027t exist. In that case, putting it into `vboot_boot_kernel()` with an `if (CONFIG(ANDROID_MTE))` in front of it sounds like the next best option, provided that we actually go through there in all boot flows. As far as I can tell(?), after the recent simplifications in `fill_boot_info()`, `bi.cmd_line` should always be set at that point? It looks like we just missed a bit of extra cleanup, so let\u0027s remove the `if (bi.cmd_line)` wrapper there, and remove the no longer needed `update_cmdline()` function from `arm/fit.c`.",
+      "parentUuid": "86cad787_7c64dde0",
+      "revId": "49dadd50848bbc51766d82775a766e683d811680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
