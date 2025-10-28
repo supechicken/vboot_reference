@@ -129,6 +129,30 @@
       },
       "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece007db_35aabfd6",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-10-28T04:10:31Z",
+      "side": 1,
+      "message": "\u003eThis function is repurposed to retrieve the data from the misc partition. \n\nHow about changing the name to \nvb2ex_get_android_misc_partition()\n\n\"Handle\" implies there are actions.",
+      "parentUuid": "03a7721b_efc041fc",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 41
+      },
+      "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
