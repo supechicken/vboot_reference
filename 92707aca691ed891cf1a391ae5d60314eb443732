@@ -105,6 +105,30 @@
       },
       "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a7721b_efc041fc",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1544412
+      },
+      "writtenOn": "2025-10-28T00:58:06Z",
+      "side": 1,
+      "message": "\u003e 1\u003e retrieve the mte info from asop image\n\u003e 2\u003e retrieve the mte info from misc partition\n\u003e 3\u003e decide the mte mode, reserve memory, setup kernel cmdline.\n\nThis function is repurposed to retrieve the data from misc partition. It will call to a function in android_mte.c to read memtag_mode value and update the value to back to misc partition if _ONCE bit exists.\n\nLater on, the full kernel cmdline is determined (all `commandline_append` is assembled.) in `src/vboot/stages.c: vboot_boot_kernel()`. At this point, another function in android_mte.c is called. The cmdline is passed to this function.\n\nThis function will extract mte ctrl value from cmdline then decide the final MTE mode with saved memtag_mode value.\n\nFinally, the final kernel cmdline and reserved memory will be determined based on the final mode.\n\nRefer to the below discussion for the details.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/6979706/comments/d03f13d2_5fc17eee",
+      "parentUuid": "81bf7c80_7baa966e",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 41
+      },
+      "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
