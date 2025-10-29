@@ -206,6 +206,14 @@ vb2_error_t flashrom_read_region(struct firmware_image *image, const char *regio
 	return flashrom_read_image_impl(image, regions, ARRAY_SIZE(regions), true, verbosity);
 }
 
+vb2_error_t flashrom_write_image(const struct firmware_image *image,
+				 const char *const regions[], size_t regions_len,
+				 const struct firmware_image *diff_image, bool do_verify,
+				 int verbosity)
+{
+
+}
+
 vb2_error_t flashrom_write_region(const struct firmware_image *image, const char *region,
 				  bool do_verify, int verbosity)
 {
