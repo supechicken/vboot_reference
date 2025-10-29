@@ -234,7 +234,8 @@ static vb2_error_t prepare_pvmfw(AvbSlotVerifyData *verify_data,
  */
 static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 					struct vb2_kernel_params *params,
-					bool recovery_boot)
+					bool recovery_boot,
+					const char *extra_cmdline)
 {
 	struct vendor_boot_img_hdr_v4 *vendor_hdr;
 	struct boot_img_hdr_v4 *init_hdr;
@@ -295,6 +296,31 @@ static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 	vendor_hdr->cmdline[sizeof(vendor_hdr->cmdline) - 1] = '\0';
 	params->real_cmdline_ptr = (char *)vendor_hdr->cmdline;
 
+	/* Append extra_cmdline */
+	if (extra_cmdline) {
+		size_t orig_len = strlen(params->real_cmdline_ptr);
+		size_t new_len = strlen(extra_cmdline);
+
+		/*
+		 *  Verify if the combined length of the original and new command-line
+		 *  arguments, plus a '\0' and a space, fits within the `cmdline` buffer.
+		 *  This buffer uses all remaining space in the vendor_boot_img_hdr_v4 structure
+		 *  beyond the `cmdline` field, as subsequent fields are currently unused.
+		 */
+		if (orig_len + new_len + 2 <=
+		    (sizeof(struct vendor_boot_img_hdr_v4) -
+		     offsetof(struct vendor_boot_img_hdr_v4, cmdline))) {
+			params->real_cmdline_ptr[orig_len] = ' ';
+			memcpy(params->real_cmdline_ptr + orig_len + 1, extra_cmdline,
+			       new_len + 1);
+		} else {
+			VB2_DEBUG("ERROR: Insufficient buffer for extra command line: %s\n"
+				  "Continue the boot sequence\n",
+				  extra_cmdline);
+			return VB2_ERROR_ANDROID_CMDLINE_BUF_TOO_SMALL;
+		}
+	}
+
 	return VB2_SUCCESS;
 }
 
@@ -329,7 +355,6 @@ static vb2_error_t prepare_dtb(AvbSlotVerifyData *verify_data,
 vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *entry,
 			     struct vb2_kernel_params *params, vb2ex_disk_handle_t disk_handle)
 {
-	enum vb2_android_bootmode bootmode = VB2_ANDROID_NORMAL_BOOT;
 	AvbSlotVerifyData *verify_data = NULL;
 	AvbOps *avb_ops;
 	AvbSlotVerifyFlags avb_flags;
@@ -339,6 +364,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	size_t partition_count = 0;
 	const char *slot_suffix = NULL;
 	bool need_verification = vb2_need_kernel_verification(ctx);
+	struct vb2_android_misc_data misc_data = {};
 
 	boot_partitions[partition_count++] = GptPartitionNames[GPT_ANDROID_BOOT];
 	boot_partitions[partition_count++] = GptPartitionNames[GPT_ANDROID_INIT_BOOT];
@@ -411,12 +437,12 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	if (rv != VB2_SUCCESS)
 		goto out;
 
-	rv = vb2ex_get_android_bootmode(ctx, disk_handle, gpt, &bootmode);
+	rv = vb2ex_handle_android_misc_partition(ctx, disk_handle, gpt, &misc_data);
 	if (rv != VB2_SUCCESS) {
 		VB2_DEBUG("Unable to get android bootmode\n");
 		goto out;
 	}
-	bool recovery_boot = bootmode == VB2_ANDROID_RECOVERY_BOOT;
+	bool recovery_boot = misc_data.bootmode == VB2_ANDROID_RECOVERY_BOOT;
 
 	/*
 	 * Before booting we need to rearrange buffers with partition data, which includes:
@@ -424,7 +450,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	 * - remove unused ramdisks depending on boot type (normal/recovery)
 	 * - concatenate ramdisks from vendor_boot & init_boot partitions
 	 */
-	rv = rearrange_partitions(avb_ops, params, recovery_boot);
+	rv = rearrange_partitions(avb_ops, params, recovery_boot, misc_data.cmdline);
 	if (rv)
 		goto out;
 
