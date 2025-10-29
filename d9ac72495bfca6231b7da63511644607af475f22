@@ -100,6 +100,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06364c50_992bae51",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-10-29T13:51:05Z",
+      "side": 1,
+      "message": "I am not quite sure I understand the comment. Are you saying that we should get the key version at the build time and pass it into rollback index?",
+      "parentUuid": "e0e9a129_4e3d3b2a",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
