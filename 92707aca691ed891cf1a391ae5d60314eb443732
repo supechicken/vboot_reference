@@ -177,6 +177,30 @@
       },
       "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7160144_5b750b2f",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-10-30T20:04:45Z",
+      "side": 1,
+      "message": "ok. When all of the required stepes are processed inside vb2ex_handle_android_misc_partition, I agree there should be a name change.",
+      "parentUuid": "025a4a52_6a3e2323",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 41
+      },
+      "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
