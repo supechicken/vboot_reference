@@ -153,6 +153,30 @@
       },
       "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025a4a52_6a3e2323",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-10-30T19:57:37Z",
+      "side": 1,
+      "message": "I think \"handle\" is the correct term, this function does perform actions. If we\u0027re following the flow I proposed in CL:6979706, then this function won\u0027t return the MTE state here, it will just cause depthcharge to store it in a global, so calling it \"get\" would be misleading because it mutates depthcharge\u0027s internal state. (Also \"get_misc_partition\" sounds like it would return the entire partition, which it doesn\u0027t do anyway.)",
+      "parentUuid": "ece007db_35aabfd6",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 41
+      },
+      "revId": "92707aca691ed891cf1a391ae5d60314eb443732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
