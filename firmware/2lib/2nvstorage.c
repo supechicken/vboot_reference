@@ -63,12 +63,14 @@ void vb2_nv_init(struct vb2_context *ctx)
 			VB2_NV_HEADER_SIGNATURE_V2 : VB2_NV_HEADER_SIGNATURE_V1;
 	struct vb2_shared_data *sd = vb2_get_sd(ctx);
 	uint8_t *p = ctx->nvdata;
+	VB2_DEBUG("%s\n", __func__);
 
 	if (sd->status & VB2_SD_STATUS_NV_INIT)
 		return;
 
 	/* Check data for consistency */
 	if (vb2_nv_check_crc(ctx) != VB2_SUCCESS) {
+		VB2_DEBUG("%s: crc invalid\n", __func__);
 		/* Data is inconsistent (bad CRC or header); reset defaults */
 		memset(p, 0, VB2_NVDATA_SIZE_V2);
 		p[VB2_NV_OFFS_HEADER] = (sig |
@@ -83,6 +85,7 @@ void vb2_nv_init(struct vb2_context *ctx)
 
 		/* TODO: unit test for status flag being set */
 	} else {
+		VB2_DEBUG("%s: crc success\n", __func__);
 #ifndef CHROMEOS_ENVIRONMENT
 		/* Always clear this on first reboot that didn't need reinit. */
 		vb2_nv_set(ctx, VB2_NV_FIRMWARE_SETTINGS_RESET, 0);
