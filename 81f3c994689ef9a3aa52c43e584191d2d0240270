@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43167a1_3fd8fe12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-01T05:06:03Z",
+      "side": 1,
+      "message": "LGTM after nits",
+      "revId": "81f3c994689ef9a3aa52c43e584191d2d0240270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa79ac2_87742129",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-01T05:06:03Z",
+      "side": 1,
+      "message": "nit: this one too?",
+      "revId": "81f3c994689ef9a3aa52c43e584191d2d0240270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d82f390_99762d86",
+        "filename": "firmware/lib20/kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-01T05:06:03Z",
+      "side": 1,
+      "message": "FWIW I *believe* this code is unused and should probably be deleted some day. But doesn\u0027t hurt to fix it too right now.",
+      "revId": "81f3c994689ef9a3aa52c43e584191d2d0240270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346475cd_5fb0c706",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-01T05:06:03Z",
+      "side": 1,
+      "message": "Did you forget something here? It looks like this is still testing recovery mode, and not the GBB flag.",
+      "revId": "81f3c994689ef9a3aa52c43e584191d2d0240270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
