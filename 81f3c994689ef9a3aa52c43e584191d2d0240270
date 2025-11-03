@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "55e0b8f4_869ee515",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-03T17:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa79ac2_87742129",
+      "revId": "81f3c994689ef9a3aa52c43e584191d2d0240270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4d82f390_99762d86",
         "filename": "firmware/lib20/kernel.c",
         "patchSetId": 4
@@ -65,6 +83,24 @@
       "writtenOn": "2025-11-01T05:06:03Z",
       "side": 1,
       "message": "Did you forget something here? It looks like this is still testing recovery mode, and not the GBB flag.",
+      "revId": "81f3c994689ef9a3aa52c43e584191d2d0240270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e308870_16ecfcc8",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-03T17:39:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346475cd_5fb0c706",
       "revId": "81f3c994689ef9a3aa52c43e584191d2d0240270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
