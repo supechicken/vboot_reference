@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51e2692_16084c9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-03T18:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0b435ef_ba431236",
+      "range": {
+        "startLine": 9,
+        "startChar": 63,
+        "endLine": 9,
+        "endChar": 74
+      },
+      "revId": "9cfe918e5dc53e2ffa9b81350a8690f542a2e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5921eb04_8498211e",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-10-31T10:11:06Z",
       "side": 1,
       "message": "Please use USE_FLASHROM\u003d1 make runtests to ensure the test items are really tested",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "9cfe918e5dc53e2ffa9b81350a8690f542a2e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "978abeac_1f7a8968",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-03T18:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5921eb04_8498211e",
       "range": {
         "startLine": 16,
         "startChar": 5,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "401f2cc5_ddc58d55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-03T18:28:59Z",
+      "side": 1,
+      "message": "First option is better in my opinion as well.",
+      "parentUuid": "8d21c694_2108d5ee",
+      "revId": "9cfe918e5dc53e2ffa9b81350a8690f542a2e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace266fd_c0a0ee9c",
@@ -77,6 +143,30 @@
       "writtenOn": "2025-10-31T10:11:06Z",
       "side": 1,
       "message": "In the default case we need to goto err_cleanup as well.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "9cfe918e5dc53e2ffa9b81350a8690f542a2e8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53c3fbc_62cd6053",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-03T18:28:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace266fd_c0a0ee9c",
       "range": {
         "startLine": 120,
         "startChar": 1,
