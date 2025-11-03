@@ -40,6 +40,7 @@ SRCDIR := $(shell pwd)
 BUILD = ${SRCDIR}/build
 export BUILD
 LIBAVB_SRCDIR ?= firmware/avb/libavb
+BORINGSSL_SRCDIR ?= firmware/boringssl/
 
 # Stuff for 'make install'
 INSTALL = install

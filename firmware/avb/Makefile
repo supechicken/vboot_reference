@@ -28,23 +28,16 @@ LIBAVB_SRCS += \
 	${LIBAVB_SRCDIR}/libavb/avb_vbmeta_image.c \
 	${LIBAVB_SRCDIR}/libavb/avb_version.c \
 
-ifneq (,$(filter x86 x86_64,${ARCH}))
-LIBAVB_SRCS += \
-	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_hw_accelerator.c \
-	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_x86.c \
-	${LIBAVB_SRCDIR}/libavb/sha/sha512_impl_hw_accelerator.c
-else ifneq (,$(filter arm arm64,${ARCH}))
-LIBAVB_SRCS += \
-	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_hw_accelerator.c \
-	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl_arm.c \
-	${LIBAVB_SRCDIR}/libavb/sha/sha512_impl_hw_accelerator.c
+ifneq ($(strip $(filter-out 0,${X86_SHA_EXT} ${ARMV8_CRYPTO_EXT})),)
+#Use the hardware-accelerated wrapper
+LIBAVB_SRCS += 	${BORINGSSL_SRCDIR}/crypto/fipsmodule/sha/sha256.c \
+				${LIBAVB_SRCDIR}/libavb/boringssl/sha.c
 else
-LIBAVB_SRCS += \
-	${LIBAVB_SRCDIR}/libavb/sha/sha256_impl.c \
-	${LIBAVB_SRCDIR}/libavb/sha/sha512_impl.c
+# Use the software implementation as a fallback
+LIBAVB_SRCS += ${LIBAVB_SRCDIR}/libavb/sha/sha256_impl.c
 endif
 
-CFLAGS += -DUSE_LIBAVB -Ifirmware/avb -I${LIBAVB_SRCDIR} -I${LIBAVB_SRCDIR}/libavb
+CFLAGS += -DUSE_LIBAVB -Ifirmware/avb -I${LIBAVB_SRCDIR} -I${LIBAVB_SRCDIR}/libavb -I${BORINGSSL_SRCDIR}/ -I${BORINGSSL_SRCDIR}/include
 AVB_CFLAGS += -DAVB_COMPILATION -I${LIBAVB_SRCDIR}/libavb/sha
 
 # TODO(b/329135129): Fix maybe uninitialized variables in upstream libavb
@@ -56,9 +49,15 @@ AVB_CFLAGS += -Wno-strict-prototypes
 # Add avb-related objects to the fwlib library
 LIBAVB_OBJS = ${LIBAVB_SRCS:${LIBAVB_SRCDIR}/libavb/%.c=${BUILD}/libavb/%.o}
 FWLIB_OBJS += ${LIBAVB_OBJS}
+LIBAVB_OBJS := ${LIBAVB_OBJS:${BORINGSSL_SRCDIR}/crypto/fipsmodule/sha/%.c=${BUILD}/crypto/fipsmodule/sha/%.o}
 
 # Catch all avb-related objects and append extra cflags
 ${BUILD}/libavb/%.o: $(addprefix ${LIBAVB_SRCDIR}/libavb/,%.c)
+	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
+	${Q}mkdir -p $(dir $@)
+	${Q}${CC} ${CFLAGS} ${AVB_CFLAGS} ${INCLUDES} -c -o $@ $<
+
+${BUILD}/crypto/fipsmodule/sha/%.o: $(addprefix ${BORINGSSL_SRCDIR}/crypto/fipsmodule/sha/,%.c)
 	@${PRINTF} "    CC            $(subst ${BUILD}/,,$@)\n"
 	${Q}mkdir -p $(dir $@)
 	${Q}${CC} ${CFLAGS} ${AVB_CFLAGS} ${INCLUDES} -c -o $@ $<
