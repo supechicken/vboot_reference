@@ -40,12 +40,6 @@ endif
 CFLAGS += -DUSE_LIBAVB -Ifirmware/avb -I${LIBAVB_SRCDIR} -I${LIBAVB_SRCDIR}/libavb
 AVB_CFLAGS += -DAVB_COMPILATION -I${LIBAVB_SRCDIR}/libavb/sha
 
-# TODO(b/329135129): Fix maybe uninitialized variables in upstream libavb
-AVB_CFLAGS += -Wno-maybe-uninitialized
-
-# TODO(b/329411445): Fix func declaration without a prototype in upstream libavb
-AVB_CFLAGS += -Wno-strict-prototypes
-
 # Add avb-related objects to the fwlib library
 LIBAVB_OBJS = ${LIBAVB_SRCS:${LIBAVB_SRCDIR}/libavb/%.c=${BUILD}/libavb/%.o}
 LIBAVB_OBJS := ${LIBAVB_OBJS:firmware/avb/wrapper/%.c=${BUILD}/firmware/avb/wrapper/%.o}
