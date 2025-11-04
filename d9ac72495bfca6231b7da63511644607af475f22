@@ -124,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b60aeea6_c5581c64",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-04T19:06:01Z",
+      "side": 1,
+      "message": "I am saying that vboot firmware should take 32 bits from the index in vbmeta and compare it with the entire 32 bits from `sd-\u003ekernel_version_secdata`. So this code should just say\n```\n*kernel_version \u003d (uint32_t)verify_data-\u003erollback_indexes[0];\n```\nOn the build side, where you\u0027re doing `BOARD_AVB_ROLLBACK_INDEX :\u003d $(shell echo $$(( ( $$(date ...) - $$(date ...) ) / 86400 )))`, you should instead be doing something like `$$(( ( $$(date ...) - $$(date ...) ) / 86400 + (3 \u003c\u003c 16))))`. (Whether the hardcoded number there should be 3 or something else depends on the highest kernel key version that we\u0027ve ever had on any of the devices that will migrate to AL, I haven\u0027t checked what exactly that is. For new boards the version always starts at 1, and most never have an increase in their lifetime. I doubt that there\u0027s ever been a board with more than two key bumps so 3 sounds like a safe default for now. Figuring out exactly is pretty cumbersome, unfortunately, you\u0027d either have to work with one of the croskeymanagers@ who have access to the raw keyset files, or you need to download the current signed recovery image for each board and check it with `futility`.)",
+      "parentUuid": "06364c50_992bae51",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
