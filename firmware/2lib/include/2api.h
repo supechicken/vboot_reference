@@ -1119,6 +1119,11 @@ vb2_error_t vb2ex_handle_android_misc_partition(struct vb2_context *ctx,
 						GptData *gpt,
 						enum vb2_android_bootmode *bootmode);
 
+/*
+ * Initialize MTE
+ */
+void vb2ex_mte_initialize(void);
+
 /*****************************************************************************/
 /* TPM functionality */
 
