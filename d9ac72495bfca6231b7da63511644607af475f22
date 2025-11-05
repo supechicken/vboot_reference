@@ -148,6 +148,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20154704_cc587b31",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-05T14:52:29Z",
+      "side": 1,
+      "message": "But this solution is really confusing for someone with no knowledge about vboot internals. Basically, we just use some artificial value just to make vboot work with ChromeOS requirements, instead of modifying it to work with Android. I think that it would be much cleaner to just reuse the value from secdata as I did in the patch. I know that we should keep FW simply and move changes out of it, but in this particular case I think it would make code harder to understand. Unless I miss some obvious security flow :)",
+      "parentUuid": "b60aeea6_c5581c64",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
