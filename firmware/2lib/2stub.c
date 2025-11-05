@@ -170,6 +170,11 @@ vb2_error_t vb2ex_auxfw_finalize(struct vb2_context *ctx)
 	return VB2_SUCCESS;
 }
 
+__attribute__((weak))
+void vb2ex_mte_initialize(void)
+{
+}
+
 /*****************************************************************************/
 /* Timer-related stubs */
 
