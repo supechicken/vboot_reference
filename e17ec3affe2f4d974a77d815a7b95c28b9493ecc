@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c3e347_4ea38f21",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-05T14:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7227a86_a0191a03",
+      "range": {
+        "startLine": 731,
+        "startChar": 49,
+        "endLine": 731,
+        "endChar": 55
+      },
+      "revId": "e17ec3affe2f4d974a77d815a7b95c28b9493ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f19664f_0e957fd2",
@@ -37,6 +61,24 @@
       "writtenOn": "2025-11-04T22:47:05Z",
       "side": 1,
       "message": "You should write \"FakeGuid\" here so that you can still confirm it got copied later.",
+      "revId": "e17ec3affe2f4d974a77d815a7b95c28b9493ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f17a63_a474d9cd",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-05T14:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f19664f_0e957fd2",
       "revId": "e17ec3affe2f4d974a77d815a7b95c28b9493ecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
