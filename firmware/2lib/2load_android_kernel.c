@@ -418,6 +418,9 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	}
 	bool recovery_boot = bootmode == VB2_ANDROID_RECOVERY_BOOT;
 
+	printf("calling vb2ex_mte_initialize.\n");
+	vb2ex_mte_initialize();
+
 	/*
 	 * Before booting we need to rearrange buffers with partition data, which includes:
 	 * - save bootconfig in separate buffer, so depthcharge can modify it
