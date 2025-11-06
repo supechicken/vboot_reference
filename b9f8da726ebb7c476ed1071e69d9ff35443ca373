@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc1f1e1_23cb9588",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-06T09:25:27Z",
+      "side": 1,
+      "message": "Sorry, but I still don\u0027t understand why we can\u0027t use `if (regions_len)` as the condition here.",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 23
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f30990a_05179d8f",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-06T09:25:27Z",
+      "side": 1,
+      "message": "FWIW I don\u0027t think this extra sentence if needed. This is a directly result of `regions_len \u003d\u003d 0`.",
+      "range": {
+        "startLine": 47,
+        "startChar": 56,
+        "endLine": 47,
+        "endChar": 87
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16706249_c64a4aed",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-06T09:25:27Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 57,
+        "endLine": 84,
+        "endChar": 88
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

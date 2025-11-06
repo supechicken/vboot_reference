@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "280457ea_532cde50",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-06T09:25:27Z",
+      "side": 1,
+      "message": "\u003e Make 4 to be flashrom_write_region(), also disallow user to call flashrom_write_region() without specifying region. (fitted region update)\n\nLet\u0027s do this.",
+      "parentUuid": "17abb3d0_a52c4f7c",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 45
+      },
+      "revId": "c72072a7a9673f456e673aee736f3f0338875c83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43cd165a_39d98ea3",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 17
