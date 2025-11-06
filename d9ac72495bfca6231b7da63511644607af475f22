@@ -172,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43631cbd_f38a4fd4",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-06T21:51:22Z",
+      "side": 1,
+      "message": "Sorry, but I feel like the solution you\u0027re proposing is a hack to accommodate the situation of migrated devices that I don\u0027t want to continue carrying forever. It makes no sense to have a 32-bit rollback counter in the TPM but then only ever use the lower 16 of it and have the upper 16 just stay at whatever value they\u0027re at without having any impact at all on the actual boot decision. 10 years from now when there are no more migrated devices, all our new AL devices would still be doing that and there would be no discernible point to it.\n\nI think the solution that I\u0027m proposing is compatible with migrated devices but not entirely useless afterwards. I think it makes sense to consider the upper 16 bits in that schema as an identifier for the \"generation\" of rollback values that we\u0027ll initialize to some value (e.g. 3) for now but can be bumped in the future to allow rollback counter format changes when needed. Imagine that for some reason Android decides to switch from timestamp-based to manually-triggered rollback bumps in a few years (not actually that unlikely considering that timestamp-based counters are going to be problematic for cases like LTS releases, which we may eventually want to add for Enterprise support). If only the lower 16 bits count (because the firmware ignores the upper 16 bits), then you may have a problem because your current timestamp-based counter value may already be pretty high, and the only numbers you can choose for whatever new scheme you want to implement would be higher than that (so e.g. if you wanted to switch to some scheme where the first two hex digits are the major Android version and the lower two represent a subversion within that, and your current major Android version is let\u0027s say 29, then the first version you\u0027d want to have in the new scheme might be 0x2901 — but if the previous timestamp-based counter you were using was already at 0x3456, you can\u0027t do that). By having the upper 16 bits available as a hardcoded value, we can just add +1 there (e.g. \"switch from the 3rd to the 4th generation of rollback counters\"), and then we can start in the lower 16 bits from 0 again to implement whatever clean scheme we want.\n\nAlso, one final issue is that the `kernel_version` is currently overloaded so that the upper 8 bits are also used as the rollback counter for miniOS (network-based recovery) images. We haven\u0027t quite decided if we want to keep doing that with the new OTA recovery since that\u0027s also a bit of a hack, but there are also good reasons for doing it that way, and if we do then we need some way for new normal kernel updates to be able to bump that number.\n\nI understand that just randomly adding `3 \u003c\u003c 16 | ...` in the build script somewhere may be confusing, but surely that\u0027s nothing a well-written explanatory comment couldn\u0027t solve?",
+      "parentUuid": "20154704_cc587b31",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
