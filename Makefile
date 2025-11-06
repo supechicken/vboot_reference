@@ -397,9 +397,7 @@ FWLIB_SRCS = \
 	firmware/lib/cgptlib/cgptlib.c \
 	firmware/lib/cgptlib/cgptlib_internal.c \
 	firmware/lib/cgptlib/crc32.c \
-	firmware/lib/gpt_misc.c \
-	firmware/lib20/api_kernel.c \
-	firmware/lib20/kernel.c
+	firmware/lib/gpt_misc.c
 
 # TPM lightweight command library
 ifeq ($(filter-out 0,${TPM2_MODE}),)
@@ -844,6 +842,7 @@ TEST2X_NAMES = \
 	tests/vb2_host_nvdata_flashrom_tests \
 	tests/vb2_inject_kernel_subkey_tests \
 	tests/vb2_kernel_tests \
+	tests/vb2_keyblock_hash_tests \
 	tests/vb2_load_kernel_tests \
 	tests/vb2_load_kernel2_tests \
 	tests/vb2_misc_tests \
@@ -864,8 +863,6 @@ TEST2X_NAMES += \
 endif
 
 TEST20_NAMES = \
-	tests/vb20_api_kernel_tests \
-	tests/vb20_kernel_tests \
 	tests/vb20_rsa_padding_tests \
 	tests/vb20_verify_fw
 
@@ -1456,6 +1453,7 @@ endif
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_load_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_load_kernel2_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_kernel_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_keyblock_hash_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_misc2_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_nvstorage_tests
@@ -1466,8 +1464,6 @@ endif
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_secdata_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_api_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_sha_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vb20_api_kernel_tests
-	${RUNTEST} ${BUILD_RUN}/tests/vb20_kernel_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_common2_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb21_host_key_tests ${TEST_KEYS} ${BUILD_RUN}
@@ -1547,7 +1543,6 @@ SRCDIRPAT=$(subst /,\/,${SRCDIR}/)
 ${BUILD}/cscope.files: all install_for_test
 	${Q}rm -f $@
 	${Q}cat ${ALL_DEPS} | tr -d ':\\' | tr ' ' '\012' | \
-		grep -v /lib20/ | \
 		sed -e "s/${SRCDIRPAT}//" | \
 		egrep '\.[chS]$$' | sort | uniq > $@
 
