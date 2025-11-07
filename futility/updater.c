@@ -1390,10 +1390,12 @@ static int updater_setup_archive(
 	struct u_archive *ar = cfg->archive;
 	const struct model_config *model;
 
-	if (cfg->dut_is_remote)
+	model = manifest_find_model(cfg, manifest, arg->model, arg->frid);
+	if (!model && cfg->dut_is_remote) {
+		WARN("Unable to detect model for a remote DUT; "
+		     "falling back to FRID matching\n");
 		model = manifest_detect_model_from_frid(cfg, manifest);
-	else
-		model = manifest_find_model(cfg, manifest, arg->model, arg->frid);
+	}
 
 	if (!model)
 		return ++errorcnt;

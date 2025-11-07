@@ -614,18 +614,20 @@ test_update "Full update (--archive, identity.csv with --sku-id=PEPPY_SKU_ID)" \
   -a "${A}" --wp=0 --sys_props "0,0x10001,3,,,,${LINK_SKU_ID}" \
   --sku-id "${PEPPY_SKU_ID}"
 
-# Flash over a completely erased system flash.
+# Remotely flash over a completely erased system flash.
+# `--programmer` is for simulating remote flashing (via servo).
 # `--force` is required to ignore the system firmware parsing error.
-test_update "Full update (--archive, identity.csv with --frid/--sku-id)" \
+test_update "Full update (--archive, remote, identity.csv with --frid/--sku-id)" \
   "${FROM_IMAGE}.ap.erased" "${PEPPY_BIOS}" \
-  -a "${A}" --wp=0 --sys_props "0,0x10001,3,,,,${LINK_SKU_ID}" \
+  -a "${A}" --wp=0 --sys_props 0,0x10001,3 \
+  --programmer raiden_debug_spi:target=AP \
   --frid "google_peppy" --sku-id "${PEPPY_SKU_ID}" --force
 
-test_update "Full update (--archive, detect-model)" \
+test_update "Full update (--archive, remote, identity.csv, detect-model)" \
   "${FROM_IMAGE}.ap" "${PEPPY_BIOS}" \
   -a "${A}" --wp=0 --sys_props 0,0x10001,3 \
   --programmer raiden_debug_spi:target=AP
-test_update "Full update (--archive, detect-model, unsupported FRID)" \
+test_update "Full update (--archive, remote, identity.csv, detect-model, unsupported FRID)" \
   "${FROM_IMAGE}.av" "!Unsupported model: 'Google_Voxel'" \
   -a "${A}" --wp=0 --sys_props 0,0x10001,3 \
   --programmer raiden_debug_spi:target=AP
