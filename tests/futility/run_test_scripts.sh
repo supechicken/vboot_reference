@@ -48,6 +48,10 @@ else
   echo "NOTE: Skipping flashrom-dependent tests (USE_FLASHROM=0)"
 fi
 
+TESTS="
+${SCRIPT_DIR}/futility/test_update.sh
+"
+
 # Get ready...
 pass=0
 progs=0
