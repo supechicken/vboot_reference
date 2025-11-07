@@ -220,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3ca3f78_d68eab5d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-07T09:27:57Z",
+      "side": 1,
+      "message": "However, I would maybe make sense to use whole 32bits value of kernel version as you proposed, but OR rollback version with something like ($LEGACY_KEY_VERSION \u003c\u003c 16) where LEGACY_KEY_VERSION will be by default \u00270\u0027 but can be overwritten in device specific .mk file for migration devices",
+      "parentUuid": "1368ef97_5be4f3e8",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
