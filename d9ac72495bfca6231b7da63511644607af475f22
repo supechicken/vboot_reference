@@ -196,6 +196,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1368ef97_5be4f3e8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-07T08:55:13Z",
+      "side": 1,
+      "message": "\u003e Sorry, but I feel like the solution you\u0027re proposing is a hack to accommodate\n\u003e situation of migrated devices\n\nWe do not pass key version in Android binaries. So, in my solution I just fetch the original version from secdata to keep it unchanged. In your solution you want to create a fake value to fool the FW and as a side effect we can bump the key version in secdata unnecessary or (hopefully not) block booting if we choose a number too low. I think we have different definition of \"hack\".  \n\n\n\u003e \"that I don\u0027t want to continue carrying forever\"\n\nBut you want to carry on a solution with faking key version for all devices. For new device (not migrated devices) we don\u0027t need to write anything in upper 16 bits, so we can decide in 5 years that we drop fetching key_version for secdata for product branches and have whole 32bit value for timestamp. Am I miss something here?\n\n\u003e I think it makes sense to consider the upper 16 bits in that schema as an\n\u003e identifier for the \"generation\" of rollback values that we\u0027ll initialize\n\u003e to some value (e.g. 3) for now but can be bumped in the future to\n\u003e allow rollback counter format changes when needed.\n\nBut on the other hand you just write meaningless value to upper 16 bits. It makes no sense for a non-migrating board which will have all \u00270\u0027 in the upper half and for which we can do whatever we want.\n\n\u003e Also, one final issue is that the `kernel_version` is currently overloaded so\n\u003e that the upper 8 bits are also used as the rollback counter for\n\u003e miniOS (network-based recovery) images. \n\nOk, that can be a problem, but would it be more clean to force MiniOS for Android to follow the same schema of \u0027timestamp\u0027 based version?\n\n\n\u003e I understand that just randomly adding `3 \u003c\u003c 16 | ...` in the build script \n\u003e somewhere may be confusing, but surely solve?\n\nSure we can do that. But still someone which looks through vboot code will have the false impression that Android uses key versions, which is not true. Unless we add another comment in vboot that it is just fake value, which is pretty bad. Let\u0027s write a code which explains itself.\n\n\nAll these comments are based on the assumption that we need to support key_version in upper 16bits only for migrating boards. A new board does not need it. I hope that this is a true assumption.",
+      "parentUuid": "43631cbd_f38a4fd4",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
