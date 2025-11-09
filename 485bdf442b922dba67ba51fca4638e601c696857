@@ -16,6 +16,24 @@
       "message": "Use `vb2ex_handle_android_misc_partition` directly. See CL:7111879.",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d62e847_5fdb00bb",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-11-09T23:56:51Z",
+      "side": 1,
+      "message": "no. I don\u0027t want to cause merge conflict.\n\nWe could remove this API later if needed.",
+      "parentUuid": "54dc5c2e_7b1dd98a",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
