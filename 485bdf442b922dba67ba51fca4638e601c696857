@@ -34,6 +34,24 @@
       "parentUuid": "54dc5c2e_7b1dd98a",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d327b932_fd37a51a",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-11-09T23:59:30Z",
+      "side": 1,
+      "message": "also Julius is against that, that is why I added a new API.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/7098725/comment/25b6ce32_dd623f33/",
+      "parentUuid": "8d62e847_5fdb00bb",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
