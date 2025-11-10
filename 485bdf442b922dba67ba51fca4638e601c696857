@@ -106,6 +106,24 @@
       "parentUuid": "3f02710f_ea134977",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f094773_dbbcf3e8",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-10T01:39:22Z",
+      "side": 1,
+      "message": "Please reference Yidi\u0027s code: https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/6887991/23/src/vboot/stages.c#351.",
+      "parentUuid": "54350c99_32f5c61d",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
