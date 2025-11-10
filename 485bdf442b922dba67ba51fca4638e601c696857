@@ -52,6 +52,24 @@
       "parentUuid": "8d62e847_5fdb00bb",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d79fc9a0_6430ffbb",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-10T00:05:41Z",
+      "side": 1,
+      "message": "Okay, then please use `device_tree_fixup` just like in CL:6908565.\n\n\u003e no. I don\u0027t want to cause merge conflict.\n\nSorry, but we should never merge hacky code that conflicts with the long term plan, which is what you are doing by adding a function that will eventually be removed. Instead, even for the minimal viable solution, we should still follow the planned approach (i.e. closer to the formal solution).",
+      "parentUuid": "d327b932_fd37a51a",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
