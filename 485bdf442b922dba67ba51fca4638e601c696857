@@ -88,6 +88,24 @@
       "parentUuid": "d79fc9a0_6430ffbb",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54350c99_32f5c61d",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-11-10T00:31:25Z",
+      "side": 1,
+      "message": "this code was originally called from vb2ex_handle_android_misc_partition, which julius doesn\u0027t like.\n\nIf you share some code sample (without adding new vboot api), I m happy to use that.",
+      "parentUuid": "3f02710f_ea134977",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
