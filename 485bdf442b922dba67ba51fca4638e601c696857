@@ -124,6 +124,24 @@
       "parentUuid": "54350c99_32f5c61d",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563fcecc_8a158036",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-11-10T17:34:36Z",
+      "side": 1,
+      "message": "Yidi\u0027s code is focus on turning on/off mte and cmdline processing, and that is not part of mininum viable solution intended to cover.\n\nUnless yidi can merge that code, otherwise, either calling from vb2ex_handle_android_misc_partition or a new vb2ex_mte_initialize is the smallest set on current code base.\n\nI would prefer calling this function directly from vb2ex_handle_android_misc_partition  then I can remove the vboot new API change, in my view, this is not necessary.\n\n@jwerner@chromium.org for opinion.",
+      "parentUuid": "9f094773_dbbcf3e8",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
