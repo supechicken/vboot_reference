@@ -142,6 +142,24 @@
       "parentUuid": "9f094773_dbbcf3e8",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e848e221_db8d2c12",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-11T03:59:19Z",
+      "side": 1,
+      "message": "\u003e Yidi\u0027s code is focus on turning on/off mte and cmdline processing, and that is not part of mininum viable solution intended to cover.\n\nMy point is about the function calling flow between vboot_reference and depthcharge. That\u0027s independent of what\u0027s implemented within `vb2ex_handle_android_misc_partition`.\n\nIf right now we already know that, eventually we will be using `vb2ex_handle_android_misc_partition`, why not utilize it for now, so that we won\u0027t leave a lot of temporary code that will later be removed? I know this implementation is unrelated to the misc partition, but I think that\u0027s fine as long as we know the long term plan.\n\nAlternatively, if you want to fully decouple this minimal viable solution from `vb2ex_handle_android_misc_partition`, you can actually leave vboot_reference untouched and instead call `vb2ex_mte_initialize` (please rename this) directly from depthcharge rauru/board.c.\n\nIn either solution, IMO this vboot API `vb2ex_mte_initialize` shouldn\u0027t exist.",
+      "parentUuid": "563fcecc_8a158036",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
