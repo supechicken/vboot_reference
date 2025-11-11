@@ -228,6 +228,43 @@ static vb2_error_t prepare_pvmfw(AvbSlotVerifyData *verify_data,
 	return VB2_SUCCESS;
 }
 
+static vb2_error_t prepare_dtb(struct vendor_boot_img_hdr_v4 *vendor_hdr,
+			       struct vb2_kernel_params *params)
+{
+	size_t dtb_offset;
+	uint32_t page_size = vendor_hdr->page_size;
+
+	if (!vendor_hdr->dtb_size) {
+		params->dtb = NULL;
+		params->dtb_size = 0;
+		return VB2_SUCCESS;
+	}
+
+	dtb_offset = VB2_ALIGN_UP(sizeof(struct vendor_boot_img_hdr_v4), page_size) +
+		     VB2_ALIGN_UP(vendor_hdr->vendor_ramdisk_size, page_size);
+	params->dtb = (uint8_t *)vendor_hdr + dtb_offset;
+	params->dtb_size = vendor_hdr->dtb_size;
+	return VB2_SUCCESS;
+}
+
+static vb2_error_t prepare_dtbo(AvbSlotVerifyData *verify_data,
+			       struct vb2_kernel_params *params)
+{
+	AvbPartitionData *part;
+
+	part = avb_find_part(verify_data, GPT_ANDROID_DTBO);
+	if (!part) {
+		VB2_DEBUG("Continuing without a DTBO partition\n");
+		params->dtbo = NULL;
+		params->dtbo_size = 0;
+	} else {
+		params->dtbo = part->data;
+		params->dtbo_size = part->data_size;
+	}
+
+	return VB2_SUCCESS;
+}
+
 /*
  * This function validates the partitions magic numbers and move them into place requested
  * from linux.
@@ -295,33 +332,8 @@ static vb2_error_t rearrange_partitions(AvbOps *avb_ops,
 	vendor_hdr->cmdline[sizeof(vendor_hdr->cmdline) - 1] = '\0';
 	params->real_cmdline_ptr = (char *)vendor_hdr->cmdline;
 
-	return VB2_SUCCESS;
-}
-
-static vb2_error_t prepare_dtb(AvbSlotVerifyData *verify_data,
-			       struct vb2_kernel_params *params)
-{
-	AvbPartitionData *part;
-
-	part = avb_find_part(verify_data, GPT_ANDROID_DTB);
-	if (!part) {
-		VB2_DEBUG("Continuing without a DTB partition\n");
-		params->dtb = NULL;
-		params->dtb_size = 0;
-	} else {
-		params->dtb = part->data;
-		params->dtb_size = part->data_size;
-	}
-
-	part = avb_find_part(verify_data, GPT_ANDROID_DTBO);
-	if (!part) {
-		VB2_DEBUG("Continuing without a DTBO partition\n");
-		params->dtbo = NULL;
-		params->dtbo_size = 0;
-	} else {
-		params->dtbo = part->data;
-		params->dtbo_size = part->data_size;
-	}
+	/* Cache DTB image address and size */
+	prepare_dtb(vendor_hdr, params);
 
 	return VB2_SUCCESS;
 }
@@ -367,11 +379,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 		params->pvmfw_out_size = 0;
 	}
 
-	/* If DTB/DTBO partitions exist, include them in the list of partitions to
-	   be pre-loaded. */
-	if (GptFindEntryByName(gpt, GptPartitionNames[GPT_ANDROID_DTB], slot_suffix))
-		boot_partitions[partition_count++] = GptPartitionNames[GPT_ANDROID_DTB];
-
+	/* If DTBO partition exists, include it in the list of partitions to be pre-loaded. */
 	if (GptFindEntryByName(gpt, GptPartitionNames[GPT_ANDROID_DTBO], slot_suffix))
 		boot_partitions[partition_count++] = GptPartitionNames[GPT_ANDROID_DTBO];
 
@@ -459,7 +467,7 @@ vb2_error_t vb2_load_android(struct vb2_context *ctx, GptData *gpt, GptEntry *en
 	if (rv)
 		goto out;
 
-	rv = prepare_dtb(verify_data, params);
+	rv = prepare_dtbo(verify_data, params);
 
 out:
 	/* No need for slot data */
