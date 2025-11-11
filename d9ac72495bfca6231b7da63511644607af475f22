@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c88314de_368087a7",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-11T10:19:21Z",
+      "side": 1,
+      "message": "We can\u0027t because `verify_data` is allocated by `avb_slot_verify()`",
+      "parentUuid": "d3eafc06_17fa2cce",
+      "range": {
+        "startLine": 421,
+        "startChar": 35,
+        "endLine": 421,
+        "endChar": 64
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "064312ce_e9322483",
         "filename": "firmware/2lib/2load_android_kernel.c",
         "patchSetId": 3
@@ -232,6 +256,30 @@
       "side": 1,
       "message": "However, I would maybe make sense to use whole 32bits value of kernel version as you proposed, but OR rollback version with something like ($LEGACY_KEY_VERSION \u003c\u003c 16) where LEGACY_KEY_VERSION will be by default \u00270\u0027 but can be overwritten in device specific .mk file for migration devices",
       "parentUuid": "1368ef97_5be4f3e8",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ecec09a_4d9f13e4",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-11T10:19:21Z",
+      "side": 1,
+      "message": "I\u0027d prefer a solution optimized for new Android devices, in the sense that, after all migrating devices reach EOL, we will have clean ToT code for both firmware and Android.\n\nTherefore, I agree with Julius that, we shouldn\u0027t keep `cros_version` here. Similarly, having `3 \u003c\u003c 16` in the common makefile is also what I want to avoid. I pretty like the idea of board-specific `LEGACY_KEY_VERSION` variable, which can be dropped entirely in the future. That means new Android devices will have 0 in the upper 16 bits. In general FW is more difficult to change than OS, so putting the \"hack\" in OS is IMO better than in FW.\n\nThat solution also reserve the upper 16-3\u003d13 bits for the \"generation\" that Julius mentioned above. When the generation bump really happens, it will be easy to refactor those makefiles in any way.\n\n\u003e But still someone which looks through vboot code will have the false impression that Android uses key versions\n\nI don\u0027t think so. 2struct.h doesn\u0027t describe the bit usage of `kernel_version_secdata`. Also, the only code mentioning the concept of \"key version\" is `vb2_verify_kernel_vblock`, which is called by ChromeOS-specific code only. If we worry about readability, we can move `vb2_load_chromeos_kernel` and friends to 2load_chromeos_kernel.c, in symmetry with 2load_android_kernel.c.",
+      "parentUuid": "e3ca3f78_d68eab5d",
       "range": {
         "startLine": 423,
         "startChar": 20,
