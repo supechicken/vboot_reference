@@ -292,6 +292,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfdf2be6_0108b69e",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-11T17:31:53Z",
+      "side": 1,
+      "message": "\u003e In general FW is more difficult to change than OS, so putting the \"hack\"\n\u003e in OS is IMO better than in FW.\n\nMy plan was to abandon this FW hack for product branches for new devices, but you\u0027re right, it is much easier to remove code from OS.\n@jwerner@chromium.org what do you think about `LEGACY_KEY_VERSION` variable?",
+      "parentUuid": "7ecec09a_4d9f13e4",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
