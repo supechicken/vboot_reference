@@ -160,6 +160,24 @@
       "parentUuid": "563fcecc_8a158036",
       "revId": "485bdf442b922dba67ba51fca4638e601c696857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d802983d_929f2870",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1544064
+      },
+      "writtenOn": "2025-11-11T17:40:06Z",
+      "side": 1,
+      "message": "I m ok to remove vb2ex_mte_initialize and revert to the original where vb2ex_handle_android_misc_partition calls mte_initialize.",
+      "parentUuid": "e848e221_db8d2c12",
+      "revId": "485bdf442b922dba67ba51fca4638e601c696857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
