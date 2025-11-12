@@ -316,6 +316,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72e59826_0f972609",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-12T22:32:27Z",
+      "side": 1,
+      "message": "\u003e But you want to carry on a solution with faking key version for all devices. [...] But still someone which looks through vboot code will have the false impression that Android uses key versions, which is not true.\n\nNo, there\u0027s nothing \"fake\" about this version, and it\u0027s not a key version anymore. I think you\u0027re just looking at this from the wrong perspective tbh. ;)\n\nIf you implement my suggestion, the term \"key version\" will no longer appear anywhere in (the Android-side of) vboot anymore. There will be no distinction between the upper and the lower 16 bits of the `sd-\u003ekernel_version` field from vboot\u0027s point of view. It will be a single 32-bit field that is directly compared to the lower 32-bit of the field in vbmeta, and the OS builder can freely decide how to subdivide and interpret any of those bits without firmware needing to be aware of those details. That\u0027s the part I find \"cleaner\" about this, because in your solution you\u0027re still imposing a firmware-side 16/16 split onto this field and essentially \"wasting\" the higher 16 bits (by ignoring them), even though we don\u0027t need to make that distinction at all in the Android world anymore as long as we are a tiny bit careful about which minimum the builder starts issuing versions for migrated devices at.\n\n\u003e Ok, that can be a problem, but would it be more clean to force MiniOS for Android to follow the same schema of \u0027timestamp\u0027 based version?\n\nWe haven\u0027t really discussed this yet but I assume that we may still keep miniOS / OTA recovery on a separate release cadence with manual pushes like we did on ChromeOS. This is more of a rare emergency feature that we\u0027ll hopefully never need than something that should be regularly increased every month. (To go a bit more into the details here, \"sharing\" the top nibble of another version like this is of course somewhat hacky, but it does solve the important problem that the version can get increased through regular updates. If we had an entirely separate miniOS version field in the TPM, then we\u0027d have the problem that firmware would only know to bump that field when it actually boots into a newer version of miniOS, but most people never recover their devices so that would never happen for many and the version in the TPM would quickly grow stale. We need a way for normal OS updates to sync both the normal kernel version and the miniOS version to the TPM, and using a rarely touched subfield of the normal kernel version is an easy way to do that. However, in that case whichever version is \"higher\" in the combined field will automatically also control updates for the \"lower\" one, so this only really works if the miniOS bumps remain a rare one-off even, otherwise the normal kernel version becomes meaningless if the miniOS version already increases all the time.)\n\n\u003e where LEGACY_KEY_VERSION will be by default \u00270\u0027 but can be overwritten in device specific .mk file for migration devices\n\nWe can do that if you want. I honestly don\u0027t feel that it\u0027s necessary and worth the hassle because the difference between 3 and 0 is so insignificant compared to the entire size of those upper 16 bits. But if you do it, please don\u0027t call it \"key version\". There is no kernel subkey on Android anymore and this version doesn\u0027t apply to it. Call it `UPPER_KERNEL_VERSION` or `MANUAL_KERNEL_VERSION` or `KERNEL_GENERATION_VERSION` or whatever suitable term you want to make up, but not key version.",
+      "parentUuid": "dfdf2be6_0108b69e",
+      "range": {
+        "startLine": 423,
+        "startChar": 20,
+        "endLine": 423,
+        "endChar": 59
+      },
+      "revId": "d9ac72495bfca6231b7da63511644607af475f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a68c5e_d9b520d6",
         "filename": "firmware/2lib/include/2return_codes.h",
         "patchSetId": 3
