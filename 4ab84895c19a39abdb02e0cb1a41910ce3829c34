@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56c76fc1_5d762c71",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-12T12:21:28Z",
+      "side": 1,
+      "message": "style: format this statement.",
+      "range": {
+        "startLine": 617,
+        "startChar": 2,
+        "endLine": 618,
+        "endChar": 24
+      },
+      "revId": "4ab84895c19a39abdb02e0cb1a41910ce3829c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "039bda7e_6f326529",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-12T12:21:28Z",
+      "side": 1,
+      "message": "nit: this can be a single line",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "4ab84895c19a39abdb02e0cb1a41910ce3829c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cccffe3_f915bca6",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-12T12:21:28Z",
+      "side": 1,
+      "message": "this can be simplified:\n```suggestion\n  head -c \"${size}\" /dev/zero | LC_ALL\u003dC tr \"\\000\" \"\\377\" \u003e \"${file}\"\n```\n\nI don\u0027t think the temporary file is needed here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "4ab84895c19a39abdb02e0cb1a41910ce3829c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d237ddc_92a69379",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-12T12:21:28Z",
+      "side": 1,
+      "message": "Please add a comment stating that the FRID prefix comparison should be case-insensitive. It will be helpful in case someone has to debug or rewrite tests.",
+      "range": {
+        "startLine": 622,
+        "startChar": 10,
+        "endLine": 622,
+        "endChar": 22
+      },
+      "revId": "4ab84895c19a39abdb02e0cb1a41910ce3829c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
