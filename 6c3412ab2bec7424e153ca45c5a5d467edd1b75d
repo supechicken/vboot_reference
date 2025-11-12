@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b79ca5_be7eb84a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-12T21:10:31Z",
+      "side": 1,
+      "message": "We don\u0027t have to check every entry, though, we only have to check those we are actually loading, right? So we would basically run `android_parse_dtbs()` like this:\n\n1. Iterate over all entries in the `dtbo` partition\n  2. For each entry, check `is_dt_entry_compatible()`.\n  3. If yes, run `get_dt_entry_data()`, and do the overlay test on the result.\n  4. If it\u0027s a base DTB, stash the result pointer somewhere (if there\u0027s already one stashed, error out, that\u0027s illegal)\n  5. If it\u0027s an overlay, stash the result pointer in a temporary list (or big enough stack array)\n6. After the loop, we should have one stashed base DTB pointer and a number of stashed overlay pointers, all stored in heap allocations.\n7. Apply overlays one-by-one to base DTB (ideally in the same order they appeared in the partition)\n8. Done",
+      "parentUuid": "59d3b79a_ca1b9bc2",
+      "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e2b5b1db_40ce8ae5",
