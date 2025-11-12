@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9113c3d_76444d06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-12T01:00:30Z",
+      "side": 1,
+      "message": "_\\*sigh\\*_ I\u0027m starting to really hate these inscrutable requirements from on high... -.-\n\nIs there anything we can tweak about this requirement? Or can we maybe put our DTB into the `dtbo` partition after all, if the `dtb` partition is outlawed? Having it outside of `vendor_boot` avoids the need for another big memcpy mentioned below.\n\nI\u0027m also a bit confused, when I search for that requirement in the Android 16 docs, the one above it (VSR-3.7.4-001) says you must use \"boot image header version 2\". Is that text even up to date? I thought we were using version 4 already.",
+      "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e2b5b1db_40ce8ae5",
@@ -14,6 +31,23 @@
       "writtenOn": "2025-11-11T23:39:51Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8045378f_4c7858ea",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-12T01:00:30Z",
+      "side": 1,
+      "message": "So, careful, things get more tricky now: we\u0027re doing some complicated ramdisk surgery inside the buffer here and we need to be careful not to trample over our own toes. When initially loaded, our kernel buffer looks like this:\n\n[GKI][vndr hdr][vndr ramdisk 1][vndr ramdisk 2][vndr ramdisk 3][dtb][vndr ramdisk table][bootconfig][init header][init ramdisk]\n\nAfter rearranging to make all used ramdisks consecutive, it can look like this:\n\n[GKI][vndr hdr][vndr ramdisk 1][vndr ramdisk 3][init ramdisk][overwritten remains]\n\nSo certain things like bootconfig, the init_boot header and unused vendor ramdisks get overwritten. That\u0027s why `save_bootconfig()` must be called up there before all this happens and copies the bootconfig into the heap.\n\nThe DTB in the vendor_boot partition is unfortunately also in the area that would get overwritten. But while the bootconfig is pretty small, the DTB could easily be a megabyte. That\u0027s why it would be preferable to have it in a separate partition behind init_boot where it is safe from overwriting. But if that\u0027s not possible, then we also need to copy it somewhere else (e.g. a heap buffer) before we start resecting the image.",
       "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
