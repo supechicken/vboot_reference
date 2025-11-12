@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd8eb6de_0be63382",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653ed0dc_d3c7d422",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "318f576f_887db34e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d42eb66_aef460a7",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "318f576f_887db34e",
+      "range": {
+        "startLine": 130,
+        "startChar": 38,
+        "endLine": 130,
+        "endChar": 50
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0373b858_97d265e9",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-11T11:23:53Z",
       "side": 1,
       "message": "What about\n\n```\nif (flashrom_image_read(flashctx, image-\u003edata, len))\n\tgoto err_cleanup;\n\nif (regions_len \u0026\u0026 flashrom_layout_get_region_range(layout, regions[0], region_start, region_len))\n\tgoto err_cleanup;\n\nr \u003d VB2_SUCCESS;\n```",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee04dca7_17a9b2c1",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0373b858_97d265e9",
       "range": {
         "startLine": 152,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dfc1978_6791e53a",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "The idea was that if `calloc()` in line 144 fails ,`image-\u003efile_name` might contain some garbage value, and freeing it might cause UB.\n\nI could reoder the `calloc` and `strdup` calls, but I am not sure if it would be appropriate to do so in this CL.",
+      "parentUuid": "065ccbc2_7408bf04",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3976dea_9b16ecb6",
         "filename": "host/lib/flashrom_drv.c",
         "patchSetId": 6
@@ -106,6 +202,30 @@
       "writtenOn": "2025-11-11T11:23:53Z",
       "side": 1,
       "message": "wrong indent",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 71
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f346360e_e3ed4d92",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3976dea_9b16ecb6",
       "range": {
         "startLine": 225,
         "startChar": 0,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34439eb9_939ee5e2",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f642f41_e7cf1460",
+      "range": {
+        "startLine": 253,
+        "startChar": 3,
+        "endLine": 253,
+        "endChar": 4
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03211fb2_2d58f53e",
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77a54d8_47eacc30",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03211fb2_2d58f53e",
+      "range": {
+        "startLine": 357,
+        "startChar": 65,
+        "endLine": 357,
+        "endChar": 83
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab27140_334ef39a",
@@ -175,6 +343,30 @@
       "writtenOn": "2025-11-11T11:23:53Z",
       "side": 1,
       "message": "just pass the flash_len to flashrom_setup.",
+      "range": {
+        "startLine": 385,
+        "startChar": 38,
+        "endLine": 388,
+        "endChar": 47
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee79e76_a5e04ee0",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-11-12T10:47:56Z",
+      "side": 1,
+      "message": "Note: types differ (*flash_len is `uint32_t`, flashrom_setup accepts `size_t`).",
+      "parentUuid": "9ab27140_334ef39a",
       "range": {
         "startLine": 385,
         "startChar": 38,
