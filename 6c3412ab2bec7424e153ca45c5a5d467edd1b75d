@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d3b79a_ca1b9bc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-11-12T18:25:11Z",
+      "side": 1,
+      "message": "\u003e *sigh* I\u0027m starting to really hate these inscrutable requirements from on high... -.-\n\u003e Is there anything we can tweak about this requirement? \n\nI stumbled upon this requirement as I was updating the VTS firmwareDtboVerification test to accommodate the DTB partition. I was equally disappointed. I am not sure who to approach regarding tweaking any VTS requirement. But it may be a long pole if we have to unblock the Qcom and Mediatek bringup teams.\n\n\u003e Or can we maybe put our DTB into the dtbo partition after all, if the dtb partition is outlawed? Having it outside of vendor_boot avoids the need for another big memcpy mentioned below.\n\nIt is a balancing call in my opinion. If we have to check for the overlay property/node in the devicetree to differentiate between base DTB and overlay DTB, then with all the devicetree entries compressed we have to do memcpy there too(as we are decompressing). We have to decompress each devicetree entry and check if it is a base DTB or an overlay DTB. So we do a memcpy of just base DTB blobs like here or a memcpy of both DTB and DTBO blobs in the other approach.\n\nAnother option is to introduce a flag in the custom field to indicate whether it is a base DTB or overlay DTB. We already have 1 byte for device Identifier type. We can limit that to a nibble and borrow one bit from the remaining nibble for this DTB differentiation purpose. This approach in turn avoids an extra memcpy.",
+      "parentUuid": "e9113c3d_76444d06",
+      "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e2b5b1db_40ce8ae5",
