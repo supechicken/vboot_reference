@@ -85,6 +85,24 @@
       "message": "So, careful, things get more tricky now: we\u0027re doing some complicated ramdisk surgery inside the buffer here and we need to be careful not to trample over our own toes. When initially loaded, our kernel buffer looks like this:\n\n[GKI][vndr hdr][vndr ramdisk 1][vndr ramdisk 2][vndr ramdisk 3][dtb][vndr ramdisk table][bootconfig][init header][init ramdisk]\n\nAfter rearranging to make all used ramdisks consecutive, it can look like this:\n\n[GKI][vndr hdr][vndr ramdisk 1][vndr ramdisk 3][init ramdisk][overwritten remains]\n\nSo certain things like bootconfig, the init_boot header and unused vendor ramdisks get overwritten. That\u0027s why `save_bootconfig()` must be called up there before all this happens and copies the bootconfig into the heap.\n\nThe DTB in the vendor_boot partition is unfortunately also in the area that would get overwritten. But while the bootconfig is pretty small, the DTB could easily be a megabyte. That\u0027s why it would be preferable to have it in a separate partition behind init_boot where it is safe from overwriting. But if that\u0027s not possible, then we also need to copy it somewhere else (e.g. a heap buffer) before we start resecting the image.",
       "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2943c80d_d31e2142",
+        "filename": "firmware/2lib/2load_android_kernel.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-11-12T19:37:27Z",
+      "side": 1,
+      "message": "Acknowledged. I did take a copy of the dtb before it gets overwritten when ramdisks are moved.",
+      "parentUuid": "8045378f_4c7858ea",
+      "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
