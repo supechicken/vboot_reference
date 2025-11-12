@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8eebff9_1855966e",
+        "filename": "firmware/2lib/2load_kernel.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-12T08:57:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f97d7fe_d35f7139",
+      "revId": "6dd71f0c8a58ab3b9798a959e6c26d29c68513f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3de60f6f_e7615983",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-11-11T09:02:40Z",
       "side": 1,
       "message": "nit: Extra blank line",
+      "revId": "6dd71f0c8a58ab3b9798a959e6c26d29c68513f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbbab65f_ee49538c",
+        "filename": "tests/vb2_load_kernel_tests.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-12T08:57:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3de60f6f_e7615983",
       "revId": "6dd71f0c8a58ab3b9798a959e6c26d29c68513f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
