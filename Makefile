@@ -876,7 +876,12 @@ TEST21_NAMES = \
 	tests/vb21_host_misc_tests \
 	tests/vb21_host_sig_tests
 
+TEST_AVB_NAMES = \
+	tests/vb2_avb_tests
+
+
 TEST_NAMES += ${TEST2X_NAMES} ${TEST20_NAMES} ${TEST21_NAMES}
+TEST_NAMES += ${TEST_AVB_NAMES}
 
 # Tests which should be run on dut
 ifeq (${ARCH}, x86_64)
@@ -922,6 +927,7 @@ TEST_FUTIL_BINS = $(addprefix ${BUILD}/,${TEST_FUTIL_NAMES})
 TEST2X_BINS = $(addprefix ${BUILD}/,${TEST2X_NAMES})
 TEST20_BINS = $(addprefix ${BUILD}/,${TEST20_NAMES})
 TEST21_BINS = $(addprefix ${BUILD}/,${TEST21_NAMES})
+TEST_AVB_BINS = $(addprefix ${BUILD}/,${TEST_AVB_NAMES})
 
 # Directory containing test keys
 TEST_KEYS = ${SRC_RUN}/tests/testkeys
@@ -1239,6 +1245,14 @@ ${TEST_FUTIL_BINS}: LDLIBS += ${FUTIL_LIBS}
 ${TEST2X_BINS}: ${FWLIB}
 ${TEST2X_BINS}: LIBS += ${FWLIB}
 
+TEST_AVB_SRCS = firmware/avb/vboot_avb_ops.c
+TEST_AVB_OBJS = ${TEST_AVB_SRCS:%.c=${BUILD}/%.o}
+${TEST_AVB_OBJS}: CFLAGS += ${INCLUDES} -Itests
+
+${TEST_AVB_BINS}: ${TEST_AVB_OBJS}
+${TEST_AVB_BINS}: OBJS += ${TEST_AVB_OBJS}
+${TEST_AVB_BINS}: LIBS += ${FWLIB} ${CRYPTO_LIBS}
+
 ${TEST20_BINS}: ${FWLIB}
 ${TEST20_BINS}: LIBS += ${FWLIB}
 ${TEST20_BINS}: LDLIBS += ${CRYPTO_LIBS}
@@ -1438,6 +1452,7 @@ endif
 .PHONY: run2tests
 run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_api_tests
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_avb_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_auxfw_sync_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common2_tests ${TEST_KEYS}
