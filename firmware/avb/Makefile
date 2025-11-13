@@ -8,7 +8,8 @@
 # Add file with callbacks implementation
 FWLIB_SRCS += \
 	firmware/avb/vboot_avb_ops.c \
-	firmware/avb/vboot_avb_sysdeps.c
+	firmware/avb/vboot_avb_sysdeps.c \
+	firmware/2lib/2load_android_kernel.c
 
 # Compile necessary libavb srcs
 LIBAVB_SRCS += \
@@ -40,8 +41,10 @@ endif
 CFLAGS += -DUSE_LIBAVB -Ifirmware/avb -I${LIBAVB_SRCDIR} -I${LIBAVB_SRCDIR}/libavb
 AVB_CFLAGS += -DAVB_COMPILATION -I${LIBAVB_SRCDIR}/libavb/sha
 
+ifneq ($(filter clang,$(subst -, ,$(notdir $(CC)))),clang)
 # TODO(b/329135129): Fix maybe uninitialized variables in upstream libavb
 AVB_CFLAGS += -Wno-maybe-uninitialized
+endif
 
 # TODO(b/329411445): Fix func declaration without a prototype in upstream libavb
 AVB_CFLAGS += -Wno-strict-prototypes
