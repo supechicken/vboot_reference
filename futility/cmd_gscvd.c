@@ -133,14 +133,6 @@ struct file_buf {
 };
 
 /*
- * Max number of RO ranges to cover. 32 is more than enough, this must be kept
- * in sync with
- * - AP_RO_MAX_NUM_RANGES in cr50/common/ap_ro_integrity_check.c
- * - MAX_RO_RANGES in ti50/common/capsules/src/ap_ro_verification/gscvd.rs
- */
-#define MAX_RANGES 32
-
-/*
  * Container keeping track of the set of ranges to include in hash
  * calculation.
  */
@@ -894,24 +886,19 @@ static int copy_ranges(const struct file_buf *ap_firmware_file,
  * makes sense and the expected values are found in certain fields.
  *
  * @param gvd  pointer to the GVD header followed by the ranges
+ * @param len  length of data that gvd points to
  * @param ap_firmware_file  pointer to the AP firmware file layout descriptor
  *
  * @return zero on success, -1 on failure.
  */
 static int validate_gvd(const struct gsc_verification_data *gvd,
+			uint32_t len,
 			const struct file_buf *ap_firmware_file)
 {
 	const FmapHeader *fmh;
 
-	if (gvd->gv_magic != GSC_VD_MAGIC) {
-		ERROR("Incorrect gscvd magic %x\n", gvd->gv_magic);
+	if (!futil_valid_gscvd_header(gvd, len))
 		return -1;
-	}
-
-	if (!gvd->range_count || (gvd->range_count > MAX_RANGES)) {
-		ERROR("Incorrect gscvd range count %d\n", gvd->range_count);
-		return -1;
-	}
 
 	/* Guaranteed to succeed. */
 	fmh = fmap_find(ap_firmware_file->data, ap_firmware_file->len);
@@ -919,20 +906,6 @@ static int validate_gvd(const struct gsc_verification_data *gvd,
 	if (gvd->fmap_location !=
 	    ((uintptr_t)fmh - (uintptr_t)ap_firmware_file->data)) {
 		ERROR("Incorrect gscvd fmap offset %x\n", gvd->fmap_location);
-		return -1;
-	}
-
-	/* Make sure signature and root key fit. */
-	if (vb2_verify_signature_inside(gvd, gvd->size, &gvd->sig_header) !=
-	    VB2_SUCCESS) {
-		ERROR("Corrupted signature header in GVD\n");
-		return -1;
-	}
-
-	if (vb2_verify_packed_key_inside(gvd, gvd->size,
-					 &gvd->root_key_header) !=
-	    VB2_SUCCESS) {
-		ERROR("Corrupted root key header in GVD\n");
 		return -1;
 	}
 
@@ -1003,7 +976,8 @@ static void try_retrieving_ranges_from_the_image(const char *file_name,
 	       *)(ap_firmware_file->data +
 		  ap_firmware_file->ro_gscvd->area_offset);
 
-	if (validate_gvd(gvd, ap_firmware_file))
+	if (validate_gvd(gvd, ap_firmware_file->ro_gscvd->area_size,
+			 ap_firmware_file))
 		return;
 
 	if (copy_ranges(ap_firmware_file, gvd, ranges))
@@ -1085,7 +1059,8 @@ static int validate_gscvd(int argc, char *argv[])
 			       *)(ap_firmware_file.data +
 				  ap_firmware_file.ro_gscvd->area_offset);
 
-		if (validate_gvd(gvd, &ap_firmware_file))
+		if (validate_gvd(gvd, ap_firmware_file.ro_gscvd->area_size,
+				 &ap_firmware_file))
 			break;
 
 		if (copy_ranges(&ap_firmware_file, gvd, &ranges))
