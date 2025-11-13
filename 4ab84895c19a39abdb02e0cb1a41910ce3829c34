@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "555e4e28_48428d8f",
+        "filename": "futility/updater_manifest.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-13T10:26:40Z",
+      "side": 1,
+      "message": "\u003e What do you expect this to be?\n\nI expected arguments to be aligned to the function call brackets. The arguments with only a single tab looked wrong here to me for some reason.\n\n\u003e  I changed it to one-line.\n\nA single line is fine.",
+      "parentUuid": "6de92c9d_3c9d7621",
+      "range": {
+        "startLine": 617,
+        "startChar": 2,
+        "endLine": 618,
+        "endChar": 24
+      },
+      "revId": "4ab84895c19a39abdb02e0cb1a41910ce3829c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "039bda7e_6f326529",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "See https://www.shellcheck.net/wiki/SC2155",
       "parentUuid": "039bda7e_6f326529",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "4ab84895c19a39abdb02e0cb1a41910ce3829c34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96495bf_d3d2a2f2",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-13T10:26:40Z",
+      "side": 1,
+      "message": "Oh.. Ok. Good to know :)",
+      "parentUuid": "b0616e8a_d1f3fa6e",
       "range": {
         "startLine": 86,
         "startChar": 2,
