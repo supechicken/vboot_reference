@@ -40,7 +40,7 @@ SRCDIR := $(shell pwd)
 export SRCDIR
 BUILD = ${SRCDIR}/build
 export BUILD
-LIBAVB_SRCDIR ?= firmware/avb/libavb
+LIBAVB_SRCDIR ?= ../../aosp/external/avb/
 
 # Stuff for 'make install'
 INSTALL = install
@@ -763,6 +763,11 @@ TEST20_NAMES = \
 	tests/vb20_rsa_padding_tests \
 	tests/vb20_verify_fw
 
+ifneq ($(filter-out 0,${USE_AVB}),)
+TEST2X_NAMES += \
+	tests/vb2_avb_tests
+endif
+
 TEST21_NAMES = \
 	tests/vb21_host_common2_tests \
 	tests/vb21_host_common_tests \
@@ -1290,6 +1295,9 @@ endif
 run2tests: install_for_test
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_api_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_auxfw_sync_tests
+ifneq ($(filter-out 0,${USE_AVB}),)
+	${RUNTEST} ${BUILD_RUN}/tests/vb2_avb_tests ${TEST_KEYS}
+endif
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common_tests
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common2_tests ${TEST_KEYS}
 	${RUNTEST} ${BUILD_RUN}/tests/vb2_common3_tests ${TEST_KEYS}
