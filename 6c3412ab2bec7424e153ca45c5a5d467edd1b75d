@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dbb47e24_e9b97cc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2025-11-13T19:03:51Z",
+      "side": 1,
+      "message": "Acknowledged. Introduced a dt_is_overlay for this purpose in coreboot - https://review.coreboot.org/c/coreboot/+/90028\n\nAfter that, only the matching DT entries are uncompressed.\n\nThese are the partitions getting loaded\n```\nreserve_buffer_for_partition: Reserved buffer for \u0027boot\u0027 0xd0000000[4000000]\nreserve_buffer_for_partition: Reserved buffer for \u0027vendor_boot\u0027 0xd4000000[2000000]\nreserve_buffer_for_partition: Reserved buffer for \u0027init_boot\u0027 0xd6000000[800000]\nreserve_buffer_for_partition: Reserved buffer for \u0027pvmfw\u0027 0xffac5000[400000]\nreserve_buffer_for_partition: Reserved buffer for \u0027dtbo\u0027 0xd6800000[800000]\nget_preloaded_partition: Load boot_a into 0xd0000000 bytes:4000000\nget_preloaded_partition: Load dtbo_a into 0xd6800000 bytes:800000\nget_preloaded_partition: Load init_boot_a into 0xd6000000 bytes:800000\nget_preloaded_partition: Load pvmfw_a into 0xffac5000 bytes:400000\nget_preloaded_partition: Load vendor_boot_a into 0xd4000000 bytes:2000000\n```\n\nThe updated android_parse_dtbs in action\n```\nandroid_parse_dtbs: Num of DTBO entries: 7\nDT Entry Size: 138340, Offset: 0x100, Id: 0x1, Min Rev: 0x0, Max Rev: 0xffff, Compression Type: 0x0, Id Type: 0x0, custom[1..2] \u003d [0x7fffff]\nDT Entry Size: 138340, Offset: 0x100, Id: 0x1, Min Rev: 0x0, Max Rev: 0xffff, Compression Type: 0x0, Id Type: 0x0, custom[1..2] \u003d [0x7ffff1]\nDT Entry Size: 138340, Offset: 0x100, Id: 0x1, Min Rev: 0x0, Max Rev: 0xffff, Compression Type: 0x0, Id Type: 0x0, custom[1..2] \u003d [0x7ffff3]\nDT Entry Size: 138340, Offset: 0x100, Id: 0x1, Min Rev: 0x0, Max Rev: 0xffff, Compression Type: 0x0, Id Type: 0x0, custom[1..2] \u003d [0x0, 0x0]\nDT Entry Size: 138164, Offset: 0x21d64, Id: 0x1, Min Rev: 0x0, Max Rev: 0xffff, Compression Type: 0x0, Id Type: 0x0, custom[1..2] \u003d [0x1, 0]\nandroid_parse_dtbs: Entry 4 is compatible with the board\nDT Entry Size: 138236, Offset: 0x43918, Id: 0x1, Min Rev: 0x0, Max Rev: 0xffff, Compression Type: 0x0, Id Type: 0x0, custom[1..2] \u003d [0x2, 0]\nDT Entry Size: 134764, Offset: 0x65514, Id: 0x1, Min Rev: 0x0, Max Rev: 0x0, Compression Type: 0x0, Id Type: 0x0, custom[1..2] \u003d [0x3, 0x0]\n```\n\nFinally booting to the kernel\n```\nExiting depthcharge with code 4 at timestamp: 12587671\nLegacy LZ4 decompressing android_kernel to 0xf3209f18\nLegacy LZ4 decompressing android_kernel to 0x84c00000\njumping to kernel\nconsole:/ $ \n```",
+      "parentUuid": "23b79ca5_be7eb84a",
+      "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e2b5b1db_40ce8ae5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
