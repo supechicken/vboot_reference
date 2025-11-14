@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f034e4c_15b49ee7",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-14T09:29:27Z",
+      "side": 1,
+      "message": "fwlib does not contain AVB. AVB and vboot are built and linked together via libpayload ebuild. I could refer to the headers file in AVB repo, but don\u0027t want to do that for unit tests, it just makes no sense. I have creation of separate ebuild for libavb on my TODO list, so maybe it simplify the makefile.",
+      "parentUuid": "3b57815b_f03eef12",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2025-11-14T01:07:50Z",
       "side": 1,
       "message": "nit: When braces are on one side of the if they should also be on the other.",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45006e7a_b16fb5f2",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-14T09:29:27Z",
+      "side": 1,
+      "message": "I removed this code, but it kind of sucks when using .clang-format generates code which gets code style comments.",
+      "parentUuid": "508ec399_bfcad001",
       "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bde98d_086347f6",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-14T09:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6afc9e_35063645",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0f49518_ada6068f",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96abda04_a99467fd",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-14T09:29:27Z",
+      "side": 1,
+      "message": "It is required for load_parition() from vboot_avb_ops. I moved it to firmware/stub/vboot_api_stub_stream.c though.",
+      "parentUuid": "f0f49518_ada6068f",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f919fd88_67695e54",
@@ -99,6 +171,24 @@
       "writtenOn": "2025-11-14T01:07:50Z",
       "side": 1,
       "message": "nit: Would be preferable if we could link in and use the actual AVB version rather than copy\u0026paste.",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3de042_84390a80",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-14T09:29:27Z",
+      "side": 1,
+      "message": "As I said in a previous comment, avb is not a part of vboot, it is a separate library. I think mocking AVB function for vboot tests is justified, we do the same for vboot callback from depthcharge.",
+      "parentUuid": "f919fd88_67695e54",
       "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
