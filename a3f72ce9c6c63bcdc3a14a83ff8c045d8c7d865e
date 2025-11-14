@@ -16,6 +16,91 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b57815b_f03eef12",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-14T01:07:50Z",
+      "side": 1,
+      "message": "Why can we not test with the real `libavb.h` from the AVB repo? If it is reachable for building fwlib, shouldn\u0027t it also be reachable for tests?",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508ec399_bfcad001",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-14T01:07:50Z",
+      "side": 1,
+      "message": "nit: When braces are on one side of the if they should also be on the other.",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6afc9e_35063645",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-14T01:07:50Z",
+      "side": 1,
+      "message": "Don\u0027t really like having all this stuff in a test file here tbh. It would be nicer if we could generate the corresponding AVB version to our test keys with a known-good utility and then just store it next to the ChromeOS and PEM versions in the testkeys directory. Can\u0027t you just use avbtool.py to create vbmeta partitions with those .pem keys, extract the AVB key part from each and store those as files there? (Maybe put the commands used to do that in a comment here so that they\u0027re reproducible if needed.)",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f49518_ada6068f",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-14T01:07:50Z",
+      "side": 1,
+      "message": "What is this needed for here?",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f919fd88_67695e54",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-14T01:07:50Z",
+      "side": 1,
+      "message": "nit: Would be preferable if we could link in and use the actual AVB version rather than copy\u0026paste.",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
