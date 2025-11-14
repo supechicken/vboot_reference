@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d4108d12_0932b032",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-14T03:44:00Z",
+      "side": 1,
+      "message": "If we don\u0027t want to decide whether a DTB is an overlay in run time, an alternative would be to store it as a flag in one of the custom fields in the `dt_table_entry` header.",
+      "parentUuid": "dbb47e24_e9b97cc1",
+      "revId": "6c3412ab2bec7424e153ca45c5a5d467edd1b75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e2b5b1db_40ce8ae5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
