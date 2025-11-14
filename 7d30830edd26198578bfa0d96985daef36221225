@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae1437b_24561398",
+        "filename": "futility/cmd_gscvd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-14T10:57:44Z",
+      "side": 1,
+      "message": "I don\u0027t see a need to pass the area size separately here. This function can take the `ap_firemware_file` and get it itself.",
+      "range": {
+        "startLine": 979,
+        "startChar": 1,
+        "endLine": 979,
+        "endChar": 37
+      },
+      "revId": "7d30830edd26198578bfa0d96985daef36221225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
