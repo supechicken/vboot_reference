@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb883baf_715a67d4",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:04:08Z",
+      "side": 1,
+      "message": "\u003e but don\u0027t want to do that for unit tests, it just makes no sense\n\nWhy? With your approach now we have duplicate libavb.h code. Can we pass the `LIBAVB_SRCDIR` from vboot_reference ebuild, and then in Makefile we can add `-I$(LIBAVB_SRCDIR)`. This is also the approach we\u0027ve been using for depthcharge unit testing (with libpayload dependency).",
+      "parentUuid": "3f034e4c_15b49ee7",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
@@ -189,6 +207,24 @@
       "side": 1,
       "message": "As I said in a previous comment, avb is not a part of vboot, it is a separate library. I think mocking AVB function for vboot tests is justified, we do the same for vboot callback from depthcharge.",
       "parentUuid": "f919fd88_67695e54",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9162794_3f089542",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:04:08Z",
+      "side": 1,
+      "message": "I think the answer depends on what exactly we want to check in this test. In this case, we are not testing how `validate_vbmeta_public_key` interacts with `avb_rsa_public_key_header_validate_and_byteswap`. Instead, we are testing \"vboot+libavb\" as a whole. Therefore, I agree we should use the actual `avb_rsa_public_key_header_validate_and_byteswap` implementation.",
+      "parentUuid": "ae3de042_84390a80",
       "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

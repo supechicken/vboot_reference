@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb18b1d_b8ff7559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:04:08Z",
+      "side": 1,
+      "message": "commit",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "fc0f90bcce61c8cf6188c04c08ee9a3977adbcd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4fb717_d4e80e99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:04:08Z",
+      "side": 1,
+      "message": "t",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "fc0f90bcce61c8cf6188c04c08ee9a3977adbcd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1c40a677_044fbcd4",
@@ -14,6 +60,46 @@
       "writtenOn": "2025-11-14T09:31:30Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "fc0f90bcce61c8cf6188c04c08ee9a3977adbcd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ef6473_e2858fae",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:04:08Z",
+      "side": 1,
+      "message": "nit: Extra blank line",
+      "revId": "fc0f90bcce61c8cf6188c04c08ee9a3977adbcd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad0279e_f61ea210",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:04:08Z",
+      "side": 1,
+      "message": "nit: `S` (and `Clean` function)\n\nThose PascalCase function names are from old vboot style.",
+      "range": {
+        "startLine": 87,
+        "startChar": 11,
+        "endLine": 87,
+        "endChar": 12
+      },
       "revId": "fc0f90bcce61c8cf6188c04c08ee9a3977adbcd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
