@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1d3f92_be695b66",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-17T09:51:32Z",
+      "side": 1,
+      "message": "nit: Missing `ft_print_header \u003d NULL;` below. This function is only called once, so this should not matter though.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "c08e8a85d6dbdb6d80e5b6ac0117fd34e91599f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
