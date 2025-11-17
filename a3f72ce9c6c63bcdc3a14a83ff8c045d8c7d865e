@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c90900b2_4cfe1890",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-17T16:20:59Z",
+      "side": 1,
+      "message": "Actually LIBAVB_SRCDIR is passed by libpayload ebuild, but I think I can just change the default value from vboot Makefile. But AVB is built only if USE_AVB is set. Do you want me to add `vb2_avb_test` under `ifneq ($(filter-out 0,${USE_AVB}),)` in the same way as `vb2_host_flashrom_tests` is  build only for USE_FLASHROM?",
+      "parentUuid": "cb883baf_715a67d4",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
