@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48ecf4e_43161f2c",
+        "filename": "futility/file_type.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "521610a4_f21846c2",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 77
+      },
+      "revId": "7e45b9257bef5702b37ad25e961e5302336d0f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e6bec88_77a52093",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "446ad5fb_a94d5137",
+        "filename": "futility/file_type_bios.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6bec88_77a52093",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 52
+      },
+      "revId": "7e45b9257bef5702b37ad25e961e5302336d0f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01563580_1e555f49",
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-14T16:05:31Z",
       "side": 1,
       "message": "This file is included manually in other files that use it. Is it really needed here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "7e45b9257bef5702b37ad25e961e5302336d0f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93493493_a6bdef37",
+        "filename": "futility/futility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-17T03:20:00Z",
+      "side": 1,
+      "message": "Needed for the `struct gsc_verification_data` definition below. Moved this change to the previous CL in the chain.",
+      "parentUuid": "01563580_1e555f49",
       "range": {
         "startLine": 12,
         "startChar": 0,
