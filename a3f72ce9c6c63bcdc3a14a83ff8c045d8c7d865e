@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2388c01_a909933d",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-18T06:48:01Z",
+      "side": 1,
+      "message": "\u003e add `vb2_avb_test` under `ifneq ($(filter-out 0,${USE_AVB}),)`\n\nYes, I think that\u0027s the way to go. `vb2_host_flashrom_tests` is guarded by `USE_FLASHROM` just in order to support the use case (outside ChromeOS) where libflashrom is unavailable. Therefore, as the new test also depends on another repo, we should use `USE_AVB` similarly.\n\nNote that you\u0027ll need to pass both `LIBAVB_SRCDIR` and `USE_AVB` from vboot_reference ebuild to Makefile. You\u0027ll also need to add the avb repo to `CROS_WORKON_DESTDIR`. The libpayload ebuild is irrelevant to vboot tests.",
+      "parentUuid": "c90900b2_4cfe1890",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
