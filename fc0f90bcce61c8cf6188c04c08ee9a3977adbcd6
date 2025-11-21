@@ -83,6 +83,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eead6bd5_79295c1b",
+        "filename": "firmware/stub/vboot_api_stub_stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-21T01:15:35Z",
+      "side": 1,
+      "message": "I forget what exactly this stub is used for, but if we\u0027re mapping Skip to Read here, we should probably also change Read so that it actually works right with a NULL buffer?",
+      "range": {
+        "startLine": 76,
+        "startChar": 50,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "fc0f90bcce61c8cf6188c04c08ee9a3977adbcd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ad0279e_f61ea210",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 4

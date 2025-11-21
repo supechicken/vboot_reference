@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be23aca3_75f43cbb",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-21T01:15:35Z",
+      "side": 1,
+      "message": "\u003e AVB and vboot are built and linked together via libpayload ebuild.\n\nWhy is that, actually? Is there a good reason for that? AVB is only referenced from within vboot as far as I\u0027m aware(?), I think it would make a lot more sense to pull in the AVB sources from the vboot ebuild, build it into fwlib, and then pull that into libpayload. There\u0027s no penalty for nesting libraries multiple levels deep, but   it would make more organizational sense in this case, I think.\n\n\u003e I could refer to the headers file in AVB repo, but don\u0027t want to do that for unit tests, it just makes no sense\n\nIt makes a lot more sense than copy\u0026pasting code to me tbh. That should generally be the last resort.",
+      "parentUuid": "c2388c01_a909933d",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "I removed this code, but it kind of sucks when using .clang-format generates code which gets code style comments.",
       "parentUuid": "508ec399_bfcad001",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "479ba014_b3069062",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-21T01:15:35Z",
+      "side": 1,
+      "message": "I think the `.clang-format` file was once put as a best effort there by someone who wanted it. It\u0027s not authoritative and we do not maintain it. Feel free to fix it if you want.",
+      "parentUuid": "45006e7a_b16fb5f2",
       "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -261,6 +297,24 @@
       "side": 1,
       "message": "I think the answer depends on what exactly we want to check in this test. In this case, we are not testing how `validate_vbmeta_public_key` interacts with `avb_rsa_public_key_header_validate_and_byteswap`. Instead, we are testing \"vboot+libavb\" as a whole. Therefore, I agree we should use the actual `avb_rsa_public_key_header_validate_and_byteswap` implementation.",
       "parentUuid": "ae3de042_84390a80",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "989d0153_9a3885f7",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-21T01:15:35Z",
+      "side": 1,
+      "message": "I don\u0027t see a point in enforcing a separation here. Mistakes creep in at the boundaries between components, it\u0027s actually better to test several things at once as long as the scope of the test doesn\u0027t grow too far because of that (which I think we can assume here because we take AVB as already \"known good\" because of its own tests, so even when pulling in the whole library the only thing that should make tests fail is the interaction with vboot which is the part we want to test).",
+      "parentUuid": "e9162794_3f089542",
       "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
