@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21deb5f3_cb396df9",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-21T03:28:45Z",
+      "side": 1,
+      "message": "\u003e pull in the AVB sources from the vboot ebuild, build it into fwlib, and then pull that into libpayload\n\n+1",
+      "parentUuid": "be23aca3_75f43cbb",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
