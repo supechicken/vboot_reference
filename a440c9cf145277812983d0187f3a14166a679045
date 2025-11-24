@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c52290_2f366ad5",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-24T11:54:54Z",
+      "side": 1,
+      "message": "capitalized: `RO FWID` or `FRID`",
+      "range": {
+        "startLine": 814,
+        "startChar": 35,
+        "endLine": 814,
+        "endChar": 43
+      },
+      "revId": "a440c9cf145277812983d0187f3a14166a679045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6585e828_51c4f3ab",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-24T11:54:54Z",
+      "side": 1,
+      "message": "capitalized: `RO FWID` or `FRID`",
+      "range": {
+        "startLine": 817,
+        "startChar": 24,
+        "endLine": 817,
+        "endChar": 31
+      },
+      "revId": "a440c9cf145277812983d0187f3a14166a679045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "399d95e0_7e379c85",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-24T11:54:54Z",
+      "side": 1,
+      "message": "capitalized: `RO FWID` or `FRID`",
+      "range": {
+        "startLine": 824,
+        "startChar": 32,
+        "endLine": 824,
+        "endChar": 39
+      },
+      "revId": "a440c9cf145277812983d0187f3a14166a679045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35debfe9_da68d2cb",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-24T11:54:54Z",
+      "side": 1,
+      "message": "capitalized: `RW FWID`",
+      "range": {
+        "startLine": 837,
+        "startChar": 23,
+        "endLine": 837,
+        "endChar": 30
+      },
+      "revId": "a440c9cf145277812983d0187f3a14166a679045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b75e89_1a4e0cb2",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-24T11:54:54Z",
+      "side": 1,
+      "message": "capitalized: `RW FWID`",
+      "range": {
+        "startLine": 844,
+        "startChar": 31,
+        "endLine": 844,
+        "endChar": 38
+      },
+      "revId": "a440c9cf145277812983d0187f3a14166a679045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6abbc39b_78153022",
+        "filename": "futility/updater_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-11-24T11:54:54Z",
+      "side": 1,
+      "message": "`else` is not needed. Change it to:\n```\n\tif (res \u003d\u003d 0)\n\t\treturn FWID_CHECK_UPDATE_SKIPPED;\n\n\treturn FWID_CHECK_UPDATE_NEEDED;\n}\n```",
+      "range": {
+        "startLine": 852,
+        "startChar": 1,
+        "endLine": 857,
+        "endChar": 12
+      },
+      "revId": "a440c9cf145277812983d0187f3a14166a679045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
