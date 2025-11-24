@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dcdf373_5fa5bd33",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-24T14:56:43Z",
+      "side": 1,
+      "message": "In the original version AVB was built into vboot_fw.a, but it was removed cause libpayload builds its own version of vboot_fw.a (https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/5646188/comment/0a912e38_618d8819/)",
+      "parentUuid": "21deb5f3_cb396df9",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
@@ -333,6 +351,24 @@
       "side": 1,
       "message": "I don\u0027t see a point in enforcing a separation here. Mistakes creep in at the boundaries between components, it\u0027s actually better to test several things at once as long as the scope of the test doesn\u0027t grow too far because of that (which I think we can assume here because we take AVB as already \"known good\" because of its own tests, so even when pulling in the whole library the only thing that should make tests fail is the interaction with vboot which is the part we want to test).",
       "parentUuid": "e9162794_3f089542",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356e10f3_1ccf351a",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-24T14:56:43Z",
+      "side": 1,
+      "message": "Mocked function removed. Original function from AVB is used instead.",
+      "parentUuid": "989d0153_9a3885f7",
       "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
