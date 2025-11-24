@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4421d4e_0cfc83f7",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1551907
+      },
+      "writtenOn": "2025-11-24T10:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef372fe_4f5d5edc",
+      "range": {
+        "startLine": 943,
+        "startChar": 54,
+        "endLine": 943,
+        "endChar": 55
+      },
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "563a2716_3e3b8ac6",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-11-24T10:14:34Z",
       "side": 1,
       "message": "FWID",
+      "range": {
+        "startLine": 1199,
+        "startChar": 27,
+        "endLine": 1199,
+        "endChar": 32
+      },
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71bec6e_7d3f217e",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1551907
+      },
+      "writtenOn": "2025-11-24T10:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "563a2716_3e3b8ac6",
       "range": {
         "startLine": 1199,
         "startChar": 27,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b69e390_34d5fc75",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1551907
+      },
+      "writtenOn": "2025-11-24T10:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "988518bc_48a489fc",
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e396e29_fa4208cb",
@@ -94,6 +160,24 @@
       "writtenOn": "2025-11-24T10:14:34Z",
       "side": 1,
       "message": "Move the comment to below?",
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "475ad604_800da4ef",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1551907
+      },
+      "writtenOn": "2025-11-24T10:32:05Z",
+      "side": 1,
+      "message": "Removed the comment, it was not very useful.",
+      "parentUuid": "2e396e29_fa4208cb",
       "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "003bbd35_20f1473b",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1551907
+      },
+      "writtenOn": "2025-11-24T10:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d17605_a10b8367",
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10e682b6_e106c4ca",
@@ -128,6 +230,30 @@
       "writtenOn": "2025-11-24T10:14:34Z",
       "side": 1,
       "message": "Please fix this WARNING reported by ShellCheck: INFO: error code: SC2086\n\nDouble quote to prevent globbing and word splitting.\n\n...\n\nINFO: error code: SC2086\n\nDouble quote to prevent globbing and word splitting.\n\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 284,
+        "startChar": 47,
+        "endLine": 284,
+        "endChar": 70
+      },
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "712dab61_6b3c1756",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1551907
+      },
+      "writtenOn": "2025-11-24T10:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10e682b6_e106c4ca",
       "range": {
         "startLine": 284,
         "startChar": 47,
