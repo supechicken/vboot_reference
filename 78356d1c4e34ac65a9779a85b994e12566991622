@@ -16,6 +16,126 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef372fe_4f5d5edc",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-24T10:14:34Z",
+      "side": 1,
+      "message": "`.`",
+      "range": {
+        "startLine": 943,
+        "startChar": 54,
+        "endLine": 943,
+        "endChar": 55
+      },
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563a2716_3e3b8ac6",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-24T10:14:34Z",
+      "side": 1,
+      "message": "FWID",
+      "range": {
+        "startLine": 1199,
+        "startChar": 27,
+        "endLine": 1199,
+        "endChar": 32
+      },
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988518bc_48a489fc",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-24T10:14:34Z",
+      "side": 1,
+      "message": "unrelated change",
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e396e29_fa4208cb",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-24T10:14:34Z",
+      "side": 1,
+      "message": "Move the comment to below?",
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d17605_a10b8367",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-24T10:14:34Z",
+      "side": 1,
+      "message": "Other files such as `\"${EXPECTED}/full` are actually modified below (by `load_fmap`). Therefore I think we can use `${FROM_IMAGE}` directly.",
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e682b6_e106c4ca",
+        "filename": "tests/futility/test_update.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-24T10:14:34Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by ShellCheck: INFO: error code: SC2086\n\nDouble quote to prevent globbing and word splitting.\n\n...\n\nINFO: error code: SC2086\n\nDouble quote to prevent globbing and word splitting.\n\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 284,
+        "startChar": 47,
+        "endLine": 284,
+        "endChar": 70
+      },
+      "revId": "78356d1c4e34ac65a9779a85b994e12566991622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
