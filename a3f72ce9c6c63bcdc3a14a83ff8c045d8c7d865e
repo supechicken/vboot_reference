@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e594ba01_69d214f2",
+        "filename": "tests/libavb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2025-11-26T01:28:34Z",
+      "side": 1,
+      "message": "Oh, I see... so fwlib _does_ actually contain AVB (and are not two separate libraries that are linked together afterwards by some ebuild code, which is what I thought you meant), but only the fwlib built from the libpayload ebuild (with USE_AVB\u003d1), which is separate from the fwlib built from the vboot_reference ebuild (with USE_AVB\u003d0 and not used for much other than tests and building futility).\n\nSo I think the solution here is just to leave the libpayload ebuild as is but also add the AVB CROS_WORKON_SOURCE to the vboot_reference ebuild, and add USE_AVB\u003d1 to the emake invocation for tests. Then we should be able to use tests with the actual AVB headers and code where appropriate. (The relevant tests should be guarded by USE_AVB in the Makefile, then.)",
+      "parentUuid": "1dcdf373_5fa5bd33",
+      "revId": "a3f72ce9c6c63bcdc3a14a83ff8c045d8c7d865e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508ec399_bfcad001",
         "filename": "tests/vb2_avb_tests.c",
         "patchSetId": 1
