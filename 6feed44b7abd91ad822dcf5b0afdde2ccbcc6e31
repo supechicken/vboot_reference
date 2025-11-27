@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5436b608_09907f9c",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-27T09:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a979753c_0caebc66",
+      "revId": "6feed44b7abd91ad822dcf5b0afdde2ccbcc6e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5414e67c_abaf8e05",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ffd7cd_7745f817",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-27T09:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5414e67c_abaf8e05",
+      "revId": "6feed44b7abd91ad822dcf5b0afdde2ccbcc6e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54ca2575_db0b73ff",
@@ -48,6 +84,30 @@
       "writtenOn": "2025-11-27T08:48:48Z",
       "side": 1,
       "message": "No mocks anymore.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "6feed44b7abd91ad822dcf5b0afdde2ccbcc6e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7c03bc_178c1a54",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1562687
+      },
+      "writtenOn": "2025-11-27T09:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54ca2575_db0b73ff",
       "range": {
         "startLine": 116,
         "startChar": 0,
