@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a979753c_0caebc66",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-27T08:48:48Z",
+      "side": 1,
+      "message": "Isn\u0027t this already added in the top level Makefile?",
+      "revId": "6feed44b7abd91ad822dcf5b0afdde2ccbcc6e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5414e67c_abaf8e05",
+        "filename": "firmware/avb/Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-27T08:48:48Z",
+      "side": 1,
+      "message": "If the point is to check whether `-Wno-maybe-uninitialized` is supported by `$CC`, there\u0027s `test_ccflag` defined in Makefile.\n\n```\nAVB_CFLAGS +\u003d $(call test_ccflag,-Wno-maybe-uninitialized)\n```",
+      "revId": "6feed44b7abd91ad822dcf5b0afdde2ccbcc6e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ca2575_db0b73ff",
+        "filename": "tests/vb2_avb_tests.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-11-27T08:48:48Z",
+      "side": 1,
+      "message": "No mocks anymore.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "6feed44b7abd91ad822dcf5b0afdde2ccbcc6e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
