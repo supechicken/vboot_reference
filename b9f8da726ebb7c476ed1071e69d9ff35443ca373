@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c1e7109_9d4930d2",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-11-28T09:16:12Z",
+      "side": 1,
+      "message": "I don\u0027t think using `if (regions_len)` is viable here because it groups the wrong cases together based on the input data structure.\n\nWe still need 3 valid cases\n\n* Case 1: `flashrom_write_image(\u0026img, regions, regions_len, \u0026diff_img, true, 2)` (full image)\n* Case 2: `flashrom_write_image(\u0026img, NULL, 0, \u0026diff_img, true, 2)` (full image)\n* Case 3: `flashrom_write_region(\u0026img, region_name, true, 2)` (partial image)\n\nThe Logic: The current check `if (image-\u003esize !\u003d len)` correctly isolates Case 3 (the if block) from Cases 1 \u0026 2 (the else block).\n\nThe Problem with if (regions_len): This would group Case 1 and Case 3 together.\n* Case 3 requires reading FMAP from ROM and reconstructing a full buffer (malloc + memset).\n* Case 1 already has a full buffer and parses FMAP from the image itself.\n\nSince the initialization logic (buffer allocation vs. direct parsing) depends entirely on the input buffer size, checking `size !\u003d len` is the necessary top-level condition.",
+      "parentUuid": "3dc1f1e1_23cb9588",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 23
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f30990a_05179d8f",
         "filename": "host/lib/include/flashrom.h",
         "patchSetId": 21
@@ -37,6 +61,30 @@
       "writtenOn": "2025-11-06T09:25:27Z",
       "side": 1,
       "message": "FWIW I don\u0027t think this extra sentence if needed. This is a directly result of `regions_len \u003d\u003d 0`.",
+      "range": {
+        "startLine": 47,
+        "startChar": 56,
+        "endLine": 47,
+        "endChar": 87
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d68ab1dd_b7824aab",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-11-28T09:16:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f30990a_05179d8f",
       "range": {
         "startLine": 47,
         "startChar": 56,
@@ -60,6 +108,30 @@
       "writtenOn": "2025-11-06T09:25:27Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 57,
+        "endLine": 84,
+        "endChar": 88
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc776171_050286d4",
+        "filename": "host/lib/include/flashrom.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-11-28T09:16:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16706249_c64a4aed",
       "range": {
         "startLine": 84,
         "startChar": 57,
