@@ -1257,6 +1257,7 @@ enum updater_error_codes update_firmware(struct updater_config *cfg)
 		r = update_try_rw_firmware(cfg, image_from, image_to,
 					   wp_enabled);
 		if (r == UPDATE_ERR_NEED_RO_UPDATE) {
+			cfg->fallback_to_full_update = true;
 			WARN("%s\n", updater_error_messages[r]);
 			STATUS("  Pausing for 5 seconds to allow cancellation (Ctrl+C)...\n");
 			sleep(5);

@@ -102,6 +102,7 @@ struct updater_config {
 	bool dut_is_remote;
 	bool output_only;
 	bool check_fwid;
+	bool fallback_to_full_update;
 };
 
 enum manifest_print_format {

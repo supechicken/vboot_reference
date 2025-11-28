@@ -350,6 +350,10 @@ static int quirk_preserve_me(struct updater_config *cfg)
 		if (cfg->try_update == TRY_UPDATE_OFF) {
 			INFO("No auto-update requested. Not preserving ME.\n");
 			return 0;
+		} else if (cfg->fallback_to_full_update) {
+			INFO("Auto-update requested but fallen back to full update. "
+			     "Not preserving ME.\n");
+			return 0;
 		}
 		INFO("Auto-update requested. Preserving ME.\n");
 	}
