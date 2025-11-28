@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39301a46_c12ca02b",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-11-28T09:32:33Z",
+      "side": 1,
+      "message": "Yes, now I got your point. Your implementation is correct. (and safer than reordering them.)",
+      "parentUuid": "1dfc1978_6791e53a",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3976dea_9b16ecb6",
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "Note: types differ (*flash_len is `uint32_t`, flashrom_setup accepts `size_t`).",
       "parentUuid": "9ab27140_334ef39a",
+      "range": {
+        "startLine": 385,
+        "startChar": 38,
+        "endLine": 388,
+        "endChar": 47
+      },
+      "revId": "38fe55f15af16411f5d67bd4925a78321a2b1f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db53f63f_7d980989",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-11-28T09:32:33Z",
+      "side": 1,
+      "message": "Agreed. Although current flash chips are unlikely to exceed UINT32_MAX, it\u0027s better to be safe. But we might want to handle this (likely by adding a boundary check) in a separate CL to keep this one focused.",
+      "parentUuid": "eee79e76_a5e04ee0",
       "range": {
         "startLine": 385,
         "startChar": 38,
