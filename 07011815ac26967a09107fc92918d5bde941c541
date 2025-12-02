@@ -16,6 +16,24 @@
       "message": "`goto err_init` to free `tmp`",
       "revId": "07011815ac26967a09107fc92918d5bde941c541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19bb913a_e0490334",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 4364816
+      },
+      "writtenOn": "2025-12-02T14:43:45Z",
+      "side": 1,
+      "message": "I don\u0027t think it is required here, as the code block will only execute if `tmp` is `NULL`.",
+      "parentUuid": "f7d8c7e8_78bb1e62",
+      "revId": "07011815ac26967a09107fc92918d5bde941c541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
