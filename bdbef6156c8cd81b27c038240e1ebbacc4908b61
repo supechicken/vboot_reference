@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c82c8c_08f1a278",
+        "filename": "tests/vb2_host_flashrom_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-12-02T09:21:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we call `flashrom_read_image` for whole image read?",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "bdbef6156c8cd81b27c038240e1ebbacc4908b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e823106_50c944a4",
+        "filename": "tests/vb2_host_nvdata_flashrom_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-12-02T09:21:59Z",
+      "side": 1,
+      "message": "IMO we shouldn\u0027t check specific args in a mocked function. Maybe just leave this unchanged?",
+      "revId": "bdbef6156c8cd81b27c038240e1ebbacc4908b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa98116_629f718a",
+        "filename": "tests/vb2_host_nvdata_flashrom_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-12-02T09:21:59Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 44
+      },
+      "revId": "bdbef6156c8cd81b27c038240e1ebbacc4908b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
