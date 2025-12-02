@@ -48,6 +48,53 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fb268d_d770757d",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-12-02T09:17:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6c1e7109_9d4930d2",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 23
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e32604_bbcb9fdb",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2025-12-02T09:17:12Z",
+      "side": 1,
+      "message": "Do we want to support `diff_image` for `flashrom_layout_include_region()`?\n\n- If so, we need `diff_image_full` similar to `image_full`.\n- If not, we need a check.\n\nAs there\u0027s no real use case, I\u0027d suggest we do whatever option you think is simpler.",
+      "range": {
+        "startLine": 326,
+        "startChar": 6,
+        "endLine": 326,
+        "endChar": 16
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f30990a_05179d8f",
