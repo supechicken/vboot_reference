@@ -803,9 +803,7 @@ bool vb2api_hwcrypto_allowed(struct vb2_context *ctx)
 	if (!(sd->status & VB2_SD_STATUS_SECDATA_KERNEL_INIT))
 		return 0;
 
-	/* enable hwcrypto only if RW firmware set the flag */
-	return vb2_secdata_kernel_get(ctx, VB2_SECDATA_KERNEL_FLAGS) &
-		VB2_SECDATA_KERNEL_FLAG_HWCRYPTO_ALLOWED;
+	return 0;
 }
 
 bool vb2_need_kernel_verification(struct vb2_context *ctx)
