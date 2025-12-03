@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34b2fc88_6c2a5e0d",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-03T09:38:50Z",
+      "side": 1,
+      "message": "Ubndefined variable errors reported by shellcheck are caused by this line. IIUC shellcheck supports bash includes when they use `source` keyword, not the preceding dot.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "0bf7d862d56f9bbf08dadbad39a1f83710598a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8c4f1d_c48032bf",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-03T09:38:50Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by ShellCheck: INFO: error code: SC2250\n\nPrefer putting braces around variable references even ...\n\nINFO: error code: SC2250\n\nPrefer putting braces around variable references even when not strictly required.\n\nhttps://github.com/koalaman/shellcheck/wiki/SC2250",
+      "range": {
+        "startLine": 66,
+        "startChar": 13,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "0bf7d862d56f9bbf08dadbad39a1f83710598a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7edb36_6ceb844c",
+        "filename": "tests/futility/run_test_scripts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-03T09:38:50Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by ShellCheck: INFO: error code: SC2250\n\nPrefer putting braces around variable references even ...\n\nINFO: error code: SC2250\n\nPrefer putting braces around variable references even when not strictly required.\n\nhttps://github.com/koalaman/shellcheck/wiki/SC2250",
+      "range": {
+        "startLine": 67,
+        "startChar": 37,
+        "endLine": 67,
+        "endChar": 39
+      },
+      "revId": "0bf7d862d56f9bbf08dadbad39a1f83710598a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
