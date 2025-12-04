@@ -326,10 +326,23 @@ cc_binary {
 cc_library_static {
     name: "libziparchive_wrapper",
     vendor: true,
+    host_supported: true,
     enabled: false,
 
     target: {
         android: {
+            enabled: true,
+            srcs: [
+                "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
+            ],
+            export_include_dirs: [
+                "futility/archive/libziparchive_wrapper/include",
+            ],
+            shared_libs: [
+                "libziparchive",
+            ],
+        },
+        host: {
             enabled: true,
             srcs: [
                 "futility/archive/libziparchive_wrapper/libziparchive_wrapper.cpp",
@@ -420,6 +433,10 @@ cc_binary {
 
     target: {
         android: {
+            cflags: ["-DHAVE_LIBZIPARCHIVE"],
+            static_libs: ["libziparchive_wrapper"],
+        },
+        host: {
             cflags: ["-DHAVE_LIBZIPARCHIVE"],
             static_libs: ["libziparchive_wrapper"],
         },
