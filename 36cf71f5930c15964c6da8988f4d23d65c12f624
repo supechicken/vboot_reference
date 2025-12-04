@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f70723_49350b30",
+        "filename": "futility/updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-04T12:01:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work. RO and RW have to have the same FMAP. Example failing cases:\n1. RO/system has N sections, RW/update has M !\u003d N sections.\n2. RO/system and RW/update have the same layout and section coverage but the name of at least one section differs.\n\nFMAP should be compatible 1:1 on the elements level but order of them in FMAP descriptor should not matter as long as entries contain the same data.",
+      "range": {
+        "startLine": 609,
+        "startChar": 1,
+        "endLine": 609,
+        "endChar": 44
+      },
+      "revId": "36cf71f5930c15964c6da8988f4d23d65c12f624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
