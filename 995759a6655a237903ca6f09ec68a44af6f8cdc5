@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e97b545_4c4d8e66",
+        "filename": "Android.bp",
+        "patchSetId": 24
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "Adjust to set `-DUSE_FLASHROM\u003d1`.",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b815d3f_2ed74981",
+        "filename": "Android.bp",
+        "patchSetId": 24
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "`USE_FLASHROM\u003d1`",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 23
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc848b3d_e49ce302",
+        "filename": "Android.bp",
+        "patchSetId": 24
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 30
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ea3c9f_f8b67c9f",
+        "filename": "Android.bp",
+        "patchSetId": 24
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "`USE_FLASHROM\u003d1`",
+      "range": {
+        "startLine": 379,
+        "startChar": 11,
+        "endLine": 379,
+        "endChar": 23
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06c7615_8681af69",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 246,
+        "startChar": 12,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c7c871_296f4a9e",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "Please adjust the style of error messages. All should start with the capital letter.",
+      "range": {
+        "startLine": 249,
+        "startChar": 10,
+        "endLine": 249,
+        "endChar": 15
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf57418_1068734b",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "Return code is not very helpful here. We should have logs from libflashrom which will tell us more about the failure than the code can.",
+      "range": {
+        "startLine": 267,
+        "startChar": 3,
+        "endLine": 267,
+        "endChar": 52
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5faa79f3_7c402793",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "`int i` is not used anywhere beyond this loop. It can be both declared and defined in the first `for` loop operand :)",
+      "range": {
+        "startLine": 321,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 37
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85eb4e90_23e497cf",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1512562
+      },
+      "writtenOn": "2025-12-05T12:03:27Z",
+      "side": 1,
+      "message": "style: Capitalize",
+      "range": {
+        "startLine": 371,
+        "startChar": 9,
+        "endLine": 371,
+        "endChar": 15
+      },
+      "revId": "995759a6655a237903ca6f09ec68a44af6f8cdc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
