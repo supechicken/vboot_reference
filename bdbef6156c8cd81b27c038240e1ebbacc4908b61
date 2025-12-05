@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b1f5d5c_26b1c32b",
+        "filename": "tests/vb2_host_flashrom_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-12-05T10:56:39Z",
+      "side": 1,
+      "message": "This test file (tests/vb2_host_flashrom_tests.c) is actually only compiled and run when USE_FLASHROM\u003d0.\n\nIn the legacy implementation (host/lib/flashrom.c), flashrom_read_region handles region\u003dNULL by performing a whole-chip read, while we are trying to reject that kind of call in USE_FLASHROM\u003d1 in this patch. \n\nWould you prefer I refactor the USE_FLASHROM\u003d0 path in this CL to match, or should I address that divergence in a follow-up cleanup patch?",
+      "parentUuid": "d4c82c8c_08f1a278",
+      "range": {
+        "startLine": 153,
+        "startChar": 11,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "bdbef6156c8cd81b27c038240e1ebbacc4908b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e823106_50c944a4",
         "filename": "tests/vb2_host_nvdata_flashrom_tests.c",
         "patchSetId": 22
@@ -37,6 +61,24 @@
       "writtenOn": "2025-12-02T09:21:59Z",
       "side": 1,
       "message": "IMO we shouldn\u0027t check specific args in a mocked function. Maybe just leave this unchanged?",
+      "revId": "bdbef6156c8cd81b27c038240e1ebbacc4908b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10cd294b_16e383c2",
+        "filename": "tests/vb2_host_nvdata_flashrom_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-12-05T10:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e823106_50c944a4",
       "revId": "bdbef6156c8cd81b27c038240e1ebbacc4908b61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2025-12-02T09:21:59Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 44
+      },
+      "revId": "bdbef6156c8cd81b27c038240e1ebbacc4908b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c724e101_3a55f166",
+        "filename": "tests/vb2_host_nvdata_flashrom_tests.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-12-05T10:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa98116_629f718a",
       "range": {
         "startLine": 115,
         "startChar": 1,

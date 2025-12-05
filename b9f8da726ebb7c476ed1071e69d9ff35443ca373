@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd35b7e_7ca8741c",
+        "filename": "host/lib/flashrom_drv.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1383774
+      },
+      "writtenOn": "2025-12-05T10:56:39Z",
+      "side": 1,
+      "message": "Regarding `diff_image`, I decided to simply disallow it for fitted regions since there is no use case.\n\nWhile implementing the check, I re-evaluated the logic and think it would be better to pass `is_fitted` explicitly. I want to prevent callers from accidentally using `flashrom_write_image` for fitted region updates (which we checked `image-\u003esize !\u003d len` for).",
+      "parentUuid": "12e32604_bbcb9fdb",
+      "range": {
+        "startLine": 326,
+        "startChar": 6,
+        "endLine": 326,
+        "endChar": 16
+      },
+      "revId": "b9f8da726ebb7c476ed1071e69d9ff35443ca373",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f30990a_05179d8f",
